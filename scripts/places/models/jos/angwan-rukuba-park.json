@@ -1,0 +1,258 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/221862569",
+   "used": "market outline (name match, 5232 m2) as the bare laterite trading ground"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#angwan-rukuba-park",
+   "used": "timber stalls, corrugated sheds, umbrellas, laterite; function is a brief guess"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#b5683f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5683f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    5,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "wall_colour": "#a68a64",
+    "wall_material": "timber"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -10,
+    0.5
+   ],
+   "rotDeg": -20,
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "wall_colour": "#a68a64",
+    "wall_material": "timber"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    20,
+    -35,
+    0.5
+   ],
+   "rotDeg": -35,
+   "params": {
+    "length": 20,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "wall_colour": "#a68a64",
+    "wall_material": "timber"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -45,
+    25,
+    0.5
+   ],
+   "rotDeg": -10,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9c9a3",
+     "#b6323a",
+     "#2f6b4f",
+     "#e0a526"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -15,
+    25,
+    0.5
+   ],
+   "rotDeg": -10,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9c9a3",
+     "#b6323a",
+     "#2f6b4f",
+     "#e0a526"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    10,
+    -8,
+    0.5
+   ],
+   "rotDeg": -30,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9c9a3",
+     "#b6323a",
+     "#2f6b4f",
+     "#e0a526"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    40,
+    -40,
+    0.5
+   ],
+   "rotDeg": -35,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9c9a3",
+     "#b6323a",
+     "#2f6b4f",
+     "#e0a526"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -40,
+    45,
+    0.5
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "colour": "#d9c9a3"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    50,
+    -55,
+    0.5
+   ],
+   "rotDeg": -35,
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    40,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    10,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "angwan-rukuba-park",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "function and stall layout guessed; items placed by eye inside the real outline; no photo to compare"
+ }
+}

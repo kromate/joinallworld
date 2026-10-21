@@ -1,0 +1,1345 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "harare",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "harare",
+    "climate": "highland",
+    "vernacular": "Highveld colonial capital laid out in wide grids: low and mid-rise 1950s-60s modernist and Art Deco blocks in cream render and concrete along flat avenues, a few towers (Reserve Bank, Joina City), Eastgate in pinkish brick and concrete, and wide leafy suburbs of single-storey face-brick or plastered bungalows with red or green corrugated roofs. Mbare and the high-density townships have rows of plain block flats and houses. Red-brown clay soil, jacaranda, flamboyant and msasa street trees, bougainvillea.",
+    "wallColours": [
+      "#e8e0cc",
+      "#d9b9a0",
+      "#b5563c",
+      "#f1ece0",
+      "#8b8680",
+      "#c9a66b"
+    ],
+    "roofColours": [
+      "#a9442f",
+      "#6b7075",
+      "#3e6b4f",
+      "#8b3a2f"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "red-brick",
+      "brick",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Colonial-era classical porticoes and Art Deco curved corners on central blocks; brick masonry patterns drawing on the Great Zimbabwe stone walls (Eastgate); plain verandas and stoeps on suburban houses; wrought-iron burglar bars; lilac jacaranda and red flamboyant blossom against cream walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Harare",
+        "what": "Mix of historic, post-war and modern buildings; wide streets; plateau at 1,483 m; red-brown clay soil; msasa, jacaranda, flamboyant and bougainvillea"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Eastgate_Centre,_Harare",
+        "what": "Pink-hued concrete and brick building, masonry patterns drawing on Great Zimbabwe walls, 48 brick chimneys"
+      }
+    ]
+  },
+  "places": {
+    "harare-african-liberation-museum": {
+      "venueId": "harare-african-liberation-museum",
+      "city": "harare",
+      "name": "Museum of African Liberation",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of African Liberation, a new monumental museum building on a hill site west of the city",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9bfa9",
+          "#8b8680",
+          "#e8e0cc"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of the building was found. Typed from a recent state museum and monument type; unverified. Treat as a stone-faced monumental block."
+    },
+    "harare-airport-harare-airport": {
+      "venueId": "harare-airport-harare-airport",
+      "city": "harare",
+      "name": "Robert Gabriel Mugabe International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The new international terminal at Harare: a long glass-fronted hall with a gently curved roof and a covered kerb, control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#6f8a8f",
+          "#f1f1ef"
+        ],
+        "roofColour": "#e6e8ea",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_International_Airport",
+          "what": "Opened 1956/57 as Salisbury Airport; main runway 4,725 m; a 'new International Terminal' houses the Civil Aviation Authority; 1.65 million passengers in 2025"
+        }
+      ],
+      "notes": "The page does not describe the terminal. Dimensions and the glass and curved-roof treatment are estimated from the newly built terminal type; unverified. The original 1950s terminal is smaller and white."
+    },
+    "harare-chiremba-balancing-rocks": {
+      "venueId": "harare-chiremba-balancing-rocks",
+      "city": "harare",
+      "name": "Chiremba Balancing Rocks",
+      "archetype": "park-landscape",
+      "subject": "The balancing rocks at Epworth: stacks of rounded granite boulders resting on narrow points amid dry grass and msasa",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 9,
+        "roof": "none",
+        "variant": "boulder-stacks"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8b8680",
+          "#a39a8a",
+          "#c9bfa9"
+        ],
+        "roofColour": "#8b8680",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 5,
+          "note": "balanced boulder stacks, 5-9 m tall"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "natural (granite weathering)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Natural granite boulders; no source was read. Model as stacked rounded granite boulders (single-rock balance points) of 5 to 9 m, a small car park and fence at the edge. Features use obelisk as the nearest vertical-stack id."
+    },
+    "harare-clinic": {
+      "venueId": "harare-clinic",
+      "city": "harare",
+      "name": "Parirenyatwa Hospital",
+      "archetype": "hospital",
+      "subject": "Parirenyatwa Hospital, Harare's big teaching hospital: several long multi-storey ward blocks",
+      "form": {
+        "footprint": "H",
+        "width_m": 170,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0cc",
+          "#c4b9a2",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the large 1950s teaching hospital type; unverified."
+    },
+    "harare-community-notices": {
+      "venueId": "harare-community-notices",
+      "city": "harare",
+      "name": "Constitutional Court and Supreme Court of Zimbabwe",
+      "archetype": "civic-palace",
+      "subject": "The court building on the central grid: a rendered modern civic block with a columned entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8e0cc",
+          "#c9bfa9",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Supreme_Court_of_Zimbabwe",
+          "what": "Court seated in Harare; established 18 April 1980; no building description"
+        }
+      ],
+      "notes": "The building is not described anywhere I could read. Typed as a mid-rise 1960s civic block; unverified."
+    },
+    "harare-community-voting-game": {
+      "venueId": "harare-community-voting-game",
+      "city": "harare",
+      "name": "Africa Unity Square",
+      "archetype": "park-landscape",
+      "subject": "Africa Unity Square (ex Cecil Square) in the centre of Harare: formal lawns and palms with paved paths and a central fountain, ringed by tall blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f9a54",
+          "#c9bfa9",
+          "#e8e0cc"
+        ],
+        "roofColour": "#8b8b88",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1890s layout",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "what": "Downtown has wide streets and sights including Africa Unity Square, Harare Gardens and the National Gallery"
+        }
+      ],
+      "notes": "The square is only named in the city page; formal lawns, palms and a central fountain are from memory. Unverified. Surrounded by taller office blocks and a hotel."
+    },
+    "harare-community-workshop": {
+      "venueId": "harare-community-workshop",
+      "city": "harare",
+      "name": "Université du Zimbabwe (University of Zimbabwe)",
+      "archetype": "campus-block",
+      "subject": "University of Zimbabwe, Mount Pleasant: 1950s ranges of cream-rendered academic blocks around the College Green with the Great Hall",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8dfc8",
+          "#b5563c",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b3a2f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1953-1957",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Zimbabwe",
+          "what": "Main campus 299 ha in Mount Pleasant with 171 buildings; foundation stone laid July 1953; College Green; Great Hall; Sports Pavilion; moved to campus 1957"
+        }
+      ],
+      "notes": "Layout and dates are sourced. The architectural style is not described; cream render and red tile are typed from 1950s colonial university buildings. Unverified."
+    },
+    "harare-eastgate-mall": {
+      "venueId": "harare-eastgate-mall",
+      "city": "harare",
+      "name": "Eastgate Shopping Mall",
+      "archetype": "mall",
+      "subject": "Eastgate Centre on Robert Mugabe Road: a nine-storey pink-hued concrete and brick complex, two rows of blocks along a glass-covered atrium with 48 brick chimney stacks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 9,
+        "height_m": 36,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "red-brick",
+        "colours": [
+          "#c9967f",
+          "#a8553a",
+          "#e8d8cc"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 48,
+          "note": "brick ventilation funnels between the blocks"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "skyways crossing the atrium"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1996",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Eastgate_Centre,_Harare",
+          "what": "Mick Pearce with Arup; nine storeys; about 55,000 m2; two rows of commercial space along a glass-covered atrium; shops on first two floors, offices above; 48 brick funnels; massive concrete walls with masonry patterns from Great Zimbabwe; pink-hued"
+        }
+      ],
+      "notes": "Sourced: nine storeys, pinkish concrete walls, 48 distinctive brick chimneys, atrium with bridges. Plan size is estimated; the chimneys are the recognisable feature."
+    },
+    "harare-harare-city-library": {
+      "venueId": "harare-harare-city-library",
+      "city": "harare",
+      "name": "Harare City Library",
+      "archetype": "campus-block",
+      "subject": "Harare City Library in the Rotten Row civic area: a mid-century rendered library block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dfcc",
+          "#b5a98e",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from a mid-century municipal library; unverified."
+    },
+    "harare-human-sciences-museum": {
+      "venueId": "harare-human-sciences-museum",
+      "city": "harare",
+      "name": "Zimbabwe Museum of Human Sciences",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Human Sciences, a low colonial-era museum block in a civic garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dfcc",
+          "#a8553a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b3a2f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed as a low rendered colonial-era museum with a tiled hip roof; unverified."
+    },
+    "harare-market-game": {
+      "venueId": "harare-market-game",
+      "city": "harare",
+      "name": "Mbare Market",
+      "archetype": "market-open",
+      "subject": "Mbare Musika, Zimbabwe's largest farm produce market: open trading bays and corrugated sheds with stalls, sacks and buses, flats beyond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#a0907a",
+          "#b5563c",
+          "#8b8680"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbare",
+          "what": "Mbare Musika is the largest farm produce market in Zimbabwe; farmers bring crops each morning; fallen into disrepair; Mbare bus terminus; Matapi hostel flats of 14 apartment blocks"
+        }
+      ],
+      "notes": "Large and busy: many stalls with plastic and fabric shades, long metal-roofed trading sheds, rows of buses at the adjacent terminus, Matapi flats (14 rendered apartment blocks) as the backdrop. Appearance is partly typed."
+    },
+    "harare-meal-stop": {
+      "venueId": "harare-meal-stop",
+      "city": "harare",
+      "name": "Afrotopia Café @ The Gallery",
+      "archetype": "restaurant",
+      "subject": "The cafe at the National Gallery of Zimbabwe: a small garden cafe with a covered terrace and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e0cc",
+          "#8a6a45",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed as a small garden cafe attached to the gallery; unverified."
+    },
+    "harare-national-archives": {
+      "venueId": "harare-national-archives",
+      "city": "harare",
+      "name": "National Archives of Zimbabwe",
+      "archetype": "office-low",
+      "subject": "The National Archives, a plain rendered record-office block in a garden setting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dfcc",
+          "#b5a98e",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Archives_of_Zimbabwe",
+          "what": "Established 1935 by Act of Parliament; located in Harare"
+        }
+      ],
+      "notes": "The page gives only the founding date; the building is typed from the city style and the type; unverified."
+    },
+    "harare-national-gallery": {
+      "venueId": "harare-national-gallery",
+      "city": "harare",
+      "name": "National Gallery of Zimbabwe",
+      "archetype": "museum-theatre",
+      "subject": "The National Gallery on Julius Nyerere Way: a modernist exhibition building around a courtyard with a sculpture garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 65,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe9db",
+          "#b5a98e",
+          "#8a6a45"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "stone sculptures in the garden"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1957",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Gallery_of_Zimbabwe",
+          "what": "Opened 1957 at 20 Julius Nyerere Way, Harare; regional galleries in Bulawayo and Mutare"
+        }
+      ],
+      "notes": "Address and date are sourced; courtyard, white render and sculpture garden are from memory of public photos and unverified."
+    },
+    "harare-national-sports-stadium": {
+      "venueId": "harare-national-sports-stadium",
+      "city": "harare",
+      "name": "National Sports Stadium",
+      "archetype": "stadium",
+      "subject": "The 60,000-seat National Sports Stadium next to Heroes Acre: a grey concrete bowl with a partly roofed main stand and tall floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b5ac",
+          "#6f8a8f",
+          "#e6e2d8"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Sports_Stadium_(Zimbabwe)",
+          "what": "Largest stadium in Zimbabwe, up to 60,000 capacity; opened 1987; closed 2006 for renovation; renovated again; grass pitch 95 x 62 m; next to Heroes Acre"
+        }
+      ],
+      "notes": "Capacity, date and pitch are sourced; stands and roof are not, so the bowl shape and partial roof are estimates. Clamp to the bowl front within 120 m."
+    },
+    "harare-queen-victoria-library": {
+      "venueId": "harare-queen-victoria-library",
+      "city": "harare",
+      "name": "Queen Victoria Memorial Library",
+      "archetype": "civic-small",
+      "subject": "A Queen Victoria Memorial Library, an Edwardian town library: small brick-and-render pile with a gabled entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a8553a",
+          "#e8dfc8",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b3a2f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The Queen Victoria Memorial Library is documented in Bulawayo, and the venue point lies on the eastern edge of Harare. No building description was verified; typed from an Edwardian colonial library type. Unverified identity."
+    },
+    "harare-quiet-reflection": {
+      "venueId": "harare-quiet-reflection",
+      "city": "harare",
+      "name": "Cathedral of the Sacred Heart",
+      "archetype": "church-classical",
+      "subject": "The Catholic Cathedral of the Sacred Heart: a large brick and render church with a front tower and a high gabled nave",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e8dfc8",
+          "#a8553a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b3a2f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The building was not described in the sources read. Typed from a colonial-era Catholic cathedral type; unverified. Treat as a cruciform church with a front bell tower."
+    },
+    "harare-recreation": {
+      "venueId": "harare-recreation",
+      "city": "harare",
+      "name": "Greenwood Park",
+      "archetype": "park-landscape",
+      "subject": "Greenwood Park, a suburban public park of lawns, jacaranda and msasa trees with paths and a pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 130,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#6f9a54",
+          "#b9ad9a",
+          "#e8e0cc"
+        ],
+        "roofColour": "#8b3a2f",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "what": "Harare has jacaranda and msasa street trees; city on a parkland plateau"
+        }
+      ],
+      "notes": "No description of this park found. Typed from the type and city style."
+    },
+    "harare-reps-theatre": {
+      "venueId": "harare-reps-theatre",
+      "city": "harare",
+      "name": "Reps Theatre",
+      "archetype": "museum-theatre",
+      "subject": "Reps Theatre in Belgravia: a small community theatre in painted brick under a tiled roof, with a front foyer and garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e8dfc8",
+          "#a8553a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b3a2f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed as a small repertory theatre; unverified."
+    },
+    "harare-rufaro-stadium": {
+      "venueId": "harare-rufaro-stadium",
+      "city": "harare",
+      "name": "Rufaro Stadium",
+      "archetype": "stadium",
+      "subject": "Rufaro Stadium in Mbare: an older grass bowl with a covered main stand and low terraces, site of the 1980 independence ceremony",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b5",
+          "#a8553a",
+          "#e6e2d8"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rufaro_Stadium",
+          "what": "Multi-purpose stadium in Harare; natural grass reinstated and reopened April 2017; renovations completed Feb 2024; stated capacity 60,000 (needs source)"
+        }
+      ],
+      "notes": "Capacity and renovation are on the page but not the architecture; it is a football bowl with one covered stand. Peeling concrete terraces and floodlights. Form estimated."
+    },
+    "harare-seven-arts": {
+      "venueId": "harare-seven-arts",
+      "city": "harare",
+      "name": "7 Arts",
+      "archetype": "museum-theatre",
+      "subject": "The 7 Arts Theatre in Avondale: a small theatre and arts venue in a 1950s rendered building with a curved front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#efe9db",
+          "#a8553a",
+          "#8a6a45"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "art-deco",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the type and the city style; unverified."
+    },
+    "harare-transit": {
+      "venueId": "harare-transit",
+      "city": "harare",
+      "name": "Harare",
+      "archetype": "transport-station",
+      "subject": "Harare central rail and bus interchange: a long station building with platform canopies, rail lines and coach bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dfcc",
+          "#b5a98e",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "what": "Harare mixed colonial, post-war and modern buildings; wide streets; jacaranda street trees"
+        }
+      ],
+      "notes": "The hub point is close to the central station and Rezende Street bus area; station building not described. Typed from the type."
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/338010299",
+   "used": "park outline (29,577 m2) used only for scale and the fence run"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dar-es-salaam.json#dar-es-salaam-kenyatta-grounds",
+   "used": "open mown ground with a few trees, perimeter fence, two gates and two floodlights"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 40,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    -10,
+    -5,
+    0
+   ],
+   "rotDeg": 68,
+   "params": {
+    "length": 70,
+    "width": 46,
+    "stripes": 6,
+    "markings": false,
+    "goals": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 2.4,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#b5ada0",
+    "points": [
+     [
+      -43.7,
+      -7.5
+     ],
+     [
+      -43.1,
+      -25.4
+     ],
+     [
+      -37.7,
+      -56.3
+     ],
+     [
+      34.3,
+      -26.8
+     ],
+     [
+      41.2,
+      -20.5
+     ],
+     [
+      43.7,
+      -15.4
+     ],
+     [
+      39.9,
+      -5.5
+     ],
+     [
+      6.0,
+      56.3
+     ],
+     [
+      -16.0,
+      41.6
+     ],
+     [
+      -29.4,
+      28.0
+     ],
+     [
+      -38.3,
+      11.7
+     ],
+     [
+      -41.0,
+      5.8
+     ],
+     [
+      -43.7,
+      -7.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -58,
+    -52,
+    0
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 5,
+    "height": 2.8,
+    "pillar": 0.6,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    40,
+    52,
+    0
+   ],
+   "rotDeg": -60,
+   "params": {
+    "width": 5,
+    "height": 2.8,
+    "pillar": 0.6,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    30,
+    20,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 12,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; the real park outline (250 m) could not be drawn as a ground polygon, so the park is the grass site pad with typed pitch, fence run, gates and floodlights."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-kenyatta-grounds"
+}

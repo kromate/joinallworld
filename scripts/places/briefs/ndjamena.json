@@ -1,0 +1,1517 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ndjamena",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ndjamena",
+    "climate": "sahel",
+    "vernacular": "Flat Sahelian river capital where the Chari meets the Logone: single-storey cement-rendered and sun-dried-brick (banco) houses behind high mud or block walls on dusty sand streets, flat roofs or corrugated-iron sheets, and a thin colonial/1960s core along the Chari of two-to-four storey rendered government blocks. Very hot, dust-coloured, acacia and neem trees, doum and date palms along the river; much of the 1979-80 civil-war centre was rebuilt in concrete.",
+    "wallColours": [
+      "#c9a979",
+      "#d9c29c",
+      "#b88f66",
+      "#e6dcc8",
+      "#9a9588",
+      "#f1ece0"
+    ],
+    "roofColours": [
+      "#8d8a84",
+      "#9b5a3c",
+      "#b0aca3",
+      "#6a6760"
+    ],
+    "wallMaterials": [
+      "render",
+      "mud-render",
+      "concrete",
+      "painted-render",
+      "whitewash",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Little applied ornament: plain sand-coloured render with painted door and gate colours, geometric metal gates and screens, hand-painted shop signs; mosques with simple concrete minarets and small domes; Sahelian mud-render textures on traditional compounds.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/N'Djamena",
+        "what": "hot semi-arid climate ~510 mm rain; wet season June-Sept; Chari/Logone confluence; colonial core along the Chari and newer 'African city' to north and east; National Museum, Palais du 15 janvier, Place de la Nation, Avenue Charles de Gaulle"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Peace_Cathedral,_N'Djamena",
+        "what": "cathedral destroyed 1980 in the civil war, rebuilt 1983-1986, restored 2013"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sudano-Sahelian_architecture",
+        "what": "mudbrick and mud plaster tradition of the southern Sahel"
+      }
+    ]
+  },
+  "places": {
+    "ndjamena-airport-ndjamena-airport": {
+      "venueId": "ndjamena-airport-ndjamena-airport",
+      "city": "ndjamena",
+      "name": "Aeroport international de N'Djamena (Hassan Djamous)",
+      "archetype": "airport-terminal",
+      "subject": "The civil terminal on the south-west side of the single runway: a modest rendered terminal block with a flat canopy and a control tower, civilian and military sides on opposite sides of the runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc8",
+          "#4a6a7a",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s (unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/N'Djamena_International_Airport",
+          "what": "single asphalt runway 05/23, 2,800 x 45 m, elevation 295 m; dual civil and military use on opposite sides; French air base from 1939"
+        }
+      ],
+      "notes": "Runway and dual-use layout are sourced; the terminal is not described and is typed from the city style and a typical regional terminal. Smaller and plainer than Dakar AIBD."
+    },
+    "ndjamena-clinic": {
+      "venueId": "ndjamena-clinic",
+      "city": "ndjamena",
+      "name": "Centre de sante de Ndjamena-Koudou",
+      "archetype": "hospital",
+      "subject": "A neighbourhood health centre: a long single-storey rendered clinic with a veranda, a blank cross sign and a boundary wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#2f6f4f",
+          "#9a9588"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. District health centre; small corrugated-roof building typical of Chad."
+    },
+    "ndjamena-community-notices": {
+      "venueId": "ndjamena-community-notices",
+      "city": "ndjamena",
+      "name": "Centre de detention",
+      "archetype": "civic-small",
+      "subject": "A walled detention centre: a low rendered block behind a tall perimeter wall with a guarded gate and corner watch posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b88f66",
+          "#9a9588",
+          "#e6dcc8"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Facility type only; the wall and gate dominate the silhouette. Keep it neutral and generic, with no signage."
+    },
+    "ndjamena-community-voting-game": {
+      "venueId": "ndjamena-community-voting-game",
+      "city": "ndjamena",
+      "name": "Commune du 7eme Arrondissement - La Mairie",
+      "archetype": "civic-small",
+      "subject": "A district town hall: a two-storey rendered building with a small portico, flagpoles and a courtyard wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#b88f66",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Arrondissement mairie; form typed."
+    },
+    "ndjamena-community-workshop": {
+      "venueId": "ndjamena-community-workshop",
+      "city": "ndjamena",
+      "name": "Institut AVD",
+      "archetype": "office-low",
+      "subject": "A training institute office: a two-storey cement-rendered block with a metal gate and signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c29c",
+          "#9a9588",
+          "#f1ece0"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Name only; unidentified institute."
+    },
+    "ndjamena-market-game": {
+      "venueId": "ndjamena-market-game",
+      "city": "ndjamena",
+      "name": "Marche a betail",
+      "archetype": "market-open",
+      "subject": "The livestock market: open sandy pens and rope-and-pole corrals under scattered acacias with a few shade sheds and a perimeter fence",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#c9a979",
+          "#b88f66",
+          "#9a9588"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "what": "city-level style only (hot semi-arid, Chari riverside, low-rise)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "what": "Chad is a Sahelian cattle economy; no market details"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Livestock market identity (pens, acacias, bare sand) differs sharply from the grain and general markets; livestock itself is not modelled."
+    },
+    "ndjamena-meal-stop": {
+      "venueId": "ndjamena-meal-stop",
+      "city": "ndjamena",
+      "name": "Maquis d'a cote",
+      "archetype": "restaurant",
+      "subject": "A small open-air maquis restaurant: a plastered single-storey room with a covered terrace and plastic tables under a thatch-style shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#c0392b",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Business-listing place."
+    },
+    "ndjamena-osm-node-11135875905": {
+      "venueId": "ndjamena-osm-node-11135875905",
+      "city": "ndjamena",
+      "name": "Centre de sante revitalise de Goudji",
+      "archetype": "hospital",
+      "subject": "Revitalised Goudji health centre: a freshly painted single-storey clinic with a covered waiting veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#2f6f4f",
+          "#9a9588"
+        ],
+        "roofColour": "#9b5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. 'Revitalise' suggests a recently upgraded clinic."
+    },
+    "ndjamena-osm-node-11176434237": {
+      "venueId": "ndjamena-osm-node-11176434237",
+      "city": "ndjamena",
+      "name": "Complexe Abou Hourayra",
+      "archetype": "campus-block",
+      "subject": "Abou Hourayra school complex: two rows of single-storey classroom blocks around a sandy courtyard, with a small prayer hall",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#2f6f4f",
+          "#9a9588"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. School/Quranic complex name only; likely a privately run Arabic-French school."
+    },
+    "ndjamena-osm-node-12350268725": {
+      "venueId": "ndjamena-osm-node-12350268725",
+      "city": "ndjamena",
+      "name": "Academie Royale",
+      "archetype": "campus-block",
+      "subject": "Academie Royale: a two-storey private school block in cream and blue render with a gate and flagpole",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#4a6a7a",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Private school name only."
+    },
+    "ndjamena-osm-node-13208665829": {
+      "venueId": "ndjamena-osm-node-13208665829",
+      "city": "ndjamena",
+      "name": "Hopital de Toukra",
+      "archetype": "hospital",
+      "subject": "Toukra hospital: a longer single-storey pavilion hospital with covered corridors on the southern outskirts",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#2f6f4f",
+          "#9a9588"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. District hospital; pavilion plan with connecting corridors is a type guess."
+    },
+    "ndjamena-osm-node-4108051090": {
+      "venueId": "ndjamena-osm-node-4108051090",
+      "city": "ndjamena",
+      "name": "Mosquee (N'Djamena north)",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque: a small cement-rendered prayer hall with a low dome, arched openings and one square-section concrete minaret behind a courtyard wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#e6dcc8",
+          "#2f6f4f",
+          "#ffffff"
+        ],
+        "roofColour": "#ffffff",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Unnamed mosque; one minaret and a small dome is the typical Chadian neighbourhood form."
+    },
+    "ndjamena-osm-node-4146090928": {
+      "venueId": "ndjamena-osm-node-4146090928",
+      "city": "ndjamena",
+      "name": "La caravelle",
+      "archetype": "restaurant",
+      "subject": "La Caravelle: a restaurant-bar with a rendered single-storey room, a covered terrace and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#4a6a7a",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Business-listing place."
+    },
+    "ndjamena-osm-node-4502748090": {
+      "venueId": "ndjamena-osm-node-4502748090",
+      "city": "ndjamena",
+      "name": "Parc de jeux",
+      "archetype": "park-landscape",
+      "subject": "A playground park on the southern edge: swings and slides on sand under a few acacias with a low boundary fence",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#c0392b",
+          "#2f6f4f"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Children's play area; no description found."
+    },
+    "ndjamena-osm-node-7174815188": {
+      "venueId": "ndjamena-osm-node-7174815188",
+      "city": "ndjamena",
+      "name": "Ferme David Durant",
+      "archetype": "park-landscape",
+      "subject": "A small farm on the western edge of the city: fenced irrigated plots, a farmhouse, a water tank and a few sheds under trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#c9a979",
+          "#e6dcc8",
+          "#9a9588"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Farm name only; modelled as a landscape with farm sheds and a water tank."
+    },
+    "ndjamena-osm-node-8652966419": {
+      "venueId": "ndjamena-osm-node-8652966419",
+      "city": "ndjamena",
+      "name": "Khassam",
+      "archetype": "restaurant",
+      "subject": "Khassam: a small rendered restaurant with a shaded front terrace on a dusty street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c29c",
+          "#2f6f4f",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Business-listing place."
+    },
+    "ndjamena-osm-way-1066128727": {
+      "venueId": "ndjamena-osm-way-1066128727",
+      "city": "ndjamena",
+      "name": "Parc du marche Koweitien",
+      "archetype": "park-landscape",
+      "subject": "A small public park beside the Kuwaiti market: paved paths, benches and low shade trees on sand with a boundary wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#9a9588",
+          "#2f6f4f"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Park attached to the Marche koweitien."
+    },
+    "ndjamena-osm-way-1415633322": {
+      "venueId": "ndjamena-osm-way-1415633322",
+      "city": "ndjamena",
+      "name": "Stade Olympique Marechal Idriss Deby Itno",
+      "archetype": "stadium",
+      "subject": "The national Olympic stadium: a large modern football bowl with a covered main stand, tiered concrete seating all round, floodlight masts and a scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 180,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c8",
+          "#2f6f4f",
+          "#c0392b"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Stadium page could not be fetched. It is the national stadium on the southern edge (Toukra side); size is estimated for a roughly 30,000-seat bowl and unverified."
+    },
+    "ndjamena-osm-way-1451346354": {
+      "venueId": "ndjamena-osm-way-1451346354",
+      "city": "ndjamena",
+      "name": "Marche de Wara",
+      "archetype": "market-open",
+      "subject": "Wara market: rows of stalls under parasols and tarpaulin shades with narrow lanes of red-brown sand and a few lock-up shops on the edges",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a979",
+          "#b88f66",
+          "#9a9588"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "what": "city-level style only (hot semi-arid, Chari riverside, low-rise)"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Northern-district market; parasols and tarps give the identity."
+    },
+    "ndjamena-osm-way-156565063": {
+      "venueId": "ndjamena-osm-way-156565063",
+      "city": "ndjamena",
+      "name": "Marche a Mil",
+      "archetype": "market-open",
+      "subject": "The Millet Market (Marche a Mil): long lines of lock-up shops and shed roofs around sandy lanes, with sacks of grain stacked in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c29c",
+          "#9a9588",
+          "#b88f66"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "what": "city-level style only (hot semi-arid, Chari riverside, low-rise)"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Grain (millet) trading market in the centre; rows of shed-roofed lock-ups rather than parasols, so it differs from Wara."
+    },
+    "ndjamena-osm-way-199599925": {
+      "venueId": "ndjamena-osm-way-199599925",
+      "city": "ndjamena",
+      "name": "Musee national du Tchad",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum of Chad: a modern two-storey rendered museum building opposite the Palais du 15 janvier, with an identical twin building beside it housing the National Library",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#9a9588",
+          "#b88f66"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2010 (current premises)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Musée_national_du_Tchad",
+          "what": "founded by decree 6 Oct 1962; moved Nov 1964 to the former town hall; since 2010 in modern premises in Amriguebe, 5th arrondissement, opposite the Palais du 15 janvier and next to an identical building housing the National Library"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/N'Djamena",
+          "what": "museum houses the Toumai Sahelanthropus skull fragment"
+        }
+      ],
+      "notes": "Sourced: modern premises since 2010, opposite the National Assembly (Palais du 15 janvier), twin building next door. Dimensions, storeys and colours estimated."
+    },
+    "ndjamena-osm-way-678864284": {
+      "venueId": "ndjamena-osm-way-678864284",
+      "city": "ndjamena",
+      "name": "Universite virtuelle du Tchad",
+      "archetype": "campus-block",
+      "subject": "The virtual university: a two-storey rendered training block with computer-lab windows and a small forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc8",
+          "#4a6a7a",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Online-university campus; page could not be fetched."
+    },
+    "ndjamena-quiet-reflection": {
+      "venueId": "ndjamena-quiet-reflection",
+      "city": "ndjamena",
+      "name": "Cathedrale Notre-Dame de N'Djamena",
+      "archetype": "church-modern",
+      "subject": "The Catholic cathedral: a long rendered nave under a pitched roof with a front bell tower and a cross, rebuilt after the 1980 destruction",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#b88f66",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front tower (unverified)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1965; rebuilt 1983-1986",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Peace_Cathedral,_N'Djamena",
+          "what": "built and inaugurated in 1965; destroyed 21 April 1980 in the civil war; rebuilt 1983-1986 on most of the old structures, restored 2013; seat of the Archdiocese, near Avenue Charles de Gaulle and Avenue Felix Eboue"
+        }
+      ],
+      "notes": "Sourced: 1965 origin, 1980 destruction, 1983-86 rebuild, 2013 restoration. Form, tower and colours are not described in the source and are estimated; check photographs. Seat of the archdiocese."
+    },
+    "ndjamena-recreation": {
+      "venueId": "ndjamena-recreation",
+      "city": "ndjamena",
+      "name": "Jardin Botanique",
+      "archetype": "park-landscape",
+      "subject": "The botanical garden: shaded avenues of neem and palms with planted beds, a small entrance lodge and a few pavilions near the Chari",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc8",
+          "#2f6f4f",
+          "#9a9588"
+        ],
+        "roofColour": "#9a9588",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. No description found."
+    },
+    "ndjamena-transit": {
+      "venueId": "ndjamena-transit",
+      "city": "ndjamena",
+      "name": "Gare d'Abeche",
+      "archetype": "transport-station",
+      "subject": "The Abeche coach station: an open sandy motor park with a low rendered ticket building, shed shelters and rows of bus bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c29c",
+          "#9a9588",
+          "#c0392b"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Chad has no railway; 'Gare' is a road-transport park for coaches to Abeche. That reading is inferred from the name."
+    }
+  }
+}

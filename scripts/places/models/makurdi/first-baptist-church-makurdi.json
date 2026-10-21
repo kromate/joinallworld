@@ -1,0 +1,213 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1408449978",
+   "used": "building outline containing the venue point (about 38 x 18 m, 660 m2, rectangular), used for the worship hall"
+  },
+  {
+   "kind": "text",
+   "used": "brief only (typed guess: gabled hall, small front tower with cross, plain painted render); the only nearby Commons photo shows a council secretariat, not this church, and was not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "arched",
+    "plinth": 0.7,
+    "bands": "#7a5a46"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.4
+    ]
+   },
+   "at": [
+    -12,
+    -12.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f2e8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.7,
+    "bands": "#7a5a46"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "rise": 3.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "church-gothic/cross",
+   "at": [
+    -12,
+    -12.5,
+    14.9
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#c9c3b5"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.6,
+    "bottom": 0.9,
+    "colour": "#7a5a46",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e5dfd0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real OSM outline only; tower, porch and roof are typical guesses"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "first-baptist-church-makurdi"
+}

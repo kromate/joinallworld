@@ -1,0 +1,627 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "emirs-palace-bauchi",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emir_Palace_Bauchi.jpg",
+   "licence": "CC0",
+   "author": "Gwanki",
+   "view": "front",
+   "file": "/tmp/places-evidence/bauchi/emir1.jpg",
+   "used": "street frontage: long two-storey salmon-pink range, ground-floor arched niches, upper loggia of arched openings with railings, tall central arched porch pavilion, end pavilions with ornamental crests, palm behind, flag mast"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emir_of_Bauchi_Main_Palace.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Pavoris",
+   "view": "side",
+   "file": "/tmp/places-evidence/bauchi/emir2.jpg",
+   "used": "decorated zaure/gate block: orange-pink mud-render walls with dense blue/yellow/purple relief, white corner pinnacles, red brick plinth, green canopy over the door, tall cypress trees"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json emirs-palace-bauchi",
+   "used": "walled compound, rear ranges, palace mosque"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.21,
+  "margin": 0.02,
+  "fit": "building",
+  "shiftY": -0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     44,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0b59b",
+    "windows": "none",
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#f4d7c6",
+    "plinth": 0.5,
+    "cornice": true,
+    "parapet": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 3.4,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d99c80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-pavilion",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0b59b",
+    "windows": "none",
+    "bands": "#f4d7c6",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d99c80",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-pavilion-left",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    -0.5
+   ],
+   "height": 9.3,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0b59b",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "back": "none"
+    },
+    "bands": "#f4d7c6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d99c80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-pavilion-right",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    24,
+    -0.5
+   ],
+   "height": 9.3,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0b59b",
+    "windows": "none",
+    "faces": {
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#f4d7c6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d99c80",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-range-a",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    26
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9a37e",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a32",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-range-b",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    16,
+    28
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9a37e",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-mosque",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    -36,
+    16
+   ],
+   "rotDeg": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#e8c3a0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9a37e",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -43,
+    10,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#e8c3a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "zaure-block",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    40,
+    4
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#eaa27c",
+    "windows": "none",
+    "bands": "#6a4a9a",
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eaa27c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -50,
+    36,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 3.2,
+    "thickness": 0.5,
+    "colour": "#d9a37e"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -50,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#e9ae94"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    38,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#e9ae94"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 19,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    40,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#d0d0d0",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "height": 11,
+    "openings": 1,
+    "kind": "round",
+    "pier": 1.6,
+    "crest": "star",
+    "relief": true
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -8.3,
+    5.0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9.5,
+    "depth": 2.4,
+    "height": 0,
+    "thickness": 0.35,
+    "colour": "#e7a98c",
+    "edgeColour": "#f4d7c6",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    -13.5,
+    -4.9,
+    4.6
+   ],
+   "params": {
+    "length": 19,
+    "depth": 1.4,
+    "springHeight": 2.2,
+    "topHeight": 3.4,
+    "bayWidth": 3.4,
+    "pierWidth": 0.55,
+    "shape": "pointed",
+    "colour": "#f4d7c6",
+    "roofColour": "#e7a98c"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    13.5,
+    -4.9,
+    4.6
+   ],
+   "params": {
+    "length": 19,
+    "depth": 1.4,
+    "springHeight": 2.2,
+    "topHeight": 3.4,
+    "bayWidth": 3.4,
+    "pierWidth": 0.55,
+    "shape": "pointed",
+    "colour": "#f4d7c6",
+    "roofColour": "#e7a98c"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -23,
+    -5.4,
+    4.6
+   ],
+   "params": {
+    "length": 19,
+    "height": 0.9,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    4,
+    -5.4,
+    4.6
+   ],
+   "params": {
+    "length": 19,
+    "height": 0.9,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "merlon-wall",
+   "at": [
+    -22.5,
+    -4.6,
+    8.4
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.7,
+    "mHeight": 0.5,
+    "pitch": 2.6,
+    "thickness": 0.5,
+    "colour": "#f4d7c6",
+    "trimColour": "#f4d7c6",
+    "pinnacles": false,
+    "relief": true
+   }
+  },
+  {
+   "type": "merlon-wall",
+   "at": [
+    4.5,
+    -4.6,
+    8.4
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.7,
+    "mHeight": 0.5,
+    "pitch": 2.6,
+    "thickness": 0.5,
+    "colour": "#f4d7c6",
+    "trimColour": "#f4d7c6",
+    "pinnacles": false,
+    "relief": true
+   }
+  },
+  {
+   "type": "merlon-wall",
+   "at": [
+    -28,
+    -5.5,
+    9.3
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.4,
+    "mHeight": 1.0,
+    "pitch": 2.2,
+    "thickness": 0.5,
+    "colour": "#f4d7c6",
+    "trimColour": "#f4d7c6",
+    "pinnacles": false,
+    "relief": true
+   }
+  },
+  {
+   "type": "merlon-wall",
+   "at": [
+    20,
+    -5.5,
+    9.3
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.4,
+    "mHeight": 1.0,
+    "pitch": 2.2,
+    "thickness": 0.5,
+    "colour": "#f4d7c6",
+    "trimColour": "#f4d7c6",
+    "pinnacles": false,
+    "relief": true
+   }
+  },
+  {
+   "type": "merlon-wall",
+   "at": [
+    -4,
+    -6.0,
+    10.5
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.0,
+    "mHeight": 1.2,
+    "pitch": 2.0,
+    "thickness": 0.5,
+    "colour": "#f4d7c6",
+    "trimColour": "#f4d7c6",
+    "pinnacles": false,
+    "relief": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -3,
+    12.5
+   ],
+   "params": {
+    "height": 3,
+    "colour": "#e8c030"
+   }
+  },
+  {
+   "type": "fort-gatehouse",
+   "at": [
+    40,
+    -0.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 8,
+    "height": 7,
+    "kind": "pointed",
+    "batter": 0.1,
+    "pinnacles": 4,
+    "relief": true,
+    "crenellated": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Pointed ground niches and upper loggia now read, with stepped crests, deep round porch and canopy; ornamental relief is coarser than the photo (no scalloped cream surrounds, no roundel on the centre crest); rear compound, mosque and zaure from text and second photo only."
+ }
+}

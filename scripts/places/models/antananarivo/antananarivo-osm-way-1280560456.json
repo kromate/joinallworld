@@ -1,0 +1,190 @@
+{
+ "venueId": "antananarivo-osm-way-1280560456",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/antananarivo.json#antananarivo-osm-way-1280560456",
+   "used": "two-storey rendered L-shaped teaching block with an adjoining gabled chapel hall, blank signboard, entrance steps; the OSM way is a 160 x 67 m campus area, not a building, so it was not extruded; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "kind": "L",
+    "size": [
+     35,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#4f5a66",
+    "bay": 3.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    -30,
+    2
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddcc",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "bay": 3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f5a66",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.18,
+    "run": 0.35,
+    "count": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#4f5a66",
+    "frameColour": "#b5ada0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#b5ada0"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 3,
+    "spacing": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no building outline; typical plausible campus block from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ }
+}

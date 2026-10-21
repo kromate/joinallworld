@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "access-bank-maiduguri",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/473643153",
+   "used": "real building outline (379 m2, containing the venue point); floors, canopy and yard typed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#b0aaa0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -14,
+    3.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 0,
+    "thickness": 0.4,
+    "colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 3.2,
+    "colour": "#a8a29a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c4",
+    "count": 3,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; outline is real, facade/storeys/canopy are typed from the brief."
+ }
+}

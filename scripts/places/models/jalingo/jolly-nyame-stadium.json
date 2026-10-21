@@ -1,0 +1,474 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "jolly-nyame-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jolly_Nyame_stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rbutso",
+   "view": "interior",
+   "file": "/tmp/places-evidence/jalingo/jolly.jpg",
+   "used": "open bowl of low two-tier stands with blue, yellow and cream seat blocks, red 8-lane track, grass pitch, white railing, tall floodlight mast, hills beyond; no big roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1049258846",
+   "used": "overall bowl size (about 140 x 212 m, long axis north-south)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 60,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 120,
+    "width": 64,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 78,
+    "width": 48
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40.0,
+    "radiusY": 66.0,
+    "startDeg": 0,
+    "endDeg": 90,
+    "rows": 10,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#2f5fa8",
+     "#f1e9c8",
+     "#e9e4d2"
+    ],
+    "blocks": 4,
+    "under": "open",
+    "concreteColour": "#cfc9ba",
+    "underColour": "#b9b3a4",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40.0,
+    "radiusY": 66.0,
+    "startDeg": 90,
+    "endDeg": 180,
+    "rows": 10,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#e8c21a",
+     "#f1e9c8",
+     "#e9e4d2"
+    ],
+    "blocks": 4,
+    "under": "open",
+    "concreteColour": "#cfc9ba",
+    "underColour": "#b9b3a4",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40.0,
+    "radiusY": 66.0,
+    "startDeg": 180,
+    "endDeg": 270,
+    "rows": 10,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#2f5fa8",
+     "#e8c21a",
+     "#e9e4d2"
+    ],
+    "blocks": 4,
+    "under": "open",
+    "concreteColour": "#cfc9ba",
+    "underColour": "#b9b3a4",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40.0,
+    "radiusY": 66.0,
+    "startDeg": 270,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#e8c21a",
+     "#2f5fa8",
+     "#e9e4d2"
+    ],
+    "blocks": 4,
+    "under": "open",
+    "concreteColour": "#cfc9ba",
+    "underColour": "#b9b3a4",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "kind": "rail",
+    "colour": "#f2f2ee",
+    "points": [
+     [
+      36.7,
+      0.0
+     ],
+     [
+      36.4,
+      8.2
+     ],
+     [
+      35.5,
+      16.2
+     ],
+     [
+      33.9,
+      24.0
+     ],
+     [
+      31.8,
+      31.3
+     ],
+     [
+      29.1,
+      38.1
+     ],
+     [
+      26.0,
+      44.3
+     ],
+     [
+      22.4,
+      49.7
+     ],
+     [
+      18.4,
+      54.2
+     ],
+     [
+      14.1,
+      57.9
+     ],
+     [
+      9.5,
+      60.5
+     ],
+     [
+      4.8,
+      62.1
+     ],
+     [
+      0.0,
+      62.6
+     ],
+     [
+      -4.8,
+      62.1
+     ],
+     [
+      -9.5,
+      60.5
+     ],
+     [
+      -14.1,
+      57.9
+     ],
+     [
+      -18.4,
+      54.2
+     ],
+     [
+      -22.4,
+      49.7
+     ],
+     [
+      -26.0,
+      44.3
+     ],
+     [
+      -29.1,
+      38.1
+     ],
+     [
+      -31.8,
+      31.3
+     ],
+     [
+      -33.9,
+      24.0
+     ],
+     [
+      -35.5,
+      16.2
+     ],
+     [
+      -36.4,
+      8.2
+     ],
+     [
+      -36.7,
+      0.0
+     ],
+     [
+      -36.4,
+      -8.2
+     ],
+     [
+      -35.5,
+      -16.2
+     ],
+     [
+      -33.9,
+      -24.0
+     ],
+     [
+      -31.8,
+      -31.3
+     ],
+     [
+      -29.1,
+      -38.1
+     ],
+     [
+      -26.0,
+      -44.3
+     ],
+     [
+      -22.4,
+      -49.7
+     ],
+     [
+      -18.4,
+      -54.2
+     ],
+     [
+      -14.1,
+      -57.9
+     ],
+     [
+      -9.5,
+      -60.5
+     ],
+     [
+      -4.8,
+      -62.1
+     ],
+     [
+      -0.0,
+      -62.6
+     ],
+     [
+      4.8,
+      -62.1
+     ],
+     [
+      9.5,
+      -60.5
+     ],
+     [
+      14.1,
+      -57.9
+     ],
+     [
+      18.4,
+      -54.2
+     ],
+     [
+      22.4,
+      -49.7
+     ],
+     [
+      26.0,
+      -44.3
+     ],
+     [
+      29.1,
+      -38.1
+     ],
+     [
+      31.8,
+      -31.3
+     ],
+     [
+      33.9,
+      -24.0
+     ],
+     [
+      35.5,
+      -16.2
+     ],
+     [
+      36.4,
+      -8.2
+     ],
+     [
+      36.7,
+      -0.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    72.0,
+    4
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 2.4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    0,
+    -72.0,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4,
+    "colour": "#cfc9ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -46,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    46,
+    70,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "photo is interior; closed 10-row oval ring, larger track, grass ground, 2 tall masts, white rail; no hills, stands are arcs not straight-sided, ring still reads round; scene clamp warns at 149 m"
+ }
+}

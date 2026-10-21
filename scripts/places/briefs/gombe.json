@@ -1,0 +1,1303 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "gombe",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "gombe",
+    "climate": "savanna",
+    "vernacular": "Capital of Gombe State, laid out beside the old Gombe Abba after the British moved the seat in 1919. A mix of Hausa-Fulani palace and mosque architecture around the emir quarter, and ordinary 1-3 storey cream and pastel rendered blocks, concrete banks and government offices with green or red corrugated roofs, on laterite earth with neem and mango trees.",
+    "wallColours": [
+      "#efe5cd",
+      "#f1ede2",
+      "#e6d9b8",
+      "#c9b99c",
+      "#7aa196",
+      "#3f7a5a"
+    ],
+    "roofColours": [
+      "#8b3a2b",
+      "#5b6670",
+      "#3f6e4e",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "tile-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Hausa-Fulani ornament on the emir palace and mosque: arched gates, scalloped arches, crenellated parapets and geometric relief painted in cream and green.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Gombe_Emirate",
+        "what": "emirate founded 1804, palace and Gombe Abba history"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bubayero%27s_Tomb",
+        "what": "Gombe Abba and tomb enclosure"
+      },
+      {
+        "url": "https://www.kupi.com/en-ae/explore/nigeria/gombe",
+        "what": "palace as city architectural centrepiece"
+      },
+      {
+        "url": "https://guardian.ng/life/pre-colonial-traditional-architectures-of-nigeria/",
+        "what": "Hausa palace and house architecture"
+      },
+      {
+        "url": "https://www.realjourneytravels.com/?p=59027",
+        "what": "central mosque with domes and minarets"
+      }
+    ]
+  },
+  "places": {
+    "aroma-restaurant-bcj": {
+      "venueId": "aroma-restaurant-bcj",
+      "city": "gombe",
+      "name": "Aroma restaurant BCJ",
+      "archetype": "restaurant",
+      "subject": "a mid-range restaurant: a single-storey painted building with a pitched metal roof, a tiled veranda and a boundary wall with a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f1e7cf",
+          "#a65d3f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#3f6e4e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed restaurant. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "botanical-garden-gombe": {
+      "venueId": "botanical-garden-gombe",
+      "city": "gombe",
+      "name": "Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "a municipal garden: lawns and shade trees with gravel paths, a small gate lodge and a central gazebo",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8e0cc",
+          "#7a8c70",
+          "#b8ad98"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en-ae/explore/nigeria/gombe",
+          "what": "general Gombe city guide; no garden details"
+        }
+      ],
+      "notes": "Searches only returned Gombe Stream (Tanzania) and Kinshasa, not this Gombe garden; the brief is typed. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "bubayeros-tomb": {
+      "venueId": "bubayeros-tomb",
+      "city": "gombe",
+      "name": "Bubayero's Tomb",
+      "archetype": "shrine-small",
+      "subject": "the tomb of Modibbo Buba Yero (d. 1841), founder of Gombe: a locked rectangular mausoleum in a walled enclosure with two entrances, in Gombe Abba",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#d1b58c",
+          "#f1ece0",
+          "#8a6a4a"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2,
+          "note": "two entrances to the enclosure"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "hausa-arewa",
+      "era": "1841 (tomb), repaired later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bubayero%27s_Tomb",
+          "what": "walled enclosure with two entrances, tomb building kept locked, eastern Gombe Abba on the old emir palace site"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Buba_Yero",
+          "what": "founder and first emir of Gombe, died 1841"
+        }
+      ],
+      "notes": "Setting and enclosure are sourced; the tomb building shape, materials and roof are not and are guessed from Hausa mausolea."
+    },
+    "catholic-church-gombe": {
+      "venueId": "catholic-church-gombe",
+      "city": "gombe",
+      "name": "Catholic church",
+      "archetype": "church-modern",
+      "subject": "a large modern Catholic parish church: a wide gabled nave with a tall detached bell tower and a cross over the porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f2eee2",
+          "#a85b3c",
+          "#d9d1bd"
+        ],
+        "roofColour": "#6b3a2b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Unnamed \"Catholic church\" near the botanical garden and university; no description. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "central-mosque-emir-palace": {
+      "venueId": "central-mosque-emir-palace",
+      "city": "gombe",
+      "name": "Central Mosque Emir Palace (Modibbo Bubayero Central Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "the Modibbo Bubayero Central Mosque by the Emir palace: a large domed prayer hall with tall minarets, in white and pale green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#f3efe3",
+          "#4f8f6a",
+          "#d8cfb4"
+        ],
+        "roofColour": "#4f8f6a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome with smaller side domes"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "visitor guide reports minarets"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.realjourneytravels.com/?p=59027",
+          "what": "Gombe Central Mosque beside the Emir palace, minarets and domes apparent"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gombe_Emirate",
+          "what": "mosque next to the Emir palace in Gombe"
+        }
+      ],
+      "notes": "Presence of domes and minarets is sourced; counts, size and colours are typed from comparable Nigerian state central mosques. Different from the Dutse and Gusau mosques by being larger and four-minareted."
+    },
+    "dados-eatery": {
+      "venueId": "dados-eatery",
+      "city": "gombe",
+      "name": "Dados Eatery",
+      "archetype": "restaurant",
+      "subject": "a small casual eatery: a one-storey painted shop with a covered terrace and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe0c0",
+          "#c8793f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed eatery. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "emirs-palace-gombe": {
+      "venueId": "emirs-palace-gombe",
+      "city": "gombe",
+      "name": "Emir's Palace Gombe",
+      "archetype": "heritage-fort",
+      "subject": "the Gombe Emir palace built by Shehu Usman Abubakar (emir 1984-2014): a large walled complex with a decorated arched gate and courtyard buildings in cream and green",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#efe5cd",
+          "#3f7a5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "grand arched gatehouse"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "1980s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en-ae/explore/nigeria/gombe",
+          "what": "palace as architectural and cultural centrepiece of the city"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gombe_Emirate",
+          "what": "palace built by the 10th emir Shehu Usman Abubakar"
+        },
+        {
+          "url": "https://guardian.ng/life/pre-colonial-traditional-architectures-of-nigeria/",
+          "what": "Hausa palace tradition: walled compound, gate building, later male/female sections"
+        }
+      ],
+      "notes": "Palace is described only as impressive; colours and plan are inferred from Hausa palace tradition. Newer and more formally decorated than the Dutse palace."
+    },
+    "federal-teaching-hospital-gombe": {
+      "venueId": "federal-teaching-hospital-gombe",
+      "city": "gombe",
+      "name": "Federal Teaching Hospital Gombe",
+      "archetype": "hospital",
+      "subject": "the federal tertiary hospital: a big complex of three- and four-storey ward blocks in pale render with a central entrance and covered links",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ebdc",
+          "#6f9a94",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1996-2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Gombe",
+          "what": "established 1996, moved to current site 22 May 2000, built by Bauchi State with an African Development Bank loan, 500 beds"
+        }
+      ],
+      "notes": "Founding facts and 500-bed scale are sourced; facade is typed."
+    },
+    "first-bank-gombe": {
+      "venueId": "first-bank-gombe",
+      "city": "gombe",
+      "name": "First bank Gombe",
+      "archetype": "office-low",
+      "subject": "a two-storey bank branch with deep recessed windows, a cantilevered entrance canopy and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6e0d2",
+          "#5f6b73",
+          "#c9c2b0"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Branch bank, brand colours deliberately not used. Older, more solid than the glass-fronted GTBank here. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "gombe-line-bus-station": {
+      "venueId": "gombe-line-bus-station",
+      "city": "gombe",
+      "name": "Gombe State Transport Services (Gombe Line)",
+      "archetype": "transport-station",
+      "subject": "the Gombe Line terminus: a walled bus yard with a long passenger shed, ticket office and rows of air-conditioned buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece4d0",
+          "#3f7a5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gombe_Line",
+          "what": "state-owned transit, largest station downtown Gombe"
+        },
+        {
+          "url": "https://blueprint.ng/governor-yahaya-revives-gombe-line-with-50-buses/",
+          "what": "fleet of air-conditioned Toyota buses"
+        }
+      ],
+      "notes": "Fleet and role are sourced; the terminal layout is typed. Brand colours not used."
+    },
+    "gombe-state-university": {
+      "venueId": "gombe-state-university",
+      "city": "gombe",
+      "name": "Gombe State University",
+      "archetype": "campus-block",
+      "subject": "GSU teaching complex in Tudun Wada: three-storey faculty blocks with long balconies and a 250-seat drama theatre",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d5",
+          "#7a8c86",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2004-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gombe_State_University",
+          "what": "Tudun Wada campus, founded 2004"
+        },
+        {
+          "url": "https://leadership.ng/?p=160992",
+          "what": "recent TETFund blocks: faculties, 250-seat theatre, clinic, hostels"
+        }
+      ],
+      "notes": "Recent block types are sourced; the exterior design is not."
+    },
+    "gombe-treasury-house": {
+      "venueId": "gombe-treasury-house",
+      "city": "gombe",
+      "name": "Gombe Treasury House",
+      "archetype": "civic-palace",
+      "subject": "a state treasury and finance office: a four-storey rendered block with a symmetrical front and a columned porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece5d0",
+          "#6c7f8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No Treasury House description exists in the results. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "gtbank-gombe": {
+      "venueId": "gtbank-gombe",
+      "city": "gombe",
+      "name": "Guarantee Trust Bank",
+      "archetype": "office-low",
+      "subject": "a modern two-storey bank branch with a glazed front and blank signage board over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d6dfe0",
+          "#6b7c8c",
+          "#f1ede2"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Branch bank, brand colours not used; more glass than first-bank-gombe. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "inec-hq-gombe": {
+      "venueId": "inec-hq-gombe",
+      "city": "gombe",
+      "name": "INEC HQ",
+      "archetype": "civic-small",
+      "subject": "the state office of the electoral commission: a two-storey rendered office with an entrance porch, a flagpole and a fence wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cd",
+          "#3f7a5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Government office; no description. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "kasuwar-mata": {
+      "venueId": "kasuwar-mata",
+      "city": "gombe",
+      "name": "KASUWAR MATA",
+      "archetype": "market-open",
+      "subject": "a busy open market near Gombe State University: rows of lock-up shops with iron roofs and stalls under umbrellas on trodden earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b99c",
+          "#b0482f",
+          "#e8dec4"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.icirnigeria.org/suicide-bomb-kills-six-in-gombe-market/",
+          "what": "location described as close to Gombe State University"
+        }
+      ],
+      "notes": "Only the location is sourced. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "national-museum-gombe": {
+      "venueId": "national-museum-gombe",
+      "city": "gombe",
+      "name": "National Museum Gombe",
+      "archetype": "museum-theatre",
+      "subject": "a regional museum: a single-storey cream building with an arched Hausa-style entrance and a flat roof around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 35,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#ede0c0",
+          "#b0825a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "hausa-arewa",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://cityguide.tts.com/GMO",
+          "what": "generic city guide mentions a Tangale museum with artifacts; not confirmed to be this building"
+        }
+      ],
+      "notes": "No source describes this museum building. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "pantami-stadium": {
+      "venueId": "pantami-stadium",
+      "city": "gombe",
+      "name": "Pantami Stadium",
+      "archetype": "stadium",
+      "subject": "a mid-size football stadium: an oval bowl of concrete terraces with a roofed main stand, tartan athletics track and synthetic pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#b6b2a8",
+          "#4f7a63",
+          "#e8e4d8"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "reconstructed 2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pantami_Stadium",
+          "what": "12,000 capacity, tartan athletics track, synthetic pitch, reconstructed 2010, home of Gombe United and Doma United"
+        }
+      ],
+      "notes": "Capacity and surfaces are sourced; stand roofing and floodlight count are typed. Much bigger than the Gusau stadium."
+    },
+    "shiloh-baptist-church-malan-inna": {
+      "venueId": "shiloh-baptist-church-malan-inna",
+      "city": "gombe",
+      "name": "Shiloh Baptist Church Malan Inna",
+      "archetype": "church-modern",
+      "subject": "a plain Baptist church hall: a rectangular gable-roofed auditorium in painted block with a front gable cross and a walled yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4efe2",
+          "#4a6fa0",
+          "#d7cfba"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.14
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Neighbourhood congregational church; small and plain with no tower. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "specialist-hospital-gombe": {
+      "venueId": "specialist-hospital-gombe",
+      "city": "gombe",
+      "name": "Gombe State Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "the state specialist hospital: connected two-storey wards with covered walkways and a central block in pale render",
+      "form": {
+        "footprint": "H",
+        "width_m": 95,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eeeadb",
+          "#7aa196",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gombe_State_Specialist_Hospital",
+          "what": "state specialist hospital in Gombe (page found; no building description used)"
+        }
+      ],
+      "notes": "Existence confirmed; facade is typed. Lower than the Federal Teaching Hospital."
+    },
+    "timber-market-gombe": {
+      "venueId": "timber-market-gombe",
+      "city": "gombe",
+      "name": "Timber Market Lowcost div",
+      "archetype": "market-open",
+      "subject": "the timber market (Kasuwar Katako): long stacks of sawn planks and poles in open yards beside corrugated sheds",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9825a",
+          "#7a5a3a",
+          "#d9c7a0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://dailytrust.com/again-fire-razes-gombe-timber-market/",
+          "what": "Gombe timber market (Kasuwar Katako) with shops and a scrap and metal section, fires 2025"
+        }
+      ],
+      "notes": "Function and fire reports sourced; layout typed. Distinguished from kasuwar-mata by timber stacks."
+    }
+  }
+}

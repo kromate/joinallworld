@@ -1,0 +1,296 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-stade-omnisports",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6603469",
+   "used": "name-quality match: oval bowl about 215 x 270 m with long axis N-S; modelled as an oval of stands at about 0.4 scale to fit the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1970s concrete bowl, one covered main stand, open terraces opposite, four floodlight masts, scoreboard, two gates; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 58,
+    "width": 40,
+    "lane_width": 3.2,
+    "colour": "#a8553f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 34,
+    "radiusY": 45,
+    "startDeg": -50,
+    "endDeg": 50,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#c98f6b",
+    "concreteColour": "#b9b5a8",
+    "under": "solid",
+    "canopy": {
+     "height": 9,
+     "depth": 11,
+     "colour": "#7b8084",
+     "supports": 8
+    },
+    "backWall": 0.8,
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 34,
+    "radiusY": 45,
+    "startDeg": 50,
+    "endDeg": 310,
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.8,
+    "seatColour": "#a9a596",
+    "concreteColour": "#aaa597",
+    "under": "solid",
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    57,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    64,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -70
+     ],
+     [
+      52,
+      -70
+     ],
+     [
+      52,
+      70
+     ],
+     [
+      -52,
+      70
+     ],
+     [
+      -52,
+      -70
+     ]
+    ],
+    "height": 2.2,
+    "colour": "#e8e3d4",
+    "kind": "wall"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    62,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    62,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -58,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    58,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    -74,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   140,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of this stadium found; massing from OSM oval and brief only, seat colours and canopy unverified"
+ }
+}

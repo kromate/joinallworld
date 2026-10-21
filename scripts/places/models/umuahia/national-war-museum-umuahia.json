@@ -1,0 +1,611 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "national-war-museum-umuahia",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_War_Museum_Umuahia_Nigeria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "9ijan",
+   "view": "street",
+   "file": "/tmp/places-evidence/umuahia/museum.jpg",
+   "used": "white single-storey museum with a red fascia band and a projecting entrance porch on slanted red struts, clipped hedge and circular green/white kerbed drive, open display shed with corrugated roof on poles, vehicle"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Biafran_War_ship.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "David",
+   "view": "side",
+   "file": "/tmp/places-evidence/umuahia/ship.jpg",
+   "used": "grey patrol boat on a concrete pad under a low open shelter, lawn, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1274410865",
+   "used": "overall size only (nearest match 9.6 m, rotated 49 deg)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     36,
+     13
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b84a4a",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    16
+   ],
+   "params": {
+    "rect": [
+     36.8,
+     13.8
+    ],
+    "z0": 4.0,
+    "height": 0.6,
+    "colour": "#c25353",
+    "topColour": "#c25353"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ship-pad",
+   "at": [
+    -26,
+    -18
+   ],
+   "params": {
+    "rect": [
+     24,
+     8
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#8e908a",
+    "topColour": "#8e908a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "hull",
+   "at": [
+    -26,
+    -18,
+    0.5
+   ],
+   "params": {
+    "colour": "#a8b0b6",
+    "topColour": "#9aa2a8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       16,
+       1.2
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       20,
+       3.6
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       22,
+       5.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bridge",
+   "at": [
+    -22,
+    -18
+   ],
+   "params": {
+    "rect": [
+     6,
+     3.6
+    ],
+    "z0": 3.9,
+    "height": 3.2,
+    "colour": "#b9c1c6",
+    "topColour": "#b9c1c6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    -21,
+    -18
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 7.1,
+    "height": 4.5,
+    "colour": "#9aa2a8",
+    "topColour": "#9aa2a8"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "ship-shelter",
+   "at": [
+    -32,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 8,
+    "height": 5.2,
+    "columns": 4,
+    "colour": "#7e8288",
+    "edgeColour": "#5d6064",
+    "thickness": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    34,
+    -6
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa09c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    22
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 6,
+    "colour": "#b7b2a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-wall",
+   "footprint": {
+    "rect": [
+     10,
+     1.0
+    ]
+   },
+   "at": [
+    2,
+    9.6
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-fascia",
+   "at": [
+    2,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     10.8,
+     4.4
+    ],
+    "z0": 3.5,
+    "height": 0.7,
+    "colour": "#c43c3c",
+    "topColour": "#c43c3c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "strut-l",
+   "at": [
+    -2.6,
+    5.0,
+    0
+   ],
+   "params": {
+    "colour": "#c43c3c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cy": -1.2
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cy": 1.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "strut-r",
+   "at": [
+    6.6,
+    5.0,
+    0
+   ],
+   "params": {
+    "colour": "#c43c3c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cy": -1.2
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cy": 1.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -22,
+    7
+   ],
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe8",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b84a4a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drive-disc",
+   "at": [
+    2,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#9aa0a2",
+    "profile": [
+     [
+      0,
+      0.08,
+      "#9aa0a2"
+     ],
+     [
+      12,
+      0.08,
+      "#9aa0a2"
+     ],
+     [
+      12,
+      0.0,
+      "#9aa0a2"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "kerb",
+   "at": [
+    2,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#e8e8e2",
+    "profile": [
+     [
+      12.4,
+      0
+     ],
+     [
+      12.4,
+      0.2
+     ],
+     [
+      11.9,
+      0.2
+     ],
+     [
+      11.9,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "island-kerb",
+   "at": [
+    2,
+    -2,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e8e8e2",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5.2,
+      0
+     ],
+     [
+      5.2,
+      0.2
+     ],
+     [
+      0,
+      0.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "hedge-round",
+   "at": [
+    2,
+    -2,
+    0.2
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2f6b2d",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4.8,
+      0
+     ],
+     [
+      5.0,
+      0.6
+     ],
+     [
+      4.6,
+      1.1
+     ],
+     [
+      3.2,
+      1.45
+     ],
+     [
+      0,
+      1.55
+     ]
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "display-shed",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "gable",
+    "width": 22,
+    "depth": 9,
+    "height": 4.2,
+    "rise": 1.2,
+    "columns": 6,
+    "colour": "#a9adb0",
+    "edgeColour": "#5d6064",
+    "thickness": 0.15
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truck",
+   "at": [
+    14,
+    -26
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     6.5
+    ],
+    "z0": 0.5,
+    "height": 2.6,
+    "colour": "#5b5f52",
+    "topColour": "#4a4e43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truck-tracks",
+   "at": [
+    14,
+    -26
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     6.5
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#2a2a28",
+    "topColour": "#2a2a28"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Camera is wide so museum is small; porch canopy, round hedge island, kerbed drive, gable display shed with truck added, but the dome cap, lattice vent wall detail and foreground-framing of the photo are not matched; ship/hangar positions from text."
+ }
+}

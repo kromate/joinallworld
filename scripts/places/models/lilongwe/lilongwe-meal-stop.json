@@ -1,0 +1,194 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/161182620",
+   "used": "not used: containing polygon is Old Town Mall (96 m), a different building"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey rendered restaurant, hip clay-tile roof, front veranda, striped awning, roof terrace, blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0e3c8",
+    "windows": "arched",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#b3422f",
+    "glassColour": "#2f3a3d"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2c",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -0.5
+   ],
+   "z0": 4.6,
+   "height": 0.6,
+   "wall": {
+    "material": "render",
+    "colour": "#f6f2e8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3422f",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 2.8,
+    "height": 3.2,
+    "roof": "lean-to",
+    "balustrade": true,
+    "steps": true,
+    "roof_colour": "#7a3a2c",
+    "wall_colour": "#f6f2e8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    7,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#b3422f",
+     "#f6f2e8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12.5,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 2.4,
+    "colour": "#b3422f"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#b3422f",
+     "#f0e3c8"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; typed veranda restaurant with hip tile roof and roof terrace"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-meal-stop"
+}

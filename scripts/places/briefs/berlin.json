@@ -1,0 +1,1670 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "berlin",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "berlin",
+    "climate": "temperate",
+    "vernacular": "Flat, green city of five-storey Gruenderzeit (Altbau) perimeter blocks with plastered street facades in ochre, cream and grey and stucco window pediments, steep tile or zinc roofs and inner courtyards; red and yellow brick churches, schools and industrial buildings; monumental 1950s Stalinist ceramic-clad blocks; prefabricated Plattenbau slabs in the east; 1960s-70s concrete modernism; and glass-and-steel post-1990 government and commercial buildings. Cobbled or paved streets lined with lime, plane and chestnut trees; Brandenburg pine forest at the edges.",
+    "wallColours": [
+      "#d9c9a3",
+      "#e8e2d4",
+      "#b4b0a6",
+      "#d8c168",
+      "#9a4a38",
+      "#c4c1b9",
+      "#a9a7a2"
+    ],
+    "roofColours": [
+      "#a4472f",
+      "#5a5d62",
+      "#6a6a6a",
+      "#7b7f82"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "render",
+      "red-brick",
+      "brick",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain",
+      "tile-cladding"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "membrane",
+      "metal-sheet",
+      "concrete",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Gruenderzeit stucco window pediments, cornices and bay windows on street facades; Schinkel-inspired ceramic ornament on Karl-Marx-Allee; brick Gothic and Neo-Romanesque brickwork on churches; coloured panel bands and mosaics on Plattenbau; Lime-tree avenues and cobbled and mosaic-paved pavements.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Karl-Marx-Allee",
+        "what": "Stalinist socialist-classicist blocks about eight storeys clad in ornate architectural ceramics, Schinkel-inspired; western part has 1967 Plattenbau"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Berlin",
+        "what": "17% of buildings Gruenderzeit or older; Plattenbau in eastern Berlin; red-brick Rotes Rathaus; tree-lined Unter den Linden"
+      },
+      {
+        "url": "https://de.wikipedia.org/wiki/Mommsenstadion",
+        "what": "1930 Neues Bauen stadium, glass-clad iron staircases"
+      }
+    ]
+  },
+  "places": {
+    "berlin-airport-berlin-airport": {
+      "venueId": "berlin-airport-berlin-airport",
+      "city": "berlin",
+      "name": "Berlin Brandenburg Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 (BER) seen from the landside forecourt: a long four-level terminal with a flat roof carried on a rhythm of tall square columns, with the 72 m control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 150,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "stone",
+        "colours": [
+          "#d5d9db",
+          "#b3ada3",
+          "#f1f1ef"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "large flat roof on a colonnade of slender square columns"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "72 m tower opened 2012"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 25,
+          "note": "main pier 715 m with 16 bridges, 25 in total"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2012 (opened 2020)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Berlin_Brandenburg_Airport",
+          "what": "architects gmp; four public levels; main pier 715 m, north and south piers 350 m; 25 jet bridges; control tower 72 m opened March 2012; Pae White Magic Carpet artwork in T1"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/942159906",
+          "what": "OSM element (containing match): measured footprint 1091.9x93.9 m, tags {\"name\": \"Ramp Delta\", \"aeroway\": \"apron\"}"
+        }
+      ],
+      "notes": "Source describes layout, tower and pier lengths but not facade colours. Pale grey stone-clad piers, glass and a flat grey roof are from general photo knowledge. The pier and rail station are below ground, so landside shows the terminal only; the 72 m tower is the silhouette partner."
+    },
+    "berlin-clinic": {
+      "venueId": "berlin-clinic",
+      "city": "berlin",
+      "name": "Unfallkrankenhaus Berlin",
+      "archetype": "hospital",
+      "subject": "The 1997 main building of the Unfallkrankenhaus Berlin: a long north-south block with four cross wings and a roof helipad",
+      "form": {
+        "footprint": "H",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4ddc9",
+          "#8fa3ad",
+          "#c4c1b9"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "roof helipad with two landing spots"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Unfallkrankenhaus_Berlin",
+          "what": "main building opened 1997, architects Karl Schmuecker und Partner; long north-south block with four cross wings; roof helipad with two landing spots; 2025 glass bridge to Haus 5"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14113037",
+          "what": "OSM element (name match): measured footprint 205.7x178 m, tags {\"name\": \"Unfallkrankenhaus Berlin\", \"wikidata\": \"Q2493169\", \"amenity\": \"hospital\", \"building\": \"hospital\"}"
+        }
+      ],
+      "notes": "Plan and helipad are sourced; storeys and facade colours are not (typed light render with ribbon glazing). Footprint is clamped in-scene."
+    },
+    "berlin-community-notices": {
+      "venueId": "berlin-community-notices",
+      "city": "berlin",
+      "name": "Amt für Statistik Berlin-Brandenburg",
+      "archetype": "office-low",
+      "subject": "The statistical office in Potsdam: a long four-storey office block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 145,
+        "depth_m": 62,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c4",
+          "#8fa3ad",
+          "#efeee8"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q179654",
+          "what": "Wikidata Q179654 statistical office of the German states Berlin and Brandenburg"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/40775107",
+          "what": "OSM element (containing match): measured footprint 145.4x62.2 m, tags {\"building\": \"office\"}"
+        }
+      ],
+      "notes": "OSM: office building 145 x 62 m under the pin, in Potsdam (Behlertstrasse area). No description of the building found; typed as a pale-render ribbon-windowed office."
+    },
+    "berlin-community-voting-game": {
+      "venueId": "berlin-community-voting-game",
+      "city": "berlin",
+      "name": "Mexikoplatz",
+      "archetype": "park-landscape",
+      "subject": "Mexikoplatz in Zehlendorf: a landscaped garden square with lawns and the small listed S-Bahn entrance building",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "red-brick",
+        "colours": [
+          "#e0d6bf",
+          "#9a4a38",
+          "#ffffff"
+        ],
+        "roofColour": "#a4472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "S-Bahn line beside the square"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q33165478",
+          "what": "Wikidata: Mexikoplatz, square"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/244130394",
+          "what": "OSM element (name match): measured footprint 16.4x9.5 m, tags {\"name\": \"Radsport am Mexikoplatz\", \"building\": \"yes\"}"
+        }
+      ],
+      "notes": "Square in the garden-suburb of Zehlendorf; the S-Bahn station entrance and oval planted square are recalled from general knowledge and not verified. OSM building under the pin is only a small bicycle shop (16 x 9 m)."
+    },
+    "berlin-community-workshop": {
+      "venueId": "berlin-community-workshop",
+      "city": "berlin",
+      "name": "Hauptbibliothek Spandau",
+      "archetype": "campus-block",
+      "subject": "Spandau main library: a three-storey civic building in the Altstadt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4ddc9",
+          "#8fa3ad",
+          "#c4c1b9"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/5083117",
+          "what": "OSM element (containing match): measured footprint 72x19.7 m, tags {\"building\": \"civic\", \"building:levels\": \"3\"}"
+        }
+      ],
+      "notes": "OSM: civic building 72 x 20 m, 3 levels at the pin. No description or photos consulted; typed as a modern civic library block."
+    },
+    "berlin-market-game": {
+      "venueId": "berlin-market-game",
+      "city": "berlin",
+      "name": "Tempelhofer Hafen",
+      "archetype": "industrial",
+      "subject": "Tempelhofer Hafen: the 1908 reinforced-concrete harbour warehouse beside the Teltow canal basin, now a shopping centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b5835a",
+          "#8a8d8f",
+          "#d8d0bd"
+        ],
+        "roofColour": "#6a6a6a",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "long rhythm of arched warehouse bays"
+        },
+        {
+          "id": "pier",
+          "count": 2,
+          "note": "two harbour moles with an iron footbridge over the entrance"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "600-space car park"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "international",
+      "era": "1908",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Hafen_Tempelhof",
+          "what": "harbour basin about 170 x 70 m on the Teltowkanal; warehouse 1908, 120 m long and 25 m wide, 12,000 m2, early reinforced concrete, four 6-tonne cranes survive; shopping centre since April 2009 with 70+ shops and 600 parking spaces; free ferry between moles since 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/4663217",
+          "what": "OSM element (name match): measured footprint 180.1x101.1 m, tags {\"name\": \"Tempelhofer Hafen\", \"wikidata\": \"Q105045234\", \"leisure\": \"marina\"}"
+        }
+      ],
+      "notes": "Warehouse dimensions and date are sourced; its facade clinker colour is a guess (warm brown-red), mark as uncertain. Cranes are part of the real silhouette but are not in the feature list (enum gap: crane)."
+    },
+    "berlin-meal-stop": {
+      "venueId": "berlin-meal-stop",
+      "city": "berlin",
+      "name": "Café Sibylle",
+      "archetype": "restaurant",
+      "subject": "Cafe Sibylle on Karl-Marx-Allee: a ground-floor cafe in one of the eight-storey Stalinist ceramic-clad blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "sandstone",
+        "colours": [
+          "#e8e2d0",
+          "#8b7d6b",
+          "#c8b99a"
+        ],
+        "roofColour": "#6a6a6a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arcade of the 1950s block"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "ornamental ceramic tile bands"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1952-1960",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl-Marx-Allee",
+          "what": "blocks about eight floors, wedding-cake socialist classicism, facades clad in ornate architectural ceramics inspired by Schinkel"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/315548153",
+          "what": "OSM element (containing match): measured footprint 82.4x62.1 m, tags {\"building\": \"apartments\", \"building:levels\": \"7\"}"
+        }
+      ],
+      "notes": "The cafe is on the ground floor of a 7-level block (OSM apartments, 82 x 62 m). The source gives neither tile colour nor the cafe; cream/ochre ceramic tile on a darker stone plinth is from general photo knowledge. Model the block corner with the cafe awning, not the whole boulevard."
+    },
+    "berlin-osm-node-1078680550": {
+      "venueId": "berlin-osm-node-1078680550",
+      "city": "berlin",
+      "name": "Battle of Großbeeren",
+      "archetype": "monument",
+      "subject": "The Buelow Pyramid at Grossbeeren: a small stone pyramid memorial to the 1813 battle",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b3ada3",
+          "#8d8a84",
+          "#d8d4c8"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "neoclassical",
+      "era": "1813 battle; memorial 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q339052",
+          "what": "Wikidata: Battle of Grossbeeren (1813)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1408204498",
+          "what": "OSM element (nearest match): measured footprint 5.6x5.2 m, tags {\"name\": \"Bülow Pyramide\", \"building\": \"yes\"}"
+        }
+      ],
+      "notes": "OSM names a 5.6 x 5.2 m structure Buelow Pyramide. Its materials and height were not described in sources found; typed as a small ashlar pyramid on a plinth with an iron fence. The famous Grossbeeren cast-iron monument is a different object."
+    },
+    "berlin-osm-node-1901759789": {
+      "venueId": "berlin-osm-node-1901759789",
+      "city": "berlin",
+      "name": "Fliegeberg",
+      "archetype": "monument",
+      "subject": "The Fliegeberg (Lilienthal hill) in Lichterfelde: a stepped artificial grass mound with a round columned hall holding a sphere on its summit",
+      "form": {
+        "footprint": "round",
+        "width_m": 50,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b3ada3",
+          "#4f8a3a",
+          "#d8d4c8"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "round columned hall on the summit holding a sphere on a basalt block"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stepped terraces up the mound"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "circular path around the base"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1894",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Fliegeberg",
+          "what": "artificial mound about 12 m high (originally about 15 m, built 1894), stepped; round columned hall on summit with bronze sphere on basalt block; grass-covered, no trees on slopes; surrounding lawns with Japanese cherry trees and a ring path; in Lilienthalpark"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/49991595",
+          "what": "OSM element (name match): measured footprint 78.9x43 m, tags {\"name\": \"Kinderhaus am Fliegeberg\", \"amenity\": \"kindergarten\"}"
+        }
+      ],
+      "notes": "Hill is sourced; base diameter (50 m) is an estimate. The pin also hits a kindergarten in OSM (Kinderhaus am Fliegeberg, 79 x 43 m), ignored. Grass-green hill with a small classical rotunda on top."
+    },
+    "berlin-osm-node-279997440": {
+      "venueId": "berlin-osm-node-279997440",
+      "city": "berlin",
+      "name": "Sowjetisches Ehrenmal",
+      "archetype": "monument",
+      "subject": "The Soviet memorial at Buch (1947-48): a pyramid and obelisk on a stepped plinth in a fenced section of the palace park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#b3ada3",
+          "#8d8a84",
+          "#d8d4c8"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "obelisk and pyramid on a base and plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "fenced park section"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1947-1948",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Sowjetisches_Ehrenmal_(Berlin-Buch)",
+          "what": "built 1947-48 to a design by Johann Tenne: base, plinth, pyramid-and-obelisk structure recalling early classicism, in a fenced part of the Buch palace park beside the restored Schlosskirche"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3314008",
+          "what": "OSM element (containing match): measured footprint 557.9x393.3 m, tags {\"name\": \"Schlosspark Buch\", \"wikidata\": \"Q24575493\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "Form is sourced; materials and size are not (stone/granite, 14 m is a guess). Pin falls in Schlosspark Buch (557 x 393 m park polygon)."
+    },
+    "berlin-osm-node-505058576": {
+      "venueId": "berlin-osm-node-505058576",
+      "city": "berlin",
+      "name": "Kriegerdenkmal Viktoria (1890)",
+      "archetype": "monument",
+      "subject": "A late-19th-century war memorial with a winged Victoria figure on a stone column",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#a8a59d",
+          "#6b6a66",
+          "#cfc9bb"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Victoria figure atop a column or obelisk"
+        },
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1890",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/238412445",
+          "what": "OSM element (nearest match): measured footprint 9.3x7.7 m, tags {\"name\": \"Mühlentor\", \"building\": \"yes\", \"start_date\": \"2013\", \"historic\": \"city_gate\"}"
+        }
+      ],
+      "notes": "Name gives the year only; no description found. The OSM building at the pin is the Muehlentor city gate (2013 rebuild, 9 x 8 m), unrelated. Typed as the usual Prussian 1870/71 victory memorial."
+    },
+    "berlin-osm-way-1442933370": {
+      "venueId": "berlin-osm-way-1442933370",
+      "city": "berlin",
+      "name": "Volkspark Lichtenrade",
+      "archetype": "park-landscape",
+      "subject": "Lichtenrade Volkspark: a suburban people's park of lawns, paths and mature trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 305,
+        "depth_m": 221,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b3ada3",
+          "#9a4a38",
+          "#e8e2d4"
+        ],
+        "roofColour": "#7b7f82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1442933370",
+          "what": "OSM element (name match): measured footprint 305.2x221.3 m, tags {\"name\": \"Volkspark Lichtenrade\", \"wikidata\": \"Q1543772\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "OSM park polygon 305 x 221 m; no description of structures found, so only generic furniture."
+    },
+    "berlin-osm-way-20593936": {
+      "venueId": "berlin-osm-way-20593936",
+      "city": "berlin",
+      "name": "Mommsenstadion",
+      "archetype": "stadium",
+      "subject": "Mommsenstadion (1930, Fred Forbat): a football ground with a long three-storey Neues Bauen grandstand building with elliptical glass-clad stairs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 132,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8dc",
+          "#7f93a0",
+          "#b3ada3"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand, 1,805 seats"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 2,
+          "note": "glass-clad iron frames around two elliptical stair towers"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "electronic scoreboard (2000)"
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1930",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Mommsenstadion",
+          "what": "opened 1930, design by Fred Forbat; capacity 15,005 incl. 1,805 covered seats; grandstand 104 m long, three storeys, two projecting elliptical staircases framed by glass-clad iron structures; pitch 107 x 72 m; listed monument"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/20593936",
+          "what": "OSM element (name match): measured footprint 190.3x132.3 m, tags {\"name\": \"Mommsenstadion\", \"wikidata\": \"Q880881\", \"leisure\": \"stadium\"}"
+        }
+      ],
+      "notes": "Grandstand is the key mass: 104 m long, 3 storeys, curved glazed stair projections. Render is assumed white/cream as typical Neues Bauen; uncovered terraces on the other three sides."
+    },
+    "berlin-osm-way-20980117": {
+      "venueId": "berlin-osm-way-20980117",
+      "city": "berlin",
+      "name": "Gesundbrunnen-Center",
+      "archetype": "mall",
+      "subject": "Gesundbrunnen-Center (1997): a long white mall styled like a passenger ship with a glazed tower at the main entrance as the \"bridge\"",
+      "form": {
+        "footprint": "rect",
+        "width_m": 295,
+        "depth_m": 78,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0f0ee",
+          "#2f6fa4",
+          "#b3b6b8"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed tower at the main entrance, the ship bridge"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "ship-deck horizontal bands"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1997",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Gesundbrunnen-Center",
+          "what": "built 1995-1997 by Jost Hering and Manfred Stanek, forms and colours evoke a passenger ship, glazed tower at the entrance like a ship bridge, facing Badstrasse; 27,600 m2, 110 shops"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/20980117",
+          "what": "OSM building:colour white, roof flat grey"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/20980117",
+          "what": "OSM element (name match): measured footprint 295x78.3 m, tags {\"name\": \"Gesundbrunnen-Center\", \"building\": \"retail\", \"roof:shape\": \"flat\", \"roof:colour\": \"grey\", \"roof:material\": \"asphalt\", \"building:colour\": \"white\", \"wikidata\": \"Q1519740\"}"
+        }
+      ],
+      "notes": "Ship-like horizontal bands and white render are sourced via OSM and the article; the blue accent colour is a guess from the ship theme. Storeys not stated (OSM none); 3 assumed."
+    },
+    "berlin-osm-way-24950668": {
+      "venueId": "berlin-osm-way-24950668",
+      "city": "berlin",
+      "name": "Evangelisches Waldkrankenhaus Spandau",
+      "archetype": "hospital",
+      "subject": "Waldkrankenhaus Spandau: a brick-and-render hospital with several wings among forest",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#e0d2b0",
+          "#9a4a38",
+          "#c4c1b9"
+        ],
+        "roofColour": "#a4472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "early 20th century core, later additions (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24950668",
+          "what": "OSM element (name match): measured footprint 582x319.5 m, tags {\"name\": \"Evangelisches Waldkrankenhaus Spandau\", \"wikidata\": \"Q15110572\", \"amenity\": \"hospital\", \"religion\": \"christian\", \"denomination\": \"protestant\"}"
+        }
+      ],
+      "notes": "Protestant hospital on a 582 x 320 m wooded site; no building description found. Typed from the city style as a brick/render hospital wing among pines, which is unverified."
+    },
+    "berlin-osm-way-26669855": {
+      "venueId": "berlin-osm-way-26669855",
+      "city": "berlin",
+      "name": "Kirche Schönwalde-Dorf",
+      "archetype": "church-classical",
+      "subject": "The baroque village church of Schoenwalde (1737): a small plastered aisleless church with a west tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#ece4cf",
+          "#9a4a38",
+          "#ffffff"
+        ],
+        "roofColour": "#a4472f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower with baroque cap"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1737",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1244720",
+          "what": "village church of Schoenwalde-Glien, aisleless church, 1737, baroque (OSM building:architecture=baroque, start_date 1737)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/26669855",
+          "what": "OSM element (name match): measured footprint 20.6x10.3 m, tags {\"name\": \"Kirche Schönwalde-Dorf\", \"building\": \"church\", \"building:architecture\": \"baroque\", \"start_date\": \"1737\", \"wikidata\": \"Q1244720\", \"amenity\": \"place_of_worship\", \"religion\": \"christian\", \"denomination\": \"protestant\"}"
+        }
+      ],
+      "notes": "Date, style and type (aisleless village church) are from OSM/Wikidata; plaster colour, tower form and roof are typed from typical Brandenburg baroque village churches. Footprint 21 x 10 m."
+    },
+    "berlin-osm-way-26775078": {
+      "venueId": "berlin-osm-way-26775078",
+      "city": "berlin",
+      "name": "Gemeinschaftskrankenhaus Havelhöhe",
+      "archetype": "hospital",
+      "subject": "Havelhoehe community hospital: an anthroposophic hospital of curved, colourful plastered low-rise wings in woodland",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8c88a",
+          "#c27a5a",
+          "#e8e2d4"
+        ],
+        "roofColour": "#9a4a38",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s-2000s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/26775078",
+          "what": "OSM element (name match): measured footprint 791.1x588.3 m, tags {\"name\": \"Gemeinschaftskrankenhaus Havelhöhe\", \"wikidata\": \"Q50038456\", \"amenity\": \"hospital\"}"
+        }
+      ],
+      "notes": "Anthroposophic hospital (Havelhoehe), 791 x 588 m site. Warm-coloured organic building forms are typical of such hospitals and are a recollection, not verified from a source here."
+    },
+    "berlin-osm-way-277991410": {
+      "venueId": "berlin-osm-way-277991410",
+      "city": "berlin",
+      "name": "Müggelturm",
+      "archetype": "monument",
+      "subject": "Mueggelturm (1961): a nine-storey reinforced-concrete observation tower on a square plan with panoramic windows, restaurant at its foot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 9,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#cfcac0",
+          "#a9a7a2",
+          "#e8e2d4"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "restaurant and terrace block at the foot"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "sun terraces"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "126 steps to the platform"
+        },
+        {
+          "id": "mast",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "1959-1961",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/M%C3%BCggelturm",
+          "what": "current tower 29.61 m, reinforced concrete, square ground plan (originally an oval design), nine storeys with panoramic windows, 126 steps, socialist classicism, restaurant, wine tavern and sun terraces, opened 31 Dec 1961"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/277991410",
+          "what": "OSM element (name match): measured footprint 7.2x4.1 m, tags {\"name\": \"Müggelturm\", \"building:levels\": \"7\", \"height\": \"30\", \"wikidata\": \"Q895969\", \"tourism\": \"viewpoint\"}"
+        }
+      ],
+      "notes": "Height, material, plan and storey count are sourced; tint is a light weathered-concrete grey (not in source). Stands on a wooded hill with pines and birch above the Muggelsee."
+    },
+    "berlin-osm-way-28505596": {
+      "venueId": "berlin-osm-way-28505596",
+      "city": "berlin",
+      "name": "Forum Steglitz",
+      "archetype": "mall",
+      "subject": "Forum Steglitz (1970): a six-level exposed-concrete modernist shopping block with an attached parking garage on Schlossstrasse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 165,
+        "depth_m": 56,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a9a7a2",
+          "#7f93a0",
+          "#d8d4c8"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "attached garage for about 650 cars"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "brutalist",
+      "era": "1968-1970; converted 2019-2022",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Forum_Steglitz",
+          "what": "built 1968-70 by Georg Heinrichs, Fin Bartels, Christoph Schmidt-Ott; reinforced concrete; modernist; entrance on Schlossstrasse; garage about 650 spaces; two office floors added during 2019-2022 conversion"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28505596",
+          "what": "OSM: 6 levels, height 26.4 m, flat roof"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28505596",
+          "what": "OSM element (name match): measured footprint 164.9x55.5 m, tags {\"name\": \"Forum Steglitz\", \"building\": \"retail\", \"building:levels\": \"6\", \"height\": \"26.4\", \"roof:shape\": \"flat\", \"wikidata\": \"Q1439238\"}"
+        }
+      ],
+      "notes": "Height and levels measured; concrete grey is the building material, with glass strips on the retail floors. Clearly different from Gesundbrunnen: grey, horizontal concrete slab, no colour."
+    },
+    "berlin-osm-way-291483445": {
+      "venueId": "berlin-osm-way-291483445",
+      "city": "berlin",
+      "name": "Hochschule des Bundes für öffentliche Verwaltung/Akademie Auswärtiger Dienst",
+      "archetype": "campus-block",
+      "subject": "A federal administration campus: a modern low-rise glazed and rendered academic ensemble with a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c4",
+          "#8fa3ad",
+          "#b3ada3"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/291483445",
+          "what": "OSM element (name match): measured footprint 209x128.5 m, tags {\"name\": \"Hochschule des Bundes für öffentliche Verwaltung/Akademie Auswärtiger Dienst\", \"wikidata\": \"Q413851\", \"amenity\": \"college\"}"
+        }
+      ],
+      "notes": "OSM campus polygon 209 x 129 m, no description found. Typed as a modern federal training campus ringed by pines."
+    },
+    "berlin-osm-way-46830254": {
+      "venueId": "berlin-osm-way-46830254",
+      "city": "berlin",
+      "name": "Karmelitenkloster St. Teresia",
+      "archetype": "shrine-small",
+      "subject": "The Carmelite monastery of St Teresia: a compact two-storey cloister around a small courtyard with a chapel",
+      "form": {
+        "footprint": "ring",
+        "width_m": 41,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8dcc2",
+          "#9a4a38",
+          "#ffffff"
+        ],
+        "roofColour": "#a4472f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bell turret"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q99894583",
+          "what": "Wikidata: Carmelite monastery St Teresia (Roman Catholic)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/46830254",
+          "what": "OSM element (name match): measured footprint 40.8x35.5 m, tags {\"name\": \"Karmelitenkloster St. Teresia\", \"building\": \"monastery\", \"wikidata\": \"Q99894583\", \"amenity\": \"place_of_worship\", \"religion\": \"christian\", \"denomination\": \"roman_catholic\"}"
+        }
+      ],
+      "notes": "OSM: monastery building 41 x 36 m in the northern garden-suburb. Cloister form and brick/render finish are typed, unverified."
+    },
+    "berlin-osm-way-50239695": {
+      "venueId": "berlin-osm-way-50239695",
+      "city": "berlin",
+      "name": "Zamenhofpark",
+      "archetype": "park-landscape",
+      "subject": "Zamenhofpark: a narrow urban park named for the Esperanto inventor, with lawns and trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 108,
+        "depth_m": 23,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b3ada3",
+          "#9a4a38",
+          "#e8e2d4"
+        ],
+        "roofColour": "#7b7f82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "memorial to L. L. Zamenhof (unverified form)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q145747",
+          "what": "Wikidata: Zamenhofpark, park and Zamenhof-Esperanto object"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/50239695",
+          "what": "OSM element (name match): measured footprint 108.3x22.6 m, tags {\"name\": \"Zamenhofpark\", \"wikidata\": \"Q145747\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "Narrow strip park (OSM 108 x 23 m). A Zamenhof memorial is implied by the name and Wikidata class; its form was not found."
+    },
+    "berlin-quiet-reflection": {
+      "venueId": "berlin-quiet-reflection",
+      "city": "berlin",
+      "name": "Friedenskirche",
+      "archetype": "church-gothic",
+      "subject": "Friedenskirche in Gruenau: a small Protestant church in brick with a pitched roof and a short tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9a4a38",
+          "#d8d0bd",
+          "#6a6a6a"
+        ],
+        "roofColour": "#5a5d62",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "early 20th century (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1456788",
+          "what": "Wikidata: Friedenskirche Gruenau, church building in Berlin-Gruenau"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24032288",
+          "what": "OSM element (name match): measured footprint 34.8x20.3 m, tags {\"name\": \"Friedenskirche\", \"building\": \"yes\", \"wikidata\": \"Q1456788\", \"amenity\": \"place_of_worship\", \"religion\": \"christian\"}"
+        }
+      ],
+      "notes": "Only the name, district and OSM size (35 x 20 m) are known; style and era were not found, so red-brick Protestant gothic revival is a typed guess typical of Berlin churches."
+    },
+    "berlin-recreation": {
+      "venueId": "berlin-recreation",
+      "city": "berlin",
+      "name": "Freizeitpark Lübars",
+      "archetype": "park-landscape",
+      "subject": "Freizeitpark Luebars on the Luebarser Hoehe: a large grassy leisure park on an artificial hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b3ada3",
+          "#9a4a38",
+          "#e8e2d4"
+        ],
+        "roofColour": "#7b7f82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1454995",
+          "what": "Wikidata: Luebarser Hoehe, mountain"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/255109",
+          "what": "OSM element (name match): measured footprint 900.2x837.5 m, tags {\"name\": \"Freizeitpark Lübars\", \"start_date\": \"2015\", \"wikidata\": \"Q1454995\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "OSM park polygon 900 x 838 m with start_date 2015; the hill is a re-landscaped landfill mound. Features are generic placeholders; tree cover is young, open grass."
+    },
+    "berlin-transit": {
+      "venueId": "berlin-transit",
+      "city": "berlin",
+      "name": "Tiergarten",
+      "archetype": "transport-station",
+      "subject": "Tiergarten S-Bahn station: a Stadtbahn viaduct of brick arches with a long platform canopy and a small brick substation",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a8553c",
+          "#b3ada3",
+          "#d8d0bd"
+        ],
+        "roofColour": "#5a5d62",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "long brick viaduct arcade"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1882 (Stadtbahn viaduct)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q854058",
+          "what": "Wikidata: Tiergarten, borough of Berlin"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/320485955",
+          "what": "OSM element (name match): measured footprint 47.3x23.8 m, tags {\"name\": \"S-Bahn Gleichrichterunterwerk Tiergarten\", \"building\": \"electricity\"}"
+        }
+      ],
+      "notes": "OSM building under the pin is the S-Bahn rectifier substation (47 x 24 m); the station is on the 1882 Berlin Stadtbahn brick viaduct, a fact recalled from general knowledge and not verified here. Model the arched viaduct and canopy rather than the substation."
+    }
+  }
+}

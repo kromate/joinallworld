@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-relation-9659980",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/9659980",
+   "used": "real outline of the compound (name match) decomposed into its wing blocks: west ward, north-south ward, north range, east block, south ward, link corridor; single-storey and clay-tile roofs from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     39,
+     12
+    ]
+   },
+   "at": [
+    -58,
+    2.5
+   ],
+   "rotDeg": -4.6,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#6a8f9a",
+    "bands": "#6a8f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-ns",
+   "footprint": {
+    "rect": [
+     40,
+     11
+    ]
+   },
+   "at": [
+    -9,
+    12
+   ],
+   "rotDeg": 74.5,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#6a8f9a",
+    "bands": "#6a8f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "range-north",
+   "footprint": {
+    "rect": [
+     33,
+     11
+    ]
+   },
+   "at": [
+    3.5,
+    23
+   ],
+   "rotDeg": -7,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#6a8f9a",
+    "bands": "#6a8f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     35,
+     30
+    ]
+   },
+   "at": [
+    31.5,
+    -3
+   ],
+   "rotDeg": -9,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#6a8f9a",
+    "bands": "#6a8f9a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-south",
+   "footprint": {
+    "rect": [
+     25,
+     13
+    ]
+   },
+   "at": [
+    5.5,
+    -31
+   ],
+   "rotDeg": 83.4,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#6a8f9a",
+    "bands": "#6a8f9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     52,
+     5
+    ]
+   },
+   "at": [
+    -16,
+    -13
+   ],
+   "rotDeg": -5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "trimColour": "#6a8f9a",
+    "bands": "#6a8f9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -76,
+    -8,
+    0
+   ],
+   "rotDeg": -4.6,
+   "params": {
+    "length": 36,
+    "depth": 2.6,
+    "eaveHeight": 2.8,
+    "attachHeight": 3.8,
+    "colour": "#6a8f9a",
+    "roofColour": "#a8452f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -35
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; wing blocks approximate the real outline as rectangles, verandas only on the west ward, compound is slightly over the 120 m clamp."
+ }
+}

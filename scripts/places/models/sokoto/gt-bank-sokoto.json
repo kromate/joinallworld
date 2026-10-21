@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "gt-bank-sokoto",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/318532524",
+   "used": "footprint (15.8 x 15 m square block, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey glazed branch with flat canopy in a walled yard; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d3d8",
+    "windows": "curtain",
+    "windowRatio": 0.65,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "bands": "#f2f2f0",
+    "plinth": 0.4,
+    "parapet": 0.5,
+    "glassColour": "#8fa3ad"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#e8e8e4",
+    "edgeColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    -8.5,
+    -10,
+    0
+   ],
+   "params": {
+    "sign_colour": "#d9d9d6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.2,
+    10.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#dcdcd8",
+    "frameColour": "#b0aaa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#d8d2c4",
+    "pillarEvery": 5,
+    "points": [
+     [
+      -17,
+      -16
+     ],
+     [
+      17,
+      -16
+     ],
+     [
+      17,
+      14
+     ],
+     [
+      -17,
+      14
+     ],
+     [
+      -17,
+      -16
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "pillar": 0.6,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    4,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; glazed three-storey block on the real OSM outline, canopy, ATM booth and wall are typical, not observed."
+ }
+}

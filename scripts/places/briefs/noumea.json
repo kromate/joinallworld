@@ -1,0 +1,1538 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "noumea",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "noumea",
+    "climate": "tropical-maritime",
+    "vernacular": "French-Pacific colonial capital on a peninsula: low and mid-rise rendered concrete buildings in white and pastel tones with flat or low-pitched roofs, a few surviving timber colonial villas with verandas and hipped corrugated-iron roofs painted red or green, 1960s-80s concrete apartment blocks, and Kanak grande-case motifs (conical thatched roof, carved door posts) at cultural sites. Palms, flamboyant trees and niaouli. Wall and roof colours are estimates from general knowledge of the city: no retrievable source gave a colour palette.",
+    "wallColours": [
+      "#f3ede0",
+      "#e8d9b5",
+      "#d9b48f",
+      "#9fc3c8",
+      "#c97b63",
+      "#8c9a78"
+    ],
+    "roofColours": [
+      "#b5473a",
+      "#5c7a58",
+      "#8a8f94",
+      "#3f5f8a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "timber",
+      "whitewash",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial timber verandas with fretwork and shuttered windows; louvred concrete screens and brise-soleil on 1970s buildings; Kanak carved flèche faîtière roof finials and thatched conical grande cases at cultural sites; bright bougainvillea and flamboyant trees.",
+    "sources": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Noum%C3%A9a",
+        "what": "city overview: centre built on fill/polders, Place des Cocotiers with fountain and kiosk, WWII US demi-lunes; the architecture section was not retrievable so colours are estimated"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Noum%C3%A9a_Magenta_Airport",
+        "what": "airport history: 1970s terminal replaced by a new terminal in 2001"
+      }
+    ]
+  },
+  "places": {
+    "noumea-airport-noumea-airport": {
+      "venueId": "noumea-airport-noumea-airport",
+      "city": "noumea",
+      "name": "Nouméa Magenta Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 2001 Magenta terminal seen from the landside forecourt: a long low two-storey block with a canopied entrance and a small control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#7f9fb0",
+          "#d9d2c2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Noum%C3%A9a_Magenta_Airport",
+          "what": "new terminal opened 2001 (capacity over 300,000), replacing a 1970s terminal; no appearance described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/79263380",
+          "what": "OSM footprint 68.4 x 34.6 m, area 2308 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q656777",
+          "what": "Wikidata item (Nouméa Magenta Airport)"
+        }
+      ],
+      "notes": "Measured OSM terminal 68 x 35 m, built 2001. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Magenta is the domestic and regional airport, so the terminal is modest (not an international hub)."
+    },
+    "noumea-clinic": {
+      "venueId": "noumea-clinic",
+      "city": "noumea",
+      "name": "Centre Hospitalier Spécialisé Albert Bousquet",
+      "archetype": "hospital",
+      "subject": "the Albert Bousquet psychiatric hospital complex on Nouville: a spread-out pavilion hospital of low masonry wards around gardens, descended from the 1868 convict-era Hôpital du Marais",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 5,
+        "variant": "pavilion"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e9e0cb",
+          "#b9a98a",
+          "#f3f0e8"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "garden between wards"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ward verandas"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1868 origin, rebuilt 1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_hospitalier_sp%C3%A9cialis%C3%A9_Albert-Bousquet",
+          "what": "history: created 1868 as Hôpital du Marais for convicts on Nouville (ile Nou); ceded to the colony 1927; asylum 1936; renovated 1952; \"hôpital pavillonnaire\"; heritage listing 2004"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1557919",
+          "what": "OSM footprint 221 x 55.8 m, area 6056 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2945745",
+          "what": "Wikidata item (Centre hospitalier spécialisé Albert-Bousquet, inception 1868)"
+        }
+      ],
+      "notes": "Pavilion plan and 1868 origin are sourced; wall colours, roofs and storeys are estimated. The OSM outline is a 221 x 56 m scatter of ward blocks (main mass shown ~110 x 45). Recognisable as low whitewashed colonial ward blocks with deep verandas, not a modern tower."
+    },
+    "noumea-community-notices": {
+      "venueId": "noumea-community-notices",
+      "city": "noumea",
+      "name": "Tribunal de Nouméa",
+      "archetype": "civic-palace",
+      "subject": "the Nouméa courthouse (tribunal / cour d'appel): a three-storey civic block with a stepped, irregular plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 55,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe5d6",
+          "#a8a290",
+          "#cfc9b8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance steps"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "international",
+      "era": "c.1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/19257369",
+          "what": "OSM footprint 69.2 x 35.7 m, area 1445 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3000971",
+          "what": "Wikidata item (Court of Appeal of Nouméa)"
+        }
+      ],
+      "notes": "Wikidata identifies it as the Court of Appeal of Nouméa. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Era is unknown."
+    },
+    "noumea-community-voting-game": {
+      "venueId": "noumea-community-voting-game",
+      "city": "noumea",
+      "name": "Hôtel de Ville de Dumbéa",
+      "archetype": "civic-small",
+      "subject": "the Dumbéa town hall (Hôtel de Ville), a long low civic building with projecting wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e9d8",
+          "#c97b63",
+          "#d6cfbd"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/415616293",
+          "what": "OSM footprint 128.8 x 46.2 m, area 2643 m2 (measured)"
+        }
+      ],
+      "notes": "OSM footprint is 129 x 46 m with several wings. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-community-workshop": {
+      "venueId": "noumea-community-workshop",
+      "city": "noumea",
+      "name": "Bibliothèque annexe de Plum",
+      "archetype": "civic-small",
+      "subject": "the Plum branch library annex, a small single-storey public building in Mont-Dore",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3ede0",
+          "#9fc3c8",
+          "#c9c2b0"
+        ],
+        "roofColour": "#5c7a58",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/184075858",
+          "what": "OSM footprint 31.7 x 27.9 m, area 570 m2 (measured)"
+        }
+      ],
+      "notes": "Name is \"(annexe) library of Plum\"; OSM lists only a generic building 32 x 28 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-market-game": {
+      "venueId": "noumea-market-game",
+      "city": "noumea",
+      "name": "Marché du Mt Dore",
+      "archetype": "market-hall",
+      "subject": "the covered Mont-Dore municipal market: an open-sided hall under a large pitched roof with stalls inside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e5dfd0",
+          "#c97b63",
+          "#b9b3a4"
+        ],
+        "roofColour": "#3f5f8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/414713908",
+          "what": "OSM footprint 43.8 x 41.6 m, area 1410 m2 (measured)"
+        }
+      ],
+      "notes": "OSM footprint is an irregular 44 x 42 m polygon. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-meal-stop": {
+      "venueId": "noumea-meal-stop",
+      "city": "noumea",
+      "name": "Le Bout du Monde",
+      "archetype": "restaurant",
+      "subject": "Le Bout du Monde, a waterside restaurant with a terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead9",
+          "#9fc3c8",
+          "#a98f6c"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/269128777",
+          "what": "OSM footprint 26.6 x 21.4 m, area 407 m2 (measured)"
+        }
+      ],
+      "notes": "Name is real (\"The End of the World\"), OSM building 27 x 21 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-node-1110244565": {
+      "venueId": "noumea-osm-node-1110244565",
+      "city": "noumea",
+      "name": "Château d'Eau de Naia",
+      "archetype": "monument",
+      "subject": "the Naia water tower (château d'eau), a hilltop tank on a concrete column visible over the valley",
+      "form": {
+        "footprint": "round",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "water-tower"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c4bfb2",
+          "#9a958a",
+          "#e5e0d2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "elevated tank"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/95790082",
+          "what": "OSM footprint 20.8 x 12.6 m, area 200 m2 (measured)"
+        }
+      ],
+      "notes": "OSM has a 21 x 13 m outline named \"Château d'Eau de Naia\" tagged as a viewing point. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Treated as a typical elevated concrete tank; height is a guess."
+    },
+    "noumea-osm-node-1426723288": {
+      "venueId": "noumea-osm-node-1426723288",
+      "city": "noumea",
+      "name": "Kaori Renversé",
+      "archetype": "park-landscape",
+      "subject": "the fallen kauri (Kaori renversé): a giant toppled Agathis tree trunk lying across a forest trail",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "fallen-tree"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#6b5a48",
+          "#4f4a3c",
+          "#8a7a62"
+        ],
+        "roofColour": "#4f4a3c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "trail rail"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building; it is a natural landmark. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Model a thick horizontal trunk with exposed root plate among rainforest trees."
+    },
+    "noumea-osm-node-2512504065": {
+      "venueId": "noumea-osm-node-2512504065",
+      "city": "noumea",
+      "name": "Cascade",
+      "archetype": "park-landscape",
+      "subject": "a forest waterfall (Cascade) in the Dumbéa hills with a rock pool and small trail platform",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "waterfall"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f6a5e",
+          "#4d5a45",
+          "#8c8a80"
+        ],
+        "roofColour": "#4d5a45",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "trail steps"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building; natural site. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Model a rock cliff with a thin falling-water ribbon and a pool."
+    },
+    "noumea-osm-relation-1296182": {
+      "venueId": "noumea-osm-relation-1296182",
+      "city": "noumea",
+      "name": "Musée de la Nouvelle-Calédonie",
+      "archetype": "museum-theatre",
+      "subject": "the Musée de la Nouvelle-Calédonie (opened 1971): a low concrete museum block with a Kanak grande case in the garden",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d8d1bf",
+          "#8f6e4b",
+          "#efe9db"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "garden"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved Kanak door posts"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "thatched grande case in the grounds"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q20971750",
+          "what": "New Caledonia Museum; OSM tags tourism=museum, 67 x 52 m footprint"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1296182",
+          "what": "OSM footprint 67.5 x 51.9 m, area 2737 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20971750",
+          "what": "Wikidata item (New Caledonia Museum, inception 1971)"
+        }
+      ],
+      "notes": "Footprint and inception year measured; the grande case, carved posts and concrete 1970s block come from general knowledge of the museum and could not be verified in this session (fr.wikipedia fetch failed)."
+    },
+    "noumea-osm-relation-1526580": {
+      "venueId": "noumea-osm-relation-1526580",
+      "city": "noumea",
+      "name": "IFPSS",
+      "archetype": "campus-block",
+      "subject": "IFPSS health and social training college: several low classroom and admin blocks around a lawn",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece5d3",
+          "#9fc3c8",
+          "#cfc8b6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/688565220",
+          "what": "OSM footprint 188.9 x 109.7 m, area 16690 m2 (measured)"
+        }
+      ],
+      "notes": "OSM campus polygon is 189 x 110 m (amenity=college). No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-134363148": {
+      "venueId": "noumea-osm-way-134363148",
+      "city": "noumea",
+      "name": "Casino Mont-Dore",
+      "archetype": "mall",
+      "subject": "the Mont-Dore Casino supermarket shopping centre: a wide single-storey box with an entrance canopy and big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4d8",
+          "#b5473a",
+          "#bfbbaf"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank brand-neutral boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/134363148",
+          "what": "OSM footprint 108.1 x 86.8 m, area 5948 m2 (measured)"
+        }
+      ],
+      "notes": "\"Casino\" here is the supermarket chain (no branding to be drawn); OSM building is 108 x 87 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-37890152": {
+      "venueId": "noumea-osm-way-37890152",
+      "city": "noumea",
+      "name": "Parc Zoologique et Forestier Michel Corbasson",
+      "archetype": "park-landscape",
+      "subject": "the forest and zoological park entrance area: shaded paths, timber pavilions and native-forest planting",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "zoo"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a7a62",
+          "#5c7a58",
+          "#d8cfb8"
+        ],
+        "roofColour": "#5c7a58",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "park entrance"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3364799",
+          "what": "Parc zoologique et forestier Michel Corbasson, inception 1972"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/37890152",
+          "what": "OSM footprint 844.8 x 566.1 m, area 303890 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3364799",
+          "what": "Wikidata item (Parc zoologique et forestier Michel-Corbasson, inception 1972)"
+        }
+      ],
+      "notes": "OSM zoo polygon is about 845 x 566 m (30 ha); the scene shows only the entrance area. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Features are generic."
+    },
+    "noumea-osm-way-413771556": {
+      "venueId": "noumea-osm-way-413771556",
+      "city": "noumea",
+      "name": "Les 3 Bê",
+      "archetype": "restaurant",
+      "subject": "Les 3 Bê, a small corner restaurant with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead9",
+          "#c97b63",
+          "#a98f6c"
+        ],
+        "roofColour": "#5c7a58",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/413771556",
+          "what": "OSM footprint 32.2 x 31.8 m, area 779 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 32 x 32 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-423514033": {
+      "venueId": "noumea-osm-way-423514033",
+      "city": "noumea",
+      "name": "Parc de la Rivière Salée",
+      "archetype": "park-landscape",
+      "subject": "Parc de la Rivière Salée, a mangrove-edge riverside park with lawns and a footpath",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a7a62",
+          "#6f8a5a",
+          "#d8cfb8"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "boardwalk"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/423514033",
+          "what": "OSM footprint 402.1 x 202.4 m, area 31835 m2 (measured)"
+        }
+      ],
+      "notes": "OSM polygon is 402 x 202 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-430727319": {
+      "venueId": "noumea-osm-way-430727319",
+      "city": "noumea",
+      "name": "Stade Numa-Daly",
+      "archetype": "stadium",
+      "subject": "Stade Numa-Daly Magenta, an oval athletics-and-football bowl with a covered main stand on the west side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 224,
+        "depth_m": 172,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "athletics-oval"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c6",
+          "#3f5f8a",
+          "#b8b2a2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "west stand A-D"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "only partially roofed"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1966, renovated 1985/2003/2008/2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_Numa-Daly",
+          "what": "opened 1966 for the Pacific Games, architect Jacques Rampal; 9,646 seats (10,000 record); stands A-D west, E north, F-G east, H south; athletics track; renovations 1985, 2003, 2008, 2011"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/430727319",
+          "what": "OSM footprint 224.3 x 172.1 m, area 34971 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q182992",
+          "what": "Wikidata item (Stade Numa-Daly Magenta, inception 1966)"
+        }
+      ],
+      "notes": "Capacity, stand layout and dates sourced; roof extent and colours are estimates. Athletics track surrounds the pitch (red track)."
+    },
+    "noumea-osm-way-43894719": {
+      "venueId": "noumea-osm-way-43894719",
+      "city": "noumea",
+      "name": "Église de la Conception",
+      "archetype": "church-classical",
+      "subject": "the Conception mission church (Mont-Dore), a long narrow nave with a small front bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f3efe4",
+          "#8c8472",
+          "#d9d2c0"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small front tower"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1860s mission",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/43894719",
+          "what": "OSM footprint 38.2 x 12.3 m, area 381 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q52818562",
+          "what": "Wikidata item (Église de la Conception)"
+        }
+      ],
+      "notes": "OSM footprint 38 x 12 m, Catholic, has its own Wikidata item. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. The 1860s Marist mission date is from general knowledge, unverified."
+    },
+    "noumea-osm-way-542503416": {
+      "venueId": "noumea-osm-way-542503416",
+      "city": "noumea",
+      "name": "Parc ex-Aquarêve",
+      "archetype": "park-landscape",
+      "subject": "the former Aquarêve seafront park: lawns, palms and a promenade by the bay",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d1bf",
+          "#6f8a5a",
+          "#c4bfb2"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "promenade steps"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/542503416",
+          "what": "OSM footprint 152.6 x 113.4 m, area 12381 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park 153 x 113 m on the south coast. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-65069903": {
+      "venueId": "noumea-osm-way-65069903",
+      "city": "noumea",
+      "name": "Ducos Centre",
+      "archetype": "mall",
+      "subject": "Ducos Centre, a single-storey commercial centre with a shared forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e1cf",
+          "#c97b63",
+          "#bfbbaf"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/65069903",
+          "what": "OSM footprint 91.8 x 77.2 m, area 5729 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 92 x 77 m in the Ducos industrial-commercial district. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-716990917": {
+      "venueId": "noumea-osm-way-716990917",
+      "city": "noumea",
+      "name": "Mozza Pizza",
+      "archetype": "restaurant",
+      "subject": "Mozza Pizza, a small roadside pizzeria",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3ede0",
+          "#b5473a",
+          "#c9c2b0"
+        ],
+        "roofColour": "#3f5f8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/716990917",
+          "what": "OSM footprint 16.4 x 11.5 m, area 189 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 16 x 12 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-osm-way-73813536": {
+      "venueId": "noumea-osm-way-73813536",
+      "city": "noumea",
+      "name": "Église de Saint-Louis",
+      "archetype": "church-classical",
+      "subject": "the Saint-Louis mission church (Mont-Dore): a white masonry nave with a square entrance tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f2eee2",
+          "#8c8472",
+          "#d6cfbc"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.14
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1860s mission",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/73813536",
+          "what": "OSM footprint 31.7 x 20.1 m, area 519 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q38509540",
+          "what": "Wikidata item (Mission Saint-Louis)"
+        }
+      ],
+      "notes": "OSM building=church 32 x 20 m with its own Wikidata item. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. The mission origin is from general knowledge, unverified."
+    },
+    "noumea-quiet-reflection": {
+      "venueId": "noumea-quiet-reflection",
+      "city": "noumea",
+      "name": "Église Sainte-Anne",
+      "archetype": "church-modern",
+      "subject": "Sainte-Anne church, a small Catholic church with a simple gabled hall and short tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#a8a290",
+          "#d6cfbc"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/113775364",
+          "what": "OSM footprint 35.5 x 10.1 m, area 357 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q38504406",
+          "what": "Wikidata item (église Sainte-Anne de Nouméa)"
+        }
+      ],
+      "notes": "OSM building=church 36 x 10 m with its own Wikidata item. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-recreation": {
+      "venueId": "noumea-recreation",
+      "city": "noumea",
+      "name": "Esplanade du 22 Avril",
+      "archetype": "park-landscape",
+      "subject": "Esplanade du 22 Avril, a paved public square with planting and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d1bf",
+          "#6f8a5a",
+          "#c4bfb2"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/488647235",
+          "what": "OSM footprint 61.6 x 41.1 m, area 2198 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park 62 x 41 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "noumea-transit": {
+      "venueId": "noumea-transit",
+      "city": "noumea",
+      "name": "PAITA CENTRE",
+      "archetype": "transport-station",
+      "subject": "Païta centre bus station: a linear shelter and bus bays beside the main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d1bf",
+          "#3f5f8a",
+          "#b8b2a2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1565573837",
+          "what": "OSM footprint 53.4 x 14.7 m, area 681 m2 (measured)"
+        }
+      ],
+      "notes": "OSM bus_station 53 x 15 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    }
+  }
+}

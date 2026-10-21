@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "central-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief: Igun Street, ~10,000 m2 compound, main dome, corner domes, tall minaret",
+   "used": "programme and scale; OSM match is an 81 m2 sliver so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     44,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#d8d2c0",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-wing",
+   "footprint": {
+    "rect": [
+     30,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -19.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9da",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7a5a",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "radius": 9,
+    "height": 9,
+    "profile": "onion",
+    "drum": 3.5,
+    "windows": 8,
+    "colour": "#2f7a5a",
+    "drum_colour": "#efe9da"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    -18,
+    -12,
+    11
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 3.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a5a",
+    "drum_colour": "#efe9da"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    18,
+    -12,
+    11
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 3.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a5a",
+    "drum_colour": "#efe9da"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    -18,
+    12,
+    11
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 3.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a5a",
+    "drum_colour": "#efe9da"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    18,
+    12,
+    11
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 3.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a5a",
+    "drum_colour": "#efe9da"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -27,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "style": "pencil",
+    "colour": "#efe9da",
+    "accent": "#2f7a5a",
+    "cap_colour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    27,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "pencil",
+    "colour": "#efe9da",
+    "accent": "#2f7a5a",
+    "cap_colour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "colour": "#d8d2c0",
+    "pillarEvery": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; typical city central mosque scaled to the compound."
+ }
+}

@@ -1,0 +1,1331 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "maputo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "maputo",
+    "climate": "tropical-maritime",
+    "vernacular": "Portuguese-colonial Baixa grid (1890s-1960s) of 3-6 storey neoclassical, art-deco and tropical-modernist blocks in painted render (cream, ochre, pale green, terracotta) with arcaded ground floors and balconies, avenues shaded by acacia/jacaranda and palms, calcada-style paved squares; outer suburbs (Mafalala, Xiquelene) are low block-and-zinc houses with corrugated metal roofs; Soviet-era and 1970s brutalist/modernist state buildings, plus recent glass towers on the Marginal.",
+    "wallColours": [
+      "#efe6d0",
+      "#d9b98a",
+      "#c8c3b5",
+      "#9fb7a8",
+      "#c76f4f",
+      "#f4f1ea",
+      "#b8a07a"
+    ],
+    "roofColours": [
+      "#b5543a",
+      "#8a8f94",
+      "#5f6a6e",
+      "#7a3f32",
+      "#3f6f5b"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stucco",
+      "brick",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Neoclassical pilasters and cornices, Manueline-style arches and stone ropework (Portuguese royal style), art-deco curved balconies and ribbon windows, wrought-iron latticework and verandas, Pancho Guedes-style tropical-modernist sculptural facades, painted murals and market umbrellas.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Maputo",
+        "what": "Wikipedia: styles are Portuguese colonial neoclassical and Manueline, art deco, bauhaus, tropical modernism and brutalist; Pancho Guedes; station 1913-16; Tunduru Gardens Manueline arch; acacia-lined avenues felled"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Maputo_Central_Railway_Station",
+        "what": "station: Beaux-Arts/neoclassical, brick and cement, copper dome, marble pillars, wrought iron"
+      }
+    ]
+  },
+  "places": {
+    "maputo-airport-maputo-airport": {
+      "venueId": "maputo-airport-maputo-airport",
+      "city": "maputo",
+      "name": "Maputo International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Maputo's international terminal (opened 2010, Chinese-financed) seen from the landside forecourt: a low white-and-glass block with a canopy over the departures drive",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e6e0",
+          "#3d6a8a",
+          "#f4f4f2"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate tower on the airfield side"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maputo_International_Airport",
+          "what": "new international terminal opened 15 Nov 2010; domestic terminal built on old terminal site"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Wikipedia confirms only that the new international terminal opened 15 Nov 2010 as phase 1 of a Chinese-financed expansion (900,000 pax/yr) and that a new domestic terminal replaced the old one; no size or appearance is given, so dimensions, colours and canopy are assumptions."
+    },
+    "maputo-clinic": {
+      "venueId": "maputo-clinic",
+      "city": "maputo",
+      "name": "Centro de Saude de Polana Cimento",
+      "archetype": "hospital",
+      "subject": "a single-storey public health centre in painted render with a covered patient veranda and a red-cross board",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#9fb7a8",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "covered waiting veranda"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. "
+    },
+    "maputo-community-notices": {
+      "venueId": "maputo-community-notices",
+      "city": "maputo",
+      "name": "Tribunal Supremo",
+      "archetype": "civic-palace",
+      "subject": "the Supreme Court of Mozambique, a formal multi-storey state building with a columned entrance and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#e6dfd0",
+          "#8b8f93",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. The court is a state building; form is a generic formal civic block, not the real facade."
+    },
+    "maputo-community-voting-game": {
+      "venueId": "maputo-community-voting-game",
+      "city": "maputo",
+      "name": "Feira Popular",
+      "archetype": "park-landscape",
+      "subject": "the Feira Popular fairground: an enclosed leisure ground with a gate, food stalls under sheds and a central open square",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#c76f4f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b5543a",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. A funfair/market ground, not a polling hall as the game kind says."
+    },
+    "maputo-community-workshop": {
+      "venueId": "maputo-community-workshop",
+      "city": "maputo",
+      "name": "Complexo Pedagogico UEM",
+      "archetype": "campus-block",
+      "subject": "a lecture-hall complex of Eduardo Mondlane University: long 3-storey concrete blocks with external walkways and sun-shading",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#d9d4c8",
+          "#9fb7a8",
+          "#f4f1ea"
+        ],
+        "roofColour": "#7d8387",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. UEM's main campus is mostly 1960s-80s concrete modernist blocks; this one was not described individually."
+    },
+    "maputo-costa-do-sol-stadium": {
+      "venueId": "maputo-costa-do-sol-stadium",
+      "city": "maputo",
+      "name": "Campo do Costa do Sol",
+      "archetype": "stadium",
+      "subject": "a small club football ground: a pitch with one covered grandstand, low terraces on the other sides and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d4c8",
+          "#c8372d",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Home ground of Clube Desportivo Costa do Sol (red/yellow colours assumed from the club)."
+    },
+    "maputo-craft-market": {
+      "venueId": "maputo-craft-market",
+      "city": "maputo",
+      "name": "Mercado de Artesanato, Flores e Gastronomia de Maputo",
+      "archetype": "market-open",
+      "subject": "the open craft, flower and food market: rows of small stalls with colourful parasols along a paved square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#d9a441",
+          "#c76f4f"
+        ],
+        "roofColour": "#b5543a",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "umbrellas",
+          "count": 14
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Open-air craft market; stall layout is generic."
+    },
+    "maputo-fish-market": {
+      "venueId": "maputo-fish-market",
+      "city": "maputo",
+      "name": "Mercado do Peixe",
+      "archetype": "market-open",
+      "subject": "the seafront fish market at Costa do Sol: open fish stalls and simple covered restaurant sheds on the beach road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#3f8aa6",
+          "#d9b98a"
+        ],
+        "roofColour": "#a8744f",
+        "roofMaterial": "thatch",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Known as a place where fresh seafood is bought and cooked on the spot; building details unverified. Roof tint suggests thatch/reed-like cover but flagged as an assumption."
+    },
+    "maputo-fishing-museum": {
+      "venueId": "maputo-fishing-museum",
+      "city": "maputo",
+      "name": "Museu da Pesca",
+      "archetype": "museum-theatre",
+      "subject": "a small museum in a two-storey colonial-era house with a veranda, near the old fishing harbour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9b98a",
+          "#4a7f9a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. "
+    },
+    "maputo-interfranca": {
+      "venueId": "maputo-interfranca",
+      "city": "maputo",
+      "name": "InterFranca",
+      "archetype": "mall",
+      "subject": "a modern 3-4 storey shopping centre with a glazed entrance atrium, painted-render facade and a rooftop car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceae4",
+          "#2f6a8a",
+          "#cf5a3a"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Name and position are real; appearance of the centre was not found."
+    },
+    "maputo-mafalala-market": {
+      "venueId": "maputo-mafalala-market",
+      "city": "maputo",
+      "name": "Mercado Municipal da Mafalala",
+      "archetype": "market-hall",
+      "subject": "a municipal market in Mafalala: a long low brick-and-render hall with a corrugated roof, trading stalls inside and spilling outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d9b98a",
+          "#c76f4f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "lock-ups",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Mafalala is a dense low-rise neighbourhood of block houses with zinc roofs."
+    },
+    "maputo-mafalala-museum": {
+      "venueId": "maputo-mafalala-museum",
+      "city": "maputo",
+      "name": "Museu Mafalala",
+      "archetype": "museum-theatre",
+      "subject": "a small community heritage museum in the Mafalala neighbourhood: a modest one-storey house with a bright mural facade and zinc roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3a58a",
+          "#4a7f9a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Community museum in a neighbourhood known for its music and independence-era figures; mural is assumed."
+    },
+    "maputo-market-game": {
+      "venueId": "maputo-market-game",
+      "city": "maputo",
+      "name": "Mercado de Xiquelene",
+      "archetype": "market-open",
+      "subject": "Xiquelene market: a large open-air informal market of stalls, umbrellas and lock-up kiosks on bare ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9b98a",
+          "#c76f4f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "kiosk",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. A large outer-suburb market; layout is generic."
+    },
+    "maputo-maxaquene-stadium": {
+      "venueId": "maputo-maxaquene-stadium",
+      "city": "maputo",
+      "name": "Estadio de Maxaquene",
+      "archetype": "stadium",
+      "subject": "the 15,000-capacity grass football stadium of Maxaquene: concrete terraces with a covered main stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d4c8",
+          "#2f6aa6",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Est%C3%A1dio_do_Maxaquene",
+          "what": "capacity 15,000, football, grass pitch"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Wikipedia gives only: capacity 15,000, grass, home of Clube de Desportos do Maxaquene; stands/roof are assumed."
+    },
+    "maputo-meal-stop": {
+      "venueId": "maputo-meal-stop",
+      "city": "maputo",
+      "name": "Cafe Continental",
+      "archetype": "restaurant",
+      "subject": "a Baixa cafe on the ground floor of a 1950s block with a deep awning, outdoor tables and a painted-render upper storey",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe6d0",
+          "#9c3b2f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Historic Baixa cafe; name and position real, facade assumed. Signage must stay blank."
+    },
+    "maputo-national-art-museum": {
+      "venueId": "maputo-national-art-museum",
+      "city": "maputo",
+      "name": "Museu Nacional de Arte",
+      "archetype": "museum-theatre",
+      "subject": "the National Art Museum in a colonial-era villa-style building with a veranda and sculpture garden on Av. Ho Chi Minh",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#b8a07a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Whether the museum occupies a purpose-built or converted house was not verified."
+    },
+    "maputo-natural-history-museum": {
+      "venueId": "maputo-natural-history-museum",
+      "city": "maputo",
+      "name": "Museu de Historia Natural",
+      "archetype": "museum-theatre",
+      "subject": "the Natural History Museum: an early-20th-century Portuguese building in Manueline-influenced style with a corner tower and arched windows",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#b8a07a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "corner tower"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maputo",
+          "what": "listed as a landmark; Manueline style present in the city"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Wikipedia only lists the museum as a Maputo landmark; Manueline style is recalled from general knowledge, not confirmed by a fetched source for this building."
+    },
+    "maputo-quiet-reflection": {
+      "venueId": "maputo-quiet-reflection",
+      "city": "maputo",
+      "name": "Mesquita da Baixa",
+      "archetype": "mosque-domed",
+      "subject": "the central Baixa mosque: a white-washed prayer hall with one low dome, a slender minaret and an arched entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1ea",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#e6dfd0",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Maputo has an Indian-Muslim community mosque tradition; the real colours and dome count of this mosque were not verified."
+    },
+    "maputo-recreation": {
+      "venueId": "maputo-recreation",
+      "city": "maputo",
+      "name": "Praca da Independencia",
+      "archetype": "park-landscape",
+      "subject": "Independence Square: a paved civic square with a large bronze statue of Samora Machel, flanked by the neoclassical City Hall and cathedral, with palm trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9d4c8",
+          "#8b8f93",
+          "#efe6d0"
+        ],
+        "roofColour": "#b9bdbf",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Samora Machel"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1940s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maputo",
+          "what": "Independence Square and Samora Machel statue listed as landmarks; neoclassical colonial styles in Baixa"
+        }
+      ],
+      "notes": "Independence Square, Maputo's main civic square. Wikipedia lists the square and Samora Machel statue among landmarks; the square hosts the City Hall (neoclassical) and the cathedral. Layout and fountain are approximated, so medium."
+    },
+    "maputo-revolution-museum": {
+      "venueId": "maputo-revolution-museum",
+      "city": "maputo",
+      "name": "Museu da Revolucao",
+      "archetype": "museum-theatre",
+      "subject": "the Museum of the Revolution, in a 1950s-60s public building with a symmetrical facade, a flagpole and small garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#9fb7a8",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. "
+    },
+    "maputo-scala-cinema": {
+      "venueId": "maputo-scala-cinema",
+      "city": "maputo",
+      "name": "Scala",
+      "archetype": "museum-theatre",
+      "subject": "the Scala cinema/theatre: a mid-20th-century art-deco style frontage with a canopy, vertical sign fin and neon strip",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d0",
+          "#c8372d",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific building was found, so the brief is a typed guess from the Maputo city style and the place type. Cinema in the Baixa; signage must remain blank."
+    },
+    "maputo-transit": {
+      "venueId": "maputo-transit",
+      "city": "maputo",
+      "name": "Maputo Central Railway Station",
+      "archetype": "transport-station",
+      "subject": "Maputo Central Station (CFM) seen from the forecourt: a two-storey Beaux-Arts facade with a central arch under a copper-clad dome (51 m overall), two domed side towers joined by upper verandas, and a long metal platform canopy behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 51,
+        "roof": "multi-dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f1ead8",
+          "#4f7f6a",
+          "#8a8f94"
+        ],
+        "roofColour": "#4f8a6f",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "one large copper-clad central dome, two smaller side domes"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "tall central arch"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "upper verandas between towers"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "long metal platform"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1910-1916",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maputo_Central_Railway_Station",
+          "what": "form, materials, dome height, towers, verandas, dates"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maputo",
+          "what": "built 1913-1916; designers named"
+        }
+      ],
+      "notes": "Wikipedia describes the real building: Beaux-Arts/neoclassical, built 1908-1916, two floors, baked brick and cement, marble pillars, wrought-iron latticework, copper-clad semispherical central dome (51 m to top, built in South Africa), two symmetrical domed side towers linked by second-floor verandas. Hex colours (cream facade, green verdigris dome) are from general photo memory, not the article. Often mis-attributed to Gustave Eiffel."
+    }
+  }
+}

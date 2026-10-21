@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "central-motor-park-katsina",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Katsina",
+   "used": "city style only; no photo found and the OSM match is the central market (55 m away, nearest quality), which is a different place"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   126,
+   104
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline; open walled sandy yard with gate, two corrugated sheds, bus/van/taxi rows and kiosks typed from the brief; dimensions placeholders"
+ },
+ "parts": [
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -55,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    55,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -33,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    33,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#c9b79a",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 9,
+    "height": 4.0,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    28,
+    22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 4.0,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#8f6b4a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -24,
+    0,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.3,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "van",
+    "density": 0.9,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "taxi",
+    "density": 0.6,
+    "yaw": 90,
+    "lines": true
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -46,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#2f6a4a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -46,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#a8303c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    46,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d9a43a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    46,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#5a6aa8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#2f6b4f",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 6,
+    "colours": [
+     "#c8402f",
+     "#d9a43a",
+     "#2f8a5a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -48,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 4,
+    "spread": 9,
+    "line": 0
+   }
+  }
+ ]
+}

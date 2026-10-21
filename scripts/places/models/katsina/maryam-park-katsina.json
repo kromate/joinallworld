@@ -1,0 +1,333 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "maryam-park-katsina",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/593699965",
+   "used": "park outline (name match), centred and scaled 0.8 to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -38.4,
+      56.0
+     ],
+     [
+      48.2,
+      55.0
+     ],
+     [
+      64.4,
+      37.4
+     ],
+     [
+      -6.6,
+      -23.7
+     ],
+     [
+      -31.2,
+      -63.3
+     ],
+     [
+      -36.4,
+      -61.3
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f9b4f",
+    "topColour": "#5f9b4f",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -38.4,
+      56.0
+     ],
+     [
+      48.2,
+      55.0
+     ],
+     [
+      64.4,
+      37.4
+     ],
+     [
+      -6.6,
+      -23.7
+     ],
+     [
+      -31.2,
+      -63.3
+     ],
+     [
+      -36.4,
+      -61.3
+     ],
+     [
+      -38.4,
+      56.0
+     ]
+    ],
+    "height": 0.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#d6cfbb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      35
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      20,
+      -5
+     ],
+     [
+      -5,
+      -40
+     ],
+     [
+      -15,
+      -70
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#d6cfbb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      35
+     ],
+     [
+      30,
+      36
+     ],
+     [
+      48,
+      22
+     ],
+     [
+      20,
+      -5
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#d6cfbb"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    20
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    28,
+    10,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.5,
+    "colour": "#e8dfc8",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -20,
+    44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    36,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 30,
+    "count": 7,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    32,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; paths, pavilions and trees are typical placements inside the real OSM outline."
+ }
+}

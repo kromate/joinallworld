@@ -1,0 +1,1533 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "conakry",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "conakry",
+    "climate": "rainforest",
+    "vernacular": "Capital on the Kaloum peninsula and the mainland beyond: a dense, hot, very wet coastal city of French-colonial 1-3 storey buildings in Kaloum (rendered, shuttered, tile or corrugated roofs), Sekou Toure-era Soviet, Chinese and Arab-funded concrete blocks (Donka hospital, stadium, Palais du Peuple, Grand Mosque), and vast districts of one- to two-storey unfinished concrete-block houses with rusted corrugated roofs and walled plots. Red laterite, mango, palm and flamboyant trees.",
+    "wallColours": [
+      "#e9e2d0",
+      "#d6b25a",
+      "#b85c3a",
+      "#8fa5b5",
+      "#a3a09a",
+      "#f3f0e8",
+      "#c9a77c"
+    ],
+    "roofColours": [
+      "#9a5a3c",
+      "#7b7f84",
+      "#b04a35",
+      "#6e6a66"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "exposed-concrete",
+      "whitewash",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial verandas and arcades with shutters in Kaloum; red-and-yellow banded Romanesque-colonial church masonry; Arab-islamic arches and domes on Gulf-funded mosques; socialist-era concrete sculpture, bas-reliefs and mosaics on public monuments; bright painted shopfront lettering and murals (blank in model).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Conakry",
+        "what": "Architecture: Palais Mohammed V, Presidential Palace, Palais du Peuple, Grand Mosque, Sainte-Marie cathedral, hospitals, stadium, museum"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Sainte-Marie_de_Conakry",
+        "what": "Cathedral Sainte-Marie described as a red and yellow building begun 1928, built in the 1930s under French administration"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Conakry",
+        "what": "Grand Mosque 1982: 5 domes, 4 minarets, Saudi-funded, 12,500 worshippers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Donka_Hospital",
+        "what": "Donka Hospital built 1959 with Soviet assistance"
+      }
+    ]
+  },
+  "places": {
+    "conakry-airport-conakry-airport": {
+      "venueId": "conakry-airport-conakry-airport",
+      "city": "conakry",
+      "name": "Ahmed Sékou Touré International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Gbessia airport main terminal: a low, wide 1945-era terminal modernised since 2009, with an entrance canopy, a few boarding gates and a nearby control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5ddc9",
+          "#5a7a8f",
+          "#b9b3a3"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1945; terminal renovated from 2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ahmed_S%C3%A9kou_Tour%C3%A9_International_Airport",
+          "what": "Built 1945; main terminal renovation began 2009 (gates, departure lounge); 3,300 m asphalt runway; photos of control tower; no terminal dimensions given"
+        }
+      ],
+      "notes": "History and renovation sourced; façade and dimensions typed. Distinct from Bissau (smaller) and Maya-Maya (newer glass terminal)."
+    },
+    "conakry-clinic": {
+      "venueId": "conakry-clinic",
+      "city": "conakry",
+      "name": "Ignace Deen Hospital",
+      "archetype": "hospital",
+      "subject": "Oldest national hospital in Kaloum: colonial-era wards, 2-3 storeys with long verandas and tiled roofs inside a walled compound",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#ede5d0",
+          "#b85c3a",
+          "#c4bdae"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ward verandas"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1920s-30s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "Ignace Deen listed among hospitals; no description"
+        }
+      ],
+      "notes": "Not described in sources. Typed as a colonial pavilion hospital with verandas (contrast: Donka is Soviet-era blocks)."
+    },
+    "conakry-community-notices": {
+      "venueId": "conakry-community-notices",
+      "city": "conakry",
+      "name": "Palais Roi Mohamed V",
+      "archetype": "civic-palace",
+      "subject": "Palais Mohammed V (ex Palais des Nations): a large white-and-concrete formal palace in the city centre built to house the OAU, damaged in 1996 and restored in 2013; now the seat of power",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "marble",
+        "colours": [
+          "#eceae2",
+          "#b9a98a",
+          "#7b7f84"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "c.1980s; restored 2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Palais_Mohammed_V",
+          "what": "Built to house the OAU headquarters; also called palais des Nations; damaged by bombing in 1996; abandoned ~15 years; renovated for the OIC summit Dec 2013; renamed 2014; seat of power since 2021"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "Palais Mohammed V named in the architecture section"
+        }
+      ],
+      "notes": "Function and history are sourced; appearance is not described in any text found, so the palace form (white, arched colonnade) is typed from its gift-of-Morocco, OIC-hosting character and is uncertain."
+    },
+    "conakry-community-voting-game": {
+      "venueId": "conakry-community-voting-game",
+      "city": "conakry",
+      "name": "Maison des jeunes",
+      "archetype": "civic-small",
+      "subject": "Youth centre: a long one-storey community hall with a painted front and a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e2d6b4",
+          "#5a8f6a",
+          "#c4bdae"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure community building; no description. Typed."
+    },
+    "conakry-community-workshop": {
+      "venueId": "conakry-community-workshop",
+      "city": "conakry",
+      "name": "Université Kofi Annan de Guinée",
+      "archetype": "campus-block",
+      "subject": "Private university: a modern 3-storey block with glazed stair and signboard",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#4a6a8a",
+          "#b9b3a3"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the campus; typed."
+    },
+    "conakry-market-game": {
+      "venueId": "conakry-market-game",
+      "city": "conakry",
+      "name": "Marché de Bonfi",
+      "archetype": "market-open",
+      "subject": "Bonfi market: a dense maze of corrugated shelters, umbrellas and rendered lock-up shops by a main road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d6c9a0",
+          "#a3a09a",
+          "#b85c3a"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 18
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "City context only"
+        }
+      ],
+      "notes": "Neighbourhood market; no layout source. Typed."
+    },
+    "conakry-meal-stop": {
+      "venueId": "conakry-meal-stop",
+      "city": "conakry",
+      "name": "L'Avenue",
+      "archetype": "restaurant",
+      "subject": "Cafe-restaurant: a modern glazed shopfront with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ede6d4",
+          "#4a6a8a",
+          "#c4bdae"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed."
+    },
+    "conakry-osm-node-10024259768": {
+      "venueId": "conakry-osm-node-10024259768",
+      "city": "conakry",
+      "name": "Restaurant SansFrancisco",
+      "archetype": "restaurant",
+      "subject": "Roadside restaurant: a one-storey painted building with an open terrace and sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d8b0",
+          "#b85c3a",
+          "#c4bdae"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure; typed."
+    },
+    "conakry-osm-node-6813943851": {
+      "venueId": "conakry-osm-node-6813943851",
+      "city": "conakry",
+      "name": "Plage Soro",
+      "archetype": "park-landscape",
+      "subject": "Atlantic sand beach with palm trees, a few beach shacks and loungers",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#8a5a36",
+          "#e6dfcf"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Beach on the Atlantic coast near Kaloum; no source found. Typed with beach shacks."
+    },
+    "conakry-osm-node-7289060001": {
+      "venueId": "conakry-osm-node-7289060001",
+      "city": "conakry",
+      "name": "Alimentation Générale DIALLO et Frère",
+      "archetype": "shophouse",
+      "subject": "Small general store: a single-storey painted shop with a corrugated roof and rolled shutter front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d6c9a0",
+          "#4f7a9a",
+          "#b9b3a3"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Convenience store; no information. Typed."
+    },
+    "conakry-osm-node-8007052060": {
+      "venueId": "conakry-osm-node-8007052060",
+      "city": "conakry",
+      "name": "restaurant",
+      "archetype": "restaurant",
+      "subject": "Unnamed local restaurant: a small rendered one-storey eatery with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e2d6b4",
+          "#b85c3a",
+          "#c4bdae"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic OSM restaurant node; no information. Typed."
+    },
+    "conakry-osm-relation-7829658": {
+      "venueId": "conakry-osm-relation-7829658",
+      "city": "conakry",
+      "name": "Stade Général Lansana Conté",
+      "archetype": "stadium",
+      "subject": "The large new national stadium at Nongo, a modern all-seater bowl with covered stands and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d5d0c4",
+          "#3b6a8a",
+          "#e9e4d8"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_du_28_Septembre",
+          "what": "Context: Stade du 28 Septembre proposed for upgrade to host AFCON 2023; this newer stadium not described"
+        }
+      ],
+      "notes": "Appearance, size and date not found; typed as a modern all-seater bowl. Clearly larger/newer than the 28 Septembre stadium."
+    },
+    "conakry-osm-way-217953079": {
+      "venueId": "conakry-osm-way-217953079",
+      "city": "conakry",
+      "name": "Université Gamal Abdel Nasser de Conakry",
+      "archetype": "campus-block",
+      "subject": "The main state university: older 3-4 storey concrete faculty blocks with long balconies and outside stairs",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#a9926a",
+          "#e0dacb"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1960s-70s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "City context only"
+        }
+      ],
+      "notes": "Named for the Egyptian president; appearance not documented. Typed as a socialist-era concrete campus."
+    },
+    "conakry-osm-way-291396458": {
+      "venueId": "conakry-osm-way-291396458",
+      "city": "conakry",
+      "name": "Clinique Ambroise Paré",
+      "archetype": "hospital",
+      "subject": "Private clinic: a compact 3-storey white building with a glazed canopy entrance and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#4a7f8f",
+          "#c4bdae"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "Clinique Ambroise Pare listed among hospitals; no description"
+        }
+      ],
+      "notes": "Private clinic; no description. Typed; smaller and cleaner than public hospitals."
+    },
+    "conakry-osm-way-338672791": {
+      "venueId": "conakry-osm-way-338672791",
+      "city": "conakry",
+      "name": "Stade du 28 septembre",
+      "archetype": "stadium",
+      "subject": "The old national stadium: a 25,000-capacity oval concrete bowl with a covered main stand, a track and floodlights; proposed for rebuilding as an all-seater",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c2b4",
+          "#a9926a",
+          "#e5e0d3"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_du_28_Septembre",
+          "what": "Built 1964; capacity 25,000; multi-purpose grass pitch; proposals for 45,000-50,000 all-seater rebuild for AFCON 2023"
+        }
+      ],
+      "notes": "Capacity and date sourced; roof/shape typed. Older and smaller than Lansana Conte."
+    },
+    "conakry-osm-way-338977493": {
+      "venueId": "conakry-osm-way-338977493",
+      "city": "conakry",
+      "name": "Donka Hospital",
+      "archetype": "hospital",
+      "subject": "The country's largest public hospital: a sprawling 1959 Soviet-assisted compound of white 2-3 storey ward blocks linked by walkways, with newer ophthalmology and maternity wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e4d6",
+          "#6a8f9a",
+          "#bdb7a8"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1959; additions 2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Donka_Hospital",
+          "what": "Built 1959 with Soviet help; largest public hospital; ophthalmology facility opened 2010; maternity centre on the compound"
+        }
+      ],
+      "notes": "Date, size rank and extra wings sourced; colours/mass typed from Soviet-era hospital planning. Larger and more multi-wing than Ignace Deen."
+    },
+    "conakry-osm-way-39240323": {
+      "venueId": "conakry-osm-way-39240323",
+      "city": "conakry",
+      "name": "Monument du 22 novembre 1970",
+      "archetype": "monument",
+      "subject": "Monument commemorating the 22 November 1970 Portuguese-backed attack: a tall concrete column or sculpture on a stepped base in a seafront roundabout",
+      "form": {
+        "footprint": "round",
+        "width_m": 16,
+        "depth_m": 16,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#8a8a85",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "Monument named in the city article; no description"
+        }
+      ],
+      "notes": "Only named in the city article. Form is a typed guess (stepped base with a tall column); verify against photos before refinement."
+    },
+    "conakry-osm-way-504460776": {
+      "venueId": "conakry-osm-way-504460776",
+      "city": "conakry",
+      "name": "UNC",
+      "archetype": "campus-block",
+      "subject": "Nongo University (UNC): a modern 3-storey classroom block on the northern ring",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d6",
+          "#6a8f9a",
+          "#bdb7a8"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Ambiguous acronym \"UNC\"; no information. Typed."
+    },
+    "conakry-osm-way-504471379": {
+      "venueId": "conakry-osm-way-504471379",
+      "city": "conakry",
+      "name": "Keyce Academy - Ecole Française de Guinée",
+      "archetype": "campus-block",
+      "subject": "French international school: a tidy walled campus with 2-storey classroom ranges around a playground",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#d6b25a",
+          "#c4bdae"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description; typed."
+    },
+    "conakry-osm-way-550010888": {
+      "venueId": "conakry-osm-way-550010888",
+      "city": "conakry",
+      "name": "Stade de la mission",
+      "archetype": "stadium",
+      "subject": "Small neighbourhood football ground near the mission with a small terrace and fenced pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c2b4",
+          "#b85c3a",
+          "#e5e0d3"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "mid 20th c. (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small community stadium; no information. Typed to be clearly the smallest of the Conakry stadiums."
+    },
+    "conakry-osm-way-552008098": {
+      "venueId": "conakry-osm-way-552008098",
+      "city": "conakry",
+      "name": "Musée national de Guinée",
+      "archetype": "museum-theatre",
+      "subject": "National museum in Sandervalia, Kaloum: a low colonial-style building with a courtyard, beside the 1896 thatched Sanderval case",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ede4cc",
+          "#a9926a",
+          "#c4bdae"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1936 origin; museum opened 1960",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_de_Sandervalia",
+          "what": "In Sandervalia district, Kaloum; museum infobox date 1960; origins 1936; two exhibition spaces; site includes the 1896 \"case\" built by Aime Olivier de Sanderval; bas-relief and bust in gallery"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Conakry",
+          "what": "Sandervalia National Museum courtyard photo"
+        }
+      ],
+      "notes": "Location and exhibition structure sourced; architecture not described, so building form is typed. A small thatched/vernacular case (1896) stands to the right of the main entrance."
+    },
+    "conakry-osm-way-616434324": {
+      "venueId": "conakry-osm-way-616434324",
+      "city": "conakry",
+      "name": "Centre commercial poukou",
+      "archetype": "mall",
+      "subject": "Small shopping centre: a 2-storey rendered block with shopfronts and a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5ddc9",
+          "#4a6a8a",
+          "#bdb7a8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information on this centre; typed."
+    },
+    "conakry-quiet-reflection": {
+      "venueId": "conakry-quiet-reflection",
+      "city": "conakry",
+      "name": "Cathédrale Sainte-Marie",
+      "archetype": "church-classical",
+      "subject": "Cathedral of Conakry in the Kaloum centre: a \"red and yellow\" banded colonial-era cathedral begun 1928 and built in the 1930s",
+      "form": {
+        "footprint": "cross",
+        "width_m": 50,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 21,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#b0502f",
+          "#d9b44a",
+          "#e6dfcf"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "count and form not confirmed"
+        },
+        {
+          "id": "arches",
+          "count": 7
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1928-1930s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Sainte-Marie_de_Conakry",
+          "what": "Described as a red and yellow building; construction began 1928 (first stone blessed by Mgr Lerouge); built in the 1930s under French administration; remarkable architecturally"
+        }
+      ],
+      "notes": "Only colour (red and yellow), date and colonial context are sourced; towers, dome and size are NOT stated. Typed with a banded red/ochre facade; refine from photos."
+    },
+    "conakry-recreation": {
+      "venueId": "conakry-recreation",
+      "city": "conakry",
+      "name": "forêt classé de Dabompa",
+      "archetype": "park-landscape",
+      "subject": "Classified forest north of the city: dense broadleaf woodland with a clearing and a simple gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a5a36",
+          "#4f7a4a",
+          "#c9a77c"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Protected forest on the northern outskirts; no site description found. Typed as woodland with a gate."
+    },
+    "conakry-transit": {
+      "venueId": "conakry-transit",
+      "city": "conakry",
+      "name": "Simbaya",
+      "archetype": "transport-station",
+      "subject": "Simbaya junction: a busy road interchange and minibus (\"magbana\") park with shelters, kiosks and rows of yellow-blue taxis",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a49a",
+          "#d9b44a",
+          "#7b7f84"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Major road junction/transport hub on the Autoroute Fidel Castro; no building described. Typed."
+    }
+  }
+}

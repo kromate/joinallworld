@@ -1,0 +1,274 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "tafawa-balewa-mausoleum-bauchi",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tafawa_balewas_tomb.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Teemages",
+   "view": "street",
+   "file": "/tmp/places-evidence/bauchi/tomb1.jpg",
+   "used": "exterior: a tall pale precast-panel box with rounded corners and carved brown relief, overhanging a lower red-brick plinth, flat roof, no windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tafawa_balewas_tomb_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Teemages",
+   "view": "detail",
+   "used": "inner court: paved floor and a tall tile-mosaic wall in tan, brown and blue vertical stripes"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1041534461",
+   "used": "overall size and orientation (about 30 x 28 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     21,
+     19
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24a3c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "relief-box",
+   "footprint": {
+    "polygon": [
+     [
+      10.5,
+      -14.0
+     ],
+     [
+      11.66,
+      -13.85
+     ],
+     [
+      12.75,
+      -13.4
+     ],
+     [
+      13.68,
+      -12.68
+     ],
+     [
+      14.4,
+      -11.75
+     ],
+     [
+      14.85,
+      -10.66
+     ],
+     [
+      15.0,
+      -9.5
+     ],
+     [
+      15.0,
+      9.5
+     ],
+     [
+      14.85,
+      10.66
+     ],
+     [
+      14.4,
+      11.75
+     ],
+     [
+      13.68,
+      12.68
+     ],
+     [
+      12.75,
+      13.4
+     ],
+     [
+      11.66,
+      13.85
+     ],
+     [
+      10.5,
+      14.0
+     ],
+     [
+      -10.5,
+      14.0
+     ],
+     [
+      -11.66,
+      13.85
+     ],
+     [
+      -12.75,
+      13.4
+     ],
+     [
+      -13.68,
+      12.68
+     ],
+     [
+      -14.4,
+      11.75
+     ],
+     [
+      -14.85,
+      10.66
+     ],
+     [
+      -15.0,
+      9.5
+     ],
+     [
+      -15.0,
+      -9.5
+     ],
+     [
+      -14.85,
+      -10.66
+     ],
+     [
+      -14.4,
+      -11.75
+     ],
+     [
+      -13.68,
+      -12.68
+     ],
+     [
+      -12.75,
+      -13.4
+     ],
+     [
+      -11.66,
+      -13.85
+     ],
+     [
+      -10.5,
+      -14.0
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3.5,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c4c2b8",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3,
+       2.5
+      ],
+      "colours": [
+       "#c4c2b8",
+       "#b9b3a3",
+       "#a89d86"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5a198",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#b9b3a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   60,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "carved glyph relief only approximated by random panel tone blocks (no true glyph geometry); the plinth overhang shadow gap is only partly visible and the inner mosaic court is not modelled"
+ }
+}

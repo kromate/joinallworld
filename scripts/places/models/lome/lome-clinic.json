@@ -1,0 +1,588 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CHU_Sylvanus_Olympio_Lom%C3%A9_002jpg.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Manamarthe",
+   "view": "street",
+   "file": "/tmp/places-evidence/lome/chu2.jpg",
+   "used": "CHU Sylvanus Olympio (the Tokoin university hospital): ochre-sand render gate portal with stepped cornice and arched opening, long walls with barred windows, behind it 3-storey blocks with brick-coloured pilasters and pointed-arch windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CHU_Sylvanus_Olympio_Lom%C3%A9_004jpg.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Manamarthe",
+   "view": "street",
+   "file": "/tmp/places-evidence/lome/chu4.jpg",
+   "used": "2-storey cream administration block with grey-green band, blue metal roof, clipped hedges and palms in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/800972448",
+   "used": "hospital area (about 112,000 m2 campus; the matched building way is only 368 m2 so it is not used as massing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.18
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-pier-l",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    -14,
+    -26
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a56e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-r",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    14,
+    -26
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a56e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-lintel",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     34,
+     7
+    ],
+    "z0": 7.0,
+    "height": 4.5,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -30,
+    7.3
+   ],
+   "params": {
+    "width": 17,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#f4f1e8",
+    "frameColour": "#d8d2c0",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall-l",
+   "footprint": {
+    "rect": [
+     24,
+     1.0
+    ]
+   },
+   "at": [
+    -32,
+    -26
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a56e",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall-r",
+   "footprint": {
+    "rect": [
+     34,
+     1.0
+    ]
+   },
+   "at": [
+    34,
+    -26
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a56e",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    6
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#cdb48a",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.22,
+    "bay": 5.2,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.6,
+      "depth": 0.35,
+      "spacing": 5.2,
+      "colour": "#9a6446",
+      "margin": 1.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0d2b0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-wing",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    -24,
+    26
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb48a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 5,
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0d2b0",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-block",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    34,
+    34
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6c8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "bands": "#8fa89c",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 8,
+    "overhang": 1.2,
+    "colour": "#2f5f8f",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    14,
+    16,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#d9c9a8",
+    "roofColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#c8a878",
+    "points": [
+     [
+      -44,
+      -26
+     ],
+     [
+      -44,
+      50
+     ],
+     [
+      56,
+      50
+     ],
+     [
+      56,
+      -26
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-1",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     37,
+     8
+    ],
+    "z0": 11.5,
+    "height": 0.8,
+    "colour": "#b8935c",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice-2",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     35.5,
+     7.5
+    ],
+    "z0": 12.3,
+    "height": 0.8,
+    "colour": "#d6b87f",
+    "topColour": "#c9a56e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-l0",
+   "at": [
+    -22.0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 7.2,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-l1",
+   "at": [
+    -25.5,
+    -26
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "height": 6.0,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-l2",
+   "at": [
+    -28.5,
+    -26
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     1.2
+    ],
+    "height": 5.0,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-l3",
+   "at": [
+    -31.2,
+    -26
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.2
+    ],
+    "height": 4.5,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-r0",
+   "at": [
+    22.0,
+    -26
+   ],
+   "params": {
+    "rect": [
+     4,
+     1.2
+    ],
+    "height": 7.2,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-r1",
+   "at": [
+    25.5,
+    -26
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     1.2
+    ],
+    "height": 6.0,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-r2",
+   "at": [
+    28.5,
+    -26
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     1.2
+    ],
+    "height": 5.0,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flare-r3",
+   "at": [
+    31.2,
+    -26
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.2
+    ],
+    "height": 4.5,
+    "colour": "#c9a56e",
+    "topColour": "#b8935c"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    22,
+    24,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "depth": 1.0
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    10,
+    -33,
+    0
+   ]
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    16,
+    -34,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     54,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ],
+  "groundColour": "#c6a877"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate wing walls are stepped blocks, not a smooth quarter-round flare; pilaster panels are plain brick-brown fins, not diamond or pointed-arch relief; footprints estimated (OSM way only 368 m2); barred windows and motorbikes approximated."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-clinic"
+}

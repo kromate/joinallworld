@@ -1,0 +1,121 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1462275345",
+   "used": "real campus outline (six-sided plot), scaled to scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#9bb7b0",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a69f",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-block",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     22,
+     10
+    ],
+    "height": 12,
+    "colour": "#f0ede4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "storeys": 3,
+    "z0": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#9bb7b0",
+    "columns": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -55,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -25,
+    -50,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "colour": "#f0ede4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "acacia",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-way-1462275345",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo found; real campus outline and brief only, wings and facade colours typed."
+ }
+}

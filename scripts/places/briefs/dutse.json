@@ -1,0 +1,1134 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dutse",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dutse",
+    "climate": "sahel",
+    "vernacular": "Capital of Jigawa State since 1991, built around the walled Garu emir palace and the granite Dutse hills. Old quarters are Hausa mud-render compounds with entrance halls (zaure) and flat roofs; the newer government areas are planned zones (Three-Arm Zone) of 2-4 storey cream rendered blocks, with shop rows under metal sheets, on red laterite earth and neem shade trees.",
+    "wallColours": [
+      "#d5bf99",
+      "#c9a77c",
+      "#efe6d0",
+      "#f1ede2",
+      "#a8a396",
+      "#b9724e"
+    ],
+    "roofColours": [
+      "#8b3a2b",
+      "#5b6670",
+      "#a8a29a",
+      "#3f6e4e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "mud-render",
+      "render",
+      "concrete",
+      "granite",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "acacia",
+      "broadleaf"
+    ],
+    "ornament": "Hausa-Fulani palace motifs: geometric relief on gatehouses and parapets, arched entrance halls, low pinnacled parapets. Dutse means rock, and granite boulders are everywhere.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dutse_Emirate",
+        "what": "Dutse Emirate, Garu palace walled town"
+      },
+      {
+        "url": "https://www.takeyourbackpack.com/backpacking-in-nigeria/visit-dutse/",
+        "what": "traditional Hausa-Fulani palace architecture"
+      },
+      {
+        "url": "https://guardian.ng/life/pre-colonial-traditional-architectures-of-nigeria/",
+        "what": "Hausa architecture: mud walls, walled city, gate house, thatch to flat roofs"
+      },
+      {
+        "url": "https://allafrica.com/stories/202512230323.html",
+        "what": "planned functional zones incl. Three-Arm Zone"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dutse",
+        "what": "name means rock; igneous undulating terrain"
+      }
+    ]
+  },
+  "places": {
+    "central-mosque-galamawa-dutse": {
+      "venueId": "central-mosque-galamawa-dutse",
+      "city": "dutse",
+      "name": "Central Mosque Galamawa",
+      "archetype": "mosque-domed",
+      "subject": "a modern Friday (central) mosque in Dutse: a broad prayer hall under one main dome with two corner minarets, in cream render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#efe6d0",
+          "#2f6b4f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#d8cdb4",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "main dome over the prayer hall, plus four small corner domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "two slim minarets, about 28 m"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://layla.ai/itinerary/jigawa",
+          "what": "travel itinerary only calls it an architectural marvel, gives no design"
+        }
+      ],
+      "notes": "Searches confirm only that a Dutse Central Mosque exists; dome and minaret counts are typical for Nigerian state central mosques, not measured. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "christ-the-king-catholic-church-dutse": {
+      "venueId": "christ-the-king-catholic-church-dutse",
+      "city": "dutse",
+      "name": "Christ the King Catholic Church",
+      "archetype": "church-modern",
+      "subject": "a modest parish church: a rectangular gable-roofed nave in white-painted render with a slim front bell tower and a cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f0e6",
+          "#9a8f7f",
+          "#e8e1d0"
+        ],
+        "roofColour": "#7b3f30",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short square tower or cross-topped gable at the entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://gcatholic.org/churches/data/all-NG.htm",
+          "what": "searched Catholic directory; no Dutse Christ the King entry with a description"
+        }
+      ],
+      "notes": "A Christian minority church in a Muslim-majority emirate: small and walled, not a cathedral. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "dutse-emirate-museum-park": {
+      "venueId": "dutse-emirate-museum-park",
+      "city": "dutse",
+      "name": "Dutse Emirate Museum",
+      "archetype": "park-landscape",
+      "subject": "the grounds of the emirate museum beside Garu palace: a walled yard with a small pavilion, a gate and bare laterite paths under neem trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "render",
+        "colours": [
+          "#d5bf99",
+          "#b88a5e",
+          "#efe4cb"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "display pieces"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "hausa-arewa",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Dutse",
+          "what": "museum sits next to Garu Emir palace"
+        },
+        {
+          "url": "https://meta.wikimedia.org/wiki/Grants:Wikimedia_UG_Nigeria_Grants/Wikimedia_User_Group_Nigeria_Community_Support_Fund/Abdulkadir_Abdulkadir/Showcasing_Cultural_Heritage_in_Dutse_Emirates,_Jigawa_State",
+          "what": "lists the Jigawa State museum (Gidan Dan Masanin Dutse) as a heritage site"
+        }
+      ],
+      "notes": "This venue shares its site with dutse-museum (the building); here the model is the setting around it. Layout is a guess. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "dutse-general-hospital": {
+      "venueId": "dutse-general-hospital",
+      "city": "dutse",
+      "name": "Dutse General Hospital",
+      "archetype": "hospital",
+      "subject": "a state general hospital: long single-storey ward blocks with verandas and a two-storey admin block, under hipped corrugated roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ede5d0",
+          "#5f8f7a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board, no logo"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "solar mini-grid approved 2023"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://gazettengr.com/jigawa-govt-to-spend-n172-million-on-solar-power-at-dutse-general-hospital/",
+          "what": "state approved N173m for solar mini-grid at the hospital"
+        }
+      ],
+      "notes": "Only a solar-grid upgrade is documented; buildings are typed from typical Nigerian general hospitals. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "dutse-museum": {
+      "venueId": "dutse-museum",
+      "city": "dutse",
+      "name": "Dutse Museum",
+      "archetype": "museum-theatre",
+      "subject": "the small Jigawa State museum (Gidan Dan Masanin Dutse) beside Garu palace: a low earth-coloured Hausa-style house with an arched entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#cdb48a",
+          "#a8794f",
+          "#efe4cb"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "hausa-arewa",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Dutse",
+          "what": "Dutse Museum is next to Garu Emir palace"
+        },
+        {
+          "url": "https://meta.wikimedia.org/wiki/Grants:Wikimedia_UG_Nigeria_Grants/Wikimedia_User_Group_Nigeria_Community_Support_Fund/Abdulkadir_Abdulkadir/Showcasing_Cultural_Heritage_in_Dutse_Emirates,_Jigawa_State",
+          "what": "Jigawa State museum a.k.a. Gidan Dan Masanin Dutse"
+        }
+      ],
+      "notes": "Name and location are confirmed but no source describes the structure; Hausa vernacular form assumed from the neighbouring palace. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "dutse-rock-range": {
+      "venueId": "dutse-rock-range",
+      "city": "dutse",
+      "name": "Dutse Rock Range",
+      "archetype": "park-landscape",
+      "subject": "a cluster of rounded grey granite outcrops rising from scrubland on the edge of Dutse, with a worn footpath up the largest boulder",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8e8a82",
+          "#6f6b64",
+          "#b5ada0"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small viewpoint shelter at the top"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "geological",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://guardian.ng/life/best-hikes-in-nigeria-6-of-the-most-adventurous-routes/",
+          "what": "Jigawa hill hike with granite blocks on the summit (Dutsen Mamaki)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dutse",
+          "what": "Dutse means rock in Hausa; igneous, undulating, hilly terrain"
+        }
+      ],
+      "notes": "No named \"Dutse Rock Range\" was found; landscape is described from the town name and the granite-hill descriptions for Jigawa. Generator should model boulders, not a building. Missing enum: rock-outcrop / boulder."
+    },
+    "dutse-ultra-modern-market": {
+      "venueId": "dutse-ultra-modern-market",
+      "city": "dutse",
+      "name": "Dutse Ultra Modern Market",
+      "archetype": "market-hall",
+      "subject": "a planned government market of rows of identical lock-up shops under shared flat roofs carrying solar panels, with open lanes between",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc8",
+          "#4f7a63",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "solar grid and rooftop panels reported"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1,
+          "note": "about 300 shop units"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://businessday.ng/news/article/jigawa-lights-up-dutse-market-with-solar-electrification-project/",
+          "what": "300 shops connected to solar from panels installed within the market; located on Ibrahim Aliyu Way Bypass"
+        }
+      ],
+      "notes": "Scale (300 shops) and solar roofing are reported; facade colours and layout are typed. Contrast with laraba-market-dutse, which is an informal market."
+    },
+    "emir-of-dutse-palace": {
+      "venueId": "emir-of-dutse-palace",
+      "city": "dutse",
+      "name": "Emir of Dutse Palace (Garu)",
+      "archetype": "heritage-fort",
+      "subject": "the Garu palace of the Emir of Dutse: a walled earth-coloured Hausa compound with a decorated gatehouse and low courtyard buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#a8794f",
+          "#efe4cb"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gatehouse (zaure)"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "low parapet pinnacles"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "19th-20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.takeyourbackpack.com/backpacking-in-nigeria/visit-dutse/",
+          "what": "Garu palace described as traditional Hausa-Fulani palace architecture with emirate motifs"
+        },
+        {
+          "url": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Dutse",
+          "what": "Garu Emir Palace: Hausa architecture and decoration"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dutse_Emirate",
+          "what": "Garu palace town walled by Tsohon Mutum (Ganuwar Garu)"
+        },
+        {
+          "url": "https://www.arise.tv/jigawa-opens-bids-for-new-dutse-emirs-palace-project/",
+          "what": "state tendering a new emir palace"
+        }
+      ],
+      "notes": "Hausa palace character is well sourced; exact plan, height and colours are inferred. A new palace is being tendered, so the old Garu complex is the target. Recognisable by the walled compound and the arched entrance hall."
+    },
+    "gtbank-dutse": {
+      "venueId": "gtbank-dutse",
+      "city": "dutse",
+      "name": "GTBank",
+      "archetype": "office-low",
+      "subject": "a two-storey bank branch with a glazed ground floor, a flat roof, and a blank signage board over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeae0",
+          "#8a8f94",
+          "#d9d4c6"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Branch bank; brand colours deliberately not used. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "hadiza-nakowa-restaurant-dutse": {
+      "venueId": "hadiza-nakowa-restaurant-dutse",
+      "city": "dutse",
+      "name": "Hadiza Nakowa Restaurant",
+      "archetype": "restaurant",
+      "subject": "a small local eatery: a one-storey rendered shop with a veranda, plastic tables outside and a hand-painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d9b8",
+          "#b9724e",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small buka-style eatery. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "jigawa-ministry-of-environment-dutse": {
+      "venueId": "jigawa-ministry-of-environment-dutse",
+      "city": "dutse",
+      "name": "Jigawa State Ministry of Environment",
+      "archetype": "civic-palace",
+      "subject": "a two-storey state ministry block in the Dutse government quarter: a long rendered building with an arched entrance porch and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d6",
+          "#4f7a63",
+          "#f7f4ee"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Dutse became state capital in 1991; its ministries are mostly low and mid-rise concrete blocks. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "jigawa-state-polytechnic-dutse": {
+      "venueId": "jigawa-state-polytechnic-dutse",
+      "city": "dutse",
+      "name": "Jigawa State Polytechnic, Dutse",
+      "archetype": "campus-block",
+      "subject": "a polytechnic teaching block: a two-storey rendered classroom building with an open walkway along the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eae2cc",
+          "#6c8f76",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jigawa_State_Polytechnic,_Dutse",
+          "what": "Dutse site began as the College of Business and Management Studies of the 1991 polytechnic, Kiyawa Road"
+        }
+      ],
+      "notes": "History is sourced; no source describes the buildings. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "jigawa-state-secretariat-dutse": {
+      "venueId": "jigawa-state-secretariat-dutse",
+      "city": "dutse",
+      "name": "Jigawa State Secretariat",
+      "archetype": "civic-palace",
+      "subject": "the State Secretariat in the Three-Arm Zone: a large four-storey rendered office block with symmetrical wings around a forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 32,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece4d0",
+          "#7a8c86",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://allafrica.com/stories/202512230323.html",
+          "what": "Three-Arm Zone houses the State Secretariat, the Judiciary complex and the House of Assembly"
+        },
+        {
+          "url": "https://blueprint.ng/?p=31550",
+          "what": "promotional claim of the best state secretariat in Nigeria"
+        }
+      ],
+      "notes": "Location in a planned zone is sourced; the form is typed. Larger and newer than the Ministry of Environment block."
+    },
+    "laraba-market-dutse": {
+      "venueId": "laraba-market-dutse",
+      "city": "dutse",
+      "name": "Laraba Market",
+      "archetype": "market-open",
+      "subject": "a weekly open-air market: rows of wooden and metal stalls under mismatched umbrellas and tarpaulins on bare red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9825a",
+          "#c0392b",
+          "#e4d9bf"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Informal market, laid out as stall rows with trader umbrellas. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "rasheed-shekoni-hospital-dutse": {
+      "venueId": "rasheed-shekoni-hospital-dutse",
+      "city": "dutse",
+      "name": "Rasheed Shekoni Hospital",
+      "archetype": "hospital",
+      "subject": "the large specialist and teaching hospital built in the 1990s: a long three-storey main block with ward wings, in pale render with a flat roof",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#8aa3a0",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board, no logo"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rasheed_Shekoni_Federal_University_Teaching_Hospital",
+          "what": "Federal University teaching hospital, 600 beds listed"
+        },
+        {
+          "url": "https://fmino.gov.ng/fg-formerly-takes-over-rasheed-shekoni-specialist-hospital-from-jigawa-state-government/",
+          "what": "built under Shekoni (military governor 1996-98), abandoned ten years, federal takeover 2022"
+        }
+      ],
+      "notes": "Era, ownership and size (600 beds) are sourced; the facade is not described, so material and colours are typed. The biggest hospital in Dutse and clearly larger than dutse-general-hospital."
+    },
+    "sterling-bank-dutse": {
+      "venueId": "sterling-bank-dutse",
+      "city": "dutse",
+      "name": "Sterling Bank Dutse",
+      "archetype": "office-low",
+      "subject": "a compact bank branch: a two-storey rendered box with tinted ribbon glazing and a cantilevered entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede2",
+          "#6b7c8c",
+          "#d9d4c6"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Branch bank; brand colours deliberately not used. Smaller than the GTBank branch. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "yahuza-suya-spot-dutse": {
+      "venueId": "yahuza-suya-spot-dutse",
+      "city": "dutse",
+      "name": "Yahuza Suya Spot Nig Ltd",
+      "archetype": "restaurant",
+      "subject": "a roadside suya grill: an open-sided zinc shed over a charcoal grill and benches, with a small enclosed kitchen at the back",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#a8a29a",
+          "#7a5a3a",
+          "#e4d9bf"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Roadside suya spot; open sided. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    }
+  }
+}

@@ -1,0 +1,235 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1291056030",
+   "used": "ticket-seller shed footprint (164 m2, nearest match 1.3 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/abeokuta.json#kuto-park",
+   "used": "bare laterite motor park, parked buses and shared taxis, shed for ticket sellers, kiosks, blank signboard, perimeter wall; about 80 x 55 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only the shed outline is real, vehicle rows and kiosks are typical."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-shed",
+   "footprint": {
+    "osm": true,
+    "fit": 18.5
+   },
+   "at": [
+    -26,
+    12
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc7b5",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d7f7c",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    10,
+    24,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 4.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8a5a44",
+    "accent": "#8a5a44",
+    "roof_colour": "#7d7f7c",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -5,
+    2,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.9,
+    "coach_share": 0.5,
+    "colours": [
+     "#e8c13a",
+     "#f1f1ee",
+     "#2f5f9a",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "taxi",
+    "density": 0.8,
+    "colours": [
+     "#e8c13a",
+     "#f1f1ee",
+     "#3f7a4a"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -12,
+    19,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.8,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#8a5a44"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    19,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.8,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    34,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.8,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -16,
+    15,
+    0
+   ],
+   "params": {
+    "sign_colour": "#8a5a44"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 3.0,
+    "colour": "#cfc7b5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "length": 78,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#cfc7b5"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "kuto-park"
+}

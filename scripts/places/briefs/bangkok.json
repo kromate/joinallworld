@@ -1,0 +1,1784 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bangkok",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bangkok",
+    "climate": "savanna",
+    "vernacular": "Dense tropical capital of painted concrete: cream, white and grey rendered shophouses and townhouses of 3-5 storeys with roller shutters, signboards and rooftop water tanks; weathered mildew-stained concrete blocks with ribbon windows and balconies; glass-and-steel towers along the BTS and Sathorn/Sukhumvit corridors; and Buddhist temples (wat) with white walls, gilded ornament and stepped gable roofs of orange and green glazed tile. Traditional timber houses on stilts survive along canals. Flat concrete roofs are common on modern blocks; clay or glazed tile and corrugated metal on older and religious buildings.",
+    "wallColours": [
+      "#e8e1d0",
+      "#f2efe6",
+      "#a8a39a",
+      "#c9b99a",
+      "#8c8a80",
+      "#6f8f9a",
+      "#d9c7a0"
+    ],
+    "roofColours": [
+      "#d9772b",
+      "#1f7a5a",
+      "#8a5a3c",
+      "#7d8084",
+      "#b0b4b6"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "glass-curtain",
+      "whitewash",
+      "tile-cladding",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "metal-sheet",
+      "corrugated",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Thai temple motifs: stepped chofa-tipped gable roofs in orange and green glazed tile, gilded naga bargeboards and finials, bell-shaped chedi spires, gold leaf and mirror-glass mosaic; spirit houses on pillars; shophouse roller shutters, hand-painted signboards and tangled overhead cables; rooftop water tanks and satellite dishes.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Thailand",
+        "what": "traditional stilt houses, sala pavilions, Western and hybrid styles under Rama IV-VI, brick and laterite materials"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bangkok_City_Hall",
+        "what": "mid-century modern Thai-influenced civic style with wide balconies for the tropical climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/State_Tower",
+        "what": "neo-classical balconies and gold dome on a 247 m post-modern tower, a Bangkok skyline marker"
+      }
+    ]
+  },
+  "places": {
+    "bangkok-airport-bangkok-airport": {
+      "venueId": "bangkok-airport-bangkok-airport",
+      "city": "bangkok",
+      "name": "Suvarnabhumi Airport",
+      "archetype": "airport-terminal",
+      "subject": "The main passenger terminal seen from the departures forecourt: a very long glass-walled hall under rolling wave-like roof bays, with the tall free-standing control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 640,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 40,
+        "roof": "wave",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8dc",
+          "#5f7a8a",
+          "#e8e8e6"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "cantilevered wave-form roof bays over the concourse"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "free-standing tower about 132-135 m, the tallest in the world 2006-2014"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "five-pin arch-truss glazed facades"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 30
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2006",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Suvarnabhumi_Airport",
+          "what": "Helmut Jahn (Murphy/Jahn) design; cantilevered wave-like roof bays on eight composite trusses; five-pin arch-truss glazed facades; 563,000 m2 terminal; control tower 132-135 m; opened September 2006"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q194316",
+          "what": "airport identity and 2006 opening"
+        }
+      ],
+      "notes": "Sourced: Murphy/Jahn design, wave roof on eight trusses, fully glazed facades, 563,000 m2, 4th-floor departure hall, tall control tower, 2006. Width and depth are estimates (terminal is longer than the 120 m scene clamp, so show the central portion). Glass tint and colours estimated. Distinct from Brunei and Dili by sheer scale, the rolling roof bays and the tower."
+    },
+    "bangkok-clinic": {
+      "venueId": "bangkok-clinic",
+      "city": "bangkok",
+      "name": "Nakornthon Hospital",
+      "archetype": "hospital",
+      "subject": "A private multi-storey hospital block with a glazed entrance porch and covered ambulance bay, typical of Thai private hospitals",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 32,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#6f8f9a",
+          "#c9c4b6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board, no brand"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6960693",
+          "what": "Nakornthon Hospital, hospital in Thailand, inception 1996"
+        }
+      ],
+      "notes": "Low confidence: only name and 1996 founding are sourced. The OSM building near the coordinates is a McDonald's (13 m away) and was ignored. Storeys and height are typed from the size of private Thai hospitals. Distinct from the government Nopparat Rajathanee and Panyananthaphikkhu hospitals by being a compact glazed private block."
+    },
+    "bangkok-community-notices": {
+      "venueId": "bangkok-community-notices",
+      "city": "bangkok",
+      "name": "The Thai Bar",
+      "archetype": "office-low",
+      "subject": "The Thai Bar Association headquarters compound: a large irregular low-to-mid-rise institutional block with several wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dccb",
+          "#9a958a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1915 institution, current buildings later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13025451",
+          "what": "Thai Bar (legal profession regulator), founded 1915; OSM building footprint about 143 x 108 m and 9,181 m2, irregular wings"
+        }
+      ],
+      "notes": "Low confidence: the OSM footprint (143 x 108 m, 9,181 m2, wings around a courtyard) is measured but nothing describes the facade or storeys, so those are typed from the city style. The institution dates to 1915; the buildings are not stated to be that old."
+    },
+    "bangkok-community-voting-game": {
+      "venueId": "bangkok-community-voting-game",
+      "city": "bangkok",
+      "name": "Bangkok City Hall 2 (Din Daeng)",
+      "archetype": "civic-palace",
+      "subject": "City Hall 2: a large modern municipal administration building on a broad square footprint with a wide entrance forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 55,
+        "storeys": 10,
+        "height_m": 42,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e1d0",
+          "#5f7a8a",
+          "#b7b1a2"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown (21st century)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q132744152",
+          "what": "Bangkok City Hall 2 (city hall of Bangkok); OSM footprint 106 x 101 m, 5,623 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangkok_City_Hall",
+          "what": "only the original Dinso Road City Hall is described (3 storeys, modern Thai-influenced); City Hall 2 is not covered"
+        }
+      ],
+      "notes": "Low confidence: footprint is OSM-measured (106 x 101 m including a forecourt-side wing) but storeys, height and colours are guesses; no source describes City Hall 2. Distinct from the 1950s Dinso Road City Hall (3 storeys) which this is not."
+    },
+    "bangkok-community-workshop": {
+      "venueId": "bangkok-community-workshop",
+      "city": "bangkok",
+      "name": "Dhurakij Pundit University",
+      "archetype": "campus-block",
+      "subject": "The main academic building of a private Bangkok university campus: a mid-rise concrete block with ribbon windows and covered walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 32,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e1d0",
+          "#a8a39a",
+          "#6f8f9a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1968 foundation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1132082",
+          "what": "Dhurakij Pundit University, private university founded 1968; OSM campus relation about 365 x 346 m"
+        }
+      ],
+      "notes": "Low confidence: only the 1968 foundation and a campus extent of about 365 x 346 m are sourced. The block is typed from the city style and size of the campus. Distinct from KMUTT and Siam University only by footprint and storey assumptions."
+    },
+    "bangkok-market-game": {
+      "venueId": "bangkok-market-game",
+      "city": "bangkok",
+      "name": "Central Westgate",
+      "archetype": "mall",
+      "subject": "A very large modern shopping mall in Bang Yai: a long four-level retail box with a glazed central entrance and big roof-level signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 160,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#7a8a96",
+          "#b7b1a2"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q20575563",
+          "what": "Central Westgate, shopping mall in Nonthaburi, opened 2015; OSM building=retail 66,458 m2, about 427 x 233 m"
+        }
+      ],
+      "notes": "Footprint is measured (about 427 x 233 m, 66,458 m2, tagged retail) so the mass is very large and low relative to its length: show a central portion within the 120 m scene clamp. Storeys, glazing and colours are estimates; not described in sources. Biggest mall in the three-city set; much larger than Timor Plaza."
+    },
+    "bangkok-meal-stop": {
+      "venueId": "bangkok-meal-stop",
+      "city": "bangkok",
+      "name": "Sirocco",
+      "archetype": "office-tower",
+      "subject": "The State Tower: a 68-storey post-modern tower with neo-classical balconies, topped by a 30 m golden dome, with the open-air Sirocco restaurant on the 63rd floor beneath it",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 75,
+        "depth_m": 55,
+        "storeys": 68,
+        "height_m": 247,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dfcf",
+          "#d4a72c",
+          "#f4f1e8"
+        ],
+        "roofColour": "#d4a72c",
+        "roofMaterial": "gold-leaf",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "thirty-metre golden rooftop dome"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "neo-classical balconies stacked up the shaft"
+        },
+        {
+          "id": "crown",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "wide base block (OSM 128 x 87 m)"
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "2001",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/State_Tower",
+          "what": "68 floors, 247 m, 30 m golden rooftop dome, neo-classical balconies, Rangsan Architecture, completed 2001, Sirocco open-air restaurant on 63rd floor"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2297614",
+          "what": "State Tower, tower block in Bangkok, 247 m, postmodern architecture; OSM footprint 128.5 x 86.7 m"
+        }
+      ],
+      "notes": "Venue is the Sirocco restaurant on top of State Tower, so the model shows the tower and its golden dome. Sourced: 68 floors, 247 m, 30 m gold dome, balconies, 2001, postmodern. The plan is a curved crescent with a large circular opening in the upper floors; shown as irregular. Facade colour (pale cream stone) and 75 x 55 m shaft are estimates. The most recognisable skyline silhouette in the Bangkok set."
+    },
+    "bangkok-osm-node-1641043367": {
+      "venueId": "bangkok-osm-node-1641043367",
+      "city": "bangkok",
+      "name": "Bang Nam Pheung Floating Market",
+      "archetype": "market-open",
+      "subject": "A canal-side community market on the Bang Kachao bend: rows of low timber sheds and stalls along a canal with long-tail boats and a wooden pier",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9a7b55",
+          "#c9b99a",
+          "#6f5a40"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "timber landing on the canal"
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "opened 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bang_Nam_Phueng_Floating_Market",
+          "what": "canal-side market in a residential neighbourhood on Bang Kachao, opened 2004, local vendors only, food and handicrafts"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18398194",
+          "what": "Bang Namphueng Floating Market; OSM marketplace about 123 x 91 m"
+        }
+      ],
+      "notes": "Sourced: canal setting, residential neighbourhood, 2004 opening and vendors; the form of timber stalls with corrugated roofs is typed from Thai floating-market vernacular. Distinct from other Bangkok markets by the canal/pier."
+    },
+    "bangkok-osm-node-1645930798": {
+      "venueId": "bangkok-osm-node-1645930798",
+      "city": "bangkok",
+      "name": "Panyananthaphikkhu Chonprathan Medical Center",
+      "archetype": "hospital",
+      "subject": "A university teaching hospital block: a mid-rise concrete building with a wide entrance porch and long window bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 84,
+        "depth_m": 28,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dccb",
+          "#9a958a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board, no brand"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "inception 1914 per Wikidata (institution), current block later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13021490",
+          "what": "Panyananthapikhu Chonprathan Medical Centre, university hospital; OSM hospital footprint 84 x 73 m, 4,398 m2"
+        }
+      ],
+      "notes": "Low confidence: the OSM footprint (84 x 73 m) is measured but storeys, colours and facade are typed. The 1914 date refers to the foundation, not the building. Distinct from Nakornthon (private, glazed) by a plainer government-style concrete block."
+    },
+    "bangkok-osm-node-1669417525": {
+      "venueId": "bangkok-osm-node-1669417525",
+      "city": "bangkok",
+      "name": "Wat Rat Burana",
+      "archetype": "temple-asian",
+      "subject": "A suburban Thai Buddhist wat: a white-walled ubosot (ordination hall) with a stepped orange-and-green tiled gable roof beside a gilded chedi",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "stepped",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f3efe4",
+          "#d4a72c",
+          "#c9b99a"
+        ],
+        "roofColour": "#d9772b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "stepped three-tier gable with chofa tips"
+        },
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "gilded bell-shaped chedi"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "chofa finials on gable ends"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13020818",
+          "what": "Wat Rat Burana, Buddhist temple in Samut Prakan province, Thailand"
+        }
+      ],
+      "notes": "Low confidence: only its identity and location (Samut Prakan, east of Bangkok near the airport) are sourced; the OSM data has no building. The form is the standard central-Thai wat ubosot. Differentiate from Wat Nong Khaem (large compound) by being smaller with a single ubosot and chedi."
+    },
+    "bangkok-osm-node-2962259464": {
+      "venueId": "bangkok-osm-node-2962259464",
+      "city": "bangkok",
+      "name": "Lumpinee Boxing Stadium",
+      "archetype": "stadium",
+      "subject": "The 2014 indoor Muay Thai arena on Ram Intra Road: a squat roofed hall with banked seating for about 5,000 and a plain signed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4dccb",
+          "#7d8084",
+          "#f2efe6"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lumpinee_Boxing_Stadium",
+          "what": "moved to Ram Inthra Road February 2014, capacity about 5,000, first fight 11 Feb 2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/865391068",
+          "what": "footprint about 58.4 x 55.2 m, 2,858 m2"
+        }
+      ],
+      "notes": "Sourced: 2014 opening, capacity 5,000, footprint 58 x 55 m (OSM). Roof form, exterior colours and storeys are estimates; no source describes the exterior. Only an indoor boxing arena in the set, so it is distinct from Thunder Dome (outdoor football)."
+    },
+    "bangkok-osm-node-6169672727": {
+      "venueId": "bangkok-osm-node-6169672727",
+      "city": "bangkok",
+      "name": "MK Restaurant",
+      "archetype": "restaurant",
+      "subject": "A suki restaurant unit with a glass shopfront and a blank red-and-white sign board, sited inside a large Tesco-type retail box",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#ece6d8",
+          "#c9b99a",
+          "#7a3a2a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, brand-neutral red"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/696537544",
+          "what": "OSM building under the pin: Tesco retail block about 114 x 92 m, 9,619 m2"
+        }
+      ],
+      "notes": "Low confidence: the pin sits inside a Tesco retail building (OSM 114 x 92 m) and the restaurant is a unit in a retail centre; the shopfront is typed. No logo or brand text: the sign is a blank board in a brand-neutral colour."
+    },
+    "bangkok-osm-relation-20313115": {
+      "venueId": "bangkok-osm-relation-20313115",
+      "city": "bangkok",
+      "name": "Thawiwanarom Park",
+      "archetype": "park-landscape",
+      "subject": "A local public park: lawns, a perimeter path, an open sala pavilion and rows of trees around a pond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 360,
+        "depth_m": 250,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1d0",
+          "#c9b99a",
+          "#f2efe6"
+        ],
+        "roofColour": "#d9772b",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "open Thai sala"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13022353",
+          "what": "Thawi Wanarom Park, park in Bangkok; OSM park relation about 366 x 254 m, 68,136 m2"
+        }
+      ],
+      "notes": "Low confidence: only the footprint (about 366 x 254 m) is sourced; contents are typed from typical Bangkok district parks. Distinct from Suan Luang Rama IX (80 ha, lake, botanical garden) by being much smaller."
+    },
+    "bangkok-osm-way-1464119566": {
+      "venueId": "bangkok-osm-way-1464119566",
+      "city": "bangkok",
+      "name": "Royal Thai Air Force Museum",
+      "archetype": "museum-theatre",
+      "subject": "The air force museum at Don Mueang: a set of long aircraft-hall buildings with open outdoor display of aircraft on the apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4dccb",
+          "#7d8084",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1952 founded",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Thai_Air_Force_Museum",
+          "what": "at Don Muang RTAF base on Phahonyothin Road; Building 1, 2, 3 and 5 plus Outdoor Display; 2020 renovation"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4922129",
+          "what": "Royal Thai Air Force Museum, aviation museum, founded 1952; OSM extent about 296 x 185 m, 53,311 m2"
+        }
+      ],
+      "notes": "Sourced: museum site extent (296 x 185 m), numbered halls and outdoor display on the Don Mueang base. Hall dimensions, roof form and colours are estimates; the generator author may place a few aircraft silhouettes outdoors (no aircraft feature exists in the contract)."
+    },
+    "bangkok-osm-way-1543169884": {
+      "venueId": "bangkok-osm-way-1543169884",
+      "city": "bangkok",
+      "name": "National Institute of Development Administration",
+      "archetype": "office-tower",
+      "subject": "The NIDA Navamintharathiraj Building: a 21-storey university tower on a compact rectangular plan, seen from the campus lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 45,
+        "storeys": 21,
+        "height_m": 84,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dccb",
+          "#c9a82a",
+          "#9a958a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 20th century (building year not found)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Institute_of_Development_Administration",
+          "what": "campus in Bang Kapi; image file name refers to the Navamintharathiraj building; institute colour yellow"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/626684124",
+          "what": "OSM building:levels=21, footprint about 68 x 45 m"
+        }
+      ],
+      "notes": "Sourced: OSM tag building:levels=21 and footprint 68 x 45 m (measured) on the university building at the pin. Facade colours and tower height (about 84 m from 21 x 4 m) are estimates; building year unknown. Used office-tower because the tall block is the recognisable part, not low campus blocks."
+    },
+    "bangkok-osm-way-175314200": {
+      "venueId": "bangkok-osm-way-175314200",
+      "city": "bangkok",
+      "name": "Thunder Dome",
+      "archetype": "stadium",
+      "subject": "Thunderdome Stadium, home of Muangthong United: an open football bowl with four fully seated stands and a covered main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b7b1a2",
+          "#c8302a",
+          "#e8e1d0"
+        ],
+        "roofColour": "#c8302a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand cover"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1998, renovated 2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thunderdome_Stadium",
+          "what": "football stadium in Nonthaburi, capacity 15,000, opened 1998, four fixed-seat stands by 2010, home of Muangthong United"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30339185",
+          "what": "Thunder Dome, Muang Thong Thani sports venue; OSM building 87 x 68 m"
+        }
+      ],
+      "notes": "Sourced: capacity 15,000, four seated stands by 2010, 1998 opening. The 140 x 110 m bowl, shed roof on the main stand and the red team colour accent are estimates. Distinct from the 28,000-seat Hassanal Bolkiah stadium by size and the single covered stand."
+    },
+    "bangkok-osm-way-177938414": {
+      "venueId": "bangkok-osm-way-177938414",
+      "city": "bangkok",
+      "name": "Siam University",
+      "archetype": "campus-block",
+      "subject": "A private university campus on Phet Kasem Road: a tall concrete academic block with ribbon windows over a podium of classrooms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 28,
+        "storeys": 12,
+        "height_m": 44,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e1d0",
+          "#a8a39a",
+          "#6f8f9a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1965 foundation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4381437",
+          "what": "Siam University, private university founded 1965; OSM campus about 576 x 262 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Siam_University",
+          "what": "located on Phet Kasem Road, Phasi Charoen District; no building description"
+        }
+      ],
+      "notes": "Low confidence: only location, 1965 foundation and campus extent are sourced; the block is typed. Taller than Dhurakij Pundit assumed block, but both are guesses."
+    },
+    "bangkok-osm-way-203011799": {
+      "venueId": "bangkok-osm-way-203011799",
+      "city": "bangkok",
+      "name": "Suan Luang Rama VIII Park",
+      "archetype": "park-landscape",
+      "subject": "A riverside memorial park on the Chao Phraya: manicured lawns, paved promenades and a small open pavilion building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#d4a72c",
+          "#c9b99a"
+        ],
+        "roofColour": "#d9772b",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "building about 53 x 41 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2002",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13022383",
+          "what": "Rama VIII Park, park in Bangkok, inception 2002; OSM building about 53 x 41 m"
+        }
+      ],
+      "notes": "Low confidence: only the 2002 date and a 53 x 41 m building footprint are sourced; the layout is typed. Riverside setting is by name and location only."
+    },
+    "bangkok-osm-way-341749639": {
+      "venueId": "bangkok-osm-way-341749639",
+      "city": "bangkok",
+      "name": "Nopparat Rajathanee Hospital",
+      "archetype": "hospital",
+      "subject": "A large government hospital: a tall slab ward block with long balcony bands beside lower treatment wings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 10,
+        "height_m": 40,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dccb",
+          "#8c8a80",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q20582973",
+          "what": "Nopparat Rajathanee Hospital, Bangkok, inception 1982; OSM complex about 395 x 358 m, 95,252 m2"
+        }
+      ],
+      "notes": "Sourced: 1982 opening and a very large complex (395 x 358 m); the main slab block, 10 storeys and colours are typed. Bigger than the other Bangkok hospitals."
+    },
+    "bangkok-osm-way-378636213": {
+      "venueId": "bangkok-osm-way-378636213",
+      "city": "bangkok",
+      "name": "Wat Nong Khaem",
+      "archetype": "temple-asian",
+      "subject": "A large Thai wat compound: a white ubosot with orange-and-green stepped gable roof, a tall gilded chedi and monks' quarters in a walled precinct",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "stepped",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f3efe4",
+          "#d4a72c",
+          "#b7b1a2"
+        ],
+        "roofColour": "#d9772b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "tiered gable"
+        },
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "gilded chedi"
+        },
+        {
+          "id": "pinnacles",
+          "count": 6,
+          "note": "chofa finials"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q98840907",
+          "what": "Wat Nong Khaem, Buddhist temple in Bangkok; OSM place_of_worship, Thai Mahanikaya, compound about 263 x 224 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/378636213",
+          "what": "compound size 263 x 224 m"
+        }
+      ],
+      "notes": "Low confidence: compound size and sect (Mahanikaya) sourced; the buildings are typed from the standard central-Thai wat. Larger than Wat Rat Burana and Wat Khae."
+    },
+    "bangkok-osm-way-420312611": {
+      "venueId": "bangkok-osm-way-420312611",
+      "city": "bangkok",
+      "name": "King Mongkut's University of Technology, Thonburi",
+      "archetype": "campus-block",
+      "subject": "The Bangmod campus: a four-storey engineering-faculty block with a covered walkway and plain concrete frame",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b7b1a2",
+          "#e8e1d0",
+          "#6f8f9a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960 foundation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Mongkut%27s_University_of_Technology_Thonburi",
+          "what": "52-acre Bangmod main campus; library founded 1988; SIT building near library"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q476521",
+          "what": "KMUTT, founded 1960; OSM campus about 675 x 485 m"
+        }
+      ],
+      "notes": "Low confidence: campus extent and dates are sourced; the building form is typed. No architectural description found."
+    },
+    "bangkok-osm-way-706259602": {
+      "venueId": "bangkok-osm-way-706259602",
+      "city": "bangkok",
+      "name": "Safari World",
+      "archetype": "park-landscape",
+      "subject": "Safari World zoo and marine park: a large show-park of lakes, aviaries and open theatres with a main gateway and car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 400,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e1d0",
+          "#c9b99a",
+          "#2f6fa8"
+        ],
+        "roofColour": "#1f7a5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main entrance"
+        },
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "open show theatres"
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "paddle-boat lake"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Safari_World",
+          "what": "Safari Park and Marine Park; eight km drive-through savannah; walk-through Marine Park with show theatres, aviaries, lake with paddle boats, opened 1988, about 480 acres"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2033070",
+          "what": "Safari World, tourist attraction; OSM park relation about 811 x 757 m"
+        }
+      ],
+      "notes": "Sourced: layout (two parks, show theatres, aviaries, lake) and 1988 opening. The venue pin is on the 811 x 757 m park; show a recognisable portion (gate and plaza and lake) in the scene. Architecture of show buildings is not described anywhere found."
+    },
+    "bangkok-quiet-reflection": {
+      "venueId": "bangkok-quiet-reflection",
+      "city": "bangkok",
+      "name": "Wat Khae",
+      "archetype": "temple-asian",
+      "subject": "A small neighbourhood wat: a modest white ubosot with a two-tier tiled roof and a small chedi inside a low wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "stepped",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f3efe4",
+          "#c9b99a",
+          "#d4a72c"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1
+        },
+        {
+          "id": "stupa",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: nothing findable beyond the name and coordinates (southeast of central Bangkok, near Samut Prakan). Typed from the standard central-Thai wat and made smaller than Wat Nong Khaem; roof colour is a brown variant to differ from the other two wats. No sources found."
+    },
+    "bangkok-recreation": {
+      "venueId": "bangkok-recreation",
+      "city": "bangkok",
+      "name": "Suan Luang Rama IX",
+      "archetype": "park-landscape",
+      "subject": "Suan Luang Rama IX, Bangkok's largest park (about 80 ha): a big lake, botanical gardens, tree-lined paths and a pavilion honouring the late king",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 420,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#d4a72c",
+          "#c9b99a"
+        ],
+        "roofColour": "#d9772b",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "royal exhibition pavilion with Thai tiered roof"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "lakeside landing"
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "southeast-asian",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Suan_Luang_Rama_IX",
+          "what": "largest park in Bangkok, 500 rai (about 80 ha), extensive botanical gardens, lake, pavilion with exhibits honouring the King, flora fair since 1987"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1795947",
+          "what": "Suan Luang Rama IX; OSM park about 1,324 x 1,209 m"
+        }
+      ],
+      "notes": "Sourced: size, lake, botanical gardens, royal pavilion, 1987. Park contents beyond that are typed; scene shows a recognisable portion (lake, pavilion, paths) given the 120 m clamp."
+    },
+    "bangkok-transit": {
+      "venueId": "bangkok-transit",
+      "city": "bangkok",
+      "name": "Sala Ya",
+      "archetype": "transport-station",
+      "subject": "Sala Ya railway station: a very small single-storey station building beside two tracks under a short platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e1d0",
+          "#8a5a3c",
+          "#c8302a"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "small wall clock"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "State Railway of Thailand station, year unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/893887684",
+          "what": "building=train_station Sala Ya (Thai name), about 34.5 x 13.1 m, 370 m2"
+        }
+      ],
+      "notes": "Sourced: the station building footprint is OSM-measured (34.5 x 13.1 m, 370 m2). Colour and roof are typed from a typical State Railway of Thailand halt (hipped roof, painted render). The clock is a minor feature note, not verified. Tiny compared with the Porto de Dili and Serasa ferry terminals in the other cities."
+    }
+  }
+}

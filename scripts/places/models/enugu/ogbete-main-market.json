@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "ogbete-main-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Evening_in_Ogbete_Market.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "O.C. Mbagwu",
+   "view": "street",
+   "file": "/tmp/places-evidence/enugu/ogbete.jpg",
+   "used": "street-level lane only: tightly packed big umbrellas in muted grey, tan and brown over ground-level traders, a taller plain concrete shop block at the edge with a blank board; no building massing visible so it is not used for verification"
+  },
+  {
+   "kind": "text",
+   "used": "brief: dense district of lock-up stalls, tin sheds, umbrellas along narrow lanes with taller shop blocks at the edge. The OSM match is a 72 m2 nearest building, not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "shutter_colours": [
+     "#8a4a36",
+     "#7a8088",
+     "#a5a79f"
+    ],
+    "awning_colours": [
+     "#6f7a86",
+     "#9a5a3c",
+     "#b8b2a0"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "shutter_colours": [
+     "#8a4a36",
+     "#7a8088",
+     "#a5a79f"
+    ],
+    "awning_colours": [
+     "#6f7a86",
+     "#9a5a3c",
+     "#b8b2a0"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "shutter_colours": [
+     "#8a4a36",
+     "#7a8088",
+     "#a5a79f"
+    ],
+    "awning_colours": [
+     "#6f7a86",
+     "#9a5a3c",
+     "#b8b2a0"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -45,
+    6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -15,
+    6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    15,
+    6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -40,
+    22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -10,
+    22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    25,
+    22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -48,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#7b7f86",
+     "#b0a58c",
+     "#8a4a36",
+     "#c9c4b4"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -48,
+    14,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#7b7f86",
+     "#b0a58c",
+     "#8a4a36",
+     "#c9c4b4"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "colours": [
+     "#7b7f86",
+     "#b0a58c",
+     "#8a4a36"
+    ]
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    0,
+    52,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 12,
+    "storeys": 3,
+    "floor_height": 3.2,
+    "windows": "punched",
+    "roof": "flat"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 34,
+    "depth": 11,
+    "storeys": 2,
+    "floor_height": 3.4,
+    "windows": "punched",
+    "roof": "flat"
+   }
+  },
+  {
+   "type": "roof-sign",
+   "at": [
+    40,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "colour": "#e9e5da"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo shows only a crowded lane; layout of rows, sheds and shop blocks is typed. A real market is far larger than the 120 m scene."
+ }
+}

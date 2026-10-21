@@ -1,0 +1,179 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/225786231",
+   "used": "main block footprint (50 x 26 m, name-matched); remaining buildings are typical, not observed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lecture-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "louvre",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3b2c",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hostel",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    -40
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    38,
+    -30
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5b3c",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#3b5d70"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -60
+   ],
+   "params": {
+    "length": 90,
+    "height": 2,
+    "kind": "wall",
+    "colour": "#c8c1af"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -25
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     25,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; OSM block outline only. Hostel, chapel and lawn arrangement are typical guesses; the brief's U shape was not reproduced."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "baptist-college-theology"
+}

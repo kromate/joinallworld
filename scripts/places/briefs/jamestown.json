@@ -1,0 +1,1283 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "jamestown",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "jamestown",
+    "climate": "tropical-maritime",
+    "vernacular": "A long thin Georgian-era town in a steep dry valley: 2-3 storey lime-washed or painted-render terraces along Main Street with sash windows, fanlights and small balconies, built partly of local volcanic stone; white-and-cream government buildings and East India Company fortifications at the harbour end; most roofs now grey or red metal sheet (formerly slate); barren dark cliffs above with sparse palms and shade trees.",
+    "wallColours": [
+      "#efe9d8",
+      "#e6d3a8",
+      "#d9b3a0",
+      "#b9c9c0",
+      "#f6f3ea",
+      "#8f8a7c"
+    ],
+    "roofColours": [
+      "#7a7f84",
+      "#a8473a",
+      "#5a5f63",
+      "#b9b4a8"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "render",
+      "stone",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Georgian sash windows with white-painted glazing bars, fanlights over doors, shallow pediments and quoins, iron balcony rails, crenellated and bastioned East India Company walls with cannon, Napoleonic-era heritage plaques.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Jamestown,_Saint_Helena",
+        "what": "long thin town in James Valley, many buildings of local volcanic rock, over 100 listed Georgian buildings, Main Street unspoilt Georgian; Jacob's Ladder; St James' Church"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/The_Castle_(Saint_Helena)",
+        "what": "The Castle: white buildings, not like a typical castle, upper storey added 1776, rebuilt 1860s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Plantation_House_(Saint_Helena)",
+        "what": "roof originally slate, now metal sheeting as on most buildings on the island"
+      }
+    ]
+  },
+  "places": {
+    "jamestown-airport-jamestown-airport": {
+      "venueId": "jamestown-airport-jamestown-airport",
+      "city": "jamestown",
+      "name": "Saint Helena Airport terminal",
+      "archetype": "airport-terminal",
+      "subject": "The 2016 Prosperous Bay Plain terminal: a compact single-storey passenger building of about 3,500 m2 with a wide flat roof and covered entrance, with a separate operations/tower building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 37,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "terminal plus separate control/operations building",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d6",
+          "#6a8a9a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate combined control/rescue building"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Helena_Airport",
+          "what": "terminal ~3,500 m2 with cafe, gift shop, duty-free, restaurant; separate combined control tower and operations building; concrete runway 1,950 m; on Prosperous Bay Plain at 310 m elevation"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/166589669",
+          "what": "OSM terminal ~76x37 m, area 2,814 m2"
+        }
+      ],
+      "notes": "Size is documented (3,500 m2, OSM 76x37 m); facade look and colours are not described in the pages reached, so white/grey render with a glazed front is inferred. Setting is bare brown plateau with no trees."
+    },
+    "jamestown-clinic": {
+      "venueId": "jamestown-clinic",
+      "city": "jamestown",
+      "name": "General Hospital",
+      "archetype": "hospital",
+      "subject": "Jamestown General Hospital: a two-storey cream-washed hospital block with a corrugated metal roof and a covered entrance in the hillside of James Valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 39,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#efe9d8",
+          "#b9c9c0",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1900s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/658853607",
+          "what": "OSM hospital building ~45x39 m, area 1,088 m2"
+        }
+      ],
+      "notes": "Only the OSM footprint (45x39 m) was found. Typed from Jamestown's whitewashed institutional style."
+    },
+    "jamestown-community-notices": {
+      "venueId": "jamestown-community-notices",
+      "city": "jamestown",
+      "name": "The Castle",
+      "archetype": "civic-palace",
+      "subject": "The Castle, Jamestown's government offices: a long white-painted three-storey Georgian block behind the seafront fort, with sash windows, small square courtyard and archway entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 78,
+        "depth_m": 42,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "single-storey origin, upper floor added 1776; complex also includes Printing Office and Savings Bank",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f6f3ea",
+          "#8f8a7c",
+          "#e6d3a8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "entrance archway"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "adjacent seaward fort wall"
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1710 (rebuilt 1860s)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Castle_(Saint_Helena)",
+          "what": "does not look like a typical castle; began as a single-storey building with low basement, upper storey added 1776; rebuilt 1860s after termite damage; white buildings between gardens and the swimming pool; houses Council Chamber on second floor, Printing Office, Savings Bank, archives; behind the seaward fort"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/254448018",
+          "what": "OSM The Castle, 3 levels, ~78x42 m, wikidata Q7721573"
+        }
+      ],
+      "notes": "Recognisable by plain white Georgian walls at the mouth of the valley with a fort wall in front and Castle Gardens beside it. Roof colour and exact window layout were not described; grey metal sheet is typical for the island."
+    },
+    "jamestown-community-voting-game": {
+      "venueId": "jamestown-community-voting-game",
+      "city": "jamestown",
+      "name": "Law Courts",
+      "archetype": "civic-small",
+      "subject": "The Jamestown Court House on the Castle Gardens side of Main Street: a small white Georgian civic building with a simple pediment and sash windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f6f3ea",
+          "#8f8a7c",
+          "#e6d3a8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/552579257",
+          "what": "OSM courthouse building ~23x12 m, area 268 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jamestown,_Saint_Helena",
+          "what": "Georgian town centre context"
+        }
+      ],
+      "notes": "A photo caption exists for \"the courthouse in Jamestown\" but gives no description. Footprint is OSM-measured; the Georgian white look is typed from the street."
+    },
+    "jamestown-community-workshop": {
+      "venueId": "jamestown-community-workshop",
+      "city": "jamestown",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "A small two-storey Main Street townhouse in painted render with sash windows and a metal roof, used as an office",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#e6d3a8",
+          "#f6f3ea",
+          "#8f8a7c"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jamestown,_Saint_Helena",
+          "what": "Main Street Georgian terraces"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/557203445",
+          "what": "OSM nearest building ~17x11 m, area 200 m2"
+        }
+      ],
+      "notes": "Game placeholder; typed from Jamestown Georgian townhouse style. Footprint is the nearest OSM building."
+    },
+    "jamestown-market-game": {
+      "venueId": "jamestown-market-game",
+      "city": "jamestown",
+      "name": "Market game (game venue)",
+      "archetype": "market-hall",
+      "subject": "A small stone-and-render market hall in Jamestown: a single-storey Georgian building with arched openings and a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e6d3a8",
+          "#8f8a7c",
+          "#f6f3ea"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jamestown,_Saint_Helena",
+          "what": "Georgian listed town buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/557203453",
+          "what": "OSM nearest building ~20x15 m, area 297 m2"
+        }
+      ],
+      "notes": "Game placeholder; Jamestown has a small market building on the lower town but this brief is a typed guess, not a description of it."
+    },
+    "jamestown-meal-stop": {
+      "venueId": "jamestown-meal-stop",
+      "city": "jamestown",
+      "name": "Mantis St Helena (Consulate Hotel)",
+      "archetype": "hotel",
+      "subject": "A Main Street Georgian townhouse hotel: a pale three-storey painted terrace with sash windows, a wrought-iron balcony and a small porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 9,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#d9b3a0",
+          "#f6f3ea",
+          "#8f8a7c"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/552579254",
+          "what": "OSM Hotel St Helena building ~26x9 m, area 229 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jamestown,_Saint_Helena",
+          "what": "Georgian Main Street"
+        }
+      ],
+      "notes": "The venue name Mantis St. Helena matches the historic hotel on Main Street; no description found. Footprint from OSM nearest hotel building. Colours typed."
+    },
+    "jamestown-osm-node-11755023051": {
+      "venueId": "jamestown-osm-node-11755023051",
+      "city": "jamestown",
+      "name": "The Departures Cafe",
+      "archetype": "restaurant",
+      "subject": "A small cafe pavilion beside the airport terminal: a one-storey white building with a flat roof and an outdoor terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d6",
+          "#6a8a9a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Helena_Airport",
+          "what": "terminal includes a cafe; cafe size not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/166589669",
+          "what": "OSM airport terminal building at the pin"
+        }
+      ],
+      "notes": "The pin is inside the airport terminal footprint (~76x37 m), so the cafe is part of or next to it; the stand-alone pavilion here is a typed guess."
+    },
+    "jamestown-osm-node-13908472202": {
+      "venueId": "jamestown-osm-node-13908472202",
+      "city": "jamestown",
+      "name": "Jacob's Ladder",
+      "archetype": "monument",
+      "subject": "Jacob's Ladder, the 699-step straight stair climbing the steep cliff above Jamestown at ~40 degrees, with railings and string lights, from a small base building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 40,
+        "roof": "none",
+        "variant": "incline stair; the model shows the lower part only",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8f8a7c",
+          "#bdb7a7",
+          "#5a5f63"
+        ],
+        "roofColour": "#8f8a7c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "699 steps in all; show lower section"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "handrails and lighting"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "foot of the ladder"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1829",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jacob%27s_Ladder_(Saint_Helena)",
+          "what": "~183 m (600 ft) tall, ~281.6 m long; 700 steps originally, 699 remain; 39-41 degrees; lights installed 2000, refurbished 2006; Grade I; formerly a cable railway (1829); lower station in Jamestown, upper at Half Tree Hollow"
+        }
+      ],
+      "notes": "Whole ladder (281 m along the slope, 183 m rise) exceeds the 120 m clamp: show the recognisable lower portion. The pin is the viewpoint at the foot. Original railway rails and sleepers were removed in 1871."
+    },
+    "jamestown-osm-node-1568670948": {
+      "venueId": "jamestown-osm-node-1568670948",
+      "city": "jamestown",
+      "name": "High Knoll Fort",
+      "archetype": "heritage-fort",
+      "subject": "High Knoll Fort, the island's largest and most complete fort: a squat stone redoubt on a ridge above Jamestown with thick bastioned walls enclosing a round Martello-style tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "redoubt with inner round tower (1799), rebuilt 1874",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#7a7468",
+          "#a8a090",
+          "#cfc9b8"
+        ],
+        "roofColour": "#7a7468",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1799, rebuilt 1874",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/High_Knoll_Fort",
+          "what": "redoubt-style fort; original 1799 circular Martello-type tower, rebuilt 1874 by Royal Engineers incorporating the tower; largest, most prominent, most complete fort; ~584 m above sea level; Grade I"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/1568670948",
+          "what": "OSM building 1 level at pin"
+        }
+      ],
+      "notes": "Walls are thick dark local volcanic stone on a bare ridge. Overall size (~45x40 m) is an estimate: the OSM building is small (about 32x32 m footprint) and the page gives no dimensions."
+    },
+    "jamestown-osm-way-146163203": {
+      "venueId": "jamestown-osm-way-146163203",
+      "city": "jamestown",
+      "name": "Castle Gardens",
+      "archetype": "park-landscape",
+      "subject": "Castle Gardens beside The Castle: formal lawns and flowerbeds with palms and shade trees, paths and a low wall, with the white Castle buildings alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 92,
+        "depth_m": 72,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "formal lawn garden"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8a7c",
+          "#6f9a77",
+          "#f6f3ea"
+        ],
+        "roofColour": "#8f8a7c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "georgian",
+      "era": "18th-19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Castle_(Saint_Helena)",
+          "what": "photo caption: white buildings between the gardens and the swimming pool, seen from Jacob's Ladder"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/146163203",
+          "what": "OSM park ~92x72 m"
+        }
+      ],
+      "notes": "Layout (formal lawn, palms, wall) typed from the city style; only extent and adjacency to The Castle are sourced."
+    },
+    "jamestown-osm-way-254448055": {
+      "venueId": "jamestown-osm-way-254448055",
+      "city": "jamestown",
+      "name": "Saint James' Church",
+      "archetype": "church-classical",
+      "subject": "Saint James' Church, Jamestown: a plain rectangular Georgian parish church of 1774 with a west tower and steeple, lancet windows and whitewashed walls under a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable",
+        "variant": "west tower with steeple"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f6f3ea",
+          "#8f8a7c",
+          "#e6d3a8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower"
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "steeple restored after removal in 1980"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1774",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_James,_Jamestown",
+          "what": "Grade I Anglican church completed 1774; alterations 1843 and 1869; spire removed 1980 for safety and steeple later restored; restored 2020; lancet windows near the altar"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/254448055",
+          "what": "OSM church ~28.5x17.8 m, start_date 1774"
+        }
+      ],
+      "notes": "Size is OSM-measured. Colours are not described in text; whitewash with a grey metal roof is typical for the island. Tower height is an estimate."
+    },
+    "jamestown-osm-way-35798100": {
+      "venueId": "jamestown-osm-way-35798100",
+      "city": "jamestown",
+      "name": "Longwood House",
+      "archetype": "manor",
+      "subject": "Longwood House, Napoleon's residence: a long low single-storey white farmhouse with a pitched roof, wide veranda steps and a surrounding garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 26,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "former farm converted 1815; stone front steps survive from original",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "render",
+        "colours": [
+          "#f6f3ea",
+          "#bdb7a7",
+          "#8f8a7c"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "original stone front steps"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1815",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Longwood_House",
+          "what": "former East India Company farm converted for Napoleon in 1815; only the stone front steps survived termites and 1940s demolition plans; restored by the French; now a museum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/35798100",
+          "what": "OSM museum building ~26x24 m"
+        }
+      ],
+      "notes": "The text gives no look; low single-storey whitewashed form is recalled from public photos and typed. Distinct from Plantation House: lower and plainer."
+    },
+    "jamestown-osm-way-550478777": {
+      "venueId": "jamestown-osm-way-550478777",
+      "city": "jamestown",
+      "name": "Plantation House",
+      "archetype": "manor",
+      "subject": "Plantation House, the Governor's residence: a large symmetrical two-storey white Georgian country house with a hip roof and sash windows in a lawned estate with giant tortoises",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "variant": "extended 1816",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "render",
+        "colours": [
+          "#f6f3ea",
+          "#bdb7a7",
+          "#8f8a7c"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1792",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Plantation_House_(Saint_Helena)",
+          "what": "built 1791-2 by the East India Company as summer residence for the governor; substantially extended 1816; mostly external alterations 1960; roof originally slate, now metal sheeting; Grade I; paddock with four giant tortoises"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/550478777",
+          "what": "OSM museum building ~35x34 m, start_date 1792"
+        }
+      ],
+      "notes": "Size from OSM; roof material from the page; wall colour (white with grey roof) and the small entrance portico are recalled from photos, not described in the text."
+    },
+    "jamestown-osm-way-552579270": {
+      "venueId": "jamestown-osm-way-552579270",
+      "city": "jamestown",
+      "name": "Tasty Bites",
+      "archetype": "restaurant",
+      "subject": "A small Main Street cafe in a single-storey cream painted building with a metal roof and a pavement awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#e6d3a8",
+          "#f6f3ea",
+          "#8f8a7c"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/552579270",
+          "what": "OSM restaurant building ~12x11 m, area 130 m2"
+        }
+      ],
+      "notes": "OSM footprint only; look typed from Jamestown small buildings."
+    },
+    "jamestown-osm-way-754718688": {
+      "venueId": "jamestown-osm-way-754718688",
+      "city": "jamestown",
+      "name": "Sandy Bay Baptist Chapel",
+      "archetype": "shrine-small",
+      "subject": "A very small whitewashed Baptist chapel at Sandy Bay in the south of the island: a single gabled hall with a metal roof and a small porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f6f3ea",
+          "#8f8a7c",
+          "#bdb7a7"
+        ],
+        "roofColour": "#5a5f63",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/754718688",
+          "what": "OSM Baptist church ~12.7x5.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28000352",
+          "what": "Sandy Bay Chapel, chapel on St Helena"
+        }
+      ],
+      "notes": "Tiny OSM footprint (12.7x5.4 m); look typed. Far from Jamestown (Sandy Bay, south coast) despite the city grouping."
+    },
+    "jamestown-quiet-reflection": {
+      "venueId": "jamestown-quiet-reflection",
+      "city": "jamestown",
+      "name": "Saint Paul's Cathedral",
+      "archetype": "church-gothic",
+      "subject": "St Paul's Cathedral in St Paul's district: a modest Victorian Gothic-style Anglican church of 1850-51 with lancet windows, a stained-glass east window and a low tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable",
+        "variant": "nave with west tower"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#f0e8d6",
+          "#8f8a7c",
+          "#d9d4c6"
+        ],
+        "roofColour": "#5a5f63",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "window above the altar"
+        },
+        {
+          "id": "buttresses",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1851",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Paul%27s_Cathedral_(Saint_Helena)",
+          "what": "construction began 1850, completed 1851; became a cathedral in 1859; ~2 miles south of Jamestown; Grade I; stained glass window above the altar"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/556912651",
+          "what": "OSM church ~28x14 m, start_date 1851"
+        }
+      ],
+      "notes": "Style/tower are not stated in the text reached; Gothic-revival lancets inferred from its 1850s date and island churches. Located in a green upland district, not in the town."
+    },
+    "jamestown-recreation": {
+      "venueId": "jamestown-recreation",
+      "city": "jamestown",
+      "name": "Domaine du Pavillon des Briars",
+      "archetype": "park-landscape",
+      "subject": "The Briars estate where Napoleon first stayed: lawns and trees around a small garden pavilion, owned by the French state",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 43,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "small pavilion in a garden"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#e6dcc4",
+          "#f6f3ea",
+          "#8f8a7c"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1810s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jamestown,_Saint_Helena",
+          "what": "island context only; no page on the Briars pavilion could be retrieved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/455727922",
+          "what": "OSM park ~44x43 m, area 1,221 m2"
+        }
+      ],
+      "notes": "No description of the pavilion retrieved. The Briars was where Napoleon stayed before Longwood; the pavilion form is typed. Treat as a garden with a small pavilion."
+    },
+    "jamestown-transit": {
+      "venueId": "jamestown-transit",
+      "city": "jamestown",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A roadside bus shelter on Jamestown's Main Street: a tiny open roofed shelter with a bench",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6d3a8",
+          "#7a7f84",
+          "#f6f3ea"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/849280320",
+          "what": "OSM nearest building ~17x7 m, area 116 m2"
+        }
+      ],
+      "notes": "Game placeholder; typed."
+    }
+  }
+}

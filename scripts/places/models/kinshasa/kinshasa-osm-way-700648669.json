@@ -1,0 +1,348 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-700648669",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/4040955",
+   "used": "overall extent 257 x 197 m and the pattern of long parallel ward wings off a spine, scaled about 0.45; the raw multipolygon is self-crossing so wings are composed by hand rather than using the outline"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Kinshasa_General_Hospital",
+   "used": "1912-1924 colonial core, 2,000 beds, Avenue Colonel Ebeya; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-1",
+   "footprint": {
+    "rect": [
+     60,
+     9
+    ]
+   },
+   "at": [
+    12,
+    -38
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {},
+    "bay": 11
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-2",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    14,
+    -22
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-3",
+   "footprint": {
+    "rect": [
+     58,
+     9
+    ]
+   },
+   "at": [
+    10,
+    -6
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {},
+    "bay": 11
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-4",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    14,
+    10
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {
+     "front": "arched"
+    },
+    "bay": 11
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-5",
+   "footprint": {
+    "rect": [
+     56,
+     9
+    ]
+   },
+   "at": [
+    12,
+    26
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "faces": {},
+    "bay": 11
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spine-block",
+   "footprint": {
+    "rect": [
+     11,
+     92
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8ddc4",
+    "windows": "none",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "bay": 11,
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "new-block",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    -48,
+    -44
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d6d0c2",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d6d0c2",
+       "#bfc9c9"
+      ]
+     }
+    ],
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -26,
+    -52,
+    4.6
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#efe6d2",
+    "roofColour": "#4a7f8c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 4,
+    "spread": 70
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -58,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c4",
+    "count": 2,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No photo found; the ward layout is a schematic reading of the OSM extent (five parallel wings off a spine plus a newer block), not the exact wings; windows kept to a few faces for the triangle budget; no linking walkways beyond one, no ambulance yard detail."
+ }
+}

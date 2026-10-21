@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/378674902",
+   "used": "Parliament Buildings outline (96 x 44 m); Commons has no photo of the building (only the coat of arms); formal pale two-storey block with central portico and flags from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0eadb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#c9b88f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 6,
+    "colour": "#fbf9f3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 14,
+    "colour": "#3a6ea5"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#2b2b2b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building; footprint plus brief, portico and flags are typical not observed"
+ }
+}

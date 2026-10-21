@@ -1,0 +1,492 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-way-303334100",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SUDAN_NATIONAL_MUSEUM.JPG",
+   "licence": "Public domain",
+   "author": "Marwan Abbas (Arabic Wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/khartoum/museum1.jpg",
+   "used": "low red-brick wings with high ribbon windows and cream slab roof, taller flat-roofed central entrance block with crenellated cream parapet and blank sign band, slim cream columns on a portico, tan stone panels beside the doors, four flagpoles, brick paved forecourt, pool at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/303334100",
+   "used": "overall size (about 72 x 27 m body)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/National_Museum_of_Sudan",
+   "used": "1955 museum, garden temples and Nile stream"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     72,
+     20
+    ]
+   },
+   "at": [
+    2,
+    2
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#e6d8b0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#6f7d83",
+    "plinth": 0.5,
+    "bands": "#e6d8b0",
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e1d3ae",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     28,
+     10
+    ]
+   },
+   "at": [
+    2,
+    -4
+   ],
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d8b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d8b0",
+    "parapet": 0.9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-band",
+   "at": [
+    2,
+    -9.3,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     27,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#e6d8b0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    2,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 28,
+    "depth": 4,
+    "height": 4.6,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#e8dcbc",
+    "edgeColour": "#e8dcbc",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#8c8a85"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doors",
+   "at": [
+    2,
+    -9.1,
+    0.3
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#4a3424"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -6,
+     8.4
+    ],
+    "end": [
+     10,
+     -6,
+     8.4
+    ],
+    "count": 4,
+    "of": {
+     "type": "flag",
+     "params": {
+      "height": 10,
+      "colour": "#3a3d40"
+     }
+    }
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    -42,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 12,
+    "colour": "#5f7f6a",
+    "edgeColour": "#bdb49c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    28,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 4.5,
+    "roof": "gable",
+    "rise": 1.5,
+    "colour": "#c9a878",
+    "cap_colour": "#b69668"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -6,
+    30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 4.5,
+    "roof": "gable",
+    "rise": 1.5,
+    "colour": "#c9a878",
+    "cap_colour": "#b69668"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-band",
+   "at": [
+    2,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     72,
+     0.4
+    ],
+    "height": 1.3,
+    "colour": "#b5524f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-band-l",
+   "at": [
+    -33.8,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     20
+    ],
+    "height": 1.3,
+    "colour": "#b5524f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brick-band-r",
+   "at": [
+    37.8,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     20
+    ],
+    "height": 1.3,
+    "colour": "#b5524f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier2",
+   "at": [
+    2,
+    -1,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "height": 1.6,
+    "colour": "#e6d8b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-l",
+   "at": [
+    -8,
+    -9.15,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#b59a6c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stone-r",
+   "at": [
+    12,
+    -9.15,
+    0.4
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#b59a6c"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    2,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 25,
+    "count": 10,
+    "height": 4.6,
+    "radius": 0.25,
+    "kind": "square",
+    "beamHeight": 0.3,
+    "colour": "#e6d8b0"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.5,
+     -8.6,
+     8.4
+    ],
+    "end": [
+     14.5,
+     -8.6,
+     8.4
+    ],
+    "count": 13,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1,
+       0.8
+      ],
+      "height": 0.9,
+      "colour": "#e6d8b0"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    2,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     28
+    ],
+    "height": 0.08,
+    "colour": "#d6b894"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Cream entrance block, crenellations, 10-column portico, brick lower band and forecourt now match; lacks lettering, brick-paving texture, gated door detail, flags are dark single-colour; temple garden unseen."
+ }
+}

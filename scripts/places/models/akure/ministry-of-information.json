@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "ministry-of-information",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/akure.json",
+   "used": "no photo or reliable outline found (OSM match is a ragged containing polygon); typical three-storey Nigerian state ministry block with entrance porch, hip roof and flagpoles"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#a9744e",
+    "cornice": true,
+    "faces": {
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -9.2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe0",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "parapet": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -29,
+    3
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d9c2",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#ffffff",
+    "edgeColour": "#a9744e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.6,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.8,
+    "colour": "#4f7a4c",
+    "frameColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#d8cfb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "cars": [
+   {
+    "at": [
+     -14,
+     -22
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     -8,
+     -22
+    ],
+    "colour": "#2b3a4a"
+   },
+   {
+    "at": [
+     6,
+     -22
+    ],
+    "colour": "#b23a3a"
+   },
+   {
+    "at": [
+     20,
+     -24
+    ],
+    "colour": "#cfcfcf"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this building exists; typical state ministry block from brief"
+ }
+}

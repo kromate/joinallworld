@@ -1,0 +1,438 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Supreme_Court_of_Somaliland.jpg",
+   "licence": "Public domain",
+   "author": "somalilandstandard",
+   "view": "front",
+   "used": "stone-clad walls, central gabled green roof, flat parapet side wings, covered entrance porch, flag poles each side, red carpet"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     13,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b59c7c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "glassColour": "#3a3f3a",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f6f4a",
+    "material": "metal-sheet",
+    "pitch": 33,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    -12,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b59c7c",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "glassColour": "#3a3f3a",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c8a72",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    12,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b59c7c",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "glassColour": "#3a3f3a",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c8a72",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-recess",
+   "footprint": {
+    "rect": [
+     6,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -8.1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a463e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-50",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -5,
+    -11.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0a888",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0a888"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-24",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -2.4,
+    -11.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0a888",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0a888"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier24",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    2.4,
+    -11.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0a888",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0a888"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier50",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    5,
+    -11.4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c0a888",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c0a888"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-slab",
+   "footprint": {
+    "rect": [
+     12,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 4.0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeade",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efeade",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.2,
+    2.2
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "frameColour": "#4f8a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -10.5,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10.5,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    9.5,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 2,
+    "rise": 0.12,
+    "run": 5,
+    "count": 1,
+    "colour": "#b5202c"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -11,
+    -9.4,
+    0
+   ],
+   "params": {
+    "length": 4.6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3f6f35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -6.5,
+    -9.4,
+    0
+   ],
+   "params": {
+    "length": 4.6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3f6f35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    6.5,
+    -9.4,
+    0
+   ],
+   "params": {
+    "length": 4.6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3f6f35"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    11,
+    -9.4,
+    0
+   ],
+   "params": {
+    "length": 4.6,
+    "height": 1.4,
+    "depth": 1.8,
+    "colour": "#3f6f35"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Flags render single-colour green at this scale; hedges are blocky; photo is only 275 px and shows a curved paving apron and banners not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-community-voting-game"
+}

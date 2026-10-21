@@ -1,0 +1,1581 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "macau",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "macau",
+    "climate": "tropical-maritime",
+    "vernacular": "A dense high-rise Chinese city around a Portuguese colonial core: pastel yellow, cream, pink and white colonial buildings with white mouldings, green shutters, arcades and clay-tile roofs, set on black-and-white calcada wave pavement; granite and grey-brick Cantonese temples and tenements; and slab residential towers in grey, white and tile cladding. On Cotai and Taipa the big integrated resorts are glass, steel and gold-themed mega-blocks. Banyan and palm planting, hillside and reclaimed-land waterfront.",
+    "wallColours": [
+      "#e9d27a",
+      "#f1e8cf",
+      "#f4f2ec",
+      "#e6b9a6",
+      "#6e8f6a",
+      "#b04a3c",
+      "#bdbdb7"
+    ],
+    "roofColours": [
+      "#b5603f",
+      "#8a8f94",
+      "#6b6f73",
+      "#4b4b4b"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "tile-cladding",
+      "glass-curtain",
+      "stucco",
+      "red-brick",
+      "granite"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Portuguese colonial white mouldings, quoins, pediments and green louvred shutters on yellow or pink facades; calcada portuguesa black-and-white wave paving; azulejo panels; granite gate pavilions and curved ridge ornaments on Chinese temples; grey-brick Cantonese tenements; gilded themed facades on the casino resorts.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Macau",
+        "what": "Macau architecture: Portuguese and Cantonese blend, A-Ma Temple granite and brick, Holy House of Mercy neoclassical with 14 arches, Mandarin's House with Art Deco touches, Grand Lisboa of steel, concrete and glass"
+      },
+      {
+        "url": "https://zh.wikipedia.org/wiki/聖奧斯定堂",
+        "what": "yellow-painted colonial church facade with white moulding, quoins, tiled pitched roof"
+      }
+    ]
+  },
+  "places": {
+    "macau-airport-macau-airport": {
+      "venueId": "macau-airport-macau-airport",
+      "city": "macau",
+      "name": "Macau International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the passenger terminal of Macau International Airport (1995), a long low glazed terminal on reclaimed land beside the runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "long curving terminal on reclaimed land",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4dadd",
+          "#6a8ea3",
+          "#f1f1ee"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Macau_International_Airport",
+          "what": "opened 9 November 1995 on reclaimed land, capacity 10 million passengers per year"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Macau",
+          "what": "context"
+        }
+      ],
+      "notes": "OSM terminal footprint is 438x119 m, height 23.9 m, building=transportation. Glass-and-steel appearance and the control tower are typical and not individually sourced. The real terminal is longer than the 120 m scene limit; show a portion."
+    },
+    "macau-clinic": {
+      "venueId": "macau-clinic",
+      "city": "macau",
+      "name": "The Islands Healthcare Complex — Macao Medical Center of Peking Union Medical College Hospital",
+      "archetype": "hospital",
+      "subject": "the Islands Healthcare Complex on Cotai (opened Dec 2023): a big modern hospital with wide podium wings and a taller ward block",
+      "form": {
+        "footprint": "H",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 8,
+        "height_m": 36,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeeea",
+          "#7fa3b5",
+          "#d6d2c4"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/離島醫療綜合體",
+          "what": "opened 20 December 2023; OSM footprint about 472x166 m"
+        }
+      ],
+      "notes": "Only the opening date and big footprint are known; storeys, colours and rooftop helipad are typed from a new large public hospital. Distinct from Kiang Wu by scale and wide podium."
+    },
+    "macau-community-notices": {
+      "venueId": "macau-community-notices",
+      "city": "macau",
+      "name": "Monetary Authority of Macao",
+      "archetype": "office-tower",
+      "subject": "the Monetary Authority of Macao (AMCM) building, a slim glass-and-stone office tower about 48 m tall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 12,
+        "height_m": 47.8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "granite",
+        "colours": [
+          "#9db4c2",
+          "#bdbab0",
+          "#e8e8e4"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "international",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/澳門金融管理局",
+          "what": "central bank agency; OSM height 47.8 m, footprint about 86x40 m"
+        }
+      ],
+      "notes": "Height 47.8 m is from OSM; storeys and curtain-wall finish are inferred. Colours estimated."
+    },
+    "macau-community-voting-game": {
+      "venueId": "macau-community-voting-game",
+      "city": "macau",
+      "name": "Cultural Centre Square",
+      "archetype": "park-landscape",
+      "subject": "the paved plaza in front of the Macao Cultural Centre on the Nam Van reclaimed waterfront, a wide open square of patterned paving with low planters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#cfcbbf",
+          "#8a8f94",
+          "#e8e4da"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1999",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/澳門文化中心廣場",
+          "what": "square near the Macao Cultural Centre; OSM 175x108 m"
+        }
+      ],
+      "notes": "Square is identified but not described in anything read. Typed as a large paved plaza; confidence low."
+    },
+    "macau-community-workshop": {
+      "venueId": "macau-community-workshop",
+      "city": "macau",
+      "name": "Seac Pai Van Library",
+      "archetype": "campus-block",
+      "subject": "Seac Pai Van Library on Coloane: a modern cube-like public library with a plain white-and-glass facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1f0ea",
+          "#8aa8b8",
+          "#c9c5b8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The OSM feature matched here is a 7-storey 45.5 m block (112x52 m) that may be an adjacent public-housing tower rather than the library. Nothing describes the library, so it is typed as a modern public library; low confidence."
+    },
+    "macau-market-game": {
+      "venueId": "macau-market-game",
+      "city": "macau",
+      "name": "台山街市市政綜合大樓 Complexo Municipal do Mercado de Tamagnini Barbosa",
+      "archetype": "market-hall",
+      "subject": "the Tai Shan (Tamagnini Barbosa) municipal market complex, a long slab-like market building with market halls at ground and an upper civic floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 84,
+        "depth_m": 15,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#dcd6c4",
+          "#7fa09a",
+          "#b04a3c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/台山街市",
+          "what": "market in Tai Shan, Macau; OSM 84x15 m, height 11 m"
+        }
+      ],
+      "notes": "Measured by OSM only (84x15 m, 11 m tall). No appearance source; colours estimated. Low confidence."
+    },
+    "macau-meal-stop": {
+      "venueId": "macau-meal-stop",
+      "city": "macau",
+      "name": "Clube militar",
+      "archetype": "manor",
+      "subject": "the 1870 Macau Military Club on Avenida da Praia Grande, a two-storey Portuguese colonial club house with a colonnaded front, now a restaurant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stucco",
+        "colours": [
+          "#e9d7b0",
+          "#ffffff",
+          "#6e8f6a"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "columned entrance front"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1870",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Macau_Military_Club",
+          "what": "completed 1870 as a private military club, restored 1995 and reopened as a restaurant; listed Portuguese colonial architecture; no appearance given"
+        }
+      ],
+      "notes": "Year, use and 41x27 m footprint are sourced; the cream-yellow colour, colonnade and shutters are typical of the Portuguese colonial core, not from a description. Low confidence."
+    },
+    "macau-osm-relation-20002113": {
+      "venueId": "macau-osm-relation-20002113",
+      "city": "macau",
+      "name": "University of Macau",
+      "archetype": "campus-block",
+      "subject": "a three-storey teaching building of the University of Macau Hengqin campus with grey-tile hip roofs round a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 65,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece7da",
+          "#8a8f94",
+          "#b04a3c"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Macau",
+          "what": "main campus on Hengqin Island opened 2013 (OSM building 102x67 m, 3 levels)"
+        }
+      ],
+      "notes": "OSM: building=university, 3 levels, about 102x67 m; no source describing its look was read. Residential college and library forms not modelled. Low confidence."
+    },
+    "macau-osm-relation-21176879": {
+      "venueId": "macau-osm-relation-21176879",
+      "city": "macau",
+      "name": "Macau Tower",
+      "archetype": "monument",
+      "subject": "Macau Tower (2001), a 338 m concrete observation and telecom tower with a wide round pod near the top, a slender antenna mast and a low entertainment base",
+      "form": {
+        "footprint": "round",
+        "width_m": 33,
+        "depth_m": 33,
+        "storeys": 58,
+        "height_m": 248,
+        "roof": "none",
+        "variant": "slender shaft, round observation pod at 223-248 m, 90 m antenna mast"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1e0da",
+          "#7f9fb4",
+          "#c8c8c2"
+        ],
+        "roofColour": "#c8c8c2",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "antenna spire rises to 338 m"
+        },
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "pod with observation deck and restaurants"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "convention and entertainment base"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "Skywalk X ring on the outer rim"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Macau_Tower",
+          "what": "antenna 338 m, roof 248 m, top floor 223 m, built 1998-2001 and opened 19 December 2001; observation deck, restaurants, Skywalk X ring around the rim; telecom and broadcast use"
+        }
+      ],
+      "notes": "Sourced heights: roof 248 m, spire 338 m. The generator should keep the tower height in the model and scale it into the scene. Base is 33 m across (OSM). The pod/shaft colours are pale concrete from photos."
+    },
+    "macau-osm-way-163732917": {
+      "venueId": "macau-osm-way-163732917",
+      "city": "macau",
+      "name": "Macau Stadium",
+      "archetype": "stadium",
+      "subject": "the Macau Olympic Complex Stadium (1995, rebuilt 2005): a 16,272-seat oval bowl with a roofed west stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 237,
+        "depth_m": 212,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "oval bowl, west stand roofed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5c3ba",
+          "#2f6f9a",
+          "#e8e4da"
+        ],
+        "roofColour": "#e0e0dc",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "west stand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1995, rebuilt 2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Macau_Olympic_Complex",
+          "what": "capacity about 16,272; opened 1995; East and West stands rebuilt for the 2005 East Asian Games; only the West Stand originally roofed; pitch 105x68 m"
+        }
+      ],
+      "notes": "Capacity, rebuilding and roof history sourced; colours estimated. Smaller than Bukit Jalil, and the MUST stadium here is a campus facility."
+    },
+    "macau-osm-way-172301929": {
+      "venueId": "macau-osm-way-172301929",
+      "city": "macau",
+      "name": "Kiang Wu Hospital",
+      "archetype": "hospital",
+      "subject": "Kiang Wu Hospital (the 2000 building of the Kiang Wu Charitable Association hospital), a roughly 30 m tall hospital block on the peninsula",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 64,
+        "storeys": 9,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dfd0",
+          "#8fb0c0",
+          "#b04a3c"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kiang_Wu_Hospital",
+          "what": "founded 1871, four sites, most recent built in 2000; OSM height 30.1 m, 81x64 m"
+        }
+      ],
+      "notes": "Date, height and footprint measured; facade colours estimated. Storeys inferred from the height."
+    },
+    "macau-osm-way-206823798": {
+      "venueId": "macau-osm-way-206823798",
+      "city": "macau",
+      "name": "沙梨頭街市 Mercado Municipal do Patane",
+      "archetype": "market-hall",
+      "subject": "the Patane municipal market complex (Sa Lei Tau) on the peninsula, a modern multi-level market building about 41 m tall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 78,
+        "depth_m": 32,
+        "storeys": 10,
+        "height_m": 41,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd6c4",
+          "#6f93a6",
+          "#b04a3c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/水上街市",
+          "what": "OSM tag points to a Wikipedia article about a market; not confirmed as this building"
+        }
+      ],
+      "notes": "OSM height 41.2 m, footprint 78x32 m and start date 2018-03-06; the wiki tag appears to point to the water-market article, so identification of appearance is unreliable. Low confidence."
+    },
+    "macau-osm-way-244820723": {
+      "venueId": "macau-osm-way-244820723",
+      "city": "macau",
+      "name": "MUST Stadium",
+      "archetype": "stadium",
+      "subject": "the Macau University of Science and Technology sports field, a football pitch with athletics track and a covered grandstand on one side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 208,
+        "depth_m": 149,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed",
+        "variant": "covered main grandstand only"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5c3ba",
+          "#2f6f9a",
+          "#e8e4da"
+        ],
+        "roofColour": "#d6d6d2",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Macau_University_of_Science_and_Technology",
+          "what": "university with a sports field in Taipa (OSM 208x149 m)"
+        }
+      ],
+      "notes": "Only the pitch footprint is measured; the stand and its roof are typed. Low confidence. Far smaller and simpler than Macau Stadium."
+    },
+    "macau-osm-way-244930722": {
+      "venueId": "macau-osm-way-244930722",
+      "city": "macau",
+      "name": "Ramalho Eanes Garden",
+      "archetype": "park-landscape",
+      "subject": "Ramalho Eanes Garden, a small ornamental garden in Coloane with a low pavilion, a few trees and paved paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#cfcbbf",
+          "#6e8f6a",
+          "#e8e4da"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "3 m high shelter"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/恩尼斯花園",
+          "what": "urban park; OSM structure 29x17 m, 3.1 m high"
+        }
+      ],
+      "notes": "Nothing was found that describes the garden itself; the pavilion is the 3 m OSM structure. Low confidence."
+    },
+    "macau-osm-way-295506987": {
+      "venueId": "macau-osm-way-295506987",
+      "city": "macau",
+      "name": "Grand Lisboa Palace Macau",
+      "archetype": "hotel",
+      "subject": "the Grand Lisboa Palace resort on Cotai (opened 2021): a huge hotel-casino complex blending European palace styling with Chinese pattern motifs on a broad podium",
+      "form": {
+        "footprint": "U",
+        "width_m": 290,
+        "depth_m": 210,
+        "storeys": 12,
+        "height_m": 60,
+        "roof": "flat",
+        "variant": "main resort plus separate designer-brand towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "stone",
+        "colours": [
+          "#e4ddcc",
+          "#c9a64a",
+          "#3a3a3a"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Chinese pattern design with European architecture"
+        },
+        {
+          "id": "crown",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "2021",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/澳門上葡京綜合渡假村",
+          "what": "opened 2021, main hotel combines Chinese pattern design with European architecture; Palazzo Versace tower 12 storeys; Lagerfeld tower black and white"
+        }
+      ],
+      "notes": "Only the style statement and that an adjoining Versace tower has 12 storeys are sourced. Main-block colours are estimated. Footprint 297x215 m from OSM. Low confidence."
+    },
+    "macau-osm-way-306158878": {
+      "venueId": "macau-osm-way-306158878",
+      "city": "macau",
+      "name": "Red Market",
+      "archetype": "market-hall",
+      "subject": "the 1936 Red Market (Mercado Vermelho): a symmetrical three-storey red-brick market with a central clock tower and a watchtower at each corner",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 31,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "symmetrical, central clock tower and four corner towers",
+        "wings": 0
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8452f",
+          "#d6d0c0",
+          "#6b6f73"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central clock tower"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "corner watchtowers"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1936",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Red_Market_(building)",
+          "what": "architect Julio Alberto Basto, planned 1934, completed 1936; three storeys; named for its red bricks; symmetrical layout with central clock tower and a watchtower at each corner"
+        }
+      ],
+      "notes": "Sourced. OSM: 62x31 m, 14 m. The brick red is the key colour; trim assumed pale concrete."
+    },
+    "macau-osm-way-322642517": {
+      "venueId": "macau-osm-way-322642517",
+      "city": "macau",
+      "name": "Hac Sa Park",
+      "archetype": "park-landscape",
+      "subject": "Hac Sa Park on Coloane beside the black-sand Hac Sa Beach: a wide lawn and tree park with barbecue shelters and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#cfc9b8",
+          "#8b6b4a",
+          "#4f7f4a"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "barbecue shelters"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hac-S%C3%A1_Park",
+          "what": "oceanside park on Coloane named for the black-sand beaches, with a barbecue area; stub with no layout detail"
+        }
+      ],
+      "notes": "Park is only known to be oceanfront with a barbecue area; the rest is typed. Low confidence."
+    },
+    "macau-osm-way-330083075": {
+      "venueId": "macau-osm-way-330083075",
+      "city": "macau",
+      "name": "Communications Museum",
+      "archetype": "museum-theatre",
+      "subject": "the Macau Communications Museum (opened 2006), a modern 31 m block near the Ruins area housing the post and telecom collection",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 7,
+        "height_m": 31.6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece7da",
+          "#6f93a6",
+          "#b04a3c"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/通訊博物館_(澳門)",
+          "what": "technology museum, OSM start date 2006-03-01, height 31.6 m, footprint 63x47 m"
+        }
+      ],
+      "notes": "Height, size and opening date from OSM tags; colours and storeys estimated."
+    },
+    "macau-osm-way-330769741": {
+      "venueId": "macau-osm-way-330769741",
+      "city": "macau",
+      "name": "中葡職業技術學校 Escola Luso-Chinesa Técnico-Profissional",
+      "archetype": "campus-block",
+      "subject": "the Luso-Chinese Technical-Professional School, a boxy 22 m-tall school block with long corridors and a front forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e8d9a8",
+          "#8aa8b8",
+          "#b04a3c"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM: building=school, 22 m, 125x91 m. No description found; colours typed from the city style. Low confidence."
+    },
+    "macau-osm-way-346331627": {
+      "venueId": "macau-osm-way-346331627",
+      "city": "macau",
+      "name": "Broadway Macau",
+      "archetype": "hotel",
+      "subject": "Broadway Macau on Cotai (reopened 2015), a theatre-themed resort-hotel and casino complex with an adjoining street-food row, linked to Galaxy Macau by a covered bridge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 380,
+        "depth_m": 170,
+        "storeys": 8,
+        "height_m": 40,
+        "roof": "flat",
+        "variant": "themed hotel-casino plus leisure building",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#d9d0bd",
+          "#b04a3c",
+          "#3a3a3a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "2006, reopened 2015",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/澳門百老匯",
+          "what": "themed on the Broadway theatre; originally Grand Waldo (2006), reopened as Broadway Macau 27 May 2015; hotel, casino and leisure buildings; bridge to Galaxy Macau"
+        }
+      ],
+      "notes": "Theme and history sourced; exterior colours not described and are estimated. Footprint 389x169 m from OSM. Low confidence."
+    },
+    "macau-osm-way-389129453": {
+      "venueId": "macau-osm-way-389129453",
+      "city": "macau",
+      "name": "St. Augustine's Church",
+      "archetype": "church-classical",
+      "subject": "St. Augustine's Church in the old city (rebuilt 1875): a yellow-painted colonial facade with white mouldings, quoins and a pediment, with a bell tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 56,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "gable",
+        "variant": "single nave, bell tower at the rear"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e6c75a",
+          "#ffffff",
+          "#c8c4b8"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "triangular pediment with a niche holding a statue of the Virgin Mary"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "Tuscan double stone columns at the door"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "rear tower, OSM height 39 m"
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1591, rebuilt 1875",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/聖奧斯定堂",
+          "what": "facade 17 m tall, painted yellow with white mouldings and quoins, Tuscan double stone columns, triangular pediment with Virgin Mary niche, pitched tiled timber roof, brick and wood structure, bell tower at rear, founded 1591, rebuilt 1875, forecourt formed by angled placement"
+        }
+      ],
+      "notes": "Sourced. Faces the small angled square. Compare St. Dominic and Cotai churches only for pastel palette; this one is clearly yellow with white trim."
+    },
+    "macau-osm-way-580160817": {
+      "venueId": "macau-osm-way-580160817",
+      "city": "macau",
+      "name": "City University of Macau",
+      "archetype": "office-tower",
+      "subject": "the City University of Macau main tower, a tall slim 74 m university high-rise on the peninsula",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 39,
+        "storeys": 20,
+        "height_m": 74,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d2c0",
+          "#7f9fb4",
+          "#b9b6ad"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/澳門城市大學",
+          "what": "university; OSM building 74 m, 41x39 m"
+        }
+      ],
+      "notes": "Height and footprint from OSM. Typed as an office-tower archetype because it is a high-rise; colours are estimates."
+    },
+    "macau-quiet-reflection": {
+      "venueId": "macau-quiet-reflection",
+      "city": "macau",
+      "name": "Church of Our Lady of Sorrows",
+      "archetype": "church-modern",
+      "subject": "the small modern Church of Our Lady of Sorrows at Ka Ho, Coloane (1966), with a bronze crucifix above the north door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "small 1960s chapel with front crucifix"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f4f2ec",
+          "#8a8f94",
+          "#b5603f"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "cross-topped front"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze crucifix over the door"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1966",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Igreja_de_Nossa_Senhora_das_Dores_(Macau)",
+          "what": "small modern church at Ká-Hó, Coloane, built 1966; bronze crucifix over north door; built by Italian sculptors"
+        }
+      ],
+      "notes": "Sourced: small and modern, built 1966. OSM height 27.5 m is likely the tall front cross/frontispiece. White paint and tile roof are estimates."
+    },
+    "macau-recreation": {
+      "venueId": "macau-recreation",
+      "city": "macau",
+      "name": "氹仔海濱休憩區 Zona de Lazer da Marginal da Taipa",
+      "archetype": "park-landscape",
+      "subject": "the Taipa waterfront promenade (Marginal da Taipa): a paved walk with low planting along the sea with a view back to the old Taipa village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#cfcbbf",
+          "#6e8f6a",
+          "#e8e4da"
+        ],
+        "roofColour": "#b5603f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The OSM feature is a 3 m node; nothing describes the promenade. Typed as a paved seaside walk. Low confidence."
+    },
+    "macau-transit": {
+      "venueId": "macau-transit",
+      "city": "macau",
+      "name": "凱泉灣總站 Riviera Macau / Terminal",
+      "archetype": "transport-station",
+      "subject": "the Riviera Macau bus terminal: a covered bus terminus with several bays at the base of a very tall residential tower complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "bus terminus under residential podium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#d4d0c4",
+          "#8a8f94",
+          "#b04a3c"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The matched OSM building is a 45-level, 147 m residential tower (48x29 m) at the coordinate; the model shows only the terminal podium. No source for the terminal itself; low confidence."
+    }
+  }
+}

@@ -1,0 +1,437 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "cg-redo-national-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_Stadium_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kritzolina",
+   "view": "side",
+   "file": "/tmp/places-evidence/abuja/stadium2.jpg",
+   "used": "outer facade: pale grey concrete ring beam on top, tall numbered support towers with orange-edged V-fins, raked precast stands visible between the towers, low white service sheds and a flat paved car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_Stadium_1.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jeff Attaway",
+   "view": "interior",
+   "file": "/tmp/places-evidence/abuja/stadium1.jpg",
+   "used": "cream cable-net membrane roof over both tiers, red-brown seats, red running track, lights on the roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13989805",
+   "used": "overall size only (about 270 m across including the plaza): modelled as a full oval bowl scaled to the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      40.0,
+      0.0
+     ],
+     [
+      39.0,
+      7.57
+     ],
+     [
+      36.04,
+      14.75
+     ],
+     [
+      31.27,
+      21.2
+     ],
+     [
+      24.94,
+      26.58
+     ],
+     [
+      17.36,
+      30.63
+     ],
+     [
+      8.9,
+      33.15
+     ],
+     [
+      0.0,
+      34.0
+     ],
+     [
+      -8.9,
+      33.15
+     ],
+     [
+      -17.36,
+      30.63
+     ],
+     [
+      -24.94,
+      26.58
+     ],
+     [
+      -31.27,
+      21.2
+     ],
+     [
+      -36.04,
+      14.75
+     ],
+     [
+      -39.0,
+      7.57
+     ],
+     [
+      -40.0,
+      0.0
+     ],
+     [
+      -39.0,
+      -7.57
+     ],
+     [
+      -36.04,
+      -14.75
+     ],
+     [
+      -31.27,
+      -21.2
+     ],
+     [
+      -24.94,
+      -26.58
+     ],
+     [
+      -17.36,
+      -30.63
+     ],
+     [
+      -8.9,
+      -33.15
+     ],
+     [
+      -0.0,
+      -34.0
+     ],
+     [
+      8.9,
+      -33.15
+     ],
+     [
+      17.36,
+      -30.63
+     ],
+     [
+      24.94,
+      -26.58
+     ],
+     [
+      31.27,
+      -21.2
+     ],
+     [
+      36.04,
+      -14.75
+     ],
+     [
+      39.0,
+      -7.57
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.12,
+    "colour": "#7a9a5a",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 34,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 22,
+    "rise": 0.78,
+    "run": 0.9,
+    "firstHeight": 4,
+    "facetDeg": 9,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#a8483a",
+    "concreteColour": "#c4c0b8",
+    "underColour": "#aaa69e",
+    "canopy": {
+     "height": 4.2,
+     "depth": 19,
+     "thickness": 4.0,
+     "slopeDeg": 2,
+     "colour": "#d9d7cf",
+     "edgeColour": "#d9d7cf",
+     "overhangBack": 1.2
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60.0,
+    "radiusY": 54.0,
+    "startDeg": 209,
+    "endDeg": 331,
+    "count": 12,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#c9744f",
+       "sections": [
+        {
+         "z": 24.6,
+         "rect": [
+          5.6,
+          2.2
+         ],
+         "cy": 0
+        },
+        {
+         "z": 12,
+         "rect": [
+          5.2,
+          2.2
+         ],
+         "cy": 0
+        },
+        {
+         "z": 0,
+         "rect": [
+          3.6,
+          1.9
+         ],
+         "cy": -5.6
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#d6d3cb",
+       "sections": [
+        {
+         "z": 24.6,
+         "rect": [
+          4.4,
+          2.2
+         ],
+         "cy": -0.4
+        },
+        {
+         "z": 12,
+         "rect": [
+          4.0,
+          2.2
+         ],
+         "cy": -0.4
+        },
+        {
+         "z": 0,
+         "rect": [
+          2.6,
+          1.9
+         ],
+         "cy": -6.0
+        }
+       ]
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -1.55,
+       19.6
+      ],
+      "lod": [
+       0
+      ],
+      "params": {
+       "rect": [
+        2.0,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#2d3033"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-shed-west",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -56
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c5bd",
+    "glassColour": "#6f6a63",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8da",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-shed-east",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    12,
+    -56
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c5bd",
+    "glassColour": "#6f6a63",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8da",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -38,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -54
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -57
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -50
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Orange-edged V-fins under a pale ring beam over open stepped stands now read like the photo. Still missing: stand tops do not reach the ring beam, no tower numbers, no roof masts, bowl is a 130 degree section."
+ }
+}

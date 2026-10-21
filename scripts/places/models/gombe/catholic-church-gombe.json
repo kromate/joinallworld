@@ -1,0 +1,199 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/784436980",
+   "used": "church outline (31 x 14 m, name match, one level)"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/gombe.json",
+   "used": "typed brief: gabled nave, detached bell tower, cross over the porch; the nearby geo photos show campus plants, not the church"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#a85b3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b3a2b",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    24,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 20,
+    "cap": "pyramid",
+    "capRise": 4,
+    "windows": "none",
+    "colour": "#e6dfc9",
+    "capColour": "#6b3a2b"
+   }
+  },
+  {
+   "type": "mosque-domed/portico",
+   "at": [
+    6.5,
+    -17,
+    0
+   ],
+   "rotDeg": -25,
+   "params": {
+    "width": 7,
+    "depth": 3,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#f0ebdc",
+    "cap_colour": "#6b3a2b"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -0.5,
+    13.2
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#f0ebdc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.8,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#d9d1bd",
+    "points": [
+     [
+      -26,
+      -26
+     ],
+     [
+      26,
+      -26
+     ],
+     [
+      26,
+      26
+     ],
+     [
+      -26,
+      26
+     ],
+     [
+      -26,
+      -26
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; porch and tower positions are guessed against the rotated outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "catholic-church-gombe"
+}

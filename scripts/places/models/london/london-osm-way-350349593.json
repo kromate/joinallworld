@@ -1,0 +1,921 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-350349593",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Columbia_Road_market_in_London,_June_2013_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Chmee2",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/350349593_1.jpg",
+   "used": "view along the street: two flanking terraces of yellow-brown stock brick, arched upper windows, green painted shopfronts with signboards, green and white striped stall awnings crowding the roadway"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:London_-_Columbia_Flower_Market_-_2164.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jorge Royan",
+   "view": "detail",
+   "used": "shelved plant stalls in front of dark shopfronts, flower and foliage colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/350349593",
+   "used": "street length (130 m) and bearing; modelled as the two terraces either side"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace-west",
+   "footprint": {
+    "rect": [
+     70,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a88c58",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 3.6,
+    "plinth": 0.2,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": false,
+    "parapet": 0.5,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f57",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-east",
+   "footprint": {
+    "rect": [
+     70,
+     8
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": -90,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b3955d",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "bay": 3.6,
+    "plinth": 0.2,
+    "groundKind": "shopfront",
+    "groundHeight": 3.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": false,
+    "parapet": 0.5,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4f57",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    -30.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    -30.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -0.9099999999999999,
+    -28.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#d94f7a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    -26.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    -26.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0.9099999999999999,
+    -25.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#d94f7a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    -22.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    -22.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    -19.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    -19.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    -15.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    -15.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -0.9099999999999999,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#8e5ec8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    -11.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    -11.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0.9099999999999999,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#8e5ec8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    -7.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    -7.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    -4.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    -4.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    0.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    0.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -0.9099999999999999,
+    1.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#f2c14e"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    3.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    3.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0.9099999999999999,
+    4.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#f2c14e"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    7.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    7.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    11.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    11.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    15.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    15.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -0.9099999999999999,
+    16.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#d94f7a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    18.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    18.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#4f7d3b"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0.9099999999999999,
+    19.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#d94f7a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    22.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    22.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    26.0,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    26.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#6a9a45"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5.0,
+    30.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2.6,
+    30.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -0.9099999999999999,
+    31.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#8e5ec8"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    5.0,
+    33.5,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 6.5,
+    "depth": 3.0,
+    "height": 3.0,
+    "drop": 0.4,
+    "colours": [
+     "#2f6b47",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    2.6,
+    33.5,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 4.5,
+    "height": 1.4,
+    "depth": 0.9,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0.9099999999999999,
+    34.5,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "depth": 2.4,
+    "hedge": false,
+    "colour": "#8e5ec8"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -3.5,
+    -35,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    3.5,
+    20,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   40,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Street gap narrowed to 8 m with 9 striped gabled-style awnings and hedge/flower masses per side, terraces lowered with cornice and bands removed; green shopfront fascias and arched sashes are only visible edge-on so not verified; no stall shelves, hanging signs, chimneys or Canary Wharf backdrop; street shortened to 70 m"
+ }
+}

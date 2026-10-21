@@ -1,0 +1,448 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "katsina-new-government-house",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     64,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "plinth": 0.8,
+    "bands": "#b98a5e",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     12,
+     54
+    ]
+   },
+   "at": [
+    -29,
+    3
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "plinth": 0.8,
+    "bands": "#b98a5e",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     12,
+     54
+    ]
+   },
+   "at": [
+    29,
+    3
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "plinth": 0.8,
+    "bands": "#b98a5e",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -39,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 5.5,
+    "height": 9.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f7f4ee",
+    "roofColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 38,
+    "depth": 32,
+    "fountainRadius": 4,
+    "trees": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "banquet-hall",
+   "footprint": {
+    "rect": [
+     32,
+     22
+    ]
+   },
+   "at": [
+    62,
+    -8
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#b98a5e",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "games-centre",
+   "footprint": {
+    "rect": [
+     38,
+     26
+    ]
+   },
+   "at": [
+    -62,
+    6
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d7d2c4",
+    "windows": "none",
+    "bands": "#8f6b4a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "barrel",
+    "rise": 4.5,
+    "colour": "#7a7f82",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "presidential-lodge",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    56,
+    46
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#b98a5e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    56,
+    38,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 6,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#f7f4ee",
+    "roofColour": "#8a3b2e"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "chalet",
+     "params": {
+      "width": 6,
+      "depth": 7,
+      "height": 3.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -65,
+     50
+    ],
+    "end": [
+     -20,
+     50
+    ],
+    "count": 6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -85,
+      -72
+     ],
+     [
+      85,
+      -72
+     ],
+     [
+      85,
+      62
+     ],
+     [
+      -85,
+      62
+     ],
+     [
+      -85,
+      -72
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 0
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 3.6,
+    "pillar": 1.4,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -38,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 32,
+    "depth": 12,
+    "density": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    46,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 32,
+    "depth": 12,
+    "density": 0.4
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     50
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "No photo or footprint; typed from brief; LOD trimmed to budget"
+ }
+}

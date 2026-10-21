@@ -1,0 +1,670 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-banco-national-park",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ECOLE_FORESTIERE_DU_PARCE_NATIONAL_DU_BANCO_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abiba Pauline",
+   "view": "front",
+   "file": "/tmp/places-evidence/abidjan/banco2.jpg",
+   "used": "park frontage: low red-brown rendered wall with brick-red piers every few metres topped by white metal railings, a long blank yellow lettering board on the railings, lawn in front, two small palms and conical shrubs, parked cars and low buildings behind, tall forest line and a pylon behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:For%C3%AAt_du_banco_(_C%C3%B4te_d%27Ivoire_).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Emmanuel Grebo",
+   "view": "street",
+   "used": "mood only: dense bamboo and broadleaf forest edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "margin": 0.03,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "id": "base-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.3,
+    "thickness": 0.5,
+    "colour": "#8e4a40"
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "of": {
+     "type": "core/fence-wall",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "length": 0.7,
+      "height": 2.3,
+      "thickness": 0.7,
+      "colour": "#7d3f37"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -35,
+     0
+    ],
+    "end": [
+     35,
+     0
+    ],
+    "count": 15
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "railing",
+   "at": [
+    0,
+    0,
+    1.3
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.9,
+    "thickness": 0.4,
+    "kind": "palisade",
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    15,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -28,
+    6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.4,
+    "colour": "#707479",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.4,
+    "colour": "#d8d8d6",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    42,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 8,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 16,
+    "max_height": 26
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30.5,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28.05,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -25.6,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23.15,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20.7,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18.25,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.799999999999999,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.349999999999998,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.899999999999999,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.45,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.0,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.549999999999997,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.0999999999999979,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.3500000000000014,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.2,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.5
+    ],
+    "z0": 4.6,
+    "height": 2.0,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.6,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.5
+    ],
+    "z0": 4.6,
+    "height": 2.0,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.5,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.95,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16.4,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.85,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.3,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.5
+    ],
+    "z0": 3.6,
+    "height": 3.2,
+    "colour": "#e8b516"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.2
+    ],
+    "z0": 3.55,
+    "height": 0.12,
+    "colour": "#d8d8d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.1
+    ],
+    "z0": 1.9,
+    "height": 0.1,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.1
+    ],
+    "z0": 2.9,
+    "height": 0.1,
+    "colour": "#eeeeea"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "id": "pylon",
+   "at": [
+    -4,
+    30,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "baseWidth": 11,
+    "topWidth": 1.6,
+    "panels": 8,
+    "colour": "#d4d7d8",
+    "colour2": "#c4c8ca"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      0,
+      34
+     ],
+     [
+      -4,
+      0,
+      35
+     ],
+     [
+      60,
+      0,
+      33
+     ]
+    ],
+    "sag": 1.5,
+    "colour": "#333333",
+    "radius": 0.06
+   }
+  }
+ ],
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "lettering is blank yellow blocks, narrow and not photo-scale; lattice pylon is thin, drawn without crossbracing at this scale; fence is bars plus two rails not a true grid; camera framing is wider than the photo, forest is sparse"
+ },
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ }
+}

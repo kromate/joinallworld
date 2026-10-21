@@ -1,0 +1,1603 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kyiv",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kyiv",
+    "climate": "temperate",
+    "vernacular": "City of Soviet-era prefabricated panel blocks of 5 (khrushchovka), 9 and 16 storeys in grey concrete or painted cream, yellow and pale blue, with flat bitumen roofs, tiled mosaics and enclosed balconies; Stalinist neoclassical blocks in cream stucco with white pilasters and spires on Khreshchatyk; pre-revolution 3 to 5 storey brick and stucco buildings in pastel ochre, pink and green; white-walled Ukrainian Baroque churches with green roofs and gold domes; post-2000 glass-and-metal towers and malls. Chestnut, linden and maple street trees; pine forest on the outskirts.",
+    "wallColours": [
+      "#a9a79f",
+      "#d9c88f",
+      "#e3d7b8",
+      "#c9a58a",
+      "#9c4a34",
+      "#d8d4c8",
+      "#8aa7b5"
+    ],
+    "roofColours": [
+      "#4f7a5a",
+      "#5f6368",
+      "#a05a3c",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "stucco",
+      "red-brick",
+      "render",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "membrane",
+      "metal-sheet",
+      "clay-tile",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Ukrainian Baroque white walls with gold and blue onion domes and green copper roofs; Stalinist neoclassical pilasters, cornices and spires; Art Nouveau stucco (House with Chimaeras); Soviet ceramic mosaic panels and relief friezes on panel blocks; painted-over concrete balconies; Constructivist and brutalist public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kyiv",
+        "what": "landmarks: St Sophia Cathedral, St Andrew church, House with Chimaeras, Red University Building, Khreshchatyk rebuilt after 1941; the palette of panel blocks and pastel stucco is general knowledge of Soviet-era housing"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Pushcha-Vodytsia",
+        "what": "forest dacha districts of wooden cottages and sanatoria on the city edge"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mezhyhirya_Residence",
+        "what": "log-built Honka club house and outbuildings of the Dnieper estate"
+      }
+    ]
+  },
+  "places": {
+    "kyiv-airport-kyiv-airport": {
+      "venueId": "kyiv-airport-kyiv-airport",
+      "city": "kyiv",
+      "name": "Boryspil International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal D of Boryspil Airport seen from the forecourt: a wide glass and steel terminal with curved roof and a raised departures level",
+      "form": {
+        "footprint": "rect",
+        "width_m": 250,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "curved",
+        "variant": "main-terminal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe6ea",
+          "#5b6b7a",
+          "#f2f2f2"
+        ],
+        "roofColour": "#b9bfc4",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 11
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Boryspil_International_Airport",
+          "what": "Terminal D opened 28 May 2012; multi-level zoning with departures on upper floors and arrivals below, lounges on the fourth floor, 11 jet-bridge gates; Terminal B is the older Soviet-era building, Terminal F opened 2010"
+        }
+      ],
+      "notes": "Terminal D function, opening year and gate count are sourced; the glass-and-steel curved-roof look and dimensions are estimates because the page read did not describe the exterior. The older Terminal B is a Soviet-era block and is not shown."
+    },
+    "kyiv-clinic": {
+      "venueId": "kyiv-clinic",
+      "city": "kyiv",
+      "name": "Київська міська клінічна лікарня швидкої медичної допомоги",
+      "archetype": "hospital",
+      "subject": "a Soviet-era city emergency hospital: a tall slab main block with lower wings and an ambulance entrance",
+      "form": {
+        "footprint": "T",
+        "width_m": 80,
+        "depth_m": 24,
+        "storeys": 9,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d4c8",
+          "#7a8d9a",
+          "#f0ede4"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "general context of Soviet-era hospital construction in Kyiv; no page found describing this hospital"
+        }
+      ],
+      "notes": "No description of this hospital was available; typed brief from the place type and the Kyiv Soviet municipal-building style (concrete panel slab with ribbon windows). Dimensions are guesses."
+    },
+    "kyiv-community-notices": {
+      "venueId": "kyiv-community-notices",
+      "city": "kyiv",
+      "name": "Національна комісія регулювання енергетики та комунальних послуг",
+      "archetype": "office-low",
+      "subject": "the office of the national energy and utilities regulator: a mid-rise stucco or panel office block with a flagged entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d7b8",
+          "#6e8798",
+          "#f6f2e6"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "context only; no description of this office building found"
+        }
+      ],
+      "notes": "Game kind is a statehouse but the real place is a regulator office. Nothing describing the building was found; typed from the city style."
+    },
+    "kyiv-community-voting-game": {
+      "venueId": "kyiv-community-voting-game",
+      "city": "kyiv",
+      "name": "Kharkivska Square",
+      "archetype": "park-landscape",
+      "subject": "Kharkivska Square in the Kharkivskyi residential district: a wide paved junction plaza ringed by 9 to 16 storey panel blocks, with a metro entrance and benches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a9a79f",
+          "#d9c88f",
+          "#8aa7b5"
+        ],
+        "roofColour": "#5f6368",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "metro entrance stair"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s square, metro 1994",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kharkivska_(Kyiv_Metro)",
+          "what": "Kharkivska metro station opened 28 December 1994 in Darnytskyi district near Kharkivskyi Masyv; two entrances at Bazhan Avenue and Revutska Street"
+        }
+      ],
+      "notes": "The square is surrounded by Soviet panel blocks; nothing specific about its look was found. Typed brief as a paved plaza with kiosks and a metro entrance."
+    },
+    "kyiv-community-workshop": {
+      "venueId": "kyiv-community-workshop",
+      "city": "kyiv",
+      "name": "Дитяча бібліотека №142",
+      "archetype": "campus-block",
+      "subject": "a district children library: a small two-storey Soviet-period public building with a modest entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c88f",
+          "#a9a79f",
+          "#f1ede0"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "context only; no description of this library found"
+        }
+      ],
+      "notes": "Obscure district library; typed from the Soviet municipal style. Distinct from other campus blocks by its small size."
+    },
+    "kyiv-market-game": {
+      "venueId": "kyiv-market-game",
+      "city": "kyiv",
+      "name": "Retroville",
+      "archetype": "mall",
+      "subject": "Retroville shopping centre in Vinohradar: a large dark-clad mall with a glazed entrance and a twelve-storey business centre attached",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 130,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#4a4f55",
+          "#8aa7b5",
+          "#e8e8e6"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "large surface parking"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv_shopping_centre_bombing",
+          "what": "Retroville completed May 2020, about 86,000 m2 floor area, 120,334 m3, more than 250 shops, attached twelve-storey business centre, parking area in front"
+        }
+      ],
+      "notes": "Area and attached tower are sourced; storeys, footprint and the grey metal-and-glass look are estimates. The mall was destroyed in March 2022, the model shows the pre-war building."
+    },
+    "kyiv-meal-stop": {
+      "venueId": "kyiv-meal-stop",
+      "city": "kyiv",
+      "name": "100 Rokiv Tomu Vpered",
+      "archetype": "restaurant",
+      "subject": "a Ukrainian-themed retro restaurant in an older two-storey stucco building near Andriivskyi Descent, pastel painted with a shop-front entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#d6a98a",
+          "#9c4a34",
+          "#f3ecda"
+        ],
+        "roofColour": "#4f7a5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "context only: pastel stucco historic quarter style; no page found for this restaurant"
+        }
+      ],
+      "notes": "The restaurant name is a retro-Ukrainian theme; no source describing the building was found. Typed from the pastel stucco two-storey houses of the Podil/Andriivskyi quarter."
+    },
+    "kyiv-osm-node-309594358": {
+      "venueId": "kyiv-osm-node-309594358",
+      "city": "kyiv",
+      "name": "Bunker No 453 KIFR",
+      "archetype": "heritage-fort",
+      "subject": "a 1930s concrete pillbox of the Kyiv Fortified Region (KIFR) in a wooded earth mound, with embrasure slits",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#8f8c84",
+          "#6e6b64",
+          "#a8a59c"
+        ],
+        "roofColour": "#7a776f",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "embrasure for a gun"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/309594358",
+          "what": "walk venue named Bunker No 453 KIFR"
+        },
+        {
+          "url": "https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%87%D0%B0-%D0%97%D0%B0%D1%81%D0%BF%D0%B0",
+          "what": "pillboxes (DOT) of the Kyiv Fortified Area began in 1930 near Koncha-Zaspa"
+        }
+      ],
+      "notes": "No specific description found for number 453; typed as a low concrete casemate typical of the Kyiv Fortified Region. Size is a guess."
+    },
+    "kyiv-osm-node-6423216738": {
+      "venueId": "kyiv-osm-node-6423216738",
+      "city": "kyiv",
+      "name": "Л-410",
+      "archetype": "monument",
+      "subject": "a Let L-410 Turbolet twin-turboprop airliner displayed on a concrete plinth as a monument",
+      "form": {
+        "footprint": "cross",
+        "width_m": 19,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d8dde0",
+          "#2f5fa3",
+          "#8a8f94"
+        ],
+        "roofColour": "#d8dde0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "aircraft displayed as a monument"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Soviet-period aircraft",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/6423216738",
+          "what": "walk venue named L-410 (an aircraft type)"
+        }
+      ],
+      "notes": "The name is the aircraft type; the L-410 is about 14.4 m long with a 19.5 m wingspan and a high wing with two engines. Livery is a guess. Treat as a small monument, not a building."
+    },
+    "kyiv-osm-relation-14694175": {
+      "venueId": "kyiv-osm-relation-14694175",
+      "city": "kyiv",
+      "name": "Локомотив",
+      "archetype": "stadium",
+      "subject": "Lokomotyv stadium in Solomianskyi: a small city football and athletics ground with plastic-seat stands, running track, artificial turf and corner floodlight towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#bdb9ae",
+          "#b3262d",
+          "#3f7d4a"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1925, rebuilt 2011-2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://uk.wikipedia.org/wiki/%D0%9B%D0%BE%D0%BA%D0%BE%D0%BC%D0%BE%D1%82%D0%B8%D0%B2_(%D1%81%D1%82%D0%B0%D0%B4%D1%96%D0%BE%D0%BD,_%D0%9A%D0%B8%D1%97%D0%B2)",
+          "what": "opened 1925 for railway workers; 1,631 plastic seats; artificial turf 104 x 68 m; floodlights around the field, running tracks; rebuilt 2011-2012; main building hit by a missile January 2024"
+        }
+      ],
+      "notes": "Capacity, pitch and floodlights are sourced; the roofless open stands and red/green colours (the club railway colours) are estimates. Shown before the 2024 damage."
+    },
+    "kyiv-osm-way-1052304759": {
+      "venueId": "kyiv-osm-way-1052304759",
+      "city": "kyiv",
+      "name": "Санаторій «Конча-Заспа»",
+      "archetype": "hotel",
+      "subject": "the Koncha-Zaspa sanatorium: a Soviet-era pale rendered residential block with balconies among tall pines",
+      "form": {
+        "footprint": "L",
+        "width_m": 75,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d7b8",
+          "#9a8f78",
+          "#f6f2e6"
+        ],
+        "roofColour": "#6b7a5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "Soviet period",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BD%D1%87%D0%B0-%D0%97%D0%B0%D1%81%D0%BF%D0%B0",
+          "what": "Koncha-Zaspa sanatorium listed among sanatoria in a densely forested area with state dachas; building design not described"
+        }
+      ],
+      "notes": "Setting (dense forest, state-dacha zone) is sourced; the building form is typed from the typical Soviet sanatorium. Chosen archetype hotel since sanatoria are resort lodging."
+    },
+    "kyiv-osm-way-114113363": {
+      "venueId": "kyiv-osm-way-114113363",
+      "city": "kyiv",
+      "name": "Університет Україна",
+      "archetype": "campus-block",
+      "subject": "the Ukraine University building: a long Soviet-style educational block with a central entrance and rows of windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 20,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c4b6",
+          "#8aa7b5",
+          "#eceae0"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/114113363",
+          "what": "quad venue named Universytet Ukraina"
+        }
+      ],
+      "notes": "No description found; typed from the Soviet institutional block style."
+    },
+    "kyiv-osm-way-152179973": {
+      "venueId": "kyiv-osm-way-152179973",
+      "city": "kyiv",
+      "name": "Парк «Пуща-Водиця»",
+      "archetype": "park-landscape",
+      "subject": "Pushcha-Vodytsia forest park: tall pine woodland with paths and a few wooden dacha-style pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a8774a",
+          "#6b4a2e",
+          "#d9c8a0"
+        ],
+        "roofColour": "#4f7a5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "wooden dacha-style"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "dacha community since 1899",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pushcha-Vodytsia",
+          "what": "dense forest neighbourhood in northwest Kyiv; dacha and cottage community begun 1899; wooden cottages; sanatoriums and state cottages; church by Eduard Bradtman 1910"
+        }
+      ],
+      "notes": "Forest setting and wooden cottages are sourced; pines are generally known for this area (the page does not name them). Pavilion form is a guess."
+    },
+    "kyiv-osm-way-158025803": {
+      "venueId": "kyiv-osm-way-158025803",
+      "city": "kyiv",
+      "name": "Mezhyhiria",
+      "archetype": "manor",
+      "subject": "Mezhyhirya estate main house: an enormous timber log-built chalet with balconies and steep gables on the Dnieper bank, with lawns, fountains and a barge-shaped pavilion on the harbour",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a8744a",
+          "#6b4a2e",
+          "#d9c8a0"
+        ],
+        "roofColour": "#4b3a2e",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 3
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "gazebo"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "inner harbour with a barge-style 50 m building"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mezhyhirya_Residence",
+          "what": "over 140 ha estate on the Dnieper at Novi Petrivtsi; main house is the Honka club house, a Finnish log-house maker; 50 m barge-style palace on the water with porthole windows; guest house, gazebo, church, car museum, helipad; fountains, lakes, golf course, 5 m perimeter fence"
+        }
+      ],
+      "notes": "Log construction is inferred from the Honka name (the article does not state it). Storeys, dimensions and roof are estimates; present as a large chalet with wings. The galleon-style barge is a separate recognisable feature."
+    },
+    "kyiv-osm-way-191681151": {
+      "venueId": "kyiv-osm-way-191681151",
+      "city": "kyiv",
+      "name": "Ocean Plaza",
+      "archetype": "mall",
+      "subject": "Ocean Plaza: a huge multi-level mall with sleek white and blue glass facade, a rooftop parking deck with a beach club and a glazed entrance atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 130,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8eaec",
+          "#6d8ba3",
+          "#3b3f45"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "City Beach Club on parking roof"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "four levels, 1,600 spaces"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ocean_Plaza",
+          "what": "opened 19 November 2012 (as Lybid Plaza), architect Andriy Pashenko, about 165,000 m2, 7 floors per text, over 400 stores, 350,000 litre aquarium, rooftop City Beach Club on the parking deck, 1,600 spaces"
+        }
+      ],
+      "notes": "Size, opening year, rooftop deck and parking are sourced; facade colours are estimates. Differs from Retroville by white-blue glass and the rooftop beach club."
+    },
+    "kyiv-osm-way-192594997": {
+      "venueId": "kyiv-osm-way-192594997",
+      "city": "kyiv",
+      "name": "Kyiv Medical College No. 3",
+      "archetype": "campus-block",
+      "subject": "a medical college building: a plain three-storey cream render block with a central entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c88f",
+          "#a9a79f",
+          "#f3eede"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/192594997",
+          "what": "quad venue named Kyiv Medical College No. 3"
+        }
+      ],
+      "notes": "No description found; typed from Soviet-era educational building style."
+    },
+    "kyiv-osm-way-223762038": {
+      "venueId": "kyiv-osm-way-223762038",
+      "city": "kyiv",
+      "name": "Kyiv Ukraine Temple",
+      "archetype": "church-modern",
+      "subject": "the Kyiv Ukraine Temple of the LDS Church: a granite-clad temple with a central tower topped by an angel Moroni statue, set in flower gardens",
+      "form": {
+        "footprint": "cross",
+        "width_m": 45,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#d8c9a0",
+          "#c4b08a",
+          "#f4efe3"
+        ],
+        "roofColour": "#6b7a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "multilevel tower topped by an angel Moroni statue; total height 42 m"
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv_Ukraine_Temple",
+          "what": "height 42.0 m, floor area 2,061 m2, 5.00 ha site, Amarelo Macieira granite exterior, multilevel tower and angel Moroni statue, motifs of Easter eggs and wheat, architects MHTN and Strabag, flower gardens and trees"
+        }
+      ],
+      "notes": "Height, area, exterior granite and tower statue are sourced. The cross-shaped plan and roof are estimates. Granite is a warm yellow-beige."
+    },
+    "kyiv-osm-way-41378030": {
+      "venueId": "kyiv-osm-way-41378030",
+      "city": "kyiv",
+      "name": "Cathedral of St. Pantaleon",
+      "archetype": "church-classical",
+      "subject": "the Orthodox cathedral of St Panteleimon at Feofania: a cross-in-square church with a cluster of gilded onion domes and white walls",
+      "form": {
+        "footprint": "cross",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f3f0e6",
+          "#d8c9a0",
+          "#ffffff"
+        ],
+        "roofColour": "#d4a82a",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5,
+          "note": "gilded domes, central one largest"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Feofania",
+          "what": "St. Panteleimon Cathedral listed as an object of interest at Feofania park next to the Feofaniia hospital and a convent; no building description"
+        }
+      ],
+      "notes": "The building could not be described from the sources used; typed as a typical Ukrainian Orthodox five-dome cathedral. Colours and domes are a generic guess."
+    },
+    "kyiv-osm-way-438649004": {
+      "venueId": "kyiv-osm-way-438649004",
+      "city": "kyiv",
+      "name": "Kyiv City Maternity Hospital 1",
+      "archetype": "hospital",
+      "subject": "a city maternity hospital: a mid-rise cream block with a canopied entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d7b8",
+          "#a9a79f",
+          "#f3eede"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/438649004",
+          "what": "hospital venue named Kyiv City Maternity Hospital 1"
+        }
+      ],
+      "notes": "No description found; typed from the Kyiv Soviet municipal hospital style."
+    },
+    "kyiv-osm-way-552929873": {
+      "venueId": "kyiv-osm-way-552929873",
+      "city": "kyiv",
+      "name": "Serpent's Wall",
+      "archetype": "heritage-fort",
+      "subject": "a surviving stretch of the Serpent Walls: a long grassed and wooded earthen rampart with a ditch beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#6b5a3e",
+          "#5a6b3e",
+          "#8a7a58"
+        ],
+        "roofColour": "#5a6b3e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "earth bank with ditch"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "10th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Serpent's_Wall",
+          "what": "wooded earth fortifications; remnants about 1,000 km, in six lines west to east between the Teteriv and Ros rivers; photographed sections near Denysy and Ivankovychi"
+        }
+      ],
+      "notes": "The wall is sourced as an earth bank in woodland; height (about 7 m here) and ditch size are estimates, as the page gives none. Material is turf-covered earth; the contract has no earthwork material so mud-render is used as a stand-in."
+    },
+    "kyiv-osm-way-642676042": {
+      "venueId": "kyiv-osm-way-642676042",
+      "city": "kyiv",
+      "name": "Національний університет біоресурсів і природокористування України",
+      "archetype": "campus-block",
+      "subject": "the main academic building of the national agricultural university: a symmetrical four-storey block in cream stucco with a central pedimented entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e3d7b8",
+          "#b9a37a",
+          "#f6f2e6"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "founded 1898",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_University_of_Life_and_Environmental_Sciences_of_Ukraine",
+          "what": "institution founded 1898; the page shows a historical building of the academy but gives no description"
+        }
+      ],
+      "notes": "Building not described in the pages read; the neoclassical cream block is a typed guess from the university age and Kyiv institutional style."
+    },
+    "kyiv-osm-way-832672170": {
+      "venueId": "kyiv-osm-way-832672170",
+      "city": "kyiv",
+      "name": "Spartak",
+      "archetype": "stadium",
+      "subject": "Spartak, a small neighbourhood stadium: low open concrete stands around a pitch and track with floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb9ae",
+          "#a33a35",
+          "#e5e2da"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "Soviet period",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/832672170",
+          "what": "viewing venue named Spartak"
+        }
+      ],
+      "notes": "Nothing descriptive was found; typed small Soviet-era neighbourhood stadium."
+    },
+    "kyiv-quiet-reflection": {
+      "venueId": "kyiv-quiet-reflection",
+      "city": "kyiv",
+      "name": "Свято-Михайлівська церква",
+      "archetype": "church-classical",
+      "subject": "a village St Michael Orthodox church: a small white church with a blue or gold onion dome and a detached bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 16,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f4f1e8",
+          "#4a6fa5",
+          "#d4a82a"
+        ],
+        "roofColour": "#4a6fa5",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "context: white Ukrainian Baroque-style churches with domes; no page found for this church"
+        }
+      ],
+      "notes": "Nothing found about this specific parish church; typed as a small Ukrainian village church. Distinct from the cathedral by one dome and small size."
+    },
+    "kyiv-recreation": {
+      "venueId": "kyiv-recreation",
+      "city": "kyiv",
+      "name": "Парк Тараса Шевченка",
+      "archetype": "park-landscape",
+      "subject": "a Taras Shevchenko city park: a tree-lined paved central alley with a monument to the poet on a plinth, benches and a small fountain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#7a8d6a",
+          "#e0ddd2"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Shevchenko monument"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "Soviet-era town park",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "context only; no page found describing this park"
+        }
+      ],
+      "notes": "Nothing descriptive found; typed generic Ukrainian town park named for the national poet."
+    },
+    "kyiv-transit": {
+      "venueId": "kyiv-transit",
+      "city": "kyiv",
+      "name": "Prospekt Nauky",
+      "archetype": "transport-station",
+      "subject": "Prospekt Nauky public-transport stop: a tram and trolleybus terminus with a canopy shelter and bus bays beside an avenue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb8ac",
+          "#5f7f98",
+          "#e0ddd2"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "Soviet period",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyiv",
+          "what": "context only; no page found for this stop"
+        }
+      ],
+      "notes": "Hub kind; no station building found. Typed as a canopy-covered stop and bus bays on a Soviet-era avenue."
+    }
+  }
+}

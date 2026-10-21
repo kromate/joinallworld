@@ -1,0 +1,670 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "muda-lawal-market-bauchi",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mama_Africa_and_the_fruit.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bauchi Friends",
+   "view": "street",
+   "file": "/tmp/places-evidence/bauchi/market.jpg",
+   "used": "fruit stalls on low timber tables, large pink/white/teal trader umbrellas, low rusty corrugated roofs and tarpaulins behind, a broadleaf tree and a palm at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1043654048",
+   "used": "not used: only a 106 m2 shop outline; the market is composed as an open stall field"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json muda-lawal-market-bauchi",
+   "used": "dense stalls, long corrugated sheds, entrance gate, kiosks, 120 x 100 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 10,
+    "height": 2.6,
+    "roof": "shed",
+    "roof_colour": "#8a5a45",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    24,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "depth": 10,
+    "height": 2.6,
+    "roof": "gable",
+    "roof_colour": "#8a5a45",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 4,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#3f6b4e",
+     "#8a4a32",
+     "#8d9296"
+    ],
+    "awning_colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -46,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#8a4a32"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30.0,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.9,
+    -19,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30.0,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.9,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30.0,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.9,
+    1,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30.0,
+    6,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28.9,
+    11,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 2.2,
+    "size": 1.45,
+    "kind": "umbrella",
+    "jitter": 0.2,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ],
+    "goods_colours": [
+     "#a8e02a",
+     "#f0c020",
+     "#d42a20",
+     "#e8742a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    25,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "spread": 9,
+    "radius": 2.4,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    28,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 7,
+    "radius": 2.3,
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0",
+     "#d8b13a",
+     "#3a4a3f",
+     "#2f3f5a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -34,
+    16,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "roof_colour": "#8a5a45",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    10,
+    16,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "roof_colour": "#7a5040",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -48,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "roof_colour": "#8a5a45",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    50,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "roof_colour": "#7a5040",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "roof_colour": "#8a5a45",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 6,
+    "size": 2.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e8a0a8",
+     "#f2efe6",
+     "#4aa8a0"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "camera is a low close-up of stalls with people and piled goods; model is a distant dense field with umbrellas, rusty sheds and trees, no goods on carts, ground still red-orange laterite (no dusty grey-brown option rendered)"
+ }
+}

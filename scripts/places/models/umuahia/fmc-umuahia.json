@@ -1,0 +1,526 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "fmc-umuahia",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_Medical_Centre,_Umuahia.jpg",
+   "licence": "CC0",
+   "author": "Commons user Nyerougo",
+   "view": "front",
+   "file": "/tmp/places-evidence/umuahia/fmc-umuahia.jpg",
+   "used": "main entrance: yellow gatehouse with flat white canopy, green fascia board, round window, two red-brick portal gates either side, round grey paving platform on green lawn, green sign pillar"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json#fmc-umuahia",
+   "used": "hospital block behind the gate: cream rendered 3-4 storey ranges with ribbon windows, flat roofs, water tank (not seen in photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.7,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8c64a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -7.1,
+    6.1
+   ],
+   "params": {
+    "width": 20,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#1f8a4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    11.5,
+    -14,
+    1.2
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 5.5,
+    "bottom": 0,
+    "colour": "#1f6b3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9cbcc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9cbcc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    73
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    -28,
+    57
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    28,
+    57
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    0,
+    83,
+    15
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.5,
+    "tankHeight": 3,
+    "legHeight": 4,
+    "colour": "#7aa098"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-w",
+   "footprint": {
+    "rect": [
+     16,
+     1.5
+    ]
+   },
+   "at": [
+    -24,
+    8
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9976a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-w-frame",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    -24,
+    6.9
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8bcbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-e",
+   "footprint": {
+    "rect": [
+     16,
+     1.5
+    ]
+   },
+   "at": [
+    24,
+    8
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9976a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-e-frame",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    24,
+    6.9
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8bcbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8bcbf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-6.5",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -6.5,
+    -6.2
+   ],
+   "height": 6.1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col-2.2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -2.2,
+    -6.2
+   ],
+   "height": 6.1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col2.2",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    2.2,
+    -6.2
+   ],
+   "height": 6.1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "col6.5",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    6.5,
+    -6.2
+   ],
+   "height": 6.1,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-base",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    11.5,
+    -14
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3c0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -26,
+     0
+    ],
+    "end": [
+     20,
+     -26,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 0.9,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#1f6b3a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#1f6b3a"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate slabs are plain brick with a grey filled panel instead of an open arch frame and are not taller than the gatehouse canopy; canopy and sign pillar render blue (sign-board colour not honoured); platform is a rectangle not an angled shield with recessed insets; no round window; rail posts lack chain; hospital behind is inferred."
+ }
+}

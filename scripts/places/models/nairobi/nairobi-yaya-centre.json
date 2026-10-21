@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-yaya-centre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/26772773",
+   "used": "real outline (86 x 83 m bent plan), 4 levels, building colour #e7c26c (warm ochre)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Yaya_Centre",
+   "used": "1992 retail podium with the Yaya Towers residential block rising at one end; incomplete west wing. No exterior photo of the building was found (Commons images are interiors or other buildings)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7c26c",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#8c6e55",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b86",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    28,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     14
+    ],
+    "height": 30,
+    "storeys": 9,
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "colour": "#e6dccb",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    28,
+    20.5,
+    14.5
+   ],
+   "params": {
+    "length": 16,
+    "floors": 9,
+    "storeyHeight": 3.3,
+    "proud": 1.3,
+    "colour": "#8c6e55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    8,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     12,
+     10
+    ],
+    "height": 10,
+    "colour": "#a3a09a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -10,
+    -40,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 5,
+    "height": 4,
+    "columns": 4,
+    "colour": "#8c6e55"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 5,
+    "colour": "#4c5f6b",
+    "frameColour": "#8c6e55"
+   }
+  },
+  {
+   "type": "rooftop-plant",
+   "at": [
+    0,
+    5,
+    14.5
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "density": 0.7
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -35,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 6,
+    "line": 20
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the building exists; massing from the OSM outline and brief only (podium, residential tower with balcony bands at east end, plant block). Facade colours from OSM building:colour; tower height and position are estimates."
+ }
+}

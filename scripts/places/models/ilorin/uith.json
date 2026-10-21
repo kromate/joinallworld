@@ -1,0 +1,936 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Ilorin_Teaching_Hospital_(UITH).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "James Moore200",
+   "view": "front",
+   "file": "/tmp/places-evidence/ilorin/uith.jpg",
+   "used": "the entrance gate: terracotta-red twin pylon with round notch and medallion, long cream sign boards on raked red legs with red soffit, red gatehouses, round kerbed island with lamp, grey road, low wall at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/960819815",
+   "used": "hospital footprint (name match): cross/H wings, about 100 x 66 m"
+  },
+  {
+   "kind": "text",
+   "used": "Wikipedia: 600 beds, founded 1970, helipad"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbf9e",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8386",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "helipad",
+   "id": "helipad",
+   "at": [
+    -12,
+    30,
+    16.6
+   ],
+   "params": {
+    "radius": 6.5
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "tank",
+   "at": [
+    22,
+    -8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3.2,
+    "legHeight": 7,
+    "colour": "#b8b2a2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "redcross",
+   "at": [
+    10,
+    -6,
+    12
+   ],
+   "params": {
+    "size": 3,
+    "facing": "front"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "id": "trees-l",
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8,
+    "colour": "#4f7a3a"
+   },
+   "at": [
+    -45,
+    -30
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-pylon",
+   "params": {
+    "rect": [
+     4.6,
+     1.9
+    ],
+    "z0": 0,
+    "height": 8.5,
+    "colour": "#8c3b32",
+    "topColour": "#8c3b32"
+   },
+   "at": [
+    0,
+    -66
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "prong-l",
+   "params": {
+    "rect": [
+     1.5,
+     1.9
+    ],
+    "z0": 8.5,
+    "height": 5.5,
+    "colour": "#8c3b32",
+    "topColour": "#8c3b32"
+   },
+   "at": [
+    -1.55,
+    -66
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "notch-a-l",
+   "params": {
+    "rect": [
+     0.55,
+     1.9
+    ],
+    "z0": 8.5,
+    "height": 0.45,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    -0.625,
+    -66
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "notch-b-l",
+   "params": {
+    "rect": [
+     0.3,
+     1.9
+    ],
+    "z0": 8.95,
+    "height": 0.4,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    -0.75,
+    -66
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board-l",
+   "params": {
+    "rect": [
+     13.2,
+     1.5
+    ],
+    "z0": 5.2,
+    "height": 2.9,
+    "colour": "#a8a290",
+    "topColour": "#8f8a7b"
+   },
+   "at": [
+    -9.0,
+    -65.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lettering-l",
+   "params": {
+    "rect": [
+     10.6,
+     0.1
+    ],
+    "z0": 6.1,
+    "height": 0.9,
+    "colour": "#2f2b29"
+   },
+   "at": [
+    -8.6,
+    -66.6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "soffit-l",
+   "params": {
+    "rect": [
+     13.2,
+     1.7
+    ],
+    "z0": 4.6,
+    "height": 0.6,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    -9.0,
+    -65.9
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pillar-l",
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    -9.6,
+    -66
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-l",
+   "params": {
+    "rect": [
+     2.0,
+     2.2
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    -3.5,
+    -66.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-win-l",
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 1.4,
+    "height": 1.4,
+    "colour": "#1d1d1f"
+   },
+   "at": [
+    -3.5,
+    -67.35
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-l",
+   "params": {
+    "section": {
+     "rect": [
+      1.3,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      -14.0,
+      -66,
+      5.2
+     ],
+     [
+      -17.0,
+      -66,
+      0.0
+     ]
+    ],
+    "colour": "#8c3b32"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-in-l",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      -9.6,
+      -66,
+      4.4
+     ],
+     [
+      -12.4,
+      -66,
+      0.0
+     ]
+    ],
+    "colour": "#8c3b32"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "prong-r",
+   "params": {
+    "rect": [
+     1.5,
+     1.9
+    ],
+    "z0": 8.5,
+    "height": 5.5,
+    "colour": "#8c3b32",
+    "topColour": "#8c3b32"
+   },
+   "at": [
+    1.55,
+    -66
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "notch-a-r",
+   "params": {
+    "rect": [
+     0.55,
+     1.9
+    ],
+    "z0": 8.5,
+    "height": 0.45,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    0.625,
+    -66
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "notch-b-r",
+   "params": {
+    "rect": [
+     0.3,
+     1.9
+    ],
+    "z0": 8.95,
+    "height": 0.4,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    0.75,
+    -66
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "board-r",
+   "params": {
+    "rect": [
+     13.2,
+     1.5
+    ],
+    "z0": 5.2,
+    "height": 3.05,
+    "colour": "#a8a290",
+    "topColour": "#8f8a7b"
+   },
+   "at": [
+    9.0,
+    -65.8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lettering-r",
+   "params": {
+    "rect": [
+     10.6,
+     0.1
+    ],
+    "z0": 6.1,
+    "height": 0.9,
+    "colour": "#2f2b29"
+   },
+   "at": [
+    8.6,
+    -66.6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "soffit-r",
+   "params": {
+    "rect": [
+     13.2,
+     1.7
+    ],
+    "z0": 4.6,
+    "height": 0.6,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    9.0,
+    -65.9
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pillar-r",
+   "params": {
+    "rect": [
+     1.2,
+     1.5
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    9.6,
+    -66
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-r",
+   "params": {
+    "rect": [
+     2.0,
+     2.2
+    ],
+    "z0": 0,
+    "height": 3.8,
+    "colour": "#8c3b32"
+   },
+   "at": [
+    3.5,
+    -66.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "house-win-r",
+   "params": {
+    "rect": [
+     1.1,
+     0.1
+    ],
+    "z0": 1.4,
+    "height": 1.4,
+    "colour": "#1d1d1f"
+   },
+   "at": [
+    3.5,
+    -67.35
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-r",
+   "params": {
+    "section": {
+     "rect": [
+      1.3,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      14.0,
+      -66,
+      5.2
+     ],
+     [
+      17.0,
+      -66,
+      0.0
+     ]
+    ],
+    "colour": "#8c3b32"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "leg-in-r",
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      9.6,
+      -66,
+      4.4
+     ],
+     [
+      12.4,
+      -66,
+      0.0
+     ]
+    ],
+    "colour": "#8c3b32"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "medallion",
+   "params": {
+    "section": {
+     "circle": 1.1
+    },
+    "points": [
+     [
+      0,
+      -66.95,
+      10.2
+     ],
+     [
+      0,
+      -67.15,
+      10.2
+     ]
+    ],
+    "colour": "#b9b3a4"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "island-kerb",
+   "params": {
+    "rect": [
+     0,
+     0
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#e9e6df",
+    "points": [
+     [
+      7.6,
+      0.0
+     ],
+     [
+      7.341035075581322,
+      1.2423342549268066
+     ],
+     [
+      6.581788416030336,
+      2.4000050897404934
+     ],
+     [
+      5.3740016670853965,
+      3.394118783325473
+     ],
+     [
+      3.799983882471347,
+      4.156927815281007
+     ],
+     [
+      1.9670022718266702,
+      4.636447768947556
+     ],
+     [
+      -2.791635878374642e-05,
+      4.799999999967618
+     ],
+     [
+      -1.9670562020816758,
+      4.636438642250505
+     ],
+     [
+      -3.8000322349889433,
+      4.15691018385912
+     ],
+     [
+      -5.374041146706094,
+      3.394093848736601
+     ],
+     [
+      -6.581816332270715,
+      2.399974551243563
+     ],
+     [
+      -7.341049525986889,
+      1.2423001936795939
+     ],
+     [
+      -7.599999999794915,
+      -3.526276898975759e-05
+     ],
+     [
+      -7.3410206247795635,
+      -1.2423683161069687
+     ],
+     [
+      -6.58176049943474,
+      -2.400035628107895
+     ],
+     [
+      -5.373962187174667,
+      -3.3941437177311653
+     ],
+     [
+      -3.7999355297486668,
+      -4.156945446478545
+     ],
+     [
+      -1.9669483414655065,
+      -4.636456895394378
+     ],
+     [
+      8.37490763531077e-05,
+      -4.799999999708563
+     ],
+     [
+      1.9671101322305211,
+      -4.636429515303227
+     ],
+     [
+      3.8000805873014545,
+      -4.156892552212885
+     ],
+     [
+      5.374080626036756,
+      -3.39406891396455
+     ],
+     [
+      6.581844248155876,
+      -2.3999440126171065
+     ],
+     [
+      7.341063975996261,
+      -1.242266132365335
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -73
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "island-top",
+   "params": {
+    "rect": [
+     0,
+     0
+    ],
+    "z0": 0.2,
+    "height": 0.08,
+    "colour": "#b79c76",
+    "points": [
+     [
+      7.0,
+      0.0
+     ],
+     [
+      6.761479674877534,
+      1.1129244367052642
+     ],
+     [
+      6.062173541080573,
+      2.150004559559192
+     ],
+     [
+      4.9497383775786545,
+      3.0405647433957363
+     ],
+     [
+      3.4999851549078196,
+      3.723914501189235
+     ],
+     [
+      1.8117126187877228,
+      4.153484459682185
+     ],
+     [
+      -2.5712435721871704e-05,
+      4.299999999970991
+     ],
+     [
+      -1.8117622913910172,
+      4.153476283682744
+     ],
+     [
+      -3.500029690121395,
+      3.723898706373795
+     ],
+     [
+      -4.949774740387191,
+      3.0405424061598714
+     ],
+     [
+      -6.062199253407238,
+      2.149977202155692
+     ],
+     [
+      -6.761492984461608,
+      1.1128939235046362
+     ],
+     [
+      -6.999999999811106,
+      -3.158956388665784e-05
+     ],
+     [
+      -6.761466364928546,
+      -1.1129549498458262
+     ],
+     [
+      -6.062147828426735,
+      -2.1500319168466557
+     ],
+     [
+      -4.949702014502982,
+      -3.040587080467502
+     ],
+     [
+      -3.499940619505351,
+      -3.723930295803697
+     ],
+     [
+      -1.8116629460866507,
+      -4.1534926354574635
+     ],
+     [
+      7.713730716733604e-05,
+      -4.299999999738921
+     ],
+     [
+      1.8118119638965327,
+      -4.153468107459141
+     ],
+     [
+      3.5000742251460766,
+      -3.723882911357376
+     ],
+     [
+      4.949811102928591,
+      -3.040520068759909
+     ],
+     [
+      6.0622249654067275,
+      -2.149949844636158
+     ],
+     [
+      6.761506293680767,
+      -1.1128634102439459
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -73
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "id": "island-lamp",
+   "params": {
+    "height": 9,
+    "count": 1
+   },
+   "at": [
+    1.5,
+    -72
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "low-wall",
+   "params": {
+    "length": 10,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "solid",
+    "colour": "#d9d3c3"
+   },
+   "at": [
+    24,
+    -66
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "uith",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate pylon, raked legs, cream boards, soffit, gatehouses, kerbed island and lamp added; pylon notch is stepped not round, legs straight not arched, no lettering/medallion text, board colour blends with hospital, road/verge not matched, hospital behind is an unverified plain OSM block"
+ }
+}

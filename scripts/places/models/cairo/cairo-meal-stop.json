@@ -1,0 +1,547 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CairoCafeRiche.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Roland Unger",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/cairo-meal-stop-1.jpg",
+   "used": "ground floor of dark wood panelled shopfront with glass doors, green valance, round lamps, curved dark canopy; cream upper floors with iron balconies"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cafe_Riche.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nableezy",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/cairo-meal-stop-0.jpg",
+   "used": "wood frontage colours and canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/98246962",
+   "used": "footprint 31.5 x 25.3 m, 5 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 25.6
+   },
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4ac",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 0.8,
+      "width": 2.6,
+      "every": 9.2,
+      "floors": [
+       2,
+       4
+      ],
+      "colour": "#3a3a3a",
+      "railColour": "#2b2b2b"
+     },
+     {
+      "type": "bands",
+      "colour": "#bba67b"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cafe-ground",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     31.6,
+     25.4
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#6e4429",
+    "topColour": "#4a2f20"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-wide",
+   "at": [
+    -4,
+    -13.0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.3
+    ],
+    "z0": 0.9,
+    "height": 2.6,
+    "colour": "#26353a",
+    "topColour": "#26353a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "glass-wide2",
+   "at": [
+    9,
+    -13.0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.3
+    ],
+    "z0": 0.9,
+    "height": 2.6,
+    "colour": "#26353a",
+    "topColour": "#26353a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-glass-1",
+   "at": [
+    -12,
+    -13.0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.3
+    ],
+    "z0": 0.2,
+    "height": 3.2,
+    "colour": "#1f2a2e",
+    "topColour": "#1f2a2e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-glass-2",
+   "at": [
+    -8.5,
+    -13.0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.3
+    ],
+    "z0": 0.2,
+    "height": 3.2,
+    "colour": "#1f2a2e",
+    "topColour": "#1f2a2e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-glass-3",
+   "at": [
+    16,
+    -13.0
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.3
+    ],
+    "z0": 0.2,
+    "height": 3.2,
+    "colour": "#1f2a2e",
+    "topColour": "#1f2a2e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "transom-1",
+   "at": [
+    -4,
+    -13.05
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.3
+    ],
+    "z0": 3.5,
+    "height": 0.5,
+    "colour": "#8b6a4a",
+    "topColour": "#8b6a4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -10,
+    -13.05
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 3.5,
+    "height": 1.0,
+    "colour": "#c9b99a",
+    "topColour": "#c9b99a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mullion-1",
+   "at": [
+    0.2,
+    -13.1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#4a2f20",
+    "topColour": "#4a2f20"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mullion-2",
+   "at": [
+    -14.5,
+    -13.1
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#4a2f20",
+    "topColour": "#4a2f20"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panel-wood-1",
+   "at": [
+    3,
+    -13.05
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.3
+    ],
+    "z0": 0.2,
+    "height": 3.2,
+    "colour": "#5a3623",
+    "topColour": "#5a3623"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "valance-front",
+   "at": [
+    0,
+    -14.2
+   ],
+   "params": {
+    "rect": [
+     33,
+     0.4
+    ],
+    "z0": 3.3,
+    "height": 0.8,
+    "colour": "#2f6b4f",
+    "topColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "rect": [
+     33.5,
+     3.2
+    ],
+    "z0": 4.1,
+    "height": 0.5,
+    "colour": "#6a3f26",
+    "topColour": "#7b4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-edge",
+   "at": [
+    0,
+    -15.6
+   ],
+   "params": {
+    "rect": [
+     33.5,
+     0.5
+    ],
+    "z0": 4.1,
+    "height": 0.8,
+    "colour": "#6a3f26",
+    "topColour": "#6a3f26"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-corner",
+   "at": [
+    16.2,
+    -13.6
+   ],
+   "params": {
+    "radius": 3.4,
+    "n": 16,
+    "z0": 4.1,
+    "height": 0.9,
+    "colour": "#6a3f26",
+    "topColour": "#7b4a2e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lamps",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 0.7,
+      "z0": 3.4,
+      "colour": "#f2efe6",
+      "topColour": "#ffffff"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15,
+     -14.6
+    ],
+    "end": [
+     15,
+     -14.6
+    ],
+    "count": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb-bw",
+   "at": [
+    0,
+    -17
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.5
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#e8e8e8",
+    "topColour": "#222222"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sidewalk",
+   "at": [
+    0,
+    -15.8
+   ],
+   "params": {
+    "rect": [
+     36,
+     3.2
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#c8c2b4",
+    "topColour": "#c8c2b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-1",
+   "at": [
+    -5,
+    -16.2
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.9
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "planter-2",
+   "at": [
+    8,
+    -16.2
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.9
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-pole",
+   "at": [
+    12,
+    -16.6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#2a2a2a",
+    "topColour": "#2a2a2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lamp-head",
+   "at": [
+    12,
+    -16.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 5.5,
+    "height": 0.7,
+    "colour": "#f2efe6",
+    "topColour": "#f2efe6"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-meal-stop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "carved wood panelling is flat colour, canopy curve approximated, no signage detail, upper facade ornament and air-conditioners omitted"
+ }
+}

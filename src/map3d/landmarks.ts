@@ -490,6 +490,9 @@ const KINDS: Record<string, DrawKind> = {
   },
 };
 
+/** The plinth alone (the neutral one): what a venue's own LOD2 model (src/scene/places/icons.ts) stands on in place of the procedural building. */
+export function drawPlinth(g: LandmarkContext): void { plinth(g.b); }
+
 /** Draw the landmark for a venue's scene kind. Unknown kinds get a plain block, so a new venue is never invisible. */
 export function drawLandmark(g: LandmarkContext, kind?: string, variant?: string): LandmarkDrawn {
   const draw = KINDS[String(kind)];

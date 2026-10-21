@@ -1,0 +1,2246 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flickr_-_Gaspa_-_Cairo,_Bazar_el-Khalili_(2).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Francesco Gasparetti",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/cairo-market-game-2.jpg",
+   "used": "narrow lane between tall khans, awnings over stalls, bright slot of sky at the end, shop frontages"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_-_Islamic_district_-_Khan_al_Khalili_shops.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Daniel Mayer",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/cairo-market-game-1.jpg",
+   "used": "dull beige plaster walls, dark roller shutters, brass lantern stalls"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/34204980",
+   "used": "overall bazaar area (about 320 x 220 m); modelled as a representative block of khans around lanes"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "khan-r0",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    11,
+    4
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb999",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "rect",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-r0",
+   "at": [
+    3.4,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-r0",
+   "at": [
+    3.3,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.8,
+    "colour": "#3b3a38",
+    "topColour": "#3b3a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-r0",
+   "at": [
+    2.7,
+    6
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc2-r0",
+   "at": [
+    2.7,
+    2
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     3
+    ],
+    "z0": 11.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-r0",
+   "at": [
+    3.35,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3
+    ],
+    "z0": 0.2,
+    "height": 2.8,
+    "colour": "#8a8a80",
+    "topColour": "#8a8a80"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-r1",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    11,
+    17
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8b08c",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "rect",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-r1",
+   "at": [
+    3.4,
+    17
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-r1",
+   "at": [
+    3.3,
+    17
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.8,
+    "colour": "#4a3d2e",
+    "topColour": "#4a3d2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-r1",
+   "at": [
+    2.7,
+    19
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc2-r1",
+   "at": [
+    2.7,
+    15
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     3
+    ],
+    "z0": 11.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-l1",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -11,
+    17
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c1a1",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "rect"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-l1",
+   "at": [
+    -3.3,
+    17
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.6,
+    "colour": "#2f3a3a",
+    "topColour": "#2f3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-l1",
+   "at": [
+    -2.7,
+    18
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-r1",
+   "at": [
+    3.35,
+    18
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3
+    ],
+    "z0": 0.2,
+    "height": 2.8,
+    "colour": "#8a8a80",
+    "topColour": "#8a8a80"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-r2",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    11,
+    30
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c1a1",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "rect",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-r2",
+   "at": [
+    3.4,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-r2",
+   "at": [
+    3.3,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.8,
+    "colour": "#2f3a3a",
+    "topColour": "#2f3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-r2",
+   "at": [
+    2.7,
+    32
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc2-r2",
+   "at": [
+    2.7,
+    28
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     3
+    ],
+    "z0": 11.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-l2",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -11,
+    30
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfa886",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "rect"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-l2",
+   "at": [
+    -3.4,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-l2",
+   "at": [
+    -3.3,
+    30
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.6,
+    "colour": "#3b3a38",
+    "topColour": "#3b3a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-l2",
+   "at": [
+    -2.7,
+    31
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-r2",
+   "at": [
+    3.35,
+    31
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3
+    ],
+    "z0": 0.2,
+    "height": 2.8,
+    "colour": "#8a8a80",
+    "topColour": "#8a8a80"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-r3",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    11,
+    43
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bfa886",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-r3",
+   "at": [
+    3.4,
+    43
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-r3",
+   "at": [
+    3.3,
+    43
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.8,
+    "colour": "#3b3a38",
+    "topColour": "#3b3a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-r3",
+   "at": [
+    2.7,
+    45
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc2-r3",
+   "at": [
+    2.7,
+    41
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     3
+    ],
+    "z0": 11.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-l3",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -11,
+    43
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb999",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-l3",
+   "at": [
+    -3.4,
+    43
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-l3",
+   "at": [
+    -3.3,
+    43
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.6,
+    "colour": "#4a3d2e",
+    "topColour": "#4a3d2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-l3",
+   "at": [
+    -2.7,
+    44
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-r3",
+   "at": [
+    3.35,
+    44
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3
+    ],
+    "z0": 0.2,
+    "height": 2.8,
+    "colour": "#8a8a80",
+    "topColour": "#8a8a80"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-r4",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    11,
+    56
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb999",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-r4",
+   "at": [
+    3.4,
+    56
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-r4",
+   "at": [
+    3.3,
+    56
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.8,
+    "colour": "#4a3d2e",
+    "topColour": "#4a3d2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-r4",
+   "at": [
+    2.7,
+    58
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc2-r4",
+   "at": [
+    2.7,
+    54
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     3
+    ],
+    "z0": 11.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "khan-l4",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -11,
+    56
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8b08c",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shop-l4",
+   "at": [
+    -3.4,
+    56
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     10
+    ],
+    "z0": 0,
+    "height": 3.4,
+    "colour": "#2a2420",
+    "topColour": "#2a2420"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-l4",
+   "at": [
+    -3.3,
+    56
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.5
+    ],
+    "z0": 3.5,
+    "height": 1.6,
+    "colour": "#2f3a3a",
+    "topColour": "#2f3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balc-l4",
+   "at": [
+    -2.7,
+    57
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     5
+    ],
+    "z0": 8.5,
+    "height": 0.5,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shutter-r4",
+   "at": [
+    3.35,
+    57
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3
+    ],
+    "z0": 0.2,
+    "height": 2.8,
+    "colour": "#8a8a80",
+    "topColour": "#8a8a80"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "mamluk",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -11,
+    4
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#a79a86",
+    "windows": "rect",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "bands",
+     "colour": "#3b3630"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89878",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mamluk-recess",
+   "at": [
+    -3.4,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     3.2
+    ],
+    "z0": 4.5,
+    "height": 9,
+    "colour": "#2e2924",
+    "topColour": "#2e2924"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mamluk-recess-top",
+   "at": [
+    -3.35,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     2.2
+    ],
+    "z0": 12.5,
+    "height": 2.4,
+    "colour": "#2e2924",
+    "topColour": "#2e2924"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mamluk-cornice",
+   "at": [
+    -3.1,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     13
+    ],
+    "z0": 14.3,
+    "height": 0.8,
+    "colour": "#8f8472",
+    "topColour": "#8f8472"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-0",
+   "at": [
+    0,
+    -6.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.4,
+    "height": 0.15,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awn-l0",
+   "at": [
+    -2.7,
+    -5.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r0",
+   "at": [
+    2.7,
+    -3.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#e0b44c",
+    "topColour": "#e0b44c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-0",
+   "at": [
+    2.2,
+    -5.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-0",
+   "at": [
+    2.2,
+    -5.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#e08a2c",
+    "topColour": "#e08a2c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-0",
+   "at": [
+    0.66,
+    -4.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-1",
+   "at": [
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.65,
+    "height": 0.15,
+    "colour": "#e08a2c",
+    "topColour": "#e08a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-l1",
+   "at": [
+    -2.7,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r1",
+   "at": [
+    2.7,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-1",
+   "at": [
+    -2.2,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-1",
+   "at": [
+    -2.2,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-1",
+   "at": [
+    -0.66,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-2",
+   "at": [
+    0,
+    7.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.4,
+    "height": 0.15,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awn-l2",
+   "at": [
+    -2.7,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#e0b44c",
+    "topColour": "#e0b44c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r2",
+   "at": [
+    2.7,
+    10.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-2",
+   "at": [
+    2.2,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-2",
+   "at": [
+    2.2,
+    8.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-2",
+   "at": [
+    0.66,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-3",
+   "at": [
+    0,
+    13.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.65,
+    "height": 0.15,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-l3",
+   "at": [
+    -2.7,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r3",
+   "at": [
+    2.7,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-3",
+   "at": [
+    -2.2,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-3",
+   "at": [
+    -2.2,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-3",
+   "at": [
+    -0.66,
+    15.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-4",
+   "at": [
+    0,
+    20.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.4,
+    "height": 0.15,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awn-l4",
+   "at": [
+    -2.7,
+    21.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r4",
+   "at": [
+    2.7,
+    23.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#e08a2c",
+    "topColour": "#e08a2c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-4",
+   "at": [
+    2.2,
+    21.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-4",
+   "at": [
+    2.2,
+    21.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#e0b44c",
+    "topColour": "#e0b44c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-4",
+   "at": [
+    0.66,
+    22.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-5",
+   "at": [
+    0,
+    26.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.65,
+    "height": 0.15,
+    "colour": "#e0b44c",
+    "topColour": "#e0b44c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-l5",
+   "at": [
+    -2.7,
+    27.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r5",
+   "at": [
+    2.7,
+    29.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-5",
+   "at": [
+    -2.2,
+    27.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-5",
+   "at": [
+    -2.2,
+    27.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-5",
+   "at": [
+    -0.66,
+    28.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-6",
+   "at": [
+    0,
+    33.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.4,
+    "height": 0.15,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awn-l6",
+   "at": [
+    -2.7,
+    34.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#e08a2c",
+    "topColour": "#e08a2c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r6",
+   "at": [
+    2.7,
+    36.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-6",
+   "at": [
+    2.2,
+    34.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-6",
+   "at": [
+    2.2,
+    34.0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-6",
+   "at": [
+    0.66,
+    35.0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "canopy-7",
+   "at": [
+    0,
+    39.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     4.5
+    ],
+    "z0": 3.65,
+    "height": 0.15,
+    "colour": "#c8362f",
+    "topColour": "#c8362f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-l7",
+   "at": [
+    -2.7,
+    40.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f5fa8",
+    "topColour": "#2f5fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "awn-r7",
+   "at": [
+    2.7,
+    42.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     3.5
+    ],
+    "z0": 3.0,
+    "height": 0.12,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stall-7",
+   "at": [
+    -2.2,
+    40.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     2.4
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "goods-7",
+   "at": [
+    -2.2,
+    40.5
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     2.1
+    ],
+    "z0": 0.9,
+    "height": 0.7,
+    "colour": "#2f7a4f",
+    "topColour": "#2f7a4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lantern-7",
+   "at": [
+    -0.66,
+    41.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 2.5,
+    "height": 0.9,
+    "colour": "#d9a93a",
+    "topColour": "#d9a93a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lane-paving",
+   "at": [
+    0,
+    22
+   ],
+   "params": {
+    "rect": [
+     7,
+     70
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b7aa90",
+    "topColour": "#b7aa90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-market-game",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no crowd/goods detail, signboards blank, Mamluk wall simplified with one recess, canopies flat slabs, lantern clusters single blocks"
+ }
+}

@@ -1,0 +1,403 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "asha-botanical-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://poidata.io/report/botanical-garden/nigeria",
+   "used": "directory listing only; no photo or description; no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "id": "pavilion",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#e9dfc6",
+    "cap_colour": "#8a4a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    30,
+    34
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 1.1,
+    "colour": "#e9dfc6",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    8,
+    -49,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#4f7a4c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "f-perim",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3.5,
+      -48
+     ],
+     [
+      -40,
+      -48
+     ],
+     [
+      -40,
+      48
+     ],
+     [
+      40,
+      48
+     ],
+     [
+      40,
+      -48
+     ],
+     [
+      3.5,
+      -48
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#3b3f42"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-main",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -48
+     ],
+     [
+      0,
+      -10
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -10
+     ],
+     [
+      26,
+      -10
+     ],
+     [
+      26,
+      34
+     ],
+     [
+      -26,
+      34
+     ],
+     [
+      -26,
+      -10
+     ]
+    ],
+    "width": 2,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-a",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 7,
+    "depth": 5
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-b",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 7,
+    "depth": 5
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.8,
+    "depth": 0.9
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-2",
+   "lod": [
+    0
+   ],
+   "at": [
+    12,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.8,
+    "depth": 0.9
+   }
+  },
+  {
+   "type": "car",
+   "id": "parked",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     38
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline exists; a plausible fenced garden with gate, paths, beds, pavilion and kiosk sized from the brief."
+ }
+}

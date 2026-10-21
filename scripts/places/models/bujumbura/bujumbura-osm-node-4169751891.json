@@ -1,0 +1,164 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (a walled local bar with open-air seating and a coloured corrugated roof); the OSM building at this point is a church (Kigobe Emmanuel Church), so its outline was NOT used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a57a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#ece6d6"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5c6b66",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.0,
+    "form": "shed",
+    "colour": "#2f7f78"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "colours": [
+     "#c8362f",
+     "#2f7f78",
+     "#e0a526"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#d9a57a",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      28,
+      0
+     ],
+     [
+      28,
+      34
+     ],
+     [
+      0,
+      34
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -18.3,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.3,
+    "bottom": 2.3,
+    "colour": "#5c6b66",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-4169751891",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence; OSM match is a church so a typed walled bar was composed"
+ }
+}

@@ -1,0 +1,196 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1291328633",
+   "used": "594 m2 building outline containing the cathedral point: long nave with a stepped front projection"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Sokoto",
+   "used": "mother cathedral on Bello Way, glass windows, walled compound with parking"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "fit": 60
+   },
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "plinth": 0.6,
+    "bands": "#a9633f",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bell-tower",
+   "at": [
+    11,
+    -11
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     4.6
+    ],
+    "height": 19,
+    "colour": "#f7f4ee",
+    "topColour": "#a9633f",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "storeys": 4,
+    "trimColour": "#a9633f"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    11,
+    -11,
+    19
+   ],
+   "params": {
+    "baseWidth": 4.6,
+    "height": 8,
+    "sides": 4,
+    "colour": "#8a3b2e",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -24
+     ],
+     [
+      34,
+      -24
+     ],
+     [
+      34,
+      24
+     ],
+     [
+      -34,
+      24
+     ],
+     [
+      -34,
+      -24
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.35,
+    "colour": "#e8dfc8",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 0.9,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    -6,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 8,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "holy-family-cathedral-sokoto",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real outline only; no photo found, so tower, roof pitch, wall colours and windows are typed from the brief."
+ }
+}

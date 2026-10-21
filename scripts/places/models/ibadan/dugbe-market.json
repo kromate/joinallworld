@@ -1,0 +1,318 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://guardian.ng/news/tears-as-fire-razes-popular-dugbe-market-in-ibadan/",
+   "used": "goods: cloth, bags, electrical goods; dense market"
+  },
+  {
+   "kind": "text",
+   "url": "https://estateintel.com/insights/office-rents-remain-stable-in-ibadans-oldest-commercial-hub-dugbe",
+   "used": "oldest commercial hub, shop rows and offices"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1271397184",
+   "used": "checked only: a 53 m2 outline 4 m away is a single small building, not the market, so not used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "shop-block",
+   "at": [
+    -24,
+    34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 36,
+    "depth": 11,
+    "storeys": 2,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.22,
+    "roof": "flat",
+    "shop_kind": "mixed",
+    "awning_ratio": 0.4,
+    "entrance": false,
+    "rooftop": false,
+    "wall_colour": "#b9b4a8",
+    "roof_colour": "#8a8c8a",
+    "accent_colour": "#cfa58c"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    22,
+    34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 34,
+    "depth": 11,
+    "storeys": 2,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.22,
+    "roof": "flat",
+    "shop_kind": "mixed",
+    "awning_ratio": 0.4,
+    "entrance": false,
+    "rooftop": false,
+    "wall_colour": "#d6c7a6",
+    "roof_colour": "#8a8c8a",
+    "accent_colour": "#cfa58c"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    -52,
+    6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "storeys": 2,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.22,
+    "roof": "flat",
+    "shop_kind": "mixed",
+    "awning_ratio": 0.4,
+    "entrance": false,
+    "rooftop": false,
+    "wall_colour": "#cfa58c",
+    "roof_colour": "#8a8c8a",
+    "accent_colour": "#cfa58c"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    52,
+    4,
+    0
+   ],
+   "rotDeg": -90,
+   "params": {
+    "width": 36,
+    "depth": 10,
+    "storeys": 2,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.22,
+    "roof": "flat",
+    "shop_kind": "mixed",
+    "awning_ratio": 0.4,
+    "entrance": false,
+    "rooftop": false,
+    "wall_colour": "#b9b4a8",
+    "roof_colour": "#8a8c8a",
+    "accent_colour": "#cfa58c"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -22,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.3,
+    "roof_colour": "#8a8c8a",
+    "wall_colour": "#d6c7a6"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    28,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.3,
+    "roof_colour": "#7d807d",
+    "wall_colour": "#cfa58c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -22,
+    8,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 10,
+    "height": 3.8,
+    "roof": "gable",
+    "post_pitch": 5,
+    "roof_colour": "#8a8c8a",
+    "goods": "cloth"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 10,
+    "height": 3.8,
+    "roof": "gable",
+    "post_pitch": 5,
+    "roof_colour": "#7d807d",
+    "goods": "cloth"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#b8452e",
+     "#3f6b7a",
+     "#d8a43a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#cfa58c",
+     "#4a6a8a",
+     "#b8452e",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 10,
+    "radius": 1.5,
+    "tables": false,
+    "colours": [
+     "#b8452e",
+     "#3f6b7a",
+     "#d8a43a"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -30,
+    3.6
+   ],
+   "params": {}
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    23,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#b8452e",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    23,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#3f6b7a",
+     "#f2efe6"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   136,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market exists; layout is a typical dense 2-storey shop-row and zinc shed market per the brief, not the real street plan."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "dugbe-market"
+}

@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "kofar-mata",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kofar_Mata_-_Kano_City_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Suleiman Umar, Aminu Abdullahi, Abubakar Yusuf (kanostreetsonosm.org.ng)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/mata.jpg",
+   "used": "row of five tall red-painted arched gate bays with cream-edged piers and horned tops, lower red wing walls each end, wide road in front, palms to the right"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    -18,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "height": 10,
+    "archWidth": 5.6,
+    "horns": true,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    -9,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "height": 10,
+    "archWidth": 5.6,
+    "horns": true,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "height": 10,
+    "archWidth": 5.6,
+    "horns": true,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    9,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "height": 10,
+    "archWidth": 5.6,
+    "horns": true,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    18,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.2,
+    "height": 10,
+    "archWidth": 5.6,
+    "horns": true,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    -28.5,
+    0,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.2,
+    "height": 6,
+    "archWidth": 3,
+    "horns": false,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "zaure-gatehouse",
+   "at": [
+    27.5,
+    0,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.2,
+    "height": 6,
+    "archWidth": 3,
+    "horns": false,
+    "relief": false,
+    "colour": "#c4452c",
+    "trimColour": "#eadfcb"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    32,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "pitch": 4,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arches are glazed by the part (not open passages); no cream edging on arches; wings lack stepped tops; stalls tiny and tricycles absent"
+ }
+}

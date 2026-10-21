@@ -1,0 +1,495 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gare_de_Brazzaville_en_1941.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/brazzaville/transit-1941.jpg",
+   "used": "style of the colonial pavilions only (the photographed 1930s station was replaced in 1962): cream two-storey block, white columned balcony, two-tier roof with lower hip skirt and upper gable, grey corrugated sheet roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/699008138",
+   "used": "nearest-only match (25 m, untagged); not used for the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion-w",
+   "footprint": {
+    "rect": [
+     19,
+     11
+    ]
+   },
+   "at": [
+    -37,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d746a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-w-upper",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    -37,
+    0
+   ],
+   "z0": 7.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f685f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e",
+   "footprint": {
+    "rect": [
+     19,
+     11
+    ]
+   },
+   "at": [
+    37,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d746a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-e-upper",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    37,
+    0
+   ],
+   "z0": 7.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f685f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-1962",
+   "footprint": {
+    "rect": [
+     50,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2dac6",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "faces": {
+     "back": "ribbon"
+    },
+    "bands": "#b9a98a",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-canopy",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 4.2,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a98a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9a92",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-posts",
+   "footprint": {
+    "rect": [
+     28,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis"
+     }
+    ]
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 10,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e1d0",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.2,
+    5.4
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#b9a98a",
+    "frameColour": "#8c8c88",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-canopy",
+   "footprint": {
+    "rect": [
+     70,
+     9
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "z0": 3.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9a96",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-posts-back",
+   "footprint": {
+    "rect": [
+     68,
+     7
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcfc8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "pilotis"
+     }
+    ]
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     84,
+     11
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "track-1",
+   "footprint": {
+    "rect": [
+     96,
+     1.5
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4540",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4540",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "track-2",
+   "footprint": {
+    "rect": [
+     96,
+     1.5
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4a4540",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4540",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -24
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -24
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "1962 hall is typed from the brief (no photo of it); only pavilion style taken from the 1941 photo of the earlier station; clock tower and canopy proportions are assumed"
+ }
+}

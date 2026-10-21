@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "nasarawa-ministry-information-culture-tourism",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lafia.json",
+   "used": "state ministry: three-storey white rendered block with green bands, glazed central bay behind a columned portico, flagpoles, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     55,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#2f6b4f",
+    "faces": {
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb8b2",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#f7f4ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 6,
+    "height": 9.5,
+    "radius": 0.5,
+    "kind": "round",
+    "beamHeight": 0.9,
+    "roofDepth": 4,
+    "colour": "#f7f4ee",
+    "roofColour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.9,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "pillar": 0.9,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or OSM outline; massing from the brief."
+ }
+}

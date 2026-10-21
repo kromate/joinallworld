@@ -1,0 +1,1589 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "warsaw",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "warsaw",
+    "climate": "temperate",
+    "vernacular": "Rebuilt-historic and prewar Warsaw: four- to six-storey plastered tenements in pastel ochre, cream, pink and pale green with hip or mansard roofs and cornices; Stalinist socialist-realist blocks in stone and plaster; 1960-85 large-panel housing estates (blokowiska) of grey concrete now often insulated in pastel render with flat roofs; red-brick churches and military buildings; glass office towers in the centre; and suburban or village houses with plastered walls and red or brown ceramic or metal-tile hip roofs among pine and birch.",
+    "wallColours": [
+      "#d9c49a",
+      "#e8dcc0",
+      "#c99a86",
+      "#b4bfa8",
+      "#b9b5ac",
+      "#8f4a3a",
+      "#e9e6df"
+    ],
+    "roofColours": [
+      "#9a3f30",
+      "#5b4a42",
+      "#4b4f55",
+      "#7a7a78"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "stucco",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "slate",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Cornices, window surrounds and rusticated ground floors on tenements; Baroque and neoclassical palace details in pale plaster with white trim; socialist-realist pilasters, colonnades and spires; sgraffito and stripped-classical facades; pastel-painted panel-block insulation in geometric colour blocks; brick Gothic-revival and modern parish churches.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+        "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+      }
+    ]
+  },
+  "places": {
+    "warsaw-airport-warsaw-airport": {
+      "venueId": "warsaw-airport-warsaw-airport",
+      "city": "warsaw",
+      "name": "Warsaw Chopin Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal A of Warsaw Chopin Airport seen from the forecourt: a long glazed terminal block with a flat roof and a row of jet bridges, the control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdd5d9",
+          "#6d7a84",
+          "#e6e8e8"
+        ],
+        "roofColour": "#aeb3b6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 27
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "two joined halls, 2008 north hall and 1992 south hall"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1992 and 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Warsaw_Chopin_Airport",
+          "what": "Terminal A combines north hall (2008) and south hall (1992, dark-red roof, pillars and frames, refurbished 2015) with 116 check-in desks and 45 gates, 27 with jetways"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Two joined halls: the 1992 south hall (once beetroot-red roof, pillars and frames, refurbished 2015) and the larger 2008 north hall. Sources give gate and desk counts only; footprint, height and facade colours are estimated from general knowledge of the terminal and typed as medium."
+    },
+    "warsaw-clinic": {
+      "venueId": "warsaw-clinic",
+      "city": "warsaw",
+      "name": "Centrum Zdrowia Dziecka",
+      "archetype": "hospital",
+      "subject": "Children's Memorial Health Institute: a campus of long concrete pavilions with a taller 13-storey ward block, helipad on the roof",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 80,
+        "storeys": 13,
+        "height_m": 48,
+        "roof": "flat",
+        "variant": "pavilion-campus",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d8d5cc",
+          "#8a96a0",
+          "#f0eeea"
+        ],
+        "roofColour": "#7d8083",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977-1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Children%27s_Memorial_Health_Institute",
+          "what": "Pavilion complex designed by Bolechowski, Boltuc and Zielinski (1970 competition), pavilions A-C opened 1977, complete 1979, 13-storey hospital wing, helipad, emergency department"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Designed by Bolechowski, Boltuc and Zielinski; first three pavilions finished 1977, all by 1979. Sources confirm the 13-storey wing, helipad and 1970s date; cladding colours are typed from period hospital buildings and not photographed-verified."
+    },
+    "warsaw-community-notices": {
+      "venueId": "warsaw-community-notices",
+      "city": "warsaw",
+      "name": "Agencja Restrukturyzacji i Modernizacji Rolnictwa",
+      "archetype": "office-low",
+      "subject": "Regional agricultural-agency office (ARiMR): a modern three-storey rendered office block with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e0d6",
+          "#7b8c99",
+          "#c4c0b6"
+        ],
+        "roofColour": "#6c6f72",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "The Agency for Restructuring and Modernisation of Agriculture office at this location is not described in any source found. Typed as a generic Polish government office block from the city style. Placeholder-grade."
+    },
+    "warsaw-community-voting-game": {
+      "venueId": "warsaw-community-voting-game",
+      "city": "warsaw",
+      "name": "Plac Konfederacji",
+      "archetype": "park-landscape",
+      "subject": "Plac Konfederacji: a paved city square ringed by rendered apartment blocks, with benches, trees and a central planting bed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "square"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#d9cfb8",
+          "#b0634e",
+          "#efece4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Square name only; no description found. Typed as a generic Warsaw residential-district square with lime and plane trees and pastel surrounding blocks."
+    },
+    "warsaw-community-workshop": {
+      "venueId": "warsaw-community-workshop",
+      "city": "warsaw",
+      "name": "Miejska Biblioteka Publiczna w Legionowie",
+      "archetype": "campus-block",
+      "subject": "Legionowo municipal public library: a small modern two-storey building with a glazed entrance and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e1d4",
+          "#8a6f5a",
+          "#f2f0ea"
+        ],
+        "roofColour": "#8f3f33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "No source describes this library building. Typed as a small Mazovian town library from the city style."
+    },
+    "warsaw-market-game": {
+      "venueId": "warsaw-market-game",
+      "city": "warsaw",
+      "name": "Nowa Stacja",
+      "archetype": "mall",
+      "subject": "Nowa Stacja in Pruszkow: a low retail and leisure block near the railway with rendered walls, a shallow roof and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3cdbf",
+          "#a05a45",
+          "#eeeae0"
+        ],
+        "roofColour": "#74777a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Venue identity uncertain (named Nowa Stacja, in the Pruszkow area); no description found. Typed as a generic Polish suburban shopping and service block."
+    },
+    "warsaw-meal-stop": {
+      "venueId": "warsaw-meal-stop",
+      "city": "warsaw",
+      "name": "Jeff's",
+      "archetype": "restaurant",
+      "subject": "Jeff's: a small eatery on the ground floor of a pastel plastered tenement, awning over the door and pavement tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "tenement-ground-floor"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d8c79f",
+          "#6b3d2f",
+          "#f2eee4"
+        ],
+        "roofColour": "#5b4a42",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "prewar tenement",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Restaurant name is generic; nothing describes its real appearance. Typed as a ground-floor eatery in a Warsaw tenement."
+    },
+    "warsaw-osm-way-1025962496": {
+      "venueId": "warsaw-osm-way-1025962496",
+      "city": "warsaw",
+      "name": "Stadion GOS-u w Nadarzynie",
+      "archetype": "stadium",
+      "subject": "GOS Nadarzyn sports stadium: a small grass pitch with a track, one covered main stand and low floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb9b0",
+          "#3d6a8c",
+          "#e5e2da"
+        ],
+        "roofColour": "#4b6b86",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered side"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Municipal sports stadium in Nadarzyn; no detailed source. Typed from city style and small-town stadium type."
+    },
+    "warsaw-osm-way-110020158": {
+      "venueId": "warsaw-osm-way-110020158",
+      "city": "warsaw",
+      "name": "Polska Akademia Nauk Centrum Badań Ekologicznych",
+      "archetype": "campus-block",
+      "subject": "Polish Academy of Sciences Centre for Ecological Research: low brick-and-render research buildings among pines in Dziekanow Lesny",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8604a",
+          "#e1dccf",
+          "#f0eee8"
+        ],
+        "roofColour": "#6b5043",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Research centre in a forested edge-of-city setting; no building description found. Typed as a mid-century institute block."
+    },
+    "warsaw-osm-way-124771239": {
+      "venueId": "warsaw-osm-way-124771239",
+      "city": "warsaw",
+      "name": "Pałac w Falentach",
+      "archetype": "manor",
+      "subject": "Falenty Palace: a two-storey plastered baroque manor with four small corner towers, a chapel projection on the north side and a landscape park with ponds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "corner-towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "render",
+        "colours": [
+          "#e7dfc9",
+          "#c9bda0",
+          "#fbfaf4"
+        ],
+        "roofColour": "#6a625c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 4,
+          "note": "small towers at the corners"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "c.1620 rebuilt 1857",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pl.wikipedia.org/wiki/Pałac_w_Falentach",
+          "what": "Baroque masonry manor c.1620, rebuilt 1852-57 by Lanci with four small towers, northern chapel projection, outbuilding linked by gallery, landscape park and ponds"
+        }
+      ],
+      "notes": "Masonry baroque manor c.1620, rebuilt 1852-57 by Lanci with four small towers and a north chapel projection, linked to an outbuilding by a gallery; restored after 1945. Colours and dimensions are estimated; the source gives no storeys or roof detail."
+    },
+    "warsaw-osm-way-173534115": {
+      "venueId": "warsaw-osm-way-173534115",
+      "city": "warsaw",
+      "name": "Dwór Wielopolskich i Potulickich",
+      "archetype": "manor",
+      "subject": "Wielopolski and Potulicki manor house: a single-storey white plastered Polish dwor with a columned porch and a tall hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "hip",
+        "variant": "dwor",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "render",
+        "colours": [
+          "#f1ece0",
+          "#d6cdb6",
+          "#fbfaf6"
+        ],
+        "roofColour": "#8a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "four columns"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "18th-19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "No source for this specific manor was reachable; typed from the classic Mazovian dwor type (single storey, columned porch, tall hip roof). Verify when sources exist."
+    },
+    "warsaw-osm-way-23498828": {
+      "venueId": "warsaw-osm-way-23498828",
+      "city": "warsaw",
+      "name": "Tor Stegny",
+      "archetype": "stadium",
+      "subject": "Tor Stegny: an oval racing and training circuit with a small pit and timing building and a short covered grandstand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "race-track"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5c1b8",
+          "#8c3a2e",
+          "#eeeae0"
+        ],
+        "roofColour": "#5e6063",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Name only; typed as an urban motor-sport/training track with grandstand and pit building. Not verified."
+    },
+    "warsaw-osm-way-23771865": {
+      "venueId": "warsaw-osm-way-23771865",
+      "city": "warsaw",
+      "name": "Park Kombatantów",
+      "archetype": "park-landscape",
+      "subject": "Park Kombatantow: a quiet district park with lime and maple avenues, paved paths, benches and a small monument",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#a9a398",
+          "#d8d0bd",
+          "#efece4"
+        ],
+        "roofColour": "#6f7274",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "war-veterans monument"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "postwar",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Park name suggests a veterans commemorative park; no description found. Typed as a generic Warsaw district park."
+    },
+    "warsaw-osm-way-24279875": {
+      "venueId": "warsaw-osm-way-24279875",
+      "city": "warsaw",
+      "name": "Targowisko na Szembeka",
+      "archetype": "market-open",
+      "subject": "Targowisko on Szembeka: a street bazaar of rows of stalls under striped umbrellas and tin-roofed sheds on a paved square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "bazaar"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#8aa0b0",
+          "#b05a3c",
+          "#e6e0d0"
+        ],
+        "roofColour": "#7b8286",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "umbrellas",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Market by Plac Szembeka in Grochow; no description found. Typed as a Polish open-air bazaar with umbrellas and stalls."
+    },
+    "warsaw-osm-way-24924674": {
+      "venueId": "warsaw-osm-way-24924674",
+      "city": "warsaw",
+      "name": "G City Targówek",
+      "archetype": "mall",
+      "subject": "G City Targowek: a two-storey shopping centre with a long rendered and metal-clad front, rooftop parking and a big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c6",
+          "#c0502f",
+          "#f2efe8"
+        ],
+        "roofColour": "#6e7174",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "rooftop parking"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "No description found. Typed from the shopping-centre type."
+    },
+    "warsaw-osm-way-256477802": {
+      "venueId": "warsaw-osm-way-256477802",
+      "city": "warsaw",
+      "name": "Ząbki Dozbud Arena",
+      "archetype": "stadium",
+      "subject": "Zabki Dozbud Arena: a small football stadium with one covered stand along the touchline and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bfbab0",
+          "#a32b2b",
+          "#e8e5de"
+        ],
+        "roofColour": "#4f5a63",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Small-town football ground; no description found. Typed."
+    },
+    "warsaw-osm-way-271202947": {
+      "venueId": "warsaw-osm-way-271202947",
+      "city": "warsaw",
+      "name": "Kościół pw. św. Rocha",
+      "archetype": "church-modern",
+      "subject": "St Roch church: a red-brick parish church with a steep gable roof and an offset bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "brick-parish"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#9a4f3c",
+          "#e3dccb",
+          "#f1eee6"
+        ],
+        "roofColour": "#4b4f55",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "No source for this church. Typed as a Mazovian brick parish church."
+    },
+    "warsaw-osm-way-326736657": {
+      "venueId": "warsaw-osm-way-326736657",
+      "city": "warsaw",
+      "name": "Park Fosa",
+      "archetype": "park-landscape",
+      "subject": "Park Fosa: a long green moat below brick fortress walls with winding paths and old trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "fort-moat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#8a4f3b",
+          "#a69d90",
+          "#d8d2c3"
+        ],
+        "roofColour": "#6f7274",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "brick moat walls"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th century moat",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Name and location suggest a park in a fort moat; not verified. Typed with brick walls and grass slopes."
+    },
+    "warsaw-osm-way-339846775": {
+      "venueId": "warsaw-osm-way-339846775",
+      "city": "warsaw",
+      "name": "War Studies University",
+      "archetype": "campus-block",
+      "subject": "War Studies University: a long formal campus block in pale render with a central entrance, flag poles and a parade yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#d6cfba",
+          "#9b5b45",
+          "#efeadc"
+        ],
+        "roofColour": "#8a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1930s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Military university campus; no detailed source. Typed as an interwar-style barracks and academy block."
+    },
+    "warsaw-osm-way-401557317": {
+      "venueId": "warsaw-osm-way-401557317",
+      "city": "warsaw",
+      "name": "Kościół pw. Chrystusa Najwyższego Kapłana",
+      "archetype": "church-modern",
+      "subject": "Church of Christ the Supreme Priest: a modern parish church with a tall plain bell tower and a steep gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8e2d2",
+          "#a85a42",
+          "#f4f1ea"
+        ],
+        "roofColour": "#5a4a42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "No description. Typed as a late-twentieth-century Polish parish church."
+    },
+    "warsaw-osm-way-5111535": {
+      "venueId": "warsaw-osm-way-5111535",
+      "city": "warsaw",
+      "name": "Cmentarz Palmiry",
+      "archetype": "monument",
+      "subject": "Palmiry cemetery: a memorial site in Kampinos pine forest with three tall crosses over the burial ground, stone entrance wall and rows of concrete crosses",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "memorial-cemetery"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#a8a59d",
+          "#7b7a74",
+          "#d9d6cf"
+        ],
+        "roofColour": "#6f7274",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "stone entrance with carved text"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "large crosses"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1948-1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pl.wikipedia.org/wiki/Cmentarz_Palmiry",
+          "what": "Memorial cemetery in Kampinos forest with three large crosses, pairs of concrete crosses on graves, stone entrance inscription, nearby 2011 museum of raw concrete and glass"
+        }
+      ],
+      "notes": "Three large crosses with elongated arms, pairs of concrete crosses on graves, stone entrance carved with a quote from the Gestapo prison wall; museum of raw concrete and glass opened 2011 nearby. Heights and exact layout estimated."
+    },
+    "warsaw-osm-way-693882871": {
+      "venueId": "warsaw-osm-way-693882871",
+      "city": "warsaw",
+      "name": "CEZAMAT",
+      "archetype": "campus-block",
+      "subject": "CEZAMAT: a modern research building with glazed facade panels and metal cladding, rectangular wings around a courtyard",
+      "form": {
+        "footprint": "ring",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "variant": "research-lab"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a4b2bc",
+          "#4e5f6b",
+          "#e8ecee"
+        ],
+        "roofColour": "#777c80",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Centre for Advanced Materials and Technologies; no description fetched. Typed as a modern lab building."
+    },
+    "warsaw-quiet-reflection": {
+      "venueId": "warsaw-quiet-reflection",
+      "city": "warsaw",
+      "name": "Kościół pw. Świętej Trójcy",
+      "archetype": "church-modern",
+      "subject": "Holy Trinity church: a plastered parish church with a gable front and a slender tower, small churchyard with trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e5ddc8",
+          "#a05a44",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "No source for this church. Typed from the Mazovian parish church type."
+    },
+    "warsaw-recreation": {
+      "venueId": "warsaw-recreation",
+      "city": "warsaw",
+      "name": "Park przy Bażantarni",
+      "archetype": "park-landscape",
+      "subject": "Park przy Bazantarni: a pine and oak forest park with gravel paths and a clearing with benches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "forest-park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8b6b4a",
+          "#a69d90",
+          "#d8d0bd"
+        ],
+        "roofColour": "#6f7274",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "postwar",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Warsaw",
+          "what": "Warsaw styles from Gothic and Baroque to neoclassical, socialist realism, 1960-85 panel-block estates and modern towers; \"richness of color and architectural details\" of palaces and churches"
+        }
+      ],
+      "notes": "Urban forest park in Ursynow/Natolin; no description found. Typed."
+    },
+    "warsaw-transit": {
+      "venueId": "warsaw-transit",
+      "city": "warsaw",
+      "name": "Warsaw East",
+      "archetype": "transport-station",
+      "subject": "Warszawa Wschodnia: a 1969 modernist station with a tall glazed main hall on lattice trusses, travertine and marble walls and island platforms with canopies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "glazed-hall",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "stone",
+        "colours": [
+          "#b9c5cc",
+          "#c8b79a",
+          "#e8e4da"
+        ],
+        "roofColour": "#6e7479",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 7
+        },
+        {
+          "id": "rail-tracks",
+          "count": 7
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1969 refurbished 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pl.wikipedia.org/wiki/Warszawa_Wschodnia",
+          "what": "1969 station by Romanowicz and Szymaniak: glazed main hall on large lattice trusses, multicoloured marble, travertine and textured concrete, seven island platforms, glass facades added in 2010-12"
+        }
+      ],
+      "notes": "Designed by Romanowicz and Szymaniak (1956-61, built 1962-69); glazed hall roof on large lattice trusses; multicoloured marble, travertine and textured concrete; seven island platforms; new glass facades 2010-12. Dimensions estimated."
+    }
+  }
+}

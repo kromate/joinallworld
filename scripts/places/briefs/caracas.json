@@ -1,0 +1,1742 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "caracas",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "caracas",
+    "climate": "highland",
+    "vernacular": "A mountain-valley city (about 900 m) under the Avila ridge. Dense hillside barrios of unplastered red brick and concrete-frame houses with flat concrete roofs and zinc sheet, often painted in bright blocks; mid-century tropical-modernist concrete buildings by Villanueva and contemporaries with brise-soleil, screens and murals; glass and concrete office and apartment towers (Parque Central, Altamira, Chacao); and whitewashed colonial-style houses with red clay-tile roofs around old plazas. Mahogany (caobo), ceiba, saman and palms in the parks.",
+    "wallColours": [
+      "#b5603f",
+      "#c9c1b2",
+      "#e9e2d0",
+      "#d9a441",
+      "#7fa8c2",
+      "#8c8f8a",
+      "#c8784f"
+    ],
+    "roofColours": [
+      "#8a8f94",
+      "#9aa0a4",
+      "#a2573f",
+      "#7a5a48"
+    ],
+    "wallMaterials": [
+      "brick",
+      "concrete",
+      "exposed-concrete",
+      "painted-render",
+      "render",
+      "whitewash",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Op-art colour stripes and kinetic art in public buildings (Cruz-Diez, Otero), Villanueva-style concrete screens, brise-soleil and ceramic or mosaic murals; exposed-brick and breeze-block walls with rebar stubs on barrio houses; colonial arched portals and iron-grilled windows; bright street murals; perimeter security bars and razor-wire walls.",
+    "sources": [
+      {
+        "url": "https://es.wikipedia.org/wiki/Aeropuerto_Internacional_de_Maiquet%C3%ADa_Sim%C3%B3n_Bol%C3%ADvar",
+        "what": "terminals of 1974-78 in modular concrete with art by Cruz-Diez, Poleo and Atienza; 1945 Malaussena terminal"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Parque_Los_Caobos",
+        "what": "Caracas parks with centuries-old caoba trees and modern sculpture, near Villanueva museum district"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Venezuela",
+        "what": "Ciudad Universitaria de Caracas (Villanueva) is a UNESCO World Heritage modernist ensemble"
+      }
+    ]
+  },
+  "places": {
+    "caracas-airport-caracas-airport": {
+      "venueId": "caracas-airport-caracas-airport",
+      "city": "caracas",
+      "name": "Maiquetía Simón Bolívar International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The International Terminal on the coast at Maiquetia: a very long, low rectangular concrete-and-glass terminal in modular bays with a mezzanine, bridge links to the parking garages and jet bridges on the apron side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcbc0",
+          "#6f8fa6",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "glass-walled jetways"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 2,
+          "note": "linked to the terminal by four bridges"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1974-77, domestic 1978, extended 1998-2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Aeropuerto_Internacional_de_Maiquet%C3%ADa_Sim%C3%B3n_Bol%C3%ADvar",
+          "what": "International Terminal built 1974-77 on a rectangular modular plan with a long central space and mezzanine linked to parking garages by four bridges; National Terminal 1978; won the 1980 National Architecture Prize; 1945 original terminal by Luis Malaussena"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3345513",
+          "what": "OSM footprint 759.3 x 154.6 m, area 42150 m2"
+        }
+      ],
+      "notes": "Plan, bridges, dates and the long low form are sourced; facade colours and storey count are estimates. OSM international terminal is 759 x 155 m; the model shows 300 m of it. The Spanish and English articles say the terminals were damaged and replaced by temporary buildings after June 2026 earthquakes; this brief shows the pre-damage terminal."
+    },
+    "caracas-clinic": {
+      "venueId": "caracas-clinic",
+      "city": "caracas",
+      "name": "Hospital Cardiológico Infantil Latinoamericano",
+      "archetype": "hospital",
+      "subject": "The children's cardiology hospital built in 2006: a contemporary white low- to mid-rise complex of linked wings with a curved glazed entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0efe8",
+          "#4f93b3",
+          "#ffffff"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16493408",
+          "what": "hospital, built 2006"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/220598788",
+          "what": "OSM footprint 338.7 x 273 m, area 66515 m2, start 2006"
+        }
+      ],
+      "notes": "Date and site size (339 x 273 m) only; the design is not described anywhere found. Typed low as a modern public hospital in a hillside setting."
+    },
+    "caracas-community-notices": {
+      "venueId": "caracas-community-notices",
+      "city": "caracas",
+      "name": "Registro Mercantil Tercero Estado Miranda",
+      "archetype": "office-tower",
+      "subject": "A ten-storey commercial office block in Miranda state housing the commercial registry: a concrete frame slab with ribbon windows and a podium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 26,
+        "storeys": 10,
+        "height_m": 36,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcac0",
+          "#5f7f95",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 5
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/423708528",
+          "what": "OSM footprint 106 x 26.3 m, area 1780 m2, 10 levels"
+        }
+      ],
+      "notes": "The OSM building (commercial, 10 levels, 106 x 26 m) contains the venue point; nothing describes it. Typed low from the levels and plan."
+    },
+    "caracas-community-voting-game": {
+      "venueId": "caracas-community-voting-game",
+      "city": "caracas",
+      "name": "Plaza Francia",
+      "archetype": "monument",
+      "subject": "Plaza Francia (Plaza Altamira): a landmark white concrete obelisk with a pyramidal tip standing in a tree-shaded paved plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 3,
+        "depth_m": 3,
+        "storeys": 0,
+        "height_m": 30,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f1efe9",
+          "#c9c5ba",
+          "#ffffff"
+        ],
+        "roofColour": "#e9e6df",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "white concrete shaft with pyramidal top"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q9060880",
+          "what": "Plaza Francia (Plaza Altamira), square and cultural property; OSM tags building=obelisk, roof:shape=pyramidal, building:colour=white"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1221023817",
+          "what": "OSM footprint 3.1 x 2.9 m, area 9 m2"
+        }
+      ],
+      "notes": "Obelisk, white colour and pyramidal tip are mapped in OSM; height (about 30 m here) and plaza fittings are estimates."
+    },
+    "caracas-community-workshop": {
+      "venueId": "caracas-community-workshop",
+      "city": "caracas",
+      "name": "Universidad Santa María",
+      "archetype": "campus-block",
+      "subject": "A private university campus of four- to five-storey concrete blocks with ribbon windows and covered walkways on a hillside site",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d3c6",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "founded 1953",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q542248",
+          "what": "university founded 1953 (Universidad Santa Maria)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6176737",
+          "what": "OSM footprint 981.3 x 589.9 m, area 392048 m2, start 10-13-1953"
+        }
+      ],
+      "notes": "Founding year and the 981 x 590 m site only; low. Concrete modernist block is a guess from period and place."
+    },
+    "caracas-market-game": {
+      "venueId": "caracas-market-game",
+      "city": "caracas",
+      "name": "Centro Comercial Parque Cristal",
+      "archetype": "office-tower",
+      "subject": "Parque Cristal in Chacao: a 16-level mixed-use block with a shopping podium and a glass-and-concrete tower above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 49,
+        "storeys": 16,
+        "height_m": 56,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#9fb4c2",
+          "#c9c4b8",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "retail base"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1977",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6062105",
+          "what": "Wikidata Q6062105 (Parque Cristal)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/19078807",
+          "what": "OSM footprint 73.3 x 48.9 m, area 2486 m2, 16 levels, height 10 m, architect Jimmy Alcock, start 1977"
+        }
+      ],
+      "notes": "OSM tags give 16 levels, architect Jimmy Alcock and start 1977; the tall tower is for the office wing, with the mall below at about 10 m. Glass cladding colour is an estimate (the name means crystal). The venue is a mall but the building reads as a tower, hence office-tower."
+    },
+    "caracas-meal-stop": {
+      "venueId": "caracas-meal-stop",
+      "city": "caracas",
+      "name": "Burger Shack",
+      "archetype": "restaurant",
+      "subject": "A small fast-food restaurant on the Vargas coast: a single-storey painted building with a covered terrace and menu boards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f2cc4b",
+          "#c0392b",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "corrugated",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The facts file matched this to the airport terminal polygon (it only contains the point), so no building data is available. Typed low; generic roadside fast-food shack in saturated brand-neutral colours."
+    },
+    "caracas-osm-relation-13278974": {
+      "venueId": "caracas-osm-relation-13278974",
+      "city": "caracas",
+      "name": "Los Caobos Park",
+      "archetype": "park-landscape",
+      "subject": "Parque Los Caobos: a shaded 22-hectare park of centuries-old mahogany trees with a big central sculptural fountain, sculptures and avenues beside the museum district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 200,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "Fuente Venezuela, a monumental group of five figures by Ernest Maragall, moved here in 1967"
+        },
+        {
+          "id": "statue",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "park from 1920, named Los Caobos 1937",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Los_Caobos",
+          "what": "about 21.8 ha; centuries-old caoba trees; Fuente Venezuela by Ernest Maragall (moved from Plaza Venezuela in 1967); statue of Teresa de la Parra at the entrance; sculptures Icaro, Efebo en Maraton and others; entrances from Plaza de los Museos, Boulevard Amador Bendayan and Paseo Colon"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13278974",
+          "what": "OSM footprint 857.5 x 423.9 m, area 199386 m2, start 1920"
+        }
+      ],
+      "notes": "Fountain, sculpture, trees and entrances are sourced; layout, pavilion and path materials are estimates. OSM outline 858 x 424 m."
+    },
+    "caracas-osm-relation-13281096": {
+      "venueId": "caracas-osm-relation-13281096",
+      "city": "caracas",
+      "name": "Universidad Simón Bolívar",
+      "archetype": "campus-block",
+      "subject": "The Sartenejas campus, represented by an engineering building: a bold 1970s exposed-concrete block with deep shading and covered links, among hillside forest",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 29,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb9ae",
+          "#6f8f6a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "brutalist",
+      "era": "founded 1967, campus 1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2093477",
+          "what": "Simon Bolivar University, public university, founded 1967"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/158926805",
+          "what": "OSM footprint 54.2 x 28.7 m, area 1497 m2 (nearest building only, may not be this venue)"
+        }
+      ],
+      "notes": "The OSM footprint is the Electrical Energy Conversion building (nearest only). Founded 1967 per facts file. No source describes the building, so low."
+    },
+    "caracas-osm-relation-13436467": {
+      "venueId": "caracas-osm-relation-13436467",
+      "city": "caracas",
+      "name": "Hospital Dr. José Gregorio Hernández",
+      "archetype": "hospital",
+      "subject": "The Los Magallanes de Catia public hospital of 1973: a squarish multi-storey concrete ward block with ribbon windows and hot-weather louvres",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 82,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d1c2",
+          "#6f8fa6",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 4
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16576048",
+          "what": "Hospital General Dr. Jose Gregorio Hernandez, public hospital, opened 1973"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13436497",
+          "what": "OSM footprint 85.1 x 82.3 m, area 6380 m2, start 1973"
+        }
+      ],
+      "notes": "Date and footprint (85 x 82 m) only. Five storeys is an estimate. Low."
+    },
+    "caracas-osm-way-179958526": {
+      "venueId": "caracas-osm-way-179958526",
+      "city": "caracas",
+      "name": "Hospital San Juan de Dios",
+      "archetype": "hospital",
+      "subject": "An older hospital building from 1943 with a 1970 rebuild: a long rendered block with a central entrance and tiled roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 114,
+        "depth_m": 62,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfca",
+          "#b4684f",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1943, 1970",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16576133",
+          "what": "Hospital San Juan de Dios, hospital, 1943"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/919870075",
+          "what": "OSM footprint 114.1 x 62.3 m, area 3304 m2, start 1970"
+        }
+      ],
+      "notes": "Dates (1943, OSM start 1970) and footprint 114 x 62 m only; low."
+    },
+    "caracas-osm-way-191586173": {
+      "venueId": "caracas-osm-way-191586173",
+      "city": "caracas",
+      "name": "Museo de Artes Visuales Alejandro Otero",
+      "archetype": "museum-theatre",
+      "subject": "The Alejandro Otero visual arts museum of 1990: a six-level concrete-and-glass block with clean geometric forms and a sculpture outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e0d6",
+          "#6f8fa6",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16494152",
+          "what": "Museo Alejandro Otero, museum, opened 1990"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/191586173",
+          "what": "OSM footprint 54.9 x 50.2 m, area 1392 m2, 6 levels"
+        }
+      ],
+      "notes": "OSM gives 6 levels and a 55 x 50 m plan; facade not described. Low."
+    },
+    "caracas-osm-way-216503320": {
+      "venueId": "caracas-osm-way-216503320",
+      "city": "caracas",
+      "name": "Parque Zoológico El Pinar",
+      "archetype": "park-landscape",
+      "subject": "El Pinar zoo: a small hillside city zoo of pine-shaded paths, an entrance gate and enclosures",
+      "form": {
+        "footprint": "rect",
+        "width_m": 620,
+        "depth_m": 155,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e9e2d0",
+          "#b4684f",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1945",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6062582",
+          "what": "El Pinar Zoo, park, OSM start 1945"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/216503320",
+          "what": "OSM footprint 622.3 x 155 m, area 35039 m2, start 1945"
+        }
+      ],
+      "notes": "Founding year only. Low; typed with an entry gate, kiosks and pavilions."
+    },
+    "caracas-osm-way-217701255": {
+      "venueId": "caracas-osm-way-217701255",
+      "city": "caracas",
+      "name": "Plaza Italia",
+      "archetype": "park-landscape",
+      "subject": "Plaza Italia: a small paved urban plaza with trees, benches and a monument",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16620050",
+          "what": "Plaza Italia, square"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/217701255",
+          "what": "OSM footprint 44 x 29.8 m, area 1026 m2"
+        }
+      ],
+      "notes": "Only a square with a 44 x 30 m footprint is known. Low."
+    },
+    "caracas-osm-way-226086260": {
+      "venueId": "caracas-osm-way-226086260",
+      "city": "caracas",
+      "name": "Parque Zoológico de Caricuao",
+      "archetype": "park-landscape",
+      "subject": "Caricuao zoo: a very large hillside forest zoo laid out without cages, with a main gate, pavilions and paths under big trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 900,
+        "depth_m": 600,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e9e2d0",
+          "#b4684f",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974-77",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7139676",
+          "what": "Parque Zoologico Caricuao, zoo, 1974-77"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/226086260",
+          "what": "OSM footprint 912.1 x 602.1 m, area 355063 m2, start 1977"
+        }
+      ],
+      "notes": "Dates and size (912 x 602 m) only; the cage-free forest layout is from general knowledge, not verified. Low."
+    },
+    "caracas-osm-way-226265822": {
+      "venueId": "caracas-osm-way-226265822",
+      "city": "caracas",
+      "name": "Centro Comercial El Valle",
+      "archetype": "mall",
+      "subject": "A five-level neighbourhood shopping centre in El Valle: a boxy concrete building with painted bands and rooftop parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 94,
+        "depth_m": 79,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d6b7",
+          "#b5603f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1980s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16545633",
+          "what": "Centro Comercial El Valle, building, 5 levels per OSM"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/226265822",
+          "what": "OSM footprint 93.8 x 78.6 m, area 7351 m2, 5 levels"
+        }
+      ],
+      "notes": "OSM gives 5 levels and 94 x 79 m only; low."
+    },
+    "caracas-osm-way-240655511": {
+      "venueId": "caracas-osm-way-240655511",
+      "city": "caracas",
+      "name": "C.C. City Market",
+      "archetype": "mall",
+      "subject": "City Market in Chacao: a seven-level mixed mall block of glazed and rendered bands with a narrow tower-like form",
+      "form": {
+        "footprint": "rect",
+        "width_m": 84,
+        "depth_m": 60,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#a8b8c4",
+          "#d4c8ae",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q52565232",
+          "what": "City Market shopping mall, 7 levels per OSM"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/240655511",
+          "what": "OSM footprint 83.5 x 60 m, area 4554 m2, 7 levels"
+        }
+      ],
+      "notes": "OSM gives 7 levels and 84 x 60 m only; low."
+    },
+    "caracas-osm-way-249082946": {
+      "venueId": "caracas-osm-way-249082946",
+      "city": "caracas",
+      "name": "Universidad Monteávila",
+      "archetype": "campus-block",
+      "subject": "A Catholic private university occupying a three-storey block with a long front on a hillside in Boleita",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 17,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe7d5",
+          "#7a5a48",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "founded 1998",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894290",
+          "what": "Universidad Monteavila, private Catholic university founded 1998"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/946721103",
+          "what": "OSM footprint 54.9 x 16.8 m, area 696 m2"
+        }
+      ],
+      "notes": "OSM building 55 x 17 m, founded 1998; appearance unknown. Low."
+    },
+    "caracas-osm-way-276063096": {
+      "venueId": "caracas-osm-way-276063096",
+      "city": "caracas",
+      "name": "Caracas Venezuela Temple",
+      "archetype": "church-modern",
+      "subject": "The Latter-day Saint temple in Caracas: a compact cream-white stone-clad temple with a single central spire topped by a gilded figure",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "marble",
+        "colours": [
+          "#efe9d9",
+          "#d4c8a8",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8b8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single central spire topped with a gilded statue"
+        },
+        {
+          "id": "stained-glass",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "dedicated 2000",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5037576",
+          "what": "Caracas Venezuela Temple, temple"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/276063096",
+          "what": "OSM footprint 36.1 x 29.2 m, area 1055 m2"
+        }
+      ],
+      "notes": "OSM building 36 x 29 m, building=temple. Cream stone colour and spire are from general knowledge of the standard single-spire temple design, unverified. Low."
+    },
+    "caracas-osm-way-306847206": {
+      "venueId": "caracas-osm-way-306847206",
+      "city": "caracas",
+      "name": "Universidad Nacional Experimental Marítima del Caribe",
+      "archetype": "campus-block",
+      "subject": "A coastal maritime university in Catia La Mar: low concrete academic blocks with covered walkways and sea-facing classrooms",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#dcd6c6",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16644499",
+          "what": "Universidad Nacional Experimental Maritima del Caribe, university"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/306847206",
+          "what": "OSM footprint 593.1 x 227.4 m, area 112081 m2"
+        }
+      ],
+      "notes": "Only the 593 x 227 m site is known. Low."
+    },
+    "caracas-osm-way-378723909": {
+      "venueId": "caracas-osm-way-378723909",
+      "city": "caracas",
+      "name": "Domo José María Vargas",
+      "archetype": "stadium",
+      "subject": "The covered arena at Maiquetia: a domed steel-framed sports hall with metal cladding, four-sided scoreboard inside and a canopy over the entrance",
+      "form": {
+        "footprint": "oval",
+        "width_m": 93,
+        "depth_m": 77,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d4d8da",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "steel-framed domed roof"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "inaugurated 21 November 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Domo_Jos%C3%A9_Mar%C3%ADa_Vargas",
+          "what": "covered multi-use sports hall on Avenida Carlos Soublette in Maiquetia, capacity 5,000-7,000, inaugurated 21 Nov 2008, four-sided electronic scoreboard; home of the Bucaneros de La Guaira"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/378723909",
+          "what": "OSM footprint 93.2 x 76.5 m, area 5562 m2"
+        }
+      ],
+      "notes": "Type, capacity, date and scoreboard are sourced; the domed roof is inferred from the name and its OSM footprint (93 x 77 m) and is unverified. Colours are estimates."
+    },
+    "caracas-osm-way-783746298": {
+      "venueId": "caracas-osm-way-783746298",
+      "city": "caracas",
+      "name": "Estadio Fórum La Guaira",
+      "archetype": "stadium",
+      "subject": "The 2020 baseball stadium of La Guaira: a two-tier modern ballpark with a partly roofed grandstand, outfield stands and light towers",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 144,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d9d4",
+          "#c0392b",
+          "#1f4e9c"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "outfield board"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q107334977",
+          "what": "Estadio Forum La Guaira, baseball venue, 2020"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/783746298",
+          "what": "OSM footprint 150.2 x 144.4 m, area 18196 m2"
+        }
+      ],
+      "notes": "Type, year and footprint (150 x 144 m) only; stand layout estimated from the baseball-park pattern. Low."
+    },
+    "caracas-quiet-reflection": {
+      "venueId": "caracas-quiet-reflection",
+      "city": "caracas",
+      "name": "Biserica Ortodoxă Română „Sf. Împ. Constantin și Elena”",
+      "archetype": "church-classical",
+      "subject": "A small Romanian Orthodox church: a cruciform nave with a low central dome or turret, small porch and bell tower, whitewashed with a coloured roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 26,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f1ede1",
+          "#a85a42",
+          "#ffffff"
+        ],
+        "roofColour": "#7d5a48",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central turret typical of Romanian Orthodox churches (unverified)"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1999",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5910043",
+          "what": "Church of St. Constantine and Helena, Romanian Orthodox, 1999"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/712547967",
+          "what": "OSM footprint 26.4 x 10.7 m, area 282 m2"
+        }
+      ],
+      "notes": "Romanian Orthodox parish church with a 26 x 11 m plan, 1999; appearance not described. Dome and bell tower are the usual pattern and unverified. Low."
+    },
+    "caracas-recreation": {
+      "venueId": "caracas-recreation",
+      "city": "caracas",
+      "name": "Parque Vinicio Adames",
+      "archetype": "park-landscape",
+      "subject": "A huge municipal park on the southern hills: lawns, sports fields, a pavilion, and an entrance gate among planted trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 853,
+        "depth_m": 533,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6062567",
+          "what": "Parque Vinicio Adames, park, opened 1973"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6464064",
+          "what": "OSM footprint 853.2 x 533.2 m, area 265990 m2, start 1973"
+        }
+      ],
+      "notes": "Year and the 853 x 533 m extent only; low."
+    },
+    "caracas-transit": {
+      "venueId": "caracas-transit",
+      "city": "caracas",
+      "name": "La Hoyada",
+      "archetype": "transport-station",
+      "subject": "Metro La Hoyada station at the downtown edge: a concrete station entrance with a canopy, escalator headhouse and bus bays alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcac0",
+          "#d9a441",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "Metro line 1 station, 1983",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11347683",
+          "what": "Metro La Hoyada, metro station"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1188759542",
+          "what": "OSM footprint 41.8 x 27.5 m, area 1110 m2"
+        }
+      ],
+      "notes": "Only that this is a metro station, with a 42 x 27 m surface building. Low."
+    }
+  }
+}

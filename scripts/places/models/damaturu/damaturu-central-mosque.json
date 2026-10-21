@@ -1,0 +1,507 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_mosque_01.jpg",
+   "licence": "CC0",
+   "author": "Mr. Snatch",
+   "view": "front",
+   "file": "/tmp/places-evidence/damaturu/damaturu-central-mosque-0.jpg",
+   "used": "yellow-cream walls, brown stone base, row of square piers with pointed arched recesses, crenellated parapet, low pale dome, cream minaret with teal cap, sandy forecourt with trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5393081",
+   "used": "overall extent only (136 x 67 m outline includes courtyard and sprawl, not used as massing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     62,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eac96a",
+    "windows": "none",
+    "plinth": 3.0,
+    "bands": "#d8c48a",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "back"
+      ],
+      "width": 1.0,
+      "depth": 0.5,
+      "spacing": 6.2,
+      "colour": "#c9c0ae",
+      "margin": 3
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ead6",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     63,
+     31
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#5a3d30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     50,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -18.5
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcb4",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "arched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 3.2,
+    "cornice": true,
+    "bands": "#8a7458"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ead6",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -22.2,
+    3.2
+   ],
+   "params": {
+    "length": 44,
+    "count": 9,
+    "height": 7.8,
+    "radius": 0.45,
+    "kind": "square",
+    "beamHeight": 0.8,
+    "colour": "#d8c48a",
+    "roofColour": "#e8dcb4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    12.4
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f1ead6",
+    "profile": [
+     [
+      8.19,
+      0.0
+     ],
+     [
+      8.19,
+      1.6
+     ],
+     [
+      8.6,
+      1.6
+     ],
+     [
+      8.6,
+      2.0
+     ],
+     [
+      7.6,
+      3.2
+     ],
+     [
+      5.6,
+      4.0
+     ],
+     [
+      3.1,
+      4.4
+     ],
+     [
+      0.0,
+      4.6
+     ]
+    ],
+    "topColour": "#f1ead6"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    12.4
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f1ead6",
+    "profile": [
+     [
+      10.9,
+      0
+     ],
+     [
+      10.9,
+      2
+     ],
+     [
+      7,
+      4
+     ],
+     [
+      0,
+      4.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    2,
+    17.0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.35,
+      2.2
+     ],
+     [
+      0.1,
+      2.5
+     ],
+     [
+      0.1,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -27,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "radius": 1.8,
+    "balconies": 1,
+    "style": "square",
+    "colour": "#e8dcb4",
+    "capColour": "#3f8f7a"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    27,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "radius": 1.8,
+    "balconies": 1,
+    "style": "square",
+    "colour": "#e8dcb4",
+    "capColour": "#3f8f7a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -48,
+    12
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eac96a",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ead6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex2",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    48,
+    12
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eac96a",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ead6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    14,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -25.0,
+    -22.0,
+    12.0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.3,
+    "thickness": 0.7,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.8,
+    "colour": "#f1ead6",
+    "trim": "#f1ead6"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -25.0,
+    -15.5,
+    12.0
+   ],
+   "params": {
+    "length": 50,
+    "height": 0.3,
+    "thickness": 0.7,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.8,
+    "colour": "#f1ead6",
+    "trim": "#f1ead6"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -31.0,
+    -13.0,
+    12.5
+   ],
+   "params": {
+    "length": 62,
+    "height": 0.3,
+    "thickness": 0.7,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.8,
+    "colour": "#f1ead6",
+    "trim": "#f1ead6"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -61.0,
+    3.0,
+    7.0
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.3,
+    "thickness": 0.7,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.8,
+    "colour": "#f1ead6",
+    "trim": "#f1ead6"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    35.0,
+    3.0,
+    7.0
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.3,
+    "thickness": 0.7,
+    "merlon_height": 1.0,
+    "merlon_width": 0.7,
+    "pitch": 1.8,
+    "colour": "#f1ead6",
+    "trim": "#f1ead6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -30
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -32
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -30
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "damaturu-central-mosque",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "minaret caps stay pointed (part has no flat teal cupola), portico is a plain two-storey block with pointed windows rather than large ogee arch recesses, crenellation is a simple merlon row; courtyard not modelled"
+ }
+}

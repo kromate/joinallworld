@@ -1,0 +1,593 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-bahai-house-of-worship",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baha%27i_House_of_Worship,_Kampala,_Uganda.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bxtst",
+   "view": "front",
+   "file": "/tmp/places-evidence/kampala/bahai1.jpg",
+   "used": "nine-sided stepped massing: arcaded ground ring with green roof, second tier, tall windowed drum, green ribbed dome and lantern; sandstone-peach walls, green roofs, lawn and trees; open pointed arcade with lattice screens and brown doors behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/44111742",
+   "used": "outer extent (about 37 m across)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.36
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "inner-wall",
+   "params": {
+    "radius": 13.2,
+    "n": 9,
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#c79a6c",
+    "topColour": "#c79a6c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "lattice-doors",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "radius": 13.3,
+    "startDeg": 0,
+    "endDeg": 320,
+    "facing": "outward",
+    "lod1Step": 1,
+    "lod2Step": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.2
+      ],
+      "z0": 0.2,
+      "height": 3.8,
+      "colour": "#7a4a2c",
+      "topColour": "#7a4a2c"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "ring-arcade",
+   "params": {
+    "segments": 9,
+    "colour": "#d9b48c",
+    "arcade": {
+     "from": 0.4,
+     "to": 5.3,
+     "count": 27,
+     "width": 2.4,
+     "height": 4.2,
+     "sill": 0.2,
+     "shape": "pointed",
+     "depth": 0.9,
+     "innerColour": "#8a5a3a"
+    },
+    "profile": [
+     [
+      15.8,
+      0,
+      "#cfa57a"
+     ],
+     [
+      15.8,
+      5.8,
+      "#d9b48c"
+     ],
+     [
+      15.4,
+      5.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "ring-roof",
+   "params": {
+    "segments": 9,
+    "colour": "#357252",
+    "profile": [
+     [
+      19.0,
+      5.5,
+      "#efe0c8"
+     ],
+     [
+      19.0,
+      6.0
+     ],
+     [
+      18.7,
+      6.0,
+      "#357252"
+     ],
+     [
+      12.5,
+      8.6
+     ],
+     [
+      12.5,
+      8.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tier2",
+   "params": {
+    "radius": 12.2,
+    "n": 9,
+    "z0": 8.4,
+    "height": 3.4,
+    "colour": "#d9b48c",
+    "topColour": "#d9b48c",
+    "windows": "rect",
+    "windowShape": "rect",
+    "windowRatio": 0.12,
+    "trimColour": "#efe0c8",
+    "storeys": 1,
+    "bay": 2.5
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier2-roof",
+   "params": {
+    "segments": 9,
+    "colour": "#357252",
+    "profile": [
+     [
+      13.2,
+      11.6,
+      "#efe0c8"
+     ],
+     [
+      13.2,
+      11.9
+     ],
+     [
+      12.9,
+      11.9,
+      "#357252"
+     ],
+     [
+      9.6,
+      13.4
+     ],
+     [
+      9.6,
+      13.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "radius": 9.4,
+    "n": 9,
+    "z0": 13.2,
+    "height": 9.8,
+    "colour": "#d4ab82",
+    "topColour": "#d4ab82",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.42,
+    "trimColour": "#efe0c8",
+    "storeys": 1,
+    "bay": 3.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cornice",
+   "params": {
+    "radius": 10.6,
+    "n": 9,
+    "z0": 23.0,
+    "height": 1.3,
+    "topScale": 0.82,
+    "colour": "#cfa27a",
+    "topColour": "#cfa27a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-upper",
+   "params": {
+    "radius": 8.4,
+    "n": 9,
+    "z0": 24.3,
+    "height": 2.8,
+    "colour": "#d9b48c",
+    "topColour": "#d9b48c",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.13,
+    "storeys": 1,
+    "bay": 3.0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "params": {
+    "segments": 9,
+    "colour": "#8fb08a",
+    "profile": [
+     [
+      8.6,
+      27.0,
+      "#cfa27a"
+     ],
+     [
+      8.6,
+      27.4
+     ],
+     [
+      8.2,
+      27.5,
+      "#8fb08a"
+     ],
+     [
+      8.2,
+      28.4
+     ],
+     [
+      7.8,
+      31
+     ],
+     [
+      6.6,
+      33.5
+     ],
+     [
+      4.6,
+      35.6
+     ],
+     [
+      2.2,
+      36.8
+     ],
+     [
+      1.0,
+      37.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "params": {
+    "segments": 9,
+    "colour": "#d4ab82",
+    "profile": [
+     [
+      1.2,
+      37.0
+     ],
+     [
+      1.2,
+      39.0
+     ],
+     [
+      1.5,
+      39.0,
+      "#3f8a68"
+     ],
+     [
+      0.9,
+      40.0
+     ],
+     [
+      0.12,
+      41.2
+     ],
+     [
+      0.08,
+      42.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "trunk-0",
+   "params": {
+    "segments": 6,
+    "colour": "#6a5a44",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.22,
+      15
+     ]
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crown-0",
+   "params": {
+    "segments": 8,
+    "colour": "#3d6b34",
+    "profile": [
+     [
+      0.3,
+      13.5
+     ],
+     [
+      6,
+      14.5
+     ],
+     [
+      5.4,
+      17
+     ],
+     [
+      2.4000000000000004,
+      18.5
+     ],
+     [
+      0.2,
+      19
+     ]
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk-1",
+   "params": {
+    "segments": 6,
+    "colour": "#6a5a44",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.22,
+      13
+     ]
+    ]
+   },
+   "at": [
+    25,
+    -4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crown-1",
+   "params": {
+    "segments": 8,
+    "colour": "#3d6b34",
+    "profile": [
+     [
+      0.3,
+      11.5
+     ],
+     [
+      5.5,
+      12.5
+     ],
+     [
+      4.95,
+      15
+     ],
+     [
+      2.2,
+      16.5
+     ],
+     [
+      0.2,
+      17
+     ]
+    ]
+   },
+   "at": [
+    25,
+    -4
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk-2",
+   "params": {
+    "segments": 6,
+    "colour": "#6a5a44",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.22,
+      12
+     ]
+    ]
+   },
+   "at": [
+    -31,
+    8
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crown-2",
+   "params": {
+    "segments": 8,
+    "colour": "#3d6b34",
+    "profile": [
+     [
+      0.3,
+      10.5
+     ],
+     [
+      5,
+      11.5
+     ],
+     [
+      4.5,
+      14
+     ],
+     [
+      2.0,
+      15.5
+     ],
+     [
+      0.2,
+      16
+     ]
+    ]
+   },
+   "at": [
+    -31,
+    8
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk-3",
+   "params": {
+    "segments": 6,
+    "colour": "#6a5a44",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.22,
+      11
+     ]
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "crown-3",
+   "params": {
+    "segments": 8,
+    "colour": "#3d6b34",
+    "profile": [
+     [
+      0.3,
+      9.5
+     ],
+     [
+      5,
+      10.5
+     ],
+     [
+      4.5,
+      13
+     ],
+     [
+      2.0,
+      14.5
+     ],
+     [
+      0.2,
+      15
+     ]
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "treeKind": "broadleaf",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ground ring is now an open 27-bay pointed arcade with brown doors behind, ribbed green 9-segment dome, taller drum and darker green roofs; drum windows are plain rect panes not lattice, lattice screens only as flat panels, roof tile texture and the thin spreading trees are generic, camera is more elevated than the photo."
+ }
+}

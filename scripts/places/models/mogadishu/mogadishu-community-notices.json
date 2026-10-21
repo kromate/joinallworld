@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2013_04_12_Armed_Forces_Day_a_(8647054047).jpg",
+   "licence": "CC0",
+   "author": "AMISOM Public Information",
+   "view": "street",
+   "file": "/tmp/places-evidence/mogadishu/mgA-mod2.jpg",
+   "used": "refurbished Ministry of Defence: three-storey peach-cream block with deep white concrete frames round recessed windows, tall white stair tower faced in perforated screen blocks, flat entrance canopy on slim columns, flat roofs, bare sandy yard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125598452",
+   "used": "not used (42 m2 nearest match, unreliable)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8c4a2",
+    "windows": "punched",
+    "windowRatio": 0.8,
+    "bay": 3.2,
+    "plinth": 0.6,
+    "bands": "#f4f1ea",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "colour": "#f4f1ea"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb5a6",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     10,
+     13
+    ]
+   },
+   "at": [
+    22,
+    -1
+   ],
+   "height": 16.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#f4f1ea",
+      "#e6e2d8"
+     ],
+     "slits": 0.6,
+     "faces": [
+      "front",
+      "right",
+      "left"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea",
+    "parapet": 0.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -14,
+    18
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b895",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb5a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    22,
+    -6.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 2,
+    "colour": "#f4f1ea",
+    "edgeColour": "#f4f1ea",
+    "thickness": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    34,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colours": [
+     "#1b7a43"
+    ],
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 3.2,
+    "colour": "#e8e1cf",
+    "pillarEvery": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    -2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "height": 3.2,
+    "colour": "#e8e1cf",
+    "pillarEvery": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "real facade is a deep white egg-crate grid with recessed peach windows; model has fins and bands with punched windows, no real reveal depth; stair tower is plain panels, perforated holes not legible; canopy and tree approximations"
+ }
+}

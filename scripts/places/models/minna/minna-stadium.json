@@ -1,0 +1,639 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "minna-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Minna_stadium_DJI_0974.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aliyu Goro",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/minna/Minna_stadium_DJI_0974.jpg",
+   "used": "open dusty-green pitch, white perimeter wall with teal piers and base, near-side low rust-roofed sheds and grey block, small blue-roofed covered stand at the right, plain terrace wall on the far side"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tennis_court_at_Minna_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aliyu Goro",
+   "view": "aerial",
+   "used": "blue-roofed and corrugated-roofed raked stands with red seats, wire fence, floodlight poles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669592216",
+   "used": "pitch size and orientation (122 x 74 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 24,
+  "fovDeg": 60,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pitch-slab",
+   "footprint": {
+    "rect": [
+     92,
+     57.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#82803f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#82803f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0.0,
+    -37.72,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 122.99999999999999,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#e8ecea",
+    "pillarEvery": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0.0,
+    41.0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 122.99999999999999,
+    "height": 2.8,
+    "thickness": 0.35,
+    "colour": "#e8ecea",
+    "pillarEvery": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -61.49999999999999,
+    1.64,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 78.72,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#e8ecea",
+    "pillarEvery": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    61.49999999999999,
+    1.64,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 78.72,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#e8ecea",
+    "pillarEvery": 12
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     50.84,
+     -29
+    ],
+    "end": [
+     50.84,
+     -9
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColours": [
+     "#b8403a",
+     "#8f2f2a"
+    ],
+    "blocks": 1,
+    "concreteColour": "#aaa89f",
+    "canopy": {
+     "height": 5.5,
+     "depth": 8,
+     "colour": "#3f78b4",
+     "slopeDeg": 4,
+     "supports": 3
+    },
+    "backWall": 0.8,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     -50.839999999999996,
+     31.159999999999997
+    ],
+    "end": [
+     -50.839999999999996,
+     -24.599999999999998
+    ],
+    "rows": 7,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#aaa89f",
+    "concreteColour": "#aaa89f",
+    "under": "open"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-terrace",
+   "footprint": {
+    "rect": [
+     98.39999999999999,
+     6
+    ]
+   },
+   "at": [
+    0.0,
+    36.08
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a79e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9a92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "near-shed",
+   "footprint": {
+    "rect": [
+     27.88,
+     9
+    ]
+   },
+   "at": [
+    -24.6,
+    -33.5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6b8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8573a",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     11.479999999999999,
+     8
+    ]
+   },
+   "at": [
+    1.64,
+    -33.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8e8ec",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#7fb6b0",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f86bd",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "concrete-block",
+   "footprint": {
+    "rect": [
+     21.32,
+     7
+    ]
+   },
+   "at": [
+    33,
+    -32.5
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f9490",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9490"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -39.36,
+    -37.72,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.8,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -50.839999999999996,
+    45.919999999999995,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "post_height": 2.4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -59.04,
+    -36.08,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    59.04,
+    -36.08,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -69.7,
+    8.2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -73.8,
+    -16.4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-base",
+   "footprint": {
+    "rect": [
+     123,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -37.95
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fb9b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fb9b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque-body",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    60
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe6"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    60,
+    8
+   ],
+   "params": {
+    "radius": 4.5,
+    "colour": "#d9b04a",
+    "drum_colour": "#f1efe6"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -13,
+    60,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "base_width": 2.2,
+    "colour": "#f1efe6",
+    "cap_colour": "#d9b04a"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    13,
+    60,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "base_width": 2.2,
+    "colour": "#f1efe6",
+    "cap_colour": "#d9b04a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "town-l",
+   "footprint": {
+    "rect": [
+     14,
+     70
+    ]
+   },
+   "at": [
+    -73,
+    5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a5a3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "town-r",
+   "footprint": {
+    "rect": [
+     14,
+     70
+    ]
+   },
+   "at": [
+    73,
+    5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f5238"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "town-b",
+   "footprint": {
+    "rect": [
+     110,
+     14
+    ]
+   },
+   "at": [
+    0,
+    74
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbfa6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a05e40"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -73,
+    -20,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 1,
+    "rows": 3,
+    "dx": 0,
+    "dy": 16,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       7,
+       6
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 3.0,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#cdbfa6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#b0683f",
+      "material": "corrugated",
+      "pitch": 18,
+      "overhang": 0.4
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    73,
+    -20,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 1,
+    "rows": 3,
+    "dx": 0,
+    "dy": 16,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       7,
+       6
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 3.0,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#cdbfa6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#b0683f",
+      "material": "corrugated",
+      "pitch": 18,
+      "overhang": 0.4
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dusty olive pitch, teal wall base, corner stand, rust/blue sheds, gold-domed twin-minaret mosque and rust-roof town strips added; surrounding houses are slabs plus a few gables not a dense sea, mosque and near sheds are simplified, no near-side road detail"
+ }
+}

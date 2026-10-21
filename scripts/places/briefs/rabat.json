@@ -1,0 +1,1665 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "rabat",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "rabat",
+    "climate": "mediterranean",
+    "vernacular": "Atlantic-coast capital of white and cream render. The Kasbah of the Udayas and medina have whitewashed, blue-trimmed houses and ochre rammed-earth ramparts; Henri Prost's 1910s-30s ville nouvelle has 4-6 storey neo-Moorish, Art Deco and modernist blocks in cream stucco with green glazed-tile roofs on public buildings; recent districts are flat-roofed concrete and render blocks.",
+    "wallColours": [
+      "#f4f1ea",
+      "#e8dcc0",
+      "#b9703f",
+      "#3f6fb0",
+      "#d9c7a0",
+      "#9bb7c9"
+    ],
+    "roofColours": [
+      "#3f7a52",
+      "#b5603f",
+      "#b9b2a6",
+      "#7d8288"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "stucco",
+      "concrete",
+      "sandstone",
+      "marble"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Horseshoe and multifoil arches, carved sebka lozenge panels, zellij tilework in green, white and blue, green-glazed pyramidal tile roofs, studded wooden doors, crenellated ochre ramparts.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Rabat",
+        "what": "kasbah white and blue houses; Prost ville nouvelle; neo-Moorish/Art Deco/modern styles; climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hassan_Tower",
+        "what": "Almohad sandstone weathered to red ochre, sebka panels"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mausoleum_of_Mohammed_V",
+        "what": "white marble, green pyramidal roof, horseshoe-arch porticoes, sebka"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kasbah_of_the_Udayas",
+        "what": "blue and white walls of the kasbah quarter"
+      }
+    ]
+  },
+  "places": {
+    "rabat-airport-rabat-airport": {
+      "venueId": "rabat-airport-rabat-airport",
+      "city": "rabat",
+      "name": "Rabat-Salé Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2012 Terminal 1 seen from the landside forecourt: a long low two-level white and glass terminal with a flat canopy and the airfield control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e6df",
+          "#5d7a8c",
+          "#f4f4f2"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat-Sal%C3%A9_Airport",
+          "what": "Terminal 1 inaugurated 20 Jan 2012, 16,000 m2, 3.5 M pax/yr; old terminal (T2) closed; expansion under way for 2030"
+        }
+      ],
+      "notes": "Only the area (16,000 m2) and date are sourced; the shape is inferred as a two-level rectangular block (about 130 x 60 m). Appearance, colours and tower are typed from a typical regional terminal and the city style. The 2018-2026 extension is not modelled."
+    },
+    "rabat-archaeological-museum": {
+      "venueId": "rabat-archaeological-museum",
+      "city": "rabat",
+      "name": "Rabat Archaeological Museum",
+      "archetype": "museum-theatre",
+      "subject": "The protectorate-era antiquities museum: low pavilions around a patio and garden, with an oval bronzes hall and an Islamic-period pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1ea",
+          "#3f7a52",
+          "#c98f5a"
+        ],
+        "roofColour": "#3f7a52",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "patio of the rock-inscriptions section"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1920s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat_Archaeological_Museum",
+          "what": "1920s core for the Service des Antiquites; open since 1932, final form 1957; three rooms, patio, garden, oval Hall of Bronzes, Islamic pavilion; renamed 2017"
+        }
+      ],
+      "notes": "Sources give history and layout (rooms around patio and garden) but no facade description; whitewashed neo-Moorish walls with green tile roofs are typed from Rabat protectorate public buildings."
+    },
+    "rabat-arribat-center": {
+      "venueId": "rabat-arribat-center",
+      "city": "rabat",
+      "name": "Arribat Center",
+      "archetype": "mall",
+      "subject": "A 1990s-2000s flat-roofed shopping and office centre with a plain rendered facade and a signboard band",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc0",
+          "#7d8288",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description of the building was found; typed as a mid-size city shopping centre from the Rabat modern-district style."
+    },
+    "rabat-bab-rouah": {
+      "venueId": "rabat-bab-rouah",
+      "city": "rabat",
+      "name": "Bab Rouah",
+      "archetype": "monument",
+      "subject": "The Almohad gate Bab er-Rouah seen from the outside: a massive golden-stone gateway with a great horseshoe arch carved with relief and flanked by crenellated walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "stone",
+        "colours": [
+          "#c9a063",
+          "#a9803f",
+          "#8c6a38"
+        ],
+        "roofColour": "#a9803f",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "c.1197",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasbah_of_the_Udayas",
+          "what": "Almohad ramparts and gates built under Ya'qub al-Mansur, c.1195-1199"
+        }
+      ],
+      "notes": "The gate is dated to the Almohad al-Mansur period (late 12th c.). Dimensions, the horseshoe arch with carved spandrels, bent passage and golden stone are from general knowledge of the monument and were not confirmed on a fetched page. It stands in the Andalusian wall on the edge of the medina and now houses an exhibition space."
+    },
+    "rabat-chellah": {
+      "venueId": "rabat-chellah",
+      "city": "rabat",
+      "name": "Chellah",
+      "archetype": "heritage-fort",
+      "subject": "The Marinid necropolis Chellah: ochre rammed-earth walls with the gate between two towers, a ruined mosque with a zellij-trimmed minaret, and gardens with storks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "stone",
+        "colours": [
+          "#b99a6b",
+          "#c9b48a",
+          "#2f6b57"
+        ],
+        "roofColour": "#8a7a5a",
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "1339 main gate of brick and cut stone between two flanking towers, horseshoe arch"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 15 m, madrasa minaret with zellij faces"
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "1339",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chellah",
+          "what": "Marinid rammed-earth walls with three gates and towers; 1339 gate of brick and stone with horseshoe arch; 15 m madrasa minaret with zellij; garden, eel pool, stork colony"
+        }
+      ],
+      "notes": "Enclosure is about pentagonal and larger than the 120 m scene clamp, so the model shows the NW gate, a stretch of wall and the ruined mosque/minaret. Storks nest on the minaret. Roman ruins (1.2 ha) lie inside and may be omitted."
+    },
+    "rabat-clinic": {
+      "venueId": "rabat-clinic",
+      "city": "rabat",
+      "name": "Cheikh Zaid Hospital",
+      "archetype": "hospital",
+      "subject": "A modern multi-storey teaching hospital in white render with green accents and an ambulance entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1eee6",
+          "#3f7a52",
+          "#c9ced1"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description of the building was found; typed as a large modern hospital block from the city style (white render, flat roof)."
+    },
+    "rabat-community-notices": {
+      "venueId": "rabat-community-notices",
+      "city": "rabat",
+      "name": "Parlement",
+      "archetype": "civic-palace",
+      "subject": "The Moroccan Parliament on Avenue Mohammed V: a pale 1930s civic building with a tall columned portico and broad steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#c9b48a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8c8a84",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Morocco",
+          "what": "seat in Rabat; page has no architectural description"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "Rabat page dates the Parliament building to the 1920s. The columned portico and cream stucco colouring are from memory of public photos and the colonial civic style, not a fetched source, hence low. Keep the flagpoles and steps as the recognisable parts."
+    },
+    "rabat-community-voting-game": {
+      "venueId": "rabat-community-voting-game",
+      "city": "rabat",
+      "name": "16th November Square",
+      "archetype": "park-landscape",
+      "subject": "A broad paved civic square with a central fountain, palms, flagpoles and low surrounding buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9c7a0",
+          "#b9b2a6",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description of this square was found; typed as a paved palm-lined plaza in Rabat city style."
+    },
+    "rabat-community-workshop": {
+      "venueId": "rabat-community-workshop",
+      "city": "rabat",
+      "name": "Mohammed V University",
+      "archetype": "campus-block",
+      "subject": "A university administration and teaching block: three storeys of cream render around a forecourt with flags",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#b9703f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mohammed_V_University",
+          "what": "founded 1957; split into Agdal and Souissi campuses 1993, merged 2014"
+        }
+      ],
+      "notes": "Page gives history only, no architecture. Typed as a 1960s-80s modernist academic block in cream render."
+    },
+    "rabat-faculty-of-law-and-economics": {
+      "venueId": "rabat-faculty-of-law-and-economics",
+      "city": "rabat",
+      "name": "Faculty of Legal, Economic and Social Sciences",
+      "archetype": "campus-block",
+      "subject": "A Souissi-campus faculty of two- and three-storey concrete and render teaching blocks with lecture-hall wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 85,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d2c2",
+          "#b9703f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mohammed_V_University",
+          "what": "Souissi campus established 1993"
+        }
+      ],
+      "notes": "No building description was found; typed from the Mohammed V University Souissi campus context."
+    },
+    "rabat-hassan-tower": {
+      "venueId": "rabat-hassan-tower",
+      "city": "rabat",
+      "name": "Hassan Tower",
+      "archetype": "monument",
+      "subject": "The unfinished Almohad minaret from the esplanade: a 44 m square sandstone tower beside rows of broken stone columns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 16,
+        "storeys": 6,
+        "height_m": 44,
+        "roof": "flat",
+        "variant": "unfinished-minaret"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#b9703f",
+          "#c98f5a",
+          "#8c5a35"
+        ],
+        "roofColour": "#a9805a",
+        "windows": "punched",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 4,
+          "note": "sebka panels on each face"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "horseshoe-shaped window openings"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "large esplanade"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "field of 348 broken cylindrical columns from the unbuilt mosque"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1195-1199",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hassan_Tower",
+          "what": "square plan ~16 m a side, 44 m tall (planned 64-80 m), sandstone weathered to red ochre, sebka panels, 348 columns, mosque 183 x 139 m, six floors with ramps, horseshoe windows"
+        }
+      ],
+      "notes": "Flat-topped stump (no finial). Columns are cut-off drums in rows on the paved esplanade; place the Mausoleum of Mohammed V on the southeast corner, not in this model. Tower is a close sibling of the Koutoubia in Marrakesh."
+    },
+    "rabat-market-game": {
+      "venueId": "rabat-market-game",
+      "city": "rabat",
+      "name": "Souk d'Akkari",
+      "archetype": "market-hall",
+      "subject": "A neighbourhood souk of covered halls and lock-up shops with awnings and market stalls around a central hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d2c2",
+          "#b9703f",
+          "#e8dcc0"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description of Akkari market was found; typed from the Moroccan covered-souk type and city style."
+    },
+    "rabat-mausoleum-of-mohammed-v": {
+      "venueId": "rabat-mausoleum-of-mohammed-v",
+      "city": "rabat",
+      "name": "Mausoleum of Mohammed V",
+      "archetype": "monument",
+      "subject": "The white marble mausoleum on its raised platform: a square block ringed by horseshoe-arch porticoes under a green pyramidal tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "pyramidal",
+        "variant": "mausoleum"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "stone",
+        "colours": [
+          "#f2efe8",
+          "#2f7a4f",
+          "#c9b48a"
+        ],
+        "roofColour": "#2f7a4f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 4,
+          "note": "portico of multifoil horseshoe arches on all sides"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 4,
+          "note": "carved sebka band above the arches"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1961-1971",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mausoleum_of_Mohammed_V",
+          "what": "reinforced concrete faced in white marble, green pyramidal roof, horseshoe multifoil porticoes, sebka above, raised platform on SE of esplanade, 1961-71 by Vo Toan"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hassan_Tower",
+          "what": "stands at the southeast corner of the Hassan Tower complex"
+        }
+      ],
+      "notes": "No dimensions found: 30 x 30 x about 26 m is an estimate from photos. Roof is glazed green clay tile. A separate mosque and a pavilion (museum) flank it; model the mausoleum only. Guard figures and flags can be omitted."
+    },
+    "rabat-meal-stop": {
+      "venueId": "rabat-meal-stop",
+      "city": "rabat",
+      "name": "Sambuca",
+      "archetype": "restaurant",
+      "subject": "A restaurant on a city street: a two-storey rendered frontage with an awning and terrace tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#b9703f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; the venue is a restaurant named Sambuca. Typed small street-front restaurant."
+    },
+    "rabat-mega-mall": {
+      "venueId": "rabat-mega-mall",
+      "city": "rabat",
+      "name": "Mega Mall",
+      "archetype": "mall",
+      "subject": "The Mega Mall in southern Rabat: a large three-level shopping centre with a rendered and glazed facade and surface parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d6",
+          "#5d7a8c",
+          "#c9a56b"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "Moroccan arch motifs on entrances"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed from the modern Moroccan mall type and Rabat city style."
+    },
+    "rabat-modern-art-museum": {
+      "venueId": "rabat-modern-art-museum",
+      "city": "rabat",
+      "name": "Mohammed VI Museum of Modern and Contemporary Art",
+      "archetype": "museum-theatre",
+      "subject": "The 2014 museum: a white three-storey block whose facade is a colonnade of shadow-casting double arches with a steel frieze",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f4f1ea",
+          "#c9ced1",
+          "#6d7a86"
+        ],
+        "roofColour": "#d9d6cf",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "colonnade of double arches forming the architectural skin"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central patio atrium"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "laser-cut stainless steel frieze"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mohammed_VI_Museum_of_Modern_and_Contemporary_Art",
+          "what": "architect Karim Chakor; opened 2014; 3 storeys, 9,400 m2; white facade with colonnade of double arches in Arab-Moorish inspiration; steel and plaster frieze; central patio atrium"
+        }
+      ],
+      "notes": "Footprint (80 x 40) derived from 9,400 m2 over three levels. Evening colour projections and printed artwork banners are temporary, ignore them."
+    },
+    "rabat-national-theatre": {
+      "venueId": "rabat-national-theatre",
+      "city": "rabat",
+      "name": "Theatre Mohammed V",
+      "archetype": "museum-theatre",
+      "subject": "The national theatre on Avenue Mohammed V: a white 1960s modernist block with a broad glazed foyer, plain columns and wide steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efece4",
+          "#6d7a86",
+          "#c9b48a"
+        ],
+        "roofColour": "#9a9890",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description was found by research; period from general knowledge (opened in the 1960s). Typed as a white modernist theatre."
+    },
+    "rabat-oudayas-museum": {
+      "venueId": "rabat-oudayas-museum",
+      "city": "rabat",
+      "name": "Musée des Oudayas",
+      "archetype": "museum-theatre",
+      "subject": "The Oudaia museum in Moulay Ismail's 17th-century palace inside the kasbah: white walls with blue trim around a courtyard beside the Andalusian garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1ea",
+          "#3f6fb0",
+          "#c98f5a"
+        ],
+        "roofColour": "#d9d1c0",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Bab Oudaia nearby"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1670s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasbah_of_the_Udayas",
+          "what": "Moulay Ismail's late-17th-century pavilion is now the museum; Andalusian garden 1915-18; kasbah blue and white walls"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "Blue-and-white palette from the kasbah quarter. Exact plan of the palace not found; typed as a courtyard house of two storeys."
+    },
+    "rabat-quiet-reflection": {
+      "venueId": "rabat-quiet-reflection",
+      "city": "rabat",
+      "name": "Grand Mosque of Rabat",
+      "archetype": "mosque-domed",
+      "subject": "The Great Mosque of Salé (the venue sits on the Salé shore): a broad low hypostyle mosque with green-tile pitched roofs and a slender square minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "maghrebi-hypostyle"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1ea",
+          "#3f7a52",
+          "#e8dcc0"
+        ],
+        "roofColour": "#3f7a52",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "square 'Alawi-period minaret"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central sahn with gallery"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1196, rebuilt 18th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Sal%C3%A9",
+          "what": "about 5,070 m2, 3rd-largest in Morocco; central courtyard with gallery; Alawi minaret; rebuilt 1196; Marinid madrasa beside it"
+        }
+      ],
+      "notes": "Coordinates 34.0403,-6.8274 fall in Salé, so the Great Mosque of Salé is the best match for the game name. Colours and roofs are typed from Moroccan mosque convention (green glazed tile over prayer-hall ridges, no large dome)."
+    },
+    "rabat-rabat-zoo": {
+      "venueId": "rabat-rabat-zoo",
+      "city": "rabat",
+      "name": "Rabat Zoo",
+      "archetype": "park-landscape",
+      "subject": "The national zoological garden at Temara: a wide green park of enclosures and paths behind an arched entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#b9703f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9703f",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1973 / 2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat_Zoo",
+          "what": "48 ha, opened as Temara Zoo 1973, reopened 2012; first enclosures for palace lions"
+        }
+      ],
+      "notes": "Only the area and dates were found. The 48 ha park is clamped to a 120 m scene; show the entrance gate and nearest enclosures."
+    },
+    "rabat-recreation": {
+      "venueId": "rabat-recreation",
+      "city": "rabat",
+      "name": "Nouzhat Hassan Garden",
+      "archetype": "park-landscape",
+      "subject": "A tree-lined public garden in the city centre with paved paths, benches and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9c7a0",
+          "#b9b2a6",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description of the garden was found; typed as a protectorate-era city garden with palms, lawns and a small pavilion."
+    },
+    "rabat-saint-pierre-cathedral": {
+      "venueId": "rabat-saint-pierre-cathedral",
+      "city": "rabat",
+      "name": "Cathédrale Saint-Pierre",
+      "archetype": "church-modern",
+      "subject": "The 1921 Art Deco cathedral on Place du Golan: a pale geometric facade between two slender towers topped by spires",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "gable",
+        "variant": "twin-tower-art-deco"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stucco",
+        "colours": [
+          "#ebe2cf",
+          "#8c8a84",
+          "#f4f1ea"
+        ],
+        "roofColour": "#7d8288",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two tall square towers"
+        },
+        {
+          "id": "spire",
+          "count": 2,
+          "note": "spires added in the 1930s"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1919-1921",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Saint-Pierre_de_Rabat",
+          "what": "Art Deco; architect Adrien Laforgue; first stone 1919, inaugurated 17 Nov 1921; two spires finished in the 1930s; facade on place du Golan, next to the wilaya"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "Tower height not found (estimated 50-60 m with spires). Roof material and exact colour typed as pale concrete render with grey roof. Now a cultural venue; the twin-spire silhouette is what makes it recognisable."
+    },
+    "rabat-semaphore-platform": {
+      "venueId": "rabat-semaphore-platform",
+      "city": "rabat",
+      "name": "Plateforme du Sémaphore",
+      "archetype": "park-landscape",
+      "subject": "The kasbah's seaward terrace: a paved rampart platform with old cannon, parapet wall and views over the Bou Regreg mouth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9b48a",
+          "#b99a6b",
+          "#f4f1ea"
+        ],
+        "roofColour": "#a9a094",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "parapet"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "17th-18th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasbah_of_the_Udayas",
+          "what": "kasbah on a hill at the mouth of the Bou Regreg with sea views; corsair-era Morisco fortress"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "Named for the semaphore signal station once on the point; only the general rampart-terrace character is documented. Number of cannon is a guess."
+    },
+    "rabat-stade-moulay-el-hassan": {
+      "venueId": "rabat-stade-moulay-el-hassan",
+      "city": "rabat",
+      "name": "Stade Moulay El-Hassan",
+      "archetype": "stadium",
+      "subject": "A mid-size football and athletics stadium in Rabat with a covered main stand, open terraces and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2c2",
+          "#6d7a86",
+          "#b9703f"
+        ],
+        "roofColour": "#8c8a84",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rabat",
+          "what": "Rabat: kasbah houses painted white and blue; Prost ville nouvelle; neo-Moorish, Art Deco, modern; Mediterranean climate"
+        }
+      ],
+      "notes": "No description or capacity was found by research; typed as a regional bowl with one covered stand. Do not reuse the new Prince Moulay Abdellah stadium look."
+    },
+    "rabat-transit": {
+      "venueId": "rabat-transit",
+      "city": "rabat",
+      "name": "Rabat City Station",
+      "archetype": "transport-station",
+      "subject": "Rabat-Ville station: a 1923 colonial terminus with a cream facade and Moorish arches over two tracks and a platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f2ece0",
+          "#3f7a52",
+          "#c98f5a"
+        ],
+        "roofColour": "#3f7a52",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1923",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gare_de_Rabat-Ville",
+          "what": "inaugurated 1923; sober Art Deco with local details; two tracks; heritage-listed; glass-roof extension planned"
+        }
+      ],
+      "notes": "Colour scheme (cream stucco, green roof) are typed from the Rabat protectorate style; sources confirm only period, style and two tracks. Planned new glass-roofed building is not modelled."
+    }
+  }
+}

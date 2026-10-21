@@ -1,0 +1,897 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-cathedrale-du-souvenir-africain",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dakar-cathedrale.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor (see file page)",
+   "view": "side",
+   "file": "/tmp/places-evidence/dakar/cathedral.jpg",
+   "used": "two tall square Neo-Sudanese towers with slit windows, stepped belfry and pyramid caps, pale cream ashlar with pink cornice band, angel-topped piers of the portico at left, ribbed low dome on drum behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43759874",
+   "used": "overall plan size (57 x 37 m cross); a simplified Greek cross is composed instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 55,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "towers now tapered with slits but belfry loggia is a windowed box with hip roof and no corbels; slits tiny; dome rings and corner domes simplified; lattice vents are blank plates; side arms and apse guessed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     26,
+     50
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d3a8",
+    "windows": "rect",
+    "windowRatio": 0.06,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#d9967a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c8b0",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     50,
+     24
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8d3a8",
+    "windows": "rect",
+    "windowRatio": 0.06,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#d9967a",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c8b0",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -28.5
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ead8b0",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#d9967a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c8b0",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "at": [
+    0,
+    2,
+    24
+   ],
+   "params": {
+    "profile": [
+     [
+      1.6,
+      0,
+      "#d9ccb3"
+     ],
+     [
+      1.6,
+      2.2
+     ],
+     [
+      0.01,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-top",
+   "at": [
+    0,
+    2,
+    27
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#b08a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-top-b",
+   "at": [
+    0,
+    2,
+    28.7
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#b08a5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps-plinth",
+   "footprint": {
+    "rect": [
+     30,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -35
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9cdb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9cdb8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tower-west",
+   "at": [
+    -17,
+    -22,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10,
+       10
+      ]
+     },
+     {
+      "z": 38,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     }
+    ],
+    "colour": "#ecdcb8",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-west",
+   "at": [
+    -17,
+    -22,
+    38
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     8.4
+    ],
+    "height": 0.6,
+    "colour": "#d9c6a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-west",
+   "footprint": {
+    "rect": [
+     6.8,
+     6.8
+    ]
+   },
+   "at": [
+    -17,
+    -22
+   ],
+   "z0": 38.6,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d3ac",
+    "windows": "rect",
+    "windowRatio": 0.35,
+    "bay": 2.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#eee5cf",
+    "rise": 3.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-f-west",
+   "at": [
+    -17,
+    -25.35,
+    20.900000000000002
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.4
+    ],
+    "height": 10.64,
+    "colour": "#5b4c3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slit-s-west",
+   "at": [
+    -13.65,
+    -22,
+    20.900000000000002
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.5
+    ],
+    "height": 10.64,
+    "colour": "#5b4c3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "vent-west",
+   "at": [
+    -12.1,
+    -22,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     1.8
+    ],
+    "height": 1.8,
+    "colour": "#8a7a64"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tower-east",
+   "at": [
+    17,
+    -22,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10,
+       10
+      ]
+     },
+     {
+      "z": 46,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     }
+    ],
+    "colour": "#ecdcb8",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ledge-east",
+   "at": [
+    17,
+    -22,
+    46
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     8.4
+    ],
+    "height": 0.6,
+    "colour": "#d9c6a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry-east",
+   "footprint": {
+    "rect": [
+     6.8,
+     6.8
+    ]
+   },
+   "at": [
+    17,
+    -22
+   ],
+   "z0": 46.6,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6d3ac",
+    "windows": "rect",
+    "windowRatio": 0.35,
+    "bay": 2.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#eee5cf",
+    "rise": 3.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slit-f-east",
+   "at": [
+    17,
+    -25.35,
+    25.3
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.4
+    ],
+    "height": 12.88,
+    "colour": "#5b4c3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slit-s-east",
+   "at": [
+    20.35,
+    -22,
+    25.3
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.5
+    ],
+    "height": 12.88,
+    "colour": "#5b4c3c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "vent-east",
+   "at": [
+    21.9,
+    -22,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     1.8
+    ],
+    "height": 1.8,
+    "colour": "#8a7a64"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portico-wall",
+   "at": [
+    0,
+    -28.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.6
+    ],
+    "height": 9,
+    "colour": "#e8d6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inscription",
+   "at": [
+    0,
+    -32.2,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#b49a78"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice-pink",
+   "at": [
+    0,
+    -32.3,
+    10.2
+   ],
+   "params": {
+    "rect": [
+     27,
+     1.0
+    ],
+    "height": 0.7,
+    "colour": "#d9967a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "pilasters",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       2.0
+      ],
+      "height": 9.8,
+      "colour": "#eadbb6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -32.2,
+     0
+    ],
+    "end": [
+     10,
+     -32.2,
+     0
+    ],
+    "count": 4,
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "array",
+   "id": "angels",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.4
+      ],
+      "height": 4.5,
+      "topScale": 0.6,
+      "colour": "#bdb5a6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10,
+     -33.3,
+     5.2
+    ],
+    "end": [
+     10,
+     -33.3,
+     5.2
+    ],
+    "count": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 12.5,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6cf9f",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcc59a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    2,
+    16.5
+   ],
+   "params": {
+    "segments": 32,
+    "profile": [
+     [
+      11.5,
+      0,
+      "#e6cf9f"
+     ],
+     [
+      12.2,
+      0.8,
+      "#dcc59a"
+     ],
+     [
+      11.8,
+      1.0,
+      "#ebdcb8"
+     ],
+     [
+      11.5,
+      1.9,
+      "#e0cda4"
+     ],
+     [
+      11.2,
+      2.1,
+      "#ebdcb8"
+     ],
+     [
+      10.4,
+      3.6,
+      "#e0cda4"
+     ],
+     [
+      10.0,
+      3.8,
+      "#ebdcb8"
+     ],
+     [
+      8.4,
+      5.2,
+      "#e0cda4"
+     ],
+     [
+      8.1,
+      5.4,
+      "#ebdcb8"
+     ],
+     [
+      5.5,
+      6.5,
+      "#e0cda4"
+     ],
+     [
+      5.2,
+      6.7,
+      "#ebdcb8"
+     ],
+     [
+      0.01,
+      7.5,
+      "#e0cda4"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cdome0",
+   "at": [
+    -10,
+    -9,
+    12.5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      2.2,
+      0,
+      "#e6cf9f"
+     ],
+     [
+      2.2,
+      1.5
+     ],
+     [
+      1.6,
+      2.5,
+      "#ebdcb8"
+     ],
+     [
+      0.01,
+      3.2,
+      "#ebdcb8"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cdome1",
+   "at": [
+    10,
+    -9,
+    12.5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      2.2,
+      0,
+      "#e6cf9f"
+     ],
+     [
+      2.2,
+      1.5
+     ],
+     [
+      1.6,
+      2.5,
+      "#ebdcb8"
+     ],
+     [
+      0.01,
+      3.2,
+      "#ebdcb8"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cdome2",
+   "at": [
+    -10,
+    13,
+    12.5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      2.2,
+      0,
+      "#e6cf9f"
+     ],
+     [
+      2.2,
+      1.5
+     ],
+     [
+      1.6,
+      2.5,
+      "#ebdcb8"
+     ],
+     [
+      0.01,
+      3.2,
+      "#ebdcb8"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "cdome3",
+   "at": [
+    10,
+    13,
+    12.5
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      2.2,
+      0,
+      "#e6cf9f"
+     ],
+     [
+      2.2,
+      1.5
+     ],
+     [
+      1.6,
+      2.5,
+      "#ebdcb8"
+     ],
+     [
+      0.01,
+      3.2,
+      "#ebdcb8"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -38
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ }
+}

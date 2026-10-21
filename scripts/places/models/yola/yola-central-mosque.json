@@ -1,0 +1,2107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "yola-central-mosque",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_Mosque_Yola.jpg",
+   "licence": "CC0",
+   "author": "Mr. Snatch",
+   "view": "front",
+   "used": "white hall with maroon pilasters between pointed arch windows, three pale green domes, four minarets (two heavy front ones with yellow balconies, two slender rear ones), low yellow front wall, central maroon pointed portal",
+   "file": "/tmp/places-evidence/yola/mosque.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/670535239",
+   "used": "hall outline (about 57 x 43 m, long street edge tilted 16 degrees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 16,
+  "pitchDeg": 1,
+  "fovDeg": 50,
+  "aspect": 1.46
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe3",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.9,
+    "bay": 5.6,
+    "glassColour": "#2e2522",
+    "faces": {
+     "front": "pointed",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 5.6,
+      "opening": 0.62,
+      "height": 0.88,
+      "depth": 0.7,
+      "pierColour": "#f4efe3",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.9,
+      "depth": 0.1,
+      "spacing": 5.6,
+      "colour": "#8a2f3a",
+      "margin": 1.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4ddcc",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.1,
+    -14.9,
+    9.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      4.5,
+      0,
+      "#efe9dc"
+     ],
+     [
+      4.5,
+      2.4
+     ],
+     [
+      4.9,
+      2.4,
+      "#b9d3b4"
+     ],
+     [
+      4.8020000000000005,
+      3.2
+     ],
+     [
+      4.41,
+      4.3
+     ],
+     [
+      3.6750000000000003,
+      5.4
+     ],
+     [
+      2.45,
+      6.3
+     ],
+     [
+      1.225,
+      6.9
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10.1,
+    -14.9,
+    16.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -10.1,
+    -14.9,
+    9.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      4.9,
+      0
+     ],
+     [
+      4.9,
+      2.4
+     ],
+     [
+      2.94,
+      5.4
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.2,
+    -10.1,
+    9.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      5.0,
+      0,
+      "#efe9dc"
+     ],
+     [
+      5.0,
+      2.4
+     ],
+     [
+      5.4,
+      2.4,
+      "#b9d3b4"
+     ],
+     [
+      5.292,
+      3.2
+     ],
+     [
+      4.86,
+      4.3
+     ],
+     [
+      4.050000000000001,
+      5.4
+     ],
+     [
+      2.7,
+      6.3
+     ],
+     [
+      1.35,
+      6.9
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.2,
+    -10.1,
+    16.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    6.2,
+    -10.1,
+    9.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      5.4,
+      0
+     ],
+     [
+      5.4,
+      2.4
+     ],
+     [
+      3.24,
+      5.4
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22.5,
+    -5.3,
+    9.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      4.5,
+      0,
+      "#efe9dc"
+     ],
+     [
+      4.5,
+      2.4
+     ],
+     [
+      4.9,
+      2.4,
+      "#b9d3b4"
+     ],
+     [
+      4.8020000000000005,
+      3.2
+     ],
+     [
+      4.41,
+      4.3
+     ],
+     [
+      3.6750000000000003,
+      5.4
+     ],
+     [
+      2.45,
+      6.3
+     ],
+     [
+      1.225,
+      6.9
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22.5,
+    -5.3,
+    16.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      1.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    22.5,
+    -5.3,
+    9.5
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      4.9,
+      0
+     ],
+     [
+      4.9,
+      2.4
+     ],
+     [
+      2.94,
+      5.4
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.48,
+    -21.29
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#8a2f3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.6,
+       1.0
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       6.4,
+       1.0
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       5.8,
+       1.0
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       4.8,
+       1.0
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       3.4,
+       1.0
+      ]
+     },
+     {
+      "z": 10.4,
+      "rect": [
+       1.8,
+       1.0
+      ]
+     },
+     {
+      "z": 11.6,
+      "rect": [
+       0.3,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.65,
+    -21.86
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#2e2320",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.2,
+       1.0
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       4.0,
+       1.0
+      ]
+     },
+     {
+      "z": 6,
+      "rect": [
+       3.5,
+       1.0
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       2.6,
+       1.0
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.5,
+       1.0
+      ]
+     },
+     {
+      "z": 10.3,
+      "rect": [
+       0.4,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.71,
+    -22.06
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#8a2f3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       1.0
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       3.3,
+       1.0
+      ]
+     },
+     {
+      "z": 3.8,
+      "rect": [
+       2.5,
+       1.0
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       1.2,
+       1.0
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       0.2,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    9.82,
+    -22.44
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#1e1614",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.0,
+       1.0
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       2.9,
+       1.0
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       2.2,
+       1.0
+      ]
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       0.2,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.7,
+      0,
+      "#efe6d0"
+     ],
+     [
+      2.7,
+      3.0
+     ],
+     [
+      2.25,
+      3.2
+     ],
+     [
+      2.25,
+      15.345
+     ],
+     [
+      2.1,
+      15.445
+     ],
+     [
+      2.1,
+      28.4
+     ],
+     [
+      1.6,
+      41
+     ]
+    ],
+    "arcade": {
+     "from": 5.0,
+     "to": 14.845,
+     "count": 4,
+     "width": 0.3,
+     "height": 8.345,
+     "sill": 0.8,
+     "shape": "rect",
+     "depth": 0.25,
+     "innerColour": "#3a2c28"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.2,
+      27.9
+     ],
+     [
+      1.6,
+      41
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    27.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e0b85a",
+    "profile": [
+     [
+      1.6,
+      0,
+      "#e0b85a"
+     ],
+     [
+      5.0,
+      0.0
+     ],
+     [
+      5.0,
+      1.0
+     ],
+     [
+      1.8,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    28.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4efe2",
+    "profile": [
+     [
+      4.85,
+      0
+     ],
+     [
+      4.85,
+      1.1
+     ]
+    ],
+    "openTop": true,
+    "arcade": {
+     "from": 0.0,
+     "to": 1.1,
+     "count": 8,
+     "width": 2.75,
+     "height": 0.8,
+     "sill": 0.1,
+     "shape": "rect",
+     "depth": 0.1,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    41
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.7249999999999999,
+      0,
+      "#e0b85a"
+     ],
+     [
+      1.7249999999999999,
+      0.3
+     ],
+     [
+      1.5,
+      0.3,
+      "#efe6d0"
+     ],
+     [
+      1.5,
+      3.4
+     ]
+    ],
+    "arcade": {
+     "from": 0.5,
+     "to": 3.4,
+     "count": 4,
+     "width": 1.0499999999999998,
+     "height": 2.6,
+     "sill": 0.5,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    44.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      1.7249999999999999,
+      0,
+      "#b9d3b4"
+     ],
+     [
+      1.6500000000000001,
+      0.5
+     ],
+     [
+      1.0499999999999998,
+      1.6
+     ],
+     [
+      0.375,
+      2.6
+     ],
+     [
+      0.08,
+      2.7
+     ],
+     [
+      0.08,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -17.12,
+    -26.51,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.0,
+      41
+     ],
+     [
+      0,
+      45
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.7,
+      0,
+      "#efe6d0"
+     ],
+     [
+      2.7,
+      3.0
+     ],
+     [
+      2.25,
+      3.2
+     ],
+     [
+      2.25,
+      15.345
+     ],
+     [
+      2.1,
+      15.445
+     ],
+     [
+      2.1,
+      28.4
+     ],
+     [
+      1.6,
+      41
+     ]
+    ],
+    "arcade": {
+     "from": 5.0,
+     "to": 14.845,
+     "count": 4,
+     "width": 0.3,
+     "height": 8.345,
+     "sill": 0.8,
+     "shape": "rect",
+     "depth": 0.25,
+     "innerColour": "#3a2c28"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.2,
+      27.9
+     ],
+     [
+      1.6,
+      41
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    27.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e0b85a",
+    "profile": [
+     [
+      1.6,
+      0,
+      "#e0b85a"
+     ],
+     [
+      5.0,
+      0.0
+     ],
+     [
+      5.0,
+      1.0
+     ],
+     [
+      1.8,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    28.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4efe2",
+    "profile": [
+     [
+      4.85,
+      0
+     ],
+     [
+      4.85,
+      1.1
+     ]
+    ],
+    "openTop": true,
+    "arcade": {
+     "from": 0.0,
+     "to": 1.1,
+     "count": 8,
+     "width": 2.75,
+     "height": 0.8,
+     "sill": 0.1,
+     "shape": "rect",
+     "depth": 0.1,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    41
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.7249999999999999,
+      0,
+      "#e0b85a"
+     ],
+     [
+      1.7249999999999999,
+      0.3
+     ],
+     [
+      1.5,
+      0.3,
+      "#efe6d0"
+     ],
+     [
+      1.5,
+      3.4
+     ]
+    ],
+    "arcade": {
+     "from": 0.5,
+     "to": 3.4,
+     "count": 4,
+     "width": 1.0499999999999998,
+     "height": 2.6,
+     "sill": 0.5,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    44.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      1.7249999999999999,
+      0,
+      "#b9d3b4"
+     ],
+     [
+      1.6500000000000001,
+      0.5
+     ],
+     [
+      1.0499999999999998,
+      1.6
+     ],
+     [
+      0.375,
+      2.6
+     ],
+     [
+      0.08,
+      2.7
+     ],
+     [
+      0.08,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    33.24,
+    -11.69,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.0,
+      41
+     ],
+     [
+      0,
+      45
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0,
+      "#efe6d0"
+     ],
+     [
+      1.35,
+      3.0
+     ],
+     [
+      1.25,
+      3.2
+     ],
+     [
+      1.25,
+      11.605000000000002
+     ],
+     [
+      1.1,
+      11.705000000000002
+     ],
+     [
+      1.1,
+      21.6
+     ],
+     [
+      0.8,
+      31
+     ]
+    ],
+    "arcade": {
+     "from": 5.0,
+     "to": 11.105000000000002,
+     "count": 4,
+     "width": 0.15,
+     "height": 4.605000000000002,
+     "sill": 0.8,
+     "shape": "rect",
+     "depth": 0.25,
+     "innerColour": "#3a2c28"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0
+     ],
+     [
+      1.2,
+      21.1
+     ],
+     [
+      0.8,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    21.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e0b85a",
+    "profile": [
+     [
+      0.8,
+      0,
+      "#e0b85a"
+     ],
+     [
+      2.5,
+      0.0
+     ],
+     [
+      2.5,
+      1.0
+     ],
+     [
+      0.9,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    22.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4efe2",
+    "profile": [
+     [
+      2.425,
+      0
+     ],
+     [
+      2.425,
+      1.1
+     ]
+    ],
+    "openTop": true,
+    "arcade": {
+     "from": 0.0,
+     "to": 1.1,
+     "count": 8,
+     "width": 1.375,
+     "height": 0.8,
+     "sill": 0.1,
+     "shape": "rect",
+     "depth": 0.1,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    31
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      0.8624999999999999,
+      0,
+      "#e0b85a"
+     ],
+     [
+      0.8624999999999999,
+      0.3
+     ],
+     [
+      0.75,
+      0.3,
+      "#efe6d0"
+     ],
+     [
+      0.75,
+      3.4
+     ]
+    ],
+    "arcade": {
+     "from": 0.5,
+     "to": 3.4,
+     "count": 4,
+     "width": 0.5249999999999999,
+     "height": 2.6,
+     "sill": 0.5,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    34.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      0.8624999999999999,
+      0,
+      "#b9d3b4"
+     ],
+     [
+      0.8250000000000001,
+      0.5
+     ],
+     [
+      0.5249999999999999,
+      1.6
+     ],
+     [
+      0.1875,
+      2.6
+     ],
+     [
+      0.08,
+      2.7
+     ],
+     [
+      0.08,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -12.4,
+    -7.2,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0
+     ],
+     [
+      1.0,
+      31
+     ],
+     [
+      0,
+      35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    20.2,
+    2.4,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0,
+      "#efe6d0"
+     ],
+     [
+      1.35,
+      3.0
+     ],
+     [
+      1.25,
+      3.2
+     ],
+     [
+      1.25,
+      11.605000000000002
+     ],
+     [
+      1.1,
+      11.705000000000002
+     ],
+     [
+      1.1,
+      21.6
+     ],
+     [
+      0.8,
+      31
+     ]
+    ],
+    "arcade": {
+     "from": 5.0,
+     "to": 11.105000000000002,
+     "count": 4,
+     "width": 0.15,
+     "height": 4.605000000000002,
+     "sill": 0.8,
+     "shape": "rect",
+     "depth": 0.25,
+     "innerColour": "#3a2c28"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    1
+   ],
+   "at": [
+    20.2,
+    2.4,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0
+     ],
+     [
+      1.2,
+      21.1
+     ],
+     [
+      0.8,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20.2,
+    2.4,
+    21.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e0b85a",
+    "profile": [
+     [
+      0.8,
+      0,
+      "#e0b85a"
+     ],
+     [
+      2.5,
+      0.0
+     ],
+     [
+      2.5,
+      1.0
+     ],
+     [
+      0.9,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    20.2,
+    2.4,
+    22.1
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#f4efe2",
+    "profile": [
+     [
+      2.425,
+      0
+     ],
+     [
+      2.425,
+      1.1
+     ]
+    ],
+    "openTop": true,
+    "arcade": {
+     "from": 0.0,
+     "to": 1.1,
+     "count": 8,
+     "width": 1.375,
+     "height": 0.8,
+     "sill": 0.1,
+     "shape": "rect",
+     "depth": 0.1,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20.2,
+    2.4,
+    31
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      0.8624999999999999,
+      0,
+      "#e0b85a"
+     ],
+     [
+      0.8624999999999999,
+      0.3
+     ],
+     [
+      0.75,
+      0.3,
+      "#efe6d0"
+     ],
+     [
+      0.75,
+      3.4
+     ]
+    ],
+    "arcade": {
+     "from": 0.5,
+     "to": 3.4,
+     "count": 4,
+     "width": 0.5249999999999999,
+     "height": 2.6,
+     "sill": 0.5,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#2e2522"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20.2,
+    2.4,
+    34.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#b9d3b4",
+    "profile": [
+     [
+      0.8624999999999999,
+      0,
+      "#b9d3b4"
+     ],
+     [
+      0.8250000000000001,
+      0.5
+     ],
+     [
+      0.5249999999999999,
+      1.6
+     ],
+     [
+      0.1875,
+      2.6
+     ],
+     [
+      0.08,
+      2.7
+     ],
+     [
+      0.08,
+      4.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    20.2,
+    2.4,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      1.35,
+      0
+     ],
+     [
+      1.0,
+      31
+     ],
+     [
+      0,
+      35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "rotDeg": 16.4,
+     "params": {
+      "rect": [
+       3.2,
+       0.4
+      ],
+      "z0": 0.1,
+      "height": 0.9,
+      "colour": "#e0b85a",
+      "topColour": "#e0b85a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18.54,
+     -40.31
+    ],
+    "end": [
+     43.34,
+     -22.09
+    ],
+    "count": 22
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "rotDeg": 16.4,
+     "params": {
+      "rect": [
+       0.45,
+       0.55
+      ],
+      "z0": 0,
+      "height": 1.6,
+      "colour": "#8a2f3a",
+      "topColour": "#8a2f3a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20.22,
+     -40.8
+    ],
+    "end": [
+     45.02,
+     -21.6
+    ],
+    "count": 23
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12.4,
+    -31.2
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "rect": [
+     68,
+     0.5
+    ],
+    "z0": 1.0,
+    "height": 0.25,
+    "colour": "#8a2f3a",
+    "topColour": "#8a2f3a"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "rotDeg": 16.4,
+     "params": {
+      "rect": [
+       0.08,
+       0.08
+      ],
+      "z0": 1.25,
+      "height": 1.1,
+      "colour": "#2a2a2a",
+      "topColour": "#2a2a2a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -19.45,
+     -40.57
+    ],
+    "end": [
+     44.25,
+     -21.83
+    ],
+    "count": 60
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.89,
+    -34.59
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#8a2f3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.0,
+       0.6
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       4.8,
+       0.6
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       3.6,
+       0.6
+      ]
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       1.8,
+       0.6
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       0.3,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0
+   ],
+   "at": [
+    0.99,
+    -34.92
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#1e1614",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       0.6
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       3.0,
+       0.6
+      ]
+     },
+     {
+      "z": 3.3,
+      "rect": [
+       2.0,
+       0.6
+      ]
+     },
+     {
+      "z": 3.9,
+      "rect": [
+       0.5,
+       0.6
+      ]
+     },
+     {
+      "z": 4.1,
+      "rect": [
+       0.1,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    25.83,
+    -27.25
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#8a2f3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.0,
+       0.6
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       4.8,
+       0.6
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       3.6,
+       0.6
+      ]
+     },
+     {
+      "z": 4.4,
+      "rect": [
+       1.8,
+       0.6
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       0.3,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0
+   ],
+   "at": [
+    25.93,
+    -27.58
+   ],
+   "rotDeg": 16.4,
+   "params": {
+    "colour": "#1e1614",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.2,
+       0.6
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       3.0,
+       0.6
+      ]
+     },
+     {
+      "z": 3.3,
+      "rect": [
+       2.0,
+       0.6
+      ]
+     },
+     {
+      "z": 3.9,
+      "rect": [
+       0.5,
+       0.6
+      ]
+     },
+     {
+      "z": 4.1,
+      "rect": [
+       0.1,
+       0.6
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open arcade reads as dark pointed arches on the ground level only; upper windows still small and fin pilasters not aligned to arches; minarets are straight (photo leans), slits are plain rect cuts and the balcony rail is a simple arcaded ring; no stairs or balcony railing behind arches; modelled hall is longer/taller than photo facade."
+ }
+}

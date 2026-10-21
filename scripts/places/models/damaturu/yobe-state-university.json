@@ -1,0 +1,390 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "yobe-state-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yobe_State_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musaddam Idriss",
+   "view": "front",
+   "file": "/tmp/places-evidence/damaturu/ysu1.jpg",
+   "used": "main entrance gate: wide yellow round-arched gateway with stepped shoulders, two low yellow gatehouses with red flat roofs and brown-framed windows, green steel fence panels, striped drums on the road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yobe_State_University_Damaturu_Entry_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musaddam Idriss",
+   "view": "front",
+   "file": "/tmp/places-evidence/damaturu/ysu2.jpg",
+   "used": "arch proportions, gate depth, the road and distant block beyond the gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/845940671",
+   "used": "identity only: the campus polygon is 3 km wide, so only the gate and a lecture block from the brief are modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "arch-gateway",
+   "id": "gate",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 3,
+    "height": 11,
+    "openings": 1,
+    "kind": "round",
+    "pier": "#f2b705",
+    "batter": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse-l",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -16.6,
+    1.5
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483b",
+    "overhang": 2.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse-r",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    16.6,
+    1.5
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5483b",
+    "overhang": 2.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -5,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "dx": 3.4,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.45,
+        0
+       ],
+       [
+        0.45,
+        0.37,
+        "#3a7fc0"
+       ],
+       [
+        0.45,
+        0.73,
+        "#e8e8e0"
+       ],
+       [
+        0.45,
+        1.1,
+        "#3fb89a"
+       ],
+       [
+        0.2,
+        1.1
+       ]
+      ],
+      "colour": "#3a7fc0"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12.8,
+    1,
+    0
+   ],
+   "params": {
+    "length": 4.2,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#2fa05a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    12.8,
+    1,
+    0
+   ],
+   "params": {
+    "length": 4.2,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "railing",
+    "colour": "#2fa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shoulder1-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     3
+    ]
+   },
+   "at": [
+    -10.6,
+    0
+   ],
+   "z0": 0,
+   "height": 9.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2b705"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shoulder2-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     3
+    ]
+   },
+   "at": [
+    -11.8,
+    0
+   ],
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2b705"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shoulder1-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     3
+    ]
+   },
+   "at": [
+    10.6,
+    0
+   ],
+   "z0": 0,
+   "height": 9.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2b705"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shoulder2-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     3
+    ]
+   },
+   "at": [
+    11.8,
+    0
+   ],
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2b705"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crest-block",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 11,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2b705",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2b705"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "badge",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 12.2,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a5fa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a5fa8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "drums still small in frame and shoulders are boxy; badge is a plain blue box not a shield; gatehouse roof overhang and brown window frames not visible; green gate panels sparse; flat ground reads red-brown"
+ }
+}

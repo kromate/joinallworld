@@ -1,0 +1,203 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+   "used": "city context only; the OSM match is a 70 m2 outbuilding 3.7 m away, not reliable for a 60 x 45 m garden"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.0,
+    "posts": 6,
+    "colour": "#e6dcc2",
+    "cap_colour": "#8a4b32",
+    "floor_colour": "#c9bfa5"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.5,
+    "colours": [
+     "#a9654a",
+     "#e6dcc2",
+     "#3f7a4a"
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       0.5
+      ],
+      "height": 0.5,
+      "colour": "#a9654a"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -12,
+     0
+    ],
+    "end": [
+     12,
+     0
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -24,
+     16
+    ],
+    "end": [
+     24,
+     16
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {}
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -24,
+     -14
+    ],
+    "end": [
+     24,
+     -14
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#e6dcc2",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e6dcc2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 45,
+    "height": 1.6,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e6dcc2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   66,
+   52
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; layout is a typed guess (pavilion, benches, palms, lamps, gate)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-evening-garden"
+}

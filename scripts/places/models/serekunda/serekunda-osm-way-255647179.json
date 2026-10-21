@@ -1,0 +1,500 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-255647179",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gambia_Banjul_0023.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Atamari",
+   "view": "front",
+   "used": "cream rendered gable facade, two lancet windows and round oculus, buttress pilasters, pale corrugated roof, side porch with lean-to roof, red-brown belfry with gold spire on the ridge, hedge and boundary wall, palms",
+   "file": "/tmp/places-evidence/serekunda/sk-stmary.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255647179",
+   "used": "size and orientation only (area 411 m2, 1933); outline is irregular so the plan is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d1a2",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#eadfb6",
+    "material": "corrugated",
+    "pitch": 48,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    7.4,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d1a2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e0d4aa",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -7.5,
+    4
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d1a2",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e0d4aa",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -5.2,
+    -11.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.9
+    ],
+    "height": 5.2,
+    "colour": "#e2d3ac",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    5.2,
+    -11.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.9
+    ],
+    "height": 5.2,
+    "colour": "#e2d3ac",
+    "topScale": 0.6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e6dcc2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    14,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#e6dcc2"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    -2.8,
+    -11.08,
+    1.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.12
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       0.85,
+       0.12
+      ]
+     },
+     {
+      "z": 2.9,
+      "rect": [
+       0.6,
+       0.12
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.3,
+       0.12
+      ]
+     },
+     {
+      "z": 3.7,
+      "rect": [
+       0.06,
+       0.12
+      ]
+     }
+    ],
+    "colour": "#2a2c34"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    2.8,
+    -11.08,
+    1.2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       0.12
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       0.85,
+       0.12
+      ]
+     },
+     {
+      "z": 2.9,
+      "rect": [
+       0.6,
+       0.12
+      ]
+     },
+     {
+      "z": 3.4,
+      "rect": [
+       0.3,
+       0.12
+      ]
+     },
+     {
+      "z": 3.7,
+      "rect": [
+       0.06,
+       0.12
+      ]
+     }
+    ],
+    "colour": "#2a2c34"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -11.1,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.12
+    ],
+    "height": 1.1,
+    "colour": "#2a2c34",
+    "topScale": 0.8
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.0,
+    8.4
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 2.0,
+    "colour": "#9a5b3f",
+    "windows": "louvres"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    -9.0,
+    10.4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.3,
+       1.3
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     },
+     {
+      "z": 3.8,
+      "rect": [
+       0.06,
+       0.06
+      ]
+     }
+    ],
+    "colour": "#d0a24c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.0,
+    14.2
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     0.1
+    ],
+    "height": 1.1,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9.0,
+    14.9
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.1
+    ],
+    "height": 0.1,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -3,
+    -14.5,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.0,
+    "thickness": 1.6,
+    "kind": "wall",
+    "colour": "#2a5a2a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -14.5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.6,
+    "thickness": 2.0,
+    "kind": "wall",
+    "colour": "#2a5a2a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#6a3f8a",
+     "#c83a2e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -6
+    ],
+    "height": 19
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -13,
+     -2
+    ],
+    "height": 17
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -8
+    ],
+    "height": 18
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -3
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     2
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     2
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "lancets are dark pointed slots, oculus a flat dark trapezoid; roof still reads blue-grey under sky light; palms are generic; hedge is a plain block, grey paving, no cars/people"
+ }
+}

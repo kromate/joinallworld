@@ -1,0 +1,352 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-5057908",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Somalia_national_team_drills_for_2018WCQ.jpg",
+   "licence": "CC0",
+   "author": "Ilyas Ahmed for AMISOM Photo",
+   "view": "side",
+   "file": "/tmp/places-evidence/mogadishu/drills.jpg",
+   "used": "single roofed main stand: flat cantilever roof on slim columns, cream back wall, low pale terraces beside it, green turf, wall round the ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2012_01_12_MGD_Stadiums_a_(8394617014).jpg",
+   "licence": "CC0",
+   "author": "AMISOM Public Information",
+   "view": "side",
+   "used": "sand running track round the pitch, low raked concrete terraces curving round the ends, mesh fence at the track edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/5057908",
+   "used": "name-matched leisure=stadium, Wikidata Q3545656; overall extent only (about 213 x 135 m site, bowl reduced to an oval ground)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Critic fixes applied (cream stand, white-grey canopy on 5 columns, sand terraces with green band, boards, masts removed); render lighting still reads cool grey on cream surfaces; bowl reduced to an oval, rear buildings not modelled."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     118
+    ],
+    "height": 0.12,
+    "colour": "#c9b58a"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "length": 120,
+    "width": 78,
+    "colour": "#d9c79a",
+    "pitch": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -36,
+     -48
+    ],
+    "end": [
+     36,
+     -48
+    ],
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.4,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#f0ead8",
+     "#d9c79a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#e3cf9f",
+    "underColour": "#e3cf9f",
+    "backWall": 1.0,
+    "canopy": {
+     "height": 10.5,
+     "depth": 15,
+     "thickness": 0.9,
+     "slopeDeg": 2,
+     "colour": "#e8e8e4",
+     "edgeColour": "#f4f4f0",
+     "supports": 5
+    },
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     24,
+     48
+    ],
+    "end": [
+     -24,
+     48
+    ],
+    "rows": 7,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#d9c79a",
+     "#7fb59a",
+     "#d9c79a"
+    ],
+    "blocks": 5,
+    "concreteColour": "#d9c79a",
+    "underColour": "#d9c79a",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     24,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 48,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 7,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColours": [
+     "#d9c79a",
+     "#7fb59a",
+     "#d9c79a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9c79a",
+    "underColour": "#d9c79a",
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -24,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 48,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 7,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColours": [
+     "#d9c79a",
+     "#7fb59a",
+     "#d9c79a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9c79a",
+    "underColour": "#d9c79a",
+    "facetDeg": 14
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -72,
+      -58
+     ],
+     [
+      72,
+      -58
+     ],
+     [
+      72,
+      58
+     ],
+     [
+      -72,
+      58
+     ],
+     [
+      -72,
+      -58
+     ]
+    ],
+    "height": 3,
+    "thickness": 0.35,
+    "colour": "#efe6c8"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "colour": "#2a2d31",
+    "facing": "south"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#4189dd",
+    "count": 2,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -40,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#7fb59a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    40,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     100,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#7fb59a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -82,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     84,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ }
+}

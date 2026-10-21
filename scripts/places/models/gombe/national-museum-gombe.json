@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "national-museum-gombe",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gombe_Museum_Office.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bembety",
+   "view": "front",
+   "file": "/tmp/places-evidence/gombe/museum1.jpg",
+   "used": "low single-storey ochre-orange render block, wide low hipped corrugated-sheet roof with deep grey fascia, zig-zag (folded) entrance canopy over five bays, green window frames, interlocking paving forecourt, green lamp post and two flagpoles"
+  },
+  {
+   "kind": "text",
+   "used": "OSM match is the Federal Secretariat Complex (containing, not the museum), so the outline is not used; size is estimated from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6a45e",
+    "glassColour": "#4f7a5e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b8b4a8",
+    "material": "corrugated",
+    "pitch": 11,
+    "overhang": 1.9
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -8.3,
+    2.7
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 18,
+    "depth": 2.6,
+    "rise": 0.9,
+    "folds": 6,
+    "thickness": 0.25,
+    "foldAxis": "y",
+    "colour": "#b7ab98",
+    "edgeColour": "#a39a8a",
+    "slopeY": -0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 1,
+    "colour": "#c9c3b5"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    1,
+    -9,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    3,
+    16
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     44,
+     14
+    ],
+    "height": 0.08,
+    "colour": "#b8aa90"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     3,
+     5
+    ],
+    "height": 0.06,
+    "colour": "#aa9c84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -10.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 0.25,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -10.5,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.5
+    ],
+    "height": 0.25,
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -6.5,
+    -8.8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "depth": 1.0
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    6.5,
+    -8.8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.0,
+    "depth": 1.0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10,
+    -9.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      7
+     ],
+     [
+      1.4,
+      0,
+      7.8
+     ],
+     [
+      2.4,
+      0,
+      7.6
+     ]
+    ],
+    "section": {
+     "circle": 0.12
+    },
+    "colour": "#2f8a68",
+    "curve": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -10,
+    -9.5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0,
+      6.6
+     ],
+     [
+      -1.6,
+      0,
+      7.4
+     ]
+    ],
+    "section": {
+     "circle": 0.1
+    },
+    "colour": "#2f8a68"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is hipped not curved at the right end, entrance recess/glazed doors only approximated, shrubs are simple clipped balls, paving is flat sand slab, lamp arm simplified"
+ }
+}

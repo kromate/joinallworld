@@ -126,7 +126,7 @@ async function launch(): Promise<void> {
     const badge = { name: 'open-dev-badge', transformIndexHtml: () => [{ tag: 'script', attrs: { src: '/__open-dev.js', defer: true }, injectTo: 'body' as const }] };
     const vite = await createViteServer({ ...(openMode ? { plugins: [badge] } : {}), server: {
       host: '127.0.0.1', port, strictPort: true,
-      proxy: { '/api': { target }, '/p/': { target }, '/socket': { target, ws: true }, ...(openMode ? { '/__open-dev.js': { target } } : {}) },
+      proxy: { '/api': { target }, '/p/': { target }, '^/assets/places/[0-9a-f]{64}\\.glb$': { target }, '/socket': { target, ws: true }, ...(openMode ? { '/__open-dev.js': { target } } : {}) },
     } });
     await vite.listen();
     console.log(`\nAllworld is running at http://127.0.0.1:${port}/ (game, API and WebSocket).\nSaved edits show at once: the page reloads, and the game server restarts when its code or the rules change. Press Ctrl+C to stop.\n`);

@@ -1,0 +1,1631 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "mexico-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "mexico-city",
+    "climate": "highland",
+    "vernacular": "Dense high-altitude metropolis: concrete-frame mid-rise apartment and office blocks with flat roofs, rooftop water tanks and washing lines; colourful painted render in terracotta, ochre, pink and blue on older low-rise streets; Spanish colonial churches and palaces in dark red tezontle volcanic stone trimmed with grey-white chiluca/cantera stone; mid-20th-century modernist and brutalist public buildings in exposed concrete, and glass towers along Reforma and Santa Fe. Flat roofs dominate, with clay tile on colonial buildings.",
+    "wallColours": [
+      "#b5523b",
+      "#d9a441",
+      "#e8dcc3",
+      "#a8a39a",
+      "#c76f84",
+      "#5b86a8",
+      "#f1ece0"
+    ],
+    "roofColours": [
+      "#8c8a85",
+      "#a3402f",
+      "#6b6e70",
+      "#5d8f7b"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "exposed-concrete",
+      "stone",
+      "glass-curtain",
+      "brick",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "clay-tile",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Colonial baroque portals in carved grey stone against red tezontle walls, Talavera tile domes in yellow and blue, Barragan-style saturated pink, red and yellow walls, 1950s UNAM-era modernist murals and mosaics, brutalist concrete cladding, large painted street murals, Aztec stepped-pyramid ruins.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_Guadalupe",
+        "what": "Talavera yellow-and-blue tiled dome of the old basilica; oxidised green copper roof of the new one"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Torres_de_Sat%C3%A9lite",
+        "what": "Barragan/Goeritz towers painted red, blue, yellow and white"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tlatelolco_(archaeological_site)",
+        "what": "pink quarry-stone ashlar temples with painted murals; mid-20th-century office complex beside the colonial college"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Capilla_de_San_Juan_Bautista_(Xochimilco)",
+        "what": "white and yellow lime-plastered colonial chapel facade with carved stone portal"
+      }
+    ]
+  },
+  "places": {
+    "mexico-city-airport-mexico-city-airport": {
+      "venueId": "mexico-city-airport-mexico-city-airport",
+      "city": "mexico-city",
+      "name": "Mexico City Benito Juárez International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 forecourt: a very long two-storey glass and steel terminal with an elevated departure roadway, jet-bridge piers behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 800,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d9db",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "elevated departures roadway and canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1952, upgraded 1970-2006 (T1); T2 2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mexico_City_International_Airport",
+          "what": "T1: long two-storey building about 800 m end to end, 1952 with upgrades; 900 m concourse with gates 1-28; 33 contact gates; T2 opened 2007 with a narrow main concourse and three piers; parking for 5,500"
+        }
+      ],
+      "notes": "800 m is the T1 length; the 120 m clamp means the generator shows a recognisable portion (a central section). Exterior colours, tower design and glazing share are typed from general knowledge; the wiki article does not describe them. T2 (2007) is narrower with three piers."
+    },
+    "mexico-city-clinic": {
+      "venueId": "mexico-city-clinic",
+      "city": "mexico-city",
+      "name": "Instituto Nacional de Ciencias Médicas y Nutrición Salvador Zubirán",
+      "archetype": "hospital",
+      "subject": "Large Tlalpan teaching-hospital campus: a long tall block with lower wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 367,
+        "depth_m": 142,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#b8b2a4",
+          "#a86a4f",
+          "#d8d4c8"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s (site since 1970)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Instituto_Nacional_de_Ciencias_M%C3%A9dicas_y_Nutrici%C3%B3n_Salvador_Zubir%C3%A1n",
+          "what": "moved to Av. Vasco de Quiroga 15 in 1970; 167 beds; founded 1946"
+        }
+      ],
+      "notes": "OSM footprint 367x142 m (measured). Storey count, concrete/brick finish and helipad are typed assumptions for a 1970s tertiary hospital. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-community-notices": {
+      "venueId": "mexico-city-community-notices",
+      "city": "mexico-city",
+      "name": "Secretaría de Hacienda",
+      "archetype": "civic-palace",
+      "subject": "Large federal ministry block, a heavy rectangular office slab around inner courts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 192,
+        "depth_m": 146,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#bfb9ab",
+          "#8c6b52",
+          "#d4d0c4"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 192x146 m, a very large federal office complex near Observatorio/Tacubaya. Which Hacienda building this is could not be confirmed. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-community-voting-game": {
+      "venueId": "mexico-city-community-voting-game",
+      "city": "mexico-city",
+      "name": "Torres de Satélite",
+      "archetype": "monument",
+      "subject": "Five tall prismatic concrete towers of varying height at the Ciudad Satélite roundabout, painted red, blue, yellow and two white",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 148,
+        "depth_m": 35,
+        "storeys": 15,
+        "height_m": 52,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c8372d",
+          "#2d5fa8",
+          "#e0b32d"
+        ],
+        "roofColour": "#e9e6df",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 5,
+          "note": "red, blue, yellow, white, white; heights from 30 to 52 m"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1957-58",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Torres_de_Sat%C3%A9lite",
+          "what": "by Luis Barragán and Mathias Goeritz, inaugurated 1958, planned seven towers, built five, heights 30 to 52 m, colours red, blue, yellow and two white, restored 2008"
+        }
+      ],
+      "notes": "Heights and colours are sourced. The tower cross-section (angular triangular prisms) is general knowledge, not in the fetched article. Use five slender towers of differing heights; OSM footprint 148x35 m."
+    },
+    "mexico-city-community-workshop": {
+      "venueId": "mexico-city-community-workshop",
+      "city": "mexico-city",
+      "name": "Universidad Anáhuac México Sur",
+      "archetype": "campus-block",
+      "subject": "Private university building in the south of the city: a block with a stone-and-glass front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 66,
+        "depth_m": 46,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c9a8",
+          "#7e5f45",
+          "#b9b9b2"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Universidad_An%C3%A1huac_M%C3%A9xico_Sur",
+          "what": "existence of the institution (OSM-tagged wiki entry); no architectural description"
+        }
+      ],
+      "notes": "OSM building 66x46 m. Storeys and colours typed. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-market-game": {
+      "venueId": "mexico-city-market-game",
+      "city": "mexico-city",
+      "name": "Toreo Parque Central",
+      "archetype": "mall",
+      "subject": "Four-level shopping podium with glass towers rising behind, built on the site of the old Toreo bullring",
+      "form": {
+        "footprint": "rect",
+        "width_m": 264,
+        "depth_m": 163,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#c9ced1",
+          "#6e8497",
+          "#e8e6df"
+        ],
+        "roofColour": "#9ea2a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "setback-tiers",
+          "count": 3,
+          "note": "three office towers and a hotel behind"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2014-15",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Toreo_Parque_Central",
+          "what": "Grupo Danhos development opened 2014-15 on the former Toreo de Cuatro Caminos bullring; three office towers, a hotel and the Plaza Toreo mall (90,000 m2 GLA)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q27230927",
+          "what": "OSM tags: 4 levels, architect Javier Sordo Madaleno (via facts)"
+        }
+      ],
+      "notes": "Footprint 264x163 m and 4 levels are OSM-measured. Glass/concrete finish is typed; the wiki article does not give heights or colours. Towers should appear behind the podium."
+    },
+    "mexico-city-meal-stop": {
+      "venueId": "mexico-city-meal-stop",
+      "city": "mexico-city",
+      "name": "Sanborns Café",
+      "archetype": "restaurant",
+      "subject": "A branch of the Mexican department-store diner in a two-storey building with a corner entrance and awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc3",
+          "#b5523b",
+          "#d4d0c4"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, no brand marks"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Sanborns is a chain, so the exact branch cannot be known; OSM footprint 34x31 m. Typed as a cream and tezontle-red corner building (in the Roma/Juárez area). No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-osm-node-739036171": {
+      "venueId": "mexico-city-osm-node-739036171",
+      "city": "mexico-city",
+      "name": "Instituto Nacional de Pediatría",
+      "archetype": "hospital",
+      "subject": "Long narrow six-storey paediatric hospital block in Coyoacán",
+      "form": {
+        "footprint": "rect",
+        "width_m": 93,
+        "depth_m": 25,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e8e2d0",
+          "#7a9fb5",
+          "#b9b5aa"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5917569",
+          "what": "Wikidata: National Institute of Pediatrics, Mexico City"
+        }
+      ],
+      "notes": "OSM footprint 93x25 m with building:levels=6 (measured tag). Colours typed. Narrow slab distinguishes it from the broader Zubirán campus and INPer. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-osm-way-1173762984": {
+      "venueId": "mexico-city-osm-way-1173762984",
+      "city": "mexico-city",
+      "name": "Velódromo Olímpico Agustín Melgar",
+      "archetype": "stadium",
+      "subject": "1968 Olympic velodrome: a covered oval arena with a large shallow roof and an apron of paving",
+      "form": {
+        "footprint": "oval",
+        "width_m": 180,
+        "depth_m": 138,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c6bd",
+          "#7e8b93",
+          "#e4e1d8"
+        ],
+        "roofColour": "#9ea2a4",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1968",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Agust%C3%ADn_Melgar_Olympic_Velodrome",
+          "what": "by Herbert Schürmann, opened 1968 for Olympic track cycling, capacity 6,400, in Magdalena Mixhuca Sports City"
+        }
+      ],
+      "notes": "Architect, year and capacity sourced. OSM footprint 180x138 m. The shallow arched roof and materials are from general knowledge and not in the article, hence medium."
+    },
+    "mexico-city-osm-way-120733641": {
+      "venueId": "mexico-city-osm-way-120733641",
+      "city": "mexico-city",
+      "name": "Basílica de Santa María de Guadalupe",
+      "archetype": "church-modern",
+      "subject": "The 1976 circular basilica: a round concrete drum with a green oxidised copper roof, seven doors and an open chapel above, next to the old baroque basilica and a big plaza",
+      "form": {
+        "footprint": "round",
+        "width_m": 101,
+        "depth_m": 101,
+        "storeys": 5,
+        "height_m": 42,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "marble",
+        "colours": [
+          "#cdc4b0",
+          "#a89f8c",
+          "#e8e2d0"
+        ],
+        "roofColour": "#5d8f7b",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "shallow tent-like conical copper roof, cross and Marian monogram crowning"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "seven doors across the front, open chapel above"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "free-standing campanile on the plaza (general knowledge)"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974-76",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_Guadalupe",
+          "what": "new basilica 1976 by Benlliure, Ramírez Vázquez et al.: circular, evoking the tent of the Ark; reinforced concrete roof clad in green oxidised copper; seven front entrances with an open chapel above; large cross and Marian monogram crowning the roof; height 42 m; 10,000 seats; old basilica 1695-1709 by Arrieta, octagonal dome with lantern in yellow and blue Talavera tile; Atrio de las Américas plaza"
+        }
+      ],
+      "notes": "OSM footprint is a 101x101 m round building at 10 levels. Roof 'curved' (conical tent); the generator should use a copper-green cone. Old basilica is 100 m away with four octagonal corner towers and yellow-and-blue tiled dome and could be placed beside it. Wall colour typed (light stone/concrete)."
+    },
+    "mexico-city-osm-way-1411608827": {
+      "venueId": "mexico-city-osm-way-1411608827",
+      "city": "mexico-city",
+      "name": "Proyecto Ecológico Lago de Texcoco (PELT)",
+      "archetype": "park-landscape",
+      "subject": "Huge flat restored-wetland park with lagoons, reed beds and low trees on the former Lake Texcoco bed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 1500,
+        "depth_m": 1233,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8a39a",
+          "#d9d3c3",
+          "#6f7d58"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q107349037",
+          "what": "Wikidata: Lake Texcoco Ecological Park, urban park in the State of Mexico"
+        }
+      ],
+      "notes": "OSM way 2,446x1,233 m (width capped to 1500 for the schema). Wetland, trees and visitor pavilion are typed from the park's purpose; show a small slice: lagoon shore, reeds, one pavilion. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-osm-way-146024228": {
+      "venueId": "mexico-city-osm-way-146024228",
+      "city": "mexico-city",
+      "name": "Zona Arqueológica de Tlatelolco",
+      "archetype": "heritage-fort",
+      "subject": "Excavated Aztec temple platforms of Tlatelolco in pink-red stone, beside the Plaza de las Tres Culturas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 38,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "tile-cladding",
+        "colours": [
+          "#a8654f",
+          "#c38b72",
+          "#8c7f72"
+        ],
+        "roofColour": "#a8654f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 3,
+          "note": "wide stairways split by central alfardas"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "painted mural fragments on temple fronts"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "14th-15th century (Mexica)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tlatelolco_(archaeological_site)",
+          "what": "main pyramid is a three-tiered platform with wide steps split by central and lateral alfardas; Temple I built entirely of pink quarry ashlar; Temple of Paintings and Calendar Temple had murals; plaza bordered by the Colegio de Santa Cruz and a mid-20th-century office complex (Centro Cultural Universitario)"
+        }
+      ],
+      "notes": "OSM ruin footprint 38x25 m; the real zone is bigger. The 16th-century stone church of Santiago Tlatelolco and the 1960s tower block of the former Foreign Ministry stand beside the ruins (general knowledge); optionally include them as backdrop."
+    },
+    "mexico-city-osm-way-168081622": {
+      "venueId": "mexico-city-osm-way-168081622",
+      "city": "mexico-city",
+      "name": "Estadio Wilfrido Massieu",
+      "archetype": "stadium",
+      "subject": "Polytechnic (IPN) football stadium in Zacatenco: open concrete bowl around a grass pitch and athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 189,
+        "depth_m": 142,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#bdb7a9",
+          "#7b2a3a",
+          "#e1ddd2"
+        ],
+        "roofColour": "#bdb7a9",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1959; stands and track remodelled 1994",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Wilfrido_Massieu",
+          "what": "capacity 15,000, grass pitch with athletics track; stands and track remodelled 1994"
+        }
+      ],
+      "notes": "Capacity, grass pitch, track and 1959 date sourced (OSM start_date). The bowl shape, concrete finish and IPN maroon accent are typed; the roof is unknown, so none is drawn. OSM footprint 189x142 m."
+    },
+    "mexico-city-osm-way-175507039": {
+      "venueId": "mexico-city-osm-way-175507039",
+      "city": "mexico-city",
+      "name": "Universidad Autónoma de la Ciudad de México",
+      "archetype": "campus-block",
+      "subject": "Public university campus: blocky concrete classroom buildings around open courtyards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e0dccf",
+          "#c76f84",
+          "#a8a39a"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894243",
+          "what": "Wikidata: Universidad Autónoma de la Ciudad de México"
+        }
+      ],
+      "notes": "OSM campus polygon is 602x419 m, so 100x40 m is a typical single block. Colours typed. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-osm-way-199148896": {
+      "venueId": "mexico-city-osm-way-199148896",
+      "city": "mexico-city",
+      "name": "Instituto Nacional de Perinatología",
+      "archetype": "hospital",
+      "subject": "Cream-coloured medium-rise maternity hospital block near the Reforma-Lomas area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 217,
+        "depth_m": 86,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ede4cf",
+          "#b5523b",
+          "#b9b5aa"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5917573",
+          "what": "Wikidata: National Institute of Perinatology, hospital in Mexico"
+        }
+      ],
+      "notes": "OSM footprint 217x86 m. Storeys and colours typed. No source describes this building; typed from the city style and the OSM footprint (measured). Wider and lower than the paediatric institute."
+    },
+    "mexico-city-osm-way-25103113": {
+      "venueId": "mexico-city-osm-way-25103113",
+      "city": "mexico-city",
+      "name": "Six Flags México",
+      "archetype": "park-landscape",
+      "subject": "Theme park with themed villages, an entrance plaza, a tall Ferris wheel and roller-coaster towers",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 978,
+        "depth_m": 488,
+        "storeys": 0,
+        "height_m": 60,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9c46a",
+          "#c8372d",
+          "#3e6b8a"
+        ],
+        "roofColour": "#c8372d",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance plaza"
+        },
+        {
+          "id": "flags",
+          "count": 10
+        },
+        {
+          "id": "mast",
+          "count": 3,
+          "note": "60 m Skycoaster and Sling Shot towers"
+        },
+        {
+          "id": "signage-board",
+          "count": 4,
+          "note": "blank boards"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1982 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Six_Flags_M%C3%A9xico",
+          "what": "themed areas Pueblo Mexicano, Francés, Suizo, Polinesio, Villa Hollywood, Pueblo Vaquero; 60 m X-Flight and Sling Shot towers; Kilahuea tower; Ferris wheel 1982; Medusa and other coasters"
+        }
+      ],
+      "notes": "Colours and entrance design are typed (the article gives none). A roller-coaster feature and ferris-wheel feature are not in the contract FEATURES; they are approximated by mast."
+    },
+    "mexico-city-osm-way-25337335": {
+      "venueId": "mexico-city-osm-way-25337335",
+      "city": "mexico-city",
+      "name": "Estadio Ciudad de los Deportes",
+      "archetype": "stadium",
+      "subject": "Blue-painted 1946 concrete football bowl with three tiers of stands next to the Plaza México bullring",
+      "form": {
+        "footprint": "oval",
+        "width_m": 218,
+        "depth_m": 174,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#4169e1",
+          "#1e90ff",
+          "#d9d9d4"
+        ],
+        "roofColour": "#1e90ff",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "OSM roof colour dodger blue"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1946",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_de_la_Ciudad_de_los_Deportes",
+          "what": "opened 6 Oct 1946, architect-engineer Modesto C. Rolland, 30,247 seats incl. 92 boxes, 23 exterior gates, built in old brick-pit; former names Azulgrana/Azul"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25337335",
+          "what": "OSM tags: building:levels 3, building:colour royalblue, roof:colour dodgerblue"
+        }
+      ],
+      "notes": "Colours and levels come from OSM tags (measured); dimensions 218x174 m from OSM. Whether the roof covers all stands is not stated; kept as partial."
+    },
+    "mexico-city-osm-way-28932424": {
+      "venueId": "mexico-city-osm-way-28932424",
+      "city": "mexico-city",
+      "name": "Museo de Arte Carrillo Gil",
+      "archetype": "museum-theatre",
+      "subject": "Modernist gallery of 1974 whose galleries are linked by ramps; concrete-panel facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a9a69f",
+          "#7b7771",
+          "#cfcbc2"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974 (facade remodelled 1987)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_de_Arte_Carrillo_Gil",
+          "what": "by Augusto H. Álvarez with Enrique Carral Icaza, opened August 1974; interior ramps connecting all galleries; 1987 remodel replaced windows and lattice screens with concrete panels"
+        }
+      ],
+      "notes": "Footprint 32x26 m from OSM. Storey count (3) is typed, not in the article. The facade is mostly blank concrete panels since 1987; originally had windows and screens."
+    },
+    "mexico-city-osm-way-290432518": {
+      "venueId": "mexico-city-osm-way-290432518",
+      "city": "mexico-city",
+      "name": "Tecmilenio",
+      "archetype": "campus-block",
+      "subject": "Private university campus: a wide three-storey teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 188,
+        "depth_m": 166,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e0d6",
+          "#5b86a8",
+          "#b9b9b2"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/TecMilenio_University",
+          "what": "existence of the institution; no architectural description"
+        }
+      ],
+      "notes": "OSM polygon 188x166 m (campus, Mexico City north). Typed. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-osm-way-30291947": {
+      "venueId": "mexico-city-osm-way-30291947",
+      "city": "mexico-city",
+      "name": "Centro Santa Fe",
+      "archetype": "mall",
+      "subject": "Mexico's largest enclosed mall: very wide, a few levels, with multiple department-store boxes and a large car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 696,
+        "depth_m": 318,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1d3b5",
+          "#c76f84",
+          "#9ea2a4"
+        ],
+        "roofColour": "#9ea2a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2,
+          "note": "skylit atria (general knowledge)"
+        },
+        {
+          "id": "car-park",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 4,
+          "note": "blank boards"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1993; expanded 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Centro_Santa_Fe",
+          "what": "opened 1993; 210,400 m2; about 500 stores; Via Santa Fe section on upper floors above the Sears wing; expanded 2012; Santa Fe railway station access"
+        }
+      ],
+      "notes": "Footprint 696x318 m (OSM) and floor area are sourced; 120 m clamp applies, so show a portion with one anchor-store box and the front entrance. Floor count and exterior colours are typed."
+    },
+    "mexico-city-osm-way-526045165": {
+      "venueId": "mexico-city-osm-way-526045165",
+      "city": "mexico-city",
+      "name": "Alameda del Sur",
+      "archetype": "park-landscape",
+      "subject": "Large public park in the Xochimilco area with replica aqueduct arches, lawns and trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 425,
+        "depth_m": 354,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#b5523b",
+          "#c9c1ae",
+          "#a39d8f"
+        ],
+        "roofColour": "#b5523b",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "aqueduct arcade (Wikidata image caption: Acueductos)"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q28502192",
+          "what": "Wikidata: Alameda del sur park; image title mentions aqueducts"
+        }
+      ],
+      "notes": "OSM polygon 425x354 m. Arches are inferred from a Wikidata image title only. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    },
+    "mexico-city-osm-way-970515008": {
+      "venueId": "mexico-city-osm-way-970515008",
+      "city": "mexico-city",
+      "name": "Universidad Autónoma Metropolitana Unidad Iztapalapa",
+      "archetype": "campus-block",
+      "subject": "Large 1970s public university campus of exposed-concrete block buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#aaa69d",
+          "#57a519",
+          "#d3cfc4"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1973-1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Aut%C3%B3noma_Metropolitana_Unidad_Iztapalapa",
+          "what": "campus built from 1973 in stages (classroom, rectory, labs, CSH, CBS, CBI buildings), 177,955 m2 plot, institutional green #57A519; about 100,000 m2 built; CBS building damaged in 2017 earthquake"
+        }
+      ],
+      "notes": "Construction history and institutional green are sourced. Exposed-concrete brutalist look is general knowledge for this era, not in the article. OSM campus polygon 864x405 m; 110x45 m is one block."
+    },
+    "mexico-city-quiet-reflection": {
+      "venueId": "mexico-city-quiet-reflection",
+      "city": "mexico-city",
+      "name": "Capilla de San Juan Bautista",
+      "archetype": "shrine-small",
+      "subject": "18th-century Xochimilco chapel: lime-plastered white and yellow facade with a carved stone doorway flanked by niches and buttress pillars, wavy roofline with merlons, and a lantern dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f0e6c4",
+          "#e0c36a",
+          "#a89f8f"
+        ],
+        "roofColour": "#c9c1ae",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "eight windows with friezes, lantern and cross; Mudejar features"
+        },
+        {
+          "id": "buttresses",
+          "count": 2,
+          "note": "pillar-shaped flanking the front"
+        },
+        {
+          "id": "crenellation",
+          "count": 4,
+          "note": "small merlons at the roofline corners"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched doorway with two carved stone columns"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1730",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Capilla_de_San_Juan_Bautista_(Xochimilco)",
+          "what": "Renaissance/Neoclassical, lime-and-sand plaster in white and yellow tones, arched door with two carved stone columns, niche each side, two pillar buttresses, wave-like roofline with small merlons, dome with eight windows and lantern with cross; stone walls and roof; no bell tower mentioned"
+        }
+      ],
+      "notes": "Footprint 24x15 m from OSM. Colour hexes are reasonable renderings of the stated white and yellow plaster. No bell tower is described, so none is included. Roof material typed (stone/concrete)."
+    },
+    "mexico-city-recreation": {
+      "venueId": "mexico-city-recreation",
+      "city": "mexico-city",
+      "name": "Bosque de San Juan de Aragón",
+      "archetype": "park-landscape",
+      "subject": "Huge forested urban park built around a central lake with a boat dock and a scenic train line",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 1500,
+        "depth_m": 1190,
+        "storeys": 0,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#a8a39a",
+          "#b5523b",
+          "#d9d3c3"
+        ],
+        "roofColour": "#8c8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat dock"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "scenic train circuit"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter wall with nine entrances"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open-air theatre"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Bosque_de_San_Juan_de_Arag%C3%B3n",
+          "what": "created 1964, 162 ha, central lake with scenic train, station and boat dock, eucalyptus and casuarina trees, zoo, ice rink, open-air theatre, perimeter wall, nine entrances, 5 km running track, two artificial wetlands"
+        }
+      ],
+      "notes": "Lake, trees, train and wall are sourced; building styles are typed. Show lake with boat dock, eucalyptus rows and a short scenic train. OSM polygon 2,040x1,190 m (width capped to 1500 for the schema; generator clamps further)."
+    },
+    "mexico-city-transit": {
+      "venueId": "mexico-city-transit",
+      "city": "mexico-city",
+      "name": "General Anaya",
+      "archetype": "transport-station",
+      "subject": "Metro Line 2 station building: a wide low concrete station block with entrance, platform canopy and tracks nearby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 152,
+        "depth_m": 98,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b5aa",
+          "#2f6fb0",
+          "#d8d4c8"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards, no metro logo"
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3356888",
+          "what": "Wikidata: General Anaya, metro station in Mexico City"
+        }
+      ],
+      "notes": "I could not confirm whether the station is surface or underground, nor its look (the fetch for its Wikipedia page failed). OSM building tagged transportation, 152x98 m. Line colour blue is typed from Line 2. No source describes this building; typed from the city style and the OSM footprint (measured)."
+    }
+  }
+}

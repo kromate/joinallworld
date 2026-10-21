@@ -1,0 +1,329 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/abuja.json places.gwarinpa-evening",
+   "used": "three-storey shophouse, lit roof terrace, awnings, string lights, umbrellas, cream render with terracotta accents; one Commons photo near the venue (Landscape_in_Abuja02) was checked and rejected: it shows an unfinished mosque, a different building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shophouse",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#b4654a",
+    "plinth": 0.4,
+    "groundKind": "shopfront",
+    "groundHeight": 3.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "on": "shophouse",
+   "params": {
+    "width": 18,
+    "depth": 12,
+    "tables": 6,
+    "pergola": true,
+    "glass": false,
+    "bar": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3.6,
+    -7.1,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "height": 3.0,
+    "colours": [
+     "#b4654a",
+     "#f1ead8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    3.6,
+    -7.1,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "height": 3.0,
+    "colours": [
+     "#5b6670",
+     "#f1ead8"
+    ]
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    0,
+    -7.15,
+    7.4
+   ],
+   "params": {
+    "length": 17,
+    "height": 0.2,
+    "colour": "#ffd27a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    7.6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 3.2,
+    "colour": "#5b6670"
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    0,
+    -7.15,
+    11.2
+   ],
+   "params": {
+    "length": 17,
+    "height": 0.25,
+    "colour": "#ffb347"
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    -9,
+    0,
+    10.4
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.2,
+    "count": 18,
+    "colour": "#ffe9a8"
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    -9,
+    -5,
+    10.4
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.2,
+    "count": 18,
+    "colour": "#ffe9a8"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.5,
+    "tables": true,
+    "colours": [
+     "#b4654a",
+     "#f1ead8",
+     "#5b6670"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spread": 9,
+    "radius": 1.6,
+    "tables": true,
+    "colours": [
+     "#b4654a",
+     "#f1ead8",
+     "#d9a441"
+    ]
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 3.4,
+    "count": 16,
+    "colour": "#ffe9a8"
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 3.4,
+    "count": 16,
+    "colour": "#ffe9a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   70,
+   46
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Authored venue with no real building or usable photo; verified stays text. Shophouse widened, garden court with umbrellas, trees and string lights added beside it; layout plausible, not observed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "gwarinpa-evening"
+}

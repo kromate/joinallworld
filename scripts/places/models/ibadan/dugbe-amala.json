@@ -1,0 +1,156 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://estateintel.com/insights/office-rents-remain-stable-in-ibadans-oldest-commercial-hub-dugbe",
+   "used": "context only: Dugbe is Ibadan's oldest commercial district; no photo of this buka exists, nearest OSM building (41 m2, 26 m away) is not the venue so only the brief's typical buka size is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 9,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#b8452e",
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "rise": 1.1,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 3.4,
+    "height": 3.0,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8a4b32",
+    "accent": "#b8452e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5.6,
+    3.3
+   ],
+   "params": {}
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "radius": 1.4,
+    "colours": [
+     "#b8452e",
+     "#f2efe6",
+     "#d8a43a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    9.5,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#b8452e"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -7.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this venue exists; typical Yoruba buka from the brief (12x8 m, shed zinc roof, deep front veranda), not site-specific."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "dugbe-amala"
+}

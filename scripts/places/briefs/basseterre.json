@@ -1,0 +1,1728 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "basseterre",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "basseterre",
+    "climate": "tropical-maritime",
+    "vernacular": "Caribbean grid town rebuilt after the great fire of 1867: two- and three-storey Georgian-style masonry-and-timber buildings with stone or stuccoed ground floors, timber upper floors, verandahs and fretwork balconies, hipped roofs of red or grey corrugated metal, pastel and cream paint; low painted-concrete blocks outside the centre; volcanic grey stone for forts; palms and flamboyant trees against steep green hills.",
+    "wallColours": [
+      "#f2e6c9",
+      "#e8b9a4",
+      "#9fc3c9",
+      "#f4d98a",
+      "#ffffff",
+      "#8a6f5a"
+    ],
+    "roofColours": [
+      "#b4472f",
+      "#8b3a2b",
+      "#7a7f83",
+      "#3d6b4a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "stone",
+      "timber",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber fretwork and balcony railings on upper galleries; Georgian sash and louvred shutters; cast-iron Victorian fountain at The Circus (1883) modelled on Piccadilly Circus; stone quoins and arched ground-floor openings; contrast white trim on pastel walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Basseterre",
+        "what": "buildings largely rebuilt after the 1867 fire; The Circus with 1883 fountain; Independence Square with cathedral and courthouse; grid layout"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+        "what": "ring road, steep interior, sugar-era factory and railway, Brimstone Hill and Fort Charles"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Government_House,_Saint_Christopher_and_Nevis",
+        "what": "1833-34 three-storey Georgian-era Government House"
+      }
+    ]
+  },
+  "places": {
+    "basseterre-airport-basseterre-airport": {
+      "venueId": "basseterre-airport-basseterre-airport",
+      "city": "basseterre",
+      "name": "Robert L. Bradshaw International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The renovated terminal at Robert L. Bradshaw airport: a two-storey pale terminal with a low canopy, a small control tower and an apron beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d6",
+          "#3d7fa6",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006 renovation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_L._Bradshaw_International_Airport",
+          "what": "1940s airport, 2004-06 renovation (US$17M)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1933813",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "The aerodrome polygon (2.6 km) is the airfield, not the terminal. Wikipedia: airport built in the 1940s; US$17M renovation 2004-2006 financed by the SKNANB and Taiwan with new apron, taxiway and resurfaced runway. No source describes the terminal's look, so size and colours are typed from a small Caribbean terminal."
+    },
+    "basseterre-clinic": {
+      "venueId": "basseterre-clinic",
+      "city": "basseterre",
+      "name": "The Pogson Medical Centre",
+      "archetype": "hospital",
+      "subject": "Pogson Medical Centre: a low-rise hospital campus with a painted main block, hipped red roof and covered ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 92,
+        "depth_m": 59,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eadb",
+          "#4f8f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398068042",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM amenity=hospital polygon 92 x 59 m on the Cayon side of St Kitts. Name and footprint only; look typed from the city style."
+    },
+    "basseterre-community-notices": {
+      "venueId": "basseterre-community-notices",
+      "city": "basseterre",
+      "name": "Government House",
+      "archetype": "manor",
+      "subject": "Government House (Springfield House), Basseterre: a three-storey 1830s Georgian colonial residence with a hipped roof and verandah, behind lawn and walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 27,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "colonial-residence"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe4c8",
+          "#8a8f80",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandah galleries (assumed from Caribbean Georgian type)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1834",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Government_House,_Saint_Christopher_and_Nevis",
+          "what": "built 1833-34, three floors, Springfield House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398547811",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5588886",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia/Wikidata: Government House, also called Springfield House, built 1833-34, three floors, official residence, restored 1946 (OSM historic=yes, 45 x 27 m). The pale stucco, red roof and verandahs are typical of Basseterre's Georgian houses and are not confirmed by a photo description."
+    },
+    "basseterre-community-voting-game": {
+      "venueId": "basseterre-community-voting-game",
+      "city": "basseterre",
+      "name": "Bakers Corner",
+      "archetype": "shophouse",
+      "subject": "Baker's Corner Building: a narrow two-storey corner shophouse with a ground-floor shop and an upper timber balcony, pastel walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4d98a",
+          "#6aa7a5",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper timber balcony"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th century style",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398424634",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM 'Baker's Corner Building' (2 levels, 9 x 9 m) near the waterfront; only the footprint and levels are known. Georgian-style shophouse typed from Basseterre's post-1867 centre."
+    },
+    "basseterre-community-workshop": {
+      "venueId": "basseterre-community-workshop",
+      "city": "basseterre",
+      "name": "Windsor University School of Medicine",
+      "archetype": "campus-block",
+      "subject": "Windsor University School of Medicine: a single three-level teaching block in pale render with a flat-roof parapet",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead9",
+          "#2f6f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/667605772",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q8024721",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM building 34 x 32 m with Wikidata Q8024721 (private medical school, founded 1998). No building description found; typed."
+    },
+    "basseterre-market-game": {
+      "venueId": "basseterre-market-game",
+      "city": "basseterre",
+      "name": "Grace Green Produce",
+      "archetype": "market-open",
+      "subject": "A small roadside produce stand on Nevis: a timber and sheet-metal shed with crates of fruit and vegetables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b49a6e",
+          "#5a8a4a",
+          "#e9e1c9"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        }
+      ],
+      "notes": "The venue lies near Gingerland on Nevis; the nearest OSM building is Ebenezer United Church (24 x 23 m), which is not the produce business. A small farm-stand is typed from the name."
+    },
+    "basseterre-meal-stop": {
+      "venueId": "basseterre-meal-stop",
+      "city": "basseterre",
+      "name": "Ballahoo Restaurant",
+      "archetype": "restaurant",
+      "subject": "Ballahoo, on The Circus in Basseterre: a first-floor open-air restaurant with a timber balcony over the street, in a Georgian-style corner building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4e4b8",
+          "#4f7f6a",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "first-floor timber gallery"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/556818036",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 26 x 11 m contains the point, next to The Circus (modelled on Piccadilly Circus with an 1883 fountain, per Wikipedia). The upper-floor veranda is typical of the Circus buildings but not verified for this exact building."
+    },
+    "basseterre-osm-node-11112555606": {
+      "venueId": "basseterre-osm-node-11112555606",
+      "city": "basseterre",
+      "name": "Arthur's",
+      "archetype": "restaurant",
+      "subject": "A small beachside bar and grill on St Kitts' north coast with a corrugated roof and open deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c9a5",
+          "#c9533d",
+          "#ffffff"
+        ],
+        "roofColour": "#6f8f7a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/684896903",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 19 x 14 m contains the point; name only."
+    },
+    "basseterre-osm-node-3448719953": {
+      "venueId": "basseterre-osm-node-3448719953",
+      "city": "basseterre",
+      "name": "Black Rocks",
+      "archetype": "park-landscape",
+      "subject": "Black Rocks on the north-east coast of St Kitts: dark volcanic lava headlands against blue surf, with a small viewing shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#3a3a3c",
+          "#5a5a58",
+          "#a9a59c"
+        ],
+        "roofColour": "#3a3a3c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small bandstand-type shelter tagged in OSM"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/856084425",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4921741",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikidata Q4921741 'Black Rocks' (geographical feature); OSM tags a 10 x 8 m shelter. Black volcanic lava on the shore is the defining look; colours are taken from the name (black rocks) rather than a photo description."
+    },
+    "basseterre-osm-node-6288064624": {
+      "venueId": "basseterre-osm-node-6288064624",
+      "city": "basseterre",
+      "name": "Shopping Plaza",
+      "archetype": "mall",
+      "subject": "A small low open shopping plaza with a covered arcade of shops and a car park on the south-east peninsula",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1e3c2",
+          "#d6743b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        }
+      ],
+      "notes": "The OSM point lies inside the Marriott St. Kitts resort polygon (254 x 70 m, 6 levels), which looks like a mismatch for a 'shopping plaza'; a small strip plaza is typed instead, not the hotel."
+    },
+    "basseterre-osm-way-298302151": {
+      "venueId": "basseterre-osm-way-298302151",
+      "city": "basseterre",
+      "name": "Carambola",
+      "archetype": "restaurant",
+      "subject": "Carambola, a long single-storey restaurant with a veranda and a hipped red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2dfa7",
+          "#5f9b8a",
+          "#ffffff"
+        ],
+        "roofColour": "#b4472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/298302151",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM restaurant 33 x 11 m; no description found."
+    },
+    "basseterre-osm-way-397170029": {
+      "venueId": "basseterre-osm-way-397170029",
+      "city": "basseterre",
+      "name": "University of Medicine and Health Sciences",
+      "archetype": "campus-block",
+      "subject": "University of Medicine and Health Sciences (UMHS): a three-storey classroom block with a gabled roof and a tiled forecourt",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3ead6",
+          "#9a3b2e",
+          "#ffffff"
+        ],
+        "roofColour": "#9a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/397170029",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q890460",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM college polygon 317 x 185 m (Wikidata Q890460, founded 2008); only one block is shown. No description found."
+    },
+    "basseterre-osm-way-397170032": {
+      "venueId": "basseterre-osm-way-397170032",
+      "city": "basseterre",
+      "name": "Ross University School of Veterinary Medicine",
+      "archetype": "campus-block",
+      "subject": "The Ross vet school campus on the south-west coast: broad low teaching and clinic buildings around lawns, with an animal hospital block",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#2f7f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1982",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/397170032",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25040058",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM polygon 778 x 297 m, Wikidata Q25040058 (founded 1982) - a large campus; only a portion is shown. Layout typed."
+    },
+    "basseterre-osm-way-397539300": {
+      "venueId": "basseterre-osm-way-397539300",
+      "city": "basseterre",
+      "name": "St. Kitts Eco-Park",
+      "archetype": "park-landscape",
+      "subject": "St. Kitts Eco-Park: a hillside tropical garden-park with an entrance gate, a covered pavilion and winding paths through mature trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#9a7c54",
+          "#6d6f68",
+          "#d8cfb8"
+        ],
+        "roofColour": "#8a7a5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/397539300",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park + theme_park polygon 410 x 249 m on the St Kitts north coast; no description found."
+    },
+    "basseterre-osm-way-398248819": {
+      "venueId": "basseterre-osm-way-398248819",
+      "city": "basseterre",
+      "name": "National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum of St Kitts in the 1894 Treasury Building on the Basseterre waterfront: a long two-storey Victorian-Georgian masonry building with a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc4aa",
+          "#6b6f68",
+          "#f4f0e2"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arches (typical, not verified)"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1894",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Saint_Kitts",
+          "what": "originally Treasury Building 1894, waterfront, museum about 900 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398248819",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q41575364",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: built as the Treasury Building in 1894 on the waterfront facing Basseterre Bay; museum area about 900 m2; OSM footprint 37 x 12.5 m. Wikidata also lists it as a former custom house. Stone ground floor and veranda are inferred from Basseterre's rebuilt-after-1867 style, not from a photo description."
+    },
+    "basseterre-osm-way-398772697": {
+      "venueId": "basseterre-osm-way-398772697",
+      "city": "basseterre",
+      "name": "Medical University of the Americas",
+      "archetype": "campus-block",
+      "subject": "Medical University of the Americas, Nevis (Whitehall): low classroom blocks with a covered walkway and a flagpole on a landscaped lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#3f7f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398772697",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q796632",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM polygon 294 x 215 m, Wikidata Q796632 (founded 1998, Whitehall on Nevis); one block shown. No description found."
+    },
+    "basseterre-osm-way-399489244": {
+      "venueId": "basseterre-osm-way-399489244",
+      "city": "basseterre",
+      "name": "Gingerland Methodist Church",
+      "archetype": "church-classical",
+      "subject": "Gingerland Methodist Church on Nevis: a near-square stone-walled chapel with a gabled roof, arched windows and a small porch tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9bfa5",
+          "#f4f0e2",
+          "#6b6f68"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small entrance tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/399489244",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q65144276",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM church 29 x 24 m with Wikidata Q65144276; nothing found on its appearance. A stone-and-whitewash gabled Nevis chapel is typed from the island style; contrast with the narrow St Theresa church."
+    },
+    "basseterre-osm-way-545067913": {
+      "venueId": "basseterre-osm-way-545067913",
+      "city": "basseterre",
+      "name": "National Heroes Park",
+      "archetype": "park-landscape",
+      "subject": "National Heroes Park: a rectangular green with paved walks, memorial statues on plinths and low trees, edged by a wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9bfa5",
+          "#6b6f68",
+          "#e9e3d2"
+        ],
+        "roofColour": "#8a7a5a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "memorial figures on plinths (count assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/545067913",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 158 x 156 m, named National Heroes Park; no description found."
+    },
+    "basseterre-osm-way-576357921": {
+      "venueId": "basseterre-osm-way-576357921",
+      "city": "basseterre",
+      "name": "Warner Park Cricket Stadium",
+      "archetype": "stadium",
+      "subject": "Warner Park Sporting Complex, the Taiwan-funded 2006 cricket ground: an oval with a covered pavilion and stands on the east side, floodlight towers and a grass bank",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d2c3",
+          "#c5352b",
+          "#ffffff"
+        ],
+        "roofColour": "#c5352b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered pavilion and stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Warner_Park_Sporting_Complex",
+          "what": "opened 2006, capacity about 8,000, pavilion and east stands"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/576357921",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1640640",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: Warner Park Sporting Complex, 2006, capacity listed 8,000 (east segment seats about 4,000, extendable to 10,000 with temporary stands), pavilion, media centre, financed largely by Taiwan (US$12M). OSM 168.5 x 159.5 m. Floodlights and roof colours are assumed."
+    },
+    "basseterre-osm-way-60260592": {
+      "venueId": "basseterre-osm-way-60260592",
+      "city": "basseterre",
+      "name": "Fort Charles",
+      "archetype": "heritage-fort",
+      "subject": "Fort Charles on Nevis: low grey masonry ruins of a 1630s fort on a shore headland, with a broken wall, powder magazine, cistern and cannon among grass and trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#8a8578",
+          "#a49d8c",
+          "#5f6a52"
+        ],
+        "roofColour": "#8a8578",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low broken walls"
+        },
+        {
+          "id": "cannon",
+          "count": 12,
+          "note": "at least 12 cannon remain"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "partial"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1630s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Charles_(Nevis)",
+          "what": "1630s fort, mostly ruins, wall/cistern/magazine/cannon"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/60260592",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5470906",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: abandoned British fort on Nevis, begun in the 1630s to defend Charlestown, mostly in ruins and overgrown, with an old wall, cistern, powder magazine and cannon (26 guns originally). Materials and colours are inferred (local stone and mortar); OSM polygon 200 x 182 m clipped to the ruins."
+    },
+    "basseterre-osm-way-60261200": {
+      "venueId": "basseterre-osm-way-60261200",
+      "city": "basseterre",
+      "name": "Brimstone Hill Fortress National Park",
+      "archetype": "heritage-fort",
+      "subject": "Brimstone Hill Fortress on its steep hill above the Caribbean coast: massive grey volcanic-stone ramparts and bastions stepping up the slope with the Fort George Citadel at the summit",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "hillside-citadel"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#5e5c58",
+          "#7a7770",
+          "#b8b2a2"
+        ],
+        "roofColour": "#5e5c58",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "stepped bastion walls"
+        },
+        {
+          "id": "cannon",
+          "count": 24,
+          "note": "24-pounders; 49 guns by 1736"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "steep ramps and stairs up the hill"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1690-1790s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brimstone_Hill_Fortress_National_Park",
+          "what": "layout, bastions, citadel, gun count, hill height, history"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "largest fortress in Eastern Caribbean"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/60261200",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q200521",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: about 972 ft (296 m) hill on the west coast; Fort George Citadel (museum), Magazine, Orillon and Prince of Wales bastions, Royal Engineers/officers' quarters ruins; built by British engineers by enslaved Africans; 49 guns by 1736; abandoned 1853; restoration early 1900s; protected area 15.4 ha; described as the largest fortress in the Eastern Caribbean. Grey volcanic stone colours are inferred. Generator shows the Citadel and bastions only, within the 120 m clamp."
+    },
+    "basseterre-osm-way-682274447": {
+      "venueId": "basseterre-osm-way-682274447",
+      "city": "basseterre",
+      "name": "St. James Drag Raceway",
+      "archetype": "stadium",
+      "subject": "St. James Drag Raceway: a long asphalt strip with a low spectator grandstand and a timing tower on one side, flat open ground and palms beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b3",
+          "#d9a23a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "single covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/682274447",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=stadium polygon 834 x 426 m on the south-east peninsula (the strip itself); the spectator structures are typed."
+    },
+    "basseterre-quiet-reflection": {
+      "venueId": "basseterre-quiet-reflection",
+      "city": "basseterre",
+      "name": "St. Theresa Roman Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St Theresa Catholic Church, Charlestown, Nevis: a narrow whitewashed hall church with a simple gabled roof and a small cross over the porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e6",
+          "#7aa7c7",
+          "#c9bfa5"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small porch belfry/cross"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/400006986",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q24039674",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM church 27 x 11 m (Wikidata Q24039674, church in Charlestown). No description found; kept narrow and plain to contrast with the stone Gingerland chapel."
+    },
+    "basseterre-recreation": {
+      "venueId": "basseterre-recreation",
+      "city": "basseterre",
+      "name": "Independence Square",
+      "archetype": "park-landscape",
+      "subject": "Independence Square, Basseterre: a rectangular Georgian square of paved paths and mature trees around a central fountain, ringed by cathedral, courthouse and pastel colonial buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 108,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "stucco",
+        "colours": [
+          "#e8d9b5",
+          "#8a8f80",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "central fountain"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low iron-railed borders"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "georgian",
+      "era": "18th century layout",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basseterre",
+          "what": "Basseterre: rebuilt after 1867 fire, Circus modelled on Piccadilly Circus with 1883 fountain, Independence Square with cathedral and courthouse, grid layout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24800627",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6016183",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: square holds the cathedral, courthouse and most of the older buildings; city rebuilt after the 1867 fire; OSM leisure=park 120 x 108 m (Wikidata Q6016183). Paving, trees and central fountain follow the typical layout, not a verified photo description."
+    },
+    "basseterre-transit": {
+      "venueId": "basseterre-transit",
+      "city": "basseterre",
+      "name": "Seabridge",
+      "archetype": "transport-station",
+      "subject": "Seabridge ferry landing on the south-east peninsula: a small low terminal shed, a concrete jetty and a car-marshalling area by the Narrows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e2cf",
+          "#2f6f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Kitts",
+          "what": "St Kitts: ring road, steep interior, sugar-era railway, Brimstone Hill, Fort Charles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/656437846",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 26 x 9 m with no tags near Major's Bay; Seabridge is the vehicle ferry across the Narrows to Nevis. No description found."
+    }
+  }
+}

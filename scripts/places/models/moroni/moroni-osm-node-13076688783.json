@@ -1,0 +1,100 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-node-13076688783",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1422923226",
+   "used": "named outline 50x30 m, height tag 15, levels 0: modelled as a covered sports hall / stand block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "bands": "#3f6f8a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -45,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "width": 20,
+    "stripes": 2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 14
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    8,
+    0
+   ],
+   "params": {
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM outline treated as covered hall, may be a court; pitch and masts guessed"
+ }
+}

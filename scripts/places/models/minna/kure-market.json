@@ -1,0 +1,518 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "kure-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kure_Market_Minna_DJI_0984.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aliyu Goro",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/minna/Kure_Market_Minna_DJI_0984.jpg",
+   "used": "endless low rows of lock-up shops under rust-red corrugated gable roofs, yellow-green sheet-roofed halls on the left, yellow lattice gate pillars, low red-brick perimeter wall, tuk-tuks on the road"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/minna.json",
+   "used": "market-hall brief; OSM match is only nearest (31 m, 25 m building) so the outline is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "id": "shed-yellow",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "depth": 20,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_rise": 3.2,
+    "roof_colour": "#c9b84a",
+    "wall_colour": "#7a4a36",
+    "wall_material": "brick",
+    "cladding": "#7a4a36"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-green",
+   "at": [
+    -34,
+    34,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "depth": 18,
+    "height": 4.0,
+    "roof": "gable",
+    "roof_rise": 3.0,
+    "roof_colour": "#a9b24f",
+    "wall_colour": "#7a4a36",
+    "wall_material": "brick",
+    "cladding": "#7a4a36"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row0",
+   "at": [
+    30,
+    4,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#8a4a38",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row1",
+   "at": [
+    30,
+    13,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#7d4a3a",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row2",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#94503d",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row3",
+   "at": [
+    30,
+    31,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#6f4636",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row4",
+   "at": [
+    30,
+    40,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#a05a3e",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row5",
+   "at": [
+    30,
+    49,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#5e3d30",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row6",
+   "at": [
+    30,
+    58,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#a9b24f",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "row7",
+   "at": [
+    30,
+    67,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "unit_width": 3.0,
+    "veranda": 1.4,
+    "roof_colour": "#8a4a38",
+    "wall_colour": "#b98a6a",
+    "shutter_colours": [
+     "#8a3b2e",
+     "#6e4a3a",
+     "#4a5a6a"
+    ],
+    "awning_colours": [
+     "#2f6b4f",
+     "#a64a35"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 130,
+    "height": 1.1,
+    "thickness": 0.4,
+    "colour": "#a9503f",
+    "kind": "wall",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -3.5,
+    -6
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5c63a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e5c63a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    3.5,
+    -6
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5c63a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e5c63a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavement",
+   "footprint": {
+    "rect": [
+     120,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -9.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b6ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -55,
+    -10.5,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 7,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -16.5
+    ],
+    "end": [
+     58,
+     -17.5
+    ],
+    "count": 18,
+    "vary": {},
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       2.6,
+       1.4
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 1.7,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e8b82a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#2a2a2a"
+     }
+    }
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#a64a35",
+     "#d94f9a",
+     "#2f6b4f",
+     "#e5c63a"
+    ]
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 8,
+    "thickness": 0.9,
+    "opening": 7,
+    "shape": "arch",
+    "colour": "#f0e2a0",
+    "finials": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Dense mixed-roof rows, road, pavement, lamps, tuk-tuk boxes and pale gate arch done; shed walls still render blue, tuk-tuks are plain boxes, no cars/crowd, gate is a solid arch not lattice pillars"
+ }
+}

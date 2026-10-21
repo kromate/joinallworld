@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "apumiri-council-headquarters",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json#apumiri-council-headquarters",
+   "used": "single-storey cream secretariat, hipped red-brown metal roof, central porch, flagpoles, gate; OSM match was 37 m away (nearest) so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#9aa89a",
+    "plinth": 0.4,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    14,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#2f6b4a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     27,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; typical council secretariat from brief."
+ }
+}

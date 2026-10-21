@@ -1,0 +1,1674 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "brussels",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "brussels",
+    "climate": "temperate",
+    "vernacular": "Brick city with a stone plinth: narrow three-to-four-storey townhouses (maisons de maitre) in red-brown or yellow-grey brick or cream-painted stucco, with bluestone plinths and window sills, tall sash-like windows, bay windows and steep slate or tile roofs with dormers; Art Nouveau and Art Deco facades with ironwork and sgraffito; 19th-century Haussmann-style boulevards; post-war 'Brusselisation' office slabs in glass and concrete; and Flemish brick villages around the city with small neo-Gothic churches and moated castles. Flat dull skies, plane and beech trees, cobbles and paving setts.",
+    "wallColours": [
+      "#9a5440",
+      "#b87a55",
+      "#d9c9a8",
+      "#e6e1d3",
+      "#8a8d90",
+      "#c4b497"
+    ],
+    "roofColours": [
+      "#4a4f57",
+      "#a2573f",
+      "#6b6460",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "stucco",
+      "stone",
+      "render",
+      "limestone",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "membrane",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Art Nouveau whiplash ironwork and sgraffito (Horta, Hankar, van de Velde), Baroque guild-house gables on the Grand-Place, Flemish stepped and clock gables, bluestone string courses and sills, bay windows, neo-Gothic and neo-Tudor castle styles in the Brabant countryside.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Brussels",
+        "what": "Art Nouveau (Horta, Hankar, van de Velde), Haussmann-style boulevards, 19th-century landmarks, post-war Brusselisation, Baroque Grand-Place rebuilt after 1695"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Belgium",
+        "what": "Gothic, Baroque Grand-Place, Mosan style, Art Nouveau"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Wavre",
+        "what": "red brick with ferruginous sandstone bands as a local Brabant building pairing"
+      }
+    ]
+  },
+  "places": {
+    "brussels-airport-brussels-airport": {
+      "venueId": "brussels-airport-brussels-airport",
+      "city": "brussels",
+      "name": "Brussels Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Zaventem terminal seen from the forecourt: a wide multi-level glass-and-steel building with a canopy over the departures kerb, piers behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9cbd6",
+          "#8d99a3",
+          "#eef0f0"
+        ],
+        "roofColour": "#a9b0b5",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures kerb canopy"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glass hall of the Connector"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "railway station at level -1"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1958 original, 1994 terminal, 2002 Pier A, 2012-15 Connector",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brussels_Airport",
+          "what": "one-terminal concept; station at level -1, buses/taxis level 0, arrivals level 2, departures level 3; Pier A opened 2002; Connector links Piers A and B above ground; new terminal built beside the 1958 building in 1994"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/234282757",
+          "what": "terminal polygon 355.7 x 157.8 m, 37,814 m2"
+        }
+      ],
+      "notes": "Measured footprint is larger than the modelled forecourt portion. Facade colours are estimates of the glass-and-steel hall. Larger and glassier than Bucharest and Bratislava."
+    },
+    "brussels-clinic": {
+      "venueId": "brussels-clinic",
+      "city": "brussels",
+      "name": "Nationaal MS Centrum",
+      "archetype": "hospital",
+      "subject": "The National MS Centre at Melsbroek: a compact brick rehabilitation hospital building around a central block",
+      "form": {
+        "footprint": "H",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9a5440",
+          "#8a8d90",
+          "#e6e1d3"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/558562753",
+          "what": "containing building 61.4 x 61 m, 2,891 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28934",
+          "what": "nearby airport context only"
+        }
+      ],
+      "notes": "Name only; no description of the building found. Typed as a brick-clad Flemish care building with ribbon windows."
+    },
+    "brussels-community-notices": {
+      "venueId": "brussels-community-notices",
+      "city": "brussels",
+      "name": "Kasteel de Viron",
+      "archetype": "manor",
+      "subject": "The neo-Tudor Château de Viron in Dilbeek, now the town hall: a brick-and-stone castle with a dozen turrets and towers in a park",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9c4a3a",
+          "#d8d0bd",
+          "#efe8d6"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "battlemented parapets"
+        },
+        {
+          "id": "pinnacles",
+          "count": 12,
+          "note": "the 12 towers and turrets (12 months)"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "pointed-arch openings"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "tudor",
+      "era": "1862",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Kasteel_de_Viron",
+          "what": "neo-Tudor castle designed 1862 by Jean-Pierre Cluysenaar for the de Viron family; 12 towers, 52 rooms, 365 windows, 7 staircases; town hall since 1923; protected 1990; Sint-Alena towers remains behind"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41223235",
+          "what": "building: civic, height 17, architecture tudor_revival, architect Cluysenaar, 1862, polygon 40.1 x 20.4 m, 560 m2"
+        }
+      ],
+      "notes": "Style, year, architect, tower count and 17 m height are sourced. Brick/stone colours and slate roof are estimates of a neo-Tudor castle. Distinct from Moorsel (Renaissance moated) by multiple turrets and a gabled picturesque skyline."
+    },
+    "brussels-community-voting-game": {
+      "venueId": "brussels-community-voting-game",
+      "city": "brussels",
+      "name": "Hôtel de Ville de Wavre",
+      "archetype": "civic-small",
+      "subject": "Wavre town hall, a former Baroque Carmelite church: a tall red-brick and ferruginous sandstone facade with a two-tier curved gable and a clock",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 41,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "sandstone",
+        "colours": [
+          "#9a4b38",
+          "#b98a5a",
+          "#d8cdb4"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "two-tier curved Baroque gable with clock"
+        },
+        {
+          "id": "buttresses",
+          "count": 7,
+          "note": "along the side"
+        },
+        {
+          "id": "arches",
+          "count": 6,
+          "note": "tall arched side windows"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "17th-century brick cloister beside"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "built 1662, burned 1695, rebuilt c.1720, town hall since 1809",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Wavre",
+          "what": "former Carmelite church, now town hall since 1809; red brick and ferruginous sandstone; sandstone bands dividing facade into five levels; rusticated sandstone portal with niche and volutes under a large arched window; two-tier curved gable with clock and small pediment; seven buttresses and six large arched windows on the side; cloister with brick groin vaults"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/365267814",
+          "what": "polygon 45.1 x 41.6 m, 814 m2, historic church, townhall"
+        }
+      ],
+      "notes": "Recognisable as a church-shaped town hall: tall narrow Baroque brick facade with sandstone bands and a clock in the gable. Roof colour is assumed slate."
+    },
+    "brussels-community-workshop": {
+      "venueId": "brussels-community-workshop",
+      "city": "brussels",
+      "name": "G.C. De Oude Pastorie",
+      "archetype": "civic-small",
+      "subject": "The Old Rectory, now a community centre and small museum: a long two-storey Flemish brick house",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": null,
+        "colours": [
+          "#a85f45",
+          "#d8d0bd",
+          "#efe8d6"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown (a historic rectory)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/302927116",
+          "what": "rectory polygon 45.4 x 10.2 m, 321 m2; community centre and museum"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2372469",
+          "what": "identity: Oude Pastorie, clergy house"
+        }
+      ],
+      "notes": "Flemish rectory typed from the region; the building itself was not described in anything found. Long, narrow plan from OSM."
+    },
+    "brussels-market-game": {
+      "venueId": "brussels-market-game",
+      "city": "brussels",
+      "name": "Woluwe Shopping Center",
+      "archetype": "mall",
+      "subject": "Woluwe Shopping Center: a long two-level 1968 mall block with big glazed entrances and a rooftop/surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 295,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d4c6",
+          "#6f7a85",
+          "#f1eee6"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "opened 1968, extended 1975 and 1989, renovated 2003 and 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Woluwe_Shopping_Center",
+          "what": "opened 4 Sept 1968; among the first Belgian shopping centres in the US format; extended 1975, 1989; renovations 2003, 2019; site 97,333 m2; 130+ shops"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/226906690",
+          "what": "containing building 295.3 x 120.8 m, 26,506 m2"
+        }
+      ],
+      "notes": "Dates, size and function sourced; facade and storeys are assumed from a 1960s-80s mall. Larger and older than Bratislava malls."
+    },
+    "brussels-meal-stop": {
+      "venueId": "brussels-meal-stop",
+      "city": "brussels",
+      "name": "Chalet de la Forêt",
+      "archetype": "restaurant",
+      "subject": "A chalet-style restaurant at the edge of the Sonian Forest: a timber-clad two-storey house with a deep gabled roof and terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "render",
+        "colours": [
+          "#7a5a3f",
+          "#e6e1d3",
+          "#4a3a2c"
+        ],
+        "roofColour": "#6b3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/225203726",
+          "what": "containing building 35.1 x 22.1 m, 648 m2"
+        }
+      ],
+      "notes": "Name suggests an Alpine chalet-style restaurant in a forest setting; nothing describing the building was found. Typed guess."
+    },
+    "brussels-osm-node-1757391933": {
+      "venueId": "brussels-osm-node-1757391933",
+      "city": "brussels",
+      "name": "Grote Paal",
+      "archetype": "park-landscape",
+      "subject": "A rural landmark known as the Grote Paal: a tall timber post or marker standing on a green verge",
+      "form": {
+        "footprint": "round",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a5a3f",
+          "#6f9a4b",
+          "#a39d90"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "a tall wooden post (assumed from the name)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1757391933",
+          "what": "OSM point named Grote Paal; nearest building 26 x 15.9 m is not the marker"
+        }
+      ],
+      "notes": "Grote Paal means big post/pole; nothing describing it was found. Shown as a low, simple marker on a verge in Flemish farmland. Very low information."
+    },
+    "brussels-osm-node-267878387": {
+      "venueId": "brussels-osm-node-267878387",
+      "city": "brussels",
+      "name": "Lion's Mound (Butte du Lion)",
+      "archetype": "monument",
+      "subject": "The Waterloo Lion's Mound: a huge grassed conical hill with a stair of 226 steps up to a cast-iron lion on a stone pedestal",
+      "form": {
+        "footprint": "round",
+        "width_m": 169,
+        "depth_m": 169,
+        "storeys": 0,
+        "height_m": 43,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f9a4b",
+          "#9a9a94",
+          "#3b3b3b"
+        ],
+        "roofColour": "#6f9a4b",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "cast-iron lion 4.45 m high on stone-block pedestal, 28 tonnes"
+        },
+        {
+          "id": "steps",
+          "count": 226,
+          "note": "straight stair up the mound"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1823-1826",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lion%27s_Mound",
+          "what": "43 m high, 169 m base diameter, circumference 520 m, 226 steps, cast-iron lion 4.45 m high 4.5 m long 28 t on stone-block pedestal, 300,000 m3 earth, built 1823-26, lion placed 28 Oct 1826"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q31985",
+          "what": "war memorial to the Battle of Waterloo, artificial hill"
+        }
+      ],
+      "notes": "Only the mound, lion and stair matter. 43 m tall earth cone with grass slopes; the lion stands at the top facing France. Base is wider than the 120 m clamp, so show the upper portion."
+    },
+    "brussels-osm-node-4388790239": {
+      "venueId": "brussels-osm-node-4388790239",
+      "city": "brussels",
+      "name": "Le Pigeon Noir",
+      "archetype": "restaurant",
+      "subject": "A small bistro in a narrow three-storey brick house, with a shopfront and awning at street level",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#9a5440",
+          "#3a3a3a",
+          "#e6e1d3"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/244023728",
+          "what": "containing building 8.3 x 8 m, 64 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q66382938",
+          "what": "identity: restaurant in Belgium"
+        }
+      ],
+      "notes": "Tiny footprint (64 m2) so a narrow Brussels townhouse bistro; nothing found on the building itself. Typed guess."
+    },
+    "brussels-osm-relation-13298038": {
+      "venueId": "brussels-osm-relation-13298038",
+      "city": "brussels",
+      "name": "CERIA",
+      "archetype": "campus-block",
+      "subject": "CERIA, the food and chemical industries education and research campus in Anderlecht: several brick-and-concrete school blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#9a5440",
+          "#8a8d90",
+          "#e6e1d3"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13298038",
+          "what": "college campus polygon 362.9 x 338.8 m, 96,167 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2945074",
+          "what": "Food and Chemical Industries Education and Research Center, campus in Anderlecht"
+        }
+      ],
+      "notes": "No building description found. Typed brick technical-school blocks."
+    },
+    "brussels-osm-relation-13366042": {
+      "venueId": "brussels-osm-relation-13366042",
+      "city": "brussels",
+      "name": "Vrije Universiteit Brussel - Campus Etterbeek",
+      "archetype": "campus-block",
+      "subject": "The VUB Etterbeek campus: raw concrete modular blocks of the 1970s, with the heritage Braem rector building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a8a69c",
+          "#6f747a",
+          "#cfcdc2"
+        ],
+        "roofColour": "#6b7077",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vrije_Universiteit_Brussel",
+          "what": "Etterbeek campus mostly 1970s, almost entirely concrete; heritage-listed Rectoraat (Braem Building) by Renaat Braem"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13366042",
+          "what": "campus polygon 531 x 420 m, 208,506 m2"
+        }
+      ],
+      "notes": "Concrete, 1970s sourced; storeys, colours and shape are generalised. Similar to FMFI Bratislava but with weathered grey concrete and no towers."
+    },
+    "brussels-osm-relation-16610859": {
+      "venueId": "brussels-osm-relation-16610859",
+      "city": "brussels",
+      "name": "Domein Drie Fonteinen (Parc Trois Fontaines)",
+      "archetype": "park-landscape",
+      "subject": "Drie Fonteinen park in Vilvoorde: a hilly landscape park with an elongated pond, a rough sandstone two-deck gallery bridge (Bloedgrotten), a baroque chapel and an orangery",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "brick",
+        "colours": [
+          "#a9855a",
+          "#6f9a4b",
+          "#d8d0bd"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2,
+          "note": "Bloedgrotten two-deck sandstone gallery bridge over the pond"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "orangery/restaurant (Paola Pavilion)"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "former entrance pavilion"
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "water tower beyond the coach house"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "baroque",
+      "era": "18th-century park, French garden renovated 2007, chapel moved 1930",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Domein_Drie_Fonteinen",
+          "what": "50 ha park; English landscape and French garden (renovated 2007); pond crossed by the Bloedgrotten bridge, two-deck rough sandstone gallery bridge 1700s; Lendrikkapel baroque chapel moved 1930; coach house, orangery with restaurant, neerhof with hunting pavilion, gatehouses, water tower, Japanese garden, ice cellars; viaduct"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/16610859",
+          "what": "park polygon 2.09 km x 0.91 km, 754,706 m2"
+        }
+      ],
+      "notes": "Show the pond with the sandstone gallery bridge as signature; orangery and baroque chapel as accents. The original castle is gone."
+    },
+    "brussels-osm-relation-1990637": {
+      "venueId": "brussels-osm-relation-1990637",
+      "city": "brussels",
+      "name": "Waterkasteel van Moorsel",
+      "archetype": "heritage-fort",
+      "subject": "The moated Renaissance castle of Moorsel: a heavy square block with sturdy corner towers (one lost) rising straight from the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 37,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "sandstone",
+        "colours": [
+          "#8c4a38",
+          "#cfc3a8",
+          "#e6e1d3"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "quadrangle around a central court"
+        },
+        {
+          "id": "ramparts",
+          "count": 3,
+          "note": "three surviving corner towers (a fourth was demolished in the 18th century)"
+        },
+        {
+          "id": "pinnacles",
+          "count": 3,
+          "note": "pointed slate tower caps"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "bridge over the moat"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "tudor",
+      "era": "built 1520/1521-1526 for Cardinal Karel van Croy",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Waterkasteel_van_Moorsel",
+          "what": "built 1520 for Cardinal-abbot Karel van Croy of Affligem; heavy quadrangle with four sturdy corner towers, one demolished in the 18th century; surrounded by water"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1990637",
+          "what": "castle, architecture renaissance, 1521-1526, polygon 44.5 x 37.3 m, 935 m2"
+        }
+      ],
+      "notes": "Footprint, tower layout and date sourced; brick/sandstone and slate caps assumed (typical Flemish Renaissance). Style key tudor is closest available for Renaissance brick castle."
+    },
+    "brussels-osm-way-1080889997": {
+      "venueId": "brussels-osm-way-1080889997",
+      "city": "brussels",
+      "name": "Park van het Kasteel Groenenberg",
+      "archetype": "park-landscape",
+      "subject": "The park of Groenenberg castle in Vlezenbeek: broad English-style lawns and trees with the c.1890 eclectic brick castle at the edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9a5440",
+          "#d8d0bd",
+          "#6f9a4b"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "the c.1890 eclectic brick castle at the park edge"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "castle c.1890, park by Edmond Galoppin",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Kasteel_Groenenberg",
+          "what": "eclectic brick castle c.1890 built for notary Charles Claes; damaged in WWII; Flemish Community bought 1981, restored 1992; about 45 ha English landscape park by Edmond Galoppin with winding paths, curved woodland edges, broad lawns, low flower beds and solitary trees; adjoins Gaasbeek castle grounds"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1080889997",
+          "what": "park polygon 1.05 km x 0.92 km, 447,846 m2"
+        }
+      ],
+      "notes": "Park layout sourced; the castle is only mentioned as brick eclectic so its towers and roof are assumed."
+    },
+    "brussels-osm-way-109862564": {
+      "venueId": "brussels-osm-way-109862564",
+      "city": "brussels",
+      "name": "Sint-Gaugericuskerk (Pamel)",
+      "archetype": "church-gothic",
+      "subject": "The neo-Gothic parish church of St Gaugericus in Pamel, with a western tower and tall pointed windows",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#8c4a38",
+          "#d8d0bd",
+          "#efe8d6"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "assumed tower spire"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1903 (consecrated 1921)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Sint-Gaugericuskerk_(Pamel)",
+          "what": "neo-Gothic, built 1903 to a design by Jules Goethals, consecrated 8 Sept 1921 by Cardinal Mercier; replaced a church that stood further west whose tower collapsed in 1879"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/109862564",
+          "what": "church polygon 55 x 30.2 m, 1,144 m2, historic"
+        }
+      ],
+      "notes": "Style, date and footprint sourced; materials (brick with stone dressings) and tower spire are typical for the region and assumed."
+    },
+    "brussels-osm-way-1360711774": {
+      "venueId": "brussels-osm-way-1360711774",
+      "city": "brussels",
+      "name": "AP Hogeschool - campus Dodoens",
+      "archetype": "campus-block",
+      "subject": "A university-college campus building of about 55 x 40 m near Mechelen: a three-storey brick and glass block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9a5440",
+          "#6f7a85",
+          "#e6e1d3"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1360711774",
+          "what": "university building polygon 55.3 x 40.3 m, 2,181 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q13430595",
+          "what": "AP University of Applied Sciences and Arts"
+        }
+      ],
+      "notes": "Nothing about this campus found; typed Flemish brick-and-glass school block."
+    },
+    "brussels-osm-way-23872736": {
+      "venueId": "brussels-osm-way-23872736",
+      "city": "brussels",
+      "name": "Edmond Machtens Stadium",
+      "archetype": "stadium",
+      "subject": "The Edmond Machtens stadium in Molenbeek: a compact old-fashioned football ground with three stands (two seated sides, a standing end) and trees behind the fourth side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 141,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b5ac",
+          "#8c2b2b",
+          "#e8e6de"
+        ],
+        "roofColour": "#5b636b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covers over the two long stands (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "opened 1920, renovated 1973 and 1993",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Edmond_Machtens_Stadium",
+          "what": "opened 12 Sept 1920; capacity 12,266; three stands (one standing behind a goal, two seated along the pitch); a row of trees behind the second goal; 622 business seats; renovated 1973 and 1993"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/23872736",
+          "what": "stadium polygon 141.2 x 120.1 m, 15,108 m2"
+        }
+      ],
+      "notes": "Layout sourced; roof and colours are not. The trees behind one goal are the recognisable detail; much smaller than the Heysel stadium."
+    },
+    "brussels-osm-way-253875451": {
+      "venueId": "brussels-osm-way-253875451",
+      "city": "brussels",
+      "name": "King Baudouin Stadium",
+      "archetype": "stadium",
+      "subject": "The Heysel national stadium (King Baudouin): an oval double-tier bowl with a roof over the stands and a pitch with an athletics track, entered through a preserved 1930 gateway",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 32,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b8b2",
+          "#6b747c",
+          "#e8e8e4"
+        ],
+        "roofColour": "#9aa2a7",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof ring over the stands"
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "lighting system from 1974 (since renewed)"
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "preserved 1930 classical-modernist gateway at the main entrance"
+        },
+        {
+          "id": "flags",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1930 stadium; rebuilt 1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Baudouin_Stadium",
+          "what": "50,093 seats, largest in Belgium; pitch 106 x 66 m; 1995 rebuild (EUR 37M) with running track and field-event facilities; 1930 classical modernist original, only a renovated gateway near the main entrance survives; tartan track 1971; lighting 1974"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/253875451",
+          "what": "stadium polygon 287.9 x 202.8 m, 47,371 m2"
+        }
+      ],
+      "notes": "Capacity, pitch and the surviving gateway are sourced; bowl height and roof are generalised. Largest stadium of this city; Machtens is the small one."
+    },
+    "brussels-osm-way-33149531": {
+      "venueId": "brussels-osm-way-33149531",
+      "city": "brussels",
+      "name": "Centre hospitalier Paul Brien",
+      "archetype": "hospital",
+      "subject": "The Paul Brien hospital centre: a multi-wing hospital in brick and render",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#a85f45",
+          "#e0dccf",
+          "#8a8d90"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/33149531",
+          "what": "hospital polygon 219 x 166.4 m, 20,986 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20669939",
+          "what": "identity: hospital in Belgium"
+        }
+      ],
+      "notes": "No description found. Typed from the type and a mid-century Brussels hospital style."
+    },
+    "brussels-osm-way-346514126": {
+      "venueId": "brussels-osm-way-346514126",
+      "city": "brussels",
+      "name": "Boskapel (Buggenhout-Bos)",
+      "archetype": "shrine-small",
+      "subject": "The small 1664 Boskapel (forest chapel) in Buggenhout-Bos: a brick chapel with a steep gable roof among trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#9a5440",
+          "#d8d0bd",
+          "#efe8d6"
+        ],
+        "roofColour": "#6b3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small roof turret (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "1664",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/346514126",
+          "what": "chapel, start 1664, polygon 18.4 x 11 m, 154 m2, Roman Catholic"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3301616",
+          "what": "identity: chapel in Buggenhout-Bos"
+        }
+      ],
+      "notes": "Date, size and function sourced; brick and tile are typical for a Flemish wayside chapel and assumed."
+    },
+    "brussels-osm-way-810195284": {
+      "venueId": "brussels-osm-way-810195284",
+      "city": "brussels",
+      "name": "Institut Jules Bordet",
+      "archetype": "hospital",
+      "subject": "The new Jules Bordet cancer hospital on the Erasmus campus in Anderlecht (opened 2021): a large contemporary glazed and metal-clad hospital block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c7d3da",
+          "#6b7b88",
+          "#eef1f2"
+        ],
+        "roofColour": "#9aa2a7",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "new site opened Nov 2021 (institute founded 1939)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_Jules_Bordet",
+          "what": "institute inaugurated 1939 by Leopold III; moved to a new campus in Anderlecht beside the Erasme hospital, opened Nov 2021; extension from about 30,000 to 80,000 m2, 250 beds"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13503761",
+          "what": "hospital building polygon 135.6 x 78.7 m, 9,357 m2"
+        }
+      ],
+      "notes": "Coordinates fall at the new Anderlecht site; size and the 2021 date are sourced; facade is a generic contemporary hospital guess. Storeys estimated."
+    },
+    "brussels-quiet-reflection": {
+      "venueId": "brussels-quiet-reflection",
+      "city": "brussels",
+      "name": "Sint-Katharinakerk (Duisburg)",
+      "archetype": "church-classical",
+      "subject": "The Church of St Catherine in Duisburg (Tervuren): a brick parish church with a short tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 46,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#a85f45",
+          "#d8d0bd",
+          "#efe8d6"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/35314454",
+          "what": "church polygon 46.5 x 27 m, 804 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28040103",
+          "what": "identity: Sainte-Catherine de Duisburg"
+        }
+      ],
+      "notes": "Only footprint known; typed Brabant brick parish church."
+    },
+    "brussels-recreation": {
+      "venueId": "brussels-recreation",
+      "city": "brussels",
+      "name": "Provinciaal Domein Huizingen",
+      "archetype": "park-landscape",
+      "subject": "The Huizingen provincial recreation domain: wide lawns around a lake, tree-lined paths and a few pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": null,
+        "colours": [
+          "#a85f45",
+          "#6f9a4b",
+          "#d8d0bd"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/810861781",
+          "what": "only a 10 m2 shed matched nearby; no description of the domain was looked up"
+        }
+      ],
+      "notes": "Nothing about the domain was looked up beyond its name; typed as a Flemish recreation park with lake. Low."
+    },
+    "brussels-transit": {
+      "venueId": "brussels-transit",
+      "city": "brussels",
+      "name": "Brussels-Midi (Brussels-South railway station)",
+      "archetype": "transport-station",
+      "subject": "The 1952 Brussels-Midi station: a long, stone-clad functionalist building on a viaduct, with Eurostar terminal behind and the Rue Couverte under the tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 278,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfc8b8",
+          "#6b747c",
+          "#e8e6de"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 22,
+          "note": "22 tracks raised 6 m on a viaduct"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "Eurostar hall by Marc De Vreese, 1992"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "opened 4 Oct 1952 (buildings 1939-54)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brussels-South_railway_station",
+          "what": "current station opened 4 Oct 1952, post-war functionalist/modernism by Adrien Blomme, Yvan Blomme and Fernand Petit; 12 platforms, 22 tracks raised 6 m on a viaduct with shops and covered street Rue Couverte below; rear high-speed section by Marc De Vreese 1992; the South Tower stands in front of the main exit"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13731982",
+          "what": "station polygon 278.2 x 152 m, 30,228 m2, roof flat"
+        }
+      ],
+      "notes": "Form and architects sourced; stone facade colours are estimates. Shown from the front with the elevated tracks behind."
+    }
+  }
+}

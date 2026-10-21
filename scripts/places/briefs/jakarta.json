@@ -1,0 +1,1818 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "jakarta",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "jakarta",
+    "climate": "rainforest",
+    "vernacular": "Sprawling equatorial megacity: cream, white and pastel painted-render houses and ruko shophouses of 2-4 storeys with terracotta or grey metal pitched roofs and walled yards; dense kampung neighbourhoods of tin and tile; glass and concrete towers along Sudirman and Thamrin; white-washed Dutch colonial buildings with green shutters in Kota Tua and Menteng; 1950s-60s Sukarno-era modernist monuments and mosques; Javanese joglo-style stepped roofs on government and airport buildings.",
+    "wallColours": [
+      "#e8e3d6",
+      "#d8cdb0",
+      "#b9b2a2",
+      "#f3f1ea",
+      "#c9d1d6",
+      "#d6b48a",
+      "#a85a3c"
+    ],
+    "roofColours": [
+      "#b4573a",
+      "#6e7378",
+      "#4f5a60",
+      "#8a4a3a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "glass-curtain",
+      "render",
+      "tile-cladding",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "corrugated"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Javanese joglo/limasan stepped tiled roofs and open pendopo halls on civic and airport buildings; Dutch colonial white walls with green louvred shutters, tall arched doors and cupolas; Chinese red-and-gold temples with upswept eaves in Glodok and Ancol; Sukarno-era monuments with bold geometric forms; kala-makara and batik-pattern relief panels.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Indonesia",
+        "what": "Dutch colonial masonry Batavia, Indies Style with joglo/limasan roofs, 1950s jengki style, International Style, steep roofs and deep eaves for rain"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Soekarno%E2%80%93Hatta_International_Airport",
+        "what": "Paul Andreu terminals 1-2 with Javanese pendopo/joglo stepped roofs and gardens; T3 contemporary glass and metal"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fatahillah_Square",
+        "what": "Batavia old town: former city hall (Jakarta History Museum), colonial surrounds"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Al-Azhar_Great_Mosque",
+        "what": "Silaban-designed 1958 white domed mosque in Kebayoran Baru"
+      }
+    ]
+  },
+  "places": {
+    "jakarta-airport-jakarta-airport": {
+      "venueId": "jakarta-airport-jakarta-airport",
+      "city": "jakarta",
+      "name": "Soekarno-Hatta International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Paul Andreu Terminal 1/2 style at Soekarno-Hatta: low boarding pavilions under stepped joglo-style tiled roofs linked by tropical garden courtyards, with the long curb canopy and jet bridges",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 280,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "stepped",
+        "variant": "Andreu T1/T2 pendopo pavilions; T3 is a separate glass-and-metal terminal",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6dfce",
+          "#8a7a5c",
+          "#f3f1ea"
+        ],
+        "roofColour": "#7a5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "T1 has 23 aerobridges per sub-terminal"
+        },
+        {
+          "id": "courtyard",
+          "count": 3,
+          "note": "garden courts between waiting lounges"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "long curb canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "kala-makara motifs on gates and railings"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "southeast-asian",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Soekarno%E2%80%93Hatta_International_Airport",
+          "what": "T1 (1985) and T2 (1991) by Paul Andreu with Javanese pendopo and joglo stepped-roof boarding pavilions and a garden within the airport; T3 contemporary with large glass windows, metal frames, 422,804 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q749497",
+          "what": "identity, inception 1985"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6424732",
+          "what": "OSM relation Terminal 2 (864.6 x 493 m, 1991 per OSM tags)"
+        }
+      ],
+      "notes": "Pavilion concept and garden courts are sourced from Wikipedia; roof tile colour and wall finishes are typed. Model shows one pavilion cluster with its stepped roofs (about 120 m portion). T3 (2016, glass/metal) would be a different, more conventional shed look."
+    },
+    "jakarta-clinic": {
+      "venueId": "jakarta-clinic",
+      "city": "jakarta",
+      "name": "Rumah Sakit Siloam (Siloam Hospitals)",
+      "archetype": "hospital",
+      "subject": "A Siloam private hospital tower in central-south Jakarta: a tall glazed hospital block with a stepped podium and rooftop helipad, tagged 30 levels in OSM",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 32,
+        "storeys": 30,
+        "height_m": 110,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cdd9df",
+          "#e8e3d6",
+          "#4f6f80"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q19731706",
+          "what": "Siloam Hospitals Group identity (company, not the building)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/485074669",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM tags this way building:levels=30 and start_date 2010 (80 x 32 m); the 30 levels may include an attached tower so treat the height as uncertain. Appearance typed from Jakarta private-hospital towers; I could not confirm the branch."
+    },
+    "jakarta-community-notices": {
+      "venueId": "jakarta-community-notices",
+      "city": "jakarta",
+      "name": "Kementerian Pertanian (Ministry of Agriculture)",
+      "archetype": "civic-palace",
+      "subject": "The Ministry of Agriculture complex in Ragunan: a wide 1980s government block with a large stepped Indonesian-style roof over the central hall and flag plaza",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 65,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "stepped",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d6",
+          "#b9a98a",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1986",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Indonesia",
+          "what": "1970s-80s government buildings often feature exaggerated traditional roofs"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1415871887",
+          "what": "OSM building 111.6 x 65.2 m, architect PT Gubah Laras, 1986 (amenity=conference_centre)"
+        }
+      ],
+      "notes": "OSM building is tagged as a conference centre with start_date 1986 and architect PT Gubah Laras, 60 m from the point; the Wikipedia article for the ministry has no architecture. Stepped traditional roof is typed from the 1980s government-building pattern. Low."
+    },
+    "jakarta-community-voting-game": {
+      "venueId": "jakarta-community-voting-game",
+      "city": "jakarta",
+      "name": "Taman Fatahillah (Fatahillah Square)",
+      "archetype": "park-landscape",
+      "subject": "Fatahillah Square in Kota Tua: a wide cobbled open square with an old artesian well pavilion, dominated on the south side by the white colonial city hall with a central cupola",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "hip",
+        "variant": "cobbled square with white city-hall backdrop (south side)",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f3f1ea",
+          "#5b7a5a",
+          "#c9bba0"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "cupola on the city-hall roof"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "18th-century artesian pump/well pavilion in the centre"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "columned front of city hall"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1710",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fatahillah_Square",
+          "what": "square of old Batavia; Jakarta History Museum (former city hall) on the south side, church to the west, restored artesian water pump in the centre since 1974, Kota Post Office NE, Wayang and Fine Arts museums nearby"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Indonesia",
+          "what": "Jakarta History Museum cited as a Dutch colonial landmark"
+        }
+      ],
+      "notes": "Square location, museum and pump are sourced. The city hall is a two-storey white building with green shutters, central pediment and cupola (general knowledge, not in the article); the OSM match here is a 9 x 7.7 m food court 119 m away, not the square. Cobbled floor and bicycle-rental stalls typical."
+    },
+    "jakarta-community-workshop": {
+      "venueId": "jakarta-community-workshop",
+      "city": "jakarta",
+      "name": "Jakarta International College",
+      "archetype": "office-tower",
+      "subject": "A 21-storey glass-and-concrete education tower: a slender rectangular tower with grid windows and a podium entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 24,
+        "storeys": 21,
+        "height_m": 84,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#bcc9d1",
+          "#8d9aa6",
+          "#e8e3d6"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1331293709",
+          "what": "OSM building 62.5 x 24 m, 21 levels, architect PT Airmas Asri, 2023 (building=university)"
+        }
+      ],
+      "notes": "Measured OSM data (21 levels, architect PT Airmas Asri, 2023); college itself not described anywhere I could read. Colours typed. Low."
+    },
+    "jakarta-market-game": {
+      "venueId": "jakarta-market-game",
+      "city": "jakarta",
+      "name": "Baywalk Mall (Green Bay Pluit)",
+      "archetype": "mall",
+      "subject": "Baywalk Mall at Green Bay Pluit: a six-storey modern waterfront mall at the foot of the Green Bay residential towers, with a basement tunnel to the parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 270,
+        "depth_m": 140,
+        "storeys": 6,
+        "height_m": 32,
+        "roof": "flat",
+        "variant": "120 m portion modelled; residential towers behind"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfdbe0",
+          "#e8e3d6",
+          "#5f7f90"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Baywalk_Pluit",
+          "what": "Bay Walk Mall part of Green Bay Pluit, 6 storeys + basement, about 55,000 m2, about 250 outlets, architect Airmas Asri, modern style, 2011-2015"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/529392697",
+          "what": "OSM building 271 x 140 m, 13 levels, 56.3 m, 2014 (whole podium + tower footprint)"
+        }
+      ],
+      "notes": "OSM storeys/height (13 levels, 56.3 m) describe the whole building; the mall block is 6 storeys per the Indonesian Wikipedia. Glass and light facade tints typed."
+    },
+    "jakarta-meal-stop": {
+      "venueId": "jakarta-meal-stop",
+      "city": "jakarta",
+      "name": "Restoran Sederhana - Taman Mini",
+      "archetype": "restaurant",
+      "subject": "A Padang restaurant branch near Taman Mini: a 2-storey cream-painted frontage with a deep awning, large glazed front and blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#ece3c4",
+          "#a85a3c",
+          "#f3f1ea"
+        ],
+        "roofColour": "#b4573a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Restoran_Sederhana",
+          "what": "Padang restaurant chain; Wikidata Q20427355"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/274194694",
+          "what": "OSM building 24.8 x 19.7 m (restaurant)"
+        }
+      ],
+      "notes": "Footprint measured. Branch exterior not described anywhere readable, so facade is typed from city style; some Padang restaurants use gonjong horn roofs, not confirmed for this branch. Low."
+    },
+    "jakarta-osm-node-13546873949": {
+      "venueId": "jakarta-osm-node-13546873949",
+      "city": "jakarta",
+      "name": "KRI Matjan Tutul",
+      "archetype": "museum-theatre",
+      "subject": "A small navy-themed museum: a two-storey display hall beside the preserved patrol vessel KRI Matjan Tutul, with grey navy-style paint and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d5cc",
+          "#5f7083",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "ship mast of the displayed vessel"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q131914008",
+          "what": "KRI Matjan Tutul identity"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/507253152",
+          "what": "OSM node on a 41 x 30 m two-level museum building"
+        }
+      ],
+      "notes": "Wikidata/OSM identify a museum building with 2 levels; no description of the museum or the vessel found (Indonesian Wikipedia page 404). Form typed; low."
+    },
+    "jakarta-osm-relation-18873178": {
+      "venueId": "jakarta-osm-relation-18873178",
+      "city": "jakarta",
+      "name": "Benteng Martello",
+      "archetype": "heritage-fort",
+      "subject": "The ruined Martello Tower on Kelor Island: a squat round Dutch-built brick tower with a broken parapet and arched openings, ringed by sand and palms",
+      "form": {
+        "footprint": "round",
+        "width_m": 15,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a85a3c",
+          "#8a7a68",
+          "#6f6a60"
+        ],
+        "roofColour": "#8a7a68",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "broken parapet"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1850",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q122224442",
+          "what": "Fort Martello, inception 1850, building=ruins"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/18873178",
+          "what": "OSM ruins relation 14.8 x 14.7 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/18873178",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Size and date from OSM/Wikidata. Brick material and 2-storey height are typical of Dutch Martello towers; the Wikipedia fetch for this page failed, so ruin details are typed. Medium."
+    },
+    "jakarta-osm-way-1082234947": {
+      "venueId": "jakarta-osm-way-1082234947",
+      "city": "jakarta",
+      "name": "J.CO Donuts & Coffee",
+      "archetype": "restaurant",
+      "subject": "A standalone J.CO donut cafe: a two-storey modern shop with a glazed ground floor, a cantilevered roof and neutral brand-free signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ece0",
+          "#6f4a3a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards in neutral colours"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/J.CO_Donuts",
+          "what": "J.CO Donuts & Coffee, founded 2005 (Wikidata Q4260444)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1082234947",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM: 33.5 x 17.7 m building with 2 levels, amenity=cafe. Appearance typed; no logo or brand colours used. Low."
+    },
+    "jakarta-osm-way-1156849545": {
+      "venueId": "jakarta-osm-way-1156849545",
+      "city": "jakarta",
+      "name": "Warteg Kharisma Bahari",
+      "archetype": "restaurant",
+      "subject": "A warteg (Warung Tegal) food stall: a tiny one-room shop with open front, a glass display case of dishes and a corrugated metal awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#c9d6b8",
+          "#b9b2a2",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "glass display counter"
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1156849545",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building is 6.6 x 6.4 m. A warteg is a small Javanese-style budget eatery with an open front and glass food display; typed. Low."
+    },
+    "jakarta-osm-way-119451364": {
+      "venueId": "jakarta-osm-way-119451364",
+      "city": "jakarta",
+      "name": "Lippo Plaza Kramat Jati",
+      "archetype": "mall",
+      "subject": "Lippo Plaza Kramat Jati: a five-level suburban mall with a long glazed street frontage and rooftop parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 193,
+        "depth_m": 92,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "120 m portion modelled"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e3d6",
+          "#b4573a",
+          "#cfdbe0"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "rooftop parking"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Lippo_Plaza_Kramat_Jati",
+          "what": "identity (Wikidata Q12492501)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/119451364",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM: 193 x 92 m, 5 levels. Facade/colours typed; page content not readable."
+    },
+    "jakarta-osm-way-121919489": {
+      "venueId": "jakarta-osm-way-121919489",
+      "city": "jakarta",
+      "name": "Mall of Indonesia",
+      "archetype": "mall",
+      "subject": "Mall of Indonesia in Kelapa Gading: a huge, mostly white and glass multi-level mall with a long front and very large parking, opened 2008",
+      "form": {
+        "footprint": "rect",
+        "width_m": 325,
+        "depth_m": 164,
+        "storeys": 5,
+        "height_m": 30,
+        "roof": "flat",
+        "variant": "120 m portion modelled"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ece0",
+          "#4f93b8",
+          "#c9c4b8"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "3,000 car + 8,000 motorcycle spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_Indonesia",
+          "what": "five floors, parking for 3,000 cars and 8,000 motorcycles, fully completed Sept 2008, construction started 2003"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/121919489",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Article gives floors, parking and dates but no facade; OSM says 8 levels vs article 5, 325 x 164 m. White/blue palette typed."
+    },
+    "jakarta-osm-way-248297920": {
+      "venueId": "jakarta-osm-way-248297920",
+      "city": "jakarta",
+      "name": "Universitas Terbuka",
+      "archetype": "campus-block",
+      "subject": "Universitas Terbuka head office campus at Pondok Cabe: wide lawns with a few 3-5 storey administrative blocks, a convention hall and guesthouses",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d6",
+          "#b4573a",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Universitas_Terbuka",
+          "what": "founded 1984; Wisma I-III with 106 rooms and Balai Sidang hall at Pondok Cabe, no teaching campus"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/248297920",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM campus polygon 1132 x 279 m; architecture not described; typed. Low."
+    },
+    "jakarta-osm-way-28193134": {
+      "venueId": "jakarta-osm-way-28193134",
+      "city": "jakarta",
+      "name": "Taman Menteng (Menteng Park)",
+      "archetype": "park-landscape",
+      "subject": "Menteng Park on the site of the old Menteng football stadium: a compact green city park with a jogging track, futsal and basketball courts, a children's playground and a glass-roofed greenhouse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfc7b8",
+          "#6f9a6a",
+          "#e9e5dc"
+        ],
+        "roofColour": "#9ea1a3",
+        "roofMaterial": "glass",
+        "windows": "screen",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "greenhouse"
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Menteng_Park",
+          "what": "created Oct 2006 on the former Menteng Stadium (1921, Kubatz and Moojen); playground, futsal and basketball courts, jogging track, greenhouse, parking, exhibition corner; 44 absorption wells"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28193134",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Park features sourced; greenhouse form and colours typed. OSM 175 x 157 m."
+    },
+    "jakarta-osm-way-29203124": {
+      "venueId": "jakarta-osm-way-29203124",
+      "city": "jakarta",
+      "name": "Indonesia Arena",
+      "archetype": "stadium",
+      "subject": "Indonesia Arena at Gelora Bung Karno: a modern 16,500-seat indoor multi-purpose arena, a rounded white-grey drum with a domed roof and entrance concourse around the lower level",
+      "form": {
+        "footprint": "oval",
+        "width_m": 148,
+        "depth_m": 118,
+        "storeys": 6,
+        "height_m": 42,
+        "roof": "dome",
+        "variant": "indoor arena"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9dcde",
+          "#6b7a8a",
+          "#f1f1ef"
+        ],
+        "roofColour": "#c3c9cd",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indonesia_Arena",
+          "what": "built Dec 2021-Jun 2023, opened 7 Aug 2023, capacity up to 16,500, general contractors Adhi Karya/Nindya Karya/Penta, on the former heliport land at GBK"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/29203124",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM: 148 x 119 m, 6 levels, 2023. Roof geometry and colours are typed (not stated in Wikipedia). Medium."
+    },
+    "jakarta-osm-way-34748225": {
+      "venueId": "jakarta-osm-way-34748225",
+      "city": "jakarta",
+      "name": "Stadion Tugu",
+      "archetype": "stadium",
+      "subject": "Stadion Tugu in North Jakarta: a compact 4,000-seat football stadium with a single main stand and offices underneath, synthetic pitch, floodlights and a prayer room",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc9bb",
+          "#4f7f66",
+          "#e9e5dc"
+        ],
+        "roofColour": "#6b7a8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Stadion_Tugu",
+          "what": "built 1987 on former swamp, rehabilitated 2006-08 and 2012, full renovation from 2022 (Rp181 bn), capacity about 4,000, synthetic grass, site about 35,000 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/34748225",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Capacity, dates and pitch are sourced; roof and colours are typed. OSM 148.5 x 104 m."
+    },
+    "jakarta-osm-way-498482968": {
+      "venueId": "jakarta-osm-way-498482968",
+      "city": "jakarta",
+      "name": "Al-Azhar Great Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Al-Azhar Great Mosque in Kebayoran Baru: a white 1958 Middle Eastern-style mosque by Friedrich Silaban with one large white onion dome, a single tall minaret and an arcaded front facing a wide plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 97,
+        "depth_m": 67,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "dome",
+        "variant": "single central dome, single minaret"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f3f1ea",
+          "#8aa59a",
+          "#d9d4c7"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large white onion dome"
+        },
+        {
+          "id": "onion-dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single tall minaret"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched front"
+        },
+        {
+          "id": "arches",
+          "count": 9
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1958",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Azhar_Great_Mosque",
+          "what": "architect Friedrich Silaban; Middle Eastern style with a white onion dome; one dome, one minaret; capacity about 10,000; built 1953-58; social and dakwah centre with library, hall, clinic, classrooms"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7384807",
+          "what": "identity, inception 1958"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/498482968",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building 96.6 x 66.7 m, 2 levels. Wikipedia confirms the white onion dome, single minaret and architect; the arched arcade front and pale green accents are from general knowledge of the building. Name is shown without logos."
+    },
+    "jakarta-osm-way-510896714": {
+      "venueId": "jakarta-osm-way-510896714",
+      "city": "jakarta",
+      "name": "Museum MACAN (AKR Tower)",
+      "archetype": "office-tower",
+      "subject": "Museum MACAN inside the AKR Tower in Kebon Jeruk: a tall glazed office tower whose lower levels (Level MM) house the museum galleries",
+      "form": {
+        "footprint": "rect",
+        "width_m": 104,
+        "depth_m": 61,
+        "storeys": 30,
+        "height_m": 130,
+        "roof": "flat",
+        "variant": "museum on Level MM of an office tower"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#bcc9d1",
+          "#8d9aa6",
+          "#e8e3d6"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "museum floors in the base"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Modern_and_Contemporary_Art_in_Nusantara",
+          "what": "museum opened 7 Nov 2017 on Level MM of AKR Tower, Kebon Jeruk; 7,107 m2 total, about 4,000 m2 display"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/510896714",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "The museum is not a freestanding building; the model is the AKR Tower (OSM 104 x 61 m, 30 levels). Glass tower finish typed."
+    },
+    "jakarta-osm-way-626583660": {
+      "venueId": "jakarta-osm-way-626583660",
+      "city": "jakarta",
+      "name": "Stadion Patriot Candrabhaga",
+      "archetype": "stadium",
+      "subject": "Patriot Candrabhaga Stadium in Bekasi: a 30,000-seat football and athletics stadium with a zincalume-roofed grandstand with a 9,000-seat VIP stand, floodlight masts and a parking deck",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "curved",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3cec2",
+          "#a63a2f",
+          "#e9e5dc"
+        ],
+        "roofColour": "#aeb6bb",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "zincalume grandstand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-storey parking deck"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Patriot_Chandrabhaga_Stadium",
+          "what": "capacity 30,000, VIP grandstand up to 9,000, grandstand roof zincalume metal, parking deck, built 1980 and opened 1982, upgraded 2011-14"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9244455",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building 274 x 196 m. Roof, stands and parking deck sourced; stand colours typed."
+    },
+    "jakarta-osm-way-687400650": {
+      "venueId": "jakarta-osm-way-687400650",
+      "city": "jakarta",
+      "name": "Institut Teknologi Indonesia",
+      "archetype": "campus-block",
+      "subject": "Institut Teknologi Indonesia in Serpong: a large engineering campus of 3-5 storey painted blocks around lawns and a central mast",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d6",
+          "#4f7f66",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Institut_Teknologi_Indonesia_Serpong",
+          "what": "founded 1984 (Wikidata Q12486657)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/687400650",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM campus polygon 647 x 354 m; buildings not described; typed."
+    },
+    "jakarta-osm-way-877465306": {
+      "venueId": "jakarta-osm-way-877465306",
+      "city": "jakarta",
+      "name": "Politeknik Keuangan Negara STAN",
+      "archetype": "campus-block",
+      "subject": "PKN STAN in Bintaro: a large state accountancy college campus with 4-5 storey painted lecture blocks, a mosque and dorm blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d6",
+          "#b9a98a",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "Baitul Maal mosque"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Politeknik_Keuangan_Negara_STAN",
+          "what": "campus at Bintaro Jaya since 1987, Baitul Maal mosque, dormitories"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/877465306",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM campus polygon 716 x 626 m; architecture not described; typed. Mosque and dorms are sourced."
+    },
+    "jakarta-quiet-reflection": {
+      "venueId": "jakarta-quiet-reflection",
+      "city": "jakarta",
+      "name": "Vihara Bahtera Bhakti",
+      "archetype": "temple-asian",
+      "subject": "Vihara Bahtera Bhakti at Ancol: a Chinese-Buddhist temple hall of about 1650 in red walls and gold trim, upswept double-eaved yellow-tile roof and an altar room with a Muslim-style tomb behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#a8322b",
+          "#d9a441",
+          "#efe6c4"
+        ],
+        "roofColour": "#c8873a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 2,
+          "note": "two-tier upswept eaves"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "dragon ridge ornaments"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "1650",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bahtera_Bakti_Vihara",
+          "what": "founded c.1650, Chinese-Buddhist architecture, main sanctuary with three altars (Sampo Soeisoe, San-bao daren, Kong Toe-Tjoe-Seng tomb), tomb of Embah Said Areli Dato Kembang behind"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/528649901",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM: 77.4 x 45.1 m, 2 levels. The article gives layout but no roof or colours; red, gold and yellow-tile roof are typical of Jakarta Chinese temples and typed. The temple has been rebuilt many times."
+    },
+    "jakarta-recreation": {
+      "venueId": "jakarta-recreation",
+      "city": "jakarta",
+      "name": "Lapangan Banteng",
+      "archetype": "park-landscape",
+      "subject": "Lapangan Banteng: a large square park with the 1963 West Irian Liberation Monument column and statue, a half-circle pond with lit fountain and open-air theatre, and sports fields to the north",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "monument column at centre of a causeway-divided square"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#e9e5dc"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze figure breaking chains atop a tall monument, roughly 35 m overall (estimate)"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "tall column monument"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "half-circle pond with illuminated fountain"
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "open-air theatre"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1963",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lapangan_Banteng",
+          "what": "about 5.2 ha, roughly 230 x 250 m; West Irian Liberation Monument completed 1963 in the centre; 2017-18 renovation added half-circle pond with illuminated fountain and open-air theatre; sports facilities in northern half; causeway divides park/sports halves; Daendels palace, post office, cathedral nearby"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28705164",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 360 x 318 m. Monument height ~ 35 m is not stated in the article (the monument is tall relative to the park); treat as estimate."
+    },
+    "jakarta-transit": {
+      "venueId": "jakarta-transit",
+      "city": "jakarta",
+      "name": "Kranji Station",
+      "archetype": "transport-station",
+      "subject": "Kranji commuter-rail station in Bekasi: a 2019 modern minimal station building built over the old one, with a long canopy over a high island platform and four tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d9dcde",
+          "#5f7f90",
+          "#f1f1ef"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://id.wikipedia.org/wiki/Stasiun_Kranji",
+          "what": "new building since 8 Jan 2019 on top of the old one in modern minimalist futuristic style; four tracks and one high island platform"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/500064974",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building 43 x 40 m. Colours typed (not stated); style statement is sourced."
+    }
+  }
+}

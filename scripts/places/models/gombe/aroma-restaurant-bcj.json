@@ -1,0 +1,163 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1083739896",
+   "used": "location only: the matched outline is a 4 x 2 m shed (nearest, 9 m2), not usable for the restaurant"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/gombe.json",
+   "used": "typed low-confidence brief: single-storey painted building, green metal gable roof, veranda, car park, boundary wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e7cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#a65d3f",
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6e4e",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 2.6,
+    "height": 2.8,
+    "balustrade": false,
+    "steps": true,
+    "roof": "lean-to",
+    "wall_colour": "#f7f4ee",
+    "roof_colour": "#3f6e4e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.8,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#f7f4ee",
+    "points": [
+     [
+      -18,
+      -16
+     ],
+     [
+      18,
+      -16
+     ],
+     [
+      18,
+      14
+     ],
+     [
+      -18,
+      14
+     ],
+     [
+      -18,
+      -16
+     ]
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "colour": "#b0b0b0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence at all; a modest typical Gombe restaurant"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "aroma-restaurant-bcj"
+}

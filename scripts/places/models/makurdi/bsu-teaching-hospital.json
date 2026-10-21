@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "bsu-teaching-hospital",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_view_of_Benue_State_University_Teaching_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "HarunaSylvester",
+   "view": "street",
+   "file": "/tmp/places-evidence/makurdi/bsuth.jpg",
+   "used": "four-storey cream block with hipped grey-brown roof and balcony rows at the end of a wide paved drive, low cream wings with hipped roofs left and right, long low covered link corridor, round planted island, car park and spreading trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/453672494",
+   "used": "campus boundary only (830 x 416 m); too big for one model, so the entrance cluster seen in the photo is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 62,
+  "aspect": 1.78,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     32,
+     12
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6ccae",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "bands": "#c2b690",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    },
+    "glassColour": "#6f6a5a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a6f62",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    -40,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6454",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    40,
+    32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfdcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f6454",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "island",
+   "at": [
+    6,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "n": 24,
+    "height": 0.25,
+    "colour": "#b09a60"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1,
+    "spread": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 18
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    16,
+    34,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "width": 2.4,
+    "height": 3.0,
+    "colour": "#d4cdb4",
+    "roofColour": "#8f8f88"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -26,
+    34,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "width": 2.4,
+    "height": 3.0,
+    "colour": "#d4cdb4",
+    "roofColour": "#8f8f88"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    34,
+    22,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.8,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Main block farther back with balcony rows and low wings, link corridors and few cars; foreground road is tiled paving (photo is dull concrete), round island lacks kerb detail, balconies read stronger than photo."
+ }
+}

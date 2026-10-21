@@ -1,0 +1,418 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nat_Museum,_Ibadan_(4).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DipoTayo",
+   "view": "street",
+   "file": "/tmp/places-evidence/ibadan/museum4.jpg",
+   "used": "low single-storey blocks in ochre-yellow render, flat roofs with deep eaves and red-brown fascia, hexagonal clerestory boxes above, grid windows, dark plinth, lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/989214001",
+   "used": "containing outline of the hexagon-cell cluster (photo agrees)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://foluoyefeso.com/post/the-national-museum-of-unity-ibadan",
+   "used": "series of adjoining hexagonal sections in a grove of trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cells",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eccb7e",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.5,
+    "bands": "#c9a46a",
+    "cornice": true,
+    "trimColour": "#f2f2ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a46a",
+    "material": "concrete",
+    "overhang": 2.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-0",
+   "at": [
+    -29,
+    -2,
+    4.3
+   ],
+   "params": {
+    "n": 6,
+    "radius": 8.5,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#eccb7e",
+    "topColour": "#c9a46a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-1",
+   "at": [
+    -9,
+    10,
+    4.3
+   ],
+   "params": {
+    "n": 6,
+    "radius": 8.5,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#eccb7e",
+    "topColour": "#c9a46a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-2",
+   "at": [
+    12,
+    28,
+    4.3
+   ],
+   "params": {
+    "n": 6,
+    "radius": 8.5,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#eccb7e",
+    "topColour": "#c9a46a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-3",
+   "at": [
+    31,
+    12,
+    4.3
+   ],
+   "params": {
+    "n": 6,
+    "radius": 8.5,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#eccb7e",
+    "topColour": "#c9a46a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-4",
+   "at": [
+    8,
+    -9,
+    4.3
+   ],
+   "params": {
+    "n": 6,
+    "radius": 8.5,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#eccb7e",
+    "topColour": "#c9a46a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clerestory-5",
+   "at": [
+    -13,
+    -28,
+    4.3
+   ],
+   "params": {
+    "n": 6,
+    "radius": 8.5,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#eccb7e",
+    "topColour": "#c9a46a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#bdb5a5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 0.9,
+    "colour": "#7a4a38",
+    "posts": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 8
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -50,
+     -34
+    ],
+    "end": [
+     0,
+     -42
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -25,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    25,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    58,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -30,
+    -26
+   ],
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c87a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a46a",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.3,
+    "run": 0.5,
+    "count": 2,
+    "colour": "#3a342f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drain-kerb",
+   "footprint": {
+    "rect": [
+     90,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a69e",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Ochre block, hex clerestories, drain kerb, annex and backdrop grove added, but the real rounded/curved plan, grid-louvre window banks, papaya and verandah bays are not reproduced; only one corner photographed."
+ }
+}

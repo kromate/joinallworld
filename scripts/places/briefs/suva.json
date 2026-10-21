@@ -1,0 +1,1505 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "suva",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "suva",
+    "climate": "rainforest",
+    "vernacular": "Wet tropical Pacific port city: one- to three-storey concrete and timber buildings with corrugated iron roofs (red, green, grey) and shaded verandahs; British colonial Victorian and Edwardian civic buildings (Carnegie Library 1909, Government Buildings) in the centre; mid-century and modern concrete blocks and a few glass towers; Indo-Fijian shopfronts and markets; thatched bure with timber posts and reed walls in villages and resorts. Royal palms, tree ferns, mango and frangipani under a very rainy sky.",
+    "wallColours": [
+      "#eeebe2",
+      "#e6d9a6",
+      "#a9c4a0",
+      "#9fbfd6",
+      "#b8b4aa",
+      "#c98f7b"
+    ],
+    "roofColours": [
+      "#a3412f",
+      "#4f7a55",
+      "#8a8f92",
+      "#6b6f72"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "timber",
+      "stone",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial verandahs with timber posts and fretwork; Victorian British church and civic details; Indo-Fijian shopfront awnings; thatched bure roofs with ridge and tied reeds in Fijian village style. Wall and roof colours are typical painted-building colours, not measured values.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Suva",
+        "what": "Suva: colonial capital from 1882, Carnegie Library 1909, Government Buildings, tropical rainforest climate about 3,000 mm rain a year"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Fiji",
+        "what": "bure of palm and wood, reed walls; British and Victorian-style churches, houses and offices in Suva and Levuka"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Thurston_Gardens",
+        "what": "avenues of 101 royal palms and 39 tree ferns planted 1913"
+      }
+    ]
+  },
+  "places": {
+    "suva-airport-suva-airport": {
+      "venueId": "suva-airport-suva-airport",
+      "city": "suva",
+      "name": "Nausori International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The modest Nausori airport terminal on the Rewa delta: a low rendered block with a flat canopy facing the car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d4",
+          "#4f7f8f",
+          "#f2f2ee"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "typed"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1940s runway, terminal later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nausori_Airport",
+          "what": "built by US Navy Seabees in 1942, 2,148 m asphalt runway 10/28, runway project completed 2021, master plan for terminal refurbishment"
+        }
+      ],
+      "notes": "Wikipedia describes the runway but not the terminal; the OSM polygon (2,700 x 1,150 m) is the whole airfield. Terminal size and look are typed as a small regional terminal."
+    },
+    "suva-clinic": {
+      "venueId": "suva-clinic",
+      "city": "suva",
+      "name": "Makoi Health Center",
+      "archetype": "hospital",
+      "subject": "A single-storey government health centre with a verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3e1d0",
+          "#4f7a55",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a55",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM footprint (about 46 x 15 m) and the city style: painted concrete clinic with green corrugated roof and verandah."
+    },
+    "suva-community-notices": {
+      "venueId": "suva-community-notices",
+      "city": "suva",
+      "name": "Bau District School",
+      "archetype": "campus-block",
+      "subject": "A small district school on Bau island: a long single-storey classroom block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d4",
+          "#4f7f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; Bau is a small chiefly island east of Suva. Typed as a village school block from the OSM footprint (about 20 x 12 m)."
+    },
+    "suva-community-voting-game": {
+      "venueId": "suva-community-voting-game",
+      "city": "suva",
+      "name": "ACS Hall",
+      "archetype": "civic-small",
+      "subject": "A large community hall used for meetings and polling, a wide gabled hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5e0cc",
+          "#a9c4a0",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found for this hall; typed from the OSM footprint (about 50 x 31 m)."
+    },
+    "suva-community-workshop": {
+      "venueId": "suva-community-workshop",
+      "city": "suva",
+      "name": "Montfort Boys Town Fiji",
+      "archetype": "campus-block",
+      "subject": "A wide vocational training campus of low workshop and classroom blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#dcd8c8",
+          "#4f7f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1960s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source fetched; the OSM campus polygon is about 790 x 580 m, so the model shows a representative workshop-block cluster of about 120 x 80 m."
+    },
+    "suva-market-game": {
+      "venueId": "suva-market-game",
+      "city": "suva",
+      "name": "Hexagon",
+      "archetype": "market-hall",
+      "subject": "A two-level commercial block with shops and stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 39,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3bf",
+          "#c98f7b",
+          "#f2f2ee"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM footprint about 71 x 39 m with 2 levels. Typed as a mixed shop and market building."
+    },
+    "suva-meal-stop": {
+      "venueId": "suva-meal-stop",
+      "city": "suva",
+      "name": "Garib Store",
+      "archetype": "shophouse",
+      "subject": "A small family store in a house-type building with a verandah and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6d9a6",
+          "#a3412f",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM tags it as a house-type building (about 22 x 14 m). Typed as an Indo-Fijian family shop in the city style."
+    },
+    "suva-osm-node-4461947007": {
+      "venueId": "suva-osm-node-4461947007",
+      "city": "suva",
+      "name": "School of Applied Sciences FNU",
+      "archetype": "campus-block",
+      "subject": "A long narrow teaching block of the Fiji National University",
+      "form": {
+        "footprint": "rect",
+        "width_m": 87,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d4c4",
+          "#4f7f8f",
+          "#f2f2ee"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM building about 87 x 11 m."
+    },
+    "suva-osm-node-4500791362": {
+      "venueId": "suva-osm-node-4500791362",
+      "city": "suva",
+      "name": "Biukota",
+      "archetype": "park-landscape",
+      "subject": "A small park-like site with a single hall or shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7aa05a",
+          "#c8bfa6",
+          "#e8e4d6"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found for this place; typed from the OSM park node and building footprint (about 26 x 18 m)."
+    },
+    "suva-osm-node-4551574653": {
+      "venueId": "suva-osm-node-4551574653",
+      "city": "suva",
+      "name": "Natural Pools and Waterfalls",
+      "archetype": "park-landscape",
+      "subject": "Forest pools and a small waterfall in rainforest, with a timber viewing deck and steps",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#4f7a55",
+          "#8a8f92",
+          "#c8bfa6"
+        ],
+        "roofColour": "#6b6f72",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "timber viewing deck"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source fetched. Typed natural forest pools from the name; the point lies in the hills north of Suva, probably within the Colo-i-Suva forest area (an inference from the coordinates, not verified)."
+    },
+    "suva-osm-node-895373703": {
+      "venueId": "suva-osm-node-895373703",
+      "city": "suva",
+      "name": "Novotel Lami Restaurant",
+      "archetype": "hotel",
+      "subject": "A long low-rise beach resort with wings along the Lami shore and a steep thatch-influenced entrance pavilion",
+      "form": {
+        "footprint": "H",
+        "width_m": 288,
+        "depth_m": 66,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe9d9",
+          "#4f7f8f",
+          "#a3412f"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open dining pavilion with a high hipped roof"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; the OSM hotel polygon is about 288 x 66 m (3 wings along the shore). Typed with a bure-influenced steep roof for the restaurant pavilion. Brand marks are omitted."
+    },
+    "suva-osm-way-1015760632": {
+      "venueId": "suva-osm-way-1015760632",
+      "city": "suva",
+      "name": "Wainibokasi Hospital",
+      "archetype": "hospital",
+      "subject": "A small district hospital in Nausori: a long single-storey ward block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3e1d0",
+          "#9fbfd6",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM footprint (about 42 x 12 m)."
+    },
+    "suva-osm-way-1067790146": {
+      "venueId": "suva-osm-way-1067790146",
+      "city": "suva",
+      "name": "Batiwinai",
+      "archetype": "restaurant",
+      "subject": "A small restaurant hut",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d6b98a",
+          "#4f7a55",
+          "#f4ecd8"
+        ],
+        "roofColour": "#4f7a55",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM footprint about 10 x 9 m."
+    },
+    "suva-osm-way-1309951782": {
+      "venueId": "suva-osm-way-1309951782",
+      "city": "suva",
+      "name": "Fiji Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Fiji Museum in Thurston Gardens: a low colonial-style 1955 museum block among palms, with the clock tower and bandstand of the gardens nearby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 59,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece7d6",
+          "#a3412f",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "1918 clock tower in the gardens, outside the museum"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1955",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fiji_Museum",
+          "what": "museum founded 1904, current building opened 1955 in Thurston Gardens, centrepiece the 13 m double-hulled canoe Ratu Finau"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Thurston_Gardens",
+          "what": "museum building constructed on the grounds in 1955; clock tower and bandstand 1918"
+        }
+      ],
+      "notes": "Date, site and canoe are sourced; walls, roof and portico are typed (no source describes the exterior). OSM footprint about 64 x 59 m."
+    },
+    "suva-osm-way-226445953": {
+      "venueId": "suva-osm-way-226445953",
+      "city": "suva",
+      "name": "AOG Secondary School",
+      "archetype": "campus-block",
+      "subject": "A large school campus of two-storey classroom blocks around a playing field",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5e0cc",
+          "#4f7a55",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM campus polygon about 182 x 152 m. Modelled as one representative block cluster."
+    },
+    "suva-osm-way-23708350": {
+      "venueId": "suva-osm-way-23708350",
+      "city": "suva",
+      "name": "Vodafone Arena",
+      "archetype": "stadium",
+      "subject": "The domed indoor arena built for the 2003 South Pacific Games, now mainly a netball hall (formerly the FMF Dome)",
+      "form": {
+        "footprint": "round",
+        "width_m": 99,
+        "depth_m": 96,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d8d9",
+          "#2f6aa0",
+          "#f2f2ee"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "large dome roof typed from the former name FMF Dome"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vodafone_Arena_(Fiji)",
+          "what": "4,000-capacity arena built for the 2003 South Pacific Games, used for netball, formerly the FMF Dome"
+        }
+      ],
+      "notes": "Capacity and date are sourced; the dome shape is inferred from the 'Dome' name and the roughly circular OSM footprint (about 99 x 96 m), not directly confirmed. Cladding and colours are typed."
+    },
+    "suva-osm-way-24281973": {
+      "venueId": "suva-osm-way-24281973",
+      "city": "suva",
+      "name": "Ratu Cakobau Park",
+      "archetype": "stadium",
+      "subject": "The Nausori multi-use grass stadium with one roofed grandstand and an open bank",
+      "form": {
+        "footprint": "oval",
+        "width_m": 250,
+        "depth_m": 135,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3bf",
+          "#2f6aa0",
+          "#f2f2ee"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main grandstand, typed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ratu_Cakobau_Park",
+          "what": "multi-use stadium in Nausori, capacity 8,000, grass, used for football, rugby union and American football"
+        }
+      ],
+      "notes": "Capacity and surface are sourced; stands and roof are not described anywhere I found and are typed. OSM footprint about 252 x 136 m. Plainer than HFC Bank Stadium."
+    },
+    "suva-osm-way-292559681": {
+      "venueId": "suva-osm-way-292559681",
+      "city": "suva",
+      "name": "Old Raiwaqa Market",
+      "archetype": "market-hall",
+      "subject": "A small covered suburban market hall with a corrugated roof open at the sides and rows of stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 33,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d1be",
+          "#a3412f",
+          "#efeee8"
+        ],
+        "roofColour": "#6b6f72",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM marketplace footprint (about 45 x 33 m)."
+    },
+    "suva-osm-way-506437485": {
+      "venueId": "suva-osm-way-506437485",
+      "city": "suva",
+      "name": "Seventh Day Adventist College",
+      "archetype": "campus-block",
+      "subject": "A tidy college of two-storey blocks and a hall on a hillside",
+      "form": {
+        "footprint": "U",
+        "width_m": 124,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee9d8",
+          "#a9c4a0",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a55",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM college polygon about 124 x 85 m."
+    },
+    "suva-osm-way-666132415": {
+      "venueId": "suva-osm-way-666132415",
+      "city": "suva",
+      "name": "ANZ National Stadium",
+      "archetype": "stadium",
+      "subject": "HFC Bank Stadium (ANZ National Stadium): the national athletics and rugby stadium with a roofed grandstand, running track and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 266,
+        "depth_m": 217,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d4cc",
+          "#2f6aa0",
+          "#f2f2ee"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main grandstand: 4,026 seats plus 420 in VIP boxes"
+        },
+        {
+          "id": "floodlights",
+          "count": 6,
+          "note": "typed"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "built 1951, renovated 1979 and 2011-13",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/HFC_Bank_Stadium",
+          "what": "capacity 15,446, grandstand 4,026 seats and 420 VIP, built 1951 as Buckhurst Park, renovated 1977-79 and 2011-13 (FJD 17.5m), track relaid 2024, grandstand roof lost in Hurricane Bebe and demolished in 1978"
+        }
+      ],
+      "notes": "Capacity, seating, track and renovation history are sourced; current roof shape, floodlight count and colours are typed. Sponsor name omitted; keep signage blank. Shown as the stands and track only."
+    },
+    "suva-osm-way-724184460": {
+      "venueId": "suva-osm-way-724184460",
+      "city": "suva",
+      "name": "CJS Supermarket Nakasi",
+      "archetype": "mall",
+      "subject": "A one-storey supermarket box with a long shopfront and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "variant": "supermarket"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e0dccb",
+          "#a3412f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM footprint about 38 x 31 m. Brand marks omitted."
+    },
+    "suva-osm-way-931639205": {
+      "venueId": "suva-osm-way-931639205",
+      "city": "suva",
+      "name": "Mokani Health Center",
+      "archetype": "hospital",
+      "subject": "A rural health centre: small single-storey building near Bau",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e3d0",
+          "#9fbfd6",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM footprint about 34 x 28 m."
+    },
+    "suva-quiet-reflection": {
+      "venueId": "suva-quiet-reflection",
+      "city": "suva",
+      "name": "Naililili Cathedral",
+      "archetype": "church-modern",
+      "subject": "A large gabled Catholic cathedral church with a flat-fronted facade and a separate bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#9fbfd6",
+          "#ffffff"
+        ],
+        "roofColour": "#a3412f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sacred_Heart_Cathedral,_Suva",
+          "what": "comparison: Sacred Heart Cathedral Suva, a different building, is Roman-inspired and sandstone (1902); Naililili is not covered"
+        }
+      ],
+      "notes": "No source describes Naililili Cathedral (Catholic, OSM footprint about 53 x 29 m). Typed as a plain modern gabled church; do not copy Sacred Heart Cathedral, which is a different, sandstone building in central Suva."
+    },
+    "suva-recreation": {
+      "venueId": "suva-recreation",
+      "city": "suva",
+      "name": "Thurston Gardens",
+      "archetype": "park-landscape",
+      "subject": "Thurston Gardens, Fiji's botanical gardens: avenues of royal palms and tree ferns, a 1918 clock tower and bandstand, with the museum at the edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 285,
+        "depth_m": 181,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#4f7a55",
+          "#c8bfa6",
+          "#e8e4d6"
+        ],
+        "roofColour": "#8a8f92",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "built 1918 in memory of Suva's first mayor"
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "1918 bandstand"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1879-1918",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thurston_Gardens",
+          "what": "botanical gardens of Fiji between Albert Park and Government House; clock tower and bandstand 1918; avenues of 101 royal palms and 39 tree ferns 1913; palms, gingers and water lilies"
+        }
+      ],
+      "notes": "Palms, tree ferns, clock tower and bandstand are sourced. Fountain is a typed addition. Gardens about 285 x 181 m per OSM."
+    },
+    "suva-transit": {
+      "venueId": "suva-transit",
+      "city": "suva",
+      "name": "Narain Jetty",
+      "archetype": "transport-station",
+      "subject": "A harbour jetty with a covered waiting shelter and quay for small ferries and boats",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd2d1",
+          "#2f6aa0",
+          "#efeee8"
+        ],
+        "roofColour": "#6b6f72",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "concrete jetty into Suva Harbour"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM building about 73 x 35 m by the harbour. Typed as a ferry/jetty shed with an open quay."
+    }
+  }
+}

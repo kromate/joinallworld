@@ -1,0 +1,713 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "children-zoo",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "bare red-brown laterite paddocks with scrub; animals only, no building visible",
+   "source": "https://commons.wikimedia.org/wiki/File:National_Children%27s_Park,_Abuja_2.jpg (CC BY-SA 4.0, Bennet Otoho)"
+  },
+  {
+   "kind": "text",
+   "used": "tan concrete animal-house walls with arched niches, galvanised mesh fences on pale teal posts, dirt floor; no building comparison possible",
+   "source": "https://commons.wikimedia.org/wiki/File:National_Children%27s_Park,_Abuja_4.jpg (CC BY-SA 4.0, Bennet Otoho)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1255704136",
+   "used": "nearest match is a 16 x 4 m building only (not the park); used as the small admin block by the entrance"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 32,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "rect": [
+     92,
+     80
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8643f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8643f"
+   },
+   "z0": -0.46
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "colour": "#e8d9a8",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -32,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#e8d9a8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    32,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#e8d9a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -37.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 3.2,
+    "colour": "#7aa05a",
+    "frameColour": "#b4654a",
+    "posts": true
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#b4654a",
+    "sign_colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    -26,
+    -26
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    -36,
+    10,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    -18,
+    12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    18,
+    12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    36,
+    10,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    -8,
+    32,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    14,
+    32,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    34,
+    30,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 14,
+    "animals": 2,
+    "kind": "small",
+    "wall_colour": "#7fb5ac"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "colour": "#b4654a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    46,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     3
+    ],
+    "height": 3.2,
+    "colour": "#cdbd94",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    40,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "height": 3.4,
+    "colour": "#cdbd94",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    26,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    26,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    34,
+    24,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     3
+    ],
+    "height": 3,
+    "colour": "#cdb68c",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "arched",
+     "back": "none"
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -48,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -46,
+     0
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     48,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     48,
+     2
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -26,
+     20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     0,
+     22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -44,
+     40
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     42
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -8,
+     0
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     12,
+     0
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   116,
+   106
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Text-only: no entrance photo, so the gate/kiosk/admin layout is plausible rather than real; paddocks, arched animal houses and laterite ground follow the park photos."
+ }
+}

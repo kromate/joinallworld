@@ -1,0 +1,1523 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "cape-town",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "cape-town",
+    "climate": "mediterranean",
+    "vernacular": "Layered colonial city under Table Mountain: whitewashed Cape Dutch and Cape Georgian houses with gables, green shutters and thatch or slate roofs; narrow flat-fronted Georgian/Victorian rowhouses in Bo-Kaap painted pink, green, blue, yellow and purple on cobbled streets; honey limestone and Table Mountain sandstone Edwardian civic buildings; plain cream-rendered Victorian and Edwardian terraces with iron-lace verandas; 1960s-70s concrete and brick blocks on the Foreshore and glass office towers in the CBD. Corrugated or clay-tile roofs, oaks, stone pines and palms, mountain and fynbos backdrop.",
+    "wallColours": [
+      "#f4efe3",
+      "#d9b24c",
+      "#d98aa3",
+      "#5f9e8a",
+      "#c9a66b",
+      "#8b8680",
+      "#6c8fb5"
+    ],
+    "roofColours": [
+      "#a38b5a",
+      "#7a7f85",
+      "#8b3a2f",
+      "#4b4f55"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "sandstone",
+      "limestone",
+      "render",
+      "brick",
+      "concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "thatch",
+      "slate",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "palm"
+    ],
+    "ornament": "Cape Dutch curved and clock gables with white plaster volutes; green timber shutters and sash windows; Cape Georgian pediments and fanlights; Bo-Kaap multicoloured facades with voorstoep stoeps; cast-iron lace verandas; Edwardian Renaissance civic stonework with clock towers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Cape_Dutch_architecture",
+        "what": "Whitewashed walls, green shutters/doors, central gables, thatched roofs, H-shaped plans"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bo-Kaap",
+        "what": "Brightly coloured houses (pink, red, blue, green, purple), cobbled streets, Cape Dutch/Georgian rowhouses"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Cape_Town_City_Hall",
+        "what": "Edwardian civic building in honey-coloured oolitic limestone from Bath"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Table_Mountain_National_Park",
+        "what": "Fynbos vegetation on the peninsula"
+      }
+    ]
+  },
+  "places": {
+    "cape-town-airport-cape-town-airport": {
+      "venueId": "cape-town-airport-cape-town-airport",
+      "city": "cape-town",
+      "name": "Cape Town International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2010 Central Terminal seen from the elevated forecourt road: a long split-level glass-fronted hall linking the domestic and international terminals",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#8a9aa6",
+          "#ffffff"
+        ],
+        "roofColour": "#eceeef",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 10,
+          "note": "5 domestic + 5 international air bridges"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Town_International_Airport",
+          "what": "Central Terminal built for the 2010 World Cup: split-level departures over arrivals, elevated roadway, 10 air bridges, glass curtain wall on the restaurant level"
+        }
+      ],
+      "notes": "Wikipedia gives programme and glass curtain wall but not the roof form; the curved light roof and dimensions are estimated from the 2010 terminal type. Upper level departures road is a key silhouette."
+    },
+    "cape-town-arderne-gardens": {
+      "venueId": "cape-town-arderne-gardens",
+      "city": "cape-town",
+      "name": "Arderne Gardens",
+      "archetype": "park-landscape",
+      "subject": "Arderne Gardens, a 4.5 ha Victorian arboretum in Claremont: wide open lawn under a Norfolk pine, a Moreton Bay fig near the entrance and a koi pond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f9a54",
+          "#8a7a58",
+          "#b9ad9a"
+        ],
+        "roofColour": "#7a7f85",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "boundary wall and railings on Main Road"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "koi pond, source of the Black River"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1845",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arderne_Gardens",
+          "what": "4.5 ha arboretum, 300+ trees, Moreton Bay fig, Norfolk pine, open lawn, koi pond, founded 1845, heritage site 1979"
+        }
+      ],
+      "notes": "Mostly lawn and very large exotic trees (fig and Norfolk pine); no pavilion is described so none is modelled. Make the trees the landmark."
+    },
+    "cape-town-artscape-theatre-centre": {
+      "venueId": "cape-town-artscape-theatre-centre",
+      "city": "cape-town",
+      "name": "Artscape Theatre Centre",
+      "archetype": "museum-theatre",
+      "subject": "The 1971 Artscape (ex Nico Malan) theatre complex on the Foreshore: a heavy sculptural concrete block holding opera house, theatre and arena stage",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 5,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a9a69f",
+          "#6f7479",
+          "#d8d5cd"
+        ],
+        "roofColour": "#8b8b88",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Artscape_Theatre_Centre",
+          "what": "Opened 1971 on reclaimed Foreshore land; Opera House 1,487 seats, Theatre 540, Arena 140"
+        }
+      ],
+      "notes": "The page gives only date, location and seat counts. Form (stepped exposed-concrete mass on a podium) is typed from the early-1970s Foreshore theatre type and recollection of photos; dimensions estimated."
+    },
+    "cape-town-baxter-theatre-centre": {
+      "venueId": "cape-town-baxter-theatre-centre",
+      "city": "cape-town",
+      "name": "Baxter Theatre Centre",
+      "archetype": "museum-theatre",
+      "subject": "The 1977 Baxter on Main Road, Rondebosch: low brick-clad theatre complex under a floating roof with a broad foyer",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#8a5a44",
+          "#b9a58a",
+          "#e3d9c8"
+        ],
+        "roofColour": "#6f7479",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, no lettering"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1977",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baxter_Theatre_Centre",
+          "what": "Opened 1977, architects Jack Barnett and Leslie Broer; brick building with an unusual floating roof; expansive foyer"
+        }
+      ],
+      "notes": "Sourced: brick and floating roof, 1977, Barnett and Broer. Footprint, size and colours are estimated. Several staggered shed roofs with overhangs would convey the floating roof."
+    },
+    "cape-town-canal-walk": {
+      "venueId": "cape-town-canal-walk",
+      "city": "cape-town",
+      "name": "Canal Walk",
+      "archetype": "mall",
+      "subject": "Canal Walk shopping centre in Century City, a very large two-storey mall in themed 'Cape Venetian' style with a central glazed dome",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 220,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0c89b",
+          "#b8643f",
+          "#f3ede0"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 12
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Canal_Walk",
+          "what": "Two-storey mall, opened 26 Oct 2000, 'Cape Venetian architecture', domed roof, glass ceilings, 12 entrances, 8,000+ parking bays, ~141,000 m2"
+        }
+      ],
+      "notes": "Footprint is far larger than 120 m so the model shows the main entrance wing with its dome. Warm ochre plaster with terracotta trim is typed from the Venetian theme, not from a colour description."
+    },
+    "cape-town-castle-military-museum": {
+      "venueId": "cape-town-castle-military-museum",
+      "city": "cape-town",
+      "name": "Castle of Good Hope (Castle Military Museum)",
+      "archetype": "heritage-fort",
+      "subject": "The Castle of Good Hope seen from the Grand Parade: yellow-washed pentagonal star fort with the bell tower over the gateway, canal moat and the De Kat balcony inside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 170,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "pentagon-star-fort",
+        "wings": 5
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9b24c",
+          "#f4efe3",
+          "#8b8680"
+        ],
+        "roofColour": "#6e4b3a",
+        "windows": "punched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "1684 tower over the main gate"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1666-1679",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Castle_of_Good_Hope",
+          "what": "Pentagonal bastion fort, stone, 1666-1679, five bastions (Leerdam, Buuren, Katzenellenbogen, Nassau, Oranje), yellow-painted walls, moat/canal, 1684 bell tower over entrance, De Kat Balcony"
+        }
+      ],
+      "notes": "Recognisable by the yellow walls, five-pointed bastion outline and white-trimmed bell tower. Dimensions are estimates (no metres on the page); the model should show the entrance front and one or two bastions within the 120 m clamp. The military museum is inside the Castle."
+    },
+    "cape-town-cavendish-square": {
+      "venueId": "cape-town-cavendish-square",
+      "city": "cape-town",
+      "name": "Cavendish Square",
+      "archetype": "mall",
+      "subject": "Cavendish Square mall, Claremont: multi-level suburban shopping centre with parking decks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 170,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6ddd0",
+          "#b08a63",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of the building was fetched. Typed from the suburban-mall type and the city style; treat as generic."
+    },
+    "cape-town-clinic": {
+      "venueId": "cape-town-clinic",
+      "city": "cape-town",
+      "name": "Groote Schuur Hospital",
+      "archetype": "hospital",
+      "subject": "The Old Main Building of Groote Schuur Hospital on the lower slopes of Devil's Peak, a large pale multi-storey ward block with later wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d2",
+          "#c4b9a2",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1938",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Groote_Schuur_Hospital",
+          "what": "Founded 1938 on Devil's Peak slopes; Old Main Building; two new wings added 1984; provincial heritage site 1996"
+        }
+      ],
+      "notes": "Source confirms only the date, setting and wings. Storeys, size and colours are typed from the type of large 1930s teaching hospital, not verified. Backdrop of mountain slope with pines."
+    },
+    "cape-town-community-notices": {
+      "venueId": "cape-town-community-notices",
+      "city": "cape-town",
+      "name": "Houses of Parliament (National Council of Provinces)",
+      "archetype": "civic-palace",
+      "subject": "The Houses of Parliament on Plein Street: long Victorian classical front behind palms and railings, with the 1980s tower block behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e9e1cf",
+          "#b9a98a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#5b5f64",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1875-1884",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_South_Africa",
+          "what": "Houses of Parliament, Cape Town built 1875-1884; entrance at top of Roeland Street; fire January 2022 damaged chambers"
+        }
+      ],
+      "notes": "The page gives dates only. The Victorian neoclassical cream-stucco appearance is from memory of public photos and is unverified. The NCOP meets in this complex."
+    },
+    "cape-town-community-voting-game": {
+      "venueId": "cape-town-community-voting-game",
+      "city": "cape-town",
+      "name": "Grand Parade",
+      "archetype": "park-landscape",
+      "subject": "The Grand Parade seen across the open market and parking square towards the honey-stone City Hall with its clock tower, the Castle beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 130,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "square-with-city-hall-edge"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#c9a66b",
+          "#8b8680",
+          "#f4efe3"
+        ],
+        "roofColour": "#7a7f85",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "Edward VII and the Mandela statue on the City Hall balcony"
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "City Hall front steps"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1900",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Parade_(Cape_Town)",
+          "what": "Large square used as a market and parking area, surrounded by City Hall, the Castle and the railway station; statue of Edward VII"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Town_City_Hall",
+          "what": "Edwardian City Hall, honey-coloured oolitic limestone from Bath, completed 1900, clock tower with Westminster chimes"
+        }
+      ],
+      "notes": "The venue is the open square itself (flat asphalt, market stalls, statues); the City Hall limestone front is the edge that gives it identity. City Hall clock tower height not on page; estimate about 35 m."
+    },
+    "cape-town-community-workshop": {
+      "venueId": "cape-town-community-workshop",
+      "city": "cape-town",
+      "name": "University of Cape Town (Upper Campus)",
+      "archetype": "campus-block",
+      "subject": "Upper Campus below Devil's Peak, centred on Sarah Baartman Hall (ex Jameson Hall): formal cream classical halls with red-tile roofs and wide steps",
+      "form": {
+        "footprint": "U",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e9dfc8",
+          "#b49a74",
+          "#f6f2ea"
+        ],
+        "roofColour": "#9a4f3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1928-1930",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Cape_Town",
+          "what": "Upper Campus on the Rhodes Estate on slopes of Devil's Peak; original buildings by J. M. Solomon 1928-30; centred on Sarah Baartman (Jameson) Hall; Devil's Peak backdrop"
+        }
+      ],
+      "notes": "Page gives layout, architect and dates; neoclassical portico, cream render and red-tile roofs are from recollection of public photos and unverified."
+    },
+    "cape-town-cput-district-six-campus": {
+      "venueId": "cape-town-cput-district-six-campus",
+      "city": "cape-town",
+      "name": "Cape Peninsula University of Technology (District Six Campus)",
+      "archetype": "campus-block",
+      "subject": "CPUT District Six campus: ex Cape Technikon blocks of 3-5 storeys in brick and concrete with the Table Mountain backdrop",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#a0654c",
+          "#b0aca3",
+          "#e6e2d8"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Peninsula_University_of_Technology",
+          "what": "District Six campus is the former Cape Technikon campus; Table Mountain in the background"
+        }
+      ],
+      "notes": "No building description was found. Typed from the 1970s technikon campus type: brick and exposed-concrete mid-rise blocks."
+    },
+    "cape-town-district-six-museum": {
+      "venueId": "cape-town-district-six-museum",
+      "city": "cape-town",
+      "name": "District Six Museum",
+      "archetype": "museum-theatre",
+      "subject": "The District Six Museum in its old Methodist mission church on Buitenkant Street: a modest two-storey gabled church-hall front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e7dcc3",
+          "#9a8f7a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#6b6f74",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "street-side murals"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/District_Six_Museum",
+          "what": "Museum housed in an old Methodist church; floor map of the former District Six with residents' notes"
+        }
+      ],
+      "notes": "The page confirms the former Methodist church but gives no exterior description. Facade, gable and size are typed as a modest Victorian mission church; unverified."
+    },
+    "cape-town-gardens-shul": {
+      "venueId": "cape-town-gardens-shul",
+      "city": "cape-town",
+      "name": "Gardens Shul (Great Synagogue)",
+      "archetype": "shrine-small",
+      "subject": "The Gardens Shul on Hatfield Street, the Cape Town Hebrew Congregation synagogue, a domed Edwardian synagogue front with steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc6",
+          "#a98b62",
+          "#f6f2ea"
+        ],
+        "roofColour": "#6f8f86",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1905",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page was reachable. Typed from memory: a 1905 domed synagogue in cream plaster; unverified, so keep generic and do not rely on dome count or twin-tower detail."
+    },
+    "cape-town-iziko-slave-lodge": {
+      "venueId": "cape-town-iziko-slave-lodge",
+      "city": "cape-town",
+      "name": "Iziko Slave Lodge",
+      "archetype": "museum-theatre",
+      "subject": "The Slave Lodge on Adderley/Wale Street: whitewashed two-storey government building with a central pediment and green-shuttered sash windows",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f2ede0",
+          "#3f5f4a",
+          "#cdbf9d"
+        ],
+        "roofColour": "#6b6f74",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.16
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1679",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slave_Lodge,_Cape_Town",
+          "what": "Built 1679 by the VOC; used as government offices 1811-1911, the Old Supreme Court 1911, restored 1966, museum since 1998"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Dutch_architecture",
+          "what": "Whitewashed walls, green detailing, central pediment/gable style"
+        }
+      ],
+      "notes": "Dates and use are sourced; the whitewashed, green-shuttered Cape Georgian front with central pediment is from public photos and the Cape Dutch article, size estimated."
+    },
+    "cape-town-market-game": {
+      "venueId": "cape-town-market-game",
+      "city": "cape-town",
+      "name": "Victoria Wharf Shopping Centre",
+      "archetype": "mall",
+      "subject": "Victoria Wharf in the V&A Waterfront: a harbour-side mall of warehouse-style brick and white-rendered frontage with Table Mountain behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8e0d2",
+          "#9a4f3a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "postmodern",
+      "era": "1990",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victoria_%26_Alfred_Waterfront",
+          "what": "Waterfront on the oldest working harbour in the Southern Hemisphere, Table Mountain backdrop, 1882 Port Captain's clock tower nearby"
+        }
+      ],
+      "notes": "Wikipedia mentions Victoria Wharf only in a photo caption; building form is typed from harbour-warehouse mall type and unverified. The Clock Tower of 1882 is a neighbouring landmark."
+    },
+    "cape-town-maynardville-open-air-theatre": {
+      "venueId": "cape-town-maynardville-open-air-theatre",
+      "city": "cape-town",
+      "name": "Maynardville Open-Air Theatre",
+      "archetype": "park-landscape",
+      "subject": "Maynardville Open-Air Theatre in Maynardville Park, Wynberg: a raked grass-and-bench amphitheatre of 720 seats under old trees with a wooden stage",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a45",
+          "#6f9a54",
+          "#b9ad9a"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 3,
+          "note": "raked seating"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1950",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maynardville_Open-Air_Theatre",
+          "what": "In Maynardville Park, Wynberg; 720 seats, raked auditorium; regular use from 1950; formerly the Maynard estate"
+        }
+      ],
+      "notes": "Source gives seats, raked seating and the park; the wooden stage and big old trees are typical and the page does not describe them in detail."
+    },
+    "cape-town-meal-stop": {
+      "venueId": "cape-town-meal-stop",
+      "city": "cape-town",
+      "name": "The Africa Cafe",
+      "archetype": "restaurant",
+      "subject": "The Africa Cafe, a restaurant in a restored terraced townhouse in the old city, two storeys with a balcony and a painted street front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d9b24c",
+          "#8a5a44",
+          "#f6f2ea"
+        ],
+        "roofColour": "#7a7f85",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "1800s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed as a Cape Georgian/Victorian townhouse restaurant from the city style; venue photos not verified."
+    },
+    "cape-town-quiet-reflection": {
+      "venueId": "cape-town-quiet-reflection",
+      "city": "cape-town",
+      "name": "St George's Cathedral",
+      "archetype": "church-gothic",
+      "subject": "St George's Cathedral on Wale Street: Herbert Baker's Gothic cathedral in Table Mountain sandstone with its big transept windows and a separate sandstone-clad bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "granite",
+        "colours": [
+          "#b8aa94",
+          "#8b8680",
+          "#d8d0c0"
+        ],
+        "roofColour": "#5b5f64",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "separate tower with a ring of ten bells"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1901-1936",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_George%27s_Cathedral,_Cape_Town",
+          "what": "Sir Herbert Baker Gothic design, foundation 1901, north transept 1936; bell tower in reinforced concrete clad in Table Mountain Sandstone; ten bells; large Loire and Skeat stained glass; south transept rose window; north transept window 9 x 7 m"
+        }
+      ],
+      "notes": "Materials, style, tower and windows are sourced. Overall plan dimensions and roof colour are estimated. Cruciform with a tall nave; the bell tower stands apart from the church."
+    },
+    "cape-town-recreation": {
+      "venueId": "cape-town-recreation",
+      "city": "cape-town",
+      "name": "Green Point Park",
+      "archetype": "park-landscape",
+      "subject": "Green Point Park on the Common between Signal Hill and the sea: broad lawns, winding paths and play areas beside Cape Town Stadium",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f9a54",
+          "#b9ad9a",
+          "#8b8680"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Town_Stadium",
+          "what": "Green Point Park within the 85 ha Greenpoint Common; completed within a year of the 2010 World Cup; popular recreational facility next to the stadium"
+        }
+      ],
+      "notes": "The page lists no specific park features; lawns, paths, a kiosk and pavilion are typical of the park type. The large stadium bowl is a neighbour and background landmark, not the subject."
+    },
+    "cape-town-rhodes-memorial": {
+      "venueId": "cape-town-rhodes-memorial",
+      "city": "cape-town",
+      "name": "Rhodes Memorial",
+      "archetype": "monument",
+      "subject": "Rhodes Memorial on the slope of Devil's Peak: a granite Greek-temple style structure reached by 49 steps flanked by eight bronze lions, with the horseman statue Physical Energy below",
+      "form": {
+        "footprint": "U",
+        "width_m": 30,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#a9a59c",
+          "#7a7770",
+          "#cfcbc2"
+        ],
+        "roofColour": "#8a867e",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 49,
+          "note": "one for each year of Rhodes's life"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "U-shaped pillar enclosure"
+        },
+        {
+          "id": "statue",
+          "count": 9,
+          "note": "bronze horseman plus eight bronze lions"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1912",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rhodes_Memorial",
+          "what": "Herbert Baker, completed 1912; Cape granite; 49 steps; semicircular terrace; U-shaped pillar structure; bronze Physical Energy by Watts, eight lions by Swan; oak groves and stone pines"
+        }
+      ],
+      "notes": "Sourced form: Greek-temple style, granite, 49 steps, eight bronze lions, a bronze bust and horseman. Overall metres are estimated; the memorial faces north-east."
+    },
+    "cape-town-signal-hill-frame": {
+      "venueId": "cape-town-signal-hill-frame",
+      "city": "cape-town",
+      "name": "Signal Hill Frame",
+      "archetype": "monument",
+      "subject": "The Signal Hill viewpoint, a small steel viewing frame on the flat summit above the city with a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#3a3f44",
+          "#8a8f94",
+          "#d8d5cd"
+        ],
+        "roofColour": "#5b5f64",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Signal_Hill,_Cape_Town",
+          "what": "Flat-topped hill about 350 m with a summit road, car park and viewing area; renosterveld vegetation; Noon Gun"
+        }
+      ],
+      "notes": "The 'frame' as an installation is not described anywhere I could read; modelled as a small steel viewing frame on the summit viewpoint. The hill itself is low shrub with a car park."
+    },
+    "cape-town-transit": {
+      "venueId": "cape-town-transit",
+      "city": "cape-town",
+      "name": "Cape Town Station",
+      "archetype": "transport-station",
+      "subject": "Cape Town railway station concourse and platform area on Adderley Street, a 1960s station with 24 terminus platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcac0",
+          "#7a7f85",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1961",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Town_railway_station",
+          "what": "24 terminus platforms, rebuilt 1961 on the former goods station site, old building demolished 1969, 2010 renovations"
+        }
+      ],
+      "notes": "Station is a low concrete concourse building with long platform canopies and 24 tracks; size is estimated. Hub also covers the adjacent bus terminus."
+    }
+  }
+}

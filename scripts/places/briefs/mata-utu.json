@@ -1,0 +1,1153 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "mata-utu",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "mata-utu",
+    "climate": "tropical-maritime",
+    "vernacular": "Pacific island capital on Uvea: scattered low villages of single-storey concrete or block houses with corrugated metal roofs in red and green, alongside oval thatched fale houses, set among coconut palms and open grass. Ancient dark volcanic basalt and coral-block walls and pavings, and large stone Catholic churches with towers dominate each village. Public buildings are plain one to two storey painted concrete.",
+    "wallColours": [
+      "#e4ddc9",
+      "#f3efe4",
+      "#9bc3c8",
+      "#c5a98a",
+      "#6f7a82",
+      "#d9c36b"
+    ],
+    "roofColours": [
+      "#a5402f",
+      "#4d7a5c",
+      "#8e9396",
+      "#8a7a4f"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "stone",
+      "whitewash",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Dark basalt stone and blue Maltese cross emblem of Wallis on the cathedral, oval thatched fale with timber posts, stone-paved malae (ceremonial greens) and basalt wall platforms, Marist-era stone churches.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Wallis_and_Futuna",
+        "what": "most people live in traditional oval thatched fale houses; Mata-Utu cathedral serves a 99% Catholic population; crater lakes such as Lalolalo; coconut cultivation"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Talietumu",
+        "what": "basalt defensive walls and stone-paved platforms of the Tongan fortress"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame-de-l%27Assomption_de_Mata-Utu",
+        "what": "cut volcanic stone construction, some quarried at Lalolalo"
+      }
+    ]
+  },
+  "places": {
+    "mata-utu-airport-mata-utu-airport": {
+      "venueId": "mata-utu-airport-mata-utu-airport",
+      "city": "mata-utu",
+      "name": "Hihifo Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small single-storey terminal on the Wallis airfield with its apron and a low control cabin",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 42,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#3e6b8a",
+          "#bdbdb6"
+        ],
+        "roofColour": "#9a9d9e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s runway (built 1942 as a US bomber field)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hihifo_Airport",
+          "what": "built by Seabees in March 1942 as a bomber field, upgraded 1964; one 2,100 m asphalt runway; sited north of Mala'e, 24 m above sea level"
+        }
+      ],
+      "notes": "OSM terminal 72x42 m (measured). The wiki article has no terminal description, so facade and canopy are typed. Reached by ATR flights from New Caledonia; no jet bridges."
+    },
+    "mata-utu-clinic": {
+      "venueId": "mata-utu-clinic",
+      "city": "mata-utu",
+      "name": "Mua",
+      "archetype": "hospital",
+      "subject": "Small village dispensary building in Mua on southern Wallis",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f3efe4",
+          "#9bc3c8",
+          "#c9c9c5"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The venue name is just the village Mua, so it is a village health post. OSM footprint 30x15 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-community-notices": {
+      "venueId": "mata-utu-community-notices",
+      "city": "mata-utu",
+      "name": "Douanes & Contributions Diverses",
+      "archetype": "civic-small",
+      "subject": "Two-storey administrative block of the customs and tax offices",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4ddc9",
+          "#ffffff",
+          "#8d8a82"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 55x33 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-community-voting-game": {
+      "venueId": "mata-utu-community-voting-game",
+      "city": "mata-utu",
+      "name": "Place Sagato-Soane",
+      "archetype": "park-landscape",
+      "subject": "Open grass square beside the cathedral, with a long low pavilion on one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f3efe4",
+          "#c5a98a",
+          "#8d8a82"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Mata-Utu's central square lies next to the cathedral and the Uvea royal palace (per en.wikipedia cathedral page). OSM building 28x11 m; the pavilion is typed. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-community-workshop": {
+      "venueId": "mata-utu-community-workshop",
+      "city": "mata-utu",
+      "name": "Lycée Agricole (LPA)",
+      "archetype": "campus-block",
+      "subject": "Agricultural school: long single-storey classroom range with a yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 34,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4ddc9",
+          "#4d7a5c",
+          "#c9c9c5"
+        ],
+        "roofColour": "#4d7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 64x34 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-market-game": {
+      "venueId": "mata-utu-market-game",
+      "city": "mata-utu",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "Small market shelter on the central square (game placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "timber",
+        "colours": [
+          "#a07a52",
+          "#c5a98a",
+          "#6e5a43"
+        ],
+        "roofColour": "#8e9396",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game-venue placeholder: no real place. OSM footprint 7x6 m."
+    },
+    "mata-utu-meal-stop": {
+      "venueId": "mata-utu-meal-stop",
+      "city": "mata-utu",
+      "name": "UGATAI",
+      "archetype": "market-hall",
+      "subject": "Large flat-roofed trading building on the Mata-Utu waterfront road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 154,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f3efe4",
+          "#c5493a",
+          "#9a9d9e"
+        ],
+        "roofColour": "#9a9d9e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name could not be matched to a known restaurant; the OSM building is large (154x60 m), too big for a cafe, so it is typed as a warehouse-style store or trading hall. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-node-11340413569": {
+      "venueId": "mata-utu-osm-node-11340413569",
+      "city": "mata-utu",
+      "name": "Club de plongée",
+      "archetype": "shophouse",
+      "subject": "Small dive-club hut by the lagoon with a boat and kit racks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#6da1b5",
+          "#f3efe4",
+          "#8a6c4c"
+        ],
+        "roofColour": "#8e9396",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 10x7 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-node-4590021740": {
+      "venueId": "mata-utu-osm-node-4590021740",
+      "city": "mata-utu",
+      "name": "View point to lake",
+      "archetype": "park-landscape",
+      "subject": "Rim viewpoint over Lake Lalolalo, a steep-walled volcanic crater lake",
+      "form": {
+        "footprint": "round",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f7a82",
+          "#4d7a5c",
+          "#a39d8f"
+        ],
+        "roofColour": "#6f7a82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural (Pleistocene crater)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wallis_and_Futuna",
+          "what": "Lake Lalolalo is one of several volcanic crater lakes on Uvea, formed in the mid-Pleistocene"
+        }
+      ],
+      "notes": "The point has no building; matching Lalolalo is from the coordinates (-176.236, -13.299), which fall on the western crater lakes. Show a cliff-edge lookout with a low stone wall; the crater is about 60 m deep by general knowledge, unverified here."
+    },
+    "mata-utu-osm-node-5688924021": {
+      "venueId": "mata-utu-osm-node-5688924021",
+      "city": "mata-utu",
+      "name": "Point de vue",
+      "archetype": "park-landscape",
+      "subject": "Roadside lookout with a small shelter on the south coast of Wallis",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a07a52",
+          "#f3efe4",
+          "#4d7a5c"
+        ],
+        "roofColour": "#8e9396",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 15x9 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-node-8169143117": {
+      "venueId": "mata-utu-osm-node-8169143117",
+      "city": "mata-utu",
+      "name": "La Paillotte",
+      "archetype": "restaurant",
+      "subject": "Thatched-roof paillote beach restaurant, open on the sides",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a07a52",
+          "#f3efe4",
+          "#6e5a43"
+        ],
+        "roofColour": "#8c7b55",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A paillote is a thatch-roofed hut, so the name gives the roof, but not the actual building. OSM footprint 16x10 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-node-8169183417": {
+      "venueId": "mata-utu-osm-node-8169183417",
+      "city": "mata-utu",
+      "name": "Bord de Mer",
+      "archetype": "restaurant",
+      "subject": "Seaside snack bar in a small concrete building with a shaded terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#9bc3c8",
+          "#f3efe4",
+          "#8a6c4c"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 12x9 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-way-1012076688": {
+      "venueId": "mata-utu-osm-way-1012076688",
+      "city": "mata-utu",
+      "name": "Sia Hospital",
+      "archetype": "hospital",
+      "subject": "Territory's main hospital: a spread of low blocks joined by covered walkways",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 205,
+        "depth_m": 152,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3efe4",
+          "#4d7a5c",
+          "#bdbdb6"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2,
+          "note": "covered walkways"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1012076688",
+          "what": "OSM amenity=hospital footprint"
+        }
+      ],
+      "notes": "OSM hospital area 205x152 m is a campus of several blocks. Look is typed; helipad is an assumption for the territory's only hospital. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-way-1265064150": {
+      "venueId": "mata-utu-osm-way-1265064150",
+      "city": "mata-utu",
+      "name": "Académie des langues Wallisienne et Futunienne",
+      "archetype": "campus-block",
+      "subject": "Long two-storey language academy block with an entrance porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 47,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4ddc9",
+          "#9bc3c8",
+          "#c9c9c5"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM tag amenity=college, 110x47 m footprint. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-way-346277921": {
+      "venueId": "mata-utu-osm-way-346277921",
+      "city": "mata-utu",
+      "name": "Talietumu",
+      "archetype": "heritage-fort",
+      "subject": "Restored Tongan fortress ruin: basalt perimeter wall and a raised oval ceremonial platform with radiating stone paths",
+      "form": {
+        "footprint": "oval",
+        "width_m": 148,
+        "depth_m": 119,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#4f4f4c",
+          "#7b7a73",
+          "#a39d8f"
+        ],
+        "roofColour": "#4f4f4c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "strong basalt defensive wall with several entrances"
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stone-paved radiating walkways"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "15th century Tongan, platform restored 1990s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Talietumu",
+          "what": "fortified settlement Kolo Nui: basalt defensive wall, several entrances, raised circular elongated central platform about 5 m high and 80 m long on a stockade base, stone-paved walkways radiating, lawns, restored 1990s"
+        }
+      ],
+      "notes": "Platform 80 m long x 5 m high (sourced); 148x119 m is the OSM site extent. Wall height is not given; assume 1-2 m low basalt walls. Dark grey volcanic stone on green lawn."
+    },
+    "mata-utu-osm-way-352005466": {
+      "venueId": "mata-utu-osm-way-352005466",
+      "city": "mata-utu",
+      "name": "Chapelle Sainte Jeanne d'Arc",
+      "archetype": "church-modern",
+      "subject": "Long low village chapel of cut stone with a gable roof and a small front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#6f7a82",
+          "#f3efe4",
+          "#a39d8f"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q137792705",
+          "what": "Wikidata item: chapel in Wallis-et-Futuna"
+        }
+      ],
+      "notes": "OSM footprint 41x17 m, Catholic. Treatment as dark stone chapel follows the island's stone church tradition (see cathedral); not photographed. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "mata-utu-osm-way-364719752": {
+      "venueId": "mata-utu-osm-way-364719752",
+      "city": "mata-utu",
+      "name": "Église Saint-Pierre-et-Saint-Paul de Vaitupu",
+      "archetype": "church-classical",
+      "subject": "Village church of Vaitupu in dark cut stone with a front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#6f7a82",
+          "#f3efe4",
+          "#a39d8f"
+        ],
+        "roofColour": "#a5402f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q29584886",
+          "what": "Wikidata item: church in Wallis-et-Futuna"
+        }
+      ],
+      "notes": "OSM footprint 52x21 m. Stone church tradition from the cathedral source is applied by analogy only. No source describes this building; typed from the city style and the OSM footprint (measured width/depth). Long nave with a wider tower makes it differ from the chapel."
+    },
+    "mata-utu-quiet-reflection": {
+      "venueId": "mata-utu-quiet-reflection",
+      "city": "mata-utu",
+      "name": "Cathédrale Notre-Dame-de-l'Assomption",
+      "archetype": "church-classical",
+      "subject": "Dark volcanic-stone Marist cathedral facing the lagoon, with two rectangular towers and a blue Maltese cross between them",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#5f6b73",
+          "#a39d8f",
+          "#e8e1d0"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two rectangular towers, per English Wikipedia"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "forecourt parvis"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Mary on facade"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "begun 1951/52",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Our_Lady_of_the_Assumption,_Mata-Utu",
+          "what": "hand-cut blue volcanic stone, two rectangular towers, blue Maltese cross between them, overlooking the lagoon, adjacent to the king's palace with two-storey verandas"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame-de-l%27Assomption_de_Mata-Utu",
+          "what": "cut stone, volcanic stone partly from Lalolalo, about 60 m long x 20 m wide, spire 20 m, two aisles from 1952, Mary statue on facade, parvis, roof repaired 1971"
+        }
+      ],
+      "notes": "Two sources differ: English says two rectangular towers, French says a 20 m spire. Used two towers with a spire optional. Width 60 m long x 32 m wide incl. aisles (OSM 53x32). Roof material/colour not sourced (typed red corrugated). The adjacent Uvea king's palace has two-storey verandas and could appear beside it."
+    },
+    "mata-utu-recreation": {
+      "venueId": "mata-utu-recreation",
+      "city": "mata-utu",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "Grass recreation ground with a small shelter and palms (game placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a07a52",
+          "#f3efe4",
+          "#4d7a5c"
+        ],
+        "roofColour": "#8c7b55",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game-venue placeholder: no real place. OSM footprint 19x12 m."
+    },
+    "mata-utu-transit": {
+      "venueId": "mata-utu-transit",
+      "city": "mata-utu",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "Bus shelter and waiting shed by the main road (game placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f3efe4",
+          "#3e6b8a",
+          "#9a9d9e"
+        ],
+        "roofColour": "#8e9396",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game-venue placeholder: no real place. OSM footprint 25x13 m."
+    }
+  }
+}

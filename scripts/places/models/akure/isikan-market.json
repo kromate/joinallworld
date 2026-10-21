@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "isikan-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/476754607",
+   "used": "not used: nearest match is a 16 x 7 m unnamed building, not the market"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "array",
+   "id": "bays",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     48
+    ],
+    "of": {
+     "type": "market-shed",
+     "params": {
+      "length": 70,
+      "depth": 5.5,
+      "height": 3.6,
+      "roof": "gable",
+      "roof_rise": 1.1,
+      "post_pitch": 5,
+      "cladding": "#6e7273",
+      "goods": "sacks",
+      "roof_colour": "#6e7273",
+      "wall_colour": "#d9d2bf",
+      "trim_colour": "#6b8a5a"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 3
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "shutter_colours": [
+     "#6b8a5a",
+     "#d9d2bf",
+     "#9a6a3a"
+    ],
+    "wall_colour": "#e9dfc6",
+    "roof_colour": "#6e7273"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -36,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "colour": "#6b8a5a",
+    "board_colour": "#e9dfc6"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -37,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 5,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#d9a441",
+     "#6b8a5a",
+     "#c8553d",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    32,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 5,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#6b8a5a",
+     "#d9a441",
+     "#c8553d"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#d9d2bf",
+    "pillarEvery": 8,
+    "points": [
+     [
+      -48,
+      -38
+     ],
+     [
+      48,
+      -38
+     ],
+     [
+      48,
+      36
+     ],
+     [
+      -48,
+      36
+     ],
+     [
+      -48,
+      -38
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    52,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -53,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: seven shed bays, lock-up row and gate are typical-market assumptions; stalls and goods generic."
+ }
+}

@@ -4,6 +4,12 @@ export interface RenderCost { triangles: number; meshes: number; drawCalls: numb
 export interface SceneRenderCost {
   scenery: RenderCost;
   characters: RenderCost;
+  /**
+   * The unique place model behind a venue (src/scene/places): a node marked `userData.placeModel === true`. Its triangles are measured here, under
+   * PLACE_MODEL_TRIANGLES, and are NOT in `scenery.triangles` (scenery keeps its own 15,000). Its draw calls ARE added to `scenery.drawCalls`
+   * as well, because the 60 draw calls are shared by everything on screen; its meshes are not added to `scenery.meshes`.
+   */
+  place: RenderCost;
   reservedTriangles: number;
   reservedDrawCalls: number;
 }
@@ -13,12 +19,14 @@ export function measureRenderCost(root: Object3D, exclude?: Object3D | ((node: O
   const result: SceneRenderCost = {
     scenery: { triangles: 0, meshes: 0, drawCalls: 0 },
     characters: { triangles: 0, meshes: 0, drawCalls: 0 },
+    place: { triangles: 0, meshes: 0, drawCalls: 0 },
     reservedTriangles: 0, reservedDrawCalls: 0,
   };
   const positive = (value: unknown): number => typeof value === 'number' && Number.isFinite(value) ? Math.max(0, value) : 0;
-  function visit(node: Object3D, character: boolean): void {
+  function visit(node: Object3D, character: boolean, place = false): void {
     if (!node.visible || (typeof exclude === 'function' ? exclude(node) : node === exclude)) return;
     character ||= node.userData.canonicalCharacter === true || node.userData.characterFoundation === 'native53';
+    place ||= node.userData.placeModel === true;
     const reservedTriangles = positive(node.userData.characterReservedTriangles);
     const reservedDrawCalls = positive(node.userData.characterReservedDrawCalls);
     if (reservedTriangles || reservedDrawCalls) {
@@ -41,17 +49,23 @@ export function measureRenderCost(root: Object3D, exclude?: Object3D | ((node: O
         ? geometry.groups.filter(group => group.start < end && group.start + group.count > start && materials[group.materialIndex ?? 0]?.visible === true).length
         : materials.visible ? 1 : 0;
       if (draws && instances && end > start) {
-        const part = character ? result.characters : result.scenery;
-        part.triangles += Math.floor(Math.max(0, end - start) / 3) * instances;
-        part.meshes++;
-        part.drawCalls += draws * (mesh.castShadow ? 2 : 1);
+        const calls = draws * (mesh.castShadow ? 2 : 1), triangles = Math.floor(Math.max(0, end - start) / 3) * instances;
+        if (place && !character) {
+          result.place.triangles += triangles; result.place.meshes++; result.place.drawCalls += calls;
+          result.scenery.drawCalls += calls;
+        } else {
+          const part = character ? result.characters : result.scenery;
+          part.triangles += triangles;
+          part.meshes++;
+          part.drawCalls += calls;
+        }
       }
     }
-    for (const child of node.children) visit(child, character);
+    for (const child of node.children) visit(child, character, place);
   }
-  let character = false;
-  for (let node = root.parent; node; node = node.parent) character ||= node.userData.canonicalCharacter === true;
-  visit(root, character);
+  let character = false, place = false;
+  for (let node = root.parent; node; node = node.parent) { character ||= node.userData.canonicalCharacter === true; place ||= node.userData.placeModel === true; }
+  visit(root, character, place);
   return result;
 }
 

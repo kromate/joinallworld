@@ -1,0 +1,284 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json#sagamu-clinic",
+   "used": "32 x 16 m two-storey H-plan block, painted cream with blue and red trim, green hip roof, covered drop-off, water tank, blank cross board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1274911184",
+   "used": "not used: 39 m2 nearest match, far smaller than the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: wing proportions, window rhythm and water tank position are typical, not observed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#9db9c9",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#9db9c9",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "ribbon"
+    },
+    "plinth": 0.6,
+    "bands": "#9c3b2f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f7a52",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 11,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 4,
+    "colour": "#d8d4cc",
+    "edgeColour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    3,
+    -9.5,
+    0
+   ],
+   "params": {
+    "heading": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -11,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2.2,
+    "bottom": 4.2,
+    "colour": "#f7f7f4",
+    "frameColour": "#9c3b2f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.6,
+    "legHeight": 5,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -26,
+      -16
+     ],
+     [
+      26,
+      -16
+     ],
+     [
+      26,
+      14
+     ],
+     [
+      -26,
+      14
+     ],
+     [
+      -26,
+      -16
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d8d4cc",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "yaw": 90,
+    "colour": "#c9ced2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   60,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "sagamu-clinic"
+}

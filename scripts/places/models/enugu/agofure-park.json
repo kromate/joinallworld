@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "agofure-park",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1085257004",
+   "used": "small structure outline at the park (0.9 m from the venue point), used as the shelter/kiosk"
+  },
+  {
+   "kind": "text",
+   "used": "small public green with paved centre, shade trees, kiosks, gate; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "shelter-kiosk",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d2c0",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "overhang": 1.0,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -26,
+    22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "colour": "#d9d2c0",
+    "cap_colour": "#6f8f5a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6f8f5a"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "colour": "#b9b2a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.2,
+    "colour": "#b9b2a0"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    30,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 12,
+    "count": 8,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "extent": [
+   90,
+   75
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; layout from brief, OSM structure used as shelter"
+ }
+}

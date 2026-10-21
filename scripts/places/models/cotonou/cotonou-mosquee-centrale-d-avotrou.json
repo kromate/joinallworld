@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-mosquee-centrale-d-avotrou",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (low confidence): 28 x 24 m hall, 12 m, one dome, one ~28 m minaret, cream with green tile trim. OSM match is a nearest 30 x 13 m building 21 m away, judged not reliable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     28,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede6d2",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "windowShape": "arched",
+    "bands": "#3f7a55",
+    "plinth": 1.0,
+    "cornice": true,
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7a55",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dado",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     28.4,
+     24.4
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#3f7a55",
+    "topColour": "#3f7a55"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    11.8
+   ],
+   "params": {
+    "radius": 6.0,
+    "profile": "hemi",
+    "drum": 2.6,
+    "windows": 8,
+    "colour": "#3f7a55",
+    "drum_colour": "#ede6d2",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/portal",
+   "id": "entrance",
+   "at": [
+    0,
+    -12.0,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 9.5,
+    "depth": 2.2,
+    "pointed": true,
+    "colour": "#ede6d2",
+    "trim": "#3f7a55",
+    "cap_colour": "#3f7a55"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "court-wall",
+   "at": [
+    -22.0,
+    -22.0,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.2,
+    "colour": "#ede6d2"
+   }
+  },
+  {
+   "type": "mosque-domed/minaret",
+   "id": "minaret-1",
+   "at": [
+    -17,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "style": "pencil",
+    "colour": "#ede6d2",
+    "trim": "#3f7a55",
+    "cap_colour": "#3f7a55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26.0,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26.0,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24.0,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   68,
+   69
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo anywhere; typical neighbourhood mosque in the colours given by the brief"
+ }
+}

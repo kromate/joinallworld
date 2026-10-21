@@ -1,0 +1,354 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/28811175",
+   "used": "campus size and extent (about 208 x 179 m, 3.8 ha); the outline is a hospital compound, so several ward blocks are laid inside it from the brief rather than one traced building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     64,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "bands": {
+     "colour": "#e08a3c",
+     "height": 0.6
+    },
+    "plinth": 0.5,
+    "trimColour": "#e08a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a35",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    -26,
+    -8
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "bands": {
+     "colour": "#e08a3c",
+     "height": 0.6
+    },
+    "plinth": 0.5,
+    "trimColour": "#e08a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a35",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    26,
+    -8
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "bands": {
+     "colour": "#e08a3c",
+     "height": 0.6
+    },
+    "plinth": 0.5,
+    "trimColour": "#e08a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a35",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    38
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "bands": {
+     "colour": "#e08a3c",
+     "height": 0.6
+    },
+    "plinth": 0.5,
+    "trimColour": "#e08a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a35",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    34,
+    38
+   ],
+   "height": 5.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e4c8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "bands": {
+     "colour": "#e08a3c",
+     "height": 0.6
+    },
+    "plinth": 0.5,
+    "trimColour": "#e08a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a35",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outpatient",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -32
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a24c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "trimColour": "#f1e4c8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -41,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#e08a3c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 6,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#b5b0a6"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    19,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "count": 13,
+    "height": 3.3,
+    "radius": 0.22,
+    "roofDepth": 2.2,
+    "colour": "#b5b0a6",
+    "roofColour": "#8a4a35"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "count": 3,
+    "height": 3.3,
+    "radius": 0.22,
+    "roofDepth": 2.2,
+    "colour": "#b5b0a6",
+    "roofColour": "#8a4a35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#f1f1f1",
+    "frameColour": "#c43b2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     58
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the hospital exists in the evidence; blocks are laid out from the brief inside the campus extent, not traced buildings."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-hopital-pediatrique"
+}

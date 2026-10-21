@@ -1,0 +1,1359 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "victoria",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "victoria",
+    "climate": "tropical-maritime",
+    "vernacular": "Seychelles Creole colonial: low (1-3 storey) timber-and-masonry houses and public buildings in white or pastel painted render, steep-pitched red or green corrugated-iron roofs with verandas and fretwork, set among granite boulders, palms and takamaka trees; small colonial civic buildings in Victoria around the Clock Tower; modern concrete and glass hotels, marinas (Eden Island) and shopping plazas on the reclaimed coast.",
+    "wallColours": [
+      "#f4efe4",
+      "#d9c9a4",
+      "#b9d3d0",
+      "#e3a58a",
+      "#8fb0c8",
+      "#a7b79a",
+      "#c9b79a"
+    ],
+    "roofColours": [
+      "#a63d32",
+      "#7b4a3a",
+      "#6f7b80",
+      "#3f6f5b"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "whitewash",
+      "granite",
+      "concrete",
+      "timber",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber fretwork and gingerbread trim on verandas, louvred shutters, white pillars and porticos on government buildings, granite block plinths and walls, Creole pastel paint, coconut palms and takamaka trees.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Victoria,_Seychelles",
+        "what": "Victoria: smallest national capital; Clock Tower modelled on Little Ben; market; State House; two cathedrals (Roman Catholic Immaculate Conception, Anglican St Paul's)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/State_House_(Seychelles)",
+        "what": "colonial-style State House of 1910 with two-storey portico and white pillars"
+      }
+    ]
+  },
+  "places": {
+    "victoria-airport-victoria-airport": {
+      "venueId": "victoria-airport-victoria-airport",
+      "city": "victoria",
+      "name": "Seychelles International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the Mahe international terminal: a long low white-and-glass terminal with a covered forecourt and an adjacent control tower, mountains behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4efe4",
+          "#3f6f8a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#9a9e9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1972; extended 1980, 2005-06",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Seychelles_International_Airport",
+          "what": "opened 1972; 1980 expansion; 2005-06 extension; domestic terminal separate"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Wikipedia confirms the airport opened in 1972 (opened by Queen Elizabeth II), a 1980 terminal expansion and a 2005-06 extension; a separate domestic terminal lies north. Appearance, size and jet-bridge count are assumptions."
+    },
+    "victoria-clinic": {
+      "venueId": "victoria-clinic",
+      "city": "victoria",
+      "name": "Euromedical Family Clinic (Providence branch)",
+      "archetype": "hospital",
+      "subject": "a small private clinic in a two-storey modern block with painted render and a parking bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#3f8aa6",
+          "#c8c3b5"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-community-notices": {
+      "venueId": "victoria-community-notices",
+      "city": "victoria",
+      "name": "State House",
+      "archetype": "civic-palace",
+      "subject": "the colonial-style State House of Seychelles (1910): a white two-storey building with a two-storey portico of white pillars, set behind gates and lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f4efe4",
+          "#cfd8d4",
+          "#ffffff"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "two-storey portico on white pillars"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1910",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/State_House_(Seychelles)",
+          "what": "1910 colonial style; two-storey portico with white pillars"
+        }
+      ],
+      "notes": "Wikipedia: designed and built in 1910 in colonial style, two-storey portico with white pillars, renovated 1976 and 2007. Dimensions, red roof and wall colour are recalled from photos, not the article. Set in gardens behind a wall and gate near the Botanical Gardens."
+    },
+    "victoria-community-voting-game": {
+      "venueId": "victoria-community-voting-game",
+      "city": "victoria",
+      "name": "Beau Vallon District Administration",
+      "archetype": "civic-small",
+      "subject": "a district office: a small one- to two-storey Creole-style building with a hip roof and veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#8fb0c8",
+          "#c8c3b5"
+        ],
+        "roofColour": "#3f6f5b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-community-workshop": {
+      "venueId": "victoria-community-workshop",
+      "city": "victoria",
+      "name": "University of Seychelles",
+      "archetype": "campus-block",
+      "subject": "the Anse Royale campus: a group of 2-3 storey modern teaching blocks in pale render with red roofs and covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#b9d3d0",
+          "#c8c3b5"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Seychelles",
+          "what": "main campus at Anse Royale, second at Mont Fleuri"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Wikipedia only states that the main campus is at Anse Royale and the second at Mont Fleuri."
+    },
+    "victoria-market-game": {
+      "venueId": "victoria-market-game",
+      "city": "victoria",
+      "name": "Enjoy Supermarket",
+      "archetype": "market-hall",
+      "subject": "a mid-size supermarket: a single-storey shed-like block with a covered entrance and a large car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#6f7b80",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Signage must stay blank."
+    },
+    "victoria-meal-stop": {
+      "venueId": "victoria-meal-stop",
+      "city": "victoria",
+      "name": "Anchor Cafe",
+      "archetype": "restaurant",
+      "subject": "a seaside Creole cafe: a one-storey painted timber-style building with a veranda, tables outside and a red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#8fb0c8",
+          "#f4efe4",
+          "#a63d32"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-osm-node-10223564817": {
+      "venueId": "victoria-osm-node-10223564817",
+      "city": "victoria",
+      "name": "Green House",
+      "archetype": "restaurant",
+      "subject": "a small restaurant: a pale-green one-storey Creole-style house with a veranda and garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#a7b79a",
+          "#f4efe4",
+          "#7b4a3a"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Colour guessed from the name only."
+    },
+    "victoria-osm-node-1198043911": {
+      "venueId": "victoria-osm-node-1198043911",
+      "city": "victoria",
+      "name": "Cascade Sauzier",
+      "archetype": "park-landscape",
+      "subject": "Sauzier waterfall: a freshwater cascade over dark granite boulders in lush forest at the end of a short path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 35,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6b6a66",
+          "#4f6a4a",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Natural waterfall; granite boulders and dense broadleaf/palm are typical of Mahe interior, no building known. Path steps assumed."
+    },
+    "victoria-osm-node-2387375448": {
+      "venueId": "victoria-osm-node-2387375448",
+      "city": "victoria",
+      "name": "Venn's Town",
+      "archetype": "heritage-fort",
+      "subject": "Venn's Town, the 19th-century mission settlement on Mahe: a few ruined stone and granite walls and a former chapel among trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#6b6a66",
+          "#c9b79a"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1870s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Recalled as a mission/school station for freed slaves founded in the 1870s; roofless state and arch count were not verified."
+    },
+    "victoria-osm-node-3092794671": {
+      "venueId": "victoria-osm-node-3092794671",
+      "city": "victoria",
+      "name": "Eureka Specialist Medical Clinic",
+      "archetype": "hospital",
+      "subject": "a private specialist clinic: a two-storey modern block with a glazed entrance and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#3f8aa6",
+          "#c8c3b5"
+        ],
+        "roofColour": "#9a9e9f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Intended to differ from the Providence clinic (flat roof, ribbon windows)."
+    },
+    "victoria-osm-node-4547496634": {
+      "venueId": "victoria-osm-node-4547496634",
+      "city": "victoria",
+      "name": "STC Hypermarket",
+      "archetype": "mall",
+      "subject": "a large hypermarket: a big single- to two-storey box with a wide frontage, canopy and large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f4efe4",
+          "#d9533f",
+          "#c8c3b5"
+        ],
+        "roofColour": "#9a9e9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Signage blank."
+    },
+    "victoria-osm-node-769201090": {
+      "venueId": "victoria-osm-node-769201090",
+      "city": "victoria",
+      "name": "Seychelles Youth Village",
+      "archetype": "campus-block",
+      "subject": "a youth training village: low painted dormitory and class blocks around a central yard with a pitch",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#8fb0c8",
+          "#c8c3b5"
+        ],
+        "roofColour": "#3f6f5b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-osm-node-8757739017": {
+      "venueId": "victoria-osm-node-8757739017",
+      "city": "victoria",
+      "name": "Krasivyi vid na zaliv (bay viewpoint)",
+      "archetype": "park-landscape",
+      "subject": "a coastal viewpoint over a bay: a granite headland with palms and a low wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#6b6a66",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Russian-named OSM viewpoint (Beautiful view of the bay); structures unknown."
+    },
+    "victoria-osm-node-9454112784": {
+      "venueId": "victoria-osm-node-9454112784",
+      "city": "victoria",
+      "name": "Point de vue Sainte-Anne",
+      "archetype": "park-landscape",
+      "subject": "a lookout point towards Ste Anne Marine Park: a small roadside platform with a low wall over a granite slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#6b6a66",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-osm-node-9694888508": {
+      "venueId": "victoria-osm-node-9694888508",
+      "city": "victoria",
+      "name": "Basen Diri",
+      "archetype": "park-landscape",
+      "subject": "Basen Diri viewpoint: a rocky coastal outlook with a few trees and a rough path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#6b6a66",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Name is Seychellois Creole; no structures known, so features are empty."
+    },
+    "victoria-osm-relation-8526443": {
+      "venueId": "victoria-osm-relation-8526443",
+      "city": "victoria",
+      "name": "Centre de Sante d'Anse Boileau",
+      "archetype": "hospital",
+      "subject": "a district health centre: a long one-storey Creole-style building with verandas and a red corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#8fb0c8",
+          "#c8c3b5"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-osm-way-1017469211": {
+      "venueId": "victoria-osm-way-1017469211",
+      "city": "victoria",
+      "name": "Lorizon",
+      "archetype": "restaurant",
+      "subject": "a north-coast restaurant: a two-storey modern beach-side building with a terrace and railing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#8fb0c8",
+          "#a63d32"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. "
+    },
+    "victoria-osm-way-276438928": {
+      "venueId": "victoria-osm-way-276438928",
+      "city": "victoria",
+      "name": "Eden Plaza",
+      "archetype": "mall",
+      "subject": "the Eden Island shopping plaza: a modern two-storey pastel retail block with arcades beside the marina",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f1e3d0",
+          "#8fb0c8",
+          "#f4efe4"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Eden Island is a reclaimed marina island with pastel contemporary buildings."
+    },
+    "victoria-osm-way-504513920": {
+      "venueId": "victoria-osm-way-504513920",
+      "city": "victoria",
+      "name": "Parc Bazar Victoria",
+      "archetype": "park-landscape",
+      "subject": "a small town park beside the Bazar: lawn, palms and a few benches enclosed by a low wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#a7b79a",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Typed default: pavilion is a generic park feature, not a known one."
+    },
+    "victoria-osm-way-616378214": {
+      "venueId": "victoria-osm-way-616378214",
+      "city": "victoria",
+      "name": "Cathedrale de l'Immaculee Conception",
+      "archetype": "church-classical",
+      "subject": "Victoria's Roman Catholic cathedral: a white-painted nave with a classical gabled front, arched windows and a bell tower, red-roofed, on Olivier Maradan Street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#d9c9a4",
+          "#7b4a3a"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1874",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victoria,_Seychelles",
+          "what": "Immaculate Conception is one of Victoria two cathedrals"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Wikipedia confirms it as a Roman Catholic cathedral, one of two in Victoria; the 1874 date, white render and tower are recalled, not in the fetched source."
+    },
+    "victoria-osm-way-699263049": {
+      "venueId": "victoria-osm-way-699263049",
+      "city": "victoria",
+      "name": "Parc Eden",
+      "archetype": "park-landscape",
+      "subject": "a landscaped waterfront park on Eden Island: lawns, young palms and paved paths beside the marina",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#a7b79a",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Typed default features."
+    },
+    "victoria-quiet-reflection": {
+      "venueId": "victoria-quiet-reflection",
+      "city": "victoria",
+      "name": "Cathedrale Saint-Paul",
+      "archetype": "church-gothic",
+      "subject": "Victoria's Anglican cathedral: a modest white-painted pitched-roof church with pointed windows and a low tower or bellcote",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4efe4",
+          "#7b4a3a",
+          "#c9b79a"
+        ],
+        "roofColour": "#a63d32",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1850s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victoria,_Seychelles",
+          "what": "St Paul is the Anglican cathedral of Victoria"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Wikipedia confirms an Anglican cathedral in Victoria; the building appearance is recalled, not sourced, so the form is conservative. Keep it visibly smaller and plainer than the Catholic cathedral."
+    },
+    "victoria-recreation": {
+      "venueId": "victoria-recreation",
+      "city": "victoria",
+      "name": "Parc de la Paix",
+      "archetype": "park-landscape",
+      "subject": "a central Victoria peace park: open lawn with palms, paved paths and a small pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8780",
+          "#a7b79a",
+          "#f4efe4"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Typed default features; real monuments in the park not verified."
+    },
+    "victoria-transit": {
+      "venueId": "victoria-transit",
+      "city": "victoria",
+      "name": "Port Launay Turning Point",
+      "archetype": "transport-station",
+      "subject": "a bus turning point on the west coast road: a paved loop with a roofed bus shelter and a granite retaining wall by the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9c9a4",
+          "#3f6f5b",
+          "#f4efe4"
+        ],
+        "roofColour": "#3f6f5b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Seychelles/Victoria city style and the place type. Rural bus terminus near Port Launay marine park."
+    }
+  }
+}

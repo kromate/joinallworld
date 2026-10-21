@@ -1,0 +1,605 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "ekiti-state-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ekiti_state_University_gate,_Ado-ekiti3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jesu-loba",
+   "view": "front",
+   "file": "/tmp/places-evidence/ado-ekiti/p9-eksu1.jpg",
+   "used": "pink two-pillar entrance arch with a wide lintel board, brick-red gatehouse with octagonal upper room, stone-clad side piers, low cream boundary wall, clipped hedges, three flagpoles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ekiti_State_University,_Ado-Ekiti_Main_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Barolove",
+   "view": "side",
+   "file": "/tmp/places-evidence/ado-ekiti/p9-eksu2.jpg",
+   "used": "gate depth, flat canopies either side of the gatehouse, tower proportions"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/ado-ekiti.json",
+   "used": "senate block and lecture wings behind the gate: typed, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.55,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pillar-l",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -12.2,
+    -30
+   ],
+   "height": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d98f98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-r",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    12.2,
+    -30
+   ],
+   "height": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d98f98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d98f98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 10,
+   "height": 2.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd9c4",
+    "windows": "none",
+    "bands": "#d98f98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8483f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d6c2",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -25,
+    7
+   ],
+   "params": {
+    "n": 8,
+    "radius": 2.7,
+    "height": 4.5,
+    "colour": "#a8483f",
+    "material": "brick",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "topColour": "#8f3a33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-octa-roof",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.6
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "z0": 11.5,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f3a33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f3a33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-dark",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -27.9
+   ],
+   "height": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-l",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -25
+   ],
+   "z0": 3.2,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-r",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    12,
+    -25
+   ],
+   "z0": 3.2,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe3d6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-l",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    -19,
+    -25
+   ],
+   "height": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#7b7468",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7468"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-r",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    19,
+    -25
+   ],
+   "height": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#7b7468",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b7468"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -21,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.4,
+    "colour": "#efe3cf",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      -30,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    21,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "thickness": 0.4,
+    "colour": "#efe3cf",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      30,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10.5,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 2.6,
+    "colours": [
+     "#c8302c",
+     "#f2f2f2",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "senate-centre",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    70
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede7d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a9744e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7273",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    68
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede7d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a9744e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7273",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    22,
+    68
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede7d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#a9744e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7273",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    63,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#ffffff",
+    "roofColour": "#ede7d4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.5,
+    "colour": "#eadfbe",
+    "frameColour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge0",
+   "footprint": {
+    "rect": [
+     18,
+     1.2
+    ]
+   },
+   "at": [
+    -10,
+    -33
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a8a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge1",
+   "footprint": {
+    "rect": [
+     18,
+     1.2
+    ]
+   },
+   "at": [
+    10,
+    -33
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a8a3c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge2",
+   "footprint": {
+    "rect": [
+     40,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -36
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f7a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a8a3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Octagonal room is a prism with plain punched windows; senate block and wings are typed (no photo) and pushed far back; hedges are simple green blocks; no banners; stone piers are plain not rubble-rounded."
+ }
+}

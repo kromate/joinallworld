@@ -1,0 +1,1689 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kingston",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kingston",
+    "climate": "tropical-maritime",
+    "vernacular": "Hot, humid Caribbean port city under the Blue Mountains. Downtown keeps 18th and 19th century Jamaican Georgian brick and stone buildings with timber fretwork, jalousie shutters and long galvanised-zinc hip roofs, plus low reinforced-concrete buildings of three storeys or fewer that replaced the stock lost in the 1907 earthquake (60 ft height limit). Uptown is concrete-block and rendered houses and offices painted in pale cream, yellow, pink and green with louvre windows, burglar-bar grilles, flat roofs and zinc roofs; towers appear only in New Kingston. Royal palm, mango, ackee, almond and samaan trees.",
+    "wallColours": [
+      "#eadfc0",
+      "#f2e3a8",
+      "#c9d9cf",
+      "#e3a9a0",
+      "#f2f0e8",
+      "#a85a45",
+      "#d9b27a"
+    ],
+    "roofColours": [
+      "#8c9296",
+      "#a8402f",
+      "#4f7a55",
+      "#6b6d70",
+      "#b8bcbf"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "red-brick",
+      "stucco",
+      "whitewash",
+      "stone"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete",
+      "clay-tile",
+      "timber-shingle"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Jamaican Georgian timber fretwork and gingerbread trim on verandahs and gables; jalousie (louvre) shutters; white-painted quoins and cornices on brick; arcaded ground floors in downtown; burglar-bar grilles; bright painted murals and Rasta red-gold-green accents.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+        "what": "1692 earthquake and grid plan, brick city, post-1907 earthquake 60 ft height limit and 3-storey reinforced concrete, waterfront redevelopment"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hibbert_House",
+        "what": "Jamaican Georgian: Flemish bond brick, limestone quoins, timber fretwork, dormers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Spanish_Town_railway_station",
+        "what": "Jamaica Georgian station: brick on stone base, sash windows, long zinc hip roof, timber posts on cast-iron brackets"
+      }
+    ]
+  },
+  "places": {
+    "kingston-airport-kingston-airport": {
+      "venueId": "kingston-airport-kingston-airport",
+      "city": "kingston",
+      "name": "Norman Manley International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The terminal at Norman Manley International: a long two-level terminal with the 2007 departures building and multi-level passenger pier at its east end under a new forecourt canopy",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e8e6",
+          "#6f8fa6",
+          "#c9ccca"
+        ],
+        "roofColour": "#b9bcbc",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "new departures drop-off canopy (Kier contract)"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 9,
+          "note": "nine loading bridges on the new pier"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1960s core, 2007-2010 expansion",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norman_Manley_International_Airport",
+          "what": "Phase 1A 2007: new departures building at east end, multi-level passenger pier with nine loading bridges; new canopy and drop-off; Phase 1B 2010 new arrivals"
+        }
+      ],
+      "notes": "OSM terminal footprint is an irregular ~360 x 260 m rotated polygon; brief models the main terminal block (clamp applies) with one pier wing. Colours are a typed guess of white/grey concrete and blue-tinted glass."
+    },
+    "kingston-clinic": {
+      "venueId": "kingston-clinic",
+      "city": "kingston",
+      "name": "Bellevue Hospital",
+      "archetype": "hospital",
+      "subject": "Bellevue Hospital, Kingston: long low government psychiatric hospital ward blocks with shaded verandahs and zinc roofs set in lawns below the hills",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cc",
+          "#9aa79a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1860s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context; OSM shows a 143 x 76 m building footprint; Wikidata lists it as a Department of Government"
+        }
+      ],
+      "notes": "Jamaica's main mental hospital, founded in the 19th century on the eastern edge of Kingston. No description of the current buildings was found; brief is a typed guess of colonial-era ward blocks with louvred verandahs."
+    },
+    "kingston-community-notices": {
+      "venueId": "kingston-community-notices",
+      "city": "kingston",
+      "name": "Jamaica National Heritage Trust (Hibbert House)",
+      "archetype": "manor",
+      "subject": "Hibbert House, 79 Duke Street: an 1755 two-storey Georgian brick townhouse with basement, attic dormers and timber fretwork, now the Jamaica National Heritage Trust",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24.6,
+        "depth_m": 19.5,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9b4a35",
+          "#d8d2c0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bay-window",
+          "count": 1,
+          "note": "hipped roof with dormer windows"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "timber fretwork verandah detail"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "1755",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hibbert_House",
+          "what": "Built 1755, Georgian with Jamaican fretwork; Flemish bond brick walls with limestone quoins; two storeys plus basement and attic with dormers; courtyard and outhouses; rooftop sentinel post"
+        }
+      ],
+      "notes": "Facts of form and materials come from the Wikipedia article; colours are a typed guess (red brick, pale stone quoins, white trim; zinc roof is typical but unconfirmed)."
+    },
+    "kingston-community-voting-game": {
+      "venueId": "kingston-community-voting-game",
+      "city": "kingston",
+      "name": "Emancipation Square, Spanish Town",
+      "archetype": "park-landscape",
+      "subject": "Emancipation Square, Spanish Town: the historic Georgian square at the old capital, a paved open space ringed by low colonial government buildings and monuments",
+      "form": {
+        "footprint": "rect",
+        "width_m": 51,
+        "depth_m": 41,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e9d9a8",
+          "#b9a47a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "georgian",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context; OSM only tags the area as a 51 x 41 m park in Spanish Town"
+        }
+      ],
+      "notes": "Spanish Town was Jamaica's capital until 1872 and its square is an 18th century Georgian civic square. Not verified from a fetched source; typed as a paved square with a plinth statue and low arcaded buildings in cream stucco."
+    },
+    "kingston-community-workshop": {
+      "venueId": "kingston-community-workshop",
+      "city": "kingston",
+      "name": "National Library of Jamaica",
+      "archetype": "campus-block",
+      "subject": "National Library of Jamaica, 12 East Street: a mid-rise concrete library and archive block in downtown Kingston",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 18.7,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4d6",
+          "#a9b0a6",
+          "#ffffff"
+        ],
+        "roofColour": "#b5b8b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Library_of_Jamaica",
+          "what": "12 East Street, institution founded 1979; building not described"
+        }
+      ],
+      "notes": "Building is not described in public text found; typed as a downtown concrete civic block within the 18 m height cap."
+    },
+    "kingston-market-game": {
+      "venueId": "kingston-market-game",
+      "city": "kingston",
+      "name": "Port Henderson Plaza",
+      "archetype": "mall",
+      "subject": "Port Henderson Plaza: a small single-storey strip plaza of shops near the Port Henderson waterfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "strip plaza"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e2b0",
+          "#c24b3a",
+          "#ffffff"
+        ],
+        "roofColour": "#a5a8a8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found about the plaza. Typed as a coastal strip of shops with awnings and a front car park."
+    },
+    "kingston-meal-stop": {
+      "venueId": "kingston-meal-stop",
+      "city": "kingston",
+      "name": "Lilians",
+      "archetype": "restaurant",
+      "subject": "Lilians: a small single-storey eatery in painted concrete block with a zinc roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 9.5,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2d46b",
+          "#2e7d4f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "Obscure place, no description found. Typed as a roadside Jamaican cookshop: yellow painted block, green trim, zinc roof."
+    },
+    "kingston-osm-node-12539925828": {
+      "venueId": "kingston-osm-node-12539925828",
+      "city": "kingston",
+      "name": "Blackalicious",
+      "archetype": "restaurant",
+      "subject": "Blackalicious: an open-sided beach bar and restaurant shack under a zinc roof by the east coast sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a26b",
+          "#2d6e8e",
+          "#f3ecd9"
+        ],
+        "roofColour": "#7d8387",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM tags it building=hut, amenity=restaurant, but the mapped polygon (210 x 93 m) is clearly an area, not the building. Typed as a rustic open beach bar."
+    },
+    "kingston-osm-node-2497592734": {
+      "venueId": "kingston-osm-node-2497592734",
+      "city": "kingston",
+      "name": "Mico University College",
+      "archetype": "campus-block",
+      "subject": "Mico University College: a two-storey rendered teacher-training college block with a covered arcade facing a lawn quad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33.5,
+        "depth_m": 11.9,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c4",
+          "#a56d4e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8402f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1836 institution; building c. mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context; the Mico Charity college has operated since 1836 on Marescaux Road, building appearance not found"
+        }
+      ],
+      "notes": "No building description found. Typed as a colonial-style teaching block."
+    },
+    "kingston-osm-node-307991768": {
+      "venueId": "kingston-osm-node-307991768",
+      "city": "kingston",
+      "name": "Negro Aroused (Edna Manley)",
+      "archetype": "monument",
+      "subject": "Negro Aroused: Edna Manley's 1935 sculpture of a muscular crouching-rising male figure, here shown as a figure on a low stone plinth in a small plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#8a8379",
+          "#4a3f33",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8a8379",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "dark figure, about life size, rising with arms bent"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1935 work",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Negro+Aroused",
+          "what": "Wikidata lists it as a bronze sculpture by Edna Manley; the famous original is carved wood held by the National Gallery"
+        }
+      ],
+      "notes": "Sculpture, not a building. The OSM point sits beside a 23 x 20 m, 3-level commercial building, which is not the subject. Height of the figure is a guess; the model is a plinth statue."
+    },
+    "kingston-osm-node-4913756065": {
+      "venueId": "kingston-osm-node-4913756065",
+      "city": "kingston",
+      "name": "Trinity Moravian Church",
+      "archetype": "church-modern",
+      "subject": "Trinity Moravian Church, Richmond Park: a plain mid-century gabled Moravian church for 400 worshippers beside its manse and hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26.5,
+        "depth_m": 15.2,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#7d6a58",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1956",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Trinity_Moravian_Church,_Jamaica",
+          "what": "foundation 1954, dedicated 1956, capacity 400, manse and hall nearby; no description of the look"
+        }
+      ],
+      "notes": "Dates and capacity come from the article; exterior look is a typed guess for a 1950s Caribbean church."
+    },
+    "kingston-osm-node-4956331011": {
+      "venueId": "kingston-osm-node-4956331011",
+      "city": "kingston",
+      "name": "National Gallery of Jamaica",
+      "archetype": "museum-theatre",
+      "subject": "National Gallery of Jamaica in the Roy West Building on the Kingston waterfront: a modern two-level concrete gallery block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 44,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3ddd0",
+          "#7e97a3",
+          "#ffffff"
+        ],
+        "roofColour": "#b5b8b8",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "entrance lobby"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Gallery_of_Jamaica",
+          "what": "moved 1982 into the Roy West Building in downtown Kingston, Kingston Mall waterfront"
+        }
+      ],
+      "notes": "Location and history only; look of the building is a typed guess. OSM footprint 62 x 44 m, 2 levels, tagged cafe."
+    },
+    "kingston-osm-way-173106442": {
+      "venueId": "kingston-osm-way-173106442",
+      "city": "kingston",
+      "name": "Emancipation Park",
+      "archetype": "park-landscape",
+      "subject": "Emancipation Park, New Kingston: lawns and palm-lined paths around a long ornamental pool with the Redemption Song bronze figures",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 165,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9c1ad",
+          "#4a8b57",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "Redemption Song: two nude bronze figures about 3.5 m on stone plinth"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "large rectangular water feature"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q27120115",
+          "what": "Wikidata record of the park; opened 2002 in New Kingston, OSM 190 x 165 m"
+        }
+      ],
+      "notes": "Recognisable by the Redemption Song statue facing a pool, backed by the park's sunken oval fountain area. Details of layout are from general knowledge, not a fetched page."
+    },
+    "kingston-osm-way-25886780": {
+      "venueId": "kingston-osm-way-25886780",
+      "city": "kingston",
+      "name": "Sabina Park",
+      "archetype": "stadium",
+      "subject": "Sabina Park cricket ground: oval pitch ringed by tiered stands, the George Headley stand to the south, the Members Pavilion west and a five-level concrete broadcast stand, with Blue Mountains behind",
+      "form": {
+        "footprint": "oval",
+        "width_m": 215,
+        "depth_m": 195,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9cbc9",
+          "#2d6e8e",
+          "#e5e5e0"
+        ],
+        "roofColour": "#7f8689",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6,
+          "note": "installed 2014"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "2021 mural outside depicting 19 cricketers"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1895 ground, rebuilt 2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sabina_Park",
+          "what": "George Headley Stand ~6,000 seats south; Northern Stand 2007; Members Pavilion west; five-level concrete stand with broadcast and boxes; floodlights 2014; capacity 15,600-20,000; Blue Mountains backdrop"
+        }
+      ],
+      "notes": "Small ground, the Northern Stand (2007) blocks the view of the Blue Mountains. Roofing is not described in the source; stand colours are guessed."
+    },
+    "kingston-osm-way-262238296": {
+      "venueId": "kingston-osm-way-262238296",
+      "city": "kingston",
+      "name": "Bob Marley Museum",
+      "archetype": "manor",
+      "subject": "Bob Marley Museum, 56 Hope Road: a two-storey gabled colonial house with a front verandah and a statue of Marley in the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23.7,
+        "depth_m": 18.1,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe3a8",
+          "#2e7d32",
+          "#c62828"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze of Marley in the front yard"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "front verandah"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "early 20th century (museum since 1986)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bob_Marley_Museum",
+          "what": "56 Hope Road, former home and Tuff Gong studio, museum since 1986, statue outside"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q650517",
+          "what": "OSM tags building:levels=2 and roof gabled"
+        }
+      ],
+      "notes": "Two storeys and gable come from OSM; colour scheme (cream with green and red trim, Rasta murals) is from memory of public photos and flagged uncertain."
+    },
+    "kingston-osm-way-299256337": {
+      "venueId": "kingston-osm-way-299256337",
+      "city": "kingston",
+      "name": "University of Technology, Jamaica",
+      "archetype": "campus-block",
+      "subject": "University of Technology, Jamaica: a mid-rise concrete teaching block with louvres and shaded walkways on the Papine campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e0d9c8",
+          "#b66a45",
+          "#f4f1e8"
+        ],
+        "roofColour": "#aeb1b1",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Technology,_Jamaica",
+          "what": "OSM campus 668 x 401 m (21.7 ha), Wikidata Q1584459; building design not described"
+        }
+      ],
+      "notes": "Campus is large and varied; this brief models a representative teaching block, not a specific named building."
+    },
+    "kingston-osm-way-325781633": {
+      "venueId": "kingston-osm-way-325781633",
+      "city": "kingston",
+      "name": "Kingston Public Hospital",
+      "archetype": "hospital",
+      "subject": "Kingston Public Hospital on North Street: a four-storey concrete ward block with a lower older wing and an ambulance entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 57,
+        "depth_m": 44,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e3cf",
+          "#8fa89c",
+          "#ffffff"
+        ],
+        "roofColour": "#b0b3b3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1930s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston_Public_Hospital",
+          "what": "Wikipedia/Wikidata Q104863743; OSM footprint 57 x 44 m"
+        }
+      ],
+      "notes": "Jamaica's largest public hospital (est. 1776). Current buildings are not described in fetched text; typed from the 3-storey-or-more limits of post-1907 downtown."
+    },
+    "kingston-osm-way-354944904": {
+      "venueId": "kingston-osm-way-354944904",
+      "city": "kingston",
+      "name": "University of the West Indies (Mona)",
+      "archetype": "campus-block",
+      "subject": "UWI Mona: a white rendered two-storey teaching block with louvred ground-floor arcade and a red-tile roof, set among lawns beneath the Blue Mountains",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35.4,
+        "depth_m": 31.3,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2eee2",
+          "#a9a28f",
+          "#ffffff"
+        ],
+        "roofColour": "#a8402f",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=University+of+the+West+Indies+Mona",
+          "what": "institution record only; building not identified"
+        }
+      ],
+      "notes": "Building under the OSM point is not named. Mona campus is known for 1950s whitewashed blocks with louvres and the stone University Chapel from the old sugar estate, but this specific building is a typed guess."
+    },
+    "kingston-osm-way-374593273": {
+      "venueId": "kingston-osm-way-374593273",
+      "city": "kingston",
+      "name": "Spanish Town Hospital",
+      "archetype": "hospital",
+      "subject": "Spanish Town Hospital: a sprawl of one and two-storey ward blocks linked by covered walkways",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc0",
+          "#9db3a4",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spanish_Town_Hospital",
+          "what": "stub: hospital near Spanish Town city centre; OSM footprint 257 x 217 m"
+        }
+      ],
+      "notes": "Nothing about the design found. OSM polygon is 257 x 217 m; the brief models one representative ward block."
+    },
+    "kingston-osm-way-375141828": {
+      "venueId": "kingston-osm-way-375141828",
+      "city": "kingston",
+      "name": "Shaare Shalom Synagogue",
+      "archetype": "shrine-small",
+      "subject": "Shaare Shalom Synagogue, Duke Street: a rendered neoclassical-style Sephardic synagogue rebuilt 1912, with sand-floored sanctuary",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23.4,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ead8",
+          "#8c7a5c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1912",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shaare_Shalom_Synagogue",
+          "what": "original 1885 destroyed by earthquake; current building 1912 by Henriques Brothers in concrete block; sanctuary over 600 seats, sand floor, 52-stop organ"
+        }
+      ],
+      "notes": "Material (concrete block), date and interior come from the article. Facade colour and neoclassical details are from memory of photos, not a fetched source."
+    },
+    "kingston-osm-way-753127490": {
+      "venueId": "kingston-osm-way-753127490",
+      "city": "kingston",
+      "name": "Cinchona Botanical Gardens",
+      "archetype": "park-landscape",
+      "subject": "Cinchona Botanical Gardens high in the Blue Mountains: terraced lawns with tree ferns and pines and a timber hilltop house",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 203,
+        "depth_m": 202,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#e6e1d0",
+          "#5c7b4e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8402f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1868",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Cinchona+Botanical+Gardens",
+          "what": "(page not retrievable); garden founded 1868 at about 1,500 m"
+        }
+      ],
+      "notes": "Misty montane garden, not a lowland park. Details not verified from a fetched page."
+    },
+    "kingston-osm-way-839108008": {
+      "venueId": "kingston-osm-way-839108008",
+      "city": "kingston",
+      "name": "Rockwells Clubhouse",
+      "archetype": "restaurant",
+      "subject": "Rockwells Clubhouse: a large single-storey hillside clubhouse restaurant with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1e8d0",
+          "#7b5a3c",
+          "#ffffff"
+        ],
+        "roofColour": "#a8402f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Jamaica",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "No description found; typed as a hill-country clubhouse."
+    },
+    "kingston-quiet-reflection": {
+      "venueId": "kingston-quiet-reflection",
+      "city": "kingston",
+      "name": "Holy Trinity Cathedral",
+      "archetype": "church-classical",
+      "subject": "Holy Trinity Cathedral on North Street: the 1911 Neo-Byzantine Catholic cathedral with a prominent central dome and arched portal, plastered in warm buff",
+      "form": {
+        "footprint": "cross",
+        "width_m": 45,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e3cd96",
+          "#b57a4a",
+          "#f3efe2"
+        ],
+        "roofColour": "#a7a699",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin towers flanking the facade"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "interior murals by Jesuit Brother Schroen, shown as decorated portal"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1908-1911",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Trinity_Cathedral_(Kingston)",
+          "what": "Neo-Byzantine, begun 1908, consecrated 1911, architect Raymond F. Almirall, next to Winchester Park on North Street"
+        }
+      ],
+      "notes": "Style, date and architect are sourced; dome, twin towers and buff colour come from memory of photos and are flagged medium. No STYLES id for Byzantine revival (baroque is the nearest)."
+    },
+    "kingston-recreation": {
+      "venueId": "kingston-recreation",
+      "city": "kingston",
+      "name": "National Heroes Park",
+      "archetype": "park-landscape",
+      "subject": "National Heroes Park: a huge flat 20-hectare former racecourse lawn crossed by paths, with memorial monuments to national heroes and a war-memorial cenotaph",
+      "form": {
+        "footprint": "rect",
+        "width_m": 692,
+        "depth_m": 377,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9c4b4",
+          "#4a8b57",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Jamaica War Memorial cenotaph with cross"
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "hero monuments"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1780s racecourse; heroes park 1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Heroes_Park",
+          "what": "20 ha, largest open space in Kingston; many monuments incl. Jamaica War Memorial cenotaph topped by a cross, Garvey, Manley, Bustamante, Nanny, Sharpe; former race track"
+        }
+      ],
+      "notes": "Largest dimension is clamped to the 120 m scene; model the central monument cluster. Colours are typed."
+    },
+    "kingston-transit": {
+      "venueId": "kingston-transit",
+      "city": "kingston",
+      "name": "Spanish Town Railway Station",
+      "archetype": "transport-station",
+      "subject": "Spanish Town railway station: a long single-storey 1845 Jamaica Georgian brick station on a stone base with a zinc hip roof, platform overhang on cast-iron brackets, and two tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57.5,
+        "depth_m": 13.2,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9b4a35",
+          "#b5aa94",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "1845",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Spanish_Town_railway_station",
+          "what": "built 1845 in Jamaica Georgian style, brick on stone base, sash windows, recessed-panel doors, long zinc hip roof, timber posts on wall-mounted cast-iron brackets north side and timber brackets south side; single two-sided platform serving two tracks; closed 1992"
+        }
+      ],
+      "notes": "Passenger service ended 1992 and the building is derelict: faded paint, weedy ballast."
+    }
+  }
+}

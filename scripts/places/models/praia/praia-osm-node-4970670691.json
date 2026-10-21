@@ -1,0 +1,225 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/praia.json",
+   "used": "coastal headland of dark volcanic basalt and sandy scrub, path, viewing point with railing, steps; no building and no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "headland",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       22.0,
+       15.0
+      ],
+      "cx": 0,
+      "cy": 0,
+      "colour": "#5b5a58"
+     },
+     {
+      "z": 1.5,
+      "ellipse": [
+       19.0,
+       12.5
+      ],
+      "cx": 3,
+      "cy": 2,
+      "colour": "#5b5a58"
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       14.0,
+       8.5
+      ],
+      "cx": 6,
+      "cy": 4,
+      "colour": "#8d8a84"
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       11.0,
+       6.0
+      ],
+      "cx": 8,
+      "cy": 5,
+      "colour": "#c9b38a"
+     }
+    ],
+    "colour": "#5b5a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    16,
+    8
+   ],
+   "params": {
+    "rect": [
+     8,
+     6
+    ],
+    "z0": 3.3,
+    "height": 0.4,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    12.5,
+    5,
+    3.7
+   ],
+   "params": {
+    "length": 7,
+    "height": 1.0,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    12.5,
+    11,
+    3.7
+   ],
+   "params": {
+    "length": 7,
+    "height": 1.0,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.4,
+    "rise": 0.5,
+    "run": 1.4,
+    "count": 6,
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    10,
+    3
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 4,
+    "count": 3,
+    "line": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-a",
+   "at": [
+    -16,
+    -4
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -3
+     ],
+     [
+      4,
+      -4
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      -5,
+      2
+     ]
+    ],
+    "height": 2.2,
+    "topScale": 0.6,
+    "colour": "#4a4948"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rock-b",
+   "at": [
+    20,
+    -8
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -2
+     ],
+     [
+      3,
+      -3
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      -2,
+      3
+     ]
+    ],
+    "height": 1.6,
+    "topScale": 0.6,
+    "colour": "#4a4948"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-node-4970670691",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline: headland is a typed rough basalt mound, shape not real"
+ }
+}

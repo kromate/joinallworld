@@ -1,0 +1,372 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "grand-cereals-and-oil-mills",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1503978170",
+   "used": "industrial building outline 103x49 m (4178 m2), stepped west end, used for the mill shed"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mill-shed",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b0aaa0",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "bands": "#4f6b54",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "silo-bank",
+   "at": [
+    28,
+    -2,
+    9
+   ],
+   "params": {
+    "nx": 3,
+    "ny": 2,
+    "radius": 3.6,
+    "height": 22,
+    "headhouse": true,
+    "colour": "#b9bec3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mill-house",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    -2
+   ],
+   "z0": 9,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8e4da",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#4f6b54"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "rise": 1.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    -30,
+    2,
+    9
+   ],
+   "params": {
+    "height": 24,
+    "radius": 1.1,
+    "material": "concrete",
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -10,
+    40,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0,
+      "#b0aaa0"
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      4.2,
+      8.2
+     ],
+     [
+      0,
+      8.6,
+      "#8a8780"
+     ]
+    ],
+    "segments": 12,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    2,
+    40,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0,
+      "#b0aaa0"
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      4.2,
+      8.2
+     ],
+     [
+      0,
+      8.6,
+      "#8a8780"
+     ]
+    ],
+    "segments": 12,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    14,
+    40,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0,
+      "#b0aaa0"
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      4.2,
+      8.2
+     ],
+     [
+      0,
+      8.6,
+      "#8a8780"
+     ]
+    ],
+    "segments": 12,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    26,
+    40,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0,
+      "#b0aaa0"
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      4.2,
+      8.2
+     ],
+     [
+      0,
+      8.6,
+      "#8a8780"
+     ]
+    ],
+    "segments": 12,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -48,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.6,
+    "tankHeight": 3.5,
+    "legHeight": 8,
+    "colour": "#4f6b54"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -5,
+    52,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.4,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -5,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.5,
+    "pillar": 1.0,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 2.4,
+    "colour": "#4f6b54"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    20,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -30
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real outline for the shed, silo bank/chimney/tanks are typical-mill guesses (brief says layout guessed)."
+ }
+}

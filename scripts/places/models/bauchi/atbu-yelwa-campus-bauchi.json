@@ -1,0 +1,329 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abubakar_Tafawa_Balewa_University_Gate_(3).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musaddam Idriss",
+   "view": "front",
+   "file": "/tmp/places-evidence/bauchi/univgate.jpg",
+   "used": "entrance gate form only: white wide slab with two rising arch bands and a central blank emblem panel, low white railing; block behind is typed (no photo of it found)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json",
+   "used": "1980s modernist teaching block, 70 x 22 m, three storeys, ribbon windows, brise-soleil"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#a8553a",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a8a39a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -12,
+    -5.2,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 11,
+    "pitch": 2.4,
+    "depth": 0.6,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -27,
+    -6
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a39a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c85",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    20,
+    -5.2,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "floors": 3,
+    "storeyHeight": 4,
+    "proud": 1.2,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 5.5,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 5.5,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.2
+    ],
+    "height": 1.6,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -30,
+    7.1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.9
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "from": [
+      -11,
+      0
+     ],
+     "to": [
+      11,
+      0
+     ]
+    },
+    "bulge": 3.2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30.8,
+    5.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#1b7a8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.2,
+    "thickness": 0.2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.2,
+    "thickness": 0.2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    13,
+    -29,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 1.5,
+    "colours": [
+     "#1b7a43",
+     "#1b7a8a"
+    ]
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "yaw": 0,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "yaw": 0,
+    "colour": "#3f4a5a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Block is typed, not observed (OSM match is a 30 m2 shed 43 m away, unusable); the gate is from the photo but the arch bands are approximated."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "atbu-yelwa-campus-bauchi"
+}

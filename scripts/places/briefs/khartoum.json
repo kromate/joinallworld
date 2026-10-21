@@ -1,0 +1,1552 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "khartoum",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "khartoum",
+    "climate": "desert",
+    "vernacular": "Hot desert city at the Blue/White Nile confluence. Ordinary buildings are 1-3 storey flat-roofed concrete-frame houses and shops in sand-coloured, cream or ochre painted render behind high walls with metal gates; the colonial core (Kitchener grid) has red-brick and sandstone Victorian-style government buildings with arcaded galleries; Omdurman and the edges keep mud/burnt-brick compounds; corrugated sheet shade roofs and water tanks are everywhere; dust-beige is the dominant tone.",
+    "wallColours": [
+      "#d9c4a0",
+      "#c9a97c",
+      "#e9dec3",
+      "#b86f4d",
+      "#a8a095",
+      "#f1ebdc",
+      "#c98f5f"
+    ],
+    "roofColours": [
+      "#9c9283",
+      "#8c979d",
+      "#a85b3d",
+      "#b9b0a0"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "mud-render",
+      "sandstone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial-era arcades/galleries and pointed arched entrances on government and university buildings; Mediterranean-style windows and balconies in the old centre; neighbourhood mosques with a single slender minaret, small dome, green or white trim and arched windows; perforated screen-block fences; painted metal gates.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Khartoum",
+        "what": "Governor-General's Palace rebuilt in red brick with sandstone corners; central Khartoum followed Victorian models with Middle Eastern windows/balconies; BWh hot desert climate; Union Jack street grid"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/University_of_Khartoum",
+        "what": "symmetrical two-floor galleried main building with pointed arched entrance and palm-lined lane; British colonial science faculty"
+      }
+    ]
+  },
+  "places": {
+    "khartoum-airport-khartoum-airport": {
+      "venueId": "khartoum-airport-khartoum-airport",
+      "city": "khartoum",
+      "name": "Khartoum International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Khartoum International Airport's low concrete passenger terminal with a flat canopy at the kerb and a small control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 48,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d6bd",
+          "#9aa3a8",
+          "#f3efe4"
+        ],
+        "roofColour": "#a39a8b",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "kerb canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Khartoum_International_Airport",
+          "what": "one 2,980 m runway; old terminals described only by a 2010 departure hall photo caption; a larger replacement is planned in Omdurman"
+        }
+      ],
+      "notes": "No source describing the terminal's exterior was found. Typed from airport type and city style: older low-rise concrete terminal, sand-beige render, flat roof, apron-side canopy."
+    },
+    "khartoum-clinic": {
+      "venueId": "khartoum-clinic",
+      "city": "khartoum",
+      "name": "AL-Huda Medical Center",
+      "archetype": "hospital",
+      "subject": "A mid-size private medical centre: three-storey cream block with a covered ambulance entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc7",
+          "#4f8a7a",
+          "#f6f2e8"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue is a clinic with no findable description; typed from hospital type and Khartoum style (cream render, flat roof, rooftop water tanks)."
+    },
+    "khartoum-community-notices": {
+      "venueId": "khartoum-community-notices",
+      "city": "khartoum",
+      "name": "Ministry of Energy and Oil",
+      "archetype": "civic-palace",
+      "subject": "A government ministry block in central Khartoum: a five-storey concrete slab with a recessed entrance and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 32,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d3c7ae",
+          "#8d8a82",
+          "#efe9da"
+        ],
+        "roofColour": "#8f8a80",
+        "windows": "ribbon",
+        "windowRatio": 0.38
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porte-cochere"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "what": "city-centre government buildings mix colonial brick and later modern concrete"
+        }
+      ],
+      "notes": "The ministry's actual building was not described in any source found. Typed civic block from city style; sun-shading on a concrete frame is the typical Khartoum modern ministry look."
+    },
+    "khartoum-community-voting-game": {
+      "venueId": "khartoum-community-voting-game",
+      "city": "khartoum",
+      "name": "ميدان قلب الاسد (Lion's Heart Square)",
+      "archetype": "park-landscape",
+      "subject": "A paved public square on the Omdurman side with a low central plinth, a few trees and kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d6c7a5",
+          "#9d9585",
+          "#e7dfc9"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central plinth"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name means 'Lion's Heart Square'; nothing about its layout was findable. Low-confidence plaza typed from city style."
+    },
+    "khartoum-community-workshop": {
+      "venueId": "khartoum-community-workshop",
+      "city": "khartoum",
+      "name": "International University of Africa",
+      "archetype": "campus-block",
+      "subject": "A campus of 3-4 storey arched-arcade teaching blocks around a central court with a domed mosque",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5d6b5",
+          "#7d9a7e",
+          "#f4efe2"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "campus mosque"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No exterior description was found for this campus. Typed from the university type and Khartoum style; an Islamic-university campus is expected to carry arcades and a mosque."
+    },
+    "khartoum-market-game": {
+      "venueId": "khartoum-market-game",
+      "city": "khartoum",
+      "name": "سوق سته (Souq Sitta)",
+      "archetype": "market-open",
+      "subject": "Dense open-air market street of tin-roofed stalls and shaded lock-up shops, with cloth awnings and handcarts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#cdb890",
+          "#6f8a96",
+          "#ece3cf"
+        ],
+        "roofColour": "#8a9498",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 12
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from market type and Khartoum street-market style; stall layout is not documented."
+    },
+    "khartoum-meal-stop": {
+      "venueId": "khartoum-meal-stop",
+      "city": "khartoum",
+      "name": "كفتريا حاتيكم",
+      "archetype": "restaurant",
+      "subject": "A small street-front cafeteria: one-storey cream shopfront with a shade awning and plastic tables outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ecdfc2",
+          "#b6483a",
+          "#f7f2e6"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure cafeteria; typed from city style."
+    },
+    "khartoum-osm-node-6207175685": {
+      "venueId": "khartoum-osm-node-6207175685",
+      "city": "khartoum",
+      "name": "أراضي القماراب صالحة (Al-Qamarab plots)",
+      "archetype": "park-landscape",
+      "subject": "Open sandy residential plots on the western edge of Omdurman with a few acacias and low boundary walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#d6c29b",
+          "#b69c72",
+          "#e8dcc0"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 3
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Designated land plots (a viewpoint-type game venue); nothing built is documented. Flat sand with walls and sparse acacia."
+    },
+    "khartoum-osm-node-7039345257": {
+      "venueId": "khartoum-osm-node-7039345257",
+      "city": "khartoum",
+      "name": "مطعم العطبراوي للمأكولات",
+      "archetype": "restaurant",
+      "subject": "A two-storey grill restaurant with a glazed ground floor, upper terrace and illuminated name board (blank)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0cfa9",
+          "#8c3f2e",
+          "#f4eddc"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from restaurant type; Atbara-style grill houses are typically street-front concrete buildings with a terrace."
+    },
+    "khartoum-osm-node-7079529828": {
+      "venueId": "khartoum-osm-node-7079529828",
+      "city": "khartoum",
+      "name": "مطعم مودة",
+      "archetype": "restaurant",
+      "subject": "A modest one-storey family restaurant inside a walled plot with a shaded courtyard seating area",
+      "form": {
+        "footprint": "L",
+        "width_m": 20,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b5",
+          "#5a8a74",
+          "#f6f0e0"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from restaurant type and city style; differs from the Atbarawi venue by being single-storey and courtyard-based."
+    },
+    "khartoum-osm-node-7079627016": {
+      "venueId": "khartoum-osm-node-7079627016",
+      "city": "khartoum",
+      "name": "مسجد الاندلس مربع 7 (Al-Andalus Mosque, Block 7)",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque in a planned residential block: cream walls, green trim, one small dome and a single slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eee3c8",
+          "#3f7d5c",
+          "#fbf8ee"
+        ],
+        "roofColour": "#d8d2c2",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single square-section minaret ~22 m"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name from the OSM/game data only (Andalusia mosque, Block 7). Typed from the standard Sudanese neighbourhood mosque form; no specific description found."
+    },
+    "khartoum-osm-node-7095798160": {
+      "venueId": "khartoum-osm-node-7095798160",
+      "city": "khartoum",
+      "name": "كلية الشرطة والقانون (Police and Law College)",
+      "archetype": "campus-block",
+      "subject": "Parade-ground institute: long two-storey teaching block and barracks wings in sand-and-white paint behind a gated wall",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a3",
+          "#7d6b4d",
+          "#f2ece0"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found; typed from campus type and city style."
+    },
+    "khartoum-osm-node-7161280085": {
+      "venueId": "khartoum-osm-node-7161280085",
+      "city": "khartoum",
+      "name": "منزل ضياء (Diaa's house)",
+      "archetype": "manor",
+      "subject": "An ordinary walled family house in northern Omdurman: single-storey flat-roofed render house in a sand courtyard with a tall metal gate",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "flat",
+        "variant": "walled-courtyard-house"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3cfa6",
+          "#a5693f",
+          "#f5eedb"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "screen",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A private house; nothing is documented. Typed from the Khartoum walled courtyard house."
+    },
+    "khartoum-osm-way-1007170590": {
+      "venueId": "khartoum-osm-way-1007170590",
+      "city": "khartoum",
+      "name": "Ahfad University for Women",
+      "archetype": "campus-block",
+      "subject": "A low-rise women's university campus in Omdurman: two- and three-storey cream buildings linked by shaded courtyards and covered walkways",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#ebdfc4",
+          "#a4573d",
+          "#f7f2e5"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "arched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 3
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ahfad_University_for_Women",
+          "what": "founded from a 1907 girls' school in a mud hut; Omdurman campus; no building description"
+        }
+      ],
+      "notes": "No campus architecture description found; only history. Typed from campus type and city style with shaded courtyards."
+    },
+    "khartoum-osm-way-108830728": {
+      "venueId": "khartoum-osm-way-108830728",
+      "city": "khartoum",
+      "name": "Al Shifa Pharmaceutical Factory site",
+      "archetype": "industrial",
+      "subject": "A pharmaceutical works of four low buildings: white-grey factory sheds with a taller process block, chimney stacks and water tanks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d5d3cb",
+          "#7d8a95",
+          "#efece4"
+        ],
+        "roofColour": "#9aa1a6",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Shifa_pharmaceutical_factory",
+          "what": "four buildings, built 1992-96, opened 1997, destroyed by a 1998 missile strike; appearance not described"
+        }
+      ],
+      "notes": "Built 1992-96 with four buildings, destroyed 1998; no exterior description. The model shows a generic plant block typed from industrial type; do not depict damage or the strike."
+    },
+    "khartoum-osm-way-1450938789": {
+      "venueId": "khartoum-osm-way-1450938789",
+      "city": "khartoum",
+      "name": "Local Market",
+      "archetype": "market-open",
+      "subject": "A neighbourhood market on the Omdurman edge: rows of tin-roofed stalls and a few small shops around a sand lot",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "mud-render",
+        "colours": [
+          "#cbb68c",
+          "#798f9a",
+          "#e8dfc9"
+        ],
+        "roofColour": "#8a9498",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic name; typed from market type. Distinguished from Souq Sitta by being smaller, mud-render and sandier."
+    },
+    "khartoum-osm-way-303334100": {
+      "venueId": "khartoum-osm-way-303334100",
+      "city": "khartoum",
+      "name": "National Museum of Sudan",
+      "archetype": "museum-theatre",
+      "subject": "The two-storey National Museum on Nile Avenue with its approach alley of ram and lion statues and a garden of re-erected Nubian temples",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "painted-render",
+        "colours": [
+          "#d6bf8f",
+          "#a7855a",
+          "#efe4c8"
+        ],
+        "roofColour": "#a79b86",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 8,
+          "note": "two Meroitic rams and six dark sandstone lions along the monumental alley"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "re-erected Nubian temple fronts in the garden"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "artificial stream symbolising the Nile"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1955",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Sudan",
+          "what": "two-storey building built 1955; main hall with 4 m Taharqa statue; Monumental Alley lined with rams and lions; garden temples (Buhen, Semna, Aksha...) surrounded by an artificial Nile stream; war damaged"
+        }
+      ],
+      "notes": "Facts (two storeys, 1955, alley of 2 rams + 6 lions, temple garden with stream) are sourced. Facade colours/material are typed to sandstone-beige and are unconfirmed; the garden temples and statue alley are the recognisable part."
+    },
+    "khartoum-osm-way-309577358": {
+      "venueId": "khartoum-osm-way-309577358",
+      "city": "khartoum",
+      "name": "University of Khartoum",
+      "archetype": "campus-block",
+      "subject": "The 1900s Gordon Memorial College main building: a long symmetrical two-storey colonial block with galleries on both floors and a pointed-arch entrance, approached by a palm-lined lane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#b46d4c",
+          "#efe4cc",
+          "#f6f0e0"
+        ],
+        "roofColour": "#8a4c34",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 2,
+          "note": "galleries on both floors"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "pointed-arch central entrance"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "modest central pavilion"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1902",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Khartoum",
+          "what": "1961 photo: symmetrical building with galleries on two floors, pointed arched entrance, palm-lined lane; built 1901, college founded 1902; colonial-era science faculty"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "what": "colonial government buildings in red brick with sandstone corners"
+        }
+      ],
+      "notes": "Symmetry, two floors with galleries, pointed-arch entrance and palm lane are sourced. Red-brick/cream colours follow the Wingate-era Khartoum government style and are unconfirmed. No tower is confirmed: the pavilion is optional; drop clock-tower if the generator over-emphasises it."
+    },
+    "khartoum-osm-way-5772972": {
+      "venueId": "khartoum-osm-way-5772972",
+      "city": "khartoum",
+      "name": "Al-Hilal Stadium",
+      "archetype": "stadium",
+      "subject": "Omdurman's blue-and-white Al-Hilal 'Blue Jewel' bowl: two-tier stands, one roofed main stand and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd6dc",
+          "#1f56a8",
+          "#f4f6f7"
+        ],
+        "roofColour": "#9aa5ad",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main (west) stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1968, renovated 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Hilal_Stadium",
+          "what": "capacity 25,000; opened 26 January 1968; renovated 1992 and January 2018; nickname 'The Blue Jewel'"
+        }
+      ],
+      "notes": "Capacity/dates and nickname are sourced; blue-and-white seating is inferred from the nickname. Smaller than Al Merrikh; roof only on one stand."
+    },
+    "khartoum-osm-way-5775815": {
+      "venueId": "khartoum-osm-way-5775815",
+      "city": "khartoum",
+      "name": "Al Merrikh Stadium",
+      "archetype": "stadium",
+      "subject": "The 'Red Castle' of Omdurman: a large red-and-white concrete bowl with deep stands on all sides and floodlight pylons",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cbbfae",
+          "#b3262d",
+          "#f4efe7"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "two covered stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964, renovated 2003",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Merrikh_Stadium",
+          "what": "capacity 43,000 (planned ~66,215); groundbreaking 1962, opened 30 November 1964; renovated 2003 with new gallery and seats; closed for reconstruction; nickname 'Red Castle'"
+        }
+      ],
+      "notes": "Dates, capacity and nickname sourced; red seating is inferred from the nickname. Larger and more enclosed than Al-Hilal, different colour scheme."
+    },
+    "khartoum-osm-way-788773933": {
+      "venueId": "khartoum-osm-way-788773933",
+      "city": "khartoum",
+      "name": "AL- Rajhi Hospital",
+      "archetype": "hospital",
+      "subject": "A newer four-storey private hospital with a glazed entrance bay and an ambulance port",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 28,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d6",
+          "#2f7ea0",
+          "#fbfaf5"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "ribbon",
+        "windowRatio": 0.33
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from hospital type; made taller and more glazed than the other Khartoum hospitals."
+    },
+    "khartoum-osm-way-815520727": {
+      "venueId": "khartoum-osm-way-815520727",
+      "city": "khartoum",
+      "name": "مستشفى شرق النيل (East Nile Hospital)",
+      "archetype": "hospital",
+      "subject": "A public hospital in the east: a long two-storey ward block with open verandas and a central entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 95,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d3ab",
+          "#8da29b",
+          "#f4eee0"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ward verandas"
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from public-hospital type; spread-out low wards, unlike the compact private clinics."
+    },
+    "khartoum-quiet-reflection": {
+      "venueId": "khartoum-quiet-reflection",
+      "city": "khartoum",
+      "name": "مسجد ابو نخيلة (Abu Nakhila Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "A larger Bahri/Omdurman congregational mosque: white walls, central dome, two minarets and an arched prayer-hall front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f3efe3",
+          "#2e7a5a",
+          "#c9b88f"
+        ],
+        "roofColour": "#e3ddcc",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "slender, ~28 m"
+        },
+        {
+          "id": "arches",
+          "count": 7
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the common Sudanese mosque form; bigger and with two minarets so it differs from the Al-Andalus neighbourhood mosque."
+    },
+    "khartoum-recreation": {
+      "venueId": "khartoum-recreation",
+      "city": "khartoum",
+      "name": "Children Area",
+      "archetype": "park-landscape",
+      "subject": "A fenced children's play area with colourful play frames, benches, shade sails and a few palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0cf9f",
+          "#d46a3a",
+          "#3f86b5"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "shaded seating"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic name; typed park. Bright playground colours chosen to contrast with sand-toned surroundings."
+    },
+    "khartoum-transit": {
+      "venueId": "khartoum-transit",
+      "city": "khartoum",
+      "name": "صينية القندول (Al-Qandool roundabout)",
+      "archetype": "transport-station",
+      "subject": "A busy city roundabout/bus stop at Al-Qandool junction: a central planted island, bus bays and amjad minibuses around it",
+      "form": {
+        "footprint": "round",
+        "width_m": 80,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "roundabout"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc3aa",
+          "#8d8a82",
+          "#ece6d6"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A named traffic circle (sinia = roundabout); no description found. Typed as a roundabout bus stop."
+    }
+  }
+}

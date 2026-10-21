@@ -1,0 +1,265 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flambeau_du_centre_FC_contre_Bumamuru_FC_(3).jpg",
+   "licence": "CC0",
+   "author": "Africain777",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bujumbura/stade3.jpg",
+   "used": "main stand: low white-rendered back wall with red steel posts under a long blue/teal corrugated roof that steps up at one end; synthetic green pitch; red/maroon terraces"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Flambeau_du_centre_FC_contre_Bumamuru_FC_001.jpg",
+   "licence": "CC0",
+   "author": "Jacquesmapendano",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bujumbura/stade1.jpg",
+   "used": "opposite side: tall plain white-painted perimeter wall, red concrete terrace steps with a green painted band, advertising hoardings (blank)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/10630191",
+   "used": "overall oval/long-axis layout (long axis N-S, about 211 x 137 m), scaled to about 0.56 for the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 110,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    -2,
+    0,
+    0.1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 66,
+    "width": 42,
+    "stripes": 2,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     32
+    ],
+    "end": [
+     -26,
+     0
+    ],
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColour": "#b5603f",
+    "concreteColour": "#9a3a32",
+    "under": "solid",
+    "backWall": 0.4,
+    "canopy": {
+     "height": 5,
+     "depth": 9.4,
+     "colour": "#2f8fb0",
+     "slopeDeg": 3,
+     "supports": 3,
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     0
+    ],
+    "end": [
+     -26,
+     -32
+    ],
+    "rows": 11,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColour": "#b5603f",
+    "concreteColour": "#9a3a32",
+    "under": "solid",
+    "backWall": 0.4,
+    "canopy": {
+     "height": 6.8,
+     "depth": 9.4,
+     "colour": "#2f8fb0",
+     "slopeDeg": 3,
+     "supports": 3,
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     24,
+     -32
+    ],
+    "end": [
+     24,
+     32
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.85,
+    "seatColour": "#a8483a",
+    "concreteColour": "#9a3a32",
+    "under": "solid",
+    "backWall": 0.6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -1,
+     32
+    ],
+    "radius": 24,
+    "radiusY": 14,
+    "startDeg": 0,
+    "endDeg": 180,
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.85,
+    "seatColour": "#a8483a",
+    "concreteColour": "#9a3a32",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -1,
+     -32
+    ],
+    "radius": 24,
+    "radiusY": 14,
+    "startDeg": 180,
+    "endDeg": 360,
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.85,
+    "seatColour": "#a8483a",
+    "concreteColour": "#9a3a32",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -36,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    34,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -36,
+    46,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    34,
+    46,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -1,
+    58,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "facing": "south"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   130,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-way-10630191",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "main stand now low stepped blue-teal roof on red posts over maroon terraces, viewed from pitch side; roof still floats slightly above rear of terraces, no white rear wall, pitch colour fixed green with low stripes, plain paved site"
+ }
+}

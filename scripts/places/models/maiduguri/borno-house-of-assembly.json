@@ -1,0 +1,269 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/maiduguri.json",
+   "used": "65x35 m two-storey chamber block, central portico, flat roof, flags, gated compound; no photo or reliable OSM outline (nearest building 78 m away, 140 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#f7f4ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    -27,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     18
+    ]
+   },
+   "at": [
+    27,
+    2
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber-drum",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0aaa0",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 8.5,
+    "columns": 6,
+    "pediment": false,
+    "steps": 5,
+    "colour": "#f7f4ee",
+    "roofColour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -55,
+      0
+     ],
+     [
+      55,
+      0
+     ],
+     [
+      55,
+      60
+     ],
+     [
+      -55,
+      60
+     ],
+     [
+      -55,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     20
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "borno-house-of-assembly",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; massing, portico and flags are typed from the brief, colours are estimates."
+ }
+}

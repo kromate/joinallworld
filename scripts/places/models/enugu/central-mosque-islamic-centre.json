@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "central-mosque-islamic-centre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1144816889",
+   "used": "prayer hall outline (stepped, about 26 x 22 m)"
+  },
+  {
+   "kind": "text",
+   "used": "white and green domed mosque with two corner minarets about 25 m; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2ae",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "main-dome",
+   "at": [
+    0,
+    0,
+    10.8
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#2f7a5a",
+    "profile": [
+     [
+      7.5,
+      0,
+      "#f4f1e8"
+     ],
+     [
+      7.5,
+      1.4
+     ],
+     [
+      7.9,
+      1.4,
+      "#2f7a5a"
+     ],
+     [
+      7.2,
+      3.6
+     ],
+     [
+      5.8,
+      5.8
+     ],
+     [
+      3.6,
+      7.4
+     ],
+     [
+      1.5,
+      8.2
+     ],
+     [
+      0,
+      8.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-finial",
+   "at": [
+    0,
+    0,
+    19.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      2.2
+     ],
+     [
+      0.15,
+      2.4
+     ],
+     [
+      0.15,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -13,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "accent": "#2f7a5a",
+    "cap_colour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    13,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 25,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "accent": "#2f7a5a",
+    "cap_colour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ablution-block",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d3",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b3a2",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -27,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 54,
+    "height": 2.2,
+    "colour": "#c9c2ae",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 5,
+    "colour": "#f4f1e8",
+    "trim": "#2f7a5a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; footprint-based white and green domed mosque from brief"
+ }
+}

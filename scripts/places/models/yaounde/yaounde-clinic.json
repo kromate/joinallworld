@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/188761593",
+   "used": "real pavilion-cluster outline (name match), levels and size"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ambulance_de_l%27h%C3%B4pital_g%C3%A9n%C3%A9ral_de_Yaound%C3%A9.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kondah",
+   "view": "street",
+   "file": "/tmp/places-evidence/yaounde/hosp1.jpg",
+   "used": "perimeter only: cream render wall panels between brown piers topped with a blue railing; used for site wall colours, not compared with the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eae2cf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "bands": "#8fb0a6",
+    "cornice": true,
+    "bay": 20
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b4a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    0,
+    30,
+    12
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -70,
+    0
+   ],
+   "params": {
+    "length": 130,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e8d9a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "footprint only; the photo shows just the perimeter wall, so wards are one extruded outline with plain bands, no separate pavilions or walkways"
+ }
+}

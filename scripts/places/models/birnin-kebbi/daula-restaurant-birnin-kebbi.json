@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "daula-restaurant-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945524784",
+   "used": "14 x 6.5 m shopfront outline, containing-match"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/birnin-kebbi.json",
+   "used": "single-storey flat-roof shopfront with veranda, blank signboard, plastic chairs"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c19a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3,
+    "plinth": 0.3,
+    "bands": "#a9c3cf",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/veranda",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "depth": 2.4,
+    "height": 2.8,
+    "rise": 0.5,
+    "colour": "#f2efe6",
+    "cap_colour": "#7f8a8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 3.8,
+    "height": 1.2,
+    "colour": "#3f8f9a",
+    "topColour": "#3f8f9a"
+   },
+   "at": [
+    0,
+    -3.3
+   ]
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -4,
+    -6.2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#c8362f"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4,
+    -6.2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#c9c6bd",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; typed shopfront on real outline"
+ }
+}

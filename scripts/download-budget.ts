@@ -309,7 +309,7 @@ export function formatReport(dist: Dist, results: readonly Check[], groups: read
   for (const item of results) {
     const budget = BUDGETS[item.budget]
     const measured = item.measured === null ? '       -' : String(item.measured).padStart(8)
-    lines.push(`${item.status === 'over' ? 'OVER' : item.status === 'ok' ? 'ok  ' : 'n/a '} ${item.budget.padEnd(22)} ${measured}  budget ${describeBudget(budget)}${budget.status === 'provisional' ? ' [provisional]' : ''}  ${item.detail}`)
+    lines.push(`${item.status === 'over' ? 'OVER' : item.status === 'ok' ? 'ok  ' : 'n/a '} ${item.budget.padEnd(22)} ${measured}  budget ${describeBudget(budget)}${budget.status !== 'current' ? ` [${budget.status}]` : ''}  ${item.detail}`)
   }
   const paint = firstPaintFiles(dist), startup = startupFiles(dist, 'lagos') ?? new Set<string>()
   lines.push('', `First paint (${paint.size} files) and lagos startup (${startup.size} files): kB raw / gzip / brotli`)

@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-meal-stop",
+   "used": "roadside restaurant, single storey, L plan 20x12 m, hip roof in blue corrugated sheet, cream render with orange band, shaded veranda, blank sign board. OSM containing way (8.8x8 m block) is smaller than the brief and not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "kind": "L",
+    "size": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6c6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#d98a2b",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3d5f86",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -9,
+    -8.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "eaveHeight": 2.8,
+    "attachHeight": 3.6,
+    "postEvery": 3.5,
+    "colour": "#d98a2b",
+    "roofColour": "#3d5f86"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.6,
+    "bottom": 2.4,
+    "colour": "#d98a2b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-annex",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    16,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a79c8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; form from brief text only."
+ }
+}

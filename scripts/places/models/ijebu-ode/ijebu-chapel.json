@@ -1,0 +1,120 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-chapel",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ijebu-ode.json",
+   "used": "program, size, colours; no photo or reliable outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "rotDeg": 90,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#6a4a8a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 11,
+    "cap": "hip",
+    "capRise": 2.5,
+    "colour": "#e6dcc2",
+    "capColour": "#8a4b32",
+    "windows": "punched",
+    "windowRatio": 0.2
+   }
+  },
+  {
+   "type": "church-gothic/steps",
+   "at": [
+    -17,
+    0,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; form follows the brief and the Yoruba-town pattern"
+ }
+}

@@ -1,0 +1,741 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:TZ_DarEsSalaam_National_museum.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:Digr",
+   "view": "front",
+   "file": "/tmp/places-evidence/dar-es-salaam/museum1.jpg",
+   "used": "white rendered low front wing with turquoise cornice band, raised central block under a terracotta hip roof with turquoise fascia and small arched clerestory windows, central entrance in a tiled blue/orange panel with a horseshoe arch and dark door, steps, arched side windows, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/451985626",
+   "used": "overall scale (about 44 x 32 m, L-shaped, bearing 50 deg); outline is irregular so the plan is composed from the photo instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 11,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9aa0",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     12.4,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -0.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c5502f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    10,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c5502f",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    22,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a9aa0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-fascia",
+   "footprint": {
+    "rect": [
+     34.8,
+     13.6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 5.5,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5cc3b3",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5cc3b3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-fascia-step",
+   "footprint": {
+    "rect": [
+     35.4,
+     14.2
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fdccf",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fdccf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-fascia",
+   "footprint": {
+    "rect": [
+     13.2,
+     9.8
+    ]
+   },
+   "at": [
+    0,
+    -0.8
+   ],
+   "rotDeg": 0,
+   "z0": 7.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5cc3b3",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5cc3b3"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -13.5,
+    -6.5,
+    1.5
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.7,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    13.5,
+    -6.5,
+    1.5
+   ],
+   "params": {
+    "width": 1.5,
+    "height": 2.7,
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -3.6,
+     -5.3,
+     7.0
+    ],
+    "end": [
+     3.6,
+     -5.3,
+     7.0
+    ],
+    "of": [
+     {
+      "type": "arched-window",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "width": 0.9,
+       "height": 0.9,
+       "kind": "arch"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -6.55,
+    0
+   ],
+   "params": {
+    "width": 5.4,
+    "height": 5.6,
+    "depth": 0.5,
+    "archWidth": 3.0,
+    "springHeight": 3.0,
+    "pointed": false,
+    "colour": "#2f66a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-recess",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -6.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a1d17",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a1d17"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-orange--1.75",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -1.75,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0.2,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9772f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9772f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-orange-1.75",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    1.75,
+    -6.5
+   ],
+   "rotDeg": 0,
+   "z0": 0.2,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9772f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9772f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-pillar--1.9",
+   "footprint": {
+    "rect": [
+     0.55,
+     0.55
+    ]
+   },
+   "at": [
+    -1.9,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadd",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efeadd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch-pillar-1.9",
+   "footprint": {
+    "rect": [
+     0.55,
+     0.55
+    ]
+   },
+   "at": [
+    1.9,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadd",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efeadd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      4.6,
+      -6.5
+     ],
+     [
+      4.443,
+      -7.572
+     ],
+     [
+      3.984,
+      -8.57
+     ],
+     [
+      3.253,
+      -9.427
+     ],
+     [
+      2.3,
+      -10.085
+     ],
+     [
+      1.191,
+      -10.499
+     ],
+     [
+      0.0,
+      -10.64
+     ],
+     [
+      -1.191,
+      -10.499
+     ],
+     [
+      -2.3,
+      -10.085
+     ],
+     [
+      -3.253,
+      -9.427
+     ],
+     [
+      -3.984,
+      -8.57
+     ],
+     [
+      -4.443,
+      -7.572
+     ],
+     [
+      -4.6,
+      -6.5
+     ]
+    ],
+    "height": 0.18,
+    "colour": "#5b5750"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      3.8,
+      -6.5
+     ],
+     [
+      3.671,
+      -7.385
+     ],
+     [
+      3.291,
+      -8.21
+     ],
+     [
+      2.687,
+      -8.918
+     ],
+     [
+      1.9,
+      -9.462
+     ],
+     [
+      0.984,
+      -9.803
+     ],
+     [
+      0.0,
+      -9.92
+     ],
+     [
+      -0.984,
+      -9.803
+     ],
+     [
+      -1.9,
+      -9.462
+     ],
+     [
+      -2.687,
+      -8.918
+     ],
+     [
+      -3.291,
+      -8.21
+     ],
+     [
+      -3.671,
+      -7.385
+     ],
+     [
+      -3.8,
+      -6.5
+     ]
+    ],
+    "height": 0.36,
+    "colour": "#5b5750"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      3.0,
+      -6.5
+     ],
+     [
+      2.898,
+      -7.199
+     ],
+     [
+      2.598,
+      -7.85
+     ],
+     [
+      2.121,
+      -8.409
+     ],
+     [
+      1.5,
+      -8.838
+     ],
+     [
+      0.776,
+      -9.108
+     ],
+     [
+      0.0,
+      -9.2
+     ],
+     [
+      -0.776,
+      -9.108
+     ],
+     [
+      -1.5,
+      -8.838
+     ],
+     [
+      -2.121,
+      -8.409
+     ],
+     [
+      -2.598,
+      -7.85
+     ],
+     [
+      -2.898,
+      -7.199
+     ],
+     [
+      -3.0,
+      -6.5
+     ]
+    ],
+    "height": 0.54,
+    "colour": "#5b5750"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    -8
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14.5,
+    -8
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    -8.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    26
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 2,
+    "spread": 14
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "horseshoe arch is a round arch with plain blue surround (no tile pattern, orange border thin); wing side windows read pointed; blob-like trees and generic foliage; clerestory windows small"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   80
+  ]
+ }
+}

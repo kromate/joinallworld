@@ -209,11 +209,14 @@ export function createCityView(container: HTMLElement, { cityId: firstCity = 'la
           const vehicleBuilder = models?.buildTravelVehicle ?? null;
           const travelVehicle = vehicleBuilder as unknown as TravelVehicleBuilder | null; // trust boundary: the model library is JavaScript
           if (ticket !== mounting) return;
+          // The venues' own map icons (LOD2 place models, about 2 KB each) are fetched beside the build. A city without place models, or a manifest that cannot be had, changes nothing.
+          const icons = models ? await models.planPlaceIcons(cityId) : null;
+          const placeIcons = icons ? icons.load() : null;
           // The city is built in short slices (a frame can draw between them) instead of one long task; the map takes it over finished.
-          const prebuilt = await prebuildCity(pack!, cityId, () => ticket === mounting);
+          const prebuilt = await prebuildCity(pack!, cityId, () => ticket === mounting, icons ? { iconVenues: icons.venues } : {});
           if (!prebuilt || ticket !== mounting) { if (prebuilt) { prebuilt.city.dispose(); prebuilt.kit.dispose(); } return; }
           impl?.destroy(); impl = null;
-          next = createMap3D(container, { prebuilt, tabHidden: () => settling || Boolean(globalThis.document?.hidden), pack: pack!, cityId, world, travelVehicle, trafficModels: models ? models.loadTrafficModels() : null, ...(ladder ? { ladder } : {}), ...callbacks, onTripDue, deepLink, onContextLost: () => { brokenGl = true; onNotice('The 3D map stopped on this device. Showing the simple map instead.'); void mount(); } });
+          next = createMap3D(container, { prebuilt, tabHidden: () => settling || Boolean(globalThis.document?.hidden), pack: pack!, cityId, world, travelVehicle, trafficModels: models ? models.loadTrafficModels() : null, placeIcons, ...(ladder ? { ladder } : {}), ...callbacks, onTripDue, deepLink, onContextLost: () => { brokenGl = true; onNotice('The 3D map stopped on this device. Showing the simple map instead.'); void mount(); } });
           nextKind = '3d';
           void models?.warmGlbVehicles(); // the authored vehicle models arrive after the first frame; until then (and if they never do) the procedural ones are drawn
         } catch (error) {

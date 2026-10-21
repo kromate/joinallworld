@@ -1,0 +1,710 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-osm-way-142062875",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nouakchott_stadium.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "kyselak",
+   "view": "interior",
+   "file": "/tmp/places-evidence/nouakchott/stadium1.jpg",
+   "used": "covered main stand: long white-edged roof with dark truss underside raised above wide pale raked concrete rows, cream glazed press box on the centre line, white handrails, white lattice floodlight masts with a lamp bank at the top, red track and green pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/142062875",
+   "used": "overall extent (about 207 x 154 m, scaled down to the scene clamp) and oval orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.48,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.12
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "params": {
+    "points": [
+     [
+      49.92,
+      0.0
+     ],
+     [
+      48.22,
+      9.48
+     ],
+     [
+      43.24,
+      18.33
+     ],
+     [
+      35.3,
+      25.92
+     ],
+     [
+      24.96,
+      31.75
+     ],
+     [
+      12.92,
+      35.41
+     ],
+     [
+      0.0,
+      36.66
+     ],
+     [
+      -12.92,
+      35.41
+     ],
+     [
+      -24.96,
+      31.75
+     ],
+     [
+      -35.3,
+      25.92
+     ],
+     [
+      -43.24,
+      18.33
+     ],
+     [
+      -48.22,
+      9.48
+     ],
+     [
+      -49.92,
+      0.0
+     ],
+     [
+      -48.22,
+      -9.48
+     ],
+     [
+      -43.24,
+      -18.33
+     ],
+     [
+      -35.3,
+      -25.92
+     ],
+     [
+      -24.96,
+      -31.75
+     ],
+     [
+      -12.92,
+      -35.41
+     ],
+     [
+      -0.0,
+      -36.66
+     ],
+     [
+      12.92,
+      -35.41
+     ],
+     [
+      24.96,
+      -31.75
+     ],
+     [
+      35.3,
+      -25.92
+     ],
+     [
+      43.24,
+      -18.33
+     ],
+     [
+      48.22,
+      -9.48
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#b4614a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turf",
+   "at": [
+    0.0,
+    0.0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      43.68,
+      0.0
+     ],
+     [
+      42.19,
+      7.27
+     ],
+     [
+      37.83,
+      14.04
+     ],
+     [
+      30.89,
+      19.86
+     ],
+     [
+      21.84,
+      24.32
+     ],
+     [
+      11.3,
+      27.12
+     ],
+     [
+      0.0,
+      28.08
+     ],
+     [
+      -11.3,
+      27.12
+     ],
+     [
+      -21.84,
+      24.32
+     ],
+     [
+      -30.89,
+      19.86
+     ],
+     [
+      -37.83,
+      14.04
+     ],
+     [
+      -42.19,
+      7.27
+     ],
+     [
+      -43.68,
+      0.0
+     ],
+     [
+      -42.19,
+      -7.27
+     ],
+     [
+      -37.83,
+      -14.04
+     ],
+     [
+      -30.89,
+      -19.86
+     ],
+     [
+      -21.84,
+      -24.32
+     ],
+     [
+      -11.3,
+      -27.12
+     ],
+     [
+      -0.0,
+      -28.08
+     ],
+     [
+      11.3,
+      -27.12
+     ],
+     [
+      21.84,
+      -24.32
+     ],
+     [
+      30.89,
+      -19.86
+     ],
+     [
+      37.83,
+      -14.04
+     ],
+     [
+      42.19,
+      -7.27
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#5f8f4a",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     -40.56,
+     -34.32
+    ],
+    "end": [
+     40.56,
+     -34.32
+    ],
+    "rows": 20,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.4,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#f4f0e4",
+    "concreteColour": "#f1ebd8",
+    "underColour": "#f1ebd8",
+    "backWall": 0,
+    "canopy": {
+     "height": 1.6,
+     "depth": 22,
+     "thickness": 1.4,
+     "slopeDeg": -3,
+     "colour": "#ffffff",
+     "edgeColour": "#ffffff",
+     "overhangBack": 1.0,
+     "supports": 8
+    },
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "prism",
+   "id": "press-box",
+   "at": [
+    0,
+    -40.2,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     26,
+     5
+    ],
+    "height": 3.4,
+    "colour": "#f1ebd8",
+    "windows": "ribbon",
+    "glassColour": "#6f8590",
+    "faces": {
+     "front": "ribbon"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0.0,
+     0.0
+    ],
+    "radius": 51.48,
+    "radiusY": 39.0,
+    "startDeg": -35,
+    "endDeg": 35,
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 16,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#f4f0e4",
+    "concreteColour": "#f1ebd8",
+    "underColour": "#f1ebd8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0.0,
+     0.0
+    ],
+    "radius": 51.48,
+    "radiusY": 39.0,
+    "startDeg": 145,
+    "endDeg": 215,
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 16,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#f4f0e4",
+    "concreteColour": "#f1ebd8",
+    "underColour": "#f1ebd8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "start": [
+     40.56,
+     40.56
+    ],
+    "end": [
+     -40.56,
+     40.56
+    ],
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#f4f0e4",
+    "concreteColour": "#f1ebd8",
+    "underColour": "#f1ebd8",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -51.48,
+    -35.88,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     }
+    ],
+    "colour": "#f4f4f0",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -51.48,
+    -35.88,
+    26
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.4
+    ],
+    "height": 3.8,
+    "colour": "#efe9d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    51.48,
+    -35.88,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     }
+    ],
+    "colour": "#f4f4f0",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    51.48,
+    -35.88,
+    26
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.4
+    ],
+    "height": 3.8,
+    "colour": "#efe9d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -51.48,
+    39.0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     }
+    ],
+    "colour": "#f4f4f0",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -51.48,
+    39.0,
+    26
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.4
+    ],
+    "height": 3.8,
+    "colour": "#efe9d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    51.48,
+    39.0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     }
+    ],
+    "colour": "#f4f4f0",
+    "capTop": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    51.48,
+    39.0,
+    26
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.4
+    ],
+    "height": 3.8,
+    "colour": "#efe9d6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0.0,
+    46.8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "post_height": 2.4,
+    "facing": "north",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcade-base",
+   "at": [
+    0,
+    -33.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     81,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#f1ebd8",
+    "windows": "ribbon",
+    "glassColour": "#2f3a40"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "handrail",
+   "params": {
+    "section": {
+     "circle": 0.06
+    },
+    "points": [
+     [
+      -40,
+      -34.0,
+      3.5
+     ],
+     [
+      40,
+      -34.0,
+      3.5
+     ]
+    ],
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58.5,
+     -43.7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58.5,
+     -43.7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -59.3,
+     43.7
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     59.3,
+     43.7
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy is now a deep white roof over the rows, cream stand, press box, arcade base, rail and masts added; renderer tint stays blue-grey, masts are solid tapered towers not lattice, canopy underside not dark truss, end and opposite stands typed not seen."
+ }
+}

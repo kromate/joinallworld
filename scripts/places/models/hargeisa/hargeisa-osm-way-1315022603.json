@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-way-1315022603",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1315022603",
+   "used": "park outline 90x59 m, name match"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Hargeisa",
+   "used": "city context only; no photo of this place found (Commons search empty)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c4bb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9bb08a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    2,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.5,
+    "posts": 4,
+    "colour": "#f0ede4",
+    "cap_colour": "#7f6a58"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    5,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.2,
+    "colour": "#c8c4bb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.2,
+    "colour": "#c8c4bb"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 6,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     22,
+     16
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -6,
+     20
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     -6
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline used for the lawn, paths/pavilion/gate are typed."
+ }
+}

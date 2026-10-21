@@ -1,0 +1,698 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chicken_Republic_Akure.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ajia4ty",
+   "view": "front",
+   "file": "/tmp/places-evidence/akure/chicken.jpg",
+   "used": "light-grey rendered box, tall red fascia band with yellow strip below, red end block at left, taller white pylon with small pitched gable behind, glazed shopfront with deep door opening, potted plants, paved forecourt; no logos or lettering reproduced"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/482492352",
+   "used": "footprint about 23 x 23 m (modelled as 22 x 14 m box per photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e5e6",
+    "windows": "curtain",
+    "windowRatio": 0.62,
+    "plinth": 0.35,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-end",
+   "footprint": {
+    "rect": [
+     5,
+     0.7
+    ]
+   },
+   "at": [
+    -9,
+    -7.15
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "mass",
+   "id": "yellow-left",
+   "footprint": {
+    "rect": [
+     5,
+     0.8
+    ]
+   },
+   "at": [
+    -9,
+    -7.15
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9a91f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9a91f"
+   },
+   "z0": 2.55
+  },
+  {
+   "type": "mass",
+   "id": "pylon",
+   "footprint": {
+    "rect": [
+     6,
+     2.4
+    ]
+   },
+   "at": [
+    -3.8,
+    -6.4
+   ],
+   "height": 8.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e5e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e5e6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-inset",
+   "footprint": {
+    "rect": [
+     4.4,
+     0.5
+    ]
+   },
+   "at": [
+    -3.8,
+    -7.6000000000000005
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f4"
+   },
+   "z0": 1.0
+  },
+  {
+   "type": "mass",
+   "id": "emblem-comb",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    -3.8,
+    -8.0
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 6.0
+  },
+  {
+   "type": "mass",
+   "id": "emblem-body",
+   "footprint": {
+    "rect": [
+     2.5,
+     0.6
+    ]
+   },
+   "at": [
+    -3.8,
+    -8.0
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9a91f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9a91f"
+   },
+   "z0": 3.4
+  },
+  {
+   "type": "mass",
+   "id": "emblem-red",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.7
+    ]
+   },
+   "at": [
+    -3.8,
+    -8.3
+   ],
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 4.0
+  },
+  {
+   "type": "mass",
+   "id": "pylon-gable",
+   "footprint": {
+    "rect": [
+     3.0,
+     2.4
+    ]
+   },
+   "at": [
+    -3.8,
+    -5.8
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a3326",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a3326",
+    "rise": 2.0
+   },
+   "z0": 8.6
+  },
+  {
+   "type": "mass",
+   "id": "door-recess",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    -8.5,
+    -7.0
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a3a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "glass-0",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    1.2,
+    -6.949999999999999
+   ],
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c79a"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "poster-0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    1.2,
+    -7.025
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "glass-1",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    5.4,
+    -6.949999999999999
+   ],
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c79a"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "poster-1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    5.4,
+    -7.025
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "glass-2",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    9.6,
+    -6.949999999999999
+   ],
+   "height": 2.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c79a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9c79a"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "poster-2",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    9.6,
+    -7.025
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 0.9
+  },
+  {
+   "type": "mass",
+   "id": "pier-0",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -1.0,
+    -7.075
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2f2"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "pier-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    3.3,
+    -7.075
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2f2"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "pier-2",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    7.5,
+    -7.075
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2f2"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "pier-end",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.5
+    ]
+   },
+   "at": [
+    11.1,
+    -7.075
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f2f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2f2"
+   },
+   "z0": 0.35
+  },
+  {
+   "type": "mass",
+   "id": "fascia-red",
+   "footprint": {
+    "rect": [
+     14.5,
+     0.7
+    ]
+   },
+   "at": [
+    3.6,
+    -7.15
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4222b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4222b"
+   },
+   "z0": 3.0
+  },
+  {
+   "type": "mass",
+   "id": "fascia-yellow",
+   "footprint": {
+    "rect": [
+     14.5,
+     0.8
+    ]
+   },
+   "at": [
+    3.6,
+    -7.15
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9a91f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9a91f"
+   },
+   "z0": 2.55
+  },
+  {
+   "type": "mass",
+   "id": "plinth-strip",
+   "footprint": {
+    "rect": [
+     22.4,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -7.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a4d50",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d50"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6.5,
+    -8.4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    5.5,
+    -8.4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "groundColour": "#b9b6ae",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "emblem is blocky rectangles not a rooster; no lettering, plants or glazing detail; red-end fascia slightly lower than right fascia"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "chicken-republic-akure"
+}

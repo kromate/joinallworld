@@ -1,0 +1,1612 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "seoul",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "seoul",
+    "climate": "temperate",
+    "vernacular": "Dense high-rise Korean metropolis: ranks of 15-35 storey apartment complexes (danji) in cream, white and grey render with numbered blocks; low-rise brick and tile-clad villas and multi-family houses in red-brown brick; commercial blocks of glass curtain wall, granite and metal panels; rooftops painted waterproof green; traditional hanok and temple halls with grey curved giwa roofs and dancheong eaves preserved among them; palaces and fortresses in timber and stone.",
+    "wallColours": [
+      "#bdbab3",
+      "#ecebe6",
+      "#d6c5a5",
+      "#9a5b47",
+      "#6f8896",
+      "#e8e2d2",
+      "#5f6368"
+    ],
+    "roofColours": [
+      "#8c8f91",
+      "#4b4f55",
+      "#a2492f",
+      "#3f8a7b"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "glass-curtain",
+      "red-brick",
+      "tile-cladding",
+      "metal-cladding",
+      "granite",
+      "render"
+    ],
+    "roofMaterials": [
+      "membrane",
+      "concrete",
+      "clay-tile",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Traditional curved grey giwa tile roofs with upturned eaves and dancheong painted brackets on temples, palaces and reconstructed fortress halls; granite stone bases and walls; red-brick villa facades with rooftop water tanks; glass-and-steel atria and large LED-lit commercial facades; apartment blocks with large painted numerals and stripe bands.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Korea",
+        "what": "timber post-and-bracket halls with curved tiled roofs, painted timbers, granite and rammed-earth, post-war cheap apartments, sports venues for 1986/1988"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Namhansanseong",
+        "what": "Joseon fortress, restored Emergency Palace, walls and gates"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Incheon_International_Airport",
+        "what": "Terminal 1 by Fentress, 1,060 x 149 x 33 m; Terminal 2 by Gensler, 2018"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gocheok_Sky_Dome",
+        "what": "domed baseball stadium, 2015, 16,744 seats"
+      }
+    ]
+  },
+  "places": {
+    "seoul-airport-seoul-airport": {
+      "venueId": "seoul-airport-seoul-airport",
+      "city": "seoul",
+      "name": "Incheon International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Incheon International Airport Terminal 1 seen from the departures forecourt: a very long glass-fronted terminal under a sweeping wing-like roof, control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 1060,
+        "depth_m": 149,
+        "storeys": 4,
+        "height_m": 33,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d9dc",
+          "#7fa4b8",
+          "#f1f1ef"
+        ],
+        "roofColour": "#c9ced1",
+        "windows": "curtain",
+        "windowRatio": 0.65,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "undulating wing-like roof"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2001",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Incheon_International_Airport",
+          "what": "Terminal 1 by Curtis W. Fentress, 1,060 m long, 149 m wide, 33 m high, 47 gates, 252 check-in counters; Terminal 2 by Gensler opened 2018"
+        }
+      ],
+      "notes": "Dimensions are sourced; roof shape and glass-and-steel finish are from general knowledge of Fentress design. Only a recognisable section should be modelled (the length greatly exceeds 120 m)."
+    },
+    "seoul-clinic": {
+      "venueId": "seoul-clinic",
+      "city": "seoul",
+      "name": "Samsung Medical Center",
+      "archetype": "hospital",
+      "subject": "Samsung Medical Center: the eight-storey main hospital block, a pale gridded facade with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 103,
+        "depth_m": 46,
+        "storeys": 8,
+        "height_m": 44,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfc8bb",
+          "#7d8f9c",
+          "#ebe7de"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1994",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Samsung_Medical_Center",
+          "what": "tertiary hospital, Gangnam, opened 1994"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q624119",
+          "what": "OSM building about 103 x 46 m, 8 levels, height 44 m, start 1994"
+        }
+      ],
+      "notes": "Footprint, levels, height measured; facade finish and colours inferred. The wider campus has more blocks."
+    },
+    "seoul-community-notices": {
+      "venueId": "seoul-community-notices",
+      "city": "seoul",
+      "name": "Incheon City Hall",
+      "archetype": "civic-palace",
+      "subject": "Incheon City Hall: a square five-storey city hall block (2013 building)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 82,
+        "depth_m": 82,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d6d9dc",
+          "#6f8896",
+          "#ecebe6"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.45,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12613488",
+          "what": "Incheon Metropolitan Government; OSM office about 82 x 82 m, height 20 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/238024537",
+          "what": "OSM footprint and height"
+        }
+      ],
+      "notes": "Footprint and 20 m height measured. The facade is typed as a modern glazed civic block, not verified from the Wikimedia photo."
+    },
+    "seoul-community-voting-game": {
+      "venueId": "seoul-community-voting-game",
+      "city": "seoul",
+      "name": "Bukahyeon-dong Community Service Center",
+      "archetype": "civic-small",
+      "subject": "Bukahyeon-dong community service center: a four-storey ward office in tile-clad stone and glass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6c5a5",
+          "#6f8896",
+          "#ecebe6"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2681752",
+          "what": "Bugahyeon-dong, Seodaemun-gu; OSM townhall about 47 x 30 m"
+        }
+      ],
+      "notes": "Typed from the standard Seoul dong office building."
+    },
+    "seoul-community-workshop": {
+      "venueId": "seoul-community-workshop",
+      "city": "seoul",
+      "name": "Uijeongbu Digital Library",
+      "archetype": "campus-block",
+      "subject": "Uijeongbu Digital Library: a six-storey library block with pale walls and a green roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 50,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d3cdc0",
+          "#6f8896",
+          "#ecebe6"
+        ],
+        "roofColour": "#58a270",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/19611659",
+          "what": "OSM tags: height 28 m, building:colour #d3cdc0, roof:colour #58a270, footprint 53 x 50 m"
+        }
+      ],
+      "notes": "Colours and height come directly from OSM tags (measured). The building shape beyond the footprint is typed."
+    },
+    "seoul-market-game": {
+      "venueId": "seoul-market-game",
+      "city": "seoul",
+      "name": "Mecenatpolis",
+      "archetype": "mall",
+      "subject": "Mecenatpolis: the Hapjeong retail podium with the 39-storey blue-glass tower rising behind",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 5,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#6f86b8",
+          "#d6d9dc",
+          "#394eaa"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "curtain",
+        "windowRatio": 0.6,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1,
+          "note": "39-storey blue-glass tower behind the podium, 57 x 57 m, 137 m"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/461258168",
+          "what": "OSM tower: apartments 57 x 57 m, 39 levels, 137 m, blue glass #394EAA, 2012"
+        }
+      ],
+      "notes": "The measured data is the tower; the retail podium form and the 5 storeys are estimates. Tower colour #394EAA from OSM."
+    },
+    "seoul-meal-stop": {
+      "venueId": "seoul-meal-stop",
+      "city": "seoul",
+      "name": "Mega Coffee",
+      "archetype": "office-low",
+      "subject": "the 10-storey commercial block in central Seoul housing the cafe on its ground floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 39,
+        "storeys": 10,
+        "height_m": 35,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdc3c8",
+          "#6f8896",
+          "#ecebe6"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.45,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/552485600",
+          "what": "OSM commercial building about 53 x 39 m, 10 levels, 35 m, 2008"
+        }
+      ],
+      "notes": "The venue is a coffee chain outlet; the model shows the host building (measured 10 levels). Facade finish typed. No brand marks."
+    },
+    "seoul-osm-node-11469141023": {
+      "venueId": "seoul-osm-node-11469141023",
+      "city": "seoul",
+      "name": "Gaun-dong Dolmen",
+      "archetype": "monument",
+      "subject": "Gaun-dong dolmen: a prehistoric stone table, a single large flat capstone on upright stones",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8c8f91",
+          "#7a7d7e",
+          "#a5a7a6"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low protective rail"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Bronze Age",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1235504069",
+          "what": "OSM archaeological_site node about 6.7 m"
+        }
+      ],
+      "notes": "Name means dolmen (jisukmyo); the form of a capstone on supports is the type, not a surveyed description."
+    },
+    "seoul-osm-node-368860625": {
+      "venueId": "seoul-osm-node-368860625",
+      "city": "seoul",
+      "name": "Yonggungsa",
+      "archetype": "temple-asian",
+      "subject": "Yonggungsa Temple (Incheon): the main Buddhist hall with grey tiled hip-and-gable roof and painted eaves",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a63d2f",
+          "#3f7a63",
+          "#d6c5a5"
+        ],
+        "roofColour": "#4b4f55",
+        "windows": "screen",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "small stone pagoda"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q24856934",
+          "what": "Yonggungsa Temple (Incheon), Buddhist temple"
+        }
+      ],
+      "notes": "No hall dimensions found; typed from a standard Korean temple main hall with dancheong eaves."
+    },
+    "seoul-osm-node-8573225768": {
+      "venueId": "seoul-osm-node-8573225768",
+      "city": "seoul",
+      "name": "Hoamsanseong Fortress",
+      "archetype": "heritage-fort",
+      "subject": "Hoamsanseong: a restored hilltop fortress with a tiled wall-top pavilion and stone ramparts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "timber",
+        "colours": [
+          "#a5a7a6",
+          "#7a5a3f",
+          "#d6c5a5"
+        ],
+        "roofColour": "#4b4f55",
+        "windows": "none",
+        "windowRatio": 0,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "east-asian",
+      "era": "Three Kingdoms (restored)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/652934807",
+          "what": "OSM building about 19 x 14 m on the fortress"
+        }
+      ],
+      "notes": "Only the footprint is known; look typed from a Korean mountain fortress with granite ramparts."
+    },
+    "seoul-osm-way-1080852337": {
+      "venueId": "seoul-osm-way-1080852337",
+      "city": "seoul",
+      "name": "Gogang dong Church",
+      "archetype": "church-modern",
+      "subject": "Gogang-dong Church: a red-brick Catholic parish church with a gabled roof and a bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#9a5b47",
+          "#ecebe6",
+          "#8c8f91"
+        ],
+        "roofColour": "#4b4f55",
+        "windows": "arched",
+        "windowRatio": 0.2,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1080852337",
+          "what": "OSM cathedral-tagged building about 45 x 21 m"
+        }
+      ],
+      "notes": "Footprint only; materials typed from a Korean parish church."
+    },
+    "seoul-osm-way-1463915497": {
+      "venueId": "seoul-osm-way-1463915497",
+      "city": "seoul",
+      "name": "국제법률경영대학원대학교",
+      "archetype": "campus-block",
+      "subject": "Transnational Law and Business University: a long four-storey university building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 136,
+        "depth_m": 47,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#6f8896",
+          "#bdbab3"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q624179",
+          "what": "Transnational Law and Business University, Goyang; OSM building about 136 x 47 m"
+        }
+      ],
+      "notes": "Footprint measured; look typed."
+    },
+    "seoul-osm-way-231020902": {
+      "venueId": "seoul-osm-way-231020902",
+      "city": "seoul",
+      "name": "Jayu Park",
+      "archetype": "park-landscape",
+      "subject": "Jayu Park, Incheon: the 1888 hilltop park with the MacArthur statue and the Korean-American Centennial monument",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 260,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#bdbab3",
+          "#7aa05a",
+          "#d6c5a5"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "MacArthur statue on a plinth"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "centennial monument tower"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1888",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11267359",
+          "what": "Incheon Jayu Park, opened 1888; OSM park about 389 x 328 m"
+        }
+      ],
+      "notes": "The MacArthur statue and the centennial monument are known from general knowledge; sources checked only confirm the park and its date."
+    },
+    "seoul-osm-way-258637347": {
+      "venueId": "seoul-osm-way-258637347",
+      "city": "seoul",
+      "name": "Gocheok Sky Dome",
+      "archetype": "stadium",
+      "subject": "Gocheok Sky Dome: Korea's only domed baseball stadium (2015) with a closed roof and a cylindrical glazed concourse",
+      "form": {
+        "footprint": "round",
+        "width_m": 210,
+        "depth_m": 152,
+        "storeys": 4,
+        "height_m": 62,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8dadb",
+          "#7c8c97",
+          "#a9aeb2"
+        ],
+        "roofColour": "#d8dadb",
+        "windows": "curtain",
+        "windowRatio": 0.3,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gocheok_Sky_Dome",
+          "what": "domed baseball stadium, opened 15 Sept 2015, 16,744 seats, architects Ilgeon and ATEC"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10855359",
+          "what": "OSM footprint about 210 x 152 m, 4 levels, height 62 m"
+        }
+      ],
+      "notes": "Footprint, levels and height measured; the grey-white membrane skin is from general knowledge, not stated in the sources."
+    },
+    "seoul-osm-way-26281660": {
+      "venueId": "seoul-osm-way-26281660",
+      "city": "seoul",
+      "name": "Lotte World",
+      "archetype": "mall",
+      "subject": "Lotte World Adventure: the huge indoor theme-park building under a glazed barrel roof with a pastel castle front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 160,
+        "storeys": 5,
+        "height_m": 32,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9d9c8",
+          "#7fa4b8",
+          "#c9a24a"
+        ],
+        "roofColour": "#cfd8dc",
+        "windows": "screen",
+        "windowRatio": 0.3,
+        "roofMaterial": "glass"
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed roof over the central atrium"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1989",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lotte_World",
+          "what": "indoor Adventure park and outdoor Magic Island; complex 128,246 m2; B1 Underland, B3 ice rink 36 x 65 m; opened 1989"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q494668",
+          "what": "OSM footprint about 406 x 235 m"
+        }
+      ],
+      "notes": "Footprint and facts are sourced; the glazed barrel roof and pastel castle fronts are from general knowledge. The model should show the indoor Adventure building, not the whole 128,000 m2 complex."
+    },
+    "seoul-osm-way-336024475": {
+      "venueId": "seoul-osm-way-336024475",
+      "city": "seoul",
+      "name": "Korea Aerospace University",
+      "archetype": "campus-block",
+      "subject": "Korea Aerospace University: a long teaching block on a hillside campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdbab3",
+          "#6f8896",
+          "#ecebe6"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6431586",
+          "what": "founded 1952; OSM campus about 670 x 385 m"
+        }
+      ],
+      "notes": "Typed from a Korean university campus block."
+    },
+    "seoul-osm-way-381119781": {
+      "venueId": "seoul-osm-way-381119781",
+      "city": "seoul",
+      "name": "Sahmyook University",
+      "archetype": "campus-block",
+      "subject": "Sahmyook University: red-brick teaching blocks on a large hillside campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#9a5b47",
+          "#ecebe6",
+          "#8c8f91"
+        ],
+        "roofColour": "#4b4f55",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q624993",
+          "what": "founded 1906; OSM campus about 1099 x 692 m"
+        }
+      ],
+      "notes": "No description found; brick chosen as a plausible old Adventist campus look but unverified."
+    },
+    "seoul-osm-way-416586666": {
+      "venueId": "seoul-osm-way-416586666",
+      "city": "seoul",
+      "name": "Sahmyook Medical Center Seoul Hospital",
+      "archetype": "hospital",
+      "subject": "Sahmyook Medical Center Seoul Hospital: a multi-storey hospital campus block",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6c5a5",
+          "#6f8896",
+          "#ecebe6"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2945878",
+          "what": "Sahmyook Medical Center, founded 1908; OSM campus about 359 x 308 m"
+        }
+      ],
+      "notes": "Typed from a Seoul general hospital."
+    },
+    "seoul-osm-way-419363587": {
+      "venueId": "seoul-osm-way-419363587",
+      "city": "seoul",
+      "name": "Amsa-dong Prehistoric Settlement Site",
+      "archetype": "park-landscape",
+      "subject": "Amsa-dong Prehistoric Settlement Site: a riverside park with reconstructed thatched pit-dwelling huts and a small museum",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a68a5a",
+          "#7aa05a",
+          "#d6c5a5"
+        ],
+        "roofColour": "#a68a5a",
+        "windows": "none",
+        "windowRatio": 0.05,
+        "roofMaterial": "thatch"
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 6,
+          "note": "reconstructed thatched huts"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "Neolithic (park 1980s)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11250344",
+          "what": "Amsa-dong Prehistoric Site; OSM park about 604 x 242 m"
+        }
+      ],
+      "notes": "Reconstructed thatch huts are a feature from general knowledge; the source only confirms an archaeological park."
+    },
+    "seoul-osm-way-613824923": {
+      "venueId": "seoul-osm-way-613824923",
+      "city": "seoul",
+      "name": "Goyang Stadium",
+      "archetype": "stadium",
+      "subject": "Goyang Stadium: a 2003 football stadium with a partial cantilevered stand roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 254,
+        "depth_m": 218,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab3",
+          "#ecebe6",
+          "#6f8896"
+        ],
+        "roofColour": "#d6d9dc",
+        "windows": "none",
+        "windowRatio": 0,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q484713",
+          "what": "Goyang Stadium, 2003; OSM about 254 x 218 m"
+        }
+      ],
+      "notes": "Footprint measured; roof and cladding typed."
+    },
+    "seoul-osm-way-658766450": {
+      "venueId": "seoul-osm-way-658766450",
+      "city": "seoul",
+      "name": "Tancheon Stadium",
+      "archetype": "stadium",
+      "subject": "Tancheon Sports Complex stadium: a mid-size 2001 athletics stadium with stand roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 228,
+        "depth_m": 179,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab3",
+          "#ecebe6",
+          "#6f8896"
+        ],
+        "roofColour": "#d6d9dc",
+        "windows": "none",
+        "windowRatio": 0,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q497095",
+          "what": "Tancheon Sports Complex, 2001; OSM about 228 x 179 m"
+        }
+      ],
+      "notes": "Footprint measured; stand roof and cladding typed from a 2001 sports-complex stadium. Nothing else found."
+    },
+    "seoul-osm-way-872196107": {
+      "venueId": "seoul-osm-way-872196107",
+      "city": "seoul",
+      "name": "Namhansanseong Haenggung (Emergency Palace)",
+      "archetype": "heritage-fort",
+      "subject": "Namhansanseong Haenggung: the restored hanok compound of the Joseon emergency palace, grey tiled halls on stone platforms",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "granite",
+        "colours": [
+          "#7a5a3f",
+          "#e8e2d4",
+          "#a5a7a6"
+        ],
+        "roofColour": "#4b4f55",
+        "windows": "screen",
+        "windowRatio": 0.15,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "1620s-1710s (restored)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Namhansanseong",
+          "what": "fortress on Namhansan, restored Emergency Palace in the fortress, Joseon design; walls and gates"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20651693",
+          "what": "Namhansanseong Haenggung; OSM building only 9 x 5.4 m"
+        }
+      ],
+      "notes": "The OSM building is one small roof; the model shows the compound. The hanok look (grey curved tile, timber posts, granite platforms) is general knowledge, not stated in the source."
+    },
+    "seoul-quiet-reflection": {
+      "venueId": "seoul-quiet-reflection",
+      "city": "seoul",
+      "name": "SSPX Korea Immaculate Conception Church",
+      "archetype": "church-modern",
+      "subject": "SSPX Korea Immaculate Conception Church: a small urban chapel in a modern building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#9a5b47",
+          "#ecebe6",
+          "#8c8f91"
+        ],
+        "roofColour": "#4b4f55",
+        "windows": "arched",
+        "windowRatio": 0.2,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/491089021",
+          "what": "OSM building about 24 x 18 m"
+        }
+      ],
+      "notes": "No description found; typed."
+    },
+    "seoul-recreation": {
+      "venueId": "seoul-recreation",
+      "city": "seoul",
+      "name": "Paris Park",
+      "archetype": "park-landscape",
+      "subject": "Paris Park, Seoul: a neighbourhood park with paths, pavilions and a fountain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 170,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#bdbab3",
+          "#7aa05a",
+          "#d6c5a5"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12621454",
+          "what": "Paris Park (Seoul); OSM park about 253 x 174 m"
+        }
+      ],
+      "notes": "Nothing was read about its layout; typed park."
+    },
+    "seoul-transit": {
+      "venueId": "seoul-transit",
+      "city": "seoul",
+      "name": "Jegi-dong Station",
+      "archetype": "transport-station",
+      "subject": "Jegi-dong subway station entrance: a small glazed canopy over stairs at the street edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdc3c8",
+          "#6f8896",
+          "#5f6368"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "curtain",
+        "windowRatio": 0.6,
+        "roofMaterial": "glass"
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2647605",
+          "what": "Jegi-dong, a dong of Dongdaemun-gu; hub location at the neighbourhood station"
+        }
+      ],
+      "notes": "The venue is a neighbourhood hub; the typed model is a station entrance. Nothing specific was found."
+    }
+  }
+}

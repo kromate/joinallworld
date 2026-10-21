@@ -1,0 +1,413 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/326541451",
+   "used": "real outline of the Le Debarcadere terrace, 77 x 44 m, as the raised terrace deck"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Restaurant_la_D%C3%A9barcad%C3%A8re_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Saliousoft",
+   "view": "front",
+   "file": "/tmp/places-evidence/abidjan/meal2.jpg",
+   "used": "entrance: two cream posts with globe lamps carrying a rounded-top sign board (left blank), dense foliage on both sides, iron railings behind, a low thatched hut with bamboo-clad walls on the right"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a46",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-hall",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "z0": 0.5,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece4d0",
+    "windows": "screen",
+    "windowRatio": 0.4,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b6a58",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -14,
+    -14,
+    0.5
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "deck_height": 0.1,
+    "post_height": 2.8,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": false,
+    "bar": true
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    20,
+    -4,
+    0.5
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "deck_height": 0.1,
+    "post_height": 2.7,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -18,
+    6,
+    0.5
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.6,
+    "height": 2.4,
+    "colours": [
+     "#2f6b8f",
+     "#ece4d0",
+     "#c0742f"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    -6,
+    0.5
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "radius": 1.6,
+    "height": 2.4,
+    "colours": [
+     "#2f6b8f",
+     "#ece4d0"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    18,
+    0.5
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "radius": 1.6,
+    "height": 2.4,
+    "colours": [
+     "#c0742f",
+     "#ece4d0"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 26,
+    "width": 3,
+    "height": 0.8,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-left",
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#e9cf9a",
+    "topColour": "#d9bd82"
+   },
+   "at": [
+    -17,
+    -40
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post-right",
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#e9cf9a",
+    "topColour": "#d9bd82"
+   },
+   "at": [
+    -12,
+    -40
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "lamp-left",
+   "at": [
+    -17,
+    -40,
+    3.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#fff0c0",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.55,
+      0.2
+     ],
+     [
+      0.7,
+      0.6
+     ],
+     [
+      0.4,
+      0.95
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lamp-right",
+   "at": [
+    -12,
+    -40,
+    3.2
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#fff0c0",
+    "profile": [
+     [
+      0.05,
+      0
+     ],
+     [
+      0.55,
+      0.2
+     ],
+     [
+      0.7,
+      0.6
+     ],
+     [
+      0.4,
+      0.95
+     ],
+     [
+      0,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     5.4,
+     0.5
+    ]
+   },
+   "at": [
+    -14.5,
+    -40
+   ],
+   "z0": 3.2,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4562f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4562f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -25,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2,
+    "thickness": 0.15,
+    "kind": "railing"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2,
+    "thickness": 0.15,
+    "kind": "railing"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    -6,
+    -42,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 3,
+    "spread": 4,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6.5,
+    "count": 2,
+    "spread": 4,
+    "line": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": 0,
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "gate is small vs the close night photo, arched sign top is flat, thatched hut and bamboo walls simplified, dense foliage reduced to a few trees, night lighting absent"
+ }
+}

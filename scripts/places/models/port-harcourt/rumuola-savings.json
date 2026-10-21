@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "rumuola-savings",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: two-storey savings office, cream render, glazed entrance, blank signboard; placeholder with no real counterpart"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#ffffff",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-entrance",
+   "footprint": {
+    "rect": [
+     6,
+     2.4
+    ]
+   },
+   "at": [
+    -3,
+    -7.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3d6f8f",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7479",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4.5,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.4,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#3d6f8f",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 1.1,
+    "bottom": 5.0,
+    "colour": "#3d6f8f",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "rooftop-plant",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.0,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#d8d2bf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; typed from city style and brief"
+ }
+}

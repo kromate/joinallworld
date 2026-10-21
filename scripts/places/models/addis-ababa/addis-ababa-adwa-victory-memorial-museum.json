@@ -1,0 +1,125 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/20780702",
+   "used": "real outline of the museum building (named match, tourism=museum, levels 6;2), about 117 x 103 m"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Adwa_00KM_Museum",
+   "used": "eleven blocks on five floors, four cardinal entrances, bridge to the mayor's office, inaugurated 2024; Commons has only street photos of Menelik Square nearby, none of the museum"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 20,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#d8d0bd",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 6,
+    "plinth": 1.0,
+    "bands": "#8a7a62",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "podium",
+   "params": {
+    "rect": [
+     42,
+     10
+    ],
+    "height": 1.2,
+    "colour": "#b9aa8c"
+   },
+   "at": [
+    0,
+    -52
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -52
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1.2,
+    "run": 1.5,
+    "count": 6,
+    "colour": "#cfc4aa"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -22,
+    -48,
+    1.2
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building; real outline with generic stone block massing, eleven-block stepping and the bridge not modelled."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-adwa-victory-memorial-museum"
+}

@@ -1,0 +1,798 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Caminhos_de_Ferro_de_Mocambique,_Railway_Station_in_Maputo,_Mozambique.jpg",
+   "licence": "Public domain",
+   "author": "Dumplestilskin",
+   "view": "front",
+   "file": "/tmp/places-evidence/maputo/t1.jpg",
+   "used": "two-storey pale green and cream facade, taller central clock tower under a dark dome with finial, end pavilions with dark hipped roofs, upper verandas, arched ground openings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maputo_Railway_Station_and_Praca_dos_Trabalhadores.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chwonn",
+   "view": "street",
+   "file": "/tmp/places-evidence/maputo/t2.jpg",
+   "used": "dome proportion against wings, platform shed behind, palms and pines in the forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/248970809",
+   "used": "overall scale only (platform sheds make the outline long and irregular); the head building is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    -25,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d3b0",
+    "windows": "arched",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e9e6cf",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 4.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.62,
+      "depth": 0.8,
+      "pierColour": "#ece9d6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6c7074",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     17
+    ]
+   },
+   "at": [
+    -45,
+    0.5
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4dbbc",
+    "windows": "arched",
+    "windowRatio": 0.24,
+    "bands": "#e9e6cf",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33363a",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-veranda",
+   "params": {
+    "rect": [
+     30,
+     1.8
+    ],
+    "z0": 5.2,
+    "height": 0.3,
+    "colour": "#e9e6cf"
+   },
+   "at": [
+    -25,
+    -8.9
+   ]
+  },
+  {
+   "type": "array",
+   "id": "left-posts",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 5.5,
+      "height": 4.2,
+      "colour": "#e9e6cf"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -39,
+     -9.5
+    ],
+    "end": [
+     -11,
+     -9.5
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-veranda-roof",
+   "params": {
+    "rect": [
+     30,
+     2.0
+    ],
+    "z0": 9.7,
+    "height": 0.3,
+    "colour": "#6c7074"
+   },
+   "at": [
+    -25,
+    -9.0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    25,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d3b0",
+    "windows": "arched",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e9e6cf",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 4.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.2,
+      "opening": 0.62,
+      "depth": 0.8,
+      "pierColour": "#ece9d6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6c7074",
+    "material": "slate",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-pavilion",
+   "footprint": {
+    "rect": [
+     12,
+     17
+    ]
+   },
+   "at": [
+    45,
+    0.5
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4dbbc",
+    "windows": "arched",
+    "windowRatio": 0.24,
+    "bands": "#e9e6cf",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33363a",
+    "material": "slate",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-veranda",
+   "params": {
+    "rect": [
+     30,
+     1.8
+    ],
+    "z0": 5.2,
+    "height": 0.3,
+    "colour": "#e9e6cf"
+   },
+   "at": [
+    25,
+    -8.9
+   ]
+  },
+  {
+   "type": "array",
+   "id": "right-posts",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 5.5,
+      "height": 4.2,
+      "colour": "#e9e6cf"
+     }
+    },
+    "mode": "line",
+    "start": [
+     11,
+     -9.5
+    ],
+    "end": [
+     39,
+     -9.5
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "right-veranda-roof",
+   "params": {
+    "rect": [
+     30,
+     2.0
+    ],
+    "z0": 9.7,
+    "height": 0.3,
+    "colour": "#6c7074"
+   },
+   "at": [
+    25,
+    -9.0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "z0": 0,
+   "height": 22.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6e6cd",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#e9e6cf",
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 7,
+      "opening": 0.5,
+      "depth": 0.8,
+      "pierColour": "#ece9d6",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3c4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    -1,
+    25.2
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#34373b",
+    "profile": [
+     [
+      9.26,
+      0.0
+     ],
+     [
+      9.26,
+      1.2
+     ],
+     [
+      8.38,
+      3.39
+     ],
+     [
+      6.39,
+      6.18
+     ],
+     [
+      3.75,
+      8.38
+     ],
+     [
+      1.32,
+      9.38
+     ],
+     [
+      0.55,
+      9.78
+     ],
+     [
+      1.1,
+      10.57
+     ],
+     [
+      0.42,
+      12.37
+     ],
+     [
+      0.0,
+      12.97
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-arch-recess",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.4
+    ],
+    "z0": 0.8,
+    "height": 8,
+    "colour": "#3c4a42"
+   },
+   "at": [
+    0,
+    -9.3
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "forecourt-shelter",
+   "at": [
+    0,
+    -11.5,
+    3.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 4,
+    "height": 0,
+    "thickness": 0.3,
+    "colour": "#7a2f2a",
+    "edgeColour": "#5a2420"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "platform-hall",
+   "footprint": {
+    "rect": [
+     70,
+     20
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9ba2a0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#9aa0a3",
+    "material": "metal-sheet",
+    "rise": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-face",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.35
+    ],
+    "z0": 14.2,
+    "height": 4.2,
+    "colour": "#f4f1e6"
+   },
+   "at": [
+    0,
+    -9.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "clock-surround",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.3
+    ],
+    "z0": 13.5,
+    "height": 5.6,
+    "colour": "#e9e6cf"
+   },
+   "at": [
+    0,
+    -9.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portal-surround",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.3
+    ],
+    "z0": 0.8,
+    "height": 9.2,
+    "colour": "#e9e6cf"
+   },
+   "at": [
+    0,
+    -9.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "n": 20,
+    "radius": 8.6,
+    "z0": 22.2,
+    "height": 3.0,
+    "colour": "#d6e6cd"
+   },
+   "at": [
+    0,
+    -1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "drum-pilasters",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "z0": 22.2,
+      "height": 3.0,
+      "colour": "#ece9d6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -6,
+     -9.2
+    ],
+    "end": [
+     6,
+     -9.2
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "quoins",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "z0": 0.8,
+      "height": 21.4,
+      "colour": "#ece9d6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -10.4,
+     -8.6
+    ],
+    "end": [
+     10.4,
+     -8.6
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-balustrade",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.15
+    ],
+    "z0": 5.5,
+    "height": 0.9,
+    "colour": "#f2f0e4"
+   },
+   "at": [
+    -25,
+    -10.0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "right-balustrade",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.15
+    ],
+    "z0": 5.5,
+    "height": 0.9,
+    "colour": "#f2f0e4"
+   },
+   "at": [
+    25,
+    -10.0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-dormer",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -45,
+    -3
+   ],
+   "z0": 13,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4dbbc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#33363a",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-dormer",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    45,
+    -3
+   ],
+   "z0": 13,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4dbbc",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#33363a",
+    "pitch": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     -20
+    ],
+    "height": 18
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     14,
+     -20
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -22
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -18
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower lacks Beaux-Arts scrolls and a round clock dial (square blank face), portal is a plain rectangle not an arch, dome is plain not ribbed, conifers and trees are simplified low-poly."
+ }
+}

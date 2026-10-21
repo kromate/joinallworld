@@ -1,0 +1,255 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "adamawa-sunshine-motor-park",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/264963043",
+   "used": "real motor-park yard outline (30,000 m2, named), scaled to fit; shed, kiosks and coach rows typed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a77c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 9,
+    "height": 4.8,
+    "form": "shed",
+    "colour": "#6b6e70",
+    "accent": "#3f5a45"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 5,
+    "colour": "#f1f1ee",
+    "stripe": "#3f5a45",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    6,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 5,
+    "colour": "#e9e4d4",
+    "stripe": "#3f5a45",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    -22,
+    28,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 5,
+    "colour": "#f1f1ee",
+    "stripe": "#6b6e70",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    10,
+    28,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "colour": "#e6b422",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 3.5,
+    "colour": "#3f5a45"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; yard outline is real, shed/kiosk/coach layout is typed and not placed from evidence."
+ }
+}

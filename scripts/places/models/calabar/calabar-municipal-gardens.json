@@ -1,0 +1,308 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+   "used": "No photo; OSM match is 73 m away (nearest) so not used. Garden 70x50 m: central basin, cross paths, flowerbeds, hip-roofed gazebo, hedge-and-railing boundary with a gate, ornamental trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "id": "path-x",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -33,
+      0
+     ],
+     [
+      33,
+      0
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "id": "path-y",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -23
+     ],
+     [
+      0,
+      23
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "id": "basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-sw",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 9,
+    "depth": 6,
+    "colours": [
+     "#d9453b",
+     "#e8c23a",
+     "#c95fa0"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-se",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 9,
+    "depth": 6,
+    "colours": [
+     "#e8c23a",
+     "#d9453b",
+     "#f0ece0"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "id": "beds-nw",
+   "at": [
+    -12,
+    10,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 2,
+    "width": 9,
+    "depth": 6,
+    "colours": [
+     "#c95fa0",
+     "#e8c23a"
+    ]
+   }
+  },
+  {
+   "type": "pavilion",
+   "id": "gazebo",
+   "at": [
+    14,
+    11,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#efe9da",
+    "cap_colour": "#8a4a33"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-front",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.2,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#3a3d41"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-back",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.0,
+    "depth": 1.1
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "hedge-back2",
+   "at": [
+    -24,
+    24,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.0,
+    "depth": 1.1
+   }
+  },
+  {
+   "type": "gate",
+   "id": "gate",
+   "at": [
+    0,
+    -24.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.8,
+    "colour": "#3a3d41",
+    "board_colour": "#6d8f4e"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t1",
+   "at": [
+    -25,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t2",
+   "at": [
+    26,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t3",
+   "at": [
+    -26,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t4",
+   "at": [
+    28,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "t5",
+   "at": [
+    -6,
+    17,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp1",
+   "at": [
+    4,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   84,
+   64
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "calabar-municipal-gardens",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; layout typed from brief, real paths and structures unknown"
+ }
+}

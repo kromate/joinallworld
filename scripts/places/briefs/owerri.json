@@ -1,0 +1,1700 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "owerri",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "owerri",
+    "climate": "rainforest",
+    "vernacular": "Imo State capital in Igbo rain-forest country, largely rebuilt after the civil war: 1-3 storey cream, white and pastel painted-render houses and shops with rust-red or green long-span metal roofs, pillared porches and balustraded balconies on the larger Igbo-style storey houses, bare laterite soil at roadsides, and an unusually green, hotel- and nightlife-rich centre.",
+    "wallColours": [
+      "#efe6d0",
+      "#f5f2ea",
+      "#bcd0b4",
+      "#a9c0cf",
+      "#b5654a",
+      "#aaa9a3"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6b55",
+      "#6b6f73",
+      "#7b5a3c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Pillared porches with balustrades and upper balconies on prosperous houses; painted murals and uli-style geometric patterns on walls; large concrete mission churches (Catholic cathedral with dome and paired octagonal towers); statues and roundabout monuments; roadside fence walls and gates.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Owerri",
+        "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+      },
+      {
+        "url": "https://nigerianjournalsonline.com/index.php/NJAS/article/download/4645/4509",
+        "what": "Owerri was largely mud houses with thatched roofs before the war; post-war landmarks"
+      }
+    ]
+  },
+  "places": {
+    "akachi-monument": {
+      "venueId": "akachi-monument",
+      "city": "owerri",
+      "name": "Akachi Monument",
+      "archetype": "monument",
+      "subject": "A roundabout monument: a tall sculpted pedestal on a stepped circular plinth ringed by low railings and planting",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c4b6",
+          "#b8a77a",
+          "#efe9d9"
+        ],
+        "roofColour": "#aaa9a3",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Wikipedia only lists the Akachi Monument as pictured in the city gallery without describing it; shape is a typical sculpted roundabout monument."
+    },
+    "assumpta-maria-cathedral": {
+      "venueId": "assumpta-maria-cathedral",
+      "city": "owerri",
+      "name": "Assumpta Maria Cathedral (Cathedral of Maria Assumpta)",
+      "archetype": "church-classical",
+      "subject": "The Catholic cathedral of Owerri: a huge reinforced-concrete Greek-cross church with a central coffered dome and twin octagonal belfry towers over each arm, seen from the front arm",
+      "form": {
+        "footprint": "cross",
+        "width_m": 70,
+        "depth_m": 67,
+        "storeys": 3,
+        "height_m": 36,
+        "roof": "dome",
+        "wings": 4
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d2c0",
+          "#b0aca2",
+          "#f1ede2"
+        ],
+        "roofColour": "#8c969b",
+        "roofMaterial": null,
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome ~30 m diameter, ~36 m high, octagonal lantern"
+        },
+        {
+          "id": "bell-tower",
+          "count": 8,
+          "note": "twin octagonal belfry towers on each of the four arms"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "Renaissance-style columns on the facade"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1954-1980",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Assumpta_Cathedral",
+          "what": "Greek-cross plan, central dome 120 ft high x 101 ft diameter, reinforced concrete, marble floor, 3,000 capacity"
+        },
+        {
+          "url": "https://www.archiseek.com/1954-cathedral-of-maria-assumpta-owerri-nigeria/",
+          "what": "Greek cross 230 ft x 221 ft, twin octagonal belfry towers over each arm, 88 ft dome (via search summary)"
+        }
+      ],
+      "notes": "Recognisable by the large low dome and the cluster of eight octagonal belfries around it. Plan and dome measures are from sources (sources differ: 30 m vs 31 m diameter, 36 m vs 37 m high); wall and roof colours are estimates (weathered cream concrete)."
+    },
+    "dan-anyiam-stadium": {
+      "venueId": "dan-anyiam-stadium",
+      "city": "owerri",
+      "name": "Dan Anyiam Stadium",
+      "archetype": "stadium",
+      "subject": "The 10,000-seat Heartland FC stadium in central Owerri: an oval concrete bowl with a covered main stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcac0",
+          "#8a8d90",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s, renovated 2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dan_Anyiam_Stadium",
+          "what": "10,000 capacity multi-purpose football stadium in central Owerri, home of Heartland FC; 2019 renovation"
+        }
+      ],
+      "notes": "Only capacity (10,000), location and 2019 renovation are sourced; stands and roof are not described anywhere findable. Modelled as a modest bowl with one roofed stand."
+    },
+    "duke-and-duchess-owerri": {
+      "venueId": "duke-and-duchess-owerri",
+      "city": "owerri",
+      "name": "Duke and Duchess",
+      "archetype": "shophouse",
+      "subject": "A small two-storey salon shop with a glazed front and a blank sign board over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d0",
+          "#9ab4c4",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Business name only; no photos described."
+    },
+    "fcmb-owerri": {
+      "venueId": "fcmb-owerri",
+      "city": "owerri",
+      "name": "FCMB",
+      "archetype": "office-low",
+      "subject": "A bank branch: two-storey rendered block with a glazed ground-floor banking hall, a canopy over the entrance and a perimeter fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2eee3",
+          "#6a5a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Bank branches are generally rendered blocks with a glazed front; do not reproduce logos. Lighter, wider and flatter than the Zenith branch."
+    },
+    "federal-polytechnic-nekede": {
+      "venueId": "federal-polytechnic-nekede",
+      "city": "owerri",
+      "name": "Federal Polytechnic, Nekede",
+      "archetype": "campus-block",
+      "subject": "The main teaching block of the polytechnic at Nekede: long three-storey louvred-window classroom ranges around a quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc8",
+          "#7d8b6e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Federal institution of the 1970s-80s era; typed as a Nigerian modernist teaching block."
+    },
+    "futo-owerri": {
+      "venueId": "futo-owerri",
+      "city": "owerri",
+      "name": "Federal University of Technology Owerri",
+      "archetype": "campus-block",
+      "subject": "A recognisable portion of FUTO: the multi-storey library and administration blocks with exposed-concrete louvres and walkways on a wide campus lawn",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8c4b8",
+          "#6e8aa0",
+          "#efece4"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1981 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_University_of_Technology_Owerri",
+          "what": "campus ~25 km south of Owerri, ~4,048 ha, library opened 1981"
+        }
+      ],
+      "notes": "Campus size (~4,048 ha, 25 km south of Owerri) and library opening (1981; three blocks) are sourced; building appearance is not. Modelled as a brutalist-leaning concrete library/admin block."
+    },
+    "holy-rosary-hospital-emekuku": {
+      "venueId": "holy-rosary-hospital-emekuku",
+      "city": "owerri",
+      "name": "Holy Rosary Hospital, Emekuku",
+      "archetype": "hospital",
+      "subject": "A mission hospital: long single- and two-storey ward blocks with hipped metal roofs joined by covered walkways, a chapel nearby, in cream paint",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#7a9a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. The name suggests a Catholic mission hospital (Holy Rosary), typed as such; no description found."
+    },
+    "holy-trinity-world-bank-owerri": {
+      "venueId": "holy-trinity-world-bank-owerri",
+      "city": "owerri",
+      "name": "Holy Trinity, World Bank, Owerri",
+      "archetype": "church-modern",
+      "subject": "A neighbourhood church: a wide gabled hall with a tall frontal gable, a short entrance tower and a plain cross, painted cream",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#b5654a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Located near World Bank housing estate; typed as a modest estate church."
+    },
+    "ikenegbu-hospital": {
+      "venueId": "ikenegbu-hospital",
+      "city": "owerri",
+      "name": "Ikenegbu Hospital",
+      "archetype": "hospital",
+      "subject": "A general hospital in Ikenegbu layout: two-storey rendered ward block with a covered entrance and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#8bb0a4",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a state-style general hospital; not described in sources."
+    },
+    "imo-golf-amusement-center": {
+      "venueId": "imo-golf-amusement-center",
+      "city": "owerri",
+      "name": "Imo Golf and Amusement Center",
+      "archetype": "park-landscape",
+      "subject": "A leisure park: a clubhouse pavilion on a mown green with palm-lined paths and a fountain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead8",
+          "#8a6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#7b5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Owerri is known for leisure parks and nightlife (Wikipedia); no description of this site."
+    },
+    "imo-state-central-mosque": {
+      "venueId": "imo-state-central-mosque",
+      "city": "owerri",
+      "name": "Imo State Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A modern domed mosque: a cubic prayer hall with one large green dome and four small corner domes plus two tall slender minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1e8",
+          "#2f7a5a",
+          "#d8c590"
+        ],
+        "roofColour": "#2f7a5a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "one central, four corner"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Owerri is majority Christian, so the mosque is small by comparison; typed as a conventional Nigerian domed mosque. Distinct from the Owerri Central Mosque (single dome, one minaret)."
+    },
+    "imo-state-house-of-assembly": {
+      "venueId": "imo-state-house-of-assembly",
+      "city": "owerri",
+      "name": "Imo State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The legislature: a wide two-storey rendered block with a pillared portico, a central pediment and flagpoles over a forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4efe0",
+          "#a9a396",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a pillared neoclassical-flavoured Nigerian state assembly building."
+    },
+    "imo-state-university": {
+      "venueId": "imo-state-university",
+      "city": "owerri",
+      "name": "Imo State University",
+      "archetype": "campus-block",
+      "subject": "IMSU administration and teaching block: three-storey rendered blocks with long open balconies and a clock-less central entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece4cf",
+          "#9aa89a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1981 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. State university in Owerri; typed from city style. Not the same shape as FUTO (smaller, rendered, balconied)."
+    },
+    "imo-trade-investment-centre": {
+      "venueId": "imo-trade-investment-centre",
+      "city": "owerri",
+      "name": "Imo Trade & Investment Centre",
+      "archetype": "office-low",
+      "subject": "A trade centre: a six-storey glazed and rendered office block with a deep entrance canopy and a flat roof with water tank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cdd9e0",
+          "#e8e2d2",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. A government-linked centre built in the Rebuild Imo era; shape typed as a mid-rise glazed block."
+    },
+    "josephs-pot-owerri": {
+      "venueId": "josephs-pot-owerri",
+      "city": "owerri",
+      "name": "Joseph's Pot Owerri",
+      "archetype": "restaurant",
+      "subject": "A local eatery: a small single-storey cream building with a covered veranda, plastic chairs under umbrellas and a blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1e3c2",
+          "#b5654a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a buka-style food spot."
+    },
+    "love-garden-imsu": {
+      "venueId": "love-garden-imsu",
+      "city": "owerri",
+      "name": "Love Garden, IMSU",
+      "archetype": "park-landscape",
+      "subject": "A small campus garden: a circular paved plaza with benches, a gazebo and flower beds on the IMSU grounds",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece4cf",
+          "#7b9a6a",
+          "#ffffff"
+        ],
+        "roofColour": "#7b5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Garden inside the Imo State University campus; no description."
+    },
+    "mr-biggs-owerri": {
+      "venueId": "mr-biggs-owerri",
+      "city": "owerri",
+      "name": "Mr.Biggs",
+      "archetype": "restaurant",
+      "subject": "A fast-food outlet: a single-storey glazed restaurant with a wide flat canopy, a drive-in forecourt and a blank bright sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f5f2ea",
+          "#c04a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#c04a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Fast-food chain outlet; no logos or brand marks, only red-cream neutral colouring typical of the chain. Contrasts with the buka-style Joseph's Pot."
+    },
+    "national-museum-owerri": {
+      "venueId": "national-museum-owerri",
+      "city": "owerri",
+      "name": "National Museum Owerri",
+      "archetype": "museum-theatre",
+      "subject": "The museum: a two-storey pale-rendered building with a pillared entrance porch, wide steps and a garden with sculptures",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#a99b7e",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. National Museum, Owerri; war artefacts are mostly in Umuahia (Wikipedia), so this is typed as a cultural museum."
+    },
+    "nkwo-emeke-market": {
+      "venueId": "nkwo-emeke-market",
+      "city": "owerri",
+      "name": "Nkwo Emeke",
+      "archetype": "market-open",
+      "subject": "A large Igbo periodic market at Emekuku: acres of low tin-roofed stalls and umbrellas on laterite ground around a few lock-up blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b5654a",
+          "#8a8d90",
+          "#efe6d0"
+        ],
+        "roofColour": "#7b5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Nkwo is the Igbo market day name; typed as an open rural-town periodic market."
+    },
+    "owerri-central-mosque": {
+      "venueId": "owerri-central-mosque",
+      "city": "owerri",
+      "name": "Owerri Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A smaller city mosque: a rectangular prayer hall with one large central dome and a single tall minaret beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f6f2e6",
+          "#3a8a7a",
+          "#d8c590"
+        ],
+        "roofColour": "#3a8a7a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1970s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a typical Nigerian domed mosque; deliberately a different silhouette from Imo State Central Mosque (five domes, two minarets)."
+    },
+    "st-johns-anglican-owerri": {
+      "venueId": "st-johns-anglican-owerri",
+      "city": "owerri",
+      "name": "Saint John's Anglican Church",
+      "archetype": "church-gothic",
+      "subject": "A parish church: gabled nave of cream painted brick with lancet windows, a square entrance tower with a short spire and corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#eadfc4",
+          "#8a6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a colonial-mission Anglican parish church; there is an Anglican heritage in Owerri (Wikipedia mentions several)."
+    },
+    "statue-of-freed-slave-owerri": {
+      "venueId": "statue-of-freed-slave-owerri",
+      "city": "owerri",
+      "name": "Statue of a freed slave in Owerri",
+      "archetype": "monument",
+      "subject": "A bronze-coloured figure of a freed slave with broken chains standing on a tall stepped concrete plinth in a small paved circle",
+      "form": {
+        "footprint": "round",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#c9c4b6",
+          "#3d3a32",
+          "#efe9d9"
+        ],
+        "roofColour": "#aaa9a3",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "freed slave figure"
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. The statue is pictured in the Wikipedia Owerri gallery but not described; figure and chains are inferred from the name."
+    },
+    "uloma-food-market": {
+      "venueId": "uloma-food-market",
+      "city": "owerri",
+      "name": "Uloma Food Market",
+      "archetype": "market-open",
+      "subject": "A food market of open sheds: rows of tin-roofed stalls with piles of produce, umbrellas and a few two-storey lock-up shops",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b5654a",
+          "#a8a38e",
+          "#efe6d0"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 16
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Smaller and more shed-based than the World Bank Market (lock-up hall)."
+    },
+    "world-bank-market-owerri": {
+      "venueId": "world-bank-market-owerri",
+      "city": "owerri",
+      "name": "World Bank Market",
+      "archetype": "market-hall",
+      "subject": "A neighbourhood market hall: a long two-storey lock-up block with a continuous metal roof and ground-floor shop fronts opening onto a yard of stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9cdb4",
+          "#a05a40",
+          "#f1ead8"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Named after the World Bank housing estate area; typed as a market hall."
+    },
+    "zenith-bank-owerri": {
+      "venueId": "zenith-bank-owerri",
+      "city": "owerri",
+      "name": "Zenith",
+      "archetype": "office-low",
+      "subject": "A bank branch: three-storey glazed-front block with a tall entrance canopy, a recessed corner and a clean white upper facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e9edef",
+          "#8a2b2e",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owerri",
+          "what": "Owerri: rain forest, tropical wet climate, cathedral and landmarks"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Taller, narrower and more glazed than the FCMB branch; no logos."
+    }
+  }
+}

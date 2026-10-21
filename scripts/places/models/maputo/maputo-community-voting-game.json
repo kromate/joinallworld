@@ -1,0 +1,23 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "maputo", "venueId": "maputo-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/253632621", "used": "real ground is 235 x 99 m, a long slanted strip (theme_park); modelled as a 112 x 48 m scaled-down fairground with a long axis"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 30, "fovDeg": 50},
+ "parts": [
+  {"type": "core/fence-wall", "at": [0, 0, 0], "params": {"kind": "wall", "height": 2.2, "thickness": 0.3, "colour": "#efe6d0", "pillarEvery": 6, "points": [[-56, -24], [56, -24], [56, 24], [-56, 24], [-56, -24]]}},
+  {"type": "core/gate", "at": [0, -24, 0], "params": {"width": 9, "height": 5, "pillar": 1.6, "leaf": "bars", "arch": true, "colour": "#c76f4f", "leafColour": "#2d3033"}},
+  {"type": "ferris-wheel", "at": [-34, 10, 0], "params": {"radius": 11, "gondolas": 14}},
+  {"type": "carousel", "at": [32, 10, 0], "params": {"radius": 6, "height": 7.6, "colour": "#c76f4f"}},
+  {"type": "stall-row", "at": [-20, -14, 0], "params": {"count": 6, "pitch": 3.2, "kind": "umbrella", "colours": ["#c76f4f", "#efe6d0", "#9fb7a8"]}},
+  {"type": "stall-row", "at": [14, -14, 0], "params": {"count": 6, "pitch": 3.2, "kind": "umbrella", "colours": ["#b5543a", "#f4f1ea", "#9fb7a8"]}},
+  {"type": "shed-shelter", "at": [-8, 16, 0], "params": {"width": 18, "depth": 8, "height": 3.6, "colour": "#efe6d0", "roofColour": "#b5543a"}},
+  {"type": "shed-shelter", "at": [14, 18, 0], "params": {"width": 14, "depth": 7, "height": 3.4, "colour": "#efe6d0", "roofColour": "#b5543a"}},
+  {"type": "umbrella-cluster", "at": [0, 0, 0], "params": {"count": 7, "spread": 7, "colours": ["#c76f4f", "#f4f1ea", "#b5543a"]}},
+  {"type": "core/flag", "at": [-5, -22, 0], "params": {"height": 8, "count": 2, "spacing": 10, "colours": ["#c76f4f", "#f4f1ea"]}},
+  {"type": "core/tree", "at": [-50, -18, 0], "params": {"kind": "palm", "height": 9, "count": 5, "spread": 36, "line": 1}}
+ ],
+ "site": {"ground": "paving", "forecourt": "parking", "extent": [124, 70]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo of the fairground; layout of gate, rides, stalls and sheds is a typical-fairground assumption inside a scaled version of the real outline"}
+}

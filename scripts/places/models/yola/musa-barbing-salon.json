@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "musa-barbing-salon",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1110376510",
+   "used": "small rectangular footprint about 5.4 x 4.4 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yola.json#musa-barbing-salon",
+   "used": "single-storey render shop, mono-pitch corrugated roof, green trim, blank board and awning, flanked by neighbouring shops (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "salon",
+   "footprint": {
+    "osm": true,
+    "fit": 5.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.18,
+    "plinth": 0.25,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -1.2,
+    -2.3,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 2.6,
+    "kind": "glass",
+    "colour": "#2f6b4f",
+    "sign_colour": "#2f6b4f",
+    "sign_height": 0.8,
+    "awning_colours": [
+     "#2f6b4f",
+     "#e3d3b0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.3,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 0.8,
+    "height": 1.2,
+    "bottom": 1.6,
+    "colour": "#e3d3b0",
+    "frameColour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-l",
+   "footprint": {
+    "rect": [
+     5,
+     4.4
+    ]
+   },
+   "at": [
+    -5.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0aaa0",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-r",
+   "footprint": {
+    "rect": [
+     5,
+     4.4
+    ]
+   },
+   "at": [
+    5.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   28,
+   18
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo; typical shop-front on the real small OSM footprint, shop row, shopfront and board are typical not observed."
+ }
+}

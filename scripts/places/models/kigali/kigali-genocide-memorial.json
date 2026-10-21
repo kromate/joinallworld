@@ -1,0 +1,422 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-genocide-memorial",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kigali_Genocide_Memorial.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hanay",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/genocide-memorial-0.jpg",
+   "used": "peach stucco two-storey block with steep front gable and big glazed gable window, hipped clay-tile wings either side, stepped entrance, red brick-paved forecourt, palms and conifers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25796157",
+   "used": "size of the site (about 30 m across); layout taken from the photo and the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    4,
+    0
+   ],
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d3ab92",
+    "windows": "punched",
+    "plinth": 1.0,
+    "faces": {
+     "front": "punched",
+     "left": "punched"
+    },
+    "glassColour": "#6f8a96",
+    "windowRatio": 0.18,
+    "trimColour": "#e4cdb8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b9783f",
+    "material": "clay-tile",
+    "rise": 6,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -14,
+    2
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9b59d",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "glassColour": "#3d4d55"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9783f",
+    "material": "clay-tile",
+    "rise": 2.4,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     13,
+     9
+    ]
+   },
+   "at": [
+    18,
+    2
+   ],
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d9b59d",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "glassColour": "#3d4d55"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9783f",
+    "material": "clay-tile",
+    "rise": 2.4,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-steps",
+   "params": {
+    "rect": [
+     11,
+     3
+    ],
+    "height": 0.1,
+    "colour": "#b7b2a6"
+   },
+   "at": [
+    4,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-brick",
+   "params": {
+    "rect": [
+     42,
+     22
+    ],
+    "height": 0.1,
+    "colour": "#b5553a"
+   },
+   "at": [
+    2,
+    -20,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-1",
+   "params": {
+    "rect": [
+     34,
+     10
+    ],
+    "height": 0.7,
+    "colour": "#b9b4a8"
+   },
+   "at": [
+    0,
+    16,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace-2",
+   "params": {
+    "rect": [
+     28,
+     8
+    ],
+    "height": 1.4,
+    "colour": "#b9b4a8"
+   },
+   "at": [
+    0,
+    25,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-a",
+   "params": {
+    "rect": [
+     9,
+     5
+    ],
+    "height": 0.35,
+    "colour": "#a39e93",
+    "topColour": "#b0624f"
+   },
+   "at": [
+    -7,
+    25,
+    1.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-b",
+   "params": {
+    "rect": [
+     9,
+     5
+    ],
+    "height": 0.35,
+    "colour": "#a39e93",
+    "topColour": "#b0624f"
+   },
+   "at": [
+    7,
+    25,
+    1.4
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gable-window",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    4,
+    -6.1
+   ],
+   "z0": 3.2,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8a96",
+    "windows": "curtain",
+    "glassColour": "#6f8a96",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3ab92"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-recess",
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 2.6,
+    "colour": "#6f8a96"
+   },
+   "at": [
+    4,
+    -6.1,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "params": {
+    "rect": [
+     11,
+     1.2
+    ],
+    "height": 0.45,
+    "colour": "#8d8a84"
+   },
+   "at": [
+    4,
+    -7.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "params": {
+    "rect": [
+     11,
+     1.2
+    ],
+    "height": 0.3,
+    "colour": "#8d8a84"
+   },
+   "at": [
+    4,
+    -8.4,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step3",
+   "params": {
+    "rect": [
+     11,
+     1.2
+    ],
+    "height": 0.15,
+    "colour": "#8d8a84"
+   },
+   "at": [
+    4,
+    -9.6,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence-left",
+   "params": {
+    "rect": [
+     0.4,
+     24
+    ],
+    "height": 1.2,
+    "colour": "#f1f1ee"
+   },
+   "at": [
+    -24,
+    -8,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -4
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     28,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     18
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -14,
+     32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -10
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gable window lighter but simple; no stone plinth detail or sign lettering; fence only on left; steps simplified"
+ }
+}

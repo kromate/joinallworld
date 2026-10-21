@@ -1,0 +1,595 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "siachen",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "siachen",
+    "climate": "cold",
+    "vernacular": "No civilian city: a glaciated high-altitude military zone (3,600-6,000 m). Everything is prefabricated and short: insulated metal-clad huts, fibreglass igloo shelters and large olive-green or white arctic tents half-buried in snow, corrugated steel roofs weighted against wind, helipads marked with painted circles, fuel drums and pipeline runs, and red-and-white marker flags on bamboo poles. There is no vegetation and the whole scene is white snow and grey rock.",
+    "wallColours": [
+      "#e9eef2",
+      "#5d6650",
+      "#c9d2d9",
+      "#8f969b",
+      "#d98e3a",
+      "#b5412f"
+    ],
+    "roofColours": [
+      "#f1f4f6",
+      "#6e7568",
+      "#8f969b",
+      "#b5412f"
+    ],
+    "wallMaterials": [
+      "metal-cladding",
+      "timber",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "snow",
+    "vegetation": [
+      "none"
+    ],
+    "ornament": "None applied. Only painted unit-neutral stripes, red-and-white marker flags, prayer/memorial flags at memorials, and plain stencil numbers; no brand or unit marks are to be shown.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+        "what": "terrain, altitude, climate, posts reached by pipeline and helicopter"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Siachen_Base_Camp",
+        "what": "base camp facilities: helipads, memorial, medical unit, training school, road, cold extremes"
+      }
+    ]
+  },
+  "places": {
+    "siachen-airport-siachen-airport": {
+      "venueId": "siachen-airport-siachen-airport",
+      "city": "siachen",
+      "name": "Col D'Italia",
+      "archetype": "park-landscape",
+      "subject": "a high glacier saddle of wind-packed snow and rock with a few flags and a small marker cairn, no airport buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "glacier-col"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c9d2d9",
+          "#8f969b",
+          "#e9eef2"
+        ],
+        "roofColour": "#e9eef2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "red-and-white markers on poles"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "small radio mast"
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+          "what": "glacier 76 km long, 3,620-5,753 m, snowfall over 1,000 cm, about -50 C; fuel pipelines to posts; Indian base at Dzingrulma"
+        }
+      ],
+      "notes": "The name is a glacier col, not an airport (game kind airport). Placeholder coordinates only; no source describes buildings there. Model it as a snowy rocky saddle with flags, not a terminal."
+    },
+    "siachen-clinic": {
+      "venueId": "siachen-clinic",
+      "city": "siachen",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "a prefabricated insulated medical hut half-banked with snow and a red-cross board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e9eef2",
+          "#b5412f",
+          "#c9d2d9"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Siachen_Base_Camp",
+          "what": "base at about 12,000 ft with helipads, a martyrs memorial, a medical unit, motorable road, Siachen Battle School; extreme cold"
+        }
+      ],
+      "notes": "(game venue) placeholder. A medical unit exists at the real base camp (source), but no specific building is described; typed from city style."
+    },
+    "siachen-community-notices": {
+      "venueId": "siachen-community-notices",
+      "city": "siachen",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "a small olive-green prefab notice and admin hut with a flagpole and a blank board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#5d6650",
+          "#8f969b",
+          "#e9eef2"
+        ],
+        "roofColour": "#6e7568",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; typed from city style."
+    },
+    "siachen-community-voting-game": {
+      "venueId": "siachen-community-voting-game",
+      "city": "siachen",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "a long white arctic tent hall with a barrel-shaped roof and a snow-cut entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "barrel",
+        "variant": "tent-hall"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e3dfd0",
+          "#8f969b",
+          "#5d6650"
+        ],
+        "roofColour": "#e3dfd0",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; tent shelters are typical of the region (typed). Barrel roof differentiates it from the huts."
+    },
+    "siachen-community-workshop": {
+      "venueId": "siachen-community-workshop",
+      "city": "siachen",
+      "name": "Community workshop (game venue)",
+      "archetype": "industrial",
+      "subject": "a wide gabled workshop shed with a stovepipe chimney and fuel drums stacked against its wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#8f969b",
+          "#d98e3a",
+          "#c9d2d9"
+        ],
+        "roofColour": "#6e7568",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2,
+          "note": "fuel drums / tanks; fuel is piped to posts per source"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+          "what": "glacier 76 km long, 3,620-5,753 m, snowfall over 1,000 cm, about -50 C; fuel pipelines to posts; Indian base at Dzingrulma"
+        }
+      ],
+      "notes": "(game venue) placeholder; fuel pipelines and logistics are real (source) but this building is typed."
+    },
+    "siachen-market-game": {
+      "venueId": "siachen-market-game",
+      "city": "siachen",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "a row of small snow-banked trading stalls under orange and olive tarp roofs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d98e3a",
+          "#5d6650",
+          "#e9eef2"
+        ],
+        "roofColour": "#d98e3a",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; there is no real market on the glacier, so a tarp-stall cluster is typed."
+    },
+    "siachen-meal-stop": {
+      "venueId": "siachen-meal-stop",
+      "city": "siachen",
+      "name": "Visitor meal stop (game venue)",
+      "archetype": "restaurant",
+      "subject": "a cosy mess hut with a chimney, steamy windows and snow piled on its low roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#7a5a3e",
+          "#5d6650",
+          "#e9eef2"
+        ],
+        "roofColour": "#e9eef2",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; typed from city style."
+    },
+    "siachen-quiet-reflection": {
+      "venueId": "siachen-quiet-reflection",
+      "city": "siachen",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "a small whitewashed memorial shelter with a pyramidal roof, prayer flags and a stone plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1f4f6",
+          "#8f969b",
+          "#b5412f"
+        ],
+        "roofColour": "#b5412f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "prayer / marker flags"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "small memorial plinth"
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Siachen_Base_Camp",
+          "what": "base at about 12,000 ft with helipads, a martyrs memorial, a medical unit, motorable road, Siachen Battle School; extreme cold"
+        }
+      ],
+      "notes": "(game venue) placeholder. The real base camp has a memorial for fallen soldiers (source), which inspires a small memorial shelter; the model itself is typed."
+    },
+    "siachen-recreation": {
+      "venueId": "siachen-recreation",
+      "city": "siachen",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "a flattened snow field with a rope-fenced volleyball court, flags and a small warming shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e9eef2",
+          "#d98e3a",
+          "#8f969b"
+        ],
+        "roofColour": "#e9eef2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small warming shelter"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "snow wall / rope fence"
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; typed from city style."
+    },
+    "siachen-transit": {
+      "venueId": "siachen-transit",
+      "city": "siachen",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "a helicopter landing pad with a painted circle and a small waiting shelter beside tracked vehicles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed",
+        "variant": "helipad-stop"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#5d6650",
+          "#d98e3a",
+          "#e9eef2"
+        ],
+        "roofColour": "#6e7568",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "painted pad; helicopters supply posts per source"
+        },
+        {
+          "id": "bus-bays",
+          "count": 2,
+          "note": "tracked/snow vehicles"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Siachen_Base_Camp",
+          "what": "base at about 12,000 ft with helipads, a martyrs memorial, a medical unit, motorable road, Siachen Battle School; extreme cold"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Siachen_Glacier",
+          "what": "glacier 76 km long, 3,620-5,753 m, snowfall over 1,000 cm, about -50 C; fuel pipelines to posts; Indian base at Dzingrulma"
+        }
+      ],
+      "notes": "(game venue) placeholder; helicopters and a road to base camp are real (sources), the stop itself is typed."
+    }
+  }
+}

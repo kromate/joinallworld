@@ -1,0 +1,458 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bole_international_airport.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Vob08",
+   "view": "side",
+   "file": "/tmp/places-evidence/addis-ababa/airport1.jpg",
+   "used": "terminal with a huge glazed wall raking back to the roof edge, solid blue-grey end block, low white tent-like canopies along the forecourt, lawn setting; lattice of dark grey-gold truss mullions over the raked glass, plain blue-grey end block with louvre grilles, tall conical white canopies"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/10075524",
+   "used": "terminal is a long thin building (match is by airport name only, 900 m away, so outline not used)"
+  },
+  {
+   "kind": "text",
+   "used": "brief/Wikipedia: 38 m control tower between terminals"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "glass-roof",
+   "params": {
+    "rect": [
+     130,
+     40
+    ],
+    "height": 24,
+    "topScale": [
+     1,
+     0.5
+    ],
+    "topOffset": [
+     0,
+     10
+    ],
+    "material": "glass-curtain",
+    "colour": "#c9b98a",
+    "topColour": "#3a4048",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     22,
+     40
+    ]
+   },
+   "at": [
+    -76,
+    0
+   ],
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d93ad",
+    "windows": "none",
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5560",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -64,
+     -20.3,
+     0
+    ],
+    "end": [
+     65,
+     -20.3,
+     0
+    ],
+    "count": 44,
+    "lod1Step": 4,
+    "lod2Step": 44,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.25,
+        0.25
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        20,
+        24
+       ]
+      ],
+      "colour": "#4d4a3e"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -65,
+      -16.3,
+      4.800000000000001
+     ],
+     [
+      65,
+      -16.3,
+      4.800000000000001
+     ]
+    ],
+    "colour": "#4d4a3e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -65,
+      -12.3,
+      9.600000000000001
+     ],
+     [
+      65,
+      -12.3,
+      9.600000000000001
+     ]
+    ],
+    "colour": "#4d4a3e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -65,
+      -8.3,
+      14.399999999999999
+     ],
+     [
+      65,
+      -8.3,
+      14.399999999999999
+     ]
+    ],
+    "colour": "#4d4a3e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -65,
+      -4.300000000000001,
+      19.200000000000003
+     ],
+     [
+      65,
+      -4.300000000000001,
+      19.200000000000003
+     ]
+    ],
+    "colour": "#4d4a3e"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -64,
+     -20.3,
+     0
+    ],
+    "end": [
+     62,
+     -20.3,
+     0
+    ],
+    "count": 22,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.2,
+        0.2
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        6,
+        10,
+        12.0
+       ]
+      ],
+      "colour": "#4d4a3e"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     130,
+     1.2
+    ],
+    "z0": 23.8,
+    "height": 1.6,
+    "colour": "#2b3036"
+   },
+   "at": [
+    0,
+    -0.5
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "z0": 3,
+    "height": 3.2,
+    "colour": "#2f3a47"
+   },
+   "at": [
+    -76,
+    -20.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "z0": 17,
+    "height": 3.2,
+    "colour": "#2f3a47"
+   },
+   "at": [
+    -76,
+    -20.2
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -55,
+     -26,
+     0
+    ],
+    "end": [
+     55,
+     -26,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.2,
+        9.5,
+        "#f2f4f6"
+       ],
+       [
+        4.5,
+        4.5,
+        "#f2f4f6"
+       ],
+       [
+        0.3,
+        4.5,
+        "#cfd4d8"
+       ]
+      ],
+      "segments": 10,
+      "colour": "#f2f4f6"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 118,
+    "depth": 9,
+    "height": 4.2,
+    "thickness": 0.4,
+    "columns": 9,
+    "colour": "#dfe3e6"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    78,
+    14,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d9dcdf"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -68,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -44
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -48
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -47
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Lattice is approximate (no true diagonal truss grid, canopy steel frame is a flat slab); only about 130 m of terminal; end block grilles are simple panels."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-airport-addis-ababa-airport"
+}

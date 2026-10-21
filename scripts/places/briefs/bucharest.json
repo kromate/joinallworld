@@ -1,0 +1,1640 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bucharest",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bucharest",
+    "climate": "temperate",
+    "vernacular": "A city of contrasts: most residents live in communist-era prefabricated concrete apartment blocks (blocuri) of 4-11 storeys in grey and faded pastel render, many wrapped in coloured insulation; between them survive 19th-century neoclassical and eclectic 'Little Paris' townhouses and palaces in ochre, cream and white stucco, Brancovenesc and Neo-Romanian houses with tiled hip roofs and arcaded porches, and interwar Art Deco and modernist apartment blocks in cream stucco. Glass-and-steel offices and large retail boxes stand on the northern and eastern edges. Orthodox churches are small whitewashed or stuccoed buildings with tiled or metal domes and open porches; suburbs and Ilfov villages are low plastered houses with hip roofs.",
+    "wallColours": [
+      "#d8c9a5",
+      "#c9c3b4",
+      "#e7e1d2",
+      "#b88a62",
+      "#8c8a85",
+      "#a9b4a0"
+    ],
+    "roofColours": [
+      "#a4573d",
+      "#7a3f2e",
+      "#6b6460",
+      "#4a4f57"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "render",
+      "painted-render",
+      "concrete",
+      "brick",
+      "stone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Brancovenesc stone carving, stucco and arcaded loggias; neoclassical pediments and Corinthian pilasters (Stirbei Palace, former National Theatre, old University); Gothic Revival (House of Guilds 1859-62); Art Deco and interwar modernist balconies and corner windows; Arcul de Triumf and Palatul Telefoanelor; Ceausescu-era socialist-realist colonnades and the Palace of the Parliament.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Romania",
+        "what": "Brancovenesc (baroque with oriental features, stone carving, stucco), 19th-century neoclassical Bucharest (Stirbei Palace c.1835, National Theatre 1849-52, old University 1857-64), Wallachian Gothic Revival, interwar Art Deco/Modernism, communist socialist-realist demolitions"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bucharest",
+        "what": "Paris of the East late 19th century; interwar Arcul de Triumf and Palatul Telefoanelor; most residents in communist-era high-density apartment blocks; Palace of the Parliament"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Caru%27_cu_Bere",
+        "what": "Gothic Revival Caru cu Bere 1899 with Art Nouveau interior"
+      }
+    ]
+  },
+  "places": {
+    "bucharest-airport-bucharest-airport": {
+      "venueId": "bucharest-airport-bucharest-airport",
+      "city": "bucharest",
+      "name": "Bucharest Henri Coandă International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Otopeni departures terminal and finger concourse seen from the forecourt: a wide low glass-and-steel block with a canopy and the overhauled control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bfd0da",
+          "#7b8791",
+          "#eceeee"
+        ],
+        "roofColour": "#a0a8ad",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures kerb canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "overhauled 2005-07"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 14,
+          "note": "14 of 38 gates have jetways"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-storey car park built 2003"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1970 original (Cezar Lazarescu), expanded 1994-2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Henri_Coand%C4%83_International_Airport",
+          "what": "original 1970 terminal by Cezar Lazarescu; 1994-98 new departures terminal and airside Finger; arrivals in old terminal 2000; multi-storey car park 2003; control tower overhaul 2005-07; Finger extended 2011 (17,000 m2); departure hall extended 38,600 m2 by 2012; total 86,000 m2, 104 desks, 38 gates (14 jetways)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/16476195",
+          "what": "terminal polygon 488.6 x 391.9 m, 40,557 m2"
+        }
+      ],
+      "notes": "Layout and sizes sourced; facade colours and storeys are estimates. Larger than Bratislava airport and with a distinct finger pier."
+    },
+    "bucharest-clinic": {
+      "venueId": "bucharest-clinic",
+      "city": "bucharest",
+      "name": "Institutul Clinic Fundeni",
+      "archetype": "hospital",
+      "subject": "The Fundeni Clinical Institute: a large mid-20th-century hospital tower-and-wing block in a big campus",
+      "form": {
+        "footprint": "T",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d3cdbf",
+          "#8c8a85",
+          "#eeeadf"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/23737371",
+          "what": "hospital campus polygon 799 x 425 m, 249,353 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12730478",
+          "what": "identity: Fundeni hospital"
+        }
+      ],
+      "notes": "The campus is 250,000 m2 so it is large; no description of its blocks was found. Typed concrete slab-and-wing hospital."
+    },
+    "bucharest-community-notices": {
+      "venueId": "bucharest-community-notices",
+      "city": "bucharest",
+      "name": "Serviciul de Protecție și Pază",
+      "archetype": "civic-small",
+      "subject": "The SPP headquarters, a secured government building of about 50 x 50 m and 10 m height behind a perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d6d0c0",
+          "#8c8a85",
+          "#eeeadf"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high perimeter wall"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/858882318",
+          "what": "government building, height 10 m, 50.6 x 50.5 m, 2,554 m2 (nearest building)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7251339",
+          "what": "Protection and Guard Service, Romanian government agency"
+        }
+      ],
+      "notes": "Building identity only approximated by the nearest government building. Typed guess."
+    },
+    "bucharest-community-voting-game": {
+      "venueId": "bucharest-community-voting-game",
+      "city": "bucharest",
+      "name": "Primăria Sectorului 1 (District 1 City Hall)",
+      "archetype": "civic-small",
+      "subject": "Sector 1 city hall, a listed palace-style building of about 51 x 47 m with a symmetrical stuccoed facade",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#e0d4b0",
+          "#a8957a",
+          "#f3efe4"
+        ],
+        "roofColour": "#7a3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "19th or early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/156815213",
+          "what": "townhall polygon 51 x 47.5 m, 1,183 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q114740367",
+          "what": "Sector 1 City Hall, heritage site, palace"
+        }
+      ],
+      "notes": "Wikidata marks it as a heritage palace; style and colours are a typed guess for a Bucharest neoclassical townhouse-palace."
+    },
+    "bucharest-community-workshop": {
+      "venueId": "bucharest-community-workshop",
+      "city": "bucharest",
+      "name": "The International School of Bucharest",
+      "archetype": "campus-block",
+      "subject": "The International School of Bucharest: a long modern three-storey school building in render and glass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e1d2",
+          "#4d6f9e",
+          "#c9c3b4"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/242092560",
+          "what": "college polygon 120.8 x 40 m, 3,438 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28230332",
+          "what": "private international school in Bucharest"
+        }
+      ],
+      "notes": "No building description found. Typed from a modern private school."
+    },
+    "bucharest-market-game": {
+      "venueId": "bucharest-market-game",
+      "city": "bucharest",
+      "name": "Băneasa Shopping City",
+      "archetype": "mall",
+      "subject": "Băneasa Shopping City: a big four-level mall block opened 2008 with glass entrances and a vast surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 370,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d8",
+          "#7b8791",
+          "#b04a3a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "8,000 surface plus 1,500 underground spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "opened April 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/B%C4%83neasa_Shopping_City",
+          "what": "four-floor mall in Baneasa, opened April 2008, built by Bouygues, EUR 150M, 55,000 m2 retail, 250-280 stores, 8,000+ surface and 1,500 underground parking, cinema 2011"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/241256765",
+          "what": "retail building: 3 levels, height 22 m, 371 x 178 m, 39,473 m2"
+        }
+      ],
+      "notes": "Size, date and height sourced; facade colours assumed. Bigger than Promenada and Jumbo."
+    },
+    "bucharest-meal-stop": {
+      "venueId": "bucharest-meal-stop",
+      "city": "bucharest",
+      "name": "Caru' cu Bere",
+      "archetype": "restaurant",
+      "subject": "The Caru' cu Bere beer hall, a Gothic Revival corner building in Bucharest Old Town with a gabled, pinnacled facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9c58a",
+          "#8c3b2e",
+          "#efe6d0"
+        ],
+        "roofColour": "#6b3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "gothic-revival gable pinnacles"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "famous interior windows"
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "ornate gable"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "gothic-revival",
+      "era": "1899 (building bought 1897)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Caru%27_cu_Bere",
+          "what": "Gothic Revival design by Siegfried Kofczinski (Lemberg), bought 1897, restaurant opened 1899; Art Nouveau interior decoration; restored 1986 and after 1999; historic monument B-II-m-B-19728"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1456401783",
+          "what": "containing building 27.8 x 24.8 m, 461 m2"
+        }
+      ],
+      "notes": "Style, architect and year sourced; exterior colours are estimated from public photos and inferred; interior is not modelled. Recognisable by the pointed windows and carved gable on an Old Town cobbled lane."
+    },
+    "bucharest-osm-node-13348629880": {
+      "venueId": "bucharest-osm-node-13348629880",
+      "city": "bucharest",
+      "name": "MiG-21",
+      "archetype": "monument",
+      "subject": "A MiG-21 jet fighter displayed on a plinth as a memorial: a small delta-wing aircraft on a concrete pedestal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#9aa3a8",
+          "#6f747a",
+          "#c9c3b4"
+        ],
+        "roofColour": "#6f747a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "delta-wing MiG-21 about 15 m long mounted on a pylon (modelled as a statue)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "Cold War aircraft; display date unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/13348629880",
+          "what": "OSM point named MiG-21 (walk venue); nearest building is only 11.8 x 5.1 m, not the aircraft"
+        }
+      ],
+      "notes": "Only the name is known: a MiG-21 as a monument, which is a delta-wing fighter 15 m long with a 7 m span. Mounting height and plinth are guessed. Needs an aircraft or statue feature, which the generator may only approximate."
+    },
+    "bucharest-osm-node-7192273754": {
+      "venueId": "bucharest-osm-node-7192273754",
+      "city": "bucharest",
+      "name": "Balotesti Victim Memorial",
+      "archetype": "monument",
+      "subject": "A roadside memorial to victims at Balotesti: a stone cross or obelisk on a small paved platform",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8a85",
+          "#cfcac0",
+          "#4a4a48"
+        ],
+        "roofColour": "#6f747a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "stone cross or obelisk (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/7192273754",
+          "what": "OSM point named Balotesti Victim Memorial; no polygon or description"
+        }
+      ],
+      "notes": "The OSM point has no polygon and nothing describing the memorial was found. Typed as a small Romanian roadside memorial in grey stone. Very low information."
+    },
+    "bucharest-osm-way-1073541452": {
+      "venueId": "bucharest-osm-way-1073541452",
+      "city": "bucharest",
+      "name": "Academia Națională de Informații \"Mihai Viteazul\"",
+      "archetype": "campus-block",
+      "subject": "The National Intelligence Academy: a long three-storey institutional block of about 116 x 45 m",
+      "form": {
+        "footprint": "rect",
+        "width_m": 116,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd5c3",
+          "#8c8a85",
+          "#eeeadf"
+        ],
+        "roofColour": "#7a3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "security wall"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/267205785",
+          "what": "college building polygon 116.1 x 45.5 m, 2,610 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18537218",
+          "what": "National Intelligence Academy"
+        }
+      ],
+      "notes": "No description found; footprint is measured, everything else is typed."
+    },
+    "bucharest-osm-way-1227559971": {
+      "venueId": "bucharest-osm-way-1227559971",
+      "city": "bucharest",
+      "name": "Spitalul Clinic de Urgență Floreasca",
+      "archetype": "hospital",
+      "subject": "Floreasca emergency hospital: an eight-storey, 35 m concrete block with ribbon windows, used since 1949 with a seven-storey wing of 1960",
+      "form": {
+        "footprint": "rect",
+        "width_m": 93,
+        "depth_m": 63,
+        "storeys": 8,
+        "height_m": 35,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d6d1c3",
+          "#8c8a85",
+          "#eeeadf"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1949 building, 1960 seven-storey wing",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Spitalul_Clinic_de_Urgen%C8%9B%C4%83_Floreasca",
+          "what": "current building in use since 1949; 1960 new seven-storey wing"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28246374",
+          "what": "hospital: 8 levels, height 35 m, 92.9 x 63.4 m, 2,560 m2"
+        }
+      ],
+      "notes": "Levels, height, and footprint measured. Facade colours estimated."
+    },
+    "bucharest-osm-way-13450166": {
+      "venueId": "bucharest-osm-way-13450166",
+      "city": "bucharest",
+      "name": "Arena Națională (National Arena)",
+      "archetype": "stadium",
+      "subject": "The National Arena in Bucharest: a modern rounded-rectangle stadium bowl with a retractable roof ring and tall floodlight/roof mast structure",
+      "form": {
+        "footprint": "oval",
+        "width_m": 238,
+        "depth_m": 200,
+        "storeys": 10,
+        "height_m": 55,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9ced2",
+          "#7b8791",
+          "#f0f0ee"
+        ],
+        "roofColour": "#aab2b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "retractable roof, opens or closes in about 15 minutes"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "opened 6 Sept 2011",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arena_Na%C8%9Bional%C4%83",
+          "what": "55,634 seats incl. 3,600 VIP and 42 executive suites; retractable roof opening/closing in 15 minutes; pitch 105 x 68 m; groundbreaking 20 Feb 2008, opened 6 Sept 2011; designed by Gerkan, Marg and Partners; built by Max Bogl and Astaldi; 2,100 parking spaces"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2501757",
+          "what": "stadium: 10 levels, height 55 m, 238.5 x 200.9 m, 31,529 m2, start 2011"
+        }
+      ],
+      "notes": "Capacity, roof type, architect and OSM height 55 m are sourced; exterior colours are from general appearance. Retractable roof is shown as a closed ring."
+    },
+    "bucharest-osm-way-13860708": {
+      "venueId": "bucharest-osm-way-13860708",
+      "city": "bucharest",
+      "name": "Sala Polivalentă (Polyvalent Hall)",
+      "archetype": "stadium",
+      "subject": "The Sala Polivalentă, a 1974 multi-purpose indoor arena: a broad two-tier concrete hall with a low shallow-pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 105,
+        "depth_m": 79,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b3b0a5",
+          "#6f747a",
+          "#d9d6cc"
+        ],
+        "roofColour": "#6b7077",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "opened 10 Aug 1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sala_Polivalent%C4%83",
+          "what": "list of Romanian halls: Bucharest Polyvalent Hall capacity 5,300"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/13860708",
+          "what": "public building, start 1974-08-10, 104.7 x 79 m, 8,215 m2"
+        }
+      ],
+      "notes": "Date, size and capacity sourced; the 1970s concrete style and roof are assumed from the era (not described by sources)."
+    },
+    "bucharest-osm-way-21802163": {
+      "venueId": "bucharest-osm-way-21802163",
+      "city": "bucharest",
+      "name": "Parcul Drumul Taberei",
+      "archetype": "park-landscape",
+      "subject": "Drumul Taberei park: a large flat park of about 460 x 420 m with a lake, curved paths and mature trees, ringed by prefab apartment blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a39d90",
+          "#6f9a4b",
+          "#c9c3b4"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "soviet",
+      "era": "1970s housing-district park (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/21802163",
+          "what": "leisure=park polygon 462.6 x 421 m, 118,882 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12737518",
+          "what": "Drumul Taberei Park"
+        }
+      ],
+      "notes": "Layout is a guess for a socialist-era district park; only the size is known."
+    },
+    "bucharest-osm-way-23574618": {
+      "venueId": "bucharest-osm-way-23574618",
+      "city": "bucharest",
+      "name": "Spitalul Clinic de Psihiatrie \"Prof. Dr. Alexandru Obregia\"",
+      "archetype": "hospital",
+      "subject": "One three-storey pavilion of the Obregia psychiatric hospital, a hip-roofed plastered block set in trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#e0d4b0",
+          "#a8957a",
+          "#f3efe4"
+        ],
+        "roofColour": "#7a3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/160548720",
+          "what": "hospital building: 3 levels, 51.9 x 29.5 m, 959 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30293473",
+          "what": "Alexandru Obregia Clinical Psychiatric Hospital"
+        }
+      ],
+      "notes": "Pavilion hospital; style typed from the city, no building description found."
+    },
+    "bucharest-osm-way-23705733": {
+      "venueId": "bucharest-osm-way-23705733",
+      "city": "bucharest",
+      "name": "Parcul Obor",
+      "archetype": "park-landscape",
+      "subject": "A small city park beside Obor: lawns, rows of trees and a central paved plaza with benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a39d90",
+          "#6f9a4b",
+          "#c9c3b4"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/23705733",
+          "what": "leisure=park polygon 176.7 x 117.2 m, 16,486 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18545193",
+          "what": "Obor park"
+        }
+      ],
+      "notes": "Only size known. Typed city park."
+    },
+    "bucharest-osm-way-240694437": {
+      "venueId": "bucharest-osm-way-240694437",
+      "city": "bucharest",
+      "name": "Promenada Mall",
+      "archetype": "mall",
+      "subject": "Promenada Mall in northern Bucharest: a three-level glazed and rendered shopping centre, 18 m high",
+      "form": {
+        "footprint": "rect",
+        "width_m": 172,
+        "depth_m": 99,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#c9d3d9",
+          "#e7e1d2",
+          "#7b8791"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/240694437",
+          "what": "retail: 3 levels, height 18 m, 172.2 x 99.4 m, 17,018 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18547103",
+          "what": "shopping center in Bucharest"
+        }
+      ],
+      "notes": "Levels, height and footprint measured; facade assumed. Mid-sized."
+    },
+    "bucharest-osm-way-46256608": {
+      "venueId": "bucharest-osm-way-46256608",
+      "city": "bucharest",
+      "name": "Jumbo Center",
+      "archetype": "mall",
+      "subject": "Jumbo Center, a wide three-level retail box opened 2008 with a long street frontage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 83,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "render",
+        "colours": [
+          "#d9d4c6",
+          "#2d5a8e",
+          "#eeeadf"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/46256608",
+          "what": "retail: 3 levels, height 18 m, start 2008, 191.9 x 83.1 m, 14,203 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6541649",
+          "what": "Jumbo Center shopping mall"
+        }
+      ],
+      "notes": "Date, levels, height and footprint measured; facade assumed to be metal-clad big-box with render. Plainer than the other malls."
+    },
+    "bucharest-osm-way-497380799": {
+      "venueId": "bucharest-osm-way-497380799",
+      "city": "bucharest",
+      "name": "Biserica „Sfinții Împărați Constantin și Elena\" (1817)",
+      "archetype": "church-classical",
+      "subject": "A small Romanian Orthodox church of 1817: a plastered single-nave church with a rounded apse, an open porch and a small tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f0ead6",
+          "#b8a07a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c5a45",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "open pridvor porch with columns"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small tower with a metal cap"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1817",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/497380799",
+          "what": "Romanian Orthodox church, start 1817, 23.6 x 14.9 m, 254 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q42958094",
+          "what": "Eastern Orthodox church building in Ilfov County"
+        }
+      ],
+      "notes": "Date and denomination sourced; the typical Wallachian layout (porch, apse, tower) is assumed. A same-dedication church belongs to the Oteteleșanu ensemble in Magurele but sits several km away, so this may be a different one."
+    },
+    "bucharest-osm-way-538963326": {
+      "venueId": "bucharest-osm-way-538963326",
+      "city": "bucharest",
+      "name": "Fostul conac Oteteleșanu (Măgurele)",
+      "archetype": "manor",
+      "subject": "The former Oteteleșanu mansion in Măgurele, built 1841-50: a two-storey neoclassical boyar mansion with a front porch and a grand hall stair, restored by 2019",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc2",
+          "#b8a07a",
+          "#f3efe4"
+        ],
+        "roofColour": "#7a3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "main staircase in the entrance hall"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1841-1850, restored 2010s (finished 2019)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Conacul_Oteteleșanu_din_Măgurele",
+          "what": "built 1841-1850 at Str. Atomistilor 409, Magurele; Institute of Atomic Physics HQ from 1949; derelict then consolidated and restored in the 2010s, finished 2019; part of the Oteteleșanu ensemble with park, church and archaeological site; photos of front, rear, side and main staircase"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/538963326",
+          "what": "historic=manor polygon 34.7 x 20.1 m, 617 m2"
+        }
+      ],
+      "notes": "Dates, size and restoration sourced; the neoclassical style and porch are assumed from 1840s Wallachian mansions."
+    },
+    "bucharest-osm-way-79128894": {
+      "venueId": "bucharest-osm-way-79128894",
+      "city": "bucharest",
+      "name": "Biserica Sfânta Fecioară Maria Regină (Cioplea)",
+      "archetype": "church-classical",
+      "subject": "The small Roman Catholic church of Mary Queen in Cioplea (1812): a narrow plastered nave with a tower at the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f0ead6",
+          "#b8a07a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c5a45",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1812",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/79128894",
+          "what": "Roman Catholic church, start 1812, 25.9 x 9.4 m, 225 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18538022",
+          "what": "church building in Bucharest"
+        }
+      ],
+      "notes": "Date, denomination and footprint only; the rest is typed. Low."
+    },
+    "bucharest-osm-way-847208795": {
+      "venueId": "bucharest-osm-way-847208795",
+      "city": "bucharest",
+      "name": "Stadionul Concordia (Chiajna)",
+      "archetype": "stadium",
+      "subject": "Concordia Stadium in Chiajna: a small modern football stadium with stands on the long sides and an artificial turf pitch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 134,
+        "depth_m": 82,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b5ac",
+          "#8c2b2b",
+          "#e8e6de"
+        ],
+        "roofColour": "#5b636b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Concordia_Stadium_(Chiajna)",
+          "what": "5,123 capacity, opened 2007, artificial turf 105 x 60 m (as stated), owned by Chiajna commune; hosted 2011 UEFA U-19 European Championship matches incl. final"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/847208795",
+          "what": "stadium polygon 134.2 x 82.2 m, 10,600 m2"
+        }
+      ],
+      "notes": "Capacity and opening sourced; the stand roofs are not described. Smaller than the National Arena."
+    },
+    "bucharest-quiet-reflection": {
+      "venueId": "bucharest-quiet-reflection",
+      "city": "bucharest",
+      "name": "Biserica „Adormirea Maicii Domnului\" (1815)",
+      "archetype": "shrine-small",
+      "subject": "A tiny Orthodox village church of 1815: a whitewashed single nave with a small tower and porch, about 19 x 9 m",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f0ead6",
+          "#b8a07a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c5a45",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "small porch"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1815",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1088260518",
+          "what": "Romanian Orthodox church, start 1815, 19.2 x 9.4 m, 150 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25461036",
+          "what": "church building, heritage site in Ilfov County"
+        }
+      ],
+      "notes": "Only date, denomination and footprint known. Typed small Wallachian church."
+    },
+    "bucharest-recreation": {
+      "venueId": "bucharest-recreation",
+      "city": "bucharest",
+      "name": "Parcul Tudor Arghezi",
+      "archetype": "park-landscape",
+      "subject": "Tudor Arghezi park in southern Bucharest: lawns, a lake edge, curved paths and groups of mature trees (about 260 x 220 m)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a39d90",
+          "#6f9a4b",
+          "#c9c3b4"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "recent (Wikidata item is new)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1054221333",
+          "what": "leisure=park polygon 262 x 221 m, 36,524 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q135526433",
+          "what": "Tudor Arghezi park, urban park in Bucharest"
+        }
+      ],
+      "notes": "Only size and name known; typed urban park."
+    },
+    "bucharest-transit": {
+      "venueId": "bucharest-transit",
+      "city": "bucharest",
+      "name": "Chitila (railway station area)",
+      "archetype": "transport-station",
+      "subject": "Chitila station: a small three-storey stuccoed station/office block beside the tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#dcd0a8",
+          "#8c8a85",
+          "#f3efe4"
+        ],
+        "roofColour": "#7a3f2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/936228482",
+          "what": "office building, 3 levels, 15.7 x 12.4 m, 195 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q169127",
+          "what": "Chitila, town in Ilfov County"
+        }
+      ],
+      "notes": "The target is the Chitila town; the matched building is a small 3-level office, so it is a typed small station block. Low."
+    }
+  }
+}

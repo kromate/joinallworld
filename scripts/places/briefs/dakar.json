@@ -1,0 +1,1516 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dakar",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dakar",
+    "climate": "sahel",
+    "vernacular": "Atlantic peninsula capital with a French colonial Plateau of 3-6 storey rendered blocks in cream, ochre and faded pink with louvred shutters and balconies, 1930s Art Deco and Neo-Sudanese civic buildings, 1960s Senghor-era modernist concrete, and a dense Medina of 2-4 storey painted concrete houses and shops with flat roofs and rebar sticking out. Hot semi-arid with Atlantic sea breeze; sandy ground, palms, baobabs and neem; many buildings are repainted in bright blues, greens and yellows.",
+    "wallColours": [
+      "#efe5cf",
+      "#d9b36b",
+      "#cf9a86",
+      "#e8d5c0",
+      "#9fb7c4",
+      "#b8b2a7",
+      "#ffffff"
+    ],
+    "roofColours": [
+      "#b5532f",
+      "#8c9196",
+      "#b8b2a7",
+      "#5b6670"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stucco",
+      "sandstone",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "metal-sheet",
+      "corrugated"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Neo-Sudanese towers and Byzantine domes on 1930s landmarks; Moroccan-style tilework and arches on the Grand Mosque; louvred shutters and wrought balconies on colonial blocks; green, white and red tile accents on Mouride and Layene mosques; bright murals and hand-painted shop signs in the Medina.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dakar",
+        "what": "BSh hot semi-arid climate; Plateau as European colonial district, Medina as African quarter; presidential palace 1907; Dakar station 1885; Mamelles lighthouse 1864; laterite blocks used in 1795 walls; Grand Mosque 1964 and Mosque of the Divinity 1973"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cathédrale_du_Souvenir_africain_de_Dakar",
+        "what": "Wulffleff 1936: Neo-Sudanese towers, Byzantine domes, pink Sudanese sandstone, Tunisian marble, Breton granite"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Mosquée_de_la_Divinité",
+        "what": "white, green and red tile, reinforced concrete, 80 t suspended dome, Cheikh Ngom"
+      }
+    ]
+  },
+  "places": {
+    "dakar-airport-dakar-airport": {
+      "venueId": "dakar-airport-dakar-airport",
+      "city": "dakar",
+      "name": "Aeroport international Blaise Diagne (AIBD)",
+      "archetype": "airport-terminal",
+      "subject": "AIBD passenger terminal seen from the landside: a very long white-and-blue glazed terminal with a curved departures canopy, jet bridges on the airside and a tall control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 75,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#2f4a5c",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blaise_Diagne_International_Airport",
+          "what": "opened for scheduled operations 7 December 2017; cost 566 million euros, over 400 million from Saudi Binladin Group"
+        }
+      ],
+      "notes": "Opening date and builder are sourced; the terminal's exact geometry (length, curved roof, glazing) is an estimate from general knowledge and could not be confirmed. Newest and largest airport terminal in this batch; much larger and glassier than Bamako and N'Djamena."
+    },
+    "dakar-cathedrale-du-souvenir-africain": {
+      "venueId": "dakar-cathedrale-du-souvenir-africain",
+      "city": "dakar",
+      "name": "Cathedrale du Souvenir africain (Notre-Dame-des-Victoires)",
+      "archetype": "church-classical",
+      "subject": "The 1936 cathedral from the front: a pink sandstone Greek-cross building with a central Byzantine dome, two Neo-Sudanese towers flanking a broad portico and four monumental angels above the entrance",
+      "form": {
+        "footprint": "cross",
+        "width_m": 50,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "stucco",
+        "colours": [
+          "#cf9a86",
+          "#e8dccc",
+          "#a9a39a"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome lit by twenty windows"
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "Neo-Sudanese towers flanking the portico"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "broad entrance portico"
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "four monumental angels carved after Peul models"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "tapering Sudanese tower tops"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "sahelian",
+      "era": "1936",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cathédrale_du_Souvenir_africain_de_Dakar",
+          "what": "architect Charles-Albert Wulffleff, consecrated 2 Feb 1936; Neo-Sudanese towers, Byzantine domes and terraces; Greek-cross plan, central dome with twenty windows; porticoes on three arms; pink Sudanese sandstone, Tunisian marble, Breton granite; four angels by Anna Quinquaud"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "what": "Dakar Cathedral (Our Lady of Victories) is a notable church"
+        }
+      ],
+      "notes": "Sourced from the French article: Greek-cross plan, central dome, two towers, portico, pink sandstone, four angels. Overall metres and the dome colour are estimates. Recognisable as a Byzantine dome plus Sudanese towers, unlike any Gothic spire."
+    },
+    "dakar-centre-commercial-pa-u22": {
+      "venueId": "dakar-centre-commercial-pa-u22",
+      "city": "dakar",
+      "name": "Centre commercial PA u22",
+      "archetype": "mall",
+      "subject": "Parcelles Assainies unit 22 shopping centre: a two-storey rendered mall with a rooftop sign band and a car park in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d5c0",
+          "#9fb7c4",
+          "#b8b2a7"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Suburban Parcelles Assainies shopping centre; scale kept small."
+    },
+    "dakar-clinic": {
+      "venueId": "dakar-clinic",
+      "city": "dakar",
+      "name": "Hopital de Fann",
+      "archetype": "hospital",
+      "subject": "Fann teaching hospital: a low-rise pavilion hospital in cream render with shaded walkways in a sandy garden",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe5cf",
+          "#cf9a86",
+          "#b8b2a7"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid-20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Fann hospital complex on the Corniche side; pavilion layout is a type guess."
+    },
+    "dakar-community-notices": {
+      "venueId": "dakar-community-notices",
+      "city": "dakar",
+      "name": "Assemblee nationale du Senegal",
+      "archetype": "civic-palace",
+      "subject": "National Assembly on Place Soweto: a formal rendered government building with a columned frontage, steps and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe5cf",
+          "#b8b2a7",
+          "#a9a39a"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Assembly_of_Senegal",
+          "what": "located on Place Soweto, Dakar (14.6625N 17.4383W); building not described"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Only the location is sourced. Columned frontage is a typed guess for a state assembly; confirm before relying on it."
+    },
+    "dakar-community-voting-game": {
+      "venueId": "dakar-community-voting-game",
+      "city": "dakar",
+      "name": "Place de la Nation",
+      "archetype": "park-landscape",
+      "subject": "Place de la Nation: a wide paved roundabout square with a central obelisk-style monument, flower beds and palms",
+      "form": {
+        "footprint": "round",
+        "width_m": 90,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9b36b",
+          "#b8b2a7",
+          "#ffffff"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "central monument (unverified)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Large traffic square; the central monument is recalled, not sourced."
+    },
+    "dakar-community-workshop": {
+      "venueId": "dakar-community-workshop",
+      "city": "dakar",
+      "name": "Universite Cheikh Anta Diop",
+      "archetype": "campus-block",
+      "subject": "UCAD: a long four-storey modernist faculty block in rendered concrete with deep balcony bands and outdoor staircases on a sandy campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e8d5c0",
+          "#b8b2a7",
+          "#9fb7c4"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s onward (founded 1957, unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Large public university; show one recognisable faculty block."
+    },
+    "dakar-grand-theatre-national": {
+      "venueId": "dakar-grand-theatre-national",
+      "city": "dakar",
+      "name": "Grand Theatre National de Dakar",
+      "archetype": "museum-theatre",
+      "subject": "The Grand Theatre: a large oval modern theatre with a curved glazed foyer, sweeping roof and wide steps onto the Corniche forecourt",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe5cf",
+          "#2f4a5c",
+          "#b8b2a7"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. The Wikipedia page could not be fetched. From recollection it is a large Chinese-built 2010s theatre of about 1,800 seats; that is unverified so confidence stays low."
+    },
+    "dakar-market-game": {
+      "venueId": "dakar-market-game",
+      "city": "dakar",
+      "name": "Marche Sandaga",
+      "archetype": "market-hall",
+      "subject": "Sandaga Market: a two-storey ochre-rendered colonial market hall with arcaded ground floor, shop fronts and awnings, ringed by street stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#d9b36b",
+          "#efe5cf",
+          "#7a5a3c"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "sahelian",
+      "era": "1930s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Sandaga is Dakar's best-known central market; the page could not be fetched. Neo-Sudanese-Moorish arches and an ochre facade are recalled but unverified."
+    },
+    "dakar-massalikoul-djinane": {
+      "venueId": "dakar-massalikoul-djinane",
+      "city": "dakar",
+      "name": "Massalikoul Djinane",
+      "archetype": "mosque-domed",
+      "subject": "Massalikoul Djinane: a huge white modern Mouride mosque with a large central dome, tall corner minarets and a broad marble courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 30,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "whitewash",
+        "colours": [
+          "#f4f1ea",
+          "#2f6f4f",
+          "#c9a45c"
+        ],
+        "roofColour": "#f4f1ea",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "tall corner minarets (count unverified)"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Large recent mosque in the Sacre-Coeur/VDN area; minaret count, size and colours are recalled and unverified. Must differ from the cliff-top Divinity mosque and the 1964 Grand Mosque."
+    },
+    "dakar-meal-stop": {
+      "venueId": "dakar-meal-stop",
+      "city": "dakar",
+      "name": "Dibiterie Le Ndiambour",
+      "archetype": "restaurant",
+      "subject": "A dibiterie: a small roadside grill shop with a tiled counter, charcoal grill, bench seating and a blank signboard under a shed roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d5c0",
+          "#2f6f4f",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8c9196",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Dibiteries are Senegalese roadside grilled-meat stands; this one is not described online."
+    },
+    "dakar-mosquee-de-la-divinite": {
+      "venueId": "dakar-mosquee-de-la-divinite",
+      "city": "dakar",
+      "name": "Mosquee de la Divinite",
+      "archetype": "mosque-domed",
+      "subject": "The Mosque of the Divinity at Ouakam: a slender white tiled mosque on a rock at the edge of the sea, with two tall minarets and a suspended concrete dome over the entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#2f6f4f",
+          "#c0392b"
+        ],
+        "roofColour": "#f4f1ea",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "tall minarets"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "80-tonne suspended concrete dome over the front opening"
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "arab-islamic",
+      "era": "1992-1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mosquée_de_la_Divinité",
+          "what": "built on a rock by the sea on the Corniche-Ouest in Ouakam, 1992-1997; architect Cheikh Ngom; long slender design with two tall minarets; suspended reinforced-concrete dome of more than 80 tonnes; white, green and red tiles and paint"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "what": "Mosque of Divinity (1973 per this page) in Ouakam has triangular windows"
+        }
+      ],
+      "notes": "Sourced: sea-edge rock site, two minarets, suspended dome, white/green/red tile palette. Dates differ between sources (1973 vs 1992-97); the French article gives construction 1992-97. Dimensions estimated. Triangular windows reported."
+    },
+    "dakar-musee-des-civilisations-noires": {
+      "venueId": "dakar-musee-des-civilisations-noires",
+      "city": "dakar",
+      "name": "Musee des Civilisations noires",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Black Civilisations: a large circular museum with a layered, conical-topped drum recalling traditional round compound architecture and a ring of terraces",
+      "form": {
+        "footprint": "round",
+        "width_m": 110,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9b36b",
+          "#a65a3a",
+          "#efe5cf"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Black_Civilisations",
+          "what": "opened 6 December 2018; about US$30 million to build; Dakar-Plateau"
+        }
+      ],
+      "notes": "Opening date and cost are sourced; the circular, round-compound form is recalled from general knowledge and unverified (the page does not describe it). Colours estimated."
+    },
+    "dakar-musee-leopold-sedar-senghor": {
+      "venueId": "dakar-musee-leopold-sedar-senghor",
+      "city": "dakar",
+      "name": "Musee Leopold Sedar Senghor",
+      "archetype": "museum-theatre",
+      "subject": "The Senghor museum: a former presidential-era villa with a white rendered two-storey house, terraces and a walled garden on the Fann coast road",
+      "form": {
+        "footprint": "L",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1ea",
+          "#cf9a86",
+          "#8c9196"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. A small house-museum dedicated to the first president, set in a garden; the villa form is a guess."
+    },
+    "dakar-parc-de-hann": {
+      "venueId": "dakar-parc-de-hann",
+      "city": "dakar",
+      "name": "Parc forestier et zoologique de Hann",
+      "archetype": "park-landscape",
+      "subject": "Hann forest park: tall shade trees over sandy paths with a gate lodge, shaded animal enclosures and picnic pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe5cf",
+          "#cf9a86",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8c9196",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "what": "Hann Forest and Zoological Park listed among the city's sites; no description"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Dense tree canopy is the identity; no building worth detailing."
+    },
+    "dakar-phare-des-mamelles": {
+      "venueId": "dakar-phare-des-mamelles",
+      "city": "dakar",
+      "name": "Phare des Mamelles",
+      "archetype": "monument",
+      "subject": "Mamelles lighthouse on the westernmost volcanic hill: a white 16 m cylindrical tower attached to the front of the keeper's house, at the top of the highest point of Dakar",
+      "form": {
+        "footprint": "round",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#ffffff",
+          "#8c9196",
+          "#c9a27a"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "approach path up the hill"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1864",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Phare_des_Mamelles",
+          "what": "completed 1864, pediment inscription modified 1911; cylindrical tower 16 m high attached to the front of the keeper's house; entirely painted white; focal height 120 m on the Mamelles hill; Fresnel lens"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "what": "lighthouse built 1864 on first Mamelles hill; African Renaissance Monument on the second"
+        }
+      ],
+      "notes": "Sourced: 1864, 16 m cylindrical white tower attached to the keeper's house, on the hill 4 km SE of Almadies. Model the attached keeper's house (about 20 x 10 m, 1 storey, flat) as a wing; there is no lighthouse feature in the contract (lantern room with gallery needed)."
+    },
+    "dakar-pointe-des-almadies": {
+      "venueId": "dakar-pointe-des-almadies",
+      "city": "dakar",
+      "name": "Pointe des Almadies",
+      "archetype": "park-landscape",
+      "subject": "Pointe des Almadies: a low rocky headland at the westernmost tip of the African mainland with black basalt rocks, surf, a lookout terrace and beach restaurants",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#3a3a3a",
+          "#d9b36b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9196",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "natural site",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "what": "Almadies named as an arrondissement; no description"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. The headland identity (westernmost point of continental Africa) is from general knowledge; surrounding hotels are not detailed."
+    },
+    "dakar-quiet-reflection": {
+      "venueId": "dakar-quiet-reflection",
+      "city": "dakar",
+      "name": "Grande Mosquee de Dakar",
+      "archetype": "mosque-domed",
+      "subject": "The Grand Mosque in the Medina: a cream Moroccan-style mosque resembling the Mohammed V mausoleum, with decorated arches and tilework and a single 67 m minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#efe5cf",
+          "#2f6f4f",
+          "#c9a45c"
+        ],
+        "roofColour": "#2f6f4f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "67 m minaret"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Dakar",
+          "what": "completed 1964, opened by Hassan II and Senghor; designed by Moroccan and French architects; richly decorated, resembles the Mausoleum of Mohammed V in Rabat; single minaret 67 m; Allee Pape Gueye Fall in the Medina"
+        }
+      ],
+      "notes": "Sourced: 1964, Moroccan/French architects, resemblance to Mohammed V mausoleum, one 67 m minaret. Body size, cream tone and green-tiled roof (as on the Rabat mausoleum) are inferred. One minaret, no big dome, which differs from the Divinity mosque (two minarets, concrete dome)."
+    },
+    "dakar-recreation": {
+      "venueId": "dakar-recreation",
+      "city": "dakar",
+      "name": "Place de l'Independance",
+      "archetype": "park-landscape",
+      "subject": "Place de l'Independance: Dakar's central paved square on the Plateau, lined by palms and tall colonial-era and modern blocks, with a central open plaza and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#efe5cf",
+          "#d9b36b",
+          "#b8b2a7"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dakar",
+          "what": "Place de l'Independance is the central square of Dakar"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Only its role as central square is sourced; surrounding facades are not detailed."
+    },
+    "dakar-sentrade": {
+      "venueId": "dakar-sentrade",
+      "city": "dakar",
+      "name": "SENTRADE",
+      "archetype": "mall",
+      "subject": "SENTRADE: a mid-rise rendered trade and shopping complex with a glazed atrium entrance and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d5c0",
+          "#9fb7c4",
+          "#b8b2a7"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Commercial complex name only."
+    },
+    "dakar-theatre-daniel-sorano": {
+      "venueId": "dakar-theatre-daniel-sorano",
+      "city": "dakar",
+      "name": "Theatre national Daniel Sorano",
+      "archetype": "museum-theatre",
+      "subject": "Sorano national theatre on Boulevard de la Republique: a 1960s modernist concrete performance house with a covered entrance, wide steps and blank poster boards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8d5c0",
+          "#b8b2a7",
+          "#9fb7c4"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1965",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Théâtre_national_Daniel-Sorano",
+          "what": "inaugurated 17 July 1965 by Senghor; Italian-style hall of about 1,000 seats; 3 halls; major renovation 1999"
+        }
+      ],
+      "notes": "Sourced: 1965 opening, Italian-style hall with ~1,000 seats and three halls, renovated 1999. Facade colours and entrance canopy are estimates."
+    },
+    "dakar-transit": {
+      "venueId": "dakar-transit",
+      "city": "dakar",
+      "name": "Gare de Dakar",
+      "archetype": "transport-station",
+      "subject": "Dakar railway station: a long 1914 colonial station building with arched openings and a platform canopy over two tracks at the harbour end of the Dakar-Niger line",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe5cf",
+          "#cf9a86",
+          "#8c9196"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1913-1914",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gare_de_Dakar",
+          "what": "current station built 1913-1914, in service June 1914, preceded by an 1885 colonial-style station; 2 tracks and 3 platforms; Dakar-Bamako line and Dakar-AIBD TER line"
+        }
+      ],
+      "notes": "Sourced: 1913-14 date, two tracks, three platforms. Facade colours, clock tower and tile roof are recalled/estimated; verify against photographs."
+    },
+    "dakar-universite-dakar-bourguiba": {
+      "venueId": "dakar-universite-dakar-bourguiba",
+      "city": "dakar",
+      "name": "Universite Dakar-Bourguiba",
+      "archetype": "campus-block",
+      "subject": "Dakar-Bourguiba private university: a three-storey rendered teaching block with a glazed entrance bay and flagpoles",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d5c0",
+          "#9fb7c4",
+          "#b8b2a7"
+        ],
+        "roofColour": "#b8b2a7",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Private university; name only."
+    }
+  }
+}

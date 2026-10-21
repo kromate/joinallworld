@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-osm-way-188497852",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/188497852",
+   "used": "real ground outline: irregular polygon about 110 m across, long edge running north-east; pitch and stand oriented to it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -59,
+      -32.9
+     ],
+     [
+      -54.3,
+      -15.5
+     ],
+     [
+      -49.5,
+      -16.5
+     ],
+     [
+      -39,
+      21.7
+     ],
+     [
+      -36.4,
+      42.2
+     ],
+     [
+      -33.5,
+      54.7
+     ],
+     [
+      -27.5,
+      62.6
+     ],
+     [
+      -7,
+      67.4
+     ],
+     [
+      60.8,
+      -10.9
+     ],
+     [
+      45.3,
+      -47.7
+     ],
+     [
+      37.9,
+      -52
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#b5764f",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    4,
+    8,
+    0.12
+   ],
+   "rotDeg": -35,
+   "params": {
+    "length": 84,
+    "width": 52,
+    "stripes": 4,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    4,
+    8,
+    0
+   ],
+   "rotDeg": -35,
+   "params": {
+    "start": [
+     28,
+     34
+    ],
+    "end": [
+     -28,
+     34
+    ],
+    "rows": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#8f8a82",
+    "concreteColour": "#d3ccb8",
+    "underColour": "#8f8a82",
+    "canopy": {
+     "height": 3.6,
+     "depth": 5,
+     "thickness": 0.3,
+     "colour": "#8d9396",
+     "edgeColour": "#8d9396"
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -56,
+    -30,
+    0
+   ],
+   "rotDeg": -70,
+   "params": {
+    "length": 40,
+    "height": 2.2,
+    "colour": "#d3ccb8"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    42,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    45,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   140,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; layout (single low stand, bare ground) from brief only."
+ }
+}

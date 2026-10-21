@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "zenith-bank-ogoja-road-abakaliki",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/563539831",
+   "used": "real irregular commercial outline (43 x 33 m, name match)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Abakaliki",
+   "used": "Ogoja Road junction context; red brick and glass two-storey bank with entrance canopy from the brief (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5da",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#5f7f8a",
+    "bands": "#a8362a",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e9e5da",
+       "#a8362a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9196",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -0.8,
+    -24.6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 6,
+    "height": 5.2,
+    "columns": 2,
+    "colour": "#b7b5ae",
+    "edgeColour": "#a8362a"
+   },
+   "rotDeg": -18
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 5.5,
+    "colour": "#a8362a",
+    "posts": false
+   },
+   "rotDeg": -18
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "colour": "#9aa0a6"
+   },
+   "rotDeg": -18
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo: real outline with typed red/cream bands, glazing and canopy; frontage side assumed"
+ }
+}

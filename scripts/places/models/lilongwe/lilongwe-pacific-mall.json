@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-pacific-mall",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/lilongwe.json",
+   "used": "typed mid-size glazed shopping centre; the matched OSM way is only the car park, so size is from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "rect": [
+     80,
+     36
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece6d8",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#355f7a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa1",
+    "material": "concrete",
+    "parapet": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa3b5",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#355f7a",
+    "material": "metal-sheet",
+    "overhang": 2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "anchor-tile",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    -2
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#355f7a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa1",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "anchor-gold",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    31,
+    -1
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d4a73a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9fa1",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -18,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 2.5,
+    "colours": [
+     "#355f7a",
+     "#ece6d8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    18,
+    -8.2,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 2.5,
+    "colours": [
+     "#355f7a",
+     "#ece6d8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -44,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#355f7a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -28,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 3.0,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 32,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -26
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo, OSM way is the car park; typed glazed mall"
+ }
+}

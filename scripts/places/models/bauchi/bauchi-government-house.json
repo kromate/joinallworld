@@ -1,0 +1,302 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json bauchi-government-house (nannews 2021, thesun.ng 2024)",
+   "used": "reconstructed 2021-2024 complex: conference centre with cupola, governor residence, walled gated forecourt; neoclassical style typed from Nigerian state houses"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1041236275",
+   "used": "nearest-quality match only (274 m2); not used for geometry"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     42,
+     18
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#b9a98a",
+    "plinth": 0.8,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     22,
+     42
+    ]
+   },
+   "at": [
+    -34,
+    18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#b9a98a",
+    "plinth": 0.8,
+    "bay": 6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     22,
+     42
+    ]
+   },
+   "at": [
+    34,
+    18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#b9a98a",
+    "plinth": 0.8,
+    "bay": 6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "conference-centre",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5d3",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "bands": "#b9a98a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    34,
+    12
+   ],
+   "params": {
+    "radius": 5,
+    "height": 4,
+    "profile": "hemi",
+    "drum": 2,
+    "colour": "#8d9296",
+    "drum_colour": "#f2efe6",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -3.5,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 9.5,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#f2efe6",
+    "roofColour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 10
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -55,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "height": 3,
+    "thickness": 0.5,
+    "colour": "#b9a98a",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    13,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "height": 3,
+    "thickness": 0.5,
+    "colour": "#b9a98a",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 3.6,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#b9a98a",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    45,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#222222",
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the rebuilt complex found; layout (U plan, portico, cupola, gate) typed from the brief, proportions are guesses."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "bauchi-government-house"
+}

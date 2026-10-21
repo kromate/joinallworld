@@ -1,0 +1,113 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "de-native-restaurant-umuahia",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089824810",
+   "used": "real L-shaped outline (nearest 0.8 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json#de-native-restaurant-umuahia",
+   "used": "native-style: mud-coloured walls, thatch-look hip roof, blank board; roof is an inference"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9a77c",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bands": "#7b5a3c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a6a3c",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 1.2,
+    "colour": "#7b5a3c",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -16,
+     -12
+    ],
+    "end": [
+     16,
+     -12
+    ],
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Real outline only; roof and walls inferred, no photo."
+ }
+}

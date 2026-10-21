@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-national-botanical-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/46840583",
+   "used": "identity: a 12 ha garden polygon (name match); too large and not a building, so only a small administration block, pavilion, beds and trees are modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: arid-plant garden, aloe beds, thorn trees, low administration building; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d9c29a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c8f92",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    22,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3c2",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c8f92",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#a8a090"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.4,
+    "thickness": 0.4,
+    "colour": "#a8a090",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 5,
+    "spread": 22,
+    "colour": "#7c8a4c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 4,
+    "spread": 20,
+    "colour": "#7c8a4c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.2,
+    "count": 14,
+    "spread": 50,
+    "colour": "#7a8f5b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; only a token admin block, pavilion and planting of a 12 ha garden, no paths or beds"
+ }
+}

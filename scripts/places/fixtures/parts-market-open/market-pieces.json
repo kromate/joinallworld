@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "market-pieces",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#3f7fa6",
+     "#4f8a5b",
+     "#b5483a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    10,
+    0,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "roof": "gable",
+    "arch": true,
+    "relief": true,
+    "wall_material": "mud-render",
+    "wall_colour": "#b58a5e",
+    "roof_colour": "#8a8f94",
+    "awning_colours": [
+     "#c4452f",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -18,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "tarp"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 4.0
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "roof": "gable",
+    "goods": "sacks",
+    "cladding": "#9aa0a5"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    12,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 8,
+    "roof": "shed",
+    "goods": "timber",
+    "height": 3.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    32,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c4452f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    38,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "box",
+    "colour": "#3b8a4e"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "bunting",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 8
+   }
+  },
+  {
+   "type": "pen",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "animals": 3
+   }
+  },
+  {
+   "type": "cow",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "dye-pit-field",
+   "at": [
+    -12,
+    22,
+    0
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 5
+   }
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "ground": [
+   -30,
+   60,
+   -25,
+   35
+  ],
+  "az": 30,
+  "el": 30
+ }
+}

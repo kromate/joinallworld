@@ -1,0 +1,1200 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "millennium-park",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Millennium_Park_Abuja3.jpg",
+   "licence": "Public domain",
+   "author": "Elenagiussani",
+   "view": "street",
+   "file": "/tmp/places-evidence/abuja/park3.jpg",
+   "used": "open mown lawn rolling away, stone-lined drainage stream crossing it, curved yellow-green hedge and red flower beds on the left, scattered broadleaf trees, glass offices on the skyline"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Children%27s_playground,_Millennium_Park.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Turizimpressions",
+   "view": "street",
+   "file": "/tmp/places-evidence/abuja/park1.jpg",
+   "used": "timber playground with yellow pyramid roofs, red-leaved hedge, tall tree backdrop, blue lamp post"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_Millennium_Park.jpg",
+   "licence": "Public domain",
+   "author": "Hayatudeen74",
+   "view": "side",
+   "file": "/tmp/places-evidence/abuja/park2.jpg",
+   "used": "lit fountain jet in a pale concrete-edged pool"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12181857",
+   "used": "park is about 950 x 510 m; modelled as a representative 120 m section of the central axis rather than the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 9,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "promenade",
+   "footprint": {
+    "rect": [
+     16,
+     110
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#ece6d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece6d6",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "greenhouse-west",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -42,
+    38
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d8d4",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#d4e0dc",
+    "rise": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "greenhouse-east",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    42,
+    38
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d8d4",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#d4e0dc",
+    "rise": 2.2
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 16,
+    "colour": "#5f8f9c",
+    "edgeColour": "#e6e0cf"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 16,
+    "colour": "#5f8f9c",
+    "edgeColour": "#e6e0cf"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "tiers": 1
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 16,
+    "colour": "#5f8f9c",
+    "edgeColour": "#e6e0cf"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -48,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "colour": "#a8283a",
+    "hedge": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -36,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "colour": "#b0303c",
+    "hedge": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    48,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 4,
+    "colour": "#a8283a",
+    "hedge": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    46,
+    18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "kind": "hip",
+    "roof_colour": "#e5c53a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    53,
+    14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 4,
+    "height": 2.8,
+    "kind": "hip",
+    "roof_colour": "#e5c53a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 25
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -45,
+    44,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 20,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    45,
+    44,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 20,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    44,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -50,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 7,
+    "colour": "#a8283a",
+    "hedge": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -38,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "colour": "#b0303c",
+    "hedge": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    56,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -56,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "skyline-1",
+   "footprint": {
+    "rect": [
+     20,
+     11
+    ]
+   },
+   "at": [
+    -34,
+    60
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c8d0d4",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d3dade",
+       "#c3ccd2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skyline-2",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    64
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d6d9d6",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d3dade",
+       "#c3ccd2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skyline-3",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    16,
+    60
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bfc9cf",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d3dade",
+       "#c3ccd2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "skyline-4",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    44,
+    64
+   ],
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d2d6d4",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d3dade",
+       "#c3ccd2"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bcbc"
+   }
+  },
+  {
+   "type": "surface",
+   "id": "mound0",
+   "at": [
+    -30,
+    20,
+    0.02
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 50,
+    "depth": 36,
+    "rise": 2.5600000000000005,
+    "thickness": 0.3,
+    "colour": "#7fa84e",
+    "underside": false,
+    "res": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "mound1",
+   "at": [
+    35,
+    30,
+    0.02
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 56,
+    "depth": 40,
+    "rise": 2.8800000000000003,
+    "thickness": 0.3,
+    "colour": "#7fa84e",
+    "underside": false,
+    "res": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "mound2",
+   "at": [
+    0,
+    -45,
+    0.02
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 70,
+    "depth": 30,
+    "rise": 1.92,
+    "thickness": 0.3,
+    "colour": "#7fa84e",
+    "underside": false,
+    "res": 10
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "stream-banks",
+   "params": {
+    "section": {
+     "rect": [
+      7.0,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -62,
+      30,
+      0.05
+     ],
+     [
+      -44,
+      20,
+      0.05
+     ],
+     [
+      -26,
+      10,
+      0.05
+     ],
+     [
+      -8,
+      14,
+      0.05
+     ],
+     [
+      8,
+      4,
+      0.05
+     ],
+     [
+      26,
+      -8,
+      0.05
+     ],
+     [
+      44,
+      -20,
+      0.05
+     ],
+     [
+      62,
+      -32,
+      0.05
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#8c7c6a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "stream-water",
+   "params": {
+    "section": {
+     "rect": [
+      3.2,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -62,
+      30,
+      0.15000000000000002
+     ],
+     [
+      -44,
+      20,
+      0.15000000000000002
+     ],
+     [
+      -26,
+      10,
+      0.15000000000000002
+     ],
+     [
+      -8,
+      14,
+      0.15000000000000002
+     ],
+     [
+      8,
+      4,
+      0.15000000000000002
+     ],
+     [
+      26,
+      -8,
+      0.15000000000000002
+     ],
+     [
+      44,
+      -20,
+      0.15000000000000002
+     ],
+     [
+      62,
+      -32,
+      0.15000000000000002
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#6f8f90"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "stream-rubble1",
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -62,
+      32.6,
+      0.1
+     ],
+     [
+      -44,
+      22.6,
+      0.1
+     ],
+     [
+      -26,
+      12.6,
+      0.1
+     ],
+     [
+      -8,
+      16.6,
+      0.1
+     ],
+     [
+      8,
+      6.6,
+      0.1
+     ],
+     [
+      26,
+      -5.4,
+      0.1
+     ],
+     [
+      44,
+      -17.4,
+      0.1
+     ],
+     [
+      62,
+      -29.4,
+      0.1
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#6e6258"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "stream-rubble-1",
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -62,
+      27.4,
+      0.1
+     ],
+     [
+      -44,
+      17.4,
+      0.1
+     ],
+     [
+      -26,
+      7.4,
+      0.1
+     ],
+     [
+      -8,
+      11.4,
+      0.1
+     ],
+     [
+      8,
+      1.4,
+      0.1
+     ],
+     [
+      26,
+      -10.6,
+      0.1
+     ],
+     [
+      44,
+      -22.6,
+      0.1
+     ],
+     [
+      62,
+      -34.6,
+      0.1
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#6e6258"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "hedge-ribbon",
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.08
+     ]
+    },
+    "points": [
+     [
+      -56,
+      -40,
+      0
+     ],
+     [
+      -48,
+      -30,
+      0
+     ],
+     [
+      -40,
+      -24,
+      0
+     ],
+     [
+      -38,
+      -14,
+      0
+     ],
+     [
+      -46,
+      -6,
+      0
+     ],
+     [
+      -54,
+      2,
+      0
+     ],
+     [
+      -50,
+      12,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#b8c035"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "bed-ribbon",
+   "params": {
+    "section": {
+     "rect": [
+      3.6,
+      0.144
+     ]
+    },
+    "points": [
+     [
+      -53.4,
+      -40,
+      0.03
+     ],
+     [
+      -45.4,
+      -30,
+      0.03
+     ],
+     [
+      -37.4,
+      -24,
+      0.03
+     ],
+     [
+      -35.4,
+      -14,
+      0.03
+     ],
+     [
+      -43.4,
+      -6,
+      0.03
+     ],
+     [
+      -51.4,
+      2,
+      0.03
+     ],
+     [
+      -47.4,
+      12,
+      0.03
+     ]
+    ],
+    "curve": true,
+    "steps": 5,
+    "colour": "#a8283a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "width": 130,
+    "depth": 8,
+    "count": 10,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "mound-lod2",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0.02
+   ],
+   "params": {
+    "kind": "dome-cap",
+    "width": 100,
+    "depth": 60,
+    "rise": 2,
+    "thickness": 0.3,
+    "colour": "#7fa84e",
+    "underside": false,
+    "res": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "stream-lod2",
+   "lod": [
+    2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      7,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -62,
+      30,
+      0.05
+     ],
+     [
+      0,
+      8,
+      0.05
+     ],
+     [
+      62,
+      -32,
+      0.05
+     ]
+    ],
+    "steps": 1,
+    "colour": "#8c7c6a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Critic fixes applied (mounds, winding stone-banked stream, S-curve hedge with red bed ribbon, 4 pale 5-storey offices, tree line) but the ground is still a flat-looking green slab with grey void around it, stream/hedge are thin strips versus the photo's rubble banks, and a 120 m central section only; rounds exceeded 2 because of LOD budget fixes."
+ }
+}

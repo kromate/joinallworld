@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/381001623",
+   "used": "nearest unnamed building (8 m away) judged unreliable, not used for the footprint; yard size from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#2f6b9a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8790",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 36,
+    "depth": 9,
+    "height": 4.6,
+    "thickness": 0.3,
+    "columns": 6,
+    "colour": "#7d8790",
+    "edgeColour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    6,
+    -8
+   ],
+   "params": {
+    "length": 40,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 1,
+    "colours": [
+     "#f1f1ee",
+     "#2f6b9a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    -18
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    -18
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#c28f5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -22,
+    6.6
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 3.5,
+    "height": 1.4,
+    "colour": "#2f6b9a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "length": 4,
+    "height": 2,
+    "thickness": 0.25,
+    "colour": "#c9ad86",
+    "points": [
+     [
+      -30,
+      -24
+     ],
+     [
+      30,
+      -24
+     ],
+     [
+      30,
+      20
+     ],
+     [
+      -30,
+      20
+     ],
+     [
+      -30,
+      -24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    16
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -20
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and no reliable footprint; modest coach yard from brief"
+ }
+}

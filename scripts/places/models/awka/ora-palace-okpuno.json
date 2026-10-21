@@ -1,0 +1,32 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "awka", "venueId": "ora-palace-okpuno",
+ "verified": "text",
+ "evidence": [
+  {"kind": "text", "ref": "briefs/awka.json", "used": "Igwe's palace of Okpuno: walled U-shaped compound, rendered hall, carved timber gateway, flagpole; no photo or OSM outline exists"}
+ ],
+ "camera": {"yawDeg": 15, "pitchDeg": 20, "fovDeg": 50, "fit": "all"},
+ "parts": [
+  {"type": "mass", "id": "hall", "footprint": {"rect": [30, 13]}, "at": [0, 10], "height": 9, "storeys": 2,
+   "wall": {"material": "render", "colour": "#efe3c8", "windows": "punched", "windowRatio": 0.2, "bay": 3.4, "plinth": 0.6, "cornice": true,
+            "pattern": [{"type": "bands", "colours": ["#8a3a2a"], "height": 0.6, "floors": "upper"}]},
+   "roof": {"form": "hip", "colour": "#8a4a36", "material": "clay-tile", "rise": 3.2, "overhang": 1.2}},
+  {"type": "mass", "id": "west-wing", "footprint": {"rect": [10, 24]}, "at": [-20, 0], "height": 6.5, "storeys": 1,
+   "wall": {"material": "render", "colour": "#e9dcc0", "windows": "punched", "windowRatio": 0.18, "plinth": 0.5},
+   "roof": {"form": "hip", "colour": "#8a4a36", "material": "clay-tile", "rise": 2.2, "overhang": 1}},
+  {"type": "mass", "id": "east-wing", "footprint": {"rect": [10, 24]}, "at": [20, 0], "height": 6.5, "storeys": 1,
+   "wall": {"material": "render", "colour": "#e9dcc0", "windows": "punched", "windowRatio": 0.18, "plinth": 0.5},
+   "roof": {"form": "hip", "colour": "#8a4a36", "material": "clay-tile", "rise": 2.2, "overhang": 1}},
+  {"type": "mass", "id": "veranda", "footprint": {"rect": [18, 3.5]}, "at": [0, 2.5], "height": 4, "storeys": 1,
+   "wall": {"material": "timber", "colour": "#a5774f", "windows": "none", "pattern": [{"type": "pilotis", "inset": 0.3, "spacing": 3, "width": 0.4, "colour": "#7a4a2e", "faces": ["front"]}]},
+   "roof": {"form": "shed", "colour": "#8a4a36", "material": "clay-tile", "rise": 0.8, "overhang": 0.5}},
+  {"type": "fence-wall", "at": [0, -20, 0], "params": {"length": 21, "height": 2.4, "thickness": 0.4, "colour": "#d9c9a8", "pillarEvery": 4}},
+  {"type": "fence-wall", "at": [-31, -20, 0], "params": {"length": 6, "height": 2.4, "thickness": 0.4, "colour": "#d9c9a8", "pillarEvery": 3}},
+  {"type": "core/gate", "at": [0, -20, 0], "params": {"width": 6, "height": 4.4, "pillar": 1.2, "leaf": "bars", "arch": false, "colour": "#a5774f", "leafColour": "#6e3f26"}},
+  {"type": "core/sign-board", "at": [0, -20.4, 4.5], "params": {"width": 6, "height": 1.2, "bottom": 0, "colour": "#8a3a2a", "posts": false}},
+  {"type": "core/flag", "at": [-6, -14, 0], "params": {"height": 11, "colour": "#1b7a43"}},
+  {"type": "core/tree", "at": [-14, -8, 0], "params": {"kind": "broadleaf", "height": 10, "count": 1}},
+  {"type": "core/tree", "at": [14, -8, 0], "params": {"kind": "broadleaf", "height": 9, "count": 1}}
+ ],
+ "site": {"ground": "laterite", "forecourt": "garden", "trees": 3, "extent": [90, 70]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo or outline; compound layout, gateway carving and wall extents are typical Igbo palace forms, not this palace"}
+}

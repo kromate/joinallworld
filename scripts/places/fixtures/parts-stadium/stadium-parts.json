@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "parts-test",
+ "venueId": "stadium-parts",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 27,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 170,
+    "depth": 130,
+    "height": 24,
+    "arc_start": 180,
+    "arc_end": 270,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "arcade",
+    "seat_colour": "#b83a32"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    -22,
+    -62,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "depth": 18,
+    "height": 11,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "seat_colour": "#2f5f9e"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    40,
+    10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "facing": "west"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    46,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 38
+   }
+  },
+  {
+   "type": "arena-hall",
+   "at": [
+    48,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 22,
+    "height": 11,
+    "plan": "rect",
+    "roof": "barrel"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    -30,
+    70,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "width": 50,
+    "lane_width": 6
+   }
+  },
+  {
+   "type": "race-track",
+   "at": [
+    40,
+    80,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 34
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ }
+}

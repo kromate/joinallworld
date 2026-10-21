@@ -1,0 +1,319 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "oba-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1460158100",
+   "used": "name-matched 96x10.6 m building outline for the two-storey main block; market area way/759470271"
+  },
+  {
+   "kind": "text",
+   "used": "Wikipedia/afktravel: two-storey building on one side, blocks across the road, open-air stalls"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 20,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "fit": 96
+   },
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c2b3",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "groundKind": "arcade",
+    "plinth": 0.3,
+    "bands": "#a8744f",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block0",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -32,
+    -34
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c2b3",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a5b3c",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block1",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ddc9",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a5b3c",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block2",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    32,
+    -34
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb3a0",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a5b3c",
+    "material": "corrugated",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block3",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -20,
+    34
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c2b3",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63",
+    "material": "concrete",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block4",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    22,
+    34
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4ddc9",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a63",
+    "material": "concrete",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 14,
+    "rows": 2,
+    "dx": 6.5,
+    "dy": 4.5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       2
+      ],
+      "height": 2.2,
+      "colour": "#a8744f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     0
+    ],
+    "end": [
+     38,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "umbrella",
+      "height": 2.6
+     }
+    }
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -20,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 8.6,
+    "colour": "#2f4f6f",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    10,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 8.6,
+    "colour": "#2f4f6f",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    38,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 8.6,
+    "colour": "#2f4f6f",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; roof forms and the placement of the cross-road blocks and stalls are guesses; stalls are plain boxes and umbrellas are trees."
+ }
+}

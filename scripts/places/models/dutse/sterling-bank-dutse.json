@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "sterling-bank-dutse",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/927019257",
+   "used": "real outline (471 m2, nearest match 5 m, Wikidata coordinates verified), extruded to two storeys"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered box, tinted ribbon glazing, cantilevered entrance canopy, blank sign board, forecourt parking; no photo findable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bands": "#d9d4c6",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-band",
+   "footprint": {
+    "rect": [
+     10,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -14.2
+   ],
+   "height": 3.2,
+   "z0": 0.5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6b7c8c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7c8c"
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 3.8,
+    "columns": 2,
+    "colour": "#d9d4c6",
+    "edge_colour": "#6b7c8c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "bottom": 6.2,
+    "colour": "#d9d4c6",
+    "frameColour": "#6b7c8c",
+    "posts": false
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    6,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "depth": 1.8,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "colour": "#c9c9c9",
+    "count": 3,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; OSM L-shaped outline extruded; canopy/ATM position is a guess; footprint orientation unverified."
+ }
+}

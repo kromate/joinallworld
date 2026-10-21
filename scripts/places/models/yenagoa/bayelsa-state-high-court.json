@@ -1,0 +1,348 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "bayelsa-state-high-court",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:High_Court_of_Justice,_Yenagoa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hadassah Photostorie group",
+   "view": "street",
+   "file": "/tmp/places-evidence/yenagoa/court.jpg",
+   "used": "central lantern block with grey pyramidal metal roof and justice statue, long low wings with grey hipped roofs, sand-beige render, dark fascia board, glazed entrance porch, green mesh fence"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#bayelsa-state-high-court",
+   "used": "state high court, two storeys; brief's columned portico and clay tile roof contradicted by photo, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -6,
+    6
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb995",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "faces": {},
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#9aa0a6",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -28,
+    -1
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2c4a6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa0a6",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    16,
+    -1
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d2c4a6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9aa0a6",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bfc9cf",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3d41",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -13.2,
+    3.6
+   ],
+   "params": {
+    "width": 12,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#26282b",
+    "frameColour": "#26282b",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -6,
+    6,
+    17.4
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 3.2,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -36,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 2,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#5f7a6a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    2,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    36,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "yaw": 90,
+    "colour": "#aa3333"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-posts-l",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -13,
+    -14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb995",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb995",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-posts-r",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    1,
+    -14
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb995",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb995",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     2
+    ]
+   },
+   "at": [
+    18,
+    -22
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d8c98",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b7a86",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "roof is simple pyramidal not faceted metal; statue is a flat-capped post; no pale-blue gate arch; palisade is a plain fence"
+ }
+}

@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/1732512",
+   "used": "Grand Marche de Treichville (DLM Architectes, 1979): real pinwheel hall outline, fitted to the scene"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:March%C3%A9_de_Treichville_5.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Alex Sirac",
+   "view": "interior",
+   "file": "/tmp/places-evidence/abidjan/mkt1.jpg",
+   "used": "interior only (no exterior photo exists): grey-green board-marked concrete, upper gallery with solid parapet slabs, pierced railing slots, steel truss roof with glazed skylight strip, yellow and brown stall umbrellas below"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:March%C3%A9_de_Treichville_7.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Alex Sirac",
+   "view": "interior",
+   "file": "/tmp/places-evidence/abidjan/mkt0.jpg",
+   "used": "dark sawtooth/ribbed steel roof under the slab, roller-shutter stalls, concrete columns"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a9aca3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8f938b",
+      "skipGround": true
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#7c8a86",
+      "backColour": "#2b2e33"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "skylight-ridge-a",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     96,
+     8
+    ],
+    "z0": 11,
+    "height": 2.6,
+    "colour": "#6f7b80",
+    "topColour": "#8aa0a6"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -19
+  },
+  {
+   "type": "prism",
+   "id": "skylight-ridge-b",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     8,
+     96
+    ],
+    "z0": 11,
+    "height": 2.6,
+    "colour": "#6f7b80",
+    "topColour": "#8aa0a6"
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -19
+  },
+  {
+   "type": "prism",
+   "id": "skylight-lod2",
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     60,
+     8
+    ],
+    "z0": 11,
+    "height": 2.6,
+    "colour": "#6f7b80"
+   },
+   "rotDeg": -19
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -82,
+    -10,
+    0
+   ],
+   "rotDeg": -19,
+   "params": {
+    "count": 10,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#e2c84a",
+     "#e2c84a",
+     "#a8693a",
+     "#c9c1a8",
+     "#e2c84a"
+    ],
+    "size": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -48,
+    -94,
+    0
+   ],
+   "rotDeg": -19,
+   "params": {
+    "count": 10,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#e2c84a",
+     "#a8693a",
+     "#e2c84a",
+     "#8d9396"
+    ],
+    "size": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    34,
+    -80,
+    0
+   ],
+   "rotDeg": 71,
+   "params": {
+    "count": 9,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#e2c84a",
+     "#e2c84a",
+     "#c9c1a8",
+     "#a8693a"
+    ],
+    "size": 1.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    -70,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8,
+    "line": 10
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -100,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no exterior photo exists, only interiors; facade, entrances and roof ridges are inferred from interior views and the real outline; stall rows placed by eye"
+ }
+}

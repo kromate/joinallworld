@@ -1,0 +1,265 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "sardauna-memorial-stadium-gusau",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json",
+   "used": "brief: small oval bowl about 130 x 100 m, concrete terraces, one covered stand, floodlights, perimeter wall; the nearest OSM building (380 m2, 34 m away) is not the bowl and was not used; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "width": 76,
+    "lane_width": 6,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -52,
+     -44
+    ],
+    "end": [
+     52,
+     -44
+    ],
+    "rows": 18,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "canopy": {
+     "depth": 9,
+     "height": 12
+    },
+    "seatColours": [
+     "#3f7a5a",
+     "#e8e4d8"
+    ],
+    "blocks": 6,
+    "concreteColour": "#b9b5aa",
+    "bay": 6
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     52,
+     44
+    ],
+    "end": [
+     -52,
+     44
+    ],
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#3f7a5a",
+     "#b9b5aa"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9b5aa",
+    "bay": 6
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     64,
+     -34
+    ],
+    "end": [
+     64,
+     34
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColours": [
+     "#3f7a5a"
+    ],
+    "blocks": 2,
+    "concreteColour": "#b9b5aa"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -64,
+     34
+    ],
+    "end": [
+     -64,
+     -34
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColours": [
+     "#3f7a5a"
+    ],
+    "blocks": 2,
+    "concreteColour": "#b9b5aa"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    48,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    48,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.2,
+    "colour": "#b9b5aa",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -75,
+    -66,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 10,
+    "colour": "#d6d0bf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -60
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -60
+    ],
+    "height": 9
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -74
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e4d8"
+   },
+   {
+    "at": [
+     -14,
+     -74
+    ],
+    "yawDeg": 90,
+    "colour": "#3f6b9a"
+   },
+   {
+    "at": [
+     22,
+     -76
+    ],
+    "yawDeg": 90,
+    "colour": "#a8362f"
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and the OSM building is not the bowl, so the oval size, stand heights and the single covered stand are typed from the brief; no scoreboard or entrance block detail"
+ }
+}

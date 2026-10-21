@@ -1,0 +1,1399 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "benin-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "benin-city",
+    "climate": "rainforest",
+    "vernacular": "Edo capital: red laterite earth everywhere, rendered one-to-three storey commercial buildings painted cream and ochre with rust-brown corrugated roofs, a few colonial-era concrete civic buildings, busy markets along Ring Road and the historic palace quarter of red earth walls scored with horizontal grooves.",
+    "wallColours": [
+      "#ece6d6",
+      "#d3b98f",
+      "#a95b3e",
+      "#c8c1af",
+      "#7c3d2a",
+      "#e6dcc5"
+    ],
+    "roofColours": [
+      "#7a3b2c",
+      "#6e6a63",
+      "#8a4a33",
+      "#4f6b5a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "mud-render",
+      "laterite",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Horizontally grooved red earth walls reserved for the palace and chiefs; brass-relief plaque and leopard/snake motifs; bronze-cast heads sold on Igun Street; roundabouts with public sculpture; historic palace shingle roofs.",
+    "sources": [
+      {
+        "url": "https://access.thebrightcontinent.org/items/show/2",
+        "what": "Oba's Palace: earthen walls, courtyards, pillars"
+      },
+      {
+        "url": "https://artindexafrica.substack.com/p/the-walls-of-benin-a-journey-through",
+        "what": "thick red earthen walls and grooving as rank marker"
+      },
+      {
+        "url": "https://smarthistory.org/?p=44566",
+        "what": "palace built around courtyards with galleries on pillars and shingle roofs"
+      },
+      {
+        "url": "https://afktravel.com/57061/benin-city-guide/",
+        "what": "Ring Road, museum, markets, colonial buildings"
+      },
+      {
+        "url": "https://www.metmuseum.org/en/perspectives/bronze-casters-igun-street",
+        "what": "Igun Street brass casters"
+      }
+    ]
+  },
+  "places": {
+    "baptist-college-theology": {
+      "venueId": "baptist-college-theology",
+      "city": "benin-city",
+      "name": "Baptist College Of Theology",
+      "archetype": "campus-block",
+      "subject": "Small seminary campus of two-storey rendered lecture and hostel blocks arranged round a lawn, with a plain chapel",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#8a5b3c",
+          "#c8c1af"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about the college buildings. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "benin-airport": {
+      "venueId": "benin-airport",
+      "city": "benin-city",
+      "name": "Benin Airport",
+      "archetype": "airport-terminal",
+      "subject": "Benin Airport passenger terminal: a modest renovated two-storey terminal block with a flat roof and entrance canopy, runway behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe7dc",
+          "#3b5d70",
+          "#c4bfb2"
+        ],
+        "roofColour": "#8e8e8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower and ILS aids reported (night-operations upgrade)"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007 renovation and expansion",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Benin_Airport",
+          "what": "modern terminal with shops and restaurants, 2007 renovation and expansion, 2,451 m runway"
+        },
+        {
+          "url": "https://www.thisdaylive.com/2019/05/31/revitalising-benin-airport/",
+          "what": "night-flight and ILS Category II upgrade, planned cargo terminal"
+        }
+      ],
+      "notes": "Existence of modernised terminal and runway/aids are sourced; the physical look is not described, so dimensions and colours are typed guesses."
+    },
+    "benin-city-national-museum": {
+      "venueId": "benin-city-national-museum",
+      "city": "benin-city",
+      "name": "Benin City National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The circular three-storey Benin National Museum standing on the central roundabout at Ring Road (Oba Ovonramwen Square)",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece5d3",
+          "#b05a3c",
+          "#cfc7b4"
+        ],
+        "roofColour": "#8d8780",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "public sculptures around the roundabout"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "opened 1973",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Benin_City_National_Museum",
+          "what": "opened 1973; houses Edo carvings and Benin brass"
+        },
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "circular three-story building at the Ring Road roundabout"
+        },
+        {
+          "url": "https://access.thebrightcontinent.org/items/show/9",
+          "what": "Ring Road / King Square setting"
+        }
+      ],
+      "notes": "Circular, three-storey form and roundabout setting are sourced from travel guides; wall colours and materials are guesses. Distinctive: a round drum in the middle of a busy traffic circle."
+    },
+    "benin-moat": {
+      "venueId": "benin-moat",
+      "city": "benin-city",
+      "name": "Benin Moat (Iya)",
+      "archetype": "heritage-fort",
+      "subject": "A stretch of the Benin earthworks: a steep earth rampart with a deep ditch beside it, overgrown with trees, cut through by suburban roads",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "laterite",
+        "accent": null,
+        "colours": [
+          "#a8553a",
+          "#7a3a28",
+          "#6f8a4e"
+        ],
+        "roofColour": "#7a3a28",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 2,
+          "note": "rampart and ditch"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "path cut into the bank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "c. 800-1460 AD",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Benin_Moat",
+          "what": "earthwork of ditch and dump rampart; remnants survive in Benin City"
+        },
+        {
+          "url": "https://earthobservatory.nasa.gov/images/154894/a-glimpse-of-history-in-benin-city",
+          "what": "Inner City Iya had much taller ramparts and deeper ditches than the outer network"
+        },
+        {
+          "url": "https://access.thebrightcontinent.org/items/show/1",
+          "what": "Benin walls and moats (Iya)"
+        }
+      ],
+      "notes": "Walls reportedly reach over 20 m in places (typical surviving sections are lower); remnants are vegetated red-earth banks. No building here, so storeys are 0 and the generator should treat it as an earthwork landscape."
+    },
+    "celebrate-garden": {
+      "venueId": "celebrate-garden",
+      "city": "benin-city",
+      "name": "Celebrate Garden",
+      "archetype": "park-landscape",
+      "subject": "A small landscaped garden and event space with paved paths, a pavilion and ornamental trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#6d8f4e",
+          "#c8c1af"
+        ],
+        "roofColour": "#8a4a33",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about this venue. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "central-mosque": {
+      "venueId": "central-mosque",
+      "city": "benin-city",
+      "name": "Benin Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Benin Central Mosque on Igun Street: a large rendered mosque with a main dome, corner domes and a tall minaret; the compound is about 10,000 square metres",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#efe9da",
+          "#2f7a5a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#2f7a5a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "one main dome plus smaller domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://blueprint.ng/edo-one-mosque-two-chief-imams/",
+          "what": "Benin Central Mosque on Igun Street covers about 10,000 square metres (dispute coverage only)"
+        }
+      ],
+      "notes": "Only the site size is sourced; no description of the building found. Dome/minaret layout is typical of Nigerian city central mosques. Do not copy any specific green or gold scheme as fact."
+    },
+    "chicken-republic": {
+      "venueId": "chicken-republic",
+      "city": "benin-city",
+      "name": "Chicken Republic (Benin branch)",
+      "archetype": "restaurant",
+      "subject": "A single-storey fast-food restaurant with a glazed front, a flat roof with parapet and a blank signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9da",
+          "#a8744f",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8e8e8a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, neutral colours"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Chain outlet; the specific building is not described. No public source describes this building; the brief is a typed guess from the Benin City style and the place type. No brand colours or logo."
+    },
+    "edo-line": {
+      "venueId": "edo-line",
+      "city": "benin-city",
+      "name": "Edo Line (transport hub)",
+      "archetype": "transport-station",
+      "subject": "A bus company terminal: an open parking yard with a long single-storey booking office and a covered waiting shed, buses lined up in bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3ddc9",
+          "#8a5b3c",
+          "#c4bfb2"
+        ],
+        "roofColour": "#7a7a76",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about the terminal building. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "edo-state-sport-council": {
+      "venueId": "edo-state-sport-council",
+      "city": "benin-city",
+      "name": "Edo State Sport Council",
+      "archetype": "stadium",
+      "subject": "A sports council ground: a small open football pitch ringed by a single low covered stand and perimeter wall, with an administrative block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d3cfc5",
+          "#5f7f56",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "single covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Samuel_Ogbemudia_Stadium",
+          "what": "nearby state stadium complex for context only"
+        }
+      ],
+      "notes": "The council offices are not described anywhere found and the nearest known stadium is a separate venue. Kept small and low so it differs from Samuel Ogbemudia Stadium. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "eweka-primary-polling": {
+      "venueId": "eweka-primary-polling",
+      "city": "benin-city",
+      "name": "Eweka Primary School (polling unit)",
+      "archetype": "civic-small",
+      "subject": "A public primary school used as a polling unit: a long single-storey classroom block with a veranda and tin roof round a bare earth playground",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e0c9",
+          "#3d6b4d",
+          "#c8c1af"
+        ],
+        "roofColour": "#7a4d3a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "covered veranda along the classrooms"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1950s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about this school. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "igun-street": {
+      "venueId": "igun-street",
+      "city": "benin-city",
+      "name": "Igun Street (bronze casters)",
+      "archetype": "shophouse",
+      "subject": "The historic brass-casters street: a row of small single-storey shop fronts selling cast brass heads and plaques, with workshops behind and a narrow lane in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#c9a883",
+          "#8a5b3c",
+          "#e8dfc8"
+        ],
+        "roofColour": "#7a4d3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 10,
+          "note": "shop fronts with open doors"
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "cast brass heads displayed outside shops"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "guild since 13th-15th c.; present shops 20th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.metmuseum.org/en/perspectives/bronze-casters-igun-street",
+          "what": "Igun Street is the home of the Igun Eronmwon brass-casting guild; lost-wax casting continues"
+        },
+        {
+          "url": "https://face2faceafrica.com/?p=189277",
+          "what": "goods are sold in shops along Igun Street; workshops sit behind the shops"
+        }
+      ],
+      "notes": "Use and layout (shops fronting the street, workshops behind) sourced; wall colours and shop frontage are guesses. Recognisable by cast brass heads, plaques and leopards displayed on tables and shelves."
+    },
+    "lily-hospital": {
+      "venueId": "lily-hospital",
+      "city": "benin-city",
+      "name": "Lily Hospital",
+      "archetype": "hospital",
+      "subject": "A private hospital in a compound: a three-storey rendered block with a canopy over the entrance and a small ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1eee6",
+          "#3f7f8a",
+          "#c8c4b8"
+        ],
+        "roofColour": "#6f6f6c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank neutral sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about this hospital. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "oba-market": {
+      "venueId": "oba-market",
+      "city": "benin-city",
+      "name": "Oba Market",
+      "archetype": "market-hall",
+      "subject": "Oba Market on Ring Road: a big two-storey shopping block on one side with sheds and further trading blocks across the road; open-air stalls in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c2b3",
+          "#a8744f",
+          "#e4ddc9"
+        ],
+        "roofColour": "#6e6a63",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "early 1990s building on a 15th-century market site",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oba_Market",
+          "what": "open-air market on Ring Road; over 5,000 tenants; roots in 15th century"
+        },
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "centres around a two-story building on one side with several blocks across the road"
+        },
+        {
+          "url": "https://thisdaylive.com/index.php/2020/06/22/midnight-fire-guts-oba-market-in-edo",
+          "what": "2020 fire destroyed about half the market"
+        }
+      ],
+      "notes": "Two-storey main building and spread-out blocks are sourced; roof forms are guessed. A fire in 2020 destroyed about half, so some blocks are burnt out or rebuilt. Larger and more built-up than Ogbeogonogo."
+    },
+    "oba-palace": {
+      "venueId": "oba-palace",
+      "city": "benin-city",
+      "name": "Oba's Palace, Benin City",
+      "archetype": "heritage-fort",
+      "subject": "The Oba of Benin's palace: a walled complex of long red-earth rendered ranges round open courtyards, with grooved wall bands, wooden pillars and a pitched metal roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 4
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "laterite",
+        "colours": [
+          "#a95b3e",
+          "#7c3d2a",
+          "#e6dcc5"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 3,
+          "note": "open atrium courtyards with galleried verandas on wooden pillars"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "horizontal grooved bands scored into red walls (a mark of royal rank)"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "brass snake on turret in historical plaques"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "historic; rebuilt after 1897",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://smarthistory.org/?p=44566",
+          "what": "palace built around atrium courtyards with galleries on wooden pillars; brass plaques on pillars; shingled roof and brass snake on turret in plaques"
+        },
+        {
+          "url": "https://access.thebrightcontinent.org/items/show/2",
+          "what": "Oba's Palace, Benin City, earthen walls and rooms"
+        },
+        {
+          "url": "https://artindexafrica.substack.com/p/the-walls-of-benin-a-journey-through",
+          "what": "thick red earthen walls, horizontal grooving restricted to the monarch"
+        }
+      ],
+      "notes": "Courtyards, wooden pillars, grooved red earth walls and the historic shingled roof are sourced for the historical palace; the current rebuilt palace uses modern roofing. Colours are the red laterite/white-clay earth palette. Do not render the 1897 loot plaques as present."
+    },
+    "oredo-secretariat": {
+      "venueId": "oredo-secretariat",
+      "city": "benin-city",
+      "name": "Oredo LGA Secretariat",
+      "archetype": "civic-small",
+      "subject": "A local government secretariat: a three-storey rendered office block with a central entrance porch, flagpole and boundary wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eae4d4",
+          "#8a5b3c",
+          "#c8c1af"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about this building. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "ramat-park": {
+      "venueId": "ramat-park",
+      "city": "benin-city",
+      "name": "Ramat Park",
+      "archetype": "park-landscape",
+      "subject": "Ramat Park, a six-hectare city park in Benin City with a network of walking paths under mature trees and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 240,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#6d8f4e",
+          "#c8c1af"
+        ],
+        "roofColour": "#8a4a33",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "established 1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramat_Park",
+          "what": "urban park, about 6 ha, set up by Bendel State Government in 1985, walking paths"
+        },
+        {
+          "url": "https://leadership.ng/ramat-park-flyover-and-the-changing-face-of-benin-city/",
+          "what": "park junction and flyover context"
+        }
+      ],
+      "notes": "Size, age and walking paths sourced; no pavilion is documented (kept as a small park shelter). Mostly green space; largest size clamped by the generator."
+    },
+    "samuel-ogbemudia-stadium": {
+      "venueId": "samuel-ogbemudia-stadium",
+      "city": "benin-city",
+      "name": "Samuel Ogbemudia Stadium",
+      "archetype": "stadium",
+      "subject": "The renovated Samuel Ogbemudia Stadium: an oval bowl with 19,500 modern seats, a full-length roofed main stand supported on steel trusses, tartan track and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3cfc5",
+          "#b53a2b",
+          "#f0eee8"
+        ],
+        "roofColour": "#c4c7c9",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof over the entire main stand on steel trusses"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "opened 1985; renovated 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Samuel_Ogbemudia_Stadium",
+          "what": "19,500 seats after 2018 renovation, opened 1985, tartan track replaced, natural grass"
+        },
+        {
+          "url": "https://www.thisdaylive.com/2018/04/13/sports-sector-reforms-work-intensifies-on-ogbemudia-stadium-revamp/",
+          "what": "roof over the entire stand, trusses being erected"
+        },
+        {
+          "url": "https://www.arise.tv/s-eagles-to-play-next-afcon-2022-quaiifier-at-brand-new-stadium-in-benin",
+          "what": "19,500 sitting capacity"
+        }
+      ],
+      "notes": "Capacity, 2018 renovation and the roof over the main stand are sourced; other stands may be open (an official state page also says 12,000 covered). Colours are guesses. Distinct from Stephen Keshi (all covered, 22,000)."
+    },
+    "st-monicas-church": {
+      "venueId": "st-monicas-church",
+      "city": "benin-city",
+      "name": "St. Monica's Catholic Church",
+      "archetype": "church-modern",
+      "subject": "A parish church with a broad pitched-roof nave, a separate square bell tower and an arched porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebde",
+          "#9a5a3c",
+          "#c8c1af"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about this church. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "valkel-salon": {
+      "venueId": "valkel-salon",
+      "city": "benin-city",
+      "name": "Valkel Unisex Salon & Bar",
+      "archetype": "shophouse",
+      "subject": "A small shop-front salon and bar in a two-storey rendered block with a striped awning and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eadfc6",
+          "#8a5b3c",
+          "#f0ece4"
+        ],
+        "roofColour": "#8e8e8a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Nothing found about this venue. No public source describes this building; the brief is a typed guess from the Benin City style and the place type."
+    },
+    "zenith-bank": {
+      "venueId": "zenith-bank",
+      "city": "benin-city",
+      "name": "Zenith Bank (Benin branch)",
+      "archetype": "office-low",
+      "subject": "A modern bank branch: a three-storey glazed and rendered block with an entrance canopy and ATM lobby, blank signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d7dde0",
+          "#4a5560",
+          "#eeeeec"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, neutral colours"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://afktravel.com/57061/benin-city-guide/",
+          "what": "Benin City guide: Ring Road, museum, markets, mixed commercial and colonial buildings"
+        }
+      ],
+      "notes": "Branch building not described. No public source describes this building; the brief is a typed guess from the Benin City style and the place type. No brand colours."
+    }
+  }
+}

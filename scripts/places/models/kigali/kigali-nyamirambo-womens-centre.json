@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-nyamirambo-womens-centre",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/kigali.json",
+   "used": "two-storey Nyamirambo shop house, painted mural and imigongo-style triangle panels, craft shopfront, corrugated hip roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a35c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#b6483a",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2b",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-left",
+   "at": [
+    -7.05,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.1,
+     9.6
+    ],
+    "z0": 0.6,
+    "height": 5.6,
+    "colour": "#2f6b87"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -7.2,
+    -3.6,
+    4.2
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     7.2
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        0,
+        0
+       ],
+       [
+        0.12,
+        0
+       ],
+       [
+        0.12,
+        1.8
+       ],
+       [
+        0,
+        0.9
+       ]
+      ],
+      "height": 1.6,
+      "colour": "#b6483a"
+     }
+    }
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.6,
+    "colours": [
+     "#b6483a",
+     "#e3a35c"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -5.8,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.0,
+    "bottom": 2.8,
+    "colour": "#2f6b87",
+    "posts": false
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    11,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b87",
+    "width": 2.4,
+    "depth": 2.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM match is an unnamed nearest shed so a typical shophouse was composed from the brief"
+ }
+}

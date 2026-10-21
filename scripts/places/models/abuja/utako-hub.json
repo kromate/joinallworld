@@ -1,0 +1,537 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "utako-hub",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: Utako Motor and Bus Terminal, an open motor park about 120 x 90 m with covered loading sheds, kiosks and rows of buses; no photo found for the park itself (the Commons Utako files show the market, a hotel and junctions), no OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 26,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo: walled laterite yard with gate and signboard, folded-steel canopy over bus rows, container kiosks and two admin blocks are typical of Nigerian motor parks, not surveyed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -42,
+    34
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfb5",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#8a3b2e",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    4,
+    5.6
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 86,
+    "depth": 22,
+    "rise": 2.2,
+    "folds": 12,
+    "thickness": 0.25,
+    "foldAxis": "y",
+    "colour": "#7a8590",
+    "edgeColour": "#8a3b2e"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -42,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     84,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -6,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "height": 5.6,
+       "colour": "#8d949a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       14,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "height": 5.6,
+       "colour": "#8d949a"
+      }
+     }
+    ],
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "stripe": "#222222",
+    "count": 9,
+    "spacing": 3.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    25,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "count": 9,
+    "spacing": 3.6,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "coach",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#f2f0e8",
+    "stripe": "#2f6b4f",
+    "count": 7,
+    "spacing": 12,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -10,
+    22,
+    0
+   ],
+   "params": {
+    "colour": "#f2f0e8",
+    "count": 8,
+    "spacing": 3.6,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -55,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -55,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    55,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    55,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4.5,
+    "pillar": 1.8,
+    "leaf": "bars",
+    "colour": "#c9c6bc",
+    "leafColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 4.2,
+    "colour": "#e8d38a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.8,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    45,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.8,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -56,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 28
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -45,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "height": 2.8,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    60,
+    -45,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 90,
+    "height": 2.8,
+    "colour": "#c9bfa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -44.5,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.6
+    ],
+    "height": 2.6,
+    "colour": "#d9a43a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -55,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6a9a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -55,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a8303c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    55,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3d8b5f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "stripe": "#222222",
+    "count": 9,
+    "spacing": 3.6,
+    "yaw": 90
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "admin2",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    40,
+    34
+   ],
+   "height": 7.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d8bd",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f92",
+    "overhang": 0.4,
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -62,
+     30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     62,
+     30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     64,
+     -34
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ],
+  "groundColour": "#9a7a58"
+ }
+}

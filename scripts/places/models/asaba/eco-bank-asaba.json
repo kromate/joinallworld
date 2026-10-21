@@ -1,0 +1,180 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "eco-bank-asaba",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo found on Commons or Wikipedia; OSM nearest match is 77 m away so not trusted; brief dims 28x18, 3 storeys, rendered with glazed banking hall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "banking-block",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6df",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#bdb7aa",
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain"
+    },
+    "glassColour": "#4a6b7a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8e8a",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    -6,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6b7a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8a35",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "id": "atm-canopy",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.6,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#d9d6cc",
+    "edge_colour": "#6f8a35"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "id": "atm",
+   "at": [
+    11,
+    -11,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "id": "blank-board",
+   "at": [
+    -9,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 2.2,
+    "colour": "#6f8a35",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "parking",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    -20,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 2,
+    "colour": "#bdb7aa",
+    "pillarEvery": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; generic three-storey bank branch from brief"
+ }
+}

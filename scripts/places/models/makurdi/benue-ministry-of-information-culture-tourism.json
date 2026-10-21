@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "benue-ministry-of-information-culture-tourism",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1388114412",
+   "used": "building outline containing the venue point (about 58 x 16 m, 941 m2, long axis east-west at 84 deg); no photo of this ministry exists, so storeys, veranda, hip roof and colours come from the brief and typical Benue secretariat blocks"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#a8b59a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 2.8,
+    "height": 3.6,
+    "balustrade": false,
+    "steps": true,
+    "roof": "flat",
+    "wall_colour": "#f4f1e8",
+    "roof_colour": "#a8b59a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    16,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.6,
+    "colour": "#a8b59a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "pillar": 0.6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -22,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; outline from OSM, veranda, flags and hip roof are typical secretariat features from the brief, colours guessed."
+ }
+}

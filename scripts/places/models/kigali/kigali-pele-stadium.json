@@ -1,0 +1,240 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/630835239",
+   "used": "site outline (227 x 168 m, scaled to the scene) as the paved apron; bowl proportions from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "apron",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b5a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "track",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     78,
+     56
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4553d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pitch",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     64,
+     42
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 1.0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#4f8a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#c9a11e",
+    "seatColours": [
+     "#c9a11e",
+     "#2f5f9a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#cfcbbf"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     -35
+    ],
+    "end": [
+     26,
+     -35
+    ],
+    "flip": true,
+    "rows": 12,
+    "rise": 0.55,
+    "run": 0.8,
+    "firstHeight": 2,
+    "canopy": {
+     "depth": 10,
+     "height": 11,
+     "colour": "#9aa1a6"
+    },
+    "seatColour": "#c9a11e",
+    "concreteColour": "#cfcbbf"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    30,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#2f3d4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -44
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this stadium; seating ring, one covered main stand and four masts are typed from the brief on the real outline; main-stand canopy sits over the pitch side and the straight stand is not blended into the ring"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-pele-stadium"
+}

@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-central-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ijebu-ode.json",
+   "used": "program, size, colours; no photo or reliable outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     32,
+     24
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#2f6b4f",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    9.6
+   ],
+   "params": {
+    "radius": 6.5,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "accent": "#d4b84a",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "accent": "#d4b84a",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 4.5,
+    "thickness": 2.5,
+    "bays": 7,
+    "colour": "#f2efe6",
+    "trim": "#d4b84a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -22
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; form follows the brief and the Yoruba-town pattern"
+ }
+}

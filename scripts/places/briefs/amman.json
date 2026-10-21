@@ -1,0 +1,1635 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "amman",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "amman",
+    "climate": "mediterranean",
+    "vernacular": "A city of hills (originally seven, now nineteen) and wadis on a plateau at 700-1,100 m, built in cream and pale-yellow local limestone: stepped 3-6 storey apartment blocks and villas with stone-clad facades, flat concrete roofs carrying water tanks and solar heaters, arched windows and balconies, with older Ottoman and Circassian stone houses, Roman ruins on the citadel and downtown, and glass towers in Abdali and Abdoun. Pale dust-coloured palette, cypress, pine and olive trees.",
+    "wallColours": [
+      "#e6dcc6",
+      "#d8c9a8",
+      "#cfc2a6",
+      "#f0ebe0",
+      "#b9a98c",
+      "#c9b48a"
+    ],
+    "roofColours": [
+      "#b9b2a3",
+      "#8d867a",
+      "#c5764f",
+      "#9a9a96"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "stone",
+      "concrete",
+      "render",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "clay-tile"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Arched and round-headed windows and stone arcades; ablaq-style bands and carved cream stone cornices; blue-tiled mosque domes with slim pencil minarets; Roman columns and theatre stonework downtown; Umayyad carved stone friezes; water tanks and satellite dishes on every flat roof.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Amman",
+        "what": "East Bank Plateau, three major wadis, originally seven hills now nineteen, elevation 700-1,100 m; Roman theatre (2nd century AD) and Hashemite Plaza"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/King_Abdullah_I_Mosque",
+        "what": "blue mosaic dome, two minarets, 18,000 m2 site"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Qasr_Mshatta",
+        "what": "Umayyad palace 144 x 144 m with 25 towers, carved frieze, brick dome (cream stone and brick palette)"
+      }
+    ]
+  },
+  "places": {
+    "amman-airport-amman-airport": {
+      "venueId": "amman-airport-amman-airport",
+      "city": "amman",
+      "name": "Queen Alia International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Foster + Partners terminal seen from the forecourt: a wide low building under a rhythm of shallow concrete domes inspired by Bedouin tents",
+      "form": {
+        "footprint": "rect",
+        "width_m": 500,
+        "depth_m": 250,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "multi-dome",
+        "wings": 2,
+        "variant": "127 concrete domes"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d9c4",
+          "#8fa4ae",
+          "#b5a78d"
+        ],
+        "roofColour": "#d8cfba",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 24,
+          "note": "rows of shallow concrete domes (127 in total); count shown is the visible subset"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen_Alia_International_Airport",
+          "what": "designed by Foster + Partners; roof draws on Bedouin tents and consists of 127 concrete domes, each up to 600 t"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q721494",
+          "what": "OSM terminal outline ~566 x 389 m, height 15 m"
+        }
+      ],
+      "notes": "Domes are the whole identity: a repeating grid of low circular concrete shells with glazed infill. The dimensions are OSM outline (largest mass, including piers), glazing share and cream tone are estimated. Real terminal is bigger than 120 m; show the central bays."
+    },
+    "amman-clinic": {
+      "venueId": "amman-clinic",
+      "city": "amman",
+      "name": "Arab Medical Center",
+      "archetype": "hospital",
+      "subject": "A private hospital tower block with a stone-clad lower podium and a red-cross sign over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 64,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#7e98a6",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "unverified, typed"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1993",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4783208",
+          "what": "Arab Medical Center opened 1993; OSM outline ~75.5 x 64.4 m"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Only footprint and the 1993 opening are known; storeys and cladding are typed from Amman private hospitals. The helipad is a guess; drop it if unconvinced."
+    },
+    "amman-community-notices": {
+      "venueId": "amman-community-notices",
+      "city": "amman",
+      "name": "Zarqa Municipality",
+      "archetype": "civic-small",
+      "subject": "A four-storey stone-clad municipal office with flags and a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 28,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#d8c9a8",
+          "#8d867a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. No data on the Zarqa municipal building was found; typed from the city style and place type."
+    },
+    "amman-community-voting-game": {
+      "venueId": "amman-community-voting-game",
+      "city": "amman",
+      "name": "Hashemite Plaza",
+      "archetype": "park-landscape",
+      "subject": "The paved plaza in front of the Roman Theatre downtown, with fountains, garden beds and cafes, the Citadel hill rising above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 130,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#e6dcc6",
+          "#c9b48a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "stone arcade of the Roman Theatre forming the backdrop"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "cafes"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hashemite_Plaza",
+          "what": "about 20,000 m2, open spaces, fountains, gardens, cafes; Roman Theatre and Odeon flank it; Citadel above; renewed 2014"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Amman",
+          "what": "Roman theatre built second century AD in classical style"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Subject is the plaza with the theatre arcade as backdrop; paving tone is cream limestone, estimated."
+    },
+    "amman-community-workshop": {
+      "venueId": "amman-community-workshop",
+      "city": "amman",
+      "name": "University of Jordan",
+      "archetype": "campus-block",
+      "subject": "The Jubaiha campus: cream-stone teaching blocks around green quads and cypress/pine, with a clock tower and a large library",
+      "form": {
+        "footprint": "U",
+        "width_m": 250,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc6",
+          "#b9a98c",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "international",
+      "era": "1962",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Jordan",
+          "what": "Jubaiha main campus ~1.2 km2, central lawn, ancient cypress and pine trees, clock tower, library over 12,000 m2, mosque 1980, twelve gates"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q610253",
+          "what": "founded 1962; OSM outline ~1,925 x 1,060 m"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Campus is huge; shown as one representative stone teaching block with the clock tower. Stone, arches and palette are not described in the fetched article."
+    },
+    "amman-market-game": {
+      "venueId": "amman-market-game",
+      "city": "amman",
+      "name": "Taj Mall",
+      "archetype": "mall",
+      "subject": "A seven-level shopping mall in Abdoun, stone and glass with a tall central atrium frontage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 7,
+        "height_m": 34,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#6f8c9a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q31076252",
+          "what": "Taj Mall, OSM: retail, 7 levels, start date 2011, outline ~163 x 159 m"
+        },
+        {
+          "url": "https://ar.wikipedia.org/wiki/تاج_مول",
+          "what": "Arabic Wikipedia article on Taj Mall (OSM wikipedia tag)"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Levels, size and year are OSM data; the stone-and-glass look is typed. No logos."
+    },
+    "amman-meal-stop": {
+      "venueId": "amman-meal-stop",
+      "city": "amman",
+      "name": "Hekayet Nebo Restaurant",
+      "archetype": "restaurant",
+      "subject": "A stone-built hillside restaurant near Mount Nebo with a terrace overlooking the Jordan Valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8c9a8",
+          "#8d867a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "view terrace"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Nothing found on this restaurant; typed from the style of tourist restaurants around Madaba/Mount Nebo."
+    },
+    "amman-osm-node-12395982125": {
+      "venueId": "amman-osm-node-12395982125",
+      "city": "amman",
+      "name": "my resaurant",
+      "archetype": "restaurant",
+      "subject": "A small cafe-restaurant shopfront on an Amman street, cream stone frontage and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#8d867a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Unnamed OSM user-labelled node (\"my resaurant\"); no real place can be identified. Typed generic small restaurant."
+    },
+    "amman-osm-node-13128408649": {
+      "venueId": "amman-osm-node-13128408649",
+      "city": "amman",
+      "name": "Al-Yazouri Farm (مزرعة اليازوري)",
+      "archetype": "park-landscape",
+      "subject": "A private farm estate in Zarqa governorate: olive and fruit trees, a low stone farmhouse, walls and tanks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8c9a8",
+          "#b9b2a3",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8d867a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only an Arabic-named OSM node; nothing describing the farm found. Typed as a walled farm with olive trees."
+    },
+    "amman-osm-node-13391032813": {
+      "venueId": "amman-osm-node-13391032813",
+      "city": "amman",
+      "name": "Abood Coffee",
+      "archetype": "restaurant",
+      "subject": "A small coffee shop with a glazed front and awning on a commercial street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#5c534a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information found; typed small cafe."
+    },
+    "amman-osm-node-1789652385": {
+      "venueId": "amman-osm-node-1789652385",
+      "city": "amman",
+      "name": "Fatima Al-Zahraa Mosque (Masjid Fatima Alzahraa)",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque in cream limestone with one modest dome and one slim minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "dome",
+        "wings": 0
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#e6dcc6",
+          "#2b6cb0",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8aa0b0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "slim pencil minaret, ~25 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. OSM node sits near a 16 x 14 m house polygon; no description of the mosque found. Typed local neighbourhood mosque."
+    },
+    "amman-osm-node-4201615774": {
+      "venueId": "amman-osm-node-4201615774",
+      "city": "amman",
+      "name": "Baby Cord (stem-cell clinic)",
+      "archetype": "hospital",
+      "subject": "A small three-storey private medical clinic building in cream stone with a glass entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#7e98a6",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A tagged OSM clinic point with no building polygon; nothing found about its appearance. Typed small clinic."
+    },
+    "amman-osm-node-547993845": {
+      "venueId": "amman-osm-node-547993845",
+      "city": "amman",
+      "name": "Mount Nebo (Memorial Church of Moses)",
+      "archetype": "church-modern",
+      "subject": "The summit sanctuary on Mount Nebo: a stone basilica-shaped shelter over the Byzantine church ruins, with the serpentine Brazen Serpent cross on the viewing terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1,
+        "variant": "basilica protective shelter"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d2bf98",
+          "#a89a7a",
+          "#e6dcc6"
+        ],
+        "roofColour": "#8d867a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Brazen Serpent serpentine cross by Gian Paolo Fantoni on the terrace"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewpoint over the Jordan Valley"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "preserved Byzantine mosaic floors displayed inside"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "4th c. church; shelter reopened 2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Nebo",
+          "what": "church from the late 4th century on a basilica plan, mosaic floors, current protective shelter built Dec 2007 to reopening 15 Oct 2016 as essentially a complete basilica; Brazen Serpent monument by Fantoni"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q680161",
+          "what": "Mount Nebo; OSM Moses Memorial Church node with basilica outline ~39 x 30 m"
+        }
+      ],
+      "notes": "Stone colour and shelter roof form are estimated. The shelter is a plain modern hall with a simple basilica profile; the pilgrimage cross and viewing terrace are the recognisable features."
+    },
+    "amman-osm-node-6593897285": {
+      "venueId": "amman-osm-node-6593897285",
+      "city": "amman",
+      "name": "Sixty Street (شارع الستين)",
+      "archetype": "park-landscape",
+      "subject": "A wide divided highway with a central median, lamp posts and roadside planting at the edge of the city",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#9a9a96",
+          "#c9b48a",
+          "#e6dcc6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A named road node tagged as a viewpoint; nothing describes a particular structure. Typed as a roadside viewpoint with railings and signs."
+    },
+    "amman-osm-way-1532937257": {
+      "venueId": "amman-osm-way-1532937257",
+      "city": "amman",
+      "name": "Amman Arab University",
+      "archetype": "campus-block",
+      "subject": "A long five-storey stone-clad university block with banded windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 23,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#b9a98c",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "international",
+      "era": "1999",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4747131",
+          "what": "Amman Arab University founded 1999; OSM block ~80 x 23 m tagged commercial"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Only dimensions and year known; appearance typed."
+    },
+    "amman-osm-way-164106288": {
+      "venueId": "amman-osm-way-164106288",
+      "city": "amman",
+      "name": "Qasr Mshatta",
+      "archetype": "heritage-fort",
+      "subject": "The unfinished Umayyad desert palace: a square enclosure of low brick-and-stone walls with 25 round towers and a central gateway block, carved facade mostly removed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 144,
+        "depth_m": 144,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "wings": 0,
+        "variant": "ruined enclosure"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#c8b48c",
+          "#a8784f",
+          "#e0d4b4"
+        ],
+        "roofColour": "#a8784f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "outer wall with 25 towers"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "central gateway block on the south side"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched hall openings in brick"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "brick dome over the throne room (largely collapsed)"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "743-744 CE",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Qasr_Mshatta",
+          "what": "Umayyad palace, 743-744 CE, never completed, square about 144 x 144 m, outer wall with 25 towers, carved southern frieze (now in Berlin), brick throne-room dome"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1636168",
+          "what": "OSM outline ~150 x 147 m"
+        }
+      ],
+      "notes": "Ruin: low standing walls and tower stumps in tan limestone with brick courses; wall height is estimated. The famous carved frieze is in the Pergamon Museum, so the on-site facade is plain."
+    },
+    "amman-osm-way-200734506": {
+      "venueId": "amman-osm-way-200734506",
+      "city": "amman",
+      "name": "University of Petra",
+      "archetype": "campus-block",
+      "subject": "A modern private-university campus of several stone-clad blocks around a plaza",
+      "form": {
+        "footprint": "L",
+        "width_m": 180,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#7e98a6",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3551661",
+          "what": "University of Petra founded 1996; OSM outline ~908 x 244 m"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Only year and footprint known; appearance typed."
+    },
+    "amman-osm-way-333946090": {
+      "venueId": "amman-osm-way-333946090",
+      "city": "amman",
+      "name": "King Abdullah I Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The King Abdullah I Mosque: a large cream-stone mosque capped by a single blue mosaic dome with two minarets and a columned porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 99,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 32,
+        "roof": "dome",
+        "wings": 1,
+        "variant": "single large dome over octagonal prayer hall"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc6",
+          "#2b6cb0",
+          "#b0a28a"
+        ],
+        "roofColour": "#2b6cb0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "blue mosaic dome; roughly 35 m across (estimated)"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 40 m high (estimated)"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "columned porch around the prayer hall"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1989",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Abdullah_I_Mosque",
+          "what": "blue mosaic dome, two minarets, 18,000 m2 site, capacity 3,000 under the dome"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1574587",
+          "what": "OSM: mosque, 2 levels, built 1989, outline ~99 x 90 m"
+        }
+      ],
+      "notes": "Single blue dome and two minarets are the identity; stone is a cream/white-washed local limestone and the dome and minaret sizes are estimated, not from the sources."
+    },
+    "amman-osm-way-588418001": {
+      "venueId": "amman-osm-way-588418001",
+      "city": "amman",
+      "name": "German Jordanian University",
+      "archetype": "campus-block",
+      "subject": "A modern campus near Madaba of stepped stone-clad teaching blocks on a hillside",
+      "form": {
+        "footprint": "U",
+        "width_m": 200,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0d4b4",
+          "#7e98a6",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q322668",
+          "what": "German-Jordanian University founded 2005; OSM outline ~610 x 350 m"
+        }
+      ],
+      "notes": "Amman cream-limestone cladding is a regulated local convention and is stated from general knowledge, not from a fetched page. Only year and footprint known; appearance typed."
+    },
+    "amman-osm-way-695615687": {
+      "venueId": "amman-osm-way-695615687",
+      "city": "amman",
+      "name": "Tell Hesban (biblical Heshbon)",
+      "archetype": "heritage-fort",
+      "subject": "A flat-topped archaeological hill with scattered ancient wall lines, cisterns and dig trenches in a dry plateau landscape",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 357,
+        "depth_m": 222,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "wings": 0,
+        "variant": "ruined tell"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8b48c",
+          "#a89a78",
+          "#8d867a"
+        ],
+        "roofColour": "#a89a78",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "collapsed wall lines"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Iron Age-Byzantine",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hisban",
+          "what": "Tell Hisban is one of the candidate sites for biblical Heshbon (no visual description)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1615584",
+          "what": "Heshbon ancient city, OSM archaeological site ~357 x 222 m"
+        }
+      ],
+      "notes": "No description of surviving ruins was found. Typed as a stony tell with low wall lines."
+    },
+    "amman-osm-way-956954592": {
+      "venueId": "amman-osm-way-956954592",
+      "city": "amman",
+      "name": "Tall al-'Umayri",
+      "archetype": "heritage-fort",
+      "subject": "A low ridge-top archaeological site with excavated house walls, a rampart and a moat remnant in the Amman National Park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 98,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "wings": 0,
+        "variant": "excavated tell"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8b48c",
+          "#a89a78",
+          "#8d867a"
+        ],
+        "roofColour": "#a89a78",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "rampart ~5 m high around 1600 BCE with ~5 m deep moat"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Bronze-Iron Age",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tall_al-Umayri",
+          "what": "ridge site ~883 m between a highway and Amman National Park; Early/Late Bronze Age houses, five-room structure, Iron Age four-room houses, 5 m moat and 5 m rampart c.1600 BCE"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12203045",
+          "what": "OSM site ~98 x 40 m"
+        }
+      ],
+      "notes": "What stands today is not described in the source (excavations ongoing); typed as an excavated stone-footing site."
+    },
+    "amman-osm-way-98868798": {
+      "venueId": "amman-osm-way-98868798",
+      "city": "amman",
+      "name": "Prince Mohammed Stadium (Zarqa)",
+      "archetype": "stadium",
+      "subject": "A mid-size football stadium with an oval bowl of concrete stands, one covered stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 206,
+        "depth_m": 142,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8c9a8",
+          "#8d867a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#7a8a96",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4120140",
+          "what": "Prince Mohammed Stadium (Arabic Wikipedia article), OSM stadium outline ~206 x 142 m"
+        }
+      ],
+      "notes": "Only footprint and name; seating layout and colours typed."
+    },
+    "amman-quiet-reflection": {
+      "venueId": "amman-quiet-reflection",
+      "city": "amman",
+      "name": "Great Mosque of Salt (مسجد السلط الكبير)",
+      "archetype": "mosque-domed",
+      "subject": "The Great Mosque of As-Salt in honey-yellow local limestone with a tall square-section minaret, stepping up the hillside among Ottoman stone houses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome",
+        "wings": 0
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9be82",
+          "#b99a5c",
+          "#efe0b4"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "tall minaret, ~35 m (estimated)"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q107810622",
+          "what": "As-Salt Grand Mosque, Sunni mosque, OSM outline ~57 x 25 m"
+        }
+      ],
+      "notes": "Fetching a Wikipedia page failed; only footprint known. The golden limestone palette is general knowledge of As-Salt (UNESCO-listed for its yellow-limestone Ottoman buildings), the dome/minaret layout is typed."
+    },
+    "amman-recreation": {
+      "venueId": "amman-recreation",
+      "city": "amman",
+      "name": "King Hussein Gardens (Hada'iq al-Malik Hussein)",
+      "archetype": "park-landscape",
+      "subject": "A large landscaped public garden of lawns, shaded pine and cypress avenues, ornamental pools and cream-stone pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 300,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#e6dcc6",
+          "#7d9a5a",
+          "#c9b48a"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "international",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description fetched; typed from Amman public park conventions. Park features are guesses."
+    },
+    "amman-transit": {
+      "venueId": "amman-transit",
+      "city": "amman",
+      "name": "Qasr Station",
+      "archetype": "transport-station",
+      "subject": "A small stone-built station building with a pitched roof and a short platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8c9a8",
+          "#b9a98c",
+          "#f0ebe0"
+        ],
+        "roofColour": "#c5764f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "ottoman",
+      "era": "early 20th c.",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM places a 22 x 21 m building next to the node; there is no reliable description. Typed as an Ottoman-era Hejaz-railway-style stone station (assumption: Qasr is on the Hejaz line)."
+    }
+  }
+}

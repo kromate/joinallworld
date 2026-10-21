@@ -1,0 +1,962 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Kano_Central_Mosque.jpg",
+   "licence": "CC0",
+   "author": "Usmanmaifada",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/mosque1.jpg",
+   "used": "two tall cream minarets with balcony ring, green-topped lantern and green band; teal-green onion central dome on a cream clerestory block; two smaller green domes; cream perimeter wall with green base stripe and arched gate"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kano_Mosque_in_1960.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Dr Mary Gillham Archive Project",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/mosque2.jpg",
+   "used": "1960 view: gate portal in front of hall, minarets with open lantern, clerestory with small arched windows below dome"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/290490441",
+   "used": "extent (about 42 m hall, name match); modelled as a straight rectangle to match the front photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 2.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     48,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c887",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cca0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 8,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c887",
+    "windows": "arched",
+    "windowRatio": 0.35,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cca0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-block",
+   "at": [
+    0,
+    -17
+   ],
+   "params": {
+    "rect": [
+     9,
+     4
+    ],
+    "z0": 0,
+    "height": 7,
+    "colour": "#e6c887",
+    "topColour": "#e6dab0"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "portal",
+   "at": [
+    0,
+    -19.1,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6.5,
+    "depth": 0.6,
+    "archWidth": 4.2,
+    "springHeight": 3.4,
+    "pointed": true,
+    "colour": "#cdbf90"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-fl",
+   "at": [
+    -27,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 3.4,
+    "thickness": 0.5,
+    "colour": "#e2b95e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-fr",
+   "at": [
+    27,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 3.4,
+    "thickness": 0.5,
+    "colour": "#e2b95e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-l",
+   "at": [
+    -27,
+    -40.3
+   ],
+   "params": {
+    "rect": [
+     50,
+     0.2
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#1f5a4a",
+    "topColour": "#1f5a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-r",
+   "at": [
+    27,
+    -40.3
+   ],
+   "params": {
+    "rect": [
+     50,
+     0.2
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#1f5a4a",
+    "topColour": "#1f5a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-l",
+   "at": [
+    -52,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "height": 3.4,
+    "thickness": 0.5,
+    "colour": "#e2b95e"
+   },
+   "rotDeg": 90,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-r",
+   "at": [
+    52,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "height": 3.4,
+    "thickness": 0.5,
+    "colour": "#e2b95e"
+   },
+   "rotDeg": 90,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-b",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "height": 3.4,
+    "thickness": 0.5,
+    "colour": "#e2b95e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    0,
+    2,
+    12.5
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#eed9a2",
+    "profile": [
+     [
+      9.2,
+      0,
+      "#eed9a2"
+     ],
+     [
+      9.2,
+      1.4
+     ],
+     [
+      8.2,
+      1.4
+     ],
+     [
+      8.2,
+      3.2
+     ],
+     [
+      7.6,
+      3.2
+     ],
+     [
+      7.6,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "big-dome",
+   "at": [
+    0,
+    2,
+    16.1
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#2f8f78",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      7.0,
+      0,
+      "#2f8f78"
+     ],
+     [
+      7.6,
+      1.2
+     ],
+     [
+      7.8,
+      3.0
+     ],
+     [
+      7.0,
+      5.6
+     ],
+     [
+      5.4,
+      8.0
+     ],
+     [
+      3.2,
+      10.2
+     ],
+     [
+      1.4,
+      11.6
+     ],
+     [
+      0.5,
+      12.6
+     ],
+     [
+      0,
+      13.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    0,
+    2,
+    29.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.3,
+      2.4
+     ],
+     [
+      0.1,
+      3.0
+     ],
+     [
+      0,
+      3.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-l",
+   "at": [
+    -14,
+    4,
+    8
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#2f8f78",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      2.9,
+      0
+     ],
+     [
+      2.9,
+      0.4
+     ],
+     [
+      2.8,
+      1.4
+     ],
+     [
+      2.1,
+      2.5
+     ],
+     [
+      1.1,
+      3.2
+     ],
+     [
+      0,
+      3.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "dome-r",
+   "at": [
+    14,
+    4,
+    8
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#2f8f78",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      2.9,
+      0
+     ],
+     [
+      2.9,
+      0.4
+     ],
+     [
+      2.8,
+      1.4
+     ],
+     [
+      2.1,
+      2.5
+     ],
+     [
+      1.1,
+      3.2
+     ],
+     [
+      0,
+      3.4
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "min-l",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e6c887",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      2.7,
+      0,
+      "#e6c887"
+     ],
+     [
+      2.7,
+      1.0,
+      "#d9b86e"
+     ],
+     [
+      2.2,
+      13
+     ],
+     [
+      2.2,
+      13.2,
+      "#e6c887"
+     ],
+     [
+      3.2,
+      13.2,
+      "#cfae66"
+     ],
+     [
+      3.2,
+      13.8
+     ],
+     [
+      2.0,
+      13.8,
+      "#e6c887"
+     ],
+     [
+      2.0,
+      24
+     ],
+     [
+      3.1,
+      24.0,
+      "#cfae66"
+     ],
+     [
+      3.1,
+      24.6
+     ],
+     [
+      1.8,
+      24.6,
+      "#e6c887"
+     ],
+     [
+      1.8,
+      25.0
+     ],
+     [
+      1.5,
+      25.0,
+      "#e6c887"
+     ],
+     [
+      1.5,
+      29.0
+     ],
+     [
+      1.9,
+      29.0,
+      "#2f8f78"
+     ],
+     [
+      1.9,
+      29.3
+     ],
+     [
+      1.5,
+      29.3
+     ],
+     [
+      1.2,
+      31.0
+     ],
+     [
+      0.5,
+      32.2
+     ],
+     [
+      0,
+      33.0
+     ]
+    ],
+    "arcade": {
+     "from": 25.0,
+     "to": 29.0,
+     "count": 4,
+     "width": 1.1,
+     "height": 3.0,
+     "sill": 0.5,
+     "shape": "pointed",
+     "depth": 0.4
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "min-fin-l",
+   "at": [
+    -26,
+    -18,
+    33
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.2,
+      0
+     ],
+     [
+      0.15,
+      2.0
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "min-r",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e6c887",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      2.7,
+      0,
+      "#e6c887"
+     ],
+     [
+      2.7,
+      1.0,
+      "#d9b86e"
+     ],
+     [
+      2.2,
+      13
+     ],
+     [
+      2.2,
+      13.2,
+      "#e6c887"
+     ],
+     [
+      3.2,
+      13.2,
+      "#cfae66"
+     ],
+     [
+      3.2,
+      13.8
+     ],
+     [
+      2.0,
+      13.8,
+      "#e6c887"
+     ],
+     [
+      2.0,
+      24
+     ],
+     [
+      3.1,
+      24.0,
+      "#cfae66"
+     ],
+     [
+      3.1,
+      24.6
+     ],
+     [
+      1.8,
+      24.6,
+      "#e6c887"
+     ],
+     [
+      1.8,
+      25.0
+     ],
+     [
+      1.5,
+      25.0,
+      "#e6c887"
+     ],
+     [
+      1.5,
+      29.0
+     ],
+     [
+      1.9,
+      29.0,
+      "#2f8f78"
+     ],
+     [
+      1.9,
+      29.3
+     ],
+     [
+      1.5,
+      29.3
+     ],
+     [
+      1.2,
+      31.0
+     ],
+     [
+      0.5,
+      32.2
+     ],
+     [
+      0,
+      33.0
+     ]
+    ],
+    "arcade": {
+     "from": 25.0,
+     "to": 29.0,
+     "count": 4,
+     "width": 1.1,
+     "height": 3.0,
+     "sill": 0.5,
+     "shape": "pointed",
+     "depth": 0.4
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "min-fin-r",
+   "at": [
+    26,
+    -18,
+    33
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0.2,
+      0
+     ],
+     [
+      0.15,
+      2.0
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-pier-l",
+   "at": [
+    -3.6,
+    -40
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.4
+    ],
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#e2b95e",
+    "topColour": "#e2b95e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wall-pier-r",
+   "at": [
+    3.6,
+    -40
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.4
+    ],
+    "z0": 0,
+    "height": 6.2,
+    "colour": "#e2b95e",
+    "topColour": "#e2b95e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "arch-portal",
+   "id": "gate-arch",
+   "at": [
+    0,
+    -40.8,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 7,
+    "depth": 0.6,
+    "archWidth": 4.4,
+    "springHeight": 3.6,
+    "pointed": true,
+    "colour": "#e2b95e"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-l-lo",
+   "lod": [
+    2
+   ],
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e6c887",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.0,
+      24
+     ],
+     [
+      1.5,
+      25
+     ],
+     [
+      1.5,
+      29
+     ],
+     [
+      1.2,
+      31
+     ],
+     [
+      0,
+      33
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "min-r-lo",
+   "lod": [
+    2
+   ],
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e6c887",
+    "topColour": "#2f8f78",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.0,
+      24
+     ],
+     [
+      1.5,
+      25
+     ],
+     [
+      1.5,
+      29
+     ],
+     [
+      1.2,
+      31
+     ],
+     [
+      0,
+      33
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -48
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -47
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -46
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "central-mosque",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ochre minarets with two balconies and open pointed-arch lanterns, ogee dome on stepped octagonal drum; hall remains a plain box with simple windows; trees and gate arch carving omitted."
+ }
+}

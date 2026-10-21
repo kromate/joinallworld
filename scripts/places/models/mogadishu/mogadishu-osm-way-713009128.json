@@ -1,0 +1,275 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-713009128",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/713009128",
+   "used": "campus boundary as a low lawn pad (auto-fitted to the scene clamp, so buildings are shown at compressed campus scale)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mogadishu.json#mogadishu-osm-way-713009128",
+   "used": "three-storey classroom blocks with arched corridors in painted cream render with teal trim, a small mosque; no photo found on Commons or the web"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus-pad",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b98f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8aa80"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-a-n",
+   "at": [
+    0,
+    22,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -5
+     ],
+     [
+      30,
+      -5
+     ],
+     [
+      30,
+      5
+     ],
+     [
+      -30,
+      5
+     ]
+    ],
+    "height": 12,
+    "colour": "#eae0c0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "storeys": 3,
+    "trimColour": "#3f7a6a",
+    "topColour": "#a39a8b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-b-w",
+   "at": [
+    -27,
+    2,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -18
+     ],
+     [
+      5,
+      -18
+     ],
+     [
+      5,
+      18
+     ],
+     [
+      -5,
+      18
+     ]
+    ],
+    "height": 12,
+    "colour": "#eae0c0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "storeys": 3,
+    "topColour": "#a39a8b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block-c-e",
+   "at": [
+    27,
+    2,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -18
+     ],
+     [
+      5,
+      -18
+     ],
+     [
+      5,
+      18
+     ],
+     [
+      -5,
+      18
+     ]
+    ],
+    "height": 12,
+    "colour": "#eae0c0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "storeys": 3,
+    "topColour": "#a39a8b"
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "id": "corridor",
+   "at": [
+    0,
+    -16.5,
+    0.25
+   ],
+   "params": {
+    "length": 50,
+    "height": 4.2,
+    "thickness": 2.6,
+    "bays": 10,
+    "shape": "pointed",
+    "colour": "#f8f3e4",
+    "cap_colour": "#3f7a6a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f8f3e4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "glassColour": "#3a5a6a",
+    "trimColour": "#f8f3e4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7a6a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -34,
+    -30,
+    7.25
+   ],
+   "params": {
+    "height": 16,
+    "radius": 0.9,
+    "balconies": 1,
+    "style": "pencil",
+    "colour": "#f8f3e4",
+    "capColour": "#3f7a6a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -50,
+    -50,
+    0.25
+   ],
+   "params": {
+    "length": 100,
+    "height": 2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d8cfae"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -44,
+    0.25
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#4189dd"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -30,
+    0.25
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 8,
+    "line": 40
+   }
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the campus exists in the sources checked; the outline is the campus boundary (not a building), so block layout is typed from the brief; block positions unverified."
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ }
+}

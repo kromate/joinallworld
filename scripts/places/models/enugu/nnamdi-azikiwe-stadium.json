@@ -1,0 +1,565 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "nnamdi-azikiwe-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nnamdi_azikiwe_stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kellyponthis",
+   "view": "interior",
+   "file": "/tmp/places-evidence/enugu/stadium.jpg",
+   "used": "blue seating on the far long side, red-brown seating with a pale curved canopy at the right end, dark scoreboard behind the goal, a tall floodlight mast, a red lattice tower, red running track round a green pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9094055",
+   "used": "overall oval size and orientation (about 190 x 205 m), scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      40.0,
+      0.0
+     ],
+     [
+      38.64,
+      7.25
+     ],
+     [
+      34.64,
+      14.0
+     ],
+     [
+      28.28,
+      19.8
+     ],
+     [
+      20.0,
+      24.25
+     ],
+     [
+      10.35,
+      27.05
+     ],
+     [
+      0.0,
+      28.0
+     ],
+     [
+      -10.35,
+      27.05
+     ],
+     [
+      -20.0,
+      24.25
+     ],
+     [
+      -28.28,
+      19.8
+     ],
+     [
+      -34.64,
+      14.0
+     ],
+     [
+      -38.64,
+      7.25
+     ],
+     [
+      -40.0,
+      0.0
+     ],
+     [
+      -38.64,
+      -7.25
+     ],
+     [
+      -34.64,
+      -14.0
+     ],
+     [
+      -28.28,
+      -19.8
+     ],
+     [
+      -20.0,
+      -24.25
+     ],
+     [
+      -10.35,
+      -27.05
+     ],
+     [
+      -0.0,
+      -28.0
+     ],
+     [
+      10.35,
+      -27.05
+     ],
+     [
+      20.0,
+      -24.25
+     ],
+     [
+      28.28,
+      -19.8
+     ],
+     [
+      34.64,
+      -14.0
+     ],
+     [
+      38.64,
+      -7.25
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#a8573f",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      33.0,
+      0.0
+     ],
+     [
+      31.38,
+      6.49
+     ],
+     [
+      26.7,
+      12.34
+     ],
+     [
+      19.4,
+      16.99
+     ],
+     [
+      10.2,
+      19.97
+     ],
+     [
+      0.0,
+      21.0
+     ],
+     [
+      -10.2,
+      19.97
+     ],
+     [
+      -19.4,
+      16.99
+     ],
+     [
+      -26.7,
+      12.34
+     ],
+     [
+      -31.38,
+      6.49
+     ],
+     [
+      -33.0,
+      0.0
+     ],
+     [
+      -31.38,
+      -6.49
+     ],
+     [
+      -26.7,
+      -12.34
+     ],
+     [
+      -19.4,
+      -16.99
+     ],
+     [
+      -10.2,
+      -19.97
+     ],
+     [
+      -0.0,
+      -21.0
+     ],
+     [
+      10.2,
+      -19.97
+     ],
+     [
+      19.4,
+      -16.99
+     ],
+     [
+      26.7,
+      -12.34
+     ],
+     [
+      31.38,
+      -6.49
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#3f8a3a",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stand-west",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 34,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "concreteColour": "#a9a69e",
+    "underColour": "#a9a69e",
+    "backWall": 0,
+    "startDeg": 100,
+    "endDeg": 260,
+    "seatColour": "#2d5fa8"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stand-east",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 34,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "concreteColour": "#a9a69e",
+    "underColour": "#a9a69e",
+    "backWall": 0,
+    "startDeg": -40,
+    "endDeg": 20,
+    "seatColour": "#a5553f",
+    "canopy": {
+     "height": 1.0,
+     "depth": 5,
+     "thickness": 0.6,
+     "slopeDeg": 3,
+     "colour": "#d8d4c8",
+     "edgeColour": "#c9c4b6",
+     "overhangBack": 0.8
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "stand-east-2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 34,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "concreteColour": "#a9a69e",
+    "underColour": "#a9a69e",
+    "backWall": 0,
+    "startDeg": 20,
+    "endDeg": 60,
+    "seatColour": "#a5553f"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "curve-n",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 34,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "concreteColour": "#a9a69e",
+    "underColour": "#a9a69e",
+    "backWall": 0,
+    "startDeg": 60,
+    "endDeg": 100,
+    "seatColour": "#a5553f"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "curve-s",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 46,
+    "radiusY": 34,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 3,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "concreteColour": "#a9a69e",
+    "underColour": "#a9a69e",
+    "backWall": 0,
+    "startDeg": 260,
+    "endDeg": 320,
+    "seatColour": "#a5553f"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 5,
+    "colour": "#b4babf"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    44,
+    0
+   ],
+   "params": {
+    "height": 40,
+    "head_width": 5,
+    "colour": "#b4babf"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -4,
+    46,
+    10
+   ],
+   "params": {
+    "width": 13,
+    "height": 5.5,
+    "post_height": 3,
+    "facing": "south",
+    "colour": "#202327"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.4,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#a9a69e"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -64,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 5,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    22,
+    52,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "baseWidth": 2.4,
+    "topWidth": 1.0,
+    "panels": 5,
+    "colour": "#c8362f",
+    "colour2": "#c8362f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60.5,
+    "radiusY": 48.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 32,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 9,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.2,
+        1.2
+       ],
+       "height": 9,
+       "colour": "#8f8c84"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -52
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Photo is a track-level interior view, so the outer wall, ramp towers and apron are inferred; the lattice tower (12 m) and scoreboard sit north-east of the pitch but their exact spacing is approximate, stand ends are blended, and the pale shade over part of the east stand is a simple slab."
+ }
+}

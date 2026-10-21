@@ -1,0 +1,1593 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "taipei",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "taipei",
+  "climate": "tropical-maritime",
+  "vernacular": "Dense subtropical city of 4-12 storey tile-clad and painted-concrete apartment blocks with window grilles, air-conditioner boxes and rooftop water tanks, often topped by blue or grey corrugated-metal rooftop additions; arcaded shopfront sidewalks (qilou) on older streets; Japanese-era red-brick and stone public buildings; glass towers in Xinyi and the new-town districts; Minnan-style temples with red walls and orange-glazed tile roofs. Camphor and banyan street trees, palms in parks.",
+  "wallColours": [
+   "#d8cfc0",
+   "#b5b8b6",
+   "#c97b5a",
+   "#e8e6df",
+   "#9b8f7e",
+   "#6f7f8a"
+  ],
+  "roofColours": [
+   "#8d8f8f",
+   "#4f7ea8",
+   "#b5532f",
+   "#5f625f"
+  ],
+  "wallMaterials": [
+   "tile-cladding",
+   "concrete",
+   "painted-render",
+   "exposed-concrete",
+   "red-brick",
+   "glass-curtain",
+   "stone"
+  ],
+  "roofMaterials": [
+   "concrete",
+   "corrugated",
+   "clay-tile",
+   "metal-sheet",
+   "membrane"
+  ],
+  "ground": "asphalt",
+  "vegetation": [
+   "broadleaf",
+   "palm"
+  ],
+  "ornament": "Qilou arcades with iron window grilles and hanging signs; rooftop water tanks and blue corrugated sheds; temple swallowtail ridges with dragon and phoenix figures, red lacquered columns and stone lions; Japanese-era red-brick bands with white stone trim; neon vertical signboards.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Architecture_of_Taiwan",
+    "what": "Taiwanese temples by regional style (Minnan, Hakka), red-brick Dutch-era forts, reinforced concrete introduced under Japanese rule"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/New_Taipei_City_Hall",
+    "what": "New Taipei City Hall: 33 floors, 140.5 m, completed 2003"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Taipower_Building_metro_station",
+    "what": "Taipei metro station: two-level underground island platform, five exits"
+   }
+  ]
+ },
+ "places": {
+  "taipei-airport-taipei-airport": {
+   "venueId": "taipei-airport-taipei-airport",
+   "city": "taipei",
+   "name": "Taipei Songshan International Airport",
+   "archetype": "airport-terminal",
+   "subject": "Songshan Airport international terminal (Terminal 1): a long, low, flat-roofed tile-and-glass terminal with a covered kerb canopy",
+   "form": {
+    "footprint": "rect",
+    "width_m": 300,
+    "depth_m": 60,
+    "storeys": 3,
+    "height_m": 20,
+    "roof": "flat",
+    "wings": 1
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#d8d4c8",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "membrane",
+    "windows": "curtain",
+    "windowRatio": 0.45
+   },
+   "features": [
+    {
+     "id": "flat-canopy",
+     "count": 1,
+     "note": "covered departures kerb"
+    },
+    {
+     "id": "control-tower",
+     "count": 1
+    },
+    {
+     "id": "jet-bridge",
+     "count": 5
+    },
+    {
+     "id": "bus-bays",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "international",
+   "era": "airport 1936/1950, renovated 2010-2011",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Taipei_Songshan_Airport",
+     "what": "airport began 1936 as a military field, civil use from 1950, two terminals, renovation phases around 2010-2011"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/549458178",
+     "what": "OSM terminal building (international) 445 m x 109 m"
+    }
+   ],
+   "notes": "Extent and history sourced; facade look is typed from general knowledge of the plain mid-rise Songshan terminals."
+  },
+  "taipei-clinic": {
+   "venueId": "taipei-clinic",
+   "city": "taipei",
+   "name": "衛生福利部基隆醫院",
+   "archetype": "hospital",
+   "subject": "Keelung Hospital (MOHW): an older multi-storey hospital in tile-clad concrete",
+   "form": {
+    "footprint": "rect",
+    "width_m": 60,
+    "depth_m": 28,
+    "storeys": 8,
+    "height_m": 32,
+    "roof": "flat",
+    "wings": 1
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "concrete",
+    "colours": [
+     "#d8d0c0",
+     "#8a9aa4",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 2
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1950s-2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/556028011",
+     "what": "OSM building=roof 35 m x 25 m at venue position, wikidata Q18119145"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; only a small roof structure is mapped at the venue."
+  },
+  "taipei-community-notices": {
+   "venueId": "taipei-community-notices",
+   "city": "taipei",
+   "name": "Central Engraving and Printing Plant",
+   "archetype": "industrial",
+   "subject": "The state printing works in Xindian: a plain three-storey factory block in off-white painted concrete with a security gate",
+   "form": {
+    "footprint": "rect",
+    "width_m": 82,
+    "depth_m": 60,
+    "storeys": 3,
+    "height_m": 15,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#e0dccf",
+     "#b5b8b6",
+     "#6f7f8a"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    },
+    {
+     "id": "chimney",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1950s-1970s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1138060284",
+     "what": "OSM industrial building 82 m x 61 m at venue position"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; footprint measured only."
+  },
+  "taipei-community-voting-game": {
+   "venueId": "taipei-community-voting-game",
+   "city": "taipei",
+   "name": "New Taipei City Hall",
+   "archetype": "office-tower",
+   "subject": "New Taipei City Hall in Banqiao: a 33-storey, 140 m glass-and-stone administrative tower rising from a wide podium",
+   "form": {
+    "footprint": "rect",
+    "width_m": 60,
+    "depth_m": 45,
+    "storeys": 33,
+    "height_m": 140,
+    "roof": "flat",
+    "variant": "city-hall-tower",
+    "wings": 2
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "stone",
+    "colours": [
+     "#7f9aa8",
+     "#c9c3b6",
+     "#e8e8e6"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "curtain",
+    "windowRatio": 0.55
+   },
+   "features": [
+    {
+     "id": "podium",
+     "count": 1,
+     "note": "wide low block with council hall around the tower"
+    },
+    {
+     "id": "setback-tiers",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 5
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "postmodern",
+   "era": "2003 (construction from 1997)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/New_Taipei_City_Hall",
+     "what": "33 floors, roof 140.5 m, floor area 159,128 m2, 27 lifts, free observation floor on 32, viewing restaurant on 33, completed 2003"
+    },
+    {
+     "url": "https://www.openstreetmap.org/relation/4202253",
+     "what": "OSM: 33 levels, height 140.5, whole complex 165 m x 91 m"
+    }
+   ],
+   "notes": "Chosen office-tower because a 140 m tower is its identity. Height and level count are sourced; the cladding and tower plan are estimated (not in any fetched description)."
+  },
+  "taipei-community-workshop": {
+   "venueId": "taipei-community-workshop",
+   "city": "taipei",
+   "name": "Ming Chi University of Technology",
+   "archetype": "campus-block",
+   "subject": "A Ming Chi teaching block in tile-clad concrete on the hillside campus in Taishan",
+   "form": {
+    "footprint": "rect",
+    "width_m": 90,
+    "depth_m": 28,
+    "storeys": 6,
+    "height_m": 24,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "exposed-concrete",
+    "colours": [
+     "#d8cfc0",
+     "#9b8f7e",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1960s-2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/5456014",
+     "what": "campus 860 m x 449 m, wikidata Q11087869"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; campus extent measured; blocks guessed."
+  },
+  "taipei-market-game": {
+   "venueId": "taipei-market-game",
+   "city": "taipei",
+   "name": "Mitsui Shopping Park LaLaport 南港",
+   "archetype": "mall",
+   "subject": "LaLaport Nangang: a six-level white-and-glass shopping complex beside Nangang station",
+   "form": {
+    "footprint": "rect",
+    "width_m": 209,
+    "depth_m": 143,
+    "storeys": 6,
+    "height_m": 32,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e6e3dc",
+     "#9aa7b0",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "membrane",
+    "windows": "curtain",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "roof-terrace",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2021",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1009409905",
+     "what": "OSM commercial building, 6 levels, 209 m x 143 m, wikidata Q48901384"
+    }
+   ],
+   "notes": "Levels and extent measured; facade colours and glazing estimated."
+  },
+  "taipei-meal-stop": {
+   "venueId": "taipei-meal-stop",
+   "city": "taipei",
+   "name": "藍白小鎮",
+   "archetype": "restaurant",
+   "subject": "A small blue-and-white themed eatery (name means Blue-White Town): whitewashed walls with blue trim in Mediterranean style",
+   "form": {
+    "footprint": "rect",
+    "width_m": 12,
+    "depth_m": 10,
+    "storeys": 2,
+    "height_m": 7,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "painted-render",
+    "colours": [
+     "#f2f2ee",
+     "#2f6ea8",
+     "#ffffff"
+    ],
+    "roofColour": "#2f6ea8",
+    "roofMaterial": "membrane",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/295946611",
+     "what": "restaurant building 12 m x 10 m, wikidata Q131263043"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; the blue/white scheme is inferred from the name only."
+  },
+  "taipei-osm-node-12077731973": {
+   "venueId": "taipei-osm-node-12077731973",
+   "city": "taipei",
+   "name": "土地公山遺址",
+   "archetype": "park-landscape",
+   "subject": "Tudigong Hill archaeological site: a wooded hilltop with a trail, steps and a small earth-god shrine",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 80,
+    "depth_m": 50,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "red-brick",
+    "accent": "concrete",
+    "colours": [
+     "#a56a50",
+     "#d8cfc0",
+     "#4f6a4a"
+    ],
+    "roofColour": "#b5532f",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 2
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "prehistoric site",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Typed from the Taipei city style; no building or description found; the shrine and steps are assumed from the hill-site name (Tudigong = earth god)."
+  },
+  "taipei-osm-node-2003037499": {
+   "venueId": "taipei-osm-node-2003037499",
+   "city": "taipei",
+   "name": "芝山岩",
+   "archetype": "temple-asian",
+   "subject": "Zhishan Rock in Shilin: a small hill crowned by the Huiji Temple, with a stone gate and steep stair",
+   "form": {
+    "footprint": "rect",
+    "width_m": 40,
+    "depth_m": 25,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "hip",
+    "variant": "hilltop-temple"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stone",
+    "colours": [
+     "#a8402f",
+     "#d8c9a8",
+     "#5f625f"
+    ],
+    "roofColour": "#b5532f",
+    "roofMaterial": "clay-tile",
+    "windows": "screen",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 1,
+     "note": "swallowtail ridge on the temple hall"
+    },
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "stone hill gate"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "east-asian",
+   "era": "Huiji Temple 1752",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/861114144",
+     "what": "Zhishan park polygon 514 m x 295 m, wikidata Q133574638"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; Huiji Temple (Mazu temple, 1752) on Zhishan Rock is known to me from general knowledge, but no source was fetched, so colours/forms are typical Minnan temple."
+  },
+  "taipei-osm-node-4199791991": {
+   "venueId": "taipei-osm-node-4199791991",
+   "city": "taipei",
+   "name": "Queen's Head",
+   "archetype": "park-landscape",
+   "subject": "Queen's Head at Yehliu Geopark: a hoodoo rock shaped like a woman's head on a sandstone promontory by the sea",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 100,
+    "depth_m": 60,
+    "storeys": 0,
+    "height_m": 2,
+    "roof": "none",
+    "variant": "rock-promontory"
+   },
+   "facade": {
+    "material": "sandstone",
+    "accent": null,
+    "colours": [
+     "#b9a07c",
+     "#6f5a46",
+     "#d8cdb0"
+    ],
+    "roofColour": "#b9a07c",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "statue",
+     "count": 1,
+     "note": "Queen's Head hoodoo, neck about 1.25 m, about 1.7 m tall"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1,
+     "note": "rope barrier"
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "none",
+    "forecourt": "water"
+   },
+   "style": "vernacular",
+   "era": "natural (Miocene sandstone)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Yehliu_Geopark",
+     "what": "Queen's Head hoodoo likened to Queen Elizabeth I, neck ~125 cm, eroding; light and dark brown sandstone; promontory ~1.7 km into the sea in Wanli; mushroom/hoodoo stones, Fairy Shoe, Candlestick Rock"
+    }
+   ],
+   "notes": "Natural rock formation; the generator should place a small top-heavy mushroom-rock bust on a flat brown rock shelf with sea behind."
+  },
+  "taipei-osm-relation-4612518": {
+   "venueId": "taipei-osm-relation-4612518",
+   "city": "taipei",
+   "name": "Fu Hsing Kang College, National Defense University",
+   "archetype": "campus-block",
+   "subject": "A military college block in Beitou: a four-storey concrete teaching building with a central flag court",
+   "form": {
+    "footprint": "U",
+    "width_m": 90,
+    "depth_m": 40,
+    "storeys": 4,
+    "height_m": 16,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#d8d4c4",
+     "#9b8f7e",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1950s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/4612518",
+     "what": "college grounds 815 m x 649 m, wikidata Q5506838"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; campus extent measured only."
+  },
+  "taipei-osm-way-1197004281": {
+   "venueId": "taipei-osm-way-1197004281",
+   "city": "taipei",
+   "name": "Yes!Life Yulon City",
+   "archetype": "mall",
+   "subject": "Yes!Life Yulon City in Xindian: an eight-level mall opened 2023 in pale metal panels and glass",
+   "form": {
+    "footprint": "rect",
+    "width_m": 125,
+    "depth_m": 113,
+    "storeys": 8,
+    "height_m": 38,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e0ddd6",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "membrane",
+    "windows": "curtain",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "roof-terrace",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2023",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1197004281",
+     "what": "OSM commercial building, 8 levels, opened 2023-09-28, 125 m x 113 m, wikidata Q48927996"
+    }
+   ],
+   "notes": "Levels, opening date and footprint are OSM tags; cladding is estimated."
+  },
+  "taipei-osm-way-1329940449": {
+   "venueId": "taipei-osm-way-1329940449",
+   "city": "taipei",
+   "name": "天恩宮",
+   "archetype": "temple-asian",
+   "subject": "Tian-en Gong: a Taoist temple with a red-walled hall, orange-glazed tile roof with swallowtail ridge and dragon figures",
+   "form": {
+    "footprint": "rect",
+    "width_m": 57,
+    "depth_m": 33,
+    "storeys": 3,
+    "height_m": 18,
+    "roof": "hip",
+    "variant": "minnan-temple",
+    "wings": 2
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stone",
+    "colours": [
+     "#a8402f",
+     "#d8b04c",
+     "#d8c9a8"
+    ],
+    "roofColour": "#c9772f",
+    "roofMaterial": "clay-tile",
+    "windows": "screen",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 1,
+     "note": "swallowtail ridge with dragon figures"
+    },
+    {
+     "id": "colonnade",
+     "count": 1,
+     "note": "red columns and stone lions at entrance"
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "relief-pattern",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "east-asian",
+   "era": "20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1329940449",
+     "what": "OSM Taoist temple 57 m x 33 m, wikidata Q10001030"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; footprint measured; typical Minnan-style Taoist temple look assumed, not verified."
+  },
+  "taipei-osm-way-261330789": {
+   "venueId": "taipei-osm-way-261330789",
+   "city": "taipei",
+   "name": "台北海洋科技大學士林校區",
+   "archetype": "campus-block",
+   "subject": "A small maritime college campus block in Shilin: tile-clad concrete with ribbon windows",
+   "form": {
+    "footprint": "rect",
+    "width_m": 70,
+    "depth_m": 25,
+    "storeys": 5,
+    "height_m": 20,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "concrete",
+    "colours": [
+     "#d8cfc0",
+     "#6f7f8a",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/261330789",
+     "what": "campus 268 m x 223 m, wikidata Q5099770"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; campus extent measured only."
+  },
+  "taipei-osm-way-263590699": {
+   "venueId": "taipei-osm-way-263590699",
+   "city": "taipei",
+   "name": "Hsing Xiu Kong",
+   "archetype": "temple-asian",
+   "subject": "Hsing Xiu Kong: a large Guan Yu temple compound with a tall red hall, upswept orange-tile roofs and a forecourt plaza",
+   "form": {
+    "footprint": "rect",
+    "width_m": 60,
+    "depth_m": 40,
+    "storeys": 3,
+    "height_m": 24,
+    "roof": "hip",
+    "variant": "minnan-temple",
+    "wings": 2
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stone",
+    "colours": [
+     "#a8402f",
+     "#d8b04c",
+     "#d8c9a8"
+    ],
+    "roofColour": "#c9772f",
+    "roofMaterial": "clay-tile",
+    "windows": "screen",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 1
+    },
+    {
+     "id": "colonnade",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "statue",
+     "count": 2,
+     "note": "guardian lions"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "east-asian",
+   "era": "20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/263590699",
+     "what": "OSM Taoist temple grounds 250 m x 204 m, wikidata Q16926466"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; grounds extent measured; building form assumed typical."
+  },
+  "taipei-osm-way-287104550": {
+   "venueId": "taipei-osm-way-287104550",
+   "city": "taipei",
+   "name": "Huafan University",
+   "archetype": "campus-block",
+   "subject": "Huafan University: a hillside Buddhist-affiliated campus of white-walled blocks with grey-tile hip roofs in a Chinese palace idiom",
+   "form": {
+    "footprint": "rect",
+    "width_m": 80,
+    "depth_m": 28,
+    "storeys": 5,
+    "height_m": 22,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#e8e4d8",
+     "#9b8f7e",
+     "#a8402f"
+    ],
+    "roofColour": "#5f625f",
+    "roofMaterial": "clay-tile",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 2
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "pagoda-roof",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "east-asian",
+   "era": "1990",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/287104550",
+     "what": "university grounds 584 m x 462 m, wikidata Q5925062"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; extent measured; the Chinese-roof styling is from vague memory of the campus and is unverified."
+  },
+  "taipei-osm-way-354534871": {
+   "venueId": "taipei-osm-way-354534871",
+   "city": "taipei",
+   "name": "Shuang Ho Hospital, MOHW",
+   "archetype": "hospital",
+   "subject": "Shuang Ho Hospital in Zhonghe: a large modern teaching hospital tower on a broad podium",
+   "form": {
+    "footprint": "rect",
+    "width_m": 120,
+    "depth_m": 80,
+    "storeys": 14,
+    "height_m": 56,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e0dacb",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "2008",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/346405811",
+     "what": "OSM hospital building 125 m x 84 m, wikidata Q15902806"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; footprint measured; height guessed (opened around 2008)."
+  },
+  "taipei-osm-way-385941045": {
+   "venueId": "taipei-osm-way-385941045",
+   "city": "taipei",
+   "name": "Yingfeng Riverside Park",
+   "archetype": "park-landscape",
+   "subject": "Yingfeng Riverside Park: a long grassed riverside park with cycle paths, sports fields and floodwall steps along the Keelung River",
+   "form": {
+    "footprint": "rect",
+    "width_m": 400,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "flat",
+    "variant": "riverside-strip"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": null,
+    "colours": [
+     "#b5b8b6",
+     "#d8cfc0",
+     "#4f6a4a"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 3
+    },
+    {
+     "id": "pavilion",
+     "count": 2
+    },
+    {
+     "id": "floodlights",
+     "count": 6
+    },
+    {
+     "id": "fence-wall",
+     "count": 1,
+     "note": "concrete floodwall"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "water"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/385941045",
+     "what": "riverside park 2.69 km x 0.5 km, 52 ha, wikidata Q15932184"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; extent measured; furniture assumed."
+  },
+  "taipei-osm-way-396909006": {
+   "venueId": "taipei-osm-way-396909006",
+   "city": "taipei",
+   "name": "Taipei City Psychiatric Center (TCPC)",
+   "archetype": "hospital",
+   "subject": "Taipei City Hospital Songde Branch: a mid-rise hospital complex with tile-clad blocks around green yards",
+   "form": {
+    "footprint": "U",
+    "width_m": 90,
+    "depth_m": 45,
+    "storeys": 7,
+    "height_m": 28,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "painted-render",
+    "colours": [
+     "#d8cfc0",
+     "#8a9aa4",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1980s-2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/396909006",
+     "what": "hospital grounds 289 m x 252 m, wikidata Q15903734"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; extent measured; block form guessed."
+  },
+  "taipei-osm-way-456206409": {
+   "venueId": "taipei-osm-way-456206409",
+   "city": "taipei",
+   "name": "National Archives",
+   "archetype": "museum-theatre",
+   "subject": "National Archives of Taiwan: a ten-level near-square contemporary building in grey concrete and glass",
+   "form": {
+    "footprint": "rect",
+    "width_m": 88,
+    "depth_m": 87,
+    "storeys": 10,
+    "height_m": 45,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "exposed-concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#a9a9a4",
+     "#6f8896",
+     "#e6e6e2"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "membrane",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "podium",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "solar-panels",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2025",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/456206409",
+     "what": "OSM: 10 levels, 88 m x 87 m, architect Jiudian (九典聯合建築師事務所), start_date 2025-09-02, tourism=museum"
+    }
+   ],
+   "notes": "Levels, footprint, architect and date are OSM tags; materials and colours are estimated."
+  },
+  "taipei-osm-way-619916134": {
+   "venueId": "taipei-osm-way-619916134",
+   "city": "taipei",
+   "name": "國順公園",
+   "archetype": "park-landscape",
+   "subject": "Guoshun Park: a small neighbourhood pocket park between apartment blocks with a pavilion and playground",
+   "form": {
+    "footprint": "rect",
+    "width_m": 50,
+    "depth_m": 33,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": null,
+    "colours": [
+     "#b5b8b6",
+     "#d8cfc0",
+     "#4f6a4a"
+    ],
+    "roofColour": "#5f625f",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/619916134",
+     "what": "park 50 m x 33 m, wikidata Q109437921"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; extent measured only."
+  },
+  "taipei-osm-way-773559279": {
+   "venueId": "taipei-osm-way-773559279",
+   "city": "taipei",
+   "name": "三板橋",
+   "archetype": "park-landscape",
+   "subject": "Sanban Bridge viewpoint: a small stone bridge and lookout with a low bungalow beside a stream",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 40,
+    "depth_m": 30,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "concrete",
+    "colours": [
+     "#8d8a84",
+     "#b5b8b6",
+     "#4f6a4a"
+    ],
+    "roofColour": "#6e7f8c",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "arches",
+     "count": 1,
+     "note": "small bridge"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/909674980",
+     "what": "only a 22 m x 17 m bungalow is mapped at the venue"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; place not identified beyond its name (three-plank bridge); bridge and lookout are assumed."
+  },
+  "taipei-quiet-reflection": {
+   "venueId": "taipei-quiet-reflection",
+   "city": "taipei",
+   "name": "保坪宮",
+   "archetype": "temple-asian",
+   "subject": "Baoping Gong: a small Chinese folk-religion temple with a red hall, orange-glazed roof and swallowtail ridge",
+   "form": {
+    "footprint": "rect",
+    "width_m": 34,
+    "depth_m": 19,
+    "storeys": 2,
+    "height_m": 11,
+    "roof": "hip",
+    "variant": "minnan-temple"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stone",
+    "colours": [
+     "#a8402f",
+     "#d8b04c",
+     "#d8c9a8"
+    ],
+    "roofColour": "#c9772f",
+    "roofMaterial": "clay-tile",
+    "windows": "screen",
+    "windowRatio": 0.12
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 1
+    },
+    {
+     "id": "colonnade",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "relief-pattern",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "east-asian",
+   "era": "20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/242726461",
+     "what": "OSM temple, 34 m x 19 m, Chinese folk religion, wikidata Q109349226"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; footprint measured; typical look assumed."
+  },
+  "taipei-recreation": {
+   "venueId": "taipei-recreation",
+   "city": "taipei",
+   "name": "Floriculture Experiment Center",
+   "archetype": "park-landscape",
+   "subject": "Taipei Floriculture Experiment Center: flower beds and lawns with glasshouses and a low office block",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 250,
+    "depth_m": 150,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "gable",
+    "variant": "glasshouse-garden"
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "metal-cladding",
+    "colours": [
+     "#b9d0d4",
+     "#e6e6e2",
+     "#6f7f8a"
+    ],
+    "roofColour": "#c9d6d8",
+    "roofMaterial": "glass",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "features": [
+    {
+     "id": "sheds",
+     "count": 4,
+     "note": "glasshouses"
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "contemporary",
+   "era": "1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/8410958",
+     "what": "park outline 366 m x 234 m, wikidata Q10499981"
+    }
+   ],
+   "notes": "Typed from the Taipei city style; extent measured; glasshouses assumed from the centre's function."
+  },
+  "taipei-transit": {
+   "venueId": "taipei-transit",
+   "city": "taipei",
+   "name": "Taipower Building",
+   "archetype": "transport-station",
+   "subject": "Taipower Building metro station: street-level entrance pavilions to a two-level underground island-platform station",
+   "form": {
+    "footprint": "rect",
+    "width_m": 40,
+    "depth_m": 15,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "flat",
+    "variant": "underground-entrance"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#c4c4bf",
+     "#6f8896",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f8f",
+    "roofMaterial": "concrete",
+    "windows": "curtain",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 5,
+     "note": "five station exits"
+    },
+    {
+     "id": "signage-board",
+     "count": 2
+    },
+    {
+     "id": "flat-canopy",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1999-2000s (MRT Xindian line)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Taipower_Building_metro_station",
+     "what": "underground, concourse B1, platforms B2, one island platform, five exits"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/1540007773",
+     "what": "OSM transportation polygon 220 m x 78 m (station)"
+    }
+   ],
+   "notes": "The station is underground, so the visible model is entrance pavilions and stair exits; the Taipower Building itself is a nearby office block."
+  }
+ }
+}

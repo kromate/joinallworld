@@ -1,0 +1,130 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "masallacin-rimi-bauchi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1043304879",
+   "used": "small 11 x 9 m building at the site (containing match); modelled as the real 11 x 9 m footprint rotated 65 deg, with a small dome and a short minaret scaled to it"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json masallacin-rimi-bauchi",
+   "used": "cream and turquoise neighbourhood mosque, one minaret, pointed-arch windows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "bands": "#3f8f9a",
+    "plinth": 0.6,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8ccb0",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "on": "prayer-hall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "lantern": 0,
+    "finial": 1.2,
+    "colour": "#3f8f9a",
+    "drumColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -6.5,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "trim": "#3f8f9a",
+    "cap_colour": "#3f8f9a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    9,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; tiny real 11 m footprint with guessed dome and minaret"
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-node-3830429174",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/233206399",
+   "used": "name-matched footprint of the restaurant (256 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json",
+   "used": "thatched dining pavilion with timber walls on a laterite terrace beside a rock outcrop; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cdb68e",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#b59b60",
+    "material": "thatch",
+    "overhang": 1.2,
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 3.2,
+    "height": 2.6,
+    "thatch": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1,
+    "colour": "#7a4a2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -22,
+     -8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     22,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: thatch pavilion shape from the OSM outline only; rock outcrop and terrace not modelled."
+ }
+}

@@ -1,0 +1,661 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "gusau-central-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gusau_Central_Market_0026.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abubakar Yusuf Gusau",
+   "view": "front",
+   "file": "/tmp/places-evidence/gusau/gusau-central-market-0.jpg",
+   "used": "two-storey ochre-yellow market office block: ground loggia with round arches, upper balconies with red railings, pink projecting entrance bay with lattice screen, low-pitched corrugated roof with red fascia, rough block boundary wall and timber stalls in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gusau_Central_Market_0027.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abubakar Yusuf Gusau",
+   "view": "front",
+   "used": "second view of the same block, plank stalls and laterite street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1201137659",
+   "used": "main block outline (about 39 x 11 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     10.8,
+     11.3
+    ]
+   },
+   "at": [
+    -13.95,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc27a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 1.2,
+      "storeys": 1
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": "upper",
+      "depth": 1.2,
+      "width": 2.4,
+      "every": 3.6,
+      "rail": 1.05,
+      "railKind": "glass",
+      "colour": "#d9c07a",
+      "railColour": "#9a2f28"
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#8f2f2c",
+      "height": 0.4,
+      "at": -0.4,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 8,
+    "colour": "#9a2f2b",
+    "material": "corrugated",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     22.85,
+     11.3
+    ]
+   },
+   "at": [
+    7.925,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc27a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.85,
+      "depth": 1.2,
+      "storeys": 1
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": "upper",
+      "depth": 1.2,
+      "width": 2.4,
+      "every": 3.6,
+      "rail": 1.05,
+      "railKind": "glass",
+      "colour": "#d9c07a",
+      "railColour": "#9a2f28"
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#8f2f2c",
+      "height": 0.4,
+      "at": -0.4,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 8,
+    "colour": "#9a2f2b",
+    "material": "corrugated",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     4.6,
+     1.4
+    ]
+   },
+   "at": [
+    -6.1,
+    -5.9
+   ],
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9786a",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.35,
+       0.35
+      ],
+      "colours": [
+       "#b8685a",
+       "#d98e7e"
+      ],
+      "mode": "checker",
+      "gap": 0.06,
+      "proud": 0.06,
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5675a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-canopy",
+   "footprint": {
+    "rect": [
+     5.4,
+     2.2
+    ]
+   },
+   "at": [
+    -6.1,
+    -6.5
+   ],
+   "z0": 3.8,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5675a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f2f2c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch0",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.4
+    ]
+   },
+   "at": [
+    -7.8999999999999995,
+    -5.9
+   ],
+   "z0": 9.4,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9786a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9786a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch1",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.4
+    ]
+   },
+   "at": [
+    -6.1,
+    -5.9
+   ],
+   "z0": 9.4,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9786a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9786a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch2",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.4
+    ]
+   },
+   "at": [
+    -4.3,
+    -5.9
+   ],
+   "z0": 9.4,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9786a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9786a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 3.5,
+    "colour": "#a39a86"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6.1,
+    -6.7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.5,
+    "bottom": 8.6,
+    "colour": "#e6e0c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall0",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.6
+    ]
+   },
+   "at": [
+    -22,
+    -15
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a87d4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#7d6a50",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacks0",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    -19.8,
+    -15.3
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b59a6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall1",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.6
+    ]
+   },
+   "at": [
+    -16,
+    -16
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a87d4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#7d6a50",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacks1",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    -13.8,
+    -16.3
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b59a6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall2",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.6
+    ]
+   },
+   "at": [
+    -1,
+    -15
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a87d4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#7d6a50",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacks2",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    1.2000000000000002,
+    -15.3
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b59a6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall3",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.6
+    ]
+   },
+   "at": [
+    5,
+    -16.5
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a87d4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#7d6a50",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacks3",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    7.2,
+    -16.8
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b59a6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a6e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall4",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.6
+    ]
+   },
+   "at": [
+    14,
+    -15
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a87d4e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#7d6a50",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sacks4",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.9
+    ]
+   },
+   "at": [
+    16.2,
+    -15.3
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b59a6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a6e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     26,
+     -12
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -34,
+     -14
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is now a low hip with red fascia, split wings, open-rail balconies, tower with stepped parapet; tower lattice is a checker panel not a true lattice, glass rails read blue, stalls are simple plank boxes, sacks and block wall approximate"
+ }
+}

@@ -1,0 +1,421 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ingagi_mu_mujyi_wa_Kigali.jpg",
+   "licence": "CC0",
+   "author": "EmmysonB",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/hall1.jpg",
+   "used": "ochre curved central drum of six storeys with clock block on the roof, recessed glazed spine, dark glass wings either side, roundabout with a black gorilla statue in front, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1st_Night_2022_Kigali_City_Hall,_Rwanda_(1)_Hanukkah_awareness_campaign.jpg",
+   "licence": "see Commons",
+   "author": "Chabad Rwanda",
+   "view": "side",
+   "used": "confirmed ochre drum with glass wing and stepped terraces on the plaza side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/911466828",
+   "used": "site extent and 95 x 50 m overall size; the tagged outline is a fragmented wing complex, so masses follow the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 44,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     44,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dca43c",
+    "windows": "punched",
+    "windowRatio": 0.13,
+    "bay": 7.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.6,
+    "windowShape": "rect",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08a40",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-spine",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6c7d",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#2d5a70",
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a7a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-block",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 27.4,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dca43c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08a40",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    -38,
+    17
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f7f86",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 16,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "glassColour": "#2f8a8f",
+    "bands": "#e0b24c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     28,
+     22
+    ]
+   },
+   "at": [
+    38,
+    17
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f7f86",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 16,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "curtain"
+    },
+    "glassColour": "#2f8a8f",
+    "bands": "#e0b24c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    32
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9a03a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "oval": true,
+    "kind": "oval",
+    "size": [
+     44.4,
+     30.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 25.2,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6c7d",
+    "windows": "none",
+    "windowRatio": 0.8,
+    "glassColour": "#2d5a70"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b08a40",
+    "parapet": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bowl-wall",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "n": 28,
+    "radius": 11,
+    "height": 0.9,
+    "colour": "#8a8a86",
+    "topColour": "#8a8a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bowl",
+   "at": [
+    0,
+    -36,
+    0.9
+   ],
+   "params": {
+    "n": 28,
+    "radius": 9.6,
+    "height": 0.05,
+    "colour": "#7fa05a",
+    "topColour": "#6d9a4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    -36,
+    0.95
+   ],
+   "params": {
+    "n": 28,
+    "radius": 10.2,
+    "height": 0.1,
+    "colour": "#1c1c1c",
+    "topColour": "#eeeeee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stat-plinth",
+   "at": [
+    0,
+    -36,
+    1.0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 3.4,
+    "height": 1.4,
+    "colour": "#6e6a62",
+    "topColour": "#6e6a62"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "id": "gorilla",
+   "at": [
+    0,
+    -36,
+    2.4
+   ],
+   "params": {
+    "height": 3.4,
+    "pose": "stand",
+    "colour": "#16161a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -24
+    ],
+    "height": 6
+   },
+   {
+    "kind": "palm",
+    "at": [
+     7,
+     -24
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Drum is a flat-faced oval, not a tall convex arc with curved cornice; wings are not visibly set back from the drum in the front view; roundabout is a flat bowl with a small figure (no stone retaining wall, no agave planting, no clock face) because the triangle budget was spent on windows."
+ }
+}

@@ -1,0 +1,196 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "st-monicas-church",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "nothing public about this building: broad gabled nave, separate square bell tower, arched porch, as typed in the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebde",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5.5,
+     5.5
+    ]
+   },
+   "at": [
+    -15,
+    -4
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebde",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "bands": "#9a5a3c"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfcb",
+    "windows": "none",
+    "bands": "#9a5a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence of this building exists; typical parish church from the brief (nave, tower, porch), OSM nearest match was an unrelated 33 m2 hut."
+ }
+}

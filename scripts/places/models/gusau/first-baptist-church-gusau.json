@@ -1,0 +1,269 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json#first-baptist-church-gusau",
+   "used": "older Baptist church: gabled brick-and-render hall, small entrance porch, short square tower; era assumed mid 20th century (low confidence, no description, no photo found on Commons or Wikidata)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1213473356",
+   "used": "nearest match 40 m away, 43 x 16 m diagonal building; rejected as outline (too far to trust), only the plot size was considered"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; hall, porch and short tower are typed from the brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede4cf",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "plinth": 1.1,
+    "bands": "#9a5a3a",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b3f30",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede4cf",
+    "windows": "none",
+    "plinth": 0.6,
+    "bands": "#9a5a3a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b3f30",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.4,
+     4.4
+    ]
+   },
+   "at": [
+    -4.6,
+    -7.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 1.2,
+    "bands": "#9a5a3a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b3f30",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    11,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8643f",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b3f30",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.2,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "rise": 0.7,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#d8cfba"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#d8cfba",
+    "leafColour": "#2f3a44"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 2,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d8cfba"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.5,
+    "bottom": 1.2,
+    "colour": "#ede4cf",
+    "frameColour": "#7b3f30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 7,
+    "count": 2,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   64,
+   72
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "first-baptist-church-gusau"
+}

@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "flower-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo found for this place; the only OSM building nearby is a 68 m2 shed 29 m away, not used. Composed from the brief (formal gridded beds, fountain, central pavilion, palms)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 40,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; formal cross-axial layout, fountain court, pavilion, bed colours and palms are from the brief and unverified."
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 24,
+    "border": 1.0,
+    "colour": "#e3dcc8",
+    "border_colour": "#b9a98f"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -44
+     ],
+     [
+      0,
+      -12
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#e3dcc8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      44
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#e3dcc8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -50,
+      0
+     ],
+     [
+      -12,
+      0
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#e3dcc8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      12,
+      0
+     ],
+     [
+      50,
+      0
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#e3dcc8"
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -28,
+    -22,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 5,
+    "colours": [
+     "#b05a8a",
+     "#e0a030",
+     "#c4402f",
+     "#7a4ea0"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -28,
+    22,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 5,
+    "colours": [
+     "#e0a030",
+     "#c4402f",
+     "#7a4ea0",
+     "#b05a8a"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    28,
+    -22,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 5,
+    "colours": [
+     "#c4402f",
+     "#7a4ea0",
+     "#b05a8a",
+     "#e0a030"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    28,
+    22,
+    0
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 5,
+    "colours": [
+     "#7a4ea0",
+     "#b05a8a",
+     "#e0a030",
+     "#c4402f"
+    ]
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 7,
+    "height": 4,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 6,
+    "colour": "#efe8d6",
+    "cap_colour": "#2f6b4f",
+    "floor_colour": "#d9d2bc"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 4,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -41,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.4,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    44,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 88,
+    "height": 1.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    50,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 88,
+    "height": 1.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ }
+}

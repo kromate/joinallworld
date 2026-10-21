@@ -1,0 +1,370 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DakarSandaga.jpg",
+   "licence": "Public domain",
+   "author": "Ji-Elle",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dakar/b5-sand1.jpg",
+   "used": "sandy-ochre concrete walls, perforated breeze-block screens in grid panels, crenellated parapets, taller central block with pale blue-green panel and star motif, low shopfront ground floor under awnings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:March%C3%A9_Sandaga_%C3%A0_Dakar.JPG",
+   "licence": "CC0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/dakar/b5-sand2.jpg",
+   "used": "ironwork gateway bay, perforated screens flanking, stepped parapet with X lattice, stalls with awnings crowding the street edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43720257",
+   "used": "footprint, name-quality match, 107 x 80 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "OSM outline is a wedge so the plan differs from the photo; breeze-block lattice and crenellations only approximated by panels; star emblem not drawn; roof is a flat slab with low pitched stand-ins rather than a courtyard"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a07f",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "rect",
+      "bay": 5,
+      "opening": 0.75,
+      "height": 0.8,
+      "depth": 0.5,
+      "storeys": 1,
+      "colour": "#2d2a28",
+      "pierColour": "#d4a77a"
+     },
+     {
+      "type": "panels",
+      "size": [
+       2.4,
+       2.4
+      ],
+      "colours": [
+       "#cfae8c",
+       "#a98a68",
+       "#d8b995"
+      ],
+      "weights": [
+       4,
+       2,
+       2
+      ],
+      "mode": "random",
+      "slits": {
+       "fraction": 0.7,
+       "colour": "#3a3128"
+      },
+      "skipGround": true,
+      "proud": 0.12
+     },
+     {
+      "type": "bands",
+      "colour": "#b98f6e",
+      "at": 8.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a07f",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 9,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a07f",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.2,
+       3
+      ],
+      "colours": [
+       "#cfae8c",
+       "#a9c5c0",
+       "#9a8268"
+      ],
+      "weights": [
+       5,
+       1,
+       1
+      ],
+      "mode": "random",
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#3a3128"
+      }
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a58c",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.4
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "z0": 11,
+    "height": 7,
+    "colour": "#a9d0ca",
+    "topColour": "#a9d0ca"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 4,
+    "colour": "#a9c5c0",
+    "frameColour": "#7d6a58"
+   }
+  },
+  {
+   "type": "mass",
+   "at": [
+    -12,
+    -6
+   ],
+   "z0": 19,
+   "footprint": {
+    "rect": [
+     3.5,
+     3.5
+    ]
+   },
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a07f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f6e",
+    "parapet": 0.5
+   },
+   "id": "turret0",
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "at": [
+    12,
+    -6
+   ],
+   "z0": 19,
+   "footprint": {
+    "rect": [
+     3.5,
+     3.5
+    ]
+   },
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a07f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f6e",
+    "parapet": 0.5
+   },
+   "id": "turret1",
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -13,
+    -12.2,
+    19
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.6,
+    "thickness": 0.6,
+    "colour": "#c9a07f"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -13,
+    -0.2,
+    19
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.6,
+    "thickness": 0.6,
+    "colour": "#c9a07f"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 3,
+    "dx": 14,
+    "dy": 12,
+    "centred": true,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       10,
+       8
+      ]
+     },
+     "z0": 10.4,
+     "height": 0.8,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#8c8f8e",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "gable",
+      "colour": "#8a6a52",
+      "pitch": 20
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "rotDeg": -35,
+   "params": {
+    "count": 12,
+    "pitch": 3,
+    "kind": "awning",
+    "colours": [
+     "#d8c36a",
+     "#c0583a",
+     "#4a8a6a",
+     "#e9e1cf",
+     "#3a6aa0"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "rotDeg": -35,
+   "params": {
+    "count": 12,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#c0583a",
+     "#d8c36a",
+     "#e9e1cf"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   120
+  ]
+ }
+}

@@ -1,0 +1,495 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aminu_Kano_International_Airport_Kano.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Solasly",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/airport1.jpg",
+   "used": "landside glass terminal front: dark curtain glazing, white fascia band with two red cladding blocks and a louvre vent, grey cladded end towers, black and white kerb, name band (modelled blank)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Overview_of_Kano_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Javy010",
+   "view": "aerial",
+   "used": "setting: terminal between runways, control tower, domestic terminal beside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/162007867",
+   "used": "overall extent only (about 165 m x 52 m, nearest-quality match, outline not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     70,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#0b0d0f",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9da0",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -15.6
+   ],
+   "params": {
+    "rect": [
+     68,
+     1.6
+    ],
+    "z0": 8.4,
+    "height": 4.4,
+    "colour": "#eceded",
+    "topColour": "#eceded"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-l",
+   "at": [
+    -18.5,
+    -17.0
+   ],
+   "params": {
+    "rect": [
+     15,
+     2.2
+    ],
+    "z0": 8.8,
+    "height": 3.6,
+    "colour": "#c8242b",
+    "topColour": "#c8242b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-r",
+   "at": [
+    18.5,
+    -17.0
+   ],
+   "params": {
+    "rect": [
+     15,
+     2.2
+    ],
+    "z0": 8.8,
+    "height": 3.6,
+    "colour": "#c8242b",
+    "topColour": "#c8242b"
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "tower",
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d8d4c8",
+    "bandColour": "#c8242b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "domestic",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    60,
+    4
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "overhang": 1,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "dom-canopy",
+   "at": [
+    60,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 20,
+    "depth": 6,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#bdbdb8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     9,
+     32
+    ]
+   },
+   "at": [
+    -39.5,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3d41",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colours": [
+       "#34373b",
+       "#45484c",
+       "#3b3e42"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6d70",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-l-plant",
+   "at": [
+    -39.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 13.5,
+    "height": 1.8,
+    "colour": "#a0a3a6",
+    "topColour": "#a0a3a6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     9,
+     32
+    ]
+   },
+   "at": [
+    39.5,
+    0
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3a3d41",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "colours": [
+       "#34373b",
+       "#45484c",
+       "#3b3e42"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6d70",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-r-plant",
+   "at": [
+    39.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     5
+    ],
+    "z0": 13.5,
+    "height": 1.8,
+    "colour": "#a0a3a6",
+    "topColour": "#a0a3a6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "vent-slats",
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -16.5,
+     9.2
+    ],
+    "end": [
+     0,
+     -16.5,
+     11.6
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       11,
+       0.5
+      ],
+      "z0": 0,
+      "height": 0.14,
+      "colour": "#c4c7ca",
+      "topColour": "#c4c7ca"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "kerb",
+   "params": {
+    "mode": "line",
+    "start": [
+     -33,
+     -18.6
+    ],
+    "end": [
+     33,
+     -18.6
+    ],
+    "count": 34,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 0,
+      "height": 0.3,
+      "colour": "#f0f0f0",
+      "topColour": "#f0f0f0"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "kerb-dark",
+   "params": {
+    "mode": "line",
+    "start": [
+     -32,
+     -18.6
+    ],
+    "end": [
+     32,
+     -18.6
+    ],
+    "count": 33,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "z0": 0,
+      "height": 0.32,
+      "colour": "#18191b",
+      "topColour": "#18191b"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "letters",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -16.5,
+     12.9
+    ],
+    "end": [
+     30,
+     -16.5,
+     12.9
+    ],
+    "count": 34,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       0.4
+      ],
+      "z0": 0,
+      "height": 1.5,
+      "colour": "#1a1c1e",
+      "topColour": "#1a1c1e"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -26
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Kerb stripes, letter band and louvre slats are LOD0 detail too small to read at the wide camera; glazing darker and towers panelled; rooftop plant units small; no steel corner frames."
+ }
+}

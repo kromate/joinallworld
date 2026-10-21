@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/377333389",
+   "used": "real hospital campus outline (418 m x 376 m, auto-fitted to the 118 m scene) as the campus ground; pavilions arranged within it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b48e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb797"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-ward",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "overhang": 0.5,
+    "parapet": 0.2
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -30,
+    -12
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "overhang": 0.5,
+    "parapet": 0.2
+   },
+   "rotDeg": 12
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    28,
+    -18
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bb",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "overhang": 0.5,
+    "parapet": 0.2
+   },
+   "rotDeg": 12
+  },
+  {
+   "type": "mass",
+   "id": "outpatient",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -18,
+    26
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd3b4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "overhang": 0.5,
+    "parapet": 0.2
+   },
+   "rotDeg": 10
+  },
+  {
+   "type": "mass",
+   "id": "theatre",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    30,
+    22
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6e0d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "overhang": 0.5,
+    "parapet": 0.2
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -12,
+    -2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 34,
+    "depth": 3,
+    "height": 3.2,
+    "columns": 6,
+    "colour": "#b5b0a6"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -40,
+    25,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the buildings exists: only the campus outline is real; the pavilion positions, heights and colours are plausible guesses from the brief."
+ }
+}

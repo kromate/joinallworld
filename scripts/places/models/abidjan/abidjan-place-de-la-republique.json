@@ -1,0 +1,460 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-place-de-la-republique",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Place_de_la_r%C3%A9publique_-_Abidjan_-_2023_-_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anass Sedrati",
+   "view": "street",
+   "file": "/tmp/places-evidence/abidjan/place-de-la-republique-0.jpg",
+   "used": "the actual square is a landscaped traffic island: one tall slim grey-brown concrete stele on a stepped base with cup-like carved corner pods, low hedge ring and lawn, multicolour tile kerb band, palms, wide asphalt road around (not a paved plaza as the brief guessed)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Place_de_la_r%C3%A9publique_-_Abidjan_-_2023_-_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anass Sedrati",
+   "view": "street",
+   "file": "/tmp/places-evidence/abidjan/place-de-la-republique-1.jpg",
+   "used": "stele proportion (about 25 m, strongly slim), flagpole with the national flag, tree-lined road behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/62380367",
+   "used": "island outline (78 x 65 m teardrop)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "island",
+   "footprint": {
+    "osm": true,
+    "fit": 70
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b8b5ab",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3c",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "height": 0.6,
+    "colour": "#7c766b",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "height": 0.6,
+    "colour": "#847e73",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    1.7
+   ],
+   "params": {
+    "colour": "#6a645a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       6
+      ]
+     },
+     {
+      "z": 4.8,
+      "rect": [
+       5.4,
+       5.4
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.7
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.9,
+    "count": 4,
+    "startDeg": 45,
+    "endDeg": 315,
+    "facing": "outward",
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#5a554c",
+      "profile": [
+       [
+        0.5,
+        0
+       ],
+       [
+        1.0,
+        0.8
+       ],
+       [
+        1.3,
+        2.0
+       ],
+       [
+        1.5,
+        3.0
+       ],
+       [
+        1.2,
+        3.0
+       ],
+       [
+        0.5,
+        2.4
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    6.9
+   ],
+   "params": {
+    "colour": "#6a645a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 30,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 30.4,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.12,
+    8
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.12
+    ],
+    "height": 22,
+    "colour": "#575147",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 14,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#b8442f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 14.6,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#2f5fa8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.2
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 15.2,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#c7873f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      0.8
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 12,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xy"
+    },
+    "closed": true,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 25,
+    "count": 5,
+    "startDeg": 30,
+    "endDeg": 330,
+    "facing": "outward",
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#ee8a2a",
+    "colours": [
+     "#ee8a2a",
+     "#ffffff",
+     "#1f9a52"
+    ],
+    "count": 1,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.2,
+    "bottom": 2.2,
+    "colour": "#2f6b4a",
+    "frameColour": "#d6d3c9"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stele slimmer and lighter than photo, pods simplified, hedge ring and tile kerb are flat rings, asphalt darker than real road, no billboards or street furniture beyond flag and sign board."
+ }
+}

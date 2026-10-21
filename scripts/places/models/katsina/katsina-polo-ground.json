@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "katsina-polo-ground",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/250627793",
+   "used": "real park outline (384 x 292 m, 9.9 ha) scaled by 0.42 to fit the model limits, as the sand field and perimeter fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Filin_Polo_Gate_in_Katsina_State.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anasskoko",
+   "view": "street",
+   "file": "/tmp/places-evidence/katsina/polo_gate.jpg",
+   "used": "the ground's entrance gate: yellow concrete lintel gate, stepped end walls, small dome on the lintel, open pier to the left, brick-infilled wing to the right. Only the gate is photographed, not the field"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -49.595,
+      -9.709999999999999
+     ],
+     [
+      -42.879999999999995,
+      71.72
+     ],
+     [
+      45.35,
+      62.115
+     ],
+     [
+      58.355,
+      -58.5
+     ],
+     [
+      -40.5,
+      -65.64
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#8b9858",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60.7,
+      -12.6
+     ],
+     [
+      -52.8,
+      83.2
+     ],
+     [
+      51.0,
+      71.9
+     ],
+     [
+      66.3,
+      -70.0
+     ],
+     [
+      -50.0,
+      -78.4
+     ],
+     [
+      -60.7,
+      -12.6
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#e8dfc8",
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -46,
+     45
+    ],
+    "end": [
+     -46,
+     5
+    ],
+    "rows": 9,
+    "seatColour": "#8f6b4a",
+    "seatColours": [
+     "#8f6b4a",
+     "#e8dfc8"
+    ],
+    "blocks": 4,
+    "canopy": {
+     "height": 6.5,
+     "depth": 8,
+     "colour": "#a8a29a",
+     "colour2": "#a8a29a",
+     "supports": 5
+    },
+    "backWall": 1.0,
+    "under": "solid",
+    "concreteColour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -42,
+    50,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-left",
+   "footprint": {
+    "rect": [
+     3.0,
+     2.4
+    ]
+   },
+   "at": [
+    4.6,
+    -74
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b53c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6b53c"
+   },
+   "rotDeg": 4
+  },
+  {
+   "type": "mass",
+   "id": "gate-right",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.4
+    ]
+   },
+   "at": [
+    11.5,
+    -74
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b53c",
+    "windows": "none",
+    "pattern": {
+     "type": "bands",
+     "colour": "#b99a3a",
+     "height": 0.3,
+     "at": 0.1
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6b53c"
+   },
+   "rotDeg": 4
+  },
+  {
+   "type": "mass",
+   "id": "gate-lintel",
+   "footprint": {
+    "rect": [
+     9.6,
+     2.4
+    ]
+   },
+   "at": [
+    8,
+    -74
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6b53c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6b53c",
+    "parapet": 0.0
+   },
+   "z0": 2.9,
+   "rotDeg": 4
+  },
+  {
+   "type": "mass",
+   "id": "gate-wing",
+   "footprint": {
+    "rect": [
+     4.0,
+     2.0
+    ]
+   },
+   "at": [
+    15.5,
+    -73.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a7850"
+   },
+   "rotDeg": 4
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    8,
+    -73.8,
+    3.9
+   ],
+   "params": {
+    "radius": 1.5,
+    "height": 0.9,
+    "colour": "#c8b88a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 10,
+    "count": 4,
+    "kind": "acacia"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the entrance gate is photographed; field outline scaled by 0.42 to fit limits; grandstand typed"
+ }
+}

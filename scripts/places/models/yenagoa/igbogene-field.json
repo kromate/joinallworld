@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "igbogene-field",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/908895940",
+   "used": "real park outline (name match, 1.6 ha, elongated irregular grass field)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#igbogene-field",
+   "used": "open grassy field, goalposts, small sheds, palm shade; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "field",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6e8f5a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e8f5a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "stadium/football-pitch",
+   "at": [
+    12,
+    -2,
+    0.5
+   ],
+   "rotDeg": 45,
+   "params": {
+    "length": 70,
+    "width": 42,
+    "stripes": 6,
+    "markings": false,
+    "goals": true
+   }
+  },
+  {
+   "type": "hospital/shed-shelter",
+   "at": [
+    -45,
+    -55,
+    0
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 7,
+    "depth": 4,
+    "height": 2.6,
+    "colour": "#d8d0b8",
+    "roofColour": "#8c9096"
+   }
+  },
+  {
+   "type": "hospital/shed-shelter",
+   "at": [
+    60,
+    40,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 2.5,
+    "colour": "#d8d0b8",
+    "roofColour": "#6e5a4a"
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    -25,
+    -70,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "stadium/floodlight-mast",
+   "at": [
+    80,
+    40,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 10,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    70,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 8,
+    "line": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo found; OSM park outline used. Pitch, sheds and masts positions are plausible, not observed."
+ }
+}

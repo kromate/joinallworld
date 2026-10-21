@@ -1,0 +1,279 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/maputo.json#maputo-mafalala-market",
+   "used": "brief: low brick-and-render municipal hall with corrugated gable roof and louvres, trading spilling outside; OSM building is a 4.6 m stub so only the ~4900 m2 market area size is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c98a62",
+    "glassColour": "#3a4046",
+    "windows": "louvre",
+    "windowRatio": 0.18,
+    "bay": 6,
+    "plinth": 0.5,
+    "bands": "#f4f1ea"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 2.6,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -26,
+    14
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b98a",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 3.2,
+    "height": 3.0,
+    "roof": "shed",
+    "shutter_colours": [
+     "#2f6aa6",
+     "#c76f4f",
+     "#4a8a5a"
+    ],
+    "wall_colour": "#d9b98a",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -1.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "colours": [
+     "#c76f4f",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    10,
+    -1.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2,
+    "colours": [
+     "#2f6aa6",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#c76f4f",
+     "#2f6aa6",
+     "#d9b43a",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -18,
+    -25,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c76f4f",
+     "#2f6aa6",
+     "#d9b43a",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "shed",
+    "roof_colour": "#9a5a43"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -36,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      -32
+     ],
+     [
+      45,
+      -32
+     ],
+     [
+      45,
+      28
+     ],
+     [
+      -45,
+      28
+     ],
+     [
+      -45,
+      -32
+     ]
+    ],
+    "height": 1.6,
+    "colour": "#e8e0cf",
+    "thickness": 0.3
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this market found; layout, hall size and colours are typical for Maputo municipal markets (brief confidence low)."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-mafalala-market"
+}

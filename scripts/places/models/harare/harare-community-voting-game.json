@@ -1,0 +1,839 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/25821085",
+   "used": "real park outline (name match, 165 x 146 m, bearing 13.6 deg off the grid): lawn, diagonal and axial walks follow it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Harare_Africa_Unity_1992.jpg",
+   "licence": "Public domain",
+   "author": "Rob Worsnop",
+   "view": "street",
+   "file": "/tmp/places-evidence/harare/square92.jpg",
+   "used": "large circular fountain basin with a dark stone rim and red metal railing, many jets, brick-paved plaza, tall palms, cypress/conifers and broadleaf shade trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1997_Harare_Zimbabwe_3140056352.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "street",
+   "file": "/tmp/places-evidence/harare/square97.jpg",
+   "used": "surrounding ring of cream, pink and glass office blocks of 5 to 10 storeys and a taller glass tower beyond; avenue trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a ground-level view of the fountain only, so the comparison checks the fountain, palms and trees; heights and facades of the ring blocks are estimated; 1990s statues, railing detail and pavers omitted"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 0.55
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a54",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a54",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -29.19,
+      -50.23
+     ],
+     [
+      25.22,
+      52.34
+     ],
+     [
+      29.19,
+      50.23
+     ],
+     [
+      -25.22,
+      -52.34
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#bda78f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -46.35,
+      35.03
+     ],
+     [
+      48.92,
+      -31.33
+     ],
+     [
+      46.35,
+      -35.03
+     ],
+     [
+      -48.92,
+      31.33
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#bda78f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      8.27,
+      -42.7
+     ],
+     [
+      -12.16,
+      41.76
+     ],
+     [
+      -8.27,
+      42.7
+     ],
+     [
+      12.16,
+      -41.76
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#bda78f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      -37.89,
+      -7.11
+     ],
+     [
+      36.95,
+      11.0
+     ],
+     [
+      37.89,
+      7.11
+     ],
+     [
+      -36.95,
+      -11.0
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#bda78f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "radius": 13,
+    "n": 16,
+    "height": 0.14,
+    "colour": "#bda78f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "radius": 9.4,
+    "n": 16,
+    "height": 0.8,
+    "colour": "#5a4a3e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.4
+   ],
+   "params": {
+    "radius": 8.6,
+    "n": 16,
+    "height": 0.08,
+    "colour": "#8fbac8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 9.7,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 24,
+    "lod1Step": 20,
+    "lod2Step": 20,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.18,
+       0.18
+      ],
+      "height": 1.2,
+      "colour": "#b8362e",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    1.4
+   ],
+   "params": {
+    "colour": "#e8f2f6",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.8
+     },
+     {
+      "z": 4,
+      "circle": 0.5
+     },
+     {
+      "z": 8,
+      "circle": 0.25
+     },
+     {
+      "z": 9,
+      "circle": 0.05
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.4
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 5,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#dcebf0",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.5
+       },
+       {
+        "z": 3,
+        "circle": 0.3
+       },
+       {
+        "z": 5,
+        "circle": 0.04
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24.88,
+    -9.42,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16.81,
+    0.67,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16.81,
+    -0.67,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24.88,
+    9.42,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22.99,
+    -40.64,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8.28,
+    -35.95,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24.06,
+    -29.26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    38.51,
+    -23.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -39.02,
+    25.64,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -23.54,
+    27.13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8.28,
+    35.95,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22.99,
+    40.64,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12.16,
+    -19.92,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    19.92,
+    -12.16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -19.92,
+    12.16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12.16,
+    19.92,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -13.31,
+    3.57,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11.54,
+    -8.45,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10.33,
+    9.95,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 12
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -5.52,
+    -23.97,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.6,
+    "colour": "#c2392f",
+    "hedge": true
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    15.86,
+    -18.8,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.6,
+    "colour": "#d9a02a",
+    "hedge": true
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -15.86,
+    18.8,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.6,
+    "colour": "#d9a02a",
+    "hedge": true
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    5.52,
+    23.97,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "depth": 2.6,
+    "colour": "#c2392f",
+    "hedge": true
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14.92,
+    -31.9,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    27.85,
+    -21.56,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -27.85,
+    21.56,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    14.92,
+    31.9,
+    0.5
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "mass",
+   "id": "n-block",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    -12.29,
+    50.78
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d0bc",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#d9d0bc",
+       "#a39d90"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88"
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "mass",
+   "id": "s-block",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    12.03,
+    -49.72
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc7b3",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#cfc7b3",
+       "#a39d90"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88"
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "mass",
+   "id": "e-block",
+   "footprint": {
+    "rect": [
+     12,
+     60
+    ]
+   },
+   "at": [
+    43.61,
+    16.21
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b9b4a8",
+       "#a39d90"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88"
+   },
+   "rotDeg": 13.6
+  },
+  {
+   "type": "mass",
+   "id": "w-block",
+   "footprint": {
+    "rect": [
+     10,
+     56
+    ]
+   },
+   "at": [
+    -43.87,
+    -15.14
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0d6c0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e0d6c0",
+       "#a39d90"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88"
+   },
+   "rotDeg": 13.6
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-community-voting-game"
+}

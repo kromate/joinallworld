@@ -1,0 +1,1581 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "hargeisa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "hargeisa",
+    "climate": "desert",
+    "vernacular": "High (1,334 m) hot semi-arid valley city rebuilt since the 1988 bombing: one-to-three storey flat-roofed concrete and stone-block buildings rendered in pale green, blue, cream and ochre, tall boundary walls with painted steel gates, corrugated iron roofs on houses, older stone houses in the centre, and new multi-storey diaspora-funded shops and hotels; wide dusty streets and acacia trees.",
+    "wallColours": [
+      "#b9d3c0",
+      "#a9c4d6",
+      "#e8dfc8",
+      "#d6c3a0",
+      "#c9b08a",
+      "#f0ede4",
+      "#9bb7b0"
+    ],
+    "roofColours": [
+      "#8a5a44",
+      "#6e7f8a",
+      "#a3a69f",
+      "#7a4a3a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "none"
+    ],
+    "ornament": "Arched windows and doorways with Arab-Islamic detailing on mosques and houses; painted steel gates and shutters in bright colours; wall murals and shop-front lettering boards; tall compound walls; green-and-white mosque domes with slender minarets; flag colours of Somaliland (green, white, red) on memorials.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Hargeisa",
+        "what": "single-storey downtown giving way to high-rises; stone houses from late 1800s; rebuilt after the war; pale green and blue plaster walls; hot semi-arid climate at 1,334 m in the Ogo highlands valley"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hargeisa_War_Memorial",
+        "what": "MiG memorial in Freedom Square; pale green and blue plaster walls of the city"
+      }
+    ]
+  },
+  "places": {
+    "hargeisa-airport-hargeisa-airport": {
+      "venueId": "hargeisa-airport-hargeisa-airport",
+      "city": "hargeisa",
+      "name": "Egal International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Egal International Airport terminal: a modest two-level terminal enlarged and reopened in 2013, with a tower and wind turbines nearby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ede4",
+          "#a9c4d6",
+          "#8a8f94"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "windmill",
+          "count": 5,
+          "note": "five wind turbines added 2013, placed apart from the terminal"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1954 (enlarged 2013)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Egal_International_Airport",
+          "what": "opened 1954 by the RAF, terminal building by 1958; reopened 17 Aug 2013 with enlarged arrival and departure terminals and five wind turbines; 3,700 m runway at 1,348 m elevation; further terminal redevelopment planned"
+        }
+      ],
+      "notes": "Opening, 2013 enlargement and turbines sourced; dimensions and finishes estimated. Small terminal compared with Ivato or Nyerere."
+    },
+    "hargeisa-clinic": {
+      "venueId": "hargeisa-clinic",
+      "city": "hargeisa",
+      "name": "Edna Adan Maternity Hospital",
+      "archetype": "hospital",
+      "subject": "Edna Adan Maternity Hospital: a multi-storey white-and-blue hospital compound begun 1998 and operating since 2002 on a 9,600 m2 plot that was once a dump",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ede4",
+          "#a9c4d6",
+          "#8a8f94"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1998-2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Edna_Adan_Maternity_Hospital",
+          "what": "construction began 1 Jan 1998, functional 9 Mar 2002; 9,600 m2 site; 69 beds"
+        }
+      ],
+      "notes": "Dates, site area and bed count sourced; storeys, colours and form are typed from the city style. Compound is walled."
+    },
+    "hargeisa-community-notices": {
+      "venueId": "hargeisa-community-notices",
+      "city": "hargeisa",
+      "name": "DANIDA",
+      "archetype": "civic-small",
+      "subject": "DANIDA (Danish development agency) office compound: a walled low rendered office building (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#b9d3c0",
+          "#a9c4d6",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing about the building found; typed walled compound."
+    },
+    "hargeisa-community-voting-game": {
+      "venueId": "hargeisa-community-voting-game",
+      "city": "hargeisa",
+      "name": "Somaliland Supreme Court",
+      "archetype": "civic-palace",
+      "subject": "Somaliland Supreme Court: a formal two-storey pale rendered court building with arched openings and flag mast (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc8",
+          "#b9d3c0",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style, Arab-Islamic arches"
+        }
+      ],
+      "notes": "Nothing found about the real building; typed."
+    },
+    "hargeisa-community-workshop": {
+      "venueId": "hargeisa-community-workshop",
+      "city": "hargeisa",
+      "name": "Gollis University",
+      "archetype": "campus-block",
+      "subject": "Gollis University main campus: three-to-four storey blue and cream rendered teaching blocks around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#2f5d8a",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gollis_University",
+          "what": "main Hargeisa campus 32 acres; university colours blue, white, yellow, red"
+        }
+      ],
+      "notes": "Campus size and colours sourced only; blocks are typed. Blue trim comes from the university colours."
+    },
+    "hargeisa-market-game": {
+      "venueId": "hargeisa-market-game",
+      "city": "hargeisa",
+      "name": "Sariibada MMooge",
+      "archetype": "market-open",
+      "subject": "Sariibada Mooge neighbourhood market: rows of small stalls and tin-roofed lock-ups along a dusty street (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b08a",
+          "#6e7f8a",
+          "#b9d3c0"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "market context"
+        }
+      ],
+      "notes": "Nothing specific found; typed."
+    },
+    "hargeisa-meal-stop": {
+      "venueId": "hargeisa-meal-stop",
+      "city": "hargeisa",
+      "name": "Kaah Restaurant",
+      "archetype": "restaurant",
+      "subject": "Kaah Restaurant: a single-storey rendered restaurant with a painted shop front and shaded terrace (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d6c3a0",
+          "#b9d3c0",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed."
+    },
+    "hargeisa-osm-node-10225628867": {
+      "venueId": "hargeisa-osm-node-10225628867",
+      "city": "hargeisa",
+      "name": "Hargeisa Memorial",
+      "archetype": "monument",
+      "subject": "Hargeisa Memorial: a modest war/genocide memorial of plinth and sculpted element on a paved plaza (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c4bb",
+          "#2f6b4f",
+          "#b4554a"
+        ],
+        "roofColour": "#c8c4bb",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central memorial element; form unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "Hargeisa memorials in city"
+        }
+      ],
+      "notes": "Only a map node; which memorial it is and what it looks like is unverified. Differs from the MiG memorial by being a low plaza monument."
+    },
+    "hargeisa-osm-node-1138799338": {
+      "venueId": "hargeisa-osm-node-1138799338",
+      "city": "hargeisa",
+      "name": "War Memorial (MIG)",
+      "archetype": "monument",
+      "subject": "Hargeisa War Memorial in Freedom Square: a Somali Air Force MiG-17 mounted on a plinth above a fresco of a woman holding the Somaliland flag, rebuilt in 2020",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c4bb",
+          "#2f6b4f",
+          "#b4554a"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "MiG-17 jet on top of the plinth"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "fresco of a woman holding the Somaliland flag, looking up"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s (rebuilt 2020)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa_War_Memorial",
+          "what": "MiG-17 war memorial in Freedom Square on Independence Avenue; fresco of woman holding Somaliland flag looking up; rebuilt 2020; city walls pale green and blue plaster"
+        }
+      ],
+      "notes": "Aircraft, fresco and site sourced; plinth height, colours and fence are estimates. The jet is silver-grey; plinth is painted in flag colours (green, white, red) which is unverified."
+    },
+    "hargeisa-osm-node-3593965256": {
+      "venueId": "hargeisa-osm-node-3593965256",
+      "city": "hargeisa",
+      "name": "Mediterranean Restaurant",
+      "archetype": "restaurant",
+      "subject": "Mediterranean Restaurant near the airport road: a two-storey rendered building with arched windows and a terrace (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc8",
+          "#a9c4d6",
+          "#c9b08a"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed."
+    },
+    "hargeisa-osm-node-6554383286": {
+      "venueId": "hargeisa-osm-node-6554383286",
+      "city": "hargeisa",
+      "name": "go ants",
+      "archetype": "park-landscape",
+      "subject": "Hilltop viewing spot on the eastern edge of the valley: bare ground, a low wall and a small shelter (typed; place unidentified)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c9b08a",
+          "#d6c3a0",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "valley in Ogo highlands"
+        }
+      ],
+      "notes": "Unidentified place name (OSM node on the outskirts); typed viewpoint."
+    },
+    "hargeisa-osm-node-6589200285": {
+      "venueId": "hargeisa-osm-node-6589200285",
+      "city": "hargeisa",
+      "name": "tls geele Arab",
+      "archetype": "shrine-small",
+      "subject": "tls geele Arab: unidentified small site north-east of the city; typed as a small rendered prayer hall or compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f0ede4",
+          "#2f6b4f",
+          "#c9b08a"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing could be identified for this OSM name; typed small whitewashed hall. Low."
+    },
+    "hargeisa-osm-node-7798002349": {
+      "venueId": "hargeisa-osm-node-7798002349",
+      "city": "hargeisa",
+      "name": "Gobonimo market",
+      "archetype": "market-open",
+      "subject": "Gobonimo market: an open market of stalls and tin sheds on bare ground (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b08a",
+          "#a9c4d6",
+          "#b9d3c0"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "market context"
+        }
+      ],
+      "notes": "Nothing found; typed."
+    },
+    "hargeisa-osm-way-1315022603": {
+      "venueId": "hargeisa-osm-way-1315022603",
+      "city": "hargeisa",
+      "name": "Guri_Samo Park",
+      "archetype": "park-landscape",
+      "subject": "Guri Samo Park: a small public park with lawn, paths and a fence (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c8c4bb",
+          "#9bb08a",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city context"
+        }
+      ],
+      "notes": "Nothing found; typed."
+    },
+    "hargeisa-osm-way-1376931546": {
+      "venueId": "hargeisa-osm-way-1376931546",
+      "city": "hargeisa",
+      "name": "Hand Memorial ( Taalda Gacanta)",
+      "archetype": "monument",
+      "subject": "Hand Memorial (Taalada Gacanta): a monument built around a large raised hand sculpture on a plaza (typed from the name)",
+      "form": {
+        "footprint": "round",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c4bb",
+          "#2f6b4f",
+          "#f0ede4"
+        ],
+        "roofColour": "#c8c4bb",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "giant raised hand; form from the name only"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "memorials in city"
+        }
+      ],
+      "notes": "Name translates as Hand Monument; shape is inferred from the name and unverified."
+    },
+    "hargeisa-osm-way-1462275345": {
+      "venueId": "hargeisa-osm-way-1462275345",
+      "city": "hargeisa",
+      "name": "Naaso Hablood Hospital",
+      "archetype": "hospital",
+      "subject": "Naasa Hablood Hospital below the twin-peaked hills: a two-to-three storey rendered hospital with ward wings (typed)",
+      "form": {
+        "footprint": "H",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#9bb7b0",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "Naasa Hablood hills appear in photos of the city"
+        }
+      ],
+      "notes": "Named after the Naasa Hablood twin hills; building not described anywhere found; typed."
+    },
+    "hargeisa-osm-way-1544987456": {
+      "venueId": "hargeisa-osm-way-1544987456",
+      "city": "hargeisa",
+      "name": "CIIR Mall",
+      "archetype": "mall",
+      "subject": "CIIR Mall: a multi-storey modern shopping block with glazed front and rooftop signage (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dfc8",
+          "#3d5566",
+          "#a9c4d6"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "single-storey downtown giving way to high-rises"
+        }
+      ],
+      "notes": "Not described in any source found; typed as a new diaspora-funded multi-storey mall."
+    },
+    "hargeisa-osm-way-238835442": {
+      "venueId": "hargeisa-osm-way-238835442",
+      "city": "hargeisa",
+      "name": "Hargeisa Stadium",
+      "archetype": "stadium",
+      "subject": "Hargeisa Stadium (30,000 capacity, artificial turf, renovated 2015): an open concrete bowl with a covered main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 180,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c4bb",
+          "#2f6b4f",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand cover"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2015 renovation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa_Stadium",
+          "what": "capacity 30,000, artificial turf, renovated 2015"
+        }
+      ],
+      "notes": "Only capacity, surface and renovation date sourced; bowl shape typed."
+    },
+    "hargeisa-osm-way-353244599": {
+      "venueId": "hargeisa-osm-way-353244599",
+      "city": "hargeisa",
+      "name": "masaajid",
+      "archetype": "mosque-domed",
+      "subject": "Unnamed neighbourhood mosque (masaajid): a rendered prayer hall with one small dome and a slender minaret (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ede4",
+          "#2f6b4f",
+          "#c9b08a"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 18 m"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "Jama mosque photos in city; Arab-Islamic style"
+        }
+      ],
+      "notes": "Only the generic Somali word for mosque; typed neighbourhood mosque. Smaller than Masjidka Cali Mataan."
+    },
+    "hargeisa-osm-way-365346749": {
+      "venueId": "hargeisa-osm-way-365346749",
+      "city": "hargeisa",
+      "name": "Golis",
+      "archetype": "restaurant",
+      "subject": "Golis: a commercial premises, listed as a food venue; typed as a two-storey rendered shop-front building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d6c3a0",
+          "#a9c4d6",
+          "#f0ede4"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Ambiguous: Golis is also the name of a Somaliland telecom operator; kind is a buka. Nothing verified; typed."
+    },
+    "hargeisa-osm-way-430366600": {
+      "venueId": "hargeisa-osm-way-430366600",
+      "city": "hargeisa",
+      "name": "Hargeisa International Hospital",
+      "archetype": "hospital",
+      "subject": "Hargeisa International Hospital: a modern three-storey private hospital with a glazed entrance (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ede4",
+          "#2f5d8a",
+          "#8a8f94"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found about the building; typed modern hospital, different from Edna Adan by its glazed entrance and blue trim."
+    },
+    "hargeisa-osm-way-449354369": {
+      "venueId": "hargeisa-osm-way-449354369",
+      "city": "hargeisa",
+      "name": "University of Hargeisa",
+      "archetype": "campus-block",
+      "subject": "University of Hargeisa campus: a spread of two-to-three storey rendered blocks in blue and cream (school colours blue and red)",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#2f5d8a",
+          "#b4554a"
+        ],
+        "roofColour": "#a3a69f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Hargeisa",
+          "what": "urban campus; school colours blue and red; established 2000"
+        }
+      ],
+      "notes": "Campus appearance not described; only colours and date used."
+    },
+    "hargeisa-quiet-reflection": {
+      "venueId": "hargeisa-quiet-reflection",
+      "city": "hargeisa",
+      "name": "Masjidka Cali Mataan",
+      "archetype": "mosque-domed",
+      "subject": "Masjidka Cali Mataan, a large central mosque: green and white rendered prayer hall with a dome and tall minaret (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ede4",
+          "#2f6b4f",
+          "#c9b08a"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 30 m"
+        },
+        {
+          "id": "arches",
+          "count": 10
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "Jama mosque and Arab-Islamic style"
+        }
+      ],
+      "notes": "No source describes this mosque; typed as a major city-centre mosque, larger than the neighbourhood masaajid."
+    },
+    "hargeisa-recreation": {
+      "venueId": "hargeisa-recreation",
+      "city": "hargeisa",
+      "name": "Warshada caanaha",
+      "archetype": "industrial",
+      "subject": "Warshada caanaha (milk factory): a long single-storey processing shed with a small office and storage tank (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c4bb",
+          "#6e7f8a",
+          "#b9d3c0"
+        ],
+        "roofColour": "#6e7f8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Translated as the milk factory; no description found; typed as a small dairy plant."
+    },
+    "hargeisa-transit": {
+      "venueId": "hargeisa-transit",
+      "city": "hargeisa",
+      "name": "Harageisa Bus Station",
+      "archetype": "transport-station",
+      "subject": "Central bus station: an open yard of bus bays with a low rendered office building and tin shelter (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6c3a0",
+          "#a9c4d6",
+          "#8a5a44"
+        ],
+        "roofColour": "#6e7f8a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hargeisa",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed as a typical bus yard."
+    }
+  }
+}

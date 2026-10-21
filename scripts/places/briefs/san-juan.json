@@ -1,0 +1,1611 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "san-juan",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "san-juan",
+    "climate": "tropical-maritime",
+    "vernacular": "Dense metro of flat-roofed reinforced-concrete houses and mid-rise blocks painted in white, cream and tropical pastels, with louvred jalousie windows, iron grilles and carports; Old San Juan has 2-4 storey Spanish colonial townhouses in ochre, salmon, blue and yellow with wooden balconies on blue adoquin cobbles; Hato Rey and Santurce add 1950s-60s tropical-modern slab blocks and glass bank towers.",
+    "wallColours": [
+      "#f1ece0",
+      "#e8c9a0",
+      "#d9a79a",
+      "#8fb3c9",
+      "#f2e3a8",
+      "#b9c9a5",
+      "#c9c4b8"
+    ],
+    "roofColours": [
+      "#c9c4b8",
+      "#b5523b",
+      "#8a8f93",
+      "#e6e3da"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "stucco",
+      "sandstone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Spanish colonial wooden and wrought-iron balconies, arched doorways, decorative cement floor tiles, stone garitas (sentry boxes) on the old walls; breeze-block (celosia) screens and jalousie louvres on tropical-modern buildings; Antonin Nechodoma Prairie and Gothic Revival details on early 1900s churches.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/San_Juan,_Puerto_Rico",
+        "what": "tropical monsoon climate, Old San Juan fortifications and UNESCO status, hurricane damage to roofs"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/San_Juan_National_Historic_Site",
+        "what": "El Morro, San Cristobal and city walls with garitas"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Nuestra_Se%C3%B1ora_de_Lourdes_Chapel",
+        "what": "Nechodoma Gothic Revival chapel as an example of early 20th-century local church style"
+      }
+    ]
+  },
+  "places": {
+    "san-juan-airport-san-juan-airport": {
+      "venueId": "san-juan-airport-san-juan-airport",
+      "city": "san-juan",
+      "name": "Luis Munoz Marin International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The main terminal (Terminals B/C, 1985/1996) seen from the landside forecourt: a long glazed and concrete block with a flat departures canopy and concourse piers behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d9dad6",
+          "#2f5f7f",
+          "#f2f1ec"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "terminals B-D hold roughly 25 + 10 gates"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1985-2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luis_Mu%C3%B1oz_Mar%C3%ADn_International_Airport",
+          "what": "terminal layout and dates: Terminal B 1985 (about 33,900 m2), Terminal C 1996, Terminal A 2012, Terminal D reopened 2023; control tower designed by Segundo Cardona (SCF Architects)"
+        }
+      ],
+      "notes": "Dates, layout and gate counts are sourced; exterior colours, materials and canopy shape come from general knowledge of the terminal and are unverified. The tall control tower is the recognisable element. OSM only provides the apron polygon (2.4 km), so dimensions are an estimate of the Terminal B/C main block."
+    },
+    "san-juan-clinic": {
+      "venueId": "san-juan-clinic",
+      "city": "san-juan",
+      "name": "Professional Hospital",
+      "archetype": "hospital",
+      "subject": "Professional Hospital, a modern private hospital in Guaynabo (202 beds, relocated 2009), a mid-rise block with a medical office building beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 66,
+        "depth_m": 56,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d6",
+          "#4d7fa3",
+          "#f6f4ee"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Professional_Hospital",
+          "what": "202-bed hospital relocated to Guaynabo in 2009 with a USD 65M investment; footprint about 66x56 m from OSM"
+        }
+      ],
+      "notes": "Wikipedia gives no appearance detail. Storeys and colours are typed guesses from a modern private hospital in the Caribbean metro area. Footprint is measured (OSM, 2,227 m2)."
+    },
+    "san-juan-community-notices": {
+      "venueId": "san-juan-community-notices",
+      "city": "san-juan",
+      "name": "Area de Embellecimiento y Ornato",
+      "archetype": "office-low",
+      "subject": "A long single-storey government office building of the Department of Transportation and Public Works (DTOP) beautification area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 247,
+        "depth_m": 41,
+        "storeys": 1,
+        "height_m": 5.8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4e0d2",
+          "#7d8f9e",
+          "#f3f1ea"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Puerto_Rico_Department_of_Transportation_and_Public_Works",
+          "what": "agency (founded 1952) that the OSM feature is tagged with"
+        }
+      ],
+      "notes": "Only measured data: OSM footprint 247x41 m and height 5.8 m (one storey). It is probably several linked wings; the generator should show a long low block, clamped to 120 m. Appearance is a typed guess."
+    },
+    "san-juan-community-voting-game": {
+      "venueId": "san-juan-community-voting-game",
+      "city": "san-juan",
+      "name": "Casa Alcaldia de Bayamon",
+      "archetype": "civic-small",
+      "subject": "The 1980 Bayamon city hall, a grey building that bridges a roadway, with a glass-floored bridge on the second level",
+      "form": {
+        "footprint": "rect",
+        "width_m": 105,
+        "depth_m": 82,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "variant": "bridges-road"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8e9296",
+          "#6d7b86",
+          "#c9cdd0"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1980",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bay%C3%B3m%C3%B3n_City_Hall",
+          "what": "painted grey; opened 1980 under mayor Ramon Luis Rivera; spans a roadway using its airspace; offices on upper floors; glass-floored bridge; theatre"
+        }
+      ],
+      "notes": "Recognisable as a raised block carried across a road. Storeys and window pattern are inferred from the description. The older historic town hall is a different building."
+    },
+    "san-juan-community-workshop": {
+      "venueId": "san-juan-community-workshop",
+      "city": "san-juan",
+      "name": "Caribbean University",
+      "archetype": "campus-block",
+      "subject": "A small academic building of the Bayamon campus of Caribbean University",
+      "form": {
+        "footprint": "rect",
+        "width_m": 89,
+        "depth_m": 64,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece7d8",
+          "#3e6a8a",
+          "#f5f3ec"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Caribbean_University",
+          "what": "private university system founded 1969 (OSM building 89x64 m)"
+        }
+      ],
+      "notes": "Footprint measured; everything else is a typed guess from local campus buildings (flat-roofed painted concrete, external walkways)."
+    },
+    "san-juan-market-game": {
+      "venueId": "san-juan-market-game",
+      "city": "san-juan",
+      "name": "San Patricio Plaza",
+      "archetype": "mall",
+      "subject": "San Patricio Plaza, a three-level enclosed mall in Guaynabo opened 1964, with surface parking and a pedestrian bridge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 208,
+        "depth_m": 193,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e3cf",
+          "#6f9f3b",
+          "#f1c232"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964, renovated 1967/1994/2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Patricio_Plaza",
+          "what": "three-level enclosed mall of about 640,000 sq ft; opened 1964, rebuilt after a 1967 fire; beige/pink/green scheme from 1994, repainted green, yellow and white in 2014; 2017-18 atrium and fountain; multilevel parking and pedestrian bridge"
+        }
+      ],
+      "notes": "Colours follow the 2014 repaint (green, yellow, white over cream). Mostly blank rendered walls with big entrance bays. Footprint measured (OSM 208x193, two levels above grade)."
+    },
+    "san-juan-meal-stop": {
+      "venueId": "san-juan-meal-stop",
+      "city": "san-juan",
+      "name": "Loverbar",
+      "archetype": "restaurant",
+      "subject": "Loverbar, a small multi-storey bar and cafe building in Rio Piedras (opened 2020)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 4,
+        "height_m": 15.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d3c0",
+          "#b85c7a",
+          "#f5f1ea"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Loverbar",
+          "what": "bar, restaurant and nightclub at 1063 Ave Juan Ponce de Leon, Rio Piedras; opened 2020"
+        }
+      ],
+      "notes": "Wikipedia has no appearance detail. OSM measures 25.5x13.6 m and 15.5 m tall, so it is a narrow tall townhouse-like block. The mural and pink accent are speculative and low-priority."
+    },
+    "san-juan-osm-node-357273264": {
+      "venueId": "san-juan-osm-node-357273264",
+      "city": "san-juan",
+      "name": "Estadio Manuel Carrasquillo Herpen",
+      "archetype": "stadium",
+      "subject": "A small municipal baseball and sports park in Carolina with a roofed concrete grandstand behind home plate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 71,
+        "depth_m": 58,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4d0c4",
+          "#4b6e8f",
+          "#f1efe8"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Manuel_Carrasquillo_Herpen",
+          "what": "Wikidata Q49487491: park in Carolina, Puerto Rico"
+        }
+      ],
+      "notes": "Nothing descriptive was found; the brief is a typed small-town stadium. Footprint is the measured OSM building (71x58 m)."
+    },
+    "san-juan-osm-node-4727907289": {
+      "venueId": "san-juan-osm-node-4727907289",
+      "city": "san-juan",
+      "name": "La Casita Blanca",
+      "archetype": "restaurant",
+      "subject": "La Casita Blanca, a small white-painted house-style criollo restaurant in Villa Palmeras, Santurce",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f5f2ea",
+          "#3d7aa8",
+          "#e4d9c0"
+        ],
+        "roofColour": "#e6e3da",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Santurce,_San_Juan,_Puerto_Rico",
+          "what": "Santurce context (dense low-rise concrete houses); venue itself not described by any fetched source"
+        }
+      ],
+      "notes": "The name implies a white house; the footprint (19x12 m) is measured. Colours beyond the white walls are guesses."
+    },
+    "san-juan-osm-node-4892514142": {
+      "venueId": "san-juan-osm-node-4892514142",
+      "city": "san-juan",
+      "name": "Universidad Teologica del Caribe",
+      "archetype": "campus-block",
+      "subject": "A small seminary and university teaching building near Trujillo Alto",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eae4d3",
+          "#8a6f52",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a65a40",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Juan,_Puerto_Rico",
+          "what": "regional building context only"
+        }
+      ],
+      "notes": "No source describes it; only the footprint (35x33 m) is measured. Typed guess from the local small-campus type."
+    },
+    "san-juan-osm-way-1204253618": {
+      "venueId": "san-juan-osm-way-1204253618",
+      "city": "san-juan",
+      "name": "San Juan Puerto Rico Temple",
+      "archetype": "shrine-small",
+      "subject": "The 2023 LDS temple: a one-storey Spanish-colonial-style temple with one tall domed spire modelled on the towers of San Juan City Hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 7.3,
+        "roof": "hip",
+        "variant": "single-spire-temple"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "tile-cladding",
+        "colours": [
+          "#efeadb",
+          "#2f6c8f",
+          "#c9a24a"
+        ],
+        "roofColour": "#b5683f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "domed spire, total height about 23 m"
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "2023",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Juan_Puerto_Rico_Temple",
+          "what": "about 6,988 sq ft on a 2.97-acre site; one storey; 74 ft with spire (24 ft without); Spanish colonial style; concrete exterior; crema vosscione tile from Mexico, accent cement tiles; colours blue, gold, opal white and green; art glass with local quatrefoil motifs; dedicated 15 Jan 2023"
+        }
+      ],
+      "notes": "Sourced form and palette. The roof colour (terracotta) is a guess; the sources only list blue, gold, opal white and green. Recognisable by the single slender domed spire on a very low building."
+    },
+    "san-juan-osm-way-196598864": {
+      "venueId": "san-juan-osm-way-196598864",
+      "city": "san-juan",
+      "name": "Museo de Arte de Puerto Rico",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Art of Puerto Rico in Santurce: the 1920 neoclassical former San Juan Municipal Hospital absorbed into a larger 2000 museum building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 73,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eadfb8",
+          "#7a8f9a",
+          "#f4f0e4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1920 / 2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Art_of_Puerto_Rico",
+          "what": "old building designed by William H. Schimmelphennig, built 1920 as San Juan Municipal Hospital, hospital until 1966, DTOP offices to 1975; incorporated into the new museum (2000); galleries on levels three and four"
+        }
+      ],
+      "notes": "The old front block is a symmetric neoclassical hospital with a central entrance; the modern wing behind and beside uses glass. Facade colours are estimated. Footprint is OSM 80x73 m."
+    },
+    "san-juan-osm-way-197848164": {
+      "venueId": "san-juan-osm-way-197848164",
+      "city": "san-juan",
+      "name": "Universidad del Sagrado Corazon",
+      "archetype": "campus-block",
+      "subject": "The central teaching block of the Sagrado Corazon campus in Santurce (university founded 1880)",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e3cf",
+          "#a8664a",
+          "#f4f1e8"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sacred_Heart_University_(Puerto_Rico)",
+          "what": "university founded 1880; OSM campus polygon 530x344 m"
+        }
+      ],
+      "notes": "Campus area is large (13.6 ha, measured); individual buildings were not described, so one typical mid-century 4-storey block is shown."
+    },
+    "san-juan-osm-way-198390426": {
+      "venueId": "san-juan-osm-way-198390426",
+      "city": "san-juan",
+      "name": "Polytechnic University of Puerto Rico",
+      "archetype": "campus-block",
+      "subject": "The main block of the Polytechnic University campus in Hato Rey",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cdc8bb",
+          "#52748f",
+          "#eeece4"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Polytechnic_University_of_Puerto_Rico",
+          "what": "private technical university founded 1966, Hato Rey; OSM polygon 207x177 m"
+        }
+      ],
+      "notes": "Typed guess for a tropical-modern concrete institutional block; only the campus polygon is measured."
+    },
+    "san-juan-osm-way-203588975": {
+      "venueId": "san-juan-osm-way-203588975",
+      "city": "san-juan",
+      "name": "Fortin San Juan de la Cruz",
+      "archetype": "heritage-fort",
+      "subject": "El Canuelo: a small square Spanish coastal fort of massive sandstone walls on Isla de Cabras, with one corner garita",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#cdb98d",
+          "#a99472",
+          "#8d8a78"
+        ],
+        "roofColour": "#a99472",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "low parapet with one corner garita"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1630-1660",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_San_Juan_de_la_Cruz",
+          "what": "square coastal fort, about 24 m (80 ft) per side, massive sandstone walls, one guerite, built c.1630-1660 on Isla de Cabras at the west side of the entrance to San Juan Bay, site about 14,000 m2"
+        }
+      ],
+      "notes": "Wall height (about 9 m) and weathered tan-grey colour are estimates; side length and material are sourced. Faces the bay; closed to visitors but walkable around the outside."
+    },
+    "san-juan-osm-way-255583481": {
+      "venueId": "san-juan-osm-way-255583481",
+      "city": "san-juan",
+      "name": "San Juan Bautista Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Metropolitan Cathedral Basilica of San Juan Bautista in Old San Juan: a cream neoclassical facade with a pediment, a shallow dome over the crossing and a bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 56,
+        "depth_m": 49,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "sandstone",
+        "colours": [
+          "#ebe0c3",
+          "#c9a15a",
+          "#f5f1e6"
+        ],
+        "roofColour": "#d9d3c2",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1521-1529, rebuilt 19th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Catedral_de_San_Juan_Bautista",
+          "what": "neoclassical style; metropolitan cathedral and minor basilica (1978); founded 1521, rebuilt 1529; tomb of Ponce de Leon in its own chapel; on Calle del Cristo"
+        }
+      ],
+      "notes": "Style, dates and function are sourced from the Spanish Wikipedia article. Facade colours, dome and tower are from general knowledge of the building and unverified. It sits tight against blue cobbled streets with no setback."
+    },
+    "san-juan-osm-way-301913181": {
+      "venueId": "san-juan-osm-way-301913181",
+      "city": "san-juan",
+      "name": "Estadio Hiram Bithorn Sosa",
+      "archetype": "stadium",
+      "subject": "Hiram Bithorn Stadium in Hato Rey: 1962 tropical-modern baseball stadium, five levels of concrete stands with a partial roof and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 199,
+        "depth_m": 106,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d3c4",
+          "#b04a3d",
+          "#f2efe6"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hiram_Bithorn_Stadium",
+          "what": "opened 24 Oct 1962; Tropical Modern style; architects Orval Sifontes and Alexander Papesh; capacity about 19,000 baseball; field 99 m / 114 m / 123 m; site 91,035 m2; renovated 2003, 2025"
+        }
+      ],
+      "notes": "Style, dates and dimensions are sourced; the roof/colour details come from general knowledge. OSM tags five levels. The stadium is the largest local baseball bowl, in a ring of car parks."
+    },
+    "san-juan-osm-way-336398987": {
+      "venueId": "san-juan-osm-way-336398987",
+      "city": "san-juan",
+      "name": "VA Healthcare Rio Piedras",
+      "archetype": "hospital",
+      "subject": "The San Juan VA Caribbean Healthcare System hospital, a tall cream slab-and-wings hospital tower",
+      "form": {
+        "footprint": "H",
+        "width_m": 220,
+        "depth_m": 188,
+        "storeys": 9,
+        "height_m": 33.4,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ddd6c3",
+          "#8a9aa6",
+          "#f1eee4"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Juan,_Puerto_Rico",
+          "what": "regional context only"
+        }
+      ],
+      "notes": "Measured: OSM footprint 220x188 m and height 33.4 m (about 9 storeys). Colour and plan shape are typed guesses; one tall central tower with lower wings."
+    },
+    "san-juan-osm-way-421147595": {
+      "venueId": "san-juan-osm-way-421147595",
+      "city": "san-juan",
+      "name": "Puente Historico de Trujillo Alto (No 427)",
+      "archetype": "monument",
+      "subject": "The 1941 steel Pennsylvania through-truss bridge over the Rio Grande de Loiza at Trujillo Alto, single span about 21 m above the river",
+      "form": {
+        "footprint": "rect",
+        "width_m": 114,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 11,
+        "roof": "none",
+        "variant": "through-truss-bridge"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#6f7d74",
+          "#8b9690",
+          "#4d5650"
+        ],
+        "roofColour": "#6f7d74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "steel truss frame, not masonry"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1939-1941",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Puente_de_Trujillo_Alto",
+          "what": "steel Pennsylvania through truss, built 1939-41 with U.S. Steel components, single span, longest single-span bridge in Puerto Rico, about 70 ft above the Rio Grande de Loiza; engineer Robert Prann"
+        }
+      ],
+      "notes": "There is no truss-bridge archetype, so this uses monument with variant through-truss-bridge. Length 114 m and width 8 m are the OSM footprint; truss height (11 m) and colour are estimated. A 1980s four-lane concrete bridge sits alongside."
+    },
+    "san-juan-osm-way-528579414": {
+      "venueId": "san-juan-osm-way-528579414",
+      "city": "san-juan",
+      "name": "Estadio Roberto Clemente Walker",
+      "archetype": "stadium",
+      "subject": "Roberto Clemente Walker Stadium in Carolina: a baseball stadium with a covered concrete grandstand and light towers",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d7d2c3",
+          "#3e6a8a",
+          "#f1efe8"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roberto_Clemente_Walker_Stadium",
+          "what": "Wikidata Q7351649: sports venue in Carolina, Puerto Rico; OSM polygon 193x187 m (field and stands)"
+        }
+      ],
+      "notes": "No source describes the stands. The OSM polygon covers the whole field, so the model shows only the grandstand portion. Typed guess."
+    },
+    "san-juan-osm-way-55788712": {
+      "venueId": "san-juan-osm-way-55788712",
+      "city": "san-juan",
+      "name": "Coliseo Roberto Clemente Walker",
+      "archetype": "stadium",
+      "subject": "The 1973 Roberto Clemente Coliseum in Hato Rey: a round-ish indoor arena of ribbed concrete with a low roof, entered through ground-level concourse arcades",
+      "form": {
+        "footprint": "oval",
+        "width_m": 129,
+        "depth_m": 120,
+        "storeys": 5,
+        "height_m": 25,
+        "roof": "curved",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d6d1c4",
+          "#8b8578",
+          "#efece3"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1973",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roberto_Clemente_Coliseum",
+          "what": "indoor arena in Hato Rey on Roosevelt Avenue; built late 1960s to January 1973; capacity 12,500; opened 1 Feb 1973 with the Fania All-Stars; second-largest arena in Puerto Rico"
+        }
+      ],
+      "notes": "Sourced: purpose, date, capacity. Measured: OSM footprint 129x120 m and 5 levels. Roof shape and the ribbed concrete look are from memory and may be off; the large Agrelot Coliseum next door is a different building."
+    },
+    "san-juan-osm-way-60449170": {
+      "venueId": "san-juan-osm-way-60449170",
+      "city": "san-juan",
+      "name": "Parque Dolores Cruz",
+      "archetype": "park-landscape",
+      "subject": "A neighbourhood park in Toa Baja with sports courts, a small pavilion and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 108,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d5c8",
+          "#4f8a5b",
+          "#f2efe6"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Toa_Baja,_Puerto_Rico",
+          "what": "municipality context; Wikidata Q49539797 lists the park as a park in Toa Baja"
+        }
+      ],
+      "notes": "No description found; typed municipal park with a roofed court/pavilion. Footprint 108x95 m is measured."
+    },
+    "san-juan-quiet-reflection": {
+      "venueId": "san-juan-quiet-reflection",
+      "city": "san-juan",
+      "name": "Capilla Nuestra Senora de Lourdes",
+      "archetype": "church-gothic",
+      "subject": "The small 1908 Gothic Revival chapel by Antonin Nechodoma, with a double-arched bell tower and a large stained-glass window in the gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 11.6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eee7d6",
+          "#b3a27c",
+          "#f7f4ec"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "double pointed arches"
+        },
+        {
+          "id": "stained-glass",
+          "count": 24,
+          "note": "24 windows, large one over the entrance"
+        },
+        {
+          "id": "pinnacles",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1908",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nuestra_Se%C3%B1ora_de_Lourdes_Chapel",
+          "what": "Late Gothic Revival by Antonin Nechodoma, completed 1908; bell tower with double slightly pointed arches; four gargoyle drains; large stained-glass window with smaller one above; Celtic cross at the gable peak; 24 stained-glass windows; single A-frame roof; bell cast in Spain"
+        }
+      ],
+      "notes": "Form and features sourced; wall colour and roof colour are guesses (white render, grey roof; the asbestos roof sections were replaced in 1990-91). Height 11.6 m from OSM."
+    },
+    "san-juan-recreation": {
+      "venueId": "san-juan-recreation",
+      "city": "san-juan",
+      "name": "San Juan National Historic Site",
+      "archetype": "heritage-fort",
+      "subject": "Castillo San Felipe del Morro: the six-level golden-ochre fortress at the headland of Old San Juan, with garitas, a lighthouse and a green esplanade in front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 6,
+        "height_m": 35,
+        "roof": "none",
+        "variant": "tiered-sea-fort"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#cdb27a",
+          "#a78d5f",
+          "#e6dcc0"
+        ],
+        "roofColour": "#a78d5f",
+        "windows": "arched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "lighthouse tower, 1908, not a bell tower"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1539-1790s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Juan_National_Historic_Site",
+          "what": "El Morro on the headland named after Philip II, built 16th to 18th centuries; large grassy esplanade between El Morro and Balaja; San Cristobal and the city walls with garitas, three quarters of the walls remain"
+        }
+      ],
+      "notes": "The coordinates sit on the El Morro esplanade, so El Morro is the subject; dimensions and colour are estimates from general knowledge (height includes the headland cliff). San Cristobal and the walls are not modelled."
+    },
+    "san-juan-transit": {
+      "venueId": "san-juan-transit",
+      "city": "san-juan",
+      "name": "Hato Rey",
+      "archetype": "transport-station",
+      "subject": "Hato Rey Tren Urbano station: an elevated concrete station with an island platform and two tracks, beside the Agrelot Coliseum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 169,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved",
+        "variant": "elevated-island-platform"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcabf",
+          "#4b78a8",
+          "#f0eee6"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hato_Rey_station",
+          "what": "elevated station, one island platform, two tracks, designed by Segundo Cardona of SCF Architects; next to the Jose Miguel Agrelot Coliseum in the Milla de Oro"
+        }
+      ],
+      "notes": "Elevated viaduct on piers with a curved platform canopy is general knowledge of Tren Urbano stations. The OSM building is 169x35 m. No station name signage should be rendered."
+    }
+  }
+}

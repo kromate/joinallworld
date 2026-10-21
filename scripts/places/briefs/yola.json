@@ -1,0 +1,1281 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "yola",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "yola",
+    "climate": "savanna",
+    "vernacular": "Hot savanna river city on the Benue and Gongola: the old Yola town of red-earth mud-render compounds with grey thatch or corrugated zinc roofs around the Lamido's palace, and the newer commercial Jimeta with 1-4 storey cement-render shops, banks and apartment blocks in cream, ochre and white, flat concrete roofs, corrugated metal sheds and open laterite ground.",
+    "wallColours": [
+      "#c9a77c",
+      "#b98a5e",
+      "#e3d3b0",
+      "#efe6d0",
+      "#f7f4ee",
+      "#b4654a"
+    ],
+    "roofColours": [
+      "#8a8f94",
+      "#7d7468",
+      "#8a3b2e",
+      "#5b6670"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "mud-render",
+      "concrete",
+      "laterite",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Fulani/Hausa geometric relief and crenellated parapets on palace and compound walls, mosque domes and semi-elliptical arches with calligraphy, cement-rendered gates; very little ornament on commercial blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+        "what": "sandstone ridge, red earth, mud huts, grey thatch (1893 account); tropical savanna bordering hot semi-arid; Jimeta is the new commercial centre"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Adamawa_State",
+        "what": "tropical wet-and-dry climate, savanna vegetation, Fombina Palace Museum listed"
+      },
+      {
+        "url": "https://www.milehacker.com/travel/nigeria/adamawa/yola/famous-landmarks-in-yola-attractions-monuments-sig/",
+        "what": "palace complex has mud-brick design reflecting Fulani heritage; Jimeta Modern Market is a busy stall-filled commercial hub"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Jimeta",
+        "what": "Jimeta river port beside Yola, contains the airport; tropical savanna climate"
+      }
+    ]
+  },
+  "places": {
+    "adamawa-ministry-tourism-arts-culture": {
+      "venueId": "adamawa-ministry-tourism-arts-culture",
+      "city": "yola",
+      "name": "Adamawa State Ministry of Tourism, Arts and Culture",
+      "archetype": "civic-palace",
+      "subject": "A three-storey state ministry block in cream render with a flat roof, flag pole and signboard, set behind a fence wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#c9a77c",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "ribbon",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "city style context only"
+        }
+      ],
+      "notes": "Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted. Archetype civic-palace used because it is a ministry; size kept modest."
+    },
+    "american-university-of-nigeria": {
+      "venueId": "american-university-of-nigeria",
+      "city": "yola",
+      "name": "American University of Nigeria",
+      "archetype": "campus-block",
+      "subject": "A multi-storey air-conditioned academic building on the AUN campus, light render with deep shading, set in savanna grounds",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ece0",
+          "#4a6a7a",
+          "#c9a77c"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "shaded walkways typical of the campus style"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/American_University_of_Nigeria",
+          "what": "founded 2003/4, ~17 main-campus buildings, Pastor Library (2014), Commencement Hall, savanna setting"
+        },
+        {
+          "url": "https://www.aun.edu.ng/index.php/about/overview/history",
+          "what": "construction began October 2004; first phase of multi-storey air-conditioned buildings"
+        }
+      ],
+      "notes": "Facts known: multi-storey air-conditioned buildings, 17 main-campus buildings, 3,500-seat Commencement Hall, library 2014. Facade colours and form are NOT described in sources, so typed. Colours are a guess from a contemporary campus."
+    },
+    "emirates-museum-yola": {
+      "venueId": "emirates-museum-yola",
+      "city": "yola",
+      "name": "The Emirates Museum (Fombina Palace Museum)",
+      "archetype": "museum-theatre",
+      "subject": "A modest single-storey museum building within the Lamido's palace compound, mud-render walls under a low metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#e3d3b0",
+          "#8b5e3c"
+        ],
+        "roofColour": "#7d7468",
+        "windows": "punched",
+        "windowRatio": 0.12,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "palace compound wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "sahelian",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamawa_State",
+          "what": "tropical wet-and-dry climate, savanna vegetation, Fombina Palace Museum listed"
+        },
+        {
+          "url": "https://www.milehacker.com/travel/nigeria/adamawa/yola/famous-landmarks-in-yola-attractions-monuments-sig/",
+          "what": "palace complex has mud-brick design reflecting Fulani heritage; Jimeta Modern Market is a busy stall-filled commercial hub"
+        }
+      ],
+      "notes": "A Fombina Palace Museum is listed among Yola's sites; its building is not described anywhere found. Coordinates are within metres of the Lamido palace so it is shown as a small compound building in palace-style mud render. Low confidence."
+    },
+    "fmc-yola": {
+      "venueId": "fmc-yola",
+      "city": "yola",
+      "name": "Federal Medical Centre, Yola",
+      "archetype": "hospital",
+      "subject": "A federal hospital of several low-to-mid-rise ward blocks in white and cream render with red cross sign and an ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 75,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3efe4",
+          "#d8c9a8",
+          "#9aa0a4"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "ribbon",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1998",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Yola",
+          "what": "established 21 Aug 1998 as Yola Specialist Hospital; upgraded to teaching hospital Dec 2024; 11-structure upgrade project"
+        }
+      ],
+      "notes": "Establishment date and department list are factual; building form is typed. Older, lower and cream-toned than MAUTH."
+    },
+    "gorilla-park-yola": {
+      "venueId": "gorilla-park-yola",
+      "city": "yola",
+      "name": "Gorilla Park Yola",
+      "archetype": "park-landscape",
+      "subject": "A small recreation park with a pavilion, shade trees and a perimeter fence on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e3d3b0",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamawa_State",
+          "what": "tropical wet-and-dry climate, savanna vegetation, Fombina Palace Museum listed"
+        }
+      ],
+      "notes": "Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted. Name suggests a leisure park; contents are guessed (pavilion, gate)."
+    },
+    "jimeta-ultra-modern-market": {
+      "venueId": "jimeta-ultra-modern-market",
+      "city": "yola",
+      "name": "Jimeta Ultra Modern Market",
+      "archetype": "market-hall",
+      "subject": "A modern covered trading complex of ranked lock-up shops under long barrel-vault metal roofs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc8",
+          "#b4654a",
+          "#a8a29a"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1,
+          "note": "rows of numbered shop units"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.milehacker.com/travel/nigeria/adamawa/yola/famous-landmarks-in-yola-attractions-monuments-sig/",
+          "what": "palace complex has mud-brick design reflecting Fulani heritage; Jimeta Modern Market is a busy stall-filled commercial hub"
+        }
+      ],
+      "notes": "Sources say Jimeta's modern market is a busy stall-filled hub of produce, livestock and textiles; the physical building is not described. The name implies a planned covered complex, so a two-storey hall with shop units is typed. Distinguish from Karew (open stalls) and Yola Market (traditional lock-ups)."
+    },
+    "karew-jimeta-market": {
+      "venueId": "karew-jimeta-market",
+      "city": "yola",
+      "name": "Karew Jimeta Market",
+      "archetype": "market-open",
+      "subject": "An open-air neighbourhood market of timber and metal stalls and parasols on bare red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a6a44",
+          "#d8c9a8",
+          "#5b6670"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1,
+          "note": "dense rows"
+        },
+        {
+          "id": "umbrellas",
+          "count": 1,
+          "note": "colourful parasols"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.milehacker.com/travel/nigeria/adamawa/yola/famous-landmarks-in-yola-attractions-monuments-sig/",
+          "what": "palace complex has mud-brick design reflecting Fulani heritage; Jimeta Modern Market is a busy stall-filled commercial hub"
+        }
+      ],
+      "notes": "Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted. Treated as an informal open-air market."
+    },
+    "keystone-bank-yola": {
+      "venueId": "keystone-bank-yola",
+      "city": "yola",
+      "name": "Keystone Bank",
+      "archetype": "office-low",
+      "subject": "A two-to-three-storey bank branch in neutral render and glazed entrance bay with blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2f2f0",
+          "#3e5f78",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted. Brand colours deliberately not used."
+    },
+    "lamido-palace-yola": {
+      "venueId": "lamido-palace-yola",
+      "city": "yola",
+      "name": "Lamido Palace (Fombina Palace)",
+      "archetype": "heritage-fort",
+      "subject": "The Lamido of Adamawa's palace compound: walled mud-render ranges around courtyards with a decorated gateway",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "laterite",
+        "colours": [
+          "#b98a5e",
+          "#e3d3b0",
+          "#7d5a3c"
+        ],
+        "roofColour": "#7d7468",
+        "windows": "punched",
+        "windowRatio": 0.1,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high mud-render compound wall"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gatehouse"
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Fulani/Hausa geometric relief"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "wall parapet"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "sahelian",
+      "era": "19th century origins (Yola capital from 1841)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.milehacker.com/travel/nigeria/adamawa/yola/famous-landmarks-in-yola-attractions-monuments-sig/",
+          "what": "palace complex has mud-brick design reflecting Fulani heritage; Jimeta Modern Market is a busy stall-filled commercial hub"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamawa_Emirate",
+          "what": "British forces attacked the heavily defended palace and Friday mosque in 1901 and blew up palace buildings"
+        },
+        {
+          "url": "https://leadership.ng/why-visit-yola-adamawa-state/",
+          "what": "classic northern Nigerian and Islamic design elements; official residence of the Lamido"
+        }
+      ],
+      "notes": "Medium: sources agree on a mud-brick, Fulani-heritage palace complex, residence of the Lamido of Adamawa, used for the Durbar; exact layout and dimensions are NOT known and are typed. Palace has been rebuilt after 1901, and modern parts are likely cement-rendered."
+    },
+    "mauth-yola": {
+      "venueId": "mauth-yola",
+      "city": "yola",
+      "name": "Modibbo Adama University Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "A large teaching hospital of several multi-storey blocks in white render with blue-grey glazed bands",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#4a6a7a",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Yola",
+          "what": "teaching hospital affiliated with Modibbo Adama University (Yola area context)"
+        }
+      ],
+      "notes": "Taller and more glassy than FMC to read as a university teaching hospital; actual building not described in sources, form is typed. helipad is a guess for scale and could be dropped."
+    },
+    "mubi-park-motor-park": {
+      "venueId": "mubi-park-motor-park",
+      "city": "yola",
+      "name": "Mubi Park Motor Park",
+      "archetype": "transport-station",
+      "subject": "A busy motor park with a shed over loading bays, parked buses and vans and roadside kiosks on bare earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b0aaa0",
+          "#d9a441",
+          "#5b6670"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "none",
+        "windowRatio": 0.0,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted. Named after the Mubi road out of Jimeta."
+    },
+    "musa-barbing-salon": {
+      "venueId": "musa-barbing-salon",
+      "city": "yola",
+      "name": "Musa Barbing Salon",
+      "archetype": "shophouse",
+      "subject": "A single-storey roadside barber shop in a short row, painted render, awning and blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3b0",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Authored game venue; no real shop identified. Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted."
+    },
+    "national-museum-yola": {
+      "venueId": "national-museum-yola",
+      "city": "yola",
+      "name": "National Museum, Yola",
+      "archetype": "museum-theatre",
+      "subject": "A low institutional museum building in cream render with a shaded entrance portico and flag pole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#b4654a",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamawa_State",
+          "what": "tropical wet-and-dry climate, savanna vegetation, Fombina Palace Museum listed"
+        }
+      ],
+      "notes": "No source describing the building was found (search budget exhausted); a state-museum style is typed from the city style. Distinct from the Emirates museum, which is small mud render inside the palace."
+    },
+    "st-theresas-cathedral-yola": {
+      "venueId": "st-theresas-cathedral-yola",
+      "city": "yola",
+      "name": "St. Theresa's Cathedral",
+      "archetype": "church-modern",
+      "subject": "The Catholic cathedral of the Diocese of Yola in Jimeta: a broad hall church in cream render with a front bell tower and a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#efe6d0",
+          "#9a6a44",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "arched",
+        "windowRatio": 0.18,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "typed guess"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "Yola Christians and Muslims long co-resident; no cathedral description found"
+        }
+      ],
+      "notes": "The existence of the cathedral is from the game venue list; no description found, so form is typed (hall church with bell tower). Dimensions are a guess."
+    },
+    "yahuza-suya-spot": {
+      "venueId": "yahuza-suya-spot",
+      "city": "yola",
+      "name": "Yahuza Suya Spot Yola",
+      "archetype": "restaurant",
+      "subject": "A roadside suya grill: small open-fronted cement shed with a metal roof, grill station and plastic tables outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3b0",
+          "#b4654a",
+          "#4a4a4a"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Authored game venue; no real shop identified. Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted."
+    },
+    "yola-central-mosque": {
+      "venueId": "yola-central-mosque",
+      "city": "yola",
+      "name": "Yola Central Mosque (Modibbo Adama Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "Yola's main mosque seen from the street: a broad cream prayer hall under one large central dome with four tall minarets at the corners",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f1ead8",
+          "#2f6b4f",
+          "#d9c9a0"
+        ],
+        "roofColour": "#d8d2c4",
+        "windows": "arched",
+        "windowRatio": 0.25,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "four tall minarets"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "semi-elliptical arches"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "Eid courtyard"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "geometric patterns, calligraphy"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "traces to 1841; current building 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola_Central_Mosque",
+          "what": "one main dome, four tall minarets, Sudano-Sahelian plus modern Islamic style, calligraphy and geometric patterns, courtyard for Eid, held thousands"
+        },
+        {
+          "url": "https://mosqpedia.org/?p=2557",
+          "what": "concrete structure with semi-elliptical arches on facades; five ornamental domes (disagrees on dome count)"
+        }
+      ],
+      "notes": "Medium: counts of domes and minarets come from Wikipedia and a mosque database that disagree on domes; dimensions and colours are typed. Sits a few metres from the 'yola-mosque' venue; this brief uses the Wikipedia reading (single big dome, four minarets)."
+    },
+    "yola-market": {
+      "venueId": "yola-market",
+      "city": "yola",
+      "name": "Yola Market",
+      "archetype": "market-open",
+      "subject": "Yola's old central market: rows of shop lock-ups with metal roofs along narrow lanes plus open stalls under parasols near the palace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#d8c9a8",
+          "#b4654a",
+          "#9a6a44"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0.0,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1,
+          "note": "rows of shop units"
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "Yola is a trading centre; red earth, mud huts, thatch/zinc roofs in historic descriptions"
+        },
+        {
+          "url": "https://www.milehacker.com/travel/nigeria/adamawa/yola/famous-landmarks-in-yola-attractions-monuments-sig/",
+          "what": "palace complex has mud-brick design reflecting Fulani heritage; Jimeta Modern Market is a busy stall-filled commercial hub"
+        }
+      ],
+      "notes": "Typed from the Yola city style (cement render, corrugated metal roofs, laterite ground); no public description of this specific building was found in the sources consulted. Closer to the old town, so older and more earthen than Jimeta's markets."
+    },
+    "yola-mosque": {
+      "venueId": "yola-mosque",
+      "city": "yola",
+      "name": "Yola Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The same Friday mosque near the palace, read as a flat-roofed concrete prayer hall crowned with five ornamental domes behind a row of arches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f7f4ee",
+          "#8a7a54",
+          "#c9c0a8"
+        ],
+        "roofColour": "#d8d2c4",
+        "windows": "arched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "five ornamental domes"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "semi-elliptical arches shading facade"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://mosqpedia.org/?p=2557",
+          "what": "concrete, semi-elliptical arches on facades to shade from sun, five ornamental domes"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola_Central_Mosque",
+          "what": "same location; Sudano-Sahelian and modern Islamic style"
+        }
+      ],
+      "notes": "This venue lies about 5 m from yola-central-mosque and is almost certainly the same real mosque; to avoid two identical models it follows the five-dome reading (mosqpedia) with a single minaret guess. Minaret count is typed."
+    },
+    "yola-race-course": {
+      "venueId": "yola-race-course",
+      "city": "yola",
+      "name": "Yola Race Course",
+      "archetype": "stadium",
+      "subject": "An oval horse race track with a covered grandstand on one side, rails and floodlights, laid out for Durbar racing",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8c9a8",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter rail"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "what": "annual horse-riding Durbar is a Yola attraction"
+        }
+      ],
+      "notes": "Track shown at its recognisable portion within 120 m. Grandstand and lighting are typed guesses; the oval turf/earth track is the key shape."
+    }
+  }
+}

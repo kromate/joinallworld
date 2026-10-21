@@ -1,0 +1,1229 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "yaren",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "yaren",
+    "climate": "tropical-maritime",
+    "vernacular": "Equatorial island nation (21 km2, no rivers; roofs double as rain catchment). Low one- and two-storey buildings of rendered concrete block painted white, cream or pastel, under corrugated or sheet-metal roofs (often red, green or grey), set on a narrow coastal belt of coconut palms and open white-coral sand; the interior is a limestone-pinnacle plateau of former phosphate mining. Public buildings are plain modern concrete boxes with flag poles; the tallest building on the island is a modest hotel block.",
+    "wallColours": [
+      "#f2eee2",
+      "#e6dcc4",
+      "#cfd8d6",
+      "#b9c9c2",
+      "#d9b99b",
+      "#9a9a94"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6f5a",
+      "#8d9296",
+      "#5b6670"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "render",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Very little applied ornament: painted block walls, louvred and open-air shuttered windows for ventilation, deep eaves and verandas, flag poles. Traditional Nauruan crafts use coconut-fibre and geometric patterns but do not feature on buildings. Rusted Japanese WWII guns and concrete bunkers are the island's heritage markers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Nauru",
+        "what": "oval 21 km2 island, coastal belt 150-300 m with coconut palms, coral cliffs and pinnacled plateau, roof rain catchment, hot humid equatorial climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Buada_Lagoon",
+        "what": "tamanu forest, fruit trees, road around the lagoon"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Meneng_District",
+        "what": "Nauru Primary School 2016: two-storey, eight classrooms, ceiling fans and airflow design built by Canstruct"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Aiwo_District",
+        "what": "OD-N-Aiwo Hotel described as tallest building in Nauru; council chambers; port; phosphate cantilever"
+      }
+    ]
+  },
+  "places": {
+    "yaren-airport-yaren-airport": {
+      "venueId": "yaren-airport-yaren-airport",
+      "city": "yaren",
+      "name": "Nauru International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The single small terminal building of Nauru's only airport, seen from the landside forecourt, with the runway behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "small-island"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efeae0",
+          "#5b7f93",
+          "#c9c4b8"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy over forecourt"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "small airfield tower assumed beside the terminal"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru_International_Airport",
+          "what": "single terminal with small check-in counter, waiting areas, eatery and gift shop on the ground floor; runway 12/30 2,150 m asphalt, WWII Japanese origin; hosts Nauru Airlines head office, civil aviation, immigration and customs"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Yaren_District",
+          "what": "airport and Parliament House sit together in Yaren"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; only the function and ground-floor layout are sourced. Dimensions, roof and colours are estimates typed from the city style. Recognisable by the runway behind and its tiny scale compared with other national airports; no jet bridges (stairs/walk-out boarding)."
+    },
+    "yaren-clinic": {
+      "venueId": "yaren-clinic",
+      "city": "yaren",
+      "name": "Nauru Medical Centre",
+      "archetype": "hospital",
+      "subject": "The Republic of Nauru Hospital campus (now Naoero Medical Centre): a low-rise cluster of ward blocks with an ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee4",
+          "#8aa7a3",
+          "#bdb8ac"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2,
+          "note": "rain catchment tanks typical on Nauru"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Republic_of_Nauru_Hospital",
+          "what": "65 beds: 10-bed emergency, 14-bed acute care, theatres, wards; formed 1999 by merging the government and Nauru Phosphate Corporation hospitals; located in Denigomodu; renamed Naoero Medical Centre after a 2025 management agreement"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; scale from 65-bed capacity; form and colours typed from the city style. Several joined low wards (merger of two hospitals)."
+    },
+    "yaren-community-notices": {
+      "venueId": "yaren-community-notices",
+      "city": "yaren",
+      "name": "Government Building",
+      "archetype": "civic-palace",
+      "subject": "The Yaren government/Parliament precinct building: a plain two-storey modern concrete block with a flag pole at the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "parliament"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee2",
+          "#a9b4b0",
+          "#7a7f80"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2,
+          "note": "flag poles at the front"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance steps"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "low plinth"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yaren_District",
+          "what": "Parliament House, administration offices, police HQ and fire station are clustered in Yaren near the airport"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Nauru",
+          "what": "meets in the Parliament Building, Yaren; text gives no architectural description"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru",
+          "what": "Government House/Yaren is the de facto seat of government"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; typed low-rise civic block from the city style. Do not give it palace grandeur: Nauru's government buildings are modest."
+    },
+    "yaren-community-voting-game": {
+      "venueId": "yaren-community-voting-game",
+      "city": "yaren",
+      "name": "Civic Centre",
+      "archetype": "civic-small",
+      "subject": "The Nauru Local Government Council chambers and offices in Aiwo: a small single-storey hall with a veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "council-chambers"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6cf",
+          "#4f6f5a",
+          "#b9b4a8"
+        ],
+        "roofColour": "#4f6f5a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "veranda/verandah along the front"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Aiwo_District",
+          "what": "Nauru Local Government Council chambers and offices are in Aiwo"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; typed from the city style as a single-storey hall with corrugated roof."
+    },
+    "yaren-community-workshop": {
+      "venueId": "yaren-community-workshop",
+      "city": "yaren",
+      "name": "Nauru College",
+      "archetype": "campus-block",
+      "subject": "A secondary school campus of long single- and two-storey classroom blocks linked by covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede0",
+          "#6f8fa3",
+          "#c4bfb2"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "open yard between blocks"
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low perimeter wall"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru",
+          "what": "Nauru College is one of the two secondary schools, with Nauru Secondary School"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Meneng_District",
+          "what": "comparable new Nauru Primary School (2016): two-storey, eight classrooms, fans and airflow design"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; typed campus; wings assumed. Distinct from USP campus by older, longer, lower classroom blocks."
+    },
+    "yaren-market-game": {
+      "venueId": "yaren-market-game",
+      "city": "yaren",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A small open-air trading yard of tin-roofed stalls on white coral sand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "stalls-under-sheds"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc7",
+          "#8a3b2e",
+          "#b9b4a8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue; no real market identified. Typed from city style."
+    },
+    "yaren-meal-stop": {
+      "venueId": "yaren-meal-stop",
+      "city": "yaren",
+      "name": "Bondi Beach",
+      "archetype": "park-landscape",
+      "subject": "A narrow white-coral beach backed by coconut palms and limestone rocks with a small open shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "beach"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e9dfc8",
+          "#8a8a84",
+          "#4f6f5a"
+        ],
+        "roofColour": "#4f6f5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small open shelter assumed"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru",
+          "what": "fringing reef with coral pillars, coconut palms on coastal belt"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; the beach is a named surf/swim spot near the south coast; typed from island coastal character (sand, palms, grey coral limestone outcrops). Game kind is a meal stop but the place is a beach."
+    },
+    "yaren-osm-node-10994324451": {
+      "venueId": "yaren-osm-node-10994324451",
+      "city": "yaren",
+      "name": "Tropicana Cafe",
+      "archetype": "restaurant",
+      "subject": "A small one-storey roadside cafe with a tin roof and veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "cafe"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe4c8",
+          "#d9893a",
+          "#8a3b2e"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of this building found in accessible sources; typed small cafe from the city style."
+    },
+    "yaren-osm-node-10994460231": {
+      "venueId": "yaren-osm-node-10994460231",
+      "city": "yaren",
+      "name": "Japanese WWII guns and bunker",
+      "archetype": "heritage-fort",
+      "subject": "A WWII Japanese coastal gun position: rusted gun barrels beside a squat concrete bunker, half-overgrown",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat",
+        "variant": "gun-and-bunker"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "stone",
+        "colours": [
+          "#8f8d86",
+          "#6e4a3a",
+          "#5a6b4f"
+        ],
+        "roofColour": "#8f8d86",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 2,
+          "note": "rusted Japanese guns"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low concrete emplacement walls"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "bunker entrance"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1940s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Command_Ridge",
+          "what": "Japanese communications bunker with Japanese writing on walls; rusted WWII guns and artillery remain on the ridge"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru",
+          "what": "Japanese occupation from 25 Aug 1942, airfields built, bombed from 1943"
+        }
+      ],
+      "notes": "Sources confirm rusting guns and a concrete bunker on Nauru but not this exact site; sizes estimated. Rust browns, weathered grey concrete, plants growing over it."
+    },
+    "yaren-osm-node-12057081469": {
+      "venueId": "yaren-osm-node-12057081469",
+      "city": "yaren",
+      "name": "Crystal's restaurant",
+      "archetype": "restaurant",
+      "subject": "A modest one-storey restaurant with a veranda under a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "variant": "restaurant"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e8d4",
+          "#4f6f5a",
+          "#8d9296"
+        ],
+        "roofColour": "#4f6f5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of this building found in accessible sources; typed from the city style; hip roof and green roof chosen to differ from Tropicana Cafe."
+    },
+    "yaren-osm-node-4898470422": {
+      "venueId": "yaren-osm-node-4898470422",
+      "city": "yaren",
+      "name": "Japanese WWII Gun",
+      "archetype": "heritage-fort",
+      "subject": "A single rusted Japanese WWII gun barrel on a worn concrete mount among coral pinnacles",
+      "form": {
+        "footprint": "round",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "single-gun"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#8f8d86",
+          "#6e4a3a",
+          "#5a6b4f"
+        ],
+        "roofColour": "#8f8d86",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "single rusted gun on a concrete mount"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1940s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Command_Ridge",
+          "what": "rusted WWII Japanese guns remain on Nauru"
+        }
+      ],
+      "notes": "Single gun, no bunker; sited inland near the plateau so surround it with limestone pinnacle texture and tamanu scrub. Dimensions estimated."
+    },
+    "yaren-osm-node-5943958387": {
+      "venueId": "yaren-osm-node-5943958387",
+      "city": "yaren",
+      "name": "Lagoon viewpoint",
+      "archetype": "park-landscape",
+      "subject": "A roadside view over Buada Lagoon: a small oval green-water lake ringed by tamanu forest and fruit gardens",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "lagoon"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f8f6a",
+          "#4a7f78",
+          "#b9b4a8"
+        ],
+        "roofColour": "#4f6f5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low roadside wall"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "path down to shore"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Buada_Lagoon",
+          "what": "oval, ~280 m by 140 m, 3.8 ha, greenish brackish water, ringed by road and private homes, ~40 ha of tamanu forest, breadfruit, mango and banana plots, Command Ridge to the NW"
+        }
+      ],
+      "notes": "Lagoon measurements are sourced; the viewpoint furnishings are assumed. Shown as the recognisable portion (water oval + forest)."
+    },
+    "yaren-osm-node-6715040385": {
+      "venueId": "yaren-osm-node-6715040385",
+      "city": "yaren",
+      "name": "Gun",
+      "archetype": "heritage-fort",
+      "subject": "A rusted Japanese WWII gun on the Yaren coast near the airport, pointing seaward",
+      "form": {
+        "footprint": "round",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "coastal-gun"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#8f8d86",
+          "#6e4a3a",
+          "#9a9a94"
+        ],
+        "roofColour": "#8f8d86",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "rusted coastal gun, barrel towards the sea"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low coral-rock wall"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1940s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yaren_District",
+          "what": "Japanese WWII guns can be found in Yaren"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Command_Ridge",
+          "what": "rusted WWII guns"
+        }
+      ],
+      "notes": "Coastal gun in Yaren (sourced only as 'Japanese guns in Yaren'); barrel and mount shape estimated. Differs from the inland single gun by sand and palms."
+    },
+    "yaren-osm-node-6717696888": {
+      "venueId": "yaren-osm-node-6717696888",
+      "city": "yaren",
+      "name": "Bunker",
+      "archetype": "heritage-fort",
+      "subject": "A weathered Japanese WWII concrete bunker, squat with a slit opening, on the east coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat",
+        "variant": "bunker"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#8a8880",
+          "#5f5a52",
+          "#5a6b4f"
+        ],
+        "roofColour": "#8a8880",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "thick concrete walls with firing slit"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1940s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Command_Ridge",
+          "what": "Japanese concrete bunker with writing on the walls exists on Nauru"
+        }
+      ],
+      "notes": "Generic Japanese bunker form; no source for this exact bunker's size. Dark stains, vegetation creeping over roof."
+    },
+    "yaren-osm-node-6936364885": {
+      "venueId": "yaren-osm-node-6936364885",
+      "city": "yaren",
+      "name": "Naoero Museum",
+      "archetype": "museum-theatre",
+      "subject": "Nauru's small national museum in Yaren: a low modern building with a front entrance and display hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "national-museum"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebdc",
+          "#7b9aa8",
+          "#b2ada0"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yaren_District",
+          "what": "Naoero Museum is Nauru's national museum, in Yaren"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; only the existence and national role are sourced; form typed from the city style."
+    },
+    "yaren-osm-way-1184110658": {
+      "venueId": "yaren-osm-way-1184110658",
+      "city": "yaren",
+      "name": "University of the South Pacific (Nauru Campus)",
+      "archetype": "campus-block",
+      "subject": "The 2018 USP Nauru campus building, a two-storey modern block that also houses the Nauru Community Library",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "campus-centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#3f6f8f",
+          "#c0bdb4"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "sun shading on windows"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru",
+          "what": "new USP Nauru campus building opened in May 2018 and houses the Nauru Community Library; campus established 1987 and previously in Aiwo"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_the_South_Pacific",
+          "what": "USP Nauru extension centre in Yaren, est. 1987"
+        }
+      ],
+      "notes": "Opening date, library function and location are sourced; shape, size and colours estimated. Newer and glassier than Nauru College's old blocks."
+    },
+    "yaren-quiet-reflection": {
+      "venueId": "yaren-quiet-reflection",
+      "city": "yaren",
+      "name": "Church of Christ the King",
+      "archetype": "church-modern",
+      "subject": "A small whitewashed island church with a steep corrugated roof and entrance porch among coconut palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "parish-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f5f3ea",
+          "#4a7f9a",
+          "#b8b4a8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower or belfry over the entrance, assumed"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low yard wall"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nauru",
+          "what": "main denominations are Nauru Congregational Church and Catholic Church; churches on the island are plain modern buildings"
+        }
+      ],
+      "notes": "No description of this building found in accessible sources; typed church from city style. Nauruan Christian churches are typically simple whitewashed halls."
+    },
+    "yaren-recreation": {
+      "venueId": "yaren-recreation",
+      "city": "yaren",
+      "name": "Ella Park",
+      "archetype": "park-landscape",
+      "subject": "A small public green with grass, palms, benches and a shelter on the south coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "community-green"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#7fa468",
+          "#e6dcc4",
+          "#8a8a84"
+        ],
+        "roofColour": "#4f6f5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low boundary wall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of this building found in accessible sources; typed park from island style (grass patches, coconut palms, small shelter)."
+    },
+    "yaren-transit": {
+      "venueId": "yaren-transit",
+      "city": "yaren",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A roadside bus stop with a small tin-roofed shelter and bus bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "bus-stop"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#8d9296",
+          "#4f6f5a",
+          "#d6d2c6"
+        ],
+        "roofColour": "#4f6f5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue; no real stop identified. Nauru has a single ring road, so a simple roadside shelter."
+    }
+  }
+}

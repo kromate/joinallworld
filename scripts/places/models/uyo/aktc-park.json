@@ -1,0 +1,211 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/uyo.json",
+   "used": "bus park brief: 80x50 paved yard, long roofed passenger shed, ticket office, coaches in green/white, perimeter wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     56,
+     9
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f1ece0",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 6,
+    "height": 3.8,
+    "roof_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 1.0,
+    "colours": [
+     "#2f6b4f",
+     "#ffffff",
+     "#f1ece0"
+    ],
+    "yaw": 0
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9c3b0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    36,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    26,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.4,
+    "colour": "#d8d2c0",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no OSM match and no photo; typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "aktc-park"
+}

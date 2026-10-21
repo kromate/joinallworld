@@ -1,0 +1,432 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-109431897",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Acad%C3%A9mie_des_Beaux-Arts,_Kinshasa.jpg",
+   "licence": "CC0",
+   "author": "Kitangaza.1953",
+   "view": "side",
+   "file": "/tmp/places-evidence/kinshasa/aba3.jpg",
+   "used": "two-storey turquoise block: very wide low-pitched roof with deep overhang and white fascia, turquoise upper floor over a recessed white ground storey with slim white columns, turquoise wall panel and door, first-floor balcony band, clipped shrubs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Acad%C3%A9mie_des_beaux-arts_en_R%C3%A9publique_D%C3%A9mocratique_du_Congo.jpg",
+   "licence": "CC0",
+   "author": "Glo Ditu",
+   "view": "street",
+   "used": "lawn campus with sculptures on white plinths, palms and broadleaf trees, low turquoise-roofed buildings in the background"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/109431897",
+   "used": "site extent only: the 78,000 m2 polygon is the whole campus, so single buildings are composed within it"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-upper",
+   "footprint": {
+    "rect": [
+     45,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2ec4c0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f4f4f2",
+    "material": "concrete",
+    "rise": 0.9,
+    "overhang": 5
+   },
+   "z0": 5.0
+  },
+  {
+   "type": "mass",
+   "id": "hall-ground",
+   "footprint": {
+    "rect": [
+     41,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0.5
+   ],
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-band",
+   "params": {
+    "rect": [
+     45,
+     17
+    ],
+    "z0": 4.4,
+    "height": 0.9,
+    "colour": "#2ec4c0"
+   },
+   "at": [
+    0,
+    -2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance-panel",
+   "params": {
+    "rect": [
+     16,
+     0.6
+    ],
+    "z0": 0,
+    "height": 5.0,
+    "colour": "#2ec4c0"
+   },
+   "at": [
+    1,
+    -8.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entrance-door",
+   "params": {
+    "rect": [
+     2.2,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#2b2b2e"
+   },
+   "at": [
+    1,
+    -8.8
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -16,
+    -7.6,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.4,
+        0,
+        "#ffffff"
+       ],
+       [
+        0.4,
+        4.6,
+        "#ffffff"
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     32,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    14
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2ec4c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bfe3d0",
+    "rise": 2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    32,
+    14
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2ec4c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bfe3d0",
+    "rise": 2,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-rear",
+   "footprint": {
+    "rect": [
+     50,
+     10
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5cb",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c5a46",
+    "material": "corrugated",
+    "rise": 1.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.5,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 4.0,
+    "plinthHeight": 1.4,
+    "colour": "#5d5750",
+    "plinthColour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    12,
+    -22,
+    1.2
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#6a6256"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    24,
+    -18,
+    1.2
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#7b8a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-a",
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#f2f0ea"
+   },
+   "at": [
+    12,
+    -22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-b",
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "height": 1.2,
+    "colour": "#f2f0ea"
+   },
+   "at": [
+    24,
+    -18
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 4.0,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round white columns are not visible in the render (hidden or too thin) and the white recessed ground storey reads pale blue; upper floor lacks louvred windows and side balcony; roof is a hip with a light colour rather than the single wide slope; wings estimated, entrance panel lacks the angular cut-out."
+ }
+}

@@ -1,0 +1,254 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mbabane.json#mbabane-recreation",
+   "used": "town-centre park named Coronation Park (OSM leisure=park way/162207260, about 0.17 km2, too large for the scene so shown as the recognisable core): central lawn, ring path, bandstand, stepped sports-ground edge, tree lines, flags; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 85,
+    "colour": "#7fa35a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     70,
+     48
+    ],
+    "height": 0.08,
+    "colour": "#d9c29a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     62,
+     40
+    ],
+    "height": 0.08,
+    "colour": "#7fa35a"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "radius": 4.5,
+    "height": 4
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -30
+     ],
+     [
+      0,
+      -22
+     ],
+     [
+      50,
+      -30
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#cbbb94"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -22
+     ],
+     [
+      0,
+      -6
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbbb94"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     5
+    ],
+    "height": 2.2,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -50,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "count": 9,
+    "kind": "broadleaf",
+    "height_min": 9,
+    "height_max": 13
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -50,
+    38,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "count": 8,
+    "kind": "broadleaf",
+    "height_min": 9,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -44,
+    0,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 50,
+    "count": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    44,
+    0,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 50,
+    "count": 8
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    -20,
+    0
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6,
+    -20,
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.0,
+    "kind": "wall",
+    "colour": "#c9b98f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   120,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; layout inferred from name and OSM tags"
+ }
+}

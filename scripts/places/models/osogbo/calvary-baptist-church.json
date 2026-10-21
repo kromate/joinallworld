@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "calvary-baptist-church",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/osogbo.json",
+   "used": "gabled worship hall 30 x 16 m, short front cross tower, porch; OSM match is nearest only (35 m) so the outline is not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.6,
+    "bands": "#7a3a2a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3a2a",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-bay",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c7a6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3a2a",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "width": 4,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.9,
+    "run": 2.4,
+    "count": 5,
+    "colour": "#d6c7a6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#f2efe6",
+    "frameColour": "#7a3a2a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   55
+  ]
+ }
+}

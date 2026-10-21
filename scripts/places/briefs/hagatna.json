@@ -1,0 +1,1744 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "hagatna",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "hagatna",
+    "climate": "tropical-maritime",
+    "vernacular": "US-territory Pacific island rebuilt after 1944: low-rise reinforced-concrete and concrete-block buildings (typhoon-proof) in cream, beige and pastel paint with flat or low-pitched roofs, corrugated metal roofs on older houses and shops, big strip malls and car parks, a few coral-stone Spanish colonial remains, hotel towers along Tumon Bay and lush limestone-plateau jungle and palms.",
+    "wallColours": [
+      "#efe6d2",
+      "#d9c9a3",
+      "#f4f1ea",
+      "#e5b99a",
+      "#b5b8ba",
+      "#a9c7bd"
+    ],
+    "roofColours": [
+      "#8f9498",
+      "#a0a3a5",
+      "#b4472f",
+      "#6b7a6a"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "render",
+      "stucco",
+      "limestone",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "metal-sheet",
+      "corrugated",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Stylised latte-stone (Chamorro pillar-and-capstone) motifs on civic and airport facades, Spanish colonial coral-stone and lime-mortar masonry in the old town, painted Pacific murals, hurricane shutters and deep overhanging eaves.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Hag%C3%A5t%C3%B1a,_Guam",
+        "what": "post-1944 grid streets, several high-rise offices in centre, Plaza de Espana Spanish remains beside the cathedral"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Asan,_Guam",
+        "what": "before the 1980s redevelopment Spanish-style houses; rebuilt most homes in concrete"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Antonio_B._Won_Pat_International_Airport",
+        "what": "stylised latte stone motifs on the terminal front"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Yigo_Guam_Temple",
+        "what": "contemporary design referencing latte stones and local community buildings; beige stucco"
+      }
+    ]
+  },
+  "places": {
+    "hagatna-airport-hagatna-airport": {
+      "venueId": "hagatna-airport-hagatna-airport",
+      "city": "hagatna",
+      "name": "Antonio B. Won Pat International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 1996-98 three-level terminal seen from the landside forecourt: a wide, low concrete block with stylised latte-stone motifs on the front and covered arrivals",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "three-level-terminal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dfc9",
+          "#4d7a86",
+          "#b9b4a6"
+        ],
+        "roofColour": "#b8bbbc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "deep forecourt canopy"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "stylised latte-stone motifs on the front"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "710-space lot (phase 1)"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1996-98",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonio_B._Won_Pat_International_Airport",
+          "what": "phased opening Sept 1996 / Aug 1998; ~550,000 sq ft (51,000 m2); three levels: arrivals below, ticketing at apron level, gates on top; front shows stylised latte stone motifs; separate 1982 commuter terminal"
+        }
+      ],
+      "notes": "Levels, area and latte-stone motif sourced. Colours, roof and the exact bridge count are typed guesses. 230 m is the recognisable central block (the full terminal is longer than the 120 m clamp, the generator will crop). No OSM terminal footprint exists."
+    },
+    "hagatna-clinic": {
+      "venueId": "hagatna-clinic",
+      "city": "hagatna",
+      "name": "Guam Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "Guam Memorial Hospital at Oka Point: a large multi-wing 1980s concrete hospital block, white with horizontal window bands",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 234,
+        "depth_m": 226,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "variant": "multi-wing-campus",
+        "wings": 4
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ece6d6",
+          "#8f9498",
+          "#c9c4b8"
+        ],
+        "roofColour": "#b8bbbc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guam_Memorial_Hospital",
+          "what": "founded 1956 at Oka Point; new hospital building completed 1982; 198 beds"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/585214438",
+          "what": "OSM footprint 233.9x226.4 m, 44662 m2 (match: name)"
+        }
+      ],
+      "notes": "The whole campus is far larger than the 120 m clamp; show the main bed tower. Storey count (4) and finish are guesses; footprint (234x226 m, many wings) is the measured OSM area."
+    },
+    "hagatna-community-notices": {
+      "venueId": "hagatna-community-notices",
+      "city": "hagatna",
+      "name": "NASA Guam MSFN Station (decommissioned)",
+      "archetype": "civic-small",
+      "subject": "The decommissioned NASA tracking station building: a small single-storey concrete block with a mast and a satellite dish pad beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "radio-station",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d3c0",
+          "#8f9498",
+          "#b9b4a6"
+        ],
+        "roofColour": "#a0a3a5",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter chain-link"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/903540915",
+          "what": "OSM footprint 17.5x9.6 m, 152 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Only an unnamed 17x10 m OSM building 6 m away. Typed from what a decommissioned tracking site is; no photo descriptions found."
+    },
+    "hagatna-community-voting-game": {
+      "venueId": "hagatna-community-voting-game",
+      "city": "hagatna",
+      "name": "Asan Community Center",
+      "archetype": "civic-small",
+      "subject": "Asan village community centre: a low concrete hall with a covered porch beside a grassy park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "community-hall",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d2",
+          "#a9c7bd",
+          "#b5b8ba"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asan,_Guam",
+          "what": "Asan was rebuilt in the 1980s with concrete houses and straight streets; large grassy park across the road"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/504322436",
+          "what": "OSM footprint 134.2x99.5 m, 8265 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM outline (134x100 m) is the park/townhall polygon, not a building; the hall size is a guess."
+    },
+    "hagatna-community-workshop": {
+      "venueId": "hagatna-community-workshop",
+      "city": "hagatna",
+      "name": "Nieves M. Flores Memorial Library",
+      "archetype": "campus-block",
+      "subject": "Guam public library, three floors in a former administration building, blocky 1960s concrete with ribbon windows",
+      "form": {
+        "footprint": "L",
+        "width_m": 32,
+        "depth_m": 31,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "public-library",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8dfc9",
+          "#8f9498",
+          "#c9c4b8"
+        ],
+        "roofColour": "#a0a3a5",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960 (floors added 1968, 1979)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nieves_M._Flores_Memorial_Library",
+          "what": "moved 1960 into the former Guam Administration Building at 254 Martyr Street; second floor 1968, third floor 1979"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/289489423",
+          "what": "footprint 32x31 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/289489423",
+          "what": "OSM footprint 32.1x31 m, 867 m2 (match: containing)"
+        }
+      ],
+      "notes": "Storeys and age sourced; the facade finish is a guess."
+    },
+    "hagatna-market-game": {
+      "venueId": "hagatna-market-game",
+      "city": "hagatna",
+      "name": "Micronesia Mall",
+      "archetype": "mall",
+      "subject": "Guam largest mall in Dededo: a vast two-level box with entrance towers and a seven-level parking garage",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 305,
+        "depth_m": 234,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "big-box-mall",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8dfc9",
+          "#a9505a",
+          "#8f9498"
+        ],
+        "roofColour": "#b8bbbc",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "seven-level garage plus about 1000 ground spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1988 (doubled 1998)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Micronesia_Mall",
+          "what": "opened 8 Aug 1988; ~700,000 sq ft over two floors; 7-level garage + ~1000 ground spaces; four anchors incl. two Macys stores"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32524264",
+          "what": "footprint ~305x234 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32524264",
+          "what": "OSM footprint 305.3x234 m, 38568 m2 (match: name)"
+        }
+      ],
+      "notes": "Footprint/levels sourced; colour and tower treatment are guesses. Far larger than the clamp, so show one anchor wing and the garage."
+    },
+    "hagatna-meal-stop": {
+      "venueId": "hagatna-meal-stop",
+      "city": "hagatna",
+      "name": "Ruby Tuesday",
+      "archetype": "restaurant",
+      "subject": "A freestanding chain-style restaurant building set in a car park off Marine Corps Drive",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "pad-restaurant",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#c9553f",
+          "#e8dfc9",
+          "#4a3a30"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank brand-neutral board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/289488758",
+          "what": "OSM footprint 31.8x18.1 m, 538 m2 (match: containing)"
+        }
+      ],
+      "notes": "Named after a US casual-dining chain; the footprint (32x18 m) is OSM. Chains look alike, so the style is typed. No logo, blank board only."
+    },
+    "hagatna-osm-node-2133106594": {
+      "venueId": "hagatna-osm-node-2133106594",
+      "city": "hagatna",
+      "name": "Two Lovers Point (Puntan Dos Amantes)",
+      "archetype": "park-landscape",
+      "subject": "The 113 m limestone cliff above Tumon Bay with a viewing platform, a metal statue of the two lovers, gift shop and a clifftop restaurant terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "clifftop-viewpoint",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "limestone",
+        "colours": [
+          "#e8dfc9",
+          "#a9c7bd",
+          "#c9c4b8"
+        ],
+        "roofColour": "#a0a3a5",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing platforms over Tumon Bay"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "metal statue of the two lovers, toppled by Typhoon Pongsona 2002, restored 2015"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "gift shop"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "wedding facility"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1900s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Two_Lovers_Point",
+          "what": "cliff 113 m (370 ft), viewing platforms, gift shop, wedding facilities, restaurant, metal statue of the lovers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/289201344",
+          "what": "OSM footprint 6.8x3.4 m, 23 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Cliff drop is the key silhouette: keep the platform at the cliff edge with a sheer drop to the bay on one side. Building sizes are guesses; the OSM structure (7x3 m) is only the lookout hut."
+    },
+    "hagatna-osm-node-358671978": {
+      "venueId": "hagatna-osm-node-358671978",
+      "city": "hagatna",
+      "name": "Barrigada War Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "Barrigada war memorial park: a grassy village park with a memorial wall/plaza and a small community building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "memorial-park",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8dfc9",
+          "#a0a3a5",
+          "#c9c4b8"
+        ],
+        "roofColour": "#a0a3a5",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "memorial wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1950s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barrigada,_Guam",
+          "what": "listed on Wikidata as Barrigada War Memorial Park; details of the memorial not found"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1157531598",
+          "what": "OSM footprint 27.3x21.1 m, 467 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Memorial layout not described by any source found; typed generic village park. OSM nearest building 27x21 m is probably the park hall."
+    },
+    "hagatna-osm-node-358672212": {
+      "venueId": "hagatna-osm-node-358672212",
+      "city": "hagatna",
+      "name": "Northern Region Community Health Center",
+      "archetype": "hospital",
+      "subject": "The Dededo community health centre: an L-shaped low clinic block with a covered entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 106,
+        "depth_m": 67,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "health-centre",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eef0ea",
+          "#4d7a86",
+          "#b5b8ba"
+        ],
+        "roofColour": "#b8bbbc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1167614779",
+          "what": "OSM footprint 105.6x67 m, 4292 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "OSM building 106x67 m, 4292 m2 (measured); levels and finish are guessed."
+    },
+    "hagatna-osm-node-358672300": {
+      "venueId": "hagatna-osm-node-358672300",
+      "city": "hagatna",
+      "name": "Saint Anthony Catholic Church (Tamuning)",
+      "archetype": "church-modern",
+      "subject": "Tamuning parish church: a large rectangular concrete church with a tall front bell tower and a low-pitch roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable",
+        "variant": "parish-church",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#efe9db",
+          "#c9a46c",
+          "#b5b8ba"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/254981808",
+          "what": "OSM footprint 47.8x26.4 m, 1263 m2 (match: containing)"
+        }
+      ],
+      "notes": "OSM church footprint 48x26 m (1263 m2). Rebuilt after the war in concrete as most Guam parish churches are; tower and colours typed."
+    },
+    "hagatna-osm-node-3939176179": {
+      "venueId": "hagatna-osm-node-3939176179",
+      "city": "hagatna",
+      "name": "Cetti Bay Overlook",
+      "archetype": "park-landscape",
+      "subject": "Cetti Bay overlook on the hills above Umatac: a small roadside lookout shelter over a bay and steep jungle slopes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "hip",
+        "variant": "roadside-lookout",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d9d3c0",
+          "#8a6a48",
+          "#b5b8ba"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cetti_Bay",
+          "what": "photo caption: bay seen from the hills above; bay is second north of Umatac"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1057020316",
+          "what": "OSM footprint 6.2x3.4 m, 21 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Only a 6x3 m OSM structure. The setting, a deep bay and steep green slopes, is more recognisable than the shelter."
+    },
+    "hagatna-osm-node-6203091886": {
+      "venueId": "hagatna-osm-node-6203091886",
+      "city": "hagatna",
+      "name": "Coco Palm Garden Beach",
+      "archetype": "restaurant",
+      "subject": "A beachfront restaurant and cabana area under palms on the north-eastern coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "variant": "beach-restaurant",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#e0c9a0",
+          "#7b6a58",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a6a48",
+        "roofMaterial": "thatch",
+        "windows": "louvre",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building and no source found. Typed beach-restaurant from the name and the coast setting."
+    },
+    "hagatna-osm-node-738952422": {
+      "venueId": "hagatna-osm-node-738952422",
+      "city": "hagatna",
+      "name": "Jeff's Pirates Cove",
+      "archetype": "restaurant",
+      "subject": "A casual beachfront restaurant in a low rambling house-like building with a wooden deck, pirate-themed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 49,
+        "depth_m": 38,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "beach-restaurant",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a3",
+          "#7b4a32",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "pirate flag"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/345094657",
+          "what": "OSM footprint 48.8x38.2 m, 1190 m2 (match: containing)"
+        }
+      ],
+      "notes": "OSM tags the footprint as a house (49x38 m). The pirate theme is from the name only; appearance typed."
+    },
+    "hagatna-osm-way-1159666361": {
+      "venueId": "hagatna-osm-way-1159666361",
+      "city": "hagatna",
+      "name": "Paseo Stadium",
+      "archetype": "stadium",
+      "subject": "Paseo baseball stadium: a concrete and hollow-block ballpark with grandstand seating, an elevated press box and walk-in dugouts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "ballpark",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d3c0",
+          "#4d7a86",
+          "#8f9498"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "outfield wall"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paseo_Stadium",
+          "what": "concrete and hollow-block structure with locker rooms, concession booths, walk-in dugouts and an elevated press box; capacity up to 2800 seats"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1159666361",
+          "what": "OSM footprint 90x59.7 m, 2505 m2 (match: name)"
+        }
+      ],
+      "notes": "Baseball diamond, not a bowl: seats form an arc behind home plate, outfield is a plain wall with the scoreboard on it."
+    },
+    "hagatna-osm-way-256252073": {
+      "venueId": "hagatna-osm-way-256252073",
+      "city": "hagatna",
+      "name": "Tumon Sands Plaza",
+      "archetype": "mall",
+      "subject": "Tumon Sands Plaza: a three-storey open-air shopping centre in Tumon with bold colour trim and a central atrium",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 69,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "variant": "strip-shopping",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3c7a1",
+          "#2f6b7a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b8bbbc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/256252073",
+          "what": "OSM footprint 119.6x69.3 m, 6153 m2 (match: name); levels 3"
+        }
+      ],
+      "notes": "OSM: named building, 3 levels, 120x69 m (6153 m2). Colours and atrium are typed to the Tumon tourist-strip style."
+    },
+    "hagatna-osm-way-320402586": {
+      "venueId": "hagatna-osm-way-320402586",
+      "city": "hagatna",
+      "name": "Dulce Nombre de Maria Cathedral Basilica",
+      "archetype": "church-classical",
+      "subject": "The Hagatna cathedral-basilica, rebuilt and dedicated in 1959: a large cream-white church on Plaza de Espana, rising above palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "cathedral-basilica",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#f1ece0",
+          "#c9a46c",
+          "#a0a3a5"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1959 (original site 1669)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dulce_Nombre_de_Maria_Cathedral_Basilica",
+          "what": "present cathedral-basilica dedicated 20 April 1959 after wartime destruction; previous 1670 church of coral stone; rises above the palm trees, familiar downtown landmark; museum above the chapel"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/320402586",
+          "what": "OSM footprint 76x38 m (2345 m2)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/320402586",
+          "what": "OSM footprint 76.1x37.8 m, 2345 m2 (match: name)"
+        }
+      ],
+      "notes": "Footprint and date are firm; exact facade design not described in any source I could open, so the Spanish-Mission-style white stucco and pitched roof are typed. Stands at Plaza de Espana beside the ruins of the Spanish governor palace."
+    },
+    "hagatna-osm-way-345025136": {
+      "venueId": "hagatna-osm-way-345025136",
+      "city": "hagatna",
+      "name": "Young Pagat Market",
+      "archetype": "market-hall",
+      "subject": "A small covered local market hall in Yona with shaded stalls and a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "covered-market",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8dfc9",
+          "#4d7a86",
+          "#a0a3a5"
+        ],
+        "roofColour": "#a0a3a5",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/345025136",
+          "what": "OSM footprint 26.6x18.1 m, 417 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM: commercial building tagged marketplace, 27x18 m. Appearance typed."
+    },
+    "hagatna-osm-way-547350935": {
+      "venueId": "hagatna-osm-way-547350935",
+      "city": "hagatna",
+      "name": "Guam Regional Medical City",
+      "archetype": "hospital",
+      "subject": "The 2015 private hospital in Dededo: a long modern multi-storey block with a glazed lobby and horizontal bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 348,
+        "depth_m": 112,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "modern-hospital-block",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eef0ea",
+          "#2f6b7a",
+          "#b5b8ba"
+        ],
+        "roofColour": "#b8bbbc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guam_Regional_Medical_City",
+          "what": "136 beds; planned 2010, built from 2012, opened July 2015; Dededo"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/547350935",
+          "what": "footprint ~348x112 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/547350935",
+          "what": "OSM footprint 348.2x111.5 m, 33694 m2 (match: name)"
+        }
+      ],
+      "notes": "The OSM area (33,694 m2) likely includes a parking structure; the hospital block is shown as 5 storeys by guess. Opening date and capacity sourced."
+    },
+    "hagatna-osm-way-576086363": {
+      "venueId": "hagatna-osm-way-576086363",
+      "city": "hagatna",
+      "name": "Fort Santa Agueda",
+      "archetype": "heritage-fort",
+      "subject": "The small Spanish hilltop fort above Hagatna: an open-topped coral-stone and lime-mortar parapet about 3 m high with a few cannon on the grass hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 17,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "open-battery",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cfc6b0",
+          "#a89f88",
+          "#7b7466"
+        ],
+        "roofColour": "#a89f88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "coral stone and lime-mortar parapet ~3 m"
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "c.1800 (park since 1960)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Santa_Agueda",
+          "what": "coral stone and lime mortar parapet about 10 ft above a sloping hillside; ~1 acre; built c.1800; open-topped; WWII Japanese gun emplacement; park since 1960"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/576086363",
+          "what": "OSM footprint 16.8x12.6 m, 202 m2 (match: name)"
+        }
+      ],
+      "notes": "No roof. Keep it small and low on a green hill; a lookout park today. Outline 17x13 m from OSM, site is about an acre."
+    },
+    "hagatna-osm-way-606591976": {
+      "venueId": "hagatna-osm-way-606591976",
+      "city": "hagatna",
+      "name": "Chief Quipuha Park",
+      "archetype": "park-landscape",
+      "subject": "A waterfront park on the Paseo de Susana peninsula with a statue of Chief Kepuha in the middle of a traffic circle",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 71,
+        "depth_m": 38,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "roundabout-park",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d3c0",
+          "#8f9498",
+          "#e8dfc9"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Chief Kepuha statue on a plinth in the roundabout"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1950s peninsula",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chief_Quipuha_Park",
+          "what": "park on Paseo de Susana peninsula, built from post-war debris; statue of Kepuha stands within a traffic roundabout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/606591976",
+          "what": "OSM footprint 71.4x38.1 m, 2409 m2 (match: name)"
+        }
+      ],
+      "notes": "Statue on a roundabout is the focal point. Statue pose and plinth height not described; typed."
+    },
+    "hagatna-osm-way-611934431": {
+      "venueId": "hagatna-osm-way-611934431",
+      "city": "hagatna",
+      "name": "Taleyfac Spanish Bridge",
+      "archetype": "monument",
+      "subject": "The 19th-century Spanish stone arch bridge over the Taleyfac River in Agat: two coral-stone arches, one partly collapsed, low parapets and a plank/modern deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 4.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "arch-bridge",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cfc6b0",
+          "#a89f88",
+          "#7b7466"
+        ],
+        "roofColour": "#a89f88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2,
+          "note": "two stone arches, one damaged"
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "low parapets"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1866-1898",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Taleyfac_Spanish_Bridge",
+          "what": "two stone arches, 36 ft long and 15 ft wide, Spanish stone construction 1866-1898, original timber deck replaced, one arch damaged"
+        }
+      ],
+      "notes": "Tiny. Show the bridge in a green river-gully setting; the damaged arch is the signature."
+    },
+    "hagatna-osm-way-943230481": {
+      "venueId": "hagatna-osm-way-943230481",
+      "city": "hagatna",
+      "name": "Orote Air Field",
+      "archetype": "park-landscape",
+      "subject": "The abandoned WWII-era Orote airfield: a long weed-grown concrete runway strip on the peninsula with a lone windsock hut and empty fields",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "runway-strip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5b8ba",
+          "#8f9498",
+          "#6b7a6a"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "windsock pole"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1921 airfield",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Orote_Field",
+          "what": "former air base on Orote peninsula, now largely abandoned, used for C-130 touch-and-go training, NRHP 1975"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/943230481",
+          "what": "OSM footprint 1662.3x817.3 m, 574297 m2 (match: name)"
+        }
+      ],
+      "notes": "Not a terminal; chosen park-landscape because no building is known. The airfield is 1.6 km long; show a 120 m cropped runway end. Appearance typed."
+    },
+    "hagatna-quiet-reflection": {
+      "venueId": "hagatna-quiet-reflection",
+      "city": "hagatna",
+      "name": "Yigo Guam Temple",
+      "archetype": "church-modern",
+      "subject": "The 2022 LDS temple in Yigo: a single-storey 23 m beige-stucco and limestone building with columns evoking latte stones",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 23,
+        "roof": "hip",
+        "variant": "temple",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e6d9be",
+          "#d6cdb8",
+          "#b5a98c"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "entry columns represent latte stones"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2022",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yigo_Guam_Temple",
+          "what": "74 ft (23 m) single-storey, 637 m2, Moleanos limestone and beige stucco, contemporary design referencing latte stones, dedicated 22 May 2022"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1204265345",
+          "what": "OSM footprint 30.1x22.3 m, 659 m2 (match: name)"
+        }
+      ],
+      "notes": "Sourced dimensions and finishes. Source says single-storey but 23 m high (tall double-height volume), so storeys=3 only keeps height/storey sane. No spire is mentioned in the source, none included."
+    },
+    "hagatna-recreation": {
+      "venueId": "hagatna-recreation",
+      "city": "hagatna",
+      "name": "Atantano Shrine",
+      "archetype": "shrine-small",
+      "subject": "The 1834 Atantano shrine near Piti: a 2.5 m stepped pyramid of coral limestone and concrete with a wooden cross, under an open concrete shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "variant": "pyramid-shrine",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#cfc6b0",
+          "#a89f88",
+          "#b5b8ba"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 3,
+          "note": "three stages of the pyramid"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open concrete shelter"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1834",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Atantano_Shrine",
+          "what": "pyramid of coral limestone and concrete about 2.5 m tall, base ~1.6 m, wooden cross on top, open concrete shelter, built in at least three stages, NRHP 1995"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/504214572",
+          "what": "OSM footprint 209.8x97.3 m, 10443 m2 (match: name)"
+        }
+      ],
+      "notes": "The 210x97 m OSM area is the parkland; the monument itself is tiny and sits in an open meadow near Marine Drive."
+    },
+    "hagatna-transit": {
+      "venueId": "hagatna-transit",
+      "city": "hagatna",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A typed roadside bus stop with a small shelter and a bench on the Hagatna main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "bus-stop",
+        "wings": 0
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#4d7a86",
+          "#b5b8ba",
+          "#e8dfc9"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/289204122",
+          "what": "OSM footprint 56.8x50.5 m, 1569 m2 (match: nearest, nearest building only, may not be the venue); levels 1"
+        }
+      ],
+      "notes": "Game venue placeholder; the OSM building nearby is the 1949 Guam Congress Building (Modern Movement style, 57x50 m, one storey), not part of this venue."
+    }
+  }
+}

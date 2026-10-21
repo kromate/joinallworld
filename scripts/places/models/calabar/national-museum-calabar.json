@@ -1,0 +1,220 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Old_Residency,_National_Museum,_Calabar.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ei'eke",
+   "view": "front",
+   "file": "/tmp/places-evidence/calabar/museum.jpg",
+   "used": "two-storey pale-yellow timber house, central gabled bay, rusty red hip roofs, deep dark-post verandas, central steps, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1568386444",
+   "used": "overall size (about 34 x 29 m, nearest match so only the extent, not the stepped outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     36,
+     14
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 4.3,
+   "height": 4.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3a8",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a33",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    0,
+    1,
+    11.2
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2,
+    "height": 1.5,
+    "roof_colour": "#8a4a33",
+    "wall_colour": "#3a3a40"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 2.6,
+    "height": 4.3,
+    "balustrade": false,
+    "steps": false,
+    "roof": "lean-to",
+    "trim_colour": "#1e2430",
+    "wall_colour": "#ece3a8",
+    "roof_colour": "#1e2430"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 1.0,
+    "run": 2.4,
+    "count": 5,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 4.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    5,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 4.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -9,
+    -11.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#3f6b30"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    11,
+    -11.5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.9,
+    "colour": "#3f6b30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "national-museum-calabar",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "single rust hip roof, cream upper box, black veranda posts, hedge added; louvre/shutter panels dropped (panels pattern rendered as camouflage), no bracket fretwork, walls still render grey-green under lighting, no double doors"
+ }
+}

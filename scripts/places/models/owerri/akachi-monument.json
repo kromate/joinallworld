@@ -1,0 +1,552 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "akachi-monument",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Akachi_Monument,_Owerri,_Imo_State_Nigeria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alagboso",
+   "view": "front",
+   "file": "/tmp/places-evidence/owerri/akachi.jpg",
+   "used": "spiral tower of stepped offset drums with sloped ledges, warm dark brown-grey block-coursed masonry, thin cap disc, forearm with open splayed hand on top, dry scrub grass with bare dirt patches"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/626684268",
+   "used": "base diameter about 24 m, height tag 40 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "tier1",
+   "at": [
+    0.0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#5a5448",
+    "topColour": "#5a5448",
+    "bottomCap": true,
+    "profile": [
+     [
+      12.8,
+      0,
+      "#4d483e"
+     ],
+     [
+      12.8,
+      0.3
+     ],
+     [
+      12,
+      1.3,
+      "#5a5448"
+     ],
+     [
+      12,
+      3.7950000000000004,
+      "#4f4a40"
+     ],
+     [
+      12,
+      3.91,
+      "#5a5448"
+     ],
+     [
+      12,
+      7.705,
+      "#4f4a40"
+     ],
+     [
+      12,
+      7.82,
+      "#5a5448"
+     ],
+     [
+      12,
+      11.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier2",
+   "at": [
+    1.8,
+    0,
+    11.5
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#5d574b",
+    "topColour": "#5d574b",
+    "bottomCap": true,
+    "profile": [
+     [
+      9.600000000000001,
+      0,
+      "#4d483e"
+     ],
+     [
+      9.600000000000001,
+      0.3
+     ],
+     [
+      8.8,
+      1.3,
+      "#5d574b"
+     ],
+     [
+      8.8,
+      3.6300000000000003,
+      "#4f4a40"
+     ],
+     [
+      8.8,
+      3.74,
+      "#5d574b"
+     ],
+     [
+      8.8,
+      7.37,
+      "#4f4a40"
+     ],
+     [
+      8.8,
+      7.48,
+      "#5d574b"
+     ],
+     [
+      8.8,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier3",
+   "at": [
+    3.6,
+    0,
+    22.5
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#605a4e",
+    "topColour": "#605a4e",
+    "bottomCap": true,
+    "profile": [
+     [
+      7.1,
+      0,
+      "#4d483e"
+     ],
+     [
+      7.1,
+      0.3
+     ],
+     [
+      6.3,
+      1.3,
+      "#605a4e"
+     ],
+     [
+      6.3,
+      2.97,
+      "#4f4a40"
+     ],
+     [
+      6.3,
+      3.06,
+      "#605a4e"
+     ],
+     [
+      6.3,
+      6.03,
+      "#4f4a40"
+     ],
+     [
+      6.3,
+      6.12,
+      "#605a4e"
+     ],
+     [
+      6.3,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tier4",
+   "at": [
+    5.4,
+    0,
+    31.5
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#635d51",
+    "topColour": "#635d51",
+    "bottomCap": true,
+    "profile": [
+     [
+      5.0,
+      0,
+      "#4d483e"
+     ],
+     [
+      5.0,
+      0.3
+     ],
+     [
+      4.2,
+      1.3,
+      "#635d51"
+     ],
+     [
+      4.2,
+      2.145,
+      "#4f4a40"
+     ],
+     [
+      4.2,
+      2.21,
+      "#635d51"
+     ],
+     [
+      4.2,
+      4.355,
+      "#4f4a40"
+     ],
+     [
+      4.2,
+      4.42,
+      "#635d51"
+     ],
+     [
+      4.2,
+      6.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap",
+   "at": [
+    5.4,
+    0,
+    38.0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#45443d",
+    "topColour": "#45443d",
+    "bottomCap": true,
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      3.0,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "arm",
+   "at": [
+    5.4,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a39c8a",
+    "sections": [
+     {
+      "z": 39.2,
+      "rect": [
+       1.5,
+       1.3
+      ]
+     },
+     {
+      "z": 43.2,
+      "rect": [
+       1.2,
+       1.0
+      ]
+     },
+     {
+      "z": 44.60000000000001,
+      "rect": [
+       1.5,
+       0.8
+      ]
+     },
+     {
+      "z": 45.60000000000001,
+      "rect": [
+       1.7,
+       0.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "finger0",
+   "at": [
+    4.800000000000001,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a39c8a",
+    "sections": [
+     {
+      "z": 45.400000000000006,
+      "rect": [
+       0.42,
+       0.5
+      ]
+     },
+     {
+      "z": 46.7,
+      "rect": [
+       0.34,
+       0.42
+      ],
+      "cx": -0.1824561403508772
+     },
+     {
+      "z": 48.0,
+      "rect": [
+       0.16,
+       0.25
+      ],
+      "cx": -0.5838596491228071
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "finger1",
+   "at": [
+    5.2,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a39c8a",
+    "sections": [
+     {
+      "z": 45.400000000000006,
+      "rect": [
+       0.42,
+       0.5
+      ]
+     },
+     {
+      "z": 47.05,
+      "rect": [
+       0.34,
+       0.42
+      ],
+      "cx": -0.08684210526315789
+     },
+     {
+      "z": 48.7,
+      "rect": [
+       0.16,
+       0.25
+      ],
+      "cx": -0.27789473684210525
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "finger2",
+   "at": [
+    5.65,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a39c8a",
+    "sections": [
+     {
+      "z": 45.400000000000006,
+      "rect": [
+       0.42,
+       0.5
+      ]
+     },
+     {
+      "z": 47.150000000000006,
+      "rect": [
+       0.34,
+       0.42
+      ],
+      "cx": 0.06140350877192982
+     },
+     {
+      "z": 48.900000000000006,
+      "rect": [
+       0.16,
+       0.25
+      ],
+      "cx": 0.19649122807017544
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "finger3",
+   "at": [
+    6.050000000000001,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a39c8a",
+    "sections": [
+     {
+      "z": 45.400000000000006,
+      "rect": [
+       0.42,
+       0.5
+      ]
+     },
+     {
+      "z": 46.85000000000001,
+      "rect": [
+       0.34,
+       0.42
+      ],
+      "cx": 0.1780701754385965
+     },
+     {
+      "z": 48.3,
+      "rect": [
+       0.16,
+       0.25
+      ],
+      "cx": 0.5698245614035088
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "thumb",
+   "at": [
+    4.3500000000000005,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a39c8a",
+    "sections": [
+     {
+      "z": 44.8,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     {
+      "z": 46.0,
+      "rect": [
+       0.4,
+       0.42
+      ],
+      "cx": -0.35
+     },
+     {
+      "z": 46.900000000000006,
+      "rect": [
+       0.18,
+       0.25
+      ],
+      "cx": -0.8
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tiers offset but ledges are stepped rings not a true helical ramp; ground is uniform grass without dirt patches; hand is flat-lofted fingers; no block-course texture beyond bands"
+ }
+}

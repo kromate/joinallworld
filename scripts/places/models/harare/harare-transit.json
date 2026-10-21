@@ -1,0 +1,594 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Harare_Central_Station.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Samwise Gamgee",
+   "view": "front",
+   "file": "/tmp/places-evidence/harare/transit-a.jpg",
+   "used": "front elevation: two-storey red face-brick station, cream render bands, hipped red-tile roofs, lower left wing with first-floor balustraded balcony over a blue-columned arcade, taller right block with arched windows and a blank board, red-domed cupola at the left end"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NRZ_Harare_Station.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Mindthem",
+   "view": "side",
+   "file": "/tmp/places-evidence/harare/transit-b.jpg",
+   "used": "platform side: blue steel-column lean-to canopy, curved tracks, lattice signal gantries, red-brick signal cabin, goods wagon"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/245290279",
+   "used": "overall length (about 128 m) and thin 14 m depth of the station building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     58,
+     13
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5593d",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "windowShape": "rect",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5.0,
+      "opening": 4.0,
+      "depth": 1.0,
+      "faces": [
+       "front"
+      ],
+      "pierColour": "#2f5fa8"
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#ece4cf"
+      ],
+      "height": 1.0,
+      "proud": 0.25,
+      "at": [
+       4.6
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4532e",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    29,
+    0.5
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9593a",
+    "windows": "punched",
+    "windowRatio": 0.34,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#ece4cf",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#ece4cf"
+      ],
+      "height": 1.2,
+      "proud": 0.2,
+      "at": [
+       6.2,
+       12.0
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9582f",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "name-board",
+   "footprint": {
+    "rect": [
+     28,
+     0.5
+    ]
+   },
+   "at": [
+    36,
+    -6.9
+   ],
+   "z0": 6.4,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    15.5,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 9,
+    "height": 4.2,
+    "deck_height": 0.6,
+    "roof_colour": "#7a7f84",
+    "trim_colour": "#2f5fa8",
+    "accent_colour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    31,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "tracks": 3,
+    "spacing": 5.0
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "mixed",
+    "density": 0.6,
+    "coach_share": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signal-cabin",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    50,
+    24
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0553a",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9582f",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "count": 6,
+    "kind": "broadleaf",
+    "height_min": 9,
+    "height_max": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony-slab",
+   "footprint": {
+    "rect": [
+     58,
+     1.8
+    ]
+   },
+   "at": [
+    -27,
+    -7.4
+   ],
+   "z0": 4.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece4cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dac4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balustrade-rail",
+   "footprint": {
+    "rect": [
+     58,
+     0.5
+    ]
+   },
+   "at": [
+    -27,
+    -8.1
+   ],
+   "z0": 4.7,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece4cf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece4cf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-left",
+   "footprint": {
+    "rect": [
+     61,
+     0.5
+    ]
+   },
+   "at": [
+    -27,
+    -7.9
+   ],
+   "z0": 8.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f5fa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia-right",
+   "footprint": {
+    "rect": [
+     53,
+     0.5
+    ]
+   },
+   "at": [
+    29,
+    -7.2
+   ],
+   "z0": 13.0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f5fa8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-inset",
+   "footprint": {
+    "rect": [
+     22,
+     0.5
+    ]
+   },
+   "at": [
+    36,
+    -7.2
+   ],
+   "z0": 6.9,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2d33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2d33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cupola-base",
+   "footprint": {
+    "rect": [
+     3.8,
+     3.8
+    ]
+   },
+   "at": [
+    -52,
+    1
+   ],
+   "z0": 9,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8492f",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece4cf"
+   }
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -53.5,
+    -0.5
+   ],
+   "z0": 12.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ede0"
+   },
+   "id": "lantern-col-1"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -53.5,
+    2.5
+   ],
+   "z0": 12.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ede0"
+   },
+   "id": "lantern-col-2"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -50.5,
+    -0.5
+   ],
+   "z0": 12.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ede0"
+   },
+   "id": "lantern-col-3"
+  },
+  {
+   "type": "mass",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -50.5,
+    2.5
+   ],
+   "z0": 12.2,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ede0"
+   },
+   "id": "lantern-col-4"
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -52,
+    1,
+    15.4
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#9c2f2a",
+    "profile": [
+     [
+      2.6,
+      0,
+      "#ece4cf"
+     ],
+     [
+      2.6,
+      0.3,
+      "#ece4cf"
+     ],
+     [
+      2.2,
+      0.4
+     ],
+     [
+      2.1,
+      1.0
+     ],
+     [
+      1.6,
+      2.0
+     ],
+     [
+      0.9,
+      2.8
+     ],
+     [
+      0.25,
+      3.4
+     ],
+     [
+      0.05,
+      3.8
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 16,
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Window counts per bay are set by ratio so upper windows are still more numerous and smaller than the photo; no balusters, arched ground-floor windows of the right block are not distinct from the upper rectangular ones; lantern and dome are simplified; sign board is blank."
+ }
+}

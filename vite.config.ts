@@ -265,6 +265,8 @@ export default defineConfig({
     proxy: {
       '/api': { target: 'http://127.0.0.1:3001' },
       '/p/': { target: 'http://127.0.0.1:3001' },
+      // The shared place models are served by the game server from scripts/places/out/store (server/places-files.ts); the atlas is a static file.
+      '^/assets/places/[0-9a-f]{64}\\.glb$': { target: 'http://127.0.0.1:3001' },
       '/socket': { target: 'ws://127.0.0.1:3001', ws: true },
     },
   },

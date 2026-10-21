@@ -1,0 +1,1610 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "apia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "apia",
+    "climate": "rainforest",
+    "vernacular": "Samoan villages and a low-rise port capital on Upolu: open round or oval fale with domed (now often rectangular, iron-roofed) roofs on posts, beside white and pastel concrete-block houses and shops with louvred windows and verandahs under corrugated iron in red, green and blue; scattered early timber colonial buildings, big whitewashed stone churches with towers, and a few multi-storey government blocks on reclaimed harbour land. Lush tropical vegetation, coconut palms and breadfruit.",
+    "wallColours": [
+      "#f4f1ea",
+      "#a9cde0",
+      "#f0d98c",
+      "#b9d7b0",
+      "#e8b4a8",
+      "#c9c3b5",
+      "#7fa6c4"
+    ],
+    "roofColours": [
+      "#b5483c",
+      "#3f7a5a",
+      "#4a79a3",
+      "#8a8f93",
+      "#7a5a2e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "timber",
+      "render",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Fale tele round meeting houses with domed roofs on carved or painted posts; siapo (barkcloth) and tatau geometric patterns on signs and murals; louvred shutters and pola blinds; church bell towers in whitewashed stone; flags and Samoan coat-of-arms on civic buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+        "what": "Traditional fale: oval/round, domed thatch roof on posts, no walls, pola blinds; modern iron roofs and rectangular meeting houses; blue roofs on round fale tele at Lepea; colonial buildings Tivoli Hotel (1896), Vailima; stone churches; concrete floors"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Apia",
+        "what": "Beehive Parliament House at Mulinuu; Bahai House of Worship (Amanat, 1984); clock tower war memorial; colonial wooden buildings; German-era court house and school (now Museum of Samoa); multi-storey government blocks on reclaimed land"
+      }
+    ]
+  },
+  "places": {
+    "apia-airport-apia-airport": {
+      "venueId": "apia-airport-apia-airport",
+      "city": "apia",
+      "name": "Faleolo International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Faleolo's long main terminal seen from the forecourt: a two-storey rectangular block with a low roof and a projecting entrance canopy; regional terminal and VIP lounge are smaller separate buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 177,
+        "depth_m": 59,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "long-two-storey-terminal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#4a79a3",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s, extended 2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Faleolo_International_Airport",
+          "what": "Runway 08/26 3,000 m; upgraded 1984-85 and again 2000; tower serves Samoa airspace"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/139314497",
+          "what": "OSM way 139314497: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Main terminal is 177x59 m (10,488 m2) in OSM; other terminals: Samoa Regional Terminal 1,480 m2 and a VIP Lounge 789 m2. Wikipedia gives no terminal description, so storeys, colours and canopy are typed. Distinct from the Niue terminal (55x20 m)."
+    },
+    "apia-clinic": {
+      "venueId": "apia-clinic",
+      "city": "apia",
+      "name": "Faleolo District Hospital",
+      "archetype": "hospital",
+      "subject": "A district hospital seen as its main low ward block with a verandah-fronted entrance and a corrugated roof; the OSM site is a 350x200 m compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "district-ward-blocks",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#a9cde0",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1386013126",
+          "what": "OSM way 1386013126: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM gives only the hospital site polygon (354x206 m), not a building footprint, so the ward block size is a typed guess for a Samoan district hospital."
+    },
+    "apia-community-notices": {
+      "venueId": "apia-community-notices",
+      "city": "apia",
+      "name": "Fale Fono (Parliament House)",
+      "archetype": "civic-palace",
+      "subject": "Samoa's Parliament House (Maota Fono): a circular beehive-shaped hall based on a traditional fale, with a high domed roof and an entrance porch",
+      "form": {
+        "footprint": "round",
+        "width_m": 39,
+        "depth_m": 39,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "dome",
+        "variant": "beehive-fale"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#4a79a3",
+          "#ffffff"
+        ],
+        "roofColour": "#4a79a3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "tall beehive roof"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s (approx, unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Legislative_Assembly_of_Samoa",
+          "what": "Fono is housed in a beehive-shaped building based on the traditional Samoan fale"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Apia",
+          "what": "Beehive Parliament House at Mulinuu; Bahai House of Worship (Amanat, 1984); clock tower war memorial; colonial wooden buildings; German-era court house and school (now Museum of Samoa); multi-storey government blocks on reclaimed land"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/191009596",
+          "what": "OSM way 191009596: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM outline is a 19-sided near-circle 39 m across, consistent with the round fale form. Only \"beehive-shaped, based on the fale\" is source-backed; wall and roof colours and the era are typed. Recognisable by the tall conical-dome silhouette."
+    },
+    "apia-community-voting-game": {
+      "venueId": "apia-community-voting-game",
+      "city": "apia",
+      "name": "Sagaga 3 District Office",
+      "archetype": "civic-small",
+      "subject": "A small rectangular district office with a gable roof, louvred windows and a front step",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11.7,
+        "depth_m": 8.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "district-office"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#a9cde0",
+          "#ffffff"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1489966432",
+          "what": "OSM way 1489966432: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=townhall, named; 11.7x8.6 m footprint measured. Facade typed from village style."
+    },
+    "apia-community-workshop": {
+      "venueId": "apia-community-workshop",
+      "city": "apia",
+      "name": "Mulivai Primary School Library and Technology Center",
+      "archetype": "campus-block",
+      "subject": "A small single-storey school library and technology room with louvred windows under a gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12.5,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "school-library"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98c",
+          "#f4f1ea",
+          "#4a79a3"
+        ],
+        "roofColour": "#4a79a3",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/139537638",
+          "what": "OSM way 139537638: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=library 12.5x8 m, named. Colours typed from Samoan school buildings in general."
+    },
+    "apia-market-game": {
+      "venueId": "apia-market-game",
+      "city": "apia",
+      "name": "Satui Fleamarket",
+      "archetype": "market-open",
+      "subject": "A roadside flea market of tarpaulin and corrugated-roof stalls on a gravel lot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "shed",
+        "variant": "roadside-flea-market"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#f4f1ea",
+          "#8a8f93"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1433132284",
+          "what": "OSM way 1433132284: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=marketplace, named, 32x20 m area. The stall treatment is typed."
+    },
+    "apia-meal-stop": {
+      "venueId": "apia-meal-stop",
+      "city": "apia",
+      "name": "Restaurant and Bar",
+      "archetype": "restaurant",
+      "subject": "A restaurant and bar with an open verandah wing and a large hipped corrugated roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 23,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "open-sided-restaurant"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0d98c",
+          "#f4f1ea",
+          "#7a5a2e"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1388403945",
+          "what": "OSM way 1388403945: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "The OSM name is only a generic \"Restaurant and Bar\"; the L-shaped 23x21 m building is measured but the identity is unknown."
+    },
+    "apia-osm-node-12898274696": {
+      "venueId": "apia-osm-node-12898274696",
+      "city": "apia",
+      "name": "Laumua O Tumua Farmers Market",
+      "archetype": "market-open",
+      "subject": "A farmers market in a wide shed with rows of produce tables and a high open gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "farmers-market-shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b5",
+          "#4a79a3",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/826569078",
+          "what": "OSM way 826569078: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "The OSM building containing the point is a 34x23 m shop named \"Best Value\", not confirmed to be the market, so only its scale is used. Distinct from the flea market by its single large shed."
+    },
+    "apia-osm-node-1550608240": {
+      "venueId": "apia-osm-node-1550608240",
+      "city": "apia",
+      "name": "Sopo'aga Waterfalls",
+      "archetype": "park-landscape",
+      "subject": "A tall waterfall plunging into a forested gorge, viewed from a railed lookout terrace with a small fale shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "gorge-waterfall-park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#c9a77c",
+          "#6f8f4e",
+          "#f4f1ea"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "lookout terrace over the gorge"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open fale shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+          "what": "Traditional fale: oval/round, domed thatch roof on posts, no walls, pola blinds; modern iron roofs and rectangular meeting houses; blue roofs on round fale tele at Lepea; colonial buildings Tivoli Hotel (1896), Vailima; stone churches; concrete floors"
+        }
+      ],
+      "notes": "OSM node only. Fall and gorge sizes were not verified; lookout and fale shelter are typed from Samoan tourist-site conventions. Wikipedia on Samoan architecture was used for the fale style."
+    },
+    "apia-osm-node-5586769194": {
+      "venueId": "apia-osm-node-5586769194",
+      "city": "apia",
+      "name": "Fuipisia Waterfalls",
+      "archetype": "park-landscape",
+      "subject": "A single high waterfall behind a landscaped garden with stepped paths, a small ticket kiosk and a fale",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "garden-waterfall"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#6f8f4e",
+          "#f4f1ea"
+        ],
+        "roofColour": "#4a79a3",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stepped garden path"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open fale"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1450138060",
+          "what": "OSM way 1450138060: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM leisure=garden polygon of about 8,140 m2 contains the point. Plan of garden elements is typed."
+    },
+    "apia-osm-node-6593037804": {
+      "venueId": "apia-osm-node-6593037804",
+      "city": "apia",
+      "name": "Lanoto'o Viewing Platform",
+      "archetype": "park-landscape",
+      "subject": "A timber viewing platform with railings at the edge of a green crater lake in rainforest",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 3.5,
+        "roof": "none",
+        "variant": "crater-lake-platform"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#7a5a2e",
+          "#6f8f4e"
+        ],
+        "roofColour": "#7a5a2e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "timber platform"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+          "what": "Traditional fale: oval/round, domed thatch roof on posts, no walls, pola blinds; modern iron roofs and rectangular meeting houses; blue roofs on round fale tele at Lepea; colonial buildings Tivoli Hotel (1896), Vailima; stone churches; concrete floors"
+        }
+      ],
+      "notes": "OSM node only. The crater lake and platform form are typed from the place name; nothing described the structure."
+    },
+    "apia-osm-node-687792042": {
+      "venueId": "apia-osm-node-687792042",
+      "city": "apia",
+      "name": "Museum of Samoa",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Samoa in the oldest building in Apia, the former German colonial school: a two-storey timber colonial building with a verandah and a corrugated roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 25,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "german-colonial-school"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#7a5a2e",
+          "#ffffff"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "verandahs on both floors"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "German colonial period (c. 1900-1914)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Samoa",
+          "what": "Housed in the oldest building on the island, a former German colonial school"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Apia",
+          "what": "Beehive Parliament House at Mulinuu; Bahai House of Worship (Amanat, 1984); clock tower war memorial; colonial wooden buildings; German-era court house and school (now Museum of Samoa); multi-storey government blocks on reclaimed land"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/674412874",
+          "what": "OSM way 674412874: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM building 25.5x22.4 m, L-shaped with a notch on the east side. Number of storeys, verandahs and colours are inferred from Apia's early wooden colonial buildings, not stated in sources."
+    },
+    "apia-osm-node-689554231": {
+      "venueId": "apia-osm-node-689554231",
+      "city": "apia",
+      "name": "Papapapaitai-falls",
+      "archetype": "park-landscape",
+      "subject": "A very tall single waterfall seen across a forested valley from a small roadside lookout with a rail and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "roadside-lookout-falls"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b5aca0",
+          "#c9a77c",
+          "#6f8f4e"
+        ],
+        "roofColour": "#7a5a2e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "lookout platform"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+          "what": "Traditional fale: oval/round, domed thatch roof on posts, no walls, pola blinds; modern iron roofs and rectangular meeting houses; blue roofs on round fale tele at Lepea; colonial buildings Tivoli Hotel (1896), Vailima; stone churches; concrete floors"
+        }
+      ],
+      "notes": "Wikidata gives a Papapapaitai Falls item but no appearance. Lookout form typed."
+    },
+    "apia-osm-node-994447379": {
+      "venueId": "apia-osm-node-994447379",
+      "city": "apia",
+      "name": "Wesley College",
+      "archetype": "campus-block",
+      "subject": "A long two-storey school classroom range with an open corridor and a gable corrugated roof beside lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "long-classroom-range",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#4a79a3",
+          "#ffffff"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "open ground-floor corridor"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1073430317",
+          "what": "OSM way 1073430317: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM building=school polygon: a very long (about 150 m) bent range, 22 m deep. Storeys are a guess. Differs from the university campus venue by form and scale."
+    },
+    "apia-osm-way-1124777338": {
+      "venueId": "apia-osm-way-1124777338",
+      "city": "apia",
+      "name": "Western Samoa Trust Estates Corporation Park",
+      "archetype": "park-landscape",
+      "subject": "Broad estate parkland of mown grass with coconut palms in rows and a gate lodge at the entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 295,
+        "depth_m": 260,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "estate-parkland"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#6f8f4e",
+          "#c9c3b5"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1124777338",
+          "what": "OSM way 1124777338: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM leisure=park, 295x260 m (57,480 m2). Only the extent is known; features typed."
+    },
+    "apia-osm-way-1408954851": {
+      "venueId": "apia-osm-way-1408954851",
+      "city": "apia",
+      "name": "USP School of Agriculture & Food Technology",
+      "archetype": "campus-block",
+      "subject": "The Alafua campus teaching block: a two-storey modern concrete building with sun louvres and open walkways among lawns and trees",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "university-agri-campus",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3c4",
+          "#4a79a3",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1408954851",
+          "what": "OSM way 1408954851: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM gives only the campus polygon (500x265 m). Main block size and form are typed."
+    },
+    "apia-osm-way-141190639": {
+      "venueId": "apia-osm-way-141190639",
+      "city": "apia",
+      "name": "Bahá'í House of Worship",
+      "archetype": "shrine-small",
+      "subject": "The Bahai House of Worship at Tiapapata: a tall nine-sided domed temple with open arched doorways on all sides, raised on a circular terrace within gardens",
+      "form": {
+        "footprint": "round",
+        "width_m": 38,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 28,
+        "roof": "dome",
+        "variant": "nine-sided-domed-house-of-worship"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1ea",
+          "#d9d3c4",
+          "#ffffff"
+        ],
+        "roofColour": "#f4f1ea",
+        "windows": "none",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "ribbed central dome with finial"
+        },
+        {
+          "id": "arches",
+          "count": 9,
+          "note": "open arched entrances"
+        },
+        {
+          "id": "steps",
+          "count": 9
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "circular terrace"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1984",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/B%C3%A1h%C3%A1%CA%BC%C3%AD_Houses_of_Worship",
+          "what": "Samoa House of Worship at Tiapapata: architect Hossein Amanat, foundation 1979, dedicated 1 Sept 1984, 30 m high, open to the island breezes, 500 seats plus 200 on mezzanine, 6.88 ha site"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hossein_Amanat",
+          "what": "Designed by Hossein Amanat (1984)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Apia",
+          "what": "Beehive Parliament House at Mulinuu; Bahai House of Worship (Amanat, 1984); clock tower war memorial; colonial wooden buildings; German-era court house and school (now Museum of Samoa); multi-storey government blocks on reclaimed land"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/141190639",
+          "what": "OSM way 141190639: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM outline is a nine-sided figure about 38 m across, confirming the Bahai nine-sided plan. Height 30 m (incl. dome top). White concrete, ribbed dome and arch doorways are from general knowledge of the building rather than a fetched description. No archetype exists for a Bahai temple; shrine-small is used and should be scaled up."
+    },
+    "apia-osm-way-1418195769": {
+      "venueId": "apia-osm-way-1418195769",
+      "city": "apia",
+      "name": "Farmer Joes Tanumapua",
+      "archetype": "mall",
+      "subject": "A big single-storey supermarket box with a deep front canopy over the entrance and a large car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 63,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed",
+        "variant": "big-box-supermarket"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e1cf",
+          "#4a79a3",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank neutral board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1451841085",
+          "what": "OSM way 1451841085: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM names the retail building (63x31 m, 14-point outline) 30 m away; appearance typed and brand colours deliberately omitted."
+    },
+    "apia-osm-way-142503177": {
+      "venueId": "apia-osm-way-142503177",
+      "city": "apia",
+      "name": "SMDA Restaurant",
+      "archetype": "restaurant",
+      "subject": "A long single-storey restaurant hall with a gable roof and a side wing and verandah",
+      "form": {
+        "footprint": "L",
+        "width_m": 27.5,
+        "depth_m": 12.2,
+        "storeys": 1,
+        "height_m": 4.6,
+        "roof": "gable",
+        "variant": "long-hall-restaurant"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4f1ea",
+          "#b9d7b0",
+          "#7a5a2e"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/142503177",
+          "what": "OSM way 142503177: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM building 27.5x12.2 m, L-shaped, named. Appearance typed."
+    },
+    "apia-osm-way-1446121761": {
+      "venueId": "apia-osm-way-1446121761",
+      "city": "apia",
+      "name": "Lefaga District Medical Centre",
+      "archetype": "hospital",
+      "subject": "A single-storey medical centre in a rectangular block with a hipped roof and a covered patient entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 52,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "rotated-medical-centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#a9cde0",
+          "#ffffff"
+        ],
+        "roofColour": "#4a79a3",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1446121761",
+          "what": "OSM way 1446121761: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=hospital, named, 3,752 m2 near-rectangular plot 73x52 m (bearing 141). Likely a complex rather than one block; look typed."
+    },
+    "apia-osm-way-1459400895": {
+      "venueId": "apia-osm-way-1459400895",
+      "city": "apia",
+      "name": "Anoamaa District Hospital",
+      "archetype": "hospital",
+      "subject": "A wide district hospital of low ward blocks around yards, with a gable-roofed entrance hall in front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 102,
+        "depth_m": 82,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable",
+        "variant": "district-hospital-wide",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0d98c",
+          "#f4f1ea",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1459400895",
+          "what": "OSM way 1459400895: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=hospital, named, 6,270 m2 irregular outline (102x82 m). Look typed; kept different from Lefaga by its irregular multi-wing plan."
+    },
+    "apia-osm-way-374404905": {
+      "venueId": "apia-osm-way-374404905",
+      "city": "apia",
+      "name": "Robert Louis Stevenson's Museum",
+      "archetype": "manor",
+      "subject": "Stevenson's Vailima villa as the Robert Louis Stevenson Museum: a large two-storey timber colonial house with wraparound verandahs, a hipped red roof and a tall chimney, set in tropical garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 49,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "variant": "colonial-villa-museum",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#7a5a2e",
+          "#ffffff"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "wraparound verandahs"
+        },
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "Stevenson fireplace"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1891",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Louis_Stevenson_Museum",
+          "what": "Villa completed 1891; five bedrooms, library, the only working fireplace in Samoa; later governor and head-of-state residence; cyclone damage early 1990s; museum reopened 5 Dec 1994; photo captions mention a veranda and staircase and an extension"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+          "what": "Traditional fale: oval/round, domed thatch roof on posts, no walls, pola blinds; modern iron roofs and rectangular meeting houses; blue roofs on round fale tele at Lepea; colonial buildings Tivoli Hotel (1896), Vailima; stone churches; concrete floors"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/374404905",
+          "what": "OSM way 374404905: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM footprint is a 49x21 m 16-point L-shaped outline (includes the extension). Storeys, red roof and cream walls come from general knowledge and the captions, not a fetched description. Architecture of Samoa lists Vailima as a colonial building."
+    },
+    "apia-quiet-reflection": {
+      "venueId": "apia-quiet-reflection",
+      "city": "apia",
+      "name": "Apia Samoa Temple",
+      "archetype": "church-modern",
+      "subject": "The Apia Samoa Temple (LDS): a compact modern granite-faced temple with a single central spire topped by the gilt angel Moroni, rebuilt 2005 after fire",
+      "form": {
+        "footprint": "cross",
+        "width_m": 67,
+        "depth_m": 42,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "lds-single-spire-temple"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4da",
+          "#c9c3b5",
+          "#ffffff"
+        ],
+        "roofColour": "#6f7f86",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single central spire with gilt statue (Wikipedia: 23 m, 75 ft)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2005 (original 1983, destroyed by fire 2003)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Apia_Samoa_Temple",
+          "what": "Rebuilt temple 18,691 sq ft, 75 ft (23 m), single-spire modern design finished in granite, statue of Moroni; original dedicated 1983, burned 2003, rededicated 4 Sept 2005; architects Naylor, Wentworth and Lund"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/190324852",
+          "what": "OSM way 190324852: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM outline is 67x42 m including grounds, drawn as a 20-point cruciform; the temple building itself is smaller (about 1,736 m2 floor area). Colours are typed (granite is usually pale grey-cream). Fountain is a guess."
+    },
+    "apia-recreation": {
+      "venueId": "apia-recreation",
+      "city": "apia",
+      "name": "Vaitele Park",
+      "archetype": "park-landscape",
+      "subject": "A flat open park with a mown playing field, a covered fale-style pavilion and rows of palms and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 169,
+        "depth_m": 96,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "sports-green"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#6f8f4e",
+          "#f4f1ea"
+        ],
+        "roofColour": "#4a79a3",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "covered fale pavilion"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1445626446",
+          "what": "OSM way 1445626446: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM leisure=park, 13,530 m2 (169x96 m, irregular). No description found; features typed."
+    },
+    "apia-transit": {
+      "venueId": "apia-transit",
+      "city": "apia",
+      "name": "Apia Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "The Apia ferry terminal on the harbour: a low waiting hall with a long pitched roof, a covered loading apron and a concrete wharf where the Savaii ferries berth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 43,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "ferry-terminal"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f4f1ea",
+          "#4a79a3",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "ferry wharf"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/142609045",
+          "what": "OSM way 142609045: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=ferry_terminal building 43.5x23.3 m, irregular eight-point outline. Look typed."
+    }
+  }
+}

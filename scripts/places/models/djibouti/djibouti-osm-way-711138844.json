@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-way-711138844",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/711138844",
+   "used": "name-matched outline (about 41 x 16 m, stepped plan with a rear wing and a front entrance wing); height and levels from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: private hospital, three storeys, white render with teal glazing, ambulance bay; no photograph found for this venue"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2f7d8f",
+    "plinth": 0.4,
+    "glassColour": "#2f6c7c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f7d8f",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#3a8798"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "form": "flat",
+    "colour": "#2f7d8f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#2f7d8f",
+    "frameColour": "#d8d4ca",
+    "posts": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-cross-a",
+   "at": [
+    0,
+    -8.3,
+    9.2
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     2.4
+    ],
+    "height": 0.4,
+    "colour": "#c9302c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "red-cross-b",
+   "at": [
+    0,
+    -8.3,
+    10.2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#c9302c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ambulance-bay",
+   "at": [
+    22,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     6
+    ],
+    "height": 0.15,
+    "colour": "#8c8a85"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24,
+    -8,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ],
+    "height": 6
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: real OSM outline plus brief facts"
+ }
+}

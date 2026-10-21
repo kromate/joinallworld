@@ -1,0 +1,873 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "futa",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_University_of_Technology,_Akure.jpg",
+   "licence": "Public domain",
+   "author": "User:Kaizenify",
+   "view": "front",
+   "file": "/tmp/places-evidence/akure/futa1.jpg",
+   "used": "main gate: cream header slab with name lettering over two open vehicle passages, maroon pilaster cluster with tall window between them, lower pilastered side wings, roundel on a post above, yellow-green canopy trusses"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_University_of_Technology,_Akure,_Ondo_State11.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "used": "gate set back from road with low side wings, lamp posts and palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:School_of_Computing,_Federal_University_of_Technology,_Akure,_Ondo_State67.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "used": "campus faculty block language: peach render, red ribbed metal roof, red-framed windows, columned gabled entrance porch"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/712000513",
+   "used": "not used: nearest match is a lecture room, not the gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "header",
+   "footprint": {
+    "rect": [
+     21,
+     6.5
+    ]
+   },
+   "at": [
+    -2.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     4,
+     6.5
+    ]
+   },
+   "at": [
+    -11.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-core",
+   "footprint": {
+    "rect": [
+     4.4,
+     6.5
+    ]
+   },
+   "at": [
+    -0.7,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     5,
+     6.5
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "p1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.6
+    ]
+   },
+   "at": [
+    -3.4,
+    -3.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "p2",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.6
+    ]
+   },
+   "at": [
+    -2.0,
+    -3.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "p3",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.6
+    ]
+   },
+   "at": [
+    1.4,
+    -3.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "p4",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.6
+    ]
+   },
+   "at": [
+    2.6,
+    -3.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     5.5,
+     4.5
+    ]
+   },
+   "at": [
+    -16.3,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     4,
+     4.5
+    ]
+   },
+   "at": [
+    15.5,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabc",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -18.5,
+    -1.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     4.5,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.5
+      ],
+      "height": 4.7,
+      "colour": "#8a3b36",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    13.8,
+    -1.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     3.4,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.5
+      ],
+      "height": 3.9,
+      "colour": "#8a3b36",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -22,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    24,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-step",
+   "footprint": {
+    "rect": [
+     2.4,
+     6.5
+    ]
+   },
+   "at": [
+    12.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.6,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d5c8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-l",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.4
+    ]
+   },
+   "at": [
+    -13.2,
+    -3.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.4
+    ]
+   },
+   "at": [
+    17.2,
+    -3.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3b36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b36"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "chord-top-l",
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -9.8,
+      -3.7,
+      6.5
+     ],
+     [
+      -4.4,
+      -3.7,
+      6.5
+     ]
+    ],
+    "colour": "#bfb860"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "chord-bot-l",
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      -9.8,
+      -1.6,
+      6.9
+     ],
+     [
+      -4.4,
+      -1.6,
+      6.9
+     ]
+    ],
+    "colour": "#bfb860"
+   }
+  },
+  {
+   "type": "array",
+   "id": "truss-l",
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -9.8,
+     0
+    ],
+    "end": [
+     -4.4,
+     0
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.1,
+        0.1
+       ]
+      },
+      "points": [
+       [
+        0,
+        -3.7,
+        6.5
+       ],
+       [
+        0,
+        -1.6,
+        6.9
+       ]
+      ],
+      "colour": "#bfb860"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "chord-top-r",
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      3.8,
+      -3.7,
+      6.5
+     ],
+     [
+      8.4,
+      -3.7,
+      6.5
+     ]
+    ],
+    "colour": "#bfb860"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "chord-bot-r",
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.18
+     ]
+    },
+    "points": [
+     [
+      3.8,
+      -1.6,
+      6.9
+     ],
+     [
+      8.4,
+      -1.6,
+      6.9
+     ]
+    ],
+    "colour": "#bfb860"
+   }
+  },
+  {
+   "type": "array",
+   "id": "truss-r",
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     3.8,
+     0
+    ],
+    "end": [
+     8.4,
+     0
+    ],
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.1,
+        0.1
+       ]
+      },
+      "points": [
+       [
+        0,
+        -3.7,
+        6.5
+       ],
+       [
+        0,
+        -1.6,
+        6.9
+       ]
+      ],
+      "colour": "#bfb860"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "emblem-post",
+   "at": [
+    -0.5,
+    0,
+    11.6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 1.6,
+    "colour": "#8a3b36",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "emblem-ring",
+   "at": [
+    -0.5,
+    -0.2,
+    15.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 2.0,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#4a566b"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "emblem-inner",
+   "at": [
+    -0.5,
+    -0.2,
+    15.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.0,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#d9d5c8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "emblem-hub",
+   "at": [
+    -0.5,
+    -0.2,
+    15.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.3
+     ]
+    },
+    "points": [
+     [
+      -0.8,
+      0,
+      0
+     ],
+     [
+      0.8,
+      0,
+      0
+     ]
+    ],
+    "colour": "#4a566b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.5,
+    -3.3,
+    10.5
+   ],
+   "params": {
+    "width": 16,
+    "height": 0.4,
+    "bottom": 0,
+    "colour": "#2f3a4f",
+    "posts": false,
+    "frameColour": "#2f3a4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.5,
+    -3.3,
+    9.8
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.35,
+    "bottom": 0,
+    "colour": "#2f3a4f",
+    "posts": false,
+    "frameColour": "#2f3a4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Gate only (campus not modelled); emblem is plain rings without cog detail; lettering is bars not text; canopy trusses simplified; no banners, traffic, or people. Ground reverted to laterite (red, saturated; paving read too blue-grey); no green verge."
+ }
+}

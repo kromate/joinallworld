@@ -1,0 +1,569 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "babcock-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BABCOCK_UNIVERSITY_MAIN_ENTRANCE.jpg",
+   "licence": "CC0",
+   "author": "Addjimedu",
+   "view": "front",
+   "file": "/tmp/places-evidence/sagamu/babcock.jpg",
+   "used": "main entrance gatehouse: round tan tower with paired windows and flat cap, low tan gate lodge, rust-brown timber pergola beams either side, dark lattice screen, clipped hedges, grass"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Babcock_University",
+   "used": "campus setting only (blocks behind gate removed: photo shows dense trees)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.3,
+    "n": 16,
+    "height": 9.5,
+    "colour": "#e2bd84",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "storeys": 2,
+    "glassColour": "#2b3a44",
+    "trimColour": "#c79f68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 16,
+    "z0": 9.5,
+    "height": 0.5,
+    "colour": "#9a7a55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     11,
+     5.5
+    ]
+   },
+   "at": [
+    3.5,
+    -3.8
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb27a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a4a35",
+    "parapet": 0.1,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beam-l-high",
+   "footprint": {
+    "rect": [
+     20,
+     1.6
+    ]
+   },
+   "at": [
+    -12,
+    0.5
+   ],
+   "z0": 8.4,
+   "height": 0.9,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beam-l-low",
+   "footprint": {
+    "rect": [
+     20,
+     1.6
+    ]
+   },
+   "at": [
+    -13,
+    -0.5
+   ],
+   "z0": 6.0,
+   "height": 0.9,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beam-r-high",
+   "footprint": {
+    "rect": [
+     14,
+     1.6
+    ]
+   },
+   "at": [
+    10,
+    0.5
+   ],
+   "z0": 7.0,
+   "height": 0.9,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "beam-r-low",
+   "footprint": {
+    "rect": [
+     12,
+     1.4
+    ]
+   },
+   "at": [
+    9,
+    -3.0
+   ],
+   "z0": 4.9,
+   "height": 0.8,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a3f33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f33"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -21,
+     0.5,
+     0
+    ],
+    "end": [
+     -6,
+     0.5,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 8.4,
+      "colour": "#6b3a30"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     5,
+     0.5,
+     0
+    ],
+    "end": [
+     15,
+     0.5,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 7.0,
+      "colour": "#6b3a30"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice",
+   "footprint": {
+    "rect": [
+     12,
+     0.5
+    ]
+   },
+   "at": [
+    -11,
+    -1.5
+   ],
+   "height": 5.4,
+   "wall": {
+    "material": "timber",
+    "colour": "#2d2a27",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#26231f",
+      "#2d2a27"
+     ],
+     "slits": 0.5,
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d2a27"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-l",
+   "footprint": {
+    "rect": [
+     30,
+     1.8
+    ]
+   },
+   "at": [
+    -6,
+    -10
+   ],
+   "height": 1.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6b34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-r",
+   "footprint": {
+    "rect": [
+     22,
+     1.8
+    ]
+   },
+   "at": [
+    18,
+    -8
+   ],
+   "height": 1.3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6b34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-front",
+   "footprint": {
+    "rect": [
+     44,
+     1.6
+    ]
+   },
+   "at": [
+    2,
+    -12.5
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6b34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-mid",
+   "footprint": {
+    "rect": [
+     16,
+     1.6
+    ]
+   },
+   "at": [
+    3,
+    -7
+   ],
+   "height": 1.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6b34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w1a",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -0.7,
+    -3.0
+   ],
+   "z0": 5.0,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b3a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w1b",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    0.7,
+    -3.0
+   ],
+   "z0": 5.0,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b3a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w2a",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    -0.7,
+    -3.0
+   ],
+   "z0": 7.4,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b3a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w2b",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.5
+    ]
+   },
+   "at": [
+    0.7,
+    -3.0
+   ],
+   "z0": 7.4,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b3a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3a44"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     18
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     20
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     16
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     16
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     2,
+     32
+    ],
+    "height": 19
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     12
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     42,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower reads boxy not round and windows are single dark panes not paired; pergola still reads as slim frames, not heavy layered beams; lodge lacks wrap-around slab detail; hedges are plain boxes and generic site trees stand in for the dense photographed tree mass."
+ }
+}

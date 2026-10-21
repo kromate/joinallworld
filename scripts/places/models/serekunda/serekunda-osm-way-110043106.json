@@ -1,0 +1,1096 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-110043106",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gambia_abuko_001.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Atamari",
+   "view": "front",
+   "used": "entrance: low thatch-fringed timber ticket shelter at far left, green signboards with yellow-orange frames, white map board with orange/green map blocks on posts, wire mesh between rough tall timber posts, leaning bare trunks, dusty red-brown ground, dense gallery forest wall behind",
+   "file": "/tmp/places-evidence/serekunda/sk-abuko.jpg"
+  },
+  {
+   "kind": "text",
+   "used": "107 ha gallery forest reserve (Wikipedia); no OSM outline matched, so the entrance zone is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hut",
+   "footprint": {
+    "rect": [
+     4.0,
+     3.0
+    ]
+   },
+   "at": [
+    -11,
+    0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5a3a",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8905a",
+    "material": "thatch",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -12.8,
+    -1.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.3,
+    "colour": "#6a4a2c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.2,
+    -1.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.3,
+    "colour": "#6a4a2c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -7,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 2.6,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.0,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.4000000000000004,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    3.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 2.6,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    7,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.0,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    10.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 3.4000000000000004,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    14,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 2.6,
+    "colour": "#6a4c30"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -2.2,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.3,
+    "thickness": 0.04,
+    "kind": "wall",
+    "colour": "#55584f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -21,
+    -2.2,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 2.3,
+    "thickness": 0.04,
+    "kind": "wall",
+    "colour": "#55584f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    -2.2,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.3,
+    "thickness": 0.04,
+    "kind": "wall",
+    "colour": "#55584f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.1,
+    "bottom": 2.5,
+    "colour": "#2f4a3a",
+    "frameColour": "#c8962a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5.2,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 2.4,
+    "bottom": 0.9,
+    "colour": "#294a36",
+    "frameColour": "#d9a21e",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -0.8,
+    -3.7,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 3.0,
+    "bottom": 0.7,
+    "colour": "#eee9dc",
+    "frameColour": "#8a8a8a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -1.9,
+    -3.78,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.05
+    ],
+    "height": 1.1,
+    "colour": "#d98a2a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0.2,
+    -3.78,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.05
+    ],
+    "height": 0.9,
+    "colour": "#2f6a4a"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    3.0,
+    -0.6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55
+     },
+     {
+      "z": 4,
+      "circle": 0.4,
+      "cx": 0.5
+     },
+     {
+      "z": 9,
+      "circle": 0.28,
+      "cx": 1.1
+     }
+    ],
+    "colour": "#8a6a58"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    1.6,
+    -0.4,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55
+     },
+     {
+      "z": 4,
+      "circle": 0.4,
+      "cx": -0.4
+     },
+     {
+      "z": 9,
+      "circle": 0.28,
+      "cx": -0.8800000000000001
+     }
+    ],
+    "colour": "#8a6a58"
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    7.5,
+    -0.8,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55
+     },
+     {
+      "z": 4,
+      "circle": 0.4,
+      "cx": 0.3
+     },
+     {
+      "z": 9,
+      "circle": 0.28,
+      "cx": 0.66
+     }
+    ],
+    "colour": "#8a6a58"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "visitor-hide",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    12,
+    16
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6a4a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16.739441146497295,
+     4.904077302308387
+    ],
+    "height": 11.412439989630617
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6.672348742133249,
+     15.019878579877535
+    ],
+    "height": 18.69679047771116
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23.51438102110287,
+     4.628369147485354
+    ],
+    "height": 9.86192467689893
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -3.849046784078263,
+     5.098553427525582
+    ],
+    "height": 11.314075316227498
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35.12372380887135,
+     8.73971849785949
+    ],
+    "height": 15.17504343694372
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30.88207053595556,
+     6.749036115425656
+    ],
+    "height": 12.062901806516567
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     39.45372705338342,
+     16.11340872202011
+    ],
+    "height": 16.123408223248497
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -1.5677885237406683,
+     16.24519416945399
+    ],
+    "height": 18.18890671036533
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6.963686452721886,
+     8.140181356096825
+    ],
+    "height": 13.723677951804191
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     1.7186212783900845,
+     6.826131488283098
+    ],
+    "height": 10.377527252212047
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -29.530189918135534,
+     14.38009769765081
+    ],
+    "height": 15.007099448810138
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     13.194208654193826,
+     6.960097326352802
+    ],
+    "height": 11.134122965443337
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16.305182047194506,
+     15.366995304471994
+    ],
+    "height": 16.68702912764636
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10.736827576614225,
+     5.443655158710591
+    ],
+    "height": 11.818676536563636
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26.152038199121428,
+     4.319891829091777
+    ],
+    "height": 10.738220762401749
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10.180576148392955,
+     4.937351108028721
+    ],
+    "height": 10.267199942653509
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     29.61515766089739,
+     14.439519087505944
+    ],
+    "height": 16.508002991141527
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -31.361583150567846,
+     10.391440974293614
+    ],
+    "height": 13.555069673595613
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -9.000819910834906,
+     16.534642668164388
+    ],
+    "height": 15.072270141514121
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8.709911102019955,
+     8.23458869666172
+    ],
+    "height": 13.595472178492994
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     39.4453049320909,
+     6.358067738901491
+    ],
+    "height": 12.099592368474568
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30.918020079067418,
+     9.437127350435455
+    ],
+    "height": 14.1640904685879
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24.812619653999903,
+     16.997899844208405
+    ],
+    "height": 18.409010683574973
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -21.18088194186483,
+     6.822928003263997
+    ],
+    "height": 11.762567764427633
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     23.596981378161033,
+     10.534201691016088
+    ],
+    "height": 14.179251704847884
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20.555240261110463,
+     14.497868171389237
+    ],
+    "height": 15.58280763816273
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23.154088044199668,
+     15.617670406612431
+    ],
+    "height": 17.71132190900237
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -39.50839322044119,
+     6.225360967782188
+    ],
+    "height": 12.180774262262787
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18.222828924031575,
+     6.748208045325972
+    ],
+    "height": 9.130884879877103
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38.2301988648918,
+     10.219695724219793
+    ],
+    "height": 16.689299986661666
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14.62355208491762,
+     8.712009811562861
+    ],
+    "height": 15.375840882773188
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15.760168273587485,
+     16.455554223941213
+    ],
+    "height": 16.922980746520157
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     3.3647194566870744,
+     9.022221606512666
+    ],
+    "height": 15.443310152370497
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34.08924053654608,
+     16.346056913169484
+    ],
+    "height": 18.46954722710921
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10.756698349395501,
+     16.99018044361011
+    ],
+    "height": 15.646117857698465
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -0.5808271797683511,
+     9.574105462079359
+    ],
+    "height": 16.10241205879598
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6.43877727675032,
+     4.109894739828483
+    ],
+    "height": 12.783200740168734
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34.99728980266448,
+     9.015436280819483
+    ],
+    "height": 13.35654966508931
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19.974256793683328,
+     10.515287843504396
+    ],
+    "height": 13.52228730861248
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -41.883979086865544,
+     15.396867963134316
+    ],
+    "height": 18.773426867993255
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36.953550801627394,
+     6.879447650448894
+    ],
+    "height": 11.507859883819357
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18.13374275073122,
+     10.681225032729436
+    ],
+    "height": 14.195155591415471
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20.926657693506705,
+     16.849395687865695
+    ],
+    "height": 17.52159717370558
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16.986467522502572,
+     10.033802748643073
+    ],
+    "height": 14.351587446511461
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11.77199628185684,
+     10.925298689432706
+    ],
+    "height": 13.091462253010883
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     31.904030278986525,
+     5.36061996877487
+    ],
+    "height": 10.952635994220943
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -23.070315564696298,
+     10.617223296310407
+    ],
+    "height": 14.157220670987705
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -3.1792804016353347,
+     14.589565011539024
+    ],
+    "height": 18.022945649805273
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36.02862955235156,
+     4.354621209736429
+    ],
+    "height": 4.536324434533551
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32.41229590837828,
+     4.618321330175624
+    ],
+    "height": 4.474538223951862
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -27.838678347292216,
+     3.2173709855337127
+    ],
+    "height": 4.320486338142868
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24.49861542394899,
+     4.207464385856149
+    ],
+    "height": 4.194408483305869
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -19.366640664631888,
+     4.171155416298339
+    ],
+    "height": 4.696438920012533
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16.3042309839446,
+     4.166094609486854
+    ],
+    "height": 4.60674102907086
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11.343622663490937,
+     3.7250677271448067
+    ],
+    "height": 4.764319380810183
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -7.260177495077677,
+     4.232505435307891
+    ],
+    "height": 4.964183282452911
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -3.086967046047162,
+     3.9772091456710346
+    ],
+    "height": 4.294010121154094
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -0.6676547646723212,
+     4.454930422030713
+    ],
+    "height": 4.9060725367127525
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     3.9544778657385438,
+     4.237138377266042
+    ],
+    "height": 4.579529713886138
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8.460706851134201,
+     3.4577401319531402
+    ],
+    "height": 4.670557442339787
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12.16169060046159,
+     4.198334343766024
+    ],
+    "height": 4.1311880458444294
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16.247474186915277,
+     4.362057118868025
+    ],
+    "height": 4.455300002590262
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20.440828949153673,
+     3.2414330236121884
+    ],
+    "height": 3.7400346016859434
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     23.88213683104622,
+     4.175175595068292
+    ],
+    "height": 3.828557246465204
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28.371914463945227,
+     4.146297743005257
+    ],
+    "height": 3.5627925580717816
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     31.943171009119748,
+     3.5393638934837153
+    ],
+    "height": 3.581214516145846
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     35.26705376969023,
+     3.6760262627301423
+    ],
+    "height": 3.77232081982488
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     39.38672020358325,
+     3.2534863257649143
+    ],
+    "height": 4.197995245655251
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36.23940229918772,
+     7.917690926104527
+    ],
+    "height": 7.180328804319594
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30.524307180672658,
+     8.354773484625044
+    ],
+    "height": 6.001321231581574
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24.189248502968155,
+     7.417792106298969
+    ],
+    "height": 6.820084629452247
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18.769851122962603,
+     8.247055089629178
+    ],
+    "height": 6.747759311860363
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12.92787577882509,
+     7.920346136779142
+    ],
+    "height": 6.189643327821512
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5.909558273663406,
+     7.509059968789327
+    ],
+    "height": 7.161792476373789
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0.9166010074558582,
+     8.227782999677506
+    ],
+    "height": 6.838203853506487
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6.625979700146916,
+     7.963444812652308
+    ],
+    "height": 6.738885439447645
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11.284224974465005,
+     7.893906463489827
+    ],
+    "height": 7.127718276933302
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18.914425182329975,
+     8.451995377983708
+    ],
+    "height": 7.217219786209332
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     12
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "trees generic low-poly crowns, ground a flat saturated red-brown, signboards without lettering, wire mesh shown as dark panel, no leaf litter or dappled shade"
+ }
+}

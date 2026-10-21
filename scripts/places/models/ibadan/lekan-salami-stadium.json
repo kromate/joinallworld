@@ -1,0 +1,696 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "lekan-salami-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lekan_Salami_Stadium_Ibadan1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hizick27",
+   "view": "front",
+   "file": "/tmp/places-evidence/ibadan/lekan1.jpg",
+   "used": "Gate 2 only: tall leaning concrete inverted-V arch, tan-grey, white numbered panel on left leg; NOT evidence of the bowl"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lekan_Salami_Stadium_Ibadan4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hizick27",
+   "view": "side",
+   "file": "/tmp/places-evidence/ibadan/lekan4.jpg",
+   "used": "concrete stand structure with sawtooth canopy steps, grey concrete tone, floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lekan_Salami_Stadium_Ibadan3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hizick27",
+   "view": "detail",
+   "file": "/tmp/places-evidence/ibadan/lekan3.jpg",
+   "used": "cream/blue multi-sport court outside the bowl"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9105937",
+   "used": "overall extent (about 150 x 210 m, long axis north-south)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     160,
+     166
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#8d8d89"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 45,
+    "n": 20,
+    "z0": 0.1,
+    "height": 0.15,
+    "colour": "#4f8a3f",
+    "topColour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch-stripe",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     84
+    ],
+    "z0": 0.25,
+    "height": 0.05,
+    "colour": "#5a9446"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "id": "bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 78,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 6,
+    "rise": 0.5,
+    "run": 0.85,
+    "seatColour": "#a9a69e",
+    "seatColours": [
+     "#a9a69e",
+     "#bdb9ae"
+    ],
+    "blocks": 6,
+    "concreteColour": "#a8a59c",
+    "under": "solid",
+    "backWall": 0.8,
+    "facetDeg": 20
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 78,
+    "startDeg": 150,
+    "endDeg": 210,
+    "rows": 12,
+    "rise": 0.55,
+    "run": 0.85,
+    "seatColour": "#a9a69e",
+    "seatColours": [
+     "#a9a69e",
+     "#b8b4a8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#a8a59c",
+    "under": "solid",
+    "backWall": 1.2,
+    "facetDeg": 20,
+    "canopy": {
+     "height": 7,
+     "depth": 9,
+     "colour": "#9c9a94",
+     "slopeDeg": 6,
+     "supports": 8
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast0",
+   "at": [
+    -62,
+    -61.6,
+    0
+   ],
+   "params": {
+    "colour": "#7c7f83",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps0",
+   "at": [
+    -62,
+    -61.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.6
+    ],
+    "z0": 34,
+    "height": 3,
+    "colour": "#d0d3d6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast1",
+   "at": [
+    62,
+    -61.6,
+    0
+   ],
+   "params": {
+    "colour": "#7c7f83",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps1",
+   "at": [
+    62,
+    -61.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.6
+    ],
+    "z0": 34,
+    "height": 3,
+    "colour": "#d0d3d6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast2",
+   "at": [
+    -62,
+    61.6,
+    0
+   ],
+   "params": {
+    "colour": "#7c7f83",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps2",
+   "at": [
+    -62,
+    61.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.6
+    ],
+    "z0": 34,
+    "height": 3,
+    "colour": "#d0d3d6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast3",
+   "at": [
+    62,
+    61.6,
+    0
+   ],
+   "params": {
+    "colour": "#7c7f83",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamps3",
+   "at": [
+    62,
+    61.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.6
+    ],
+    "z0": 34,
+    "height": 3,
+    "colour": "#d0d3d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    -65,
+    -16.0
+   ],
+   "params": {
+    "rect": [
+     26,
+     44
+    ],
+    "z0": 0.1,
+    "height": 0.1,
+    "colour": "#d9cfa5"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-key",
+   "at": [
+    -65,
+    -29.6
+   ],
+   "params": {
+    "rect": [
+     8,
+     11
+    ],
+    "z0": 0.2,
+    "height": 0.05,
+    "colour": "#4f7fbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-key2",
+   "at": [
+    -65,
+    -2.4000000000000004
+   ],
+   "params": {
+    "rect": [
+     8,
+     11
+    ],
+    "z0": 0.2,
+    "height": 0.05,
+    "colour": "#4f7fbe"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "court-fence",
+   "at": [
+    -65,
+    -16.0
+   ],
+   "params": {
+    "rect": [
+     28,
+     46
+    ],
+    "z0": 0.1,
+    "height": 3,
+    "colour": "#9aa0a4",
+    "topColour": "#9aa0a4",
+    "pattern": {
+     "type": "bands",
+     "colour": "#9aa0a4"
+    }
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58,
+      -82
+     ],
+     [
+      58,
+      -82
+     ],
+     [
+      58,
+      82
+     ],
+     [
+      -58,
+      82
+     ],
+     [
+      -58,
+      -82
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#c9c0ac"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -72,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 3,
+    "spread": 6,
+    "line": 30
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-leg-l",
+   "params": {
+    "width": 1.6,
+    "height": 2.2,
+    "colour": "#b5a994",
+    "points": [
+     [
+      -12.5,
+      -86,
+      0
+     ],
+     [
+      0,
+      -86,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gate-leg-r",
+   "params": {
+    "width": 1.6,
+    "height": 2.2,
+    "colour": "#b5a994",
+    "points": [
+     [
+      12.5,
+      -86,
+      0
+     ],
+     [
+      0,
+      -86,
+      12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-panel",
+   "at": [
+    -11,
+    -85.2
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.3
+    ],
+    "z0": 0.4,
+    "height": 4,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-wall",
+   "at": [
+    -20,
+    -85
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.6
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#a8a59c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier0",
+   "at": [
+    -58,
+    -82
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier1",
+   "at": [
+    -30,
+    -82
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier2",
+   "at": [
+    0,
+    -82
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier3",
+   "at": [
+    30,
+    -82
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier4",
+   "at": [
+    58,
+    -82
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#7a5a40"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -72,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 4,
+    "spread": 6,
+    "line": 50
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    70,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 4,
+    "spread": 6,
+    "line": 60
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only Gate 2 is photo-backed (plus a glimpse of stand frames in photo 4); bowl is composed from the OSM extent as grey concrete tiers with one canopied side stand, stand shape, canopy sawtooth and surroundings are estimates"
+ }
+}

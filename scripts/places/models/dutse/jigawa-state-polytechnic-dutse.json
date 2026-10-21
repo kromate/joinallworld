@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "jigawa-state-polytechnic-dutse",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jigawa_State_Polytechnic,_Dutse.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ogalihillary",
+   "view": "front",
+   "file": "/tmp/places-evidence/dutse/poly-small.jpg",
+   "used": "campus entrance gate only (dark green gate frame with a pale green pyramid over the middle, green side panels); the teaching block itself is not pictured"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/dutse.json",
+   "used": "two-storey 60x16 m rendered classroom block with open front walkway, corrugated red-brown roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classrooms",
+   "footprint": {
+    "rect": [
+     60,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eae2cc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#6c8f76"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "count": 15,
+    "height": 3.6,
+    "radius": 0.2,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "roofDepth": 3.0,
+    "colour": "#f2eddd",
+    "roofColour": "#9aa39c"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -13.8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.45,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#b8b3a6"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    36,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#2f5d45",
+    "leafColour": "#2f5d45"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 0.8,
+    "colour": "#6c8f76",
+    "frameColour": "#d6d2c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "only the entrance gate is photographed; teaching block typed"
+ }
+}

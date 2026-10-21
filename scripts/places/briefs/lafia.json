@@ -1,0 +1,767 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lafia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lafia",
+    "climate": "savanna",
+    "vernacular": "Middle Belt savanna town and Nasarawa State capital. Ordinary buildings are single-storey cement-block houses and shops in painted render (cream, light green, ochre) with rust-red or green corrugated metal roofs; older Hausa/Lafia-emirate compounds use mud-render with arched doorways; newer state and university buildings are 2-4 storey concrete blocks in white or pale cream. Laterite roads, shea, neem and mango trees.",
+    "wallColours": [
+      "#f1ead8",
+      "#d9c9a3",
+      "#c9a77c",
+      "#9bb89a",
+      "#a2553a",
+      "#f7f4ee"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6b54",
+      "#6b6f73",
+      "#7a5a3c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "mud-render",
+      "concrete",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Hausa-emirate arched doorways and relief on palace gates; flat-fronted rendered shops with hand-painted signs; white-painted state buildings with flagpoles; mosque domes and short minarets on the 1971 state mosque.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Lafia",
+        "what": "Koppen Aw 18-36 C, 1,410 mm rain; Lafia Central Mosque 1971; Emir's palace; historic Benue Valley market under Mohamman Agwai"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Federal_University_of_Lafia",
+        "what": "campus on Lafia-Makurdi road; white Senate building; library, auditorium and mosque on campus"
+      }
+    ]
+  },
+  "places": {
+    "ercc-graceland": {
+      "venueId": "ercc-graceland",
+      "city": "lafia",
+      "name": "Evangelical Reformed Church of Christ (ERCC), GraceLand",
+      "archetype": "church-modern",
+      "subject": "a pentecostal-style church auditorium: wide gable hall in painted render with a tall entrance gable and cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#9bb89a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b54",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "federal-university-of-lafia": {
+      "venueId": "federal-university-of-lafia",
+      "city": "lafia",
+      "name": "Federal University of Lafia",
+      "archetype": "campus-block",
+      "subject": "the Senate Building (\"White House\") and neighbouring administration and faculty blocks on the new Lafia-Makurdi road campus: white 2-3 storey buildings with columned entrances",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2015-2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_University_of_Lafia",
+          "what": "established 2011; permanent 206 ha site on Lafia-Makurdi Road from 2015; Senate Building popularly called the White House; Central Administration Building, Ekanem I. Braide Library, 500-seat auditorium, central mosque"
+        }
+      ],
+      "notes": "Building names and white Senate \"White House\" nickname are sourced; shape and colours are estimates (white main colour inferred from the nickname)."
+    },
+    "john-castle-lafia": {
+      "venueId": "john-castle-lafia",
+      "city": "lafia",
+      "name": "John Castle",
+      "archetype": "heritage-fort",
+      "subject": "a privately built castle-style house in Lafia: a crenellated rendered keep with corner turrets behind a gated wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9c9a3",
+          "#8a6a4a",
+          "#f1ead8"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named like a castle; not described in findable sources (Wikipedia pages for Lafia and Nasarawa State do not mention it), so the castle form is inferred from the name. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "lafia-lg-secretariat": {
+      "venueId": "lafia-lg-secretariat",
+      "city": "lafia",
+      "name": "Lafia LGsec. Lafia",
+      "archetype": "civic-small",
+      "subject": "the Local Government secretariat: a long two-storey rendered administrative block with a veranda and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#9bb89a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "lafia-market": {
+      "venueId": "lafia-market",
+      "city": "lafia",
+      "name": "Lafia Market",
+      "archetype": "market-open",
+      "subject": "the historic central market: crowded stalls and lock-up rows under mixed corrugated shed roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 65,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9c9a3",
+          "#a2553a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "historic market, current stalls 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lafia",
+          "what": "Lafia market important in the Benue Valley under Mohamman Agwai (1881-1903); trade in yams, sorghum, millet, cotton"
+        }
+      ],
+      "notes": "Wikipedia records this as one of the most important markets in the Benue Valley under Mohamman Agwai (1881-1903), but gives no look for the present market. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "lafia-new-market": {
+      "venueId": "lafia-new-market",
+      "city": "lafia",
+      "name": "New market",
+      "archetype": "market-hall",
+      "subject": "the newer planned market: rows of identical concrete lock-up shops under long gable sheds around a central lane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4da",
+          "#4f6b54",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b54",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 24
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Planned on the north edge; layout differs from the older Lafia Market. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "lafiya-city-stadium": {
+      "venueId": "lafiya-city-stadium",
+      "city": "lafia",
+      "name": "Lafiya City Stadium",
+      "archetype": "stadium",
+      "subject": "the city football ground: open oval pitch with low concrete terraces and a roofed main stand, floodlights and a perimeter wall",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 105,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d5cb",
+          "#2f6b4f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lafia",
+          "what": "Lafia Township Stadium is the home ground of Nasarawa United"
+        }
+      ],
+      "notes": "Probably the Lafia Township/City stadium used by Nasarawa United (Wikipedia: home ground, photo only); capacity not given. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "nasarawa-ministry-information-culture-tourism": {
+      "venueId": "nasarawa-ministry-information-culture-tourism",
+      "city": "lafia",
+      "name": "Nasarawa State Ministry of Information, Culture and Tourism",
+      "archetype": "civic-palace",
+      "subject": "a state ministry: a three-storey white rendered block with a central columned entrance and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Part of the state government quarter. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "nasarawa-state-poly-lafia": {
+      "venueId": "nasarawa-state-poly-lafia",
+      "city": "lafia",
+      "name": "Nasarawa state poly, Lafia",
+      "archetype": "campus-block",
+      "subject": "polytechnic teaching blocks: a few single- and two-storey rendered classroom blocks with corrugated roofs and verandas",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#a2553a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b54",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nasarawa_State",
+          "what": "Isa Mustapha Agwai I Polytechnic listed among Lafia institutions"
+        }
+      ],
+      "notes": "Wikipedia lists Isa Mustapha Agwai I Polytechnic as the Lafia polytechnic; this venue is probably that campus on the northern edge. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "saint-williams-cathedral-lafia": {
+      "venueId": "saint-williams-cathedral-lafia",
+      "city": "lafia",
+      "name": "Saint Williams Cathedral, Lafia",
+      "archetype": "church-modern",
+      "subject": "the Catholic cathedral of the Lafia diocese on Jos Road: a large modern concrete church with a wide gabled nave, a tall facade and a detached bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#a2553a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Lafia",
+          "what": "St William's Cathedral is the cathedral of the Lafia diocese, est. 2000"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lafia",
+          "what": "on Jos Road, headquarters of the Lafia diocese, still under construction"
+        }
+      ],
+      "notes": "Identity, location and \"still under construction\" are sourced but no source describes its look; form is a typical large Nigerian Catholic cathedral estimate. Could show unfinished wings."
+    },
+    "sauki-hospital-lafia": {
+      "venueId": "sauki-hospital-lafia",
+      "city": "lafia",
+      "name": "Sauki Hospital, Lafia",
+      "archetype": "hospital",
+      "subject": "a private hospital: a two-storey white rendered clinic block with a covered ambulance entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#4a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    },
+    "voice-of-islam-hospital": {
+      "venueId": "voice-of-islam-hospital",
+      "city": "lafia",
+      "name": "Voice of Islam Hospital",
+      "archetype": "hospital",
+      "subject": "a faith-based hospital: a rendered ward block with a green trim and a small mosque-style dome at the entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Different from Sauki: longer L-shaped, green-trimmed; entrance dome is a guess from the name. Not described in any findable source; typed brief derived from the Lafia city style and the type of place, so dimensions and colours are estimates."
+    }
+  }
+}

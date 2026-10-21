@@ -1,0 +1,1731 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "buenos-aires",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "buenos-aires",
+    "climate": "temperate",
+    "vernacular": "A European-feeling grid city built 1880-1930 by Italian and Spanish immigrants: stuccoed Italianate and French-academic apartment buildings of 4-8 storeys with cornices, balustrades and iron balconies, zinc-clad mansard roofs with dormers, low casas chorizo and conventillos with flat roofs behind decorative parapets, art-deco and rationalist blocks after 1930, and brick-and-render suburbs. Concrete and brick towers and 1970s freeways in the later city; plane trees (platanos), jacarandas and gums line paved streets.",
+    "wallColours": [
+      "#e1d3b3",
+      "#d8c7a3",
+      "#b9b0a2",
+      "#a85a42",
+      "#ede9df",
+      "#c97f5a",
+      "#8d8c86"
+    ],
+    "roofColours": [
+      "#5a6068",
+      "#6b6f73",
+      "#a2573f",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "render",
+      "painted-render",
+      "brick",
+      "limestone",
+      "stone",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Stucco cornices, pilasters and balustrades imitating Paris stone; wrought-iron balconies and Juliet railings; zinc mansard roofs with oeil-de-boeuf dormers and domed corner pavilions; carved lintels and caryatids; coloured tile (azulejo) panels; Beaux-Arts clock domes on civic buildings; painted shop awnings and hand-lettered signs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Buenos_Aires",
+        "what": "eclectic preserved European architecture of 1880-1930 growth, conventillos, landmarks (Congress, Casa Rosada, Palacio Barolo), parks and trees"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Palacio_Municipal_de_la_Ciudad_de_Buenos_Aires",
+        "what": "Italianate / Beaux-Arts civic palace in imitation Paris stone render now painted, with mansard-capped domes and iron details"
+      }
+    ]
+  },
+  "places": {
+    "buenos-aires-airport-buenos-aires-airport": {
+      "venueId": "buenos-aires-airport-buenos-aires-airport",
+      "city": "buenos-aires",
+      "name": "Ezeiza International Airport - Ministro Pistarini",
+      "archetype": "airport-terminal",
+      "subject": "Ezeiza's passenger terminal complex seen from the forecourt: a long low glazed terminal with an elevated departures road, the older Terminal A and the new four-level departures building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#cfd6da",
+          "#7a8a96",
+          "#ffffff"
+        ],
+        "roofColour": "#aeb4b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "elevated departures canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "Terminal A 1949; Terminals B and C 2011-13; new departures terminal 2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ministro_Pistarini_International_Airport",
+          "what": "Terminal C opened July 2011; Terminal B March 2013 (28,795 m2); Terminal A is the international arrivals terminal; new Departures Terminal opened 14 April 2023 with 50,000 m2 over four floors"
+        }
+      ],
+      "notes": "Opening dates, floor areas and the four-floor departures building are sourced; facade materials, colours and gate counts are estimates. The airport sits on flat pampas: a big car-park forecourt and few trees. No facts file match (OSM terminal not found)."
+    },
+    "buenos-aires-clinic": {
+      "venueId": "buenos-aires-clinic",
+      "city": "buenos-aires",
+      "name": "Hospital Posadas",
+      "archetype": "hospital",
+      "subject": "The Hospital Nacional Profesor Alejandro Posadas at Haedo: a huge 1950s Carrillo-era complex of seven-floor pavilions joined to lower three-floor blocks by a central block",
+      "form": {
+        "footprint": "H",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#d6ccb5",
+          "#8d6b55",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 6
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "founded 1958",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Nacional_Profesor_Alejandro_Posadas",
+          "what": "founded April 1958, design by Health Minister Ramon Carrillo; four pavilions in sectors AB and CD with seven floors each, two three-floor blocks E and F joined by a central block H; about 72,000-82,000 m2 covered"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/129852442",
+          "what": "OSM footprint 517.6 x 414.9 m, area 135302 m2"
+        }
+      ],
+      "notes": "Layout, floor counts and date are sourced; facade materials and colours are estimates (pavilion-plan state hospital of the 1950s: raw concrete and brick with ribbon windows). OSM site is 518 x 415 m."
+    },
+    "buenos-aires-community-notices": {
+      "venueId": "buenos-aires-community-notices",
+      "city": "buenos-aires",
+      "name": "Dirección Nacional de Vialidad - Distrito 1º Buenos Aires",
+      "archetype": "office-low",
+      "subject": "A district office of the national roads agency in Floresta: a plain two-storey government office with a flag and a vehicle yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d0bf",
+          "#6e7b86",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found about this office building; no OSM footprint matched. Typed from the type and the Buenos Aires city style. Low."
+    },
+    "buenos-aires-community-voting-game": {
+      "venueId": "buenos-aires-community-voting-game",
+      "city": "buenos-aires",
+      "name": "Buenos Aires City Hall",
+      "archetype": "civic-palace",
+      "subject": "The Palacio de Gobierno (Palacio Municipal) on Avenida de Mayo: an Italianate / Beaux-Arts palace of five floors with a four-faced clock dome over the corner entrance and a taller extension dome",
+      "form": {
+        "footprint": "U",
+        "width_m": 56,
+        "depth_m": 44,
+        "storeys": 5,
+        "height_m": 38,
+        "roof": "mansard",
+        "wings": 1,
+        "variant": "corner clock dome"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e0d3b6",
+          "#b4a98f",
+          "#f4f0e6"
+        ],
+        "roofColour": "#5f6469",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "four-faced clock under the 48 m dome"
+        },
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "main dome plus the 1911-14 taller dome of about 65 m"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "corner entrance arches"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 4
+        },
+        {
+          "id": "pediment",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1890-93, extension 1911-14",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Palacio_Municipal_de_la_Ciudad_de_Buenos_Aires",
+          "what": "architect Juan Antonio Buschiazzo; Italianate / Beaux-Arts; five floors; central dome about 48 m with four-faced clock; 1911-14 extension with taller dome about 65 m; imitation Paris-stone render now painted; three-arch corner entrance"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/23633883",
+          "what": "OSM footprint 56 x 43.8 m, area 2352 m2, 5 levels, height 38 m, architect Juan A. Buschiazzo, start 1890-11-30"
+        }
+      ],
+      "notes": "Style, dates, architect, heights and domes are sourced. Colours are estimates (painted pale cream render, grey mansard/zinc caps). OSM plan is 56 x 44 m (the original corner block); the extension runs along Rivadavia. Distinct from civic buildings elsewhere by its twin domes."
+    },
+    "buenos-aires-community-workshop": {
+      "venueId": "buenos-aires-community-workshop",
+      "city": "buenos-aires",
+      "name": "Biblioteca Popular Antonio Mentruyt",
+      "archetype": "civic-small",
+      "subject": "A neighbourhood popular library in the southern suburbs: a modest one-storey stuccoed building with a small gable and street front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e6dcc2",
+          "#b4684f",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "library founded 1913",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5727838",
+          "what": "popular library (Biblioteca Popular Antonio Mentruyt) founded 1913 (per Wikidata)"
+        }
+      ],
+      "notes": "Only the 1913 foundation is known; the building itself is not described. Typed low as a small suburban civic building."
+    },
+    "buenos-aires-market-game": {
+      "venueId": "buenos-aires-market-game",
+      "city": "buenos-aires",
+      "name": "Unicenter Shopping",
+      "archetype": "mall",
+      "subject": "Unicenter in Martinez: a very large three-to-four level shopping mall with huge surface and rooftop parking and a glazed entrance wing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 398,
+        "depth_m": 282,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2ddd0",
+          "#7e8c97",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "parking decks on all sides"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1988, expanded 1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Unicenter_Shopping",
+          "what": "opened 1988, Bauform, three main levels, about 239,000 m2 built area, parking about 6,500 spaces, part of an existing building reused, expanded 1998"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/122963275",
+          "what": "OSM footprint 397.7 x 282.3 m, area 57840 m2, 4 levels"
+        }
+      ],
+      "notes": "Levels, opening, size and designer are sourced; facade colours are estimates. OSM footprint 398 x 282 m; the model clamps to 120 m, showing the main entrance wing."
+    },
+    "buenos-aires-meal-stop": {
+      "venueId": "buenos-aires-meal-stop",
+      "city": "buenos-aires",
+      "name": "Café de García",
+      "archetype": "restaurant",
+      "subject": "A traditional Buenos Aires cafe on a street corner: stuccoed corner building with wooden shopfront, awning and pavement tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e4d7b9",
+          "#2f5d4b",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5739192",
+          "what": "Wikidata item for Cafe de Garcia: cafe, no further description"
+        }
+      ],
+      "notes": "Only that this is a cafe is known; the building is not described. Typed low from the classic porteno cafe (bar notable) pattern."
+    },
+    "buenos-aires-osm-node-455754665": {
+      "venueId": "buenos-aires-osm-node-455754665",
+      "city": "buenos-aires",
+      "name": "San Francisco Javier",
+      "archetype": "church-classical",
+      "subject": "A small parish church of San Francisco Javier in Palermo: a stuccoed church with a gabled nave and short bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8ddc4",
+          "#b4a98f",
+          "#ffffff"
+        ],
+        "roofColour": "#5f6469",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/439782274",
+          "what": "OSM footprint 12.2 x 7.2 m, area 88 m2 (nearest building only, may not be this venue)"
+        }
+      ],
+      "notes": "Only a name and a 12 x 7 m node building are known; nothing descriptive found. Typed low as a Latin-American neighbourhood church; the OSM building is likely a chapel annex."
+    },
+    "buenos-aires-osm-relation-14618378": {
+      "venueId": "buenos-aires-osm-relation-14618378",
+      "city": "buenos-aires",
+      "name": "National University of Lomas de Zamora",
+      "archetype": "campus-block",
+      "subject": "A big suburban state university campus at Banfield: several three-to-four storey blocks of concrete and brick with ribbon windows",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#cfc8b8",
+          "#a85a42",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "founded 1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6316549",
+          "what": "public university founded 1972, Lomas de Zamora"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14618378",
+          "what": "OSM footprint 855.8 x 425.2 m, area 339460 m2"
+        }
+      ],
+      "notes": "Only founding year and the 856 x 425 m campus size are known. Typed low; model shows one representative block."
+    },
+    "buenos-aires-osm-relation-3087274": {
+      "venueId": "buenos-aires-osm-relation-3087274",
+      "city": "buenos-aires",
+      "name": "Universidad Nacional Arturo Jauretche",
+      "archetype": "campus-block",
+      "subject": "A 2009 public university at Florencio Varela: a compact contemporary classroom building with ribbon windows and bright accents",
+      "form": {
+        "footprint": "rect",
+        "width_m": 133,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e3da",
+          "#c4572d",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "founded 2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6156550",
+          "what": "public university founded 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3087274",
+          "what": "OSM footprint 132.9 x 129.1 m, area 6058 m2"
+        }
+      ],
+      "notes": "Only year and OSM footprint (133 x 129 m) known. Typed low as a contemporary Argentine campus block."
+    },
+    "buenos-aires-osm-relation-6788507": {
+      "venueId": "buenos-aires-osm-relation-6788507",
+      "city": "buenos-aires",
+      "name": "Parque Bosque Alegre",
+      "archetype": "park-landscape",
+      "subject": "A leafy urban park in Palermo with winding paths, lawns and old trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 694,
+        "depth_m": 368,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16616302",
+          "what": "urban park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6788507",
+          "what": "OSM footprint 693.9 x 367.9 m, area 168698 m2"
+        }
+      ],
+      "notes": "Nothing descriptive found; typed low from the Palermo park pattern (lawns, plane/jacaranda trees, iron fence, small pavilion)."
+    },
+    "buenos-aires-osm-relation-7447545": {
+      "venueId": "buenos-aires-osm-relation-7447545",
+      "city": "buenos-aires",
+      "name": "University of San Andrés",
+      "archetype": "campus-block",
+      "subject": "The private university campus at Victoria: low red-brick teaching blocks and a library set around green lawns",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a85a42",
+          "#e6dfcf",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "founded 1988",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5242548",
+          "what": "private university founded 1988"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/7447545",
+          "what": "OSM footprint 512.2 x 175.1 m, area 76067 m2"
+        }
+      ],
+      "notes": "Only founding year and size known (512 x 175 m). Red brick is a guess from the campus type; low."
+    },
+    "buenos-aires-osm-way-1312245862": {
+      "venueId": "buenos-aires-osm-way-1312245862",
+      "city": "buenos-aires",
+      "name": "Avión de los Vuelos de la Muerte",
+      "archetype": "monument",
+      "subject": "A memorial plaza in the southern suburbs showing a preserved Skyvan aircraft of the dictatorship-era death flights on a low platform with a fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 27,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d0cfca",
+          "#7a7a76",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "preserved aircraft on a plinth (high-wing twin turboprop, boxy fuselage)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1976-83 events, memorial later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q99463253",
+          "what": "memorial to the death flights in Argentina"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1312245862",
+          "what": "OSM footprint 27.6 x 27.5 m, area 232 m2"
+        }
+      ],
+      "notes": "The memorial exists (OSM historic=memorial, 27 x 27 m) but its layout is not described. Typed low. Should be rendered plainly and respectfully."
+    },
+    "buenos-aires-osm-way-1387673826": {
+      "venueId": "buenos-aires-osm-way-1387673826",
+      "city": "buenos-aires",
+      "name": "Iglesia de Dios",
+      "archetype": "church-modern",
+      "subject": "A small modern church hall of the World Mission Society Church of God: a plain two-level rendered box with a street sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4d8",
+          "#6e7b86",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q403140",
+          "what": "World Mission Society Church of God, founded 1964"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1156438126",
+          "what": "OSM footprint 30.2 x 8.8 m, area 254 m2, 2 levels"
+        }
+      ],
+      "notes": "Only the 30 x 9 m two-level footprint is known. Typed low; signage left blank."
+    },
+    "buenos-aires-osm-way-159783339": {
+      "venueId": "buenos-aires-osm-way-159783339",
+      "city": "buenos-aires",
+      "name": "Torre Espacial",
+      "archetype": "monument",
+      "subject": "The Space Tower in Parque de la Ciudad: a slender steel tower with observation levels near the top, over a plaza",
+      "form": {
+        "footprint": "round",
+        "width_m": 37,
+        "depth_m": 32,
+        "storeys": 32,
+        "height_m": 128,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9dcde",
+          "#c9d4dc",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "steel tower shaft"
+        },
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "observation pods at 120-176 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "1981 built, opened 1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Torre_Espacial",
+          "what": "designed and made in Austria by Waagner-Biro; three observation decks at about 120, 124 and 176 m; 1980-81 construction, opened to the public 9 July 1985; height given as 200 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/159783339",
+          "what": "OSM tags height 128 m, building material glass, footprint 37 x 32 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/159783726",
+          "what": "OSM footprint 37.2 x 32.1 m, area 907 m2, height 128 m"
+        }
+      ],
+      "notes": "Heights differ across sources (200 m with antenna vs OSM 128 m body); the model shows the main shaft. Observation levels are sourced; colours are estimates (steel grey, glazed cabins)."
+    },
+    "buenos-aires-osm-way-161797198": {
+      "venueId": "buenos-aires-osm-way-161797198",
+      "city": "buenos-aires",
+      "name": "Estadio Julio Humberto Grondona",
+      "archetype": "stadium",
+      "subject": "The Arsenal de Sarandi stadium: a compact two-sided club ground with tiered concrete stands, roofed grandstands and four floodlight masts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 136,
+        "depth_m": 117,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd2d4",
+          "#6ab4e8",
+          "#c0392b"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1369295",
+          "what": "association football venue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/161797198",
+          "what": "OSM footprint 135.7 x 116.6 m, area 15717 m2"
+        }
+      ],
+      "notes": "No description sourced; typed from the club-ground pattern (sky-blue and red club colours used for seats and trim). OSM footprint 136 x 117 m. Low."
+    },
+    "buenos-aires-osm-way-173109152": {
+      "venueId": "buenos-aires-osm-way-173109152",
+      "city": "buenos-aires",
+      "name": "Estadio Ciudad de Laferrere",
+      "archetype": "stadium",
+      "subject": "A small lower-division club ground at Laferrere with concrete terraces on two sides, an open end and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 132,
+        "depth_m": 87,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c8c0",
+          "#2f6a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q59680331",
+          "what": "association football venue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/173109152",
+          "what": "OSM footprint 131.6 x 86.8 m, area 11419 m2"
+        }
+      ],
+      "notes": "No description found; typed low from the type and OSM footprint (132 x 87 m). Smaller and plainer than the Arsenal ground."
+    },
+    "buenos-aires-osm-way-205037220": {
+      "venueId": "buenos-aires-osm-way-205037220",
+      "city": "buenos-aires",
+      "name": "Hospital General de Agudos Doctor Enrique Tornú",
+      "archetype": "hospital",
+      "subject": "A pavilion of the early-1900s Tornu hospital: a long two-storey brick-and-render ward block with tiled hip roof, one of many linked pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#b5694c",
+          "#e6dcc2",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "pavilion hospital 1904",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q90108805",
+          "what": "Tornu Hospital, public hospital, inception 1904"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/205038202",
+          "what": "OSM footprint 70.5 x 16.1 m, area 1135 m2"
+        }
+      ],
+      "notes": "Only the 1904 date and the 70 x 16 m pavilion outline are known. Pavilion style is inferred from the date; typed low."
+    },
+    "buenos-aires-osm-way-294261998": {
+      "venueId": "buenos-aires-osm-way-294261998",
+      "city": "buenos-aires",
+      "name": "Parque Presidente Sarmiento",
+      "archetype": "park-landscape",
+      "subject": "Parque Sarmiento in Saavedra: a big leisure park with a lake pool, lawns and tree-lined paths",
+      "form": {
+        "footprint": "rect",
+        "width_m": 188,
+        "depth_m": 132,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6062504",
+          "what": "Parque Sarmiento, park and multi-sports venue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/98562709",
+          "what": "OSM footprint 188.3 x 132.2 m, area 20017 m2"
+        }
+      ],
+      "notes": "OSM tags this area as a water park; the real park is far larger. Typed low."
+    },
+    "buenos-aires-osm-way-297407589": {
+      "venueId": "buenos-aires-osm-way-297407589",
+      "city": "buenos-aires",
+      "name": "Hospital General de Agudos Doctor Teodoro Alvarez",
+      "archetype": "hospital",
+      "subject": "A century-old pavilion hospital in Flores: several long two-storey stuccoed ward pavilions with tiled roofs around gardens",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#e3d6b6",
+          "#a85a42",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1897",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q89822525",
+          "what": "Hospital Alvarez, inception 1897"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/297407589",
+          "what": "OSM footprint 254.1 x 104.4 m, area 26088 m2"
+        }
+      ],
+      "notes": "Only 1897 and the footprint (254 x 104 m) known. Typed low; distinct from Tornu by the wider U layout."
+    },
+    "buenos-aires-osm-way-517109240": {
+      "venueId": "buenos-aires-osm-way-517109240",
+      "city": "buenos-aires",
+      "name": "Museo Histórico Municipal Brig. Gral. Juan M. Pueyrredón",
+      "archetype": "manor",
+      "subject": "The Quinta Pueyrredon in San Isidro: a one-storey late-colonial country house with a wide tiled hip roof and a wooden veranda facing a garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f1ecde",
+          "#6b4e3a",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "front galeria"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "wooden veranda posts"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "house 18th-19th century, museum 1941",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6940514",
+          "what": "museum, OSM start_date 1941"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/517109240",
+          "what": "OSM footprint 238.4 x 164 m, area 25553 m2, start 1941"
+        }
+      ],
+      "notes": "Museum start date (1941) and its San Isidro site are the only sourced items; the colonial house description is general knowledge, not verified."
+    },
+    "buenos-aires-osm-way-53012324": {
+      "venueId": "buenos-aires-osm-way-53012324",
+      "city": "buenos-aires",
+      "name": "Estadio Norberto \"Tito\" Tomaghello",
+      "archetype": "stadium",
+      "subject": "The Defensa y Justicia ground at Florencio Varela: a small modern stadium with covered stands on two sides in yellow and green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 142,
+        "depth_m": 101,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d0d1c8",
+          "#f2c230",
+          "#2f7a3a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5400433",
+          "what": "Norberto Tomaghello Stadium, sports venue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/53012324",
+          "what": "OSM footprint 142.2 x 100.7 m, area 13027 m2"
+        }
+      ],
+      "notes": "Only name and outline (142 x 101 m) known; club colours recalled from general knowledge. Low."
+    },
+    "buenos-aires-quiet-reflection": {
+      "venueId": "buenos-aires-quiet-reflection",
+      "city": "buenos-aires",
+      "name": "Comunidad Amijai",
+      "archetype": "shrine-small",
+      "subject": "The Amijai Jewish congregation synagogue in Belgrano: a modern two-storey community building with a plain stone and brick front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#d9d0bb",
+          "#8d6b55",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q17364251",
+          "what": "Congregation Amijai, Jewish place of worship"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1279801537",
+          "what": "OSM footprint 39.6 x 26.4 m, area 864 m2"
+        }
+      ],
+      "notes": "Congregation known; building not described. Typed low with a plain frontage (a typical urban synagogue, no explicit symbols)."
+    },
+    "buenos-aires-recreation": {
+      "venueId": "buenos-aires-recreation",
+      "city": "buenos-aires",
+      "name": "Parque General José de San Martín",
+      "archetype": "park-landscape",
+      "subject": "A small plaza named for San Martin, with a monument to the Liberator on a plinth, paved paths and shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 87,
+        "depth_m": 87,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "San Martin on a plinth"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "from 1818 (OSM)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q22661972",
+          "what": "San Martin Park, square, OSM start 1818"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/711562796",
+          "what": "OSM footprint 87.3 x 86.7 m, area 7570 m2, start 1818"
+        }
+      ],
+      "notes": "OSM start_date 1818 is the only fact; a plaza with a statue of its namesake is the usual Argentine pattern. Typed low."
+    },
+    "buenos-aires-transit": {
+      "venueId": "buenos-aires-transit",
+      "city": "buenos-aires",
+      "name": "Avenida La Plata",
+      "archetype": "transport-station",
+      "subject": "Subte line E Avenida La Plata station: a street-level entrance with a stair-head railing and a small corner kiosk building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d2cfc6",
+          "#7a7a76",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "station opened 1966",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3297028",
+          "what": "metro station Avenida La Plata, opened 1966 (per Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/476721906",
+          "what": "OSM footprint 13.2 x 10.3 m, area 124 m2 (nearest building only, may not be this venue)"
+        }
+      ],
+      "notes": "The OSM match is only the nearest restaurant building. The station is underground; the model shows the entrance. Low."
+    }
+  }
+}

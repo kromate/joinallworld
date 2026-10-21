@@ -1,0 +1,232 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/453526513",
+   "used": "prayer hall outline (65 x 39 m, rotated 7 deg), mosque at the Emir's palace tagged Masallacin Kofar Fada, Wikidata Q125749403"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json",
+   "used": "one main dome, two minarets about 30 m, green and white, arcaded entrance. Commons photos of Bauchi mosques (ATBU campus mosque, a roadside mosque) were looked at but are not shown to be this building, so only their regional styling (green and white, pierced minarets) informed colours"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.25,
+    "bands": "#3f6b4e",
+    "plinth": 0.6,
+    "faces": {
+     "front": "pointed",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d4c4",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    1,
+    -25
+   ],
+   "rotDeg": -7,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48a",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "faces": {
+     "front": "pointed",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "radius": 10,
+    "height": 9,
+    "profile": "hemi",
+    "drum": 3.5,
+    "drumRadius": 10.5,
+    "lantern": 1.8,
+    "finial": 2.2,
+    "colour": "#3f6b4e",
+    "drumColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -22,
+    -6,
+    12
+   ],
+   "params": {
+    "radius": 3.4,
+    "height": 3.4,
+    "profile": "hemi",
+    "drum": 1.4,
+    "colour": "#3f6b4e",
+    "drumColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    24,
+    -1,
+    12
+   ],
+   "params": {
+    "radius": 3.4,
+    "height": 3.4,
+    "profile": "hemi",
+    "drum": 1.4,
+    "colour": "#3f6b4e",
+    "drumColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -36,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "radius": 1.7,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "capColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    36,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "radius": 1.7,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "capColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No verified photo of this mosque; massing from the OSM outline and the typed brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "bauchi-central-mosque"
+}

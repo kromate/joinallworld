@@ -1,0 +1,609 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "uyo-township-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uyo_Township_stadium.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Victorpeter001",
+   "view": "interior",
+   "file": "/tmp/places-evidence/uyo/stad2.jpg",
+   "used": "dark flat steel-truss roof over the covered main stand, low far stand under a thin dark roof, red/white/green moulded seats, stained concrete apron, green artificial pitch, floodlight mast and distant lattice tower"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uyo_Township_Stadium_(83878).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Successabiodun",
+   "view": "side",
+   "file": "/tmp/places-evidence/uyo/stad1.jpg",
+   "used": "end stand layout and lattice floodlight tower (seat colours now taken from the interior photo instead)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669841154",
+   "used": "site extent only; ground is much smaller than the tagged area, bowl modelled at about 140 x 100 m from the photos and brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     117.0,
+     85.8
+    ],
+    "height": 0.15,
+    "colour": "#c9b8a0",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     82.7,
+     53.0
+    ],
+    "height": 0.1,
+    "colour": "#2c6b3a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    25,
+    20,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      1
+     ],
+     [
+      16,
+      -4
+     ],
+     [
+      3,
+      -5
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#a8977f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    22,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      1
+     ],
+     [
+      14,
+      -5
+     ],
+     [
+      3,
+      -6
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#a8977f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    28,
+    -24,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      1
+     ],
+     [
+      12,
+      -5
+     ],
+     [
+      3,
+      -6
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#a8977f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -26,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      1
+     ],
+     [
+      14,
+      -4
+     ],
+     [
+      3,
+      -5
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#a8977f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -25,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      1
+     ],
+     [
+      16,
+      -5
+     ],
+     [
+      3,
+      -6
+     ]
+    ],
+    "height": 0.03,
+    "colour": "#a8977f"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -40.6,
+     -31.2
+    ],
+    "end": [
+     40.6,
+     -31.2
+    ],
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.6,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#f0eee8",
+     "#f0eee8",
+     "#d9482b",
+     "#f0eee8",
+     "#2f8a4a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#cbc8c0",
+    "underColour": "#c4c0b6",
+    "canopy": {
+     "height": 1.2,
+     "depth": 15,
+     "thickness": 0.4,
+     "slopeDeg": 3,
+     "colour": "#34363a",
+     "edgeColour": "#4a4d52",
+     "overhangBack": 0.8
+    },
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40.6,
+     31.2
+    ],
+    "end": [
+     -40.6,
+     31.2
+    ],
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#d9482b",
+     "#f0eee8",
+     "#d9482b",
+     "#f0eee8"
+    ],
+    "blocks": 8,
+    "concreteColour": "#cbc8c0",
+    "underColour": "#c4c0b6",
+    "canopy": {
+     "height": 0.8,
+     "depth": 9,
+     "thickness": 0.3,
+     "slopeDeg": 2,
+     "colour": "#3b3d41",
+     "edgeColour": "#55585c",
+     "overhangBack": 0.5
+    },
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     46.8,
+     -28.1
+    ],
+    "end": [
+     46.8,
+     28.1
+    ],
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#f0eee8",
+     "#f0eee8",
+     "#d9482b",
+     "#f0eee8",
+     "#2f8a4a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#cbc8c0",
+    "underColour": "#c4c0b6",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -46.8,
+     28.1
+    ],
+    "end": [
+     -46.8,
+     -28.1
+    ],
+    "rows": 9,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#f0eee8",
+     "#f0eee8",
+     "#d9482b",
+     "#f0eee8",
+     "#2f8a4a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#cbc8c0",
+    "underColour": "#c4c0b6",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -51.5,
+    -35.9,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 3.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    51.5,
+    35.9,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 3.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    51.5,
+    -35.9,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 3.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -51.5,
+    35.9,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 3.5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0.0,
+    42.9,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.8
+    ],
+    "height": 0.15,
+    "colour": "#bdb5a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -28,
+    1.9
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     2.2
+    ],
+    "height": 0.12,
+    "colour": "#cfe3e6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17.3,
+    -28.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.9,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.7,
+    -28.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.9,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.8
+    ],
+    "height": 0.15,
+    "colour": "#bdb5a6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -28,
+    1.9
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     2.2
+    ],
+    "height": 0.12,
+    "colour": "#cfe3e6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.7,
+    -28.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.9,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.3,
+    -28.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "height": 1.9,
+    "colour": "#555555"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     66,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   104
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Under-stand now open with thin roofs, mostly white seats with red/green accents, stained apron and dugout shelters added. Photo is from inside the stand so the near truss roof is not shown; far-side red/white banks and lattice masts are simplified; dugouts are flat roofs, not curved; ground outside is dark asphalt."
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-node-8804811617",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/436851883",
+   "used": "containing building 6.4x5.7 m (36 m2): used as the enclosed kitchen/dining core"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "No photo or description of this specific place was found (brief confidence low); seaside restaurant: pastel render walls, hipped thatch-like roof, open terrace under a thatched shade on the sea side, umbrellas, palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebe0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#8fb0b8",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8744f",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 3.6,
+    "height": 2.6,
+    "thatch": true
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.6,
+    "colours": [
+     "#8fb0b8",
+     "#f0ebe0"
+    ]
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -6,
+    -8,
+    0
+   ],
+   "params": {
+    "radius": 1.5,
+    "colour": "#c4705a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "radius": 1.5,
+    "colour": "#8fb0b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "palm",
+    "height": 10
+   },
+   "at": [
+    -9,
+    3,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "palm",
+    "height": 8
+   },
+   "at": [
+    9,
+    2,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "params": {
+    "kind": "palm",
+    "height": 11
+   },
+   "at": [
+    8,
+    -12,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "forecourt": "water",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real outline is only 36 m2 so the 16x10 m brief size is not modelled; terrace pavilion sits partly on the water forecourt; thatch/colours assumed."
+ }
+}

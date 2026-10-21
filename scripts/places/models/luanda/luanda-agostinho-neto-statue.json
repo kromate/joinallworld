@@ -1,0 +1,497 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-agostinho-neto-statue",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadua_Agostinho_.Neto_Luanda.JPG",
+   "licence": "CC0",
+   "author": "Paulo C\u00e9sar Santos",
+   "view": "front",
+   "file": "/tmp/places-evidence/luanda/statue.jpg",
+   "used": "silhouette: standing figure in a jacket, right fist raised, left hand holding a paper, on a tall stepped rectangular plinth; figure about twice the plinth height"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": -6,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "height": 0.6,
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 0.7,
+    "count": 1,
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     9.0,
+     9.0
+    ],
+    "height": 1.0,
+    "colour": "#a39e92"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     7.6
+    ],
+    "height": 1.0,
+    "colour": "#988f84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     6.6,
+     6.6
+    ],
+    "height": 5.6,
+    "colour": "#8f8a80",
+    "topScale": 0.94,
+    "topColour": "#7f7a70"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     7.0,
+     7.0
+    ],
+    "height": 0.5,
+    "colour": "#6c685f"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#2b2723",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.75,
+       0.8
+      ],
+      "cx": -0.55
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       0.7,
+       0.75
+      ],
+      "cx": -0.55
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       0.8,
+       0.85
+      ],
+      "cx": -0.55
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#2b2723",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.75,
+       0.8
+      ],
+      "cx": 0.55
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       0.7,
+       0.75
+      ],
+      "cx": 0.55
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       0.8,
+       0.85
+      ],
+      "cx": 0.55
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#2b2723",
+    "sections": [
+     {
+      "z": 4.8,
+      "rect": [
+       2.5,
+       1.1
+      ]
+     },
+     {
+      "z": 5.8,
+      "rect": [
+       2.1,
+       1.0
+      ]
+     },
+     {
+      "z": 7.6,
+      "rect": [
+       2.3,
+       1.0
+      ]
+     },
+     {
+      "z": 8.6,
+      "rect": [
+       3.0,
+       1.1
+      ]
+     },
+     {
+      "z": 9.0,
+      "rect": [
+       1.8,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#2b2723",
+    "sections": [
+     {
+      "z": 8.9,
+      "circle": 0.4
+     },
+     {
+      "z": 9.4,
+      "circle": 0.42
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#2b2723",
+    "sections": [
+     {
+      "z": 9.3,
+      "ellipse": [
+       0.6,
+       0.7
+      ]
+     },
+     {
+      "z": 10.0,
+      "ellipse": [
+       0.85,
+       0.95
+      ]
+     },
+     {
+      "z": 11.0,
+      "ellipse": [
+       0.8,
+       0.9
+      ]
+     },
+     {
+      "z": 11.5,
+      "circle": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "section": {
+     "circle": 0.55
+    },
+    "points": [
+     [
+      -1.4,
+      0,
+      8.5
+     ],
+     [
+      -2.2,
+      0,
+      9.8
+     ],
+     [
+      -3.1,
+      0,
+      11.3
+     ],
+     [
+      -3.6,
+      0,
+      12.3
+     ]
+    ],
+    "colour": "#2b2723"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#2b2723",
+    "sections": [
+     {
+      "z": 12.0,
+      "ellipse": [
+       0.55,
+       0.55
+      ],
+      "cx": -3.7
+     },
+     {
+      "z": 12.6,
+      "ellipse": [
+       0.9,
+       0.9
+      ],
+      "cx": -3.75
+     },
+     {
+      "z": 13.3,
+      "ellipse": [
+       0.5,
+       0.5
+      ],
+      "cx": -3.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "section": {
+     "circle": 0.45
+    },
+    "points": [
+     [
+      1.4,
+      0,
+      8.4
+     ],
+     [
+      1.7,
+      0,
+      7.0
+     ],
+     [
+      1.7,
+      0,
+      5.6
+     ]
+    ],
+    "colour": "#2b2723"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    8.7
+   ],
+   "params": {
+    "colour": "#d8d4c8",
+    "sections": [
+     {
+      "z": 5.3,
+      "rect": [
+       0.9,
+       0.6
+      ],
+      "cx": 1.7
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       0.9,
+       0.6
+      ],
+      "cx": 1.7
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -8,
+    0.6
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#c8202a",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    14,
+    -8,
+    0.6
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#111111",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Two separate slim legs, longer jacket torso, thicker raised arm with rounded fist, paper in left hand, wider stepped plinth and distant flags added. Fist is still blocky, no coat tails or lapel detail; photo is a silhouette so colour is assumed."
+ }
+}

@@ -1,0 +1,800 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-aux-francais",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-aux-francais",
+    "climate": "cold",
+    "vernacular": "Remote French sub-Antarctic research base on the Kerguelen Islands: a compact cluster (about 300 m square, roughly 9,000 m2 built) of low one to two-storey utilitarian prefabricated and concrete buildings with metal-clad walls and low-pitched or flat roofs, built for wind and cold; small shallow-water port and quay; treeless tundra of tussock and moss with bare volcanic hills, grey overcast light.",
+    "wallColours": [
+      "#d8dad8",
+      "#a33b32",
+      "#2f5d8a",
+      "#d9a441",
+      "#6f777c",
+      "#f2f2ee"
+    ],
+    "roofColours": [
+      "#6f777c",
+      "#a33b32",
+      "#4a5258"
+    ],
+    "wallMaterials": [
+      "metal-cladding",
+      "concrete",
+      "painted-render",
+      "render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "membrane"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "none"
+    ],
+    "ornament": "almost none: plain functional volumes, small windows, painted metal sheeting in red, blue and ochre, radio masts and antennas, white cement chapel with narrow stained-glass windows.",
+    "sources": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Port-aux-Fran%C3%A7ais",
+        "what": "base buildings concentrated in a square about 300 m on a side, 9,000 m2 built, shallow port and quay, labs, small hospital; subpolar oceanic climate, mean 5 C"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-des-Vents",
+        "what": "white cement chapel, plain architecture, flat roof, 13 x 6.5 m"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Port-aux-Fran%C3%A7ais",
+        "what": "settlement on the Gulf of Morbihan shore at 10 m elevation, labs, cinema, small medical centre, ocean-moderated tundra climate"
+      },
+      {
+        "url": "https://www.openstreetmap.org/#map=16/-49.3497/70.2200",
+        "what": "wall colours (red, blue, ochre metal cladding) are general knowledge of the base, not a fetched description"
+      }
+    ]
+  },
+  "places": {
+    "port-aux-francais-airport-port-aux-francais-airport": {
+      "venueId": "port-aux-francais-airport-port-aux-francais-airport",
+      "city": "port-aux-francais",
+      "name": "Port-aux-Français Heliport",
+      "archetype": "airport-terminal",
+      "subject": "a tiny heliport shelter beside a marked landing pad on the base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "heliport"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d8dad8",
+          "#a33b32",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/-49.3503/70.2203",
+          "what": "OSM building 12 x 9 m"
+        }
+      ],
+      "notes": "Only OSM size; there is no airfield terminal on the base. Typed as a small metal-clad hut."
+    },
+    "port-aux-francais-clinic": {
+      "venueId": "port-aux-francais-clinic",
+      "city": "port-aux-francais",
+      "name": "Samuker",
+      "archetype": "hospital",
+      "subject": "the base's small single-storey medical centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#f2f2ee",
+          "#a33b32",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/-49.3499/70.2184",
+          "what": "OSM building=hospital 27 x 18 m, 1 level"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Port-aux-Fran%C3%A7ais",
+          "what": "small medical centre on the base"
+        }
+      ],
+      "notes": "Size and use sourced; colours typed from the base style."
+    },
+    "port-aux-francais-community-notices": {
+      "venueId": "port-aux-francais-community-notices",
+      "city": "port-aux-francais",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "a small noticeboard hut at the base centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d9a441",
+          "#f2f2ee",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue placeholder; typed from the base style."
+    },
+    "port-aux-francais-community-voting-game": {
+      "venueId": "port-aux-francais-community-voting-game",
+      "city": "port-aux-francais",
+      "name": "Résidence",
+      "archetype": "civic-small",
+      "subject": "the long single-storey administration building (the Résidence), flat roof, metal-clad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 9.4,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#2f5d8a",
+          "#f2f2ee",
+          "#6f777c"
+        ],
+        "roofColour": "#4a5258",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/-49.3487/70.2163",
+          "what": "OSM building=civic townhall, 30 x 9 m, flat roof"
+        }
+      ],
+      "notes": "OSM measured size and flat roof; colours typed."
+    },
+    "port-aux-francais-community-workshop": {
+      "venueId": "port-aux-francais-community-workshop",
+      "city": "port-aux-francais",
+      "name": "SuperDARN Radar (Kerguelen)",
+      "archetype": "industrial",
+      "subject": "the Kerguelen SuperDARN HF radar field: two long rows of slender lattice masts carrying wire antennas, with a small equipment hut and fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "antenna-array"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#6f777c",
+          "#d8dad8",
+          "#a33b32"
+        ],
+        "roofColour": "#6f777c",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 20,
+          "note": "main array of 16 masts plus 4 interferometer masts, each about 15 m tall (estimate); height_m is the equipment hut"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "high-tech",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Super_Dual_Auroral_Radar_Network",
+          "what": "Kerguelen radar code ker at 49.35 S 70.27 E, run by IRAP/CNRS/IPEV; standard SuperDARN 16 beams"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=16/-49.3503/70.2665",
+          "what": "OSM research institute area 274 x 136 m, start date 2000"
+        }
+      ],
+      "notes": "Mast count 16 plus 4 interferometer is the standard SuperDARN layout (general knowledge); mast height about 15 m is an estimate. Site spans 274 m in OSM, shown here as a portion within the 120 m cap."
+    },
+    "port-aux-francais-market-game": {
+      "venueId": "port-aux-francais-market-game",
+      "city": "port-aux-francais",
+      "name": "Market game (game venue)",
+      "archetype": "market-hall",
+      "subject": "a small supply store hall in a prefabricated metal-clad shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a33b32",
+          "#f2f2ee",
+          "#6f777c"
+        ],
+        "roofColour": "#4a5258",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue placeholder; typed from the base style."
+    },
+    "port-aux-francais-meal-stop": {
+      "venueId": "port-aux-francais-meal-stop",
+      "city": "port-aux-francais",
+      "name": "Tiker",
+      "archetype": "restaurant",
+      "subject": "the two-storey base canteen/bar building, metal-clad with small windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#d9a441",
+          "#f2f2ee",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/-49.3498/70.2193",
+          "what": "OSM restaurant footprint 28 x 22 m, 2 levels"
+        }
+      ],
+      "notes": "Only OSM size and levels; typed."
+    },
+    "port-aux-francais-osm-way-187212489": {
+      "venueId": "port-aux-francais-osm-way-187212489",
+      "city": "port-aux-francais",
+      "name": "Biomar",
+      "archetype": "campus-block",
+      "subject": "a low metal-clad marine biology laboratory",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#2f5d8a",
+          "#f2f2ee",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/-49.3529/70.2172",
+          "what": "OSM research institute footprint 30 x 14 m"
+        }
+      ],
+      "notes": "Only OSM size; typed."
+    },
+    "port-aux-francais-osm-way-187231295": {
+      "venueId": "port-aux-francais-osm-way-187231295",
+      "city": "port-aux-francais",
+      "name": "Centre National d'Etudes Spatiales",
+      "archetype": "industrial",
+      "subject": "the CNES satellite tracking station site: a small control building with an antenna mast beyond the main base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#f2f2ee",
+          "#6f777c",
+          "#a33b32"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 2,
+          "note": "tracking and radio masts; antenna type not found"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "high-tech",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Port-aux-Fran%C3%A7ais",
+          "what": "base has technical facilities for satellite tracking"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/187231295",
+          "what": "OSM footprint 45 x 27 m"
+        }
+      ],
+      "notes": "Function sourced; no description of the actual antennas, so antenna mast count and form are typed."
+    },
+    "port-aux-francais-osm-way-187231297": {
+      "venueId": "port-aux-francais-osm-way-187231297",
+      "city": "port-aux-francais",
+      "name": "Météo France",
+      "archetype": "office-low",
+      "subject": "the weather station building with instrument masts and a small enclosure",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 9.5,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d8dad8",
+          "#a33b32",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 2,
+          "note": "meteorological mast"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/187231297",
+          "what": "OSM footprint 21 x 10 m"
+        }
+      ],
+      "notes": "Only OSM size; typed from the type of facility."
+    },
+    "port-aux-francais-quiet-reflection": {
+      "venueId": "port-aux-francais-quiet-reflection",
+      "city": "port-aux-francais",
+      "name": "Église Notre-Dame-des-Vents",
+      "archetype": "shrine-small",
+      "subject": "the southernmost French chapel: a small plain white cement rectangle with a flat roof, a ribbon of narrow stained-glass windows high on the walls, and concrete pillars in front holding a cross, with a separate bell tower added in 1961",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 6.5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#f2f2ee",
+          "#6f777c",
+          "#2f5d8a"
+        ],
+        "roofColour": "#8a9094",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "narrow rectangular windows by Barillet along the upper wall"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "added 1961, form not described"
+        },
+        {
+          "id": "pilotis",
+          "count": 1,
+          "note": "concrete pillars in front of entrance supporting a cross"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1957-1961",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-des-Vents",
+          "what": "13 x 6.5 m cement building, white, sober architecture, narrow rectangular stained glass in upper part, flat roof, concrete pillar structure with a cross at entrance, bell tower 1961, inaugurated 1960"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Port-aux-Fran%C3%A7ais",
+          "what": "southernmost French place of worship, on high ground west of the base"
+        }
+      ],
+      "notes": "Bell tower height and shape are not described (a small free-standing one is assumed). Basalt altar stone is interior only."
+    },
+    "port-aux-francais-recreation": {
+      "venueId": "port-aux-francais-recreation",
+      "city": "port-aux-francais",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "a small leisure hut and open sports area on the base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a33b32",
+          "#f2f2ee",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue placeholder; typed from the base style."
+    },
+    "port-aux-francais-transit": {
+      "venueId": "port-aux-francais-transit",
+      "city": "port-aux-francais",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "a small shelter and parking pad for the base's vehicles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d9a441",
+          "#6f777c",
+          "#f2f2ee"
+        ],
+        "roofColour": "#4a5258",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue placeholder; typed from the base style."
+    }
+  }
+}

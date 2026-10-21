@@ -1,0 +1,1476 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sarajevo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sarajevo",
+    "climate": "temperate",
+    "vernacular": "Valley city of layered eras: Ottoman Baščaršija with low whitewashed and stone shops, timber-framed upper storeys and domed stone halls; Austro-Hungarian centre of ochre, cream and pink rendered blocks in Secession and Moorish Revival dress; socialist-era concrete and render housing blocks in Novi Grad and Dobrinja; hillside houses stepping up the slopes under red-orange clay-tile hip roofs; new glass towers (Sead Gološ designs) in Marijin Dvor.",
+    "wallColours": [
+      "#e8e0cf",
+      "#d9b878",
+      "#d8a48f",
+      "#aaa8a2",
+      "#c9b79a",
+      "#8c8a85"
+    ],
+    "roofColours": [
+      "#b5553a",
+      "#6f6f6f",
+      "#50555b",
+      "#8a5a44"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "whitewash",
+      "stone",
+      "concrete",
+      "exposed-concrete",
+      "brick",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "slate",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Ottoman: overhanging timber upper storeys, wooden eaves, stone domes and lead roofs, pseudo-Ottoman Sebilj fountain, minarets; Austro-Hungarian: Secession and Moorish Revival friezes, banded stone, cornices; socialist era: bare concrete and render blocks, bullet-scarred walls with red-resin Sarajevo Roses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Sarajevo",
+        "what": "city architecture: Ottoman Baščaršija core, Austro-Hungarian centre (Secession, Moorish Revival), socialist blocks in Novi Grad, hillside houses"
+      }
+    ]
+  },
+  "places": {
+    "sarajevo-airport-sarajevo-airport": {
+      "venueId": "sarajevo-airport-sarajevo-airport",
+      "city": "sarajevo",
+      "name": "Sarajevo International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the passenger terminal at Butmir seen from the forecourt: a low glazed terminal block with a flat canopy and a separate control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#d9dcdd",
+          "#5b7a8f",
+          "#f2f2f0"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate from terminal"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "expansion plan added three bridges"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1969 airfield, terminal enlarged 2015 and 2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sarajevo_International_Airport",
+          "what": "2015 expansion of arrivals, passport control and check-in; 2017 plan for a 10,000 m2 four-level terminal addition with three jet bridges; reopened to civil traffic 1996"
+        }
+      ],
+      "notes": "Facade materials and colours are estimates; only the expansion history is sourced. Small regional terminal, much smaller than Sofia or Skopje."
+    },
+    "sarajevo-clinic": {
+      "venueId": "sarajevo-clinic",
+      "city": "sarajevo",
+      "name": "Klinički centar Univerziteta u Sarajevu",
+      "archetype": "hospital",
+      "subject": "the Koševo clinical centre campus with the 15-storey Central Medical Block rising over lower clinic wings",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 15,
+        "height_m": 55,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d2c8",
+          "#8c9aa3",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "on the medical block, unverified"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1894 State Hospital; CMB and DIP buildings begun 1996",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Clinical_Center_of_the_University_of_Sarajevo",
+          "what": "founded 1894 as State Hospital modelled on Vienna; Koševo main campus; Central Medical Block has 15 storeys; 37 clinics"
+        }
+      ],
+      "notes": "Tall slab block plus older low pavilions. Distinct from other hospitals by the 15-storey central block. Facade colours estimated."
+    },
+    "sarajevo-community-notices": {
+      "venueId": "sarajevo-community-notices",
+      "city": "sarajevo",
+      "name": "Administrativni centar grada Istočno Sarajevo",
+      "archetype": "civic-small",
+      "subject": "the East Sarajevo city administration building at Lukavica: a plain four-storey rendered block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d3c6",
+          "#8c8a85",
+          "#ffffff"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/East_Sarajevo",
+          "what": "Lukavica is the administrative centre; photo caption City Administration building, no description"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Flags are generic, no coat of arms."
+    },
+    "sarajevo-community-voting-game": {
+      "venueId": "sarajevo-community-voting-game",
+      "city": "sarajevo",
+      "name": "Municipality of Novi Grad Sarajevo",
+      "archetype": "civic-small",
+      "subject": "the Novi Grad municipal building, a socialist-era administrative block among housing estates",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#b9b6ae",
+          "#8c8a85",
+          "#e8e6e0"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Novi_Grad,_Sarajevo",
+          "what": "Novi Grad was built up in the 1970s as socialist urban centres of apartment blocks; municipal building not described"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Style inferred from the 1970s socialist development of Novi Grad."
+    },
+    "sarajevo-community-workshop": {
+      "venueId": "sarajevo-community-workshop",
+      "city": "sarajevo",
+      "name": "International University in Sarajevo",
+      "archetype": "campus-block",
+      "subject": "the IUS campus in Ilidža: modern white and glass teaching blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#5c7a92",
+          "#c9c6bd"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/International_University_of_Sarajevo",
+          "what": "founded 2004-2005 in Ilidža, six faculties; buildings not described"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-market-game": {
+      "venueId": "sarajevo-market-game",
+      "city": "sarajevo",
+      "name": "ARIA",
+      "archetype": "office-tower",
+      "subject": "the ARIA Centar glass tower complex in the city centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 14,
+        "height_m": 52,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#7f9db0",
+          "#c9d0d4",
+          "#4f5d68"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "shopping base"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sarajevo",
+          "what": "ARIA Centar listed with Bosmal City Center and Sarajevo City Center as modern towers by architect Sead Gološ"
+        }
+      ],
+      "notes": "Low confidence on size: the source only names it as a modern tower by Sead Gološ. Height and storeys are estimates. Glass-and-podium tower, distinct from the Ottoman market buildings nearby."
+    },
+    "sarajevo-meal-stop": {
+      "venueId": "sarajevo-meal-stop",
+      "city": "sarajevo",
+      "name": "Inat kuća",
+      "archetype": "restaurant",
+      "subject": "the Inat Kuća restaurant: a two-storey Ottoman-style house on the Miljacka bank with a timber upper floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#efe7d6",
+          "#6b4a32",
+          "#8a5a44"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "overhanging timber upper floor"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "Ottoman; house moved c.1895",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Described from general knowledge (famous for being moved across the river when the City Hall was built), not verified from a source this session."
+    },
+    "sarajevo-osm-node-6368640905": {
+      "venueId": "sarajevo-osm-node-6368640905",
+      "city": "sarajevo",
+      "name": "Muzička akademija Sarajevo",
+      "archetype": "campus-block",
+      "subject": "the Music Academy: a three-storey Austro-Hungarian-era rendered building on the Bistrik slope",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9b878",
+          "#c9c0a8",
+          "#ffffff"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "late 19th century (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Austro-Hungarian era assumed from location in Bistrik."
+    },
+    "sarajevo-osm-relation-8425673": {
+      "venueId": "sarajevo-osm-relation-8425673",
+      "city": "sarajevo",
+      "name": "Morića Han",
+      "archetype": "market-hall",
+      "subject": "the Morića Han caravanserai in Baščaršija: a two-storey stone courtyard inn with a wooden gallery under a steep tile roof",
+      "form": {
+        "footprint": "ring",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#d8cdb8",
+          "#a89a82",
+          "#6b4a32"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "galleried courtyard"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arched carriage entrance"
+        },
+        {
+          "id": "stalls",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1551, rebuilt 1697, reconstructed 1971-74",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mori%C4%87a_Han",
+          "what": "built 1551, rebuilt after 1697 fire, destroyed by fire 1957, reconstructed 1971-74; true caravanserai holding 300 travellers and 70 horses; Persian inscriptions from Omar Khayyam"
+        }
+      ],
+      "notes": "Courtyard footprint (ring) with galleries. Dimensions estimated. Distinct from the Bezistan: open courtyard and pitched roofs rather than domes."
+    },
+    "sarajevo-osm-way-118942247": {
+      "venueId": "sarajevo-osm-way-118942247",
+      "city": "sarajevo",
+      "name": "Église Saint-Joseph",
+      "archetype": "church-classical",
+      "subject": "St Joseph church in Marijin Dvor: a neo-Romanesque triple-aisled basilica with a transept",
+      "form": {
+        "footprint": "cross",
+        "width_m": 49,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d9cdb0",
+          "#a89a82",
+          "#f0ebe0"
+        ],
+        "roofColour": "#9b4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1936-1940",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Joseph%27s_Church,_Sarajevo",
+          "what": "built 1936-39, consecrated 1940, architect Karel Pařík; neo-Romanesque triple-aisled basilica with transept, 49 m long and 22 m wide"
+        }
+      ],
+      "notes": "Neo-Romanesque; STYLES has no romanesque id so neoclassical is the nearest. Exterior material and tower not described by the source."
+    },
+    "sarajevo-osm-way-140482805": {
+      "venueId": "sarajevo-osm-way-140482805",
+      "city": "sarajevo",
+      "name": "Grbavica Stadium",
+      "archetype": "stadium",
+      "subject": "FK Željezničar home ground: four stands with a newly roofed east stand and an LED screen on the south stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "flat",
+        "variant": "bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a8a4",
+          "#2f5aa5",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "east stand roof 2019-20"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "LED on south stand"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1953, rebuilt 1968-76 and 2016-20",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grbavica_Stadium",
+          "what": "13,057 seats; east stand rebuilt 2017 (4,650 seats), east roof 2019-20, north stand 5,377, floodlights from 1968-76, LED display on south stand, pitch 105x68"
+        }
+      ],
+      "notes": "Seat colour blue is assumed from club colours and not confirmed. Distinct from Koševo: smaller, mostly open bowl."
+    },
+    "sarajevo-osm-way-181388997": {
+      "venueId": "sarajevo-osm-way-181388997",
+      "city": "sarajevo",
+      "name": "Visoki",
+      "archetype": "heritage-fort",
+      "subject": "Visoki hill with the ruined medieval fort walls above Visoko",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a69f90",
+          "#7a7466",
+          "#c9c3b5"
+        ],
+        "roofColour": "#7a7466",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "ruined walls"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval Bosnian",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Identified as the Visoki hill by coordinates (Visoko); treated as the medieval fort ruin and not the pseudo-archaeological pyramid claims."
+    },
+    "sarajevo-osm-way-188836329": {
+      "venueId": "sarajevo-osm-way-188836329",
+      "city": "sarajevo",
+      "name": "Gazi Husrev Bey's Bezistan",
+      "archetype": "market-hall",
+      "subject": "the Bezistan in Baščaršija: a long rectangular stone covered market with domed roof and shops entered from a 109 m street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#c9c1ae",
+          "#a89a82",
+          "#7a7466"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 6,
+          "note": "lead-grey domes, count from memory"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 10,
+          "note": "small shops along the covered street"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1555",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gazi_Husrev-beg%27s_bezistan",
+          "what": "built 1555, rectangular, entrances along a 109 m street lined with small shops, sits below street level, next to Kuršumli Madrasa, Bey Mosque and Clock Tower, built with Dubrovnik craftsmen"
+        }
+      ],
+      "notes": "Dome count and lead roof are from general knowledge, not the fetched page. Footprint width/depth estimated."
+    },
+    "sarajevo-osm-way-224740343": {
+      "venueId": "sarajevo-osm-way-224740343",
+      "city": "sarajevo",
+      "name": "Cekovića kuća",
+      "archetype": "manor",
+      "subject": "a traditional two-storey rural house with stone ground floor and timber upper floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#b8ae98",
+          "#6b4a32",
+          "#8a7a62"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-osm-way-23480568": {
+      "venueId": "sarajevo-osm-way-23480568",
+      "city": "sarajevo",
+      "name": "Olimpijski stadion Koševo – Asim Ferhatović-Hase",
+      "archetype": "stadium",
+      "subject": "the 1984 Winter Olympics opening ceremony stadium, a large bowl set into the Koševo hillside",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 140,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat",
+        "variant": "bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b4b2ac",
+          "#3d6f9b",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "west stand cover, unverified"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "LED"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1947, rebuilt 1984, renovated 1998 and 2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ko%C5%A1evo_City_Stadium",
+          "what": "34,500 seats (up to 70,000 for concerts); built into a local hillside; opened 1947; rebuilt for 1984 Winter Olympics; pitch 105x68; LED scoreboard"
+        }
+      ],
+      "notes": "Largest sports venue in the city; bowl built into the hill so one side rises into trees. Roof and colours estimated."
+    },
+    "sarajevo-osm-way-23697320": {
+      "venueId": "sarajevo-osm-way-23697320",
+      "city": "sarajevo",
+      "name": "Vraca Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "the WWII memorial park laid out inside an old Austro-Hungarian fortress on Vraca hill, with terraces and stone walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#b4ab98",
+          "#8c8a85",
+          "#e8e6e0"
+        ],
+        "roofColour": "#7a7e82",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "fortress walls"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "memorial sculpture, form unverified"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "Austro-Hungarian fort, memorial 1981",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vraca_Memorial_Park",
+          "what": "about 78,000 m2 built on an old Austro-Hungarian fortress; names of 11,000+ WWII dead; designed by Vladimir Dobrović, sculptor Alija Kučukalić, landscaper Aleksandar Maltarić; night lighting 2019"
+        }
+      ],
+      "notes": "Physical details of monuments not given by the source; walls and terraces are inferred from the fortress base."
+    },
+    "sarajevo-osm-way-27298226": {
+      "venueId": "sarajevo-osm-way-27298226",
+      "city": "sarajevo",
+      "name": "City Stadium SRC Slavija",
+      "archetype": "stadium",
+      "subject": "a small lower-league football ground at Lukavica with one covered stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a8a4",
+          "#7a7e82",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/East_Sarajevo",
+          "what": "FK Slavija plays in the Republika Srpska First League; stadium not described"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-osm-way-28784587": {
+      "venueId": "sarajevo-osm-way-28784587",
+      "city": "sarajevo",
+      "name": "Vrelo Bosne",
+      "archetype": "park-landscape",
+      "subject": "the Vrelo Bosne springs park: a 3 km avenue of mature trees leading to the springs of the Bosna river",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#d9c9a0",
+          "#6b4a32",
+          "#efe7d6"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "Austro-Hungarian-era park cafes"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "springs and small waterfalls"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "Austro-Hungarian park, restored 2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vrelo_Bosne",
+          "what": "3 km Velika Aleja from Ilidža to springs at the foot of Igman; traditional Austro-Hungarian buildings along it; springs, streams and waterfalls; Roman bridge nearby; park restored 2000"
+        }
+      ],
+      "notes": "Dense water and trees; the avenue is the recognisable element. Tree species not confirmed by the source."
+    },
+    "sarajevo-osm-way-588118276": {
+      "venueId": "sarajevo-osm-way-588118276",
+      "city": "sarajevo",
+      "name": "Dubrovnik Castle",
+      "archetype": "heritage-fort",
+      "subject": "a ruined hill fort of rough stone walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a69f90",
+          "#7a7466",
+          "#c9c3b5"
+        ],
+        "roofColour": "#7a7466",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). The monument could not be identified; typed as a medieval Bosnian hill fort."
+    },
+    "sarajevo-osm-way-622818140": {
+      "venueId": "sarajevo-osm-way-622818140",
+      "city": "sarajevo",
+      "name": "University of Sarajevo Campus",
+      "archetype": "campus-block",
+      "subject": "the central University of Sarajevo faculty buildings: mid-rise concrete and render blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d1cdc2",
+          "#8c8a85",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-80s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Sarajevo",
+          "what": "faculties of Economics, Natural Sciences, Philosophy, Fine Arts exist; no building descriptions"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-osm-way-777985963": {
+      "venueId": "sarajevo-osm-way-777985963",
+      "city": "sarajevo",
+      "name": "Crkva Svetog sveštenomučenika Petra Dabrobosanskog",
+      "archetype": "church-classical",
+      "subject": "a modern Serbian Orthodox church with a central dome and a bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 17,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efece4",
+          "#b4ab98",
+          "#8a5a44"
+        ],
+        "roofColour": "#7a9a8c",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "late 20th - 21st century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-osm-way-840206905": {
+      "venueId": "sarajevo-osm-way-840206905",
+      "city": "sarajevo",
+      "name": "Univerzitet u Istočnom Sarajevu",
+      "archetype": "campus-block",
+      "subject": "the University of East Sarajevo rectorate at Lukavica",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d3c6",
+          "#5c7a92",
+          "#ffffff"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1992 founded",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/East_Sarajevo",
+          "what": "university in Lukavica founded 1992, 14 faculties; rectorate photo only"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-quiet-reflection": {
+      "venueId": "sarajevo-quiet-reflection",
+      "city": "sarajevo",
+      "name": "Crkva Svetog Pantelejmona",
+      "archetype": "shrine-small",
+      "subject": "a small Orthodox village church",
+      "form": {
+        "footprint": "cross",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efece4",
+          "#b4ab98",
+          "#6b4a32"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-recreation": {
+      "venueId": "sarajevo-recreation",
+      "city": "sarajevo",
+      "name": "Bike Park Evolution",
+      "archetype": "park-landscape",
+      "subject": "a mountain bike park on a forested hillside with timber start shelter and jump lines",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a4a",
+          "#6b4a32",
+          "#c9b79a"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "timber start shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sarajevo-transit": {
+      "venueId": "sarajevo-transit",
+      "city": "sarajevo",
+      "name": "Sarajevo",
+      "archetype": "transport-station",
+      "subject": "a mid-city transit hub typed as a low station building with a platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#c9c5ba",
+          "#8c8a85",
+          "#e8e6e0"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Placeholder hub name; not identified with a specific station."
+    }
+  }
+}

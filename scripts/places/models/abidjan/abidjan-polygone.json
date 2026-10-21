@@ -1,0 +1,161 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/235965601",
+   "used": "real L-shaped outline (95 x 34 m, 3 levels, retail) auto-fitted"
+  },
+  {
+   "kind": "text",
+   "used": "brief: warm orange-beige render, terracotta tile accents, arcaded covered walkway; the only nearby Commons photos (Orca Deco shop) show a different building so they were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4c9a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f3eee2",
+    "plinth": 0.5,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a35",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "form": "flat",
+    "width": 42,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.3,
+    "columns": 8,
+    "colour": "#a85a35",
+    "edgeColour": "#f3eee2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "bottom": 9.5,
+    "colour": "#a85a35",
+    "frameColour": "#f3eee2",
+    "posts": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "rotDeg": -30,
+   "params": {
+    "width": 44,
+    "depth": 14,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -52,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the mall itself (nearby photos show a different shop); real OSM outline and 3 levels, colours/arcade from the brief only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-polygone"
+}

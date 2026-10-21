@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "crunchies-yenagoa",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#crunchies-yenagoa",
+   "used": "15x10 m single-storey fast-food unit, glazed corner, striped awning, outdoor tables; no OSM match, no photo of the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 9,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     15,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6e6c0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bands": "#e08a2c",
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner",
+   "footprint": {
+    "rect": [
+     4.5,
+     4.5
+    ]
+   },
+   "at": [
+    -5.2,
+    -6.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bcd3d6",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3,
+    "bands": "#e08a2c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e08a2c",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    2.5,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#e08a2c",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.5,
+    -5.3,
+    3.2
+   ],
+   "params": {
+    "width": 7,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#e08a2c",
+    "frameColour": "#f6e6c0",
+    "posts": false
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.4,
+    "height": 2.4,
+    "colours": [
+     "#e08a2c",
+     "#ffffff"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   34,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this unit, typed fast-food shop"
+ }
+}

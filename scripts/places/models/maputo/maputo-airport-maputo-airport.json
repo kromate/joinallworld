@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-airport-maputo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maputo_International_Airport_20071001.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Viljami Aarbakke",
+   "view": "street",
+   "file": "/tmp/places-evidence/maputo/maputo-airport0.jpg",
+   "used": "airside elevation of the Mavalane terminal: cream two-storey block with stacked projecting white fascia bands, ribbon glazing, rounded taller end block at left, red roof sign boards, control tower and light mast behind, grey apron"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1022397",
+   "used": "identity (Maputo International Airport)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     78,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "rect",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 1.8,
+      "rail": 1.0,
+      "width": 6,
+      "every": 8,
+      "continuous": true,
+      "railKind": "solid",
+      "railColour": "#8a7e66",
+      "colour": "#f2eee4",
+      "floors": "upper"
+     },
+     {
+      "type": "bands",
+      "colour": "#f6f3ea",
+      "height": 0.7,
+      "proud": 0.5,
+      "at": 1.0,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2eee4",
+    "overhang": 1.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -47,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdca0",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9ceaa",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    48,
+    2
+   ],
+   "z0": 0,
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    26,
+    16,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "square",
+    "colour": "#d9d5c8",
+    "cabColour": "#6f8794",
+    "bandColour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -9.2,
+    9.4
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#c8362f",
+    "frameColour": "#c8362f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -9.2,
+    9.4
+   ],
+   "params": {
+    "width": 12,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#c8362f",
+    "frameColour": "#c8362f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    22,
+    -9.2,
+    9.4
+   ],
+   "params": {
+    "width": 11,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#c8362f",
+    "frameColour": "#c8362f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    12,
+    26,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "baseWidth": 1.6,
+    "topWidth": 0.5,
+    "panels": 8,
+    "colour": "#a8adb2",
+    "colour2": "#a8adb2"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    60,
+    22,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "baseWidth": 1.6,
+    "topWidth": 0.5,
+    "panels": 8,
+    "colour": "#a8adb2",
+    "colour2": "#a8adb2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two-storey block with fascia bands, balconies, red boards, rounded-ish cream end block (boxy, not curved), slim masts match; old Mavalane terminal only, no apron aircraft or cracked apron detail, end block not barrel-curved"
+ }
+}

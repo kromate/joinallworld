@@ -1,0 +1,685 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mosque_of_Islamic_Solidarity.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Weli (Commons user)",
+   "view": "front",
+   "file": "/tmp/places-evidence/mogadishu/mgE-mosque1.jpg",
+   "used": "white stucco facade, stepped central three-arch portico with green canopy strip, crenellated parapet, lower arched wings, single tall minaret with a banded balcony, long low arcade to the right, red/grey patterned paving plaza (no large dome visible)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Isbahaysiga_Mosque_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Omar Gadood",
+   "view": "interior",
+   "used": "cream columns and pointed arches (not modelled)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mogadishu.json#mogadishu-quiet-reflection",
+   "used": "identity and about 60 x 52 m extent; the brief's large dome and twin minarets are not seen in the photo, so not modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Arch openings and column pairs are simplified, no lace screens or decorated minaret mid-band lattice; paving diamonds are approximate blocks rather than the stepped zigzag bands; brief's dome not seen in photo."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "glassColour": "#2f4f8a",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5da",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -25,
+    12
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "glassColour": "#2f4f8a",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5da",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    25,
+    12
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "glassColour": "#2f4f8a",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5da",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    5.5
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "arched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "glassColour": "#2f4f8a",
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e5da",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "id": "portico-arches",
+   "at": [
+    0,
+    -3.4,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 11,
+    "thickness": 3.6,
+    "bays": 3,
+    "shape": "pointed",
+    "recess": 3,
+    "roof": true,
+    "parapet": false,
+    "colour": "#f4f1ea",
+    "trim": "#ffffff",
+    "cap_colour": "#2f7a5a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "green-canopy",
+   "at": [
+    0,
+    -4.5,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     22,
+     4
+    ],
+    "height": 0.6,
+    "colour": "#3f8a62",
+    "topColour": "#3f8a62"
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-pairs",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 8,
+       "colour": "#ffffff",
+       "profile": [
+        [
+         0.45,
+         0
+        ],
+        [
+         0.3,
+         0.3
+        ],
+        [
+         0.3,
+         10
+        ],
+        [
+         0.5,
+         10.6
+        ],
+        [
+         0.5,
+         11
+        ]
+       ]
+      }
+     }
+    ],
+    "start": [
+     -6.7,
+     0,
+     0
+    ],
+    "end": [
+     6.7,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "crenel-centre",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0.9,
+    20.9
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.8,
+        0.8
+       ],
+       "height": 0.9,
+       "colour": "#f4f1ea",
+       "topColour": "#f4f1ea"
+      }
+     }
+    ],
+    "start": [
+     -10.5,
+     0,
+     0
+    ],
+    "end": [
+     10.5,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "crenel-wing-w",
+   "lod": [
+    0
+   ],
+   "at": [
+    -25,
+    2.5,
+    8.9
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.8,
+        0.8
+       ],
+       "height": 0.9,
+       "colour": "#f4f1ea",
+       "topColour": "#f4f1ea"
+      }
+     }
+    ],
+    "start": [
+     -7.5,
+     0,
+     0
+    ],
+    "end": [
+     7.5,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "crenel-wing-e",
+   "lod": [
+    0
+   ],
+   "at": [
+    25,
+    2.5,
+    8.9
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.8,
+        0.8
+       ],
+       "height": 0.9,
+       "colour": "#f4f1ea",
+       "topColour": "#f4f1ea"
+      }
+     }
+    ],
+    "start": [
+     -7.5,
+     0,
+     0
+    ],
+    "end": [
+     7.5,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "minaret-shaft",
+   "at": [
+    9,
+    0,
+    20
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     },
+     {
+      "z": 15,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     }
+    ],
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-band",
+   "at": [
+    9,
+    0,
+    27
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     4.0
+    ],
+    "height": 3.2,
+    "colour": "#d8c08a",
+    "topColour": "#d8c08a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-balcony",
+   "at": [
+    9,
+    0,
+    35
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 0.8,
+    "colour": "#f4f1ea",
+    "topColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-upper",
+   "at": [
+    9,
+    0,
+    35.8
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "height": 3.6,
+    "colour": "#e6dcc2",
+    "topColour": "#e6dcc2",
+    "windows": "arched"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "minaret-bulb",
+   "at": [
+    9,
+    0,
+    39.4
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f6f3ea",
+    "profile": [
+     [
+      1.7,
+      0
+     ],
+     [
+      2.0,
+      0.6
+     ],
+     [
+      1.8,
+      1.8
+     ],
+     [
+      1.0,
+      3.0
+     ],
+     [
+      0.4,
+      4.0
+     ],
+     [
+      0.12,
+      4.8
+     ],
+     [
+      0.05,
+      6.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "id": "side-arcade",
+   "at": [
+    48,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 5,
+    "thickness": 2.5,
+    "bays": 6,
+    "shape": "round",
+    "colour": "#f4f1ea",
+    "cap_colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "array",
+   "id": "paving-red",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -26,
+    0.05
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        7,
+        7
+       ],
+       "height": 0.04,
+       "colour": "#c9807a",
+       "topColour": "#c9807a"
+      },
+      "rotDeg": 45
+     }
+    ],
+    "start": [
+     -36,
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "paving-grey",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -26,
+    0.06
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4,
+        4
+       ],
+       "height": 0.04,
+       "colour": "#8d8f93",
+       "topColour": "#8d8f93"
+      },
+      "rotDeg": 45
+     }
+    ],
+    "start": [
+     -27,
+     0,
+     0
+    ],
+    "end": [
+     27,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving-band",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -14,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     80,
+     2.5
+    ],
+    "height": 0.04,
+    "colour": "#c9807a",
+    "topColour": "#c9807a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#cfcac0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -22
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

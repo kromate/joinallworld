@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-way-784755483",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/784755483",
+   "used": "real outline of the clinic (about 15 x 12 m, 182 m2)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered clinic with a flat canopy and car park; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 40
+   },
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#9fb3b0",
+    "faces": {
+     "front": "ribbon",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 7,
+    "depth": 4,
+    "height": 3.2,
+    "thickness": 0.3,
+    "columns": 2,
+    "colour": "#9fb3b0",
+    "edgeColour": "#ece6d6",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#c62828",
+    "frameColour": "#ece6d6"
+   }
+  },
+  {
+   "type": "hospital/guard-kiosk",
+   "at": [
+    9,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#9fb3b0",
+    "roofColour": "#a8523a"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -2,
+    -19,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real 15x12 m outline with typed two-storey hipped clinic"
+ }
+}

@@ -1,0 +1,473 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "rumuola-hub",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: flyover interchange with bus lay-by, shelters and street kiosks; no photo or OSM building (traffic structure)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 10,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     96,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdbbb2",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bands": "#a9a79f",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.3,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-0",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -40,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-1",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-2",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    -8,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-3",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    8,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-4",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-5",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-cap",
+   "footprint": {
+    "rect": [
+     90,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 6.1,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a69e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-slab",
+   "footprint": {
+    "rect": [
+     88,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f908c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f908c"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 4,
+    "height": 3.2,
+    "form": "flat",
+    "support": "steel",
+    "colour": "#d0b84a",
+    "accent": "#ece8dc"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 4,
+    "height": 3.2,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#ece8dc",
+    "accent": "#d0b84a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "kind": "mixed",
+    "density": 0.6,
+    "coach_share": 0.1,
+    "colours": [
+     "#d0b84a",
+     "#ece8dc",
+     "#c8362f"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -40,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d0b84a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d0b84a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    44,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#3d6f8f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#3d6f8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -38,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 2.6,
+    "colour": "#d0b84a",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    40,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 2.6,
+    "colour": "#ece8dc",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -44,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 6,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     54,
+     24
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed from the brief; flyover deck is a straight bridge with piers, no ramps, real geometry unknown"
+ }
+}

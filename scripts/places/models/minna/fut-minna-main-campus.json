@@ -1,0 +1,577 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "fut-minna-main-campus",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FUT.Minna_Library_GK_39.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "OtuNwachinemere",
+   "view": "front",
+   "file": "/tmp/places-evidence/minna/FUT.Minna_Library_GK_39.jpg",
+   "used": "Ibrahim Badamasi Babangida Library complex (the campus landmark): orange-brick curved drum wing, tall brick block, salmon concrete entrance slab on slim columns with twin stair flights, pale green infill wall, ribbed brick piers and strip windows on the upper floor"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 5,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    8,
+    8
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9794a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#9fb8a0",
+    "trimColour": "#b9cfb0",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "bands": "#d98a5c",
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b86f4e",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -1,
+    12
+   ],
+   "params": {
+    "points": [
+     [
+      5.5,
+      -7
+     ],
+     [
+      5.5,
+      7
+     ],
+     [
+      -5.5,
+      7
+     ],
+     [
+      -5.5,
+      -2
+     ],
+     [
+      -5.33,
+      -3.29
+     ],
+     [
+      -4.83,
+      -4.5
+     ],
+     [
+      -4.04,
+      -5.54
+     ],
+     [
+      -3.0,
+      -6.33
+     ],
+     [
+      -1.79,
+      -6.83
+     ],
+     [
+      -0.5,
+      -7
+     ]
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#c4703f",
+    "topColour": "#a85a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-strip",
+   "at": [
+    4.6,
+    12
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     2.2
+    ],
+    "z0": 9,
+    "height": 9,
+    "colour": "#9fb8a0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "mast",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      14,
+      21
+     ],
+     [
+      -2,
+      14,
+      32
+     ]
+    ],
+    "radius": 0.15,
+    "colour": "#b8b8b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    -25,
+    5
+   ],
+   "params": {
+    "radius": 12,
+    "n": 20,
+    "z0": 0,
+    "height": 9,
+    "colour": "#c4703f",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "topColour": "#a85a3b"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum-green",
+   "at": [
+    -25,
+    5
+   ],
+   "params": {
+    "radius": 11.7,
+    "n": 24,
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#b8cdb0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "drum-piers",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        1.6
+       ],
+       "z0": 0,
+       "height": 9.2,
+       "colour": "#e8c9a8"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.3,
+        1.9
+       ],
+       "z0": 9.2,
+       "height": 0.8,
+       "colour": "#e8c9a8"
+      },
+      "lod": [
+       0
+      ]
+     }
+    ],
+    "mode": "arc",
+    "centre": [
+     -25,
+     5
+    ],
+    "radius": 12.6,
+    "count": 12,
+    "startDeg": 180,
+    "endDeg": 360,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-slab",
+   "at": [
+    -8,
+    -6
+   ],
+   "params": {
+    "rect": [
+     42,
+     11
+    ],
+    "z0": 4.2,
+    "height": 1.1,
+    "colour": "#f08c64",
+    "topColour": "#f08c64"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-wall",
+   "footprint": {
+    "rect": [
+     26,
+     3
+    ]
+   },
+   "at": [
+    4,
+    -1.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a8c3a6",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8c3a6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 0,
+      "height": 4.2,
+      "colour": "#f6dfb4"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -10.5
+    ],
+    "end": [
+     12,
+     -10.5
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "flight0",
+   "at": [
+    0,
+    -11.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.7,
+    "run": 1.2,
+    "count": 6,
+    "colour": "#d9b9a0"
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "prism",
+   "id": "par0_-2.3",
+   "at": [
+    -2.3,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     7.2
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#ee8f68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "par0_2.3",
+   "at": [
+    2.3,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     7.2
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#ee8f68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "flight1",
+   "at": [
+    9,
+    -11.6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.7,
+    "run": 1.2,
+    "count": 6,
+    "colour": "#d9b9a0"
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "prism",
+   "id": "par1_-2.3",
+   "at": [
+    6.7,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     7.2
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#ee8f68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "par1_2.3",
+   "at": [
+    11.3,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     7.2
+    ],
+    "z0": 0,
+    "height": 2.8,
+    "topScale": 1.0,
+    "colour": "#ee8f68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "landing-parapet",
+   "at": [
+    -8,
+    -11.2
+   ],
+   "params": {
+    "rect": [
+     42,
+     0.5
+    ],
+    "z0": 5.3,
+    "height": 1.0,
+    "colour": "#ee8f68"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -11.8,
+    2.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#f4f4f4",
+    "frameColour": "#f4f4f4",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-text",
+   "at": [
+    -14,
+    -12.0
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.05
+    ],
+    "z0": 2.55,
+    "height": 0.5,
+    "colour": "#2a4a9a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "at": [
+    -4,
+    -18
+   ],
+   "params": {
+    "rect": [
+     60,
+     2
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#d8cfa8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Twin dog-leg stair flights not legible (steps hidden, parapets read as loose panels); blue glazed infill and blue sign strip under slab remain; rounded tower corner and rib piers present but crude; ground colour not yellow-green"
+ }
+}

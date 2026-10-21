@@ -1,0 +1,1782 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kathmandu",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kathmandu",
+    "climate": "highland",
+    "vernacular": "Kathmandu Valley at about 1,300 m: a dense core of Newar red-brick and carved-timber houses of three to four storeys with tiled pitched roofs, pagoda temples and brick-paved squares, surrounded by fast-growing blocks of 4-7 storey reinforced-concrete frame with brick infill, flat roofs with water tanks, and rebar stubs; Rana-era white neoclassical palaces; prayer flags and Buddha-eye stupas.",
+    "wallColours": [
+      "#9b4a37",
+      "#b3573c",
+      "#d8c8a8",
+      "#e9e4d6",
+      "#8c8a84",
+      "#c9a98a",
+      "#5a3a24"
+    ],
+    "roofColours": [
+      "#a8502f",
+      "#7d7f80",
+      "#9a9a96",
+      "#c9a23a",
+      "#5b4a3a"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "brick",
+      "concrete",
+      "painted-render",
+      "timber",
+      "stone",
+      "render"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "metal-sheet",
+      "copper",
+      "gold-leaf"
+    ],
+    "ground": "cobble",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Newar carved timber: roof struts (tunala) with deity figures, latticed ankhi jhyal windows, gilded torana tympana and doors; tiered pagoda roofs with gilded finials; Buddha-eye stupas and prayer flags; stone guardian lions and elephants on plinths; Rana-era white neoclassical pilasters and balustrades.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kathmandu",
+        "what": "Kasthamandap wooden pagoda; Malla-era Durbar squares; Rana-era Western-style buildings (Garden of Dreams, Singha Durbar); monsoon climate and altitude"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kathmandu_Durbar_Square",
+        "what": "Kumari Ghar 1757 three-storey carved wood; Taleju temple on a twelve-stage plinth about 36.6 m tall; carved facades; nine-storey Nautalle Durbar"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Changu_Narayan",
+        "what": "sun-dried and fired clay brick walls, two-tier pagoda roof on carved timber struts, gilded door"
+      }
+    ]
+  },
+  "places": {
+    "kathmandu-airport-kathmandu-airport": {
+      "venueId": "kathmandu-airport-kathmandu-airport",
+      "city": "kathmandu",
+      "name": "Tribhuvan International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 1989 international terminal: a low, wide concrete hall on the apron side with a small control tower, set beside a separate domestic terminal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6cfbd",
+          "#6f8591",
+          "#f0ede4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1989-1990",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tribhuvan_International_Airport",
+          "what": "international terminal built 1985-89, inaugurated 1990; control tower completed 1987; new 6,300 m2 domestic terminal 2016 (temporary structure); 1,350 pax/h"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q61066",
+          "what": "Wikidata match \"Tribhuvan International Airport\""
+        }
+      ],
+      "notes": "Exterior form is not described in the retrieved source; dimensions and colours are estimates from the 1980s concrete terminal type. No OSM building matched."
+    },
+    "kathmandu-clinic": {
+      "venueId": "kathmandu-clinic",
+      "city": "kathmandu",
+      "name": "Civil Service Hospital",
+      "archetype": "hospital",
+      "subject": "a government referral hospital at Minbhawan: a 6-storey concrete frame block in white and cream with long balconies",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d8",
+          "#c9a98a",
+          "#f6f3ec"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q30260339",
+          "what": "Civil Service Hospital, inception 2010 (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/10953876",
+          "what": "OSM footprint 201.3 x 196.3 m (30783 m2) and tags {\"amenity\":\"hospital\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM campus polygon is 201 x 196 m (30,783 m2); the main block size and 6 storeys are estimated."
+    },
+    "kathmandu-community-notices": {
+      "venueId": "kathmandu-community-notices",
+      "city": "kathmandu",
+      "name": "Department of Health Services",
+      "archetype": "office-low",
+      "subject": "a long three-storey government office block with a flat concrete roof, at Teku",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d7be",
+          "#9a8f78",
+          "#f2eee3"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1953 department, building later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/201027611",
+          "what": "OSM building=government, 3 levels, roof:shape flat, roof:material concrete, 40.9 x 9.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30296066",
+          "what": "Wikidata match \"Department of Health Services\", inception 1953"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/201027611",
+          "what": "OSM footprint 40.9 x 9.8 m (389 m2) and tags {\"building\":\"government\",\"building:levels\":\"3\",\"roof:shape\":\"flat\",\"roof:material\":\"concrete\"}"
+        }
+      ],
+      "notes": "Footprint, levels and roof are measured in OSM. Colours estimated."
+    },
+    "kathmandu-community-voting-game": {
+      "venueId": "kathmandu-community-voting-game",
+      "city": "kathmandu",
+      "name": "Bhaktapur Durbar Square (Palace of Fifty-five Windows)",
+      "archetype": "heritage-fort",
+      "subject": "the long brick facade of the Palace of Fifty-five Windows with its carved timber window row, beside the gilded Golden Gate and the brick-paved square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 17,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip",
+        "variant": "Newar royal palace facade"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "timber",
+        "colours": [
+          "#9b4a37",
+          "#6a4a30",
+          "#c9a23a"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Golden Gate with gilded tympanum"
+        },
+        {
+          "id": "pagoda-roof",
+          "count": 2,
+          "note": "Vatsala and other tiered temples in the square"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "gilded statue of Bhupatindra Malla on a column"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "row of 55 carved windows"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "c. 1708, Golden Gate 1751-54",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bhaktapur_Durbar_Square",
+          "what": "Palace of Fifty-five Windows commissioned by Bhupatindra Malla c. 1708; cornice with 147 raga carvings; top floor restored with traditional tiles in 2006; Golden Gate built 1751-54; Vatsala temples; gilded statue of Bhupatindra Malla"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4900869",
+          "what": "Wikidata match \"Bhaktapur Durbar Square\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1159393576",
+          "what": "OSM footprint 80.5 x 17.3 m (888 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "The OSM building 80.5 x 17.3 m matches the palace facade length. Roof tile and brick colours are estimated."
+    },
+    "kathmandu-community-workshop": {
+      "venueId": "kathmandu-community-workshop",
+      "city": "kathmandu",
+      "name": "Khwopa Engineering College",
+      "archetype": "campus-block",
+      "subject": "a four-storey concrete-frame college block in cream paint with a central stair tower, in Libali, Bhaktapur",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 44,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d5b8",
+          "#a85c42",
+          "#f2eee2"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1991",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6403458",
+          "what": "Wikidata match \"Khwopa Engineering College\", inception 1991"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1152220224",
+          "what": "OSM footprint 48.1 x 44.1 m (1546 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 48 x 44 m from the nearest OSM building. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-market-game": {
+      "venueId": "kathmandu-market-game",
+      "city": "kathmandu",
+      "name": "Matatirtha Mall & Mart",
+      "archetype": "mall",
+      "subject": "a small neighbourhood mall: a 4-storey concrete shopping block with a glazed front and rooftop sign boards at the western edge of the valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 13,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4d9c0",
+          "#6f8591",
+          "#f1eee4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1280581825",
+          "what": "OSM footprint 30.3 x 12.9 m (391 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 30.3 x 12.9 m from OSM building. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-meal-stop": {
+      "venueId": "kathmandu-meal-stop",
+      "city": "kathmandu",
+      "name": "Dakshinkali Resort",
+      "archetype": "hotel",
+      "subject": "a small hillside resort lodge in the forested valley edge: two storeys in painted render with a pitched corrugated roof and a verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6dac0",
+          "#8a5a3a",
+          "#f2eee2"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "timber verandah"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/955850903",
+          "what": "OSM footprint 17.2 x 15.9 m (254 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 17 x 16 m from the nearest OSM building. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-node-10034234966": {
+      "venueId": "kathmandu-osm-node-10034234966",
+      "city": "kathmandu",
+      "name": "Tusha Hiti (Sundari Chowk bath)",
+      "archetype": "heritage-fort",
+      "subject": "the sunken royal bath of the Patan palace court: a stone-lined tank with carved spouts and carved gods, ringed by red-brick walls and tiled gable roofs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9b4a37",
+          "#8c8a84",
+          "#5a3a24"
+        ],
+        "roofColour": "#6b4a32",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "sunken stone bath"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved water spouts and deities"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1650 (Wikidata)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q99777433",
+          "what": "Wikidata match \"Tusha Hiti\", inception 1650"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/4604134",
+          "what": "OSM footprint 52.7 x 31.9 m (1273 m2) and tags {\"building\":\"yes\",\"height\":\"11\",\"roof:shape\":\"gabled\",\"roof:colour\":\"brown\",\"building:colour\":\"red\",\"historic\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 52.7 x 31.9 m, height 11 m, gabled brown roof and red building colour are OSM tags. The sunken tank detail is from general knowledge of the royal bath at Patan Durbar Square."
+    },
+    "kathmandu-osm-node-11300416091": {
+      "venueId": "kathmandu-osm-node-11300416091",
+      "city": "kathmandu",
+      "name": "Dasarath Rangasala (athletics track and pitch)",
+      "archetype": "stadium",
+      "subject": "the open pitch and oval running track seen from inside the bowl, with low concrete terraces and floodlight masts on the far side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 102,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9b8",
+          "#8c8c88",
+          "#ebe6d8"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1956-58",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dasarath_Rangasala_Stadium",
+          "what": "grass surface, 13,000 capacity, built on a lotus pond, elevation 1,299 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8895748",
+          "what": "OSM footprint 189.6 x 102.3 m (6226 m2) and tags {\"leisure\":\"track\"}"
+        }
+      ],
+      "notes": "Same real stadium as the Dashrath Rangasala Stadium way; this variant models the open track oval without a roof so the two silhouettes differ. OSM leisure=track 189.6 x 102.3 m."
+    },
+    "kathmandu-osm-node-1417852753": {
+      "venueId": "kathmandu-osm-node-1417852753",
+      "city": "kathmandu",
+      "name": "Red Cross (clinic)",
+      "archetype": "hospital",
+      "subject": "a small two-storey Red Cross clinic building with a red-cross board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee6d6",
+          "#b43a2f",
+          "#f6f3ec"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/230307374",
+          "what": "OSM footprint 17.7 x 9.4 m (141 m2) and tags {\"building\":\"hospital\"}"
+        }
+      ],
+      "notes": "Footprint 17.7 x 9.4 m is the matched OSM building=hospital. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-node-2055477614": {
+      "venueId": "kathmandu-osm-node-2055477614",
+      "city": "kathmandu",
+      "name": "Kantipur Engineering College",
+      "archetype": "campus-block",
+      "subject": "a four-storey concrete college block with a coloured painted front on the Lalitpur outskirts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8cdb5",
+          "#2f6b8a",
+          "#f1eee4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6365497",
+          "what": "Wikidata match \"Kantipur Engineering College\", inception 1998"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/244107644",
+          "what": "OSM footprint 32.6 x 19.8 m (370 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 32.6 x 19.8 m from the nearest OSM building. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-node-3079586714": {
+      "venueId": "kathmandu-osm-node-3079586714",
+      "city": "kathmandu",
+      "name": "Thapagaun (shrine)",
+      "archetype": "shrine-small",
+      "subject": "a small brick roadside shrine (dega) with a tiled pent roof and a brass bell, typical of Kathmandu neighbourhoods",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7.5,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "timber",
+        "colours": [
+          "#9b4a37",
+          "#5a3a24",
+          "#c9a23a"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "deity image"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1052214560",
+          "what": "OSM footprint 7.5 x 3.9 m (29 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Only a 7.5 x 3.9 m OSM building was matched; no description of the shrine. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-node-4213646591": {
+      "venueId": "kathmandu-osm-node-4213646591",
+      "city": "kathmandu",
+      "name": "Surya Chaur",
+      "archetype": "park-landscape",
+      "subject": "a forested hilltop viewpoint on the northern valley rim with a viewing platform and a tea shop looking out to the Himalaya",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 47,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#cfc7b4",
+          "#7a5c3c",
+          "#e6dfcd"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "viewing shelter"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "view terrace"
+        },
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "prayer flags"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q85847511",
+          "what": "Wikidata match \"Suryachaur\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/340431275",
+          "what": "OSM footprint 46.9 x 18.8 m (684 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 46.9 x 18.8 m from the nearest OSM building. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-node-4413371489": {
+      "venueId": "kathmandu-osm-node-4413371489",
+      "city": "kathmandu",
+      "name": "Shyam Staff Hotel",
+      "archetype": "restaurant",
+      "subject": "a highway-side lodge and dal-bhat restaurant: two storeys in painted brick with a corrugated roof and a first-floor balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e1d2a8",
+          "#a85c42",
+          "#f1ede0"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/343238935",
+          "what": "OSM footprint 17.4 x 13 m (190 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 17.4 x 13 m from the nearest OSM building. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-relation-21498033": {
+      "venueId": "kathmandu-osm-relation-21498033",
+      "city": "kathmandu",
+      "name": "Basantapur Durbar Square (Hanuman Dhoka)",
+      "archetype": "heritage-fort",
+      "subject": "the old royal palace of Kathmandu: the carved Hanuman Dhoka gate with its red-wrapped guardian, the nine-storey Nautalle Durbar tower and the tiered Taleju temple rising behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "hip",
+        "variant": "palace complex with white Rana wing"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#9b4a37",
+          "#efe9db",
+          "#5a3a24"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 3,
+          "note": "tiered temples including Taleju"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Hanuman Dhoka gate"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "nine-storey Basantapur / Nautalle tower"
+        },
+        {
+          "id": "courtyard",
+          "count": 3
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved window and strut details"
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "Malla to Shah/Rana, 16th-19th c.",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kathmandu_Durbar_Square",
+          "what": "Hanuman Dhoka palace complex; Kumari Ghar 1757 three-storey carved wood; Taleju temple on twelve-stage plinth about 36.6 m; nine-storey Nautalle Durbar; carved 16th-century facades"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6122177",
+          "what": "Wikidata match \"Basantapur Durbar Square\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/21498033",
+          "what": "OSM footprint 239.2 x 193.9 m (8010 m2) and tags {}"
+        }
+      ],
+      "notes": "Portion shown: the palace street front with the nine-storey tower. The white Rana-era wing (stucco) and brick-and-timber older parts coexist. Kasthamandap (separate venue) stands at the south-west corner of the square."
+    },
+    "kathmandu-osm-way-120106732": {
+      "venueId": "kathmandu-osm-way-120106732",
+      "city": "kathmandu",
+      "name": "Maitighar Mandala",
+      "archetype": "monument",
+      "subject": "a flat circular concrete mandala on a traffic island, in concentric rings of blue, black and orange with Buddhist ashtamangala symbols at the corners",
+      "form": {
+        "footprint": "round",
+        "width_m": 21,
+        "depth_m": 21,
+        "storeys": 0,
+        "height_m": 0.8,
+        "roof": "none",
+        "variant": "ground-level mandala"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#2f5f9a",
+          "#e0742a",
+          "#1f1f24"
+        ],
+        "roofColour": "#2f5f9a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "outer ring of 32 vajras, middle ring of 16 lotus petals, inner ring of 32 garlands"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "coloured rings blue, black, orange"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "traffic kerb"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2001",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maitighar_Mandala",
+          "what": "concrete monument completed 2001; concentric rings: 32 vajras, 16 lotus petals, 32 garlands; blue background with black, orange and blue circles; ashtamangala at four corners"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3811730",
+          "what": "Wikidata match \"Maitighar Mandala\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/120106732",
+          "what": "OSM footprint 20.9 x 20.8 m (382 m2) and tags {\"historic\":\"monument\"}"
+        }
+      ],
+      "notes": "A ground-level relief, not a vertical monument. 20.9 m OSM diameter."
+    },
+    "kathmandu-osm-way-16232252": {
+      "venueId": "kathmandu-osm-way-16232252",
+      "city": "kathmandu",
+      "name": "Dasarath Rangasala Stadium (main stand)",
+      "archetype": "stadium",
+      "subject": "the 1956 national stadium seen from Tripureshwor Road: a long main stand with a cantilevered roof canopy above concrete tiers and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 138,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d2cab5",
+          "#2f6b8a",
+          "#ece7d9"
+        ],
+        "roofColour": "#2f6b8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cantilevered main stand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1956 (opened 1958), renovated 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dasarath_Rangasala_Stadium",
+          "what": "capacity 13,000, grass pitch, built 1956/58, renovated 1998, 2011, 2019, damaged by 2015 earthquake, elevation 1,299 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1171789",
+          "what": "Wikidata match \"Dasarath Rangasala Stadium\", inception 1956"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/16232252",
+          "what": "OSM footprint 219.7 x 137.8 m (25541 m2) and tags {\"leisure\":\"stadium\"}"
+        }
+      ],
+      "notes": "Footprint 219.7 x 137.8 m measured from OSM. The roofed stand and colours are not sourced. The other venue entry models the open track."
+    },
+    "kathmandu-osm-way-183558418": {
+      "venueId": "kathmandu-osm-way-183558418",
+      "city": "kathmandu",
+      "name": "Kasthamandap",
+      "archetype": "temple-asian",
+      "subject": "the rebuilt three-storey wooden pavilion: an open timber-columned ground storey under three stepped pagoda roofs of terracotta tile with a gilded finial",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 21,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "stepped",
+        "variant": "pagoda pavilion (sattal)"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "red-brick",
+        "colours": [
+          "#7a4f30",
+          "#9b4a37",
+          "#c9a23a"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 3,
+          "note": "three stepped roofs"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "open timber-pillared ground floor"
+        },
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "gilded finial"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "plinth stair"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved struts"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "12th c., rebuilt 1596 and after 2015",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasthamandap",
+          "what": "three-storey wooden pagoda pavilion, built without nails, destroyed in the 2015 earthquake and rebuilt; also a shrine to Gorakshanath"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kathmandu_Durbar_Square",
+          "what": "large wooden pavilion with three-tiered form, reduced to rubble in 2015"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6374805",
+          "what": "Wikidata match \"Kasthamandap\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/183558418",
+          "what": "OSM footprint 21.8 x 21.4 m (467 m2) and tags {\"building\":\"temple\",\"height\":\"1\",\"amenity\":\"place_of_worship\"}"
+        }
+      ],
+      "notes": "OSM footprint 21.8 x 21.4 m. Height 18 m is an estimate; the real timber colour is dark brown, and details follow the pre-2015 form."
+    },
+    "kathmandu-osm-way-193705373": {
+      "venueId": "kathmandu-osm-way-193705373",
+      "city": "kathmandu",
+      "name": "Shahid Gate",
+      "archetype": "monument",
+      "subject": "the memorial arch to the martyrs of the 1940s anti-Rana struggle: a white pagoda-style gate with tiered roofs, standing statues and a monarch on top",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "stepped",
+        "variant": "memorial arch with pagoda crown"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "marble",
+        "colours": [
+          "#ece7d9",
+          "#c9a23a",
+          "#8c8a84"
+        ],
+        "roofColour": "#c9a23a",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "central arch"
+        },
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "pagoda-style crown"
+        },
+        {
+          "id": "statue",
+          "count": 5,
+          "note": "four martyrs and King Tribhuvan"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "mid-20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shahid_Gate",
+          "what": "memorial arch in pagoda style at Sundhara with five statues: four martyrs and King Tribhuvan on top (as of 2016)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7461663",
+          "what": "Wikidata match \"Shahid Gate\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/193705373",
+          "what": "OSM footprint 30.9 x 30.4 m (736 m2) and tags {\"leisure\":\"park\",\"historic\":\"memorial\"}"
+        }
+      ],
+      "notes": "Dimensions, white colour and gilt roof are estimated; the pagoda style and five statues are sourced. OSM park polygon is 31 x 30 m."
+    },
+    "kathmandu-osm-way-221217814": {
+      "venueId": "kathmandu-osm-way-221217814",
+      "city": "kathmandu",
+      "name": "Kathmandu Medical College",
+      "archetype": "hospital",
+      "subject": "a teaching hospital and college at Sinamangal: a broad six-storey concrete block in white with blue glazing bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efece2",
+          "#4f7a9a",
+          "#f8f6f0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6376961",
+          "what": "Kathmandu Medical College, established 1997"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/221217814",
+          "what": "OSM footprint 201.3 x 97 m (14528 m2) and tags {\"amenity\":\"college\"}"
+        }
+      ],
+      "notes": "OSM campus polygon 201 x 97 m; block layout guessed. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-osm-way-231049690": {
+      "venueId": "kathmandu-osm-way-231049690",
+      "city": "kathmandu",
+      "name": "Nepal Medical College white hostel",
+      "archetype": "campus-block",
+      "subject": "a long five-storey white-painted student hostel block with a flat concrete roof and balcony rails at Attarkhel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee6",
+          "#b3573c",
+          "#9a9a96"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1990-2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nepal_Medical_College",
+          "what": "campus with academic buildings, library, student halls and the teaching hospital"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6994378",
+          "what": "Wikidata match \"Nepal Medical College\", inception 1997"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/231049690",
+          "what": "OSM footprint 94.5 x 39.7 m (3311 m2) and tags {\"building:levels\":\"5\",\"roof:shape\":\"flat\",\"roof:material\":\"concrete\",\"start_date\":\"1990-2000\",\"amenity\":\"college\"}"
+        }
+      ],
+      "notes": "OSM: 5 levels, flat concrete roof, 94.5 x 39.7 m, start 1990-2000. White painted finish is implied by the OSM name only."
+    },
+    "kathmandu-osm-way-85650618": {
+      "venueId": "kathmandu-osm-way-85650618",
+      "city": "kathmandu",
+      "name": "Garden of Dreams",
+      "archetype": "park-landscape",
+      "subject": "the 1920s Rana neoclassical garden: formal axial paths, sunken flower beds with ponds, white pavilions with balustrades, pergolas and urns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 119,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#efe9db",
+          "#a8502f",
+          "#8c8a84"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "neoclassical pavilions (six per season in some accounts)"
+        },
+        {
+          "id": "fountain",
+          "count": 2,
+          "note": "ponds with lilies"
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "balustrades and urns"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "pergolas"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1920",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Garden_of_Dreams",
+          "what": "built 1920s for Kaiser Sumsher Rana, 6,895 m2, neo-classical Edwardian style, pavilions, pergolas, verandas, balustrades, urns, sunken flower gardens with ponds; half the garden survives"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5522383",
+          "what": "Wikidata match \"Garden of Dreams\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/85650618",
+          "what": "OSM footprint 118.9 x 79.5 m (7918 m2) and tags {\"leisure\":\"park\"}"
+        }
+      ],
+      "notes": "OSM polygon 119 x 80 m. Pavilion colours (cream) and tile red are estimated."
+    },
+    "kathmandu-quiet-reflection": {
+      "venueId": "kathmandu-quiet-reflection",
+      "city": "kathmandu",
+      "name": "Changu Narayan Temple",
+      "archetype": "temple-asian",
+      "subject": "the hilltop Vishnu temple: a two-tier pagoda on a raised brick plinth, brick walls, carved timber roof struts and a gilded door, inside a courtyard of stone guardians and shrines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "stepped",
+        "variant": "Newar two-tier pagoda temple"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "timber",
+        "colours": [
+          "#8c4a32",
+          "#c9a23a",
+          "#5a3a24"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 2,
+          "note": "two-tier pagoda roof"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved timber struts with Vishnu avatars"
+        },
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "gilded finial"
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "paired guardian lions, elephants, griffins"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "5th c. foundation, rebuilt 1702",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Changu_Narayan",
+          "what": "two-level pagoda roof on carved timber struts of the ten avatars, brick walls of sun-dried and fired brick on a 4-ft plinth, gilded carved door, four entrances with guardian pairs, stone pillar with emblems, shrines in courtyard"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1062150",
+          "what": "Wikidata match \"Changu Narayan Temple\", inception 325"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/186264410",
+          "what": "OSM footprint 15 x 14.9 m (222 m2) and tags {\"building\":\"temple\",\"amenity\":\"place_of_worship\",\"historic\":\"monument\"}"
+        }
+      ],
+      "notes": "OSM footprint 15 x 14.9 m; roof tile colour estimated."
+    },
+    "kathmandu-recreation": {
+      "venueId": "kathmandu-recreation",
+      "city": "kathmandu",
+      "name": "Ratna Park",
+      "archetype": "park-landscape",
+      "subject": "a central Kathmandu public park beside the Tundikhel and Rani Pokhari with railed paths, benches and a small garden pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9b8",
+          "#8c8c88",
+          "#e5dfd0"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ratna_Park",
+          "what": "central Kathmandu, between Rani Pokhari and Tundikhel, near bus stand; named after Queen Ratna; established 1964"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7295836",
+          "what": "Wikidata match \"Ratna Park\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28523872",
+          "what": "OSM footprint 218 x 116.2 m (18563 m2) and tags {\"leisure\":\"park\"}"
+        }
+      ],
+      "notes": "OSM polygon 218 x 116 m. Features unsourced. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kathmandu-transit": {
+      "venueId": "kathmandu-transit",
+      "city": "kathmandu",
+      "name": "Pasang Lhamu bus ticket counter (Trishuli, Dhunche)",
+      "archetype": "transport-station",
+      "subject": "a bus-park ticket counter: a small single-storey booth with a pitched metal roof next to rows of long-distance buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e2d6b8",
+          "#2f6b8a",
+          "#f2eee2"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/208528469",
+          "what": "OSM footprint 17.9 x 5.7 m (102 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 17.9 x 5.7 m from the nearest OSM building (Gongabu, Machha Pokhari area bus park). Low confidence: building not described in any source found; typed from the city style and the place type."
+    }
+  }
+}

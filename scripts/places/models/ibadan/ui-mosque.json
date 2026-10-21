@@ -1,0 +1,589 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "ui-mosque",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UNIBADAN_CENTRAL_MOSQUE_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "el-siddeeq lame",
+   "view": "side",
+   "file": "/tmp/places-evidence/ibadan/mosque.jpg",
+   "used": "long low beige prayer hall with a row of tall arched openings, pale low-slung flat roof with deep overhang, large flattened gold-olive dome beyond the left end, slender square grey minaret with open cap, lower terraced annex in front with water tanks and louvre vents"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/362968880",
+   "used": "not used: the containing polygon is a car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c7a8",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "pointed",
+      "bay": 3.6,
+      "opening": 0.55,
+      "height": 0.78,
+      "depth": 1.2,
+      "pierColour": "#cdbd9c",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0ede4",
+    "overhang": 3.4,
+    "parapet": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dome-block",
+   "footprint": {
+    "rect": [
+     24,
+     24
+    ]
+   },
+   "at": [
+    -30,
+    2
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cdb2",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -30,
+    2,
+    8.5
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#a99b55",
+    "profile": [
+     [
+      11,
+      0,
+      "#d9cdb2"
+     ],
+     [
+      11,
+      1.4
+     ],
+     [
+      11.0,
+      1.8,
+      "#a99b55"
+     ],
+     [
+      10.4,
+      3.6
+     ],
+     [
+      8.6,
+      6.2
+     ],
+     [
+      5.5,
+      8.2
+     ],
+     [
+      2.5,
+      9.2
+     ],
+     [
+      0.05,
+      9.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    2,
+    7
+   ],
+   "params": {
+    "n": 8,
+    "radius": 11.4,
+    "height": 1.5,
+    "colour": "#d9cdb2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    10,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.1,
+     3.1
+    ],
+    "height": 30,
+    "colour": "#c9c0b0",
+    "windows": "none",
+    "topColour": "#9a948a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    10,
+    30
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     5.0
+    ],
+    "height": 3.2,
+    "colour": "#a9a396",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "storeys": 1,
+    "glassColour": "#4a463e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    10,
+    33.2
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     5.8
+    ],
+    "height": 0.5,
+    "colour": "#8e887c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    22,
+    -16
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3c6a6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabb",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    24,
+    -12,
+    4.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2e2f31",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.3
+     ],
+     [
+      0.5,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    27,
+    -11,
+    4.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2e2f31",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.3
+     ],
+     [
+      0.5,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    -4,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4,
+    "height": 4.5,
+    "columns": 0,
+    "colour": "#e6e2d6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 2,
+    "spread": 5,
+    "line": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    8.4,
+    6
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.15
+    ],
+    "height": 18,
+    "colour": "#3a3834",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    20,
+    -12,
+    4.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2e2f31",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.3
+     ],
+     [
+      0.5,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    23.5,
+    -10,
+    4.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2e2f31",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.3
+     ],
+     [
+      0.5,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    29,
+    -12,
+    4.5
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2e2f31",
+    "profile": [
+     [
+      0.9,
+      0
+     ],
+     [
+      0.9,
+      1.3
+     ],
+     [
+      0.5,
+      1.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-vent",
+   "footprint": {
+    "rect": [
+     3,
+     0.5
+    ]
+   },
+   "at": [
+    18,
+    -23.3
+   ],
+   "z0": 0.8,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4b998",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#c4b998",
+      "backColour": "#4a463e",
+      "pitch": 0.25,
+      "depth": 0.1
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b998"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    35,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 3,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     25
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     30
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     22
+    ],
+    "height": 15
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "arcade is pointed-arch windows not deep recesses; hall roof stepped overhang simplified; annex tanks and vents approximate"
+ }
+}

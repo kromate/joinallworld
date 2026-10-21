@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "nassarawa-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: Gama Community Garden, walled mud-render garden with vegetable beds, thatched pavilion, gate, kiosk"
+  }
+ ],
+ "parts": [
+  {
+   "type": "fence-wall",
+   "id": "wall-front",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 2.0,
+    "thickness": 0.35,
+    "colour": "#b58a5e",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-back",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.0,
+    "thickness": 0.35,
+    "colour": "#b58a5e"
+   }
+  },
+  {
+   "type": "gate",
+   "id": "gate",
+   "at": [
+    12,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.8,
+    "colour": "#8a6544",
+    "board_colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "id": "pavilion",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "deck_height": 0.4,
+    "post_height": 2.6,
+    "roof": "pyramid",
+    "bar": false
+   }
+  },
+  {
+   "type": "array",
+   "id": "beds",
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 3,
+    "dx": 6,
+    "dy": 5,
+    "centred": true,
+    "of": {
+     "type": "garden-bed",
+     "params": {
+      "width": 4,
+      "depth": 2.8,
+      "colour": "#7aa05a",
+      "hedge": false
+     }
+    }
+   },
+   "at": [
+    -14,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "kiosk",
+   "id": "kiosk",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#8a6544"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "shade",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 8,
+    "count": 7,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or OSM outline exists (placeholder venue); typed from the brief and Kano vernacular."
+ }
+}

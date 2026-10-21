@@ -1,0 +1,148 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/779581545",
+   "used": "real outline of the named branch (about 24 x 17 m, 279 m2, with a small entrance notch on the south side); no public photo found, so facade, canopy and colours come from the brief and typical Nigerian bank branches"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e3d7",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#3f5b70",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8e8a",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    1,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 4.2,
+    "form": "flat",
+    "columns": 2,
+    "colour": "#3f5b70"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    -14,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2.0,
+    "height": 2.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -9,
+    5.4
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#c4bfb2",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "first-bank-calabar",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: facade, canopy, colours typed from brief; OSM outline only"
+ }
+}

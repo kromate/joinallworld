@@ -1,0 +1,361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "bayan-tasha-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Wikidata: market in Yobe State; name means behind the bus stop; no photo or OSM outline found, so a modest roadside market: three rows of lock-up stalls with rust corrugated lean-to roofs, two larger sheds at the back, stall umbrellas as small coloured canopies, road-side gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stalls-0",
+   "footprint": {
+    "rect": [
+     56,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -18
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stalls-1",
+   "footprint": {
+    "rect": [
+     56,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    -4
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stalls-2",
+   "footprint": {
+    "rect": [
+     56,
+     5
+    ]
+   },
+   "at": [
+    -2,
+    10
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-big",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -26,
+    28
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cdb68e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-small",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    8,
+    28
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d4630",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -12,
+    2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#2c6fa8"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    4,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#d4b23a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    20,
+    2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -6,
+    20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#2c6fa8"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#d4b23a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    36,
+    6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 3,
+    "depth": 3,
+    "height": 2.3,
+    "thickness": 0.1,
+    "columns": 1,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.4,
+    "pillar": 0.7,
+    "leaf": "bars",
+    "colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -30.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 3.6,
+    "colour": "#8a4a32",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     24
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline; modest roadside stall rows from the name and wikidata only"
+ }
+}

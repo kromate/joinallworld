@@ -1,0 +1,1440 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "asmara",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "asmara",
+    "climate": "highland",
+    "vernacular": "A 2,325 m plateau city whose centre was largely built 1935-41 by Italian planners: 2-4 storey Art Deco, Rationalist, Futurist and Novecento blocks in pastel stucco (ochre, peach, cream, pale green) with ribbon windows, curved corners, flat roofs and cantilevered canopies, laid out on a grid of palm-lined avenues (Harnet Avenue). Outer districts have low single-storey houses of render or stone with flat or corrugated-iron roofs, and Medeber is a district of tin-roofed metalworking stalls.",
+    "wallColours": [
+      "#d9b36a",
+      "#d99b82",
+      "#efe3c4",
+      "#f2efe6",
+      "#9cb18e",
+      "#a8503a",
+      "#8a867d"
+    ],
+    "roofColours": [
+      "#9a968d",
+      "#8a8f93",
+      "#a65a3d",
+      "#b4573c"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "brick"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Modernist Italian vocabulary: curved corner facades, horizontal ribbon windows, cantilevered concrete canopies, stepped parapets, geometric Art Deco shop signs and neon (Cinema Impero), shop awnings over arcades, black-and-white tiled floors; Orthodox churches with banded Aksumite-style stone and crosses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Asmara",
+        "what": "Art Deco (Cinema Impero), Cubist (Africa Pension), Futurist (Fiat Tagliero), neo-Romanesque (Church of Our Lady of the Rosary), neoclassical (Governor's Palace); most of centre built 1935-41; UNESCO listing 2017; 2,325 m altitude; cool semi-arid climate; palm-lined boulevards"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fiat_Tagliero_Building",
+        "what": "Futurist reinforced-concrete filling station example of local modernism"
+      }
+    ]
+  },
+  "places": {
+    "asmara-airport-asmara-airport": {
+      "venueId": "asmara-airport-asmara-airport",
+      "city": "asmara",
+      "name": "Asmara International Airport",
+      "archetype": "airport-terminal",
+      "subject": "A small terminal building at the high-altitude airport (Italian-founded 1922, enlarged mid-1930s): a low white two-storey block with a modest tower, apron to the airside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#9a968d",
+          "#c9c4b6"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1922; enlarged 1930s; renovated 1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asmara_International_Airport",
+          "what": "built 1922 by Italians (Aeroporto di Gura), enlarged mid-1930s, renovated 1950s; described as having a small terminal; runway 07/25, 3,000 m; also an air force base"
+        }
+      ],
+      "notes": "The terminal is described only as small; size, colours and tower are typed from that and the city style. No jet bridges (stairs/walk-out boarding)."
+    },
+    "asmara-clinic": {
+      "venueId": "asmara-clinic",
+      "city": "asmara",
+      "name": "St Mary's Psychiatric Hospital Sembel",
+      "archetype": "hospital",
+      "subject": "A low psychiatric hospital of single-storey ward blocks around garden courtyards",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c4",
+          "#a8a095",
+          "#d9b36a"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from hospital type (Sembel is a suburb) and city style. Single-storey ward-pavilion form."
+    },
+    "asmara-community-notices": {
+      "venueId": "asmara-community-notices",
+      "city": "asmara",
+      "name": "Ministry of Education",
+      "archetype": "civic-palace",
+      "subject": "A government ministry in an Italian-era block: three storeys of ochre stucco with a curved corner, ribbon windows and a flag at the entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d9b36a",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found for this building; typed Italian-era rationalist block from the Italian-era city style."
+    },
+    "asmara-community-voting-game": {
+      "venueId": "asmara-community-voting-game",
+      "city": "asmara",
+      "name": "Asmara Muncipality",
+      "archetype": "civic-small",
+      "subject": "The municipality building: a compact two-storey Italian-era civic block of pale stucco with a small tower and balcony over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#efe3c4",
+          "#d99b82",
+          "#8a867d"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "small tower"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue name spelled \"Muncipality\" in the game; no description found. Typed civic hall from city style."
+    },
+    "asmara-community-workshop": {
+      "venueId": "asmara-community-workshop",
+      "city": "asmara",
+      "name": "Eritrea Institute of Technology",
+      "archetype": "campus-block",
+      "subject": "A newer campus at Mai Nefhi: a spread of 2-3 storey stone-and-render teaching blocks and workshops on open ground in the hills",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#b8a58a",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2003 onward",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Located outside Asmara (Mai Nefhi). Nothing describing the buildings was found; typed from campus type. Less art-deco than city-centre venues."
+    },
+    "asmara-market-game": {
+      "venueId": "asmara-market-game",
+      "city": "asmara",
+      "name": "Medeber Market",
+      "archetype": "market-open",
+      "subject": "Medeber (Asmara's big informal market district): rows of metal workshops and stalls under low corrugated-iron roofs along dusty lanes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "tin-roofed workshop rows"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#8a8f93",
+          "#a65a3d",
+          "#c9c4b6"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Medeber is known as the metalworkers' and general market area; nothing retrieved describes its layout. Typed as low tin-roofed rows."
+    },
+    "asmara-meal-stop": {
+      "venueId": "asmara-meal-stop",
+      "city": "asmara",
+      "name": "Wide Hiyab Snack Bar",
+      "archetype": "restaurant",
+      "subject": "A roadside snack bar: a small one-room rendered shop with a corrugated roof and a shaded front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe3c4",
+          "#a8503a",
+          "#8a867d"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure; typed small snack bar. Coordinates are well east of the city on the Massawa road."
+    },
+    "asmara-osm-node-1834089661": {
+      "venueId": "asmara-osm-node-1834089661",
+      "city": "asmara",
+      "name": "Bar Durfo",
+      "archetype": "restaurant",
+      "subject": "A small roadside bar/restaurant on the Asmara-Massawa escarpment road: single storey, rendered walls, tin roof and a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d99b82",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure roadside place; nothing found. Peach-pink render to differ from the other roadside venues."
+    },
+    "asmara-osm-node-6360893186": {
+      "venueId": "asmara-osm-node-6360893186",
+      "city": "asmara",
+      "name": "Restaurant with view over 2 valleys",
+      "archetype": "restaurant",
+      "subject": "A hillside terrace restaurant above the escarpment: a low stone building with a covered viewing terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#b8a58a",
+          "#7a5a3c",
+          "#efe3c4"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing terrace"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Descriptive OSM name, not a proper name; nothing else found. Typed stone-built terrace restaurant on a slope."
+    },
+    "asmara-osm-node-7075366286": {
+      "venueId": "asmara-osm-node-7075366286",
+      "city": "asmara",
+      "name": "Stadion",
+      "archetype": "stadium",
+      "subject": "A small village football ground with an earth pitch, a low concrete terrace on one side and goalposts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b8b4aa",
+          "#8f8c84",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic \"Stadion\" on a minor road near Embatkala/east escarpment; no source. Much smaller than Cicero Stadium."
+    },
+    "asmara-osm-way-120789231": {
+      "venueId": "asmara-osm-way-120789231",
+      "city": "asmara",
+      "name": "St Mariam",
+      "archetype": "church-modern",
+      "subject": "Enda Mariam Orthodox cathedral area: a stone-clad Orthodox church with banded masonry, a stepped facade and a freestanding belfry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "orthodox"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#c9b98f",
+          "#8a7a62",
+          "#efe3c4"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1938",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "what": "Enda Mariam Cathedral listed among Asmara's eclectic examples"
+        }
+      ],
+      "notes": "OSM name \"St Mariam\" at this location matches the Enda Mariam Orthodox cathedral near Medeber (1938), but no description of its appearance was retrieved. Typed with Aksumite-style banded stone; low confidence. Different plan from the brick Catholic cathedral."
+    },
+    "asmara-osm-way-120789247": {
+      "venueId": "asmara-osm-way-120789247",
+      "city": "asmara",
+      "name": "Covered Market for fruits",
+      "archetype": "market-hall",
+      "subject": "A covered fruit market hall: a long Italian-era shed with a pitched corrugated roof on columns, open sides and stalls beneath",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c4",
+          "#a8503a",
+          "#8a867d"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1930s-1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing describing the hall found. Gable roof here to differ from the other covered market (barrel)."
+    },
+    "asmara-osm-way-120789704": {
+      "venueId": "asmara-osm-way-120789704",
+      "city": "asmara",
+      "name": "Covered Market - fruits, vegetables, bags",
+      "archetype": "market-hall",
+      "subject": "A second covered market hall with a barrel-vaulted metal roof, lined with stalls selling produce and bags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe3c4",
+          "#9a968d",
+          "#a65a3d"
+        ],
+        "roofColour": "#9a9ea0",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1930s-1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing describing the hall found; barrel roof chosen so the two covered markets differ."
+    },
+    "asmara-osm-way-145347060": {
+      "venueId": "asmara-osm-way-145347060",
+      "city": "asmara",
+      "name": "University of Asmara",
+      "archetype": "campus-block",
+      "subject": "The old university in the centre: 2-3 storey Italian-era blocks of ochre stucco with arcaded ground floors around shaded courtyards",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9b36a",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s-1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "what": "central Asmara largely built 1935-41 in Italian modernist styles"
+        }
+      ],
+      "notes": "Typed from city style; the university has been closed/reduced since 2006, so keep it quiet. No building-level source."
+    },
+    "asmara-osm-way-278139357": {
+      "venueId": "asmara-osm-way-278139357",
+      "city": "asmara",
+      "name": "Fiat Tagliero",
+      "archetype": "office-low",
+      "subject": "The Futurist aeroplane-shaped Fiat Tagliero service station: a central glazed tower with two enormous cantilevered concrete wings, completed 1938",
+      "form": {
+        "footprint": "T",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "cantilever-wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9da",
+          "#c9c4b6",
+          "#a8503a"
+        ],
+        "roofColour": "#efe9da",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 2,
+          "note": "two 15-18 m cantilevered wings forming the canopy"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "small flag mast on the tower"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1938",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fiat_Tagliero_Building",
+          "what": "Futurist filling station by Giuseppe Pettazzi, completed 1938; central tower with two cantilevered concrete wings (about 15 m each, some accounts 18 m); tower holds offices, cashier and shop; wings canopied cars; restored 2003; UNESCO site"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "what": "Futurist building in Asmara"
+        }
+      ],
+      "notes": "Instantly recognisable: aeroplane silhouette. Wings must be thin concrete slabs with no supporting columns (the authorities' requested pillars were removed in construction). Colour is white/cream concrete with darker trim; height and storeys are estimates."
+    },
+    "asmara-osm-way-278139845": {
+      "venueId": "asmara-osm-way-278139845",
+      "city": "asmara",
+      "name": "Nation Museum of Eritrea",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum in the former Comboni Sisters School for Women: a two-storey Italian-era institutional building around a garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe3c4",
+          "#d9b36a",
+          "#8a867d"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "20th century (museum there since c.1997)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Eritrea",
+          "what": "museum established 1992, first in the Governor's Palace, now in the former Comboni Sisters School for Women"
+        }
+      ],
+      "notes": "The building identity is from Wikipedia; its architecture is not described there, so the form and colours are typed from the city style."
+    },
+    "asmara-osm-way-355197149": {
+      "venueId": "asmara-osm-way-355197149",
+      "city": "asmara",
+      "name": "Cicero Stadium",
+      "archetype": "stadium",
+      "subject": "The 1938-39 Italian-built stadium: a rectangular bowl with concrete terraces, an arched entrance block on the main side and an artificial-turf pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stucco",
+        "colours": [
+          "#c9c4b6",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "entrance arches along the main side"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1938-39, renovated 1959",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cicero_Stadium",
+          "what": "built by Francesco Cicero 1938, opened 1939, renovated 1959; 10,000 capacity; artificial turf 2005; hosted 1968 African Cup of Nations games"
+        }
+      ],
+      "notes": "Dates and capacity are from Wikipedia; stand form and roofing are not described, so the open bowl is an estimate from the 10,000 capacity."
+    },
+    "asmara-osm-way-457538564": {
+      "venueId": "asmara-osm-way-457538564",
+      "city": "asmara",
+      "name": "Dem Sebai",
+      "archetype": "park-landscape",
+      "subject": "A rural spot north-west of Asmara: a small settlement with scattered stone houses and a path through scrub and acacia",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8a58a",
+          "#8a867d",
+          "#efe3c4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found about this place; typed rural stone-hut landscape. Far from Asmara city (about 38.77E)."
+    },
+    "asmara-osm-way-714628474": {
+      "venueId": "asmara-osm-way-714628474",
+      "city": "asmara",
+      "name": "Teachers' Institute",
+      "archetype": "campus-block",
+      "subject": "A teacher-training institute: a plain two-storey rendered classroom block with an open yard and a flag pole",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c4",
+          "#d99b82",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed from city style."
+    },
+    "asmara-osm-way-783951928": {
+      "venueId": "asmara-osm-way-783951928",
+      "city": "asmara",
+      "name": "Godaif Community Hospital",
+      "archetype": "hospital",
+      "subject": "A community hospital: a few single- and two-storey ward blocks in pale render with an entrance canopy",
+      "form": {
+        "footprint": "H",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c4",
+          "#9cb18e",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed from hospital type and city style. Pale green trim to differ from Halibet."
+    },
+    "asmara-osm-way-790417508": {
+      "venueId": "asmara-osm-way-790417508",
+      "city": "asmara",
+      "name": "Halibet Referral Hospital",
+      "archetype": "hospital",
+      "subject": "The large Halibet referral hospital: multiple 2-3 storey wards joined by covered corridors around gardens",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#d9b36a",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found about the buildings; bigger ochre stucco campus to differ from Godaif."
+    },
+    "asmara-osm-way-93787841": {
+      "venueId": "asmara-osm-way-93787841",
+      "city": "asmara",
+      "name": "Saint Joseph's Cathedral",
+      "archetype": "church-classical",
+      "subject": "A Catholic cathedral in the central grid: a rendered Romanesque-style church with a front tower and arched windows",
+      "form": {
+        "footprint": "cross",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#efe3c4",
+          "#a8503a",
+          "#8a867d"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1920s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asmara",
+          "what": "neo-Romanesque Church of Our Lady of the Rosary exists in Asmara, a separate building"
+        }
+      ],
+      "notes": "Name is from OSM; I could not confirm this building's appearance. It is a different church from Our Lady of the Rosary (the large Lombard Romanesque brick cathedral with a 52 m tower), so the model is a smaller stucco church."
+    },
+    "asmara-quiet-reflection": {
+      "venueId": "asmara-quiet-reflection",
+      "city": "asmara",
+      "name": "Kidane Meheret Church",
+      "archetype": "church-modern",
+      "subject": "An Orthodox church of the Kidane Mehret dedication: a round/octagonal plan with an ambulatory, a low dome and a golden cross, walled yard",
+      "form": {
+        "footprint": "round",
+        "width_m": 28,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome",
+        "variant": "orthodox-round"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#c9b98f",
+          "#8a7a62",
+          "#efe3c4"
+        ],
+        "roofColour": "#b8892f",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "cross on lantern"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found about the building. Orthodox churches in Eritrea are typically round/octagonal with ambulatory; typed that way. Differs from Enda Mariam (rectangular banded stone)."
+    },
+    "asmara-recreation": {
+      "venueId": "asmara-recreation",
+      "city": "asmara",
+      "name": "ኮመሰራታ ሓማሴን",
+      "archetype": "civic-small",
+      "subject": "Name is Tigrinya (Hamasien commissariat/administration); shown as a small government office building on a central street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d99b82",
+          "#efe3c4",
+          "#8a867d"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The game kind is \"park\" but the name reads as an administrative office (Hamasien district). Nothing found; typed as a small civic block, uncertain."
+    },
+    "asmara-transit": {
+      "venueId": "asmara-transit",
+      "city": "asmara",
+      "name": "Asmara",
+      "archetype": "transport-station",
+      "subject": "A bus station in central Asmara: an open yard with parked buses, a covered waiting shelter and a ticket kiosk",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c4b6",
+          "#a8503a",
+          "#8a867d"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The \"hub\" is named only \"Asmara\"; typed as a bus station. Nothing found."
+    }
+  }
+}

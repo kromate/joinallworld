@@ -1,0 +1,269 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/abuja.json places.gwagwalada-garden",
+   "used": "fenced vegetable and flower plots, small tool shed, water tank, acacia, laterite ground; OSM containing way is a 17x4 m building, not the garden, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tool-shed",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    16,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a8aeb0",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b7479",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "raised-plots",
+   "at": [
+    -4,
+    2,
+    0
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 3,
+    "plot_width": 8,
+    "plot_depth": 5,
+    "crop_colours": [
+     "#5f8f3f",
+     "#6a9a47",
+     "#4c8a3c",
+     "#7aa05a",
+     "#d9a441"
+    ]
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    17,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.7,
+    "tankHeight": 2.6,
+    "legHeight": 4.5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -12.5,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 19,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "colour": "#8a9086"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    12.5,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 19,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "colour": "#8a9086"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "colour": "#8a9086"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "colour": "#8a9086"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "thickness": 0.1,
+    "kind": "palisade",
+    "colour": "#8a9086"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#8a9086",
+    "leafColour": "#5b4a36"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6.5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.6,
+    "bottom": 1.3,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    13,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "colour": "#6f8a3c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "colour": "#6f8a3c"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4,
+    -1.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "height": 0.06,
+    "colour": "#4f7f9a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -4,
+    4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.5
+    ],
+    "height": 0.06,
+    "colour": "#4f7f9a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text-only authored venue (no photo exists): fenced plots, shed, tank, acacia composed from the brief; layout typical, not surveyed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "gwagwalada-garden"
+}

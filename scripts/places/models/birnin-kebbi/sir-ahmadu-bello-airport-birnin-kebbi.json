@@ -1,0 +1,154 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/772030283",
+   "used": "terminal outline (3258 m2, aeroway=terminal, name-matched)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Sir_Ahmadu_Bello_International_Airport",
+   "used": "2013 terminal and ramp, control tower; colours typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 12,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe5e8",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "bands": "#2f6b4f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "membrane",
+    "overhang": 1.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 9,
+    "height": 5,
+    "columns": 6,
+    "colour": "#f2efe6",
+    "edgeColour": "#2f6b4f",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    40,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "round",
+    "colour": "#f2efe6",
+    "cabColour": "#8aa6b0",
+    "bandColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -40,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3,
+    "colour": "#dfe5e8"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    20,
+    28,
+    0
+   ],
+   "params": {
+    "length": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -45
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo (only an unrelated Turkmenistan airliner image was listed); canopy, tower and colours typed; outline orientation unchecked"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "sir-ahmadu-bello-airport-birnin-kebbi"
+}

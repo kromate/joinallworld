@@ -1,0 +1,1609 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "tel-aviv-yafo",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "tel-aviv-yafo",
+  "climate": "mediterranean",
+  "vernacular": "White City International-Style apartment blocks of 3 to 5 storeys from the 1930s in white or cream render with rounded corner balconies, ribbon windows and thermometer stairwells, mixed with grey post-war concrete blocks (many on pilotis), glass towers in the business districts and Ottoman-era sand-coloured kurkar stone houses in Jaffa. Every flat roof carries solar water heaters and water tanks. Ficus, palm and eucalyptus trees line the streets.",
+  "wallColours": [
+   "#efe9dc",
+   "#d8d0bf",
+   "#d9c9a6",
+   "#b5b0a5",
+   "#c9b183",
+   "#e8dcc4"
+  ],
+  "roofColours": [
+   "#b5b0a5",
+   "#8f8b82",
+   "#b5603d",
+   "#d8d3c8"
+  ],
+  "wallMaterials": [
+   "render",
+   "painted-render",
+   "concrete",
+   "exposed-concrete",
+   "limestone",
+   "sandstone",
+   "glass-curtain"
+  ],
+  "roofMaterials": [
+   "concrete",
+   "membrane",
+   "clay-tile",
+   "metal-sheet"
+  ],
+  "ground": "paving",
+  "vegetation": [
+   "palm",
+   "broadleaf"
+  ],
+  "ornament": "Bauhaus/International-Style rounded balconies and horizontal balcony bands, vertical stairwell glazing, pilotis ground floors, roller shutters (tapuz) and pergolas; Jaffa Ottoman arches and kurkar stone vaults; Jerusalem-stone cladding on public buildings; rooftop solar heaters and water tanks.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Architecture_of_Israel",
+    "what": "Tel Aviv White City: over 4,000 International Style buildings (UNESCO 2001), flat roofs, concrete, Jerusalem stone cladding rules, tall towers"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Ben_Gurion_Airport",
+    "what": "Terminal 3 clad in Jerusalem stone with white architectural concrete, glass and aluminium; palette white and pale stone"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Old_Jaffa",
+    "what": "Jaffa old city on a kurkar ridge with winding alleyways, mosques, church, clock tower and gentrified galleries"
+   }
+  ]
+ },
+ "places": {
+  "tel-aviv-yafo-airport-tel-aviv-yafo-airport": {
+   "venueId": "tel-aviv-yafo-airport-tel-aviv-yafo-airport",
+   "city": "tel-aviv-yafo",
+   "name": "Ben Gurion International Airport",
+   "archetype": "airport-terminal",
+   "subject": "Terminal 3 (SOM, opened 2004): a huge white-concrete and Jerusalem-stone-clad terminal with a glass wall and curved departures hall, with the 2015 control tower (about 100 m) beside it",
+   "form": {
+    "footprint": "rect",
+    "width_m": 370,
+    "depth_m": 160,
+    "storeys": 4,
+    "height_m": 30,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "limestone",
+    "accent": "exposed-concrete",
+    "colours": [
+     "#e3d9c3",
+     "#f2f0ea",
+     "#7fa3b8"
+    ],
+    "roofColour": "#e8e4da",
+    "windows": "curtain",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "control-tower",
+     "count": 1,
+     "note": "about 100 m, 2015"
+    },
+    {
+     "id": "jet-bridge",
+     "count": 8
+    },
+    {
+     "id": "atrium-glass",
+     "count": 1,
+     "note": "tilted glass wall of the departures hall"
+    },
+    {
+     "id": "flat-canopy",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "2004 (Terminal 3), 2015 (control tower)",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Ben_Gurion_Airport",
+     "what": "Terminal 3 by Skidmore, Owings & Merrill with Moshe Safdie, opened 2004; vertical surfaces clad in Jerusalem stone, exposed white architectural concrete, glass and aluminium; tilted glass wall; star-shaped duty-free rotunda with inverted dome; 100 m control tower completed 2015"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q181479",
+     "what": "airport identity; OSM terminal polygon 371 m x 162 m"
+    }
+   ],
+   "notes": "Colours from the palette described in the article (white and pale stone). Clamped to 120 m; show the glass-fronted departures block and the tall, slim control tower."
+  },
+  "tel-aviv-yafo-clinic": {
+   "venueId": "tel-aviv-yafo-clinic",
+   "city": "tel-aviv-yafo",
+   "name": "Rabin Medical Center - Beilinson Campus",
+   "archetype": "hospital",
+   "subject": "A large hospital campus: a series of white-rendered mid-rise International-Style ward blocks (the 1950s HaSharon building by Arieh Sharon and Benjamin Idelson)",
+   "form": {
+    "footprint": "H",
+    "width_m": 140,
+    "depth_m": 35,
+    "storeys": 8,
+    "height_m": 30,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "concrete",
+    "colours": [
+     "#e6e1d4",
+     "#b5b0a5",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "international",
+   "era": "1936 (Beilinson), 1954 (HaSharon)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Rabin_Medical_Center",
+     "what": "Beilinson founded 1936; the 1954 HaSharon building was designed in the International Style by Arieh Sharon and Benjamin Idelson; 1,313 beds"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2071553",
+     "what": "OSM campus footprint 518 m x 248 m"
+    }
+   ],
+   "notes": "Heights and wings are estimates for a 1,300-bed campus; the International Style label and architects are sourced."
+  },
+  "tel-aviv-yafo-community-notices": {
+   "venueId": "tel-aviv-yafo-community-notices",
+   "city": "tel-aviv-yafo",
+   "name": "Bituach Leumi (National Insurance Institute branch)",
+   "archetype": "office-low",
+   "subject": "A two-storey agency branch (about 33 m by 23 m) in light render with ribbon windows and a blank sign board",
+   "form": {
+    "footprint": "rect",
+    "width_m": 33,
+    "depth_m": 23,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e1dac8",
+     "#7c97a8",
+     "#a39a88"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank, brand-neutral"
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "solar-panels",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1990s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "OSM footprint 32.6 m x 23.2 m; no Wikidata"
+    }
+   ],
+   "notes": "No description found; typed from the city style."
+  },
+  "tel-aviv-yafo-community-voting-game": {
+   "venueId": "tel-aviv-yafo-community-voting-game",
+   "city": "tel-aviv-yafo",
+   "name": "Drom HaSharon Regional Council",
+   "archetype": "civic-small",
+   "subject": "The regional council offices (about 50 m by 47 m): a two-to-three-storey municipal building in pale stone and render",
+   "form": {
+    "footprint": "U",
+    "width_m": 50,
+    "depth_m": 47,
+    "storeys": 3,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "limestone",
+    "accent": "render",
+    "colours": [
+     "#e0d6bc",
+     "#e8e4da",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Architecture_of_Israel",
+     "what": "Public buildings often clad in Jerusalem-style stone; used to type the facade"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2249100",
+     "what": "OSM amenity=townhall, 50 m x 47 m"
+    }
+   ],
+   "notes": "Footprint real; look typed from the Israeli municipal building type."
+  },
+  "tel-aviv-yafo-community-workshop": {
+   "venueId": "tel-aviv-yafo-community-workshop",
+   "city": "tel-aviv-yafo",
+   "name": "The Open University of Israel (Ra'anana campus)",
+   "archetype": "campus-block",
+   "subject": "The Dorothy de Rothschild campus (completed 2004): a large multi-wing teaching complex in stone and glass",
+   "form": {
+    "footprint": "U",
+    "width_m": 120,
+    "depth_m": 60,
+    "storeys": 4,
+    "height_m": 18,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "limestone",
+    "accent": "glass-curtain",
+    "colours": [
+     "#dccfb0",
+     "#7fa3b8",
+     "#a39a88"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2004",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Open_University_of_Israel",
+     "what": "Agreement signed 1995 led to the Dorothy de Rothschild campus in Ra'anana, completed 2004"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q1423960",
+     "what": "OSM campus footprint 338 m x 173 m"
+    }
+   ],
+   "notes": "The architecture is not described in any source found. Wing form typed."
+  },
+  "tel-aviv-yafo-market-game": {
+   "venueId": "tel-aviv-yafo-market-game",
+   "city": "tel-aviv-yafo",
+   "name": "Shuk HaPishpeshim (Jaffa Flea Market)",
+   "archetype": "market-open",
+   "subject": "Jaffa flea market: a lane of low antique shops and street stalls beneath striped awnings between sand-coloured old stone and render buildings",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 200,
+    "depth_m": 190,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "sandstone",
+    "accent": "render",
+    "colours": [
+     "#c9b183",
+     "#e8dcc4",
+     "#8f6a45"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "stalls",
+     "count": 30
+    },
+    {
+     "id": "awning",
+     "count": 10
+    },
+    {
+     "id": "arcade",
+     "count": 1
+    },
+    {
+     "id": "umbrellas",
+     "count": 6
+    },
+    {
+     "id": "clock-tower",
+     "count": 1,
+     "note": "Jaffa clock tower at the edge of the market"
+    }
+   ],
+   "setting": {
+    "ground": "cobble",
+    "trees": "palm",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "Ottoman to modern",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Old_Jaffa",
+     "what": "Old Jaffa on a kurkar ridge with winding alleys, galleries and restaurants; the clock tower is listed but not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q6771448",
+     "what": "Flea market in Jaffa; OSM marketplace 205 m x 194 m"
+    }
+   ],
+   "notes": "Layout typed from the general market and Jaffa stone-alley character; the Wikipedia flea-market page was not reachable."
+  },
+  "tel-aviv-yafo-meal-stop": {
+   "venueId": "tel-aviv-yafo-meal-stop",
+   "city": "tel-aviv-yafo",
+   "name": "Mul Yam (Tel Aviv Port)",
+   "archetype": "restaurant",
+   "subject": "A long low waterfront restaurant building at Tel Aviv Port (26 m by 9 m), burned in a 2015 kitchen fire",
+   "form": {
+    "footprint": "rect",
+    "width_m": 26,
+    "depth_m": 9,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#d8d3c8",
+     "#7fa3b8",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "curtain",
+    "windowRatio": 0.45
+   },
+   "features": [
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "none",
+    "forecourt": "water"
+   },
+   "style": "contemporary",
+   "era": "2000s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Mul_Yam",
+     "what": "Restaurant at Tel Aviv Port; kitchen fire on 22 July 2015"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q6933698",
+     "what": "identity"
+    }
+   ],
+   "notes": "No description of the building; typed as a low waterfront restaurant with a sea-facing terrace."
+  },
+  "tel-aviv-yafo-osm-node-1443153708": {
+   "venueId": "tel-aviv-yafo-osm-node-1443153708",
+   "city": "tel-aviv-yafo",
+   "name": "Izbet Sartah",
+   "archetype": "heritage-fort",
+   "subject": "An archaeological hill site: low rubble foundations of an Iron Age settlement on an open field mound",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 60,
+    "depth_m": 40,
+    "storeys": 1,
+    "height_m": 2.5,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": null,
+    "colours": [
+     "#b8a98a",
+     "#9d9484",
+     "#7a6e58"
+    ],
+    "roofColour": "#9d9484",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "ramparts",
+     "count": 1,
+     "note": "low stone foundation walls"
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "none",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "Iron Age (late 13th to 12th century BCE)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Izbet_Sartah",
+     "what": "Mound north of Rosh HaAyin, listed under new settlements of c. 13th-12th c. BCE; no remains described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q17347088",
+     "what": "archaeological site"
+    }
+   ],
+   "notes": "No physical description exists in sources found; typed low stone foundations."
+  },
+  "tel-aviv-yafo-osm-node-2467107746": {
+   "venueId": "tel-aviv-yafo-osm-node-2467107746",
+   "city": "tel-aviv-yafo",
+   "name": "Memorial of the 8th Brigade",
+   "archetype": "monument",
+   "subject": "A small hilltop memorial: a low concrete and stone plinth with a plaque and flagpole",
+   "form": {
+    "footprint": "rect",
+    "width_m": 12,
+    "depth_m": 9,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "concrete",
+    "colours": [
+     "#c9c2b4",
+     "#8f8b82",
+     "#b5b0a5"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "statue",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "none"
+   },
+   "style": "modernist",
+   "era": "1948 commemoration (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "OSM building 12.5 m x 9 m, 1 level"
+    }
+   ],
+   "notes": "No description found; typed as a small commemorative plinth."
+  },
+  "tel-aviv-yafo-osm-node-4172995826": {
+   "venueId": "tel-aviv-yafo-osm-node-4172995826",
+   "city": "tel-aviv-yafo",
+   "name": "Tel Hadid",
+   "archetype": "park-landscape",
+   "subject": "An isolated hill (147 m) covered with olive groves and planted pines, with scattered stone remains of the former village of al-Haditha",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 120,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 3,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": null,
+    "colours": [
+     "#b8a98a",
+     "#9d9484",
+     "#7a6e58"
+    ],
+    "roofColour": "#9d9484",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "ramparts",
+     "count": 1,
+     "note": "Hellenistic fortification wall remains"
+    },
+    {
+     "id": "fence-wall",
+     "count": 2,
+     "note": "old village house and cemetery walls"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "Bronze Age to Byzantine",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Tel_Hadid",
+     "what": "Isolated hill about 147 m, upper mound and lower terrace, olive groves and JNF pines, remains of al-Haditha village houses, Hellenistic walls, rock-cut presses"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q12412089",
+     "what": "archaeological site in Israel"
+    }
+   ],
+   "notes": "Recognisable by the bare mound among olive and pine trees; ruins are low."
+  },
+  "tel-aviv-yafo-osm-node-8312911961": {
+   "venueId": "tel-aviv-yafo-osm-node-8312911961",
+   "city": "tel-aviv-yafo",
+   "name": "Tel Zureikya",
+   "archetype": "park-landscape",
+   "subject": "An archaeological tel in the Sharon plain: a low grassy mound with scattered stones",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 100,
+    "depth_m": 80,
+    "storeys": 1,
+    "height_m": 3,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": null,
+    "colours": [
+     "#b8a98a",
+     "#9d9484",
+     "#7a6e58"
+    ],
+    "roofColour": "#9d9484",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "ramparts",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "none",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "antiquity (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q6594329",
+     "what": "archaeological site in Sharon Plain, Israel"
+    }
+   ],
+   "notes": "Nothing found beyond the Wikidata label; typed as a grassy mound."
+  },
+  "tel-aviv-yafo-osm-relation-13435489": {
+   "venueId": "tel-aviv-yafo-osm-relation-13435489",
+   "city": "tel-aviv-yafo",
+   "name": "Sidna Ali Mosque",
+   "archetype": "mosque-domed",
+   "subject": "The Mamluk-Ottoman tomb mosque on the Herzliya shoreline: a sandy-stone building around a saint's tomb with a single dome, a rebuilt minaret and vaulted arcades",
+   "form": {
+    "footprint": "rect",
+    "width_m": 56,
+    "depth_m": 53,
+    "storeys": 2,
+    "height_m": 10,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "sandstone",
+    "accent": "stucco",
+    "colours": [
+     "#cdb98f",
+     "#e8e0cc",
+     "#8f8b82"
+    ],
+    "roofColour": "#e8e0cc",
+    "windows": "arched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "minaret",
+     "count": 1,
+     "note": "rebuilt after First World War shelling"
+    },
+    {
+     "id": "arcade",
+     "count": 1,
+     "note": "vaulted arcades"
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "palm",
+    "forecourt": "none"
+   },
+   "style": "arab-islamic",
+   "era": "13th-15th century (disputed)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Sidna_Ali_Mosque",
+     "what": "One minaret (destroyed by naval bombardment in WWI and rebuilt), one dome, vaulted arcades dated 13th-15th century, later second-floor rooms, built around a tomb with a marble monument, on the beach in northern Herzliya"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2975910",
+     "what": "OSM footprint 56 m x 53 m"
+    }
+   ],
+   "notes": "Stone and colours are not described in the source; local kurkar sandstone is assumed."
+  },
+  "tel-aviv-yafo-osm-way-228281988": {
+   "venueId": "tel-aviv-yafo-osm-way-228281988",
+   "city": "tel-aviv-yafo",
+   "name": "Great Synagogue, Ness Ziona",
+   "archetype": "shrine-small",
+   "subject": "A town synagogue (24 m by 16 m): a tall rectangular hall in pale stone with arched windows and a gabled roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 24,
+    "depth_m": 16,
+    "storeys": 2,
+    "height_m": 11,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "limestone",
+    "accent": "render",
+    "colours": [
+     "#e0d6bc",
+     "#e8e4da",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5603d",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "20th century (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q45835604",
+     "what": "OSM building=synagogue, 24 m x 16 m"
+    }
+   ],
+   "notes": "No description of the building found; typed as a tall hall synagogue."
+  },
+  "tel-aviv-yafo-osm-way-284108856": {
+   "venueId": "tel-aviv-yafo-osm-way-284108856",
+   "city": "tel-aviv-yafo",
+   "name": "Sarona Market",
+   "archetype": "market-hall",
+   "subject": "The Sarona Market indoor food hall, about 158 m by 22 m, 8,700 m2 of floor with about 90 businesses, set between restored Templer houses",
+   "form": {
+    "footprint": "rect",
+    "width_m": 158,
+    "depth_m": 22,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#d8d3c8",
+     "#7fa3b8",
+     "#6d6a63"
+    ],
+    "roofColour": "#8f8b82",
+    "windows": "curtain",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "neon-strip",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 2,
+     "note": "blank boards"
+    },
+    {
+     "id": "stalls",
+     "count": 20
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2015",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Sarona_Market",
+     "what": "8,700 m2, about 90 businesses, largest enclosed culinary market in Israel, southern edge of the Templer colony restoration in Sarona Park, designed by Studio Mo"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q63790641",
+     "what": "OSM footprint 158 m x 22 m"
+    }
+   ],
+   "notes": "The market is a modern industrial-style hall; the Templer houses beside it have pitched clay-tile roofs and pale stone walls."
+  },
+  "tel-aviv-yafo-osm-way-294635033": {
+   "venueId": "tel-aviv-yafo-osm-way-294635033",
+   "city": "tel-aviv-yafo",
+   "name": "Ayalon Mall",
+   "archetype": "mall",
+   "subject": "The 1985 out-of-town mall in Ramat Gan, about 254 m by 90 m, one storey with a two-storey 2006 wing and 2015 extension, ringed by car parks",
+   "form": {
+    "footprint": "rect",
+    "width_m": 254,
+    "depth_m": 90,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#ddd7ca",
+     "#7fa3b8",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "curtain",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "car-park",
+     "count": 3
+    },
+    {
+     "id": "signage-board",
+     "count": 2,
+     "note": "blank boards"
+    },
+    {
+     "id": "flat-canopy",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "postmodern",
+   "era": "1985; extended 2006 and 2015",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Ayalon_Mall",
+     "what": "Opened July 1985, first Israeli mall outside a city centre; partial two-storey wing in 2006 with 15-screen cinema; second-floor extension 2015"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q4830883",
+     "what": "OSM building:levels=2, roof:shape=skillion, 253.8 m x 90.4 m"
+    }
+   ],
+   "notes": "Colours not described; light render with glass is typed."
+  },
+  "tel-aviv-yafo-osm-way-45556106": {
+   "venueId": "tel-aviv-yafo-osm-way-45556106",
+   "city": "tel-aviv-yafo",
+   "name": "HaPark HaLeumi (Ramat Gan National Park)",
+   "archetype": "park-landscape",
+   "subject": "A 1.9 km2 city park planted from 1951 around an artificial lake (1959) with a waterfall, wide lawns and pine and eucalyptus groves",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 600,
+    "depth_m": 400,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": null,
+    "colours": [
+     "#c9c2b4",
+     "#8d8f8c",
+     "#7a5a3e"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 2
+    },
+    {
+     "id": "bandstand",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "water"
+   },
+   "style": "vernacular",
+   "era": "1951-1959",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Ramat_Gan_National_Park",
+     "what": "Planted from February 1951, artificial lake created 1959 and enlarged, new waterfall, 1.9 km2"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q3738170",
+     "what": "OSM park 1170 m x 688 m"
+    }
+   ],
+   "notes": "Pavilions and bandstand are typed. The lake is the main feature."
+  },
+  "tel-aviv-yafo-osm-way-48949522": {
+   "venueId": "tel-aviv-yafo-osm-way-48949522",
+   "city": "tel-aviv-yafo",
+   "name": "Shamir Medical Center (Assaf Harofeh)",
+   "archetype": "hospital",
+   "subject": "A large hospital campus in Be'er Ya'akov: mid-rise white-render blocks on a former British military hospital site (founded 1918)",
+   "form": {
+    "footprint": "H",
+    "width_m": 120,
+    "depth_m": 35,
+    "storeys": 6,
+    "height_m": 24,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "concrete",
+    "colours": [
+     "#e6e1d4",
+     "#b5b0a5",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1918 (founded); present blocks unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Shamir_Medical_Center",
+     "what": "Founded 1918 as a British Army hospital near Sarafand, 800-plus beds, nursing and physiotherapy schools; buildings not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2067213",
+     "what": "OSM campus 827 m x 475 m"
+    }
+   ],
+   "notes": "Present building appearance not found; typed. Differs from Rabin by H plan and lower height."
+  },
+  "tel-aviv-yafo-osm-way-762309552": {
+   "venueId": "tel-aviv-yafo-osm-way-762309552",
+   "city": "tel-aviv-yafo",
+   "name": "Ra'anana Park",
+   "archetype": "park-landscape",
+   "subject": "A 200-acre central park around a triangular lake with a pedestrian bridge and two fountains, broad lawns, a cafe, a gallery and an amphitheatre",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 1000,
+    "depth_m": 320,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "timber",
+    "colours": [
+     "#d8d0bf",
+     "#8d8f8c",
+     "#7a5a3e"
+    ],
+    "roofColour": "#a2663f",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "fountain",
+     "count": 2
+    },
+    {
+     "id": "pavilion",
+     "count": 1,
+     "note": "cafe-restaurant"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "bandstand",
+     "count": 1,
+     "note": "amphitheatre"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "water"
+   },
+   "style": "contemporary",
+   "era": "1980s (unconfirmed)",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Ra%27anana_Park",
+     "what": "About 200 acres, triangular central lake with pedestrian bridge and two fountains, grassy areas, 675 trees, cafe-restaurant, gallery, amphitheatre"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q6970507",
+     "what": "OSM park 1027 m x 317 m"
+    }
+   ],
+   "notes": "Recognisable by the triangular lake with a bridge."
+  },
+  "tel-aviv-yafo-osm-way-80798213": {
+   "venueId": "tel-aviv-yafo-osm-way-80798213",
+   "city": "tel-aviv-yafo",
+   "name": "Haberfeld Stadium",
+   "archetype": "stadium",
+   "subject": "A small 6,000-seat all-seater football stadium in Rishon LeZion (built 1993-1995) with four stands and corner floodlight masts",
+   "form": {
+    "footprint": "rect",
+    "width_m": 150,
+    "depth_m": 115,
+    "storeys": 2,
+    "height_m": 16,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "metal-cladding",
+    "colours": [
+     "#c9c2b4",
+     "#6e7a86",
+     "#8f8b82"
+    ],
+    "roofColour": "#8f8b82",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "floodlights",
+     "count": 4
+    },
+    {
+     "id": "stand-roof",
+     "count": 1
+    },
+    {
+     "id": "scoreboard",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "1993-1995",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Haberfeld_Stadium",
+     "what": "Capacity 6,000 all-seater, grass; built 1993-1995; stands and roof not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q641841",
+     "what": "OSM stadium 193 m x 156 m"
+    }
+   ],
+   "notes": "Stand roof coverage unverified; kept to a single main stand roof. Smaller and simpler than Azadi."
+  },
+  "tel-aviv-yafo-osm-way-84530824": {
+   "venueId": "tel-aviv-yafo-osm-way-84530824",
+   "city": "tel-aviv-yafo",
+   "name": "Beit Berl Academic College",
+   "archetype": "campus-block",
+   "subject": "The library and institutional building of Beit Berl College (36 m by 20 m): a three-storey light-render block",
+   "form": {
+    "footprint": "rect",
+    "width_m": 36,
+    "depth_m": 20,
+    "storeys": 3,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e1dac8",
+     "#7c97a8",
+     "#a39a88"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1989 (moved into institutional building)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Beit_Berl_College",
+     "what": "College moved to an institutional building in 1989; buildings not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q25488222",
+     "what": "OSM library 36.5 m x 20 m"
+    }
+   ],
+   "notes": "Appearance typed."
+  },
+  "tel-aviv-yafo-osm-way-932979208": {
+   "venueId": "tel-aviv-yafo-osm-way-932979208",
+   "city": "tel-aviv-yafo",
+   "name": "Mazor Mausoleum",
+   "archetype": "shrine-small",
+   "subject": "A Roman-era tomb building about 10 m square, one of the best-preserved Roman buildings in Israel, standing from foundations to roof, with a later Muslim mihrab",
+   "form": {
+    "footprint": "rect",
+    "width_m": 10,
+    "depth_m": 10,
+    "storeys": 1,
+    "height_m": 7,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "limestone",
+    "accent": null,
+    "colours": [
+     "#d8cfb8",
+     "#b8a98a",
+     "#8f8b82"
+    ],
+    "roofColour": "#b8a98a",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "none",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "3rd-4th century AD",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Mazor_Mausoleum",
+     "what": "Only Roman-era building in Israel to stand from foundations to roof, two sarcophagi remains, mihrab on south wall, 3rd to late 4th century AD"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2900217",
+     "what": "OSM historic=ruins 10.3 m x 10.2 m"
+    }
+   ],
+   "notes": "Roof shape and size are not given in the source; typed as a plain square stone tomb with a flat or low vaulted roof."
+  },
+  "tel-aviv-yafo-osm-way-95215506": {
+   "venueId": "tel-aviv-yafo-osm-way-95215506",
+   "city": "tel-aviv-yafo",
+   "name": "Kibbutzim College of Education",
+   "archetype": "campus-block",
+   "subject": "A small college block (30 m by 17 m): a three-storey stone-and-render teaching building",
+   "form": {
+    "footprint": "rect",
+    "width_m": 30,
+    "depth_m": 17,
+    "storeys": 3,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "limestone",
+    "colours": [
+     "#e1dac8",
+     "#d9c9a6",
+     "#8f8b82"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q7219274",
+     "what": "OSM college building 30 m x 17.5 m"
+    }
+   ],
+   "notes": "Appearance typed."
+  },
+  "tel-aviv-yafo-quiet-reflection": {
+   "venueId": "tel-aviv-yafo-quiet-reflection",
+   "city": "tel-aviv-yafo",
+   "name": "Nabi Rubin",
+   "archetype": "shrine-small",
+   "subject": "The Nabi Rubin maqam by the dunes: a domed tomb chamber under a cupola with a cross-vaulted room and a walled courtyard; the old minaret is gone",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 25,
+    "depth_m": 25,
+    "storeys": 1,
+    "height_m": 7,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "sandstone",
+    "accent": "whitewash",
+    "colours": [
+     "#e1d6bd",
+     "#cdb98f",
+     "#8f8b82"
+    ],
+    "roofColour": "#e8e0cc",
+    "windows": "arched",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1,
+     "note": "cupola over the tomb"
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "none",
+    "forecourt": "none"
+   },
+   "style": "arab-islamic",
+   "era": "1436-37 (maqam), 16th and 19th century additions",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Nabi_Rubin",
+     "what": "Tomb under a cupola over a sarcophagus, Mamluk maqam of 1436-37, cross-vaulted room likely 16th c., rest late Ottoman, square compound wall with courtyard, minaret gone by 2012, dunes around"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2911822",
+     "what": "Nabi Rubin"
+    }
+   ],
+   "notes": "Current plaster colours are not described; sand-coloured stone with pale render assumed."
+  },
+  "tel-aviv-yafo-recreation": {
+   "venueId": "tel-aviv-yafo-recreation",
+   "city": "tel-aviv-yafo",
+   "name": "Haganah Museum (Hosmasa / Yad La-Haganah)",
+   "archetype": "park-landscape",
+   "subject": "A small museum park (about 123 m by 110 m) with lawns, paths, a stone memorial wall and a low museum building",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 123,
+    "depth_m": 110,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "concrete",
+    "colours": [
+     "#d8d0bf",
+     "#8d8f8c",
+     "#b5b0a5"
+    ],
+    "roofColour": "#b5b0a5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "statue",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "modernist",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q6989818",
+     "what": "OSM park 123 m x 110 m; identification of the museum is uncertain"
+    }
+   ],
+   "notes": "The name is garbled in the game data and Wikidata describes it with no details. Typed generic memorial park."
+  },
+  "tel-aviv-yafo-transit": {
+   "venueId": "tel-aviv-yafo-transit",
+   "city": "tel-aviv-yafo",
+   "name": "Kfar Chabad Railway Station",
+   "archetype": "transport-station",
+   "subject": "A small suburban railway station on the Binyamina-Ashkelon line: two platforms with canopies and a footbridge, rebuilt 1999",
+   "form": {
+    "footprint": "rect",
+    "width_m": 47,
+    "depth_m": 6,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "metal-cladding",
+    "colours": [
+     "#c9c5ba",
+     "#6d737a",
+     "#e8e4da"
+    ],
+    "roofColour": "#8f8b82",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "platform-canopy",
+     "count": 2
+    },
+    {
+     "id": "rail-tracks",
+     "count": 2
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "none"
+   },
+   "style": "contemporary",
+   "era": "1952; rebuilt 1999",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Kfar_Chabad",
+     "what": "Railway station on the Binyamina-Ashkelon line built 1952 and rebuilt 1999; design not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2570492",
+     "what": "station; OSM building=train_station 47 m x 6 m"
+    }
+   ],
+   "notes": "Platform canopy typed. The nearby 770 replica synagogue is not shown here."
+  }
+ }
+}

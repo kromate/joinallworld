@@ -1,0 +1,344 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Chase_Farm_Hospital_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/chase3.jpg",
+   "used": "new five-storey hospital: dark grey brick ground floor with deep brick piers carrying a covered walk, upper floors in buff and terracotta louvred fins over dark glazing, flat roof, blank fascia sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24437604",
+   "used": "site only (a 37 acre campus polygon, not a building outline); hospital footprint composed from the photo and brief (about 96 x 26 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     90,
+     23
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#454344",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 6,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#454344"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-clad",
+   "footprint": {
+    "rect": [
+     90,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.5,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9b48c",
+    "windows": "none",
+    "bay": 6,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       1.6,
+       1.1
+      ],
+      "colours": [
+       "#d9b48c",
+       "#c98a5e",
+       "#efe6d6",
+       "#e2c39a"
+      ],
+      "slits": {
+       "fraction": 0.1,
+       "colour": "#262a30"
+      }
+     },
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#dcb084",
+      "backColour": "#1f2328",
+      "pitch": 0.7,
+      "depth": 0.6,
+      "band": 0.6,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    -57,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#58504c",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    34,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 4,
+    "columns": 3,
+    "colour": "#5a5859",
+    "roofColour": "#8a8a8a",
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -18,
+    -15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 4.6,
+    "thickness": 0.6,
+    "columns": 4,
+    "colour": "#3f3e40",
+    "edgeColour": "#2c2c2e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 15,
+    "start": [
+     -42,
+     -11.5
+    ],
+    "end": [
+     42,
+     -11.5
+    ],
+    "of": [
+     {
+      "type": "mass",
+      "id": "pier",
+      "footprint": {
+       "rect": [
+        3,
+        3
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "z0": 0,
+      "height": 6.5,
+      "storeys": 1,
+      "wall": {
+       "material": "brick",
+       "colour": "#3c3a3c",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#3c3a3c"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     16,
+     0.7
+    ]
+   },
+   "at": [
+    -18,
+    -13.4
+   ],
+   "z0": 5.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e9e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e9e6"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -24.5,
+     -14
+    ],
+    "end": [
+     -11.5,
+     -14
+    ],
+    "of": [
+     {
+      "type": "mass",
+      "id": "let",
+      "footprint": {
+       "rect": [
+        0.5,
+        0.4
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "z0": 5.5,
+      "height": 1.0,
+      "storeys": 1,
+      "wall": {
+       "material": "render",
+       "colour": "#2e3033",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#2e3033"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-24437604",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Louvres and panel mix are regular where the real fins are staggered; letters are blank dark block proxies, not real lettering; piers/recess approximate; OSM outline is whole 37-acre campus so size is from the brief"
+ }
+}

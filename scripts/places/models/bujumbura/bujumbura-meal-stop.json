@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-meal-stop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/208568959",
+   "used": "checked only: outline is irregular and does not match a 14x9 room, so not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small family restaurant in Gatumba, painted render, covered terrace; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "room",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1cf9a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a35",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "id": "terrace-awning",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.2,
+    "height": 2.7,
+    "colours": [
+     "#b5603f",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t1",
+   "at": [
+    -3,
+    -6.2,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t2",
+   "at": [
+    1,
+    -6.2,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t3",
+   "at": [
+    4.5,
+    -6.2,
+    0
+   ],
+   "params": {
+    "chairs": 3
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "cookhut",
+   "at": [
+    10,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "box",
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#9b978f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 3,
+  "treeKind": "palm",
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo or usable outline: modest typical gable restaurant, terrace layout assumed"
+ }
+}

@@ -1,0 +1,374 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DarEsSalaam_Askari.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "User:Digr",
+   "view": "front",
+   "file": "/tmp/places-evidence/dar-es-salaam/askari1.jpg",
+   "used": "dark bronze soldier striding forward with rifle on a square pale limestone pedestal with one dark relief plaque, clipped hedge ring, yellow and dark striped kerb, cream three-storey buildings with balconies and a tall grey louvred tower behind, blue-columned shopfront"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Askari_monument_(3091804366).jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/dar-es-salaam/askari5.jpg",
+   "used": "older black and white view: pedestal height relative to the street, curved corner building to the right"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base-step",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "height": 0.35,
+    "colour": "#a39d90",
+    "material": "stone-blocks"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal",
+   "at": [
+    0,
+    0,
+    0.35
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "height": 4.8,
+    "topScale": 0.92,
+    "colour": "#bdb5a2",
+    "material": "stone-ashlar"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap",
+   "at": [
+    0,
+    0,
+    5.15
+   ],
+   "params": {
+    "rect": [
+     4.3,
+     4.3
+    ],
+    "height": 0.35,
+    "colour": "#a9a292",
+    "material": "stone-ashlar"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -1.85,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.14
+    ],
+    "height": 1.4,
+    "colour": "#2a2822",
+    "material": "plain"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    0,
+    0,
+    5.5
+   ],
+   "rotDeg": 25,
+   "params": {
+    "height": 5.5,
+    "pose": "forward",
+    "colour": "#2f2a22"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.5
+      ],
+      "height": 0.18,
+      "colour": "#d9b92e",
+      "material": "plain"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -11,
+     -12
+    ],
+    "end": [
+     11,
+     -12
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-block",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    12,
+    16
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c68f",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9684",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-tower",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -10,
+    24
+   ],
+   "height": 28,
+   "storeys": 8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfccc0",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d86",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-louvre",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    2,
+    22
+   ],
+   "height": 24,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#bdbab0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8d86"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    6,
+    8.2,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "count": 4,
+    "height": 3.8,
+    "radius": 0.35,
+    "kind": "round",
+    "colour": "#2f5fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-ring",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     2.4
+    ],
+    "height": 1.2,
+    "topScale": 0.92,
+    "colour": "#4f8a36",
+    "material": "plain"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-ring",
+   "at": [
+    0,
+    7,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     2.4
+    ],
+    "height": 1.2,
+    "topScale": 0.92,
+    "colour": "#4f8a36",
+    "material": "plain"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-ring",
+   "at": [
+    -8,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     12
+    ],
+    "height": 1.2,
+    "topScale": 0.92,
+    "colour": "#4f8a36",
+    "material": "plain"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-ring",
+   "at": [
+    8,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     12
+    ],
+    "height": 1.2,
+    "topScale": 0.92,
+    "colour": "#4f8a36",
+    "material": "plain"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     8
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     24
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-askari-monument",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Statue still a stock striding figure; backdrop buildings lack real balcony and louvre detail, no wires or street clutter; hedge ring is plain prisms."
+ }
+}

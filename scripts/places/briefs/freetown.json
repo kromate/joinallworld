@@ -1,0 +1,1573 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "freetown",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "freetown",
+    "climate": "tropical-maritime",
+    "vernacular": "Steep, green peninsula city between the Lion Mountains and the Atlantic: dense hillside settlement of concrete-block and rendered houses with rusting corrugated-iron roofs, older Krio 'bod ose' board houses (stone ground floor, timber weatherboard upper floors, verandas) in the centre, Georgian-era churches and Victorian public buildings downtown, and more recent concrete civic blocks and hotels along the Aberdeen/Lumley coast. Red laterite ground, palms, mango and kapok trees.",
+    "wallColours": [
+      "#efe9d9",
+      "#d6c9a8",
+      "#b7a58a",
+      "#8fa3a6",
+      "#a85f46",
+      "#7e8b73",
+      "#d9d2c3"
+    ],
+    "roofColours": [
+      "#8c4a35",
+      "#6b6f70",
+      "#a65a3d",
+      "#b9b4a8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "timber",
+      "whitewash",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Krio board houses with timber weatherboard cladding, shuttered sash windows, front verandas and fretwork; whitewashed stone churches with square towers and Georgian proportions; King's Yard Gate stone; the kapok Cotton Tree as the city emblem; hand-painted shop signage and bright market umbrellas.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Freetown",
+        "what": "tropical monsoon climate; Lion Mountains and white sand beaches; Krio board houses with stone bases and timber upper storeys; Cotton Tree, St George's Cathedral 1828, King's Yard Gate stone"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/St._John%27s_Maroon_Church",
+        "what": "small white church of 1822 behind a low white wall"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sierra_Leone_National_Museum",
+        "what": "1950s refurbished telephone exchange used as museum"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fourah_Bay_College",
+        "what": "1845 colonial Old Fourah Bay College building at Cline Town"
+      }
+    ]
+  },
+  "places": {
+    "freetown-airport-freetown-airport": {
+      "venueId": "freetown-airport-freetown-airport",
+      "city": "freetown",
+      "name": "Lungi International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Sierra Leone's Lungi airport terminal: the 2023 passenger terminal on the north side of the 3,200 m runway, a modern glass-fronted block with an older control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe5e8",
+          "#2d6a8a",
+          "#f1f1ee"
+        ],
+        "roofColour": "#c5cacd",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "landside departures canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Freetown_International_Airport",
+          "what": "new $270m passenger and VIP terminal opened 4 Mar 2023 north of runway, 1m pax/yr capacity, airbridges; 3,200 m runway; older terminal 1964 by Nickson & Borys; control tower 1952"
+        }
+      ],
+      "notes": "Documented: terminal opening, airbridges, 1m passenger capacity, 3,200 m runway. Dimensions and cladding are estimates; the older 1964 terminal and 1952 tower exist but the scene favours the new terminal. Lungi is across the estuary from Freetown."
+    },
+    "freetown-clinic": {
+      "venueId": "freetown-clinic",
+      "city": "freetown",
+      "name": "Mahera Hospital",
+      "archetype": "hospital",
+      "subject": "Mahera Hospital: a modest private hospital of a long two-storey painted block with a veranda and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d2",
+          "#4f8a8c",
+          "#c9b98e"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found. Venue near Lungi; typed as a small clinic block to contrast with the large government hospitals."
+    },
+    "freetown-community-notices": {
+      "venueId": "freetown-community-notices",
+      "city": "freetown",
+      "name": "Parliament of Sierra Leone",
+      "archetype": "civic-palace",
+      "subject": "The House of Parliament on Tower Hill: a broad pale institutional block with a central entrance and flagpoles above central Freetown",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9d9",
+          "#c9b98e",
+          "#8a8a82"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Sierra_Leone",
+          "what": "on Tower Hill, Freetown; no architectural description; earlier parliament sat in Treasury Building on George Street"
+        }
+      ],
+      "notes": "Location is sourced but no description of the building was found; typed as a colonial-era-institutional civic block."
+    },
+    "freetown-community-voting-game": {
+      "venueId": "freetown-community-voting-game",
+      "city": "freetown",
+      "name": "Old Airport Junction",
+      "archetype": "market-open",
+      "subject": "A busy roadside junction near Lungi with kiosks, shacks and umbrellas lining the road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd0b0",
+          "#a85f46",
+          "#7e8b73"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Roadside junction; no source describing it. Typed as informal commerce under corrugated sheds."
+    },
+    "freetown-community-workshop": {
+      "venueId": "freetown-community-workshop",
+      "city": "freetown",
+      "name": "Sierra Leone Library Board",
+      "archetype": "campus-block",
+      "subject": "The national library service headquarters: a plain mid-century two-storey rendered building with a front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cc",
+          "#8fa3a6",
+          "#b7a58a"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Located near the Cotton Tree area; no description found, typed from city style."
+    },
+    "freetown-market-game": {
+      "venueId": "freetown-market-game",
+      "city": "freetown",
+      "name": "Ogoo Farm Marketplace",
+      "archetype": "market-open",
+      "subject": "Ogoo Farm roadside produce market: rows of open timber-and-tarpaulin stalls with umbrellas on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a07a52",
+          "#d9d2c3",
+          "#7e8b73"
+        ],
+        "roofColour": "#6b6f70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing it; typed as a rural-edge produce market."
+    },
+    "freetown-meal-stop": {
+      "venueId": "freetown-meal-stop",
+      "city": "freetown",
+      "name": "Francos",
+      "archetype": "restaurant",
+      "subject": "Francos: a beachside restaurant with a thatched open-sided dining pavilion on the southern peninsula",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c8a878",
+          "#f1ead8",
+          "#7a5a3c"
+        ],
+        "roofColour": "#a88c5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Coordinates fall on the southern peninsula coast; no description found. Typed as a thatched beach restaurant to differ from the town bar LOR."
+    },
+    "freetown-osm-node-11174916109": {
+      "venueId": "freetown-osm-node-11174916109",
+      "city": "freetown",
+      "name": "Marie Enterprise",
+      "archetype": "shophouse",
+      "subject": "A small trading shop: a single-storey rendered shop front with a shuttered counter and painted sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c9a8",
+          "#a85f46",
+          "#efe9d9"
+        ],
+        "roofColour": "#6b6f70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Tagged as a market in OSM but no information exists; typed as a generic small shop (game venue)."
+    },
+    "freetown-osm-node-11556711498": {
+      "venueId": "freetown-osm-node-11556711498",
+      "city": "freetown",
+      "name": "LOR",
+      "archetype": "restaurant",
+      "subject": "LOR: a small town restaurant/bar in a two-storey rendered building with a balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#8fa3a6",
+          "#efe9d9",
+          "#7a5a3c"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information found; typed from a Freetown buka/cafe pattern."
+    },
+    "freetown-osm-node-13134140271": {
+      "venueId": "freetown-osm-node-13134140271",
+      "city": "freetown",
+      "name": "FCC Hospital (under construction)",
+      "archetype": "hospital",
+      "subject": "A hospital under construction: a half-finished four-storey reinforced-concrete frame with unfinished block infill and scaffolding",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#a9a69c",
+          "#8c8a82",
+          "#c3beb0"
+        ],
+        "roofColour": "#8a8a84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The OSM name says 'under construction'; no other information found. Modelled as an exposed concrete frame, which makes it distinct from the finished hospitals."
+    },
+    "freetown-osm-node-3563419693": {
+      "venueId": "freetown-osm-node-3563419693",
+      "city": "freetown",
+      "name": "The Cotton Tree",
+      "archetype": "park-landscape",
+      "subject": "The Cotton Tree site: a huge kapok tree (about 40 m high, 15 m girth) on a traffic roundabout, its trunk strapped with steel and concrete; the tree largely fell in the storm of 24 May 2023",
+      "form": {
+        "footprint": "round",
+        "width_m": 35,
+        "depth_m": 35,
+        "storeys": 0,
+        "height_m": 40,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a9a395",
+          "#7a6a52",
+          "#d9d2c3"
+        ],
+        "roofColour": "#7a6a52",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low kerb around the trunk"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "the great trunk as the focal monument"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "c. 1600 (tree)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cotton_Tree_(Freetown)",
+          "what": "kapok ~40 m high, ~15 m girth, ~400 yrs, steel straps and concrete, roundabout near Supreme Court and National Museum, fell 24 May 2023, remnant alive"
+        }
+      ],
+      "notes": "Sourced dimensions and history. Generator should show a very large buttressed kapok tree; the city's emblem. Current state is a broken trunk with a living remnant, so a short stump variant is acceptable."
+    },
+    "freetown-osm-node-3563419694": {
+      "venueId": "freetown-osm-node-3563419694",
+      "city": "freetown",
+      "name": "National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Sierra Leone National Museum at the Siaka Stevens Street / Pademba Road junction: the former Cotton Tree Telephone Exchange, a plain white mid-century block with a 1987 German-funded extension",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ece0",
+          "#b7a58a",
+          "#8a8a82"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s, extended 1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sierra_Leone_National_Museum",
+          "what": "former Cotton Tree Telephone Exchange, opened as museum 10 Dec 1957, German-funded extension opened 1987, at Siaka Stevens St and Pademba Rd"
+        }
+      ],
+      "notes": "Past use, junction location and the extension are sourced; massing and colours are guessed from the era. It stands next to the Cotton Tree."
+    },
+    "freetown-osm-node-3715252412": {
+      "venueId": "freetown-osm-node-3715252412",
+      "city": "freetown",
+      "name": "Freetown Mall",
+      "archetype": "mall",
+      "subject": "Freetown Mall: a modern two-storey shopping centre with a glazed entrance and rooftop signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9d9",
+          "#2d6a8a",
+          "#a9a69c"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Tagged as a market in OSM but named a mall; no description found. Typed from the mall type."
+    },
+    "freetown-osm-node-6019513088": {
+      "venueId": "freetown-osm-node-6019513088",
+      "city": "freetown",
+      "name": "Cockle Point",
+      "archetype": "restaurant",
+      "subject": "Cockle Point: a laid-back beach shack with a tin roof, tables and a small deck facing the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b99c6c",
+          "#efe9d9",
+          "#3f8a9a"
+        ],
+        "roofColour": "#6b6f70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information beyond the name; typed as a beach shack."
+    },
+    "freetown-osm-way-1428236844": {
+      "venueId": "freetown-osm-way-1428236844",
+      "city": "freetown",
+      "name": "Rokupa Government Hospital",
+      "archetype": "hospital",
+      "subject": "Rokupa Government Hospital in east Freetown: a government hospital of several single and two-storey ward blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e2dcc6",
+          "#7e8b73",
+          "#b7a58a"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as low ward blocks, to differ from the tall FCC and the private Mahera hospital."
+    },
+    "freetown-osm-way-177518788": {
+      "venueId": "freetown-osm-way-177518788",
+      "city": "freetown",
+      "name": "St. John's Maroon Church",
+      "archetype": "shrine-small",
+      "subject": "St John's Maroon Church: a small white church built in 1822 behind a low white wall in central Freetown",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#b9b3a4",
+          "#7a6a52"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low white boundary wall"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bellcote, uncertain"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1822",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._John%27s_Maroon_Church",
+          "what": "built 1822 led by Charles Shaw, small building, white, surrounded by a low white wall"
+        }
+      ],
+      "notes": "Sourced: 1822, small, white, low white wall. The bellcote and pointed vs round windows are not confirmed; treat as a simple Georgian chapel."
+    },
+    "freetown-osm-way-177518789": {
+      "venueId": "freetown-osm-way-177518789",
+      "city": "freetown",
+      "name": "Sacred Heart Cathedral",
+      "archetype": "church-gothic",
+      "subject": "Sacred Heart Cathedral: the Catholic cathedral of Freetown, a stone-and-render Victorian church built 1884-1887",
+      "form": {
+        "footprint": "cross",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e8e0cc",
+          "#8a8478",
+          "#b7a58a"
+        ],
+        "roofColour": "#6b6f70",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1887",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sacred_Heart_Cathedral,_Freetown",
+          "what": "construction began Nov 1884, dedicated 27 Oct 1887; no architectural description"
+        }
+      ],
+      "notes": "Only the dates are sourced. A Victorian-Gothic treatment is inferred from the 1880s date and is not confirmed. Same city has the Georgian St George's, kept different."
+    },
+    "freetown-osm-way-28429017": {
+      "venueId": "freetown-osm-way-28429017",
+      "city": "freetown",
+      "name": "Siaka Stevens Stadium",
+      "archetype": "stadium",
+      "subject": "National stadium: a 45,000-seat Chinese-built bowl (1979/80) with grass pitch and covered stands, with floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d2c6",
+          "#1f7a4a",
+          "#b9b3a4"
+        ],
+        "roofColour": "#b8b4aa",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Siaka_Stevens_Stadium",
+          "what": "capacity 45,000, built 1979 opened 1980 by the Chinese, athletics facilities, grass pitch, renovation since 2022"
+        }
+      ],
+      "notes": "Capacity, builder nationality and date are sourced. Stand roof and colours are guesses. Larger than Kwara and Cotonou stadiums."
+    },
+    "freetown-osm-way-307686732": {
+      "venueId": "freetown-osm-way-307686732",
+      "city": "freetown",
+      "name": "National Railway Museum",
+      "archetype": "museum-theatre",
+      "subject": "Railway museum at Cline Town: an old station building and platform beside preserved narrow-gauge locomotives and carriages on short tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece3cc",
+          "#8c4a35",
+          "#6b6f70"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Freetown",
+          "what": "museum displays a coach built for Elizabeth II's 1961 state visit"
+        }
+      ],
+      "notes": "Only the royal coach exhibit is sourced; Sierra Leone's narrow-gauge railway closed in 1974. Building form typed as a colonial station."
+    },
+    "freetown-osm-way-308486010": {
+      "venueId": "freetown-osm-way-308486010",
+      "city": "freetown",
+      "name": "MMCET College",
+      "archetype": "campus-block",
+      "subject": "A technical college: a two-storey rendered classroom block with an external staircase and a yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cc",
+          "#7e8b73",
+          "#b7a58a"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information found; typed from the school type."
+    },
+    "freetown-osm-way-328985318": {
+      "venueId": "freetown-osm-way-328985318",
+      "city": "freetown",
+      "name": "German Technical Academy",
+      "archetype": "campus-block",
+      "subject": "A vocational training campus: single-storey workshop halls and a two-storey admin block in rendered concrete",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e0cc",
+          "#2d6a8a",
+          "#b0aaa0"
+        ],
+        "roofColour": "#6b6f70",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information found; typed as workshops plus classroom block to differ from MMCET."
+    },
+    "freetown-osm-way-797018443": {
+      "venueId": "freetown-osm-way-797018443",
+      "city": "freetown",
+      "name": "Medicine University",
+      "archetype": "campus-block",
+      "subject": "A newer medical school campus: a three-storey modern block with a glazed stair core on the southern outskirts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#4f8a8c",
+          "#a9a69c"
+        ],
+        "roofColour": "#8a8a84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information found; typed from the medical-school type."
+    },
+    "freetown-quiet-reflection": {
+      "venueId": "freetown-quiet-reflection",
+      "city": "freetown",
+      "name": "St. George's Cathedral",
+      "archetype": "church-classical",
+      "subject": "St George's Cathedral, the Anglican cathedral of Freetown, built 1817-1828 by the Church Missionary Society: a Georgian-era church with a prominent square tower on the central avenue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efe9d9",
+          "#8a8478",
+          "#6b6f70"
+        ],
+        "roofColour": "#6b6f70",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square west tower, ~28 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "georgian",
+      "era": "1828",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._George%27s_Cathedral,_Freetown",
+          "what": "building began 1817, completed 1828, founded by the Church Mission Society, Anglican cathedral"
+        }
+      ],
+      "notes": "Only the dates are sourced. The tower, whitewash and stone appearance are from general knowledge and uncertain; the clock element especially is unverified."
+    },
+    "freetown-recreation": {
+      "venueId": "freetown-recreation",
+      "city": "freetown",
+      "name": "Don Bosco Center",
+      "archetype": "park-landscape",
+      "subject": "Don Bosco youth centre: sports courts, a hall and open playing fields behind a wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cc",
+          "#4f8a8c",
+          "#a85f46"
+        ],
+        "roofColour": "#8c4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Coordinates lie in the Lungi/north area; no description found."
+    },
+    "freetown-transit": {
+      "venueId": "freetown-transit",
+      "city": "freetown",
+      "name": "Hoverport",
+      "archetype": "transport-station",
+      "subject": "Aberdeen ferry/hoverport: a low terminal hall and jetty on the Aberdeen shore, with a waiting canopy and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e0cc",
+          "#2d6a8a",
+          "#a9a69c"
+        ],
+        "roofColour": "#8a8a84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Aberdeen,_Sierra_Leone",
+          "what": "Aberdeen peninsula coast, white sandy beach; no hoverport description"
+        }
+      ],
+      "notes": "Location only. The terminal/jetty form is typed from the ferry-terminal type."
+    }
+  }
+}

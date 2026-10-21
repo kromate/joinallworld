@@ -1,0 +1,1580 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "praia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "praia",
+    "climate": "desert",
+    "vernacular": "Dry, sunny Atlantic capital on volcanic Santiago. The Platô has a 19th-century grid of two-storey Portuguese neoclassical buildings in pastel yellow, pink, ochre and white with white pilasters, cornices and hipped terracotta roofs; surrounding neighbourhoods (Palmarejo, Achada) are flat-roofed concrete-block houses in bright paint or bare grey, many unfinished with rebar on the roof; calçada cobble pavements of black basalt and white stone.",
+    "wallColours": [
+      "#e8d28f",
+      "#e5a899",
+      "#d9b383",
+      "#f2eee3",
+      "#9fc0d3",
+      "#b2603f",
+      "#8d8a84"
+    ],
+    "roofColours": [
+      "#b5553a",
+      "#b9b6ae",
+      "#7b8891",
+      "#8a6a55"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "stucco",
+      "concrete",
+      "stone",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "cobble",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "broadleaf"
+    ],
+    "ornament": "Portuguese neoclassical pilasters, moulded cornices and window surrounds picked out in white against pastel walls; calçada pavements in black-and-white basalt wave patterns; iron balconies and railings on Platô buildings; bright murals and painted shopfronts in the suburbs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+        "what": "neoclassical design dominated 1822 to early 20th century, most prominently in Praia and the Platô; many neoclassical buildings had detached roofs; post-independence buildings commonly flat-roofed; pink walls (Palácio do Povo), stucco walls; Presidential Palace and Cathedral survive"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Praia",
+        "what": "Platô redeveloped on a grid plan in the 19th century with grand colonial buildings and mansions; arid climate (about 210 mm rain); Presidential Palace, Cathedral, Albuquerque Square, Estádio da Varzea"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Cidade_Velha",
+        "what": "Ribeira Grande / Cidade Velha: marble pelourinho, 1495 church, ruined fort and cathedral"
+      }
+    ]
+  },
+  "places": {
+    "praia-airport-praia-airport": {
+      "venueId": "praia-airport-praia-airport",
+      "city": "praia",
+      "name": "Nelson Mandela International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Praia's international airport terminal: a modern two-level white-and-glass terminal with a curved entrance canopy, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1eee6",
+          "#4b7ea6",
+          "#d9d6cf"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "airports elsewhere in Cape Verde use local stone; no description of the Praia terminal itself was found"
+        }
+      ],
+      "notes": "Airport renamed after Nelson Mandela; the terminal look is typed from the type, not from a source. Runway and tower sit near the terminal on a dry plateau. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-clinic": {
+      "venueId": "praia-clinic",
+      "city": "praia",
+      "name": "Hospital de São Domingos",
+      "archetype": "hospital",
+      "subject": "Small regional hospital in the São Domingos district: a low plastered ward block with a covered entrance and a flat roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe7cf",
+          "#7aa3b8",
+          "#ffffff"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Rural-town hospital on Santiago; nothing about its fabric was found. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-community-notices": {
+      "venueId": "praia-community-notices",
+      "city": "praia",
+      "name": "Palácio Presidencial",
+      "archetype": "civic-palace",
+      "subject": "The Presidential Palace on the Platô: a formal two-storey neoclassical building from the late 19th century, built for the Portuguese governor, set behind a garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e8cbbb",
+          "#ffffff",
+          "#bfa58d"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "late 19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "Presidential Palace built near the end of the 19th century to house the Portuguese governor"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "palace and its garden survive; neoclassical dominated Praia architecture 1822 onward"
+        }
+      ],
+      "notes": "Date and neoclassical style are sourced; the pastel pinkish wall colour, hip tiled roof and plan shape are typed from comparable Cape Verdean palaces (Mindelo palace is pink per source) and are unverified for Praia. Show a garden in front and a central pedimented entrance."
+    },
+    "praia-community-voting-game": {
+      "venueId": "praia-community-voting-game",
+      "city": "praia",
+      "name": "Praça Luís de Camões",
+      "archetype": "park-landscape",
+      "subject": "Praça Luís de Camões: a paved Platô square with calçada basalt patterns, shade trees and benches around a central monument",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c3b3",
+          "#3a3a3a",
+          "#f2eee3"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only; Platô squares"
+        }
+      ],
+      "notes": "Square named after the Portuguese poet. Central monument and kiosk are unverified. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-community-workshop": {
+      "venueId": "praia-community-workshop",
+      "city": "praia",
+      "name": "University of Cape Verde",
+      "archetype": "campus-block",
+      "subject": "University of Cape Verde (Uni-CV) Praia campus: several white and ochre flat-roofed 3-storey blocks with ribbon windows and covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 38,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ecdd",
+          "#c27a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "post-independence buildings commonly have flat roofs"
+        }
+      ],
+      "notes": "Public university created 2006; physical description not found. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-market-game": {
+      "venueId": "praia-market-game",
+      "city": "praia",
+      "name": "Mercado Municipal",
+      "archetype": "market-open",
+      "subject": "Municipal market: a walled yard of stalls and shaded tables with a low plastered market building and a metal roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8d28f",
+          "#b2603f",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 24
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Position is in the northern São Domingos / Santa Catarina area; market not described. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-meal-stop": {
+      "venueId": "praia-meal-stop",
+      "city": "praia",
+      "name": "Kusa di kasa",
+      "archetype": "restaurant",
+      "subject": "A small house-style restaurant (the name means 'something from home'): a pastel one-storey house with a terrace and a blank sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e5a899",
+          "#ffffff",
+          "#b2603f"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only; located south west of the centre near Cidade Velha. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-node-4706531118": {
+      "venueId": "praia-osm-node-4706531118",
+      "city": "praia",
+      "name": "Praia Shopping",
+      "archetype": "mall",
+      "subject": "Praia Shopping: a modern two-level shopping centre with a glass entrance and a rooftop car park, painted white and orange",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#d97a2b",
+          "#7a8791"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Only the type and location are known; interior and colours are typed. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-node-4970670691": {
+      "venueId": "praia-osm-node-4970670691",
+      "city": "praia",
+      "name": "Ponta Sambala",
+      "archetype": "park-landscape",
+      "subject": "Ponta Sambala: a coastal headland of dark volcanic rock and sandy scrub, with a path and a viewing point and no buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#5b5a58",
+          "#c9b38a",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "volcanic basalt landscape of Santiago"
+        }
+      ],
+      "notes": "A headland viewpoint north east of Praia; nothing specific found. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-node-6432419161": {
+      "venueId": "praia-osm-node-6432419161",
+      "city": "praia",
+      "name": "Big Lanche",
+      "archetype": "restaurant",
+      "subject": "Snack bar and fast-food shop: a small single-storey painted shop with a counter facing the street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9fc0d3",
+          "#d97a2b",
+          "#ffffff"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-node-7490200241": {
+      "venueId": "praia-osm-node-7490200241",
+      "city": "praia",
+      "name": "Mercado de Minho Branco",
+      "archetype": "market-open",
+      "subject": "Minho Branco village market: a few stalls and tables under tarpaulins and a small tin-roofed shed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9b383",
+          "#8d8a84",
+          "#f2eee3"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Small rural market north of Praia; nothing found. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-node-7933657029": {
+      "venueId": "praia-osm-node-7933657029",
+      "city": "praia",
+      "name": "Restaurante Daly",
+      "archetype": "restaurant",
+      "subject": "Small family restaurant: a cream-painted house with a terrace shaded by an awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d28f",
+          "#b2603f",
+          "#ffffff"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-node-909626615": {
+      "venueId": "praia-osm-node-909626615",
+      "city": "praia",
+      "name": "Pelourinho da Cidade Velha",
+      "archetype": "monument",
+      "subject": "The 16th-century marble pillory (pelourinho) in the square of Cidade Velha: a slender carved column on a stepped octagonal base",
+      "form": {
+        "footprint": "round",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "stone",
+        "colours": [
+          "#e6e2d6",
+          "#b9b3a2",
+          "#8d8a84"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "c. 1512-1520; restored 1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cidade_Velha",
+          "what": "marble pillar in the main square erected about 1512 or 1520, restored in the 1960s; place of public punishment of enslaved people"
+        }
+      ],
+      "notes": "Sourced: marble pillar, date, restoration. The height of about 6 m, the stepped base and the finial are typed from similar Portuguese pelourinhos and are not verified. Put the column in an open cobbled square with whitewashed houses around."
+    },
+    "praia-osm-relation-12849568": {
+      "venueId": "praia-osm-relation-12849568",
+      "city": "praia",
+      "name": "Arquivo Histórico Nacional",
+      "archetype": "civic-small",
+      "subject": "National Historical Archive on the Platô: a two-storey 19th-century-style building with plastered walls and a hipped tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d28f",
+          "#ffffff",
+          "#b2603f"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "Platô has many neoclassical buildings; archive itself not described"
+        }
+      ],
+      "notes": "Archive in the historic centre; building not described. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-way-1208534900": {
+      "venueId": "praia-osm-way-1208534900",
+      "city": "praia",
+      "name": "Estádio Nacional de Cabo Verde",
+      "archetype": "stadium",
+      "subject": "National Stadium: a 15,000-seat modern bowl with an artificial-turf pitch and running track, built by a Chinese contractor and opened in 2014",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 170,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cf",
+          "#2f5f93",
+          "#ffffff"
+        ],
+        "roofColour": "#2f5f93",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010-2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Est%C3%A1dio_Nacional_de_Cabo_Verde",
+          "what": "capacity announced as 15,000 (originally planned 10,000), construction 2010, opened August 2014, artificial turf with track and field; contractor Top International Engineering Corporation"
+        }
+      ],
+      "notes": "Sourced: capacity, years, turf and track. Roof canopy, colours and dimensions are estimates; the source gives no appearance. Largest stadium in Praia, clearly larger than Várzea."
+    },
+    "praia-osm-way-194252477": {
+      "venueId": "praia-osm-way-194252477",
+      "city": "praia",
+      "name": "Museu Etnográfico da Praia",
+      "archetype": "museum-theatre",
+      "subject": "Ethnographic museum at 45 Rua 5 de Julho on the Platô: a 19th-century two-storey townhouse with a plastered street front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e5a899",
+          "#ffffff",
+          "#b2603f"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museu_Etnogr%C3%A1fico_da_Praia",
+          "what": "museum opened November 1997 in a 19th-century building at 45 Rua 5 de Julho in the Platô, Praia"
+        }
+      ],
+      "notes": "Sourced: 19th-century building, address, opening year. Storeys, colour (pink suggested by Platô neoclassical palettes) and roof are typed; the source has a photo but no description."
+    },
+    "praia-osm-way-236735652": {
+      "venueId": "praia-osm-way-236735652",
+      "city": "praia",
+      "name": "Unica",
+      "archetype": "campus-block",
+      "subject": "Universidade Intercontinental de Cabo Verde (UNICA): a small private university in a converted 3-storey plastered building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#9fc0d3",
+          "#f2eee3",
+          "#c27a3a"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only; the identification as UNICA is inferred from the OSM name. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-way-239654104": {
+      "venueId": "praia-osm-way-239654104",
+      "city": "praia",
+      "name": "Hospital de Trindade, Psiquiatria",
+      "archetype": "hospital",
+      "subject": "Psychiatric hospital in Trindade: a low walled complex of single-storey pavilions around a garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe7cf",
+          "#7aa3b8",
+          "#ffffff"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only (psychiatric ward of the Trindade hospital); layout is typed. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-way-240118946": {
+      "venueId": "praia-osm-way-240118946",
+      "city": "praia",
+      "name": "Jean Piaget University of Cape Verde",
+      "archetype": "campus-block",
+      "subject": "Jean Piaget University campus: a modern white block with a glass stair tower and a landscaped entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#1f5a87",
+          "#b9b6ae"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Private university; look not found. Intended to read as newer and glassier than Uni-CV. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-way-665879789": {
+      "venueId": "praia-osm-way-665879789",
+      "city": "praia",
+      "name": "Estádio da Várzea",
+      "archetype": "stadium",
+      "subject": "Estádio da Várzea: an 8,000-seat early-modernist stadium whose front facade is stucco-peach with eight square columns, white ground floor, light-brown upper bands, a round window and two balconies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 95,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e8b896",
+          "#ffffff",
+          "#b9946a"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 8,
+          "note": "eight square columns across the front facade"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "mid-20th century; reopened 2006",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Est%C3%A1dio_da_V%C3%A1rzea",
+          "what": "early modernism; front facade stucco-peach with eight square columns; ground floor white with gates and offices; middle section light brown with windows, a circular window on the second floor and two balconies on the third; thick glass staircase windows flanking the centre; 8,000 capacity; seating mostly on west side; pitch 108 x 69 m; artificial turf 2007; floodlights added 2010"
+        }
+      ],
+      "notes": "Facade colours and features are from the source. The 140 x 95 m extent is derived from the 108 x 69 pitch plus stands; stand roof is not confirmed. Located at the former Campo do Coco next to the Platô."
+    },
+    "praia-osm-way-819344290": {
+      "venueId": "praia-osm-way-819344290",
+      "city": "praia",
+      "name": "Centro de Saúde Achada Grande Trás",
+      "archetype": "hospital",
+      "subject": "Neighbourhood health centre: a single-storey painted clinic with a ramp and waiting porch",
+      "form": {
+        "footprint": "L",
+        "width_m": 28,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee3",
+          "#6fa0b8",
+          "#ffffff"
+        ],
+        "roofColour": "#b9b6ae",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only. No source describing this exact place was found during research, so form, size and colours are typed from the Praia city style and the place type."
+    },
+    "praia-osm-way-954580000": {
+      "venueId": "praia-osm-way-954580000",
+      "city": "praia",
+      "name": "Igreja de Nossa Senhora da Graça",
+      "archetype": "church-classical",
+      "subject": "Praia Cathedral (pro-cathedral of Our Lady of Grace) on Praça Alexandre Albuquerque: a cream neoclassical church with a pedimented front and bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#efe6c9",
+          "#ffffff",
+          "#c9a977"
+        ],
+        "roofColour": "#b5553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "late 19th-early 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "Praia Cathedral, pro-cathedral of Our Lady of Grace, is a landmark on the Platô"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "cathedral survives among Praia neoclassical buildings"
+        }
+      ],
+      "notes": "Its existence, name, and neoclassical context are sourced; the cream colour, clock and bell tower are typed and unverified. Faces the square on the same site as the recreation venue."
+    },
+    "praia-quiet-reflection": {
+      "venueId": "praia-quiet-reflection",
+      "city": "praia",
+      "name": "Nossa Senhora do Rosário",
+      "archetype": "shrine-small",
+      "subject": "Nossa Senhora do Rosário in Cidade Velha: the small whitewashed church founded 1495, often called the oldest colonial church, with a Manueline Gothic side chapel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f4f1ea",
+          "#8d8a84",
+          "#5b5a58"
+        ],
+        "roofColour": "#a64a33",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "Manueline side chapel doorway"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1495",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cidade_Velha",
+          "what": "built 1495, described as the oldest colonial church in the world; side chapel in Manueline Gothic style"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "first colonial church in sub-Saharan West Africa"
+        }
+      ],
+      "notes": "Sourced: date, age claim, Manueline side chapel. Plain whitewash with grey basalt trim, tile roof and 20 x 9 m size are typed from Cape Verdean church conventions."
+    },
+    "praia-recreation": {
+      "venueId": "praia-recreation",
+      "city": "praia",
+      "name": "Praça Alexandre Albuquerque",
+      "archetype": "park-landscape",
+      "subject": "Praça Alexandre Albuquerque, the main Platô square: calçada paving with large shade trees and a central monument, framed by the cathedral and old town buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "stucco",
+        "colours": [
+          "#c9c3b3",
+          "#3a3a3a",
+          "#f2eee3"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central monument to Diogo Gomes/Albuquerque; exact form unverified"
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "Albuquerque Square and the monument to Diogo Gomes are named landmarks of the Platô"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Cape_Verde",
+          "what": "neoclassical Platô setting"
+        }
+      ],
+      "notes": "Square and monument names are sourced; the paving pattern, kiosk and tree layout are typed. Surrounded by pastel two-storey buildings."
+    },
+    "praia-transit": {
+      "venueId": "praia-transit",
+      "city": "praia",
+      "name": "Porto da Praia",
+      "archetype": "transport-station",
+      "subject": "Praia harbour: a working port with a long quay, container stacks, a ferry terminal and warehouses, rebuilt and extended in 2014",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5b8",
+          "#2f5f93",
+          "#a64a33"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2014 expansion",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Praia",
+          "what": "Praia Harbour is the second most used port in the country; reconstructed and expanded in 2014"
+        }
+      ],
+      "notes": "Sourced: the 2014 reconstruction and port role. Layout is typed: a quay, shed warehouses and a small passenger terminal."
+    }
+  }
+}

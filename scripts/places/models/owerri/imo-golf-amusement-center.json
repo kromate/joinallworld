@@ -1,0 +1,403 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief + Wikidata (park / leisure centre): clubhouse pavilion on mown green, palm paths, fountain, gate, kiosks, umbrellas. Nearest OSM building is 70 m away and a house, so not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "polygon": [
+     [
+      -14,
+      -6
+     ],
+     [
+      14,
+      -6
+     ],
+     [
+      14,
+      2
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      8,
+      8
+     ],
+     [
+      -8,
+      8
+     ],
+     [
+      -8,
+      2
+     ],
+     [
+      -14,
+      2
+     ]
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b5a3c",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 3,
+    "colour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     34,
+     6
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#d8d0bd",
+    "topColour": "#d8d0bd"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "putting-green",
+   "at": [
+    -26,
+    -20
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -6
+     ],
+     [
+      -2,
+      -9
+     ],
+     [
+      10,
+      -5
+     ],
+     [
+      13,
+      3
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      -8,
+      8
+     ],
+     [
+      -14,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#5f9a3c",
+    "topColour": "#6aab45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bunker",
+   "at": [
+    -12,
+    -14
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -1.5
+     ],
+     [
+      1,
+      -2.5
+     ],
+     [
+      4,
+      0
+     ],
+     [
+      2,
+      2.2
+     ],
+     [
+      -2.5,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#e3d3a4",
+    "topColour": "#e8d9ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bunker2",
+   "at": [
+    -38,
+    -12
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      -1
+     ],
+     [
+      2,
+      -1.8
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      -1,
+      2
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#e3d3a4",
+    "topColour": "#e8d9ae"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      -4
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -24
+     ],
+     [
+      0,
+      -10
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "radius": 4.5
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 5.2,
+    "thickness": 1.6,
+    "opening": 5,
+    "shape": "flat",
+    "finials": false,
+    "colour": "#f1ead8",
+    "trim": "#8a6a4a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "stall",
+    "width": 3.4,
+    "depth": 2.6,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "stall",
+    "width": 3.4,
+    "depth": 2.6,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -22,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5,
+    "colours": [
+     "#d94f4f",
+     "#f1ead8",
+     "#e0a82e"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "palm-avenue-l",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -6,
+     -30,
+     0
+    ],
+    "end": [
+     -6,
+     -6,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "palm-avenue-r",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     6,
+     -30,
+     0
+    ],
+    "end": [
+     6,
+     -6,
+     0
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "imo-golf-amusement-center",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; generic leisure park from brief, layout invented."
+ }
+}

@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "katsina-eye-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/593734251",
+   "used": "hospital compound outline (131x94 m), modelled as a low paved compound with single-storey blocks inside"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "compound",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9f",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-L",
+   "footprint": {
+    "polygon": [
+     [
+      -18,
+      -7
+     ],
+     [
+      18,
+      -7
+     ],
+     [
+      18,
+      3
+     ],
+     [
+      4,
+      3
+     ],
+     [
+      4,
+      9
+     ],
+     [
+      -18,
+      9
+     ]
+    ]
+   },
+   "at": [
+    -15,
+    -12
+   ],
+   "z0": 0.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#3f7f8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6e70",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -12,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6e70",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "theatre",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    30,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#3f7f8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6e70",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outpatients",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    28,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6e70",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -15,
+    -22,
+    0.5
+   ],
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#3f7f8a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2,
+    "colour": "#e8dfc8",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -15,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -34,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -34,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5,
+     35
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real OSM compound outline used, building layout inside it is typical not surveyed"
+ }
+}

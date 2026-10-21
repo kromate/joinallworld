@@ -1,0 +1,153 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "st-peters-catholic-church-jalingo",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1304154373",
+   "used": "real church outline (name match, ~1000 m2, 48 x 28 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jalingo.json#st-peters-catholic-church-jalingo",
+   "used": "gabled nave, short porch tower, cross on front, cream render with brick accents, corrugated roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "bands": "#a24a32",
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a35",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 13,
+    "cap": "pyramid",
+    "cap_height": 3,
+    "colour": "#e6dcc4",
+    "cap_colour": "#8b4a35"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -17,
+    16
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#bfb6a0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "height": 1.8,
+    "colour": "#c8bfa8",
+    "pillarEvery": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   64
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -20
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     12
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real OSM outline with a typical gabled nave and porch tower, tower position and nave orientation are assumed."
+ }
+}

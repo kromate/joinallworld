@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "cross-country-motor-park-sokoto",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1338145359",
+   "used": "nearest match only (17 m2 outline), too small to be the park; not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: walled sandy coach yard with a passenger shed, ticket office, kiosks and rows of coaches; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "depth": 10,
+    "height": 5,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#3f5a45",
+    "accent": "#c9a77c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    22
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a77c",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f5a45",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    18.5,
+    3.8
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 0,
+    "colour": "#f1ead8",
+    "frameColour": "#6b6e70",
+    "posts": false
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -12,
+    5,
+    0
+   ]
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    8,
+    3,
+    0
+   ],
+   "params": {
+    "sign_colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    34,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "container"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 0.8,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -5,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "kind": "mixed",
+    "density": 0.7,
+    "coach_share": 0.3,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.4,
+    "colour": "#d2c4a4",
+    "pillarEvery": 6,
+    "points": [
+     [
+      -45,
+      -30
+     ],
+     [
+      45,
+      -30
+     ],
+     [
+      45,
+      30
+     ],
+     [
+      -45,
+      30
+     ],
+     [
+      -45,
+      -30
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#d2c4a4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2,
+    "bottom": 4,
+    "colour": "#3f5a45",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline unusable, yard layout typed from the brief."
+ }
+}

@@ -1,0 +1,1577 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "beirut",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "beirut",
+    "climate": "mediterranean",
+    "vernacular": "Dense coastal city of honey-coloured sandstone and limestone Ottoman and Mandate-era buildings with arched windows, shutters and balconies, many with red clay-tile hip roofs; mid-century concrete apartment blocks with deep balconies in weathered grey-beige; glass and stone towers on the waterfront; hillside suburbs of stone-faced villas with red-tile roofs among pines and cypress.",
+    "wallColours": [
+      "#d9c28f",
+      "#c8b07a",
+      "#e8dcc0",
+      "#b9a88a",
+      "#d0c9bd",
+      "#e9e2d3"
+    ],
+    "roofColours": [
+      "#b5523a",
+      "#a0644a",
+      "#8c8a85",
+      "#c9a88a"
+    ],
+    "wallMaterials": [
+      "sandstone",
+      "limestone",
+      "concrete",
+      "render",
+      "stone",
+      "glass-curtain",
+      "painted-render"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Triple-arched loggia windows, round-arched openings with stone surrounds, wooden shutters, wrought-iron balcony railings, red hip clay-tile roofs, Mandate-era Art Deco and arcaded fronts, Ottoman striped masonry (ablaq).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Lebanon",
+        "what": "Ottoman arabesque buildings, Mandate-era European styles (Art Deco), modernism, contemporary; local limestone and sandstone"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Evangelical_Church_of_Beirut",
+        "what": "sandstone and limestone church with bell tower, 1870"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Maghen_Abraham_Synagogue",
+        "what": "Rundbogenstil (round-arch) style, 1925"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Horsh_Beirut",
+        "what": "pine forest park on the southern edge of the city"
+      }
+    ]
+  },
+  "places": {
+    "beirut-airport-beirut-airport": {
+      "venueId": "beirut-airport-beirut-airport",
+      "city": "beirut",
+      "name": "Beirut-Rafic Hariri International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The passenger terminal seen from the forecourt: a four-level U-shaped building with East and West wings, glazed curtain wall and a long departures canopy",
+      "form": {
+        "footprint": "U",
+        "width_m": 280,
+        "depth_m": 120,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d9d6cf",
+          "#6b7f8a",
+          "#f0eee8"
+        ],
+        "roofColour": "#b9b8b2",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "East Wing 1998, West Wing 2002, expanded 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Beirut%E2%80%93Rafic_Hariri_International_Airport",
+          "what": "U-shaped terminal with East and West wings (opened 1998 and 2002), four levels, 23 gates, 2019 renovation and expansion, 2020 blast damage"
+        }
+      ],
+      "notes": "Wings, levels and gate counts are sourced. The glass-and-concrete skin and the dimensions are estimates; no article describes the colours. Distinct from Baghdad and Bishkek by the U-plan and four levels."
+    },
+    "beirut-clinic": {
+      "venueId": "beirut-clinic",
+      "city": "beirut",
+      "name": "Hospital Bhannes",
+      "archetype": "hospital",
+      "subject": "A mountain hospital block at Bhannes: a mid-rise stone-faced building with a red-tile roof set among pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 59,
+        "depth_m": 41,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "concrete",
+        "colours": [
+          "#dac593",
+          "#b6a37a",
+          "#ede4cf"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "sanatorium, hospital in recent decades",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/802992023",
+          "what": "OSM footprint 59.4 x 40.7 m (1018 m2); tags building=yes"
+        }
+      ],
+      "notes": "Wikidata classes Bhannes as a sanatorium/hospital. No appearance source found; footprint 59 x 41 m is measured. Stone facing and red tile roof are typed from Mount Lebanon style."
+    },
+    "beirut-community-notices": {
+      "venueId": "beirut-community-notices",
+      "city": "beirut",
+      "name": "Lebanese Football Association",
+      "archetype": "civic-small",
+      "subject": "A small three-storey association headquarters in pale render with balconies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d9c1",
+          "#b9ac90",
+          "#f1ece0"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/544737490",
+          "what": "OSM footprint 20.6 x 17.6 m (304 m2); tags building=yes"
+        }
+      ],
+      "notes": "The association was founded in 1933 (Wikidata). Building was not described anywhere; 21 x 18 m footprint is measured, all else typed. Signage must be a blank board."
+    },
+    "beirut-community-voting-game": {
+      "venueId": "beirut-community-voting-game",
+      "city": "beirut",
+      "name": "Martyrs Square (Martyrs' Monument)",
+      "archetype": "monument",
+      "subject": "The Martyrs' Monument in Martyrs Square: a group of dark bronze figures on a stone pedestal in an open paved plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "statue-group"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc4a8",
+          "#6a5a3a",
+          "#a9a08a"
+        ],
+        "roofColour": "#a9a08a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "bronze figures, bullet-scarred"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960 (Marino Mazzacurati)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Martyrs%27_Square,_Beirut",
+          "what": "Martyrs' Monument by Marino Mazzacurati inaugurated in 1960; the square is overlooked by the demolished Petit Serail; central plaza"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/478039557",
+          "what": "OSM footprint 70.9 x 44.4 m (2642 m2); tags building=yes"
+        }
+      ],
+      "notes": "Size, bronze and pedestal are from general knowledge of the monument; the article gives no dimensions. The scene is the open square beside the Mohammad Al-Amin mosque and Saint George cathedral, which are not modelled here."
+    },
+    "beirut-community-workshop": {
+      "venueId": "beirut-community-workshop",
+      "city": "beirut",
+      "name": "Antonine University (Baabda)",
+      "archetype": "campus-block",
+      "subject": "A hillside campus building: a stone-faced block of five storeys with long ribbon windows and terraces",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "concrete",
+        "colours": [
+          "#dac593",
+          "#bba982",
+          "#efe7d3"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1257223554",
+          "what": "OSM footprint 279.3 x 267.9 m (49313 m2)"
+        }
+      ],
+      "notes": "Wikidata: private university founded 1996; OSM campus 279 x 268 m (49,313 m2). Only a typical block is modelled, finish typed from Lebanese stone-faced institutions."
+    },
+    "beirut-market-game": {
+      "venueId": "beirut-market-game",
+      "city": "beirut",
+      "name": "Obied (market)",
+      "archetype": "shophouse",
+      "subject": "A small roadside shop block with a street canopy and a flat rendered roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e1d6bb",
+          "#b9ac90",
+          "#c0502f"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1239402891",
+          "what": "OSM footprint 35.1 x 23.8 m (740 m2); tags building=yes"
+        }
+      ],
+      "notes": "Nothing is known beyond the footprint (35 x 24 m) and that the game labels it a market near the coast. Typed from the city style."
+    },
+    "beirut-meal-stop": {
+      "venueId": "beirut-meal-stop",
+      "city": "beirut",
+      "name": "Attic",
+      "archetype": "restaurant",
+      "subject": "A mountain-town restaurant: a two-storey stone house with arched windows, a red-tile roof and a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#dccaa0",
+          "#8a6a4a",
+          "#efe6d0"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/418125441",
+          "what": "OSM footprint 24.2 x 23 m (414 m2); tags building=yes"
+        }
+      ],
+      "notes": "Nothing found about this venue; the typed brief is a Mount Lebanon stone house. Footprint is measured."
+    },
+    "beirut-osm-node-12928075501": {
+      "venueId": "beirut-osm-node-12928075501",
+      "city": "beirut",
+      "name": "Bchamoun Garden",
+      "archetype": "park-landscape",
+      "subject": "A small public garden with a pavilion, trees and a low entrance gate in a hillside town",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#dac593",
+          "#bba982",
+          "#efe7d3"
+        ],
+        "roofColour": "#efe7d3",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1282914428",
+          "what": "OSM footprint 24 x 20.7 m (451 m2); tags building=yes"
+        }
+      ],
+      "notes": "No source. A small building (24 x 21 m) is nearby in OSM; the park is typed."
+    },
+    "beirut-osm-node-13321742673": {
+      "venueId": "beirut-osm-node-13321742673",
+      "city": "beirut",
+      "name": "Site of Tel Al-Zaatar massacre",
+      "archetype": "monument",
+      "subject": "A modest memorial site on a built-up street: a low stone plinth and plaque wall, with no landmark building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "memorial-plaque"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#bdb6a8",
+          "#8a847a",
+          "#d6d0c2"
+        ],
+        "roofColour": "#d6d0c2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "camp destroyed 1976",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/845313996",
+          "what": "OSM footprint 24.6 x 18.9 m (371 m2); tags building=yes"
+        }
+      ],
+      "notes": "The camp was razed in 1976; no description of any memorial was found. The brief is a minimal typed memorial; do not invent text or imagery."
+    },
+    "beirut-osm-node-2932843969": {
+      "venueId": "beirut-osm-node-2932843969",
+      "city": "beirut",
+      "name": "Silk Museum (Bsous)",
+      "archetype": "museum-theatre",
+      "subject": "A small restored Mount Lebanon silk house: a two-storey honey-stone building with arched windows and a red-tile hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "timber",
+        "colours": [
+          "#d9c28f",
+          "#8a6a4a",
+          "#ece2c8"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/969550012",
+          "what": "OSM footprint 12.5 x 10.9 m (136 m2); tags building=yes"
+        }
+      ],
+      "notes": "The 12.5 x 10.9 m footprint is measured. The museum is understood to sit in a traditional Mount Lebanon silk-trade building, but no source was read, so the red-tile hip roof and arched windows are typed from regional style."
+    },
+    "beirut-osm-node-4406724595": {
+      "venueId": "beirut-osm-node-4406724595",
+      "city": "beirut",
+      "name": "Balcony of Aley",
+      "archetype": "park-landscape",
+      "subject": "A hillside lookout terrace with a stone balustrade, a small kiosk and pines overlooking the coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "lookout-terrace"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#dac593",
+          "#bba982",
+          "#efe7d3"
+        ],
+        "roofColour": "#efe7d3",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1227310447",
+          "what": "OSM footprint 35.6 x 19.2 m (661 m2); tags building=yes"
+        }
+      ],
+      "notes": "Typed from the name (a belvedere at Aley) and OSM tourism viewpoint; building near it is 36 x 19 m."
+    },
+    "beirut-osm-node-4504613689": {
+      "venueId": "beirut-osm-node-4504613689",
+      "city": "beirut",
+      "name": "Jeita Grotto (Lower Grotto)",
+      "archetype": "park-landscape",
+      "subject": "The cliff-side entrance area to the Jeita caves: a low stone visitor building against a limestone cliff with a walkway and trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "cave-entrance"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#d3c8ad",
+          "#a69b82",
+          "#ece4cf"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "opened to visitors 1969",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/264587555",
+          "what": "OSM footprint 26.2 x 12.6 m (329 m2); tags building=yes"
+        }
+      ],
+      "notes": "Matched by name to the lower grotto of the Jeita system near Beirut. No description fetched; the small building (26 x 13 m) is the entrance block. Typed."
+    },
+    "beirut-osm-node-4589295511": {
+      "venueId": "beirut-osm-node-4589295511",
+      "city": "beirut",
+      "name": "Kabsseh",
+      "archetype": "restaurant",
+      "subject": "A coastal restaurant: a low two-storey rendered building with a shaded terrace and awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dcc0",
+          "#8a6a4a",
+          "#c0502f"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/717069233",
+          "what": "OSM footprint 24.9 x 15.1 m (376 m2); tags building=yes"
+        }
+      ],
+      "notes": "No source; footprint measured (25 x 15 m)."
+    },
+    "beirut-osm-node-6064724358": {
+      "venueId": "beirut-osm-node-6064724358",
+      "city": "beirut",
+      "name": "Eco 101",
+      "archetype": "market-hall",
+      "subject": "A small covered market or organic grocery hall with a wide front and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d0bd",
+          "#8a8f86",
+          "#6fa05a"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/836404246",
+          "what": "OSM footprint 42 x 38.2 m (1398 m2); tags building=yes"
+        }
+      ],
+      "notes": "No source. Typed from footprint (42 x 38 m) and the game label of a market."
+    },
+    "beirut-osm-node-8317853057": {
+      "venueId": "beirut-osm-node-8317853057",
+      "city": "beirut",
+      "name": "La Ronda Samer",
+      "archetype": "restaurant",
+      "subject": "A tiny roadside restaurant kiosk with a stone front and a canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#d8c595",
+          "#8a6a4a",
+          "#c0502f"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/809635736",
+          "what": "OSM footprint 17.4 x 10.7 m (185 m2); tags building=yes"
+        }
+      ],
+      "notes": "No source. Footprint (17 x 11 m) measured."
+    },
+    "beirut-osm-way-261481055": {
+      "venueId": "beirut-osm-way-261481055",
+      "city": "beirut",
+      "name": "American University of Science and Technology",
+      "archetype": "campus-block",
+      "subject": "An urban university building: a stepped eight-storey stone-and-glass block in Achrafieh",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6cdb3",
+          "#6f8794",
+          "#efe9d9"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "setback-tiers",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "founded 1994",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/261481055",
+          "what": "OSM footprint 109.5 x 103 m (6623 m2)"
+        }
+      ],
+      "notes": "University founded in 1994 (Wikidata). Appearance typed from the footprint (110 x 103 m) and the dense urban setting; height guess."
+    },
+    "beirut-osm-way-338095207": {
+      "venueId": "beirut-osm-way-338095207",
+      "city": "beirut",
+      "name": "Notre Dame University-Louaize",
+      "archetype": "campus-block",
+      "subject": "A hillside Maronite university campus: several stepped sandstone blocks with arcaded fronts and red-tile pitched roofs among pines",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "render",
+        "colours": [
+          "#dac593",
+          "#bba982",
+          "#efe7d3"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "founded 1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/338095207",
+          "what": "OSM footprint 971.1 x 283.3 m (170719 m2)"
+        }
+      ],
+      "notes": "Founded 1987 (Wikidata); OSM campus 971 x 283 m on a hillside. Which block is shown is arbitrary. Stone-and-tile finish typed."
+    },
+    "beirut-osm-way-479475562": {
+      "venueId": "beirut-osm-way-479475562",
+      "city": "beirut",
+      "name": "National Evangelical Church of Beirut",
+      "archetype": "church-classical",
+      "subject": "The National Evangelical Church near Nejmeh Square: a small sandstone-and-limestone church with round-arched windows and a tall square bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#d9c28f",
+          "#e9dfc6",
+          "#a89570"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "survived the civil war when the nave was destroyed"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "consecrated 1870, rebuilt 1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Evangelical_Church_of_Beirut",
+          "what": "sandstone and limestone; consecrated 1870; north-facing facade; bell tower survived the civil war; rebuilt 1998; stained glass lost in the 2020 blast"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/479475562",
+          "what": "OSM footprint 23.6 x 17.2 m (406 m2); tags building=church"
+        }
+      ],
+      "notes": "Materials, date and bell tower are sourced; gable roof, arch rhythm and tower height are typed. Footprint 24 x 17 m measured."
+    },
+    "beirut-osm-way-483174171": {
+      "venueId": "beirut-osm-way-483174171",
+      "city": "beirut",
+      "name": "Cathedral of St Elias and St Gregory the Illuminator (Armenian Catholic)",
+      "archetype": "church-classical",
+      "subject": "The Armenian Catholic cathedral on Debbas Square: a Roman-inspired domed church in pale stone with a front bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "variant": "domed-nave"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#e1d5b4",
+          "#c8b88e",
+          "#f0e9d4"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1928",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Saint_Elias_and_Saint_Gregory_the_Illuminator",
+          "what": "Armenian Catholic cathedral at Debbas Square, architecture departs from traditional Armenian forms with Roman inspiration; architect Pascal Paboudjian per infobox; Wikidata inception 1928"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/483174171",
+          "what": "OSM footprint 38.6 x 21 m (598 m2); tags building=church"
+        }
+      ],
+      "notes": "Roman inspiration and a dome are sourced as category/lead hints; facade colours and bell tower position are estimates. 38.6 x 21 m footprint measured."
+    },
+    "beirut-osm-way-743280529": {
+      "venueId": "beirut-osm-way-743280529",
+      "city": "beirut",
+      "name": "Holy Spirit University of Kaslik",
+      "archetype": "campus-block",
+      "subject": "A coastal Maronite university campus: long cream sandstone blocks with arcades and a red-tile roofed library, rising up a slope",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#dcc895",
+          "#bba982",
+          "#efe7d3"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "founded 1938",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/743280529",
+          "what": "OSM footprint 347.4 x 302.9 m (60517 m2)"
+        }
+      ],
+      "notes": "Founded 1938 (Wikidata). OSM campus 347 x 303 m. Look is typed from Maronite institutional style (stone, arches, tile)."
+    },
+    "beirut-osm-way-993570500": {
+      "venueId": "beirut-osm-way-993570500",
+      "city": "beirut",
+      "name": "Rafik Hariri University Hospital",
+      "archetype": "hospital",
+      "subject": "A large public hospital: a wide eight-storey block with wings and a canopy at the entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d3c3",
+          "#7d8f9a",
+          "#f0ece1"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/642515498",
+          "what": "OSM footprint 143 x 101.3 m (13494 m2); tags building=hospital"
+        }
+      ],
+      "notes": "OSM building=hospital, 143 x 101 m, 13,494 m2. Storeys and finish typed."
+    },
+    "beirut-osm-way-994902555": {
+      "venueId": "beirut-osm-way-994902555",
+      "city": "beirut",
+      "name": "Bellevue Medical Center",
+      "archetype": "hospital",
+      "subject": "A private hospital on a hillside: a stone-faced six-storey block with glazed bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 98,
+        "depth_m": 71,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dbd1b6",
+          "#7d8f9a",
+          "#efe9d9"
+        ],
+        "roofColour": "#a9a69c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/261280737",
+          "what": "OSM footprint 97.7 x 71.4 m (4302 m2); tags building=hospital"
+        }
+      ],
+      "notes": "Wikidata gives 2009. OSM 98 x 71 m. Look is typed; different from Hariri hospital by smaller plan and stone facing."
+    },
+    "beirut-quiet-reflection": {
+      "venueId": "beirut-quiet-reflection",
+      "city": "beirut",
+      "name": "Maghen Abraham Synagogue",
+      "archetype": "shrine-small",
+      "subject": "The Maghen Abraham Synagogue in Wadi Abu Jamil: a restored round-arched building in warm sandstone with a red-tile pitched roof, set in a garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#dcc795",
+          "#ede3c9",
+          "#a89570"
+        ],
+        "roofColour": "#b5523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1925, restored 2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maghen_Abraham_Synagogue",
+          "what": "completed 1925 by architect Bindo Manham; Rundbogenstil (round-arch) style; damaged 1982, reopened about 2014; garden around it"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/487152382",
+          "what": "OSM footprint 28.3 x 19.8 m (458 m2); tags building=yes"
+        }
+      ],
+      "notes": "Round-arch style and garden are sourced; the colours, roof form and window count are estimates from the regional palette. Neoclassical used as the nearest enum to Rundbogenstil. No Star of David text or signage."
+    },
+    "beirut-recreation": {
+      "venueId": "beirut-recreation",
+      "city": "beirut",
+      "name": "Horsh Beirut",
+      "archetype": "park-landscape",
+      "subject": "The pine forest park of Horsh Beirut: a gated park of tall stone pines over lawns and gravel paths with a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "pine-forest"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#dac593",
+          "#bba982",
+          "#efe7d3"
+        ],
+        "roofColour": "#efe7d3",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "park gate on the Badaro side"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "reopened September 2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Horsh_Beirut",
+          "what": "about 0.3 km2 triangular pine forest on the southern edge of Beirut; closed about 25 years, reopened 3 September 2015; park gate on the Badaro side"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/5037938",
+          "what": "OSM footprint 758.5 x 687.6 m (273673 m2)"
+        }
+      ],
+      "notes": "Pine as the only named tree comes from the article. Pavilion and kiosk are optional typed extras. The park polygon is 758 x 688 m, so show a corner."
+    },
+    "beirut-transit": {
+      "venueId": "beirut-transit",
+      "city": "beirut",
+      "name": "Charles Helou Bus Station",
+      "archetype": "transport-station",
+      "subject": "The Charles Helou bus station under the elevated highway: a low concrete terminal with bus bays and long flat canopies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "bus-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc9bb",
+          "#8a8f86",
+          "#e6dfd0"
+        ],
+        "roofColour": "#a39d8d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "platform-canopy",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/478033092",
+          "what": "OSM footprint 48.3 x 20.8 m (701 m2); tags building=yes"
+        }
+      ],
+      "notes": "The nearest OSM building is 48 x 21 m; the terminal is typed from the transport-station archetype. No source read."
+    }
+  }
+}

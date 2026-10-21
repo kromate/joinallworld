@@ -1,0 +1,249 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1228629808",
+   "used": "nearest building, 13.8 m square; used as hall size"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "neighbourhood mosque: render hall, arched windows, low white dome, single square concrete minaret, green accents, courtyard wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe8",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     14,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -6.6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.4,
+      "opening": 0.6,
+      "height": 0.7,
+      "depth": 0.5,
+      "pierColour": "#ffffff",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "on": "hall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 4.6,
+    "height": 3.0,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#ffffff",
+    "drumColour": "#e9e3d4",
+    "finial": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.6,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 19,
+    "colour": "#e6dcc8",
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.6,
+    -1,
+    19
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 1.4,
+    "colour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.6,
+    -1,
+    20.4
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 2.2,
+    "colour": "#ffffff",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 2.4,
+    "thickness": 0.25,
+    "colour": "#d9ceb6",
+    "points": [
+     [
+      -12,
+      -12
+     ],
+     [
+      13,
+      -12
+     ],
+     [
+      13,
+      12
+     ],
+     [
+      -12,
+      12
+     ],
+     [
+      -12,
+      -12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "leafColour": "#2f6f4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -16,
+     -8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     17,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; minaret side and dome profile are typical, not observed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-node-4108051090"
+}

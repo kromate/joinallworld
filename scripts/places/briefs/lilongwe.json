@@ -1,0 +1,1519 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lilongwe",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lilongwe",
+    "climate": "savanna",
+    "vernacular": "Planned plateau capital (c.1,050 m, 1970s master plan): low-rise Old Town of arcaded shop rows, markets and bus stations; a New City/Capital Hill of 1970s-2010s government blocks and Chinese-funded civic buildings in cream or white render with flat or lightly pitched roofs; face-brick and render houses behind walls with red or grey corrugated iron roofs; malls with plain painted-render boxes and glass entrance bays; red-brown earth and broadleaf trees everywhere.",
+    "wallColours": [
+      "#eee6d3",
+      "#d9cdb4",
+      "#b9714f",
+      "#a05a3c",
+      "#b8b3a7",
+      "#f5f2ea"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#6b7178",
+      "#4f6b55",
+      "#a9a49b"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "brick",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Little applied ornament: plain rendered walls, deep concrete eaves and sun-breaks on 1970s government blocks, colonnaded shop fronts with awnings in Old Town, national flags and flagpoles at civic sites, painted signage murals on market walls; traditional round huts with grass thatch only at cultural-village sites.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Lilongwe",
+        "what": "planned multi-centred linear city, Old Town (markets, bus stations) vs New City (hotels, embassies, offices), Capital Hill in Area 20, plateau at ~1,050 m, humid subtropical climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kamuzu_Central_Hospital",
+        "what": "1970s DANIDA-built institutional architecture in Lilongwe"
+      }
+    ]
+  },
+  "places": {
+    "lilongwe-african-bible-college": {
+      "venueId": "lilongwe-african-bible-college",
+      "city": "lilongwe",
+      "name": "African Bible College",
+      "archetype": "campus-block",
+      "subject": "Private Christian college campus: a few two-storey classroom and hostel blocks around a lawn (typed from city style; actual layout not found)",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#eadfc9",
+          "#a4573d",
+          "#f3efe6"
+        ],
+        "roofColour": "#7b3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "No building description found; typed from Lilongwe city style and the venue type (college). Red-brown corrugated roofs over cream render with brick trim."
+    },
+    "lilongwe-airport-kamuzu-international-airport": {
+      "venueId": "lilongwe-airport-kamuzu-international-airport",
+      "city": "lilongwe",
+      "name": "Kamuzu International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Kamuzu International Airport terminal complex: the 1982 Japanese-built terminal with its tower, joined to the 2019 JICA-funded expanded international terminal, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e7e0",
+          "#3d5568",
+          "#c9ccce"
+        ],
+        "roofColour": "#aeb2b3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower belongs to the original 1982 complex"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1982 original; extended 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kamuzu_International_Airport",
+          "what": "terminal, control tower and radar built Oct 1977-Sep 1982 with Japanese ODA loan (Mitsubishi, Scott Wilson Kirkpatrick), opened 1983; international terminal expanded and old terminal rehabilitated by JICA, handed over April 2019"
+        }
+      ],
+      "notes": "Dates and builders are sourced; dimensions, storeys, roof shape and colours are not described in any source found and are estimates for a mid-size African regional-international terminal (1-2 storeys, flat roof, pale render with a glazed expansion). Low-rise, so tower is the recognisable element."
+    },
+    "lilongwe-capital-kids-play-centre": {
+      "venueId": "lilongwe-capital-kids-play-centre",
+      "city": "lilongwe",
+      "name": "Capital Kids Play Centre",
+      "archetype": "park-landscape",
+      "subject": "Enclosed children play centre beside Gateway Mall: shaded play pavilion, boundary wall and play area (typed guess)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d9b8",
+          "#d6573c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#6f7a82",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "Nothing findable about the physical site; typed as a small play area with shaded pavilion from the type. Game placeholder-like low confidence."
+    },
+    "lilongwe-civo-stadium": {
+      "venueId": "lilongwe-civo-stadium",
+      "city": "lilongwe",
+      "name": "CIVO Stadium",
+      "archetype": "stadium",
+      "subject": "CIVO Stadium (Stade des Jeunes) in Area 9: a 25,000-seat football bowl rebuilt by the Chinese government in 2010, one covered main stand and open terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "none",
+        "variant": "bowl-one-roof"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bb",
+          "#3a5f9a",
+          "#f0efe9"
+        ],
+        "roofColour": "#8d9399",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand; other sides open"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010 reconstruction",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Civo_Stadium",
+          "what": "25,000 seats, formerly Stade des Jeunes, under reconstruction by the Chinese government in 2010"
+        }
+      ],
+      "notes": "Capacity and Chinese reconstruction are sourced; stand layout, roof extent and colours are assumed from typical African Chinese-aid stadium rebuilds and are unverified. Distinct from Bingu (smaller, one roof, no full ring)."
+    },
+    "lilongwe-clinic": {
+      "venueId": "lilongwe-clinic",
+      "city": "lilongwe",
+      "name": "Kamuzu Central Hospital",
+      "archetype": "hospital",
+      "subject": "Kamuzu Central Hospital (formerly Lilongwe Central Hospital): a 1970s Danish-aid tertiary hospital of connected 2-3 storey wards around courtyards",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e1d6bd",
+          "#9c5a3f",
+          "#f2eee5"
+        ],
+        "roofColour": "#8f948f",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kamuzu_Central_Hospital",
+          "what": "tertiary referral and teaching hospital, ~780 beds, built 1977 by DANIDA, only the first phase completed, Area 33"
+        }
+      ],
+      "notes": "Date, builder, bed count are sourced. The H/courtyard ward plan and cream render with brick trim are typed from 1970s aid-hospital practice, unverified. Large multi-ward campus; model shows the main block."
+    },
+    "lilongwe-community-notices": {
+      "venueId": "lilongwe-community-notices",
+      "city": "lilongwe",
+      "name": "Malawi Parliament Building",
+      "archetype": "civic-palace",
+      "subject": "The Parliament building on Capital Hill along Presidential Way: a broad modern pale-walled block with a pillared entrance, steps and a flag line (appearance typed; not described in sources)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#b9b2a2",
+          "#f6f3ec"
+        ],
+        "roofColour": "#7e8a86",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "tall columned entrance, assumed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "Capital Hill complex, 1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Assembly_of_Malawi",
+          "what": "sited on Capital Hill, Lilongwe, along Presidential Way"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "Parliament building, War Memorial Tower and National Bank named as landmarks of the central area"
+        }
+      ],
+      "notes": "Only the location is sourced. Built form, size and colours were not found; a formal rectangular civic block with columned entrance is a typed guess. Different from other civic blocks by its Capital Hill plaza setting."
+    },
+    "lilongwe-community-voting-game": {
+      "venueId": "lilongwe-community-voting-game",
+      "city": "lilongwe",
+      "name": "City Centre Roundabout",
+      "archetype": "park-landscape",
+      "subject": "City Centre roundabout: a planted traffic island ringed by roads (typed guess)",
+      "form": {
+        "footprint": "round",
+        "width_m": 45,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4b6",
+          "#7a8f55",
+          "#e8e4d8"
+        ],
+        "roofColour": "#c9c4b6",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1970s plan",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "No source on what stands in the roundabout; shown as a landscaped traffic circle with trees and a few signs. Low confidence."
+    },
+    "lilongwe-community-workshop": {
+      "venueId": "lilongwe-community-workshop",
+      "city": "lilongwe",
+      "name": "Malawi College of Accountancy (M.C.A)",
+      "archetype": "campus-block",
+      "subject": "College of Accountancy: two-three storey teaching blocks and offices (typed from city style)",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee5cf",
+          "#8b7f6f",
+          "#f6f3ec"
+        ],
+        "roofColour": "#6d4a3e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the buildings; typed teaching blocks."
+    },
+    "lilongwe-gateway-shopping-mall": {
+      "venueId": "lilongwe-gateway-shopping-mall",
+      "city": "lilongwe",
+      "name": "Gateway Shopping Mall",
+      "archetype": "mall",
+      "subject": "Gateway Mall: a large modern two-storey shopping centre with parking in front, plain rendered body and a glazed entrance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#2f6f8f",
+          "#c8453a"
+        ],
+        "roofColour": "#8e9398",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "entrance bay"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "Gateway Mall named as a netball venue; no architectural description"
+        }
+      ],
+      "notes": "Only identity is sourced. A typical Southern-African regional mall: low flat-roofed box in cream render with coloured entrance accent and a large car park. Kept visually different from Old Town Mall (single mass vs courtyard arcade)."
+    },
+    "lilongwe-kumbali-cultural-village": {
+      "venueId": "lilongwe-kumbali-cultural-village",
+      "city": "lilongwe",
+      "name": "Kumbali Cultural Village",
+      "archetype": "park-landscape",
+      "subject": "Kumbali Cultural Village: a cluster of round thatched huts and a gathering pavilion around a central yard (typed from the cultural-village type)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#b7835a",
+          "#8d6a4b",
+          "#d7c3a0"
+        ],
+        "roofColour": "#b59a5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open thatched shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 3,
+          "note": "craft stalls"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "No page about the site found; round mud-walled thatched huts are typed from the \"cultural village\" name. Low confidence."
+    },
+    "lilongwe-lilongwe-wildlife-center": {
+      "venueId": "lilongwe-lilongwe-wildlife-center",
+      "city": "lilongwe",
+      "name": "Lilongwe Wildlife Center",
+      "archetype": "park-landscape",
+      "subject": "Lilongwe Wildlife Centre: a wooded wildlife sanctuary with an entrance gate, a visitor shelter and large fenced animal enclosures",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6b47",
+          "#5d7a45",
+          "#d9cdb0"
+        ],
+        "roofColour": "#6b7b52",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "enclosure fences"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe_Wildlife_Centre",
+          "what": "sanctuary within the Lilongwe Nature Sanctuary area, large natural enclosures for animals that cannot be released, entrance and in-park photos (no text description)"
+        }
+      ],
+      "notes": "Existence and large natural enclosures are sourced; layout and building forms are typed. Woodland setting is the identifying element."
+    },
+    "lilongwe-madsoc-theatre": {
+      "venueId": "lilongwe-madsoc-theatre",
+      "city": "lilongwe",
+      "name": "MADSOC Theatre",
+      "archetype": "museum-theatre",
+      "subject": "Small community theatre hall used by the Malawi amateur dramatic society (typed guess: simple hall with foyer)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8ddc4",
+          "#7a4636",
+          "#f3efe6"
+        ],
+        "roofColour": "#7d4033",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the building. Typed modest brick/render hall with gable roof."
+    },
+    "lilongwe-market-game": {
+      "venueId": "lilongwe-market-game",
+      "city": "lilongwe",
+      "name": "Lilongwe Central Market",
+      "archetype": "market-open",
+      "subject": "Old Town central market: rows of lock-up stalls and corrugated shelters packed around open lanes, with umbrellas and a perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c4b9a6",
+          "#b7573d",
+          "#e2d6b9"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "Old Town holds the markets, bus stations and walled markets"
+        }
+      ],
+      "notes": "Only the Old Town markets context is sourced; stall forms typed. Compare with the Bus Terminal next door: market is dense small sheds, terminal is open bays."
+    },
+    "lilongwe-meal-stop": {
+      "venueId": "lilongwe-meal-stop",
+      "city": "lilongwe",
+      "name": "Mamma Mia",
+      "archetype": "restaurant",
+      "subject": "Mamma Mia, an Italian-style restaurant in Old Town: a single-storey rendered restaurant with veranda and awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e3c8",
+          "#b3422f",
+          "#f6f2e8"
+        ],
+        "roofColour": "#7a3a2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "Nothing found on the actual building; typed small restaurant with veranda."
+    },
+    "lilongwe-mzuzu-university-lilongwe-branch": {
+      "venueId": "lilongwe-mzuzu-university-lilongwe-branch",
+      "city": "lilongwe",
+      "name": "Mzuzu University - Lilongwe Branch",
+      "archetype": "campus-block",
+      "subject": "Mzuzu University satellite campus: two or three storey teaching block with an entrance forecourt (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece4d2",
+          "#41667c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8c9193",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "No sources on the branch building; generic satellite campus block."
+    },
+    "lilongwe-national-library-service": {
+      "venueId": "lilongwe-national-library-service",
+      "city": "lilongwe",
+      "name": "National Library Service",
+      "archetype": "campus-block",
+      "subject": "National Library Service headquarters: a two-storey public library block with entrance steps and a small garden (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "library"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dbc8",
+          "#8f8574",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a8d8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "No description of the building found; typed civic library block."
+    },
+    "lilongwe-old-town-mall": {
+      "venueId": "lilongwe-old-town-mall",
+      "city": "lilongwe",
+      "name": "Old Town Mall",
+      "archetype": "mall",
+      "subject": "Old Town Mall: smaller two-storey shop rows around a courtyard in the old commercial centre, with arcade fronts and awnings",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#eadcc0",
+          "#a85a3f",
+          "#f4f0e6"
+        ],
+        "roofColour": "#767b7d",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "shop-front walkway"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "Identity only; layout typed from Old Town style (arcaded shop rows). Different from Gateway and Pacific by courtyard plan."
+    },
+    "lilongwe-open-theatre": {
+      "venueId": "lilongwe-open-theatre",
+      "city": "lilongwe",
+      "name": "open Theatre",
+      "archetype": "museum-theatre",
+      "subject": "open Theatre: an open-air performance space with stepped seating and a small stage shelter (typed from name)",
+      "form": {
+        "footprint": "round",
+        "width_m": 35,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc8b8",
+          "#9a8e7c",
+          "#ece7da"
+        ],
+        "roofColour": "#cfc8b8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "tiered seating"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "stage shelter"
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "Nothing found; typed as an amphitheatre from the name \"open Theatre\"."
+    },
+    "lilongwe-pacific-mall": {
+      "venueId": "lilongwe-pacific-mall",
+      "city": "lilongwe",
+      "name": "Pacific Mall",
+      "archetype": "mall",
+      "subject": "Pacific Mall: a mid-size modern shopping centre block with a glazed front and large parking apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#ece6d8",
+          "#355f7a",
+          "#d4a73a"
+        ],
+        "roofColour": "#9a9fa1",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city-level context only: planned multi-centre city, Old Town vs New City, Capital Hill; no building-level description"
+        }
+      ],
+      "notes": "No source describes the mall; typed. Made glassier than Gateway to differ."
+    },
+    "lilongwe-quiet-reflection": {
+      "venueId": "lilongwe-quiet-reflection",
+      "city": "lilongwe",
+      "name": "Lilongwe Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Lilongwe Central Mosque in Old Town: white rendered prayer hall under a green dome with a single slender minaret (appearance typed from common Malawian mosque form)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f3f1ea",
+          "#2f7a52",
+          "#b9c9bc"
+        ],
+        "roofColour": "#2f7a52",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "height ~30 m, assumed"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "city article mentions Muslim mosques with no architectural detail"
+        }
+      ],
+      "notes": "No source found for the building itself. Typed white with green dome and one minaret; generator should vary dome size from the Zambia mosques."
+    },
+    "lilongwe-recreation": {
+      "venueId": "lilongwe-recreation",
+      "city": "lilongwe",
+      "name": "Bingu National Stadium",
+      "archetype": "stadium",
+      "subject": "Bingu National Stadium: the 41,100-seat Chinese-built bowl opened 2017, a closed ring of tiered stands with a roof canopy over the seating and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 38,
+        "roof": "curved",
+        "variant": "full-ring-roof"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcdad2",
+          "#c23a30",
+          "#2d5b3a"
+        ],
+        "roofColour": "#e9e9e5",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over most of the seating, extent assumed"
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2012-2016, opened 2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bingu_National_Stadium",
+          "what": "41,100 capacity, Beijing Institute of Architectural Design, built 2012-2016 by Anhui Foreign Economic Construction Group, opened January 2017, US$70m, Bermuda grass pitch"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "opened early 2017, ~40,000 capacity"
+        }
+      ],
+      "notes": "Capacity, architect, builder and dates are sourced; roof extent, colours and heights are not described and are typed from typical Chinese-aid stadia (pale cladding with national-colour seats). Much bigger than CIVO or Silver in Lilongwe."
+    },
+    "lilongwe-silver-stadium": {
+      "venueId": "lilongwe-silver-stadium",
+      "city": "lilongwe",
+      "name": "Silver Stadium",
+      "archetype": "stadium",
+      "subject": "Silver Stadium in Area 47: a smaller football ground with one covered main stand and open terraces around a grass pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "single-stand"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c8c4ba",
+          "#7a7f85",
+          "#ecebe5"
+        ],
+        "roofColour": "#8d9399",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand only"
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "Silver Stadium listed in Area 47 among Lilongwe stadiums"
+        }
+      ],
+      "notes": "Existence/location only. Typed small ground, much simpler than CIVO and Bingu."
+    },
+    "lilongwe-transit": {
+      "venueId": "lilongwe-transit",
+      "city": "lilongwe",
+      "name": "Bus Terminal Lilongwe",
+      "archetype": "transport-station",
+      "subject": "Lilongwe Bus Terminal in Old Town: an open bus park with painted bays, a long ticket hall and passenger shelters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d7ccb2",
+          "#2a5d8f",
+          "#e8c24a"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "Old Town contains the bus stations"
+        }
+      ],
+      "notes": "Only the Old Town bus-station context is sourced; typed open bay terminal with shed shelters."
+    },
+    "lilongwe-war-memorial-tower": {
+      "venueId": "lilongwe-war-memorial-tower",
+      "city": "lilongwe",
+      "name": "War Memorial Tower",
+      "archetype": "monument",
+      "subject": "War Memorial Tower, a Lilongwe landmark near Capital Hill: a tall plain masonry shaft on a stepped base (form typed; not described in sources)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b3a4",
+          "#8e887a",
+          "#dcd7ca"
+        ],
+        "roofColour": "#b9b3a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "tapering square shaft assumed"
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lilongwe",
+          "what": "Parliament building, War Memorial Tower and National Bank named as landmarks in the central area"
+        }
+      ],
+      "notes": "Only its existence as a landmark is sourced; height and form are guesses. Keep it simple and slender."
+    }
+  }
+}

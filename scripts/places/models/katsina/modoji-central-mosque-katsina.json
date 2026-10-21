@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "modoji-central-mosque-katsina",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     28
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.26,
+    "windowShape": "pointed",
+    "bay": 4.2,
+    "bands": "#3f7f6a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "none",
+    "pattern": [],
+    "bands": "#d8c39a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7f6a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    0,
+    4,
+    11.8
+   ],
+   "params": {
+    "radius": 9,
+    "profile": "onion",
+    "drum": 3,
+    "lantern": 1.2,
+    "finial": 2.5,
+    "colour": "#3f7f6a",
+    "drumColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    -13,
+    -8,
+    11.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "finial": 1.2,
+    "colour": "#3f7f6a",
+    "drumColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    13,
+    -8,
+    11.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "finial": 1.2,
+    "colour": "#3f7f6a",
+    "drumColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    -13,
+    16,
+    11.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "finial": 1.2,
+    "colour": "#3f7f6a",
+    "drumColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "dome",
+   "at": [
+    13,
+    16,
+    11.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "finial": 1.2,
+    "colour": "#3f7f6a",
+    "drumColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "base_width": 3.2,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "cap_colour": "#3f7f6a"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "base_width": 3.2,
+    "style": "pencil",
+    "colour": "#f4f1e8",
+    "cap_colour": "#3f7f6a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -22,
+    6
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-e",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    22,
+    6
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -32,
+    -30,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      52
+     ],
+     [
+      64,
+      52
+     ],
+     [
+      64,
+      0
+     ],
+     [
+      36,
+      0
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.4,
+    "colour": "#d8c39a",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#d8d4cc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -28,
+     -24
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     28,
+     -24
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or real venue info; typed domed mosque with two minarets."
+ }
+}

@@ -1,0 +1,1513 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "minsk",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "minsk",
+    "climate": "cold",
+    "vernacular": "A rebuilt Soviet capital (about 80% destroyed in WWII): wide boulevards lined with Stalinist Empire blocks in ochre, cream and yellow painted render with columns, pediments and spires; behind them 1960s-80s prefabricated grey/white concrete-panel slab blocks (5, 9 and 16 storeys) with flat membrane roofs; red-brick Polish-era churches and a few surviving 1930s monumental buildings; timber houses on the outskirts; glass and metal towers and sports halls from the 2000s. Orthodox churches are white with gold or blue domes. Streets are asphalt with birch, linden and pine.",
+    "wallColours": [
+      "#d9b87a",
+      "#e8dcc0",
+      "#c9a77c",
+      "#a9a8a3",
+      "#b86a4a",
+      "#f0eee8",
+      "#8a8d90"
+    ],
+    "roofColours": [
+      "#6b6f73",
+      "#8a4b3a",
+      "#4d5a4a",
+      "#3d4044",
+      "#a65a3e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stucco",
+      "brick",
+      "red-brick",
+      "glass-curtain",
+      "timber"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "membrane",
+      "concrete",
+      "clay-tile",
+      "copper"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Stalinist Empire detail: colonnades and pilasters, pediments, relief panels, central spires and towers on state buildings; flat grey panel blocks with balcony strips; Orthodox onion domes in gold and blue; Soviet mosaics and stelae; wooden carved window frames on suburban houses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Belarus",
+        "what": "Post-war Stalinist Empire rebuilding of Minsk, 38 m Victory obelisk, surviving 1930s buildings, wooden post-war housing, National Library rhombicuboctahedron. Colour palette comes from general photographic knowledge of the city, not a citation."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Independence_Square,_Minsk",
+        "what": "Government House 1934 by Langbard; Red Church of Saints Simon and Helena in Czestochowa brick, 1905-1910"
+      }
+    ]
+  },
+  "places": {
+    "minsk-airport-minsk-airport": {
+      "venueId": "minsk-airport-minsk-airport",
+      "city": "minsk",
+      "name": "Minsk National Airport",
+      "archetype": "airport-terminal",
+      "subject": "Minsk National Airport main terminal (Terminal 2): a long, gently curved brutalist block with a modernised glass and metal-clad frontage and an access ramp",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#c7ccce",
+          "#7d8f9c",
+          "#e9e9e6"
+        ],
+        "roofColour": "#8d9195",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1982, modernised 2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minsk_National_Airport",
+          "what": "Four-storey passenger terminal with slightly curved plan, designed in brutalist style, construction from 1977, opened 1982, later modernised and expanded"
+        }
+      ],
+      "notes": "Sources give storeys, brutalist origin and curved plan; footprint size, facade colours and the glazed refit are estimated from general knowledge. Recognisable by long curved horizontal mass with check-in hall on level 2."
+    },
+    "minsk-clinic": {
+      "venueId": "minsk-clinic",
+      "city": "minsk",
+      "name": "City Clinical Emergency Hospital",
+      "archetype": "hospital",
+      "subject": "City Clinical Emergency Hospital: a Soviet-era multi-storey slab ward block with lower modern additions",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 9,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d2c6",
+          "#7e8f9a",
+          "#f1efe9"
+        ],
+        "roofColour": "#5e6266",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this building found; typed from the Minsk Soviet hospital pattern (prefab panel slab with ribbon windows) and the city style."
+    },
+    "minsk-community-notices": {
+      "venueId": "minsk-community-notices",
+      "city": "minsk",
+      "name": "Міністэрства сельскай гаспадаркі і харчавання Рэспублікі Беларусь",
+      "archetype": "civic-palace",
+      "subject": "Ministry of Agriculture and Food: a mid-century government block in painted render with a columned centre and flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#d9b87a",
+          "#efe6cf",
+          "#8c6b4a"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.minsk.by/",
+          "what": "City context only; no page describing the ministry building was found"
+        }
+      ],
+      "notes": "Exact building not described by a findable source; modelled as a Stalinist-era ministry block (ochre painted render, pilaster bays, flagged entrance) from the city style."
+    },
+    "minsk-community-voting-game": {
+      "venueId": "minsk-community-voting-game",
+      "city": "minsk",
+      "name": "State Flag Square",
+      "archetype": "park-landscape",
+      "subject": "State Flag Square: a wide paved plaza with a tall flagpole, set with lawns and flower beds beside the boulevard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdbab2",
+          "#4f8a4a",
+          "#8a8d90"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Independence_Square,_Minsk",
+          "what": "Searched for State Flag Square; not described there, only nearby Government House and Red Church"
+        }
+      ],
+      "notes": "The square itself was not described by any fetched source; shown as a paved square with a central flag mast. Flag-colour content is not required: use neutral banners."
+    },
+    "minsk-community-workshop": {
+      "venueId": "minsk-community-workshop",
+      "city": "minsk",
+      "name": "Yakub Kolas Central Scientific Library",
+      "archetype": "campus-block",
+      "subject": "Yakub Kolas Central Scientific Library of the National Academy of Sciences: a large Soviet-era institutional block with ribbon windows",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 35,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9ba",
+          "#8d8f8c",
+          "#efece4"
+        ],
+        "roofColour": "#5e6266",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No findable description of the building; typed from the Soviet academic-institute pattern (concrete frame, ribbon windows, grey-beige panels)."
+    },
+    "minsk-market-game": {
+      "venueId": "minsk-market-game",
+      "city": "minsk",
+      "name": "Тутэйшы",
+      "archetype": "restaurant",
+      "subject": "Tuteishy: a small folk-style Belarusian restaurant building with a pitched roof and a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3d4b0",
+          "#7a5a3a",
+          "#4a3a2c"
+        ],
+        "roofColour": "#8a4b3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue listed as market but name matches a Belarusian-cuisine eatery; nothing findable describes this location. Typed low from city style."
+    },
+    "minsk-meal-stop": {
+      "venueId": "minsk-meal-stop",
+      "city": "minsk",
+      "name": "Karčma z Chvojeva",
+      "archetype": "restaurant",
+      "subject": "Karcma z Chvojeva: a log-built roadside tavern in the Belarusian folk-inn style with a steep shingled roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a67c4c",
+          "#6b4a2c",
+          "#d9c7a0"
+        ],
+        "roofColour": "#5a4a3a",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "\"Karcma\" means inn/tavern; folk-themed taverns near Minsk are typically log buildings. Not individually described anywhere findable."
+    },
+    "minsk-osm-node-1165818843": {
+      "venueId": "minsk-osm-node-1165818843",
+      "city": "minsk",
+      "name": "Museum of Belarusian Folk Art",
+      "archetype": "museum-theatre",
+      "subject": "Museum of Belarusian Folk Art: a timber folk-architecture style museum building in a wooded park setting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "brick",
+        "colours": [
+          "#a67c4c",
+          "#8a4b3a",
+          "#d9c7a0"
+        ],
+        "roofColour": "#6b4a3a",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing describing the building was found; typed from the type and the surrounding woodland."
+    },
+    "minsk-osm-node-2788685388": {
+      "venueId": "minsk-osm-node-2788685388",
+      "city": "minsk",
+      "name": "Былы сядзібна-паркавы комплекс Прушынскіх",
+      "archetype": "manor",
+      "subject": "Former Prushynski manor-park complex: a one-storey country manor in white render with a columned portico, set in an overgrown park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#e8e0cc",
+          "#c6b894",
+          "#f6f2e6"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Listed as \"former\" manor-park complex; the building may be ruined or lost. No description found. Typed from the Polish-Belarusian gentry manor pattern."
+    },
+    "minsk-osm-node-2788687315": {
+      "venueId": "minsk-osm-node-2788687315",
+      "city": "minsk",
+      "name": "Царква могілкавая",
+      "archetype": "shrine-small",
+      "subject": "Cemetery chapel-church: a small white Orthodox church with a single blue onion dome and a belfry gable",
+      "form": {
+        "footprint": "cross",
+        "width_m": 12,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f1eee6",
+          "#3f6fa8",
+          "#c9a85a"
+        ],
+        "roofColour": "#3f6fa8",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "\"Cemetery church\"; no further data. Typed as the typical Belarusian Orthodox cemetery chapel."
+    },
+    "minsk-osm-relation-13591047": {
+      "venueId": "minsk-osm-relation-13591047",
+      "city": "minsk",
+      "name": "Стадыён БДПУ",
+      "archetype": "stadium",
+      "subject": "Belarusian State Pedagogical University stadium: a small campus athletics stadium with one covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#4f7a9a",
+          "#e8e6df"
+        ],
+        "roofColour": "#4f7a9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "University sports ground, no description found; typed small with a single roofed grandstand."
+    },
+    "minsk-osm-relation-21968": {
+      "venueId": "minsk-osm-relation-21968",
+      "city": "minsk",
+      "name": "Belarusian State Medical University",
+      "archetype": "campus-block",
+      "subject": "Belarusian State Medical University: a long Soviet-era teaching building in light render with a central entrance and flat roof",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e3d8bd",
+          "#b9a77f",
+          "#f1ede2"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1950s-60s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "University core around Dzerzhinski Avenue; not described by a findable source. Typed postwar-neoclassical teaching block."
+    },
+    "minsk-osm-relation-6172342": {
+      "venueId": "minsk-osm-relation-6172342",
+      "city": "minsk",
+      "name": "Палацава-паркавы комплекс Чапскіх",
+      "archetype": "manor",
+      "subject": "Chapski manor-park complex: a neoclassical country palace with a pedimented portico in a landscaped park",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#efe5c9",
+          "#b36a4a",
+          "#fbf6e8"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Chapski (Czapski) noble family estate; the actual palace was not described by any fetched source, so shape is typed from the Belarusian gentry palace pattern. Palaces of this kind are white or cream with a columned portico."
+    },
+    "minsk-osm-relation-8825869": {
+      "venueId": "minsk-osm-relation-8825869",
+      "city": "minsk",
+      "name": "Belarusian National Technical University",
+      "archetype": "campus-block",
+      "subject": "Belarusian National Technical University main building: a huge Stalinist-era institute block on Independence Avenue with columns and a central pediment",
+      "form": {
+        "footprint": "U",
+        "width_m": 140,
+        "depth_m": 55,
+        "storeys": 6,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#d9b87a",
+          "#efe6cf",
+          "#f6f2e6"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Belarus",
+          "what": "Independence Avenue is lined with Stalinist-era buildings"
+        }
+      ],
+      "notes": "Located on Independence Avenue per coordinates; a Stalinist Empire institute block is assumed from the avenue context, not from a source on the building itself."
+    },
+    "minsk-osm-way-23409356": {
+      "venueId": "minsk-osm-way-23409356",
+      "city": "minsk",
+      "name": "Тарпеда",
+      "archetype": "stadium",
+      "subject": "Torpedo stadium: a mid-size Soviet-era football ground with low concrete stands and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b3b0a8",
+          "#4a6a8a",
+          "#e8e6df"
+        ],
+        "roofColour": "#5e6266",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name Tarpeda = Torpedo. No findable description; typed from the type of 5,000-10,000-seat Soviet works-club ground."
+    },
+    "minsk-osm-way-290903356": {
+      "venueId": "minsk-osm-way-290903356",
+      "city": "minsk",
+      "name": "Храм Узвышэння Святога Крыжа (2010)",
+      "archetype": "church-classical",
+      "subject": "Church of the Exaltation of the Holy Cross (2010): a modern Orthodox church in white render with gold and blue onion domes and a separate belfry",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 24,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#c9a85a",
+          "#3f6fa8"
+        ],
+        "roofColour": "#c9a85a",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Year in the name is 2010; design not found. Typed as a new Russian-Byzantine style parish church (five domes, bell tower)."
+    },
+    "minsk-osm-way-292848094": {
+      "venueId": "minsk-osm-way-292848094",
+      "city": "minsk",
+      "name": "Minsk Arena",
+      "archetype": "stadium",
+      "subject": "Minsk Arena: a large ovoid indoor arena on Pobediteley Avenue with a glazed and clad shell and an attached velodrome and speed-skating hall",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 110,
+        "storeys": 4,
+        "height_m": 32,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c4cbd1",
+          "#4f7a9a",
+          "#e8ecef"
+        ],
+        "roofColour": "#9aa4ac",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006-2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minsk_Arena",
+          "what": "Capacity about 15,000, built 2006-2009, opened 30 Jan 2010; velodrome 2,000 and 400 m speed-skating hall attached; designed by Belgosproject"
+        }
+      ],
+      "notes": "Capacity, year and complex layout are sourced; exact dimensions and colours estimated from general photographs (silver-grey cladding, blue glass). Show the main oval arena with the lower velodrome wing."
+    },
+    "minsk-osm-way-384227903": {
+      "venueId": "minsk-osm-way-384227903",
+      "city": "minsk",
+      "name": "Belarusian State Economic University",
+      "archetype": "campus-block",
+      "subject": "Belarusian State Economic University: a broad Soviet-era academic block of painted render with a central stair entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1d3b0",
+          "#9a8a6a",
+          "#f2eee2"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960s-80s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Partizansky Avenue university; no building description found. Typed postwar institute block."
+    },
+    "minsk-osm-way-39246694": {
+      "venueId": "minsk-osm-way-39246694",
+      "city": "minsk",
+      "name": "Mound of Glory",
+      "archetype": "monument",
+      "subject": "Mound of Glory: a large conical earth mound with four tall bayonet-shaped steel blades on top and wide stairways, beside the Moscow Highway",
+      "form": {
+        "footprint": "round",
+        "width_m": 140,
+        "depth_m": 140,
+        "storeys": 0,
+        "height_m": 70,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#8f8f8a",
+          "#4b5a3f",
+          "#c9c9c3"
+        ],
+        "roofColour": "#8f8f8a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mound_of_Glory",
+          "what": "Memorial complex of 1969 to Soviet soldiers, designed by O. Stakhovich, sculptor Andrei Bembel, 21 km from Minsk on the Moscow Highway"
+        }
+      ],
+      "notes": "Source confirms only the history and location. The shape (earth mound about 35 m high bearing four triangular bayonets about 35 m, total about 70 m) is from general knowledge and should be treated as approximate. The four blades are the recognisable feature; stair flights climb the mound."
+    },
+    "minsk-osm-way-689138683": {
+      "venueId": "minsk-osm-way-689138683",
+      "city": "minsk",
+      "name": "Stones Museum",
+      "archetype": "park-landscape",
+      "subject": "Stones Museum: an open-air collection of large glacial boulders laid out along gravel paths with a small service building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a85",
+          "#4f8a4a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8d8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Glacial-boulder open-air collection of the Academy of Sciences; no source retrieved. Boulders can be generated as scattered rounded grey stones (use \"statue\" slots for large boulders)."
+    },
+    "minsk-osm-way-76132102": {
+      "venueId": "minsk-osm-way-76132102",
+      "city": "minsk",
+      "name": "4-я гарадская клінічная бальніца імя М.Я.Саўчанкі",
+      "archetype": "hospital",
+      "subject": "4th City Clinical Hospital named after Savchenko: a Soviet campus of cream-and-grey ward blocks of differing height linked by corridors",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#dcd6c4",
+          "#7e8f9a",
+          "#f1efe9"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1950s-70s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Pavilion-plan municipal hospital; nothing describing it found. Typed from the Soviet city-hospital pattern, distinct from the single high slab used for the other Minsk hospitals."
+    },
+    "minsk-osm-way-80616815": {
+      "venueId": "minsk-osm-way-80616815",
+      "city": "minsk",
+      "name": "6 city clinical hospital",
+      "archetype": "hospital",
+      "subject": "6th City Clinical Hospital: a tall prefabricated 12-storey hospital tower with lower clinic wings",
+      "form": {
+        "footprint": "T",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 12,
+        "height_m": 40,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c9c3",
+          "#6f93a8",
+          "#efefea"
+        ],
+        "roofColour": "#5e6266",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as the late-Soviet high-rise hospital tower variant to differ from the other Minsk hospitals."
+    },
+    "minsk-quiet-reflection": {
+      "venueId": "minsk-quiet-reflection",
+      "city": "minsk",
+      "name": "Гудавіцкае свяцілішча",
+      "archetype": "shrine-small",
+      "subject": "Hudavichy sanctuary: a small village chapel-shrine with a simple gable roof and a cross, standing in woodland",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f1eee6",
+          "#8a6a4a",
+          "#c9a85a"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The \"sanctuary\" was not described in any source found; typed as a small rural chapel from the type and region."
+    },
+    "minsk-recreation": {
+      "venueId": "minsk-recreation",
+      "city": "minsk",
+      "name": "Выспа кахання",
+      "archetype": "park-landscape",
+      "subject": "Island of Love (Vyspa Kakhannya): a wooded lake island park reached by a short footbridge, with a pavilion and benches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a67c4c",
+          "#4f8a4a",
+          "#7aa0b8"
+        ],
+        "roofColour": "#6b4a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Lakeside recreation spot; nothing findable describes its layout. Typed as a lake island/lakeside park."
+    },
+    "minsk-transit": {
+      "venueId": "minsk-transit",
+      "city": "minsk",
+      "name": "Kamiennaja Horka",
+      "archetype": "transport-station",
+      "subject": "Kamiennaja Horka metro station: a Minsk Metro station reached through a plain glass-and-stone street vestibule beside bus bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6d2c6",
+          "#6f93a8",
+          "#8a8d90"
+        ],
+        "roofColour": "#5e6266",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Opened in the 1980s as a Line 1 station on the western edge of the city. The vestibule appearance is typed; no description found. The blank signage board stands in for the metro M mark (no logos)."
+    }
+  }
+}

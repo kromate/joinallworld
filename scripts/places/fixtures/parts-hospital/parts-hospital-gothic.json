@@ -1,0 +1,164 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-gothic",
+ "name": "Parts test: collegiate gatehouse quad",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     50,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b7aa8c",
+    "windows": "pointed-arch",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a5058",
+    "material": "slate",
+    "pitch": 42
+   }
+  },
+  {
+   "type": "gatehouse-arched",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "depth": 7,
+    "height": 16,
+    "colour": "#b7aa8c",
+    "roofColour": "#4a5058",
+    "spireHeight": 6
+   }
+  },
+  {
+   "type": "stepped-buttresses",
+   "at": [
+    -17,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16,
+    "height": 13,
+    "pitch": 4,
+    "colour": "#c8bda0"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 20,
+    "depth": 2.4,
+    "springHeight": 2.4,
+    "topHeight": 3.6,
+    "shape": "pointed",
+    "colour": "#c8bda0"
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "fountainRadius": 2.5,
+    "trees": 4
+   }
+  },
+  {
+   "type": "turret-conical",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 14,
+    "radius": 1.2,
+    "colour": "#b7aa8c",
+    "coneHeight": 4
+   }
+  },
+  {
+   "type": "turret-conical",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 14,
+    "radius": 1.2,
+    "colour": "#b7aa8c",
+    "coneHeight": 4
+   }
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    26,
+    -12,
+    13
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4.5,
+    "height": 10,
+    "cap": "spire",
+    "capRise": 8,
+    "colour": "#b7aa8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "garden",
+  "trees": 6,
+  "extent": [
+   90,
+   70
+  ]
+ }
+}

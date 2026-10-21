@@ -1,0 +1,198 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/538907956",
+   "used": "real plot outline, 22.6 x 17 m, name match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/maputo.json#maputo-mafalala-museum",
+   "used": "one-storey Mafalala house with painted facade and zinc roof (assumed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "polygon": [
+     [
+      -9.1,
+      0.2
+     ],
+     [
+      -6.3,
+      -0.1
+     ],
+     [
+      -7.3,
+      -10.9
+     ],
+     [
+      5.1,
+      -11.4
+     ],
+     [
+      7,
+      -10.5
+     ],
+     [
+      8.5,
+      8.9
+     ],
+     [
+      -7,
+      11.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a58a",
+    "glassColour": "#2f4a5a",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 3.5,
+    "plinth": 0.3,
+    "bands": "#4a7f9a",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1,
+    -12.4,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.15
+    ],
+    "height": 2.6,
+    "colour": "#4a7f9a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#4a7f9a",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -13,
+      -16
+     ],
+     [
+      13,
+      -16
+     ],
+     [
+      13,
+      15
+     ],
+     [
+      -13,
+      15
+     ],
+     [
+      -13,
+      -16
+     ]
+    ],
+    "height": 1.8,
+    "colour": "#f4f1ea",
+    "thickness": 0.25
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    -13,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; outline real, facade colours and mural are assumed."
+ },
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-mafalala-museum"
+}

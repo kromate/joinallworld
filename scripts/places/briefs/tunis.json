@@ -1,0 +1,1597 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tunis",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tunis",
+    "climate": "mediterranean",
+    "vernacular": "White-and-blue Mediterranean capital. The UNESCO medina has whitewashed courtyard houses, studded blue or green doors, green-tiled mosque roofs and square minarets; the French-built ville nouvelle (1880s-1940s) has 4-7 storey cream stucco Art Nouveau and Art Deco blocks with iron balconies along tree-lined avenues; newer districts are flat-roofed concrete and render, with glass towers around the lake.",
+    "wallColours": [
+      "#f7f5ef",
+      "#e6d8b8",
+      "#2f5fa3",
+      "#e0b95a",
+      "#c9b48a",
+      "#b4aea2"
+    ],
+    "roofColours": [
+      "#3f7a52",
+      "#b5603f",
+      "#b9b2a6",
+      "#7d8288"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "stucco",
+      "concrete",
+      "limestone",
+      "marble"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Studded blue doors, mashrabiya-style grilles, horseshoe and pointed arches, Qallaline ceramic tile panels, carved plaster, green-glazed tile roofs and small domes, Art Deco geometric stucco on 1930s buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Tunis",
+        "what": "medina, ville nouvelle, Avenue Habib Bourguiba, climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sidi_Mahrez_Mosque",
+        "what": "Ottoman-influenced mosque with Iznik tile, central dome and four cupolas"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Parc_du_Belv%C3%A9d%C3%A8re",
+        "what": "Koubba pavilion; pines, palms, ficus, eucalyptus, olives"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Great_Synagogue_of_Tunis",
+        "what": "Art Deco by Victor Valensi, 1933-37"
+      }
+    ]
+  },
+  "places": {
+    "tunis-airport-tunis-airport": {
+      "venueId": "tunis-airport-tunis-airport",
+      "city": "tunis",
+      "name": "Tunis Carthage International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The main terminal at Tunis-Carthage: a long two-level white block with a departures canopy, glazed fronts and the airfield control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeece6",
+          "#4a7aa8",
+          "#c9ced1"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis%E2%80%93Carthage_International_Airport",
+          "what": "terminal expanded 1997 to 57,448 m2 on two floors (departures/arrivals), 4.4 M pax; extra 5,500 m2 in 2005; charter terminal opened 2006"
+        }
+      ],
+      "notes": "Floor area and two-level layout are sourced; width/depth (230 x 70) is derived from 57,448 m2 over two floors, appearance and colours are typed. Jet bridge count is a guess."
+    },
+    "tunis-clinic": {
+      "venueId": "tunis-clinic",
+      "city": "tunis",
+      "name": "Hospital Mongi Slim",
+      "archetype": "hospital",
+      "subject": "The La Marsa hospital: white four-storey ward blocks with balconies and an ambulance entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee6",
+          "#2f5fa3",
+          "#c9ced1"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No building description was found; typed from a Tunisian public hospital and the city's white palette."
+    },
+    "tunis-community-notices": {
+      "venueId": "tunis-community-notices",
+      "city": "tunis",
+      "name": "Centre Nationnal de la cartographie et de la Télédétection",
+      "archetype": "civic-small",
+      "subject": "A national mapping agency: a two-storey cream rendered office building with a flagpole, in a fenced yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d8b8",
+          "#8c8a84",
+          "#f7f5ef"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed small government agency building."
+    },
+    "tunis-community-voting-game": {
+      "venueId": "tunis-community-voting-game",
+      "city": "tunis",
+      "name": "Tunis City Hall",
+      "archetype": "civic-palace",
+      "subject": "The 1998 Tunis town hall by the Kasbah: a white civic block mixing modern concrete with traditional arches and carved plaster ornament",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f7f5ef",
+          "#c9b48a",
+          "#2f5fa3"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Tunis",
+          "what": "inaugurated 8 Nov 1998 on the former Neo-Destour HQ site near the Kasbah; architect Wassim Ben Mahmoud; modern materials with traditional ornament; ceramic wall cladding and sculpted plaster inside"
+        }
+      ],
+      "notes": "The page gives no storey count or colours; size, white colouring and the arch details are typed from the description of modern materials plus traditional ornament."
+    },
+    "tunis-community-workshop": {
+      "venueId": "tunis-community-workshop",
+      "city": "tunis",
+      "name": "Mediterranean School of Business",
+      "archetype": "campus-block",
+      "subject": "A modern private business school near the lake: glass and white render blocks with a canopy entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e8eef1",
+          "#2f5fa3",
+          "#f4f4f2"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed from the lakeside Berges du Lac glass-and-render district."
+    },
+    "tunis-market-game": {
+      "venueId": "tunis-market-game",
+      "city": "tunis",
+      "name": "Tunis City",
+      "archetype": "mall",
+      "subject": "The Tunis City shopping centre: a very large three-level mall with a white and glazed facade and extensive parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1eee6",
+          "#4a7aa8",
+          "#c9b48a"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found. Game kind is market, but the name matches the 'Tunis City' mall, so a mall is typed."
+    },
+    "tunis-meal-stop": {
+      "venueId": "tunis-meal-stop",
+      "city": "tunis",
+      "name": "Lucullus",
+      "archetype": "restaurant",
+      "subject": "A seaside restaurant: a white two-storey building with blue shutters, an awning and a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f7f5ef",
+          "#2f5fa3",
+          "#e0b95a"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed small white-and-blue restaurant using the Tunisian coastal palette."
+    },
+    "tunis-osm-node-483108304": {
+      "venueId": "tunis-osm-node-483108304",
+      "city": "tunis",
+      "name": "IPEIEM Institut Prépartoire des études d'ingénieur El Manar",
+      "archetype": "campus-block",
+      "subject": "A preparatory engineering institute: two- and three-storey cream concrete teaching blocks in a campus yard",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d2c2",
+          "#2f5fa3",
+          "#f7f5ef"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed El Manar campus block."
+    },
+    "tunis-osm-node-5669470129": {
+      "venueId": "tunis-osm-node-5669470129",
+      "city": "tunis",
+      "name": "Mosquée khelloua de Sidi Mahrez",
+      "archetype": "shrine-small",
+      "subject": "A small whitewashed khelloua (prayer cell) in the medina: a cube with a single green-tiled dome and a studded door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f7f5ef",
+          "#3f7a52",
+          "#2f5fa3"
+        ],
+        "roofColour": "#3f7a52",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "18th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sidi_Mahrez_Mosque",
+          "what": "the larger Sidi Mahrez Mosque nearby has a central dome with four cupolas and Iznik tile; the khelloua itself was not described"
+        }
+      ],
+      "notes": "A khelloua is a small prayer room attached to a zawiya; no source describes this one, so a typical medina shrine is typed. The famous Ottoman-style Sidi Mahrez Mosque (70 m long, up to 31 m high) is a separate building; use it only if the generator has spare detail."
+    },
+    "tunis-osm-node-7713167960": {
+      "venueId": "tunis-osm-node-7713167960",
+      "city": "tunis",
+      "name": "Université libre de Tunis",
+      "archetype": "campus-block",
+      "subject": "A private university: a four-storey white and glass teaching block with a canopy entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f5ef",
+          "#4a7aa8",
+          "#c9ced1"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed modern private campus block."
+    },
+    "tunis-osm-relation-1431423": {
+      "venueId": "tunis-osm-relation-1431423",
+      "city": "tunis",
+      "name": "Ministère du Tourisme",
+      "archetype": "civic-palace",
+      "subject": "The Ministry of Tourism: a pale mid-rise government block in the French-built centre with a flag on a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#e6d8b8",
+          "#9a9890",
+          "#f7f5ef"
+        ],
+        "roofColour": "#9a9890",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed as a mid-rise ministry on a tree-lined avenue of the ville nouvelle."
+    },
+    "tunis-osm-relation-2401476": {
+      "venueId": "tunis-osm-relation-2401476",
+      "city": "tunis",
+      "name": "Bardo National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Bardo palace-museum: a 15th-century Hafsid and later beylical palace of whitewashed courtyards, green-tile roofs and arcades, with a modern glass-and-stone wing",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f1ead8",
+          "#3f7a52",
+          "#c9b48a"
+        ],
+        "roofColour": "#3f7a52",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2,
+          "note": "small patio with marble fountain and colonnade"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "Roman mosaics displayed throughout"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "domed mosaic hall"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "15th c. palace, 2012 wing",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bardo_National_Museum_(Tunis)",
+          "what": "15th-century Hafsid palace, beylical palace, museum since 1888; 2012 extension of about 9,000 m2 by Codou-Hindley and Amira Nouira; painted and stucco ceilings, domed mosaic hall, small patio with marble fountain and colonnade"
+        }
+      ],
+      "notes": "Exterior colours and roof type are typed from the Husainid palace type; sources describe interiors and the 2012 wing only. Footprint is an estimate."
+    },
+    "tunis-osm-relation-5405848": {
+      "venueId": "tunis-osm-relation-5405848",
+      "city": "tunis",
+      "name": "Stade El Menzah",
+      "archetype": "stadium",
+      "subject": "The Olympic City stadium at El Menzah: an open concrete oval of tiered stands around a pitch and 400 m track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#6d7a86",
+          "#e6d8b8"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964-1967",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_olympique_d%27El_Menzah",
+          "what": "39,858 seats, 400 m tartan track, pitch 105 x 68 m, stands: pitch-side, ends, terraces, honour stand; built for 1967 Mediterranean Games, renovated 1994, restoration from 2022"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Menzah_Stadium",
+          "what": "architect Olivier-Clement Cacoub; 1964-67; closed 2019, being rebuilt"
+        }
+      ],
+      "notes": "Neither page mentions a roof; modelled open. The shape is an oval bowl scaled to 40,000 seats. Reconstruction (2022+) may have changed the look."
+    },
+    "tunis-osm-way-104343343": {
+      "venueId": "tunis-osm-way-104343343",
+      "city": "tunis",
+      "name": "Place Pasteur",
+      "archetype": "park-landscape",
+      "subject": "Place Pasteur: a tree-shaded roundabout garden in the Belvédère district surrounded by cream apartment blocks",
+      "form": {
+        "footprint": "round",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e6d8b8",
+          "#b9b2a6",
+          "#f7f5ef"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed as a ville nouvelle roundabout garden. Fountain and railings are assumptions."
+    },
+    "tunis-osm-way-105588055": {
+      "venueId": "tunis-osm-way-105588055",
+      "city": "tunis",
+      "name": "INSAT - Institut National des Sciences Appliquées et de Technologies",
+      "archetype": "campus-block",
+      "subject": "The INSAT engineering school at the Centre Urbain Nord: bold concrete and render lecture blocks around a plaza",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#2f5fa3",
+          "#f7f5ef"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed from Tunisian university architecture of the 1990s."
+    },
+    "tunis-osm-way-109431591": {
+      "venueId": "tunis-osm-way-109431591",
+      "city": "tunis",
+      "name": "Place de Barcelone",
+      "archetype": "park-landscape",
+      "subject": "Place de Barcelone: a busy hub square with a small garden, the light-metro station entrance, bus bays and the rail station beside it",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e6d8b8",
+          "#b9b2a6",
+          "#f7f5ef"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Place_de_Barcelone_(Tunis)",
+          "what": "urban transport hub with a metro station, bus lines, public garden and the railway station adjacent; bordered by Rue de Belgique and Rue Ali-Darghouth"
+        }
+      ],
+      "notes": "Layout facts only; no fountain is mentioned in the source, so none is modelled."
+    },
+    "tunis-osm-way-179953386": {
+      "venueId": "tunis-osm-way-179953386",
+      "city": "tunis",
+      "name": "Musée de la Mémoire Nationale",
+      "archetype": "museum-theatre",
+      "subject": "The national memory museum: a modern three-storey white rendered museum with a columned entrance and a lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f7f5ef",
+          "#c9b48a",
+          "#2f5fa3"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed as a recent official museum in the Tunis suburbs."
+    },
+    "tunis-osm-way-180268053": {
+      "venueId": "tunis-osm-way-180268053",
+      "city": "tunis",
+      "name": "Institut Salah-Azaïz",
+      "archetype": "hospital",
+      "subject": "The cancer institute opposite Bab Saadoun: a white multi-storey hospital block with side wings and an ambulance entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee6",
+          "#2f5fa3",
+          "#c9ced1"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Institut_Salah-Aza%C3%AFz",
+          "what": "founded 14 March 1969 as a Franco-Tunisian collaboration; 196 beds; next to the health ministry opposite the former Bab Saadoun gate"
+        }
+      ],
+      "notes": "Only the founding date, bed count and location are sourced; form is typed (196 beds suggests a mid-size block)."
+    },
+    "tunis-osm-way-34573429": {
+      "venueId": "tunis-osm-way-34573429",
+      "city": "tunis",
+      "name": "Stade Chedli Zouiten",
+      "archetype": "stadium",
+      "subject": "The Mutuelleville stadium: a compact 18,000-seat oval with a main grandstand, press stand and lawn-side bleachers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2c2",
+          "#2f5fa3",
+          "#e6d8b8"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1942, renovated 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Chedly_Zouiten",
+          "what": "18,000 capacity, Mutuelleville; built 1942, renovated 2009-12; grandstand, press stand, bleachers on the lawn side; grass pitch"
+        }
+      ],
+      "notes": "No roof is mentioned; modelled with an open main stand. Smaller and older than El Menzah, and set among apartment blocks."
+    },
+    "tunis-osm-way-95134307": {
+      "venueId": "tunis-osm-way-95134307",
+      "city": "tunis",
+      "name": "Grand Synagogue of Tunis",
+      "archetype": "shrine-small",
+      "subject": "The 1937 Art Deco Grand Synagogue: a symmetrical pale block with a geometric facade and a dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#eae0cc",
+          "#c9b48a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1933-1937",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Great_Synagogue_of_Tunis",
+          "what": "Art Deco by Victor Valensi; groundbreaking 1933, completed 1937; restored 1990; capacity 400; a dome appears in the photo captions"
+        }
+      ],
+      "notes": "Dimensions and colours are estimated from the 400-person capacity and Art Deco stucco convention; only style, architect, dates and the dome are sourced."
+    },
+    "tunis-osm-way-95199308": {
+      "venueId": "tunis-osm-way-95199308",
+      "city": "tunis",
+      "name": "Hôpital Militaire Principal d'Instruction de Tunis",
+      "archetype": "hospital",
+      "subject": "The military teaching hospital at Montfleury: a large cream-rendered multi-storey hospital block with wings and a gated entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 50,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d8b8",
+          "#8c8a84",
+          "#f7f5ef"
+        ],
+        "roofColour": "#b9b2a6",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description found; typed large military hospital with a gated forecourt."
+    },
+    "tunis-osm-way-96994557": {
+      "venueId": "tunis-osm-way-96994557",
+      "city": "tunis",
+      "name": "Stade Ali-Belhouane",
+      "archetype": "stadium",
+      "subject": "A small neighbourhood stadium: a modest oval with a single low stand, bleachers and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2c2",
+          "#2f5fa3",
+          "#e6d8b8"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tunis",
+          "what": "Tunis: medina on a slope to the lake, French-built ville nouvelle, Avenue Habib Bourguiba tree-lined, hot semi-arid/Mediterranean climate"
+        }
+      ],
+      "notes": "No description or capacity found; typed a small stadium to differ from El Menzah and Chedli Zouiten."
+    },
+    "tunis-quiet-reflection": {
+      "venueId": "tunis-quiet-reflection",
+      "city": "tunis",
+      "name": "Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A medina mosque: a whitewashed block with a green-tiled hipped prayer-hall roof, one dome and a tall square minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f7f5ef",
+          "#3f7a52",
+          "#e0b95a"
+        ],
+        "roofColour": "#3f7a52",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "square-shaft Tunisian minaret"
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "18th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sidi_Mahrez_Mosque",
+          "what": "Tunisian mosque convention for the type: Ottoman-influenced domes and tiles"
+        }
+      ],
+      "notes": "The venue is only called 'Mosque'; nothing identifies the building, so the Tunis medina mosque type is used. The square minaret and green tile roof are the Tunis convention."
+    },
+    "tunis-recreation": {
+      "venueId": "tunis-recreation",
+      "city": "tunis",
+      "name": "Belvedere Park",
+      "archetype": "park-landscape",
+      "subject": "Parc du Belvédère: a hillside park of pines, palms, ficus and olives laid out in English style, with the 17th-century Koubba pavilion under five small domes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f7f5ef",
+          "#3f7a52",
+          "#c9b48a"
+        ],
+        "roofColour": "#e6dec9",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Koubba: square hall, four small domes and a larger central dome, Arabo-Andalusian"
+        },
+        {
+          "id": "dome",
+          "count": 5
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "1892-1897 park",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Parc_du_Belv%C3%A9d%C3%A8re",
+          "what": "110 ha park by Joseph Laforcade, English landscape style, hillside with views; Koubba pavilion with square hall, four small domes and a larger central dome; pines, palms, ficus, eucalyptus, olives; zoo built 1963-69"
+        }
+      ],
+      "notes": "The 110 ha park is clamped to a 120 m scene: show the lawned hill, tree groves and the Koubba. Pines would be an equal choice for 'trees'. The 13 ha zoo is not modelled."
+    },
+    "tunis-transit": {
+      "venueId": "tunis-transit",
+      "city": "tunis",
+      "name": "Tunis Station",
+      "archetype": "transport-station",
+      "subject": "Gare de Tunis: the main rail terminus beside Place de Barcelone, a cream colonial-era hall with platform canopies over five tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e6d8b8",
+          "#8c8a84",
+          "#f7f5ef"
+        ],
+        "roofColour": "#9a9890",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "c.1877, rebuilt",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gare_de_Tunis",
+          "what": "opened c.1877 as the 'gare du Sud'; 3 platforms, 5 tracks; art gallery inside; fire damage 2011"
+        }
+      ],
+      "notes": "Track and platform counts are sourced; the facade and hall are typed from French-era station convention. The present main building is a later rebuild."
+    }
+  }
+}

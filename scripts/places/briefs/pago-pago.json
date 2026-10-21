@@ -1,0 +1,1201 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "pago-pago",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "pago-pago",
+    "climate": "rainforest",
+    "vernacular": "Tropical Polynesian harbour town in a steep green volcanic bay: low concrete-block and clapboard buildings painted white or pastel under red, green or grey corrugated metal roofs, open Samoan fale (oval or rectangular, post-and-beam) and village churches, 1900s naval colonial buildings with wide verandas, and heavy cloud on the ridges.",
+    "wallColours": [
+      "#e9e4d6",
+      "#f4f1e6",
+      "#d8c9a3",
+      "#9fb7c9",
+      "#f2e2b8",
+      "#c26a4b",
+      "#b9c9c0"
+    ],
+    "roofColours": [
+      "#a33b2d",
+      "#5a7a5a",
+      "#7b8b95",
+      "#3f5f7a"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "timber",
+      "render",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Open fale with posts and wide eaves; two-storey verandas on naval-era buildings; white churches with towers; blue or red roofs; coconut palms and breadfruit; grassy malae (village green).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+        "what": "fale shapes and roofs, metal roofs now common, blue-roofed round houses"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fagatogo",
+        "what": "19th-century clapboard mixed with newer two-storey concrete buildings; naval-era heritage; Matafao Peak setting"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Courthouse_of_American_Samoa",
+        "what": "wood-frame building on concrete piers with two-storey veranda"
+      }
+    ]
+  },
+  "places": {
+    "pago-pago-airport-pago-pago-airport": {
+      "venueId": "pago-pago-airport-pago-pago-airport",
+      "city": "pago-pago",
+      "name": "Pago Pago International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Tafuna's terminal: a cluster of eight interconnected low buildings with a shared roofed forecourt and no control tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "variant": "cluster of linked low buildings",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e4d6",
+          "#2f7f9a",
+          "#c9c6bc"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered forecourt/walkways"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1965, expanded 1970s, renovated 2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pago_Pago_International_Airport",
+          "what": "terminal is a combination of 8 interconnected buildings; dedicated Nov 1965; mid-1970s expansion doubled its size; 2010 renovation; three gates; no control tower; Tafuna plain ~7 mi SW of Pago Pago; 3,048 m runway"
+        }
+      ],
+      "notes": "Structure (8 linked buildings, 3 gates, no control tower) is from Wikipedia; no photos described there, so the colours, roof and exact dimensions are estimates. Deliberately no control-tower feature. OSM has only the aerodrome polygon (3.6 x 1.3 km), no terminal footprint."
+    },
+    "pago-pago-clinic": {
+      "venueId": "pago-pago-clinic",
+      "city": "pago-pago",
+      "name": "Lyndon Baines Johnson Tropical Medical Center",
+      "archetype": "hospital",
+      "subject": "The territory's 150-bed hospital in the Faga'alu valley: several concrete wings stepped around a drive-up entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ece6d6",
+          "#4f9fb5",
+          "#c9c6bc"
+        ],
+        "roofColour": "#b8b4a8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1968",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lyndon_B._Johnson_Tropical_Medical_Center",
+          "what": "opened 6 June 1968; 150 beds; ~20 acre site in Faga'alu valley; cost $3.5M"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/413141410",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM footprint is a multi-wing polygon about 138 x 82 m (site 37,000 m2). Storeys and colours are not documented in sources; typed as a 1960s US-funded concrete hospital. Valley setting: steep green hills behind."
+    },
+    "pago-pago-community-notices": {
+      "venueId": "pago-pago-community-notices",
+      "city": "pago-pago",
+      "name": "American Samoa Fono",
+      "archetype": "civic-palace",
+      "subject": "The Maota Fono legislative complex: a low multi-lobed building whose rounded outline echoes Samoan fale",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 73,
+        "depth_m": 48,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "lobed plan with round fale-like pavilions",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe3",
+          "#2f6f6a",
+          "#c9bfa5"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1267503",
+          "what": "American Samoa Fono, territorial legislature, 1999"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Fagatogo",
+          "what": "Fagatogo: low ground at the foot of Matafao Peak; Malae grassy parade ground; Government House 1903; restored early-1900s naval buildings; 19th-century clapboard mixed with newer two-storey concrete; Fagatogo Market is the commercial hub; Catholic co-cathedral 1959"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/434715072",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM \"Maota Fono Complex\" footprint 73 x 48 m has rounded lobes at the ends and centre, which suggests fale-inspired round pavilions, but no description of the facade was found; colours and roof are typed. Faces the Malae at Fagatogo."
+    },
+    "pago-pago-community-voting-game": {
+      "venueId": "pago-pago-community-voting-game",
+      "city": "pago-pago",
+      "name": "Courthouse of American Samoa",
+      "archetype": "civic-small",
+      "subject": "The 1900s naval-administration building now used as the High Court: a two-storey white timber building with a two-storey veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "veranda on three sides",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e6",
+          "#4f6b55",
+          "#c9bfa5"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "two-storey veranda on three sides"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1904",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Courthouse_of_American_Samoa",
+          "what": "two-story wood-frame building on concrete piers; two-story veranda on three sides; concrete vault at the back; completed about 1904"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Fagatogo",
+          "what": "Fagatogo: low ground at the foot of Matafao Peak; Malae grassy parade ground; Government House 1903; restored early-1900s naval buildings; 19th-century clapboard mixed with newer two-storey concrete; Fagatogo Market is the commercial hub; Catholic co-cathedral 1959"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/332359599",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Form and structure documented. White paint, green trim and red corrugated roof are NOT documented; they follow the restored naval-era buildings of Fagatogo. OSM footprint 35 x 25 m includes the veranda. Back concrete vault as a small block."
+    },
+    "pago-pago-community-workshop": {
+      "venueId": "pago-pago-community-workshop",
+      "city": "pago-pago",
+      "name": "American Samoa Community College",
+      "archetype": "campus-block",
+      "subject": "The Mapusaga campus: scattered one- and two-storey concrete classroom blocks with covered walkways",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "campus of several detached blocks",
+        "wings": 4
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e7e1d0",
+          "#2f6f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4744872",
+          "what": "American Samoa Community College, land-grant community college at Mapusaga, founded 1970"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/123454235",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM campus polygon about 300 x 140 m (36,000 m2); show one main teaching block. Appearance not described in sources fetched. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-market-game": {
+      "venueId": "pago-pago-market-game",
+      "city": "pago-pago",
+      "name": "Fagatogo Market",
+      "archetype": "market-hall",
+      "subject": "The Fagatogo Market on the harbour front: a roofed open-sided hall of produce stalls beside the bus stands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "open-sided hall"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4ddc9",
+          "#2f7f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 3,
+          "note": "buses stop alongside"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fagatogo",
+          "what": "Fagatogo: low ground at the foot of Matafao Peak; Malae grassy parade ground; Government House 1903; restored early-1900s naval buildings; 19th-century clapboard mixed with newer two-storey concrete; Fagatogo Market is the commercial hub; Catholic co-cathedral 1959"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/107474782",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Wikipedia confirms the market is the Fagatogo commercial hub with island buses arriving; building described nowhere. OSM square footprint ~43 x 43 m (rotated 121 degrees). Typed as an open roofed hall. Island buses are brightly painted wooden-bodied (general knowledge)."
+    },
+    "pago-pago-meal-stop": {
+      "venueId": "pago-pago-meal-stop",
+      "city": "pago-pago",
+      "name": "Sweetie's",
+      "archetype": "restaurant",
+      "subject": "A small cafe-restaurant in Fagatogo: a single-storey concrete building with a covered front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1e2b8",
+          "#c0392b",
+          "#e7e1d0"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/434906897",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM nearest building 31 x 22 m (20 m from the node, so uncertain). Nothing found about its look. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-osm-node-359258592": {
+      "venueId": "pago-pago-osm-node-359258592",
+      "city": "pago-pago",
+      "name": "Gagamoe Field",
+      "archetype": "park-landscape",
+      "subject": "A flat grass sports field with a small clubhouse at one edge, backed by steep green hills",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#7fa860",
+          "#e7e1d0",
+          "#c0392b"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q21847134",
+          "what": "Gagamoe Field, park in the Eastern District, American Samoa"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/428669667",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Only its existence as a park/field is verified. Field markings and lights are typed. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-osm-node-3844905202": {
+      "venueId": "pago-pago-osm-node-3844905202",
+      "city": "pago-pago",
+      "name": "Tisa's Barefoot Bar",
+      "archetype": "restaurant",
+      "subject": "A beachfront bar-restaurant at Alega with an open timber deck and a hip roof, palms and sand around",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "variant": "open beach bar",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#2f7f9a",
+          "#f2efe3"
+        ],
+        "roofColour": "#a8855a",
+        "roofMaterial": "thatch",
+        "windows": "screen",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/433855602",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 13.7 x 8.1 m on the north-east coast. The open timber/thatch character is typed from the beach-bar type and Samoan fale tradition; not confirmed. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-osm-node-4791141236": {
+      "venueId": "pago-pago-osm-node-4791141236",
+      "city": "pago-pago",
+      "name": "Internet Café",
+      "archetype": "shophouse",
+      "subject": "A row of small shops in Tafuna, one of which is an internet cafe, in a single-storey concrete strip with a shared awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "strip of shops"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e9e4d6",
+          "#9fb7c9",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/428979691",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM containing building is 65 x 30 m (a shop strip, not just the cafe). No description of the cafe found. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-osm-node-9049560467": {
+      "venueId": "pago-pago-osm-node-9049560467",
+      "city": "pago-pago",
+      "name": "Poloa Defensive Fortifications",
+      "archetype": "heritage-fort",
+      "subject": "A small World War II coastal defensive position of concrete in the village of Poloa, overgrown by scrub",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8a89a",
+          "#7b7b6c",
+          "#5a6a4a"
+        ],
+        "roofColour": "#8a8a7a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low concrete parapet"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1942",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q18152109",
+          "what": "Poloa defensive fortifications, historic fortifications in American Samoa"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/324101911",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "The OSM match is a nearby 31 x 15 m church building, not the fortification, so its footprint was ignored. Real post is a small WWII-era concrete position; shown as a low bunker. Typed, unverified detail. Must look different from the Masefau position (this one is a compact bunker)."
+    },
+    "pago-pago-osm-node-9049560470": {
+      "venueId": "pago-pago-osm-node-9049560470",
+      "city": "pago-pago",
+      "name": "Fagalele Boys School",
+      "archetype": "campus-block",
+      "subject": "A small historic school building at Leone: a single-storey gabled schoolhouse with a covered front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ece6d6",
+          "#4f6b55",
+          "#c9bfa5"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s-1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q14962112",
+          "what": "Fagalele Boys School, historic building in American Samoa"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/427287244",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Only that it is a historic building is verified (Wikidata); the match to OSM building 17 x 14 m is by proximity. Appearance typed. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-osm-node-9049637848": {
+      "venueId": "pago-pago-osm-node-9049637848",
+      "city": "pago-pago",
+      "name": "Masefau Defensive Fortifications",
+      "archetype": "heritage-fort",
+      "subject": "A World War II coastal defence emplacement near Masefau village, shown as a short curved concrete and stone wall facing the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 2.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#9c9a8c",
+          "#7b7b6c",
+          "#556a45"
+        ],
+        "roofColour": "#8a8a7a",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low curved parapet"
+        },
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "gun position, typed"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1942",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q20203083",
+          "what": "Masefau defensive fortifications entry (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/429518149",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Nothing found on the physical remains; OSM building 26 x 13 m is the nearest mapped structure and may be unrelated. Typed as a wall/emplacement, deliberately longer and lower than the Poloa bunker."
+    },
+    "pago-pago-osm-way-1205108937": {
+      "venueId": "pago-pago-osm-way-1205108937",
+      "city": "pago-pago",
+      "name": "Utulei Beach Park",
+      "archetype": "park-landscape",
+      "subject": "A grassy harbour-side beach park at Utulei with palms, a pavilion and a small old fort/gun position",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#7fa860",
+          "#e9e4d6",
+          "#a33b2d"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "open fale-style shelters"
+        },
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "OSM historic=fort marker"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1900s fort, modern park",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q21847505",
+          "what": "Utulei Beach Park, park in the Eastern District"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/885567271",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM park polygon 18,000 m2 carries a historic=fort tag. Contents of the park are typed; harbour and Rainmaker Mountain behind. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Pago Pago city style."
+    },
+    "pago-pago-osm-way-253635520": {
+      "venueId": "pago-pago-osm-way-253635520",
+      "city": "pago-pago",
+      "name": "Veterans Memorial Stadium",
+      "archetype": "stadium",
+      "subject": "Tafuna's multi-sport stadium: an athletics oval with a covered main stand along one side and open bank seating",
+      "form": {
+        "footprint": "oval",
+        "width_m": 219,
+        "depth_m": 164,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "shed",
+        "variant": "small stadium, one covered stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c8",
+          "#2f6f9a",
+          "#9a9fa3"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1637931",
+          "what": "Veterans Memorial Stadium, multisport venue in American Samoa"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/253635520",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM leisure=stadium footprint 219 x 164 m confirms scale. Seating and roof layout not described in any source reached; typed as a small stadium with one covered stand."
+    },
+    "pago-pago-quiet-reflection": {
+      "venueId": "pago-pago-quiet-reflection",
+      "city": "pago-pago",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "church-modern",
+      "subject": "A typical white Samoan village church of rendered concrete with a short tower, beside a lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#2f6f9a",
+          "#c9bfa5"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short front tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1950s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+          "what": "traditional fale oval/round with thatch, metal roofs now common, blue-roofed round houses seen; modern fale tele rectangular"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/427289884",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Game placeholder venue: nearest OSM building is 17 x 13 m and not necessarily a place of worship. Village churches are the dominant community building in Samoa (general knowledge); this is a typed guess."
+    },
+    "pago-pago-recreation": {
+      "venueId": "pago-pago-recreation",
+      "city": "pago-pago",
+      "name": "Pago Pago Park",
+      "archetype": "park-landscape",
+      "subject": "A small waterfront lawn at the head of Pago Pago harbour with palms and an open fale-style shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7fa860",
+          "#c9a77c",
+          "#a33b2d"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "round or oval fale-style open shelter"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q21848610",
+          "what": "Pago Pago Park, park in the Eastern District"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Samoa",
+          "what": "traditional fale oval/round with thatch, metal roofs now common, blue-roofed round houses seen; modern fale tele rectangular"
+        }
+      ],
+      "notes": "No OSM footprint. Existence verified by Wikidata only; contents typed. The fale-style shelter follows Samoan tradition (oval/round, posts, metal or thatch roof)."
+    },
+    "pago-pago-transit": {
+      "venueId": "pago-pago-transit",
+      "city": "pago-pago",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A small roofed bus shelter and stand where the brightly painted island buses stop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4ddc9",
+          "#c0392b",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/428669656",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Game placeholder venue; OSM building 14 x 11 m nearby. Typed from the city style. "
+    }
+  }
+}

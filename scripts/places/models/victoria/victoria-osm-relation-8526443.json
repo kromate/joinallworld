@@ -1,0 +1,152 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8526443",
+   "used": "zig-zag pavilion outline, 995 m2"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one-storey Creole-style health centre, red corrugated roof, verandas, pale blue trim; Commons nearby photo is a bay sunset so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe4",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a63d32",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     60
+    ],
+    "height": 0.05,
+    "colour": "#7d7f80"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -2,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 6,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#8fb0c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2,
+    "bottom": 1.4,
+    "colour": "#f4efe4",
+    "frameColour": "#a63d32"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Outline only; flat red roof stands in for hips, verandas/ambulance bay brief-derived, no photo of this building."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-relation-8526443"
+}

@@ -1,0 +1,515 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "federal-polytechnic-ado-ekiti",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Federal_Polytechnic_Ado_ekiti.3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MediaMOF",
+   "view": "street",
+   "file": "/tmp/places-evidence/ado-ekiti/poly3.jpg",
+   "used": "teal-framed white sign board on two teal posts, clipped hedge, distant brown-tan gate with pointed spire pylon and swept canopy, road with striped kerb, lamp posts, tall broadleaf trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Federal_Polytechnic_Ado_ekiti.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MediaMOF",
+   "view": "street",
+   "file": "/tmp/places-evidence/ado-ekiti/poly1.jpg",
+   "used": "sign board proportions and colours (blank board, no lettering reproduced)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/ado-ekiti.json",
+   "used": "two-storey louvred lecture blocks set far behind the gate (typed, no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.05,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-base",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    22,
+    24
+   ],
+   "height": 3.5,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9743f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b4a30"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gate-pylon",
+   "at": [
+    22,
+    24,
+    3.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       2.6
+      ],
+      "colour": "#b07a42"
+     },
+     {
+      "z": 3,
+      "rect": [
+       4.6,
+       2.2
+      ],
+      "colour": "#b07a42"
+     },
+     {
+      "z": 6,
+      "rect": [
+       3.2,
+       1.8
+      ],
+      "colour": "#b07a42"
+     },
+     {
+      "z": 8.5,
+      "rect": [
+       2,
+       1.4
+      ],
+      "colour": "#b07a42"
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "colour": "#b07a42"
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       0.5,
+       0.7
+      ],
+      "colour": "#b07a42"
+     },
+     {
+      "z": 14,
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "colour": "#b07a42"
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    25,
+    24,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 24,
+    "depth": 6,
+    "height": 4.6,
+    "thickness": 0.5,
+    "columns": 4,
+    "rise": 2.5,
+    "colour": "#a9743f",
+    "edgeColour": "#7a5530"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    24,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 22,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.5,
+    "columns": 4,
+    "rise": 2.2,
+    "colour": "#a9743f",
+    "edgeColour": "#7a5530"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 5,
+    "bottom": 2.4,
+    "colour": "#f4f4f0",
+    "frameColour": "#2a8c96"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.2,
+    "depth": 1.8,
+    "colour": "#7fa83a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -24,
+     -9,
+     0
+    ],
+    "end": [
+     26,
+     -9,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       1.7
+      ],
+      "height": 0.34,
+      "colour": "#1a1a1a"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -20,
+    51
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "louvre",
+     "back": "plain"
+    },
+    "bands": "#4f7a4c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "pitch": 14,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    48,
+    45
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "louvre",
+     "right": "plain"
+    },
+    "bands": "#4f7a4c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "pitch": 14,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "spacing": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    48,
+    13,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "spacing": 10
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#d9dcdc",
+    "count": 2,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     0
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     3
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     7
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     10
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     14
+    ],
+    "height": 23
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     17
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     21
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     24
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     28
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     31
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     35
+    ],
+    "height": 23
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     38
+    ],
+    "height": 22
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     42
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     45
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     49
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     52
+    ],
+    "height": 20
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     56
+    ],
+    "height": 23
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     59
+    ],
+    "height": 22
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Gate is a tall tan pointed pylon with two swept canopy wings, hedge, striped kerb island, tree lines and lamps added; but sign posts/teal frame are faint, lamps lack curved arms, the ground is flat dark asphalt without the wet grass verge, and the camera frames the whole site from afar rather than the low street view."
+ }
+}

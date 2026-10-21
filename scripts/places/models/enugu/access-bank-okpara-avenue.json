@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "access-bank-okpara-avenue",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1088156740",
+   "used": "nearest building outline (35 m away, low confidence; about 20 x 18 m)"
+  },
+  {
+   "kind": "text",
+   "used": "5-storey bank branch, blue-grey and white, glazed ground floor"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch-block",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6e0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "groundKind": "glass",
+    "groundHeight": 4.2,
+    "pattern": {
+     "type": "bands",
+     "colour": "#b7bcc0"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9094",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "brand-panel",
+   "params": {
+    "rect": [
+     5,
+     0.8
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#3d5a73"
+   },
+   "at": [
+    -6,
+    -14
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    3,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3,
+    "height": 3.6,
+    "colours": [
+     "#3d5a73"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -14.6,
+    17
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 9,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; nearest OSM outline 35 m away, colours and form from brief"
+ }
+}

@@ -1,0 +1,354 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "nkwo-emeke-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1027214141",
+   "used": "real market outline (9,652 m2, building=shed + amenity=marketplace) as the laterite ground; stall rows and sheds laid inside it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: periodic Igbo market, low tin-roofed stalls, umbrellas, a few lock-up blocks, gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 32,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b5654a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0684a",
+    "material": "membrane"
+   },
+   "z0": -0.35
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -34,
+    0.15
+   ],
+   "params": {
+    "length": 26,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7b5a3c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    20,
+    -34,
+    0.15
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -24,
+    12,
+    0.15
+   ],
+   "params": {
+    "length": 30,
+    "depth": 10,
+    "height": 4,
+    "roof": "gable",
+    "roof_colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    30,
+    38,
+    0.15
+   ],
+   "rotDeg": -30,
+   "params": {
+    "length": 28,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    48,
+    -30,
+    0.15
+   ],
+   "rotDeg": 60,
+   "params": {
+    "length": 22,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -5.0,
+    -40,
+    0.15
+   ],
+   "params": {
+    "count": 24,
+    "pitch": 3.3,
+    "kind": "shed",
+    "colours": [
+     "#b5654a",
+     "#8a8d90",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -2.5,
+    -26,
+    0.15
+   ],
+   "params": {
+    "count": 28,
+    "pitch": 3.3,
+    "kind": "umbrella",
+    "colours": [
+     "#b5654a",
+     "#8a8d90",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0.0,
+    -12,
+    0.15
+   ],
+   "params": {
+    "count": 31,
+    "pitch": 3.3,
+    "kind": "shed",
+    "colours": [
+     "#b5654a",
+     "#8a8d90",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    1.0,
+    2,
+    0.15
+   ],
+   "params": {
+    "count": 32,
+    "pitch": 3.3,
+    "kind": "umbrella",
+    "colours": [
+     "#b5654a",
+     "#8a8d90",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6.0,
+    16,
+    0.15
+   ],
+   "params": {
+    "count": 27,
+    "pitch": 3.3,
+    "kind": "shed",
+    "colours": [
+     "#b5654a",
+     "#8a8d90",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -17.5,
+    30,
+    0.15
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 3.3,
+    "kind": "umbrella",
+    "colours": [
+     "#b5654a",
+     "#8a8d90",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    24,
+    0.15
+   ],
+   "params": {
+    "count": 10,
+    "spread": 10,
+    "radius": 1.6,
+    "colours": [
+     "#b5654a",
+     "#e0b04a",
+     "#4a7ab5",
+     "#efe6d0"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -30,
+    -3,
+    0.15
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "radius": 1.6,
+    "colours": [
+     "#8a8d90",
+     "#e0b04a",
+     "#b5654a"
+    ],
+    "tables": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "gate",
+   "at": [
+    -40,
+    -46,
+    0.15
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -8,
+    0.15
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Outline is real; no photo of the market. Stall, shed and lock-up positions are indicative of an open periodic market."
+ }
+}

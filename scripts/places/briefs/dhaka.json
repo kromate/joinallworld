@@ -1,0 +1,1789 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dhaka",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dhaka",
+    "climate": "savanna",
+    "vernacular": "Dense mid-rise reinforced-concrete frame buildings with brick infill, plastered and painted in faded cream, ochre, pale green and pale blue, streaked by monsoon damp; flat roofs with water tanks and rebar stubs, window grilles and balcony rails; exposed red brick and raw concrete for the Kahn-era modernist public buildings; Mughal and colonial-era mosques and houses in Old Dhaka with plastered arches and small domes; tin-roofed informal sheds; mango, rain tree and banyan shade trees and palms.",
+    "wallColours": [
+      "#d9cfb2",
+      "#e7c97a",
+      "#8fa87f",
+      "#9fb7c9",
+      "#bdb8ac",
+      "#b5503b",
+      "#e9e4d8"
+    ],
+    "roofColours": [
+      "#8c8a84",
+      "#9a5b3c",
+      "#7b8890",
+      "#b04a3a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "red-brick",
+      "exposed-concrete",
+      "glass-curtain",
+      "tile-cladding"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "clay-tile",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Mughal-derived cusped arches, merlon parapets and small ribbed domes on old mosques; chinitikri broken-china mosaic (star and floral patterns) on domes and facades; colonial-era louvred shutters and verandahs; modern Bangladeshi modernism of exposed brick and concrete with large circular and triangular openings; hand-painted signboards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Bangladesh",
+        "what": "Dhaka as Mughal capital (Lalbagh Fort, Saat Masjid), Indo-Saracenic Ahsan Manzil, Curzon Hall, Louis Kahn modernism, concrete in the modern period"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Star_Mosque",
+        "what": "chinitikri china-tile mosaic facade and domes, Mughal style, small five-domed mosque"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Khan_Mohammad_Mridha_Mosque",
+        "what": "raised platform, three domes, cusped arches, merlon parapet, Mughal-period Dhaka mosque form"
+      }
+    ]
+  },
+  "places": {
+    "dhaka-airport-dhaka-airport": {
+      "venueId": "dhaka-airport-dhaka-airport",
+      "city": "dhaka",
+      "name": "Hazrat Shahjalal International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3 of Hazrat Shahjalal International Airport seen from the forecourt: a very long low glass-and-metal terminal under a rolling wave roof, with the older terminal and control tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 700,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 32,
+        "roof": "wave",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#5b7184",
+          "#f2f2f0"
+        ],
+        "roofColour": "#e6e8ea",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "long rolling roof edge over the forecourt"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 26
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new ATC tower beside Terminals 1/2"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-level car park linked by tunnel"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hazrat_Shahjalal_International_Airport",
+          "what": "Terminal 3: about 230,000 m2 floor area, 26 boarding bridges, 115 check-in counters, multi-level car park, new control tower, designed by Rohani Baharin"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1172183216",
+          "what": "OSM footprint 731x292 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30603",
+          "what": "Wikidata entity: Hazrat Shahjalal International Airport"
+        }
+      ],
+      "notes": "OSM maps the T3 footprint as 731 x 292 m (building=construction). Roof wave form and glass/white-grey colour scheme come from general knowledge of the terminal renders and are not stated on the sources read; generator should show the recognisable central portion (<=120 m)."
+    },
+    "dhaka-clinic": {
+      "venueId": "dhaka-clinic",
+      "city": "dhaka",
+      "name": "Enam Medical College and hospital",
+      "archetype": "hospital",
+      "subject": "Enam Medical College and Hospital, Savar: a mid-rise private hospital block with a plain painted facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 27,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3dccb",
+          "#2d6a8f",
+          "#f2f2f2"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/337766881",
+          "what": "OSM footprint 62x27.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30314743",
+          "what": "Wikidata entity: Enam Medical College and Hospital"
+        }
+      ],
+      "notes": "Only measured footprint (62 x 27 m) and Wikidata label found; storeys and colours are a typed guess from the Dhaka city style for a private hospital."
+    },
+    "dhaka-community-notices": {
+      "venueId": "dhaka-community-notices",
+      "city": "dhaka",
+      "name": "Sarak Bhaban, Roads & Highways Department Head Office",
+      "archetype": "civic-palace",
+      "subject": "Sarak Bhaban, the Roads and Highways Department head office at Tejgaon: a large government office complex with several wings",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 55,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9cfb2",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1148134190",
+          "what": "OSM footprint 173x109.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q48731819",
+          "what": "Wikidata entity: Roads and Highways Department"
+        }
+      ],
+      "notes": "OSM building=government_office, irregular 173 x 110 m footprint (4,118 m2). Height, finish and colours are guessed; no description of the building found."
+    },
+    "dhaka-community-voting-game": {
+      "venueId": "dhaka-community-voting-game",
+      "city": "dhaka",
+      "name": "Nagar Bhaban",
+      "archetype": "civic-small",
+      "subject": "Nagar Bhaban (city corporation town hall) near Narayanganj: a small three-storey civic office block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7c97a",
+          "#b5503b",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/689287638",
+          "what": "OSM footprint 61.7x50.3 m"
+        }
+      ],
+      "notes": "OSM amenity=townhall, 62 x 50 m footprint, no other data; typed guess from the Dhaka city style."
+    },
+    "dhaka-community-workshop": {
+      "venueId": "dhaka-community-workshop",
+      "city": "dhaka",
+      "name": "China Bangladesh Friendship Exhibition Center",
+      "archetype": "museum-theatre",
+      "subject": "Bangladesh-China Friendship Exhibition Center at Purbachal: a very wide two-level exhibition and convention hall with a glazed entrance front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 285,
+        "depth_m": 99,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9dcdf",
+          "#3d6f9b",
+          "#f4f4f2"
+        ],
+        "roofColour": "#c8cbcd",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/822108275",
+          "what": "OSM footprint 285.4x99.3 m, 2 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q110560002",
+          "what": "Wikidata entity: Bangladesh–China Friendship Exhibition Center"
+        }
+      ],
+      "notes": "OSM measured 285 x 99 m, 2 levels. Appearance (cladding, colours) is a typed guess for a large exhibition hall; generator should show a recognisable portion (<=120 m)."
+    },
+    "dhaka-market-game": {
+      "venueId": "dhaka-market-game",
+      "city": "dhaka",
+      "name": "Jamuna Future Park",
+      "archetype": "mall",
+      "subject": "Jamuna Future Park, Kuril: a huge glass-fronted shopping mall with a central glazed dome over a multi-level atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 229,
+        "depth_m": 212,
+        "storeys": 7,
+        "height_m": 38,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#7aa6c4",
+          "#e8e4da",
+          "#f0f0f0"
+        ],
+        "roofColour": "#9c9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "glazed roof dome over the atrium"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jamuna_Future_Park",
+          "what": "seven floors plus two basements, 380,000 m2 floor area, architect AJM Alamgir, exterior finished 2008, opened 2013, roof dome in photo caption"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/586535435",
+          "what": "OSM footprint 228.7x211.8 m, 6 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6148303",
+          "what": "Wikidata entity: Jamuna Future Park"
+        }
+      ],
+      "notes": "Blue-green glazed curtain wall front is from general photos of the mall, not stated by the source read. Scene should show the main facade with the dome behind."
+    },
+    "dhaka-meal-stop": {
+      "venueId": "dhaka-meal-stop",
+      "city": "dhaka",
+      "name": "Bengal Foundation",
+      "archetype": "museum-theatre",
+      "subject": "Bengal Foundation arts centre (Bengal Shilpalaya), Dhanmondi: a compact modern gallery and cultural building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb8ac",
+          "#6f8aa0",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/298806119",
+          "what": "OSM footprint 24x21.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28739963",
+          "what": "Wikidata entity: Bengal Foundation"
+        }
+      ],
+      "notes": "Game kind is buka (meal stop) but the place is an arts foundation; Wikidata describes a cultural organisation. OSM footprint 24 x 22 m. Appearance is a typed guess."
+    },
+    "dhaka-osm-node-4764950575": {
+      "venueId": "dhaka-osm-node-4764950575",
+      "city": "dhaka",
+      "name": "Khan Mohammad Mridha Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Khan Mohammad Mridha Mosque (1706), Lalbagh: a three-domed Mughal prayer hall on a raised vaulted platform reached by a long flight of steps, with short corner minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#e6dfd0",
+          "#b0a48c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#e6dfd0",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "central dome largest"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "short slender corner turrets with ribbed cupolas"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "25 steps up the east side"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "multi-cusped entrance arches"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "ornamental merlons on the parapet"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "mughal",
+      "era": "1706",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Khan_Mohammad_Mridha_Mosque",
+          "what": "prayer hall 48 x 24 ft with three domes (central largest), corner minarets with ribbed cupolas, platform about 16.5 ft high over vaulted rooms, 25 steps from the east, merlon parapet, multi-cusped arches, madrasa annex, garden with a tall palm"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/483751031",
+          "what": "OSM footprint 40.9x39.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2667438",
+          "what": "Wikidata entity: Khan Mohammad Mridha Mosque"
+        }
+      ],
+      "notes": "Form and dimensions from the source (hall is only ~15 x 7 m; the 30 x 20 m footprint includes the platform and steps). Wall colours are estimated as pale weathered plaster; the source does not state colours."
+    },
+    "dhaka-osm-node-9532058929": {
+      "venueId": "dhaka-osm-node-9532058929",
+      "city": "dhaka",
+      "name": "Bashundhara Kings Arena",
+      "archetype": "stadium",
+      "subject": "Bashundhara Kings Arena: a compact modern football stadium with covered grandstand, scoreboard and corner floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 137,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb8ac",
+          "#2e8b57",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8c8a84",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bashundhara_Kings_Arena",
+          "what": "6,000 seats upgradable to 14,000, grass pitch 105 x 68 m, scoreboard, three executive suites"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1310798590",
+          "what": "OSM footprint 137.6x110.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q110936223",
+          "what": "Wikidata entity: Bashundhara Kings Arena"
+        }
+      ],
+      "notes": "Seat colours and facade finish are guesses; capacity and pitch from the source, footprint from OSM."
+    },
+    "dhaka-osm-way-1187202894": {
+      "venueId": "dhaka-osm-way-1187202894",
+      "city": "dhaka",
+      "name": "Bangladesh Islami University",
+      "archetype": "campus-block",
+      "subject": "Bangladesh Islami University campus building: a mid-rise private university block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 84,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7c97a",
+          "#8fa87f",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1187202894",
+          "what": "OSM footprint 84.1x82.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4855322",
+          "what": "Wikidata entity: Bangladesh Islami University"
+        }
+      ],
+      "notes": "Only the OSM footprint (84 x 83 m, 6,972 m2) and Wikidata label exist; storeys and colours are a typed guess."
+    },
+    "dhaka-osm-way-121390579": {
+      "venueId": "dhaka-osm-way-121390579",
+      "city": "dhaka",
+      "name": "Sher-E-Bangla National Cricket Stadium",
+      "archetype": "stadium",
+      "subject": "Sher-e-Bangla National Cricket Stadium, Mirpur: a large open concrete bowl with partly roofed stands and four floodlight pylons",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 175,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4b8",
+          "#2e8b57",
+          "#d33a2c"
+        ],
+        "roofColour": "#9c9a94",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof over part of the stands and media centre"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sher-e-Bangla_National_Cricket_Stadium",
+          "what": "about 25,000 capacity, built 1988, floodlights fitted 2009, ground 186 x 136 m, plastic seats, giant screen and electronic scoreboard, media centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6385797",
+          "what": "OSM footprint 250.6x196 m, 6 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16135053",
+          "what": "Wikidata entity: Sher-e-Bangla National Cricket Stadium"
+        }
+      ],
+      "notes": "OSM marks the stadium as a 6-level building 250 x 196 m. Seat colours (green and red) are a guess based on the national colours; the number of floodlight masts is from memory of match photos."
+    },
+    "dhaka-osm-way-141641870": {
+      "venueId": "dhaka-osm-way-141641870",
+      "city": "dhaka",
+      "name": "IZUMI",
+      "archetype": "restaurant",
+      "subject": "IZUMI Japanese restaurant, Gulshan: a small two-storey concrete restaurant building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#bdb8ac",
+          "#7a5a3c",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/141641870",
+          "what": "OSM footprint 34.1x22.1 m, 2 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28419684",
+          "what": "Wikidata entity: Izumi"
+        }
+      ],
+      "notes": "OSM tags: concrete, 2 levels, 34 x 22 m. Wikidata calls it a restaurant. Look is a typed guess; no description found."
+    },
+    "dhaka-osm-way-236956073": {
+      "venueId": "dhaka-osm-way-236956073",
+      "city": "dhaka",
+      "name": "Ramna Park",
+      "archetype": "park-landscape",
+      "subject": "Ramna Park: a large old shaded city park with big rain trees and teak, a lake, paths and a gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#8fa87f",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8c8a84",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/236956073",
+          "what": "OSM footprint 1049x447.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7289746",
+          "what": "Wikidata entity: Ramna Park"
+        }
+      ],
+      "notes": "OSM measured 1,049 x 447 m (286,286 m2). Wikidata image caption mentions teak trees. Pavilion/gate details are typed guesses; the generator should show a hill of broadleaf trees with a gate and a few pavilions."
+    },
+    "dhaka-osm-way-24477071": {
+      "venueId": "dhaka-osm-way-24477071",
+      "city": "dhaka",
+      "name": "National Stadium, Dhaka",
+      "archetype": "stadium",
+      "subject": "National Stadium (Bangabandhu), Dhaka: a 1954 concrete oval bowl with low stands, a press-box roof and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 220,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4b8",
+          "#2e8b57",
+          "#d33a2c"
+        ],
+        "roofColour": "#9c9a94",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "modern roof over the press box only"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1954",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Stadium,_Dhaka",
+          "what": "opened 1954, renovated 1978, 2011, 2021-2023; capacity about 22,400 after renovation; roof added over press box in 2011; floodlights installed again 2021-2023; pitch 105 x 68 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2514078",
+          "what": "OSM footprint 229.8x219.5 m, 4 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q806456",
+          "what": "Wikidata entity: National Stadium, Dhaka"
+        }
+      ],
+      "notes": "Footprint 230 x 220 m from OSM (4 levels). Stand colours are guesses (national green and red seats)."
+    },
+    "dhaka-osm-way-245019710": {
+      "venueId": "dhaka-osm-way-245019710",
+      "city": "dhaka",
+      "name": "Tara Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Tara Masjid (Star Mosque), Armanitola: a small Mughal mosque with five domes and four minarets, entirely covered in blue, green and white china-mosaic stars",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "whitewash",
+        "colours": [
+          "#f1f1ee",
+          "#2f5fb0",
+          "#2e8b57"
+        ],
+        "roofColour": "#f1f1ee",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "central dome larger, two added in 1987"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "short corner towers"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "chinitikri star pattern over all surfaces"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "crescent motif above the east door"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "front verandah, early 20th century"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "mughal",
+      "era": "18th-19th century, extended 1987",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Star_Mosque",
+          "what": "about 21.3 x 8 m, five domes, four minarets, facade and domes covered in chinitikri china mosaic of star-shaped tiles in various colours, crescent motif on the east facade, front verandah early 20th century, extension added two domes in 1987"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/245019710",
+          "what": "OSM footprint 20.3x12.2 m, 1 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2993411",
+          "what": "Wikidata entity: Star Mosque"
+        }
+      ],
+      "notes": "Highly recognisable: the whole shell is tiled stars. Blue-green-white palette from the mosque name and general photos; the source gives the pattern but not exact hexes."
+    },
+    "dhaka-osm-way-296537243": {
+      "venueId": "dhaka-osm-way-296537243",
+      "city": "dhaka",
+      "name": "Holy Rosary Church",
+      "archetype": "church-classical",
+      "subject": "Holy Rosary Church, Tejgaon: an old Catholic parish church of 1677 with a simple whitewashed front, set within a walled parish compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "brick",
+        "colours": [
+          "#efe8d8",
+          "#b5503b",
+          "#d8d0c0"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1677, renovated 1714, 1940, 2000",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Rosary_Church,_Dhaka",
+          "what": "built 1677 at Tejgaon, renovated 1714, 1940 and 2000; eastern part later than the rest"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/296537243",
+          "what": "OSM footprint 109.3x96.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4163580",
+          "what": "Wikidata entity: Holy Rosary Church"
+        }
+      ],
+      "notes": "The source gives dates only; style, facade and tower are typed guesses (Portuguese-colonial parish church type). OSM compound is 109 x 96 m, the church itself is much smaller."
+    },
+    "dhaka-osm-way-370071885": {
+      "venueId": "dhaka-osm-way-370071885",
+      "city": "dhaka",
+      "name": "National Museum of Science & Technology",
+      "archetype": "museum-theatre",
+      "subject": "National Museum of Science and Technology, Agargaon: a three-level concrete museum block with a science park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 114,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#8fa87f",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1981",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Science_and_Technology_(Bangladesh)",
+          "what": "founded 1965, permanent building completed 1981, exhibits include a sky observatory and science park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/370071885",
+          "what": "OSM footprint 114.5x85.3 m, 3 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q23044804",
+          "what": "Wikidata entity: National Museum of Science and Technology"
+        }
+      ],
+      "notes": "OSM footprint 114.5 x 85 m, 3 levels. Facade and colours are a typed guess."
+    },
+    "dhaka-osm-way-490287434": {
+      "venueId": "dhaka-osm-way-490287434",
+      "city": "dhaka",
+      "name": "International University of Business Agriculture and Technology",
+      "archetype": "campus-block",
+      "subject": "IUBAT, Uttara: a narrow six-storey private-university block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e4d8",
+          "#2a5d9a",
+          "#b5503b"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/490287434",
+          "what": "OSM footprint 71.6x30.3 m, 6 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6054154",
+          "what": "Wikidata entity: International University of Business Agriculture and Technology"
+        }
+      ],
+      "notes": "OSM: building=university, 6 levels, 71.6 x 30.3 m. Colours typed from the city style."
+    },
+    "dhaka-osm-way-499441489": {
+      "venueId": "dhaka-osm-way-499441489",
+      "city": "dhaka",
+      "name": "Mugda Medical College & Hospital",
+      "archetype": "hospital",
+      "subject": "Mugda Medical College and Hospital: a large government hospital block with a long plain painted facade",
+      "form": {
+        "footprint": "U",
+        "width_m": 107,
+        "depth_m": 77,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9cfb2",
+          "#8fa87f",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/499441489",
+          "what": "OSM footprint 106.9x77.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21190858",
+          "what": "Wikidata entity: Mugda Medical College"
+        }
+      ],
+      "notes": "OSM footprint 107 x 77 m; Wikidata: government medical college. Storeys and colours are guessed."
+    },
+    "dhaka-osm-way-502997496": {
+      "venueId": "dhaka-osm-way-502997496",
+      "city": "dhaka",
+      "name": "Combined Military Hospital (CMH)",
+      "archetype": "hospital",
+      "subject": "Combined Military Hospital (CMH), Dhaka Cantonment: a compact mid-rise military hospital block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e4d8",
+          "#9a4a3a",
+          "#bdb8ac"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1301720659",
+          "what": "OSM footprint 56.7x50.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30605914",
+          "what": "Wikidata entity: Combined Military Hospital"
+        }
+      ],
+      "notes": "OSM footprint 57 x 51 m; no description found. Typed guess."
+    },
+    "dhaka-osm-way-550516604": {
+      "venueId": "dhaka-osm-way-550516604",
+      "city": "dhaka",
+      "name": "Fantasy Kingdom",
+      "archetype": "park-landscape",
+      "subject": "Fantasy Kingdom, Savar: a large theme and water park with a decorative entrance gate, pavilions and themed buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7c97a",
+          "#d33a2c",
+          "#2f5fb0"
+        ],
+        "roofColour": "#b04a3a",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/550516604",
+          "what": "OSM footprint 561.3x295 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25587062",
+          "what": "Wikidata entity: Fantasy Kingdom"
+        }
+      ],
+      "notes": "OSM tourism=theme_park, 561 x 295 m (104,909 m2). Rides (ferris wheel etc.) are not in the feature list; bright theme-park colours are typed."
+    },
+    "dhaka-osm-way-587828519": {
+      "venueId": "dhaka-osm-way-587828519",
+      "city": "dhaka",
+      "name": "Daffodil International University",
+      "archetype": "campus-block",
+      "subject": "Daffodil International University, Ashulia permanent campus: a large campus of multi-storey academic blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e4d8",
+          "#b5503b",
+          "#9fb7c9"
+        ],
+        "roofColour": "#8c8a84",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/587828519",
+          "what": "OSM footprint 852.4x672.1 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5208319",
+          "what": "Wikidata entity: Daffodil International University"
+        }
+      ],
+      "notes": "OSM campus is 852 x 672 m (323,422 m2). Building form and colours are typed; no description read."
+    },
+    "dhaka-quiet-reflection": {
+      "venueId": "dhaka-quiet-reflection",
+      "city": "dhaka",
+      "name": "Binat Bibi Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Binat Bibi Mosque, Narinda: a 15th-century mosque rebuilt into a multi-storey mosque with mosaic-tiled dome and blue minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 15,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "stucco",
+        "colours": [
+          "#e8ecef",
+          "#3a6fb0",
+          "#c9b98f"
+        ],
+        "roofColour": "#e8ecef",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "second dome added about 1932"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "blue minaret from the recent extension"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "china-tile mosaic on facade and dome"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "mughal",
+      "era": "1457, mosaic and extensions 20th-21st century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Binat_Bibi_Mosque",
+          "what": "original interior about 3.7 m square with one dome and three entrances, second dome about 1932, ceramic or glass mosaic tilework on facade, north wall and dome, blue minaret in a 2020 photo, remodel expanding from 3 to 7 storeys"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1002612176",
+          "what": "OSM footprint 18.3x15.1 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2667428",
+          "what": "Wikidata entity: Binat Bibi Mosque"
+        }
+      ],
+      "notes": "Storeys and height are an estimate between the original and the planned 7-storey extension. Colour of the main mass is estimated."
+    },
+    "dhaka-recreation": {
+      "venueId": "dhaka-recreation",
+      "city": "dhaka",
+      "name": "Bangladesh National Monument",
+      "archetype": "monument",
+      "subject": "Jatiyo Smriti Soudho (National Martyrs' Memorial), Savar: seven pairs of folded triangular concrete walls rising to a peak, set in a landscaped park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 46,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#b8b2a6",
+          "#8c8679",
+          "#e0dcd2"
+        ],
+        "roofColour": "#b8b2a6",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jatiyo_Smriti_Soudho",
+          "what": "seven pairs of triangular walls, outermost pair shortest but widest, innermost pair forms the peak; roof 150 ft (46 m); architect Syed Mainul Hossain; built 1978-1982; Savar about 35 km from Dhaka"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32561564",
+          "what": "OSM footprint 873.4x677.1 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3351595",
+          "what": "Wikidata entity: Jatiyo Smriti Soudho"
+        }
+      ],
+      "notes": "The seven pairs of triangles must read in silhouette. Concrete grey is the weathered colour seen in photos; the source does not give colours. OSM park is 873 x 677 m."
+    },
+    "dhaka-transit": {
+      "venueId": "dhaka-transit",
+      "city": "dhaka",
+      "name": "Dhaka Airport Railway Station",
+      "archetype": "transport-station",
+      "subject": "Dhaka Airport railway station, Kuril: a small single-platform station with a long low building and platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 59,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e4d8",
+          "#b5503b",
+          "#8c8a84"
+        ],
+        "roofColour": "#7b8890",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/32561594",
+          "what": "OSM footprint 58.9x11.1 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4698879",
+          "what": "Wikidata entity: Airport railway station"
+        }
+      ],
+      "notes": "OSM building=train_station, 59 x 11 m; typed guess from a Bangladesh Railway station type."
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "st-patrick-cathedral",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/858960580",
+   "used": "real cathedral outline (name-quality match, building=cathedral, cement block)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/ado-ekiti.json",
+   "used": "gabled nave, free-standing bell tower, cream render with terracotta accents (typed; no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a9744e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    24,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 18,
+    "cap": "pyramid",
+    "cap_height": 4,
+    "belfry": true,
+    "colour": "#f1ede0",
+    "cap_colour": "#8a4a3a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -32,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "thickness": 0.35,
+    "colour": "#a9744e",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ]
+    ],
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#d9d2c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: OSM outline, gabled nave and bell tower are typed; no facade cross, grotto statue or real tower position."
+ }
+}

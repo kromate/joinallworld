@@ -1,0 +1,530 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oba_S.K_Adetona_market_ijebu_ode.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MediaMOF",
+   "view": "detail",
+   "file": "/tmp/places-evidence/ijebu-ode/market1.jpg",
+   "used": "blank blue entrance sign on poles, wrought-iron fence over a rendered plinth, mud-block back wall with corrugated roof, large coloured umbrellas"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Market_side,_Ijebu.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eukoha",
+   "view": "street",
+   "file": "/tmp/places-evidence/ijebu-ode/market2.jpg",
+   "used": "wide red-earth road edge, umbrellas along the street, low rendered buildings behind, yellow tricycles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1066996893",
+   "used": "not used: a 179 m2 nearest match, far smaller than the market"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 2.2,
+    "colour": "#24459a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2.0,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#2d3033"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#d6c7a6",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-shop-row",
+   "footprint": {
+    "rect": [
+     70,
+     7
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b9b4a8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-shed",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "height": 4.0,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a9654a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-shed",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    34,
+    -4
+   ],
+   "height": 4.0,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d6c7a6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -19,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6",
+     "#c44a2a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6",
+     "#c44a2a",
+     "#e0a82e"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -19,
+    8,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#8a4b9a",
+     "#d6c7a6",
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    18,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#d6c7a6",
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -19,
+    26,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "radius": 1.7,
+    "colours": [
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "radius": 1.7,
+    "colours": [
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    28,
+    20,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "radius": 1.7,
+    "colours": [
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -26,
+    24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "radius": 1.7,
+    "colours": [
+     "#c44a2a",
+     "#e0a82e",
+     "#3a4f9a",
+     "#8a4b9a",
+     "#d6c7a6"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#3f7a4a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#d6c7a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#a9654a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "photos only show the entrance sign, fence and umbrellas; stall layout and sheds are a typed guess for the market (Oke-Aje, Oba Adetona market)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-market"
+}

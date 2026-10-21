@@ -1,0 +1,1649 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kyrenia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kyrenia",
+    "climate": "mediterranean",
+    "vernacular": "Limestone and sand-coloured render houses of two to four storeys with flat concrete roofs carrying water tanks and solar heaters; villas with low-pitched red curved-tile (Roman tile) roofs in gardens of citrus, olive and carob; Ottoman and Venetian stone buildings in honey-coloured limestone; British colonial public buildings with arcades; recent white and cream concrete apartment blocks and university campuses on the coast road. Dry hills, cypress and pine on the Kyrenia range, palms along the seafront.",
+    "wallColours": [
+      "#d9c49a",
+      "#f1ece0",
+      "#e0cfae",
+      "#d6b36a",
+      "#b3aea3",
+      "#b96a43",
+      "#cdb78f"
+    ],
+    "roofColours": [
+      "#b4623c",
+      "#a8a39a",
+      "#8a5a3a",
+      "#6e6a66"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "render",
+      "whitewash",
+      "concrete",
+      "stone",
+      "painted-render",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "palm"
+    ],
+    "ornament": "Gothic pointed arches and carved capitals (Lusignan), Venetian round-cornered bastions, Ottoman domes with single pencil minarets, timber balconies and blue-painted doors and shutters, British colonial arcades, stone-arched harbourside cafes, painted rainbow steps in Kyrenia old town.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kyrenia",
+        "what": "old harbour lined with two-storey stone buildings, Venetian castle with large round corner towers, Ağa Cafer Paşa Mosque 1589-90, hot-summer Mediterranean climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sourp_Magar_Monastery",
+        "what": "honey stone walls, curved roof tiles, wooden beams, blue doors and windows (\"Blue Monastery\"), Gothic pointed windows"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bellapais_Abbey",
+        "what": "Gothic stone abbey above Kyrenia; limestone masonry"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Buffavento_Castle",
+        "what": "dressed limestone castle ruins in the Kyrenia range"
+      }
+    ]
+  },
+  "places": {
+    "kyrenia-airport-kyrenia-airport": {
+      "venueId": "kyrenia-airport-kyrenia-airport",
+      "city": "kyrenia",
+      "name": "Ercan International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the Ercan terminal seen from the forecourt: a modern two-level glazed terminal block with a flat entrance canopy and a control tower to the side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "regional-terminal"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#e8e4d6",
+          "#5f7f98",
+          "#f6f3ea"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ercan_International_Airport",
+          "what": "new terminal opened July 2023, six times the size of the old one, designed for up to 10 million passengers a year; new 3,100 m runway; old terminal check-in area shown in photo"
+        }
+      ],
+      "notes": "Terminal opening year and relative size sourced; storeys, dimensions, facade and colours are estimates for a regional airport terminal. Recognisable by size contrast with the old small terminal; the real terminal is a long low glass block."
+    },
+    "kyrenia-clinic": {
+      "venueId": "kyrenia-clinic",
+      "city": "kyrenia",
+      "name": "Medical Center",
+      "archetype": "hospital",
+      "subject": "a private medical centre in Kyrenia: a modest cream-rendered three-storey block with a canopy at the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e1cf",
+          "#5f7f98",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyrenia",
+          "what": "context only; no page found for this clinic"
+        }
+      ],
+      "notes": "Generic placeholder-style name; typed from the Kyrenia modern concrete mid-rise style with a flat roof carrying water tanks and solar heaters."
+    },
+    "kyrenia-community-notices": {
+      "venueId": "kyrenia-community-notices",
+      "city": "kyrenia",
+      "name": "Presidential Palace",
+      "archetype": "civic-palace",
+      "subject": "the Presidential Palace in North Nicosia: a pale limestone-coloured official building with a columned portico, flag poles and a walled garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "render",
+        "colours": [
+          "#e0d2b0",
+          "#b9a37a",
+          "#f6f1e4"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+          "what": "context: Nicosia government buildings, law courts building; the palace itself was not described in any readable source"
+        }
+      ],
+      "notes": "The palace page was not readable; this is a typed official building from the island style (pale limestone, portico, flags). Dimensions and era are guesses."
+    },
+    "kyrenia-community-voting-game": {
+      "venueId": "kyrenia-community-voting-game",
+      "city": "kyrenia",
+      "name": "Atatürk Square",
+      "archetype": "park-landscape",
+      "subject": "Atatürk Square (Sarayönü) in North Nicosia: a paved square with a tall Venetian granite column on a plinth, surrounded by colonial and Ottoman-period buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "granite",
+        "colours": [
+          "#d9c49a",
+          "#b3aea3",
+          "#f1ece0"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Venetian granite column on plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "Venetian column 16th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+          "what": "Sarayonu Square in North Nicosia pictured 1969; law courts building"
+        }
+      ],
+      "notes": "The square is in North Nicosia (Sarayönü) and holds the Venetian Column per general knowledge; the page readable only mentioned the square in a caption. Column height and surrounding colours are estimates."
+    },
+    "kyrenia-community-workshop": {
+      "venueId": "kyrenia-community-workshop",
+      "city": "kyrenia",
+      "name": "Near East University",
+      "archetype": "campus-block",
+      "subject": "Near East University campus: a cluster of large modern white and cream concrete-and-glass faculty blocks and a hospital building on a big campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d4",
+          "#5f7f98",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1988, hospital 2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Near_East_University",
+          "what": "campus 98 ha near Nicosia; Ataturk Culture and Congress Centre; Grand Library over 15,000 m2; medicine faculty 2008; hospital 55,000 m2 inaugurated 2009; Olympic indoor pool"
+        }
+      ],
+      "notes": "Campus size, buildings and dates are sourced; facade look is an estimate (the page names no style). Contrasts with the lower, smaller campuses by height and the hospital block."
+    },
+    "kyrenia-market-game": {
+      "venueId": "kyrenia-market-game",
+      "city": "kyrenia",
+      "name": "Municipal Market",
+      "archetype": "market-hall",
+      "subject": "the Nicosia Municipal Market (Belediye Pazarı): a long stone covered market hall with arched openings and a high pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9c49a",
+          "#a89f88",
+          "#efe7d0"
+        ],
+        "roofColour": "#b4623c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+          "what": "context only; the market page was not found"
+        }
+      ],
+      "notes": "The Municipal Market (Belediye Pazarı) in North Nicosia is generally known as a British-colonial-era covered market of the 1930s; the page was not readable, so the form here is typed from that general knowledge."
+    },
+    "kyrenia-meal-stop": {
+      "venueId": "kyrenia-meal-stop",
+      "city": "kyrenia",
+      "name": "Patrio my Fair",
+      "archetype": "restaurant",
+      "subject": "a roadside restaurant in the west Kyrenia coast area: a low whitewashed building with a shaded terrace and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#d9c49a",
+          "#b96a43"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyrenia",
+          "what": "context only; no page found for this restaurant"
+        }
+      ],
+      "notes": "Obscure venue, no source. Typed from the coastal Kyrenia low-rise style."
+    },
+    "kyrenia-osm-node-12115453579": {
+      "venueId": "kyrenia-osm-node-12115453579",
+      "city": "kyrenia",
+      "name": "C1974 Memorial Ship",
+      "archetype": "monument",
+      "subject": "the 1974 landing memorial ship at the Kyrenia coast: a grey metal ship hull set on a concrete base beside the shore",
+      "form": {
+        "footprint": "oval",
+        "width_m": 40,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#8a9199",
+          "#5f6670",
+          "#c9ccd0"
+        ],
+        "roofColour": "#6e757c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1974 commemoration",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/12115453579",
+          "what": "historic=memorial, memorial=ship, material=metal, name C1974 Anit Gemisi, wikidata Q1050999 (Cyprus operation)"
+        }
+      ],
+      "notes": "OSM says a metal ship memorial for the 1974 operation; its real size and colours were not found. Typed from that: a ship-shaped metal monument. Dimensions are guesses."
+    },
+    "kyrenia-osm-node-4211959892": {
+      "venueId": "kyrenia-osm-node-4211959892",
+      "city": "kyrenia",
+      "name": "1 eğtim yeri",
+      "archetype": "park-landscape",
+      "subject": "a roadside viewpoint on the Kyrenia hills: a small terrace with a low stone wall overlooking the coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c9b48f",
+          "#a89f88",
+          "#e2d8c0"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4211959892",
+          "what": "tourism=viewpoint named \"1 egtim yeri\""
+        }
+      ],
+      "notes": "Only an OSM viewpoint node exists. Typed as a small stone overlook on dry hillside with pines."
+    },
+    "kyrenia-osm-node-4695087598": {
+      "venueId": "kyrenia-osm-node-4695087598",
+      "city": "kyrenia",
+      "name": "Gelincik Cafeterya",
+      "archetype": "restaurant",
+      "subject": "a small roadside Turkish cafe: a low cream building with a flat roof, awning and plastic-chair terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0cfae",
+          "#b96a43",
+          "#f6f1e4"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4695087598",
+          "what": "amenity=cafe, cuisine turkish, open 24/7, named Gelincik Cafe"
+        }
+      ],
+      "notes": "Only OSM tags exist (24/7 Turkish cafe). Typed from a roadside Cypriot cafe near the airport."
+    },
+    "kyrenia-osm-node-4776629726": {
+      "venueId": "kyrenia-osm-node-4776629726",
+      "city": "kyrenia",
+      "name": "Fota Kasap Meyhane",
+      "archetype": "restaurant",
+      "subject": "a tiny kebab meyhane (tavern): a single-room whitewashed building with a shaded front terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#b96a43",
+          "#d9c49a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4776629726",
+          "what": "amenity=restaurant, cuisine kebab, capacity 15, takeaway no"
+        }
+      ],
+      "notes": "Capacity 15 per OSM, so a very small premises. Typed from the style of small village restaurants."
+    },
+    "kyrenia-osm-relation-2747685": {
+      "venueId": "kyrenia-osm-relation-2747685",
+      "city": "kyrenia",
+      "name": "Bellapais Abbey",
+      "archetype": "church-gothic",
+      "subject": "Bellapais Abbey: a ruined 13th-century Gothic abbey of honey limestone on a terrace above Kyrenia, with a cloister of 18 arches, a long refectory with a rose window, a belfry on the church and a fortified entrance gate",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cdb78f",
+          "#b09a70",
+          "#e0d2b0"
+        ],
+        "roofColour": "#b09a70",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "cloister with 18 arches"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "rose-window",
+          "count": 1,
+          "note": "east wall of the 30 x 10 m refectory"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "belfry above the church entrance"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "fortified south gate and later tower"
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "13th-14th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bellapais_Abbey",
+          "what": "ruin at 220 m above sea level above Bellapais village; church (13th c.) with flat roof and belfry with one bell; cloister of 18 arches; Gothic refectory about 30 x 10 m with seven columns, six north windows and an east rose window; fortified south gate with later tower; chapter house; monastic buildings on the cooler north side"
+        }
+      ],
+      "notes": "Structure sourced in detail; stone colour is an estimate (honey limestone). Style id gothic-revival is used for medieval Gothic because the contract has no plain gothic. Cypress and orange trees surround the court."
+    },
+    "kyrenia-osm-way-102190298": {
+      "venueId": "kyrenia-osm-way-102190298",
+      "city": "kyrenia",
+      "name": "Buffavento Castle",
+      "archetype": "heritage-fort",
+      "subject": "Buffavento Castle: broken limestone ruins perched on a crag of the Kyrenia range, with a two-storey gate tower, vaulted halls and cisterns in two wards",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#b9ab90",
+          "#9a8c70",
+          "#d3c8ae"
+        ],
+        "roofColour": "#9a8c70",
+        "windows": "pointed-arch",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "two-storey rectangular gate tower with Frankish pointed arch"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "barrel-vaulted Frankish buildings"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "about 600 steps up the mountain"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Byzantine/Lusignan",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Buffavento_Castle",
+          "what": "about 960 m above sea level, about 600 steps; irregular buildings of dressed limestone, undecorated; two wards (upper facing sea, lower facing plain); gate in two-storey rectangular tower with pointed arch; two-storey Byzantine building; barrel-vaulted Frankish buildings; large cisterns; isolated ruined tower to the west"
+        }
+      ],
+      "notes": "Layout and masonry are sourced; footprint size is an estimate. Rugged mountain-top setting with sparse pines; much lower and ruinous compared with Bellapais."
+    },
+    "kyrenia-osm-way-1266800351": {
+      "venueId": "kyrenia-osm-way-1266800351",
+      "city": "kyrenia",
+      "name": "Final International University",
+      "archetype": "campus-block",
+      "subject": "Final International University: a contemporary cream and white block with a glazed entrance, set on the foothills at Çatalköy",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d4",
+          "#6e8798",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1266800351",
+          "what": "quad venue named Final International University"
+        }
+      ],
+      "notes": "No description found; typed from the city style for modern private campuses."
+    },
+    "kyrenia-osm-way-169391630": {
+      "venueId": "kyrenia-osm-way-169391630",
+      "city": "kyrenia",
+      "name": "Girne Amerikan Üniversitesi",
+      "archetype": "campus-block",
+      "subject": "Girne American University: a big cream and stone-clad campus with a landmark Millennium building and arcaded walkways on a coastal hillside",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 55,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#e5d9bc",
+          "#c9b48f",
+          "#f6f1e4"
+        ],
+        "roofColour": "#b4623c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 10
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1985 founded",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Girne_American_University",
+          "what": "in Girne, coordinates 35 19 56 N 33 16 33 E, faculty of architecture founded 1985, a Millennium Building pictured; architecture not described"
+        }
+      ],
+      "notes": "The building style could not be found; arcaded cream render with limestone accent is a typed guess for a Kyrenia private campus. Differs from Final University by a larger U plan with arcades."
+    },
+    "kyrenia-osm-way-205139721": {
+      "venueId": "kyrenia-osm-way-205139721",
+      "city": "kyrenia",
+      "name": "Ağa Cafer Paşa Camii",
+      "archetype": "mosque-domed",
+      "subject": "the Ağa Cafer Paşa Mosque in Kyrenia: a small square Ottoman limestone mosque beside the old harbour with a single dome and a slim minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9c49a",
+          "#b09a70",
+          "#efe7d0"
+        ],
+        "roofColour": "#b4b0a4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1589-1590",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyrenia",
+          "what": "Aga Cafer Pasa Mosque built 1589 to 1590, an Ottoman-era building in the town centre near the old harbour"
+        }
+      ],
+      "notes": "Date and location are sourced; the dome, minaret and pale limestone are from general knowledge of Ottoman Cypriot mosques, not from the page read. Dimensions are estimates."
+    },
+    "kyrenia-osm-way-206176262": {
+      "venueId": "kyrenia-osm-way-206176262",
+      "city": "kyrenia",
+      "name": "Nicosia Atatürk Stadium",
+      "archetype": "stadium",
+      "subject": "Lefkoşa Atatürk Stadium: a large bowl stadium in North Nicosia with covered main stands, a scoreboard and corner floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c2b3",
+          "#a33a35",
+          "#e8e4d6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://tr.wikipedia.org/wiki/Lefko%C5%9Fa_Atat%C3%BCrk_Stadyumu",
+          "what": "capacity 28,000; first electronic scoreboard installed after 2011 maintenance; press and broadcast rooms; home of Cetinkaya, Genclik Gucu and the national team"
+        }
+      ],
+      "notes": "Capacity and scoreboard are sourced; stand roofs, size and colours are estimates. Larger than the Maltepe and Spartak grounds."
+    },
+    "kyrenia-osm-way-435291543": {
+      "venueId": "kyrenia-osm-way-435291543",
+      "city": "kyrenia",
+      "name": "yıkım aşamasında kapalı iflas",
+      "archetype": "mall",
+      "subject": "a closed, bankrupt shopping centre awaiting demolition: a bare two-level concrete shell with boarded openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a9a69c",
+          "#8a867c",
+          "#c9c5ba"
+        ],
+        "roofColour": "#8a867c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/435291543",
+          "what": "shop=mall named \"yikim asamasinda kapali iflas\" (closed, bankrupt, being demolished)"
+        }
+      ],
+      "notes": "The name is an OSM descriptive label meaning closed, bankrupt, in demolition. Typed as an unfinished-looking concrete mall shell."
+    },
+    "kyrenia-osm-way-435833503": {
+      "venueId": "kyrenia-osm-way-435833503",
+      "city": "kyrenia",
+      "name": "Agios Agridaki Church",
+      "archetype": "shrine-small",
+      "subject": "the small Greek Orthodox church of Agios Agridaki (St Charalambos): a modest limestone village church with a tiled gable roof and a small bell gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d3c19a",
+          "#b09a70",
+          "#efe7d0"
+        ],
+        "roofColour": "#b4623c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bell gable"
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/435833503",
+          "what": "building=church, greek_orthodox, Agios Agridaki Church, wikidata Q104217027"
+        }
+      ],
+      "notes": "Only OSM tags exist. Typed as a small Cypriot Orthodox village church of local stone with a tile roof."
+    },
+    "kyrenia-osm-way-443934864": {
+      "venueId": "kyrenia-osm-way-443934864",
+      "city": "kyrenia",
+      "name": "Cyprus International University",
+      "archetype": "campus-block",
+      "subject": "Cyprus International University at Haspolat: large pale multi-storey faculty blocks with long ribbon windows and flat roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d4",
+          "#5f7f98",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/443934864",
+          "what": "quad venue named Cyprus International University"
+        }
+      ],
+      "notes": "No description found; typed from the style of Nicosia private campuses."
+    },
+    "kyrenia-osm-way-512030566": {
+      "venueId": "kyrenia-osm-way-512030566",
+      "city": "kyrenia",
+      "name": "Karşıyaka Atatürk Parkı",
+      "archetype": "park-landscape",
+      "subject": "a small village park in Karşıyaka (Vasilia): paved paths, a bust or statue of Atatürk on a plinth, benches and a few shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c9b48f",
+          "#8a9a6a",
+          "#e2d8c0"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Ataturk monument"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/512030566",
+          "what": "leisure=park named Karsiyaka Ataturk Parki"
+        }
+      ],
+      "notes": "Only the name exists. Typed generic small park."
+    },
+    "kyrenia-osm-way-956076118": {
+      "venueId": "kyrenia-osm-way-956076118",
+      "city": "kyrenia",
+      "name": "Hamitköy Avrupa Birliği Parkı",
+      "archetype": "park-landscape",
+      "subject": "the European Union Park in Hamitköy: a modern municipal park with paved paths, lawn, flagpoles and a small shade pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#7a9a58",
+          "#e0ddd2"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/956076118",
+          "what": "leisure=park named Hamitkoy Avrupa Birligi Parki"
+        }
+      ],
+      "notes": "Only the name exists. Typed generic modern municipal park; flags suggested by the name."
+    },
+    "kyrenia-quiet-reflection": {
+      "venueId": "kyrenia-quiet-reflection",
+      "city": "kyrenia",
+      "name": "Sourp Magar Armenian Monastery",
+      "archetype": "heritage-fort",
+      "subject": "Sourp Magar Monastery on the Kyrenia range: a ruined courtyard monastery of honey stone with two-storey cells and arcades, two small chapels, a Gothic pointed east door and curved-tile roofs",
+      "form": {
+        "footprint": "ring",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 4
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#d3c19a",
+          "#4a6fa5",
+          "#efe7d0"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "large central court"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arcade with stone posts and wooden lintels, walkway above"
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "east facade with Gothic pointed door"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "11th c. origins, 15th c. east facade, chapel 1814",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sourp_Magar_Monastery",
+          "what": "on the Pentadhaktylos range at about 530 m; roughly rectangular arrangement of two-storey buildings around a large courtyard; two small adjoining chapels, the larger built 1814; east facade probably 15th century with Gothic pointed windows and doors; ground-floor arcade and upper walkway on stone posts with wooden lintels; roofs of wooden beams and curved tiles; known as the Blue Monastery for the colour of doors and windows; ruined, partly re-roofed since 2005"
+        }
+      ],
+      "notes": "Layout, materials and blue doors/windows are sourced. Archetype heritage-fort chosen for the walled courtyard complex since shrine-small would give a single chapel. Ruinous: some bays open to sky."
+    },
+    "kyrenia-recreation": {
+      "venueId": "kyrenia-recreation",
+      "city": "kyrenia",
+      "name": "Çağlayan Parkı",
+      "archetype": "park-landscape",
+      "subject": "Çağlayan Park in North Nicosia: a small urban park with lawn, palms, paved paths and a modern pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#7a9a58",
+          "#e0ddd2"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Northern_Cyprus",
+          "what": "context: Mesaoria plain, dry summers; no page found for this park"
+        }
+      ],
+      "notes": "No description found; typed municipal park in the dry plain with palms and irrigated lawn."
+    },
+    "kyrenia-transit": {
+      "venueId": "kyrenia-transit",
+      "city": "kyrenia",
+      "name": "Kyrenia Port",
+      "archetype": "transport-station",
+      "subject": "Kyrenia old harbour: a horseshoe stone-walled harbour lined with two-storey cafes and houses in honey limestone, with the Venetian castle and its round corner towers at the east end",
+      "form": {
+        "footprint": "U",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c49a",
+          "#c9a27a",
+          "#efe7d0"
+        ],
+        "roofColour": "#b4623c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 2,
+          "note": "harbour quays and mole"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "castle with large round Venetian corner towers"
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "Byzantine/Venetian castle; harbour 19th c. works",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyrenia",
+          "what": "old harbour lined with cafes, bars and restaurants; early buildings two-storey with warehouses below and homes above; small chain tower in the harbour; Kyrenia Castle at the east end with Byzantine origins, Roman foundations and large Venetian round corner towers; British harbour works 1885; restoration from December 2022"
+        }
+      ],
+      "notes": "Harbour layout and castle are sourced; stone colours are estimates. Not a conventional transport station: show the harbour basin with quays and moored boats and the castle at the end."
+    }
+  }
+}

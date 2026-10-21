@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "vcs-gate-awka",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1485745239",
+   "used": "name-quality match (vc's gate, historic=city_gate): about 59 x 30 m footprint bearing 149 deg, used as the gatehouse outline"
+  },
+  {
+   "kind": "text",
+   "used": "brief: university entrance gate with concrete arch, two piers, security booth, flagpoles; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 4,
+    "height": 8,
+    "openings": 1,
+    "kind": "round",
+    "crest": "none",
+    "masts": 0,
+    "colour": "#e0dacb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     16,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -2.2
+   ],
+   "z0": 6.0,
+   "height": 1.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6b4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968a"
+   }
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    -13,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#e0dacb",
+    "roofColour": "#2f6b4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e0dacb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e0dacb"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#1b7a43",
+    "count": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "colour": "#2f6b4a",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic concrete arch with green band, booth, walls and flags; OSM 59x30 m outline not used (gate only)"
+ }
+}

@@ -1,0 +1,1141 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ilorin",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ilorin",
+    "climate": "savanna",
+    "vernacular": "Sprawling Yoruba-Hausa-Fulani emirate city on the savanna belt: dense old-town compounds of mud-render and cement-rendered walls around the Emir's palace and central mosque, courtyard houses with flat or low-pitched corrugated roofs, newer 2-3 storey painted commercial blocks along Ibrahim Taiwo and Unity roads, domed mosques with green and gold, and large suburban university and government campuses. Red laterite earth, neem and mango trees, yellow-and-green taxis.",
+    "wallColours": [
+      "#d8c3a0",
+      "#c4a27a",
+      "#f0e8d6",
+      "#a8643f",
+      "#e8dcc0",
+      "#b9ad98",
+      "#7f9a80"
+    ],
+    "roofColours": [
+      "#8a4b36",
+      "#5f6a6e",
+      "#2f6b4f",
+      "#a8a29a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "mud-render",
+      "render",
+      "concrete",
+      "laterite",
+      "marble"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Hausa-Fulani influences: pointed and scalloped arches, crenellated parapets and entrance zaure gates on palace and mosques; Ilorin Central Mosque with 99 domes, marble cladding, gold main dome, green secondary domes and four minarets; geometric relief on walls; Yoruba courtyard compounds with carved doors.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ilorin",
+        "what": "savanna climate 33-37 C; Yoruba-Hausa-Fulani history; central mosque 99 domes, marble, gold dome, green domes, four ~150 ft minarets; taxis yellow-green"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/University_of_Ilorin",
+        "what": "large campus, seven-storey Senate complex, 2,000-seat auditorium"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kwara_State_Stadium",
+        "what": "stadium 1977, 18,000 capacity"
+      }
+    ]
+  },
+  "places": {
+    "al-hikmah-university": {
+      "venueId": "al-hikmah-university",
+      "city": "ilorin",
+      "name": "Al-Hikmah University",
+      "archetype": "campus-block",
+      "subject": "A private Islamic university campus: modern 3-storey cream lecture blocks with a domed mosque nearby on open laterite ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d6",
+          "#2f6b4f",
+          "#c4a27a"
+        ],
+        "roofColour": "#5f6a6e",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small campus mosque dome"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the campus layout found; typed with green accents suggesting its Islamic foundation. Much smaller than the University of Ilorin."
+    },
+    "diamond-park": {
+      "venueId": "diamond-park",
+      "city": "ilorin",
+      "name": "Diamond Park",
+      "archetype": "park-landscape",
+      "subject": "Diamond Park: a small landscaped public recreation park with a diamond-shaped paved walk, lawns and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8c3a0",
+          "#7f9a80",
+          "#a8643f"
+        ],
+        "roofColour": "#8a4b36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found; the name suggests the shape of the layout but this is unverified."
+    },
+    "emirs-palace": {
+      "venueId": "emirs-palace",
+      "city": "ilorin",
+      "name": "Emir's Palace",
+      "archetype": "heritage-fort",
+      "subject": "The Emir's Palace of Ilorin beside the central mosque: a large walled compound of rendered buildings with an arched entrance gate and flagpoles; the neighbouring mosque is marble-clad with 99 domes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#e8dcc0",
+          "#2f6b4f",
+          "#a8643f"
+        ],
+        "roofColour": "#8a4b36",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arched entrance gate (zaure style)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "19th century onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ilorin",
+          "what": "palace pictured next to central mosque; mosque has 99 domes, marble, gold main dome, four minarets; palace itself not described"
+        }
+      ],
+      "notes": "The palace is not described in the sources found; the Hausa-Fulani gate and crenellated wall are typed from regional emirate palaces (Kano/Zaria pattern). Venue sits near Oja Oba and the Central Mosque."
+    },
+    "flower-garden": {
+      "venueId": "flower-garden",
+      "city": "ilorin",
+      "name": "Flower Garden",
+      "archetype": "park-landscape",
+      "subject": "Flower Garden: a formal public garden with flowerbeds, paths and a central pavilion in the east of the city",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe8d6",
+          "#6fa45a",
+          "#b05a8a"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found; typed as a formal garden. Differs from Diamond Park by a fountain and formal gridded beds."
+    },
+    "ilorin-national-museum": {
+      "venueId": "ilorin-national-museum",
+      "city": "ilorin",
+      "name": "Ilorin National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Ilorin museum of the Nigerian national museums commission: a low rendered building with a front veranda and sculpture yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe8d6",
+          "#a8643f",
+          "#7f9a80"
+        ],
+        "roofColour": "#8a4b36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a regional National Museum. Not the same as the Emir's palace."
+    },
+    "ipata-market": {
+      "venueId": "ipata-market",
+      "city": "ilorin",
+      "name": "Ipata Market",
+      "archetype": "market-open",
+      "subject": "Ipata Market: a large open-air market of stalls, umbrellas and shed rows packed along the road in the old town",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d8c3a0",
+          "#a8643f",
+          "#5f6a6e"
+        ],
+        "roofColour": "#8a4b36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "umbrellas",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a dense open market. The largest market here, so denser than Kankatu."
+    },
+    "kankatu-central-mosque": {
+      "venueId": "kankatu-central-mosque",
+      "city": "ilorin",
+      "name": "Kankatu Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Kankatu Central Mosque: a large neighbourhood central mosque with a large central dome, small corner domes and two minarets in cream and green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#efe8d6",
+          "#2f6b4f",
+          "#c9a64a"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome, gold finish"
+        },
+        {
+          "id": "dome",
+          "count": 4,
+          "note": "corner domes, green"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "~35 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ilorin",
+          "what": "Ilorin central mosques use many domes of different sizes, marble, gold main dome and green secondary domes (that is the city's main Central Mosque, not Kankatu)"
+        }
+      ],
+      "notes": "No source on this mosque. The domes pattern follows the city's Central Mosque style (gold main dome, green secondary domes) at much smaller scale. The Ilorin Central Mosque itself, 99 domes with four ~150 ft minarets, is next to the Emir's palace, not here."
+    },
+    "kankatu-market": {
+      "venueId": "kankatu-market",
+      "city": "ilorin",
+      "name": "Kankatu Market",
+      "archetype": "market-hall",
+      "subject": "Kankatu Market: a covered hall market of two long sheet-roofed bays with rows of lock-up shops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8dcc0",
+          "#8a4b36",
+          "#b9ad98"
+        ],
+        "roofColour": "#5f6a6e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a roofed market hall to contrast with open Ipata."
+    },
+    "kwara-government-house": {
+      "venueId": "kwara-government-house",
+      "city": "ilorin",
+      "name": "Kwara State Government House",
+      "archetype": "civic-palace",
+      "subject": "Kwara State Government House: the governor's walled compound with a pale two-storey residence, portico and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f0e8d6",
+          "#c4a27a",
+          "#7f9a80"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from the state house type with green roof for Kwara state colours (assumption)."
+    },
+    "kwara-state-stadium": {
+      "venueId": "kwara-state-stadium",
+      "city": "ilorin",
+      "name": "Kwara State Stadium",
+      "archetype": "stadium",
+      "subject": "Kwara State Stadium: an 18,000-capacity 1970s open bowl with a covered main stand and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d2c6",
+          "#2f6b4f",
+          "#b9ad98"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kwara_State_Stadium",
+          "what": "built 1977, capacity 18,000 after renovation from 2010, pitch change approved 2021"
+        }
+      ],
+      "notes": "Date and capacity sourced. Smaller and lower than the Freetown and Cotonou stadiums; roof and colour are assumptions."
+    },
+    "oja-oba": {
+      "venueId": "oja-oba",
+      "city": "ilorin",
+      "name": "Oja Oba",
+      "archetype": "market-open",
+      "subject": "Oja Oba, the Emir's traditional market in front of the palace: a compact old market of shops and stalls in rendered single-storey rows",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c4a27a",
+          "#e8dcc0",
+          "#8a4b36"
+        ],
+        "roofColour": "#8a4b36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "19th century onward",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Oja Oba means the king's market, a historic market beside the palace; no physical description found. Typed with older mud-render to differ from Ipata."
+    },
+    "soludero-bus-terminal": {
+      "venueId": "soludero-bus-terminal",
+      "city": "ilorin",
+      "name": "Soludero Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "Soludero motor park: a bus terminal of open parking bays with a long waiting shed and ticket kiosks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8dcc0",
+          "#2f6b4f",
+          "#5f6a6e"
+        ],
+        "roofColour": "#5f6a6e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a motor park."
+    },
+    "st-james-catholic-church": {
+      "venueId": "st-james-catholic-church",
+      "city": "ilorin",
+      "name": "St James' Catholic Church",
+      "archetype": "church-classical",
+      "subject": "St James' Catholic Church: a gabled rendered parish church with a front bell tower and round-arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f0e8d6",
+          "#a8643f",
+          "#8a8478"
+        ],
+        "roofColour": "#8a4b36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; the scene-factory brief marks this as a church variant. Typed as a simple colonial-era parish church."
+    },
+    "take-beauty-salon": {
+      "venueId": "take-beauty-salon",
+      "city": "ilorin",
+      "name": "Take Beauty Salon",
+      "archetype": "shophouse",
+      "subject": "A small beauty salon in a single-storey rendered shop with a painted sign board and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e8d6",
+          "#b05a8a",
+          "#8a4b36"
+        ],
+        "roofColour": "#5f6a6e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue; nothing describing it found."
+    },
+    "uith": {
+      "venueId": "uith",
+      "city": "ilorin",
+      "name": "University of Ilorin Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "UITH at Oke-Ose: a 600-bed teaching hospital, a large complex of connected 3-4 storey blocks with a helipad",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d6",
+          "#7f9a80",
+          "#c4a27a"
+        ],
+        "roofColour": "#5f6a6e",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Ilorin_Teaching_Hospital",
+          "what": "600 beds, founded 1970, Oke-Ose Ilorin, helipad, 2024 fire damaged part of the buildings"
+        }
+      ],
+      "notes": "Beds, founding date and helipad sourced; massing and colours inferred."
+    },
+    "university-of-ilorin": {
+      "venueId": "university-of-ilorin",
+      "city": "ilorin",
+      "name": "University of Ilorin",
+      "archetype": "campus-block",
+      "subject": "University of Ilorin main campus: the seven-storey Senate complex tower beside a long library and lecture blocks in open grounds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 28,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e0cc",
+          "#2f6b4f",
+          "#a8a29a"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Ilorin",
+          "what": "main campus ~5,000 ha, seven-storey Senate complex, library, 2,000-seat auditorium"
+        }
+      ],
+      "notes": "The Senate Complex is documented as seven storeys; colours and brise-soleil are guesses. The campus is huge, so the scene shows the Senate complex as the recognisable portion."
+    },
+    "zenith-bank-unity-road": {
+      "venueId": "zenith-bank-unity-road",
+      "city": "ilorin",
+      "name": "Zenith Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch on Unity Road: a three-storey glazed corporate block in neutral colours with a drive-in ATM canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8d0d4",
+          "#8a1c2a",
+          "#f1f1ee"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "ATM canopy"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the Nigerian bank branch pattern; brand logo omitted and sign board kept blank per contract."
+    }
+  }
+}

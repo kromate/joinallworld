@@ -1,0 +1,1605 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "male",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "male",
+    "climate": "tropical-maritime",
+    "vernacular": "One of the densest cities on earth, packed onto a roughly 2 km island of reclaimed land. Ordinary buildings are 4-8 storey concrete apartment and office blocks in painted render (white, cream, pale blue, yellow, terracotta), flat roofs crowded with water tanks, solar panels and satellite dishes, narrow asphalt lanes and almost no gaps between plots. Heritage is coral stone with carved lacquered timber (Friday Mosque). Resort and local islands elsewhere in the atoll use low timber-and-thatch (makuti) pavilions on white sand; Hulhumale is a newer reclaimed city of regular mid-rise blocks.",
+    "wallColours": [
+      "#f3f1ea",
+      "#e8dcc2",
+      "#c9dfe7",
+      "#e5c88f",
+      "#c47a5a",
+      "#a8a9a4"
+    ],
+    "roofColours": [
+      "#9a9a96",
+      "#5b7fa3",
+      "#8a4a3a",
+      "#b0b4b6"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "limestone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Thakurufaanu-era carved coral-stone and lacquered timber on the old mosques, gilded domes and tall white minarets on modern mosques, Dhivehi lettering boards, rooftop water tanks, blue-and-white painted Friday Mosque minaret, makuti thatch on resort pavilions.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Malé",
+        "what": "extremely dense reclaimed island, roads paved, coral-stone Friday Mosque, government buildings on the waterfront, jetties"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Malé_Friday_Mosque",
+        "what": "coral stone walls, round blue-and-white minaret, roof formerly thatch then corrugated iron then aluminium"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Islamic_Centre_(Maldives)",
+        "what": "modern golden-domed mosque with 41 m minaret"
+      }
+    ]
+  },
+  "places": {
+    "male-airport-male-airport": {
+      "venueId": "male-airport-male-airport",
+      "city": "male",
+      "name": "Velana International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The international terminal on Hulhulé island: a very long low terminal block along the apron with passenger bridges, next to the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 520,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#f3f1ea",
+          "#5b7fa3",
+          "#a8a9a4"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate tall tower"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011-2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Velana_International_Airport",
+          "what": "three terminals (international, domestic, seaplane); new 78,000 m2 terminal by Saudi Bin Laden Group opened July 2025 beside the old one; seaplane terminal four-storey 2022"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM terminal 520 x 90 m (collected facts)"
+        }
+      ],
+      "notes": "Size is measured (OSM) and will be clamped to 120 m; show the central part with jet bridges. Roof curve and glazing level are typed. Do not copy the small island setting; the sea is directly at the apron edge."
+    },
+    "male-clinic": {
+      "venueId": "male-clinic",
+      "city": "male",
+      "name": "Indira Gandhi Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "The national hospital, a large multi-storey concrete block with long balconies given by India in 1995",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3f1ea",
+          "#c9dfe7",
+          "#a8a9a4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 4
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indira_Gandhi_Memorial_Hospital",
+          "what": "gift of India; foundation 1990, handed over 1994, inaugurated 15 April 1995; about 300 beds; western Malé"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint 154 x 83 m, 10,300 m2 (collected facts)"
+        }
+      ],
+      "notes": "Dates and bed count sourced; storeys, colours typed from Indian-aid hospital style and Malé blocks. Footprint includes annexes; main mass shown."
+    },
+    "male-community-notices": {
+      "venueId": "male-community-notices",
+      "city": "male",
+      "name": "Ministry of Foreign Affairs (Fathulla Jameel Building)",
+      "archetype": "civic-palace",
+      "subject": "A tall narrow government office block on the Henveiru waterfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 21,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "ministry-block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3f1ea",
+          "#5b7fa3",
+          "#a8a9a4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "government buildings line the waterfront"
+        }
+      ],
+      "notes": "OSM Fathulla Jameel Building 41 x 21 m, 880 m2; storey count guessed from Malé blocks. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-community-voting-game": {
+      "venueId": "male-community-voting-game",
+      "city": "male",
+      "name": "Huraa Council Secretariat",
+      "archetype": "civic-small",
+      "subject": "A small island council office in a white two-storey building with a hip roof on Huraa",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#c9dfe7",
+          "#a8a9a4"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context; Huraa is a small local island east of Malé"
+        }
+      ],
+      "notes": "OSM footprint 28.7 x 12.8 m. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-community-workshop": {
+      "venueId": "male-community-workshop",
+      "city": "male",
+      "name": "Villa College",
+      "archetype": "campus-block",
+      "subject": "A three-storey college building with a flat roof and ribbon windows in the crowded Henveiru blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc2",
+          "#5b7fa3",
+          "#f3f1ea"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building: college, 3 levels, 31.8 x 30.3 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25110403",
+          "what": "Wikidata: Villa College, private, founded 2007"
+        }
+      ],
+      "notes": "Levels and footprint measured; colours typed."
+    },
+    "male-market-game": {
+      "venueId": "male-market-game",
+      "city": "male",
+      "name": "Marché Local (Travellers Market area)",
+      "archetype": "market-hall",
+      "subject": "A two-storey covered market block with an open ground floor of stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8dcc2",
+          "#c9dfe7",
+          "#a8a9a4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "dense island with commercial port and waterfront"
+        }
+      ],
+      "notes": "OSM marketplace \"Travellers' Market\" 39.5 x 29.8 m was the nearest match; the actual Marché Local venue is unidentified. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-meal-stop": {
+      "venueId": "male-meal-stop",
+      "city": "male",
+      "name": "Fukuya Teppanyaki",
+      "archetype": "restaurant",
+      "subject": "A resort teppanyaki restaurant: a low timber building with a deep thatch (makuti) roof and an open deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#c9a77c",
+          "#f3f1ea",
+          "#8a5a36"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM containing building 113 x 70 m is the whole resort complex; only a restaurant wing is modelled. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-node-12109909429": {
+      "venueId": "male-osm-node-12109909429",
+      "city": "male",
+      "name": "Vista Del Mar",
+      "archetype": "restaurant",
+      "subject": "A beach restaurant on a resort island: open timber pavilion with a thatched roof by the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#8a5a36",
+          "#f3f1ea"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 41 x 22 m on a south-atoll island. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-node-12849075901": {
+      "venueId": "male-osm-node-12849075901",
+      "city": "male",
+      "name": "Sharks and rays viewpoint",
+      "archetype": "park-landscape",
+      "subject": "A wooden jetty-style lookout over a shallow lagoon where sharks and rays feed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "jetty viewpoint"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#8a5a36",
+          "#f3f1ea"
+        ],
+        "roofColour": "#8a5a36",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "The nearby OSM Grill Bar building is not the viewpoint; the viewpoint is typed as a timber jetty. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-node-6294958141": {
+      "venueId": "male-osm-node-6294958141",
+      "city": "male",
+      "name": "Avid College",
+      "archetype": "campus-block",
+      "subject": "A small four-storey private college building with ribbon windows and a roof terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 19,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9dfe7",
+          "#5b7fa3",
+          "#f3f1ea"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q28458080",
+          "what": "Wikidata: Avid College, inception 2005"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building 23.7 x 19 m"
+        }
+      ],
+      "notes": "Footprint measured; storeys and colours typed."
+    },
+    "male-osm-node-6398078446": {
+      "venueId": "male-osm-node-6398078446",
+      "city": "male",
+      "name": "Sunset View Point",
+      "archetype": "park-landscape",
+      "subject": "A small beachside lookout on Himmafushi: a bench-lined sand terrace facing the sunset over the reef",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "beach lookout"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#c9a77c",
+          "#a8a9a4"
+        ],
+        "roofColour": "#a8a9a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No OSM building and no description; typed as a beach lookout on a local island."
+    },
+    "male-osm-node-8935561366": {
+      "venueId": "male-osm-node-8935561366",
+      "city": "male",
+      "name": "Maldives National University",
+      "archetype": "campus-block",
+      "subject": "The tall MNU building in central Malé: an eight-level concrete block with banded windows and a rooftop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 42,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3f1ea",
+          "#5b7fa3",
+          "#a8a9a4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: building=university, 8 levels, 42.3 x 41.9 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maldives_National_University",
+          "what": "campus in Malé at 4 10 17 N 73 30 33 E; established 2011"
+        }
+      ],
+      "notes": "Levels and footprint measured; colours typed. No source describes the facade."
+    },
+    "male-osm-node-9559425955": {
+      "venueId": "male-osm-node-9559425955",
+      "city": "male",
+      "name": "Marina Clinic",
+      "archetype": "hospital",
+      "subject": "A small private clinic: a low white building with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 9.5,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#c9dfe7",
+          "#a8a9a4"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM clinic building 14.6 x 9.5 m on a resort island. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-way-116704222": {
+      "venueId": "male-osm-way-116704222",
+      "city": "male",
+      "name": "Lime Restaurant",
+      "archetype": "restaurant",
+      "subject": "A resort restaurant: a square thatched pavilion with an open veranda facing the beach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 38,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#c9a77c",
+          "#f3f1ea",
+          "#8a5a36"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 38.8 x 38.4 m. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-way-1317929099": {
+      "venueId": "male-osm-way-1317929099",
+      "city": "male",
+      "name": "ADK Hospital",
+      "archetype": "hospital",
+      "subject": "A private hospital, a long five-storey block with balconies and a front entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 93,
+        "depth_m": 37,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3f1ea",
+          "#5b7fa3",
+          "#c9dfe7"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/ADK_Hospital",
+          "what": "private hospital in Malé, founded 1987"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM hospital 93 x 37 m, 2,834 m2"
+        }
+      ],
+      "notes": "Footprint measured; storeys and colours typed. Make it visibly different from the Indira Gandhi hospital (private, glassier, smaller footprint, canopy)."
+    },
+    "male-osm-way-151402193": {
+      "venueId": "male-osm-way-151402193",
+      "city": "male",
+      "name": "Islamic Centre (Masjid-al-Sultan Muhammad Thakurufaanu Al Auzam, Grand Friday Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "The Islamic Centre seen from the street: a white three-level mosque block with one very large golden dome and a tall white minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 99,
+        "depth_m": 43,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "dome",
+        "variant": "single large gold dome, one minaret",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f3f1ea",
+          "#d8b24a",
+          "#a8a9a4"
+        ],
+        "roofColour": "#d8b24a",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "golden, on a drum, about 25 m across"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "41 m, white, slender with balcony"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1984",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Islamic_Centre_(Maldives)",
+          "what": "large golden dome, one 41 m minaret, modernist design based on a Malaysian mosque, capacity ~5,000, opened Nov 1984, near the main jetty"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: 3 levels, flat roof, building colour white, 98.9 x 43.3 m"
+        }
+      ],
+      "notes": "The skyline landmark of Malé: gold dome and white walls. Dome is on a central hall, flat-roofed wings around it. Different from King Salman Mosque (no dome, five minarets) and the small coral old mosque."
+    },
+    "male-osm-way-186667274": {
+      "venueId": "male-osm-way-186667274",
+      "city": "male",
+      "name": "National Football Stadium (Galolhu / Rasmee Dhandu)",
+      "archetype": "stadium",
+      "subject": "The small national stadium: a grass pitch ringed by tiered stands with a roofed main stand and floodlight masts, squeezed among apartment blocks",
+      "form": {
+        "footprint": "oval",
+        "width_m": 151,
+        "depth_m": 107,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f3f1ea",
+          "#3b6e91",
+          "#a8a9a4"
+        ],
+        "roofColour": "#5b7fa3",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand on one side"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rasmee_Dhandu_Stadium",
+          "what": "capacity 11,850, grass pitch; Galolhu National Stadium"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM stadium 151 x 107 m"
+        }
+      ],
+      "notes": "Capacity and surface sourced; roof arrangement and colours typed. Ringed by high-rise housing, so keep the stands modest."
+    },
+    "male-osm-way-19881993": {
+      "venueId": "male-osm-way-19881993",
+      "city": "male",
+      "name": "Vihamanaafushi (Kurumba Maldives resort island)",
+      "archetype": "hotel",
+      "subject": "The first Maldives resort island: low thatched villa blocks and a main lodge among palms on white sand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "resort lodge",
+        "wings": 3
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f3f1ea",
+          "#8a5a36",
+          "#c9a77c"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1972",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q371225",
+          "what": "Wikidata: Vihamanaafushi, island in Kaafu Atoll with resort"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM hotel building 37.7 x 13.9 m"
+        }
+      ],
+      "notes": "Island identity and footprint measured; thatch and white walls are typical resort style, not verified here."
+    },
+    "male-osm-way-306746570": {
+      "venueId": "male-osm-way-306746570",
+      "city": "male",
+      "name": "Medhu Ziyaaraiy",
+      "archetype": "shrine-small",
+      "subject": "The old mausoleum next to the Friday Mosque: a small square coral-stone tomb house in a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 15.6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e8dcc2",
+          "#f3f1ea",
+          "#a8a9a4"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "coral stone compound wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1902",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Medhu_Ziyaaraiy",
+          "what": "mausoleum of Abu al-Barakat Yusuf al-Barbari, built 1902/1906, beside Muliaage and across from the Friday Mosque, reopened 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM tomb 16.4 x 15.6 m"
+        }
+      ],
+      "notes": "Date, location and use sourced; the coral-stone walls and roof sheet are inferred from the neighbouring Friday Mosque tradition; unverified."
+    },
+    "male-osm-way-437135029": {
+      "venueId": "male-osm-way-437135029",
+      "city": "male",
+      "name": "Tree Tower Park",
+      "archetype": "park-landscape",
+      "subject": "A small Hulhumalé neighbourhood park with young trees, a tall climbing frame and paved paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 29,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "pocket park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#a8a9a4",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8a9a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM park 44.5 x 28.9 m in Hulhumalé; what the \"tree tower\" is is not documented. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-way-897444516": {
+      "venueId": "male-osm-way-897444516",
+      "city": "male",
+      "name": "Redbull Park",
+      "archetype": "park-landscape",
+      "subject": "A Hulhumalé sports park: a paved plaza with a skate/play area, grass and palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 91,
+        "depth_m": 76,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "sports park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#a8a9a4",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8a9a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM park 91 x 76 m in Hulhumalé. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-osm-way-959150179": {
+      "venueId": "male-osm-way-959150179",
+      "city": "male",
+      "name": "King Salman Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The 2018 mosque complex: a six-storey contemporary block with a dome-like tent-shaped roof and five tall minarets, one for each pillar of Islam",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 54,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "dome",
+        "variant": "tent-like roof, five minarets",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc2",
+          "#5b7fa3",
+          "#a8a9a4"
+        ],
+        "roofColour": "#c9b79a",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 5,
+          "note": "one for each pillar of Islam"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "tent-like low shell, not a classic hemisphere"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Salman_Mosque",
+          "what": "six-storey, five minarets, capacity 10,000, site ~10,000 m2, dome-like Bedouin-tent-style roof, contemporary; includes library, auditorium, classrooms"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM mosque 54 x 54 m, 2,288 m2"
+        }
+      ],
+      "notes": "Storeys, minaret count and roof concept sourced; colours (pale stone) typed. Distinct from the gold-domed Islamic Centre: more modern, box-like, five minarets."
+    },
+    "male-quiet-reflection": {
+      "venueId": "male-quiet-reflection",
+      "city": "male",
+      "name": "Bihuroazu Kamanaa Mosque",
+      "archetype": "shrine-small",
+      "subject": "A small old Maldivian mosque beside the Thakurufaanu mausoleum: low white-washed walls with a hipped sheet roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f3f1ea",
+          "#e8dcc2",
+          "#a8a9a4"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "16th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bihuroazu_Kamanaa_Mosque",
+          "what": "traditional Maldivian architecture, c. 16th century, adjacent to the Sultan Muhammad Thakurufaanu mausoleum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building colour white, 21.8 x 16.9 m"
+        }
+      ],
+      "notes": "White colour is from OSM; hip roof and coral wall details are inferred from Maldivian mosque tradition (see Friday Mosque), unverified."
+    },
+    "male-recreation": {
+      "venueId": "male-recreation",
+      "city": "male",
+      "name": "Sunset Park",
+      "archetype": "park-landscape",
+      "subject": "A Hulhumalé promenade park with lawn, paths and palms, laid out beside the sea wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 95,
+        "depth_m": 93,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "promenade park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f3f1ea",
+          "#a8a9a4",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8a9a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM park 94.5 x 92.8 m in Hulhumalé. No source describes the exterior; typed from the Malé city style and the type of place."
+    },
+    "male-transit": {
+      "venueId": "male-transit",
+      "city": "male",
+      "name": "Heinveru Ferry Terminal (public ferry to other atolls)",
+      "archetype": "transport-station",
+      "subject": "A ferry jetty on the Henveiru waterfront: concrete quay with covered waiting sheds and moored dhonis",
+      "form": {
+        "footprint": "rect",
+        "width_m": 143,
+        "depth_m": 49,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "ferry jetty"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a8a9a4",
+          "#5b7fa3",
+          "#f3f1ea"
+        ],
+        "roofColour": "#5b7fa3",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malé",
+          "what": "private ferries use harbours; jetties and waterfront"
+        }
+      ],
+      "notes": "OSM marina area 143 x 49 m. No source describes the exterior; typed from the Malé city style and the type of place."
+    }
+  }
+}

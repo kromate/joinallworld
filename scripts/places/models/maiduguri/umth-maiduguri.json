@@ -1,0 +1,620 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UMTH_Trauma_Center_(1).jpg",
+   "licence": "CC BY 4.0",
+   "author": "De-Invincible",
+   "view": "front",
+   "file": "/tmp/places-evidence/maiduguri/umth-maiduguri-0.jpg",
+   "used": "Muhammadu Buhari Trauma Centre block: white render, brick-red storey bands and ground floor, navy fins either side of the entrance, curved glazed bay over a navy porch, ribbon glazing in the upper wings, louvres, blank sign band on the roof"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/361959689",
+   "used": "not used: the OSM polygon is the whole 80 ha hospital campus"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 28,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "w-low",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ec",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#7f8f9e",
+    "plinth": 0.3,
+    "bands": "#b4503f",
+    "bay": 3.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#d9d8d4"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ec",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w-up",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "z0": 7,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe9",
+    "windows": "ribbon",
+    "windowRatio": 0.78,
+    "glassColour": "#c9cfd8",
+    "faces": {
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "front": "ribbon"
+    },
+    "bands": "#b4503f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe9",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "e-low",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    17,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ec",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "glassColour": "#7f8f9e",
+    "plinth": 0.3,
+    "bands": "#b4503f",
+    "bay": 3.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": [
+       "front"
+      ],
+      "colour": "#d9d8d4"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ec",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "e-up",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    17,
+    0
+   ],
+   "z0": 7,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe9",
+    "windows": "ribbon",
+    "windowRatio": 0.78,
+    "glassColour": "#c9cfd8",
+    "faces": {
+     "back": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "front": "ribbon"
+    },
+    "bands": "#b4503f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe9",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe9",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe9",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.4
+    ],
+    "height": 7.4,
+    "colour": "#b4503f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -7.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2f3a4e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -7.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     1.2
+    ],
+    "height": 14,
+    "colour": "#2f3a4e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -7.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 14,
+    "colour": "#d9d4cc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -7.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 14,
+    "colour": "#d9d4cc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.0,
+    7.4
+   ],
+   "params": {
+    "radius": 3.6,
+    "n": 20,
+    "height": 6.4,
+    "colour": "#d4dae0",
+    "windows": "curtain",
+    "glassColour": "#a9b3be",
+    "windowRatio": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    7
+   ],
+   "params": {
+    "rect": [
+     12,
+     3
+    ],
+    "height": 0.4,
+    "colour": "#2f3a4e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.8,
+    14
+   ],
+   "params": {
+    "rect": [
+     22,
+     1.2
+    ],
+    "height": 3.4,
+    "colour": "#eef0f2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.5,
+    "thickness": 0.15,
+    "pillarEvery": 4,
+    "colour": "#d8bf9e",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    26,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.0,
+    13.7
+   ],
+   "params": {
+    "radius": 4.1,
+    "n": 20,
+    "height": 0.5,
+    "colour": "#f4f1ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.0,
+    6.9
+   ],
+   "params": {
+    "radius": 4.1,
+    "n": 20,
+    "height": 0.5,
+    "colour": "#f4f1ec"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -7.2,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b4503f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -7.2,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b4503f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -7.2,
+    13.1
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b4503f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -7.2,
+    13.1
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b4503f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.8,
+    "colour": "#b4503f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "height": 0.8,
+    "colour": "#b4503f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.6,
+    15.5
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.1
+    ],
+    "height": 0.9,
+    "colour": "#5a6cc0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.6,
+    14.6
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.1
+    ],
+    "height": 0.5,
+    "colour": "#d2708a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     1.2
+    ],
+    "height": 1.3,
+    "colour": "#3f6b35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "umth-maiduguri",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "bay is a 20-sided cylinder with simple mullions, sign band has plain colour strips (no lettering), hedge/fence simplified, no AC boxes or UMTH sign"
+ }
+}

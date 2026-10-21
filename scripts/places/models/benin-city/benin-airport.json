@@ -1,0 +1,140 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/42967110",
+   "used": "terminal footprint (72 x 45 m diagonal), name-matched aeroway=terminal; look from the brief (2007 renovation) only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe7dc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#3b5d70",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8e8a",
+    "material": "concrete",
+    "overhang": 1.0,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "form": "flat",
+    "width": 30,
+    "depth": 8,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#c4bfb2"
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "round",
+    "colour": "#d9d5ca",
+    "bandColour": "#3b5d70"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -42,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -58
+   ],
+   "params": {
+    "width": 34,
+    "depth": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -45
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -45
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found. Terminal shape from the real outline; facade colours, canopy and tower position typed from the brief, no apron or runway."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "benin-airport"
+}

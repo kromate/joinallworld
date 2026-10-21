@@ -1,0 +1,1602 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "singapore",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "singapore",
+  "climate": "tropical-maritime",
+  "vernacular": "Equatorial garden city: 10-50 storey HDB public-housing slabs and point blocks in pastel painted render (cream, pale yellow, peach, pale green-blue) with flat roofs, open void decks and long common corridors; low-rise terraced shophouses with five-foot-way arcades, pastel facades and red clay-tile pitched roofs; colonial black-and-white bungalows and Palladian civic buildings in white stucco; glass-and-steel towers downtown. Heavy tropical planting: rain trees, palms, frangipani.",
+  "wallColours": [
+   "#efe6d0",
+   "#e8c9b0",
+   "#c6d6d2",
+   "#f2efe6",
+   "#9aa3a6",
+   "#d8c7a8"
+  ],
+  "roofColours": [
+   "#b5533c",
+   "#8d8f90",
+   "#7b4a3a",
+   "#5f6b72"
+  ],
+  "wallMaterials": [
+   "painted-render",
+   "render",
+   "concrete",
+   "stucco",
+   "glass-curtain",
+   "brick",
+   "exposed-concrete"
+  ],
+  "roofMaterials": [
+   "clay-tile",
+   "concrete",
+   "membrane",
+   "metal-sheet"
+  ],
+  "ground": "paving",
+  "vegetation": [
+   "palm",
+   "broadleaf"
+  ],
+  "ornament": "Five-foot-way arcades and Peranakan glazed tiles on shophouses; louvred shutters, deep verandahs and Palladian columns on colonial buildings; Art Deco horizontal fins and dated plaques at Tiong Bahru; HDB block-number plates, void decks, colour-banded corridors; lush vertical greenery on newer towers.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Architecture_of_Singapore",
+    "what": "shophouses with five-foot ways, Malay stilt houses, black-and-white bungalows, Palladian/neoclassical civic buildings, Art Deco, HDB slab blocks"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Istana,_Singapore",
+    "what": "Palladian Istana: tropical plan with deep verandahs, louvred windows, three-storey tower block"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Aljunied_MRT_station",
+    "what": "elevated MRT stations with segmented dome-shaped roofs"
+   }
+  ]
+ },
+ "places": {
+  "singapore-airport-singapore-airport": {
+   "venueId": "singapore-airport-singapore-airport",
+   "city": "singapore",
+   "name": "Singapore Changi Airport",
+   "archetype": "airport-terminal",
+   "subject": "A Changi terminal frontage: a long glass-fronted terminal under a deep overhanging roof, control tower behind",
+   "form": {
+    "footprint": "rect",
+    "width_m": 320,
+    "depth_m": 90,
+    "storeys": 4,
+    "height_m": 26,
+    "roof": "flat",
+    "variant": "multi-terminal",
+    "wings": 2
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "metal-cladding",
+    "colours": [
+     "#c3ccd2",
+     "#f0f1ef",
+     "#7d8a92"
+    ],
+    "roofColour": "#e6e8e8",
+    "roofMaterial": "metal-sheet",
+    "windows": "curtain",
+    "windowRatio": 0.65
+   },
+   "features": [
+    {
+     "id": "flat-canopy",
+     "count": 1,
+     "note": "deep overhanging forecourt roof"
+    },
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "jet-bridge",
+     "count": 10
+    },
+    {
+     "id": "control-tower",
+     "count": 1
+    },
+    {
+     "id": "bus-bays",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "high-tech",
+   "era": "T1 1981, T2 1990, T3 2008, T4 2017",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Changi_Airport",
+     "what": "T1 opened 1981, T2 1990, T3 2008, T4 2017; Jewel links T1-T3; article gives no exterior appearance"
+    }
+   ],
+   "notes": "Changi has four terminals; the page gives dates only. Massing, glass frontage and deep canopy are typed from general knowledge of the terminals."
+  },
+  "singapore-clinic": {
+   "venueId": "singapore-clinic",
+   "city": "singapore",
+   "name": "St Luke’s Hospital",
+   "archetype": "hospital",
+   "subject": "St Luke's Hospital in Bukit Batok: a mid-rise community hospital in cream and pale-blue painted render around a courtyard",
+   "form": {
+    "footprint": "U",
+    "width_m": 84,
+    "depth_m": 72,
+    "storeys": 6,
+    "height_m": 24,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#efe6d0",
+     "#c6d6d2",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/10842806",
+     "what": "St Luke’s Hospital building 84 m x 72 m, wikidata Q7594065"
+    }
+   ],
+   "notes": "Footprint measured (OSM); storeys and cladding colours are estimates for a Singapore community hospital."
+  },
+  "singapore-community-notices": {
+   "venueId": "singapore-community-notices",
+   "city": "singapore",
+   "name": "Istana",
+   "archetype": "civic-palace",
+   "subject": "The Istana main building: a white Palladian block with a three-storey central tower and two-storey colonnaded wings on a hill above lawns",
+   "form": {
+    "footprint": "rect",
+    "width_m": 100,
+    "depth_m": 40,
+    "storeys": 3,
+    "height_m": 28,
+    "roof": "hip",
+    "variant": "central-tower-and-wings",
+    "wings": 2
+   },
+   "facade": {
+    "material": "stucco",
+    "accent": "painted-render",
+    "colours": [
+     "#f2efe6",
+     "#c9b99a",
+     "#ffffff"
+    ],
+    "roofColour": "#7b4a3a",
+    "roofMaterial": "clay-tile",
+    "windows": "louvre",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "colonnade",
+     "count": 2,
+     "note": "Ionic upper / Doric lower colonnades on the wings"
+    },
+    {
+     "id": "portico",
+     "count": 1
+    },
+    {
+     "id": "mast",
+     "count": 1,
+     "note": "flagpole on rectangular cupola"
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "colonial",
+   "era": "1867-1869",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Istana,_Singapore",
+     "what": "built 1867-69 by J F A McNair, Palladian; central three-storey tower block about 28 m, two-storey wings with Ionic and Doric colonnades, deep verandahs, louvred windows, rectangular cupola with flagpole, elevated on the Domain"
+    }
+   ],
+   "notes": "Form and orders are sourced. White walls with a dark red-brown tile roof is the commonly seen colouring (general knowledge; the article does not state colours)."
+  },
+  "singapore-community-voting-game": {
+   "venueId": "singapore-community-voting-game",
+   "city": "singapore",
+   "name": "Ang Mo Kio Town Council (Avenue 1 Office)",
+   "archetype": "civic-small",
+   "subject": "Town council office in a 1977 HDB commercial block: three storeys of painted render over an open shopfront level",
+   "form": {
+    "footprint": "rect",
+    "width_m": 61,
+    "depth_m": 37,
+    "storeys": 3,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe6d0",
+     "#c6d6d2",
+     "#9aa3a6"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "shopfront",
+     "count": 4
+    },
+    {
+     "id": "awning",
+     "count": 3
+    },
+    {
+     "id": "signage-board",
+     "count": 2
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1977",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/117227138",
+     "what": "commercial building, 3 levels, start_date 1977, 61 m x 37 m"
+    }
+   ],
+   "notes": "Levels, year and footprint measured (OSM); colours are typical HDB repainting palette."
+  },
+  "singapore-community-workshop": {
+   "venueId": "singapore-community-workshop",
+   "city": "singapore",
+   "name": "Woodlands Regional Library",
+   "archetype": "campus-block",
+   "subject": "Woodlands Regional Library: a boxy four-storey civic block of glass and concrete beside the MRT and bus interchange",
+   "form": {
+    "footprint": "rect",
+    "width_m": 100,
+    "depth_m": 40,
+    "storeys": 4,
+    "height_m": 22,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#c9c7c0",
+     "#6e8a96",
+     "#f0efe9"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "concrete",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "canopy-walkway",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2005",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/298087607",
+     "what": "matched OSM element is Woodlands MRT station area 402 m x 265 m"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; the matched OSM polygon is the Woodlands MRT/bus complex, not the library; library built above the Civic Centre, details unverified."
+  },
+  "singapore-market-game": {
+   "venueId": "singapore-market-game",
+   "city": "singapore",
+   "name": "Jewel Changi Airport",
+   "archetype": "mall",
+   "subject": "Jewel Changi Airport: a doughnut-shaped glass-and-steel dome with the 40 m Rain Vortex waterfall at its centre",
+   "form": {
+    "footprint": "oval",
+    "width_m": 203,
+    "depth_m": 153,
+    "storeys": 5,
+    "height_m": 37,
+    "roof": "dome",
+    "variant": "torus-glass-dome"
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "metal-cladding",
+    "colours": [
+     "#adafbb",
+     "#516272",
+     "#e6e8ea"
+    ],
+    "roofColour": "#516272",
+    "roofMaterial": "glass",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 1,
+     "note": "Rain Vortex, 40 m indoor waterfall through the central oculus"
+    },
+    {
+     "id": "dome",
+     "count": 1,
+     "note": "toroidal glass-and-steel gridshell"
+    },
+    {
+     "id": "roof-terrace",
+     "count": 1,
+     "note": "Canopy Park on the top level"
+    },
+    {
+     "id": "neon-strip",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "high-tech",
+   "era": "2019",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Jewel_Changi_Airport",
+     "what": "toroidal glass-and-steel dome, 9,000+ glass panels, about 200 m x 150 m, Moshe Safdie, 40 m Rain Vortex, Forest Valley, Canopy Park, 5 levels above ground, opened 2019"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/744520551",
+     "what": "OSM: 5 levels, height 37 m, roof dome, glass, roof colour #516272, building colour #ADAFBB, metal, start 2019-04-17"
+    }
+   ],
+   "notes": "Well documented: the torus dome with the central waterfall funnel is the recognisable silhouette."
+  },
+  "singapore-meal-stop": {
+   "venueId": "singapore-meal-stop",
+   "city": "singapore",
+   "name": "The Alkaff Mansion",
+   "archetype": "manor",
+   "subject": "Alkaff Mansion on Telok Blangah Hill: a 1918 white colonial bungalow with turrets, terrace steps and a pitched tile roof, now a restaurant",
+   "form": {
+    "footprint": "rect",
+    "width_m": 40,
+    "depth_m": 24,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "hip",
+    "wings": 1
+   },
+   "facade": {
+    "material": "stucco",
+    "accent": "painted-render",
+    "colours": [
+     "#f2eee4",
+     "#b8a98c",
+     "#ffffff"
+    ],
+    "roofColour": "#a5523a",
+    "roofMaterial": "clay-tile",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "pinnacles",
+     "count": 2,
+     "note": "corner turrets kept in the 1987 redevelopment"
+    },
+    {
+     "id": "steps",
+     "count": 1,
+     "note": "terrace steps retained"
+    },
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "arcade",
+     "count": 1,
+     "note": "verandah"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "colonial",
+   "era": "1918",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Alkaff_Mansion",
+     "what": "early 20th-century colonial bungalow built 1918, distinctive turrets and terrace steps retained, conserved 2005"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/54032319",
+     "what": "OSM footprint 60 m x 32 m"
+    }
+   ],
+   "notes": "Colours and exact roof form are not in the source; white walls with a red tile roof is typical of the type."
+  },
+  "singapore-osm-node-4300422591": {
+   "venueId": "singapore-osm-node-4300422591",
+   "city": "singapore",
+   "name": "Chek Jawa Wetlands",
+   "archetype": "park-landscape",
+   "subject": "Chek Jawa on Pulau Ubin: a mangrove and seagrass shore reached by a long timber boardwalk, with a small viewing tower and a kampong house nearby",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 160,
+    "depth_m": 50,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "gable",
+    "variant": "boardwalk-shore"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "whitewash",
+    "colours": [
+     "#8a6a46",
+     "#d8cdb4",
+     "#4f6a4a"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pier",
+     "count": 1,
+     "note": "long timber boardwalk over the tidal flat"
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "water"
+   },
+   "style": "vernacular",
+   "era": "modern boardwalk (2000s)",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Typed from the Singapore city style; no source gathered (web search budget exhausted); description from general knowledge of the Chek Jawa boardwalk and Jejawi tower."
+  },
+  "singapore-osm-relation-2535118": {
+   "venueId": "singapore-osm-relation-2535118",
+   "city": "singapore",
+   "name": "Ngee Ann Polytechnic",
+   "archetype": "campus-block",
+   "subject": "A polytechnic teaching block in white and grey painted render with deep sun-shading overhangs",
+   "form": {
+    "footprint": "rect",
+    "width_m": 110,
+    "depth_m": 32,
+    "storeys": 6,
+    "height_m": 24,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#e8e4d8",
+     "#9aa3a6",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "canopy-walkway",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1963 founded, campus 1970s-2010s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/2535118",
+     "what": "campus polygon 1030 m x 617 m, wikidata Q10482047"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; campus extent measured; block appearance guessed."
+  },
+  "singapore-osm-way-115105262": {
+   "venueId": "singapore-osm-way-115105262",
+   "city": "singapore",
+   "name": "Nanyang Technological University",
+   "archetype": "campus-block",
+   "subject": "NTU campus building: a dozen rounded six-storey towers of grey concrete around open voids (the Hive-style learning hub)",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 136,
+    "depth_m": 53,
+    "storeys": 6,
+    "height_m": 30,
+    "roof": "flat",
+    "variant": "rounded-towers",
+    "wings": 4
+   },
+   "facade": {
+    "material": "exposed-concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#8d8b86",
+     "#b5b2aa",
+     "#6e7a80"
+    ],
+    "roofColour": "#8d8b86",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "balcony-bands",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2015",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Nanyang_Technological_University",
+     "what": "The Hive (UOB Innovation Hub) designed by Thomas Heatherwick; ADM building with grassy sloping roof; North Spine by Kenzo Tange 1986"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/83889441",
+     "what": "OSM matched building N3.1: 6 levels, 136 m x 53 m"
+    }
+   ],
+   "notes": "Venue coordinates sit at the Learning Hub (the Hive); the OSM-matched block is N3.1 (6 levels). Hive described only by designer in the fetched page; the rounded concrete towers are general knowledge."
+  },
+  "singapore-osm-way-152598430": {
+   "venueId": "singapore-osm-way-152598430",
+   "city": "singapore",
+   "name": "Icon Village",
+   "archetype": "mall",
+   "subject": "Icon Village in Tanjong Pagar: a seven-storey grey mixed retail-and-office block from 2007",
+   "form": {
+    "footprint": "rect",
+    "width_m": 110,
+    "depth_m": 68,
+    "storeys": 7,
+    "height_m": 28,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#9099a0",
+     "#6e8aa0",
+     "#d8dde0"
+    ],
+    "roofColour": "#9099a0",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "signage-board",
+     "count": 2
+    },
+    {
+     "id": "shopfront",
+     "count": 4
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "2007",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/152598430",
+     "what": "OSM: 7 levels, concrete, building and roof colour #9099a0, start 2007, 110 m x 68 m"
+    }
+   ],
+   "notes": "Levels, colour, material and year are OSM tags; glazing share is estimated."
+  },
+  "singapore-osm-way-173131856": {
+   "venueId": "singapore-osm-way-173131856",
+   "city": "singapore",
+   "name": "Lot One Shoppers' Mall",
+   "archetype": "mall",
+   "subject": "Lot One in Choa Chu Kang: a five-storey 1996 suburban mall in cream render with glass bands above the town centre bus interchange",
+   "form": {
+    "footprint": "rect",
+    "width_m": 102,
+    "depth_m": 83,
+    "storeys": 5,
+    "height_m": 25,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e6dcc4",
+     "#6e8aa0",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "signage-board",
+     "count": 2
+    },
+    {
+     "id": "shopfront",
+     "count": 4
+    },
+    {
+     "id": "canopy-walkway",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "postmodern",
+   "era": "1996",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/173131856",
+     "what": "OSM: 5 levels, start 1996-08, 102 m x 83 m"
+    }
+   ],
+   "notes": "Levels, opening date and footprint are OSM tags; colours estimated."
+  },
+  "singapore-osm-way-175550316": {
+   "venueId": "singapore-osm-way-175550316",
+   "city": "singapore",
+   "name": "Clementi Woods",
+   "archetype": "park-landscape",
+   "subject": "Clementi Woods Park: a secondary-forest park with trails and a small entrance pavilion beside HDB estates",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 110,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": null,
+    "colours": [
+     "#8a6a46",
+     "#d8cdb4",
+     "#4f6a4a"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "metal-sheet",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 3
+    },
+    {
+     "id": "gate",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/175550316",
+     "what": "park 907 m x 338 m, 15.6 ha, wikidata Q5131478"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; extent measured; furniture guessed."
+  },
+  "singapore-osm-way-232204347": {
+   "venueId": "singapore-osm-way-232204347",
+   "city": "singapore",
+   "name": "Masjid Al-Iman",
+   "archetype": "mosque-domed",
+   "subject": "Masjid Al-Iman in Bukit Panjang: a four-level Sunni mosque block with one dome and a minaret",
+   "form": {
+    "footprint": "rect",
+    "width_m": 49,
+    "depth_m": 28,
+    "storeys": 4,
+    "height_m": 18,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe6d0",
+     "#2f7a5a",
+     "#ffffff"
+    ],
+    "roofColour": "#2f7a5a",
+    "roofMaterial": "concrete",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "minaret",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "arab-islamic",
+   "era": "1990s",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/232204347",
+     "what": "OSM mosque, 4 levels, 49 m x 28 m, Sunni, wikidata Q6783331"
+    }
+   ],
+   "notes": "Levels and footprint measured (OSM); dome colour and minaret style are assumed from typical Singapore HDB-estate mosques, not verified."
+  },
+  "singapore-osm-way-262885931": {
+   "venueId": "singapore-osm-way-262885931",
+   "city": "singapore",
+   "name": "Singapore Zoo",
+   "archetype": "park-landscape",
+   "subject": "Singapore Zoo at Mandai: naturalistic open-concept animal exhibits in rainforest on the Upper Seletar shore",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 180,
+    "storeys": 1,
+    "height_m": 8,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "concrete",
+    "colours": [
+     "#8a6a46",
+     "#d8cdb4",
+     "#4f6a4a"
+    ],
+    "roofColour": "#7b4a3a",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "pavilion",
+     "count": 3
+    },
+    {
+     "id": "canopy-walkway",
+     "count": 1,
+     "note": "Treetops Trail"
+    },
+    {
+     "id": "kiosk",
+     "count": 3
+    },
+    {
+     "id": "pier",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "1973",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Singapore_Zoo",
+     "what": "28 ha on Upper Seletar Reservoir edge in the forested catchment; open concept with moats and hidden barriers; Treetops Trail boardwalk; Fragile Forest biodome; amphitheatre"
+    }
+   ],
+   "notes": "Layout is sourced; entrance and pavilion styling is not described."
+  },
+  "singapore-osm-way-33175767": {
+   "venueId": "singapore-osm-way-33175767",
+   "city": "singapore",
+   "name": "Yishun Park",
+   "archetype": "park-landscape",
+   "subject": "Yishun Park: a 14 ha town park with a pond, lawns, playgrounds and a pavilion among HDB blocks",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 330,
+    "depth_m": 200,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": null,
+    "colours": [
+     "#efe6d0",
+     "#b5533c",
+     "#c6d6d2"
+    ],
+    "roofColour": "#b5533c",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 2
+    },
+    {
+     "id": "steps",
+     "count": 2
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    },
+    {
+     "id": "bandstand",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "water"
+   },
+   "style": "contemporary",
+   "era": "1980s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/33175767",
+     "what": "park 551 m x 429 m, 13.8 ha, wikidata Q8053846"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; extent measured; furniture guessed."
+  },
+  "singapore-osm-way-34583847": {
+   "venueId": "singapore-osm-way-34583847",
+   "city": "singapore",
+   "name": "Tampines Meridian Junior College",
+   "archetype": "campus-block",
+   "subject": "A Singapore junior college: four-storey U-shaped teaching blocks in cream painted render with colour-banded open corridors",
+   "form": {
+    "footprint": "U",
+    "width_m": 120,
+    "depth_m": 60,
+    "storeys": 4,
+    "height_m": 16,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe6d0",
+     "#c6d6d2",
+     "#e2a24c"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 3
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "canopy-walkway",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1986 / 2003 / merged 2019",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/2847110",
+     "what": "OSM: school, 4 levels, 304 m x 124 m, merged Jan 2019 from Tampines JC (1986) and Meridian JC (2003)"
+    }
+   ],
+   "notes": "Levels and extent measured; corridor-and-courtyard layout is typical of Singapore schools, colours estimated."
+  },
+  "singapore-osm-way-35096650": {
+   "venueId": "singapore-osm-way-35096650",
+   "city": "singapore",
+   "name": "Masjid En-Naeem",
+   "archetype": "mosque-domed",
+   "subject": "Masjid En-Naeem in Hougang: a square-plan Sunni mosque with a central dome and one minaret",
+   "form": {
+    "footprint": "rect",
+    "width_m": 56,
+    "depth_m": 54,
+    "storeys": 3,
+    "height_m": 16,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe6d0",
+     "#2f7a5a",
+     "#ffffff"
+    ],
+    "roofColour": "#2f7a5a",
+    "roofMaterial": "concrete",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "minaret",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "arab-islamic",
+   "era": "1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/35096650",
+     "what": "mosque footprint 56 m x 54 m, wikidata Q6783344"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; footprint measured; dome/minaret details assumed."
+  },
+  "singapore-osm-way-397219610": {
+   "venueId": "singapore-osm-way-397219610",
+   "city": "singapore",
+   "name": "Parkway East Hospital",
+   "archetype": "hospital",
+   "subject": "Parkway East Hospital in Siglap: a mid-rise private hospital block in pale render and glass",
+   "form": {
+    "footprint": "rect",
+    "width_m": 80,
+    "depth_m": 42,
+    "storeys": 8,
+    "height_m": 32,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e8e4d8",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/801746053",
+     "what": "hospital building 80 m x 42 m, wikidata Q7138794"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; footprint measured; height guessed."
+  },
+  "singapore-osm-way-677411847": {
+   "venueId": "singapore-osm-way-677411847",
+   "city": "singapore",
+   "name": "Bedok Stadium",
+   "archetype": "stadium",
+   "subject": "Bedok Stadium: a small community oval with a roofed main grandstand and floodlights",
+   "form": {
+    "footprint": "oval",
+    "width_m": 216,
+    "depth_m": 198,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "exposed-concrete",
+    "accent": "metal-cladding",
+    "colours": [
+     "#c9c7c0",
+     "#b5533c",
+     "#e6e8e8"
+    ],
+    "roofColour": "#5f6b72",
+    "roofMaterial": "metal-sheet",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "stand-roof",
+     "count": 1,
+     "note": "roofed main grandstand"
+    },
+    {
+     "id": "floodlights",
+     "count": 4
+    },
+    {
+     "id": "scoreboard",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1970s-1980s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/677411847",
+     "what": "stadium 216 m x 198 m, wikidata Q4879348"
+    }
+   ],
+   "notes": "Typed from the Singapore city style; extent measured; stand form guessed."
+  },
+  "singapore-osm-way-74715098": {
+   "venueId": "singapore-osm-way-74715098",
+   "city": "singapore",
+   "name": "Mount Alvernia Hospital",
+   "archetype": "hospital",
+   "subject": "Mount Alvernia Hospital in Thomson: a large private hospital complex with a cream block facing the entrance and a newer taller wing",
+   "form": {
+    "footprint": "L",
+    "width_m": 90,
+    "depth_m": 45,
+    "storeys": 8,
+    "height_m": 32,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#efe6d0",
+     "#b5533c",
+     "#ffffff"
+    ],
+    "roofColour": "#b5533c",
+    "roofMaterial": "clay-tile",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "bell-tower",
+     "count": 1,
+     "note": "chapel tower"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1961, extended later",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/37552597",
+     "what": "OSM hospital, 4 levels, 146 m x 102 m, wikidata Q6919390"
+    }
+   ],
+   "notes": "Levels and extent measured; the chapel tower and tile roof are from general knowledge of the Catholic hospital, not verified."
+  },
+  "singapore-osm-way-890591248": {
+   "venueId": "singapore-osm-way-890591248",
+   "city": "singapore",
+   "name": "Steps of Syonan Jinja",
+   "archetype": "heritage-fort",
+   "subject": "Overgrown remains of the Japanese-occupation Shinto shrine at MacRitchie: mossy stone steps and bridge footings in rainforest",
+   "form": {
+    "footprint": "rect",
+    "width_m": 50,
+    "depth_m": 16,
+    "storeys": 0,
+    "height_m": 3,
+    "roof": "none",
+    "variant": "ruin"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "granite",
+    "colours": [
+     "#7a7d73",
+     "#9a9c90",
+     "#4f6a4a"
+    ],
+    "roofColour": "#7a7d73",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1,
+     "note": "long flight of stone steps"
+    },
+    {
+     "id": "ramparts",
+     "count": 1,
+     "note": "ruined footings"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "1942-1945",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Syonan_Jinja",
+     "what": "shrine built by Japanese army, established 7 May 1942, destroyed 15 Aug 1945; ruins reduced to a few support structures and broken chunks in dense forest in the Central Catchment; designated historic site 2002"
+    }
+   ],
+   "notes": "Only the steps remain; no roof or walls. Size from OSM (52 m x 16 m)."
+  },
+  "singapore-quiet-reflection": {
+   "venueId": "singapore-quiet-reflection",
+   "city": "singapore",
+   "name": "The Kusu Kramats",
+   "archetype": "shrine-small",
+   "subject": "Kusu Island keramats: small Malay shrines at the top of a hillock reached by 152 steps, rebuilt after the 2022 fire",
+   "form": {
+    "footprint": "rect",
+    "width_m": 13,
+    "depth_m": 9,
+    "storeys": 1,
+    "height_m": 3,
+    "roof": "none",
+    "variant": "hilltop-shrines",
+    "wings": 2
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#efeadf",
+     "#c9a23c",
+     "#8a6a46"
+    ],
+    "roofColour": "#b5533c",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 152,
+     "note": "stairway up the hillock (second staircase added 2022)"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 1,
+     "note": "temporary canopy over the open shrines"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "pilgrimage site, rebuilt after fire of 17 April 2022",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Kusu_Island",
+     "what": "three keramat shrines on a hillock, 152 steps, badly damaged by fire 17 April 2022, retiled, second staircase; shrine had no roof and temporary tentage; island 8.5 ha; Tua Pek Kong temple 1923"
+    }
+   ],
+   "notes": "Wikipedia gives no colours; whitewash and yellow cloth accents are general knowledge of Malay keramat. Tua Pek Kong Chinese temple (1923) is nearby on the island."
+  },
+  "singapore-recreation": {
+   "venueId": "singapore-recreation",
+   "city": "singapore",
+   "name": "Punggol Waterway Park",
+   "archetype": "park-landscape",
+   "subject": "Punggol Waterway Park: a long man-made waterway with grassed promenades on both banks, footbridges and lawns beside HDB blocks",
+   "form": {
+    "footprint": "rect",
+    "width_m": 400,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "shed",
+    "variant": "waterway"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": null,
+    "colours": [
+     "#8a6a46",
+     "#d8cdb4",
+     "#4f6a4a"
+    ],
+    "roofColour": "#8d8f90",
+    "roofMaterial": "metal-sheet",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 3
+    },
+    {
+     "id": "steps",
+     "count": 4
+    },
+    {
+     "id": "arches",
+     "count": 2,
+     "note": "footbridges over the waterway"
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "water"
+   },
+   "style": "contemporary",
+   "era": "2011",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Punggol_Waterway_Park",
+     "what": "12.25 ha riverine park along Singapore's longest man-made waterway; promenades on both sides; four themed areas; lawns; part of a 26 km nature loop"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/180909686",
+     "what": "OSM park 1004 m x 403 m"
+    }
+   ],
+   "notes": "Layout sourced; bridges and pavilions are not described in the page and are typical features."
+  },
+  "singapore-transit": {
+   "venueId": "singapore-transit",
+   "city": "singapore",
+   "name": "Aljunied",
+   "archetype": "transport-station",
+   "subject": "Aljunied MRT station: an elevated island-platform station under a segmented, ribbed dome-shaped roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 153,
+    "depth_m": 25,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "barrel",
+    "variant": "elevated-ribbed-roof"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#f6f2e6",
+     "#9aa3a6",
+     "#c6d6d2"
+    ],
+    "roofColour": "#f6f2e6",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "platform-canopy",
+     "count": 1,
+     "note": "segmented ribbed roof (\"caterpillar\" / \"rib cage\")"
+    },
+    {
+     "id": "rail-tracks",
+     "count": 2
+    },
+    {
+     "id": "steps",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1980s (EWL, 1989)",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Aljunied_MRT_station",
+     "what": "elevated EWL station, one island platform, dome-shaped roof of segments described as a caterpillar / rib cage, built under a 1985 contract"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/190536382",
+     "what": "OSM: train_station, 2 levels, roof round, roof/building colour #f6f2e6, 153 m x 25 m"
+    }
+   ],
+   "notes": "Cream ribbed vault over two tracks on a viaduct is the whole silhouette."
+  }
+ }
+}

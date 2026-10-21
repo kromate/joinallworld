@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "sagamu-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json",
+   "used": "rendered square prayer hall, central dome, four corner domelets, minaret"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1274825464",
+   "used": "considered; 160 m2 nearest match contradicts 24 m hall, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#9db9c9"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d0b8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d0b8",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2eee6",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    9.6
+   ],
+   "params": {
+    "radius": 7,
+    "profile": "onion",
+    "drum": 2.2,
+    "colour": "#2f6b4f",
+    "finial": 1.2
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -9,
+    -9,
+    9.6
+   ],
+   "params": {
+    "radius": 2.4,
+    "profile": "onion",
+    "drum": 1,
+    "colour": "#2f6b4f",
+    "finial": 1.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -9,
+    9,
+    9.6
+   ],
+   "params": {
+    "radius": 2.4,
+    "profile": "onion",
+    "drum": 1,
+    "colour": "#2f6b4f",
+    "finial": 1.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    9,
+    -9,
+    9.6
+   ],
+   "params": {
+    "radius": 2.4,
+    "profile": "onion",
+    "drum": 1,
+    "colour": "#2f6b4f",
+    "finial": 1.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    9,
+    9,
+    9.6
+   ],
+   "params": {
+    "radius": 2.4,
+    "profile": "onion",
+    "drum": 1,
+    "colour": "#2f6b4f",
+    "finial": 1.2
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "style": "pencil",
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#d9d0b8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#d9d0b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; typed from archetype, OSM outline (160 m2) contradicts the 24 m hall so not used"
+ }
+}

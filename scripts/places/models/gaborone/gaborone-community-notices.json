@@ -1,0 +1,374 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gaborone,_Botswana_High_Court.jpg",
+   "licence": "Public domain",
+   "author": "Jota @ BRAZIL",
+   "view": "front",
+   "file": "/tmp/places-evidence/gaborone/hc1.jpg",
+   "used": "terracotta granite colonnade ring with recessed glass, set-back cream tiled upper block with a ribbon of small windows, central full-height entrance bay with dark glass, gold dome with a figure on top, paved axis"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Botswana%27s_High_Court_side_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Maatla Claudia",
+   "view": "side",
+   "used": "gold ribbed dome on a plain cream tiled block, terracotta pier ring below"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/373843765",
+   "used": "overall scale only (about 115 m across); the pinwheel outline is not used, the photo shows a square block with a central dome"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "colonnade-ring",
+   "footprint": {
+    "rect": [
+     96,
+     64
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a6652",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 3.2,
+      "spacing": 5.6,
+      "width": 1.6,
+      "kind": "square",
+      "colour": "#9a6652",
+      "backColour": "#2b3d42"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c5a48"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     76,
+     46
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 9,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d9c7b2",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       3.2,
+       2.6
+      ],
+      "colours": [
+       "#d9c7b2",
+       "#d2bfa9",
+       "#cdb9a2"
+      ],
+      "weights": [
+       4,
+       3,
+       1
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b8a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-ribbon",
+   "footprint": {
+    "rect": [
+     76,
+     46
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 21,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#d9c7b2",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b8a4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "height": 27,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#dccbb6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b8a4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-door",
+   "footprint": {
+    "rect": [
+     14,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -36.1
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3d42",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3d42"
+   },
+   "z0": 0
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    -25,
+    27
+   ],
+   "params": {
+    "radius": 8,
+    "height": 6,
+    "profile": "hemi",
+    "drum": 1.0,
+    "colour": "#d9a85a",
+    "drumColour": "#d9c7b2",
+    "finial": 0
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -37.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "rise": 0.9,
+    "run": 1.2,
+    "count": 4,
+    "colour": "#a97a64"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "statue-plinth",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "z0": 33,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#4a5a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "statue-figure",
+   "footprint": {
+    "rect": [
+     2.2,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "z0": 34.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3f6a55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a55"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "shrub",
+      "height": 1.6,
+      "spread": 2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -42,
+     0
+    ],
+    "end": [
+     -44,
+     -42,
+     0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "shrub",
+      "height": 1.6,
+      "spread": 2
+     }
+    },
+    "mode": "line",
+    "start": [
+     14,
+     -42,
+     0
+    ],
+    "end": [
+     44,
+     -42,
+     0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "paved-axis",
+   "footprint": {
+    "rect": [
+     11,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -55
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8756a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8756a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "colonnade much shorter than the real long wings; statue is a blocky stub; ribbon windows coarse; no bollards or flags; shrubs are tiny generic trees; parapets dropped on upper blocks to fit LOD1 budget"
+ }
+}

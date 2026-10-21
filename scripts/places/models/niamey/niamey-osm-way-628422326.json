@@ -1,0 +1,219 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-way-628422326",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/628422326",
+   "used": "park outline (about 152 x 151 m, 1.8 ha, leisure=park)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -90.8,
+      -13.7
+     ],
+     [
+      -19.7,
+      92.2
+     ],
+     [
+      82.1,
+      22.9
+     ],
+     [
+      87.9,
+      15.6
+     ],
+     [
+      95.4,
+      -6.7
+     ],
+     [
+      -18.3,
+      -92.8
+     ],
+     [
+      -62.9,
+      -32.2
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#a99b62",
+    "topColour": "#9aa05a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "length": 4,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#d8c3a0",
+    "pillarEvery": 6,
+    "points": [
+     [
+      -90.8,
+      -13.7
+     ],
+     [
+      -19.7,
+      92.2
+     ],
+     [
+      82.1,
+      22.9
+     ],
+     [
+      87.9,
+      15.6
+     ],
+     [
+      95.4,
+      -6.7
+     ],
+     [
+      -18.3,
+      -92.8
+     ],
+     [
+      -62.9,
+      -32.2
+     ],
+     [
+      -90.8,
+      -13.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    18,
+    -4
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#d8c3a0",
+    "cap_colour": "#8b6a52"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    0,
+    -30
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "count": 8,
+    "kind": "neem",
+    "gap": 4.5,
+    "height_min": 7,
+    "height_max": 10
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    15
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 60,
+    "count": 8,
+    "kind": "neem",
+    "gap": 4.5,
+    "height_min": 7,
+    "height_max": 10
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    40,
+    30
+   ],
+   "params": {
+    "width": 50,
+    "depth": 40,
+    "count": 14,
+    "kind": "neem",
+    "min_height": 6,
+    "max_height": 9
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "gate",
+   "at": [
+    -50,
+    -28
+   ],
+   "rotDeg": 50,
+   "params": {
+    "width": 7,
+    "height": 3.4,
+    "colour": "#c9ad86",
+    "board_colour": "#b5b0a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "real park outline; interior layout (pavilion, fountain, avenues, gate) typed from brief, no photo"
+ }
+}

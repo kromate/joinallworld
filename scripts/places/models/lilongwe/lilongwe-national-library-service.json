@@ -1,0 +1,651 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-national-library-service",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Library_of_Malawi_-_Jan_2018.jpg",
+   "licence": "CC BY 3.0",
+   "author": "nesnad",
+   "view": "front",
+   "file": "/tmp/places-evidence/lilongwe/lib1.jpg",
+   "used": "brutalist board-marked concrete in warm grey-pink; stepped two-storey central block with a round emblem and cantilevered upper boxes over a shaded ground storey; long low left wing with a row of white sawtooth roof lights and a lattice screen; shorter right wing; clipped hedges, two flag poles, a tall conifer at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/909126451",
+   "used": "overall scale only (about 46 x 44 m, irregular); the photo layout is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdb9a3",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ],
+     "colour": "#a89683"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8b",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     14,
+     13
+    ]
+   },
+   "at": [
+    19,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdb9a3",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ],
+     "colour": "#a89683"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8b",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-ground",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    1,
+    3.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3e342d",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfae99",
+    "material": "concrete",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-main",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -3
+   ],
+   "z0": 4.6,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cbb9a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b29d",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-box",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    8,
+    -5.5
+   ],
+   "z0": 8.0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdbba6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b29d",
+    "material": "concrete",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-left-box",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "z0": 8.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdbba6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4b29d",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reading-rear",
+   "footprint": {
+    "rect": [
+     36,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    11.5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c4b29d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8b",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    4.8
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     0,
+     0
+    ],
+    "end": [
+     -12,
+     0,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#f1efe8",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          3.4,
+          11
+         ]
+        },
+        {
+         "z": 1.6,
+         "rect": [
+          0.3,
+          11
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#a8998a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "bottom": 1.3,
+    "colour": "#f1efe8",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier--11",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -11,
+    -8.4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#4a3d33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3d33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier--4",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -4,
+    -8.4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#4a3d33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3d33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-3",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    3,
+    -8.4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#4a3d33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3d33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-10",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    10,
+    -8.4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#4a3d33",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3d33"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -6,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 1.25
+    },
+    "points": [
+     [
+      0,
+      -9.6,
+      6.6
+     ],
+     [
+      0,
+      -9.78,
+      6.6
+     ]
+    ],
+    "colour": "#f1efe8",
+    "caps": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lattice",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    -7.3
+   ],
+   "z0": 1.0,
+   "height": 2,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#e6dccd",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#e6dccd",
+      "#8a7b6c"
+     ],
+     "slits": 0.5
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dccd"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -11.8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     0,
+     0
+    ],
+    "end": [
+     28,
+     0,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 5,
+    "of": [
+     {
+      "type": "hedge",
+      "params": {
+       "length": 6.6,
+       "height": 0.8,
+       "depth": 0.9,
+       "colour": "#2f5a2a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    -13,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      10
+     ]
+    ],
+    "colour": "#cfd2d4",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    16,
+    -13,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      10
+     ]
+    ],
+    "colour": "#cfd2d4",
+    "caps": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     40,
+     -10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -12
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -12
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -12
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -11
+    ],
+    "height": 3
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "emblem is a hexagon-ish disc and wings plain; upper cantilever boxes still simplified; no croton/bougainvillea shrubs, hedges are a uniform band; sawtooth fins read slightly blue from sky reflection"
+ }
+}

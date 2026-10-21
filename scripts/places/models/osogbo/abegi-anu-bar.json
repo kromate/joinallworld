@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "abegi-anu-bar",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/osogbo.json",
+   "used": "one-storey painted night bar 20 x 12 m, shed roof, covered terrace, neon strip; OSM match is a 30 m2 nearest building so it is not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa58c",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#2f4a6a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e4a3a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 6,
+    "height": 3.0,
+    "form": "flat",
+    "columns": 5,
+    "colour": "#2f4a6a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6,
+    -6.3,
+    3.0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.1,
+    "bottom": 0.2,
+    "colour": "#2f4a6a",
+    "frameColour": "#f2efe6",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

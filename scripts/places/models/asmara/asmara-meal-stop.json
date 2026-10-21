@@ -1,0 +1,123 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/530653687",
+   "used": "containing building outline (366 m2, rotated 40 deg) as the snack bar footprint"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/asmara.json",
+   "used": "one-room rendered roadside shop, cream render, rust trim, corrugated shed roof, shaded front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 15,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3c4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.2,
+    "colours": [
+     "#a8503a",
+     "#efe3c4"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1,
+    "bottom": 2.6,
+    "colour": "#a8503a",
+    "frameColour": "#6f6a60"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#8a867d",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; plain footprint box with shed roof, details typed from brief."
+ }
+}

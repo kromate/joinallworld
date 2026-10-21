@@ -34,6 +34,7 @@ One switch, `src/lightMode.ts` (no imports, carried by the first download, about
 - **No background downloads:** `preloadNext` does not run (it already honoured `saveData`; it now honours Light mode, and a player who
   turned Light mode off is no longer held back by the browser's own ask, only by a 2G connection). `ScenePane` does not fetch the map's code
   ahead. The dive and aerial city are cut (the existing `saveData` path), which is the largest optional download.
+- **Place models (one model per public place, `docs/agent-plans/unique-places/PLAN.md`):** a venue's own model is fetched only when its scene is built. Light mode, Save-Data, a slow connection and any device that is not known to be strong get the LOD1 file (about 15 to 25 KB, up to 4,000 triangles) and the 1024 atlas; LOD0 (60 to 100 KB, up to 20,000 triangles, 2048 atlas) is for a desktop-class or wide, 4 GB, 4-core device only. The idle warm-up of the current city's first six LOD1 files is held back by the same `holdsBack` switch as the other idle downloads. Files are content-addressed, kept by `public/sw.js` in Cache Storage and asked to be persistent, so a place is downloaded once. See `src/scene/places/device.ts`.
 - **Music off:** a device that has not chosen starts with `musicOn: false`; turning Light mode on sets the existing Music switch off
   (`applyLight`). Turning it off leaves sound as the player has it.
 - **Smaller images:** there is no image-size option on anything downloaded (pictures the player uploads are already shrunk on the phone,

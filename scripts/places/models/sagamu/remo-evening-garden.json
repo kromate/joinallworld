@@ -1,0 +1,321 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "remo-evening-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/sagamu.json",
+   "used": "80x55 m walled garden with covered bandstand, lit fountain, gate, benches, palms, string lights; the OSM match is only nearest (5.4 m) so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wall-n",
+   "footprint": {
+    "rect": [
+     80,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    27
+   ],
+   "height": 2.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a59d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-w",
+   "footprint": {
+    "rect": [
+     0.6,
+     55
+    ]
+   },
+   "at": [
+    -40,
+    0
+   ],
+   "height": 2.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a59d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-e",
+   "footprint": {
+    "rect": [
+     0.6,
+     55
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "height": 2.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9a59d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-s-l",
+   "footprint": {
+    "rect": [
+     32,
+     0.6
+    ]
+   },
+   "at": [
+    -24,
+    -27
+   ],
+   "height": 1.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-s-r",
+   "footprint": {
+    "rect": [
+     32,
+     0.6
+    ]
+   },
+   "at": [
+    24,
+    -27
+   ],
+   "height": 1.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.6,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "radius": 5.2,
+    "height": 4.4
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 30
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     6,
+     0
+    ],
+    "end": [
+     18,
+     6,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.5
+      ],
+      "height": 0.5,
+      "colour": "#7a5a3a"
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "radius": 0.05,
+    "colour": "#ffe9a0",
+    "points": [
+     [
+      -12,
+      -12,
+      5
+     ],
+     [
+      -4,
+      -6,
+      4.2
+     ],
+     [
+      4,
+      -6,
+      4.2
+     ],
+     [
+      12,
+      -12,
+      5
+     ]
+    ],
+    "sag": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     18
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   96,
+   72
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence of this garden anywhere; layout (bandstand, fountain, gate, walls, palms) typed from the brief; OSM small building not modelled."
+ }
+}

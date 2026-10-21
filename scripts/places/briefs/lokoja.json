@@ -1,0 +1,947 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lokoja",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lokoja",
+    "climate": "savanna",
+    "vernacular": "Niger-Benue confluence town in tropical wet-and-dry savanna (about 1,250 mm of rain, maximums near 38 C): low-rise block-and-render houses and shops in cream, pale green and ochre paint on red laterite earth, rusted and painted corrugated-sheet roofs, a few colonial-era veranda buildings on and below Mount Patti, newer 2-3 storey government and bank buildings in painted concrete, and rocky hills behind the river town.",
+    "wallColours": [
+      "#e8dcc0",
+      "#f2efe6",
+      "#c98f5a",
+      "#b5683f",
+      "#a9b89a",
+      "#9a9a94",
+      "#d7c9a0"
+    ],
+    "roofColours": [
+      "#9a4a32",
+      "#4a6b4a",
+      "#8b8f92",
+      "#5b6670"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "mud-render",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Colonial-era deep verandas and hip roofs from the Lugard and mission period; Hausa/Nupe-style palace gateways and mosque pinnacles with painted geometric relief in the older core around the market; flag poles and painted gate piers on government compounds.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Lokoja",
+        "what": "confluence town of Niger and Benue, wet-and-dry savanna climate (rain May-Oct, ~1,250 mm), three markets (New, Old, Kpata), colonial Lokoja palace"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mount_Patti",
+        "what": "Mount Patti 458 m hill above the town; Lugard rest house and 1865 first primary school, welcome gate, statues of Lord and Lady Lugard"
+      }
+    ]
+  },
+  "places": {
+    "children-amusement-park": {
+      "venueId": "children-amusement-park",
+      "city": "lokoja",
+      "name": "Children Amusement",
+      "archetype": "park-landscape",
+      "subject": "A small children park: lawn, brightly painted play shapes, a kiosk and a covered pavilion behind a painted wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c07a",
+          "#7fa3c0",
+          "#f2efe6"
+        ],
+        "roofColour": "#c4503a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; no information on the real park was found."
+    },
+    "federal-medical-centre-lokoja": {
+      "venueId": "federal-medical-centre-lokoja",
+      "city": "lokoja",
+      "name": "Federal Medical Centre",
+      "archetype": "hospital",
+      "subject": "Federal teaching hospital compound: a 3-storey main block in cream render with a covered entrance and ambulance bay, flanked by lower ward blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe3cd",
+          "#a9b89a",
+          "#f6f3ea"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; federal tertiary hospital; larger than the state specialist hospital in this brief."
+    },
+    "federal-university-lokoja": {
+      "venueId": "federal-university-lokoja",
+      "city": "lokoja",
+      "name": "Federal University Lokoja",
+      "archetype": "campus-block",
+      "subject": "A teaching block of the federal university: a long 3-storey rendered lecture building with ribbon windows and an open stairwell tower",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#9a9a94",
+          "#f2efe6"
+        ],
+        "roofColour": "#8b8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2011-",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; federal university established in 2011; building design assumed."
+    },
+    "gtbank-lokoja": {
+      "venueId": "gtbank-lokoja",
+      "city": "lokoja",
+      "name": "Guarantee Trust Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey rendered block with a glazed ground floor, a blank fascia board and a gated forecourt with an ATM lobby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#6f8c96",
+          "#bdb7a8"
+        ],
+        "roofColour": "#8b8f92",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, brand-neutral"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; bank branch; no brand colours or marks should be used."
+    },
+    "kgirs-lokoja": {
+      "venueId": "kgirs-lokoja",
+      "city": "lokoja",
+      "name": "KGIRS",
+      "archetype": "office-low",
+      "subject": "Kogi State internal revenue service office: a plain 2-storey painted government office block with flag poles and a gated compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e2d8bd",
+          "#a9b89a",
+          "#f2efe6"
+        ],
+        "roofColour": "#9a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the acronym expands to a state revenue agency; building not described."
+    },
+    "kogi-state-specialist-hospital": {
+      "venueId": "kogi-state-specialist-hospital",
+      "city": "lokoja",
+      "name": "Kogi State Specialist Hospital, Lokoja",
+      "archetype": "hospital",
+      "subject": "State specialist hospital: older long single and two-storey ward blocks with covered walkways and a modest entrance block",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cd",
+          "#b5683f",
+          "#f6f3ea"
+        ],
+        "roofColour": "#8b8f92",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; older and lower than the Federal Medical Centre."
+    },
+    "lokoja-anglican-church": {
+      "venueId": "lokoja-anglican-church",
+      "city": "lokoja",
+      "name": "Anglican church",
+      "archetype": "church-classical",
+      "subject": "A mission-era Anglican parish church: a rectangular nave with a gabled roof, a short square bell tower at the front and simple arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6d0",
+          "#b5683f",
+          "#f6f3ea"
+        ],
+        "roofColour": "#9a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short frontal tower"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "Lokoja has a CMS mission history (first primary school in Northern Nigeria, Bishop Crowther school); no description of this church found"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Patti",
+          "what": "colonial and missionary heritage of the town"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the exact church is unidentified (Anglican, near the Old Market); a Christ Church style mission nave is assumed. Distinguished from the modern churches elsewhere by the old brick-and-render look."
+    },
+    "lokoja-central-masjid": {
+      "venueId": "lokoja-central-masjid",
+      "city": "lokoja",
+      "name": "Lokoja Central Masjid",
+      "archetype": "mosque-domed",
+      "subject": "The central town mosque near the old market: a rendered prayer hall with one main dome, four corner domelets and two slim minarets over a pointed-arch facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#4a8a6a",
+          "#d7c9a0"
+        ],
+        "roofColour": "#4a8a6a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only; Old Market area"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the real mosque was not described; two minarets and a green dome are a typed guess. Differs from the second Central Mosque in this brief by having two minarets."
+    },
+    "lokoja-central-mosque": {
+      "venueId": "lokoja-central-mosque",
+      "city": "lokoja",
+      "name": "Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A newer suburban mosque on the western side of the town: a large single-dome prayer hall in white and cream with one tall corner minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#c9b27a",
+          "#bdb7a8"
+        ],
+        "roofColour": "#c9b27a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "one tall minaret"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; location is far from the old core so a newer single-minaret mosque is assumed."
+    },
+    "lokoja-international-stadium": {
+      "venueId": "lokoja-international-stadium",
+      "city": "lokoja",
+      "name": "Lokoja International Stadium",
+      "archetype": "stadium",
+      "subject": "The state stadium: an oval bowl of concrete terraces with a covered main stand, a running track and four tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b5a8",
+          "#4a6b4a",
+          "#e8e3d4"
+        ],
+        "roofColour": "#4a6b4a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "town context only"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the stadium is a state-government sports complex; capacity unknown."
+    },
+    "lokoja-national-museum": {
+      "venueId": "lokoja-national-museum",
+      "city": "lokoja",
+      "name": "Lokoja National Museum",
+      "archetype": "museum-theatre",
+      "subject": "A colonial-era low museum building: a single-storey hip-roofed block with deep verandas on arched columns and a small garden in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eee4cc",
+          "#8a6a42",
+          "#f6f3ea"
+        ],
+        "roofColour": "#9a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "veranda arcade"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "Lokoja colonial heritage (Lugard period buildings)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Patti",
+          "what": "Lugard rest house and colonial sites"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; museum is in the colonial heritage district; the veranda hip-roof form is assumed from the Lugard-era buildings."
+    },
+    "lokoja-old-market": {
+      "venueId": "lokoja-old-market",
+      "city": "lokoja",
+      "name": "Old Market",
+      "archetype": "market-open",
+      "subject": "The old town market: a tight maze of stalls and lock-up shops under rusted corrugated sheets and tarpaulins on red earth beside the Maigari palace area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c98f5a",
+          "#9a4a32",
+          "#e8dcc0"
+        ],
+        "roofColour": "#9a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "lock-ups",
+          "count": 14
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "pre-colonial-present",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "Old Market is one of three major Lokoja markets (with New Market and Kpata); no description of its layout"
+        }
+      ],
+      "notes": "Existence and role are sourced; layout is typed. Distinguish from Kpata/New Market by the older mud-render shops."
+    },
+    "maigaris-palace": {
+      "venueId": "maigaris-palace",
+      "city": "lokoja",
+      "name": "Maigari's Palace",
+      "archetype": "heritage-fort",
+      "subject": "The traditional ruler's palace: a walled compound with a fortified mud-render gateway, crenellated parapet and a one-storey audience hall with a pointed-arch entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#d7b98a",
+          "#7a5a3a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a7a39a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "fortified gateway"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "geometric relief on gate"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "colonial-era, rebuilt",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokoja",
+          "what": "British installed Bukar as the Maigari who made his residence in Lokoja palace; no description of the building"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Patti",
+          "what": "colonial-period history of the town"
+        }
+      ],
+      "notes": "The Lokoja palace history is sourced, but the present building was not described; Hausa-style gateway and crenellation are assumed because Maigari is a Hausa/Nupe-region title."
+    }
+  }
+}

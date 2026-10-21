@@ -1,0 +1,1127 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "uyo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "uyo",
+    "climate": "rainforest",
+    "vernacular": "Wide-boulevard state capital of Akwa Ibom, rebuilt since the late 1990s with oil money: gleaming white civic landmarks, glass-and-concrete towers and plazas around Ibom Plaza, cream and white painted-render blocks of 2-4 storeys with long-span coloured metal roofs, clay-red laterite soil at the roadsides and abundant palms and broadleaf shade trees.",
+    "wallColours": [
+      "#f7f4ee",
+      "#efe6cf",
+      "#d9d6cc",
+      "#b8c4cc",
+      "#c9a77c",
+      "#a6553d"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4a5f52",
+      "#5b6670",
+      "#b0aca4"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Monumental white public architecture (the translucent-white stadium, civic buildings), Ibibio-themed monuments and murals at roundabouts and Ibom Plaza, tall flagpoles, curved canopies and glass atria on newer government and commercial towers, and walled compounds topped with security fencing.",
+    "sources": [
+      {
+        "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+        "what": "history and landmarks of Uyo, contemporary public architecture"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ibom_plaza",
+        "what": "Ibom Plaza as central civic space with amphitheatre and unity monument"
+      },
+      {
+        "url": "https://stadiumdb.com/stadiums/nga/akwa_ibom_stadium",
+        "what": "white acrylic-clad stadium as the city's signature building"
+      },
+      {
+        "url": "https://verticalurbanism.org/news-article/residential-towers-in-uyo-officially-open/",
+        "what": "Dakkada Towers: 21-storey glass-and-concrete tower dominating the urban landscape"
+      }
+    ]
+  },
+  "places": {
+    "akpan-andem-market": {
+      "venueId": "akpan-andem-market",
+      "city": "uyo",
+      "name": "Akpan Andem Market",
+      "archetype": "market-hall",
+      "subject": "Akpan Andem Market: a large central market of two-storey shop blocks and tin-roofed stall sheds packed along narrow lanes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc9b8",
+          "#b0553d",
+          "#e8dcc0"
+        ],
+        "roofColour": "#6a5a4c",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Uyo's main market; not described in sources. Typed as a dense hall-and-shed market. The game scene calls for a recognisable crowded market, bigger than the Yenagoa Onopa market."
+    },
+    "aktc-park": {
+      "venueId": "aktc-park",
+      "city": "uyo",
+      "name": "AKTC Park",
+      "archetype": "transport-station",
+      "subject": "AKTC bus park: an open paved bus yard with bays, a long roofed passenger shed, a ticket office and parked coaches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f1ece0",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "AKTC is the Akwa Ibom transport company and its park is a motor park; no source describes this one. Typed from a modern state transport terminal."
+    },
+    "akwa-ibom-house-of-assembly": {
+      "venueId": "akwa-ibom-house-of-assembly",
+      "city": "uyo",
+      "name": "House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The Akwa Ibom State House of Assembly complex: a broad white three-storey legislative block with a central entrance portico, a low dome over the chamber and flag-lined forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f7f4ee",
+          "#b8a77c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "low chamber dome"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "The building is real but none of the search results describe its architecture; white painted render and a chamber dome are typed from Nigerian state assemblies and Uyo's white-civic style. Wider and lower than the secretariat towers."
+    },
+    "akwa-ibom-state-secretariat": {
+      "venueId": "akwa-ibom-state-secretariat",
+      "city": "uyo",
+      "name": "Idongesit Nkanga Secretariat (Akwa Ibom State Secretariat)",
+      "archetype": "civic-palace",
+      "subject": "The Idongesit Nkanga Secretariat: a campus of tall rectangular ministry blocks joined by walkways around a landscaped forecourt",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9d9",
+          "#5f7f95",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 5
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/?p=1257139",
+          "what": "Idongesit Nkanga Secretariat conceived under Governor Victor Attah to end ministries renting premises"
+        },
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "city context"
+        }
+      ],
+      "notes": "Name and purpose are sourced; no source describes its look, so five-storey rendered ministry blocks are typed. Taller and more repetitive than the House of Assembly."
+    },
+    "cheeries-fast-food": {
+      "venueId": "cheeries-fast-food",
+      "city": "uyo",
+      "name": "Cheeries Fast food",
+      "archetype": "restaurant",
+      "subject": "A single-storey fast food restaurant with a glazed front, a red awning and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3e4cc",
+          "#c0392b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Local fast food outlet with no findable description. Warm cream and red palette to differ from Night fast food."
+    },
+    "full-life-christian-centre": {
+      "venueId": "full-life-christian-centre",
+      "city": "uyo",
+      "name": "Full Life Christian Centre",
+      "archetype": "church-modern",
+      "subject": "A pentecostal auditorium: a broad white rectangular hall with a tall front facade, a pitched wide-span roof and a cross over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#8a6ab0",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Church not described in available sources; typed as a medium pentecostal auditorium. Smaller than the RCCG mega parish."
+    },
+    "godswill-akpabio-stadium": {
+      "venueId": "godswill-akpabio-stadium",
+      "city": "uyo",
+      "name": "Godswill Akpabio International Stadium",
+      "archetype": "stadium",
+      "subject": "The 30,000-seat 'Nest of Champions': a fully roofed oval bowl wrapped in an almost opaque white acrylic skin of triangular panels, seen from the entrance plaza",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 190,
+        "storeys": 4,
+        "height_m": 42,
+        "roof": "tensile"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f4f6f6",
+          "#b8c0c4",
+          "#2f6b4f"
+        ],
+        "roofColour": "#eef1f2",
+        "roofMaterial": "glass",
+        "windows": "screen",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "continuous roof over all seats"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "2014",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://stadiumdb.com/stadiums/nga/akwa_ibom_stadium",
+          "what": "30,000 seats, 36 ha plot, ASS Architekten design, entire stadium covered with almost opaque white acrylic glass in hundreds of triangular panels, 36 exits, opened 2014"
+        },
+        {
+          "url": "https://stadiumdb.com/news/2015/01/new_addition_nigerias_white_gem",
+          "what": "white envelope, individual seats, complete cover from rain, ventilation openings"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Godswill_Akpabio_International_Stadium",
+          "what": "30,000 capacity, opened November 2014"
+        }
+      ],
+      "notes": "Best documented venue in the city. The glowing white faceted skin and the fully covered oval bowl are what make it recognisable; some sites claim it copies the Allianz Arena (unverified). Dimensions estimated. Clearly different from the open Township Stadium."
+    },
+    "national-museum-uyo": {
+      "venueId": "national-museum-uyo",
+      "city": "uyo",
+      "name": "National Museum, Uyo",
+      "archetype": "museum-theatre",
+      "subject": "The Uyo branch of the National Museum: a low two-storey rendered building with a veranda, display rooms and a carved-figure garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe3c8",
+          "#8a5a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "front entrance porch"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "carved figures in garden"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.ibomair.com/package/uyo/",
+          "what": "Uyo museum houses relics, artifacts, carvings and antiquities of Akwa Ibom (building not described)"
+        }
+      ],
+      "notes": "No architectural description found; one listing even mislabels it as a colonial history museum. Typed as a small institutional museum with a veranda."
+    },
+    "night-fast-food": {
+      "venueId": "night-fast-food",
+      "city": "uyo",
+      "name": "Night fast food",
+      "archetype": "restaurant",
+      "subject": "A late-night fast food and grill spot: a compact rendered block with a lit sign and covered outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e2d8c0",
+          "#2b3a55",
+          "#ffffff"
+        ],
+        "roofColour": "#4a5f52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Local outlet with no description found; dark navy trim and neon strip distinguish it from Cheeries."
+    },
+    "rccg-zion-mega-parish-uyo": {
+      "venueId": "rccg-zion-mega-parish-uyo",
+      "city": "uyo",
+      "name": "RCCG Zion Super Mega Parish Uyo",
+      "archetype": "church-modern",
+      "subject": "A pentecostal mega-church auditorium: a very wide fan-shaped hall with a broad white facade, glass entrance wall and a large paved forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1e6",
+          "#2f5d9e",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "RCCG mega parishes are large auditoriums but this one is not described online in found sources. Bigger and glassier than Full Life Christian Centre."
+    },
+    "union-bank-uyo": {
+      "venueId": "union-bank-uyo",
+      "city": "uyo",
+      "name": "Union Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey rendered block with a glazed banking hall, ATM bay and a flat canopy; no logos",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede2",
+          "#4a8fc0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Bank branch with no described building; light-blue trim is a generic accent. Differs from Zenith by a lower profile and cooler colours."
+    },
+    "unity-park-uyo": {
+      "venueId": "unity-park-uyo",
+      "city": "uyo",
+      "name": "Unity Park",
+      "archetype": "park-landscape",
+      "subject": "Unity Park: a wide landscaped civic park with paved walks, lawns, an entrance gate and a cultural pavilion planned for the Ibibio museum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#e5dfd0",
+          "#4f7a5a",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa2a8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Ibibio cultural museum pavilion"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/?p=1257139",
+          "what": "conceived as a leisure arena for children and youths and to hold the Ibibio Cultural Museum; former governor says it has not been fully developed"
+        }
+      ],
+      "notes": "Purpose is sourced but not its appearance. Described as under-developed, so the model shows a sparse park rather than a lavish one. Contrast Ibom Plaza (a separate venue not in this list)."
+    },
+    "university-of-uyo": {
+      "venueId": "university-of-uyo",
+      "city": "uyo",
+      "name": "University of Uyo",
+      "archetype": "campus-block",
+      "subject": "The University of Uyo main campus: a long four-storey lecture block with covered walkways and a central staircase, and a library with a glazed entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 24,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ecdc",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1991 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Uyo_Teaching_Hospital",
+          "what": "affiliated College of Medicine; main university not described in found sources"
+        }
+      ],
+      "notes": "No architectural description of the main campus found; typed from Nigerian federal university blocks. Larger and taller than IST-type colleges."
+    },
+    "uuth-uyo": {
+      "venueId": "uuth-uyo",
+      "city": "uyo",
+      "name": "University of Uyo Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "The 500-bed teaching hospital on Abak Road: several linked two to four storey wards with covered walkways, a renovated Accident and Emergency block and an ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee0",
+          "#3d8f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1994, renamed 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Uyo_Teaching_Hospital",
+          "what": "formed 1994 as Akwa Ibom State Specialist Hospital, teaching hospital since 2008"
+        },
+        {
+          "url": "https://uuthuyo.net/?p=6",
+          "what": "500-bed facility on Abak Road, 25 departments, renovated Accident and Emergency block funded by NLNG"
+        }
+      ],
+      "notes": "Bed count, location and renovated A&E are sourced; the building forms are estimated. Larger than a state clinic; many linked wards under flat concrete roofs."
+    },
+    "uyo-township-stadium": {
+      "venueId": "uyo-township-stadium",
+      "city": "uyo",
+      "name": "Uyo Township Stadium",
+      "archetype": "stadium",
+      "subject": "The Uyo Township Stadium, renovated 2023: a small open football ground with a covered main stand and an artificial pitch behind a perimeter wall",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 95,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd0cc",
+          "#c0392b",
+          "#f2f2f0"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s, renovated 2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uyo_Township_Stadium",
+          "what": "multi-use stadium, capacity about 5,000, home of Akwa United, renovated 2023"
+        },
+        {
+          "url": "https://campusreporter.africa/uyo-township-stadium-now-a-shadow-of-its-former-self/",
+          "what": "2022 visit: weeds and dilapidated structures before the rebuild"
+        }
+      ],
+      "notes": "Small open stadium, deliberately far simpler than the 30,000 white Godswill Akpabio stadium. Capacity and renovation sourced; geometry estimated."
+    },
+    "zenith-bank-uyo": {
+      "venueId": "zenith-bank-uyo",
+      "city": "uyo",
+      "name": "Zenith Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a three-storey glass-and-render block with a canopy over the entrance and a red-and-white colour scheme; no logos",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd8dc",
+          "#c0392b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/uyo/history",
+          "what": "Uyo city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not individually documented; the branch is typed with a bolder glazed face and red accent to differ from Union Bank."
+    }
+  }
+}

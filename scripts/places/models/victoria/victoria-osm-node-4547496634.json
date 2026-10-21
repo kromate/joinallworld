@@ -1,0 +1,165 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/395780342",
+   "used": "containing building footprint (120x61 m shopping complex around the node, parallelogram plan)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large hypermarket box, wide frontage, canopy, surface car park (low confidence)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "osm": true,
+    "scale": 0.95
+   },
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe4",
+    "windows": "none",
+    "bands": "#d9533f",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "curtain"
+    },
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9e9f",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 8,
+    "height": 4.6,
+    "columns": 6,
+    "colour": "#d9533f",
+    "edgeColour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.5,
+    "bottom": 6,
+    "colour": "#d9533f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 6,
+    "colour": "#c8c3b5"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -48,
+    0
+   ],
+   "params": {
+    "colour": "#b8bcc0",
+    "count": 9,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -56,
+    0
+   ],
+   "params": {
+    "colour": "#7a8a99",
+    "count": 9,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 5,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-node-4547496634",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo: containing OSM outline; frontage, canopy and colours are from the brief"
+ }
+}

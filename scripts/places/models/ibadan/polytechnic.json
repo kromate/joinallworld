@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "polytechnic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ibadan.json#polytechnic",
+   "used": "U-shaped three-storey modernist classroom range about 80 x 30 m, flat roofs, open access galleries (red bands), courtyard, flags. OSM nearest match is an unrelated 24 x 17 m building 3 m away, not used. The Commons photo of the campus (Faculty of Financial Management Studies sign) shows only low yellow-render sheds with grey-green corrugated roofs, not this block."
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     80,
+     12
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "bands": "#b8452e",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -34,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "bands": "#b8452e",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    34,
+    -10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "bands": "#b8452e",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    1.9,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "floors": 3,
+    "storeyHeight": 3.6,
+    "proud": 1.3,
+    "rail": true,
+    "colour": "#b8452e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    1,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.6,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#bdb5a5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 1.0,
+    "colour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 3,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of a block; U-plan, galleries and colours are from the brief and campus context, not observed."
+ }
+}

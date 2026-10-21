@@ -1,0 +1,387 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "rasheed-shekoni-hospital-dutse",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Rasheed_Shekoni_Federal_University_Teaching_Hospital",
+   "used": "600-bed teaching hospital, 1990s, long three-storey block with ward wings, flat roof, pale render"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/666644399",
+   "used": "name match but the way is the whole 934 m campus, not the main block: only the size of the site was taken"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     90,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#8aa3a0",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 6.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     16,
+     38
+    ]
+   },
+   "at": [
+    -30.400000000000002,
+    -11
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#8aa3a0",
+    "faces": {
+     "front": "ribbon",
+     "back": "none"
+    },
+    "bay": 6.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     16,
+     38
+    ]
+   },
+   "at": [
+    30.400000000000002,
+    -11
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#8aa3a0",
+    "faces": {
+     "front": "ribbon",
+     "back": "none"
+    },
+    "bay": 6.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-ward-west",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -30.400000000000002,
+    21
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#8aa3a0",
+    "bay": 6.0,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-ward-east",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    30.400000000000002,
+    21
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#8aa3a0",
+    "bay": 6.0,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8aa3a0",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#efe9da",
+    "roofColour": "#a8a29a",
+    "vans": 2,
+    "marking": true
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -15.2,
+    7.4
+   ],
+   "params": {
+    "size": 2.4,
+    "facing": "front"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -55,
+    -10,
+    0
+   ],
+   "params": {
+    "radius": 8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    50,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 3,
+    "tankHeight": 4,
+    "legHeight": 10,
+    "legs": 4,
+    "colour": "#d6d2c8"
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    -35,
+    21,
+    14.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 8,
+    "panelWidth": 1.7,
+    "panelDepth": 1.0,
+    "tilt": 15
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 0.8,
+    "colour": "#8aa3a0",
+    "frameColour": "#d6d2c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     38
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists in evidence; form is typed from sourced era/size (H plan, three storeys, flat roof); facade details unknown"
+ }
+}

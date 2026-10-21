@@ -1,0 +1,209 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/8153276",
+   "used": "real outline, 46 x 25 m rotated rectangle; name-quality match; amenity=library"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/harare.json#harare-harare-city-library",
+   "used": "three storeys, mid-century rendered block, flat roof, ribbon windows, cream with stone accent. The nearest Commons photo (Home for people.jpg) shows trees and tyres, not the library, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the library found; facade, entrance position and stair bay are typical mid-century guesses on the real outline"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#4d5a63",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b5a98e"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -6.04,
+    -13.07,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 4.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2ede0",
+    "roofColour": "#b5a98e"
+   },
+   "rotDeg": -24.9
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1.7000000000000002,
+    -22.799999999999997,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#5d6b5a",
+    "frameColour": "#b0aaa0",
+    "posts": true
+   },
+   "rotDeg": -24.9
+  },
+  {
+   "type": "mass",
+   "id": "stair-bay",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    22,
+    -10
+   ],
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88"
+   },
+   "rotDeg": -24.9
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-harare-city-library"
+}

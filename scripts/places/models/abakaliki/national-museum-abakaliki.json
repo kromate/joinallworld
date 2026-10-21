@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "national-museum-abakaliki",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/931266220",
+   "used": "real 32 x 18 m building outline containing the Wikidata-verified point (Q111904974)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Igbo_architecture",
+   "used": "carved gate posts, Ntezi-inspired relief on the entrance bay, from the brief (no photo of this building found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 4.5,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-bay",
+   "at": [
+    -4.4,
+    -15.2
+   ],
+   "params": {
+    "rect": [
+     8,
+     3
+    ],
+    "height": 8.5,
+    "colour": "#a5774f",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.3,
+      "depth": 0.15,
+      "spacing": 0.9,
+      "colour": "#8a4a2a",
+      "margin": 0.5
+     }
+    ]
+   },
+   "rotDeg": -16
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4.8,
+    -17.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 1.8,
+    "count": 4,
+    "colour": "#bab29c"
+   },
+   "rotDeg": -16
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -9.5,
+     -21.5
+    ],
+    "end": [
+     0.3,
+     -24.2
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 3.4,
+      "colour": "#8a4a2a"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    5,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo: real outline, typed hip roof, entrance bay and gate posts; Ntezi relief only as vertical fins"
+ }
+}

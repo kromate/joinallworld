@@ -1,0 +1,545 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Simbaya_Gar.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Aboubacarkhoraa",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/sim0.jpg",
+   "used": "long low station: ochre-yellow render with a white band and red fascia line, vertical-clad yellow wing at left, taller sign block with a blank board at right, satellite dishes on the roof, broad stepped terrace and bare laterite square in front, big mango trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1433367494",
+   "used": "42 x 12.6 m train_station outline (nearest match, 6 m), used for main block length and depth"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-clad",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e3c46a",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8de",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     24,
+     7
+    ]
+   },
+   "at": [
+    -10,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b86a",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8de",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-bay",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    9,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c878",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    28,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d08a",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-block",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    20,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3c95a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8a0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    -3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     72,
+     13
+    ],
+    "height": 0.35,
+    "z0": 5.2,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    -3,
+    -6.1
+   ],
+   "params": {
+    "rect": [
+     72,
+     0.25
+    ],
+    "height": 0.3,
+    "z0": 5.0,
+    "colour": "#b8432f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-roof",
+   "at": [
+    -10,
+    -4.3
+   ],
+   "params": {
+    "rect": [
+     24,
+     2.6
+    ],
+    "height": 0.3,
+    "z0": 3.6,
+    "colour": "#ece8de"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.6,
+      "z0": 0,
+      "colour": "#ece8de"
+     }
+    },
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -21,
+     -5.3
+    ],
+    "end": [
+     1,
+     -5.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    20,
+    3
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 3.0,
+    "z0": 9.5,
+    "colour": "#8a8a84"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    20,
+    2.9,
+    11.0
+   ],
+   "params": {
+    "width": 6.8,
+    "height": 3.6,
+    "bottom": 0,
+    "colour": "#f2efe4",
+    "frameColour": "#c9a43a",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pierced-screen",
+   "at": [
+    27.5,
+    -3.6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "height": 2.0,
+    "z0": 0.8,
+    "colour": "#d7c58d"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dish0",
+   "at": [
+    -12,
+    2,
+    5.55
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d8d8d4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.15,
+      0.0
+     ],
+     [
+      0.15,
+      0.9
+     ],
+     [
+      0.1,
+      0.9
+     ],
+     [
+      0.1,
+      0.0
+     ],
+     [
+      1.3,
+      1.0
+     ],
+     [
+      1.5,
+      1.3
+     ],
+     [
+      1.2,
+      1.0
+     ],
+     [
+      0,
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dish1",
+   "at": [
+    -5,
+    3,
+    5.55
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d8d8d4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.15,
+      0.0
+     ],
+     [
+      0.15,
+      0.9
+     ],
+     [
+      0.1,
+      0.9
+     ],
+     [
+      0.1,
+      0.0
+     ],
+     [
+      1.3,
+      1.0
+     ],
+     [
+      1.5,
+      1.3
+     ],
+     [
+      1.2,
+      1.0
+     ],
+     [
+      0,
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dish2",
+   "at": [
+    5,
+    2,
+    5.55
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d8d8d4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.15,
+      0.0
+     ],
+     [
+      0.15,
+      0.9
+     ],
+     [
+      0.1,
+      0.9
+     ],
+     [
+      0.1,
+      0.0
+     ],
+     [
+      1.3,
+      1.0
+     ],
+     [
+      1.5,
+      1.3
+     ],
+     [
+      1.2,
+      1.0
+     ],
+     [
+      0,
+      0.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -8.6,
+    0
+   ],
+   "params": {
+    "width": 72,
+    "rise": 0.3,
+    "run": 1.3,
+    "count": 4,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 19.5,
+    "count": 1,
+    "spread": 25.2,
+    "colour": "#2f5a30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22.1,
+    "count": 1,
+    "spread": 28.0,
+    "colour": "#2f5a30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16.900000000000002,
+    "count": 1,
+    "spread": 19.599999999999998,
+    "colour": "#2f5a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "groundColour": "#9b9282",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Very long low flat-roofed station with louvred yellow wing, porch colonnade, tall sign block with blank billboard, roof dishes, stepped terrace, grey-tan ground and broad mango trees now present; trees are still low-poly domes, forecourt is a wide bare plane, window bands are uniform rows not the photo's wide bands, and the layout beyond the oblique photo is estimated."
+ }
+}

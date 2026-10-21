@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: no photo found; roadside produce market of open timber-and-tarpaulin stalls and umbrellas on red earth, two low corrugated sheds behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/314305661",
+   "used": "location only: the name-matched outline is 8 x 2 m (19 m2), a single stall, not the market extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c0392b",
+     "#e6b422",
+     "#2e7d6b",
+     "#d9d2c3"
+    ],
+    "goods_colours": [
+     "#d8742a",
+     "#4f8a3f",
+     "#c9a227",
+     "#a83a2a"
+    ],
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#2e6fa3",
+     "#d9d2c3",
+     "#c0392b",
+     "#e6b422"
+    ],
+    "goods_colours": [
+     "#d8742a",
+     "#4f8a3f",
+     "#c9a227",
+     "#a83a2a"
+    ],
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#e6b422",
+     "#7e8b73",
+     "#c0392b",
+     "#2e6fa3"
+    ],
+    "goods_colours": [
+     "#d8742a",
+     "#4f8a3f",
+     "#c9a227",
+     "#a83a2a"
+    ],
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -18,
+    30,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "gable",
+    "cladding": "timber",
+    "goods": "sacks",
+    "roof_colour": "#6b6f70",
+    "roof_material": "corrugated",
+    "wall_colour": "#a07a52"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    16,
+    26,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "shed",
+    "cladding": "timber",
+    "goods": "sacks",
+    "roof_colour": "#7a7f83",
+    "roof_material": "corrugated",
+    "wall_colour": "#a07a52"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#7e8b73"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -46,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no reliable outline; stall layout, shed placement and colours are typical, not surveyed."
+ }
+}

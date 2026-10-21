@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/836143299",
+   "used": "bus-station area about 2840 m2 (roughly 60 x 47 m, bearing 164), and the small ticket building way/836143297 (8.6 x 4.4 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open parking bays for coaches and minibuses under a long sheet-roofed waiting shed; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    -22,
+    14
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd0b0",
+    "windows": "none",
+    "bands": "#4f7aa0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377",
+    "parapet": 0.3,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_rise": 1.2,
+    "post_pitch": 4.5,
+    "roof_colour": "#6e7377",
+    "wall_colour": "#dcd0b0",
+    "trim_colour": "#4f7aa0"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    26,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.4,
+    "roof_colour": "#7a7f84",
+    "wall_colour": "#dcd0b0"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "coach",
+    "density": 0.8,
+    "coach_share": 0.5,
+    "colours": [
+     "#f1f1ee",
+     "#4f7aa0",
+     "#d8b030"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.5,
+    "colours": [
+     "#e6b422",
+     "#f1f1ee",
+     "#4f7aa0"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#4f7aa0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#a9a393"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    32,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#dcd0b0"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 5.5,
+    "colour": "#6e7377"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    14,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#4f7aa0"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30,
+    26,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 5,
+    "colour": "#6e7377"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    30,
+    26,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "height": 2,
+    "colour": "#d8b030"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; layout from OSM area size and brief: coach/minibus rows, long gable shed, kiosks, blank sign boards; details typical, not observed."
+ }
+}

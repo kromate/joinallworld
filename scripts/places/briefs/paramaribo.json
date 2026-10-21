@@ -1,0 +1,1714 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "paramaribo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "paramaribo",
+    "climate": "rainforest",
+    "vernacular": "Dutch colonial timber town (UNESCO inner city): two-storey white-painted wooden houses with louvred shutters, brick-nogged walls, gabled or hip roofs of red tile or grey corrugated metal and shaded verandas, mixed with concrete shops, flat-roofed 1950s-70s civic blocks and low modern malls; royal palms and tropical broadleaf trees line squares, with a mosque, synagogue, cathedral and Hindu temple within a few blocks of each other.",
+    "wallColours": [
+      "#f5f2ea",
+      "#e9d98a",
+      "#a04b36",
+      "#8fb0b8",
+      "#cbb28a",
+      "#b9b5ac",
+      "#6f8f66"
+    ],
+    "roofColours": [
+      "#9c4d36",
+      "#8d8f8f",
+      "#5f6b70",
+      "#a8472f"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "brick",
+      "concrete",
+      "red-brick",
+      "render",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "White-painted timber with louvred shutters, decorative gable fretwork and balustraded verandas on Dutch colonial houses; classical pediments and chronogram inscriptions on public buildings; Mughal/Moorish arches and domes on the Hindu temple; royal palms in rows on squares.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Paramaribo",
+        "what": "historic inner city is Dutch colonial 17th-18th century, UNESCO 2002; landmarks: Fort Zeelandia, Presidential Palace with Palm Garden of royal palms, St Peter and Paul Cathedral, Keizerstraat mosque, Neveh Shalom synagogue, Arya Diwaker; fires in 1821 and 1832"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Saint_Peter_and_Paul_Cathedral,_Paramaribo",
+        "what": "largest wooden building in the Western Hemisphere, cedar interior, twin towers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Arya_Dewaker",
+        "what": "octagonal Hindu temple in Mughal/Moorish style with three towers"
+      }
+    ]
+  },
+  "places": {
+    "paramaribo-airport-paramaribo-airport": {
+      "venueId": "paramaribo-airport-paramaribo-airport",
+      "city": "paramaribo",
+      "name": "Johan Adolf Pengel International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Zanderij airport, Suriname: two low separate terminal buildings (arrivals and departures) on the apron side, with a control tower close by",
+      "form": {
+        "footprint": "rect",
+        "width_m": 244,
+        "depth_m": 109,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "separate arrival and departure halls",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#2f6a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#9ea3a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Johan_Adolf_Pengel_International_Airport",
+          "what": "departure and arrival lounges are separate buildings; arrival lounge, commercial centre and car park modernised 2013-17; new Chinese-funded terminal planned"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/143975630",
+          "what": "OSM measured footprint 244.4 x 108.6 m"
+        }
+      ],
+      "notes": "Sources give layout (separate lounges), not the facade; colours and finish are typed. Footprint ~244 x 109 m (OSM). Modest terminal for a small country, not a big glass hub."
+    },
+    "paramaribo-clinic": {
+      "venueId": "paramaribo-clinic",
+      "city": "paramaribo",
+      "name": "Academisch Ziekenhuis Paramaribo",
+      "archetype": "hospital",
+      "subject": "Academic Hospital Paramaribo: a long four-storey ward block with a lower entrance wing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 84,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "variant": "long ward block with entrance wing",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#6f8fa8",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "unverified"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1966",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Academic_Hospital_Paramaribo",
+          "what": "university hospital, Wikidata inception 1966; OSM footprint ~160 x 84 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/211387612",
+          "what": "OSM measured footprint 160.1 x 84.3 m"
+        }
+      ],
+      "notes": "Only footprint and date are known; storeys and finish are typed."
+    },
+    "paramaribo-community-notices": {
+      "venueId": "paramaribo-community-notices",
+      "city": "paramaribo",
+      "name": "De Nationale Assemblee",
+      "archetype": "civic-palace",
+      "subject": "The National Assembly on Onafhankelijkheidsplein: a white neoclassical-style assembly building (identical 2022 rebuild after the 1996 fire) with a semicircular debating hall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 78,
+        "depth_m": 62,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "rebuilt assembly building with rounded chamber",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1ea",
+          "#c9b88a",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "columned front, unverified"
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2022",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/De_Nationale_Assembl%C3%A9e",
+          "what": "Assembly sits in the former Buiten-Sociëteit Het Park (designed 1954 by P.J. Nagel); a new identical rebuild of the old assembly building (burned 1 Aug 1996) was handed over 14 Apr 2022; debating hall called the Halfrond"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/135982001",
+          "what": "OSM measured footprint 77.9 x 62.1 m"
+        }
+      ],
+      "notes": "Sources do not describe the exterior; a white colonnaded Dutch-colonial public building on the square is assumed. Treat as low confidence. Stands on Independence Square opposite the Presidential Palace."
+    },
+    "paramaribo-community-voting-game": {
+      "venueId": "paramaribo-community-voting-game",
+      "city": "paramaribo",
+      "name": "William Kraanplein",
+      "archetype": "park-landscape",
+      "subject": "William Kraanplein, a small city square: a paved plaza with trees and a low kiosk building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "small plaza with kiosk"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#6f8f66",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8f8f",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/194776513",
+          "what": "OSM measured footprint 33.8 x 12.3 m"
+        }
+      ],
+      "notes": "Wikidata: a square. Nothing found about layout; typed small plaza with palms."
+    },
+    "paramaribo-community-workshop": {
+      "venueId": "paramaribo-community-workshop",
+      "city": "paramaribo",
+      "name": "Anton de Kom Universiteit van Suriname",
+      "archetype": "campus-block",
+      "subject": "The Anton de Kom University campus: low modern teaching blocks and open walkways under tropical trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "row of teaching blocks",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#2f6a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1968",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Anton_de_Kom_University_of_Suriname",
+          "what": "university founded 1968; mapped building ~20 x 19 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/720481283",
+          "what": "OSM measured footprint 20.1 x 18.9 m"
+        }
+      ],
+      "notes": "Only the mapped block (~20 x 19 m) and founding year are known. Scaled up to a typical teaching block; typed."
+    },
+    "paramaribo-market-game": {
+      "venueId": "paramaribo-market-game",
+      "city": "paramaribo",
+      "name": "Maretraite Mall",
+      "archetype": "mall",
+      "subject": "Maretraite Mall (2006): a two-storey modern shopping mall with glazed entrance and surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 87,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "rectangular mall with entrance atrium"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee5d0",
+          "#2f7a9a",
+          "#ffffff"
+        ],
+        "roofColour": "#9ea3a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/315858388",
+          "what": "footprint ~140 x 87 m; Wikidata Q110136021 shopping mall, 2006"
+        }
+      ],
+      "notes": "Dimensions and year are measured; appearance is typed."
+    },
+    "paramaribo-meal-stop": {
+      "venueId": "paramaribo-meal-stop",
+      "city": "paramaribo",
+      "name": "Naskip Lelydorp",
+      "archetype": "restaurant",
+      "subject": "Naskip in Lelydorp, a small roadside Surinamese eatery with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e8d2",
+          "#7a5f42",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1309116119",
+          "what": "OSM measured footprint 20.2 x 16.6 m"
+        }
+      ],
+      "notes": "Nothing found; typed from OSM footprint (~20 x 17 m)."
+    },
+    "paramaribo-osm-node-4462598425": {
+      "venueId": "paramaribo-osm-node-4462598425",
+      "city": "paramaribo",
+      "name": "Butterfly Plantation",
+      "archetype": "park-landscape",
+      "subject": "Butterfly Plantation, a tropical garden attraction: a timber visitor pavilion with a screened butterfly house among tropical trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "visitor pavilion beside a screened garden"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a08463",
+          "#7a5f42",
+          "#d9c8a5"
+        ],
+        "roofColour": "#8d8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/847437451",
+          "what": "OSM measured footprint 11.1 x 8.7 m"
+        }
+      ],
+      "notes": "Nothing found; typed from the OSM building outline (~11 x 9 m)."
+    },
+    "paramaribo-osm-way-135643181": {
+      "venueId": "paramaribo-osm-way-135643181",
+      "city": "paramaribo",
+      "name": "Fort Nieuw-Amsterdam",
+      "archetype": "heritage-fort",
+      "subject": "Fort Nieuw-Amsterdam at the confluence of the Suriname and Commewijne rivers (1734-47): a star-shaped earth-and-brick fort with low whitewashed buildings, a wet dock holding a lightvessel, and cannons",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 530,
+        "depth_m": 520,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "star fort with bastions; show a corner of the ramparts and the inner buildings"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "whitewash",
+        "colours": [
+          "#9a5a43",
+          "#e8e2d2",
+          "#6b6a60"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "earthen bastions faced with brick"
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "wet dock with the lightvessel"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1747",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Nieuw-Amsterdam",
+          "what": "built 1734-1747 at the confluence of the Suriname and Commewijne rivers; open-air museum; decommissioned lightvessel moored in a wet dock inside; prison 1863-1967; monument erected after independence"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/135643181",
+          "what": "OSM measured footprint 531.8 x 518.6 m"
+        }
+      ],
+      "notes": "Sources confirm the rivers, dates, wet dock and prison use; the brick/earth bastion materials and whitewash are from the general form of Dutch colonial forts (assumption). Footprint 530 x 520 m includes moat and grounds."
+    },
+    "paramaribo-osm-way-155987982": {
+      "venueId": "paramaribo-osm-way-155987982",
+      "city": "paramaribo",
+      "name": "Onafhankelijkheidsplein",
+      "archetype": "park-landscape",
+      "subject": "Independence Square: a large lawn square with rows of royal palms, flagged by the Presidential Palace on one side and the Ministry of Finance and the National Assembly on others",
+      "form": {
+        "footprint": "rect",
+        "width_m": 196,
+        "depth_m": 92,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "rectangular lawn square with palms and monuments"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f5f2ea",
+          "#8fb0b8",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8f8f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "monuments, unverified"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "bandstand-style pavilion, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "17th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Onafhankelijkheidsplein",
+          "what": "town square formerly Oranjeplein / Gouvernementsplein in the historic inner city near the Suriname river; Buiten-Sociëteit Het Park, Ministry of Finance, Congress Hall and the Presidential Palace stand around it"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Paramaribo",
+          "what": "Presidential Palace with Garden of Palms of royal palms"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/155987982",
+          "what": "OSM measured footprint 195.7 x 91.6 m"
+        }
+      ],
+      "notes": "Layout and surrounding buildings are sourced; the lawns, royal palms and monuments are inferred from the palm-garden description. Footprint 196 x 92 m (OSM). The white colonial buildings round it set the palette."
+    },
+    "paramaribo-osm-way-156303014": {
+      "venueId": "paramaribo-osm-way-156303014",
+      "city": "paramaribo",
+      "name": "Andre Kamperveen Stadion",
+      "archetype": "stadium",
+      "subject": "Andre Kamperveen Stadium (1953): a small football ground with a covered concrete main grandstand on one side and open banks elsewhere",
+      "form": {
+        "footprint": "oval",
+        "width_m": 222,
+        "depth_m": 135,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "one covered stand and open terraces"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcbbd",
+          "#2f6a8a",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1953",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Andr%C3%A9_Kamperveen_Stadion",
+          "what": "association football venue, inception 1953, OSM building=grandstand"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/19067909",
+          "what": "OSM measured footprint 222.2 x 135.3 m"
+        }
+      ],
+      "notes": "OSM tags only the grandstand; shape and colours typed. Small ground, not a large bowl."
+    },
+    "paramaribo-osm-way-170813028": {
+      "venueId": "paramaribo-osm-way-170813028",
+      "city": "paramaribo",
+      "name": "Hermitage Mall",
+      "archetype": "mall",
+      "subject": "Hermitage Mall, a modern two-storey mall in west Paramaribo with a glazed front and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "compact mall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0e8d6",
+          "#b8452d",
+          "#ffffff"
+        ],
+        "roofColour": "#9ea3a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/477833874",
+          "what": "OSM measured footprint 48.4 x 24.2 m"
+        }
+      ],
+      "notes": "Only the OSM footprint (~48 x 24 m) is known; typed."
+    },
+    "paramaribo-osm-way-191965158": {
+      "venueId": "paramaribo-osm-way-191965158",
+      "city": "paramaribo",
+      "name": "Sint-Petrus-en-Pauluskathedraal",
+      "archetype": "church-gothic",
+      "subject": "Saint Peter and Paul Cathedral, Paramaribo: the largest wooden building in the Western Hemisphere, a long timber basilica with twin square towers topped by crosses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 59,
+        "depth_m": 16.5,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "variant": "timber basilica with twin west towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8dfc3",
+          "#ffffff",
+          "#8b7a52"
+        ],
+        "roofColour": "#8d8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin towers finished 1901, west tower 44 m to the bronze cross"
+        },
+        {
+          "id": "spire",
+          "count": 2,
+          "note": "pointed tower roofs capped by crosses"
+        },
+        {
+          "id": "stained-glass",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1,
+          "note": "wooden bracing, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1885",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Peter_and_Paul_Cathedral,_Paramaribo",
+          "what": "wooden structure, largest wooden building in the Western Hemisphere; 59.1 x 16.5 m, main hall 14.6 m high; west tower 44 m to bronze cross; unpainted Surinamese cedar interior; consecrated 1885, towers 1901; designer Frans Harmes; restored 2007-2010"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/191965158",
+          "what": "OSM measured footprint 69.2 x 24 m"
+        }
+      ],
+      "notes": "Dimensions, wood and towers are sourced. Exterior colour is not stated; the cream/yellow plaster-white painted timber is from recollection of the 2010 restoration and is approximate. Stands on the Keizerstraat/Henck Arronstraat corner."
+    },
+    "paramaribo-osm-way-191965515": {
+      "venueId": "paramaribo-osm-way-191965515",
+      "city": "paramaribo",
+      "name": "Synagoge Neve Shalom",
+      "archetype": "shrine-small",
+      "subject": "Neveh Shalom synagogue (1842): a two-storey neoclassical building with a pedimented front, standing next to the Keizerstraat mosque",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "rectangular hall with pedimented front"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#f3ecd8",
+          "#ffffff",
+          "#b59d6c"
+        ],
+        "roofColour": "#8d8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "with a Hebrew chronogram"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1842",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Neveh_Shalom_Synagogue",
+          "what": "neoclassical style, designed by J.F. Halfhide, completed 1842, pediment chronogram, adjacent to Mosque Keizerstraat; Wikidata architects Halfhide and Voigt"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/191965515",
+          "what": "OSM measured footprint 26 x 19.7 m"
+        }
+      ],
+      "notes": "Style, date and pediment are sourced; the cream stucco, arched windows and hip roof are from the general form of the building and approximate. The next-door mosque is a separate venue shape."
+    },
+    "paramaribo-osm-way-193176151": {
+      "venueId": "paramaribo-osm-way-193176151",
+      "city": "paramaribo",
+      "name": "Centrale Markt",
+      "archetype": "market-hall",
+      "subject": "The Centrale Markt on the riverfront: a large covered market hall with a low corrugated roof over rows of produce stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 101,
+        "depth_m": 44,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "long covered market hall"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e3dccb",
+          "#5e8d6e",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paramaribo",
+          "what": "riverfront inner-city context; OSM market hall ~101 x 44 m; Wikidata market hall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/193176151",
+          "what": "OSM measured footprint 101.3 x 43.8 m"
+        }
+      ],
+      "notes": "Only the footprint and market-hall type are known; stalls and the pitched corrugated roof are typical. Lively produce and goods market with awnings."
+    },
+    "paramaribo-osm-way-229263516": {
+      "venueId": "paramaribo-osm-way-229263516",
+      "city": "paramaribo",
+      "name": "Clarence Seedorf Stadion",
+      "archetype": "stadium",
+      "subject": "Clarence Seedorf Stadium (2001) in Wanica: a modest football ground with one covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 255,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "one covered stand and open banks"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcbbd",
+          "#d9822b",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Clarence_Seedorf_Stadion",
+          "what": "stadium, inception 2001; OSM footprint ~255 x 120 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/229263516",
+          "what": "OSM measured footprint 254.7 x 120.2 m"
+        }
+      ],
+      "notes": "No stand description; typed small stadium."
+    },
+    "paramaribo-osm-way-229384907": {
+      "venueId": "paramaribo-osm-way-229384907",
+      "city": "paramaribo",
+      "name": "CELOS",
+      "archetype": "campus-block",
+      "subject": "CELOS, the agricultural and environmental research centre: low office and lab blocks with green surrounds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "low institute blocks",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d9",
+          "#6f8f66",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/229384907",
+          "what": "OSM measured footprint 317 x 259.8 m"
+        }
+      ],
+      "notes": "Only the OSM campus outline (~317 x 260 m) is known; typed."
+    },
+    "paramaribo-osm-way-397593588": {
+      "venueId": "paramaribo-osm-way-397593588",
+      "city": "paramaribo",
+      "name": "Paramaribo Zoo",
+      "archetype": "park-landscape",
+      "subject": "Paramaribo Zoo: shaded paths through tropical garden with low animal houses, enclosures and a ticket gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "entrance gate with animal houses"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eee4cf",
+          "#7a5f42",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "animal houses, unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paramaribo_Zoo",
+          "what": "Wikidata zoo, inception 1972; OSM park footprint ~425 x 219 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/397593588",
+          "what": "OSM measured footprint 425.2 x 219.1 m"
+        }
+      ],
+      "notes": "No description of structures found; typed."
+    },
+    "paramaribo-osm-way-444063650": {
+      "venueId": "paramaribo-osm-way-444063650",
+      "city": "paramaribo",
+      "name": "Vriendschapspark",
+      "archetype": "park-landscape",
+      "subject": "Vriendschapspark (Friendship Park, 2003): a small landscaped urban park with paths, lawns and trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "park with paths"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d9",
+          "#8fb0b8",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8f8f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "friendship monument, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/444063650",
+          "what": "OSM measured footprint 151.9 x 81.7 m"
+        }
+      ],
+      "notes": "Wikidata: park, inception 2003. Nothing described; typed."
+    },
+    "paramaribo-osm-way-718195852": {
+      "venueId": "paramaribo-osm-way-718195852",
+      "city": "paramaribo",
+      "name": "Dr. Ir. F. Essed Stadion",
+      "archetype": "stadium",
+      "subject": "Dr. Ir. Franklin Essed Stadium (1958): a small football ground with a covered main stand and low terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 137,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "one covered stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d3cfc1",
+          "#2a7a4a",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1958",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dr._Ir._Franklin_Essed_Stadion",
+          "what": "stadium, inception 1958; OSM footprint ~150 x 137 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/718195852",
+          "what": "OSM measured footprint 149.6 x 136.6 m"
+        }
+      ],
+      "notes": "No stand description; typed small stadium."
+    },
+    "paramaribo-osm-way-955279180": {
+      "venueId": "paramaribo-osm-way-955279180",
+      "city": "paramaribo",
+      "name": "Diakonessenhuis",
+      "archetype": "hospital",
+      "subject": "The Diakonessenhuis, a Protestant hospital (1962): a long four-storey hospital block with balcony bands and a red-cross sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 188,
+        "depth_m": 87,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "variant": "long block with wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ebdc",
+          "#b8452d",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Diakonessenhuis_(Paramaribo)",
+          "what": "religious hospital, Wikidata inception 1962; OSM footprint ~188 x 87 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/683242805",
+          "what": "OSM measured footprint 188.1 x 87 m"
+        }
+      ],
+      "notes": "Only footprint and date known; storeys and finish typed."
+    },
+    "paramaribo-osm-way-968232803": {
+      "venueId": "paramaribo-osm-way-968232803",
+      "city": "paramaribo",
+      "name": "Sint Vincentius Ziekenhuis",
+      "archetype": "hospital",
+      "subject": "Sint Vincentius Hospital, a Catholic hospital founded 1916: older low wings with verandas around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 137,
+        "depth_m": 119,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "wings round a court",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead7",
+          "#9a5a43",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1916",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sint_Vincentius_Hospital",
+          "what": "hospital, Wikidata inception 1916; OSM footprint ~137 x 119 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2590990",
+          "what": "OSM measured footprint 136.8 x 119 m"
+        }
+      ],
+      "notes": "Only footprint and founding date known; U-plan, roof and colours are typed."
+    },
+    "paramaribo-quiet-reflection": {
+      "venueId": "paramaribo-quiet-reflection",
+      "city": "paramaribo",
+      "name": "Arya Dewaker Temple",
+      "archetype": "temple-asian",
+      "subject": "Arya Dewaker (opened 2001): an octagonal two-storey Arya Samaj Hindu temple with a large central dome and two smaller domes/towers, large eaves and white-checked windows",
+      "form": {
+        "footprint": "round",
+        "width_m": 43,
+        "depth_m": 41,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "multi-dome",
+        "variant": "octagonal hall, three domed towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2ece0",
+          "#c9a05a",
+          "#ffffff"
+        ],
+        "roofColour": "#c9bfa6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "one large central dome and two smaller, each four levels for the four Vedas"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "Mughal/Moorish arches"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandas"
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "mughal",
+      "era": "2001",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arya_Dewaker",
+          "what": "octagonal two-storey temple by Arthur E. de Groot, tropical temple with large eaves, verandas and white checkered windows, Mughal/Moorish influence, three towers (central dome, two smaller) each four levels, opened 11 Feb 2001, no deity images"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/315124289",
+          "what": "OSM measured footprint 42.8 x 41.1 m"
+        }
+      ],
+      "notes": "Form is directly sourced; exterior colours are not stated and are approximate (pale plaster with gilt accents). Footprint ~43 x 41 m (OSM). Distinct from any pointed shikhara temple: octagonal with domes."
+    },
+    "paramaribo-recreation": {
+      "venueId": "paramaribo-recreation",
+      "city": "paramaribo",
+      "name": "Palmentuin",
+      "archetype": "park-landscape",
+      "subject": "The Palmentuin (Palm Garden) behind the Presidential Palace: long avenues of tall royal palms over lawns and a pond, a shaded public park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 265,
+        "depth_m": 167,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "avenues of royal palms; show a palm avenue and pond"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f0e4",
+          "#8fb0b8",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8f8f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open pavilion/stage, unverified"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "18th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paramaribo",
+          "what": "Presidential Palace with the Garden of Palms of royal palms behind it"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Palmentuin_(Paramaribo)",
+          "what": "Wikidata park Q2220000; OSM footprint ~265 x 167 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/155987984",
+          "what": "OSM measured footprint 264.8 x 167.1 m"
+        }
+      ],
+      "notes": "The royal palms (rows, dozens of tall trunks) are the identity of the garden; no structures are described, so the pavilion and fountain are unverified placeholders. Next to the white Presidential Palace."
+    },
+    "paramaribo-transit": {
+      "venueId": "paramaribo-transit",
+      "city": "paramaribo",
+      "name": "Line 5 bus station",
+      "archetype": "transport-station",
+      "subject": "Line 5 bus station in central Paramaribo: an open covered bus bay with a corrugated roof and a row of waiting vehicles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "open bus hall with bays"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c5",
+          "#2f6a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/177662582",
+          "what": "OSM measured footprint 71.9 x 31.5 m"
+        }
+      ],
+      "notes": "OSM tags the footprint as a marketplace (~72 x 31 m); no description; typed as an open bus park with covered bays."
+    }
+  }
+}

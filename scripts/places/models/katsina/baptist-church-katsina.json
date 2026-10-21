@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "baptist-church-katsina",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Katsina",
+   "used": "city style only (rendered walls, corrugated roofs, acacia, laterite); Wikidata Q125446416 confirms a church building at this point but no photo or outline exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 15,
+  "fovDeg": 45
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   44,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or OSM outline exists; modest gabled hall with porch, vestry, fence and blank sign typed from the brief; all dimensions are placeholders"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "bands": "#b98a5e",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6e70",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6e70",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    8,
+    8
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b6e70",
+    "material": "corrugated",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -9.6,
+    8.6
+   ],
+   "params": {
+    "height": 1.8,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#f7f4ee",
+    "frameColour": "#6b6e70"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d9c9a6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -19,
+    -1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d9c9a6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    19,
+    -1,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d9c9a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/car",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3,
+    "yaw": 0
+   }
+  }
+ ]
+}

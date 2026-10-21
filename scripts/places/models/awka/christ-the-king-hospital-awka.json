@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "christ-the-king-hospital-awka",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: mission-style hospital, two-storey white ward blocks, U plan about 60x32 m, clay-tile hip roofs, small chapel-style tower, covered walkways; no OSM building or photo found (Wikidata Q128838539 has coordinates only)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-back",
+   "footprint": {
+    "rect": [
+     60,
+     11
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#2f7a6a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "rise": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     13,
+     23
+    ]
+   },
+   "at": [
+    -23.5,
+    -6.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#2f7a6a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "rise": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     13,
+     23
+    ]
+   },
+   "at": [
+    23.5,
+    -6.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#2f7a6a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "clay-tile",
+    "overhang": 0.8,
+    "rise": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#2f7a6a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "clay-tile",
+    "overhang": 0.5,
+    "rise": 4.5
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    3,
+    21.5
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#2f7a6a"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#b9b3a2",
+    "roofColour": "#2f7a6a"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    23.5,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f2efe6",
+    "roofColour": "#2f7a6a"
+   }
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    23.5,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#f4f4f1",
+    "frameColour": "#2f7a6a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No OSM building or photo; U-plan composed from the brief, typed guess."
+ }
+}

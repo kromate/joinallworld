@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "niger-foundation-hospital",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/792054615",
+   "used": "real hospital outline (about 120 x 102 m, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: clean white three-storey block with blue accents, glazed entrance, awning, ambulance bay, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital-main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5f0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2a6f9a",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9e9c",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 7,
+    "height": 4.2,
+    "colour": "#2a6f9a"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    30,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3,
+    "colour": "#c9ccc8",
+    "roofColour": "#2a6f9a"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -14,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "width": 2.2,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -30,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -60,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    58,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building exists in the sources; outline is real, facade, storeys and blue accents are typed from the brief."
+ }
+}

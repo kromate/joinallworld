@@ -1,0 +1,520 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "stephen-keshi-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stephen_Keshi_Stadium_Asaba_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Idoghor Melody",
+   "view": "interior",
+   "file": "/tmp/places-evidence/asaba/sk1.jpg",
+   "used": "blue running track, striped grass, two-tone blue seating with red and yellow blocks, long dark flat roof on slender columns over the far stand, lattice floodlight mast and blank scoreboard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stephen_Keshi_Stadium_Asaba_Main_B.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Idoghor Melody",
+   "view": "interior",
+   "file": "/tmp/places-evidence/asaba/sk2.jpg",
+   "used": "stand colours (blue, yellow, red lettering band left blank), dark steel truss roof with lamps"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9202349",
+   "used": "bowl extent about 171 x 200 m, long axis north-south"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 210,
+    "endDeg": 330,
+    "rows": 16,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3.5,
+    "canopy": {
+     "height": 3.6,
+     "depth": 11,
+     "thickness": 0.8,
+     "slopeDeg": 1,
+     "colour": "#2a2d31",
+     "edgeColour": "#2a2d31",
+     "overhangBack": 1.0
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 30,
+    "endDeg": 150,
+    "rows": 12,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 3.5,
+    "canopy": {
+     "height": 3.2,
+     "depth": 11,
+     "thickness": 0.8,
+     "slopeDeg": 1,
+     "colour": "#2a2d31",
+     "edgeColour": "#2a2d31",
+     "overhangBack": 1.0
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 150,
+    "endDeg": 210,
+    "rows": 8,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 2.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 18,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 330,
+    "endDeg": 390,
+    "rows": 8,
+    "rise": 0.8,
+    "run": 0.85,
+    "firstHeight": 2.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "width": 86,
+    "lane_width": 1.2,
+    "infield": true,
+    "pitch": true,
+    "colour": "#3f7fb5"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -70,
+    40,
+    12
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "facing": "east",
+    "colour": "#2a2d31"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -50,
+    -98,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 10,
+    "count": 6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -96,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.2
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -78,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    78,
+    60,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -78,
+    60,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 30,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 210,
+    "endDeg": 330,
+    "rows": 4,
+    "rise": 2.4,
+    "run": 2.8,
+    "firstHeight": 3.5
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 30,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 30,
+    "endDeg": 150,
+    "rows": 4,
+    "rise": 2.4,
+    "run": 2.8,
+    "firstHeight": 3.5
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 30,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 150,
+    "endDeg": 210,
+    "rows": 4,
+    "rise": 2.4,
+    "run": 2.8,
+    "firstHeight": 2.5
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 49,
+    "facetDeg": 30,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColours": [
+     "#2f5b8a",
+     "#2f5b8a",
+     "#d9a62b",
+     "#b8353a"
+    ],
+    "blocks": 3,
+    "concreteColour": "#bdbab2",
+    "underColour": "#8f8c85",
+    "startDeg": 330,
+    "endDeg": 390,
+    "rows": 4,
+    "rise": 2.4,
+    "run": 2.8,
+    "firstHeight": 2.5
+   },
+   "lod": [
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -48,
+    16
+   ],
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "rect": [
+     100,
+     14
+    ],
+    "height": 1,
+    "colour": "#2a2d31"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Closed oval ring of two-tone blue stands with yellow/red blocks, dark flat steel canopy over main and far stands, blue track, 3 lattice masts now match. Remaining: canopy is a continuous hoop wider than the real flat truss roof, props are thin columns, lettering band is only red seat blocks, track lanes and striped pitch are generic, photo is an interior view so exterior wall is open."
+ }
+}

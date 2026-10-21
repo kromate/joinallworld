@@ -1,0 +1,703 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-college-of-science-and-technology",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Rwanda,_Nyarugenge_Campus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hirwa94",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/urn.jpg",
+   "used": "six-storey red-brick teaching block with cream floor bands, round exterior stair tower with open landings at the left end, dark slate hipped roof with gablets, small domed entrance canopy, terracotta paving drive and lawns"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13529968",
+   "used": "not geometry: the tagged area is the whole 270,000 m2 campus; setting only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 6,
+  "fovDeg": 34,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     66,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 21,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24b36",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "bay": 7.0,
+    "plinth": 0.8,
+    "bands": {
+     "colour": "#c9c4b4",
+     "height": 0.6
+    },
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a24b36",
+       "#b5604a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f353b",
+    "material": "slate",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 3.8,
+    "columns": 4,
+    "colour": "#cfc8b4"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    10,
+    -9,
+    3.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#7fa3a0",
+    "profile": [
+     [
+      3,
+      0
+     ],
+     [
+      2.8,
+      0.6
+     ],
+     [
+      1.8,
+      1.6
+     ],
+     [
+      0,
+      2.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gablet0",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -22.0,
+    -6.5
+   ],
+   "z0": 21,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd8bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f353b",
+    "material": "slate",
+    "pitch": 38
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gablet1",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -11.0,
+    -6.5
+   ],
+   "z0": 21,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd8bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f353b",
+    "material": "slate",
+    "pitch": 38
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gablet2",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    0.0,
+    -6.5
+   ],
+   "z0": 21,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd8bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f353b",
+    "material": "slate",
+    "pitch": 38
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gablet3",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    11.0,
+    -6.5
+   ],
+   "z0": 21,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd8bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f353b",
+    "material": "slate",
+    "pitch": 38
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gablet4",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    22.0,
+    -6.5
+   ],
+   "z0": 21,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd8bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#2f353b",
+    "material": "slate",
+    "pitch": 38
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower-plinth",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -34,
+    -4
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a24b36",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    -34,
+    -4,
+    3.2
+   ],
+   "params": {
+    "n": 10,
+    "radius": 5.2,
+    "height": 17.8,
+    "colour": "#b0aca2",
+    "topColour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rim1",
+   "at": [
+    -34,
+    -4,
+    3.2
+   ],
+   "params": {
+    "n": 10,
+    "radius": 6.6,
+    "height": 0.7,
+    "colour": "#d4cebb",
+    "topColour": "#d4cebb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim2",
+   "at": [
+    -34,
+    -4,
+    6.7
+   ],
+   "params": {
+    "n": 10,
+    "radius": 6.6,
+    "height": 0.7,
+    "colour": "#d4cebb",
+    "topColour": "#d4cebb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim3",
+   "at": [
+    -34,
+    -4,
+    10.2
+   ],
+   "params": {
+    "n": 10,
+    "radius": 6.6,
+    "height": 0.7,
+    "colour": "#d4cebb",
+    "topColour": "#d4cebb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim4",
+   "at": [
+    -34,
+    -4,
+    13.7
+   ],
+   "params": {
+    "n": 10,
+    "radius": 6.6,
+    "height": 0.7,
+    "colour": "#d4cebb",
+    "topColour": "#d4cebb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim5",
+   "at": [
+    -34,
+    -4,
+    17.2
+   ],
+   "params": {
+    "n": 10,
+    "radius": 6.6,
+    "height": 0.7,
+    "colour": "#d4cebb",
+    "topColour": "#d4cebb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rim6",
+   "at": [
+    -34,
+    -4,
+    20.7
+   ],
+   "params": {
+    "n": 10,
+    "radius": 6.6,
+    "height": 0.7,
+    "colour": "#d4cebb",
+    "topColour": "#d4cebb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stair",
+   "at": [
+    -40.5,
+    -9.5,
+    3.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.6,
+    "height": 3.5,
+    "run": 4.5,
+    "colour": "#a8a49a",
+    "rails": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stair",
+   "at": [
+    -40.5,
+    -9.5,
+    6.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.6,
+    "height": 3.5,
+    "run": 4.5,
+    "colour": "#a8a49a",
+    "rails": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stair",
+   "at": [
+    -40.5,
+    -9.5,
+    10.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.6,
+    "height": 3.5,
+    "run": 4.5,
+    "colour": "#a8a49a",
+    "rails": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stair",
+   "at": [
+    -40.5,
+    -9.5,
+    13.9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.6,
+    "height": 3.5,
+    "run": 4.5,
+    "colour": "#a8a49a",
+    "rails": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stair",
+   "at": [
+    -40.5,
+    -9.5,
+    17.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.6,
+    "height": 3.5,
+    "run": 4.5,
+    "colour": "#a8a49a",
+    "rails": false
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "lawn",
+   "id": "drive",
+   "at": [
+    0,
+    -24,
+    0.02
+   ],
+   "params": {
+    "width": 120,
+    "depth": 24,
+    "colour": "#b7714f"
+   }
+  },
+  {
+   "type": "lawn",
+   "id": "lawn-front",
+   "at": [
+    0,
+    -11.5,
+    0.04
+   ],
+   "params": {
+    "width": 50,
+    "depth": 5,
+    "colour": "#5f8f43"
+   }
+  },
+  {
+   "type": "lawn",
+   "id": "kerb-dark",
+   "at": [
+    0,
+    -36.2,
+    0.06
+   ],
+   "params": {
+    "width": 120,
+    "depth": 0.5,
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lawn",
+   "id": "kerb-light",
+   "at": [
+    0,
+    -35.6,
+    0.06
+   ],
+   "params": {
+    "width": 120,
+    "depth": 0.4,
+    "colour": "#eeeeee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "hedge",
+   "id": "hedge",
+   "at": [
+    -8,
+    -9.6,
+    0.04
+   ],
+   "params": {
+    "length": 16,
+    "height": 0.9,
+    "depth": 1.0,
+    "colour": "#3f6f30"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -24
+    ],
+    "height": 4
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -22
+    ],
+    "height": 4
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -17
+    ],
+    "height": 4
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     30,
+     -18
+    ],
+    "yawDeg": 0,
+    "colour": "#8a1f1f"
+   },
+   {
+    "at": [
+     36,
+     -18
+    ],
+    "yawDeg": 0,
+    "colour": "#d9d9d9"
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stair tower is a grey drum with overhanging rims and zig-zag flights but no railings; gablets are fewer and plainer than the photo; terracotta drive is flat colour without brick pattern and the striped kerb is a straight line; windows are ribbons but sparser than the photo."
+ }
+}

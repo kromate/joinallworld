@@ -1,0 +1,1031 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sagamu",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sagamu",
+    "climate": "rainforest",
+    "vernacular": "Remo-land market and cement town between Lagos and Ibadan: 1-2 storey cement-block houses and compounds plastered and painted cream, pale blue, green and yellow under rust-brown or red corrugated roofs, older two-storey Yoruba-colonial houses with verandas near the Akarigbo palace in Offin, limestone-cement works on the outskirts, kola-nut baskets stacked in the markets, laterite roads and palms and broadleaf trees. Ilishan is a mission-college town with brick and render institutional blocks.",
+    "wallColours": [
+      "#eadfc6",
+      "#e6cf8a",
+      "#f2eee6",
+      "#9db9c9",
+      "#a8c3a0",
+      "#b0603f",
+      "#a9a59d"
+    ],
+    "roofColours": [
+      "#8d5a3b",
+      "#9c3b2f",
+      "#3f7a52",
+      "#8e979c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Yoruba carved veranda posts and wooden doors on older Remo houses; painted perimeter walls; pointed-arch windows on churches and mosques; kola-nut baskets and woven rope at market stalls; breeze-block screens on newer blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Sagamu",
+        "what": "Remo capital; cement industry on local limestone; largest kola-nut collecting centre; Akarigbo palace in Offin; Central Mosque, St John's, Methodist Oko circuit"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ilishan-Remo",
+        "what": "Ilishan-Remo mission-college town and Babcock University"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Lagos",
+        "what": "regional vernacular materials: cement block, corrugated iron, painted render (applied by analogy)"
+      }
+    ]
+  },
+  "places": {
+    "babcock-university": {
+      "venueId": "babcock-university",
+      "city": "sagamu",
+      "name": "Babcock University",
+      "archetype": "campus-block",
+      "subject": "Babcock University campus at Ilishan-Remo: mid-rise brick-and-render teaching blocks around a lawn quad, a library and a teaching hospital in the distance",
+      "form": {
+        "footprint": "U",
+        "width_m": 75,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#eadfc6",
+          "#a4573d",
+          "#f2eee6"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Babcock_University",
+          "what": "Adventist College of West Africa 1959, university 1999, Ilishan-Remo; teaching hospital, library, sports facilities"
+        },
+        {
+          "url": "https://www.thisdaylive.com/2025/01/29/babcock-varsity-unveils-plans-for-pharmacy-school/",
+          "what": "pharmacy building planned as a six-floor three-block building"
+        }
+      ],
+      "notes": "Campus facilities are known (teaching hospital, library, amphitheatre, new six-floor pharmacy blocks) but not their appearance; colours/materials typed. Clock tower is a typed guess, not sourced."
+    },
+    "ikenne-heritage": {
+      "venueId": "ikenne-heritage",
+      "city": "sagamu",
+      "name": "Ikenne Heritage Walk",
+      "archetype": "manor",
+      "subject": "The Awolowo residence compound at Ikenne: a two-storey family house with a mausoleum, museum, Efunyela Hall and the Sopolu Library around a walled garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2eee6",
+          "#9db9c9",
+          "#8d5a3b"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "mausoleum"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ikenne_Residence_of_Chief_Obafemi_Awolowo",
+          "what": "compound with mausoleum, museum (4 Aug 1989), Efunyela Hall (1979), Sopolu Library; Mercedes exhibit"
+        }
+      ],
+      "notes": "Real compound and components are documented; the sources give no style, materials or colours, so the architecture and the two-storey form are typed. The residence is a family home and memorial, not a single large building."
+    },
+    "ilisan-chapel": {
+      "venueId": "ilisan-chapel",
+      "city": "sagamu",
+      "name": "Ilishan Community Chapel",
+      "archetype": "church-modern",
+      "subject": "A small Adventist-style community chapel at Ilishan-Remo: a rendered gabled hall with a short front tower and pointed windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee6",
+          "#9db9c9",
+          "#8e979c"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ilishan-Remo",
+          "what": "Ilishan-Remo is an Adventist mission-college town; no specific chapel is described"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue; could stand for any Ilishan chapel."
+    },
+    "remo-civic-hall": {
+      "venueId": "remo-civic-hall",
+      "city": "sagamu",
+      "name": "Remo Civic Hall",
+      "archetype": "civic-small",
+      "subject": "A Remo town hall: a one-storey hall with a low central dome over the porch, rendered walls and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eadfc6",
+          "#a4573d",
+          "#f2eee6"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "neoclassical",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sagamu",
+          "what": "Sagamu is capital of the Remo Kingdom; no civic hall is described"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue with a dome in the authored variant."
+    },
+    "remo-evening-garden": {
+      "venueId": "remo-evening-garden",
+      "city": "sagamu",
+      "name": "Remo Evening Garden",
+      "archetype": "park-landscape",
+      "subject": "A walled evening garden with a covered bandstand, a lit fountain, benches and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 55,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a8c3a0",
+          "#a9a59d",
+          "#e6cf8a"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "string lights"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "remo-kitchen": {
+      "venueId": "remo-kitchen",
+      "city": "sagamu",
+      "name": "Remo Ofada Kitchen",
+      "archetype": "restaurant",
+      "subject": "A kitchen serving Ofada rice stew: a two-bay open eatery with plastic chairs, a large pot station and a leaf-wrap menu board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#a8c3a0",
+          "#e6cf8a",
+          "#8d5a3b"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sagamu",
+          "what": "Remo area, Ogun State, where Ofada rice is a regional dish (name reference only)"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue; green/yellow palette hints at the leaf wrap."
+    },
+    "remo-stadium": {
+      "venueId": "remo-stadium",
+      "city": "sagamu",
+      "name": "Remo Sports Ground",
+      "archetype": "stadium",
+      "subject": "A Sagamu sports ground: a tiered concrete terrace on one side, a small covered main stand, floodlights and a perimeter wall; smaller than the 5,000-seat Remo Stars Stadium at Ikenne",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a9a59d",
+          "#a8c3a0",
+          "#9c3b2f"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Remo_Stars_Stadium",
+          "what": "Remo Stars Stadium (Ikenne) has 5,000 capacity, opened 2020; this Sagamu ground is a different place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Remo_Stars_F.C.",
+          "what": "club previously played at Gateway International Stadium, Sagamu; no stand details"
+        }
+      ],
+      "notes": "No stand, roof or capacity data for the Sagamu ground; typed. Do not copy the Ikenne stadium."
+    },
+    "sagamu-clinic": {
+      "venueId": "sagamu-clinic",
+      "city": "sagamu",
+      "name": "Sagamu Community Clinic",
+      "archetype": "hospital",
+      "subject": "A community health centre: a two-wing painted block with a covered drop-off and a water tank",
+      "form": {
+        "footprint": "H",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee6",
+          "#9db9c9",
+          "#9c3b2f"
+        ],
+        "roofColour": "#3f7a52",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank cross board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue; shaped differently from the Ota clinic (two-storey, H plan)."
+    },
+    "sagamu-creative-hub": {
+      "venueId": "sagamu-creative-hub",
+      "city": "sagamu",
+      "name": "Sagamu Creative Hub",
+      "archetype": "office-low",
+      "subject": "A small media and creative studio hub: a two-storey block with a glass entrance, a screen-fronted studio wing and a rooftop mast",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2eee6",
+          "#2f4a5c",
+          "#e6cf8a"
+        ],
+        "roofColour": "#a9adaf",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "sagamu-interchange": {
+      "venueId": "sagamu-interchange",
+      "city": "sagamu",
+      "name": "Sagamu Interchange",
+      "archetype": "transport-station",
+      "subject": "The Sagamu interchange on the Lagos-Ibadan Expressway: a big grade-separated junction with ramps and a bridge, truck lay-bys and a roadside motor park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#a9a59d",
+          "#6f6a62",
+          "#e6cf8a"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/?p=1085287",
+          "what": "Sagamu Interchange Bridge closed after tanker crash beneath it; shows an overpass above a lower road"
+        },
+        {
+          "url": "https://gazettengr.com/fg-building-three-flyovers-to-decongest-lagos-ibadan-expressway-fashola/",
+          "what": "Lagos-Ibadan expressway reconstruction with flyovers near Sagamu"
+        }
+      ],
+      "notes": "Real junction; its ramp geometry is not described in the sources (no cloverleaf confirmation). Shown as the roadside transport node under the bridge. The contract has no overpass/flyover feature."
+    },
+    "sagamu-market": {
+      "venueId": "sagamu-market",
+      "city": "sagamu",
+      "name": "Sagamu Market",
+      "archetype": "market-open",
+      "subject": "Sagamu kola-nut market: close-packed stalls and tin sheds with stacks of woven kola baskets, rope bundles and hawkers' umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#9aa3a8",
+          "#b0603f",
+          "#e6cf8a"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 36
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sagamu",
+          "what": "Sagamu is Nigeria's largest kola-nut collecting centre; baskets and rope made to store it"
+        }
+      ],
+      "notes": "The kola-nut trade and basket/rope crafts are documented; the market's layout is typed."
+    },
+    "sagamu-mosque": {
+      "venueId": "sagamu-mosque",
+      "city": "sagamu",
+      "name": "Sagamu Community Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A community mosque in Sagamu: a rendered square prayer hall with a large central dome, four corner domelets and a tall minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f2eee6",
+          "#9db9c9",
+          "#d9d0b8"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "onion-dome",
+          "count": 4,
+          "note": "corner domelets"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sagamu",
+          "what": "the Sagamu Central Mosque appears in the town's photo gallery but is not described"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue, not the Central Mosque; differs from the Sango mosque in domes and height."
+    },
+    "sagamu-neighbourhood-park": {
+      "venueId": "sagamu-neighbourhood-park",
+      "city": "sagamu",
+      "name": "Sagamu Neighbourhood Park",
+      "archetype": "park-landscape",
+      "subject": "A neighbourhood park with a tree-shaded lawn, a circular seating plaza and a small gate",
+      "form": {
+        "footprint": "round",
+        "width_m": 45,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8c3a0",
+          "#a9a59d",
+          "#e6cf8a"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "sagamu-polling": {
+      "venueId": "sagamu-polling",
+      "city": "sagamu",
+      "name": "Sagamu Civic Polling Centre",
+      "archetype": "civic-small",
+      "subject": "A polling centre in a school-style block with a long verandah, blue-and-white painted walls and a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#9db9c9",
+          "#f2eee6",
+          "#9c3b2f"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "sagamu-salon": {
+      "venueId": "sagamu-salon",
+      "city": "sagamu",
+      "name": "Sagamu Junction Salon",
+      "archetype": "shophouse",
+      "subject": "A salon on a Sagamu junction: a one-bay shop with a mirrored window, a hand-painted wall and a front canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a8c3a0",
+          "#f2eee6",
+          "#9c3b2f"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    }
+  }
+}

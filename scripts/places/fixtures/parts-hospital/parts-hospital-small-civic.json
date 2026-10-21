@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-small-civic",
+ "name": "Parts test: police, post office, studios",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d2",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7a8a",
+    "material": "metal-sheet",
+    "pitch": 17
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "depth": 2.2,
+    "eaveHeight": 2.8,
+    "attachHeight": 3.5,
+    "roofColour": "#6a7a8a"
+   }
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "pickup",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "heading": 0
+   }
+  },
+  {
+   "type": "pickup",
+   "at": [
+    2,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "heading": 170,
+    "colour": "#2a4a8a"
+   }
+  },
+  {
+   "type": "pillar-box",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    22,
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 18,
+    "baseWidth": 1.4,
+    "topWidth": 0.5,
+    "panels": 4
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    26,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 7,
+    "depth": 4,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "hex-pod",
+   "at": [
+    -45,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 5,
+    "height": 4.2,
+    "roofRise": 4.5
+   }
+  },
+  {
+   "type": "mud-dome-studio",
+   "at": [
+    -58,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 3.6
+   }
+  },
+  {
+   "type": "sawtooth-roof",
+   "at": [
+    48,
+    -24,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 16,
+    "teeth": 5
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    48,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 10,
+    "height": 6,
+    "archWidth": 4,
+    "springHeight": 3
+   }
+  },
+  {
+   "type": "reflecting-pool",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 20,
+    "depth": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 6,
+  "extent": [
+   130,
+   80
+  ]
+ }
+}

@@ -1,0 +1,755 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "central-mosque-sabo-gari",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "No photo found. Brief: white block mosque, one large central dome, four corner domes, two ~22 m minarets, green trim, arched windows."
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     42,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.8,
+    "bands": "#3f7a58",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c2b0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -21
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "none",
+    "groundKind": "arcade",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7a58",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      9.450000000000001,
+      0
+     ],
+     [
+      9.450000000000001,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    14
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#3f7a58",
+    "profile": [
+     [
+      9,
+      0,
+      "#3f7a58"
+     ],
+     [
+      8.83,
+      1.37
+     ],
+     [
+      8.31,
+      2.68
+     ],
+     [
+      7.48,
+      3.89
+     ],
+     [
+      6.36,
+      4.95
+     ],
+     [
+      5.0,
+      5.82
+     ],
+     [
+      3.44,
+      6.47
+     ],
+     [
+      1.76,
+      6.87
+     ],
+     [
+      0.0,
+      7.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    -13,
+    11
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      3.7800000000000002,
+      0
+     ],
+     [
+      3.7800000000000002,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    -13,
+    12.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#3f7a58",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#3f7a58"
+     ],
+     [
+      3.53,
+      0.59
+     ],
+     [
+      3.33,
+      1.15
+     ],
+     [
+      2.99,
+      1.67
+     ],
+     [
+      2.55,
+      2.12
+     ],
+     [
+      2.0,
+      2.49
+     ],
+     [
+      1.38,
+      2.77
+     ],
+     [
+      0.7,
+      2.94
+     ],
+     [
+      0.0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    13,
+    11
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      3.7800000000000002,
+      0
+     ],
+     [
+      3.7800000000000002,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -17,
+    13,
+    12.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#3f7a58",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#3f7a58"
+     ],
+     [
+      3.53,
+      0.59
+     ],
+     [
+      3.33,
+      1.15
+     ],
+     [
+      2.99,
+      1.67
+     ],
+     [
+      2.55,
+      2.12
+     ],
+     [
+      2.0,
+      2.49
+     ],
+     [
+      1.38,
+      2.77
+     ],
+     [
+      0.7,
+      2.94
+     ],
+     [
+      0.0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    -13,
+    11
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      3.7800000000000002,
+      0
+     ],
+     [
+      3.7800000000000002,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    -13,
+    12.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#3f7a58",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#3f7a58"
+     ],
+     [
+      3.53,
+      0.59
+     ],
+     [
+      3.33,
+      1.15
+     ],
+     [
+      2.99,
+      1.67
+     ],
+     [
+      2.55,
+      2.12
+     ],
+     [
+      2.0,
+      2.49
+     ],
+     [
+      1.38,
+      2.77
+     ],
+     [
+      0.7,
+      2.94
+     ],
+     [
+      0.0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    13,
+    11
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      3.7800000000000002,
+      0
+     ],
+     [
+      3.7800000000000002,
+      1.2
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    17,
+    13,
+    12.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#3f7a58",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#3f7a58"
+     ],
+     [
+      3.53,
+      0.59
+     ],
+     [
+      3.33,
+      1.15
+     ],
+     [
+      2.99,
+      1.67
+     ],
+     [
+      2.55,
+      2.12
+     ],
+     [
+      2.0,
+      2.49
+     ],
+     [
+      1.38,
+      2.77
+     ],
+     [
+      0.7,
+      2.94
+     ],
+     [
+      0.0,
+      3.0
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -23,
+    -21,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#f0ece0"
+     ],
+     [
+      1.5,
+      13.2
+     ],
+     [
+      1.9,
+      13.2,
+      "#3f7a58"
+     ],
+     [
+      1.9,
+      14.1
+     ],
+     [
+      1.2,
+      14.1,
+      "#f0ece0"
+     ],
+     [
+      1.2,
+      19.8
+     ],
+     [
+      1.7,
+      19.8,
+      "#3f7a58"
+     ],
+     [
+      1.7,
+      20.6
+     ],
+     [
+      1.0,
+      20.6,
+      "#3f7a58"
+     ],
+     [
+      0.5,
+      23.3
+     ],
+     [
+      0.1,
+      24.8
+     ],
+     [
+      0.1,
+      26.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -23,
+    -21,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      22
+     ],
+     [
+      0.2,
+      27
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    23,
+    -21,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#f0ece0"
+     ],
+     [
+      1.5,
+      13.2
+     ],
+     [
+      1.9,
+      13.2,
+      "#3f7a58"
+     ],
+     [
+      1.9,
+      14.1
+     ],
+     [
+      1.2,
+      14.1,
+      "#f0ece0"
+     ],
+     [
+      1.2,
+      19.8
+     ],
+     [
+      1.7,
+      19.8,
+      "#3f7a58"
+     ],
+     [
+      1.7,
+      20.6
+     ],
+     [
+      1.0,
+      20.6,
+      "#3f7a58"
+     ],
+     [
+      0.5,
+      23.3
+     ],
+     [
+      0.1,
+      24.8
+     ],
+     [
+      0.1,
+      26.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    23,
+    -21,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#f0ece0",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      22
+     ],
+     [
+      0.2,
+      27
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.0,
+    "colour": "#f0ece0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.0,
+    "colour": "#f0ece0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Typical Nigerian central mosque from text; actual dome profile, trim and minaret placement unverified."
+ }
+}

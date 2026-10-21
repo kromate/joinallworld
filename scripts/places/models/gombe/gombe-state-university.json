@@ -1,0 +1,641 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "gombe-state-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faculty_of_Science_Complex,_Gombe_State_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hesham Saleh Gidado",
+   "view": "front",
+   "file": "/tmp/places-evidence/gombe/gsu1.jpg",
+   "used": "TETFund Faculty of Science Complex on the Tudun Wada campus: three storeys of pale green render, central projecting taller bay with large glazed upper wall and tan parapet, tan-columned entrance portico, green wings with tan vertical fins, small punched windows, flat roofs, right wing set back"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gombe_State_University.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gwanki",
+   "view": "front",
+   "file": "/tmp/places-evidence/gombe/gsu2.jpg",
+   "used": "campus gate: salmon-pink painted concrete, flat beam on a central pier and flanking wedge towers; colour palette of the campus"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/328221569",
+   "used": "campus is 1.2 km across so only the block type is modelled, not the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -24,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9d29b",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 5.2,
+    "plinth": 0.5,
+    "cornice": false,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a92",
+    "material": "concrete",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -2.5
+   ],
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5a587",
+    "windows": "none",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    },
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8987a",
+    "material": "concrete",
+    "overhang": 1.0,
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazing-panel",
+   "footprint": {
+    "rect": [
+     10.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.55
+   ],
+   "z0": 6.6,
+   "height": 8.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9c6d6",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazing-frame",
+   "footprint": {
+    "rect": [
+     11.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.35
+   ],
+   "z0": 6.3,
+   "height": 9.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5a587",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8987a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    20,
+    8
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b2cc94",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "bay": 5.0,
+    "plinth": 0.5,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a92",
+    "material": "concrete",
+    "overhang": 0.7,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-end",
+   "footprint": {
+    "rect": [
+     4,
+     12
+    ]
+   },
+   "at": [
+    35,
+    8
+   ],
+   "height": 12.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b69864",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82",
+    "overhang": 0.4,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-hall",
+   "footprint": {
+    "rect": [
+     13,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b78f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b69864",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-slab",
+   "footprint": {
+    "rect": [
+     18,
+     5.4
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "z0": 5.2,
+   "height": 1.3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2a77a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b09468",
+    "overhang": 0.4,
+    "parapet": 0.15
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    0,
+    -14.0,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "count": 5,
+    "height": 5.2,
+    "radius": 0.6,
+    "kind": "square",
+    "beamHeight": 0.15,
+    "colour": "#d1b184"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.7
+      ]
+     },
+     "height": 12.6,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#b69864",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#9a9a92"
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -37,
+     -6.2
+    ],
+    "end": [
+     -9,
+     -6.2
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.7
+      ]
+     },
+     "height": 12.8,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#b69864",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#9a9a92"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     8,
+     1.7
+    ],
+    "end": [
+     31,
+     1.7
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "z0": 1.8,
+     "height": 0.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#dddddd"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -33,
+     -6.3
+    ],
+    "end": [
+     -13,
+     -6.3
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "z0": 1.8,
+     "height": 0.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#dddddd"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     9,
+     1.7
+    ],
+    "end": [
+     31,
+     1.7
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "z0": 5.4,
+     "height": 0.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#dddddd"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -33,
+     -6.3
+    ],
+    "end": [
+     -13,
+     -6.3
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "z0": 5.4,
+     "height": 0.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#dddddd"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     9,
+     1.7
+    ],
+    "end": [
+     31,
+     1.7
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "z0": 9.0,
+     "height": 0.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#dddddd"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -33,
+     -6.3
+    ],
+    "end": [
+     -13,
+     -6.3
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "z0": 9.0,
+     "height": 0.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f4f4f2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#dddddd"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     9,
+     1.7
+    ],
+    "end": [
+     31,
+     1.7
+    ]
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 1.4,
+    "colour": "#2f4a2a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -9,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#9a9da0",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 4.5,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "groundColour": "#b0a58f",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   75,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "portico reads lower and lighter than the deep tan signboard canopy; glazed bay lacks grid mullions; wing windows are not grid-paned and fins are thin; hedge is a bright green strip, no motorbikes; trees still sit near the facade edges"
+ }
+}

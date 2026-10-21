@@ -1,0 +1,233 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-1266314236",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1266314236",
+   "used": "perimeter of the walled wholesale compound (173 x 136 m, 2.3 ha, name-matched), scaled by 0.68 to fit the 118 m scene clamp for the fence"
+  },
+  {
+   "kind": "text",
+   "used": "brief: wide open-sided steel sheds, loading bays, parked lorries"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "points": [
+     [
+      -68.3,
+      -27.6
+     ],
+     [
+      -44.8,
+      60.0
+     ],
+     [
+      68.1,
+      28.3
+     ],
+     [
+      43.9,
+      -60.9
+     ],
+     [
+      -63.0,
+      -28.7
+     ],
+     [
+      -68.3,
+      -27.6
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#b9b2a3"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -5.7,
+    -21.3,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 56,
+    "depth": 16,
+    "height": 6,
+    "roof": "gable",
+    "roof_rise": 2.4,
+    "cladding": "open",
+    "goods": "sacks",
+    "roof_colour": "#8f8a82",
+    "wall_colour": "#b9b2a3"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 56,
+    "depth": 16,
+    "height": 6,
+    "roof": "gable",
+    "roof_rise": 2.4,
+    "cladding": "open",
+    "goods": "sacks",
+    "roof_colour": "#8f8a82",
+    "wall_colour": "#b9b2a3"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    5.7,
+    21.3,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 56,
+    "depth": 16,
+    "height": 6,
+    "roof": "gable",
+    "roof_rise": 2.4,
+    "cladding": "open",
+    "goods": "sacks",
+    "roof_colour": "#8f8a82",
+    "wall_colour": "#b9b2a3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -44.5,
+    -19.1
+   ],
+   "rotDeg": -15,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d0bb",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a82",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -33.0,
+    -30.5,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 8,
+    "colour": "#d9d0bb"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -21.4,
+    -33.6,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 8,
+    "colour": "#3f6fa8"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -9.8,
+    -36.7,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 8,
+    "colour": "#c9442e"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    1.8,
+    -39.8,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 8,
+    "colour": "#d9d0bb"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    13.3,
+    -42.9,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 8,
+    "colour": "#2e6b4a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "No photo; fence follows real outline scaled 0.68; shed count/layout and lorries are brief-based, no stalls or loading docks detail."
+ }
+}

@@ -1,0 +1,1458 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "nouakchott",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "nouakchott",
+    "climate": "desert",
+    "vernacular": "Atlantic-coast Saharan capital built since 1958 on sand: mostly one-storey flat-roofed cement-block houses and compounds rendered in sand, ochre, cream or pastel blue, behind high plastered walls, with wind-blown sand banked against them; broad avenues with sparse trees; 1970s-80s Chinese- and Arab-funded institutional blocks; mosques in white or cream with square or tapering minarets and Moorish arches; recent glass-and-concrete malls and offices in Tevragh Zeina; informal tents (khaima) and shanty districts of cement blocks.",
+    "wallColours": [
+      "#e8d9b5",
+      "#f0ebe0",
+      "#d9b98a",
+      "#c58f5c",
+      "#9fb8c4",
+      "#bfc7ca",
+      "#e3c9a0"
+    ],
+    "roofColours": [
+      "#b0aaa0",
+      "#8a8f93",
+      "#8b5a45",
+      "#d6d0c4"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "mud-render",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "palm",
+      "none"
+    ],
+    "ornament": "Moorish horseshoe and pointed arches on mosques and villa windows, geometric lattice screens and grilles, painted or relief bands around doors and parapets, square minarets with a simple crown, white/cream rendering against desert sand.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Nouakchott",
+        "what": "Nouakchott: most buildings are one storey; Kebbe shanty-town buildings are cement made to look permanent; Saudi Mosque and Ibn Abbas mosque noted for architecture and size; fish market on a beach devoted to fishing boats; 2016 airport"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Museum_of_Mauritania",
+        "what": "National museum is a two-storey building built in 1972 by the Chinese, an example of 1970s foreign-aid institutional architecture"
+      }
+    ]
+  },
+  "places": {
+    "nouakchott-airport-nouakchott-airport": {
+      "venueId": "nouakchott-airport-nouakchott-airport",
+      "city": "nouakchott",
+      "name": "Nouakchott–Oumtounsy International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2016 passenger terminal seen from the landside: a long, modern, glass-fronted terminal block with a projecting entrance canopy, jet bridges on the airside and a control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8e0e4",
+          "#3d5a6e",
+          "#e8e4da"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 6,
+          "note": "six boarding bridges"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nouakchott%E2%80%93Oumtounsy_International_Airport",
+          "what": "Terminal ~30,000 m2, up to 2M pax/yr, 6 jet bridges, built by Najah for Major Works from Nov 2011, designed by Mauritanian architect Omer Houessou, opened 23 June 2016; facade not described"
+        }
+      ],
+      "notes": "Size, bridge count and dates documented; the glazing-dominant facade and colours are inferred from a 2010s international terminal of that scale (source gives only photo captions). Plan dimensions are a best estimate from the 30,000 m2 floor area."
+    },
+    "nouakchott-clinic": {
+      "venueId": "nouakchott-clinic",
+      "city": "nouakchott",
+      "name": "Clinique Chiva",
+      "archetype": "hospital",
+      "subject": "Private clinic: a two-storey rendered building with a signboard and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ebe0",
+          "#7fa6b8",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real private clinic in Tevragh Zeina; no description found. Typed."
+    },
+    "nouakchott-community-notices": {
+      "venueId": "nouakchott-community-notices",
+      "city": "nouakchott",
+      "name": "État civil",
+      "archetype": "civic-small",
+      "subject": "Civil-registry office: a single-storey rendered office with a flagpole and a counter hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#c58f5c",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Civil registry office; actual building unknown. Typed."
+    },
+    "nouakchott-community-voting-game": {
+      "venueId": "nouakchott-community-voting-game",
+      "city": "nouakchott",
+      "name": "Mairie Dar Naim",
+      "archetype": "civic-small",
+      "subject": "Dar Naim district town hall: a two-storey rendered block with arched entrance and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#c58f5c",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real arrondissement mairie; its actual look not found. Typed municipal office."
+    },
+    "nouakchott-community-workshop": {
+      "venueId": "nouakchott-community-workshop",
+      "city": "nouakchott",
+      "name": "Lebanese International University",
+      "archetype": "campus-block",
+      "subject": "Private university branch: a 3-storey rendered block with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b5",
+          "#c58f5c",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real private university; nothing on its building found. Typed."
+    },
+    "nouakchott-market-game": {
+      "venueId": "nouakchott-market-game",
+      "city": "nouakchott",
+      "name": "Marché el Bechair",
+      "archetype": "market-open",
+      "subject": "District market: sandy lanes of lock-up shops and tin-roofed stalls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d9b98a",
+          "#8b5a45",
+          "#bfc7ca"
+        ],
+        "roofColour": "#8b5a45",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real local market; no description found. Typed."
+    },
+    "nouakchott-meal-stop": {
+      "venueId": "nouakchott-meal-stop",
+      "city": "nouakchott",
+      "name": "Le Mirador",
+      "archetype": "restaurant",
+      "subject": "A rendered restaurant with a roof terrace/viewing deck facing the coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b5",
+          "#9fb8c4",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name suggests a lookout; it is on the northern coast. Actual building unknown. Typed."
+    },
+    "nouakchott-osm-node-4406868798": {
+      "venueId": "nouakchott-osm-node-4406868798",
+      "city": "nouakchott",
+      "name": "Mosquée Cheikh Sidya",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque with a small dome over the prayer hall and a square minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f3efe6",
+          "#9fb8c4",
+          "#c9c3b5"
+        ],
+        "roofColour": "#d6d0c4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Mosque named for the saint Cheikh Sidiyya; actual building unknown. Typed Mauritanian neighbourhood mosque."
+    },
+    "nouakchott-osm-node-5171076923": {
+      "venueId": "nouakchott-osm-node-5171076923",
+      "city": "nouakchott",
+      "name": "Ehel Diddah Baiba",
+      "archetype": "park-landscape",
+      "subject": "An open sand lot with a few shade trees and a low wall, a local viewpoint on the northern edge of the city",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e3c9a0",
+          "#d9b98a",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only a name (a family/area name) and coordinates; what stands there is unknown. Typed."
+    },
+    "nouakchott-osm-node-6555685946": {
+      "venueId": "nouakchott-osm-node-6555685946",
+      "city": "nouakchott",
+      "name": "Mosquée AL Tawba",
+      "archetype": "mosque-domed",
+      "subject": "A small white neighbourhood mosque with a short square minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f3efe6",
+          "#9fb8c4",
+          "#c9c3b5"
+        ],
+        "roofColour": "#d6d0c4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real small mosque in the south; no description found. Typed."
+    },
+    "nouakchott-osm-node-8696420174": {
+      "venueId": "nouakchott-osm-node-8696420174",
+      "city": "nouakchott",
+      "name": "Lemina Mall",
+      "archetype": "mall",
+      "subject": "Shopping centre in Tevragh Zeina: a three-storey glass-and-render block with a central glazed atrium and entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd8dc",
+          "#9fb8c4",
+          "#f0ebe0"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real modern mall (venue kind market); no description or photos described in findable sources. Typed 2010s shopping centre."
+    },
+    "nouakchott-osm-node-8706615379": {
+      "venueId": "nouakchott-osm-node-8706615379",
+      "city": "nouakchott",
+      "name": "Le Bonto",
+      "archetype": "restaurant",
+      "subject": "A café-restaurant with an awning and terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b5",
+          "#9fb8c4",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed."
+    },
+    "nouakchott-osm-node-8708819578": {
+      "venueId": "nouakchott-osm-node-8708819578",
+      "city": "nouakchott",
+      "name": "Restaurant el Hamd",
+      "archetype": "restaurant",
+      "subject": "A local restaurant in a plain cream rendered building with painted frontage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b5",
+          "#9fb8c4",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed."
+    },
+    "nouakchott-osm-way-1276090644": {
+      "venueId": "nouakchott-osm-way-1276090644",
+      "city": "nouakchott",
+      "name": "Dream Land Ocean",
+      "archetype": "park-landscape",
+      "subject": "A coastal leisure park on the Atlantic dunes: fenced grounds, kiosks and shade shelters beside the beach",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e3c9a0",
+          "#9fb8c4",
+          "#bfc7ca"
+        ],
+        "roofColour": "#8b5a45",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "North-coast leisure venue; no description found. Typed."
+    },
+    "nouakchott-osm-way-142062875": {
+      "venueId": "nouakchott-osm-way-142062875",
+      "city": "nouakchott",
+      "name": "Stade Olympique de Nouakchott",
+      "archetype": "stadium",
+      "subject": "The national stadium: an oval concrete bowl with a covered main stand, athletics track and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d0c4",
+          "#b0693f",
+          "#9a958c"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cover over main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Olympique_(Nouakchott)",
+          "what": "Construction began 23 Jan 1980, opened 14 July 1983, renovated 2002 and 2020; artificial turf and athletics track; Mauritania national team home; listed capacity 10,000"
+        }
+      ],
+      "notes": "Dates, turf and track documented; the stand cover and colours are not, so are typed from a small 1980s concrete stadium. Capacity 10,000 per Wikipedia, so keep the bowl modest."
+    },
+    "nouakchott-osm-way-228858570": {
+      "venueId": "nouakchott-osm-way-228858570",
+      "city": "nouakchott",
+      "name": "École Normale Supérieure de Nouakchott",
+      "archetype": "campus-block",
+      "subject": "Teacher-training school: two-storey rendered classroom wings around a sandy court",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b5",
+          "#c58f5c",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real ENS; no description found. Typed."
+    },
+    "nouakchott-osm-way-231168874": {
+      "venueId": "nouakchott-osm-way-231168874",
+      "city": "nouakchott",
+      "name": "Maternité Suisse",
+      "archetype": "hospital",
+      "subject": "Maternity hospital: low rendered ward blocks with a veranda and ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ebe0",
+          "#7fa6b8",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named for Swiss cooperation; no building description found. Typed."
+    },
+    "nouakchott-osm-way-334308412": {
+      "venueId": "nouakchott-osm-way-334308412",
+      "city": "nouakchott",
+      "name": "Centre de santé",
+      "archetype": "hospital",
+      "subject": "A small public health centre: a single-storey rendered block with a veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ebe0",
+          "#7fa6b8",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic health centre in the far south; no description. Typed low."
+    },
+    "nouakchott-osm-way-428023202": {
+      "venueId": "nouakchott-osm-way-428023202",
+      "city": "nouakchott",
+      "name": "Faculté de Médécine",
+      "archetype": "campus-block",
+      "subject": "Medical faculty: a two-storey rendered block with a teaching hospital annex",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b5",
+          "#c58f5c",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real faculty; no description found. Typed."
+    },
+    "nouakchott-osm-way-453601079": {
+      "venueId": "nouakchott-osm-way-453601079",
+      "city": "nouakchott",
+      "name": "Fish Market",
+      "archetype": "market-open",
+      "subject": "The fish market on the beach where fishing boats land their catch: open sheds, stalls and lines of boats on sand beside the surf",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "beach landing market"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9d3d8",
+          "#3d7a9a",
+          "#e3c9a0"
+        ],
+        "roofColour": "#7d8790",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "landing beach / jetty"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "what": "Fish market is located on a beach devoted to fishing boats, where fish can be bought fresh"
+        }
+      ],
+      "notes": "Source confirms beach fish market with boats; structures are typed (simple corrugated sheds and stalls). Recognisable by the sand ground, boats and sea behind."
+    },
+    "nouakchott-osm-way-94938496": {
+      "venueId": "nouakchott-osm-way-94938496",
+      "city": "nouakchott",
+      "name": "Nouakchott University",
+      "archetype": "campus-block",
+      "subject": "University of Nouakchott Al Aasriya: a group of long two- to three-storey rendered faculty blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b5",
+          "#c58f5c",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "what": "University of Nouakchott opened 1981"
+        }
+      ],
+      "notes": "Opened 1981 per the source; buildings not described. Typed."
+    },
+    "nouakchott-osm-way-94938531": {
+      "venueId": "nouakchott-osm-way-94938531",
+      "city": "nouakchott",
+      "name": "Musée National de la Mauritanie",
+      "archetype": "museum-theatre",
+      "subject": "The 1972 National Museum, a Chinese-built two-storey modern block that also houses the national library and manuscripts centre, with a walled forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b5",
+          "#b0693f",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1972",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Mauritania",
+          "what": "Two-storey building built 1972 by the Chinese; houses the IMRS, manuscripts conservation centre and national library; two permanent and one temporary exhibition rooms"
+        }
+      ],
+      "notes": "Storey count, year and builder documented; plan size and colours are estimates typical of 1970s Chinese-aid institutional buildings in Nouakchott."
+    },
+    "nouakchott-quiet-reflection": {
+      "venueId": "nouakchott-quiet-reflection",
+      "city": "nouakchott",
+      "name": "Airport Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The airport mosque on the northern outskirts: a white mosque with a dome and slender minaret beside the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f3efe6",
+          "#9fb8c4",
+          "#c9c3b5"
+        ],
+        "roofColour": "#d6d0c4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Mosque near the airport; no description found. Typed."
+    },
+    "nouakchott-recreation": {
+      "venueId": "nouakchott-recreation",
+      "city": "nouakchott",
+      "name": "Parc Ehel Limame",
+      "archetype": "park-landscape",
+      "subject": "A public park on sandy ground with a fenced garden, paths and a pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e3c9a0",
+          "#d9b98a",
+          "#bfc7ca"
+        ],
+        "roofColour": "#b0aaa0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Park in the east of the city; no description found. Typed."
+    },
+    "nouakchott-transit": {
+      "venueId": "nouakchott-transit",
+      "city": "nouakchott",
+      "name": "Vans to Kiffa",
+      "archetype": "transport-station",
+      "subject": "Informal van and bush-taxi park: a sandy yard where minivans queue for Kiffa beside a few kiosks and a tin shed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d9b98a",
+          "#bfc7ca",
+          "#8b5a45"
+        ],
+        "roofColour": "#8b5a45",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Informal departure point in the central Sebkha/Capitale area; actual layout unknown. Typed motor park."
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "gabriel-okara-cultural-centre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/906784882",
+   "used": "real outline (name match, 2883 m2, stepped L/Z plan)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#gabriel-okara-cultural-centre",
+   "used": "two storeys, curved entrance canopy, steps, flags, cream render with blue accents; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#2f6b8f",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "rotDeg": 27,
+   "params": {
+    "form": "curved",
+    "width": 16,
+    "depth": 7,
+    "height": 5,
+    "rise": 1.8,
+    "columns": 4,
+    "colour": "#2f6b8f",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "rotDeg": 27,
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.35,
+    "count": 5,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1,
+    "colour": "#2f6b8f",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo found; real OSM outline and brief only. Canopy and flag positions are guessed relative to the unseen entrance; wall colours from brief."
+ }
+}

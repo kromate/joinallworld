@@ -1,0 +1,327 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_de_l%27histoire%2C_Rabat_%282%29.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ArnoldBetten",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/museum1.jpg",
+   "used": "white plastered box volumes, cornice line at eave, green tile edge of entrance porch on slim columns, rust-red entrance panel, barred windows, hedge and low stone wall, tall white block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/42354863",
+   "used": "stepped footprint of the pavilions (about 31 x 23 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.667
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f6f5f1",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "cornice": 0.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ede9df",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    12,
+    14
+   ],
+   "height": 10.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f2ec",
+    "windows": "punched",
+    "windowRatio": 0.02,
+    "cornice": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d9",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -19,
+    5
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4d9",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "oval-bronzes",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    16
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dd",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-panel",
+   "footprint": {
+    "rect": [
+     7,
+     0.6
+    ]
+   },
+   "at": [
+    -9.5,
+    -5.9
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#9a4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -9.5,
+    -8.6,
+    3.8
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 0.5,
+    "colour": "#f4f4f0",
+    "edgeColour": "#3f6a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5,
+    -12,
+    0.8
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.7,
+    "thickness": 1.4,
+    "colour": "#3d6a36"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 0.8,
+    "thickness": 0.5,
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -12.5,
+     -10.4
+    ],
+    "end": [
+     -6.5,
+     -10.4
+    ],
+    "of": {
+     "type": "mass",
+     "id": "col",
+     "footprint": {
+      "kind": "oval",
+      "size": [
+       0.7,
+       0.7
+      ]
+     },
+     "height": 3.8,
+     "wall": {
+      "material": "whitewash",
+      "colour": "#f6f5f1",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f6f5f1"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barwin4",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.5
+    ]
+   },
+   "at": [
+    4,
+    -6.1
+   ],
+   "z0": 2.2,
+   "height": 1.4,
+   "wall": {
+    "material": "render",
+    "colour": "#4a4a46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a46"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barwin8",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.5
+    ]
+   },
+   "at": [
+    8,
+    -6.1
+   ],
+   "z0": 2.2,
+   "height": 1.4,
+   "wall": {
+    "material": "render",
+    "colour": "#4a4a46",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4a46"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     12
+    ]
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-archaeological-museum",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "porch columns and barred windows small; hedge still too flat-topped; lettering omitted"
+ }
+}

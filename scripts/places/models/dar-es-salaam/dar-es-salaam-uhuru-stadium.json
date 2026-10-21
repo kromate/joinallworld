@@ -1,0 +1,574 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-uhuru-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tanzania_Independence_day_Pic_1.jpg",
+   "licence": "CC (Commons)",
+   "author": "see Commons page",
+   "view": "interior",
+   "file": "/tmp/places-evidence/dar-es-salaam/dsm-uhuru.jpg",
+   "used": "raked precast stand with yellow/teal seat blocks, grey concrete ramps and stair flights with teal railings, deep cantilever roof with teal corrugated fascia, low teal fence at pitch edge (Independence Day parade, Uhuru Stadium)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/665368000",
+   "used": "overall oval-ish bowl proportions (about 235 m, scaled down to the 120 m scene clamp), flat east side"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "width": 52
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     -30
+    ],
+    "end": [
+     42,
+     -30
+    ],
+    "flip": true,
+    "rows": 24,
+    "seatColour": "#d9b43a",
+    "seatColours": [
+     "#d9b43a",
+     "#d9b43a",
+     "#2f8f8a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#b3b1aa",
+    "under": "solid",
+    "backWall": 1.0,
+    "canopy": {
+     "height": 16,
+     "depth": 20,
+     "colour": "#2a8b8f",
+     "slopeDeg": 6,
+     "supports": 9
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": 0,
+    "endDeg": 180,
+    "rows": 11,
+    "seatColour": "#2f8f8a",
+    "seatColours": [
+     "#d9b43a",
+     "#2f8f8a",
+     "#d9b43a"
+    ],
+    "blocks": 5,
+    "concreteColour": "#b3b1aa",
+    "under": "solid",
+    "facetDeg": 24
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": 180,
+    "endDeg": 360,
+    "rows": 8,
+    "seatColour": "#d9b43a",
+    "concreteColour": "#b3b1aa",
+    "under": "solid",
+    "facetDeg": 24,
+    "seatColours": [
+     "#d9b43a",
+     "#2f8f8a"
+    ],
+    "blocks": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    -34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      6,
+      22
+     ],
+     [
+      0,
+      22
+     ]
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1,
+     0.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      6,
+      22
+     ],
+     [
+      0,
+      22
+     ]
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1,
+     0.4
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.1,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#3fa7a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    -24,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -44,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3fa7a0"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    -24,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 6,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    44,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#3fa7a0"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    22,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      84,
+      0
+     ],
+     [
+      84,
+      16
+     ],
+     [
+      0,
+      16
+     ]
+    ],
+    "z0": 12.5,
+    "height": 3.2,
+    "colour": "#a9a7a0",
+    "topScale": [
+     1,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1.4,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1.4,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1.4,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1.4,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    34,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      3,
+      0
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#b3b1aa",
+    "topScale": [
+     1.4,
+     1
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -60
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "Heavy cantilever roof approximated by a flat grey beam slab and square piers (no V-beams); ramps/stair flights are two stub prisms; crowd and detailed fence omitted; reference is a field-level close view of one stand."
+ }
+}

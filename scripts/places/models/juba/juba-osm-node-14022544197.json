@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-node-14022544197",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-osm-node-14022544197",
+   "used": "L-shaped single-storey painted block, green corrugated gable roof, a second low block across a yard, gate in a boundary wall. Main block uses the nearest OSM building outline (191 m2 L-shape, 2.7 m away; agrees with the brief's L plan). The one street photo near the place (Commons David_yay_image.jpg) shows people at an event, not a building, and was not used."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/311937773",
+   "used": "main block footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe2c0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#b8553a",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a54",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "yard-block",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    -4,
+    -26
+   ],
+   "rotDeg": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe2c0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#b8553a",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f7a54",
+    "material": "corrugated",
+    "rise": 1.7,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -4,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "colour": "#a79c8a",
+    "board_colour": "#4f7a54"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -40,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#a79c8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    -40,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      17,
+      0
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#a79c8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building; OSM outline is nearest-quality, second block and gate are from the brief."
+ }
+}

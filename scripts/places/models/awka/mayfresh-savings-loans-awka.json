@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "mayfresh-savings-loans-awka",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/awka.json",
+   "used": "two-storey office with green accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 12,
+  "fovDeg": 48
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline found; two-storey microfinance office typed from the brief with green accent bay, awning, blank board, generator hut"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "glassColour": "#6f8c8a",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#3f8a52",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9196",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-bay",
+   "footprint": {
+    "rect": [
+     4,
+     1.4
+    ]
+   },
+   "at": [
+    -3.5,
+    -6.7
+   ],
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f8a52",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "glassColour": "#6f8c8a",
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f8a52",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    3.5,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 3.0,
+    "colours": [
+     "#3f8a52",
+     "#f0ece0"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    0,
+    7.6
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     0.5
+    ],
+    "height": 1.5,
+    "colour": "#4a9a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.25
+    ],
+    "height": 1.8,
+    "colour": "#c2bdac"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.25
+    ],
+    "height": 2.0,
+    "colour": "#c2bdac"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     3.2
+    ],
+    "height": 2.6,
+    "colour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   32,
+   28
+  ]
+ }
+}

@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "uba-bank-yenagoa",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#uba-bank-yenagoa",
+   "used": "three-storey red-and-white glazed block 24x18 m, flat roof, deep canopy at the corner entrance, brise-soleil, blank board; no OSM match, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d8dcdc",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "office-tower/brand-band",
+   "at": [
+    0,
+    -9.1,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 12,
+    "panel_width": 4.5,
+    "panel_side": "left",
+    "cap": true,
+    "colour": "#b02a2a"
+   }
+  },
+  {
+   "type": "office-tower/brise-soleil",
+   "at": [
+    2,
+    -9.3,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 11,
+    "pitch": 2.0,
+    "depth": 0.5,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "office-tower/slab-entrance-canopy",
+   "at": [
+    10.5,
+    -9.2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 4.3,
+    "columns": 2,
+    "colour": "#ffffff",
+    "edge_colour": "#b02a2a"
+   }
+  },
+  {
+   "type": "office-tower/atm-booth",
+   "at": [
+    17,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2,
+    "height": 2.7,
+    "sign_colour": "#b02a2a"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f2",
+    "count": 3,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    19,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    10.5,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.2,
+    "thickness": 0.25,
+    "pillarEvery": 5,
+    "colour": "#e6e0d0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   42
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of this building exists; composed from the brief"
+ }
+}

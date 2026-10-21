@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-maianga-park",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/695838531",
+   "used": "real park outline (45 x 44 m, name match)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Na_zunga.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "brunOliveira",
+   "view": "street",
+   "file": "/tmp/places-evidence/luanda/maianga1.jpg",
+   "used": "street scene nearby only (not the park interior): rust-red rendered retaining wall and stairs, big grey-trunked shade trees with whitewashed base, palms, pale colonial buildings; used for colours and tree kind, not compared"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -24.6,
+      -16.1
+     ],
+     [
+      -9.8,
+      26.3
+     ],
+     [
+      16.5,
+      21.9
+     ],
+     [
+      19.1,
+      -23.5
+     ],
+     [
+      -2.8,
+      -20.9
+     ]
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#6f9a4f",
+    "topColour": "#6f9a4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -18
+     ],
+     [
+      -4,
+      4
+     ],
+     [
+      -6,
+      22
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      4
+     ],
+     [
+      16,
+      18
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#c9b48a"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    2,
+    4,
+    0.3
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#eadfc2",
+    "cap_colour": "#b5543a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -12,
+    -10,
+    0.3
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#c9b48a",
+    "roof_colour": "#b5543a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 9,
+      "count": 1,
+      "spread": 3
+     }
+    },
+    "mode": "line",
+    "start": [
+     -22,
+     -14
+    ],
+    "end": [
+     -10,
+     22
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -12,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 9,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    8,
+    0.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 8,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "length": 40,
+    "height": 1.0,
+    "thickness": 0.25,
+    "kind": "bars",
+    "colour": "#2d3033",
+    "points": [
+     [
+      -24.6,
+      -16.1
+     ],
+     [
+      -2.8,
+      -20.9
+     ],
+     [
+      19.1,
+      -23.5
+     ],
+     [
+      16.5,
+      21.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -2.8,
+    -20.9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.4,
+    "pillar": 0.6,
+    "colour": "#eadfc2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the park itself; layout of paths, pavilion and kiosk is plausible, not surveyed."
+ }
+}

@@ -1,0 +1,219 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/837276072",
+   "used": "prayer hall outline (bent six-point plan, about 38 x 20 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2026_Ramadan_Tafseer_at_the_Akure_First_Central_Mosque_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Taofeeq Abdulkareem",
+   "view": "interior",
+   "used": "only wall and window colours: cream-yellow painted walls, rectangular windows with dark steel grilles and green glass; no exterior photo found"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/akure.json",
+   "used": "white and green rendered hall, main dome, corner domes, two tall minarets"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9cf",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.26,
+    "plinth": 0.6,
+    "bands": "#3f8f6b",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#3f8f6b",
+      "height": 0.7,
+      "at": 5.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3c4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    11.8
+   ],
+   "params": {
+    "radius": 8.5,
+    "height": 8,
+    "profile": "onion",
+    "drum": 3,
+    "windows": 8,
+    "colour": "#2f7a58",
+    "drum_colour": "#f3f1e8",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    -14,
+    9,
+    11.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a58",
+    "drum_colour": "#f3f1e8"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    14,
+    -11,
+    11.8
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a58",
+    "drum_colour": "#f3f1e8"
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    15,
+    2,
+    11.8
+   ],
+   "params": {
+    "radius": 3,
+    "profile": "hemi",
+    "drum": 1.2,
+    "colour": "#2f7a58",
+    "drum_colour": "#f3f1e8"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -19,
+    12,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "style": "pencil",
+    "base_width": 3,
+    "colour": "#f3f1e8",
+    "trim": "#3f8f6b",
+    "cap_colour": "#2f7a58"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    12,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "pencil",
+    "base_width": 3,
+    "colour": "#f3f1e8",
+    "trim": "#3f8f6b",
+    "cap_colour": "#2f7a58"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 2,
+    "thickness": 0.3,
+    "pillarEvery": 6,
+    "colour": "#f3f1e8"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "akure-central-mosque",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found (only interiors); outline is real but dome, minaret and colour layout are from the brief"
+ }
+}

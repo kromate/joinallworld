@@ -1,0 +1,119 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "cg-stands",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -40,
+     -30
+    ],
+    "end": [
+     40,
+     -30
+    ],
+    "rows": 22,
+    "seatColour": "#a8483a",
+    "seatColours": [
+     "#a8483a",
+     "#2f5f9e"
+    ],
+    "blocks": 4,
+    "canopy": {
+     "height": 6,
+     "depth": 10,
+     "colour": "#e9e3d3",
+     "slopeDeg": 4,
+     "supports": 6
+    },
+    "backWall": 1.2,
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 30,
+    "radiusY": 22,
+    "startDeg": 200,
+    "endDeg": 340,
+    "rows": 18,
+    "seatColour": "#b83a32",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 30,
+    "radiusY": 22,
+    "startDeg": 10,
+    "endDeg": 170,
+    "tiers": [
+     {
+      "rows": 10,
+      "rise": 0.5,
+      "run": 0.85
+     },
+     {
+      "rows": 8,
+      "rise": 0.55,
+      "run": 0.85,
+      "gap": 2.5,
+      "lift": 2.5
+     }
+    ],
+    "seatColour": "#2f5f9e",
+    "under": "open",
+    "canopy": {
+     "height": 5,
+     "depth": 9,
+     "colour": "#dcdcdc"
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   80
+  ]
+ }
+}

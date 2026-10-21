@@ -1,0 +1,657 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "general-hospital-katsina",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:General_Hospital_Katsina_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anasskoko",
+   "view": "front",
+   "file": "/tmp/places-evidence/katsina/hosp1.jpg",
+   "used": "main entrance gate: ochre rendered portal, tall left pier, lower olive right pier with cap, wide cream lintel board (left blank), white steel gate leaves, low ochre ward blocks with parapets beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:General_Hospital_Katsina_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anasskoko",
+   "view": "front",
+   "used": "roundabout monument of tall ochre/olive slabs with oval cut-outs in front of the gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/593686043",
+   "used": "site is 544 x 432 m, far too large for the scene clamp; only a representative entrance and ward cluster is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.6,
+  "fit": "building"
+ },
+ "site": {
+  "ground": "sand",
+  "extent": [
+   120,
+   110
+  ],
+  "forecourt": "none"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-left-base",
+   "footprint": {
+    "rect": [
+     7.8,
+     6.6
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb878",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     6.2,
+     5.6
+    ]
+   },
+   "at": [
+    -12,
+    0
+   ],
+   "z0": 3.6,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb878",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left-louvre",
+   "footprint": {
+    "rect": [
+     0.8,
+     4.4
+    ]
+   },
+   "at": [
+    -8.6,
+    -0.2
+   ],
+   "z0": 3.8,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f6a52",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right-base",
+   "footprint": {
+    "rect": [
+     7.5,
+     6
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb878",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     6.0,
+     5
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "z0": 3.6,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8a4c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right-cap",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "z0": 7.6,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c88e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     32,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd8a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel-board",
+   "footprint": {
+    "rect": [
+     20,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.2
+   ],
+   "z0": 10.9,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9703a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    0,
+    12.4
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      0,
+      0
+     ],
+     [
+      10,
+      0,
+      0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "colour": "#7a7e80"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "flood-l",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -15.2,
+    -2.6
+   ],
+   "z0": 11.3,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d8d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flood-r",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    15.2,
+    -2.6
+   ],
+   "z0": 11.3,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d8d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -7.2,
+    -3.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.2,
+    "height": 3.4,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#f3efe4",
+    "leafColour": "#f3efe4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    7.6,
+    -3.6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.2,
+    "height": 3.4,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#f3efe4",
+    "leafColour": "#f3efe4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -15,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2.4,
+    "bottom": 1.0,
+    "colour": "#f2f2ee",
+    "frameColour": "#555555",
+    "posts": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8.5,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.2,
+    "bottom": 0.9,
+    "colour": "#1c1f1f",
+    "frameColour": "#333333",
+    "posts": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12.5,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 0.6,
+    "colour": "#1c1f1f",
+    "frameColour": "#333333",
+    "posts": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "palisade",
+    "colour": "#1c1c1c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.4,
+    "thickness": 0.4,
+    "colour": "#c8b890",
+    "kind": "wall"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ward-0",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -14,
+    24
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b46e",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bay": 3.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a868",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-2",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    14,
+    24
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b46e",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bay": 3.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a868",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    0,
+    64
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b46e",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a27a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 10,
+    "count": 3,
+    "spread": 10,
+    "line": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -6,
+    26,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 5,
+    "yaw": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "portal asymmetry, louvre side, olive right pier, orange lettering strip, open barred gates and sign boards in place; no windows/doors on piers, no rooftop steel frame, lettering is a plain strip, ward blocks are plain boxes without crenellation, camera framing crops the lintel more than the photo"
+ }
+}

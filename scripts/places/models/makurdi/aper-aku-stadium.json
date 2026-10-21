@@ -1,0 +1,338 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "aper-aku-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aper_Aku_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yosevgreen",
+   "view": "interior",
+   "file": "/tmp/places-evidence/makurdi/aper.jpg",
+   "used": "long covered main stand: dark deep cantilever roof with pale edge, slim ochre/yellow columns under it, red fascia band along the pitch edge, blue-seated terraces, green pitch, red-brown track edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1395626214",
+   "used": "nearest match is only a 32x10 m side building, not used for the footprint; bowl sized from the brief (150 x 115 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 180,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.9,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     80
+    ],
+    "height": 0.12,
+    "colour": "#a85b45"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "rect": [
+     106,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#2f8a3a"
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     -35
+    ],
+    "end": [
+     48,
+     -35
+    ],
+    "rows": 10,
+    "rise": 0.32,
+    "run": 0.9,
+    "firstHeight": 1.4,
+    "seatColours": [
+     "#2d5fa8",
+     "#3b7fd0"
+    ],
+    "blocks": 8,
+    "concreteColour": "#cfcac0",
+    "underColour": "#d9c23a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -35.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     0.5
+    ],
+    "height": 1.4,
+    "colour": "#b3302a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 6.5,
+      "colour": "#d9a62a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     0
+    ],
+    "end": [
+     46,
+     0
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    -43,
+    0
+   ],
+   "params": {
+    "rect": [
+     98,
+     16
+    ],
+    "z0": 6.8,
+    "height": 2.0,
+    "colour": "#2a2a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-edge",
+   "at": [
+    0,
+    -35.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     98,
+     0.4
+    ],
+    "z0": 6.8,
+    "height": 2.1,
+    "colour": "#e8e6df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tunnel",
+   "at": [
+    0,
+    -35.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     7,
+     2.5
+    ],
+    "height": 3.2,
+    "colour": "#2d5fa8"
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 62,
+    "radiusY": 44,
+    "startDeg": -35,
+    "endDeg": 35,
+    "rows": 8,
+    "rise": 0.3,
+    "run": 0.9,
+    "seatColours": [
+     "#2d5fa8",
+     "#d9c23a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#cfcac0",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 62,
+    "radiusY": 44,
+    "startDeg": 145,
+    "endDeg": 215,
+    "rows": 8,
+    "rise": 0.3,
+    "run": 0.9,
+    "seatColours": [
+     "#2d5fa8",
+     "#d9c23a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#cfcac0",
+    "facetDeg": 10
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    -52,
+    44,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Main stand is now a low dark cantilever with pale edge, ochre columns, red fascia and blue tunnel; roof still reads thin from this camera, end stands are generic arcs, photo is an interior view."
+ }
+}

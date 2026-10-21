@@ -1,0 +1,1679 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "laayoune",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "laayoune",
+    "climate": "desert",
+    "vernacular": "Saharan administrative city of Western Sahara: a small Spanish-colonial lower town (1940s-50s) of low white and ochre blocks south of the dry Saguia el-Hamra, surrounded by large post-1975 Moroccan planned districts of uniform 2-4 storey flat-roofed buildings in sand, ochre and terracotta-pink render, wide boulevards with sparse palms, a few pitched green-tiled roofs on mosques and civic buildings, and open sand lots everywhere.",
+    "wallColours": [
+      "#d9a77d",
+      "#c98a62",
+      "#e8d3b0",
+      "#f1e7d3",
+      "#b7694a",
+      "#cdbfa4"
+    ],
+    "roofColours": [
+      "#b3a898",
+      "#a8472e",
+      "#2e6b4a",
+      "#8f8a82"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "membrane"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "none"
+    ],
+    "ornament": "Moroccan-style arches and horseshoe arches over doors, zellige-style tile bands and green glazed-tile pyramidal roofs on mosque minarets and civic buildings; carved plaster-look geometric relief panels; low parapets with crenellated tops; blank sand-colour boundary walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Laayoune",
+        "what": "Spanish-built old lower town south of the Saguia el-Hamra river; St Francis of Assisi cathedral dates from Spanish period; Moroccan-era districts"
+      }
+    ]
+  },
+  "places": {
+    "laayoune-airport-laayoune-airport": {
+      "venueId": "laayoune-airport-laayoune-airport",
+      "city": "laayoune",
+      "name": "Laayoune Hassan I International Airport",
+      "archetype": "airport-terminal",
+      "subject": "A small desert airport terminal: a low sand-coloured block with a deep arched entrance canopy, a control tower and an apron beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2c6a0",
+          "#7e6e5a",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "No OSM polygon and nothing fetched described the terminal. Typed small regional terminal in Saharan sand tones. Low."
+    },
+    "laayoune-clinic": {
+      "venueId": "laayoune-clinic",
+      "city": "laayoune",
+      "name": "Moulay Hassan Ben Mehdi Hospital",
+      "archetype": "hospital",
+      "subject": "The regional hospital: a three-storey ochre-pink flat-roofed block with a covered ambulance bay and walled compound",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9a77d",
+          "#a8654a",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found describes it. Typed as a Moroccan Ministry of Health regional hospital in ochre render; low."
+    },
+    "laayoune-community-notices": {
+      "venueId": "laayoune-community-notices",
+      "city": "laayoune",
+      "name": "Cour d'appel (Court of Appeal)",
+      "archetype": "civic-palace",
+      "subject": "Laayoune court of appeal: a formal two-to-three storey civic block in cream render with a central arched portal, flags and a green-tile accent roof",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d3b0",
+          "#c9a77c",
+          "#f5ecd8"
+        ],
+        "roofColour": "#2e6b4a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "central arched portal"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "No source describes this building. Moroccan court buildings are typically cream/ochre with green-tile roofs and arches; this is that typed guess. Low."
+    },
+    "laayoune-community-voting-game": {
+      "venueId": "laayoune-community-voting-game",
+      "city": "laayoune",
+      "name": "Collège Anoual",
+      "archetype": "campus-block",
+      "subject": "A junior school: two-storey terracotta-pink classroom blocks around a sandy walled courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d79a76",
+          "#e8d3b0",
+          "#a8654a"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. Typed as a Moroccan state school from the city style. Low."
+    },
+    "laayoune-community-workshop": {
+      "venueId": "laayoune-community-workshop",
+      "city": "laayoune",
+      "name": "EST - Ecole Superieure de Technologie",
+      "archetype": "campus-block",
+      "subject": "The technology school: modern two-to-three storey sand-coloured teaching blocks with ribbon windows and a landscaped forecourt",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3c9a3",
+          "#6a8590",
+          "#f2e9d6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found. Typed as a newer higher-education school. Low."
+    },
+    "laayoune-market-game": {
+      "venueId": "laayoune-market-game",
+      "city": "laayoune",
+      "name": "Marche aux Bestiaux (livestock market)",
+      "archetype": "market-open",
+      "subject": "The livestock market: a large walled sand lot with pens of rails and fences, a few tin-roof shelters and loading ramps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "livestock pens"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b896",
+          "#8f8a82",
+          "#e0d2b2"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rail pens"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the Arabic/French name is known. A camel and livestock market in the Sahara is a pens-and-shelters site; low."
+    },
+    "laayoune-meal-stop": {
+      "venueId": "laayoune-meal-stop",
+      "city": "laayoune",
+      "name": "Cafe Rio",
+      "archetype": "restaurant",
+      "subject": "A street cafe: a small one-storey painted-render shop with a shaded terrace, plastic chairs and a striped awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e8d3b0",
+          "#2e6b8a",
+          "#f5ecd8"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found. A typed street cafe."
+    },
+    "laayoune-osm-node-11477229086": {
+      "venueId": "laayoune-osm-node-11477229086",
+      "city": "laayoune",
+      "name": "Coffee shop Colombia",
+      "archetype": "restaurant",
+      "subject": "A coffee shop on a corner: a two-storey ochre block with a glazed ground floor, a terrace and a flat roof sign band",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9a77d",
+          "#7e5a3e",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only an OSM point is known; made visually different from Cafe Rio by being taller, ochre and glass-fronted. Low."
+    },
+    "laayoune-osm-node-11757225441": {
+      "venueId": "laayoune-osm-node-11757225441",
+      "city": "laayoune",
+      "name": "University (OSM: uni)",
+      "archetype": "campus-block",
+      "subject": "A university campus: modern three-storey sand-coloured faculty blocks on a wide paved quad with a gate and flagpoles",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6cfa8",
+          "#b7694a",
+          "#f2e9d6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only an unnamed OSM point labelled uni. The campus looks are typed from city style and are guesses. Low."
+    },
+    "laayoune-osm-node-7178769989": {
+      "venueId": "laayoune-osm-node-7178769989",
+      "city": "laayoune",
+      "name": "Ville Marocaine de Laayoune (OSM landmark)",
+      "archetype": "park-landscape",
+      "subject": "A paved city plaza with a decorative gate, lamp posts and a flagpole at the edge of the town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "plaza with gate"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e8d3b0",
+          "#2e6b4a",
+          "#b7694a"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arched decorative gate"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only an OSM point with this name; what stands there is unknown. Typed as an arched monumental gate and plaza. Low."
+    },
+    "laayoune-osm-node-7178772089": {
+      "venueId": "laayoune-osm-node-7178772089",
+      "city": "laayoune",
+      "name": "Ville de Laayoune (OSM landmark)",
+      "archetype": "park-landscape",
+      "subject": "A wide palm-edged town square with benches, a central fountain and low pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "town square"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9a77d",
+          "#c9b896",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only an OSM point named Ville de Laayoune near the centre; contents unknown. Typed generic square; differs from the other plaza by having a fountain and pavilions instead of a gate. Low."
+    },
+    "laayoune-osm-node-8638080418": {
+      "venueId": "laayoune-osm-node-8638080418",
+      "city": "laayoune",
+      "name": "Cafe Mazagan",
+      "archetype": "restaurant",
+      "subject": "A cafe-restaurant: a single-storey terracotta-pink building with a wide front terrace and arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#c98a62",
+          "#e8d3b0",
+          "#2e6b4a"
+        ],
+        "roofColour": "#a8472e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only an OSM point. Typed guess; Moroccan arched cafe look. Low."
+    },
+    "laayoune-osm-way-1264837437": {
+      "venueId": "laayoune-osm-way-1264837437",
+      "city": "laayoune",
+      "name": "Lala Malika High School",
+      "archetype": "campus-block",
+      "subject": "A secondary school: a long two-storey terracotta-pink classroom block with a covered walkway facing a sand playground",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d79a76",
+          "#f1e7d3",
+          "#a8654a"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. Typed as a Moroccan state lycee; deliberately terracotta rather than the cream of the other schools. Low."
+    },
+    "laayoune-osm-way-1264986401": {
+      "venueId": "laayoune-osm-way-1264986401",
+      "city": "laayoune",
+      "name": "Marche 25 Mars",
+      "archetype": "market-hall",
+      "subject": "A neighbourhood covered market: a long single-storey hall with arched entrances, a shed roof and rows of stalls inside, with street vendors outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1c49c",
+          "#a8654a",
+          "#f1e7d3"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. Typed as a covered neighbourhood market. Low."
+    },
+    "laayoune-osm-way-1266314236": {
+      "venueId": "laayoune-osm-way-1266314236",
+      "city": "laayoune",
+      "name": "Marche aux legumes et fruits en gros (wholesale market)",
+      "archetype": "market-hall",
+      "subject": "A wholesale fruit and vegetable market: wide open-sided steel sheds with loading bays and parked lorries",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b9b2a3",
+          "#8f8a82",
+          "#d9d0bb"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "bus-bays",
+          "count": 6,
+          "note": "lorry loading bays"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. A wholesale market is typically steel sheds with loading bays; this is that guess, made different from the other markets. Low."
+    },
+    "laayoune-osm-way-1266320835": {
+      "venueId": "laayoune-osm-way-1266320835",
+      "city": "laayoune",
+      "name": "Hopital Militaire",
+      "archetype": "hospital",
+      "subject": "A military hospital: a walled compound with a three-storey pale ochre block, guarded gate and a helipad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d3b0",
+          "#8f8a82",
+          "#f5ecd8"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. Typed as a walled military medical block; deliberately different from the civilian regional hospital: pale, smaller, walled, with a helipad. Low."
+    },
+    "laayoune-osm-way-1279760117": {
+      "venueId": "laayoune-osm-way-1279760117",
+      "city": "laayoune",
+      "name": "Said Chengriha (OSM park)",
+      "archetype": "park-landscape",
+      "subject": "A fenced park on the southern edge of the city: sand and gravel paths, young palms and a few low shelters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "sandy park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1c49c",
+          "#c9b896",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "An OSM park polygon with a personal name; contents unknown. Low."
+    },
+    "laayoune-osm-way-1463167333": {
+      "venueId": "laayoune-osm-way-1463167333",
+      "city": "laayoune",
+      "name": "Stade 84",
+      "archetype": "stadium",
+      "subject": "A small municipal football ground with a single covered grandstand, a concrete terrace bank and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "small ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc6b0",
+          "#b7694a",
+          "#e8d3b0"
+        ],
+        "roofColour": "#a8472e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known; the name suggests 1984. Typed as a small municipal ground, kept clearly smaller than the other stadiums. Low."
+    },
+    "laayoune-osm-way-232401813": {
+      "venueId": "laayoune-osm-way-232401813",
+      "city": "laayoune",
+      "name": "Stade Sheikh Mohamed Laghdaf",
+      "archetype": "stadium",
+      "subject": "The city's main stadium: an oval concrete bowl with covered stands on both sides, a running track and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "main city stadium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d3c6a8",
+          "#b7694a",
+          "#f0e5cb"
+        ],
+        "roofColour": "#b8b0a0",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 24
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "Stade Sheikh Mohamed Laghdaf is used by football club Jeunesse Massira for training and games"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Wikipedia only names it as the home of Jeunesse Massira; no appearance or capacity was found. Bigger and more developed than Stade 84 and Moulay Rachid by guess. Low."
+    },
+    "laayoune-osm-way-232401859": {
+      "venueId": "laayoune-osm-way-232401859",
+      "city": "laayoune",
+      "name": "Stade Moulay Rachid",
+      "archetype": "stadium",
+      "subject": "A mid-size stadium: a rectangular concrete stand on one side, grass embankments on the others and four floodlight masts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 95,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "one-sided stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc6b0",
+          "#e8d3b0",
+          "#a8654a"
+        ],
+        "roofColour": "#2e6b4a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. A typed medium ground with one stand and a green roof. Low."
+    },
+    "laayoune-osm-way-316763285": {
+      "venueId": "laayoune-osm-way-316763285",
+      "city": "laayoune",
+      "name": "Lycee Ibn Battouta",
+      "archetype": "campus-block",
+      "subject": "A lycee: a long three-storey cream-and-ochre block with a central arched entrance, flagpoles and a sand courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 75,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d3b0",
+          "#c9a77c",
+          "#f5ecd8"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched entrance"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. Typed; made taller and cream compared to the two other schools. Low."
+    },
+    "laayoune-osm-way-607707452": {
+      "venueId": "laayoune-osm-way-607707452",
+      "city": "laayoune",
+      "name": "Mosquee Arraha",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood Moroccan mosque: a square prayer hall with a flat roof and a tall square minaret topped by a small green-tile pyramid",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "Maghrebi square minaret",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f1e7d3",
+          "#2e6b4a",
+          "#c9a77c"
+        ],
+        "roofColour": "#2e6b4a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "square-section minaret about 25 m, green tile top"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only the OSM name is known. Typed from the Moroccan mosque pattern: square minaret (not octagonal or round), green pyramidal tile cap, flat or lightly domed hall. This differs from Algiers and Cairo mosques by minaret type. Low."
+    },
+    "laayoune-quiet-reflection": {
+      "venueId": "laayoune-quiet-reflection",
+      "city": "laayoune",
+      "name": "Catholic Church of Saint Francis of Assisi (Cathedral)",
+      "archetype": "church-modern",
+      "subject": "The Spanish-era cathedral of Laayoune: a white painted church with a plain gabled hall and a slender front bell tower topped by a cross, in a sandy walled plot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable",
+        "variant": "1950s mid-century church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f3eee2",
+          "#d9b88f",
+          "#c9a77c"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "slender tower with cross"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s (Spanish period)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "St. Francis of Assisi cathedral constructed during the Spanish period, in use by a few Catholic missionaries"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Wikipedia confirms only the Spanish-era date and current use. The white walls, gable form and tower are typed guesses. The facade is plain; I could not verify the unusual details sometimes described. Low."
+    },
+    "laayoune-recreation": {
+      "venueId": "laayoune-recreation",
+      "city": "laayoune",
+      "name": "Ali (OSM park)",
+      "archetype": "park-landscape",
+      "subject": "An open sandy recreation area on the northern outskirts with a few palms, benches and a low fenced pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "sand recreation area"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1c49c",
+          "#c9b896",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Only an OSM park name (ali); at 27.25 N it is well north of the town. A sand lot with minimal furniture is a placeholder. Low."
+    },
+    "laayoune-transit": {
+      "venueId": "laayoune-transit",
+      "city": "laayoune",
+      "name": "Gare routiere (bus station)",
+      "archetype": "transport-station",
+      "subject": "The bus station: a low terminal building with ticket hall, a long flat canopy over bus bays and a sand-and-asphalt yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1c49c",
+          "#b7694a",
+          "#f1e7d3"
+        ],
+        "roofColour": "#b3a898",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laayoune",
+          "what": "city style only (sand/ochre Moroccan-Saharan render, Spanish lower town); no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found. Typed as a small intercity bus terminal. Low."
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: game venue with no real counterpart and no OSM match; modest 24 x 14 m single-storey gable hall in Kano cream render with green trim"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#5f8f6a"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 22,
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "veranda-front",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 3.2,
+    "height": 2.8,
+    "thickness": 0.2,
+    "columns": 6,
+    "colour": "#bfb9aa"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    -7,
+    -12,
+    1.2
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.5,
+    "colour": "#5f8f6a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    11,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#bfb9aa"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     6
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "community-house"
+}

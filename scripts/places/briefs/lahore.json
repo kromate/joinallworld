@@ -1,0 +1,1716 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lahore",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lahore",
+    "climate": "savanna",
+    "vernacular": "Hot semi-arid/monsoon city of dense flat-roofed 2-4 storey brick and concrete houses and shop-houses, plastered in cream, ochre, pink and grey with painted shop signs; Mughal and Sikh monuments in red sandstone, kiln brick and white marble in the old city; colonial red-brick civic buildings along the Mall; newer suburbs of walled villas and glass-fronted malls and hospitals.",
+    "wallColours": [
+      "#a24f3a",
+      "#b8714f",
+      "#e3d5b6",
+      "#d6b36e",
+      "#cfc7b6",
+      "#ece6d8",
+      "#c98b86"
+    ],
+    "roofColours": [
+      "#a9a39a",
+      "#8e8a82",
+      "#a6573d",
+      "#d8d2c4"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "brick",
+      "painted-render",
+      "render",
+      "concrete",
+      "sandstone",
+      "marble",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Mughal cusped (multifoil) arches, jharokha balconies, chhatri kiosks, brick and stone fretwork screens, red sandstone with white marble inlay, glazed blue and yellow kashi-kari tilework, painted floral fresco on old-city fronts; colonial red-brick Gothic and Indo-Saracenic arcades; hand-painted signboards on bazaar shops.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Lahore",
+        "what": "Lahore has more Mughal monuments than Delhi or Agra; Fort, Shalimar, Badshahi Mosque, Wazir Khan; Garden City; BSh semi-arid climate; colonial Raj capital of Punjab"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Shalimar_Gardens,_Lahore",
+        "what": "brick walls and marble pools of a Mughal charbagh"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Shrine_of_Mian_Mir",
+        "what": "red sandstone courtyard, white marble plinth, pink sandstone mosque, grey granite dome"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hazuri_Bagh",
+        "what": "carved marble pillars with cusped arches in Sikh-era baradari"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gaddafi_Stadium",
+        "what": "red hand-laid brick stands and arches by Nayyar Ali Dada, 1990s"
+      }
+    ]
+  },
+  "places": {
+    "lahore-airport-lahore-airport": {
+      "venueId": "lahore-airport-lahore-airport",
+      "city": "lahore",
+      "name": "Allama Iqbal International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 2003 terminal building seen from the forecourt: a very long two-storey cream block with a deep projecting entrance canopy, arched Mughal-inspired bays, a multi-storey car park on the old lawn and a control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 480,
+        "depth_m": 125,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc4",
+          "#5c7380",
+          "#b7a98a"
+        ],
+        "roofColour": "#aaa69e",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "arches",
+          "count": 12,
+          "note": "Mughal-inspired arched bays"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 7
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "three-storey parking on the former front lawn"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "mughal",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Allama_Iqbal_International_Airport",
+          "what": "new terminal inaugurated March 2003; \"Mughal architectural features\"; seven air bridges; 23 remote stands; three-storey parking built on the front lawn; GilBartolome expansion designed with jasmine-flower arms"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM terminal footprint about 484x126 m"
+        }
+      ],
+      "notes": "Size is measured from OSM; the Mughal arches and the 7 air bridges are from Wikipedia. Cream/glass colours are typed. A GilBartolome expansion due around late 2026 may change the building, not modelled."
+    },
+    "lahore-clinic": {
+      "venueId": "lahore-clinic",
+      "city": "lahore",
+      "name": "Lahore General Hospital",
+      "archetype": "hospital",
+      "subject": "Lahore General Hospital on Ferozepur Road, a large campus of 1950s brick and plastered blocks with open verandas",
+      "form": {
+        "footprint": "U",
+        "width_m": 124,
+        "depth_m": 65,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e0d4b6",
+          "#a24f3a",
+          "#8e8a82"
+        ],
+        "roofColour": "#a6a199",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lahore_General_Hospital",
+          "what": "opened 1958/59, 1,600 beds, 256-kanal site on Ferozepur Road; no architecture description"
+        }
+      ],
+      "notes": "Only date, size of campus and bed count are sourced. Block forms and colours are typed from 1950s Pakistani public hospitals."
+    },
+    "lahore-community-notices": {
+      "venueId": "lahore-community-notices",
+      "city": "lahore",
+      "name": "Pakistan Cricket Board",
+      "archetype": "office-low",
+      "subject": "the PCB headquarters at Gaddafi Stadium: a five-storey modern office block with red brick and glass beside the stadium stands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 22,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a24f3a",
+          "#6f8795",
+          "#d7d0c1"
+        ],
+        "roofColour": "#aaa69e",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pakistan_Cricket_Board",
+          "what": "OSM/Wikipedia: PCB building about 102x23 m, 20 m high"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gaddafi_Stadium",
+          "what": "2024-25 upgrade added a new pavilion building and a new PCB head office; stadium stands are red hand-laid brickwork with arches"
+        }
+      ],
+      "notes": "Footprint and 20 m height are from OSM. Red-brick and glass finish are inferred from the adjoining stadium refit; verify."
+    },
+    "lahore-community-voting-game": {
+      "venueId": "lahore-community-voting-game",
+      "city": "lahore",
+      "name": "Gulshan Marriage Hall",
+      "archetype": "civic-small",
+      "subject": "a Pakistani shadi (wedding) hall: a wide two-storey box with a lit portico, bright painted facade and a large car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6cfa0",
+          "#a24f5e",
+          "#cfc7b6"
+        ],
+        "roofColour": "#a9a59c",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "what": "city context; no source describes this hall"
+        }
+      ],
+      "notes": "Wedding halls in Lahore are typed as decorated event boxes. No source found for this one."
+    },
+    "lahore-community-workshop": {
+      "venueId": "lahore-community-workshop",
+      "city": "lahore",
+      "name": "University College Lahore",
+      "archetype": "campus-block",
+      "subject": "University College Lahore, a compact three-storey brick-and-render academic block with arched verandas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 29,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b05a40",
+          "#e2d5b6",
+          "#8e8a82"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: university building about 76x29 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894626",
+          "what": "University College Lahore"
+        }
+      ],
+      "notes": "Only the footprint is known."
+    },
+    "lahore-market-game": {
+      "venueId": "lahore-market-game",
+      "city": "lahore",
+      "name": "Anarkali Bazar",
+      "archetype": "market-open",
+      "subject": "a stretch of the old Anarkali Bazaar: a narrow pedestrian street lined with joined three-storey shop-fronts, hand-painted signboards, hanging awnings and street stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8593f",
+          "#dccfae",
+          "#6a7b86"
+        ],
+        "roofColour": "#9f9a91",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 16
+        },
+        {
+          "id": "awning",
+          "count": 14
+        },
+        {
+          "id": "shopfront",
+          "count": 10
+        },
+        {
+          "id": "signage-board",
+          "count": 12
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Anarkali_Bazaar",
+          "what": "one of the oldest surviving markets in the subcontinent, at least 200 years; Old and New Anarkali; Aibak mausoleum nearby; endangered 2020 WMF watch"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "what": "old-city shop-fronts and havelis in brick"
+        }
+      ],
+      "notes": "Wikipedia gives no visual description. The look (tight lanes, brick/plaster shop fronts with painted signs and awnings) is the general character of Lahore bazaars. Scene shows a portion of a long street."
+    },
+    "lahore-meal-stop": {
+      "venueId": "lahore-meal-stop",
+      "city": "lahore",
+      "name": "Services Club",
+      "archetype": "restaurant",
+      "subject": "Services Club in Lahore Cantonment: a long low colonial-style club with a verandah, hipped roof and garden terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 47,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#efe6d0",
+          "#a24f3a",
+          "#6f6a60"
+        ],
+        "roofColour": "#a6553c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: community_centre footprint about 48x36 m"
+        }
+      ],
+      "notes": "The club is a cantonment institution, assumed to be a colonial-style building; no source fetched. Typed."
+    },
+    "lahore-osm-node-1374726049": {
+      "venueId": "lahore-osm-node-1374726049",
+      "city": "lahore",
+      "name": "Model Town Central Park",
+      "archetype": "park-landscape",
+      "subject": "a large Model Town park with lawns, big shade trees, a lake side and paved walks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d6cdb4",
+          "#7f9a6a",
+          "#a39b88"
+        ],
+        "roofColour": "#c7bfa8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "what": "Lahore is the \"City of Gardens\""
+        }
+      ],
+      "notes": "Model Town was a 1920s garden suburb; no source describes the park itself."
+    },
+    "lahore-osm-node-3228646369": {
+      "venueId": "lahore-osm-node-3228646369",
+      "city": "lahore",
+      "name": "Fauji Foundation Hospital",
+      "archetype": "hospital",
+      "subject": "a four-storey private hospital with a glazed entrance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 86,
+        "depth_m": 65,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe4d3",
+          "#6a8a9a",
+          "#a9a59d"
+        ],
+        "roofColour": "#a8a59d",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building about 86x66 m, no tags"
+        }
+      ],
+      "notes": "Footprint only. Fauji Foundation hospitals are military-welfare hospitals; the facade is typed."
+    },
+    "lahore-osm-node-674141730": {
+      "venueId": "lahore-osm-node-674141730",
+      "city": "lahore",
+      "name": "Social Security Hospital",
+      "archetype": "hospital",
+      "subject": "a public hospital: plain concrete and render blocks in a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e0d6bd",
+          "#a9a59d",
+          "#8c887f"
+        ],
+        "roofColour": "#a5a199",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "no building data"
+        }
+      ],
+      "notes": "No source; typed from a typical Lahore public hospital."
+    },
+    "lahore-osm-node-7116277007": {
+      "venueId": "lahore-osm-node-7116277007",
+      "city": "lahore",
+      "name": "Shalimar Gardens",
+      "archetype": "park-landscape",
+      "subject": "the Shalimar Gardens (Mughal charbagh, 1641): three stepped terraces inside a high brick wall, marble cascades and fountain-lined pools, a central marble pavilion over the water and corner minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 658,
+        "depth_m": 258,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "charbagh-terraces"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "marble",
+        "colours": [
+          "#a24f3a",
+          "#ece6d8",
+          "#9aa07c"
+        ],
+        "roofColour": "#d8d2c4",
+        "windows": "arched",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 3,
+          "note": "three terraces each 4-5 m above the next"
+        },
+        {
+          "id": "fountain",
+          "count": 40,
+          "note": "414 fountains in total"
+        },
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "baradari and Sawan Bhadon pavilions"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high brick wall with fretwork"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "small corner minarets"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "mughal",
+      "era": "1640s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shalimar_Gardens,_Lahore",
+          "what": "rectangle 658x258 m, three terraces 4-5 m high, 414 fountains, marble pools, five cascades, high decorated brick wall, corner minarets, pavilions"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "what": "built 1641 under Shah Jahan"
+        }
+      ],
+      "notes": "Show the middle terrace: a long rectangular marble tank with fountains, a pavilion over the cascade, symmetrical paths and trees, enclosed by the red-brick wall. The whole garden is far larger than the 120 m scene."
+    },
+    "lahore-osm-node-8955079625": {
+      "venueId": "lahore-osm-node-8955079625",
+      "city": "lahore",
+      "name": "Krishna Temple",
+      "archetype": "temple-asian",
+      "subject": "a small Hindu temple with a tapering shikhara tower over the sanctum on a plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f1e8d5",
+          "#c9753b",
+          "#a24f3a"
+        ],
+        "roofColour": "#e6dac3",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "finial on the tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "south-asian",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Krishna_Mandir,_Lahore",
+          "what": "Hindu temple, Nagara style, renovated 2005-06; the page does not describe the building"
+        }
+      ],
+      "notes": "The Lahore Krishna Mandir is Nagara style; the shikhara and whitewashed look are assumed. Verify before relying."
+    },
+    "lahore-osm-node-9922988888": {
+      "venueId": "lahore-osm-node-9922988888",
+      "city": "lahore",
+      "name": "S-60",
+      "archetype": "park-landscape",
+      "subject": "a landscaped public park with lawns, shade trees and paved paths",
+      "form": {
+        "footprint": "rect",
+        "width_m": 187,
+        "depth_m": 123,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d6cdb4",
+          "#7f9a6a",
+          "#a39b88"
+        ],
+        "roofColour": "#c7bfa8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "leisure=park of about 187x123 m"
+        }
+      ],
+      "notes": "Name \"S-60\" is not identifiable; typed park."
+    },
+    "lahore-osm-way-172700972": {
+      "venueId": "lahore-osm-way-172700972",
+      "city": "lahore",
+      "name": "National Hockey Stadium",
+      "archetype": "stadium",
+      "subject": "Lahore National Hockey Stadium, an open two-tier concrete terraced bowl around an artificial pitch with floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 208,
+        "depth_m": 163,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "red-brick",
+        "colours": [
+          "#bdb8ac",
+          "#a24f3a",
+          "#8e8a82"
+        ],
+        "roofColour": "#9c9992",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Hockey_Stadium,_Lahore",
+          "what": "45,000-capacity terraced hockey stadium, AstroTurf, in the Nishtar Park Sports Complex beside Punjab Stadium"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: 2 levels, 20 m, footprint about 208x163 m"
+        }
+      ],
+      "notes": "Uncovered terraces are sourced (\"largest terrace hockey stadium in the world\"); finish is typed. Keep it open, no roof, unlike Gaddafi."
+    },
+    "lahore-osm-way-27736338": {
+      "venueId": "lahore-osm-way-27736338",
+      "city": "lahore",
+      "name": "Punjab Stadium",
+      "archetype": "stadium",
+      "subject": "Punjab Stadium, a football ground in Nishtar Park Sports Complex with a covered main stand and an athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 212,
+        "depth_m": 153,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#2f6a4a",
+          "#8f8b82"
+        ],
+        "roofColour": "#9f9c95",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Punjab_Stadium",
+          "what": "disambiguation: a football stadium in Lahore"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: building start_date 2003, footprint about 212x153 m"
+        }
+      ],
+      "notes": "Only that it is a football stadium next to the hockey stadium is sourced."
+    },
+    "lahore-osm-way-291684963": {
+      "venueId": "lahore-osm-way-291684963",
+      "city": "lahore",
+      "name": "Gulshan-e-Iqbal Park",
+      "archetype": "park-landscape",
+      "subject": "a 67-acre park with a big artificial lake, children rides, shade trees and winding paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d6cdb4",
+          "#7f9a6a",
+          "#a39b88"
+        ],
+        "roofColour": "#c7bfa8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gulshan-e-Iqbal_Park",
+          "what": "67+ acres, large artificial lake, rides, mini-zoo; no buildings described"
+        }
+      ],
+      "notes": "Lake, lawns and rides are sourced; the pavilions and kiosks are typed. Shows the lake edge as the main scene."
+    },
+    "lahore-osm-way-291807527": {
+      "venueId": "lahore-osm-way-291807527",
+      "city": "lahore",
+      "name": "Masjid Shuhada",
+      "archetype": "mosque-domed",
+      "subject": "Masjid Shuhada on the Mall, a large mosque with a central dome, side domes and two minarets in cream and red",
+      "form": {
+        "footprint": "rect",
+        "width_m": 59,
+        "depth_m": 46,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "sandstone",
+        "colours": [
+          "#ece3cd",
+          "#b05a40",
+          "#c4b490"
+        ],
+        "roofColour": "#d4cdbc",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 9
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "mughal",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6801883",
+          "what": "Masjid Shuhada, Lahore"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: mosque about 59x46 m"
+        }
+      ],
+      "notes": "No architecture source found. Typed as a Mughal-revival Punjab mosque with three domes and two minarets."
+    },
+    "lahore-osm-way-611956194": {
+      "venueId": "lahore-osm-way-611956194",
+      "city": "lahore",
+      "name": "Bibi Pak Daman",
+      "archetype": "shrine-small",
+      "subject": "the Bibi Pak Daman shrine complex: a Sufi tomb with green-draped chamber under a small dome, courtyard, shop-lined approach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 41,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "marble",
+        "colours": [
+          "#eee8d8",
+          "#2f7a4a",
+          "#c8bfa5"
+        ],
+        "roofColour": "#e6dfcc",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "mughal",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bibi_Pak_Daman",
+          "what": "shrine and mausoleum, traditionally 11th century, green-draped shrine chamber, shop-lined approach street"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM tomb about 55x41 m"
+        }
+      ],
+      "notes": "Wikipedia has only a green-draped chamber and the shopping approach. The white-marble + green look is an assumption common to Punjab Sufi shrines."
+    },
+    "lahore-osm-way-70017485": {
+      "venueId": "lahore-osm-way-70017485",
+      "city": "lahore",
+      "name": "Lahore University of Management Sciences",
+      "archetype": "campus-block",
+      "subject": "LUMS: five-storey red-brick academic blocks with deep arcades and arched windows around landscaped courts",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 55,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#a24f3a",
+          "#c9c0ae",
+          "#6c5a4c"
+        ],
+        "roofColour": "#a5a199",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 10
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lahore_University_of_Management_Sciences",
+          "what": "100-acre campus; Suleman Dawood School of Business five storeys, Babar Ali School of Science and Engineering five storeys; navy/charcoal/white colours"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "campus about 871x582 m"
+        }
+      ],
+      "notes": "Storeys and campus scale are sourced. The red brick and arcade look is from general knowledge of the campus (not in the fetched page); shown as one block of the campus."
+    },
+    "lahore-osm-way-772249714": {
+      "venueId": "lahore-osm-way-772249714",
+      "city": "lahore",
+      "name": "The Millennium Universal College",
+      "archetype": "campus-block",
+      "subject": "a five-storey white-roofed college building with a wide front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 169,
+        "depth_m": 139,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#8a6a4a",
+          "#b2ada2"
+        ],
+        "roofColour": "#eeeeee",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: 5 building levels, white roof, footprint about 169x139 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Millennium_Universal_College",
+          "what": "wikipedia entry referenced by OSM"
+        }
+      ],
+      "notes": "Levels and white roof are from OSM; facade is a guess."
+    },
+    "lahore-osm-way-778472693": {
+      "venueId": "lahore-osm-way-778472693",
+      "city": "lahore",
+      "name": "Packages Mall",
+      "archetype": "mall",
+      "subject": "Packages Mall in Walton: a very large three-storey modern mall with a glass-and-render front and big forecourt parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 350,
+        "depth_m": 200,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#5f7f93",
+          "#b9b3a6"
+        ],
+        "roofColour": "#c4c0b6",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Packages_Mall",
+          "what": "three floors, 200+ stores, opened 2017, Walton, one of the largest malls in Pakistan"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint about 352x204 m"
+        }
+      ],
+      "notes": "Floors/opening/size sourced; finish typed. Bigger than the scene so show the main entrance end."
+    },
+    "lahore-osm-way-855746276": {
+      "venueId": "lahore-osm-way-855746276",
+      "city": "lahore",
+      "name": "University of Engineering and Technology, New Campus",
+      "archetype": "campus-block",
+      "subject": "UET's new campus: low brick-and-concrete academic buildings around a long mall with arcades",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b5694a",
+          "#d4ccba",
+          "#8e8a82"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "no OSM building found at this point"
+        }
+      ],
+      "notes": "No building data found; typed from public university campuses in Punjab."
+    },
+    "lahore-quiet-reflection": {
+      "venueId": "lahore-quiet-reflection",
+      "city": "lahore",
+      "name": "Shrine of Mian Mir",
+      "archetype": "shrine-small",
+      "subject": "the 1640 Mian Mir mausoleum: a small square white-marble-plinth tomb with a grey granite dome and deep eaves in a walled red-sandstone courtyard, a pink-sandstone mosque and gateway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "dome",
+        "variant": "mausoleum-courtyard"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "marble",
+        "colours": [
+          "#b56a52",
+          "#ece6d8",
+          "#8a8c8f"
+        ],
+        "roofColour": "#8f9396",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "grey granite dome with chajja eaves"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "60 m square walled courtyard"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "pink sandstone gateway"
+        },
+        {
+          "id": "arches",
+          "count": 5,
+          "note": "five short domes of the mosque"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "mughal",
+      "era": "1640s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shrine_of_Mian_Mir",
+          "what": "completed 1640 by Dara Shikoh, tomb in a 200 ft quadrangle, 54 ft white marble plinth with steps, grey granite dome with chajja, red sandstone courtyard, pink sandstone mosque with five short domes and gateway, walls with dervish cells"
+        }
+      ],
+      "notes": "Show the tomb on its marble plinth with the dome and walls of cells and the mosque behind. Tomb footprint is about 16 m including plinth (54 ft); OSM 9x9 is the inner chamber."
+    },
+    "lahore-recreation": {
+      "venueId": "lahore-recreation",
+      "city": "lahore",
+      "name": "Hazuri Bagh",
+      "archetype": "park-landscape",
+      "subject": "Hazuri Bagh's marble baradari: a square carved-marble pavilion with cusped arches in a lawn between the Badshahi Mosque and the Fort",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "baradari-lawn"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#ece6d8",
+          "#c8bfa5",
+          "#a24f3a"
+        ],
+        "roofColour": "#e0d9c7",
+        "windows": "arched",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "1818 baradari, upper storey lost in 1932"
+        },
+        {
+          "id": "arches",
+          "count": 12,
+          "note": "cusped arches on carved marble pillars"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "fifteen steps to the basement"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "mughal",
+      "era": "1810s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hazuri_Bagh",
+          "what": "Ranjit Singh garden; baradari of 1818, 45 ft square, carved marble pillars and cusped arches, mirrored ceiling, top storey collapsed 1932; bounded by Lahore Fort, Badshahi Mosque, Samadhi of Ranjit Singh and Roshnai Gate"
+        }
+      ],
+      "notes": "The pavilion is in the centre of a formal lawn with paths and a few trees; the red sandstone Badshahi Mosque and the Fort wall are the backdrop and not modelled."
+    },
+    "lahore-transit": {
+      "venueId": "lahore-transit",
+      "city": "lahore",
+      "name": "Jallo Manhala",
+      "archetype": "transport-station",
+      "subject": "a small colonial-style railway station: single brick platform building with a verandah, a platform canopy and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a24f3a",
+          "#e6dcc4",
+          "#6a655b"
+        ],
+        "roofColour": "#8a4a38",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q18516978",
+          "what": "Wikidata: railway station in Pakistan"
+        }
+      ],
+      "notes": "Only that it is a small railway station is known."
+    }
+  }
+}

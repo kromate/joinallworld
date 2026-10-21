@@ -1,0 +1,1019 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ota",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ota",
+    "climate": "rainforest",
+    "vernacular": "Fast-growing Lagos-fringe industrial and university town in Ogun State: 1-3 storey cement-block houses and walk-up flats plastered and painted in cream, pale yellow, blue and green under rust-brown or coloured long-span corrugated-iron roofs, big factory sheds along the Lagos-Abeokuta and Idiroko roads, high compound walls with gates, laterite roads and palm and broadleaf trees. Trading blocks in the Sango markets run tightly packed.",
+    "wallColours": [
+      "#eadfc6",
+      "#e6cf8a",
+      "#f2eee6",
+      "#9db9c9",
+      "#a8c3a0",
+      "#b0603f",
+      "#a9a59d"
+    ],
+    "roofColours": [
+      "#8d5a3b",
+      "#9c3b2f",
+      "#3f7a52",
+      "#8e979c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Painted perimeter walls and gates; breeze-block screens and sun-shading fins on newer blocks; hand-painted shop boards; occasional Yoruba carved veranda posts on older houses and the Olota palaces; arched pointed windows on churches and mosques; factory sheds with ribbed metal cladding.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ota,_Ogun_State",
+        "what": "town context: Sango-Ota markets, factories along Lagos-Abeokuta and Idiroko roads, 1842 St James mission buildings, Olota palaces, Okemale mosque, Canaanland, Covenant and Bells universities"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Lagos",
+        "what": "regional vernacular: cement-block compounds, corrugated iron roofing, painted render (Lagos fringe, applied by analogy)"
+      }
+    ]
+  },
+  "places": {
+    "canaanland-worship": {
+      "venueId": "canaanland-worship",
+      "city": "ota",
+      "name": "Canaanland Worship Centre",
+      "archetype": "church-modern",
+      "subject": "Faith Tabernacle, the Winners' Chapel mother church at Canaanland: an immense clear-span auditorium with a long low frontage, wide entrance wings and a vast shallow roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e5da",
+          "#6f8da3",
+          "#b9bbbb"
+        ],
+        "roofColour": "#a9adaf",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "wide entrance canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "huge surrounding parking"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "ventilation bands"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Canaanland",
+          "what": "Faith Tabernacle seats about 50,000, built in ~10 months and dedicated in 1999, largest church building claim"
+        },
+        {
+          "url": "https://livinspaces.net/design-stories/highlights/by-faith-the-faith-theatre-project-is-100000-seat-stadium-like-sanctuary-unveiled-by-living-faith-church/",
+          "what": "search summary: ceiling 25 m, ~100 m per wing, column-free central span, seating ~50,400"
+        }
+      ],
+      "notes": "Recognisable chiefly by scale: seating ~50,000-50,400, roughly 25 m ceiling and about 100 m per wing, column-free central span (search-result summaries). Exact plan, facade finish and colours were not described in any source; shown as a large pale-render block with a shallow metal roof. The Nairobi Winners' Chapel is hexagonal and is a different building. Render the recognisable frontage portion (clamped to 120 m)."
+    },
+    "covenant-university": {
+      "venueId": "covenant-university",
+      "city": "ota",
+      "name": "Covenant University",
+      "archetype": "campus-block",
+      "subject": "Covenant University campus in Canaanland: mid-rise teaching blocks and a three-storey library around green lawns, with halls of residence beyond",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#9db9c9",
+          "#8e7b66"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "library plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Covenant_University",
+          "what": "opened 21 October 2002 in Canaanland, Ota"
+        },
+        {
+          "url": "https://www.timeshighereducation.com/world-university-rankings/covenant-university",
+          "what": "purpose-built campus; three-storey library (Centre for Learning Resources); about ten halls of residence"
+        }
+      ],
+      "notes": "Only the three-storey Centre for Learning Resources and ten residence halls are described in sources; look and colours are typed from the regional style. The game variant is a dome campus, but no source mentions a dome, so none is shown."
+    },
+    "bells-university": {
+      "venueId": "bells-university",
+      "city": "ota",
+      "name": "Bells University of Technology",
+      "archetype": "campus-block",
+      "subject": "Bells University campus at Km 8 Idiroko Road: low and mid-rise teaching blocks, a conference centre and a postgraduate college building on a lawn campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2eee6",
+          "#9db9c9",
+          "#b0603f"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bells_University_of_Technology",
+          "what": "Km 8 Idiroko Road, Benja village, Ota"
+        },
+        {
+          "url": "https://www.bellsuniversity.edu.ng/chief-olusegun-obasanjo-commissions-building-donated-by-asiwaju-onafowokan/",
+          "what": "donor-funded postgraduate college building commissioned 2024"
+        }
+      ],
+      "notes": "Sources list donor buildings (postgraduate college, conference centre, ICT centre, library blocks) but no appearance; typed from the regional style."
+    },
+    "ota-border-kitchen": {
+      "venueId": "ota-border-kitchen",
+      "city": "ota",
+      "name": "Border Road Kitchen",
+      "archetype": "restaurant",
+      "subject": "A roadside buka eatery on the border road to Idiroko: a one-storey block with a covered open eating area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6cf8a",
+          "#3f7a52",
+          "#f2eee6"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue, not a verified real business."
+    },
+    "ota-civic-hall": {
+      "venueId": "ota-civic-hall",
+      "city": "ota",
+      "name": "Ota Civic Hall",
+      "archetype": "civic-small",
+      "subject": "A local-government town hall in Ota: a single-storey red-brick-and-render hall with a covered porch and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a4573d",
+          "#f2eee6",
+          "#7a6a5a"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ota,_Ogun_State",
+          "what": "Ota is the seat of Ado-Odo/Ota LGA; no civic hall building is described"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue, not tied to a documented real building."
+    },
+    "ota-community-clinic": {
+      "venueId": "ota-community-clinic",
+      "city": "ota",
+      "name": "Ota Community Clinic",
+      "archetype": "hospital",
+      "subject": "A community primary-health clinic: a low painted block with a veranda and ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2eee6",
+          "#3f7a52",
+          "#9db9c9"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank cross board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "ota-evening-garden": {
+      "venueId": "ota-evening-garden",
+      "city": "ota",
+      "name": "Ota Evening Garden",
+      "archetype": "park-landscape",
+      "subject": "A small evening garden with paved paths, a pavilion, a fountain and palms behind a low wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a9a59d",
+          "#a8c3a0",
+          "#e6cf8a"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "string lights"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "ota-industry-walk": {
+      "venueId": "ota-industry-walk",
+      "city": "ota",
+      "name": "Ota Industry Walk",
+      "archetype": "industrial",
+      "subject": "A stretch of the Sango-Ota factory belt: ribbed metal factory sheds with loading bays, a water tank and a chimney behind a gated wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "sawtooth"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#a9a59d",
+          "#3f7a52",
+          "#f2eee6"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ota,_Ogun_State",
+          "what": "industrial areas line the Lagos-Abeokuta and Idiroko roads; factories since the early 1970s (breweries, food, pharma, vehicles)"
+        }
+      ],
+      "notes": "Representative factory, not a specific company plant (no brands). Typed from the town's industrial profile."
+    },
+    "ota-neighbourhood-park": {
+      "venueId": "ota-neighbourhood-park",
+      "city": "ota",
+      "name": "Ota Neighbourhood Park",
+      "archetype": "park-landscape",
+      "subject": "A small neighbourhood park with swings, benches under trees, a shade pavilion and a paved central path",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8c3a0",
+          "#a9a59d",
+          "#b0603f"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "ota-polling": {
+      "venueId": "ota-polling",
+      "city": "ota",
+      "name": "Ota Civic Polling Centre",
+      "archetype": "civic-small",
+      "subject": "A polling centre in a primary-school-style classroom block with a covered verandah and a painted gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc6",
+          "#3f7a52",
+          "#8d5a3b"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "ota-salon": {
+      "venueId": "ota-salon",
+      "city": "ota",
+      "name": "Ota Junction Salon",
+      "archetype": "shophouse",
+      "subject": "A hair salon in a roadside row at a junction: a two-bay painted shop with a canopy and a mural",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9db9c9",
+          "#f2eee6",
+          "#b0603f"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "ota-sports-ground": {
+      "venueId": "ota-sports-ground",
+      "city": "ota",
+      "name": "Ota Sports Ground",
+      "archetype": "stadium",
+      "subject": "A town sports ground: a clay pitch with a small covered main stand, a concrete terrace and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a9a59d",
+          "#a8c3a0",
+          "#9c3b2f"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue."
+    },
+    "sango-market": {
+      "venueId": "sango-market",
+      "city": "ota",
+      "name": "Sango-Ota Market",
+      "archetype": "market-open",
+      "subject": "The merged Kayero and Oba T.T. Dada markets in Sango: packed lanes of stalls under umbrellas, tarpaulins and tin sheds with container shops along the edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#9aa3a8",
+          "#e6cf8a",
+          "#9c3b2f"
+        ],
+        "roofColour": "#8d5a3b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 8,
+          "note": "container lock-up shops"
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ota,_Ogun_State",
+          "what": "Kayero Market (Sango) and Oba T.T. Dada Market (Idiroko Road) are so large they blend, commonly called Sango-Ota Market; trading is a main occupation"
+        }
+      ],
+      "notes": "Two large adjacent markets treated as one. Physical layout is typed from how Nigerian open markets look (stalls, umbrellas, tin sheds); the sources confirm scale and merger only."
+    },
+    "sango-mosque": {
+      "venueId": "sango-mosque",
+      "city": "ota",
+      "name": "Sango Community Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque in Sango: a rendered prayer hall with one central dome, a corner minaret and a pointed-arch arcade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f2eee6",
+          "#3f7a52",
+          "#d9d0b8"
+        ],
+        "roofColour": "#3f7a52",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ota,_Ogun_State",
+          "what": "town has Muslim worship incl. the historic Okemale Mosque; this community mosque is not described"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Game venue, not the historic Okemale Mosque."
+    },
+    "sango-park": {
+      "venueId": "sango-park",
+      "city": "ota",
+      "name": "Sango-Ota Motor Park",
+      "archetype": "transport-station",
+      "subject": "A busy motor park at Sango junction: an open lot with parked buses and trucks, a ticketing kiosk row and a tin canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9aa3a8",
+          "#e6cf8a",
+          "#9c3b2f"
+        ],
+        "roofColour": "#8e979c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "lock-ups",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ota,_Ogun_State",
+          "what": "major junction north of the tollgate on the Lagos-Abeokuta Expressway; trade near Lagos and the Idiroko border"
+        }
+      ],
+      "notes": "Typed from the city style and the place type; no source describes this specific place, so confidence is low. Motor park at the Sango junction; layout typed."
+    }
+  }
+}

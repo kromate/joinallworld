@@ -1,0 +1,691 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_Medical_Centre_Makurdi.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Princejvic",
+   "view": "front",
+   "file": "/tmp/places-evidence/makurdi/fmc.jpg",
+   "used": "main gate: white rendered portal with flat beams, blank blue-white sign board, maroon base and trim, red metal roofs and cream-yellow blocks behind, maroon railing gates"
+  },
+  {
+   "kind": "text",
+   "used": "brief: older 2-3 storey H-plan complex of long blocks joined by covered walkways; OSM match is only a nearby small shed so is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 30
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -24,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3b8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0392b",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    26,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dba8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0392b",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gabled-wing",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6bd",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c0392b",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     64,
+     12
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e0b4",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c0392b",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-l",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    -6,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-r",
+   "footprint": {
+    "rect": [
+     3,
+     2.5
+    ]
+   },
+   "at": [
+    6,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none",
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-wall",
+   "footprint": {
+    "rect": [
+     9,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -7.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-beam",
+   "footprint": {
+    "rect": [
+     34,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 5.5,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-beam-step-l",
+   "footprint": {
+    "rect": [
+     12,
+     1.0
+    ]
+   },
+   "at": [
+    -19,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 4.3,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l-base",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.7
+    ]
+   },
+   "at": [
+    -6,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r-base",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.7
+    ]
+   },
+   "at": [
+    6,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l-stripe",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    -7.4,
+    -9.35
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r-stripe",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.5
+    ]
+   },
+   "at": [
+    4.6,
+    -9.35
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 3.8,
+    "colour": "#f6f8fb",
+    "frameColour": "#f4f2ec",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#e7ece4",
+    "frameColour": "#f4f2ec",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 2.0,
+    "bottom": 0.1,
+    "colour": "#7a3328",
+    "frameColour": "#8c3a2e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.45,
+    0
+   ],
+   "params": {
+    "width": 3.8,
+    "height": 0.4,
+    "bottom": 4.5,
+    "colour": "#2a5aa8",
+    "frameColour": "#2a5aa8",
+    "posts": false
+   }
+  },
+  {
+   "type": "hospital/red-cross-plate",
+   "at": [
+    2.1,
+    -9.4,
+    4.2
+   ],
+   "params": {
+    "size": 0.7,
+    "facing": "front"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter",
+   "footprint": {
+    "rect": [
+     12,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shrubs",
+   "footprint": {
+    "rect": [
+     10,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -11.2
+   ],
+   "rotDeg": 0,
+   "z0": 0.8,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f5e36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f5e36"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-panel-l",
+   "footprint": {
+    "rect": [
+     20,
+     0.5
+    ]
+   },
+   "at": [
+    -19,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-panel-r",
+   "footprint": {
+    "rect": [
+     20,
+     0.5
+    ]
+   },
+   "at": [
+    19,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c3a2e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -19,
+    -8,
+    1.1
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.4,
+    "thickness": 0.2,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    19,
+    -8,
+    1.1
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.4,
+    "thickness": 0.2,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#8c3a2e"
+   }
+  },
+  {
+   "type": "hospital/covered-walkway",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#f3f0e6",
+    "roofColour": "#c0392b"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#a1252b",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     13,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate is heavier now (piers, deep overhanging beam, stepped beam, maroon bands, lit sign, grille, planter, solid-panel railings) but the render frames the whole site so the gate stays small; no close entrance crop, no mother-and-child art or lettering, wards behind are a typed guess"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "federal-medical-centre-makurdi"
+}

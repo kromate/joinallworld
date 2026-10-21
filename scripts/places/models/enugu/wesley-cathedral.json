@@ -1,0 +1,138 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "wesley-cathedral",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/630038813",
+   "used": "real church outline (about 47 x 25 m, name match)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large white rendered Methodist cathedral, front bell tower about 30 m, tall pointed-arch windows; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee2",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#bdb6a2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 28,
+    "cap": "pyramid",
+    "capRise": 6,
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "colour": "#f2eee2",
+    "capColour": "#5a3e8a"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 1.0,
+    "run": 3,
+    "count": 4,
+    "colour": "#bdb6a2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#bdb6a2"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline is real, tower position and style are typed and may not match the real front."
+ }
+}

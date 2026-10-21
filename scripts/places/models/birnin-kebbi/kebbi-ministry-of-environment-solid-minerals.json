@@ -1,0 +1,181 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: 2-storey ministry block 45x15 m, central porch, hip roof, flag pole; OSM nearest match 42 m away (122 m2) not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c19a",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#f2efe6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 4.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2efe6",
+    "roofColour": "#a8a39a"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -22,
+    -7.1,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "floors": 2,
+    "storeyHeight": 4.2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "colour": "#dfe5e8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "pillarEvery": 5,
+    "colour": "#d8c19a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typical Nigerian state ministry block from the brief; colours and porch are typed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "kebbi-ministry-of-environment-solid-minerals"
+}

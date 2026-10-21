@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-wonder-world",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/50474010",
+   "used": "grounds are about 760 x 510 m (a park polygon, not a building): used only for scale of the lakeside setting, wings kept to a modest part of it; Wikidata Q18378283 five-star resort opened 2001"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     62,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2ead6",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a36",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     38
+    ]
+   },
+   "at": [
+    -35,
+    22
+   ],
+   "rotDeg": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2ead6",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a36",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     34
+    ]
+   },
+   "at": [
+    35,
+    20
+   ],
+   "rotDeg": 0,
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2ead6",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a36",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "conference",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -60,
+    6
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6cdb8",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bay": 5.5,
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a36",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 7,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#f2ead6",
+    "roofColour": "#9a4a36"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    100,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 50,
+    "colour": "#4f7f98",
+    "bank": true
+   }
+  },
+  {
+   "type": "swimming-pool",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "length": 9,
+    "umbrellas": 4
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    10,
+    62,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "width": 3,
+    "shelter": false,
+    "timber": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "chalet",
+   "at": [
+    -22,
+    52,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 3.2,
+    "roof_colour": "#9a4a36"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "chalet",
+   "at": [
+    24,
+    56,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 7,
+    "height": 3.2,
+    "roof_colour": "#9a4a36"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 8,
+    "line": 24
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -35,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 8,
+    "line": 60
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.0,
+    "yaw": 90
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photograph of any building found (Commons has only lake views, a waterfall and conference photos). Cream wings with terracotta tile roofs, arched windows, lakeside pool and jetty are assumed from the brief; layout and wing count are not verified."
+ }
+}

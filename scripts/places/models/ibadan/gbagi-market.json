@@ -1,0 +1,284 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://businessday.ng/uncategorized/article/oyo-to-revamp-bola-ige-business-complex/",
+   "used": "Bola Ige International Business Complex: large dilapidated multi-storey textile market on the Ibadan-Ife expressway"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/82466578",
+   "used": "checked only: a 298,000 m2 marketplace landuse polygon, not a building outline, so not used as a footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "u-block",
+   "footprint": {
+    "polygon": [
+     [
+      -60,
+      -12
+     ],
+     [
+      -60,
+      35
+     ],
+     [
+      60,
+      35
+     ],
+     [
+      60,
+      -12
+     ],
+     [
+      34,
+      -12
+     ],
+     [
+      34,
+      14
+     ],
+     [
+      -34,
+      14
+     ],
+     [
+      -34,
+      -12
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 13.2,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc6b0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#a77b5a",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -12.1,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "floors": 3,
+    "storeyHeight": 3.6,
+    "proud": 1.0,
+    "rail": true,
+    "colour": "#a77b5a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    17.2
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a77b5a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 4.2,
+    "roof_colour": "#a77b5a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    21,
+    16
+   ],
+   "params": {}
+  },
+  {
+   "type": "awning",
+   "at": [
+    -46,
+    -12.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "colours": [
+     "#a77b5a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    46,
+    -12.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "colours": [
+     "#cfc6b0",
+     "#a77b5a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -24,
+    14.2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "colours": [
+     "#a77b5a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#a77b5a",
+     "#f2efe6",
+     "#4a6a8a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#cfc6b0",
+     "#b8452e",
+     "#4a6a8a"
+    ]
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -48,
+    26,
+    13.2
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 2.2,
+    "legs": 1.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; a U-plan 3-storey gallery block per the brief (120x70 m), proportions typical rather than surveyed; true shop-gallery detail unknown."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "gbagi-market"
+}

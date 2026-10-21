@@ -1,0 +1,1807 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "abuja",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "abuja",
+    "climate": "savanna",
+    "vernacular": "Planned federal capital (1980s onward): wide expressways, monumental concrete-and-glass government blocks around Aso Rock, 2-6 storey apartment and office blocks in cream or white painted render, mansions behind high walls, long-span coloured metal roofing, laterite red earth everywhere and trimmed broadleaf and neem-type shade trees.",
+    "wallColours": [
+      "#f1ead8",
+      "#e3d3b0",
+      "#c9a77c",
+      "#b0aaa0",
+      "#b4654a",
+      "#f7f4ee"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#5b6670",
+      "#2f6b4f",
+      "#a8a29a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "laterite",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "concrete",
+      "corrugated"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Arewa/Hausa geometric relief on gates, fence walls and mosque facades; pointed and scalloped arches on civic and religious buildings; flag poles and national eagle/coat-of-arms motifs on monuments; deep sun-shading brise-soleil on modern blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Abuja",
+        "what": "planned capital, Tange core/CBD, Aso Rock, Koppen Aw climate, forest-savanna mosaic"
+      },
+      {
+        "url": "https://monocle.com/affairs/abuja-nigeria-capital-urban-planning/",
+        "what": "wide expressways, zoned administrative blocks, monumental scale, Tange masterplan"
+      },
+      {
+        "url": "https://www.rdharch.com/canadian-chancery-abuja",
+        "what": "Abuja design balances security/durability with indigenous building and craft traditions"
+      },
+      {
+        "url": "https://odessia.com/destinations/nigeria/abuja",
+        "what": "National Mosque gold dome and four minarets; Christian Centre folded concrete plates and copper roof (travel site, treat cautiously)"
+      }
+    ]
+  },
+  "places": {
+    "airport": {
+      "venueId": "airport",
+      "city": "abuja",
+      "name": "Nnamdi Azikiwe International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Abuja's 2018 CCECC-built international terminal seen from the landside forecourt: a long glass-fronted block with a curved departures canopy and a row of jet bridges on the airfield side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 75,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#2f4a5c",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9ced1",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8,
+          "note": "eight boarding bridges reported"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nnamdi_Azikiwe_International_Airport",
+          "what": "two terminals (2002 international by Julius Berger, domestic), new terminal commissioned Dec 2018, 15M pax/yr"
+        },
+        {
+          "url": "https://guardian.ng/business-services/abuja-airport-n61-2b-terminal-opens-february-2018/",
+          "what": "search-result summary: CCECC-built ~56,000 m2 terminal, 72 check-in counters, 8 boarding bridges (facade not described)"
+        }
+      ],
+      "notes": "Sources give size (~56,000 m2 gross), counts (72 check-in, 8 boarding bridges) and dates, but not the facade, so glazing-dominant look and colours are inferred from similar CCECC terminals. The older 2002 Julius Berger international terminal (now domestic) stands nearby and is lower and plainer. Recognisable by the long low horizontal mass, the forecourt canopy and the jet bridges."
+    },
+    "arts-village": {
+      "venueId": "arts-village",
+      "city": "abuja",
+      "name": "Abuja Arts and Crafts Village",
+      "archetype": "market-open",
+      "subject": "Abuja Arts and Crafts Village: a walled cluster of craft stalls in hut-like thatched shelters and low lock-ups",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "timber",
+        "colours": [
+          "#c28a5a",
+          "#8a5a36",
+          "#e3d3b0"
+        ],
+        "roofColour": "#b79b5a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "art-themed gate or wall"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://dailytrust.com/5-years-after-abuja-artists-protest-centres-closure/",
+          "what": "Arts and Craft Village closed 2017 and later reopened; promotional text mentions hut-like thatched structures (weak source)"
+        }
+      ],
+      "notes": "Only a promotional source mentions thatched, hut-like structures; village was founded in 2003 and was closed 2017 then reopened. Layout and colours are typed from city style and the craft-village concept, not verified."
+    },
+    "baze-university": {
+      "venueId": "baze-university",
+      "city": "abuja",
+      "name": "Baze University",
+      "archetype": "campus-block",
+      "subject": "Baze University main teaching block around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3efe6",
+          "#4a6a7a",
+          "#b9b2a2"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No building description found; typed from the city style and the courtyard-campus scene variant. Private university opened 2011 in Jabi / Kuchigoro area."
+    },
+    "children-zoo": {
+      "venueId": "children-zoo",
+      "city": "abuja",
+      "name": "National Children’s Park and Zoo",
+      "archetype": "park-landscape",
+      "subject": "National Children’s Park and Zoo: a gated family park with animal enclosures, kiosks and play areas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#7aa05a",
+          "#b4654a"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "animal sculptures"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the layout was found; typed from the park/zoo type and city style."
+    },
+    "christian-centre": {
+      "venueId": "christian-centre",
+      "city": "abuja",
+      "name": "National Christian Centre",
+      "archetype": "church-gothic",
+      "subject": "National Christian Centre facing the National Mosque: a vast postmodern neo-Gothic hall with tall pointed arches, folded concrete walls and a central spire",
+      "form": {
+        "footprint": "cross",
+        "width_m": 90,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 36,
+        "roof": "pyramidal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeae0",
+          "#b9b2a2",
+          "#c9a77c"
+        ],
+        "roofColour": "#9a6a3c",
+        "windows": "pointed-arch",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tall central spire"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "yellow, green and red glass"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "tall pointed arches"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "postmodern",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Christian_Centre",
+          "what": "postmodern neo-Gothic by Darchiwork Group, rotating central altar, stained glass, pipe organ, dedicated 2005"
+        },
+        {
+          "url": "https://odessia.com/destinations/nigeria/abuja",
+          "what": "National Mosque gold dome and four minarets; Christian Centre folded concrete plates and copper roof (travel site, treat cautiously)"
+        }
+      ],
+      "notes": "Wikipedia confirms style (postmodern neo-Gothic, Darchiwork Group, rotating central altar, stained glass); one travel site mentions folded concrete plates and a copper roof, a blog a white spired dome. Dimensions are estimates; the building is the Christian counterpart of the National Mosque across Independence Avenue."
+    },
+    "city-gate": {
+      "venueId": "city-gate",
+      "city": "abuja",
+      "name": "Abuja City Gate",
+      "archetype": "monument",
+      "subject": "Abuja City Gate on Airport Road: three concrete arches carrying the flag and national coat of arms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#d9d5cb",
+          "#9e9a90",
+          "#f3f1ec"
+        ],
+        "roofColour": "#d9d5cb",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "two large inverted-column legs frame the flag; small central arch bears the coat of arms"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1991",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abuja_City_Gate",
+          "what": "concrete, ~25 m, three arches, flag and coat of arms, 1991, Airport Road"
+        }
+      ],
+      "notes": "Structure and height (~25 m) are sourced; colours are not described and are assumed pale weathered concrete. Rendered as a welcome gate straddling a road verge."
+    },
+    "community-house": {
+      "venueId": "community-house",
+      "city": "abuja",
+      "name": "FCT Community House",
+      "archetype": "civic-small",
+      "subject": "FCT Community House: a modest two-storey community hall with a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#8a3b2e",
+          "#b0aaa0"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue sharing coordinates with the community polling room near the National Mosque area; no real building identified. Typed from city style."
+    },
+    "community-polling": {
+      "venueId": "community-polling",
+      "city": "abuja",
+      "name": "FCT Community Polling Room",
+      "archetype": "civic-small",
+      "subject": "FCT Community Polling Room: a single-storey hall with a veranda and flag",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue; no real building. Typed from city style."
+    },
+    "eagle-square": {
+      "venueId": "eagle-square",
+      "city": "abuja",
+      "name": "Eagle Square",
+      "archetype": "park-landscape",
+      "subject": "Eagle Square, the national parade ground in the Central Business District: a broad paved arena with a VIP pavilion and flagpoles",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 240,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#cfc9bb",
+          "#8d887d",
+          "#f1ead8"
+        ],
+        "roofColour": "#b0aaa0",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "VIP pavilion"
+        },
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered seating arena (~5,300 seats)"
+        },
+        {
+          "id": "flags",
+          "count": 16
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2003",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Eagle_Square,_Abuja",
+          "what": "~11 ha, eagle-shaped plan, VIP pavilion, 5,300-seat arena, National Arcade opposite"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abuja",
+          "what": "planned capital, Tange core/CBD, Aso Rock, Koppen Aw climate, forest-savanna mosaic"
+        }
+      ],
+      "notes": "Area ~11 ha (another note: ~5 ha with 50,106 seats incl. parade ground). The eagle-shaped plan reads only from the air. National Arcade (Tomb of the Unknown Soldier) is across the road."
+    },
+    "garki-market": {
+      "venueId": "garki-market",
+      "city": "abuja",
+      "name": "Garki Market",
+      "archetype": "market-open",
+      "subject": "Garki International Market: rows of lock-up stalls under long metal-sheet roofs with umbrellas between",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#c9a77c",
+          "#f1ead8"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real market in Garki; no description found. Typed from the authored fct-sheds variant and the city style."
+    },
+    "gwagwalada-garden": {
+      "venueId": "gwagwalada-garden",
+      "city": "abuja",
+      "name": "Gwagwalada Community Garden",
+      "archetype": "park-landscape",
+      "subject": "Gwagwalada community garden: fenced vegetable and flower plots with a small tool shed and water tank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3b0",
+          "#7aa05a",
+          "#8a5a36"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue at Gwagwalada town coordinates; no real garden identified."
+    },
+    "gwagwalada-market": {
+      "venueId": "gwagwalada-market",
+      "city": "abuja",
+      "name": "Gwagwalada Community Market",
+      "archetype": "market-open",
+      "subject": "Gwagwalada community market: open stalls and umbrellas on packed red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#c9a77c",
+          "#e3d3b0"
+        ],
+        "roofColour": "#a8a29a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue at the Gwagwalada town coordinates; typed from city style."
+    },
+    "gwarinpa-evening": {
+      "venueId": "gwarinpa-evening",
+      "city": "abuja",
+      "name": "Gwarinpa Evening Garden",
+      "archetype": "shophouse",
+      "subject": "Gwarinpa evening garden: a three-storey shophouse with a lit roof terrace, awnings and string lights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#b4654a",
+          "#5b6670"
+        ],
+        "roofColour": "#a8a29a",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored rooftop venue in Gwarinpa estate; no real building identified. Typed from city style."
+    },
+    "idu-station": {
+      "venueId": "idu-station",
+      "city": "abuja",
+      "name": "Idu Station",
+      "archetype": "transport-station",
+      "subject": "Idu Station (Amina Mohammed railway complex): the standard-gauge rail and light-rail interchange with a station hall, platform canopies and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ead8",
+          "#7a8a96",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abuja_Light_Rail",
+          "what": "Idu is the interchange of SGR and Abuja Light Rail; shared depot of 21 buildings"
+        }
+      ],
+      "notes": "Identity and role confirmed (interchange, depot with 21 buildings) but no source describes the station building itself; form typed from similar Chinese-built Nigerian railway stations."
+    },
+    "jabi-lake-park": {
+      "venueId": "jabi-lake-park",
+      "city": "abuja",
+      "name": "Jabi Lake Park",
+      "archetype": "park-landscape",
+      "subject": "Jabi Lake Park lakeshore: a bamboo-lined walk along the reservoir edge with a boat jetty and kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 220,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#9a7b4f",
+          "#b0aaa0",
+          "#e3d3b0"
+        ],
+        "roofColour": "#8a5a36",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat jetty"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jabi_Lake",
+          "what": "reservoir behind Lower Usuma dam, lakeshore walk lined with bamboo, boat rides, park named 2007"
+        }
+      ],
+      "notes": "Man-made reservoir, park designated 2007 with a bamboo-lined lakeshore walk, boat rides, jogging/cycling paths. Park is reported run-down. Jabi Lake Mall is a separate development beside it."
+    },
+    "kubwa-clinic": {
+      "venueId": "kubwa-clinic",
+      "city": "abuja",
+      "name": "Kubwa Community Clinic",
+      "archetype": "hospital",
+      "subject": "Kubwa Community Clinic: a single-storey clinic with a covered entrance and ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 36,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#2f6b4f",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored placeholder at shared Kubwa coordinates; no real clinic identified. Typed from city style."
+    },
+    "kubwa-garden": {
+      "venueId": "kubwa-garden",
+      "city": "abuja",
+      "name": "Kubwa Community Garden",
+      "archetype": "park-landscape",
+      "subject": "Kubwa community garden: raised plots, shade trees and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3b0",
+          "#7aa05a",
+          "#8a5a36"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored placeholder at shared Kubwa coordinates; typed from city style."
+    },
+    "kubwa-kitchen": {
+      "venueId": "kubwa-kitchen",
+      "city": "abuja",
+      "name": "Kubwa Suya and Kilishi Kitchen",
+      "archetype": "restaurant",
+      "subject": "Kubwa Suya and Kilishi Kitchen: an open-fronted roadside grill shed with plastic seating and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3d3b0",
+          "#8a3b2e",
+          "#5b6670"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "none",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored placeholder at shared Kubwa coordinates. Suya spots are typically open roadside sheds with a charcoal grill; typed, not a real venue."
+    },
+    "kubwa-salon": {
+      "venueId": "kubwa-salon",
+      "city": "abuja",
+      "name": "Kubwa Neighbourhood Salon",
+      "archetype": "shophouse",
+      "subject": "Kubwa neighbourhood salon: a single-storey shop-front with a painted board and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d38a",
+          "#b4654a",
+          "#5b6670"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored placeholder at shared Kubwa coordinates; typed from city style."
+    },
+    "millennium-park": {
+      "venueId": "millennium-park",
+      "city": "abuja",
+      "name": "Millennium Park",
+      "archetype": "park-landscape",
+      "subject": "Millennium Park, Maitama: a formal travertine promenade with fountains and trident pools, rising through terraced planting zones, with greenhouses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 900,
+        "depth_m": 350,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#8aa07a",
+          "#b0aaa0"
+        ],
+        "roofColour": "#c9ced1",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 6,
+          "note": "fountains along a white travertine path"
+        },
+        {
+          "id": "terrace",
+          "count": 4,
+          "note": "terraced vegetation zones"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "greenhouses for butterflies and birds"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Millennium_Park_(Abuja)",
+          "what": "32 ha, Manfredi Nicoletti, river on central axis, travertine path with fountains, trident pools, terraced vegetation zones, greenhouses"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abuja",
+          "what": "planned capital, Tange core/CBD, Aso Rock, Koppen Aw climate, forest-savanna mosaic"
+        }
+      ],
+      "notes": "32 ha park by Manfredi Nicoletti, opened 2003. A river runs the central axis; the road side is a rigid Italian-style layout; the path is white Roman travertine; trident geometry between big polygonal pools. Closed two years and reopened in 2022."
+    },
+    "national-mosque": {
+      "venueId": "national-mosque",
+      "city": "abuja",
+      "name": "Abuja National Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Abuja National Mosque on Independence Avenue: gold-clad central dome, four tall corner minarets and white courtyards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 50,
+        "roof": "multi-dome",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f3eee3",
+          "#d4a82f",
+          "#bfae8a"
+        ],
+        "roofColour": "#d4a62a",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "1 large gold-clad central dome plus 4 small domes"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "sources conflict on height (about 75 to 120 m); use about 80 m"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "geometric calligraphic panels"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1984",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abuja_National_Mosque",
+          "what": "2 domes (infobox), 4 minarets, completed 1984/85, AIM Consultants / Lodigiani"
+        },
+        {
+          "url": "https://archnet.org/sites/703",
+          "what": "search result: gold anodised aluminium-shingled main dome, four minarets, prayer hall/library/conference hall/school complex"
+        },
+        {
+          "url": "https://odessia.com/destinations/nigeria/abuja",
+          "what": "National Mosque gold dome and four minarets; Christian Centre folded concrete plates and copper roof (travel site, treat cautiously)"
+        }
+      ],
+      "notes": "Dome (gold anodised aluminium shingles), four minarets, courtyards and complex (library, conference hall, school) are sourced; wall colour (white/cream), mass dimensions and minaret height are estimates. Stands directly across Independence Avenue from the National Christian Centre. The gold dome visible from afar is the defining feature."
+    },
+    "national-stadium": {
+      "venueId": "national-stadium",
+      "city": "abuja",
+      "name": "MKO Abiola National Stadium",
+      "archetype": "stadium",
+      "subject": "MKO Abiola National Stadium bowl: two-tier concrete stands carried on 36 towers under a lightweight white cable-net roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 210,
+        "storeys": 4,
+        "height_m": 40,
+        "roof": "tensile"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bfbab0",
+          "#e8edf0",
+          "#3a4a58"
+        ],
+        "roofColour": "#eef1f2",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "cable-supported membrane roof fixed to a concrete ring beam at 36 points"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "pilotis",
+          "count": 36,
+          "note": "roof/stand support towers around the bowl"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "high-tech",
+      "era": "2003",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moshood_Abiola_National_Stadium",
+          "what": "60,491 seats, two tiers, 36 towers, 800 t cable roof (28,000 m2 membrane) on concrete ring beam, Schlaich Bergermann Partner, 2003"
+        }
+      ],
+      "notes": "60,491 seats in two tiers (about 32,000 lower, 28,000 upper), 36 towers, precast concrete stands, 800 t cable roof with 28,000 m2 membrane, designed by Schlaich Bergermann Partner; commissioned 2003. Overall outer diameter and height are estimates. The Abuja velodrome and other sports halls are in the same complex."
+    },
+    "nile-university": {
+      "venueId": "nile-university",
+      "city": "abuja",
+      "name": "Nile University",
+      "archetype": "campus-block",
+      "subject": "Nile University of Nigeria: a modern glass-fronted teaching block with shaded walkways",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#9fb8c4",
+          "#f3efe6",
+          "#5b6670"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real private university near Jabi/Airport Road; no source description found. Glass look follows the authored fct-campus-glass variant."
+    },
+    "uniabuja": {
+      "venueId": "uniabuja",
+      "city": "abuja",
+      "name": "University of Abuja",
+      "archetype": "campus-block",
+      "subject": "University of Abuja, Gwagwalada: a long three-storey faculty block behind the main entrance gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#a8a29a",
+          "#8a3b2e"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real federal university (Gwagwalada campus); no description found. Typed from city style and the campus-gate variant."
+    },
+    "utako-hub": {
+      "venueId": "utako-hub",
+      "city": "abuja",
+      "name": "Utako Motor and Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "Utako Motor and Bus Terminal: an open motor park with covered loading sheds, kiosks and rows of buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#a8a29a",
+          "#8a3b2e",
+          "#e8d38a"
+        ],
+        "roofColour": "#5b6670",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real Utako motor park beside the market; not described in sources found. Typed from the motor-park scene variant."
+    },
+    "velodrome": {
+      "venueId": "velodrome",
+      "city": "abuja",
+      "name": "Abuja Velodrome",
+      "archetype": "stadium",
+      "subject": "Abuja Velodrome, in the national sports complex: a compact oval indoor arena with a low sweeping roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 105,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bfbab0",
+          "#5b6670",
+          "#e8edf0"
+        ],
+        "roofColour": "#c9ced1",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moshood_Abiola_National_Stadium",
+          "what": "stadium complex includes a velodrome (no description of its form)"
+        }
+      ],
+      "notes": "Only the fact that the stadium complex includes a velodrome is sourced; its form is guessed (a 250 m track needs roughly 110x75 m interior)."
+    },
+    "wuse-market": {
+      "venueId": "wuse-market",
+      "city": "abuja",
+      "name": "Wuse Market",
+      "archetype": "market-open",
+      "subject": "Wuse Market: dense lock-up shops and open stalls under metal roofs between busy roads",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#c9a77c",
+          "#f1ead8"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wuse",
+          "what": "Wuse Market is the biggest open market in Abuja, Wuse Zone II between Sani Abacha Way and Herbert Macaulay Way"
+        }
+      ],
+      "notes": "Wikipedia: biggest open market in Abuja, in Wuse Zone II between Sani Abacha Way and Herbert Macaulay Way; Culture Trip says it was once a school. No physical description found; typed from the lock-up scene variant."
+    },
+    "wuse-savings": {
+      "venueId": "wuse-savings",
+      "city": "abuja",
+      "name": "Wuse Savings Hall",
+      "archetype": "office-low",
+      "subject": "Wuse Savings Hall: a four-storey cooperative bank office block with a flag and signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ead8",
+          "#4a6a7a",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored game venue; no real building identified. Typed from city style."
+    }
+  }
+}

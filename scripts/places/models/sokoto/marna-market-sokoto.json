@@ -1,0 +1,386 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1352844049",
+   "used": "only a 17 m2 shed at the market point, used as the market caretaker's hut"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q108619547",
+   "used": "identity: Marna market, a medium neighbourhood market; rows of lock-ups with metal-sheet shades and umbrella stalls typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 20,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "rect": [
+     100,
+     72
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8734f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8734f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "market-office",
+   "footprint": {
+    "polygon": [
+     [
+      -2.7,
+      1.3
+     ],
+     [
+      0.2,
+      3
+     ],
+     [
+      2.7,
+      -1.3
+     ],
+     [
+      -0.2,
+      -3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6e70",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "depth": 3.2,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "roof_colour": "#6b6e70",
+    "wall_colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -1.7999999999999998,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 5.4,
+    "kind": "umbrella",
+    "size": 1.1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -26,
+    4,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "depth": 3.2,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    10.2,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 5.4,
+    "kind": "umbrella",
+    "size": 1.1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -26,
+    16,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "depth": 3.2,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "roof_colour": "#7f8a8e",
+    "wall_colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    22.2,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 5.4,
+    "kind": "umbrella",
+    "size": 1.1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -26,
+    28,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "depth": 3.2,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "roof_colour": "#6b6e70",
+    "wall_colour": "#d9c9a8"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    34.2,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 5.4,
+    "kind": "umbrella",
+    "size": 1.1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "count": 7,
+    "height": 3.4,
+    "roofDepth": 8,
+    "colour": "#6b6e70",
+    "roofColour": "#6b6e70"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 5,
+    "height": 3.4,
+    "roofDepth": 8,
+    "colour": "#6b6e70",
+    "roofColour": "#8f7f74"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    8,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 7,
+    "radius": 1.5,
+    "colours": [
+     "#e76f51",
+     "#e9c46a",
+     "#2a9d8f",
+     "#e8dfc8"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.4,
+    "pillar": 1.0,
+    "colour": "#c9a77c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      -34
+     ],
+     [
+      -6,
+      -34
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      6,
+      -34
+     ],
+     [
+      48,
+      -34
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#c9a77c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     20
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -48,
+     36
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "marna-market-sokoto",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline of the market; rows of lock-ups and stalls typed, hut from a 17 m2 OSM shed."
+ }
+}

@@ -1,0 +1,942 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ado-ekiti",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ado-ekiti",
+    "climate": "rainforest",
+    "vernacular": "Hill-top Yoruba (Ekiti) state capital at about 455 m among rounded rocky hills and forest-savanna: mostly one- and two-storey cement-rendered houses in cream, pink-beige and pastel paint with rust or dark-red corrugated iron roofs, newer two-to-five storey government and university blocks in white and cream, and red-laterite earth between tall broadleaf trees.",
+    "wallColours": [
+      "#eadfc6",
+      "#d9b99a",
+      "#c9b79a",
+      "#a8a39a",
+      "#8fb09a",
+      "#c98a6a",
+      "#f4f1ea"
+    ],
+    "roofColours": [
+      "#8a4a3a",
+      "#6e7273",
+      "#3f6b4a",
+      "#5a6670"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "mud-render",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Carved wooden posts and verandas on traditional palace (Ewi) architecture; pointed arches and plain pilasters on civic and church buildings; hillside sites with terraced access.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+        "what": "elevation 455 m, 1424 mm rain, trade centre, university/polytechnic gates, King's Market"
+      },
+      {
+        "url": "https://kupi.com/en/explore/nigeria/ado-ekiti/history",
+        "what": "Ewi palace as traditional centre, city history (travel site)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Afe_Babalola_University",
+        "what": "ABUAD on hilly land opposite the Federal Polytechnic"
+      }
+    ]
+  },
+  "places": {
+    "afe-babalola-university": {
+      "venueId": "afe-babalola-university",
+      "city": "ado-ekiti",
+      "name": "Afe Babalola University (ABUAD)",
+      "archetype": "campus-block",
+      "subject": "The hilltop ABUAD campus: large multi-storey college blocks around a central lawn, with a big engineering college and conference halls",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede0",
+          "#2f4a78",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2009-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Afe_Babalola_University",
+          "what": "single hilly campus, six colleges, engineering building on 3.5 acres commissioned 2013, conference halls"
+        },
+        {
+          "url": "https://www.abuad.edu.ng/abuad-making-giant-strides-in-tertiary-education-sector/",
+          "what": "university described as having well-mapped physical structures and road network"
+        }
+      ],
+      "notes": "Facts: hilltop, six colleges, large engineering college. Colours and facade finish are not in sources and are estimated."
+    },
+    "afe-babalola-university-teaching-hospital": {
+      "venueId": "afe-babalola-university-teaching-hospital",
+      "city": "ado-ekiti",
+      "name": "Afe Babalola University Teaching Hospital (ABUAD Multi-System Hospital)",
+      "archetype": "hospital",
+      "subject": "A nine-block hospital complex on a large hill site: a five-storey central block flanked by four-storey blocks, with a rooftop helipad",
+      "form": {
+        "footprint": "H",
+        "width_m": 95,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 8
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#5a8aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "links between blocks"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.abuad.edu.ng/vice-president-prof-yemi-osinbajo-commissions-abuad-multi-system-hospital/",
+          "what": "commissioning 2017"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Afe_Babalola_University_Teaching_Hospital",
+          "what": "private multi-specialty, 400 beds, helipad"
+        },
+        {
+          "url": "https://www.abuad.edu.ng/abuad-multi-system-hospital-and-efforts-to-stem-medical-tourism/",
+          "what": "60 hectares, nine blocks, central block five floors, others four"
+        }
+      ],
+      "notes": "Counts and heights are sourced; wall colour and glazing share are estimates (university only calls its colour and design distinctive)."
+    },
+    "ansarudeen-mosque": {
+      "venueId": "ansarudeen-mosque",
+      "city": "ado-ekiti",
+      "name": "Ansarudeen Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque with a central dome and a single tall minaret, painted white and green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1efe6",
+          "#3f8f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#4a9a74",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+          "what": "city landscape and landmarks"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Ansar-ud-Deen is a Yoruba Muslim society; its mosques are usually plain cement-rendered with one dome."
+    },
+    "asha-botanical-garden": {
+      "venueId": "asha-botanical-garden",
+      "city": "ado-ekiti",
+      "name": "Asha Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "A fenced botanical garden of planted beds, tree-lined paths and a small garden pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc6",
+          "#4f7a4c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://poidata.io/report/botanical-garden/nigeria",
+          "what": "only a business-directory listing of a botanical garden in Ado Ekiti; no description"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Only a directory listing exists."
+    },
+    "bisi-market": {
+      "venueId": "bisi-market",
+      "city": "ado-ekiti",
+      "name": "Bisi Market",
+      "archetype": "market-open",
+      "subject": "A busy open market of metal-roofed stalls and lock-up shops along a muddy laterite lane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc7b5",
+          "#c98a6a",
+          "#e9dfc6"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "lock-ups",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+          "what": "Ado-Ekiti is a trade centre for yams, cassava, grain and tobacco; King's Market pictured"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Placed close to the Ansarudeen mosque and the cathedral (central Ado)."
+    },
+    "diamond-barbing-saloon": {
+      "venueId": "diamond-barbing-saloon",
+      "city": "ado-ekiti",
+      "name": "Diamond Barbing Saloon",
+      "archetype": "shophouse",
+      "subject": "A tiny roadside barber shop with a painted frontage and mirror-lined interior, under a shared corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d7a8",
+          "#3a6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. A (game venue) placeholder; no source."
+    },
+    "ekiti-state-government-territory": {
+      "venueId": "ekiti-state-government-territory",
+      "city": "ado-ekiti",
+      "name": "Ekiti State Government Territory (Government House)",
+      "archetype": "civic-palace",
+      "subject": "The state government campus on the hill at Oke Ayoba: a wide, columned two-storey government house behind a gated forecourt with flagpoles",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2eee0",
+          "#c9b79a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2012-2014",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.ekitistate.gov.ng/?p=4809",
+          "what": "2012 groundbreaking of new Government House, governor's office and pavilion legacy projects"
+        },
+        {
+          "url": "https://naija.yafri.ca/apc-commends-governor-fayose/",
+          "what": "complex nicknamed Ayoba Villa"
+        }
+      ],
+      "notes": "Identity and era sourced; no architectural description was found, so the form is typed. Governor's office was reportedly redesigned from a planned hotel."
+    },
+    "ekiti-state-house-of-assembly": {
+      "venueId": "ekiti-state-house-of-assembly",
+      "city": "ado-ekiti",
+      "name": "Ekiti State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The Assembly complex: a two-storey legislative block with a rotunda-style chamber, entrance steps and flagpoles, freshly remodelled",
+      "form": {
+        "footprint": "L",
+        "width_m": 65,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d4",
+          "#6b4a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1999, remodelled 2024",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://hoa.ekitistate.gov.ng/newsdetails.php?id=61",
+          "what": "2024 N700m remodelling of Assembly complex and Service Commission building; roof leaks and dilapidation"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Atanda_Yusuf",
+          "what": "complex housing the Assembly inaugurated 1 June 1999"
+        }
+      ],
+      "notes": "Facts: built ~1999, remodelled 2024. Physical description not found; form typed."
+    },
+    "ekiti-state-library-board": {
+      "venueId": "ekiti-state-library-board",
+      "city": "ado-ekiti",
+      "name": "Ekiti State Library Board",
+      "archetype": "campus-block",
+      "subject": "A two-storey state library block with a ground-floor reading hall and a simple entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d8",
+          "#7fa58f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type."
+    },
+    "ekiti-state-university": {
+      "venueId": "ekiti-state-university",
+      "city": "ado-ekiti",
+      "name": "Ekiti State University",
+      "archetype": "campus-block",
+      "subject": "The EKSU main campus: an arched entrance gate to a boulevard leading to a multi-storey senate building with lecture blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ede7d4",
+          "#a9744e",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main gate"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1982 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.uopeople.edu/universities-and-colleges-directory/nigeria/ekiti-state-university/",
+          "what": "university history (founded 1982 as Obafemi Awolowo University Ado-Ekiti)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+          "what": "article shows EKSU main gate"
+        }
+      ],
+      "notes": "Founded 1982. A main gate and senate building are shown in photos but no source describes them in words."
+    },
+    "federal-polytechnic-ado-ekiti": {
+      "venueId": "federal-polytechnic-ado-ekiti",
+      "city": "ado-ekiti",
+      "name": "Federal Polytechnic, Ado-Ekiti",
+      "archetype": "campus-block",
+      "subject": "The polytechnic campus: a gated entrance and long two-storey lecture blocks with louvred walkways, opposite ABUAD on the hill road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d3b0",
+          "#4f7a4c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1977 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Afe_Babalola_University",
+          "what": "ABUAD sits directly opposite Federal Polytechnic Ado-Ekiti"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+          "what": "article shows polytechnic main gate"
+        }
+      ],
+      "notes": "Polytechnic gate appears in photos; building description absent from sources. Typed as lower, older blocks than ABUAD."
+    },
+    "st-patrick-cathedral": {
+      "venueId": "st-patrick-cathedral",
+      "city": "ado-ekiti",
+      "name": "St Patrick's Catholic Cathedral",
+      "archetype": "church-modern",
+      "subject": "The cathedral of the Catholic Diocese of Ekiti: a broad nave with a gabled front, a free-standing bell tower and a cross on the facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede0",
+          "#a9744e",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "grotto statue in forecourt"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Diocese_of_Ekiti",
+          "what": "Diocese est. 30 July 1972, St Patrick Cathedral in Ado-Ekiti is its cathedral"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Only the diocese entry exists."
+    },
+    "wema-bank-ado": {
+      "venueId": "wema-bank-ado",
+      "city": "ado-ekiti",
+      "name": "Wema Bank (Ado-Ekiti branch)",
+      "archetype": "office-low",
+      "subject": "A two-storey bank branch with a glazed banking hall at the corner, ATM lobby and a flat roof, in neutral grey and white",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e3df",
+          "#7a7f85",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+          "what": "Ado-Ekiti city setting"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Branch bank; brand colours deliberately not used."
+    }
+  }
+}

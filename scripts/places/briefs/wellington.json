@@ -1,0 +1,1683 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "wellington",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "wellington",
+    "climate": "temperate",
+    "vernacular": "Timber city on steep hills: single-storey and two-storey Victorian and Edwardian villas and Californian bungalows in painted weatherboard with corrugated-iron roofs, stacked up hillsides in white, cream, sage and grey-blue; Art Deco and neoclassical stone, brick and rendered commercial blocks in the CBD; post-1960s concrete and glass offices and public buildings built for earthquake resistance; windy, bush-clad hills with pohutukawa, pine and native bush.",
+    "wallColours": [
+      "#e6e1d3",
+      "#d8c9a6",
+      "#8c9ba3",
+      "#7e8f78",
+      "#6b5546",
+      "#b0aea8",
+      "#a4533f"
+    ],
+    "roofColours": [
+      "#8a3a2f",
+      "#6d7276",
+      "#4f6a58",
+      "#3f4348"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "concrete",
+      "stucco",
+      "brick",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Timber villas imitating stone ornament: bay windows, fretwork brackets, finials and verandas with turned posts; corrugated-iron hipped and gabled roofs; Edwardian classical cornices and pilasters on city buildings; seismic bracing and strengthening frames on older masonry.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_New_Zealand",
+        "what": "timber construction, corrugated iron replacing shingles, bungalows, garden suburbs, concrete-and-glass modernism"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Wellington_Town_Hall",
+        "what": "Edwardian civic masonry in the city centre"
+      }
+    ]
+  },
+  "places": {
+    "wellington-airport-wellington-airport": {
+      "venueId": "wellington-airport-wellington-airport",
+      "city": "wellington",
+      "name": "Wellington International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Wellington Airport terminal complex seen from the forecourt: a long three-storey glass domestic frontage joined to the rounded weathered-copper 'Rock' international terminal, with the slender leaning control tower behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "curved",
+        "variant": "three-pier-hybrid",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9fb0b5",
+          "#6f7f6a",
+          "#d8d8d6"
+        ],
+        "roofColour": "#7b8a74",
+        "roofMaterial": "copper",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "rounded copper-clad 'Rock' form of the international terminal"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "eight storeys, built at a 12.5 degree lean (2018)"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "long glass wall facing the runway"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "giant eagle sculptures with 15 m wingspan in the terminal"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1999 domestic terminal, 2010 international terminal, 2018 control tower",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wellington_Airport",
+          "what": "1999 three-storey domestic terminal by Jon Craig with long glass wall; 2010 international terminal 'The Rock' by Studio Pacific and Warren and Mahoney in round weathered-copper forms; 2018 eight-storey tower leaning 12.5 degrees; 32,300 m2 floor area"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1160300187",
+          "what": "Main Terminal 143 x 92 m, 12,378 m2"
+        }
+      ],
+      "notes": "Dimensions from OSM main terminal footprint (143 x 92 m). Copper-weathered colour is read from the description 'weathered copper'; exact tints are estimates. Recognisable by the rounded copper-clad form plus the leaning tower. The eagle sculptures are inside, so only the leaning tower is shown at a distance."
+    },
+    "wellington-clinic": {
+      "venueId": "wellington-clinic",
+      "city": "wellington",
+      "name": "Hutt Hospital",
+      "archetype": "hospital",
+      "subject": "Hutt Hospital, Lower Hutt: the main public hospital of the Hutt Valley shown as a mid-rise cream-and-grey concrete ward block with lower clinical wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcac0",
+          "#8f9aa0",
+          "#f2f1ec"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-2000s additions",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/203229384",
+          "what": "hospital site 484 x 324 m, 83,413 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hutt_Valley_District_Health_Board",
+          "what": "Hutt Hospital, Boulcott, 322 beds, the single public hospital in the district"
+        }
+      ],
+      "notes": "Only the site size (484 x 324 m) and bed count (322) are measured. Building height, wing layout and colours are a typed guess for an NZ public hospital of mixed eras. Generator should show a representative ward block, not the whole campus."
+    },
+    "wellington-community-notices": {
+      "venueId": "wellington-community-notices",
+      "city": "wellington",
+      "name": "Ngā Taonga Sound & Vision (Hutt store)",
+      "archetype": "industrial",
+      "subject": "Ngā Taonga's Avalon, Lower Hutt collection store: a plain low rendered building holding climate-controlled vaults for film, television and sound archives",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 72,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "archive-store"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c6bd",
+          "#7d878c",
+          "#e8e6df"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s (former TVNZ site)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13348428",
+          "what": "building=industrial, 72 x 51 m, 2,480 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ng%C4%81_Taonga_Sound_%26_Vision",
+          "what": "Hutt facility at 181A Taita Drive, former TVNZ Archive store, four vaults (cold, documentation, general, temporary), 20 km of climate-controlled shelving"
+        }
+      ],
+      "notes": "The appearance is not described anywhere found. Measured footprint is from OSM (tagged industrial). Shown as a windowless archive store. The organisation's Taranaki Street building (six levels) is a different place."
+    },
+    "wellington-community-voting-game": {
+      "venueId": "wellington-community-voting-game",
+      "city": "wellington",
+      "name": "Wellington Town Hall",
+      "archetype": "civic-palace",
+      "subject": "Wellington Town Hall from Wakefield Street: a three-level Edwardian civic building in red brick with stone dressings and a round-headed arched entrance, without the demolished 150 ft clock tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 46,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9a4a3a",
+          "#d6cdb8",
+          "#f1ede2"
+        ],
+        "roofColour": "#4f6a58",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "Tuscan-order columns (replaced the 1904 Corinthian capitals in 1943)"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1904",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wellington_Town_Hall",
+          "what": "architect Joshua Charlesworth; opened Dec 1904; Neo-Renaissance; 150 ft clock tower removed 1934; Roman portico, pediment and parapet removed 1934; Corinthian capitals replaced by Tuscan 1943; Norman and Beard organ with about 4,000 pipes"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/190555301",
+          "what": "67 x 46 m, 3 levels, architect Joshua Charlesworth"
+        }
+      ],
+      "notes": "Form (67 x 46 m, 3 levels) and history are sourced. The red-brick-with-stone colouring and slate-green roof are from the general knowledge that this is a red-brick building and are not confirmed by the fetched page. Its main distinguishing mark in reality is the missing tower: the old tower was removed in 1934 and should NOT be modelled."
+    },
+    "wellington-community-workshop": {
+      "venueId": "wellington-community-workshop",
+      "city": "wellington",
+      "name": "Royal New Zealand Police College",
+      "archetype": "campus-block",
+      "subject": "Royal New Zealand Police College, Papakōwhai, Porirua: a low institutional campus of two-storey pale-brick and concrete teaching blocks around a memorial building",
+      "form": {
+        "footprint": "U",
+        "width_m": 56,
+        "depth_m": 48,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#c9b9a0",
+          "#9aa0a3",
+          "#e9e6dd"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1981",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220216627",
+          "what": "college, start_date 1981, 56 x 48 m, 2,710 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_New_Zealand_Police_College",
+          "what": "opened 1 April 1981 by Prince Charles; Memorial Building with plaques; Police Museum; at Papakōwhai near Aotea Lagoon"
+        }
+      ],
+      "notes": "Only the opening year, a Memorial Building with plaques and the footprint are known. Facade colours and storeys are a typed guess for a 1980s institutional campus."
+    },
+    "wellington-market-game": {
+      "venueId": "wellington-market-game",
+      "city": "wellington",
+      "name": "Queensgate Shopping Centre",
+      "archetype": "mall",
+      "subject": "Queensgate Shopping Centre in central Lower Hutt: a broad low enclosed mall with a flat roof, large blank rendered walls, entrance canopies and rooftop car parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 290,
+        "depth_m": 200,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "enclosed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d3c6",
+          "#4f6f86",
+          "#f0efea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 2,
+          "note": "multi-level car parking"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1137992012",
+          "what": "building 293 x 207 m, 44,786 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Queensgate_Shopping_Centre",
+          "what": "Queensgate shopping centre in Lower Hutt (disambiguation entry only)"
+        }
+      ],
+      "notes": "Only the footprint is measured. The elevations are a typed guess of a New Zealand suburban mall. Largest building among the Wellington venues by area, so it should read as a wide, low box."
+    },
+    "wellington-meal-stop": {
+      "venueId": "wellington-meal-stop",
+      "city": "wellington",
+      "name": "Logan Brown",
+      "archetype": "restaurant",
+      "subject": "Logan Brown restaurant at the corner of Cuba Street and Vivian Street: a narrow three-level historic corner building with a rendered classical front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9cfb8",
+          "#9a9285",
+          "#f0ece0"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/254945192",
+          "what": "retail building, 21 x 16 m, 3 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5470104",
+          "what": "Wikidata: historic building on the corner of Cuba Street and Vivian Street, Wellington"
+        }
+      ],
+      "notes": "Only the corner location, three levels and footprint are confirmed; the classical rendered facade style and pale colours are an inference for a historic corner commercial building and are unverified. Distinct from James Smith Corner by being much smaller and a restaurant."
+    },
+    "wellington-osm-node-1907945529": {
+      "venueId": "wellington-osm-node-1907945529",
+      "city": "wellington",
+      "name": "Old Pencarrow Lighthouse",
+      "archetype": "monument",
+      "subject": "Old Pencarrow Head Lighthouse: a small cast-iron lighthouse tower on a grassy hilltop above Wellington Harbour entrance, with a lantern at the top",
+      "form": {
+        "footprint": "round",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e8e8e2",
+          "#a33a32",
+          "#3f4348"
+        ],
+        "roofColour": "#3f4348",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "victorian",
+      "era": "1859",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pencarrow_Head",
+          "what": "built in 1859, the first permanent lighthouse in New Zealand; Mary Bennett was the only female keeper"
+        }
+      ],
+      "notes": "Only the 1859 date and its status as New Zealand's first permanent lighthouse were confirmed. Height (about 11 m), white colour and cast-iron material are not confirmed by fetched pages; treat as typed. Windswept hill setting with no trees."
+    },
+    "wellington-osm-node-5417751534": {
+      "venueId": "wellington-osm-node-5417751534",
+      "city": "wellington",
+      "name": "Otago School of Medicine (Wellington)",
+      "archetype": "campus-block",
+      "subject": "University of Otago, Wellington School of Medicine annex in Newtown: a small two-level rendered teaching building beside the hospital precinct",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d3d0c7",
+          "#6a8a9a",
+          "#f1f0ec"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/956058551",
+          "what": "university building, 41 x 20 m, 2 levels"
+        }
+      ],
+      "notes": "Only OSM footprint and level count are known. Style is a typed guess; the Newtown hospital precinct has many look-alike blocks, so keep colours different from the hospital briefs."
+    },
+    "wellington-osm-way-1021590430": {
+      "venueId": "wellington-osm-way-1021590430",
+      "city": "wellington",
+      "name": "Hnry Stadium (Wellington Regional Stadium, 'The Cake Tin')",
+      "archetype": "stadium",
+      "subject": "The Cake Tin from the Waterfront: a circular silver-grey bowl stadium with a ring roof of metal cladding, tall roof-mounted floodlights and long concourse walls",
+      "form": {
+        "footprint": "oval",
+        "width_m": 250,
+        "depth_m": 204,
+        "storeys": 4,
+        "height_m": 26,
+        "roof": "curved",
+        "variant": "bowl"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9aa0a4",
+          "#5d646a",
+          "#d0d3d4"
+        ],
+        "roofColour": "#8a9094",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "continuous roof ring over all stands"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "mounted on the roof ring"
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "concourse stair towers"
+        },
+        {
+          "id": "flags",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sky_Stadium",
+          "what": "first bowl stadium built in New Zealand; capacity 34,500; Warren and Mahoney with Populous; construction 1998-2000; nicknamed 'The Cake Tin'"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2409904",
+          "what": "grandstand, 251 x 204 m, height 26 m, building:colour grey, started 2000"
+        }
+      ],
+      "notes": "Dimensions, 26 m height, grey colour and date come from OSM tags and Wikipedia. Roof ring and floodlight arrangement is from general knowledge of the stadium and not confirmed by the fetched page. Uniquely oval, silver and closed-in compared with Basin Reserve, which is an open grassy cricket oval."
+    },
+    "wellington-osm-way-18043662": {
+      "venueId": "wellington-osm-way-18043662",
+      "city": "wellington",
+      "name": "The Open Polytechnic of New Zealand",
+      "archetype": "campus-block",
+      "subject": "Open Polytechnic campus in Lower Hutt: a cluster of two- and three-storey modern teaching and admin blocks in grey render and glass around a car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8c9c4",
+          "#5f7884",
+          "#ececea"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/18043662",
+          "what": "college site 290 x 234 m, 46,177 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Open_Polytechnic_of_New_Zealand",
+          "what": "specialist national open and distance learning provider in Lower Hutt; began 1946 as the Technical Correspondence School"
+        }
+      ],
+      "notes": "Campus site is measured; buildings are a typed guess. As a distance-learning institution it is mostly admin and processing blocks rather than lecture halls."
+    },
+    "wellington-osm-way-220331294": {
+      "venueId": "wellington-osm-way-220331294",
+      "city": "wellington",
+      "name": "Seton Nossiter Park",
+      "archetype": "park-landscape",
+      "subject": "Seton Nossiter Park, Newlands: a long sports park with grass playing fields, a small rendered clubroom pavilion, floodlight masts and a gravel car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "sports-park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0dbcd",
+          "#7a8a6a",
+          "#b0aea8"
+        ],
+        "roofColour": "#8a3a2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "clubroom with veranda"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220331294",
+          "what": "leisure=park, 1,679 x 558 m, 364,385 m2"
+        }
+      ],
+      "notes": "Only the park extent is measured (a long gully). Clubroom pavilion and floodlights are typical of NZ sports parks and are an assumption. Open grass and low pavilion; no named landmarks."
+    },
+    "wellington-osm-way-221801422": {
+      "venueId": "wellington-osm-way-221801422",
+      "city": "wellington",
+      "name": "Southern Cross Wellington Hospital",
+      "archetype": "hospital",
+      "subject": "Southern Cross Wellington Hospital, Newtown: a private hospital of four storeys in pale render with strip windows and a covered patient drop-off",
+      "form": {
+        "footprint": "rect",
+        "width_m": 99,
+        "depth_m": 63,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "private"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1ddd3",
+          "#7c8e96",
+          "#f5f4f0"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/7917269",
+          "what": "private hospital, 99 x 63 m, 3,812 m2"
+        }
+      ],
+      "notes": "Only the footprint is known; storeys and colours are typed. Keep distinct from Wakefield Hospital (nearly square, 83 x 80 m) by giving this one the longer rectangular plan."
+    },
+    "wellington-osm-way-222118929": {
+      "venueId": "wellington-osm-way-222118929",
+      "city": "wellington",
+      "name": "Wakefield Hospital",
+      "archetype": "hospital",
+      "subject": "Wakefield Hospital, Newtown: a private hospital shown as a near-square four-storey block in pale brick and render with a canopy entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 83,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "private"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#d6c7ad",
+          "#8a8e90",
+          "#f2f0ea"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/19586025",
+          "what": "private hospital, 83 x 80 m, 3,793 m2"
+        }
+      ],
+      "notes": "Only the near-square footprint is measured; the pale-brick look is a typed guess to separate it from Southern Cross Wellington Hospital."
+    },
+    "wellington-osm-way-256656474": {
+      "venueId": "wellington-osm-way-256656474",
+      "city": "wellington",
+      "name": "Saint Mary of the Angels",
+      "archetype": "church-gothic",
+      "subject": "Saint Mary of the Angels on Boulcott Street: a pale reinforced-concrete French Gothic Revival church with a rose window over the narthex, buttressed clerestory and a steep slate roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 44,
+        "depth_m": 27,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d8d0bf",
+          "#8f8577",
+          "#f0ece2"
+        ],
+        "roofColour": "#5d6168",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "rose-window",
+          "count": 1,
+          "note": "above the narthex, interrupts the clerestory"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "gothic-revival",
+      "era": "1922",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_Mary_of_the_Angels,_Wellington",
+          "what": "architect Frederick de Jersey Clere, plans 1919, opened 26 March 1922; traditional Gothic of French influence; reinforced concrete and brick; timber roof on concrete arches; rose window above narthex; copper and slate roof replaced in strengthening; front modelled on Brussels cathedral"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/256656474",
+          "what": "church, 44 x 27 m"
+        }
+      ],
+      "notes": "Sourced: architect, date, concrete-and-brick construction, rose window and Brussels-inspired front. The pale stone-coloured render is an estimate (concrete finish). Whether the facade has twin towers is not confirmed by the fetched page; the model should be a gabled nave with a gabled front and rose window, towers optional. Hemmed in by city buildings, so no trees."
+    },
+    "wellington-osm-way-260864068": {
+      "venueId": "wellington-osm-way-260864068",
+      "city": "wellington",
+      "name": "James Smith Corner",
+      "archetype": "mall",
+      "subject": "James Smith Corner at Cuba Mall and Manners Street: a five-level Edwardian department-store block with a rendered facade in cream, regular arched windows and a corner emphasis",
+      "form": {
+        "footprint": "rect",
+        "width_m": 82,
+        "depth_m": 46,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "department-store"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9cdb2",
+          "#9a8f7c",
+          "#f1ece0"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor shop-front arcade"
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/260864068",
+          "what": "commercial, 5 levels, 21.7 m, 82 x 46 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q79302104",
+          "what": "Wikidata: historic building in Wellington, retail building"
+        }
+      ],
+      "notes": "Height (21.7 m), five levels and footprint are measured from OSM; classical rendered facade and cream colour are inferred from the historic retail building tag. Dimensions make it twice the plan of Logan Brown."
+    },
+    "wellington-osm-way-288996918": {
+      "venueId": "wellington-osm-way-288996918",
+      "city": "wellington",
+      "name": "Basin Reserve",
+      "archetype": "stadium",
+      "subject": "Basin Reserve cricket ground: a grassy oval ringed by tree-lined banks, with the 1925 Museum Stand pavilion, the 1980 RA Vance Stand and the hand-lettered 'ransom note' scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 206,
+        "depth_m": 176,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "cricket-ground"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5dfd0",
+          "#9a9a92",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "Museum Stand (1925) and RA Vance Stand (1980)"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "1925 Museum Stand pavilion, Category II heritage"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "hand-lettered 'ransom note' scoreboard"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "1917 concrete gates with a red-tiled roof"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1868 ground, stands 1925 and 1980",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basin_Reserve",
+          "what": "Caledonian Stand 1868 demolished 1925; Museum Stand opened 1925, Category II; RA Vance Stand 1980 with 2,000 seats; ransom-note scoreboard; 1917 concrete entrance gates with red-tiled roof; ground reoriented as an oval in the late 1970s; capacity about 6,800"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/288996918",
+          "what": "stadium 206 x 176 m"
+        }
+      ],
+      "notes": "Stand history and gates are sourced; colours of stands are not and are estimated. Distinct from Sky Stadium: open oval of grass with low stands, no ring roof, and surrounded by a roundabout."
+    },
+    "wellington-osm-way-395210275": {
+      "venueId": "wellington-osm-way-395210275",
+      "city": "wellington",
+      "name": "Williams Park, Days Bay",
+      "archetype": "park-landscape",
+      "subject": "Williams Park on the Days Bay waterfront: a flat lawn behind a gravel beach, walled on three sides by steep bush-clad slopes, with a small modern pavilion and the ferry wharf",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 290,
+        "depth_m": 128,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#6b7d5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3a2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small modern pavilion replacing the 1897 verandah pavilion burned in 1952"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "Days Bay wharf"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "park 1890s, pavilion post-1952",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Days_Bay",
+          "what": "Williams Park covers 6.5 ha of the level bay floor; bay walled on three sides by steep bush-clad slopes; late-Victorian wooden pavilion of 1897 burned in October 1952, replaced by a small pavilion; Days Bay wharf"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/395210275",
+          "what": "park 290 x 128 m, 22,957 m2"
+        }
+      ],
+      "notes": "Setting is sourced: 6.5 ha lawn, three bush slopes, beach and wharf. Pavilion colours are a guess. The lost 1897 pavilion should not be modelled."
+    },
+    "wellington-osm-way-709886856": {
+      "venueId": "wellington-osm-way-709886856",
+      "city": "wellington",
+      "name": "Silver Stream Railway Museum",
+      "archetype": "transport-station",
+      "subject": "Silver Stream Railway, Upper Hutt: a small heritage station building and short platform with a siding of preserved steam locomotives and old carriages",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "heritage-railway"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d6c8a4",
+          "#7a3b2c",
+          "#f0ece0"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "engine and carriage sheds"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "railway 1967-1986; building 1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Silver_Stream_Railway",
+          "what": "heritage railway on a bypassed section of the Hutt Valley Line; tracklaying from 1977; moved to current site 1984; 1.5 km track opened 15 Feb 1986; steam locomotives including C 132 (1875) and C 847 (1930)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/709886856",
+          "what": "museum building 7 x 3 m"
+        }
+      ],
+      "notes": "Only the railway history is sourced. The platform building appearance is not; shown as a traditional NZR-style timber station. The OSM building is tiny (7 x 3 m); the rail yard with locomotives is the main visual interest."
+    },
+    "wellington-osm-way-762386613": {
+      "venueId": "wellington-osm-way-762386613",
+      "city": "wellington",
+      "name": "Victoria University Coastal Ecology Laboratory",
+      "archetype": "campus-block",
+      "subject": "Victoria University of Wellington Coastal Ecology Laboratory at Island Bay: a single-storey seaside laboratory in cladding and flat roof beside the rocky South Coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8cbc8",
+          "#5f7884",
+          "#eeeeea"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/762386611",
+          "what": "university building, 30 x 26 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7927110",
+          "what": "Wikidata: research facility supporting research in coastal ecology and marine biology"
+        }
+      ],
+      "notes": "Only the footprint and function are known. A salt-exposed, wind-swept coastal lab, typed as clad single-storey building."
+    },
+    "wellington-osm-way-844548436": {
+      "venueId": "wellington-osm-way-844548436",
+      "city": "wellington",
+      "name": "Holy Trinity Anglican Church",
+      "archetype": "shrine-small",
+      "subject": "A small Anglican chapel: a tiny timber gabled church with a corrugated roof and a pair of lancet windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e6e1d3",
+          "#6b5546",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3a2f",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "small finial at gable"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/844548436",
+          "what": "Anglican place of worship, 11 x 7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q79301788",
+          "what": "Wikidata: church building in Wellington, New Zealand"
+        }
+      ],
+      "notes": "Tiny OSM footprint (11 x 7 m) and the Anglican denomination are all that is known. Timber, gabled, corrugated-iron is the typical NZ small church, so this is a typed guess."
+    },
+    "wellington-osm-way-895400049": {
+      "venueId": "wellington-osm-way-895400049",
+      "city": "wellington",
+      "name": "Fort Ballance",
+      "archetype": "heritage-fort",
+      "subject": "Fort Ballance on the Miramar peninsula: a grassed 1885 earthwork fort with concrete circular gun pits facing the harbour channel, loopholed walls and musketry parapets",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 98,
+        "depth_m": 42,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "coastal-battery"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8f8f86",
+          "#6b7a4a",
+          "#b5b2a6"
+        ],
+        "roofColour": "#8f8f86",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "earth mounds shielding barracks and magazines"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "loopholed walls and musketry parapet"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1885",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Ballance",
+          "what": "built 1885 amid fears of war with Russia; follows spur contours; concrete used early as a building material; five concrete circular or semi-circular gun pits facing the channel; guns removed; loopholed walls; Category 1 historic place"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/895400049",
+          "what": "historic=castle, 98 x 42 m"
+        }
+      ],
+      "notes": "Layout and materials are sourced. The 5 gun pits are circular concrete rings dug into grassy earth mounds; guns are gone, so no cannons. Exposed windy coast, no trees."
+    },
+    "wellington-quiet-reflection": {
+      "venueId": "wellington-quiet-reflection",
+      "city": "wellington",
+      "name": "St Matthias Anglican Church",
+      "archetype": "shrine-small",
+      "subject": "St Matthias Anglican Church, a small historic timber church on a quiet coastal road: gabled nave, corrugated iron roof and a short porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e8e4d6",
+          "#5b4636",
+          "#ffffff"
+        ],
+        "roofColour": "#6d7276",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "cross or finial on gable"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/326476205",
+          "what": "place of worship, 15 x 6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q79312101",
+          "what": "Wikidata: church building and historic building in Wellington"
+        }
+      ],
+      "notes": "Only the footprint and heritage status are known. A typed small timber Gothic Revival country church; keep it a different colour from Holy Trinity."
+    },
+    "wellington-recreation": {
+      "venueId": "wellington-recreation",
+      "city": "wellington",
+      "name": "Oku Street Reserve",
+      "archetype": "park-landscape",
+      "subject": "Oku Street Reserve: a broad grassy public reserve on the steep south coast hills of Wellington with scattered shrubs and a gravel path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#6b7d5a",
+          "#b0aea8"
+        ],
+        "roofColour": "#8a3a2f",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/26585828",
+          "what": "leisure=park, 445 x 252 m, 80,135 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q130530145",
+          "what": "Wikidata: public reserve in Wellington"
+        }
+      ],
+      "notes": "Extent only. Nothing else is documented; kept as open lawn with bush edge and no buildings."
+    },
+    "wellington-transit": {
+      "venueId": "wellington-transit",
+      "city": "wellington",
+      "name": "Crofton Downs Station",
+      "archetype": "transport-station",
+      "subject": "Crofton Downs railway station on the Johnsonville Line: a single side platform with one track, a small passenger shelter and a commuter car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "commuter-halt"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b0aea8",
+          "#3f4348",
+          "#e6e1d3"
+        ],
+        "roofColour": "#3f4348",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "small passenger shelter"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "44-space commuter lot"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1963",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Crofton_Downs_railway_station",
+          "what": "single side platform with passenger shelter; Johnsonville Line; opened 1963; one main-line track on a curve; Mitre 10 store and a 44-space commuter car park behind"
+        }
+      ],
+      "notes": "Station arrangement is sourced. Note the OSM building at the position is Crofton Downs Veterinary Clinic, which is not the station. Mitre 10 store behind (blank sign only)."
+    }
+  }
+}

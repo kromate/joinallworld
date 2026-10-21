@@ -1,0 +1,590 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rood_Woko_Ouagadougou_2013b.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sputniktilt",
+   "view": "street",
+   "file": "/tmp/places-evidence/ouagadougou/rw2.jpg",
+   "used": "red laterite-brick walls with arched openings, stepped lean-to shop rows under sloping corrugated roofs, big angular concrete folded canopies on pillars above, parked cars and awnings at street"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rood_Woko_Ouagadougou_2013.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Sputniktilt",
+   "view": "front",
+   "file": "/tmp/places-evidence/ouagadougou/rw1.jpg",
+   "used": "long raised concrete-roofed arcaded block on pillars, brick block with flat roof, brick paving, trees around"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19187967",
+   "used": "overall footprint of the complex"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-ring",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a85a40",
+    "windows": "none",
+    "windowRatio": 0.02,
+    "bay": 9,
+    "plinth": 0.4,
+    "bands": "#8d4a35"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b59a78",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "surface",
+   "id": "hall-0",
+   "at": [
+    -30,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "folded",
+    "width": 26,
+    "depth": 18,
+    "rise": 5,
+    "folds": 3,
+    "z": 11,
+    "thickness": 0.6,
+    "colour": "#b59a78",
+    "material": "concrete",
+    "edgeColour": "#9c8260",
+    "underColour": "#a08a6c",
+    "foldAxis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "pil-0",
+     "params": {
+      "n": 8,
+      "radius": 0.7,
+      "height": 4.5,
+      "z0": 6.5,
+      "colour": "#b8a487",
+      "material": "concrete"
+     }
+    },
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 11,
+    "dy": 11
+   },
+   "at": [
+    -30,
+    10
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "hall-1",
+   "at": [
+    0,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "folded",
+    "width": 26,
+    "depth": 18,
+    "rise": 5,
+    "folds": 3,
+    "z": 11,
+    "thickness": 0.6,
+    "colour": "#b59a78",
+    "material": "concrete",
+    "edgeColour": "#9c8260",
+    "underColour": "#a08a6c",
+    "foldAxis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "pil-1",
+     "params": {
+      "n": 8,
+      "radius": 0.7,
+      "height": 4.5,
+      "z0": 6.5,
+      "colour": "#b8a487",
+      "material": "concrete"
+     }
+    },
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 11,
+    "dy": 11
+   },
+   "at": [
+    0,
+    5
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "surface",
+   "id": "hall-2",
+   "at": [
+    30,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "kind": "folded",
+    "width": 26,
+    "depth": 18,
+    "rise": 5,
+    "folds": 3,
+    "z": 11,
+    "thickness": 0.6,
+    "colour": "#b59a78",
+    "material": "concrete",
+    "edgeColour": "#9c8260",
+    "underColour": "#a08a6c",
+    "foldAxis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "id": "pil-2",
+     "params": {
+      "n": 8,
+      "radius": 0.7,
+      "height": 4.5,
+      "z0": 6.5,
+      "colour": "#b8a487",
+      "material": "concrete"
+     }
+    },
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 11,
+    "dy": 11
+   },
+   "at": [
+    30,
+    0
+   ],
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "terrace-0",
+     "footprint": {
+      "rect": [
+       8,
+       6
+      ]
+     },
+     "height": 3.2,
+     "wall": {
+      "material": "brick",
+      "colour": "#a85a40",
+      "windows": "none",
+      "windowRatio": 0.02
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 1.6,
+      "overhang": 0.5,
+      "colour": "#b59a78",
+      "material": "concrete"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -30
+    ],
+    "end": [
+     40,
+     -30
+    ],
+    "count": 7,
+    "lod1Step": 3,
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "terrace-1",
+     "footprint": {
+      "rect": [
+       8,
+       6
+      ]
+     },
+     "height": 4.6,
+     "wall": {
+      "material": "brick",
+      "colour": "#a24f38",
+      "windows": "none",
+      "windowRatio": 0.02
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 1.6,
+      "overhang": 0.5,
+      "colour": "#b59a78",
+      "material": "concrete"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -22
+    ],
+    "end": [
+     40,
+     -22
+    ],
+    "count": 7,
+    "lod1Step": 3,
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "terrace-2",
+     "footprint": {
+      "rect": [
+       8,
+       6
+      ]
+     },
+     "height": 6.0,
+     "wall": {
+      "material": "brick",
+      "colour": "#a85a40",
+      "windows": "none",
+      "windowRatio": 0.02
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 1.6,
+      "overhang": 0.5,
+      "colour": "#b59a78",
+      "material": "concrete"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     -14
+    ],
+    "end": [
+     40,
+     -14
+    ],
+    "count": 7,
+    "lod1Step": 3,
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "lean",
+     "footprint": {
+      "rect": [
+       7,
+       3
+      ]
+     },
+     "height": 3.0,
+     "wall": {
+      "material": "brick",
+      "colour": "#b5654a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "shed",
+      "high": "back",
+      "rise": 1.0,
+      "overhang": 0.6,
+      "colour": "#b7864e",
+      "material": "corrugated"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -38,
+     -46
+    ],
+    "end": [
+     34,
+     -46
+    ],
+    "count": 5,
+    "lod1Step": 3,
+    "lod2Step": 7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "colours": [
+     "#e0b030",
+     "#2f7fb5"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    12,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "colours": [
+     "#c8362f",
+     "#efe8d8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -40,
+    -62,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#e0b030",
+     "#2f7fb5",
+     "#c8362f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -55,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 4,
+    "colour": "#2f7fb5"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 9,
+    "colours": [
+     "#e0b030",
+     "#2f7fb5",
+     "#c8362f",
+     "#efe8d8"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -48,
+    -58,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "colours": [
+     "#e0b030",
+     "#c8362f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -40,
+    -70,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 2.8,
+    "yaw": 90,
+    "colour": "#6d8fa0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -8,
+    -70,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 2.8,
+    "yaw": 90,
+    "colour": "#4a5565"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    24,
+    -70,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 2.8,
+    "yaw": 90,
+    "colour": "#cfd3d6"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -66
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -66
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopies are ochre folded slabs on pillars but not the pointed winged gables; ring brick arches not cut and terraces are simple lean-tos; cars are low-detail blocks; OSM outline simplified."
+ }
+}

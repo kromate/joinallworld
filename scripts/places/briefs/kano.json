@@ -1,0 +1,1922 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kano",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kano",
+    "climate": "savanna",
+    "vernacular": "Ancient walled Hausa city in the Sudano-Sahelian tubali tradition: ochre-brown mud-render (laterite-and-straw) compounds with flat roofs, horn-like corner pinnacles (zankwaye) and a decorated gatehouse (zaure) at each house; the old city is ringed by earth walls about 9 m high with gates (kofa); outside it, colonial Sabon Gari and Nassarawa have painted-sandcrete shophouses and bungalows, and the modern city is concrete and corrugated tin under neem and date palms on dusty laterite.",
+    "wallColours": [
+      "#b58a5e",
+      "#c9a27a",
+      "#d8bf9a",
+      "#9c7650",
+      "#e8e0cf",
+      "#a8a39a",
+      "#5f8f6a"
+    ],
+    "roofColours": [
+      "#8a8f94",
+      "#7a4a38",
+      "#a05a3c",
+      "#a9805a",
+      "#5b6670"
+    ],
+    "wallMaterials": [
+      "mud-render",
+      "render",
+      "painted-render",
+      "concrete",
+      "laterite",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Hausa facade relief (zane) hand-carved in mud or cement render around the zaure and doors: interlaced knots (dagi), staff-of-office and sword motifs, geometric bands; horn-like corner pinnacles (zankwaye) and crenellated parapets on palace, gates and mosques; indigo-dyed cloth hung in the old city; hand-painted shop signs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+        "what": "Sudanian savanna Koppen Aw climate, ~480 m elevation, Tubali Sudano-Sahelian architecture, city walls begun by King Gijimasu and about 30 ft (9 m) high in Barth 1851, most gates survive"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+        "what": "laterite earth walls plastered, relief decoration surface designs/ornament/calligraphy, rain erosion, tin mosque roofs"
+      },
+      {
+        "url": "https://rpublc.com/vol8-no4/northern-architecture",
+        "what": "northern Nigerian architecture overview (search result, snippet only)"
+      },
+      {
+        "url": "https://archnet.org/sites/3778",
+        "what": "Gidan Rumfa: zaure gatehouses and zankwaye pinnacles (search result summary)"
+      },
+      {
+        "url": "https://muse.jhu.edu/article/250411/pdf",
+        "what": "Hausa urban art: external house decorations (search result, motifs such as dagi knot, staff and sword)"
+      }
+    ]
+  },
+  "places": {
+    "airport": {
+      "venueId": "airport",
+      "city": "kano",
+      "name": "Mallam Aminu Kano International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Mallam Aminu Kano International Airport: the main terminal with an integrated control tower between the two runways, seen from the landside, with a newer domestic terminal beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d2",
+          "#7fa3b5",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower is part of the main terminal"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mallam_Aminu_Kano_International_Airport",
+          "what": "two terminals between the runways, control tower within main terminal, newer domestic terminal commissioned 2011, runways 2,451 m and 3,301 m"
+        },
+        {
+          "url": "https://von.gov.ng/aviation-minister-commissions-remodeled-terminal-at-kano-international-airport/",
+          "what": "remodelled domestic terminal (Muhammadu Adamu Dankabo) commissioned"
+        }
+      ],
+      "notes": "Terminal count and tower position are documented; dimensions, colours and facade are estimated. Former RAF Kano site; the main terminal is 1970s-era with a later remodelling."
+    },
+    "buk-new": {
+      "venueId": "buk-new",
+      "city": "kano",
+      "name": "Bayero University — New Campus",
+      "archetype": "campus-block",
+      "subject": "Bayero University new campus (Janguza Road): wide pale blocks around the Main Library and the 2025 International Conference Centre, set in a planned grid of landscaped avenues",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e0cf",
+          "#4f8f9a",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "conference centre entrance"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "new site gate"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bayero_University_Kano",
+          "what": "new campus about 12.8 km out on Kano-Gwarzo Road, Main Library, new site gate, main thoroughfare, international conference centre commissioned 15 August 2025"
+        }
+      ],
+      "notes": "Wikipedia lists a main thoroughfare, gate, Main Library and conference centre but no appearance. Shape and colours are estimates. Distinguish from the old campus by newer, larger, more glassy blocks."
+    },
+    "buk-old": {
+      "venueId": "buk-old",
+      "city": "kano",
+      "name": "Bayero University — Old Campus",
+      "archetype": "campus-block",
+      "subject": "Bayero University old campus (BUK Road): older low-rise teaching blocks and the Sciences Library behind the remodelled main gate, in cream render with deep shaded walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#8a6544",
+          "#bfb9aa"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "remodelled main gate"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bayero_University_Kano",
+          "what": "old campus on BUK Road, Sciences Library, main gate remodelled 2025"
+        }
+      ],
+      "notes": "Only the Sciences Library and the gate are documented. Typed as a 1960s colonial-college campus block."
+    },
+    "central-mosque": {
+      "venueId": "central-mosque",
+      "city": "kano",
+      "name": "Kano Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Kano Central Mosque (Ado Bayero Friday mosque near the Emir's palace): a large rebuilt 1960s mosque with a big central dome, seven domes in all, and two 20 m minarets inside a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#efe9d8",
+          "#3f7a58",
+          "#cfc8b6"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "dome",
+          "count": 6,
+          "note": "six smaller domes (seven total)"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 20 m each"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Kano",
+          "what": "15th-century origin, moved 1582, rebuilt mid-19th century, destroyed 1950s, rebuilt with British sponsorship; infobox 7 domes, 2 minarets of 20 m; surrounding wall with gate"
+        },
+        {
+          "url": "https://www.thecable.ng/?p=35584",
+          "what": "the mosque near the Emir's palace where Friday prayers are led (news report)"
+        }
+      ],
+      "notes": "Dome and minaret counts and the walled compound are from Wikipedia; dome colour and facade colours are NOT documented and are estimated. Not the old mud soro tower mosque: the current building is the post-1950s concrete one. Relation of the venue coordinates to the Great Mosque is plausible but not confirmed."
+    },
+    "community-house": {
+      "venueId": "community-house",
+      "city": "kano",
+      "name": "Kano Community House",
+      "archetype": "civic-small",
+      "subject": "Kano Community House: a modest single-storey community hall with a gable roof, side verandas and a painted signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#5f8f6a",
+          "#bfb9aa"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. No real counterpart found."
+    },
+    "community-polling": {
+      "venueId": "community-polling",
+      "city": "kano",
+      "name": "Kano Community Polling Room",
+      "archetype": "civic-small",
+      "subject": "Kano Community Polling Room: a small rendered polling hall with open sides and a hand-painted board, a few folding tables outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0cf",
+          "#a05a3c",
+          "#bfb9aa"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. No real counterpart found."
+    },
+    "dala-hill": {
+      "venueId": "dala-hill",
+      "city": "kano",
+      "name": "Dala Hill",
+      "archetype": "park-landscape",
+      "subject": "Dala Hill: the bare residual granite hill beside the old city with a worn stair path and the shrine ruins on top, looking down over mud-roofed compounds",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 60,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#8a8279",
+          "#6f685f",
+          "#a39b8f"
+        ],
+        "roofColour": "#8a8279",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stairway up the hill (about 101 steps reported)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dala_Hill",
+          "what": "Dala is a residual hill, listed at 534 m (above sea level), stairway of about 101 steps, shrine to Tsumburbura on its slope"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+          "what": "Dala Hill is the residual hill that gave the city its name; walls were begun at its foot"
+        }
+      ],
+      "notes": "Wikipedia's 534 m is elevation above sea level, not relative height; the hill rises roughly 100 m above the plain. The model uses only a recognisable 60 m scene portion of the rounded rock hill."
+    },
+    "dye-pits": {
+      "venueId": "dye-pits",
+      "city": "kano",
+      "name": "Kofar Mata Dye Pits",
+      "archetype": "market-open",
+      "subject": "Kofar Mata Dye Pits: rows of deep circular vats set in the ground beside the old city wall, indigo cloth drying on lines and dyers in small mud sheds",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "laterite",
+        "colours": [
+          "#b58a5e",
+          "#2f3f6b",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low mud wall"
+        },
+        {
+          "id": "sheds",
+          "count": 3,
+          "note": "small dyers' sheds"
+        },
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "city wall behind"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "hausa-arewa",
+      "era": "15th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kofar_Mata_Dye_Pits",
+          "what": "deep circular vats dug into the ground holding fermented natural indigo, near the Kofar Mata gate of the city walls"
+        },
+        {
+          "url": "https://www.historynewsnetwork.org/article/38148",
+          "what": "about 100+ pits, many disused; indigo, ash and potash brewed in a shaft about six feet deep"
+        }
+      ],
+      "notes": "Pit form and gate proximity documented; the cloth is deep indigo blue (#2f3f6b) hanging in the foreground. Pits are roughly 1.5 m across and about 2 m deep."
+    },
+    "film-workshop": {
+      "venueId": "film-workshop",
+      "city": "kano",
+      "name": "Sabon Gari Film Workshop",
+      "archetype": "office-low",
+      "subject": "Sabon Gari Film Workshop: a converted two-storey painted-sandcrete shophouse used as a studio, with a rolled shutter, a hand-painted board and a flat roof terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c7a0",
+          "#5f8f6a",
+          "#a8a39a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. Shares placeholder coordinates with the tea garden; no real counterpart found."
+    },
+    "goron-dutse": {
+      "venueId": "goron-dutse",
+      "city": "kano",
+      "name": "Goron Dutse Hill",
+      "archetype": "park-landscape",
+      "subject": "Goron Dutse Hill: a rounded rocky outcrop on the north-west edge of old Kano with scrub, thorn trees and a footpath up the rock",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 40,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#8a8279",
+          "#6f685f",
+          "#a39b8f"
+        ],
+        "roofColour": "#8a8279",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "worn path"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+          "what": "Kano is a savanna city dotted with rocky hills (Dala, Goron Dutse); nothing specific for Goron Dutse"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Shorter and less steep than Dala Hill; typed natural outcrop."
+    },
+    "kofar-kabuga": {
+      "venueId": "kofar-kabuga",
+      "city": "kano",
+      "name": "Kofar Kabuga — Historic Site",
+      "archetype": "heritage-fort",
+      "subject": "Kofar Kabuga: a gate through the old Kano city wall, a stout mud-render gatehouse with a rounded arch, crenellated top and a stretch of the earth rampart",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "laterite",
+        "colours": [
+          "#b58a5e",
+          "#d8bf9a",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arched city gate"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "earth wall about 9 m"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "hausa-arewa",
+      "era": "medieval",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+          "what": "city walls begun by King Gijimasu, about 30 ft (9 m) high per Barth 1851, most gates survive"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gidan_Makama_Museum_Kano",
+          "what": "Kofar Kabuga gate is one of the city-wall gates, featured in a museum gallery"
+        }
+      ],
+      "notes": "The wall height is from Barth (via Wikipedia); the gate shape is a typical Kano kofa. Differs from Kofar Mata (rectangular tower gatehouse) and Kofar Nassarawa (low arched opening with wall stub)."
+    },
+    "kofar-mata": {
+      "venueId": "kofar-mata",
+      "city": "kano",
+      "name": "Kofar Mata",
+      "archetype": "heritage-fort",
+      "subject": "Kofar Mata: the Women's Gate of old Kano, a rectangular tower-gate in the mud city wall with a flat top, twin corner pinnacles and a deep passage, beside the dye pits",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "laterite",
+        "colours": [
+          "#b58a5e",
+          "#d8bf9a",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "zankwaye horn pinnacles"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "hausa-arewa",
+      "era": "medieval",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kofar_Mata_Dye_Pits",
+          "what": "dye pits stand near the historic Kofar Mata gate of the city walls"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+          "what": "most of the old city gates survive; walls about 30 ft high"
+        }
+      ],
+      "notes": "Gate position and wall are documented; tower form and pinnacles are typical Hausa gate design, assumed. Kofar Mata means Gate of the Women."
+    },
+    "kofar-nassarawa": {
+      "venueId": "kofar-nassarawa",
+      "city": "kano",
+      "name": "Kofar Nassarawa",
+      "archetype": "heritage-fort",
+      "subject": "Kofar Nassarawa: a gate through the old Kano wall at the Nassarawa road, a wide arched gate opening in a plain mud-and-cement wall with a stub of rampart on each side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "render",
+        "colours": [
+          "#b58a5e",
+          "#c9bfa5",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "hausa-arewa",
+      "era": "medieval",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+          "what": "most old city gates survive; walls about 30 ft high; Nassarawa lies outside the old city"
+        }
+      ],
+      "notes": "Gate type is assumed; wall height from Wikipedia. Wider and lower than Kofar Mata, with a repaired cement-render look."
+    },
+    "kurmi-market": {
+      "venueId": "kurmi-market",
+      "city": "kano",
+      "name": "Kurmi Market",
+      "archetype": "market-open",
+      "subject": "Kurmi Market: a quadrangle of 755 small clay-walled stalls laid out as irregular lanes with tin roofs, a mosque and a courthouse, in the oldest market of Kano",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b58a5e",
+          "#8a8f94",
+          "#8a6544"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60,
+          "note": "rows of clay stalls"
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 20
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "lock-ups",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "hausa-arewa",
+      "era": "20th century (market rebuilt 1909)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurmi_Market",
+          "what": "quadrangle shape, bamboo stalls originally; new market opened 1909 with 755 clay stalls, a mosque and a courthouse; cattle trade on west edge"
+        }
+      ],
+      "notes": "Layout and 1909 clay stalls are from Wikipedia; present-day tin roofs and cement repairs are assumed. Lanes are narrow and shaded; recognisable as clay-wall stalls rather than concrete shops."
+    },
+    "kwari-market": {
+      "venueId": "kwari-market",
+      "city": "kano",
+      "name": "Kantin Kwari Textile Market",
+      "archetype": "market-hall",
+      "subject": "Kantin Kwari Textile Market: dense multi-storey blocks of narrow lock-up shops with painted shutters, signboards and awnings, jammed along lanes in the largest textile market in northern Nigeria",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e0cdaa",
+          "#a05a3c",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 20
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://21stcenturychronicle.com/?p=49093",
+          "what": "Kantin Kwari is the largest market in northern Nigeria, textiles incl. Ankara and brocade (search result, snippet only)"
+        },
+        {
+          "url": "https://dailytrust.com/?p=977617",
+          "what": "fire destroyed 500+ shops; shops built indiscriminately; poor access for fire service (search result, snippet only)"
+        }
+      ],
+      "notes": "Only function and density are documented. Floor counts and facade colours are estimates; dense lock-up blocks make this visibly different from the open clay-stall Kurmi market."
+    },
+    "museum": {
+      "venueId": "museum",
+      "city": "kano",
+      "name": "Gidan Makama Museum",
+      "archetype": "museum-theatre",
+      "subject": "Gidan Makama Museum: the 15th-century mud-walled residence of the Makama beside the Emir's palace, entered through the zaure gatehouse into courtyards, with two old cannons at the gate",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "laterite",
+        "colours": [
+          "#b58a5e",
+          "#d8bf9a",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "punched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "zaure entrance hall"
+        },
+        {
+          "id": "cannon",
+          "count": 2,
+          "note": "two colonial cannons at the entrance"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "zankwaye corner horns"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "hausa-arewa",
+      "era": "15th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gidan_Makama_Museum_Kano",
+          "what": "mud walls typical of Hausa tradition, rooms and courtyards of the old Makamas, main entrance hall is the zaure, two cannons at the entrance gates, courtyard used for performances"
+        },
+        {
+          "url": "https://archnet.org/sites/3778",
+          "what": "zaure and zankwaye pinnacle forms in Kano palace architecture"
+        }
+      ],
+      "notes": "Mud walls, zaure entrance, courtyards and two cannons are documented. Plan size (about 60 x 45 m), height and pinnacle placement are estimates; the wider compound has modern repair work."
+    },
+    "nassarawa-clinic": {
+      "venueId": "nassarawa-clinic",
+      "city": "kano",
+      "name": "Gama Community Clinic",
+      "archetype": "hospital",
+      "subject": "Gama Community Clinic: a small single-storey primary clinic with a verandah, red-cross board and a waiting shade",
+      "form": {
+        "footprint": "L",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#4f8f7a",
+          "#bdb7a6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    },
+    "nassarawa-garden": {
+      "venueId": "nassarawa-garden",
+      "city": "kano",
+      "name": "Gama Community Garden",
+      "archetype": "park-landscape",
+      "subject": "Gama Community Garden: a walled neighbourhood garden with vegetable beds, shade trees and a thatched pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#b58a5e",
+          "#7aa05a",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    },
+    "nassarawa-kitchen": {
+      "venueId": "nassarawa-kitchen",
+      "city": "kano",
+      "name": "Gama Tuwo and Masa Kitchen",
+      "archetype": "restaurant",
+      "subject": "Gama Tuwo and Masa Kitchen: a small eatery with a front awning, open cooking area, benches and a hand-painted board selling tuwo and masa",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e0cdaa",
+          "#a05a3c",
+          "#8a6544"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    },
+    "nassarawa-salon": {
+      "venueId": "nassarawa-salon",
+      "city": "kano",
+      "name": "Gama Neighbourhood Salon",
+      "archetype": "shophouse",
+      "subject": "Gama Neighbourhood Salon: a one-room roadside shopfront in painted sandcrete with a rolled shutter, awning and a hand-painted mirror sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c7a0",
+          "#5f8f6a",
+          "#8a6544"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    },
+    "nassarawa-savings": {
+      "venueId": "nassarawa-savings",
+      "city": "kano",
+      "name": "Gama Savings Hall",
+      "archetype": "office-low",
+      "subject": "Gama Savings Hall: a small rendered cooperative savings hall with a covered porch, barred windows and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0cf",
+          "#5f8f6a",
+          "#a8a39a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    },
+    "palace": {
+      "venueId": "palace",
+      "city": "kano",
+      "name": "Gidan Rumfa — Exterior Gate",
+      "archetype": "heritage-fort",
+      "subject": "Gidan Rumfa, the Emir's palace of Kano: the Kofar Kudu gatehouse (zaure) in the palace wall, a decorated mud-render gate with a crenellated top and corner pinnacles, wall up to 4.6 m high",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#b58a5e",
+          "#e8e0cf",
+          "#8a6544"
+        ],
+        "roofColour": "#a9805a",
+        "roofMaterial": null,
+        "windows": "punched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Kofar Kudu southern gatehouse"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "zankwaye"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "incised zane patterns round the gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "palace wall up to 4.6 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "15th-19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gidan_Rumfa",
+          "what": "Kofar Kudu is one of three palace gates, built by Emir Abdullahi Maje Karofi in the 19th century; palace about 13 ha, rectangular, open plan, walls up to 4.6 m high"
+        },
+        {
+          "url": "https://archnet.org/sites/3778",
+          "what": "each gate is a zaure gatehouse; side gatehouses echo the central crenellations and corner pinnacles"
+        }
+      ],
+      "notes": "Gate identity, wall height and palace size are documented. Colours (ochre mud-render with lighter cement-wash highlights) and the gatehouse dimensions are estimated. The whole palace is 13 ha: only the gate is shown."
+    },
+    "polo-ground": {
+      "venueId": "polo-ground",
+      "city": "kano",
+      "name": "Kano Polo Ground",
+      "archetype": "park-landscape",
+      "subject": "Kano Polo Ground: a long open grass polo field with a low clubhouse pavilion, a covered viewing terrace and rows of neem trees at the boundary",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe8d6",
+          "#5f8f6a",
+          "#a8a39a"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small covered stand"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Kano Polo Club is colonial-era; ground size is a standard polo field scaled down, only the nearest portion modelled."
+    },
+    "racecourse": {
+      "venueId": "racecourse",
+      "city": "kano",
+      "name": "Kano Racecourse",
+      "archetype": "park-landscape",
+      "subject": "Kano Racecourse: a large oval dirt-and-grass track with a low grandstand pavilion, white rails and shade trees",
+      "form": {
+        "footprint": "oval",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d6",
+          "#a05a3c",
+          "#a8a39a"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small grandstand"
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "white rail round track"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. A colonial-era racecourse; typed as an oval track with a modest grandstand."
+    },
+    "railway-station": {
+      "venueId": "railway-station",
+      "city": "kano",
+      "name": "Kano Railway Station",
+      "archetype": "transport-station",
+      "subject": "Kano Railway Station: the terminus of the Baro-Kano line (opened 1912), a long low colonial station building with a veranda, platform canopy and rail tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#efe8d6",
+          "#a24a32",
+          "#bfb9aa"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1912",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baro-Kano_Railway_Station",
+          "what": "Baro-Kano railway built 1908-11, opened to traffic 1912; no description of the station building"
+        }
+      ],
+      "notes": "Only the date is documented; form is the typical Nigerian Railway Corporation station: long single-storey block with a canopy to the platform and tracks. A clock tower is assumed and may be removed."
+    },
+    "road-hub": {
+      "venueId": "road-hub",
+      "city": "kano",
+      "name": "Kano Road Transport Hub",
+      "archetype": "transport-station",
+      "subject": "Kano Road Transport Hub: an open motor park with rows of bus bays, loading sheds, ticket kiosks and hand-painted route boards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#8a8f94",
+          "#a05a3c",
+          "#d6d0c0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    },
+    "sabon-market": {
+      "venueId": "sabon-market",
+      "city": "kano",
+      "name": "Sabon Gari Market",
+      "archetype": "market-hall",
+      "subject": "Sabon Gari Market: a colonial-era trading block of two-storey painted shops with deep covered walkways and corrugated roofs on a grid of lanes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c7a0",
+          "#a05a3c",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 8
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kano_(city)",
+          "what": "Sabon Gari is the colonial-era 'new town' quarter outside the old walled city"
+        }
+      ],
+      "notes": "Only the quarter's character is documented (Sabon Gari = new town of the colonial period); building form is typed. Pitched corrugated roofs distinguish it from the flat-roofed Kantin Kwari blocks."
+    },
+    "stadium": {
+      "venueId": "stadium",
+      "city": "kano",
+      "name": "Sani Abacha Stadium",
+      "archetype": "stadium",
+      "subject": "Sani Abacha Stadium (Kano Pillars home): the 16,000-seat bowl opened in 1998 and used for the 1999 World Youth Championship and 2000 African Cup of Nations, with two-tier concrete stands and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 165,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#c9c4b6",
+          "#2f6b4f",
+          "#a8a29a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sani_Abacha_Stadium",
+          "what": "16,000 capacity, opened 1998, football and athletics, grass pitch, hosted 1999 FIFA World Youth Championship, 2000 African Cup of Nations, 2009 U-17 World Cup"
+        }
+      ],
+      "notes": "Capacity and year are documented; stands, roof and colours are estimates. Different from the Ahmadu Bello Stadium in Kaduna by its 1998 build and more regular two-tier bowl."
+    },
+    "tea-garden": {
+      "venueId": "tea-garden",
+      "city": "kano",
+      "name": "Sabon Gari Tea and Suya Garden",
+      "archetype": "park-landscape",
+      "subject": "Sabon Gari Tea and Suya Garden: a walled courtyard garden with plastic tables under umbrellas, a suya grill kiosk and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0cdaa",
+          "#7aa05a",
+          "#a05a3c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue with no real-world counterpart (placeholder coordinates shared with other Gama venues): typed from the city style. "
+    }
+  }
+}

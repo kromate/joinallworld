@@ -1,0 +1,1383 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "pristina",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "pristina",
+    "climate": "temperate",
+    "vernacular": "Mixed city: Ottoman-era mosques with stone domes and slim minarets and a few old stone-and-timber houses; Yugoslav-era concrete blocks and brutalist/modernist public buildings (Rilindja tower, National Library with its 99 domes under a metal mesh); post-1999 reinforced-concrete houses and apartment blocks with infill brick, often left unrendered or painted in pale pastels, with red or grey tile and metal roofs; newer glass-and-render offices, malls and university buildings.",
+    "wallColours": [
+      "#d9cdb8",
+      "#e6e0d0",
+      "#b5ab98",
+      "#b0603f",
+      "#c8c0b0",
+      "#9a9a96",
+      "#e8d9a8"
+    ],
+    "roofColours": [
+      "#a8553a",
+      "#7d7f80",
+      "#6e5a4a",
+      "#8a4a37"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "brick",
+      "exposed-concrete",
+      "painted-render",
+      "stone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Ottoman-derived domes and pencil minarets on mosques; Yugoslav modernist concrete grids and brutalist massing; metal-mesh clad domes of the National Library; rough unrendered brick infill on concrete frames; marble paving on central squares.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Kosovo",
+        "what": "Ottoman mosques with prayer hall, porch, minaret and cupola; Yugoslav-era modernism and brutalism; National Library with domes; kulla stone towers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Library_of_Kosovo",
+        "what": "99 domes of various sizes, exterior covered in metal mesh, about 16,500 m2, inaugurated 1982 (Mutnjakovic)"
+      }
+    ]
+  },
+  "places": {
+    "pristina-airport-pristina-airport": {
+      "venueId": "pristina-airport-pristina-airport",
+      "city": "pristina",
+      "name": "Priština Adem Jashari International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2013 terminal at Adem Jashari airport seen from the forecourt: a wide two-level glass-and-panel terminal with a flat canopy over the kerb",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d8",
+          "#5d6d7a",
+          "#eef0f1"
+        ],
+        "roofColour": "#aeb4b7",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "gate count rose from 8 to 12 in 2024"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pristina_International_Airport",
+          "what": "new 42,000 m2 terminal inaugurated 2013; gates rose from 8 to 12 in July 2024; earlier renovations 2002 and 2009"
+        }
+      ],
+      "notes": "Size from the 42,000 m2 floor area over two levels; facade materials and colours are estimates for a 2010s terminal. The airport sits on open plateau land with little vegetation."
+    },
+    "pristina-clinic": {
+      "venueId": "pristina-clinic",
+      "city": "pristina",
+      "name": "University Clinic of the Republic of Kosovo",
+      "archetype": "hospital",
+      "subject": "Kosovo University Clinical Centre: a big campus of multi-storey Yugoslav-era hospital blocks with a taller central block and ambulance bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 38,
+        "storeys": 9,
+        "height_m": 34,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d2c6",
+          "#4f6f8a",
+          "#eef0f1"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-community-notices": {
+      "venueId": "pristina-community-notices",
+      "city": "pristina",
+      "name": "Ndërtesa Qeveritare (Ish-Rilindja)",
+      "archetype": "office-tower",
+      "subject": "The former Rilindja newspaper tower in central Pristina, now the Government building: a tall slab tower on a lower podium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 20,
+        "height_m": 75,
+        "roof": "flat",
+        "wings": 1,
+        "variant": "slab-tower on podium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b5ab98",
+          "#7f8f9a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1,
+          "note": "lower service wing"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The Rilindja building is a well-known 1970s high-rise of the Pristina skyline; storeys and height are rough estimates from memory (Wikipedia page could not be fetched). Colours estimated from late-socialist concrete towers."
+    },
+    "pristina-community-voting-game": {
+      "venueId": "pristina-community-voting-game",
+      "city": "pristina",
+      "name": "Gjergj Kastrioti Skënderbeu Square",
+      "archetype": "park-landscape",
+      "subject": "Skanderbeg Square: a broad marble-paved central square with the equestrian statue of Skanderbeg on a pedestal and the war memorial banners",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "marble",
+        "colours": [
+          "#d8d2c0",
+          "#9a9a96",
+          "#f0ece0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "equestrian Skanderbeg on a pedestal, sword pointed down"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2001 statue",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Skanderbeg_Square,_Pristina",
+          "what": "equestrian statue of Skanderbeg (right foreleg raised, sword drawn pointed down), installed 2001, moved to a newer pedestal; war memorial; borders Rugova Square and Mother Teresa Boulevard"
+        }
+      ],
+      "notes": "Statue and memorial are from the source; paving material, extent and the fountain are estimates (the source did not describe paving or fountain). Buildings around the square are not modelled."
+    },
+    "pristina-community-workshop": {
+      "venueId": "pristina-community-workshop",
+      "city": "pristina",
+      "name": "AAB College",
+      "archetype": "campus-block",
+      "subject": "AAB College: a modern four- to five-storey rendered and glazed campus block in Pristina",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2dccb",
+          "#4f6f8a",
+          "#eef0f1"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-market-game": {
+      "venueId": "pristina-market-game",
+      "city": "pristina",
+      "name": "Prishtina Mall",
+      "archetype": "mall",
+      "subject": "Prishtina Mall: a wide two-level shopping centre with a flat roof, front canopy and large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd8cc",
+          "#c25a3a",
+          "#eef0f1"
+        ],
+        "roofColour": "#9a9ea0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-meal-stop": {
+      "venueId": "pristina-meal-stop",
+      "city": "pristina",
+      "name": "Aviano",
+      "archetype": "restaurant",
+      "subject": "Aviano: a roadside restaurant building by the airport road with a pitched roof and a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6e0d0",
+          "#a8553a",
+          "#f4f1e6"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-13027856754": {
+      "venueId": "pristina-osm-node-13027856754",
+      "city": "pristina",
+      "name": "MELI Restaurant",
+      "archetype": "restaurant",
+      "subject": "MELI restaurant: a small restaurant house with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e6e0d0",
+          "#8a6a48",
+          "#f4f1e6"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-1309233007": {
+      "venueId": "pristina-osm-node-1309233007",
+      "city": "pristina",
+      "name": "Instituti i Historisë",
+      "archetype": "campus-block",
+      "subject": "Institute of History: a plain three-storey Yugoslav-era office/research block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d2c6",
+          "#9a9a96",
+          "#eef0f1"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-14039469490": {
+      "venueId": "pristina-osm-node-14039469490",
+      "city": "pristina",
+      "name": "Te Bicollt",
+      "archetype": "park-landscape",
+      "subject": "Te Bicollt: a rural meadow and woodland spot in the hills north of Pristina with a rough track and a few picnic tables",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a48",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small picnic shelter"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-2163812393": {
+      "venueId": "pristina-osm-node-2163812393",
+      "city": "pristina",
+      "name": "Rochester Insitute of Technology Kosovo (RIT)",
+      "archetype": "campus-block",
+      "subject": "RIT Kosovo (American University in Kosovo): a modern two- to three-storey campus block with glass bays and flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#4f6f8a",
+          "#eef0f1"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-2583709127": {
+      "venueId": "pristina-osm-node-2583709127",
+      "city": "pristina",
+      "name": "Restaurant Mileniumi i Ri",
+      "archetype": "restaurant",
+      "subject": "Mileniumi i Ri: a rural roadside restaurant with a hipped roof and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#a8553a",
+          "#f4f1e6"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-4492345889": {
+      "venueId": "pristina-osm-node-4492345889",
+      "city": "pristina",
+      "name": "bresalc-pllaci",
+      "archetype": "park-landscape",
+      "subject": "Bresalc-Pllaci: an open hillside viewpoint in rolling countryside south-east of Pristina",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9588",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6f6a60",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "open lookout"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-4888253784": {
+      "venueId": "pristina-osm-node-4888253784",
+      "city": "pristina",
+      "name": "Guri i Plakës",
+      "archetype": "park-landscape",
+      "subject": "Guri i Plakës: a stone outcrop (\"old stone\") on a wooded hillside with a footpath",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9588",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6f6a60",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-5072893824": {
+      "venueId": "pristina-osm-node-5072893824",
+      "city": "pristina",
+      "name": "Lum i madh",
+      "archetype": "park-landscape",
+      "subject": "Lum i madh (\"great river\"): a river-side viewpoint on a green bank in the northern hills",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9588",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6f6a60",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "riverside lookout"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-node-6205211786": {
+      "venueId": "pristina-osm-node-6205211786",
+      "city": "pristina",
+      "name": "marec",
+      "archetype": "park-landscape",
+      "subject": "Marec: an open-country viewpoint on a hilltop east of Pristina",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9588",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6f6a60",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-way-1444311509": {
+      "venueId": "pristina-osm-way-1444311509",
+      "city": "pristina",
+      "name": "Kisha e Prezentimit të Nënës Më të Shenjtë të Zotit",
+      "archetype": "church-classical",
+      "subject": "Church of the Presentation of the Most Holy Mother of God: a small Orthodox church with a single dome, a white rendered body and a separate bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#a79f8e",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "drum and dome over the nave"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates. Dedication suggests a Serbian Orthodox church; no building description was found."
+    },
+    "pristina-osm-way-206457190": {
+      "venueId": "pristina-osm-way-206457190",
+      "city": "pristina",
+      "name": "Parku i Qytetit",
+      "archetype": "park-landscape",
+      "subject": "Pristina City Park: a large central park of lawns, avenues of mature trees, a lake or pond and paved promenades",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 380,
+        "depth_m": 260,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a9a4",
+          "#6f8a50",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-way-380982445": {
+      "venueId": "pristina-osm-way-380982445",
+      "city": "pristina",
+      "name": "University for Business and Technology",
+      "archetype": "campus-block",
+      "subject": "UBT campus: a modern multi-storey rendered and glazed university building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2dccb",
+          "#4f6f8a",
+          "#eef0f1"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-way-457642563": {
+      "venueId": "pristina-osm-way-457642563",
+      "city": "pristina",
+      "name": "Tomb of Sultan Murat",
+      "archetype": "shrine-small",
+      "subject": "Tomb (turbe) of Sultan Murad at Mazgit on the Kosovo field: a small domed Ottoman mausoleum in a walled memorial ground",
+      "form": {
+        "footprint": "round",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e6e0d0",
+          "#a79f8e",
+          "#f4f1e6"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "ottoman",
+      "era": "14th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tomb_of_Sultan_Murad",
+          "what": "14th-century turbe built by Bayezid I, called the first example of Ottoman architecture in Kosovo, on the Kosovo field, renovated"
+        }
+      ],
+      "notes": "Date, type and location from the source. Exact shape, size and colours are estimates for a small Ottoman turbe; it stands within a landscaped memorial site."
+    },
+    "pristina-osm-way-571273561": {
+      "venueId": "pristina-osm-way-571273561",
+      "city": "pristina",
+      "name": "St. Nicholas Church",
+      "archetype": "church-classical",
+      "subject": "St Nicholas Church: a small Orthodox church with a dome over the crossing and a modest bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#a79f8e",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-osm-way-617002897": {
+      "venueId": "pristina-osm-way-617002897",
+      "city": "pristina",
+      "name": "Bear Sanctuary Prishtina",
+      "archetype": "park-landscape",
+      "subject": "Bear Sanctuary Pristina: large wooded enclosures with perimeter fencing, a small visitor building and wooden viewing platforms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a48",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter fence"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor building"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing platform"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates."
+    },
+    "pristina-quiet-reflection": {
+      "venueId": "pristina-quiet-reflection",
+      "city": "pristina",
+      "name": "Xhamia Karamanli",
+      "archetype": "mosque-domed",
+      "subject": "Karamanli mosque: a modest village mosque with a small dome over a square prayer hall, a porch and a single slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#efe9dc",
+          "#a79f8e",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single pencil minaret, about 25 m"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered entrance porch"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates. Typical Kosovo village mosque layout per the Architecture of Kosovo page (prayer hall, porch, minaret, cupola)."
+    },
+    "pristina-recreation": {
+      "venueId": "pristina-recreation",
+      "city": "pristina",
+      "name": "Park of Gërmia",
+      "archetype": "park-landscape",
+      "subject": "Germia Park: a wooded recreation area with a large swimming pool complex, picnic meadows, playgrounds, restaurants and a ski lift on beech and oak slopes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 220,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "render",
+        "colours": [
+          "#8a6a48",
+          "#6f8a50",
+          "#e6e0d0"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "restaurants/inns"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Germia_Park",
+          "what": "62 km2 park, oak and beech forest, swimming pool at the start of the 41 ha recreation area, meadows for picnics, playground, sports grounds, three post-war restaurants, roads and parking lots, ski lift"
+        }
+      ],
+      "notes": "Facilities listed from the source; building colours and sizes are estimates. Scene shows the recreation area at the park entrance."
+    },
+    "pristina-transit": {
+      "venueId": "pristina-transit",
+      "city": "pristina",
+      "name": "Prishtinë",
+      "archetype": "transport-station",
+      "subject": "Pristina bus station: a long low terminal building with a platform canopy and bus bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b5ab98",
+          "#4f6f8a",
+          "#e8e4da"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Pristina city style; form, size and colours are estimates. The venue name is only the city name, so the central bus station is assumed."
+    }
+  }
+}

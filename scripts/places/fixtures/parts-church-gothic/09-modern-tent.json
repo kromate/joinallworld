@@ -1,0 +1,79 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "09-modern-tent",
+ "verified": "text",
+ "evidence": [],
+ "note": "part test fixture, not a place",
+ "parts": [
+  {
+   "type": "membrane-roof",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width_front": 20,
+    "width_back": 56,
+    "depth": 44,
+    "eave": 14,
+    "ridge": 26
+   }
+  },
+  {
+   "type": "cross-tower",
+   "at": [
+    -28,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 50,
+    "width": 2.8
+   }
+  },
+  {
+   "type": "cable-stays",
+   "at": [
+    -28,
+    -8,
+    46
+   ],
+   "rotDeg": 0,
+   "params": {
+    "targets": [
+     [
+      22,
+      10,
+      -18
+     ],
+     [
+      26,
+      14,
+      -20
+     ],
+     [
+      30,
+      18,
+      -21
+     ],
+     [
+      34,
+      22,
+      -22
+     ]
+    ],
+    "width": 0.18
+   }
+  }
+ ],
+ "ground": [
+  90,
+  60
+ ],
+ "azimuth": 30
+}

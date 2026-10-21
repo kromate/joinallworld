@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-capital-kids-play-centre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/825847414",
+   "used": "the building footprint (12 x 8 m, containing the venue point) for the play hall; the rest of the enclosure is a modest guess for a fenced kids' play area beside a mall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "play-hall",
+   "footprint": {
+    "polygon": [
+     [
+      -4.7,
+      5.6
+     ],
+     [
+      3.3,
+      6.5
+     ],
+     [
+      4.7,
+      -5.6
+     ],
+     [
+      -3.3,
+      -6.5
+     ]
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b8",
+    "glassColour": "#4f6a78",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#d6573c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f7a82",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    10,
+    6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 6,
+    "colour": "#d6573c",
+    "cap_colour": "#6f7a82"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    10,
+    6.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 2.5,
+    "radius": 1.4,
+    "colours": [
+     "#d6573c",
+     "#f2c14e",
+     "#3d7ab5"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -12,
+     0
+    ],
+    "end": [
+     4,
+     -12,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.25,
+        0.25
+       ],
+       "height": 2.6,
+       "colour": "#3d7ab5"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.25
+    ],
+    "height": 0.25,
+    "colour": "#3d7ab5"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -2,
+     -12,
+     0.5
+    ],
+    "end": [
+     2,
+     -12,
+     0.5
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.3
+       ],
+       "height": 0.1,
+       "colour": "#d6573c"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 2.4,
+    "colour": "#f2c14e"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "colour": "#d6573c",
+    "sections": [
+     {
+      "z": 2.4,
+      "rect": [
+       0.8,
+       0.4
+      ],
+      "cy": 0
+     },
+     {
+      "z": 0.2,
+      "rect": [
+       0.8,
+       0.4
+      ],
+      "cy": -3.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     18
+    ],
+    "height": 0.08,
+    "colour": "#5b8c5a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    4,
+    -6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.1,
+      2.2,
+      "#3d7ab5"
+     ],
+     [
+      1.4,
+      1.8,
+      "#3d7ab5"
+     ],
+     [
+      2.0,
+      0.8,
+      "#3d7ab5"
+     ],
+     [
+      2.2,
+      0,
+      "#3d7ab5"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -19,
+      -14
+     ],
+     [
+      19,
+      -14
+     ],
+     [
+      19,
+      14
+     ],
+     [
+      -19,
+      14
+     ],
+     [
+      -19,
+      -14
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#e6d9b8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.4,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#d6573c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -17,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    17,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   50,
+   36
+  ]
+ }
+}

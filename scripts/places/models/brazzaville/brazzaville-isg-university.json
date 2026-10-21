@@ -1,0 +1,166 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/483285672",
+   "used": "real outline of the institute block (646 m2, 34.7 x 18.6 m, bearing 66)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "bands": "#4a6a8a",
+    "cornice": true,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8c88",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    4.4,
+    -9.9
+   ],
+   "rotDeg": 24,
+   "z0": 0,
+   "height": 11.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a6a8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b4ae9e",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    5.0,
+    -12.2,
+    0
+   ],
+   "rotDeg": 24,
+   "params": {
+    "width": 6,
+    "rise": 1.0,
+    "run": 2.2,
+    "count": 4,
+    "colour": "#b4ae9e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "rotDeg": 24,
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "yaw": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     28
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found of this institute; outline real, 3-storey render block with blue banding and a front stair core typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-isg-university"
+}

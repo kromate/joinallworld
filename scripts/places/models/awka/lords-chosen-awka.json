@@ -1,0 +1,292 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "lords-chosen-awka",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/awka.json",
+   "used": "auditorium with glazed front, tower and car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or OSM outline found; mid-size gabled auditorium with glazed foyer, side tower and parking typed from the brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "auditorium",
+   "footprint": {
+    "rect": [
+     30,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "left": "punched",
+     "right": "punched",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#7a2f4a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "rise": 6.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9ab3c4",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "glassColour": "#6f93ad",
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#7a2f4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a2f4a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wing",
+   "footprint": {
+    "rect": [
+     10,
+     22
+    ]
+   },
+   "at": [
+    -22,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b7f82",
+    "rise": 1.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    17,
+    -19
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bands": "#7a2f4a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a2f4a",
+    "rise": 6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -9,
+     -21
+    ],
+    "end": [
+     9,
+     -21
+    ],
+    "rows": 4,
+    "rise": 0.18,
+    "run": 0.5,
+    "seatColour": "#d9d4c4",
+    "under": "solid"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "car",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#9a9a98",
+      "count": 1,
+      "yaw": 90
+     }
+    },
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 3.4,
+    "dy": 6,
+    "centre": [
+     0,
+     -36
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 9,
+    "colour": "#555a5e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -30,
+    9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "height": 0.5,
+    "colour": "#e8e2cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -30,
+    9
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.4
+    ],
+    "height": 0.5,
+    "colour": "#e8e2cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   70,
+   70
+  ]
+ }
+}

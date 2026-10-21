@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "holy-trinity-world-bank-owerri",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1302283420",
+   "used": "considered (50 x 48 m, containing match, unnamed building tag) but not trusted as the church; brief footprint 30 x 20 used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: neighbourhood church, wide gabled hall, tall frontal gable, short entrance tower with plain cross, cream paint, green roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     30
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6b55",
+    "material": "corrugated",
+    "overhang": 0.9,
+    "rise": 4.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "none",
+    "bands": "#b5654a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6b55",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "rise": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    8,
+    -16
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b55",
+    "rise": 2.5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "count": 4,
+    "colour": "#b5654a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "pillarEvery": 5,
+    "colour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; typical gabled estate church from brief"
+ }
+}

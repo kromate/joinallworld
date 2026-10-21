@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-7848020",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1243998727",
+   "used": "real building outline (94 x 42 m skewed quad, name match, 76 m from the venue point) for the main teaching block"
+  },
+  {
+   "kind": "text",
+   "url": "https://nla.london/projects/richmond-upon-thames-college",
+   "used": "new 12,700 sq m glazed academic building (2020) beside older 1960s-70s brick wings; no exterior photo with licence found (Commons holds only a logo and rugby action shots)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d6dc",
+    "windows": "ribbon",
+    "windowRatio": 0.7,
+    "bands": "#e9e4d8",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "glassColour": "#a9c3d0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9690",
+    "parapet": 0.9,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    -6,
+    -40
+   ],
+   "rotDeg": 20,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9553c",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#d9d2c4",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8580",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    -50,
+    14
+   ],
+   "rotDeg": 20,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5d6368",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "glass-lobby",
+   "at": [
+    20,
+    -28,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "width": 14,
+    "height": 7,
+    "curtain_colour": "#9fb8c4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    32,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#4a4f57"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -64,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -8,
+    -56,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "length": 40,
+    "count": 4,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -60,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    55,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    20,
+    -24,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 3.6,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#d8d6d0",
+    "edgeColour": "#b9b6b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo found: only the OSM outline and a text description (new 12,700 sq m glazed block beside older brick wings). Facade materials, wing placement, link and canopy are plausible but unverified; no invented detail added."
+ }
+}

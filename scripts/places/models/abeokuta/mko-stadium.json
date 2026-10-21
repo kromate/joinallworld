@@ -1,0 +1,465 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Moshood_Abiola_Stadium,_Abokuta6.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lightshot1",
+   "view": "front",
+   "file": "/tmp/places-evidence/abeokuta/mko-stadium-0.jpg",
+   "used": "three-storey yellow front block, green full-height piers with round-hole tops, blank sign board over the piers, grey louvred service bays with dark sheds, open truss above, low brick boundary wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/309336981",
+   "used": "pitch only (110 x 69 m), used for the bowl scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     108,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c548",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "plinth": 0.6,
+    "pattern": [],
+    "glassColour": "#e6eceb",
+    "trimColour": "#f2f2ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     0
+    ],
+    "end": [
+     46,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.2
+      ],
+      "height": 18,
+      "colour": "#9db37a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -17,
+    18
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     0
+    ],
+    "end": [
+     46,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       1.2
+      ],
+      "height": 3.4,
+      "colour": "#9db37a",
+      "topOffset": [
+       1.0,
+       0
+      ],
+      "topScale": [
+       0.8,
+       1
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -17.7,
+    19.4
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45.3,
+     0
+    ],
+    "end": [
+     46.7,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "prism",
+     "params": {
+      "n": 10,
+      "radius": 0.6,
+      "height": 0.3,
+      "colour": "#5a6a5a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -17.8,
+    15.6
+   ],
+   "params": {
+    "width": 28,
+    "height": 2.0,
+    "bottom": 0,
+    "colour": "#8fa86a",
+    "frameColour": "#c8d4a8",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -14,
+    15
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     0
+    ],
+    "end": [
+     50,
+     0
+    ],
+    "count": 26,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 5.5,
+      "colour": "#6f757a",
+      "topOffset": [
+       1.8,
+       0
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -14,
+    20.4
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       100,
+       0.3
+      ],
+      "height": 0.3,
+      "colour": "#6f757a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "service-w",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    -34,
+    -19
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b9b0",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3e3f3d",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-c",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -19
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b9b0",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3e3f3d",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-e",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    40,
+    -19
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b9b0",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "louvres",
+      "faces": "front"
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3e3f3d",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     22
+    ],
+    "radius": 62,
+    "radiusY": 50,
+    "startDeg": 15,
+    "endDeg": 165,
+    "rows": 12,
+    "rise": 0.7,
+    "run": 0.9,
+    "firstHeight": 6,
+    "facetDeg": 12,
+    "under": "open",
+    "seatColour": "#3f7a52",
+    "concreteColour": "#cfc9b4",
+    "underColour": "#a9a590"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 1.0,
+    "thickness": 0.5,
+    "colour": "#b5654a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -24
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -24
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "mko-stadium",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Piers cut to 8 with slanted heads, green name board, grey louvred bays with dark sheds, truss and brick wall added; window strips are ribbons not multi-pane white-framed bands, pier-head round holes are small discs, truss is plain posts not zigzag, red dirt apron still large, bowl is a generic oval."
+ }
+}

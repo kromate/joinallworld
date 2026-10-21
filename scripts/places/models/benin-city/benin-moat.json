@@ -1,0 +1,159 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Benin_Moat",
+   "used": "rampart with ditch, laterite red earth, vegetated banks; OSM match is an unrelated building 41 m away so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "core/loft",
+   "id": "rampart",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       110,
+       16
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       108,
+       9
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       104,
+       5
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       96,
+       2.4
+      ]
+     }
+    ],
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "core/loft",
+   "id": "ditch-bank",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       110,
+       8
+      ]
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       108,
+       4
+      ]
+     }
+    ],
+    "colour": "#7a3a28"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "broadleaf",
+      "height": 11,
+      "spread": 7,
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     8
+    ],
+    "end": [
+     48,
+     10
+    ],
+    "count": 8,
+    "vary": {}
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    10,
+    -8
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.8,
+    "run": 1.6,
+    "count": 6,
+    "colour": "#a8553a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -22
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; a straight rampart and ditch stand in for the irregular surviving earthwork, no roads cutting through."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "benin-moat"
+}

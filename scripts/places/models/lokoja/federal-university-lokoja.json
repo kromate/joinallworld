@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lokoja",
+ "venueId": "federal-university-lokoja",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1118809704",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/data/evidence/lokoja.json",
+   "used": "listed Commons photos show a plant and the river confluence, not this building; not used"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lokoja.json",
+   "used": "program, storeys, colours; no photo of this place found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#9a9a94",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f92",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    28,
+    -9
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "bands": "#9a9a94"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f92",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -14,
+    2.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "colour": "#9a9a94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -24
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -24
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -10,
+     -26
+    ],
+    "yawDeg": 90,
+    "colour": "#7a8691"
+   },
+   {
+    "at": [
+     30,
+     -26
+    ],
+    "yawDeg": 0,
+    "colour": "#c9c2b0"
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ }
+}

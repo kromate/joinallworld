@@ -1,0 +1,418 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/38919157",
+   "used": "footprint of the park (name match, 224x150 m yard, rotated lot)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kaduna.json#kawo-motor-park",
+   "used": "open bays, corrugated loading sheds, ticket kiosks, parked buses and taxis on bare earth, perimeter wall, signboard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "osm": true,
+    "scale": 0.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a38a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a38a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -48.2,
+    -4.9,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 4.4,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8a8f94",
+    "accent": "#a8472f"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -19.4,
+    -13.2,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 4.4,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8a8f94",
+    "accent": "#a8472f"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    9.5,
+    -21.4,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 4.4,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8a8f94",
+    "accent": "#a8472f"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    38.3,
+    -29.7,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 4.4,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#8a8f94",
+    "accent": "#a8472f"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -37.9,
+    5.7,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 28,
+    "kind": "mixed",
+    "density": 0.85,
+    "coach_share": 0.4,
+    "colours": [
+     "#d6d0c0",
+     "#a8472f",
+     "#e0b32a",
+     "#2f6b8a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -1.4,
+    -4.8,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 28,
+    "kind": "mixed",
+    "density": 0.85,
+    "coach_share": 0.4,
+    "colours": [
+     "#d6d0c0",
+     "#a8472f",
+     "#e0b32a",
+     "#2f6b8a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    35.1,
+    -15.3,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 28,
+    "kind": "mixed",
+    "density": 0.85,
+    "coach_share": 0.4,
+    "colours": [
+     "#d6d0c0",
+     "#a8472f",
+     "#e0b32a",
+     "#2f6b8a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -26.4,
+    16.9,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 26,
+    "kind": "taxi",
+    "density": 0.7,
+    "colours": [
+     "#e0b32a",
+     "#d6d0c0"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    26.5,
+    1.8,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "length": 26,
+    "kind": "taxi",
+    "density": 0.7,
+    "colours": [
+     "#e0b32a",
+     "#d6d0c0"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -53.8,
+    0.9,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "colour": "#d6d0c0",
+    "sign_colour": "#a8472f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -15.4,
+    -24.7,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "colour": "#d6d0c0",
+    "sign_colour": "#a8472f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    46.1,
+    -27.8,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "colour": "#d6d0c0",
+    "sign_colour": "#a8472f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    14.0,
+    12.6,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "colour": "#d6d0c0",
+    "sign_colour": "#a8472f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -54.9,
+    11.6,
+    0.5
+   ],
+   "rotDeg": -16,
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 2.2,
+    "colour": "#a8472f",
+    "frameColour": "#8a8f94",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6.449999999999999,
+    -29.950000000000003,
+    0.5
+   ],
+   "rotDeg": -16.2,
+   "params": {
+    "length": 112.3,
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 8,
+    "colour": "#b0aa9c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    55.1,
+    -24.1,
+    0.5
+   ],
+   "rotDeg": 70.5,
+   "params": {
+    "length": 45.6,
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 8,
+    "colour": "#b0aa9c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    35,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    35,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; layout of sheds and bays is typical, only the outline is real."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "kawo-motor-park"
+}

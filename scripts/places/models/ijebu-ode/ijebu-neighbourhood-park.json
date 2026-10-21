@@ -1,0 +1,182 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+   "used": "city context only; OSM relation 14381557 is a 171 x 133 m outline that does not match the 50 x 40 m park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    -4,
+    4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#d6c7a6",
+    "cap_colour": "#8a4b32",
+    "floor_colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       0.45
+      ],
+      "height": 0.45,
+      "colour": "#a9654a"
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -8,
+     -1
+    ],
+    "end": [
+     0,
+     -1
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.4,
+    "colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "radius": 1.4,
+    "colours": [
+     "#a9654a",
+     "#d6c7a6",
+     "#3f7a4a"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.4,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    8,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 16,
+    "count": 9,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -25,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "count": 5,
+    "kind": "broadleaf",
+    "gap": 3,
+    "height_min": 8,
+    "height_max": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   56,
+   46
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; ayo games pavilion, kiosk, benches and shade trees are a typed guess"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-neighbourhood-park"
+}

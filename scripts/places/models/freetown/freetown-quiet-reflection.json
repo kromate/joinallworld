@@ -1,0 +1,465 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._George%E2%80%99s_Cathedral,_Freetown_in_Sierra_Leone_-_Mapillary_(bKsj7EhILxTZoAWMVSOAew).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "danbjoseph @ Mapillary.com",
+   "view": "front",
+   "file": "/tmp/places-evidence/freetown/stgeorge2.jpg",
+   "used": "dark ironstone square west tower with crenellated parapet, corner pinnacles, clock, louvred pointed belfry windows, orange arched door; pale grey pitched nave roof with clerestory windows, low aisle with arched windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St._George%E2%80%99s_Cathedral,_Freetown,_Sierra_Leone_-_Mapillary_(knEmjjqEzIEdwdIuZDjOtA).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "danbjoseph @ Mapillary.com",
+   "view": "street",
+   "file": "/tmp/places-evidence/freetown/stgeorge1.jpg",
+   "used": "tower seen down the avenue: tower proportion about 3 times its width, nave much lower, market sheds crowding the street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/177521574",
+   "used": "overall size (about 38 m by 24 m) only; the outline is a jagged rotated polygon so the nave and tower are composed as rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 5,
+  "fovDeg": 38,
+  "aspect": 1.0,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "laterite",
+    "colour": "#42312a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "windowRatio": 0,
+    "bay": 6,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "cornice": false,
+    "parapet": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a352d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     28
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "laterite",
+    "colour": "#4a382f",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f979c",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-s",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    -10,
+    16
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#42312a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "arched",
+    "faces": {
+     "left": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f979c",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-n",
+   "footprint": {
+    "rect": [
+     6,
+     24
+    ]
+   },
+   "at": [
+    10,
+    16
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#42312a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "arched",
+    "faces": {
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f979c",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#42312a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f979c",
+    "material": "metal-sheet",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    36,
+    12
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "colour": "#b9b1a3"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -3.6,
+    0
+   ],
+   "params": {
+    "width": 5.2,
+    "height": 6.2,
+    "depth": 0.5,
+    "archWidth": 2.8,
+    "springHeight": 3.6,
+    "pointed": false,
+    "colour": "#b5653a"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 4.6,
+    "arch": true,
+    "colour": "#2a1d18",
+    "trim": "#b5653a"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -3.55,
+    17
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 4.2,
+    "kind": "pointed",
+    "trim": "#8a7260"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -3.55,
+    10
+   ],
+   "params": {
+    "width": 0.6,
+    "height": 2.6,
+    "kind": "pointed",
+    "trim": "#6b5547"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    0,
+    -3.2,
+    25
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "height": 1.2,
+    "thickness": 0.6,
+    "pitch": 1.2,
+    "colour": "#3d2e28"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    0,
+    3.2,
+    25
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 7,
+    "height": 1.2,
+    "thickness": 0.6,
+    "pitch": 1.2,
+    "colour": "#3d2e28"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    -3.2,
+    0,
+    25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 7,
+    "height": 1.2,
+    "thickness": 0.6,
+    "pitch": 1.2,
+    "colour": "#3d2e28"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    3.2,
+    0,
+    25
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 7,
+    "height": 1.2,
+    "thickness": 0.6,
+    "pitch": 1.2,
+    "colour": "#3d2e28"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -3.1,
+    -3.1,
+    25
+   ],
+   "params": {
+    "height": 4.6,
+    "width": 0.7,
+    "colour": "#2e221d"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -3.1,
+    3.1,
+    25
+   ],
+   "params": {
+    "height": 4.6,
+    "width": 0.7,
+    "colour": "#2e221d"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    3.1,
+    -3.1,
+    25
+   ],
+   "params": {
+    "height": 4.6,
+    "width": 0.7,
+    "colour": "#2e221d"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    3.1,
+    3.1,
+    25
+   ],
+   "params": {
+    "height": 4.6,
+    "width": 0.7,
+    "colour": "#2e221d"
+   }
+  },
+  {
+   "type": "rose-window",
+   "at": [
+    0,
+    -3.55,
+    21.5
+   ],
+   "params": {
+    "radius": 1.1,
+    "glass": "#e8e2d0",
+    "spokes": 12
+   }
+  },
+  {
+   "type": "rose-window",
+   "at": [
+    -3.55,
+    0,
+    21.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "radius": 1.1,
+    "glass": "#e8e2d0",
+    "spokes": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "clock faces are rose-window discs without hands; belfry louvres are plain glazed pointed windows; ironstone texture is colour only; market sheds, wires and chancel/aisle layout not modelled"
+ }
+}

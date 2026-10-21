@@ -1,0 +1,1383 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "stockholm",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "stockholm",
+    "climate": "cold",
+    "vernacular": "Nordic capital: ochre, yellow and cream plastered apartment blocks of four to six storeys from the 19th and early 20th century with copper-green or dark sheet roofs; red-brick National Romantic buildings; pale functionalist blocks of the 1930s; Million Programme concrete and render housing suburbs; Falu red timber cottages in the archipelago; medieval fieldstone churches in the countryside; glass-and-metal malls and offices in the suburbs.",
+    "wallColours": [
+      "#d8b26a",
+      "#e6dcc0",
+      "#8e3b2e",
+      "#8a4b3a",
+      "#a6ab98",
+      "#b9b6ae",
+      "#c7a07a"
+    ],
+    "roofColours": [
+      "#6f9c8a",
+      "#4b5057",
+      "#8f4a35",
+      "#6b6460"
+    ],
+    "wallMaterials": [
+      "render",
+      "stucco",
+      "red-brick",
+      "painted-render",
+      "timber",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "copper",
+      "membrane",
+      "slate",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Plastered facades in earthy ochres with white window frames and stone-grey plinths, steep copper or sheet roofs with dormers and chimneys, National Romantic brick towers and turrets, Falu red timber with white corner boards, medieval stepped gables and fieldstone, runestones with red-painted serpent bands.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Sweden",
+        "what": "National Romantic style in brick and wood (Stockholm City Hall 1903-23), functionalism broke through after the 1930 Stockholm Exhibition, Million Programme suburbs from 1965"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gamla_stan",
+        "what": "Old town: medieval alleys, cobbled streets, North German influence, gabled merchant houses, baroque Royal Palace"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fresta_Church",
+        "what": "medieval fieldstone church with 1776 rebuild; typical Uppland rural church"
+      }
+    ]
+  },
+  "places": {
+    "stockholm-airport-stockholm-airport": {
+      "venueId": "stockholm-airport-stockholm-airport",
+      "city": "stockholm",
+      "name": "Stockholm-Arlanda Airport",
+      "archetype": "airport-terminal",
+      "subject": "Arlanda Terminal 5 and Sky City seen from the forecourt: a long glass and metal terminal with piers and the control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 14
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1976, extended 2003-2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stockholm_Arlanda_Airport",
+          "what": "Terminal 5 opened 1976, Pier F added 2003, Sky City concourse between T4 and T5, new tower with Swedavia head office, commercial area 11,000 m2 finished June 2025"
+        }
+      ],
+      "notes": "Sources give plan and dates, not the facade; glass and steel look inferred. Recognisable by the long low horizontal terminal and the tower."
+    },
+    "stockholm-clinic": {
+      "venueId": "stockholm-clinic",
+      "city": "stockholm",
+      "name": "Bromma Hospital",
+      "archetype": "hospital",
+      "subject": "A suburban hospital of mid-rise ochre-rendered wings around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#d8b26a",
+          "#8a4b3a",
+          "#e6dcc0"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Name only; building unidentified."
+    },
+    "stockholm-community-notices": {
+      "venueId": "stockholm-community-notices",
+      "city": "stockholm",
+      "name": "Gillingebanan",
+      "archetype": "stadium",
+      "subject": "A small rural race and motor track with a low clubhouse, a short grandstand and fences",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8e3b2e",
+          "#f1efe8",
+          "#4b5057"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Track near Norrtalje; low Falu-red clubhouse assumed."
+    },
+    "stockholm-community-voting-game": {
+      "venueId": "stockholm-community-voting-game",
+      "city": "stockholm",
+      "name": "Solna stadshus",
+      "archetype": "civic-palace",
+      "subject": "Solna City Hall: a tall mid-rise municipal block of brick and glass beside the centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8a4b3a",
+          "#6f8c9a",
+          "#e6dcc0"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Facade and height guessed from typical Swedish municipal halls."
+    },
+    "stockholm-community-workshop": {
+      "venueId": "stockholm-community-workshop",
+      "city": "stockholm",
+      "name": "Polishögskolan",
+      "archetype": "campus-block",
+      "subject": "The Police Academy at Sorentorp: a long brick and render campus building of four storeys",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#8a4b3a",
+          "#e6dcc0",
+          "#b9b6ae"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Built 1970s; details unverified."
+    },
+    "stockholm-market-game": {
+      "venueId": "stockholm-market-game",
+      "city": "stockholm",
+      "name": "Täby Centrum",
+      "archetype": "mall",
+      "subject": "Täby Centrum: a large three-storey shopping centre with a glass-vaulted shopping street and car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc0",
+          "#7f9aa8",
+          "#b9b6ae"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "glass",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "curved glass roof over the 110 m street"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1968, extended 1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/T%C3%A4by_Centrum",
+          "what": "opened 1968, three floors, 78,000 m2, 260 stores, 1991 110 m shopping street under a curved glass roof, about 4,000 parking spaces"
+        }
+      ],
+      "notes": "Sources confirm size, three floors and the vaulted glass roof; wall finish is inferred."
+    },
+    "stockholm-meal-stop": {
+      "venueId": "stockholm-meal-stop",
+      "city": "stockholm",
+      "name": "Kvarnen",
+      "archetype": "restaurant",
+      "subject": "Kvarnen on Tjarhovsgatan: a traditional Sodermalm beer hall in a corner apartment building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "mansard"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#d8b26a",
+          "#6b2e2a",
+          "#f1efe8"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1908",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Ground-floor beer hall in a 1900s block; storeys from the surrounding fabric."
+    },
+    "stockholm-osm-node-1314052": {
+      "venueId": "stockholm-osm-node-1314052",
+      "city": "stockholm",
+      "name": "Konstfack University of Arts, Crafts and Design",
+      "archetype": "campus-block",
+      "subject": "Konstfack in the former LM Ericsson factory at Telefonplan: a long pale functionalist block with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9cfa8",
+          "#7f9aa8",
+          "#b9b6ae"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1940s, converted 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Konstfack",
+          "what": "school moved 2004 to the former LM Ericsson HQ at Telefonplan; 20,300 m2 interior redesigned by architects including Gert Wingårdh"
+        }
+      ],
+      "notes": "Interior area is sourced; external look inferred as an interwar functionalist factory block."
+    },
+    "stockholm-osm-node-5094765075": {
+      "venueId": "stockholm-osm-node-5094765075",
+      "city": "stockholm",
+      "name": "Granby Runestone",
+      "archetype": "monument",
+      "subject": "The Granby runestone: a natural boulder carved with a serpent band in the Urnes style, its runes picked out in red",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 1.4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a84",
+          "#a33a2f",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low fence"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "11th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Granby_Runestone",
+          "what": "inscription carved on a boulder at Granby, Uppland, in Urnes style Pr4 with stylised beasts and animal heads in profile"
+        }
+      ],
+      "notes": "Size and red paint (modern repainting is common) are assumptions; sources confirm a boulder with Urnes carving."
+    },
+    "stockholm-osm-node-6673446413": {
+      "venueId": "stockholm-osm-node-6673446413",
+      "city": "stockholm",
+      "name": "U 347",
+      "archetype": "monument",
+      "subject": "Runestone U 347: an upright granite slab with a cross and runic text band beside a path",
+      "form": {
+        "footprint": "rect",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 2.0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a84",
+          "#a33a2f",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "upright stone"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "11th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Uppland runestone catalogued as U 347; size and form assumed."
+    },
+    "stockholm-osm-relation-11095283": {
+      "venueId": "stockholm-osm-relation-11095283",
+      "city": "stockholm",
+      "name": "Stockholms stadion",
+      "archetype": "stadium",
+      "subject": "The Olympic Stadium of 1912: red-brown brick walls with twin towers at the entrance and an open athletics bowl",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a0553a",
+          "#7a7f6a",
+          "#d9cfa8"
+        ],
+        "roofColour": "#6f9c8a",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 2,
+          "note": "two towers flank the main entrance"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "1912",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stockholm_Olympic_Stadium",
+          "what": "architect Torben Grut, built 1910-12, opened 1 June 1912, capacity 14,417, field 105x68 m"
+        }
+      ],
+      "notes": "Brick finish and the two entrance towers are from general knowledge of National Romantic design, not the fetched page. Bowl dimensions estimated."
+    },
+    "stockholm-osm-way-1103013221": {
+      "venueId": "stockholm-osm-way-1103013221",
+      "city": "stockholm",
+      "name": "Tyresö Centrum",
+      "archetype": "mall",
+      "subject": "Tyreso Centrum: a two-storey 1970s shopping centre with a flat roof and wide forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d2bc",
+          "#7a8f9a",
+          "#b9b6ae"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Suburban centre; finish guessed."
+    },
+    "stockholm-osm-way-130648288": {
+      "venueId": "stockholm-osm-way-130648288",
+      "city": "stockholm",
+      "name": "Fittja moské",
+      "archetype": "mosque-domed",
+      "subject": "Fittja Mosque in Botkyrka: a modest two-storey render prayer hall with a small dome and slim minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc0",
+          "#5c7a8c",
+          "#b9b6ae"
+        ],
+        "roofColour": "#8f8f8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2007 or earlier",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. A 2007 photo exists; the dome and minaret are assumed, not verified."
+    },
+    "stockholm-osm-way-133975840": {
+      "venueId": "stockholm-osm-way-133975840",
+      "city": "stockholm",
+      "name": "Tacksägelsekyrkan",
+      "archetype": "church-modern",
+      "subject": "Tacksagelsekyrkan: a plain 1960s church of pale brick with a low gabled hall and a freestanding bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#c7b79a",
+          "#8a4b3a",
+          "#e6dcc0"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Name means Thanksgiving Church; free-church building, details unverified."
+    },
+    "stockholm-osm-way-161917128": {
+      "venueId": "stockholm-osm-way-161917128",
+      "city": "stockholm",
+      "name": "Fjäderholmarnas krog",
+      "archetype": "restaurant",
+      "subject": "The Fjaderholmarna island restaurant: a long Falu-red timber building with white trim facing the quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8e3b2e",
+          "#f1efe8",
+          "#4b5057"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Archipelago island restaurant; red timber finish typical."
+    },
+    "stockholm-osm-way-174125986": {
+      "venueId": "stockholm-osm-way-174125986",
+      "city": "stockholm",
+      "name": "Jumbo Hostel",
+      "archetype": "hotel",
+      "subject": "The Jumbo Stay: a decommissioned Boeing 747-200 on a grass mound at Arlanda converted to a hostel, with wing terrace and metal stairs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 19,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e8e8e8",
+          "#2f4a6b",
+          "#9aa0a5"
+        ],
+        "roofColour": "#e8e8e8",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "metal stairs and lift to the main door"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "left wing patio"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "high-tech",
+      "era": "1976 aircraft, hostel 2009-2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jumbo_Stay",
+          "what": "Boeing 747-200B on a grass mound at Arlanda, concrete foundation, landing gear in steel cradles, stairs and lift at entrance, left wing converted to patio, closed March 2025"
+        }
+      ],
+      "notes": "Fuselage 71 m long, wingspan 60 m, tail 19 m high. Paint scheme not confirmed. No logos."
+    },
+    "stockholm-osm-way-221105651": {
+      "venueId": "stockholm-osm-way-221105651",
+      "city": "stockholm",
+      "name": "Frescati Hage",
+      "archetype": "campus-block",
+      "subject": "Stockholm University's Frescati campus: low-rise 1970s blocks of brick and concrete among pines",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#b9b6ae",
+          "#8a4b3a",
+          "#e6dcc0"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. University campus; building unidentified."
+    },
+    "stockholm-osm-way-345758266": {
+      "venueId": "stockholm-osm-way-345758266",
+      "city": "stockholm",
+      "name": "Einar Forseths park",
+      "archetype": "park-landscape",
+      "subject": "A small neighbourhood park with lawn, birch trees and a playground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f8c5a",
+          "#b9b6ae",
+          "#c9b79a"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Not described."
+    },
+    "stockholm-osm-way-34838648": {
+      "venueId": "stockholm-osm-way-34838648",
+      "city": "stockholm",
+      "name": "AIRA",
+      "archetype": "restaurant",
+      "subject": "AIRA: a contemporary waterside restaurant with a glazed front and timber deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "timber",
+        "colours": [
+          "#8fa6b0",
+          "#8a5a3a",
+          "#f1efe8"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Modern restaurant assumed."
+    },
+    "stockholm-osm-way-374377103": {
+      "venueId": "stockholm-osm-way-374377103",
+      "city": "stockholm",
+      "name": "Gubbängsparken",
+      "archetype": "park-landscape",
+      "subject": "A south-Stockholm park with pine slopes, lawn and a pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f8c5a",
+          "#8a8f78",
+          "#b9b6ae"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Not described."
+    },
+    "stockholm-osm-way-499678529": {
+      "venueId": "stockholm-osm-way-499678529",
+      "city": "stockholm",
+      "name": "Stockholms sjukhem",
+      "archetype": "hospital",
+      "subject": "Stockholms Sjukhem: a mid-rise ochre-rendered hospital block with a mansard roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 22,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "mansard"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d8b26a",
+          "#e6dcc0",
+          "#8a8f78"
+        ],
+        "roofColour": "#6f9c8a",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Foundation hospital; yellow plaster style assumed."
+    },
+    "stockholm-osm-way-6616471": {
+      "venueId": "stockholm-osm-way-6616471",
+      "city": "stockholm",
+      "name": "Stinsen",
+      "archetype": "mall",
+      "subject": "Stinsen: a two-storey suburban shopping centre with a glazed entrance atrium in Upplands Vasby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d2bc",
+          "#7a8f9a",
+          "#b9b6ae"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Name only."
+    },
+    "stockholm-quiet-reflection": {
+      "venueId": "stockholm-quiet-reflection",
+      "city": "stockholm",
+      "name": "Fresta kyrka",
+      "archetype": "church-gothic",
+      "subject": "Fresta church in Uppland: a medieval fieldstone church, whitewashed, with a 1776 clock tower on the west front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#ece8de",
+          "#8d8a84",
+          "#f1efe8"
+        ],
+        "roofColour": "#8f4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "added to the west front in 1776"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "14th century, rebuilt 1776",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fresta_Church",
+          "what": "fieldstone building; vestry and choir early 14th century, nave later 14th century; 1776 rebuild raised walls, enlarged windows, new roof and west clock tower"
+        }
+      ],
+      "notes": "Whitewash and red tile roof are assumed from typical Uppland churches; the fieldstone core, 1776 tower and enlarged windows are sourced."
+    },
+    "stockholm-recreation": {
+      "venueId": "stockholm-recreation",
+      "city": "stockholm",
+      "name": "Fågelöuddebadet",
+      "archetype": "park-landscape",
+      "subject": "A lakeside bathing place with a wooden jetty, a rocky shore and a small kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "bathing jetty"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a5a3a",
+          "#8d8a84",
+          "#6f8c5a"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "wooden bathing jetty"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Swedish bathing spot; typical features assumed."
+    },
+    "stockholm-transit": {
+      "venueId": "stockholm-transit",
+      "city": "stockholm",
+      "name": "Huddinge",
+      "archetype": "transport-station",
+      "subject": "Huddinge commuter station: platforms with canopies and a station building beside the tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d2bc",
+          "#8e3b2e",
+          "#b9b6ae"
+        ],
+        "roofColour": "#4b5057",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Commuter station for the Huddinge area; look assumed."
+    }
+  }
+}

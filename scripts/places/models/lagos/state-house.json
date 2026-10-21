@@ -1,0 +1,532 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "state-house",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:State_House,_Ikeja.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Comradeayobami (Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/lagos/sh-ikeja.jpg",
+   "used": "entrance of the State House (Lagos House Ikeja): pale grey rendered two-storey gate office with flat canopy slab over the drive, ribbon windows, blank green sign board, white painted perimeter wall, flagpoles, kerbed green verges. Main block not visible, so gate composition only."
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lagos_State_House,_Marina_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "King ChristLike (Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/lagos/m-sh2.jpg",
+   "used": "gate area of Lagos House Marina only, not the main building: white rendered perimeter wall with razor wire, dark green steel gate, pale grey rendered block behind, guard booth, paved kerb planters. Not compared against the model."
+  },
+  {
+   "kind": "text",
+   "used": "Brief: stately government block, columned portico, flags, gated drive, fountain; no real match or building photo."
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dedcd6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#a7a39c",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -28,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d2cb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#a7a39c",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d2cb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#a7a39c",
+    "faces": {
+     "back": "plain",
+     "left": "punched",
+     "right": "plain"
+    },
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 4,
+    "height": 9,
+    "columns": 4,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#dedcd6",
+    "roofColour": "#a7a39c"
+   }
+  },
+  {
+   "type": "market-open/fountain",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "jet": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 12,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#3f7a52"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "line": 50
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-office",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d2cb",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-booth",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    11,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ccd0",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.2,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-canopy",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -38
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2e0d9",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-sign",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    -12,
+    -41.3
+   ],
+   "rotDeg": 0,
+   "z0": 5.5,
+   "height": 1.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f6b4f",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f6b4f",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-hall",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -26,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0ddd4",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -16,
+      -38
+     ],
+     [
+      -45,
+      -38
+     ],
+     [
+      -45,
+      22
+     ],
+     [
+      45,
+      22
+     ],
+     [
+      45,
+      -38
+     ],
+     [
+      14,
+      -38
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    17,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.4,
+    "bottom": 1.8,
+    "colour": "#b3262e",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "verge",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    24,
+    -27
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f8a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f8a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     34
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -8,
+     -28
+    ],
+    "colour": "#1c1f24"
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Gate complex is evidenced by photo; main block is brief-based and toned to grey render with a smaller portico, real massing unknown. Razor wire not modelled."
+ }
+}

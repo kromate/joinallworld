@@ -1,0 +1,147 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#pepperoni-yenagoa",
+   "used": "one-storey painted restaurant block 18x12 m, hip roof in dark red sheet, glazed ribbon front, red awning, blank signboard, covered patio with umbrellas; no OSM outline, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 9,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3e0c8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bands": "#c0392b",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -3,
+    -6.1,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.2,
+    "drop": 0.6,
+    "height": 3.0,
+    "colours": [
+     "#c0392b",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5.5,
+    -6.2,
+    2.6
+   ],
+   "params": {
+    "width": 4,
+    "height": 1,
+    "bottom": 0,
+    "colour": "#c0392b",
+    "frameColour": "#f3e0c8",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "radius": 1.4,
+    "colours": [
+     "#c0392b",
+     "#f3e0c8"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -13,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typed restaurant"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "pepperoni-yenagoa"
+}

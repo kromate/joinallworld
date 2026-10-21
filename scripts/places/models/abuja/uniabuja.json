@@ -1,0 +1,350 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "uniabuja",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UniAbuja_Photowalk_senate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Habila Sani Mazawaje",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/abuja/uni2.jpg",
+   "used": "Senate Building: two tall cream drum towers with grey upper bands and slit windows flanking a green hexagonal-pyramid entrance canopy, curved white fascia, long four-storey ribbon-window wings angled back with grey metal roofs, brick-paved plaza, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UniAbuja_Photowalk_law.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Habila Sani Mazawaje",
+   "view": "front",
+   "file": "/tmp/places-evidence/abuja/uni1.jpg",
+   "used": "campus palette: peach render, mauve bands, pale metal hipped roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 44,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d8bd",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#c9bfa5",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d94",
+    "parapet": 0.5,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    -37,
+    12
+   ],
+   "rotDeg": 14,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc3",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#bdb6a0",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9c8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    37,
+    12
+   ],
+   "rotDeg": -14,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc3",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#bdb6a0",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f9c8a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-west",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    -19,
+    -2
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede2c6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ede2c6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-east",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    19,
+    -2
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede2c6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ede2c6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "bay": 5
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f8f78",
+    "rise": 3,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-drum-west",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    -19,
+    -2
+   ],
+   "z0": 11,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b7bbbd",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2a6a8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-drum-east",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     17,
+     17
+    ]
+   },
+   "at": [
+    19,
+    -2
+   ],
+   "z0": 11,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b7bbbd",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a2a6a8",
+    "parapet": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "wing balconies and brise-soleil layers, curved entrance fascia and hexagonal canopy shape simplified; rear tall block roof simplified"
+ }
+}

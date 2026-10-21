@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "karew-jimeta-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1052037128",
+   "used": "13.8 x 12.8 m building (nearest match, 3.7 m) modelled as the market's one permanent shed block"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open-air market of timber and metal stalls and parasols on bare laterite, corrugated sheds, acacia trees; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed-block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d6c8a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#e0703a",
+     "#3f6fb5",
+     "#e8c43a",
+     "#c9a98a",
+     "#6a5aa8",
+     "#4a9a6a",
+     "#d9d2c4"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#e0703a",
+     "#3f6fb5",
+     "#e8c43a",
+     "#c9a98a",
+     "#6a5aa8",
+     "#4a9a6a",
+     "#d9d2c4"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#e0703a",
+     "#3f6fb5",
+     "#e8c43a",
+     "#c9a98a",
+     "#6a5aa8",
+     "#4a9a6a",
+     "#d9d2c4"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "colours": [
+     "#e0703a",
+     "#3f6fb5",
+     "#e8c43a",
+     "#c9a98a",
+     "#6a5aa8",
+     "#4a9a6a",
+     "#d9d2c4"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    24,
+    16,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 8,
+    "colours": [
+     "#e0703a",
+     "#3f6fb5",
+     "#e8c43a",
+     "#c9a98a",
+     "#6a5aa8",
+     "#4a9a6a",
+     "#d9d2c4"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "shed",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; stall layout is typical not surveyed"
+ }
+}

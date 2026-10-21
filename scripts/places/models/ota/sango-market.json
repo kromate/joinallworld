@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "sango-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ota.json#sango-market",
+   "used": "merged Kayero and Oba T.T. Dada markets: packed lanes, tin sheds, umbrellas, container lock-ups along the edge, 110 x 90 m"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1251515262",
+   "used": "not used: 23 x 12 m nearest-match block inside the market, not its extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stall lane layout is typed from how Nigerian open markets are arranged."
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#8d5a3b",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "shed",
+    "roof_colour": "#9aa3a8",
+    "goods": "mixed"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    30,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#7d4a30",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -24,
+    14,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "shed",
+    "roof_colour": "#8d5a3b",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    18,
+    14,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#9aa3a8",
+    "goods": "mixed"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 11,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#9c3b2f",
+     "#e6cf8a",
+     "#3f7a52",
+     "#4a6fa5"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -28,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 11,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#9c3b2f",
+     "#e6cf8a",
+     "#3f7a52",
+     "#4a6fa5"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    28,
+    0
+   ],
+   "params": {
+    "count": 11,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#9c3b2f",
+     "#e6cf8a",
+     "#3f7a52",
+     "#4a6fa5"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "shutter_colours": [
+     "#9aa3a8",
+     "#9c3b2f",
+     "#e6cf8a"
+    ],
+    "awning_colours": [
+     "#e6cf8a",
+     "#9c3b2f"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    36,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "colours": [
+     "#9c3b2f",
+     "#e6cf8a",
+     "#4a6fa5"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    0,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 9,
+    "colours": [
+     "#3f7a52",
+     "#e6cf8a",
+     "#9c3b2f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    52,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#e6cf8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -44
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

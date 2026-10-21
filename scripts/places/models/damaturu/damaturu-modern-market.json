@@ -1,0 +1,415 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "damaturu-modern-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1035081040",
+   "used": "nearest OSM building only (40 x 10 m, 12 m away): taken as the scale of one shop row; not the full market"
+  },
+  {
+   "kind": "text",
+   "used": "brief sources (blueprint.ng, dailytrust): ~500 lock-up shops, administrative building, fenced yard, entrance gate houses, mosque, parking; ranks of identical shops in long covered blocks with green roofs"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "row-0",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    -18,
+    -30
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-1",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    -18,
+    -12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-2",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    -18,
+    6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-3",
+   "footprint": {
+    "rect": [
+     64,
+     9
+    ]
+   },
+   "at": [
+    -18,
+    24
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-0",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    40,
+    -30
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-1",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    40,
+    -12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    36,
+    26
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-l",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    -9,
+    -46
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-r",
+   "footprint": {
+    "rect": [
+     4,
+     5
+    ]
+   },
+   "at": [
+    9,
+    -46
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.8,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#f2efe6",
+    "leafColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -58,
+    10
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "metal-sheet",
+    "pitch": 12,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -64,
+    4,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "radius": 0.8,
+    "balconies": 1,
+    "colour": "#f2efe6",
+    "capColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.4,
+    "colour": "#a8a39a",
+    "points": [
+     [
+      -70,
+      -50
+     ],
+     [
+      70,
+      -50
+     ],
+     [
+      70,
+      48
+     ],
+     [
+      -70,
+      48
+     ],
+     [
+      -70,
+      -50
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -38
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -40
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; layout from brief (rows of shops, admin block, gate houses, mosque) with real OSM only as a shop-row scale"
+ }
+}

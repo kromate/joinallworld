@@ -1,0 +1,1649 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dublin",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dublin",
+    "climate": "temperate",
+    "vernacular": "Georgian core of flat-fronted brown and red brick terraces with granite steps, sash windows, fanlights and brightly painted doors; Victorian red-brick and polychrome terraces with bay windows; 1930s to 1980s suburban semis and terraces in pebbledash render under tiled or slate roofs; Palladian country houses in cream render; granite and limestone civic and church buildings; concrete and glass blocks for hospitals, colleges, malls and the airport.",
+    "wallColours": [
+      "#8c5442",
+      "#a2603f",
+      "#cfc8b8",
+      "#b8b09f",
+      "#7e7a72",
+      "#e5ddc9",
+      "#3f3a38"
+    ],
+    "roofColours": [
+      "#4b5058",
+      "#9a4b36",
+      "#6a6e70",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "render",
+      "stone",
+      "granite",
+      "limestone",
+      "painted-render",
+      "glass-curtain",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Georgian fanlights over coloured doors, granite steps and iron railings, sash windows with white frames, Palladian porticos and pediments, Victorian polychrome brick bands and bay windows, Celtic crosses and round-tower motifs on churches, pebbledash on suburban houses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/%C3%81ras_an_Uachtar%C3%A1in",
+        "what": "Palladian presidential residence in Phoenix Park, built c1751-57, garden-front portico, 1911 extension"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dublin_Airport",
+        "what": "Terminal 1 (1972, pier B decagon) and Terminal 2 (2010, Pascall+Watson) of Dublin Airport"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Parnell_Park",
+        "what": "GAA ground with covered main stand and partly covered terracing"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tymon_Park",
+        "what": "Suburban park with lakes, mixed deciduous woodland and pitches"
+      }
+    ]
+  },
+  "places": {
+    "dublin-airport-dublin-airport": {
+      "venueId": "dublin-airport-dublin-airport",
+      "city": "dublin",
+      "name": "Dublin Airport",
+      "archetype": "airport-terminal",
+      "subject": "Dublin Airport Terminal 2 landside facade (2010): a wide glass-fronted terminal with a curved roof and a long piers behind, the tall 2022 control tower rising to the side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#5c6b78",
+          "#eef0f1"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "Terminal 2 forecourt canopy"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 25,
+          "note": "25 gates for 27 narrow-body aircraft"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "2022 tower, nearly 87 m, tallest inhabited structure in Ireland"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010 (T1 1972)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/129653888",
+          "what": "OpenStreetMap object tags and measured footprint (829.2 x 323.7 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q97671039",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dublin_Airport",
+          "what": "T2 opened 19 Nov 2010, Pascall+Watson, 75,000 m2 with Pier E, 25 gates; T1 1972 with decagonal pier B; control tower opened 2022 at nearly 87 m"
+        }
+      ],
+      "notes": "Model shows T2 (glass facade) with the 1970s T1 behind as a lower concrete block. Facade colours are estimated; sources give dates, size and gate counts, not a visual description."
+    },
+    "dublin-clinic": {
+      "venueId": "dublin-clinic",
+      "city": "dublin",
+      "name": "Connolly Hospital",
+      "archetype": "hospital",
+      "subject": "Connolly Hospital, Blanchardstown: a 1950s hospital campus of mid-rise brick and render blocks with later extensions",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#9a5a45",
+          "#d8d2c2",
+          "#e5e2d8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1955 opening, extended since",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/98613811",
+          "what": "OpenStreetMap object tags and measured footprint (50.7 x 19.1 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5161992",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Connolly_Hospital",
+          "what": "Opened 1955 as James Connolly Memorial Hospital, designed by Norman White, built by Sisk"
+        }
+      ],
+      "notes": "Original sanatorium-era design by Norman White; the OSM main building is only 51 x 19 m. Materials and storeys are typed from 1950s Irish hospital style, not found in a description."
+    },
+    "dublin-community-notices": {
+      "venueId": "dublin-community-notices",
+      "city": "dublin",
+      "name": "The Presidential Residence",
+      "archetype": "civic-palace",
+      "subject": "Aras an Uachtarain, the presidential residence in Phoenix Park: a cream-rendered Palladian house with a central pedimented portico on the garden front and a long 1911 wing",
+      "form": {
+        "footprint": "T",
+        "width_m": 130,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#e6dcc0",
+          "#f2efe6",
+          "#c9bfa5"
+        ],
+        "roofColour": "#55595e",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central columned portico on the garden front"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "railings and park wall"
+        },
+        {
+          "id": "chimney",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "c1751-57, enlarged 1911",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/26636056",
+          "what": "OpenStreetMap object tags and measured footprint (170.4 x 54 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2107474",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%81ras_an_Uachtar%C3%A1in",
+          "what": "Credited to Nathaniel Clements, completed c1751-57; portico visible on the garden front; 1911 residential wing; 92 rooms"
+        }
+      ],
+      "notes": "OSM footprint 170 x 54 m includes the 1911 wing. Cream render with white portico is the familiar look but the article gives no colours; the park is open lawn with mature trees."
+    },
+    "dublin-community-voting-game": {
+      "venueId": "dublin-community-voting-game",
+      "city": "dublin",
+      "name": "Mayor Square",
+      "archetype": "transport-station",
+      "subject": "Mayor Square Luas tram stop on the Red Line near the Convention Centre: a short platform with a glazed shelter and overhead wire masts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "tram-stop"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#6b7378",
+          "#d6dadc"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "mast",
+          "count": 4,
+          "note": "overhead line poles"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1355095301",
+          "what": "OpenStreetMap object tags and measured footprint (7.6 x 1.7 m bbox)"
+        }
+      ],
+      "notes": "OSM shelter is only 7.6 x 1.7 m; the model uses a 45 m double-tram platform with the shelter, tracks and poles. Surrounded by the glass offices of the Docklands (not modelled)."
+    },
+    "dublin-community-workshop": {
+      "venueId": "dublin-community-workshop",
+      "city": "dublin",
+      "name": "Dublin Business School",
+      "archetype": "campus-block",
+      "subject": "Dublin Business School, a four-storey red-brick Georgian-style terrace-block in the city centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "granite",
+        "colours": [
+          "#8c5442",
+          "#7e7a72",
+          "#f2efe6"
+        ],
+        "roofColour": "#4b5058",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "granite steps"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "18th-19th century terrace, later college use",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/227706615",
+          "what": "OpenStreetMap object tags and measured footprint (58.6 x 19.8 m bbox)"
+        }
+      ],
+      "notes": "OSM footprint 58.6 x 19.8 m, unnamed. Brick Georgian city-centre block is a typed guess from Dublin style, not verified for DBS."
+    },
+    "dublin-market-game": {
+      "venueId": "dublin-market-game",
+      "city": "dublin",
+      "name": "Donaghmede Shopping Centre",
+      "archetype": "mall",
+      "subject": "Donaghmede Shopping Centre, a 1980s suburban shopping centre: one to two storeys of brick and render with a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 136,
+        "depth_m": 94,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#a2603f",
+          "#d8d2c2",
+          "#6a6e70"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank pylon"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/26785732",
+          "what": "OpenStreetMap object tags and measured footprint (136.2 x 94 m bbox)"
+        }
+      ],
+      "notes": "OSM building=retail 136 x 94 m. Era and finishes typed from Irish suburban centres; no description of the building found."
+    },
+    "dublin-meal-stop": {
+      "venueId": "dublin-meal-stop",
+      "city": "dublin",
+      "name": "Bon Appétit",
+      "archetype": "restaurant",
+      "subject": "Bon Appetit restaurant in Malahide: a three-storey Georgian terraced townhouse converted to a restaurant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 7,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "granite",
+        "colours": [
+          "#d8cfba",
+          "#7e7a72",
+          "#f2efe6"
+        ],
+        "roofColour": "#4b5058",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "c1800",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1308651193",
+          "what": "OpenStreetMap object tags and measured footprint (14.7 x 7.4 m bbox)"
+        }
+      ],
+      "notes": "OSM: building=house, 3 levels, 14.7 x 7.4 m; Georgian style typed from the terrace setting (Malahide seafront). Finish colour is a guess; no brand marks."
+    },
+    "dublin-osm-relation-14714515": {
+      "venueId": "dublin-osm-relation-14714515",
+      "city": "dublin",
+      "name": "The Square Towncentre",
+      "archetype": "mall",
+      "subject": "The Square, Tallaght: a large five-level shopping centre of brick, glass and metal opened 1990 with a rooftop car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 187,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a2603f",
+          "#6d7f8c",
+          "#d8d2c2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank pylon"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/37838269",
+          "what": "OpenStreetMap object tags and measured footprint (220.7 x 187 m bbox)"
+        }
+      ],
+      "notes": "OSM building=retail, 5 levels, 221 x 187 m; opening year from general knowledge. Scene shows the main entrance block only. Finish colours are estimates."
+    },
+    "dublin-osm-way-1136285120": {
+      "venueId": "dublin-osm-way-1136285120",
+      "city": "dublin",
+      "name": "St. Seachnall's Church",
+      "archetype": "shrine-small",
+      "subject": "St Seachnalls Church, Dunshaughlin: the low rubble-stone remains of a medieval church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5.5,
+        "depth_m": 3.5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "graveyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1136285120",
+          "what": "OpenStreetMap object tags and measured footprint (5.5 x 3.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q27020029",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=ruins 5.5 x 3.4 m; Wikidata: medieval church ruin in County Meath. Roofless grey stone walls in a graveyard; no photo description fetched."
+    },
+    "dublin-osm-way-227972923": {
+      "venueId": "dublin-osm-way-227972923",
+      "city": "dublin",
+      "name": "Church of the Assumption",
+      "archetype": "church-modern",
+      "subject": "The Church of the Assumption, Howth: a large near-square Catholic parish church in stone and render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 32,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "granite",
+        "colours": [
+          "#cfc8b8",
+          "#7e7a72",
+          "#e5ddc9"
+        ],
+        "roofColour": "#4b5058",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown (likely 20th century)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/227972923",
+          "what": "OpenStreetMap object tags and measured footprint (38 x 31.8 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q55049729",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=church 38 x 31.8 m, Roman Catholic. No description of the building was found; era and style are guessed from the nearly square plan."
+    },
+    "dublin-osm-way-228188022": {
+      "venueId": "dublin-osm-way-228188022",
+      "city": "dublin",
+      "name": "RCSI Reservoir House",
+      "archetype": "office-low",
+      "subject": "RCSI Reservoir House, a three-storey modern office-style teaching building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d2c2",
+          "#6d7f8c",
+          "#b0b4b6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/228188022",
+          "what": "OpenStreetMap object tags and measured footprint (45.6 x 15.9 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15270979",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=university, 3 levels, 45.6 x 15.9 m (RCSI, Q15270979). Facade typed from similar Sandyford office buildings."
+    },
+    "dublin-osm-way-23565036": {
+      "venueId": "dublin-osm-way-23565036",
+      "city": "dublin",
+      "name": "St Enda's Park",
+      "archetype": "park-landscape",
+      "subject": "St Enda Park, Rathfarnham: a landscaped demesne around the 18th-century Hermitage house (now the Pearse Museum) with a yew-hedged formal garden, courtyard and woodland",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "variant": "demesne"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d8cfba",
+          "#8d8a80",
+          "#f2efe6"
+        ],
+        "roofColour": "#55595e",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "The Hermitage, a Georgian house in parkland"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "nature study courtyard at the back"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "walled garden"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "after 1786",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/23565036",
+          "what": "OpenStreetMap object tags and measured footprint (588.4 x 400.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7401207",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pearse_Museum",
+          "what": "Hermitage house built after 1786 in a parkland setting in St Enda Park; formal garden with yew hedge; nature study room in the courtyard"
+        }
+      ],
+      "notes": "The park is 588 x 400 m; the model is clamped to the Hermitage house in lawns and trees. House wall colour is an estimate."
+    },
+    "dublin-osm-way-255385171": {
+      "venueId": "dublin-osm-way-255385171",
+      "city": "dublin",
+      "name": "Kylemore College",
+      "archetype": "campus-block",
+      "subject": "Kylemore College, Ballyfermot: a long three-storey school block of brick and render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#a2603f",
+          "#d8d2c2",
+          "#6a6e70"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/668082521",
+          "what": "OpenStreetMap object tags and measured footprint (110.5 x 28.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6451553",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=college, 3 levels, 110 x 28 m. Brick and render are guessed from Irish vocational schools; no description found."
+    },
+    "dublin-osm-way-26778663": {
+      "venueId": "dublin-osm-way-26778663",
+      "city": "dublin",
+      "name": "Morton Stadium",
+      "archetype": "stadium",
+      "subject": "Morton Stadium, Santry: an athletics stadium with a blue-and-red track, one small covered main stand and open terracing on the other three sides",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5aea3",
+          "#5d6a76",
+          "#d6dadc"
+        ],
+        "roofColour": "#6a6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered stand with 800 seats"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1958, track re-laid 2010",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/26778663",
+          "what": "OpenStreetMap object tags and measured footprint (323.9 x 209.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3865975",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morton_Stadium",
+          "what": "Opened 1958; 800-seat covered stand, three sides open terracing; tartan track from 1978; indoor and outdoor track re-laid 2010; capacity 8,800"
+        }
+      ],
+      "notes": "The stadium is mostly an oval track with low stepped terracing; only the main stand has a roof. Floodlights count and stand colours are estimated."
+    },
+    "dublin-osm-way-29504327": {
+      "venueId": "dublin-osm-way-29504327",
+      "city": "dublin",
+      "name": "Cherry Orchard Hospital",
+      "archetype": "hospital",
+      "subject": "Cherry Orchard Hospital: a low-rise campus of pavilion blocks in brick and render",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d8d2c2",
+          "#a2603f",
+          "#8a8f94"
+        ],
+        "roofColour": "#9a4b36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/29504327",
+          "what": "OpenStreetMap object tags and measured footprint (745.2 x 293.7 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q65041373",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM site 745 x 294 m, Wikidata Q65041373. No building description found; typed as low pavilion hospital."
+    },
+    "dublin-osm-way-312566450": {
+      "venueId": "dublin-osm-way-312566450",
+      "city": "dublin",
+      "name": "St David's Church",
+      "archetype": "shrine-small",
+      "subject": "St Davids Church, a small Church of Ireland parish church with a gabled slate roof and bellcote in north County Dublin",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#8d8a80",
+          "#a39f93",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4b5058",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bellcote"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "graveyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "19th century (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/312566450",
+          "what": "OpenStreetMap object tags and measured footprint (16.3 x 6.8 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q120907685",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=church, Anglican, 16.3 x 6.8 m. No description found; typed as a rural Irish Protestant church."
+    },
+    "dublin-osm-way-325933039": {
+      "venueId": "dublin-osm-way-325933039",
+      "city": "dublin",
+      "name": "Corkagh Park",
+      "archetype": "park-landscape",
+      "subject": "Corkagh Park, Clondalkin: a large demesne park of lawns, woodland and lakes with a small ranger building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#a39f93",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4b5058",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "park ranger building"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "demesne wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/868803602",
+          "what": "OpenStreetMap object tags and measured footprint (14.4 x 6 m bbox)"
+        }
+      ],
+      "notes": "The nearest OSM object is a 14 x 6 m ranger office. The park contents are typed; no description fetched."
+    },
+    "dublin-osm-way-40585926": {
+      "venueId": "dublin-osm-way-40585926",
+      "city": "dublin",
+      "name": "UCD Bowl",
+      "archetype": "stadium",
+      "subject": "UCD Bowl, a small university football and rugby stadium with a covered stand along one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 166,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5aea3",
+          "#4a6a8a",
+          "#d6dadc"
+        ],
+        "roofColour": "#6a6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/40585926",
+          "what": "OpenStreetMap object tags and measured footprint (166 x 147.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4001819",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM leisure=stadium 166 x 147 m (UCD Bowl, Q4001819). Single covered stand is assumed."
+    },
+    "dublin-osm-way-51680291": {
+      "venueId": "dublin-osm-way-51680291",
+      "city": "dublin",
+      "name": "St. Columcille's Hospital",
+      "archetype": "hospital",
+      "subject": "St Columcilles Hospital, Loughlinstown: an extended hospital of older stone blocks and newer render wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d8d2c2",
+          "#8d8a80",
+          "#e5e2d8"
+        ],
+        "roofColour": "#4b5058",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "victorian",
+      "era": "19th century core, 20th century wings",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/51680291",
+          "what": "OpenStreetMap object tags and measured footprint (280.8 x 255.9 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7587658",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM site 281 x 256 m. The original Victorian workhouse origin is recalled, not sourced; treat finishes as guesses."
+    },
+    "dublin-osm-way-541772649": {
+      "venueId": "dublin-osm-way-541772649",
+      "city": "dublin",
+      "name": "Seefin Cairn",
+      "archetype": "monument",
+      "subject": "Seefin passage tomb, a round kerbed stone cairn on the summit of Seefin hill in the Dublin and Wicklow Mountains",
+      "form": {
+        "footprint": "round",
+        "width_m": 24,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "cairn"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance passage on the side"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "ring of large kerb stones"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Neolithic",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/541772649",
+          "what": "OpenStreetMap object tags and measured footprint (26.2 x 22.7 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1342842",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Seefin_Passage_Tomb",
+          "what": "Cairn about 24 m across and 3 m high, kerb stones, 7 m passage to a chamber with five recesses, at 621 m on the summit"
+        }
+      ],
+      "notes": "Bare heather hilltop with a stone mound; carved lozenge motifs at the entrance are too small to model. No trees."
+    },
+    "dublin-osm-way-562581062": {
+      "venueId": "dublin-osm-way-562581062",
+      "city": "dublin",
+      "name": "Parnell Park",
+      "archetype": "stadium",
+      "subject": "Parnell Park, Donnycarney: a GAA ground with one covered single-tier main stand on the north side and partly covered terracing around the rest",
+      "form": {
+        "footprint": "rect",
+        "width_m": 159,
+        "depth_m": 85,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5aea3",
+          "#2f6a4a",
+          "#d6dadc"
+        ],
+        "roofColour": "#6a6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "main north stand roof (3,040 seats) and partial terrace cover"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "installed 2004-05"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1901, redeveloped 1988-95",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/40812066",
+          "what": "OpenStreetMap object tags and measured footprint (159 x 85.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q531222",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Parnell_Park",
+          "what": "Capacity 7,300; main stand single-tier covered with 3,040 seats on the north side; partly covered terracing; pitch 141 x 82 m; floodlights 2004-05"
+        }
+      ],
+      "notes": "Pitch 141 x 82 m inside a 159 x 85 m footprint. Exact stand colours not found; neutral concrete and green trim assumed."
+    },
+    "dublin-osm-way-769452904": {
+      "venueId": "dublin-osm-way-769452904",
+      "city": "dublin",
+      "name": "Raheen-a-Cluig",
+      "archetype": "shrine-small",
+      "subject": "Raheen-a-Cluig, the low grey stone walls of a ruined medieval church on the slopes of Bray Head",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6.6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/769452904",
+          "what": "OpenStreetMap object tags and measured footprint (12.2 x 6.6 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28232156",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=ruins 12.2 x 6.6 m; Wikidata: church ruin in County Wicklow. Roofless rubble walls; photos not fetched."
+    },
+    "dublin-quiet-reflection": {
+      "venueId": "dublin-quiet-reflection",
+      "city": "dublin",
+      "name": "Kill o' the Grange",
+      "archetype": "shrine-small",
+      "subject": "Kill of the Grange, the ruined medieval church in its old graveyard in Deansgrange",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "graveyard wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/73561110",
+          "what": "OpenStreetMap object tags and measured footprint (18.3 x 11 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25248208",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=church 18.3 x 11 m with Wikidata church ruin in County Dublin. Ruined grey stone gables in a graveyard; description typed."
+    },
+    "dublin-recreation": {
+      "venueId": "dublin-recreation",
+      "city": "dublin",
+      "name": "Tymon Park",
+      "archetype": "park-landscape",
+      "subject": "Tymon Park, a 120-130 ha suburban park cut by the M50: two large lakes fed by the River Poddle, mixed deciduous woodland, playgrounds and 29 sports pitches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "National Basketball Arena sits in the park"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1970s-80s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/7222370",
+          "what": "OpenStreetMap object tags and measured footprint (1899.6 x 554.2 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28402424",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tymon_Park",
+          "what": "About 120-130 ha, M50 cuts it in two with two pedestrian bridges, River Poddle feeds two lakes, beech/poplar/ash/horse chestnut/willow woodland, playgrounds, 29 pitches, National Basketball Arena"
+        }
+      ],
+      "notes": "Show lakeside lawns with broadleaf woods; the basketball arena is a plain shed-like hall (not modelled in detail)."
+    },
+    "dublin-transit": {
+      "venueId": "dublin-transit",
+      "city": "dublin",
+      "name": "Adamstown",
+      "archetype": "transport-station",
+      "subject": "Adamstown railway station on the Kildare line: a modern suburban station with platform canopies and a small glazed entrance building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 46,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#6b7378",
+          "#d6dadc"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/255465481",
+          "what": "OpenStreetMap object tags and measured footprint (50.3 x 45.8 m bbox)"
+        }
+      ],
+      "notes": "OSM building=train_station 50 x 46 m; no description of the architecture found. Typed as a 2000s commuter station in a new suburb."
+    }
+  }
+}

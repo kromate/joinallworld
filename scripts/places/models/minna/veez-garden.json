@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "veez-garden",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1137398484",
+   "used": "name-matched park outline, rotated square about 37 x 34 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: shaded seating, umbrellas, small open pavilion, fountain, fence wall with gate, kiosk; no photos found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -25.3,
+      -1.4
+     ],
+     [
+      -0.9,
+      -25.4
+     ],
+     [
+      25.3,
+      1.4
+     ],
+     [
+      0.9,
+      25.4
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#4f8a3c",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     12
+    ],
+    "height": 0.2,
+    "colour": "#d9d3c0",
+    "material": "paving"
+   },
+   "rotDeg": 44
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 3,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "rotDeg": 44,
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.4,
+    "cap_colour": "#8a3b2e",
+    "colour": "#f1ecdc"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    7,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#c8553d",
+     "#f1ecdc",
+     "#e0a92f"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    12,
+    10,
+    0
+   ],
+   "rotDeg": 44,
+   "params": {
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.7,
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#f1ecdc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "rotDeg": 44,
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "colour": "#d9d3c0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    7,
+    -17,
+    0
+   ],
+   "rotDeg": 44,
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "colour": "#d9d3c0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -4,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     6
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; layout of pavilion, seating and gate guessed from the brief on the real outline"
+ }
+}

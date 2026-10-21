@@ -1,0 +1,846 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "villa-las-estrellas",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "villa-las-estrellas",
+    "climate": "cold",
+    "vernacular": "Polar research-station village on ice-free gravel at the Fildes Peninsula, King George Island: small prefabricated modular buildings (fourteen houses of about 90 m2) raised on the ground, clad in metal panels and painted in bright primary colours against snow, with low-pitched metal roofs, a gymnasium, a hospital module, a post office and a chapel made from a modified metal container. Beside it stand Russian, Chinese and Chilean station buildings. No trees; ground is dark gravel and snow.",
+    "wallColours": [
+      "#d9622b",
+      "#b5352c",
+      "#2f5f9a",
+      "#e3b93b",
+      "#e8ecee",
+      "#8c9296"
+    ],
+    "roofColours": [
+      "#7a2e22",
+      "#2f5f9a",
+      "#8c9296",
+      "#3f4a52"
+    ],
+    "wallMaterials": [
+      "metal-cladding",
+      "timber",
+      "painted-render",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated"
+    ],
+    "ground": "snow",
+    "vegetation": [
+      "none"
+    ],
+    "ornament": "Almost none: bold colour-blocked module walls, flag poles, satellite dishes and radio masts, and the Russian church's carved log and tent-roof form.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+        "what": "14 homes of 90 m2, school, air-force hospital, gymnasium, post office, chapel, marine tundra climate (mean -2.3 C), at 10 m elevation"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Teniente_Rodolfo_Marsh_Martin_Airport",
+        "what": "gravel runway and five small buildings with hangar and control tower"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Trinity_Church_(Antarctica)",
+        "what": "Siberian pine log church in traditional Russian style, 15 m high"
+      }
+    ]
+  },
+  "places": {
+    "villa-las-estrellas-airport-villa-las-estrellas-airport": {
+      "venueId": "villa-las-estrellas-airport-villa-las-estrellas-airport",
+      "city": "villa-las-estrellas",
+      "name": "Teniente Rodolfo Marsh Martin Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small operations buildings and control tower beside the gravel airstrip, with a hangar on a small apron",
+      "form": {
+        "footprint": "L",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b5352c",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "short tower on the operations building"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Teniente_Rodolfo_Marsh_Martin_Airport",
+          "what": "single gravel runway 11/29 about 1,292 m; five small buildings including a hangar and control tower; small apron; no passenger terminal"
+        }
+      ],
+      "notes": "No passenger terminal exists; the model is the small operations hut and tower. Colours are typed. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-clinic": {
+      "venueId": "villa-las-estrellas-clinic",
+      "city": "villa-las-estrellas",
+      "name": "Medical Unit",
+      "archetype": "hospital",
+      "subject": "Small hospital module with a red cross, a doctor and a nurse, two beds and a dental clinic",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d9622b",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#7a2e22",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+          "what": "air-force hospital with one doctor and one nurse, X-ray, lab, surgery, pharmacy, two beds and a dental clinic"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "the hospital building at the position is about 17 x 10 m and carries a Cyrillic name, so it may be the neighbouring Russian base medical unit"
+        }
+      ],
+      "notes": "Footprint is measured but may belong to the Russian base next door; treat the look as typed. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-community-notices": {
+      "venueId": "villa-las-estrellas-community-notices",
+      "city": "villa-las-estrellas",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "Tiny prefabricated noticeboard hut",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#2f5f9a",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder with no real building; a 6 x 4 m shed is the nearest OSM building. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-community-voting-game": {
+      "venueId": "villa-las-estrellas-community-voting-game",
+      "city": "villa-las-estrellas",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "Small prefabricated polling hut",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e3b93b",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder. The gymnasium is the real polling place in the settlement but is not at this position. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-community-workshop": {
+      "venueId": "villa-las-estrellas-community-workshop",
+      "city": "villa-las-estrellas",
+      "name": "Villa Las Estrellas",
+      "archetype": "shophouse",
+      "subject": "One of the fourteen prefabricated gabled houses at the heart of the settlement, a long low module on the gravel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#b5352c",
+          "#e8ecee",
+          "#2f5f9a"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+          "what": "fourteen homes of about 90 m2 each"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "gabled residential building about 17 x 9 m"
+        }
+      ],
+      "notes": "The venue name is the settlement itself; the nearest building is a gabled residential module of about 90 m2 (OSM). Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-market-game": {
+      "venueId": "villa-las-estrellas-market-game",
+      "city": "villa-las-estrellas",
+      "name": "Market game (game venue)",
+      "archetype": "shophouse",
+      "subject": "Long residential-style module serving as the village shop and souvenir stall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e3b93b",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#7a2e22",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+          "what": "small souvenir shop run by local women"
+        }
+      ],
+      "notes": "Game placeholder. The village has a small souvenir shop but its building is not identified. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-meal-stop": {
+      "venueId": "villa-las-estrellas-meal-stop",
+      "city": "villa-las-estrellas",
+      "name": "Visitor meal stop (game venue)",
+      "archetype": "restaurant",
+      "subject": "Gabled prefabricated canteen module",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#2f5f9a",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "gabled residential building about 16.5 x 7.9 m"
+        }
+      ],
+      "notes": "Game placeholder. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-osm-node-10684180473": {
+      "venueId": "villa-las-estrellas-osm-node-10684180473",
+      "city": "villa-las-estrellas",
+      "name": "President Eduardo Frei Montalva Base",
+      "archetype": "office-low",
+      "subject": "Chilean Air Force base's long low prefabricated module block, flags and masts",
+      "form": {
+        "footprint": "L",
+        "width_m": 34,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#d9622b",
+          "#e8ecee",
+          "#2f5f9a"
+        ],
+        "roofColour": "#7a2e22",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1969",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Villa_Las_Estrellas",
+          "what": "the settlement stands at the Frei Montalva base on King George Island"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building about 34 x 11 m"
+        }
+      ],
+      "notes": "Only the OSM footprint is known; look typed. The base was founded 1969 (Chilean Air Force). Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-osm-node-5316835183": {
+      "venueId": "villa-las-estrellas-osm-node-5316835183",
+      "city": "villa-las-estrellas",
+      "name": "Professor Julio Escudero Base",
+      "archetype": "office-low",
+      "subject": "Small INACH research hut beside the Chilean village, used in summer",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#2f5f9a",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1995",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Profesor_Julio_Escudero_Base",
+          "what": "established 5 Feb 1995, next to Frei base, about 60 people in summer"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building about 13 x 7 m"
+        }
+      ],
+      "notes": "Opened 1995; ~13 x 7 m hut from OSM; look typed. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-osm-node-9013260590": {
+      "venueId": "villa-las-estrellas-osm-node-9013260590",
+      "city": "villa-las-estrellas",
+      "name": "Great Wall Station",
+      "archetype": "office-low",
+      "subject": "Chinese Antarctic research station's main module block on ice-free rock at Fildes Peninsula",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c8372d",
+          "#e8ecee",
+          "#2f5f9a"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1985",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Great_Wall_Station",
+          "what": "completed 14 Feb 1985; No.1 Building 175 m2 at the centre; holds 60 summer / 13-14 winter; 10 m above sea level on Fildes Peninsula"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building (heating house) about 25 x 25 m"
+        }
+      ],
+      "notes": "No.1 Building is 175 m2 per the article but the OSM building at the position is a 25 x 25 m heating house, so the size is the OSM value. Colours typed. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-osm-way-749856717": {
+      "venueId": "villa-las-estrellas-osm-way-749856717",
+      "city": "villa-las-estrellas",
+      "name": "Holy Trinity Church",
+      "archetype": "shrine-small",
+      "subject": "Russian Orthodox church of Siberian pine logs, 15 m high, with a tent-roofed tower and onion dome, shipped from the Altay in 2004",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 13,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a6a3f",
+          "#d9c9a8",
+          "#e8ecee"
+        ],
+        "roofColour": "#4a6f55",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tent-roofed bell tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Trinity_Church_(Antarctica)",
+          "what": "wooden church of Siberian pine in traditional Russian style, built by Altay carpenters, dismantled and reassembled on King George Island, 15 m high, holds 30 worshippers, Palekh iconostasis"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building:material wood, start_date 2004, footprint about 13 x 13 m"
+        }
+      ],
+      "notes": "Log walls and 15 m height are sourced; roof and dome colour are not and are estimated. It is the only traditional hand-built wooden building on the island, so it stands out against the metal modules."
+    },
+    "villa-las-estrellas-quiet-reflection": {
+      "venueId": "villa-las-estrellas-quiet-reflection",
+      "city": "villa-las-estrellas",
+      "name": "Chapel of Saint Mary Queen of Peace",
+      "archetype": "shrine-small",
+      "subject": "Catholic chapel built from a large metal container modified to resemble a church, heated and electrified",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b5352c",
+          "#e8ecee",
+          "#8c9296"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "small cross/steeple, unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "late 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chapel_of_St._Mary_Queen_of_Peace",
+          "what": "built from a large metal container modified to look like a church; has electricity and heating"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 10.8 x 7.1 m"
+        }
+      ],
+      "notes": "Container construction is sourced; colour and the small steeple are typed. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-recreation": {
+      "venueId": "villa-las-estrellas-recreation",
+      "city": "villa-las-estrellas",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "Open gravel and snow recreation area beside the settlement",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8c9296",
+          "#d9622b",
+          "#e8ecee"
+        ],
+        "roofColour": "#3f4a52",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "nearest building is the 1980 Estrella Polar hostel, about 34 x 10 m"
+        }
+      ],
+      "notes": "Game placeholder. The Estrella Polar hostel (1980-2019, up to 20 guests) is the nearest building. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    },
+    "villa-las-estrellas-transit": {
+      "venueId": "villa-las-estrellas-transit",
+      "city": "villa-las-estrellas",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "Tiny bus-shelter style stop beside the gravel road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e3b93b",
+          "#8c9296",
+          "#e8ecee"
+        ],
+        "roofColour": "#3f4a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder; there is no bus service, only vehicles on gravel tracks. Wall colours are typical polar-station prefab paint (reds, oranges, blues) chosen for the style; no photo-based colour source could be consulted."
+    }
+  }
+}

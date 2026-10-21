@@ -1,0 +1,215 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "union-bank-uyo",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "No usable photo: the only nearby Commons image (Banking_Layout_Lady.jpg) is a bronze statue, not the branch. Brief gives 24x16 m two-storey rendered block, glazed hall, ATM bay, flat canopy."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#4a8fc0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -5,
+    -10
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a8fc0",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    4,
+    -10,
+    4.2
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5,
+    "height": 4.2,
+    "thickness": 0.35,
+    "columns": 2,
+    "colour": "#ffffff",
+    "edgeColour": "#4a8fc0"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    12.8,
+    -9.5,
+    0
+   ],
+   "params": {
+    "colour": "#4a8fc0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -13.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 0.8,
+    "colour": "#4a8fc0",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -16
+     ],
+     [
+      -20,
+      -18
+     ],
+     [
+      20,
+      -18
+     ],
+     [
+      20,
+      -16
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.25,
+    "colour": "#f1ede2"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -12,
+    -15,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     19,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the branch found (nearby Commons image is a statue); modest block from the brief only."
+ }
+}

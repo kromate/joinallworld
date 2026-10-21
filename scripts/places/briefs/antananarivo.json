@@ -1,0 +1,1573 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "antananarivo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "antananarivo",
+    "climate": "highland",
+    "vernacular": "Hill city on a rocky ridge above rice paddies: 19th-century trano gasy two-storey red-brick houses with wooden-post verandas and steep red clay-tile or corrugated roofs, stacked up the slopes, with French colonial stucco and whitewashed blocks in the lower town and modern 3-6 storey concrete blocks with flat or metal roofs; stone is reserved for the Rova, churches and tombs.",
+    "wallColours": [
+      "#a8553a",
+      "#ece6d8",
+      "#c9a35e",
+      "#b5ada0",
+      "#9bb08a",
+      "#d9b38c",
+      "#8c3f2e"
+    ],
+    "roofColours": [
+      "#9a4a33",
+      "#6b6f73",
+      "#4f5a66",
+      "#7a3b2c"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "slate"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Wooden-post verandas and carved balcony railings on trano gasy houses; steep-pitched roofs with crossed gable-end finials; arched windows and stone quoins on colonial and royal buildings; jacaranda-lined avenues around Lake Anosy; French colonial market pavilions with tiled roofs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Antananarivo",
+        "what": "19th-century trano gasy two-storey brick houses with front veranda on wooden posts; red-tiled roofs on the hillsides; Analakely 1930s tile-roofed pavilions; jacarandas at Lake Anosy; subtropical highland climate; rice paddies"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Rova_of_Antananarivo",
+        "what": "Rova palaces: wooden then stone-encased, slate roof after reconstruction; granite blocks"
+      }
+    ]
+  },
+  "places": {
+    "antananarivo-airport-fmmi": {
+      "venueId": "antananarivo-airport-fmmi",
+      "city": "antananarivo",
+      "name": "Ivato International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Ivato international terminal (new terminal opened December 2021) seen from the landside forecourt: a long low glass-and-panel block with boarding bridges on the apron side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8dde0",
+          "#3d5566",
+          "#f0f0ee"
+        ],
+        "roofColour": "#b9bec2",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "boarding bridges exist at the new terminal; count estimated"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Aéroport_international_d'Ivato",
+          "what": "new international terminal opened Dec 2021 with boarding bridges, duty free, lounge; old domestic terminal 2,600 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ivato_Airport",
+          "what": "single 3,100 m runway, elevation 1,280 m, two terminals"
+        }
+      ],
+      "notes": "Sources confirm a new international terminal with boarding bridges (2021) but give no dimensions or colours; width, depth, height and colours are estimates. Old terminal (now domestic) is a small dated block next door."
+    },
+    "antananarivo-clinic": {
+      "venueId": "antananarivo-clinic",
+      "city": "antananarivo",
+      "name": "ONG Mobile Hilfe Madagaskar",
+      "archetype": "hospital",
+      "subject": "Small NGO clinic: a one-storey rendered health building with a corrugated roof (typed from city style)",
+      "form": {
+        "footprint": "L",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d8",
+          "#6e8f6a",
+          "#b5ada0"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city vernacular materials and roofs"
+        }
+      ],
+      "notes": "Nothing findable about this clinic building; typed from highland city style and the type hospital/clinic. Treat as generic."
+    },
+    "antananarivo-community-notices": {
+      "venueId": "antananarivo-community-notices",
+      "city": "antananarivo",
+      "name": "Fokontany Ampanefy",
+      "archetype": "civic-small",
+      "subject": "Neighbourhood (fokontany) office: a small two-storey brick and render building with a veranda (typed from city style)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8553a",
+          "#ece6d8",
+          "#6e3a2a"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "trano gasy brick houses with verandas as basis"
+        }
+      ],
+      "notes": "No description exists for this office; typed from the trano gasy house form. Low confidence."
+    },
+    "antananarivo-community-voting-game": {
+      "venueId": "antananarivo-community-voting-game",
+      "city": "antananarivo",
+      "name": "Kaominina Ankadikely Ilafy",
+      "archetype": "civic-small",
+      "subject": "Commune (kaominina) hall on the eastern outskirts: a modest rendered single-storey hall with a metal roof (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9b38c",
+          "#a8553a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Rural commune office near Ilafy; no description found. Generic typed civic hall."
+    },
+    "antananarivo-community-workshop": {
+      "venueId": "antananarivo-community-workshop",
+      "city": "antananarivo",
+      "name": "Archives Nationales Malagasy",
+      "archetype": "office-low",
+      "subject": "National archives: a plain two-to-three storey institutional block (typed; no description found)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d8",
+          "#9a9a94",
+          "#6b6f73"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Real archive building appearance not found. Typed institutional block."
+    },
+    "antananarivo-market-game": {
+      "venueId": "antananarivo-market-game",
+      "city": "antananarivo",
+      "name": "Marché Communale Alakamisy",
+      "archetype": "market-open",
+      "subject": "Suburban commune market: rows of low stalls under tin sheds and umbrellas on bare earth (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#9a7a55",
+          "#b5ada0",
+          "#ece6d8"
+        ],
+        "roofColour": "#7a5a4a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 12,
+          "note": "white parasols are traditional in Antananarivo markets"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "market tradition: merchants shade stalls with white parasols; Analakely tile-roofed pavilions"
+        }
+      ],
+      "notes": "No description for Alakamisy market; typed from Antananarivo market tradition (white parasols, tin sheds). Low."
+    },
+    "antananarivo-meal-stop": {
+      "venueId": "antananarivo-meal-stop",
+      "city": "antananarivo",
+      "name": "Le Castel",
+      "archetype": "restaurant",
+      "subject": "Restaurant Le Castel: a two-storey rendered building with a pitched tile roof and terrace (typed from name and city style)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc4",
+          "#a8553a",
+          "#6e3a2a"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "castle-themed name; unverified"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found. Name suggests a castle theme; crenellation is a guess and may be dropped."
+    },
+    "antananarivo-osm-node-11840542812": {
+      "venueId": "antananarivo-osm-node-11840542812",
+      "city": "antananarivo",
+      "name": "CSB II Ampangabe",
+      "archetype": "hospital",
+      "subject": "Basic health centre (CSB II) in a rural commune: a small one-storey rendered building with a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d8",
+          "#6e8f6a",
+          "#9a9a94"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.14
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "CSB II is the Malagasy basic health-centre tier; no photo or description found. Typed."
+    },
+    "antananarivo-osm-node-11883673240": {
+      "venueId": "antananarivo-osm-node-11883673240",
+      "city": "antananarivo",
+      "name": "Parc Antsaha Soa sy Tsara",
+      "archetype": "park-landscape",
+      "subject": "Small farm-themed park with lawns, a gate and a pavilion (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7a55",
+          "#9bb08a",
+          "#ece6d8"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city vegetation"
+        }
+      ],
+      "notes": "No description found. Name means roughly good and fine farming; typed generic park."
+    },
+    "antananarivo-osm-node-11888568626": {
+      "venueId": "antananarivo-osm-node-11888568626",
+      "city": "antananarivo",
+      "name": "LANGO Snack",
+      "archetype": "restaurant",
+      "subject": "Small snack bar: a one-storey rendered kiosk-like shop with an awning (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9b38c",
+          "#a8553a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Obscure snack bar; nothing found. Typed."
+    },
+    "antananarivo-osm-node-11892950099": {
+      "venueId": "antananarivo-osm-node-11892950099",
+      "city": "antananarivo",
+      "name": "Maxi Pizza bypass",
+      "archetype": "restaurant",
+      "subject": "Roadside pizzeria on the bypass: a two-storey rendered building with a terrace (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#9a4a33",
+          "#6b6f73"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Chain-style roadside venue; no description found. Typed."
+    },
+    "antananarivo-osm-node-13496096598": {
+      "venueId": "antananarivo-osm-node-13496096598",
+      "city": "antananarivo",
+      "name": "CHRD Ambohimangakely",
+      "archetype": "hospital",
+      "subject": "District referral hospital (CHRD) in Ambohimangakely: low pavilion-style rendered wards under metal roofs (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d8",
+          "#6e8f6a",
+          "#b5ada0"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "CHRD = Centre Hospitalier de Référence de District. No photo or description found; typed U-plan ward block."
+    },
+    "antananarivo-osm-node-4391442008": {
+      "venueId": "antananarivo-osm-node-4391442008",
+      "city": "antananarivo",
+      "name": "Centre de loisirs Tanamasoanadro",
+      "archetype": "park-landscape",
+      "subject": "Leisure centre grounds with lawns, a pavilion and play area (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d8",
+          "#9bb08a",
+          "#a8553a"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found beyond the name; generic leisure grounds."
+    },
+    "antananarivo-osm-node-623568960": {
+      "venueId": "antananarivo-osm-node-623568960",
+      "city": "antananarivo",
+      "name": "Faculté de Médecine Département Vétérinaire",
+      "archetype": "campus-block",
+      "subject": "Veterinary department of the Faculty of Medicine: a pair of two-storey institutional blocks around a yard (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc4",
+          "#9a9a94",
+          "#6b6f73"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor corridor"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "University of Antananarivo veterinary site (Ampandrianomby). No appearance source found; typed."
+    },
+    "antananarivo-osm-relation-1167731": {
+      "venueId": "antananarivo-osm-relation-1167731",
+      "city": "antananarivo",
+      "name": "Tsarasaotra Bird Park",
+      "archetype": "park-landscape",
+      "subject": "Lakeside private bird reserve in the Betsimitatatra paddy plain: reed-fringed ponds, trees and a few hide huts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7d6a4a",
+          "#9bb08a",
+          "#ece6d8"
+        ],
+        "roofColour": "#8a7a4a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "bird-watching shelters"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "rice paddy plain around the city; lakes"
+        }
+      ],
+      "notes": "Page fetch failed; model is typed from general knowledge that it is a lake reserve among paddies. Sizes unverified."
+    },
+    "antananarivo-osm-relation-16814959": {
+      "venueId": "antananarivo-osm-relation-16814959",
+      "city": "antananarivo",
+      "name": "Kianja Barea Mahamasina",
+      "archetype": "stadium",
+      "subject": "Mahamasina Municipal Stadium (Kianja Barea), the national stadium rebuilt and reopened September 2021: a closed bowl with roofed stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c4bb",
+          "#c0392b",
+          "#f0f0ee"
+        ],
+        "roofColour": "#d8dadc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over seating"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1970 (rebuilt 2021)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mahamasina_Municipal_Stadium",
+          "what": "capacity 40,880; built 1970; rebuilt and expanded, reopened 2 September 2021"
+        }
+      ],
+      "notes": "Capacity 40,880 and 2021 rebuild are sourced; bowl dimensions, roof form and colours are estimates. Stadium stands at the foot of the Rova hill by Lake Anosy side."
+    },
+    "antananarivo-osm-way-1222327356": {
+      "venueId": "antananarivo-osm-way-1222327356",
+      "city": "antananarivo",
+      "name": "Stade Cnaps",
+      "archetype": "stadium",
+      "subject": "CNaPS stadium in the southwest suburb: a small open football ground with one covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5ada0",
+          "#2f5d8a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered main stand"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Small club ground (CNaPS Sport); no description found. Deliberately much smaller than Mahamasina."
+    },
+    "antananarivo-osm-way-1280179586": {
+      "venueId": "antananarivo-osm-way-1280179586",
+      "city": "antananarivo",
+      "name": "Casa Niñas",
+      "archetype": "civic-small",
+      "subject": "Girls home/shelter: a walled two-storey rendered house (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#9bb08a",
+          "#a8553a"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Name suggests a children's home; no description found. Typed."
+    },
+    "antananarivo-osm-way-1280560456": {
+      "venueId": "antananarivo-osm-way-1280560456",
+      "city": "antananarivo",
+      "name": "Collège théologique Assemblée de Dieu",
+      "archetype": "campus-block",
+      "subject": "Theological college: a two-storey rendered block with an adjoining chapel hall (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 35,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d8",
+          "#b5ada0",
+          "#4f5a66"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed."
+    },
+    "antananarivo-osm-way-49037178": {
+      "venueId": "antananarivo-osm-way-49037178",
+      "city": "antananarivo",
+      "name": "Stade Ampasamborona",
+      "archetype": "stadium",
+      "subject": "Ampasamborona football ground in the north-west: modest open stadium with concrete terraces and a small roofed stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5ada0",
+          "#a8553a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed lower-division ground. Made distinct from CNaPS by larger terraces and brick-red trim."
+    },
+    "antananarivo-osm-way-52638460": {
+      "venueId": "antananarivo-osm-way-52638460",
+      "city": "antananarivo",
+      "name": "Queen's Palace",
+      "archetype": "heritage-fort",
+      "subject": "Manjakamiadana, the Queen's Palace on the Rova hilltop: a tall three-storey granite palace with corner towers, arched windows and a steep blue-grey slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 36,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#b9b2a4",
+          "#8a8478",
+          "#e9e5db"
+        ],
+        "roofColour": "#5b6674",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 24,
+          "note": "7 arched windows per long side and 5 per short side on each floor"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "clock and bells in the north-east corner tower"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "square corner towers rising above the walls"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "outer rova enclosure"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1839 (stone cladding 1867, rebuilt after 1995 fire)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rova_of_Antananarivo",
+          "what": "30 x 20 m, 37 m high with roof; three storeys; 1867 stone encasing with arched windows (7 per long side, 5 per short side) and four corner towers; clock in NE tower; post-1995 reconstruction in numbered granite with blue-grey Angers slate roof"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "royal palace on the summit visible across the city"
+        }
+      ],
+      "notes": "Strong source. Original wooden palace (1839, Laborde) was encased in stone in 1867 by James Cameron; burnt 1995 and reconstructed in granite with reinforced-concrete interior and slate roof (exterior done by 2009). Height rounded to 36 m (source 37 m) to avoid validator warning; it includes the roof (about 15 m of it). Corner towers are square; model as pale granite with slate-grey roof."
+    },
+    "antananarivo-osm-way-798028413": {
+      "venueId": "antananarivo-osm-way-798028413",
+      "city": "antananarivo",
+      "name": "Institut Supérieur de Travail Social",
+      "archetype": "campus-block",
+      "subject": "Higher institute of social work: a plain two-storey rendered teaching block (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#9a9a94",
+          "#6b6f73"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.24
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed."
+    },
+    "antananarivo-quiet-reflection": {
+      "venueId": "antananarivo-quiet-reflection",
+      "city": "antananarivo",
+      "name": "Catholic Cathedral of Andohalo",
+      "archetype": "church-gothic",
+      "subject": "Cathedral of the Immaculate Conception at Andohalo, west front facing the city: neo-Gothic limestone church with imposing twin spires, large pointed-arch openings, forecourt and a Virgin statue beside it",
+      "form": {
+        "footprint": "cross",
+        "width_m": 24,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cfc6b0",
+          "#9a9488",
+          "#e9e5db"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 2,
+          "note": "imposing spires"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 10
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "large Virgin statue beside the cathedral"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "parvis forecourt on the hilltop"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1873-1890",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cathédrale_de_l'Immaculée-Conception_d'Antananarivo",
+          "what": "neo-Gothic, limestone, imposing spires, west facade with large pointed-arch openings, Virgin statue, parvis and gardens; built 8 May 1873 - 17 Dec 1890"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "Andohalo is a former royal square on a northern hilltop remodelled by the French"
+        }
+      ],
+      "notes": "Sourced: neo-Gothic, limestone, spires, pointed-arch west front, Virgin statue, 1873-1890. Dimensions, spire count (taken as two) and stone colour are estimates; check against photos. Stands on the Andohalo hill beside the old royal square."
+    },
+    "antananarivo-recreation": {
+      "venueId": "antananarivo-recreation",
+      "city": "antananarivo",
+      "name": "Parc Adventures - Vidzar",
+      "archetype": "park-landscape",
+      "subject": "Adventure park: timber climbing frames, zip-line towers and lawns around a small reception pavilion (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7a55",
+          "#9bb08a",
+          "#ece6d8"
+        ],
+        "roofColour": "#7a5a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 3,
+          "note": "zip-line towers"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "city vegetation"
+        }
+      ],
+      "notes": "Nothing found about the site; typed adventure-park layout. Pine plantations are typical on the highlands but unverified here."
+    },
+    "antananarivo-transit": {
+      "venueId": "antananarivo-transit",
+      "city": "antananarivo",
+      "name": "Soarano",
+      "archetype": "transport-station",
+      "subject": "Soarano railway station at the end of Avenue de l'Indépendance: a long 19th-century-style station building with a central pavilion, restored in 2008 and now housing a restaurant and shops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e6dcc4",
+          "#a8553a",
+          "#f0ece2"
+        ],
+        "roofColour": "#9a4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arcade; assumed from period style"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central clock pavilion assumed; verify against photos"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1908-1910",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gare_de_Soarano",
+          "what": "designed by Georges Auguste Fouchard in the style of 19th-century stations; built 1908-1910; restored 2008 (Madarail, architect Geneviève Brunet); now restaurant and shops"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antananarivo",
+          "what": "station at end of Avenue de l'Indépendance, recently renovated"
+        }
+      ],
+      "notes": "Date, designer, style and re-use are sourced; length, colours, clock and arcade are assumptions typed from period stations. Name Soarano means good water (fountain on the filled ground)."
+    }
+  }
+}

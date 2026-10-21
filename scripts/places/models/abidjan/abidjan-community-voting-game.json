@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: paved memorial square about 70 x 50 m, central memorial figure on a stepped plinth, flagpoles, low plantings; no photo or OSM outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "square",
+   "footprint": {
+    "rect": [
+     70,
+     50
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "inlay",
+   "params": {
+    "rect": [
+     44,
+     30
+    ],
+    "z0": 0.5,
+    "height": 0.04,
+    "colour": "#b9b2a2",
+    "topColour": "#b9b2a2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-left",
+   "params": {
+    "rect": [
+     10,
+     4
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#2f6b3a",
+    "topColour": "#3f7d45"
+   },
+   "at": [
+    -24,
+    -19
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-right",
+   "params": {
+    "rect": [
+     10,
+     4
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#2f6b3a",
+    "topColour": "#3f7d45"
+   },
+   "at": [
+    24,
+    -19
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-back-left",
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#2f6b3a",
+    "topColour": "#4a8a4a"
+   },
+   "at": [
+    -20,
+    20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-back-right",
+   "params": {
+    "rect": [
+     14,
+     3
+    ],
+    "z0": 0.5,
+    "height": 0.45,
+    "colour": "#2f6b3a",
+    "topColour": "#4a8a4a"
+   },
+   "at": [
+    20,
+    20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-base",
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "z0": 0.5,
+    "height": 0.6,
+    "colour": "#8f948f",
+    "topColour": "#9a9e99"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-mid",
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 1.1,
+    "height": 0.7,
+    "colour": "#8f948f",
+    "topColour": "#9a9e99"
+   }
+  },
+  {
+   "type": "hospital/statue-on-stepped-plinth",
+   "at": [
+    0,
+    0,
+    1.8
+   ],
+   "params": {
+    "height": 8.5,
+    "plinthHeight": 3.2,
+    "colour": "#5a5148",
+    "plinthColour": "#a8a69c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -28,
+    -8,
+    0.18
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 8,
+    "colours": [
+     "#e08a2f",
+     "#f4f2ea",
+     "#2f8a4a"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    28,
+    -8,
+    0.18
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 8,
+    "colours": [
+     "#e08a2f",
+     "#f4f2ea",
+     "#2f8a4a"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -22,
+    0.18
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    22,
+    0.18
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -33,
+    10,
+    0.18
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 6,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    33,
+    10,
+    0.18
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 6,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline found: typed memorial square, statue and flags generic"
+ }
+}

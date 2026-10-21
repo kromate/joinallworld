@@ -1,0 +1,257 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "awka-city-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1186481523",
+   "used": "pitch outline 109x74 m sets the pitch size; stands and masts follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 128,
+    "width": 88,
+    "infield": true,
+    "pitch": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     -50
+    ],
+    "end": [
+     42,
+     -50
+    ],
+    "rows": 18,
+    "seatColour": "#c9372c",
+    "seatColours": [
+     "#c9372c",
+     "#e9e5da"
+    ],
+    "blocks": 4,
+    "backWall": 1,
+    "concreteColour": "#b9b5aa",
+    "under": "solid",
+    "canopy": {
+     "height": 9,
+     "depth": 12,
+     "colour": "#8a8f93",
+     "slopeDeg": 4,
+     "supports": 7
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     52
+    ],
+    "end": [
+     42,
+     52
+    ],
+    "flip": true,
+    "rows": 10,
+    "seatColour": "#b9b5aa",
+    "concreteColour": "#b9b5aa",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -70,
+     -26
+    ],
+    "end": [
+     -70,
+     26
+    ],
+    "rows": 6,
+    "seatColour": "#b9b5aa",
+    "concreteColour": "#b9b5aa",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     70,
+     26
+    ],
+    "end": [
+     70,
+     -26
+    ],
+    "rows": 6,
+    "seatColour": "#b9b5aa",
+    "concreteColour": "#b9b5aa",
+    "under": "open"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    48,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    48,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -78,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "colour": "#e9e5da",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -78,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.5,
+    "pillar": 1.2,
+    "colour": "#c9372c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    30,
+    -78,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.5,
+    "pillar": 1.2,
+    "colour": "#c9372c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -80,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     80,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; pitch outline only sets size; main stand, terraces, masts and track are typed."
+ }
+}

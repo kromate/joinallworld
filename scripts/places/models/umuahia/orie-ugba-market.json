@@ -1,0 +1,392 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "orie-ugba-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json",
+   "used": "dense tin-roofed stalls and umbrellas on a laterite yard, a few two-storey lock-ups at the road front, entrance gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1274423793",
+   "used": "checked only: a 20x11 m nearest-quality building, not the market yard, so not used as the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "shop-block",
+   "at": [
+    -18,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 9,
+    "storeys": 2,
+    "floor_height": 3.2,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.2,
+    "awning_ratio": 0.5,
+    "roof": "flat",
+    "wall_colour": "#b5654a",
+    "roof_colour": "#8a8d90",
+    "trim_colour": "#efe6d0",
+    "shop_kind": "mixed"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    34,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 3.6,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.4,
+    "roof_colour": "#7b5a3c",
+    "wall_colour": "#b5654a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#7b5a3c",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 28,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8a8d90",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8a8d90",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 28,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#7b5a3c",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -28,
+    22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#7b5a3c",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    6,
+    22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8a8d90",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    9,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#c0392b",
+     "#e9c46a",
+     "#2a9d8f",
+     "#3a86c8",
+     "#e76f51",
+     "#f4f1de"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -2,
+    9,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.8,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#c0392b",
+     "#e9c46a",
+     "#2a9d8f",
+     "#3a86c8",
+     "#e76f51",
+     "#f4f1de"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    12.5,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 4.2,
+    "kind": "stall",
+    "size": 1.0
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    40,
+    10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.6,
+    "colours": [
+     "#c0392b",
+     "#e9c46a",
+     "#2a9d8f",
+     "#3a86c8",
+     "#e76f51",
+     "#f4f1de"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -44,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "radius": 1.5,
+    "colours": [
+     "#c0392b",
+     "#e9c46a",
+     "#2a9d8f",
+     "#3a86c8",
+     "#e76f51",
+     "#f4f1de"
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    8,
+    -39.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "colour": "#efe6d0",
+    "board_colour": "#4f6b55"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -40,
+    -39.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    40,
+    -39.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   120,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; open market composed from the brief (lock-up front, tin sheds, umbrella stalls, gate); stall layout is typical, not surveyed."
+ }
+}

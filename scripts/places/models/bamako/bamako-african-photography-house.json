@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-african-photography-house",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/bamako.json",
+   "used": "2-storey rendered cultural building 30x18 m, flat roof, forecourt with steps and blank signboard, on national library grounds; OSM match (7 m2) rejected as unreliable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c3a0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#f1ece0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca3",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "rotDeg": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a65a3a",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#f1ece0"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "kind": "wall",
+    "colour": "#d8c3a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building found; massing and colours typed from the brief, entrance bay is a guess."
+ }
+}

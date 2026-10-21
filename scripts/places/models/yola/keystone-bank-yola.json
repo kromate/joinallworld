@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "keystone-bank-yola",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1115073442",
+   "used": "28.6 x 18.2 m outline, commercial bank, 2 levels"
+  },
+  {
+   "kind": "text",
+   "used": "brief: neutral-render two-storey branch, glazed entrance bay, blank sign board, flags, car park; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeeea",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#4d6a80",
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b7b3a8",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    -2,
+    -19
+   ],
+   "params": {
+    "width": 9,
+    "depth": 4.2,
+    "height": 4.2,
+    "columns": 2,
+    "colour": "#d8d5cc",
+    "edge_colour": "#3e5f78"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#3e5f78"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 2.2,
+    "colours": [
+     "#d8d5cc",
+     "#d8d5cc",
+     "#d8d5cc"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 22,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2.0,
+    "height": 2.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: OSM outline only, entrance side and finishes are typical for a Nigerian bank branch, not observed"
+ }
+}

@@ -1,0 +1,368 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "central-market-sokoto",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1285546618",
+   "used": "name match, but the 14 x 8 m outline is one stall block only; market area (way/282586704, ~24 ha) used for scale of a modelled ~110 x 80 m corner"
+  },
+  {
+   "kind": "text",
+   "used": "brief: dense rows of mud-render lock-ups and stalls under shared corrugated sheds along sandy lanes; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 4.2,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "wall_colour": "#a9633f",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "open_ratio": 0.3
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -6,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 66,
+    "depth": 4.2,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "wall_colour": "#a9633f",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "open_ratio": 0.3
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 4.2,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "wall_colour": "#a9633f",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "open_ratio": 0.3
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -4,
+    32,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "depth": 4.2,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "wall_colour": "#a9633f",
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "open_ratio": 0.3
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -34,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 14,
+    "height": 4.2,
+    "roof": "gable",
+    "post_pitch": 5,
+    "roof_colour": "#7e7f80",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    36,
+    5,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 14,
+    "height": 4.2,
+    "roof": "gable",
+    "post_pitch": 5,
+    "roof_colour": "#8a3b2e",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    34,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 10,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#6b6e70",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -12.5,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a227",
+     "#b6323a",
+     "#e8dfc8",
+     "#3f6e8a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    5,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e8dfc8",
+     "#8a3b2e",
+     "#c9a227"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -18,
+    22,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#b6323a",
+     "#e8dfc8",
+     "#3f6e8a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#c9a227",
+     "#b6323a",
+     "#e8dfc8"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    16,
+    24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 4,
+    "colours": [
+     "#3f6e8a",
+     "#e8dfc8",
+     "#8a3b2e"
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -8,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.6,
+    "colour": "#a9633f",
+    "arch": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -41.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 5,
+    "colour": "#e8dfc8",
+    "frameColour": "#6b6e70"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -14,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "width": 0.9
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -2,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "width": 0.9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    22,
+    -16,
+    0
+   ]
+  },
+  {
+   "type": "truck",
+   "at": [
+    -46,
+    10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#3f6e8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; modelled ~100 x 80 m corner of a 24 ha market, layout is typical not surveyed."
+ }
+}

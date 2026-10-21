@@ -1,0 +1,699 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-hamma-park",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jardin_d%27essai_du_Hamma,_Alger.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Mouh2jijel",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/algiers/hamma1.jpg",
+   "used": "dense mix of tall palms and broadleaf crowns, winding pale paths, a lawn clearing, a paved entrance court with a small round-roofed kiosk at the bottom edge, hillside rising behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29300477",
+   "used": "garden size and elongated shape (about 250 x 150 m, long axis NNE); a simplified 60 x 118 m section of it is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 34,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "under",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     118
+    ],
+    "height": 0.3,
+    "colour": "#3a5f30",
+    "topColour": "#3a5f30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "garden",
+   "footprint": {
+    "polygon": [
+     [
+      -30,
+      -59
+     ],
+     [
+      22,
+      -59
+     ],
+     [
+      34,
+      -10
+     ],
+     [
+      30,
+      40
+     ],
+     [
+      8,
+      59
+     ],
+     [
+      -26,
+      40
+     ],
+     [
+      -34,
+      -8
+     ]
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#3f6a34",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#46733a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -12.0,
+      -42.0
+     ],
+     [
+      -3.0,
+      -24.0
+     ],
+     [
+      6.0,
+      -6.0
+     ],
+     [
+      0.0,
+      12.0
+     ],
+     [
+      -12.0,
+      30.0
+     ],
+     [
+      -15.0,
+      48.0
+     ]
+    ],
+    "width": 3.6,
+    "colour": "#e4d6b4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0.0,
+    0.0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      6.0,
+      -6.0
+     ],
+     [
+      18.0,
+      3.0
+     ],
+     [
+      30.0,
+      18.0
+     ]
+    ],
+    "width": 3.6,
+    "colour": "#e4d6b4"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -13.2,
+    -57.599999999999994,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "pillar": 1.4,
+    "colour": "#efe8d6",
+    "leaf": "bars"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24.0,
+    -57.599999999999994,
+    0.5
+   ],
+   "params": {
+    "length": 21.599999999999998,
+    "height": 2,
+    "thickness": 0.4,
+    "pillarEvery": 4,
+    "colour": "#e8e0cb"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    4.8,
+    -43.199999999999996,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 4,
+    "roof": "hip",
+    "colour": "#f1ead8",
+    "cap_colour": "#b5593f"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -3.0,
+    -21.0,
+    0.5
+   ],
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -13.2,
+    -48.0,
+    0.5
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.5,
+    "run": 1.5,
+    "count": 4,
+    "colour": "#e2d9c2"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -20,
+    -35,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -17,
+    -32,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    14,
+    -35,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    17,
+    -32,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    -8,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -21,
+    -5,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    -6,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    25,
+    -3,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -22,
+    18,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -19,
+    21,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    22,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    25,
+    25,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -6,
+    40,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -3,
+    43,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    16,
+    44,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    19,
+    47,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -14,
+    46,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 9,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -11,
+    49,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 19
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "court",
+   "at": [
+    -4,
+    -52,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     44,
+     12
+    ],
+    "height": 0.2,
+    "colour": "#e6dcc4",
+    "topColour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    -4,
+    -45,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     26,
+     1.4
+    ],
+    "height": 1.1,
+    "colour": "#2f5a2a",
+    "topColour": "#2f5a2a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    14,
+    -52,
+    0.5
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#efe6d0",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      2.2,
+      2.6
+     ],
+     [
+      3.2,
+      2.6
+     ],
+     [
+      2.8,
+      3.4
+     ],
+     [
+      1.2,
+      4.2
+     ],
+     [
+      0,
+      4.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hill",
+   "footprint": {
+    "rect": [
+     48,
+     8
+    ]
+   },
+   "at": [
+    0,
+    58.5
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#3f6a34",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#46733a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    58.5,
+    0.5
+   ],
+   "params": {
+    "width": 44,
+    "depth": 7,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    58.5,
+    0.5
+   ],
+   "params": {
+    "width": 44,
+    "depth": 7,
+    "count": 2,
+    "kind": "palm",
+    "min_height": 14,
+    "max_height": 18
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Canopy still sparser than the photo (tree triangle budget); hillside is a low block; kiosk simplified; outer lawn plain green"
+ }
+}

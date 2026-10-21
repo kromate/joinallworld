@@ -1,0 +1,1710 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "manama",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "manama",
+    "climate": "desert",
+    "vernacular": "Hot humid island city: traditional coral-rubble houses lime-plastered in pale sand with wind towers and carved teak doors in the old Manama and Muharraq quarters; modern flat-roofed 2-5 storey blocks and villas in cream and sand render behind boundary walls; glass-and-steel towers along the waterfront and Diplomatic Area; large sand-coloured malls and mosques on reclaimed land.",
+    "wallColours": [
+      "#e6d8b8",
+      "#efe6d0",
+      "#d3bf94",
+      "#c4ad82",
+      "#f3efe6",
+      "#aab9bf",
+      "#8fa3ad"
+    ],
+    "roofColours": [
+      "#b9b2a6",
+      "#d6d0c3",
+      "#8d8a84",
+      "#6f7479"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "limestone",
+      "concrete",
+      "glass-curtain",
+      "stone",
+      "marble"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "none",
+      "acacia"
+    ],
+    "ornament": "Wind towers (badgir) and carved teak doors on traditional houses; coral-stone and lime-gypsum plaster walls; pointed and multifoil arches and Kufic calligraphy on mosques; geometric Islamic lattice screens (mashrabiya) on modern towers; the Bahrain flag red and white used as accent.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Bahrain",
+        "what": "coral rubble walls coated with lime and gypsum, wind towers in old Manama and Muharraq, courtyard houses, modern Western-style offices after the 1970s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Manama",
+        "what": "arid climate, 45 C summers, low-lying reclaimed land, towers of Bahrain World Trade Center and Bahrain Financial Harbour, Bab Al Bahrain"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Khamis_Mosque",
+        "what": "early flat-roofed prayer hall on arches, twin minarets, stone and limestone"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Al_Fateh_Grand_Mosque",
+        "what": "Italian marble, fiberglass dome, concrete, teak doors"
+      }
+    ]
+  },
+  "places": {
+    "manama-airport-manama-airport": {
+      "venueId": "manama-airport-manama-airport",
+      "city": "manama",
+      "name": "Bahrain International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 2021 Bahrain International Airport passenger terminal seen from the forecourt: a long, low, pale building under a very large undulating canopy roof, with a multi-storey car park and the control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 380,
+        "depth_m": 170,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "wave"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcdfdf",
+          "#8da0aa",
+          "#f1f1ee"
+        ],
+        "roofColour": "#d7d9d8",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "long undulating roof canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 24,
+          "note": "24 gates"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "7,000 new spaces, at-grade and multi-storey"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bahrain_International_Airport",
+          "what": "new terminal opened 28 January 2021, USD 1.1bn, about 210,000 m2, 24 departure gates, 7,000 parking spaces at-grade and multi-storey, LEED Gold"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "wikidata Q637639; no OSM footprint here"
+        }
+      ],
+      "notes": "Scale, gates and parking are sourced; the undulating roof is from general knowledge of the new terminal (not in the fetched page); colours are typed. Floor area 210,000 m2 over ~3 levels gives about 380x170 m footprint (estimated)."
+    },
+    "manama-clinic": {
+      "venueId": "manama-clinic",
+      "city": "manama",
+      "name": "International Hospital of Bahrain",
+      "archetype": "hospital",
+      "subject": "a large private hospital: a five-storey cream block with a glazed entrance atrium and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece3cd",
+          "#6f8b99",
+          "#b7ae9b"
+        ],
+        "roofColour": "#b4b0a7",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: hospital outline about 302x183 m, Wikidata Q12060763"
+        }
+      ],
+      "notes": "Only the large footprint is measured; the rest is typed."
+    },
+    "manama-community-notices": {
+      "venueId": "manama-community-notices",
+      "city": "manama",
+      "name": "Ministry of Interior",
+      "archetype": "civic-palace",
+      "subject": "the Ministry of Interior headquarters: a stately cream five-storey government block with a colonnaded entrance and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 34,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#ece3cd",
+          "#b9a77c",
+          "#9b9486"
+        ],
+        "roofColour": "#b7b3aa",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building about 48x34 m, no tags"
+        }
+      ],
+      "notes": "Government building; appearance is not documented in anything fetched. Typed."
+    },
+    "manama-community-voting-game": {
+      "venueId": "manama-community-voting-game",
+      "city": "manama",
+      "name": "Northern Area Municipality",
+      "archetype": "civic-small",
+      "subject": "a two-storey municipality office with a central entrance and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eadfc6",
+          "#c4ae82",
+          "#8f8a80"
+        ],
+        "roofColour": "#b0aca4",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: townhall about 31x23 m"
+        }
+      ],
+      "notes": "Footprint only."
+    },
+    "manama-community-workshop": {
+      "venueId": "manama-community-workshop",
+      "city": "manama",
+      "name": "University of Bahrain and Bahrain Polytechnic",
+      "archetype": "campus-block",
+      "subject": "a Sakhir-area campus: low two-storey sand-coloured teaching blocks linked by covered walkways with Islamic arches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 92,
+        "depth_m": 71,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8d9b8",
+          "#bfa879",
+          "#8f8a80"
+        ],
+        "roofColour": "#b4b0a7",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: 2 levels, footprint about 92x71 m"
+        }
+      ],
+      "notes": "Levels and footprint from OSM; style typed."
+    },
+    "manama-market-game": {
+      "venueId": "manama-market-game",
+      "city": "manama",
+      "name": "Juffair Mall",
+      "archetype": "mall",
+      "subject": "Juffair Mall, a six-level mall tower block with a glass-fronted entrance and a car-park podium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 96,
+        "depth_m": 56,
+        "storeys": 6,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9dfc8",
+          "#6d8c9c",
+          "#b4a88d"
+        ],
+        "roofColour": "#b0aca4",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: 6 levels, height 30 m, footprint about 96x56 m, Wikidata Q24211432"
+        }
+      ],
+      "notes": "Levels and height measured; facade is a guess."
+    },
+    "manama-meal-stop": {
+      "venueId": "manama-meal-stop",
+      "city": "manama",
+      "name": "Light House Cafe",
+      "archetype": "restaurant",
+      "subject": "a seafront cafe: a low modern building with a shaded terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 69,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d0",
+          "#5d8fa0",
+          "#b9ae96"
+        ],
+        "roofColour": "#b4b0a7",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building about 75x69 m, no tags"
+        }
+      ],
+      "notes": "The name suggests no lighthouse is confirmed; do not model one. Typed cafe."
+    },
+    "manama-osm-node-3885140913": {
+      "venueId": "manama-osm-node-3885140913",
+      "city": "manama",
+      "name": "Khamis Mosque",
+      "archetype": "mosque-domed",
+      "subject": "the Khamis Mosque: a low rectangular stone prayer hall with a flat roof carried on arches, topped on one side by two identical tall twin minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "historic-twin-minaret"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d5c7a2",
+          "#c4b58f",
+          "#e9e2cc"
+        ],
+        "roofColour": "#c8bf9c",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "identical twin minarets, 14th/15th century"
+        },
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "arches on thick masonry piers"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "14th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Khamis_Mosque",
+          "what": "twin minarets, stone/timber/limestone, 22.79x20 m, 113x48 m site, flat roofs on columns and arches on masonry piers (1339), founded 692 CE traditionally, rebuilt in 14th and 15th c."
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: museum tag footprint about 40x13 m"
+        }
+      ],
+      "notes": "No dome: a flat-roofed hall, and the generator should place two tall slender minarets (about 18 m) at one end. Colours are typed as pale limestone. The mosque-domed archetype was the closest fit."
+    },
+    "manama-osm-node-811103543": {
+      "venueId": "manama-osm-node-811103543",
+      "city": "manama",
+      "name": "College of Health and Sports Sciences",
+      "archetype": "campus-block",
+      "subject": "a three-storey college block of cream render with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe2cc",
+          "#7e97a4",
+          "#b5a98f"
+        ],
+        "roofColour": "#b4b0a7",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building about 47x16 m"
+        }
+      ],
+      "notes": "Footprint only."
+    },
+    "manama-osm-relation-7188720": {
+      "venueId": "manama-osm-relation-7188720",
+      "city": "manama",
+      "name": "American Mission Hospital",
+      "archetype": "hospital",
+      "subject": "the American Mission Hospital in central Manama: older cream low-rise hospital blocks joined by an overhead bridge over the street",
+      "form": {
+        "footprint": "L",
+        "width_m": 200,
+        "depth_m": 93,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eadfc4",
+          "#b9a67c",
+          "#9a9486"
+        ],
+        "roofColour": "#b0aca4",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "overhead bridge across Isa Al Kabeer road"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/American_Mission_Hospital",
+          "what": "Mason Memorial Hospital 1902/1903; two new buildings in 1962 in central Manama; overhead bridge linking two buildings across Isa Al Kabeer road (1997 or 2000)"
+        }
+      ],
+      "notes": "History and the bridge are sourced; the facade is typed. The 1902 original is a different building."
+    },
+    "manama-osm-way-1536562298": {
+      "venueId": "manama-osm-way-1536562298",
+      "city": "manama",
+      "name": "Dilmun Burial Mounds (Hamad Town Roundabout 1)",
+      "archetype": "heritage-fort",
+      "subject": "a field of low round earth-and-gravel burial mounds with a stone ring-wall on stony sand, near a roundabout",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "tumulus-field"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c4b48f",
+          "#b4a47e",
+          "#d6c9a6"
+        ],
+        "roofColour": "#c4b48f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 20,
+          "note": "low ring-walls of each mound, 1-2 m high"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low protective fence"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000-1000 BC",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dilmun_Burial_Mounds",
+          "what": "each mound has a stone chamber and low ring-wall covered with earth and gravel; most about 4.5x9 m and 1-2 m high; field once covered several square km"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM archaeological_site about 530x305 m"
+        }
+      ],
+      "notes": "Model as a cluster of round low mounds, not buildings. The roundabout setting is the actual site. Stone is the real core; the exterior is bare earth and gravel, a sand-tan colour."
+    },
+    "manama-osm-way-174275472": {
+      "venueId": "manama-osm-way-174275472",
+      "city": "manama",
+      "name": "Barbar Temple",
+      "archetype": "heritage-fort",
+      "subject": "the Barbar Temple ruin: low stepped terraces of cut local stone and limestone with an oval platform, a stone-stepped well and a sunken court",
+      "form": {
+        "footprint": "oval",
+        "width_m": 82,
+        "depth_m": 47,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "ruins"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cfc2a0",
+          "#b9ab88",
+          "#dfd5b8"
+        ],
+        "roofColour": "#cfc2a0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "steps down to the well"
+        },
+        {
+          "id": "terrace",
+          "count": 3,
+          "note": "three stacked temple platforms"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low rubble walls"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "3rd millennium BC",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barbar_Temple",
+          "what": "Temple I platform about 25x16-18 m, well with steps in SW corner, Temple II oval terrace in local stone then limestone, Temple III terrace about 30 m wide with two circular offering tables, courtyard with pierced standing stones, oval court to the east"
+        }
+      ],
+      "notes": "Low ruin: keep walls under about 2.5 m. The three temples are superimposed on the same mound so make one terraced mound with an oval top and a stepped well."
+    },
+    "manama-osm-way-174275928": {
+      "venueId": "manama-osm-way-174275928",
+      "city": "manama",
+      "name": "Rifa Fort",
+      "archetype": "heritage-fort",
+      "subject": "Riffa Fort, a sand-coloured square fortress with corner towers and crenellated walls on a rocky cliff above the valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 61,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#d9c79d",
+          "#c4b085",
+          "#e8dcc0"
+        ],
+        "roofColour": "#cbbd9a",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "parapet"
+        },
+        {
+          "id": "ramparts",
+          "count": 4,
+          "note": "four corner towers"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "1810s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riffa_Fort",
+          "what": "built 1812-1818 on early 18th-century foundations by Sheikh Salman bin Ahmed Al Fateh, on a cliff above the desert valley, restored 1993; residence of Sheikh Salman"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM fort about 61x60 m"
+        }
+      ],
+      "notes": "Dates and setting are sourced; the squared corner towers and crenellated sand-stone look is general knowledge of the fort, not in the fetched page."
+    },
+    "manama-osm-way-175197568": {
+      "venueId": "manama-osm-way-175197568",
+      "city": "manama",
+      "name": "City Centre Bahrain",
+      "archetype": "mall",
+      "subject": "City Centre Bahrain: a huge three-storey sand-and-glass mall on the Bahrain Bay waterfront with a tall hotel block and a big forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 415,
+        "depth_m": 257,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4d7b8",
+          "#7794a4",
+          "#b5a88c"
+        ],
+        "roofColour": "#b7b3aa",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/City_Centre_Bahrain",
+          "what": "opened 2008 (OSM start_date); big shopping and hotel complex"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: height 25 m, footprint about 415x257 m"
+        }
+      ],
+      "notes": "Only the footprint, height and 2008 start are measured; the hotel block mentioned is from memory. Scene shows the mall entrance end."
+    },
+    "manama-osm-way-28655847": {
+      "venueId": "manama-osm-way-28655847",
+      "city": "manama",
+      "name": "Bahrain National Stadium",
+      "archetype": "stadium",
+      "subject": "Bahrain National Stadium in Riffa: a 24,000-seat football bowl with a canopy roof over the stands and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 232,
+        "depth_m": 198,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd7ca",
+          "#b3262d",
+          "#8e8b84"
+        ],
+        "roofColour": "#d6d3ca",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over the stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bahrain_National_Stadium",
+          "what": "24,000 capacity, opened 1982, built 1981, refurbished December 2012, USD 152m; papal mass in 2022"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM start_date 1982, outline about 232x198 m"
+        }
+      ],
+      "notes": "Capacity and dates are sourced; the red/white colour theme and roof treatment are typed from the national colours."
+    },
+    "manama-osm-way-29253447": {
+      "venueId": "manama-osm-way-29253447",
+      "city": "manama",
+      "name": "Al Fateh Grand Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Al Fateh Grand Mosque: a huge white-marble mosque with the large central fibreglass dome and two tall minarets, with a long arcaded facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 76,
+        "storeys": 2,
+        "height_m": 30,
+        "roof": "dome",
+        "variant": "grand-dome"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede4",
+          "#d9d3c2",
+          "#b8a577"
+        ],
+        "roofColour": "#f1ede4",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "24 m fibreglass dome, world's largest"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "long arcaded front"
+        },
+        {
+          "id": "arches",
+          "count": 12
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al_Fateh_Grand_Mosque",
+          "what": "main dome 24 m diameter, about 54 t, fibreglass, world's largest; two minarets; 100x75 m; 6,500 m2 interior; about 7,000 worshippers; Italian marble floors; teak doors; Kufic calligraphy; facade faces southeast"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: start_date 1988, footprint 95x76 m"
+        }
+      ],
+      "notes": "The facade colour (white stone/marble) is not stated in the fetched page; it is typed as white. Main dome should be wide, shallow and dominant, with two slim minarets flanking the entrance at the front."
+    },
+    "manama-osm-way-344196655": {
+      "venueId": "manama-osm-way-344196655",
+      "city": "manama",
+      "name": "Royal College of Surgeons in Ireland (Medical University of Bahrain)",
+      "archetype": "campus-block",
+      "subject": "a large Busaiteen campus of sand-coloured four-storey blocks around landscaped courts",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcbf",
+          "#7391a1",
+          "#b5a98c"
+        ],
+        "roofColour": "#b4b0a7",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: college about 374x298 m, Wikidata Q12204409"
+        }
+      ],
+      "notes": "Footprint only; the model shows one block of the campus."
+    },
+    "manama-osm-way-488543824": {
+      "venueId": "manama-osm-way-488543824",
+      "city": "manama",
+      "name": "Applied Science University",
+      "archetype": "campus-block",
+      "subject": "a campus of cream three-storey blocks around a central mall with a modern entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe0c4",
+          "#7f98a4",
+          "#b9ab8c"
+        ],
+        "roofColour": "#b6b2a9",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: university about 222x210 m, Wikidata Q4781578"
+        }
+      ],
+      "notes": "Footprint only."
+    },
+    "manama-osm-way-61402688": {
+      "venueId": "manama-osm-way-61402688",
+      "city": "manama",
+      "name": "Seef Mall",
+      "archetype": "mall",
+      "subject": "Seef Mall on Shaikh Khalifa bin Salman Highway: a very long two-storey mall linked at its western end to a hotel-apartment block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 484,
+        "depth_m": 176,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9dfc7",
+          "#6f8d9d",
+          "#b9ad90"
+        ],
+        "roofColour": "#b9b5ac",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Seef_Mall",
+          "what": "two floors, in the Seef district on Shaikh Khalifa bin Salman Highway, joined to Fraser Suites at the west end"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: height 8 m, outline about 484x176 m"
+        }
+      ],
+      "notes": "The floors and size are sourced; finishes are typed. The scene shows one end of the long block with the linked suites block behind."
+    },
+    "manama-osm-way-665595615": {
+      "venueId": "manama-osm-way-665595615",
+      "city": "manama",
+      "name": "Al Muharraq Stadium",
+      "archetype": "stadium",
+      "subject": "Al Muharraq Stadium: a 20,000-seat football ground with floodlights, covered stands and a large video scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 234,
+        "depth_m": 158,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd6c8",
+          "#a82a32",
+          "#8e8b84"
+        ],
+        "roofColour": "#cfccc4",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "video screen"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al_Muharraq_Stadium",
+          "what": "20,000 capacity, floodlights, video scoreboard, renovated September 2012 by Michael KC Cheah & Partners, turf"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM outline about 234x158 m"
+        }
+      ],
+      "notes": "Capacity and renovation are sourced; the roofs and club red are typed."
+    },
+    "manama-osm-way-673312758": {
+      "venueId": "manama-osm-way-673312758",
+      "city": "manama",
+      "name": "Khalifa Sports City Stadium",
+      "archetype": "stadium",
+      "subject": "Khalifa Sports City (Isa Town) Stadium: a 15,000-seat football ground with a new covered main stand and a sports hall and pool beside it",
+      "form": {
+        "footprint": "oval",
+        "width_m": 205,
+        "depth_m": 162,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#dcd7ca",
+          "#2a5b9a",
+          "#8e8b84"
+        ],
+        "roofColour": "#bcb8af",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "new 3,600-seat main stand (2007)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Khalifa_Sports_City_Stadium",
+          "what": "Isa Town, capacity 15,000, opened 1968, renovated 2007 (Tilke and Partners) with new main stand for 3,600, sports hall and Olympic pool"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM outline about 205x162 m"
+        }
+      ],
+      "notes": "Original open bowl with one modern main stand; the 2007 hall and pool are separate buildings."
+    },
+    "manama-osm-way-991874984": {
+      "venueId": "manama-osm-way-991874984",
+      "city": "manama",
+      "name": "Bahrain Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "Bahrain Specialist Hospital in Juffair: a modern mid-rise private hospital with a glazed entrance porte-cochere",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 57,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee6d1",
+          "#6b8b9b",
+          "#b5a98c"
+        ],
+        "roofColour": "#b3afa6",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bahrain_Specialist_Hospital",
+          "what": "inaugurated February 2003, 83 private inpatient beds; no architecture description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM outline 95x57 m"
+        }
+      ],
+      "notes": "Storeys are a guess; page gives only size and beds."
+    },
+    "manama-quiet-reflection": {
+      "venueId": "manama-quiet-reflection",
+      "city": "manama",
+      "name": "The Cathedral of Our Lady of Arabia",
+      "archetype": "church-modern",
+      "subject": "Our Lady of Arabia Cathedral in Awali: a tent-like beige stone cathedral under an octagonal dome, with a plain entrance forecourt",
+      "form": {
+        "footprint": "round",
+        "width_m": 50,
+        "depth_m": 49,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "dome",
+        "variant": "tent-octagon"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#f0e0cb",
+          "#d4bd98",
+          "#ffffff"
+        ],
+        "roofColour": "#e6d3b5",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "octagonal dome shaped like a tent"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "forecourt"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Our_Lady_of_Arabia",
+          "what": "architects Mattia Del Prete and Cristiano Rosponi, design resembles a tent referencing the tent of meeting, octagonal dome, 2,300 seats, modern; land 9,000 m2 donated 2013"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: 2 levels, building:colour #f0e0cb, building:material stone, start 2021-12-10, footprint about 50x49 m"
+        }
+      ],
+      "notes": "Colour and material come straight from OSM tags; the tent-like octagonal form is from Wikipedia. Do not add a gothic spire."
+    },
+    "manama-recreation": {
+      "venueId": "manama-recreation",
+      "city": "manama",
+      "name": "Askar Garden",
+      "archetype": "park-landscape",
+      "subject": "Askar Garden, a public park of lawn, palms and walkways with a small pavilion in open desert",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 57,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9cdb0",
+          "#8aa07a",
+          "#a39b88"
+        ],
+        "roofColour": "#c9bfa6",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM park about 75x57 m"
+        }
+      ],
+      "notes": "Only the outline is known."
+    },
+    "manama-transit": {
+      "venueId": "manama-transit",
+      "city": "manama",
+      "name": "Manama Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "Manama bus terminal: a row of covered bus bays and a low terminal hall near the souq, with a tall hotel tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9dfc7",
+          "#6d8c9c",
+          "#a8a193"
+        ],
+        "roofColour": "#aeaaa1",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "the nearest OSM building (34x32 m, 20 levels, hotel) is not the bus terminal"
+        }
+      ],
+      "notes": "The OSM building at the coordinates is a 20-level hotel, so the bus terminal itself has no data. Typed."
+    }
+  }
+}

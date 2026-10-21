@@ -1,0 +1,323 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "st-theresas-cathedral-yola",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yola.json#st-theresas-cathedral-yola",
+   "used": "Catholic cathedral of Yola diocese; hall church with front bell tower, cream render, brick accent, red corrugated metal roof, arched windows. No photo found on Commons, Wikidata or web search; OSM containing match is an unrelated 1643 m2 commercial outline and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     16,
+     32
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "windowRatio": 0.16,
+    "plinth": 0.6,
+    "bands": "#9a6a44",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5,
+     26
+    ]
+   },
+   "at": [
+    -10.5,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "arched",
+     "right": "none"
+    },
+    "windowRatio": 0.16,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5,
+     26
+    ]
+   },
+   "at": [
+    10.5,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "arched"
+    },
+    "windowRatio": 0.16,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    23
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -11,
+    -15.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "faces": {
+     "front": "arched",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "windowRatio": 0.12,
+    "bands": "#9a6a44",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 50
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -11,
+    -18
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.9,
+    "run": 2.0,
+    "count": 4,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -16.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 6,
+    "line": 32
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   72
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable footprint; typed hall church with front bell tower, dimensions guessed."
+ }
+}

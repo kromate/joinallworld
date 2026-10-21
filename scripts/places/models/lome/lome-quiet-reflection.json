@@ -1,0 +1,732 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lom%C3%A9_Grand_March%C3%A9_with_the_Cath%C3%A9drale_du_Sacr%C3%A9_Coeur_(33592985581).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "street",
+   "file": "/tmp/places-evidence/lome/cath1.jpg",
+   "used": "twin square towers in red-brown render with white-trimmed pointed windows, tall slim openwork spires with corner pinnacles, white lower facade and aisles, green metal nave roof, small spire over the crossing/apse"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/49711568",
+   "used": "identity only (outline is a rough sketch, massing is hand-placed from the photo and brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     38
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f8d62",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "axis": "y",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5,
+     34
+    ]
+   },
+   "at": [
+    -9,
+    1
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#c9953f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f8d62",
+    "material": "metal-sheet",
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5,
+     34
+    ]
+   },
+   "at": [
+    9,
+    1
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#c9953f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f8d62",
+    "material": "metal-sheet",
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "pointed",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f8d62",
+    "material": "metal-sheet",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     9.6,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -21.2
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f1ead8",
+    "pitch": 30,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -22.95,
+    7.2
+   ],
+   "params": {
+    "radius": 1.7,
+    "stained": false
+   }
+  },
+  {
+   "type": "mosque-domed/portal",
+   "at": [
+    0,
+    -22.9,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 6.2,
+    "depth": 1.0,
+    "pointed": true,
+    "colour": "#f4efe4",
+    "trim": "#f4efe4",
+    "cap_colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    17,
+    15.0
+   ],
+   "params": {
+    "baseWidth": 2.0,
+    "height": 6.5,
+    "shaftHeight": 0,
+    "sides": 8,
+    "colour": "#7d8c84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-1",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.2
+    ]
+   },
+   "at": [
+    -7.4,
+    -22
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4654c",
+    "windows": "pointed",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.0,
+    -24.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.0,
+    -19.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.800000000000001,
+    -24.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.800000000000001,
+    -19.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-1",
+   "at": [
+    -7.4,
+    -22
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 19,
+    "height": 6.5,
+    "colour": "#d58a6e",
+    "windows": "pointed",
+    "windowRatio": 0.4,
+    "storeys": 1,
+    "topColour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -9.4,
+    -24.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -9.4,
+    -20.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -5.4,
+    -24.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -5.4,
+    -20.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -7.4,
+    -22,
+    25.5
+   ],
+   "params": {
+    "colour": "#9a4f3c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 2,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       0.12,
+       0.12
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower1",
+   "footprint": {
+    "rect": [
+     5.2,
+     5.2
+    ]
+   },
+   "at": [
+    7.4,
+    -22
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4654c",
+    "windows": "pointed",
+    "windowRatio": 0.22,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.800000000000001,
+    -24.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.800000000000001,
+    -19.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.0,
+    -24.6
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.0,
+    -19.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "z0": 0,
+    "height": 19.5,
+    "colour": "#f4efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry1",
+   "at": [
+    7.4,
+    -22
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     4.2
+    ],
+    "z0": 19,
+    "height": 6.5,
+    "colour": "#d58a6e",
+    "windows": "pointed",
+    "windowRatio": 0.4,
+    "storeys": 1,
+    "topColour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    5.4,
+    -24.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    5.4,
+    -20.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    9.4,
+    -24.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    9.4,
+    -20.0,
+    25.5
+   ],
+   "params": {
+    "baseWidth": 0.7,
+    "height": 2.4,
+    "shaftHeight": 0,
+    "sides": 4,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    7.4,
+    -22,
+    25.5
+   ],
+   "params": {
+    "colour": "#9a4f3c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 2,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       1.4,
+       1.4
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.8,
+       0.8
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       0.12,
+       0.12
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Spires are solid slim needles with corner pinnacles, not true openwork; no clock or tracery on tower windows; nave proportions approximate (OSM outline unreliable)."
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   90
+  ]
+ }
+}

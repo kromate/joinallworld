@@ -1,0 +1,326 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "jos-main-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminus_Market_west.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Simoniwodi",
+   "view": "street",
+   "file": "/tmp/places-evidence/jos/market2.jpg",
+   "used": "unfinished concrete multi-level deck with open frame and block parapets above ground-level stalls, colourful umbrellas and tarpaulin stalls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jos_Main_Market_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Umabruka",
+   "view": "detail",
+   "used": "tall octagonal board-marked concrete tower with perforated screen panels and open top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/210768639",
+   "used": "overall extent only (Terminus market block 324 m long, clamped); modelled as one representative slice"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 2.2,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "at": [
+    0,
+    4
+   ],
+   "params": {
+    "rect": [
+     90,
+     36
+    ],
+    "z0": 8.4,
+    "height": 0.7,
+    "colour": "#a39b8a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "columns",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 13,
+    "rows": 4,
+    "dx": 7.2,
+    "dy": 10.5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "z0": 0,
+      "height": 8.4,
+      "colour": "#8f8878"
+     }
+    }
+   },
+   "at": [
+    0,
+    4,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "block-parapet",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -40,
+     -12
+    ],
+    "end": [
+     40,
+     -12
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.6
+      ],
+      "z0": 4.5,
+      "height": 1.1,
+      "colour": "#b9ad92"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    -38,
+    -6
+   ],
+   "params": {
+    "n": 8,
+    "radius": 3.6,
+    "z0": 0,
+    "height": 16,
+    "colour": "#9d9585",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.4,
+    "storeys": 4,
+    "glassColour": "#4b463d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -38,
+    -6
+   ],
+   "params": {
+    "n": 8,
+    "radius": 4.0,
+    "z0": 16,
+    "height": 1.2,
+    "colour": "#a8a090"
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbrellas-front",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 2,
+    "dx": 9,
+    "dy": 7,
+    "of": {
+     "type": "market-open/umbrella-cluster",
+     "params": {
+      "count": 5,
+      "spread": 3.5,
+      "radius": 1.7,
+      "height": 2.4,
+      "colours": [
+       "#d9622b",
+       "#c8353f",
+       "#f2cf4a",
+       "#2e90b8",
+       "#f1ede3",
+       "#e57ba0"
+      ]
+     }
+    }
+   },
+   "at": [
+    0,
+    -24,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "umbrellas-under",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 10,
+    "dy": 9,
+    "of": {
+     "type": "market-open/umbrella-cluster",
+     "params": {
+      "count": 5,
+      "spread": 4,
+      "radius": 1.6,
+      "height": 2.3,
+      "colours": [
+       "#d9622b",
+       "#c8353f",
+       "#f2cf4a",
+       "#2e90b8",
+       "#f1ede3",
+       "#e57ba0"
+      ]
+     }
+    }
+   },
+   "at": [
+    0,
+    4,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "tarp-stalls",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 9.5,
+    "dy": 8,
+    "of": {
+     "type": "market-open/awning",
+     "params": {
+      "width": 5,
+      "depth": 3.5,
+      "height": 2.2,
+      "colours": [
+       "#9aa0a6",
+       "#3b6ea5",
+       "#cfc8b0",
+       "#7a8f6a"
+      ]
+     }
+    }
+   },
+   "at": [
+    0,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "core/water-tank",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    40,
+    16,
+    8.8
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 2.5,
+    "legHeight": 3,
+    "legs": 4,
+    "colour": "#3a4a5c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    50,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "open-frame deck, columns, dense umbrella and tarpaulin stalls now match; no people, goods, billboard frame or weeds on slab; tower weakly evidenced"
+ }
+}

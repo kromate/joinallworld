@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "national-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_Stadium_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kritzolina",
+   "view": "side",
+   "file": "/tmp/places-evidence/abuja/stadium2.jpg",
+   "used": "outer facade: pale grey concrete ring beam on top, tall numbered support towers with orange-edged V-fins, raked precast stands visible between the towers, low white service sheds and a flat paved car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_Stadium_1.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jeff Attaway",
+   "view": "interior",
+   "file": "/tmp/places-evidence/abuja/stadium1.jpg",
+   "used": "cream cable-net membrane roof over both tiers, red-brown seats, red running track, lights on the roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13989805",
+   "used": "overall size only (about 270 m across including the plaza): modelled as a full oval bowl scaled to the 120 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 3,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      40.0,
+      0.0
+     ],
+     [
+      39.0,
+      7.57
+     ],
+     [
+      36.04,
+      14.75
+     ],
+     [
+      31.27,
+      21.2
+     ],
+     [
+      24.94,
+      26.58
+     ],
+     [
+      17.36,
+      30.63
+     ],
+     [
+      8.9,
+      33.15
+     ],
+     [
+      0.0,
+      34.0
+     ],
+     [
+      -8.9,
+      33.15
+     ],
+     [
+      -17.36,
+      30.63
+     ],
+     [
+      -24.94,
+      26.58
+     ],
+     [
+      -31.27,
+      21.2
+     ],
+     [
+      -36.04,
+      14.75
+     ],
+     [
+      -39.0,
+      7.57
+     ],
+     [
+      -40.0,
+      0.0
+     ],
+     [
+      -39.0,
+      -7.57
+     ],
+     [
+      -36.04,
+      -14.75
+     ],
+     [
+      -31.27,
+      -21.2
+     ],
+     [
+      -24.94,
+      -26.58
+     ],
+     [
+      -17.36,
+      -30.63
+     ],
+     [
+      -8.9,
+      -33.15
+     ],
+     [
+      -0.0,
+      -34.0
+     ],
+     [
+      8.9,
+      -33.15
+     ],
+     [
+      17.36,
+      -30.63
+     ],
+     [
+      24.94,
+      -26.58
+     ],
+     [
+      31.27,
+      -21.2
+     ],
+     [
+      36.04,
+      -14.75
+     ],
+     [
+      39.0,
+      -7.57
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.12,
+    "colour": "#7a9a5a",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 34,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 25,
+    "rise": 0.72,
+    "run": 0.75,
+    "firstHeight": 4,
+    "facetDeg": 12,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.8,
+    "bay": 6,
+    "seatColour": "#a8483a",
+    "concreteColour": "#b9b5ad",
+    "underColour": "#a9a59d",
+    "canopy": {
+     "height": 1.0,
+     "depth": 19,
+     "thickness": 5.5,
+     "slopeDeg": 2,
+     "colour": "#d4d2ca",
+     "edgeColour": "#d4d2ca",
+     "overhangBack": 1.2
+    },
+    "backWall": 0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 60.0,
+    "radiusY": 54.0,
+    "startDeg": 209,
+    "endDeg": 331,
+    "count": 11,
+    "facing": "outward",
+    "lod2Step": 2,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#c9744f",
+       "sections": [
+        {
+         "z": 24.6,
+         "rect": [
+          7.6,
+          2.4
+         ],
+         "cy": 0
+        },
+        {
+         "z": 12,
+         "rect": [
+          7.2,
+          2.4
+         ],
+         "cy": 0
+        },
+        {
+         "z": 0,
+         "rect": [
+          5.6,
+          2.1
+         ],
+         "cy": -5.6
+        }
+       ]
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#d6d3cb",
+       "sections": [
+        {
+         "z": 24.6,
+         "rect": [
+          6.6,
+          2.4
+         ],
+         "cy": -0.4
+        },
+        {
+         "z": 12,
+         "rect": [
+          6.2,
+          2.4
+         ],
+         "cy": -0.4
+        },
+        {
+         "z": 0,
+         "rect": [
+          4.6,
+          2.1
+         ],
+         "cy": -6.0
+        }
+       ]
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -1.7,
+       20.2
+      ],
+      "lod": [
+       0
+      ],
+      "params": {
+       "rect": [
+        2.4,
+        0.3
+       ],
+       "height": 3.0,
+       "colour": "#f2f1ec"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       -3.5,
+       7.2
+      ],
+      "lod": [
+       0
+      ],
+      "params": {
+       "rect": [
+        1.6,
+        0.3
+       ],
+       "height": 1.6,
+       "colour": "#f2f1ec"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-shed-west",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -56
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ea",
+    "glassColour": "#6f6a63",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8da",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-shed-east",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    12,
+    -56
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f0ea",
+    "glassColour": "#6f6a63",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8da",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -38,
+    -60,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -54
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -57
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -50
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Solid raked stand now fills between piers under a deeper ring beam, wider tapered orange-edged piers, white numbers and white sheds added; but the soffit reads as a smooth grey wall (no stepped tiers), a small slit remains under the beam, paving is grid not brick, and the bowl is a 130 degree section."
+ }
+}

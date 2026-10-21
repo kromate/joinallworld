@@ -48,6 +48,7 @@ import type { PlotAddress } from '../types/life.ts';
 import type { WorldData } from './world-data.ts';
 import type { HouseCard, Map2DState, MapLayers, MapUiDetail } from './map2d.ts';
 import type { City, CityPlace, TimeOfDay, TrafficModels } from './city-build.ts';
+import type { PlaceIcons } from '../scene/places/icons.ts';
 import type { OpeningHours } from '../game/clock.ts';
 import type { ActorPlayer, TravelVehicleBuilder } from './actor.ts';
 import type { OverlayData, OverlayLayers, OverlayChip } from './overlays.ts';
@@ -135,6 +136,8 @@ export interface Map3DOptions {
   travelVehicle?: TravelVehicleBuilder | null
   /** The street traffic's authored vehicle models, when they arrive (null if they cannot be had: the stand-ins stay). */
   trafficModels?: Promise<TrafficModels | null> | null
+  /** The venues' own LOD2 map icons (src/scene/places/icons.ts), when they arrive. A venue without one, or if none arrive, keeps its procedural building. */
+  placeIcons?: Promise<PlaceIcons | null> | null
   onSelectVenue?: (id: string) => void
   onSelectGov?: () => void
   onSelectNeighbour?: (neighbour: { id: string | undefined; name: string | undefined }) => void
@@ -171,11 +174,11 @@ export interface PrebuiltCity { kit: Kit; network: Network; city: City }
  * has run for `sliceMs`. The numbers are the same ones the map computes at once, so the map is the same; only the
  * long task becomes several short ones. Resolves null (and frees what it made) when `alive()` turns false.
  */
-export async function prebuildCity(pack: CityPack, cityId: string, alive: () => boolean = () => true, { sliceMs = 4, now = () => globalThis.performance.now(), pause = turn }: { sliceMs?: number; now?: () => number; pause?: () => Promise<void> } = {}): Promise<PrebuiltCity | null> {
+export async function prebuildCity(pack: CityPack, cityId: string, alive: () => boolean = () => true, { sliceMs = 4, now = () => globalThis.performance.now(), pause = turn, iconVenues }: { sliceMs?: number; now?: () => number; pause?: () => Promise<void>; iconVenues?: ReadonlySet<string> } = {}): Promise<PrebuiltCity | null> {
   const content = contentFor(cityId), venues = Object.fromEntries(content.venues.map((venue) => [venue.id, venue.definition]));
   await warmEstates(pack, alive, now, pause);
   if (!alive()) return null;
-  const kit = createKit(), network = buildNetwork(pack), steps = buildCitySteps(kit, pack, network, { venues, soon: SOON_TABLE });
+  const kit = createKit(), network = buildNetwork(pack), steps = buildCitySteps(kit, pack, network, { venues, soon: SOON_TABLE, ...(iconVenues ? { iconVenues } : {}) });
   let started = now();
   for (;;) {
     if (!alive()) { steps.return(undefined as never); kit.dispose(); return null; }
@@ -185,7 +188,7 @@ export async function prebuildCity(pack: CityPack, cityId: string, alive: () => 
   }
 }
 
-export function createMap3D(container: HTMLElement, { prebuilt = null, pack, venueAccess, cityId = pack?.id, travelVehicle = null, trafficModels = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onSelectContext = () => {}, onTripDue = () => {}, onContextLost = () => {},
+export function createMap3D(container: HTMLElement, { prebuilt = null, pack, venueAccess, cityId = pack?.id, travelVehicle = null, trafficModels = null, placeIcons = null, onSelectVenue = () => {}, onSelectGov = () => {}, onSelectNeighbour = () => {}, onSelectContext = () => {}, onTripDue = () => {}, onContextLost = () => {},
   world = null, ladder = NO_PORT, onSelectLga = () => {}, onSelectHouse = () => {}, onSelectPeople = () => {},
   renderer: providedRenderer, raf = globalThis.requestAnimationFrame?.bind(globalThis), caf = globalThis.cancelAnimationFrame?.bind(globalThis), now = () => globalThis.performance.now(),
   reducedMotion = Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches), deepLink = null, tabHidden }: Map3DOptions) {
@@ -218,6 +221,7 @@ export function createMap3D(container: HTMLElement, { prebuilt = null, pack, ven
   scene.add(houses.group);
   const actor = createActor(kit, { travelVehicle, onChange: () => request() });
   void trafficModels?.then((models) => { if (!destroyed && models && city.setTrafficModels(models)) request(); }, () => {});
+  void placeIcons?.then((icons) => { if (!destroyed && icons && city.setPlaceIcons(icons)) request(); }, () => {});
   scene.add(actor.group);
   const rig = createRig(THREE, camera, { minDistance: CLOSEST, minX: pack.bounds.minX, maxX: pack.bounds.maxX, minZ: pack.bounds.minZ, maxZ: pack.bounds.maxZ, fit: pack.bounds.fit, core: pack.core, context: Boolean(pack.context), inland: pack.inland === true, roamZ: pack.bounds.sea ? pack.bounds.sea.z1 - 16 : undefined });
   const ringOf = (colour: string, opacity: number) => { const mesh = new THREE.Mesh(new THREE.RingGeometry(PLINTH * 0.74, PLINTH * 0.84, 40), new THREE.MeshBasicMaterial({ color: colour, transparent: true, opacity, depthWrite: false })); mesh.rotation.x = -Math.PI / 2; mesh.renderOrder = 3; mesh.visible = false; scene.add(mesh); return mesh; };

@@ -1,0 +1,237 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Picture_of_Mission_Zero_Plastic_in_Ilorin_11.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "James Moore200",
+   "view": "street",
+   "used": "(photo of a nearby scene, not of the building; only the market/shed character was noted) 53 m away, not certainly the terminal: long low open shed on slim steel posts with a grey sheet roof, red laterite ground, white rendered building behind"
+  },
+  {
+   "kind": "text",
+   "used": "brief: motor park with open bays, long waiting shed, ticket kiosks (OSM match is a 43 m2 hut 43 m away, not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-open/platform-canopy",
+   "id": "shed-main",
+   "at": [
+    0,
+    12
+   ],
+   "params": {
+    "width": 46,
+    "depth": 8,
+    "height": 4.2,
+    "deck_height": 0.4,
+    "roof_colour": "#8a9094",
+    "wall_colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "market-open/platform-canopy",
+   "id": "shed-2",
+   "at": [
+    -30,
+    -6
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 3.6,
+    "deck_height": 0.3,
+    "roof_colour": "#8a9094",
+    "wall_colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    28,
+    18
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 3,
+    "plinth": 0.3,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f6a6e",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "row-a",
+   "at": [
+    0,
+    -4
+   ],
+   "params": {
+    "length": 52,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.4,
+    "colours": [
+     "#f1f1ee",
+     "#e8c23a",
+     "#2f6b4f"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "row-b",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "length": 52,
+    "kind": "van",
+    "density": 0.7,
+    "colours": [
+     "#f1f1ee",
+     "#e8c23a",
+     "#c8362f"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "kiosk-0",
+   "at": [
+    -22,
+    -27
+   ],
+   "params": {
+    "sign_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "kiosk-1",
+   "at": [
+    -8,
+    -27
+   ],
+   "params": {
+    "sign_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "kiosk-2",
+   "at": [
+    6,
+    -27
+   ],
+   "params": {
+    "sign_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "id": "kiosk-3",
+   "at": [
+    20,
+    -27
+   ],
+   "params": {
+    "sign_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "perimeter",
+   "at": [
+    0,
+    -33
+   ],
+   "params": {
+    "length": 70,
+    "height": 2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cfc8b0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "entry-board",
+   "at": [
+    -34,
+    -34
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#2f6b4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   90,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -26
+    ],
+    "height": 9
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "soludero-bus-terminal",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No confirmed photo; layout of sheds, bays and kiosks from the brief, OSM match unusable"
+ }
+}

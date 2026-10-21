@@ -1,0 +1,957 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Holger Uwe Schmitt",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/cairo-egyptian-museum-0.jpg",
+   "used": "long two-tier salmon-pink front wing, central projecting portico block with big round-arched entrance, arched windows with tall glazing, cornice and plaques, pond with obelisk and two sphinxes in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Egyptian_Museum_beside_view.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Johnny 201",
+   "view": "side",
+   "file": "/tmp/places-evidence/cairo/cairo-egyptian-museum-1.jpg",
+   "used": "taller rear hall behind the front wing, blind panelled walls with round medallions, corner finials, green railing, salmon colour"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/10873198",
+   "used": "overall extent: 125 m wide front wing, deep central block (about 33 m deep front wing, 93 m central block), 16 m height"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.78,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-wing",
+   "footprint": {
+    "rect": [
+     118,
+     32
+    ]
+   },
+   "at": [
+    0,
+    -42
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a58f",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.42,
+    "bay": 11,
+    "plinth": 1.0,
+    "cornice": true,
+    "glassColour": "#3d5a66",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98f7a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     84,
+     80
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dc9d86",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": {
+     "type": "bands",
+     "colour": "#c98f7a"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98f7a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -59.5
+   ],
+   "z0": 0,
+   "height": 19.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a995",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cf9580",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-attic",
+   "at": [
+    0,
+    -59.5
+   ],
+   "params": {
+    "rect": [
+     28,
+     6.5
+    ],
+    "z0": 19.5,
+    "height": 2.4,
+    "colour": "#eeccb7",
+    "topColour": "#eeccb7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "attic-block-l",
+   "at": [
+    -11,
+    -59.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "z0": 21.9,
+    "height": 1.6,
+    "colour": "#d9a490",
+    "topColour": "#d9a490"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "attic-block-r",
+   "at": [
+    11,
+    -59.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "z0": 21.9,
+    "height": 1.6,
+    "colour": "#d9a490",
+    "topColour": "#d9a490"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cornice-lower",
+   "at": [
+    0,
+    -59.5
+   ],
+   "params": {
+    "rect": [
+     27,
+     6
+    ],
+    "z0": 16.8,
+    "height": 0.7,
+    "colour": "#efd1bd",
+    "topColour": "#efd1bd"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arch-recess",
+   "at": [
+    0,
+    -62.1
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.6
+    ],
+    "z0": 0,
+    "height": 11.5,
+    "colour": "#d8bba6",
+    "topColour": "#d8bba6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-dark",
+   "at": [
+    0,
+    -62.5
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.5
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#2d241f",
+    "topColour": "#2d241f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-lattice",
+   "at": [
+    0,
+    -62.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.5
+    ],
+    "z0": 6.2,
+    "height": 4.2,
+    "colour": "#e8e2d6",
+    "topColour": "#e8e2d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-lattice-dark",
+   "at": [
+    0,
+    -62.7
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     0.3
+    ],
+    "z0": 6.6,
+    "height": 3.4,
+    "colour": "#4a4a4a",
+    "topColour": "#4a4a4a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-l",
+   "at": [
+    -8.2,
+    -62.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.8
+    ],
+    "z0": 0,
+    "height": 16.5,
+    "colour": "#d9a28d",
+    "topColour": "#d9a28d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pilaster-r",
+   "at": [
+    8.2,
+    -62.3
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.8
+    ],
+    "z0": 0,
+    "height": 16.5,
+    "colour": "#d9a28d",
+    "topColour": "#d9a28d"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panel-l",
+   "at": [
+    -9.2,
+    -62.6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "z0": 7.5,
+    "height": 5,
+    "colour": "#ece3d6",
+    "topColour": "#ece3d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panel-r",
+   "at": [
+    9.2,
+    -62.6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "z0": 7.5,
+    "height": 5,
+    "colour": "#ece3d6",
+    "topColour": "#ece3d6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arch-gateway",
+   "id": "entrance-arch-ring",
+   "at": [
+    0,
+    -62.6,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.2,
+    "height": 11.5,
+    "openings": 1,
+    "kind": "round",
+    "pier": 0.8,
+    "crest": "none"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque--1-0",
+   "at": [
+    -20,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque--1-1",
+   "at": [
+    -32,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque--1-2",
+   "at": [
+    -44,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque--1-3",
+   "at": [
+    -56,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "band--1",
+   "at": [
+    -37,
+    -58.1
+   ],
+   "params": {
+    "rect": [
+     46,
+     0.5
+    ],
+    "z0": 10.6,
+    "height": 0.5,
+    "colour": "#efd1bd",
+    "topColour": "#efd1bd"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-1-0",
+   "at": [
+    20,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-1-1",
+   "at": [
+    32,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-1-2",
+   "at": [
+    44,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plaque-1-3",
+   "at": [
+    56,
+    -58.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.6,
+    "colour": "#e6ddd0",
+    "topColour": "#e6ddd0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "band-1",
+   "at": [
+    37,
+    -58.1
+   ],
+   "params": {
+    "rect": [
+     46,
+     0.5
+    ],
+    "z0": 10.6,
+    "height": 0.5,
+    "colour": "#efd1bd",
+    "topColour": "#efd1bd"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -80
+   ],
+   "params": {
+    "rect": [
+     60,
+     24
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#d8d0c2",
+    "topColour": "#d8d0c2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rim",
+   "at": [
+    0,
+    -76
+   ],
+   "params": {
+    "radius": 14.5,
+    "n": 32,
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#e2dccf",
+    "topColour": "#e2dccf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pool",
+   "at": [
+    0,
+    -76
+   ],
+   "params": {
+    "radius": 13.2,
+    "n": 32,
+    "z0": 0.4,
+    "height": 0.25,
+    "colour": "#6b8f98",
+    "topColour": "#7fa3ab"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obelisk-plinth",
+   "at": [
+    0,
+    -76
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "z0": 0.6,
+    "height": 1.4,
+    "colour": "#ece7dc",
+    "topColour": "#ece7dc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obelisk",
+   "at": [
+    0,
+    -76
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "z0": 2,
+    "height": 9,
+    "colour": "#9d8774",
+    "topColour": "#9d8774",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sphinx-plinth-l",
+   "at": [
+    -9,
+    -76
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     5
+    ],
+    "z0": 0.6,
+    "height": 1.2,
+    "colour": "#ece7dc",
+    "topColour": "#ece7dc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sphinx-plinth-r",
+   "at": [
+    9,
+    -76
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     5
+    ],
+    "z0": 0.6,
+    "height": 1.2,
+    "colour": "#ece7dc",
+    "topColour": "#ece7dc"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sphinx-l",
+   "at": [
+    -9,
+    -76
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     4.4
+    ],
+    "z0": 1.8,
+    "height": 2.2,
+    "colour": "#4a4038",
+    "topColour": "#4a4038"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sphinx-r",
+   "at": [
+    9,
+    -76
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     4.4
+    ],
+    "z0": 1.8,
+    "height": 2.2,
+    "colour": "#4a4038",
+    "topColour": "#4a4038"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "lod": [
+    0
+   ],
+   "at": [
+    -6,
+    -59.5,
+    21.9
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 3,
+    "spacing": 6,
+    "colours": [
+     "#2b5f8c",
+     "#e8e8e8",
+     "#2b5f8c"
+    ]
+   }
+  },
+  {
+   "type": "arched-window",
+   "id": "win--1-0",
+   "at": [
+    -20,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win--1-1",
+   "at": [
+    -32,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win--1-2",
+   "at": [
+    -44,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win--1-3",
+   "at": [
+    -56,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win-1-0",
+   "at": [
+    20,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win-1-1",
+   "at": [
+    32,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win-1-2",
+   "at": [
+    44,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "arched-window",
+   "id": "win-1-3",
+   "at": [
+    56,
+    -58.1,
+    1.2
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 6.2,
+    "kind": "arch"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-egyptian-museum",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper small windows gone but wing has no cornice relief; portico lacks carved relief and sculpture; sphinxes are blocks; rear hall plain; no lattice fan detail"
+ }
+}

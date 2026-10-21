@@ -1,0 +1,204 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-gaborone-technical-college",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/121174236",
+   "used": "campus is 560 x 370 m, far above the scene clamp; one 95 m L of the classroom and workshop blocks is modelled from the brief (L footprint, 2 storeys, shed roofs); no photo found, outline not reproduced"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gaborone.json",
+   "used": "1970s long low blocks, cream render with brown brick accent, red corrugated shed roofs, ribbon windows, steps, boundary wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classroom-block",
+   "footprint": {
+    "rect": [
+     70,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8bd",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#8b6a4f",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a9442f",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 1.0,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-wing",
+   "footprint": {
+    "rect": [
+     22,
+     34
+    ]
+   },
+   "at": [
+    -29,
+    23.5
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dccfb2",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "sawtooth",
+    "colour": "#a9442f",
+    "material": "corrugated",
+    "teeth": 4,
+    "rise": 2.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-stair-core",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -8.5
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8b6a4f",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#c9c3b5"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -42,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#c9b8a0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "acacia",
+      "height": 7,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -17,
+     0
+    ],
+    "end": [
+     30,
+     -17,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; one L of blocks from the brief, real campus is much larger and its outline is not reproduced"
+ }
+}

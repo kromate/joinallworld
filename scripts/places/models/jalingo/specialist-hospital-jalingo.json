@@ -1,0 +1,158 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "specialist-hospital-jalingo",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1225431315",
+   "used": "real zig-zag ward-block footprint (name match, ~500 m2)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hospital_varandal_with_patients.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rbutso",
+   "view": "detail",
+   "used": "walkway inside compound, not a facade shot: single-storey wards, green pantile roofs, cream rendered arched covered walkway with block-stack pillars, pink/grey tile paving, green door trim"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0c4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#2f7a52",
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5f8f6e",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -9,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 6,
+    "height": 3.2,
+    "radius": 0.28,
+    "kind": "round",
+    "beamHeight": 0.7,
+    "roofDepth": 2.6,
+    "colour": "#e6dcc4",
+    "roofColour": "#cfd6c8"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -3,
+    -17,
+    3.2
+   ],
+   "params": {
+    "size": 1.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    20,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#e6dcc4",
+    "roofColour": "#5f8f6e",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "colour": "#d9d2bc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     20
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only an interior-walkway photo exists (no facade photo); outline is real OSM, roof is a simple low hip over the irregular plan, arched walkway simplified to a colonnade."
+ }
+}

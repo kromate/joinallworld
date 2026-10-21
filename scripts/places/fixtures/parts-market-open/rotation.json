@@ -1,0 +1,88 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "rotation",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "rotDeg": 45,
+   "params": {
+    "length": 14
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    20,
+    25,
+    3
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "storeys": 2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm"
+   }
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "az": 30,
+  "el": 45
+ }
+}

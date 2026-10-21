@@ -1,0 +1,296 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bexley_Civic_Offices_1.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/bexley1.jpg",
+   "used": "stepped hipped terracotta roofs with deep dark eaves over staggered buff-brick blocks, brick piers, blue-framed glazing, solar panels"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:End_of_The_Broadway,_Bexleyheath_(geograph_1955254).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "E Gammie",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/bexley2.jpg",
+   "used": "overall hipped-roof massing and brick colour from the Broadway"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.93,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tier0",
+   "footprint": {
+    "rect": [
+     84,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a860",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 11,
+    "glassColour": "#1f3048",
+    "trimColour": "#23324a",
+    "bands": "#e0d6b8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#96402a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier1",
+   "footprint": {
+    "rect": [
+     68,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.5,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a860",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 11,
+    "glassColour": "#1f3048",
+    "trimColour": "#23324a",
+    "bands": "#e0d6b8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#96402a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier2",
+   "footprint": {
+    "rect": [
+     52,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 13,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a860",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 11,
+    "glassColour": "#1f3048",
+    "trimColour": "#23324a",
+    "bands": "#e0d6b8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#96402a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tier3",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 19.5,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c8a860",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "bay": 11,
+    "glassColour": "#1f3048",
+    "trimColour": "#23324a",
+    "bands": "#e0d6b8",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#96402a",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 2.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     1.4,
+     1.4
+    ]
+   },
+   "at": [
+    -6.5,
+    -17.6
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b89850",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8482e"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    22,
+    -6,
+    19
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    22,
+    -6,
+    19
+   ],
+   "params": {},
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "finial-mast",
+   "at": [
+    0,
+    0,
+    26
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#9aa0a5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -22,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -26
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-community-voting-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rebuilt as a 5-tier stepped pyramid with deep terracotta hipped eaves, yellow stock brick, front piers, solar panels and a mast; real building has more tiers with navy soffits, balconies and grey screens, larger glazed bays and lattice mast."
+ }
+}

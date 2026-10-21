@@ -1,0 +1,529 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Renovated_Abia_State_House_of_Assembly.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Patmosko12",
+   "view": "front",
+   "file": "/tmp/places-evidence/umuahia/assembly.jpg",
+   "used": "white rendered two-tier front, central tall hip-roofed block with open arched portico, flanking wings with blind arch band and green hip roofs, flag, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1283224900",
+   "used": "not used for massing (24 m footprint is far smaller than the 70 m frontage in the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.76,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f5f4a",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f5f4a",
+    "material": "slate",
+    "pitch": 40,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-left",
+   "footprint": {
+    "rect": [
+     8,
+     13
+    ]
+   },
+   "at": [
+    -13.5,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fcfcfb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-right",
+   "footprint": {
+    "rect": [
+     8,
+     13
+    ]
+   },
+   "at": [
+    13.5,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fcfcfb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     17
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "faces": {
+     "front": "none",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2c4536",
+    "material": "slate",
+    "pitch": 45,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-recess",
+   "footprint": {
+    "rect": [
+     17,
+     1
+    ]
+   },
+   "at": [
+    0,
+    -9.0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efefec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efefec"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "frame",
+   "at": [
+    0,
+    -10.4,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "height": 12.2,
+    "depth": 1.0,
+    "archWidth": 7,
+    "springHeight": 6.5,
+    "colour": "#fcfcfb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    -7.9,
+    -10.4
+   ],
+   "height": 12.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fcfcfb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    7.9,
+    -10.4
+   ],
+   "height": 12.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fcfcfb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fcfcfb"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "crest",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.25
+    },
+    "arc": {
+     "centre": [
+      0,
+      -11.0,
+      7.6
+     ],
+     "radius": 0.9,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "closed": true,
+    "colour": "#c9a23a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "arches-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -35.5,
+     -8.15,
+     4.7
+    ],
+    "end": [
+     -16.5,
+     -8.15,
+     4.7
+    ],
+    "lod2Step": 100,
+    "of": [
+     {
+      "type": "arch-portal",
+      "params": {
+       "width": 2.2,
+       "height": 3.4,
+       "depth": 0.25,
+       "archWidth": 1.9,
+       "springHeight": 2.3,
+       "colour": "#e8e8e4"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "arches-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     16.5,
+     -8.15,
+     4.7
+    ],
+    "end": [
+     35.5,
+     -8.15,
+     4.7
+    ],
+    "lod2Step": 100,
+    "of": [
+     {
+      "type": "arch-portal",
+      "params": {
+       "width": 2.2,
+       "height": 3.4,
+       "depth": 0.25,
+       "archWidth": 1.9,
+       "springHeight": 2.3,
+       "colour": "#e8e8e4"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "pil-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -36,
+     -8.3,
+     0
+    ],
+    "end": [
+     -16,
+     -8.3,
+     0
+    ],
+    "lod1Step": 2,
+    "lod2Step": 100,
+    "of": [
+     {
+      "type": "mass",
+      "id": "pil",
+      "footprint": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 9,
+      "storeys": 1,
+      "wall": {
+       "material": "painted-render",
+       "colour": "#f4f4f1",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#f4f4f1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "pil-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     16,
+     -8.3,
+     0
+    ],
+    "end": [
+     36,
+     -8.3,
+     0
+    ],
+    "lod1Step": 2,
+    "lod2Step": 100,
+    "of": [
+     {
+      "type": "mass",
+      "id": "pil",
+      "footprint": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 9,
+      "storeys": 1,
+      "wall": {
+       "material": "painted-render",
+       "colour": "#f4f4f1",
+       "windows": "none"
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#f4f4f1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     36,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Open arch frame is a solid arched wall; the crescent/horn spandrels and deep see-through portico are missing; blind arch band on wings is simplified; wall shading reads slightly blue in render; no cars or lawn lettering."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "abia-state-house-of-assembly"
+}

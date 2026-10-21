@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-rufaro-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6094331",
+   "used": "real extent ~ 210 x 200 m site; pitch and bowl sized from it and the brief (oval grass bowl, one covered main stand, floodlights)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: older bowl, covered main stand, low peeling concrete terraces, floodlights; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "width": 84,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 68,
+    "radiusY": 50,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "facetDeg": 15,
+    "under": "open",
+    "seatColour": "#a8553a",
+    "concreteColour": "#c9c3b5",
+    "underColour": "#a9a590"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 14,
+    "height": 16,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 2,
+    "seat_colour": "#a8553a",
+    "seat_colour2": "#d9d3c4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72,
+    56,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72,
+    56,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    58,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -80,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 3,
+    "height": 6,
+    "openings": 1,
+    "kind": "round"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    -80,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "line": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: sizes from the real site extent; terrace colours, stand roof and gate are typed from the brief; bowl is a generic oval not the real irregular outline."
+ }
+}

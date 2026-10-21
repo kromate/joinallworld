@@ -1,0 +1,163 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1083461333",
+   "used": "footprint (name match, 862 m2, amenity=bank)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#c9c2b0",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e6e0d2",
+       "#d8d1c0"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "thickness": 0.5,
+    "columns": 2,
+    "colour": "#5f6b73",
+    "edgeColour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -12.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "z0": 7.6,
+    "height": 1.2,
+    "colour": "#5f6b73",
+    "topColour": "#5f6b73"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    -20,
+    -17,
+    0
+   ],
+   "params": {
+    "wall_colour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#c9c2b0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -32,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; real outline used, canopy and 2-storey height from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "first-bank-gombe"
+}

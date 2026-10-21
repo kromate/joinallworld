@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "mubi-park-motor-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yola.json#mubi-park-motor-park",
+   "used": "motor park: long open shed over loading bays, parked buses and vans, roadside kiosks, small booking office on bare laterite. No photo found; OSM match is nearest at 55 m (357 m2 outline) and not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 42,
+    "depth": 16,
+    "height": 5,
+    "thickness": 0.4,
+    "columns": 8,
+    "colour": "#5b6670",
+    "edgeColour": "#d9a441",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "count": 5,
+    "spacing": 6.5,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "mixed",
+    "density": 0.7,
+    "coach_share": 0.3,
+    "colours": [
+     "#d9a441",
+     "#b0aaa0",
+     "#2f6b4f",
+     "#b4654a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booking-office",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -24,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0aaa0",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5b6670",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9a441"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#b4654a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#5b6670"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 3,
+    "colour": "#d9a441",
+    "frameColour": "#5b6670",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 3,
+    "spread": 6,
+    "line": 70
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   96,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable footprint; typed open shed, bus rows and kiosks, layout guessed."
+ }
+}

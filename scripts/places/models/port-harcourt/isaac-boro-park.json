@@ -1,0 +1,810 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_at_Isaac_Adaka_Boro_park_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bomaexpress",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-harcourt/isaac-boro-park-0.jpg",
+   "used": "tall tapering stone-clad obelisk on stepped black granite plinth, jet and tank models, bronze soldier statues either side, interlock paved plaza ringed by green and white kerb, royal and fan palms, solar street lamps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Isaac_Boro_Garden_Park_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "geo-tagged Commons",
+   "view": "side",
+   "file": "/tmp/places-evidence/port-harcourt/isaac-boro-park-2.jpg",
+   "used": "obelisk with statue at its foot, lawn and tree line behind, green/white kerbs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/758353197",
+   "used": "park extent (about 270 x 230 m) for the lawn; only the monument end is detailed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 150,
+    "depth": 110,
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     44,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#968c7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#968c7e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-white",
+   "footprint": {
+    "rect": [
+     48,
+     38
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e4e2da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb",
+   "footprint": {
+    "rect": [
+     46,
+     36
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 0.55,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#46745a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6a4c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     24,
+     7
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#1b1d1f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26292b"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0.4,
+    5.4
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.0,
+       4.8
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       6.4,
+       3.6
+      ]
+     },
+     {
+      "z": 20,
+      "rect": [
+       3.6,
+       2.4
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       2.6,
+       1.8
+      ]
+     }
+    ],
+    "colour": "#8f866f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -24
+     ],
+     [
+      0,
+      -46
+     ]
+    ],
+    "width": 5,
+    "colour": "#b6b1a4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.6,
+    "kind": "rail",
+    "pillarEvery": 6,
+    "colour": "#2f4a38"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -22.5,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    22.5,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.6,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#1b1d1f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26292b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-step",
+   "footprint": {
+    "rect": [
+     5,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -3.7
+   ],
+   "z0": 0.6,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#17191b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#17191b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.1,
+    2.8
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.5
+    ],
+    "height": 1.4,
+    "colour": "#d8d4c8",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.2,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "height": 1.8,
+    "colour": "#b8b4a6",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -1.5,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     6.5,
+     0.9
+    ],
+    "height": 0.8,
+    "colour": "#555a52",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7,
+    -1.5,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     4.5
+    ],
+    "height": 0.2,
+    "colour": "#555a52",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -1,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     3.2
+    ],
+    "height": 0.9,
+    "colour": "#232526",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.5,
+    0,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.4
+    ],
+    "height": 1.1,
+    "colour": "#6c7074",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    0,
+    4.3
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.6
+    ],
+    "height": 1.0,
+    "colour": "#7c8084",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     -5.6,
+     0.6
+    ],
+    "end": [
+     9,
+     -5.6,
+     0.6
+    ],
+    "count": 10,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.3,
+        1.3
+       ],
+       "height": 0.45,
+       "colour": "#2f6a45",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.45
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.9
+       ],
+       "height": 0.3,
+       "colour": "#d86a8a",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "sp-l",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -15,
+    -3
+   ],
+   "z0": 0.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3a3a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "sp-r",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    15,
+    -3
+   ],
+   "z0": 0.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#3a3a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -15,
+    -3,
+    1.6
+   ],
+   "params": {
+    "height": 2.8,
+    "colour": "#4a3b24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    15,
+    -3,
+    1.6
+   ],
+   "params": {
+    "height": 2.8,
+    "colour": "#4a3b24"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -36,
+     24,
+     0
+    ],
+    "end": [
+     -12,
+     24,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        0.3
+       ],
+       "height": 2.2,
+       "colour": "#e8e4da",
+       "windows": "none"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       1.4
+      ],
+      "params": {
+       "rect": [
+        2.4,
+        0.35
+       ],
+       "height": 0.7,
+       "colour": "#b8392e",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "isaac-boro-park",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "jet, tank and ship are plain grey blocks; no bronze detail, tile-panel joints on obelisk or lamp arms; hoardings are simple white/red boards; overview framing wider than photo"
+ }
+}

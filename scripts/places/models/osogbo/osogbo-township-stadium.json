@@ -1,0 +1,433 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "osogbo-township-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Osogbo_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "El-Shaddaites",
+   "view": "street",
+   "file": "/tmp/places-evidence/osogbo/Osogbo_Stadium.jpg",
+   "used": "long two-storey grandstand, tan-olive concrete walls, grey gallery balconies, red sloping roof with cantilever on slim columns at the left end, tall timber-board perimeter wall, grey paver road"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/934208949",
+   "used": "stadium oval about 217 x 130 m: track and pitch sizing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 160,
+    "width": 96
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 105,
+    "width": 68
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand",
+   "at": [
+    0,
+    -64
+   ],
+   "footprint": {
+    "rect": [
+     76,
+     14
+    ]
+   },
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8870",
+    "windows": "none",
+    "windowRatio": 0.0,
+    "bay": 6,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.9,
+      "colour": "#8d8f8c",
+      "at": [
+       4.2
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c4442f",
+    "material": "metal-sheet",
+    "rise": 2.6,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery",
+   "at": [
+    0,
+    -72.2,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     76,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#8d8f8c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery2",
+   "at": [
+    0,
+    -72.2,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     76,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#8d8f8c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -82,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 4.6,
+    "thickness": 0.5,
+    "colour": "#a88c66"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -80,
+    -55,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    80,
+    -55,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -80,
+    55,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    80,
+    55,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    62,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -60,
+    10.5
+   ],
+   "params": {
+    "height": 7,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ],
+    "count": 2,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "openupper",
+   "at": [
+    0,
+    -71.0,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     74,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#5a5446"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roofext",
+   "at": [
+    -47,
+    -66,
+    11.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 0.6,
+    "colour": "#c4442f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 12,
+      "colour": "#9a9fa3"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -52,
+     -72
+    ],
+    "end": [
+     -40,
+     -72
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ramp",
+   "at": [
+    -41.5,
+    -62,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     10
+    ],
+    "height": 6,
+    "colour": "#8a8870",
+    "topScale": [
+     1,
+     0.1
+    ],
+    "topOffset": [
+     0,
+     -4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -94,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     7
+    ],
+    "height": 0.12,
+    "colour": "#8b8d8f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    -89.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     0.4
+    ],
+    "height": 0.25,
+    "colour": "#e8e8e4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2,
+       0.42
+      ],
+      "height": 0.27,
+      "colour": "#1a1a1a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -74,
+     -89.8
+    ],
+    "end": [
+     74,
+     -89.8
+    ],
+    "count": 38
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -95
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     100,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stand is a simplified olive-grey block with grey gallery bands and a red shed roof; open rafter gallery, side stair ramp and end cantilever are rough stand-ins; paver road is plain grey with kerb; bowl and track follow OSM and brief only."
+ }
+}

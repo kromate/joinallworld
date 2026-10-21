@@ -1,0 +1,1492 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "valletta",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "valletta",
+    "climate": "mediterranean",
+    "vernacular": "Honey-coloured Globigerina limestone everywhere: flat-roofed terraced town houses 3-5 storeys high with enclosed painted timber balconies (gallariji) in green, blue, red or brown, baroque parish churches with domes and twin bell towers, bastioned fortifications, and in the suburbs modern apartment blocks in limestone or cream render with roof terraces and water tanks.",
+    "wallColours": [
+      "#d4b483",
+      "#c8a56f",
+      "#e0cfa5",
+      "#b89a68",
+      "#e9dcc0",
+      "#a88c5e"
+    ],
+    "roofColours": [
+      "#cdb88d",
+      "#b9a37a",
+      "#8f8a80",
+      "#a8553a"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "stone",
+      "painted-render",
+      "render",
+      "stucco",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "clay-tile",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Enclosed timber gallariji balconies painted green, blue, red or brown; stone corbels and cornices; baroque domes on drums and lanterns; carved stone door surrounds with painted doors; flat parapet roofs with water tanks and washing lines; Maltese cross and niche statues of saints on corners.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Malta",
+        "what": "Order of St John Renaissance/Baroque; British neoclassical and Gothic; Art Nouveau/Deco; limestone, wooden balconies, flat roofs, domes, farmhouses"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Balluta_Buildings",
+        "what": "Art Nouveau in local limestone, 1928"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/University_of_Malta",
+        "what": "Msida campus mix of brutalist, postmodern and steel-glass buildings; Old University 1595-1602"
+      }
+    ]
+  },
+  "places": {
+    "valletta-airport-valletta-airport": {
+      "venueId": "valletta-airport-valletta-airport",
+      "city": "valletta",
+      "name": "Malta International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Malta International Airport at Gudja: a long, low 1992 terminal in pale cream stone and glass with a control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0d2ae",
+          "#6f8da0",
+          "#f1ede2"
+        ],
+        "roofColour": "#b9ad8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1992",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malta_International_Airport",
+          "what": "single passenger terminal at Gudja, foundation stone 1989, opened 1992 (older Luqa terminal 1958, 2 floors); expansion planned adding ~6,000 m2 to west, 18 to 24 gates"
+        }
+      ],
+      "notes": "Only the dates, single-terminal layout and gate numbers are sourced; cladding and colours are from general knowledge (cream stone tones). Scene clamp: show the central portion of the terminal."
+    },
+    "valletta-clinic": {
+      "venueId": "valletta-clinic",
+      "city": "valletta",
+      "name": "Mount Carmel Hospital",
+      "archetype": "hospital",
+      "subject": "Mount Carmel Hospital at Attard: a long Victorian-era limestone institution with arcaded wings and a central block",
+      "form": {
+        "footprint": "U",
+        "width_m": 140,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9c392",
+          "#b89a68",
+          "#efe6cf"
+        ],
+        "roofColour": "#b9ad8f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "long arcaded wing"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1860s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Carmel_Hospital",
+          "what": "disambiguation page: Mount Carmel Hospital is the psychiatric hospital in Attard, Malta; no building details"
+        }
+      ],
+      "notes": "Psychiatric hospital in Attard, founded in the 1860s per my background knowledge; building details not sourced, typed from Maltese institutional limestone."
+    },
+    "valletta-community-notices": {
+      "venueId": "valletta-community-notices",
+      "city": "valletta",
+      "name": "European Union Agency for Asylum",
+      "archetype": "office-low",
+      "subject": "The EUAA headquarters at Winemakers Wharf, Marsa: a modern limestone-and-glass office block on the Grand Harbour quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 24,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "limestone",
+        "colours": [
+          "#c9d1d4",
+          "#d4b483",
+          "#f1ede2"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Modern agency HQ near the Marsa harbour; storeys and cladding are typed estimates, no source retrieved."
+    },
+    "valletta-community-voting-game": {
+      "venueId": "valletta-community-voting-game",
+      "city": "valletta",
+      "name": "Royal Opera House",
+      "archetype": "museum-theatre",
+      "subject": "Pjazza Teatru Rjal: Renzo Piano's 2013 open-air theatre built within the bombed shell of Barry's 1866 Royal Opera House beside City Gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "open-air"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6c196",
+          "#8f8a80",
+          "#efe6cf"
+        ],
+        "roofColour": "#d6c196",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "retained opera house columns and wall stumps"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "amphitheatre seating"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Opera_House,_Valletta",
+          "what": "Barry design opened 1866, fire 1873, bombed April 1942, ruins cleared late 1950s; Piano open-air Pjazza Teatru Rjal opened 8 Aug 2013"
+        }
+      ],
+      "notes": "Open-air stage with a steel stage-tower framework and cut limestone; the sourced page confirms the history, not the materials. No roof over the audience, so roof none."
+    },
+    "valletta-community-workshop": {
+      "venueId": "valletta-community-workshop",
+      "city": "valletta",
+      "name": "University of Malta",
+      "archetype": "campus-block",
+      "subject": "The University of Malta Msida campus Gateway Building: a postmodern entrance block linked by colonnades and ramps",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4b483",
+          "#8da6b3",
+          "#efe6cf"
+        ],
+        "roofColour": "#b9ad8f",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "linked colonnades"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "ramps and steps"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Malta",
+          "what": "Msida campus 250,207 m2, 1964 foundation; Brutalist Cassar Pullicino building 1969-70; postmodern 1989-99 buildings linked by colonnades and ramps with the Gateway Building as main entrance; steel-and-glass ICT faculty 2009-13"
+        }
+      ],
+      "notes": "Sourced for style and layout; colours and dimensions are estimates (limestone tones per Malta convention)."
+    },
+    "valletta-market-game": {
+      "venueId": "valletta-market-game",
+      "city": "valletta",
+      "name": "Bay Street Shopping Complex",
+      "archetype": "mall",
+      "subject": "Bay Street Shopping Complex, St Paul's Bay: a modern waterfront mall of limestone-coloured blocks with glass fronts",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcc9a0",
+          "#6f8da0",
+          "#f1ede2"
+        ],
+        "roofColour": "#a89a78",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Mall not described in retrieved sources; typed as a modern Maltese seafront mall."
+    },
+    "valletta-meal-stop": {
+      "venueId": "valletta-meal-stop",
+      "city": "valletta",
+      "name": "Point de Vue",
+      "archetype": "restaurant",
+      "subject": "Point de Vue: a clifftop restaurant at Dingli Cliffs with a large terrace over the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c392",
+          "#f1ede2",
+          "#8a6a3a"
+        ],
+        "roofColour": "#b9ad8f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "cliff-edge terrace"
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name and location (Dingli Cliffs) only; typed as a Maltese clifftop restaurant with a terrace."
+    },
+    "valletta-osm-node-1742953661": {
+      "venueId": "valletta-osm-node-1742953661",
+      "city": "valletta",
+      "name": "Malta Classic Car Museum",
+      "archetype": "museum-theatre",
+      "subject": "Malta Classic Car Museum, Qawra: a big converted warehouse-style showroom with a cream facade and glass front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9dcc0",
+          "#8f8a80",
+          "#c0392b"
+        ],
+        "roofColour": "#a89a78",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Museum not described; typed as a large showroom building."
+    },
+    "valletta-osm-relation-14484752": {
+      "venueId": "valletta-osm-relation-14484752",
+      "city": "valletta",
+      "name": "Saint Gabriel Band Club",
+      "archetype": "restaurant",
+      "subject": "A Maltese village band club: a limestone building on a village street with a balcony, flags and a bar on the ground floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#d4b483",
+          "#3e6b4a",
+          "#efe6cf"
+        ],
+        "roofColour": "#b9ad8f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "enclosed painted balcony (gallarija)"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Band clubs are typical Maltese village social clubs; this one is not described; typed."
+    },
+    "valletta-osm-way-138969519": {
+      "venueId": "valletta-osm-way-138969519",
+      "city": "valletta",
+      "name": "Manikata Church",
+      "archetype": "church-modern",
+      "subject": "Parish Church of St Joseph, Manikata (Richard England, 1974): a modernist church inspired by the girna, the farmers' stone hut",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 32,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d7bf8a",
+          "#b89a68",
+          "#efe6cf"
+        ],
+        "roofColour": "#c9b58a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "plain stone bell mass"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Manikata",
+          "what": "Parish Church of St Joseph: planning 1961, first stone 1962, blessed 29 Nov 1974; architect Richard England inspired by the girna; earlier 1920 chapel in honey-coloured stone"
+        }
+      ],
+      "notes": "Distinctive for being modern and rubble-stone, not a baroque dome; the sourced page does not describe the facade or roof, so shape and dimensions are estimates in the girna spirit."
+    },
+    "valletta-osm-way-171895544": {
+      "venueId": "valletta-osm-way-171895544",
+      "city": "valletta",
+      "name": "Torri tal-Wardija",
+      "archetype": "heritage-fort",
+      "subject": "Torri tal-Wardija: a square limestone coastal watchtower of the Order-of-St-John type with a parapet and a door at first-floor level",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cdb283",
+          "#a88c5e",
+          "#e0cfa5"
+        ],
+        "roofColour": "#cdb283",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "parapet"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "17th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name suggests a coastal watchtower on the south coast; no source retrieved. Typed as the standard square De Redin-style tower."
+    },
+    "valletta-osm-way-224009613": {
+      "venueId": "valletta-osm-way-224009613",
+      "city": "valletta",
+      "name": "Balluta Buildings",
+      "archetype": "shophouse",
+      "subject": "Balluta Buildings, St Julian's (Giuseppe Psaila, 1928): three joined Art Nouveau limestone blocks with arched bays, putti keystones and shops below",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#d9c28f",
+          "#c8a56f",
+          "#efe6cf"
+        ],
+        "roofColour": "#b9ad8f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "long arched openings with keystones"
+        },
+        {
+          "id": "pediment",
+          "count": 3,
+          "note": "inscribed pediments over the three blocks"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "verandas on the lower floors"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "floral and geometric carving, putti"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1928",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Balluta_Buildings",
+          "what": "Giuseppe Psaila 1928; Art Nouveau; local limestone; three connected blocks with arched openings and keystones with putti; double windows and pilasters; pediments reading BALLUTA BUILDINGS A.D. MCMXXVIII; verandas on lower floors; shops at street level; 20 apartments"
+        }
+      ],
+      "notes": "Style given as Art Nouveau on the page; nearest STYLES id is art-deco. Storeys (five) and colours are estimates; the pediment inscription must be rendered as blank panels."
+    },
+    "valletta-osm-way-24063943": {
+      "venueId": "valletta-osm-way-24063943",
+      "city": "valletta",
+      "name": "Mater Dei Hospital",
+      "archetype": "hospital",
+      "subject": "Mater Dei Hospital, Msida: a vast 250,000 m2 complex of long concrete-and-glass blocks and a medical-school wing",
+      "form": {
+        "footprint": "H",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 7,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d9c0",
+          "#7d95a3",
+          "#f1ede2"
+        ],
+        "roofColour": "#a8a396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mater_Dei_Hospital",
+          "what": "250,000 m2 complex; 825 beds/25 theatres per history, 1,243 per infobox; cheap concrete limited further floors and a roof helipad; medical school wing of University of Malta"
+        }
+      ],
+      "notes": "Size and the absence of a rooftop helipad are sourced (so no helipad feature); height, colours and plan are estimates. Show only a portion within the 120 m clamp."
+    },
+    "valletta-osm-way-243915139": {
+      "venueId": "valletta-osm-way-243915139",
+      "city": "valletta",
+      "name": "Hastings Garden",
+      "archetype": "park-landscape",
+      "subject": "Hastings Gardens: a terraced garden atop St John's and St Michael's bastions beside City Gate, with a monument and views over Floriana and Marsamxett Harbour",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d4b483",
+          "#6a8a4a",
+          "#efe6cf"
+        ],
+        "roofColour": "#d4b483",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "bastion walls"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Hastings monument"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Armenian khachkar stone cross"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1800s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hastings_Gardens",
+          "what": "garden on St John's and St Michael's bastions west of City Gate; Hastings monument (d. 1826); Armenian khachkar 2009; overlooks Floriana, Msida, Sliema, Manoel Island"
+        }
+      ],
+      "notes": "Planting and path layout not sourced; typed."
+    },
+    "valletta-osm-way-26441204": {
+      "venueId": "valletta-osm-way-26441204",
+      "city": "valletta",
+      "name": "il-Grawnd taċ-Ċentinarju",
+      "archetype": "park-landscape",
+      "subject": "Il-Grawnd taċ-Ċentinarju, the Centenary Ground: an open grass sports field at the edge of the village with a low pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cdb283",
+          "#6a8a4a",
+          "#e0cfa5"
+        ],
+        "roofColour": "#cdb283",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Community ground; not described; typed."
+    },
+    "valletta-osm-way-27462446": {
+      "venueId": "valletta-osm-way-27462446",
+      "city": "valletta",
+      "name": "Lower Barracca Gardens",
+      "archetype": "park-landscape",
+      "subject": "Lower Barrakka Gardens, Valletta: a stepped terrace garden above the Grand Harbour with the 1810 Ball monument, a neoclassical open temple",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d4b483",
+          "#6a8a4a",
+          "#efe6cf"
+        ],
+        "roofColour": "#d4b483",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "circular neoclassical temple (Ball monument, 1810)"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "surrounding arcade rebuilt 1980s"
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1810",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lower_Barrakka_Gardens",
+          "what": "Monument to Sir Alexander Ball, a neoclassical temple of 1810; overlooks Grand Harbour; memorial plaques; arcades rebuilt in 1980s; reopened 2003"
+        }
+      ],
+      "notes": "Columns type and the circular plan of the temple are from memory; confirmed by the page only as a neoclassical temple."
+    },
+    "valletta-osm-way-329689901": {
+      "venueId": "valletta-osm-way-329689901",
+      "city": "valletta",
+      "name": "American University of Malta",
+      "archetype": "campus-block",
+      "subject": "The American University of Malta campus at Cospicua: sculpted white curvilinear buildings on the Dock 1 waterfront",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#9fb7c4",
+          "#cfcbc2"
+        ],
+        "roofColour": "#d9d6cf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Campus recalled as a Zaha Hadid Architects scheme with flowing forms, but not confirmed by any retrieved source, so only the typed contemporary-curved look is used."
+    },
+    "valletta-osm-way-33426681": {
+      "venueId": "valletta-osm-way-33426681",
+      "city": "valletta",
+      "name": "Saint James Hospital",
+      "archetype": "hospital",
+      "subject": "Saint James Hospital, Sliema: a private clinic building of cream render with a regular window grid",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d9b5",
+          "#7d95a3",
+          "#f1ede2"
+        ],
+        "roofColour": "#a8a396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Private hospital; not described; typed."
+    },
+    "valletta-osm-way-33556227": {
+      "venueId": "valletta-osm-way-33556227",
+      "city": "valletta",
+      "name": "Saint Mary Magdalene Chapel",
+      "archetype": "shrine-small",
+      "subject": "Saint Mary Magdalene Chapel on the Dingli plateau: a tiny whitewashed-limestone chapel with a bell-cote and a single door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#d9c392",
+          "#f1ede2",
+          "#a88c5e"
+        ],
+        "roofColour": "#cdb88d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bell-cote"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rubble field wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "17th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Chapel on Dingli cliffs per background knowledge; dimensions and colours are typed from Maltese rural chapels, no source retrieved."
+    },
+    "valletta-osm-way-46780543": {
+      "venueId": "valletta-osm-way-46780543",
+      "city": "valletta",
+      "name": "Fort Bengħisa",
+      "archetype": "heritage-fort",
+      "subject": "Fort Bengħisa, Birżebbuġa: a Victorian polygonal coastal fort of limestone with a dry ditch and ramparts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#c9ae7f",
+          "#a88c5e",
+          "#e0cfa5"
+        ],
+        "roofColour": "#c9ae7f",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "drawbridge entrance across the ditch"
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "victorian",
+      "era": "1870s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Fort recalled as a late-19th-century British coastal defence; page fetch failed, so no sources; shape typed."
+    },
+    "valletta-osm-way-60088300": {
+      "venueId": "valletta-osm-way-60088300",
+      "city": "valletta",
+      "name": "Tony Bezzina Stadium",
+      "archetype": "stadium",
+      "subject": "Tony Bezzina Stadium, Paola: a small football ground with one main covered stand and tall floodlight masts among apartment blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cbc3ad",
+          "#2f6b3a",
+          "#efece4"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Paola ground; not described; typed. Distinguish from Victor Tedesco by two stands and a taller roof."
+    },
+    "valletta-osm-way-92244977": {
+      "venueId": "valletta-osm-way-92244977",
+      "city": "valletta",
+      "name": "Victor Tedesco Stadium",
+      "archetype": "stadium",
+      "subject": "Victor Tedesco Stadium, Ħamrun: a compact ground with one low stand beside a street, a pitch and a few floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 65,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d9cfb4",
+          "#a8553a",
+          "#efece4"
+        ],
+        "roofColour": "#8f9494",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Ħamrun ground; not described; typed as a smaller older single-stand ground."
+    },
+    "valletta-quiet-reflection": {
+      "venueId": "valletta-quiet-reflection",
+      "city": "valletta",
+      "name": "Chapel of Our Lady's Return from Egypt",
+      "archetype": "shrine-small",
+      "subject": "The 17th-century chapel on Comino: a small plain limestone chapel with a bell-cote beside the island's tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#d9c392",
+          "#efe6cf",
+          "#a88c5e"
+        ],
+        "roofColour": "#c9b58a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bell-cote"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "1618",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Chapel on Comino by coordinates and name (background knowledge); no source retrieved, so dimensions are typed. Surrounding ground is bare garigue."
+    },
+    "valletta-recreation": {
+      "venueId": "valletta-recreation",
+      "city": "valletta",
+      "name": "Sant' Antnin Family Park",
+      "archetype": "park-landscape",
+      "subject": "Sant' Antnin Family Park, Marsaskala: a landscaped family park with lawns, play areas and low pavilions beside the waste-recycling plant",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cdb283",
+          "#6a8a4a",
+          "#e0cfa5"
+        ],
+        "roofColour": "#cdb283",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Park not described; typed."
+    },
+    "valletta-transit": {
+      "venueId": "valletta-transit",
+      "city": "valletta",
+      "name": "Valletta Cruise Port",
+      "archetype": "transport-station",
+      "subject": "Valletta Cruise Port at Pinto Wharf: a row of 18th-century limestone Pinto warehouses with coloured doors, now the Waterfront, beside the cruise-ship quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d4b483",
+          "#3e6b4a",
+          "#a8553a"
+        ],
+        "roofColour": "#c9b58a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "row of arched warehouse doors"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "deep-water quay"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "baroque",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Malta",
+          "what": "general: limestone baroque Order-of-St-John construction, bastioned Grand Harbour"
+        }
+      ],
+      "notes": "Pinto Stores row with painted doors (green, blue, red) recalled from general knowledge; the port page could not be retrieved. Cruise ship alongside is not modelled."
+    }
+  }
+}

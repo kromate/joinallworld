@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "unguwan-rimi-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1245212999",
+   "used": "market outline (about 82 x 37 m, bearing 81 deg); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-roof",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "bands": "#7a3f2f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8472f",
+    "rise": 1.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups",
+   "footprint": {
+    "rect": [
+     40,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "rotDeg": -12,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c0ae8d",
+    "windows": "none",
+    "bands": "#a8472f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8472f",
+    "rise": 1,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 2,
+    "dx": 8,
+    "dy": 9,
+    "centred": true,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.2,
+        2.2
+       ],
+       "z0": 0,
+       "height": 2.1,
+       "colour": "#7a3f2f",
+       "topColour": "#a8472f"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     40,
+     6,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "segments": 8,
+       "colour": "#3f7a58",
+       "profile": [
+        [
+         0.1,
+         0
+        ],
+        [
+         0.1,
+         2.2
+        ],
+        [
+         1.5,
+         2.2
+        ],
+        [
+         0.1,
+         2.9
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; stall layout inferred from the brief."
+ }
+}

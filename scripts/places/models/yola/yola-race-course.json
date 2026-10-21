@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "yola-race-course",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/670626677",
+   "used": "real 366 x 270 m outline (leisure=stadium, name match) drives the oval proportions (about 1.37:1; modelled at 0.46 scale to stay inside the 170 m model limit) and the perimeter rail"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 35,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "race-track",
+   "at": [
+    1.3800000000000001,
+    -5.98,
+    0
+   ],
+   "params": {
+    "width": 152,
+    "depth": 107,
+    "track_width": 8,
+    "colour": "#b88a63",
+    "rail": true,
+    "rail_colour": "#f0efe8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -80.224,
+      -1.564
+     ],
+     [
+      -66.102,
+      -48.208
+     ],
+     [
+      23.966,
+      -56.028
+     ],
+     [
+      35.512,
+      -42.642
+     ],
+     [
+      59.202,
+      -26.68
+     ],
+     [
+      83.352,
+      35.604000000000006
+     ],
+     [
+      42.32,
+      66.14800000000001
+     ],
+     [
+      -0.276,
+      62.1
+     ],
+     [
+      -42.872,
+      43.746
+     ],
+     [
+      -61.916,
+      34.086
+     ],
+     [
+      -76.866,
+      14.076
+     ],
+     [
+      -80.224,
+      2.7600000000000002
+     ],
+     [
+      -80.224,
+      -1.564
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "rail",
+    "colour": "#e8e4da"
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    5,
+    60,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 9,
+    "height": 6,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 1,
+    "seat_colour": "#2f6b4f",
+    "seat_colour2": "#d8c9a8"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    32,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -14,
+    58,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    37,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    69,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    54,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -90,
+     18
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     90,
+     28
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -28,
+     76
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: oval and perimeter rail from the real OSM outline, scaled to 0.46 to fit the 170 m model limit; grandstand, floodlights and flags are typed guesses."
+ }
+}

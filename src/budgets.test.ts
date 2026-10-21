@@ -8,6 +8,7 @@ import type { Budget } from './budgets.ts'
 import { CITY_TRIANGLE_BUDGET } from './map3d/city-build.ts'
 import { DETAIL_BUDGET } from './map3d/houses.ts'
 import { CAMPUS_BUDGET } from './campus/unilag/scene.ts'
+import { PLACE_MODEL_LIMITS } from './scene/places/limits.ts'
 
 const entries = Object.entries(BUDGETS) as [string, Budget][]
 
@@ -17,7 +18,7 @@ test('every budget has a positive whole value, a place it is enforced and a reas
     assert.ok(budget.enforcedIn.trim().length > 0, `${name} says where it is enforced`)
     assert.ok(budget.why.trim().length > 12, `${name} says why`)
     assert.ok(budget.limit === 'max' || budget.limit === 'min', `${name} limit`)
-    assert.ok(budget.status === 'current' || budget.status === 'provisional', `${name} status`)
+    assert.ok(budget.status === 'current' || budget.status === 'provisional' || budget.status === 'proposed', `${name} status`)
   }
 })
 
@@ -40,6 +41,19 @@ test('the realism download targets are named and marked provisional', () => {
   assert.deepEqual([provisional.WARDROBE_ITEM_BROTLI, provisional.WARDROBE_ITEM_TRIANGLES, provisional.WARDROBE_ITEM_TEXTURE_PX], [[60_000, 'brotli bytes'], [4000, 'triangles'], [1024, 'px']])
   assert.deepEqual([provisional.STREET_TILE_BROTLI, provisional.STREET_TILE_TRIANGLES], [[60_000, 'brotli bytes'], [25_000, 'triangles']])
   assert.deepEqual(provisional.PHONE_SCENE_DRAW_CALLS, [60, 'draw calls'])
+})
+
+test('the place model allowances are named, proposed, and equal the limits the generator and loader enforce', () => {
+  const proposed = Object.fromEntries(entries.filter(([, budget]) => budget.status === 'proposed').map(([name, budget]) => [name, [budget.value, budget.unit]]))
+  assert.deepEqual(proposed, {
+    PLACE_MODEL_TRIANGLES: [20000, 'triangles'], PLACE_MODEL_LOD1_TRIANGLES: [4000, 'triangles'], PLACE_MODEL_LOD2_TRIANGLES: [500, 'triangles'],
+    PLACE_MODEL_DRAW_CALLS: [2, 'draw calls'], PLACE_MODEL_LOD0_BROTLI: [110_000, 'brotli bytes'], PLACE_MODEL_LOD1_BROTLI: [30_000, 'brotli bytes'], PLACE_MODEL_LOD2_BROTLI: [6000, 'brotli bytes'],
+  })
+  assert.deepEqual(Object.values(PLACE_MODEL_LIMITS).map((limit) => limit.triangles), [BUDGETS.PLACE_MODEL_TRIANGLES.value, BUDGETS.PLACE_MODEL_LOD1_TRIANGLES.value, BUDGETS.PLACE_MODEL_LOD2_TRIANGLES.value])
+  assert.deepEqual(Object.values(PLACE_MODEL_LIMITS).map((limit) => limit.brotliBytes), [BUDGETS.PLACE_MODEL_LOD0_BROTLI.value, BUDGETS.PLACE_MODEL_LOD1_BROTLI.value, BUDGETS.PLACE_MODEL_LOD2_BROTLI.value])
+  // A separate allowance: the scenery cap is untouched.
+  assert.equal(BUDGETS.SCENE_SCENERY_TRIANGLES.value, 15000)
+  assert.equal(BUDGETS.SCENE_TRIANGLES.value, 87000)
 })
 
 test('the scene budget is its two parts, and a phone sees no more draw calls than a venue scene may use', () => {

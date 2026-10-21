@@ -1,0 +1,1422 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sokoto",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sokoto",
+    "climate": "sahel",
+    "vernacular": "Historic Sokoto Caliphate capital in the dry Sahel (founded 1809): old quarters of reddish-ochre mud/laterite-render compounds with flat roofs and zaure gatehouses, and a modern city of 1-3 storey painted-render and concrete buildings behind walls, with corrugated or long-span metal roofs, sandy laterite ground, and neem and acacia shade trees; domed, minareted mosques form the skyline.",
+    "wallColours": [
+      "#a9633f",
+      "#b98a5e",
+      "#c9a77c",
+      "#d8c39a",
+      "#e8dfc8",
+      "#f1ead8"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#6b6e70",
+      "#3f5a45",
+      "#a8a29a"
+    ],
+    "wallMaterials": [
+      "mud-render",
+      "painted-render",
+      "render",
+      "laterite",
+      "concrete",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Hausa tambarin arewa and geometric relief on palace and gate walls, pointed arches and domes on mosques, crenellated parapets and tall perimeter walls, zaure entrance halls, flat clay roofs in the historic core.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Sokoto",
+        "what": "Sokoto: seat of the former Sokoto Caliphate; dry Sahel, sandy savanna; rainy season June-October, Harmattan dust; photos of the Sultan's palace front and Government House"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sokoto_Sultanate",
+        "what": "Muhammed Bello founded Sokoto city in 1809; walled ribats; Clapperton 1829 describes a long flat clay-roofed prison"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+        "what": "laterite/earth walls, courtyard + room + perimeter wall, tubali style, relief decoration"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sultan_of_Sokoto",
+        "what": "modern Sultan's palace in Sokoto with a gated entrance"
+      }
+    ]
+  },
+  "places": {
+    "central-market-sokoto": {
+      "venueId": "central-market-sokoto",
+      "city": "sokoto",
+      "name": "Central Market (Sokoto)",
+      "archetype": "market-open",
+      "subject": "Sokoto's main market: dense rows of stalls and lock-up shops under shared corrugated sheds along sandy lanes (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 130,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9633f",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "lock-ups",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from Hausa market conventions: ochre mud-brick lock-ups under zinc roofs. Deliberately given the red-ochre palette of the Sokoto style."
+    },
+    "cross-country-motor-park-sokoto": {
+      "venueId": "cross-country-motor-park-sokoto",
+      "city": "sokoto",
+      "name": "Cross Country Motor Park",
+      "archetype": "transport-station",
+      "subject": "A long-distance motor park: a sandy yard with a passenger shed, a ticket office and rows of coaches (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#6b6e70",
+          "#f1ead8"
+        ],
+        "roofColour": "#3f5a45",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a walled coach park; larger than the Main Garage."
+    },
+    "first-bank-sokoto": {
+      "venueId": "first-bank-sokoto",
+      "city": "sokoto",
+      "name": "First Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey rendered block with a glazed hall, flat canopy and walled yard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ead8",
+          "#b0aaa0",
+          "#6b6e70"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Not described anywhere found. Typed as an older, plainer branch than the GT Bank branch; no brand colours."
+    },
+    "gamji-college-of-nursing-sokoto": {
+      "venueId": "gamji-college-of-nursing-sokoto",
+      "city": "sokoto",
+      "name": "Gamji College of Nursing Sciences",
+      "archetype": "campus-block",
+      "subject": "A small nursing college: two long two-storey teaching and hostel blocks with a covered walkway and a gated compound (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#7a9e8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a small health-training campus."
+    },
+    "gt-bank-sokoto": {
+      "venueId": "gt-bank-sokoto",
+      "city": "sokoto",
+      "name": "GT Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a modern three-storey block with a glazed front and flat canopy in a walled yard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe5e8",
+          "#b0aaa0",
+          "#f2f2f0"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Not described anywhere found. Typed as a newer, glassier branch than the First Bank branch; the real difference is unknown. No brand colours."
+    },
+    "holy-family-cathedral-sokoto": {
+      "venueId": "holy-family-cathedral-sokoto",
+      "city": "sokoto",
+      "name": "Cathedral of the Holy Family of Sokoto",
+      "archetype": "church-modern",
+      "subject": "The Holy Family Catholic Cathedral on Bello Way: a large modern hall church with a gabled front, tall windows with glass panes and a walled compound with parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ead8",
+          "#a9633f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "glass windows (smashed in 2022; typed as coloured glass)"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Sokoto",
+          "what": "cathedral of the Diocese of Sokoto on Bello Way; glass windows smashed in May 2022 attack; community bus parked on the premises"
+        }
+      ],
+      "notes": "Only its location, role and that it has glass windows are sourced. Form is typed; the largest cathedral among the three cities, being the mother cathedral of the diocese."
+    },
+    "karra-cattle-market-sokoto": {
+      "venueId": "karra-cattle-market-sokoto",
+      "city": "sokoto",
+      "name": "Sokoto Karra Cattle Market",
+      "archetype": "market-open",
+      "subject": "The Karra cattle market: a vast sandy livestock yard with rope or timber pens, a few shade sheds, buyers' kiosks and a perimeter wall (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9633f",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 5,
+          "note": "livestock pens"
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from the livestock-market concept as pens and a few sheds."
+    },
+    "marna-market-sokoto": {
+      "venueId": "marna-market-sokoto",
+      "city": "sokoto",
+      "name": "Marna Market",
+      "archetype": "market-open",
+      "subject": "Marna market: tightly packed stalls and small shops with metal-sheet shades along the Marna roads (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 35
+        },
+        {
+          "id": "lock-ups",
+          "count": 15
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a medium neighbourhood market, smaller than the Central Market."
+    },
+    "masallacin-nana-aisha-sokoto": {
+      "venueId": "masallacin-nana-aisha-sokoto",
+      "city": "sokoto",
+      "name": "Masallacin Nana Aisha",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque named for Nana (Asma'u/Aisha): a white single-domed prayer hall with one minaret and a small walled courtyard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f7f4ee",
+          "#b98a5e",
+          "#3f7f6a"
+        ],
+        "roofColour": "#f7f4ee",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found; the name only. Typed as a modern local mosque, smaller than the Shehu Mosque. The venue scene variant is mosque."
+    },
+    "mountain-of-fire-sokoto": {
+      "venueId": "mountain-of-fire-sokoto",
+      "city": "sokoto",
+      "name": "Mountain of Fire & Miracles Church",
+      "archetype": "church-modern",
+      "subject": "A Pentecostal church auditorium: a wide, plain rectangular hall with a low-pitched metal roof, front glass doors and a car park (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#2f4a5c",
+          "#c9a77c"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from the Pentecostal-auditorium archetype; deliberately plainer and boxier than the cathedral."
+    },
+    "noma-children-hospital-sokoto": {
+      "venueId": "noma-children-hospital-sokoto",
+      "city": "sokoto",
+      "name": "Noma Children Hospital Sokoto",
+      "archetype": "hospital",
+      "subject": "A specialist children's hospital: a low set of single and two-storey ward and clinic buildings joined by covered walkways in a walled compound (typed)",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#7a9e8a",
+          "#c9a77c"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a compact specialised hospital, lower than the Specialist Hospital."
+    },
+    "shanghai-bakers-sokoto": {
+      "venueId": "shanghai-bakers-sokoto",
+      "city": "sokoto",
+      "name": "Shanghai Bakers",
+      "archetype": "restaurant",
+      "subject": "A bakery-cafe: a small single-storey rendered shop with a glazed front, an awning and a blank signboard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#c9a77c",
+          "#6b6e70"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Name only; nothing found about the real venue. Typed as a small modern bakery-cafe."
+    },
+    "shehu-mosque-sokoto": {
+      "venueId": "shehu-mosque-sokoto",
+      "city": "sokoto",
+      "name": "Shehu Mosque",
+      "archetype": "mosque-sahelian",
+      "subject": "The mosque beside the Shehu's tomb: a Hausa-style plastered prayer hall with a mud-style tapering minaret and a walled courtyard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#a9633f",
+          "#d8c39a",
+          "#e8dfc8"
+        ],
+        "roofColour": "#a9633f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "tapering"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "toron-beams",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "sahelian",
+      "era": "19th century core, modernised",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Usman_dan_Fodio",
+          "what": "Shehu Usman dan Fodio died in Sokoto in 1817; buried at Hubbare Shehu in Sokoto"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+          "what": "Hausa mosque: prayer hall + walled courtyard, mud/tin roofs"
+        }
+      ],
+      "notes": "The name and nearness to the tomb are known; no description of the mosque found, and it may be a large modern domed mosque. Typed as a Sahelian mud-render mosque to contrast with the Nana Aisha mosque. Venue scene variant is mosque."
+    },
+    "sokoto-main-garage": {
+      "venueId": "sokoto-main-garage",
+      "city": "sokoto",
+      "name": "Sokoto Main Garage",
+      "archetype": "transport-station",
+      "subject": "The main garage (bus park): an open sandy lot with a few passenger sheds, kiosks and vans, smaller than the cross-country park (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b98a5e",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 7
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from the motor-park type."
+    },
+    "sokoto-sultanate-council": {
+      "venueId": "sokoto-sultanate-council",
+      "city": "sokoto",
+      "name": "Sokoto Sultanate Council",
+      "archetype": "civic-palace",
+      "subject": "The Sultanate Council secretariat: a two-storey rendered administrative block in a walled compound, with a crenellated parapet and arched entrance (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#e8dfc8",
+          "#a9633f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto_Sultanate",
+          "what": "Sokoto Caliphate and Sultanate history"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sultan_of_Sokoto",
+          "what": "the Sultan's modern palace in Sokoto is gated"
+        }
+      ],
+      "notes": "The council exists as a traditional institution but no building description was found. Coordinates are a generic city-centre point. Typed in a Hausa-arewa civic style, a plainer administration block than the Sultan's palace."
+    },
+    "specialist-hospital-sokoto": {
+      "venueId": "specialist-hospital-sokoto",
+      "city": "sokoto",
+      "name": "Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "The state specialist hospital: three-storey ward and clinic blocks with a central entrance canopy, ambulance bay and a walled compound (typed)",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#7a9e8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a larger hospital than the Noma Children Hospital."
+    },
+    "sultans-palace-sokoto": {
+      "venueId": "sultans-palace-sokoto",
+      "city": "sokoto",
+      "name": "The Sultan of Sokoto Palace",
+      "archetype": "heritage-fort",
+      "subject": "The modern Sultan's palace in Sokoto: a walled royal compound entered through a decorated arched gate, with low plastered buildings and flagpoles inside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#f1ead8",
+          "#a9633f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "ceremonial front gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high perimeter wall"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sultan_of_Sokoto",
+          "what": "caption \"Entrance to the modern Sultan's palace in Sokoto\" and \"Gate to the Palace of the Sultan\"; residence Wuro Bello"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "photo \"Front of Sokoto Sultan Palace\""
+        }
+      ],
+      "notes": "Sources confirm a modern palace with a gate and an entrance front, with no further description. Walls, colours, crenellation are typed from Hausa palace convention; use the entrance front as the subject."
+    },
+    "uthman-dan-fodio-tomb-sokoto": {
+      "venueId": "uthman-dan-fodio-tomb-sokoto",
+      "city": "sokoto",
+      "name": "Uthman Dan Fodio Tomb (Hubbare Shehu)",
+      "archetype": "shrine-small",
+      "subject": "The tomb of Shehu Usman dan Fodio (Hubbare Shehu): a small low plastered mausoleum inside his old house compound, with an enclosing wall and gate (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "whitewash",
+        "colours": [
+          "#d8c39a",
+          "#a9633f",
+          "#f1ead8"
+        ],
+        "roofColour": "#a9633f",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "sahelian",
+      "era": "1817 (burial)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Usman_dan_Fodio",
+          "what": "died in Sokoto on 20 April 1817, resting place Hubbare Shehu; Bello built him a house in the western suburbs; Umar al-Kammu buried near him"
+        }
+      ],
+      "notes": "Only the burial site and history are sourced; the mausoleum's appearance was not found. Typed as a modest enclosed tomb; keep it small and plain, since a plain single-storey earthen form is typical for Hausa shrines."
+    },
+    "waziri-junaidu-museum-sokoto": {
+      "venueId": "waziri-junaidu-museum-sokoto",
+      "city": "sokoto",
+      "name": "Waziri Junaidu History & Culture Bureau",
+      "archetype": "museum-theatre",
+      "subject": "A history and culture bureau/museum in a Hausa-style courtyard house: low plastered rooms around a courtyard with a decorated entrance (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#a9633f",
+          "#f1ead8"
+        ],
+        "roofColour": "#a9633f",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "hausa-arewa",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "The venue name only; searches for the building failed, so no verified description. Typed as a Hausa courtyard house per the usual form of heritage buildings in the region."
+    },
+    "sokoto-clinic-restaurant": {
+      "venueId": "sokoto-clinic-restaurant",
+      "city": "sokoto",
+      "name": "Sokoto Clinic Restaurant",
+      "archetype": "restaurant",
+      "subject": "A local eatery near a clinic: a low rendered building with an open front, a terrace with benches and a blank signboard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#a9633f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sokoto",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Name only; nothing found about the real venue. Typed as a simple local restaurant, plainer than Shanghai Bakers."
+    }
+  }
+}

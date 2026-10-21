@@ -1,0 +1,497 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Place_Pasteur_-_Tunisie_02.jpg",
+   "licence": "CC0",
+   "author": "Houss 2020",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/pasteur1.jpg",
+   "used": "pale paved path between lawns with flower beds, three fountain jets in low round basins, clipped dense tree hedge line behind, five-storey beige-grey office block with blue glazed bays and arched glass entrance, white building at right, lamp posts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/104343343",
+   "used": "outline of the square (130 x 63 m teardrop) as the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "fit": "building",
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 0.7
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7fa650",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     5,
+     56
+    ],
+    "height": 0.1,
+    "colour": "#e3d3bf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    18,
+    0.5
+   ],
+   "params": {
+    "radius": 7,
+    "n": 24,
+    "height": 0.7,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    18,
+    1.2
+   ],
+   "params": {
+    "radius": 6,
+    "n": 24,
+    "height": 0.1,
+    "colour": "#7fb1c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    18,
+    1.3
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.5
+     },
+     {
+      "z": 6,
+      "circle": 0.3
+     },
+     {
+      "z": 9,
+      "circle": 0.15
+     }
+    ],
+    "colour": "#e8f2f7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    22,
+    0.5
+   ],
+   "params": {
+    "radius": 3,
+    "n": 16,
+    "height": 0.6,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    22,
+    0.5
+   ],
+   "params": {
+    "radius": 3,
+    "n": 16,
+    "height": 0.6,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    6,
+    52
+   ],
+   "height": 19,
+   "storeys": 5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#aeab98",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "glassColour": "#2f6fb8",
+    "bay": 3.2,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arch",
+   "footprint": {
+    "rect": [
+     5,
+     2
+    ]
+   },
+   "at": [
+    6,
+    43.5
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f78a8",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b86"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    38,
+    50
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8df",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    22,
+    2,
+    0.5
+   ],
+   "params": {},
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    18,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 16,
+    "height": 0.5,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    18,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 16,
+    "height": 0.5,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    11,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 16,
+    "height": 0.5,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    25,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6,
+    "n": 16,
+    "height": 0.5,
+    "colour": "#bdb4a4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    18,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3,
+    "colour": "#e8f2f7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    18,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3,
+    "colour": "#e8f2f7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    11,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3,
+    "colour": "#e8f2f7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    25,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3,
+    "colour": "#e8f2f7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -14,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "height": 0.2,
+    "colour": "#c9559a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -14,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     50
+    ],
+    "height": 0.2,
+    "colour": "#c9559a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     3
+    ],
+    "height": 7,
+    "colour": "#2f5a2f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-way-104343343",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "continuous clipped hedge wall, 4 small jets, flower strips added; lawn is still a teardrop not aligned to path axis, flower beds are hard strips, office glazing a regular grid"
+ }
+}

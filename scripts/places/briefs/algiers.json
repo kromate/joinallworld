@@ -1,0 +1,1708 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "algiers",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "algiers",
+    "climate": "mediterranean",
+    "vernacular": "Hillside city above the bay known as Algiers the White: the Casbah is a dense maze of whitewashed Ottoman courtyard houses with flat terraces and few windows, below it French-colonial Haussmann-style 5-6 storey apartment blocks in cream and ochre stone with wrought-iron balconies and arcaded ground floors, neo-Moorish public buildings (post office, museums), 1970s-80s concrete slab blocks and towers, and tiled villas on the hills.",
+    "wallColours": [
+      "#f4f1ea",
+      "#e6d8b8",
+      "#d9c29a",
+      "#c9b99a",
+      "#b9aa94",
+      "#a9a59b"
+    ],
+    "roofColours": [
+      "#b5523b",
+      "#8c8a85",
+      "#6f7b82",
+      "#c9bfae"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "limestone",
+      "painted-render",
+      "render",
+      "stone",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "slate",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Horseshoe and pointed arches, glazed tile panels (zellige-style) and carved plaster on neo-Moorish buildings; Ottoman marble columns and octagonal minarets; wrought-iron balconies and arcaded street fronts in the Haussmann quarters; blue-painted doors and shutters; ficus and palm avenues.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Algiers",
+        "what": "Whitewashed city (Algiers the White); Casbah of Ottoman/Andalusian houses; French Haussmann-style apartment blocks, boulevards and Place des Martyrs"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Algiers_Central_Post_Office",
+        "what": "Neo-Moorish (Moorish Revival) public building, 1910"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ketchaoua_Mosque",
+        "what": "Moorish-Byzantine blend, octagonal minarets, marble columns, stone and marble"
+      }
+    ]
+  },
+  "places": {
+    "algiers-airport-algiers-airport": {
+      "venueId": "algiers-airport-algiers-airport",
+      "city": "algiers",
+      "name": "Houari Boumediene Airport",
+      "archetype": "airport-terminal",
+      "subject": "Algiers main airport: the long modern international terminal seen from the landside forecourt, a glass-fronted block with a wide curving roof edge, jet bridges on the airfield side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8dde0",
+          "#5d7384",
+          "#f1efe9"
+        ],
+        "roofColour": "#cfd3d4",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2019 (new terminal); older 1970s Terminal 1 nearby",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Houari_Boumediene_Airport",
+          "what": "Terminal 1 (6M pax/yr, two halls), Terminal 2 opened 2019, former Terminal 3 to be demolished; no appearance described"
+        }
+      ],
+      "notes": "No facts file match (airport has no OSM terminal polygon). Wikipedia gives terminal roles and dates but not the facade, so the glazed contemporary look, grey-white colours and roof curve are inferred from the 2019 terminal as generally photographed. Terminal buildings are far larger than the 120 m scene clamp, so show a section of the main terminal. The old Terminal 1 (1970s) is lower and plainer."
+    },
+    "algiers-bab-ezzouar-shopping-mall": {
+      "venueId": "algiers-bab-ezzouar-shopping-mall",
+      "city": "algiers",
+      "name": "Bab Ezzouar Shopping Mall",
+      "archetype": "mall",
+      "subject": "Bab Ezzouar mall: a big three-level retail box with a pale facade, tinted glass entrance bays and a large surface car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 127,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e5da",
+          "#4a6a7c",
+          "#c7c1b3"
+        ],
+        "roofColour": "#b9b5ac",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "central skylit atrium"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/306260659",
+          "what": "OSM measured data: 130.1 x 127 m bounding box, 15391 m2 area, 3 levels"
+        }
+      ],
+      "notes": "OSM gives a 3-level retail building of about 130 x 127 m (15,400 m2), so size and storeys are measured. Facade look (pale render with tinted glazing) is typical of recent Algerian malls and not verified for this building. Faces the Bab Ezzouar commercial district east of the city."
+    },
+    "algiers-central-post-office": {
+      "venueId": "algiers-central-post-office",
+      "city": "algiers",
+      "name": "Grande Poste d'Alger (Central Post Office)",
+      "archetype": "civic-small",
+      "subject": "The 1910 neo-Moorish Grande Poste on the Casbah slope: a white three-storey block with a ground-floor horseshoe-arch arcade, a small central dome and ornamented windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 53,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "neo-Moorish post office with central dome"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#f1ede2",
+          "#c9b58f",
+          "#e3dcc9"
+        ],
+        "roofColour": "#b9b3a6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor horseshoe arcade along the front"
+        },
+        {
+          "id": "arches",
+          "count": 9,
+          "note": "horseshoe arches"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small central cupola"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "glazed inner hall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1910",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers_Central_Post_Office",
+          "what": "Neo-Moorish style, built 1910, Jules Voinot and Marius Toudoire, largest post office in Algeria, museum since 2015"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/415866",
+          "what": "OSM measured data: 75 x 53.5 m bounding box, 2529 m2 area"
+        }
+      ],
+      "notes": "Style, date and designers are sourced; the white facade, three-bay arcade and small central dome are from general knowledge of the building and not described on the fetched page. OSM footprint 75 x 53 m. Recognisable by the white horseshoe arcade, a recognisable landmark opposite the Tafourah square."
+    },
+    "algiers-clinic": {
+      "venueId": "algiers-clinic",
+      "city": "algiers",
+      "name": "Hôpital Mustapha Pacha",
+      "archetype": "hospital",
+      "subject": "Mustapha Pacha university hospital: a long colonial-era pavilion block around a courtyard, cream render with arcaded galleries and tiled roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6d9b7",
+          "#c9b58f",
+          "#f2ecdc"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor galleries"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "founded 1854; pavilions 1900s-1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/H%C3%B4pital_Mustapha_Pacha",
+          "what": "Wikidata/OSM: hospital founded 1854, large complex (~13 ha)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28919252",
+          "what": "OSM measured data: 485 x 330.3 m bounding box, 130078 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM shows a 130,000 m2 complex (485 x 330 m); individual pavilions are not described in any fetched source. Typed as a colonial pavilion hospital with a cream render and clay-tile hips, typical of the 1854-1930s Mustapha hospital. Show one pavilion U-block."
+    },
+    "algiers-community-notices": {
+      "venueId": "algiers-community-notices",
+      "city": "algiers",
+      "name": "Assemblée populaire nationale (People's National Assembly)",
+      "archetype": "civic-palace",
+      "subject": "The APN seat on Boulevard Zighoud Youcef: a 1930s-51 Art Deco block, former city hall, five storeys with a stepped stone front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 87,
+        "depth_m": 66,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e3d8c0",
+          "#b5a687",
+          "#f1ece0"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "ground-floor piers"
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1,
+          "note": "stepped upper storeys"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1930s design, inaugurated 1951",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Assembl%C3%A9e_populaire_nationale_(Alg%C3%A9rie)",
+          "what": "Art Deco building by the Niermans brothers and Jean-Louis Ferlie, 1930s, inaugurated 1951, city hall until 1962"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/4572537",
+          "what": "OSM measured data: 86.6 x 65.8 m bounding box, 3696 m2 area, 5 levels"
+        }
+      ],
+      "notes": "Style, architects and dates are sourced. The facade colour and exact massing (stepped limestone block) are inferred from the Art Deco label, not described. OSM footprint 87 x 66 m, 5 levels. The famous hemicycle is internal and not modelled."
+    },
+    "algiers-community-voting-game": {
+      "venueId": "algiers-community-voting-game",
+      "city": "algiers",
+      "name": "Martyrs' Square (Place des Martyrs)",
+      "archetype": "park-landscape",
+      "subject": "Place des Martyrs: a wide paved open square at the foot of the Casbah facing the bay, with Haussmann facades on one side and the old city rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "paved square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e1d6bd",
+          "#f4f1ea",
+          "#b9aa94"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "colonial layout 1830s, redesigned 2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "French demolition of the walls and lower old city created Place des Martyrs, sea promenades and boulevards"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1291554593",
+          "what": "OSM measured data: 1280.3 x 888.2 m bounding box, 543772 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM only marks the surrounding Casbah archaeological site (1.3 km across). The square itself is typed as a paved plaza from Wikipedia history; current furniture is unverified. Ketchaoua Mosque stands at its edge. Placeholder-grade."
+    },
+    "algiers-community-workshop": {
+      "venueId": "algiers-community-workshop",
+      "city": "algiers",
+      "name": "La Faculté centrale (University of Algiers 1)",
+      "archetype": "campus-block",
+      "subject": "The colonial-era central faculty building of the University of Algiers: a stately stone block with a columned entrance and courtyard wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc2",
+          "#c4b28c",
+          "#f3eee1"
+        ],
+        "roofColour": "#9d9a93",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "columned entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1880s-1909",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_d%27Alger_Benyoucef_Benkhedda",
+          "what": "University of Algiers 1; Wikidata inception 1909"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/29082561",
+          "what": "OSM measured data: 213.3 x 204.2 m bounding box, 29512 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM complex is 213 x 204 m. Wikidata gives 1909 only. The colonnaded neoclassical look is from general knowledge of the building and unverified by the sources fetched."
+    },
+    "algiers-dounya-parc": {
+      "venueId": "algiers-dounya-parc",
+      "city": "algiers",
+      "name": "Dounya Parc",
+      "archetype": "park-landscape",
+      "subject": "Dounya Parc: a large modern leisure park with lawns, palm-lined paths and a few pavilions, on the western hills",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "park with pavilions"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece7da",
+          "#b5523b",
+          "#9fa7a8"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/399227616",
+          "what": "OSM measured data: 5188.6 x 2676.1 m bounding box, 7886228 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM marks a huge park area (about 790 ha) tagged park with a Wikipedia (ar) link; no source gave what it looks like. Typed generic modern city park from the city style; low."
+    },
+    "algiers-hamma-park": {
+      "venueId": "algiers-hamma-park",
+      "city": "algiers",
+      "name": "Hamma Park (Jardin d'Essai du Hamma)",
+      "archetype": "park-landscape",
+      "subject": "The Hamma botanical garden: a formal terraced garden of tall palm and giant ficus avenues, climbing from the Hamma district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 250,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "botanical garden"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e1d6bd",
+          "#f4f1ea",
+          "#8a8a7f"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main entrance gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1832",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "Hamma district context"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/29300477",
+          "what": "OSM measured data: 251.3 x 154.2 m bounding box, 28828 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM shows a 28,800 m2 park polygon (251 x 154 m) tagged park; the botanical garden dates from 1832 from general knowledge (Jardin d'Essai) and is not confirmed by fetched pages. Recognisable by long tree avenues; keep trees palm-heavy."
+    },
+    "algiers-market-game": {
+      "venueId": "algiers-market-game",
+      "city": "algiers",
+      "name": "Marché Sidi M'Hamed",
+      "archetype": "market-hall",
+      "subject": "Sidi M'Hamed market: a long covered market hall with a pitched roof and wide arched entrances, with street stalls around it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e9e0c8",
+          "#b88a5d",
+          "#f3eee1"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "entrance arches"
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "early 1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/273633418",
+          "what": "OSM measured data: 60.4 x 50.6 m bounding box, 2724 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM marks a marketplace building about 60 x 50 m; nothing describes it. Typed as a colonial covered market with a corrugated sheet roof. Low."
+    },
+    "algiers-martyrs-memorial": {
+      "venueId": "algiers-martyrs-memorial",
+      "city": "algiers",
+      "name": "Maqam Echahid (Martyrs' Memorial)",
+      "archetype": "monument",
+      "subject": "Maqam Echahid: three concrete palm-leaf fins rising from an esplanade to about 92-96 m, with an Islamic-style turret and small dome at mid-height and a bronze soldier at each leaf foot",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 25,
+        "height_m": 92,
+        "roof": "dome",
+        "variant": "three fins"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c2b9a6",
+          "#d0c8b6",
+          "#a9a191"
+        ],
+        "roofColour": "#c9c2b0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "bronze soldiers at the leaf feet"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "6 m dome on 10 m turret at ~14 m height"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 40,
+          "note": "2017 LED lighting"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "esplanade with eternal flame"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1982",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maqam_Echahid",
+          "what": "96 m concrete memorial, three standing palm leaves, turret 10 m dia x 7.6 m with 6 m dome, bronze soldiers, esplanade with eternal flame, crypt and museum below"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1271711154",
+          "what": "OSM measured data: 75.1 x 65 m bounding box, 1874 m2 area, height 92 m"
+        }
+      ],
+      "notes": "Concrete, three-fin form and turret are sourced (Wikipedia 96 m; OSM 92 m, 75 x 65 m esplanade, built 1982, Bachir Yelles). Colour is an estimate: pale grey-beige weathered concrete. The model shows the tower only, with the esplanade as a flat site."
+    },
+    "algiers-meal-stop": {
+      "venueId": "algiers-meal-stop",
+      "city": "algiers",
+      "name": "Cafeteria Telemly",
+      "archetype": "restaurant",
+      "subject": "A cafe on the hillside Telemly street, ground floor of a cream Haussmann-style apartment block with a glazed front and a pavement terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcbf",
+          "#5f8a8e",
+          "#f4efe2"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "wrought-iron balconies above"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "colonial building, modern fit-out",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1172848204",
+          "what": "OSM measured data: 31.1 x 19.9 m bounding box, 452 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM building about 31 x 20 m tagged cafe; no further data. Typed as a cafe in a colonial apartment block from the city style."
+    },
+    "algiers-museum-of-modern-art": {
+      "venueId": "algiers-museum-of-modern-art",
+      "city": "algiers",
+      "name": "Museum of Modern Art of Algiers (MAMA)",
+      "archetype": "museum-theatre",
+      "subject": "MAMA: a five-storey Art Deco department-store-style block on the central boulevard, pale stone with long window bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 63,
+        "depth_m": 62,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e2d7be",
+          "#b9a888",
+          "#f1ece0"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "horizontal window/balcony bands"
+        },
+        {
+          "id": "shopfront",
+          "count": 1,
+          "note": "ground floor glazed entrance"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1930s building; museum 2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/271099555",
+          "what": "OSM measured data: 63 x 62.1 m bounding box, 2495 m2 area"
+        }
+      ],
+      "notes": "Museum founded 2007 (Wikidata). That it occupies the former Galeries de France department store (1930s) is from general knowledge and not confirmed by a fetched page. OSM footprint 63 x 62 m. Form and colours are typed from this and the Art Deco quarter."
+    },
+    "algiers-national-museum-of-antiquities": {
+      "venueId": "algiers-national-museum-of-antiquities",
+      "city": "algiers",
+      "name": "National Museum of Antiquities and Islamic Art",
+      "archetype": "museum-theatre",
+      "subject": "The 1897 museum in the Parc de la Liberté: two Moorish-style pavilions around a mosaic-paved courtyard behind a decorated portico, set in a hillside garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 41,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f1ede2",
+          "#2f6b8a",
+          "#c9b58f"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "Maghrebi-style decorated entrance portico"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "courtyard floored with two Roman mosaics"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "wall panel above vestibule door"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1897",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_des_antiquit%C3%A9s_et_des_arts_islamiques",
+          "what": "Opened 1897 in Parc de la Liberte; two pavilions (antiquities, Islamic arts) around a courtyard with Roman mosaics; portico recalls western Maghreb doors; Ottoman tiles inside"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/346403805",
+          "what": "OSM measured data: 40.9 x 32.6 m bounding box, 1141 m2 area, 4 levels"
+        }
+      ],
+      "notes": "Layout is sourced; OSM footprint 41 x 33 m, 4 levels (modelled as 2 storeys of tall hall height). White walls with green-blue tile accents and clay tile roof are inferred from the neo-Moorish style. Sits on a slope with the Liberty park around it."
+    },
+    "algiers-new-mosque": {
+      "venueId": "algiers-new-mosque",
+      "city": "algiers",
+      "name": "Djamaa el Djedid (The New Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "The 17th-century Ottoman New Mosque at the waterfront: a white cross-plan building with a large central dome, four smaller corner domes and one square-section minaret, with steps down to the sea square",
+      "form": {
+        "footprint": "cross",
+        "width_m": 40,
+        "depth_m": 36,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "multi-dome",
+        "variant": "Ottoman cross-plan with 1 minaret"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#f3f0e8",
+          "#e4dccb",
+          "#b5c5c8"
+        ],
+        "roofColour": "#b9c1c0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "one large central, four smaller"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single 27 m minaret"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arcaded sides"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1660",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "Casbah mosques context"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mosqu%C3%A9e_Djama%C3%A2_el-Djedid",
+          "what": "general: Djamaa el-Djedid, Ottoman, 1660 (via Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/16270848",
+          "what": "OSM measured data: 51.9 x 27.9 m bounding box, 1389 m2 area, 5 levels, colour white"
+        }
+      ],
+      "notes": "OSM tags: mosque, white colour, 5 levels; Wikidata: Djamaa al-Djedid, 1660, Ottoman architecture; footprint about 52 x 28 m. The cross plan with a central dome, corner domes and a single minaret is from general knowledge. Sits next to Ketchaoua; make the two clearly different: this one has ONE minaret, white and ~40 m wide, no tall portico."
+    },
+    "algiers-notre-dame-d-afrique": {
+      "venueId": "algiers-notre-dame-d-afrique",
+      "city": "algiers",
+      "name": "Notre-Dame d'Afrique",
+      "archetype": "church-classical",
+      "subject": "The Neo-Byzantine basilica on its cliff above the bay: a pale stone church with a large central dome, a front tower and horseshoe-arched openings",
+      "form": {
+        "footprint": "cross",
+        "width_m": 54,
+        "depth_m": 33,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "dome",
+        "variant": "neo-Byzantine basilica on a cliff"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#d8cdb2",
+          "#bfae8a",
+          "#efe9d9"
+        ],
+        "roofColour": "#7d8a86",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 46,
+          "note": "46 stained glass windows"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1872",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_Africa",
+          "what": "Neo-Byzantine, on a ~124 m cliff above the bay, 46 stained glass windows, choir faces southeast"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/26614341",
+          "what": "OSM measured data: 54.3 x 32.8 m bounding box, 988 m2 area"
+        }
+      ],
+      "notes": "Wikipedia confirms the Neo-Byzantine style, cliff site (124 m) and windows; Wikidata: Jean-Eugene Fromageau, 1872. OSM footprint 54 x 33 m. Dome colour (grey-green) and stone tone are estimates. Place on a plinth/cliff edge looking north to the sea."
+    },
+    "algiers-quiet-reflection": {
+      "venueId": "algiers-quiet-reflection",
+      "city": "algiers",
+      "name": "Ketchaoua Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Ketchaoua Mosque at Place des Martyrs: a white Moorish-Byzantine mosque with a 23-step stair, a marble-columned portico, a large central dome and two octagonal minarets flanking the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 61,
+        "depth_m": 36,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "multi-dome",
+        "variant": "two-minaret Ottoman mosque with big portico"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#f1ede4",
+          "#cfc4a8",
+          "#2a2a2a"
+        ],
+        "roofColour": "#b9c1c0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 23,
+          "note": "23 steps up to the portico"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "4 black-veined marble columns"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "octagonal, flanking the entrance"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome with smaller semi-domes"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1612 (rebuilt 1850s, restored 2018)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ketchaoua_Mosque",
+          "what": "23 steps, portico with four black-veined marble columns, two octagonal minarets, Moorish plasterwork, stone and marble, restored to original Ottoman plan and reopened 2018"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/267210976",
+          "what": "OSM measured data: 60.9 x 35.7 m bounding box, 1466 m2 area"
+        }
+      ],
+      "notes": "Entrance, minarets, steps and materials are sourced; OSM footprint 61 x 36 m. The dome layout (central dome with lower domes) and white colour are from photos in general knowledge. Distinct from the New Mosque: two octagonal minarets plus a tall stepped portico."
+    },
+    "algiers-recreation": {
+      "venueId": "algiers-recreation",
+      "city": "algiers",
+      "name": "Parc de la Liberté (Liberty Garden)",
+      "archetype": "park-landscape",
+      "subject": "The Parc de la Liberté: a hillside city garden of palms and old shade trees with winding paths and balustraded terraces beside the museum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 173,
+        "depth_m": 157,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "hillside city park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e1d6bd",
+          "#f4f1ea",
+          "#8a8a7f"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1890s garden (parc de Galland)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_des_antiquit%C3%A9s_et_des_arts_islamiques",
+          "what": "Parc de la Liberte (formerly parc de Galland) hosts the Antiquities museum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28962727",
+          "what": "OSM measured data: 172.6 x 157.4 m bounding box, 17082 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM park polygon 17,000 m2 (173 x 157 m), also named Liberty Garden in Wikidata. Contents are generic; low."
+    },
+    "algiers-riadh-el-feth": {
+      "venueId": "algiers-riadh-el-feth",
+      "city": "algiers",
+      "name": "Riadh El Feth",
+      "archetype": "mall",
+      "subject": "Riadh El Feth cultural and shopping complex: a terraced five-level concrete complex of long arched galleries built into the hillside beneath the Martyrs' Memorial",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 25,
+        "roof": "barrel",
+        "variant": "self-supporting concrete vault",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cdbfa4",
+          "#e6dcc2",
+          "#a9a191"
+        ],
+        "roofColour": "#b4aa98",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 20,
+          "note": "long vaulted arcades"
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1982-1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Riadh_El_Feth",
+          "what": "Built on five levels in a self-supporting vault, in the Bois des Arcades above the ravin de la femme sauvage, built from 1982, inaugurated 1985; includes Ibn Zeydoun hall and a children's theatre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1271731943",
+          "what": "OSM measured data: 33.8 x 18 m bounding box, 263 m2 area"
+        }
+      ],
+      "notes": "Five levels, vault structure and dates are sourced. The OSM nearest building (34 x 18 m) is a small unrelated block, so the footprint is estimated. Colours (beige concrete and sandy render) are estimated. Nearby Martyrs Memorial is a separate venue."
+    },
+    "algiers-sacred-heart-cathedral": {
+      "venueId": "algiers-sacred-heart-cathedral",
+      "city": "algiers",
+      "name": "Cathedral of the Sacred Heart",
+      "archetype": "church-modern",
+      "subject": "The modernist Sacred Heart cathedral: a bare concrete nave about 52 x 35 m under a slender 35 m concrete dome on eight pillars, with long stained-glass bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 35,
+        "roof": "dome",
+        "variant": "concrete modernist cathedral"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#bdb5a5",
+          "#a39b8b",
+          "#d0c8b8"
+        ],
+        "roofColour": "#b3ab9a",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "35 m concrete dome"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "long glazed bands"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "ribbed concrete"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1956",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_du_Sacr%C3%A9-C%C5%93ur_d%27Alger",
+          "what": "Concrete, dome ~35 m above nave floor on eight pillars, nave 52 x 35 m, stained glass panels; Wikidata: Paul Herbe and Jean Le Couteur, Romanesque/Brutalist"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/263638059",
+          "what": "OSM measured data: 52.7 x 34.4 m bounding box, 1458 m2 area"
+        }
+      ],
+      "notes": "Size and structure are sourced and match OSM (52.7 x 34.4 m). The exterior is raw weathered concrete; colour is an estimate. Wikipedia does not describe the facade or towers. Wikidata also tags Romanesque, ignored."
+    },
+    "algiers-said-touati-shopping-centre": {
+      "venueId": "algiers-said-touati-shopping-centre",
+      "city": "algiers",
+      "name": "Said Touati Shopping Center",
+      "archetype": "mall",
+      "subject": "A small mid-rise shopping centre on a city street, pale render with glazed shopfronts and a rooftop sign band",
+      "form": {
+        "footprint": "rect",
+        "width_m": 51,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2dcce",
+          "#4d6b78",
+          "#b9b3a6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1312431098",
+          "what": "OSM measured data: 50.9 x 29.8 m bounding box, 1518 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM gives only a building about 51 x 30 m (1,500 m2). Nothing found describes it. Storeys and look are typed guesses."
+    },
+    "algiers-transit": {
+      "venueId": "algiers-transit",
+      "city": "algiers",
+      "name": "Tafourah (Grande Poste station and bus hub)",
+      "archetype": "transport-station",
+      "subject": "The Tafourah transport hub at the Grande Poste: a metro entrance and bus-interchange block with a flat canopy and bays along the street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c3b6",
+          "#4d6b78",
+          "#e3ddcd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s metro, 1970s bus terminal",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers_Central_Post_Office",
+          "what": "Grande Poste is the adjacent landmark; the hub is the transport interchange below it"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1461344746",
+          "what": "OSM measured data: 60.3 x 35.5 m bounding box, 1896 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM nearest building only (60 x 35 m). The station is mostly underground in reality; typed as a surface interchange. Low."
+    },
+    "algiers-usthb": {
+      "venueId": "algiers-usthb",
+      "city": "algiers",
+      "name": "USTHB (University of Sciences and Technology Houari Boumediene)",
+      "archetype": "campus-block",
+      "subject": "USTHB at Bab Ezzouar: slab-style 1970s teaching blocks with ribbon windows around wide concrete walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#d8c9a8",
+          "#a8a39a"
+        ],
+        "roofColour": "#a29c8f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "covered concrete walkway"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1974 (university)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1239253089",
+          "what": "OSM measured data: 21.9 x 21.6 m bounding box, 376 m2 area, height 9 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "what": "city style only (whitewash, Haussmann blocks, neo-Moorish public buildings); no building-specific description found"
+        }
+      ],
+      "notes": "OSM matched only a 22 x 22 m, 9 m event hall by distance; the campus is large and unmeasured. Era from general knowledge of the university (1970s). Typed from city style."
+    }
+  }
+}

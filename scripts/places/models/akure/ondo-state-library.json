@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "ondo-state-library",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/837679742",
+   "used": "real footprint (about 71 x 98 m rotated block, name-quality match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/akure.json",
+   "used": "two storeys, ribbon windows, front canopy, lawn forecourt with flagpole, cream render with green accents. The Commons P18 photo shows the FUTA Albert Ilemobade Library 2 km away, a different building, so it was not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7fa58f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a3a",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     75,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this library; real outline with typed facade"
+ }
+}

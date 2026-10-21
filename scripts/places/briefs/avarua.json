@@ -1,0 +1,1540 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "avarua",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "avarua",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-rise Pacific island town: single- and two-storey painted concrete-block and timber buildings with hip or gable roofs of corrugated metal in red, green and galvanised grey; whitewashed LMS-era mission churches and college buildings; open verandahs and louvres; coastal ring road lined with palms, hibiscus and frangipani on grass verges, lagoon and forested volcanic hills behind.",
+    "wallColours": [
+      "#f4f1e8",
+      "#e6d9b5",
+      "#9ec9c4",
+      "#f2c9a0",
+      "#d9d2c3",
+      "#7fb3a0"
+    ],
+    "roofColours": [
+      "#a3463a",
+      "#3f7d4e",
+      "#8c9296",
+      "#2f6fb0"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "timber",
+      "render",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Whitewashed church walls with arched windows and small belfries; timber verandahs with simple railings; louvred windows; woven-pandanus and thatch (kikau) roofs at tourist huts; painted shopfront signs in tropical teal, coral and blue; flagpoles in front of government buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Avarua",
+        "what": "LMS missionaries made Avarua their headquarters from 1823; tropical rainforest climate; commercial and government centre"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Rarotonga",
+        "what": "palm-studded beaches, forested interior hills, Ara Tapu coastal ring road, churches"
+      }
+    ]
+  },
+  "places": {
+    "avarua-airport-avarua-airport": {
+      "venueId": "avarua-airport-avarua-airport",
+      "city": "avarua",
+      "name": "Rarotonga International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2010 international terminal at Rarotonga seen from the car park: a long, low, wide-eaved building with an irregular stepped plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 168,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe9dc",
+          "#4f8f9b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "deep open-sided front canopy over the drop-off (typical of tropical terminals; not photo-verified)"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga_International_Airport",
+          "what": "terminal opened 22 June 2010 after US$8.5M expansion; 2,328 m concrete runway"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/431482779",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q954472",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Terminal footprint (168 x 50 m, irregular outline, opened 21 June 2010 after an US$8.5M expansion) is measured. Appearance (wide-eaved low pitched roof, pale walls, teal accent) is inferred from the tropical Pacific airport type; no source describes the facade. Runway 08/26 is 2,328 m, so the setting is open flat land with palms."
+    },
+    "avarua-clinic": {
+      "venueId": "avarua-clinic",
+      "city": "avarua",
+      "name": "Rarotonga Hospital",
+      "archetype": "hospital",
+      "subject": "Rarotonga Hospital, the island's single public hospital: a cluster of low pale blocks with covered walkways under green and grey metal roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 44,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eeeadd",
+          "#4f8a6b",
+          "#ffffff"
+        ],
+        "roofColour": "#6f8f7a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered entrance/ambulance porch"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/251276054",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q99521541",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Identity confirmed by OSM/Wikidata (Q99521541). Footprint measured at 44 x 28 m with an irregular multi-wing outline. Look (pale painted blocks, sheet roofs) typed from the Cook Islands style; no description found."
+    },
+    "avarua-community-notices": {
+      "venueId": "avarua-community-notices",
+      "city": "avarua",
+      "name": "Infrastructure Cook Islands",
+      "archetype": "office-low",
+      "subject": "A long single-purpose government office block near Avatiu, white walls and a low corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#9aa6a8",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/806488940",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "Unnamed OSM building (nearest match, 55 x 15 m, rotated about 103 degrees) at the venue point; the agency is a government department near Avatiu Harbour. Form typed from the footprint and city style; nothing found describing it."
+    },
+    "avarua-community-voting-game": {
+      "venueId": "avarua-community-voting-game",
+      "city": "avarua",
+      "name": "Parliament of the Cook Islands",
+      "archetype": "civic-palace",
+      "subject": "The Parliament building in Avarua: a long low government hall with a verandah and flagpoles in front, set among lawns and palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 54,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3efe3",
+          "#2f6f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#b1473b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered entrance veranda"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_the_Cook_Islands",
+          "what": "Parliament meets in Avarua; no building description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/207000165",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7138950",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM footprint (about 54 x 23 m, irregular, next to the airport) and Wikidata (legislature, inception 1965 self-government) identify the place. Wikipedia confirms the Parliament meets in Avarua but does not describe the building, so facade colours and the hip roof are typical Pacific civic style, not photo-verified."
+    },
+    "avarua-community-workshop": {
+      "venueId": "avarua-community-workshop",
+      "city": "avarua",
+      "name": "Takamoa Theological College",
+      "archetype": "campus-block",
+      "subject": "Takamoa Theological College, the Cook Islands' mission college: low whitewashed classroom and hall blocks around a green quad inland of Avarua",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "mission-college"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1e6",
+          "#7aa7c7",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small church/chapel belfry in the grounds"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1837 founding; present buildings mixed",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/207000207",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7677155",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Takamoa is a Congregational (LMS/CICC) theological college; the campus polygon is 199 x 103 m (OSM, Wikidata Q7677155). Founding year and LMS link: the Avarua article records LMS missionaries from 1823. Only a portion is shown (one U-shaped block 60 x 24 m); layout and colours are typed from mission-station style."
+    },
+    "avarua-market-game": {
+      "venueId": "avarua-market-game",
+      "city": "avarua",
+      "name": "Muri Night Market",
+      "archetype": "market-open",
+      "subject": "The open-air Muri Night Market: a row of food stalls and trestle tables under a tin shed with string lights beside the lagoon road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b794",
+          "#d95b3c",
+          "#f3efe0"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/800800257",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "Nearest OSM building (17 x 8 m) used for the shed footprint; the Muri Night Market is a nightly food-stall market by Muri Lagoon. Nothing found describing the shed itself."
+    },
+    "avarua-meal-stop": {
+      "venueId": "avarua-meal-stop",
+      "city": "avarua",
+      "name": "Cafe Puretu",
+      "archetype": "restaurant",
+      "subject": "A small open-sided beachside cafe with a low gable roof and a few outdoor tables under a palm",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e7d8b8",
+          "#3f9a98",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/391487432",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM footprint 13 x 10 m contains the venue point; name only, no description found. Typed from the Cook Islands style."
+    },
+    "avarua-osm-node-12237139801": {
+      "venueId": "avarua-osm-node-12237139801",
+      "city": "avarua",
+      "name": "The Circles Cafe",
+      "archetype": "restaurant",
+      "subject": "A small roadside cafe on the Ara Tapu ring road, single storey with a veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e6cf",
+          "#c9533d",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7d4e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/391492176",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 15 x 10 m contains the point; no description found. Typed from the city style; coloured differently from Cafe Puretu."
+    },
+    "avarua-osm-node-2100754933": {
+      "venueId": "avarua-osm-node-2100754933",
+      "city": "avarua",
+      "name": "Whale and Wildlife Centre",
+      "archetype": "museum-theatre",
+      "subject": "The Whale and Wildlife Centre in Avarua, a small exhibit and shop building with a lean-to roof and timber verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9f0ee",
+          "#2c7fb8",
+          "#ffffff"
+        ],
+        "roofColour": "#6a7c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "whale-themed sculpture or model outside (assumed)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1557691904",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "Nearest OSM building 20 x 9 m; nothing found about the building's look. Typed from the city style with a marine-blue accent."
+    },
+    "avarua-osm-node-2111683565": {
+      "venueId": "avarua-osm-node-2111683565",
+      "city": "avarua",
+      "name": "Clear View",
+      "archetype": "park-landscape",
+      "subject": "A roadside hillside lookout over the lagoon with a rail fence and a small viewing platform among palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a7a5a",
+          "#6d6f68",
+          "#c9bfa5"
+        ],
+        "roofColour": "#8a7a5a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing platform"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        }
+      ],
+      "notes": "No OSM building and no description found for this viewpoint; generic hillside lookout typed from the place type."
+    },
+    "avarua-osm-node-2148100832": {
+      "venueId": "avarua-osm-node-2148100832",
+      "city": "avarua",
+      "name": "Good View of Needle",
+      "archetype": "park-landscape",
+      "subject": "A roadside lookout with a railed platform facing Te Rua Manga, the Needle, the pointed volcanic peak in the island's interior",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a7a5a",
+          "#6d6f68",
+          "#c9bfa5"
+        ],
+        "roofColour": "#8a7a5a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "railed viewing platform"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        }
+      ],
+      "notes": "No OSM building and no description found. The Needle (Te Rua Manga) is a real pinnacle but its exact bearing from this point was not verified, so the model is only a lookout platform."
+    },
+    "avarua-osm-node-2187931298": {
+      "venueId": "avarua-osm-node-2187931298",
+      "city": "avarua",
+      "name": "Kaena",
+      "archetype": "restaurant",
+      "subject": "A single-storey restaurant on the south coast road with an open verandah and a green corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e3c4",
+          "#d9763d",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7d4e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/391839331",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 14 x 13 m contains the point; name only, no description found."
+    },
+    "avarua-osm-node-6324434485": {
+      "venueId": "avarua-osm-node-6324434485",
+      "city": "avarua",
+      "name": "National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Te Are Karioi Nui, the national auditorium and culture centre in Avarua: a broad, low civic complex of hip-roofed halls around forecourts, home of the National Museum and Library",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee8d8",
+          "#8a5a3c",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered entrance walkway"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/543914673",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 'Cook Islands National Auditorum, Te Are Karioi Nui' (182 x 73 m, 5,375 m2, building=public) contains the point. Avarua article: the Sir Geoffrey Henry National Culture Centre houses the National Library and National Museum. The clamp shows 110 m of the 182 m complex. Colours typed from the Cook Islands style."
+    },
+    "avarua-osm-way-1079320783": {
+      "venueId": "avarua-osm-way-1079320783",
+      "city": "avarua",
+      "name": "Cook Islands Tertiary and Training Institute Faculty of Hospitality and Services",
+      "archetype": "campus-block",
+      "subject": "A compact training-college block for hospitality teaching, two storeys with a teaching kitchen wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 64,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eadb",
+          "#5a8fb3",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7d4e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1079320783",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM college polygon 64 x 55 m; no building description found; typed from the city style."
+    },
+    "avarua-osm-way-1079412410": {
+      "venueId": "avarua-osm-way-1079412410",
+      "city": "avarua",
+      "name": "Muri Lagoon",
+      "archetype": "park-landscape",
+      "subject": "Muri Lagoon: a shallow turquoise lagoon edged by pale sand, palms and low beach cottages, with a motu on the reef beyond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#efe6d0",
+          "#4fb3c4",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open beach hut"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "small jetty"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1079412410",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q108044396",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Muri Lagoon (Wikidata Q108044396, OSM attraction, 2.3 km long) is on the south-east coast of Rarotonga; Rarotonga article describes palm-studded white sandy beaches and forested hills. Only the beach/lagoon edge scene is shown, with generic huts."
+    },
+    "avarua-osm-way-1081629061": {
+      "venueId": "avarua-osm-way-1081629061",
+      "city": "avarua",
+      "name": "Nikao Social Centre",
+      "archetype": "park-landscape",
+      "subject": "Nikao Social Centre: a long grassed sports and community field with a simple hall and a few palms by the coast road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee6d2",
+          "#6c8fbf",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "social hall at the field edge"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1081629061",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 458 x 45 m (only 120 m shown). No description found; hall and field typed from the name."
+    },
+    "avarua-osm-way-196945531": {
+      "venueId": "avarua-osm-way-196945531",
+      "city": "avarua",
+      "name": "Punanga Nui Market",
+      "archetype": "market-open",
+      "subject": "Punanga Nui, Avarua's Saturday market: rows of canopy-covered stalls and a long open shed beside the harbour road, with palms behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6cfbf",
+          "#e0a23a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f8f9b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/196945531",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM amenity=marketplace polygon 369 x 120 m near Avarua harbour; shown clipped to 120 m. It is the island's main produce and craft market; the stall/awning layout is typed (no photo description fetched)."
+    },
+    "avarua-osm-way-201214783": {
+      "venueId": "avarua-osm-way-201214783",
+      "city": "avarua",
+      "name": "BCI Stadium",
+      "archetype": "stadium",
+      "subject": "The National Stadium (Avarua Tereora) seen from the road: a grassed oval field with a single covered grandstand and light towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b3",
+          "#2f6fb0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Stadium_(Cook_Islands)",
+          "what": "capacity 5,000, grass, built 1984/85, 1986 Pacific Games"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/201214783",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q790237",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "National Stadium (Avarua Tereora), capacity 5,000, grass pitch, built 1984/85 and upgraded for the 1986 Pacific Games (Wikipedia). OSM stadium polygon is 176 x 102 m. Stand count and roof inferred; the 5,000 capacity implies low open stands."
+    },
+    "avarua-osm-way-593816781": {
+      "venueId": "avarua-osm-way-593816781",
+      "city": "avarua",
+      "name": "CTIC Building Centre",
+      "archetype": "market-hall",
+      "subject": "A large trade store and building-supplies warehouse with a wide gable shed roof and a covered trade yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 72,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#cfd3d4",
+          "#c8412f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/593816781",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building (building=commercial) 95 x 72 m. Described as a building-supplies centre; no photo description found, form typed as a warehouse shed."
+    },
+    "avarua-osm-way-598519609": {
+      "venueId": "avarua-osm-way-598519609",
+      "city": "avarua",
+      "name": "University of Southern Pacific",
+      "archetype": "campus-block",
+      "subject": "The USP Cook Islands campus in Avarua: a two-storey teaching block with louvred windows and a green roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#3f9a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7d4e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/598519609",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM university building 38 x 35 m. Appearance is typed from the style; no description found."
+    },
+    "avarua-quiet-reflection": {
+      "venueId": "avarua-quiet-reflection",
+      "city": "avarua",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "A small whitewashed chapel in a green yard, a placeholder quiet space",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f6f3ea",
+          "#7aa7c7",
+          "#ffffff"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small gable belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        }
+      ],
+      "notes": "Game placeholder (no real place); the point lies inside the Takamoa college grounds. Typed from whitewashed CICC mission chapel style."
+    },
+    "avarua-recreation": {
+      "venueId": "avarua-recreation",
+      "city": "avarua",
+      "name": "Raemaru Park",
+      "archetype": "park-landscape",
+      "subject": "A grassy hillside park with a picnic pavilion and a flagpole among broadleaf trees and palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a7a5a",
+          "#6d6f68",
+          "#c9bfa5"
+        ],
+        "roofColour": "#a3463a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "picnic shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rarotonga",
+          "what": "Rarotonga: palm-fringed beaches, forested hills, Ara Tapu coastal ring road, churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/901216183",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 179 x 118 m (name Raemaru Park, western Rarotonga, inland from the coast road); no description found, typed generically."
+    },
+    "avarua-transit": {
+      "venueId": "avarua-transit",
+      "city": "avarua",
+      "name": "Cook's Corner Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "A small bus stop and shelter in central Avarua beside the ring road, with a corrugated roof over benches and a ticket kiosk",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#eee8d8",
+          "#2f6fb0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Avarua",
+          "what": "Avarua: LMS missionaries 1823, tropical climate, main commercial/government centre, airport, National Culture Centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1079371490",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "Nearest OSM building 26 x 23 m; Rarotonga buses circle the Ara Tapu ring road (Avarua article), so the terminal is a modest stop, not a big station. Look typed."
+    }
+  }
+}

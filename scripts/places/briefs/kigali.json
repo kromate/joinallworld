@@ -1,0 +1,1678 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kigali",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kigali",
+    "climate": "highland",
+    "vernacular": "Hilltop capital (about 1,500 m) of steep ridges and valleys. Ordinary buildings are 1-2 storey houses of rendered brick or block in cream, ochre and terracotta paint with red/brown corrugated-iron or clay-tile hip roofs; compounds are walled; Nyamirambo is dense and colourful; the centre (Nyarugenge, Kiyovu, Kimihurura) has glass-and-render offices and hotels of 5-20 storeys, newly built after 1994 under the 2013 masterplan; roads are red-earth edged, with eucalyptus, jacaranda and banana trees.",
+    "wallColours": [
+      "#efe8d8",
+      "#d9b98b",
+      "#c97f58",
+      "#a8553a",
+      "#8e8a82",
+      "#f6f3ea",
+      "#7fa08a"
+    ],
+    "roofColours": [
+      "#a0462f",
+      "#7a3a2b",
+      "#6e7378",
+      "#3f6b52"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "glass-curtain",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Imigongo geometric relief (black, red and white triangles, spirals and zig-zags) used on facades, fences, interiors and murals; woven-basket (agaseke) and conical-hut forms echoed in modern dome and roof designs; coloured painted gate-posts and bold wall murals in Nyamirambo; whitewashed colonial verandas.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kigali",
+        "what": "Kigali built on ridges and valleys; CBD on Nyarugenge hill with 20-storey City Tower; Nyamirambo (1920s) denser older district; Kandt House 1908 first European-style house; post-1994 rebuilding with modern offices; 2013 masterplan; tropical savanna climate cooled by altitude (15-27 C)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kigali_Convention_Centre",
+        "what": "modern landmark by Roland Dieterle 2009-2016, hotel, conference dome, lit at night"
+      }
+    ]
+  },
+  "places": {
+    "kigali-airport-kigali-airport": {
+      "venueId": "kigali-airport-kigali-airport",
+      "city": "kigali",
+      "name": "Kigali International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Kigali International Airport's two-storey main terminal seen from the forecourt, with its older single-storey block (now VIP) beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee9de",
+          "#3b6aa0",
+          "#d3d6d8"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "kerb canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s, extended 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kigali_International_Airport",
+          "what": "main terminal is two-storey with RwandAir offices on the top floor; replaced an earlier single-storey building now used as VIP terminal; arrivals terminal added 2019; handles six small/medium aircraft"
+        }
+      ],
+      "notes": "Storeys, VIP annex and the 2019 arrivals extension are sourced; colours and canopy are typed. Small airport: one modest terminal with a tower, not a mega-terminal."
+    },
+    "kigali-amahoro-stadium": {
+      "venueId": "kigali-amahoro-stadium",
+      "city": "kigali",
+      "name": "Amahoro National Stadium",
+      "archetype": "stadium",
+      "subject": "Rwanda's national stadium after the 2022-24 rebuild: a closed oval bowl of 45,508 seats under a continuous roof ring",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 38,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d8d9",
+          "#2f6b4f",
+          "#f5f5f2"
+        ],
+        "roofColour": "#cfd3d6",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "continuous roof over the stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1989, rebuilt 2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Amahoro_Stadium",
+          "what": "capacity 45,508, largest in Rwanda; built by CCECC 1984-89; renovated 2011-16 and 2022-24 by SUMMA ($165m)"
+        }
+      ],
+      "notes": "Capacity and renovation history sourced. A full roof ring is typed from the rebuilt design and the 'roof' field was not covered by the source, so shape detail is unconfirmed. Scale clamped to 120 m by the generator."
+    },
+    "kigali-bk-arena": {
+      "venueId": "kigali-bk-arena",
+      "city": "kigali",
+      "name": "BK Arena",
+      "archetype": "stadium",
+      "subject": "BK Arena, Rwanda's 10,000-seat indoor arena: a wide rounded drum clad in white metal panels with blue lighting bands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 32,
+        "roof": "curved",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7eaed",
+          "#1f5fa8",
+          "#9aa6b0"
+        ],
+        "roofColour": "#d4d9de",
+        "windows": "curtain",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "blue lighting bands (no logos)"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/BK_Arena",
+          "what": "multi-purpose indoor arena, capacity 10,000; built by SUMMA, groundbreaking Jan 2019, opened 9 Aug 2019; 28,750 m2 construction area"
+        }
+      ],
+      "notes": "Capacity/dates sourced; cladding colours and curved roof are typed from the modern-arena type. Indoor arena: no open bowl and no floodlight masts."
+    },
+    "kigali-campaign-against-genocide-museum": {
+      "venueId": "kigali-campaign-against-genocide-museum",
+      "city": "kigali",
+      "name": "Campaign Against Genocide Museum",
+      "archetype": "museum-theatre",
+      "subject": "A small museum building within the Parliament compound in Kimihurura, a two-storey rendered block with an open veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe3d0",
+          "#8a8f93",
+          "#faf7ee"
+        ],
+        "roofColour": "#7a3a2b",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Rwanda",
+          "what": "Parliament sits in Kimihurura; museum shares the compound"
+        }
+      ],
+      "notes": "The museum sits in the CND/Parliament compound where RPF troops were stationed in 1994. No building description was found; typed from the type."
+    },
+    "kigali-centre-culturel-islamique": {
+      "venueId": "kigali-centre-culturel-islamique",
+      "city": "kigali",
+      "name": "Centre Culturel Islamique",
+      "archetype": "mosque-domed",
+      "subject": "A Nyamirambo mosque and cultural centre: white walls with green trim, a central dome and one tall minaret above a dense neighbourhood",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f3f0e6",
+          "#2f7a52",
+          "#cdbf9a"
+        ],
+        "roofColour": "#b9bcbd",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single tall minaret ~30 m"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nyamirambo",
+          "what": "Nyamirambo has many mosques; Green Mosque (Masjid al-Fatah) is the oldest, 1930s"
+        }
+      ],
+      "notes": "Nyamirambo is the Muslim quarter and has several mosques; no description was found for this centre. Typed from city style; the Green Mosque hint suggests green trim."
+    },
+    "kigali-clinic": {
+      "venueId": "kigali-clinic",
+      "city": "kigali",
+      "name": "King Faisal Hospital Kigali",
+      "archetype": "hospital",
+      "subject": "Rwanda's major referral hospital in Kacyiru: several connected 3-4 storey wings of cream render with covered ambulance entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 55,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe7d3",
+          "#2f6c8c",
+          "#fbf8ef"
+        ],
+        "roofColour": "#8a4a34",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s, expanded 2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A well-known referral hospital but no exterior description was found; typed from hospital type and Kigali style (cream render, tile-coloured hip roofs)."
+    },
+    "kigali-college-of-science-and-technology": {
+      "venueId": "kigali-college-of-science-and-technology",
+      "city": "kigali",
+      "name": "College of Science and Technology",
+      "archetype": "campus-block",
+      "subject": "University of Rwanda's CST campus in Nyarugenge: 3-4 storey teaching blocks in light render with red roof trim around sloped lawns",
+      "form": {
+        "footprint": "U",
+        "width_m": 95,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#ebe2cc",
+          "#a8553a",
+          "#f6f1e4"
+        ],
+        "roofColour": "#9a4630",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from campus type and Kigali style."
+    },
+    "kigali-community-notices": {
+      "venueId": "kigali-community-notices",
+      "city": "kigali",
+      "name": "Kigali City Hall",
+      "archetype": "civic-palace",
+      "subject": "Kigali City Hall in Nyarugenge: a seven-storey rendered and glazed administrative block with a recessed entrance and flag line",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd8de",
+          "#e9e3d3",
+          "#7d8a92"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Exact appearance not found. Typed from city-hall type and the glass-and-render CBD style."
+    },
+    "kigali-community-voting-game": {
+      "venueId": "kigali-community-voting-game",
+      "city": "kigali",
+      "name": "Place de l'Unité Nationale",
+      "archetype": "park-landscape",
+      "subject": "A central paved plaza with flagpoles, a low central monument and clipped trees, fronted by city-centre buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 85,
+        "depth_m": 65,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d9d3c3",
+          "#8a8f93",
+          "#efe9da"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No layout description found; typed civic plaza."
+    },
+    "kigali-community-workshop": {
+      "venueId": "kigali-community-workshop",
+      "city": "kigali",
+      "name": "Adventist University of Central Africa",
+      "archetype": "campus-block",
+      "subject": "AUCA's Masoro campus: a hillside cluster of 2-3 storey red-roofed teaching blocks and a church-style hall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#efe5cf",
+          "#b0573a",
+          "#f7f3e8"
+        ],
+        "roofColour": "#9a3f2c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from campus type and Kigali hillside style."
+    },
+    "kigali-convention-centre": {
+      "venueId": "kigali-convention-centre",
+      "city": "kigali",
+      "name": "Kigali Convention Centre",
+      "archetype": "museum-theatre",
+      "subject": "The Kigali Convention Centre: a large glazed lattice dome (2,600-seat hall) beside a six-storey curved Radisson Blu hotel wing, glowing at night",
+      "form": {
+        "footprint": "round",
+        "width_m": 110,
+        "depth_m": 95,
+        "storeys": 5,
+        "height_m": 38,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d2dbe1",
+          "#9aa8b2",
+          "#f3f5f6"
+        ],
+        "roofColour": "#c5ccd1",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "lattice dome over the conference hall"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "night illumination"
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kigali_Convention_Centre",
+          "what": "designed by Roland Dieterle; built 2009-2016; 5-star hotel (six floors, 292 rooms), 2,600-seat conference centre, IT park, museum; building 'changes light in the night'"
+        }
+      ],
+      "notes": "Architect, dates, hotel height and night lighting are sourced. The dome form is the well-known identity; its exact diameter and latticed skin are estimated. Hotel wing as the wings=1 curved mass."
+    },
+    "kigali-genocide-memorial": {
+      "venueId": "kigali-genocide-memorial",
+      "city": "kigali",
+      "name": "Kigali Genocide Memorial",
+      "archetype": "museum-theatre",
+      "subject": "The memorial centre at Gisozi: a low two-storey cream-and-glass exhibition building above terraced memorial gardens and long grey mass-grave slabs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee8d8",
+          "#6f8a6a",
+          "#8e9498"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 3,
+          "note": "memorial garden terraces"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "water feature in gardens"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kigali_Genocide_Memorial",
+          "what": "building begun by Kigali City Council in 2000; exhibitions upstairs; Memorial Gardens, Education Centre and Documentation Centre; mass graves hold up to 250,000 victims"
+        }
+      ],
+      "notes": "A solemn site: render it respectfully, with no imagery of victims. Layout (exhibition building, gardens, grave slabs) sourced; materials are typed."
+    },
+    "kigali-kandt-house-museum": {
+      "venueId": "kigali-kandt-house-museum",
+      "city": "kigali",
+      "name": "Kandt House Museum",
+      "archetype": "manor",
+      "subject": "The small 1908 Kandt house: a single-storey European-style bungalow with a deep veranda and hipped iron roof among lawn and frangipani",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "brick",
+        "colours": [
+          "#f1ebdd",
+          "#8d5a3c",
+          "#6c4b33"
+        ],
+        "roofColour": "#8a4a34",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1908",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kandt_House_Museum",
+          "what": "built 1908, only remaining historic building from 1908, first European-style house in Kigali, renovated 2004 as a natural history museum; has a driveway and outhouse"
+        }
+      ],
+      "notes": "Date, use and outhouse are sourced; wall/roof colours and veranda are typed from the German-colonial bungalow type, not confirmed."
+    },
+    "kigali-kigali-golf-course": {
+      "venueId": "kigali-kigali-golf-course",
+      "city": "kigali",
+      "name": "Parcours de Golf de Kigali",
+      "archetype": "park-landscape",
+      "subject": "A hillside golf course in Nyarutarama with tree-lined fairways, bunkers and a low clubhouse pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#7d6a4a",
+          "#f7f2e4"
+        ],
+        "roofColour": "#8a4a34",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "clubhouse"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Course layout and clubhouse not described in sources; typed from golf-course type."
+    },
+    "kigali-kigali-heights": {
+      "venueId": "kigali-kigali-heights",
+      "city": "kigali",
+      "name": "Kigali Heights",
+      "archetype": "mall",
+      "subject": "Kigali Heights: a wide stepped mixed-use block of glass and pale cladding with shop-front podium, offices above and a cinema",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 27,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d3dce2",
+          "#efe9dc",
+          "#6f7f89"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Opened around 2016 next to the Convention Centre; no source fetched, shape typed from modern mixed-use mall. Shares a block with the UGHE campus."
+    },
+    "kigali-market-game": {
+      "venueId": "kigali-market-game",
+      "city": "kigali",
+      "name": "Kimironko Market",
+      "archetype": "market-hall",
+      "subject": "Kimironko, one of Kigali's busiest markets: a large covered hall of low blocks under multiple corrugated roofs with open stall lanes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "sawtooth"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d4b3",
+          "#4f7a5e",
+          "#c0613f"
+        ],
+        "roofColour": "#6e8a96",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kigali",
+          "what": "Kimironko is one of the city's main neighbourhood markets (listed amongst landmarks; no structure description)"
+        }
+      ],
+      "notes": "Market layout not found; typed from market-hall type with Kigali palette."
+    },
+    "kigali-meal-stop": {
+      "venueId": "kigali-meal-stop",
+      "city": "kigali",
+      "name": "Café Royal",
+      "archetype": "restaurant",
+      "subject": "A small cafe in a converted house: single-storey painted render building with a front terrace and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe3c9",
+          "#a8553a",
+          "#fffaf0"
+        ],
+        "roofColour": "#8a4a34",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure cafe; typed from city style."
+    },
+    "kigali-nyamirambo-womens-centre": {
+      "venueId": "kigali-nyamirambo-womens-centre",
+      "city": "kigali",
+      "name": "Nyamirambo Women's Centre",
+      "archetype": "shophouse",
+      "subject": "A two-storey Nyamirambo shop and community house with a bright painted mural, imigongo-style panels and a craft shopfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e3a35c",
+          "#b6483a",
+          "#2f6b87"
+        ],
+        "roofColour": "#7a3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "colourful wall mural"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "imigongo triangles"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nyamirambo",
+          "what": "mixed residential and commercial Muslim district with many mosques"
+        }
+      ],
+      "notes": "Typed from city style; Nyamirambo is known for bold painted facades."
+    },
+    "kigali-nyandungu-wetland-park": {
+      "venueId": "kigali-nyandungu-wetland-park",
+      "city": "kigali",
+      "name": "Nyandungu Urban Wetland Eco Tourism Park",
+      "archetype": "park-landscape",
+      "subject": "A restored marshland park of ponds and reed beds crossed by timber boardwalks, with a small visitor pavilion and tree plantings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7b52",
+          "#6f8a5a",
+          "#d9cfb3"
+        ],
+        "roofColour": "#6f5638",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 3,
+          "note": "boardwalks over water"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor centre"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A restored wetland (not otherwise described in fetched sources); typed boardwalk-and-pond park from its name and type."
+    },
+    "kigali-parliament": {
+      "venueId": "kigali-parliament",
+      "city": "kigali",
+      "name": "Parlement",
+      "archetype": "civic-palace",
+      "subject": "Rwanda's Parliament in Kimihurura, a long three-storey rendered building with a central columned entrance, flags and trimmed lawns (2019 refit)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 48,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eee6d3",
+          "#8a8f93",
+          "#faf7ee"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s, refit 2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Rwanda",
+          "what": "two chambers since 2003 (Senate, Chamber of Deputies); building in Kimihurura; 'new look' aerial photo of 2019"
+        }
+      ],
+      "notes": "Form is typed from civic type; the 2019 new look is noted but undescribed. Make it clearly larger and plainer than the Convention Centre next door."
+    },
+    "kigali-pele-stadium": {
+      "venueId": "kigali-pele-stadium",
+      "city": "kigali",
+      "name": "Stade Pelé de Kigali",
+      "archetype": "stadium",
+      "subject": "Nyamirambo's regional stadium renamed Stade Pelé: a smaller oval bowl with one covered main stand and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcbbf",
+          "#c9a11e",
+          "#f4f0e6"
+        ],
+        "roofColour": "#9aa1a6",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown (refit 2010s)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from regional-stadium type; no source retrieved. Intended to be smaller and simpler than Amahoro."
+    },
+    "kigali-quiet-reflection": {
+      "venueId": "kigali-quiet-reflection",
+      "city": "kigali",
+      "name": "Sainte-Famille Church",
+      "archetype": "church-classical",
+      "subject": "Sainte-Famille, Kigali's central Catholic church: a long red-brick basilica with a gabled iron roof, round-arch windows and a front bell-tower porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a8553a",
+          "#efe4cc",
+          "#d6c7a8"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A prominent early-20th-century mission church; no description was fetched, so brick and gable form are typed from the Rwanda mission-church type. Treat the memorial history respectfully."
+    },
+    "kigali-recreation": {
+      "venueId": "kigali-recreation",
+      "city": "kigali",
+      "name": "Parc Centenaire de Kigali",
+      "archetype": "park-landscape",
+      "subject": "A landscaped city park with curving paths, lawns, mature shade trees and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6cf",
+          "#7aa05a",
+          "#b0573a"
+        ],
+        "roofColour": "#8a4a34",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Park layout not described in fetched sources; typed from park type."
+    },
+    "kigali-transit": {
+      "venueId": "kigali-transit",
+      "city": "kigali",
+      "name": "Nyabugogo Bus Station",
+      "archetype": "transport-station",
+      "subject": "Rwanda's main bus terminal: an open tarmac park with long covered boarding platforms and rows of coloured intercity buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "bus-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcabd",
+          "#3f6b9a",
+          "#e9e5d8"
+        ],
+        "roofColour": "#7d8a92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 4
+        },
+        {
+          "id": "bus-bays",
+          "count": 30
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nyabugogo is the main bus hub in a valley; layout typed from bus-park type."
+    },
+    "kigali-union-trade-centre": {
+      "venueId": "kigali-union-trade-centre",
+      "city": "kigali",
+      "name": "Union Trade Centre",
+      "archetype": "mall",
+      "subject": "Union Trade Centre in the CBD: a compact six-storey rendered shopping block with a glazed corner entrance and rooftop signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc5",
+          "#2f6c8c",
+          "#c9bfa8"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A downtown mall; shape typed from the mall type. Smaller, denser and more boxy than Kigali Heights."
+    },
+    "kigali-university-of-global-health-equity": {
+      "venueId": "kigali-university-of-global-health-equity",
+      "city": "kigali",
+      "name": "University of Global Health Equity",
+      "archetype": "campus-block",
+      "subject": "UGHE's Kigali premises: academic floors in a modern glazed office wing sharing a podium with Kigali Heights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd8de",
+          "#e6dfce",
+          "#3f6b52"
+        ],
+        "roofColour": "#8c9399",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Coordinates are essentially those of Kigali Heights, so the two models represent two parts of the same complex; UGHE is shown as the taller glazed academic wing in green-grey rather than the retail podium."
+    }
+  }
+}

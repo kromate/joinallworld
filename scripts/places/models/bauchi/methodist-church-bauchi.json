@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "methodist-church-bauchi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1041367564",
+   "used": "real 228 m2 rotated outline of the hall (containing match)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json methodist-church-bauchi",
+   "used": "gabled hall, front gable cross, low entrance bell tower, painted render with brick accent, grey metal roof, fenced compound"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a8553a",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.5,
+    "bands": "#a8553a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-v",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 11.2,
+   "height": 2.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8553a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-h",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "z0": 12.4,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8553a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "height": 2.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8553a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#c9c3b4",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real outline, brief-only gable hall, tower and cross; detail unverified"
+ }
+}

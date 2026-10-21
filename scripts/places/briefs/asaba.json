@@ -1,0 +1,867 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "asaba",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "asaba",
+    "climate": "rainforest",
+    "vernacular": "Delta State capital on the Niger bank opposite Onitsha: 1-3 storey rendered and painted-block houses and shops with brown or red corrugated roofs, large walled Igbo-style mansions with columns and parapets, 1886 timber colonial remnants, concrete government blocks, and a ring of new infrastructure around the Niger bridges.",
+    "wallColours": [
+      "#e9e3d3",
+      "#d9c9a7",
+      "#c9c3b3",
+      "#a8744f",
+      "#7fa08a",
+      "#f0ece4"
+    ],
+    "roofColours": [
+      "#7a3b2c",
+      "#6e6a63",
+      "#4f6b5a",
+      "#8a4a33"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Walled compounds with decorative concrete balustrades and column gate piers, painted murals and shop-front hoardings, Anioma/Igbo mansion parapets with columns and scrolled pediments, colonial timber verandas on Royal Niger Company era buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Asaba",
+        "what": "Delta State capital on west bank of the Niger; former colonial administrative centre"
+      },
+      {
+        "url": "https://dailytrust.com/?p=301097",
+        "what": "1886 timber Mungo Park House"
+      },
+      {
+        "url": "https://dutumgroup.com/the-story-of-the-river-niger-bridge-anambra/",
+        "what": "Niger bridge context and river setting"
+      },
+      {
+        "url": "https://www.kupi.com/en-ae/explore/nigeria/asaba",
+        "what": "travel overview of Asaba as former trading post"
+      }
+    ]
+  },
+  "places": {
+    "asaba-international-airport": {
+      "venueId": "asaba-international-airport",
+      "city": "asaba",
+      "name": "Asaba International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Asaba airport single-building passenger terminal seen from the forecourt: a modest two-storey block with a flat roof and a short canopy, long runway behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#3c5566",
+          "#c8c2b4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy over drop-off"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "a tower is assumed beside the terminal; not confirmed by sources"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011 opening, upgrades planned",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba_International_Airport",
+          "what": "opened 13 July 2011; single 3,400 m runway; terminal upgrade/extension only planned, terminal itself not described"
+        },
+        {
+          "url": "https://www.nigeriahousingmarket.com/guides/asaba-international-airport",
+          "what": "one building split into domestic and international zones with common check-in hall (AI-generated page, low reliability)"
+        }
+      ],
+      "notes": "Sources give runway and operator facts, not the terminal look. Single combined terminal building per a low-reliability guide. Form is a typed guess for a regional state-owned airport terminal. Long runway is the identifying feature of the site, not the building."
+    },
+    "eco-bank-asaba": {
+      "venueId": "eco-bank-asaba",
+      "city": "asaba",
+      "name": "Eco bank (Asaba branch)",
+      "archetype": "office-low",
+      "subject": "A three-storey bank branch on a commercial street in Asaba, rendered facade with a glazed banking hall and a plain blank signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e6df",
+          "#4a6b7a",
+          "#bdb7aa"
+        ],
+        "roofColour": "#8e8e8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour, no brand mark"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "ATM / entrance canopy"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "what": "Asaba is Delta State capital on the west bank of the Niger opposite Onitsha; former colonial administrative centre"
+        }
+      ],
+      "notes": "Branch building is not described anywhere found. No public source describes this building; the brief is a typed guess from the Asaba city style and the place type. Brand colours deliberately not used."
+    },
+    "federal-college-of-education-technical-asaba": {
+      "venueId": "federal-college-of-education-technical-asaba",
+      "city": "asaba",
+      "name": "Federal College of Education (Technical), Asaba",
+      "archetype": "campus-block",
+      "subject": "A cluster of two- and three-storey rendered teaching blocks with louvred corridors around an open quadrangle on the college campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc8",
+          "#a8744f",
+          "#c9c3b3"
+        ],
+        "roofColour": "#7a5a44",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "corridor louvre blocks"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "what": "Asaba is Delta State capital on the west bank of the Niger opposite Onitsha; former colonial administrative centre"
+        }
+      ],
+      "notes": "No source describes the campus buildings. No public source describes this building; the brief is a typed guess from the Asaba city style and the place type. Federal college blocks are usually plain two-three storey rendered buildings with deep verandas."
+    },
+    "federal-medical-centre-asaba": {
+      "venueId": "federal-medical-centre-asaba",
+      "city": "asaba",
+      "name": "Federal Medical Centre Asaba",
+      "archetype": "hospital",
+      "subject": "The main block of the Federal Medical Centre, a multi-storey rendered hospital building with ward wings and a covered ambulance bay; a solar array is installed on site",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eef0ec",
+          "#4e8b68",
+          "#c5c9c2"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "60 kW solar system reported"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1998 (formerly General Hospital Asaba)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Asaba",
+          "what": "established August 1998, formerly General Hospital Asaba"
+        },
+        {
+          "url": "https://guardian.ng/features/health/fg-ends-power-crisis-in-fmc-asaba-with-60kw-solar-system/",
+          "what": "60 kW solar installation at the hospital"
+        }
+      ],
+      "notes": "Establishment date, former General Hospital origin and solar array are sourced; building form is a typed guess for a Nigerian federal tertiary hospital."
+    },
+    "federal-secretariat-complex-asaba": {
+      "venueId": "federal-secretariat-complex-asaba",
+      "city": "asaba",
+      "name": "Federal Secretariat Complex",
+      "archetype": "civic-palace",
+      "subject": "A federal secretariat office block in Asaba: a long four-storey rendered building with a central entrance portico and flagpoles in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e0cf",
+          "#8f7e62",
+          "#bfb9aa"
+        ],
+        "roofColour": "#7b7b78",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 4,
+          "note": "continuous access balconies per floor"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "what": "Asaba is Delta State capital on the west bank of the Niger opposite Onitsha; former colonial administrative centre"
+        }
+      ],
+      "notes": "No source describes the building. No public source describes this building; the brief is a typed guess from the Asaba city style and the place type. Federal secretariats in Nigeria are typically long 3-5 storey slab blocks."
+    },
+    "first-empire-bar": {
+      "venueId": "first-empire-bar",
+      "city": "asaba",
+      "name": "1st Empire",
+      "archetype": "restaurant",
+      "subject": "A single-storey lounge bar with a painted facade, outdoor seating under an awning and a neon-lit entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c9a7",
+          "#5a3b2a",
+          "#f0ece4"
+        ],
+        "roofColour": "#6f4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "what": "Asaba is Delta State capital on the west bank of the Niger opposite Onitsha; former colonial administrative centre"
+        }
+      ],
+      "notes": "Nothing found about this venue. No public source describes this building; the brief is a typed guess from the Asaba city style and the place type."
+    },
+    "government-hospital-ibusa": {
+      "venueId": "government-hospital-ibusa",
+      "city": "asaba",
+      "name": "Government Hospital Ibusa",
+      "archetype": "hospital",
+      "subject": "A small town government hospital with low rendered ward blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ebe7db",
+          "#4f8a73",
+          "#bfb8a8"
+        ],
+        "roofColour": "#7a4d3a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank neutral sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "what": "Asaba is Delta State capital on the west bank of the Niger opposite Onitsha; former colonial administrative centre"
+        }
+      ],
+      "notes": "Ibusa is a town west of Asaba; no source describes the hospital. No public source describes this building; the brief is a typed guess from the Asaba city style and the place type. Older Nigerian general hospitals are low pavilion-style blocks with deep verandas."
+    },
+    "holy-family-catholic-church-asaba": {
+      "venueId": "holy-family-catholic-church-asaba",
+      "city": "asaba",
+      "name": "Holy Family Catholic Church",
+      "archetype": "church-modern",
+      "subject": "A modern Catholic parish church: a wide rectangular nave with a pitched metal roof, a freestanding bell tower and a cross over the porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ede2",
+          "#a65c3c",
+          "#c8c2b2"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "freestanding tower near the entrance"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Diocese_of_Issele-Uku",
+          "what": "Asaba churches belong to the Diocese of Issele-Uku (St Joseph pro-cathedral, St Patrick, Assumption); no Holy Family page found"
+        }
+      ],
+      "notes": "Holy Family is not documented in anything found. Typed guess for a Nigerian Catholic parish church."
+    },
+    "national-museum-asaba": {
+      "venueId": "national-museum-asaba",
+      "city": "asaba",
+      "name": "National Museum Asaba (Mungo Park House)",
+      "archetype": "museum-theatre",
+      "subject": "Mungo Park House, a colonial-era timber house on the Niger bank at Asaba, built by the Royal Niger Company and now the National Museum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#cfc4a8",
+          "#f1ede2",
+          "#6b4b36"
+        ],
+        "roofColour": "#8a4a33",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "timber veranda gallery on each floor (typical of the type; not confirmed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1886",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://dailytrust.com/?p=301097",
+          "what": "Mungo Park House built by Royal Niger Company 1886, wooden structure, stout palm timbers laid vertically and horizontally, imported-wood staircase, taken over as museum 1997, deteriorated"
+        },
+        {
+          "url": "https://www.finelib.com/listing/National-Museum-Asaba/10105",
+          "what": "National Museum Asaba is in Mungo Park House"
+        }
+      ],
+      "notes": "Era, name, timber construction and museum use are sourced. Storeys, roof, colours and veranda are inferred from the colonial timber-house type; the Daily Trust says the structure has deteriorated, so a weathered look is right."
+    },
+    "ogbeogonogo-modern-market": {
+      "venueId": "ogbeogonogo-modern-market",
+      "city": "asaba",
+      "name": "Ogbeogonogo Modern Market",
+      "archetype": "market-hall",
+      "subject": "The big Nnebisi Road market: long blocks of single and two-storey lock-up shops under corrugated roofs with stalls spilling into the lanes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c3b3",
+          "#a8744f",
+          "#e4ddc9"
+        ],
+        "roofColour": "#6e6a63",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 24,
+          "note": "rows of lock-up shops"
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ogbe-Ogonogo_Modern_Market",
+          "what": "biggest market in Asaba, Nnebisi Road, Oshimili South LGA"
+        },
+        {
+          "url": "https://thisdaylive.com/index.php/2020/05/27/traders-count-losses-as-okowa-visits-burnt-ogbeogonogo-market",
+          "what": "2020 fire destroyed a section including about 30 stores in an old building"
+        },
+        {
+          "url": "https://www.finelib.com/listing/Ogbogonogo-Modern-Market-Asaba/86169",
+          "what": "stores, kiosks, workshops, over a thousand traders"
+        }
+      ],
+      "notes": "Scale, location and shop/kiosk composition sourced. Roof and block form are typical-market guesses. A burnt section may show as bare charred walls."
+    },
+    "pokaribs-native-kitchen": {
+      "venueId": "pokaribs-native-kitchen",
+      "city": "asaba",
+      "name": "Pokaribs Native Kitchen & Lounge",
+      "archetype": "restaurant",
+      "subject": "A local buka-style restaurant and lounge: a low rendered building with a covered open-air seating terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7d9b6",
+          "#7a4a32",
+          "#f0ece4"
+        ],
+        "roofColour": "#6f4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asaba",
+          "what": "Asaba is Delta State capital on the west bank of the Niger opposite Onitsha; former colonial administrative centre"
+        }
+      ],
+      "notes": "Nothing found about this venue. No public source describes this building; the brief is a typed guess from the Asaba city style and the place type."
+    },
+    "stephen-keshi-stadium": {
+      "venueId": "stephen-keshi-stadium",
+      "city": "asaba",
+      "name": "Stephen Keshi Stadium",
+      "archetype": "stadium",
+      "subject": "The Governor Okowa Main Bowl in Asaba: an all-covered oval football and athletics bowl with a nine-lane track, 22,000 seats, roof canopy and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cf",
+          "#2f5b8a",
+          "#f0eee8"
+        ],
+        "roofColour": "#c7cacc",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "all seating covered"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "reconstructed 2018 (originally 2000s township stadium)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stephen_Keshi_Stadium",
+          "what": "capacity 22,000 all covered, grass surface, commissioned 2018, former Asaba township stadium"
+        },
+        {
+          "url": "https://www.channelstv.com/2018/01/12/2018-athletics-championship-okowa-says-delta-is-ready-to-host-africa/",
+          "what": "redesigned to nine lanes from six, tartan track, VIP lounges, hosted 2018 African Athletics Championships"
+        }
+      ],
+      "notes": "Capacity, covered seating, nine-lane track and 2018 date are sourced. Roof structure and floodlight layout are not described; colours are a guess. Largest horizontal size is clamped to the venue scene in the generator."
+    }
+  }
+}

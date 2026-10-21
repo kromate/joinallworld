@@ -1,0 +1,361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "first-bank-awka",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:First_Bank_Nigeria,_Awka.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ennydavids",
+   "view": "front",
+   "file": "/tmp/places-evidence/awka/firstbank.jpg",
+   "used": "cream render box with pilaster colonnade on the left, dark-blue glazed entrance bay on the right, blank blue board on the parapet, ribbon glazing above the porch, low blue-roofed guard block, taller white annex behind right, iron fence"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "annex and rear service buildings simplified; pavement, tout vehicles and radio mast omitted"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e7e1",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "glassColour": "#7f98aa",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9e",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     7,
+     2.4
+    ]
+   },
+   "at": [
+    8.5,
+    -9.6
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f3a7a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "glassColour": "#6d7f95",
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f3a7a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    22,
+    4
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe6",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d8d3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-block",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    17,
+    -12
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad2",
+    "windows": "punched",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#3f8ab5",
+    "material": "metal-sheet",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.9,
+       0.9
+      ],
+      "height": 9.0,
+      "colour": "#f3f2ee"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -9.6,
+     0
+    ],
+    "end": [
+     -1,
+     -9.6,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    -9.9,
+    9.0
+   ],
+   "params": {
+    "rect": [
+     15,
+     1.6
+    ],
+    "height": 0.35,
+    "colour": "#d6d4cd"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -7,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     15,
+     0.7
+    ],
+    "height": 2.4,
+    "colour": "#233f8a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -14.5,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 9,
+    "depth": 4,
+    "height": 3.2,
+    "rise": 0.9,
+    "colour": "#2d7a9a",
+    "edgeColour": "#1f3a7a",
+    "columns": 2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.5,
+    -17,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 6,
+    "colour": "#2146a8"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 1.7,
+      "colour": "#c9ccd0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -17.5,
+     0
+    ],
+    "end": [
+     20,
+     -17.5,
+     0
+    ],
+    "count": 30
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.12
+    ],
+    "height": 0.4,
+    "colour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -19,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ }
+}

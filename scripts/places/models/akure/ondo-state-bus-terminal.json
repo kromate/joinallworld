@@ -1,0 +1,436 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "ondo-state-bus-terminal",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sunshine_Travels,_Akure,_Ondo_State.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Favouridowu",
+   "view": "street",
+   "file": "/tmp/places-evidence/akure/bus.jpg",
+   "used": "NOT a certain match: street photo of a Sunshine Travels bus park 64 m away, used only as stylistic reference (cream block, red roof, orange-brown pillars, white gate panels, curved shelter); dimensions come from the OSM outline"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/837276050",
+   "used": "overall size (about 78 x 34 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.337
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 7.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d8c0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#c0392b",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c0392b",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 10,
+    "height": 3.6,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#b5392b",
+    "edgeColour": "#a93426"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -32,
+    -12.5,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "height": 2.0,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    40,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 10,
+    "depth": 8,
+    "height": 3.4,
+    "rise": 1.2,
+    "colour": "#c9a35a",
+    "edgeColour": "#d6b46a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#e5d3a8",
+    "frameColour": "#b8bcc0"
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "pillar-0",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -28,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-1",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -20,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-2",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -12,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-3",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    -4,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-4",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    4,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-5",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    12,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-6",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    20,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pillar-7",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.8
+    ]
+   },
+   "at": [
+    28,
+    -10.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-a",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -34,
+    -3
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-b",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    34,
+    -3
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8643a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "cars": [
+   {
+    "at": [
+     -14,
+     -7
+    ],
+    "colour": "#f4f4f0"
+   },
+   {
+    "at": [
+     0,
+     -7
+    ],
+    "colour": "#f4f4f0"
+   },
+   {
+    "at": [
+     14,
+     -7
+    ],
+    "colour": "#e6e6e0"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a nearby bus park, not a certain match, so verified is footprint; red roof band done via roof only, no blue ground-floor arcade, no tilted hoarding pole, window surrounds not red"
+ }
+}

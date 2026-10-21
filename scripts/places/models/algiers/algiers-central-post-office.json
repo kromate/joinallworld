@@ -1,0 +1,406 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-central-post-office",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:\u0627\u0644\u0628\u0631\u064a\u062f_\u0627\u0644\u0645\u0631\u0643\u0632\u064a_-_\u0627\u0644\u062c\u0632\u0627\u0626\u0631.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hacen Youcef MOUDJAHED",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/post.jpg",
+   "used": "white neo-Moorish front: three horseshoe portal arches, upper arcade of small arches, crenellated parapet, two domed corner pavilions, small green dome with gold finial, window rhythm"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/415866",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     64,
+     26
+    ]
+   },
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#e4dccb",
+    "bay": 5,
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d4",
+    "parapet": 0.5
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    -27,
+    -9.5,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f6f4ee",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      19
+     ],
+     [
+      5.5,
+      19.4
+     ],
+     [
+      5.5,
+      20.2
+     ],
+     [
+      4.6,
+      20.6
+     ],
+     [
+      4.4,
+      22
+     ],
+     [
+      3.2,
+      24.5
+     ],
+     [
+      1.5,
+      25.8
+     ],
+     [
+      0,
+      26.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    27,
+    -9.5,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f6f4ee",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      19
+     ],
+     [
+      5.5,
+      19.4
+     ],
+     [
+      5.5,
+      20.2
+     ],
+     [
+      4.6,
+      20.6
+     ],
+     [
+      4.4,
+      22
+     ],
+     [
+      3.2,
+      24.5
+     ],
+     [
+      1.5,
+      25.8
+     ],
+     [
+      0,
+      26.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    -3,
+    19
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#3f8a67",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4.5,
+      0
+     ],
+     [
+      4.6,
+      0.5
+     ],
+     [
+      3.6,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      0.3,
+      3.5
+     ],
+     [
+      0.2,
+      4.6
+     ],
+     [
+      0.5,
+      5
+     ],
+     [
+      0,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -11,
+    -13.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 8.5,
+    "depth": 0.8,
+    "archWidth": 6,
+    "springHeight": 5,
+    "pointed": false,
+    "colour": "#b89a72"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -13.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 8.5,
+    "depth": 0.8,
+    "archWidth": 6,
+    "springHeight": 5,
+    "pointed": false,
+    "colour": "#b89a72"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    11,
+    -13.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 8.5,
+    "depth": 0.8,
+    "archWidth": 6,
+    "springHeight": 5,
+    "pointed": false,
+    "colour": "#b89a72"
+   }
+  },
+  {
+   "type": "array",
+   "id": "upper-arcade",
+   "params": {
+    "of": {
+     "type": "arched-window",
+     "params": {
+      "width": 1.5,
+      "height": 3.2,
+      "kind": "arch"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -16,
+     -13.1,
+     12
+    ],
+    "end": [
+     16,
+     -13.1,
+     12
+    ]
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    0,
+    -12.6,
+    19
+   ],
+   "params": {
+    "length": 64,
+    "height": 1.4,
+    "thickness": 0.8,
+    "pitch": 1.4,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    0,
+    12.6,
+    19
+   ],
+   "params": {
+    "length": 64,
+    "height": 1.4,
+    "thickness": 0.8,
+    "pitch": 1.4,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -13.1
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.6
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#5a3b22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13.1
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.6
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#5a3b22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -13.1
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.6
+    ],
+    "z0": 0,
+    "height": 5.6,
+    "colour": "#5a3b22",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Front is a flat rect not the bowed facade; corner towers plain drums with domes; no ornament bands or right-hand wing; portal doors flat dark panels"
+ }
+}

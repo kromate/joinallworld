@@ -1,0 +1,242 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "national-museum-yola",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yola.json#national-museum-yola",
+   "used": "low two-storey state museum, cream render, hip corrugated roof, shaded entrance portico, flagpole, blank sign board, car park. No photo found; OSM nearest match is a 67 m2 house 40 m away and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     20,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#b4654a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    -16.5,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.18,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    16.5,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.18,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.5,
+    "height": 6.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#efe6d0",
+    "roofColour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 0.8,
+    "colour": "#efe6d0",
+    "frameColour": "#b4654a",
+    "posts": true
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 9,
+    "density": 0.35
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -26,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 5,
+    "line": 44
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable footprint; typed symmetric institutional block with portico, dimensions guessed."
+ }
+}

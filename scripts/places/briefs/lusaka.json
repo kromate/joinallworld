@@ -1,0 +1,1595 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lusaka",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lusaka",
+    "climate": "savanna",
+    "vernacular": "1930s Adshead-planned colonial capital on a 1,280 m plateau: Cairo Road CBD of 3-23 storey modernist and art-deco-era office blocks with street canopies, government quarter on Cathedral Hill and Ridgeway, wealthy suburbs of cream-rendered or face-brick houses behind walls with red-oxide or green profiled-metal and clay-tile roofs; Chinese-built civic buildings and stadia since the 2010s; many single-storey malls and strip centres in painted render. Red-brown soil, jacaranda, msasa and other broadleaf trees.",
+    "wallColours": [
+      "#efe6d2",
+      "#d8c9a8",
+      "#b4623f",
+      "#a9a395",
+      "#f5f2ea",
+      "#c9b48a"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6b55",
+      "#6b7178",
+      "#a9a49b"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "brick",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Plain colonial-era modernism with street canopies and verandas on Cairo Road, face-brick banding, colonnaded shop fronts, national flags and flagpoles at civic sites, South Asian temple and mosque motifs in the Indian-Zambian quarters, bright signage murals on markets.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Lusaka",
+        "what": "planned in the 1930s (Adshead), Cairo Road CBD with towers up to 23 storeys, government area around Cathedral Hill and Ridgeway, malls, mosques, plateau climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Heroes_Stadium",
+        "what": "recent Chinese-built civic buildings (Shanghai Construction Group stadium, 2011-14)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Lusaka_National_Museum",
+        "what": "China-assisted museum, opened 1996"
+      }
+    ]
+  },
+  "places": {
+    "lusaka-airport-lusaka-airport": {
+      "venueId": "lusaka-airport-lusaka-airport",
+      "city": "lusaka",
+      "name": "Kenneth Kaunda International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal Two of Kenneth Kaunda International Airport, opened 5 August 2021: a two-storey Chinese-built terminal with a long glazed front, six gates and a new control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dde3e6",
+          "#3a5a74",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b7bcbf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 6,
+          "note": "six gates, sourced"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new ATC tower, sourced"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kenneth_Kaunda_International_Airport",
+          "what": "new terminal opened 5 Aug 2021, built by China Jiangxi International with Exim Bank of China loans from 2015, two-storey, 22 check-in counters, six gates, new control tower and presidential terminal"
+        }
+      ],
+      "notes": "Storeys, gates, tower and builder are sourced; dimensions, roof shape and colours are not and are typed. The older Terminal One is not shown."
+    },
+    "lusaka-bayport": {
+      "venueId": "lusaka-bayport",
+      "city": "lusaka",
+      "name": "Bayport",
+      "archetype": "office-low",
+      "subject": "Bayport (lender) branch office: a two-storey rendered office building with a glazed entrance and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#2f5d7c",
+          "#f5f2ea"
+        ],
+        "roofColour": "#6b7178",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "The venue is given as a \"hilltop\" kind but the name reads as a finance-company office; nothing found about the building, typed low-rise office."
+    },
+    "lusaka-cathedral-of-the-child-jesus": {
+      "venueId": "lusaka-cathedral-of-the-child-jesus",
+      "city": "lusaka",
+      "name": "Cathedral of the Child Jesus",
+      "archetype": "church-modern",
+      "subject": "Roman Catholic cathedral of Lusaka: a large brick church with a steep roof and a bell tower (appearance typed; not described in sources)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#a85f43",
+          "#e8dfc9",
+          "#f1ede3"
+        ],
+        "roofColour": "#6b7178",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "Child Jesus Cathedral is the seat of the Roman Catholic Archdiocese of Lusaka"
+        }
+      ],
+      "notes": "Only identity is sourced; no description or photo text found. Typed brick mission-cathedral form. Different from the Anglican Holy Cross by brick body and tower."
+    },
+    "lusaka-clinic": {
+      "venueId": "lusaka-clinic",
+      "city": "lusaka",
+      "name": "Coptic Hospital",
+      "archetype": "hospital",
+      "subject": "Coptic Hospital: a private hospital block of three storeys with a front drive and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e8d6",
+          "#4a7a96",
+          "#f6f3ec"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "No description found; typed private hospital."
+    },
+    "lusaka-community-notices": {
+      "venueId": "lusaka-community-notices",
+      "city": "lusaka",
+      "name": "National Assembly",
+      "archetype": "civic-palace",
+      "subject": "National Assembly of Zambia on its low hill: a formal pale government building meant to express dignity and power, with a tall 15-storey office block in the Parliament complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "main-chamber"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d8",
+          "#b9b2a2",
+          "#f6f3ec"
+        ],
+        "roofColour": "#8a8f90",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Assembly_of_Zambia",
+          "what": "built on a low hill after independence (1964) to express dignity and power; the Chamber is the colourful focal point"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "Parliament complex houses the National Assembly and has a 15-storey building"
+        }
+      ],
+      "notes": "Siting, intent and the 15-storey block are sourced; chamber building size, portico and colours are typed. The tall block is not part of the main mass."
+    },
+    "lusaka-community-voting-game": {
+      "venueId": "lusaka-community-voting-game",
+      "city": "lusaka",
+      "name": "Graduation Square",
+      "archetype": "park-landscape",
+      "subject": "Graduation Square at the University of Zambia: a wide paved ceremonial square with flagpoles and a small stage pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#6b8a48",
+          "#ece7da"
+        ],
+        "roofColour": "#cfc8b8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "stage canopy"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the square; typed from name."
+    },
+    "lusaka-community-workshop": {
+      "venueId": "lusaka-community-workshop",
+      "city": "lusaka",
+      "name": "University of Zambia (UNZA)",
+      "archetype": "campus-block",
+      "subject": "UNZA Great East Road campus: wide low-rise teaching blocks of concrete and brick around lawns",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "red-brick",
+        "colours": [
+          "#d6cdb8",
+          "#a9553d",
+          "#efe9dc"
+        ],
+        "roofColour": "#8a8f90",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1966 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Zambia",
+          "what": "inaugurated 1966; main Great East Road campus ~7 km from the CBD; School of Mines and Engineering blocks"
+        }
+      ],
+      "notes": "Campus date and location are sourced; block shapes and colours typed (1960s-70s concrete and brick). Large campus - main teaching block shown."
+    },
+    "lusaka-crossroads-mall": {
+      "venueId": "lusaka-crossroads-mall",
+      "city": "lusaka",
+      "name": "Crossroads Mall",
+      "archetype": "mall",
+      "subject": "Crossroads Mall: a two-storey rendered shopping centre with a glazed central entrance and parking apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 65,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee6d0",
+          "#9a4a37",
+          "#f6f3ec"
+        ],
+        "roofColour": "#8a8f90",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing about its look found; typed."
+    },
+    "lusaka-embassy-park": {
+      "venueId": "lusaka-embassy-park",
+      "city": "lusaka",
+      "name": "Embassy Park Presidential Burial Site",
+      "archetype": "park-landscape",
+      "subject": "Embassy Park presidential burial site: a walled, landscaped memorial garden with a gate, paved paths, flags and simple tombs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8e8a80",
+          "#4f7a47",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8e8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "tomb monument, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Presidents are buried here per the venue name; nothing found about its design. Typed memorial garden."
+    },
+    "lusaka-evelyn-hone-college": {
+      "venueId": "lusaka-evelyn-hone-college",
+      "city": "lusaka",
+      "name": "Evelyn Hone College",
+      "archetype": "campus-block",
+      "subject": "Evelyn Hone College of Applied Arts and Commerce: linked single and two-storey classroom blocks in brick and render along covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b36a48",
+          "#e9dfc7",
+          "#f3efe6"
+        ],
+        "roofColour": "#7d4033",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1963",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the buildings; typed colonial-era college. Distinct from UNZA by brick and lower height."
+    },
+    "lusaka-hindu-temple": {
+      "venueId": "lusaka-hindu-temple",
+      "city": "lusaka",
+      "name": "BAPS Hindu Temple",
+      "archetype": "temple-asian",
+      "subject": "BAPS Hindu temple (mandir) in central Lusaka: a compact stone-coloured temple with a tapering shikhara tower, small domes and carved relief panels (typed from the BAPS tradition)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e9d8bd",
+          "#c9a77c",
+          "#f3efe6"
+        ],
+        "roofColour": "#e9d8bd",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 5,
+          "note": "shikhara spires, assumed"
+        },
+        {
+          "id": "dome",
+          "count": 3
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "south-asian",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Only identity (BAPS mandir) used; BAPS mandirs usually have carved stone shikharas, but this site was not described. Typed low."
+    },
+    "lusaka-independence-stadium": {
+      "venueId": "lusaka-independence-stadium",
+      "city": "lusaka",
+      "name": "Independence Stadium",
+      "archetype": "stadium",
+      "subject": "Independence Stadium, the 1964 Lusaka national stadium (30,000 seats): a concrete bowl with raised open stands; the west grandstand was demolished in 2007",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "none",
+        "variant": "open-bowl"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4b8",
+          "#8f8b82",
+          "#ece9e0"
+        ],
+        "roofColour": "#8f8b82",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one stand covered, assumed"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Independence_Stadium_(Zambia)",
+          "what": "30,000 capacity, built mid-1960s for independence celebrations, west grandstand demolished late 2007"
+        }
+      ],
+      "notes": "Date, capacity and grandstand loss sourced; roof, colours and exact size typed. Older and smaller than National Heroes."
+    },
+    "lusaka-jaame-masjid": {
+      "venueId": "lusaka-jaame-masjid",
+      "city": "lusaka",
+      "name": "Jaame Masjid Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Jaame Masjid, a central Lusaka congregational mosque: white-walled prayer hall with a large central dome and two tall minarets (typed from common form)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1e8",
+          "#2f7a62",
+          "#bfc9c0"
+        ],
+        "roofColour": "#2f7a62",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "several large mosques serve the Muslim community of Lusaka"
+        }
+      ],
+      "notes": "Nothing found about the building. Typed domed mosque, two minarets so it differs from the single-minaret Lilongwe mosque."
+    },
+    "lusaka-kenneth-kaunda-chilenje-house": {
+      "venueId": "lusaka-kenneth-kaunda-chilenje-house",
+      "city": "lusaka",
+      "name": "Kenneth Kaunda Chilenje House National Monument",
+      "archetype": "manor",
+      "subject": "House No. 394, Chilenje: a small single-storey township bungalow where Kaunda lived in the 1950s, now a national monument",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0d3b4",
+          "#9a6a4b",
+          "#f3efe6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Typical 1950s township house typed (plaster walls, low pitched sheet roof, small yard); no description found."
+    },
+    "lusaka-lusaka-playhouse": {
+      "venueId": "lusaka-lusaka-playhouse",
+      "city": "lusaka",
+      "name": "Lusaka Playhouse",
+      "archetype": "museum-theatre",
+      "subject": "Lusaka Playhouse, the city theatre: a modest 1950s-60s hall with a gabled auditorium and entrance foyer",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a65e42",
+          "#eadfc6",
+          "#f3efe6"
+        ],
+        "roofColour": "#7d4033",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "Lusaka Playhouse listed as a theatre"
+        }
+      ],
+      "notes": "Only the existence is sourced; typed brick theatre hall."
+    },
+    "lusaka-market-game": {
+      "venueId": "lusaka-market-game",
+      "city": "lusaka",
+      "name": "City Market",
+      "archetype": "market-open",
+      "subject": "Lusaka City Market: dense lanes of stalls and lock-ups under corrugated roofs and umbrellas around an older market hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "sprawl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cdbf9f",
+          "#b7573d",
+          "#e8dcc0"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 8
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1950s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "Central Market and New City Market lie west of Cairo Road"
+        }
+      ],
+      "notes": "Only market existence/location sourced; layout typed."
+    },
+    "lusaka-meal-stop": {
+      "venueId": "lusaka-meal-stop",
+      "city": "lusaka",
+      "name": "Svea's Cafe",
+      "archetype": "restaurant",
+      "subject": "Svea's Cafe: a cosy cafe in a converted house with a veranda and garden tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2e8d0",
+          "#6f9a5a",
+          "#f6f3ec"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found; typed cafe in a house."
+    },
+    "lusaka-national-heroes-stadium": {
+      "venueId": "lusaka-national-heroes-stadium",
+      "city": "lusaka",
+      "name": "National Heroes Stadium",
+      "archetype": "stadium",
+      "subject": "National Heroes Stadium, Zambia's 60,000-seat Chinese-built national stadium (2011-14): a large modern bowl with roof canopy over the stands and tall floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 260,
+        "depth_m": 230,
+        "storeys": 4,
+        "height_m": 38,
+        "roof": "curved",
+        "variant": "large-roofed-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcdad2",
+          "#e07a2a",
+          "#2d6a3f"
+        ],
+        "roofColour": "#e9e9e5",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over stands, extent assumed"
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011-2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Heroes_Stadium",
+          "what": "60,000 capacity, Shanghai Construction Group, groundbreaking 10 Jan 2011, opened 2014, US$94m, multi-purpose"
+        }
+      ],
+      "notes": "Capacity, contractor and dates sourced; roof and colours typed (Zambian orange and green accents). Biggest stadium in Lusaka."
+    },
+    "lusaka-national-museum": {
+      "venueId": "lusaka-national-museum",
+      "city": "lusaka",
+      "name": "Lusaka National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Lusaka National Museum: a two-storey China-assisted museum opened in 1996, archaeological and historical galleries below and an art gallery above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc2",
+          "#8a7e6a",
+          "#f3efe6"
+        ],
+        "roofColour": "#8a8f90",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1996",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka_National_Museum",
+          "what": "two floors (archaeology and history below, contemporary art above), China cooperation from the 1980s, opened to the public October 1996"
+        }
+      ],
+      "notes": "Storeys, history and layout are sourced; exterior materials, roof and colours are not and are typed."
+    },
+    "lusaka-oasis-mall": {
+      "venueId": "lusaka-oasis-mall",
+      "city": "lusaka",
+      "name": "Oasis Mall",
+      "archetype": "mall",
+      "subject": "Oasis Mall: a smaller neighbourhood shopping centre with a two-storey front, awnings and a car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 75,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f0e6cf",
+          "#2e8b8f",
+          "#f6f3ec"
+        ],
+        "roofColour": "#8a8f90",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found; typed. Made L-shaped and teal-accented to differ from the other Lusaka malls."
+    },
+    "lusaka-quiet-reflection": {
+      "venueId": "lusaka-quiet-reflection",
+      "city": "lusaka",
+      "name": "Cathedral of the Holy Cross",
+      "archetype": "church-modern",
+      "subject": "Anglican Cathedral of the Holy Cross on Cathedral Hill, constructed 1962: a mid-century modern church with a steep roof and a freestanding campanile (form typed; not described in sources)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#a85f43",
+          "#e9e1cd",
+          "#f2eee4"
+        ],
+        "roofColour": "#6b7178",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Holy_Cross,_Lusaka",
+          "what": "Anglican cathedral, Cathedral Hill, constructed 1962, seat of the Diocese of Lusaka"
+        }
+      ],
+      "notes": "Year and location are sourced; no source describes the look. Typed red-brick modern cathedral."
+    },
+    "lusaka-recreation": {
+      "venueId": "lusaka-recreation",
+      "city": "lusaka",
+      "name": "Tazara Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "Tazara Memorial Park near the airport: a landscaped memorial park for the Tanzania-Zambia railway with paths, a monument and rail relics (typed from the name)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#5f8a48",
+          "#b9b3a4"
+        ],
+        "roofColour": "#cfc8b8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "memorial monument, assumed"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "railway relic, assumed"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about this park; contents typed from the name TAZARA (Tanzania-Zambia Railway), opened 1975."
+    },
+    "lusaka-suwilanji-gardens": {
+      "venueId": "lusaka-suwilanji-gardens",
+      "city": "lusaka",
+      "name": "Suwilanji Gardens",
+      "archetype": "park-landscape",
+      "subject": "Suwilanji Gardens: a private garden and events venue with lawns, a fountain and covered pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d2",
+          "#5f8f4b",
+          "#c9a77c"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found; typed garden venue."
+    },
+    "lusaka-transit": {
+      "venueId": "lusaka-transit",
+      "city": "lusaka",
+      "name": "Intercity Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "Lusaka Intercity Bus Terminal (next to City Market): a busy terminal with bays, shelters and a ticket hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8ccb2",
+          "#2a5d8f",
+          "#e8c24a"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 20
+        },
+        {
+          "id": "platform-canopy",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the building; typed. Larger and more organised than Lilongwe's."
+    },
+    "lusaka-woodlands-mall": {
+      "venueId": "lusaka-woodlands-mall",
+      "city": "lusaka",
+      "name": "Woodlands Mall",
+      "archetype": "mall",
+      "subject": "Woodlands Mall: an open-air single-storey strip of shops under a long metal roof with a wide car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#ede2c9",
+          "#a2523b",
+          "#f6f3ec"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered shop walkway"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusaka",
+          "what": "city-level context only: planned colonial capital, Cairo Road, malls; no building-level description"
+        }
+      ],
+      "notes": "Nothing found; typed as a strip centre to differ from Crossroads and Oasis."
+    }
+  }
+}

@@ -1,0 +1,428 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tribunal_Supremo_de_Mo%C3%A7ambique,_Maputo_VOA.jpg",
+   "licence": "Public domain",
+   "author": "Voice of America",
+   "view": "front",
+   "file": "/tmp/places-evidence/maputo/maputo-communi0.jpg",
+   "used": "white colonial two-storey front: ground arcade of round arches on slim columns, central arched door with steps, upper veranda with slim iron posts and dark ornate balustrade, central triangular pediment, clipped trees in terracotta pots"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3272897",
+   "used": "size (about 29 x 25 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     29,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e8",
+    "windows": "rect",
+    "windowRatio": 0.22,
+    "faces": {
+     "front": "none",
+     "back": "rect",
+     "left": "rect",
+     "right": "rect"
+    },
+    "plinth": 0.5,
+    "bands": "#ebe8de",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 3.0,
+      "opening": 0.72,
+      "height": 0.85,
+      "depth": 3.0,
+      "pierColour": "#f6f4ec"
+     },
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "depth": 2.2,
+      "rail": 1.0,
+      "width": 4.8,
+      "every": 5.8,
+      "continuous": true,
+      "railKind": "solid",
+      "railColour": "#26262a",
+      "colour": "#f4f1e8",
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8f94",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -13.2,
+    4.9
+   ],
+   "params": {
+    "length": 24,
+    "count": 5,
+    "height": 4.3,
+    "radius": 0.07,
+    "kind": "round",
+    "beamHeight": 0.35,
+    "roofDepth": 2.2,
+    "colour": "#26262a",
+    "roofColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "market-open/pediment",
+   "at": [
+    0,
+    -13.4,
+    9.0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 1.6,
+    "depth": 0.6,
+    "colour": "#f6f4ee"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "rise": 0.8,
+    "run": 1.8,
+    "count": 5,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.3,
+    0.4
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3.4,
+    "bottom": 0,
+    "colour": "#4a2a1c",
+    "frameColour": "#4a2a1c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -4.2,
+    -13.2,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.38,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.55,
+      0.85,
+      "#c8714f"
+     ],
+     [
+      0.4,
+      0.85,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      0.9,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      2.0,
+      "#5a4630"
+     ],
+     [
+      0.5,
+      2.1,
+      "#4f7f3a"
+     ],
+     [
+      0.78,
+      2.7,
+      "#4f7f3a"
+     ],
+     [
+      0.5,
+      3.3,
+      "#4f7f3a"
+     ],
+     [
+      0,
+      3.45,
+      "#4f7f3a"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    4.2,
+    -13.2,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.38,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.55,
+      0.85,
+      "#c8714f"
+     ],
+     [
+      0.4,
+      0.85,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      0.9,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      2.0,
+      "#5a4630"
+     ],
+     [
+      0.5,
+      2.1,
+      "#4f7f3a"
+     ],
+     [
+      0.78,
+      2.7,
+      "#4f7f3a"
+     ],
+     [
+      0.5,
+      3.3,
+      "#4f7f3a"
+     ],
+     [
+      0,
+      3.45,
+      "#4f7f3a"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    -9,
+    -13.2,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.38,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.55,
+      0.85,
+      "#c8714f"
+     ],
+     [
+      0.4,
+      0.85,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      0.9,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      2.0,
+      "#5a4630"
+     ],
+     [
+      0.5,
+      2.1,
+      "#4f7f3a"
+     ],
+     [
+      0.78,
+      2.7,
+      "#4f7f3a"
+     ],
+     [
+      0.5,
+      3.3,
+      "#4f7f3a"
+     ],
+     [
+      0,
+      3.45,
+      "#4f7f3a"
+     ]
+    ],
+    "segments": 14
+   }
+  },
+  {
+   "type": "core/revolve",
+   "at": [
+    9,
+    -13.2,
+    0.8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.38,
+      0,
+      "#c8714f"
+     ],
+     [
+      0.55,
+      0.85,
+      "#c8714f"
+     ],
+     [
+      0.4,
+      0.85,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      0.9,
+      "#5a4630"
+     ],
+     [
+      0.05,
+      2.0,
+      "#5a4630"
+     ],
+     [
+      0.5,
+      2.1,
+      "#4f7f3a"
+     ],
+     [
+      0.78,
+      2.7,
+      "#4f7f3a"
+     ],
+     [
+      0.5,
+      3.3,
+      "#4f7f3a"
+     ],
+     [
+      0,
+      3.45,
+      "#4f7f3a"
+     ]
+    ],
+    "segments": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "open arcade with steps, upper veranda with iron posts, dark rail, pediment and terracotta topiary pots match; wall still reads bluish from sky lighting, balustrade is plain dark band not ornate, no door timber detail, side arches glazed"
+ }
+}

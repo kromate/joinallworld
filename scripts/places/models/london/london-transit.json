@@ -1,0 +1,434 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Walton_on_Thames_railway_station_-_geograph.org.uk_-_2158325.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "geograph contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/lon-t1.jpg",
+   "used": "long low two-storey red and yellow-stock brick station building with a low slate hipped roof, arched ground-floor openings, small first-floor windows, flat canopy over the entrance, blank fascia board, forecourt with cycle racks and a taxi lane, platform bridge/shed beyond at the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Walton_on_Thames_Station_-_geograph.org.uk_-_4373598.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "geograph contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/lon-t3.jpg",
+   "used": "tall yellow-brown stock brick retaining wall at the entrance side, blue profiled-metal clad block beside it, ticket machine shelter, station sign post"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1422918909",
+   "used": "platform roof outline (62 m by 7 m) setting the length and angle of the platform canopy"
+  }
+ ],
+ "camera": {
+  "yawDeg": 42,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "building",
+   "footprint": {
+    "rect": [
+     54,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b8935a",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4.2,
+    "bands": "#a5503a",
+    "plinth": 0.8,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a4d52",
+    "material": "slate",
+    "pitch": 10,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-shed",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    -32,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f4f8f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2a3f73",
+    "pitch": 8
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    4,
+    -7,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 3,
+    "height": 3.4,
+    "thickness": 0.25,
+    "columns": 0,
+    "colour": "#2b2e33"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -4.9,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.1,
+    "bottom": 3.6,
+    "colour": "#e4e2dc",
+    "frameColour": "#444a50",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 1,
+    "colour": "#a79f94"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "depth": 6,
+    "height": 1.0,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    -4,
+    9,
+    1
+   ],
+   "params": {
+    "width": 40,
+    "depth": 4.5,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    21,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 2,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    29,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "depth": 6,
+    "height": 1.0,
+    "colour": "#a9a49a"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    43,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "tracks": 2,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    51,
+    0
+   ],
+   "params": {
+    "length": 64,
+    "depth": 6,
+    "height": 1.0,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -13,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arched-bays",
+   "footprint": {
+    "rect": [
+     11,
+     0.8
+    ]
+   },
+   "at": [
+    21,
+    -4.8
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b8935a",
+    "windows": "punched",
+    "windowRatio": 0.45,
+    "windowShape": "arched",
+    "bay": 3.0,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#a5503a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5503a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -24,
+    -6.5,
+    0
+   ],
+   "params": {
+    "height": 1.1,
+    "count": 14,
+    "spacing": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retaining-wall",
+   "footprint": {
+    "rect": [
+     14,
+     1.2
+    ]
+   },
+   "at": [
+    -27,
+    -6.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b39a62",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a5503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    -27,
+    -8.6
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d978c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a80",
+    "pitch": 6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "footbridge",
+   "footprint": {
+    "rect": [
+     2.6,
+     46
+    ]
+   },
+   "at": [
+    -22,
+    30
+   ],
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6e7479",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d52"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vent",
+   "footprint": {
+    "rect": [
+     26,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a5503a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Two-storey yellow-stock block with red bands, dark canopy, right fascia board, retaining wall and ramp, cycle racks, kerb lamps and footbridge added; ground-floor arched bays with red voussoirs and the upper small paired arched windows are only approximate, brick tone reads lighter than the photo, parked cars dropped; OSM match is only a platform roof so the outline is estimated."
+ }
+}

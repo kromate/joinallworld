@@ -1,0 +1,264 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-setsoto-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Setsoto-Stadium_Lesotho.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Robert Staudhammer from Earth",
+   "view": "interior",
+   "file": "/tmp/places-evidence/maseru/stadium.jpg",
+   "used": "open single-tier stand in alternating yellow and blue seat blocks, white railings and stair rails, maroon concrete fascia, red running track, green artificial turf, floodlight masts behind the stand, no roof on this side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/287674169",
+   "used": "overall bowl size (about 150 x 220 m including the enclosure) and long axis; modelled as an oval bowl"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "width": 72,
+    "lane_width": 6,
+    "infield": true,
+    "pitch": true,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     55,
+     38
+    ],
+    "end": [
+     -55,
+     38
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 2.4,
+    "offset": 0,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#e6c52b",
+     "#2e4a9c"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9b2a8",
+    "underColour": "#7a3b36",
+    "backWall": 0.0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     55,
+     38
+    ],
+    "end": [
+     -55,
+     38
+    ],
+    "rows": 6,
+    "rise": 0.5,
+    "run": 1.0,
+    "firstHeight": 5.2,
+    "offset": 8,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#2e4a9c",
+     "#e6c52b"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9b2a8",
+    "underColour": "#7a3b36",
+    "backWall": 1.0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    38,
+    2.4
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#f1f1ee"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "railing",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -45,
+    52,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -27,
+    52,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    52,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    9,
+    52,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    27,
+    52,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    45,
+    52,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "count": 1
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -10,
+    64,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "baseWidth": 1.8,
+    "topWidth": 0.6,
+    "panels": 8,
+    "colour": "#b8433a",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    14,
+    64,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "baseWidth": 1.8,
+    "topWidth": 0.6,
+    "panels": 8,
+    "colour": "#b8433a",
+    "colour2": "#f2f2ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Single straight raked stand with two offset tiers of 4 yellow/blue blocks, maroon base, six slim lamp masts and two comms masts now match the photo; seat blocks read as thin stripes, no stair aisles, diagonal end stairs or white-railed concourse, track/pitch simplified."
+ }
+}

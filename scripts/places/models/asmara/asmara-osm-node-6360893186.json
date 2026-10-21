@@ -1,0 +1,138 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/576905705",
+   "used": "containing outline (296 m2, rotated parallelogram) as the main stone hall"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/asmara.json",
+   "used": "low stone building, clay-tile hip roof, covered viewing terrace on the valley side, boundary wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8a58a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a65a3d",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    -0.1
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     22,
+     8
+    ],
+    "height": 0.5,
+    "colour": "#a89a82"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#7a5a3c",
+    "edgeColour": "#5e442c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "colour": "#b8a58a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-node-6360893186",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; terrace placement/orientation guessed relative to the rotated OSM outline."
+ }
+}

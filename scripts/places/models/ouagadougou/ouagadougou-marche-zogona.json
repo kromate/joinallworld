@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-marche-zogona",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/28068129",
+   "used": "market plot outline 174x147 m, notched shape"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "wall": {
+    "material": "laterite",
+    "colour": "#a9643f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9643f",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -15,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "wall_colour": "#b5b0a6",
+    "roof_colour": "#7e8387",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "wall_colour": "#b5b0a6",
+    "roof_colour": "#7e8387",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -10,
+    35,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "wall_colour": "#b8754d",
+    "roof_colour": "#8a4a35",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    -10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    40,
+    -25,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    15,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     35
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM plot outline only. Shed and stall layout is typical, not observed."
+ }
+}

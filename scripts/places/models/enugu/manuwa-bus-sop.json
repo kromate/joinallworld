@@ -1,0 +1,165 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "manuwa-bus-sop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo found on Commons, Wikipedia or Wikidata; brief facts only"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/770851671",
+   "used": "6x4.5 m shelter room footprint; canopy, kiosks and yellow minibuses added from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter-room",
+   "footprint": {
+    "polygon": [
+     [
+      -3.5,
+      -1.6
+     ],
+     [
+      -0.5,
+      3.8
+     ],
+     [
+      3.5,
+      1.6
+     ],
+     [
+      0.5,
+      -3.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b4",
+    "windows": "none",
+    "bands": "#d9a431"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7f83",
+    "material": "metal-sheet",
+    "rise": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 5,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -13,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9a431"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -9,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6f757a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    13,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9a431"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "kind": "van",
+    "density": 0.8,
+    "colours": [
+     "#d9a431"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -8,
+    3.4
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real shelter outline, canopy/kiosks/vans from brief."
+ }
+}

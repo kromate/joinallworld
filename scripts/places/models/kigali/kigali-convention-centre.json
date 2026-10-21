@@ -1,0 +1,557 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-convention-centre",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:An_aerial_of_Kigali_Convention_Center_on_June_19,_2019._Photo_by_Emmanuel_Kwizera.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Emmanuelkwizera",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kigali/convention-centre-0.jpg",
+   "used": "layout: ribbed silver dome in the middle of a low podium, flat-roofed hall wing to the right, detached curved six-storey hotel wing to the left, rust and blue striped hotel skin, loop road and car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kigali_Convention_center,_Rwanda.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jim Joel",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/convention-centre-7.jpg",
+   "used": "horizontal ribs of the dome, long glazed entrance front with a blank sign board, dark upper wall of the hall, palm beside the entrance"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/13200013",
+   "used": "overall extent of the complex (about 200 m by 86 m); parts placed by hand from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "polygon": [
+     [
+      -22,
+      -16
+     ],
+     [
+      22,
+      -16
+     ],
+     [
+      22,
+      16
+     ],
+     [
+      -22,
+      16
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a58a",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "curtain"
+    },
+    "glassColour": "#7f98a6",
+    "windowRatio": 0.55
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9916f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    40,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc7b8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.3,
+    "glassColour": "#6f8793",
+    "faces": {
+     "front": "curtain"
+    },
+    "cornice": true,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4e2dc",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#aeb6bc",
+    "profile": [
+     [
+      17,
+      0
+     ],
+     [
+      17,
+      4
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      6,
+      16
+     ],
+     [
+      0.3,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    6
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#aeb6bc",
+    "profile": [
+     [
+      17,
+      0,
+      "#aeb6bc"
+     ],
+     [
+      17,
+      2.5,
+      "#aeb6bc"
+     ],
+     [
+      17.11,
+      3.36,
+      "#8c969d"
+     ],
+     [
+      17.19,
+      4.22,
+      "#c8ced2"
+     ],
+     [
+      17.22,
+      5.08,
+      "#8c969d"
+     ],
+     [
+      17.2,
+      5.94,
+      "#c8ced2"
+     ],
+     [
+      17.11,
+      6.81,
+      "#8c969d"
+     ],
+     [
+      16.95,
+      7.67,
+      "#c8ced2"
+     ],
+     [
+      16.7,
+      8.53,
+      "#8c969d"
+     ],
+     [
+      16.36,
+      9.39,
+      "#c8ced2"
+     ],
+     [
+      15.92,
+      10.25,
+      "#8c969d"
+     ],
+     [
+      15.36,
+      11.11,
+      "#c8ced2"
+     ],
+     [
+      14.69,
+      11.97,
+      "#8c969d"
+     ],
+     [
+      13.87,
+      12.83,
+      "#c8ced2"
+     ],
+     [
+      12.9,
+      13.69,
+      "#8c969d"
+     ],
+     [
+      11.74,
+      14.56,
+      "#c8ced2"
+     ],
+     [
+      10.32,
+      15.42,
+      "#8c969d"
+     ],
+     [
+      8.55,
+      16.28,
+      "#c8ced2"
+     ],
+     [
+      6.13,
+      17.14,
+      "#8c969d"
+     ],
+     [
+      0.3,
+      18.0,
+      "#c8ced2"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome-mast",
+   "at": [
+    0,
+    0,
+    22
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d7dde1",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.2,
+      6
+     ],
+     [
+      0.05,
+      9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hotel",
+   "at": [
+    -52,
+    -2,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -25.4,
+      9.2
+     ],
+     [
+      -27.0,
+      -1.2
+     ],
+     [
+      -24.5,
+      -11.4
+     ],
+     [
+      -18.2,
+      -19.9
+     ],
+     [
+      -9.2,
+      -25.4
+     ],
+     [
+      1.2,
+      -27.0
+     ],
+     [
+      11.4,
+      -24.5
+     ],
+     [
+      19.9,
+      -18.2
+     ],
+     [
+      25.4,
+      -9.2
+     ],
+     [
+      12.2,
+      -4.4
+     ],
+     [
+      9.6,
+      -8.8
+     ],
+     [
+      5.5,
+      -11.8
+     ],
+     [
+      0.6,
+      -13.0
+     ],
+     [
+      -4.4,
+      -12.2
+     ],
+     [
+      -8.8,
+      -9.6
+     ],
+     [
+      -11.8,
+      -5.5
+     ],
+     [
+      -13.0,
+      -0.6
+     ],
+     [
+      -12.2,
+      4.4
+     ]
+    ],
+    "height": 21,
+    "bay": 6,
+    "colour": "#b5654a",
+    "windows": "none",
+    "windowRatio": 0.32,
+    "glassColour": "#a58a78",
+    "storeys": 6,
+    "trimColour": "#d98a4a",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#b5654a",
+       "#d98a4a",
+       "#5b86a8",
+       "#b5654a",
+       "#d98a4a",
+       "#5b86a8"
+      ]
+     }
+    ],
+    "plinth": 0.4,
+    "topColour": "#c9c6bf"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    40,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 26,
+    "depth": 8,
+    "height": 5,
+    "colour": "#dfe3e4",
+    "edgeColour": "#8d969c",
+    "columns": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     18,
+     0.8
+    ]
+   },
+   "at": [
+    40,
+    -7
+   ],
+   "z0": 8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e8eaec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaec"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ring-road",
+   "params": {
+    "rect": [
+     150,
+     7
+    ],
+    "height": 0.06,
+    "colour": "#4b4e52"
+   },
+   "at": [
+    0,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car-park",
+   "params": {
+    "rect": [
+     70,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#5a5d60"
+   },
+   "at": [
+    10,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn-front",
+   "params": {
+    "rect": [
+     40,
+     10
+    ],
+    "height": 0.08,
+    "colour": "#5d9a4a"
+   },
+   "at": [
+    -20,
+    -22,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   160,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -32
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "ground renders grey not green, ring road is a straight strip not a loop, hotel crescent is faceted, dome ribs are colour bands only"
+ }
+}

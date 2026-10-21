@@ -1,0 +1,422 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-663055373",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dulwich_Hamlet_v_Enfield_Town,_27_April_2017_(30).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Katie Chan",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/663055373_0.jpg",
+   "used": "north main stand: buff brick two-storey rear block with banded courses and small windows, long flat grey cantilever canopy over a raked terrace, steel rails, glazed dugouts at pitch edge, smaller low brick building to the right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dulwich_Hamlet_v_Enfield_Town,_27_April_2017_(01).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Katie Chan",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/663055373_1.jpg",
+   "used": "opposite covered terrace: low and long, flat dark grey fascia roof, brick back wall, pink and navy banners, tall broadleaf trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/663055373",
+   "used": "orientation and overall extent only (the outline is the whole leisure=stadium site, not the stands)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "depth": 11,
+    "height": 11,
+    "roof": "cantilever",
+    "rear": "punched",
+    "storeys": 2,
+    "seat_colour": "#2c3a66",
+    "seat_colour2": "#d8749d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     62,
+     7
+    ]
+   },
+   "at": [
+    0,
+    37
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#cdb98a",
+    "windows": "ribbon",
+    "windowRatio": 0.05,
+    "plinth": 0.2,
+    "bands": "#c8663a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a6f73",
+    "parapet": 0.5,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 64,
+    "depth": 13,
+    "height": 12,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#5d6670",
+    "edgeColour": "#4a525a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    17.5,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 5,
+    "depth": 2.2,
+    "height": 2.3,
+    "thickness": 0.12,
+    "colour": "#dfe9ef",
+    "edgeColour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    17.5,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 5,
+    "depth": 2.2,
+    "height": 2.3,
+    "thickness": 0.12,
+    "colour": "#dfe9ef",
+    "edgeColour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    44,
+    34
+   ],
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4ad7e",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a5560",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "pitch": 8
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 46,
+    "depth": 6,
+    "height": 5.2,
+    "roof": "cantilever",
+    "rear": "none",
+    "storeys": 1,
+    "seat_colour": "#1d2b53",
+    "seat_colour2": "#d8749d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-terrace-west",
+   "footprint": {
+    "rect": [
+     5,
+     34
+    ]
+   },
+   "at": [
+    -56,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a8a2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f908c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-terrace-east",
+   "footprint": {
+    "rect": [
+     5,
+     34
+    ]
+   },
+   "at": [
+    56,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a8a2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f908c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 1.4,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2c3036"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    62,
+    26,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 1.5,
+    "board_colour": "#1d2b53"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    52,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    25,
+    57,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    19.2,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "height": 1.3,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#2c3036"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    24,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8,
+    "height": 1.2,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#4a525a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Canopy raised to a deep flat cantilever, rear block taller with sparse windows and orange bands, fence and two dugouts added; crowd, diagonal steel stair and glazing on dugouts still missing"
+ }
+}

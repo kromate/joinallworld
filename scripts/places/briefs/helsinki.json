@@ -1,0 +1,1606 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "helsinki",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "helsinki",
+    "climate": "cold",
+    "vernacular": "Neoclassical Empire core in pale yellow and white stucco; Jugend/National Romantic granite and plaster apartment blocks; white and pale functionalist blocks of the 1930s; 1950s-60s prefabricated concrete and plastered or brick suburban estates with flat or low-pitched roofs; red-ochre painted wooden villas and sheds; and modern glass, brick and timber commercial, campus and sports buildings. Dark sheet-metal or bitumen roofs, birch and pine around everything, snow in winter.",
+    "wallColours": [
+      "#e9e6dd",
+      "#d8c58a",
+      "#b38f80",
+      "#9a4a3a",
+      "#a8a9a6",
+      "#8a3b2e",
+      "#c9c3b2"
+    ],
+    "roofColours": [
+      "#3a3d40",
+      "#6e7378",
+      "#7a2f26",
+      "#8a4b3a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "granite",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain",
+      "timber",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "membrane",
+      "copper",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Jugend granite masonry with squat tower, arch and carved figures; neoclassical pilasters and cornices; red brick gables and window surrounds on Gothic Revival buildings; red-ochre (punamulta) painted timber; copper window frames and green copper roofs on civic buildings; large plain functionalist window bands; birch groves and granite outcrops.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Helsinki",
+        "what": "Materials and styles: neoclassical Empire core, Jugendstil/National Romantic, red-brick Gothic Revival, red-ochre timber, 1960s prefabricated concrete housing"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Helsinki_Central_Station",
+        "what": "Eliel Saarinen late Art Nouveau station of Hanko red granite, copper window frames, iron sheet roof, clock tower, lantern-bearer statues"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Veikkaus_Arena",
+        "what": "Elliptical 153 x 123 m arena of 1997 by SCI Architects"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ruoholahti",
+        "what": "Ruoholahti redevelopment: former Alko headquarters turned shopping centre in 2002, canal and modern offices"
+      }
+    ]
+  },
+  "places": {
+    "helsinki-airport-helsinki-airport": {
+      "venueId": "helsinki-airport-helsinki-airport",
+      "city": "helsinki",
+      "name": "Helsinki Vantaa Airport",
+      "archetype": "airport-terminal",
+      "subject": "Helsinki Airport terminal landside facade: a long, white-and-grey glazed terminal with a flat roof and a control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6dadc",
+          "#7d8c96",
+          "#e9e6dd"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 36,
+          "note": "36 stands with passenger bridges"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower completed 1996"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1969 terminal, expanded 2009-2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Helsinki_Airport",
+          "what": "Terminal opened 1969, expanded 2009 to 43,908 m2, 36 stands with passenger bridges, new control tower 1996, development programme completed 2023"
+        }
+      ],
+      "notes": "The OSM match was the Hilton hotel, so no OSM facts used. Facade colours estimated: sources give dates, floor area and bridge count only."
+    },
+    "helsinki-clinic": {
+      "venueId": "helsinki-clinic",
+      "city": "helsinki",
+      "name": "Malmi Hospital",
+      "archetype": "hospital",
+      "subject": "Malmi Hospital, a large hospital campus of mid-rise plastered blocks in pale yellow-grey with flat roofs",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d2b8",
+          "#a8a9a6",
+          "#e9e6dd"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/333579518",
+          "what": "OpenStreetMap object tags and measured footprint (398.5 x 188.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11880714",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM complex 398 x 188 m (Q11880714). Finnish mid-century hospital style assumed; no building description fetched."
+    },
+    "helsinki-community-notices": {
+      "venueId": "helsinki-community-notices",
+      "city": "helsinki",
+      "name": "Finnish Institute for Health and Welfare",
+      "archetype": "office-low",
+      "subject": "The Finnish Institute for Health and Welfare (THL) premises on Mannerheimintie: a long four-storey office and laboratory block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0dccf",
+          "#7d8c96",
+          "#a8a9a6"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1537107750",
+          "what": "OpenStreetMap object tags and measured footprint (226.5 x 97.2 m bbox)"
+        }
+      ],
+      "notes": "OSM building=office 226 x 97 m containing the point; no description of the building found. Model is the main block clamped to 120 m."
+    },
+    "helsinki-community-voting-game": {
+      "venueId": "helsinki-community-voting-game",
+      "city": "helsinki",
+      "name": "Arabianaukio",
+      "archetype": "shophouse",
+      "subject": "A small kiosk at Arabianaukio, an urban plaza near the Arabia ceramics area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 3.1,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "kiosk"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#5c6b78",
+          "#8a8f94",
+          "#e9e6dd"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/52118654",
+          "what": "OpenStreetMap object tags and measured footprint (5 x 3.1 m bbox)"
+        }
+      ],
+      "notes": "OSM building=kiosk 5 x 3 m, 10 m from the venue point. Colours typed."
+    },
+    "helsinki-community-workshop": {
+      "venueId": "helsinki-community-workshop",
+      "city": "helsinki",
+      "name": "Roihuvuoren kirjasto",
+      "archetype": "campus-block",
+      "subject": "Roihuvuori library, a low flat-roofed public library in the 1960s Roihuvuori suburb centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e0dccf",
+          "#9a4a3a",
+          "#a8a9a6"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-70s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/16189641",
+          "what": "OpenStreetMap object tags and measured footprint (22.9 x 14.9 m bbox)"
+        }
+      ],
+      "notes": "OSM building=public 22.9 x 14.9 m. Era and finishes guessed from Finnish suburb centres; no description found."
+    },
+    "helsinki-market-game": {
+      "venueId": "helsinki-market-game",
+      "city": "helsinki",
+      "name": "Centre commercial de Vantaanpuisto",
+      "archetype": "mall",
+      "subject": "Vantaanpuisto shopping centre, a 1967 modernist shopping parade designed by Aarne Ervi: a long two-storey block with flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e0dccf",
+          "#9a4a3a",
+          "#a8a9a6"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1967",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/27518041",
+          "what": "OpenStreetMap object tags and measured footprint (84.6 x 31.2 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11900403",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM: architect Aarne Ervi, start_date 1967, building=retail, 84.6 x 31.2 m (Q11900403). Facade colours are typed from similar Ervi-era centres."
+    },
+    "helsinki-meal-stop": {
+      "venueId": "helsinki-meal-stop",
+      "city": "helsinki",
+      "name": "Robert's Coffee",
+      "archetype": "mall",
+      "subject": "Jumbo, the big three-level shopping centre beside Helsinki Airport that houses the Roberts Coffee cafe: wide metal-panel and glass boxes with a central entrance atrium",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfd3d4",
+          "#5c6b78",
+          "#e9e6dd"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank pylon"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/5052826",
+          "what": "OpenStreetMap object tags and measured footprint (335.5 x 260.9 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3739529",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=retail, 3 levels, 335 x 261 m (Q3739529, Jumbo). Opening year from general knowledge. The cafe is inside; the model shows the mall entrance block."
+    },
+    "helsinki-osm-node-9712397575": {
+      "venueId": "helsinki-osm-node-9712397575",
+      "city": "helsinki",
+      "name": "Friends & Brgrs",
+      "archetype": "restaurant",
+      "subject": "A burger restaurant in the Kaari shopping centre in Kannelmaki: a ground-floor unit on a flat-roofed brick-and-plaster shopping block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e0dccf",
+          "#9a4a3a",
+          "#a8a9a6"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-80s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/31820492",
+          "what": "OpenStreetMap object tags and measured footprint (233.4 x 215.9 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11870592",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM block Kaari (Q11870592), building=block, 4 m, 233 x 216 m. The unit itself is a guess; no brand marks."
+    },
+    "helsinki-osm-way-115770414": {
+      "venueId": "helsinki-osm-way-115770414",
+      "city": "helsinki",
+      "name": "Viikki campus",
+      "archetype": "campus-block",
+      "subject": "Viikki campus, University of Helsinki: low brick, render and timber science buildings of the 1990s ecological suburb",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e0dccf",
+          "#9a6a4a",
+          "#7d8c96"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/115770414",
+          "what": "OpenStreetMap object tags and measured footprint (757.1 x 694.6 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7929057",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM university area 757 x 695 m (Q7929057). Colours and materials are a guess; no building described."
+    },
+    "helsinki-osm-way-123034962": {
+      "venueId": "helsinki-osm-way-123034962",
+      "city": "helsinki",
+      "name": "Vesikko",
+      "archetype": "monument",
+      "subject": "Vesikko, the Finnish WWII submarine displayed on the shore of Artillery Bay on Suomenlinna: a long narrow hull with a small conning tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "submarine-hull"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#5b6660",
+          "#8a3b2e",
+          "#3a3d40"
+        ],
+        "roofColour": "#5b6660",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "access stair to the hatch"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1933 vessel, museum since 1973",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/123034962",
+          "what": "OpenStreetMap object tags and measured footprint (40.5 x 4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1312530",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vesikko",
+          "what": "Length 40.9 m, beam 4.08 m, height 8.18 m; museum on Susisaari island, Suomenlinna, opened 9 July 1973"
+        }
+      ],
+      "notes": "OSM building colour=red probably denotes the red hull bottom; the upper hull is shown grey-green (assumed). Height 8.18 m includes the keel."
+    },
+    "helsinki-osm-way-17038654": {
+      "venueId": "helsinki-osm-way-17038654",
+      "city": "helsinki",
+      "name": "Kulosaaren Casino",
+      "archetype": "restaurant",
+      "subject": "Kulosaaren Casino, a 1915 Armas Lindgren restaurant building on a rocky islet at the southern tip of Kulosaari: a two-storey wooden-and-plaster villa-style building with a steep roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 33,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e4d9b5",
+          "#7a8f7a",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f6a5a",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "seaside terrace"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "1915",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/17038654",
+          "what": "OpenStreetMap object tags and measured footprint (33.1 x 29.5 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11873284",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://fi.wikipedia.org/wiki/Kulosaaren_Casino",
+          "what": "Designed by Armas Lindgren, restaurant established 1915, on a rocky islet at the southern tip of Kulosaari"
+        }
+      ],
+      "notes": "Architect, date, footprint 33 x 29.5 m and seaside setting are documented. Colours, materials and roof are estimated; verify against a photograph before art-directing."
+    },
+    "helsinki-osm-way-218286514": {
+      "venueId": "helsinki-osm-way-218286514",
+      "city": "helsinki",
+      "name": "Leppävaaran urheilupuisto",
+      "archetype": "park-landscape",
+      "subject": "Leppavaara sports park in Espoo: sports fields, a running track and a small stand among birch and pine",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5aea3",
+          "#5d6a76",
+          "#d6dadc"
+        ],
+        "roofColour": "#6a6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/218286514",
+          "what": "OpenStreetMap object tags and measured footprint (1004 x 440.7 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18660549",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM park 1004 x 441 m (Q18660549). Contents typed; no description fetched."
+    },
+    "helsinki-osm-way-23704046": {
+      "venueId": "helsinki-osm-way-23704046",
+      "city": "helsinki",
+      "name": "National Defence University of Finland",
+      "archetype": "campus-block",
+      "subject": "National Defence University at Santahamina: a military college on an island garrison with long three-storey plastered barracks-style blocks in pale yellow",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8c58a",
+          "#e9e6dd",
+          "#8a3b2e"
+        ],
+        "roofColour": "#7a2f26",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "garrison buildings from c1900, later additions",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/23704046",
+          "what": "OpenStreetMap object tags and measured footprint (415.9 x 382.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3041652",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM university site 416 x 382 m (Q3041652). Yellow plaster and red roofs are an assumption from Santahamina garrison architecture; not verified."
+    },
+    "helsinki-osm-way-240369113": {
+      "venueId": "helsinki-osm-way-240369113",
+      "city": "helsinki",
+      "name": "Viipurinkivi",
+      "archetype": "monument",
+      "subject": "Viipurinkivi, a memorial boulder with a plaque on a small grassy rise",
+      "form": {
+        "footprint": "round",
+        "width_m": 3,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 2.5,
+        "roof": "none",
+        "variant": "boulder"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/240369113",
+          "what": "OpenStreetMap object tags and measured footprint (11.4 x 10.1 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20249941",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM historic=stone, 11 x 10 m surround (Q20249941). The boulder is assumed to be granite with a plaque, size guessed."
+    },
+    "helsinki-osm-way-320921828": {
+      "venueId": "helsinki-osm-way-320921828",
+      "city": "helsinki",
+      "name": "Vantaan vapaaseurakunta",
+      "archetype": "church-modern",
+      "subject": "Vantaa Free Church, a small two-storey red-brick congregation hall of 1991 with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#9a4a3a",
+          "#a8a9a6",
+          "#e9e6dd"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/320921828",
+          "what": "OpenStreetMap object tags and measured footprint (21.4 x 15 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q127784670",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM: building:levels=2, building:material=brick, start_date 1991-08-14, Free Evangelical, 21.4 x 15 m."
+    },
+    "helsinki-osm-way-378932257": {
+      "venueId": "helsinki-osm-way-378932257",
+      "city": "helsinki",
+      "name": "Linnaisten Rautakaivos",
+      "archetype": "park-landscape",
+      "subject": "Linnais iron mine in Espoo: a flooded open-cast pit and rocky workings amid pine forest",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 28,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "mine-pit"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7a7870",
+          "#8d8a80",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rock edge fence"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "historic mine",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/378932257",
+          "what": "OpenStreetMap object tags and measured footprint (51.3 x 28.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18662309",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM archaeological site 51 x 28 m (Q18662309). The visible workings are assumed, not described."
+    },
+    "helsinki-osm-way-404325219": {
+      "venueId": "helsinki-osm-way-404325219",
+      "city": "helsinki",
+      "name": "Merikylpylänpuisto",
+      "archetype": "park-landscape",
+      "subject": "Merikylpylanpuisto, a seaside park with granite outcrops, birch and pine and a shoreline path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/404325219",
+          "what": "OpenStreetMap object tags and measured footprint (643.1 x 463.1 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18660806",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM park 643 x 463 m, 77 m from the point (Q18660806). Contents typed; no description fetched."
+    },
+    "helsinki-osm-way-4254163": {
+      "venueId": "helsinki-osm-way-4254163",
+      "city": "helsinki",
+      "name": "Veikkaus Arena",
+      "archetype": "stadium",
+      "subject": "Veikkaus Arena (Hartwall Arena), Pasila: an elliptical 1997 multi-purpose indoor arena beside a multi-storey car park",
+      "form": {
+        "footprint": "oval",
+        "width_m": 153,
+        "depth_m": 123,
+        "storeys": 5,
+        "height_m": 25,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b5bcc2",
+          "#5c6b78",
+          "#d6dadc"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "adjoining car park with 1,421 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/4254163",
+          "what": "OpenStreetMap object tags and measured footprint (171.2 x 103.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q33176",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Veikkaus_Arena",
+          "what": "Elliptical building 153 m long and 123 m wide, SCI Architects, Skanska; capacity about 13,349 for ice hockey; car park for 1,421 vehicles"
+        }
+      ],
+      "notes": "OSM: building:levels=5, height 14 m, start 1997-04-19 (the roof apex is higher than the 14 m eaves). Cladding colours estimated. Oversized oval; clamped to 120 m in the scene."
+    },
+    "helsinki-osm-way-58253939": {
+      "venueId": "helsinki-osm-way-58253939",
+      "city": "helsinki",
+      "name": "Puotilan kappeli",
+      "archetype": "church-modern",
+      "subject": "Puotila Chapel, a small Lutheran chapel of the 1960s Puotila suburb: low white plastered hall with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14.4,
+        "depth_m": 13.8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e9e6dd",
+          "#9a4a3a",
+          "#a8a9a6"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "free-standing or integrated tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "mid 20th century (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/58253939",
+          "what": "OpenStreetMap object tags and measured footprint (14.4 x 13.8 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11889125",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM Lutheran place_of_worship 14.4 x 13.8 m (Q11889125). Colours and tower are guesses."
+    },
+    "helsinki-osm-way-852039737": {
+      "venueId": "helsinki-osm-way-852039737",
+      "city": "helsinki",
+      "name": "Länsiviitta",
+      "archetype": "mall",
+      "subject": "Lansiviitta, a long two-storey commercial building with shops at ground level and offices above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 143,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0dccf",
+          "#7d8c96",
+          "#a8a9a6"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/852039737",
+          "what": "OpenStreetMap object tags and measured footprint (143.5 x 38.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q108418966",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=commercial, 2 levels, 143.5 x 38.4 m (Q108418966). No building description found."
+    },
+    "helsinki-osm-way-91765309": {
+      "venueId": "helsinki-osm-way-91765309",
+      "city": "helsinki",
+      "name": "Kauppakeskus Ruoholahti",
+      "archetype": "mall",
+      "subject": "Kauppakeskus Ruoholahti, the shopping centre made from the former Alko headquarters in 2002: a wide four-level block beside the Ruoholahti canal district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 88,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b6ae",
+          "#7d8c96",
+          "#e9e6dd"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s office, converted 2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/91765309",
+          "what": "OpenStreetMap object tags and measured footprint (255.2 x 88.5 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11870600",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ruoholahti",
+          "what": "Former headquarters of state alcohol company Alko transformed in 2002 into the Ruoholahti shopping centre"
+        }
+      ],
+      "notes": "OSM: building=retail, 4 levels, 255 x 88 m. Original office era and concrete/glazing finish are estimated."
+    },
+    "helsinki-osm-way-985184377": {
+      "venueId": "helsinki-osm-way-985184377",
+      "city": "helsinki",
+      "name": "Metropolia University of Applied Sciences, Myyrmäki Campus",
+      "archetype": "campus-block",
+      "subject": "Metropolia University of Applied Sciences, Myyrmaki campus: a three-level yellow-plastered campus building with multiple roof forms and dark roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ffff66",
+          "#7d8c96",
+          "#3a3d40"
+        ],
+        "roofColour": "#000000",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/554713503",
+          "what": "OpenStreetMap object tags and measured footprint (154.6 x 138.2 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5710515",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM: building:colour=#FFFF66, roof:colour=#000000, roof:shape=many, 3 levels, 154.6 x 138.2 m. The bright yellow is the surveyed OSM colour; a paler real tone is likely, so main colour is kept as tagged for the generator."
+    },
+    "helsinki-quiet-reflection": {
+      "venueId": "helsinki-quiet-reflection",
+      "city": "helsinki",
+      "name": "Vaaralan kappeli",
+      "archetype": "church-modern",
+      "subject": "Vaarala Chapel, a modest Lutheran chapel of 1960: a low white-plastered hall with a pitched roof and a slender tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e9e6dd",
+          "#9a4a3a",
+          "#a8a9a6"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "1960",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/119591025",
+          "what": "OpenStreetMap object tags and measured footprint (30.8 x 18.8 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11899945",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=church, start_date 1960-09-23, 30.8 x 18.8 m (Q11899945). Finnish modernist chapel look assumed; colours unverified."
+    },
+    "helsinki-recreation": {
+      "venueId": "helsinki-recreation",
+      "city": "helsinki",
+      "name": "Silkkiniitty",
+      "archetype": "park-landscape",
+      "subject": "Silkkiniitty, a designed park of open meadows with paths, birch groves and pine edges (landscape design by Jussi Jannes)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "2000s-2010s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/4820257",
+          "what": "OpenStreetMap object tags and measured footprint (695.8 x 315 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q121004734",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM park 696 x 315 m, architect Jussi Jannes (Q121004734). Contents typed; no description fetched."
+    },
+    "helsinki-transit": {
+      "venueId": "helsinki-transit",
+      "city": "helsinki",
+      "name": "Helsinki",
+      "archetype": "transport-station",
+      "subject": "Helsinki Central Station by Eliel Saarinen: a heavy Hanko red-granite facade with a tall clock tower, a large semicircular arched window, pilasters, and four lantern-bearer statues at the entrance, with a long steel and glass platform roof behind",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 95,
+        "storeys": 4,
+        "height_m": 25,
+        "roof": "mansard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "red-brick",
+        "colours": [
+          "#b38f80",
+          "#8a6f62",
+          "#c9c3b2"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tallest tower in Helsinki when completed"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "large semicircular window above entrance"
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "Lantern Bearers by Emil Wikstrom, two pairs"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "165 m steel and glass roof"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 6
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "pilasters without bases or capitals"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "1909-19, opened 1919",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/122595198",
+          "what": "OpenStreetMap object tags and measured footprint (184.5 x 118.9 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1044613",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Helsinki_Central_Station",
+          "what": "Late Art Nouveau heavy stone building; facade and statues of red Hanko granite, plastered and brick rear; iron sheet mansard roof; copper window frames; large semicircular window; clock tower; Lantern Bearers by Emil Wikstrom; central hall about 780 m2; platform roof about 165 m"
+        }
+      ],
+      "notes": "OSM colour #b38f80 is the granite tone. Main facade faces the Rautatientori/Kaivokatu square; the model should show the arched entrance flanked by the lantern-bearers and the tower to one side. Tower height is not in the fetched text."
+    }
+  }
+}

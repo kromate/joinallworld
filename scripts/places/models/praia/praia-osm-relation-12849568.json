@@ -1,0 +1,276 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arquivo_Hist%C3%B3rico_Nacional,_Praia,_Cape_Verde.jpg",
+   "licence": "Public domain",
+   "author": "Xandu",
+   "view": "front",
+   "file": "/tmp/places-evidence/praia/arq1.jpg",
+   "used": "two-storey central block with low hipped terracotta-red roof, pale blue-green rendered walls, pink pilasters, white arched windows and doors, lower flat-roofed wings with cornice, low boundary wall and railing"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12849568",
+   "used": "overall size 53 x 37 m (name match); rotated rectangle modelled axis-aligned along the facade"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     27,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8dad6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bay": 4.6,
+    "plinth": 0.5,
+    "cornice": true,
+    "trimColour": "#ffffff",
+    "bands": "#f2eee3"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9715a",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     13,
+     20
+    ]
+   },
+   "at": [
+    -20,
+    -2
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8dad6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bd",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     13,
+     20
+    ]
+   },
+   "at": [
+    20,
+    -2
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8dad6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4.3,
+    "plinth": 0.4,
+    "cornice": true,
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c5bd",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13,
+    -12.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "height": 11,
+    "colour": "#d9b5ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -12.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "height": 11,
+    "colour": "#d9b5ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     0.4
+    ],
+    "height": 1.1,
+    "colour": "#cfcbc2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.6,
+    5.2
+   ],
+   "params": {
+    "width": 4,
+    "height": 0.7,
+    "bottom": 0,
+    "colour": "#f2eee3",
+    "frameColour": "#8d8a84",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#d6d2c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -17,
+     -17
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -7,
+     -17
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     7,
+     -17
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     27,
+     -17
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -27,
+     -17
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-relation-12849568",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Central block, hip roof, wings, colours and arched windows match; missing the left-rear tile roof, ground-floor door detail, railing and cars; building depth axis-aligned instead of the OSM rotation"
+ }
+}

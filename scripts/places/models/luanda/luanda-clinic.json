@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/224360779",
+   "used": "real outline: near-square block about 70 x 73 m, area 4,784 m2"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Luanda",
+   "used": "city context only; pale render with blue band typed from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece0c6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#4a7ba0",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9190",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -37,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 2,
+    "colour": "#f4f1ea",
+    "roofColour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -38,
+    4.4
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.8,
+    "bottom": 0,
+    "colour": "#f4f1ea",
+    "frameColour": "#b3262c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    22,
+    10,
+    12.5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3,
+    "legHeight": 3,
+    "legs": 4,
+    "colour": "#4a7ba0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ambulance-bay",
+   "at": [
+    -24,
+    -41,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     6
+    ],
+    "height": 3.4,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "carpark",
+   "at": [
+    10,
+    -52,
+    0
+   ],
+   "params": {
+    "rect": [
+     46,
+     12
+    ],
+    "height": 0.05,
+    "colour": "#4b4e50"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -44,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   120,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the hospital: real OSM outline with 3 storeys, pale render, blue band, ambulance bay, car park from the brief; facade, window rhythm and height are typed, not seen."
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-shopping-fortaleza",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/369001086",
+   "used": "real 179 x 92 m outline (name match, height 5 m), scaled to fit the 118 m clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Luanda",
+   "used": "brief: two-storey pale-render shopping centre with a terracotta-coloured entrance and parking; no photo of the building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede2c8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 8,
+    "plinth": 0.3,
+    "bands": "#b5543a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9190",
+    "parapet": 0.7,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-block",
+   "at": [
+    15.9,
+    -31.6,
+    0
+   ],
+   "rotDeg": 29,
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "height": 11,
+    "colour": "#b5543a",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    17.1,
+    -33.8,
+    0
+   ],
+   "rotDeg": 29,
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 4,
+    "colour": "#d9d2c0",
+    "columns": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10.5,
+    -27.5,
+    0
+   ],
+   "rotDeg": 29,
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 9,
+    "colour": "#b5543a",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    24,
+    -45,
+    0
+   ],
+   "rotDeg": 29,
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13.5,
+    -33.2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17.7,
+    -35.9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building; outline real (scaled down), facade and entrance placement typed from the brief. Entrance and car park positions are guesses along the front edge."
+ }
+}

@@ -1,0 +1,566 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "al-hikmah-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ALHIKMAH_UNIVERSITY.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Micheal Oluwaseun Fatade",
+   "view": "street",
+   "file": "/tmp/places-evidence/ilorin/alhikmah.jpg",
+   "used": "two-storey cream rendered blocks around a lawn, open upper galleries with white balustrade, slim green columns, low green hipped roofs, green-capped turret/dome at the right, big shade trees, palms, blank sign board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/589644243",
+   "used": "campus boundary only (about 590 x 410 m, too large to model; one lecture quadrangle is composed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-north",
+   "footprint": {
+    "rect": [
+     52,
+     12
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eddf9a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.4,
+    "bands": "#e9dfb4"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3b6a47",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    30,
+    2
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eddf9a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "faces": {
+     "left": "none",
+     "right": "punched",
+     "front": "punched",
+     "back": "punched"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3b6a47",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque-hall",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    34
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2bc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.0,
+    "colour": "#f4f1e4",
+    "frameColour": "#2f8a4f"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -4,
+    6,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "rect": [
+     84,
+     56
+    ],
+    "z0": 0,
+    "height": 0.03,
+    "colour": "#b4c04e"
+   },
+   "at": [
+    -2,
+    8
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gallery-slab",
+   "params": {
+    "rect": [
+     52,
+     2.6
+    ],
+    "z0": 3.9,
+    "height": 0.3,
+    "colour": "#f1ead0"
+   },
+   "at": [
+    0,
+    16.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gallery-roof",
+   "params": {
+    "rect": [
+     52,
+     2.8
+    ],
+    "z0": 8,
+    "height": 0.3,
+    "colour": "#e9dfb4"
+   },
+   "at": [
+    0,
+    16.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "east-slab",
+   "params": {
+    "rect": [
+     2.6,
+     40
+    ],
+    "z0": 3.9,
+    "height": 0.3,
+    "colour": "#f1ead0"
+   },
+   "at": [
+    22.7,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "east-roof",
+   "params": {
+    "rect": [
+     2.8,
+     40
+    ],
+    "z0": 8,
+    "height": 0.3,
+    "colour": "#e9dfb4"
+   },
+   "at": [
+    22.7,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail-top",
+   "params": {
+    "rect": [
+     52,
+     0.15
+    ],
+    "z0": 5.1,
+    "height": 0.12,
+    "colour": "#2f8a4f"
+   },
+   "at": [
+    0,
+    15.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail-base",
+   "params": {
+    "rect": [
+     52,
+     0.15
+    ],
+    "z0": 4.2,
+    "height": 0.12,
+    "colour": "#2f8a4f"
+   },
+   "at": [
+    0,
+    15.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "bal-north",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 48,
+    "start": [
+     -25.5,
+     15.5
+    ],
+    "end": [
+     25.5,
+     15.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "z0": 4.2,
+      "height": 0.95,
+      "colour": "#2f8a4f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-north-low",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -25,
+     15.6
+    ],
+    "end": [
+     25,
+     15.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 3.9,
+      "colour": "#2f8a4f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-north-up",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 14,
+    "start": [
+     -25,
+     15.6
+    ],
+    "end": [
+     25,
+     15.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 4.2,
+      "height": 3.8,
+      "colour": "#2f8a4f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "bal-east",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 36,
+    "start": [
+     23.4,
+     -18
+    ],
+    "end": [
+     23.4,
+     22
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "z0": 4.2,
+      "height": 0.95,
+      "colour": "#2f8a4f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-east-low",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     23.4,
+     -18
+    ],
+    "end": [
+     23.4,
+     22
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 3.9,
+      "colour": "#2f8a4f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "col-east-up",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     23.4,
+     -18
+    ],
+    "end": [
+     23.4,
+     22
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 4.2,
+      "height": 3.8,
+      "colour": "#2f8a4f"
+     }
+    }
+   }
+  },
+  {
+   "type": "turret-conical",
+   "at": [
+    36.5,
+    -21
+   ],
+   "params": {
+    "radius": 2.2,
+    "height": 12,
+    "coneHeight": 5,
+    "sides": 12,
+    "colour": "#eddf9a",
+    "capColour": "#2f8a4f"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    10,
+    14
+   ],
+   "params": {
+    "height": 3.9,
+    "length": 7,
+    "width": 1.4,
+    "colour": "#e9dfb4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "spread": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only one quadrangle of a 590 m campus is modelled; ground-floor arches are plain bays between green columns; exterior stair and turret are simple stock forms; trees are low-poly stand-ins."
+ }
+}

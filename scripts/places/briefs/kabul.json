@@ -1,0 +1,1804 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kabul",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kabul",
+    "climate": "highland",
+    "vernacular": "Hindu Kush valley city at about 1,800 m: dense hillside neighbourhoods of flat-roofed mud-brick (pakhsa) and concrete-frame houses in dun, ochre and washed pastel render stacked up the slopes behind high courtyard walls, 1960s brutalist ministries and Soviet-style microrayon blocks, Amanullah-era Italianate stucco palaces and mosques, blue-tiled domes on the main shrines, and dusty poplar, mulberry and plane trees along the Kabul river.",
+    "wallColours": [
+      "#b8a07e",
+      "#c9b08a",
+      "#9c8666",
+      "#d8c8a8",
+      "#cfa77a",
+      "#e5ddc9",
+      "#8f9aa0"
+    ],
+    "roofColours": [
+      "#8a7a64",
+      "#7d7f80",
+      "#a8502f",
+      "#3f6f9a"
+    ],
+    "wallMaterials": [
+      "mud-render",
+      "concrete",
+      "brick",
+      "render",
+      "painted-render",
+      "stucco",
+      "marble"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "broadleaf",
+      "none"
+    ],
+    "ornament": "Mughal and Timurid arched niches and jali screens; blue and turquoise glazed tile on domes and minarets; Amanullah-era Italianate stucco swags and pilasters (\"Afghan Baroque\"); carved timber door frames and balcony lattice; high mud-brick courtyard walls with blast barriers and razor-wire on modern compounds.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kabul",
+        "what": "cold semi-arid highland climate; hill neighbourhoods; 1960s brutalist ministries and Soviet-style microrayon estates; European-style Dilkusha palace; Shah-Do Shamshira"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gardens_of_Babur",
+        "what": "pakhsa (hand-laid earth) and sun-dried brick perimeter walls on stone foundations; planes, cypress, fruit trees; white marble mosque"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Shah-Do_Shamshira_Mosque",
+        "what": "yellow stucco, Italian-style ornament, \"Afghan Baroque\""
+      }
+    ]
+  },
+  "places": {
+    "kabul-airport-kabul-airport": {
+      "venueId": "kabul-airport-kabul-airport",
+      "city": "kabul",
+      "name": "Kabul International Airport (Hamid Karzai)",
+      "archetype": "airport-terminal",
+      "subject": "the 2008 JICA-funded international terminal on the airfield approach: a two-level glass-and-concrete hall with two jet bridges and a separate control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4cdbd",
+          "#6f8591",
+          "#f1eee6"
+        ],
+        "roofColour": "#b9b4a8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "two jetbridges"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hamid_Karzai_International_Airport",
+          "what": "international terminal opened 2008 (USD 35 M, JICA-funded) with two jetbridges; original 1960 Soviet-built domestic terminal; control tower"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q744802",
+          "what": "Wikidata match \"Kabul International Airport\""
+        }
+      ],
+      "notes": "Exact footprint is unmeasured (no OSM building matched); the size and glazing are estimates. The older 1960 Soviet domestic terminal is a different, smaller building."
+    },
+    "kabul-clinic": {
+      "venueId": "kabul-clinic",
+      "city": "kabul",
+      "name": "French Medical Institute for Children",
+      "archetype": "hospital",
+      "subject": "a compact three-storey modern children's hospital in light render with a small entrance canopy and an ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfcd",
+          "#a8a08a",
+          "#f4f1e8"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "compound wall"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5501844",
+          "what": "hospital opened 2006 (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/926051502",
+          "what": "OSM footprint 40.7 x 24.4 m (994 m2) and tags {\"amenity\":\"hospital\",\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint 40.7 x 24.4 m measured from OSM; storeys and colours are assumed from the 2006 build date. Low confidence: building not described in any source found; typed from the city style and the place type."
+    },
+    "kabul-community-notices": {
+      "venueId": "kabul-community-notices",
+      "city": "kabul",
+      "name": "National Assembly of Afghanistan",
+      "archetype": "civic-palace",
+      "subject": "the India-built parliament at Darulaman: a very broad cream-stone building with a deep columned frontage and a tall central dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 156,
+        "depth_m": 116,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "marble",
+        "colours": [
+          "#e4d9bd",
+          "#b8a47e",
+          "#f4eede"
+        ],
+        "roofColour": "#8d8a78",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "frontal colonnade"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "mughal",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/5307575",
+          "what": "OSM building 156 x 116 m tagged House of the People (Q2108181)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2108181",
+          "what": "Wikidata match \"House of the People\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/5307575",
+          "what": "OSM footprint 156.3 x 116.3 m (8769 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Footprint is measured (OSM relation 5307575). The cream sandstone colour, dome and colonnade follow memory of the building opened in 2015 and are not confirmed by a retrieved source; the building has been repurposed since 2021."
+    },
+    "kabul-community-voting-game": {
+      "venueId": "kabul-community-voting-game",
+      "city": "kabul",
+      "name": "Mamoriat Square",
+      "archetype": "park-landscape",
+      "subject": "a busy traffic roundabout and small plaza in east Kabul with a low kiosk and concrete kerbs",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9bfa8",
+          "#8c8c88",
+          "#e2dccb"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/944931978",
+          "what": "OSM footprint 13.3 x 8.8 m (117 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Only a 13 x 9 m unnamed building was matched nearby; nothing describes the square."
+    },
+    "kabul-community-workshop": {
+      "venueId": "kabul-community-workshop",
+      "city": "kabul",
+      "name": "Dawat University",
+      "archetype": "campus-block",
+      "subject": "a long four-storey private university building in light render with ribbon windows and a roof terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 24,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d8bd",
+          "#a9967a",
+          "#f3efe3"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "compound wall"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dawat_University",
+          "what": "private university, established 2009"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5242285",
+          "what": "Wikidata match \"Dawat University\", inception 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/706056301",
+          "what": "OSM footprint 228.1 x 46.4 m (10443 m2) and tags {\"amenity\":\"university\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. The OSM campus polygon is 228 x 46 m, the model uses a 100 m portion."
+    },
+    "kabul-market-game": {
+      "venueId": "kabul-market-game",
+      "city": "kabul",
+      "name": "Kabul City Centre",
+      "archetype": "mall",
+      "subject": "the 2005 ten-storey shopping centre and hotel, a postmodern glass-and-stone block with a rounded corner, ringed by blast walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 69,
+        "depth_m": 62,
+        "storeys": 10,
+        "height_m": 42,
+        "roof": "flat",
+        "variant": "mall with hotel on upper six floors"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "sandstone",
+        "colours": [
+          "#7f9ba8",
+          "#cdbb9a",
+          "#e9e3d4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed atrium"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "blast barrier"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "2005",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kabul_City_Center",
+          "what": "10 floors, postmodern shopping mall and Safi Landmark hotel on top six floors, USD 35 M, glazing replaced with blast-resistant glass in 2010"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1306745341",
+          "what": "OSM footprint 68.8 x 62 m (3474 m2) and tags {\"building\":\"retail\"}"
+        }
+      ],
+      "notes": "Storeys, type and size are sourced. Specific colours (blue-green glass, pale stone) are estimates from typical appearance."
+    },
+    "kabul-meal-stop": {
+      "venueId": "kabul-meal-stop",
+      "city": "kabul",
+      "name": "China Lanzhou Beef Noodles",
+      "archetype": "restaurant",
+      "subject": "a narrow one-storey noodle shop with a glazed shopfront and a red awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5dcc6",
+          "#b43a2f",
+          "#f2eee2"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1067933081",
+          "what": "OSM footprint 17.3 x 7 m (113 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint 17 x 7 m is the matched OSM building; no brand marks or lettering."
+    },
+    "kabul-osm-node-13597152438": {
+      "venueId": "kabul-osm-node-13597152438",
+      "city": "kabul",
+      "name": "Aqcha Restaurant",
+      "archetype": "restaurant",
+      "subject": "a two-storey wedding-hall style restaurant with a decorated tile front and an upstairs banqueting balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e9ddc2",
+          "#3f8f9a",
+          "#f4efe2"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/945315763",
+          "what": "OSM footprint 21.1 x 18.8 m (396 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint 21 x 19 m from the nearest OSM building; the tile front is stylistic guess."
+    },
+    "kabul-osm-node-2551955816": {
+      "venueId": "kabul-osm-node-2551955816",
+      "city": "kabul",
+      "name": "Minar-i Chakri (ruin)",
+      "archetype": "monument",
+      "subject": "the stone pedestal and brick rubble where a 28.5 m Kushan-era carved-stone pillar stood on the Shakh Baranta ridge until it collapsed in 1998",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "ruined pillar base"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#a79a82",
+          "#8e5a43",
+          "#bfb3a0"
+        ],
+        "roofColour": "#8e5a43",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stone pedestal"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1st century AD (collapsed 1998)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minar-i_Chakri",
+          "what": "pillar of carved stones about 28.5 m tall, Kushan, 1st century AD, collapsed March 1998, pedestal and brick debris remain; at about 2,500 m on the northern slope of the Shakh Baranta ridge"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q994423",
+          "what": "Wikidata match \"Minar-i Chakri\""
+        }
+      ],
+      "notes": "Standing form no longer exists; the model shows the pedestal and debris only, with sizes estimated. Do not model the original pillar without a decision from the coordinator."
+    },
+    "kabul-osm-node-7965537558": {
+      "venueId": "kabul-osm-node-7965537558",
+      "city": "kabul",
+      "name": "Restaurant Gharb Kabul",
+      "archetype": "restaurant",
+      "subject": "a small two-storey Kabul-style kebab restaurant with a flat roof and a first-floor family dining terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dccfb2",
+          "#8f7a5a",
+          "#efe9db"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/928775781",
+          "what": "OSM footprint 16.8 x 12.4 m (208 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint 16.8 x 12.4 m from the matched OSM building (west Kabul)."
+    },
+    "kabul-osm-way-1339181429": {
+      "venueId": "kabul-osm-way-1339181429",
+      "city": "kabul",
+      "name": "Bala Hissar",
+      "archetype": "heritage-fort",
+      "subject": "the ruined fortress on the Kuh-e Sher Darwaza ridge: long mud-brick and stone curtain walls stepping up the hillside with ruined bastions and a gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "hillside fortress walls"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "stone",
+        "colours": [
+          "#a38b66",
+          "#7f6c4e",
+          "#bfa985"
+        ],
+        "roofColour": "#8a7a64",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "walls about 6 m high and 3.7 m thick"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ancient, Mughal and Durrani rebuilding; ruin",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bala_Hissar,_Kabul",
+          "what": "walls 6.1 m high and 3.7 m thick running along the ridge to the river; lower and upper fortress; damaged by British, abandoned 1890s, wrecked in 1994; reconstruction agreed 2021"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q804581",
+          "what": "Wikidata match \"Bala Hissar\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1339181429",
+          "what": "OSM footprint 382.7 x 243 m (56900 m2) and tags {\"historic\":\"castle\"}"
+        }
+      ],
+      "notes": "Model the recognisable portion: a stretch of the ridge wall. Wall colour is earth-dun, estimated. OSM reserve outline is 383 x 243 m."
+    },
+    "kabul-osm-way-1494767421": {
+      "venueId": "kabul-osm-way-1494767421",
+      "city": "kabul",
+      "name": "Ghazi Stadium",
+      "archetype": "stadium",
+      "subject": "Afghanistan's oldest national stadium: an open oval bowl with a long concrete west stand and low terraces, artificial turf and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 201,
+        "depth_m": 138,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c4bcab",
+          "#3f6f9a",
+          "#e7e1d3"
+        ],
+        "roofColour": "#3f6f9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1923, renovated 2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ghazi_Stadium",
+          "what": "multi-purpose stadium opened 1923 under Amanullah Khan, 25,000 capacity, artificial turf, renovated 2011"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1521498",
+          "what": "Wikidata match \"Ghazi Stadium\", inception 1923"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8888172",
+          "what": "OSM footprint 200.8 x 138.2 m (8982 m2) and tags {\"leisure\":\"bleachers\",\"building\":\"stadium\"}"
+        }
+      ],
+      "notes": "Footprint 201 x 138 m measured from OSM (building=stadium). The roofed stand and mast count are not in the sources; confirm from a photo before final. Its oval, large size and single roofed stand differ from the cricket ground."
+    },
+    "kabul-osm-way-199353387": {
+      "venueId": "kabul-osm-way-199353387",
+      "city": "kabul",
+      "name": "Gardens of Babur (Bagh-e Babur)",
+      "archetype": "park-landscape",
+      "subject": "the Mughal terraced garden on the slope: thirteen terraces linked by a central water channel and stairs, a white marble mosque and a pavilion near the top, enclosed by mud-brick walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "mud-render",
+        "colours": [
+          "#f0ece0",
+          "#a38b66",
+          "#c9b88e"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 13,
+          "note": "garden terraces"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "restored garden pavilion"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "stone water channel and pools"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "pakhsa and sun-dried brick perimeter wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "mughal",
+      "era": "1528 garden; 1638 Shah Jahan mosque; restored 2002-2008",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gardens_of_Babur",
+          "what": "13 terraces, pavilion by Abdur Rahman Khan, Shah Jahan's 1638 marble mosque, pakhsa and sun-dried brick walls, planes, cypress, fruit trees, 11.5 ha, stone water channel with pools"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1900234",
+          "what": "Wikidata match \"Gardens of Babur\", inception 1638"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/199353387",
+          "what": "OSM footprint 461 x 299.6 m (120514 m2) and tags {\"start_date\":\"1637\",\"leisure\":\"park\"}"
+        }
+      ],
+      "notes": "The 461 x 300 m OSM polygon is much larger than the 120 m scene limit; show the central terrace sequence with the marble mosque and pavilion."
+    },
+    "kabul-osm-way-199999770": {
+      "venueId": "kabul-osm-way-199999770",
+      "city": "kabul",
+      "name": "Kabul University",
+      "archetype": "campus-block",
+      "subject": "a long three-storey early-modern university block with arched ground-floor arcades and a central entrance, in cream stucco",
+      "form": {
+        "footprint": "rect",
+        "width_m": 148,
+        "depth_m": 46,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#e3d6b6",
+          "#a9774f",
+          "#f3eee0"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arcade"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1932",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kabul_University",
+          "what": "Faculty of Medicine and Law in the 1930s, Aliabad Hospital by Turkish architects, newer Allama Iqbal Faculty of Arts"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/199999770",
+          "what": "building 148 x 46 m, 3 levels, start 1932"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1354097",
+          "what": "Wikidata match \"Kabul University\", inception 1931"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/43393719",
+          "what": "OSM footprint 147.9 x 46.1 m (3565 m2) and tags {\"start_date\":\"1932\",\"amenity\":\"university\",\"building\":\"college\",\"building:levels\":\"3\"}"
+        }
+      ],
+      "notes": "Footprint, levels and 1932 date measured from OSM. The arcade, cream colour and flat roof are estimates."
+    },
+    "kabul-osm-way-200364379": {
+      "venueId": "kabul-osm-way-200364379",
+      "city": "kabul",
+      "name": "Daoud Khan Military Hospital",
+      "archetype": "hospital",
+      "subject": "a large 400-bed Soviet-built military hospital: a tall slab block in grey-cream concrete with a rooftop helipad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 28,
+        "storeys": 10,
+        "height_m": 36,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc7b4",
+          "#9a9382",
+          "#ebe6d8"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "blast wall"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daoud_Khan_Military_Hospital",
+          "what": "400 beds, built 1973 by Soviet engineers, helipad listed"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q29586796",
+          "what": "Wikidata match \"Daoud Khan Military Hospital\", inception 1973"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/200364379",
+          "what": "OSM footprint 573.6 x 434.4 m (177819 m2) and tags {\"amenity\":\"hospital\"}"
+        }
+      ],
+      "notes": "Bed count, year and helipad are sourced; the block shape and the storey count (10) are my estimate, not confirmed. OSM campus polygon is 574 x 434 m."
+    },
+    "kabul-osm-way-201198534": {
+      "venueId": "kabul-osm-way-201198534",
+      "city": "kabul",
+      "name": "Zarnegar Park",
+      "archetype": "park-landscape",
+      "subject": "a central Kabul public park with tree-lined paths, a fountain pool, and a blue-tiled pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e6dcc2",
+          "#3f8f9a",
+          "#c9b88e"
+        ],
+        "roofColour": "#3f6f9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "persian",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q108559372",
+          "what": "Zarnegar Park entry"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/201198534",
+          "what": "OSM footprint 332.6 x 232.1 m (62830 m2) and tags {\"leisure\":\"park\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM polygon 333 x 232 m; no source describing the park furniture was found."
+    },
+    "kabul-osm-way-560456603": {
+      "venueId": "kabul-osm-way-560456603",
+      "city": "kabul",
+      "name": "Alokozay Kabul International Cricket Stadium",
+      "archetype": "stadium",
+      "subject": "a ground with a grass oval, simple concrete stands, a modest pavilion and floodlight towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 212,
+        "depth_m": 209,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c3bba8",
+          "#2f6b8a",
+          "#e5dfd0"
+        ],
+        "roofColour": "#2f6b8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "pavilion roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kabul_International_Cricket_Stadium",
+          "what": "inaugurated 2011, about 6,000 capacity, pavilion interior work 2023, outfield replanted 2023"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6344444",
+          "what": "Wikidata match \"Kabul National Cricket Stadium\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/560456603",
+          "what": "OSM footprint 212 x 208.7 m (37193 m2) and tags {\"leisure\":\"stadium\"}"
+        }
+      ],
+      "notes": "Nearly circular oval 212 x 209 m (OSM). Stand colours are guessed. Has smaller capacity and a pavilion, unlike the roofed Ghazi stand."
+    },
+    "kabul-osm-way-710563825": {
+      "venueId": "kabul-osm-way-710563825",
+      "city": "kabul",
+      "name": "Jinnah Hospital (Kabul)",
+      "archetype": "hospital",
+      "subject": "a modern Pakistani-funded hospital with a long four-storey front block in white render and a glazed entrance canopy",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efece2",
+          "#7f9ba8",
+          "#f7f5ef"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jinnah_Hospital,_Kabul",
+          "what": "hospital entry; Wikidata inception 2019"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28169618",
+          "what": "Wikidata match \"Jinnah Hospital\", inception 2019"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/710563825",
+          "what": "OSM footprint 337.7 x 203.4 m (54657 m2) and tags {\"amenity\":\"hospital\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM campus 338 x 203 m; the block layout is a guess."
+    },
+    "kabul-osm-way-772243563": {
+      "venueId": "kabul-osm-way-772243563",
+      "city": "kabul",
+      "name": "Guldara Stupa",
+      "archetype": "temple-asian",
+      "subject": "the best-preserved stupa in Afghanistan: a square base with false Corinthian columns, two stacked cylindrical drums with false arcades and a rounded dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 13,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "dome",
+        "variant": "ruined Kushan stupa"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "mud-render",
+        "colours": [
+          "#b99b5f",
+          "#a64b34",
+          "#8a7a64"
+        ],
+        "roofColour": "#b99b5f",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stupa",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "false arcade on second drum, semicircular and trapezoidal arches"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "staircase on south-west side"
+        },
+        {
+          "id": "pilotis",
+          "count": 3,
+          "note": "false Corinthian columns on three sides of base"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2nd century AD (Kushan)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guldara_stupa",
+          "what": "square base, two cylindrical drums and dome, false Corinthian columns, schist and stone-block diaper masonry, originally plastered ochre-yellow with red designs, staircase on SW"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5617331",
+          "what": "Wikidata match \"Guldara stupa\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/772243563",
+          "what": "OSM footprint 101.6 x 41.9 m (4256 m2) and tags {\"historic\":\"archaeological_site\"}"
+        }
+      ],
+      "notes": "Overall height and base width are my estimates (not in the retrieved text). Surface is bare stone today; the ochre and red plaster is the original finish."
+    },
+    "kabul-osm-way-793260749": {
+      "venueId": "kabul-osm-way-793260749",
+      "city": "kabul",
+      "name": "Sakhi Shrine (Blue Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "the Shia shrine known as the Blue Mosque: a cluster of blue glazed-tile domes around the central rock, with four tiled minarets and a tiled entrance iwan",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "stucco",
+        "colours": [
+          "#2f6f9a",
+          "#e8e2d0",
+          "#c9a23a"
+        ],
+        "roofColour": "#2f6f9a",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 6,
+          "note": "six blue domes"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "four minarets"
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "glazed neo-Safavid tile"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "18th century; domes added 1919 and 2008-2016",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sakhi_Shrine",
+          "what": "six domes (one over the rock, one added 1919, four added 2008-2016), four minarets, glazed neo-Safavid tiles, Blue Mosque"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q50844233",
+          "what": "Wikidata match \"Sakhi Shrine\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/793260749",
+          "what": "OSM footprint 27.6 x 23.1 m (530 m2) and tags {\"building\":\"mosque\",\"amenity\":\"place_of_worship\"}"
+        }
+      ],
+      "notes": "OSM footprint 27.6 x 23.1 m. Colours: blue tile named in the article; exact hues estimated."
+    },
+    "kabul-osm-way-864540700": {
+      "venueId": "kabul-osm-way-864540700",
+      "city": "kabul",
+      "name": "Shah-Do Shamshira Mosque",
+      "archetype": "mosque-domed",
+      "subject": "the yellow two-storey stucco mosque on the Kabul river bank with two slender minarets and baroque ornament, modelled on Ortakoy mosque",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "Ortakoy-style baroque mosque"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "marble",
+        "colours": [
+          "#e0c25a",
+          "#f2eee0",
+          "#b88a2e"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "two slender minarets"
+        },
+        {
+          "id": "arches",
+          "count": 6,
+          "note": "tall arched windows"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "baroque stucco ornament"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Italian-style stucco swags"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1920s, renovated 2021",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shah-Do_Shamshira_Mosque",
+          "what": "yellow, two-storey, two minarets, stucco, Italian-style ornament (\"Afghan Baroque\"), modelled on Ortakoy Mosque, c. 1920s under Amanullah, renovated June 2021"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7461208",
+          "what": "Wikidata match \"Shah-Do Shamshira Mosque\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/864540700",
+          "what": "OSM footprint 17.3 x 16.6 m (288 m2) and tags {\"building\":\"mosque\",\"amenity\":\"place_of_worship\"}"
+        }
+      ],
+      "notes": "No dome per the article. OSM footprint 17.3 x 16.6 m; small and cubic like Ortakoy."
+    },
+    "kabul-osm-way-991169055": {
+      "venueId": "kabul-osm-way-991169055",
+      "city": "kabul",
+      "name": "Kabul Polytechnic University",
+      "archetype": "campus-block",
+      "subject": "the 1960s Soviet-built engineering campus: a long, plain five-storey slab with ribbon windows and rendered pilasters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cdc6b3",
+          "#9a937f",
+          "#e6e0cf"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1963",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Polytechnical_University_of_Kabul",
+          "what": "Wikidata inception 1963; Soviet-assisted founding from general knowledge"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2358317",
+          "what": "Wikidata match \"Kabul Polytechnic University\", inception 1963"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/991169055",
+          "what": "OSM footprint 738.5 x 487.7 m (293151 m2) and tags {\"amenity\":\"university\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. The OSM campus is 738 x 488 m; only the style is derived."
+    },
+    "kabul-quiet-reflection": {
+      "venueId": "kabul-quiet-reflection",
+      "city": "kabul",
+      "name": "Pul-e Khishti Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Kabul's largest mosque: a broad hall under a great blue-tiled dome with a single tall minaret and a courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 41,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e8dfc8",
+          "#2f6f9a",
+          "#b8a47e"
+        ],
+        "roofColour": "#2f6f9a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "blue dome"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "18th c., rebuilt late 1960s, restored 2019",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pul-e_Khishti_Mosque",
+          "what": "largest mosque in Kabul, one blue dome and one minaret, rebuilt under Zahir Shah in late 1960s, restored by 2019"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2393709",
+          "what": "Wikidata match \"Pul-e Khishti Mosque\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/199569685",
+          "what": "OSM footprint 46.6 x 41 m (1806 m2) and tags {\"building\":\"mosque\",\"amenity\":\"place_of_worship\"}"
+        }
+      ],
+      "notes": "Footprint 46.6 x 41 m measured from OSM. Wall cream colour assumed."
+    },
+    "kabul-recreation": {
+      "venueId": "kabul-recreation",
+      "city": "kabul",
+      "name": "Chihilsitoon Garden (Chihil Sutun)",
+      "archetype": "manor",
+      "subject": "the late-19th-century Chihil Sutun palace pavilion in a walled garden: a two-storey columned loggia with a timber-pillared porch and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "timber",
+        "colours": [
+          "#b5946a",
+          "#7a4f30",
+          "#e4d8b8"
+        ],
+        "roofColour": "#8a7a64",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "timber-pillared (\"forty column\") loggia"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "late 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2795775",
+          "what": "Chihil Sutun, palace/pavilion (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/387447673",
+          "what": "OSM footprint 646.7 x 253.6 m (119526 m2) and tags {\"leisure\":\"park\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM tags the whole 647 x 254 m park polygon; the palace form is inferred from the name (forty columns). Not verified."
+    },
+    "kabul-transit": {
+      "venueId": "kabul-transit",
+      "city": "kabul",
+      "name": "Minibuses to Bamyan (bus stand)",
+      "archetype": "transport-station",
+      "subject": "an open dusty minibus stand on the western road to Bamyan: rows of white minibuses, a ticket kiosk and a corrugated shade roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5bba5",
+          "#6f8591",
+          "#e0d9c8"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM has no building; the point is a hub marker for the Bamyan minibus stand."
+    }
+  }
+}

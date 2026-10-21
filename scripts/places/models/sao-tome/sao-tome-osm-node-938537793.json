@@ -1,0 +1,322 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/243610618",
+   "used": "outline of the garden (leisure=garden, containing match, about 106 x 97 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jardim_Bot%C3%A2nico_do_Bom_Sucesso_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Luis Rochinha",
+   "view": "detail",
+   "file": "/tmp/places-evidence/sao-tome/garden1.jpg",
+   "used": "only shows a thorny tall tree trunk with moss-yellow bark: taken as tall broadleaf trees in the grove; no building visible"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48.2,
+      -7.9
+     ],
+     [
+      -30.7,
+      -25
+     ],
+     [
+      -29.8,
+      -41.6
+     ],
+     [
+      -14.4,
+      -45.2
+     ],
+     [
+      -14.6,
+      -54.2
+     ],
+     [
+      -5.2,
+      -52.5
+     ],
+     [
+      48.8,
+      -38.2
+     ],
+     [
+      49.2,
+      8.4
+     ],
+     [
+      39.6,
+      14.3
+     ],
+     [
+      38.9,
+      33.3
+     ],
+     [
+      -5,
+      48.4
+     ],
+     [
+      -13.7,
+      45.2
+     ],
+     [
+      -27,
+      52.3
+     ],
+     [
+      -44.9,
+      48
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#5f8a45",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      -40,
+      -6,
+      0.2
+     ],
+     [
+      -20,
+      -14,
+      0.2
+     ],
+     [
+      0,
+      -6,
+      0.2
+     ],
+     [
+      18,
+      4,
+      0.2
+     ],
+     [
+      30,
+      -10,
+      0.2
+     ],
+     [
+      44,
+      -20,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#c8b68a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.08
+     ]
+    },
+    "points": [
+     [
+      0,
+      -6,
+      0.2
+     ],
+     [
+      -6,
+      12,
+      0.2
+     ],
+     [
+      -2,
+      26,
+      0.2
+     ],
+     [
+      -22,
+      38,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#c8b68a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -8,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c8b68a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a3e",
+    "material": "metal-sheet",
+    "pitch": 25,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    12,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "colour": "#c8b68a",
+    "cap_colour": "#9a5a3e"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -8,
+    -19,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    28,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 30,
+    "count": 14,
+    "kind": "broadleaf",
+    "min_height": 12,
+    "max_height": 24
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 30,
+    "count": 12,
+    "kind": "broadleaf",
+    "min_height": 10,
+    "max_height": 22
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    20,
+    30,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 26,
+    "count": 10,
+    "kind": "palm",
+    "min_height": 9,
+    "max_height": 15
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the garden layout or its visitor building; lodge, paths and groves are typical placements inside the real outline."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-osm-node-938537793"
+}

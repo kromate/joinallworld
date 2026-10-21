@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "lily-hospital",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/84169861",
+   "used": "name-matched footprint, 26x25 m rotated 124 deg"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey rendered block, entrance canopy, ambulance bay, tank (no public photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 40
+   },
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "cornice": 0.4,
+    "bands": "#3f7f8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f6f6c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#3f7f8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -17,
+    -14
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8c4b8",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8d88"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    15,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.8,
+    "legHeight": 5,
+    "colour": "#2c3c4a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2,
+    "bottom": 0.5,
+    "colour": "#f4f4f4",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 2.2,
+    "colour": "#d9d4c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found anywhere; massing is the real OSM outline plus brief-based guesses for height, roof and colours."
+ }
+}

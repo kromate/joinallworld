@@ -1,0 +1,1601 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bishkek",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bishkek",
+    "climate": "temperate",
+    "vernacular": "Soviet planned city on a grid: five-storey brick and panel khrushchyovka blocks around courtyards, white-marble-faced public buildings (the White House, museums), pastel-rendered Stalin-era blocks, and low privately built houses with blue or green painted metal roofs and gates behind irrigation ditches. Since the 2010s glass-and-render towers appear. Streets are shaded by tall poplars, elms and maples.",
+    "wallColours": [
+      "#d8d0bd",
+      "#b8aa90",
+      "#c9b27c",
+      "#9b5a45",
+      "#b9b6ae",
+      "#e8e6df",
+      "#8fb3c9"
+    ],
+    "roofColours": [
+      "#6f7478",
+      "#8a5a3c",
+      "#3f6f4f",
+      "#9c9a95"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "red-brick",
+      "brick",
+      "marble",
+      "metal-cladding",
+      "painted-render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Soviet mosaic and relief panels, marble cladding with columned porticoes, Kyrgyz national ornament (ram-horn koshkar-muyuz and yurt tunduk motifs) on friezes and gates, painted blue metal gates and carved window frames on old Pishpek houses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bishkek",
+        "what": "Soviet apartment blocks around courtyards, marble-faced public buildings on wide boulevards (the White House), smaller private houses, irrigation channels with shade trees, rectangular grid"
+      },
+      {
+        "url": "https://ru.wikipedia.org/wiki/Воскресенский_собор_(Бишкек)",
+        "what": "Russian Orthodox cathedral in ceramic-tile-faced walls with six small cupolas, built 1944-47"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dordoy_Bazaar",
+        "what": "thousands of double-stacked shipping containers forming streets and plazas"
+      }
+    ]
+  },
+  "places": {
+    "bishkek-airport-bishkek-airport": {
+      "venueId": "bishkek-airport-bishkek-airport",
+      "city": "bishkek",
+      "name": "Manas International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Manas passenger terminal from the forecourt: a wide, low-to-mid-rise glazed terminal with a flat canopy and a new western wing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3d8dc",
+          "#4a6a8a",
+          "#f0f0ee"
+        ],
+        "roofColour": "#a6aaad",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004 renovation, redesigned 2007, western wing opened May 2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Manas_International_Airport",
+          "what": "major terminal expansion about 2004 and redesign 2007; 2025-2026 modernisation raising floor area from 38,919 to 56,919 m2; western wing opened 14 May 2026; covered skywalk planned"
+        }
+      ],
+      "notes": "Area is sourced (38,919 m2 before the 2026 wing); the glass-and-metal skin, storey count and colours are typed. The terminal is about 25 km north-west of the city. Distinct from Beirut by its single linear mass."
+    },
+    "bishkek-clinic": {
+      "venueId": "bishkek-clinic",
+      "city": "bishkek",
+      "name": "Ambulatoriya (village clinic)",
+      "archetype": "hospital",
+      "subject": "A small two-storey outpatient clinic: a plain rendered block with a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#dbd2bd",
+          "#b8aa90",
+          "#8fb3c9"
+        ],
+        "roofColour": "#3f6f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/196047606",
+          "what": "OSM footprint 24.9 x 9.6 m (232 m2); tags building=yes, building:levels=2"
+        }
+      ],
+      "notes": "OSM: 2 levels, 25 x 10 m. No description; finish typed from the city style."
+    },
+    "bishkek-community-notices": {
+      "venueId": "bishkek-community-notices",
+      "city": "bishkek",
+      "name": "Kant Energosbyt",
+      "archetype": "office-low",
+      "subject": "A small utility office: a one-storey brick-and-render building with a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#c9b27c",
+          "#dbd2bd",
+          "#8a5a3c"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/194878815",
+          "what": "OSM footprint 21.5 x 8.2 m (176 m2); tags building=yes"
+        }
+      ],
+      "notes": "Energy sales office in Kant; no description. Footprint 21.5 x 8.2 m measured."
+    },
+    "bishkek-community-voting-game": {
+      "venueId": "bishkek-community-voting-game",
+      "city": "bishkek",
+      "name": "Baitik Akimiaty (municipal office)",
+      "archetype": "civic-small",
+      "subject": "A district government office: a two-storey rendered hall with a flagpole and a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 37,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#dbd2bd",
+          "#9b5a45",
+          "#f0ebdd"
+        ],
+        "roofColour": "#3f6f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/159207658",
+          "what": "OSM footprint 69.6 x 36.7 m (1869 m2); tags building=yes"
+        }
+      ],
+      "notes": "No description. Footprint measured (70 x 37 m); a Soviet-style village administration building is typed."
+    },
+    "bishkek-community-workshop": {
+      "venueId": "bishkek-community-workshop",
+      "city": "bishkek",
+      "name": "Ala-Too International University",
+      "archetype": "campus-block",
+      "subject": "The Ankara Street main campus: a four-storey cream rendered block with glazed entrance and wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1d9c6",
+          "#6f8aa2",
+          "#f1ede1"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "founded 1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ru.wikipedia.org/wiki/Международный_университет_Ала-Тоо",
+          "what": "OSM names this article; campus about 419 x 182 m, university founded 1996"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/341105734",
+          "what": "OSM footprint 419.4 x 181.5 m (43777 m2)"
+        }
+      ],
+      "notes": "The en-wiki article lists only address and photo captions (Main campus, Building B). The look is typed."
+    },
+    "bishkek-market-game": {
+      "venueId": "bishkek-market-game",
+      "city": "bishkek",
+      "name": "Dordoi Bazaar",
+      "archetype": "market-open",
+      "subject": "Dordoi: rows of double-stacked shipping containers forming streets, painted in mixed blues, reds and greys, with plazas and announcement boards",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 5.5,
+        "roof": "flat",
+        "variant": "container-rows",
+        "wings": 0
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#3d6ea8",
+          "#b8362d",
+          "#cfcfca"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 60,
+          "note": "double-stacked containers, shop below and storage above"
+        },
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "since 1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dordoy_Bazaar",
+          "what": "built mostly from double-stacked shipping containers (lower is a shop, upper storage); 6,000-7,000 containers in dozens of rows forming streets and plazas; small buildings between blocks; announcement boards"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25491570",
+          "what": "OSM footprint 1826.1 x 957.1 m (792153 m2)"
+        }
+      ],
+      "notes": "OSM polygon is 1,826 x 957 m; the model shows a 120 x 100 m block of container rows. Container colours are not in the source; mixed blue, red and grey is a typical estimate."
+    },
+    "bishkek-meal-stop": {
+      "venueId": "bishkek-meal-stop",
+      "city": "bishkek",
+      "name": "Royal Fish",
+      "archetype": "restaurant",
+      "subject": "A large roadside restaurant: a long two-storey rendered building with a terrace and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8ddc2",
+          "#8a6a4a",
+          "#8fb3c9"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/305877745",
+          "what": "OSM footprint 228.9 x 92.8 m (9902 m2); tags building=yes"
+        }
+      ],
+      "notes": "OSM matches a very large polygon (229 x 93 m) which is probably a leisure complex; the model shows only a restaurant wing. No description."
+    },
+    "bishkek-osm-node-11758597705": {
+      "venueId": "bishkek-osm-node-11758597705",
+      "city": "bishkek",
+      "name": "Obryv Artura (Arthur's Cliff)",
+      "archetype": "park-landscape",
+      "subject": "A cliff-edge viewpoint above a river gorge with a railed terrace, a few conifers and a gravel parking pull-in",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "cliff-lookout"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b6ae",
+          "#8a8f86",
+          "#d8d0bd"
+        ],
+        "roofColour": "#d8d0bd",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A node-only OSM viewpoint with no building. No source found; typed lookout."
+    },
+    "bishkek-osm-node-11865797560": {
+      "venueId": "bishkek-osm-node-11865797560",
+      "city": "bishkek",
+      "name": "Naimanbai Manaschi monument",
+      "archetype": "monument",
+      "subject": "A statue of an epic reciter on a stone plinth in a small paved square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "statue-on-plinth"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8a8680",
+          "#5a4a38",
+          "#b8b4aa"
+        ],
+        "roofColour": "#b8b4aa",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/52704052",
+          "what": "OSM footprint 67.9 x 33.3 m (1175 m2); tags building=residential, building:levels=3"
+        }
+      ],
+      "notes": "Name refers to Naimanbai, a famous Manas epic reciter (manaschi). Nothing about the monument was found; a typical plinth statue is typed."
+    },
+    "bishkek-osm-node-1224398024": {
+      "venueId": "bishkek-osm-node-1224398024",
+      "city": "bishkek",
+      "name": "Panorama (cafe)",
+      "archetype": "restaurant",
+      "subject": "A tiny kiosk-sized cafe with a pitched roof and a terrace umbrella",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a577",
+          "#8a5a3c",
+          "#8fb3c9"
+        ],
+        "roofColour": "#3f6f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/259165154",
+          "what": "OSM footprint 8.3 x 5.2 m (43 m2); tags building=yes"
+        }
+      ],
+      "notes": "A tiny OSM building (8.3 x 5.2 m). Typed."
+    },
+    "bishkek-osm-node-12617822550": {
+      "venueId": "bishkek-osm-node-12617822550",
+      "city": "bishkek",
+      "name": "FIELD",
+      "archetype": "park-landscape",
+      "subject": "A flat open sports field on the western edge of the city with a low fence and a few trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "sports-field"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d0bd",
+          "#b8aa90",
+          "#c9b27c"
+        ],
+        "roofColour": "#c9b27c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Node-only OSM entry, no description found. Typed."
+    },
+    "bishkek-osm-node-4085389965": {
+      "venueId": "bishkek-osm-node-4085389965",
+      "city": "bishkek",
+      "name": "Zoological Museum",
+      "archetype": "museum-theatre",
+      "subject": "A large four-storey Soviet-era institute-style museum: a rendered block with a columned entrance and rows of tall windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#dcd3bc",
+          "#b8aa90",
+          "#efe9d9"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "Soviet era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/486385367",
+          "what": "OSM footprint 177.5 x 92.7 m (5607 m2); tags building=yes, building:levels=4"
+        }
+      ],
+      "notes": "OSM building under the point is 4 levels, 178 x 93 m (likely a whole science institute). No description of the museum itself; typed Soviet institute block. The brief shows a 100 m part."
+    },
+    "bishkek-osm-node-6786453658": {
+      "venueId": "bishkek-osm-node-6786453658",
+      "city": "bishkek",
+      "name": "International University of Kyrgyzstan (Central Campus)",
+      "archetype": "campus-block",
+      "subject": "A three-storey university building with pale render, a flat roof and a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 27,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1d9c6",
+          "#6f8aa2",
+          "#f1ede1"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/176597435",
+          "what": "OSM footprint 34.8 x 26.5 m (921 m2); tags building=university"
+        }
+      ],
+      "notes": "OSM building=university 35 x 26 m. Typed."
+    },
+    "bishkek-osm-node-9805150731": {
+      "venueId": "bishkek-osm-node-9805150731",
+      "city": "bishkek",
+      "name": "Sultan Hall",
+      "archetype": "restaurant",
+      "subject": "A banquet hall: a two-storey block in pale render with a glazed front and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee6d3",
+          "#6f8aa2",
+          "#b99a5a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/182343232",
+          "what": "OSM footprint 36.5 x 28.3 m (1010 m2); tags building=yes"
+        }
+      ],
+      "notes": "OSM building 36 x 28 m. No description."
+    },
+    "bishkek-osm-relation-4775068": {
+      "venueId": "bishkek-osm-relation-4775068",
+      "city": "bishkek",
+      "name": "Osh Bazaar",
+      "archetype": "market-open",
+      "subject": "Osh Bazaar: dense rows of fruit, dried-goods and craft stalls under bright umbrellas and awnings, with a pavilion hall at the entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "umbrella-rows"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b27c",
+          "#b8362d",
+          "#3d6ea8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 80
+        },
+        {
+          "id": "umbrellas",
+          "count": 40
+        },
+        {
+          "id": "awning",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "long-established",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Osh_Bazaar",
+          "what": "on the west side of Bishkek near the Western Bus Station; sells food, household items, clothing, souvenirs and a Kyyal section with traditional Kyrgyz carved trunks, bedding and cradles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/188629339",
+          "what": "OSM footprint 53.4 x 52.5 m (1255 m2); tags building=yes"
+        }
+      ],
+      "notes": "The article does not describe its layout; umbrella-and-awning stalls are typical of Central Asian bazaars and are typed. The OSM building is 53 x 52 m (the central pavilion)."
+    },
+    "bishkek-osm-way-1025447782": {
+      "venueId": "bishkek-osm-way-1025447782",
+      "city": "bishkek",
+      "name": "Stadium (unnamed, south Bishkek)",
+      "archetype": "stadium",
+      "subject": "A small neighbourhood football stadium: a grass pitch with one low concrete stand on one side and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 57,
+        "depth_m": 34,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#3d6ea8",
+          "#d8d0bd"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1025447782",
+          "what": "OSM footprint 56.8 x 34 m (1577 m2)"
+        }
+      ],
+      "notes": "OSM leisure=stadium 57 x 34 m, no name or other tags."
+    },
+    "bishkek-osm-way-1448008187": {
+      "venueId": "bishkek-osm-way-1448008187",
+      "city": "bishkek",
+      "name": "Vegetable sector (Ovoshchnoy sektor)",
+      "archetype": "market-hall",
+      "subject": "A large two-level wholesale vegetable market hall under construction: a long flat-roofed shed with loading bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 79,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "wholesale-shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b9b6ae",
+          "#3d6ea8",
+          "#d8d0bd"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "under construction (OSM)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1448008187",
+          "what": "OSM footprint 157.6 x 79 m (10486 m2); tags building=construction, building:levels=2"
+        }
+      ],
+      "notes": "OSM building=construction, 2 levels, 158 x 79 m. Appearance typed."
+    },
+    "bishkek-osm-way-165833844": {
+      "venueId": "bishkek-osm-way-165833844",
+      "city": "bishkek",
+      "name": "Kara-Jygach Park",
+      "archetype": "park-landscape",
+      "subject": "A historic tree grove: wide lawns and avenues of old elms and poplars with gravel paths and a small kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "old-grove"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d0bd",
+          "#b8aa90",
+          "#c9b27c"
+        ],
+        "roofColour": "#c9b27c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "planted 1881",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/165833844",
+          "what": "OSM footprint 2382.1 x 920.2 m (1294718 m2); tags start_date=1881"
+        }
+      ],
+      "notes": "OSM start_date 1881; Wikidata: park, historic site, natural monument; polygon 2,382 x 920 m. Only the tree character is known; pavilion and kiosk are typed extras."
+    },
+    "bishkek-osm-way-25487169": {
+      "venueId": "bishkek-osm-way-25487169",
+      "city": "bishkek",
+      "name": "Dolen Omurzakov Stadium",
+      "archetype": "stadium",
+      "subject": "The Dolen Omurzakov Stadium (formerly Spartak): a Soviet-era oval football bowl with concrete stands, a covered main stand, floodlight masts and a scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 202,
+        "depth_m": 152,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "shed",
+        "variant": "bowl-with-main-stand-roof"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#3d6ea8",
+          "#d8d0bd"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "groundbreaking 1939, opened 1941, renovated 1963",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dolen_Omurzakov_Stadium",
+          "what": "multi-purpose football stadium, capacity 23,000, groundbreaking 1939, opened 1941, renovated 1963, grass surface, scoreboard"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25487169",
+          "what": "OSM footprint 202.2 x 152.3 m (26136 m2)"
+        }
+      ],
+      "notes": "Capacity and dates are sourced. Concrete grey and blue seating, the covered main stand and 4 masts are estimates; OSM polygon is 202 x 152 m."
+    },
+    "bishkek-osm-way-329702889": {
+      "venueId": "bishkek-osm-way-329702889",
+      "city": "bishkek",
+      "name": "Kyrgyz-Russian Slavic University",
+      "archetype": "campus-block",
+      "subject": "A three-storey university building in cream render with a columned central entrance and tall windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 89,
+        "depth_m": 51,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#e3dac4",
+          "#b8aa90",
+          "#f0ebdd"
+        ],
+        "roofColour": "#3f6f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "founded 1993",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/1307671",
+          "what": "OSM footprint 88.7 x 50.6 m (3364 m2); tags building=university, building:levels=3"
+        }
+      ],
+      "notes": "OSM relation building=university, 3 levels, 89 x 51 m. Founded 1992-93. Colonnade and green roof are typed Soviet-civic guesses."
+    },
+    "bishkek-osm-way-49130695": {
+      "venueId": "bishkek-osm-way-49130695",
+      "city": "bishkek",
+      "name": "Mikhail Frunze Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Frunze memorial house museum: a long one-and-a-half storey 1967 building in pale render with a pitched roof and a small porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 51,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e3dac4",
+          "#9b5a45",
+          "#f0ebdd"
+        ],
+        "roofColour": "#3f6f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1967",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/49130695",
+          "what": "OSM footprint 50.7 x 15.7 m (796 m2); tags building=yes, start_date=1967"
+        }
+      ],
+      "notes": "OSM start_date 1967, tourism=museum, 51 x 16 m. No description was reachable; green metal roof and brick plinth are typed."
+    },
+    "bishkek-osm-way-769141527": {
+      "venueId": "bishkek-osm-way-769141527",
+      "city": "bishkek",
+      "name": "Kyrgyz-Turkish Manas University",
+      "archetype": "campus-block",
+      "subject": "A five-storey modern university block in warm render with a glazed stair tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 74,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc0",
+          "#6f8aa2",
+          "#b99a5a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "founded 1995",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/155014648",
+          "what": "OSM footprint 73.7 x 45 m (2291 m2); tags building=university, building:levels=5"
+        }
+      ],
+      "notes": "OSM building=university, 5 levels, 74 x 45 m. Finish typed."
+    },
+    "bishkek-quiet-reflection": {
+      "venueId": "bishkek-quiet-reflection",
+      "city": "bishkek",
+      "name": "Holy Resurrection Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Orthodox cathedral of the Resurrection: a tile-faced church with a barrel-vaulted nave, six small cupolas on tall narrow drums and a tent-roofed bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "variant": "six-cupolas-tent-bell-tower",
+        "wings": 1
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "render",
+        "colours": [
+          "#d9c9a0",
+          "#ece4cc",
+          "#8a6a4a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 6,
+          "note": "six small cupolas on tall narrow drums"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tent-roofed, 29.5 m"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1944-1947",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ru.wikipedia.org/wiki/Воскресенский_собор_(Бишкек)",
+          "what": "built 1944-47 (architect V. V. Veryuzhsky); walls faced with ceramic tile; barrel vault and double-pitched roof; six small cupolas on high narrow drums; tent-roofed bell tower 29.5 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/177274786",
+          "what": "OSM footprint 42.6 x 27.4 m (821 m2); tags building=church"
+        }
+      ],
+      "notes": "Cupola count, tile facing, vault and bell tower are sourced; wall colour and cupola colour are not stated and are estimates. Footprint 43 x 27 m measured."
+    },
+    "bishkek-recreation": {
+      "venueId": "bishkek-recreation",
+      "city": "bishkek",
+      "name": "Panfilov Park",
+      "archetype": "park-landscape",
+      "subject": "Panfilov Park: a star-shaped Soviet-era park with tree-lined alleys, a central monument and amusement rides in the leisure area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "star-plan-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d0bd",
+          "#b8aa90",
+          "#c9b27c"
+        ],
+        "roofColour": "#c9b27c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Panfilov monument, 1944"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "opened 1924, monument 1944",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Panfilov_Park,_Bishkek",
+          "what": "opened 1924 as Zvezda park, renamed for Panfilov in 1942; laid out in a star shape; Panfilov monument of 1944; OSM adds an amusement-park tag"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25487201",
+          "what": "OSM footprint 389.1 x 298.2 m (72245 m2)"
+        }
+      ],
+      "notes": "Star layout and monument are sourced. Amusement rides appear in OSM tourism=theme_park but are not modelled beyond a pavilion. Park polygon is 389 x 298 m."
+    },
+    "bishkek-transit": {
+      "venueId": "bishkek-transit",
+      "city": "bishkek",
+      "name": "Bishkek-2 railway station",
+      "archetype": "transport-station",
+      "subject": "The main railway station: a symmetrical two-storey Soviet station building with a central entrance block, long rendered wings and a platform canopy behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stucco",
+        "colours": [
+          "#e1d6b8",
+          "#b8aa90",
+          "#f0ebdd"
+        ],
+        "roofColour": "#3f6f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1938 (opened 1931 per the Russian lead)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bishkek-2_railway_station",
+          "what": "design and construction in the 1930s, opened 1 May 1938 in the city centre; the main Bishkek page says built by German POWs in 1946"
+        },
+        {
+          "url": "https://ru.wikipedia.org/wiki/Бишкек-2",
+          "what": "lead says the station opened for traffic on 25 May 1931; main station, former name Frunze"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/37079635",
+          "what": "OSM footprint 87.6 x 21.1 m (1499 m2); tags building=train_station, building:levels=2"
+        }
+      ],
+      "notes": "Dates conflict across articles. Facade colours, clock tower and central entrance block are typed from Soviet station conventions, not verified. The two sources say nothing of form."
+    }
+  }
+}

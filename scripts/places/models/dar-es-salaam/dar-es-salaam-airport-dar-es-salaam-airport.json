@@ -1,0 +1,542 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Julius_Nyerere_International_Airport_terminal_III_under_construction_2015.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Abbas Alimohamed",
+   "view": "side",
+   "file": "/tmp/places-evidence/dar-es-salaam/airport1.jpg",
+   "used": "Terminal 3 massing: long low two-level concrete frame under a continuous white sawtooth roof, stout square piers at the ends, scaffolding, apron-side view"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Julius_Nyerere_International_Airport.jpg",
+   "licence": "see Commons page",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/dar-es-salaam/airport4.jpg",
+   "used": "old terminal for context only (folded canopy on slim columns, cream walls); not modelled, brief says Terminal 3"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Terminal 3, opened 2019, about 260 m x 80 m, glass and concrete, boarding bridges; modelled as a 116 m portion because of the 118 m scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     112,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb9ae",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "faces": [
+       "front",
+       "back"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8dbdb",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 118,
+    "depth": 58,
+    "z": 11,
+    "folds": 15,
+    "rise": 2.4,
+    "thickness": 0.35,
+    "colour": "#e6e8e8",
+    "material": "metal-sheet",
+    "foldAxis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-west",
+   "footprint": {
+    "rect": [
+     5,
+     40
+    ]
+   },
+   "at": [
+    -57,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-east",
+   "footprint": {
+    "rect": [
+     5,
+     40
+    ]
+   },
+   "at": [
+    57,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a69e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c85"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-wing",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    -10,
+    34
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#bdb9ae",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -54,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -45,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    36,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    45,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    54,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     1.4
+    ],
+    "height": 11,
+    "colour": "#b8b4aa",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -35,
+    42,
+    3.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -17,
+    42,
+    3.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    1,
+    42,
+    3.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    19,
+    42,
+    3.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 8,
+    "height": 4.2,
+    "columns": 6,
+    "colour": "#cfd2d2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-bay",
+   "footprint": {
+    "rect": [
+     10,
+     40
+    ]
+   },
+   "at": [
+    -50,
+    0
+   ],
+   "height": 15,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b3afa4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -48
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -50
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-airport-dar-es-salaam-airport",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo shows T3 under construction (scaffold, cranes, bare frame); model is finished look with pale concrete and slab lines. Apron-side upswept canopy only approximated by deeper sawtooth roof; jet bridges are stubs."
+ }
+}

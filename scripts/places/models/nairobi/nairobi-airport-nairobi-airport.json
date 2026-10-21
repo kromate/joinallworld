@@ -1,0 +1,405 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jomo_Kenyatta_International_Airport_International_Depatures_Terminal_1A.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vyne (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/air1.jpg",
+   "used": "long low dark-glazed terminal front, tan/brown end blocks (gate piers) with flat roofs, apron with Kenya Airways style tail colours, floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nairobi_airport_terminal,_August_2014.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "S201 (Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/nairobi/air2.jpg",
+   "used": "dark charred-concrete block with grille top, palms and low shed in front (colour/context only: pre-2014 fire view)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     94,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3035",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#1d2024"
+      ],
+      "height": 1.4,
+      "proud": 0.4,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7e80",
+    "material": "membrane",
+    "overhang": 3.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-east",
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "at": [
+    52,
+    5
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a98462",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7357",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-west",
+   "footprint": {
+    "rect": [
+     9,
+     24
+    ]
+   },
+   "at": [
+    -51,
+    5
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a98462",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d7357",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 9,
+    "height": 5,
+    "columns": 12,
+    "colour": "#c7ccd0",
+    "edgeColour": "#51667a"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -24,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "style": "round",
+    "colour": "#d9d6cf",
+    "cabColour": "#51667a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -34,
+     -10,
+     0
+    ],
+    "end": [
+     34,
+     -10,
+     0
+    ],
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 10,
+      "colour": "#c9ced1"
+     },
+     "rotDeg": 90
+    }
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -19,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#f4f4f2",
+    "tailColour": "#c0392b"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    19,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#f4f4f2",
+    "tailColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 4,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-east-step",
+   "footprint": {
+    "rect": [
+     7,
+     12
+    ]
+   },
+   "at": [
+    48,
+    -8
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f6e52",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f5a45",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-west-step",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -47,
+    -6
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8f6e52",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f5a45",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -46,
+    -36,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.9,
+    "colour": "#f4f4f2",
+    "tailColour": "#c0392b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -56,
+      -62
+     ],
+     [
+      56,
+      -62
+     ],
+     [
+      56,
+      -6
+     ],
+     [
+      -56,
+      -6
+     ]
+    ],
+    "z0": 0.02,
+    "height": 0.1,
+    "colour": "#8c8d8a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -56,
+      -30.4
+     ],
+     [
+      56,
+      -30.4
+     ],
+     [
+      56,
+      -29.6
+     ],
+     [
+      -56,
+      -29.6
+     ]
+    ],
+    "z0": 0.13,
+    "height": 0.05,
+    "colour": "#d9c24a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55.800000000000004,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     59.4,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "terminal lengthened and lowered with dark band, stepped brown piers, nose-in white airliners with red/green tails, apron with taxi line and vehicles; airliner wing/engine colour still blue-ish, no single multi-colour Kenya Airways tail, terminal clamped shorter than real"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-airport-nairobi-airport"
+}

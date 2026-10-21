@@ -1,0 +1,324 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1240086317",
+   "used": "named hospital building outline (663 m2) used as the main ward block"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/maiduguri.json",
+   "used": "further two-storey ward and clinic blocks, covered walkways, ambulance bay, water tank (typed; no photo found, the Commons hospital photos are of another hospital)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-ward",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7a9a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-block",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -38,
+    -34
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7a9a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-south",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    34,
+    -30
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7a9a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-north",
+   "footprint": {
+    "rect": [
+     28,
+     13
+    ]
+   },
+   "at": [
+    -10,
+    36
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7a9a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "theatre-block",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    40,
+    28
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6ddc6",
+    "windows": "none",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#7a9a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -38,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 4,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#7a9e8a"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -60,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3.5,
+    "legHeight": 8,
+    "legs": 4,
+    "colour": "#9aa3a6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 2.2,
+    "colour": "#7a9e8a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -70,
+      -60
+     ],
+     [
+      70,
+      -60
+     ],
+     [
+      70,
+      55
+     ],
+     [
+      -70,
+      55
+     ],
+     [
+      -70,
+      -60
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 8,
+    "colour": "#d8d0bc"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -48
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     62,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -52
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "borno-state-specialist-hospital",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only the main ward block is the real outline; the other four blocks, walkways and tank are typed and placed by guess; no photo."
+ }
+}

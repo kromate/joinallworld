@@ -1,0 +1,209 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/359832848",
+   "used": "real bus-station area outline (8402 m2, elongated, bearing 12 deg) used as the paved apron"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9690",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b5d60",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "shelter-a",
+   "at": [
+    -14,
+    -25,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 34,
+    "depth": 6,
+    "height": 4.2,
+    "form": "shed",
+    "colour": "#7d8a8f",
+    "accent": "#3b8ea5"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "shelter-b",
+   "at": [
+    6,
+    5,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "depth": 6,
+    "height": 4.2,
+    "form": "shed",
+    "colour": "#7d8a8f",
+    "accent": "#3b8ea5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    22,
+    -30
+   ],
+   "rotDeg": 12,
+   "z0": 0.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aaa0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.3,
+    "bands": "#a24a36"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8a8f",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    15,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a24a36"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    22,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3b8ea5"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -25,
+    40,
+    0.5
+   ],
+   "params": {
+    "length": 28,
+    "kind": "mixed",
+    "density": 0.8
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    22,
+    20,
+    0.5
+   ],
+   "params": {
+    "length": 28,
+    "kind": "coach",
+    "density": 0.7
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    30,
+    -40,
+    0.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 3.5,
+    "colour": "#3b8ea5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -45,
+     0
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     35
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; apron outline is real, shelters, ticket hall and bus positions are typed assumptions for a terminal of this size"
+ }
+}

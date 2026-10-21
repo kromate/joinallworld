@@ -1,0 +1,1144 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "osogbo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "osogbo",
+    "climate": "savanna",
+    "vernacular": "Osun State capital on the Osun river: low sprawl of 1-3 storey cement-block and painted-render houses and shops under rusty corrugated zinc, a market-centred core with historic adobe compounds and carved-post verandas, new state-built markets and civic blocks in bright paint, and the forested Osun-Osogbo sacred grove with its cement-and-laterite sculpture shrines at the edge.",
+    "wallColours": [
+      "#e6dcc2",
+      "#cfa58c",
+      "#a9654a",
+      "#d6c7a6",
+      "#b9b4a8",
+      "#f2efe6",
+      "#7a9a8a"
+    ],
+    "roofColours": [
+      "#8a4b32",
+      "#a0583a",
+      "#6e4a3a",
+      "#8a8c8a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "New Sacred Art Movement cement sculpture: sweeping curves, bulging eyes and high-relief murals on shrines, walls and railings (Susanne Wenger, Adebisi Akanji); carved wooden veranda posts in old compounds; terracotta heads and fountains in civic parks.",
+    "sources": [
+      {
+        "url": "https://www.kupi.com/en/explore/nigeria/osogbo/history",
+        "what": "historic Osogbo: rectangular adobe houses in family compounds with courtyards and verandas with carved posts under thatch, later brick, cement and corrugated iron after the 1906 railway"
+      },
+      {
+        "url": "https://archnet.org/sites/20543",
+        "what": "Osun Osogbo Grove: shrines and palaces with earthen walls covered in high-relief murals and timber/zinc roofs"
+      },
+      {
+        "url": "https://artsandculture.google.com/story/come-inside-the-susanne-wenger-house-the-osun-osogbo-grove/CgXhCNCl_hrYcA?hl=en",
+        "what": "Wenger house: sculptural railings, bougainvillea, New Sacred Art Movement works"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Yoruba_architecture",
+        "what": "Yoruba courtyard-and-veranda compounds"
+      }
+    ]
+  },
+  "places": {
+    "abegi-anu-bar": {
+      "venueId": "abegi-anu-bar",
+      "city": "osogbo",
+      "name": "ABEGI ANU",
+      "archetype": "restaurant",
+      "subject": "A night bar: a one-storey painted bar with a covered outdoor seating terrace and neon lighting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#cfa58c",
+          "#2f4a6a",
+          "#f2efe6"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "covered terrace"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en/explore/nigeria/osogbo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ayegbaju-market": {
+      "venueId": "ayegbaju-market",
+      "city": "osogbo",
+      "name": "Ayegbaju International Modern Market",
+      "archetype": "market-hall",
+      "subject": "Ayegbaju International Modern Market: a large 2014 state-built trading complex of lock-up shop blocks, open stalls and warehouses on an 8-hectare site",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4d8",
+          "#2f6b8a",
+          "#b8452e"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40,
+          "note": "open stalls"
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "trailer parks"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "shop galleries"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.channelstv.com/?p=114818",
+          "what": "commissioned July 2014; open stalls, lock-up shops, offices, warehouses, medical centre, mosque, trailer parks, fire station, bank, police post, cold room"
+        },
+        {
+          "url": "https://campusreporter.africa/special-report-traders-lament-as-osun-multi-billion-naira-ayegbaju-market-deserted/",
+          "what": "8-hectare PPP market, later largely deserted"
+        }
+      ],
+      "notes": "Programme and size sourced; building shapes, colours and heights are estimates. Newer and cleaner than Igboona and Orisunbare; reads as a planned complex."
+    },
+    "calvary-baptist-church": {
+      "venueId": "calvary-baptist-church",
+      "city": "osogbo",
+      "name": "Calvary Baptist Church",
+      "archetype": "church-modern",
+      "subject": "Calvary Baptist Church: a rectangular worship hall with a gabled roof, front entrance porch and short cross tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f2efe6",
+          "#7a3a2a",
+          "#d6c7a6"
+        ],
+        "roofColour": "#7a3a2a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short front tower with cross"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en/explore/nigeria/osogbo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No source describes this church.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "fountain-university": {
+      "venueId": "fountain-university",
+      "city": "osogbo",
+      "name": "Fountain University",
+      "archetype": "campus-block",
+      "subject": "Fountain University, Oke-Osun: the Senate building and lecture blocks of a private Islamic university",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#2f6b4f",
+          "#c9b27c"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2007 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fountain_University",
+          "what": "private Islamic university founded 2007 by NASFAT; Senate Building, lecture hall, multipurpose hall"
+        }
+      ],
+      "notes": "Building names sourced; appearance not.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "gtbank-osogbo": {
+      "venueId": "gtbank-osogbo",
+      "city": "osogbo",
+      "name": "GTBank",
+      "archetype": "office-low",
+      "subject": "A two-storey bank branch with a glazed banking hall front, drive-in ATM canopy and blank signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#d98a3a",
+          "#7a7a7a"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "ATM canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en/explore/nigeria/osogbo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Branch in the town centre; no brand marks in the model.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "igboona-market": {
+      "venueId": "igboona-market",
+      "city": "osogbo",
+      "name": "Igboona Market",
+      "archetype": "market-open",
+      "subject": "Igboona (Igbona) market on Ikirun Road: stalls and umbrellas that spill onto both sides of a two-lane road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b9b4a8",
+          "#d6c7a6",
+          "#cfa58c"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://campusreporter.africa/despite-ban-street-trading-permeates-osun-roads/",
+          "what": "Igbona is one of the main weekly markets, peaking on Tuesdays, on Ikirun Road with trading spilling onto both sides of a two-lane road"
+        }
+      ],
+      "notes": "Behaviour and setting are sourced (road-side, crowded, umbrellas); building forms are not. Differ from Ayegbaju by being informal and road-fronted."
+    },
+    "lautech-teaching-hospital": {
+      "venueId": "lautech-teaching-hospital",
+      "city": "osogbo",
+      "name": "LAUTECH Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "LAUTECH Teaching Hospital, Osogbo (now UNIOSUN Teaching Hospital): a multi-storey ward block with a College of Health Sciences wing",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4d8",
+          "#4a7a9a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board only"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/UNIOSUN_Teaching_Hospital",
+          "what": "renamed UNIOSUN Teaching Hospital after Osun took over LAUTECH hospital and College of Health Sciences in 2020"
+        }
+      ],
+      "notes": "Ownership and renaming sourced; building not described.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "nelson-mandela-freedom-park": {
+      "venueId": "nelson-mandela-freedom-park",
+      "city": "osogbo",
+      "name": "Nelson Mandela Freedom Park",
+      "archetype": "park-landscape",
+      "subject": "Nelson Mandela Freedom Park: a city-centre garden by the railway with a central fenced fountain, terracotta busts of past governors and a gantry ladder over the line",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b9b4a8",
+          "#a9654a",
+          "#3f7a4a"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "fenced central fountain"
+        },
+        {
+          "id": "statue",
+          "count": 6,
+          "note": "terracotta heads of past governors/administrators"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "gantry-style ladder over the railway line"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2,
+          "note": "adjacent railway"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.icirnigeria.org/nelson-mandela-freedom-park-osogbo-in-ruins-overtaken-by-goats/",
+          "what": "built on a former plank market and garage; terracotta heads of governors; later fallen into disrepair"
+        },
+        {
+          "url": "https://dailytrust.com/?p=234496",
+          "what": "by the railway line near Old Garage; central garden with seating, fenced fountain, gantry-like ladder over the line"
+        }
+      ],
+      "notes": "Features sourced from news reports; shapes and colours are estimates. Intended as a worn urban park."
+    },
+    "new-orisunbare-market": {
+      "venueId": "new-orisunbare-market",
+      "city": "osogbo",
+      "name": "New Orisunbare Market",
+      "archetype": "market-hall",
+      "subject": "New Orisunbare Market: a state-built shop complex of lock-up units with an inner trading yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4d8",
+          "#b8452e",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://campusreporter.africa/despite-ban-street-trading-permeates-osun-roads/",
+          "what": "Orisunmbare area has shopping outlets, but street trading continues there"
+        }
+      ],
+      "notes": "Only the area and existence of shopping outlets are sourced.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "noun-osogbo": {
+      "venueId": "noun-osogbo",
+      "city": "osogbo",
+      "name": "National Open University of Nigeria",
+      "archetype": "campus-block",
+      "subject": "NOUN Osogbo study centre: a two-storey rendered office-and-classroom block with a forecourt flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#2f4a8a",
+          "#c9b27c"
+        ],
+        "roofColour": "#7a3a2a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en/explore/nigeria/osogbo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Open-learning study centre; appearance unknown.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "osogbo-township-stadium": {
+      "venueId": "osogbo-township-stadium",
+      "city": "osogbo",
+      "name": "Osogbo Township Stadium",
+      "archetype": "stadium",
+      "subject": "Osogbo Township Stadium: a small football ground with one covered stand, undergoing remodelling from 4,000 toward 15,000 seats",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 105,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc6b0",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "single covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s (remodelling 2020s)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oshogbo_Stadium",
+          "what": "capacity 4,000, being renovated to 15,000"
+        },
+        {
+          "url": "https://leadership.ng/sitting-capacity-for-remodelled-osogbo-stadium-now-15000-adeleke/",
+          "what": "remodelled stadium capacity to rise from 4,000 to 15,000"
+        }
+      ],
+      "notes": "Modelled as the present small stadium. Capacity sourced; stand form guessed; smaller than Ibadan's and Ijebu-Ode's."
+    },
+    "osun-house-of-assembly": {
+      "venueId": "osun-house-of-assembly",
+      "city": "osogbo",
+      "name": "Osun State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "Osun State House of Assembly complex: a formal two-storey legislative block with a central entrance portico and flag court",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe9dc",
+          "#2f6b4f",
+          "#c9b27c"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Osun_State_House_of_Assembly",
+          "what": "unicameral state legislature sitting in the Assembly Complex in Osogbo (no architecture given)"
+        }
+      ],
+      "notes": "Existence and function sourced; building description not found.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "osun-osogbo-sacred-grove": {
+      "venueId": "osun-osogbo-sacred-grove",
+      "city": "osogbo",
+      "name": "Osun-Osogbo Sacred Grove",
+      "archetype": "park-landscape",
+      "subject": "Osun-Osogbo Sacred Grove: dense riverside forest with cement-and-laterite sculpture shrines and a gateway; the three-roofed Ilédì Oǹtótóo shrine is a signature",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "concrete",
+        "colours": [
+          "#a9654a",
+          "#c9b27c",
+          "#6e4a3a"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "shrine buildings; Ilédì Oǹtótóo has three large roofs"
+        },
+        {
+          "id": "statue",
+          "count": 6,
+          "note": "cement deity sculptures with bulging eyes"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "high-relief wall murals"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "sculpted wave walls"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "yoruba",
+      "era": "shrines 1960s-70s, rebuilt 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://archnet.org/sites/20543",
+          "what": "grove shrines and palaces: earthen walls with high-relief murals, timber and zinc roofs; UNESCO World Heritage 2005"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Susanne_Wenger",
+          "what": "Wenger and local artists rebuilt the grove with sculptures; national monument 1965"
+        },
+        {
+          "url": "https://artsandculture.google.com/asset/ilédì-oǹtótóo-Ọ̀ṣun-wave-wall-detail-susanne-wenger-and-adebisi-akanji/BQGp2CaQ4KebBQ",
+          "what": "Ilédì Oǹtótóo: three enormous roofs, cement scenes on the walls, rebuilt 2012"
+        }
+      ],
+      "notes": "Forest with sculptured cement structures; the model is the shrine cluster, not the whole 75 ha grove. Trees are the main mass; colours are laterite-cement red-browns."
+    },
+    "our-lady-of-fatima-hospital": {
+      "venueId": "our-lady-of-fatima-hospital",
+      "city": "osogbo",
+      "name": "Our Lady of Fatima Hospital",
+      "archetype": "hospital",
+      "subject": "Our Lady of Fatima Hospital: a Catholic mission hospital - two-storey ward blocks with verandas and a small chapel",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9dc",
+          "#2f6b8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#7a3a2a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "ward verandas"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board only"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small chapel cross"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.kupi.com/en/explore/nigeria/osogbo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No source found.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "susanne-wenger-house": {
+      "venueId": "susanne-wenger-house",
+      "city": "osogbo",
+      "name": "Susanne Wenger House",
+      "archetype": "manor",
+      "subject": "Susanne Wenger's house at 41A Ibokun Road (Ile Abolubode): a three-storey residence behind a bougainvillea-covered facade with sculptural railings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d6c7a6",
+          "#c93a6a",
+          "#6e4a3a"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "sculptural railings by Adebisi Akanji"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "sculpted fence screens"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "New Sacred Art works at the house"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1950s house, art from 1957-2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://guardian.ng/?p=2906383",
+          "what": "three-storey home on Ibokun Road; facade covered by bougainvillea, sculptural railings, New Sacred Art Movement works"
+        },
+        {
+          "url": "https://artsandculture.google.com/story/come-inside-the-susanne-wenger-house-the-osun-osogbo-grove/CgXhCNCl_hrYcA?hl=en",
+          "what": "41A Ibokun Road, Ile Abolubode; fence screens by Adebisi Akanji; lived in 1957-2009"
+        }
+      ],
+      "notes": "Three storeys, bougainvillea and sculptural railings are sourced; plan size, wall colours and roof are estimates. A 2021 report says a big tree covers half the building."
+    },
+    "union-baptist-church": {
+      "venueId": "union-baptist-church",
+      "city": "osogbo",
+      "name": "Union Baptist Church",
+      "archetype": "church-modern",
+      "subject": "Union Baptist Church, Odi-Olowo: a larger auditorium-style Baptist church with a broad gable front and entrance steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#2f4a8a",
+          "#c9b27c"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1956 congregation; current building 1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://newtelegraphng.com/osun-baptist-church-calls-for-national-unity-community-service-among-believers/",
+          "what": "congregation at Odi-Olowo, Osogbo, founded July 1956 (building not described)"
+        }
+      ],
+      "notes": "Founding date sourced; building not described.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    }
+  }
+}

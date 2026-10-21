@@ -1,0 +1,924 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cath%C3%A9drale_Notre-Dame_de_N%27Djam%C3%A9na.jpg",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/ndjamena/ndj-cathedral.jpg",
+   "used": "giant free-standing cream pointed arch with a cross rising inside it, rounded white shell behind, three tall pointed doorways, wide low steps, low side annexes, sandy forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125359481",
+   "used": "overall plan length (about 77 x 37 m); the rounded footprint agrees with the shell, but the front elevation is placed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "shell",
+   "at": [
+    0,
+    0,
+    2.2
+   ],
+   "params": {
+    "colour": "#f1e9d6",
+    "capTop": true,
+    "curve": true,
+    "steps": 3,
+    "round": 24,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       12.5,
+       18
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       12.4,
+       17.8
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       12,
+       17
+      ]
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       11,
+       15.5
+      ]
+     },
+     {
+      "z": 13.5,
+      "ellipse": [
+       8.5,
+       12
+      ]
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       5,
+       8
+      ]
+     },
+     {
+      "z": 15.8,
+      "ellipse": [
+       2,
+       3.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "great-arch",
+   "at": [
+    0,
+    -16,
+    2.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      3.0
+     ]
+    },
+    "points": [
+     [
+      -11.5,
+      0,
+      0.0
+     ],
+     [
+      -11.87,
+      0,
+      1.57
+     ],
+     [
+      -12.0,
+      0,
+      3.14
+     ],
+     [
+      -11.85,
+      0,
+      4.71
+     ],
+     [
+      -11.43,
+      0,
+      6.29
+     ],
+     [
+      -10.72,
+      0,
+      7.86
+     ],
+     [
+      -9.77,
+      0,
+      9.43
+     ],
+     [
+      -8.62,
+      0,
+      11.0
+     ],
+     [
+      -7.33,
+      0,
+      12.57
+     ],
+     [
+      -5.96,
+      0,
+      14.14
+     ],
+     [
+      -4.57,
+      0,
+      15.71
+     ],
+     [
+      -3.23,
+      0,
+      17.29
+     ],
+     [
+      -2.0,
+      0,
+      18.86
+     ],
+     [
+      -0.91,
+      0,
+      20.43
+     ],
+     [
+      -0.0,
+      0,
+      22.0
+     ],
+     [
+      0.91,
+      0,
+      20.43
+     ],
+     [
+      2.0,
+      0,
+      18.86
+     ],
+     [
+      3.23,
+      0,
+      17.29
+     ],
+     [
+      4.57,
+      0,
+      15.71
+     ],
+     [
+      5.96,
+      0,
+      14.14
+     ],
+     [
+      7.33,
+      0,
+      12.57
+     ],
+     [
+      8.62,
+      0,
+      11.0
+     ],
+     [
+      9.77,
+      0,
+      9.43
+     ],
+     [
+      10.72,
+      0,
+      7.86
+     ],
+     [
+      11.43,
+      0,
+      6.29
+     ],
+     [
+      11.85,
+      0,
+      4.71
+     ],
+     [
+      12.0,
+      0,
+      3.14
+     ],
+     [
+      11.87,
+      0,
+      1.57
+     ],
+     [
+      11.5,
+      0,
+      0.0
+     ]
+    ],
+    "colour": "#efe6d2",
+    "curve": false,
+    "up": [
+     0,
+     1,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "steps-platform",
+   "footprint": {
+    "rect": [
+     30,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b48c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     17,
+     9
+    ]
+   },
+   "at": [
+    -19.5,
+    -6
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe6d2",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     17,
+     9
+    ]
+   },
+   "at": [
+    19.5,
+    -6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eee6d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eee6d0",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess",
+   "footprint": {
+    "rect": [
+     17,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -17.6
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e7dcc2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e7dcc2",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave-step1",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 8.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eadfc8",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave-step2",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    0,
+    31
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d9c0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4d9c0",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6.2,
+    -18.1,
+    2.2
+   ],
+   "params": {
+    "colour": "#e0d4b8",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       3.4,
+       1.0
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       3.4,
+       1.0
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       3.3,
+       1.0
+      ]
+     },
+     {
+      "z": 3.28,
+      "rect": [
+       2.89,
+       1.0
+      ]
+     },
+     {
+      "z": 3.68,
+      "rect": [
+       2.04,
+       1.0
+      ]
+     },
+     {
+      "z": 3.92,
+      "rect": [
+       1.02,
+       1.0
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       0.2,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6.2,
+    -18.7,
+    2.2
+   ],
+   "params": {
+    "colour": "#2a221e",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       2.6,
+       0.7
+      ]
+     },
+     {
+      "z": 1.57,
+      "rect": [
+       2.6,
+       0.7
+      ]
+     },
+     {
+      "z": 2.45,
+      "rect": [
+       2.52,
+       0.7
+      ]
+     },
+     {
+      "z": 2.87,
+      "rect": [
+       2.21,
+       0.7
+      ]
+     },
+     {
+      "z": 3.22,
+      "rect": [
+       1.56,
+       0.7
+      ]
+     },
+     {
+      "z": 3.43,
+      "rect": [
+       0.78,
+       0.7
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       0.16,
+       0.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -18.1,
+    2.2
+   ],
+   "params": {
+    "colour": "#e0d4b8",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       4.2,
+       1.0
+      ]
+     },
+     {
+      "z": 2.48,
+      "rect": [
+       4.2,
+       1.0
+      ]
+     },
+     {
+      "z": 3.85,
+      "rect": [
+       4.07,
+       1.0
+      ]
+     },
+     {
+      "z": 4.51,
+      "rect": [
+       3.57,
+       1.0
+      ]
+     },
+     {
+      "z": 5.06,
+      "rect": [
+       2.52,
+       1.0
+      ]
+     },
+     {
+      "z": 5.39,
+      "rect": [
+       1.26,
+       1.0
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       0.25,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -18.7,
+    2.2
+   ],
+   "params": {
+    "colour": "#2a221e",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       3.4,
+       0.7
+      ]
+     },
+     {
+      "z": 2.25,
+      "rect": [
+       3.4,
+       0.7
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       3.3,
+       0.7
+      ]
+     },
+     {
+      "z": 4.1,
+      "rect": [
+       2.89,
+       0.7
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       2.04,
+       0.7
+      ]
+     },
+     {
+      "z": 4.9,
+      "rect": [
+       1.02,
+       0.7
+      ]
+     },
+     {
+      "z": 5.0,
+      "rect": [
+       0.2,
+       0.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.2,
+    -18.1,
+    2.2
+   ],
+   "params": {
+    "colour": "#e0d4b8",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       3.4,
+       1.0
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       3.4,
+       1.0
+      ]
+     },
+     {
+      "z": 2.8,
+      "rect": [
+       3.3,
+       1.0
+      ]
+     },
+     {
+      "z": 3.28,
+      "rect": [
+       2.89,
+       1.0
+      ]
+     },
+     {
+      "z": 3.68,
+      "rect": [
+       2.04,
+       1.0
+      ]
+     },
+     {
+      "z": 3.92,
+      "rect": [
+       1.02,
+       1.0
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       0.2,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    6.2,
+    -18.7,
+    2.2
+   ],
+   "params": {
+    "colour": "#2a221e",
+    "sections": [
+     {
+      "z": 0.0,
+      "rect": [
+       2.6,
+       0.7
+      ]
+     },
+     {
+      "z": 1.57,
+      "rect": [
+       2.6,
+       0.7
+      ]
+     },
+     {
+      "z": 2.45,
+      "rect": [
+       2.52,
+       0.7
+      ]
+     },
+     {
+      "z": 2.87,
+      "rect": [
+       2.21,
+       0.7
+      ]
+     },
+     {
+      "z": 3.22,
+      "rect": [
+       1.56,
+       0.7
+      ]
+     },
+     {
+      "z": 3.43,
+      "rect": [
+       0.78,
+       0.7
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       0.16,
+       0.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-post",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8680",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8680",
+    "parapet": 0.2
+   },
+   "z0": 9
+  },
+  {
+   "type": "mass",
+   "id": "cross-bar",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8680",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8680",
+    "parapet": 0.2
+   },
+   "z0": 17.5
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "forecourtDepth": 20,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -10
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -4
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     6
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     10
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Arch legs bulge slightly too much (onion-like) and lack the ribbed double skin; shell is a smooth dome with a sky-reflection blue streak, not the scalloped fan-vault; cross partly hidden by shell; trees simplified."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-quiet-reflection"
+}

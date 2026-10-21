@@ -1,0 +1,575 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "lamido-palace-yola",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lamido_Palace.jpg",
+   "licence": "CC0",
+   "author": "Mr. Snatch",
+   "view": "front",
+   "file": "/tmp/places-evidence/yola/lamido1.jpg",
+   "used": "long low ochre-yellow front range with maroon pilasters and a row of pointed-arch openings, tall gatehouse at right with a big maroon pointed arch and crenelled maroon cap, raised balustraded pavilion with maroon parapet left of centre, big tree at right, bare paved forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fombina_Palace_Museum_Yola.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AbahEmma",
+   "view": "detail",
+   "used": "checked it is the same ochre and maroon palace palette (not used for massing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.85,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-range",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    -10,
+    5
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6b64a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 5.6,
+      "opening": 0.74,
+      "height": 0.92,
+      "depth": 1.8,
+      "colour": "#1c1210",
+      "pierColour": "#d9a050"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6b64a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    48,
+    4.5
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6b64a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 3.6,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.2,
+      "colour": "#2a1c16",
+      "pierColour": "#e6b64a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6b64a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9b27a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b99a6c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -60,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#d9b27a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -15,
+    6,
+    10.0
+   ],
+   "params": {
+    "height": 3.5,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -16,
+    5.6,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#f2ead6"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    9,
+    0,
+    14.3
+   ],
+   "params": {
+    "length": 16,
+    "depth": 9,
+    "height": 0.9,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -16,
+    5.6,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#f2ead6"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    17,
+    4.5,
+    14.3
+   ],
+   "params": {
+    "length": 16,
+    "depth": 9,
+    "height": 0.9,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -16,
+    5.6,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#f2ead6"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    17,
+    4.5,
+    14.3
+   ],
+   "params": {
+    "length": 16,
+    "depth": 9,
+    "height": 0.9,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-range",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -47,
+    4.5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6b64a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 4.2,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.4,
+      "colour": "#1c1210",
+      "pierColour": "#d9a050"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6b64a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavilion",
+   "at": [
+    -9,
+    9,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     6
+    ],
+    "height": 3.2,
+    "colour": "#efe0bc"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -16,
+    5.6,
+    5.2
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#f2ead6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-side-l",
+   "at": [
+    10.4,
+    4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     9
+    ],
+    "height": 12.5,
+    "colour": "#e6b64a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-side-r",
+   "at": [
+    23.6,
+    4.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     9
+    ],
+    "height": 12.5,
+    "colour": "#e6b64a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-back",
+   "at": [
+    17,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2
+    ],
+    "height": 12.5,
+    "colour": "#e6b64a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-top",
+   "at": [
+    17,
+    4.5,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "height": 1.0,
+    "colour": "#e6b64a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-l",
+   "at": [
+    12.6,
+    -0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 11.5,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-r",
+   "at": [
+    21.4,
+    -0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 11.5,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arch-1",
+   "at": [
+    17,
+    -0.3,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     11,
+     2.2
+    ],
+    "height": 1.6,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arch-2",
+   "at": [
+    17,
+    -0.3,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     8.6,
+     2.2
+    ],
+    "height": 1.5,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arch-3",
+   "at": [
+    17,
+    -0.3,
+    11.3
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     2.2
+    ],
+    "height": 1.4,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-arch-4",
+   "at": [
+    17,
+    -0.3,
+    12.7
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.2
+    ],
+    "height": 1.2,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-cap",
+   "at": [
+    17,
+    4.5,
+    12.5
+   ],
+   "params": {
+    "rect": [
+     16,
+     9
+    ],
+    "height": 1.8,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "parapet-merlons",
+   "at": [
+    17,
+    4.5,
+    14.3
+   ],
+   "params": {
+    "length": 16,
+    "depth": 9,
+    "height": 0.9,
+    "colour": "#a65a4c"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    52,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 17,
+    "crown_radius": 11,
+    "trunk_radius": 0.6,
+    "colour": "#3f8a3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "gate is a stepped maroon portal (no true curved pointed ring) and the passage reads shallow; arcade bays are windows-like rather than deep dark loggia; pavilion balustrade is simple; tree crown is low-poly and smaller than the photo"
+ }
+}

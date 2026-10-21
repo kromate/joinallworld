@@ -1,0 +1,217 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "sagamu-neighbourhood-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json",
+   "used": "tree-shaded lawn, circular seating plaza, small gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 50,
+    "colour": "#a8c3a0"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "colour": "#a9a59d",
+    "border_colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0.05
+    ],
+    "radius": 9,
+    "count": 8,
+    "facing": "centre",
+    "of": [
+     {
+      "type": "park-bench",
+      "params": {
+       "count": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#5a5148",
+    "plinth": 1.0
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.03
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -25
+     ],
+     [
+      0,
+      -7
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "colour": "#e6cf8a",
+    "board_colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.4,
+    "kind": "wall",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.4,
+    "kind": "wall",
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    -17,
+    10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#8d5a3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -8
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     18
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; plaza, lawn, gate typed from brief"
+ }
+}

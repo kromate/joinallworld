@@ -1,0 +1,165 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/benin-city.json",
+   "used": "nothing public found; OSM nearest building (231 m2, 12 m away) is not confirmed so only the brief's garden/pavilion programme is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 9,
+    "height": 4.2,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 6,
+    "colour": "#efe9da",
+    "cap_colour": "#8a4a33"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -22,
+    16
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9da",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a33",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/fountain",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    -15,
+    -18
+   ],
+   "params": {
+    "length": 12,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    15,
+    -18
+   ],
+   "params": {
+    "length": 12,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -24
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "kind": "wall",
+    "colour": "#c8c1af"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence found; a typical event garden with pavilion, hall, fountain and hedges."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "celebrate-garden"
+}

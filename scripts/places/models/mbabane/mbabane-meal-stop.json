@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/162203320",
+   "used": "195 m2 irregular building outline containing the point"
+  },
+  {
+   "kind": "text",
+   "used": "No photo found on Commons or Wikidata; massing from the brief and OSM outline, colours from the Mbabane city style. Villa-style single storey with corrugated hip roof per brief."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a2f25",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "height": 2.8,
+    "roof": "lean-to",
+    "roof_colour": "#8a2f25",
+    "wall_colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 3.5,
+    "colours": [
+     "#8a2f25",
+     "#f3efe6"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 0.9,
+    "colour": "#7a6a52"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM outline is containing-quality only and the roof/veranda are assumed."
+ }
+}

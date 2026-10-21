@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1067411099",
+   "used": "L-shaped footprint, about 17 x 16 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 60
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#2f6b8a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -4,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 2.4,
+    "eaveHeight": 2.9,
+    "attachHeight": 3.8,
+    "postEvery": 2.8,
+    "colour": "#f2efe6",
+    "roofColour": "#2f6b8a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    16,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f2efe6",
+    "roofColour": "#2f6b8a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -9,
+    -12,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     10
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; footprint is real OSM, everything above it (roof, veranda, balconies, colours) follows the brief"
+ }
+}

@@ -1,0 +1,247 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "lafia-new-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lafia.json",
+   "used": "planned market: two long gable sheds of identical lock-up shops either side of a central lane, entrance gate, blank sign board; no photo exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed-front",
+   "footprint": {
+    "rect": [
+     92,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -19
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#c9c3b4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6b54",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-back",
+   "footprint": {
+    "rect": [
+     92,
+     15
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#c9c3b4"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6b54",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -11.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     0
+    ],
+    "end": [
+     42,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       0.3
+      ],
+      "height": 2.5,
+      "colour": "#3f4a50"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    11.4,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     0
+    ],
+    "end": [
+     42,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       0.3
+      ],
+      "height": 2.5,
+      "colour": "#3f4a50"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -27.2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     0
+    ],
+    "end": [
+     42,
+     0
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       0.3
+      ],
+      "height": 2.5,
+      "colour": "#6b7a80"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.2,
+    "pillar": 1.2,
+    "colour": "#e8e4da",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -38,
+    4.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 2,
+    "bottom": 0,
+    "colour": "#4f6b54",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or OSM outline found; layout from the brief."
+ }
+}

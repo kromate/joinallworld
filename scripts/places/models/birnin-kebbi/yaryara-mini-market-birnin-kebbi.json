@@ -1,0 +1,116 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "yaryara-mini-market-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/953710584",
+   "used": "footprint (62 m2, nearest 1.6 m)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: glazed front, shutters, awning, parking apron"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop-osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#8d9296",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "curtain"
+    },
+    "glassColour": "#a9c3cf",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "awning",
+   "params": {
+    "rect": [
+     9.5,
+     2.2
+    ],
+    "z0": 3.2,
+    "height": 0.2,
+    "colour": "#2f7d5b"
+   },
+   "at": [
+    0,
+    -5.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     7,
+     0.25
+    ],
+    "z0": 3.6,
+    "height": 1.1,
+    "colour": "#2f7d5b",
+    "trimColour": "#f2efe6"
+   },
+   "at": [
+    0,
+    -4.5
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -5,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.8,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 2,
+  "treeKind": "broadleaf",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; storefront details are typical for a neighbourhood supermarket."
+ }
+}

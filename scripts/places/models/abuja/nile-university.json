@@ -1,0 +1,561 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "nile-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nile.University_Aerial_view.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chris Ikpemi",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/abuja/nile3.jpg",
+   "used": "campus of separate low blocks on lawns: long cream four-storey block with red frame bays at left, central two-storey block with orange hipped roofs and white bands, pink-red three-storey block at right, car park, avenue trees, palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 62,
+  "aspect": 1.85,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     32,
+     12
+    ]
+   },
+   "at": [
+    -48,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6dc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#c4372f",
+    "plinth": 0.4,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4dc",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-stair",
+   "footprint": {
+    "rect": [
+     5.6,
+     3.2
+    ]
+   },
+   "at": [
+    -42,
+    5.6
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6272",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4372f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-low",
+   "footprint": {
+    "rect": [
+     30,
+     8
+    ]
+   },
+   "at": [
+    -6,
+    -6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeae2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#f2f0ea",
+    "bay": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d9622b",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-tall",
+   "footprint": {
+    "rect": [
+     16,
+     14
+    ]
+   },
+   "at": [
+    16,
+    -4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#d9622b",
+    "bay": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#e07a2e",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     28.0,
+     11.2
+    ]
+   },
+   "at": [
+    46,
+    36
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9605a",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#f0ebe3",
+    "bay": 5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3a30",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -50,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 24,
+    "density": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58.0,
+    5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "height": 15.2,
+    "colour": "#c4372f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50.8,
+    5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "height": 15.2,
+    "colour": "#c4372f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -43.6,
+    5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "height": 15.2,
+    "colour": "#c4372f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36.4,
+    5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "height": 15.2,
+    "colour": "#c4372f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -29.200000000000003,
+    5.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.5
+    ],
+    "height": 15.2,
+    "colour": "#c4372f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-gable",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    16,
+    -12.5
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e07a2e",
+    "pitch": 24
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -14.2,
+    5.2
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 1.2,
+    "colour": "#3f5f78"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -26
+     ],
+     [
+      -40,
+      -24
+     ],
+     [
+      0,
+      -26
+     ],
+     [
+      40,
+      -18
+     ],
+     [
+      62,
+      0
+     ],
+     [
+      66,
+      40
+     ]
+    ],
+    "width": 7,
+    "colour": "#7c7d80"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -20
+     ],
+     [
+      -12,
+      -14
+     ],
+     [
+      4,
+      -18
+     ],
+     [
+      24,
+      -14
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#d4cdbc"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -10,
+      -8
+     ],
+     [
+      -4,
+      -16
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#d4cdbc"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      26,
+      -4
+     ],
+     [
+      40,
+      10
+     ],
+     [
+      50,
+      24
+     ]
+    ],
+    "width": 1.8,
+    "colour": "#d4cdbc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -2,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   124,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Blocks now separate with lawn gaps, red frame bays, white gabled entrance, campus road, car park, paths and palms; but the central low block and tall block still touch, east block reads brick red more than pink, paths are straight not curved, and the footprint is 124 m (over the 120 m clamp warning)."
+ }
+}

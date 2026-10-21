@@ -1,0 +1,101 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/628604362",
+   "used": "nearest building (4 m), 66 m2 rotated rectangle; form, brick and veranda from the brief (trano gasy style), no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.6,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8553a",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#ece6d8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mosque-domed/veranda",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    7,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 1.4,
+    "bottom": 1.6,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -5,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint-only: real 66 m2 outline; storeys, brick and veranda are typed from city style."
+ }
+}

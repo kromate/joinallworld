@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "ubani-modern-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json",
+   "used": "purpose-built modern market: long two-storey lock-up blocks with arched fronts under a continuous green metal roof around a covered central yard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/333811770",
+   "used": "checked only: the tagged marketplace area is about 540,000 m2 (a whole district), so no single building outline; a 90x60 m representative block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 26,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-ring",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     90,
+     60
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "bay": 5.4,
+    "groundKind": "arched",
+    "groundHeight": 4.2,
+    "plinth": 0.5,
+    "bands": "#4f6b55",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b55",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     48,
+     22
+    ],
+    "height": 0.4,
+    "colour": "#4f6b55"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 8,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#b5654a",
+     "#e9c46a",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 7.0,
+    "colour": "#4f6b55",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 7.0,
+    "colour": "#b5654a",
+    "posts": false
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "colour": "#efe6d0",
+    "board_colour": "#4f6b55"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 12,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -60,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; the OSM area is a district, so a representative ring block with green roof composed from the brief; the roof over the central yard is a simplified slab."
+ }
+}

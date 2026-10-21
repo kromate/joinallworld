@@ -1,0 +1,630 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_University_of_Lafia's_Main_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Umar2z",
+   "view": "front",
+   "file": "/tmp/places-evidence/lafia/gate.jpg",
+   "used": "main gate: central arch-roofed gatehouse with glazed front and flanking tall arch canopies over the road lanes, mustard-yellow render with dusty-pink trim, green sign band, round planter island"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Adamu_Adamu_lecture_hall_federal_university_of_lafia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eera",
+   "view": "detail",
+   "used": "campus render palette: terracotta-pink and mustard walls, flat roofs with thin parapet, large circular stair opening"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Federal_University_of_Lafia",
+   "used": "white Senate Building behind the gate, plan and storeys estimated"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     6,
+     17
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4c45c",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "curtain",
+     "right": "curtain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#c99a8c"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#c99a8c",
+    "rise": 3.2,
+    "overhang": 0.5,
+    "material": "concrete"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "lodge-left",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    -22.5,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4c45c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a8c",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge-right",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    22.5,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4c45c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c99a8c",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-left",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      3
+     ]
+    },
+    "arc": {
+     "centre": [
+      -14.5,
+      2,
+      4.0
+     ],
+     "radius": 6,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#e4c45c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      3
+     ]
+    },
+    "arc": {
+     "centre": [
+      14.5,
+      2,
+      4.0
+     ],
+     "radius": 6,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#e4c45c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-left-soffit",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      2.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      -14.5,
+      2,
+      4.0
+     ],
+     "radius": 5.2,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#e8b8b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-right-soffit",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      2.6
+     ]
+    },
+    "arc": {
+     "centre": [
+      14.5,
+      2,
+      4.0
+     ],
+     "radius": 5.2,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#e8b8b0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "lettering-left",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      -14.5,
+      0.4,
+      4.0
+     ],
+     "radius": 6.3,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "lettering-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.3
+     ]
+    },
+    "arc": {
+     "centre": [
+      14.5,
+      0.4,
+      4.0
+     ],
+     "radius": 6.3,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz",
+     "steps": 10
+    },
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign-band",
+   "at": [
+    0,
+    -7.3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.2,
+    "bottom": 4.6,
+    "colour": "#2f6b4f",
+    "frameColour": "#e4c45c",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "planter",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0.45,
+      "#4f7a3a"
+     ],
+     [
+      5.2,
+      0.45,
+      "#4f7a3a"
+     ],
+     [
+      5.4,
+      0.45,
+      "#f2f0ea"
+     ],
+     [
+      5.4,
+      0,
+      "#2b2b2b"
+     ]
+    ],
+    "segments": 24
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "lamp-pole",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      0,
+      -11,
+      0
+     ],
+     [
+      0,
+      -12,
+      10.5
+     ],
+     [
+      1.8,
+      -12,
+      11.2
+     ],
+     [
+      3.2,
+      -12,
+      11.3
+     ]
+    ],
+    "colour": "#d8dce0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "lamp-arm2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "points": [
+     [
+      0,
+      -12,
+      10.5
+     ],
+     [
+      -1.8,
+      -12,
+      11.2
+     ],
+     [
+      -3.2,
+      -12,
+      11.3
+     ]
+    ],
+    "colour": "#d8dce0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "senate",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    70
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    30,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    32,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    45,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    40,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    45,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "federal-university-of-lafia",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gatehouse sign band is hidden under the arched roof and there is no crest or blank-board lettering on its arch face; side arches are sketched as thin bands with no dark gate leaves; planter kerb is not striped; ground is flat red-brown rather than dirt road with tracks"
+ }
+}

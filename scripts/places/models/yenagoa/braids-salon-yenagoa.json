@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "braids-salon-yenagoa",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#braids-salon-yenagoa",
+   "used": "single-storey roadside shop about 7x5 m, shed roof, pink and gold painted front, awning, blank signboard; no OSM match, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 8,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3d9a8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "bands": "#c0508a",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -2.7,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.4,
+    "drop": 0.5,
+    "height": 2.6,
+    "colours": [
+     "#c0508a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2.6,
+    2.7
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#c0508a",
+    "frameColour": "#f3d9a8",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   24,
+   18
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo, typed shop"
+ }
+}

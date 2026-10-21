@@ -1,0 +1,136 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-way-272208994",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/284500250",
+   "used": "real building outline, 45 x 41 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: white 3-storey private clinic, glazed entrance, blank red-cross sign; no photo found on Commons or Wikidata"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f4f0",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "bands": "#3b78a0",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 2,
+    "colour": "#dfe1de"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -2,
+    -19.4,
+    8.2
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -6,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; massing from real outline, storey count and style from the brief."
+ }
+}

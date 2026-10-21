@@ -1,0 +1,200 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "umuahia-ibeku-station",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/670739197",
+   "used": "24x11 m ticketing-shed outline (name match)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json",
+   "used": "motor park: tin-roofed shed, parked buses and vans, stalls"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-shed",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcac0",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#8a8d90"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "platform-canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 5,
+    "colour": "#7a7e82",
+    "edgeColour": "#8a8d90"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.3,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "van",
+    "density": 0.7,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    22,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#efe6d0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#efe6d0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this motor park exists; layout typed from brief, shed outline from OSM."
+ }
+}

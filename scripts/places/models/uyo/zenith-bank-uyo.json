@@ -1,0 +1,188 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "uyo",
+  "venueId": "zenith-bank-uyo",
+  "verified": "text",
+  "evidence": [
+    {
+      "kind": "text",
+      "ref": "scripts/places/briefs/uyo.json",
+      "used": "28 x 18 m, three storeys, 12 m, glazed face, red accent, canopy, blank sign board, brise-soleil, car park; no photo or OSM outline of this branch exists (Wikidata image is the Lagos head office, not used)"
+    }
+  ],
+  "camera": {
+    "yawDeg": 20,
+    "pitchDeg": 10,
+    "fovDeg": 50
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "main",
+      "footprint": {
+        "rect": [
+          28,
+          18
+        ]
+      },
+      "at": [
+        0,
+        0
+      ],
+      "height": 12,
+      "storeys": 3,
+      "wall": {
+        "material": "glass-curtain",
+        "colour": "#cfd8dc",
+        "windows": "curtain",
+        "windowRatio": 0.6,
+        "faces": {
+          "front": "curtain",
+          "left": "plain",
+          "right": "plain",
+          "back": "plain"
+        },
+        "plinth": 0.5,
+        "cornice": true
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#8c9096",
+        "material": "concrete",
+        "parapet": 0.6,
+        "overhang": 0.4
+      }
+    },
+    {
+      "type": "mass",
+      "id": "red-core",
+      "footprint": {
+        "rect": [
+          7,
+          3
+        ]
+      },
+      "at": [
+        -10.5,
+        -10.5
+      ],
+      "height": 12.8,
+      "storeys": 3,
+      "wall": {
+        "material": "painted-render",
+        "colour": "#c0392b",
+        "windows": "none",
+        "plinth": 0.3
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#a93226",
+        "parapet": 0.3
+      }
+    },
+    {
+      "type": "canopy",
+      "at": [
+        4,
+        -12,
+        3.6
+      ],
+      "params": {
+        "width": 11,
+        "depth": 5,
+        "height": 0,
+        "thickness": 0.4,
+        "columns": 2,
+        "colour": "#ffffff",
+        "edgeColour": "#c0392b"
+      }
+    },
+    {
+      "type": "sign-board",
+      "at": [
+        -10.5,
+        -12.2,
+        9.5
+      ],
+      "params": {
+        "width": 5,
+        "height": 1.4,
+        "bottom": 0,
+        "colour": "#ffffff",
+        "posts": false
+      }
+    },
+    {
+      "type": "brise-soleil",
+      "at": [
+        4,
+        -9.4,
+        5.5
+      ],
+      "params": {
+        "length": 14,
+        "height": 6,
+        "pitch": 1.4,
+        "depth": 0.5,
+        "colour": "#ffffff"
+      }
+    },
+    {
+      "type": "atm-booth",
+      "at": [
+        -3,
+        -14,
+        0
+      ]
+    },
+    {
+      "type": "car-park",
+      "at": [
+        0,
+        -21,
+        0
+      ],
+      "params": {
+        "width": 28,
+        "depth": 10
+      }
+    }
+  ],
+  "site": {
+    "ground": "asphalt",
+    "forecourt": "parking",
+    "trees": [
+      {
+        "kind": "palm",
+        "at": [
+          -20,
+          -14
+        ]
+      },
+      {
+        "kind": "palm",
+        "at": [
+          20,
+          -14
+        ]
+      },
+      {
+        "kind": "palm",
+        "at": [
+          22,
+          12
+        ]
+      }
+    ],
+    "extent": [
+      80,
+      60
+    ]
+  },
+  "review": {
+    "rounds": 1,
+    "match": "rough",
+    "gaps": "No photo or OSM outline of this branch exists; massing, colours and details are typical-for-brief only."
+  }
+}

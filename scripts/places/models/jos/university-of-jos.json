@@ -1,0 +1,485 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "university-of-jos",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_jos_department_of_medicine.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Linus Godwin korah",
+   "view": "front",
+   "used": "low cream rendered buildings with hipped roofs in red-brown and teal-green sheet, clipped hedges lining concrete paths, big shade trees, laterite ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_jos_medical_school_preclinicals.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Linus Godwin korah",
+   "view": "front",
+   "used": "welcome signboard on two steel posts, cream wall with maroon plinth, mango trees, kerb stones"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q1412551",
+   "used": "founded 1975; no OSM building footprint matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 8,
+  "fovDeg": 60
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-west",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    10
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf8e",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f7a6a",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-east",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    24,
+    12
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddc98c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-block",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecdfb4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f6a5a",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 2.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6.5,
+    "height": 1.6,
+    "bottom": 1.6,
+    "colour": "#f3f1ea",
+    "frameColour": "#6b7075"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -2,
+    2,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     30
+    ]
+   },
+   "at": [
+    -2.2,
+    -8
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     30
+    ]
+   },
+   "at": [
+    2.2,
+    -8
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb8ac",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-a",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    -10,
+    -26
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-b",
+   "footprint": {
+    "rect": [
+     14,
+     1
+    ]
+   },
+   "at": [
+    10,
+    -26
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-c",
+   "footprint": {
+    "rect": [
+     1,
+     18
+    ]
+   },
+   "at": [
+    -17,
+    -17
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-d",
+   "footprint": {
+    "rect": [
+     1,
+     18
+    ]
+   },
+   "at": [
+    17,
+    -17
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-e",
+   "footprint": {
+    "rect": [
+     12,
+     1
+    ]
+   },
+   "at": [
+    -8,
+    -8
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hedge-f",
+   "footprint": {
+    "rect": [
+     12,
+     1
+    ]
+   },
+   "at": [
+    8,
+    -8
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f6a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7a30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 4,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -46,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 13,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 2,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy is now tall and shades the low cream blocks, with hedge-bordered bed, kerbs and laterite; trees are still low-poly blobs and sparser than the dense mango/eucalyptus shade, ground lacks patchy grass and stains, building layout is estimated."
+ }
+}

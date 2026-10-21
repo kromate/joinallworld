@@ -1,0 +1,232 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:State_House_Seychelles.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Gerard Larose, Seychelles Tourism Board",
+   "view": "front",
+   "file": "/tmp/places-evidence/victoria/statehouse1.jpg",
+   "used": "long two-storey cream block, double-height white colonnade with white balustrade on the upper gallery, green louvred shutters between columns, green hipped roof, central stair, lawn and palms"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe1c6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#ffffff",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f8a6a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-slab",
+   "footprint": {
+    "rect": [
+     46,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -4.2
+   ],
+   "z0": 4.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-roof",
+   "footprint": {
+    "rect": [
+     47,
+     3.8
+    ]
+   },
+   "at": [
+    0,
+    -4.1
+   ],
+   "z0": 8.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "count": 14,
+    "height": 4.2,
+    "radius": 0.3,
+    "kind": "round",
+    "beamHeight": 0.3,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -5.4,
+    4.6
+   ],
+   "params": {
+    "length": 44,
+    "count": 14,
+    "height": 3.6,
+    "radius": 0.28,
+    "kind": "round",
+    "beamHeight": 0.3,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -5.5,
+    4.6
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 1.2,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#d8d3c6"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -33,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "wall reads blue-grey in shade, no green shutter panels, stair simplified, no hillside backdrop"
+ }
+}

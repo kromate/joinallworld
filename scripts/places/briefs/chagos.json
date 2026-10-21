@@ -1,0 +1,593 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "chagos",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "chagos",
+    "climate": "tropical-maritime",
+    "vernacular": "No permanent civilian population since the Chagossians were removed in 1967-1973. Outside the military base on Diego Garcia, the atolls hold abandoned coconut-plantation settlements (Boddam, Takamaka, Peros Banhos) of low single-storey coral-block and render buildings with rusting corrugated roofs, a stone church and manager villa, a jetty, all swallowed by low jungle between coconut palms on white coral sand.",
+    "wallColours": [
+      "#d8d2c0",
+      "#bdb5a0",
+      "#9a9482",
+      "#c9c0a6",
+      "#e6e1d2",
+      "#7c8670"
+    ],
+    "roofColours": [
+      "#8a5a3f",
+      "#7e8583",
+      "#a1673f",
+      "#5f5a4f"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "whitewash",
+      "render",
+      "concrete",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Almost none: plain gable ends, small arched or square window openings, whitewash and lime render weathered to grey-green with moss and creeper; coconut-palm timber and rusted iron roofing; a ruined stone church as the one civic landmark.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Chagos_Archipelago",
+        "what": "coconut plantations from 1793, abandoned Ilois plantation houses decaying, abandoned church on Boddam (Salomon), residents removed 1967-1973, Diego Garcia naval base"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Salomon_Islands",
+        "what": "Ile Boddam former main settlement: jetty, shops, offices, school, church, manager villa, hidden by thick jungle; low jungle between coconut trees; wells used by yachtsmen"
+      }
+    ]
+  },
+  "places": {
+    "chagos-airport-chagos-airport": {
+      "venueId": "chagos-airport-chagos-airport",
+      "city": "chagos",
+      "name": "Ile Boddam (abandoned church)",
+      "archetype": "shrine-small",
+      "subject": "The abandoned plantation church on Ile Boddam, Salomon atoll: a small stone-and-render church with a gabled roof partly collapsed, ringed by coconut palms and jungle",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "ruined"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#cfc8b2",
+          "#9a9482",
+          "#e6e1d2"
+        ],
+        "roofColour": "#7e8583",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "open west door"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low boundary wall remnants"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "19th century (plantation era)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Salomon_Islands",
+          "what": "Ile Boddam had a church among its plantation buildings, now hidden by jungle; photo of abandoned church"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Chagos_Archipelago",
+          "what": "abandoned church stands on Boddam Island in the Salomon atoll"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/536180592",
+          "what": "OSM footprint 14.6 x 9.9 m, area 145 m2"
+        }
+      ],
+      "notes": "Venue is labelled \"airport\" in the game but there is no airstrip on Ile Boddam; the real place is an abandoned settlement island. Wikidata image for the island is the abandoned church (Eglise Boddam), so the church is modelled. Size is taken from the OSM building=ruins polygon 59 m away (14.6 x 9.9 m), which may or may not be the church itself; details (roof state, colours) are inferred from weathered coral-render ruins, not from a described photo. Render as a roofless/half-roofed ruin with overgrowth."
+    },
+    "chagos-clinic": {
+      "venueId": "chagos-clinic",
+      "city": "chagos",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "Small single-storey outpost clinic in whitewashed block with a corrugated roof and a painted red cross board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#e6e1d2",
+          "#9a9482",
+          "#c9c0a6"
+        ],
+        "roofColour": "#7e8583",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "plantation-era style",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Clinic. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-community-notices": {
+      "venueId": "chagos-community-notices",
+      "city": "chagos",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "Tiny render hall with a notice board and flagpole beside a sandy yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#c9c0a6",
+          "#8a5a3f",
+          "#e6e1d2"
+        ],
+        "roofColour": "#8a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "notice board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "plantation-era style",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Notice hall. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-community-voting-game": {
+      "venueId": "chagos-community-voting-game",
+      "city": "chagos",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "Open-sided timber meeting shelter with a low hip roof of rusty iron on palm posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "hip",
+        "variant": "open shelter"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58b66",
+          "#7c6a4c",
+          "#d8d2c0"
+        ],
+        "roofColour": "#a1673f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "undated",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Voting shelter. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-community-workshop": {
+      "venueId": "chagos-community-workshop",
+      "city": "chagos",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "Long low concrete-block workshop with a shed roof and double doors, rust-streaked",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9a9482",
+          "#5f5a4f",
+          "#bdb5a0"
+        ],
+        "roofColour": "#5f5a4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1970s-style",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Workshop. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-market-game": {
+      "venueId": "chagos-market-game",
+      "city": "chagos",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A few stalls under palm-thatch and tin awnings on a sandy clearing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58b66",
+          "#c9b27a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8a5a3f",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "undated",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Market. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-meal-stop": {
+      "venueId": "chagos-meal-stop",
+      "city": "chagos",
+      "name": "Visitor meal stop (game venue)",
+      "archetype": "restaurant",
+      "subject": "Small timber beach shack with a corrugated roof and a shaded terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#b99a6b",
+          "#e6e1d2",
+          "#7c6a4c"
+        ],
+        "roofColour": "#7e8583",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "undated",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Meal stop. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-osm-node-5194716720": {
+      "venueId": "chagos-osm-node-5194716720",
+      "city": "chagos",
+      "name": "Black Rose",
+      "archetype": "park-landscape",
+      "subject": "An unbuilt stretch of white coral sand shore and coconut palms on the eastern rim of the Salomon atoll (Black Rose)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "beach"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#e6e1d2",
+          "#d8d2c0",
+          "#6a7a58"
+        ],
+        "roofColour": "#8a8f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "\"Black Rose\" is an OSM node whose meaning could not be found in the sources available; the position lies on the eastern rim of the Salomon atoll, so a natural coral-sand shore with palms is shown. Nothing is known about any structure, so no feature is invented."
+    },
+    "chagos-quiet-reflection": {
+      "venueId": "chagos-quiet-reflection",
+      "city": "chagos",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "Small whitewashed prayer hut with a low gable, loosely echoing the ruined plantation church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "limestone",
+        "colours": [
+          "#e6e1d2",
+          "#9a9482",
+          "#c9c0a6"
+        ],
+        "roofColour": "#7e8583",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "plantation-era style",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Quiet space. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-recreation": {
+      "venueId": "chagos-recreation",
+      "city": "chagos",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "Open sandy lawn under coconut palms with a small thatched pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "beach lawn"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e6e1d2",
+          "#a58b66",
+          "#6a7a58"
+        ],
+        "roofColour": "#a58b66",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "undated",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Placeholder game venue (no real place). Recreation area. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like."
+    },
+    "chagos-transit": {
+      "venueId": "chagos-transit",
+      "city": "chagos",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A short concrete-and-coral jetty with a small waiting shed, echoing the plantation jetty on Ile Boddam",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed",
+        "variant": "jetty"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb5a0",
+          "#8a8f8c",
+          "#e6e1d2"
+        ],
+        "roofColour": "#7e8583",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "jetty"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "plantation-era style",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Salomon_Islands",
+          "what": "Ile Boddam once had a jetty (so a jetty is plausible, but this venue is a placeholder)"
+        }
+      ],
+      "notes": "Placeholder game venue (no real place). Transit stop. Typed from the Chagos city style; atolls have no permanent civilian settlement, so keep it modest, weathered and plantation-like. The Boddam plantation jetty is documented; its appearance is not."
+    }
+  }
+}

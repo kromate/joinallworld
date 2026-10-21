@@ -1,0 +1,173 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/632274953",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long white nave, pitched roof, free-standing bell tower, cross over the porch; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "bands": "#8a6a45"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -21,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 15,
+    "cap": "pyramid",
+    "cap_height": 4,
+    "colour": "#f4f1e6",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "church-gothic/cross",
+   "at": [
+    0,
+    -13.2,
+    6.5
+   ],
+   "params": {
+    "height": 3.2
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#f4f1e6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "st-johns-catholic-yenagoa",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "OSM outline and brief only; tower position, window count and porch estimated; no photo exists"
+ }
+}

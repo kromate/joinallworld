@@ -1,0 +1,199 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#baptist-college-of-theology",
+   "used": "no photo found; OSM nearest building 48 m away not trusted: L-plan two-storey rendered blocks with brick-red band, hip sheet roof, small gabled chapel with square bell tower, courtyard garden, laterite"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eadb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "bands": "#a2553a",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     11,
+     24
+    ]
+   },
+   "at": [
+    -24.5,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eadb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bay": 3.6,
+    "bands": "#a2553a",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    30,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 12,
+    "cap": "hip",
+    "capRise": 2.5,
+    "windows": "none",
+    "colour": "#a2553a",
+    "capColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    45,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "baptist-college-of-theology",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence; OSM nearest building not used; chapel/tower optional guess; no photo to compare"
+ }
+}

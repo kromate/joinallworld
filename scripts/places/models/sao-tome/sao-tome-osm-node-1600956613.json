@@ -1,0 +1,665 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ro\u00e7a_Agostinho_Neto_(S\u00e3o_Tom\u00e9)_(5).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-tome/roca5.jpg",
+   "used": "low pink-washed timber house with hip roof of rust-brown sheeting, blue door, white-shuttered windows; grey clad house beside; white balustrade between orange-red piers; cobbled yard; big shade trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ro\u00e7a_Agostinho_Neto_(S\u00e3o_Tom\u00e9)_(14).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "side",
+   "file": "/tmp/places-evidence/sao-tome/roca14.jpg",
+   "used": "stained whitewashed wash-house with slit vents and low rectangular basins in front, hip tile-brown roof on neighbouring house"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/223284585",
+   "used": "nearest outline (28 m): overall scale of the long range only; not used as footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-house",
+   "footprint": {
+    "rect": [
+     38,
+     11
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ebe6da",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#9a5a3e",
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a3e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    34.3,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "depth": 2.6,
+    "height": 2.8,
+    "roof": "lean-to",
+    "balustrade": true,
+    "steps": true,
+    "roof_colour": "#9a5a3e",
+    "wall_colour": "#ebe6da"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pink-house",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d9a9a6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#ffffff",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8654a",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grey-house",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    28,
+    2
+   ],
+   "rotDeg": -6,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#cfc8bc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5238",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-house",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    -22,
+    6
+   ],
+   "rotDeg": 4,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8a49a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8654a",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wash-house",
+   "footprint": {
+    "rect": [
+     20,
+     5
+    ]
+   },
+   "at": [
+    -36,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "ribbon",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8ae98",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "basin-1",
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "at": [
+    -36,
+    20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc6b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b0",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hospital-range",
+   "footprint": {
+    "rect": [
+     24,
+     7
+    ]
+   },
+   "at": [
+    34,
+    24
+   ],
+   "rotDeg": -4,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#e6e0d2",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a3e",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -12,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3.0,
+    "legHeight": 5.5,
+    "legs": 4,
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     2.6,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#2f6fc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8654a",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "grass-island",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0,
+      0.15,
+      "#5f9a3e"
+     ],
+     [
+      15,
+      0.15,
+      "#5f9a3e"
+     ],
+     [
+      15,
+      0.15,
+      "#a9a8a2"
+     ],
+     [
+      15.5,
+      0.15,
+      "#a9a8a2"
+     ],
+     [
+      15.5,
+      0,
+      "#a9a8a2"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "trunk-r",
+   "at": [
+    26,
+    -8,
+    0.15
+   ],
+   "params": {
+    "segments": 10,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#f2efe6"
+     ],
+     [
+      0.55,
+      0,
+      "#f2efe6"
+     ],
+     [
+      0.5,
+      2.4,
+      "#f2efe6"
+     ],
+     [
+      0.45,
+      2.5,
+      "#5a4a40"
+     ],
+     [
+      0.35,
+      7.700000000000001,
+      "#5a4a40"
+     ],
+     [
+      0.2,
+      8.68,
+      "#5a4a40"
+     ],
+     [
+      0.05,
+      8.68,
+      "#5a4a40"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown-r",
+   "at": [
+    26,
+    -8,
+    0.15
+   ],
+   "params": {
+    "segments": 10,
+    "profile": [
+     [
+      0.01,
+      7.700000000000001,
+      "#2f5a2e"
+     ],
+     [
+      8,
+      8.4,
+      "#2f5a2e"
+     ],
+     [
+      8,
+      11.200000000000001,
+      "#2a5228"
+     ],
+     [
+      4.8,
+      14,
+      "#2a5228"
+     ],
+     [
+      0.01,
+      14.700000000000001,
+      "#2a5228"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "trunk-c",
+   "at": [
+    8,
+    -3,
+    0.15
+   ],
+   "params": {
+    "segments": 10,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#f2efe6"
+     ],
+     [
+      0.55,
+      0,
+      "#f2efe6"
+     ],
+     [
+      0.5,
+      2.4,
+      "#f2efe6"
+     ],
+     [
+      0.45,
+      2.5,
+      "#5a4a40"
+     ],
+     [
+      0.35,
+      7.15,
+      "#5a4a40"
+     ],
+     [
+      0.2,
+      8.06,
+      "#5a4a40"
+     ],
+     [
+      0.05,
+      8.06,
+      "#5a4a40"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown-c",
+   "at": [
+    8,
+    -3,
+    0.15
+   ],
+   "params": {
+    "segments": 10,
+    "profile": [
+     [
+      0.01,
+      7.15,
+      "#2f5a2e"
+     ],
+     [
+      7,
+      7.8,
+      "#2f5a2e"
+     ],
+     [
+      7,
+      10.4,
+      "#2a5228"
+     ],
+     [
+      4.2,
+      13,
+      "#2a5228"
+     ],
+     [
+      0.01,
+      13.65,
+      "#2a5228"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "mango",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "mango",
+    "height": 9,
+    "count": 1,
+    "spread": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "id": "base",
+   "at": [
+    -34,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 0.5,
+    "thickness": 0.5,
+    "colour": "#c8553d"
+   }
+  },
+  {
+   "type": "balustrade",
+   "id": "bal",
+   "at": [
+    -34,
+    -20,
+    0.5
+   ],
+   "params": {
+    "length": 48,
+    "height": 0.8,
+    "postEvery": 0.5,
+    "colour": "#f4f1ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "params": {
+    "mode": "line",
+    "count": 17,
+    "start": [
+     -34,
+     -20,
+     0
+    ],
+    "end": [
+     14,
+     -20,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 1.3,
+      "colour": "#c8553d"
+     }
+    },
+    "lod2Step": 99
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "trees are simplified lollipop crowns with no forked limbs; fence reads thin from the far camera; main two-storey block is brief-only and pushed behind; curved kerb path is only a ring edge"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-osm-node-1600956613"
+}

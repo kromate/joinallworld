@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "kwari-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/845183764",
+   "used": "one real block outline (41 x 9.5 m, bearing 56 deg) as the main shop block"
+  },
+  {
+   "kind": "text",
+   "ref": "https://dailytrust.com/?p=977617",
+   "used": "dense multi-storey lock-up blocks, textile trade; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-block",
+   "footprint": {
+    "polygon": [
+     [
+      -19.8,
+      -7.6
+     ],
+     [
+      -14.5,
+      -15.5
+     ],
+     [
+      19.8,
+      7.6
+     ],
+     [
+      14.5,
+      15.5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cdaa",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#a05a3c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    -34,
+    22
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 24,
+    "depth": 10,
+    "storeys": 3,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.25,
+    "awning_ratio": 0.5,
+    "wall_colour": "#d9b98f",
+    "roof_colour": "#8a8f94",
+    "accent_colour": "#a05a3c"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    30,
+    -30
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "storeys": 4,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.25,
+    "awning_ratio": 0.5,
+    "wall_colour": "#c98f6a",
+    "roof_colour": "#8a8f94",
+    "accent_colour": "#a05a3c"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    -30,
+    -36
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "storeys": 3,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.25,
+    "awning_ratio": 0.5,
+    "wall_colour": "#e0cdaa",
+    "roof_colour": "#8a8f94",
+    "accent_colour": "#a05a3c"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    40,
+    28
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 20,
+    "depth": 10,
+    "storeys": 3,
+    "floor_height": 3.4,
+    "ground_height": 3.6,
+    "windows": "punched",
+    "window_ratio": 0.25,
+    "awning_ratio": 0.5,
+    "wall_colour": "#cbb08a",
+    "roof_colour": "#8a8f94",
+    "accent_colour": "#a05a3c"
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    -40,
+    16,
+    3
+   ],
+   "params": {
+    "length": 12,
+    "height": 3,
+    "colour": "#ff5fd0"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -10,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; blocks, heights and colours estimated"
+ }
+}

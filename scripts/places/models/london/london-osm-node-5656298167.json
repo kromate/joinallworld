@@ -1,0 +1,402 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-node-5656298167",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barnet_Museum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lucas Kendall",
+   "view": "front",
+   "used": "a long low early-Georgian frontage painted cream (not red brick): two storeys of white sash windows, tiled hipped roof with a dormer, brown timber door at the right, low red-brick forecourt wall with black iron railings, lamp posts, street tree",
+   "file": "/tmp/places-evidence/london/london-osm-node-5656298167_0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/146790208",
+   "used": "checked only: containing building is a long irregular footprint, modelled with plain rectangles"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eadfb4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d5442",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-wing",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6ae",
+    "windows": "punched",
+    "windowRatio": 0.24
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e4a3c",
+    "material": "clay-tile",
+    "pitch": 26
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    6,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e2d8b0",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d5442",
+    "material": "clay-tile",
+    "pitch": 26
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    4,
+    -2.6,
+    9.3
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.6,
+    "colour": "#f1ede4"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -5,
+    -2.6,
+    9.3
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.6,
+    "colour": "#f1ede4"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    -10,
+    1,
+    8
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.4,
+    "pots": 3,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "chimney-stack",
+   "at": [
+    11,
+    1,
+    8
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 2.4,
+    "pots": 2,
+    "colour": "#9b5a43"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.2,
+    -4.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#7a4a28",
+    "z0": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.2,
+    -4.62,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 0.4,
+    "colour": "#efe8d6",
+    "z0": 3.1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -21,
+      -6.6
+     ],
+     [
+      -12,
+      -6.6
+     ],
+     [
+      -8,
+      -6.3
+     ],
+     [
+      -6,
+      -5.6
+     ],
+     [
+      -3,
+      -5.4
+     ],
+     [
+      -1,
+      -5.6
+     ],
+     [
+      0.5,
+      -6.3
+     ],
+     [
+      3,
+      -6.6
+     ],
+     [
+      6.5,
+      -6.6
+     ]
+    ],
+    "height": 0.6,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#b0604a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.6
+   ],
+   "params": {
+    "points": [
+     [
+      -21,
+      -6.6
+     ],
+     [
+      -12,
+      -6.6
+     ],
+     [
+      -8,
+      -6.3
+     ],
+     [
+      -6,
+      -5.6
+     ],
+     [
+      -3,
+      -5.4
+     ],
+     [
+      -1,
+      -5.6
+     ],
+     [
+      0.5,
+      -6.3
+     ],
+     [
+      3,
+      -6.6
+     ],
+     [
+      6.5,
+      -6.6
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "railing",
+    "colour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -4.55,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.5,
+    "bottom": 3.6,
+    "colour": "#efe6c8",
+    "frameColour": "#2b2b2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -12,
+    -5,
+    2.2
+   ],
+   "params": {
+    "height": 1.0
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -8.5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    15.5,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "depth": 1.8,
+    "height": 2.6,
+    "form": "flat",
+    "colour": "#2b2b2e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Curved forecourt wall and railings approximate; no bus stop pole/bin, lettering is a blank board; trees are low-poly; left wing and rear guessed."
+ }
+}

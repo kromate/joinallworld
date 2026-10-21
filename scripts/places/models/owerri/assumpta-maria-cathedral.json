@@ -1,0 +1,445 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "assumpta-maria-cathedral",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Assumpta_Cathedral_Owerri.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kelechukwu Ajoku",
+   "view": "side",
+   "file": "/tmp/places-evidence/owerri/cathedral.jpg",
+   "used": "wide shallow dark ribbed dome on a pale drum with small square turrets, flat-roofed arms with dark vertical concrete piers and white panels, cross on top"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/406231918",
+   "used": "Greek-cross outline, about 77 x 70 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.42,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "arms",
+   "footprint": {
+    "osm": true
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#8a847a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 1.4,
+      "depth": 0.4,
+      "spacing": 4.5,
+      "colour": "#3f3b36",
+      "margin": 2
+     },
+     {
+      "type": "bands",
+      "colour": "#efebe0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a2",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "armroof",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.98,
+      12.82
+     ],
+     [
+      -2.92,
+      37.25
+     ],
+     [
+      -21.71,
+      30.41
+     ],
+     [
+      -12.82,
+      5.98
+     ],
+     [
+      -37.25,
+      -2.92
+     ],
+     [
+      -30.41,
+      -21.71
+     ],
+     [
+      -5.98,
+      -12.82
+     ],
+     [
+      2.92,
+      -37.25
+     ],
+     [
+      21.71,
+      -30.41
+     ],
+     [
+      12.82,
+      -5.98
+     ],
+     [
+      37.25,
+      2.92
+     ],
+     [
+      30.41,
+      21.71
+     ]
+    ],
+    "z0": 13,
+    "height": 4.5,
+    "topScale": 0.55,
+    "colour": "#b4b7b8"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    1,
+    15.5
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#e9e5da",
+    "profile": [
+     [
+      16.5,
+      0,
+      "#e9e5da"
+     ],
+     [
+      16.5,
+      9.5
+     ],
+     [
+      17.4,
+      9.5,
+      "#b9b4a8"
+     ],
+     [
+      17.4,
+      10.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    1,
+    26.0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#4f5356",
+    "topColour": "#5e6366",
+    "profile": [
+     [
+      17.6,
+      0,
+      "#3d4043"
+     ],
+     [
+      17.6,
+      0.6
+     ],
+     [
+      16.6,
+      2.0,
+      "#4f5356"
+     ],
+     [
+      13.5,
+      4.0
+     ],
+     [
+      9.5,
+      5.6
+     ],
+     [
+      5,
+      6.6
+     ],
+     [
+      0,
+      7.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    2,
+    1,
+    15.5
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#7b8083",
+    "profile": [
+     [
+      17,
+      0
+     ],
+     [
+      17,
+      10
+     ],
+     [
+      12,
+      14
+     ],
+     [
+      0,
+      17.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallops",
+   "lod": [
+    0
+   ],
+   "at": [
+    2,
+    1,
+    25.8
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#2f3236",
+      "profile": [
+       [
+        1.7,
+        0
+       ],
+       [
+        1.7,
+        0.9
+       ],
+       [
+        1.0,
+        1.7
+       ],
+       [
+        0,
+        2.1
+       ]
+      ]
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 17.4,
+    "count": 24,
+    "startDeg": 0,
+    "endDeg": 345
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    11.545941546018392,
+    10.54594154601839,
+    25.0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.5459415460183905,
+    10.545941546018392,
+    25.0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.545941546018394,
+    -8.54594154601839,
+    25.0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "turret3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    11.545941546018389,
+    -8.545941546018394,
+    25.0
+   ],
+   "params": {
+    "rect": [
+     2.8,
+     2.8
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#f0ece2"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cross",
+   "at": [
+    2,
+    1,
+    33.0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#3b3b3b",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.35,
+      5
+     ],
+     [
+      0.0,
+      5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "arm roof is a separate tapered cross slab only roughly aligned with the OSM cross (not true lean-to wings with white gable panels); dome ribs are facets plus scallop lobes; turrets plain boxes"
+ }
+}

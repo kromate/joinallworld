@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "jos-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Zaria_Mosque,_Jos_2.jpg",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "side",
+   "file": "/tmp/places-evidence/jos/zaria.jpg",
+   "used": "replica Zaria mosque in the museum grounds: long red mud-render wall on a stone-block plinth, arched niches, rounded corner buttress, stepped taller block behind, eroded crenellated ridge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/273801658",
+   "used": "31 x 12 m museum block footprint (containing match), colonial block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.04,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "colonial",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    28,
+    30
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque-long",
+   "footprint": {
+    "rect": [
+     36,
+     13
+    ]
+   },
+   "at": [
+    -22,
+    -6
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a8683f",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a94f35",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -6
+   ],
+   "params": {
+    "rect": [
+     38,
+     15
+    ],
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#85755f",
+    "windows": "none",
+    "topScale": 0.97
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-step",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -22,
+    -6
+   ],
+   "params": {
+    "rect": [
+     38.4,
+     15.4
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#7d6e5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mosque-high",
+   "footprint": {
+    "rect": [
+     15,
+     13
+    ]
+   },
+   "at": [
+    -15,
+    5
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a0613b",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 1.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a5a38",
+    "pitch": 12,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "buttress",
+   "at": [
+    -4.5,
+    -12
+   ],
+   "params": {
+    "n": 14,
+    "radius": 4.2,
+    "z0": 0,
+    "height": 10,
+    "topScale": 0.6,
+    "colour": "#a8683f",
+    "topColour": "#9a5a38"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -40,
+     -13.0
+    ],
+    "end": [
+     -12,
+     -13.0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.5
+      ],
+      "z0": 3.4,
+      "height": 1.3,
+      "colour": "#d58a5c",
+      "topScale": 0.9
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "stadium/arch-gateway",
+   "id": "kano-gate",
+   "at": [
+    10,
+    -14
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 8,
+    "openings": 1,
+    "kind": "round",
+    "crenellated": true,
+    "pinnacles": 2,
+    "pier": "#a8603a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -40,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 4,
+    "spread": 16,
+    "line": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 10,
+    "line": 1
+   }
+  },
+  {
+   "type": "array",
+   "id": "crenel-long",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -39,
+     -11.5
+    ],
+    "end": [
+     -6,
+     -11.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.7
+      ],
+      "z0": 8.0,
+      "height": 0.9,
+      "colour": "#9c5d3a",
+      "topScale": 0.7
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "crenel-high",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -22,
+     -1.5
+    ],
+    "end": [
+     -8,
+     -1.5
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       0.7
+      ],
+      "z0": 13.0,
+      "height": 1.0,
+      "colour": "#9c5d3a",
+      "topScale": 0.7
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "mud wall is smooth, not eroded/ragged with stone-block texture; niches are small patches; no grass tufts or sandy paths; colonial block and gate from text/OSM"
+ }
+}

@@ -1,0 +1,419 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-airport-mitiga-international-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MiG23s_(12573874093).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Rob Schleiffert",
+   "view": "street",
+   "file": "/tmp/places-evidence/tripoli/mig.jpg",
+   "used": "red-and-white chequered control tower with glazed cab at right, long green-clad arched-roof hangar with window band at left, low whitewashed flat-roofed houses and a minaret behind, tall apron lamp masts, palms"
+  },
+  {
+   "kind": "text",
+   "ref": "brief: Mitiga terminal is a modest 1990s block beside the old Italian air base",
+   "used": "terminal size and flat roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 45,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hangar",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5f7a55",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 1.2
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#55704c",
+    "material": "corrugated",
+    "rise": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hangar-annex",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfd8c8",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    22,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5ddc8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8c8a84",
+      "height": 0.6,
+      "at": 0.98
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    60,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.75,
+       1.75
+      ],
+      "colours": [
+       "#c8362f",
+       "#f3efe6"
+      ],
+      "mode": "checker",
+      "floors": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a84",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-cab",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    60,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 26,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2b3a44",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e2",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -54,
+    2,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 6,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    28,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#d6202c",
+     "#111111",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    6,
+    66,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "radius": 0.8,
+    "balconies": 1,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -2,
+    60,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     8
+    ],
+    "height": 5,
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    40,
+    62,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     8
+    ],
+    "height": 4.5,
+    "colour": "#dcd4c0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -30,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.2
+    ],
+    "height": 2.2,
+    "colour": "#6b7050"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -30,
+    8,
+    1
+   ],
+   "params": {
+    "rect": [
+     4,
+     9
+    ],
+    "height": 0.3,
+    "colour": "#7a7a58"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.2
+    ],
+    "height": 2.2,
+    "colour": "#6b7050"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -18,
+    8,
+    1
+   ],
+   "params": {
+    "rect": [
+     4,
+     9
+    ],
+    "height": 0.3,
+    "colour": "#7a7a58"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -6,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     2.2
+    ],
+    "height": 2.2,
+    "colour": "#6b7050"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -6,
+    8,
+    1
+   ],
+   "params": {
+    "rect": [
+     4,
+     9
+    ],
+    "height": 0.3,
+    "colour": "#7a7a58"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     32
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hangar, slender chequered tower with wide cab and apron lamps match; jets are only simple stand-ins, background houses are plain blocks, 1990s terminal is typed."
+ }
+}

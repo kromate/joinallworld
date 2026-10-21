@@ -1,0 +1,222 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_building_of_the_University_of_Algiers.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Cherif Meriam",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/univ1.jpg",
+   "used": "cream Art Deco limestone facade, five storeys, giant pilasters rising through upper floors to a deep cornice, tall mullioned windows, small square windows and slatted panels in the attic band, end pavilion with round clock panel, palms in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_d%27Alger.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Yelles",
+   "view": "street",
+   "used": "attic band with slatted panels, taller square end pavilion with round clock, flat roof, flagpole"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29082561",
+   "used": "real outline of the Faculte centrale complex (auto-fitted to 118 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "faculty",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "height": 26,
+   "storeys": 5,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.26,
+    "bay": 30,
+    "plinth": 1.0,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 2.4,
+      "depth": 1.0,
+      "spacing": 30,
+      "colour": "#efe3c8",
+      "margin": 2
+     },
+     {
+      "type": "bands",
+      "colour": "#d4c6a2",
+      "height": 1.4,
+      "proud": 0.8,
+      "at": "top"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d9ba",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "height": 32,
+    "colour": "#efe3c8",
+    "topColour": "#e6dcc2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -34,
+    32
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "height": 0.9,
+    "colour": "#dcd0b4"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -39,
+    24
+   ],
+   "params": {
+    "width": 5,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#f6f1e0",
+    "frameColour": "#cbbf9f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 6,
+    "spread": 100
+   }
+  },
+  {
+   "lod": [
+    0
+   ],
+   "type": "flag",
+   "at": [
+    -38,
+    -30,
+    32
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/steps",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 1.5,
+    "count": 3,
+    "colour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "osm": true,
+    "simplify": 20
+   },
+   "z0": 26,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8dcc0",
+    "windows": "none",
+    "windowShape": "rect",
+    "windowRatio": 0,
+    "bay": 5,
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d9ba",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Renders cooler than the warm cream; fewer windows and plain fin pilasters due to budget; attic slat panels omitted (plain band); pavilion clock disc blank; fewer palms"
+ }
+}

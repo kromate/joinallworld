@@ -1,0 +1,247 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.britannica.com/place/Okrika",
+   "used": "Ijaw mangrove island town on a creek; pier layout not described"
+  }
+ ],
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 50,
+    "colour": "#6b7f72"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    -3,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a5896a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.0,
+    "colour": "#6d6d68",
+    "material": "corrugated",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    17,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b8ca0",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 18,
+    "colour": "#7a5a42",
+    "material": "corrugated",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     8
+    ],
+    "height": 0.8,
+    "colour": "#bdb8ab"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    8,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "width": 2.2,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    -13,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "width": 1.8,
+    "colour": "#3f6f8f",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    3,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "width": 1.4,
+    "colour": "#b4863f",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    13,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "width": 2.4,
+    "colour": "#d8cdb8",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3,
+    -0.2,
+    3.3
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#6b8ca0",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    10,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "colour": "#d8cdb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     18
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typed timber shelter, apron, plank piers, canoes"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "okrika-jetty"
+}

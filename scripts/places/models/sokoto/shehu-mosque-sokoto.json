@@ -1,0 +1,168 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1523859177",
+   "used": "irregular 976 m2 outline (containing match, simplified) for the prayer hall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Hausa-style plastered prayer hall, tapering mud-style minaret with pinnacles, toron beams, walled courtyard; no photo of this mosque found (Commons holds only Sultan Bello mosque, a different building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.2
+   },
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9a57e",
+    "windows": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "parapet": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98f68",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mud-tower",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "base_width": 5,
+    "taper": 0.45,
+    "stages": 3,
+    "top": "pinnacles",
+    "toron": true,
+    "colour": "#c9a57e"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -19,
+    -17,
+    8.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#d6b894"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    19,
+    -15,
+    8.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#d6b894"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    19,
+    10,
+    8.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#d6b894"
+   }
+  },
+  {
+   "type": "corner-pinnacle",
+   "at": [
+    -19,
+    8,
+    8.5
+   ],
+   "params": {
+    "height": 2.6,
+    "colour": "#d6b894"
+   }
+  },
+  {
+   "type": "toron-row",
+   "at": [
+    0,
+    -22,
+    6.5
+   ],
+   "params": {
+    "length": 26,
+    "rows": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.4,
+    "colour": "#d8c39a",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 6,
+    "line": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; massing from the OSM outline, minaret position and style typed from Hausa mosque convention"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "shehu-mosque-sokoto"
+}

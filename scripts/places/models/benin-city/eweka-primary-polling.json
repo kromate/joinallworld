@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "eweka-primary-polling",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief: single-storey L classroom block, veranda, tin roof, bare earth yard",
+   "used": "programme; OSM match is another school (Useh Primary) so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classrooms",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e0c9",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#3d6b4d",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 16,
+    "overhang": 1.0,
+    "colour": "#7a4d3a",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     8,
+     18
+    ]
+   },
+   "at": [
+    -16,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e0c9",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#3d6b4d"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 16,
+    "overhang": 1.0,
+    "colour": "#7a4d3a",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 2.6,
+    "height": 2.9,
+    "roof": "lean-to",
+    "wall_colour": "#e8e0c9",
+    "roof_colour": "#7a4d3a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#3d6b4d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "colour": "#c8c1af",
+    "pillarEvery": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence; typical primary school block."
+ }
+}

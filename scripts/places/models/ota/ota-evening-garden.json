@@ -1,0 +1,304 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "ota-evening-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small walled evening garden with paved paths, pavilion, fountain, palms, string lights; no photo exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    18,
+    8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#e6cf8a",
+    "cap_colour": "#8d5a3b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    -22,
+    2
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#a8c3a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d5a3b",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -24
+     ],
+     [
+      0,
+      24
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      0
+     ],
+     [
+      30,
+      0
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 72,
+    "height": 1.3,
+    "thickness": 0.3,
+    "colour": "#a9a59d",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "colour": "#e6cf8a",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "string-lights",
+   "at": [
+    18,
+    3,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 3.6,
+    "count": 14
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "colour": "#a8c3a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "line": 6
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 4,
+    "depth": 3,
+    "colours": [
+     "#e6cf8a",
+     "#c0603f",
+     "#a8c3a0"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 3,
+    "width": 4,
+    "depth": 3
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    0,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   76,
+   54
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of this place exists; modelled from the brief (verified text). Exact layout, colours and street setting are typical, not surveyed."
+ }
+}

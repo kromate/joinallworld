@@ -1,0 +1,731 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cape_Town_City_hall_and_Grand_Parade_panorama.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Discott",
+   "view": "street",
+   "used": "honey-sandstone Edwardian City Hall with clock tower and gabled bays along the square edge, wide open paved parade with round stone bollards and tall palms, glass and concrete towers beyond",
+   "file": "/tmp/places-evidence/cape-town/grand.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Grand_Parade_(Cape_Town)",
+   "used": "open square 220 x 130 m, market and parking, Edward VII statue"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 7,
+  "fovDeg": 62,
+  "aspect": 2.4,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "city-hall",
+   "footprint": {
+    "rect": [
+     84,
+     20
+    ]
+   },
+   "at": [
+    -30,
+    50
+   ],
+   "z0": 0,
+   "height": 20,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d8b87c",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 9,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 2.0,
+    "cornice": true,
+    "trimColour": "#e6d3a2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a7f85",
+    "pitch": 12,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-west",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -62,
+    40
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d2b072",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 2.0,
+    "cornice": true,
+    "trimColour": "#e6d3a2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdab72",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-east",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    2,
+    40
+   ],
+   "z0": 0,
+   "height": 27,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d2b072",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 8,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 2.0,
+    "cornice": true,
+    "trimColour": "#e6d3a2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdab72",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-centre",
+   "footprint": {
+    "rect": [
+     20,
+     7
+    ]
+   },
+   "at": [
+    -30,
+    39
+   ],
+   "z0": 0,
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d8b87c",
+    "windows": "none",
+    "windowRatio": 0.22,
+    "bay": 5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 2.0,
+    "cornice": true,
+    "trimColour": "#e6d3a2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdab72",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-shaft",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    -42,
+    52
+   ],
+   "z0": 0,
+   "height": 34,
+   "storeys": 3,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d8b87c",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 10,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 2.0,
+    "cornice": true,
+    "trimColour": "#e6d3a2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdab72",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-belfry",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -42,
+    52
+   ],
+   "z0": 34,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d8b87c",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 4,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "windowShape": "arched",
+    "plinth": 2.0,
+    "cornice": true,
+    "trimColour": "#e6d3a2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdab72"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-dome",
+   "at": [
+    -42,
+    52,
+    42
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#7f8a82",
+    "profile": [
+     [
+      5.2,
+      0,
+      "#e2cfa2"
+     ],
+     [
+      5.2,
+      0.8
+     ],
+     [
+      4.4,
+      1.0,
+      "#7f8a82"
+     ],
+     [
+      4.2,
+      2.4
+     ],
+     [
+      2.8,
+      4.6
+     ],
+     [
+      1.2,
+      6.2
+     ],
+     [
+      0.4,
+      7.2
+     ],
+     [
+      0.15,
+      8.0
+     ],
+     [
+      0.15,
+      12,
+      "#b5893a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -30,
+    35,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4,
+    "height": 14,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#e2cfa2",
+    "roofColour": "#e2cfa2"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "turret-w1",
+   "at": [
+    -70.5,
+    36,
+    22
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8b87c",
+    "profile": [
+     [
+      1.6,
+      0,
+      "#e2cfa2"
+     ],
+     [
+      1.6,
+      6
+     ],
+     [
+      2.0,
+      6.2,
+      "#e2cfa2"
+     ],
+     [
+      1.2,
+      7.5,
+      "#7f8a82"
+     ],
+     [
+      0.1,
+      10
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "turret-w2",
+   "at": [
+    -53.5,
+    36,
+    22
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8b87c",
+    "profile": [
+     [
+      1.6,
+      0,
+      "#e2cfa2"
+     ],
+     [
+      1.6,
+      6
+     ],
+     [
+      2.0,
+      6.2,
+      "#e2cfa2"
+     ],
+     [
+      1.2,
+      7.5,
+      "#7f8a82"
+     ],
+     [
+      0.1,
+      10
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "turret-e1",
+   "at": [
+    10.5,
+    36,
+    22
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8b87c",
+    "profile": [
+     [
+      1.6,
+      0,
+      "#e2cfa2"
+     ],
+     [
+      1.6,
+      6
+     ],
+     [
+      2.0,
+      6.2,
+      "#e2cfa2"
+     ],
+     [
+      1.2,
+      7.5,
+      "#7f8a82"
+     ],
+     [
+      0.1,
+      10
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "turret-e2",
+   "at": [
+    -6,
+    36,
+    22
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8b87c",
+    "profile": [
+     [
+      1.6,
+      0,
+      "#e2cfa2"
+     ],
+     [
+      1.6,
+      6
+     ],
+     [
+      2.0,
+      6.2,
+      "#e2cfa2"
+     ],
+     [
+      1.2,
+      7.5,
+      "#7f8a82"
+     ],
+     [
+      0.1,
+      10
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    -10,
+    6,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#5a5148",
+    "plinth": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-a",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    62,
+    100
+   ],
+   "z0": 0,
+   "height": 56,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f464c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555b60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-b",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    34,
+    104
+   ],
+   "z0": 0,
+   "height": 30,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc8b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-c",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -5,
+    108
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b4a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -70,
+     22,
+     0
+    ],
+    "end": [
+     70,
+     22,
+     0
+    ],
+    "count": 14,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 6,
+      "colour": "#b8b0a0",
+      "profile": [
+       [
+        0.55,
+        0
+       ],
+       [
+        0.6,
+        0.5
+       ],
+       [
+        0.45,
+        0.9
+       ],
+       [
+        0.15,
+        1.1
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     20,
+     -8,
+     0
+    ],
+    "end": [
+     70,
+     -8,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 16
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -60,
+     15,
+     0
+    ],
+    "end": [
+     -20,
+     15,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "palm",
+      "height": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 2,
+    "dx": 8,
+    "dy": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       5,
+       3.5
+      ],
+      "height": 2.6,
+      "colour": "#e9e6df",
+      "topColour": "#c9c5bb",
+      "windows": "none"
+     }
+    }
+   },
+   "at": [
+    40,
+    -45,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "City Hall is a stylised massing (hip block, three gabled bays, turrets, square clock tower with dome) without ornate Edwardian carving or true clock faces; Grand Parade scaled down to fit the 120 m clamp, bollards/palms/stalls indicative; backdrop towers are generic blocks"
+ }
+}

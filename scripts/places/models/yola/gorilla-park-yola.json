@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "gorilla-park-yola",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "wikidata",
+   "ref": "Q129175776",
+   "used": "identity: recreational garden in Yola; no outline (OSM none) and no photo found on Commons, Wikipedia or Wikidata"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small park with pavilion, gate, kiosk, shade trees and perimeter fence on laterite; plan is typical, not measured"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 2.4,
+    "posts": 6,
+    "colour": "#e3d3b0",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -18,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 4,
+    "depth": 2.6,
+    "height": 2.7,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "kind": "railing",
+    "height": 1.8,
+    "thickness": 0.15,
+    "pillarEvery": 6,
+    "colour": "#2b2b2b",
+    "points": [
+     [
+      -40,
+      -30
+     ],
+     [
+      40,
+      -30
+     ],
+     [
+      40,
+      30
+     ],
+     [
+      -40,
+      30
+     ],
+     [
+      -40,
+      -30
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars",
+    "colour": "#e3d3b0",
+    "leafColour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.5,
+    "bottom": 0.8,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    12,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "fence-wall",
+   "params": {
+    "kind": "wall",
+    "height": 1.0,
+    "thickness": 0.15,
+    "pillarEvery": 0,
+    "colour": "#2b2b2b",
+    "points": [
+     [
+      -40,
+      -30
+     ],
+     [
+      40,
+      -30
+     ],
+     [
+      40,
+      30
+     ],
+     [
+      -40,
+      30
+     ],
+     [
+      -40,
+      -30
+     ]
+    ]
+   },
+   "lod": [
+    1,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline exists; pavilion, kiosk, gate and fence are typical guesses for a small Yola park."
+ }
+}

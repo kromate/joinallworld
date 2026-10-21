@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "dajo-pottery",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1381821604",
+   "used": "nearest unnamed building (about 14 x 7 m, 100 m2, 4 m from the venue point) used as the footprint; no photo of Dajo Pottery was found, so veranda, gable roof, earthen colours, stacked pots and shade come from the brief and Benue craft-workshop typology"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9996a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5,
+    "bands": "#8b5a3c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8643e",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "depth": 2.2,
+    "height": 2.7,
+    "balustrade": false,
+    "steps": false,
+    "roof": "lean-to",
+    "wall_colour": "#efe3cc",
+    "roof_colour": "#8b5a3c"
+   }
+  },
+  {
+   "type": "market-open/thatched-pavilion",
+   "at": [
+    13,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "deck_height": 0.2,
+    "post_height": 2.6,
+    "roof": "pyramid",
+    "thatch": true,
+    "rail": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5,
+    -9.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.01,
+        0
+       ],
+       [
+        0.28,
+        0,
+        "#b5603a"
+       ],
+       [
+        0.42,
+        0.35
+       ],
+       [
+        0.45,
+        0.6
+       ],
+       [
+        0.32,
+        0.95
+       ],
+       [
+        0.28,
+        1.05
+       ],
+       [
+        0.01,
+        1.05
+       ]
+      ],
+      "segments": 12
+     }
+    },
+    "mode": "grid",
+    "cols": 5,
+    "rows": 2,
+    "dx": 1.0,
+    "dy": 0.9,
+    "centred": true
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    11,
+    -8.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.01,
+        0
+       ],
+       [
+        0.2,
+        0,
+        "#c46f45"
+       ],
+       [
+        0.3,
+        0.3
+       ],
+       [
+        0.32,
+        0.5
+       ],
+       [
+        0.2,
+        0.75
+       ],
+       [
+        0.01,
+        0.75
+       ]
+      ],
+      "segments": 10
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3,
+     0
+    ],
+    "end": [
+     3,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -7,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.2,
+    "bottom": 1.4,
+    "colour": "#8b5a3c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -9,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.3,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9996a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM nearest outline and brief only. Pot stacks, veranda and thatched shade are typical, not observed; orientation of veranda follows the rotated OSM outline."
+ }
+}

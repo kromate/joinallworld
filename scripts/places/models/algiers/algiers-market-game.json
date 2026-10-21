@@ -1,0 +1,151 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/273633418",
+   "used": "real outline of March\u00e9 Sidi M'Hamed (60 x 50 m, name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 60
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9e0c8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "round",
+      "bay": 6,
+      "opening": 0.7,
+      "height": 4.2,
+      "depth": 1,
+      "colour": "#b88a5d",
+      "pierColour": "#f3eee1"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8a85",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#e3a02a",
+     "#2d5da8",
+     "#f0f0f0"
+    ]
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -44,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e3a02a",
+     "#2f6b4f",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2,
+    "height": 3,
+    "colours": [
+     "#b88a5d",
+     "#f3eee1"
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/sign-board",
+   "at": [
+    4,
+    -36,
+    6.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#f3eee1",
+    "frameColour": "#b88a5d",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found (Commons has none for this market): colonial covered-hall look and stall placement are from the brief, only the outline is measured"
+ }
+}

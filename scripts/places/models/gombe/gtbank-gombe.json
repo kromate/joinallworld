@@ -1,0 +1,22 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "gombe", "venueId": "gtbank-gombe",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/1083324932", "used": "real 26 x 22 m building outline (containing match, rectangular, 558 m2); no photo of this branch was found on Commons or in the evidence file"},
+  {"kind": "text", "ref": "scripts/places/briefs/gombe.json#gtbank-gombe", "used": "two-storey bank branch, glazed front, blank signage board over entrance, awning, forecourt parking"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 12, "fovDeg": 50},
+ "parts": [
+  {"type": "mass", "id": "branch", "footprint": {"osm": true}, "at": [0, 0], "height": 8.6, "storeys": 2,
+   "wall": {"material": "glass-curtain", "colour": "#b9cbd0", "windows": "curtain", "windowRatio": 0.55, "bands": "#f1ede2", "plinth": 0.3, "parapet": 0.5,
+            "faces": {"front": "curtain", "left": "punched", "right": "punched", "back": "plain"}},
+   "roof": {"form": "flat", "colour": "#a8a29a", "material": "membrane", "overhang": 0.6, "parapet": 0.6}},
+  {"type": "core/canopy", "at": [0, -13.4, 0], "params": {"form": "flat", "width": 9, "depth": 3.6, "height": 3.8, "columns": 2, "colour": "#e9e4d6", "edgeColour": "#6b7c8c"}},
+  {"type": "core/sign-board", "at": [0, -10.2, 4.6], "params": {"width": 7, "height": 1.6, "bottom": 0, "colour": "#d6d9d4", "frameColour": "#6b7c8c", "posts": false}},
+  {"type": "car", "at": [-14, -20, 0], "params": {"colour": "#2f3a44", "count": 3, "spacing": 3.2}},
+  {"type": "core/tree", "at": [18, -16, 0], "params": {"kind": "palm", "height": 8, "count": 3, "line": 14}},
+  {"type": "core/fence-wall", "at": [0, -26, 0], "params": {"length": 40, "height": 1.4, "thickness": 0.3, "colour": "#d9d3c3"}}
+ ],
+ "site": {"ground": "asphalt", "forecourt": "parking", "trees": [], "extent": [64, 56]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo: facade treatment, entrance position and exact orientation are a plausible guess from the brief; only the outline is real"}
+}

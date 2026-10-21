@@ -1,0 +1,576 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MMIA_Intl_Terminal_2019.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sm105",
+   "file": "/tmp/places-evidence/lagos/airport1.jpg",
+   "view": "front",
+   "used": "long four-storey ribbon-banded block, glazed ground floor, roof sign band, control tower behind right, concrete grey colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2009_airport_Lagos_Nigeria_6350754168.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user (see Commons)",
+   "view": "back",
+   "used": "tower shaft and double-cab profile, stepped storeys, roof sign band"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     104,
+     26
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a95",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "glassColour": "#2f3d48",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#74777a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     104,
+     26
+    ]
+   },
+   "at": [
+    -6,
+    -0.5
+   ],
+   "z0": 7.5,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c8c88",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#808285",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "level2",
+   "footprint": {
+    "rect": [
+     102,
+     24
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "z0": 9.1,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a3a39e",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#2f3d48",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#6f7275"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "level3",
+   "footprint": {
+    "rect": [
+     100,
+     24
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "z0": 13.3,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9d9d98",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "glassColour": "#2f3d48",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#6f7275"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "level4",
+   "footprint": {
+    "rect": [
+     98,
+     24
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "z0": 17.5,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a0a09b",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "glassColour": "#2f3d48",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8e",
+    "overhang": 0.3,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     62,
+     0.8
+    ]
+   },
+   "at": [
+    -14,
+    -11.6
+   ],
+   "z0": 20.9,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2f5a43",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f5a43"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-link",
+   "footprint": {
+    "rect": [
+     16,
+     24
+    ]
+   },
+   "at": [
+    52,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9a95",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#2f3d48",
+    "bands": "#74777a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#85878a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d4",
+    "count": 3,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    48,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#b03a2e",
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "segments": 20,
+    "colour": "#c9c7bf",
+    "profile": [
+     [
+      3.2,
+      0,
+      "#c9c7bf"
+     ],
+     [
+      2.6,
+      12,
+      "#c9c7bf"
+     ],
+     [
+      2.4,
+      26,
+      "#c9c7bf"
+     ],
+     [
+      2.4,
+      27,
+      "#8f8f8a"
+     ],
+     [
+      4.4,
+      27.4,
+      "#8f8f8a"
+     ],
+     [
+      4.4,
+      29.2,
+      "#4a7fb0"
+     ],
+     [
+      4.0,
+      29.4,
+      "#c9c7bf"
+     ],
+     [
+      4.0,
+      30.4,
+      "#c9c7bf"
+     ],
+     [
+      4.4,
+      30.6,
+      "#8f9496"
+     ],
+     [
+      4.4,
+      34,
+      "#3d5361"
+     ],
+     [
+      4.9,
+      34.2,
+      "#d4d4d0"
+     ],
+     [
+      4.9,
+      34.8,
+      "#d4d4d0"
+     ],
+     [
+      0.3,
+      35.2,
+      "#d4d4d0"
+     ]
+    ]
+   },
+   "at": [
+    36,
+    10,
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    36,
+    10,
+    35
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      9
+     ]
+    ],
+    "colour": "#6e7174"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 104,
+    "depth": 8,
+    "height": 4.6,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#8f9193",
+    "edgeColour": "#7a7c7e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "start": [
+     -54,
+     -14,
+     0
+    ],
+    "end": [
+     42,
+     -14,
+     0
+    ],
+    "count": 13,
+    "mode": "line",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.5
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        4.6
+       ]
+      ],
+      "colour": "#a8aaa8"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "start": [
+     -50,
+     1,
+     20.9
+    ],
+    "end": [
+     40,
+     1,
+     20.9
+    ],
+    "count": 11,
+    "mode": "line",
+    "lod1Step": 2,
+    "lod2Step": 11,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.1
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        0,
+        5
+       ]
+      ],
+      "colour": "#55595c"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -24,
+    0,
+    20.9
+   ],
+   "params": {
+    "section": {
+     "circle": 0.2
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      8
+     ]
+    ],
+    "colour": "#55595c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10,
+    2,
+    20.9
+   ],
+   "params": {
+    "section": {
+     "circle": 0.15
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      6
+     ]
+    ],
+    "colour": "#55595c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ground floor and fascia still read slightly stepped (overhangs); tower cab simplified (no balcony drum detail or glazing mullions); terminal clamped to ~104 m; sign band blank (no lettering); apron vehicles omitted."
+ }
+}

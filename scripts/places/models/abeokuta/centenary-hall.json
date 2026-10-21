@@ -1,0 +1,381 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centenary_Hall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LensEye Media",
+   "view": "front",
+   "file": "/tmp/places-evidence/abeokuta/c.jpg",
+   "used": "two-storey cream-yellow rendered hall, pedimented front gable with round-headed fanlight, projecting columned porch with balcony, flanking stepped corner blocks, left flank with six arched ground windows, low curved grey front wall"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q109272765",
+   "used": "identity and 1930 inception"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1290963525",
+   "used": "nearest outline 29 m away: not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     18,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf85",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 1.0,
+    "cornice": true,
+    "bands": "#d4bf72",
+    "faces": {
+     "left": "arched",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c274",
+    "parapet": 1.0,
+    "overhang": 0.5
+   },
+   "storeys": 2
+  },
+  {
+   "type": "mass",
+   "id": "corner-l",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -9.5,
+    -12
+   ],
+   "height": 13,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf85",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c88e",
+    "parapet": 0.8,
+    "overhang": 0.4
+   },
+   "storeys": 3
+  },
+  {
+   "type": "mass",
+   "id": "corner-r",
+   "footprint": {
+    "rect": [
+     6,
+     7
+    ]
+   },
+   "at": [
+    9,
+    -12
+   ],
+   "height": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf85",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c88e",
+    "parapet": 0.6,
+    "overhang": 0.4
+   },
+   "storeys": 2
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 1,
+    "count": 3,
+    "colour": "#b7b2a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     13,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -16.2
+   ],
+   "z0": 11,
+   "height": 1.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf85",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e3cf85",
+    "pitch": 30,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    0,
+    -17.02,
+    8.2
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 2.6,
+    "kind": "arch",
+    "trim": "#d4bf72"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-balcony",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "z0": 5.2,
+   "height": 0.7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf85",
+    "windows": "none",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c274"
+   }
+  },
+  {
+   "type": "hospital/balustrade",
+   "at": [
+    -4.2,
+    -19.9,
+    5.9
+   ],
+   "params": {
+    "length": 8.4,
+    "height": 1.0,
+    "colour": "#e8e0b8"
+   }
+  },
+  {
+   "type": "hospital/arch-portal",
+   "at": [
+    0,
+    -15.1,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 5.2,
+    "archWidth": 3.4,
+    "springHeight": 2.6,
+    "pointed": false,
+    "colour": "#e3cf85"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -3.8,
+     -19.4,
+     0
+    ],
+    "end": [
+     3.8,
+     -19.4,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.55,
+       0.55
+      ]
+     },
+     "height": 4.6,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#e3cf85",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#e3cf85"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 1,
+    "count": 3,
+    "colour": "#b7b2a6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -23.5,
+    0
+   ],
+   "params": {
+    "height": 1.5,
+    "thickness": 0.4,
+    "colour": "#9a9d98",
+    "points": [
+     [
+      -14,
+      -19.5
+     ],
+     [
+      -10,
+      -23
+     ],
+     [
+      -6,
+      -24.3
+     ],
+     [
+      -3.5,
+      -24.3
+     ],
+     [
+      -3.5,
+      -24.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -23.5,
+    0
+   ],
+   "params": {
+    "height": 1.5,
+    "thickness": 0.4,
+    "colour": "#9a9d98",
+    "points": [
+     [
+      3.5,
+      -24.3
+     ],
+     [
+      6,
+      -24.3
+     ],
+     [
+      10,
+      -23
+     ],
+     [
+      14,
+      -19.5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "centenary-hall",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pediment small versus photo; left flank arches shallow; porch is a simple columned bay without entablature; curved wall is a faceted polyline with no porthole openings; corner blocks not stepped"
+ }
+}

@@ -1,0 +1,170 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small town park, gravel path loop, lawn, mature trees, low stone pavilion with pyramidal metal roof; OSM way is the leisure=park area (no building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    8,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8c8f92",
+    "material": "metal-sheet",
+    "rise": 2.4,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path",
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      0.06
+     ]
+    },
+    "closed": true,
+    "points": [
+     [
+      -30,
+      -20
+     ],
+     [
+      22,
+      -22
+     ],
+     [
+      34,
+      16
+     ],
+     [
+      -8,
+      26
+     ],
+     [
+      -34,
+      8
+     ]
+    ],
+    "colour": "#d9c29a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.0,
+    "colour": "#7a6a52"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -8,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     18
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; contents of the park are unknown, so a generic planted green with a pavilion."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-community-voting-game"
+}

@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "yusuf-bala-usman-library-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945556178",
+   "used": "1808 m2 complex outline, containing match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: modern 2-storey block, glazed entrance atrium, flags, forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library-osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#2f4a5c",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#2f4a5c",
+    "plinth": 0.4,
+    "bands": "#d8c19a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "params": {
+    "rect": [
+     10,
+     6
+    ],
+    "height": 11,
+    "colour": "#2f4a5c",
+    "windows": "curtain",
+    "glassColour": "#4d7a96",
+    "trimColour": "#d8c19a"
+   },
+   "at": [
+    2,
+    -37
+   ],
+   "rotDeg": -24
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "params": {
+    "rect": [
+     12,
+     3
+    ],
+    "height": 0.6,
+    "colour": "#cfc8b8"
+   },
+   "at": [
+    3.5,
+    -41.8
+   ],
+   "rotDeg": -24
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.15,
+       0.15
+      ],
+      "height": 9,
+      "colour": "#c9c6bd"
+     }
+    },
+    "mode": "line",
+    "start": [
+     18,
+     -48
+    ],
+    "end": [
+     34,
+     -42
+    ],
+    "count": 3
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 8,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; atrium position and flag masts are guesses relative to OSM outline."
+ }
+}

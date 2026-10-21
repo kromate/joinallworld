@@ -1,0 +1,279 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: broad gabled nave, freestanding bell tower, cream rendered facade with plain cross, arched windows, steps; nearest OSM building is a 57 m2 outbuilding, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     30,
+     17
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 4.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#c8bfa8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.9
+   },
+   "rotDeg": 90,
+   "storeys": 1
+  },
+  {
+   "type": "mass",
+   "id": "narthex",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "height": 6.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "loft",
+   "id": "bell-tower",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       4.4,
+       4.4
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       4.6,
+       4.6
+      ]
+     },
+     {
+      "z": 15.4,
+      "rect": [
+       3.8,
+       3.8
+      ]
+     }
+    ],
+    "colour": "#a24a32"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -14,
+    -20,
+    15.4
+   ],
+   "params": {
+    "baseWidth": 3.8,
+    "height": 6,
+    "sides": 4,
+    "colour": "#7a3f2f",
+    "finial": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -17.5,
+    7.3
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.4
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -17.5,
+    8.7
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.4
+    ],
+    "z0": 0,
+    "height": 0.4,
+    "colour": "#efe8d6"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20.6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.6,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#c8bfa8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.4,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#c8bfa8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -20
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -22
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   56
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; orientation, tower position and facade design are typical, not surveyed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "st-johns-catholic-church"
+}

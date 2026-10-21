@@ -1,0 +1,200 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-node-7802162236",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "node/7802162236",
+   "used": "the 31 m2 building nearest the market point, kept as the small office kiosk; the long sheds follow the brief (70 x 45 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-kiosk",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#a2553a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -22,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "gable",
+    "roof_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    16,
+    18,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 4.0,
+    "roof": "gable",
+    "roof_colour": "#a2553a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "colours": [
+     "#d9c9a3",
+     "#a2553a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "colours": [
+     "#d9c9a3",
+     "#ffffff",
+     "#a2553a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#a2553a",
+     "#ffffff",
+     "#d9c9a3"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    28,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#a2553a",
+     "#ffffff",
+     "#d9c9a3"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   84,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only a 31 m2 OSM outbuilding is real, shed rows and stalls follow the brief's typical layout."
+ }
+}

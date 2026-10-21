@@ -1,0 +1,296 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/19282875",
+   "used": "real outline of the centre (233 x 172 m, fitted to the scene clamp)"
+  },
+  {
+   "kind": "text",
+   "used": "the Commons P18 and nearby photos show Westgate Mall, not Sarit, so no photo was used; massing from brief: six-storey cream 1983 centre, glazed atrium, deck parking bands, blank signage"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 116,
+    "simplify": 14
+   },
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "bay": 14,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#8a7860",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29a8c",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "deck",
+   "footprint": {
+    "rect": [
+     52,
+     26
+    ]
+   },
+   "at": [
+    -26,
+    -12
+   ],
+   "z0": 17,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4c8b0",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8a7860",
+       "#d4c8b0"
+      ],
+      "height": 1.0,
+      "at": 0.5,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29a8c",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    22,
+    -4
+   ],
+   "z0": 17,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc6",
+    "windows": "none",
+    "bands": "#8a7860"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a29a8c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    6,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     6
+    ],
+    "height": 15,
+    "topScale": [
+     1,
+     0.4
+    ],
+    "colour": "#7d9fb3",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#3d6b8c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#8a7860"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -24,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "bottom": 6,
+    "colour": "#b23b2f",
+    "frameColour": "#555555"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -44,
+    15
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.6,
+    "bottom": 0.5,
+    "colour": "#3d6b8c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    34,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 5,
+    "colour": "#e6dcc6",
+    "frameColour": "#555555"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 6,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 22,
+  "trees": 0,
+  "cars": [
+   {
+    "at": [
+     -30,
+     -60,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -24,
+     -54,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#8a2f2a"
+   },
+   {
+    "at": [
+     -18,
+     -60,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#2f4f6f"
+   },
+   {
+    "at": [
+     -12,
+     -54,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#e0e0e0"
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-sarit-centre",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of Sarit found (P18 is Westgate); OSM outline only, simplified; atrium, deck bands and sign boards are brief-based"
+ }
+}

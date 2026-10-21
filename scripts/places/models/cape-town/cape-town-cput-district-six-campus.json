@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-cput-district-six-campus",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CPUT_Cape_Town_Campus.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "MikeWJones",
+   "view": "front",
+   "file": "/tmp/places-evidence/cape-town/cput-district-six-campus-0.jpg",
+   "used": "long cream concrete campus: scalloped barrel-vault canopy block with stone plinth at left, taller slab tower with dark window slot, stepped terraced wing, low ribbon-windowed wing at right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CPUT_SCM_-_panoramio.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Azwi",
+   "view": "street",
+   "used": "the old sandstone Moravian church with red roof, gable and tracery window standing among the campus blocks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/919258460",
+   "used": "overall extent only (campus ~250 m long); a ~120 m stretch is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 3,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vault-block",
+   "footprint": {
+    "rect": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    -30,
+    3
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dccdaa",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 2.2,
+    "bands": "#cbbd98"
+   },
+   "roof": {
+    "form": "wave",
+    "colour": "#d6c8a4",
+    "waves": 9,
+    "rise": 1.8,
+    "thickness": 0.5,
+    "infill": "wall",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slab-tower",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    -9,
+    4
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e0d3b0",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bands": "#cdbf9b",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bdaa",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stepped-wing",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    10,
+    3
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dccdaa",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 2,
+    "bands": "#8a7d62",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4bdaa",
+    "overhang": 1.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ribbon-wing",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    40,
+    8
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dccdaa",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8a7d62",
+    "plinth": 0.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b6",
+    "overhang": 1.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    -58,
+    -8
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b89c6c",
+    "windows": "pointed",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "bay": 4,
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#b0483b",
+    "material": "clay-tile",
+    "pitch": 40,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slot",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    -1.2
+   ],
+   "z0": 6,
+   "height": 14,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f3a44",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f3a44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-up",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    12,
+    6
+   ],
+   "z0": 15,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#dccdaa",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#8a7d62",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9b",
+    "overhang": 1.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stairbldg",
+   "at": [
+    62,
+    6,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -5
+     ],
+     [
+      4,
+      -5
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      -4,
+      5
+     ]
+    ],
+    "z0": 0,
+    "height": 9,
+    "topScale": [
+     1,
+     0.3
+    ],
+    "topOffset": [
+     0,
+     4
+    ],
+    "colour": "#cfc2a0",
+    "topColour": "#9a4a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tablemtn",
+   "at": [
+    0,
+    70,
+    0
+   ],
+   "lod": [
+    0,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -14
+     ],
+     [
+      60,
+      -14
+     ],
+     [
+      58,
+      14
+     ],
+     [
+      -62,
+      14
+     ]
+    ],
+    "z0": 0,
+    "height": 34,
+    "topScale": [
+     0.92,
+     0.9
+    ],
+    "colour": "#7a7164",
+    "topColour": "#8a7e6e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "peak-l",
+   "at": [
+    -70,
+    68,
+    0
+   ],
+   "lod": [
+    0,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -12
+     ],
+     [
+      22,
+      -12
+     ],
+     [
+      24,
+      12
+     ],
+     [
+      -22,
+      12
+     ]
+    ],
+    "z0": 0,
+    "height": 36,
+    "topScale": 0.5,
+    "colour": "#7a7164",
+    "topColour": "#857a6b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -18
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -18
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "table-mountain block is a flat slab that is too heavy and sits too close; stepped terraces only approximated by two stacked slabs; stair building at far right is a crude wedge; hedge is small trees; scalloped vault is a generic wave"
+ }
+}

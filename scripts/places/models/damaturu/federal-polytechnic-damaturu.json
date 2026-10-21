@@ -1,0 +1,457 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_Polytechnic_Damaturu_Entry_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musaddam Idriss",
+   "view": "front",
+   "file": "/tmp/places-evidence/damaturu/federal-polytechnic-damaturu-0.jpg",
+   "used": "entrance gate: two grey-violet pylons with a cream lintel carrying a blank name board, tall right pylon with vertical lettering strip, sloping trapezoid wing walls in grey-violet with cream edge, black bar gates, boundary wall, laterite road"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey red-brick/render teaching block with hip roof and walkway behind the gate (no photo of the block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 40,
+  "aspect": 2.3,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    -5,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6e6a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2.2,
+     2.2
+    ]
+   },
+   "at": [
+    5,
+    0
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6e6a84",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     12.4,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "z0": 6.0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bc99"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "name-board",
+   "footprint": {
+    "rect": [
+     9,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.5
+   ],
+   "z0": 6.3,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d9b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tall-pier",
+   "footprint": {
+    "rect": [
+     4,
+     1.6
+    ]
+   },
+   "at": [
+    9.8,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9bcc6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2bd"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 7.4,
+    "height": 5.8,
+    "pillar": 0.4,
+    "leaf": "bars",
+    "colour": "#3a3a3c",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.4,
+    "colour": "#c9b27d",
+    "points": [
+     [
+      -40,
+      0.5
+     ],
+     [
+      -18,
+      0.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.4,
+    "colour": "#c9b27d",
+    "points": [
+     [
+      22,
+      0.5
+     ],
+     [
+      44,
+      0.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "rect": [
+     75,
+     16
+    ]
+   },
+   "at": [
+    0,
+    150
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#a8a39a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    141.5,
+    0
+   ],
+   "params": {
+    "length": 72,
+    "count": 19,
+    "height": 3.6,
+    "radius": 0.25,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "roofDepth": 3,
+    "colour": "#d8d2c0",
+    "roofColour": "#8a4a32"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -16,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#efe9d8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -6.1,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6e6a84",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       0.8
+      ],
+      "cx": -11.0
+     },
+     {
+      "z": 2,
+      "rect": [
+       19,
+       0.8
+      ],
+      "cx": -9.5
+     },
+     {
+      "z": 4,
+      "rect": [
+       15.5,
+       0.8
+      ],
+      "cx": -7.75
+     },
+     {
+      "z": 6,
+      "rect": [
+       12,
+       0.8
+      ],
+      "cx": -6.0
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       9,
+       0.8
+      ],
+      "cx": -4.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    11.8,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6e6a84",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       0.8
+      ],
+      "cx": 11.0
+     },
+     {
+      "z": 2,
+      "rect": [
+       19,
+       0.8
+      ],
+      "cx": 9.5
+     },
+     {
+      "z": 4,
+      "rect": [
+       15.5,
+       0.8
+      ],
+      "cx": 7.75
+     },
+     {
+      "z": 6,
+      "rect": [
+       12,
+       0.8
+      ],
+      "cx": 6.0
+     },
+     {
+      "z": 7.5,
+      "rect": [
+       9,
+       0.8
+      ],
+      "cx": 4.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lettering-strip",
+   "footprint": {
+    "rect": [
+     0.6,
+     0.5
+    ]
+   },
+   "at": [
+    9.8,
+    -1.0
+   ],
+   "z0": 1.5,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a3f66",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3f66"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel-edge",
+   "footprint": {
+    "rect": [
+     12.8,
+     4.8
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "z0": 5.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a3f66",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3f66"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "federal-polytechnic-damaturu",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "gate fitted with trapezoid wings, stepped lintel and lettering strip, but no cream border strip on wings; teaching block pushed back from the photo's view and not verified"
+ }
+}

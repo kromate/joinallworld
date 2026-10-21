@@ -1,0 +1,743 @@
+{
+ "verified": "photo",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo shows only gate and wall; bowl and stands estimated, masts are tapered solids not true lattice, razor wire is plain tubes, cars and basketball hoop omitted"
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yenagoa_Township_Stadium,_Bayelsa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ei'eke",
+   "view": "street",
+   "file": "/tmp/places-evidence/yenagoa/stadium.jpg",
+   "used": "outer perimeter wall in pale mint green with a white railing panel, barbed wire on the fence, a rusted gate frame, lattice floodlight masts, a terracotta-orange container, low green service block with red roof beyond, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9284037",
+   "used": "overall size and orientation of the ground (194 x 109 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 62,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#a9d3a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#a9d3a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 96,
+    "height": 2.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#a9d3a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    55,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 96,
+    "height": 2.6,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#a9d3a0"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 52,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     28
+    ],
+    "end": [
+     34,
+     28
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.5,
+    "bay": 6,
+    "seatColour": "#2f8f5a",
+    "concreteColour": "#cfd0cc",
+    "flip": true
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    35,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 68,
+    "depth": 10,
+    "height": 6.5,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#3f6fae",
+    "edgeColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 55,
+    "radiusY": 38,
+    "startDeg": -80,
+    "endDeg": 80,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "facetDeg": 10,
+    "under": "open",
+    "seatColour": "#cfd0cc",
+    "concreteColour": "#cfd0cc"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -18,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.8,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#a9d3a0"
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    -36,
+    -50.6,
+    0
+   ],
+   "params": {
+    "nx": 1,
+    "ny": 1,
+    "levels": 1,
+    "pitch_x": 12.6,
+    "pitch_y": 2.7,
+    "wall_colour": "#c8683f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "service-block",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    38,
+    -55
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a9d3a0",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -5,
+    -47,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ],
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "points": [
+     [
+      -28,
+      -51,
+      0
+     ],
+     [
+      -28,
+      -51,
+      9
+     ],
+     [
+      -12,
+      -51,
+      9
+     ],
+     [
+      -12,
+      -51,
+      0
+     ]
+    ],
+    "colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.3,
+    "points": [
+     [
+      -28,
+      -51,
+      6
+     ],
+     [
+      -12,
+      -51,
+      6
+     ]
+    ],
+    "colour": "#8a5a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -51.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.3
+    ],
+    "z0": 6.3,
+    "height": 2.6,
+    "colour": "#2d6b3f",
+    "bottom": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "points": [
+     [
+      -55,
+      -48,
+      3.0
+     ],
+     [
+      55,
+      -48,
+      3.0
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -55,
+      -48,
+      2.75
+     ],
+     [
+      55,
+      -48,
+      2.75
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "points": [
+     [
+      -55,
+      48,
+      3.0
+     ],
+     [
+      55,
+      48,
+      3.0
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -55,
+      48,
+      2.75
+     ],
+     [
+      55,
+      48,
+      2.75
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "points": [
+     [
+      -55,
+      -48,
+      3.0
+     ],
+     [
+      -55,
+      48,
+      3.0
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      -55,
+      -48,
+      2.75
+     ],
+     [
+      -55,
+      48,
+      2.75
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.18,
+    "points": [
+     [
+      55,
+      -48,
+      3.0
+     ],
+     [
+      55,
+      48,
+      3.0
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.14,
+    "points": [
+     [
+      55,
+      -48,
+      2.75
+     ],
+     [
+      55,
+      48,
+      2.75
+     ]
+    ],
+    "colour": "#9a9ea3"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -6,
+    -48.3,
+    2.6
+   ],
+   "params": {
+    "length": 14,
+    "height": 0.9,
+    "postEvery": 1.6,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47,
+    -42,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 22,
+    "topScale": 0.55,
+    "colour": "#8f979e",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47,
+    -42,
+    22
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     2.0
+    ],
+    "height": 3.6,
+    "colour": "#555b61",
+    "bottom": true,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47,
+    42,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 22,
+    "topScale": 0.55,
+    "colour": "#8f979e",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -47,
+    42,
+    22
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     2.0
+    ],
+    "height": 3.6,
+    "colour": "#555b61",
+    "bottom": true,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    47,
+    -42,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 22,
+    "topScale": 0.55,
+    "colour": "#8f979e",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    47,
+    -42,
+    22
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     2.0
+    ],
+    "height": 3.6,
+    "colour": "#555b61",
+    "bottom": true,
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    47,
+    42,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 22,
+    "topScale": 0.55,
+    "colour": "#8f979e",
+    "bottom": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    47,
+    42,
+    22
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     2.0
+    ],
+    "height": 3.6,
+    "colour": "#555b61",
+    "bottom": true,
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   135,
+   115
+  ],
+  "forecourt": "plaza"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "samson-siasia-stadium"
+}

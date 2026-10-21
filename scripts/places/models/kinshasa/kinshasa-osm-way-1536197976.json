@@ -1,0 +1,129 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1536197976",
+   "used": "real outline (57 x 17 m, name match): an elongated lounge-restaurant plan with a stepped corner at the west end"
+  },
+  {
+   "kind": "text",
+   "used": "brief: rendered two-storey building, open terrace and bar, awning, painted mural; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "glassColour": "#2f4a5c",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "faces": {
+     "back": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#a2553a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar-terrace-roof",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    8,
+    -14
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a2553a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a4a",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.2,
+    "colours": [
+     "#a2553a",
+     "#e3d3b0"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -18
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: facade detail, mural and terrace layout are typed from the brief only; terrace sits on the open south side by assumption"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-way-1536197976"
+}

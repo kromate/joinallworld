@@ -1,0 +1,716 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lascar_August_7th_Memorial_Park_(4540184755).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jorge Lascar",
+   "view": "front",
+   "file": "/tmp/places-evidence/nairobi/mem1.jpg",
+   "used": "herringbone red-brown brick plaza, low segmental stone wall at the back with dark plaque panel, round fountain basin, stone pergola posts both sides, cobble edging, lawns and acacia/palm trees, office block behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:US_Embassy_bombing_memorial_in_Nairobi.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Zweifel",
+   "view": "detail",
+   "file": "/tmp/places-evidence/nairobi/mem2.jpg",
+   "used": "grey stone block arc wall with capping rim, row of dark plaques, curved fountain rim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/249016945",
+   "used": "park outline 66 x 57 m as the lawn plate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 70
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7f9f4e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f9f4e",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    3,
+    0
+   ],
+   "params": {
+    "colour": "#8c8f8c",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      4.6,
+      0
+     ],
+     [
+      4.6,
+      0.7
+     ],
+     [
+      4.0,
+      0.7
+     ],
+     [
+      4.0,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ],
+    "segments": 24
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    3,
+    0
+   ],
+   "params": {
+    "colour": "#7fa6b4",
+    "profile": [
+     [
+      0,
+      0.3
+     ],
+     [
+      3.9,
+      0.3
+     ],
+     [
+      3.9,
+      0.31
+     ],
+     [
+      0,
+      0.31
+     ]
+    ],
+    "segments": 20
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -22,
+     -6,
+     0
+    ],
+    "end": [
+     -22,
+     6,
+     0
+    ],
+    "of": {
+     "type": "mass",
+     "id": "post",
+     "footprint": {
+      "rect": [
+       1.1,
+       1.1
+      ]
+     },
+     "height": 3.2,
+     "storeys": 1,
+     "wall": {
+      "material": "stone",
+      "colour": "#c9c4b4",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#c9c4b4"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     22,
+     -6,
+     0
+    ],
+    "end": [
+     22,
+     6,
+     0
+    ],
+    "of": {
+     "type": "mass",
+     "id": "post",
+     "footprint": {
+      "rect": [
+       1.1,
+       1.1
+      ]
+     },
+     "height": 3.2,
+     "storeys": 1,
+     "wall": {
+      "material": "stone",
+      "colour": "#c9c4b4",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#c9c4b4"
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -6,
+    3.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12,
+    "height": 0.35,
+    "thickness": 0.5,
+    "colour": "#7a6f5e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    24,
+    -6,
+    3.2
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12,
+    "height": 0.35,
+    "thickness": 0.5,
+    "colour": "#7a6f5e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 3,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-behind",
+   "footprint": {
+    "rect": [
+     46,
+     18
+    ]
+   },
+   "at": [
+    -26,
+    52
+   ],
+   "height": 30,
+   "storeys": 8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabb",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#2f3f4d",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b9b4a4"
+      ],
+      "height": 0.8,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ],
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8a85"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      -38
+     ],
+     [
+      4,
+      -38
+     ],
+     [
+      6,
+      -30
+     ],
+     [
+      4,
+      -22
+     ],
+     [
+      2,
+      -14
+     ],
+     [
+      8,
+      -8
+     ],
+     [
+      18,
+      -2
+     ],
+     [
+      22,
+      6
+     ],
+     [
+      14,
+      12
+     ],
+     [
+      -14,
+      12
+     ],
+     [
+      -22,
+      6
+     ],
+     [
+      -18,
+      -2
+     ],
+     [
+      -10,
+      -8
+     ],
+     [
+      -6,
+      -14
+     ],
+     [
+      -4,
+      -22
+     ],
+     [
+      -5,
+      -30
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.15,
+    "colour": "#b36a58",
+    "slot": "paving-block"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -6.5,
+      -38
+     ],
+     [
+      -4,
+      -38
+     ],
+     [
+      -5,
+      -30
+     ],
+     [
+      -4,
+      -22
+     ],
+     [
+      -6,
+      -14
+     ],
+     [
+      -10,
+      -8
+     ],
+     [
+      -18,
+      -2
+     ],
+     [
+      -22,
+      6
+     ],
+     [
+      -14,
+      12
+     ],
+     [
+      -14,
+      14
+     ],
+     [
+      -24,
+      7
+     ],
+     [
+      -20,
+      -3
+     ],
+     [
+      -11.5,
+      -10
+     ],
+     [
+      -8,
+      -14
+     ],
+     [
+      -6,
+      -22
+     ],
+     [
+      -7,
+      -30
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.25,
+    "colour": "#3d3f40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      6.5,
+      -38
+     ],
+     [
+      4,
+      -38
+     ],
+     [
+      5,
+      -30
+     ],
+     [
+      4,
+      -22
+     ],
+     [
+      6,
+      -14
+     ],
+     [
+      10,
+      -8
+     ],
+     [
+      18,
+      -2
+     ],
+     [
+      22,
+      6
+     ],
+     [
+      14,
+      12
+     ],
+     [
+      14,
+      14
+     ],
+     [
+      24,
+      7
+     ],
+     [
+      20,
+      -3
+     ],
+     [
+      11.5,
+      -10
+     ],
+     [
+      8,
+      -14
+     ],
+     [
+      6,
+      -22
+     ],
+     [
+      7,
+      -30
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.25,
+    "colour": "#3d3f40"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "colour": "#8a8678",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       13,
+       3
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       12.6,
+       2.9
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       11,
+       2.6
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       8.5,
+       2.1
+      ]
+     },
+     {
+      "z": 4.0,
+      "ellipse": [
+       5,
+       1.3
+      ]
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       1.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaques",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    7.4
+   ],
+   "z0": 1.3,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#25282a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#25282a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vine1",
+   "footprint": {
+    "rect": [
+     2.6,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "z0": 3.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f7a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f7a38"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vine2",
+   "footprint": {
+    "rect": [
+     2.6,
+     14
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "z0": 3.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f7a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f7a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "curving herringbone path with cobble edging, segmental stone arc, fountain, pergola with vine tops and Pioneer House cream banded facade added; path is a faceted polygon, arc is a stepped loft, facade speckle and frond overlap approximated"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-community-voting-game"
+}

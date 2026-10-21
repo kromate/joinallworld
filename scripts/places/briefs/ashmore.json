@@ -1,0 +1,582 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ashmore",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ashmore",
+    "climate": "tropical-maritime",
+    "vernacular": "No settlement: Ashmore Reef is an uninhabited coral atoll of low sand cays about 2.5 to 3 m above high tide, with sparse grass, a few shrubs and coconut palms on West and Middle Islands, and large seabird colonies. Any structure in the game is a small prefabricated or corrugated-metal hut, shelter or navigation mast set on bare coral sand, in the style of remote Australian reserve infrastructure.",
+    "wallColours": [
+      "#e6dcc0",
+      "#f1eee4",
+      "#c9d2d6",
+      "#8c9a5a",
+      "#a9b4b8"
+    ],
+    "roofColours": [
+      "#9aa3a7",
+      "#b8bec1",
+      "#c9d2d6"
+    ],
+    "wallMaterials": [
+      "metal-cladding",
+      "whitewash",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "none"
+    ],
+    "ornament": "None: purely functional huts and signs. Navigation lights and weather-monitoring masts (installed on the islands in the 1950s and 1960s), blank reserve notice boards, bare coral sand, tussock grass and seabird colonies.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+        "what": "cays are coral and sand about 2.5-3 m above high tide, little grass, shrubs and coconuts on West and Middle Islands, navigation lights and weather stations from the 1950s-60s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ashmore_Reef",
+        "what": "East and Middle Islands are major seabird breeding sites; atoll about 26 km across; cays West, Middle, East and Splittgerber"
+      }
+    ]
+  },
+  "places": {
+    "ashmore-airport-ashmore-airport": {
+      "venueId": "ashmore-airport-ashmore-airport",
+      "city": "ashmore",
+      "name": "East Island",
+      "archetype": "park-landscape",
+      "subject": "East Island, a low coral sand cay in Ashmore Reef with tussock grass and a seabird colony; there is no airport or terminal",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "sand-cay"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#e6dcc0",
+          "#8c9a5a",
+          "#f1eee4"
+        ],
+        "roofColour": "#9aa3a7",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "possible navigation light or weather mast; the sources say such aids exist on the Ashmore islands but not which island"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "cays made of coral and sand about 2.5-3 m above high tide; limited grass; no buildings reported on East Island"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_Reef",
+          "what": "East Island is a major seabird breeding site (terns, tropicbirds, frigatebirds)"
+        }
+      ],
+      "notes": "The game labels this venue an airport but East Island is an uninhabited cay with no airstrip. Shown as a flat pale-sand islet fringed by lagoon with patches of grass. The 300x120 m size is a rough estimate, not a measured fact."
+    },
+    "ashmore-clinic": {
+      "venueId": "ashmore-clinic",
+      "city": "ashmore",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "a tiny prefabricated first-aid hut on bare sand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#f1eee4",
+          "#b8433a",
+          "#c9d2d6"
+        ],
+        "roofColour": "#b8bec1",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank white board with a plain red cross"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Plain white hut with a single red-cross board. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-community-notices": {
+      "venueId": "ashmore-community-notices",
+      "city": "ashmore",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "a small notice hut with a blank reserve notice board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9d2d6",
+          "#6f7f86",
+          "#f1eee4"
+        ],
+        "roofColour": "#9aa3a7",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Grey-blue hut with two blank notice boards and a flag pole. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-community-voting-game": {
+      "venueId": "ashmore-community-voting-game",
+      "city": "ashmore",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "an open timber shelter with ballot boxes on a sand floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "hip",
+        "variant": "open-shelter"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58a64",
+          "#e6dcc0",
+          "#6e5a3c"
+        ],
+        "roofColour": "#b8bec1",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open sided posts and hip roof"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Open-sided post shelter, no walls. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-community-workshop": {
+      "venueId": "ashmore-community-workshop",
+      "city": "ashmore",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "a long corrugated workshop shed with a small solar panel array",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a9b4b8",
+          "#e6dcc0",
+          "#6f7f86"
+        ],
+        "roofColour": "#8c959a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Silver-grey shed; only structure with solar panels. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-market-game": {
+      "venueId": "ashmore-market-game",
+      "city": "ashmore",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "a few trestle stalls under sun umbrellas on the sand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e6dcc0",
+          "#c9d2d6",
+          "#a58a64"
+        ],
+        "roofColour": "#c9d2d6",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 4,
+          "note": "pale canvas umbrellas"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Open stalls only, no building. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-meal-stop": {
+      "venueId": "ashmore-meal-stop",
+      "city": "ashmore",
+      "name": "Visitor meal stop (game venue)",
+      "archetype": "restaurant",
+      "subject": "a small galley hut with an awning and picnic benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f1eee4",
+          "#8c9a5a",
+          "#a58a64"
+        ],
+        "roofColour": "#b8bec1",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "White hut with green awning and benches. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-quiet-reflection": {
+      "venueId": "ashmore-quiet-reflection",
+      "city": "ashmore",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "a minimal open lean-to with a bench facing the lagoon",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "lean-to"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58a64",
+          "#e6dcc0",
+          "#6e5a3c"
+        ],
+        "roofColour": "#9aa3a7",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "The smallest structure; a bare shade shelter. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-recreation": {
+      "venueId": "ashmore-recreation",
+      "city": "ashmore",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "a stretch of white sand beach with a shade shelter and a few umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "beach"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e6dcc0",
+          "#c9d2d6",
+          "#8c9a5a"
+        ],
+        "roofColour": "#c9d2d6",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Beach and tussock grass, no real facility. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    },
+    "ashmore-transit": {
+      "venueId": "ashmore-transit",
+      "city": "ashmore",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "a short jetty and boat landing with a small shelter, since the only transport is by sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "landing"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58a64",
+          "#c9d2d6",
+          "#6f7f86"
+        ],
+        "roofColour": "#9aa3a7",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "short timber landing"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (game venue)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashmore_and_Cartier_Islands",
+          "what": "island setting: coral sand, no permanent settlement"
+        }
+      ],
+      "notes": "Boat landing in place of a bus stop. Game venue with no real counterpart: Ashmore Reef has no resident population or public buildings, so this is a typed low-confidence hut drawn from the sparse city style."
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1063370502",
+   "used": "footprint (nearest building, 7 m away; 40 x 15 m, consistent with a secretariat block)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/enugu.json#enugu-north-local-government-headquarters",
+   "used": "two storeys, rendered, central entrance bay, flagpole, perimeter wall, corrugated hip roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "secretariat",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#2f6b4a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f757a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 7,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#e4dcc8",
+    "roofColour": "#a8a49c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#2f6b4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "height": 2,
+    "thickness": 0.3,
+    "pillarEvery": 5,
+    "colour": "#a8a49c"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "colour": "#c9c9c9"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no usable photo (the only nearby Commons image is a sky shot); OSM nearest footprint, central bay and flag typed from the brief; the 'portico' sits at footprint rotation 0 so may not align with the real front"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "enugu-north-local-government-headquarters"
+}

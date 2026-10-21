@@ -1,0 +1,155 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1062965274",
+   "used": "lecture block footprint (nearest building, 30 m away; 57 x 14 m slab, rotated 52 deg)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/enugu.json#enugu-state-college-of-education-technical",
+   "used": "3 storeys, louvred windows, flat roof, blue accent bands, gate and blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9dfc6",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bands": "#4e7a9a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.5,
+    "colour": "#4e7a9a"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    8,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "colour": "#b3ab9a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "pillarEvery": 5,
+    "colour": "#b3ab9a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; single OSM block only, the brief's quadrangle wings are not modelled because no outline supports them"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "enugu-state-college-of-education-technical"
+}

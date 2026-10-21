@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "zauro-ambrusa-general-hospital-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/590782050",
+   "used": "footprint (2124 m2, containing; comb of ward wings off a spine)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey wards, green metal roofs, covered walkway, red cross sign, ambulance bay, water tank"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hospital-osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#3f6b4e",
+    "windows": "louvre",
+    "windowShape": "rect",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f6b4e",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -12,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "count": 9,
+    "height": 3.2,
+    "radius": 0.18,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "roofDepth": 2.4,
+    "colour": "#f2efe6",
+    "roofColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -6,
+    -17.2,
+    2.4
+   ],
+   "params": {
+    "size": 2.0
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    20,
+    -29,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 3.6,
+    "colour": "#f2efe6",
+    "roofColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -36,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 7,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     4,
+     0.25
+    ],
+    "z0": 2.2,
+    "height": 1.4,
+    "colour": "#f2efe6",
+    "trimColour": "#3f6b4e"
+   },
+   "at": [
+    -6,
+    -17.3
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; real OSM outline used, but a single gable over the comb outline looked wrong so roofs are flat green sheet; walkway, signs and tank positions are typical not measured."
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/247543284",
+   "used": "park polygon (about 298 x 222 m, 6 ha): extent of the sand lot"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open sandy lot, few palms, benches, low fenced pavilion and kiosk"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "colour": "#e1c49c",
+    "cap_colour": "#c9b896"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#f1e7d3",
+    "roof_colour": "#b3a898"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.1,
+    "colour": "#c9b896",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.1,
+    "colour": "#c9b896",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     6
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -8
+    ],
+    "height": 7
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     10
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; sparse lot with pavilion, kiosk, lamps; the real 6 ha extent is not filled"
+ }
+}

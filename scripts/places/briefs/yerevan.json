@@ -1,0 +1,1614 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "yerevan",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "yerevan",
+    "climate": "highland",
+    "vernacular": "The \"pink city\" built of volcanic tuff: rose, orange, ochre and grey-violet cut stone in the Tamanian neo-Armenian centre and Soviet-era blocks of four to six storeys with carved cornices, arcades, balconies and arched doorways; dark basalt for plinths, steps and temples; large-panel grey concrete housing estates with flat roofs on the outskirts; newer glass-and-stone-clad towers and malls; medieval churches in grey or dark tuff with conical umbrella domes and carved khachkar crosses; low flat-roofed houses of stone and render in surrounding villages among apricot, poplar and plane trees.",
+    "wallColours": [
+      "#cf8b72",
+      "#c9965f",
+      "#b9a48a",
+      "#8e8a86",
+      "#3f3d3d",
+      "#d8cdb8",
+      "#a9a8a3"
+    ],
+    "roofColours": [
+      "#8b4a3a",
+      "#6b6f73",
+      "#4b4b4b",
+      "#a8553d"
+    ],
+    "wallMaterials": [
+      "stone",
+      "sandstone",
+      "concrete",
+      "render",
+      "granite",
+      "glass-curtain",
+      "painted-render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "concrete",
+      "membrane",
+      "clay-tile",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Carved arcades and arched doorways, geometric and floral relief in tuff, khachkar cross-stones, conical umbrella domes on octagonal drums, Tamanian neo-Armenian cornices and corbels, wrought-iron balconies, and Soviet pilasters and bas-reliefs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+        "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+      }
+    ]
+  },
+  "places": {
+    "yerevan-airport-yerevan-airport": {
+      "venueId": "yerevan-airport-yerevan-airport",
+      "city": "yerevan",
+      "name": "Zvartnots International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Zvartnots International Airport new terminal seen from the forecourt: a wide glazed two-level terminal with a sweeping canopy and the control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c2ccd1",
+          "#6d7b86",
+          "#e9eaea"
+        ],
+        "roofColour": "#a3a8ab",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Zvartnots_International_Airport",
+          "what": "New gate area and arrivals hall 2006, new departures and arrivals terminal 2011, separate government delegation terminal, lounge overlooking the apron"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Departures and arrivals terminal opened 2011 (2006 gate area, separate delegation terminal), lounge overlooking the apron. Source gives dates and layout only; size, glass colours and form are estimated. The pre-2011 Soviet terminal (1970s) is not shown."
+    },
+    "yerevan-clinic": {
+      "venueId": "yerevan-clinic",
+      "city": "yerevan",
+      "name": "Izmirlian Medical Center",
+      "archetype": "hospital",
+      "subject": "Izmirlian Medical Center: a modern multi-storey hospital block clad in pale stone panels with a glazed entrance and a rooftop helipad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd6c8",
+          "#7f93a0",
+          "#f2efe8"
+        ],
+        "roofColour": "#707377",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Private medical centre; no building description found. Typed as a modern Yerevan hospital."
+    },
+    "yerevan-community-notices": {
+      "venueId": "yerevan-community-notices",
+      "city": "yerevan",
+      "name": "National Parliament",
+      "archetype": "civic-palace",
+      "subject": "National Assembly building on Baghramyan Avenue: a long four-storey building in pale pinkish stone with a central columned entrance, flags on the roofline and a stepped plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#d3b49a",
+          "#9a8a7a",
+          "#efe9de"
+        ],
+        "roofColour": "#8e8a86",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Assembly_of_Armenia",
+          "what": "Identifies the building at 19 Baghramyan Avenue (appearance not described)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Source only confirms the address. Form and colours are typed from the Soviet-Armenian civic style (tuff-faced, columned entrance) and general knowledge; verify before relying on the colonnade detail."
+    },
+    "yerevan-community-voting-game": {
+      "venueId": "yerevan-community-voting-game",
+      "city": "yerevan",
+      "name": "Alexander Myasnikyan Square",
+      "archetype": "park-landscape",
+      "subject": "Alexander Myasnikyan Square: a paved city square with a statue on a plinth, tuff-faced blocks around and tall plane trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#cf8b72",
+          "#8e8a86",
+          "#e6dccb"
+        ],
+        "roofColour": "#8e8a86",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Myasnikyan monument on plinth"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "Soviet era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Named after a Soviet-era Bolshevik; no description found. Typed as a central Yerevan square in the city style."
+    },
+    "yerevan-community-workshop": {
+      "venueId": "yerevan-community-workshop",
+      "city": "yerevan",
+      "name": "Gevorgyan Seminary",
+      "archetype": "campus-block",
+      "subject": "Gevorgyan Theological Seminary at Echmiadzin: a long two-storey dark-tuff building with arched windows and a gabled stone roof, next to the cathedral compound",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "seminary",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b88b6c",
+          "#8a6a54",
+          "#e2d2b8"
+        ],
+        "roofColour": "#5a5a58",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Seminary near the Holy See; no description found. Typed from nineteenth-century Echmiadzin stone buildings."
+    },
+    "yerevan-market-game": {
+      "venueId": "yerevan-market-game",
+      "city": "yerevan",
+      "name": "Dalma Garden Mall",
+      "archetype": "mall",
+      "subject": "Dalma Garden Mall: a broad two-level shopping mall with a pale stone and glass front, a cinema box above and a large parking forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 75,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#d6d1c5",
+          "#b87558",
+          "#eeeae0"
+        ],
+        "roofColour": "#757578",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No building description found. Typed as a Yerevan suburban mall."
+    },
+    "yerevan-meal-stop": {
+      "venueId": "yerevan-meal-stop",
+      "city": "yerevan",
+      "name": "Tavern Yerevan",
+      "archetype": "restaurant",
+      "subject": "Tavern Yerevan: a folk-style restaurant built to look like a medieval tavern, with stone arches, a carved wooden balcony and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "tavern"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#b9936e",
+          "#6b4a35",
+          "#e5d6b8"
+        ],
+        "roofColour": "#7b3f2f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s themed",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Tourist folk restaurant; no description found. Typed as a stone-themed Armenian tavern."
+    },
+    "yerevan-osm-node-11059334139": {
+      "venueId": "yerevan-osm-node-11059334139",
+      "city": "yerevan",
+      "name": "Georgi Dimitrov",
+      "archetype": "park-landscape",
+      "subject": "Georgi Dimitrov village centre: an open rural square with a few low stone-and-render shops, a kiosk and poplar trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "village"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d4c4a6",
+          "#9a8a76",
+          "#ebe4d2"
+        ],
+        "roofColour": "#8b4a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "Soviet era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "A node named after Georgi Dimitrov in the lower Ararat plain; no further information. Typed as a plain village centre."
+    },
+    "yerevan-osm-node-2261309386": {
+      "venueId": "yerevan-osm-node-2261309386",
+      "city": "yerevan",
+      "name": "Kaptavanq",
+      "archetype": "shrine-small",
+      "subject": "Kaptavank: a small medieval stone church with a conical drum dome and a single apse on a rise in a village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome",
+        "variant": "church-with-cone-dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#9a8977",
+          "#7f6f60",
+          "#cbbfa8"
+        ],
+        "roofColour": "#7d7064",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "conical umbrella dome on drum"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Name only; tuff church with conical dome typed from the Armenian church norm (Armenian architecture article). Not verified."
+    },
+    "yerevan-osm-node-2269341279": {
+      "venueId": "yerevan-osm-node-2269341279",
+      "city": "yerevan",
+      "name": "Yerevan State Institute of Theatre and Cinematography",
+      "archetype": "campus-block",
+      "subject": "Yerevan State Institute of Theatre and Cinematography: a three-storey tuff-faced building with arched windows and a central entrance on a street front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#cf8b72",
+          "#a67258",
+          "#e8dcc8"
+        ],
+        "roofColour": "#8b4a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "Soviet era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No description found. Typed from the central-Yerevan tuff-block style."
+    },
+    "yerevan-osm-relation-15349086": {
+      "venueId": "yerevan-osm-relation-15349086",
+      "city": "yerevan",
+      "name": "Russian-Armenian State University",
+      "archetype": "campus-block",
+      "subject": "Russian-Armenian University: a modern university building clad in light stone with glazed strips and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9cdb8",
+          "#7c8d97",
+          "#efe9de"
+        ],
+        "roofColour": "#6c6f73",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Opened in the 1990s; the main building not described in any source reached. Typed."
+    },
+    "yerevan-osm-relation-16017332": {
+      "venueId": "yerevan-osm-relation-16017332",
+      "city": "yerevan",
+      "name": "American University of Armenia",
+      "archetype": "campus-block",
+      "subject": "American University of Armenia: a modern low-rise stone-and-glass campus building with a courtyard and metal canopies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4bfa4",
+          "#6f8290",
+          "#eee9de"
+        ],
+        "roofColour": "#707377",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No source on the building; typed from the city style and a modern campus type."
+    },
+    "yerevan-osm-relation-16558688": {
+      "venueId": "yerevan-osm-relation-16558688",
+      "city": "yerevan",
+      "name": "Park aft. Tatul Krpeyan",
+      "archetype": "park-landscape",
+      "subject": "Tatul Krpeyan Park: a district park with plane and pine trees, paved paths, benches and a children's playground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#b9a48a",
+          "#d4c8b4",
+          "#ece6d8"
+        ],
+        "roofColour": "#8e8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "Soviet era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Park named after a Soviet-era figure; no description found. Typed."
+    },
+    "yerevan-osm-relation-18398590": {
+      "venueId": "yerevan-osm-relation-18398590",
+      "city": "yerevan",
+      "name": "Yerevan velodrome",
+      "archetype": "stadium",
+      "subject": "Yerevan velodrome: an open concrete banked oval track with low terraces on one side and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "velodrome"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b4b0a8",
+          "#6e6b66",
+          "#dedad2"
+        ],
+        "roofColour": "#7c7d7e",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Banked outdoor velodrome typed from Soviet sports-venue type; no description found."
+    },
+    "yerevan-osm-way-108255791": {
+      "venueId": "yerevan-osm-way-108255791",
+      "city": "yerevan",
+      "name": "Garni Pagan Temple;Garni Temple",
+      "archetype": "monument",
+      "subject": "Garni Temple: a grey basalt Greek-style temple on a high podium with nine steps, a pedimented front with six Ionic columns and a colonnade of 24 columns around the cella, on a cliff edge above the gorge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable",
+        "variant": "ionic-peripteros"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#8c9296",
+          "#6d767d",
+          "#b8bcbc"
+        ],
+        "roofColour": "#80868a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 24,
+          "note": "Ionic, 6.54 m high"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 9,
+          "note": "steep, 30 cm risers"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "2.8-3 m high"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "neoclassical",
+      "era": "1st century AD (reconstructed 1969-75)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Garni_Temple",
+          "what": "Ionic peripteros, 24 columns of 6.54 m, podium 15.7 x 11.5 m and 2.8-3 m high, total height 10.7 m, grey-bluish basalt without mortar, nine steep steps on the north side, on a promontory above the Azat gorge, rebuilt 1969-75"
+        }
+      ],
+      "notes": "Dimensions, 24 Ionic columns (6 front and back, 8 sides), grey-bluish basalt, no mortar, nine steps on the north front are from Wikipedia. The roof is a restored gable over a closed cella. Set on a promontory above the Azat gorge with fortress ruins and a bath building nearby."
+    },
+    "yerevan-osm-way-224162673": {
+      "venueId": "yerevan-osm-way-224162673",
+      "city": "yerevan",
+      "name": "Saint Mesrop Mashtots church",
+      "archetype": "church-classical",
+      "subject": "New Saint Mesrop Mashtots church at Oshakan: a large tuff church in traditional cruciform form with a tall octagonal drum and conical dome, pale arched facades and a bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 30,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 26,
+        "roof": "dome",
+        "variant": "armenian-cross-dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#c9a083",
+          "#a98064",
+          "#e8d9c0"
+        ],
+        "roofColour": "#a8826a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "conical roof on octagonal drum"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved portals"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2005",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Memorial church beside the tomb of Mesrop Mashtots built in traditional style; no source reached. Colours and size estimated from the tuff church type."
+    },
+    "yerevan-osm-way-31620404": {
+      "venueId": "yerevan-osm-way-31620404",
+      "city": "yerevan",
+      "name": "Vazgen Sargsyan Republican Stadium",
+      "archetype": "stadium",
+      "subject": "Vazgen Sargsyan Republican Stadium: an oval all-seater bowl fully covered on all sides with red, orange and blue seat sections, floodlights above",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c4bfb4",
+          "#a63a2c",
+          "#e8e4da"
+        ],
+        "roofColour": "#80868a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1935 renovated 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vazgen_Sargsyan_Republican_Stadium",
+          "what": "14,403 all-seater stadium, fully covered seating, west stand red seats, east orange, north blue, 105 x 68 m pitch, built 1933-35 by Koryun Hakobyan, renovated 1953, 1999, 2008"
+        }
+      ],
+      "notes": "Opened 1935 as Dinamo Stadium (Koryun Hakobyan); 14,403 all-seater, west stand red seats, east orange, north blue, fully covered, 105 x 68 m pitch. Real stadium dimensions are estimated."
+    },
+    "yerevan-osm-way-31662730": {
+      "venueId": "yerevan-osm-way-31662730",
+      "city": "yerevan",
+      "name": "Vernissage",
+      "archetype": "market-open",
+      "subject": "Vernissage: an open-air crafts and antiques market with long rows of stalls under white and coloured awnings along tuff-paved paths between tall trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "craft-market"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#c5a37c",
+          "#8a5a3c",
+          "#e8dcc5"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 100
+        },
+        {
+          "id": "umbrellas",
+          "count": 30
+        },
+        {
+          "id": "awning",
+          "count": 20
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Famous weekend crafts market near Republic Square; no description reached. Typed from knowledge of rows of stalls with awnings."
+    },
+    "yerevan-osm-way-31662997": {
+      "venueId": "yerevan-osm-way-31662997",
+      "city": "yerevan",
+      "name": "Hrazdan stadium",
+      "archetype": "stadium",
+      "subject": "Hrazdan Stadium: a vast open Soviet concrete bowl with continuous terraces, a masted floodlight ring and a partial roof on one side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "none",
+        "variant": "soviet-bowl"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a69e",
+          "#6b6c6c",
+          "#d6d2c8"
+        ],
+        "roofColour": "#777b7e",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one side"
+        },
+        {
+          "id": "floodlights",
+          "count": 8
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Large Soviet-era stadium on the Hrazdan gorge edge; no description reached. Typed as a concrete bowl."
+    },
+    "yerevan-osm-way-32402461": {
+      "venueId": "yerevan-osm-way-32402461",
+      "city": "yerevan",
+      "name": "Lyon Park",
+      "archetype": "park-landscape",
+      "subject": "Lyon Park: a landscaped city park with lawns, paths, small ornamental fountains and mature plane trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#c9b79a",
+          "#d6cdba",
+          "#ece6d8"
+        ],
+        "roofColour": "#8e8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No description reached; typed from the city style and a new urban park type."
+    },
+    "yerevan-osm-way-33771226": {
+      "venueId": "yerevan-osm-way-33771226",
+      "city": "yerevan",
+      "name": "Yerevan Mall",
+      "archetype": "mall",
+      "subject": "Yerevan Mall: a large multi-storey shopping centre with a glass-and-grey-panel front, a central atrium and a deep parking apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bfc7cc",
+          "#5d6c77",
+          "#e9eaea"
+        ],
+        "roofColour": "#76797c",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No description reached; typed as a modern mall."
+    },
+    "yerevan-osm-way-842206349": {
+      "venueId": "yerevan-osm-way-842206349",
+      "city": "yerevan",
+      "name": "Tiknuni castle",
+      "archetype": "heritage-fort",
+      "subject": "Tiknuni castle: weathered dark basalt walls and a corner bastion on a rocky height above the plain, partly ruined",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "none",
+        "variant": "fortress-ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#6c6a66",
+          "#4a4947",
+          "#8d8982"
+        ],
+        "roofColour": "#6c6a66",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Urartian-medieval",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No source found; typed as an Armenian hill fortress ruin of dark stone."
+    },
+    "yerevan-quiet-reflection": {
+      "venueId": "yerevan-quiet-reflection",
+      "city": "yerevan",
+      "name": "Hovhannavank",
+      "archetype": "church-classical",
+      "subject": "Hovhannavank monastery: a grey tuff cruciform church with a tall drum and umbrella-shaped dome, a gavit with a rotunda at its west side and a 4th-century basilica, on the edge of the Kasagh canyon",
+      "form": {
+        "footprint": "cross",
+        "width_m": 32,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "dome",
+        "variant": "armenian-monastery",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#8d8579",
+          "#6e665c",
+          "#b8b0a0"
+        ],
+        "roofColour": "#7d756a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "umbrella-shaped roof on drum"
+        },
+        {
+          "id": "arches",
+          "count": 5,
+          "note": "gavit west facade rows of arches"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1216-1274",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hovhannavank",
+          "what": "Cruciform Kathoghike cathedral 1216-1221 with umbrella-shaped dome, gavit 1250 with rotunda 1274 on twelve columns, 4th-century St Karapet basilica, on the edge of the Kasagh canyon"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Cruciform Kathoghike 1216-1221, gavit 1250 with a rotunda on twelve columns added 1274, St Karapet basilica (4th century). Stone colour is not stated in the source; typed as the usual grey-brown tuff. Dimensions estimated; bell tower included as a recollection, not in the fetched article."
+    },
+    "yerevan-recreation": {
+      "venueId": "yerevan-recreation",
+      "city": "yerevan",
+      "name": "Jrvezh Forest Park",
+      "archetype": "park-landscape",
+      "subject": "Jrvezh Forest Park: a wooded hill park with oak and pine, gravel paths, picnic shelters and a few timber pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "forest-park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8b6b4a",
+          "#a09a8c",
+          "#d8d0bd"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "Soviet era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "No description reached. Typed as a forest recreation park east of Yerevan."
+    },
+    "yerevan-transit": {
+      "venueId": "yerevan-transit",
+      "city": "yerevan",
+      "name": "Sasuntsi David",
+      "archetype": "transport-station",
+      "subject": "Sasuntsi David railway station: a broad Soviet-Armenian station hall in rose tuff with arched windows, a central tower, steps and platform canopies behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "hip",
+        "variant": "station-hall",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#cf8b72",
+          "#9a6b58",
+          "#ecdcc8"
+        ],
+        "roofColour": "#7d3f2f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 3
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1956",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Armenian_architecture",
+          "what": "Armenian churches built of volcanic tuff or basalt, conical radially segmented domes on cylindrical drums, khachkars, thick low-slung walls; Tamanian Yerevan plan and Soviet socialist realism around Republic Square"
+        }
+      ],
+      "notes": "Main Yerevan railway station; no description reached. Typed from the tuff Soviet-Armenian style; the clock tower is a recollection and unverified."
+    }
+  }
+}

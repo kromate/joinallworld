@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "airport",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Port_Harcourt_international_airport.jpg",
+   "used": "only general character (white low terminal block, tall control tower, palms); it shows the pre-2018 terminal so it is not matched against the model"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.airport-technology.com/projects/port-harcourt-international-airport/",
+   "used": "two storeys, about 12,500 m2 footprint, CCECC, 2018"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     100,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d3dde0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#35566e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "metal-sheet",
+    "overhang": 2.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     20,
+     44
+    ]
+   },
+   "at": [
+    0,
+    42
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c5d2d6",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cargo-shed",
+   "footprint": {
+    "rect": [
+     20,
+     20
+    ]
+   },
+   "at": [
+    -62,
+    12
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#dcdedc",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 2,
+    "colour": "#8c9096",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 84,
+    "depth": 12,
+    "height": 6.2,
+    "rise": 1.8,
+    "columns": 8,
+    "colour": "#e6e8e8",
+    "edgeColour": "#35566e"
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -30,
+    6,
+    17
+   ],
+   "params": {
+    "height": 22,
+    "style": "round",
+    "colour": "#eceeed",
+    "bandColour": "#35566e"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -20.2,
+    12.5
+   ],
+   "params": {
+    "width": 22,
+    "height": 2.6,
+    "colour": "#35566e"
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -6,
+    66,
+    3.5
+   ],
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    6,
+    66,
+    3.5
+   ],
+   "params": {
+    "length": 16
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    0,
+    84,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "scale": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    44,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -36,
+    -44,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -36
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     54,
+     -40
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -60
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo of the 2018 terminal; massing, glass-and-panel look and canopy are inferred from sources, tower position and cargo shed are guesses"
+ }
+}

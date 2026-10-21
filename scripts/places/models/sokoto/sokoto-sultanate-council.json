@@ -1,0 +1,327 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sultan%27s_palace_(Sokoto).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jensbn (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/sokoto/palace.jpg",
+   "used": "Wikidata P18 of the council item, but it shows the Sultan's palace compound, not certainly the council office; used only as a generic-plausible style reference (white rendered low block, arched recesses, bare flagpoles on a kerbed lawn, large trees). Not treated as proof of the building."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1359520386",
+   "used": "nearest match is a 25 m2 shed, rejected"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 8,
+      "opening": 0.42,
+      "height": 0.8,
+      "depth": 0.9,
+      "colour": "#3a332c",
+      "pierColour": "#f1eee6"
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#e2ddd0",
+      "height": 0.5,
+      "at": 0.92,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    20,
+    3
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.8
+   },
+   "z0": 5
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    -3
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efebe2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.4,
+    "colour": "#f1eee6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#b9b2a2",
+    "count": 1
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0.15,
+      "#5f9444"
+     ],
+     [
+      18,
+      0.15,
+      "#5f9444"
+     ],
+     [
+      18,
+      0,
+      "#5f9444"
+     ]
+    ],
+    "segments": 32,
+    "bottomCap": true
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      17.4,
+      0,
+      "#f4f4f0"
+     ],
+     [
+      17.4,
+      0.3,
+      "#f4f4f0"
+     ],
+     [
+      18.2,
+      0.3,
+      "#2f7d3f"
+     ],
+     [
+      18.2,
+      0,
+      "#2f7d3f"
+     ]
+    ],
+    "segments": 32
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.14,
+        0,
+        "#b8bcc0"
+       ],
+       [
+        0.14,
+        13,
+        "#b8bcc0"
+       ],
+       [
+        0.04,
+        13.4,
+        "#b8bcc0"
+       ]
+      ],
+      "segments": 6
+     }
+    },
+    "mode": "arc",
+    "count": 9,
+    "radius": 13,
+    "startDeg": 150,
+    "endDeg": 390,
+    "facing": "outward"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 15,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 18,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 14,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "sokoto-sultanate-council",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo is the palace compound, not certainly the council office, so verified downgraded to text; building sits farther back than in photo, arches are cut windows not open recesses, kerb is two-colour not striped, trees are low-poly"
+ }
+}

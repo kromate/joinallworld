@@ -1,0 +1,155 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Les_Cascades_du_Mfoundi_-_Yaound%C3%A9_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kondah",
+   "view": "front",
+   "file": "/tmp/places-evidence/yaounde/casc1.jpg",
+   "used": "Weak, identity unconfirmed (53 m away; the tower behind is not this venue): used only as a typical-form hint for a steep hip terracotta roof, concrete portico, round planter and interlocking paving. OSM outline (1467 m2) is an irregular blob, so the hall is a simplified rectangle of similar area."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d4ac",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#d9c9a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a3c",
+    "material": "clay-tile",
+    "pitch": 27,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    26
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    22
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -14,
+    -15.5,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "count": 5,
+    "height": 4.0,
+    "radius": 0.4,
+    "kind": "square",
+    "beamHeight": 1.2,
+    "roofDepth": 2.4,
+    "colour": "#8f9291",
+    "roofColour": "#8f9291"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "n": 20,
+    "height": 0.4,
+    "colour": "#5f8f3a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "n": 20,
+    "height": 0.7,
+    "colour": "#a8453a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 3,
+    "n": 14,
+    "height": 1.0,
+    "colour": "#4f7d3b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Identity of photo unconfirmed so verified=text; hall is a simplified rectangle, no breeze-block vent bands or glazed doors, portico sits offset from the roof, planter lacks hedge ring detail, paving is square grid not hex."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-meal-stop"
+}

@@ -1,0 +1,332 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "watt-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/669758905",
+   "used": "extent only (about 225 x 205 m, containing match): one representative corner of lanes and sheds is modelled"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Watt_Market",
+   "used": "Old Town Calabar market established 1901, stalls and lock-up shops; no current exterior photo found (Commons has only a 1901 opening photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-hall",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    -25,
+    22
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b3",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#a8744f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e6a63",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cold-shed",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    26,
+    24
+   ],
+   "height": 4.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4ddc9",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6a5c",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -40,
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 36,
+    "depth": 3.4,
+    "height": 3.1,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.4,
+    "roof_colour": "#6e6a63",
+    "wall_colour": "#c9c3b3"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -40,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 36,
+    "depth": 3.4,
+    "height": 3.1,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.4,
+    "roof_colour": "#7d7872",
+    "wall_colour": "#a8744f"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    8,
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "depth": 3.4,
+    "height": 3.1,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.4,
+    "roof_colour": "#80695a",
+    "wall_colour": "#e4ddc9"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "depth": 3.4,
+    "height": 3.1,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.4,
+    "roof_colour": "#6e6a63",
+    "wall_colour": "#c9c3b3"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    48,
+    10,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "depth": 3.4,
+    "height": 3.1,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.4,
+    "roof_colour": "#6e6a63",
+    "wall_colour": "#a8744f"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#6e6a63"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#7a6a5c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "size": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.8,
+    "kind": "stall",
+    "size": 1.2
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    34,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 8,
+    "radius": 1.7,
+    "tables": false,
+    "colours": [
+     "#d94f4f",
+     "#e9c46a",
+     "#3a86c8",
+     "#2a9d8f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -2,
+    12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 7,
+    "radius": 1.7,
+    "tables": false,
+    "colours": [
+     "#e76f51",
+     "#3a86c8",
+     "#e9c46a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 3.2,
+    "colour": "#a8744f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    38,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 3.0,
+    "colour": "#3a86c8",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the current market; the real site is about 225 m wide, only one corner of lock-up lanes, sheds and umbrella stalls is composed from the brief."
+ }
+}

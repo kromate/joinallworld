@@ -1,0 +1,335 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1495915445",
+   "used": "irregular heptagonal market outline (about 286 x 131 m, drawn at 40 percent scale), used for the perimeter fence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 35,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "perimeter-fence",
+   "params": {
+    "section": "rect",
+    "width": 0.35,
+    "height": 1.8,
+    "points": [
+     [
+      -65.1,
+      2.2,
+      0
+     ],
+     [
+      -49.3,
+      -35.1,
+      0
+     ],
+     [
+      -22.8,
+      -21.2,
+      0
+     ],
+     [
+      4.7,
+      -10.8,
+      0
+     ],
+     [
+      41.8,
+      0.6,
+      0
+     ],
+     [
+      56.6,
+      9.1,
+      0
+     ],
+     [
+      33.8,
+      55.2,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#b98a5e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "perimeter-lod2",
+   "lod": [
+    2
+   ],
+   "params": {
+    "section": "rect",
+    "width": 0.6,
+    "height": 1.4,
+    "points": [
+     [
+      -65.1,
+      2.2,
+      0
+     ],
+     [
+      -49.3,
+      -35.1,
+      0
+     ],
+     [
+      -22.8,
+      -21.2,
+      0
+     ],
+     [
+      4.7,
+      -10.8,
+      0
+     ],
+     [
+      41.8,
+      0.6,
+      0
+     ],
+     [
+      56.6,
+      9.1,
+      0
+     ],
+     [
+      33.8,
+      55.2,
+      0
+     ]
+    ],
+    "closed": true,
+    "colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 3,
+    "dx": 11,
+    "dy": 9,
+    "centred": true,
+    "of": {
+     "type": "fence-wall",
+     "params": {
+      "length": 9,
+      "height": 1.5,
+      "thickness": 0.25,
+      "kind": "rail",
+      "colour": "#8b6b45"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 3,
+    "rows": 2,
+    "dx": 12,
+    "dy": 10,
+    "centred": true,
+    "of": {
+     "type": "fence-wall",
+     "params": {
+      "length": 10,
+      "height": 1.5,
+      "thickness": 0.25,
+      "kind": "rail",
+      "colour": "#8b6b45"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -36,
+    -18,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     0,
+     0,
+     0
+    ],
+    "count": 1,
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "flat",
+      "width": 16,
+      "depth": 8,
+      "height": 3.6,
+      "columns": 4,
+      "colour": "#8a3b2e",
+      "edgeColour": "#6b6e70"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    34,
+    18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 8,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#8a3b2e",
+    "edgeColour": "#6b6e70"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -6,
+    -26,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 18,
+    "depth": 7,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#7c8a8c",
+    "edgeColour": "#6b6e70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -48,
+    -22
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9a97b",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.6,
+    "pillar": 1.0,
+    "colour": "#c9a97b",
+    "leafColour": "#4b4f52"
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -40,
+    12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 6,
+    "spread": 60
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "kasuwan-shanu",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed from name only: pens and sheds are plausible, not observed; outline drawn at 40 percent scale."
+ }
+}

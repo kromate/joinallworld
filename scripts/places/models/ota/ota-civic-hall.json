@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "ota-civic-hall",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "single-storey red-brick hall, gable corrugated roof, columned porch, two flagpoles; no photo. OSM match only nearest and larger than the brief, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4573d",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#f2eee6",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d5a3b",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 4,
+    "height": 5.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#f2eee6",
+    "roofColour": "#8d5a3b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -16,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -15,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 2,
+    "bottom": 0.5,
+    "colour": "#f2eee6",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; typical brick gable hall with porch typed from the brief, not the real building."
+ }
+}

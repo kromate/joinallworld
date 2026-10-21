@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "government-house-mosque-jalingo",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief only. Nearest OSM building (15x12 m) is 9 m away and smaller than the brief, so not used. Cream mosque, single stepped gold dome, one tall minaret, arcaded porch."
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#b8a15a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d2cab8",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -15.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "none",
+    "groundKind": "arcade",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d2cab8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#efe9d8",
+    "profile": [
+     [
+      8.5,
+      0
+     ],
+     [
+      8.5,
+      1.6
+     ],
+     [
+      7,
+      1.6
+     ],
+     [
+      7,
+      3.2,
+      "#b8a15a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#b8a15a",
+    "profile": [
+     [
+      7,
+      3.2,
+      "#b8a15a"
+     ],
+     [
+      6.47,
+      4.18
+     ],
+     [
+      6.1,
+      5.11
+     ],
+     [
+      5.49,
+      5.98
+     ],
+     [
+      4.67,
+      6.74
+     ],
+     [
+      3.67,
+      7.36
+     ],
+     [
+      2.53,
+      7.82
+     ],
+     [
+      1.29,
+      8.1
+     ],
+     [
+      0.0,
+      8.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    16.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#b8a15a",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.3,
+      2.6
+     ],
+     [
+      0.1,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#efe9d8",
+    "profile": [
+     [
+      1.5,
+      0,
+      "#efe9d8"
+     ],
+     [
+      1.5,
+      18.0
+     ],
+     [
+      1.9,
+      18.0,
+      "#b8a15a"
+     ],
+     [
+      1.9,
+      18.9
+     ],
+     [
+      1.2,
+      18.9,
+      "#efe9d8"
+     ],
+     [
+      1.2,
+      27.0
+     ],
+     [
+      1.7,
+      27.0,
+      "#b8a15a"
+     ],
+     [
+      1.7,
+      27.8
+     ],
+     [
+      1.0,
+      27.8,
+      "#b8a15a"
+     ],
+     [
+      0.5,
+      30.5
+     ],
+     [
+      0.1,
+      32.0
+     ],
+     [
+      0.1,
+      33.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    20,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#efe9d8",
+    "profile": [
+     [
+      1.5,
+      0
+     ],
+     [
+      1.5,
+      30
+     ],
+     [
+      0.2,
+      35
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.7,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#d2cab8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.2,
+    "colour": "#d2cab8",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   75,
+   65
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; dome steps, gold trim and minaret position are typical, not observed."
+ }
+}

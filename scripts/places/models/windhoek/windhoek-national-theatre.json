@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-national-theatre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/751008590",
+   "used": "real 1512 m2 outline (containing match) as the main block"
+  },
+  {
+   "kind": "text",
+   "used": "brief: boxy tiered mid-century civic building, concrete front, taller stage fly-tower, 471 + 250 seat halls; no photo found on Commons"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8a090",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched"
+    },
+    "pattern": {
+     "type": "bands",
+     "faces": [
+      "front"
+     ]
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     18,
+     15
+    ]
+   },
+   "at": [
+    -6,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 19,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9e988b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8084",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 5,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#b0aa9c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -18.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2,
+    "bottom": 7.4,
+    "colour": "#5b6670",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 3,
+    "spread": 14,
+    "colour": "#7c8a4c"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    18,
+    -32,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.0,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; massing from OSM outline plus brief, facade and fly-tower height inferred"
+ }
+}

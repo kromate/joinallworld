@@ -1,0 +1,1692 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dushanbe",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dushanbe",
+    "climate": "mediterranean",
+    "vernacular": "Soviet-planned Central Asian capital on the Varzob river: tree-lined boulevards (Rudaki Avenue) of 3-6 storey pastel-stucco neoclassical and late-Soviet panel blocks, grand columned public buildings in cream and white, newer white-marble and glass state buildings with Persian/Samanid motifs and blue-tiled domes, low courtyard houses with flat or low-pitched metal roofs on the outskirts, and plane, poplar and mulberry shade trees everywhere.",
+    "wallColours": [
+      "#e8dcc0",
+      "#f2eee2",
+      "#d9c7a0",
+      "#c9b48a",
+      "#b7c3c6",
+      "#a8573f",
+      "#ddd6c8"
+    ],
+    "roofColours": [
+      "#6f7b6c",
+      "#8c8c88",
+      "#a5532f",
+      "#3f6f8f",
+      "#c9a23a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "render",
+      "concrete",
+      "brick",
+      "marble",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "concrete",
+      "clay-tile",
+      "membrane",
+      "gold-leaf"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Persian/Samanid revival: pointed iwan arches, ganch (carved plaster) panels, turquoise and blue glazed tile domes, geometric girih bands; Soviet monumental columned porticoes, relief friezes and state emblems on civic blocks; national flag on a 165 m pole; golden Samanid crown motif.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dushanbe",
+        "what": "Csa Mediterranean climate; Rudaki Avenue, Palace of the Nation, Supreme Soviet and National Library buildings; 22% green space with introduced tree species"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Supreme_Assembly_of_Tajikistan",
+        "what": "new parliament on Rudaki Avenue: white marble facade, 70 m dome, Tajik styling"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Haji_Yaqub_Mosque",
+        "what": "vernacular Central Asian courtyard mosque with L-shaped columned porticoes, semicircular-arched gatehouse and carved-wood screens"
+      }
+    ]
+  },
+  "places": {
+    "dushanbe-airport-dushanbe-airport": {
+      "venueId": "dushanbe-airport-dushanbe-airport",
+      "city": "dushanbe",
+      "name": "Dushanbe International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the French-financed 2014 passenger terminal seen from the landside forecourt: a long three-level glazed block with a flat roof and a flat departures canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#cfd8dc",
+          "#6f8591",
+          "#f0f0ec"
+        ],
+        "roofColour": "#b9bfc2",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dushanbe_International_Airport",
+          "what": "single terminal, French-built and opened 3 Sep 2014, 1.5 M passengers/year (EUR 20 M French loan)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q532778",
+          "what": "Wikidata match \"Dushanbe International Airport\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/994109575",
+          "what": "OSM footprint 116.8 x 59.5 m (6864 m2) and tags {\"building\":\"yes\",\"building:levels\":\"3\"}"
+        }
+      ],
+      "notes": "Footprint and 3 levels are measured from OSM (Terminal 1, 117 x 59.5 m); facade glazing, colours and canopy are typical of the French-built 2014 terminal and are NOT confirmed by a source describing the exterior. A replacement 8.5 M-passenger terminal was announced in 2026 (not built)."
+    },
+    "dushanbe-clinic": {
+      "venueId": "dushanbe-clinic",
+      "city": "dushanbe",
+      "name": "Roddom Rudaki (maternity hospital)",
+      "archetype": "hospital",
+      "subject": "a Soviet-era maternity hospital block of about four storeys in pale stucco with a central entrance porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d6b4",
+          "#b9ab88",
+          "#f2eee2"
+        ],
+        "roofColour": "#6f7b6c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Only the Russian-language name (maternity hospital named for Rudaki) is known; no OSM building matched."
+    },
+    "dushanbe-community-notices": {
+      "venueId": "dushanbe-community-notices",
+      "city": "dushanbe",
+      "name": "Supreme Assembly (Majlisi Oli)",
+      "archetype": "civic-palace",
+      "subject": "the new white-marble parliament on Rudaki Avenue: a very wide symmetrical block with a central colonnaded entrance and a 70 m dome",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 149,
+        "depth_m": 83,
+        "storeys": 5,
+        "height_m": 36,
+        "roof": "dome",
+        "variant": "parliament with grand central dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3f1ea",
+          "#b8a47a",
+          "#d9d2c0"
+        ],
+        "roofColour": "#c9a23a",
+        "roofMaterial": "gold-leaf",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome about 70 m high, dominant feature"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "tall columned central entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020s (in use since 2024)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Supreme_Assembly_of_Tajikistan",
+          "what": "Chinese-assisted Tajik-styled building, 43,750 m2, white marble facade, 70 m dome, 1,500-seat hall; parliament sits there since 2024"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2011165",
+          "what": "Wikidata match \"Supreme Assembly\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/528417507",
+          "what": "OSM footprint 149 x 82.8 m (4218 m2) and tags {\"building\":\"public\"}"
+        }
+      ],
+      "notes": "Footprint 149 x 83 m is measured (OSM, Q2011165) but the OSM outline is a large irregular polygon; model the main white facade. Dome colour (gold/ochre) is an estimate: sources only say white marble facade and 70 m dome. The old Soviet Supreme Soviet building is a different, earlier building."
+    },
+    "dushanbe-community-voting-game": {
+      "venueId": "dushanbe-community-voting-game",
+      "city": "dushanbe",
+      "name": "Ministry of Internal Affairs (MVD)",
+      "archetype": "civic-small",
+      "subject": "a four-storey police/ministry office block of the Soviet type, cream render with a flat roof and a flagpole forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 49,
+        "depth_m": 38,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e0d4b5",
+          "#a9a28c",
+          "#f2eee2"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1474421170",
+          "what": "OSM footprint 49.1 x 37.8 m (1858 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint is the matched OSM building (49 x 38 m, unnamed, building=yes)."
+    },
+    "dushanbe-community-workshop": {
+      "venueId": "dushanbe-community-workshop",
+      "city": "dushanbe",
+      "name": "Tajik Agrarian University (Shirinsho Shotemur)",
+      "archetype": "campus-block",
+      "subject": "the main teaching block of the agrarian university campus: a long four-storey Soviet-era academic building with a central entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d7b8",
+          "#a86f4f",
+          "#f1ece0"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central entrance porch"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1931 institution, buildings 1950s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q650473",
+          "what": "university founded 1931 (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/993587672",
+          "what": "OSM footprint 513.1 x 243 m (111738 m2) and tags {\"amenity\":\"university\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM only gives the 513 x 243 m campus polygon (111,738 m2); the block size here is a guess of the main building, not measured."
+    },
+    "dushanbe-market-game": {
+      "venueId": "dushanbe-market-game",
+      "city": "dushanbe",
+      "name": "Darvoz (market)",
+      "archetype": "market-open",
+      "subject": "a neighbourhood bazaar: rows of metal-roofed stalls and a small trading hall under shade awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 12.5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8bfae",
+          "#6f7b6c",
+          "#e4dccb"
+        ],
+        "roofColour": "#6f8591",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1474407533",
+          "what": "OSM footprint 24.7 x 12.5 m (308 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Only a 24.7 x 12.5 m unnamed OSM building contains the point; the stalls are typical of Dushanbe bazaars, not observed here."
+    },
+    "dushanbe-meal-stop": {
+      "venueId": "dushanbe-meal-stop",
+      "city": "dushanbe",
+      "name": "Almos (restaurant)",
+      "archetype": "restaurant",
+      "subject": "a roadside Tajik restaurant: a one-to-two-storey pavilion with a covered terrace, painted render and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9dcc0",
+          "#8a5a3a",
+          "#f4eee0"
+        ],
+        "roofColour": "#7a7a76",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "covered dining terrace"
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/269442943",
+          "what": "OSM footprint 29.6 x 21.7 m (548 m2) and tags {\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint 29.6 x 21.7 m from the unnamed OSM building at the point."
+    },
+    "dushanbe-osm-node-12064585531": {
+      "venueId": "dushanbe-osm-node-12064585531",
+      "city": "dushanbe",
+      "name": "Panj Deg (restaurant)",
+      "archetype": "restaurant",
+      "subject": "a small city-centre Tajik restaurant with a shopfront and a tiled awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e6d8b6",
+          "#3f6f8f",
+          "#f1ece0"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. No OSM building matched; dimensions are a typical small restaurant."
+    },
+    "dushanbe-osm-node-405093878": {
+      "venueId": "dushanbe-osm-node-405093878",
+      "city": "dushanbe",
+      "name": "Victory Park",
+      "archetype": "park-landscape",
+      "subject": "a hillside memorial park on Dushanbe's north-east edge with a Soviet-style Victory monument at the head of a stepped promenade",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 108,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d6cfc0",
+          "#8c8c88",
+          "#efeae0"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "memorial stele"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "broad ceremonial stairway"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/171373568",
+          "what": "OSM footprint 108.4 x 80.1 m (7577 m2) and tags {\"historic\":\"monument\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM tags it historic=monument inside a 108 x 80 m park polygon; the monument design is not described by any source retrieved, so the obelisk and stairway are generic Soviet Victory-park furniture."
+    },
+    "dushanbe-osm-node-4467243189": {
+      "venueId": "dushanbe-osm-node-4467243189",
+      "city": "dushanbe",
+      "name": "Markazi Salomati (health centre)",
+      "archetype": "hospital",
+      "subject": "a mid-size district health centre: a two-to-three storey rendered block with a small ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 59,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc2",
+          "#b6a888",
+          "#f4efe3"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/363315804",
+          "what": "OSM footprint 58.8 x 44.7 m (1450 m2) and tags {\"building\":\"hospital\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint 58.8 x 44.7 m is the matched OSM building=hospital; storeys are guessed."
+    },
+    "dushanbe-osm-node-5563662637": {
+      "venueId": "dushanbe-osm-node-5563662637",
+      "city": "dushanbe",
+      "name": "Oshkhonai Obi Shifo (canteen)",
+      "archetype": "restaurant",
+      "subject": "a roadside tea house and canteen with a long open pavilion, benches and tapchan platforms under a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a98a62",
+          "#d8cfb8",
+          "#6b4a30"
+        ],
+        "roofColour": "#6f8591",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open dining pavilion"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "raised tapchan platforms"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/580819864",
+          "what": "OSM footprint 4.9 x 2.1 m (10 m2) and tags {\"amenity\":\"fuel\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. The OSM point is a 5 x 2 m fuel-station feature, not a building; \"Obi shifo\" is a mineral-water spring name. Form is a typical Tajik roadside chaikhana."
+    },
+    "dushanbe-osm-node-9655730217": {
+      "venueId": "dushanbe-osm-node-9655730217",
+      "city": "dushanbe",
+      "name": "Climbing place (Varzob gorge crag)",
+      "archetype": "park-landscape",
+      "subject": "a rocky crag and trail head in the Varzob river gorge north of the city: bare grey-brown rock above a gravel path with a few poplars",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9c8a72",
+          "#7d6d58",
+          "#b7a98f"
+        ],
+        "roofColour": "#7d6d58",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "rough trail steps"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM node only (no polygon); no structure. Model as a rock outcrop with trail rather than a building."
+    },
+    "dushanbe-osm-way-105572713": {
+      "venueId": "dushanbe-osm-way-105572713",
+      "city": "dushanbe",
+      "name": "Haji Yaqub Mosque (Mevlana Yakub Charki)",
+      "archetype": "mosque-domed",
+      "subject": "a Central Asian courtyard mosque and madrasa: a two-storey domed sanctuary at the head of a columned courtyard with an arched gatehouse",
+      "form": {
+        "footprint": "U",
+        "width_m": 86,
+        "depth_m": 52,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome",
+        "variant": "courtyard mosque with madrasa"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e8dcc2",
+          "#3f8f9a",
+          "#c9b48a"
+        ],
+        "roofColour": "#3f8f9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "two-storey domed sanctuary (rebuilt 1994-95)"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "brick-herringbone paved courtyard"
+        },
+        {
+          "id": "arcade",
+          "count": 2,
+          "note": "L-shaped columned porticoes"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "semicircular-arched gatehouse with carved-wood screen"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1890; sanctuary rebuilt 1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Haji_Yaqub_Mosque",
+          "what": "courtyard with L-shaped columned porticoes, herringbone brick paving, carved-wood pillar and screen gatehouse with semicircular arch, 1995 domed two-storey sanctuary flanked by wings, two-storey administration block east"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12123152",
+          "what": "Wikidata match \"Haji Yaqub Mosque\", inception 1890"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/105572713",
+          "what": "OSM footprint 85.8 x 52 m (4267 m2) and tags {\"building\":\"yes\",\"amenity\":\"place_of_worship\"}"
+        }
+      ],
+      "notes": "Form and features are from the Wikipedia description of the Haji Yaqub complex; the dome and trim colours (turquoise) and the single minaret are estimates. The OSM outline is 85.8 x 52 m (Q12123152)."
+    },
+    "dushanbe-osm-way-247152234": {
+      "venueId": "dushanbe-osm-way-247152234",
+      "city": "dushanbe",
+      "name": "Tajik State University of Commerce",
+      "archetype": "campus-block",
+      "subject": "the main academic building of the commerce university: a large late-Soviet five-storey slab with ribbon windows and a projecting entrance hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d7cfbd",
+          "#8f8878",
+          "#efe9db"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "projecting entrance hall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2507812",
+          "what": "university established 1987 (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/247152234",
+          "what": "OSM footprint 229.9 x 199 m (38829 m2) and tags {\"amenity\":\"university\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM campus polygon is 230 x 199 m; the block size is an estimate for the main building, not measured."
+    },
+    "dushanbe-osm-way-27154229": {
+      "venueId": "dushanbe-osm-way-27154229",
+      "city": "dushanbe",
+      "name": "RKTB No. 3 Machiton (hospital)",
+      "archetype": "hospital",
+      "subject": "a small two-storey hospital wing in pale render with a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d9c0",
+          "#b3a98f",
+          "#f2eee2"
+        ],
+        "roofColour": "#6f7b6c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/27464127",
+          "what": "OSM footprint 32.4 x 11.6 m (375 m2) and tags {\"amenity\":\"hospital\",\"building\":\"yes\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. Footprint 32.4 x 11.6 m is the matched OSM building (amenity=hospital)."
+    },
+    "dushanbe-osm-way-42488771": {
+      "venueId": "dushanbe-osm-way-42488771",
+      "city": "dushanbe",
+      "name": "Hisar Fortress (Hissor)",
+      "archetype": "heritage-fort",
+      "subject": "the reconstructed fortress gate of Hissor: two stout round brick towers with a deep arched portal and a crenellated parapet in front of a long earthen rampart",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "fortress gate and rampart"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "mud-render",
+        "colours": [
+          "#b99a69",
+          "#8e7048",
+          "#d2bd92"
+        ],
+        "roofColour": "#8e7048",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arched gate between two round towers"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "parapet"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "medieval, gate rebuilt 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hisar,_Tajikistan",
+          "what": "Hisar fort was residence of the Bukharan governor, captured many times; an \"old gate to the castle\" is the best-known surviving feature"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q63983571",
+          "what": "Wikidata match \"undefined\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/42488771",
+          "what": "OSM footprint 442.5 x 331.9 m (95561 m2) and tags {\"historic\":\"castle\"}"
+        }
+      ],
+      "notes": "Only the existence of the old gate and fort is sourced; the twin round towers, brick-and-earth colours and dimensions are from general knowledge of the restored gate and are approximate. OSM outline (442 x 332 m, historic=castle) is the whole reserve, which includes the 16th-17th c. madrasas and museum; the model shows only the gate portion."
+    },
+    "dushanbe-osm-way-482515768": {
+      "venueId": "dushanbe-osm-way-482515768",
+      "city": "dushanbe",
+      "name": "Sports ground (stadium, Hisor road)",
+      "archetype": "stadium",
+      "subject": "a small municipal football stadium: a pitch with a single covered concrete main stand and low terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 114,
+        "depth_m": 51,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c4b8",
+          "#4f6f8f",
+          "#e6e1d4"
+        ],
+        "roofColour": "#4f6f8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/482515768",
+          "what": "OSM footprint 113.8 x 50.7 m (5302 m2) and tags {\"leisure\":\"stadium\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM only records leisure=stadium, 113.8 x 50.7 m; no photos described. Differs from the neighbouring stadium (Maydoni vazishi) by having a roofed main stand."
+    },
+    "dushanbe-osm-way-486255310": {
+      "venueId": "dushanbe-osm-way-486255310",
+      "city": "dushanbe",
+      "name": "Maydoni Vazishi (sports field)",
+      "archetype": "stadium",
+      "subject": "an open sports field with simple concrete bleachers on two sides and a tall perimeter wall; no roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 92,
+        "depth_m": 52,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#8c8c88",
+          "#dcd6c8"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/486255310",
+          "what": "OSM footprint 92 x 52.1 m (4791 m2) and tags {\"leisure\":\"stadium\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM leisure=stadium 92 x 52 m. Deliberately unroofed so it differs from the other sports ground in this city."
+    },
+    "dushanbe-osm-way-486297646": {
+      "venueId": "dushanbe-osm-way-486297646",
+      "city": "dushanbe",
+      "name": "Tajik State Pedagogical University (Aini)",
+      "archetype": "campus-block",
+      "subject": "a Soviet-neoclassical four-storey university building in cream stucco with a columned central porch, on Rudaki Avenue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e9dcb8",
+          "#c8b78c",
+          "#f5f1e4"
+        ],
+        "roofColour": "#6f7b6c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "columned central porch"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1930s-1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2617399",
+          "what": "Tajik State Pedagogical University founded 1931"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/528398314",
+          "what": "OSM footprint 29.5 x 12.7 m (375 m2) and tags {\"amenity\":\"university\",\"building\":\"university\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. The matched OSM building is only 29.5 x 12.7 m (a small annex); the larger main block is an estimate in the Soviet-neoclassical manner of nearby Rudaki Avenue institutions."
+    },
+    "dushanbe-osm-way-521097387": {
+      "venueId": "dushanbe-osm-way-521097387",
+      "city": "dushanbe",
+      "name": "Omar Khayyam Park (Park Khayyam)",
+      "archetype": "park-landscape",
+      "subject": "a large modern amusement and promenade park: broad paved walks, fountains and a tiled pavilion under rows of young trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#eee6d2",
+          "#3f8f9a",
+          "#c9b48a"
+        ],
+        "roofColour": "#3f8f9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "arched, blue-tiled"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "2011",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16274504",
+          "what": "park entry, inception 2011 (Wikidata); OSM tourism=theme_park 459 x 421 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/521097387",
+          "what": "OSM footprint 459.1 x 421 m (147040 m2) and tags {}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. The pavilion and tile colours reflect the Persian-revival style of Dushanbe leisure parks, not an observed feature of this park."
+    },
+    "dushanbe-osm-way-574403086": {
+      "venueId": "dushanbe-osm-way-574403086",
+      "city": "dushanbe",
+      "name": "Tajik National University",
+      "archetype": "campus-block",
+      "subject": "the main building of the national university on Rudaki Avenue: a long, symmetrical five-storey Soviet-neoclassical block with a prominent columned portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#ebe0c0",
+          "#c9b88e",
+          "#f6f2e6"
+        ],
+        "roofColour": "#7a7a76",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "tall columned portico"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide ceremonial stairs"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1947 (established); main building 1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tajik_National_University",
+          "what": "founded 21 Mar 1947, 49 ha campus at 17 Rudaki Avenue, main building pictured but not described"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1528756",
+          "what": "Wikidata match \"Tajik National University\", inception 1947"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/574403086",
+          "what": "OSM footprint 514.5 x 502.6 m (193955 m2) and tags {\"amenity\":\"university\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. OSM gives only the 514 x 503 m campus. Block dimensions and portico are an estimate; made more monumental than the pedagogical university so the two read as different."
+    },
+    "dushanbe-osm-way-623245028": {
+      "venueId": "dushanbe-osm-way-623245028",
+      "city": "dushanbe",
+      "name": "Bozori Balkh (Balkh bazaar)",
+      "archetype": "market-open",
+      "subject": "a very large wholesale and retail bazaar: long ranks of metal-roofed stalls and container shops with bright awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b9bec2",
+          "#a8573f",
+          "#e5dfd2"
+        ],
+        "roofColour": "#6f8591",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/623245028",
+          "what": "amenity=marketplace 285 x 264 m (59,434 m2) polygon"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/623245028",
+          "what": "OSM footprint 285.4 x 264.3 m (59434 m2) and tags {\"amenity\":\"marketplace\"}"
+        }
+      ],
+      "notes": "Low confidence: building not described in any source found; typed from the city style and the place type. The market is large (285 x 264 m footprint); the model shows a 120 m portion of stall ranks."
+    },
+    "dushanbe-quiet-reflection": {
+      "venueId": "dushanbe-quiet-reflection",
+      "city": "dushanbe",
+      "name": "St. Nicholas Orthodox Cathedral",
+      "archetype": "church-classical",
+      "subject": "the Russian Orthodox cathedral in a cross-in-square plan with a central dome, smaller corner domes and a bell tower at the entrance",
+      "form": {
+        "footprint": "cross",
+        "width_m": 29,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome",
+        "variant": "cross-in-square Orthodox church"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe3c4",
+          "#b5502f",
+          "#f7f3e7"
+        ],
+        "roofColour": "#3f6f8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1,
+          "note": "central dome with cross"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1943",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13032586",
+          "what": "St. Nicholas Cathedral, Dushanbe; inception 1943 (Wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/610952154",
+          "what": "OSM footprint 29.2 x 24.8 m (715 m2) and tags {\"building\":\"cathedral\",\"amenity\":\"place_of_worship\"}"
+        }
+      ],
+      "notes": "OSM measures the plan at 29.2 x 24.8 m and building=cathedral (Russian Orthodox). The dome colours and bell tower are typical of a Russian Orthodox cathedral and are not confirmed from a description."
+    },
+    "dushanbe-recreation": {
+      "venueId": "dushanbe-recreation",
+      "city": "dushanbe",
+      "name": "Rudaki Park",
+      "archetype": "park-landscape",
+      "subject": "the central park of Dushanbe: a long formal promenade of plane trees and flower beds with a large fountain and the bronze Rudaki statue on a stone plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9d0bb",
+          "#8c8c88",
+          "#efe9da"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze Rudaki on a plinth"
+        },
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1933 (laid out)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dushanbe",
+          "what": "fountain with flower bed near the National Library; city green space; park on Rudaki Avenue"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16638695",
+          "what": "Rudaki Park, inception 1933"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/520892162",
+          "what": "OSM footprint 821.8 x 611.1 m (364560 m2) and tags {\"leisure\":\"park\"}"
+        }
+      ],
+      "notes": "OSM polygon is 822 x 611 m; the model shows the central promenade portion. The Rudaki statue and fountains are from general knowledge of the park (a fountain with flower bed is confirmed near the National Library); exact layout is approximate."
+    },
+    "dushanbe-transit": {
+      "venueId": "dushanbe-transit",
+      "city": "dushanbe",
+      "name": "Dushanbe railway station",
+      "archetype": "transport-station",
+      "subject": "the 1963 Soviet station building: a long low pale block with a central columned entrance hall and a platform canopy behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 99,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "terminus building"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#ece2c7",
+          "#b9a982",
+          "#f6f1e4"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "central entrance"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1963",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dushanbe_railway_station",
+          "what": "first train 1929; the current new station building was built in 1963 and still operates"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11695326",
+          "what": "Wikidata match \"Dushanbe railway station\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/27505635",
+          "what": "OSM footprint 99.2 x 13.9 m (1363 m2) and tags {\"building\":\"train_station\"}"
+        }
+      ],
+      "notes": "The 99 x 14 m footprint (OSM building=train_station, Q11695326) and 1963 date are sourced; the colonnade, clock and cream colour scheme are typical of Soviet-era Central Asian stations and are unconfirmed."
+    }
+  }
+}

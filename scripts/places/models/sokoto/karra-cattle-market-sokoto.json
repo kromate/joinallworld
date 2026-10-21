@@ -1,0 +1,779 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1332625850",
+   "used": "only the small 151 m2 building at the market point, used as the buyers' office; the market itself has no outline"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q136512703",
+   "used": "identity: cattle market in Sokoto State; livestock yard concept typed as pens, shade sheds, kiosks, perimeter wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "yard",
+   "footprint": {
+    "rect": [
+     112,
+     84
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c8a878",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8a878"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "market-office",
+   "footprint": {
+    "polygon": [
+     [
+      -8.2,
+      3.7
+     ],
+     [
+      -0.4,
+      -9
+     ],
+     [
+      8.2,
+      -3.7
+     ],
+     [
+      0.4,
+      9
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -32
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a9633f",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -56,
+      -42
+     ],
+     [
+      56,
+      -42
+     ],
+     [
+      56,
+      42
+     ],
+     [
+      -56,
+      42
+     ],
+     [
+      -56,
+      -42
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.4,
+    "colour": "#b5835a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.0,
+    "pillar": 1.2,
+    "colour": "#b5835a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -35.2,
+    -13.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 1.0,
+    "colour": "#8a5a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -29.6,
+    -10.8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 1.0,
+    "colour": "#3b2f2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -13.2,
+    -13.2,
+    0
+   ],
+   "rotDeg": 47,
+   "params": {
+    "scale": 1.0,
+    "colour": "#e8dfc8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -7.6,
+    -10.8,
+    0
+   ],
+   "rotDeg": 83,
+   "params": {
+    "scale": 1.0,
+    "colour": "#b98a5e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4,
+    -18,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    8.8,
+    -13.2,
+    0
+   ],
+   "rotDeg": 94,
+   "params": {
+    "scale": 1.0,
+    "colour": "#8a5a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    14.4,
+    -10.8,
+    0
+   ],
+   "rotDeg": 166,
+   "params": {
+    "scale": 1.0,
+    "colour": "#b98a5e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -35.2,
+    14.8,
+    0
+   ],
+   "rotDeg": 141,
+   "params": {
+    "scale": 1.0,
+    "colour": "#e8dfc8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -29.6,
+    17.2,
+    0
+   ],
+   "rotDeg": 69,
+   "params": {
+    "scale": 1.0,
+    "colour": "#3b2f2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -13.2,
+    14.8,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "scale": 1.0,
+    "colour": "#8a5a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    -7.6,
+    17.2,
+    0
+   ],
+   "rotDeg": 152,
+   "params": {
+    "scale": 1.0,
+    "colour": "#b98a5e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    4,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      12
+     ],
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    8.8,
+    14.8,
+    0
+   ],
+   "rotDeg": 55,
+   "params": {
+    "scale": 1.0,
+    "colour": "#e8dfc8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    14.4,
+    17.2,
+    0
+   ],
+   "rotDeg": 55,
+   "params": {
+    "scale": 1.0,
+    "colour": "#b98a5e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      14,
+      0
+     ],
+     [
+      14,
+      16
+     ],
+     [
+      0,
+      16
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.15,
+    "kind": "palisade",
+    "colour": "#7a5a3a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    30.2,
+    -5.6,
+    0
+   ],
+   "rotDeg": 102,
+   "params": {
+    "scale": 1.0,
+    "colour": "#8a5a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/cow",
+   "at": [
+    35.1,
+    -2.4000000000000004,
+    0
+   ],
+   "rotDeg": 138,
+   "params": {
+    "scale": 1.0,
+    "colour": "#3b2f2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -30,
+    32,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "count": 9,
+    "height": 3.6,
+    "roofDepth": 7,
+    "colour": "#7a5a3a",
+    "roofColour": "#6b6e70"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    18,
+    32,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "count": 4,
+    "height": 3.6,
+    "roofDepth": 6,
+    "colour": "#7a5a3a",
+    "roofColour": "#8a3b2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f7f6a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    31,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -46,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    30,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.6,
+    "tables": false,
+    "colours": [
+     "#e8dfc8",
+     "#c9a77c",
+     "#3f7f6a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -52,
+     36
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     50,
+     -36
+    ],
+    "height": 7
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     34
+    ],
+    "height": 8
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "karra-cattle-market-sokoto",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline of the yard; pens, sheds, kiosks and wall are typed, only the small office uses OSM."
+ }
+}

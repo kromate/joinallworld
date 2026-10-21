@@ -1,0 +1,196 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1322292095",
+   "used": "real building outline about 12 x 10 m, 0.7 m from the Wikidata point; no photos found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "building",
+   "footprint": {
+    "polygon": [
+     [
+      -6.1,
+      -5
+     ],
+     [
+      6.1,
+      -5
+     ],
+     [
+      6.1,
+      5
+     ],
+     [
+      -6.1,
+      5
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    },
+    "bands": "#3f7f6a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6e70",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#3f7f6a",
+    "edgeColour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -8.2
+   ],
+   "params": {
+    "rect": [
+     12,
+     5.5
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#c9a77c",
+    "topColour": "#c9a77c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.3,
+    "bottom": 4.3,
+    "colour": "#3f7f6a",
+    "frameColour": "#f1ead8",
+    "posts": false
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4,
+    "colours": [
+     "#c9402f",
+     "#e8dfc8",
+     "#3f7f6a"
+    ]
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "colours": [
+     "#e8dfc8",
+     "#3f7f6a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "kayat-restaurant",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; terrace, awning and umbrellas are typed around the real 12x10 m outline."
+ }
+}

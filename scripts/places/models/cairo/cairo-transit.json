@@ -1,0 +1,673 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ramses_Station_(Cairo).jpg",
+   "licence": "CC (see Commons file page)",
+   "author": "see Commons (file ramses-ext1)",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/ramses-ext1.jpg",
+   "used": "cream stone front block of three floors with grouped pointed windows over teal tile spandrels, a pointed entrance arch with carved hood at left-centre, a square clock tower at the right with teal lozenge-tile panel, clock, two pointed windows and carved cornice, cobbled forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ramses-Station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Osama Khalil",
+   "view": "interior",
+   "used": "iron-and-glass shed roof behind the concourse, glazed gable wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ramses_Station,_Cairo_01.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Faris knight",
+   "view": "interior",
+   "used": "steel-trussed barrel vaults over the tracks with glazed clerestory lights"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/579796924",
+   "used": "size only (191 x 52 m); modelled as a 112 m portion because of the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 3,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     100,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 16.5,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e6d9b8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#d3c39a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f7d",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    52,
+    -1.5
+   ],
+   "height": 25,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#eadfc0",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9b",
+    "parapet": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-panel",
+   "at": [
+    52,
+    -7.6,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.5
+    ],
+    "height": 17.5,
+    "colour": "#2f8896",
+    "topColour": "#2f8896",
+    "pattern": {
+     "type": "bands",
+     "colour": "#e6d9b8"
+    }
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.8,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#cfc2a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 4,
+    "spread": 3,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "array",
+   "id": "grp-f1",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       -2.6,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 4.2,
+       "colour": "#5a4a38",
+       "topColour": "#5a4a38"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 4.2,
+       "colour": "#5a4a38",
+       "topColour": "#5a4a38"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       2.6,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 4.2,
+       "colour": "#5a4a38",
+       "topColour": "#5a4a38"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -44,
+     -8.15,
+     0.6
+    ],
+    "end": [
+     22,
+     -8.15,
+     0.6
+    ],
+    "count": 6,
+    "skip": [
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "grp-f2",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       -2.6,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#3a3128",
+       "topColour": "#3a3128"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#3a3128",
+       "topColour": "#3a3128"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       2.6,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#3a3128",
+       "topColour": "#3a3128"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -44,
+     -8.15,
+     6.4
+    ],
+    "end": [
+     22,
+     -8.15,
+     6.4
+    ],
+    "count": 6,
+    "skip": [
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "grp-f3",
+   "params": {
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       -2.6,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#3a3128",
+       "topColour": "#3a3128"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#3a3128",
+       "topColour": "#3a3128"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       2.6,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        1.5,
+        0.3
+       ],
+       "height": 3.6,
+       "colour": "#3a3128",
+       "topColour": "#3a3128"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -44,
+     -8.15,
+     11.6
+    ],
+    "end": [
+     22,
+     -8.15,
+     11.6
+    ],
+    "count": 6,
+    "skip": [
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "spandrel0",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8.4,
+       0.3
+      ],
+      "height": 1.2,
+      "colour": "#2f8896",
+      "topColour": "#2f8896"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -8.15,
+     4.9
+    ],
+    "end": [
+     22,
+     -8.15,
+     4.9
+    ],
+    "count": 6,
+    "skip": [
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "spandrel1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       8.4,
+       0.3
+      ],
+      "height": 1.2,
+      "colour": "#2f8896",
+      "topColour": "#2f8896"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -44,
+     -8.15,
+     10.1
+    ],
+    "end": [
+     22,
+     -8.15,
+     10.1
+    ],
+    "count": 6,
+    "skip": [
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portal-surround",
+   "at": [
+    -30,
+    -8.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     1.4
+    ],
+    "height": 15.5,
+    "colour": "#d8c9a3",
+    "topColour": "#d8c9a3"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "portal-recess",
+   "at": [
+    -30,
+    -9.5,
+    0
+   ],
+   "params": {
+    "colour": "#2a2118",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.6,
+       0.4
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       5.6,
+       0.4
+      ]
+     },
+     {
+      "z": 8.2,
+      "rect": [
+       4.2,
+       0.4
+      ]
+     },
+     {
+      "z": 9.8,
+      "rect": [
+       2.4,
+       0.4
+      ]
+     },
+     {
+      "z": 11.0,
+      "rect": [
+       0.8,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-hood",
+   "at": [
+    -30,
+    -9.6,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#c9b98e",
+    "topColour": "#c9b98e",
+    "topScale": [
+     0.3,
+     1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-gate",
+   "at": [
+    52,
+    -7.8,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.3
+    ],
+    "height": 4.8,
+    "colour": "#4a4038",
+    "topColour": "#4a4038"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-windows",
+   "at": [
+    52,
+    -7.9,
+    10
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     0.3
+    ],
+    "height": 5.6,
+    "colour": "#5a4634",
+    "topColour": "#6d5a46"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    52,
+    -8.1,
+    19.5
+   ],
+   "params": {
+    "radius": 1.9
+   }
+  },
+  {
+   "type": "array",
+   "id": "train-sheds",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       30,
+       42
+      ]
+     },
+     "height": 17,
+     "storeys": 1,
+     "wall": {
+      "material": "metal-cladding",
+      "colour": "#9aa4a8",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "barrel",
+      "colour": "#6f8f99",
+      "material": "metal-sheet",
+      "rise": 6.5,
+      "overhang": 0.2
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     29,
+     0
+    ],
+    "end": [
+     28,
+     29,
+     0
+    ],
+    "count": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "extent": [
+   118,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "compared against the exterior front photo (ramses-ext1). Grouped windows are flat dark rectangles (no pointed heads or carved hoods), tile panel is banded rather than lozenge, carved cornices and clock hands missing, 190 m building shortened to ~110 m, cobbles only as plaza paving"
+ }
+}

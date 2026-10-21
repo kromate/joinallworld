@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-wernhil-shopping-centre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:P%C3%A5g%C3%A5ende_utbyggnad_av_k%C3%B6pcentrum,_Wernhil_Park,_Windhoek.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Johan Jonsson (Julle)",
+   "view": "street",
+   "file": "/tmp/places-evidence/windhoek/wernhil-site.jpg",
+   "used": "Supplementary only (extension under construction): board-marked concrete frame, deep floor-edge beams, square columns, brick infill panels, open decks, sunken ground level. Mall identity from OSM name match and brief."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95200940",
+   "used": "real outline, name match, 18164 m2"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.22,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cdbf9f",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bfb190",
+      "height": 1.1,
+      "proud": 0.35,
+      "at": 0.9,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.5,
+      "spacing": 8,
+      "colour": "#c6b898",
+      "margin": 1.0
+     },
+     {
+      "type": "panels",
+      "size": [
+       3,
+       1.6
+      ],
+      "colours": [
+       "#b79c74",
+       "#a98e68"
+      ],
+      "mode": "random",
+      "floors": [
+       0
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5a98c",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hotel-slab",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    30,
+    10
+   ],
+   "height": 44,
+   "storeys": 13,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3cf",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#8f7f5c",
+      "height": 1.4,
+      "proud": 0.15,
+      "at": 0.45,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "width": 0.6,
+      "depth": 0.3,
+      "spacing": 4,
+      "colour": "#d8d0b8"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8a8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 6,
+    "height": 5,
+    "columns": 4,
+    "colour": "#7fa3b0",
+    "edgeColour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    12,
+    17
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    -48
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b08a66",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -52,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 5,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    20,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#003580",
+     "#d2232a",
+     "#009543"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     25,
+     -52
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Only photo is the unfinished extension frame (weak evidence), so verified=footprint; frame, bands, brick base, hotel slab and entrance canopy are generic; no real open decks, sunken ramp or rooftop parking detail"
+ }
+}

@@ -1,0 +1,1362 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "nuuk",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "nuuk",
+    "climate": "cold",
+    "vernacular": "Arctic Danish-influenced capital on bare rock: small timber-clad houses painted in saturated red, yellow, blue and green with white window frames and low-pitched dark metal roofs; long four-to-five-storey concrete apartment blocks from the 1960s-70s (Blok P era) in muted yellow, ochre or grey; modern public buildings in timber, copper and glass; the historic colonial harbour has red and ochre timber warehouses. Little vegetation: lichen, dwarf birch and bare gneiss. Colours are estimates from general knowledge unless a building entry says sourced.",
+    "wallColours": [
+      "#b4352e",
+      "#e0b43c",
+      "#2f5f8f",
+      "#4a7a54",
+      "#e8e3d8",
+      "#c9a23a"
+    ],
+    "roofColours": [
+      "#3a3d42",
+      "#7a2a24",
+      "#8a8f94",
+      "#4a4f57"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "concrete",
+      "exposed-concrete",
+      "metal-cladding",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "membrane",
+      "copper"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "none",
+      "conifer"
+    ],
+    "ornament": "Horizontal or vertical timber cladding in strong primary colours with white-framed windows; wooden church towers with clocks; copper cladding on new public buildings; apartment blocks with coloured panel bands; Greenlandic and Danish flags; stone-and-gravel terrain around buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Nuuk_Cathedral",
+        "what": "Church of Our Saviour is a timber building clad in red panels with a wooden tower added 1928: confirms the red-timber colonial vernacular"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Queen_Ingrid%27s_Hospital",
+        "what": "recent public buildings use copper-clad angular blocks inspired by ice floes (C. F. Moller, 2011)"
+      }
+    ]
+  },
+  "places": {
+    "nuuk-airport-nuuk-airport": {
+      "venueId": "nuuk-airport-nuuk-airport",
+      "city": "nuuk",
+      "name": "Nuuk International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the new Nuuk Airport terminal (opened summer 2024): a compact modern two-storey terminal with a long apron and a new tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c5ba",
+          "#4a6a85",
+          "#e8e3d8"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new tower commissioned 2024"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2024",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nuuk_Airport",
+          "what": "new terminal and apron opened summer 2024 with four gates split into Schengen and non-Schengen areas, security check, duty-free and a cafe; old tower demolished Sept 2024, new tower; runway lengthened to 2,200 m (opened 28 Nov 2024)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1139968",
+          "what": "Wikidata item (Nuuk Airport)"
+        }
+      ],
+      "notes": "Terminal date, four gates and new tower are sourced; the exterior (cladding, colours, size 90 x 40 m) is not described anywhere retrievable and is estimated. OSM only has the aerodrome polygon (2.5 km), not the terminal. No jet bridges are claimed."
+    },
+    "nuuk-clinic": {
+      "venueId": "nuuk-clinic",
+      "city": "nuuk",
+      "name": "Queen Ingrid's Hospital",
+      "archetype": "hospital",
+      "subject": "Queen Ingrid's Hospital (the former 'Sana' sanatorium, 1954) with the 2011 angular copper-clad health centre in front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d2c0",
+          "#8a6a4a",
+          "#efe9db"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "copper",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "ribbon windows"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1954 with 2011 and 2012 additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen_Ingrid%27s_Hospital",
+          "what": "opened 1954 as Queen Ingrid's Sanatorium, 130 beds; newer buildings by C. F. Moller are sunken angular blocks clad in copper on facades and roof, inspired by ice floes and Sermitsiaq mountain; emergency centre opened 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/252144904",
+          "what": "OSM: building:levels=3, start_date=1954, outline 178 x 176 m (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3039996",
+          "what": "Wikidata item (Queen Ingrid's Hospital, inception 1953)"
+        }
+      ],
+      "notes": "Copper cladding, 1954 date, three levels are sourced; older block colour (pale render) and flat roofs are estimates. Show the old long block plus the angular copper wing."
+    },
+    "nuuk-community-notices": {
+      "venueId": "nuuk-community-notices",
+      "city": "nuuk",
+      "name": "Nukissiorfiit",
+      "archetype": "office-low",
+      "subject": "the Nukissiorfiit (Greenland energy company) office building, a long two-storey block with a stepped plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8cfa8",
+          "#2f5f8f",
+          "#bfbbaf"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/252161876",
+          "what": "OSM footprint 67.4 x 32.9 m, area 1183 m2 (measured)"
+        }
+      ],
+      "notes": "Wikidata: Nukissiorfiit, Greenlandic energy company founded 1990; OSM footprint 67 x 33 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-community-voting-game": {
+      "venueId": "nuuk-community-voting-game",
+      "city": "nuuk",
+      "name": "Kommuneqarfik Sermersooq",
+      "archetype": "civic-small",
+      "subject": "Kommuneqarfik Sermersooq municipal administration building: a three-storey angular civic block",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9cfa8",
+          "#7a2a24",
+          "#bfbbaf"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "Greenlandic flags"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/252790917",
+          "what": "OSM footprint 70.1 x 57.5 m, area 2233 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building=civic, townhall, 70 x 58 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-community-workshop": {
+      "venueId": "nuuk-community-workshop",
+      "city": "nuuk",
+      "name": "University of Greenland",
+      "archetype": "campus-block",
+      "subject": "University of Greenland, Ilimmarfik campus (2009): a complex of connected modern blocks on a rock terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9aa0a4",
+          "#c9a23a",
+          "#e8e3d8"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Greenland",
+          "what": "university moved in 2009 into the dedicated research complex Ilimmarfik; no building description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/252170984",
+          "what": "OSM footprint 88.6 x 76.7 m, area 3427 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1121983",
+          "what": "Wikidata item (University of Greenland, inception 1987)"
+        }
+      ],
+      "notes": "Date and name sourced; cladding, colours and massing are estimates. OSM footprint 89 x 77 m (amenity=university)."
+    },
+    "nuuk-market-game": {
+      "venueId": "nuuk-market-game",
+      "city": "nuuk",
+      "name": "Kalaaliaraq Market",
+      "archetype": "market-hall",
+      "subject": "Kalaaliaraq Market, the town fish and game market: a small modern single-storey hall in the centre selling seal, fish and game",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a23a",
+          "#2f5f8f",
+          "#e8e3d8"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kalaaliaraq_Market",
+          "what": "a new modern building with coolers, freezers and more built by the municipality in the city centre; image Nuuk fisch und wild markt"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/256786456",
+          "what": "OSM footprint 27.5 x 8.1 m, area 221 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6349986",
+          "what": "Wikidata item (Kalaaliaraq Market)"
+        }
+      ],
+      "notes": "Modern purpose-built, central location and size (OSM 27.5 x 8 m) are sourced; cladding and colours are estimates. Cooler-equipped interior implies a closed, insulated shed rather than open stalls."
+    },
+    "nuuk-meal-stop": {
+      "venueId": "nuuk-meal-stop",
+      "city": "nuuk",
+      "name": "Farmers",
+      "archetype": "restaurant",
+      "subject": "Farmers, a restaurant occupying one wing of a large harbour-side commercial building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b4352e",
+          "#e8e3d8",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/256199605",
+          "what": "OSM footprint 75.5 x 64.5 m, area 2738 m2 (measured)"
+        }
+      ],
+      "notes": "Only an unnamed 75 x 65 m containing OSM building was found; the restaurant is a part of it so a smaller block is shown. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-node-11851503687": {
+      "venueId": "nuuk-osm-node-11851503687",
+      "city": "nuuk",
+      "name": "Cafe Tamu",
+      "archetype": "restaurant",
+      "subject": "Cafe Tamu, a two-storey timber-clad café-restaurant on the eastern edge of town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e0b43c",
+          "#e8e3d8",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1042463024",
+          "what": "OSM footprint 39.4 x 23 m, area 907 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 39 x 23 m, building:levels=2. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-node-1295226025": {
+      "venueId": "nuuk-osm-node-1295226025",
+      "city": "nuuk",
+      "name": "Stanislawip Issikivia",
+      "archetype": "park-landscape",
+      "subject": "a hillside lookout over the fjord with a small gravel car park and rock outcrops",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 15,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "lookout"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a8a84",
+          "#6f6f68",
+          "#a8a8a0"
+        ],
+        "roofColour": "#6f6f68",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/731210198",
+          "what": "OSM footprint 78.3 x 12.3 m, area 713 m2 (measured)"
+        }
+      ],
+      "notes": "OSM only tags \"Stanislawip Issikivia\" as a parking lot 78 x 12 m; the viewpoint nature is the game label. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-node-14068566886": {
+      "venueId": "nuuk-osm-node-14068566886",
+      "city": "nuuk",
+      "name": "Greenland National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Greenland National Museum, in historic red-and-ochre timber colonial harbour buildings by the old quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#9a3b2e",
+          "#e8e3d8",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "colonial",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3117388",
+          "what": "Greenland National Museum and Archives item"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3117388",
+          "what": "Wikidata item (Greenland National Museum)"
+        }
+      ],
+      "notes": "OSM building 22 x 11 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. The historic harbour setting is from general knowledge."
+    },
+    "nuuk-osm-node-3265809565": {
+      "venueId": "nuuk-osm-node-3265809565",
+      "city": "nuuk",
+      "name": "Statue of Hans Egede",
+      "archetype": "monument",
+      "subject": "the Hans Egede statue: a bronze robed missionary holding a staff and Bible on a stone plinth on a rocky rise above the colonial harbour",
+      "form": {
+        "footprint": "round",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "statue-on-plinth"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8a8a84",
+          "#5c4a2e",
+          "#a8a8a0"
+        ],
+        "roofColour": "#5c4a2e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze, copy of A. Saabye 1913 original"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "cobble base"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1922",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Statue_of_Hans_Egede",
+          "what": "bronze statue erected 1922, copy of August Saabye 1913 work in Copenhagen; upright figure in monk-like robes, one foot forward, staff in right hand and Bible in left; inscribed pedestal on cobblestone base"
+        }
+      ],
+      "notes": "Material, date, pose and base sourced; the source claims about 7 ft including pedestal, but the statue stands on a rock rise so height_m 6 (statue 2.5 m on tall plinth) is a judgement. Plinth colour is an estimate."
+    },
+    "nuuk-osm-node-4784596045": {
+      "venueId": "nuuk-osm-node-4784596045",
+      "city": "nuuk",
+      "name": "Tech College Greenland",
+      "archetype": "campus-block",
+      "subject": "Tech College Greenland, a low workshop and classroom building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9aa0a4",
+          "#2f5f8f",
+          "#bfbbaf"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/256787898",
+          "what": "OSM footprint 30.1 x 12.9 m, area 390 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building=industrial 30 x 13 m; Wikidata inception 2011. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-way-252790932": {
+      "venueId": "nuuk-osm-way-252790932",
+      "city": "nuuk",
+      "name": "Nuuk Center",
+      "archetype": "mall",
+      "subject": "Nuuk Center, Greenland's largest shopping and office complex: a wide two-storey retail podium with an eight-storey office tower rising from it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 78,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat",
+        "variant": "podium-tower",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9aa5ad",
+          "#2f5f8f",
+          "#e8e3d8"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "two retail floors"
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1,
+          "note": "eight-storey tower"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "underground car hall, a first in Greenland"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nuuk_Center",
+          "what": "10-storey building: two retail floors and an eight-storey office tower; floor area about 25,000 m2; largest and tallest building in Greenland; first underground parking hall in the capital; architects KHR"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/252790932",
+          "what": "OSM footprint 84.8 x 78.5 m, area 5054 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q48553",
+          "what": "Wikidata item (Nuuk Center, inception 2012)"
+        }
+      ],
+      "notes": "Storeys, retail/office split, underground parking and architect are sourced; the facade finish, colours and height_m 38 (about 3.7 m per floor) are estimates. Podium footprint from OSM 85 x 78 m. The tallest thing in the skyline."
+    },
+    "nuuk-osm-way-253674855": {
+      "venueId": "nuuk-osm-way-253674855",
+      "city": "nuuk",
+      "name": "Kristi Konge",
+      "archetype": "church-modern",
+      "subject": "Kristi Konge (Christ the King), the small Catholic church: a plain gabled hall with a modest tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e3d8",
+          "#7a2a24",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/253674855",
+          "what": "OSM footprint 28.8 x 19.4 m, area 364 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q23713705",
+          "what": "Wikidata item (Christ the King Parish, Nuuk)"
+        }
+      ],
+      "notes": "OSM building=church, Catholic, 29 x 19 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-way-253675197": {
+      "venueId": "nuuk-osm-way-253675197",
+      "city": "nuuk",
+      "name": "Nuuk Art Museum",
+      "archetype": "museum-theatre",
+      "subject": "Nuuk Art Museum, a former Seventh-day Adventist church building with a modern exhibition extension",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e3d8",
+          "#2f5f8f",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "chapel; museum 2005, opened 2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nuuk_Art_Museum",
+          "what": "museum occupies a former Seventh-day Adventist church building; founded 22 May 2005 (Svend and Helene Junge donation); opened 21 June 2007; about 600 m2 with an extension for changing exhibitions"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/253675197",
+          "what": "OSM footprint 35.9 x 18 m, area 439 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3305271",
+          "what": "Wikidata item (Nuuk Art Museum, inception 2005)"
+        }
+      ],
+      "notes": "Former-church origin, dates and area are sourced; materials and colours are not described anywhere retrievable and are estimated from the town vernacular. OSM footprint 36 x 18 m includes the extension."
+    },
+    "nuuk-osm-way-255823944": {
+      "venueId": "nuuk-osm-way-255823944",
+      "city": "nuuk",
+      "name": "Church of Our Saviour",
+      "archetype": "church-classical",
+      "subject": "the Church of Our Saviour (Nuuk Cathedral), 1849: a small red timber church with white-framed windows and a 1928 wooden tower with clock and spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a8322a",
+          "#f3efe4",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "wooden tower added 1928"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tower clock"
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "1849, tower 1928",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nuuk_Cathedral",
+          "what": "built 1848-49, consecrated 6 April 1849; timber building clad externally in red wood panels; interior wood panels painted white; wooden tower erected 1928 with spire; tower clock mechanism digitised 2008"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1355805",
+          "what": "Wikidata item (Annaassisitta Oqaluffia / Church of Our Saviour)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/255823944",
+          "what": "OSM footprint 24.3 x 11.4 m, area 277 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1355805",
+          "what": "Wikidata item (Nuuk Cathedral, inception 1849)"
+        }
+      ],
+      "notes": "Red timber, 1849, 1928 tower with clock and spire are sourced. Trim colour, roof material and window shape are estimates. OSM outline 24 x 11 m. The red church with white tower is the most recognisable image of old Nuuk."
+    },
+    "nuuk-osm-way-255823949": {
+      "venueId": "nuuk-osm-way-255823949",
+      "city": "nuuk",
+      "name": "Aqqaluk Plads",
+      "archetype": "park-landscape",
+      "subject": "Aqqaluk Plads, an open paved square with rock outcrops and sparse planting in the town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bfbbaf",
+          "#8a8a84",
+          "#a8a8a0"
+        ],
+        "roofColour": "#8a8a84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "small sculpture (assumed)"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/255823949",
+          "what": "OSM footprint 157.8 x 90.5 m, area 9126 m2 (measured)"
+        }
+      ],
+      "notes": "OSM leisure=park 158 x 91 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-way-257366787": {
+      "venueId": "nuuk-osm-way-257366787",
+      "city": "nuuk",
+      "name": "Nasiffik",
+      "archetype": "restaurant",
+      "subject": "Nasiffik, a small timber-clad restaurant with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#2f5f8f",
+          "#e8e3d8",
+          "#3a3d42"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/257366787",
+          "what": "OSM footprint 18.6 x 16.3 m, area 223 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building (restaurant) 19 x 16 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-osm-way-410015972": {
+      "venueId": "nuuk-osm-way-410015972",
+      "city": "nuuk",
+      "name": "Ilinniarfissuaq",
+      "archetype": "campus-block",
+      "subject": "Ilinniarfissuaq, the teacher-training college: a two-storey school block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9cfa8",
+          "#2f5f8f",
+          "#bfbbaf"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/253988875",
+          "what": "OSM footprint 66.1 x 31.5 m, area 1331 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building (amenity=university) 66 x 32 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-quiet-reflection": {
+      "venueId": "nuuk-quiet-reflection",
+      "city": "nuuk",
+      "name": "Hans Egedes Kirke",
+      "archetype": "church-modern",
+      "subject": "Hans Egedes Kirke (1971, architect Ole Nielsen): a modern wooden Lutheran church with a steep roof, built for the 250th anniversary of Egede's mission",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "modern-wooden"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#d9d2c0",
+          "#6b5a48",
+          "#f3efe4"
+        ],
+        "roofColour": "#3a3d42",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "freestanding or integrated tower (unverified)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hans_Egede_Church",
+          "what": "wooden structure consecrated on the 250-year anniversary of Egede's mission; 10-stop Frobenius organ 1971"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/255788841",
+          "what": "OSM footprint 46.7 x 19.9 m, area 736 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3056467",
+          "what": "Wikidata item (Hans Egede Church)"
+        }
+      ],
+      "notes": "Wooden structure, 1971, architect Ole Nielsen (from OSM tags) are sourced; no source describes shape, colour or tower, so those are estimates. OSM outline 47 x 20 m."
+    },
+    "nuuk-recreation": {
+      "venueId": "nuuk-recreation",
+      "city": "nuuk",
+      "name": "Mitsimmavik",
+      "archetype": "park-landscape",
+      "subject": "Mitsimmavik, a narrow strip of rocky coastal recreation ground with a path and picnic area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a8a84",
+          "#6f6f68",
+          "#a8a8a0"
+        ],
+        "roofColour": "#6f6f68",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1276583869",
+          "what": "OSM footprint 101.1 x 36.3 m, area 1781 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park 101 x 36 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nuuk-transit": {
+      "venueId": "nuuk-transit",
+      "city": "nuuk",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "a city bus stop (game venue): a small glazed shelter beside the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#9aa0a4",
+          "#2f5f8f",
+          "#bfbbaf"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "\"(game venue)\" placeholder: no real place. The OSM match returned the Sermersooq town hall, which is ignored. Typed from the city style."
+    }
+  }
+}

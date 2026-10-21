@@ -1,0 +1,272 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/11310924",
+   "used": "ground outline (about 150 x 215 m oval, pitch long axis north-south), stadium match by name"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one covered concrete stand, perimeter wall, four floodlight masts; no photo of this ground was found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 140,
+    "width": 80
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "params": {
+    "start": [
+     -52,
+     40
+    ],
+    "end": [
+     -52,
+     -40
+    ],
+    "rows": 12,
+    "rise": 0.45,
+    "run": 0.85,
+    "seatColours": [
+     "#b8b4aa",
+     "#8f8c84"
+    ],
+    "concreteColour": "#b8b4aa",
+    "underColour": "#8f8c84",
+    "backWall": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stand-roof",
+   "params": {
+    "points": [
+     [
+      -72,
+      -43
+     ],
+     [
+      -48,
+      -43
+     ],
+     [
+      -48,
+      43
+     ],
+     [
+      -72,
+      43
+     ]
+    ],
+    "z0": 9,
+    "height": 0.8,
+    "colour": "#7f8587"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "perimeter",
+   "params": {
+    "length": 20,
+    "height": 3,
+    "thickness": 0.35,
+    "colour": "#d8d2c4",
+    "points": [
+     [
+      59.5,
+      0.0
+     ],
+     [
+      56.6,
+      24.1
+     ],
+     [
+      48.1,
+      45.8
+     ],
+     [
+      35.0,
+      63.1
+     ],
+     [
+      18.4,
+      74.2
+     ],
+     [
+      0.0,
+      78.0
+     ],
+     [
+      -18.4,
+      74.2
+     ],
+     [
+      -35.0,
+      63.1
+     ],
+     [
+      -48.1,
+      45.8
+     ],
+     [
+      -56.6,
+      24.1
+     ],
+     [
+      -59.5,
+      0.0
+     ],
+     [
+      -56.6,
+      -24.1
+     ],
+     [
+      -48.1,
+      -45.8
+     ],
+     [
+      -35.0,
+      -63.1
+     ],
+     [
+      -18.4,
+      -74.2
+     ],
+     [
+      -0.0,
+      -78.0
+     ],
+     [
+      18.4,
+      -74.2
+     ],
+     [
+      35.0,
+      -63.1
+     ],
+     [
+      48.1,
+      -45.8
+     ],
+     [
+      56.6,
+      -24.1
+     ],
+     [
+      59.5,
+      0.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -45,
+    -68,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    45,
+    -68,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -45,
+    68,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    45,
+    68,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -80,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -85,
+     -95
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     85,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-abebe-bikila-stadium",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo exists; stand, wall and masts are typical for the ground; outline shrunk from 215 m to fit the 170 m limit."
+ }
+}

@@ -1,0 +1,205 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lokoja.json",
+   "used": "program, colours, features; no photo of this place found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 108,
+    "width": 66
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 70,
+    "radiusY": 58,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.9,
+    "facetDeg": 12,
+    "seatColours": [
+     "#4a6b4a",
+     "#e8e3d4"
+    ],
+    "concreteColour": "#b9b5a8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -66,
+    6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 12,
+    "height": 9,
+    "columns": 6,
+    "colour": "#4a6b4a",
+    "edgeColour": "#e8e3d4"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72.0,
+    -55.800000000000004,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72.0,
+    -55.800000000000004,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -72.0,
+    55.800000000000004,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    72.0,
+    55.800000000000004,
+    0
+   ],
+   "params": {
+    "height": 34
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    62,
+    6
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -80,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "colour": "#4a6b4a",
+    "board_colour": "#e8e3d4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -80,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -84,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.2,
+    "colour": "#b9b5a8",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -100,
+     -40
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     100,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; OSM match is a 20 m shed 30 m away so unused; bowl and stand typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lokoja",
+ "venueId": "lokoja-international-stadium"
+}

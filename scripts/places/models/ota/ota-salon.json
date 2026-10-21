@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "ota-salon",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ota.json#ota-salon",
+   "used": "8 x 6 m two-bay painted shop, shed corrugated roof, awning, blank board, mural wall, laterite roadside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/790899455",
+   "used": "not used: 29 x 10 m nearest-match block, far larger than the 8 x 6 m shop"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.25
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this shop exists; colours and layout come from the brief."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9db9c9",
+    "windows": "none",
+    "plinth": 0.3,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa3a8",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -2,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 2.8,
+    "kind": "glass",
+    "colour": "#f2eee6",
+    "sign_colour": "#b0603f",
+    "sign_height": 0.7
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    2,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 2.8,
+    "kind": "shutter",
+    "colour": "#f2eee6",
+    "sign_colour": "#b0603f",
+    "sign_height": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3.1,
+    0
+   ],
+   "params": {
+    "width": 7.2,
+    "depth": 1.5,
+    "height": 2.8,
+    "colours": [
+     "#b0603f",
+     "#f2eee6"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural-wall",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.6
+    ]
+   },
+   "at": [
+    4.25,
+    0
+   ],
+   "height": 3.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0603f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.5,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 1.0,
+    "bottom": 1.6,
+    "colour": "#b0603f",
+    "frameColour": "#f2eee6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     7,
+     -3
+    ]
+   }
+  ],
+  "extent": [
+   26,
+   22
+  ]
+ }
+}

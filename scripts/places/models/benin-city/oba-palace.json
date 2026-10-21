@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "oba-palace",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Royal_Palace_of_the_Oba_of_Benin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kelechukwu Ajoku",
+   "view": "front",
+   "used": "cream rendered two-storey block with hip roof of terracotta tiles, gabled portico on white columns, gable-fronted left wing with moulded cornice, red window frames, paved forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oba_of_Benin_Palace,_Benin,_Edo_state.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MediaMOF",
+   "view": "detail",
+   "used": "white arched gateway with grooved horizontal wall bands and stacked-drum pillar (the royal relief banding)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1458702258",
+   "used": "not used: nearest match only (18.7 m), 18x15 m fragment"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    11,
+    6
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5d2",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "bay": 4.5,
+    "cornice": 0.5,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "right": "punched",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#d8cdb8"
+     }
+    ],
+    "glassColour": "#3a8f9c",
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5573d",
+    "material": "clay-tile",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    -8,
+    -1
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d6",
+    "windows": "none",
+    "cornice": 0.4,
+    "plinth": 0.3,
+    "faces": {
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5573d",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-lintel",
+   "footprint": {
+    "rect": [
+     11.2,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    -8.7
+   ],
+   "z0": 3.4,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8322a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8322a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-gable",
+   "footprint": {
+    "rect": [
+     9,
+     2
+    ]
+   },
+   "at": [
+    13,
+    -1.8
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ede0",
+    "windows": "none",
+    "cornice": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5573d",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    17,
+    -1.2,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 4.8,
+    "height": 7.6,
+    "columns": 4,
+    "pediment": true,
+    "steps": 2,
+    "colour": "#f4efe4",
+    "roofColour": "#b5573d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "return-col--1.5",
+   "at": [
+    21.8,
+    -2.8,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "height": 7.6,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "return-col--5.5",
+   "at": [
+    21.8,
+    -5.4,
+    0
+   ],
+   "params": {
+    "radius": 0.45,
+    "n": 10,
+    "height": 7.6,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -8,
+    -8.4,
+    0
+   ],
+   "params": {
+    "width": 7.5,
+    "height": 2.8,
+    "pillar": 1.1,
+    "arch": false,
+    "colour": "#b9a58a",
+    "leaf": "bars",
+    "leafColour": "#f3f3f0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -8.4,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 2.4,
+    "colour": "#e8dfcb",
+    "kind": "wall"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     14
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portico is a 4-column straight front rather than a corner entrance with side return (return columns hidden); portico columns/crest/round louvre window and coat-of-arms medallions omitted; red window frames not achievable (frames follow trim colour); gate is a plain bar leaf not ornamental steel; mast and neighbour omitted; paving is flat sand not interlocking pavers."
+ }
+}

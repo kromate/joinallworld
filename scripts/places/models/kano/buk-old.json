@@ -1,0 +1,316 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Science_library_bayero_University_Kano.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abike25",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/buko1.jpg",
+   "used": "Sciences Library: cream concrete block, open recessed ground floor with a deep boxed entrance porch and blank sign band, upper storeys with tall projecting vertical fins framing tan/pink panels"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bayero_University_Kano_old_campus_entrance_gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abike25",
+   "view": "street",
+   "used": "old campus gate: cream wall with two pointed arches (night photo, shape only)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/291923762",
+   "used": "none (campus-wide outline, 800k m2); a single teaching block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     38,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b08f",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3,
+    "groundKind": "pilotis",
+    "groundHeight": 5.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -33,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "gate",
+   "id": "old-gate",
+   "at": [
+    -38,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 7,
+    "colour": "#e8dfc8",
+    "arch": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#dcd2bc"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-dark",
+   "at": [
+    0,
+    -10.05
+   ],
+   "params": {
+    "rect": [
+     38,
+     0.3
+    ],
+    "z0": 0,
+    "height": 5.2,
+    "colour": "#3a332d",
+    "topColour": "#3a332d"
+   }
+  },
+  {
+   "type": "array",
+   "id": "fins",
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     -10.7,
+     5.2
+    ],
+    "end": [
+     17,
+     -10.7,
+     5.2
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       1.1
+      ],
+      "z0": 0,
+      "height": 10.3,
+      "colour": "#e6dcc6",
+      "topColour": "#e6dcc6"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab",
+   "at": [
+    0,
+    -10.6
+   ],
+   "params": {
+    "rect": [
+     38.6,
+     1.4
+    ],
+    "z0": 5.0,
+    "height": 0.5,
+    "colour": "#e6dcc6",
+    "topColour": "#e6dcc6"
+   }
+  },
+  {
+   "type": "array",
+   "id": "slots",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.4,
+     -10.2,
+     7
+    ],
+    "end": [
+     15.4,
+     -10.2,
+     7
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.3
+      ],
+      "z0": 0,
+      "height": 7.5,
+      "colour": "#2b2622",
+      "topColour": "#2b2622"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "at": [
+    0,
+    -13.5
+   ],
+   "params": {
+    "rect": [
+     13,
+     6
+    ],
+    "z0": 0,
+    "height": 5.8,
+    "colour": "#e4dccb",
+    "topColour": "#e4dccb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch-recess",
+   "at": [
+    0,
+    -16.55
+   ],
+   "params": {
+    "rect": [
+     9.6,
+     0.3
+    ],
+    "z0": 0,
+    "height": 4.4,
+    "colour": "#2e2824",
+    "topColour": "#2e2824"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "lib-sign",
+   "at": [
+    0,
+    -16.6,
+    4.6
+   ],
+   "params": {
+    "width": 8,
+    "height": 0.8,
+    "colour": "#f2efe6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   100,
+   56
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "buk-old",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Library block with tall fins, dark recessed ground floor and cream porch box; porch depth hard to read from the wide camera; foliage, dish and fixture details omitted; side gate and annex kept small."
+ }
+}

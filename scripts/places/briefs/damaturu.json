@@ -1,0 +1,885 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "damaturu",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "damaturu",
+    "climate": "sahel",
+    "vernacular": "Young Sahelian capital (Yobe State capital since 1991) in the Kanuri-speaking north-east: low sprawl of sand-coloured painted-render and red-brick housing estates, older mud-render compounds with thick walls, concrete government blocks along wide roads, rust and grey corrugated roofs, flat dusty plain with neem and acacia, hot (14-40 C) with a long dry season.",
+    "wallColours": [
+      "#cdb68e",
+      "#f2efe6",
+      "#9c5b3f",
+      "#b98e66",
+      "#a8a39a",
+      "#d8c19a"
+    ],
+    "roofColours": [
+      "#8a4a32",
+      "#8d9296",
+      "#3f6b4e",
+      "#a98a63"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "mud-render",
+      "concrete",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Functional modern government blocks with adapted Sahelian motifs: pointed and scalloped arches and arcades on mosques, relief bands on gates, brick-faced estate housing; Kanuri mud-compound parapets in older quarters. Palette values are typical regional choices, not sampled from photographs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Damaturu",
+        "what": "climate 14-40 C, April hottest; mosque, Ibrahim Gaidam Ultra-Modern Market, Yobe State University, Federal Polytechnic"
+      },
+      {
+        "url": "https://kupi.com/en-ae/explore/nigeria/damaturu/history",
+        "what": "development after 1991 as Yobe capital; functional modern architecture with adapted Sahel motifs (low-authority source)"
+      },
+      {
+        "url": "https://guardian.ng/?p=1114860",
+        "what": "pre-colonial northern Nigerian architecture: mud walls, wooden beams, earth/thatch roofs"
+      },
+      {
+        "url": "https://leadership.ng/buni-approves-temporary-campus-for-mai-mala-college/",
+        "what": "Red Bricks Housing Estate: seven-block brick complex rehabilitated after damage"
+      }
+    ]
+  },
+  "places": {
+    "august-27-stadium": {
+      "venueId": "august-27-stadium",
+      "city": "damaturu",
+      "name": "August 27 stadium",
+      "archetype": "stadium",
+      "subject": "a regional football stadium with a covered main stand, low terraces and floodlight masts, probably the Damaturu township stadium",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b4aa",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ca.soccerway.com/team/yobe-stars/Or09eFR5",
+          "what": "Damaturu Township Stadium lists capacity 6,000 (unconfirmed to be the same venue)"
+        }
+      ],
+      "notes": "No source for August 27 stadium itself; may be the township stadium (6,000). Typed medium-size stand; keep low."
+    },
+    "bayan-tasha-market": {
+      "venueId": "bayan-tasha-market",
+      "city": "damaturu",
+      "name": "Bayan Tasha market",
+      "archetype": "market-open",
+      "subject": "a roadside market at the bus-stop (tasha) with rows of lock-up stalls and tin awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c3b4",
+          "#8a4a32",
+          "#cdb68e"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 35
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found (Bayan Tasha means behind the bus stop). Typed informal market with rust sheds."
+    },
+    "damaturu-central-mosque": {
+      "venueId": "damaturu-central-mosque",
+      "city": "damaturu",
+      "name": "Damaturu Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "the Damaturu Central Mosque (early 1990s): a wide prayer hall with arches, one big central dome and two tall minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f2efe6",
+          "#3f8f9a",
+          "#cdb68e"
+        ],
+        "roofColour": "#f2efe6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "one big central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "two tall towers, about 35 m"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "wide arched prayer hall front"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "tiled interior and calligraphy bands"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "early 1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Damaturu_Central_Mosque",
+          "what": "one big dome in the middle, two tall towers, wide prayer hall with arches, tiled floors and walls with Arabic writing, 3,000+ worshippers, built after 1991"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Damaturu",
+          "what": "home to the Damaturu Central Mosque"
+        }
+      ],
+      "notes": "One dome, two minarets and arches are sourced. Colours and exact sizes are typed (white with blue-green tiling), not described."
+    },
+    "damaturu-modern-market": {
+      "venueId": "damaturu-modern-market",
+      "city": "damaturu",
+      "name": "DAMATURU MODERN MARKET",
+      "archetype": "market-hall",
+      "subject": "the Ibrahim Gaidam Ultra-Modern Market: ranks of identical lock-up shops in long covered blocks around a paved yard, with gate houses, mosque and an administration building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#3f6b4e",
+          "#a8a39a"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered shop-front verandas"
+        },
+        {
+          "id": "gate",
+          "count": 2,
+          "note": "entrance gate houses"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "market mosque"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://blueprint.ng/damaturu-modern-market-ll-boost-economy-attract-investors-mohammed/",
+          "what": "500 shops, abattoir, administrative building, fencing, exit gates and gate houses, parking, mosques, roads, drainage, fire service and police posts"
+        },
+        {
+          "url": "https://dailytrust.com/yobe-builds-9-markets-to-boost-business-igr/",
+          "what": "Damaturu, Gashua and Nguru markets with 505 shops each; open shops, lock-up shops, restaurants, banking halls, warehouses, clinic"
+        }
+      ],
+      "notes": "Facilities and shop count are sourced; the planned layout appearance is not. Modelled as the recognisable portion: a shop block with gate houses. Name varies (Ibrahim Gaidam / Sheikh Muhammad Ngibirima)."
+    },
+    "federal-polytechnic-damaturu": {
+      "venueId": "federal-polytechnic-damaturu",
+      "city": "damaturu",
+      "name": "Federal Polytechnic Damaturu",
+      "archetype": "campus-block",
+      "subject": "a polytechnic teaching block: a long two-storey brick-and-render wing with a covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f2efe6",
+          "#9c5b3f",
+          "#a8a39a"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fedpodam.edu.ng/about",
+          "what": "institution profile; no building description"
+        }
+      ],
+      "notes": "No description found; typed with red-brick accents from the local estate pattern."
+    },
+    "general-sani-abacha-specialist-hospital": {
+      "venueId": "general-sani-abacha-specialist-hospital",
+      "city": "damaturu",
+      "name": "General Sani Abacha State Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "the state specialist hospital: a 2-3 storey main block with a long entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#3f8f9a",
+          "#cdb68e"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed state specialist hospital."
+    },
+    "national-museum-damaturu": {
+      "venueId": "national-museum-damaturu",
+      "city": "damaturu",
+      "name": "National Museum, Damaturu",
+      "archetype": "museum-theatre",
+      "subject": "a small National Commission for Museums and Monuments regional museum: a single-storey exhibition hall with an arched entrance and a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#9c5b3f",
+          "#cdb68e"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched entrance porch"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "cultural motif panel"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "hausa-arewa",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.finelib.com/listing/National-Museum-Damaturu/65641",
+          "what": "located behind the Cultural Centre, Maiduguri Road, opposite Ben Kadio Housing Estate"
+        }
+      ],
+      "notes": "Location and operator known; the building is not described. Typed small regional museum."
+    },
+    "st-marys-catholic-church-damaturu": {
+      "venueId": "st-marys-catholic-church-damaturu",
+      "city": "damaturu",
+      "name": "St. Mary's Catholic Church",
+      "archetype": "church-modern",
+      "subject": "a Catholic parish church: a broad gabled nave with a tall front cross tower, set inside a high perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f2efe6",
+          "#9c5b3f",
+          "#8d9296"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high security wall"
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed church compound with security wall, which is common in the region."
+    },
+    "state-teaching-hospital-damaturu": {
+      "venueId": "state-teaching-hospital-damaturu",
+      "city": "damaturu",
+      "name": "State Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "a state teaching hospital campus: a large multi-storey block with a glazed entrance bay and a helipad-free forecourt",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#2f6b4f",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed larger and newer than the Specialist Hospital."
+    },
+    "yobe-islamic-centre": {
+      "venueId": "yobe-islamic-centre",
+      "city": "damaturu",
+      "name": "Yobe Islamic Centre",
+      "archetype": "shrine-small",
+      "subject": "an Islamic centre beside the Central Mosque: a prayer and teaching hall with a small dome, arcade and walled courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f2efe6",
+          "#cdb68e",
+          "#3f6b4e"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small dome"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single short minaret about 16 m"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Pin sits within metres of the Central Mosque, so it is probably the same religious complex; no description found. Typed as a lower complex that sits beside the large mosque."
+    },
+    "yobe-line-motor-park": {
+      "venueId": "yobe-line-motor-park",
+      "city": "damaturu",
+      "name": "Yobe Line Motor Park",
+      "archetype": "transport-station",
+      "subject": "the Yobe Line intercity bus park with a covered loading shed, ticket kiosks and a line of buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8a39a",
+          "#cdb68e",
+          "#f2efe6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed intercity motor park."
+    },
+    "yobe-state-house-of-assembly": {
+      "venueId": "yobe-state-house-of-assembly",
+      "city": "damaturu",
+      "name": "Yobe State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "the state legislature complex: a two-storey chamber block with a central dome and columned entrance behind a gated lawn",
+      "form": {
+        "footprint": "T",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#b9a98a",
+          "#8d9296"
+        ],
+        "roofColour": "#6a7075",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small chamber dome"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "neoclassical",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yobe_State_House_of_Assembly",
+          "what": "unicameral, 24 members, seat in Damaturu; building not described"
+        }
+      ],
+      "notes": "Existence and role sourced; design typed from Nigerian state assemblies. Guess only."
+    },
+    "yobe-state-university": {
+      "venueId": "yobe-state-university",
+      "city": "damaturu",
+      "name": "Yobe State University",
+      "archetype": "campus-block",
+      "subject": "a lecture block of the state university at KM 7 Gujba Road: two storeys of red-brick and render with a central entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#9c5b3f",
+          "#f2efe6",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ysu.edu.ng/ysu/?p=378",
+          "what": "founded 2006 as Bukar Abba Ibrahim University, KM 7 Gujba Road Damaturu, 25-year master plan"
+        }
+      ],
+      "notes": "Founding and address sourced; the buildings are not described. Typed new-campus block; the venue pin is well south of the city."
+    }
+  }
+}

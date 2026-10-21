@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/732320573",
+   "used": "37x6 m roof (building=roof) 1.8 m from the station point: modelled as the platform shelter; yard and buses from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "canopy",
+   "id": "shelter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 37,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 8,
+    "colour": "#8a8f93",
+    "edgeColour": "#a8503a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    -26,
+    4
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8503a",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    24,
+    10
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b6",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "pitch": 6
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "buses",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "mixed",
+    "density": 0.8,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "id": "buses2",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "coach",
+    "density": 0.6,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: only the shelter roof is real; bays, kiosks and yard are typical Asmara bus-station layout."
+ }
+}

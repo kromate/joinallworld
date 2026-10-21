@@ -1,0 +1,503 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-609620228",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MOGADISHU_STADIUM_(6136745150).jpg",
+   "licence": "CC0",
+   "author": "AMISOM Public Information",
+   "view": "interior",
+   "file": "/tmp/places-evidence/mogadishu/mgE-stad1.jpg",
+   "used": "open oval bowl, no roof, continuous stepped concrete stands, lattice floodlight masts at the rim, dirt running track round the pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mogadishu_stadium_25_September_2022.jpg",
+   "licence": "CC0",
+   "author": "Atmis Somalia",
+   "view": "interior",
+   "file": "/tmp/places-evidence/mogadishu/mgE-stad2.jpg",
+   "used": "renovated stands: pale teal and white seat blocks with blue railings, pink top parapet, green AstroTurf"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8464541",
+   "used": "oval bowl proportions (about 164 x 234 m), scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only interior photos exist so the outer wall is a plain low drum; masts are generic lattice with simple heads; dirt pitch tufts and ragged stand gaps/vomitories not modelled; scaled to the scene clamp."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      43.68,
+      0.0
+     ],
+     [
+      42.19,
+      15.75
+     ],
+     [
+      37.83,
+      30.42
+     ],
+     [
+      30.89,
+      43.02
+     ],
+     [
+      21.84,
+      52.69
+     ],
+     [
+      11.31,
+      58.77
+     ],
+     [
+      0.0,
+      60.84
+     ],
+     [
+      -11.31,
+      58.77
+     ],
+     [
+      -21.84,
+      52.69
+     ],
+     [
+      -30.89,
+      43.02
+     ],
+     [
+      -37.83,
+      30.42
+     ],
+     [
+      -42.19,
+      15.75
+     ],
+     [
+      -43.68,
+      0.0
+     ],
+     [
+      -42.19,
+      -15.75
+     ],
+     [
+      -37.83,
+      -30.42
+     ],
+     [
+      -30.89,
+      -43.02
+     ],
+     [
+      -21.84,
+      -52.69
+     ],
+     [
+      -11.31,
+      -58.77
+     ],
+     [
+      -0.0,
+      -60.84
+     ],
+     [
+      11.31,
+      -58.77
+     ],
+     [
+      21.84,
+      -52.69
+     ],
+     [
+      30.89,
+      -43.02
+     ],
+     [
+      37.83,
+      -30.42
+     ],
+     [
+      42.19,
+      -15.75
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#bda57c",
+    "topColour": "#bda57c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "track",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      30.030000000000005,
+      0.0
+     ],
+     [
+      29.007000000000005,
+      12.881000000000002
+     ],
+     [
+      26.004,
+      24.882
+     ],
+     [
+      21.230000000000004,
+      35.189
+     ],
+     [
+      15.015000000000002,
+      43.098000000000006
+     ],
+     [
+      7.777000000000001,
+      48.07000000000001
+     ],
+     [
+      0.0,
+      49.764
+     ],
+     [
+      -7.777000000000001,
+      48.07000000000001
+     ],
+     [
+      -15.015000000000002,
+      43.098000000000006
+     ],
+     [
+      -21.230000000000004,
+      35.189
+     ],
+     [
+      -26.004,
+      24.882
+     ],
+     [
+      -29.007000000000005,
+      12.881000000000002
+     ],
+     [
+      -30.030000000000005,
+      0.0
+     ],
+     [
+      -29.007000000000005,
+      -12.881000000000002
+     ],
+     [
+      -26.004,
+      -24.882
+     ],
+     [
+      -21.230000000000004,
+      -35.189
+     ],
+     [
+      -15.015000000000002,
+      -43.098000000000006
+     ],
+     [
+      -7.777000000000001,
+      -48.07000000000001
+     ],
+     [
+      -0.0,
+      -49.764
+     ],
+     [
+      7.777000000000001,
+      -48.07000000000001
+     ],
+     [
+      15.015000000000002,
+      -43.098000000000006
+     ],
+     [
+      21.230000000000004,
+      -35.189
+     ],
+     [
+      26.004,
+      -24.882
+     ],
+     [
+      29.007000000000005,
+      -12.881000000000002
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#d8c29a",
+    "topColour": "#d8c29a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "at": [
+    0,
+    0,
+    0.16
+   ],
+   "params": {
+    "points": [
+     [
+      22.62,
+      0.0
+     ],
+     [
+      21.85,
+      10.09
+     ],
+     [
+      19.59,
+      19.5
+     ],
+     [
+      15.99,
+      27.58
+     ],
+     [
+      11.31,
+      33.77
+     ],
+     [
+      5.85,
+      37.67
+     ],
+     [
+      0.0,
+      39.0
+     ],
+     [
+      -5.85,
+      37.67
+     ],
+     [
+      -11.31,
+      33.77
+     ],
+     [
+      -15.99,
+      27.58
+     ],
+     [
+      -19.59,
+      19.5
+     ],
+     [
+      -21.85,
+      10.09
+     ],
+     [
+      -22.62,
+      0.0
+     ],
+     [
+      -21.85,
+      -10.09
+     ],
+     [
+      -19.59,
+      -19.5
+     ],
+     [
+      -15.99,
+      -27.58
+     ],
+     [
+      -11.31,
+      -33.77
+     ],
+     [
+      -5.85,
+      -37.67
+     ],
+     [
+      -0.0,
+      -39.0
+     ],
+     [
+      5.85,
+      -37.67
+     ],
+     [
+      11.31,
+      -33.77
+     ],
+     [
+      15.99,
+      -27.58
+     ],
+     [
+      19.59,
+      -19.5
+     ],
+     [
+      21.85,
+      -10.09
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#b99a6b",
+    "topColour": "#b99a6b"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 30,
+    "radiusY": 47.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 15,
+    "rise": 0.7,
+    "run": 0.82,
+    "firstHeight": 2.5,
+    "facetDeg": 20,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 8,
+    "seatColours": [
+     "#8f8a7e",
+     "#9a9488",
+     "#857f74"
+    ],
+    "blocks": 5,
+    "concreteColour": "#8d887c",
+    "underColour": "#7f7a6f",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 42,
+    "radiusY": 62,
+    "startDeg": 30,
+    "endDeg": 390,
+    "count": 6,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "floodlight-mast",
+      "params": {
+       "height": 38,
+       "head_width": 3.2,
+       "colour": "#7d838a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 47,
+    "radiusY": 66,
+    "startDeg": 10,
+    "endDeg": 350,
+    "count": 5,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "core/tree",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "kind": "palm",
+       "height": 8
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   120,
+   150
+  ]
+ }
+}

@@ -1,0 +1,1666 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "phnom-penh",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "phnom-penh",
+    "climate": "savanna",
+    "vernacular": "Dense low-rise Khmer city: two to five storey tube-houses and French-colonial shophouses in cream, yellow and faded pastel render with louvred shutters and street-front balconies; 1960s New Khmer Architecture in raw and whitewashed concrete with deep eaves and brise-soleil; concrete block-and-render ministries and schools in yellow-cream with red-orange tile or corrugated metal roofs; Buddhist wats with white walls and tiered orange, green and gold roofs; glass towers and malls in the newer districts.",
+    "wallColours": [
+      "#e4c46a",
+      "#e8dcc0",
+      "#efece4",
+      "#b5b0a5",
+      "#7fa3b5",
+      "#c9a24a",
+      "#8f8a7e"
+    ],
+    "roofColours": [
+      "#b5532f",
+      "#8a8f93",
+      "#c8531f",
+      "#6f7f78"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "stucco",
+      "concrete",
+      "exposed-concrete",
+      "whitewash",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "French-colonial yellow ochre render with white trim, louvred shutters and arched ground-floor arcades (Central Market, railway station); Art Deco geometry in 1930s public buildings; New Khmer concrete screens, stilts and water moats (Vann Molyvann); wat roofs in tiers with orange and green glazed tile and naga-serpent or chofa gable finials; stupas and gilded spires.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Central_Market,_Phnom_Penh",
+        "what": "Art Deco yellow reinforced-concrete market, 1937, Jean Desbois, central dome 26 m, four arched wings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Vann_Molyvann",
+        "what": "New Khmer Architecture: climatic design, stilts, water moats, Olympic Stadium and Royal University of Phnom Penh"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Cambodia",
+        "what": "Khmer gable roofs, masonry/brick urban housing, Hindu-Buddhist ornament motifs"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Phnom_Penh_railway_station",
+        "what": "1932 reinforced-concrete French colonial station, renovated 2010"
+      }
+    ]
+  },
+  "places": {
+    "phnom-penh-airport-phnom-penh-airport": {
+      "venueId": "phnom-penh-airport-phnom-penh-airport",
+      "city": "phnom-penh",
+      "name": "Techo International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Techo International Airport (opened 2025, Foster + Partners): the long central head house with its sweeping pale roof and glazed front, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 480,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e6df",
+          "#7a9a7c",
+          "#bfc5c8"
+        ],
+        "roofColour": "#dfe3e4",
+        "windows": "curtain",
+        "windowRatio": 0.6,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "long sweeping roof"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "roof/site solar farm"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Phnom_Penh_Techo_International_Airport",
+          "what": "Foster and Partners design: central head house with an aerofoil-shaped pier each side, daylight, vertical gardens, solar farm; separate control tower"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q106616277",
+          "what": "OSM terminal footprint about 809 x 533 m is the whole planned complex"
+        }
+      ],
+      "notes": "Only the head house is shown. Facade and roof colours are inferred from the architect description and general photos, not read from a source; the OSM footprint is the full multi-pier plan, not the built portion."
+    },
+    "phnom-penh-clinic": {
+      "venueId": "phnom-penh-clinic",
+      "city": "phnom-penh",
+      "name": "Khmer-Soviet Friendship Hospital",
+      "archetype": "hospital",
+      "subject": "Khmer-Soviet Friendship Hospital: main block of the 1960 Soviet-aided hospital campus, a cream multi-storey ward block with ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 28,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc0",
+          "#b9ae92",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a9a94",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16893316",
+          "what": "opened 1960; OSM campus footprint about 385 x 370 m; formerly Preah Sihanouk Hospital (Wikipedia)"
+        }
+      ],
+      "notes": "Wikipedia gives only the opening year and management, no description of the buildings. Form is typed from the hospital type, Soviet-aided 1960 date and city style; campus is a spread of several blocks."
+    },
+    "phnom-penh-community-notices": {
+      "venueId": "phnom-penh-community-notices",
+      "city": "phnom-penh",
+      "name": "Ministry of Water Resource & Meteorology",
+      "archetype": "civic-palace",
+      "subject": "Ministry of Water Resources and Meteorology: a small multi-storey ministry office building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4c46a",
+          "#efece4",
+          "#b5532f"
+        ],
+        "roofColour": "#b5532f",
+        "windows": "punched",
+        "windowRatio": 0.25,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/222803000",
+          "what": "OSM building footprint about 27 x 20 m (from facts file)"
+        }
+      ],
+      "notes": "Only the OSM footprint is known. Form, colours and era typed from the Phnom Penh ministry style (yellow render, tile hip roof, flags); no source describes the building."
+    },
+    "phnom-penh-community-voting-game": {
+      "venueId": "phnom-penh-community-voting-game",
+      "city": "phnom-penh",
+      "name": "Svay Rolum Commune Hall",
+      "archetype": "civic-small",
+      "subject": "Svay Rolum Commune Hall: a two-storey commune office with a tiled roof and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#c9a24a",
+          "#efece4"
+        ],
+        "roofColour": "#b5532f",
+        "windows": "punched",
+        "windowRatio": 0.25,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/916803502",
+          "what": "OSM townhall footprint about 43 x 22 m (from facts file)"
+        }
+      ],
+      "notes": "No description found; typed from the commune-hall type and city style."
+    },
+    "phnom-penh-community-workshop": {
+      "venueId": "phnom-penh-community-workshop",
+      "city": "phnom-penh",
+      "name": "Royal University of Agriculture (RUA)",
+      "archetype": "campus-block",
+      "subject": "Royal University of Agriculture: a long low teaching block of the 1964 campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#b5b0a5",
+          "#efece4"
+        ],
+        "roofColour": "#b5532f",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7374951",
+          "what": "Royal University of Agriculture, founded 1964; OSM campus footprint about 1224 x 299 m"
+        }
+      ],
+      "notes": "Campus-scale footprint; the model shows one typical block. Appearance typed from 1960s Cambodian campus style."
+    },
+    "phnom-penh-market-game": {
+      "venueId": "phnom-penh-market-game",
+      "city": "phnom-penh",
+      "name": "Sorya Mall",
+      "archetype": "mall",
+      "subject": "Sorya Center Point: an eight-storey central-city shopping mall with a glass-and-render facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 86,
+        "depth_m": 64,
+        "storeys": 8,
+        "height_m": 36,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c4",
+          "#6f8fa8",
+          "#efece4"
+        ],
+        "roofColour": "#9a9a94",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sorya_Shopping_Center",
+          "what": "8 floors, about 180 stores, Western-styled mall, opened 2002-03, renovated 2017"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/372811616",
+          "what": "OSM retail footprint about 86 x 64 m"
+        }
+      ],
+      "notes": "Storeys and footprint are measured/sourced; facade materials and colours are inferred from the mall type."
+    },
+    "phnom-penh-meal-stop": {
+      "venueId": "phnom-penh-meal-stop",
+      "city": "phnom-penh",
+      "name": "ហាងកាហ្វេ",
+      "archetype": "restaurant",
+      "subject": "a small street-front cafe in a Phnom Penh shophouse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#7fa3b5",
+          "#efece4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "punched",
+        "windowRatio": 0.35,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1072758667",
+          "what": "OSM building footprint about 9 x 8 m"
+        }
+      ],
+      "notes": "Generic small cafe; nothing about its appearance is findable. Typed from the Phnom Penh shophouse style."
+    },
+    "phnom-penh-osm-node-11648298737": {
+      "venueId": "phnom-penh-osm-node-11648298737",
+      "city": "phnom-penh",
+      "name": "Coffee Plus",
+      "archetype": "restaurant",
+      "subject": "Coffee Plus: a small roadside coffee shop with a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#7fa3b5",
+          "#efece4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "louvre",
+        "windowRatio": 0.3,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No building data (OSM node only) and no description found; typed from the roadside-cafe type and city style."
+    },
+    "phnom-penh-osm-node-4531138920": {
+      "venueId": "phnom-penh-osm-node-4531138920",
+      "city": "phnom-penh",
+      "name": "American University of Phnom Penh",
+      "archetype": "campus-block",
+      "subject": "American University of Phnom Penh: a modern mid-rise campus building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c4",
+          "#6f8fa8",
+          "#efece4"
+        ],
+        "roofColour": "#9a9a94",
+        "windows": "ribbon",
+        "windowRatio": 0.45,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16827955",
+          "what": "private university founded 2013; OSM building footprint about 29.5 x 18.4 m"
+        }
+      ],
+      "notes": "Footprint measured, everything else typed from a modern university building in the city."
+    },
+    "phnom-penh-osm-node-5036806682": {
+      "venueId": "phnom-penh-osm-node-5036806682",
+      "city": "phnom-penh",
+      "name": "Sok Leng",
+      "archetype": "restaurant",
+      "subject": "Sok Leng: a small two-storey restaurant shophouse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4c46a",
+          "#b5532f",
+          "#efece4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1272711040",
+          "what": "OSM footprint about 26 x 10 m"
+        }
+      ],
+      "notes": "Nothing findable about the premises; typed from the city shophouse style."
+    },
+    "phnom-penh-osm-way-1116381668": {
+      "venueId": "phnom-penh-osm-way-1116381668",
+      "city": "phnom-penh",
+      "name": "Ounalom Pagoda",
+      "archetype": "temple-asian",
+      "subject": "Wat Ounalom: the three-storey ordination hall with tiered Khmer roofs, with the main Ounalom stupa beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "stepped",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f1e6c8",
+          "#c8531f",
+          "#efece4"
+        ],
+        "roofColour": "#c8531f",
+        "windows": "arched",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 3,
+          "note": "tiered Khmer gable roofs with naga finials"
+        },
+        {
+          "id": "stupa",
+          "count": 3,
+          "note": "white stupas in the compound"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wat_Ounalom",
+          "what": "44 buildings, five stupas (main Ounalom Stupa west of temple), three-storey ordination hall built 1957-1960"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3104564",
+          "what": "founded 1443; OSM compound about 171 x 152 m"
+        }
+      ],
+      "notes": "The stated facts (three-storey ordination hall 1957-60, five stupas) are sourced; roof and wall colours follow the usual Phnom Penh wat palette (cream walls, orange/green tiers), not a source for this temple."
+    },
+    "phnom-penh-osm-way-165927974": {
+      "venueId": "phnom-penh-osm-way-165927974",
+      "city": "phnom-penh",
+      "name": "Calmette Hospital",
+      "archetype": "hospital",
+      "subject": "Calmette Hospital: a mid-rise French-funded hospital block on Monivong Boulevard",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4c46a",
+          "#efece4",
+          "#b5532f"
+        ],
+        "roofColour": "#b5532f",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Calmette_Hospital",
+          "what": "built 1950 with French support, on Monivong Boulevard, 203-250 beds"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5023043",
+          "what": "OSM campus about 198 x 197 m"
+        }
+      ],
+      "notes": "Wikipedia gives no description of the buildings; form typed from a 1950s French-supported hospital and city style."
+    },
+    "phnom-penh-osm-way-171309638": {
+      "venueId": "phnom-penh-osm-way-171309638",
+      "city": "phnom-penh",
+      "name": "National Pediatric Hospital",
+      "archetype": "hospital",
+      "subject": "National Pediatric Hospital: a mid-rise hospital campus block",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efece4",
+          "#7fa3b5",
+          "#b5b0a5"
+        ],
+        "roofColour": "#9a9a94",
+        "windows": "ribbon",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6974852",
+          "what": "OSM campus about 236 x 201 m"
+        }
+      ],
+      "notes": "No description found; typed from the hospital type and city style."
+    },
+    "phnom-penh-osm-way-175005909": {
+      "venueId": "phnom-penh-osm-way-175005909",
+      "city": "phnom-penh",
+      "name": "Wat Phnom Pagoda",
+      "archetype": "temple-asian",
+      "subject": "Wat Phnom: the hilltop vihara and large stupa on the 27 m artificial hill reached by a grand stair",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 46,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#efece4",
+          "#c8531f",
+          "#c9a24a"
+        ],
+        "roofColour": "#c8531f",
+        "windows": "arched",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "27 m earthen hill"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "main stairway"
+        },
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "Ponhea Yat stupa"
+        },
+        {
+          "id": "pagoda-roof",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "shrine to Lady Penh at SW corner"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "southeast-asian",
+      "era": "1926 rebuild (founded 1373)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wat_Phnom",
+          "what": "temple on an artificial hill, total height 46 m, main stairway, stupa for King Ponhea Yat, sanctuary rebuilt 1926, Lady Penh shrine"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1818101",
+          "what": "founded 1373; OSM footprint about 72 x 45 m (hilltop)"
+        }
+      ],
+      "notes": "Height includes the hill. Recognisable silhouette: white sanctuary with orange tiered roof and a tall white stupa on a green mound, with a wide stair. Roof colours inferred from photos known generally; the cited page does not state them."
+    },
+    "phnom-penh-osm-way-182972997": {
+      "venueId": "phnom-penh-osm-way-182972997",
+      "city": "phnom-penh",
+      "name": "Choeung Ek Genocidal Center",
+      "archetype": "monument",
+      "subject": "Choeung Ek Genocidal Center: the memorial stupa, a tiered Khmer-style glass-sided tower full of skulls, set in the former orchard",
+      "form": {
+        "footprint": "round",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e9e3d3",
+          "#c9a24a",
+          "#c8531f"
+        ],
+        "roofColour": "#c8531f",
+        "windows": "screen",
+        "windowRatio": 0.7,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "17-tier Buddhist memorial stupa"
+        },
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "gilded finial"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelters over the pits"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "southeast-asian",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Choeung_Ek",
+          "what": "memorial stupa built 1988-89, glass display of over 5,000 skulls, former orchard and Chinese cemetery, mass-grave pits, killing tree"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1075734",
+          "what": "OSM site about 228 x 215 m"
+        }
+      ],
+      "notes": "The article infobox says 62 m which looks wrong for the stupa; taken as about 22 m from general photo knowledge (unverified). Glass walls, 17 tiers and Khmer roof tiers are known; exact colours are an estimate."
+    },
+    "phnom-penh-osm-way-252392612": {
+      "venueId": "phnom-penh-osm-way-252392612",
+      "city": "phnom-penh",
+      "name": "Royal University of Phnom Penh (RUPP)",
+      "archetype": "campus-block",
+      "subject": "Royal University of Phnom Penh: a long seven-storey concrete teaching block of the 1960s New Khmer campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 203,
+        "depth_m": 40,
+        "storeys": 7,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d4c8",
+          "#b5b0a5",
+          "#efece4"
+        ],
+        "roofColour": "#9a9a94",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_University_of_Phnom_Penh",
+          "what": "main campus 1960s in New Khmer Architecture style (Bauhaus, postmodern, Angkor influences), ponds"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vann_Molyvann",
+          "what": "campus commissioned by Sihanouk, designed in the New Khmer style"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1709572",
+          "what": "OSM building 203 x 40 m, 7 levels"
+        }
+      ],
+      "notes": "Footprint and 7 levels are measured; facade details (stilts, screens, ribbon windows) follow New Khmer Architecture generally, not a verified photo."
+    },
+    "phnom-penh-osm-way-311065474": {
+      "venueId": "phnom-penh-osm-way-311065474",
+      "city": "phnom-penh",
+      "name": "Cambodia-Vietnam Friendship Monument",
+      "archetype": "monument",
+      "subject": "Cambodia-Vietnam Friendship Monument: a tall concrete stele with socialist-realist soldier statues at its base, in Botum Park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 26,
+        "storeys": 6,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#8a8678",
+          "#d8d4c8"
+        ],
+        "roofColour": "#bdb8ac",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "concrete stele"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "soldier and civilian figures"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cambodia–Vietnam_Friendship_Monument",
+          "what": "large concrete monument built 1979, socialist-realist statues of Vietnamese and Cambodian soldiers and a woman with baby, Botum Park"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5025211",
+          "what": "OSM footprint about 28 x 26 m"
+        }
+      ],
+      "notes": "Height and exact stele shape are estimates (not in sources). Concrete grey with weathering."
+    },
+    "phnom-penh-osm-way-377373297": {
+      "venueId": "phnom-penh-osm-way-377373297",
+      "city": "phnom-penh",
+      "name": "Central Market",
+      "archetype": "market-hall",
+      "subject": "Central Market (Phsar Thmei): the yellow Art Deco dome over four arched wings, seen from the front",
+      "form": {
+        "footprint": "cross",
+        "width_m": 100,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 26,
+        "roof": "dome",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6c75a",
+          "#f2eadb",
+          "#c9a24a"
+        ],
+        "roofColour": "#d9d2b8",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome 26 m"
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "arched-roof wings"
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1937",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Central_Market,_Phnom_Penh",
+          "what": "Art Deco, bright yellow reinforced concrete, one floor, central dome 26 m, four arch-roofed arms branching diagonally, Jean Desbois 1935-37, 2009-11 renovation with low arched stall wings"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q190668",
+          "what": "market hall, Art Deco, architect Jean Desbois, 1930s"
+        }
+      ],
+      "notes": "The cross plan is four wings branching off the central dome; overall width about 100 m is estimated (the cited article gives only dome height). Low arched stall annexes added 2009-11 between the wings."
+    },
+    "phnom-penh-osm-way-445146746": {
+      "venueId": "phnom-penh-osm-way-445146746",
+      "city": "phnom-penh",
+      "name": "Old Stadium",
+      "archetype": "stadium",
+      "subject": "RCAF Old Stadium (Army Stadium): a small concrete football ground with a covered main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5ba",
+          "#b5532f",
+          "#efece4"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "none",
+        "windowRatio": 0,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3495689",
+          "what": "RCAF Old Stadium (Phnom Penh Army Stadium); OSM footprint about 204 x 112 m"
+        }
+      ],
+      "notes": "Not described in any source found; typed from a modest football stadium and city style."
+    },
+    "phnom-penh-osm-way-445148651": {
+      "venueId": "phnom-penh-osm-way-445148651",
+      "city": "phnom-penh",
+      "name": "Olympic Stadium",
+      "archetype": "stadium",
+      "subject": "Olympic Stadium (National Sports Complex): Vann Molyvann's 1964 raised concrete bowl on a moated earth platform",
+      "form": {
+        "footprint": "oval",
+        "width_m": 274,
+        "depth_m": 229,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#cfcac0",
+          "#8c8a82",
+          "#e8e4d8"
+        ],
+        "roofColour": "#bdb8ac",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "concrete entrance arches and ramps"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "ramps up to the bowl"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "partial stand canopy"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Olympic_Stadium_(Phnom_Penh)",
+          "what": "Vann Molyvann, built 1963-64, about 500,000 m3 of earthworks, capacity 30,000, renovated 2023"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vann_Molyvann",
+          "what": "designed 1962 for 60,000, a moat surrounds it to prevent flooding"
+        }
+      ],
+      "notes": "Moat and earthwork platform are documented; open bowl with exposed concrete is from general knowledge of the building. Size from OSM facts. The stands are mostly unroofed."
+    },
+    "phnom-penh-osm-way-594151269": {
+      "venueId": "phnom-penh-osm-way-594151269",
+      "city": "phnom-penh",
+      "name": "Phnom Penh Safari",
+      "archetype": "park-landscape",
+      "subject": "Phnom Penh Safari: a zoo park with entrance gate, kiosks and animal enclosures",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 240,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#7aa05a",
+          "#b5532f"
+        ],
+        "roofColour": "#b5532f",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q58322404",
+          "what": "zoo; OSM site about 547 x 440 m"
+        }
+      ],
+      "notes": "No layout description found; typed from the zoo type and city style."
+    },
+    "phnom-penh-osm-way-640462136": {
+      "venueId": "phnom-penh-osm-way-640462136",
+      "city": "phnom-penh",
+      "name": "Cambodian University for Specialties",
+      "archetype": "campus-block",
+      "subject": "Cambodian University for Specialties: a small modern campus building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efece4",
+          "#7fa3b5",
+          "#e4c46a"
+        ],
+        "roofColour": "#9a9a94",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16256278",
+          "what": "founded 2002; OSM building about 39 x 25 m"
+        }
+      ],
+      "notes": "Footprint measured; the rest is typed."
+    },
+    "phnom-penh-quiet-reflection": {
+      "venueId": "phnom-penh-quiet-reflection",
+      "city": "phnom-penh",
+      "name": "St. Joseph Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St. Joseph Catholic Church: a modest gabled parish church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efece4",
+          "#c9a24a",
+          "#b5532f"
+        ],
+        "roofColour": "#b5532f",
+        "windows": "arched",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1268592153",
+          "what": "OSM building about 40.6 x 13.1 m (facts file)"
+        }
+      ],
+      "notes": "Not described by any source found; typed from a Catholic parish church in Phnom Penh. The old cathedral was destroyed under the Khmer Rouge, so this is a newer building."
+    },
+    "phnom-penh-recreation": {
+      "venueId": "phnom-penh-recreation",
+      "city": "phnom-penh",
+      "name": "EM Park",
+      "archetype": "park-landscape",
+      "subject": "EM Park: a family leisure park with pavilions and kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#7aa05a",
+          "#c8531f"
+        ],
+        "roofColour": "#c8531f",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing was found about this place; low-confidence typed park."
+    },
+    "phnom-penh-transit": {
+      "venueId": "phnom-penh-transit",
+      "city": "phnom-penh",
+      "name": "Phnom Penh Railway Station",
+      "archetype": "transport-station",
+      "subject": "Phnom Penh railway station: the 1932 French colonial concrete station building with a tiled hip roof, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4c46a",
+          "#efece4",
+          "#a8532f"
+        ],
+        "roofColour": "#a8532f",
+        "windows": "arched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arcade"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central block"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1932",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Phnom_Penh_railway_station",
+          "what": "built 1932 of reinforced concrete, French colonial, renovated and reopened 2010, two platforms"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/40259269",
+          "what": "OSM train_station building about 58 x 28 m"
+        }
+      ],
+      "notes": "The venue label is the city; the OSM building matched is the train station. Yellow colonial render with tiled hip roof is from general photo knowledge, not stated in the cited page; the clock-tower is uncertain."
+    }
+  }
+}

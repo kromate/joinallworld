@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "gotul-peace-park",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1225789237",
+   "used": "park outline 116x50 m (4846 m2), used as the lawn and paved base"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn-walk",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b0aaa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8fa56a",
+    "material": "concrete"
+   },
+   "z0": -0.35
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -5,
+    -10,
+    0.15
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 6,
+    "colour": "#efe6d2",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    12,
+    -4,
+    0.15
+   ],
+   "params": {
+    "height": 4.2,
+    "plinth_height": 1.8
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "pillar": 0.9,
+    "colour": "#efe6d2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.2,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -5,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 1.2,
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -25
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     25,
+     0
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -8
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5,
+     22
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     5
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; real park outline, pavilion, gate, statue and tree placement are guesses from the brief."
+ }
+}

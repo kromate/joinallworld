@@ -1,0 +1,427 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praia_plaza.jpg",
+   "licence": "CC0",
+   "author": "unknown",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/praia/plaza.jpg",
+   "used": "paved Plato square with dark basalt kerb, two hedge-bordered beds, rounded shade trees, white central monument, benches, lamps, white colonial house with terracotta hip roof and arched windows on the far side, pink and yellow neighbours, parked cars on the streets"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1161719200",
+   "used": "nearest building only (1877 house, 23 x 8 m): not used as footprint; square is open ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 38,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 28,
+    "border": 1.2,
+    "colour": "#8a8a88",
+    "border_colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -4,
+    14,
+    0
+   ],
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "white-house",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    24,
+    29
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#eef0f4",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "bay": 3.4,
+    "cornice": true,
+    "bands": "#e8ecf0",
+    "plinth": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 25,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pink-house",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -2,
+    29
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e9a9a0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 3.5,
+    "cornice": true,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9552f",
+    "material": "clay-tile",
+    "pitch": 25,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shopfront",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -18,
+    26
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6c35a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9552f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-shop",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -42,
+    28
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4efe2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -15,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "height": 1.2,
+    "depth": 2.2,
+    "colour": "#476b34"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 26,
+    "height": 1.2,
+    "depth": 2.2,
+    "colour": "#476b34"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "height": 3.5,
+    "plinthHeight": 1.8,
+    "colour": "#f2eee3",
+    "plinthColour": "#f2eee3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 11.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 11.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    4,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 11.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 11.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 11.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 11.5
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "params": {
+    "colour": "#555a66",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#b8b8c0",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#b8302c",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    12,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#e8d040",
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hedges are plain strips not clipped balls, L-shape approximated as rectangle plaza, no orange awning or kiosks, monument generic, street ring is flat asphalt ground"
+ }
+}

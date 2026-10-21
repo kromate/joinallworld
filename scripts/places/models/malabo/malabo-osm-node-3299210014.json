@@ -1,0 +1,127 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: bar-restaurant in a modest two-storey rendered building 16x10 m, sand render with oxblood trim, arched windows, awning front, terrace umbrellas; the OSM match is the domestic airport terminal (wrong building) so not used; the one nearby Commons image is a portrait, unusable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b9",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#7a3b2e",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8a92",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.0,
+    "colours": [
+     "#7a3b2e",
+     "#f4f1e8"
+    ]
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    -7,
+    -5.1,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "floors": 1,
+    "storeyHeight": 3.5,
+    "colour": "#7a3b2e"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 6,
+    "colours": [
+     "#f4f1e8",
+     "#7a3b2e"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     -7
+    ]
+   }
+  ],
+  "extent": [
+   36,
+   32
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-node-3299210014",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo (only a portrait was listed); OSM match was the airport terminal so not used; typical colonial-style bar-restaurant."
+ }
+}

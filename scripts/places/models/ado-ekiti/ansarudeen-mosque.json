@@ -1,0 +1,186 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "ansarudeen-mosque",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/858954914",
+   "used": "named mosque outline, about 38 x 34 m, tilted 6 degrees"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+   "used": "Ansar-ud-Deen mosques: plain cement-rendered, one dome; white and green per brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#3f8f6b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a9a74",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "id": "dome",
+   "on": "hall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 6.5,
+    "profile": "hemi",
+    "drum": 2.5,
+    "colour": "#4a9a74",
+    "drum_colour": "#f1efe6",
+    "finial": true
+   }
+  },
+  {
+   "type": "minaret",
+   "id": "minaret",
+   "at": [
+    -17,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "pencil",
+    "colour": "#f1efe6",
+    "accent": "#3f8f6b",
+    "cap_colour": "#3f8f6b"
+   }
+  },
+  {
+   "type": "mosque-domed/portal",
+   "id": "portal",
+   "at": [
+    0,
+    -19.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 9,
+    "depth": 2.5,
+    "pointed": true,
+    "colour": "#f1efe6",
+    "trim": "#3f8f6b",
+    "cap_colour": "#3f8f6b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -26
+     ],
+     [
+      -22,
+      -26
+     ],
+     [
+      -22,
+      26
+     ],
+     [
+      22,
+      26
+     ],
+     [
+      22,
+      -26
+     ],
+     [
+      3,
+      -26
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#e8e2d0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#f1efe6",
+    "leafColour": "#3f8f6b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     15
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this mosque; real OSM outline, brief's white/green dome and single minaret; minaret placement and portal are estimates."
+ }
+}

@@ -1,0 +1,246 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-temple-d-abidjan",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1259768622",
+   "used": "building outline (809 m2, containing match, stepped cruciform plan close to the brief's 40x28 m); no photo of the temple was found on Commons"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Abidjan_Ivory_Coast_Temple",
+   "used": "single storey, white lime plaster over block, one attached end spire with gold statue, geometric African motifs, landscaped grounds"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "temple",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 5,
+    "plinth": 0.6,
+    "cornice": 0.35,
+    "bands": "#cdbf9f",
+    "glassColour": "#4a5560"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d8a8f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    11,
+    -1,
+    0
+   ],
+   "params": {
+    "colour": "#f2eee4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6.5,
+       6.5
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       5.2,
+       5.2
+      ]
+     },
+     {
+      "z": 24,
+      "rect": [
+       4,
+       4
+      ]
+     },
+     {
+      "z": 28,
+      "rect": [
+       3.2,
+       3.2
+      ]
+     },
+     {
+      "z": 34,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    11,
+    -1,
+    34
+   ],
+   "params": {
+    "colour": "#d4af37",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.8,
+      0
+     ],
+     [
+      0.7,
+      1.2
+     ],
+     [
+      0.9,
+      2.4
+     ],
+     [
+      0.4,
+      3.4
+     ],
+     [
+      0.2,
+      4.2
+     ],
+     [
+      0,
+      4.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-porch",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -1,
+    -18.5
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3d3",
+    "windows": "none",
+    "bands": "#cdbf9f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bd9f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -28,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#e4dfd0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found: OSM outline plus brief; roof colour, spire height and porch are inferred"
+ }
+}

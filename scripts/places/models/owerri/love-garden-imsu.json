@@ -1,0 +1,223 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "love-garden-imsu",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/791153418",
+   "used": "park outline (13,238 m2, leisure=park) as the grass ground patch; features placed inside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Imo_State_University_Bookshop.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "King ChristLike",
+   "view": "street",
+   "file": "/tmp/places-evidence/owerri/lg1.jpg",
+   "used": "neighbouring campus building 116 m away (not the garden): campus setting, grass with bare red laterite patches, brown pergola columns; context only"
+  },
+  {
+   "kind": "text",
+   "used": "brief: circular paved plaza, benches, gazebo, flower beds on the IMSU grounds"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#6f9a52",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a52"
+   },
+   "z0": -0.25
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     30,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": -0.05,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cdb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    2,
+    0.45
+   ],
+   "params": {
+    "width": 6.5,
+    "depth": 6.5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#f1ece0",
+    "cap_colour": "#7b5a3c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0.45
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 11.5,
+    "startDeg": 20,
+    "endDeg": 340,
+    "count": 6,
+    "facing": "centre",
+    "of": {
+     "type": "park-bench",
+     "params": {
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    -20,
+    -4,
+    0.25
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 3,
+    "width": 6,
+    "depth": 4,
+    "colours": [
+     "#d9475c",
+     "#f0c43d",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "flowerbeds",
+   "at": [
+    14,
+    -12,
+    0.25
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 2,
+    "width": 6,
+    "depth": 4,
+    "colours": [
+     "#e07a2f",
+     "#f0c43d",
+     "#d9475c"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -12,
+    0.45
+   ],
+   "params": {
+    "height": 4,
+    "count": 4,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    8,
+    28,
+    0.25
+   ],
+   "params": {
+    "width": 28,
+    "depth": 22,
+    "count": 9,
+    "min_height": 7,
+    "max_height": 12,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -5,
+    0.25
+   ],
+   "params": {
+    "width": 28,
+    "depth": 22,
+    "count": 6,
+    "min_height": 6,
+    "max_height": 10,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the garden itself; OSM outline for the lawn, interior layout (plaza, gazebo, benches, beds) from the brief and is indicative."
+ }
+}

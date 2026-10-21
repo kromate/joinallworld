@@ -1,0 +1,435 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-airport-brazzaville-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroport_maya-maya.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Unsonique",
+   "view": "back",
+   "file": "/tmp/places-evidence/brazzaville/apt1.jpg",
+   "used": "long green-glazed barrel-vault terminal with ribbed glass walls and a grey arched metal roof, taller stepped grey blocks behind, white old terminal and two white control towers to the left, tower cranes (terminal under construction)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeroport_Maya-Maya.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Unsonique",
+   "view": "back",
+   "used": "same scene cropped: proportions of terminal to old terminal and tower"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "vault-w",
+   "footprint": {
+    "rect": [
+     55,
+     36
+    ]
+   },
+   "at": [
+    -27.5,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f9a70",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#9aa6a6",
+    "material": "metal-sheet",
+    "rise": 7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vault-e",
+   "footprint": {
+    "rect": [
+     55,
+     36
+    ]
+   },
+   "at": [
+    27.5,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f9a70",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": false,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#9aa6a6",
+    "material": "metal-sheet",
+    "rise": 7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-w",
+   "footprint": {
+    "rect": [
+     56,
+     18
+    ]
+   },
+   "at": [
+    -15,
+    26
+   ],
+   "height": 27,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9b2b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f999c",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-e",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    40,
+    26
+   ],
+   "height": 23,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9b2b4",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f999c",
+    "material": "metal-sheet",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-terminal",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -82,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e9e4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-tower-base",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    -62,
+    6
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     8.5,
+     8.5
+    ],
+    "z0": 9,
+    "height": 3.5,
+    "colour": "#3d4f57",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 12.5,
+    "height": 0.7,
+    "colour": "#e6e6e2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -98,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     5
+    ],
+    "height": 11,
+    "colour": "#f1f1ed",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -98,
+    8,
+    0
+   ],
+   "params": {
+    "radius": 4.2,
+    "n": 8,
+    "z0": 11,
+    "height": 3.4,
+    "colour": "#3d4f57",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -98,
+    8,
+    0
+   ],
+   "params": {
+    "radius": 5.4,
+    "n": 8,
+    "z0": 14.4,
+    "height": 0.6,
+    "colour": "#e6e6e2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -98,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 15,
+    "height": 9,
+    "colour": "#b8b8b4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 9,
+    "height": 5,
+    "form": "flat",
+    "colour": "#c9cfd1"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.5,
+    "bottom": 6,
+    "colour": "#2f5f6b",
+    "posts": false
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -20,
+    34,
+    0
+   ],
+   "params": {
+    "height": 52,
+    "baseWidth": 3.6,
+    "topWidth": 1.2,
+    "panels": 8,
+    "colour": "#e0b030",
+    "colour2": "#e0b030"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    20,
+    36,
+    0
+   ],
+   "params": {
+    "height": 48,
+    "baseWidth": 3.6,
+    "topWidth": 1.2,
+    "panels": 8,
+    "colour": "#e0b030",
+    "colour2": "#e0b030"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    52,
+    34,
+    0
+   ],
+   "params": {
+    "height": 44,
+    "baseWidth": 3.6,
+    "topWidth": 1.2,
+    "panels": 8,
+    "colour": "#e0b030",
+    "colour2": "#e0b030"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "glass still reads blue-teal in render lighting; cranes are thin masts without jibs; second tower small; scene shortened to fit clamp"
+ }
+}

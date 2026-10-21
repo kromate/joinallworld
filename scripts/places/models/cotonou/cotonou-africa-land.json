@@ -1,0 +1,468 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-africa-land",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ENTREE_AFRILAND_(jardin_public_de_Fifadji)_%C3%A0_cotonou(BENIN).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adoscam",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/afl2.jpg",
+   "used": "entrance: grey-render square piers, wide grey iron double gate with arched top, curved yellow-green banner arch on slender posts, solar lamp poles, low fence, paved forecourt, open sandy/grass park behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jeux_pour_enfants_Afriland_%C3%A0_Fifadji_%C3%A0_Cotonou_B%C3%A9nin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adoscam",
+   "view": "detail",
+   "file": "/tmp/places-evidence/cotonou/afl1.jpg",
+   "used": "sandy ground and inflatable bouncy-castle attractions in primary colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/832159926",
+   "used": "park extent only (186 x 139 m, name match); modelled as a 124 x 96 m portion"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 15,
+  "aspect": 1.5,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "park-ground",
+   "at": [
+    0,
+    14
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -12
+     ],
+     [
+      12,
+      -12
+     ],
+     [
+      12,
+      12
+     ],
+     [
+      -12,
+      12
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#cfbf94",
+    "topColour": "#c9b98c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-left",
+   "at": [
+    -6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 4.2,
+    "colour": "#a6a9a8",
+    "topColour": "#a9a294"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-right",
+   "at": [
+    6.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     2.0
+    ],
+    "height": 4.2,
+    "colour": "#a6a9a8",
+    "topColour": "#a9a294"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "iron-gate",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10.6,
+    "height": 3.6,
+    "pillar": 0.3,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#8a9099",
+    "leafColour": "#8a9099"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-sign",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      3.4
+     ]
+    },
+    "points": [
+     [
+      -8,
+      0,
+      6.6
+     ],
+     [
+      -4,
+      0,
+      7.5
+     ],
+     [
+      0,
+      0,
+      7.9
+     ],
+     [
+      4,
+      0,
+      7.5
+     ],
+     [
+      8,
+      0,
+      6.2
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#bfd43c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-sign-edge",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.2
+     ]
+    },
+    "points": [
+     [
+      -8,
+      0,
+      5.0
+     ],
+     [
+      -4,
+      0,
+      5.9
+     ],
+     [
+      0,
+      0,
+      6.3
+     ],
+     [
+      4,
+      0,
+      5.9
+     ],
+     [
+      8,
+      0,
+      4.6
+     ]
+    ],
+    "curve": true,
+    "steps": 10,
+    "colour": "#e9eef0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence-left",
+   "at": [
+    -13,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#8a9099"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence-right",
+   "at": [
+    13,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#8a9099"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -9,
+    -1.5,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 18
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    -9,
+    -1.5,
+    8
+   ],
+   "params": {
+    "rows": 1,
+    "cols": 1,
+    "panelWidth": 2.4,
+    "panelDepth": 1.2,
+    "tilt": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "sign-orange",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      2,
+      0,
+      5.8
+     ],
+     [
+      4,
+      0,
+      5.9
+     ],
+     [
+      6.5,
+      0,
+      5.0
+     ]
+    ],
+    "curve": true,
+    "steps": 6,
+    "colour": "#e8602c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "post-l",
+   "at": [
+    -7.8,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0.3,
+    "height": 6.4,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#8a9099"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "post-r",
+   "at": [
+    7.8,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0.3,
+    "height": 5.4,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#8a9099"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt",
+   "at": [
+    0,
+    -5
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      -4
+     ],
+     [
+      14,
+      -4
+     ],
+     [
+      14,
+      4
+     ],
+     [
+      -14,
+      4
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#b9a58f",
+    "topColour": "#b9a58f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bouncer-yellow",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -3,
+    9
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2c81c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2c81c",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bouncer-blue",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    8,
+    14
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3f6fb8",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe0",
+    "overhang": 0.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate-focused: piers, arched double gate, curved yellow-green sign with orange swirl, solar lamps, fences match; sign has no artwork/text (blank boards rule); sign is slightly too tall/wide, lamps are plain poles, park interior is a minimal backdrop, no paving blocks texture."
+ }
+}

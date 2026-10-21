@@ -1,0 +1,682 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emir_of_Maiduguri_Palace.jpg",
+   "licence": "CC0",
+   "author": "Mr. Snatch",
+   "view": "front",
+   "file": "/tmp/places-evidence/maiduguri/shehu-of-borno-palace-0.jpg",
+   "used": "red-brick two-storey wings with rounded-arch ground arcades and cream trim bands, centre pavilion with scalloped curved canopy on slender posts, crenellated brick clock tower with four corner turrets, sand courtyard, lamp posts"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/maiduguri.json#shehu-of-borno-palace",
+   "used": "walled compound, flagpoles, entrance gate; the OSM match is a 28 x 7 m nearest building so the outline was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 5,
+  "fovDeg": 48,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     32,
+     11
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4640",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#e6d9b8",
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "bay": 4.5,
+      "opening": 0.72,
+      "depth": 1.4,
+      "shape": "arch"
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#2b2220"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4640",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     38,
+     11
+    ]
+   },
+   "at": [
+    31,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4640",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#e6d9b8",
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "bay": 4.8,
+      "opening": 0.72,
+      "depth": 1.4,
+      "shape": "arch"
+     }
+    ],
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "glassColour": "#2b2220"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a4640",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4640",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#e6d9b8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain",
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d9b8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    4.5,
+    3
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4640",
+    "windows": "none",
+    "windowRatio": 0.08,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#e6d9b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c4a3a",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 22
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.4,
+    "thickness": 0.4,
+    "colour": "#c9b896"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-base",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4640",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#e6d9b8",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "bay": 16,
+      "opening": 0.5,
+      "depth": 2.5,
+      "shape": "flat"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d9b8",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.5,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     16.6,
+     6.6
+    ],
+    "height": 0.35,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -11.6,
+    4.55
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    -11.4,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 3.9,
+    "colour": "#d8c9a3"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.0,
+    -11.4,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 3.9,
+    "colour": "#d8c9a3"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.0,
+    -11.4,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 3.9,
+    "colour": "#d8c9a3"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    -11.4,
+    4.55
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 3.9,
+    "colour": "#d8c9a3"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -8.5,
+    8.4
+   ],
+   "params": {
+    "form": "curved",
+    "width": 8,
+    "depth": 7,
+    "height": 0.25,
+    "rise": 1.8,
+    "colour": "#e8d8b2",
+    "edgeColour": "#e3d2ad",
+    "columns": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    4,
+    -8.5,
+    8.4
+   ],
+   "params": {
+    "form": "curved",
+    "width": 8,
+    "depth": 7,
+    "height": 0.25,
+    "rise": 1.8,
+    "colour": "#e8d8b2",
+    "edgeColour": "#e3d2ad",
+    "columns": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.9,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 2.2,
+    "colour": "#e6d9b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.9,
+    -8.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     6
+    ],
+    "height": 2.2,
+    "colour": "#e6d9b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.4,
+    -0.1,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 12,
+    "height": 20.5,
+    "colour": "#9a4640"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.4,
+    -0.1,
+    20.5
+   ],
+   "params": {
+    "radius": 1.1,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.4,
+    6.1,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 12,
+    "height": 20.5,
+    "colour": "#9a4640"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.4,
+    6.1,
+    20.5
+   ],
+   "params": {
+    "radius": 1.1,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.1,
+    -0.1,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 12,
+    "height": 20.5,
+    "colour": "#9a4640"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.1,
+    -0.1,
+    20.5
+   ],
+   "params": {
+    "radius": 1.1,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.1,
+    6.1,
+    0
+   ],
+   "params": {
+    "radius": 0.9,
+    "n": 12,
+    "height": 20.5,
+    "colour": "#9a4640"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.1,
+    6.1,
+    20.5
+   ],
+   "params": {
+    "radius": 1.1,
+    "n": 12,
+    "height": 0.7,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -0.7,
+    19
+   ],
+   "params": {
+    "rect": [
+     5.8,
+     0.4
+    ],
+    "height": 0.8,
+    "colour": "#e6d9b8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -0.65,
+    12
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.12
+    ],
+    "height": 3.0,
+    "colour": "#fafafa"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "shehu-of-borno-palace",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "brick is flat tint with atlas courses, no diamond pattern; scalloped canopy is two simple curved humps; clock face is a flat board; no wing loggia opening, far wing and gate omitted"
+ }
+}

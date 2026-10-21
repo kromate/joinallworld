@@ -1,0 +1,327 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nat_Museum,_Kaduna.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DipoTayo",
+   "view": "street",
+   "file": "/tmp/places-evidence/kaduna/museum.jpg",
+   "used": "tall blank brown stone-block end block, set-back green rendered wing with pink-framed tall windows and stone pilasters, lower stone wing with red roof, clipped yellow hedge, laterite forecourt, low white gate pier"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/112601857",
+   "used": "overall scale only (28 x 12 m, nearest match 33 m away, not used as outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stone-block",
+   "footprint": {
+    "rect": [
+     14,
+     11
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "height": 11.5,
+   "wall": {
+    "material": "stone",
+    "colour": "#a07050",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5238"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-wing",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    9,
+    2
+   ],
+   "height": 10,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5f8a6a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    },
+    "bay": 5.5,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.35,
+      "depth": 0.25,
+      "spacing": 5.5,
+      "colour": "#d98a96",
+      "margin": 0.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94"
+   },
+   "storeys": 2
+  },
+  {
+   "type": "mass",
+   "id": "low-wing",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    25,
+    3
+   ],
+   "height": 5.2,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a6048",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8604f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-a",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.8
+    ]
+   },
+   "at": [
+    -1.6,
+    -3.2
+   ],
+   "height": 10,
+   "wall": {
+    "material": "stone",
+    "colour": "#a07050",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5238"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pilaster-b",
+   "footprint": {
+    "rect": [
+     1.2,
+     0.8
+    ]
+   },
+   "at": [
+    2.0,
+    -3.2
+   ],
+   "height": 10,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a5e45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5238"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -1,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 1.2,
+    "depth": 1.6,
+    "colour": "#a8b83a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier",
+   "footprint": {
+    "rect": [
+     1.1,
+     1.1
+    ]
+   },
+   "at": [
+    -20,
+    -5
+   ],
+   "height": 3.0,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ecebe4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d6cc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -19.4,
+    -5.5,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 11,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -0.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -8
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   84,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "national-museum-kaduna",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stone is flat-texture block not rough rubble; hedge and cypresses are low-poly blobs; pink surrounds are fins not framed windows; rear and depth guessed."
+ }
+}

@@ -1,0 +1,198 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-node-7713167960",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: four-storey white and glass teaching block with canopy entrance, flags, car park. Nearest OSM building is 63 m away, unnamed-match, so footprint ignored; no photos found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     60,
+     25
+    ]
+   },
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f5ef",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#c9ced1",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entry",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    -8,
+    -14
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a7aa8",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 7,
+    "height": 4.5,
+    "form": "flat",
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3.5,
+    "colours": [
+     "#e70013",
+     "#f7f5ef",
+     "#4a7aa8"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    22,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.5,
+    "bottom": 2,
+    "colour": "#4a7aa8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -24
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -26,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -20,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#f1eee6"
+   },
+   {
+    "at": [
+     -14,
+     -30
+    ],
+    "yawDeg": 90,
+    "colour": "#2f3a4a"
+   },
+   {
+    "at": [
+     20,
+     -32
+    ],
+    "yawDeg": 90,
+    "colour": "#8a2f2f"
+   },
+   {
+    "at": [
+     26,
+     -32
+    ],
+    "yawDeg": 90,
+    "colour": "#b8bcc2"
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM match is a far unrelated building so footprint ignored; block, glazed entry and canopy typed from brief"
+ }
+}

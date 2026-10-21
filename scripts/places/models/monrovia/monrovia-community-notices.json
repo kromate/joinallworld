@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/134906307",
+   "used": "real outline of the Center for National Documents and Records (57 x 41 m, stepped plan)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: plain two-storey cream institutional block, flat concrete roof, flagpole, gated forecourt (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 58
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e6e0cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#a7a69f",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a79f94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.35,
+    "columns": 2,
+    "colour": "#a7a69f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#b22234"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 5,
+    "colour": "#7e7c75"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    14,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#2f4f6b"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -28
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found: real OSM outline with typed cream render; facade detail inferred"
+ }
+}

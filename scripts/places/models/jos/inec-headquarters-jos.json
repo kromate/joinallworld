@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "inec-headquarters-jos",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1178004100",
+   "used": "name-matched building outline (114 x 64 m, six-sided); modelled as a two-storey office block with hip roof per the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.33,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#2f6b4f",
+    "plinth": 0.5,
+    "cornice": true,
+    "glassColour": "#3b5360"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/flag",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -10,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    14,
+    -54
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#2f6b4f",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/gate",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    -56,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "pillar": 1.0,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -56
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    45,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; OSM outline only, hexagonal plan with flat roof, details from brief"
+ }
+}

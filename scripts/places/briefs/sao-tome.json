@@ -1,0 +1,1506 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sao-tome",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sao-tome",
+    "climate": "tropical-maritime",
+    "vernacular": "Small, humid equatorial island capital with a Portuguese colonial core: low pastel plastered buildings (pink, cream, yellow, pale green) with white trim, timber balconies and verandahs and rusty corrugated or clay-tile roofs; outside the centre are cement-block houses and wooden stilt houses, and former cocoa-plantation roças with a long white main house, a hospital and rows of workers' houses around a drying terrace. Greenery is lush: palms, breadfruit, cocoa and forest right up to the town.",
+    "wallColours": [
+      "#e0a9a0",
+      "#ecd9a4",
+      "#f0ece2",
+      "#a9c2a0",
+      "#c9d4dc",
+      "#b8744f",
+      "#9a968c"
+    ],
+    "roofColours": [
+      "#9a5a3e",
+      "#b5553a",
+      "#7b8891",
+      "#6a5a4a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "stucco",
+      "timber",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Portuguese neoclassical columns, window surrounds and entrance staircases on official buildings; timber verandahs with balustrades and fretwork on roça houses; tall iron fences; white-painted trim against pastel walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+        "what": "colonial core around the Our Lady of Grace Cathedral, 1566 Fort São Sebastião, Presidential Palace, Supreme Court, praças and two markets; tropical wet-and-dry climate, cloudy and foggy"
+      },
+      {
+        "url": "https://pt.wikipedia.org/wiki/Pal%C3%A1cio_Presidencial_de_S%C3%A3o_Tom%C3%A9_e_Pr%C3%ADncipe",
+        "what": "Presidential Palace: two-storey L-shaped neoclassical mansion, pink, in a garden, with pink concrete columns and a tall iron fence"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+        "what": "colonial plantation (roça) system; photos of the fort-museum, cathedral, palace and a railway hangar of 1919"
+      }
+    ]
+  },
+  "places": {
+    "sao-tome-airport-sao-tome-airport": {
+      "venueId": "sao-tome-airport-sao-tome-airport",
+      "city": "sao-tome",
+      "name": "São Tomé International Airport",
+      "archetype": "airport-terminal",
+      "subject": "São Tomé International Airport: a small low terminal with a short canopy, a single apron and a control tower beside a 2,220 m runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d2",
+          "#4b7ea6",
+          "#ffffff"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_International_Airport",
+          "what": "single asphalt runway 11/29, 2,220 x 45 m, elevation 10 m; no terminal description"
+        }
+      ],
+      "notes": "Only the runway is documented. The terminal is typed as a small single-storey building (no jet bridges) appropriate for a country with a few flights a day."
+    },
+    "sao-tome-clinic": {
+      "venueId": "sao-tome-clinic",
+      "city": "sao-tome",
+      "name": "Centro Hospitalar de São Tomé (CHST)",
+      "archetype": "hospital",
+      "subject": "The main national hospital (Ayres de Menezes) of São Tomé: a sprawling group of 1-2 storey ward blocks with verandahs and a covered entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9d4",
+          "#a9c2a0",
+          "#ffffff"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Main hospital of the island; its look was not documented in fetched sources. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-community-notices": {
+      "venueId": "sao-tome-community-notices",
+      "city": "sao-tome",
+      "name": "Presidential Palace",
+      "archetype": "civic-palace",
+      "subject": "The Presidential Palace: a large pink two-storey L-shaped neoclassical mansion in a big garden, with columns, a window ornamentation, a main entrance staircase and a tall iron fence",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e0a2a0",
+          "#ffffff",
+          "#c97f7c"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "main entrance staircase"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "mid-19th century; 1954 refit",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pal%C3%A1cio_Presidencial_de_S%C3%A3o_Tom%C3%A9_e_Pr%C3%ADncipe",
+          "what": "mid-19th-century governor administrative centre, 1954 renovation added neoclassical window ornament, columns and entrance staircase, presidential residence from 1975; two floors; pink facade; pink concrete columns; tall iron fence; large L-shaped mansion in a big garden"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "palace is one of the landmarks of the colonial core"
+        }
+      ],
+      "notes": "Facts are from the Portuguese Wikipedia article. 60 x 35 m extent and the roof colour are estimates. The pink colour, L-plan, columns, steps and iron fence are what make it recognisable."
+    },
+    "sao-tome-community-voting-game": {
+      "venueId": "sao-tome-community-voting-game",
+      "city": "sao-tome",
+      "name": "EMAE - Direção das Águas",
+      "archetype": "office-low",
+      "subject": "Water directorate of the national utility company EMAE: a plain two-storey plastered office block with a small yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#c9d4dc",
+          "#f0ece2",
+          "#6b8aa0"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Utility office; nothing found about the building. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-community-workshop": {
+      "venueId": "sao-tome-community-workshop",
+      "city": "sao-tome",
+      "name": "Universidade de São Tomé e Príncipe, Instituto Superior Politécnico",
+      "archetype": "campus-block",
+      "subject": "Instituto Superior Politécnico campus: a couple of low plastered teaching blocks with louvred windows and a shaded walkway",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ecd9a4",
+          "#a9c2a0",
+          "#ffffff"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Teaching institute in the city; nothing about its building was found. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-market-game": {
+      "venueId": "sao-tome-market-game",
+      "city": "sao-tome",
+      "name": "Mercado de Cova Água, Santana",
+      "archetype": "market-open",
+      "subject": "Local market in the Cova Água area of Santana: stalls and tables under tin sheds beside the coast road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e0a9a0",
+          "#9a968c",
+          "#f0ece2"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "A small market in the Santana area on the east coast; no description found. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-meal-stop": {
+      "venueId": "sao-tome-meal-stop",
+      "city": "sao-tome",
+      "name": "Celva's",
+      "archetype": "restaurant",
+      "subject": "Small local restaurant: a timber and plaster house with a veranda, seats under a shaded porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#a9c2a0",
+          "#ffffff",
+          "#9a5a3e"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only; at the north end of the island. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-node-12343335801": {
+      "venueId": "sao-tome-osm-node-12343335801",
+      "city": "sao-tome",
+      "name": "Onda Leve bar / restaurant",
+      "archetype": "restaurant",
+      "subject": "A beachside bar-restaurant: a thatched open pavilion with a timber deck facing the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a979",
+          "#ffffff",
+          "#7b5a3a"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Southern coast venue; the thatched beach-bar form is a typed guess for the type. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-node-12875245959": {
+      "venueId": "sao-tome-osm-node-12875245959",
+      "city": "sao-tome",
+      "name": "Hosana",
+      "archetype": "restaurant",
+      "subject": "Small local eatery: a cement-block house painted green with a corrugated roof and a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#a9c2a0",
+          "#ffffff",
+          "#9a5a3e"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name only. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-node-1600956613": {
+      "venueId": "sao-tome-osm-node-1600956613",
+      "city": "sao-tome",
+      "name": "Roça Agostinho Neto (Roça de Cinco Mil)",
+      "archetype": "manor",
+      "subject": "Roça Agostinho Neto: a former cocoa plantation complex with a long white two-storey main house with verandahs, a large drying yard (terreiro), a hospital and rows of workers' houses",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f0ece2",
+          "#9a5a3e",
+          "#7a9a7a"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "timber verandahs"
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "cocoa drying sheds"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "late 19th-early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+          "what": "colonial roça plantation system and its colonial structures (e.g. 1919 railway hangar at Sundy)"
+        }
+      ],
+      "notes": "A large roça (Cinco Mil / Rio do Ouro) on the north-west coast; typical roça layout (white main house, terreiro, hospital, quarters) is general knowledge, not read from a source for this specific roça. Weathered white walls and rusty roof sheets. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-node-2401213448": {
+      "venueId": "sao-tome-osm-node-2401213448",
+      "city": "sao-tome",
+      "name": "Cascata de Bombaim",
+      "archetype": "park-landscape",
+      "subject": "Bombaim waterfall: a rock face with a stream falling into a pool in dense forest, with a small path and no buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#5b5a58",
+          "#6a8a5a",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+          "what": "volcanic island interior"
+        }
+      ],
+      "notes": "Natural waterfall in the south of the island; nothing but the name and position is known. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-node-5414397476": {
+      "venueId": "sao-tome-osm-node-5414397476",
+      "city": "sao-tome",
+      "name": "Campo de Futebol Santana FC",
+      "archetype": "stadium",
+      "subject": "Santana FC ground: a simple grass or dirt pitch with a low concrete stand on one side and goalposts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b8b4aa",
+          "#2f5f93",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Village football field; only the name and a pitch are known. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-node-938537793": {
+      "venueId": "sao-tome-osm-node-938537793",
+      "city": "sao-tome",
+      "name": "Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "Bom Sucesso botanical garden: a forest garden of tall trees, ferns and flower beds with paths and a small visitor building, on the mountain slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c8b68a",
+          "#6a8a5a",
+          "#f0ece2"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1890s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+          "what": "volcanic highland with lush vegetation"
+        }
+      ],
+      "notes": "The botanical garden in the highlands; small timber visitor lodge is typed. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-1126943996": {
+      "venueId": "sao-tome-osm-way-1126943996",
+      "city": "sao-tome",
+      "name": "Praça de Independência",
+      "archetype": "park-landscape",
+      "subject": "Independence Square in front of the palace and cathedral: an open paved square with a flag pole, flower beds and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9c3b3",
+          "#9a968c",
+          "#f0ece2"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "the city has many praças in the colonial core"
+        },
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pal%C3%A1cio_Presidencial_de_S%C3%A3o_Tom%C3%A9_e_Pr%C3%ADncipe",
+          "what": "adjacent palace"
+        }
+      ],
+      "notes": "Square next to the Presidential Palace and cathedral. Monument form unverified. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-1126988143": {
+      "venueId": "sao-tome-osm-way-1126988143",
+      "city": "sao-tome",
+      "name": "Estádio 12 de Julho",
+      "archetype": "stadium",
+      "subject": "Estádio 12 de Julho, the national stadium of São Tomé: a modest ground with a concrete stand on one side and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c4bfb2",
+          "#2f7a4a",
+          "#f0ece2"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "National stadium (about 6,000 capacity from general knowledge, not from a fetched source); look not documented. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-1311130312": {
+      "venueId": "sao-tome-osm-way-1311130312",
+      "city": "sao-tome",
+      "name": "Mercado Bobo Forro",
+      "archetype": "market-open",
+      "subject": "Bobo Forro market: a modest covered market of stalls under tin sheds in a suburb south of the airport",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b4aa",
+          "#a9c2a0",
+          "#f0ece2"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 18
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "the city has two markets"
+        }
+      ],
+      "notes": "Neighbourhood market; no description found. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-1387886871": {
+      "venueId": "sao-tome-osm-way-1387886871",
+      "city": "sao-tome",
+      "name": "Mercado do Cruzeiro",
+      "archetype": "market-open",
+      "subject": "Cruzeiro market: stalls and tables at a village crossroads under zinc roofs and umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ecd9a4",
+          "#9a968c",
+          "#f0ece2"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Village market; nothing found. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-206543431": {
+      "venueId": "sao-tome-osm-way-206543431",
+      "city": "sao-tome",
+      "name": "Parque Popular",
+      "archetype": "park-landscape",
+      "subject": "Parque Popular: a seaside public park with paved paths, benches, trees and a playground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b8",
+          "#6a8a5a",
+          "#f0ece2"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Public park close to the stadium; contents typed. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-224647304": {
+      "venueId": "sao-tome-osm-way-224647304",
+      "city": "sao-tome",
+      "name": "Posto de Saúde Uba Budu",
+      "archetype": "hospital",
+      "subject": "Village health post: a small single-storey painted clinic with a porch and a water tank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ece2",
+          "#6fa0b8",
+          "#ffffff"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Small rural health post; nothing found. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-231363988": {
+      "venueId": "sao-tome-osm-way-231363988",
+      "city": "sao-tome",
+      "name": "Hospital de Santa Margarida",
+      "archetype": "hospital",
+      "subject": "Rural hospital at Santa Margarida: a low plastered ward complex with verandahs, tin roofs and a covered ambulance bay",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ecd9a4",
+          "#ffffff",
+          "#9a5a3e"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Provincial hospital; its fabric was not described. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-osm-way-280771623": {
+      "venueId": "sao-tome-osm-way-280771623",
+      "city": "sao-tome",
+      "name": "Coffee Museum",
+      "archetype": "museum-theatre",
+      "subject": "Coffee museum in the old Monte Café roça: a long single-storey colonial building with a timber verandah and rusty corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0ece2",
+          "#7a9a7a",
+          "#9a5a3e"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+          "what": "roça plantation system"
+        }
+      ],
+      "notes": "Museum at the Monte Café plantation in the central uplands; the roça-building form is typed from the roça tradition. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-quiet-reflection": {
+      "venueId": "sao-tome-quiet-reflection",
+      "city": "sao-tome",
+      "name": "Our Lady of Grace Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Sé of São Tomé on the waterfront square: a whitewashed cathedral, remodelled in 1956 in an eclectic revival style with a neo-Romanesque main facade and two front towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f2eee3",
+          "#c9a979",
+          "#9a968c"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1576-1578; rebuilt 1814; remodelled 1956",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Grace_Cathedral,_S%C3%A3o_Tom%C3%A9",
+          "what": "first church late 15th century, rebuilt 1576-78 and in 1814, remodelled 1956 in an eclectic revival style with neo-Romanesque main facade"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "sixteenth-century cathedral largely rebuilt in the 19th century, centre of the city"
+        }
+      ],
+      "notes": "Sourced: dates, eclectic/neo-Romanesque facade. White paint, two towers, clay roof and size are typed from general knowledge of the building and unverified."
+    },
+    "sao-tome-recreation": {
+      "venueId": "sao-tome-recreation",
+      "city": "sao-tome",
+      "name": "Praça da Juventude",
+      "archetype": "park-landscape",
+      "subject": "Youth square: a paved plaza with a small stage or pavilion, low walls, lamp posts and a few trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b8",
+          "#9a968c",
+          "#f0ece2"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "the city has many praças"
+        }
+      ],
+      "notes": "Name only; contents typed. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    },
+    "sao-tome-transit": {
+      "venueId": "sao-tome-transit",
+      "city": "sao-tome",
+      "name": "Comunidade local",
+      "archetype": "transport-station",
+      "subject": "A local minibus stop: a small paved bay by the road with a shed and a couple of vehicles waiting",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b4aa",
+          "#cc9a3a",
+          "#f0ece2"
+        ],
+        "roofColour": "#9a5a3e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Generic community transit point; nothing found. No source describing this exact place could be fetched during research, so form, size and colours are typed from the São Tomé city style and the place type."
+    }
+  }
+}

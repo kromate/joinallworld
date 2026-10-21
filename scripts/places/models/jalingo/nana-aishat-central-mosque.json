@@ -1,0 +1,342 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "nana-aishat-central-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo found (Commons, Wikidata Q125456320 has none). Brief: large modern Friday mosque, tall central dome, four minarets, cream with turquoise accents, arched windows. OSM nearest match (21 m, 394 m2, irregular) judged unreliable, not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 12,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     50,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.8,
+    "bands": "#3b8f94",
+    "faces": {
+     "front": "arched",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bfa5",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade",
+   "footprint": {
+    "rect": [
+     40,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -21.5
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ecd8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "arched"
+    },
+    "bands": "#3b8f94",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 5,
+    "colour": "#d4cbb4"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    12
+   ],
+   "params": {
+    "radius": 10.5,
+    "height": 9,
+    "profile": "hemi",
+    "drum": 4,
+    "drumRadius": 9.5,
+    "lantern": 1.2,
+    "finial": 3,
+    "colour": "#3b8f94",
+    "drumColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0
+   ],
+   "at": [
+    -19,
+    -12,
+    12
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.8,
+    "profile": "onion",
+    "drum": 1.2,
+    "finial": 1.6,
+    "colour": "#3b8f94",
+    "drumColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -28.5,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "radius": 1.5,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#efe6d0",
+    "capColour": "#3b8f94"
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0
+   ],
+   "at": [
+    -19,
+    12,
+    12
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.8,
+    "profile": "onion",
+    "drum": 1.2,
+    "finial": 1.6,
+    "colour": "#3b8f94",
+    "drumColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -28.5,
+    21,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "radius": 1.5,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#efe6d0",
+    "capColour": "#3b8f94"
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0
+   ],
+   "at": [
+    19,
+    -12,
+    12
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.8,
+    "profile": "onion",
+    "drum": 1.2,
+    "finial": 1.6,
+    "colour": "#3b8f94",
+    "drumColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    28.5,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "radius": 1.5,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#efe6d0",
+    "capColour": "#3b8f94"
+   }
+  },
+  {
+   "type": "core/dome",
+   "lod": [
+    0
+   ],
+   "at": [
+    19,
+    12,
+    12
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.8,
+    "profile": "onion",
+    "drum": 1.2,
+    "finial": 1.6,
+    "colour": "#3b8f94",
+    "drumColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    28.5,
+    21,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "radius": 1.5,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#efe6d0",
+    "capColour": "#3b8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9cfb4",
+    "pillarEvery": 5,
+    "points": [
+     [
+      -38,
+      -36
+     ],
+     [
+      38,
+      -36
+     ],
+     [
+      38,
+      30
+     ],
+     [
+      -38,
+      30
+     ],
+     [
+      -38,
+      -36
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 3,
+    "line": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; text-only composition from brief"
+ }
+}

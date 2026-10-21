@@ -1,0 +1,334 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "st-marys-catholic-church-damaturu",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/damaturu.json",
+   "used": "broad gabled nave 32x18 m, tall front cross tower, red-brick accent, high perimeter wall; no photo or OSM building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     32,
+     18
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "plinth": 0.7,
+    "bands": "#9c5b3f"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     12,
+     9
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -9,
+    -7
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9c5b3f",
+    "windows": "arched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "narthex",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    3,
+    -6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c5b3f",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-annex",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cross-v",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    -7
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "concrete"
+   },
+   "z0": 15.5
+  },
+  {
+   "type": "mass",
+   "id": "cross-h",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    -7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "material": "concrete"
+   },
+   "z0": 17.6
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    3,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 3.0,
+    "pillarEvery": 5,
+    "colour": "#e2d9c6"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    3,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.8,
+    "pillar": 1.0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#cfcfcf",
+    "count": 2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; cross tower and walled compound from the brief"
+ }
+}

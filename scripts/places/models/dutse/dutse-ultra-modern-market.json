@@ -1,0 +1,460 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "dutse-ultra-modern-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://businessday.ng/news/article/jigawa-lights-up-dutse-market-with-solar-electrification-project/",
+   "used": "about 300 lock-up shops on Ibrahim Aliyu Way Bypass powered by solar panels installed in the market"
+  },
+  {
+   "kind": "text",
+   "ref": "wikidata:Q123375856",
+   "used": "identity: market in Jigawa State; no photo or OSM outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this market exists in the evidence; four parallel shop rows with solar roofs are inferred from the report of 300 lock-ups and solar panels."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "row0",
+   "footprint": {
+    "rect": [
+     96,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       3.2,
+       3.0
+      ],
+      "colours": [
+       "#4f7a63",
+       "#f4f0e6",
+       "#4f7a63"
+      ],
+      "mode": "stripes-v",
+      "proud": 0.03
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "solar-panels",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -18,
+    4.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 22,
+    "panelWidth": 3.8,
+    "panelDepth": 1.6,
+    "tilt": 12,
+    "gap": 0.2,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -22.6,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 3.0,
+    "colours": [
+     "#4f7a63",
+     "#f4f0e6"
+    ],
+    "stripe": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row1",
+   "footprint": {
+    "rect": [
+     96,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       3.2,
+       3.0
+      ],
+      "colours": [
+       "#4f7a63",
+       "#f4f0e6",
+       "#4f7a63"
+      ],
+      "mode": "stripes-v",
+      "proud": 0.03
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "solar-panels",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -4,
+    4.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 22,
+    "panelWidth": 3.8,
+    "panelDepth": 1.6,
+    "tilt": 12,
+    "gap": 0.2,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -8.6,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 3.0,
+    "colours": [
+     "#4f7a63",
+     "#f4f0e6"
+    ],
+    "stripe": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row2",
+   "footprint": {
+    "rect": [
+     96,
+     8
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       3.2,
+       3.0
+      ],
+      "colours": [
+       "#4f7a63",
+       "#f4f0e6",
+       "#4f7a63"
+      ],
+      "mode": "stripes-v",
+      "proud": 0.03
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "solar-panels",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    10,
+    4.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 22,
+    "panelWidth": 3.8,
+    "panelDepth": 1.6,
+    "tilt": 12,
+    "gap": 0.2,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    5.4,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 3.0,
+    "colours": [
+     "#4f7a63",
+     "#f4f0e6"
+    ],
+    "stripe": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row3",
+   "footprint": {
+    "rect": [
+     96,
+     8
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       3.2,
+       3.0
+      ],
+      "colours": [
+       "#4f7a63",
+       "#f4f0e6",
+       "#4f7a63"
+      ],
+      "mode": "stripes-v",
+      "proud": 0.03
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.3,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "solar-panels",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    24,
+    4.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 22,
+    "panelWidth": 3.8,
+    "panelDepth": 1.6,
+    "tilt": 12,
+    "gap": 0.2,
+    "colour": "#2c3e57"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    19.4,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "width": 96,
+    "depth": 1.6,
+    "drop": 0.4,
+    "height": 3.0,
+    "colours": [
+     "#4f7a63",
+     "#f4f0e6"
+    ],
+    "stripe": 1.5
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2,
+    "height": 7,
+    "openings": 1,
+    "kind": "round",
+    "pier": 1.8
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e8dfc8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -56,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     56,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

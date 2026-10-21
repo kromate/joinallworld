@@ -1,0 +1,1292 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "saint-pierre",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "saint-pierre",
+    "climate": "cold",
+    "vernacular": "Small French fishing town on a North Atlantic island: tightly packed two- and three-storey wooden clapboard houses, steep gabled roofs of sheet metal or asphalt shingle, painted in bright saturated colours (red, blue, yellow, green, ochre) against grey rock and fog; a few stone and rendered civic buildings, Basque-influenced church interiors, and low modern concrete blocks for the hospital and airport. Harbour sheds with wooden slipways and capstans.",
+    "wallColours": [
+      "#b5483a",
+      "#3f6fa0",
+      "#e0b84a",
+      "#4f8a6a",
+      "#f2efe6",
+      "#d98c5a",
+      "#8f9aa3"
+    ],
+    "roofColours": [
+      "#4a4f57",
+      "#8a3b2e",
+      "#2f5f7a",
+      "#6b6f73"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "stone",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "timber-shingle",
+      "corrugated",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "none"
+    ],
+    "ornament": "Brightly painted clapboard with contrasting white window frames and corner boards, dormer windows, small porches, picket fences, wooden slipways with capstans at the harbour, tricolour flags.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Saint-Pierre,_Saint-Pierre_and_Miquelon",
+        "what": "Saint-Pierre: colourful buildings around Place du General de Gaulle, cathedral rebuilt 1905-07, Square Joffre sailors monument 1964, Basque pelota fronton 1906, post office and custom house on the harbour"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/%C3%8Ele_aux_Marins",
+        "what": "Ile aux Marins: traditional coloured wooden fishing houses, protected buildings, chapel"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Maison_J%C3%A9z%C3%A9quel",
+        "what": "Maison Jezequel: 19th-century timber frame, three levels, double door and capstan on ground floor, cafe and museum on first floor, attic sail loft, exterior stair"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Saint-Pierre-et-Miquelon",
+        "what": "General territory context; colour palette judged from descriptions of the coloured houses, not measured"
+      }
+    ]
+  },
+  "places": {
+    "saint-pierre-airport-saint-pierre-airport": {
+      "venueId": "saint-pierre-airport-saint-pierre-airport",
+      "city": "saint-pierre",
+      "name": "Saint-Pierre Pointe-Blanche Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small two-storey airport terminal at Pointe-Blanche seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 99,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/40484246",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "Only OSM data: airport_terminal 99 x 33 m. Appearance and control tower are typed from the small-airport type; no description was found."
+    },
+    "saint-pierre-clinic": {
+      "venueId": "saint-pierre-clinic",
+      "city": "saint-pierre",
+      "name": "Hôpital de Saint-Pierre-et-Miquelon",
+      "archetype": "hospital",
+      "subject": "Multi-wing territorial hospital on the hill above the town",
+      "form": {
+        "footprint": "H",
+        "width_m": 105,
+        "depth_m": 93,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/6393738",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM hospital outline 105 x 93 m (5929 m2); no photos described. Wings and storeys are typed."
+    },
+    "saint-pierre-community-notices": {
+      "venueId": "saint-pierre-community-notices",
+      "city": "saint-pierre",
+      "name": "Mairie de Saint-Pierre",
+      "archetype": "civic-small",
+      "subject": "Long narrow town hall (mairie) of Saint-Pierre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 9,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0b84a",
+          "#f2efe6",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/40654222",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint-Pierre,_Saint-Pierre_and_Miquelon",
+          "what": "Saint-Pierre: colourful buildings around Place du General de Gaulle, cathedral rebuilt 1905-07, Square Joffre sailors monument 1964, Basque pelota fronton 1906, post office and custom house on the harbour"
+        }
+      ],
+      "notes": "OSM townhall 43 x 9 m; facade, colours are unverified, typed from French provincial mairie type and the town's coloured-building palette."
+    },
+    "saint-pierre-community-voting-game": {
+      "venueId": "saint-pierre-community-voting-game",
+      "city": "saint-pierre",
+      "name": "Ancienne Mairie de l'Ile-aux-Marins",
+      "archetype": "civic-small",
+      "subject": "The former town hall of Ile-aux-Marins, a very small wooden building in the fishing village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#b5483a",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220423004",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C3%8Ele_aux_Marins",
+          "what": "Ile aux Marins: traditional coloured wooden fishing houses, protected buildings, chapel"
+        }
+      ],
+      "notes": "OSM 9.3 x 7.6 m with a Wikidata item (former town hall). Island houses are coloured clapboard (IAM source) so colours are typed from that, not verified for this building."
+    },
+    "saint-pierre-community-workshop": {
+      "venueId": "saint-pierre-community-workshop",
+      "city": "saint-pierre",
+      "name": "Bibliothèque-Médiathèque municipale",
+      "archetype": "campus-block",
+      "subject": "Municipal library and media centre in the town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e4da",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/529635546",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM building 20 x 16 m only; no description found."
+    },
+    "saint-pierre-market-game": {
+      "venueId": "saint-pierre-market-game",
+      "city": "saint-pierre",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "Placeholder market on the quay (game venue)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b5483a",
+          "#e8e4da",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/847981911",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "Game venue placeholder, low confidence; small shed on the waterfront typed from city style."
+    },
+    "saint-pierre-meal-stop": {
+      "venueId": "saint-pierre-meal-stop",
+      "city": "saint-pierre",
+      "name": "Maison Jézéquel",
+      "archetype": "manor",
+      "subject": "Maison Jézéquel on Ile-aux-Marins, the three-level timber fishing house with outside stair and capstan, now café and museum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9b99a",
+          "#b5483a",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "exterior staircase to first floor"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "capstan rails in front"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1850s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220423505",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Maison_J%C3%A9z%C3%A9quel",
+          "what": "Maison Jezequel: 19th-century timber frame, three levels, double door and capstan on ground floor, cafe and museum on first floor, attic sail loft, exterior stair"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%8Ele-aux-Marins",
+          "what": "Ile-aux-Marins: church built 1872, Archipelitude museum in former school, Maison Grise, Maison Laloi, Maison Nenesse, several buildings protected 2011 and Jezequel 2014"
+        }
+      ],
+      "notes": "Timber frame brought from France c.1850; ground floor technical area with double door and interior capstan to haul dories, first floor living quarters now cafe and Archipelitude museum, attic sail loft. Listed historic monument 2014. Colours and roof material are not documented - typed from the island palette."
+    },
+    "saint-pierre-osm-node-4513534690": {
+      "venueId": "saint-pierre-osm-node-4513534690",
+      "city": "saint-pierre",
+      "name": "Maison et saline Morel",
+      "archetype": "manor",
+      "subject": "Maison Morel and its salt works on Ile-aux-Marins, a small wooden house by the shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d98c5a",
+          "#f2efe6",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/527302379",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C3%8Ele_aux_Marins",
+          "what": "Ile aux Marins: traditional coloured wooden fishing houses, protected buildings, chapel"
+        }
+      ],
+      "notes": "OSM house 8.1 x 7.6 m. Listed among the island's protected buildings; nothing describing its look was found. The Jezequel page mentions a salt-works display on the island."
+    },
+    "saint-pierre-osm-node-5624753621": {
+      "venueId": "saint-pierre-osm-node-5624753621",
+      "city": "saint-pierre",
+      "name": "Belvédère",
+      "archetype": "park-landscape",
+      "subject": "Belvedere lookout above the town",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f9aa3",
+          "#4f8a6a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building and no description; typed rocky headland lookout with a railing."
+    },
+    "saint-pierre-osm-node-5624754821": {
+      "venueId": "saint-pierre-osm-node-5624754821",
+      "city": "saint-pierre",
+      "name": "Crêperie du Vieux Port",
+      "archetype": "restaurant",
+      "subject": "Small crêperie in a coloured wooden house at the old port",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#3f6fa0",
+          "#e0b84a",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/565281054",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint-Pierre,_Saint-Pierre_and_Miquelon",
+          "what": "Saint-Pierre: colourful buildings around Place du General de Gaulle, cathedral rebuilt 1905-07, Square Joffre sailors monument 1964, Basque pelota fronton 1906, post office and custom house on the harbour"
+        }
+      ],
+      "notes": "OSM building tagged hotel 15.5 x 10.9 m by the harbour; look typed from the coloured-clapboard town style."
+    },
+    "saint-pierre-osm-node-6761993666": {
+      "venueId": "saint-pierre-osm-node-6761993666",
+      "city": "saint-pierre",
+      "name": "Musée Héritage",
+      "archetype": "museum-theatre",
+      "subject": "Local history museum in a large building near the cathedral",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e4da",
+          "#b5483a",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/704769970",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM building 40 x 31 m; no description found."
+    },
+    "saint-pierre-osm-node-6762357225": {
+      "venueId": "saint-pierre-osm-node-6762357225",
+      "city": "saint-pierre",
+      "name": "Fort Lorraine",
+      "archetype": "heritage-fort",
+      "subject": "Small stone fort or battery on the hill above the harbour (recorded as Fort Lorraine)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#8f9aa3",
+          "#6b6f73",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1800s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/749505691",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM building 23 x 13 m only; no source on Fort Lorraine found, form typed from small coastal battery type."
+    },
+    "saint-pierre-osm-node-6763941639": {
+      "venueId": "saint-pierre-osm-node-6763941639",
+      "city": "saint-pierre",
+      "name": "Café Solid'air",
+      "archetype": "restaurant",
+      "subject": "Cafe at the airport terminal, Pointe-Blanche",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e4da",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/40484246",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "The venue sits on the airport terminal footprint (OSM 99 x 33 m); the cafe is typed as a small kiosk-café."
+    },
+    "saint-pierre-osm-way-1352967166": {
+      "venueId": "saint-pierre-osm-way-1352967166",
+      "city": "saint-pierre",
+      "name": "Place du Général de Gaulle",
+      "archetype": "park-landscape",
+      "subject": "Place du General de Gaulle, the central square beside the cathedral, bordered by colourful buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 111,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b5483a",
+          "#3f6fa0",
+          "#e0b84a"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1352967166",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint-Pierre,_Saint-Pierre_and_Miquelon",
+          "what": "Saint-Pierre: colourful buildings around Place du General de Gaulle, cathedral rebuilt 1905-07, Square Joffre sailors monument 1964, Basque pelota fronton 1906, post office and custom house on the harbour"
+        }
+      ],
+      "notes": "Wikipedia: the cathedral stands north of the square, which is bordered by colorful buildings. Square is paved with a lawn strip; monument and bandstand details were not found, so no statue is modelled."
+    },
+    "saint-pierre-osm-way-220420801": {
+      "venueId": "saint-pierre-osm-way-220420801",
+      "city": "saint-pierre",
+      "name": "Arche Musée",
+      "archetype": "museum-theatre",
+      "subject": "Arche Museum, a long low museum building in the town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e0b84a",
+          "#f2efe6",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220420801",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM 53 x 14.5 m museum with Wikidata item (Arche Museum); no description of the facade found."
+    },
+    "saint-pierre-osm-way-220421608": {
+      "venueId": "saint-pierre-osm-way-220421608",
+      "city": "saint-pierre",
+      "name": "Square Joffre",
+      "archetype": "park-landscape",
+      "subject": "Square Joffre, small town square holding the 1964 monument to sailors lost at sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 52,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8f9aa3",
+          "#4f8a6a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "monument to lost sailors, 1964, exact shape not found"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220421608",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint-Pierre,_Saint-Pierre_and_Miquelon",
+          "what": "Saint-Pierre: colourful buildings around Place du General de Gaulle, cathedral rebuilt 1905-07, Square Joffre sailors monument 1964, Basque pelota fronton 1906, post office and custom house on the harbour"
+        }
+      ],
+      "notes": "Wikipedia lists a monument to sailors lost at sea erected in 1964 in Square Joffre; the monument's shape and the square's layout were not described."
+    },
+    "saint-pierre-osm-way-220421609": {
+      "venueId": "saint-pierre-osm-way-220421609",
+      "city": "saint-pierre",
+      "name": "Cathédrale Saint-Pierre",
+      "archetype": "church-classical",
+      "subject": "Saint-Pierre Cathedral, rebuilt 1905-07, with its front stone bell tower rebuilt in 1975",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 19.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e8e4da",
+          "#9a8c80",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "above the porch; 1975 Alsatian sandstone and rhyolite from the island"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "windows donated by de Gaulle"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1907",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220421609",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Saint-Pierre_de_Saint-Pierre-et-Miquelon",
+          "what": "Cathedral built 1905-1907; bell tower above the porch rebuilt 1975 in Alsatian sandstone and local rhyolite; Basque-style galleries; windows donated by de Gaulle; historic monument since 2020"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint-Pierre,_Saint-Pierre_and_Miquelon",
+          "what": "Saint-Pierre: colourful buildings around Place du General de Gaulle, cathedral rebuilt 1905-07, Square Joffre sailors monument 1964, Basque pelota fronton 1906, post office and custom house on the harbour"
+        }
+      ],
+      "notes": "OSM height 19.5 m, 60 x 27 m. Original 1907 concrete tower was judged unsafe and rebuilt 1975 by architect Joseph Muller of Colmar in Alsatian sandstone and rhyolite. Basque-style galleries inside. Wall render colour and roof are typed (not documented). Classified historic monument 2020."
+    },
+    "saint-pierre-osm-way-220427315": {
+      "venueId": "saint-pierre-osm-way-220427315",
+      "city": "saint-pierre",
+      "name": "Église Sainte-Bernadette",
+      "archetype": "shrine-small",
+      "subject": "Sainte-Bernadette chapel, a small modern Catholic chapel in the west of the town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220427315",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM 24 x 19 m with Wikidata chapel item; no description found. Era and form typed."
+    },
+    "saint-pierre-quiet-reflection": {
+      "venueId": "saint-pierre-quiet-reflection",
+      "city": "saint-pierre",
+      "name": "Église Notre-Dame-des-Marins",
+      "archetype": "shrine-small",
+      "subject": "Notre-Dame-des-Marins chapel on Ile-aux-Marins at the harbour entrance, with its presbytery",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#b5483a",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1874",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220422999",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Chapelle_Notre-Dame-des-Marins_de_Saint-Pierre-et-Miquelon",
+          "what": "Chapel built 1874, listed monument, Stations of the Cross by Joseph Lemoine"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%8Ele-aux-Marins",
+          "what": "Ile-aux-Marins: church built 1872, Archipelitude museum in former school, Maison Grise, Maison Laloi, Maison Nenesse, several buildings protected 2011 and Jezequel 2014"
+        }
+      ],
+      "notes": "Built 1874 (chapel article; the island article says a church built 1872), listed historic monument 2011, Stations of the Cross by Joseph Lemoine, still used though the island has had no year-round residents since the 1960s. OSM footprint 37.5 x 23.8 m likely includes the presbytery/annex. Wall material and colours are typed (island wooden houses are coloured clapboard)."
+    },
+    "saint-pierre-recreation": {
+      "venueId": "saint-pierre-recreation",
+      "city": "saint-pierre",
+      "name": "Place Alain Savary",
+      "archetype": "park-landscape",
+      "subject": "Place Alain Savary, a small waterfront square on the western quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 78,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8f9aa3",
+          "#4f8a6a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220425927",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM park 78 x 50 m; no description found."
+    },
+    "saint-pierre-transit": {
+      "venueId": "saint-pierre-transit",
+      "city": "saint-pierre",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "Placeholder bus stop shelter and depot (game venue)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#8f9aa3",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/439543610",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "Game venue placeholder; typed from city style with the OSM footprint (42 x 19 m)."
+    }
+  }
+}

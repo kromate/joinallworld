@@ -1,0 +1,244 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-orcaland",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ORCA_d%C3%A9co_22.jpg",
+   "licence": "CC0",
+   "author": "Blessingedi76",
+   "view": "street",
+   "used": "palette idea only (royal blue cladding, blue balcony rails, cream upper floors) from the ORCA Deco shop 64 m away; it is not confirmed to be Orcaland, so the model is not claimed as photo-verified"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/235965601",
+   "used": "not used: the containing outline is the Polygone shopping centre, not Orcaland"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    -14,
+    10
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6efe8",
+    "windows": "screen",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "screen",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#2c8fb0",
+    "cornice": true
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2c8fb0",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    22,
+    16
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f2b543",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2c8fb0",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4.5,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "colour": "#2c8fb0",
+    "leafColour": "#f2b543"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1,
+    "colour": "#2c8fb0",
+    "frameColour": "#f2b543"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#f2b543",
+    "roof_colour": "#2c8fb0"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#e6efe8",
+    "roof_colour": "#f2b543"
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 7,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#2c8fb0",
+     "#f2b543",
+     "#e6efe8"
+    ]
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -34,
+    0,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 5,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#2c8fb0",
+    "edgeColour": "#f2b543"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 5,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence of the real Orcaland; typed leisure-park entrance with gate, ticket hall, kiosks, umbrellas."
+ }
+}

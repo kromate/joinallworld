@@ -1,0 +1,821 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "federal-polytechnic-bauchi",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_Polytechnic_Bauchi_Main_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musaddam Idriss",
+   "view": "street",
+   "file": "/tmp/places-evidence/bauchi/poly.jpg",
+   "used": "main gate: two pale-beige concrete arches on square piers, central gatehouse with blank board over a maroon door, barrier, black bar gate, kerbed gravel island, red-flowering trees"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json federal-polytechnic-bauchi",
+   "used": "teaching block far behind the trees (size is a guess)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "arch-left",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 2.0,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      5.2
+     ],
+     "radius": 6.0,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-right",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 2.0,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      4.4
+     ],
+     "radius": 5.0,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pl-ll",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.8
+    ]
+   },
+   "at": [
+    -15,
+    -4
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pl-lr",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.8
+    ]
+   },
+   "at": [
+    -3,
+    -4
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pl-rl",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.8
+    ]
+   },
+   "at": [
+    5,
+    -4
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pl-rr",
+   "footprint": {
+    "rect": [
+     2.0,
+     2.8
+    ]
+   },
+   "at": [
+    15,
+    -4
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     8,
+     2.0
+    ]
+   },
+   "at": [
+    -21,
+    -4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbf9f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     3.4,
+     3.0
+    ]
+   },
+   "at": [
+    1,
+    -4
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ccb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9bc9f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "gh-arch",
+   "at": [
+    1,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 0.6,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      5.2
+     ],
+     "radius": 1.7,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#d9ccb0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -5.7,
+    0
+   ],
+   "params": {
+    "width": 3.0,
+    "height": 1.0,
+    "bottom": 6.0,
+    "colour": "#1c1c20",
+    "frameColour": "#2a2a2e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    1,
+    -5.7,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.5,
+    "bottom": 2.6,
+    "colour": "#f4f1ea",
+    "frameColour": "#c9bc9f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    1,
+    -5.8,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 2.4,
+    "pillar": 0.1,
+    "leaf": "solid",
+    "colour": "#d9ccb0",
+    "leafColour": "#6e2222"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    11,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.3,
+    "pillar": 0.4,
+    "leaf": "bars",
+    "colour": "#1a1a1a",
+    "leafColour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "boom",
+   "params": {
+    "width": 0.15,
+    "height": 0.15,
+    "points": [
+     [
+      -4,
+      -7,
+      1.1
+     ],
+     [
+      3,
+      -7,
+      3.0
+     ]
+    ],
+    "colour": "#e8e8e8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "island",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -9,
+    -17
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9a90",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a90"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-f",
+   "footprint": {
+    "rect": [
+     14.6,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    -19.7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-b",
+   "footprint": {
+    "rect": [
+     14.6,
+     0.5
+    ]
+   },
+   "at": [
+    -9,
+    -14.3
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.4
+    ]
+   },
+   "at": [
+    -16.3,
+    -17
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.4
+    ]
+   },
+   "at": [
+    -1.7,
+    -17
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kw0",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -14,
+    -19.7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kwb0",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -14,
+    -14.3
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kw1",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -19.7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kwb1",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10,
+    -14.3
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kw2",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -19.7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kwb2",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -6,
+    -14.3
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kw3",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -2.5,
+    -19.7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kwb3",
+   "footprint": {
+    "rect": [
+     1.5,
+     0.5
+    ]
+   },
+   "at": [
+    -2.5,
+    -14.3
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-base",
+   "footprint": {
+    "rect": [
+     2.2,
+     1.0
+    ]
+   },
+   "at": [
+    -12,
+    -16
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#26262a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26262a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.8
+    ]
+   },
+   "at": [
+    -12,
+    -16
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0efea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0efea"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 6,
+    "colour": "#e0662a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 8,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 12,
+    "colour": "#3d6b34"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 3,
+    "spread": 12,
+    "colour": "#3f7236"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "spread": 4,
+    "colour": "#e8672a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 6,
+    "colour": "#3f7236"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "arches now thick barrel-vaults with gatehouse, bar gate, kerbed striped island and alumni plinth; tree canopy is low-poly blobs, framing is wider than the close photo, no sandy verge or LED board detail"
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "maseru", "venueId": "maseru-likatola-horse-riding",
+ "verified": "text",
+ "evidence": [
+  {"kind": "text", "used": "brief: rural riding stables on the Maseru outskirts: paddock, stable sheds, thatched rondavel lodges, tank, acacias. The OSM node is a 29 m2 restaurant hut only, so the layout is assumed."}
+ ],
+ "camera": {"yawDeg": 25, "pitchDeg": 14, "fovDeg": 55, "fit": "all"},
+ "parts": [
+  {"type": "mass", "id": "stable-block", "footprint": {"rect": [26, 7]}, "at": [14, 14], "height": 3.4, "storeys": 1,
+   "wall": {"material": "stone", "colour": "#a38b6e", "windows": "none", "windowRatio": 0.05, "plinth": 0.3},
+   "roof": {"form": "gable", "colour": "#8c8f92", "material": "metal-sheet", "pitch": 18, "overhang": 0.8}},
+  {"type": "mass", "id": "restaurant-hut", "footprint": {"rect": [7, 5.5]}, "at": [-22, 6], "height": 3, "storeys": 1,
+   "wall": {"material": "mud-render", "colour": "#e8ddc4", "windows": "punched", "windowRatio": 0.1},
+   "roof": {"form": "hip", "colour": "#c8aa6a", "material": "thatch", "pitch": 35, "overhang": 0.9}},
+  {"type": "stadium/thatched-hut", "at": [-30, 22, 0], "params": {"radius": 3.0, "kind": "round"}},
+  {"type": "stadium/thatched-hut", "at": [-20, 28, 0], "params": {"radius": 2.8, "kind": "round"}},
+  {"type": "stadium/thatched-hut", "at": [-10, 24, 0], "params": {"radius": 3.0, "kind": "round"}},
+  {"type": "core/fence-wall", "at": [10, -22, 0], "params": {"length": 44, "height": 1.3, "thickness": 0.15, "kind": "fence", "pillarEvery": 3, "colour": "#8a6a43"}},
+  {"type": "core/fence-wall", "at": [10, -50, 0], "params": {"length": 44, "height": 1.3, "thickness": 0.15, "kind": "fence", "pillarEvery": 3, "colour": "#8a6a43"}},
+  {"type": "core/fence-wall", "at": [-12, -36, 0], "params": {"length": 28, "height": 1.3, "thickness": 0.15, "kind": "fence", "pillarEvery": 3, "colour": "#8a6a43"}, "rotDeg": 90},
+  {"type": "core/fence-wall", "at": [32, -36, 0], "params": {"length": 28, "height": 1.3, "thickness": 0.15, "kind": "fence", "pillarEvery": 3, "colour": "#8a6a43"}, "rotDeg": 90},
+  {"type": "core/water-tank", "at": [30, 20, 0], "params": {"radius": 1.2, "tankHeight": 1.8, "legHeight": 1.6}},
+  {"type": "tree", "at": [-40, -10, 0], "params": {"kind": "acacia", "height": 7}},
+  {"type": "tree", "at": [42, 4, 0], "params": {"kind": "acacia", "height": 6}}
+ ],
+ "site": {"ground": "laterite", "forecourt": "none", "trees": 0, "extent": [120, 100]},
+ "review": {"rounds": 0, "match": "rough", "gaps": "No photo and the OSM footprint is a 29 m2 hut: layout of stables, rondavels and paddock is assumed from the brief."}
+}

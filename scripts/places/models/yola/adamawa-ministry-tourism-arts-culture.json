@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "adamawa-ministry-tourism-arts-culture",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/670731944",
+   "used": "real 2,968 m2 outline (match: containing, tagged building=yes); height and storeys from the brief (3 storeys, flat roof)"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q130456907",
+   "used": "identity: Adamawa State Ministry of Tourism, Arts and Culture"
+  },
+  {
+   "kind": "text",
+   "used": "brief colours: cream render, tan banding, grey flat roof, blank signboard, flag pole, fence wall, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "trimColour": "#c9a77c",
+    "bands": "#c9a77c",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 1.0,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    8,
+    -42,
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 8,
+    "colour": "#d8c9a8"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 8,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    50,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real outline used but no photo of the building; storeys, colours and roof are from the brief; the outline is a sprawling complex so one uniform height is a simplification."
+ }
+}

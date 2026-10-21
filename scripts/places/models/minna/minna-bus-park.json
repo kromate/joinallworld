@@ -1,0 +1,235 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "minna-bus-park",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/668542274",
+   "used": "ticketing/waiting shed footprint (12 x 6 m), name match"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/minna.json",
+   "used": "open motor park, parked buses and minibuses, covered waiting area, kiosk, gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticketing",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    -22,
+    14
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ad",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "bands": "#6a737b"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6a737b",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "waiting-shed",
+   "at": [
+    -22,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_rise": 1.2,
+    "roof_colour": "#6a737b",
+    "wall_colour": "#e6dccb"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -6,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -37,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#a64a35"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.3,
+    "colours": [
+     "#e5b92a",
+     "#f1f1ee",
+     "#2f6b4f",
+     "#c8362f"
+    ],
+    "yaw": 0
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    8,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "kind": "van",
+    "density": 0.7,
+    "colours": [
+     "#f1f1ee",
+     "#e5b92a",
+     "#3a5f8f"
+    ],
+    "yaw": 0
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    8,
+    2,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "kind": "taxi",
+    "density": 0.5,
+    "colours": [
+     "#e5b92a",
+     "#f1f1ee"
+    ],
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -5,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#b9b6ad",
+    "pillarEvery": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    28,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#b9b6ad",
+    "pillarEvery": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     -20
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     12
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only the ticketing shed footprint is real, the park layout and buses are typical guesses"
+ }
+}

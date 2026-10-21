@@ -1,0 +1,337 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-musee-des-civilisations",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Face_principale_du_Mus%C3%A9e_d%27Abidjan.jpg",
+   "licence": "see Commons page (Category:Mus%C3%A9e_des_Civilisations_de_C%C3%B4te_d%27Ivoire)",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/abidjan/musee-facade.jpg",
+   "used": "long single-storey hall behind a deep veranda: flat grey fascia board over four-plus painted columns, recessed pale wall with tall dark timber doors, one lit glazed door, wide low entrance steps, cobble forecourt (night shot; the wall text is left out as a blank board)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Musee_civilisations_Abidjan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ATV",
+   "view": "interior",
+   "used": "interior only: pale cream walls, so the exterior render colour is kept pale"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/322322634",
+   "used": "checked only: 34 x 31 m containing outline does not agree with the long veranda frontage, so a rectangular hall is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -42,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     42,
+     15
+    ]
+   },
+   "at": [
+    0,
+    3.5
+   ],
+   "height": 7.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#dcd9cf",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "windowRatio": 0.12,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8f8b",
+    "material": "membrane",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 43,
+    "depth": 6.4,
+    "height": 5.6,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#a8a69f",
+    "edgeColour": "#9a9890"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.45,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     43,
+     0.6
+    ],
+    "height": 2.6,
+    "colour": "#b9b6ad",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "count": 5,
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.7,
+      "n": 10,
+      "height": 5.4,
+      "colour": "#5aa08c",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.65,
+    1.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.74,
+      "n": 10,
+      "height": 0.5,
+      "colour": "#2f6b5c",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -4.1,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13.5,
+     0,
+     0
+    ],
+    "end": [
+     13.5,
+     0,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.0,
+       0.3
+      ],
+      "height": 4.5,
+      "colour": "#2a1c16",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4.05,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.25
+    ],
+    "height": 4.7,
+    "colour": "#dfe8ee",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "height": 4.4,
+    "colour": "#f2e7b8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 43,
+    "rise": 0.18,
+    "run": 1.1,
+    "count": 4,
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -17,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#ee8a2a",
+    "colours": [
+     "#ee8a2a",
+     "#ffffff",
+     "#1f9a52"
+    ],
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    21,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 6,
+    "line": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1,
+    "colour": "#d6d3c9",
+    "frameColour": "#4f9d8e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Night photo with light effects; no painted column murals, rugs on steps or lettering on fascia (left blank); fascia deepened but still reads lighter than photo; hall length and flat roof guessed (OSM outline disagreed)."
+ }
+}

@@ -1,0 +1,269 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barking_Park_-_geograph.org.uk_-_600864.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Nigel Cox",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/bark1.jpg",
+   "used": "double avenue of tall plane and lime trees with an open leaf-strewn grass walk running to the boating lake at the left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Barking_Park_Lake_-_geograph.org.uk_-_573339.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Nigel Cox",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/bark2.jpg",
+   "used": "long boating lake with a dark tarmac path and grass bank, tree-lined far shore, dull olive water"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/18934744",
+   "used": "park outline (about 1100 x 450 m, 28 ha); a 130 m cut of it is composed as the main entrance avenue, lake edge and memorial"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 85,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": -0.2,
+  "lookAtZ": 6
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -55
+     ],
+     [
+      0,
+      55
+     ]
+    ],
+    "width": 26,
+    "colour": "#b07a2a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -55
+     ],
+     [
+      0,
+      55
+     ]
+    ],
+    "width": 14,
+    "colour": "#a8742a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -40,
+    25,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 50,
+    "colour": "#7a8a70",
+    "bank": true
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -23,
+      -30
+     ],
+     [
+      -23,
+      55
+     ]
+    ],
+    "width": 3,
+    "colour": "#3d4143"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -7,
+     -45,
+     0
+    ],
+    "end": [
+     -7,
+     45,
+     0
+    ],
+    "of": {
+     "type": "big-tree",
+     "params": {
+      "height": 22,
+      "crown_radius": 4.5,
+      "trunk_radius": 0.55,
+      "colour": "#b4ad3c"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     7,
+     -45,
+     0
+    ],
+    "end": [
+     7,
+     45,
+     0
+    ],
+    "of": {
+     "type": "big-tree",
+     "params": {
+      "height": 22,
+      "crown_radius": 4.5,
+      "trunk_radius": 0.55,
+      "colour": "#c9a63a"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     -13,
+     -45,
+     0
+    ],
+    "end": [
+     -13,
+     45,
+     0
+    ],
+    "of": {
+     "type": "big-tree",
+     "params": {
+      "height": 22,
+      "crown_radius": 4.5,
+      "trunk_radius": 0.55,
+      "colour": "#a9a23a"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 12
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 12,
+    "start": [
+     13,
+     -45,
+     0
+    ],
+    "end": [
+     13,
+     45,
+     0
+    ],
+    "of": {
+     "type": "big-tree",
+     "params": {
+      "height": 22,
+      "crown_radius": 4.5,
+      "trunk_radius": 0.55,
+      "colour": "#b8a83a"
+     }
+    },
+    "lod1Step": 3,
+    "lod2Step": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   70,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-18934744",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Camera cannot be placed at eye height inside the avenue (fit pulls it back), so the avenue is small in frame; trees are smooth low-poly crowns not bare-branched plane/lime; leaf-covered floor is a flat ochre strip; lake is a pale patch."
+ }
+}

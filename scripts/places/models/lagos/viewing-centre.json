@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "viewing-centre",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lagos.json#viewing-centre",
+   "used": "TEXT ONLY, no photo found or used: open-sided corrugated tin shed about 14 x 9 m, mono-pitch roof, lit screen on back wall, blank painted signboard, dense plastic chairs facing screen, generator, kiosk; typical Lagos viewing centre, not a specific building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 13,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "screen-wall",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    4.3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "screen",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    4.0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6ecfa",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6ecfa",
+    "material": "metal-sheet"
+   },
+   "z0": 0.6
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 9,
+    "height": 3.8,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#a0a3a0",
+    "wall_colour": "#a0a3a0",
+    "roof_colour": "#9a6a4a",
+    "roof_material": "corrugated",
+    "accent": "#c8362f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.2,
+    "bottom": 2.5,
+    "colour": "#2f7d3c",
+    "frameColour": "#f2c200"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     5
+    ]
+   },
+   "at": [
+    -6.9,
+    1.8
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9a49a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49a",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     5
+    ]
+   },
+   "at": [
+    6.9,
+    1.8
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b3a89a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a89a",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -3.5,
+    -2.6,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 1.0,
+    "dy": 2.4,
+    "of": {
+     "type": "mass",
+     "id": "chair-white",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 0.9,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#f2f2ee",
+      "windows": "none",
+      "windowRatio": 0
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#f2f2ee",
+      "material": "metal-sheet"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -3.5,
+    -1.4,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 1.0,
+    "dy": 2.4,
+    "of": {
+     "type": "mass",
+     "id": "chair-red",
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 0.9,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#c8362f",
+      "windows": "none",
+      "windowRatio": 0
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#c8362f",
+      "material": "metal-sheet"
+     }
+    }
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -4,
+    -3.7,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "generator-box",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.0
+    ]
+   },
+   "at": [
+    8.4,
+    2.5
+   ],
+   "height": 1.1,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2f7d3c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7d3c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drinks-fridge",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.8
+    ]
+   },
+   "at": [
+    8.6,
+    -1.5
+   ],
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c8362f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8362f",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -9.5,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#2f7d3c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo anywhere; typical Lagos viewing centre from text; critic fixes applied"
+ }
+}

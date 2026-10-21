@@ -1,0 +1,418 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "uuth-uyo",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_view_of_University_of_Uyo_Teaching_Hospital.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Nwa Mmeme",
+   "view": "front",
+   "file": "/tmp/places-evidence/uyo/uuth.jpg",
+   "used": "entrance gate only: maroon-brown lintel on two pale piers, outer piers, black bar gates, low cream wall with a brick-pattern band, lawn and palms, lamp posts. The hospital buildings are not visible; they are composed from the brief."
+  },
+  {
+   "kind": "text",
+   "used": "brief: linked 2-4 storey cream wards with teal accents, A&E block with ambulance bay, helipad, water tanks, canopy walkway"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-wall",
+   "footprint": {
+    "rect": [
+     44,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bc",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -33.9,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.8
+    ],
+    "height": 0.7,
+    "colour": "#8a5a44"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 7.2,
+    "colour": "#4a2a26"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.5,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 7.2,
+    "colour": "#4a2a26"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.5,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 7.2,
+    "colour": "#4a2a26"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 7.2,
+    "colour": "#4a2a26"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -34,
+    6.8
+   ],
+   "params": {
+    "rect": [
+     30,
+     1.5
+    ],
+    "height": 1.4,
+    "colour": "#5a2a2e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 3.4,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#151617"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9.2,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 3.4,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#151617"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9.2,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 3.4,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#151617"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -46
+     ],
+     [
+      60,
+      -46
+     ]
+    ],
+    "width": 9,
+    "colour": "#7c7e82"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -38.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     50,
+     3.6
+    ],
+    "height": 0.15,
+    "colour": "#7fa447"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 40
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -13,
+    34
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#6aa8a2",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    13,
+    34
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#6aa8a2",
+    "bay": 7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -3,
+    -37,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "spacing": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 8,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 8,
+    "line": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -31,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 5,
+    "count": 3,
+    "spread": 3,
+    "line": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -36.5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -36.5
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -37
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -37
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate now the hero (maroon lintel, four piers, black bars, cream wall with brick band) but the real piers are taller and the lintel carries a blank board; hospital behind is invented from the brief and the foreground road is plain grey. Street trees and lamp are schematic. Site forecourt still draws a few parked cars."
+ }
+}

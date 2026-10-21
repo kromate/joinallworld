@@ -1,0 +1,534 @@
+{
+ "verified": "photo",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "only a close street photo of stalls; no building to compare, tricycles are generic cars, basin goods on ground and wires are approximate, water edge is flat"
+ },
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Swali_Market,_Swali._Bayelsa,_Nigeria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eseharrison",
+   "view": "street",
+   "file": "/tmp/places-evidence/yenagoa/swali.jpg",
+   "used": "market character: pink/green/blue umbrellas over basket-and-table stalls beside a packed-earth road, tricycles, power poles"
+  },
+  {
+   "kind": "text",
+   "used": "brief: biggest riverside market in Bayelsa, tin-roofed stalls, fish tables, pier, solar cold-room container"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 9,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -28,
+    34,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.2,
+    "roof": "shed",
+    "roof_colour": "#7d6a5a",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    34,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 7,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#8a5f4c",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 3,
+    "height": 2.6,
+    "roof": "shed",
+    "roof_colour": "#6e4a36",
+    "roof_material": "corrugated",
+    "wall_colour": "#8a5a44",
+    "shutter_colours": [
+     "#7a4a35",
+     "#6b5a4e",
+     "#8a6a4a"
+    ],
+    "awning_colours": [
+     "#8a5a44"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.6,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    9,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.6,
+    "colours": [
+     "#d94f4f",
+     "#f2c230",
+     "#3b64b5",
+     "#4aa65a",
+     "#e0508b"
+    ],
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.6,
+    "colours": [
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f",
+     "#e0508b"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    16,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 4.2,
+    "kind": "umbrella",
+    "size": 1.6,
+    "colours": [
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f",
+     "#e0508b",
+     "#4aa65a"
+    ],
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "radius": 2.5,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "radius": 2.5,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    38,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "radius": 2.5,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "radius": 2.5,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    20,
+    12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "radius": 2.5,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    46,
+    12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "radius": 2.5,
+    "colours": [
+     "#e0508b",
+     "#4aa65a",
+     "#3b64b5",
+     "#f2c230",
+     "#d94f4f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "colour": "#2c58a8",
+    "count": 2,
+    "spacing": 6,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24,
+    2,
+    0
+   ],
+   "params": {
+    "colour": "#d63a3a",
+    "count": 2,
+    "spacing": 7,
+    "yaw": 180
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    50,
+    24,
+    0
+   ],
+   "params": {
+    "nx": 1,
+    "ny": 1,
+    "levels": 1
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    50,
+    19,
+    4
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 4,
+    "tilt": 15
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -48,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -16,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    16,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    48,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 0.05,
+    "points": [
+     [
+      -48,
+      0,
+      8.8
+     ],
+     [
+      -16,
+      0,
+      8.8
+     ],
+     [
+      16,
+      0,
+      8.8
+     ],
+     [
+      48,
+      0,
+      8.8
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#222222"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -47,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 3.5,
+    "height": 0.9
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -54,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 12,
+    "colour": "#6b7f6a",
+    "bank": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -38
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "swale-market-yenagoa"
+}

@@ -1,0 +1,950 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Asmara,_museo_nazionale,_ingresso.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "sailko",
+   "view": "front",
+   "file": "/tmp/places-evidence/asmara/museum.jpg",
+   "used": "red-brick walls with decorative frieze bands, gabled timber porch over a banded brick arch, cream rendered porch, white stone dressings, arched windows, cream boundary wall with iron gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/278139845",
+   "used": "main block footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 0.667,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#8e4a3a",
+    "windows": "arched",
+    "windowRatio": 0.28,
+    "bands": "#e8dcc0",
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8f8a",
+    "material": "metal-sheet",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8c98a",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3a261c",
+    "material": "timber-shingle",
+    "pitch": 25,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -17.3,
+    3.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.9
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 3.9,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#9a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.9,
+    -17.3,
+    2.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.377499074759311,
+    -17.35,
+    4.499999999999999
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.9499999999999993,
+    -17.35,
+    5.927499074759311
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.3880612583373386e-16,
+    -17.35,
+    6.45
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.9500000000000004,
+    -17.35,
+    5.92749907475931
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.377499074759311,
+    -17.35,
+    4.499999999999999
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.9,
+    -17.3,
+    2.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.2,
+     1.0
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.4,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     7.4,
+     0.3
+    ],
+    "height": 5.0,
+    "colour": "#2b1a14"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0.0,
+    -16.2,
+    0.8
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.1
+      ],
+      "height": 0.8,
+      "colour": "#e9d9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     0,
+     0
+    ],
+    "end": [
+     3.2,
+     0,
+     0
+    ],
+    "step": [
+     1.6,
+     0,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0.4,
+    -16.2,
+    1.6
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.1
+      ],
+      "height": 0.8,
+      "colour": "#e9d9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     0,
+     0
+    ],
+    "end": [
+     3.2,
+     0,
+     0
+    ],
+    "step": [
+     1.6,
+     0,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0.0,
+    -16.2,
+    2.4000000000000004
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.1
+      ],
+      "height": 0.8,
+      "colour": "#e9d9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     0,
+     0
+    ],
+    "end": [
+     3.2,
+     0,
+     0
+    ],
+    "step": [
+     1.6,
+     0,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0.4,
+    -16.2,
+    3.2
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.1
+      ],
+      "height": 0.8,
+      "colour": "#e9d9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     0,
+     0
+    ],
+    "end": [
+     3.2,
+     0,
+     0
+    ],
+    "step": [
+     1.6,
+     0,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0.0,
+    -16.2,
+    4.0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.1
+      ],
+      "height": 0.8,
+      "colour": "#e9d9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     0,
+     0
+    ],
+    "end": [
+     3.2,
+     0,
+     0
+    ],
+    "step": [
+     1.6,
+     0,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0.4,
+    -16.2,
+    4.8
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.1
+      ],
+      "height": 0.8,
+      "colour": "#e9d9b0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -3.2,
+     0,
+     0
+    ],
+    "end": [
+     3.2,
+     0,
+     0
+    ],
+    "step": [
+     1.6,
+     0,
+     0
+    ],
+    "count": 5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16.3,
+    0.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "height": 2.6,
+    "colour": "#6a5a48"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -16.2,
+    3.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.4
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.5,
+     "startDeg": 180,
+     "endDeg": 0,
+     "plane": "xz"
+    },
+    "colour": "#9a4a38"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.2,
+    5.6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     10,
+     0.2
+    ],
+    "height": 0.5,
+    "colour": "#e8dcc0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -12.1,
+    9.0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.15
+      ],
+      "height": 0.5,
+      "colour": "#e8dcc0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     0,
+     0
+    ],
+    "end": [
+     14,
+     0,
+     0
+    ],
+    "count": 24
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -13,
+      -22
+     ],
+     [
+      -3.2,
+      -22
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.4,
+    "colour": "#e8c98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      3.2,
+      -22
+     ],
+     [
+      13,
+      -22
+     ]
+    ],
+    "height": 1.4,
+    "thickness": 0.4,
+    "colour": "#e8c98a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.4,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#e8c98a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.4,
+    -22,
+    2.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 0.2,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -3.4,
+    -22,
+    2.6
+   ],
+   "params": {
+    "profile": [
+     [
+      0.0,
+      0,
+      "#7a3a2e"
+     ],
+     [
+      0.3,
+      0.1,
+      "#7a3a2e"
+     ],
+     [
+      0.45,
+      0.5,
+      "#7a3a2e"
+     ],
+     [
+      0.0,
+      0.55,
+      "#7a3a2e"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.4,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#e8c98a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.4,
+    -22,
+    2.4
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 0.2,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    3.4,
+    -22,
+    2.6
+   ],
+   "params": {
+    "profile": [
+     [
+      0.0,
+      0,
+      "#7a3a2e"
+     ],
+     [
+      0.3,
+      0.1,
+      "#7a3a2e"
+     ],
+     [
+      0.45,
+      0.5,
+      "#7a3a2e"
+     ],
+     [
+      0.0,
+      0.55,
+      "#7a3a2e"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2.9,
+      -22
+     ],
+     [
+      2.9,
+      -22
+     ]
+    ],
+    "height": 2.1,
+    "thickness": 0.08,
+    "colour": "#f2efe6",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.7,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.5,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     2.7,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#efe8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -19
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-way-278139845",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Porch arch, checker soffit, rosette frieze, piers/urns and gate are modelled but simplified (cream porch front fills the arch; gate bars crude); side wings of the U not modelled; window rhythm approximate."
+ }
+}

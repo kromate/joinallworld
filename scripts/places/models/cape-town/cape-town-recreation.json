@@ -1,0 +1,529 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Green_Point_Park_Cape_Town.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Kapstadt entdecken!",
+   "view": "street",
+   "file": "/tmp/places-evidence/cape-town/recreation-0.jpg",
+   "used": "mown lawn in front, sandy path edge, reed-edged pond with stone retaining wall, row of timber pergolas on the right, sparse young trees, interpretive sign frames"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Point_Urban_Park_%26_Biodiversity_Garden,_Green_Point_Common_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Axxter99",
+   "view": "street",
+   "file": "/tmp/places-evidence/cape-town/recreation-1.jpg",
+   "used": "wide open lawn, tall slim street lamps, pale shade sail, low pond edge, flat-roofed apartment blocks beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/44948367",
+   "used": "context only: the 690 m park is far over the scene clamp, a 130 m section around the pond is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    20,
+    0.02
+   ],
+   "params": {
+    "width": 130,
+    "depth": 90,
+    "colour": "#6fa04c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -24
+     ],
+     [
+      -25,
+      -19
+     ],
+     [
+      10,
+      -20
+     ],
+     [
+      60,
+      -12
+     ]
+    ],
+    "width": 4.0,
+    "colour": "#d2b48a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      10
+     ],
+     [
+      -10,
+      12
+     ],
+     [
+      30,
+      4
+     ],
+     [
+      58,
+      -14
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#d2b48a"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -6,
+    24,
+    0.03
+   ],
+   "params": {
+    "width": 72,
+    "depth": 24,
+    "shape": "oval",
+    "colour": "#4f7f8c",
+    "bank": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    35,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 0.9,
+    "thickness": 0.8,
+    "colour": "#8d8678"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     26,
+     38,
+     0
+    ],
+    "end": [
+     54,
+     42,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "pergola",
+     "params": {
+      "width": 10,
+      "depth": 8,
+      "height": 4.6,
+      "colour": "#4a3426"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -8,
+     1.6
+    ],
+    "end": [
+     2,
+     -5,
+     1.9
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.2
+      ],
+      "height": 0.5,
+      "colour": "#eee8d8",
+      "topColour": "#d8d4c8"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0,
+     0
+    ],
+    "end": [
+     50,
+     8,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "lamp-post",
+     "params": {
+      "height": 9
+     }
+    }
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -20,
+    6,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -44,
+    22,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 30,
+    "count": 5,
+    "kind": "broadleaf",
+    "min_height": 5,
+    "max_height": 8
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -10,
+    52,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 6,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -28,
+      -9,
+      0
+     ],
+     [
+      -28,
+      -9,
+      2.2
+     ],
+     [
+      -12,
+      -8.5,
+      2.8
+     ],
+     [
+      2,
+      -8,
+      2.2
+     ],
+     [
+      2,
+      -8,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#3a3f44",
+    "radius": 0.07
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -4,
+      0
+     ],
+     [
+      -20,
+      -4,
+      2.2
+     ],
+     [
+      -4,
+      -3.5,
+      2.8
+     ],
+     [
+      10,
+      -3,
+      2.2
+     ],
+     [
+      10,
+      -3,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#3a3f44",
+    "radius": 0.07
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     22,
+     34,
+     0
+    ],
+    "end": [
+     50,
+     38,
+     0
+    ],
+    "count": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "height": 0.8,
+      "colour": "#8d8678"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats-a",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    38,
+    84
+   ],
+   "height": 16,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ece2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#cfc9bb",
+    "bay": 5.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flats-b",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    88
+   ],
+   "height": 12,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#cfc9bb",
+    "bay": 5.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hill",
+   "at": [
+    0,
+    112,
+    0
+   ],
+   "params": {
+    "rect": [
+     160,
+     40
+    ],
+    "height": 26,
+    "topScale": 0.5,
+    "colour": "#8a7a5c",
+    "topColour": "#8a7a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "peak",
+   "at": [
+    22,
+    118,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     26
+    ],
+    "height": 44,
+    "topScale": 0.12,
+    "colour": "#6e5f55",
+    "topColour": "#6e5f55"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -5,
+    98,
+    1
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 10,
+    "rows": 2,
+    "dx": 12,
+    "dy": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4,
+       3.5
+      ],
+      "height": 3.2,
+      "colour": "#f2eee4",
+      "topColour": "#b5654a"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Backdrop is a crude tapered hill and peak rather than Lion's Head; the housing grid did not land on the slope; foreground lawn ends short so the near ground reads grey; pond is a rounded rectangle without stone wall or reeds; sign arcs are thin wires without panels; pergolas are small frames."
+ }
+}

@@ -1,0 +1,221 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kaduna.json#kaduna-war-memorial-stone",
+   "used": "no photo or description found; small dressed-stone cenotaph on stepped plinth with obelisk shaft, railed lawn, flag; OSM nearest building (15 m, 38 m2) judged unreliable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     16
+    ],
+    "height": 0.12,
+    "colour": "#6b8f4e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     8
+    ],
+    "z0": 0.12,
+    "height": 0.35,
+    "colour": "#8a8379"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 0.47,
+    "height": 0.35,
+    "colour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "z0": 0.82,
+    "height": 0.9,
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "block",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 1.72,
+    "height": 1.5,
+    "topScale": 0.92,
+    "colour": "#bdb6a6"
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    0,
+    0,
+    3.2
+   ],
+   "params": {
+    "height": 3.2,
+    "base_width": 1.5,
+    "style": "square",
+    "steps": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -1.35
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.1
+    ],
+    "z0": 2.0,
+    "height": 0.9,
+    "colour": "#3a3631"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    4.5,
+    3.5,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "colours": [
+     "#d6d0c0"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    7.5,
+    0
+   ],
+   "params": {
+    "length": 15,
+    "height": 0.9,
+    "thickness": 0.08,
+    "kind": "rail",
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": 2,
+  "treeKind": "broadleaf",
+  "extent": [
+   30,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo evidence; shape is a plausible cenotaph, not the real memorial."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "kaduna-war-memorial-stone"
+}

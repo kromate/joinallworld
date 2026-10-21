@@ -1,0 +1,1019 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "akure",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "akure",
+    "climate": "rainforest",
+    "vernacular": "Ondo State capital in the rainforest belt (about 2,500 mm rain): sprawling low-rise town of single- and two-storey cement-rendered houses in cream, ochre and pastel green with rust-red corrugated roofs, mud-walled palace courtyards of the Deji, colonial-era churches and a few modern government blocks, all under heavy tree cover with red-brown laterite earth.",
+    "wallColours": [
+      "#e9dfc6",
+      "#d8c08a",
+      "#c9b79a",
+      "#a8a39a",
+      "#9dbb9a",
+      "#b86a4a",
+      "#f4f1ea"
+    ],
+    "roofColours": [
+      "#8a4a3a",
+      "#6e7273",
+      "#3f6b4a",
+      "#5a6670"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "laterite",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Deji palace: sixteen courtyards, carved wooden veranda posts, mud walls and sculpture mixing traditional symbols with Christian and Afro-Brazilian influence; plain colonial verandas and pointed arches on churches; no classical gothic or baroque revival in the wider town.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Akure",
+        "what": "tropical rainforest zone, 2,548 mm rain, old Deji palace with 16+ courtyards, Central Mosque on Oba Adesida Road, Oja Oba"
+      },
+      {
+        "url": "https://witpress.com/elibrary/wit-transactions-on-the-built-environment/131/24801",
+        "what": "artistic heritage of the Deji palace, national monument 1989"
+      },
+      {
+        "url": "https://kupi.com/en/explore/nigeria/akure/history",
+        "what": "Yoruba, colonial and post-independence mix; mud-walled palace (travel site)"
+      }
+    ]
+  },
+  "places": {
+    "akure-central-mosque": {
+      "venueId": "akure-central-mosque",
+      "city": "akure",
+      "name": "Akure Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Central Mosque on Oba Adesida Road: a large white and green rendered prayer hall with a main dome, corner domes and two tall minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f3f1e8",
+          "#3f8f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akure",
+          "what": "Central Mosque on Oba Adesida Road described as a major city landmark"
+        }
+      ],
+      "notes": "Landmark status is sourced; dome and minaret counts and colours are typed. Close to Oja Oba market and the palace."
+    },
+    "akure-market": {
+      "venueId": "akure-market",
+      "city": "akure",
+      "name": "Akure Market (Oja Oba)",
+      "archetype": "market-hall",
+      "subject": "The central market near the Deji's palace: a two-storey block of lock-up shops with a covered trading hall beside open stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d7ceb6",
+          "#b86a4a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#7d7f7c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 16
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akure",
+          "what": "Oja Oba market is a short distance from the palace"
+        },
+        {
+          "url": "https://nannews.ng/ondo-govt-bans-trading-activities-on-roads-in-akure/",
+          "what": "traders encroach on roads at Oja Oba and Arakale markets"
+        }
+      ],
+      "notes": "Venue coordinates are next to Erekesan; whether this is Oja Oba or a nearby market is unverified. Made a covered hall to differ from the sheds of Erekesan and Isikan."
+    },
+    "akure-sports-stadium": {
+      "venueId": "akure-sports-stadium",
+      "city": "akure",
+      "name": "Akure Sports Stadium (Akure Township Stadium)",
+      "archetype": "stadium",
+      "subject": "The Akure township stadium: a worn concrete oval with a covered main stand and a few floodlight masts, a cinder athletics track around grass",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcbc0",
+          "#7d7f7c",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sunshine_Stars_F.C.",
+          "what": "home of Sunshine Stars: Akure Township Stadium, 5,000 capacity"
+        },
+        {
+          "url": "https://ripplesnigeria.com/akure-10000-seater-stadium-turned-cattle-grazing-field-criminal-haven-dumpsite",
+          "what": "10,000-seater built by Agagu administration, now neglected"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Akure",
+          "what": "stadium of about 16,000, new stadium planned"
+        }
+      ],
+      "notes": "Capacity conflicts across sources (5,000 to 16,000); modelled as a mid-size bowl. Reported run-down condition so the finish is weathered. A new Araromi stadium is separate."
+    },
+    "chicken-republic-akure": {
+      "venueId": "chicken-republic-akure",
+      "city": "akure",
+      "name": "Chicken Republic (Akure)",
+      "archetype": "restaurant",
+      "subject": "A fast-food restaurant: a single-storey glazed box with a coloured band across the front, outdoor seating and a small drive-through lane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#b0472f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, brand-neutral colours"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Chain outlet; no logo or brand marks should be shown."
+    },
+    "erekesan-market": {
+      "venueId": "erekesan-market",
+      "city": "akure",
+      "name": "Erekesan Market",
+      "archetype": "market-open",
+      "subject": "A crowded open market of tightly packed stalls under mixed umbrellas and tarpaulins along lanes beside the central area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 95,
+        "depth_m": 65,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc7b5",
+          "#d8c08a",
+          "#e9dfc6"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 24
+        },
+        {
+          "id": "awning",
+          "count": 10
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1960s onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nannews.ng/ondo-govt-bans-trading-activities-on-roads-in-akure/",
+          "what": "central Akure markets overflow onto roads"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. No source describes Erekesan; modelled as umbrella-and-tarpaulin stalls to differ from the roofed Isikan and Oja Oba."
+    },
+    "first-bank-akure": {
+      "venueId": "first-bank-akure",
+      "city": "akure",
+      "name": "First Bank of Nigeria (Akure branch)",
+      "archetype": "office-low",
+      "subject": "A two-storey bank branch with a banking hall behind a glazed front, columned entrance canopy and plain flat roof in neutral tones",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d6",
+          "#6a6f78",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Branch bank; brand colours not used. An older branch may carry a more formal colonnade, unconfirmed."
+    },
+    "first-mercy-specialist-hospital": {
+      "venueId": "first-mercy-specialist-hospital",
+      "city": "akure",
+      "name": "First Mercy Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "A private specialist hospital: a three-storey block with a front canopy and ambulance bay behind a gated car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1efe6",
+          "#3f7aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type."
+    },
+    "futa": {
+      "venueId": "futa",
+      "city": "akure",
+      "name": "Federal University of Technology, Akure",
+      "archetype": "campus-block",
+      "subject": "A large campus on the western edge of town: a wide main gate and rows of three-to-four-storey faculty blocks under red-brown roofs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 24,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d4",
+          "#a9744e",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main gate"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1981 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://witpress.com/elibrary/wit-transactions-on-the-built-environment/131/24801",
+          "what": "FUTA researchers study Akure design; no campus description"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Akure",
+          "what": "Akure setting: rainforest zone, landmarks, markets"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Tried two searches; no campus architecture description surfaced."
+    },
+    "holy-mary-statue": {
+      "venueId": "holy-mary-statue",
+      "city": "akure",
+      "name": "Holy Mary Statue",
+      "archetype": "monument",
+      "subject": "A white statue of the Virgin Mary standing on a tall plinth in a small garden enclosure at a road junction",
+      "form": {
+        "footprint": "round",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#7aa0c8",
+          "#c9b79a"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "white Marian figure with blue mantle"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. (Marian statues are usually white with a blue mantle on a stepped plinth)."
+    },
+    "isikan-market": {
+      "venueId": "isikan-market",
+      "city": "akure",
+      "name": "Isikan Market",
+      "archetype": "market-open",
+      "subject": "A covered sheds market: long parallel metal-roofed bays over tables of produce and household goods",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d2bf",
+          "#6b8a5a",
+          "#e9dfc6"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 7
+        },
+        {
+          "id": "stalls",
+          "count": 34
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akure",
+          "what": "Isikan is a community with its own ruler (Iralepo)"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Modelled with long shed bays to differ from the umbrella stalls of Erekesan."
+    },
+    "ministry-of-information": {
+      "venueId": "ministry-of-information",
+      "city": "akure",
+      "name": "Ministry of Information (Ondo State)",
+      "archetype": "civic-palace",
+      "subject": "A state ministry block: a three-storey rendered building with a projecting entrance porch, flagpoles and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d4",
+          "#a9744e",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type."
+    },
+    "ministry-of-justice": {
+      "venueId": "ministry-of-justice",
+      "city": "akure",
+      "name": "Ministry of Justice (Ondo State)",
+      "archetype": "civic-palace",
+      "subject": "A two-storey rendered justice ministry with a columned front veranda and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f1eddd",
+          "#5a6670",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Made classical-fronted (columns, pediment) to differ from the Information ministry; courts and justice buildings in Nigeria commonly use this idiom."
+    },
+    "ondo-state-bus-terminal": {
+      "venueId": "ondo-state-bus-terminal",
+      "city": "akure",
+      "name": "Ondo State Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "A state bus terminal: a long covered departures canopy over bus bays, a small ticket building and a paved forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d6cc",
+          "#4f7a4c",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akure",
+          "what": "Akure transport context (no terminal description)"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type."
+    },
+    "ondo-state-library": {
+      "venueId": "ondo-state-library",
+      "city": "akure",
+      "name": "Ondo State Library",
+      "archetype": "campus-block",
+      "subject": "A two-storey library with a ribbon of windows, a front canopy and a lawn forecourt with a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d8",
+          "#7fa58f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type."
+    },
+    "st-davids-cathedral": {
+      "venueId": "st-davids-cathedral",
+      "city": "akure",
+      "name": "St David's Anglican Cathedral, Ijomu",
+      "archetype": "church-modern",
+      "subject": "The Anglican cathedral of Akure at Ijomu: a broad rendered nave with a gabled west front, a square bell tower and arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#efe9d8",
+          "#9c4a36",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Simeon_Borokini",
+          "what": "St David's Cathedral, Ijomu, Akure: seat of the Bishop of Akure"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christian_Onyia",
+          "what": "2019 episcopal consecration held at St David's Anglican Cathedral, Ijomu"
+        }
+      ],
+      "notes": "Only the church identity and location are sourced; no source gave a date or appearance. Typed as a plain Nigerian Anglican cathedral."
+    }
+  }
+}

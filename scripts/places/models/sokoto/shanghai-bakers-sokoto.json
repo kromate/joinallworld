@@ -1,0 +1,127 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/318385589",
+   "used": "264 m2 outline, rotated 29 degrees"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small rendered bakery-cafe, glazed front, awning, blank board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "osm": true,
+    "fit": 16
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.4,
+    "bands": "#c9a77c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 2.2,
+    "colours": [
+     "#c9a77c",
+     "#f7f4ee"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    3.4
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.1,
+    "bottom": 3.2,
+    "colour": "#b8553a",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spread": 3,
+    "colours": [
+     "#c9a77c",
+     "#6b6e70"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -16,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; awning, board and terrace placed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "shanghai-bakers-sokoto"
+}

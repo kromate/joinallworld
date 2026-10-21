@@ -1,0 +1,1378 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "skopje",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "skopje",
+    "climate": "temperate",
+    "vernacular": "City rebuilt after the 1963 earthquake: modernist and brutalist concrete and render blocks, high-rise socialist housing in Karpoš and Aerodrom, low-rise suburbs; the Ottoman Old Bazaar of stone, whitewash and tile-roofed shops beneath the Kale fortress; and the Skopje 2014 centre of white neoclassical and baroque facades with green copper domes, marble statues and bronze.",
+    "wallColours": [
+      "#ece8dc",
+      "#d6c9a8",
+      "#a8a49c",
+      "#b87a55",
+      "#8f8a82",
+      "#c9b79a"
+    ],
+    "roofColours": [
+      "#b0583a",
+      "#707070",
+      "#6f9a8a",
+      "#4e4f52"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "marble",
+      "limestone",
+      "stone",
+      "brick",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Skopje 2014: neoclassical columns, pediments, ivory and white marble with bronze reliefs and gold-coloured railings; Ottoman bazaar: stone arches, wooden eaves, small domes of the hans and bathhouses; modernist: bare concrete, ribbon windows, Kenzo Tange wall-like long blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Skopje",
+        "what": "Old Bazaar kept low to preserve views of the Kale; 1963 quake destroyed about 80 percent of the city; modernist rebuilding with Karpoš and Aerodrom high-rises; tree-lined boulevards and Vodno woods"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Skopje_2014",
+        "what": "neoclassical new buildings, Greek Revival archaeological museum, white marble monuments with bronze reliefs, ivory-coloured Warrior column, gold-coloured bridge railings"
+      }
+    ]
+  },
+  "places": {
+    "skopje-airport-skopje-airport": {
+      "venueId": "skopje-airport-skopje-airport",
+      "city": "skopje",
+      "name": "Skopje International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the TAV-operated terminal at Petrovec: a two-level glazed terminal opened 2011 with a long front canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#aeb2b5",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Skopje_International_Airport",
+          "what": "new terminal building opened September 2011 with runway extension, admin and cargo buildings, access road and parking; TAV Airports 20-year concession from 2008"
+        }
+      ],
+      "notes": "Only the 2011 date and operator are sourced; facade and size estimated."
+    },
+    "skopje-clinic": {
+      "venueId": "skopje-clinic",
+      "city": "skopje",
+      "name": "ГОБ 8-ми Септември",
+      "archetype": "hospital",
+      "subject": "the City General Hospital 8 September: a post-earthquake multi-wing hospital in render and concrete",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d3c6",
+          "#8c9aa3",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-70s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-community-notices": {
+      "venueId": "skopje-community-notices",
+      "city": "skopje",
+      "name": "National Bank of the Republic of North Macedonia",
+      "archetype": "office-low",
+      "subject": "the central bank headquarters, a heavy stone-clad block on Kuzman Josifovski Pitu",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a8a49c",
+          "#5c6b78",
+          "#e8e6e0"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1990s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Appearance not verified; typed as a formal institutional bank block."
+    },
+    "skopje-community-voting-game": {
+      "venueId": "skopje-community-voting-game",
+      "city": "skopje",
+      "name": "Град Скопје",
+      "archetype": "civic-palace",
+      "subject": "the City of Skopje administration building in the centre, a mid-century modernist block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b6ae",
+          "#5c6b78",
+          "#e8e6e0"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-70s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-community-workshop": {
+      "venueId": "skopje-community-workshop",
+      "city": "skopje",
+      "name": "ФОН Универзитет",
+      "archetype": "campus-block",
+      "subject": "FON University: a modern rendered and glazed college block in Aerodrom",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#5c7a92",
+          "#c9c6bd"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-market-game": {
+      "venueId": "skopje-market-game",
+      "city": "skopje",
+      "name": "Bit pazar",
+      "archetype": "market-open",
+      "subject": "the Bit Pazar open market in the Old Bazaar: rows of produce stalls under umbrellas and tin sheds, backed by low shops",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9cdb0",
+          "#b87a55",
+          "#8f8a82"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Ottoman-era bazaar",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Known from general knowledge: the largest open-air market in the city, produce stalls and tin awnings north of the Old Bazaar."
+    },
+    "skopje-meal-stop": {
+      "venueId": "skopje-meal-stop",
+      "city": "skopje",
+      "name": "Pelister",
+      "archetype": "restaurant",
+      "subject": "a traditional Macedonian restaurant: a two-storey rendered building with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e0d3b8",
+          "#8f8a82",
+          "#6b4a32"
+        ],
+        "roofColour": "#b0583a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-node-3951819342": {
+      "venueId": "skopje-osm-node-3951819342",
+      "city": "skopje",
+      "name": "Markovi Kuli",
+      "archetype": "heritage-fort",
+      "subject": "a stone tower fortification on a rocky slope, after the Markovi Kuli (Marko's Towers) near Prilep",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#b4ab98",
+          "#8f8a82",
+          "#c9c3b5"
+        ],
+        "roofColour": "#7a7466",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "1 m thick limestone-mortar walls"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "13th-14th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Marko%27s_Towers",
+          "what": "Marko's Towers near Prilep: 13th-14th c. rampart, walls about 1 m thick of limestone mortar on large limestone rocks, three well-preserved towers on the south wall, granite debris on slopes"
+        }
+      ],
+      "notes": "The venue is a point in Skopje at the Vodno slope, not Prilep; the real identity there is not established. Fort typed from the Prilep Markovi Kuli description and is low confidence."
+    },
+    "skopje-osm-node-4110147399": {
+      "venueId": "skopje-osm-node-4110147399",
+      "city": "skopje",
+      "name": "Етно кујна Вила Елена",
+      "archetype": "restaurant",
+      "subject": "an ethno restaurant in rural northern Skopje region: stone ground floor, timber upper floor, hip roof and a wide terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#b8ae98",
+          "#6b4a32",
+          "#e8e0cf"
+        ],
+        "roofColour": "#b0583a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-node-9896205907": {
+      "venueId": "skopje-osm-node-9896205907",
+      "city": "skopje",
+      "name": "Caffe \"Te Sevda\"",
+      "archetype": "restaurant",
+      "subject": "a small village cafe with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e0d3b8",
+          "#6b4a32",
+          "#ffffff"
+        ],
+        "roofColour": "#b0583a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-1395332286": {
+      "venueId": "skopje-osm-way-1395332286",
+      "city": "skopje",
+      "name": "St. Peter & St. Paul",
+      "archetype": "church-classical",
+      "subject": "a modern Macedonian Orthodox church with a central dome",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 16,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efece4",
+          "#b4ab98",
+          "#b0583a"
+        ],
+        "roofColour": "#6f9a8a",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "late 20th - 21st century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-1486501468": {
+      "venueId": "skopje-osm-way-1486501468",
+      "city": "skopje",
+      "name": "University \"Mother Teresa\"",
+      "archetype": "campus-block",
+      "subject": "a private university building: rendered block with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0ddd2",
+          "#5c7a92",
+          "#c9c6bd"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-1521621170": {
+      "venueId": "skopje-osm-way-1521621170",
+      "city": "skopje",
+      "name": "Tauresium",
+      "archetype": "heritage-fort",
+      "subject": "the archaeological site of Tauresium on the Vardar gorge, birthplace of Justinian I: ruined fortification walls on a hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a69f90",
+          "#7a7466",
+          "#c9c3b5"
+        ],
+        "roofColour": "#7a7466",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "ruined late-antique walls"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "late antique, 5th-6th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Taor",
+          "what": "Tauresium is an ancient town and archaeological site near the village of Taor; no detail on remains"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Remains are only named, not described, in the fetched source; walls typed generically."
+    },
+    "skopje-osm-way-1559869019": {
+      "venueId": "skopje-osm-way-1559869019",
+      "city": "skopje",
+      "name": "South East European University",
+      "archetype": "campus-block",
+      "subject": "SEEU Skopje: a modern glass and render teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#5c7a92",
+          "#c9c6bd"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-16669251": {
+      "venueId": "skopje-osm-way-16669251",
+      "city": "skopje",
+      "name": "Ss. Cyril and Methodius University",
+      "archetype": "campus-block",
+      "subject": "the university rectorate: a large mid-century modernist block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d1cdc2",
+          "#8c8a85",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-70s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-174495088": {
+      "venueId": "skopje-osm-way-174495088",
+      "city": "skopje",
+      "name": "Todor Proeski National Arena",
+      "archetype": "stadium",
+      "subject": "the national arena on City Park: four stands around a track-and-pitch bowl with an illuminated outer facade",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "flat",
+        "variant": "bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4d3ce",
+          "#8c8a85",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered side stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "LED"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1947, designed 1975, expanded 2009-13",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Philip_II_Arena",
+          "what": "capacity about 33,011; four stands built in stages 1978-2011; designed 1975 by Dragan Krstev and Todorka Mavkova; finished 2013 with an illuminated outer facade; 8-lane tartan track; pitch 105x68; LED scoreboard"
+        }
+      ],
+      "notes": "Largest stadium in North Macedonia. Roof extent and exact colours estimated."
+    },
+    "skopje-osm-way-229939246": {
+      "venueId": "skopje-osm-way-229939246",
+      "city": "skopje",
+      "name": "Millennium Cross",
+      "archetype": "monument",
+      "subject": "the 66 m steel lattice cross on Vodno mountain with a twelve-column base platform",
+      "form": {
+        "footprint": "cross",
+        "width_m": 20,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 66,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d8dadc",
+          "#a8a49c",
+          "#ffffff"
+        ],
+        "roofColour": "#d8dadc",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "twelve-column platform"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "thousands of lights at night"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "dedicated 2002, finished 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Millennium_Cross",
+          "what": "66 m tall, traditional cross form with lattice grid like the Eiffel Tower, twelve-column platform for twelve apostles, lift to the top, lit at night by thousands of lights, on Vodno"
+        }
+      ],
+      "notes": "Daytime colour (light grey-white steel) is not stated in the source. A restaurant and shop stand beside it."
+    },
+    "skopje-osm-way-231098674": {
+      "venueId": "skopje-osm-way-231098674",
+      "city": "skopje",
+      "name": "Рајски парк",
+      "archetype": "park-landscape",
+      "subject": "a green municipal park with tree-lined paths and a small kiosk and playground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e0d3b8",
+          "#c9b79a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-35778021": {
+      "venueId": "skopje-osm-way-35778021",
+      "city": "skopje",
+      "name": "Avtokomanda Stadium",
+      "archetype": "stadium",
+      "subject": "a small football ground with one main stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a8a4",
+          "#7a7e82",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-38071327": {
+      "venueId": "skopje-osm-way-38071327",
+      "city": "skopje",
+      "name": "Стадион Борис Трајковски",
+      "archetype": "stadium",
+      "subject": "the Boris Trajkovski stadium: a mid-sized football stadium with a roofed main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a8a4",
+          "#3d6f9b",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-414650719": {
+      "venueId": "skopje-osm-way-414650719",
+      "city": "skopje",
+      "name": "Парк Бановина",
+      "archetype": "park-landscape",
+      "subject": "Banovina Park: a hillside park with mature trees and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e0d3b8",
+          "#c9b79a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-osm-way-481402867": {
+      "venueId": "skopje-osm-way-481402867",
+      "city": "skopje",
+      "name": "Sveto Prepolovenie Rusa Sreda",
+      "archetype": "shrine-small",
+      "subject": "a small Orthodox village church (Mid-Pentecost) in rendered stone",
+      "form": {
+        "footprint": "cross",
+        "width_m": 12,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efece4",
+          "#b4ab98",
+          "#6b4a32"
+        ],
+        "roofColour": "#b0583a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-quiet-reflection": {
+      "venueId": "skopje-quiet-reflection",
+      "city": "skopje",
+      "name": "Манастир Св. Ѓорѓија",
+      "archetype": "shrine-small",
+      "subject": "a Macedonian Orthodox monastery: small stone church with a dome and a cell wing around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#b8ae98",
+          "#efece4",
+          "#6b4a32"
+        ],
+        "roofColour": "#b0583a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "wooden cell gallery"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval, rebuilt",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-recreation": {
+      "venueId": "skopje-recreation",
+      "city": "skopje",
+      "name": "Monastery of Shishevo",
+      "archetype": "shrine-small",
+      "subject": "Shishevo monastery: a stone church with a dome inside a walled yard with cell wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 35,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#b8ae98",
+          "#efece4",
+          "#6b4a32"
+        ],
+        "roofColour": "#b0583a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval, rebuilt",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "skopje-transit": {
+      "venueId": "skopje-transit",
+      "city": "skopje",
+      "name": "Kadina Reka",
+      "archetype": "transport-station",
+      "subject": "a rural halt typed as a low platform shelter and bus bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#c9c5ba",
+          "#8c8a85",
+          "#e8e6e0"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Placeholder hub name; no station identified."
+    }
+  }
+}

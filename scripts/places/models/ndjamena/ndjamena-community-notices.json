@@ -1,0 +1,200 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: walled detention centre, low block behind tall perimeter wall; no photo or OSM outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b88f66",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.3,
+    "bands": "#9a9588"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9588",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cells",
+   "footprint": {
+    "rect": [
+     10,
+     10
+    ]
+   },
+   "at": [
+    22,
+    10
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b88f66",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9588",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0,
+    "height": 4.2,
+    "thickness": 0.5,
+    "pillarEvery": 10,
+    "colour": "#c9b392",
+    "points": [
+     [
+      -25,
+      -15
+     ],
+     [
+      25,
+      -15
+     ],
+     [
+      25,
+      15
+     ],
+     [
+      -25,
+      15
+     ],
+     [
+      -25,
+      -15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3.6,
+    "pillar": 1.2,
+    "leaf": "solid",
+    "leafColour": "#3a4a56"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    -25,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 7,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#b88f66"
+   }
+  },
+  {
+   "type": "tower",
+   "at": [
+    25,
+    15,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 7,
+    "cap": "flat",
+    "windows": "none",
+    "colour": "#b88f66"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no evidence; generic walled compound"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-community-notices"
+}

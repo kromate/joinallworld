@@ -1,0 +1,1857 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "riyadh",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "riyadh",
+    "climate": "desert",
+    "vernacular": "Najd plateau capital laid out on a grid of 2 km blocks: flat-roofed 1-3 storey villas behind walls in beige, sand and cream painted render or stone cladding, mid-rise slab blocks, and a cluster of glass towers on the northern axis; historic Najdi mud-brick buildings with crenellated parapets and small triangular window openings survive at Diriyah and the Masmak; public buildings favour desert-beige limestone, travertine or precast panels. Ground is sand and paving with date palms and acacia in planted verges.",
+    "wallColours": [
+      "#d8c3a0",
+      "#c9ae86",
+      "#e5d6b8",
+      "#b89a72",
+      "#f0e7d4",
+      "#a98c68"
+    ],
+    "roofColours": [
+      "#bfae90",
+      "#cfcac0",
+      "#8f8a80",
+      "#c9b99a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "limestone",
+      "sandstone",
+      "mud-render",
+      "concrete",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "none"
+    ],
+    "ornament": "Najdi triangular and rectangular window openings (furjat) in patterned rows, stepped crenellated parapets (shurfat) with inverted triangles beneath, projecting peepholes (tarma), carved wooden doors, palm-trunk columns, plain exteriors with decoration inside; modern Saudi civic buildings use giant geometric cut-outs and arcades.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Najdi_architecture",
+        "what": "mud-brick Najd style, furjat triangular openings, shurfat crenellated parapets, tarma peepholes, courtyards, mosques mostly without domes"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Riyadh",
+        "what": "adobe walled town; later marble with a desert-beige tone; 2x2 km grid; Kingdom Centre, Burj Rafal, Faisaliah; hot desert climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/At-Turaif_District",
+        "what": "UNESCO mud-brick Najdi architecture at Diriyah"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Riyadh_railway_station",
+        "what": "local limestone cladding, triangular windows, arcades and stepped parapets"
+      }
+    ]
+  },
+  "places": {
+    "riyadh-airport-riyadh-airport": {
+      "venueId": "riyadh-airport-riyadh-airport",
+      "city": "riyadh",
+      "name": "King Khalid International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 1983 HOK terminals (Terminals 1-4) seen from the landside: a triangular-plan terminal under a row of long arched vaulted roofs (33 arches up to 30 m in the Royal Terminal), with the 81 m control tower and the Royal Mosque's bronze dome beside it",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 330,
+        "depth_m": 290,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "barrel",
+        "variant": "triangular terminal under arched roof vaults",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d3c3a2",
+          "#8c7a5e",
+          "#e8dcc2"
+        ],
+        "roofColour": "#d9cdb6",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "81 m tower between Royal Pavilion and mosque"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "Royal Mosque bronze-clad dome 33 m dia, 40 m high"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "39 m minaret"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "arched roof vaults"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1983",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Khalid_International_Airport",
+          "what": "HOK design; Terminals 1-4 triangular plan 47,500 m2 base linked by 168 m buildings; Royal Terminal 33 arched roof sections rising 30 m; Royal Mosque hexagonal with 33 m polished bronze-clad dome rising 40 m; minaret 39 m; control tower 81 m; Terminal 5 (2016) rectangular 106,500 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/40595107",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "The OSM match is the airport mosque (101x85 m, hexagonal). Model the terminal with arched roof vaults in tan precast and glazed ends. Terminal facade colour is a typed beige; roof/dome facts are sourced."
+    },
+    "riyadh-clinic": {
+      "venueId": "riyadh-clinic",
+      "city": "riyadh",
+      "name": "King Fahad Medical City",
+      "archetype": "hospital",
+      "subject": "The King Fahad Medical City main hospital, a large multi-wing white-and-glass complex with two 11-storey towers in the 2012 expansion",
+      "form": {
+        "footprint": "H",
+        "width_m": 95,
+        "depth_m": 75,
+        "storeys": 8,
+        "height_m": 36,
+        "roof": "flat",
+        "variant": "multi-hospital medical city",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#8fa3ae",
+          "#c9ae86"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004 (expanded 2012)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Fahad_Medical_City",
+          "what": "~1,200 beds over four hospitals, $633 m, 2012 expansion with two 11-storey buildings: National Neurosciences Institute and a cancer centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/899420525",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM main hospital polygon 93x75 m on a 498,360 m2 estate. Facade colour not documented; typed from similar Saudi hospital campuses."
+    },
+    "riyadh-community-notices": {
+      "venueId": "riyadh-community-notices",
+      "city": "riyadh",
+      "name": "Ministry of Foreign Affairs",
+      "archetype": "civic-palace",
+      "subject": "The Ministry of Foreign Affairs (Henning Larsen, 1984): a massive sand-coloured stone-clad block that reads as a fortress carved from a single stone, built around a central court with large geometric cut-outs",
+      "form": {
+        "footprint": "ring",
+        "width_m": 208,
+        "depth_m": 204,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "flat",
+        "variant": "fortress-like block around a central atrium court"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d4bf9a",
+          "#b9a07a",
+          "#e6d8bb"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "giant triangular and circular cut-outs"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1984",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ministry_of_Foreign_Affairs_(Saudi_Arabia)",
+          "what": "designed by Henning Larsen, built 1984, vernacular and monumental Islamic architecture, appears as a fortress carved out of a single piece of stone, Aga Khan Award 1989"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/302308518",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 208x204 m. Building is nearly windowless on the outside with deep cut-outs and sand stone cladding (cut-outs and colour are from memory of photos, not cited; the fortress description is sourced). Storeys/height typed."
+    },
+    "riyadh-community-voting-game": {
+      "venueId": "riyadh-community-voting-game",
+      "city": "riyadh",
+      "name": "Deera Square",
+      "archetype": "park-landscape",
+      "subject": "Deera (Justice) Square in the old centre: a broad paved plaza beside Qasr al-Hukm palace and the Imam Turki bin Abdullah Grand Mosque, framed by low sand-coloured Najdi-style buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 79,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "paved city square"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "limestone",
+        "colours": [
+          "#d2b78e",
+          "#b89a72",
+          "#ebdcc0"
+        ],
+        "roofColour": "#c9b99a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "old-town square, redeveloped 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Deera_Square",
+          "what": "public square in Ad-Dirah neighbourhood next to the Al-Hukm Palace compound and the Imam Turki bin Abdullah Grand Mosque in Qasr al-Hukm District"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/43511259",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Square surface and surroundings are not described in sources reached. Typed as a paved plaza with Najdi crenellated parapet walls. OSM unnamed building 88x79 m."
+    },
+    "riyadh-community-workshop": {
+      "venueId": "riyadh-community-workshop",
+      "city": "riyadh",
+      "name": "King Saud University",
+      "archetype": "campus-block",
+      "subject": "King Saud University's HOK-designed main campus: long arcaded 4-storey teaching blocks in tan precast and stone around landscaped courts, with the Palm Mosque and an entrance gate shaped as two open books",
+      "form": {
+        "footprint": "U",
+        "width_m": 160,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "arcaded campus quadrangle",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "sandstone",
+        "colours": [
+          "#d3b896",
+          "#b89a72",
+          "#eadcc0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gate of two interlocking books"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "international",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Saud_University",
+          "what": "HOK designed main campus (1980s), 900 ha; entrance gate of two interlocking books by Basil Al Bayati; Palm Mosque with palm-trunk motif; King Salman Central Library 7 floors 51,400 m2; King Khalid University Hospital 850 beds"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/667480100",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Point sits near the KSU stadium. Facade materials and colours were not described in sources reached; tan precast is a typed guess from photos of HOK Riyadh campuses."
+    },
+    "riyadh-market-game": {
+      "venueId": "riyadh-market-game",
+      "city": "riyadh",
+      "name": "Sahara Mall",
+      "archetype": "mall",
+      "subject": "Sahara Mall: a very long three-level shopping mall with sandy render walls, skylights and a central glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 490,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "long mall with skylit atria"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c8a6",
+          "#a98c68",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2,
+          "note": "skylights"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sahara_Mall",
+          "what": "about 180 outlets; skylights, fountains and gardens; food court, cinema, children's playground"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/220845002",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 493x108 m (52,457 m2). Exterior colours typed."
+    },
+    "riyadh-meal-stop": {
+      "venueId": "riyadh-meal-stop",
+      "city": "riyadh",
+      "name": "Firdays",
+      "archetype": "restaurant",
+      "subject": "A single-storey roadside restaurant in a strip of shops with a deep awning and glass front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d6b8",
+          "#8c6a4a",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "desert-beige low-rise commercial buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/935648978",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Nothing found. OSM shows only a 296x34 m strip building named after Khalid bin Al-Walid Road."
+    },
+    "riyadh-osm-node-3351034516": {
+      "venueId": "riyadh-osm-node-3351034516",
+      "city": "riyadh",
+      "name": "Boeing 707-386C",
+      "archetype": "monument",
+      "subject": "A preserved Saudia-era Boeing 707-386C airliner displayed on a raised concrete apron at the aviation museum, silver fuselage and four underwing engines",
+      "form": {
+        "footprint": "cross",
+        "width_m": 44,
+        "depth_m": 46,
+        "storeys": 0,
+        "height_m": 13,
+        "roof": "none",
+        "variant": "preserved airliner on display"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9ccd0",
+          "#8a8f94",
+          "#e8eaec"
+        ],
+        "roofColour": "#c9ccd0",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s airframe",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "Riyadh aviation heritage site tagged as museum in OSM (Saqr Al-Jazeera Aviation Museum polygon 639x232 m)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/663121740",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Footprint is the airframe: a 707-320C is about 46 m long with 44 m wingspan and 13 m tail height (dimensions from general aircraft data, not fetched). Show a fuselage with swept wings and tail on a plinth; no airline livery or logos."
+    },
+    "riyadh-osm-way-1193082860": {
+      "venueId": "riyadh-osm-way-1193082860",
+      "city": "riyadh",
+      "name": "Prince Sultan Military Medical City",
+      "archetype": "hospital",
+      "subject": "A large military hospital campus of beige stone-clad 6-storey wings around landscaped courts",
+      "form": {
+        "footprint": "H",
+        "width_m": 128,
+        "depth_m": 78,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "variant": "multi-wing military hospital",
+        "wings": 4
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8c8a6",
+          "#8fa3ae",
+          "#eadcc0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1978",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "desert-beige public buildings of Riyadh"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1193092335",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata inception 1978; OSM main polygon 128x78 m on a 184,174 m2 estate. Appearance not documented in sources reached."
+    },
+    "riyadh-osm-way-119616744": {
+      "venueId": "riyadh-osm-way-119616744",
+      "city": "riyadh",
+      "name": "King Fahd International Stadium",
+      "archetype": "stadium",
+      "subject": "The King Fahd International Stadium (1987): a circular bowl under a huge tent-like membrane roof held up by a ring of 24 columns",
+      "form": {
+        "footprint": "round",
+        "width_m": 240,
+        "depth_m": 235,
+        "storeys": 4,
+        "height_m": 48,
+        "roof": "tensile",
+        "variant": "circular bowl with 24-mast membrane canopy"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc3a8",
+          "#e9e7df",
+          "#8a8f94"
+        ],
+        "roofColour": "#efeee8",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "umbrella-like tensile canopy covering all stands"
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 24,
+          "note": "24 columns carrying the roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "high-tech",
+      "era": "1987",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Fahd_International_Stadium",
+          "what": "roof supported by 24 columns in a circle giving an umbrella effect; capacity 58,398 (record 67,000); architects Ian Fraser, John Roberts, Michael Cheah; pitch 105x68 m; opened 1987"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1643398",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 246x233 m. The white fabric canopy and masts are the whole silhouette; the stands below are pale concrete. Distinct from other stadiums by round shape and tensile roof."
+    },
+    "riyadh-osm-way-161100723": {
+      "venueId": "riyadh-osm-way-161100723",
+      "city": "riyadh",
+      "name": "Granada Center",
+      "archetype": "mall",
+      "subject": "Granada Center on the eastern ring road: a very large sand-coloured shopping mall complex with a long glazed front and a wide forecourt car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 490,
+        "depth_m": 320,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "huge mall with central atrium and office wing",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dccbaa",
+          "#b89a72",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Granada_Center",
+          "what": "covered area 150,000 m2; 300+ retail locations; on the eastern ring road; built by SAUDICO; footbridges to a hotel and a metro station"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/161100723",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building 490x324 m (82,531 m2 footprint). Appearance not described in the sources; colours typed. Larger and plainer than Sahara Mall."
+    },
+    "riyadh-osm-way-161612193": {
+      "venueId": "riyadh-osm-way-161612193",
+      "city": "riyadh",
+      "name": "Princess Nora bint Abdulrahman University",
+      "archetype": "campus-block",
+      "subject": "The world's largest women's university campus: vast pale-stone-and-turquoise teaching blocks with screened facades, linked by an elevated driverless people-mover guideway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 175,
+        "depth_m": 150,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "large campus building with screens and guideway",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e5d6b8",
+          "#2f9ca0",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "people mover station"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Nora_bint_Abdul_Rahman_University",
+          "what": "13 million m2 campus, 600 smart buildings, capacity 60,000, 11.5 km automated people mover with 14 stations, turquoise school colours, built in about two years"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/327247826",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM \"College of Science\" polygon 173x152 m. Pale sand cladding with turquoise accents typed from school colours; facade pattern not documented."
+    },
+    "riyadh-osm-way-168522856": {
+      "venueId": "riyadh-osm-way-168522856",
+      "city": "riyadh",
+      "name": "Al Suwaidi Park",
+      "archetype": "park-landscape",
+      "subject": "Al Suwaidi Park: a large public park with lawns, rows of palms, a small lake and a pavilion near Wadi Hanifa",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 440,
+        "depth_m": 370,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "park with lake and lawns"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8c8a6",
+          "#b89a72",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "Riyadh name linked to gardens and date palm orchards; Wadi Hanifa rehabilitation in the 2000s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/168522856",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata: public park/garden. OSM polygon 441x371 m. Contents not described."
+    },
+    "riyadh-osm-way-221634202": {
+      "venueId": "riyadh-osm-way-221634202",
+      "city": "riyadh",
+      "name": "Al-Yamamah University",
+      "archetype": "campus-block",
+      "subject": "A private university campus of connected cream 3-4 storey blocks with a glazed central entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d6b8",
+          "#8fa3ae",
+          "#c9ae86"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "desert-beige modern institutional buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/221634202",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata: Al-Yamamah Private University, inception 2001. OSM polygon 592x263 m. No facade description found."
+    },
+    "riyadh-osm-way-264745917": {
+      "venueId": "riyadh-osm-way-264745917",
+      "city": "riyadh",
+      "name": "Kingdom Centre",
+      "archetype": "office-tower",
+      "subject": "Kingdom Centre (2002, Ellerbe Becket/Omrania): a 302 m silver-glass tower with an almond-shaped plan and a huge inverted-arch opening at the top spanned by a glazed sky bridge, rising from a low podium holding a mall",
+      "form": {
+        "footprint": "oval",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 41,
+        "height_m": 302,
+        "roof": "curved",
+        "variant": "almond plan; inverted arch opening with sky bridge",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9fb6c4",
+          "#c0cfd8",
+          "#e8eef2"
+        ],
+        "roofColour": "#aab6bd",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "inverted-arch opening with 300 t sky bridge and observation deck"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "mall podium wings"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "2002",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingdom_Centre",
+          "what": "302.3 m tower, almond-shaped plan, inverted arch top with glass sky bridge, reflective silver-toned curtain wall, east wing Al-Mamlaka mall across three levels, west wing events, architect Ellerbe Becket with Omrania, built 1999-2002"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/264745917",
+          "what": "podium: 4 levels, height 16 m, start_date 2002"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/264745917",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikipedia text says 99 stories, but Wikidata gives 41 floors for 302 m, which is the consistent figure. The venue point is the mall podium. Show the tower with its arch opening; podium is 280x275 m with two wings."
+    },
+    "riyadh-osm-way-328365837": {
+      "venueId": "riyadh-osm-way-328365837",
+      "city": "riyadh",
+      "name": "Riyadh College of Technology",
+      "archetype": "campus-block",
+      "subject": "A technical college campus of long 3-storey beige blocks with entrance canopies and parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dccbaa",
+          "#a98c68",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1983",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "desert-beige public buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/328365837",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata: Riyadh College of Technology, inception 1983; OSM polygon 636x482 m. Appearance not documented."
+    },
+    "riyadh-osm-way-329990284": {
+      "venueId": "riyadh-osm-way-329990284",
+      "city": "riyadh",
+      "name": "Yamamah Palace",
+      "archetype": "civic-palace",
+      "subject": "Yamamah Palace, the royal court and Shura Council seat in west Riyadh: a very large sand-beige palace with a monumental gated entrance, crenellated parapets and Najdi-inspired triangular openings",
+      "form": {
+        "footprint": "U",
+        "width_m": 360,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat",
+        "variant": "palace complex with wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d2b78e",
+          "#b89a72",
+          "#ebdcc0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Yamama-Palast",
+          "what": "Yamama Palace: official residence of the King of Saudi Arabia in western Riyadh and seat of the Consultative Assembly"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/329988178",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 363x225 m. Look is typed from Saudi royal/civic architecture; no description was found. Show a recognisable portion."
+    },
+    "riyadh-osm-way-331075149": {
+      "venueId": "riyadh-osm-way-331075149",
+      "city": "riyadh",
+      "name": "Medical City",
+      "archetype": "hospital",
+      "subject": "A large east-Riyadh hospital campus beside its multi-level car-park building: beige 5-storey wings with blue glass",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "hospital campus with car-park block",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#6c8ba0",
+          "#c9ae86"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "modern Riyadh institutional buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/330943271",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "The OSM building at the point is a 273x51 m parking structure, not the hospital itself; actual facility not identified."
+    },
+    "riyadh-osm-way-441769548": {
+      "venueId": "riyadh-osm-way-441769548",
+      "city": "riyadh",
+      "name": "King Abdullah Park",
+      "archetype": "park-landscape",
+      "subject": "King Abdullah Park: a large landscaped family park with lawns, palms, a lake with fountains and low pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 680,
+        "depth_m": 460,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "park with lake and lawns"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8c8a6",
+          "#b89a72",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh",
+          "what": "park city of date-palm gardens"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/441769548",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM polygon 682x463 m (25.9 ha). Contents not verified."
+    },
+    "riyadh-osm-way-53157805": {
+      "venueId": "riyadh-osm-way-53157805",
+      "city": "riyadh",
+      "name": "Prince Faisal bin Fahd Stadium",
+      "archetype": "stadium",
+      "subject": "The 1971 Prince Faisal bin Fahd stadium (Malaz): an older oval concrete bowl with a covered main stand and floodlight masts, due to be rebuilt for 2027",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "none",
+        "variant": "oval bowl with covered main stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d2c4",
+          "#496a8a",
+          "#f1ece0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Prince_Faisal_bin_Fahd_Stadium",
+          "what": "capacity 22,188, opened 1971, original stadium built 1969-71; renovation/rebuild 2024-27 to 44,500-46,865 seats"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9094069",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM polygon 232x181 m. Treated as the existing 1971 stadium. Roof details not documented; plain with a main stand canopy."
+    },
+    "riyadh-osm-way-623544763": {
+      "venueId": "riyadh-osm-way-623544763",
+      "city": "riyadh",
+      "name": "Al-Awwal Park (KSU Stadium)",
+      "archetype": "stadium",
+      "subject": "King Saud University stadium, a university football ground with a concrete bowl, a covered main stand and an athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none",
+        "variant": "university athletics stadium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d2c4",
+          "#2f6b4f",
+          "#f1ece0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/623544763",
+          "what": "stadium footprint 191x162 m; Wikidata KSU Stadium, multi-purpose football venue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9106166",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikipedia fetch matched the wrong (Kansas) stadium and was discarded. Nothing else found; typed."
+    },
+    "riyadh-osm-way-978220391": {
+      "venueId": "riyadh-osm-way-978220391",
+      "city": "riyadh",
+      "name": "At-Turaif District in ad-Dir'iyah",
+      "archetype": "heritage-fort",
+      "subject": "The restored UNESCO At-Turaif district at Diriyah: sun-baked mud-brick Najdi palaces with crenellated stepped parapets, small triangular window openings, tapering corner towers and a stout perimeter wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "restored Najdi mud-brick palace compound",
+        "wings": 3
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "mud-render",
+        "colours": [
+          "#c8a97f",
+          "#b8956a",
+          "#e3d1ae"
+        ],
+        "roofColour": "#c8a97f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "stepped shurfat parapets"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "triangular furjat openings"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1727-1818, restored 2000s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/At-Turaif_District",
+          "what": "first capital of the Saudi state 1727-1818; UNESCO 2010 for Najdi mud-brick architecture; Salwa Palace, Saad bin Saud Palace, Imam Mohammad bin Saud Mosque; restoration programme from 2000/2018"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Najdi_architecture",
+          "what": "mudbrick, furjat openings, shurfat parapets, tarma peepholes, courtyards"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/310437",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "District is 285,884 m2, so show a portion (a palace block with towers). Warm tan mud plaster, pale top bands; no glass or modern signage."
+    },
+    "riyadh-quiet-reflection": {
+      "venueId": "riyadh-quiet-reflection",
+      "city": "riyadh",
+      "name": "Neighbourhood mosque",
+      "archetype": "mosque-domed",
+      "subject": "A typical Riyadh neighbourhood mosque: beige painted-render hall with one low dome, a tall cylindrical minaret and a walled forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "dome",
+        "variant": "neighbourhood mosque with single minaret"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e5d6b8",
+          "#c9ae86",
+          "#f0e7d4"
+        ],
+        "roofColour": "#d8c9a6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Najdi_architecture",
+          "what": "Najdi mosques: courtyard, prayer hall, cylindrical or rectangular minarets"
+        }
+      ],
+      "notes": "The venue name is only the Arabic word \"mosque\"; no OSM building or fact. Typed from city style."
+    },
+    "riyadh-recreation": {
+      "venueId": "riyadh-recreation",
+      "city": "riyadh",
+      "name": "King Salman Park",
+      "archetype": "park-landscape",
+      "subject": "King Salman Park under development: sunken green valleys with tree-lined paths, lakes and meadows, a terraced visitor pavilion by David Adjaye and the Royal Arts Complex buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 900,
+        "depth_m": 500,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "sunken green valleys with visitor pavilion",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#d8c8a6",
+          "#b89a72",
+          "#f0e7d4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Visitor Pavilion with 360 degree terrace"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2019 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Salman_Park",
+          "what": "~16.6 km2 park; 7.2 km urban loop; valley paths up to 30 m deep; Royal Arts Complex (Ricardo Bofill, 110 m Museum of World Cultures, 2,300-seat theatre); Visitor Pavilion (David Adjaye) with 360 degree terrace; ~1 million trees; construction from 2021"
+        }
+      ],
+      "notes": "No OSM data; wikidata point only. Show the valley landscape with the visitor pavilion; most of the park is not built."
+    },
+    "riyadh-transit": {
+      "venueId": "riyadh-transit",
+      "city": "riyadh",
+      "name": "Riyadh Railway Station",
+      "archetype": "transport-station",
+      "subject": "Riyadh Railway Station (Lucio Barbera, opened 1981): a limestone-clad lobby opening into two wings that enclose the platforms, with arcades, triangular windows and stepped parapets",
+      "form": {
+        "footprint": "U",
+        "width_m": 146,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "lobby with two wings enclosing six platforms",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d3bf9b",
+          "#b89a72",
+          "#e6d8bb"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "stepped parapets"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "triangular window openings"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 6
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1981",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riyadh_railway_station",
+          "what": "Lucio Barbera 1978, opened 1981; inspired by Mediterranean mosques; lobby extends into two wings enclosing platforms; prefabricated pre-stressed beam roof; local limestone cladding; triangular windows, arcades, stepped parapets; six platforms"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/40589068",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building 146x125 m. Beige/gold limestone; keep the stepped parapet silhouette."
+    }
+  }
+}

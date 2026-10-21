@@ -1,0 +1,1743 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ashgabat",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ashgabat",
+    "climate": "desert",
+    "vernacular": "The \"White Marble City\": since 1991 nearly every new building is faced in white marble, from ministries and hospitals to universities and apartment blocks, set along wide boulevards and manicured parks at the foot of the Kopetdag range. Landmarks are symbolic: domes and gold details, eight-pointed Oguz Khan stars, tower and globe forms. Older Soviet 1950s-80s low concrete blocks (rebuilt after the 1948 earthquake) survive in the centre. Hot dry summers, flat roofs, planted street trees and irrigated lawns.",
+    "wallColours": [
+      "#f4f2ec",
+      "#e6e1d4",
+      "#d9d2bf",
+      "#c8bda0",
+      "#ece8de",
+      "#b7ad98"
+    ],
+    "roofColours": [
+      "#8d8f92",
+      "#c9c4b8",
+      "#2a5fa3",
+      "#c9a227"
+    ],
+    "wallMaterials": [
+      "marble",
+      "concrete",
+      "glass-curtain",
+      "stone",
+      "render",
+      "granite"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "gold-leaf",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "palm"
+    ],
+    "ornament": "Eight-pointed Oguz Khan star on towers and facades; Turkmen carpet (gul) patterns in paving and building plans; Persian-style domes and Greco-Roman columns on 1990s-2000s buildings; gold-leaf domes and crescents; building shapes echoing function (globe, coin, falcon, wheat ear); embossed Qur'anic epigraphy on mosque walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ashgabat",
+        "what": "White Marble City nickname, Guinness 2013 record for highest concentration of white-marble buildings; Persian domes and Greco-Roman pillars; modernist function-shaped buildings; eight-pointed star motif; Soviet brutalist rebuilding after 1948 earthquake; cold arid climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hazret_Omar_Mosque",
+        "what": "white marble and granite exterior, central dome ~40 m, four 63 m minarets"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ashgabat_railway_station",
+        "what": "white marble and granite facade, neoclassical, blue platform canopies"
+      }
+    ]
+  },
+  "places": {
+    "ashgabat-airport-ashgabat-airport": {
+      "venueId": "ashgabat-airport-ashgabat-airport",
+      "city": "ashgabat",
+      "name": "Ashgabat International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The falcon-shaped 2016 terminal: a white building with broad swept wing-like roofs, glazed front and a row of jet bridges beside a tall control tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 130,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "wave",
+        "wings": 2,
+        "variant": "falcon-in-flight plan"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#6f8fa8",
+          "#c9c4b8"
+        ],
+        "roofColour": "#e6e1d4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "swept wing roof"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "what": "falcon-shaped airport terminal listed among function-shaped post-Niyazov buildings"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1148527",
+          "what": "Ashgabat International Airport, inception 1994; image \"main airport terminal\""
+        }
+      ],
+      "notes": "The falcon-in-flight shape (two wings sweeping out from a central body) is the identity. Sizes, number of bridges and tower are from general knowledge/typing; no source gave measurements. Marble-white palette per the city."
+    },
+    "ashgabat-clinic": {
+      "venueId": "ashgabat-clinic",
+      "city": "ashgabat",
+      "name": "Ashgabat Trauma Center (International Trauma Hospital)",
+      "archetype": "hospital",
+      "subject": "An eleven-storey white-marble hospital block with a glazed entrance, ambulance bay and helipad",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 82,
+        "storeys": 11,
+        "height_m": 44,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#6f8fa8",
+          "#c9c4b8"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4288622",
+          "what": "Ashgabat Trauma Center (2011), OSM: hospital with 11 levels, footprint ~91 x 82 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "what": "new construction faced in white marble"
+        }
+      ],
+      "notes": "Levels, size and year are OSM/Wikidata. Marble facade is by city convention, not from a photo description. Helipad is a guess."
+    },
+    "ashgabat-community-notices": {
+      "venueId": "ashgabat-community-notices",
+      "city": "ashgabat",
+      "name": "National Olympic Committee of Turkmenistan",
+      "archetype": "civic-small",
+      "subject": "A three-storey white-marble office block with a columned entrance and a flag",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 37,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "what": "Greco-Roman pillars and white-marble facing on post-1991 public buildings"
+        }
+      ],
+      "notes": "OSM only knows a 41 x 37 m building nearby; appearance typed from the city-wide marble-and-columns convention."
+    },
+    "ashgabat-community-voting-game": {
+      "venueId": "ashgabat-community-voting-game",
+      "city": "ashgabat",
+      "name": "Atatürk Square",
+      "archetype": "park-landscape",
+      "subject": "A long rectangular green square with marble paths, fountains and a statue in a formal layout",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 65,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "monument implied by the square name"
+        },
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q55604349",
+          "what": "Atatürk Square (Aşkabat), OSM leisure=park ~170 x 65 m; Turkish Wikipedia article"
+        }
+      ],
+      "notes": "Only footprint and the Turkish article exist; layout typed as a formal marble-paved square."
+    },
+    "ashgabat-community-workshop": {
+      "venueId": "ashgabat-community-workshop",
+      "city": "ashgabat",
+      "name": "Turkmen State Medical University",
+      "archetype": "campus-block",
+      "subject": "A four-storey white-marble teaching block with a columned entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 39,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1931",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4146865",
+          "what": "Turkmen State Medical University, founded 1931, OSM footprint ~47 x 39 m"
+        }
+      ],
+      "notes": "Only footprint and the 1931 founding year known; present building appearance typed from the marble convention."
+    },
+    "ashgabat-market-game": {
+      "venueId": "ashgabat-market-game",
+      "city": "ashgabat",
+      "name": "Altyn Asyr Oriental Bazaar",
+      "archetype": "market-hall",
+      "subject": "The Altyn Asyr bazaar laid out like a Turkmen carpet pattern, white one-storey market pavilions arranged around a central tall clock tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "render",
+        "colours": [
+          "#f4f2ec",
+          "#c9a227",
+          "#c9c4b8"
+        ],
+        "roofColour": "#e6e1d4",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tall central clock tower, the bazaar's main landmark"
+        },
+        {
+          "id": "arcade",
+          "count": 4
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Altyn_Asyr_Bazaar",
+          "what": "built to resemble an Ahal-province carpet ornament from a bird's-eye view; 154 ha, 2,155 shops; tall central clock tower; hotel, cafes, bistros"
+        }
+      ],
+      "notes": "The carpet-pattern plan and central clock tower are documented; roof shape, arches and facade finish are not and are estimated. OSM footprint (123 x 95 m) is one building nearby, not the whole 154 ha complex."
+    },
+    "ashgabat-meal-stop": {
+      "venueId": "ashgabat-meal-stop",
+      "city": "ashgabat",
+      "name": "Cafeteria",
+      "archetype": "restaurant",
+      "subject": "A low one-storey cafeteria building with a flat roof and a small terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e1d4",
+          "#6f8fa8",
+          "#f4f2ec"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic \"Cafeteria\" placeholder; no real venue identified. OSM has an unnamed 75 x 31 m building nearby."
+    },
+    "ashgabat-osm-node-3680900775": {
+      "venueId": "ashgabat-osm-node-3680900775",
+      "city": "ashgabat",
+      "name": "Jeytun (Jeitun)",
+      "archetype": "park-landscape",
+      "subject": "A dry foothill settlement edge with a low earth mound, sparse trees and a track",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#c8b48c",
+          "#a89a78",
+          "#d9d2bf"
+        ],
+        "roofColour": "#a89a78",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Ambiguous: Jeitun is both a Neolithic site and a settlement in the Kopetdag foothills. Nothing describing it was found; typed as barren foothill ground."
+    },
+    "ashgabat-osm-relation-14346390": {
+      "venueId": "ashgabat-osm-relation-14346390",
+      "city": "ashgabat",
+      "name": "Köpetdag Stadium",
+      "archetype": "stadium",
+      "subject": "A six-level oval football stadium in white with tiered stands, covered seating and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 242,
+        "depth_m": 158,
+        "storeys": 6,
+        "height_m": 32,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#8d8f92"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2335120",
+          "what": "Köpetdag Stadium, 1997, OSM: 6 levels, outline ~242 x 158 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "what": "white-marble facing convention"
+        }
+      ],
+      "notes": "Size, levels and year measured; the white facade is by convention, not a photo description."
+    },
+    "ashgabat-osm-relation-19307489": {
+      "venueId": "ashgabat-osm-relation-19307489",
+      "city": "ashgabat",
+      "name": "Hazret Omar Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The 2018 Hazret Omar Mosque: a white marble and granite mosque with a ~40 m central dome, smaller domes and four 63 m minarets at the corners",
+      "form": {
+        "footprint": "rect",
+        "width_m": 105,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 40,
+        "roof": "multi-dome",
+        "wings": 1,
+        "variant": "central dome with four corner minarets"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#f4f2ec",
+          "#8d8f92",
+          "#c9c4b8"
+        ],
+        "roofColour": "#e6e1d4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "central dome ~40 m plus smaller domes ~23 m"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "63 m, one at each corner"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "embossed Qur'anic epigraphy on white marble facades"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2018",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hazret_Omar_Mosque",
+          "what": "central dome ~40 m, smaller domes ~23 m, four minarets 63 m, 13,000 m2, white marble and granite exterior, Qur'anic epigraphy"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q86753123",
+          "what": "opened 2018-09-26; OSM outline ~105 x 50 m"
+        }
+      ],
+      "notes": "Dome and minaret heights from the article; dome colour not stated (assumed white/marble). Width/depth are the OSM mass only, the 13,000 m2 area includes courtyards."
+    },
+    "ashgabat-osm-relation-21265088": {
+      "venueId": "ashgabat-osm-relation-21265088",
+      "city": "ashgabat",
+      "name": "White Wheat Museum (Museum of Wheat)",
+      "archetype": "museum-theatre",
+      "subject": "The three-storey Wheat Museum: a white building crowned by a huge golden wheat ear rising from a two-tier crown of smaller ears, with a fountain in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 46,
+        "storeys": 3,
+        "height_m": 21,
+        "roof": "stepped",
+        "wings": 0
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "render",
+        "colours": [
+          "#f4f2ec",
+          "#c9a227",
+          "#c9c4b8"
+        ],
+        "roofColour": "#c9a227",
+        "roofMaterial": "gold-leaf",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "large golden wheat ear in a two-tier crown of smaller ears"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "fountain complex in front of the facade"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ru.wikipedia.org/wiki/Музей_пшеницы",
+          "what": "three-storey building ~21 m tall, large golden wheat ear in a two-tiered crown of smaller ears, fountain complex before the facade"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18405218",
+          "what": "OSM museum ~47 x 46 m, 2005"
+        }
+      ],
+      "notes": "The golden wheat ear crown on top is the recognisable feature. Wall material is marble by city convention; the page only states the gold colour."
+    },
+    "ashgabat-osm-way-147533322": {
+      "venueId": "ashgabat-osm-way-147533322",
+      "city": "ashgabat",
+      "name": "Ashgabat Olympic Stadium",
+      "archetype": "stadium",
+      "subject": "The 45,000-seat Olympic Stadium: a white oval two-tier bowl fully roofed, with a giant Akhal-Teke horse head sculpture on the grandstand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 286,
+        "depth_m": 258,
+        "storeys": 4,
+        "height_m": 42,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#9fb3c4",
+          "#c9c4b8"
+        ],
+        "roofColour": "#f4f2ec",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "two tiers fully covered"
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Ahal-Teke horse head ~40 m high on the grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 8
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Olympic_Stadium_(Ashgabat)",
+          "what": "45,000 seats, two-tiered stands fully covered, white exterior, 40 m horse-head sculpture, architects AFL and Arup"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2343636",
+          "what": "OSM outline ~286 x 258 m"
+        }
+      ],
+      "notes": "Horse-head sculpture (~40 m, 600 t, a Guinness record) is the key landmark. Storey and roof profile are estimated."
+    },
+    "ashgabat-osm-way-1550858457": {
+      "venueId": "ashgabat-osm-way-1550858457",
+      "city": "ashgabat",
+      "name": "Academy of Government Service of Turkmenistan",
+      "archetype": "campus-block",
+      "subject": "A wide white-marble academy building with a columned central entrance and wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q97658848",
+          "what": "Academy of Government Service under the President, 2008, OSM outline ~315 x 236 m"
+        }
+      ],
+      "notes": "Only footprint and year known; marble neoclassical appearance typed from the city convention."
+    },
+    "ashgabat-osm-way-207329467": {
+      "venueId": "ashgabat-osm-way-207329467",
+      "city": "ashgabat",
+      "name": "Ashgabat Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "A botanical garden of climatic zones, greenhouses, paths, gazebos and sculptures with irrigated lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 300,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "glass",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "gazebos"
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "sculptures"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1929",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat_Botanical_Garden",
+          "what": "about 18 ha, 500+ species, several climatic zones, sculptures and gazebos, greenhouses"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q86755199",
+          "what": "founded 1929-10-01; OSM outline ~818 x 301 m"
+        }
+      ],
+      "notes": "Greenhouses exist but are not described; generator may add a small glasshouse pavilion."
+    },
+    "ashgabat-osm-way-241580572": {
+      "venueId": "ashgabat-osm-way-241580572",
+      "city": "ashgabat",
+      "name": "International University of Oil and Gas",
+      "archetype": "campus-block",
+      "subject": "A large white-marble university campus of linked blocks around a central courtyard with a domed entrance hall",
+      "form": {
+        "footprint": "ring",
+        "width_m": 250,
+        "depth_m": 200,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "entrance dome, typed"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4466149",
+          "what": "International Oil and Gas University, 2012, OSM outline ~511 x 466 m"
+        }
+      ],
+      "notes": "Campus is 22 ha; shown as a representative central block. The dome is a guess from 2000s Ashgabat campus designs."
+    },
+    "ashgabat-osm-way-257735045": {
+      "venueId": "ashgabat-osm-way-257735045",
+      "city": "ashgabat",
+      "name": "Ashgabat Main Indoor Arena",
+      "archetype": "stadium",
+      "subject": "The 2016 Asian Indoor and Martial Arts Games arena: a large white four-level hall for ~15,000 spectators with a curved roof and glazed concourse",
+      "form": {
+        "footprint": "oval",
+        "width_m": 178,
+        "depth_m": 156,
+        "storeys": 4,
+        "height_m": 30,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#9fb3c4",
+          "#c9c4b8"
+        ],
+        "roofColour": "#e6e1d4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat_Main_Indoor_Arena",
+          "what": "seating capacity 15,000, universal arena 70 x 40 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q23043434",
+          "what": "OSM: 4 levels, outline ~178 x 156 m"
+        }
+      ],
+      "notes": "Capacity and levels measured; the shape of the roof is not described, so white curved-roof hall is a typed guess."
+    },
+    "ashgabat-osm-way-257738467": {
+      "venueId": "ashgabat-osm-way-257738467",
+      "city": "ashgabat",
+      "name": "Turkmenistan Tower",
+      "archetype": "monument",
+      "subject": "The 211 m TV tower: a slender white shaft crowned by a faceted observation pod ringed with the large eight-pointed Oguz Khan star, topped by a mast",
+      "form": {
+        "footprint": "round",
+        "width_m": 31,
+        "depth_m": 31,
+        "storeys": 30,
+        "height_m": 211,
+        "roof": "pyramidal",
+        "wings": 0,
+        "variant": "tower"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#6f8fa8",
+          "#c9c4b8"
+        ],
+        "roofColour": "#f4f2ec",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "octagonal Star of Oguzkhan decorating the head"
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1,
+          "note": "revolving restaurant at 145 m, observatory at 150 m"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Turkmenistan_Tower",
+          "what": "211 m, revolving restaurant at 145 m (29th floor), VIP room 140 m, main observatory 150 m (30th floor), decorative octagonal Star of Oguzkhan"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "what": "eight-pointed star on the TV tower is the largest in Guinness"
+        }
+      ],
+      "notes": "Height and star confirmed; the exact shape of the shaft and pod and the colours are estimated (white marble tone by convention). Built by Polimeks (2011)."
+    },
+    "ashgabat-osm-way-28191839": {
+      "venueId": "ashgabat-osm-way-28191839",
+      "city": "ashgabat",
+      "name": "Gulistan (Russian) Bazaar",
+      "archetype": "market-hall",
+      "subject": "The 1972-82 Soviet-modernist covered bazaar faced in white marble, with a big overhanging roof and stalls inside, an abstract sculpture at one corner",
+      "form": {
+        "footprint": "rect",
+        "width_m": 126,
+        "depth_m": 47,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "concrete",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#8d8f92"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "abstract corner sculpture by Klych Yarmamedov"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1972-1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Russian_Bazaar,_Ashgabat",
+          "what": "architect Vladimir Visotin, built 1972-1982, Soviet Modernism, covered with white marble, abstract sculpture by Klych Yarmamedov, 2001 renovation by Ekol"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15071616",
+          "what": "OSM: marketplace, building=roof, height 12 m, outline ~126 x 47 m"
+        }
+      ],
+      "notes": "Marble, height and style are documented; roof profile and window screens are estimated. The bazaar is the lowest, widest building in the group (compare with Altyn Asyr)."
+    },
+    "ashgabat-osm-way-326724432": {
+      "venueId": "ashgabat-osm-way-326724432",
+      "city": "ashgabat",
+      "name": "Berkarar Mall",
+      "archetype": "mall",
+      "subject": "A large white-marble and glass shopping centre with a long frontage and domed corner entrances",
+      "form": {
+        "footprint": "rect",
+        "width_m": 286,
+        "depth_m": 130,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#6f8fa8",
+          "#c9c4b8"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q97574392",
+          "what": "Berkarar (shopping centre), OSM outline ~286 x 130 m, area 25,100 m2"
+        }
+      ],
+      "notes": "Only footprint known (Wikipedia page \"Berkarar\" exists for the wider complex). Facade typed as marble-and-glass shopping mall."
+    },
+    "ashgabat-osm-way-34063268": {
+      "venueId": "ashgabat-osm-way-34063268",
+      "city": "ashgabat",
+      "name": "First (Ashgabat) Park",
+      "archetype": "park-landscape",
+      "subject": "A mature city park laid out in 1890 with tree-lined paths, marble-edged beds, fountains and a central monument",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 359,
+        "depth_m": 217,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1890",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q17024044",
+          "what": "Ashgabat (park), laid out 1890, OSM outline ~359 x 217 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat_(park)",
+          "what": "OSM wikipedia tag"
+        }
+      ],
+      "notes": "Founding year and footprint only; furniture typed from the city's marble park convention."
+    },
+    "ashgabat-osm-way-366761908": {
+      "venueId": "ashgabat-osm-way-366761908",
+      "city": "ashgabat",
+      "name": "Church of St. Alexander Nevsky (Ashgabat)",
+      "archetype": "church-classical",
+      "subject": "A small Russian Orthodox church with a central cupola, a gabled entrance and a bell tower, in light plastered walls",
+      "form": {
+        "footprint": "cross",
+        "width_m": 19,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 16,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#2a5fa3",
+          "#c9a227"
+        ],
+        "roofColour": "#2a5fa3",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4500678",
+          "what": "St Alexander Nevsky Church, Ashgabat; OSM outline ~19 x 18 m"
+        }
+      ],
+      "notes": "Only footprint known; Orthodox church typed with a central dome and bell tower. Colours are guesses."
+    },
+    "ashgabat-osm-way-440202473": {
+      "venueId": "ashgabat-osm-way-440202473",
+      "city": "ashgabat",
+      "name": "Oguz Han Engineering and Technology University",
+      "archetype": "campus-block",
+      "subject": "A modern white-marble university campus of long linked blocks and a central domed hall",
+      "form": {
+        "footprint": "U",
+        "width_m": 250,
+        "depth_m": 100,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#6f8fa8",
+          "#c9c4b8"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "typed central hall dome"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q38251697",
+          "what": "Oguz Han Engineering and Technology University, 2016, OSM outline ~480 x 252 m"
+        }
+      ],
+      "notes": "Only footprint and year known; typed."
+    },
+    "ashgabat-quiet-reflection": {
+      "venueId": "ashgabat-quiet-reflection",
+      "city": "ashgabat",
+      "name": "Türkmenbaşy Ruhy Mosque (Gypjak)",
+      "archetype": "mosque-domed",
+      "subject": "The huge white-marble Ruhy Mosque at Gypjak: a central dome with four 91 m minarets at the corners and a mausoleum alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 188,
+        "depth_m": 185,
+        "storeys": 2,
+        "height_m": 55,
+        "roof": "dome",
+        "wings": 2,
+        "variant": "central dome with four corner minarets"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#8d8f92"
+        ],
+        "roofColour": "#e6e1d4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome (dimensions not sourced)"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "91 m each"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2004",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/T%C3%BCrkmenba%C5%9Fy_Ruhy_Mosque",
+          "what": "four 91 m minarets, white marble, capacity ~10,000, Islamic architecture"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q558159",
+          "what": "architect Robert Bellon, opened 2004-10-22, OSM outline ~188 x 185 m"
+        }
+      ],
+      "notes": "Minarets, material and plan size are sourced; dome size/height and the arcaded courtyard are estimated. Includes the mausoleum of the first president."
+    },
+    "ashgabat-recreation": {
+      "venueId": "ashgabat-recreation",
+      "city": "ashgabat",
+      "name": "Inspiration Park (Ruhyýet Park)",
+      "archetype": "park-landscape",
+      "subject": "A 57,000 m2 downtown park of paths lined with poets' busts and statues, an artificial waterfall and flower beds, with two cafes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 330,
+        "depth_m": 170,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#f4f2ec",
+          "#c9c4b8",
+          "#e6e1d4"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 8,
+          "note": "sculptures and busts of poets, thinkers and scholars lining the paths"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "artificial waterfall"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "two cafes"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Inspiration_Park",
+          "what": "57,000 m2 park in downtown Ashgabat, paths lined with sculptures of poets and scholars, artificial waterfall, flower beds, two cafes"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4062631",
+          "what": "Inspiration Alley, 2010, OSM ~165 x 87 m"
+        }
+      ],
+      "notes": "Layout is long N-S strip in reality; shown as 330 x 170 m block. Marble tone of paving is by convention."
+    },
+    "ashgabat-transit": {
+      "venueId": "ashgabat-transit",
+      "city": "ashgabat",
+      "name": "Ashgabat railway station",
+      "archetype": "transport-station",
+      "subject": "The neoclassical station rebuilt in 2009 with a white marble and granite facade, central dome and spire, and blue canopies over the platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#f4f2ec",
+          "#6e7075",
+          "#2f6fb0"
+        ],
+        "roofColour": "#2f6fb0",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "reinforced central dome"
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 2,
+          "note": "blue canopies"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "neoclassical entrance, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1950s; facade 2009",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ashgabat_railway_station",
+          "what": "exterior rebuilt 2009 by Belda Inşaat with white marble and granite facade; reinforced dome and spire; blue platform canopies; neoclassical design by Evsey Sorin mid-1950s; original 1888 station by Ludwig Urlaub"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4073594",
+          "what": "OSM: height 7 m, 1 level, outline ~110 x 21 m"
+        }
+      ],
+      "notes": "OSM mass height is only 7 m; the dome and spire rise above it. Height here is the wings plus a pitched roof; the central dome should dominate."
+    }
+  }
+}

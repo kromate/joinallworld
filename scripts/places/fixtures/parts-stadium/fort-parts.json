@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "parts-test",
+ "venueId": "fort-parts",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 27,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "rampart-ring",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 50,
+    "sides": 5,
+    "height": 6,
+    "star": true
+   }
+  },
+  {
+   "type": "fort-gatehouse",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 9,
+    "pinnacles": 4
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    -44,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 3.5,
+    "height": 14,
+    "cap": "cone"
+   }
+  },
+  {
+   "type": "corner-tower",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "radius": 3,
+    "height": 10,
+    "kind": "square",
+    "cap": "flat"
+   }
+  },
+  {
+   "type": "battlement-wall",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 4.5,
+    "batter": 0.4,
+    "pinnacle": 1.8
+   }
+  },
+  {
+   "type": "horn-pinnacle",
+   "at": [
+    16,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "cannon",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.6,
+    "yaw": 270
+   }
+  },
+  {
+   "type": "hall-range",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 9,
+    "height": 5,
+    "roof": "hip"
+   }
+  },
+  {
+   "type": "earth-rampart",
+   "at": [
+    -6,
+    56,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "width": 18,
+    "height": 6
+   }
+  },
+  {
+   "type": "casemate-block",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "count": 4
+   }
+  },
+  {
+   "type": "moat",
+   "at": [
+    -30,
+    40,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "moat_width": 4
+   }
+  },
+  {
+   "type": "rubble",
+   "at": [
+    -44,
+    22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "count": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ }
+}

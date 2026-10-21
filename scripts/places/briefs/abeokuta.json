@@ -1,0 +1,1189 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "abeokuta",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "abeokuta",
+    "climate": "savanna",
+    "vernacular": "Egba capital in wooded savanna broken by grey granite outcrops: dense low-rise quarters of single- and two-storey cement-rendered houses in cream, ochre and pastel paint with rusting corrugated iron roofs, a few 19th-century Saro (returnee) houses with Afro-Brazilian verandas, red-brick mission churches in Ake, laterite red-earth lanes and granite boulders poking through the town.",
+    "wallColours": [
+      "#e9dfc6",
+      "#d8c08a",
+      "#c9b79a",
+      "#a8a39a",
+      "#b86a4a",
+      "#8fb09a",
+      "#f4f1ea"
+    ],
+    "roofColours": [
+      "#8a5a44",
+      "#6e7273",
+      "#3f6b4a",
+      "#9a4a38"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "red-brick",
+      "granite",
+      "mud-render",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Painted and cowrie-studded geometric panels on palace and museum veranda pillars; colonnaded colonial verandas in Ake; Afro-Brazilian (Saro) gables and balcony details on old returnee houses; indigo adire patterns; shrine and cave openings in granite at Olumo.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Abeokuta",
+        "what": "Aw climate, wooded savanna with masses of grey granite, ~29 km historic mud wall, landmarks list"
+      },
+      {
+        "url": "https://theculturetrip.com/africa/nigeria/articles/11-top-things-to-see-and-do-in-abeokuta/",
+        "what": "travel overview of Ake, Olumo, Saro stately homes"
+      },
+      {
+        "url": "https://mavcor.yale.edu/node/3741",
+        "what": "Abeokuta mosque c.1940 in cement, wood and stucco, Afro-Brazilian tag"
+      },
+      {
+        "url": "https://odessia.com/destinations/nigeria/abeokuta",
+        "what": "Egba museum in colonnaded white building with decorated veranda pillars (travel site, treat cautiously)"
+      }
+    ]
+  },
+  "places": {
+    "abeokuta-clinic": {
+      "venueId": "abeokuta-clinic",
+      "city": "abeokuta",
+      "name": "Abeokuta Community Clinic",
+      "archetype": "hospital",
+      "subject": "A small single-storey community clinic with a covered entrance veranda and a few outbuildings",
+      "form": {
+        "footprint": "L",
+        "width_m": 34,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d8",
+          "#7fa58f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "entrance veranda"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "Abeokuta Aw climate, wooded savanna with grey granite outcrops, Olumo Rock, Ake palace, Centenary Hall, Itoku adire, Kuto, library, new standard-gauge station"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Generic Nigerian primary-care clinic."
+    },
+    "ake-mosque": {
+      "venueId": "ake-mosque",
+      "city": "abeokuta",
+      "name": "Ake Palace Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A modest rendered mosque in the Ake quarter with a central dome and two slim minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f1efe6",
+          "#3f8f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#4a9a74",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://mavcor.yale.edu/node/3741",
+          "what": "neighbouring Abeokuta mosque c.1940 in cement and stucco: shows local cement-rendered mosque idiom"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "Abeokuta Aw climate, wooded savanna with grey granite outcrops, Olumo Rock, Ake palace, Centenary Hall, Itoku adire, Kuto, library, new standard-gauge station"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. No source describes a mosque specifically at the Ake palace; the Yale record is a different Abeokuta mosque."
+    },
+    "ake-polling": {
+      "venueId": "ake-polling",
+      "city": "abeokuta",
+      "name": "Ake Civic Polling Centre",
+      "archetype": "civic-small",
+      "subject": "A one-storey civic hall with a deep front veranda used as a polling centre, in the Ake quarter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc0",
+          "#a9744e",
+          "#ffffff"
+        ],
+        "roofColour": "#7d7f7c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered veranda"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "Abeokuta Aw climate, wooded savanna with grey granite outcrops, Olumo Rock, Ake palace, Centenary Hall, Itoku adire, Kuto, library, new standard-gauge station"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Placeholder-grade civic hall; Ake has colonial verandas."
+    },
+    "alake-palace": {
+      "venueId": "alake-palace",
+      "city": "abeokuta",
+      "name": "Alake's Palace (Afin Alake)",
+      "archetype": "heritage-fort",
+      "subject": "The Alake of Egbaland's palace at Ake: a long colonnaded white building behind a gated forecourt, old and modern wings around inner courtyards",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f3efe4",
+          "#b0472f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "veranda with decorated pillars"
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "inscribed entrance gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "painted geometric panels on pillars"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "yoruba",
+      "era": "1850s with later wings",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.britannica.com/topic/alake",
+          "what": "Ake residence of the Alake dated 1854"
+        },
+        {
+          "url": "https://www.finelib.com/about/places-and-attractions/interesting-facts-attractions-alakes-palace-abeokuta/658",
+          "what": "palace with old and modern wings"
+        },
+        {
+          "url": "https://odessia.com/destinations/nigeria/abeokuta",
+          "what": "adjacent museum is a colonnaded white building with painted, cowrie-studded veranda pillars"
+        }
+      ],
+      "notes": "Dimensions are estimates; sources give no survey. Recognisable by colonnaded white veranda with ornamented pillars facing the Centenary Hall across the road."
+    },
+    "centenary-hall": {
+      "venueId": "centenary-hall",
+      "city": "abeokuta",
+      "name": "Abeokuta Memorial Centenary Hall",
+      "archetype": "civic-small",
+      "subject": "The colonial-era Centenary Hall at Ake, facing the Alake's palace: a single-volume hall with a columned entrance porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe8d2",
+          "#8f6b4c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "columned porch"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1930s-1950",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://connectciti.com/listing/centenary-hall-abeokuta",
+          "what": "hall opposite the Alake palace; colonial-era architecture"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "Centenary Hall built 1930 in Ake"
+        },
+        {
+          "url": "https://odessia.com/destinations/nigeria/abeokuta",
+          "what": "built 1950 to mark a century of peace (dates conflict between sources)"
+        }
+      ],
+      "notes": "Date and exact form uncertain (1930 foundation, 1950 completion in different sources). Porch/pediment are typical of the colonial type, not confirmed from photos."
+    },
+    "funaab": {
+      "venueId": "funaab",
+      "city": "abeokuta",
+      "name": "Federal University of Agriculture, Abeokuta",
+      "archetype": "campus-block",
+      "subject": "A rural campus slice at Alabata: a senate-style administrative block and lecture blocks set among lawns and farm plots",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece7d6",
+          "#4f7a4c",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_University_of_Agriculture,_Abeokuta",
+          "what": "rural campus at Alabata, Abeokuta"
+        },
+        {
+          "url": "https://funaab.edu.ng/funaab-engulfed-in-xmas-ecstasy-its-a-medley-of-colours-all-the-way/",
+          "what": "Senate Building and college entrances exist; no architectural description"
+        }
+      ],
+      "notes": "Senate Building extension and a 68-room multi-storey admin complex (foundation 2026) exist but no appearance was found. Largest campus scale is clamped to the venue scene."
+    },
+    "itoku-market": {
+      "venueId": "itoku-market",
+      "city": "abeokuta",
+      "name": "Itoku Adire Market",
+      "archetype": "market-open",
+      "subject": "The Itoku adire market: rows of umbrella-shaded cloth stalls with indigo-dyed fabrics hung out and dye pits behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#2f4a78",
+          "#b86a4a"
+        ],
+        "roofColour": "#6e7273",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 24,
+          "note": "adire cloth stalls"
+        },
+        {
+          "id": "umbrellas",
+          "count": 20,
+          "note": "women tie cotton under umbrellas"
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "indigo adire patterns on wall"
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1900s onwards",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://theculturetrip.com/africa/nigeria/articles/how-to-spend-24-hours-in-abeokuta",
+          "what": "dense labyrinth of textiles, indigo smell, women tying cotton under umbrellas, deep dye pits out back"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "Itoku and the Adire shopping complex"
+        }
+      ],
+      "notes": "Recognisable by indigo-blue cloth hanging in lines. The separate state-built Adire Mall is not this venue."
+    },
+    "kuto-kitchen": {
+      "venueId": "kuto-kitchen",
+      "city": "abeokuta",
+      "name": "Kuto Ofada Kitchen",
+      "archetype": "restaurant",
+      "subject": "A small open-fronted buka serving ofada rice stew, with plastic tables under a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b0",
+          "#3f7a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ofada_rice",
+          "what": "ofada rice with palm-oil stew, the dish this buka serves"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. Ofada rice is traditionally served wrapped in leaves."
+    },
+    "kuto-market": {
+      "venueId": "kuto-market",
+      "city": "abeokuta",
+      "name": "Kuto Market",
+      "archetype": "market-open",
+      "subject": "Kuto market: a wide yard of lock-up shops and long corrugated-roof sheds over produce stalls, busiest every fifth day",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc7b5",
+          "#b86a4a",
+          "#e9dfc6"
+        ],
+        "roofColour": "#7d5a44",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "lock-ups",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1960s onwards",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://naija.yafri.ca/the-5-major-go-to-markets-in-abeokuta/",
+          "what": "Kuto: busy periodic market, fruits, vegetables, kitchenware, clothes, livestock"
+        },
+        {
+          "url": "https://dailytrust.com/?p=1506538",
+          "what": "2024 fire at a Kuto market destroyed ~15 shops: lock-up shops exist"
+        }
+      ],
+      "notes": "Different from Itoku: produce and general goods under big sheds, not cloth under umbrellas."
+    },
+    "kuto-park": {
+      "venueId": "kuto-park",
+      "city": "abeokuta",
+      "name": "Kuto Motor Park",
+      "archetype": "transport-station",
+      "subject": "A bare laterite motor park with parked buses and shared taxis, a shed for ticket sellers and loading bays",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc7b5",
+          "#8a5a44",
+          "#e9dfc6"
+        ],
+        "roofColour": "#7d7f7c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "Abeokuta Aw climate, wooded savanna with grey granite outcrops, Olumo Rock, Ake palace, Centenary Hall, Itoku adire, Kuto, library, new standard-gauge station"
+        }
+      ],
+      "notes": "Typed brief: no source describing this specific building was found; form, colours and materials come from the city style and the place type. A search found no description of a motor park at Kuto; position is next to Kuto market."
+    },
+    "mko-stadium": {
+      "venueId": "mko-stadium",
+      "city": "abeokuta",
+      "name": "MKO Abiola Stadium (Abeokuta)",
+      "archetype": "stadium",
+      "subject": "The Abeokuta stadium: an oval concrete bowl of about 10,000 seats with covered main stand, floodlight masts and a new digital scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d6cc",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s, renovated 2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/MKO_Abiola_Stadium",
+          "what": "10,000-capacity football stadium, grass pitch"
+        },
+        {
+          "url": "https://guardian.ng/news/ogun-renames-abeokuta-stadium-mko-abiola-sports-complex/",
+          "what": "renovation: tartan track, hybrid turf, digital scoreboard, Olympic pool, courts"
+        },
+        {
+          "url": "https://von.gov.ng/ogun-state-government-begins-mko-abiola-stadium-renovation/",
+          "what": "renovation to cover the stadium"
+        }
+      ],
+      "notes": "Capacity is 10,000 (35,000 and 23,325 figures in other sources look wrong). Renovation may add a roof; bowl dimensions are estimated."
+    },
+    "ogun-river": {
+      "venueId": "ogun-river",
+      "city": "abeokuta",
+      "name": "Ogun River and Lafenwa Bridge",
+      "archetype": "park-landscape",
+      "subject": "The Ogun River at Lafenwa: a wide brown river with a low road bridge and rocky banks fringed with trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#b8b2a2",
+          "#8c8a86",
+          "#e9dfc6"
+        ],
+        "roofColour": "#7d7f7c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "low bridge on piers"
+        },
+        {
+          "id": "railings",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "river access steps"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ogun_River",
+          "what": "Ogun River rises in Oyo State and flows to the Lagos Lagoon; Abeokuta sits on its east bank among rocky outcrops"
+        },
+        {
+          "url": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Lafenwa",
+          "what": "Lafenwa is a district of Abeokuta"
+        }
+      ],
+      "notes": "Nothing found describing the Lafenwa bridge itself (type, length); shown as a generic low concrete road bridge."
+    },
+    "olumo-rock": {
+      "venueId": "olumo-rock",
+      "city": "abeokuta",
+      "name": "Olumo Rock",
+      "archetype": "park-landscape",
+      "subject": "Olumo Rock: a bare grey granite outcrop rising about 90 m above the town with cave shrines, a stair path and a modern elevator tower and gazebo at the summit",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 90,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#8c8a86",
+          "#b8b2a2",
+          "#d9d6cc"
+        ],
+        "roofColour": "#7d7f7c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "125 steps to first landing"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "summit gazebo"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "tourism complex entrance"
+        },
+        {
+          "id": "terrace",
+          "count": 2,
+          "note": "galleria and viewing deck"
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "standing and buried head figures"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "prehistoric; tourism complex 2010s-2020s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://showcaves.com/english/ng/caves/Olumo.html",
+          "what": "granite outcrop with caves"
+        },
+        {
+          "url": "https://businessday.ng/art-and-travel/article/daring-the-rocky-peak/",
+          "what": "137 m above sea level, ~90 m above city, elevator and old steps, 125 steps to first landing, shrine, galleria"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "rock with caves and shrines, refuge in 19th-century wars"
+        }
+      ],
+      "notes": "height_m is the real outcrop relief (90 m) but the scene clamps to 120 m horizontal; show the summit slope with the stair and lift tower. Storeys=1 is a placeholder for a natural mass."
+    },
+    "oopl": {
+      "venueId": "oopl",
+      "city": "abeokuta",
+      "name": "Olusegun Obasanjo Presidential Library",
+      "archetype": "museum-theatre",
+      "subject": "The presidential library on its hilltop among boulders: a long three-storey cream building with a curved, arm-like wing, penthouse and amphitheatre forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d6",
+          "#5a6670",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "outstretched-arm wing"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "penthouse level"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "amphitheatre steps"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://livinspaces.net/design-stories/articles/inside-the-olusegun-obasanjo-presidential-library-complex-as-captured-by-ayo-akinwande-pt-1/",
+          "what": "design likened to an outstretched arm welcoming visitors; three storeys plus penthouse"
+        },
+        {
+          "url": "https://guardian.ng/news/obasanjo-presidential-library-first-in-africa-commissioned/",
+          "what": "32-hectare complex: library, amphitheatre, auditoriums, guest house"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "less a library than a museum; inside the Green Legacy Resort"
+        }
+      ],
+      "notes": "Built-up area ~11,000 m2 over 3 floors + penthouse. Colours are estimates (sources give no facade colour)."
+    },
+    "st-peter-cathedral": {
+      "venueId": "st-peter-cathedral",
+      "city": "abeokuta",
+      "name": "Cathedral Church of St Peter, Ake",
+      "archetype": "church-gothic",
+      "subject": "St Peter's Ake: a red-brick Anglican church with twin towers on the front, a pitched corrugated roof and arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#9c4a36",
+          "#e9dfc6",
+          "#ffffff"
+        ],
+        "roofColour": "#7d7f7c",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin front towers"
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1900",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://egbadiocese.org/?p=61",
+          "what": "third church building completed and dedicated 1 Feb 1900; earlier 1847 church first iron-roofed"
+        },
+        {
+          "url": "https://theculturetrip.com/africa/nigeria/articles/11-top-things-to-see-and-do-in-abeokuta/",
+          "what": "red-brick church with twin towers"
+        },
+        {
+          "url": "https://nigerianqueries.com/the-first-church-in-nigeria/",
+          "what": "regarded as the first church in Nigeria"
+        }
+      ],
+      "notes": "Red brick and twin towers are sourced; tower height, gothic detailing and the modern auditorium behind it are assumptions. Mission compound also holds the first school (1846)."
+    },
+    "wole-soyinka-station": {
+      "venueId": "wole-soyinka-station",
+      "city": "abeokuta",
+      "name": "Professor Wole Soyinka Station",
+      "archetype": "transport-station",
+      "subject": "The Abeokuta stop on the Lagos-Ibadan standard-gauge line: a low modern station hall with a forecourt, platform canopy and rail tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeae0",
+          "#c9ced1",
+          "#b0472f"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://connectciti.com/listing/professor-wole-soyinka-train-station",
+          "what": "main station serving Abeokuta, at Laderin"
+        },
+        {
+          "url": "https://dailytrust.com/?p=1305626",
+          "what": "one of 10 stations of the 156 km Lagos-Ibadan standard-gauge line commissioned 2021"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "what": "new station building on the standard-gauge line since 2021"
+        }
+      ],
+      "notes": "Station named for Wole Soyinka; CCECC-built. Appearance not described in any source, so form is typed from the type (Chinese-built Nigerian standard-gauge stations are low cream/white modern halls)."
+    }
+  }
+}

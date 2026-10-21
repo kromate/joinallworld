@@ -1,0 +1,1462 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "nassau",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "nassau",
+    "climate": "tropical-maritime",
+    "vernacular": "Pastel-painted colonial Georgian buildings of coral limestone and stucco (conch pink, yellow, aqua, white) with louvred wooden shutters, upper galleries and hipped roofs, concentrated on Bay Street and the hill above it; low flat-roofed concrete-block houses and shops in the suburbs painted in bright colours; concrete-and-glass resort and port buildings; metal-sheet and white-painted roofs, coconut palms and casuarinas.",
+    "wallColours": [
+      "#e8b4b0",
+      "#f0d98a",
+      "#8cc9c4",
+      "#f2efe6",
+      "#d8cdb0",
+      "#7fa8c9",
+      "#c9b99a"
+    ],
+    "roofColours": [
+      "#e9e6df",
+      "#8f8a84",
+      "#a2573f",
+      "#5d6a6e",
+      "#7c6a58"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "limestone",
+      "concrete",
+      "timber",
+      "whitewash",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "clay-tile",
+      "concrete",
+      "timber-shingle",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "louvred wooden shutters, pedimented porticoes with Ionic columns, cupolas, upper verandah galleries with turned posts, white trim against pink or yellow walls, coral limestone walls and carved steps, bright signboards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Government_House,_Nassau",
+        "what": "conch-pink exterior, louvred wooden shutters, four Ionic columns portico, coated stone two storeys with cupola"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Queen%27s_Staircase",
+        "what": "carved from solid limestone; fort historic complex"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+        "what": "colonial harbour, Bay Street, Parliament Square, Straw Market open on all sides"
+      }
+    ]
+  },
+  "places": {
+    "nassau-airport-nassau-airport": {
+      "venueId": "nassau-airport-nassau-airport",
+      "city": "nassau",
+      "name": "Lynden Pindling International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the redeveloped terminal complex seen from the forecourt: wide low glass-and-metal terminal blocks with a covered drop-off canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 250,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe4e6",
+          "#4f9aa6",
+          "#f2f2ee"
+        ],
+        "roofColour": "#c4c8c8",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lynden_Pindling_International_Airport",
+          "what": "three-stage redevelopment: new 247,000 sq ft US Departures Terminal (2011), renovated Arrivals, 112,000 sq ft domestic and International Departures; 585,000 sq ft added"
+        }
+      ],
+      "notes": "Sizes of the three newest terminals are sourced; colours, tower and roof are typed (aqua accent is the Bahamas palette). OSM gives no building polygon."
+    },
+    "nassau-clinic": {
+      "venueId": "nassau-clinic",
+      "city": "nassau",
+      "name": "Sandilands Rehabilitation Centre (SRC)",
+      "archetype": "hospital",
+      "subject": "a campus of low pastel concrete wards and clinic blocks set in lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9d8a8",
+          "#8cc9c4",
+          "#f1eee4"
+        ],
+        "roofColour": "#b9b5ab",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM site polygon 537 x 503 m (campus); shows one typical ward block. No building description found."
+    },
+    "nassau-community-notices": {
+      "venueId": "nassau-community-notices",
+      "city": "nassau",
+      "name": "Bahamas National Archives",
+      "archetype": "civic-small",
+      "subject": "a small two-storey pastel government building with louvred shutters and a hipped metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eebfb5",
+          "#f3efe4",
+          "#a3714f"
+        ],
+        "roofColour": "#e6e3dc",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 21.5 x 18 m. No description found; typed in the Nassau colonial-civic style."
+    },
+    "nassau-community-voting-game": {
+      "venueId": "nassau-community-voting-game",
+      "city": "nassau",
+      "name": "Rawson Square",
+      "archetype": "park-landscape",
+      "subject": "the paved plaza between Bay Street and Parliament Square, ringed by pink colonial government buildings, with palms and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 46,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8b4b0",
+          "#f3efe4",
+          "#c9b99a"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "monument"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+          "what": "Bay Street and Parliament Square context"
+        }
+      ],
+      "notes": "OSM attraction polygon 64 x 46 m; contents of the square are typed (not individually sourced); ring of government buildings is the recognisable setting."
+    },
+    "nassau-community-workshop": {
+      "venueId": "nassau-community-workshop",
+      "city": "nassau",
+      "name": "Nassau Public Library & Museum",
+      "archetype": "museum-theatre",
+      "subject": "the former 1797 colonial gaol, now the public library: a small three-storey pink octagonal building with a cupola-like hipped roof",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e7b7b0",
+          "#f3efe4",
+          "#8a5a3a"
+        ],
+        "roofColour": "#7c6a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1790s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nassau_Public_Library",
+          "what": "colonial jail from 1797, first building in Parliament Square, inspired by the Old Powder Magazine in Williamsburg, library since 1873, small cells hold archives"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+          "what": "Nassau Public Library on Bay Street landmark list"
+        }
+      ],
+      "notes": "OSM: building=civic, 3 levels, light pink walls, brown metal roof, 14.1 x 14.1 m. The octagonal plan is from general knowledge of the building, not the source, so footprint round is the nearest enum."
+    },
+    "nassau-market-game": {
+      "venueId": "nassau-market-game",
+      "city": "nassau",
+      "name": "Pompey Village",
+      "archetype": "market-hall",
+      "subject": "a small covered market building with an open front in bright paint",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#8cc9c4",
+          "#f2efe6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM marketplace building 15.7 x 10.7 m; nothing else found; typed."
+    },
+    "nassau-meal-stop": {
+      "venueId": "nassau-meal-stop",
+      "city": "nassau",
+      "name": "Compass Point Restaurant",
+      "archetype": "restaurant",
+      "subject": "a beach restaurant and hotel pavilion in bright Caribbean colours with a deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#7fa8c9",
+          "#f0d98a",
+          "#f2efe6"
+        ],
+        "roofColour": "#d9d5cc",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM hotel building 36.8 x 22.4 m on the west coast. Colours reflect the resort's known bright cottage palette from general knowledge only; low."
+    },
+    "nassau-osm-node-12653954301": {
+      "venueId": "nassau-osm-node-12653954301",
+      "city": "nassau",
+      "name": "Lia Ra'chards Heavenly Cafe",
+      "archetype": "restaurant",
+      "subject": "a tiny roadside cafe in a one-storey concrete-block building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#8cc9c4",
+          "#f0d98a",
+          "#f2efe6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 18.6 x 8.9 m; no description found."
+    },
+    "nassau-osm-node-14066492002": {
+      "venueId": "nassau-osm-node-14066492002",
+      "city": "nassau",
+      "name": "Southwest Diner & Bar",
+      "archetype": "restaurant",
+      "subject": "one unit in a long single-storey strip building with a front awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#7fa8c9",
+          "#f2efe6"
+        ],
+        "roofColour": "#b5b2aa",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building is a 139 x 21 m retail strip; the diner is typed as a 30 m portion."
+    },
+    "nassau-osm-node-3796314387": {
+      "venueId": "nassau-osm-node-3796314387",
+      "city": "nassau",
+      "name": "University of West Indies Open Campus",
+      "archetype": "campus-block",
+      "subject": "a two-storey concrete teaching block with an exterior walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 49,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe5c8",
+          "#7fa8c9",
+          "#f2efe6"
+        ],
+        "roofColour": "#b5b2aa",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 48.9 x 48.6 m; no description found."
+    },
+    "nassau-osm-node-5088154289": {
+      "venueId": "nassau-osm-node-5088154289",
+      "city": "nassau",
+      "name": "Continental Foods",
+      "archetype": "market-hall",
+      "subject": "a supermarket-style concrete box with a flat roof and a front canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 74,
+        "depth_m": 56,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e1cf",
+          "#c24a3a",
+          "#f2efe6"
+        ],
+        "roofColour": "#b1aea6",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM commercial building 74 x 56 m; typed."
+    },
+    "nassau-osm-way-174579796": {
+      "venueId": "nassau-osm-way-174579796",
+      "city": "nassau",
+      "name": "Community Centre",
+      "archetype": "park-landscape",
+      "subject": "a community recreation ground with a basketball court, a small hall and trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 68,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#7fa8c9",
+          "#f2efe6"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM park 80 x 68 m in west New Providence; nothing else found; typed."
+    },
+    "nassau-osm-way-191808714": {
+      "venueId": "nassau-osm-way-191808714",
+      "city": "nassau",
+      "name": "Fort Montagu",
+      "archetype": "heritage-fort",
+      "subject": "the 1741 limestone fort on the eastern shore: a small low walled fort with cannon facing the harbour entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8cdb0",
+          "#b9ab8a",
+          "#e6dfcc"
+        ],
+        "roofColour": "#d8cdb0",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1740s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Montagu",
+          "what": "small limestone fort on the eastern shore built 1741-42 by Peter Henry Bruce; four cannon today, 23 when built"
+        }
+      ],
+      "notes": "OSM 19.3 x 19.2 m. Wall height, bastion shape and colour are typed from limestone."
+    },
+    "nassau-osm-way-222586240": {
+      "venueId": "nassau-osm-way-222586240",
+      "city": "nassau",
+      "name": "Albany Golf Course",
+      "archetype": "park-landscape",
+      "subject": "a seaside luxury-resort golf course: rolling fairways, palms, ponds, with a clubhouse",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#efe5cf",
+          "#d8cdb0",
+          "#f2efe6"
+        ],
+        "roofColour": "#e0ddd5",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM golf course 1189 x 983 m (shown cropped to a clubhouse and green); resort tagged luxury. No description found."
+    },
+    "nassau-osm-way-228455375": {
+      "venueId": "nassau-osm-way-228455375",
+      "city": "nassau",
+      "name": "Cairo National Park",
+      "archetype": "park-landscape",
+      "subject": "a small public park strip with grass, palms and a few shelters",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 85,
+        "depth_m": 41,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#8cc9c4",
+          "#f2efe6"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM park 84.8 x 40.6 m; nothing found."
+    },
+    "nassau-osm-way-301425856": {
+      "venueId": "nassau-osm-way-301425856",
+      "city": "nassau",
+      "name": "Thomas A. Robinson National Stadium",
+      "archetype": "stadium",
+      "subject": "the national stadium: a football and athletics bowl with a covered main stand, floodlights and a running track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 260,
+        "depth_m": 224,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcbc2",
+          "#2f8f9f",
+          "#e4e1d9"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thomas_A._Robinson_National_Stadium",
+          "what": "multi-purpose, about 15,000 expandable to 23,000, grass with Mondo track, opened 1981, renovated 2005 and 2014"
+        }
+      ],
+      "notes": "Capacity, track and dates sourced; stand shape, roof and colours typed (teal accent is the Bahamas palette)."
+    },
+    "nassau-osm-way-370134561": {
+      "venueId": "nassau-osm-way-370134561",
+      "city": "nassau",
+      "name": "New Providence Community Centre",
+      "archetype": "church-modern",
+      "subject": "a hall-style church or community auditorium with a wide gabled roof and a front entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d4",
+          "#7fa8c9",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a7a49c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM place_of_worship polygon is very large (227 x 215 m, site). Typed as a modern chapel hall; low."
+    },
+    "nassau-osm-way-374794285": {
+      "venueId": "nassau-osm-way-374794285",
+      "city": "nassau",
+      "name": "Queens Staircase",
+      "archetype": "monument",
+      "subject": "the 65 limestone steps cut into the rock within the Fort Fincastle complex, between high stone walls with a small waterfall and tropical plants",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 37,
+        "storeys": 0,
+        "height_m": 31,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8cdb0",
+          "#b6a888",
+          "#7a9a5a"
+        ],
+        "roofColour": "#d8cdb0",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 65,
+          "note": "cut from solid limestone, rise 31 m"
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "high stone walls on both sides"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "waterfall beside the steps"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1790s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_Staircase",
+          "what": "65 steps (originally 66), total rise 102 ft (31 m), carved from solid limestone 1793-94, water cascading alongside the steps, walkway between high stone walls with tropical plants, within Fort Fincastle complex"
+        }
+      ],
+      "notes": "Staircase width not in source (about 4 m typed); OSM footprint 37.5 x 16 m includes walls. Shown from the bottom looking up the incline."
+    },
+    "nassau-osm-way-377805365": {
+      "venueId": "nassau-osm-way-377805365",
+      "city": "nassau",
+      "name": "Bahamas Baptist Community College (BBC)",
+      "archetype": "campus-block",
+      "subject": "a long two-storey college building with a covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 91,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe2bf",
+          "#7fa8c9",
+          "#f2efe6"
+        ],
+        "roofColour": "#b0ada5",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM college building 90.7 x 21.1 m, 2 levels; nothing else."
+    },
+    "nassau-osm-way-408486495": {
+      "venueId": "nassau-osm-way-408486495",
+      "city": "nassau",
+      "name": "St Andrews Presbyterian Kirk",
+      "archetype": "church-classical",
+      "subject": "the 1810 Scottish kirk: a plain Georgian-style stuccoed church with a gable roof and a small belfry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#efe4c8",
+          "#c9b99a",
+          "#f6f1e4"
+        ],
+        "roofColour": "#6b7075",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small belfry"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "georgian",
+      "era": "1810s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM: church started 1810, Presbyterian, 28 x 22 m; no description or photo detail found; typed as a Georgian colonial kirk."
+    },
+    "nassau-osm-way-692348777": {
+      "venueId": "nassau-osm-way-692348777",
+      "city": "nassau",
+      "name": "Faith Plaza",
+      "archetype": "shophouse",
+      "subject": "a one-storey commercial strip with a flat canopy and signboards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a0",
+          "#c24a3a",
+          "#f2efe6"
+        ],
+        "roofColour": "#b0ada5",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM commercial building 52 x 21 m; typed."
+    },
+    "nassau-osm-way-80922971": {
+      "venueId": "nassau-osm-way-80922971",
+      "city": "nassau",
+      "name": "University of The Bahamas (UB)",
+      "archetype": "campus-block",
+      "subject": "the main teaching building of the Oakes Field campus: a three-storey concrete block with ribbon windows and a covered entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee3c6",
+          "#2f8f9f",
+          "#f2efe6"
+        ],
+        "roofColour": "#b0ada5",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+          "what": "Nassau context only"
+        }
+      ],
+      "notes": "OSM campus polygon 817 x 374 m, established 1974 as College of the Bahamas; the building itself is typed."
+    },
+    "nassau-quiet-reflection": {
+      "venueId": "nassau-quiet-reflection",
+      "city": "nassau",
+      "name": "Christ Church Cathedral",
+      "archetype": "church-gothic",
+      "subject": "the Anglican cathedral on George Street: a small stuccoed Gothic Revival church with a square battlemented west tower and pointed windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#ece1c3",
+          "#b9a984",
+          "#f5f0e2"
+        ],
+        "roofColour": "#6b7075",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square west tower"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "tower parapet"
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1840s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+          "what": "cathedral near Bay Street and Parliament Square"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Christ+Church+Cathedral+Nassau",
+          "what": "Wikidata: Anglican cathedral, style Gothic Revival"
+        }
+      ],
+      "notes": "Style and OSM footprint 36.6 x 27.8 m are data; tower with parapet and pale stucco are from general knowledge, not fetched. Medium."
+    },
+    "nassau-recreation": {
+      "venueId": "nassau-recreation",
+      "city": "nassau",
+      "name": "Bamboo Town Constituency Park",
+      "archetype": "park-landscape",
+      "subject": "a small neighbourhood park with grass, palms, a shelter and a basketball court",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 136,
+        "depth_m": 58,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#8cc9c4",
+          "#f2efe6"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM park 136 x 58 m; nothing found."
+    },
+    "nassau-transit": {
+      "venueId": "nassau-transit",
+      "city": "nassau",
+      "name": "Paradise Island Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "a small harbourside ferry terminal with a covered waiting area and a floating pier",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0d98a",
+          "#7fa8c9",
+          "#f2efe6"
+        ],
+        "roofColour": "#d9d5cc",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 47 x 40 m (tagged residential, probably mistagged). Nothing described; typed."
+    }
+  }
+}

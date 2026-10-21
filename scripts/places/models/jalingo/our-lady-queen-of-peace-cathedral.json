@@ -1,0 +1,174 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "our-lady-queen-of-peace-cathedral",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1226922973",
+   "used": "real named outline (about 56 x 45 m, rounded fan-like plan) as the nave footprint"
+  },
+  {
+   "kind": "text",
+   "used": "no photo found. Brief: modern concrete cathedral, steep roof, free-standing bell tower, cross over the porch, rust-red corrugated roof, stained-glass windows."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadb",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#b9b2a0"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 38,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 26,
+    "cap": "pyramid",
+    "capRise": 6,
+    "windows": "slit",
+    "colour": "#efeadb",
+    "capColour": "#7a3f2f"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 6,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#efeadb",
+    "roofColour": "#7a3f2f"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -34,
+    13
+   ],
+   "params": {
+    "height": 4,
+    "colour": "#efeadb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b9b2a0",
+    "pillarEvery": 6,
+    "points": [
+     [
+      -48,
+      -42
+     ],
+     [
+      48,
+      -42
+     ],
+     [
+      48,
+      38
+     ],
+     [
+      -48,
+      38
+     ],
+     [
+      -48,
+      -42
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -44,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "real outline only; roof form and tower are from the brief, not seen"
+ }
+}

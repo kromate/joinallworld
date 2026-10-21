@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lokoja",
+ "venueId": "lokoja-old-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lokoja.json",
+   "used": "open market of stalls and lock-up shops under rusted corrugated sheets and tarpaulins on red earth; no photo found"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1121899115",
+   "used": "nearest-quality match of a 130 m2 building only; not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 3.6,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "wall_colour": "#c98f5a",
+    "roof_colour": "#9a4a32",
+    "shutter_colours": [
+     "#7a4a2a",
+     "#4d6a7a",
+     "#8a2f2a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 36,
+    "depth": 3.6,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.0,
+    "wall_colour": "#d2a577",
+    "roof_colour": "#8f4530"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "length": 36,
+    "depth": 3.6,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.0,
+    "wall_colour": "#c98f5a",
+    "roof_colour": "#9a4a32"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    2,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "cladding": "corrugated",
+    "roof_colour": "#a8553a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 7,
+    "height": 3.2,
+    "roof": "gable",
+    "cladding": "corrugated",
+    "roof_colour": "#8f4530"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 6,
+    "height": 3.0,
+    "roof": "gable",
+    "cladding": "corrugated",
+    "roof_colour": "#b36a48"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -4,
+    -4,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "jitter": 0.6
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    14,
+    16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -24,
+    22,
+    0
+   ],
+   "params": {
+    "width": 5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    4,
+    20,
+    0
+   ],
+   "params": {
+    "width": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    36,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; stall layout is typical, not surveyed; no mass part"
+ }
+}

@@ -1,0 +1,280 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "ekwueme-square-awka",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Only_Alex_Ekwueme_square_in_Anambra_Awka.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Leveluplevi",
+   "view": "front",
+   "file": "/tmp/places-evidence/awka/sq2.jpg",
+   "used": "open asphalt parade ground, long raked stand with green flat roof on one side, wavy arched canopy far left, white and green kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Alex_Ekwueme_Square_Awka.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Leveluplevi",
+   "view": "side",
+   "file": "/tmp/places-evidence/awka/sq1.jpg",
+   "used": "arch monument seen only in this second photo; omitted from the model because the front photo shows none"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stand now long and dominant with one continuous wave canopy at the far left, but the camera frames the whole ground so it reads small; arch monument omitted (second photo only), no pool, stand lacks white rail detail"
+ },
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 7,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     135,
+     62
+    ],
+    "height": 0.12,
+    "colour": "#55565a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     135,
+     5
+    ],
+    "height": 0.2,
+    "colour": "#4f8a3c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     135,
+     1.2
+    ],
+    "height": 0.5,
+    "colour": "#f2f1ec"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       6,
+       1.3
+      ],
+      "height": 0.52,
+      "colour": "#1f8a63"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     -30,
+     0
+    ],
+    "end": [
+     60,
+     -30,
+     0
+    ],
+    "count": 11
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     58,
+     26
+    ],
+    "end": [
+     -22,
+     26
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "seatColour": "#2f7a58",
+    "seatColours": [
+     "#c8643a",
+     "#2f7a58",
+     "#2b5f9e"
+    ],
+    "blocks": 4,
+    "under": "open",
+    "backWall": 0.6,
+    "canopy": {
+     "height": 6,
+     "depth": 14,
+     "colour": "#2d6a4a",
+     "slopeDeg": 2,
+     "supports": 12
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    23,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     1.2
+    ],
+    "height": 1.0,
+    "colour": "#e4e2da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    26,
+    0
+   ],
+   "params": {
+    "rect": [
+     45,
+     8
+    ],
+    "height": 3.2,
+    "colour": "#5a5a5c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "surface",
+   "at": [
+    -46,
+    28,
+    3.2
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 45,
+    "depth": 10,
+    "rise": 3.8,
+    "waves": 6,
+    "thickness": 0.5,
+    "colour": "#4a3b36"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -60,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    55,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   110
+  ]
+ }
+}

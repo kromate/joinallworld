@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "government-hospital-ibusa",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1058095865",
+   "used": "named hospital compound outline (359 x 264 m, name match) as the site platform; ward blocks are typical low pavilion blocks from the brief, not measured"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real compound outline used only as a scaled-down (0.32) site platform; ward blocks, walkways, bay and tank are typical pavilion forms, not measured"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "compound",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9a58a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    -8
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe7db",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "glassColour": "#4f8a73",
+    "bands": "#4f8a73"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4d3a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    -10,
+    12
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe7db",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "glassColour": "#4f8a73",
+    "bands": "#4f8a73"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4d3a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    22,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e4dccb",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "glassColour": "#4f8a73",
+    "bands": "#4f8a73"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4d3a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#ebe7db",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "glassColour": "#4f8a73",
+    "bands": "#4f8a73"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a4d3a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -10,
+    2,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 12,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#bfb8a8",
+    "roofColour": "#7a4d3a"
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    8,
+    2,
+    0.5
+   ],
+   "params": {
+    "length": 12,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#bfb8a8",
+    "roofColour": "#7a4d3a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    26,
+    -10,
+    0.5
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    22,
+    -3.8,
+    3.2
+   ],
+   "params": {
+    "size": 1.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -34,
+    12,
+    0.5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -28,
+    0.5
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   140,
+   100
+  ]
+ }
+}

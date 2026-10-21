@@ -1,0 +1,1653 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "guatemala-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "guatemala-city",
+    "climate": "highland",
+    "vernacular": "Highland valley capital (about 1,500 m) rebuilt after the 1917-18 and 1976 earthquakes: low flat-roofed or tile-roofed concrete and block buildings in painted render, walled compounds, arcaded colonial-era plazas with seismic baroque and neoclassical churches in thick masonry, and a tower and mall district in zones 4, 9, 10 and 14 clad in glass.",
+    "wallColours": [
+      "#e8d9b0",
+      "#e2b95c",
+      "#c98a6b",
+      "#f2eee6",
+      "#b5b1a8",
+      "#9bb4c4",
+      "#a8574a"
+    ],
+    "roofColours": [
+      "#a4553a",
+      "#8c8f8f",
+      "#b0aca4",
+      "#6b6f73"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "stucco",
+      "glass-curtain",
+      "brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "conifer"
+    ],
+    "ornament": "Seismic baroque and neoclassical church facades in thick lime-and-stone masonry; wrought-iron balconies and window grilles; Maya-inspired relief and sculptural forms (Efrain Recinos, jaguar and stepped-pyramid motifs); large murals on university and civic concrete; walled gated compounds.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+        "what": "Valle de la Ermita at ~1,500 m, tropical savanna tempered by altitude, neoclassical cathedral 1782-1815, post-1917 earthquake grid rebuild, skyscraper districts with height caps"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Guatemala_City_Guatemala_Temple",
+        "what": "white Guatemalan marble temple, six spires, 1984"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Centro_Cultural_Miguel_%C3%81ngel_Asturias",
+        "what": "sculptural jaguar-shaped cultural centre by Efrain Recinos on the old Fuerte de San Jose"
+      }
+    ]
+  },
+  "places": {
+    "guatemala-city-airport-guatemala-city-airport": {
+      "venueId": "guatemala-city-airport-guatemala-city-airport",
+      "city": "guatemala-city",
+      "name": "La Aurora International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The La Aurora passenger terminal in zone 13: a long two-level concrete and glass terminal with jet bridges, beside a 2,987 m runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 560,
+        "depth_m": 165,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e0d6",
+          "#6b8aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 10,
+          "note": "count estimated"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1940s original, modernised",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Aurora_International_Airport",
+          "what": "runway 2,987 x 60 m; original building c.1940; two VIP lounges"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?query=way%20La%20Aurora",
+          "what": "OSM building 562 x 165 m, 2 levels"
+        }
+      ],
+      "notes": "Mapped extent (562 x 165 m, 2 levels) is measured; the real terminal is a long low concrete-and-glass block. Colours and bridge count are estimates; the original c.1940 building is no longer the main terminal. Clamp: show the central portion."
+    },
+    "guatemala-city-clinic": {
+      "venueId": "guatemala-city-clinic",
+      "city": "guatemala-city",
+      "name": "Hospital Nacional Especializado de Villa Nueva",
+      "archetype": "hospital",
+      "subject": "The national specialised hospital of Villa Nueva: a wide three-storey public hospital block in painted concrete (footprint measured from OSM)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 134,
+        "depth_m": 97,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc8",
+          "#7f9aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "what": "city style: painted-concrete public buildings"
+        }
+      ],
+      "notes": "No appearance source found. Footprint 134 x 97 m from OSM; storeys, colours and finish are typed."
+    },
+    "guatemala-city-community-notices": {
+      "venueId": "guatemala-city-community-notices",
+      "city": "guatemala-city",
+      "name": "RENAP (civil registry), Metronorte",
+      "archetype": "mall",
+      "subject": "The Metronorte shopping centre in zone 18, a two-storey commercial block that houses a RENAP civil registry office (footprint measured from OSM)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 285,
+        "depth_m": 119,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d9b0",
+          "#b5463a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.64735&mlon=-90.478813",
+          "what": "OSM Centro Comercial Metronorte, 2 levels, 285 x 119 m, matched to the RENAP office location"
+        }
+      ],
+      "notes": "The venue is the RENAP office; OSM maps it inside the Metronorte shopping centre, so the large two-level mall block is shown. Appearance is typed from the city style."
+    },
+    "guatemala-city-community-voting-game": {
+      "venueId": "guatemala-city-community-voting-game",
+      "city": "guatemala-city",
+      "name": "Parque Central (Plaza de la Constitucion)",
+      "archetype": "park-landscape",
+      "subject": "Parque Central, the paved plaza of the historic centre in zone 1 with a central fountain, edged by the arcaded Portal on the south side and the Cathedral and National Palace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "stucco",
+        "colours": [
+          "#d8cfb8",
+          "#e2b95c",
+          "#f2eee6"
+        ],
+        "roofColour": "#a4553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "Portal arcade (OSM 124 x 11 m) along the south edge"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1776-1943",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "what": "central plaza with neoclassical Metropolitan Cathedral (1782-1815), National Palace (1939-43)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.64182&mlon=-90.51329",
+          "what": "Portal de la Sexta arcade 124 x 11 m, 1 level"
+        }
+      ],
+      "notes": "Landmarks around the plaza are sourced; the plaza layout (fountain, paving) is a standard colonial-capital typing. The cathedral and palace themselves are not modelled; show the plaza with an arcaded side."
+    },
+    "guatemala-city-community-workshop": {
+      "venueId": "guatemala-city-community-workshop",
+      "city": "guatemala-city",
+      "name": "Universidad de San Carlos de Guatemala (Ciudad Universitaria)",
+      "archetype": "campus-block",
+      "subject": "The USAC main campus in zone 12: large modernist concrete teaching blocks with big painted murals, on a 2 km-wide campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c0bab0",
+          "#a8574a",
+          "#f2eee6"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "mural-covered facade, typical of the campus"
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1950s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Universidad_de_San_Carlos_de_Guatemala",
+          "what": "Ciudad Universitaria with named blocks for Architecture, Engineering, library and rectory; Heroes and Martyrs Plaza"
+        }
+      ],
+      "notes": "The source names campus buildings but describes none. The concrete modernist form and mural feature are typed from general knowledge of the campus, not verified. One representative block is shown."
+    },
+    "guatemala-city-market-game": {
+      "venueId": "guatemala-city-market-game",
+      "city": "guatemala-city",
+      "name": "Tikal Futura",
+      "archetype": "office-tower",
+      "subject": "Tikal Futura in zone 11, a 1997 complex of two 20-storey, 75 m towers with offices, a hotel, cinemas and a mall at the base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 20,
+        "height_m": 75,
+        "roof": "flat",
+        "wings": 1,
+        "variant": "twin-tower-podium"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#4f7fa6",
+          "#d8d2c4",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "mall and cinemas at base"
+        },
+        {
+          "id": "setback-tiers",
+          "count": 3,
+          "note": "stepped, Maya-pyramid-inspired profile (not confirmed by source)"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tikal_Futura",
+          "what": "75 m, 20 floors, two towers, completed 1997, 12 cinemas, 160 stores, hotel, ~1,500 parking spaces"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.622552&mlon=-90.55401",
+          "what": "OSM building 190 x 136 m, 22 levels"
+        }
+      ],
+      "notes": "Height, levels, two towers, mall + hotel are sourced. The blue glass cladding and the stepped pyramid-like silhouette are from general knowledge; the source does not describe the design. Podium footprint 190 x 136 m from OSM; main tower mass given here."
+    },
+    "guatemala-city-meal-stop": {
+      "venueId": "guatemala-city-meal-stop",
+      "city": "guatemala-city",
+      "name": "Hamburguesas y Pizza Berlin",
+      "archetype": "restaurant",
+      "subject": "A small fast-food restaurant in Villa Nueva, a single-storey painted-block shop with a flat roof and a sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2b95c",
+          "#a8574a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "what": "city style: painted-block commercial buildings"
+        }
+      ],
+      "notes": "Nothing findable. Footprint (26 x 14 m) from OSM, fast_food."
+    },
+    "guatemala-city-osm-node-2521598858": {
+      "venueId": "guatemala-city-osm-node-2521598858",
+      "city": "guatemala-city",
+      "name": "Estadio Julio Armando Cobar",
+      "archetype": "stadium",
+      "subject": "Estadio Julio Armando Cobar, a small community football ground with a single covered stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 134,
+        "depth_m": 101,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c0bab0",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.501926&mlon=-90.557971",
+          "what": "OSM building=stadium, 134 x 101 m"
+        }
+      ],
+      "notes": "No description found. Typed as a small municipal ground; footprint from OSM."
+    },
+    "guatemala-city-osm-node-294933619": {
+      "venueId": "guatemala-city-osm-node-294933619",
+      "city": "guatemala-city",
+      "name": "Unidad Asistencial",
+      "archetype": "hospital",
+      "subject": "A small health unit (unidad asistencial) in the northwest of the metro area, a low painted-block clinic",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee6",
+          "#7f9aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "what": "city style: painted-concrete public buildings"
+        }
+      ],
+      "notes": "An unnamed point with no building geometry or description; size and look are typed."
+    },
+    "guatemala-city-osm-node-3999620682": {
+      "venueId": "guatemala-city-osm-node-3999620682",
+      "city": "guatemala-city",
+      "name": "El Columpio",
+      "archetype": "restaurant",
+      "subject": "El Columpio, a roadside restaurant in the western outskirts: a low tile-roofed eatery with a garden and a swing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8d9b0",
+          "#a8574a",
+          "#ffffff"
+        ],
+        "roofColour": "#a4553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "what": "city style: tile-roofed painted-render buildings"
+        }
+      ],
+      "notes": "No description found; typed from the highland vernacular. The name suggests a swing, but this is unverified."
+    },
+    "guatemala-city-osm-node-7431985094": {
+      "venueId": "guatemala-city-osm-node-7431985094",
+      "city": "guatemala-city",
+      "name": "CC El Frutal",
+      "archetype": "mall",
+      "subject": "Centro Comercial El Frutal in Villa Nueva, a long two-level shopping centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d9b0",
+          "#a8574a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.518985&mlon=-90.564596",
+          "what": "OSM building=commercial, 2 levels, 170 x 60 m"
+        }
+      ],
+      "notes": "Nothing but OSM size and levels; colours typed."
+    },
+    "guatemala-city-osm-relation-8610992": {
+      "venueId": "guatemala-city-osm-relation-8610992",
+      "city": "guatemala-city",
+      "name": "Universidad del Istmo",
+      "archetype": "campus-block",
+      "subject": "Universidad del Istmo in Fraijanes, a modern private-university block on the highlands south-east of the city",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 21,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2eee6",
+          "#4f7fa6",
+          "#b5b1a8"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894344",
+          "what": "university in Fraijanes, Guatemala"
+        }
+      ],
+      "notes": "Only a type and a footprint (48 x 21 m); appearance is a modern-campus guess."
+    },
+    "guatemala-city-osm-way-1098138942": {
+      "venueId": "guatemala-city-osm-way-1098138942",
+      "city": "guatemala-city",
+      "name": "Mapa en Relieve",
+      "archetype": "park-landscape",
+      "subject": "The Relief Map of Guatemala (1905): a 1,800 m2 ground-level scale model of the country with brick contour lines, pumice-filled oceans and a low balustrade with six oval medallions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 43,
+        "storeys": 0,
+        "height_m": 1,
+        "roof": "none",
+        "variant": "relief-map"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#a8574a",
+          "#d8cfb8",
+          "#f2eee6"
+        ],
+        "roofColour": "#a8574a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "about 90 cm perimeter balustrade"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 6,
+          "note": "six oval relief medallions on the balustrade"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1905",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Mapa_en_Relieve_de_Guatemala",
+          "what": "~1,800 m2, scale 1:10,000 horizontal and 1:2,000 vertical, brick contours, lead railways, steel bridges, pumice oceans, built 1904-1905, restored 1980 and 2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.660451&mlon=-90.508612",
+          "what": "footprint 53 x 43 m"
+        }
+      ],
+      "notes": "Recognisable as a flat model of the country laid out at ground level with terraced hills in brick and cement, edged by a low balustrade. Not a building; keep the relief mostly 1-2 m high."
+    },
+    "guatemala-city-osm-way-1262950847": {
+      "venueId": "guatemala-city-osm-way-1262950847",
+      "city": "guatemala-city",
+      "name": "Universidad Rafael Landivar",
+      "archetype": "campus-block",
+      "subject": "Universidad Rafael Landivar, the Jesuit university campus in Vista Hermosa, zone 16: mid-rise modern teaching blocks around plazas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee6",
+          "#c98a6b",
+          "#b5b1a8"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1961 founded",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rafael_Land%C3%ADvar_University",
+          "what": "main campus in Vista Hermosa III, zone 16; regional campuses on other sites"
+        }
+      ],
+      "notes": "The source gives location but no appearance; the OSM polygon (957 x 290 m) is the entire campus, so one representative block is shown."
+    },
+    "guatemala-city-osm-way-258156539": {
+      "venueId": "guatemala-city-osm-way-258156539",
+      "city": "guatemala-city",
+      "name": "Museo del Ferrocarril (Estacion Central)",
+      "archetype": "transport-station",
+      "subject": "The Railway Museum in the old central station in zone 1: a low station building and platform canopy beside tracks with preserved steam and diesel locomotives",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e8d9b0",
+          "#a8574a",
+          "#ffffff"
+        ],
+        "roofColour": "#a4553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "early 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City_Railway_Museum",
+          "what": "museum in the main railway station with steam locomotive No. 34, diesel locomotives, carriages"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.629443&mlon=-90.511653",
+          "what": "OSM extent 206 x 96 m"
+        }
+      ],
+      "notes": "Museum use and rolling stock sourced. The station building itself is not described in the source; the clock tower and cream colour are unverified typing. Keep tracks and a locomotive in frame."
+    },
+    "guatemala-city-osm-way-325466184": {
+      "venueId": "guatemala-city-osm-way-325466184",
+      "city": "guatemala-city",
+      "name": "Kaminaljuyu archaeological park",
+      "archetype": "heritage-fort",
+      "subject": "Kaminaljuyu, the Maya site in zone 7: low grassy adobe platform mounds in a city park, with a tiny museum building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none",
+        "wings": 1,
+        "variant": "earth-mounds"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "brick",
+        "colours": [
+          "#a9835a",
+          "#8a6a46",
+          "#c9b58a"
+        ],
+        "roofColour": "#6b8a4a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 3,
+          "note": "stepped platforms"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Preclassic-Classic Maya",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaminaljuyu",
+          "what": "hardened adobe platforms and pyramidal mounds, ~200 mounds originally, 0.5 km2 park preserves part of the Classic centre, built over by the city"
+        }
+      ],
+      "notes": "Mounds are earthen/adobe and eroding; they are low grass-covered humps, not stone pyramids. Heights not given by the source, so 8 m is an estimate. OSM building is a 9 x 5 m museum hut."
+    },
+    "guatemala-city-osm-way-405394242": {
+      "venueId": "guatemala-city-osm-way-405394242",
+      "city": "guatemala-city",
+      "name": "Iglesia de Santo Domingo",
+      "archetype": "church-classical",
+      "subject": "The church of Santo Domingo in zone 1, a thick-walled purist-baroque / seismic neoclassical church inaugurated in 1808",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 48,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "barrel",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8d9b0",
+          "#c8b987",
+          "#f2eee6"
+        ],
+        "roofColour": "#a4553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "tower count not verified"
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1776-1808",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Iglesia_de_Santo_Domingo_(Ciudad_de_Guatemala)",
+          "what": "purist baroque / seismic neoclassical, first stone 1776, inaugurated 8 Nov 1808, calicanto masonry"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.637588&mlon=-90.506535",
+          "what": "footprint 88 x 48 m"
+        }
+      ],
+      "notes": "Style, dates and masonry sourced. Cream colouring, tower count and dome are unverified; Spanish article gives no facade description."
+    },
+    "guatemala-city-osm-way-48203145": {
+      "venueId": "guatemala-city-osm-way-48203145",
+      "city": "guatemala-city",
+      "name": "Universidad del Valle de Guatemala",
+      "archetype": "campus-block",
+      "subject": "Universidad del Valle de Guatemala, a private science and engineering university in zone 15 with pale mid-rise blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 107,
+        "depth_m": 99,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee6",
+          "#a8574a",
+          "#b5b1a8"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1966 founded",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Universidad_del_Valle_de_Guatemala",
+          "what": "private university of Guatemala; OSM footprint 107 x 99 m"
+        }
+      ],
+      "notes": "No appearance source consulted; footprint from OSM, rest typed."
+    },
+    "guatemala-city-osm-way-53417985": {
+      "venueId": "guatemala-city-osm-way-53417985",
+      "city": "guatemala-city",
+      "name": "Estadio Guillermo Slowing (Estadio Municipal Amatitlan)",
+      "archetype": "stadium",
+      "subject": "Estadio Municipal Amatitlan, a modest municipal football stadium with a concrete grandstand on one side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 199,
+        "depth_m": 119,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c0bab0",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3495783",
+          "what": "Estadio Municipal Amatitlan; OSM extent 199 x 119 m"
+        }
+      ],
+      "notes": "Capacity and appearance not found; typed from a municipal ground. Lacks the big roof of Cementos Progreso."
+    },
+    "guatemala-city-osm-way-619635959": {
+      "venueId": "guatemala-city-osm-way-619635959",
+      "city": "guatemala-city",
+      "name": "Centra Sur",
+      "archetype": "mall",
+      "subject": "Centra Sur in Villa Nueva zone 12, a retail centre beside a Transmetro bus station",
+      "form": {
+        "footprint": "rect",
+        "width_m": 210,
+        "depth_m": 107,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2b95c",
+          "#a8574a",
+          "#f2eee6"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centra_Sur",
+          "what": "shopping centre at 23 calle 1-55, zona 12 next to the Transmetro terminal; no appearance text"
+        }
+      ],
+      "notes": "Only the location and type are known; OSM gives 210 x 107 m retail building. Looks typed."
+    },
+    "guatemala-city-osm-way-620744754": {
+      "venueId": "guatemala-city-osm-way-620744754",
+      "city": "guatemala-city",
+      "name": "Iglesia del Cerrito del Carmen",
+      "archetype": "church-classical",
+      "subject": "The Cerrito del Carmen hilltop church (1620, rebuilt 1730): a narrow barrel-vaulted church with two ornamental battlemented towers, a square campanile with four bells, and a round watchtower in the atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe8d6",
+          "#c8b987",
+          "#ffffff"
+        ],
+        "roofColour": "#a4553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 2,
+          "note": "two ornamental towers with battlements and minaret-like tops"
+        },
+        {
+          "id": "cannon",
+          "count": 4,
+          "note": "simulated cannon mouths on the towers"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "flat square campanile on the right with four bells"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1620, 1730",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Cerrito_del_Carmen",
+          "what": "25 x 9 m, 3-level facade with niches, two ornamental battlemented towers with simulated cannon mouths, square campanile with four bells, round watchtower in atrium, lime-and-stone walls, timber roof 1620, barrel vault 1730, repaired in concrete and brick after 1917 and 1976"
+        }
+      ],
+      "notes": "Form is sourced in detail; wall colours are not described, so cream and clay-tile red are estimates. Stands on top of the Cerro del Carmen hill (slope not modelled). Looks like a small fortress-church."
+    },
+    "guatemala-city-osm-way-665884078": {
+      "venueId": "guatemala-city-osm-way-665884078",
+      "city": "guatemala-city",
+      "name": "Estadio Cementos Progreso",
+      "archetype": "stadium",
+      "subject": "Estadio Cementos Progreso in zone 6: a 17,000-seat football stadium opened in 1991 with an artificial turf field and a tartan athletic track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 225,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4cb",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Cementos_Progreso",
+          "what": "17,000 seats, opened 10 Nov 1991, artificial turf since 2010, tartan athletic track"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.676015&mlon=-90.488341",
+          "what": "OSM extent 225 x 150 m"
+        }
+      ],
+      "notes": "Capacity, age, field and track sourced; the roof shape and colours are not described, so they are estimates. The track makes the bowl a wide oval with a running track around the pitch."
+    },
+    "guatemala-city-quiet-reflection": {
+      "venueId": "guatemala-city-quiet-reflection",
+      "city": "guatemala-city",
+      "name": "Guatemala City Guatemala Temple",
+      "archetype": "church-modern",
+      "subject": "The LDS temple in zone 15, a white Guatemalan marble temple dedicated in 1984 in a modern adaptation of the six-spire design",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1,
+        "variant": "six-spire-temple"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#f2f0ea",
+          "#d8d2c4",
+          "#ffffff"
+        ],
+        "roofColour": "#d8d2c4",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 6,
+          "note": "six detached spires; overall height 38 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1984",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City_Guatemala_Temple",
+          "what": "natural white Guatemalan marble, six detached spires, 1,079 m2, 38 m high, dedicated Dec 1984, modern adaptation of six-spire design"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.583344&mlon=-90.485576",
+          "what": "footprint 54 x 26 m"
+        }
+      ],
+      "notes": "Entirely white marble. No Angel Moroni is mentioned in the source, so it is omitted. Roof/mass shape is typed; height_m is the main mass with spires reaching about 38 m."
+    },
+    "guatemala-city-recreation": {
+      "venueId": "guatemala-city-recreation",
+      "city": "guatemala-city",
+      "name": "Centro Cultural Miguel Angel Asturias",
+      "archetype": "museum-theatre",
+      "subject": "The Miguel Angel Asturias Cultural Centre, a 1978 sculptural complex by Efrain Recinos on the old Fuerte de San Jose, shaped like a seated jaguar, above the zone 1 plaza",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 127,
+        "depth_m": 84,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "stepped",
+        "wings": 2,
+        "variant": "sculptural-fortress"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "stone",
+        "colours": [
+          "#8c8f93",
+          "#a8574a",
+          "#c0bab0"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 2,
+          "note": "plazas"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "fortress-like walls"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Recinos facade of the Gran Sala"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1978",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Centro_Cultural_Miguel_%C3%81ngel_Asturias",
+          "what": "form emulates a seated jaguar, on site of Fuerte de San Jose, architects Efrain Recinos and Carlos Alberto Haeussler, three theatres, plazas, marimba institute"
+        },
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.627384&mlon=-90.517355",
+          "what": "architect Efrain Recinos, 1978-06-16, 127 x 84 m"
+        }
+      ],
+      "notes": "Jaguar-shaped sculptural concrete forms with hard curved fortress-like walls; the grey concrete tones and stepped silhouette are interpretations of photos. Recognise it by its irregular organic massing, not a regular box."
+    },
+    "guatemala-city-transit": {
+      "venueId": "guatemala-city-transit",
+      "city": "guatemala-city",
+      "name": "Platinum Centro America",
+      "archetype": "office-low",
+      "subject": "Platinum Centro America in zone 9, a mid-rise commercial/office building clad in glass and panels near the Centro America Transmetro stop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 23,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#6b8aa0",
+          "#d8d2c4",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/?mlat=14.598381&mlon=-90.512963",
+          "what": "OSM building=commercial 50 x 23 m"
+        }
+      ],
+      "notes": "Only the footprint is known; the 5-storey glass cladding is a typed guess for a zone 9 commercial building."
+    }
+  }
+}

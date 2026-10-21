@@ -1,0 +1,1031 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ijebu-ode",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ijebu-ode",
+    "climate": "rainforest",
+    "vernacular": "Historic Ijebu capital in the forest belt: low sprawl of 1-2 storey cement-block and painted-render houses in faded pastel and red-earth tones under rust-brown corrugated zinc, with older mud-brick courtyard compounds in the Ijebu core; broad laterite roads, kola and palm trees, and a ceremonial open ground opposite the Awujale's palace.",
+    "wallColours": [
+      "#e6dcc2",
+      "#cfa58c",
+      "#a9654a",
+      "#d6c7a6",
+      "#b9b4a8",
+      "#f2efe6",
+      "#c9b27c"
+    ],
+    "roofColours": [
+      "#8a4b32",
+      "#a0583a",
+      "#6e4a3a",
+      "#8a8c8a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Courtyard compounds of mud-brick rooms around a central impluvium, ceramic-tiled palace floors, colourful aso-oke and Ojude Oba regimental dress displays, painted pillars on pavilions and palace fences.",
+    "sources": [
+      {
+        "url": "https://kupi.com/en/explore/nigeria/ijebu-ode/history",
+        "what": "early Ijebu-Ode followed Yoruba canons: mud-brick compounds around a central courtyard that collected rainwater; palace floors paved with ceramic tiles"
+      },
+      {
+        "url": "https://www.wm.edu/news/stories/2021/lasisi-is-going-to-dumbarton-oaks,-to-research-the-landscapes-of-power-of-ijebu-ode.php",
+        "what": "Awujale's palace at the geographic centre of concentric walls"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+        "what": "Ijebu-Ode, Ogun State, capital of the Ijebu kingdom"
+      },
+      {
+        "url": "https://dailytrust.com/inside-ijebu-odes-festival-of-colours/",
+        "what": "Ojude Oba held at the Awujale Pavilion opposite the palace"
+      }
+    ]
+  },
+  "places": {
+    "dipo-dina-stadium": {
+      "venueId": "dipo-dina-stadium",
+      "city": "ijebu-ode",
+      "name": "Otunba Dipo Dina International Stadium",
+      "archetype": "stadium",
+      "subject": "Otunba Dipo Dina International Stadium (formerly Gateway Stadium): a 20,000-capacity football bowl with covered stands, built up for the 2009 U-17 World Cup",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d4c8",
+          "#2f4a6a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (renovated 2009)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Otunba_Dipo_Dina_International_Stadium",
+          "what": "capacity 20,000; formerly Gateway Stadium; renovated for the 2009 FIFA U-17 World Cup; football, cricket, basketball"
+        }
+      ],
+      "notes": "Capacity and history sourced; stand shape, roof and colours estimated. Largest of the three Ibadan/Ijebu/Osogbo stadiums."
+    },
+    "ijebu-central-mosque": {
+      "venueId": "ijebu-central-mosque",
+      "city": "ijebu-ode",
+      "name": "Ijebu-Ode Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Ijebu-Ode Central Mosque: a large painted prayer hall with a central dome and twin minarets on the town's main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#2f6b4f",
+          "#d4b84a"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "twin minarets"
+        },
+        {
+          "id": "arches",
+          "count": 7
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1960s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://mosqpedia.org/en/mosque/1446",
+          "what": "comparable Yoruba town central mosques (Ode-Omu) have twin minarets and multiple domes; used only as a regional pattern, not for Ijebu-Ode"
+        }
+      ],
+      "notes": "No source found for this mosque (a search for it returned only the Ode-Omu mosque).;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-chapel": {
+      "venueId": "ijebu-chapel",
+      "city": "ijebu-ode",
+      "name": "Ijebu Community Chapel",
+      "archetype": "church-modern",
+      "subject": "A community chapel: a simple rectangular hall with a pitched zinc roof and a small front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc2",
+          "#6a4a8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short front tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/ijebu-ode/history",
+          "what": "city-style context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-clinic": {
+      "venueId": "ijebu-clinic",
+      "city": "ijebu-ode",
+      "name": "Ijebu Community Clinic",
+      "archetype": "hospital",
+      "subject": "A community clinic: a low rendered building with a front veranda and a covered patient waiting area",
+      "form": {
+        "footprint": "L",
+        "width_m": 38,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e4d8",
+          "#2f6b8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board only"
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "waiting veranda"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-creative-studio": {
+      "venueId": "ijebu-creative-studio",
+      "city": "ijebu-ode",
+      "name": "Ijebu Creative Studio",
+      "archetype": "office-low",
+      "subject": "A cloth and design studio: a two-storey painted building with a street-level workshop and upper studio balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#cfa58c",
+          "#2f4a8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "adire/aso-oke pattern panel"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://dailytrust.com/inside-ijebu-odes-festival-of-colours/",
+          "what": "Ijebu textile and aso-oke fashion context"
+        }
+      ],
+      "notes": "Game venue placeholder (cloth studio theme).;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-evening-garden": {
+      "venueId": "ijebu-evening-garden",
+      "city": "ijebu-ode",
+      "name": "Ijebu Evening Garden",
+      "archetype": "park-landscape",
+      "subject": "A small evening garden: lawns with an open pavilion, a few benches and string-lit palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc2",
+          "#3f7a4a",
+          "#a9654a"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-kitchen": {
+      "venueId": "ijebu-kitchen",
+      "city": "ijebu-ode",
+      "name": "Ijebu Kitchen",
+      "archetype": "restaurant",
+      "subject": "A local buka kitchen: a small cement building with a covered front serving area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d6c7a6",
+          "#b8452e",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-market": {
+      "venueId": "ijebu-market",
+      "city": "ijebu-ode",
+      "name": "Ijebu-Ode Market",
+      "archetype": "market-open",
+      "subject": "Ijebu-Ode central market (Oke-Aje type): rows of stalls and tin sheds on bare red earth with umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b9b4a8",
+          "#a9654a",
+          "#d6c7a6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://von.gov.ng/ijebu-ode-markets-closed-to-mourn-late-monarch/",
+          "what": "Oke-Aje, Ita-Ale and Ita-Osu markets are Ijebu-Ode's main markets"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "what": "trade centre of a farming region (kola, yam, cassava)"
+        }
+      ],
+      "notes": "Market names are sourced; layout is not.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-museum": {
+      "venueId": "ijebu-museum",
+      "city": "ijebu-ode",
+      "name": "Ijebu Heritage Gallery",
+      "archetype": "museum-theatre",
+      "subject": "Ijebu Museum/Heritage Gallery: a one-storey rendered gallery with a courtyard, artefact halls and a statue of the Awujale",
+      "form": {
+        "footprint": "U",
+        "width_m": 36,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece4d0",
+          "#8a4b32",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "statue of an Awujale"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kurating.com/?p=3861",
+          "what": "visit report: artefact displays, an Awujale statue, and a list of Awujales since the 1800s"
+        }
+      ],
+      "notes": "Exhibits are sourced from a visitor blog; the building itself is not described.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-neighbourhood-park": {
+      "venueId": "ijebu-neighbourhood-park",
+      "city": "ijebu-ode",
+      "name": "Ijebu Neighbourhood Park",
+      "archetype": "park-landscape",
+      "subject": "A neighbourhood park with an ayo (mancala) pavilion, benches and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d6c7a6",
+          "#3f7a4a",
+          "#a9654a"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "shaded games pavilion"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-polling": {
+      "venueId": "ijebu-polling",
+      "city": "ijebu-ode",
+      "name": "Ijebu Civic Polling Centre",
+      "archetype": "civic-small",
+      "subject": "A civic polling hall: a single-storey public hall with a front porch and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e4d8",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1960s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-road-park": {
+      "venueId": "ijebu-road-park",
+      "city": "ijebu-ode",
+      "name": "Ijebu-Ode Motor Park",
+      "archetype": "transport-station",
+      "subject": "Ijebu-Ode motor park: a paved yard with a long covered loading shed, buses and a ticket kiosk row",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b4a8",
+          "#d6c7a6",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Ijebu-Ode",
+          "what": "motor parks are the shared-transport hubs in Ijebu-Ode (Wikivoyage mirror)"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ijebu-salon": {
+      "venueId": "ijebu-salon",
+      "city": "ijebu-ode",
+      "name": "Ijebu Cloth and Hair Studio",
+      "archetype": "shophouse",
+      "subject": "A cloth and hair studio: a small painted shop with a signboard and colourful aso-oke hanging in the window",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#cfa58c",
+          "#b8452e",
+          "#f2efe6"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://dailytrust.com/inside-ijebu-odes-festival-of-colours/",
+          "what": "aso-oke and fashion culture in Ijebu-Ode"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ojude-oba-forecourt": {
+      "venueId": "ojude-oba-forecourt",
+      "city": "ijebu-ode",
+      "name": "Ijebu Heritage Gathering",
+      "archetype": "heritage-fort",
+      "subject": "The Awujale's palace frontage and the Awujale Pavilion opposite it, the ceremonial open ground of the Ojude Oba festival",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#ece4d0",
+          "#b8452e",
+          "#d4b84a"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "large open Awujale Pavilion opposite the palace"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "palace gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "yoruba",
+      "era": "palace complex 1995; pavilion 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://dailytrust.com/inside-ijebu-odes-festival-of-colours/",
+          "what": "Ojude Oba is held at the Awujale Pavilion opposite the palace"
+        },
+        {
+          "url": "https://guardian.ng/life/ojude-oba-a-festival-too-big-for-its-venue-flawed-for-unesco-world-heritage-list/",
+          "what": "pavilion too small for the crowd; festival named 'the king's forecourt'"
+        },
+        {
+          "url": "https://ojudeoba.com/awujale/",
+          "what": "1995 palace complex described as a 21st-century palace and Ijebu monument"
+        },
+        {
+          "url": "https://kupi.com/en/explore/nigeria/ijebu-ode/history",
+          "what": "excavated palace floors paved with ceramic tiles"
+        }
+      ],
+      "notes": "Layout (pavilion facing the palace across an open ground) is sourced; heights, roof form and colours are estimates. Wide empty forecourt is the key feature."
+    },
+    "tasued": {
+      "venueId": "tasued",
+      "city": "ijebu-ode",
+      "name": "Tai Solarin Federal University of Education",
+      "archetype": "campus-block",
+      "subject": "TASUED, Ijagun: a campus gate and administrative blocks on the Sagamu-Ore expressway",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#2f5d8a",
+          "#c9b27c"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main campus gate"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tai_Solarin_University_of_Education",
+          "what": "campus on the Sagamu-Ore-Benin expressway at Ijagun near Ijebu-Ode"
+        },
+        {
+          "url": "https://www.channelstv.com/2025/07/24/ogun-govt-denies-renaming-tai-solarin-university-of-education/",
+          "what": "file photo of the university gate (not described)"
+        }
+      ],
+      "notes": "Only location and the existence of a gate are sourced.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    }
+  }
+}

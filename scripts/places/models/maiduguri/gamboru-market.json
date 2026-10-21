@@ -1,0 +1,404 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1317898035",
+   "used": "named market building outline (46x10 m, bearing 40) used as the covered hall; market area way/1495609509 is 97,776 m2, so the surrounding lanes are modelled as rows of lock-ups"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Maiduguri",
+   "used": "large trading hub; dense iron-roofed stalls on sandy lanes (typed, no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -45.0,
+    -35.699999999999996,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "step": [
+     0,
+     9
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "mass",
+      "id": "lockup0",
+      "footprint": {
+       "rect": [
+        26,
+        5
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 3.2,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#c9a77c",
+       "windows": "none",
+       "plinth": 0.2
+      },
+      "roof": {
+       "form": "shed",
+       "colour": "#8a3b2e",
+       "material": "corrugated",
+       "pitch": 8,
+       "overhang": 0.5
+      }
+     }
+    ],
+    "lod1Step": 5,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -45.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "step": [
+     0,
+     9
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "mass",
+      "id": "lockup1",
+      "footprint": {
+       "rect": [
+        26,
+        5
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 3.2,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#e8dfc8",
+       "windows": "none",
+       "plinth": 0.2
+      },
+      "roof": {
+       "form": "shed",
+       "colour": "#6b6e70",
+       "material": "corrugated",
+       "pitch": 8,
+       "overhang": 0.5
+      }
+     }
+    ],
+    "lod1Step": 5,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    45.0,
+    34.0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "step": [
+     0,
+     9
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "mass",
+      "id": "lockup2",
+      "footprint": {
+       "rect": [
+        26,
+        5
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 3.2,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#b9946a",
+       "windows": "none",
+       "plinth": 0.2
+      },
+      "roof": {
+       "form": "shed",
+       "colour": "#8a3b2e",
+       "material": "corrugated",
+       "pitch": 8,
+       "overhang": 0.5
+      }
+     }
+    ],
+    "lod1Step": 5,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "big-shed",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "at": [
+    -4,
+    -46
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a6",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6e70",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    25,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 9,
+    "rows": 3,
+    "dx": 4.2,
+    "dy": 4.5,
+    "of": [
+     {
+      "type": "mass",
+      "id": "stall",
+      "footprint": {
+       "rect": [
+        2.6,
+        2.6
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 2.4,
+      "storeys": 1,
+      "wall": {
+       "material": "timber",
+       "colour": "#8a6a45",
+       "windows": "none",
+       "plinth": 0
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#d8a24a",
+       "material": "corrugated",
+       "overhang": 0.6
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 3.4,
+    "colour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -62.9,
+      -52.699999999999996
+     ],
+     [
+      -11.9,
+      -52.699999999999996
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.1,
+      -52.699999999999996
+     ],
+     [
+      62.9,
+      -52.699999999999996
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -66,
+     10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     66,
+     -8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     20,
+     -58
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -20,
+     64
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "gamboru-market",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real market is about 98,000 m2 of dense stalls; only the OSM hall plus a few lock-up rows and a shed are modelled; no photo."
+ }
+}

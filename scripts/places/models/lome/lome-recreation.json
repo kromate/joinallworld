@@ -1,0 +1,775 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_de_Lom%C3%A9_-_elewacja_po%C5%82udniowa.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Nero2022",
+   "view": "front",
+   "file": "/tmp/places-evidence/lome/palais1.jpg",
+   "used": "white terraced podium with balustrades and curved stair, round-arched loggia on the ground floor, darker timber-lined upper floor under a low dark hip roof, palms, sandy forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/8902144",
+   "used": "overall extent only (park-sized multipolygon); massing from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -25.0,
+      -9.0
+     ],
+     [
+      -24.52,
+      -11.73
+     ],
+     [
+      -23.1,
+      -14.36
+     ],
+     [
+      -20.79,
+      -16.78
+     ],
+     [
+      -17.68,
+      -18.9
+     ],
+     [
+      -13.89,
+      -20.64
+     ],
+     [
+      -9.57,
+      -21.93
+     ],
+     [
+      -4.88,
+      -22.73
+     ],
+     [
+      -0.0,
+      -23.0
+     ],
+     [
+      4.88,
+      -22.73
+     ],
+     [
+      9.57,
+      -21.93
+     ],
+     [
+      13.89,
+      -20.64
+     ],
+     [
+      17.68,
+      -18.9
+     ],
+     [
+      20.79,
+      -16.78
+     ],
+     [
+      23.1,
+      -14.36
+     ],
+     [
+      24.52,
+      -11.73
+     ],
+     [
+      25.0,
+      -9.0
+     ],
+     [
+      25,
+      9
+     ],
+     [
+      -25,
+      9
+     ]
+    ],
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#f0ebdf",
+    "topColour": "#d9c39a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 2.4,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f3efe4",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "shape": "arch",
+     "bay": 5.0,
+     "opening": 0.78,
+     "height": 0.9,
+     "depth": 2.0,
+     "colour": "#f3efe4",
+     "pierColour": "#f3efe4"
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "glassColour": "#8a7660"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e0cf",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "z0": 2.4,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f3efe4",
+    "windows": "none",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "shape": "arch",
+     "bay": 4.5,
+     "opening": 0.8,
+     "height": 0.92,
+     "depth": 2.2,
+     "colour": "#f3efe4",
+     "pierColour": "#f3efe4"
+    },
+    "plinth": 0.3,
+    "cornice": true,
+    "glassColour": "#8a7660"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e0cf",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -14.5,
+    7.6
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.9,
+    "postEvery": 0.9,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 7.6,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#7a5640",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "glassColour": "#2b2f33",
+    "pattern": {
+     "type": "bands",
+     "colour": "#f3efe4"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3f3a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "axis": "x",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper2",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 11.8,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "rect",
+    "windowRatio": 0.3,
+    "glassColour": "#2b2f33",
+    "pattern": {
+     "type": "bands",
+     "colour": "#7a5640"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a3f3a",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -24.76,
+    -10.37,
+    2.4
+   ],
+   "rotDeg": -80.0,
+   "params": {
+    "length": 2.77,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -23.81,
+    -13.04,
+    2.4
+   ],
+   "rotDeg": -61.6,
+   "params": {
+    "length": 2.99,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -21.94,
+    -15.57,
+    2.4
+   ],
+   "rotDeg": -46.3,
+   "params": {
+    "length": 3.35,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -19.23,
+    -17.84,
+    2.4
+   ],
+   "rotDeg": -34.3,
+   "params": {
+    "length": 3.76,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -15.78,
+    -19.77,
+    2.4
+   ],
+   "rotDeg": -24.7,
+   "params": {
+    "length": 4.17,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -11.73,
+    -21.29,
+    2.4
+   ],
+   "rotDeg": -16.7,
+   "params": {
+    "length": 4.51,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -7.22,
+    -22.33,
+    2.4
+   ],
+   "rotDeg": -9.6,
+   "params": {
+    "length": 4.76,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    7.22,
+    -22.33,
+    2.4
+   ],
+   "rotDeg": 9.6,
+   "params": {
+    "length": 4.76,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    11.73,
+    -21.29,
+    2.4
+   ],
+   "rotDeg": 16.7,
+   "params": {
+    "length": 4.51,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    15.78,
+    -19.77,
+    2.4
+   ],
+   "rotDeg": 24.7,
+   "params": {
+    "length": 4.17,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    19.23,
+    -17.84,
+    2.4
+   ],
+   "rotDeg": 34.3,
+   "params": {
+    "length": 3.76,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    21.94,
+    -15.57,
+    2.4
+   ],
+   "rotDeg": 46.3,
+   "params": {
+    "length": 3.35,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    23.81,
+    -13.04,
+    2.4
+   ],
+   "rotDeg": 61.6,
+   "params": {
+    "length": 2.99,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    24.76,
+    -10.37,
+    2.4
+   ],
+   "rotDeg": 80.0,
+   "params": {
+    "length": 2.77,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -25,
+    0,
+    2.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    25,
+    0,
+    2.4
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 18,
+    "height": 1.0,
+    "postEvery": 1.0,
+    "colour": "#f3efe4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 2.4,
+    "run": 1.1,
+    "count": 8,
+    "colour": "#e6dcc6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.9,
+    -19.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     9
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -3.9,
+    -24.4,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3efe4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.8,
+      0
+     ],
+     [
+      0.8,
+      1.3
+     ],
+     [
+      0.95,
+      1.4
+     ],
+     [
+      0.95,
+      1.6
+     ],
+     [
+      0,
+      1.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.9,
+    -19.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     9
+    ],
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#f3efe4",
+    "topColour": "#f3efe4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    3.9,
+    -24.4,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#f3efe4",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.8,
+      0
+     ],
+     [
+      0.8,
+      1.3
+     ],
+     [
+      0.95,
+      1.4
+     ],
+     [
+      0.95,
+      1.6
+     ],
+     [
+      0,
+      1.7
+     ]
+    ]
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bowed terrace, balustrade, central stair with cheek walls and arched loggia/porch now present; arches still lightly glazed, cheek walls straight not sweeping, upper timber storey is a simplified stepped gabled block; dense planting at podium base approximated by palms only."
+ },
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     8,
+     -27
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     27,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -17
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     10
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

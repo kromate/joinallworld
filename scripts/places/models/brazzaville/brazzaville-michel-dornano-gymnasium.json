@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-michel-dornano-gymnasium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/55685712",
+   "used": "real compound outline (141 x 60 m diagonal, tagged leisure=stadium): hall massing placed on it"
+  },
+  {
+   "kind": "text",
+   "used": "brief: concrete modernist hall, low barrel roof, ribbon windows, side entrances and a perimeter fence; no photograph of the building was found (nearby geo photos are interiors of another association)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4beb0",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#4f7a9a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 3,
+    "colour": "#8c8c88",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    5
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.2,
+    "bottom": 5,
+    "colour": "#4f7a9a",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    30,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 1.0,
+    "leaf": "bars"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 5,
+    "spread": 40,
+    "line": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM compound outline (tagged stadium) used as one barrel-roofed hall, so size and roof are assumed."
+ }
+}

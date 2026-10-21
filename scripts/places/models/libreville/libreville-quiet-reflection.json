@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cathedral_of_Saint-Marie,_Libreville.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "front",
+   "file": "/tmp/places-evidence/libreville/cathedral0.jpg",
+   "used": "stepped two-tier nave with wide flat overhanging eaves, pale yellow walls, vertical perforated window slits, tall square bell tower with cross at right, entrance porch, broad stone steps, fence; red-spired stone church of 1864 behind left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/168570176",
+   "used": "overall size (54 x 31 m) only; hand composed"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd998",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "bay": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5a5e63",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 3.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     46,
+     16
+    ]
+   },
+   "at": [
+    -1,
+    3
+   ],
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eedb9c",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "bay": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5e63",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    27,
+    -1
+   ],
+   "height": 31,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d68e",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    15,
+    -12.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0e6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    15,
+    -7
+   ],
+   "height": 21,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdd9f",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "windowShape": "rect",
+    "bay": 1.0,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.9
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a5e63",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    27,
+    -1,
+    31
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "rise": 1.2,
+    "run": 1.6,
+    "count": 5,
+    "colour": "#bcae86"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    -17,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.5,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#e8e2cc",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "old-church",
+   "footprint": {
+    "rect": [
+     9,
+     15
+    ]
+   },
+   "at": [
+    -55,
+    -4
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8a8a84",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b4a3c",
+    "rise": 3
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -55,
+    -12,
+    7
+   ],
+   "params": {
+    "baseWidth": 3.2,
+    "height": 9,
+    "colour": "#b43a32",
+    "sides": 4,
+    "finial": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "belfry",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    27,
+    -4.2
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a463c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a463c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -6,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -19
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   70
+  ]
+ },
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Roof eaves are straight-edged, not swept and rounded at the ends; window slits are glazed bands rather than perforated concrete screens; porch railing, statue, fence railings, steps detail and vegetation simplified; camera yaw differs."
+ }
+}

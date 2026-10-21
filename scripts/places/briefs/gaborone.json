@@ -1,0 +1,1334 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "gaborone",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "gaborone",
+    "climate": "savanna",
+    "vernacular": "Young planned capital (1960s garden-city layout) of low and mid-rise modernist and functionalist buildings: cream and ochre plastered block, face-brick government offices in the Government Enclave, concrete civic blocks, a few glass and concrete towers on the Main Mall, and big retail malls with painted-render fronts. Roofs are mostly red or grey corrugated/IBR sheeting or flat membrane; Tswana homesteads add round thatched houses with painted mud walls. Red-brown sandy soil, acacia and mopane scrub, hills (Kgale, Oodi) on the horizon.",
+    "wallColours": [
+      "#e6d8bd",
+      "#c89f6a",
+      "#a8553a",
+      "#f1ece0",
+      "#8b7d6b",
+      "#6f8a8f"
+    ],
+    "roofColours": [
+      "#a9442f",
+      "#6b7075",
+      "#3e6b4f",
+      "#a38b5a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "glass-curtain",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile",
+      "thatch"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "broadleaf"
+    ],
+    "ornament": "Plain functionalist concrete and brick blocks with deep sun-shading overhangs and louvres; face-brick banding on government offices; painted geometric wall patterns on traditional Tswana houses; modest civic statuary in bronze on stone plinths.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Gaborone",
+        "what": "Planned garden city, car-free Main Mall, Modern and functionalist central buildings, Government Enclave, Kgale and Oodi hills, savannah scrubland"
+      }
+    ]
+  },
+  "places": {
+    "gaborone-airport-gaborone-airport": {
+      "venueId": "gaborone-airport-gaborone-airport",
+      "city": "gaborone",
+      "name": "Sir Seretse Khama International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The expanded terminal of Sir Seretse Khama International Airport, a low rectangular hall with a covered forecourt and small control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e0d0",
+          "#6f8a8f",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1984, expanded 2008+",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_Seretse_Khama_International_Airport",
+          "what": "Opened 1984; terminal expanded from 3,140 m2 to 17,000 m2 from 2008; new baggage and screening equipment"
+        }
+      ],
+      "notes": "Only the floor area and dates are sourced (17,000 m2 about 2 levels of 140 x 55 m). Colours and roof form are typed from the city style. Low terminal with a flat canopy over the kerb."
+    },
+    "gaborone-airport-junction-shopping-center": {
+      "venueId": "gaborone-airport-junction-shopping-center",
+      "city": "gaborone",
+      "name": "Airport Junction Shopping Center",
+      "archetype": "mall",
+      "subject": "Airport Junction mall on the airport road: a two-level modern mall with painted-render fronts and a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d8bd",
+          "#a8553a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description was found. Typed from the regional mall type and the city style; unverified."
+    },
+    "gaborone-botho-university": {
+      "venueId": "gaborone-botho-university",
+      "city": "gaborone",
+      "name": "Botho University",
+      "archetype": "campus-block",
+      "subject": "A private university campus of low rendered teaching blocks around yards",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#ebe3d2",
+          "#b5654a",
+          "#ffffff"
+        ],
+        "roofColour": "#a9442f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description was found. Typed from the campus type and the city style; unverified."
+    },
+    "gaborone-botswana-national-museum": {
+      "venueId": "gaborone-botswana-national-museum",
+      "city": "gaborone",
+      "name": "Botswana National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum and Art Gallery near the Main Mall: a low modernist block with an octagonal gallery and a botanical garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8dfcb",
+          "#a8553a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "octagon gallery"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1968",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Botswana_National_Museum",
+          "what": "Established 1967, opened 1968; includes the National Art Gallery, Octagon Gallery and since 2007 the National Botanical Garden"
+        }
+      ],
+      "notes": "Page gives dates and the Octagon Gallery but no exterior description. Typed as a late-1960s modernist government museum block."
+    },
+    "gaborone-clinic": {
+      "venueId": "gaborone-clinic",
+      "city": "gaborone",
+      "name": "Princess Marina Referral Hospital",
+      "archetype": "hospital",
+      "subject": "Princess Marina Hospital, the national referral hospital of about 530 beds: a long block of wards with sun-shaded balconies",
+      "form": {
+        "footprint": "H",
+        "width_m": 160,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d2",
+          "#c4b9a2",
+          "#ffffff"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1966",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Marina_Hospital",
+          "what": "Founded 30 September 1966, commissioned for independence; about 530 beds"
+        }
+      ],
+      "notes": "Only date and capacity are sourced. Storeys and form are typed from a national referral hospital of this age."
+    },
+    "gaborone-community-notices": {
+      "venueId": "gaborone-community-notices",
+      "city": "gaborone",
+      "name": "Botswana High Court",
+      "archetype": "civic-palace",
+      "subject": "The High Court in the Government Enclave: a formal modern civic block with a columned entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8553a",
+          "#c9c3b5",
+          "#f1ece0"
+        ],
+        "roofColour": "#6b7075",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gaborone",
+          "what": "Planned garden-city capital with Modern/functionalist buildings, Main Mall and Government Enclave"
+        }
+      ],
+      "notes": "No description of the Court building was found; modelled from the Government Enclave type (face-brick civic blocks). Unverified."
+    },
+    "gaborone-community-voting-game": {
+      "venueId": "gaborone-community-voting-game",
+      "city": "gaborone",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "Game venue placeholder: a small polling hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d8bd",
+          "#a8553a",
+          "#ffffff"
+        ],
+        "roofColour": "#a9442f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game-venue placeholder with no real place; typed from the city style."
+    },
+    "gaborone-community-workshop": {
+      "venueId": "gaborone-community-workshop",
+      "city": "gaborone",
+      "name": "University of Botswana",
+      "archetype": "campus-block",
+      "subject": "University of Botswana main campus: modern teaching blocks and a library around open courtyards with the bull statue",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8dfcb",
+          "#a8553a",
+          "#f6f2ea"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bull statue in front of the new library"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1982 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Botswana",
+          "what": "Main campus about 1.15 km2; modern buildings (medical school 2012); library courtyard; bull (steer) statue; brown and blue university colours; swimming pool, courts and arena"
+        }
+      ],
+      "notes": "Sourced: modern complex, library courtyard, bull statue. Style and sizes are estimated; brown and blue are the university colours and can be used as accents."
+    },
+    "gaborone-gaborone-technical-college": {
+      "venueId": "gaborone-gaborone-technical-college",
+      "city": "gaborone",
+      "name": "Gaborone Technical College",
+      "archetype": "campus-block",
+      "subject": "A technical college with long low workshop and classroom blocks",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e6d8bd",
+          "#8b6a4f",
+          "#ffffff"
+        ],
+        "roofColour": "#a9442f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the technical-college type and the city style."
+    },
+    "gaborone-game-city": {
+      "venueId": "gaborone-game-city",
+      "city": "gaborone",
+      "name": "Game City",
+      "archetype": "mall",
+      "subject": "Game City mall: a very large rendered retail box with glass entrance bays and a vast car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e1cf",
+          "#b5654a",
+          "#ffffff"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page was reachable for the building. Typed from the big-box mall type; unverified."
+    },
+    "gaborone-market-game": {
+      "venueId": "gaborone-market-game",
+      "city": "gaborone",
+      "name": "Main Mall",
+      "archetype": "market-open",
+      "subject": "The car-free Main Mall: a long pedestrian paved strip with small shops, vendors, kiosks and shade umbrellas, government buildings at one end",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "pedestrian-strip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d8bd",
+          "#c89f6a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gaborone",
+          "what": "Planned garden-city capital with Modern/functionalist buildings, Main Mall and Government Enclave"
+        }
+      ],
+      "notes": "Wikipedia: the Main Mall is a long east-west car-free commercial strip with government buildings at the west end and the City Council complex at the east. Shop fronts are low plastered blocks; vendors and kiosks line the paving."
+    },
+    "gaborone-meal-stop": {
+      "venueId": "gaborone-meal-stop",
+      "city": "gaborone",
+      "name": "Sanitas Tea Garden",
+      "archetype": "restaurant",
+      "subject": "Sanitas Tea Garden, a garden restaurant with a thatched shelter and tables under trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e6d8bd",
+          "#8a6a45",
+          "#f6f2ea"
+        ],
+        "roofColour": "#a38b5a",
+        "roofMaterial": "thatch",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed as a garden tea room with a thatched pavilion; unverified."
+    },
+    "gaborone-mokolodi-reptile-park": {
+      "venueId": "gaborone-mokolodi-reptile-park",
+      "city": "gaborone",
+      "name": "Mokolodi Reptile Park",
+      "archetype": "park-landscape",
+      "subject": "The reptile park at Mokolodi Nature Reserve: small enclosures and an entrance and reception building in bush",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d8c9a8",
+          "#8a6a45",
+          "#f1ece0"
+        ],
+        "roofColour": "#a38b5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mokolodi_Nature_Reserve",
+          "what": "Reserve about 30 km2, 10 km south of Gaborone; reptile park (mamba, cobras), aviary, entrance and reception area, enclosures"
+        }
+      ],
+      "notes": "Page confirms the reserve, reptile park, aviary and a reception area but not the buildings' look; thatch and timber are typed from bush-lodge style."
+    },
+    "gaborone-philatelic-museum": {
+      "venueId": "gaborone-philatelic-museum",
+      "city": "gaborone",
+      "name": "Philatelic Museum",
+      "archetype": "museum-theatre",
+      "subject": "A small museum room in a modest post-office era building near the Main Mall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d8bd",
+          "#a8553a",
+          "#ffffff"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page could be read. A small display room; typed from the city style."
+    },
+    "gaborone-quiet-reflection": {
+      "venueId": "gaborone-quiet-reflection",
+      "city": "gaborone",
+      "name": "Church of St. Sava",
+      "archetype": "church-modern",
+      "subject": "Church of St. Sava, a small white Orthodox church with a modest bell tower on the outskirts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#a8553a",
+          "#c9c3b5"
+        ],
+        "roofColour": "#a9442f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of this church was found. Typed as a small Orthodox parish church; unverified."
+    },
+    "gaborone-rail-park-mall": {
+      "venueId": "gaborone-rail-park-mall",
+      "city": "gaborone",
+      "name": "Rail Park Mall",
+      "archetype": "mall",
+      "subject": "Rail Park Mall beside the railway line: a modern mid-size mall in painted render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d8bd",
+          "#6f8a8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the mall type and the city style."
+    },
+    "gaborone-recreation": {
+      "venueId": "gaborone-recreation",
+      "city": "gaborone",
+      "name": "Botswana National Stadium",
+      "archetype": "stadium",
+      "subject": "The 25,000-seat National Stadium with covered stands on the west side and uncovered end stands around an athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b5",
+          "#6f8a8f",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1965 (renovated 2016)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Botswana_National_Stadium",
+          "what": "Built 1965, opened 1966; capacity 25,000 after 2016; ten stands, three covered; north and south stands each joined into one structure; athletics track; next to the University of Botswana"
+        }
+      ],
+      "notes": "Stand layout and capacity are sourced; roof and colours are not described, so estimated. The covered west stand is the long side."
+    },
+    "gaborone-sarona-city-mall": {
+      "venueId": "gaborone-sarona-city-mall",
+      "city": "gaborone",
+      "name": "Sarona City Mall",
+      "archetype": "mall",
+      "subject": "Sarona City Mall: a newer mall with a stylised entrance and large car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e1cf",
+          "#b5654a",
+          "#ffffff"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the mall type; unverified."
+    },
+    "gaborone-three-dikgosi-monument": {
+      "venueId": "gaborone-three-dikgosi-monument",
+      "city": "gaborone",
+      "name": "Three Dikgosi Monument",
+      "archetype": "monument",
+      "subject": "The Three Dikgosi Monument in the CBD: three bronze chiefs in suits standing on a wide stone pedestal with inscribed plinths and a bronze coat of arms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#b5ac9c",
+          "#6b4f2e",
+          "#d8d0c0"
+        ],
+        "roofColour": "#8b8b88",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "Khama III, Sebele I and Bathoen I, each 5.4 m of bronze"
+        },
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "pedestal tiers"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Three_Dikgosi_Monument",
+          "what": "Three bronze statues of 5.4 m on a wide stone pedestal, monument 7 m high, six inscribed plinths, bronze coat of arms, inaugurated 29 Sept 2005, built by Mansudae Overseas Projects"
+        }
+      ],
+      "notes": "Sourced: three statues 5.4 m, monument 7 m tall, stone pedestal, six inscribed plinths in front, coat of arms. Pedestal footprint is estimated; sits in paved plaza in the CBD."
+    },
+    "gaborone-transit": {
+      "venueId": "gaborone-transit",
+      "city": "gaborone",
+      "name": "Gaborone",
+      "archetype": "transport-station",
+      "subject": "Gaborone bus rank and railway station area: an open bus park with shelters beside the station building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d8bd",
+          "#a8553a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b8b88",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gaborone",
+          "what": "Planned garden-city capital with Modern/functionalist buildings, Main Mall and Government Enclave"
+        }
+      ],
+      "notes": "Hub area; typed as a bus rank with shelters and a station building near the Main Mall. Unverified detail."
+    },
+    "gaborone-ub-indoor-sports-center": {
+      "venueId": "gaborone-ub-indoor-sports-center",
+      "city": "gaborone",
+      "name": "UB Indoor Sports Center",
+      "archetype": "stadium",
+      "subject": "The University of Botswana indoor sports arena: a hall under a curved roof with a lower entrance block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6e0d0",
+          "#6f8a8f",
+          "#8a6a45"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Botswana",
+          "what": "Campus has an entertainment arena, an Olympic-sized pool and courts for basketball, netball, handball and volleyball"
+        }
+      ],
+      "notes": "The page lists the indoor facilities but not the building; modelled as a generic indoor arena hall. Unverified."
+    },
+    "gaborone-university-stadium": {
+      "venueId": "gaborone-university-stadium",
+      "city": "gaborone",
+      "name": "University Stadium",
+      "archetype": "stadium",
+      "subject": "University Stadium beside the National Stadium: a small bowl with one covered stand on an athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c3b5",
+          "#6f8a8f",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a9ea3",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Botswana",
+          "what": "University sits next to the National Stadium; practice fields outside the stadium host intramural sports"
+        }
+      ],
+      "notes": "Little information; smaller than the National Stadium. Typed from the campus-stadium type."
+    }
+  }
+}

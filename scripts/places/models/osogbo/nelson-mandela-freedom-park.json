@@ -1,0 +1,599 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mandalla_Freedom_Park_Osogbo_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Profgkay",
+   "view": "detail",
+   "file": "/tmp/places-evidence/osogbo/mandela1.jpg",
+   "used": "yellow-painted steel gantry footbridge over the rail line: dark checker-plate deck, yellow rails with grey top handrail, grey steel truss portal; railway track beside; red-roofed pavilion across the park (a person is in the foreground and is not modelled)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mandalla_Freedom_Park_Osogbo_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Profgkay",
+   "view": "street",
+   "file": "/tmp/places-evidence/osogbo/mandela2.jpg",
+   "used": "curving grey interlocking-brick paths over dry grass, pavilion with orange-red and yellow walls, red gable roof and a green arched glazed gable, palm and low buildings behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/332058049",
+   "used": "park outline is 130,000 m2: too large, a representative 96 x 60 m central part is modelled"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/osogbo.json#nelson-mandela-freedom-park",
+   "used": "central fenced fountain, six terracotta governor busts, adjacent railway"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -44,
+      -22
+     ],
+     [
+      -26,
+      -16
+     ],
+     [
+      -8,
+      -14
+     ],
+     [
+      8,
+      -8
+     ],
+     [
+      24,
+      -2
+     ],
+     [
+      44,
+      4
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#9a9a9c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -28
+     ],
+     [
+      0,
+      -14
+     ],
+     [
+      -4,
+      -4
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      2,
+      14
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#9a9a9c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -3
+     ],
+     [
+      -12,
+      -1
+     ],
+     [
+      4,
+      -6
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#9a9a9c"
+   }
+  },
+  {
+   "type": "market-open/fountain",
+   "at": [
+    -10,
+    -6,
+    0
+   ],
+   "params": {
+    "radius": 5,
+    "jet": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -10,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 8.6,
+    "height": 1.1,
+    "thickness": 0.12,
+    "kind": "bars",
+    "colour": "#2d3033"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "statue-plinth",
+     "params": {
+      "height": 3.2,
+      "width": 1.1,
+      "steps": 1,
+      "figure_colour": "#b5623f"
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -26,
+     -9
+    ],
+    "end": [
+     22,
+     -1
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    30,
+    0
+   ],
+   "params": {
+    "length": 96,
+    "tracks": 2,
+    "spacing": 4.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gantry-deck",
+   "footprint": {
+    "rect": [
+     2.6,
+     34
+    ]
+   },
+   "at": [
+    16,
+    26
+   ],
+   "z0": 4.7,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#5a5a5c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a5a5c",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    14.7,
+    9,
+    5.3
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "colour": "#e0b030"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "railing",
+   "at": [
+    17.3,
+    9,
+    5.3
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.1,
+    "colour": "#e0b030"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "stair",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 5.0,
+    "run": 2.4,
+    "colour": "#5a5a5c",
+    "rails": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stair",
+   "at": [
+    16,
+    46,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 5.0,
+    "run": 2.4,
+    "colour": "#5a5a5c",
+    "rails": true
+   },
+   "rotDeg": 180,
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "truss-post-a",
+   "at": [
+    14.9,
+    26,
+    5.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 5.2,
+    "colour": "#5d6468"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-post-b",
+   "at": [
+    17.1,
+    26,
+    5.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 5.2,
+    "colour": "#5d6468"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-head",
+   "at": [
+    16,
+    26,
+    10.4
+   ],
+   "params": {
+    "rect": [
+     2.5,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#5d6468"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-east",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    46,
+    -16
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e07a35",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bands": "#e0b030"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b3472f",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-west",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    22,
+    -16
+   ],
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c04a",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bands": "#e0b030"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b3472f",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-centre",
+   "footprint": {
+    "rect": [
+     12,
+     12
+    ]
+   },
+   "at": [
+    34,
+    -16
+   ],
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9622f",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b3472f",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    34,
+    -21.9,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 7.4,
+    "depth": 0.4,
+    "archWidth": 5.6,
+    "springHeight": 4.8,
+    "colour": "#3f8f7a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -44,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "pillar": 0.7,
+    "leaf": "bars",
+    "colour": "#c9c3b5"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -36,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 16
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 18
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 6,
+    "spread": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 5,
+    "spread": 28
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    4,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   },
+   "rotDeg": 90
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   96,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "nelson-mandela-freedom-park",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pavilion now a taller central orange gable with arched green portal and flanking yellow/orange wings, wider grey paths, trees and benches added; ground is flat sand not patchy dry grass, busts generic plinths, paths lack brick pattern, site plane still much larger than the 96x60 m park"
+ }
+}

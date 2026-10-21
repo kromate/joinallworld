@@ -1,0 +1,238 @@
+{
+ "venueId": "antananarivo-osm-way-49037178",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/49037178",
+   "used": "real ground outline (49 x 38 m) as the grass apron; no photo found"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/antananarivo.json#antananarivo-osm-way-49037178",
+   "used": "lower-division ground, concrete terraces with brick-red trim, small roofed stand, two floodlights, two gates"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -24.7,
+      -18.4
+     ],
+     [
+      -9.3,
+      27.4
+     ],
+     [
+      26.1,
+      14.7
+     ],
+     [
+      11.3,
+      -24
+     ],
+     [
+      9,
+      -19.3
+     ],
+     [
+      -3.9,
+      -21.5
+     ],
+     [
+      -4.2,
+      -26.4
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#7c9a52"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -1,
+    2,
+    0.2
+   ],
+   "rotDeg": 20,
+   "params": {
+    "length": 38,
+    "width": 24,
+    "stripes": 4,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -18,
+     -19
+    ],
+    "end": [
+     8,
+     -26
+    ],
+    "flip": true,
+    "rows": 8,
+    "rise": 0.4,
+    "run": 0.75,
+    "firstHeight": 0.6,
+    "under": "open",
+    "slab": 0.4,
+    "bay": 4,
+    "seatColour": "#a8553a",
+    "concreteColour": "#b5ada0",
+    "underColour": "#8c867c",
+    "canopy": {
+     "height": 4.6,
+     "depth": 4,
+     "thickness": 0.3,
+     "slopeDeg": 5,
+     "colour": "#6b6f73",
+     "edgeColour": "#a8553a"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     24,
+     16
+    ],
+    "end": [
+     -8,
+     28
+    ],
+    "flip": true,
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.75,
+    "firstHeight": 0.5,
+    "under": "open",
+    "slab": 0.4,
+    "bay": 4,
+    "seatColour": "#a8553a",
+    "concreteColour": "#b5ada0",
+    "underColour": "#8c867c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    5,
+    0
+   ],
+   "rotDeg": 70,
+   "params": {
+    "length": 40,
+    "height": 2.0,
+    "thickness": 0.25,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -23,
+    -8,
+    0
+   ],
+   "rotDeg": 70,
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    28,
+    20,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "head_width": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; real outline only; terrace and wall positions are schematic"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ }
+}

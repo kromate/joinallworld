@@ -1,0 +1,582 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ipata_market_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ayyuha Sideeq",
+   "view": "front",
+   "file": "/tmp/places-evidence/ilorin/ipata1.jpg",
+   "used": "red two-arch entrance gateway with a blank board above, two-storey yellow shops with brown roofs behind, elevated black water tanks on a steel frame, market umbrellas and produce stalls in the foreground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ipata_market_street.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ayyuha Sideeq",
+   "view": "street",
+   "file": "/tmp/places-evidence/ilorin/ipata2.jpg",
+   "used": "dense cloth and umbrella stalls, rusty lean-to eaves on low shops, ochre and cream two-storey blocks with open balconies, solar street lamps"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 21,
+    "depth": 1.6,
+    "height": 17,
+    "openings": 2,
+    "kind": "round",
+    "pier": 1.6,
+    "wall_colour": "#b3262b",
+    "trim_colour": "#9c2025",
+    "roof_colour": "#9c2025"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    17.4
+   ],
+   "params": {
+    "width": 18,
+    "height": 3.5,
+    "bottom": 0,
+    "colour": "#b3262b",
+    "frameColour": "#4a1416",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "txt1",
+   "footprint": {
+    "rect": [
+     13,
+     0.5
+    ]
+   },
+   "at": [
+    1.5,
+    -30.8
+   ],
+   "z0": 19.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "txt2",
+   "footprint": {
+    "rect": [
+     11,
+     0.5
+    ]
+   },
+   "at": [
+    1.5,
+    -30.8
+   ],
+   "z0": 18.2,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f0ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ads",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    -6.5,
+    -30.8
+   ],
+   "z0": 18,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e3d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e3d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "banner-l",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    -9.405,
+    -30.8
+   ],
+   "z0": 3,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d03a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d03a3f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "banner-r",
+   "footprint": {
+    "rect": [
+     1.4,
+     0.5
+    ]
+   },
+   "at": [
+    9.405,
+    -30.8
+   ],
+   "z0": 3,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d03a3f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d03a3f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "shops-right",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    11,
+    -22
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3cf86",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#a8643f",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4b36",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops-left",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    -20
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9bf80",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4b36",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -3,
+    -20,
+    0
+   ],
+   "params": {
+    "radius": 1.3,
+    "height": 1.8,
+    "legs": 6.5,
+    "colour": "#262a2e"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -1,
+    -33,
+    0
+   ],
+   "params": {
+    "height": 9
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -13,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 13
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -29,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -30,
+      -2,
+      13
+     ],
+     [
+      0,
+      -2,
+      15
+     ],
+     [
+      30,
+      -2,
+      13
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#222222"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -29,
+    0
+   ],
+   "params": {
+    "section": {
+     "circle": 0.05
+    },
+    "points": [
+     [
+      -30,
+      -3,
+      12
+     ],
+     [
+      0,
+      -3,
+      14
+     ],
+     [
+      30,
+      -3,
+      12
+     ]
+    ],
+    "sag": 0.6,
+    "colour": "#222222"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.2,
+    "colours": [
+     "#e6c04a",
+     "#7e4a9a",
+     "#d6d2c6",
+     "#2f6b9a",
+     "#c9553d"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.2,
+    "colours": [
+     "#d6d2c6",
+     "#e6c04a",
+     "#c9553d",
+     "#5f6a6e"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#2f6b9a",
+     "#d6d2c6",
+     "#e6c04a",
+     "#7e4a9a"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#c9553d",
+     "#e6c04a",
+     "#d6d2c6"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#e6c04a",
+     "#d6d2c6"
+    ],
+    "jitter": 0.6
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.6,
+    "kind": "tarp",
+    "size": 1.0,
+    "colours": [
+     "#d8c3a0",
+     "#c9553d",
+     "#2f6b9a"
+    ],
+    "jitter": 0.7
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     40,
+     10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -42,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "ipata-market",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate is now a true two-arch see-through portal with raised sign board and stalls in front; board text and ad panels are plain white strips, gate still squat vs photo (camera is far), no crowd, leaning pole or steel tank frame detail"
+ }
+}

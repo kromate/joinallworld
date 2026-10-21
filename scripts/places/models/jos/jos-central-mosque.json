@@ -1,0 +1,750 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "jos-central-mosque",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CENTRAL_MOSQUE_JOS_NIGERIA_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "panoramio contributor (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/jos/mosque.jpg",
+   "used": "wide white prayer hall with pointed-arch cut parapet, single large green dome, three tall white minarets with balconies, low cream gate piers with small green domes, low boundary wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1170592757",
+   "used": "not used: nearest match 55 m away and only 20 m wide, so the hall is sized from the photo and the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     70,
+     30
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e2d6",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arcade-front",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -13.4
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.9
+    ],
+    "z0": 0.5,
+    "height": 4.4,
+    "colour": "#f6f3ea",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.7,
+    "storeys": 1,
+    "bay": 6.0,
+    "glassColour": "#2d4f48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-band",
+   "at": [
+    0,
+    -13.2
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.6
+    ],
+    "z0": 8.2,
+    "height": 1.5,
+    "colour": "#f6f3ea"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    2,
+    10.7
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#2f7a5c",
+    "topColour": "#37896a",
+    "profile": [
+     [
+      13.2,
+      0,
+      "#e8e3d4"
+     ],
+     [
+      13.2,
+      0.9
+     ],
+     [
+      13.6,
+      0.9,
+      "#2f7a5c"
+     ],
+     [
+      13.6,
+      2.0
+     ],
+     [
+      13.1,
+      5.0
+     ],
+     [
+      12.0,
+      7.5
+     ],
+     [
+      10.2,
+      9.7
+     ],
+     [
+      7.8,
+      11.5
+     ],
+     [
+      4.9,
+      12.7
+     ],
+     [
+      2.3,
+      13.3
+     ],
+     [
+      0,
+      13.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    0,
+    2,
+    24.2
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#d8c16a",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.35,
+      1.6
+     ],
+     [
+      0.12,
+      1.8
+     ],
+     [
+      0.12,
+      3.5
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-l",
+   "at": [
+    -6.2,
+    -24
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#e4d7a6",
+    "topColour": "#e4d7a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-r",
+   "at": [
+    6.2,
+    -24
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 0,
+    "height": 4.2,
+    "colour": "#e4d7a6",
+    "topColour": "#e4d7a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "gate-dome-l",
+   "at": [
+    -6.2,
+    -24,
+    4.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2f7a5c",
+    "profile": [
+     [
+      1.7,
+      0,
+      "#2f7a5c"
+     ],
+     [
+      1.7,
+      0.7
+     ],
+     [
+      1.2,
+      1.8
+     ],
+     [
+      0.6,
+      2.4
+     ],
+     [
+      0,
+      2.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "id": "gate-dome-r",
+   "at": [
+    6.2,
+    -24,
+    4.2
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#2f7a5c",
+    "profile": [
+     [
+      1.7,
+      0,
+      "#2f7a5c"
+     ],
+     [
+      1.7,
+      0.7
+     ],
+     [
+      1.2,
+      1.8
+     ],
+     [
+      0.6,
+      2.4
+     ],
+     [
+      0,
+      2.7
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "gate-board",
+   "at": [
+    0,
+    -24.2
+   ],
+   "params": {
+    "width": 8.4,
+    "height": 1.0,
+    "bottom": 3.1,
+    "colour": "#f2f0e8",
+    "frameColour": "#e4d7a6",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -24
+   ],
+   "params": {
+    "length": 32,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#e4d7a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -24
+   ],
+   "params": {
+    "length": 32,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#e4d7a6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 14,
+    "line": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6,
+    "line": 1
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    36,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2eee2",
+    "profile": [
+     [
+      1.56,
+      0,
+      "#f2eee2"
+     ],
+     [
+      1.3,
+      1.0
+     ],
+     [
+      1.3,
+      19.5
+     ],
+     [
+      2.9899999999999998,
+      19.5
+     ],
+     [
+      2.9899999999999998,
+      20.5
+     ],
+     [
+      1.3,
+      20.9
+     ],
+     [
+      1.3,
+      31.5
+     ],
+     [
+      2.9899999999999998,
+      31.5
+     ],
+     [
+      2.9899999999999998,
+      32.5
+     ],
+     [
+      1.3,
+      32.9
+     ],
+     [
+      1.3,
+      34.5
+     ],
+     [
+      1.9500000000000002,
+      34.5
+     ],
+     [
+      1.9500000000000002,
+      35.3
+     ],
+     [
+      0.78,
+      36.0
+     ],
+     [
+      0,
+      37.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    36,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#f2eee2",
+    "profile": [
+     [
+      1.8199999999999998,
+      0
+     ],
+     [
+      1.8199999999999998,
+      43
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -38,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2eee2",
+    "profile": [
+     [
+      1.44,
+      0,
+      "#f2eee2"
+     ],
+     [
+      1.2,
+      1.0
+     ],
+     [
+      1.2,
+      13.5
+     ],
+     [
+      2.76,
+      13.5
+     ],
+     [
+      2.76,
+      14.5
+     ],
+     [
+      1.2,
+      14.9
+     ],
+     [
+      1.2,
+      21.900000000000002
+     ],
+     [
+      2.76,
+      21.900000000000002
+     ],
+     [
+      2.76,
+      22.900000000000002
+     ],
+     [
+      1.2,
+      23.3
+     ],
+     [
+      1.2,
+      24.900000000000002
+     ],
+     [
+      1.7999999999999998,
+      24.900000000000002
+     ],
+     [
+      1.7999999999999998,
+      25.700000000000003
+     ],
+     [
+      0.72,
+      26.400000000000002
+     ],
+     [
+      0,
+      27.400000000000002
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -38,
+    -12,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#f2eee2",
+    "profile": [
+     [
+      1.68,
+      0
+     ],
+     [
+      1.68,
+      31
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f2eee2",
+    "profile": [
+     [
+      1.2,
+      0,
+      "#f2eee2"
+     ],
+     [
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      11.5
+     ],
+     [
+      2.3,
+      11.5
+     ],
+     [
+      2.3,
+      12.5
+     ],
+     [
+      1.0,
+      12.9
+     ],
+     [
+      1.0,
+      18.700000000000003
+     ],
+     [
+      2.3,
+      18.700000000000003
+     ],
+     [
+      2.3,
+      19.700000000000003
+     ],
+     [
+      1.0,
+      20.1
+     ],
+     [
+      1.0,
+      21.700000000000003
+     ],
+     [
+      1.5,
+      21.700000000000003
+     ],
+     [
+      1.5,
+      22.500000000000004
+     ],
+     [
+      0.6,
+      23.200000000000003
+     ],
+     [
+      0,
+      24.200000000000003
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    16,
+    10,
+    0
+   ],
+   "params": {
+    "segments": 4,
+    "colour": "#f2eee2",
+    "profile": [
+     [
+      1.4,
+      0
+     ],
+     [
+      1.4,
+      27
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "parapet arch cut-outs are punched pointed windows; gate piers slimmer than photo; no street furniture"
+ }
+}

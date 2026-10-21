@@ -1,0 +1,174 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small pagoda-style pavilion (name means pagoda) with a tiered roof on a stone base; no photo or reliable outline found (nearest OSM building is 4 m off and an irregular 113 m2 shape)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 10,
+    "height": 1.0,
+    "tiers": 2,
+    "colour": "#9b978f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "z0": 1.0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "none",
+    "bands": "#b5603f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8523a",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "width": 8.5,
+    "depth": 8.5,
+    "rise": 2.0,
+    "overhang": 1.6,
+    "upturn": 0.6,
+    "colour": "#a8523a",
+    "trim": "#b5603f",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "pagoda-roof",
+   "at": [
+    0,
+    0,
+    6.6
+   ],
+   "params": {
+    "width": 5,
+    "depth": 5,
+    "rise": 1.8,
+    "overhang": 1.2,
+    "upturn": 0.5,
+    "colour": "#a8523a",
+    "trim": "#b5603f",
+    "material": "clay-tile"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 1.6,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.0,
+    "thickness": 0.3,
+    "colour": "#b5603f",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      16,
+      0
+     ],
+     [
+      16,
+      16
+     ],
+     [
+      0,
+      16
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     11,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   36,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-5542555221",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence; typed pagoda pavilion from the name; platform tier colour renders bluish"
+ }
+}

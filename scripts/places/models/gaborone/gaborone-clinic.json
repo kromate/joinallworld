@@ -1,0 +1,312 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Princess_Marina_Hospital_-_Administration_Building.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "flickr 55968903",
+   "view": "street",
+   "file": "/tmp/places-evidence/gaborone/clinic1.jpg",
+   "used": "buff yellow brick administration block: five-storey stair tower with a tall glazed slit and stepped gable top, four-storey wing with ribbon casements and brick spandrels, lower left wing, maroon flat canopy over entrance and arcade, low grey sheet roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/604970193",
+   "used": "hospital site outline only (307 x 259 m campus), not used for massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     56,
+     16
+    ]
+   },
+   "at": [
+    34,
+    6
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9a468",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bay": 4.4,
+    "faces": {
+     "left": "none",
+     "back": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b98f55"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.2,
+    "colour": "#6e7377",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -22,
+    2
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#cfaa6e",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "bay": 4.2,
+    "faces": {
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.0,
+    "colour": "#6e7377",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     13,
+     15
+    ]
+   },
+   "at": [
+    -3,
+    3
+   ],
+   "height": 22,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4a064",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "x",
+    "pitch": 14,
+    "colour": "#b08c58",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-slit",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.6
+    ]
+   },
+   "at": [
+    -5.5,
+    -4.6
+   ],
+   "height": 19,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#39434d",
+    "windows": "curtain",
+    "windowRatio": 0.9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#39434d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    8,
+    18
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#c4a064",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7377",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-podium",
+   "footprint": {
+    "rect": [
+     96,
+     10
+    ]
+   },
+   "at": [
+    6,
+    -9
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#bf9a5e",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "groundKind": "arcade"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3b46",
+    "overhang": 1.2,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -14.4,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1,
+    "bottom": 0,
+    "colour": "#6b2a35",
+    "posts": false
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    40,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 46,
+    "depth": 5,
+    "height": 4.2,
+    "thickness": 0.5,
+    "columns": 8,
+    "colour": "#7a3b46",
+    "edgeColour": "#7a3b46"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#b02a2f",
+    "count": 1,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     -18
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -50,
+     -4
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "stair tower gable and slit approximate; brick coursing and window sashes simplified; only the administration wings are modelled"
+ }
+}

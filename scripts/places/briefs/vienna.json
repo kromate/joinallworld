@@ -1,0 +1,1428 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "vienna",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "vienna",
+    "climate": "temperate",
+    "vernacular": "Gruenderzeit apartment blocks of four to six storeys with stucco facades in pale yellow, ochre, cream and grey, rich cornices and tall casement windows; Baroque palaces and Schoenbrunn-yellow imperial buildings; Red Vienna Gemeindebau courtyard blocks of rendered ochre and rust red with arched gateways; 1950s-70s plain rendered and concrete housing, large suburban malls and glass towers on the Danube. Steep clay-tile or grey zinc and slate roofs with dormers and chimneys; plane, linden and chestnut street trees; Wienerwald beech forest on the western hills.",
+    "wallColours": [
+      "#e6c97a",
+      "#d9cdb4",
+      "#c9b8a0",
+      "#f0ead8",
+      "#b25a45",
+      "#a8a8a0",
+      "#d4a373"
+    ],
+    "roofColours": [
+      "#a5593f",
+      "#6f7378",
+      "#5a5f63",
+      "#8a4b38"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "render",
+      "painted-render",
+      "brick",
+      "stone",
+      "concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Gruenderzeit stucco cornices, pilasters, pedimented window heads and balconies with wrought-iron railings; Baroque pilasters and giant orders; Gemeindebau arched gateways and relief plaques; Otto Wagner early-modern green ironwork; Wienerwald chapels and wayside crosses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Vienna",
+        "what": "Baroque palaces, Ringstrasse, Red Vienna Gemeindebauten (60,000+ flats 1925-34, Karl-Marx-Hof), early modernism"
+      }
+    ]
+  },
+  "places": {
+    "vienna-airport-vienna-airport": {
+      "venueId": "vienna-airport-vienna-airport",
+      "city": "vienna",
+      "name": "Vienna International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Vienna Airport seen from the forecourt: the glazed Terminal 3 Skylink with its North Pier, joined to the 1960s terminal blocks with the control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "multi-terminal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9fb4c2",
+          "#7b8794",
+          "#eceff1"
+        ],
+        "roofColour": "#c4c8cc",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 17,
+          "note": "North Pier of Terminal 3"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "behind the Austrian HQ"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1960 terminal, Skylink 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vienna_Airport",
+          "what": "Terminals 1/2/3 and 1A, T2 1960 with 1993 extension, Terminal 3 Skylink 2012 with North Pier of 17 jet bridges, tower behind Austrian HQ"
+        }
+      ],
+      "notes": "Source gives the 17 jet bridges, terminal chronology and tower placement; the glass-and-white look and the dimensions are estimates. Not a single building: several joined terminal blocks."
+    },
+    "vienna-clinic": {
+      "venueId": "vienna-clinic",
+      "city": "vienna",
+      "name": "Clinic Floridsdorf",
+      "archetype": "hospital",
+      "subject": "Klinik Floridsdorf (ex Krankenhaus Nord): the large 2019 hospital campus on the former rail workshop site, modelled as a long main block with wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 160,
+        "depth_m": 90,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "variant": "campus-hospital",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece9e2",
+          "#7d9bb0",
+          "#c9ccd0"
+        ],
+        "roofColour": "#a9adb0",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2012-2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Klinik_Floridsdorf",
+          "what": "Albert Wimmer design, 800 beds, site 111,000 m2, opened 2019 (ex Krankenhaus Nord)"
+        }
+      ],
+      "notes": "Sourced: designer Albert Wimmer, 800 beds, site about 111,000 m2, opened 2019. Storeys, massing and facade colours are estimates, not described in the source."
+    },
+    "vienna-community-notices": {
+      "venueId": "vienna-community-notices",
+      "city": "vienna",
+      "name": "Landesgericht Korneuburg",
+      "archetype": "civic-palace",
+      "subject": "The regional court at Korneuburg: the court building in use since 2012, modelled as a five-storey modern block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2dfd6",
+          "#7d8b96",
+          "#b7b5ad"
+        ],
+        "roofColour": "#7d7d7a",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Landesgericht_Korneuburg",
+          "what": "new district and regional court building in use since 2012 at Landesgerichtsplatz 1"
+        }
+      ],
+      "notes": "Only the 2012 date and the address are sourced; the appearance is a typed guess."
+    },
+    "vienna-community-voting-game": {
+      "venueId": "vienna-community-voting-game",
+      "city": "vienna",
+      "name": "Gemeindeamt Ebergassing",
+      "archetype": "civic-small",
+      "subject": "Municipal office of Ebergassing, a small Lower Austrian village hall: two-storey rendered building with a hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6c97a",
+          "#f0ead8",
+          "#b9a07a"
+        ],
+        "roofColour": "#a5593f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed from the Vienna region style as a pale yellow village office."
+    },
+    "vienna-community-workshop": {
+      "venueId": "vienna-community-workshop",
+      "city": "vienna",
+      "name": "Vienna University of Technology",
+      "archetype": "campus-block",
+      "subject": "TU Wien main building on Karlsplatz: a long four-storey Empire/Biedermeier building with regular windows and a central pedimented front",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "variant": "historic-main-building",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e3d3a3",
+          "#f0ead8",
+          "#b9a07a"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1816-1818, third storey 1867-98",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Technische_Universit%C3%A4t_Wien",
+          "what": "Hauptgebaeude at Karlsplatz by Schemerl von Leythenbach, foundation 1816, opened 1818, third storey added 1867-98"
+        }
+      ],
+      "notes": "Sourced: architect Schemerl von Leythenbach, laid 1816, finished 1818, third storey added later (4 storeys with ground floor is assumed). Facade colour and portico are not stated in the source. The venue coordinates are not at Karlsplatz; the main building is used as the recognisable face of the university."
+    },
+    "vienna-market-game": {
+      "venueId": "vienna-market-game",
+      "city": "vienna",
+      "name": "SCS Hauptgebaeude",
+      "archetype": "mall",
+      "subject": "Shopping City Sued main building: an enormous low flat-roofed mall with 10,000 parking spaces around it, only a slice shown",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "mega-mall",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "render",
+        "colours": [
+          "#e8e8e4",
+          "#78b05a",
+          "#9ea2a6"
+        ],
+        "roofColour": "#9ea2a6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "about 10,000 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1976, renovated from 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Shopping_City_S%C3%BCd",
+          "what": "opened 1976, 270,000 m2, about 10,000 parking spaces, main building 1.6 km continuous, renovated from 2012"
+        }
+      ],
+      "notes": "Sourced: 1976, 270,000 m2, main building 1.6 km long without break, 10,000 parking spaces, renovation made it brighter and greener. Facade colours and storeys are estimates; the generator should show a representative 400 m slice."
+    },
+    "vienna-meal-stop": {
+      "venueId": "vienna-meal-stop",
+      "city": "vienna",
+      "name": "Anningerhaus",
+      "archetype": "restaurant",
+      "subject": "Anningerhaus: a hill hut and restaurant of 1959 on the 624 m Anninger summit, modelled as a two-storey alpine-style lodge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6d2",
+          "#8a6a4a",
+          "#6b4a32"
+        ],
+        "roofColour": "#8a4b38",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1959",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Anningerhaus",
+          "what": "Naturfreunde hut and restaurant at 624 m, current building of 1959"
+        }
+      ],
+      "notes": "Sourced only: Naturfreunde hut/restaurant at 624 m, current building 1959. Shape and colours are a typed guess."
+    },
+    "vienna-osm-node-2169420120": {
+      "venueId": "vienna-osm-node-2169420120",
+      "city": "vienna",
+      "name": "Lourdesgrotte",
+      "archetype": "shrine-small",
+      "subject": "A roadside Lourdes grotto in the Wienerwald: an artificial rock cave with a Marian statue behind a low iron fence",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "grotto"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8a7c",
+          "#c9c6bd",
+          "#4f5a4a"
+        ],
+        "roofColour": "#8f8a7c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched. Typed as a rough-stone grotto in a clearing; there are many such shrines around Vienna."
+    },
+    "vienna-osm-node-3762548985": {
+      "venueId": "vienna-osm-node-3762548985",
+      "city": "vienna",
+      "name": "Vienna Conservatory",
+      "archetype": "campus-block",
+      "subject": "Konservatorium Wien at Johannesgasse 4a: a city-centre building converted for the conservatory in 1938",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "mansard"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9cdb4",
+          "#f0ead8",
+          "#b9a07a"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1938 conversion",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Konservatorium_Wien_Privatuniversit%C3%A4t",
+          "what": "main building at Johannesgasse 4a, in use since 1938 after RAVAG, war damaged"
+        }
+      ],
+      "notes": "Sourced only: address, 1938 move-in, war damage in 1945. Appearance is typed from the Innere Stadt Gruenderzeit style."
+    },
+    "vienna-osm-node-7734394361": {
+      "venueId": "vienna-osm-node-7734394361",
+      "city": "vienna",
+      "name": "Pestkreuz",
+      "archetype": "monument",
+      "subject": "A wayside plague cross (Pestkreuz): a stone or timber cross on a small stepped base at a field edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "wayside-cross"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a59a",
+          "#c9c6bd",
+          "#6b4a32"
+        ],
+        "roofColour": "#8f8a7c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "17th-18th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Plague crosses and columns are typical votive monuments across Lower Austria; nothing is known about this specific one, so size and material are a typed guess."
+    },
+    "vienna-osm-relation-3015485": {
+      "venueId": "vienna-osm-relation-3015485",
+      "city": "vienna",
+      "name": "Allianz Stadion",
+      "archetype": "stadium",
+      "subject": "Allianz Stadion (Weststadion), SK Rapid Wien's 2016 football ground: a compact four-sided bowl with a continuous roof and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 125,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "flat",
+        "variant": "football-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfd2d4",
+          "#3c8a47",
+          "#f3f3f1"
+        ],
+        "roofColour": "#bfc3c6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2014-2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Allianz_Stadion",
+          "what": "built 2014-16 on the site of the Hanappi Stadium, capacity 24-26,000, cost about 53 million euro, Strabag"
+        }
+      ],
+      "notes": "Sourced: opened July 2016 on the old Hanappi Stadium site, 24-26,000 seats, built by Strabag. Club colours green and white are well known, the dimensions and facade are estimates."
+    },
+    "vienna-osm-way-1013775833": {
+      "venueId": "vienna-osm-way-1013775833",
+      "city": "vienna",
+      "name": "Luftburg Kolarik",
+      "archetype": "restaurant",
+      "subject": "Luftburg Kolarik, a large beer-garden restaurant in the Prater: a long single-storey hall with a wooden terrace and chestnut trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "beer-hall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6d2",
+          "#8a6a4a",
+          "#6b4a32"
+        ],
+        "roofColour": "#8a4b38",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The Prater beer garden is famous, but no building description was found; typed from the Viennese Gastgarten pattern."
+    },
+    "vienna-osm-way-1052649543": {
+      "venueId": "vienna-osm-way-1052649543",
+      "city": "vienna",
+      "name": "Paedagogische Hochschule Wien",
+      "archetype": "campus-block",
+      "subject": "Padagogische Hochschule Wien in Favoriten: a modern four-storey teacher-training campus block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e5dd",
+          "#7d9bb0",
+          "#b7b5ad"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2007+ (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the institution and its founding in 2007 are known; building shape is typed from the city style."
+    },
+    "vienna-osm-way-10677471": {
+      "venueId": "vienna-osm-way-10677471",
+      "city": "vienna",
+      "name": "Hoehere technische Bundeslehr- und Versuchsanstalt Moedling",
+      "archetype": "campus-block",
+      "subject": "HTL Moedling: a large technical school, modelled as a long four-storey historicist block with annexes",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#e0c98c",
+          "#a85a45",
+          "#f0ead8"
+        ],
+        "roofColour": "#a5593f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "late 19th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched. Typed as an old technical school in the Viennese Gruenderzeit style."
+    },
+    "vienna-osm-way-1077764991": {
+      "venueId": "vienna-osm-way-1077764991",
+      "city": "vienna",
+      "name": "Wettsteinpark",
+      "archetype": "park-landscape",
+      "subject": "Wettsteinpark: a long narrow riverside park on the Donaukanal with a round rose plaza, a half-round slatted pergola, sycamore maples, plane trees and poplars",
+      "form": {
+        "footprint": "rect",
+        "width_m": 270,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "linear-riverside-park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a9b58a",
+          "#d9cdb4",
+          "#8a6a4a"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "half-round wooden-slat pergola"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "stone-cast sculpture on the round plaza"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1929-30",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Wettsteinpark",
+          "what": "16,000 m2 linear riverside park, round plaza with sculpture, half-round slatted pergola, rosarium, plane trees and poplars"
+        }
+      ],
+      "notes": "Sourced: about 16,000 m2, up to 60 m wide, round central plaza with sculpture (1956), half-round pergola, rosarium of 1,300 m2, plane/sycamore/poplar trees. Length (~270 m) is an estimate from the stated bridges."
+    },
+    "vienna-osm-way-122867605": {
+      "venueId": "vienna-osm-way-122867605",
+      "city": "vienna",
+      "name": "Grossgruenmarkt",
+      "archetype": "market-hall",
+      "subject": "Grossgruenmarkt Wien (Inzersdorf): the wholesale fruit-and-vegetable market, with huge low flat-roofed halls and loading docks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "wholesale-halls",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d5d4cf",
+          "#7b8794",
+          "#b5b4ae"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Page lookup failed; typed from the wholesale market type: large loading-dock halls."
+    },
+    "vienna-osm-way-173239405": {
+      "venueId": "vienna-osm-way-173239405",
+      "city": "vienna",
+      "name": "Schubertpark Maurer",
+      "archetype": "park-landscape",
+      "subject": "A suburban neighbourhood park in Mauer with lawns, a gravel path loop, benches and mature broadleaf trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9b58a",
+          "#d9cdb4",
+          "#8a6a4a"
+        ],
+        "roofColour": "#8a6a4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed generic Viennese Bezirkspark."
+    },
+    "vienna-osm-way-179647766": {
+      "venueId": "vienna-osm-way-179647766",
+      "city": "vienna",
+      "name": "Tempelbergwarte",
+      "archetype": "monument",
+      "subject": "Tempelbergwarte, a 14.3 m masonry lookout tower on the 403 m Tempelberg with two platforms and a steep internal stair",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 6,
+        "storeys": 3,
+        "height_m": 14.3,
+        "roof": "flat",
+        "variant": "lookout-tower"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#b8b0a0",
+          "#8a8478",
+          "#6b6558"
+        ],
+        "roofColour": "#6b6558",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "platform parapet"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1908, reopened 1956",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Tempelbergwarte",
+          "what": "14.3 m tower, 4.9 x 5.9 m plan, platforms at 10.7 and 13.2 m, built 1908, reopened 1956"
+        }
+      ],
+      "notes": "Sourced: 14.3 m, plan 4.9 x 5.9 m, platforms at about 10.7 m and 13.2 m, 47 internal steps plus 13 iron steps. Source implies stone but gives no colours; crenellation parapet is an assumption."
+    },
+    "vienna-osm-way-26586105": {
+      "venueId": "vienna-osm-way-26586105",
+      "city": "vienna",
+      "name": "Stefaniewarte",
+      "archetype": "monument",
+      "subject": "Stefaniewarte on Kahlenberg: a 22 m rectangular brick lookout tower with a wooden platform railing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "lookout-tower"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "timber",
+        "colours": [
+          "#b0654a",
+          "#6b4a32",
+          "#d9cdb4"
+        ],
+        "roofColour": "#6b4a32",
+        "roofMaterial": "glass",
+        "windows": "punched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "two stairways, 125 steps each"
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "wooden platform railing"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "victorian",
+      "era": "1887",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Stefaniewarte",
+          "what": "1887 by Fellner and Helmer, 22 m rectangular tower, reused bricks, wooden platform railing, glass over stair exit"
+        }
+      ],
+      "notes": "Sourced: Fellner and Helmer, 22 m, rectangular plan about 35 m2, platform about 60 m2, reused bricks, wooden railing, glass over the stair exit (1990-92). Brick colour is assumed."
+    },
+    "vienna-osm-way-299960913": {
+      "venueId": "vienna-osm-way-299960913",
+      "city": "vienna",
+      "name": "Pfarrkirche hl. Thomas",
+      "archetype": "church-classical",
+      "subject": "A Lower Austrian village parish church: single nave with a west bell tower and a pointed spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "village-church"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e6c97a",
+          "#f0ead8",
+          "#b9a07a"
+        ],
+        "roofColour": "#a5593f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched. Typed from the Baroque village church pattern of Lower Austria; confirm before relying on the style."
+    },
+    "vienna-osm-way-32594130": {
+      "venueId": "vienna-osm-way-32594130",
+      "city": "vienna",
+      "name": "Schloss Wolkersdorf",
+      "archetype": "heritage-fort",
+      "subject": "Schloss Wolkersdorf: a horseshoe-shaped castle-palace of three wings with two square pyramid-roofed corner towers and a plain Classicist west facade",
+      "form": {
+        "footprint": "U",
+        "width_m": 46,
+        "depth_m": 46,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip",
+        "variant": "horseshoe-schloss",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e0d2a8",
+          "#f0ead8",
+          "#b9a07a"
+        ],
+        "roofColour": "#a5593f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "pillared arcade along the west wing"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "north gate dated 1745"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "13th century core, baroque, west facade 1837",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Schloss_Wolkersdorf",
+          "what": "horseshoe plan, 46 m sides, west facade four storeys, square corner towers with pyramid roofs 1837, pillared courtyard arcade, medieval core, baroque remodel, Classicist west facade"
+        }
+      ],
+      "notes": "Sourced: Kastellburg that became a three-wing horseshoe after the south wing was torn down in 1810; 46 m sides, west facade of four storeys, two surviving square corner towers with 1837 pyramid roofs (the northwest tower survives as a stump). Colours are not stated and are assumed warm pale ochre."
+    },
+    "vienna-osm-way-691761715": {
+      "venueId": "vienna-osm-way-691761715",
+      "city": "vienna",
+      "name": "Hl. Anna",
+      "archetype": "shrine-small",
+      "subject": "A small village chapel dedicated to St Anne with a short bell turret on a gabled front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f0ead8",
+          "#b9a07a",
+          "#c9b8a0"
+        ],
+        "roofColour": "#a5593f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "18th-19th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; whether it is a church or chapel is unknown, typed as a small chapel."
+    },
+    "vienna-quiet-reflection": {
+      "venueId": "vienna-quiet-reflection",
+      "city": "vienna",
+      "name": "Waldandacht",
+      "archetype": "shrine-small",
+      "subject": "Waldandacht, a forest devotion place in the Wienerwald: a small wooden-roofed open chapel among beech trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "forest-chapel"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a6a4a",
+          "#c9c6bd",
+          "#4f5a4a"
+        ],
+        "roofColour": "#6b4a32",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed as a rustic forest shrine."
+    },
+    "vienna-recreation": {
+      "venueId": "vienna-recreation",
+      "city": "vienna",
+      "name": "Bill-Grah-Park",
+      "archetype": "park-landscape",
+      "subject": "Bill-Grah-Park: a modern residential park in Donaustadt with lawns, a playground and lines of young broadleaf trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9b58a",
+          "#d9cdb4",
+          "#8a6a4a"
+        ],
+        "roofColour": "#8a6a4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed generic new-district park."
+    },
+    "vienna-transit": {
+      "venueId": "vienna-transit",
+      "city": "vienna",
+      "name": "Wien Ottakring",
+      "archetype": "transport-station",
+      "subject": "Wien Ottakring: Otto Wagner's elevated 1898 Vorortelinie station on a masonry viaduct, with a modern U3 terminus alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "elevated-station",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#c9c4b4",
+          "#8aa07a",
+          "#e9e4d4"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2,
+          "note": "two side platforms about 190 m and 170 m"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "viaduct arches"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1898 station, 1998 U3",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Bahnhof_Wien_Ottakring",
+          "what": "Otto Wagner elevated station opened 1898, listed; side platforms about 190 and 170 m; U3 terminus 1998 beside it"
+        }
+      ],
+      "notes": "Sourced: Otto Wagner station 1898 (listed), two side platforms about 190 and 170 m, U3 terminus 1998 next to it. Colours (stone and pale green ironwork) are assumed from Wagner's Stadtbahn style."
+    }
+  }
+}

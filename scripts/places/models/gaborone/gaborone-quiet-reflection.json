@@ -1,0 +1,172 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1395731307",
+   "used": "nave and eastern apse outline (about 16 x 10 m), apse at +x"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Saint_Sava_Serbian_Orthodox_Church_(Gaborone)",
+   "used": "built 2015-2021 in the manner of late 19th/early 20th century Serbian churches, one of the tallest buildings in Gaborone; no photo of this church found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ece0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9442f",
+    "material": "corrugated",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry",
+   "at": [
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -3
+     ],
+     [
+      3,
+      -3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      -3,
+      3
+     ]
+    ],
+    "z0": 0,
+    "height": 17,
+    "topScale": 0.85,
+    "colour": "#f1ece0",
+    "storeys": 4
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -10,
+    0,
+    17
+   ],
+   "params": {
+    "baseWidth": 4.6,
+    "height": 8,
+    "sides": 4,
+    "colour": "#7f8c84"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -1,
+    0,
+    9.5
+   ],
+   "params": {
+    "radius": 3.2,
+    "profile": "onion",
+    "drum": 3.5,
+    "drumRadius": 3.4,
+    "finial": 1.6,
+    "colour": "#7f8c84",
+    "drumColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8.5,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "rise": 0.5,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#c9c3b5"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "colour": "#2d3033"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   50,
+   40
+  ],
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     -10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     14,
+     10
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this church; Serbian-Byzantine dome and west tower are typed from the article"
+ }
+}

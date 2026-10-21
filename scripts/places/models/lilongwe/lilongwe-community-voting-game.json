@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1425872635",
+   "used": "31 m round planted island outline"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "island",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8f55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb-ring",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0.5,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8fa060",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a8f55"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -8,
+    0.9
+   ],
+   "rotDeg": 30,
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    9,
+    -6,
+    0.9
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c8453a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; planted island from OSM outline, contents typed"
+ }
+}

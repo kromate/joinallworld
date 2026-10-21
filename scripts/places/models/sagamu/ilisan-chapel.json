@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "ilisan-chapel",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1283237735",
+   "used": "real outline of the containing building (25.9 x 10.9 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/sagamu.json",
+   "used": "rendered gabled hall, short front tower, pointed windows, red corrugated roof"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "pointed-arch",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#8e979c"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c3b2f",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 12,
+    "cap": "pyramid",
+    "capRise": 2.5,
+    "windows": "none",
+    "colour": "#f2eee6",
+    "capColour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#8e979c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.4,
+    "colour": "#e6e0d2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; outline real, tower position/size and window style typed; tower placement relative to the outline not verified."
+ }
+}

@@ -1,0 +1,196 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "mapo-polling",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ibadan.json#mapo-polling",
+   "used": "single-storey public hall about 24 x 12 m, gable corrugated roof, front veranda, flagpole, sign board, steps. OSM match is the containing outline of Mapo Hall (50 m, polygonal, a different building) so it was not used; Commons photos of Mapo Hall are a different building."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    },
+    "bands": "#2f6b4f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     24,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -7.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2f6b4f",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d9d2bd"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   44,
+   34
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists; hall, veranda, flag and board are typical for the brief, not observed."
+ }
+}

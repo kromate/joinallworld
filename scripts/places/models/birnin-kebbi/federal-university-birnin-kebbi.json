@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "federal-university-birnin-kebbi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://fubk.edu.ng/about/",
+   "used": "new federal university from 2013, sandy open grounds"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/birnin-kebbi.json",
+   "used": "80 x 24 m 3-storey teaching block, ribbon windows, concrete portico; OSM match is an 8 x 6 m hut, unusable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     72,
+     20
+    ]
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.36,
+    "plinth": 0.6,
+    "bands": "#a8a39a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "height": 14.5,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a39a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.3
+   },
+   "at": [
+    -14,
+    -10
+   ]
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    10,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5,
+    "height": 6,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "kind": "square",
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    -30,
+    -10.2,
+    3.6
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 24,
+    "height": 8,
+    "pitch": 2.4,
+    "depth": 0.5,
+    "colour": "#d8c19a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.4
+    ],
+    "z0": 0.4,
+    "height": 2.6,
+    "colour": "#3f6b4e",
+    "topColour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#c9c6bd",
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 6,
+    "count": 6,
+    "kind": "acacia"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo, OSM unusable; typed teaching block, real campus layout unknown"
+ }
+}

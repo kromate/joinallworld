@@ -1,0 +1,334 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kenyatta_National_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Rotsee (Commons)",
+   "view": "detail",
+   "file": "/tmp/places-evidence/nairobi/hosp1.jpg",
+   "used": "brutalist ward block: pitted grey-brown board concrete, deep horizontal slab bands per storey, recessed ribbon windows with vertical piers, 7 storeys with stepped corner"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19421362",
+   "used": "overall extent (285 x 207 m) and block layout of long parallel wings; scaled down to fit"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     16,
+     70
+    ]
+   },
+   "at": [
+    -10,
+    12
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7a6e66",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0,
+    "bay": 16,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6f635b"
+      ],
+      "height": 1.6,
+      "proud": 0.8,
+      "floors": "all",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7770",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-a",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    10,
+    34
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7a6e66",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0,
+    "bay": 16,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6f635b"
+      ],
+      "height": 1.6,
+      "proud": 0.8,
+      "floors": "all",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7770",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-b",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    10,
+    -4
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7a6e66",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0,
+    "bay": 16,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6f635b"
+      ],
+      "height": 1.6,
+      "proud": 0.8,
+      "floors": "all",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7770",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     70,
+     24
+    ]
+   },
+   "at": [
+    10,
+    -56
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7a6e66",
+    "windows": "ribbon",
+    "plinth": 0,
+    "windowRatio": 0.25,
+    "glassColour": "#2f3a40",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6f635b"
+      ],
+      "height": 1.2,
+      "proud": 0.6,
+      "floors": "all"
+     }
+    ],
+    "bay": 20
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6b66",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -71,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 22,
+    "depth": 9,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#a7a8a2",
+    "edgeColour": "#c0392b"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -18,
+    -71,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -12,
+    40,
+    26
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 2,
+    "colour": "#7d8c86"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-end",
+   "footprint": {
+    "rect": [
+     14,
+     45
+    ]
+   },
+   "at": [
+    36,
+    15
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#7a6e66",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0,
+    "bay": 15,
+    "glassColour": "#2f3a40",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#6f635b"
+      ],
+      "height": 1.6,
+      "proud": 0.8,
+      "floors": "all",
+      "skipGround": true
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7770",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -70
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -72
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ward slabs now deep proud pitted-concrete bands in a U plan around a courtyard with concrete outpatient block; corner set-backs and vertical piers omitted for LOD1 budget; photo is a courtyard detail only"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-clinic"
+}

@@ -8,9 +8,11 @@ import { parseRecipePack, requireRecipe } from './pack.ts';
 import { compileRecipe } from './compile.ts';
 import { recipeAssets } from './prepare.ts';
 import type { RecipeAssetStore } from './prepare.ts';
+import { loadPlaceManifest } from '../places/load.ts';
+import type { PlaceManifest } from '../places/manifest.ts';
 
 type Authored = (kind: string, variant: string) => SceneDef | null;
-export async function prepareRecipePart(city: string, input: unknown, authored: Authored, store: RecipeAssetStore = recipeAssets): Promise<ScenePart> {
+export async function prepareRecipePart(city: string, input: unknown, authored: Authored, store: RecipeAssetStore = recipeAssets, placesOf: (city: string) => Promise<PlaceManifest | null> = loadPlaceManifest): Promise<ScenePart> {
   const { text, metadata } = await parseRecipePack(input, city);
   const content = cityContent(city), targetIds = new Set(metadata.targetVenueIds);
   const targets: SceneVenue[] = [];
@@ -26,8 +28,9 @@ export async function prepareRecipePart(city: string, input: unknown, authored: 
   requireRecipe(parsed.recipes.filter(value => value.recipe.hero).length === (parsed.recipes.length ? 1 : 0), 'city hero coverage mismatch');
   requireRecipe(Boolean(metadata.assets.hero) === parsed.recipes.some(value => value.recipe.hero), 'unplaced or missing hero dependency');
   if (!parsed.recipes.length) return { kinds: {} };
-  const prepared = await store.prepareCity(metadata), kinds: Record<string, SceneDef> = {};
-  for (const value of parsed.recipes) kinds[`recipe:${value.recipe.venue}`] = compileRecipe(value, prepared, metadata);
+  // The city's place models are optional: a city without them, or a manifest that cannot be had, draws exactly what it drew before.
+  const [prepared, places] = await Promise.all([store.prepareCity(metadata), placesOf(city)]), kinds: Record<string, SceneDef> = {};
+  for (const value of parsed.recipes) kinds[`recipe:${value.recipe.venue}`] = compileRecipe(value, prepared, metadata, places);
   return { kinds: Object.freeze(kinds) };
 }
 export async function loadRecipePart(city: string, authored: Authored): Promise<ScenePart> {

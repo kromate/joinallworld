@@ -1,0 +1,179 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945746804",
+   "used": "real building outline (583 m2, containing the venue point)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: gable-roofed auditorium, front porch, short cross-topped tower, cream render with brick accent"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.5,
+    "bands": "#a98a63"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d9296",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    2,
+    -20
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a98a63",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    2,
+    -17
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bands": "#a98a63"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8d9296",
+    "pitch": 35
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    2,
+    -17,
+    13
+   ],
+   "params": {
+    "baseWidth": 1.2,
+    "height": 6,
+    "colour": "#f2efe6",
+    "finial": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "pillarEvery": 5,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "colour": "#c9ced1"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; massing from the OSM outline and the brief; tower and porch positions are guesses relative to the outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "first-ecwa-bishara-church-birnin-kebbi"
+}

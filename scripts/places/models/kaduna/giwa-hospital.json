@@ -1,0 +1,590 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Giwa_Hospital_Kaduna.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anasskoko",
+   "view": "front",
+   "file": "/tmp/places-evidence/kaduna/giwa.jpg",
+   "used": "two-storey cream block, hipped teal-green roof with a central gabled pediment, green glazed band above a columned ground-floor entrance, small teal glass-block windows, salmon bands and columns, picket perimeter fence"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1245053719",
+   "used": "overall scale only (about 24 x 18 m containing block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.08,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6d2",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#d9b49a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f8f86",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -7.55,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#2f8f93"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -7.55,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#2f8f93"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -7.55,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#2f8f93"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -7.55,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#2f8f93"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.2,
+    -8.0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 10,
+    "height": 8.0,
+    "colour": "#d9b49a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.2,
+    -8.0,
+    0
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 10,
+    "height": 8.0,
+    "colour": "#d9b49a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.6,
+    4.0
+   ],
+   "params": {
+    "rect": [
+     14,
+     2.2
+    ],
+    "height": 0.45,
+    "colour": "#e4c2a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    4,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     5,
+     4
+    ],
+    "height": 3.0,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     10,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -8.2
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "z0": 7.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4c2a8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e4c2a8",
+    "rise": 3.0,
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.25,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.2
+    ],
+    "height": 1.3,
+    "colour": "#efe9dc"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.25,
+    11.0
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.2
+    ],
+    "height": 1.1,
+    "colour": "#3f8fa0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.55,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.2
+    ],
+    "height": 3.5,
+    "colour": "#2fae4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.4,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.2
+    ],
+    "height": 3.1,
+    "colour": "#6fc29a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.7,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#e9e4d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.7,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#e9e4d4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.7,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.3
+    ],
+    "height": 0.14,
+    "colour": "#e9e4d4"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     -7.7,
+     4.6
+    ],
+    "end": [
+     4.5,
+     -7.7,
+     4.6
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.14,
+        0.3
+       ],
+       "height": 3.5,
+       "colour": "#e9e4d4"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.5,
+     -7.7,
+     0.7
+    ],
+    "end": [
+     4.5,
+     -7.7,
+     0.7
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.14,
+        0.3
+       ],
+       "height": 3.1,
+       "colour": "#e9e4d4"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.2,
+    -8.6,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.5,
+    "colour": "#d9b49a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.8,
+    -8.6,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.5,
+    "colour": "#d9b49a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.8,
+    -8.6,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.5,
+    "colour": "#d9b49a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.2,
+    -8.6,
+    0
+   ],
+   "params": {
+    "radius": 0.38,
+    "n": 10,
+    "height": 4.5,
+    "colour": "#d9b49a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     -12,
+     0
+    ],
+    "end": [
+     17,
+     -12,
+     0
+    ],
+    "count": 56,
+    "lod1Step": 99,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.12,
+        0.1
+       ],
+       "height": 1.9,
+       "colour": "#d8cfa8"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12,
+    1.6
+   ],
+   "params": {
+    "rect": [
+     34,
+     0.12
+    ],
+    "height": 0.12,
+    "colour": "#c9b98a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.6,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.5,
+    "colour": "#c9a97a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.6,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 2.5,
+    "colour": "#c9a97a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -17,
+     -13.6,
+     0
+    ],
+    "end": [
+     17,
+     -13.6,
+     0
+    ],
+    "count": 50,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.35,
+        0.08
+       ],
+       "height": 1.0,
+       "colour": "#eeeae0"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -4
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     11,
+     -10
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "giwa-hospital",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glazed green curtain wall with mullion grid, tall salmon pediment with sign panel, picket fence with gate piers and plank fence added; pediment reads as a box, window glass-block grids and roof details plain, corner columns short of eave."
+ }
+}

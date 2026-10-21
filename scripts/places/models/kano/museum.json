@@ -1,0 +1,667 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gidan_Makam_Museum_Kano.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Suleiman Umar, Aminu Abdullahi, Abubakar Yusuf (kanostreetsonosm.org.ng)",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/mus1.jpg",
+   "used": "zaure gatehouse: tapering dark brown mud walls with four zankwaye horns, recessed dark door framed by white relief strips and a blank sign panel; cream relief-wall and thatch roof to the left, dark mud wall and green flagpole to the right, two cannons on plinths in raised brick beds, paved path"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gidan_Makama_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Solasly",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/mus2.jpg",
+   "used": "courtyard gate: horned parapet, brown patterned render, arched side bays"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3885188",
+   "used": "none (nearest match 18 m, 252 m2 only; footprint not trusted)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 28,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "zaure",
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       19,
+       7.5
+      ]
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       14.5,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "zaure-parapet",
+   "at": [
+    0,
+    -2.4
+   ],
+   "params": {
+    "rect": [
+     9,
+     4.6
+    ],
+    "z0": 7.0,
+    "height": 1.6,
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-l",
+   "at": [
+    -6.8,
+    -3.6
+   ],
+   "params": {
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d",
+    "curve": true,
+    "sections": [
+     {
+      "z": 7.0,
+      "ellipse": [
+       1.8,
+       1.53
+      ]
+     },
+     {
+      "z": 9.0,
+      "ellipse": [
+       1.4400000000000002,
+       1.26
+      ],
+      "cx": 0.25
+     },
+     {
+      "z": 11.0,
+      "ellipse": [
+       0.81,
+       0.7200000000000001
+      ],
+      "cx": 0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-r",
+   "at": [
+    6.9,
+    -3.6
+   ],
+   "params": {
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d",
+    "curve": true,
+    "sections": [
+     {
+      "z": 7.0,
+      "ellipse": [
+       1.8,
+       1.53
+      ]
+     },
+     {
+      "z": 8.8,
+      "ellipse": [
+       1.4400000000000002,
+       1.26
+      ],
+      "cx": -0.25
+     },
+     {
+      "z": 10.6,
+      "ellipse": [
+       0.81,
+       0.7200000000000001
+      ],
+      "cx": -0.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-lm",
+   "at": [
+    -4.2,
+    -3.6
+   ],
+   "params": {
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d",
+    "curve": true,
+    "sections": [
+     {
+      "z": 8.0,
+      "ellipse": [
+       1.3,
+       1.105
+      ]
+     },
+     {
+      "z": 9.1,
+      "ellipse": [
+       1.04,
+       0.9099999999999999
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 10.2,
+      "ellipse": [
+       0.5850000000000001,
+       0.52
+      ],
+      "cx": 0.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "horn-rm",
+   "at": [
+    4.2,
+    -3.6
+   ],
+   "params": {
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d",
+    "curve": true,
+    "sections": [
+     {
+      "z": 8.0,
+      "ellipse": [
+       1.3,
+       1.105
+      ]
+     },
+     {
+      "z": 9.1,
+      "ellipse": [
+       1.04,
+       0.9099999999999999
+      ],
+      "cx": -0.1
+     },
+     {
+      "z": 10.2,
+      "ellipse": [
+       0.5850000000000001,
+       0.52
+      ],
+      "cx": -0.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-panel",
+   "at": [
+    0,
+    -5.1
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "z0": 4.4,
+    "height": 3.6,
+    "colour": "#5e3f2d",
+    "topColour": "#5e3f2d"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "emblem",
+   "at": [
+    0,
+    -5.35
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.12
+    ],
+    "z0": 6.0,
+    "height": 1.3,
+    "colour": "#f1ece0",
+    "topColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "jamb-l",
+   "at": [
+    -2.0,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.6
+    ],
+    "z0": 0.3,
+    "height": 3.7,
+    "colour": "#3a261c",
+    "topColour": "#3a261c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "jamb-r",
+   "at": [
+    2.0,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.6
+    ],
+    "z0": 0.3,
+    "height": 3.7,
+    "colour": "#3a261c",
+    "topColour": "#3a261c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lintel",
+   "at": [
+    0,
+    -5.6
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     0.6
+    ],
+    "z0": 4.0,
+    "height": 0.4,
+    "colour": "#3a261c",
+    "topColour": "#3a261c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0,
+    -5.0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.4
+    ],
+    "z0": 0.3,
+    "height": 3.7,
+    "colour": "#1e1a18",
+    "topColour": "#1e1a18"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief-l",
+   "at": [
+    -2.0,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.1
+    ],
+    "z0": 0.5,
+    "height": 3.4,
+    "colour": "#f1ece0",
+    "topColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "relief-r",
+   "at": [
+    2.0,
+    -5.95
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.1
+    ],
+    "z0": 0.5,
+    "height": 3.4,
+    "colour": "#f1ece0",
+    "topColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-range",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    -17.5,
+    -2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9cdb4",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "colours": [
+       "#d9cdb4",
+       "#c2b394"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbd9f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "thatch-left",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -23.5,
+    -5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8a6a4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a6444",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wall",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    18.5,
+    0
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#4f3427",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a3023",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-range",
+   "footprint": {
+    "rect": [
+     44,
+     8
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8a6a4c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b5d42",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "steps",
+   "at": [
+    0,
+    -6.2
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 0.35,
+    "colour": "#a89f90",
+    "topColour": "#a89f90"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-l",
+   "at": [
+    -5.5,
+    -9
+   ],
+   "params": {
+    "rect": [
+     3,
+     5
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#6b3f2e",
+    "topColour": "#5f8a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bed-r",
+   "at": [
+    5.5,
+    -9
+   ],
+   "params": {
+    "rect": [
+     3,
+     5
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#6b3f2e",
+    "topColour": "#5f8a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-l",
+   "at": [
+    -8,
+    -8.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#6b4a38",
+    "topColour": "#6b4a38"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-r",
+   "at": [
+    8,
+    -8.5
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#6b4a38",
+    "topColour": "#6b4a38"
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon-l",
+   "at": [
+    -8,
+    -8.5,
+    1.2
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 0.6
+   }
+  },
+  {
+   "type": "cannon",
+   "id": "cannon-r",
+   "at": [
+    8,
+    -8.5,
+    1.2
+   ],
+   "params": {
+    "count": 1,
+    "yaw": 270,
+    "scale": 0.6
+   }
+  },
+  {
+   "type": "flagpole",
+   "id": "flag",
+   "at": [
+    9.5,
+    -1.5,
+    0
+   ],
+   "params": {
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "shrub-l",
+   "at": [
+    -9,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 2.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -9
+    ],
+    "height": 4
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Mud horns are smooth lofts without the ridged texture; interlace relief strips and emblem are plain white blocks; thatch and cream relief walls are simplified; foreground shrubs, generator, car and cannons-in-beds partial."
+ }
+}

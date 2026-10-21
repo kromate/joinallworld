@@ -1,0 +1,1769 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "muscat",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "muscat",
+    "climate": "desert",
+    "vernacular": "Low-rise coastal capital held to a white/cream palette by long-standing planning custom: 1-4 storey flat-roofed villas and apartment blocks in white or sand painted render, pointed and trefoil arches, crenellated parapets and carved wooden doors, with Omani forts and watchtowers on the bare brown volcanic hills; new civic buildings use pale sandstone or limestone with Omani-Islamic arches and domes; the ground is sand and gravel with palms and ghaf/acacia in planted verges.",
+    "wallColours": [
+      "#f4efe4",
+      "#e8dcc3",
+      "#d9c7a0",
+      "#c8b08a",
+      "#efe6d2",
+      "#b9a384"
+    ],
+    "roofColours": [
+      "#cfcac0",
+      "#b9ad98",
+      "#c9a24a",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "whitewash",
+      "sandstone",
+      "limestone",
+      "concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet",
+      "gold-leaf"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "none"
+    ],
+    "ornament": "Omani pointed and trefoil arches, merlon-style crenellated parapets (forts and watchtowers), carved teak doors with brass studs, geometric screens and mashrabiya-style lattices, gilded dome finials, khanjar and frankincense-burner motifs on civic furniture.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Muscat",
+        "what": "low-lying white buildings typical of Muscat; forts (Al Jalali, Al Mirani); hot desert climate, sparse sabkha vegetation, bare hills"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sultan_Qaboos_Grand_Mosque",
+        "what": "Indian sandstone Omani-Islamic civic architecture with five minarets and central dome"
+      },
+      {
+        "url": "https://ar.wikipedia.org/wiki/مسجد_عبد_المنعم_الزواوي",
+        "what": "Zawawi Mosque: golden-coloured single dome and minaret, Quran engraved on metal wall panels, wood and marble"
+      }
+    ]
+  },
+  "places": {
+    "muscat-airport-muscat-airport": {
+      "venueId": "muscat-airport-muscat-airport",
+      "city": "muscat",
+      "name": "Muscat International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2018 Terminal 1 seen from the landside forecourt: a very long glass-fronted passenger building with a rippled light roof and three finger piers (A/B/C) running to the aprons, the 97 m control tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 460,
+        "depth_m": 130,
+        "storeys": 5,
+        "height_m": 32,
+        "roof": "wave",
+        "variant": "long terminal with three pier fingers",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cd",
+          "#6c7b86",
+          "#f3f1ec"
+        ],
+        "roofColour": "#c8c6bf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "97 m tower built with the terminal"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "45 gates in total, piers A/B/C"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat_International_Airport",
+          "what": "new Terminal 1 opened 18 March 2018, about 580,000 m2, 45 gates, 118 check-in counters, new 97 m control tower, A380-capable"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/269351181",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM terminal footprint is 466x432 m including piers (A/B/C piers about 311x54 m, 3 levels, Terminal 1 reported 5 levels). Real facade colours and roof profile were not described in any source reached; generator should use pale glazing with white/grey metal framing and a gentle wave roof. Show the central landside block; clamp length to scene."
+    },
+    "muscat-clinic": {
+      "venueId": "muscat-clinic",
+      "city": "muscat",
+      "name": "Royal Hospital",
+      "archetype": "hospital",
+      "subject": "The 1987 Royal Hospital campus as a sprawling cluster of white 4-5 storey wards around landscaped courts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "multi-wing campus",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#d9c7a0",
+          "#8f8a80"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "Omani arcade details on entrance blocks"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "low-lying white buildings typical of Muscat"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/21547633",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM relation footprint about 255x243 m with many wings, wikidata inception 1987, name Royal Hospital (national referral hospital). No source describing the facade was reached; form is typed from measured footprint and Muscat style."
+    },
+    "muscat-community-notices": {
+      "venueId": "muscat-community-notices",
+      "city": "muscat",
+      "name": "Consultative Council of Oman",
+      "archetype": "civic-palace",
+      "subject": "The Council of Oman complex (Majlis Oman, Majlis A'Shura/State Council) as a long, low sandstone-toned parliamentary complex in Omani-Islamic style",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "long parliamentary complex with assembly hall",
+        "wings": 3
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#d8c8a4",
+          "#c4ad82",
+          "#f1ead8"
+        ],
+        "roofColour": "#cfc5b0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arcaded entrance"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "assembly hall dome"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2013",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Council_of_Oman",
+          "what": "Council of Oman building: Moller Architects (Auckland), construction Nov 2009 to 2013, housing assembly hall and both houses"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14351547",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 421x190 m, bearing 20 deg. Architect and dates are sourced; no description of the facade found, so stone-coloured Omani-Islamic civic look is a typed guess."
+    },
+    "muscat-community-voting-game": {
+      "venueId": "muscat-community-voting-game",
+      "city": "muscat",
+      "name": "Al Amerat Municipality",
+      "archetype": "civic-small",
+      "subject": "A municipal town-hall office block (Wilayat of Al Amerat) with a cream render facade and arched entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#eadfc6",
+          "#c8b08a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white/cream low-rise Omani civic buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/244925887",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM tags amenity=townhall; the traced footprint (232x87 m, irregular wedge) looks like a compound, so model only its main office block. Appearance not found; typed from Omani government-building convention."
+    },
+    "muscat-community-workshop": {
+      "venueId": "muscat-community-workshop",
+      "city": "muscat",
+      "name": "Oman Convention and Exhibition Centre",
+      "archetype": "museum-theatre",
+      "subject": "The 2016 convention centre in Omani-Islamic style: a very wide 3-storey sand-coloured building with five exhibition halls, a 3,200-seat auditorium and a large arched entrance front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 340,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "exhibition halls with auditorium block",
+        "wings": 3
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c6a0",
+          "#9fb3be",
+          "#f1ead8"
+        ],
+        "roofColour": "#cfc5b0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "large Omani arch entrance"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oman_Convention_and_Exhibition_Centre",
+          "what": "architect SSH, Islamic architecture style, five exhibition halls (~22,000 m2), 3,200-seat auditorium and 450-seat theatre, Crowne Plaza and JW Marriott hotels attached"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/550202124",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 342x227 m, 3 levels. Style (Islamic) and halls are sourced; exact facade colours are a typed guess from Muscat sandstone palette."
+    },
+    "muscat-market-game": {
+      "venueId": "muscat-market-game",
+      "city": "muscat",
+      "name": "Oman Avenues Mall",
+      "archetype": "mall",
+      "subject": "The 4-level Lulu-anchored Oman Avenues Mall (2015): a wide cream-and-glass shopping box with a central entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 245,
+        "depth_m": 120,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d9bc",
+          "#9fb3be",
+          "#f4efe4"
+        ],
+        "roofColour": "#c8c6bf",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oman_Avenues_Mall",
+          "what": "one of the largest malls in Oman, a LuLu Group division, inaugurated May 2015"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/354859522",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building:levels=4, retail footprint 245x120 m. Facade finish not described in sources reached; use cream render and tinted glass."
+    },
+    "muscat-meal-stop": {
+      "venueId": "muscat-meal-stop",
+      "city": "muscat",
+      "name": "Meknas",
+      "archetype": "restaurant",
+      "subject": "A small restaurant on the ground floor of a mid-rise mixed block (venue point sits in a 7-level OSM building)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eadfc6",
+          "#8c6a4a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white/cream low-rise buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/224448655",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Nothing found about this venue. The OSM building around it is 37x35 m with 7 levels; the model shows only a restaurant frontage in the Muscat palette."
+    },
+    "muscat-osm-node-10252459505": {
+      "venueId": "muscat-osm-node-10252459505",
+      "city": "muscat",
+      "name": "Caribou Coffee",
+      "archetype": "restaurant",
+      "subject": "A glass-fronted airport coffee kiosk inside the A Pier concourse of Muscat International Airport",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "airport concourse kiosk"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cd",
+          "#5a4636",
+          "#f3f1ec"
+        ],
+        "roofColour": "#c8c6bf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat_International_Airport",
+          "what": "pier terminals A/B/C; the venue lies inside A Pier"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1104022213",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Venue point lies inside the A Pier (OSM terminal building 311x54 m, 3 levels). A brand-neutral coffee kiosk is shown; no logos."
+    },
+    "muscat-osm-node-1719812351": {
+      "venueId": "muscat-osm-node-1719812351",
+      "city": "muscat",
+      "name": "Muntaza.h Qantab",
+      "archetype": "park-landscape",
+      "subject": "A small coastal promenade park at Qantab: grass strip and palms above a rocky cove with a pavilion and car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "coastal cove park"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9c7a0",
+          "#c8b08a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfc5b0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "coastal setting among bare hills and sabkha vegetation"
+        }
+      ],
+      "notes": "No OSM building or facts found; typed from Qantab coastal-village setting among rocky hills."
+    },
+    "muscat-osm-node-1721989476": {
+      "venueId": "muscat-osm-node-1721989476",
+      "city": "muscat",
+      "name": "Sultan Qaboos Grand Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Sultan Qaboos Grand Mosque (2001) from the entrance side: a pale Indian-sandstone prayer hall with one tall central dome, a 90 m main minaret and four 45.5 m corner minarets, arched cloisters around the courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 156,
+        "depth_m": 71,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "dome",
+        "variant": "central dome 50 m above floor; five minarets",
+        "wings": 4
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#d8cbb0",
+          "#c9a24a",
+          "#3f8f9a"
+        ],
+        "roofColour": "#d8cbb0",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome about 50 m above the floor"
+        },
+        {
+          "id": "minaret",
+          "count": 5,
+          "note": "main minaret 90 m, four flanking minarets 45.5 m"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched cloisters around the sahn"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "tile bands on dome and minarets"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "2001",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sultan_Qaboos_Grand_Mosque",
+          "what": "one central dome ~50 m, five minarets (90 m + 4x45.5 m), ~270,000 t Indian sandstone, prayer hall 5,476 m2, architects Quad Design with Mohamed Makiya, built 1994-2001"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/12252336",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building tags building:colour=lightgrey, height=20 for the 156x71 m block; whole precinct is about 416x300 m so show the prayer hall, dome and minarets only. Stone is pale cream-grey; minaret caps and dome bands carry gold and blue-green tile detail (typed from memory of photos, so colours medium). Distinct from Zawawi Mosque: much larger, five minarets."
+    },
+    "muscat-osm-node-2559425023": {
+      "venueId": "muscat-osm-node-2559425023",
+      "city": "muscat",
+      "name": "Al-Ansab",
+      "archetype": "hospital",
+      "subject": "A small government health centre in Al Ansab: a low white two-storey clinic block with an entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#d9c7a0",
+          "#8f8a80"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white low-rise Omani public buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1220086786",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "The OSM match for this point is Al Ansab School (159x99 m), not a hospital; the real facility is unverified, so a typed clinic is shown."
+    },
+    "muscat-osm-node-3703217884": {
+      "venueId": "muscat-osm-node-3703217884",
+      "city": "muscat",
+      "name": "Al Reem Medical Centre",
+      "archetype": "hospital",
+      "subject": "A private medical centre in a slim 3-storey cream building with tinted windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eadfc6",
+          "#9fb3be",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white/cream mid-rise Muscat blocks"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1223316487",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Only an unnamed OSM building (73x22 m) lies at the point; the real centre's look is not documented."
+    },
+    "muscat-osm-node-571119169": {
+      "venueId": "muscat-osm-node-571119169",
+      "city": "muscat",
+      "name": "Oman Oil and Gas Exhibition Centre",
+      "archetype": "museum-theatre",
+      "subject": "A small exhibition building for the oil and gas sector: a two-storey cream block with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d9bc",
+          "#8fa3ae",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white/cream Muscat building palette"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/337928440",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Only an unnamed OSM building (73x62 m) is at the point; no description of the real exhibition centre found."
+    },
+    "muscat-osm-node-6258430359": {
+      "venueId": "muscat-osm-node-6258430359",
+      "city": "muscat",
+      "name": "Juice shop",
+      "archetype": "shophouse",
+      "subject": "A roadside juice shop: a tiny single-storey cream kiosk with a striped awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "flat",
+        "variant": "roadside kiosk"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eadfc6",
+          "#c8b08a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "low-rise Omani roadside buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/284798799",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Game placeholder-type venue with no information; the nearest OSM building is a 14x14 m mosque, which it is not."
+    },
+    "muscat-osm-way-20147882": {
+      "venueId": "muscat-osm-way-20147882",
+      "city": "muscat",
+      "name": "Sultan Qaboos Sports Complex",
+      "archetype": "stadium",
+      "subject": "The 28,000-seat national stadium (Bausher, 1985): an oval bowl of pale concrete stands with tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 250,
+        "depth_m": 200,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "none",
+        "variant": "oval bowl with athletics track"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d2c4",
+          "#6d7378",
+          "#f1ece0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "partial canopy over main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sultan_Qaboos_Sports_Complex",
+          "what": "28,000 capacity, grass pitch, architect Roy Lancaster Associates, opened 19 Oct 1985, over 10,000 parking spaces (uncited)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/20147882",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM leisure=stadium footprint 357x206 m. Roof and tower details were not in sources reached; typed as a classic 1980s bowl with a covered main stand and four floodlight masts."
+    },
+    "muscat-osm-way-224449131": {
+      "venueId": "muscat-osm-way-224449131",
+      "city": "muscat",
+      "name": "Al Zawawi Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The 1985 Zawawi Mosque on Sultan Qaboos Street (Al Khuwair): a compact cream building with one golden dome and one minaret, Quran verses on metal wall panels",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "dome",
+        "variant": "single gilded dome and one minaret"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#e9dfc8",
+          "#c9a227",
+          "#6b4a2b"
+        ],
+        "roofColour": "#c9a227",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "golden-coloured dome"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "Quran engraved on metal wall panels"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ar.wikipedia.org/wiki/مسجد_عبد_المنعم_الزواوي",
+          "what": "one dome, one minaret, golden colours, Quran engraved on metal panels on walls, wood and marble, Islamic architecture, opened 1985 by Omar Zawawi"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/224449131",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 30.7x26.6 m. Much smaller than the Grand Mosque. Wall colour typed as cream; gold from the Arabic Wikipedia description."
+    },
+    "muscat-osm-way-243025679": {
+      "venueId": "muscat-osm-way-243025679",
+      "city": "muscat",
+      "name": "Oman Medical College",
+      "archetype": "campus-block",
+      "subject": "A private medical college campus: a few white 3-storey teaching blocks around a central court",
+      "form": {
+        "footprint": "U",
+        "width_m": 87,
+        "depth_m": 73,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9db",
+          "#9fb3be",
+          "#d9c7a0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white low-rise buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/506542005",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata inception 2001; OSM building 87x73 m inside a 33,000 m2 campus. Facade not described anywhere found."
+    },
+    "muscat-osm-way-273893092": {
+      "venueId": "muscat-osm-way-273893092",
+      "city": "muscat",
+      "name": "Bait Al Baranda Museum",
+      "archetype": "museum-theatre",
+      "subject": "Bait Al Baranda, a restored traditional Omani merchant house museum: a two-storey whitewashed building with crenellated parapet, small windows and a carved wooden door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "restored traditional house"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f4efe4",
+          "#c8b08a",
+          "#6b4a2b"
+        ],
+        "roofColour": "#e8dcc3",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "early 20th century (restored)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "traditional white Omani buildings, forts, watchtowers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/273893092",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM: museum, 2 levels, 32x25 m, footprint measured; appearance typed from the traditional Omani town-house type. Not independently verified for this building."
+    },
+    "muscat-osm-way-286215978": {
+      "venueId": "muscat-osm-way-286215978",
+      "city": "muscat",
+      "name": "Royal Oman Police Stadium",
+      "archetype": "stadium",
+      "subject": "The 12,000-seat Royal Oman Police Stadium (1987): a smaller oval football bowl with two covered stands and corner floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "none",
+        "variant": "football bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d2c4",
+          "#496a8a",
+          "#f1ece0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Oman_Police_Stadium",
+          "what": "capacity 12,000 (originally 15,000), opened 1987, grass pitch"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/286215978",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 274x186 m. Roof and stand layout not documented in sources reached; make it clearly smaller and plainer than Sultan Qaboos Sports Complex."
+    },
+    "muscat-osm-way-287310284": {
+      "venueId": "muscat-osm-way-287310284",
+      "city": "muscat",
+      "name": "Al Amerat Public Park",
+      "archetype": "park-landscape",
+      "subject": "A large public park in Al Amerat: lawns and palm rows with gravel paths, a playground pavilion and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 780,
+        "depth_m": 330,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "long park with lawn belts"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9c7a0",
+          "#c8b08a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfc5b0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "sparse desert vegetation; planted palms in public parks"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/287310284",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata Q49584186 \"park in Oman\"; OSM area about 16 ha (780x328 m). Contents not described; show a recognisable corner."
+    },
+    "muscat-osm-way-339873291": {
+      "venueId": "muscat-osm-way-339873291",
+      "city": "muscat",
+      "name": "Museum of Omani Heritage",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Omani Heritage (opened 1974, the Sultanate's first museum): a small two-storey cream building with arched windows and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eadfc6",
+          "#c8b08a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1974",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Omani_Heritage",
+          "what": "first museum in the Sultanate, est. 1974, superseded by the National Museum in 2016"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/339873291",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 27x21 m. Building appearance not described in sources reached."
+    },
+    "muscat-osm-way-993559976": {
+      "venueId": "muscat-osm-way-993559976",
+      "city": "muscat",
+      "name": "Majan University College",
+      "archetype": "campus-block",
+      "subject": "A private college campus: a long 3-storey cream teaching block with a glazed entrance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9db",
+          "#9fb3be",
+          "#d9c7a0"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1995",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white low-rise buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/993559976",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata: Majan College (University College), inception 1995; OSM footprint 249x108 m. Facade unverified."
+    },
+    "muscat-quiet-reflection": {
+      "venueId": "muscat-quiet-reflection",
+      "city": "muscat",
+      "name": "Shiva Temple",
+      "archetype": "temple-asian",
+      "subject": "The Hindu Shiva Temple in the Muscat/Muttrah area: a small whitewashed temple with a shikhara tower over the sanctum, set in a walled courtyard among apartment blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "pyramidal",
+        "variant": "shikhara-topped shrine in walled court"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4efe4",
+          "#c26a3a",
+          "#d9a441"
+        ],
+        "roofColour": "#f4efe4",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "south-asian",
+      "era": "19th century (renovated)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "small non-Muslim places of worship exist in Muscat; no direct description found"
+        }
+      ],
+      "notes": "No description of this specific temple was reachable; typed as a small north-Indian-style shikhara temple in whitewashed render. The venue is a Hindu temple, not a mosque."
+    },
+    "muscat-recreation": {
+      "venueId": "muscat-recreation",
+      "city": "muscat",
+      "name": "Al Qurm Natural Park",
+      "archetype": "park-landscape",
+      "subject": "Qurm Natural Park: a large green park with winding paths, a pond and tall palms behind the coastal road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 980,
+        "depth_m": 430,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "park with lake and lawns"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9c7a0",
+          "#c8b08a",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfc5b0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "Qurum Nature Reserve with salt-tolerant halophyte/mangrove vegetation; Muscat coastal parks"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/257266841",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM park is 982x430 m (about 25 ha). Layout details unverified; show lawn, palms and a water feature."
+    },
+    "muscat-transit": {
+      "venueId": "muscat-transit",
+      "city": "muscat",
+      "name": "Desert King LLC",
+      "archetype": "office-low",
+      "subject": "A small trading/transport company office: a plain two-storey cream block with a yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6d9bc",
+          "#8a8f94",
+          "#f4efe4"
+        ],
+        "roofColour": "#cfcac0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muscat",
+          "what": "white/cream low-rise buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/507110901",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Game \"hub\" for a private company; the only OSM feature is a residential building 59x20 m. Nothing else known."
+    }
+  }
+}

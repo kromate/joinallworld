@@ -1,0 +1,241 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/port-harcourt.json",
+   "used": "22 m square hall, one low dome, one minaret, walled courtyard, green and white render"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     22
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#2f6b4f",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -5.5
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b4f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    8,
+    9.1
+   ],
+   "params": {
+    "radius": 7.5,
+    "height": 6.5,
+    "profile": "hemi",
+    "drum": 2.2,
+    "colour": "#2f6b4f",
+    "drum_colour": "#f4f1e6",
+    "finial": true
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "style": "pencil",
+    "colour": "#f4f1e6",
+    "trim": "#2f6b4f",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#f4f1e6",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 42,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    20,
+    1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 42,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#f4f1e6"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -20.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -15
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     16
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this specific mosque; typical Nigerian community mosque from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "diobu-mosque"
+}

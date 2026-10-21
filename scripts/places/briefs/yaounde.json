@@ -1,0 +1,1547 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "yaounde",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "yaounde",
+  "climate": "rainforest",
+  "vernacular": "A hill city on red laterite earth: self-built one- and two-storey houses of cement block (parpaing) and brick, often unplastered or painted in cream, ochre and pastel, under rust-red corrugated iron roofs; administrative and hotel buildings of the 1950s to 1980s in brutalist and international style (concrete, glass and steel), with newer glass-and-render commercial blocks. Streets lined with mango, avocado and broadleaf trees.",
+  "wallColours": [
+   "#d9c9a8",
+   "#c8a07a",
+   "#b4654a",
+   "#e9e1cd",
+   "#a8a396",
+   "#c9d2cc",
+   "#f3efe6"
+  ],
+  "roofColours": [
+   "#8a3b2e",
+   "#a5513a",
+   "#7d8286",
+   "#b0ada5"
+  ],
+  "wallMaterials": [
+   "render",
+   "concrete",
+   "brick",
+   "painted-render",
+   "exposed-concrete",
+   "glass-curtain",
+   "laterite"
+  ],
+  "roofMaterials": [
+   "corrugated",
+   "metal-sheet",
+   "concrete",
+   "clay-tile"
+  ],
+  "ground": "laterite",
+  "vegetation": [
+   "broadleaf",
+   "palm"
+  ],
+  "ornament": "Brutalist concrete brise-soleil and grid facades on 1960s-80s government blocks; Art Deco and open colonial forms on 1930s buildings; Ewondo and Beti carved wood and bronze statues at museums and churches; pastel stained glass and sacramental murals at Catholic churches; flag masts on esplanades.",
+  "sources": [
+   {
+    "url": "https://fr.wikipedia.org/wiki/Yaound%C3%A9",
+    "what": "city of seven hills; 1950s-80s buildings influenced by brutalism then glass-and-steel international style; BEAC, SNI tower, Hilton, Palais des congres; green spaces; Bastos residential area"
+   },
+   {
+    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_du_Cameroun",
+    "what": "1930s colonial Art Deco palace, now museum"
+   },
+   {
+    "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Yaound%C3%A9",
+    "what": "1982 congress palace, 2015-17 marble and glass renovation"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Yaound%C3%A9",
+    "what": "Our Lady of Victories Cathedral, Central Market, national museum in former palace"
+   }
+  ]
+ },
+ "places": {
+  "yaounde-airport-yaounde-airport": {
+   "venueId": "yaounde-airport-yaounde-airport",
+   "city": "yaounde",
+   "name": "Yaounde Nsimalen International Airport",
+   "archetype": "airport-terminal",
+   "subject": "The Nsimalen passenger terminal seen from the forecourt: a long two-storey concrete terminal with a flat canopy and the control tower behind",
+   "form": {
+    "footprint": "rect",
+    "width_m": 140,
+    "depth_m": 50,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e4ddc9",
+     "#4f6f8a",
+     "#b7b2a4"
+    ],
+    "roofColour": "#8f8c86",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "flat-canopy",
+     "count": 1
+    },
+    {
+     "id": "control-tower",
+     "count": 1
+    },
+    {
+     "id": "jet-bridge",
+     "count": 2
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "international",
+   "era": "1991",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/A%C3%A9roport_international_de_Yaound%C3%A9-Nsimalen",
+     "what": "opened 1991, cost over 100 bn CFA, designed for 1.5M pax, 3,400 m runway at 694 m elevation"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Yaound%C3%A9_Nsimalen_International_Airport",
+     "what": "one passenger terminal, one cargo terminal, 4 gates, 10 check-in desks, 6 stands"
+    }
+   ],
+   "notes": "Sourced: opened 1991, one passenger terminal with four gates and ten check-in desks, 3.4 km runway. Facade not described; typed as a modest long 1990s terminal. Smaller than the Abuja terminal."
+  },
+  "yaounde-basilique-marie-reine-des-apotres": {
+   "venueId": "yaounde-basilique-marie-reine-des-apotres",
+   "city": "yaounde",
+   "name": "Basilique Marie-Reine des Apotres (Mvolyé)",
+   "archetype": "church-modern",
+   "subject": "The Mvolyé basilica: a very large modern church (75 m wide, 32 m high) standing on twelve columns for the apostles, with pastel stained glass and painted exterior panels",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 75,
+    "depth_m": 60,
+    "storeys": 3,
+    "height_m": 32,
+    "roof": "curved"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "exposed-concrete",
+    "colours": [
+     "#d8c9a8",
+     "#a8714c",
+     "#f1ece0"
+    ],
+    "roofColour": "#8a6a50",
+    "roofMaterial": "concrete",
+    "windows": "screen",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "colonnade",
+     "count": 12,
+     "note": "twelve columns for the twelve apostles"
+    },
+    {
+     "id": "stained-glass",
+     "count": 1,
+     "note": "pastel 100 m2 fresco"
+    },
+    {
+     "id": "painted-mural",
+     "count": 4,
+     "note": "sacrament paintings on the exterior"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "bell-tower",
+     "count": 1,
+     "note": "freestanding, not described in sources"
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1990-2006",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Basilique_Marie-Reine-des-Ap%C3%B4tres",
+     "what": "first stone 15 Aug 1990; basilica 2006; about 32 m high, 75 m wide, nearly 4,000 seats; twelve columns; stone, metal, wood; pastel 100 m2 stained glass; exterior sacrament paintings; replaced demolished cathedral"
+    }
+   ],
+   "notes": "Sourced dimensions and structure (twelve columns, ~4,000 seats, stone/metal/wood, painted sacraments, big pastel glass fresco). Plan shape, roof form and wall colours are not described; they are guessed as a wide curved-roof hall in warm stone tones. Largest church in this city set."
+  },
+  "yaounde-blackitude-museum": {
+   "venueId": "yaounde-blackitude-museum",
+   "city": "yaounde",
+   "name": "Blackitude Museum",
+   "archetype": "museum-theatre",
+   "subject": "Blackitude Museum: a private art museum in a converted two-storey villa with a gallery frontage",
+   "form": {
+    "footprint": "rect",
+    "width_m": 25,
+    "depth_m": 15,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#e9e1cd",
+     "#8a5a36",
+     "#f3efe6"
+    ],
+    "roofColour": "#8a3b2e",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "painted-mural",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Little findable about the building. Typed as a small private gallery in a villa-style rendered building in the Yaounde centre."
+  },
+  "yaounde-charles-atangana": {
+   "venueId": "yaounde-charles-atangana",
+   "city": "yaounde",
+   "name": "Charles Atangana (memorial)",
+   "archetype": "monument",
+   "subject": "A memorial to Charles Atangana, Ewondo paramount chief: a bronze or stone figure on a plinth in a small paved enclosure",
+   "form": {
+    "footprint": "round",
+    "width_m": 14,
+    "depth_m": 14,
+    "storeys": 1,
+    "height_m": 7,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "concrete",
+    "colours": [
+     "#b0aaa0",
+     "#6b4a2a",
+     "#e9e1cd"
+    ],
+    "roofColour": "#b0aaa0",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "statue",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "20th century",
+   "confidence": "low",
+   "sources": [],
+   "notes": "The venue is named only for the Ewondo chief Charles Atangana (walk kind); no source on the monument was found. Typed as a statue on a plinth."
+  },
+  "yaounde-clinic": {
+   "venueId": "yaounde-clinic",
+   "city": "yaounde",
+   "name": "Central Hospital of Yaounde",
+   "archetype": "hospital",
+   "subject": "The Hopital Central: a pavilion-style hospital of several two- to three-storey ward blocks linked by covered walkways",
+   "form": {
+    "footprint": "H",
+    "width_m": 130,
+    "depth_m": 80,
+    "storeys": 3,
+    "height_m": 13,
+    "roof": "flat",
+    "variant": "pavilion",
+    "wings": 4
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#eae2cf",
+     "#8fb0a6",
+     "#b9b4a6"
+    ],
+    "roofColour": "#8a3b2e",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "international",
+   "era": "1933-1960s",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Central_Hospital_of_Yaound%C3%A9",
+     "what": "founded 1933, 650 beds, teaching hospital"
+    },
+    {
+     "url": "https://fr.wikipedia.org/wiki/H%C3%B4pital_central_de_Yaound%C3%A9",
+     "what": "pavilion-style hospital that grew gradually; Pavillon Pasteur built 1933; many named pavilions"
+    }
+   ],
+   "notes": "Sourced: founded 1933, 650 beds, many named pavilions grown over time. Appearance not described; typed from pavilion hospital layout with several blocks. Larger than the Banjul hospital."
+  },
+  "yaounde-community-notices": {
+   "venueId": "yaounde-community-notices",
+   "city": "yaounde",
+   "name": "National Assembly (Palais des verres)",
+   "archetype": "civic-palace",
+   "subject": "The National Assembly, known as the glass palace (Palais des verres Paul Biya), in Ngoa-Ekelé: a large modern glass-fronted legislative building",
+   "form": {
+    "footprint": "rect",
+    "width_m": 90,
+    "depth_m": 55,
+    "storeys": 4,
+    "height_m": 24,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "concrete",
+    "colours": [
+     "#9fb7c4",
+     "#e9e1cd",
+     "#6b7479"
+    ],
+    "roofColour": "#a8a396",
+    "roofMaterial": "concrete",
+    "windows": "curtain",
+    "windowRatio": 0.6
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 4
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "1996",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Assembl%C3%A9e_nationale_(Cameroun)",
+     "what": "seat in Ngoa-Ekele; infobox link to \"Palais des verres Paul Biya\"; current form 1996"
+    }
+   ],
+   "notes": "Sourced only for location and the \"Palais des verres\" (glass palace) name, plus 1996. Glass-dominant facade follows from the name; dimensions and colours are guessed. Contrasts with the earlier concrete government blocks."
+  },
+  "yaounde-community-voting-game": {
+   "venueId": "yaounde-community-voting-game",
+   "city": "yaounde",
+   "name": "Esplanade de l'Hotel de Ville",
+   "archetype": "park-landscape",
+   "subject": "The paved esplanade in front of Yaounde City Hall with flag masts, a low fountain and trimmed lawns",
+   "form": {
+    "footprint": "rect",
+    "width_m": 90,
+    "depth_m": 60,
+    "storeys": 0,
+    "height_m": 0,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "stone",
+    "colours": [
+     "#cfc9b9",
+     "#b9b4a6",
+     "#e9e1cd"
+    ],
+    "roofColour": "#b0ada5",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "flags",
+     "count": 6
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "statue",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1970s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "public gardens near the Hotel de ville listed among Yaounde green spaces"
+    }
+   ],
+   "notes": "Only the existence of green space near the city hall is sourced. Typed as a paved civic esplanade with flagpoles and lawns."
+  },
+  "yaounde-community-workshop": {
+   "venueId": "yaounde-community-workshop",
+   "city": "yaounde",
+   "name": "Universite de Yaounde I",
+   "archetype": "campus-block",
+   "subject": "Ngoa-Ekele campus: a group of 3-4 storey concrete teaching blocks with exposed slabs and sun-shading, around a paved quad",
+   "form": {
+    "footprint": "U",
+    "width_m": 110,
+    "depth_m": 60,
+    "storeys": 4,
+    "height_m": 16,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "exposed-concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#b8b3a6",
+     "#c9a07a",
+     "#e9e1cd"
+    ],
+    "roofColour": "#a8a396",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "brise-soleil",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "brutalist",
+   "era": "1960s-1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_de_Yaound%C3%A9_I",
+     "what": "Ngoa-Ekele campus: FALSH administrative building, new teaching block (NBP), amphitheatre 501, faculties of sciences and medicine; no style detail"
+    }
+   ],
+   "notes": "Sourced only as a list of buildings in photo captions. 3-4 storey exposed-concrete blocks in the city's 1950s-80s brutalist manner are typed (fr.wikipedia city page). Different from IRIC which is smaller."
+  },
+  "yaounde-grande-mosquee-d-odza": {
+   "venueId": "yaounde-grande-mosquee-d-odza",
+   "city": "yaounde",
+   "name": "Grande Mosquee d'Odza",
+   "archetype": "mosque-domed",
+   "subject": "The Odza mosque: a large modern mosque with a central dome, two slim minarets and pale render with green trim",
+   "form": {
+    "footprint": "rect",
+    "width_m": 50,
+    "depth_m": 40,
+    "storeys": 2,
+    "height_m": 18,
+    "roof": "dome",
+    "variant": "twin-minaret"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#f1ece0",
+     "#2f7a54",
+     "#cfcac0"
+    ],
+    "roofColour": "#2f7a54",
+    "roofMaterial": "concrete",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "minaret",
+     "count": 2
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "arab-islamic",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "No description of this mosque found (fetch failed). Typed as a modern domed mosque with two minarets, a common Cameroonian pattern; treat as guess."
+  },
+  "yaounde-iric": {
+   "venueId": "yaounde-iric",
+   "city": "yaounde",
+   "name": "International Relations Institute of Cameroon (IRIC)",
+   "archetype": "campus-block",
+   "subject": "IRIC campus at Obili on rue de Kribi: a compact group of two- to three-storey rendered teaching blocks behind a gate",
+   "form": {
+    "footprint": "L",
+    "width_m": 60,
+    "depth_m": 30,
+    "storeys": 3,
+    "height_m": 11,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#e9e1cd",
+     "#b4654a",
+     "#c9d2cc"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "international",
+   "era": "1971",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Institut_des_relations_internationales_du_Cameroun",
+     "what": "installed on rue de Kribi, Obili (Yaounde III); photos of entrance and campus, no building description"
+    }
+   ],
+   "notes": "Only the location is sourced. Typed as a small diplomatic-school campus; smaller and lower than Yaounde I."
+  },
+  "yaounde-jardin-botanique": {
+   "venueId": "yaounde-jardin-botanique",
+   "city": "yaounde",
+   "name": "Jardin Botanique",
+   "archetype": "park-landscape",
+   "subject": "The botanical garden: lawns and tree-lined alleys with labelled trees, a small gate and a pavilion",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 110,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "render",
+    "colours": [
+     "#9a7a4c",
+     "#e9e1cd",
+     "#d8c29a"
+    ],
+    "roofColour": "#8a3b2e",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "city has many green spaces incl. Mvog-Betsi zoo-botanic park; the botanical garden itself not described"
+    }
+   ],
+   "notes": "This venue is the Jardin Botanique near Ngoa-Ekele (not Mvog-Betsi zoo park). Nothing found about layout; typed as a lawn-and-trees garden with a gate."
+  },
+  "yaounde-marche-de-mvog-mbi": {
+   "venueId": "yaounde-marche-de-mvog-mbi",
+   "city": "yaounde",
+   "name": "Marche de Mvog Mbi",
+   "archetype": "market-open",
+   "subject": "Mvog Mbi market: a dense open market of stalls under corrugated sheds and tarpaulins along red earth lanes",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 110,
+    "depth_m": 90,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "concrete",
+    "colours": [
+     "#c8a07a",
+     "#b4654a",
+     "#7d8286"
+    ],
+    "roofColour": "#a5513a",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "stalls",
+     "count": 70
+    },
+    {
+     "id": "sheds",
+     "count": 12
+    },
+    {
+     "id": "umbrellas",
+     "count": 25
+    },
+    {
+     "id": "awning",
+     "count": 15
+    },
+    {
+     "id": "gate",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "1960s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "Mvog-Mbi listed as a neighbourhood; the market not described"
+    }
+   ],
+   "notes": "Nothing about the market found. Typed as an open-air market; chosen \"market-open\" while Nkol-Eton is typed as a covered hall purely to vary the pair (reality unverified)."
+  },
+  "yaounde-marche-de-nkol-eton": {
+   "venueId": "yaounde-marche-de-nkol-eton",
+   "city": "yaounde",
+   "name": "Marche de Nkol Eton",
+   "archetype": "market-hall",
+   "subject": "Nkol Eton market: a covered concrete trading hall with a long corrugated roof and rows of stalls inside",
+   "form": {
+    "footprint": "rect",
+    "width_m": 90,
+    "depth_m": 50,
+    "storeys": 2,
+    "height_m": 10,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#c9c2b0",
+     "#b4654a",
+     "#e9e1cd"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "louvre",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "stalls",
+     "count": 50
+    },
+    {
+     "id": "sheds",
+     "count": 4
+    },
+    {
+     "id": "signage-board",
+     "count": 2
+    },
+    {
+     "id": "awning",
+     "count": 10
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "1970s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "Nkol-Eton market appears in the list of markets; no description"
+    }
+   ],
+   "notes": "Only the market name and area are known. Typed as a covered hall to vary against Mvog Mbi, not a verified difference."
+  },
+  "yaounde-market-game": {
+   "venueId": "yaounde-market-game",
+   "city": "yaounde",
+   "name": "Marche Central",
+   "archetype": "market-hall",
+   "subject": "The Central Market in the city centre: a big multi-storey concrete trading building ringed by street stalls",
+   "form": {
+    "footprint": "rect",
+    "width_m": 100,
+    "depth_m": 70,
+    "storeys": 3,
+    "height_m": 15,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#d3c9b0",
+     "#b4654a",
+     "#e9e1cd"
+    ],
+    "roofColour": "#a8a396",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "stalls",
+     "count": 60
+    },
+    {
+     "id": "umbrellas",
+     "count": 20
+    },
+    {
+     "id": "awning",
+     "count": 12
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    },
+    {
+     "id": "bus-bays",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "international",
+   "era": "1970s-1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "Central Market is in the city centre; building not described"
+    }
+   ],
+   "notes": "Only its central location is sourced. Typed as the big concrete market block with stalls around, larger than the neighbourhood markets."
+  },
+  "yaounde-meal-stop": {
+   "venueId": "yaounde-meal-stop",
+   "city": "yaounde",
+   "name": "Restaurant Municipal La Cascade",
+   "archetype": "restaurant",
+   "subject": "La Cascade: a municipal restaurant with a covered terrace and a decorative waterfall feature in the garden",
+   "form": {
+    "footprint": "rect",
+    "width_m": 25,
+    "depth_m": 14,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "timber",
+    "colours": [
+     "#e9d9b4",
+     "#8a5a36",
+     "#f4efe3"
+    ],
+    "roofColour": "#8a3b2e",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 1,
+     "note": "cascade water feature"
+    },
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "1970s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Name implies a cascade; nothing else found. Typed as a garden restaurant beside the city hall."
+  },
+  "yaounde-musee-national": {
+   "venueId": "yaounde-musee-national",
+   "city": "yaounde",
+   "name": "Musee National du Cameroun",
+   "archetype": "museum-theatre",
+   "subject": "The former presidential palace of 1930s Art Deco colonial design, now the national museum, with wide galleries, open verandas and a landscaped esplanade with statues",
+   "form": {
+    "footprint": "U",
+    "width_m": 75,
+    "depth_m": 40,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stucco",
+    "colours": [
+     "#efe8d6",
+     "#b8a67c",
+     "#fbf9f3"
+    ],
+    "roofColour": "#8a3b2e",
+    "roofMaterial": "clay-tile",
+    "windows": "arched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "arcade",
+     "count": 1,
+     "note": "open colonial veranda forms"
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 2,
+     "note": "basins on the esplanade"
+    },
+    {
+     "id": "statue",
+     "count": 3,
+     "note": "bronze warriors, musicians, hunters"
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "art-deco",
+   "era": "1930s",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_du_Cameroun",
+     "what": "1930s colonial Art Deco with open forms for air circulation; about 30 rooms, 5,000 m2; esplanade 15,000 m2 with fountains, basins, flag supports, bronze statues; opened as museum 2001, reopened 2015"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/National_Museum_of_Yaound%C3%A9",
+     "what": "English page not fetched; city page states museum is in a former presidential palace"
+    }
+   ],
+   "notes": "Sourced: 1930s colonial Art Deco palace (Hans Dominik's house site, governors, extended 1960s), about 30 rooms, 5,000 m2, esplanade with fountains and bronze statues. Wall colours, roof material and plan shape are guessed. Recognisable by the statue-lined esplanade."
+  },
+  "yaounde-palais-des-congres": {
+   "venueId": "yaounde-palais-des-congres",
+   "city": "yaounde",
+   "name": "Palais des Congres de Yaounde",
+   "archetype": "civic-palace",
+   "subject": "The 1982 congress palace: a big six-floor modern complex of three buildings with a hemicycle hall, now faced in marble and glass after the 2015-17 renovation",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 130,
+    "depth_m": 80,
+    "storeys": 6,
+    "height_m": 30,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "marble",
+    "colours": [
+     "#dfe2e0",
+     "#9fb7c4",
+     "#8a8f92"
+    ],
+    "roofColour": "#a8a396",
+    "roofMaterial": "concrete",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 6
+    },
+    {
+     "id": "podium",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1982 (renovated 2017)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Yaound%C3%A9",
+     "what": "first stone 1975, opened 12 May 1982; renovated Aug 2015 to Jul 2017 with new facades, replaced glass bays, marble wall cladding; 18 ha site, three buildings, six floors, 2,000-seat hall, 126-room hotel; Chinese-Cameroonian project"
+    }
+   ],
+   "notes": "Sourced: 18 ha, three buildings, six floors, 2,000-seat hall, hemicycle, Chinese cooperation, 2015-17 facade renovation with marble and glass. Footprint and colours are guessed. Only the main block is shown within 120 m."
+  },
+  "yaounde-playce-yaounde": {
+   "venueId": "yaounde-playce-yaounde",
+   "city": "yaounde",
+   "name": "PlaYce Yaounde",
+   "archetype": "mall",
+   "subject": "PlaYce Yaounde: a modern three-storey shopping centre with a glass entrance atrium and rendered blocks",
+   "form": {
+    "footprint": "rect",
+    "width_m": 110,
+    "depth_m": 60,
+    "storeys": 3,
+    "height_m": 16,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#ece8de",
+     "#2f6b8a",
+     "#c9c2b0"
+    ],
+    "roofColour": "#a8a396",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    },
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "neon-strip",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2020s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Nothing found on the building (fetch failed). Typed as a contemporary shopping centre; brand signage must stay blank."
+  },
+  "yaounde-quiet-reflection": {
+   "venueId": "yaounde-quiet-reflection",
+   "city": "yaounde",
+   "name": "Cathedrale Notre-Dame des Victoires",
+   "archetype": "church-modern",
+   "subject": "The cathedral at the Poste Centrale roundabout: a big cruciform church begun in 1952 with a tall bell tower and large stained glass",
+   "form": {
+    "footprint": "cross",
+    "width_m": 70,
+    "depth_m": 45,
+    "storeys": 3,
+    "height_m": 26,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "red-brick",
+    "accent": "exposed-concrete",
+    "colours": [
+     "#a8714c",
+     "#b8b3a6",
+     "#e9e1cd"
+    ],
+    "roofColour": "#8a3b2e",
+    "roofMaterial": "clay-tile",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "bell-tower",
+     "count": 1,
+     "note": "tall clocher with bells"
+    },
+    {
+     "id": "stained-glass",
+     "count": 1,
+     "note": "Melchisedek window"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "buttresses",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1952-ongoing",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame-des-Victoires_de_Yaound%C3%A9",
+     "what": "first stone 4 March 1952; unfinished after 50+ years; about 5,000 worshippers; cruciform interior; bell tower; Melchisedek stained glass; at Poste centrale roundabout"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "Our Lady of Victories Cathedral listed as place of worship"
+    }
+   ],
+   "notes": "Sourced: 1952 start, unfinished, about 5,000 capacity, cross plan, bell tower, stained glass. Brick-and-concrete look and colours are guessed. Different from the Mvolyé basilica which is column-borne and wider."
+  },
+  "yaounde-recreation": {
+   "venueId": "yaounde-recreation",
+   "city": "yaounde",
+   "name": "Parcours Vita",
+   "archetype": "park-landscape",
+   "subject": "Parcours Vita: a wooded fitness trail with simple timber exercise stations and a gate",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 110,
+    "depth_m": 90,
+    "storeys": 0,
+    "height_m": 0,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "render",
+    "colours": [
+     "#8a6a44",
+     "#d8c29a",
+     "#e9e1cd"
+    ],
+    "roofColour": "#8a6a44",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "1980s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "The name means a fitness trail course; nothing else found. Typed as a wooded exercise path with exercise stations and a gate."
+  },
+  "yaounde-rocher": {
+   "venueId": "yaounde-rocher",
+   "city": "yaounde",
+   "name": "Rocher (Mbankolo rock outcrop)",
+   "archetype": "park-landscape",
+   "subject": "A granite rock outcrop (inselberg) on a hilltop north of the city with a rocky path and a lookout",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 90,
+    "depth_m": 80,
+    "storeys": 0,
+    "height_m": 0,
+    "roof": "none",
+    "variant": "inselberg"
+   },
+   "facade": {
+    "material": "granite",
+    "accent": "stone",
+    "colours": [
+     "#8a8a82",
+     "#6b6b64",
+     "#b8b3a6"
+    ],
+    "roofColour": "#7d7d76",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 2,
+     "note": "rock-cut path"
+    },
+    {
+     "id": "pavilion",
+     "count": 1,
+     "note": "lookout"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "natural",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://fr.wikipedia.org/wiki/Yaound%C3%A9",
+     "what": "city of seven hills with inselberg barrier to the northwest; the rock not described"
+    }
+   ],
+   "notes": "Only the hill-and-inselberg character of the city is sourced. The identification of this point as a rock outcrop north of town is a guess from the name and the position. Typed as a bare granite dome."
+  },
+  "yaounde-stade-ahmadou-ahidjo": {
+   "venueId": "yaounde-stade-ahmadou-ahidjo",
+   "city": "yaounde",
+   "name": "Stade Ahmadou Ahidjo",
+   "archetype": "stadium",
+   "subject": "The 1972 bowl in Mfandena (La cuvette de Mfandena): a ~42,000 seat oval stadium with a track, scoreboard and floodlights",
+   "form": {
+    "footprint": "oval",
+    "width_m": 210,
+    "depth_m": 170,
+    "storeys": 3,
+    "height_m": 26,
+    "roof": "none",
+    "variant": "bowl"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#d3cdbd",
+     "#2f6b4f",
+     "#f1ece0"
+    ],
+    "roofColour": "#b0ada5",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "floodlights",
+     "count": 4
+    },
+    {
+     "id": "scoreboard",
+     "count": 1
+    },
+    {
+     "id": "stand-roof",
+     "count": 1,
+     "note": "partial; unconfirmed"
+    },
+    {
+     "id": "flags",
+     "count": 4
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1972 (renovated 2016)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Ahmadou_Ahidjo_Stadium",
+     "what": "opened 1972; 42,500 seats; renovated 2005 and 2015-16; grass pitch, scoreboard"
+    },
+    {
+     "url": "https://fr.wikipedia.org/wiki/Stade_Ahmadou-Ahidjo",
+     "what": "Mfandena district; nickname La cuvette de Mfandena; 105 x 68 m pitch; about 40,000 seats after Nov 2016 renovation"
+    }
+   ],
+   "notes": "Sourced: opened 1972, about 42,000 seats, pitch 105 x 68 m, renovated 2016, bowl-shaped (\"cuvette\"), scoreboard. Roof and facade not described, so an open concrete bowl is typed. Larger than Independence Stadium (Bakau)."
+  },
+  "yaounde-transit": {
+   "venueId": "yaounde-transit",
+   "city": "yaounde",
+   "name": "Yaounde (bus and taxi park)",
+   "archetype": "transport-station",
+   "subject": "A central bus and shared-taxi park: a paved lot with long-distance coach bays, a ticket hall and kiosks",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 90,
+    "depth_m": 60,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "metal-cladding",
+    "colours": [
+     "#b8b3a6",
+     "#b4654a",
+     "#4f6f8a"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "bus-bays",
+     "count": 10
+    },
+    {
+     "id": "platform-canopy",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 4
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [],
+   "notes": "The venue is a generic \"Yaounde\" transit hub; no specific station identified. Typed from a bus park type."
+  }
+ }
+}

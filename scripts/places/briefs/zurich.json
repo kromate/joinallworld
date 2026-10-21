@@ -1,0 +1,1496 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "zurich",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "zurich",
+    "climate": "temperate",
+    "vernacular": "Swiss lake-and-river city: medieval Altstadt of narrow 3-4 storey eaves-to-street houses in plaster/whitewash and sandstone with steep clay-tile roofs; late 19th-century Gruenderzeit stone-faced blocks with mansard or hip roofs; interwar Neues Bauen and 1950s-70s concrete modernism; glass-and-steel offices in Oerlikon/Zuerich-West; surrounding villages and towns (Winterthur, Baden, Bremgarten, lake-side Pfannenstiel) of render houses with timber shutters, gabled/hipped tile roofs and baroque church towers with onion or spire helms. Tidy paved streets, lime and plane trees, conifers on the hills.",
+    "wallColours": [
+      "#ece4d0",
+      "#d9c9a3",
+      "#c8b894",
+      "#b8b2a5",
+      "#9a8f80",
+      "#f2eee4",
+      "#a8643f"
+    ],
+    "roofColours": [
+      "#a5532f",
+      "#8a4a35",
+      "#5d5a58",
+      "#7f7b78",
+      "#b86a42"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "stone",
+      "sandstone",
+      "limestone",
+      "exposed-concrete",
+      "glass-curtain",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "membrane",
+      "concrete",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Shutters (Fensterlaeden) in green, red or grey beside punched windows; baroque onion-dome and pointed spire helms; oriel windows (Erker) and fresco painting on Altstadt facades; sandstone window frames and quoins; stepped gables; gilded clock faces and ball finials; modern concrete grids and large glazed fronts.",
+    "sources": [
+      {
+        "url": "https://de.wikipedia.org/wiki/Z%C3%BCrich",
+        "what": "Altstadt on both banks of the Limmat; Gruenderzeit building boom, 1930s Neues Bauen, post-1946 modern high-rises"
+      },
+      {
+        "url": "https://de.wikipedia.org/wiki/Baden_AG",
+        "what": "Altstadt houses typically 3-4 storeys in unbroken rows with eaves to the street, Gothic and Baroque, oriel windows and frescoes on the Stadtturm"
+      },
+      {
+        "url": "https://de.wikipedia.org/wiki/Bremgarten_AG",
+        "what": "well-preserved old town on a ridge, Gothic and Baroque listed houses, neoclassical Rathaus"
+      }
+    ]
+  },
+  "places": {
+    "zurich-airport-zurich-airport": {
+      "venueId": "zurich-airport-zurich-airport",
+      "city": "zurich",
+      "name": "Zürich Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Airside Center and Dock A / Dock B terminal complex seen from the landside forecourt, with the 41 m control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4dadd",
+          "#6b7782",
+          "#eeeeec"
+        ],
+        "roofColour": "#9ea4a8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt/landside canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "41 m tower opened 1986"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "Dock A has 33 gates, Dock B 9 dock positions; scene shows a representative subset"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "Airside Center hub between Dock A and Dock B"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1953-2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Flughafen_Z%C3%BCrich",
+          "what": "Dock A opened 1985 (13 positions, now 33 gates); Dock B rebuilt 2009-2011 on retained 1975 steel structure with rooftop spectator terrace and viewing tower; Dock E 2003; Airside Center 2004 between Dock A and B; 41 m control tower opened 29 April 1986; original 1953 Flughof by Oeschger"
+        }
+      ],
+      "notes": "Facts (dates, tower height, dock positions) come from Wikipedia; facade colours and exact dimensions are estimates of a glass and steel terminal. Recognisable by the long glazed docks, rooftop viewing terrace with a viewing tower on Dock B, and the free-standing control tower."
+    },
+    "zurich-clinic": {
+      "venueId": "zurich-clinic",
+      "city": "zurich",
+      "name": "Privatklinik Hohenegg",
+      "archetype": "hospital",
+      "subject": "A private psychiatric clinic on the Pfannenstiel hillside above Meilen: a main house with a wing, set in wooded grounds",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eae2cc",
+          "#c9b894",
+          "#8b7e6c"
+        ],
+        "roofColour": "#9a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "south-facing terrace with lake view"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "c.1900-2000",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Name and position are real (Meilen, Pfannenstiel slope). Rendered as a typical Swiss hillside clinic with a hipped tile roof and shuttered windows."
+    },
+    "zurich-community-notices": {
+      "venueId": "zurich-community-notices",
+      "city": "zurich",
+      "name": "GVZ Gebäudeversicherung Kanton Zürich",
+      "archetype": "office-low",
+      "subject": "The headquarters of the cantonal building insurer, a modern mid-rise office block in the Oerlikon/Opfikon area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#cfd5d8",
+          "#7d8a92",
+          "#eeeeec"
+        ],
+        "roofColour": "#8f9496",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Real place is a cantonal public insurer (not a statehouse); modelled as an ordinary office block. Dimensions are guesses."
+    },
+    "zurich-community-voting-game": {
+      "venueId": "zurich-community-voting-game",
+      "city": "zurich",
+      "name": "Rathaus Bremgarten",
+      "archetype": "civic-small",
+      "subject": "The neoclassical Rathaus (town hall) of Bremgarten at the north-west edge of the upper town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 16,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "sandstone",
+        "colours": [
+          "#e8dcc0",
+          "#cdb98f",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1819, raised 1912, extended 1973",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Bremgarten_AG",
+          "what": "Rathaus first mentioned 1429; replaced by neoclassical building by Fidel Leimbacher of Sins, completed by 1819; extra storey 1912; extension 1973; only 17th-century dome-shaped council room survives; houses municipal authorities and district court"
+        }
+      ],
+      "notes": "Style, dates and use are sourced. Colours (cream plaster, sandstone trim) and measurements are estimates. Add-on storey of 1912 makes the building 3 main storeys plus attic."
+    },
+    "zurich-community-workshop": {
+      "venueId": "zurich-community-workshop",
+      "city": "zurich",
+      "name": "Stadtbibliothek Winterthur",
+      "archetype": "campus-block",
+      "subject": "The city library set among medieval walls at the Kirchplatz in Winterthur's Altstadt, seen from Obere Kirchgasse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc6",
+          "#c5b793",
+          "#8c8478"
+        ],
+        "roofColour": "#a5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor openings towards the church square"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "medieval fabric, library 2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Stadtbibliothek_Winterthur",
+          "what": "Library opened 5 July 2003 at Obere Kirchgasse 6 next to Kirchplatz, set inside medieval walls (Toesserhaus); no architectural description"
+        }
+      ],
+      "notes": "Location and 2003 opening are sourced, the look is typed from Winterthur Altstadt style (3-4 storey render houses with tile roofs)."
+    },
+    "zurich-market-game": {
+      "venueId": "zurich-market-game",
+      "city": "zurich",
+      "name": "Zentrum Töss",
+      "archetype": "mall",
+      "subject": "A neighbourhood shopping centre in Winterthur's Toess quarter: a low commercial block with a flat roof and a surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#a9a399",
+          "#e9e6de"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Toess is a former industrial district of Winterthur (district 4); the shopping centre is not documented in available sources."
+    },
+    "zurich-meal-stop": {
+      "venueId": "zurich-meal-stop",
+      "city": "zurich",
+      "name": "Haus Hiltl",
+      "archetype": "restaurant",
+      "subject": "The Hiltl vegetarian restaurant house on Sihlstrasse, a rebuilt 1931 block with a 2006-07 steel and glass addition",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#b9c3c6",
+          "#5f6469"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "terrace on top of the block"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "2006-07 steel and glass structure"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1898; rebuilt 1931; renovated 2006-07",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Hiltl_(Restaurant)",
+          "what": "Founded 1898 at Sihlstrasse 28; rebuilt and extended 1931; 2006-07 renovation added a steel and glass structure to a partly listed building; shares a perimeter block with Jelmoli"
+        }
+      ],
+      "notes": "Dates and the steel-and-glass addition are sourced; storeys, facade colours and roof terrace are estimates (the terrace is from general knowledge, not confirmed in the fetched source). Signage must stay blank."
+    },
+    "zurich-osm-node-306475059": {
+      "venueId": "zurich-osm-node-306475059",
+      "city": "zurich",
+      "name": "Schreibmaschinenmuseum Beck",
+      "archetype": "museum-theatre",
+      "subject": "A small private typewriter museum in a low commercial building in Pfaeffikon ZH's industrial area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd8cc",
+          "#a4a8aa",
+          "#7a7f82"
+        ],
+        "roofColour": "#7f8386",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Schreibmaschinenmuseum_Beck",
+          "what": "Museum at Speckstrasse 3, Pfaeffikon ZH industrial area, about 300 exhibits of typewriters and calculators; no building description"
+        }
+      ],
+      "notes": "Only location and collection are sourced; the building is typed as a plain light-industrial unit."
+    },
+    "zurich-osm-node-6419670946": {
+      "venueId": "zurich-osm-node-6419670946",
+      "city": "zurich",
+      "name": "Erdmannliloch (Grottenburg Hohfluh)",
+      "archetype": "heritage-fort",
+      "subject": "The ruin of a medieval cave castle: a 12 m deep cave under an overhanging conglomerate cliff, closed by a rubble wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f867a",
+          "#6e675d",
+          "#b3a893"
+        ],
+        "roofColour": "#6e675d",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "boulder wall about 1.8 m thick, only foundation and a few metres of side wall survive"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "path up the wooded slope"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Erdmannliloch",
+          "what": "Only known cave castle in canton Zuerich, on the west slope of the Sanzenberg near Bachs at about 514 m; built at the foot of an overhanging conglomerate rock face; cave about 12 m deep; entrance closed by 1.8 m boulder wall; soot-blackened rock, tuff blocks hint at a former vault, beam sockets in the rock; rock outcrop to the south as lookout"
+        }
+      ],
+      "notes": "Model the rock overhang (nagelfluh, grey-brown) with a low ruined boulder wall in the opening, on a steep wooded slope. Not a building: no roof."
+    },
+    "zurich-osm-node-9717533158": {
+      "venueId": "zurich-osm-node-9717533158",
+      "city": "zurich",
+      "name": "Liceo Vermigli",
+      "archetype": "campus-block",
+      "subject": "The Italian-language school building (Liceo/Scuola italiana) in the western Zuerich suburbs: a three-storey school block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e0dccf",
+          "#a8a79f",
+          "#6f7276"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "school yard fence"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Only the name and position are known. Typed as a Swiss post-war school block."
+    },
+    "zurich-osm-way-117336724": {
+      "venueId": "zurich-osm-way-117336724",
+      "city": "zurich",
+      "name": "Gasthof zum Bären",
+      "archetype": "restaurant",
+      "subject": "A village inn (Gasthof) with a broad hipped roof and shuttered windows on the village street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#c9a46a",
+          "#6a8a5c"
+        ],
+        "roofColour": "#a5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank hanging inn sign"
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper floor shutters"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "18th-19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Name is a common Swiss inn name; the actual house is not described in findable sources. Varied from Restaurant Storchen by larger size and hip roof."
+    },
+    "zurich-osm-way-163539799": {
+      "venueId": "zurich-osm-way-163539799",
+      "city": "zurich",
+      "name": "Schloss Horben",
+      "archetype": "manor",
+      "subject": "The small Baroque summer residence on the Horben plateau above Beinwil (Freiamt), with its onion dome and the pond to the west",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#efe6cf",
+          "#cdb98f",
+          "#8c5a3e"
+        ],
+        "roofColour": "#a5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1,
+          "note": "six-sided onion dome on the hipped roof"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "approach to the round-gabled main portal"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "St Wendelin chapel with six-sided onion turret"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "baroque",
+      "era": "1700-01; rebuilt 1762-64",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Schloss_Horben",
+          "what": "Small baroque chateau at 818 m; built 1700/01 as summer residence of Kloster Muri monks; rebuilt 1762-64; 4x5 bays, two main storeys over a low ground floor on long sides; hipped roof with six-sided onion dome; corner pilasters, segmental-arch windows, main portal with round gable; chapel St Wendelin with hexagonal onion turret; pond on the west side"
+        },
+        {
+          "url": "https://de.wikipedia.org/wiki/Beinwil_(Freiamt)",
+          "what": "Horben plateau on the Lindenberg, built by monks of Kloster Muri; castle not open, St Wendelin chapel is"
+        }
+      ],
+      "notes": "Form, roof, dome and details are sourced; wall colour is not stated anywhere so cream render with sandstone trim is an estimate. The fountain entry has count 0 and stands for the pond; generators may ignore it."
+    },
+    "zurich-osm-way-236595729": {
+      "venueId": "zurich-osm-way-236595729",
+      "city": "zurich",
+      "name": "Spital Männedorf",
+      "archetype": "hospital",
+      "subject": "The district hospital in Maennedorf on Lake Zuerich: a multi-storey block with a flat roof, ambulance bay and car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d8",
+          "#b3bcc0",
+          "#8a8e92"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1883 founded; extended through 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Spital_M%C3%A4nnedorf",
+          "what": "Founded 1883 as 9-bed care home; Kreisspital from 1932; 155 beds today; no architectural description"
+        }
+      ],
+      "notes": "Only history and bed count are sourced; the look is typed from a Swiss district hospital."
+    },
+    "zurich-osm-way-28367342": {
+      "venueId": "zurich-osm-way-28367342",
+      "city": "zurich",
+      "name": "ETH Zürich, Hönggerberg",
+      "archetype": "campus-block",
+      "subject": "The science campus on the Hoenggerberg: a large grid-like concrete and glass research building of the Chemistry (HCI) type, with the 14-storey physics tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b8b2",
+          "#7d8f99",
+          "#e2e1dc"
+        ],
+        "roofColour": "#8f9496",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "raised plinth of the campus"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "horizontal floor bands"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1964-2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/ETH_Z%C3%BCrich",
+          "what": "Campus Hoenggerberg planned from 1959 by A. H. Steiner; physics/molecular biology buildings late 1970s; HIL architecture building 1972-76 by Ziegler and Lanter; HCI by Campi and Pesina built 1996-2004; 14-storey physics tower; student housing 2013-16"
+        }
+      ],
+      "notes": "Dates and architects are sourced; facade colours and sizes are estimates for a concrete and glass campus. Recognisable by the long low slab buildings and the 14-storey tower."
+    },
+    "zurich-osm-way-30296204": {
+      "venueId": "zurich-osm-way-30296204",
+      "city": "zurich",
+      "name": "Gottlieb-Duttweiler-Institut",
+      "archetype": "campus-block",
+      "subject": "The conference and think-tank institute in the Park im Gruene in Rueschlikon: a low modern building in a landscaped park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcbbf",
+          "#8b9aa1",
+          "#7f7a70"
+        ],
+        "roofColour": "#8d9092",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "park-side terrace"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1963",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Gottlieb_Duttweiler_Institut",
+          "what": "Institute built 1963 on the lower part of Park im Gruene, Rueschlikon, on founder Duttweiler's former residence grounds; no architectural description"
+        }
+      ],
+      "notes": "Year and park setting are sourced, the building's look is typed as an early-1960s modernist institute."
+    },
+    "zurich-osm-way-303186336": {
+      "venueId": "zurich-osm-way-303186336",
+      "city": "zurich",
+      "name": "Loorenkopf-Turm",
+      "archetype": "monument",
+      "subject": "A 33 m wooden lookout tower in the forest on the Loorenkopf, reached by 153 steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 8,
+        "height_m": 33,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a47",
+          "#6e5538",
+          "#a98a63"
+        ],
+        "roofColour": "#6e5538",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 153,
+          "note": "stairs to the top platform"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "railing round the platform"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1954",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Loorenkopf",
+          "what": "Wooden lookout tower about 33 m high, built 1954 by the Zuercher Verschoenerungsverein, 153 steps to the platform; views to Eiger, Moench, Jungfrau on foehn days"
+        }
+      ],
+      "notes": "Height, material, year and step count are sourced; the square lattice-frame footprint is an estimate. Weathered grey-brown timber."
+    },
+    "zurich-osm-way-312787805": {
+      "venueId": "zurich-osm-way-312787805",
+      "city": "zurich",
+      "name": "Aussichtsturm Irchel",
+      "archetype": "monument",
+      "subject": "A forest lookout tower on the Irchel ridge north of Zuerich",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 5,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a47",
+          "#6e5538",
+          "#a98a63"
+        ],
+        "roofColour": "#6e5538",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair to the platform"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "platform railing"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Tower height and material are guessed from Swiss lookout towers; no source was found."
+    },
+    "zurich-osm-way-437737781": {
+      "venueId": "zurich-osm-way-437737781",
+      "city": "zurich",
+      "name": "Stadlerturm",
+      "archetype": "monument",
+      "subject": "The Aussichtsturm Stadlerberg lookout tower on the Stadlerberg ridge; the 1964 tower was replaced by a new one opened June 2023",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 5,
+        "storeys": 6,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7a54",
+          "#7a5f40",
+          "#b59a72"
+        ],
+        "roofColour": "#7a5f40",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair to the platform"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "platform railing"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2023 (replaces 1964 tower)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Stadlerberg",
+          "what": "A lookout tower has stood on the Stadlerberg since 1964; demolished as structurally unsafe; replacement opened June 2023"
+        }
+      ],
+      "notes": "Only the history is sourced. Material and height are guesses (timber tower assumed)."
+    },
+    "zurich-osm-way-49895064": {
+      "venueId": "zurich-osm-way-49895064",
+      "city": "zurich",
+      "name": "Römisch-katholische kirchliche Zentrum St. Gabriel",
+      "archetype": "church-modern",
+      "subject": "A modern Catholic parish centre: a plain concrete church hall with a detached bell tower and attached parish rooms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "render",
+        "colours": [
+          "#bdbab1",
+          "#e4e1d8",
+          "#8a867c"
+        ],
+        "roofColour": "#8d9092",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "free-standing slender tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "parish centre court"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. The name 'kirchliches Zentrum' implies a combined church and parish centre of the post-war period."
+    },
+    "zurich-osm-way-555945140": {
+      "venueId": "zurich-osm-way-555945140",
+      "city": "zurich",
+      "name": "Stadtspital Triemli",
+      "archetype": "hospital",
+      "subject": "The city hospital on the Triemli slope: a low base building carrying the main tower, with the 2016 Bettenhaus alongside",
+      "form": {
+        "footprint": "T",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 16,
+        "height_m": 60,
+        "roof": "flat",
+        "wings": 2,
+        "variant": "tower-on-podium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d6cf",
+          "#8a9aa3",
+          "#9b9890"
+        ],
+        "roofColour": "#8f9496",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "roof helipad"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "base building"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970 (tower); Bettenhaus 2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Stadtspital_Z%C3%BCrich",
+          "what": "Triemli hospital opened 1970; site has a main building with tower and a base building, the Bettenhaus opened March 2016, treatment wing, women's clinic, three staff high-rises"
+        }
+      ],
+      "notes": "Complex structure is sourced; storeys, height and colours are estimates. Recognisable as a hospital tower rising from a wide podium on a hillside."
+    },
+    "zurich-osm-way-59561172": {
+      "venueId": "zurich-osm-way-59561172",
+      "city": "zurich",
+      "name": "St. Peter und Paul",
+      "archetype": "church-classical",
+      "subject": "A Catholic village parish church with a single nave and a tall bell tower with an onion or spire helm",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "sandstone",
+        "colours": [
+          "#f0e8d4",
+          "#c8b48c",
+          "#7a7060"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tower with helm"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th-19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Dedication is real but the specific church (and its architecture) could not be confirmed; modelled as a typical baroque-style Swiss Catholic village church."
+    },
+    "zurich-osm-way-769027329": {
+      "venueId": "zurich-osm-way-769027329",
+      "city": "zurich",
+      "name": "Restaurant Storchen",
+      "archetype": "restaurant",
+      "subject": "A small village inn with a gabled roof, whitewashed ground floor and timber upper storey",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f4f0e6",
+          "#8a6a47",
+          "#7a9a6c"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank hanging sign"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "garden terrace"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not individually described in findable sources; typed brief from the Zuerich city style and the place type. Name is a common Swiss inn name; this house is not described in findable sources. Kept smaller and gabled to differ from Gasthof zum Baeren."
+    },
+    "zurich-quiet-reflection": {
+      "venueId": "zurich-quiet-reflection",
+      "city": "zurich",
+      "name": "Dreifaltigkeitskirche",
+      "archetype": "church-gothic",
+      "subject": "The neo-Gothic Dreifaltigkeitskirche in Buelach: a limestone nave with buttresses, a rose window over the portal and a west tower with a polygonal spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 13,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#c9c0ad",
+          "#b99a72",
+          "#7d776c"
+        ],
+        "roofColour": "#4f555b",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "buttresses",
+          "count": 6,
+          "note": "between the pointed windows"
+        },
+        {
+          "id": "rose-window",
+          "count": 1,
+          "note": "above the main entrance"
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "polygonal spire above four curved gables with gilded ball finials and crosses, tower on west side of choir"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "sandstone portal"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1901-1902",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Dreifaltigkeitskirche_(B%C3%BClach)",
+          "what": "Built 1901-02 by August Hardegger, consecrated 22 Nov 1902; late rural Gothic forms; nave with pointed windows between buttresses, rose window over main entrance, slate roof with four dormers with trefoil glazing and dragon gargoyles; walls of Laegern limestone blocks, sandstone main portal; tower on west side of choir with polygonal spire above four curved gables, gilded ball finials and crosses; narrower lower choir closing in half hexagon"
+        }
+      ],
+      "notes": "Sourced in detail. Dimensions are estimates; the nave runs north (entrance side) with the choir narrower and lower, tower beside the choir. Spire height is excluded from height_m (about 38 m to the spire tip is a guess)."
+    },
+    "zurich-recreation": {
+      "venueId": "zurich-recreation",
+      "city": "zurich",
+      "name": "Kurpark",
+      "archetype": "park-landscape",
+      "subject": "The Kurpark of Baden at the Kursaal, a landscaped spa park with lawns, mature trees and park pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#cfc3a3",
+          "#6f8a5a"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "park pavilion near the Kursaal"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1870s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Baden_AG",
+          "what": "Kursaal and Kurpark opened in the mid-1870s with the Grand Hotel; spa guests"
+        }
+      ],
+      "notes": "Only the opening decade is sourced. Pavilion and fountain are typical park elements, not confirmed individual features."
+    },
+    "zurich-transit": {
+      "venueId": "zurich-transit",
+      "city": "zurich",
+      "name": "Bahnhof Dietikon",
+      "archetype": "transport-station",
+      "subject": "The 1976 concrete station building at Dietikon with shops and a station buffet on the ground floor and flats above, and platforms behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 20,
+        "storeys": 5,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "render",
+        "colours": [
+          "#bcb9b0",
+          "#e0ddd4",
+          "#7d7a72"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 3,
+          "note": "platform roofs (assumed)"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 7,
+          "note": "5 SBB tracks plus 2 metre-gauge BDWM tracks"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1976",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/Bahnhof_Dietikon",
+          "what": "Current building 1976 by Walter Moser, a modern concrete structure; shops and station buffet on ground floor, apartments above; 5 SBB platform tracks (house platform plus two island platforms) and 2 BDWM metre-gauge tracks on a separate island platform; first station by Franz Meyer 1847 survives as a railway club"
+        }
+      ],
+      "notes": "Concrete 1976 form and use are sourced; storeys, size and colours are estimates. The Limmattalbahn tram is not covered here."
+    }
+  }
+}

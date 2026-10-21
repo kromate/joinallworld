@@ -1,0 +1,490 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "unilag",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Senate_House,_University_of_Lagos.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Onikepe32 (Commons)",
+   "view": "street",
+   "file": "/tmp/places-evidence/lagos/m-ul1.jpg",
+   "used": "Senate House: low cream podium with a projecting canopy slab on slim pilotis, plain end walls with patterned panels, a tall tower of two stacked stages clad in a cream concrete grid with brown-red infill ribs, narrower upper stage, capped by a plain cream block; red umbrellas on the ground floor."
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "fit": "building",
+  "margin": 0.1,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     40,
+     24
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d0b3",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6a8",
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lower-tower",
+   "footprint": {
+    "rect": [
+     32,
+     18
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 6.5,
+   "height": 18,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3d2c26",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "bay": 3,
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.7,
+      "spacing": 3.3,
+      "colour": "#d6c9a6",
+      "skipGround": false
+     },
+     {
+      "type": "bands",
+      "colour": "#d6c9a6",
+      "height": 0.8,
+      "proud": 0.4,
+      "at": 0.0
+     },
+     {
+      "type": "bands",
+      "colour": "#8a4a38",
+      "height": 0.25,
+      "proud": 0.2,
+      "at": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6a8",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-tower",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 24.5,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#3d2c26",
+    "windows": "none",
+    "windowRatio": 0.55,
+    "bay": 3,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.7,
+      "depth": 0.7,
+      "spacing": 3.3,
+      "colour": "#d6c9a6",
+      "skipGround": false
+     },
+     {
+      "type": "bands",
+      "colour": "#d6c9a6",
+      "height": 0.8,
+      "proud": 0.4,
+      "at": 0.0
+     },
+     {
+      "type": "bands",
+      "colour": "#8a4a38",
+      "height": 0.25,
+      "proud": 0.2,
+      "at": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6a8",
+    "overhang": 0.7,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 35.5,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d0b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6a8",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library-wing",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    -8,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c9c2b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#7a1f2b",
+    "plinth": 0.4,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.5,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    8,
+    -9.4,
+    6.5
+   ],
+   "params": {
+    "length": 32,
+    "height": 17.5,
+    "pitch": 3.3,
+    "depth": 1.0,
+    "colour": "#d9cba8",
+    "base": 0.4
+   }
+  },
+  {
+   "type": "brise-soleil",
+   "at": [
+    11,
+    -6.9,
+    24.5
+   ],
+   "params": {
+    "length": 20,
+    "height": 10.5,
+    "pitch": 3.3,
+    "depth": 1.0,
+    "colour": "#d9cba8",
+    "base": 0.4
+   }
+  },
+  {
+   "type": "pilotis-row",
+   "at": [
+    -6,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 6.5,
+    "radius": 0.45,
+    "pitch": 6.5,
+    "colour": "#d9d0b3"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2,
+    "height": 2.6,
+    "colours": [
+     "#b3262e",
+     "#b3262e"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -12.6,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#d9d0b3",
+    "frameColour": "#7a1f2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "mosque-domed/fountain",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "radius": 3.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#7a1f2b"
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4,
+    -13.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 1,
+    "run": 2,
+    "count": 4,
+    "colour": "#cfc6a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "line": 24
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     40,
+     6
+    ]
+   },
+   "at": [
+    -6,
+    -15
+   ],
+   "z0": 6.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d0b3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-panel",
+   "footprint": {
+    "rect": [
+     0.6,
+     10
+    ]
+   },
+   "at": [
+    -26.2,
+    -4
+   ],
+   "z0": 0.5,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a4a38",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a38"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     24
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -24,
+     -18
+    ],
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -20,
+     -18
+    ],
+    "colour": "#2f4f6f"
+   },
+   {
+    "at": [
+     -16,
+     -18
+    ],
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     26,
+     -16
+    ],
+    "colour": "#8a2b2b"
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower reproportioned (wider, shorter stages, coarser cream grid); canopy slab added. Real grid is open with mural infill, modelled as dark infill. Library wing and fountain are brief-based."
+ }
+}

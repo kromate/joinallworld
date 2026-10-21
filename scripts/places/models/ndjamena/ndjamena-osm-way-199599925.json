@@ -1,0 +1,349 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_national_2.jpg",
+   "licence": "CC0",
+   "author": "Matarimi1",
+   "view": "front",
+   "file": "/tmp/places-evidence/ndjamena/ndj-museum.jpg",
+   "used": "terracotta-brown box with a deep projecting top slab, solid side pylons, recessed dark-framed glazing in two groups, rounded hedges in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/199599925",
+   "used": "overall size (about 33 x 29 m, 944 m2); modelled as an axis-aligned block facing the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.6,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "top-slab",
+   "footprint": {
+    "rect": [
+     33,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9.6,
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#a06c48",
+    "windows": "none",
+    "bands": "#946040"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a50",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-left",
+   "footprint": {
+    "rect": [
+     7.2,
+     28
+    ]
+   },
+   "at": [
+    -12.9,
+    0
+   ],
+   "height": 9.6,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#a8704a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-right",
+   "footprint": {
+    "rect": [
+     7.2,
+     28
+    ]
+   },
+   "at": [
+    12.9,
+    0
+   ],
+   "height": 9.6,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#a8704a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier",
+   "footprint": {
+    "rect": [
+     2.6,
+     20
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 9.6,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#a8704a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-left",
+   "footprint": {
+    "rect": [
+     8,
+     20
+    ]
+   },
+   "at": [
+    -5.3,
+    2
+   ],
+   "height": 9.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b17a52",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "glassColour": "#2a3238",
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 2.67
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-right",
+   "footprint": {
+    "rect": [
+     8,
+     20
+    ]
+   },
+   "at": [
+    5.3,
+    2
+   ],
+   "height": 9.6,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b17a52",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "glassColour": "#2a3238",
+    "faces": {
+     "front": "punched",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 2.67
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f6a50"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "light-slot",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -12.9,
+    -14.2
+   ],
+   "z0": 1.2,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "terracotta",
+    "colour": "#e8e2d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -11.5,
+    1.4
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#c9a98a",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "colour": "#2f4a2c",
+      "segments": 12,
+      "profile": [
+       [
+        0.01,
+        0
+       ],
+       [
+        1.4,
+        0.3
+       ],
+       [
+        1.9,
+        1.2
+       ],
+       [
+        1.8,
+        2.0
+       ],
+       [
+        1.2,
+        2.7
+       ],
+       [
+        0.5,
+        3.0
+       ],
+       [
+        0.01,
+        3.1
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15,
+     -17,
+     0
+    ],
+    "end": [
+     15,
+     -17,
+     0
+    ],
+    "count": 9,
+    "lod1Step": 2,
+    "lod2Step": 5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "thickness": 0.08,
+    "kind": "railing",
+    "pillarEvery": 3,
+    "colour": "#1a1a1a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -4
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Recess shadow is flatter than the real deep overhang; sign plaque tiny; road and median wall not modelled; hedges more uniform than the real ones."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-way-199599925"
+}

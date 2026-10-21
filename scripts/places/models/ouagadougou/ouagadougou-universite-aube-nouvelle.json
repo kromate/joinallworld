@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-universite-aube-nouvelle",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_Aube_Nouvelle.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abakar el-djery",
+   "view": "front",
+   "file": "/tmp/places-evidence/ouagadougou/aube.jpg",
+   "used": "dark glazed ground floor behind red piers, wide projecting beige tile fascia band, curved dark-glass middle tier under a banded beige drum with a ribbon of windows, flat-roofed tiled wings left and right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/441855485",
+   "used": "only a rough site scale: the outline is a small 365 m2 polygon, so the photo massing is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.19,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#0d1117",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a58a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     38,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "z0": 4.6,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b5705f",
+    "windows": "none",
+    "bands": "#a8473a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a98a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-0",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -15,
+    -8
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b3a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b3a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    15,
+    -8
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b3a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b3a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     7,
+     11
+    ]
+   },
+   "at": [
+    -17,
+    6
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cfa98a",
+    "windows": "none",
+    "windowRatio": 0.03,
+    "bands": "#b89377",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#cfa98a",
+      "#c49f82"
+     ],
+     "slits": 0
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     7,
+     11
+    ]
+   },
+   "at": [
+    17,
+    6
+   ],
+   "z0": 0,
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#cfa98a",
+    "windows": "none",
+    "windowRatio": 0.03,
+    "bands": "#b89377",
+    "pattern": {
+     "type": "panels",
+     "colours": [
+      "#cfa98a",
+      "#c49f82"
+     ],
+     "slits": 0
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-glass",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     25,
+     12.5
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "z0": 8.1,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#0b0f15",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b3038"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum-banded",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 12.1,
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#c9a584",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#b99373",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b08f",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.6,
+    5.4
+   ],
+   "params": {
+    "width": 33,
+    "height": 1.8,
+    "bottom": 0.1,
+    "colour": "#b3392e",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lintel",
+   "footprint": {
+    "rect": [
+     32,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -8.7
+   ],
+   "z0": 4.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8352b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8352b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    1,
+    21.8
+   ],
+   "params": {
+    "width": 16,
+    "height": 2,
+    "bottom": 0.1,
+    "colour": "#c24a3a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -14
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     32,
+     -14
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -6,
+     -20,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#e8e8e8"
+   },
+   {
+    "at": [
+     8,
+     -22,
+     0
+    ],
+    "yawDeg": 90,
+    "colour": "#3a3f48"
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "night photo with neon lettering omitted (blank red boards instead); drum ribbon windows and wing tile joints are simplified; ground floor interior depth not modelled"
+ }
+}

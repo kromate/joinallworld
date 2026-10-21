@@ -1,0 +1,1594 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "monrovia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "monrovia",
+    "climate": "rainforest",
+    "vernacular": "Very wet coastal capital: low and mid-rise concrete-block and plastered buildings, often unpainted grey or faded pastel with rain streaking and rust stains, under corrugated zinc roofs; old Americo-Liberian houses and churches recall the American South with porches and gables, while 1960s Capitol Hill government buildings are plain modernist blocks. Streets are asphalt on main roads, laterite and mud elsewhere, with palms, mango and rubber-type broadleaf trees and hand-painted signboards everywhere.",
+    "wallColours": [
+      "#b9b5ab",
+      "#ece7dc",
+      "#e3d49b",
+      "#9fb6c4",
+      "#b8744f",
+      "#8fa58c"
+    ],
+    "roofColours": [
+      "#8d5a3f",
+      "#7b8891",
+      "#4f6b57",
+      "#a79f94"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "render",
+      "brick",
+      "timber",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Americo-Liberian verandahs, gables and simple classical columns on older houses and churches; hand-painted advertising boards and murals on shopfronts; plain exposed concrete balconies and sun-breaks on 1960s-70s public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Monrovia",
+        "what": "early Americo-Liberian architecture reminiscent of the southern United States; tropical monsoon climate with about 4,600 mm rain a year; Capitol Hill government buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Temple_of_Justice_(Liberia)",
+        "what": "1960s Capitol Hill buildings designed in a modern style by Tommaso Valle"
+      }
+    ]
+  },
+  "places": {
+    "monrovia-airport-monrovia-airport": {
+      "venueId": "monrovia-airport-monrovia-airport",
+      "city": "monrovia",
+      "name": "Roberts International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Roberts International (Robertsfield) main passenger terminal: the two-level 2017-2019 terminal seen from the landside forecourt, with two jet bridges on the apron side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dde2e5",
+          "#3b5876",
+          "#f1f1ee"
+        ],
+        "roofColour": "#c3c8cc",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "the airport's first two jet bridges"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017-2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roberts_International_Airport",
+          "what": "main terminal about 5,000 m2, two levels (check-in/security/baggage below, retail and lounge above), two jet bridges, built on the salvaged frame of the old terminal, dedicated 2017, fully operational 2019; second smaller Terminal B opened 2012"
+        }
+      ],
+      "notes": "Footprint split into two storeys from the 5,000 m2 total, so about 85 x 32 m is an estimate. Colours and glazing share are typed from typical new terminals; the source gives no photos description. Show the modest two-level box with two jet bridges, not a large hub."
+    },
+    "monrovia-clinic": {
+      "venueId": "monrovia-clinic",
+      "city": "monrovia",
+      "name": "14th Military Hospital",
+      "archetype": "hospital",
+      "subject": "Military hospital of the Armed Forces of Liberia: a long low block of wards with a covered entrance and an ambulance bay (game venue name 'clinic')",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d3",
+          "#8aa3b3",
+          "#f6f4ee"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "general city context only"
+        }
+      ],
+      "notes": "Location puts it outside central Monrovia on the Kakata road side. Typed low-confidence ward block in the city style. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-community-notices": {
+      "venueId": "monrovia-community-notices",
+      "city": "monrovia",
+      "name": "Center for National Documents and Records",
+      "archetype": "civic-small",
+      "subject": "Government records centre: a plain two-storey institutional block with a flagpole and a gated forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e0cf",
+          "#a7a69f",
+          "#f4f2ea"
+        ],
+        "roofColour": "#a79f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "general city context only"
+        }
+      ],
+      "notes": "Real agency, but no description of its building was found. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-community-voting-game": {
+      "venueId": "monrovia-community-voting-game",
+      "city": "monrovia",
+      "name": "Executive Mansion",
+      "archetype": "civic-palace",
+      "subject": "The Executive Mansion on Capitol Hill: the 8-storey presidential office and residence block completed in 1964, rebuilt after the 2006 fire and reopened in 2022",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 32,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe6d8",
+          "#9c9a93",
+          "#ffffff"
+        ],
+        "roofColour": "#b3aea4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide entrance stairs"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1961-1964; rebuilt 2022",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Executive_Mansion_(Liberia)",
+          "what": "built 1961-1964 under President Tubman, 8 floors, opposite the Capitol Building on Capitol Hill; destroyed by fire 26 July 2006 and reopened 14 February 2022"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Temple_of_Justice_(Liberia)",
+          "what": "neighbouring 1960s Capitol Hill buildings are in a modern style designed by Tommaso Valle"
+        }
+      ],
+      "notes": "Storey count and dates are sourced; width, colour and balcony/fountain details are estimates from the period and public-building style (fountain is unverified). Treat as a tall pale modernist block with banded balconies, much taller than any neighbour. Rendering of the post-2022 colour not verified."
+    },
+    "monrovia-community-workshop": {
+      "venueId": "monrovia-community-workshop",
+      "city": "monrovia",
+      "name": "University of Liberia",
+      "archetype": "campus-block",
+      "subject": "University of Liberia Capitol Hill campus: a group of 3-4 storey concrete academic blocks around a quadrangle",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5dfcc",
+          "#8d8a82",
+          "#f3f0e6"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Liberia",
+          "what": "Capitol Hill campus first designed by J. Max Bond Sr. (president 1950-54); Firestone Quadrangle science building renovated 2009; no description of appearance"
+        }
+      ],
+      "notes": "Appearance not documented in fetched sources; typed from the period and city style. The quadrangle grouping is inferred from the 'Firestone Quadrangle' name."
+    },
+    "monrovia-market-game": {
+      "venueId": "monrovia-market-game",
+      "city": "monrovia",
+      "name": "Turning Point Market",
+      "archetype": "market-open",
+      "subject": "Open-air neighbourhood market: rows of timber stalls under corrugated sheets and umbrellas around a muddy yard",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#9a9588",
+          "#b8744f",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found; generic Monrovia street market. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-meal-stop": {
+      "venueId": "monrovia-meal-stop",
+      "city": "monrovia",
+      "name": "Pepper Fish",
+      "archetype": "restaurant",
+      "subject": "Small roadside restaurant: a single-storey painted block with a covered terrace and plastic chairs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3d49b",
+          "#b8744f",
+          "#f2eee2"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Venue name only; typed from city style. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-osm-node-10155854393": {
+      "venueId": "monrovia-osm-node-10155854393",
+      "city": "monrovia",
+      "name": "Academic Building",
+      "archetype": "campus-block",
+      "subject": "A university academic building at the Fendall-area campus: a long 3-storey block of the 2008-09 Chinese-funded expansion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece5cf",
+          "#a14d3a",
+          "#ffffff"
+        ],
+        "roofColour": "#a14d3a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Liberia",
+          "what": "Fendall campus expanded with a US$21.5 million Chinese-funded project (April 2008), adding more than five buildings"
+        }
+      ],
+      "notes": "Position is near the Fendall campus; the unnamed 'Academic Building' is inferred to be one of the new blocks, but its look was not found. Tiled hip roof is a guess from Chinese-built campus buildings elsewhere in West Africa."
+    },
+    "monrovia-osm-node-1730515734": {
+      "venueId": "monrovia-osm-node-1730515734",
+      "city": "monrovia",
+      "name": "Cotton Tree",
+      "archetype": "park-landscape",
+      "subject": "The Cotton Tree: a huge old silk-cotton tree on an open sloping site by the sea, with a worn clearing around it",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#9a9588",
+          "#7a8a6a",
+          "#cfc9b8"
+        ],
+        "roofColour": "#7a8a6a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low surround"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "historic",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Named as a known landmark tree in Monrovia; no description was fetched. Model should be a single very large spreading tree (broadleaf) as the focal point; there are no buildings."
+    },
+    "monrovia-osm-node-2812532381": {
+      "venueId": "monrovia-osm-node-2812532381",
+      "city": "monrovia",
+      "name": "Red Light Market",
+      "archetype": "market-open",
+      "subject": "Red Light Market in the Paynesville area: a huge, dense open market of lock-ups and stalls under rusty zinc, beside a busy junction",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9b968b",
+          "#b8744f",
+          "#cfc9b8"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Real, very large, busy market; no description of its fabric was found. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type. Make it denser and larger than the Turning Point Market."
+    },
+    "monrovia-osm-node-3708503058": {
+      "venueId": "monrovia-osm-node-3708503058",
+      "city": "monrovia",
+      "name": "Maison Memorial A.M.E. Church",
+      "archetype": "church-modern",
+      "subject": "A mid-sized African Methodist Episcopal church: a plastered rectangular nave with a gable front, a small square tower and arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece7d9",
+          "#9fb6c4",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "Americo-Liberian churches recall the American South; no page on this church found"
+        }
+      ],
+      "notes": "Listed as a game 'buka' but it is a church (denomination from its name). Form is typed from the American-influenced Americo-Liberian church tradition; unverified."
+    },
+    "monrovia-osm-node-7695068489": {
+      "venueId": "monrovia-osm-node-7695068489",
+      "city": "monrovia",
+      "name": "Dr. Jallah Medical Center",
+      "archetype": "hospital",
+      "subject": "Small private medical centre: a two-storey plastered building with an entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 32,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ece0",
+          "#6f9bb3",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b57",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Private clinic far out of town; no description found. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-osm-node-8470144258": {
+      "venueId": "monrovia-osm-node-8470144258",
+      "city": "monrovia",
+      "name": "Hotel Africa ruins",
+      "archetype": "hotel",
+      "subject": "Hotel Africa in Virginia: the large 1979 OAU-summit hotel, derelict and weathered, with long balcony tiers and squatter-occupied floors",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a9a699",
+          "#7a8070",
+          "#d4cfbf"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "tiered balconies; one on the 4th floor is mentioned"
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hotel_Africa",
+          "what": "completed 1979 for the OAU conference; has at least four floors (a 4th-floor balcony is mentioned); in Virginia, northern Monrovia; occupied by squatters, with redevelopment announced 2025"
+        }
+      ],
+      "notes": "Only the year, location, 4+ floors and derelict state are sourced; width/depth, 5 storeys and the weathered grey-green colours are estimates. Show stained, unmaintained concrete with plants on terraces."
+    },
+    "monrovia-osm-node-8617869166": {
+      "venueId": "monrovia-osm-node-8617869166",
+      "city": "monrovia",
+      "name": "Oporto Chicken Crib",
+      "archetype": "restaurant",
+      "subject": "Small fast-food and chicken restaurant: a one-storey painted shop with an awning and blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0e3a6",
+          "#c0452f",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Venue name only. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-osm-node-8999008284": {
+      "venueId": "monrovia-osm-node-8999008284",
+      "city": "monrovia",
+      "name": "Blamasee",
+      "archetype": "market-open",
+      "subject": "Blamasee: a small rural roadside market of timber shelters and zinc roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "mud-render",
+        "colours": [
+          "#9d8c74",
+          "#b8744f",
+          "#cfc9b8"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Small place name far north of the city; nothing found beyond the name. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-osm-way-143040548": {
+      "venueId": "monrovia-osm-way-143040548",
+      "city": "monrovia",
+      "name": "Episcopal Church",
+      "archetype": "church-gothic",
+      "subject": "Episcopal church in central Monrovia: a stuccoed nave with a pitched roof, pointed windows and a square front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#e6e0cf",
+          "#8d8a82",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "gothic-revival",
+      "era": "1900s-1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "Americo-Liberian architecture echoes the American South; no page on this church found"
+        }
+      ],
+      "notes": "Identity (likely a downtown Episcopal cathedral/parish) not verified; gothic-revival form is typed from the Anglican church type."
+    },
+    "monrovia-osm-way-143040550": {
+      "venueId": "monrovia-osm-way-143040550",
+      "city": "monrovia",
+      "name": "Newport Street Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Central Monrovia mosque on Newport Street: a plastered prayer hall with a single dome and a slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede1",
+          "#3f7f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7f6b",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1960s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "the city has mosques; this one is not described"
+        }
+      ],
+      "notes": "Muslim community mosque in the downtown commercial area; no description found, form and green dome colour are typed guesses."
+    },
+    "monrovia-osm-way-143040586": {
+      "venueId": "monrovia-osm-way-143040586",
+      "city": "monrovia",
+      "name": "National Museum of Liberia",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum on Broad/Ashmun area: a two-storey formal building with a columned front porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ecdc",
+          "#7f9fae",
+          "#ffffff"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "the Liberian National Museum is a listed cultural attraction; no building description"
+        }
+      ],
+      "notes": "Only its existence is documented in sources fetched. Form typed from Americo-Liberian civic style (porch and columns)."
+    },
+    "monrovia-osm-way-157273329": {
+      "venueId": "monrovia-osm-way-157273329",
+      "city": "monrovia",
+      "name": "Samuel Kanyon Doe Sports Complex",
+      "archetype": "stadium",
+      "subject": "Liberia's largest stadium in Paynesville: an oval bowl of concrete terraces around a grass pitch and athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 160,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#b4b0a6",
+          "#7b8891",
+          "#d4cfbf"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1986",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Samuel_Kanyon_Doe_Sports_Complex",
+          "what": "multi-purpose stadium in Paynesville, capacity about 22,000, built 1986, renovated 2005 with further Chinese-funded works agreed 2013; grass pitch and athletics track"
+        }
+      ],
+      "notes": "Sourced: capacity, year, track. Dimensions estimated from capacity; roofing and floodlights are not confirmed by the source. The largest stadium in the city, bigger than Antoinette Tubman."
+    },
+    "monrovia-osm-way-295839261": {
+      "venueId": "monrovia-osm-way-295839261",
+      "city": "monrovia",
+      "name": "Liberian Institute for Tropical Medicine",
+      "archetype": "campus-block",
+      "subject": "Biomedical research institute in a leafy compound: a few low institutional laboratory blocks with deep eaves",
+      "form": {
+        "footprint": "H",
+        "width_m": 50,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d4",
+          "#8aa08f",
+          "#ffffff"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Research institute near Robertsfield; no description of its buildings found. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-osm-way-299926349": {
+      "venueId": "monrovia-osm-way-299926349",
+      "city": "monrovia",
+      "name": "UMU University",
+      "archetype": "campus-block",
+      "subject": "United Methodist University downtown campus: a 4-storey plastered block with a covered front stair",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9e0e4",
+          "#3f6f9b",
+          "#ffffff"
+        ],
+        "roofColour": "#a79f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No source describing the building was found; blue-white school colours are an assumption. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    },
+    "monrovia-osm-way-784173574": {
+      "venueId": "monrovia-osm-way-784173574",
+      "city": "monrovia",
+      "name": "Firestone Medical Center",
+      "archetype": "hospital",
+      "subject": "Hospital serving the Firestone rubber plantation at Harbel: low sprawling ward blocks among rubber trees, with a covered entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe7d8",
+          "#6f8f7a",
+          "#ffffff"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1930s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Firestone_Natural_Rubber_Company",
+          "what": "Harbel plantation (1926) has plantation housing and a hospital described by Graham Greene in 1936 as a new neat hospital among plantations"
+        }
+      ],
+      "notes": "Plantation-company hospital; the current building was not described. Plantation context (rows of rubber trees, company housing) is sourced, form is typed."
+    },
+    "monrovia-quiet-reflection": {
+      "venueId": "monrovia-quiet-reflection",
+      "city": "monrovia",
+      "name": "Sacred Heart Cathedral Church",
+      "archetype": "church-modern",
+      "subject": "Roman Catholic cathedral of Monrovia on Broad Street: a large plastered hall-church with a tall front tower and a cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#b0a58f",
+          "#ffffff"
+        ],
+        "roofColour": "#8d5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sacred_Heart_Cathedral,_Monrovia",
+          "what": "seat of the Archdiocese of Monrovia (est. 1981), across Broad Street in central Monrovia; no physical description"
+        }
+      ],
+      "notes": "Real cathedral, but no source gave its look; form is typed. Make it larger and plainer than the Episcopal church."
+    },
+    "monrovia-recreation": {
+      "venueId": "monrovia-recreation",
+      "city": "monrovia",
+      "name": "Antoinette Tubman Stadium",
+      "archetype": "stadium",
+      "subject": "Antoinette Tubman Stadium in central Monrovia: a compact 10,000-seat ground with a roofed main stand, floodlights, a new scoreboard and artificial turf",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c4b6",
+          "#2f6aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#2f6aa0",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s; renovated 2022",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antoinette_Tubman_Stadium",
+          "what": "multi-purpose stadium, 10,000 capacity, built by 1952, artificial turf from 2001, 2022 renovation re-roofed it and added an electronic scoreboard and floodlights"
+        }
+      ],
+      "notes": "Capacity, turf, re-roofing, scoreboard and floodlights are sourced; the blue roof colour and bowl proportions are estimates. Smaller than the Doe complex."
+    },
+    "monrovia-transit": {
+      "venueId": "monrovia-transit",
+      "city": "monrovia",
+      "name": "Shared Taxi Station to Bo Waterside",
+      "archetype": "transport-station",
+      "subject": "Shared-taxi park: an open paved lot with bays of waiting cars, a couple of sheds and ticket kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9b968b",
+          "#cc9a3a",
+          "#cfc9b8"
+        ],
+        "roofColour": "#7b8891",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monrovia",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Unofficial transport hub; nothing found beyond its name. No source describing this exact building could be fetched during research, so form, size and colours are typed from the Monrovia city style and the place type."
+    }
+  }
+}

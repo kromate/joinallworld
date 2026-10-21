@@ -1,0 +1,313 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Beau_Vallon_administration_asv2024-10.jpg",
+   "licence": "FAL",
+   "author": "A.Savin",
+   "view": "front",
+   "file": "/tmp/places-evidence/victoria/beau1.jpg",
+   "used": "cream render single-storey hall with pale-green gabled roof and arched front veranda with white railing; white annex with red hipped roof on the left; orange booth; flag pole; roadside trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/458812934",
+   "used": "size and orientation (about 19 x 14 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.78
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    5,
+    2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e5bb",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9fcb9a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     10,
+     3
+    ]
+   },
+   "at": [
+    5,
+    -5.0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2e5bb",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis",
+     "bay": 3.3
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9fcb9a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -7,
+    -0.5
+   ],
+   "height": 2.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f0e6",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b4453b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.4
+    ]
+   },
+   "at": [
+    -12.5,
+    -2.5
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9783a",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a4a2a",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-blue",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.4
+    ]
+   },
+   "at": [
+    -10.5,
+    -3.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a73b0",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d9783a",
+    "pitch": 20,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5,
+    -3.7,
+    3.3
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#d6a82e",
+    "frameColour": "#2f5fa8"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "shrub0",
+   "at": [
+    -3,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 5,
+    "height": 1.3,
+    "depth": 1.1,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "shrub1",
+   "at": [
+    11,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.3,
+    "depth": 1.1,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "shrub2",
+   "at": [
+    15,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 3,
+    "height": 1.3,
+    "depth": 1.1,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "hedge",
+   "id": "shrub3",
+   "at": [
+    -1,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 2.5,
+    "height": 1.3,
+    "depth": 1.1,
+    "colour": "#3f7a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-community-voting-game",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "flag fanlight is a small board, porch arches still read as pilotis, kiosks and shrubs simplified"
+ }
+}

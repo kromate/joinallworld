@@ -1,0 +1,1391 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tirana",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tirana",
+    "climate": "mediterranean",
+    "vernacular": "Tirana mixes Ottoman remnants (Et'hem Bey Mosque, bazaar lanes), the 1920s-30s Italian-built ministry quarter in pale travertine and ochre render, communist-era 5-storey brick and concrete apartment blocks that have been repainted in bright yellow, orange, blue and pink since 2000, and a dense crop of post-2000 glass and render towers and malls. Roofs are red clay tile on older houses and flat membrane or concrete on blocks. Cypress, plane, pine and olive trees; wide boulevards with paving.",
+    "wallColours": [
+      "#e8c35a",
+      "#e0894a",
+      "#7aa0b8",
+      "#d98ca0",
+      "#d9cfa8",
+      "#b9b5a8",
+      "#a9a49a",
+      "#c9b08a"
+    ],
+    "roofColours": [
+      "#a8452f",
+      "#8c4a38",
+      "#6b6a68",
+      "#7b7f83"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "brick",
+      "concrete",
+      "stone",
+      "limestone",
+      "glass-curtain",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Bright geometric and striped painted facades on socialist blocks; Italian-rationalist travertine ministry buildings with giant-order pilasters and arcades; Ottoman domed mosques with a single pencil minaret; Mediterranean cypress and plane tree rows.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Albania",
+        "what": "Tirana: Ottoman Et'hem Bey Mosque, Italian-era city centre by Brasini and Di Fausto, communist socialist apartment blocks, facades being repainted in colour from 2014"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Skanderbeg_Square",
+        "what": "Skanderbeg Square about 40,000 m2, Brasini 1925 plan continued by Di Fausto in Neo-Renaissance with giant-order facades, Bosio 1939 plan, 2017 pedestrian renovation"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Air_Albania_Stadium",
+        "what": "Black and red metal-panel facade with carpet-inspired curved triangles on the new national stadium, glass tower"
+      }
+    ]
+  },
+  "places": {
+    "tirana-airport-tirana-airport": {
+      "venueId": "tirana-airport-tirana-airport",
+      "city": "tirana",
+      "name": "Tirana International Airport Mother Teresa",
+      "archetype": "airport-terminal",
+      "subject": "Glazed terminal block with car-park canopies seen from the forecourt, control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9ced1",
+          "#6f8aa0",
+          "#eef0f0"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "car-park canopies"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007 terminal, expanded 2011+",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tirana_International_Airport_N%C3%ABn%C3%AB_Tereza",
+          "what": "terminal, extension, cargo facilities, landscaping and car-park canopies designed by Hin Tan (Hintan); Hochtief AirPort concession from 2005 included a completely new passenger terminal"
+        }
+      ],
+      "notes": "Sourced: new terminal by Hintan under the Hochtief concession, with car-park canopies. Facade look (glass, white) and dimensions are estimates."
+    },
+    "tirana-clinic": {
+      "venueId": "tirana-clinic",
+      "city": "tirana",
+      "name": "American Hospital 3",
+      "archetype": "hospital",
+      "subject": "Private hospital block with a glazed entrance and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e0d4",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed. Differs from American Hospital 1 and 2 only by typed size/colour variation, as no individual descriptions were found."
+    },
+    "tirana-community-notices": {
+      "venueId": "tirana-community-notices",
+      "city": "tirana",
+      "name": "General Directorate of Prisons",
+      "archetype": "office-low",
+      "subject": "Plain walled state administration block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#c9c4b8",
+          "#8b8f8c",
+          "#e4e0d4"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "mid 20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed as a guarded government block. No signage."
+    },
+    "tirana-community-voting-game": {
+      "venueId": "tirana-community-voting-game",
+      "city": "tirana",
+      "name": "Mother Teresa Square",
+      "archetype": "park-landscape",
+      "subject": "Large paved head-of-boulevard square ringed by Italian-era university and ministry buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "boulevard-end plaza"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9cfa8",
+          "#a9a49a",
+          "#e4e0d4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1930s layout",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Skanderbeg_Square",
+          "what": "Skanderbeg Square about 40,000 m2, Brasini 1925 plan continued by Di Fausto in Neo-Renaissance with giant-order facades, Bosio 1939 plan, 2017 pedestrian renovation"
+        }
+      ],
+      "notes": "Square at the southern end of the main boulevard; surrounding Italian-era buildings known from the Skanderbeg Square article but the page for this square returned nothing, so features are typed."
+    },
+    "tirana-community-workshop": {
+      "venueId": "tirana-community-workshop",
+      "city": "tirana",
+      "name": "Universiteti POLIS",
+      "archetype": "campus-block",
+      "subject": "Architecture university with an experimental contemporary block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d8d4c8",
+          "#8b8f8c",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "POLIS University in the Kashar area; building not described; typed."
+    },
+    "tirana-market-game": {
+      "venueId": "tirana-market-game",
+      "city": "tirana",
+      "name": "TEG - Tirana East Gate",
+      "archetype": "mall",
+      "subject": "Very large two-level mall with a long flat facade and big car park, off the SH3 road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3e0d4",
+          "#c46a4a",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "about 4,200 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tirana_East_Gate",
+          "what": "shopping mall about 4 km from centre off SH3, ~96,000 m2 retail space, ~4,200 parking spaces, opened 26 Nov 2011, 180 shops, Cineplexx cinema; floors given as two or four"
+        }
+      ],
+      "notes": "Sourced: 96,000 m2 retail and 4,200 car spaces, opened 2011. Appearance not described; typed mall box (storeys uncertain: sources say two or four)."
+    },
+    "tirana-meal-stop": {
+      "venueId": "tirana-meal-stop",
+      "city": "tirana",
+      "name": "Sarajet",
+      "archetype": "restaurant",
+      "subject": "Restaurant in a low Ottoman-style house on the Pazari area streets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8c35a",
+          "#8b6a50",
+          "#eeeae0"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "ottoman",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name is real (Sarajet restaurant near the centre); building not described. Typed as a painted two-storey tiled-roof house."
+    },
+    "tirana-osm-node-10049694706": {
+      "venueId": "tirana-osm-node-10049694706",
+      "city": "tirana",
+      "name": "Bodini Castle",
+      "archetype": "heritage-fort",
+      "subject": "Small ruined hilltop fortress of rough stone walls and a surviving tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "ruined hill fort"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#8c8578",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8c8578",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small castle ruin; no source found. Typed as a ruined stone hill fort. Fetches for related castle pages failed."
+    },
+    "tirana-osm-node-4687241329": {
+      "venueId": "tirana-osm-node-4687241329",
+      "city": "tirana",
+      "name": "Cave of Pellumbas",
+      "archetype": "park-landscape",
+      "subject": "Limestone cave mouth in a rocky hillside gorge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "cave mouth in limestone cliff"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#b9b5a8",
+          "#8c8f8c",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Natural cave near Pellumbas; the Wikipedia page fetch failed, so no description. Typed as a cave opening in cliff with a path."
+    },
+    "tirana-osm-node-4753627987": {
+      "venueId": "tirana-osm-node-4753627987",
+      "city": "tirana",
+      "name": "Kalaja e Dorezit",
+      "archetype": "heritage-fort",
+      "subject": "Ruined hill-top castle wall segments and a tower on a rocky summit",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "none",
+        "variant": "ruined hill fort"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#8c8578",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8c8578",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Dorez castle (Kalaja e Dorezit); no source found. Typed as a ruin of rough stone walls."
+    },
+    "tirana-osm-relation-3351946": {
+      "venueId": "tirana-osm-relation-3351946",
+      "city": "tirana",
+      "name": "Grand Park of Tirana",
+      "archetype": "park-landscape",
+      "subject": "Large wooded park around an artificial lake with paths and pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 180,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "lakeside park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a9a49a",
+          "#8b6a50",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1955 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tirana_Zoo",
+          "what": "zoo lies between Grand Park and the Botanical Gardens in the south of Tirana"
+        }
+      ],
+      "notes": "Wikipedia page for the park returned nothing; only its location (next to the zoo and botanical garden) is sourced. Artificial lake from general knowledge; features typed."
+    },
+    "tirana-osm-way-1123601207": {
+      "venueId": "tirana-osm-way-1123601207",
+      "city": "tirana",
+      "name": "Sports University",
+      "archetype": "campus-block",
+      "subject": "University of Sports with a low gymnasium block and training halls",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d4c8",
+          "#8b8f8c",
+          "#eeeae0"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "mid 20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Sports University of Tirana; appearance not found; typed."
+    },
+    "tirana-osm-way-1273961691": {
+      "venueId": "tirana-osm-way-1273961691",
+      "city": "tirana",
+      "name": "Universiteti Barleti",
+      "archetype": "campus-block",
+      "subject": "Private university building, a mid-rise glazed block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e0d4",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed. Different colour and more glazing than the Sports and Agricultural universities."
+    },
+    "tirana-osm-way-174803482": {
+      "venueId": "tirana-osm-way-174803482",
+      "city": "tirana",
+      "name": "Stadiumi Selman Stermasi",
+      "archetype": "stadium",
+      "subject": "Small city football stadium with one central covered stand and low open terraces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed",
+        "variant": "oblong with central stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a49a",
+          "#c2402e",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "central stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1956; renovated 1995, 2005, 2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Selman_St%C3%ABrmasi_Stadium",
+          "what": "capacity 7,308 all seated, opened 1956 as Dinamo Stadium, renovated 1995, 2005 and 2015, main parking in front, KF Tirana home"
+        }
+      ],
+      "notes": "Sourced: 7,308 seats, built 1956. Roof and facade colours not described; typed. Replaced as national stadium by the 2019 Air Albania Stadium nearby (black/red facade, 112 m glass tower), which is a separate building."
+    },
+    "tirana-osm-way-237087572": {
+      "venueId": "tirana-osm-way-237087572",
+      "city": "tirana",
+      "name": "Kisha Katolike Zemra e Krishtit",
+      "archetype": "church-modern",
+      "subject": "Modern Catholic church with a simple brick and render nave and a free-standing bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "modern nave with side tower"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e3e0d4",
+          "#a8452f",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c4a38",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Church of the Heart of Christ (Catholic); appearance not found. Typed as a modern church. Wikipedia fetch for the Sacred Heart church failed."
+    },
+    "tirana-osm-way-248355618": {
+      "venueId": "tirana-osm-way-248355618",
+      "city": "tirana",
+      "name": "Rinia Park",
+      "archetype": "park-landscape",
+      "subject": "Central city park with plane-tree avenues, a fountain and a small stage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "avenue park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#6f7a5a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1950s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rinia (Youth) Park in central Tirana; layout not sourced; typed."
+    },
+    "tirana-osm-way-282299241": {
+      "venueId": "tirana-osm-way-282299241",
+      "city": "tirana",
+      "name": "Citypark",
+      "archetype": "mall",
+      "subject": "Large shopping and leisure centre on the Durres road with big signage boards and parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#c46a4a",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed. Smaller and less glazed than TEG."
+    },
+    "tirana-osm-way-457216792": {
+      "venueId": "tirana-osm-way-457216792",
+      "city": "tirana",
+      "name": "Spitali Amerikan 2",
+      "archetype": "hospital",
+      "subject": "Private hospital block with glazed canopy entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e0d4",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed."
+    },
+    "tirana-osm-way-463111184": {
+      "venueId": "tirana-osm-way-463111184",
+      "city": "tirana",
+      "name": "Spitali Amerikan 1",
+      "archetype": "hospital",
+      "subject": "Original American Hospital campus with two linked blocks",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9cfa8",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c4a38",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed with warmer render colours than the other two hospital sites."
+    },
+    "tirana-osm-way-480510821": {
+      "venueId": "tirana-osm-way-480510821",
+      "city": "tirana",
+      "name": "The New Bazaar",
+      "archetype": "market-hall",
+      "subject": "Renovated 1931 market quarter around a central square with covered food hall and painted stalls",
+      "form": {
+        "footprint": "ring",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable",
+        "variant": "bazaar square with halls and shops"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8c35a",
+          "#e0894a",
+          "#7aa0b8"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1931, renovated 2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/New_Bazaar,_Tirana",
+          "what": "Pazari i Ri built in 1931 on the site of the older Old Bazaar, east of the main boulevard in the Old Town with the Kokonozi Mosque"
+        }
+      ],
+      "notes": "Sourced: built 1931 near Kokonozi Mosque. The renovated look (bright colours, central square, food hall) is from general knowledge and not confirmed by the source."
+    },
+    "tirana-osm-way-744868434": {
+      "venueId": "tirana-osm-way-744868434",
+      "city": "tirana",
+      "name": "Evangelical Brotherhood of Albania",
+      "archetype": "shrine-small",
+      "subject": "Small evangelical church hall with gabled roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e3e0d4",
+          "#8c4a38",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c4a38",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed."
+    },
+    "tirana-osm-way-835368320": {
+      "venueId": "tirana-osm-way-835368320",
+      "city": "tirana",
+      "name": "Agricultural University of Tirana",
+      "archetype": "campus-block",
+      "subject": "Kamez campus of long Soviet-era teaching blocks with research fields",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#bdb8a8",
+          "#8b8f8c",
+          "#e4e0d4"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1950s-1980s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed Soviet campus."
+    },
+    "tirana-quiet-reflection": {
+      "venueId": "tirana-quiet-reflection",
+      "city": "tirana",
+      "name": "Baitul Awwal Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Small modern mosque with a single dome and a pencil minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome",
+        "variant": "single dome, one minaret"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e3e0d4",
+          "#a9a49a",
+          "#f0eee8"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name suggests an Ahmadiyya-style mosque but no source found (the Wikipedia fetch failed). Typed small domed mosque; do not assume Ottoman form."
+    },
+    "tirana-recreation": {
+      "venueId": "tirana-recreation",
+      "city": "tirana",
+      "name": "Tirana Zoo",
+      "archetype": "park-landscape",
+      "subject": "Small zoo of tree-lined paths and cage blocks between the Grand Park and botanical garden",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 250,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "zoo"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a9a49a",
+          "#8b6a50",
+          "#d8d2c4"
+        ],
+        "roofColour": "#6f7478",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960-61",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tirana_Zoo",
+          "what": "6.09 ha in southern Tirana between Grand Park and Botanical Gardens, built 1960-61, ageing infrastructure, bears, lions, llamas, monkeys, wolves, foxes"
+        }
+      ],
+      "notes": "Sourced: 6.09 ha, built 1960-61, worn infrastructure; grounds once green. Enclosure designs not described; generic."
+    },
+    "tirana-transit": {
+      "venueId": "tirana-transit",
+      "city": "tirana",
+      "name": "Tirana International Airport",
+      "archetype": "transport-station",
+      "subject": "Airport arrivals forecourt: bus bays, taxi lanes and a long glass-fronted entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "forecourt and bus stop block"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9ced1",
+          "#6f8aa0",
+          "#eef0f0"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "car-park / forecourt canopies"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tirana_International_Airport_N%C3%ABn%C3%AB_Tereza",
+          "what": "Hintan designed terminal, car-park canopies and landscaping"
+        }
+      ],
+      "notes": "Hub entry duplicates the airport venue: modelled as the road-side forecourt and bus bays rather than the airside terminal, to stay visually distinct from tirana-airport-tirana-airport."
+    }
+  }
+}

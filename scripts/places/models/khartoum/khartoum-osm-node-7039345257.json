@@ -1,0 +1,162 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1357659998",
+   "used": "footprint (containing match, 149 m2, 20.6x7.2 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/khartoum.json#khartoum-osm-node-7039345257",
+   "used": "two-storey grill restaurant, glazed ground floor, upper terrace, blank sign board"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cfa9",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#8c3f2e",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9283",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "at": [
+    0,
+    0,
+    8
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "tables": 3,
+    "pergola": true,
+    "glass": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#8c3f2e",
+     "#f4eddc"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "bottom": 3.6,
+    "colour": "#8c3f2e",
+    "frameColour": "#f4eddc",
+    "posts": false
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    0,
+    -10.3,
+    7.2
+   ],
+   "params": {
+    "length": 7,
+    "height": 0.3,
+    "colour": "#f4eddc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; outline is the real OSM way but the front orientation and facade details are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-node-7039345257",
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ }
+}

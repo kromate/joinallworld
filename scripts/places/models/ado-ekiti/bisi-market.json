@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "bisi-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/625678500",
+   "used": "nearest building 2 m away, about 28 x 13 m, used as the permanent shop block"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Ado_Ekiti",
+   "used": "trade centre for yams, cassava, grain and tobacco"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shops",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc7b5",
+    "windows": "none",
+    "plinth": 0.2,
+    "bands": "#c98a6a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a3a",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "lockups-n",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 3.3,
+    "height": 3.2,
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "roof": "shed"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "lockups-s",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 3.3,
+    "height": 3.2,
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "roof": "shed"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-a",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-b",
+   "at": [
+    2,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-c",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-d",
+   "at": [
+    26,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-1",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-2",
+   "at": [
+    -20,
+    10,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.4,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls-3",
+   "at": [
+    8,
+    10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "awning"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb",
+   "at": [
+    28,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb2",
+   "at": [
+    36,
+    12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5
+   }
+  },
+  {
+   "type": "water-tank",
+   "id": "tank",
+   "at": [
+    -44,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 1.1,
+    "height": 1.7,
+    "legs": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM block plus brief-based stalls, sheds and lock-ups, arrangement estimated."
+ }
+}

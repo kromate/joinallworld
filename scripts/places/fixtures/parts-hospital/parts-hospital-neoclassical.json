@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-neoclassical",
+ "name": "Parts test: neoclassical parliament",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     80,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e8e2d2",
+    "windows": "punched",
+    "windowRatio": 0.26
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8f88"
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 24,
+    "depth": 6.5,
+    "height": 10,
+    "columns": 8,
+    "steps": 8,
+    "baseHeight": 1.0,
+    "colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "dome-colonnaded",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 9,
+    "drum": 6,
+    "colonnade": true,
+    "profile": "hemi",
+    "lantern": 3,
+    "finial": 2,
+    "colour": "#7f8f88"
+   }
+  },
+  {
+   "type": "loggia",
+   "at": [
+    -24,
+    -13,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "depth": 3.4,
+    "height": 5.4,
+    "radius": 0.3,
+    "colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "loggia",
+   "at": [
+    24,
+    -13,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "depth": 3.4,
+    "height": 5.4,
+    "radius": 0.3,
+    "colour": "#f4f0e6"
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    0,
+    -13,
+    15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 78,
+    "height": 1.0
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 5
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "obelisk-pedestal",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "extent": [
+   110,
+   80
+  ]
+ }
+}

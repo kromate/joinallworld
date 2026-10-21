@@ -1,0 +1,20 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "maseru", "venueId": "maseru-lancers-gap",
+ "verified": "text",
+ "evidence": [
+  {"kind": "text", "used": "brief: hill pass and roadside lookout east of Maseru in the Maloti foothills: bare sandstone slope, gravel lay-by, low lookout wall, a few pines. The nearest OSM building (68 m away, 53 m2) is an unrelated shed and was not used."}
+ ],
+ "camera": {"yawDeg": 25, "pitchDeg": 14, "fovDeg": 55, "fit": "all"},
+ "parts": [
+  {"type": "rock-hill", "at": [0, 40, 0], "params": {"width": 110, "depth": 40, "height": 22, "seed": 7, "stairs": false, "rock_colour": "#a38b6e", "boulders": 14}},
+  {"type": "core/fence-wall", "at": [0, -14, 0], "params": {"length": 48, "height": 1.1, "thickness": 0.6, "kind": "wall", "pillarEvery": 4, "colour": "#7a6a52"}},
+  {"type": "core/steps", "at": [-20, -22, 0], "params": {"width": 4, "rise": 0.3, "run": 0.9, "count": 4, "colour": "#c9a97a"}},
+  {"type": "core/flag", "at": [20, -12, 0], "params": {"height": 7, "count": 1}},
+  {"type": "tree", "at": [-35, 0, 0], "params": {"kind": "conifer", "height": 9}},
+  {"type": "tree", "at": [-42, 8, 0], "params": {"kind": "conifer", "height": 7}},
+  {"type": "tree", "at": [38, 6, 0], "params": {"kind": "conifer", "height": 8}},
+  {"type": "car", "at": [5, -26, 0], "params": {"count": 2, "spacing": 3.4, "colour": "#d9dcde"}}
+ ],
+ "site": {"ground": "laterite", "forecourt": "road", "trees": 0, "extent": [130, 110]},
+ "review": {"rounds": 0, "match": "rough", "gaps": "No photo and no reliable footprint: a typical roadside lookout composition, rock slope and wall layout are assumed."}
+}

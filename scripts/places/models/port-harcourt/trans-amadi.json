@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "trans-amadi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "Trans-Amadi industrial estate: warehouse sheds, tank farm, gated yard with trucks (no single documented building, nearest OSM way is a 14 x 9 m house so it was not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     112,
+     84
+    ],
+    "height": 0.1,
+    "colour": "#55595c"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    -28,
+    18,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 22,
+    "height": 9,
+    "roof": "gable",
+    "doors": 3,
+    "colour": "#b3bcc2",
+    "roof_colour": "#7a8086",
+    "trim_colour": "#2f5d9e"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    22,
+    22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 18,
+    "height": 8,
+    "roof": "shed",
+    "doors": 2,
+    "colour": "#e0e0dc",
+    "roof_colour": "#7a8086",
+    "trim_colour": "#2f5d9e"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    44,
+    -2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 7,
+    "roof": "gable",
+    "doors": 2,
+    "colour": "#b3bcc2",
+    "roof_colour": "#7a8086",
+    "trim_colour": "#2f5d9e"
+   }
+  },
+  {
+   "type": "tank-farm",
+   "at": [
+    -32,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "rows": 1,
+    "radius": 6.5,
+    "height": 11,
+    "bund": true,
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "banded-stack",
+   "at": [
+    -8,
+    30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "gate-lodge",
+   "at": [
+    10,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 4,
+    "wall_colour": "#e0e0dc",
+    "roof_colour": "#7a8086"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.4,
+    "colour": "#2f5d9e",
+    "board_colour": "#e0e0dc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#c9ccc9",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8,
+    "width": 2.5,
+    "height": 3,
+    "colour": "#2f5d9e"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8,
+    "width": 2.5,
+    "height": 3,
+    "colour": "#e0e0dc"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -16,
+    2,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "width": 2.4,
+    "height": 2.8,
+    "colour": "#b34a3c"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    52,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "extent": [
+   116,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic industrial yard typed from the brief"
+ }
+}

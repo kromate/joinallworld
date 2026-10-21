@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "anambra-state-house-of-assembly",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: broad two-storey white block, columned portico over the chamber, flagpoles; no OSM building and no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#b9b3a2",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "overhang": 1,
+    "pitch": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wingL",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    -24,
+    12
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b9b3a2",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "pitch": 15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wingR",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    24,
+    12
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b9b3a2",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "overhang": 0.8,
+    "pitch": 15
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f757a",
+    "material": "metal-sheet",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 5,
+    "height": 10,
+    "columns": 6,
+    "pediment": true,
+    "steps": 6,
+    "colour": "#fbf9f3",
+    "roofColour": "#b9b3a2"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.8,
+    "pillarEvery": 5,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no OSM building; U-plan with portico, colours and sizes are typed from the brief."
+ }
+}

@@ -1,0 +1,506 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "city-gate",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_City_Gate_of_Abuja.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wang-gp",
+   "view": "front",
+   "file": "/tmp/places-evidence/abuja/gate1.jpg",
+   "used": "two thin white pylons above a deep lintel, concave flared legs, 13 m opening, blank green band and crest, flag on crossed cables, rows of green-white flags"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_city_gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fawaz.tairou",
+   "view": "street",
+   "used": "leg depth, inner pillars in front of the flared plates, hillside setting"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/563951535",
+   "used": "width about 34 m, depth about 9 m, height tag 30 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 43,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f4f4f0",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11.5,
+       4.8
+      ],
+      "cx": -12.25
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       8.7,
+       4.4
+      ],
+      "cx": -10.85
+     },
+     {
+      "z": 5,
+      "rect": [
+       6.5,
+       4.0
+      ],
+      "cx": -9.75
+     },
+     {
+      "z": 8,
+      "rect": [
+       4.699999999999999,
+       3.6
+      ],
+      "cx": -8.85
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       3.0999999999999996,
+       3.0
+      ],
+      "cx": -8.05
+     },
+     {
+      "z": 15.8,
+      "rect": [
+       1.6000000000000005,
+       2.6
+      ],
+      "cx": -8.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f4f4f0",
+    "curve": true,
+    "steps": 3,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11.5,
+       4.8
+      ],
+      "cx": 12.25
+     },
+     {
+      "z": 2.5,
+      "rect": [
+       8.7,
+       4.4
+      ],
+      "cx": 10.85
+     },
+     {
+      "z": 5,
+      "rect": [
+       6.5,
+       4.0
+      ],
+      "cx": 9.75
+     },
+     {
+      "z": 8,
+      "rect": [
+       4.699999999999999,
+       3.6
+      ],
+      "cx": 8.85
+     },
+     {
+      "z": 12.5,
+      "rect": [
+       3.0999999999999996,
+       3.0
+      ],
+      "cx": 8.05
+     },
+     {
+      "z": 15.8,
+      "rect": [
+       1.6000000000000005,
+       2.6
+      ],
+      "cx": 8.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f7f7f3",
+    "sections": [
+     {
+      "z": 15.8,
+      "rect": [
+       1.6,
+       2.6
+      ],
+      "cx": -8.1
+     },
+     {
+      "z": 28,
+      "rect": [
+       1.6,
+       2.4
+      ],
+      "cx": -8.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f7f7f3",
+    "sections": [
+     {
+      "z": 15.8,
+      "rect": [
+       1.6,
+       2.6
+      ],
+      "cx": 8.1
+     },
+     {
+      "z": 28,
+      "rect": [
+       1.6,
+       2.4
+      ],
+      "cx": 8.1
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     17.8,
+     2.6
+    ],
+    "z0": 12.5,
+    "height": 3.3,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.0,
+    -0.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     5.0
+    ],
+    "height": 12.5,
+    "colour": "#ecece7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.0,
+    -0.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     5.0
+    ],
+    "height": 12.5,
+    "colour": "#ecece7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.35,
+    13.1
+   ],
+   "params": {
+    "rect": [
+     8.4,
+     0.12
+    ],
+    "height": 0.55,
+    "colour": "#4b7a3e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.35,
+    14.0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     1.7,
+     0.14
+    ],
+    "height": 1.7,
+    "colour": "#b49a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.35,
+    -0.2,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.4,
+    -0.2,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.15,
+    -0.2,
+    21
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.1
+    ],
+    "height": 1.6,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -0.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      -7.3,
+      0,
+      26.5
+     ],
+     [
+      7.3,
+      0,
+      17.4
+     ]
+    ],
+    "colour": "#b8bcc0",
+    "n": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -0.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.06,
+    "points": [
+     [
+      -7.3,
+      0,
+      20.4
+     ],
+     [
+      7.3,
+      0,
+      26.5
+     ]
+    ],
+    "colour": "#b8bcc0",
+    "n": 4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -62,
+    14,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 7,
+    "count": 9,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    26,
+    14,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 7,
+    "count": 9,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    2
+   ],
+   "params": {
+    "rect": [
+     36,
+     3
+    ],
+    "height": 14,
+    "colour": "#f4f4f0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -33,
+     18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "close",
+  "gaps": "Crest is a plain block, green band has no lettering (by rule), flag rows are fewer and closer than the long rows on the slopes, no hillside."
+ }
+}

@@ -1,0 +1,238 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/669758839",
+   "used": "name match but it is the whole 392 x 260 m hospital compound; used only as context (not as a building footprint). No photo found, so the main block is composed from the brief: three-storey H-plan rendered block, hip roof, ambulance bay, gate"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeadd",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.6,
+    "bands": "#3c5a82"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f6f6c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d4",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.6,
+    "bands": "#3c5a82"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f6f6c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    27,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d4",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "plinth": 0.6,
+    "bands": "#3c5a82"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f6f6c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "height": 4.0,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -6.55,
+    7.5
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -8,
+    6,
+    11.4
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2,
+    "legHeight": 3,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.4,
+    "pillar": 1.0,
+    "colour": "#3c5a82"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#c8c4b8"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "navy-reference-hospital",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; H-plan block is a plausible main building inside the 390 m compound, whose real layout is not modelled"
+ }
+}

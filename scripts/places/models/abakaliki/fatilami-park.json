@@ -1,0 +1,209 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/12665945",
+   "used": "OSM park outline (name match, about 217 x 91 m, 11,500 m2), used as the grass ground; no photo of the park was found, so pavilions, bandstand, fountain, entrance gate and paths follow the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": -0.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6d9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -5,
+    0,
+    0.2
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -5,
+    -20,
+    0.2
+   ],
+   "params": {
+    "radius": 3.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -35,
+    -10,
+    0.2
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 6,
+    "colour": "#e5ddc8",
+    "cap_colour": "#8a4a36"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    30,
+    -5,
+    0.2
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#e5ddc8",
+    "cap_colour": "#8a4a36"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -20,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "arch": true,
+    "colour": "#e5ddc8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -33
+     ],
+     [
+      -5,
+      -20
+     ],
+     [
+      -5,
+      -4
+     ],
+     [
+      -35,
+      -10
+     ]
+    ],
+    "width": 2.6
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.25
+   ],
+   "params": {
+    "points": [
+     [
+      -5,
+      -12
+     ],
+     [
+      30,
+      -5
+     ],
+     [
+      50,
+      20
+     ]
+    ],
+    "width": 2.6
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    10,
+    25,
+    0.2
+   ],
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "count": 14,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -30,
+    0.2
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "fatilami-park",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; real park outline, features from the brief; outline auto-scaled to 118 m"
+ }
+}

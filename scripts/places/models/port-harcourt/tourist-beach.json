@@ -1,0 +1,293 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "tourist-beach",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/760840964",
+   "used": "outline of the nearest building (30 x 14 m, bearing 86 deg) as the main restaurant shed; 48 m from the venue point, so only its size is trusted"
+  },
+  {
+   "kind": "text",
+   "used": "brief and Wikipedia: man-made white-sand beach on Kolabi Creek (1988) with restaurant sheds and a standby jetty; the P18 photos show Isaac Boro Park, a different place, and were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "sand-strip",
+   "footprint": {
+    "rect": [
+     116,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8ccb0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2d7ba"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "restaurant-shed",
+   "footprint": {
+    "polygon": [
+     [
+      -15.3,
+      -7
+     ],
+     [
+      -14.3,
+      -8
+     ],
+     [
+      15.3,
+      -6.2
+     ],
+     [
+      14.3,
+      8.1
+     ],
+     [
+      -15.3,
+      6.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a45",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a6a5a",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-west",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -48,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#9a7a50",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a6a5a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-east",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    46,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a6a45",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a7a6a",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    26,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 1.8,
+    "posts": 4,
+    "colour": "#8a6a45",
+    "cap_colour": "#7a6a5a"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -40,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 7,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#d94f4f",
+     "#f2f2f0",
+     "#e8c038"
+    ]
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 7,
+    "umbrellas": true,
+    "loungers": true,
+    "colours": [
+     "#3d8fc0",
+     "#f2f2f0",
+     "#d94f4f"
+    ]
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    -8,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "width": 3,
+    "height": 0.9,
+    "rails": true,
+    "piles": true,
+    "colour": "#8a6a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 8,
+    "line": 0.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 8,
+    "line": 0.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "forecourtDepth": 30,
+  "trees": [],
+  "extent": [
+   150,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the beach itself; sheds, parasols and jetty placed from the brief"
+ }
+}

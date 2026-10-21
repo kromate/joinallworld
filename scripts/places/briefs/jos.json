@@ -1,0 +1,1343 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "jos",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "jos",
+    "climate": "highland",
+    "vernacular": "Cool Plateau city at about 1,200 m on Guinea savanna, strewn with granite boulder outcrops. Ordinary buildings are 1-3 storey rectangular cement-block houses and shops in painted render (cream, white, pale blue, ochre) with long-span rust-red, green or grey corrugated metal roofing; colonial tin-mining-era bungalows and mission stone churches sit among them. Red-brown laterite earth, eucalyptus and broadleaf trees.",
+    "wallColours": [
+      "#efe6d2",
+      "#f7f4ee",
+      "#d9c9a3",
+      "#9fb7c6",
+      "#c58b5c",
+      "#a7a193"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6b54",
+      "#6b6f73",
+      "#7a5a3c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "acacia"
+    ],
+    "ornament": "Mostly plain rendered blocks with louvred or burglar-barred windows; hand-painted shop signs and murals; granite outcrops and dry-stone retaining walls used as garden features; replicas of Hausa wall gates and Zaria-style mosque at the museum.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Jos",
+        "what": "Koppen Aw at 1,217 m elevation, Guinea savannah, cement/asbestos-cement/crushed-stone industry, main landmarks"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Jos_Museum",
+        "what": "museum complex founded 1952; Museum of Traditional Nigerian Architecture with replicas"
+      }
+    ]
+  },
+  "places": {
+    "angwan-rukuba-park": {
+      "venueId": "angwan-rukuba-park",
+      "city": "jos",
+      "name": "Angwan Rukuba Park",
+      "archetype": "market-open",
+      "subject": "an open trading park in Angwan Rukuba: rows of timber stalls under corrugated shed roofs with umbrellas on bare laterite",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a68a64",
+          "#d9c9a3",
+          "#6b6f73"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name suggests a market/motor park; function is a guess. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "angwan-rukuba-polling-station": {
+      "venueId": "angwan-rukuba-polling-station",
+      "city": "jos",
+      "name": "Angwan Rukuba Market polling station",
+      "archetype": "civic-small",
+      "subject": "a single-storey rendered classroom-style block beside Angwan Rukuba market used as a polling station",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6d2",
+          "#9fb7c6",
+          "#f7f4ee"
+        ],
+        "roofColour": "#4f6b54",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "baptist-college-of-theology": {
+      "venueId": "baptist-college-of-theology",
+      "city": "jos",
+      "name": "Baptist College of Theology",
+      "archetype": "campus-block",
+      "subject": "low college blocks with a small chapel on a laterite campus",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f2eadb",
+          "#a2553a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only; a bell-tower is a generic guess for a mission college and is optional. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "bingham-university-teaching-hospitals": {
+      "venueId": "bingham-university-teaching-hospitals",
+      "city": "jos",
+      "name": "Bingham University Teaching Hospitals",
+      "archetype": "hospital",
+      "subject": "multi-storey rendered hospital block with an emergency ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 75,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#4a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "christ-methodist-cathedral": {
+      "venueId": "christ-methodist-cathedral",
+      "city": "jos",
+      "name": "Christ Methodist cathedral",
+      "archetype": "church-modern",
+      "subject": "a modern concrete Methodist cathedral with a tall nave roof and a front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#6b4f3a",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Called a cathedral in the game; real form unverified. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "de-bills-food": {
+      "venueId": "de-bills-food",
+      "city": "jos",
+      "name": "De Bill's Food",
+      "archetype": "restaurant",
+      "subject": "a small street-front eatery: one-storey rendered block with a covered veranda and blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3d3b0",
+          "#a2553a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b54",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure food business; nothing findable. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "duke-and-duchess-executive-salon": {
+      "venueId": "duke-and-duchess-executive-salon",
+      "city": "jos",
+      "name": "Duke and Duchess Executive Salon",
+      "archetype": "shophouse",
+      "subject": "a one-storey hair salon shopfront in a rendered row with a painted fascia",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#7a3b5c",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "first-bank-jos": {
+      "venueId": "first-bank-jos",
+      "city": "jos",
+      "name": "First Bank",
+      "archetype": "office-low",
+      "subject": "a mid-rise bank branch with a rendered face, ground-floor glazing and a drive-in forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#1f3a6b",
+          "#ffffff"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Brand colours are not used; blank brand-neutral board. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "gotul-peace-park": {
+      "venueId": "gotul-peace-park",
+      "city": "jos",
+      "name": "Dr. T. K. Gotul Peace Park",
+      "archetype": "park-landscape",
+      "subject": "a small public park with lawns, shade trees, a paved walk and a low pavilion on a plateau slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#efe6d2",
+          "#b0aaa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named for a local figure; layout unknown. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "grand-cereals-and-oil-mills": {
+      "venueId": "grand-cereals-and-oil-mills",
+      "city": "jos",
+      "name": "Grand Cereals and Oil Mills Limited",
+      "archetype": "industrial",
+      "subject": "a grain and oil mill: tall grey silo bank and mill house with a chimney, and storage tanks behind a wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b0aaa0",
+          "#4f6b54",
+          "#e8e4da"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "storage-tanks",
+          "count": 4
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Company is a real Plateau grain/oil processor; plant layout is a typical-mill guess. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "inec-headquarters-jos": {
+      "venueId": "inec-headquarters-jos",
+      "city": "jos",
+      "name": "INEC headquarters",
+      "archetype": "civic-small",
+      "subject": "a two-storey state electoral office: rendered block with flagpole and gated forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "jos-central-mosque": {
+      "venueId": "jos-central-mosque",
+      "city": "jos",
+      "name": "Muslim Mosque",
+      "archetype": "mosque-domed",
+      "subject": "a large concrete city-centre mosque with a central dome and two minarets, white render with green trim",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f7f4ee",
+          "#2f6b4f",
+          "#d9c9a3"
+        ],
+        "roofColour": "#e9e6df",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "tall paired minarets"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Jos Central Mosque is a landmark on the main Ahmadu Bello Way axis but no findable source gives its look; dome and two minarets are the typical pattern, not confirmed. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "jos-main-market": {
+      "venueId": "jos-main-market",
+      "city": "jos",
+      "name": "Jos Main Market",
+      "archetype": "market-hall",
+      "subject": "the main covered trading hall of Jos: a long two-storey concrete block with lock-up shops and shed roofs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "sawtooth"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a3",
+          "#8a3b2e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 20
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "what": "Jos Main Market (the terminus) listed as a Jos North market"
+        }
+      ],
+      "notes": "Wikipedia only names it among Jos North landmarks (with the Terminus and Park markets). Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "jos-museum": {
+      "venueId": "jos-museum",
+      "city": "jos",
+      "name": "Jos Museum",
+      "archetype": "museum-theatre",
+      "subject": "the 1952 Jos Museum complex: a low colonial museum block beside the Museum of Traditional Nigerian Architecture with its full-size replica Kano city wall gate and Zaria-style mosque",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#f1ead8",
+          "#a2553a",
+          "#7a5a3c"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "replica Kano city wall section"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1952",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos_Museum",
+          "what": "founded 1952 by Bernard Fagg on a purchased complex site; pottery museum; zoo and botanic garden alongside; planned 1944, funded 1949"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "what": "Museum of Traditional Nigerian Architecture with life-size replicas incl. Kano city walls and a Zaria mosque; museum reported in disrepair"
+        }
+      ],
+      "notes": "Recognisable by the replica Hausa mud-render wall/gate and mosque set in a garden next to a plain colonial-era museum block. Block dimensions and colours are estimates; the replicas are described only in text, so mud-render tone is assumed."
+    },
+    "juth": {
+      "venueId": "juth",
+      "city": "jos",
+      "name": "Jos University Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "JUTH main hospital block at the Lamingo permanent site: a long multi-storey rendered ward and clinic complex with an emergency entrance and ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#4a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "A&E drive-under canopy"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977 (permanent site 2007)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos_University_Teaching_Hospital",
+          "what": "established 1975, commissioned 1977; permanent site at Lamingo commissioned 2007; 34-bed A&E; NLNG twin theatre suite"
+        }
+      ],
+      "notes": "History and facilities are sourced; building shape, storeys and colours are estimates for a large Nigerian federal teaching hospital."
+    },
+    "kasuwan-mata": {
+      "venueId": "kasuwan-mata",
+      "city": "jos",
+      "name": "Kasuwan Mata",
+      "archetype": "market-open",
+      "subject": "a dense women's trading market: small stalls and lock-up rows under mixed corrugated roofs and umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#d9c9a3",
+          "#6b6f73"
+        ],
+        "roofColour": "#7a5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name means \"women's market\" in Hausa; look is a guess. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "kyan-rikkos-village-head-palace": {
+      "venueId": "kyan-rikkos-village-head-palace",
+      "city": "jos",
+      "name": "Village Head palace Kyan Rikkos",
+      "archetype": "heritage-fort",
+      "subject": "a village head's palace compound: single-storey rendered halls round an open courtyard behind a gated wall",
+      "form": {
+        "footprint": "U",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c9a3",
+          "#a2553a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Traditional-ruler compound; actual layout unknown. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "rwang-pam-township-stadium": {
+      "venueId": "rwang-pam-township-stadium",
+      "city": "jos",
+      "name": "Rwang Pam Township Stadium",
+      "archetype": "stadium",
+      "subject": "the Rwang Pam football ground: an open oval bowl with a roofed main stand along one side and perimeter wall with floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d5cb",
+          "#2f6b4f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rwang_Pam_Township_Stadium",
+          "what": "15,000-seat multi-use stadium, home of Plateau United, Mighty Jets and Pepsi FC; formerly used for track events"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "what": "the separate 40,000-seat Jos stadium is on Farin-Gada road - not this venue"
+        }
+      ],
+      "notes": "Capacity (15,000) and role are sourced; stands, roof and colours are estimates. Much smaller than the Jos International Stadium on Farin-Gada road."
+    },
+    "sculpture-garden": {
+      "venueId": "sculpture-garden",
+      "city": "jos",
+      "name": "Sculpture Garden",
+      "archetype": "park-landscape",
+      "subject": "a landscaped sculpture garden with paved paths, plinthed sculptures and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b0aaa0",
+          "#c58b5c",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 4
+        },
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Located close to the University of Jos; exact content unknown. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "st-lukes-anglican-church": {
+      "venueId": "st-lukes-anglican-church",
+      "city": "jos",
+      "name": "St Luke's Anglican church",
+      "archetype": "church-gothic",
+      "subject": "a stone-and-render Anglican church with a squat west bell tower and pointed windows in a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#b9ada0",
+          "#efe6d2",
+          "#6b4f3a"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "what": "St Luke's Cathedral mentioned among Jos churches"
+        }
+      ],
+      "notes": "Jos Wikipedia mentions St Luke's Cathedral in the city; this venue may be that church but the look (stone gothic-revival) is a typical-mission guess. Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "terminus-motor-park": {
+      "venueId": "terminus-motor-park",
+      "city": "jos",
+      "name": "Terminus Motor Park",
+      "archetype": "transport-station",
+      "subject": "an open motor park at the Terminus junction: bus bays, shed shelters and kiosks on tarmac beside the main market",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b0aaa0",
+          "#d9c9a3",
+          "#e8e4da"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Beside Jos Main Market (the Terminus). Not described in any findable source; typed brief derived from the Jos city style and the type of place, so all dimensions and colours are estimates."
+    },
+    "university-of-jos": {
+      "venueId": "university-of-jos",
+      "city": "jos",
+      "name": "University of Jos",
+      "archetype": "campus-block",
+      "subject": "main-campus lecture and administration blocks of the University of Jos on a hilly campus: 2-3 storey rendered buildings with deep verandas and corrugated roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b54",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1975 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Jos",
+          "what": "founded 1975; ~2,300 ha multi-site hilly campus; colours white, green, blue, brown, gold"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "what": "founded 1975, in Jos North"
+        }
+      ],
+      "notes": "Campus context and university colours are sourced (green/white used here); individual building shapes are typical-1970s-Nigerian-university estimates."
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/318507720",
+   "used": "52,685 m2 bus-station area (244 x 231 m): only a 90 x 60 m working corner is modelled, the real extent is beyond the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open sandy lot, passenger sheds, kiosks, vans"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -22,
+    12,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.25,
+    "colours": [
+     "#f1f1ee",
+     "#e0b030",
+     "#c8362f",
+     "#3a6aa0"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "van",
+    "density": 0.6
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -40,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3a6aa0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -36,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c8362f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#e0b030"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    36,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    28,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2,
+    "colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 5,
+    "spread": 7,
+    "line": 96
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; sheds, rows and kiosk positions typed, only the corner of the real 244 m lot is shown"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "sokoto-main-garage"
+}

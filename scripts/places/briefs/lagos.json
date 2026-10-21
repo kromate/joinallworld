@@ -1,0 +1,1561 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lagos",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lagos",
+    "climate": "tropical-maritime",
+    "vernacular": "Dense lagoon-side metropolis: concrete-block compounds and walk-up flats of 1-4 storeys, plastered and painted in faded pastels, under rusty or coloured corrugated-iron roofs; Afro-Brazilian stucco buildings with arched windows on the Island; glass-and-concrete towers on Victoria Island; high perimeter walls with razor wire, generator sheds and water tanks.",
+    "wallColours": [
+      "#ece3cf",
+      "#e8d38a",
+      "#8db6cf",
+      "#9bbf9a",
+      "#b4654a",
+      "#a7a39c",
+      "#f4f1ea"
+    ],
+    "roofColours": [
+      "#8d5a3b",
+      "#9aa3a8",
+      "#9c3b2f",
+      "#3f7a52"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Afro-Brazilian stucco: arched windows, decorative parapets, balustraded verandahs; Yoruba carved door and veranda posts on older houses; concrete breeze-block screens and sun-shading fins on modern blocks; hand-painted shop signs and murals; generator and water-tank clutter.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Lagos",
+        "what": "Afro-Brazilian stucco/arched houses, colonial verandahs, imported cement and corrugated iron, postmodern/concrete sun-shading, 1960s+ skyscrapers"
+      },
+      {
+        "url": "https://guardian.ng/nigerian/what-kind-of-house-do-most-nigerians-live-in/",
+        "what": "search-result summary: most Lagos houses are concrete block; Lagos household survey 2005-06 records corrugated iron as most common roofing (~78%)"
+      }
+    ]
+  },
+  "places": {
+    "airport": {
+      "venueId": "airport",
+      "city": "lagos",
+      "name": "Airport",
+      "archetype": "airport-terminal",
+      "subject": "Murtala Muhammed International Airport, the 1979 Terminal 1 block with its flat-roofed hall, forecourt canopy and control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c8",
+          "#6f8a9a",
+          "#9a9488"
+        ],
+        "roofColour": "#b0b4b6",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Murtala_Muhammed_International_Airport",
+          "what": "T1 opened 1979 modelled on Schiphol; T2 commissioned 2022 (14M pax, 66 check-in); MMA2 domestic 2007; control tower; two runways"
+        }
+      ],
+      "notes": "The venue is named only \"Airport\" with a legacy map position; assumed Lagos Murtala Muhammed. Sourced: T1 opened 1979 modelled on Schiphol, T2 (2022, 14M pax) and MMA2 domestic (2007) exist. Facade look is an estimate (1970s concrete + ribbon glazing); Lagos feel comes from the rusty-grey weathering. Recognisable by the long low terminal and the tower rising behind it."
+    },
+    "amala-shitta": {
+      "venueId": "amala-shitta",
+      "city": "lagos",
+      "name": "Amala Shitta",
+      "archetype": "restaurant",
+      "subject": "Amala Shitta: a lively open-fronted amala buka with plastic chairs, cooking pots and a hand-painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8d38a",
+          "#9c3b2f",
+          "#3f7a52"
+        ],
+        "roofColour": "#8d5a3b",
+        "windows": "none",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Shitta is a Surulere neighbourhood known for amala joints; no source describing a specific building was found. Typed buka: single storey, corrugated roof, painted sign."
+    },
+    "beach": {
+      "venueId": "beach",
+      "city": "lagos",
+      "name": "Beach",
+      "archetype": "park-landscape",
+      "subject": "A Lagos Atlantic beach strip: sand, palms, thatched huts, loungers and beach bars",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#e8d38a",
+          "#8db6cf"
+        ],
+        "roofColour": "#b79b5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "thatched huts"
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named only \"Beach\"; Lagos beaches (Elegushi, Landmark, Lekki, Bar Beach) are not distinguishable from the venue data. Typed beach."
+    },
+    "canopy-walk": {
+      "venueId": "canopy-walk",
+      "city": "lagos",
+      "name": "Canopy Walk",
+      "archetype": "park-landscape",
+      "subject": "Lekki Conservation Centre: a long elevated canopy walkway through swamp forest, plus a boardwalk, a cone-shaped auditorium and a coconut-palm avenue to the car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 22,
+        "roof": "none",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8a6a43",
+          "#6b7a52",
+          "#c9c2b0"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 2,
+          "note": "elevated canopy walkway (~22 m up) and mangrove boardwalk"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "cone-shaped auditorium and bird hide"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "access tower"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lekki_Conservation_Centre",
+          "what": "canopy walkway billed longest in Africa, 21 m treehouse platform, mangrove boardwalk, cone-shaped auditorium, coconut-tree boulevard to parking"
+        }
+      ],
+      "notes": "Billed as the longest canopy walkway in Africa; length/height not given by the source (walkway is commonly cited at roughly 400 m, unverified). Also a 21 m tree-house platform, 1.8 km nature trail, secondary and swamp forest, mona monkeys. The venue has a legacy map position only; identified by name."
+    },
+    "cchub": {
+      "venueId": "cchub",
+      "city": "lagos",
+      "name": "CcHub",
+      "archetype": "office-low",
+      "subject": "CcHub, Yaba innovation hub: a mid-rise open-plan building with glazed frontage and signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 24,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#e8a33a",
+          "#5b6670"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Co-Creation_Hub",
+          "what": "hub at 294 Herbert Macaulay, Yaba, opened 2011; no physical description"
+        }
+      ],
+      "notes": "Address (294 Herbert Macaulay, Yaba) and 2011 opening are sourced but no description of the building exists in the sources found; accent colour is a placeholder. No logos."
+    },
+    "church": {
+      "venueId": "church",
+      "city": "lagos",
+      "name": "Church",
+      "archetype": "church-modern",
+      "subject": "A Lagos Pentecostal-style church: a wide auditorium with a tall front gable, glazed entrance and a fenced forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#3b6f9e",
+          "#b0aaa0"
+        ],
+        "roofColour": "#3f7a52",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named only \"Church\"; no real church can be identified from the venue data. Typed from the city style and the church scene variant."
+    },
+    "hospital": {
+      "venueId": "hospital",
+      "city": "lagos",
+      "name": "General Hospital",
+      "archetype": "hospital",
+      "subject": "General Hospital: a three-storey ward block with verandah bands and a covered ambulance entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cf",
+          "#3f7a52",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9c3b2f",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic \"General Hospital\" (Lagos has several, e.g. Lagos Island). No building identified; typed from city style."
+    },
+    "i-fitness": {
+      "venueId": "i-fitness",
+      "city": "lagos",
+      "name": "i-Fitness",
+      "archetype": "shophouse",
+      "subject": "i-Fitness: a two-storey gym with a glazed street front and big signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#9fb8c4",
+          "#f4f1ea",
+          "#3a4a58"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored venue; no real building identified. Typed."
+    },
+    "library": {
+      "venueId": "library",
+      "city": "lagos",
+      "name": "The Library",
+      "archetype": "restaurant",
+      "subject": "The Library: a hidden speakeasy bar behind a plain bookish frontage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#5b4a3a",
+          "#c9a77c",
+          "#2a2a2a"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "small dim sign"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored speakeasy; deliberately unremarkable outside with a dark door and no readable name. Typed."
+    },
+    "market": {
+      "venueId": "market",
+      "city": "lagos",
+      "name": "Market",
+      "archetype": "market-open",
+      "subject": "A dense Lagos open market: rows of stalls under umbrellas and corrugated sheds, with multi-storey shop fronts around",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8d38a",
+          "#8db6cf",
+          "#b4654a"
+        ],
+        "roofColour": "#8d5a3b",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "umbrellas",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/nigerian/what-kind-of-house-do-most-nigerians-live-in/",
+          "what": "search-result summary: most Lagos houses are concrete block; Lagos household survey 2005-06 records corrugated iron as most common roofing (~78%)"
+        }
+      ],
+      "notes": "Named only \"Market\"; Lagos has Balogun, Idumota, Oshodi, Mile 12 etc. none distinguishable. Typed from city style."
+    },
+    "mosque": {
+      "venueId": "mosque",
+      "city": "lagos",
+      "name": "Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Lagos Central Mosque, Nnamdi Azikiwe Street: a gold-clad central dome, four minarets and an arcaded entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "dome",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f1ea",
+          "#d4a82f",
+          "#bfae8a"
+        ],
+        "roofColour": "#d4a62a",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "~15 m outer diameter, gold-plated aluminium cladding"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "two small above the entrance, two taller at the wings"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "riwaq with decorated columns"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lagos_Central_Mosque",
+          "what": "one ~15 m gold-plated aluminium dome, four minarets (two small over entrance, two taller), riwaq arcade with decorated columns, sahn, 750 m2 prayer hall, 1988, ~1 acre"
+        }
+      ],
+      "notes": "The venue is just \"Mosque\" (legacy map position). The Central Mosque is the best-known Lagos mosque and is used as the identity; details (dome, four minarets, riwaq, sahn, 750 m2 prayer hall, ~1 acre, 50 m street front, 1988) are sourced, colours are estimates. Treat as low confidence if the authored venue was meant to be a generic neighbourhood mosque."
+    },
+    "office": {
+      "venueId": "office",
+      "city": "lagos",
+      "name": "Office",
+      "archetype": "office-tower",
+      "subject": "A Victoria Island style glass-and-concrete office tower with a podium and rooftop plant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 30,
+        "storeys": 14,
+        "height_m": 56,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#8aa6b4",
+          "#b0aaa0",
+          "#3a4a58"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Lagos",
+          "what": "Afro-Brazilian stucco/arched houses, colonial verandahs, imported cement and corrugated iron, postmodern/concrete sun-shading, 1960s+ skyscrapers"
+        }
+      ],
+      "notes": "Named only \"Office\"; typed after Lagos business-district towers."
+    },
+    "palms": {
+      "venueId": "palms",
+      "city": "lagos",
+      "name": "The Palms",
+      "archetype": "mall",
+      "subject": "The Palms: a three-level Lekki shopping mall with a broad entrance court, fountain pool and palm-lined parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#4a7ab0",
+          "#c9a77c"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real mall (The Palms Shopping Mall, Lekki, opened around 2005); no source description was retrievable, so form is typed. Brand marks omitted."
+    },
+    "park": {
+      "venueId": "park",
+      "city": "lagos",
+      "name": "Freedom Park",
+      "archetype": "park-landscape",
+      "subject": "Freedom Park, former Broad Street prison: surviving brick cell blocks, wall and watchtower around lawns, a pond with a bridge and statues, and a music stage with a cafe",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 140,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8573f",
+          "#c9c2b0",
+          "#8a8f94"
+        ],
+        "roofColour": "#8d5a3b",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "surviving prison walls and watchtower"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 6,
+          "note": "figures incl. Eyo and national leaders"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "music stage with cafe"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1885 prison, park 2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Freedom_Park,_Lagos",
+          "what": "1885 prison rebuilt with imported English brick, surviving cells/walls/watchtower, pond with statue and bridge, music stage and cafe, fountain garden, statues"
+        }
+      ],
+      "notes": "The 1885 prison used imported English brick; demolished 1979 and reborn as a memorial park. Recognisable by the old brick cells and watchtower inside a modern art park (pond, bridge, statues, WAF skate park from 2024)."
+    },
+    "police": {
+      "venueId": "police",
+      "city": "lagos",
+      "name": "Police Station",
+      "archetype": "civic-small",
+      "subject": "A Lagos police station: a single-storey cream building with a veranda, flagpole and fenced yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cf",
+          "#2f4a6b",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9c3b2f",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored venue; no real station identified. Typed."
+    },
+    "polling-unit": {
+      "venueId": "polling-unit",
+      "city": "lagos",
+      "name": "Polling Unit",
+      "archetype": "civic-small",
+      "subject": "A neighbourhood polling unit: a covered tarpaulin and tin-roof shelter with a flag and ballot tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece3cf",
+          "#3f7a52",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored venue; polling units are often under temporary canopies or in school classrooms. Typed."
+    },
+    "quilox": {
+      "venueId": "quilox",
+      "city": "lagos",
+      "name": "Quilox",
+      "archetype": "restaurant",
+      "subject": "Quilox: a Victoria Island nightclub with a bold lit facade, canopy and queue barriers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#2a2a35",
+          "#8a4fb0",
+          "#d4a82f"
+        ],
+        "roofColour": "#3a3a42",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real Victoria Island club; no description retrievable. Typed with a dark facade and neon trim; the actual name must not appear on signage."
+    },
+    "radio": {
+      "venueId": "radio",
+      "city": "lagos",
+      "name": "Naija Radio",
+      "archetype": "civic-small",
+      "subject": "Naija Radio: a small studio building with a lattice mast and satellite dish",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#c0392b",
+          "#9aa3a8"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "lattice transmission mast ~40 m"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored (fictional) station; typed."
+    },
+    "refinery": {
+      "venueId": "refinery",
+      "city": "lagos",
+      "name": "Refinery",
+      "archetype": "industrial",
+      "subject": "A coastal oil refinery: process towers, a flare stack, tank farm and chimney behind a security fence",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 300,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b5b9bc",
+          "#c0392b",
+          "#e8e8e4"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flare-stack",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 8
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named only \"Refinery\"; Lagos State hosts a very large refinery complex at Lekki but the venue position is a legacy map point. Typed refinery silhouette."
+    },
+    "rooftop": {
+      "venueId": "rooftop",
+      "city": "lagos",
+      "name": "Ivory Rooftop",
+      "archetype": "shophouse",
+      "subject": "Ivory Rooftop: a four-storey building topped with a lounge terrace, awning and string lights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#b9a77a",
+          "#5b6670"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored venue; typed."
+    },
+    "salon": {
+      "venueId": "salon",
+      "city": "lagos",
+      "name": "Mama Bisi’s Salon",
+      "archetype": "shophouse",
+      "subject": "Mama Bisi's Salon: a small painted shop-front with a hand-lettered board and hair-style posters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#8db6cf",
+          "#e8d38a",
+          "#9c3b2f"
+        ],
+        "roofColour": "#8d5a3b",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Authored fictional salon; typed corrugated-roof Lagos shop-front."
+    },
+    "shrine": {
+      "venueId": "shrine",
+      "city": "lagos",
+      "name": "Afrika Shrine",
+      "archetype": "museum-theatre",
+      "subject": "Afrika Shrine, Ikeja: a big open-air music venue under metal roofs with a stage, painted murals and a walled forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#6b5a4a",
+          "#c0392b",
+          "#e8d38a"
+        ],
+        "roofColour": "#8d5a3b",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "painted-mural",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/New_Afrika_Shrine",
+          "what": "open-air entertainment centre in Ikeja hosting Felabration; no physical description"
+        }
+      ],
+      "notes": "Real venue (New Afrika Shrine, Ikeja, open-air entertainment centre hosting Felabration). No physical description found; murals are expected (Fela imagery) but must not be legible."
+    },
+    "state-house": {
+      "venueId": "state-house",
+      "city": "lagos",
+      "name": "Lagos State House",
+      "archetype": "civic-palace",
+      "subject": "Lagos State House: a stately modern government block with a columned portico, flags and a gated drive",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#a7a39c",
+          "#3f7a52"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named \"Lagos State House\" without a clear real match (governor’s office on the Marina vs Alausa secretariat); typed palace."
+    },
+    "unilag": {
+      "venueId": "unilag",
+      "city": "lagos",
+      "name": "University of Lagos",
+      "archetype": "campus-block",
+      "subject": "University of Lagos, Akoka: the Senate House block and library around a quadrangle, with a lagoon-front fountain and gold-and-maroon accents",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c2b0",
+          "#7a1f2b",
+          "#d4a82f"
+        ],
+        "roofColour": "#9aa3a8",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "Arts faculty quadrangle"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lagoon-front fountain"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Lagos",
+          "what": "Akoka campus ~802 acres on the lagoon, Senate House, library, Arts quadrangle, lagoon-front fountain, colours gold and maroon"
+        }
+      ],
+      "notes": "Sourced: ~802 acre campus on the Lagos Lagoon, Senate House, University Library, Faculty of Arts quadrangle, lagoon fountain, university colours gold and maroon. Building heights and exact facades are estimates (1960s modernist blocks)."
+    },
+    "viewing-centre": {
+      "venueId": "viewing-centre",
+      "city": "lagos",
+      "name": "Viewing Centre",
+      "archetype": "shophouse",
+      "subject": "A football viewing centre: an open-sided tin shed with a big screen, benches and plastic chairs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#9aa3a8",
+          "#3f7a52",
+          "#e8d38a"
+        ],
+        "roofColour": "#8d5a3b",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic Nigerian viewing centre (shed with TV/projector); typed."
+    }
+  }
+}

@@ -1,0 +1,294 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CTK_Emmanuel_2.jpg",
+   "licence": "CC0",
+   "author": "Mx. Granger",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/ctk1.jpg",
+   "used": "tall grey corrugated-metal-clad hall with a faint pitch, brick two-storey block with glazed corner entrance, blue-clad block at right"
+  },
+  {
+   "kind": "text",
+   "ref": "https://www.wikidata.org/wiki/Q5108993",
+   "used": "identity (Lewisham sixth-form college, 1992); OSM match is only a pitch so no footprint used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.73,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44,
+     26
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9fa5",
+    "windows": "none",
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "size": [
+       40,
+       0.35
+      ],
+      "colours": [
+       "#a9aeb3",
+       "#7f858b"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b9096",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-block",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a95a47",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-entry",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -19,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd6da",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f2f2f0"
+      ],
+      "height": 0.25,
+      "proud": 0.15,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ],
+      "spacing": 1.25,
+      "colour": "#f2f2f0",
+      "depth": 0.12
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e6",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-return",
+   "footprint": {
+    "rect": [
+     3,
+     6
+    ]
+   },
+   "at": [
+    -15,
+    -9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b5584a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-block",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    30,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8794f",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#4a6fa0"
+      ],
+      "height": 1.4,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-low",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    14,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#5f7f68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f7f68",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-community-workshop",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Single side photo: hall is ribbed grey with parapeted flat top, gridded glazed corner box beside a brick return, brown-brick block with blue ribbon bands, green low canopy; ribbing is a coarse panel pattern, courtyard and foreground planting not visible so omitted."
+ }
+}

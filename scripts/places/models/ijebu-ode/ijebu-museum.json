@@ -1,0 +1,428 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ijebu_National_Museum_building,_ijebu.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kaizenify",
+   "view": "front",
+   "file": "/tmp/places-evidence/ijebu-ode/museum2.jpg",
+   "used": "two-storey buff-ochre rendered block, ribbon of gridded windows on the ground floor, open upper gallery behind a deep red-orange sheet roof with big overhang, glass-block entrance bay with blank name band, grey ornamental fence and gate between ochre piers with pyramidal caps, low render plinth wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ijebu_National_Museum,_Ijebu_ode.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kaizenify",
+   "view": "street",
+   "used": "long low profile along the road, red roof ridge stepping up to the left, water tank on a steel frame at the left end, red arched roof at the right end, gate piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1067540680",
+   "used": "only a small outbuilding; the museum is much larger so the plan is composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     46,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcae78",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 3.0,
+    "plinth": 0.7,
+    "bands": "#cf9f68",
+    "faces": {
+     "front": "ribbon",
+     "left": "ribbon",
+     "back": "plain",
+     "right": "plain"
+    },
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cf9f68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery-void",
+   "at": [
+    0,
+    6,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     44,
+     20
+    ],
+    "height": 4.0,
+    "colour": "#2a2420",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "at": [
+    0,
+    -4.3,
+    4.4
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     0,
+     0
+    ],
+    "end": [
+     22,
+     0,
+     0
+    ],
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 4.0,
+      "colour": "#dcae78",
+      "windows": "none"
+     }
+    },
+    "lod1Step": 2,
+    "lod2Step": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet",
+   "at": [
+    0,
+    -4.2,
+    4.4
+   ],
+   "params": {
+    "rect": [
+     46,
+     0.4
+    ],
+    "height": 1.0,
+    "colour": "#dcae78",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "roof-slab",
+   "footprint": {
+    "rect": [
+     46,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8402a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c44a2a",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 1.6
+   },
+   "z0": 8.4
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -5.2,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     48,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b8402a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -5.5,
+    8.9
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "frameColour": "#2f5f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -5.5,
+    8.9
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#2f5f9a",
+    "frameColour": "#f2efe6",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    32,
+    9
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4b080",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.0,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#b8402a",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance",
+   "at": [
+    -4,
+    -7.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     3.4
+    ],
+    "height": 8.0,
+    "colour": "#dcae78",
+    "windows": "none",
+    "trimColour": "#e9dcc2",
+    "topColour": "#cf9f68"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-blocks",
+   "at": [
+    -4,
+    -9.0,
+    1.0
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.4
+    ],
+    "height": 5.0,
+    "colour": "#3a4650",
+    "windows": "grid",
+    "windowRatio": 0.9,
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "name-band",
+   "at": [
+    -4,
+    -9.1,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     10,
+     0.4
+    ],
+    "height": 1.2,
+    "colour": "#e9dcc2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -5,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 6.2,
+    "colour": "#f2efe6",
+    "frameColour": "#8a8d90",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -29,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.6,
+    "legHeight": 5,
+    "colour": "#2f5f9a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 3.0,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 6,
+    "colour": "#7d848b"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -8,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.0,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#dcae78"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.0,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#dcae78",
+    "leafColour": "#7d848b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-museum",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper gallery open with piers but fence reads as sparse posts rather than dense bars; glass-block grid is not a legible mosaic; roof billboards are blank boards; street-side outbuildings simplified"
+ }
+}

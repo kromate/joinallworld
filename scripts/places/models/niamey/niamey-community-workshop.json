@@ -1,0 +1,577 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_Abdou_Moumouni_IRSH.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "severingeo @ Mapillary.com",
+   "view": "side",
+   "file": "/tmp/places-evidence/niamey/uni1.jpg",
+   "used": "IRSH block: single-storey flat-roofed ochre-orange rendered box with small barred windows and wall air conditioners, lower cream annex to the right, sandy open ground, acacias"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Facult%C3%A9_d%27agronomie_de_l%27Universit%C3%A9_Abdou_Moumouni.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Cartographe volontaire",
+   "view": "street",
+   "file": "/tmp/places-evidence/niamey/uni2.jpg",
+   "used": "campus gate: heavy ochre concrete portal frame, red laterite road, hex-paved path, chain-link and low walls, big shade trees"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low rendered blocks around sandy courts with covered walkways; the OSM campus outline is 1.8 km2 so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "irsh",
+   "footprint": {
+    "rect": [
+     32,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    -4
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b8663a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 6,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a85c34",
+    "material": "concrete",
+    "overhang": 0.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    22,
+    -3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0c7a0",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdb48e",
+    "overhang": 0.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ac-0",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -5,
+    -10.3
+   ],
+   "z0": 2.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ac-1",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -1.5,
+    -10.3
+   ],
+   "z0": 2.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ac-2",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    9,
+    -10.3
+   ],
+   "z0": 2.2,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "grille-0",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    1.5,
+    -10.299999999999999
+   ],
+   "z0": 1.2,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "grille-1",
+   "footprint": {
+    "rect": [
+     2.0,
+     0.5
+    ]
+   },
+   "at": [
+    6,
+    -10.299999999999999
+   ],
+   "z0": 1.2,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f2f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f2f0",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "ac-annex",
+   "footprint": {
+    "rect": [
+     0.8,
+     0.5
+    ]
+   },
+   "at": [
+    26,
+    -7.4
+   ],
+   "z0": 1.2,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dino",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    -12,
+    -12
+   ],
+   "z0": 0.8,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a7da8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7da8",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "dino-neck",
+   "footprint": {
+    "rect": [
+     1,
+     1
+    ]
+   },
+   "at": [
+    -14.5,
+    -12
+   ],
+   "z0": 2.0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a7da8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a7da8",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hedge-0",
+   "footprint": {
+    "rect": [
+     10,
+     1.6
+    ]
+   },
+   "at": [
+    -6,
+    -11.5
+   ],
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a6e32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6e32",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hedge-1",
+   "footprint": {
+    "rect": [
+     6,
+     1.6
+    ]
+   },
+   "at": [
+    12,
+    -12
+   ],
+   "z0": 0,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a6e32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6e32",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hedge-2",
+   "footprint": {
+    "rect": [
+     5,
+     1.6
+    ]
+   },
+   "at": [
+    -14,
+    -17
+   ],
+   "z0": 0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a6e32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6e32",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hedge-3",
+   "footprint": {
+    "rect": [
+     18,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "z0": 0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a6e32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6e32",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hedge-4",
+   "footprint": {
+    "rect": [
+     10,
+     1.6
+    ]
+   },
+   "at": [
+    18,
+    -21
+   ],
+   "z0": 0,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a6e32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a6e32",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -13,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.2,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#f2f2f0",
+    "frameColour": "#8a8a88",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -24,
+     8
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     0,
+     10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     14
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -34,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Barred windows are plain punched windows (no grilles pattern); dinosaur is a blocky stand-in; hedges and ground are flatter and redder than the photo; annex roof detail simplified; gate removed."
+ }
+}

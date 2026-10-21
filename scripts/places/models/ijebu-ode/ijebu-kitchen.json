@@ -1,0 +1,165 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1067084419",
+   "used": "real outline (about 20 x 10 m, bearing 32 degrees) for the main hall"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Ijebu_Ode",
+   "used": "city context: cement-rendered one-storey buka with corrugated sheet roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 22
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c7a6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "bands": "#b8452e"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "rotDeg": -58,
+   "params": {
+    "width": 9,
+    "depth": 2.6,
+    "height": 2.7,
+    "colours": [
+     "#b8452e",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.1,
+    "bottom": 2.2,
+    "colour": "#b8452e",
+    "frameColour": "#f2efe6",
+    "posts": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 3,
+    "radius": 1.4,
+    "colours": [
+     "#b8452e",
+     "#f2efe6",
+     "#3f7a4a"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.2,
+    "kind": "wall",
+    "colour": "#d6c7a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists for this buka; form, colours and awning are a typed guess on the real OSM outline"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-kitchen"
+}

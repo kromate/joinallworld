@@ -1,0 +1,258 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-african-bible-college",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lilongwe",
+   "used": "city context only; no photo or building description found for the college. The nearest OSM building (57 m away, 295 m2) is not a reliable match and is not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classroom-block",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc9",
+    "glassColour": "#4a5a66",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.5,
+    "bands": "#a4573d",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b3b2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hostel-west",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9c0",
+    "glassColour": "#4a5a66",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a4573d",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b3b2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hostel-east",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "at": [
+    26,
+    6
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9c0",
+    "glassColour": "#4a5a66",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a4573d",
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b3b2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel-hall",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a4573d",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b3328",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     28
+    ],
+    "height": 0.1,
+    "colour": "#7fa55a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 11
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#a4573d"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -38,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   80
+  ]
+ }
+}

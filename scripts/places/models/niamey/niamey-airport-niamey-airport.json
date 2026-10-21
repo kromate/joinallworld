@@ -1,0 +1,561 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-airport-niamey-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C3%A9roport_International_Diori_Hamani_de_Niamey_(NIM)_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Barke11",
+   "view": "front",
+   "file": "/tmp/places-evidence/niamey/ap3.jpg",
+   "used": "landside facade: tall dark reflective glass wall, red-brown band above it, taupe panel fascia with a dark ribbon window and blank sign band, flat roof with a deep canopy on projecting beams and steel raking struts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%C3%A9roport_International_Diori_Hamani_de_Niamey_(NIM)_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Barke11",
+   "view": "front",
+   "used": "same facade, forecourt of pale concrete, planters either side of the entrance"
+  },
+  {
+   "kind": "text",
+   "used": "brief: control tower behind the terminal, 2 flags, ~120 m wide block (terminal length is not shown in photos)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-hall",
+   "footprint": {
+    "rect": [
+     112,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d4e0e0",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "red-band",
+   "footprint": {
+    "rect": [
+     112.4,
+     30.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 6.4,
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a3a2c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3a2c",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     112,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 8.4,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a99884",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "ribbon"
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "material": "concrete",
+    "overhang": 0.6,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     80,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -14.4
+   ],
+   "z0": 8.9,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d3a40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3a40",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-text",
+   "footprint": {
+    "rect": [
+     76,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -14.7
+   ],
+   "z0": 9.35,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e0",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -21,
+    10.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 112,
+    "depth": 14,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#cbc6ba",
+    "edgeColour": "#9b9588",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -21
+    ],
+    "end": [
+     52,
+     -21
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.25,
+        0
+       ],
+       [
+        0.25,
+        0
+       ],
+       [
+        0.25,
+        14
+       ],
+       [
+        -0.25,
+        14
+       ]
+      ],
+      "height": 1.0,
+      "z0": 9.6,
+      "colour": "#b4ad9f"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     -24
+    ],
+    "end": [
+     52,
+     -24
+    ],
+    "count": 12,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "width": 0.5,
+      "height": 0.5,
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        0,
+        7,
+        5
+       ],
+       [
+        0,
+        9,
+        9.6
+       ]
+      ],
+      "curve": true,
+      "colour": "#8e9498"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    34,
+    38,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "style": "round",
+    "colour": "#d9d5c8",
+    "shaftRadius": 2.2,
+    "cabRadius": 4.2,
+    "cabColour": "#4d6670",
+    "bandColour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    23
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d1bd",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aaa0",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#e05206",
+     "#0db02b"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -42,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "planter-l",
+   "footprint": {
+    "rect": [
+     3,
+     1.4
+    ]
+   },
+   "at": [
+    -36,
+    -16.5
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2c2f30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2f30",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "planter-l-shrub",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -36,
+    -16.5
+   ],
+   "z0": 1.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f7a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f7a3c",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "planter-r",
+   "footprint": {
+    "rect": [
+     3,
+     1.4
+    ]
+   },
+   "at": [
+    3,
+    -16.5
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2c2f30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c2f30",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "planter-r-shrub",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    3,
+    -16.5
+   ],
+   "z0": 1.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4f7a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f7a3c",
+    "overhang": 0
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 22,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -28
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     58,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     62,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Glass wall still renders dark blue (reflective material, light colour not honoured); sign lettering is a blank text strip; struts are simple curved sweeps; terminal length and tower position assumed."
+ }
+}

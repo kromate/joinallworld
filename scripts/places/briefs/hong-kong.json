@@ -1,0 +1,1766 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "hong-kong",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "hong-kong",
+    "climate": "tropical-maritime",
+    "vernacular": "Extremely dense vertical city: clusters of 30-50 storey residential towers in weathered grey concrete and pale ceramic-tile cladding (white, cream, pink, blue-grey) with window air-conditioner boxes; mid-century tong lau tenements with balconies in the old districts; flat concrete roofs with water tanks; glass curtain-wall office towers on the harbour; low village houses and green-glazed-tile Chinese temples in the New Territories and outlying islands; steep green hillsides with subtropical broadleaf trees.",
+    "wallColours": [
+      "#d9d4c7",
+      "#e8e0cf",
+      "#b8c4cc",
+      "#e3c9c0",
+      "#a9b8a8",
+      "#8d9aa6",
+      "#c9a98e"
+    ],
+    "roofColours": [
+      "#9a9a96",
+      "#6b7a8a",
+      "#b5523b",
+      "#3f6b5a"
+    ],
+    "wallMaterials": [
+      "tile-cladding",
+      "concrete",
+      "glass-curtain",
+      "painted-render",
+      "exposed-concrete",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "metal-sheet",
+      "clay-tile",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Chinese temples with green or orange glazed-tile ridges, ceramic ridge figures, red doors and granite thresholds; Streamline Moderne harbour piers; tong lau balconies with iron railings; neon and blank signboards stacked on shop frontages; public-housing blocks with coloured ceramic-tile bands and exposed service pipes.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Hong_Kong",
+        "what": "tong lau tenements, public-housing and private high-rise estates, Tin Hau temples, walled villages, colonial and Streamline Moderne buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tsim_Sha_Tsui_Ferry_Pier",
+        "what": "1957 Streamline Moderne Star Ferry pier, twin bi-level piers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Cityplaza",
+        "what": "1982 mall with white stainless-steel atrium facade and red arch"
+      },
+      {
+        "url": "https://zh.wikipedia.org/wiki/THE_LOHAS",
+        "what": "glass-walled 5-level mall 2020"
+      }
+    ]
+  },
+  "places": {
+    "hong-kong-airport-hong-kong-airport": {
+      "venueId": "hong-kong-airport-hong-kong-airport",
+      "city": "hong-kong",
+      "name": "Hong Kong International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 of Chek Lap Kok seen from the landside: a vast, long, gently vaulted steel-and-glass hall by Foster and Partners with a curved departures canopy and jet bridges on the airside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 1200,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 38,
+        "roof": "curved",
+        "variant": "Foster T1 vaulted hall (a ~120 m portion is modelled)",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdd8de",
+          "#7e8c96",
+          "#eef0f1"
+        ],
+        "roofColour": "#aeb6bb",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "T1 plus satellite concourse T1S 10 bridges"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hong_Kong_International_Airport",
+          "what": "T1 by Foster and Partners, about 570,000 m2; predominantly glass sides designed to break in typhoon winds; T1S satellite 2 storeys 10 jet bridges; 3 runways 3,800 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17704",
+          "what": "identity"
+        }
+      ],
+      "notes": "T1 is about 1.3 km long so only a portion can be shown (cap 120 m). Wikipedia gives area, architect and glass facade; the long barrel-vault roofline and grey steel-and-glass look are from general knowledge of the building. New T2 (reopened 2026) is a separate terminal."
+    },
+    "hong-kong-clinic": {
+      "venueId": "hong-kong-clinic",
+      "city": "hong-kong",
+      "name": "North Lantau Hospital",
+      "archetype": "hospital",
+      "subject": "North Lantau Hospital in central Tung Chung: a mid-rise Hospital Authority general hospital with an accident and emergency entrance, set among Tung Chung new-town towers",
+      "form": {
+        "footprint": "L",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e1d6",
+          "#6d93a8",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1,
+          "note": "24-hour A&E entrance"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/North_Lantau_Hospital",
+          "what": "rural general hospital, 160 beds, completed late 2012, services from 24 Sep 2013 at 8 Chung Yan Road, A&E from 2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/407737469",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building 190 x 100 m. The article gives no description of storeys or facade; storeys/colour typed from Hospital Authority general-hospital typology. Low."
+    },
+    "hong-kong-community-notices": {
+      "venueId": "hong-kong-community-notices",
+      "city": "hong-kong",
+      "name": "Tai Hing Government Offices",
+      "archetype": "civic-small",
+      "subject": "A four-storey Hong Kong government offices block in Tai Hing, Tuen Mun: a plain rectangular building with tiled walls, regular windows and a flag at the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 53,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#dcd6c4",
+          "#8d9aa6",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/220337682",
+          "what": "OSM building 64.8 x 53.4 m with 4 levels (name match)"
+        }
+      ],
+      "notes": "Only the OSM footprint and 4 levels are known; no description found. Era and facade typed from Hong Kong government-complex typology. Low."
+    },
+    "hong-kong-community-voting-game": {
+      "venueId": "hong-kong-community-voting-game",
+      "city": "hong-kong",
+      "name": "Sha Tin Town Hall",
+      "archetype": "museum-theatre",
+      "subject": "Sha Tin Town Hall, the concrete cultural podium by the town park: a wide, blocky 1980s civic building with a stepped plaza, performance auditorium and attached public library",
+      "form": {
+        "footprint": "rect",
+        "width_m": 97,
+        "depth_m": 72,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e0dacb",
+          "#9a8f7c",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "part of a podium complex with library and marriage registry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sha_Tin_Town_Hall",
+          "what": "opened 16 January 1987; part of the podium complex with Sha Tin Public Library and Marriage Registry near Sha Tin station, Sha Tin Park and New Town Plaza"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/159044473",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM footprint 96.9 x 72.2 m. Article gives only the opening date and podium context; facade materials/colours typed from 1980s Hong Kong civic complexes."
+    },
+    "hong-kong-community-workshop": {
+      "venueId": "hong-kong-community-workshop",
+      "city": "hong-kong",
+      "name": "Ping Shan Tin Shui Wai Public Library",
+      "archetype": "campus-block",
+      "subject": "A Hong Kong public library in the Tin Shui Wai new town: a modern block with large glazed reading-room windows beside housing towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3ddcf",
+          "#6d93a8",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/天水圍站_(西鐵綫)",
+          "what": "OSM match at this position is Tin Shui Wai station (555 x 41 m, 2003), not the library"
+        }
+      ],
+      "notes": "The nearest OSM name match is the West Rail Tin Shui Wai station (85 m away), which is not the library; no description of the library found. Fully typed from Hong Kong new-town library typology. Low."
+    },
+    "hong-kong-market-game": {
+      "venueId": "hong-kong-market-game",
+      "city": "hong-kong",
+      "name": "The LOHAS",
+      "archetype": "mall",
+      "subject": "The LOHAS mall at LOHAS Park, Tseung Kwan O: a five-level glass-walled shopping centre above the MTR depot, with two daylit atria, LED media walls and tall trees along its garden side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 317,
+        "depth_m": 158,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat",
+        "variant": "depot-top mall; 120 m portion modelled"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9ccd6",
+          "#e6e3da",
+          "#6b7a8a"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2,
+          "note": "two large atriums"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "LED media walls"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/THE_LOHAS",
+          "what": "5 levels, about 480,000 sq ft, opened Aug-Nov 2020, designed by DLN \"Shopping in the Nature's Breeze\", large glass curtain walls, two atriums, LED media walls, above MTR depot, tall trees planted along the garden side"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/607534710",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint 317 x 158 m (OSM, opened 2020-08-23); modelled as a 120 m portion. Glass curtain walls and five levels are sourced; exact tints are typed."
+    },
+    "hong-kong-meal-stop": {
+      "venueId": "hong-kong-meal-stop",
+      "city": "hong-kong",
+      "name": "Cafe 100%",
+      "archetype": "restaurant",
+      "subject": "A Hong Kong cha chaan teng style cafe: a ground-floor shopfront in a podium with an awning, blank sign band and glass door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3ddcf",
+          "#b04a3a",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/757854082",
+          "what": "nearest OSM building (104 x 40 m) is a larger complex, not the cafe itself"
+        }
+      ],
+      "notes": "The OSM match is a large building (104 x 40 m) that is probably a complex the cafe sits in; the cafe itself is unknown, so this is a typed shopfront. Low."
+    },
+    "hong-kong-osm-node-3890530477": {
+      "venueId": "hong-kong-osm-node-3890530477",
+      "city": "hong-kong",
+      "name": "Rock Carving on Tung Lung Chau",
+      "archetype": "monument",
+      "subject": "The ancient rock carving at Tung Lung Chau: a weathered granite outcrop on the shore engraved with a large abstract dragon-like pattern, behind a low protective rail",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8b8a82",
+          "#6e6d66",
+          "#b5b3a8"
+        ],
+        "roofColour": "#8b8a82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "protective fence around the carving"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank interpretive board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Bronze Age (c. 3000 years)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11104184",
+          "what": "Rock Carving on Tung Lung Chau, declared monument"
+        }
+      ],
+      "notes": "Wikidata/OSM identify it as a declared archaeological monument (Bronze Age carving) on a granite outcrop; I did not find a readable description of dimensions or pattern, so size is a guess. Low."
+    },
+    "hong-kong-osm-node-8266367332": {
+      "venueId": "hong-kong-osm-node-8266367332",
+      "city": "hong-kong",
+      "name": "Ha Fa Shan",
+      "archetype": "park-landscape",
+      "subject": "Ha Fa Shan government campsite: a grassy hillside clearing with picnic tables, a small toilet block and a shelter among woodland",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#e9e5dc"
+        ],
+        "roofColour": "#6b7a8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "toilet block and shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q111181741",
+          "what": "Ha Fa Shan identity (hill/campsite)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/399159403",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM tourism=camp_site 80 x 69 m (name match 137 m away). No description found; typed hillside campsite."
+    },
+    "hong-kong-osm-relation-11953382": {
+      "venueId": "hong-kong-osm-relation-11953382",
+      "city": "hong-kong",
+      "name": "Cityplaza",
+      "archetype": "mall",
+      "subject": "Cityplaza in Taikoo Shing: a multi-level Swire mall with a white stainless-steel atrium facade, a famous red entrance arch and the Ice Palace rink, beside office and housing towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 153,
+        "depth_m": 116,
+        "storeys": 5,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eef0f1",
+          "#b3322b",
+          "#9aa4ab"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "78 ft red indoor arch in the lobby"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "neon lighting added 1987"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cityplaza",
+          "what": "opened 1982 by Swire Properties, Wong Tung & Partners; Phase 1 atrium rebuilt 1987 with white stainless-steel facade and neon, 78 ft red arch, Ice Palace rink in Phase 2; about 1,105,000 sq ft"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/11953382",
+          "what": "OSM relation 153 x 116 m, 3 levels"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28845847",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM says 3 levels; Wikipedia says Phase 1 spans ground to 6th floor. Modelled as 5 levels. White steel atrium facade and red arch are sourced; podium colours typed."
+    },
+    "hong-kong-osm-relation-12917211": {
+      "venueId": "hong-kong-osm-relation-12917211",
+      "city": "hong-kong",
+      "name": "Ma On Shan Park",
+      "archetype": "park-landscape",
+      "subject": "Ma On Shan Park beside Tolo Harbour: a 5.5 ha LCSD park with a central lawn, an adventure maze, a Marine Plaza, a mining-history display and views to Pat Sin Leng",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#e9e5dc"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "Marine Plaza water feature"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ma_On_Shan_Park",
+          "what": "5.5 ha LCSD park opened 3 Aug 1998 with Central Lawn, Sitting Out Area, Adventure Maze, Marine Plaza, Mining History Display Area; views of Pat Sin Leng and Tolo Harbour"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/12917211",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Article gives layout areas but no pavilions; pavilion/fountain are typed for LCSD parks. OSM polygon 461 x 254 m, modelled as a portion."
+    },
+    "hong-kong-osm-way-125447650": {
+      "venueId": "hong-kong-osm-way-125447650",
+      "city": "hong-kong",
+      "name": "Jordan Valley Park",
+      "archetype": "park-landscape",
+      "subject": "Jordan Valley Park in Kwun Tong, opened 2010 on a former landfill/valley: wide lawns and sports courts on terraced ground under steep hillsides, ringed by housing blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#e9e5dc"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/佐敦谷公園",
+          "what": "park identity, OSM start_date 2010-08-01"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/125447650",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 373 x 300 m with start_date 2010; no readable feature list found. Typed LCSD park. Low."
+    },
+    "hong-kong-osm-way-1511791460": {
+      "venueId": "hong-kong-osm-way-1511791460",
+      "city": "hong-kong",
+      "name": "Tin Hau Temple (Sok Kwu Wan)",
+      "archetype": "shrine-small",
+      "subject": "A small Tin Hau temple on the Lamma waterfront at Sok Kwu Wan: a single-hall shrine with green-tiled roof, ridge figures and red doors facing the harbour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "granite",
+        "colours": [
+          "#d9c9a8",
+          "#a8322b",
+          "#7e8c80"
+        ],
+        "roofColour": "#4f7f66",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "ceramic figures on the ridge"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "red double door"
+        },
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "upturned ridge ends"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "Qing/20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/索罟灣天后宮",
+          "what": "Sok Kwu Wan Tin Hau Temple identity"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Hong_Kong",
+          "what": "Tin Hau temples honour Mazu, protector of fishers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1511791460",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building is 10.7 x 10.3 m. Appearance is the standard Hong Kong Tin Hau temple (green or grey tile roof, ridge figures); no photo description for this one was read. Low."
+    },
+    "hong-kong-osm-way-158053530": {
+      "venueId": "hong-kong-osm-way-158053530",
+      "city": "hong-kong",
+      "name": "Wo Yi Hop Road Sports Ground",
+      "archetype": "stadium",
+      "subject": "A Kwai Chung public sports ground: a running-track field with one covered grandstand along the straight and floodlight masts, surrounded by housing blocks",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc9bb",
+          "#6b7a8a",
+          "#e9e5dc"
+        ],
+        "roofColour": "#6b7a8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/和宜合道運動場",
+          "what": "sports ground identity"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/158053530",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM leisure=stadium polygon 164 x 89 m. Seating, roof and colours typed from Hong Kong LCSD sports grounds."
+    },
+    "hong-kong-osm-way-169542419": {
+      "venueId": "hong-kong-osm-way-169542419",
+      "city": "hong-kong",
+      "name": "Sai Kung Tang Shiu Kin Sports Ground",
+      "archetype": "stadium",
+      "subject": "Sai Kung's sports ground (1983): a natural-grass pitch of 102 x 65 m inside a running track with a covered grandstand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3cdbd",
+          "#4f7f66",
+          "#e9e5dc"
+        ],
+        "roofColour": "#6b7a8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sai_Kung_Tang_Shiu_Kin_Sports_Ground",
+          "what": "opened 27 May 1983; natural grass pitch 102 x 65 m; standard running track; covered grandstand; capacity 1,500 (infobox) or 5,000 (text)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/169542419",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Wikipedia confirms track, pitch size and covered grandstand but no look; colours typed. OSM 192 x 141 m."
+    },
+    "hong-kong-osm-way-186138931": {
+      "venueId": "hong-kong-osm-way-186138931",
+      "city": "hong-kong",
+      "name": "Maritime Services Training Institute",
+      "archetype": "campus-block",
+      "subject": "A Vocational Training Council campus in Tuen Mun: a 5-storey tiled training block with ribbon windows and a workshop wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#dcd6c4",
+          "#8d9aa6",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1988",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maritime_Services_Training_Institute",
+          "what": "college identity, founded 1988; OSM building college 103 x 77.5 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/378695377",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Dimensions measured by OSM; building description not found, typed from VTC campus blocks. Low."
+    },
+    "hong-kong-osm-way-205759235": {
+      "venueId": "hong-kong-osm-way-205759235",
+      "city": "hong-kong",
+      "name": "Technological and Higher Education Institute of Hong Kong (Tsing Yi)",
+      "archetype": "campus-block",
+      "subject": "The THEi Tsing Yi campus: a long VTC teaching complex of linked 6-8 storey tiled blocks with ribbon windows, beside Tsing Yi Road",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 60,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#dcd6c4",
+          "#8d9aa6",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1999",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Technological_and_Higher_Education_Institute_of_Hong_Kong",
+          "what": "established 1999 (as IVE); Tsing Yi campus at 20A Tsing Yi Road"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/205759235",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 290 x 109 m. Building description not found; typed from VTC campuses. Low."
+    },
+    "hong-kong-osm-way-322429617": {
+      "venueId": "hong-kong-osm-way-322429617",
+      "city": "hong-kong",
+      "name": "Lung Mo Temple (Peng Chau)",
+      "archetype": "shrine-small",
+      "subject": "The small Lung Mo (Dragon Mother) Temple on Peng Chau: a two-bay hall with grey brick walls, a green-tiled ridge roof with ceramic figures and a red door in a narrow lane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "granite",
+        "colours": [
+          "#8f8f86",
+          "#a8322b",
+          "#d9c9a8"
+        ],
+        "roofColour": "#4f7f66",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "ceramic ridge figures"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "red door"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "east-asian",
+      "era": "Qing/19th c. (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/坪洲龍母廟",
+          "what": "Peng Chau Lung Mo Temple identity"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/322429617",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building 11 x 8.2 m. Look typed from typical Hong Kong village temples (grey brick, green tile roof, ridge figures); no description read. Low."
+    },
+    "hong-kong-osm-way-445060456": {
+      "venueId": "hong-kong-osm-way-445060456",
+      "city": "hong-kong",
+      "name": "MacLehose Medical Rehabilitation Centre",
+      "archetype": "hospital",
+      "subject": "A Hospital Authority rehabilitation hospital on the Pok Fu Lam hillside: a terraced 1980s concrete ward block with long balconies and tiled walls",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#dcd6c4",
+          "#8d9aa6",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/MacLehose_Medical_Rehabilitation_Centre",
+          "what": "opened 1984; OSM building 86.6 x 67 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/801321423",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint and year known; storeys and facade typed from 1980s Hong Kong hospital typology. Low."
+    },
+    "hong-kong-osm-way-457242085": {
+      "venueId": "hong-kong-osm-way-457242085",
+      "city": "hong-kong",
+      "name": "Hong Kong Correctional Services Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Correctional Services Museum at Stanley: a two-storey building by the parade ground with a mock guard tower on the roof and a lookout terrace over Tai Tam Bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "prison-themed museum with rooftop mock guard tower"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3ddcf",
+          "#8d9aa6",
+          "#b5523b"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "mock guard tower on the roof (no guard-tower feature id)"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "200 m2 lookout over Tai Tam Bay"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter wall"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hong_Kong_Correctional_Services_Museum",
+          "what": "two-storey building about 480 m2 next to the Staff Training Institute parade ground at Tung Tau Wan Road, Stanley; mock guard tower on top; annex; 200 m2 lookout over Tai Tam Bay"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/457242085",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM 25.3 x 19.5 m. Colours and wall material typed; sourced items are the two storeys, rooftop guard tower and terrace."
+    },
+    "hong-kong-osm-way-587740480": {
+      "venueId": "hong-kong-osm-way-587740480",
+      "city": "hong-kong",
+      "name": "Hong Kong Space Museum Astropark",
+      "archetype": "park-landscape",
+      "subject": "The Astropark on the west dam of Wan Yi Reservoir: an open stargazing park with stone replicas of ancient Chinese astronomical instruments, a human sundial, a small pavilion and rows of telescope piers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#a8472e"
+        ],
+        "roofColour": "#a8472e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "simulated night-sky viewing pavilion"
+        },
+        {
+          "id": "obelisk",
+          "count": 2,
+          "note": "gnomon and sundial replicas"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/香港太空館天文公園",
+          "what": "about 1,200 m2, HK$3m, opened 30 Jan 2010 within Chong Hing Water Sports Centre grounds; replicas of eight ancient Chinese instruments incl. armillary sphere, gnomon, sundials; human sundial; pavilion; 5 binoculars; 10 telescope piers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/587740480",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Contents are sourced; stone/granite finishes and pavilion roof are typed. OSM polygon 84 x 63 m."
+    },
+    "hong-kong-osm-way-950281943": {
+      "venueId": "hong-kong-osm-way-950281943",
+      "city": "hong-kong",
+      "name": "THE SOUTHSIDE",
+      "archetype": "mall",
+      "subject": "The Southside mall at Wong Chuk Hang: a five-level soft-toned podium shopping centre above the MTR depot with a public entrance plaza and residential towers rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 227,
+        "depth_m": 94,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat",
+        "variant": "depot-top podium mall; 120 m portion modelled; residential towers behind"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8cfc0",
+          "#c9b79a",
+          "#8d9aa6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "mall podium under 14 residential towers"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "about 14,000 sq ft entrance plaza"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/港島南岸",
+          "what": "five-storey mall about 510,000 sq ft, soft natural colour palette, public plaza about 14,000 sq ft, performance venue; trial opening Dec 2023, official Dec 2024; 14 residential blocks of 26-48 storeys over Wong Chuk Hang station"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/950281943",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM 226.7 x 93.5 m. Soft natural palette is sourced; the exact facade materials are typed. The residential towers are not part of this venue."
+    },
+    "hong-kong-quiet-reflection": {
+      "venueId": "hong-kong-quiet-reflection",
+      "city": "hong-kong",
+      "name": "Pak She Tin Hau Temple",
+      "archetype": "shrine-small",
+      "subject": "A small Tin Hau temple at Pak She on Cheung Chau: a single compact hall with green-tiled roof, ridge ornaments and red double doors facing the sea path",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "granite",
+        "colours": [
+          "#d9c9a8",
+          "#a8322b",
+          "#8f8f86"
+        ],
+        "roofColour": "#4f7f66",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "ceramic ridge figures"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "red doors"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "upturned ridge ends"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16923990",
+          "what": "Pak She Tin Hau Temple identity"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Hong_Kong",
+          "what": "Tin Hau temples honour Mazu"
+        }
+      ],
+      "notes": "OSM has only a 3-storey house within 42 m (not the temple). Fully typed from the standard Hong Kong Tin Hau temple. Low."
+    },
+    "hong-kong-recreation": {
+      "venueId": "hong-kong-recreation",
+      "city": "hong-kong",
+      "name": "Ma Wo Road Garden",
+      "archetype": "park-landscape",
+      "subject": "A small Tai Po neighbourhood garden: paved paths, planted shrub beds, a Chinese-style pavilion and benches between housing blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#a8472e"
+        ],
+        "roofColour": "#4f7f66",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/馬窩路花園",
+          "what": "garden identity; OSM leisure=park 128.5 x 53 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/10700987",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "No description found; typed LCSD neighbourhood garden. Low."
+    },
+    "hong-kong-transit": {
+      "venueId": "hong-kong-transit",
+      "city": "hong-kong",
+      "name": "Star Ferry (Tsim Sha Tsui Ferry Pier)",
+      "archetype": "transport-station",
+      "subject": "The 1957 Tsim Sha Tsui Star Ferry pier: a Streamline Moderne twin-pier terminal on timber piles, with flat roofs over two bi-level boarding piers and a small concourse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "twin bi-level piers"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e9e5d8",
+          "#3f6b5a",
+          "#f4f2ea"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 2,
+          "note": "two bi-level piers on timber pilings"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "kiosk",
+          "count": 3,
+          "note": "newsstand and shops"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "art-deco",
+      "era": "1957",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tsim_Sha_Tsui_Ferry_Pier",
+          "what": "1957 Streamline Moderne twin-piered terminal, two bi-level piers on wooden pilings; older piers 1906 and 1914"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Star_Ferry",
+          "what": "green and white ferry livery"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14941145",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building 106 x 85 m, 2 levels, flat roof (match 44 m away). Cream/white walls with green trim echo the Star Ferry green-and-white livery (colours typed). The clock tower is nearby (former KCR tower) and not on the pier."
+    }
+  }
+}

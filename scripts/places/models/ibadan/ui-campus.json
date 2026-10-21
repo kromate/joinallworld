@@ -1,0 +1,505 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "ui-campus",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Ibadan_gate,_Ibadan4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eukoha",
+   "view": "front",
+   "file": "/tmp/places-evidence/ibadan/campus1.jpg",
+   "used": "main gate: grey octagonal lookout tower on a round shaft with a flared collar, square arch with lintel, long wall with a blank round emblem disc, low side walls, clipped hedge"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aerial_view_in_University_of_Ibadan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "unknown (Commons category)",
+   "view": "aerial",
+   "used": "campus blocks behind: pale rendered Fry-Drew blocks with ribbed concrete facade and grey/red roofs, roundabout, tree-lined avenue"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1283760521",
+   "used": "not used: tiny building 20 m from the point"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#9ba2a6",
+    "profile": [
+     [
+      2.0,
+      0,
+      "#9ba2a6"
+     ],
+     [
+      2.0,
+      11,
+      "#9ba2a6"
+     ],
+     [
+      2.5,
+      11.2,
+      "#9ba2a6"
+     ],
+     [
+      6.4,
+      12.8,
+      "#9ba2a6"
+     ],
+     [
+      6.4,
+      13.2,
+      "#9ba2a6"
+     ],
+     [
+      0.2,
+      13.2,
+      "#9ba2a6"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    13.2
+   ],
+   "params": {
+    "n": 8,
+    "radius": 5.8,
+    "height": 5.0,
+    "colour": "#9ba2a6",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "glassColour": "#2e3338",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    18.2
+   ],
+   "params": {
+    "n": 8,
+    "radius": 6.1,
+    "height": 0.5,
+    "colour": "#858c91"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    0,
+    18.7
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#80888e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2.4
+    ],
+    "height": 8.5,
+    "colour": "#9ba2a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2.4
+    ],
+    "height": 8.5,
+    "colour": "#9ba2a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.2,
+    0,
+    7.3
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.4
+    ],
+    "height": 1.3,
+    "colour": "#9ba2a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.2,
+    0.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.25
+    ],
+    "height": 7,
+    "colour": "#1c1f22",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    1,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     2.6
+    ],
+    "height": 8,
+    "colour": "#97a0a5",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    1,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     2.6
+    ],
+    "height": 3.4,
+    "colour": "#97a0a5",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    0.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     20,
+     1.2
+    ],
+    "height": 2.2,
+    "colour": "#a4aaad",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.8
+    ],
+    "height": 1.2,
+    "colour": "#4c7a38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -3.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     1.8
+    ],
+    "height": 1.2,
+    "colour": "#4c7a38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.3
+    ],
+    "height": 1.0,
+    "colour": "#f2f2f2",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.2
+    ],
+    "height": 0.2,
+    "colour": "#a8a9a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.4
+    ],
+    "height": 0.1,
+    "colour": "#9ba2a6",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-1",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    20,
+    50
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd8c8",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 9,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 11,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    25,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "cypress",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -5,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 11,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -42,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "flame",
+    "height": 11,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "emblem disc and curved wall end omitted; gate leaves approximate; chain-link bollards and hedge simplified; distant block generic"
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://thecable.ng/oyo-commences-construction-of-ibadan-airport-terminal-to-accommodate-one-million-passengers-yearly",
+   "used": "existing terminal handles about 100,000 passengers a year (small); the only Commons image for this venue is a generic airliner, not the terminal"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q3360329",
+   "used": "identity only, no footprint (OSM match none)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 24,
+  "pitchDeg": 10,
+  "fovDeg": 55,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#4a6a8a",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.7,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entrance",
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a6a8a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2efe6",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 8,
+    "height": 4.6,
+    "thickness": 0.5,
+    "roof_colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -11,
+    9.9
+   ],
+   "params": {}
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    44,
+    4,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "square",
+    "colour": "#f2efe6",
+    "cabColour": "#4a6a8a",
+    "bandColour": "#b8452e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 12,
+    "density": 0.55
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -10,
+    32,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 0.55,
+    "colour": "#eceff1",
+    "tailColour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    40,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -30
+    ]
+   }
+  ],
+  "forecourt": "parking",
+  "forecourtDepth": 18,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the real terminal; small 2-storey ribbon-glazed terminal (70x22 m) with tower per the brief, details guessed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "ibadan-airport"
+}

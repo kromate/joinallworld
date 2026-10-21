@@ -1,0 +1,1679 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "baghdad",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "baghdad",
+    "climate": "desert",
+    "vernacular": "Dust-coloured city of buff fired-brick and plastered concrete-frame buildings with flat roofs, parapets and rooftop water tanks. Old Tigris-side quarters have Ottoman-era brick houses with timber shanasheel bay windows and arched openings; mid-century modernist blocks (1950s-70s) in concrete with brise-soleil; large state buildings clad in marble or pale stone; mosques with gold or turquoise domes and tall minarets. Date palms and eucalyptus line streets and the river.",
+    "wallColours": [
+      "#c9b48f",
+      "#b79b73",
+      "#d8cdb5",
+      "#a98f6b",
+      "#e6dfd0",
+      "#8c7b66"
+    ],
+    "roofColours": [
+      "#b5a68a",
+      "#8b8680",
+      "#2f8f8f",
+      "#c9a24a"
+    ],
+    "wallMaterials": [
+      "brick",
+      "render",
+      "concrete",
+      "painted-render",
+      "stone",
+      "marble",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "gold-leaf"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber shanasheel (enclosed bay windows) and arched brick openings on old houses; gold-plated and turquoise-tile domes and minarets; muqarnas; geometric brick patterning; marble-clad portals on state buildings; mid-century concrete brise-soleil screens.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Al-Kadhimiya_Mosque",
+        "what": "two gold domes, four gold minarets, brick and marble, courtyard (sahn) with gates; gold is the dominant finish"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Mosque",
+        "what": "Abbasid/Seljuk/Ottoman blend; marble, stone, plaster; blue-and-white mosaic clock tower; white dome"
+      },
+      {
+        "url": "https://ar.wikipedia.org/wiki/مقهى_الشابندر",
+        "what": "traditional Baghdadi building in brick and gypsum plaster (taabuq and jus)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Al-Faw_Palace",
+        "what": "state buildings clad in Italian marble, Islamic and Neo-Babylonian style"
+      }
+    ]
+  },
+  "places": {
+    "baghdad-airport-baghdad-airport": {
+      "venueId": "baghdad-airport-baghdad-airport",
+      "city": "baghdad",
+      "name": "Baghdad International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The main passenger terminal block of Baghdad International Airport seen from the forecourt: a long low two-storey concrete terminal with a flat roof and a control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6cdb8",
+          "#7a8a94",
+          "#efe9dc"
+        ],
+        "roofColour": "#b9b1a0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "terminals built from 1979, opened c.1982",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baghdad_International_Airport",
+          "what": "current terminals built from 1979 by a Spie Batignolles-led consortium and opened c.1982; the Basil Spence permanent terminal was never built"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/761771257",
+          "what": "OSM footprint 123.1 x 89 m (10615 m2); tags building=yes"
+        }
+      ],
+      "notes": "Form is a guess: no source describes the built terminal. The OSM terminal that matched (air cargo, 123 x 89 m) is 559 m from the venue point, so it is not used for the passenger block. Keep it plain and long with a tower; do not copy the unbuilt Spence design."
+    },
+    "baghdad-clinic": {
+      "venueId": "baghdad-clinic",
+      "city": "baghdad",
+      "name": "Al-Hussein Military Hospital",
+      "archetype": "hospital",
+      "subject": "A rectangular multi-storey military hospital block, rotated about 68 degrees, with a pale rendered facade and rows of punched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 37,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd2bc",
+          "#b7ad98",
+          "#f1ece0"
+        ],
+        "roofColour": "#b5ab97",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2022",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/860005941",
+          "what": "OSM footprint 71.2 x 36.6 m (2607 m2); tags building=yes"
+        }
+      ],
+      "notes": "Wikidata gives an inception year of 2022. Storeys and finish are typed from the city style; footprint (71 x 37 m, a skewed rectangle) is measured."
+    },
+    "baghdad-community-notices": {
+      "venueId": "baghdad-community-notices",
+      "city": "baghdad",
+      "name": "Supreme Judicial Council of Iraq",
+      "archetype": "civic-palace",
+      "subject": "The Supreme Judicial Council headquarters: a large squarish government block of pale stone-coloured render with a formal entrance and flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 81,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#d9ceb4",
+          "#bfb399",
+          "#efe9dc"
+        ],
+        "roofColour": "#b0a690",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "c. 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/463067663",
+          "what": "OSM footprint 88.5 x 80.9 m (4240 m2); tags building=yes"
+        }
+      ],
+      "notes": "No description of the building was found. 88 x 81 m footprint measured; height, finish and entrance portico are typed from the civic archetype and the city style."
+    },
+    "baghdad-community-voting-game": {
+      "venueId": "baghdad-community-voting-game",
+      "city": "baghdad",
+      "name": "Liberation Square (Freedom Monument)",
+      "archetype": "monument",
+      "subject": "The Freedom Monument (Nusb al-Hurriyah) in Tahrir Square: a long bronze relief frieze of figures set on a raised travertine slab",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 16,
+        "roof": "none",
+        "variant": "relief-wall"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdbf9f",
+          "#6a5a3c",
+          "#a9a08a"
+        ],
+        "roofColour": "#a9a08a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "travertine slab raised 6 m"
+        },
+        {
+          "id": "statue",
+          "count": 14,
+          "note": "14 bronze castings with 25 figures"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1961, Jawad Salim",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Freedom_Monument_(Baghdad)",
+          "what": "10 m high x 50 m long; 14 bronze castings showing 25 figures; travertine slab raised 6 m; faces the traffic"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1239441665",
+          "what": "OSM footprint 93 x 40.2 m (1433 m2); tags building=yes, height=1"
+        }
+      ],
+      "notes": "Total height is the 10 m relief on a 6 m slab. The relief is a flat wall seen from the traffic side; the model must read as a long dark-bronze frieze on a pale stone plinth. Colours are inferred (bronze with patina, travertine)."
+    },
+    "baghdad-community-workshop": {
+      "venueId": "baghdad-community-workshop",
+      "city": "baghdad",
+      "name": "American University of Iraq - Baghdad (Al-Faw Palace)",
+      "archetype": "civic-palace",
+      "subject": "The Al-Faw Palace complex: a huge marble-faced palace with a three-storey octagonal rotunda standing on an artificial lake reached by one bridge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "octagonal-rotunda",
+        "wings": 3
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "stone",
+        "colours": [
+          "#e9e4d6",
+          "#c9a24a",
+          "#bdb5a2"
+        ],
+        "roofColour": "#cfc7b3",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "arab-islamic",
+      "era": "1990s, rehabilitated 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Faw_Palace",
+          "what": "three floors, three-storey octagonal rotunda, exterior of Italian marble, ~10 m main door, Islamic and Neo-Babylonian style, artificial lake with a single bridge, 2018 rehabilitation"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3193523",
+          "what": "OSM footprint 165 x 139.1 m (14351 m2); tags building=university, building:levels=3"
+        }
+      ],
+      "notes": "The OSM relation (165 x 139 m, 3 levels) is the palace complex now used by a university. Show the main palace mass from the bridge; roof is not described in sources so it is a flat guess. Marble reads cream-white."
+    },
+    "baghdad-market-game": {
+      "venueId": "baghdad-market-game",
+      "city": "baghdad",
+      "name": "Mansour Mall",
+      "archetype": "mall",
+      "subject": "A large retail mall block in Mansour: a wide three-storey glazed and rendered box with a signage band and a front car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 130,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3dccb",
+          "#5f7f93",
+          "#b8b0a0"
+        ],
+        "roofColour": "#a7a196",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1252989658",
+          "what": "OSM footprint 151.5 x 129.8 m (10647 m2); tags building=retail"
+        }
+      ],
+      "notes": "OSM tags the footprint (151 x 130 m) as retail only. Storeys, finish and glazing are typed from the mall archetype. Different from Baghdad Mall (blue facade, 2017, hotel tower)."
+    },
+    "baghdad-meal-stop": {
+      "venueId": "baghdad-meal-stop",
+      "city": "baghdad",
+      "name": "Shabandar Cafe",
+      "archetype": "restaurant",
+      "subject": "The Shabandar Cafe at the end of Al-Mutanabbi Street: a small two-storey traditional Baghdadi building of buff brick and plaster with arched openings and a timber upper balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "timber",
+        "colours": [
+          "#c4a574",
+          "#6b4a2f",
+          "#e4d9bd"
+        ],
+        "roofColour": "#a69879",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "building 1907, cafe 1917, rebuilt after 2007 bombing",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ar.wikipedia.org/wiki/مقهى_الشابندر",
+          "what": "building of brick and gypsum plaster in traditional Baghdadi style; originally the Shabandar printing press (1907), cafe founded 1917; 70% destroyed by the 2007 bombing and restored"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/928718264",
+          "what": "OSM footprint 22.7 x 16.6 m (347 m2); tags building=yes"
+        }
+      ],
+      "notes": "Materials and style are sourced; storeys, arches and balcony are from general knowledge of the street (two floors, arched front, interior full of framed photographs). Colours are estimates. Tiny building: keep the street frontage narrow."
+    },
+    "baghdad-osm-node-11597386428": {
+      "venueId": "baghdad-osm-node-11597386428",
+      "city": "baghdad",
+      "name": "Muhammad al-Jawad Shrine (Al-Kadhimiya)",
+      "archetype": "mosque-domed",
+      "subject": "The Kadhimiya shrine of Imams Musa al-Kadhim and Muhammad al-Jawad: a sahn-fronted shrine hall with two large gold domes, four gold minarets and blue-and-gold tiled iwans",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 49,
+        "storeys": 1,
+        "height_m": 15,
+        "roof": "multi-dome",
+        "variant": "twin-gold-dome-shrine",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e6dcc3",
+          "#2a6f97",
+          "#d4a62a"
+        ],
+        "roofColour": "#d4a62a",
+        "roofMaterial": "gold-leaf",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "two equal-sized gold domes over the shrine rooms"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "gold-plated, tall"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "sahn with a gate in the middle of each wall"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "blue and yellow tile iwan panels"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "762 CE site, Safavid restoration 1500s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Kadhimiya_Mosque",
+          "what": "rectangular complex ~140 x 135 m; two equal gold domes; four gold-coated minarets; sahn with gates; brick, marble and gold; Safavid restoration under Shah Ismail I and Ottoman additions"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1058585283",
+          "what": "OSM footprint 54 x 48.8 m (2073 m2); tags building=mosque, height=15"
+        }
+      ],
+      "notes": "The venue is named after the ninth Imam, who is entombed in the Kadhimiya shrine. The OSM mosque way (54 x 49 m, height 15) is the shrine core; the full walled complex is ~140 x 135 m so the model shows the shrine hall and its domes. Tilework colours are from general knowledge, not the cited article."
+    },
+    "baghdad-osm-node-6411927106": {
+      "venueId": "baghdad-osm-node-6411927106",
+      "city": "baghdad",
+      "name": "Tell Ishchali",
+      "archetype": "heritage-fort",
+      "subject": "The eroded mud-brick mound of Tell Ishchali (ancient Neribtum), low ruined walls and a heap of pale earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 106,
+        "depth_m": 68,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "archaeological-mound"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "brick",
+        "colours": [
+          "#d1bf94",
+          "#b4a073",
+          "#e3d6b4"
+        ],
+        "roofColour": "#e3d6b4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low eroded mud-brick walls"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "c. 2000 BC (Old Babylonian)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/684397885",
+          "what": "OSM footprint 106.4 x 67.8 m (6910 m2); tags building=ruins"
+        }
+      ],
+      "notes": "OSM tags the site building=ruins (106 x 68 m). No description was fetched. Treat it as a weathered low tell with exposed mud-brick wall lines and no roof."
+    },
+    "baghdad-osm-relation-20951269": {
+      "venueId": "baghdad-osm-relation-20951269",
+      "city": "baghdad",
+      "name": "Al-Madina Sports Stadium",
+      "archetype": "stadium",
+      "subject": "The Al-Madina International Stadium: a modern oval bowl with a sloping pink-violet roof over the stands, solar panels on the north and south roofs and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 174,
+        "depth_m": 133,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "shed",
+        "variant": "skillion-canopy"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcabf",
+          "#8a8f99",
+          "#e682ff"
+        ],
+        "roofColour": "#e682ff",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "sloping skillion canopy tagged #e682ff"
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "about 7,000 m2 on the north and south sides"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "built 2012-2019, opened 2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Madina_Stadium",
+          "what": "32,000 capacity; built in phases 2012-14 and 2018-19 by Nurol; 105 x 68 m pitch; solar plant of about 7,000 m2 over the north and south sides; opened 1 December 2021"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20946410",
+          "what": "OSM footprint 174.1 x 133.1 m (10928 m2); tags building=grandstand, building:levels=1, height=15, roof:shape=skillion, roof:colour=#e682ff"
+        }
+      ],
+      "notes": "OSM gives roof:shape skillion, roof colour #e682ff (violet-pink), metal material and grandstand height 15 m, which beats guesses. Floodlight count and concrete colour are estimates."
+    },
+    "baghdad-osm-way-1208663973": {
+      "venueId": "baghdad-osm-way-1208663973",
+      "city": "baghdad",
+      "name": "Abu Hanifah Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Abu Hanifa Mosque in Adhamiyah: a marble-walled prayer hall under a large white central dome with three smaller domes, two 35 m minarets and a blue-and-white mosaic clock tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 108,
+        "depth_m": 59,
+        "storeys": 1,
+        "height_m": 20,
+        "roof": "multi-dome",
+        "variant": "central-dome-plus-three",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "stone",
+        "colours": [
+          "#e9e4d6",
+          "#c9a24a",
+          "#3b6ea5"
+        ],
+        "roofColour": "#f2efe6",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 4,
+          "note": "large central dome on eight marble pillars and three smaller domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 35 m, one capped in gold"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "blue and white mosaic, golden aluminium clock"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "founded 10th-11th century, rebuilt 2004",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abu_Hanifa_Mosque",
+          "what": "about 10,000 m2 complex; main hall with a large central dome on eight marble pillars and three smaller domes; two minarets of about 35 m; 1961 clock tower in blue and white mosaic; Abbasid/Seljuk/Ottoman blend; marble walls to about 3 m; rebuilt most recently in 2004"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1208663973",
+          "what": "OSM footprint 108.4 x 59 m (4974 m2); tags building=mosque"
+        }
+      ],
+      "notes": "Distinct from the Kadhimiya shrine (gold domes) and Um al-Tabul (brick, Cairo-style): this one has a white dome, a tall mosaic clock tower and gold only on one minaret top."
+    },
+    "baghdad-osm-way-1287507333": {
+      "venueId": "baghdad-osm-way-1287507333",
+      "city": "baghdad",
+      "name": "Ibn Al-Nafees Hospital for Cardiac and Thoracic Surgery",
+      "archetype": "hospital",
+      "subject": "A large 1970s hospital block with a wide rendered facade and rows of windows, in Baghdad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 136,
+        "depth_m": 100,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d4cbb5",
+          "#a89f8a",
+          "#ece6d6"
+        ],
+        "roofColour": "#a9a391",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1287507333",
+          "what": "OSM footprint 136.3 x 100.3 m (13340 m2)"
+        }
+      ],
+      "notes": "Wikidata dates the hospital to 1973. No appearance source: storeys and finish are typed from the 1970s Iraqi hospital norm. Large footprint (136 x 100 m) measured."
+    },
+    "baghdad-osm-way-331568741": {
+      "venueId": "baghdad-osm-way-331568741",
+      "city": "baghdad",
+      "name": "Dur-Kurigalzu ziggurat (Aqar Quf)",
+      "archetype": "heritage-fort",
+      "subject": "The surviving mud-brick core of the Kassite ziggurat at Aqar Quf: a ragged, eroded tower standing alone on the plain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 69,
+        "depth_m": 67,
+        "storeys": 0,
+        "height_m": 52,
+        "roof": "stepped",
+        "variant": "ruined-ziggurat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "brick",
+        "colours": [
+          "#d8c996",
+          "#bfa972",
+          "#e8dcae"
+        ],
+        "roofColour": "#d8c996",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "axial staircase of baked brick set in bitumen"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "eroded stepped terraces"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Kassite, c. 14th century BC",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dur-Kurigalzu",
+          "what": "ziggurat about 52 m tall with a 69 x 67 m base; sun-dried mudbrick core with reed mats every seventh course and stamped baked bricks; axial baked-brick staircase; badly eroded, southwest side worst"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/331568741",
+          "what": "OSM footprint 79.8 x 77.7 m (5717 m2); tags building=yes, height=20, roof:colour=#d8c996, building:colour=#d8c996"
+        }
+      ],
+      "notes": "Colour #d8c996 comes from OSM building:colour and roof:colour. The surviving mass is a ragged, tapering tower, not a clean stepped pyramid; add erosion gullies and a broken top."
+    },
+    "baghdad-osm-way-4493601": {
+      "venueId": "baghdad-osm-way-4493601",
+      "city": "baghdad",
+      "name": "University of Baghdad",
+      "archetype": "campus-block",
+      "subject": "A modernist university teaching block on the Al-Jadriya campus planned by The Architects Collaborative: a low-rise cream concrete block with louvres",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 54,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "render",
+        "colours": [
+          "#d9d1bc",
+          "#a9a08a",
+          "#efe9dc"
+        ],
+        "roofColour": "#b0aa9b",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "campus planned 1957-1960",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Baghdad",
+          "what": "campus buildings by Walter Gropius and The Architects Collaborative, 1959-1960; campus expanded in 1982"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/950083698",
+          "what": "OSM footprint 54.1 x 53.6 m (2881 m2); tags building=yes"
+        }
+      ],
+      "notes": "The nearest OSM building (54 x 54 m) is only a generic building. The Gropius connection is sourced, but no article describes the blocks, so the brise-soleil, pilotis and finish are plausible modernist traits, not verified."
+    },
+    "baghdad-osm-way-82012284": {
+      "venueId": "baghdad-osm-way-82012284",
+      "city": "baghdad",
+      "name": "Um Al Khanzeer Island",
+      "archetype": "park-landscape",
+      "subject": "A small Tigris river island with date palms, a few paths and a landing pier, seen from the bank",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "river-island"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#c9b48f",
+          "#b79b73",
+          "#d8cdb5"
+        ],
+        "roofColour": "#d8cdb5",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM way has no building or tags that were retrieved. A natural Tigris island; the brief is a low-confidence typed park with palms, a landing pier and a small pavilion. Do not invent landmarks."
+    },
+    "baghdad-osm-way-82643837": {
+      "venueId": "baghdad-osm-way-82643837",
+      "city": "baghdad",
+      "name": "Zawra Tower",
+      "archetype": "monument",
+      "subject": "The Zawraa Park observation tower: a slim round concrete shaft topped by a big bulbous onion-shaped dome in dusty brown",
+      "form": {
+        "footprint": "round",
+        "width_m": 29,
+        "depth_m": 29,
+        "storeys": 8,
+        "height_m": 50,
+        "roof": "dome",
+        "variant": "onion-top"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#876c6b",
+          "#b6a99a",
+          "#6f5857"
+        ],
+        "roofColour": "#876c6b",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1,
+          "note": "bulbous cap, wide relative to the shaft"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1975",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ar.wikipedia.org/wiki/برج_الزوراء",
+          "what": "built 1975 in Zawra Park, about 40-50 m, bulbous onion-shaped dome, rotating restaurant floor at the top; closed after 2003"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/82643837",
+          "what": "OSM height=50, roof:shape=onion, colour #876c6b"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/82643837",
+          "what": "OSM footprint 29.2 x 29.2 m (672 m2); tags building=yes, height=50, roof:shape=onion, roof:colour=#876c6b, building:colour=#876c6b"
+        }
+      ],
+      "notes": "The 29 m wide base is the OSM footprint (probably the plinth). Shaft and dome both taken as #876c6b from OSM. Dome is oversized versus the shaft, as the article says."
+    },
+    "baghdad-osm-way-82665090": {
+      "venueId": "baghdad-osm-way-82665090",
+      "city": "baghdad",
+      "name": "Ibn Sina Hospital",
+      "archetype": "hospital",
+      "subject": "A large 1960s hospital complex in the Green Zone: wide rendered wings with ribbon windows",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d6cdb7",
+          "#a79e89",
+          "#ece6d6"
+        ],
+        "roofColour": "#a9a391",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ibn_Sina_Hospital",
+          "what": "opened 1964, founded by four Iraqi doctors; run by US forces in the Green Zone 2003-2009, handed back 30 September 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/82665090",
+          "what": "OSM footprint 219.8 x 173 m (35093 m2)"
+        }
+      ],
+      "notes": "No description of the building exists in the source. 220 x 173 m footprint is measured and is clamped to 120 m for the model; wings and storeys are guessed."
+    },
+    "baghdad-osm-way-82992750": {
+      "venueId": "baghdad-osm-way-82992750",
+      "city": "baghdad",
+      "name": "Um Al-Tabul Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Umm al-Tabul mosque: a brick prayer hall with a white marble main dome flanked by two smaller domes, two 40 m minarets over the entrance and a wide marble staircase",
+      "form": {
+        "footprint": "rect",
+        "width_m": 83,
+        "depth_m": 51,
+        "storeys": 1,
+        "height_m": 18,
+        "roof": "multi-dome",
+        "variant": "three-domes-two-minarets",
+        "wings": 0
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "marble",
+        "colours": [
+          "#b99a6d",
+          "#e9e4d6",
+          "#8d7653"
+        ],
+        "roofColour": "#f0ece1",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "main white marble dome with two smaller domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 40 m, above the main entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide white marble entrance stair"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1966-1968",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ar.wikipedia.org/wiki/جامع_أم_الطبول",
+          "what": "three domes (main white marble), two ~40 m minarets above the entrance, brick body, marble staircase and columns, fountain and gardens, 100 x 50 m prayer hall, built 1966-1968, architect Adnan al-Qudsi, modelled on Cairo mosques"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/82992750",
+          "what": "OSM footprint 83.4 x 50.8 m (2656 m2); tags building=yes"
+        }
+      ],
+      "notes": "Brick wall colour is an estimate from the infobox material; wiki gives no colours except white marble. Style borrows Mamluk/Cairo forms: tall paired minarets, big stair."
+    },
+    "baghdad-osm-way-832799038": {
+      "venueId": "baghdad-osm-way-832799038",
+      "city": "baghdad",
+      "name": "Baghdad Mall",
+      "archetype": "mall",
+      "subject": "Baghdad Mall in Harthiya: a four-storey blue-clad shopping block with a 10-storey car park beside it and the Rotana hotel tower rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 149,
+        "depth_m": 88,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#41839b",
+          "#dfe6ea",
+          "#2b3b45"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "10-storey parking building, about 1,000 cars"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baghdad_Mall",
+          "what": "opened 28 August 2017; four-floor mall (about 36,000 m2), 32-storey hotel, 10-storey car park for 1,000 cars; complex over 80,000 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/832799038",
+          "what": "OSM footprint 149.4 x 87.7 m (7640 m2); tags building=yes, building:levels=4, building:colour=#41839B, start_date=2017-08-26"
+        }
+      ],
+      "notes": "Facade colour #41839B is the OSM building:colour. Hotel tower (32 floors) is a separate mass behind; only the mall and car park are modelled. Distinct from Mansour Mall by the blue cladding and the tower."
+    },
+    "baghdad-osm-way-83672623": {
+      "venueId": "baghdad-osm-way-83672623",
+      "city": "baghdad",
+      "name": "University of Technology",
+      "archetype": "campus-block",
+      "subject": "A long narrow teaching block of the University of Technology, three storeys of pale render with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#ddd4be",
+          "#b3aa94",
+          "#f0ebdd"
+        ],
+        "roofColour": "#aaa491",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1975",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/848334442",
+          "what": "OSM footprint 59.6 x 16 m (950 m2); tags building=college"
+        }
+      ],
+      "notes": "OSM building=college (60 x 16 m); the university dates to 1975 (Wikidata). Finish and storeys typed from the city style."
+    },
+    "baghdad-osm-way-83673023": {
+      "venueId": "baghdad-osm-way-83673023",
+      "city": "baghdad",
+      "name": "Zawraa Park",
+      "archetype": "park-landscape",
+      "subject": "A part of Baghdad's largest park: wide lawns and palm-lined paths around a small pavilion, a fountain and a lake edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "city-park"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8cdb5",
+          "#c9b48f",
+          "#8b8680"
+        ],
+        "roofColour": "#8b8680",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/83673023",
+          "what": "OSM leisure=park, about 1,576 x 1,225 m, 1.48 km2; Wikidata: Al Zawra'a Gardens"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/83673023",
+          "what": "OSM footprint 1575.7 x 1225.3 m (1484995 m2)"
+        }
+      ],
+      "notes": "The whole park is huge; the model shows a pavilion-and-fountain corner. The tower is its own venue. No appearance source found, so low."
+    },
+    "baghdad-osm-way-85931827": {
+      "venueId": "baghdad-osm-way-85931827",
+      "city": "baghdad",
+      "name": "Al-Bakr University for Military Studies (Defense University)",
+      "archetype": "campus-block",
+      "subject": "A walled military academy campus: a long three-storey cream block with a central entrance and a flagpole forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d8ceb5",
+          "#b2a78f",
+          "#eee8d9"
+        ],
+        "roofColour": "#a8a290",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/85931827",
+          "what": "OSM footprint 292.6 x 201.1 m (41389 m2)"
+        }
+      ],
+      "notes": "Wikidata: Iraqi Defense University for Military Studies. The OSM area (293 x 201 m, 41,000 m2) is the whole campus; only its main block is modelled and its form is a typed guess."
+    },
+    "baghdad-quiet-reflection": {
+      "venueId": "baghdad-quiet-reflection",
+      "city": "baghdad",
+      "name": "Al-Kubaisi Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque in the south-west of Baghdad: a rendered prayer hall under a single dome with one slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 41,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "dome",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e3dcc8",
+          "#2f8f8f",
+          "#b7ad97"
+        ],
+        "roofColour": "#2f8f8f",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "typical for a Baghdad congregational mosque"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/254624484",
+          "what": "OSM footprint 65.4 x 41.3 m (2653 m2)"
+        }
+      ],
+      "notes": "OSM way (65 x 41 m) has no tags. Nothing was found describing it, so it is a typed mosque using the city style (turquoise dome, cream render)."
+    },
+    "baghdad-recreation": {
+      "venueId": "baghdad-recreation",
+      "city": "baghdad",
+      "name": "Baghdad Tourism Island",
+      "archetype": "park-landscape",
+      "subject": "A riverside leisure island with a low sports hall, lawns and palm trees on the Tigris",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "river-island"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8cdb5",
+          "#c9b48f",
+          "#8b8680"
+        ],
+        "roofColour": "#8b8680",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1058429321",
+          "what": "OSM footprint 66.9 x 58 m (2591 m2); tags building=yes"
+        }
+      ],
+      "notes": "The nearest OSM building is a sports centre (67 x 58 m). No description was found; the brief is a typed island park."
+    },
+    "baghdad-transit": {
+      "venueId": "baghdad-transit",
+      "city": "baghdad",
+      "name": "Allawi Bus Station (Alawi Garage)",
+      "archetype": "transport-station",
+      "subject": "The Allawi intercity bus garage: a very large asphalt apron with rows of bus bays under long flat canopies and a low rendered terminal building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "bus-park",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d1c8b2",
+          "#8b8680",
+          "#e6dfd0"
+        ],
+        "roofColour": "#a39d8d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 14
+        },
+        {
+          "id": "platform-canopy",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ar.wikipedia.org/wiki/كراج_العلاوي",
+          "what": "OSM names this wikipedia article; polygon about 385 x 254 m, height tag 2.5 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/82809426",
+          "what": "OSM footprint 384.5 x 253.6 m (78884 m2); tags height=2.5"
+        }
+      ],
+      "notes": "The OSM bus-station polygon (385 x 254 m) is the whole garage and is clamped; the model shows one terminal building with canopies and bays. Appearance is typed."
+    }
+  }
+}

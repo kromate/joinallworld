@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "ota-sports-ground",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ota.json#ota-sports-ground",
+   "used": "100 x 70 m clay oval pitch, small covered main stand, concrete terrace, four floodlight masts, scoreboard, perimeter wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1252602174",
+   "used": "not used: 28 x 19 m nearest-match building, not the ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; pitch size and stand are typed from the brief."
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 88,
+    "width": 56,
+    "stripes": 0,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -18,
+     -32
+    ],
+    "end": [
+     18,
+     -32
+    ],
+    "flip": true,
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "seatColour": "#9c3b2f",
+    "seatColours": [
+     "#9c3b2f",
+     "#a9a59d"
+    ],
+    "blocks": 3,
+    "concreteColour": "#a9a59d",
+    "under": "solid",
+    "backWall": 0.8,
+    "canopy": {
+     "height": 6.5,
+     "depth": 5,
+     "colour": "#8e979c",
+     "slopeDeg": 6,
+     "supports": 4
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "id": "terrace",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 38,
+    "startDeg": 10,
+    "endDeg": 170,
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "seatColour": "#a9a59d",
+    "concreteColour": "#a9a59d",
+    "under": "solid",
+    "facetDeg": 20
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    34,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "pillarEvery": 5,
+    "colour": "#a8c3a0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#a9a59d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -58,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     58,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ }
+}

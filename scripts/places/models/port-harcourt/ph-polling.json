@@ -1,0 +1,137 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+   "used": "city context only; placeholder civic hall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc4",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "bands": "#4a6f9a",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 20,
+    "colour": "#5b4636",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 2.6,
+    "height": 3.0,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#cfcabb"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#4a6f9a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -17,
+     4
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Placeholder hall, typed gable hall with veranda"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "ph-polling"
+}

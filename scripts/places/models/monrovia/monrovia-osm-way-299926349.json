@@ -1,0 +1,204 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1532239923",
+   "used": "real outline of the small named UMU building (16 x 10 m), placed as the entrance annex"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/299926349",
+   "used": "campus area (about 3300 m2) for size of the main block"
+  },
+  {
+   "kind": "text",
+   "used": "brief: United Methodist University downtown campus, 4-storey plastered L-shaped block, blue-white colours, covered front stair, flag (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "polygon": [
+     [
+      -22,
+      -8
+     ],
+     [
+      22,
+      -8
+     ],
+     [
+      22,
+      0
+     ],
+     [
+      -6,
+      0
+     ],
+     [
+      -6,
+      10
+     ],
+     [
+      -22,
+      10
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9e0e4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#3f6f9b",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    },
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a79f94",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "polygon": [
+     [
+      -8.9,
+      -2.3
+     ],
+     [
+      -6.2,
+      6.8
+     ],
+     [
+      8.9,
+      2.3
+     ],
+     [
+      6.2,
+      -6.8
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#3f6f9b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a79f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 5,
+    "height": 4,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#3f6f9b",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    18,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#3f6f9b"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 1,
+    "colour": "#3f6f9b",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -14
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; main block size and colours typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-way-299926349"
+}

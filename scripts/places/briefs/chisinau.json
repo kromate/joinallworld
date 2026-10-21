@@ -1,0 +1,1780 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "chisinau",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "chisinau",
+    "climate": "temperate",
+    "vernacular": "A Soviet-planned city of limestone and render: low pre-war pastel-rendered houses and 19th-century Russian-era limestone buildings in the centre, Stalinist neoclassical blocks with columns along Stefan cel Mare, then rings of grey 5 to 9-storey prefabricated panel apartment blocks with balconies, and newer glass-and-cladding offices and malls after 1991. Orthodox churches have green or blue domes. Flat bitumen roofs on blocks, hip roofs in grey metal or red-brown tile on houses; poplar, linden, chestnut, acacia and willow trees.",
+    "wallColours": [
+      "#c4bfb3",
+      "#d9cfb4",
+      "#e3d3a1",
+      "#efece4",
+      "#b9a58d",
+      "#9a5a45",
+      "#a9adb0"
+    ],
+    "roofColours": [
+      "#7a7f84",
+      "#a0432f",
+      "#6d6b68",
+      "#4d6b52"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "render",
+      "limestone",
+      "painted-render",
+      "brick",
+      "exposed-concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "membrane",
+      "clay-tile",
+      "corrugated"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Stalinist neoclassical columns, pediments and cornices on civic buildings; Soviet relief panels and mosaics on panel blocks; Corinthian-capital arches and denticulated cornices on 19th-century Russian-era classical buildings; Orthodox onion or flattened domes in green and blue metal; Moldavian geometric carpet motifs; local Cricova limestone walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Chi%C8%99in%C4%83u",
+        "what": "old Soviet-style apartment-block clusters are a large part of the city; much of the city built from limestone quarried at Cricova; post-1991 office and shopping complexes; 19th-century Orthodox churches"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Triumphal_Arch,_Chi%C8%99in%C4%83u",
+        "what": "1841 Russian-era classical white-stone arch with ceramic Corinthian capitals"
+      },
+      {
+        "url": "https://ro.wikipedia.org/wiki/Biserica_Buna_Vestire_din_Chișinău",
+        "what": "1807-1810 classicist church decoration: denticulated cornice, frieze, decorative frames"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Chi%C8%99in%C4%83u_railway_station",
+        "what": "Stalinist-style rebuild of the station after 1941/1944 bombing"
+      }
+    ]
+  },
+  "places": {
+    "chisinau-airport-chisinau-airport": {
+      "venueId": "chisinau-airport-chisinau-airport",
+      "city": "chisinau",
+      "name": "Chisinau International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The main terminal: the 1970s block with the 2002 Akfen curtain-wall annex, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 134,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9fb0bc",
+          "#d3d4d2",
+          "#e9e8e3"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "curtain-wall annex"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "second-floor visitors terrace (2006)"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1974 terminal, 2002 modernisation",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chi%C8%99in%C4%83u_International_Airport",
+          "what": "main terminal built 1970s (1974); 2002 Akfen modernisation added a 4,270 m2 annex to the 7,600 m2 old terminal, about 3,000 m2 of curtain walls and 3,200 m2 of composite panels; second-floor visitors terrace opened December 2006"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/26375875",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q844951",
+          "what": "Wikidata item: Chișinău International Airport"
+        }
+      ],
+      "notes": "OSM terminal footprint 134 x 40 m (matched 841 m from the venue, so verify position). Colours are estimates; the sourced facts are the glass curtain walling and composite cladding. Much smaller than the Budapest or Copenhagen terminals."
+    },
+    "chisinau-clinic": {
+      "venueId": "chisinau-clinic",
+      "city": "chisinau",
+      "name": "Timofei Mosneaga Republican Clinical Hospital",
+      "archetype": "hospital",
+      "subject": "The main block of the Republican Clinical Hospital: a 1977 four-storey Soviet hospital block on the site of the 1817 city hospital",
+      "form": {
+        "footprint": "rect",
+        "width_m": 87,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcbc0",
+          "#a8a398",
+          "#ebe8e0"
+        ],
+        "roofColour": "#6d6b68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1977 block (hospital founded 1817)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Spitalul_Clinic_Republican_„Timofei_Moșneaga”",
+          "what": "hospital founded 1817 in a 1.5-storey block, 1842 building, new hospital edifice put into operation in 1977; main block shown in a 2023 photo"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/220382981",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30015891",
+          "what": "Wikidata item: Timofei Moșneaga Republican Clinical Hospital"
+        }
+      ],
+      "notes": "OSM: hospital building, 4 levels, 87 x 30 m. Colours and ribbon windows are typed from Soviet-era hospital blocks; facade details are not described by any source."
+    },
+    "chisinau-community-notices": {
+      "venueId": "chisinau-community-notices",
+      "city": "chisinau",
+      "name": "Ministry of Health",
+      "archetype": "civic-palace",
+      "subject": "The Ministry of Health building, a two-storey government office block on Vasile Alecsandri street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 86,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stucco",
+        "colours": [
+          "#e0d3a8",
+          "#b9a58d",
+          "#f1ebd8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "unknown, ministry since 1990",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Ministerul_Sănătății_(Republica_Moldova)",
+          "what": "Moldovan Ministry of Health (page linked from OSM tags, not read); OSM building two levels"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8299511",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4294353",
+          "what": "Wikidata item: Ministry of Health"
+        }
+      ],
+      "notes": "Only footprint (86 x 24 m) and two levels are measured; no description of the facade found. Typed pastel-render government building. No signage text."
+    },
+    "chisinau-community-voting-game": {
+      "venueId": "chisinau-community-voting-game",
+      "city": "chisinau",
+      "name": "Great National Assembly Square (Triumphal Arch)",
+      "archetype": "monument",
+      "subject": "The 1841 Triumphal Arch at the Great National Assembly Square: a white two-level square-plan classical arch with a clock on its front, beside the cathedral park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "terracotta",
+        "colours": [
+          "#ebe6d6",
+          "#b9a58d",
+          "#f4f0e4"
+        ],
+        "roofColour": "#8d8a85",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "central round passage"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "four pillars with ceramic Corinthian capitals"
+        },
+        {
+          "id": "flags",
+          "count": 2,
+          "note": "on the square"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1840-41",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Triumphal_Arch,_Chi%C8%99in%C4%83u",
+          "what": "begun 1840, opened 1841, architect Luka Zauschevic, about 13 m tall and 10 m wide, square plan with two levels, white stone with ceramic ornaments and Corinthian capitals, illuminated mechanical clock on front, 6.4 t bell removed 2011"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20340431",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7844583",
+          "what": "Wikidata item: Triumphal Arch, Chișinău"
+        }
+      ],
+      "notes": "The venue is the square (its centre is 36 m from the arch). The Nativity Cathedral belfry stands next to the arch in the park but is not part of this model. Stone is described as white; the exact tone is estimated."
+    },
+    "chisinau-community-workshop": {
+      "venueId": "chisinau-community-workshop",
+      "city": "chisinau",
+      "name": "Ion Creanga State Pedagogical University",
+      "archetype": "campus-block",
+      "subject": "A three-storey main teaching building of the Ion Creanga State Pedagogical University",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 37,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stucco",
+        "colours": [
+          "#dccfa6",
+          "#b9a58d",
+          "#f0ead8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "founded 1940, building unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Universitatea_Pedagogică_de_Stat_Ion_Creangă_din_Chișinău",
+          "what": "university founded 1940 (Wikidata); OSM building three levels, 76.5 x 37 m (page linked from OSM tags, not read)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1390258",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4146913",
+          "what": "Wikidata item: Ion Creangă Pedagogical State University"
+        }
+      ],
+      "notes": "Only footprint and three levels are measured. Typed Soviet-era university block in pastel render; no source describes the facade."
+    },
+    "chisinau-market-game": {
+      "venueId": "chisinau-market-game",
+      "city": "chisinau",
+      "name": "Central Market",
+      "archetype": "market-open",
+      "subject": "The Central Market: a 3.5 ha rectangular block of covered pavilions and open stalls between Armeneasca, Mitropolit Varlaam and Tighina streets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "bazaar-with-pavilions"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b7b9b8",
+          "#6f8c76",
+          "#e2dfd6"
+        ],
+        "roofColour": "#6f8c76",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "umbrellas",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 4,
+          "note": "long covered pavilions"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "Soviet-era (unnamed until 1991 Russian name)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Piața_Centrală_din_Chișinău",
+          "what": "largest agri-food market, about 3.5 ha, rectangular block between Armeneasca, Mitropolit Varlaam and Tighina; five-storey residential blocks with shops face Stefan cel Mare boulevard; central bus station across the street"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25195025",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q19708311",
+          "what": "Wikidata item: Central market of Chișinău"
+        }
+      ],
+      "notes": "OSM footprint 415 x 129 m, clamped to 200 x 120 for the scene. Pavilion look (green-grey sheet roofs) is typed; the wiki only describes the layout. Distinct from the stadium-sized covered halls of Budapest."
+    },
+    "chisinau-meal-stop": {
+      "venueId": "chisinau-meal-stop",
+      "city": "chisinau",
+      "name": "Praga",
+      "archetype": "restaurant",
+      "subject": "A restaurant in a ground-floor premises of a seven-storey apartment block in south-west Chisinau, shown as a small freestanding restaurant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "ground-floor-of-block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d9c9a0",
+          "#9a5a45",
+          "#efe9d8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/839842453",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        }
+      ],
+      "notes": "The venue sits inside an OSM seven-level apartment building (85 x 35 m). Nothing was found about the restaurant itself; typed small restaurant with terrace and blank sign. Do not copy any logo."
+    },
+    "chisinau-osm-node-662713481": {
+      "venueId": "chisinau-osm-node-662713481",
+      "city": "chisinau",
+      "name": "Coffe Ponty",
+      "archetype": "restaurant",
+      "subject": "A small coffee shop in a low commercial building at Ghidighici",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d8cdb5",
+          "#8a6a45",
+          "#efe9d8"
+        ],
+        "roofColour": "#6d6b68",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/105751999",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        }
+      ],
+      "notes": "Only an OSM commercial building of 12 x 9 m contains the venue. No description found; typed roadside cafe."
+    },
+    "chisinau-osm-node-855102025": {
+      "venueId": "chisinau-osm-node-855102025",
+      "city": "chisinau",
+      "name": "Monument to Nizami Ganjavi",
+      "archetype": "monument",
+      "subject": "The monument to the Azerbaijani poet Nizami Ganjavi in a Chisinau park: a bronze bust or figure on a stone plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "bust-on-plinth"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "marble",
+        "colours": [
+          "#8d8a85",
+          "#b9b4a8",
+          "#3f3f3f"
+        ],
+        "roofColour": "#8d8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze figure or bust (form unverified)"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "low base steps"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low paved border"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/9841593",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3663081",
+          "what": "Wikidata item: Monument to Nizami Ganjavi in Chișinău"
+        }
+      ],
+      "notes": "Matched OSM element is the containing 564,647 m2 park, not the monument. Nothing found about its form; typed commemorative monument. Low."
+    },
+    "chisinau-osm-relation-13320660": {
+      "venueId": "chisinau-osm-relation-13320660",
+      "city": "chisinau",
+      "name": "Chisinau Zoo",
+      "archetype": "park-landscape",
+      "subject": "The Chisinau Zoological Garden: a landscaped zoo of paths and enclosures with an entrance gate and kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "zoo"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "brick",
+        "colours": [
+          "#8b6a45",
+          "#9a5a45",
+          "#d8cdb5"
+        ],
+        "roofColour": "#6d6b68",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "animal houses"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Grădina_Zoologică_din_Chișinău",
+          "what": "Chisinau Zoo (page linked from OSM tags, not read); OSM tourism=zoo, 24 ha"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13320660",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4222665",
+          "what": "Wikidata item: Chișinău Zoo"
+        }
+      ],
+      "notes": "Only the zoo extent is measured (about 800 x 490 m). No visual description gathered; typed."
+    },
+    "chisinau-osm-relation-13721147": {
+      "venueId": "chisinau-osm-relation-13721147",
+      "city": "chisinau",
+      "name": "Rose Valley Park",
+      "archetype": "park-landscape",
+      "subject": "Valea Trandafirilor (Rose Valley) park: 148 ha with three lakes, tree-lined alleys, a 1,000-seat open-air stage, playgrounds and a Ferris wheel",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "lakeside-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b4a8",
+          "#8d8a85",
+          "#d8d2c3"
+        ],
+        "roofColour": "#8d8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "1,000-seat open-air stage"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "lake beach and jetty"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "soviet",
+      "era": "laid out 1968",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Valea_Trandafirilor_din_Chișinău",
+          "what": "148 ha park laid out 1968 with three lakes (9 ha water), former cinema and 1,000-seat outdoor stage, former restaurant, beaches, playgrounds, Ferris wheel amusement park, Chernobyl victims memorial"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13721147",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7367970",
+          "what": "Wikidata item: Rose Valley, Chișinău"
+        }
+      ],
+      "notes": "Venue shown as a lakeside scene: water, tree-lined alleys, a stage and kiosks. Jetty is an assumption from the beaches."
+    },
+    "chisinau-osm-relation-6675955": {
+      "venueId": "chisinau-osm-relation-6675955",
+      "city": "chisinau",
+      "name": "Zimbru Stadium",
+      "archetype": "stadium",
+      "subject": "Zimbru Stadium (2006), Moldova largest football stadium: a 10,104-seat bowl with covered stands and Siteco floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 140,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "football-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#d9a516",
+          "#2e6b3a"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered grandstands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Zimbru_Stadium",
+          "what": "capacity 10,104, meets UEFA and FIFA requirements; designed by Ceproserving SA; sound-absorbing panels round the arena; natural grass 111 x 77 m; Siteco floodlights"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6675955",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q239295",
+          "what": "Wikidata item: Zimbru Stadium"
+        }
+      ],
+      "notes": "Club colours yellow and green are used as seat accents (estimated, not verified from photos). OSM area 275 x 263 m is the whole sports complex."
+    },
+    "chisinau-osm-relation-8257226": {
+      "venueId": "chisinau-osm-relation-8257226",
+      "city": "chisinau",
+      "name": "Technical University of Moldova",
+      "archetype": "campus-block",
+      "subject": "The main campus block of the Technical University of Moldova on Stefan cel Mare boulevard: a long Soviet-era teaching building among older blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c4bfb3",
+          "#a8a398",
+          "#e5e1d6"
+        ],
+        "roofColour": "#6d6b68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1964 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1098106",
+          "what": "Wikidata: Technical University of Moldova, founded 1964"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8257226",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1098106",
+          "what": "Wikidata item: Technical University of Moldova"
+        }
+      ],
+      "notes": "Campus extent 507 x 463 m is measured, the building look is not. Typed 1960s-70s Soviet teaching block."
+    },
+    "chisinau-osm-relation-9892239": {
+      "venueId": "chisinau-osm-relation-9892239",
+      "city": "chisinau",
+      "name": "Valea Morilor Park",
+      "archetype": "park-landscape",
+      "subject": "Valea Morilor park (114 ha, 1950): a 34 ha lake with a 2.5 km ring alley, the 6,700-seat Green Theatre of 1957 and the 218-step cascade staircase with its rotunda",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "lakeside-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "limestone",
+        "colours": [
+          "#b9b4a8",
+          "#d8cfb4",
+          "#8d8a85"
+        ],
+        "roofColour": "#8d8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 218,
+          "note": "cascade staircase"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "rotunda"
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "Green Theatre amphitheatre"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat station"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "soviet",
+      "era": "1950, theatre 1957, restored 2015-18",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Valea_Morilor_(Chișinău)",
+          "what": "114 ha park est. 1950 around a 34 ha lake, 2.5 km ring alley, Green Theatre 1957 seating 6,700, cascade staircase 218 steps, rotunda, Little Prince sculpture 2018, trees poplar, wild chestnut, acacia, maple, willow, linden, ash, catalpa, black pine"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9892239",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25459177",
+          "what": "Wikidata item: Valea Morilor Park"
+        }
+      ],
+      "notes": "Fountain is an assumption; remove if unwanted. Venue sits at the staircase/lake side. Distinct from Rose Valley by the staircase and amphitheatre."
+    },
+    "chisinau-osm-way-115891944": {
+      "venueId": "chisinau-osm-way-115891944",
+      "city": "chisinau",
+      "name": "Stefan cel Mare Police Academy",
+      "archetype": "campus-block",
+      "subject": "The Stefan cel Mare Police Academy campus: a main academic building with barracks-style wings around a parade ground",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d6cfb8",
+          "#9a5a45",
+          "#eeeadb"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "academy founded 1990, buildings earlier",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q19702844",
+          "what": "Wikidata: Stefan cel Mare Police Academy, police academy of Moldova, 1990"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/115891944",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q19702844",
+          "what": "Wikidata item: \"Ștefan cel Mare\" Police Academy"
+        }
+      ],
+      "notes": "Campus is 218 x 132 m (23,319 m2) per OSM; no description. Typed institutional campus. No insignia."
+    },
+    "chisinau-osm-way-145671580": {
+      "venueId": "chisinau-osm-way-145671580",
+      "city": "chisinau",
+      "name": "Biserica Acoperamantul Maicii Domnului (Mazarache Church)",
+      "archetype": "church-classical",
+      "subject": "Mazarache Church of 1752, the oldest surviving building in Chisinau, a small Old Believers church of stone and wood",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#ece7da",
+          "#9a8f7c",
+          "#cfc6b2"
+        ],
+        "roofColour": "#4d6b52",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower or belfry (form unverified)"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "cupola over the nave (unverified)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1752",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Biserica_Măzărache",
+          "what": "built 1752 by merchant Vasile Mazarache, oldest building in Chisinau, stone and wood, now Old Style Orthodox community; national monument"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/145671580",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4274472",
+          "what": "Wikidata item: Măzărache Church"
+        }
+      ],
+      "notes": "Only the date, materials (stone and wood) and use are sourced; roof, tower and colours are typed from small Moldavian churches. Low."
+    },
+    "chisinau-osm-way-1457886531": {
+      "venueId": "chisinau-osm-way-1457886531",
+      "city": "chisinau",
+      "name": "Monument to the villagers fallen 1941-1945 (Trusheni)",
+      "archetype": "monument",
+      "subject": "The WWII memorial of Trusheni village: a small commemorative monument on a paved plot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "village-memorial"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#b9b6ae",
+          "#8d8a85",
+          "#3f3f3f"
+        ],
+        "roofColour": "#8d8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "assumed stele or obelisk, form unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "post-WWII",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q108260876",
+          "what": "Wikidata: World War II memorial in Truseni, historical monument of national importance"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1457886531",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q108260876",
+          "what": "Wikidata item: World War II memorial in Trușeni, Chișinău"
+        }
+      ],
+      "notes": "Only the 17.5 x 15.9 m plot is measured. Typical Soviet-era village memorial assumed; unverified."
+    },
+    "chisinau-osm-way-1546886425": {
+      "venueId": "chisinau-osm-way-1546886425",
+      "city": "chisinau",
+      "name": "Stadionul Rapid Ghidighici",
+      "archetype": "stadium",
+      "subject": "The small Rapid Ghidighici football stadium: a pitch with one low roofed stand and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "small-football-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#3e6fa0",
+          "#e5e1d6"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q15910037",
+          "what": "Wikidata: Ghidighici Stadium, inception 2006"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1546886425",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15910037",
+          "what": "Wikidata item: Ghidighici Stadium"
+        }
+      ],
+      "notes": "Only the 2006 date and the 263 x 108 m plot are known. Typed small-club stadium; seat colour is a placeholder."
+    },
+    "chisinau-osm-way-166980133": {
+      "venueId": "chisinau-osm-way-166980133",
+      "city": "chisinau",
+      "name": "Biserica Buna Vestire",
+      "archetype": "church-classical",
+      "subject": "Annunciation Church (1807-1810): a three-part Moldavian Orthodox church with classicist cornice and frieze and a later porch",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#ece7da",
+          "#b9a58d",
+          "#d9cfb4"
+        ],
+        "roofColour": "#4d6b52",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "exterior porch added later"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1807-1810",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Biserica_Buna_Vestire_din_Chișinău",
+          "what": "built 1807-1810, features of 18th-century Iasi churches with classicist decoration: denticulated cornice, frieze, decorative frames; nave, altar apse and pronaos, exterior porch added later"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/166980133",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12721787",
+          "what": "Wikidata item: Church of the Annunciation in Chișinău"
+        }
+      ],
+      "notes": "Tower, dome and colours are estimated from Moldavian church types; the cornice and porch are sourced. 22 x 12 m OSM footprint."
+    },
+    "chisinau-osm-way-26426519": {
+      "venueId": "chisinau-osm-way-26426519",
+      "city": "chisinau",
+      "name": "Moldova State University",
+      "archetype": "campus-block",
+      "subject": "The Moldova State University main building on Mateevici street: a long four-storey Soviet-era teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 19,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e0d4ab",
+          "#b9a58d",
+          "#f1ebd9"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "university founded 1946",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Universitatea_de_Stat_din_Moldova",
+          "what": "university founded 1 October 1946 (page body does not describe the building); OSM building 65 x 19 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/68031789",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097810",
+          "what": "Wikidata item: Moldova State University"
+        }
+      ],
+      "notes": "Only the footprint and founding year are known; facade typed (Stalinist-era pale stucco). No portico asserted."
+    },
+    "chisinau-osm-way-32890479": {
+      "venueId": "chisinau-osm-way-32890479",
+      "city": "chisinau",
+      "name": "Dinamo Stadium",
+      "archetype": "stadium",
+      "subject": "Dinamo Stadium on Shchusev street: a 2,900-seat football ground with one stand along the pitch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "small-football-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b9b6ae",
+          "#8c4a3a",
+          "#e5e1d6"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dinamo_Stadium_(Chi%C8%99in%C4%83u)",
+          "what": "capacity 2,900, natural grass 105 x 68 m, home of FC Politehnica Chisinau, 106 Shchusev Street"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32890479",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3543956",
+          "what": "Wikidata item: Dinamo Stadium"
+        }
+      ],
+      "notes": "Stand and roof structure not described; typed small Soviet stadium. OSM area 195 x 131 m."
+    },
+    "chisinau-osm-way-38690601": {
+      "venueId": "chisinau-osm-way-38690601",
+      "city": "chisinau",
+      "name": "Institute of Emergency Medicine",
+      "archetype": "hospital",
+      "subject": "The Institute of Emergency Medicine (Municipal Emergency Clinical Hospital): a large multi-storey hospital block with a covered ambulance entrance",
+      "form": {
+        "footprint": "T",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 7,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcbc0",
+          "#a8a398",
+          "#ebe8e0"
+        ],
+        "roofColour": "#6d6b68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "assumed for emergency hospital"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Spitalul_Clinic_Municipal_de_Urgență_(Chișinău)",
+          "what": "Municipal Emergency Clinical Hospital, Chisinau (page linked from OSM tags, not read)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/38690601",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12741190",
+          "what": "Wikidata item: "
+        }
+      ],
+      "notes": "Complex extent 296 x 138 m is measured, height and layout are not. Typed. The helipad is an assumption; delete if unwanted."
+    },
+    "chisinau-quiet-reflection": {
+      "venueId": "chisinau-quiet-reflection",
+      "city": "chisinau",
+      "name": "Capela in memoria voluntarilor bulgari",
+      "archetype": "shrine-small",
+      "subject": "The 1881-82 memorial chapel to the Russian army and Bulgarian volunteers: an octagonal stone-and-wood chapel with a bright central tower and a 1990s entrance vestibule",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "pyramidal",
+        "variant": "octagonal-chapel"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8e1cf",
+          "#b9a58d",
+          "#9a8f7c"
+        ],
+        "roofColour": "#4d6b52",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "light tower with cupola; exact cap unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1881-82, vestibule added 1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ro.wikipedia.org/wiki/Capela_în_memoria_voluntarilor_bulgari",
+          "what": "built 1881-82; eclectic Russian-architecture style with neoclassical details; octagonal plan; stone and wood; single ritual room with a bright tower; new volume added in front of the entrance in the 1990s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32766730",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12723401",
+          "what": "Wikidata item: Chapel-Memorial to the Russian Army and Bulgarian Volunteers in Chișinău"
+        }
+      ],
+      "notes": "Wikidata gives Russian Revival style. Colours and roof tone are estimates; the octagonal plan is sourced."
+    },
+    "chisinau-recreation": {
+      "venueId": "chisinau-recreation",
+      "city": "chisinau",
+      "name": "Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "The National Botanical Garden of Chisinau: a large landscaped garden of tree-lined paths and lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "botanical-garden"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b3a5",
+          "#8a8579",
+          "#d8d2c3"
+        ],
+        "roofColour": "#8a8579",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "assumed glasshouse or visitor pavilion"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No facts collected (no OSM match). Typed park. Low."
+    },
+    "chisinau-transit": {
+      "venueId": "chisinau-transit",
+      "city": "chisinau",
+      "name": "Chisinau Railway Station",
+      "archetype": "transport-station",
+      "subject": "Chisinau Railway Station, rebuilt in Stalinist style after the 1941 and 1944 bombings: a long two-storey station hall with a red metal roof facing the platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 147,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e4dbc0",
+          "#b9a58d",
+          "#f2ecda"
+        ],
+        "roofColour": "#a23b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "8 tracks, 3 platforms"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "assumed central clock; unverified"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "inferred from the Stalinist rebuild; unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1871 line, 1880s design by Heinrich von Lonsky, rebuilt after 1944",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chi%C8%99in%C4%83u_railway_station",
+          "what": "station opened 1871; original building designed 1880-90 by Heinrich von Lonsky, built by Alexandru Bernadazzi; after 1941 and 1944 bombing rebuilt in Stalinist style; 3 platforms and 8 tracks"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/618483373",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4222669",
+          "what": "Wikidata item: Chișinău"
+        }
+      ],
+      "notes": "OSM: train station, 2 levels, 8 m, roof red metal, 147 x 27 m. Pale facade colour and portico are estimates; the roof colour and material are from OSM."
+    }
+  }
+}

@@ -1,0 +1,262 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1442799150",
+   "used": "name-matched outline (73 m2, one small building) used for the entrance/admin block; the ward blocks around it are from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief only: several single and two-storey ward blocks linked by covered walkways, painted render, red corrugated roofs; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "osm": true,
+    "fit": 12
+   },
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc6",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c4a35",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    16
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#7e8b73"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c4a35",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    30,
+    18
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0b4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#7e8b73"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c4a35",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-c",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "bands": "#b7a58a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c4a35",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -14,
+    17,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 2.4,
+    "height": 2.8,
+    "form": "flat",
+    "colour": "#8c4a35",
+    "columns": 6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    18,
+    18,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 2.4,
+    "height": 2.8,
+    "form": "flat",
+    "colour": "#8c4a35",
+    "columns": 6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    27,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 20,
+    "height": 2.8,
+    "form": "flat",
+    "colour": "#8c4a35",
+    "columns": 4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 7,
+    "colour": "#7e8b73"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 1.4,
+    "colour": "#efe9d9"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3,
+    "colour": "#d9d2c3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     0
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-osm-way-1428236844",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; ward blocks and walkways are from the brief"
+ }
+}

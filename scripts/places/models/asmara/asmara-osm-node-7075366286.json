@@ -1,0 +1,232 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/asmara.json",
+   "used": "small village ground: bare earth pitch, one low concrete terrace on the south side, goalposts, wall, two floodlight masts; the nearest OSM building (150 m2, 22 m away) is too small and unrelated to use"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     96,
+     66
+    ],
+    "height": 0.1,
+    "colour": "#b7966b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     84,
+     54
+    ],
+    "height": 0.05,
+    "colour": "#a8895f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     54
+    ],
+    "height": 0.02,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     7.3
+    ],
+    "height": 2.4,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     7.3
+    ],
+    "height": 2.4,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -24,
+     -36
+    ],
+    "end": [
+     24,
+     -36
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "slab": 0.4,
+    "bay": 6,
+    "seatColours": [
+     "#b8b4aa",
+     "#8f8c84"
+    ],
+    "blocks": 1,
+    "concreteColour": "#b8b4aa",
+    "underColour": "#8f8c84"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.4,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    40,
+    -40,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    36,
+    0
+   ],
+   "params": {
+    "height": 18,
+    "head_width": 3,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing-room",
+   "footprint": {
+    "rect": [
+     8,
+     4
+    ]
+   },
+   "at": [
+    34,
+    -42
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-node-7075366286",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo, no reliable OSM; terrace, goals and masts typed from brief."
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-modern",
+ "name": "Parts test: modernist, Soviet tower and radio mast",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "slab",
+   "footprint": {
+    "rect": [
+     70,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#c9c2b0",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 68,
+    "floors": 3,
+    "storeyHeight": 3.5,
+    "proud": 1.2
+   }
+  },
+  {
+   "type": "fin-row",
+   "at": [
+    -20,
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 20,
+    "height": 14,
+    "colour": "#7a1f2b"
+   }
+  },
+  {
+   "type": "pilotis-row",
+   "at": [
+    20,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "height": 4.5,
+    "radius": 0.35
+   }
+  },
+  {
+   "type": "stair-tower",
+   "at": [
+    26,
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "depth": 4.5,
+    "height": 3.4
+   }
+  },
+  {
+   "type": "roof-tank",
+   "at": [
+    -20,
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 1.4
+   }
+  },
+  {
+   "type": "roof-board",
+   "at": [
+    0,
+    -8,
+    14
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "height": 1.6
+   }
+  },
+  {
+   "type": "setback-tower",
+   "at": [
+    0,
+    45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 26,
+    "depth": 22,
+    "height": 20,
+    "tiers": 3,
+    "tierHeight": 7,
+    "spireHeight": 15,
+    "windows": "punched"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    48,
+    20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 55
+   }
+  },
+  {
+   "type": "canopy-fascia",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 2
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -32,
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 6,
+    "ground": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

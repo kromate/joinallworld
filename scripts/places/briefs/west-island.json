@@ -1,0 +1,933 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "west-island",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "west-island",
+    "climate": "tropical-maritime",
+    "vernacular": "Coral atoll settlement on a narrow strip of sand and palm: single-storey elevated timber-frame houses clad in asbestos-cement sheet with metal roofs (Australian government housing), small airport and administration buildings in pale render or fibre-cement with corrugated roofs, plus Cocos Malay village houses on Home Island in painted timber with bright tin roofs. Coconut palms, white coral sand and lagoon beaches everywhere.",
+    "wallColours": [
+      "#eae6da",
+      "#cfd6c8",
+      "#d8c9a6",
+      "#9ec3c4",
+      "#b8a98a",
+      "#f2f0ea"
+    ],
+    "roofColours": [
+      "#8a8f94",
+      "#a14a3c",
+      "#4f6f5c",
+      "#c9c9c4"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm"
+    ],
+    "ornament": "Houses raised on stilts for ventilation and flood protection, with raked end walls, front porches, louvre shutters and shaded verandahs; Home Island mosque with a green-and-gold minaret; hand-painted signs and simple palm-thatch palapa shade structures.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Type_2_Residences",
+        "what": "elevated asbestos-cement clad houses suited to local climate, raked end walls, front porch"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/West_Island_Mosque",
+        "what": "elevated single-storey timber frame with asbestos cement cladding and new metal roof"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Home_Island,_Cocos_(Keeling)_Islands",
+        "what": "Home Island mosque with a green-and-gold minaret, Cocos Malay village at Bantam"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/West_Island,_Cocos_(Keeling)_Islands",
+        "what": "government buildings, airport, general store and tourist accommodation on West Island"
+      }
+    ]
+  },
+  "places": {
+    "west-island-airport-west-island-airport": {
+      "venueId": "west-island-airport-west-island-airport",
+      "city": "west-island",
+      "name": "Cocos (Keeling) Islands Airport",
+      "archetype": "airport-terminal",
+      "subject": "Cocos Islands Airport: a small single-storey terminal with a covered forecourt on a long coral apron beside a 2.4 km runway, ringed by coconut palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "remote-island-terminal"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e4d6",
+          "#6f8f9a",
+          "#f2f0ea"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered drop-off"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1952 runway, terminal 1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cocos_(Keeling)_Islands_Airport",
+          "what": "RAF Royal Engineers built runway 1952; single asphalt runway 15/33, 2,441 x 45 m, elevation 3 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/184114973",
+          "what": "Airport Terminal building 28 x 23 m, 607 m2"
+        }
+      ],
+      "notes": "Terminal size (28 x 23 m) is from OSM. Appearance is typed. The terminal is the same building as Salty's Airport Cafe, so the cafe is its own small kiosk model. Shows the apron with a few light aircraft stands, no jet bridges."
+    },
+    "west-island-clinic": {
+      "venueId": "west-island-clinic",
+      "city": "west-island",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "A small Cocos Islands health clinic: a single-storey pale cladded building with a metal roof and a covered porch, raised slightly on piers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e4d6",
+          "#6f8f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198325318",
+          "what": "nearest building 20 x 15 m"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found. The 'nearest building' of 20 x 15 m is used only for scale."
+    },
+    "west-island-community-notices": {
+      "venueId": "west-island-community-notices",
+      "city": "west-island",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "A small West Island administration building: a single-storey fibre-cement clad office raised on piers with a pitched metal roof and a notice board by the entry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e8e4d6",
+          "#9ec3c4",
+          "#ffffff"
+        ],
+        "roofColour": "#a14a3c",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank notice board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Type_2_Residences",
+          "what": "elevated asbestos-cement clad houses with raked end walls typical of West Island"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found. Nearest OSM element is a storage tank, ignored."
+    },
+    "west-island-community-voting-game": {
+      "venueId": "west-island-community-voting-game",
+      "city": "west-island",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "A simple West Island community hall used for voting: a long single-storey hall with louvred windows, porch and shade palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8c9a6",
+          "#4f6f5c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/West_Island,_Cocos_(Keeling)_Islands",
+          "what": "government and community buildings on West Island"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found."
+    },
+    "west-island-community-workshop": {
+      "venueId": "west-island-community-workshop",
+      "city": "west-island",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "A small workshop shed on West Island: a single-storey metal-clad building with a roller door and a low pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9c9c4",
+          "#4f6f5c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198316205",
+          "what": "nearest building 7 x 6 m"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found."
+    },
+    "west-island-market-game": {
+      "venueId": "west-island-market-game",
+      "city": "west-island",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A tiny island market: a few stalls and sun umbrellas on coral sand under palms, with a shared tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8c9a6",
+          "#a14a3c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198316209",
+          "what": "containing building 8 x 8 m"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found."
+    },
+    "west-island-meal-stop": {
+      "venueId": "west-island-meal-stop",
+      "city": "west-island",
+      "name": "Salty's Airport Cafe",
+      "archetype": "restaurant",
+      "subject": "Salty's Airport Cafe, the small cafe at the terminal: a low airy cafe corner with a shaded outdoor terrace and umbrellas facing the apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e4d6",
+          "#6f8f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/184114973",
+          "what": "cafe inside the 28 x 23 m Airport Terminal building"
+        }
+      ],
+      "notes": "Name and location in the terminal are from the game data and OSM. No description of the cafe was found; it is a part of the airport terminal building, shown as a small separate cafe pavilion so it differs from the airport model."
+    },
+    "west-island-osm-node-4547647294": {
+      "venueId": "west-island-osm-node-4547647294",
+      "city": "west-island",
+      "name": "Yacht Club",
+      "archetype": "restaurant",
+      "subject": "Cocos yacht club: a simple clubhouse with a wide veranda and flagpole by the lagoon edge, palms and a jetty beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e8e4d6",
+          "#4f7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#a14a3c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198323733",
+          "what": "building 20 x 11 m"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found. Footprint (20 x 11 m) from OSM."
+    },
+    "west-island-osm-node-4547647295": {
+      "venueId": "west-island-osm-node-4547647295",
+      "city": "west-island",
+      "name": "Twiss Memorial",
+      "archetype": "monument",
+      "subject": "A small memorial on the south end of the island: a short stone plinth with a plaque, set in grass and crushed coral under palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 3,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8b4a8",
+          "#6a6a64",
+          "#e8e4d6"
+        ],
+        "roofColour": "#b8b4a8",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/West_Island,_Cocos_(Keeling)_Islands",
+          "what": "context: West Island"
+        }
+      ],
+      "notes": "The memorial's subject and form were not found anywhere. It is shown as a generic small plinth memorial; do not attach any facts."
+    },
+    "west-island-osm-way-1015047086": {
+      "venueId": "west-island-osm-way-1015047086",
+      "city": "west-island",
+      "name": "Sula Sula Servery",
+      "archetype": "restaurant",
+      "subject": "A tiny roadside cafe on the north of West Island: a small kiosk-like building with a metal roof and a couple of tables under palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9ec3c4",
+          "#d8c9a6",
+          "#ffffff"
+        ],
+        "roofColour": "#a14a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1015047086",
+          "what": "cafe building 5.4 x 3.6 m"
+        }
+      ],
+      "notes": "Only the OSM cafe tag and 5 x 4 m footprint are known. The details are typed."
+    },
+    "west-island-osm-way-1204779092": {
+      "venueId": "west-island-osm-way-1204779092",
+      "city": "west-island",
+      "name": "Muslim Cemetery",
+      "archetype": "park-landscape",
+      "subject": "A Cocos Malay Muslim cemetery on Home Island: low grave mounds with simple white markers on white coral sand under coconut palms, behind a low wall and gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f2f0ea",
+          "#b8b4a8",
+          "#6a6a64"
+        ],
+        "roofColour": "#f2f0ea",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1204779092",
+          "what": "grave_yard tagged tourism=attraction, 8 x 8 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Home_Island,_Cocos_(Keeling)_Islands",
+          "what": "Home Island Cemetery is heritage-listed; about 500 Cocos Malay residents, mostly Sunni Muslim"
+        }
+      ],
+      "notes": "The exact OSM way is small (8 x 8 m), so only the typical Islamic grave layout and palm setting are shown. Not identified with the heritage-listed Home Island Cemetery (not confirmed)."
+    },
+    "west-island-osm-way-198316207": {
+      "venueId": "west-island-osm-way-198316207",
+      "city": "west-island",
+      "name": "Surfer Girl Restaurant & Brewery",
+      "archetype": "restaurant",
+      "subject": "Surfer Girl Restaurant & Brewery: a small beach-style cafe building with a wide shaded deck, bright painted boards and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9ec3c4",
+          "#f2d27a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank surfboard-shaped board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198316207",
+          "what": "cafe building 10.7 x 6.4 m"
+        }
+      ],
+      "notes": "Only a cafe tag and 11 x 6 m footprint are known. The beach-bar look is typed from the name."
+    },
+    "west-island-quiet-reflection": {
+      "venueId": "west-island-quiet-reflection",
+      "city": "west-island",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "A small prayer hall on West Island: a single-storey white building with a pitched metal roof, raised on piers, a veranda and a plain doorway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f2f0ea",
+          "#4f6f5c",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6f5c",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/West_Island_Mosque",
+          "what": "West Island Mosque is an elevated single-storey timber frame with asbestos cement cladding and a metal roof"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found. Modelled on the documented elevated, fibre-cement clad West Island Mosque form, but it is not claimed to be that building."
+    },
+    "west-island-recreation": {
+      "venueId": "west-island-recreation",
+      "city": "west-island",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "A palm-shaded recreation area on West Island: a grassy and sandy open space with a pavilion shelter and a simple sports pitch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8c9a6",
+          "#4f6f5c",
+          "#ffffff"
+        ],
+        "roofColour": "#a14a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198324179",
+          "what": "nearest element: police station 25 x 20 m, single level, 3 m"
+        }
+      ],
+      "notes": "Typed from the city style because no description of the place was found. The nearest OSM building is the police station and is not the venue."
+    },
+    "west-island-transit": {
+      "venueId": "west-island-transit",
+      "city": "west-island",
+      "name": "Ferry to Home Island",
+      "archetype": "transport-station",
+      "subject": "The ferry jetty: a short concrete and timber pier with a small shaded waiting shelter and a small passenger boat alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b8b4a8",
+          "#6f8f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "small waiting shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Home_Island,_Cocos_(Keeling)_Islands",
+          "what": "Home Island is the only other inhabited island, reached across the lagoon"
+        }
+      ],
+      "notes": "The venue is placed on Home Island (the ferry destination). The jetty form is typed; nothing about it was found."
+    }
+  }
+}

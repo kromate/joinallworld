@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-museum-of-modern-art",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27art_moderne_d%27Alger.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rvince",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/mama3.jpg",
+   "used": "white neo-Moorish front: crenellated clock tower, horseshoe portal arch with blue tile surround, dark timber eaves, tile friezes, arched upper windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MaMa2012.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Saber68",
+   "view": "interior",
+   "used": "white octagonal glazed-dome atrium (interior only, not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/271099555",
+   "used": "footprint 63 x 62 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 0.667,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#2f4f7a",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d2",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-tower",
+   "at": [
+    -17,
+    -26
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 15,
+    "height": 14,
+    "colour": "#f5f2ea",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-tile-band",
+   "at": [
+    -17,
+    -26.1
+   ],
+   "params": {
+    "rect": [
+     7.3,
+     7.3
+    ],
+    "z0": 27,
+    "height": 1.6,
+    "colour": "#4c6f9c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-clock-face",
+   "at": [
+    -17,
+    -29.6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     0.3
+    ],
+    "z0": 19.5,
+    "height": 3.6,
+    "colour": "#c9dde0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-parapet",
+   "at": [
+    -17,
+    -26
+   ],
+   "params": {
+    "rect": [
+     7.3,
+     7.3
+    ],
+    "z0": 28.6,
+    "height": 1.4,
+    "colour": "#f5f2ea"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellation",
+   "id": "tower-crenel-front",
+   "at": [
+    -20.6,
+    -29.6,
+    30
+   ],
+   "params": {
+    "length": 7.2,
+    "height": 0.1,
+    "thickness": 0.5,
+    "merlon_height": 0.9,
+    "merlon_width": 0.9,
+    "pitch": 1.8,
+    "colour": "#f5f2ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tile-panel",
+   "at": [
+    -17,
+    -30.9
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "z0": 10.5,
+    "height": 3.4,
+    "colour": "#2f4f7a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal-surround",
+   "at": [
+    -17,
+    -30.8
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 0,
+    "height": 10.5,
+    "colour": "#3d6a9c"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "horseshoe",
+   "at": [
+    -17,
+    -31.2,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 9.6,
+    "depth": 0.7,
+    "archWidth": 4.6,
+    "springHeight": 4.8,
+    "pointed": false,
+    "colour": "#1c2f4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eaves",
+   "at": [
+    -17,
+    -31.4
+   ],
+   "params": {
+    "rect": [
+     11,
+     2.6
+    ],
+    "z0": 12.2,
+    "height": 0.9,
+    "colour": "#3d2a1e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "eaves-side",
+   "at": [
+    -4,
+    -31.4
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.2
+    ],
+    "z0": 9,
+    "height": 0.8,
+    "colour": "#3d2a1e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower and portal positions estimated on the irregular OSM plan (tower not exactly above the portal); no tile frieze or clock dial detail on tower, tower crenellation partly hidden; portal is a plain arch with flat blue surround, eaves are plain slabs; no triple arched window"
+ }
+}

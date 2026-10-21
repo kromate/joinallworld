@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-pavilion",
+ "name": "Parts test: colonial pavilion hospital",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 28
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward",
+   "footprint": {
+    "rect": [
+     11,
+     34
+    ]
+   },
+   "at": [
+    -16,
+    24
+   ],
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8452f",
+    "material": "clay-tile",
+    "pitch": 20
+   }
+  },
+  {
+   "type": "gallery",
+   "at": [
+    10,
+    -6.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 20,
+    "storeyHeight": 4.2,
+    "wallTop": 8.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "gallery",
+   "at": [
+    -12,
+    -6.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16,
+    "storeyHeight": 4.2,
+    "wallTop": 8.4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    -1,
+    -6.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 7,
+    "depth": 4,
+    "height": 5.2,
+    "columns": 4,
+    "steps": 4,
+    "baseHeight": 0.6
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -21.5,
+    24,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 32,
+    "depth": 2.3,
+    "eaveHeight": 2.8,
+    "attachHeight": 4.4,
+    "colour": "#ffffff",
+    "roofColour": "#a8452f"
+   }
+  },
+  {
+   "type": "roof-monitor",
+   "at": [
+    -16,
+    24,
+    7.0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "width": 2.2,
+    "height": 1.1
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -16,
+    41,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 18,
+    "width": 2.4,
+    "height": 2.9
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    30,
+    20,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 6.5,
+    "ground": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 6,
+  "extent": [
+   100,
+   80
+  ]
+ }
+}

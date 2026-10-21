@@ -1,0 +1,1541 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "mogadishu",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "mogadishu",
+    "climate": "tropical-maritime",
+    "vernacular": "Hot, dry-humid Indian Ocean coast city. The old districts (Hamar Weyne, Shangani) are tight lanes of 2-4 storey whitewashed coral-stone and limestone houses with flat roofs, carved doors and arched openings; the Italian-era core adds cream stucco Art Deco and classical public buildings with clay-tile roofs; modern Mogadishu is 2-6 storey concrete-frame blocks (many rebuilt after the civil war, some Turkish-built) in painted render with metal-sheet roofs, shopfronts and rooftop water tanks, often war-scarred; compounds are walled; sand ground, palms and neem.",
+    "wallColours": [
+      "#f1ece0",
+      "#e1c68f",
+      "#d8c29a",
+      "#c8a77a",
+      "#a9c4d4",
+      "#8fb09a",
+      "#b9b3a6"
+    ],
+    "roofColours": [
+      "#9a5a3c",
+      "#8f979c",
+      "#b3ab9d",
+      "#6e8a96"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "stucco",
+      "limestone",
+      "concrete",
+      "stone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "metal-sheet",
+      "corrugated",
+      "clay-tile"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "broadleaf"
+    ],
+    "ornament": "Banadiri arched doorways and carved wooden doors, coral-stone fretwork and lime plaster; mosque minarets (square or cylindrical) with domed mihrab (13th-century Fakr ad-Din type); Italian Art Deco fins, rounded corners and arcades on colonial buildings; bright painted shopfront signage; perimeter walls with razor wire in the modern city.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Somalia",
+        "what": "coral stone, sun-dried brick and limestone after Islam; Fakr ad-Din mosque 13th c. with marble and coral stone and domed mihrab; Italian-era classical buildings including Villa Somalia and Governor's Palace; later modernist buildings in chrome, steel and glass"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Villa_Somalia",
+        "what": "originally a large squarish Art Deco building with stucco walls and tiled roof on high ground, inaugurated 1936; renovated and reopened 2025"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mogadishu_Cathedral",
+        "what": "Norman/Gothic Revival Cefalu-based cathedral, 1923-28, twin 37.5 m towers; ruined"
+      }
+    ]
+  },
+  "places": {
+    "mogadishu-airport-mogadishu-airport": {
+      "venueId": "mogadishu-airport-mogadishu-airport",
+      "city": "mogadishu",
+      "name": "Aden Adde International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Aden Adde International Airport's 2015 Turkish-built terminal: a modern two-storey block with glazed front and flat canopy, plus a control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dde3e6",
+          "#8a97a1",
+          "#f2efe6"
+        ],
+        "roofColour": "#9aa1a6",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Aden_Adde_International_Airport",
+          "what": "new terminal inaugurated January 2015, built by Turkish firm Kozuva; capacity 1,000 passengers/hour; new immigration building 2013"
+        }
+      ],
+      "notes": "Opening date, builder and capacity are sourced. Appearance is typed (modern glazed terminal)."
+    },
+    "mogadishu-clinic": {
+      "venueId": "mogadishu-clinic",
+      "city": "mogadishu",
+      "name": "Martino Hospital",
+      "archetype": "hospital",
+      "subject": "A compact urban hospital in the Italian-era core: a three-storey stucco block with a tiled hip roof and a walled gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#eadfc3",
+          "#4d8a9a",
+          "#faf6ea"
+        ],
+        "roofColour": "#9a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found; typed from hospital type and city style."
+    },
+    "mogadishu-community-notices": {
+      "venueId": "mogadishu-community-notices",
+      "city": "mogadishu",
+      "name": "Ministry of Defence of Somalia",
+      "archetype": "civic-palace",
+      "subject": "A fortified ministry compound in Wardhiigley: a two-storey cream building behind blast walls and watchtowers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d7b2",
+          "#8d8a82",
+          "#f2ecdc"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "high blast wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "mast",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No exterior description found; typed civic compound. Security walls are part of the look."
+    },
+    "mogadishu-community-voting-game": {
+      "venueId": "mogadishu-community-voting-game",
+      "city": "mogadishu",
+      "name": "Degmada Deyniile (Daynile District)",
+      "archetype": "civic-small",
+      "subject": "A district council office: a modest two-storey painted-render building with a flag, a noticeboard and a walled yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d8ae",
+          "#5b8f78",
+          "#f6f0e0"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "District name only; typed as a district office on the northern edge of the city."
+    },
+    "mogadishu-community-workshop": {
+      "venueId": "mogadishu-community-workshop",
+      "city": "mogadishu",
+      "name": "Somali National University",
+      "archetype": "campus-block",
+      "subject": "Somalia's national university: long three-storey cream faculty blocks with open walkways around a courtyard, partly rebuilt",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dcb9",
+          "#b19a73",
+          "#f5efe0"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s, rebuilt 2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No exterior description found; typed. The original 1970s campus is Italian/Soviet-assisted; this model is a generic modernist campus."
+    },
+    "mogadishu-market-game": {
+      "venueId": "mogadishu-market-game",
+      "city": "mogadishu",
+      "name": "Fish Market",
+      "archetype": "market-open",
+      "subject": "Mogadishu's harbour fish market: open concrete-floored hall under steel-sheet roofs with wet-slab counters and boat-side stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9c4b4",
+          "#4f7a8f",
+          "#eee8d8"
+        ],
+        "roofColour": "#8f979c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as an open market shed by the port. Distinct from the inland Suuqa Wayn by its single large roofed hall."
+    },
+    "mogadishu-meal-stop": {
+      "venueId": "mogadishu-meal-stop",
+      "city": "mogadishu",
+      "name": "Tufaax Restaurant",
+      "archetype": "restaurant",
+      "subject": "A busy street restaurant: two-storey concrete building with colourful signage (blank), balcony and front terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9d9b0",
+          "#c2492f",
+          "#f5efe0"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure restaurant; typed."
+    },
+    "mogadishu-osm-node-4243421295": {
+      "venueId": "mogadishu-osm-node-4243421295",
+      "city": "mogadishu",
+      "name": "Afrikan Village residence",
+      "archetype": "hotel",
+      "subject": "A walled guesthouse compound: low two-storey rendered villas around a garden courtyard with palms",
+      "form": {
+        "footprint": "U",
+        "width_m": 42,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe3c4",
+          "#2f7a6a",
+          "#fbf7ea"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named residence/lodging; no description. Typed as a compound hotel."
+    },
+    "mogadishu-osm-node-9201097499": {
+      "venueId": "mogadishu-osm-node-9201097499",
+      "city": "mogadishu",
+      "name": "Battle of Mogadishu 1993: first Black Hawk down (Wolcott)",
+      "archetype": "monument",
+      "subject": "A street-corner commemorative marker on a dusty junction among two-storey concrete houses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "stele"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#bdb8ab",
+          "#8d8a82",
+          "#e5dfd0"
+        ],
+        "roofColour": "#8d8a82",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank commemorative board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1993 event; marker modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Marks the Super Six-One crash site of the 3-4 October 1993 battle. The real surroundings are a dense street of low houses; no depiction of conflict, only a simple stele on a corner. Taller and narrower than the Durant marker."
+    },
+    "mogadishu-osm-node-9201097500": {
+      "venueId": "mogadishu-osm-node-9201097500",
+      "city": "mogadishu",
+      "name": "Battle of Mogadishu 1993: second Black Hawk down (Durant)",
+      "archetype": "monument",
+      "subject": "A low commemorative plinth beside a lane near a block of limestone houses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "plinth"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#cfc6b1",
+          "#9a9484",
+          "#efe8d6"
+        ],
+        "roofColour": "#9a9484",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank plaque"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1993 event; marker modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Marks the Super Six-Four crash site. Shown as a wider, lower plinth than the Wolcott marker; no depiction of conflict."
+    },
+    "mogadishu-osm-node-9208024997": {
+      "venueId": "mogadishu-osm-node-9208024997",
+      "city": "mogadishu",
+      "name": "Ahmed Gurey Monument",
+      "archetype": "monument",
+      "subject": "A memorial to the 16th-century Imam Ahmad Gurey: a tall pale-stone pedestal with a standing bronze-coloured figure on a small plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d9d0bb",
+          "#7b6a4a",
+          "#f0eadb"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "figure on pedestal"
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name of a national hero (Imam Ahmad ibn Ibrahim al-Ghazi, 1506-1543). Pedestal-with-figure is typed from the monument type; I did not confirm its shape."
+    },
+    "mogadishu-osm-way-1024928619": {
+      "venueId": "mogadishu-osm-way-1024928619",
+      "city": "mogadishu",
+      "name": "Masjidka Afarta Minaaradood",
+      "archetype": "mosque-domed",
+      "subject": "The 'Four Minarets Mosque': a large modern white mosque with a central dome and a slender minaret at each corner",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f4f1e8",
+          "#2d6e5d",
+          "#d5c9a6"
+        ],
+        "roofColour": "#e0dccf",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "one at each corner (from the name 'four minarets')"
+        },
+        {
+          "id": "arches",
+          "count": 9
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the name is known (afarta minaaradood = four minarets); built form typed from Gulf/Turkish-funded Somali mosque type."
+    },
+    "mogadishu-osm-way-126234890": {
+      "venueId": "mogadishu-osm-way-126234890",
+      "city": "mogadishu",
+      "name": "Mogadishu Cathedral",
+      "archetype": "church-gothic",
+      "subject": "The ruined 1928 Norman-style cathedral: a twin-towered stone facade (37.5 m) with a three-nave Latin-cross plan, pointed arches, and the roof blown off",
+      "form": {
+        "footprint": "cross",
+        "width_m": 36,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#d8c8a0",
+          "#bfae88",
+          "#e9dec1"
+        ],
+        "roofColour": "#7a6d58",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin square towers 37.5 m"
+        },
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "pointed arches between piers"
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1923-1928",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mogadishu_Cathedral",
+          "what": "architect Antonio Vandone; modelled on Cefalu Cathedral, Sicily; Latin cross, three naves with pointed-arch piers; two 37.5 m towers; built 1923-28; largest cathedral in East Africa; heavily damaged 2008, roof gone but walls standing"
+        }
+      ],
+      "notes": "Towers (37.5 m), dates, three-nave Latin cross and pointed arches are sourced; the stone colour is typed (weathered buff limestone). The Cefalu-style frontal gable with a portal porch between the towers is inferred from the model and is not explicitly stated. Show it roofless/ruined: walls standing, no roof."
+    },
+    "mogadishu-osm-way-1362840018": {
+      "venueId": "mogadishu-osm-way-1362840018",
+      "city": "mogadishu",
+      "name": "DKM Boba & Waffles",
+      "archetype": "restaurant",
+      "subject": "A trendy little cafe: a single-storey bright shopfront with a pastel facade, big window and sidewalk seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1d6c4",
+          "#4fa3a5",
+          "#fffaf2"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Newly opened modern cafe on the northern edge; pastel scheme typed to differ from the other restaurants."
+    },
+    "mogadishu-osm-way-1371916687": {
+      "venueId": "mogadishu-osm-way-1371916687",
+      "city": "mogadishu",
+      "name": "Somali Marino Coast and Navy Guard",
+      "archetype": "civic-small",
+      "subject": "A coastal naval headquarters: a walled compound of long two-storey cream barracks and an office block near the port",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1d4b0",
+          "#5c6f7a",
+          "#f2ecdc"
+        ],
+        "roofColour": "#8f979c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only; no description found. Typed from a military compound; harbour-side near the port."
+    },
+    "mogadishu-osm-way-1373683895": {
+      "venueId": "mogadishu-osm-way-1373683895",
+      "city": "mogadishu",
+      "name": "SOS Hospital",
+      "archetype": "hospital",
+      "subject": "A private hospital in the north: three-storey cream block with a blue-green trimmed entrance and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d0",
+          "#2f8a9a",
+          "#faf7ec"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from hospital type; no description found."
+    },
+    "mogadishu-osm-way-1373751544": {
+      "venueId": "mogadishu-osm-way-1373751544",
+      "city": "mogadishu",
+      "name": "Somali Aviation Academy",
+      "archetype": "campus-block",
+      "subject": "A small training academy beside the airport: a long single-storey classroom block and a hangar-like workshop",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e2d4b0",
+          "#4a6a8a",
+          "#f4eedc"
+        ],
+        "roofColour": "#8f979c",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "small training tower"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Next to Aden Adde airport; no building description. Typed as an academy."
+    },
+    "mogadishu-osm-way-1373864082": {
+      "venueId": "mogadishu-osm-way-1373864082",
+      "city": "mogadishu",
+      "name": "Keysane Hospital",
+      "archetype": "hospital",
+      "subject": "Keysane Hospital: a larger public hospital with a long four-storey ward wing and a central entrance with a covered drop-off",
+      "form": {
+        "footprint": "H",
+        "width_m": 85,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcbb",
+          "#7d9a8a",
+          "#f6f0e2"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "punched",
+        "windowRatio": 0.26
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from public-hospital type; no description. Larger and H-shaped to differ from the private SOS and Martino hospitals."
+    },
+    "mogadishu-osm-way-308595147": {
+      "venueId": "mogadishu-osm-way-308595147",
+      "city": "mogadishu",
+      "name": "Suuqa Wayn",
+      "archetype": "market-open",
+      "subject": "Suuqa Wayn, a huge sprawl of tin-roofed stalls and lock-up shops along dusty lanes with fruit, cloth and goods on display",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#cdb88f",
+          "#5a7f93",
+          "#e9dfc8"
+        ],
+        "roofColour": "#8a9498",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "lock-ups",
+          "count": 16
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 14
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name means 'big market'; typed from market type. Larger and denser than the Fish Market."
+    },
+    "mogadishu-osm-way-5057908": {
+      "venueId": "mogadishu-osm-way-5057908",
+      "city": "mogadishu",
+      "name": "Eng. Yariisow Stadium",
+      "archetype": "stadium",
+      "subject": "Eng. Yariisow Stadium (formerly Konis): a compact single-tier oval with one covered main stand, a track, and four floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 125,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b6",
+          "#c0392b",
+          "#f1ece0"
+        ],
+        "roofColour": "#9aa1a6",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s, rebuilt 2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Football ground in the city centre; shape typed from the small-stadium type; smaller than the Mogadishu Stadium."
+    },
+    "mogadishu-osm-way-609620228": {
+      "venueId": "mogadishu-osm-way-609620228",
+      "city": "mogadishu",
+      "name": "Mogadishu Stadium",
+      "archetype": "stadium",
+      "subject": "Mogadishu Stadium (Chinese-built 1977, rebuilt 2013-20): a large 65,000-seat oval bowl with an AstroTurf pitch, scoreboard and masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d1c3",
+          "#2a6a9a",
+          "#f2eee3"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977, rebuilt 2013-2020",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mogadishu_Stadium",
+          "what": "capacity 65,000; opened 1977 with Chinese engineers under Siad Barre; AstroTurf laid 2020; scoreboard; wrecked in civil war, renovated 2013-2020"
+        }
+      ],
+      "notes": "Capacity/history sourced; stand colouring is typed. Clamped to 120 m by the generator."
+    },
+    "mogadishu-osm-way-713009128": {
+      "venueId": "mogadishu-osm-way-713009128",
+      "city": "mogadishu",
+      "name": "Zamzam University",
+      "archetype": "campus-block",
+      "subject": "A privately-run university on the Afgooye side: three-storey classroom blocks with arched corridors and a small mosque",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eae0c0",
+          "#3f7a6a",
+          "#f8f3e4"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "arched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed."
+    },
+    "mogadishu-quiet-reflection": {
+      "venueId": "mogadishu-quiet-reflection",
+      "city": "mogadishu",
+      "name": "Masjidka Isbahaysiga (Islamic Solidarity Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "Mogadishu's large Islamic Solidarity Mosque: broad white prayer hall with a large central dome, two tall minarets and a long arched facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 52,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f6f3ea",
+          "#2f7a62",
+          "#cdbd96"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "tall paired minarets ~45 m"
+        },
+        {
+          "id": "arches",
+          "count": 11
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Recognised as Mogadishu's main congregational mosque (Islamic Solidarity Mosque, built about 1987 with Gulf funding); not verified by retrieved sources. Form typed from Arab-Islamic mosque type."
+    },
+    "mogadishu-recreation": {
+      "venueId": "mogadishu-recreation",
+      "city": "mogadishu",
+      "name": "Xarunta Dalxiiska ee Degmada Dayniile",
+      "archetype": "park-landscape",
+      "subject": "A district tourism and recreation centre on the northern outskirts: sandy grounds with palms, picnic shelters and a gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b3",
+          "#6a9a74",
+          "#b9622f"
+        ],
+        "roofColour": "#a39a8b",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name means 'Daynile District tourism centre'; nothing else known. Typed."
+    },
+    "mogadishu-transit": {
+      "venueId": "mogadishu-transit",
+      "city": "mogadishu",
+      "name": "Isgoyska Xoosh",
+      "archetype": "transport-station",
+      "subject": "A busy junction (Xoosh crossing) on the Afgooye road: tarmac crossroads, a bus stop shelter, kiosks and a billboard frame",
+      "form": {
+        "footprint": "round",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "junction"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cdbf9f",
+          "#8d8a82",
+          "#ede6d4"
+        ],
+        "roofColour": "#9c9283",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Junction/crossroads (name means 'Xoosh junction'); typed."
+    }
+  }
+}

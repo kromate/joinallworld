@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DC_-_Guin%C3%A9_Melhor_-_Vista_da_Avenida_Marginal.jpg",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "detail",
+   "used": "low pale modernist block with tall glazed bays, curved parapet terrace walls, big fringed umbrellas, palms toward the estuary"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/600923366",
+   "used": "footprint (name match, Q55154854, inception 1969)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 90
+   },
+   "z0": 0,
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc8",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb",
+    "parapet": 0.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "rect": [
+     36,
+     13
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#e2dccb",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4.5,
+    "height": 4.2,
+    "colour": "#efe9d9"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -3,
+    -22,
+    1.2
+   ],
+   "params": {
+    "count": 5,
+    "spread": 10,
+    "radius": 2.7,
+    "height": 3.0,
+    "colours": [
+     "#cfcbbf",
+     "#e8e3d3",
+     "#b9b8ae"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    1.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -27.5,
+     0
+    ],
+    "end": [
+     12,
+     -27.5,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "core/fence-wall",
+      "params": {
+       "length": 4,
+       "height": 0.9,
+       "thickness": 0.35,
+       "kind": "wall",
+       "colour": "#ece7d9"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -16,
+    1.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.35,
+      0.9
+     ]
+    },
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 17,
+     "startDeg": 205,
+     "endDeg": 335,
+     "plane": "xy"
+    },
+    "colour": "#efeadc"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    -25,
+    1.2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 5,
+    "line": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "only a b/w postcard exists; terrace slab, curved parapet, large pale fringeless umbrellas, palms on terrace now match; umbrella fringes/tilt and moulded chairs missing, building is the OSM zigzag outline (blue cast is sky lighting), no estuary"
+ }
+}

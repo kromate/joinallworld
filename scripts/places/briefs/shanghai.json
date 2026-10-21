@@ -1,0 +1,1617 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "shanghai",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "shanghai",
+  "climate": "temperate",
+  "vernacular": "Dense high-rise city of cream and white tile-clad or rendered 1990s-2000s residential slabs and towers with air-conditioner boxes, glass-and-metal skyscrapers in Pudong and Puxi, and surviving lilong (shikumen) lanes of grey and red brick two- and three-storey houses with tiled pitched roofs. Colonial-era Bund and Nanjing Road blocks are stone-faced Art Deco and neoclassical, five to ten storeys. Street trees are plane and camphor.",
+  "wallColours": [
+   "#d9d2c3",
+   "#e8e4dc",
+   "#a8553e",
+   "#8e8a84",
+   "#b9a58a",
+   "#6e7f8c"
+  ],
+  "roofColours": [
+   "#5f625f",
+   "#a0452f",
+   "#8b9096",
+   "#9a9a96"
+  ],
+  "wallMaterials": [
+   "painted-render",
+   "tile-cladding",
+   "concrete",
+   "red-brick",
+   "glass-curtain",
+   "stone",
+   "render"
+  ],
+  "roofMaterials": [
+   "clay-tile",
+   "concrete",
+   "membrane",
+   "metal-sheet"
+  ],
+  "ground": "paving",
+  "vegetation": [
+   "broadleaf",
+   "conifer"
+  ],
+  "ornament": "Shikumen stone-framed gateways with black-lacquered doors and brick walls in red and grey; Art Deco stone fronts on Nanjing Road and the Bund; upturned-eave temple roofs; Jiangnan garden whitewashed walls with grey-tile roofs, moon gates and lattice windows; neon signboards on commercial streets.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Shikumen",
+    "what": "shikumen: load-bearing brick walls, stone gate frames, black lacquered doors, red-brick developments, 2-3 storeys"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Nanjing_Road",
+    "what": "East Nanjing Road pedestrian street about 28 m wide with early-20th-century department stores and historic hotels"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Guyi_Garden",
+    "what": "Jiangnan classical garden style, bamboo, pavilions, ponds"
+   }
+  ]
+ },
+ "places": {
+  "shanghai-airport-shanghai-airport": {
+   "venueId": "shanghai-airport-shanghai-airport",
+   "city": "shanghai",
+   "name": "Shanghai Pudong International Airport",
+   "archetype": "airport-terminal",
+   "subject": "Pudong Terminal 2 (2008) landside frontage: a long, low terminal under a wave-like white steel roof, with the control tower behind",
+   "form": {
+    "footprint": "rect",
+    "width_m": 420,
+    "depth_m": 110,
+    "storeys": 3,
+    "height_m": 32,
+    "roof": "wave",
+    "variant": "long-wave",
+    "wings": 1
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "metal-cladding",
+    "colours": [
+     "#cfd9de",
+     "#f0f1ef",
+     "#8a949b"
+    ],
+    "roofColour": "#e6e8e8",
+    "roofMaterial": "metal-sheet",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "features": [
+    {
+     "id": "curved-canopy",
+     "count": 1,
+     "note": "wave-shaped roof overhanging the departure kerb"
+    },
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "jet-bridge",
+     "count": 6
+    },
+    {
+     "id": "control-tower",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "high-tech",
+   "era": "2008 (Terminal 2); Terminal 1 1999",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Shanghai_Pudong_International_Airport",
+     "what": "T1 opened 1 Oct 1999; T2 opened 26 Mar 2008, echoes T1, slightly larger and \"more closely resembles a wave\"; H-shaped satellite 2019"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/39023151",
+     "what": "OSM T2 terminal footprint about 1.43 km x 0.32 km including piers"
+    }
+   ],
+   "notes": "Whole T2 complex is ~1.4 km long; the brief shows the central landside portion (clamped to ~120 m by the generator). Wave roof and glass frontage come from the Wikipedia description plus general knowledge of the terminal; exact colours are estimated."
+  },
+  "shanghai-clinic": {
+   "venueId": "shanghai-clinic",
+   "city": "shanghai",
+   "name": "Fudan University Children Hospital",
+   "archetype": "hospital",
+   "subject": "Minhang campus of the Children's Hospital of Fudan University: a modern mid-rise hospital block in pale render and glass",
+   "form": {
+    "footprint": "rect",
+    "width_m": 110,
+    "depth_m": 45,
+    "storeys": 10,
+    "height_m": 42,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e8e4dc",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/242365340",
+     "what": "hospital campus about 400 m x 266 m, wikidata Q18111156"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; the hospital campus extent is measured (OSM) but the building appearance is a guess for a modern Chinese children's hospital."
+  },
+  "shanghai-community-notices": {
+   "venueId": "shanghai-community-notices",
+   "city": "shanghai",
+   "name": "Pudong New District Government",
+   "archetype": "civic-palace",
+   "subject": "Pudong district government complex: a broad curved-plan stone-and-glass administrative block",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 140,
+    "depth_m": 70,
+    "storeys": 12,
+    "height_m": 50,
+    "roof": "flat",
+    "wings": 1
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "glass-curtain",
+    "colours": [
+     "#d8d2c4",
+     "#7f93a0",
+     "#f0ede6"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "membrane",
+    "windows": "punched",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "flags",
+     "count": 5
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "portico",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "1990s-2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/165023558",
+     "what": "unnamed OSM building 147 m x 82 m with a curved irregular footprint at the venue position"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; only the curved footprint (147 m x 82 m) is measured; height and cladding are estimates."
+  },
+  "shanghai-community-voting-game": {
+   "venueId": "shanghai-community-voting-game",
+   "city": "shanghai",
+   "name": "Shanghai Municipal People's Government",
+   "archetype": "civic-palace",
+   "subject": "The municipal government office on Renmin Avenue facing People's Square: a broad, formal slab with a taller central block",
+   "form": {
+    "footprint": "rect",
+    "width_m": 120,
+    "depth_m": 50,
+    "storeys": 12,
+    "height_m": 50,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "glass-curtain",
+    "colours": [
+     "#cfc8b8",
+     "#7d8f9b",
+     "#eeeae0"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "colonnade",
+     "count": 1,
+     "note": "formal entrance bay"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1990s",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/178801539",
+     "what": "OSM office/townhall, height 50 m, footprint 178 m x 83 m, wikidata Q10867824"
+    }
+   ],
+   "notes": "Height (50 m) and footprint are measured from OSM; the pale granite-like cladding and formal central bay are a guess from the type of building. Appearance not verified from photo descriptions."
+  },
+  "shanghai-community-workshop": {
+   "venueId": "shanghai-community-workshop",
+   "city": "shanghai",
+   "name": "Shanghai University (Baoshan Campus)",
+   "archetype": "campus-block",
+   "subject": "A long five-storey teaching block (Building D) on the Baoshan campus",
+   "form": {
+    "footprint": "rect",
+    "width_m": 134,
+    "depth_m": 31,
+    "storeys": 5,
+    "height_m": 21,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "red-brick",
+    "colours": [
+     "#d9d3c5",
+     "#a8553e",
+     "#f0ece4"
+    ],
+    "roofColour": "#8e8a84",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/696557644",
+     "what": "building \"D楼\", building=university, 134 m x 31 m"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; only the building footprint is measured."
+  },
+  "shanghai-market-game": {
+   "venueId": "shanghai-market-game",
+   "city": "shanghai",
+   "name": "Global Harbor",
+   "archetype": "mall",
+   "subject": "Global Harbor mall in Putuo: a huge glass-roofed shopping podium with two 248 m twin towers rising behind it",
+   "form": {
+    "footprint": "rect",
+    "width_m": 380,
+    "depth_m": 135,
+    "storeys": 6,
+    "height_m": 36,
+    "roof": "flat",
+    "variant": "podium-with-twin-towers",
+    "wings": 2
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "glass-curtain",
+    "colours": [
+     "#cfc6b4",
+     "#4d6478",
+     "#ece7dc"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "glass",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "podium",
+     "count": 1
+    },
+    {
+     "id": "crown",
+     "count": 2,
+     "note": "twin 248 m towers, 58 floors, behind the podium"
+    },
+    {
+     "id": "neon-strip",
+     "count": 2,
+     "note": "animated colour-changing tower lighting"
+    },
+    {
+     "id": "signage-board",
+     "count": 4
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "postmodern",
+   "era": "2013",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Global_Harbor",
+     "what": "twin skyscrapers 248 m and 58 floors above a six-level mall (two underground), animated colour lighting, opened 5 July 2013, Chapman Taylor, rococo/baroque interior"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/375224849",
+     "what": "OSM commercial building 387 m x 135 m"
+    }
+   ],
+   "notes": "The twin towers and glass roof are the recognisable parts. The stone cladding colour on the podium is estimated."
+  },
+  "shanghai-meal-stop": {
+   "venueId": "shanghai-meal-stop",
+   "city": "shanghai",
+   "name": "沙县小吃",
+   "archetype": "restaurant",
+   "subject": "A small Shaxian-snacks eatery unit in a low retail row: tiled storefront with a plain signboard and a roll-up shutter",
+   "form": {
+    "footprint": "rect",
+    "width_m": 14,
+    "depth_m": 12,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "painted-render",
+    "colours": [
+     "#ece9e1",
+     "#c8452f",
+     "#6e7f8c"
+    ],
+    "roofColour": "#8e8a84",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "shopfront",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank board in neutral red, no lettering"
+    },
+    {
+     "id": "awning",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1389553473",
+     "what": "retail building 79 m x 30 m at the venue position (the eatery is one unit)"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; Shaxian-snack shops are ubiquitous small eateries with a simple white-tiled front and a coloured fascia board; no photo-level detail for this unit."
+  },
+  "shanghai-osm-node-4880999164": {
+   "venueId": "shanghai-osm-node-4880999164",
+   "city": "shanghai",
+   "name": "Shanghai Children Museum",
+   "archetype": "museum-theatre",
+   "subject": "A small two-storey children's museum building in light render with bright accent panels",
+   "form": {
+    "footprint": "rect",
+    "width_m": 12,
+    "depth_m": 12,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "metal-cladding",
+    "colours": [
+     "#ece6d6",
+     "#e0a13a",
+     "#ffffff"
+    ],
+    "roofColour": "#8e8a84",
+    "roofMaterial": "membrane",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1260397124",
+     "what": "building tagged museum, 12 m x 12 m"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; only the 12 m x 12 m footprint is measured; colours are placeholders."
+  },
+  "shanghai-osm-relation-18781565": {
+   "venueId": "shanghai-osm-relation-18781565",
+   "city": "shanghai",
+   "name": "Tongji University (Huxi Campus)",
+   "archetype": "campus-block",
+   "subject": "A six-storey teaching block on the Tongji Huxi campus in brick-trimmed render",
+   "form": {
+    "footprint": "rect",
+    "width_m": 90,
+    "depth_m": 30,
+    "storeys": 6,
+    "height_m": 24,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "red-brick",
+    "colours": [
+     "#c9bda8",
+     "#a0563f",
+     "#f0ece4"
+    ],
+    "roofColour": "#8e8a84",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1950s-2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/relation/18781565",
+     "what": "campus about 768 m x 607 m, wikidata Q16947"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; campus extent measured; building style is a typical Shanghai university block."
+  },
+  "shanghai-osm-relation-5390610": {
+   "venueId": "shanghai-osm-relation-5390610",
+   "city": "shanghai",
+   "name": "ShanghaiTech University (Zhangjiang Campus)",
+   "archetype": "campus-block",
+   "subject": "A modern ShanghaiTech academic block with a long covered walkway in white panels and glass",
+   "form": {
+    "footprint": "rect",
+    "width_m": 100,
+    "depth_m": 28,
+    "storeys": 5,
+    "height_m": 22,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e6e8e8",
+     "#7f93a0",
+     "#b8bcbe"
+    ],
+    "roofColour": "#9a9a96",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.45
+   },
+   "features": [
+    {
+     "id": "flat-canopy",
+     "count": 1,
+     "note": "long covered walkway"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2013-2014",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/832336714",
+     "what": "OSM building=roof 182 m x 27 m (covered walkway) inside the campus"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; only a long roof/walkway structure is measured; campus opened around 2014."
+  },
+  "shanghai-osm-way-1363229598": {
+   "venueId": "shanghai-osm-way-1363229598",
+   "city": "shanghai",
+   "name": "上海市江桥批发市场",
+   "archetype": "market-hall",
+   "subject": "Jiangqiao wholesale market: a very large low steel-shed trading hall",
+   "form": {
+    "footprint": "rect",
+    "width_m": 300,
+    "depth_m": 250,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "concrete",
+    "colours": [
+     "#c9ccce",
+     "#4f7ea8",
+     "#a9acae"
+    ],
+    "roofColour": "#6e8aa2",
+    "roofMaterial": "metal-sheet",
+    "windows": "louvre",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "sheds",
+     "count": 6
+    },
+    {
+     "id": "stalls",
+     "count": 40
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "none",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "2010s-2020s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1549236410",
+     "what": "OSM marketplace building 309 m x 251 m, area 5.2 ha"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; footprint measured; roof is shown as repeated sheds because large wholesale halls are portal-frame sheds."
+  },
+  "shanghai-osm-way-15783341": {
+   "venueId": "shanghai-osm-way-15783341",
+   "city": "shanghai",
+   "name": "Shanghai Stadium",
+   "archetype": "stadium",
+   "subject": "Shanghai Stadium (Xuhui, 1997): a large oval bowl under a continuous saddle-shaped white membrane canopy on steel trusses",
+   "form": {
+    "footprint": "oval",
+    "width_m": 271,
+    "depth_m": 267,
+    "storeys": 5,
+    "height_m": 55,
+    "roof": "curved",
+    "variant": "saddle-canopy"
+   },
+   "facade": {
+    "material": "exposed-concrete",
+    "accent": "metal-cladding",
+    "colours": [
+     "#cfcfca",
+     "#f0f0ee",
+     "#8a8f93"
+    ],
+    "roofColour": "#f0f0ee",
+    "roofMaterial": "membrane",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "stand-roof",
+     "count": 1,
+     "note": "saddle-shaped white canopy"
+    },
+    {
+     "id": "ring-roof",
+     "count": 1
+    },
+    {
+     "id": "floodlights",
+     "count": 8
+    },
+    {
+     "id": "scoreboard",
+     "count": 2
+    },
+    {
+     "id": "flags",
+     "count": 12
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "high-tech",
+   "era": "1997; reconstructed 2020-2022",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Shanghai_Stadium",
+     "what": "opened 1997 for the 8th National Games; capacity 72,000 after 2020-22 reconstruction (was 56,842); track removed, football-specific"
+    },
+    {
+     "url": "https://www.openstreetmap.org/relation/9073794",
+     "what": "OSM stadium footprint 271 m x 267 m, wikidata Q739528"
+    }
+   ],
+   "notes": "Footprint, era and reconstruction are sourced. Saddle-shaped white membrane canopy over steel trusses is from general knowledge of the stadium and was not confirmed by a fetched page; roof height is estimated."
+  },
+  "shanghai-osm-way-183944730": {
+   "venueId": "shanghai-osm-way-183944730",
+   "city": "shanghai",
+   "name": "Guyi Garden",
+   "archetype": "park-landscape",
+   "subject": "Guyi Garden in Nanxiang: a Jiangnan bamboo garden with whitewashed walls, grey-tile pavilions, ponds and a zigzag bridge",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 220,
+    "depth_m": 110,
+    "storeys": 1,
+    "height_m": 7,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#ece8dc",
+     "#7a4a32",
+     "#4f5a60"
+    ],
+    "roofColour": "#4f5a60",
+    "roofMaterial": "clay-tile",
+    "windows": "screen",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 6,
+     "note": "grey-tile pavilions with upturned eaves incl. Ming crane pavilion"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1,
+     "note": "whitewashed garden walls"
+    },
+    {
+     "id": "gate",
+     "count": 2
+    },
+    {
+     "id": "arches",
+     "count": 1,
+     "note": "zigzag bridge"
+    },
+    {
+     "id": "pier",
+     "count": 1,
+     "note": "marble boat on the pond"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "water"
+   },
+   "style": "east-asian",
+   "era": "Ming (16th C), remodelled 1746",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Guyi_Garden",
+     "what": "Jiangnan classical garden in Nanxiang; Ming origins (Jiajing era), remodelled 1746; bamboo, crane pavilion, Plum Hall, Marble Boat, Goose Pond, Zigzag Bridge"
+    }
+   ],
+   "notes": "Walls and tile colours are typical of Jiangnan gardens; the specific hex values are estimated. Bamboo is the garden's identity (shown as broadleaf trees)."
+  },
+  "shanghai-osm-way-192206043": {
+   "venueId": "shanghai-osm-way-192206043",
+   "city": "shanghai",
+   "name": "Xinhua Hospital",
+   "archetype": "hospital",
+   "subject": "Xinhua Hospital in Yangpu: a large teaching hospital with a tall tile-and-render inpatient tower",
+   "form": {
+    "footprint": "rect",
+    "width_m": 90,
+    "depth_m": 40,
+    "storeys": 14,
+    "height_m": 56,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e2ddd0",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1958 hospital, newer towers 2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/192206043",
+     "what": "hospital campus 393 m x 292 m, wikidata Q88450"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; campus extent measured; the inpatient tower height and cladding are estimates."
+  },
+  "shanghai-osm-way-24448592": {
+   "venueId": "shanghai-osm-way-24448592",
+   "city": "shanghai",
+   "name": "Hongkou Football Stadium",
+   "archetype": "stadium",
+   "subject": "Hongkou Football Stadium: a football-only oval bowl with a cream-coloured roof canopy over three tiers",
+   "form": {
+    "footprint": "oval",
+    "width_m": 224,
+    "depth_m": 207,
+    "storeys": 3,
+    "height_m": 33,
+    "roof": "curved"
+   },
+   "facade": {
+    "material": "exposed-concrete",
+    "accent": "metal-cladding",
+    "colours": [
+     "#d4cfc3",
+     "#eadfc3",
+     "#8a8f93"
+    ],
+    "roofColour": "#eadfc3",
+    "roofMaterial": "membrane",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "stand-roof",
+     "count": 1
+    },
+    {
+     "id": "floodlights",
+     "count": 6
+    },
+    {
+     "id": "scoreboard",
+     "count": 2
+    },
+    {
+     "id": "flags",
+     "count": 10
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1999",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Hongkou_Football_Stadium",
+     "what": "rebuilt 1999 on site of older stadium, first football-specific stadium in China, capacity 33,060, beside Lu Xun Park"
+    },
+    {
+     "url": "https://www.openstreetmap.org/relation/8677523",
+     "what": "OSM: building=stadium, 3 levels, roof colour #eadfc3, 224 m x 207 m"
+    }
+   ],
+   "notes": "Levels, roof colour (cream) and footprint come from OSM tags; roof shape is a plausible partial canopy, not verified."
+  },
+  "shanghai-osm-way-279318210": {
+   "venueId": "shanghai-osm-way-279318210",
+   "city": "shanghai",
+   "name": "Church of Jesus, Xinzhuang",
+   "archetype": "church-modern",
+   "subject": "Xinzhuang Protestant church: a modest two-storey pitched-roof hall with a cross on a small tower",
+   "form": {
+    "footprint": "rect",
+    "width_m": 44,
+    "depth_m": 29,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "brick",
+    "colours": [
+     "#e8e2d4",
+     "#a8553e",
+     "#ffffff"
+    ],
+    "roofColour": "#7a6a5a",
+    "roofMaterial": "clay-tile",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "spire",
+     "count": 1,
+     "note": "cross on small tower"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/279318210",
+     "what": "church footprint 44 m x 29 m, wikidata Q16928594"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; footprint measured; the look of the church is not described in any gathered source."
+  },
+  "shanghai-osm-way-328312304": {
+   "venueId": "shanghai-osm-way-328312304",
+   "city": "shanghai",
+   "name": "Shanghai Disney Resort",
+   "archetype": "heritage-fort",
+   "subject": "Enchanted Storybook Castle at Shanghai Disneyland: a 60 m fairy-tale castle of cream towers with blue-turquoise spired roofs",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 80,
+    "depth_m": 60,
+    "storeys": 6,
+    "height_m": 60,
+    "roof": "pyramidal",
+    "variant": "fairytale-castle",
+    "wings": 4
+   },
+   "facade": {
+    "material": "stucco",
+    "accent": "limestone",
+    "colours": [
+     "#efe6d8",
+     "#d8b04c",
+     "#c9d6dc"
+    ],
+    "roofColour": "#4aa6b0",
+    "roofMaterial": "copper",
+    "windows": "arched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "spire",
+     "count": 8,
+     "note": "slender turrets with coloured conical roofs"
+    },
+    {
+     "id": "bell-tower",
+     "count": 1,
+     "note": "tallest tower topped with peony sculpture"
+    },
+    {
+     "id": "pinnacles",
+     "count": 10
+    },
+    {
+     "id": "flags",
+     "count": 6
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "crenellation",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "postmodern",
+   "era": "2016",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Enchanted_Storybook_Castle",
+     "what": "60 m tall, tallest Disney castle, drawn from Cinderella and Sleeping Beauty castles, tallest tower topped with a peony sculpture, houses walkthrough attraction, dining and boat ride"
+    }
+   ],
+   "notes": "The OSM element at the venue is the Disney Resort metro station, but the recognisable place is the castle. Colours (cream walls, teal roofs, gold) are from general knowledge, not a fetched source."
+  },
+  "shanghai-osm-way-404699628": {
+   "venueId": "shanghai-osm-way-404699628",
+   "city": "shanghai",
+   "name": "Jade Buddha Temple",
+   "archetype": "temple-asian",
+   "subject": "Jade Buddha Temple: saffron-yellow walled Buddhist halls with red columns and double-eave grey-tile hip-and-gable roofs",
+   "form": {
+    "footprint": "rect",
+    "width_m": 70,
+    "depth_m": 43,
+    "storeys": 2,
+    "height_m": 20,
+    "roof": "hip",
+    "variant": "double-eave-hall",
+    "wings": 2
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "timber",
+    "colours": [
+     "#d6a23c",
+     "#8c2f27",
+     "#e9e0c8"
+    ],
+    "roofColour": "#4f5a60",
+    "roofMaterial": "clay-tile",
+    "windows": "screen",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 1,
+     "note": "double-eave upturned roof on main hall"
+    },
+    {
+     "id": "courtyard",
+     "count": 2
+    },
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "front chamber of the Four Heavenly Kings"
+    },
+    {
+     "id": "bell-tower",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "east-asian",
+   "era": "founded 1882, rebuilt 1918-1928",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Jade_Buddha_Temple",
+     "what": "founded 1882, current temple built 1918-1928; Chamber of Four Heavenly Kings at front, Grand Hall (Mahavira) with three golden Buddhas, Jade Buddha Chamber upstairs; Song-style details not given by the article"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/1246090704",
+     "what": "OSM main hall footprint 71 m x 43 m"
+    }
+   ],
+   "notes": "Layout is sourced; the yellow walls with red timber and grey-tile double-eave roofs is the commonly seen look of the temple (general knowledge, not confirmed by the fetched page)."
+  },
+  "shanghai-osm-way-462007561": {
+   "venueId": "shanghai-osm-way-462007561",
+   "city": "shanghai",
+   "name": "Shanghai Zoo",
+   "archetype": "park-landscape",
+   "subject": "Shanghai Zoo: a very large landscaped garden-zoo on a former golf course with lawns, Swan Lake and animal houses",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 400,
+    "depth_m": 200,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "gable",
+    "variant": "zoo"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "timber",
+    "colours": [
+     "#e8e4dc",
+     "#8b6b4a",
+     "#ffffff"
+    ],
+    "roofColour": "#a0452f",
+    "roofMaterial": "clay-tile",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "main entrance with ticket booths"
+    },
+    {
+     "id": "pavilion",
+     "count": 4
+    },
+    {
+     "id": "kiosk",
+     "count": 3
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "1954 (park); golf club 1916",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Shanghai_Zoo",
+     "what": "6,000+ animals, ~100,000 trees from ~600 species, lawns ~100,000 m2, Swan Lake, former Hung-Jao Golf Club (1916), opened 1954, Hongqiao Rd 2368"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/462007561",
+     "what": "OSM zoo 1127 m x 958 m, 69 ha"
+    }
+   ],
+   "notes": "Park layout is sourced; building styles inside (entrance gate, animal houses) are not described in gathered sources."
+  },
+  "shanghai-osm-way-474607998": {
+   "venueId": "shanghai-osm-way-474607998",
+   "city": "shanghai",
+   "name": "Shanghai Sanda University",
+   "archetype": "campus-block",
+   "subject": "A private university campus block in pale render with red-brick accents",
+   "form": {
+    "footprint": "U",
+    "width_m": 90,
+    "depth_m": 45,
+    "storeys": 5,
+    "height_m": 21,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "red-brick",
+    "colours": [
+     "#e0d8c4",
+     "#a8553e",
+     "#ffffff"
+    ],
+    "roofColour": "#a0452f",
+    "roofMaterial": "clay-tile",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "clock-tower",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "colonial",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/474607998",
+     "what": "university grounds 605 m x 450 m, wikidata Q7415930"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; campus extent measured; building style guessed."
+  },
+  "shanghai-osm-way-51051520": {
+   "venueId": "shanghai-osm-way-51051520",
+   "city": "shanghai",
+   "name": "Shanghai Tenth People's Hospital",
+   "archetype": "hospital",
+   "subject": "A large urban teaching hospital: a tall tile-and-glass inpatient block over a wide podium",
+   "form": {
+    "footprint": "rect",
+    "width_m": 80,
+    "depth_m": 36,
+    "storeys": 14,
+    "height_m": 56,
+    "roof": "flat",
+    "wings": 2
+   },
+   "facade": {
+    "material": "tile-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e0dacb",
+     "#7f95a8",
+     "#ffffff"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "membrane",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "modernist",
+   "era": "1910 foundation, buildings 1990s-2010s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/51051520",
+     "what": "hospital grounds 264 m x 252 m, wikidata Q23198"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; campus extent measured; building massing guessed."
+  },
+  "shanghai-osm-way-712187766": {
+   "venueId": "shanghai-osm-way-712187766",
+   "city": "shanghai",
+   "name": "蔓趣公园",
+   "archetype": "park-landscape",
+   "subject": "A small neighbourhood park with lawns, winding paths, a pavilion and shade trees",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 150,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": null,
+    "colours": [
+     "#a58a64",
+     "#d9d2c3",
+     "#5f625f"
+    ],
+    "roofColour": "#5f625f",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 2
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "contemporary",
+   "era": "2010s-2020s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/712187766",
+     "what": "leisure=park 187 m x 163 m, 1.9 ha"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; only the park outline is known."
+  },
+  "shanghai-quiet-reflection": {
+   "venueId": "shanghai-quiet-reflection",
+   "city": "shanghai",
+   "name": "Jiangwan Mosque",
+   "archetype": "mosque-domed",
+   "subject": "Jiangwan Mosque in Yangpu: a compact domed prayer hall with one minaret",
+   "form": {
+    "footprint": "rect",
+    "width_m": 34,
+    "depth_m": 32,
+    "storeys": 3,
+    "height_m": 14,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "whitewash",
+    "colours": [
+     "#ece8dc",
+     "#2f7a5a",
+     "#ffffff"
+    ],
+    "roofColour": "#2f7a5a",
+    "roofMaterial": "concrete",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "minaret",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "arab-islamic",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/463240119",
+     "what": "mosque footprint 34 m x 32 m, wikidata Q20984155"
+    }
+   ],
+   "notes": "Typed from the Shanghai city style; footprint is measured; dome and minaret styling and the green accent are an assumed typical Chinese city mosque, not verified (Shanghai mosques also exist in Chinese-palatial style)."
+  },
+  "shanghai-recreation": {
+   "venueId": "shanghai-recreation",
+   "city": "shanghai",
+   "name": "Binjiang Forest Park",
+   "archetype": "park-landscape",
+   "subject": "Binjiang Forest Park on the Yangtze shore at Baoshan: wooded riverside park with lawns, paths and viewing pavilions",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 120,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": null,
+    "colours": [
+     "#a58a64",
+     "#d9d2c3",
+     "#5f625f"
+    ],
+    "roofColour": "#5f625f",
+    "roofMaterial": "clay-tile",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 3
+    },
+    {
+     "id": "pier",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "water"
+   },
+   "style": "contemporary",
+   "era": "2000s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Typed from the Shanghai city style; no OSM element matched the venue and no description was gathered, so this is a generic riverside forest park."
+  },
+  "shanghai-transit": {
+   "venueId": "shanghai-transit",
+   "city": "shanghai",
+   "name": "East Nanjing Road",
+   "archetype": "shophouse",
+   "subject": "East Nanjing Road pedestrian street: continuous 5-8 storey early-20th-century stone-faced department stores and shops with neon signboards",
+   "form": {
+    "footprint": "rect",
+    "width_m": 120,
+    "depth_m": 20,
+    "storeys": 7,
+    "height_m": 28,
+    "roof": "flat",
+    "variant": "pedestrian-street-frontage"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "painted-render",
+    "colours": [
+     "#c9c2b2",
+     "#a8553e",
+     "#ece7dc"
+    ],
+    "roofColour": "#8b9096",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "neon-strip",
+     "count": 6
+    },
+    {
+     "id": "signage-board",
+     "count": 12,
+     "note": "blank neutral boards"
+    },
+    {
+     "id": "awning",
+     "count": 4
+    },
+    {
+     "id": "shopfront",
+     "count": 8
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "art-deco",
+   "era": "1920s-1930s buildings, pedestrianised 1999-2000",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Nanjing_Road",
+     "what": "pedestrian section about 1.2 km, width ~28 m, eastern section has the oldest and largest department stores, Peace Hotel at the Bund end"
+    },
+    {
+     "url": "https://www.openstreetmap.org/way/160023919",
+     "what": "OSM attraction polygon 474 m x 51 m"
+    }
+   ],
+   "notes": "Street width and the commercial character are sourced; the 5-8 storey stone fronts and neon boards are general knowledge. The model is a street-frontage slice, not a station."
+  }
+ }
+}

@@ -1,0 +1,1314 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "palikir",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "palikir",
+    "climate": "rainforest",
+    "vernacular": "Wet tropical Micronesian island: low concrete-block buildings painted white or cream with corrugated roofs, open thatched huts (nahs) and Pohnpeian basalt stonework, government buildings in a planned capital with lawns, remains of Spanish, German and Japanese colonial eras, and dense green forest with palms and breadfruit.",
+    "wallColours": [
+      "#e9e4d6",
+      "#f2efe3",
+      "#d9d3c0",
+      "#bfc7c0",
+      "#c9b99a",
+      "#e8d9a8",
+      "#8fa89a"
+    ],
+    "roofColours": [
+      "#7b8b95",
+      "#a33b2d",
+      "#4f6b55",
+      "#a8855a"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "render",
+      "timber",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Dark basalt-column stonework (Nan Madol), thatched open huts (nahs), flags on government forecourts, white churches with small towers, mossy colonial stone ruins, hibiscus and breadfruit.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Palikir",
+        "what": "purpose-built capital from 1989; tropical rainforest climate, extremely wet"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kolonia,_Pohnpei",
+        "what": "Spanish wall 1887, German-era Catholic tower 1909, Japanese-era buildings and canopies, post-war rebuilding, hot wet climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Nan_Madol",
+        "what": "basalt column walls, artificial islets and canals"
+      }
+    ]
+  },
+  "places": {
+    "palikir-airport-palikir-airport": {
+      "venueId": "palikir-airport-palikir-airport",
+      "city": "palikir",
+      "name": "Pohnpei International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The single small terminal on Deketik islet: a long low concrete building with a shallow metal roof and an open apron in front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ebe6d6",
+          "#2f7f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pohnpei_International_Airport",
+          "what": "airport on Deketik islet linked by causeway; 2,012 m runway; terminal and apron being improved under a Japan-funded project; 10 ft elevation"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/316847461",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM terminal polygon is 156 x 50 m with a stepped outline. Real appearance is not described in the Wikipedia page; typed as a low concrete terminal. No control tower asserted. Palms and lagoon-green surroundings."
+    },
+    "palikir-clinic": {
+      "venueId": "palikir-clinic",
+      "city": "palikir",
+      "name": "hauan",
+      "archetype": "hospital",
+      "subject": "A tiny community dispensary: a single-room concrete building with a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e9e4d6",
+          "#2f6f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1271437228",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "The name \"hauan\" looks like an incomplete OSM label; the nearest building is 6.7 x 5.7 m. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-community-notices": {
+      "venueId": "palikir-community-notices",
+      "city": "palikir",
+      "name": "Congress of the Federated States of Micronesia",
+      "archetype": "civic-palace",
+      "subject": "The FSM Congress building in the Palikir capital complex: a compact rendered government block with a front portico set among lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe3",
+          "#2f6f6a",
+          "#c9bfa5"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1989",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palikir",
+          "what": "purpose-built capital declared 1989 with US$15M aid; tropical rainforest climate, ~5.2 m rain/year; Sokehs municipality"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1287548",
+          "what": "Congress of the Federated States of Micronesia, national legislature established 1979"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/548354582",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Palikir was built as a new capital with US$15M aid from 1989, but no photographs are described anywhere found. OSM footprint 33 x 30 m; two storeys and colours are typed. Clearly smaller and plainer than a Western parliament."
+    },
+    "palikir-community-voting-game": {
+      "venueId": "palikir-community-voting-game",
+      "city": "palikir",
+      "name": "Supreme Court",
+      "archetype": "civic-small",
+      "subject": "The FSM Supreme Court in the capital complex: a long single-storey block with a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d4",
+          "#8f6b4a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1989",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palikir",
+          "what": "purpose-built capital declared 1989 with US$15M aid; tropical rainforest climate, ~5.2 m rain/year; Sokehs municipality"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/548354587",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM footprint 45 x 19 m beside the Congress building (80 m away). Appearance is typed. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-community-workshop": {
+      "venueId": "palikir-community-workshop",
+      "city": "palikir",
+      "name": "College of Micronesia National Campus",
+      "archetype": "campus-block",
+      "subject": "The FSM national campus at Palikir: a gabled single-storey classroom hall among lawns and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e9e4d6",
+          "#2f7f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/316806684",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM tags the building with a gabled roof (27 x 14 m) inside a 20 ha campus polygon. No photograph description found. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-market-game": {
+      "venueId": "palikir-market-game",
+      "city": "palikir",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A small open market of tin-roofed stalls selling produce and fish at a roadside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b99a",
+          "#2f7f9a",
+          "#a33b2d"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palikir",
+          "what": "purpose-built capital declared 1989 with US$15M aid; tropical rainforest climate, ~5.2 m rain/year; Sokehs municipality"
+        }
+      ],
+      "notes": "Game placeholder with no real counterpart or OSM footprint; typed from the city style (humid, rainy; open tin-roofed stalls)."
+    },
+    "palikir-meal-stop": {
+      "venueId": "palikir-meal-stop",
+      "city": "palikir",
+      "name": "Cupids Bar & Restaurant",
+      "archetype": "restaurant",
+      "subject": "A small rectangular bar-restaurant in the Kolonia area: single-storey rendered building with a front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#c0392b",
+          "#f2efe3"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1245702505",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM nearest building 20 x 18 m (3 m from the node). No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-osm-node-3230314553": {
+      "venueId": "palikir-osm-node-3230314553",
+      "city": "palikir",
+      "name": "Stone Look-Out",
+      "archetype": "monument",
+      "subject": "A stone-built Japanese-era lookout post on a forested ridge: a squat stone and concrete platform reached by steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#8f8f84",
+          "#6a6a60",
+          "#556a45"
+        ],
+        "roofColour": "#6a6a60",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing platform on top"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1930s-40s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/316847451",
+          "what": "surrounding OSM area tagged \"Japanese-Era Historic Site\" (315 x 134 m)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kolonia,_Pohnpei",
+          "what": "Spanish Wall fort ruins 1887; Catholic bell tower 1909 by Germans/Spanish; Japanese shrine 1921; 1930s shop canopies on Namiki St; much destroyed in WWII and rebuilt; hot wet climate"
+        }
+      ],
+      "notes": "The node sits in a mapped Japanese-era historic site; Japan built up Pohnpei in the 1930s-40s (Kolonia page notes the Japanese period). The structure shape is typed; mossy, jungle-covered."
+    },
+    "palikir-osm-node-358689543": {
+      "venueId": "palikir-osm-node-358689543",
+      "city": "palikir",
+      "name": "German Tower",
+      "archetype": "monument",
+      "subject": "The surviving German-era Catholic bell tower in Kolonia: a tall square stone tower with a plain parapet standing alone",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9d3c0",
+          "#8f8f84",
+          "#556a45"
+        ],
+        "roofColour": "#8f8f84",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square bell tower, former church tower"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched belfry openings, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1909",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kolonia,_Pohnpei",
+          "what": "Spanish Wall fort ruins 1887; Catholic bell tower 1909 by Germans/Spanish; Japanese shrine 1921; 1930s shop canopies on Namiki St; much destroyed in WWII and rebuilt; hot wet climate"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/683023964",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Wikipedia (Kolonia) records the Catholic bell tower built by Germans and Spanish in 1909 and describes it as surviving; the OSM building (25 x 13 m, 26 m off the node) is a nearby structure. Tower height, colour and arches are typed estimates."
+    },
+    "palikir-osm-node-3958969172": {
+      "venueId": "palikir-osm-node-3958969172",
+      "city": "palikir",
+      "name": "Nett Ramen",
+      "archetype": "restaurant",
+      "subject": "A tiny ramen shop: a single-storey painted building with a sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1e2b8",
+          "#c0392b",
+          "#e9e4d6"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1271435810",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 11 x 10 m (9 m off). Name implies a Japanese noodle shop; nothing else found. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-osm-node-4467670089": {
+      "venueId": "palikir-osm-node-4467670089",
+      "city": "palikir",
+      "name": "Bridge over stream near sakau",
+      "archetype": "park-landscape",
+      "subject": "A small footbridge over a forest stream beside a sakau (kava) hut: a thatched open nahs among broadleaf trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#556a45",
+          "#8a6a4a"
+        ],
+        "roofColour": "#a8855a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open thatched sakau hut (nahs)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "plank footbridge across the stream"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1251876326",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM shows a 5 x 4 m hut (16 m off the node) and the name mentions sakau, the Pohnpeian kava drink served in small open huts. Typed from that, not from a described photo."
+    },
+    "palikir-osm-way-1292890855": {
+      "venueId": "palikir-osm-way-1292890855",
+      "city": "palikir",
+      "name": "Genesis Medical Center",
+      "archetype": "hospital",
+      "subject": "A private medical centre: a compact two-storey rendered building with a front entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe3",
+          "#2f7f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1056134313",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 36 x 28 m inside a 25,400 m2 hospital plot; appearance not described. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-osm-way-1447609004": {
+      "venueId": "palikir-osm-way-1447609004",
+      "city": "palikir",
+      "name": "hsuan",
+      "archetype": "park-landscape",
+      "subject": "A tiny corner green plot with a shade tree and a bench",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 9,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#7fa860",
+          "#c9b99a",
+          "#8a6a4a"
+        ],
+        "roofColour": "#8a6a4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1447609004",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM leisure=park of 45 m2 with a misspelled name; nothing is known beyond the footprint. Pocket green space only; treat as a filler."
+    },
+    "palikir-osm-way-1447609575": {
+      "venueId": "palikir-osm-way-1447609575",
+      "city": "palikir",
+      "name": "hsaun",
+      "archetype": "park-landscape",
+      "subject": "A small leafy shelter plot with palms and a thatched resting hut",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 11,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7fa860",
+          "#c9a77c",
+          "#8a6a4a"
+        ],
+        "roofColour": "#a8855a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small open hut"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1447609575",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM leisure=park of 70 m2 with a misspelled name; nothing else known. Palm-shaded rather than street-side to differ from \"hsuan\"."
+    },
+    "palikir-osm-way-316996156": {
+      "venueId": "palikir-osm-way-316996156",
+      "city": "palikir",
+      "name": "Historic Spanish Wall",
+      "archetype": "heritage-fort",
+      "subject": "The ruined Spanish fort wall of 1887 in Kolonia: low weathered stone walls with an entrance gap, overgrown with grass and vines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#8f8f84",
+          "#b0aa98",
+          "#556a45"
+        ],
+        "roofColour": "#8f8f84",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "ruined perimeter wall"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "wall opening"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1887",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kolonia,_Pohnpei",
+          "what": "Spanish Wall fort ruins 1887; Catholic bell tower 1909 by Germans/Spanish; Japanese shrine 1921; 1930s shop canopies on Namiki St; much destroyed in WWII and rebuilt; hot wet climate"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/316996154",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Kolonia page: ruins of a fort built in 1887 to protect the Spanish colonial government and garrison. Wall height, plan and stone type are typed (coral/basalt rubble); OSM park plot is 105 x 65 m."
+    },
+    "palikir-osm-way-481854372": {
+      "venueId": "palikir-osm-way-481854372",
+      "city": "palikir",
+      "name": "Nan Madol",
+      "archetype": "heritage-fort",
+      "subject": "The Nandauwas royal tomb islet at Nan Madol: high walls of stacked dark basalt columns around a central courtyard and tomb, canals around",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "tomb islet shown as the recognisable portion of a 1.5 km site"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#4a4d4f",
+          "#6a6f6a",
+          "#556a45"
+        ],
+        "roofColour": "#4a4d4f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "basalt log walls 5.5-7.5 m high"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "inner courtyard with central tomb"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "c. 1200-1500 (Saudeleur)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nan_Madol",
+          "what": "92 artificial stone-and-coral islets bordered by tidal canals; site about 1.5 x 0.5 km; Nandauwas tomb walls 5.5-7.5 m high; columnar basalt pieces; mortuary sector has 58 islets"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/481854372",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Wall heights and construction (stacked columnar basalt, islets, canals) are from Wikipedia. The shown islet is a 70 x 55 m estimate. Dark grey prisms, green moss and mangroves; made of basalt logs stacked crosswise, not cut blocks. Era estimate from general knowledge."
+    },
+    "palikir-osm-way-551942387": {
+      "venueId": "palikir-osm-way-551942387",
+      "city": "palikir",
+      "name": "JED's Cantina",
+      "archetype": "restaurant",
+      "subject": "A casual cafe-bar: a small square rendered building with a wide front veranda near the south coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1e2b8",
+          "#2f7f9a",
+          "#c9a77c"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/551942387",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM amenity=cafe 18 x 16 m. No description found. No source describing this building was found; typed from the venue type, measured OSM footprint (where available) and the Palikir/Pohnpei city style."
+    },
+    "palikir-osm-way-585464416": {
+      "venueId": "palikir-osm-way-585464416",
+      "city": "palikir",
+      "name": "Pohnpei State Hospital",
+      "archetype": "hospital",
+      "subject": "The state hospital in Kolonia: a large complex of linked concrete wards around an entrance court",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "linked ward blocks",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e7e1d0",
+          "#2f7f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/222396124",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM hospital building about 124 x 121 m within a 32,600 m2 site. No description found; typed multi-wing public hospital. Much larger than Genesis Medical Center and the clinic."
+    },
+    "palikir-quiet-reflection": {
+      "venueId": "palikir-quiet-reflection",
+      "city": "palikir",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "church-modern",
+      "subject": "A plain white concrete village church with a small bell tower, surrounded by lawn and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#2f6f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#a33b2d",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1950s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kolonia,_Pohnpei",
+          "what": "Spanish Wall fort ruins 1887; Catholic bell tower 1909 by Germans/Spanish; Japanese shrine 1921; 1930s shop canopies on Namiki St; much destroyed in WWII and rebuilt; hot wet climate"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/438471569",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Game placeholder venue; nearest OSM building 31 x 24 m (not confirmed as worship). Churches are central community buildings across Micronesia (general knowledge). Typed."
+    },
+    "palikir-recreation": {
+      "venueId": "palikir-recreation",
+      "city": "palikir",
+      "name": "Spanish Wall Park",
+      "archetype": "park-landscape",
+      "subject": "The lawn park that surrounds the Spanish Wall ruins in Kolonia, with palms, benches and remnants of the wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 105,
+        "depth_m": 65,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7fa860",
+          "#8f8f84",
+          "#c9b99a"
+        ],
+        "roofColour": "#8f8f84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "short remaining wall section"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1887 ruins",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kolonia,_Pohnpei",
+          "what": "Spanish Wall fort ruins 1887; Catholic bell tower 1909 by Germans/Spanish; Japanese shrine 1921; 1930s shop canopies on Namiki St; much destroyed in WWII and rebuilt; hot wet climate"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/316996154",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Same place as \"Historic Spanish Wall\" but modelled as the open park (lawn, palms, a wall fragment) rather than the walled fort. OSM park 105 x 65 m."
+    },
+    "palikir-transit": {
+      "venueId": "palikir-transit",
+      "city": "palikir",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A small roadside shelter where pickup-truck taxis and buses wait",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b99a",
+          "#2f7f9a",
+          "#bdb9ae"
+        ],
+        "roofColour": "#7b8b95",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/561803880",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Game placeholder venue; nearest OSM building 4 x 4 m. Typed from the city style."
+    }
+  }
+}

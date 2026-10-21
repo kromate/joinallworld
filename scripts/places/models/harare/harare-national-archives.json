@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-national-archives",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/harare.json harare-national-archives",
+   "used": "brief: plain rendered 3-storey record-office block in a garden (about 70 x 30 m), 1960s modernist; sources give only the 1935 founding"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/289225884",
+   "used": "checked and rejected: the containing outline is a 135 m2 outbuilding, not the main block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "stacks",
+   "footprint": {
+    "rect": [
+     48,
+     24
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dac6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "rect",
+    "faces": {
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "height": 0.5,
+      "colour": "#b5a98e"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "material": "membrane",
+    "overhang": 0.8,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reading-wing",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -26,
+    -1
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    2,
+    -10.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b5a98e",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    2,
+    -15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 3.8,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#f0ebe0",
+    "edgeColour": "#b5a98e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    2,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 1.0,
+    "run": 2.0,
+    "count": 5,
+    "colour": "#bdb5a4"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -13,
+    5.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#3f5a4a",
+    "frameColour": "#b5a98e",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -34
+     ],
+     [
+      40,
+      -34
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.35,
+    "kind": "fence",
+    "pillarEvery": 4,
+    "colour": "#5a5f5a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    2,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "pillar": 0.8,
+    "leaf": "bars"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    2,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "count": 5,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; massing typed from the brief: deep-set small windows for stacks, lower reading wing, stone entrance block."
+ }
+}

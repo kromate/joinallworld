@@ -1,0 +1,403 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "specialist-hospital-gombe",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A%26E_Specialist_hospital_Gombe,_Gombe_STATE_Nigeria.jpg",
+   "licence": "CC0",
+   "author": "Absam003",
+   "view": "front",
+   "file": "/tmp/places-evidence/gombe/hosp3.jpg",
+   "used": "two-storey block in pale lime-green render with dark-green plinth band, central bay with first-floor balcony rail and ground-floor open waiting bays, low hipped dark-grey-green sheet roof with small central gable, regular window rhythm, row of tall royal palms and striped kerb in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SPECIALIST_HOSPITSAL_GOMBE.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yahuzaishat",
+   "view": "street",
+   "used": "pale green rendered boundary wall with dark railing and green corrugated roofs behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1084346875",
+   "used": "main block about 48 x 11 m (bearing 59 deg); modelled as rects at the photo orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 2.05,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6e0a8",
+    "glassColour": "#7a6a58",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 3.4,
+    "plinth": 1.2,
+    "bands": "#2f5a3a",
+    "groundKind": "open",
+    "groundHeight": 3.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#46605a",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    -16,
+    0.5
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6e0a8",
+    "glassColour": "#7a6a58",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "none"
+    },
+    "bay": 3.6,
+    "plinth": 1.2,
+    "bands": "#2f5a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#46605a",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    16,
+    0.5
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6e0a8",
+    "glassColour": "#7a6a58",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "right": "none"
+    },
+    "bay": 3.6,
+    "plinth": 1.2,
+    "bands": "#2f5a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#46605a",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-back",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6e0a8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 1.2,
+    "bands": "#2f5a3a",
+    "glassColour": "#7a6a58"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#46605a",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.2,
+    4.6
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.6
+    ],
+    "height": 0.2,
+    "colour": "#c8d2a0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.8,
+    5.8
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      0,
+      0
+     ],
+     [
+      8,
+      0,
+      0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.1,
+      0.1
+     ]
+    },
+    "colour": "#5a6460"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -11.8,
+    5.2
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      0,
+      0
+     ],
+     [
+      8,
+      0,
+      0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.08,
+      0.08
+     ]
+    },
+    "colour": "#5a6460"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8,
+    9.0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 0.0,
+    "colour": "#2f7a5a",
+    "frameColour": "#2f7a5a",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -15.5,
+     0
+    ],
+    "end": [
+     26,
+     -15.5,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "tree",
+      "params": {
+       "kind": "palm",
+       "height": 15
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -27,
+     -13.2,
+     0
+    ],
+    "end": [
+     27,
+     -13.2,
+     0
+    ],
+    "count": 9,
+    "of": [
+     {
+      "type": "hedge",
+      "params": {
+       "length": 6.5,
+       "height": 1.2,
+       "depth": 1.1,
+       "colour": "#4a7a3a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.5,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     70,
+     2.5
+    ],
+    "height": 0.2,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -17.5,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "height": 0.22,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -17.5,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.5
+    ],
+    "height": 0.22,
+    "colour": "#2a2a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   85,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "central gable ridge runs along the front rather than facing it, palms are generic low-poly royal palms, no AC boxes or louvres, ground-floor bays are open but not dark-recessed"
+ }
+}

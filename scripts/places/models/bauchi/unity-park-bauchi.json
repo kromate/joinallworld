@@ -1,0 +1,181 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "unity-park-bauchi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json#unity-park-bauchi",
+   "used": "typed municipal park, 90 x 70 m: plaza, pavilion, fountain, statue, fence and gate; OSM building is 35 m away so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 26,
+    "colour": "#bdb8ac",
+    "border_colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -35,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    35,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.6,
+    "colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -35
+     ],
+     [
+      0,
+      -13
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 4
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.8,
+    "roof": "hip",
+    "colour": "#e8dcc0",
+    "cap_colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "statue-on-plinth",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "height": 3.2
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -20,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "colour": "#b8586a"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    20,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "colour": "#d9a441"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 18,
+    "count": 10,
+    "keep_out": []
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; typed park layout, fence only on two sides."
+ }
+}

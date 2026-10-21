@@ -1,0 +1,638 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-way-380017757",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Niger,_Niamey,_Cathedral.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NigerTZai",
+   "view": "front",
+   "file": "/tmp/places-evidence/niamey/cathedral.jpg",
+   "used": "flat roof with deep overhang on tall pillars, ochre mud-brown render, lattice screens, slanted fin tower with red cross behind, tall free-standing cross, raised earth terrace wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/380017757",
+   "used": "footprint and orientation of the nave"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "scale": 0.9,
+    "rotDeg": -16
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c88e62",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bands": "#a96f4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98660",
+    "material": "concrete",
+    "overhang": 3.2,
+    "parapet": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -3,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     50,
+     32
+    ],
+    "height": 0.9,
+    "colour": "#b98660"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -9.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#3a2a22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26.5,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 22,
+    "colour": "#8a3f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26.5,
+    8,
+    20
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#8a3f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 1.4,
+    "colour": "#b8a690"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -20,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 18,
+    "colour": "#8a7a6a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -20,
+    15.4
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.45
+    ],
+    "height": 0.5,
+    "colour": "#7a6a5a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     -17.5,
+     0
+    ],
+    "end": [
+     18,
+     -17.5,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 8.2,
+      "colour": "#c88e62"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -9.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#d8a67a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.5,
+     -9.4,
+     0.4
+    ],
+    "end": [
+     -5.5,
+     -9.4,
+     0.4
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.4,
+       0.2
+      ],
+      "height": 1.8,
+      "colour": "#a87650"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    -9.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.3
+    ],
+    "height": 2.4,
+    "colour": "#d8a67a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0.0,
+     -9.4,
+     0.4
+    ],
+    "end": [
+     5.0,
+     -9.4,
+     0.4
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.4,
+       0.2
+      ],
+      "height": 1.8,
+      "colour": "#a87650"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -9.25,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#3a2a22"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -19.1,
+     8.3
+    ],
+    "end": [
+     20,
+     -19.1,
+     8.3
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.1,
+       0.15
+      ],
+      "height": 0.6,
+      "colour": "#e3c3a0"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#c08a62",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.9,
+       5.5
+      ],
+      "cx": 24,
+      "cy": 10
+     },
+     {
+      "z": 12,
+      "rect": [
+       0.8,
+       4.2
+      ],
+      "cx": 24,
+      "cy": 8.6
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.7,
+       2.4
+      ],
+      "cx": 24,
+      "cy": 7.2
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 20,
+    "colour": "#7a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    9,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 20,
+    "colour": "#7a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    7.5,
+    4
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.4
+    ],
+    "height": 0.3,
+    "colour": "#7a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    7.5,
+    8
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.4
+    ],
+    "height": 0.3,
+    "colour": "#7a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    7.5,
+    12
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.4
+    ],
+    "height": 0.3,
+    "colour": "#7a2a20"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.5,
+    7.5,
+    16
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     3.4
+    ],
+    "height": 0.3,
+    "colour": "#7a2a20"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -24
+     ],
+     [
+      26,
+      -24
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 1.2,
+    "kind": "wall",
+    "colour": "#c88e62"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -27.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.9
+    ],
+    "height": 0.4,
+    "colour": "#c88e62"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -26.900000000000002,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.9
+    ],
+    "height": 0.8,
+    "colour": "#c88e62"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -26.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.9
+    ],
+    "height": 1.2000000000000002,
+    "colour": "#c88e62"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -25.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.9
+    ],
+    "height": 1.6,
+    "colour": "#c88e62"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     38,
+     -6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -34,
+     12
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "ochre render, lattice screens, retaining wall with stair, slanted tower with red lattice added; star relief is simple blocks, lattice is slats not a true grid"
+ }
+}

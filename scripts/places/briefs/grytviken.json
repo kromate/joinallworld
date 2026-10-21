@@ -1,0 +1,802 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "grytviken",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "grytviken",
+    "climate": "cold",
+    "vernacular": "Abandoned Norwegian-founded whaling settlement (1904-1965) at the head of King Edward Cove, South Georgia: small utilitarian timber and corrugated-iron buildings, rust-red and weathered, with a white timber church and a white manager's villa, set on a flat tussock-grass shelf below snowy mountains, with rusting tanks, ships and whale-processing plant on the shore.",
+    "wallColours": [
+      "#8d3b2a",
+      "#7a4a36",
+      "#a1583c",
+      "#ece9e1",
+      "#6e7a73",
+      "#5c5148"
+    ],
+    "roofColours": [
+      "#7a3b2e",
+      "#8a5a3f",
+      "#5f6a63",
+      "#6b3a30"
+    ],
+    "wallMaterials": [
+      "metal-cladding",
+      "timber",
+      "painted-render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "none"
+    ],
+    "ornament": "Almost none: functional Norwegian industrial vernacular. Neo-Gothic carved timber trim and a roof turret on the church, verandah and hip roof on the villa; exposed rust, whale bones, harpoon guns and ship hulks as set dressing.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Grytviken",
+        "what": "sheltered flat area at head of King Edward Cove, derelict station with rusting plants and ships, church 1913, museum in manager's house, tundra climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Norwegian_Anglican_Church,_Grytviken",
+        "what": "neo-Gothic 1913 prefabricated church, single nave, white interior"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/South_Georgia_Museum",
+        "what": "museum in the 1914 manager's villa"
+      }
+    ]
+  },
+  "places": {
+    "grytviken-airport-grytviken-airport": {
+      "venueId": "grytviken-airport-grytviken-airport",
+      "city": "grytviken",
+      "name": "Grytviken Emergency Helipad",
+      "archetype": "airport-terminal",
+      "subject": "The emergency helicopter landing area at Grytviken with a small red corrugated-iron hangar-like shed beside a marked pad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "helipad-shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#8d3b2a",
+          "#7a4a36",
+          "#ece9e1"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1900s industrial",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "nearest OSM building is the Engineers Workshop, 27 x 20 m, 2 levels, historic"
+        }
+      ],
+      "notes": "The helipad itself is not documented; the nearest mapped structure is the historic Engineers Workshop (27 x 20 m), used here for the shed. Pad is a plain marked square on tussock grass."
+    },
+    "grytviken-clinic": {
+      "venueId": "grytviken-clinic",
+      "city": "grytviken",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "A placeholder game clinic, modelled as a tiny red timber-and-iron hut in the whaling-station style",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece9e1",
+          "#8d3b2a",
+          "#ffffff"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: small red or white timber huts with corrugated roofs"
+        }
+      ],
+      "notes": "(game venue) placeholder; no real clinic is documented. Typed from the settlement style."
+    },
+    "grytviken-community-notices": {
+      "venueId": "grytviken-community-notices",
+      "city": "grytviken",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "A placeholder noticeboard hut in the settlement style: a small red-painted timber and iron shed with a gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8d3b2a",
+          "#7a4a36",
+          "#ece9e1"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: functional timber and corrugated-iron sheds"
+        }
+      ],
+      "notes": "(game venue) placeholder; nothing real to describe."
+    },
+    "grytviken-community-voting-game": {
+      "venueId": "grytviken-community-voting-game",
+      "city": "grytviken",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "A placeholder voting hall: a small white timber hall with a red corrugated roof near the old flensing plan ruins",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece9e1",
+          "#8d3b2a",
+          "#ffffff"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: functional timber and corrugated-iron sheds"
+        }
+      ],
+      "notes": "(game venue) placeholder. The nearest mapped feature is the Flensing Plan ruin (66 x 58 m), which is not modelled."
+    },
+    "grytviken-community-workshop": {
+      "venueId": "grytviken-community-workshop",
+      "city": "grytviken",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "A placeholder workshop: a two-storey rust-red corrugated-iron shop building like those of the old whaling station",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#8d3b2a",
+          "#5c5148",
+          "#ece9e1"
+        ],
+        "roofColour": "#6b3a30",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: rusting corrugated-iron whaling-station workshops"
+        }
+      ],
+      "notes": "(game venue) placeholder; the 13 x 13 m footprint is the nearest OSM building."
+    },
+    "grytviken-market-game": {
+      "venueId": "grytviken-market-game",
+      "city": "grytviken",
+      "name": "Market game (game venue)",
+      "archetype": "market-hall",
+      "subject": "A placeholder market: a long low corrugated-iron shed on the station flat",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#7a4a36",
+          "#8d3b2a",
+          "#ece9e1"
+        ],
+        "roofColour": "#6b3a30",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: rusting corrugated-iron whaling-station sheds"
+        }
+      ],
+      "notes": "(game venue) placeholder. There is no market in Grytviken."
+    },
+    "grytviken-meal-stop": {
+      "venueId": "grytviken-meal-stop",
+      "city": "grytviken",
+      "name": "Visitor meal stop (game venue)",
+      "archetype": "restaurant",
+      "subject": "A placeholder meal stop: a two-storey red timber bunkhouse-style building with a hip roof like the old Nybrakka quarters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8d3b2a",
+          "#ece9e1",
+          "#ffffff"
+        ],
+        "roofColour": "#5f6a63",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: timber quarters of the former whaling station"
+        }
+      ],
+      "notes": "(game venue) placeholder. There is no restaurant; the station-era quarters (e.g. Nybrakka, 28 x 12 m, 3 levels in OSM) are the visual model."
+    },
+    "grytviken-osm-node-6579560468": {
+      "venueId": "grytviken-osm-node-6579560468",
+      "city": "grytviken",
+      "name": "Frank Wild's Grave",
+      "archetype": "monument",
+      "subject": "Frank Wild's grave in Grytviken cemetery: a small granite headstone beside Shackleton's, inside the white-fenced plot (ashes interred 2011)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 1.2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#7d7f80",
+          "#5f6163",
+          "#c9ccce"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low white fence around the cemetery plot"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "cemetery lies near the station; Shackleton's and Wild's graves are the visitor highlight"
+        }
+      ],
+      "notes": "Granite headstone and burial beside Shackleton are from general knowledge (Wild's ashes interred 2011). Exact stone dimensions are estimated; keep it small and unlabelled on the model."
+    },
+    "grytviken-osm-node-828768166": {
+      "venueId": "grytviken-osm-node-828768166",
+      "city": "grytviken",
+      "name": "Shackleton's Grave",
+      "archetype": "monument",
+      "subject": "Shackleton's grave in the Grytviken whalers' cemetery: a rough-hewn granite headstone topped with a star, in a fenced plot facing the mountains",
+      "form": {
+        "footprint": "rect",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 1.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#7d7f80",
+          "#5f6163",
+          "#c9ccce"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low white picket fence around the cemetery"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "upright granite headstone with a star at the top"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1922",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "cemetery near the whaling station, graves are a landmark"
+        }
+      ],
+      "notes": "Shackleton died 5 Jan 1922 and was buried in Grytviken. Granite headstone with a star is from general knowledge rather than a fetched page. The stone is roughly waist-to-shoulder height."
+    },
+    "grytviken-osm-way-533046863": {
+      "venueId": "grytviken-osm-way-533046863",
+      "city": "grytviken",
+      "name": "South Georgia Museum",
+      "archetype": "museum-theatre",
+      "subject": "The South Georgia Museum, housed in the 1914 whaling station manager's villa: a two-storey white timber house with verandah and hip roof, restored in 1991",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#ece9e1",
+          "#8d3b2a",
+          "#ffffff"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1914 villa, museum 1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/South_Georgia_Museum",
+          "what": "museum in the former manager's villa built 1914; restored by Nigel Bonner; museum opened 1991"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/533046863",
+          "what": "footprint 23 x 15 m"
+        }
+      ],
+      "notes": "Date, use and footprint sourced. The white-body / red-roof colours and verandah are estimates; the source has no appearance. Recognisable by the solid manager's-house form amid industrial sheds."
+    },
+    "grytviken-quiet-reflection": {
+      "venueId": "grytviken-quiet-reflection",
+      "city": "grytviken",
+      "name": "Norwegian Lutheran Church (Whalers' Church)",
+      "archetype": "church-gothic",
+      "subject": "Grytviken's whalers' church of 1913, a small prefabricated Norwegian neo-Gothic timber church with a roof turret over the entrance and a polygonal apse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1,
+        "variant": "timber-stave-style"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#ece9e1",
+          "#6b3a30",
+          "#ffffff"
+        ],
+        "roofColour": "#6b3a30",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "small steeple/turret over the entrance"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "1913",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norwegian_Anglican_Church,_Grytviken",
+          "what": "neo-Gothic, prefabricated in Norway, consecrated Christmas Day 1913, single nave, white interior, roof damaged 1994"
+        },
+        {
+          "url": "https://no.wikipedia.org/wiki/Grytviken_kirke",
+          "what": "architect Adalbert Kielland, wood construction, roof turret over entrance, polygonal apse, seats 180"
+        }
+      ],
+      "notes": "The only building still used for its original purpose. Form and style are sourced; the white walls and dark red roof are estimates from memory of photos (sources give no exterior colours). OSM footprint 17.4 x 14.8 m."
+    },
+    "grytviken-recreation": {
+      "venueId": "grytviken-recreation",
+      "city": "grytviken",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "A placeholder recreation area: a flat tussock-grass patch with a small red hut, whale bones and a ship's relic",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8d3b2a",
+          "#7a4a36",
+          "#ece9e1"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: flat tussock shelf, whale bones on the shore"
+        }
+      ],
+      "notes": "(game venue) placeholder; no real recreation ground is documented."
+    },
+    "grytviken-transit": {
+      "venueId": "grytviken-transit",
+      "city": "grytviken",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A placeholder transit stop: a small lean-to shelter beside a gravel track at the old station",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#7a4a36",
+          "#5c5148",
+          "#ece9e1"
+        ],
+        "roofColour": "#6b3a30",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grytviken",
+          "what": "settlement style: there are no roads or buses; shelter is a pure game placeholder"
+        }
+      ],
+      "notes": "(game venue) placeholder. The nearest real structure is the Meat Factory (38 x 21 m), not modelled."
+    }
+  }
+}

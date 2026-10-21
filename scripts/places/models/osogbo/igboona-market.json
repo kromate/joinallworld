@@ -1,0 +1,319 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://campusreporter.africa/despite-ban-street-trading-permeates-osun-roads/",
+   "used": "Igbona is a weekly market (Tuesday peak) on Ikirun Road with stalls and umbrellas spilling onto both sides of a two-lane road: modelled as an east-west two-lane road lined with lock-up rows, umbrella stall rows, two gabled sheds and container kiosks"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1290239983",
+   "used": "nearest-only 14 m diamond building 9 m off: NOT used as footprint (unreliable match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 14,
+  "fovDeg": 52
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.02
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      0
+     ],
+     [
+      48,
+      0
+     ]
+    ],
+    "width": 7,
+    "colour": "#7d7a74"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 3.6,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.6,
+    "wall_colour": "#cfa58c",
+    "roof_colour": "#8a4b32",
+    "shutter_colours": [
+     "#5d6b72",
+     "#7b4f3a",
+     "#3d4f3f"
+    ],
+    "awning_colours": [
+     "#a8303c",
+     "#d9a43a",
+     "#2f6a9a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.6,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.6,
+    "wall_colour": "#d6c7a6",
+    "roof_colour": "#8a4b32"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -26,
+    11,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 3.6,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.6,
+    "wall_colour": "#b9b4a8",
+    "roof_colour": "#7a4a38"
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -10,
+    22,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "wall_colour": "#b9b4a8",
+    "roof_colour": "#8a4b32"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    26,
+    20,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "gable",
+    "wall_colour": "#d6c7a6",
+    "roof_colour": "#9a5a3c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    -5.2,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#b43a3a",
+     "#e0b030",
+     "#2f6a9a",
+     "#4f8a5a",
+     "#7a4a8a",
+     "#e0e0d8"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -40,
+    5.2,
+    0
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e0b030",
+     "#c0502f",
+     "#4f8a5a",
+     "#2f6a9a",
+     "#b43a3a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    34,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "colours": [
+     "#b43a3a",
+     "#e0b030",
+     "#2f6a9a",
+     "#4f8a5a"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    40,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6a9a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    44,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#b8452e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -45,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "colours": [
+     "#a8303c",
+     "#e0e0d8"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    18,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "colours": [
+     "#2f6a9a",
+     "#e0e0d8"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -44,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "igboona-market",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; layout from sourced behaviour only (roadside stalls both sides of two-lane road); building forms are typical guesses"
+ }
+}

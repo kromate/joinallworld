@@ -1,0 +1,249 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "mokola-salon",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ibadan.json#mokola-salon",
+   "used": "8 x 6 m one-storey street-front salon, shed corrugated roof, painted facade with blank sign band, awning and painted panels; flanked by two differently coloured shops of a row. OSM nearest match is a 42 m long strip 23 m away, not used; no photo found."
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 8,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "salon",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa58c",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#2f6b8a",
+    "plinth": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e4a3a",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-shop",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -7.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d9b9",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#7a8f5a",
+    "plinth": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a6a52",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-shop",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    8.6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8c9c3",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#2f6b8a",
+    "plinth": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5f5048",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    0,
+    -3.1,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "height": 2.8,
+    "kind": "glazed",
+    "colour": "#2f6b8a",
+    "sign_colour": "#2f6b8a",
+    "sign_height": 0.8,
+    "awning_colours": [
+     "#2f6b8a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.9,
+    -4.4,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 3.0,
+    "bottom": 0.8,
+    "colour": "#2f6b8a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    -6.5,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 0.2,
+    "thickness": 0.6,
+    "kind": "wall",
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    2,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#d9d9d4",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -2.6,
+    -3.3,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.5,
+    "bottom": 0.5,
+    "colour": "#f2efe6",
+    "frameColour": "#2f6b8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2.6,
+    -3.3,
+    0
+   ],
+   "params": {
+    "width": 1.4,
+    "height": 1.5,
+    "bottom": 0.5,
+    "colour": "#e8a838",
+    "frameColour": "#2f6b8a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   36,
+   26
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; salon and neighbouring shops are typical Mokola street-front, not observed; panels are blank colour boards."
+ }
+}

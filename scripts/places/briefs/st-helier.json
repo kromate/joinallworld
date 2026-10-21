@@ -1,0 +1,1382 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "st-helier",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "st-helier",
+    "climate": "temperate",
+    "vernacular": "Granite island town: grey-pink Jersey granite farmhouses and cottages with round-arched doors, whitewashed or pastel-rendered Regency and Georgian terraces in St Helier, Victorian granite and brick civic buildings, slate roofs with chimney stacks, and modern glass and render blocks on the reclaimed waterfront.",
+    "wallColours": [
+      "#b59a8a",
+      "#a39a90",
+      "#e8e2d2",
+      "#d9c9a8",
+      "#c9a99a",
+      "#9aa7ad"
+    ],
+    "roofColours": [
+      "#5f666c",
+      "#8a5a48",
+      "#7a7f84"
+    ],
+    "wallMaterials": [
+      "granite",
+      "painted-render",
+      "stucco",
+      "render",
+      "red-brick",
+      "glass-curtain",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Round-arched granite doorways, sash windows with white frames, granite quoins, Regency terraces with iron balconies, cast-iron and glass Victorian market structures, military granite blocks with bastions and ramparts, gorse-covered coastal heath.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Saint_Helier",
+        "what": "St Helier has a mainly Regency and Victorian character; earliest houses local granite; Georgian terraces, Victorian Central Market with cast iron, granite Royal Square and States Building"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mont_Orgueil",
+        "what": "Jersey castle built of granite on granite rock above Gorey harbour"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fort_Regent",
+        "what": "19th-century Jersey fort of large granite blocks, thick curtain walls, bastions, ditches"
+      }
+    ]
+  },
+  "places": {
+    "st-helier-airport-st-helier-airport": {
+      "venueId": "st-helier-airport-st-helier-airport",
+      "city": "st-helier",
+      "name": "Jersey Airport",
+      "archetype": "airport-terminal",
+      "subject": "Jersey Airport's low terminal with the 1937 central block, 1990s departures wing and canopy seen from the forecourt, new tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#7f9aa8",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9ea1",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new tower opened late 2010"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1937 with 1976 and 1997 extensions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jersey_Airport",
+          "what": "1937 terminal with control tower between arrivals and departures, extended 1976, new departures terminal 1997, new ATC tower late 2010; the 1937 building was nominated as protected"
+        }
+      ],
+      "notes": "Sources give dates only, not the facade. Colours and glazing inferred: pale rendered 1930s block with later glazed departures wing. Recognisable as a small, low island terminal."
+    },
+    "st-helier-clinic": {
+      "venueId": "st-helier-clinic",
+      "city": "st-helier",
+      "name": "General Hospital",
+      "archetype": "hospital",
+      "subject": "Jersey General Hospital's granite Georgian front block on Gloucester Street with later wings behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "red-brick",
+        "colours": [
+          "#a39a90",
+          "#9b5a44",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "1765-1793, rebuilt after 1859 fire",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jersey_General_Hospital",
+          "what": "foundation stone 1765, opened 1793 as a poorhouse, largely destroyed by fire 1859, 219 beds, Gloucester Street site"
+        }
+      ],
+      "notes": "Sources give history, not materials. Granite walls inferred from the island vernacular and period; later wings in brick and render. Old stone core, modern additions."
+    },
+    "st-helier-community-notices": {
+      "venueId": "st-helier-community-notices",
+      "city": "st-helier",
+      "name": "St John Parish Hall",
+      "archetype": "civic-small",
+      "subject": "St John's parish hall: a small granite hall with a hip roof and parish flag, near the parish church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "painted-render",
+        "colours": [
+          "#a39a90",
+          "#e8e2d2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Jersey's 12 parishes each have a parish hall (Salle Paroissiale); appearance here is typical, not verified."
+    },
+    "st-helier-community-voting-game": {
+      "venueId": "st-helier-community-voting-game",
+      "city": "st-helier",
+      "name": "Royal Square",
+      "archetype": "civic-palace",
+      "subject": "The Royal Square in St Helier: Royal Court and States Building in granite on a paved square with the gilded George II statue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#a89f94",
+          "#d8d1c2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "gilded statue of George II, 1751"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Helier",
+          "what": "Royal Square home to the Royal Court and States Chamber (States Building); statue of George II from 1751 in the square"
+        }
+      ],
+      "notes": "Sources confirm the square, buildings and statue but not facade details. Model the building frontage on the square with a paved plaza and central statue. Pediment and colonnade detail not verified."
+    },
+    "st-helier-community-workshop": {
+      "venueId": "st-helier-community-workshop",
+      "city": "st-helier",
+      "name": "Jersey Library",
+      "archetype": "campus-block",
+      "subject": "Jersey Library on Halkett Place: a mid-rise civic library block in granite and brick near the Central Market",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "brick",
+        "colours": [
+          "#a39a90",
+          "#9b5a44",
+          "#d9d9d4"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Exact current building not described."
+    },
+    "st-helier-market-game": {
+      "venueId": "st-helier-market-game",
+      "city": "st-helier",
+      "name": "Waterfront Centre",
+      "archetype": "mall",
+      "subject": "The Waterfront Centre: a modern shopping block on the reclaimed St Helier waterfront in glass and render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1ded6",
+          "#7f9aa8",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9ea1",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Helier",
+          "what": "newer Waterfront has contemporary architecture on reclaimed land"
+        }
+      ],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Only the waterfront character was found, not this building."
+    },
+    "st-helier-meal-stop": {
+      "venueId": "st-helier-meal-stop",
+      "city": "st-helier",
+      "name": "Bohemia",
+      "archetype": "restaurant",
+      "subject": "Bohemia restaurant in a converted Georgian town house with a painted front and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e2d2",
+          "#44505a",
+          "#f4f2ea"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Building type guessed: town house terrace conversion."
+    },
+    "st-helier-osm-node-1783469367": {
+      "venueId": "st-helier-osm-node-1783469367",
+      "city": "st-helier",
+      "name": "Sorel Point",
+      "archetype": "park-landscape",
+      "subject": "Sorel Point: a rugged north-coast headland of granite cliff and gorse with a path and a small lookout",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "cliff headland"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#a39a90",
+          "#8a8f6a",
+          "#c9b79a"
+        ],
+        "roofColour": "#8a8f6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Coastal viewpoint, no building known."
+    },
+    "st-helier-osm-node-1784634611": {
+      "venueId": "st-helier-osm-node-1784634611",
+      "city": "st-helier",
+      "name": "Little Menhir",
+      "archetype": "monument",
+      "subject": "A single prehistoric standing stone on open ground near Les Landes",
+      "form": {
+        "footprint": "round",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 1.8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a84",
+          "#7f7c76",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "unshaped upright stone"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Neolithic",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Size assumed (about 1.8 m); a small unshaped granite menhir."
+    },
+    "st-helier-osm-node-1793026515": {
+      "venueId": "st-helier-osm-node-1793026515",
+      "city": "st-helier",
+      "name": "Cafe Delicia",
+      "archetype": "restaurant",
+      "subject": "A small granite seaside cafe with an awning and outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "painted-render",
+        "colours": [
+          "#a39a90",
+          "#e8e2d2",
+          "#2f5d6b"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Cafe on the north coast; building not described."
+    },
+    "st-helier-osm-node-1795426195": {
+      "venueId": "st-helier-osm-node-1795426195",
+      "city": "st-helier",
+      "name": "Old Napoleonic gun platform",
+      "archetype": "heritage-fort",
+      "subject": "A semicircular granite gun platform with parapet and cannon overlooking the sea",
+      "form": {
+        "footprint": "round",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "open battery"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#a39a90",
+          "#8d8a84",
+          "#a39a90"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Napoleonic era, 1800s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Regent",
+          "what": "Jersey's Napoleonic-era fortifications used large granite blocks and thick walls"
+        }
+      ],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Likely a Rozel or east-coast battery; shape assumed."
+    },
+    "st-helier-osm-way-1182987296": {
+      "venueId": "st-helier-osm-way-1182987296",
+      "city": "st-helier",
+      "name": "Sacred Heart Church",
+      "archetype": "church-gothic",
+      "subject": "A small granite Catholic church with a bell cote and pointed windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#a39a90",
+          "#d8d1c2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Style assumed from other Jersey churches."
+    },
+    "st-helier-osm-way-166410471": {
+      "venueId": "st-helier-osm-way-166410471",
+      "city": "st-helier",
+      "name": "Mont Orgueil Castle",
+      "archetype": "heritage-fort",
+      "subject": "Mont Orgueil Castle on its granite rock above Gorey harbour: crenellated keep and ramparts stepping down the hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 32,
+        "roof": "none",
+        "variant": "rock castle"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#9a8f84",
+          "#7f7c76",
+          "#b8afa2"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "13th century, adapted 1550s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mont_Orgueil",
+          "what": "granite castle on granite rock above Gorey harbour; D-shaped bastion 1551; Grand Battery c.1560; WWII range-finding positions styled as medieval"
+        }
+      ],
+      "notes": "Name in the game is 'Mount Pride Castle' (English form). Dimensions estimated. Recognisable as a tiered grey granite castle on a rocky hill with a tall keep."
+    },
+    "st-helier-osm-way-166663089": {
+      "venueId": "st-helier-osm-way-166663089",
+      "city": "st-helier",
+      "name": "Portelet Tower",
+      "archetype": "heritage-fort",
+      "subject": "Portelet Tower, a small circular rubble-stone guardhouse on its tidal islet in Portelet Bay",
+      "form": {
+        "footprint": "round",
+        "width_m": 8.2,
+        "depth_m": 8.2,
+        "storeys": 1,
+        "height_m": 5.2,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a84",
+          "#7f7c76",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d8a84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1808",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Portelet_Tower",
+          "what": "circular single-room guardhouse on L'Ile au Guerdain, 5.2 m tall, 8.2 m across, rubble stone, one doorway and one window about 7 ft up, completed March 1808"
+        }
+      ],
+      "notes": "Doorway at ground level and one small high window. Stands on a tidal islet in the bay."
+    },
+    "st-helier-osm-way-177305474": {
+      "venueId": "st-helier-osm-way-177305474",
+      "city": "st-helier",
+      "name": "Corbiere Phare",
+      "archetype": "monument",
+      "subject": "La Corbiere Lighthouse: white cylindrical tower with gallery and lantern on a tidal rock, reached by a causeway",
+      "form": {
+        "footprint": "round",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 4,
+        "height_m": 19,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f4f4f0",
+          "#2f2f2f",
+          "#f4f4f0"
+        ],
+        "roofColour": "#2f3a40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "causeway to shore"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "lantern and gallery"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "victorian",
+      "era": "1874",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Corbi%C3%A8re",
+          "what": "19 m cylindrical white tower, first concrete lighthouse in the British Isles, lit 1874, balcony and lantern, tidal island with causeway"
+        }
+      ],
+      "notes": "Pure white painted concrete tower with a gallery and black lantern on a granite rock. Diameter assumed. No logos."
+    },
+    "st-helier-osm-way-179763514": {
+      "venueId": "st-helier-osm-way-179763514",
+      "city": "st-helier",
+      "name": "St. Clement's Church",
+      "archetype": "church-gothic",
+      "subject": "St Clement's parish church: small granite medieval nave with a squat tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#a39a90",
+          "#b8afa2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 2
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "medieval, restored 19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Tower shape not verified."
+    },
+    "st-helier-osm-way-182196435": {
+      "venueId": "st-helier-osm-way-182196435",
+      "city": "st-helier",
+      "name": "Springfield Stadium",
+      "archetype": "stadium",
+      "subject": "Springfield Stadium: a small football and athletics ground with one covered stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9ccce",
+          "#3a6f9a",
+          "#e1ded6"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Small local ground; capacity a few thousand."
+    },
+    "st-helier-osm-way-182786869": {
+      "venueId": "st-helier-osm-way-182786869",
+      "city": "st-helier",
+      "name": "School of Art",
+      "archetype": "campus-block",
+      "subject": "A school of art in a three-storey granite and brick block with large studio windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "brick",
+        "colours": [
+          "#a39a90",
+          "#9b5a44",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Venue name only; no description found."
+    },
+    "st-helier-osm-way-182787368": {
+      "venueId": "st-helier-osm-way-182787368",
+      "city": "st-helier",
+      "name": "Laundry",
+      "archetype": "office-low",
+      "subject": "A former laundry converted for studios: two-storey granite and brick building with a chimney",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "red-brick",
+        "colours": [
+          "#a39a90",
+          "#9b5a44",
+          "#d9d9d4"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Conversion use assumed from the name."
+    },
+    "st-helier-osm-way-193301844": {
+      "venueId": "st-helier-osm-way-193301844",
+      "city": "st-helier",
+      "name": "Clinique Pinel",
+      "archetype": "hospital",
+      "subject": "Clinique Pinel: a modern private clinic, two to three storeys of white render and glazing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#6f8c9a",
+          "#c9ccce"
+        ],
+        "roofColour": "#9a9ea1",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Private clinic in St Saviour; appearance inferred."
+    },
+    "st-helier-osm-way-496496072": {
+      "venueId": "st-helier-osm-way-496496072",
+      "city": "st-helier",
+      "name": "Le Parc de la Petite Falaise",
+      "archetype": "park-landscape",
+      "subject": "A small cliff-top park with lawn, paths and benches above the sea",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8f6a",
+          "#a39a90",
+          "#c9b79a"
+        ],
+        "roofColour": "#8a8f6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. No description found."
+    },
+    "st-helier-osm-way-903201743": {
+      "venueId": "st-helier-osm-way-903201743",
+      "city": "st-helier",
+      "name": "Moignard Liberation Garden",
+      "archetype": "park-landscape",
+      "subject": "A small memorial garden with a lawn, paths and a commemorative stone",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8f6a",
+          "#a39a90",
+          "#e8e2d2"
+        ],
+        "roofColour": "#8a8f6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "liberation memorial"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "post-1945",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Name suggests a Liberation (1945) memorial garden."
+    },
+    "st-helier-quiet-reflection": {
+      "venueId": "st-helier-quiet-reflection",
+      "city": "st-helier",
+      "name": "Church of Our Lady of the Annunciation",
+      "archetype": "church-gothic",
+      "subject": "A Catholic church of granite with a small tower and pointed windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#a39a90",
+          "#d8d1c2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5f666c",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Style assumed; different proportions from Sacred Heart."
+    },
+    "st-helier-recreation": {
+      "venueId": "st-helier-recreation",
+      "city": "st-helier",
+      "name": "Les Pres d'Auvergne",
+      "archetype": "park-landscape",
+      "subject": "Open meadow and sports ground with a footpath and a few trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8f6a",
+          "#a39a90",
+          "#c9b79a"
+        ],
+        "roofColour": "#8a8f6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Open ground; no buildings known."
+    },
+    "st-helier-transit": {
+      "venueId": "st-helier-transit",
+      "city": "st-helier",
+      "name": "Elizabeth Terminal",
+      "archetype": "transport-station",
+      "subject": "The Elizabeth Harbour ferry terminal: a long modern passenger building with canopies beside the quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d0d6da",
+          "#3a6f9a",
+          "#f1efe8"
+        ],
+        "roofColour": "#9a9ea1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Helier",
+          "what": "harbour piers early 19th century; Esplanade sea wall 1832"
+        }
+      ],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Ferry terminal on St Helier harbour; modern look inferred."
+    }
+  }
+}

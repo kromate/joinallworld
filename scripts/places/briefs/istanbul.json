@@ -1,0 +1,1680 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "istanbul",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "istanbul",
+    "climate": "temperate",
+    "vernacular": "Dense hillside city of reinforced-concrete apartment blocks (apartman) of 4 to 8 storeys finished in cream, ochre or pale-grey render with balconies and flat or low-pitched roofs topped by water tanks and satellite dishes; surviving 19th-century stone and brick buildings with arched windows; old Ottoman timber houses painted in ochre, red and cream on the Bosphorus shore and in Balat; domed stone Ottoman mosques with pencil minarets and clay-tile or lead roofs; glass towers in Levent and Maslak. Clay (Marseille) tile hip roofs on villas and older houses.",
+    "wallColours": [
+      "#d8c9ad",
+      "#c9a27a",
+      "#e8e2d4",
+      "#b9764f",
+      "#9a9a95",
+      "#b8a98f",
+      "#c7c1b4"
+    ],
+    "roofColours": [
+      "#a8553a",
+      "#6e6a66",
+      "#8a8f94",
+      "#4f5258"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "concrete",
+      "stone",
+      "red-brick",
+      "glass-curtain",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Ottoman domes and semi-domes with slender pencil minarets; arched stone windows and polychrome brick-and-stone banding (Byzantine and Ottoman); timber cumba bay windows overhanging the street; Neoclassical and Balyan-family palace facades with pilasters and cornices; Iznik tile panels; balcony-fronted apartment blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Turkish_architecture",
+        "what": "Ottoman classical domed mosques, 19th-century Western influence (Balyan family), early 20th-century apartment blocks, concrete and glass-curtain modern buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Istanbul",
+        "what": "Byzantine and Ottoman monuments, Bosphorus setting, Levent and Maslak skyline"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bebek,_Istanbul",
+        "what": "Bosphorus waterfront with timber mansions (Kavafyan 1751) and Kemaleddin Bey mosque; palette of render and timber is general knowledge of the district"
+      }
+    ]
+  },
+  "places": {
+    "istanbul-airport-istanbul-airport": {
+      "venueId": "istanbul-airport-istanbul-airport",
+      "city": "istanbul",
+      "name": "Istanbul Airport",
+      "archetype": "airport-terminal",
+      "subject": "the main terminal of Istanbul Airport seen from the landside forecourt: a vast low glass-and-steel terminal under a continuous undulating white-grey roof, with the tulip-shaped control tower behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 700,
+        "depth_m": 300,
+        "storeys": 4,
+        "height_m": 40,
+        "roof": "curved",
+        "variant": "mega-terminal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#8a9199",
+          "#f4f4f2"
+        ],
+        "roofColour": "#cfd3d6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "continuous undulating roof over the whole terminal"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower shaped like a tulip, Turkey national flower"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Istanbul_Airport",
+          "what": "concept by Grimshaw, Nordic Office of Architecture and Haptic; about 1,440,000 m2 first-stage terminal, world third-largest terminal building; control tower shaped like a tulip"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/687768729",
+          "what": "terminal footprint extents about 1264 x 1211 m, opened 2018-10-29; the model shows the central recognisable portion"
+        }
+      ],
+      "notes": "The real terminal footprint (about 1.26 km across) far exceeds the 120 m scene limit, so the generator should show the central block with a segment of the undulating roof and the tulip tower. Facade and roof colours are estimates for a pale grey, white and glass building; structural detail not found in the sources used."
+    },
+    "istanbul-clinic": {
+      "venueId": "istanbul-clinic",
+      "city": "istanbul",
+      "name": "Memorial Ataşehir Hastanesi",
+      "archetype": "hospital",
+      "subject": "a modern private hospital block in Ataşehir with a glazed entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 9,
+        "height_m": 36,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#e6e8ea",
+          "#4f7fa6",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/179547529",
+          "what": "building=hospital, named Memorial Atasehir Hastanesi; tagged outline only 28 x 22 m (likely one wing)"
+        }
+      ],
+      "notes": "Typed from the place type and city style. The OSM outline is only a small part of the hospital, so size, storeys and glazing are estimates for a private Istanbul hospital of the 2000s. Blank signage board, no brand marks."
+    },
+    "istanbul-community-notices": {
+      "venueId": "istanbul-community-notices",
+      "city": "istanbul",
+      "name": "Anadolu Palace of Justice",
+      "archetype": "civic-palace",
+      "subject": "Istanbul Anatolian Courthouse (Kartal): a large round-plan court building with a monumental entrance",
+      "form": {
+        "footprint": "round",
+        "width_m": 57,
+        "depth_m": 57,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d5cdbd",
+          "#6e8798",
+          "#efeae0"
+        ],
+        "roofColour": "#8d8f90",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/341045630",
+          "what": "courthouse, start 2013, outline roughly circular 57 m across, wikidata Q105679203"
+        }
+      ],
+      "notes": "Only the OSM outline (a 57 m circle, 2,561 m2) and the 2013 date were found; the facade, storeys and colours are a typed guess for a 2010s Turkish courthouse (pale stone cladding, columned entrance). The complex is probably larger than this single volume."
+    },
+    "istanbul-community-voting-game": {
+      "venueId": "istanbul-community-voting-game",
+      "city": "istanbul",
+      "name": "Rıhtım Meydanı",
+      "archetype": "park-landscape",
+      "subject": "the Kadıköy waterfront square beside the ferry pier: wide paved plaza, seats and small kiosk facing the Bosphorus",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c2b3",
+          "#7f8a92",
+          "#e9e5da"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "ferry pier on the seaward side"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kad%C4%B1k%C3%B6y",
+          "what": "ferry pier, Pier Library and ferry terminal, bus terminal and central market next to the quay, sea views to the European side"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/236994817",
+          "what": "nearest building is a 10 x 9 m police/guard kiosk"
+        }
+      ],
+      "notes": "Rihtim Meydani is a waterfront square, not a building; only a small kiosk exists in the OSM data. Typed brief from the district description. Square is paved, backed by 6 to 8 storey render and stone buildings."
+    },
+    "istanbul-community-workshop": {
+      "venueId": "istanbul-community-workshop",
+      "city": "istanbul",
+      "name": "Halki seminary",
+      "archetype": "campus-block",
+      "subject": "the Halki (Heybeliada) theological school: a long multi-storey cream-rendered block on the Hill of Hope with a hipped red-tile roof and the Holy Trinity chapel behind",
+      "form": {
+        "footprint": "L",
+        "width_m": 74,
+        "depth_m": 58,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e3c99a",
+          "#b97c4a",
+          "#f1ebe0"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small chapel"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1896 rebuild",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Halki_seminary",
+          "what": "on the Hill of Hope, rebuilt by Periklis Fotiadis and opened 1896 after the 1894 earthquake; complex includes chapel of the Holy Trinity, dormitories, library, renovated 1950s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/194303861",
+          "what": "building=school, outline 74 x 58 m L-shaped, 2,788 m2"
+        }
+      ],
+      "notes": "Form and size come from OSM and the Wikipedia history. Storeys, cream/ochre render and red tile roof are estimated from the typical 1890s Greek-Ottoman institutional style on the Princes Islands; no source text described the facade."
+    },
+    "istanbul-market-game": {
+      "venueId": "istanbul-market-game",
+      "city": "istanbul",
+      "name": "Carousel Alışveriş ve Yaşam Merkezi",
+      "archetype": "mall",
+      "subject": "Carousel shopping centre in Bakırköy: a wide three-level mall block with a rooftop car park and entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 125,
+        "depth_m": 104,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d8c3",
+          "#4b7a97",
+          "#f6f2e8"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carousel_Shopping_Center",
+          "what": "opened 29 September 1995, 107-117 stores, 12 escalators, 750 free parking spaces, developer Baymer"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/162139987",
+          "what": "building:levels=3, outline 125.5 x 103.7 m, 8,989 m2"
+        }
+      ],
+      "notes": "Dimensions and levels measured from OSM; colours and facade style are estimates for a 1990s Turkish mall (painted render with glazed bands). Not described in the sources used."
+    },
+    "istanbul-meal-stop": {
+      "venueId": "istanbul-meal-stop",
+      "city": "istanbul",
+      "name": "beyti lokanta",
+      "archetype": "restaurant",
+      "subject": "Beyti restaurant in Florya: a long three-storey purpose-built kebab restaurant with a terrace and Ottoman-themed interior",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece4d3",
+          "#9b5a3c",
+          "#fffaf0"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "dining terrace"
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Beyti_(Istanbul)",
+          "what": "moved 1983 to a purpose-built three-storey building in Florya designed by Osman Yilmaz Sanli in a modern style; eleven dining rooms, terrace, main room seats 500; Ottoman-art interior"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/276462508",
+          "what": "outline 72 x 30 m, 1,613 m2"
+        }
+      ],
+      "notes": "Form from Wikipedia and OSM. Exterior colours and detailing are estimated; the sources did not describe the facade. Recognisable by its long low horizontal massing with a broad terrace."
+    },
+    "istanbul-osm-node-4735960522": {
+      "venueId": "istanbul-osm-node-4735960522",
+      "city": "istanbul",
+      "name": "Saint Mary",
+      "archetype": "church-classical",
+      "subject": "the Italian Catholic church of Santa Maria in Büyükdere: a pale neoclassical two-storey basilica-plan church with a pedimented front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 42,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e6d3a8",
+          "#b9a37a",
+          "#f3efe6"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower; shape not confirmed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1864-1866",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Church_of_Santa_Maria,_Istanbul",
+          "what": "Roman Catholic church in Buyukdere, Sariyer; built 1864 to 1866 by Franciscans; architect Gaspare Fossati; Neoclassical two-storey basilica plan"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/4735960522",
+          "what": "name Aziz Meryem, Santa Maria Italian Catholic church"
+        }
+      ],
+      "notes": "Style, architect and date are sourced. Facade colour, bell tower and exact dimensions are estimates (OSM compound outline is about 59 x 56 m, so the church itself is smaller). Distinct from the Ottoman mosques by gable roof and pediment."
+    },
+    "istanbul-osm-relation-9948513": {
+      "venueId": "istanbul-osm-relation-9948513",
+      "city": "istanbul",
+      "name": "Büyük Çamlıca",
+      "archetype": "park-landscape",
+      "subject": "Büyük Çamlıca hilltop park: terraced gardens with Ottoman-style tea pavilions and the slender Çamlıca TV tower rising behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#d9c9a8",
+          "#8a5a3a",
+          "#efe7d4"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "Ottoman-themed tea houses"
+        },
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "panoramic Bosphorus viewing terrace"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "Camlica Tower 369 m (opened 2021) nearby"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "ottoman",
+      "era": "park; tower 2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%87aml%C4%B1ca_Hill",
+          "what": "hill 288 m, public park with large trees, flower gardens, fountains, Ottoman-themed teahouses and cafes, Camlica Mosque (2019) and 369 m tower (2021)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9948513",
+          "what": "park outline 594 x 425 m, 18 ha"
+        }
+      ],
+      "notes": "Park is large; model shows the viewing terrace with tea pavilions. The slender broadcasting tower and the huge 2019 mosque are nearby landmarks; keep the tower as a distant mast, not part of the park pavilions."
+    },
+    "istanbul-osm-way-1015392049": {
+      "venueId": "istanbul-osm-way-1015392049",
+      "city": "istanbul",
+      "name": "Bahçeköy Aqueduct",
+      "archetype": "monument",
+      "subject": "the single-tier Ottoman stone aqueduct of Bahçeköy in the Belgrade Forest: a long row of round arches on stone piers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 375,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c9bfa6",
+          "#a89f88",
+          "#d9d1bc"
+        ],
+        "roofColour": "#b0a88f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 20,
+          "note": "single tier of round arches"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "1762",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1015392049",
+          "what": "Bahceköy Su Kemeri: height 11 m, one level, architect Hassa Basmimar Kayserili Mehmed Aga, built 1762, outline 375 x 31 m, wikidata Q123137312"
+        }
+      ],
+      "notes": "Height, date and architect are tagged in OSM. Arch count and stone colour are estimates; it is a single tier and much lower than Uzun Kemer (two tiers, 26 m). Show a clamped portion of the arcade in forest."
+    },
+    "istanbul-osm-way-121462312": {
+      "venueId": "istanbul-osm-way-121462312",
+      "city": "istanbul",
+      "name": "Atatürk Olympic Stadium",
+      "archetype": "stadium",
+      "subject": "Atatürk Olympic Stadium: a huge open bowl with a crescent steel roof on the west stand and a lower roof on the east stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 269,
+        "depth_m": 269,
+        "storeys": 4,
+        "height_m": 46,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b9b4",
+          "#2f5fa3",
+          "#e8e8e4"
+        ],
+        "roofColour": "#c4c8cb",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "west crescent roof on a 1,000 t mega-truss carried by two concrete shafts across a 196 m span"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "high-tech",
+      "era": "2002",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Atat%C3%BCrk_Olympic_Stadium",
+          "what": "capacity 77,563; architects Michel Macary and Aymeric Zublena; two steel roofs (2,800 t and 1,300 t); west roof crescent with 1,000 t mega-truss on two concrete shafts, 196 m span; pitch 105 x 68 m; 450 m long front with commercial centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/121462312",
+          "what": "building:levels=4, start_date 2002-07-31, outline 269 x 269 m"
+        }
+      ],
+      "notes": "Structure and layout are sourced. Colours (grey concrete bowl, blue seats, pale roof) are estimates from typical photographs. Tall height value (46 m) is an estimate to the west roof crown."
+    },
+    "istanbul-osm-way-1365047639": {
+      "venueId": "istanbul-osm-way-1365047639",
+      "city": "istanbul",
+      "name": "Şamlar Köyü Camii",
+      "archetype": "mosque-domed",
+      "subject": "a small village mosque in Şamlar: a plain rectangular prayer hall with a hipped tile roof and a single slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#9b9b95",
+          "#ffffff"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1365047639",
+          "what": "place_of_worship muslim, outline 20.7 x 8.8 m, wikidata Q127418549"
+        }
+      ],
+      "notes": "Only the outline was found; the mosque has a tr.wikipedia entry that was not readable here. Typed brief: small Turkish village mosque with one minaret. No dome assumed."
+    },
+    "istanbul-osm-way-1491971480": {
+      "venueId": "istanbul-osm-way-1491971480",
+      "city": "istanbul",
+      "name": "Koç University",
+      "archetype": "campus-block",
+      "subject": "Koç University Rumelifeneri campus: stepped buff stone and render blocks around interlocking courtyards, with an arched main gateway and a clock tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d9c7a3",
+          "#b88a5a",
+          "#efe8da"
+        ],
+        "roofColour": "#9c5a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "Portal of Knowledge main entrance"
+        },
+        {
+          "id": "courtyard",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ko%C3%A7_University",
+          "what": "main campus at Rumelifeneri among hills; 60 buildings, 230,000 m2 built area; stepped design on steep terrain by Mozhan Khadem; interlocking courtyards drawing on Ottoman architecture; arched Portal of Knowledge entrance; Clocktower, main plaza, library"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1491971480",
+          "what": "campus outline 994 x 375 m"
+        }
+      ],
+      "notes": "Campus is far larger than the 120 m scene; show one courtyard block with the portal arch and clock tower. Colours are estimated from the buff and ochre palette typical for the campus."
+    },
+    "istanbul-osm-way-159932934": {
+      "venueId": "istanbul-osm-way-159932934",
+      "city": "istanbul",
+      "name": "Maltepe Hasan Polat Stadyumu",
+      "archetype": "stadium",
+      "subject": "a small municipal football stadium in Maltepe: low stands on all sides, a covered main stand and corner floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 137,
+        "depth_m": 99,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab2",
+          "#a33a35",
+          "#e5e2da"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1985, renovated 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/159932934",
+          "what": "stadium outline 137 x 99 m, wikidata Q6055740"
+        },
+        {
+          "url": "https://tr.wikipedia.org/wiki/Maltepe_Hasan_Polat_Stadyumu",
+          "what": "capacity 5,000, opened 1985, renovated 2004, pitch 105 x 68 m, home of Maltepespor"
+        }
+      ],
+      "notes": "Capacity, pitch and dates sourced; stand layout and colours estimated (no description found). Much smaller than the Atatürk and RAMS stadiums."
+    },
+    "istanbul-osm-way-342828509": {
+      "venueId": "istanbul-osm-way-342828509",
+      "city": "istanbul",
+      "name": "RAMS Park",
+      "archetype": "stadium",
+      "subject": "RAMS Park (Galatasaray stadium): a modern enclosed bowl with a translucent membrane roof and light angular facade",
+      "form": {
+        "footprint": "oval",
+        "width_m": 244,
+        "depth_m": 217,
+        "storeys": 5,
+        "height_m": 51,
+        "roof": "tensile"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9ccd0",
+          "#b3262d",
+          "#e9b520"
+        ],
+        "roofColour": "#e8eaec",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 8
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "high-tech",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ali_Sami_Yen_Sports_Complex",
+          "what": "Rams Global Stadium opened 15 January 2011, 52,223 seats, architect asp architekten Stuttgart"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/342828509",
+          "what": "height 51 m, start 2011, outline 244 x 217 m"
+        }
+      ],
+      "notes": "Capacity, architect and height sourced. Membrane roof and club red/yellow accents are from memory of photos, not confirmed in the pages read. Differs from the Atatürk Stadium by the fully enclosing roof ring."
+    },
+    "istanbul-osm-way-388925021": {
+      "venueId": "istanbul-osm-way-388925021",
+      "city": "istanbul",
+      "name": "Olivium Outlet Center",
+      "archetype": "mall",
+      "subject": "Olivium Outlet Center in Zeytinburnu: a big four-level shopping block with two parking levels and broad glazed entrances",
+      "form": {
+        "footprint": "rect",
+        "width_m": 134,
+        "depth_m": 130,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8ccb0",
+          "#7a9a58",
+          "#f3efe4"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Olivium_Outlet_Center",
+          "what": "opened 1 April 2000; four floors of retail plus two floors of parking; 6 cinemas, bowling; outside the old city walls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/388925021",
+          "what": "outline 134 x 130 m, 13,141 m2"
+        }
+      ],
+      "notes": "Floor count and size measured; facade colours (cream with olive-green accent from the name) are an estimate. Make visibly different from Carousel via four storeys and green accent."
+    },
+    "istanbul-osm-way-401781146": {
+      "venueId": "istanbul-osm-way-401781146",
+      "city": "istanbul",
+      "name": "Forum Istanbul Shopping and Life Center",
+      "archetype": "mall",
+      "subject": "Forum Istanbul in Bayrampaşa: a huge five-level mall with a courtyard, a dome and cumba bay windows in sea-blue and spice colours",
+      "form": {
+        "footprint": "rect",
+        "width_m": 313,
+        "depth_m": 273,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0b560",
+          "#2f7f9a",
+          "#f6efe0"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 12,
+          "note": "cumba-style projecting bays"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "garage for about 5,000 vehicles"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "large door sculpture"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://tr.wikipedia.org/wiki/Forum_%C4%B0stanbul",
+          "what": "about 495,000 m2 construction, 265 stores, five floors, designed by TCONCEPT; Turkish and Istanbul influences, colours of sea and spices, a dome, courtyard and cumba bay windows; 5,000-vehicle garage; Dunya Kapisi door sculpture"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/401781146",
+          "what": "opened 2009-11-17, outline 313 x 273 m"
+        }
+      ],
+      "notes": "Design concept and features are sourced; exact hexes for the sea blue and saffron/paprika spice colours are estimates. Clamp to a recognisable corner with the dome and bay windows."
+    },
+    "istanbul-osm-way-475513360": {
+      "venueId": "istanbul-osm-way-475513360",
+      "city": "istanbul",
+      "name": "Mimar Sinan Güzel Sanatlar Üniversitesi Dolmabahçe Yerleşkesi",
+      "archetype": "campus-block",
+      "subject": "the Fındıklı waterfront campus of Mimar Sinan Fine Arts University in the 1856 twin Ottoman palaces: two long cream stucco blocks with tall arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 241,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#eadfc3",
+          "#b99a68",
+          "#faf6ea"
+        ],
+        "roofColour": "#7c8a8c",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 14
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1856",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mimar_Sinan_Fine_Arts_University",
+          "what": "Findikli campus buildings first built 1856 as twin palaces for Munire Sultan and Cemile Sultan, daughters of Abdulmecid; later the Ottoman Chamber of Deputies 1910-1920"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/475513360",
+          "what": "campus outline 241 x 70 m"
+        }
+      ],
+      "notes": "Date and history sourced. The facade (cream stucco, arched windows, grey roof) is an estimate for a 19th-century Ottoman palace on the Bosphorus; architect and exact storeys not found."
+    },
+    "istanbul-osm-way-48162658": {
+      "venueId": "istanbul-osm-way-48162658",
+      "city": "istanbul",
+      "name": "Uzun Aqueduct",
+      "archetype": "monument",
+      "subject": "Uzun Kemer: the very long two-tier Ottoman stone aqueduct by Sinan crossing a valley in Göktürk, tall pointed arches in two rows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 767,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 26,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cbc1a6",
+          "#a69d84",
+          "#ddd5bf"
+        ],
+        "roofColour": "#b9b199",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 30,
+          "note": "two rows of pointed arches, upper row smaller"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "1554-1564",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://tr.wikipedia.org/wiki/Uzun_Kemer",
+          "what": "built 1554 to 1564 by Mimar Sinan, Turkeys longest surviving kemer, in Gokturk, on Roman-era foundations"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/48162658",
+          "what": "height 26 m, architect Mimar Sinan, outline 767 x 41 m"
+        }
+      ],
+      "notes": "Height, length, architect and date sourced; the two-tier layout with pointed arches is from general knowledge of the structure and is not in the pages read. Clamp to a segment of about 100 m."
+    },
+    "istanbul-osm-way-791438790": {
+      "venueId": "istanbul-osm-way-791438790",
+      "city": "istanbul",
+      "name": "İbn Haldun Üniversitesi",
+      "archetype": "campus-block",
+      "subject": "a university building of Ibn Haldun University: a rectangular modern block of render and glass, rotated on its plot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 68,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d4c8",
+          "#5f7f98",
+          "#f1eee6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/791438790",
+          "what": "building=university, outline 73 x 68 m (relation 17436710)"
+        }
+      ],
+      "notes": "Only the outline was found. Typed brief for a 2010s Turkish university block in Basaksehir; storeys and colours are guesses."
+    },
+    "istanbul-osm-way-969480621": {
+      "venueId": "istanbul-osm-way-969480621",
+      "city": "istanbul",
+      "name": "Mazul Kemer",
+      "archetype": "monument",
+      "subject": "Mazul Kemer: a short aqueduct arch bridge of weathered stone, a single tier of pointed arches over a stream bed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb49b",
+          "#9a917a",
+          "#d3cbb4"
+        ],
+        "roofColour": "#a8a08a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "Ottoman",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/969480621",
+          "what": "named walk venue Mazul Kemer; no matching building in OSM data"
+        }
+      ],
+      "notes": "Nothing was findable about this specific structure (no OSM building, no readable page). Typed from the Istanbul aqueduct family: single-tier stone arcade. Dimensions are guesses."
+    },
+    "istanbul-osm-way-989152604": {
+      "venueId": "istanbul-osm-way-989152604",
+      "city": "istanbul",
+      "name": "Beykoz Korusu",
+      "archetype": "park-landscape",
+      "subject": "Beykoz Korusu (Abraham Pasha grove): hillside park of exotic trees with ornamental pools, artificial waterfalls and a countryside cafe pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#c9b48f",
+          "#7b5a3a",
+          "#e2d8c0"
+        ],
+        "roofColour": "#8c5a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "countryside cafe"
+        },
+        {
+          "id": "fountain",
+          "count": 3,
+          "note": "ornamental pools with waterfalls"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th century park",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://tr.wikipedia.org/wiki/Beykoz_Korusu",
+          "what": "about 27.9 ha grove laid out by foreign gardeners with exotic trees; two artificial caves, five pools, three artificial waterfalls, small island; cafe, ornamental pools, fitness area, play areas"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/989152604",
+          "what": "park outline 1066 x 442 m"
+        }
+      ],
+      "notes": "Park features sourced; the cafe pavilion look is a guess. Show water features among large broadleaf and some conifers."
+    },
+    "istanbul-quiet-reflection": {
+      "venueId": "istanbul-quiet-reflection",
+      "city": "istanbul",
+      "name": "Arnavutköy Osmanlı Camii",
+      "archetype": "shrine-small",
+      "subject": "the Ottoman Mosque of Arnavutköy: a former 1595 church of rough-cut stone with a gable roof of Marseille tiles and a newer single-balcony concrete minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#b9ab90",
+          "#8a7c63",
+          "#d8d0bd"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single balcony, built new, reinforced concrete"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "1595; mosque since 1991",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://tr.wikipedia.org/wiki/Osmanl%C4%B1_Camii",
+          "what": "built 1595 as a church, converted to a mosque opened 1991; single-storey; rough-cut stone masonry walls; Marseille tile roof; one minaret with one balcony of reinforced concrete"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/317507205",
+          "what": "building=mosque, outline 26 x 16 m, wikidata Q6062135"
+        }
+      ],
+      "notes": "Described in detail by the source. Has no dome, so use a gable-roofed stone hall with a separate slim concrete minaret. Colours of the stone are estimated. Distinct from other mosques here by the church-like gable hall."
+    },
+    "istanbul-recreation": {
+      "venueId": "istanbul-recreation",
+      "city": "istanbul",
+      "name": "Bebek Parkı",
+      "archetype": "park-landscape",
+      "subject": "Bebek Park on the Bosphorus shore: a long narrow waterfront park of lawns, plane trees and a quayside promenade with small cafe kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 229,
+        "depth_m": 82,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d0c4a8",
+          "#7f8a92",
+          "#ece6d6"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "public park",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bebek,_Istanbul",
+          "what": "Bebek Bay on the European shore; seaside cafes and restaurants; Bebek Mosque by Kemaleddin Bey 1912; park only shown in a photo caption"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41724831",
+          "what": "park outline 229 x 82 m"
+        }
+      ],
+      "notes": "The park itself was barely described anywhere; typed from the waterfront setting. Its fame is the Bosphorus view and nearby historic wooden mansions, not the park structures."
+    },
+    "istanbul-transit": {
+      "venueId": "istanbul-transit",
+      "city": "istanbul",
+      "name": "Ayvansaray",
+      "archetype": "transport-station",
+      "subject": "Ayvansaray on the Golden Horn: a small ferry landing and tram stop with the Theodosian land walls and polygonal towers behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb8ac",
+          "#5f7f98",
+          "#e0ddd2"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "Golden Horn ferry pier"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2,
+          "note": "T5 tram"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "Theodosian walls with three large polygonal towers"
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "ferry/tram stop; walls 5th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ayvansaray",
+          "what": "neighbourhood on the Golden Horn in Fatih; Theodosian walls reach the Golden Horn here behind three large polygonal towers; Golden Horn ferries stop here; T5 tram passes through; Tekfur Palace"
+        }
+      ],
+      "notes": "No station building was found in the data; this is a typed ferry landing and tram stop in the old-wall district. The weathered brick-and-stone wall towers are the recognisable element."
+    }
+  }
+}

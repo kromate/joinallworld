@@ -1,0 +1,1688 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "amsterdam",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "amsterdam",
+    "climate": "temperate",
+    "vernacular": "Brick Netherlands: narrow gabled brick canal houses (red-brown and dark brick with white-framed sash windows and hoisting beams) in the old centres; interwar Amsterdam School and 1960s-80s brick and concrete housing blocks; flat polder towns (Hoofddorp, Almere, Zaandam) of brick terraces, pantile pitched roofs and glass-and-brick public buildings; glass and steel offices on the Zuidas and around Schiphol. Dark red or black glazed pantile roofs, bicycles, canals and pollarded plane or lime trees.",
+    "wallColours": [
+      "#8c4a3a",
+      "#6e4a3c",
+      "#b0623f",
+      "#c9b58a",
+      "#d9d6cf",
+      "#4a4f55",
+      "#3b3d40"
+    ],
+    "roofColours": [
+      "#a5522f",
+      "#3d3f44",
+      "#6b6f74",
+      "#8a8a86"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "render",
+      "glass-curtain",
+      "concrete",
+      "metal-cladding",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf"
+    ],
+    "ornament": "Stepped, neck, bell and spout gables on narrow canal-house fronts; hoisting beams and hooks in the gable; white-painted sash windows with shutters in dark green or black; light stone bands, lintels and cornices against dark brick; Amsterdam School brick sculpture; stone-and-water motifs in modern landscaping.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dutch_architecture",
+        "what": "brick as the main Dutch material (red to dark orange, darkening with age); stepped gables especially in Amsterdam; narrow canal houses with light horizontal bands; Berlage, Amsterdam School, De Stijl, Structuralism"
+      },
+      {
+        "url": "https://nl.wikipedia.org/wiki/Hervormde_kerk_(Krommeniedijk)",
+        "what": "typical late-Renaissance single-aisle Dutch reformed church (1755) in the Zaan region"
+      },
+      {
+        "url": "https://nl.wikipedia.org/wiki/BUKO_Stadion",
+        "what": "anthracite-coloured brick facade and translucent PVC roof on wooden trusses as a current Dutch regional stadium"
+      }
+    ]
+  },
+  "places": {
+    "amsterdam-airport-amsterdam-airport": {
+      "venueId": "amsterdam-airport-amsterdam-airport",
+      "city": "amsterdam",
+      "name": "Amsterdam Airport Schiphol",
+      "archetype": "airport-terminal",
+      "subject": "Schiphol terminal seen from the landside plaza: a very wide low terminal block of grey cladding and glass under a flat roof, with the 101 m control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 540,
+        "depth_m": 130,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9ced1",
+          "#7d8e9a",
+          "#eceeef"
+        ],
+        "roofColour": "#b8bcbf",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "101 m, built 1991, separate from the terminal"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "piers radiate from the central terminal"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "Schiphol Plaza arrivals hall"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "terminal 1967, repeatedly extended; tower 1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Amsterdam_Airport_Schiphol",
+          "what": "single-terminal concept with departure halls 1-3 and piers; terminal opened 1967, hall 3 added 1993; control tower 101 m tall, built 1991"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/268641398",
+          "what": "OSM measured footprint 541.7 x 267.5 m, height 13 m, start 1967"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q9694",
+          "what": "Wikidata Amsterdam Schiphol Airport (airport in Haarlemmermeer, Netherlands)"
+        }
+      ],
+      "notes": "One huge terminal under one roof radiating from the central plaza; OSM roof colour lightgrey, height 13 m, footprint ~540 x 270 m so the model shows the landside front only. Facade cladding and glass colours are estimates of the refitted terminal. Wissing yellow-and-green signage is not modelled (no signage)."
+    },
+    "amsterdam-clinic": {
+      "venueId": "amsterdam-clinic",
+      "city": "amsterdam",
+      "name": "Zaans Medisch Centrum",
+      "archetype": "hospital",
+      "subject": "Zaans Medisch Centrum in Zaandam: a compact modern hospital with floor-to-ceiling windows and calm colours, with the long Zorgboulevard care strip in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b2a6",
+          "#8aa0aa",
+          "#ece9e2"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "daylit entrance hall"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "built 2013-2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Zaans_Medisch_Centrum",
+          "what": "designed by Mecanoo, built 2013-2017; compact, sustainable and flexible; calm colours, daylight through floor-length windows, greenery"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/533375801",
+          "what": "OSM measured footprint 115.6 x 19.4 m, start 2016"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2678979",
+          "what": "Wikidata Zaans Medisch Centrum (hospital in Zaanstad, the Netherlands)"
+        }
+      ],
+      "notes": "Architect (Mecanoo) and opening (2017) are sourced; storey count and facade colours are estimates. The 115 x 19 m OSM building at the coordinate is the 2016 Zorgboulevard retail/care strip next to the hospital."
+    },
+    "amsterdam-community-notices": {
+      "venueId": "amsterdam-community-notices",
+      "city": "amsterdam",
+      "name": "Zorginstituut Nederland",
+      "archetype": "office-low",
+      "subject": "Zorginstituut Nederland in Diemen: a mid-rise 2003 glass-and-brick office building with an irregular multi-wing plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 54,
+        "depth_m": 46,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "brick",
+        "colours": [
+          "#cfd4d6",
+          "#7b5a4a",
+          "#4a4f55"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/278865495",
+          "what": "OSM measured footprint 53.7 x 45.7 m, start 2003"
+        }
+      ],
+      "notes": "Only OSM data (commercial building, 2003, 54 x 46 m irregular footprint) is available; appearance is typed from a Dutch office-park building. Sit in a business park with a surface car park."
+    },
+    "amsterdam-community-voting-game": {
+      "venueId": "amsterdam-community-voting-game",
+      "city": "amsterdam",
+      "name": "Grote Markt",
+      "archetype": "park-landscape",
+      "subject": "Haarlem Grote Markt: the cobbled market square with the Coster statue, backed by the huge tower of St Bavo and the Vleeshal and Town Hall facades",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 65,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#8c4a3a",
+          "#c9bfa9",
+          "#d9d6cf"
+        ],
+        "roofColour": "#a5522f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Laurens Janszoon Coster, erected 1856"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "St Bavo tower about 78 m on the north side"
+        },
+        {
+          "id": "stalls",
+          "count": 8,
+          "note": "market stalls"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "medieval square; Vleeshal 1603",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grote_Markt,_Haarlem",
+          "what": "St Bavo church (tower ~78 m, late 15th-16th c.) on the north side, City Hall opposite, Vleeshal by Lieven de Key 1603, Coster statue 1856"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1417622500",
+          "what": "OSM measured footprint 6.8 x 4.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1083850",
+          "what": "Wikidata Grote Markt (main square of Haarlem, the Netherlands)"
+        }
+      ],
+      "notes": "The OSM building at the coordinate is only a static caravan (market stall); the real place is the square. Model the open cobbled square with the statue and a market-stall row, with the tower as the backdrop. Paving and brick colours are estimates."
+    },
+    "amsterdam-community-workshop": {
+      "venueId": "amsterdam-community-workshop",
+      "city": "amsterdam",
+      "name": "Tyndale Theological Seminary",
+      "archetype": "campus-block",
+      "subject": "Tyndale Theological Seminary in Amstelveen: a small 1971 two-storey brick college building with an irregular plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 39,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#8c6a55",
+          "#c8c2b4",
+          "#4a4f55"
+        ],
+        "roofColour": "#6b6f74",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1971",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/3606162",
+          "what": "OSM measured footprint 38.6 x 33.7 m, start 1971"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7860449",
+          "what": "Wikidata Tyndale Theological Seminary (Europe)"
+        }
+      ],
+      "notes": "Only OSM data (1971, 39 x 34 m, irregular footprint) is available; storeys and colours are typed from a Dutch 1970s low-rise institutional building."
+    },
+    "amsterdam-market-game": {
+      "venueId": "amsterdam-market-game",
+      "city": "amsterdam",
+      "name": "Hilvertshof",
+      "archetype": "mall",
+      "subject": "Hilvertshof in Hilversum: a multi-level enclosed shopping centre (opened 1973, re-clad 2017) with rounded glass-and-light forms over parking decks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 125,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4d2cc",
+          "#7f8f9a",
+          "#efeeeb"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "two parking decks"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "entrances at Groest, Zeedijk and Kerkstraat"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "opened 1973, renovated 2001 and 2015-2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Hilvertshof",
+          "what": "opened 25 March 1973; three shopping levels above two parking levels; 2015-17 Rijnboutt redesign with round forms and large areas of glass; about 24,000 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/52651868",
+          "what": "OSM measured footprint 130.2 x 124.8 m, start 1973"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2550154",
+          "what": "Wikidata Hilvertshof"
+        }
+      ],
+      "notes": "Footprint 130 x 125 m (OSM). The renovation replaced hard square forms with rounded forms and glass; colours estimated. Distinct from the Schiphol Plaza and the outlet centre by its dense block plan over parking."
+    },
+    "amsterdam-meal-stop": {
+      "venueId": "amsterdam-meal-stop",
+      "city": "amsterdam",
+      "name": "Vermeer",
+      "archetype": "restaurant",
+      "subject": "The Vermeer restaurant row on Prins Hendrikkade: a terrace of narrow four-storey brick gabled warehouse fronts converted into a hotel and restaurant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 12,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#6e4a3c",
+          "#c9bfa9",
+          "#e9e6df"
+        ],
+        "roofColour": "#4a4a4d",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "17th-century warehouses (OSM 1800), restaurant modern",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Hervormde_kerk_(Krommeniedijk)",
+          "what": "Dutch brick vernacular context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/266944080",
+          "what": "OSM measured footprint 31 x 4.9 m, height 16 m, 4 levels, start 1800"
+        }
+      ],
+      "notes": "OSM measured: 31 x 5 m, 4 levels, 16 m, gabled roof, grey tiles, brick, start 1800. The Vermeer restaurant sits in the NH Barbizon Palace complex of merged 17th-century warehouse houses near Amsterdam Centraal; the stepped-gable and hoist-beam fronts are the recognisable part. The Vermeer name is from the game; no sign text."
+    },
+    "amsterdam-osm-node-2739756603": {
+      "venueId": "amsterdam-osm-node-2739756603",
+      "city": "amsterdam",
+      "name": "Schiphol Plaza",
+      "archetype": "mall",
+      "subject": "Schiphol Plaza: the glass-roofed arrivals hall and shopping plaza in front of the terminal, with the railway station below",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3d8db",
+          "#7d8e9a",
+          "#eceeef"
+        ],
+        "roofColour": "#b8bcbf",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "large glass-covered plaza"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "station beneath"
+        },
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "1990 plaza by Benthem Crouwel (OSM start 1978)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Amsterdam_Airport_Schiphol",
+          "what": "Schiphol Plaza is the central plaza from which the terminal radiates; Wissing signage"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/268641343",
+          "what": "OSM measured footprint 347.5 x 190.7 m, height 9.4 m, start 1978"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2043785",
+          "what": "Wikidata Schiphol Plaza (shopping center in Haarlemmermeer, Netherlands)"
+        }
+      ],
+      "notes": "Wikidata architects Jan Benthem and Mels Crouwel, inception 1990; OSM footprint 347 x 190 m height 9.4 m. Shows only the plaza front. Distinct from the terminal by the glazed roof and low height."
+    },
+    "amsterdam-osm-node-2881763865": {
+      "venueId": "amsterdam-osm-node-2881763865",
+      "city": "amsterdam",
+      "name": "Kasteel Loenersloot",
+      "archetype": "heritage-fort",
+      "subject": "Kasteel Loenersloot beside the Angstel: a polygonal medieval castle whose 13th-century residential tower was encased in 19th-century battlemented masonry, with 14th-15th century wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 31,
+        "depth_m": 29,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#9a6a4f",
+          "#d8cfb8",
+          "#6b5a4a"
+        ],
+        "roofColour": "#8a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "battlemented central tower"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "moat edge"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "first mention 1258; wings 14th-15th c., 18th-c. estate",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Kasteel_Loenersloot",
+          "what": "polygonal castle, first mentioned 1258 as a donjon; 13th-c. tower encased in new masonry with battlements in the 19th c.; 14th-15th c. wings; 18th-c. country estate; on the Angstel"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/33115170",
+          "what": "OSM measured footprint 30.7 x 28.7 m, start 1350"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2747025",
+          "what": "Wikidata Kasteel Loenersloot"
+        }
+      ],
+      "notes": "The battlemented tower enclosed in 19th-century masonry is the recognisable element. Brick and roof colours are estimates; OSM footprint ~31 x 29 m."
+    },
+    "amsterdam-osm-node-3136758579": {
+      "venueId": "amsterdam-osm-node-3136758579",
+      "city": "amsterdam",
+      "name": "Uitkijktoren Kruisberg",
+      "archetype": "monument",
+      "subject": "Uitkijktoren Kruisberg in the Schoorl dunes: a small square lookout tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "lookout-tower",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#7a6a55",
+          "#8a8f93",
+          "#4a4f55"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair up the frame"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "platform railing"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1228383921",
+          "what": "OSM measured footprint 4.2 x 4.1 m"
+        }
+      ],
+      "notes": "No source found beyond a 4 x 4 m OSM footprint. A lattice or timber viewing tower with a stair and top platform is assumed."
+    },
+    "amsterdam-osm-node-4351285531": {
+      "venueId": "amsterdam-osm-node-4351285531",
+      "city": "amsterdam",
+      "name": "De tochtgenoten - 'Rachel beweent haar kinderen'",
+      "archetype": "monument",
+      "subject": "De tochtgenoten - Rachel beweent haar kinderen: a small 2022 memorial of figures in a landscape",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "memorial",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a8a59e",
+          "#6b6f74",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2022",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1102779797",
+          "what": "OSM measured footprint 3.8 x 3.2 m, start 2022"
+        }
+      ],
+      "notes": "Only OSM data (building=yes, start 2022, 4 x 3 m). The title refers to Rachel weeping for her children; no description of the artwork was found, so a small statue-like memorial is assumed."
+    },
+    "amsterdam-osm-relation-3711947": {
+      "venueId": "amsterdam-osm-relation-3711947",
+      "city": "amsterdam",
+      "name": "Muiderslot",
+      "archetype": "heritage-fort",
+      "subject": "Muiderslot: the near-square moated brick castle with four corner towers and a gatehouse, rebuilt 1370-1386",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#8c4a3a",
+          "#c9bfa9",
+          "#6b5a4a"
+        ],
+        "roofColour": "#8a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "steep pointed corner-tower roofs"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "gatehouse with drawbridge"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "founded 1280, rebuilt 1370-1386 by Albert of Bavaria",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muiderslot",
+          "what": "castle ~32 x 35 m, brick walls over 1.5 m thick, surrounded by a large moat; first castle 1280 by Count Floris V, rebuilt 1370-1386 on the same plan"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3711947",
+          "what": "OSM measured footprint 42.9 x 37.1 m, start 1285"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2426916",
+          "what": "Wikidata Muiderslot (castle in Muiden, the Netherlands)"
+        }
+      ],
+      "notes": "Four-towered moated brick castle in Muiden. Plan and moat from the source; the steep tile roofs and crow-stepped details are from general knowledge of the building. OSM footprint 43 x 37 m including moat edge."
+    },
+    "amsterdam-osm-way-122547925": {
+      "venueId": "amsterdam-osm-way-122547925",
+      "city": "amsterdam",
+      "name": "Spaarne Gasthuis Hoofddorp",
+      "archetype": "hospital",
+      "subject": "Spaarne Gasthuis in Hoofddorp: a large 2004 hospital block with a car park garage in front and the Zuidtangent busway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9a6a4f",
+          "#8aa0aa",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "Q-Park garage in front"
+        },
+        {
+          "id": "bus-bays",
+          "count": 2,
+          "note": "busway stop"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "opened 2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Spaarne_Gasthuis_(Hoofddorp)",
+          "what": "opened 2004 in Floriande, with a parking garage in front and the Zuidtangent busway; orange Amazing Whale Jaw bus-station art nearby"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1379860674",
+          "what": "OSM measured footprint 272.3 x 116.8 m, start 2004"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2056409",
+          "what": "Wikidata Spaarne Hospital Hoofddorp (hospital in Hoofddorp, the Netherlands)"
+        }
+      ],
+      "notes": "Footprint 272 x 117 m from OSM (22,299 m2); storeys and facade are estimates. The orange Whale Jaw bus station beside it (Maurice Nio) is a separate artwork."
+    },
+    "amsterdam-osm-way-157415662": {
+      "venueId": "amsterdam-osm-way-157415662",
+      "city": "amsterdam",
+      "name": "Uitkijkpost 't Kopje",
+      "archetype": "monument",
+      "subject": "Uitkijkpost 't Kopje on the Wilhelminaduin: a squat German WWII concrete observation tower opened as a lookout in 1946",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "bunker-tower",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8f8f88",
+          "#6b6f74",
+          "#a8a59e"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair to the platform"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "roof railing"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "WWII, lookout from 1946, restored 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Kopje_van_Bloemendaal",
+          "what": "WWII German concrete observation tower on a dune; opened as a lookout in 1946; restored 2008; municipal monument; 't Kopje restaurant and open-air theatre beside it"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/157415662",
+          "what": "OSM measured footprint 8.8 x 8.8 m, height 8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1943217",
+          "what": "Wikidata Kopje van Bloemendaal"
+        }
+      ],
+      "notes": "OSM: tower 8 m high, 8.8 x 8.8 m. A windowless concrete cube-like bunker on top of a wooded dune."
+    },
+    "amsterdam-osm-way-26401769": {
+      "venueId": "amsterdam-osm-way-26401769",
+      "city": "amsterdam",
+      "name": "ACTA",
+      "archetype": "office-tower",
+      "subject": "ACTA dental school on the Zuidas: a 13-storey glass-and-white-panel tower of three stacked volumes, facade windows staggered like a cloudy sky",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 57,
+        "storeys": 13,
+        "height_m": 57,
+        "roof": "flat",
+        "variant": "campus-tower",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#7d8e9a",
+          "#f5f5f3"
+        ],
+        "roofColour": "#b8bcbf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "low public/teaching volume"
+        },
+        {
+          "id": "setback-tiers",
+          "count": 2,
+          "note": "three volumes of different heights"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Academisch_Centrum_Tandheelkunde_Amsterdam",
+          "what": "57.5 m tall, 13 storeys above ground, Benthem Crouwel Architects, three volumes (low teaching, middle restaurant/exam hall, high labs), staggered window layout evoking a cloudy sky"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/26401769",
+          "what": "OSM measured footprint 60.2 x 56.7 m, height 57.5 m, 13 levels, start 2010-07-01"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q117236707",
+          "what": "Wikidata ACTA building Zuidas (building in Amsterdam, the Netherlands)"
+        }
+      ],
+      "notes": "It is a university building but reads as a tower, so office-tower is used. Facade colours estimated from the cloud-like staggered window concept."
+    },
+    "amsterdam-osm-way-284901861": {
+      "venueId": "amsterdam-osm-way-284901861",
+      "city": "amsterdam",
+      "name": "Hervormde Kerk Krommeniedijk",
+      "archetype": "church-classical",
+      "subject": "Hervormde Kerk Krommeniedijk: a small 1755 single-aisle reformed hall church in late-Renaissance style on the remains of three earlier churches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#8c4a3a",
+          "#c9bfa9",
+          "#e9e6df"
+        ],
+        "roofColour": "#8a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower or turret"
+        },
+        {
+          "id": "stained-glass",
+          "count": 13,
+          "note": "thirteen windows of New Testament scenes"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1755",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Hervormde_kerk_(Krommeniedijk)",
+          "what": "completed 1755 late-Renaissance single-aisle hall church, thirteen stained-glass windows, rijksmonument since 1968, built on three earlier churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/284901861",
+          "what": "OSM measured footprint 17.1 x 16.8 m, start 1755"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17449044",
+          "what": "Wikidata Nederlandse Hervormde Kerk (church building in Zaanstad, Netherlands)"
+        }
+      ],
+      "notes": "Footprint 17 x 17 m in OSM includes the tower and surrounding; brick colours and tower form are estimates for a Zaan-region church."
+    },
+    "amsterdam-osm-way-392300651": {
+      "venueId": "amsterdam-osm-way-392300651",
+      "city": "amsterdam",
+      "name": "Beemster Arboretum",
+      "archetype": "park-landscape",
+      "subject": "Beemster Arboretum in Zuidoostbeemster: a flat 7-hectare tree collection with mown lawns, tree groups by genus and winding paths",
+      "form": {
+        "footprint": "rect",
+        "width_m": 228,
+        "depth_m": 208,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a6a55",
+          "#8c4a3a",
+          "#d9d6cf"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "founded 1971, geographic section 1992",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Beemster_Arboretum",
+          "what": "7.3 ha arboretum founded 1971; systematic section by genus (fir, chestnut, birch, lime, walnut, yew) and geographic section planted 1992 (oak, beech, Japanese cedar, dawn redwood, black pine)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/392300651",
+          "what": "OSM measured footprint 228.5 x 208 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2791381",
+          "what": "Wikidata Beemster Arboretum (arboretum in the Netherlands)"
+        }
+      ],
+      "notes": "Mostly trees; no notable buildings are described. Show open lawn with irregular tree groups (both broadleaf and a few conifers) and a path loop."
+    },
+    "amsterdam-osm-way-482698293": {
+      "venueId": "amsterdam-osm-way-482698293",
+      "city": "amsterdam",
+      "name": "BUKO Stadion",
+      "archetype": "stadium",
+      "subject": "BUKO Stadion (Telstar) in Velsen-Zuid: a small football ground with a long main stand of anthracite brick and a translucent fabric roof, covered end stands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 168,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#3b3d40",
+          "#8aa0aa",
+          "#d9d6cf"
+        ],
+        "roofColour": "#d9dadb",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "west stand translucent PVC roof on wooden trusses, east steel roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1948, main stand 2009 (Zwarts & Jansma), stands 2025",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/BUKO_Stadion",
+          "what": "capacity ~6,000; main west stand 2009 by Zwarts & Jansma with anthracite-coloured brick facades and a tall central glass entrance; translucent PVC-fabric roof on wooden trusses; covered east and north stands"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/482698293",
+          "what": "OSM measured footprint 167.8 x 130.3 m, start 1948-03-27"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1851894",
+          "what": "Wikidata BUKO Stadion (football stadium in Velsen-Zuid, the Netherlands)"
+        }
+      ],
+      "notes": "Four stands around a grass pitch (105 x 68). Floodlights are not in the source but are standard. Compare with Athens stadiums by the brick main stand and small size."
+    },
+    "amsterdam-osm-way-55191054": {
+      "venueId": "amsterdam-osm-way-55191054",
+      "city": "amsterdam",
+      "name": "Sint-Jan de Doperkerk",
+      "archetype": "church-classical",
+      "subject": "Sint-Jan de Doperkerk (Schanskerk) in Uithoorn: a large 1867-68 neo-Romanesque three-aisle brick church with two towers on the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 41,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#8c4a3a",
+          "#c9bfa9",
+          "#d9d6cf"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two towers flank the entrance front, left one with a clock"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "round-arched windows and portal"
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1867-1868 (OSM start 2023, probably restoration)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Sint-Jan_de_Doperkerk_(Uithoorn)",
+          "what": "built 1867-68 to a design by Herman Jan van den Brink; large neo-Romanesque three-aisle church with two towers on the front facade and a clock in the left tower"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/55191054",
+          "what": "OSM measured footprint 41.2 x 34.5 m, start 2023"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2225414",
+          "what": "Wikidata Sint-Jan de Doperkerk (Uithoorn) (church building in Uithoorn, Netherlands)"
+        }
+      ],
+      "notes": "Roof and brick colours are estimates; OSM footprint 41 x 34 m. Style is neo-Romanesque (not in the STYLES list; victorian used for the era)."
+    },
+    "amsterdam-osm-way-673001166": {
+      "venueId": "amsterdam-osm-way-673001166",
+      "city": "amsterdam",
+      "name": "Ziekenhuis Amstelland",
+      "archetype": "hospital",
+      "subject": "Ziekenhuis Amstelland in Amstelveen: a large hospital complex on Laan van de Helende Meesters with long blocks of mixed 1960s and later wings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#a07a62",
+          "#c8c2b4",
+          "#8a8f93"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1966 (Nicolaas Tulp hospital 1968), extended later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Ziekenhuis_Amstelland",
+          "what": "organisation formed in 1978 from the Nicolaas Tulp hospital (1968, Amstelveen) and the Jewish CIZ hospital; on the Laan van de Helende Meesters"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3674357",
+          "what": "OSM measured footprint 209.8 x 148.5 m, start 1966"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30270640",
+          "what": "Wikidata Ziekenhuis Amstelland (healthcare organization in Amstelveen, Netherlands)"
+        }
+      ],
+      "notes": "Footprint 210 x 149 m in OSM; only history is sourced. Brick-and-concrete mid-rise typed from a 1960s Dutch hospital. Distinct from Spaarne Gasthuis by older ribbon-window blocks."
+    },
+    "amsterdam-osm-way-725091517": {
+      "venueId": "amsterdam-osm-way-725091517",
+      "city": "amsterdam",
+      "name": "Amsterdam The Style Outlets",
+      "archetype": "mall",
+      "subject": "Amsterdam The Style Outlets in Halfweg: a long low outlet-centre building opened 2020 on the former sugar-factory site, with covered walkways and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 330,
+        "depth_m": 95,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9a9590",
+          "#c8bfb2",
+          "#4a4f55"
+        ],
+        "roofColour": "#6b6f74",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 12
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "1,950 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "built 2018-2020",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Amsterdam_The_Style_Outlets",
+          "what": "outlet centre on the former CSM sugar factory site in Halfweg; design based on the Dutch landscape and a tradition of water and stone; 115 shops, ~19,000 m2, 1,950 parking spaces"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/725091517",
+          "what": "OSM measured footprint 331.7 x 95 m, start 2021"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q61697515",
+          "what": "Wikidata Amsterdam The Style Outlets (factory outlet center in Halfweg, the Netherlands)"
+        }
+      ],
+      "notes": "Elongated 330 x 95 m footprint (OSM). The facade is described only as stone-and-water inspired; materials and colours are estimates."
+    },
+    "amsterdam-osm-way-943490220": {
+      "venueId": "amsterdam-osm-way-943490220",
+      "city": "amsterdam",
+      "name": "Stadspark Hoofddorp",
+      "archetype": "park-landscape",
+      "subject": "Stadspark Hoofddorp: a long narrow urban park with lawns, water and tree rows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a6a55",
+          "#8c4a3a",
+          "#d9d6cf"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "new-town park",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/943490220",
+          "what": "OSM measured footprint 704.3 x 121.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q122188015",
+          "what": "Wikidata Stadspark Hoofddorp (park in Hoofddorp, Netherlands)"
+        }
+      ],
+      "notes": "Only OSM data (park, 704 x 122 m strip) and a Wikidata entry (urban park). Typed as a generic Dutch new-town park; shown as a portion of the strip."
+    },
+    "amsterdam-quiet-reflection": {
+      "venueId": "amsterdam-quiet-reflection",
+      "city": "amsterdam",
+      "name": "Hervormde Kerk (Ilpendam)",
+      "archetype": "church-classical",
+      "subject": "Hervormde Kerk Ilpendam: a single-aisle reformed church rebuilt in 1656 with a west tower added in 1868 and a whitewashed rectory on its north side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 32,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "whitewash",
+        "colours": [
+          "#8c4a3a",
+          "#eceae4",
+          "#6b5a4a"
+        ],
+        "roofColour": "#8a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower 1868 with bell cage"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tower clock 1923"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "chapel 1408, church 1656, tower 1868",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Hervormde_kerk_(Ilpendam)",
+          "what": "single-aisle church rebuilt in 1656; west tower added 1868 with a 1682 bell and 1923 tower clock; whitewashed rectory (1868) on the north side; rijksmonument since 1967"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/43389286",
+          "what": "OSM measured footprint 40.5 x 15 m, start 1750"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17407007",
+          "what": "Wikidata Hervormde Kerk, Ilpendam (church building in Waterland, Netherlands)"
+        }
+      ],
+      "notes": "Brick colour and roof are estimates; the rectory is attached and whitewashed. OSM footprint 40.5 x 15 m including the tower."
+    },
+    "amsterdam-recreation": {
+      "venueId": "amsterdam-recreation",
+      "city": "amsterdam",
+      "name": "Pampushout",
+      "archetype": "park-landscape",
+      "subject": "Pampushout forest in Almere: young planted woodland with sandy paths and a shipwreck play feature",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a6a55",
+          "#8c4a3a",
+          "#d9d6cf"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "polder forest, 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/18012329",
+          "what": "OSM measured footprint 2199.1 x 939.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q107988336",
+          "what": "Wikidata Pampushout (forest in Almere, the Netherlands)"
+        }
+      ],
+      "notes": "Wikidata: urban forest in Almere with an image of a ship wreck (Pampus wreck). OSM area is ~2.2 x 0.9 km so only a small portion is shown; typed as polder woodland on flat grass with paths."
+    },
+    "amsterdam-transit": {
+      "venueId": "amsterdam-transit",
+      "city": "amsterdam",
+      "name": "Nieuw Vennep",
+      "archetype": "transport-station",
+      "subject": "Nieuw-Vennep: a small bus-and-tram style transport stop in a polder town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "bus-station",
+        "wings": 0
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b0b6ba",
+          "#7d8e9a",
+          "#4a4f55"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1490620506",
+          "what": "OSM measured footprint 277.2 x 200.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q545457",
+          "what": "Wikidata Nieuw-Vennep (village in Haarlemmermeer, Netherlands)"
+        }
+      ],
+      "notes": "The OSM element at the coordinate is a motocross track; Wikidata names the village Nieuw-Vennep. No station is described, so a small bus stop with a shelter canopy is typed from the city style."
+    }
+  }
+}

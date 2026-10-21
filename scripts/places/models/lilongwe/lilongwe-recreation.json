@@ -1,0 +1,402 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FCB-Nyasa-Big-Bullets-were-crowned-the-2024-Airtel-Top-8-Champions-after-beating-Silver-Strikers-1-0-at-the-Bingu-National-Stadium-scaled.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Innocent Chiduleni",
+   "view": "interior",
+   "used": "colours only (yellow seats, white concrete tier fascias); interior view so not compared as an exterior"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12154476",
+   "used": "near-circular ring about 250 m across; modelled at about 0.45 scale as a full ring of stands"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Bingu_National_Stadium",
+   "used": "41,100 seats, closed ring, roof over the seating, floodlight masts"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      24.0,
+      0.0
+     ],
+     [
+      23.2,
+      6.7
+     ],
+     [
+      20.8,
+      13.0
+     ],
+     [
+      17.0,
+      18.4
+     ],
+     [
+      12.0,
+      22.5
+     ],
+     [
+      6.2,
+      25.1
+     ],
+     [
+      0.0,
+      26.0
+     ],
+     [
+      -6.2,
+      25.1
+     ],
+     [
+      -12.0,
+      22.5
+     ],
+     [
+      -17.0,
+      18.4
+     ],
+     [
+      -20.8,
+      13.0
+     ],
+     [
+      -23.2,
+      6.7
+     ],
+     [
+      -24.0,
+      0.0
+     ],
+     [
+      -23.2,
+      -6.7
+     ],
+     [
+      -20.8,
+      -13.0
+     ],
+     [
+      -17.0,
+      -18.4
+     ],
+     [
+      -12.0,
+      -22.5
+     ],
+     [
+      -6.2,
+      -25.1
+     ],
+     [
+      -0.0,
+      -26.0
+     ],
+     [
+      6.2,
+      -25.1
+     ],
+     [
+      12.0,
+      -22.5
+     ],
+     [
+      17.0,
+      -18.4
+     ],
+     [
+      20.8,
+      -13.0
+     ],
+     [
+      23.2,
+      -6.7
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#5f9a45",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 27,
+    "radiusY": 29,
+    "startDeg": -2,
+    "endDeg": 182,
+    "rows": 14,
+    "rise": 0.62,
+    "run": 0.72,
+    "firstHeight": 3.0,
+    "facetDeg": 16,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#e3b81f",
+    "seatColours": [
+     "#e3b81f",
+     "#e9e7df"
+    ],
+    "blocks": 8,
+    "concreteColour": "#e4e2da",
+    "underColour": "#c9c6bc",
+    "canopy": {
+     "height": 0.8,
+     "depth": 11,
+     "thickness": 1.2,
+     "slopeDeg": 6,
+     "colour": "#eeeeea",
+     "edgeColour": "#c23a30",
+     "overhangBack": 1.5
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 27,
+    "radiusY": 29,
+    "startDeg": 178,
+    "endDeg": 362,
+    "rows": 14,
+    "rise": 0.62,
+    "run": 0.72,
+    "firstHeight": 3.0,
+    "facetDeg": 16,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#e3b81f",
+    "seatColours": [
+     "#e3b81f",
+     "#e9e7df"
+    ],
+    "blocks": 8,
+    "concreteColour": "#e4e2da",
+    "underColour": "#c9c6bc",
+    "canopy": {
+     "height": 0.8,
+     "depth": 11,
+     "thickness": 1.2,
+     "slopeDeg": 6,
+     "colour": "#eeeeea",
+     "edgeColour": "#c23a30",
+     "overhangBack": 1.5
+    }
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -44,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    44,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -44,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard-n",
+   "footprint": {
+    "rect": [
+     9,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "z0": 9,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a2f35",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f35",
+    "material": "metal-sheet",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-w",
+   "footprint": {
+    "rect": [
+     3,
+     8
+    ]
+   },
+   "at": [
+    -44,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d5b3a",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-e",
+   "footprint": {
+    "rect": [
+     3,
+     8
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e2da",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d5b3a",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -50
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "only an interior photo exists; no exterior facade, ring-roof truss or true ring closure compared"
+ }
+}

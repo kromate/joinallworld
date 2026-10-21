@@ -1,0 +1,1439 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "luanda",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "luanda",
+    "climate": "tropical-maritime",
+    "vernacular": "Portuguese colonial port city on a bay: Baixa streets of 2-4 storey pastel-rendered buildings with wrought-iron balconies, arcades and clay-tile roofs; baroque-style whitewashed churches and 16th-17th century stone forts on the headlands; 1950s-70s modernist slabs with brise-soleil in Cidade Alta; since the 2000s oil boom, glass-and-concrete towers and waterfront (Marginal) developments; flat-roofed concrete housing and corrugated-roof musseques sprawl beyond. Dry, hazy coastal air with palms and flame trees.",
+    "wallColours": [
+      "#e6cf93",
+      "#e2a9a0",
+      "#f3efe6",
+      "#a9c4d6",
+      "#c9b48a",
+      "#b8b3a7",
+      "#d9c3a3"
+    ],
+    "roofColours": [
+      "#b5543a",
+      "#8a8f93",
+      "#6b4a3a",
+      "#a15f45"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "whitewash",
+      "concrete",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Portuguese azulejo tile panels, calcada (black-and-white stone mosaic) pavements, curved baroque pediments over three-door church fronts, cast-iron balustrades and balconies, thick fort walls studded with cannon, Soviet-era monumental memorials, and Brazilian-style modern towers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Luanda",
+        "what": "Baixa de Luanda colonial buildings and narrow streets, Cidade Alta, modern towers (Cidade Financeira), Marginal promenade, musseques, forts and churches, dry fog-prone coastal climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fortress_of_São_Miguel",
+        "what": "thick fort walls with cannon, ceramic tile panels, courtyard statues"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Iron_Palace",
+        "what": "prefabricated cast-iron building (1890s) restored 2009"
+      }
+    ]
+  },
+  "places": {
+    "luanda-agostinho-neto-statue": {
+      "venueId": "luanda-agostinho-neto-statue",
+      "city": "luanda",
+      "name": "Estatua de Dr. Antonio Agostinho Neto",
+      "archetype": "monument",
+      "subject": "Statue of Agostinho Neto, Angola's first president: a large figure on a tall stone plinth on a paved platform with steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "statue-on-plinth"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "concrete",
+        "colours": [
+          "#8f8a80",
+          "#b9b4a8",
+          "#3f3a34"
+        ],
+        "roofColour": "#8f8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze/dark figure of the president on the plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Agostinho_Neto_University",
+          "what": "namesake: first president of Angola"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "Mausoleum of Agostinho Neto listed as a memorial in the city"
+        }
+      ],
+      "notes": "Statue exists in the venue list but no source gives its size or material; shown as a tall plinth with a standing figure in Soviet-influenced memorial style. The nearby Neto mausoleum (a tall concrete tower on a stepped podium, from memory, unverified) is a separate landmark."
+    },
+    "luanda-airport-luanda-airport": {
+      "venueId": "luanda-airport-luanda-airport",
+      "city": "luanda",
+      "name": "Dr. Antonio Agostinho Neto International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The new Bom Jesus (Icolo e Bengo) airport opened 2023-24: a very large Chinese-built international terminal with a long glazed front, curved roof and rows of jet bridges",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#2d4b66",
+          "#f1f1ef"
+        ],
+        "roofColour": "#c4c9cc",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dr._Antonio_Agostinho_Neto_International_Airport",
+          "what": "43 ha site, two runways, three terminal buildings, 15M passengers/yr, built by Chinese contractors (CIF/Odebrecht then AVIC), inaugurated 10 Nov 2023, passenger flights from 10 Nov 2024"
+        }
+      ],
+      "notes": "Scale and dates are sourced; shape, colours and roof are not described and are typed as a modern international terminal. Shown as the main terminal portion (width clamped by generator)."
+    },
+    "luanda-citadel-stadium": {
+      "venueId": "luanda-citadel-stadium",
+      "city": "luanda",
+      "name": "Citadel National Stadium",
+      "archetype": "stadium",
+      "subject": "Estadio da Cidadela: the 1972 national stadium of Angola, a closed concrete bowl with two tiers of stands (upper ring condemned in 2006) and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "none",
+        "variant": "two-tier-bowl"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#b9b5aa",
+          "#8d8a82",
+          "#e5e3dc"
+        ],
+        "roofColour": "#8d8a82",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 6,
+          "note": "ramped entrances"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "partial, assumed"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1972",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estádio_da_Cidadela",
+          "what": "opened 10 June 1972, renovated 1985, originally ~60,000 now ~40,000, CAF banned the upper ring in 2006, \"cathedral of Angolan sports\", part of Complexo Desportivo da Cidadela"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "about 60,000 seats"
+        }
+      ],
+      "notes": "Date, tiers and capacity sourced; materials and colours are assumed (weathered raw concrete). No notable roof reported, so roof is shown minimal."
+    },
+    "luanda-clinic": {
+      "venueId": "luanda-clinic",
+      "city": "luanda",
+      "name": "Hospital Especializado Augusto N'Gangula",
+      "archetype": "hospital",
+      "subject": "Specialised hospital in Luanda: a 3-4 storey rendered block with an ambulance bay and a front car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece0c6",
+          "#4a7ba0",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8c9190",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source for the building; typed from the type and city style (pale render with a blue accent band)."
+    },
+    "luanda-community-notices": {
+      "venueId": "luanda-community-notices",
+      "city": "luanda",
+      "name": "Lady Ana Joaquina Courthouse",
+      "archetype": "civic-palace",
+      "subject": "Dona Ana Joaquina courthouse in the Baixa: a two-storey colonial justice building with a pastel facade, arched ground-floor arcade and clay-tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6cf93",
+          "#f3efe6",
+          "#a45b3b"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "Identity only; colonial-Baixa form typed (ochre render, white trim, tile roof). No source describes the actual facade."
+    },
+    "luanda-community-voting-game": {
+      "venueId": "luanda-community-voting-game",
+      "city": "luanda",
+      "name": "Largo do Poeta Bocage",
+      "archetype": "park-landscape",
+      "subject": "Largo do Poeta Bocage: a small paved colonial square with trees, benches and a commemorative statue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 35,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8b3a7",
+          "#4b6b3d",
+          "#e4dfd0"
+        ],
+        "roofColour": "#b8b3a7",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "monument to the poet, assumed"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source on the square itself; named after the Portuguese poet Bocage, so a statue is assumed but unverified. Calcada paving is typical for Luanda squares."
+    },
+    "luanda-community-workshop": {
+      "venueId": "luanda-community-workshop",
+      "city": "luanda",
+      "name": "Universidade Agostinho Neto",
+      "archetype": "campus-block",
+      "subject": "Agostinho Neto University faculty buildings in central Luanda: several 3-5 storey concrete blocks in pale weathered render with ribbon windows",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d0b9",
+          "#8a8f8f",
+          "#f3efe6"
+        ],
+        "roofColour": "#8c8d88",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Agostinho_Neto_University",
+          "what": "Law, Architecture, Fine Arts and Medicine faculties are in Luanda; headquarters campus at Camama; renamed for Neto in 1985"
+        }
+      ],
+      "notes": "University and faculty locations are sourced; building appearance is not and is typed from mid-century Portuguese-era institutional blocks."
+    },
+    "luanda-franca-ndalu-stadium": {
+      "venueId": "luanda-franca-ndalu-stadium",
+      "city": "luanda",
+      "name": "Franca Ndalu Stadium",
+      "archetype": "stadium",
+      "subject": "Franca Ndalu stadium: a modest municipal football ground with one stand, concrete terraces and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "small-one-stand"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c6c1b5",
+          "#8e8b83",
+          "#e8e6df"
+        ],
+        "roofColour": "#8e8b83",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered side, assumed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "Nothing found beyond the name; small ground typed. Smaller and plainer than the Cidadela."
+    },
+    "luanda-iron-palace": {
+      "venueId": "luanda-iron-palace",
+      "city": "luanda",
+      "name": "Iron Palace",
+      "archetype": "manor",
+      "subject": "Palacio de Ferro in the Baixa: a prefabricated cast-iron palace of the 1890s with galleries of iron balustrades, restored in 2009 with Brazilian help",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#8f9a96",
+          "#c9cfcb",
+          "#4a5350"
+        ],
+        "roofColour": "#6e5648",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "iron galleries on both levels"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1890s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Iron_Palace",
+          "what": "cast-iron structure believed pre-built in France in the 1890s and attributed to Eiffel; iron balustrades and floor tiles restored in Rio de Janeiro, 2009 renovation"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Palácio_de_Ferro",
+          "what": "filed under cast-iron architecture; coordinates 8.81 S 13.235 E"
+        }
+      ],
+      "notes": "Material, date and restoration are sourced; size, storeys, roof and colours are not and are estimates for a small prefabricated iron palace (grey-green iron panels, verandas, hipped corrugated roof). Rendered as metal-clad with iron galleries."
+    },
+    "luanda-luanda-magica-park": {
+      "venueId": "luanda-luanda-magica-park",
+      "city": "luanda",
+      "name": "Parque Infantil Luanda Magica",
+      "archetype": "park-landscape",
+      "subject": "Luanda Magica children's park: a fenced fairground-style play park with a gate, kiosks and shade pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0c94a",
+          "#d6573c",
+          "#3f8fc4"
+        ],
+        "roofColour": "#d6573c",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source; typed bright-coloured children's park."
+    },
+    "luanda-maianga-park": {
+      "venueId": "luanda-maianga-park",
+      "city": "luanda",
+      "name": "Parque da Maianga",
+      "archetype": "park-landscape",
+      "subject": "Maianga park: a neighbourhood public park with palm-lined paths, a pavilion and open lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eadfc2",
+          "#5f8a4b",
+          "#c9b48a"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source on its layout; typed from the type."
+    },
+    "luanda-market-game": {
+      "venueId": "luanda-market-game",
+      "city": "luanda",
+      "name": "Mercado da Chapada",
+      "archetype": "market-open",
+      "subject": "Mercado da Chapada: a dense street market of kiosks, awning-covered stalls and corrugated lock-ups",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9b998",
+          "#c4533a",
+          "#e8d9b0"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "lock-ups",
+          "count": 5
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source; typical Luanda informal market typed from the city style."
+    },
+    "luanda-meal-stop": {
+      "venueId": "luanda-meal-stop",
+      "city": "luanda",
+      "name": "Restaurante Kitanda",
+      "archetype": "restaurant",
+      "subject": "Restaurante Kitanda: a small pastel-rendered restaurant with an outdoor terrace and canvas awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e2a9a0",
+          "#f3efe6",
+          "#a45b3b"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "Nothing found; typed small restaurant in Luanda pastel render. \"Kitanda\" is an Angolan word for a street stall, so a terrace is assumed."
+    },
+    "luanda-military-history-museum": {
+      "venueId": "luanda-military-history-museum",
+      "city": "luanda",
+      "name": "National Museum of Military History",
+      "archetype": "heritage-fort",
+      "subject": "Fortaleza de Sao Miguel: the 1576 Portuguese hilltop fort overlooking the bay, thick whitewashed bastion walls with cannons and a central courtyard with statues, now the Armed Forces Museum",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "bastioned-fort"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#ece6d6",
+          "#8c7e68",
+          "#2f4b6e"
+        ],
+        "roofColour": "#b5543a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "thick bastioned walls"
+        },
+        {
+          "id": "cannon",
+          "count": 10,
+          "note": "cannon along the walls"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "statues of Portuguese figures"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "azulejo tile panels inside"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1576",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fortress_of_São_Miguel",
+          "what": "built 1576 by Paulo Dias de Novais, thick walls encrusted with cannons, ceramic tile panels, courtyard statues of Portuguese explorers, now Museum of the Armed Forces"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "best-preserved of the city's Portuguese forts, 17th century"
+        }
+      ],
+      "notes": "Date, walls, cannon, courtyard statues and tiles are sourced; footprint shape and wall colour are not and are typed (whitewashed stone bastions). Coordinates match the fort."
+    },
+    "luanda-ministries-square": {
+      "venueId": "luanda-ministries-square",
+      "city": "luanda",
+      "name": "Largo dos Ministerios",
+      "archetype": "civic-palace",
+      "subject": "Largo dos Ministerios: government ministry blocks facing a paved square, tall flat-roofed modernist slabs with deep sun-shading",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c0",
+          "#8d9494",
+          "#f3efe6"
+        ],
+        "roofColour": "#8c8d88",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source describing the buildings; typed from mid-century ministry slabs. Taller and plainer than the courthouse."
+    },
+    "luanda-natural-history-museum": {
+      "venueId": "luanda-natural-history-museum",
+      "city": "luanda",
+      "name": "Our Lady Muxima - National Museum of Natural History of Angola",
+      "archetype": "museum-theatre",
+      "subject": "National Museum of Natural History: a two-storey colonial building with a pastel facade and a central entrance with steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e4cf9c",
+          "#f3efe6",
+          "#a45b3b"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "Name is given but nothing found about the building; typed colonial-era museum."
+    },
+    "luanda-quiet-reflection": {
+      "venueId": "luanda-quiet-reflection",
+      "city": "luanda",
+      "name": "Luanda Cathedral",
+      "archetype": "church-classical",
+      "subject": "Igreja de Nossa Senhora dos Remedios (Luanda Cathedral), founded 1628: a white colonial church facade with three doors and a curved pediment",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ede3",
+          "#c9c1ae",
+          "#8a7a63"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "curved pediment, sourced"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "three doors, sourced"
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "flanking towers, unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1628, restored 1880-1900",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda_Cathedral",
+          "what": "after restoration 1880-1900 acquired its present appearance, three doors and a curved pediment on the facade"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "Church of Our Lady of Remedies (Luanda Cathedral), built 1628"
+        }
+      ],
+      "notes": "Date, three doors and curved pediment are sourced; size, towers and colours are not. Typed as a plain whitewashed colonial church with a clay-tile roof."
+    },
+    "luanda-recreation": {
+      "venueId": "luanda-recreation",
+      "city": "luanda",
+      "name": "Independence Square",
+      "archetype": "park-landscape",
+      "subject": "Praca da Independencia: a large paved civic square beside the Neto mausoleum, with wide steps, lamp posts, flags and a few palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "plaza"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#c8c2b4",
+          "#8f8a80",
+          "#e8e4d8"
+        ],
+        "roofColour": "#c8c2b4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "tall memorial tower on the square (the Neto mausoleum), unverified"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "Mausoleum of Agostinho Neto listed among city monuments"
+        }
+      ],
+      "notes": "Square identity only; layout is typed. The Neto mausoleum (tall concrete memorial tower) is the recognisable element but is not described in the sources found."
+    },
+    "luanda-science-technology-museum": {
+      "venueId": "luanda-science-technology-museum",
+      "city": "luanda",
+      "name": "Science and Technology Museum",
+      "archetype": "museum-theatre",
+      "subject": "Science and Technology Museum near the old fort: a modern two-storey exhibition block in pale render with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece4d1",
+          "#3f6b8a",
+          "#f3efe6"
+        ],
+        "roofColour": "#8c9190",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the building; typed modern museum."
+    },
+    "luanda-shopping-fortaleza": {
+      "venueId": "luanda-shopping-fortaleza",
+      "city": "luanda",
+      "name": "Shopping Fortaleza",
+      "archetype": "mall",
+      "subject": "Shopping Fortaleza near the Fortaleza de Sao Miguel: a compact two-storey shopping centre in pale render with a coloured entrance and parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#ede2c8",
+          "#b5543a",
+          "#f3efe6"
+        ],
+        "roofColour": "#8c9190",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source; typed small mall."
+    },
+    "luanda-telecommunications-museum": {
+      "venueId": "luanda-telecommunications-museum",
+      "city": "luanda",
+      "name": "Telecommunications Museum",
+      "archetype": "museum-theatre",
+      "subject": "Telecommunications Museum: a small modern museum block with a mast on the grounds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dec9",
+          "#5a7384",
+          "#f3efe6"
+        ],
+        "roofColour": "#8c9190",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "communications mast"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "Nothing found about the building; typed from the name (telecommunications mast added as a recognisable cue)."
+    },
+    "luanda-transit": {
+      "venueId": "luanda-transit",
+      "city": "luanda",
+      "name": "Bungo - Luanda Central Station",
+      "archetype": "transport-station",
+      "subject": "Luanda railway terminus at Bungo: a long colonial-era station hall with an arched front, covered platforms and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8d9ae",
+          "#f3efe6",
+          "#a45b3b"
+        ],
+        "roofColour": "#b5543a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "arches",
+          "count": 7
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "station clock tower, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1886 line; station 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "what": "city-level context only: Baixa colonial core, Cidade Alta, modern towers, Marginal; no building-level description"
+        }
+      ],
+      "notes": "No source about the station building; typed colonial railway terminus (Luanda-Malanje line terminal). Different from Lusaka/Lilongwe bus terminals by rail platform."
+    }
+  }
+}

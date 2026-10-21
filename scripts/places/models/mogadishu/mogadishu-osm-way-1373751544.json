@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-1373751544",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1373751544",
+   "used": "name-matched campus plot beside Aden Adde airport (108 x 92 m, six-sided), used as plot and boundary wall; buildings aligned to its 32 deg edge"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/mogadishu.json",
+   "used": "brief: long single-storey classroom block, hangar-like workshop, small training tower (no photo of the premises; Commons has only aircraft photos)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 26,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the academy; plot is real, building layout and colours typed from the brief."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "plot",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -67.3,
+      12.6
+     ],
+     [
+      10.4,
+      61.9
+     ],
+     [
+      67,
+      -30
+     ],
+     [
+      -8.6,
+      -50.7
+     ],
+     [
+      -16.9,
+      -47.5
+     ],
+     [
+      -53.3,
+      -6.7
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#d4c39a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-block",
+   "footprint": {
+    "rect": [
+     50,
+     11
+    ]
+   },
+   "at": [
+    6.43,
+    -10.13
+   ],
+   "rotDeg": 32.4,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d4b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#4a6a8a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f979c",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "classroom-wing",
+   "footprint": {
+    "rect": [
+     11,
+     26
+    ]
+   },
+   "at": [
+    -19.57,
+    -6.49
+   ],
+   "rotDeg": 32.4,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d4b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#4a6a8a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f979c",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-hangar",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    2.18,
+    22.7
+   ],
+   "rotDeg": 32.4,
+   "z0": 0,
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9bb0bf",
+    "windows": "none",
+    "windowRatio": 0.05,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f979c",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    -22.11,
+    -21.14,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "style": "round",
+    "colour": "#f4eedc",
+    "bandColour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    9.71,
+    -24.63,
+    0
+   ],
+   "rotDeg": 32.4,
+   "params": {
+    "width": 7,
+    "height": 3,
+    "colour": "#f4eedc"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    17.47,
+    -12.6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#4189dd",
+    "count": 1
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24.06,
+    -15.52
+   ],
+   "rotDeg": 32.4,
+   "params": {
+    "count": 3,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -67.3,
+      12.6
+     ],
+     [
+      10.4,
+      61.9
+     ],
+     [
+      67,
+      -30
+     ],
+     [
+      -8.6,
+      -50.7
+     ],
+     [
+      -16.9,
+      -47.5
+     ],
+     [
+      -53.3,
+      -6.7
+     ],
+     [
+      -67.3,
+      12.6
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e2d4b0"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     19.48,
+     2.89
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -37.05,
+     -6.93
+    ]
+   }
+  ],
+  "extent": [
+   115,
+   100
+  ]
+ }
+}

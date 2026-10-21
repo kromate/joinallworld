@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-way-1415633322",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Vue_int%C3%A9rieure_du_stade_MIDI_Tchad.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Mahmood (Commons)",
+   "view": "interior",
+   "file": "/tmp/places-evidence/ndjamena/stad1.jpg",
+   "used": "interior only, not compared: continuous cream tubular steel truss roof ring over all seating, red/yellow/blue seat blocks, athletics track in pink-tan around green pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19135064",
+   "used": "oval site 273 x 219 m, bowl proportion (about 1.25:1), scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      34.0,
+      0.0
+     ],
+     [
+      32.3,
+      8.3
+     ],
+     [
+      27.5,
+      15.9
+     ],
+     [
+      20.0,
+      21.8
+     ],
+     [
+      10.5,
+      25.7
+     ],
+     [
+      0.0,
+      27.0
+     ],
+     [
+      -10.5,
+      25.7
+     ],
+     [
+      -20.0,
+      21.8
+     ],
+     [
+      -27.5,
+      15.9
+     ],
+     [
+      -32.3,
+      8.3
+     ],
+     [
+      -34.0,
+      0.0
+     ],
+     [
+      -32.3,
+      -8.3
+     ],
+     [
+      -27.5,
+      -15.9
+     ],
+     [
+      -20.0,
+      -21.8
+     ],
+     [
+      -10.5,
+      -25.7
+     ],
+     [
+      -0.0,
+      -27.0
+     ],
+     [
+      10.5,
+      -25.7
+     ],
+     [
+      20.0,
+      -21.8
+     ],
+     [
+      27.5,
+      -15.9
+     ],
+     [
+      32.3,
+      -8.3
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 42,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 5,
+    "rise": 1.0,
+    "run": 1.2,
+    "firstHeight": 5,
+    "facetDeg": 60,
+    "under": "open",
+    "slab": 0.7,
+    "seatColours": [
+     "#c0392b",
+     "#e0b92f",
+     "#2f4a8f"
+    ],
+    "blocks": 1,
+    "closeEnds": false,
+    "seatColour": "#c0392b",
+    "concreteColour": "#d9d4c8",
+    "underColour": "#b9b4a8",
+    "canopy": {
+     "height": 3.2,
+     "depth": 15,
+     "thickness": 2.6,
+     "slopeDeg": 3,
+     "colour": "#e8e0c8",
+     "edgeColour": "#ece4cc",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -55,
+    48,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    55,
+    48,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    40,
+    14
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 2.4,
+    "facing": "south"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -18,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#c0392b"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#e0b92f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    18,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#2f4a8f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -78,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "density": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4,
+    "pillar": 1.2,
+    "colour": "#d9d4c8"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an interior photo found, so the exterior is not photo-compared; truss roof is a solid canopy ring, seat blocks approximate."
+ }
+}

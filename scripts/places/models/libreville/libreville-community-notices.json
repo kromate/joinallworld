@@ -1,0 +1,93 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2804205",
+   "used": "real stepped diagonal multi-wing outline (115 x 53 m, name match); height 14 m and 3 storeys from the brief; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 3
+   },
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eae1c9",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 8,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#b5aa92"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9588",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#3a9d23",
+     "#fcd116",
+     "#3a75c4"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -45
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; facade rhythm, roof and entrance detail are generic civic cream render"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-community-notices"
+}

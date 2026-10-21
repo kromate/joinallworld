@@ -1,0 +1,1533 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lisbon",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lisbon",
+    "climate": "mediterranean",
+    "vernacular": "Pastel-rendered city on hills: four to six storey apartment blocks and Pombaline terraces with painted-render facades in ochre, yellow, pink and cream, white-framed windows and cast-iron balconies; azulejo tile panels on many fronts; low-pitched terracotta tile roofs with dormers; limestone (lioz) and basalt for monuments and calcada paving; 20th-century concrete estates and glass office and retail blocks in the outskirts; palms, umbrella pines and jacaranda.",
+    "wallColours": [
+      "#e3c58a",
+      "#d9a58f",
+      "#f0ece2",
+      "#e7d08a",
+      "#c9d3c0",
+      "#d8cfbd",
+      "#3b6ea5"
+    ],
+    "roofColours": [
+      "#c0623f",
+      "#a8503a",
+      "#8a8a86",
+      "#b9b3a8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "limestone",
+      "stucco",
+      "concrete",
+      "glass-curtain",
+      "tile-cladding"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "cobble",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "conifer"
+    ],
+    "ornament": "Azulejo tile panels (blue and white and polychrome) on facades, interiors and church walls; calcada portuguesa black and white limestone-basalt paving; wrought-iron balconies; Manueline ropework and neo-Manueline columns; stone corner quoins and window surrounds painted white against pastel render; baroque gilded woodwork and polychrome marble inside churches.",
+    "sources": [
+      {
+        "url": "https://pt.wikipedia.org/wiki/Convento_de_Santos-o-Novo",
+        "what": "azulejo panels, gilded woodwork and polychrome marble in the Convento de Santos-o-Novo, semicircular-arch cloister galleries"
+      },
+      {
+        "url": "https://pt.wikipedia.org/wiki/Pra%C3%A7a_Afonso_de_Albuquerque",
+        "what": "neo-Manueline column with bronze statue and bas-reliefs in Belem"
+      },
+      {
+        "url": "https://pt.wikipedia.org/wiki/Centro_Comercial_Colombo",
+        "what": "Centro Colombo themed on the Age of Discoveries, glass office towers"
+      }
+    ]
+  },
+  "places": {
+    "lisbon-airport-lisbon-airport": {
+      "venueId": "lisbon-airport-lisbon-airport",
+      "city": "lisbon",
+      "name": "Lisbon Humberto Delgado Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 seen from the departures road: a broad rendered and glazed block with a deep canopy, piers behind and the control tower rising to one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d4",
+          "#6f8190",
+          "#f0ece2"
+        ],
+        "roofColour": "#b9bcbf",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures kerb canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 17,
+          "note": "of 47 gates"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s with 2000s-2020s extensions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lisbon_Airport",
+          "what": "Terminal 1 main building, 47 gates with 17 jet bridges, Terminal 2 for low-cost carriers since 2007, Terminal 1 expansion under way from December 2024"
+        }
+      ],
+      "notes": "Gate and terminal facts are from the source; the architecture is not described there, so envelope size and colours are estimates from general knowledge of a long 1960s block with newer glazed extensions. Metro station at the terminal; under construction cranes are not modelled."
+    },
+    "lisbon-clinic": {
+      "venueId": "lisbon-clinic",
+      "city": "lisbon",
+      "name": "Hospital Beatriz Ângelo",
+      "archetype": "hospital",
+      "subject": "A modern public-private hospital of several linked pale blocks with a glazed entrance and car parks",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#7f93a3",
+          "#c9c4b8"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Hospital_Beatriz_%C3%82ngelo",
+          "what": "built from scratch under a PPP contract (2009), opened January 2012, 424 beds, at Quinta da Caldeira, Loures"
+        }
+      ],
+      "notes": "Source gives opening and capacity only, not appearance; form is typed from a 424-bed PPP hospital (multi-wing, 5-7 storeys). Colours estimated."
+    },
+    "lisbon-community-notices": {
+      "venueId": "lisbon-community-notices",
+      "city": "lisbon",
+      "name": "Tribunal Central de Instrucao Criminal",
+      "archetype": "civic-palace",
+      "subject": "A modern court complex: a long stone and glass block with a recessed entrance portico and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8cfbd",
+          "#6f8190",
+          "#eceae4"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Central criminal investigation court; its exact building could not be confirmed from sources. Typed as a modern courthouse in light stone and glass."
+    },
+    "lisbon-community-voting-game": {
+      "venueId": "lisbon-community-voting-game",
+      "city": "lisbon",
+      "name": "Praca Afonso de Albuquerque",
+      "archetype": "monument",
+      "subject": "A Belem square with a neo-Manueline stone column carrying a 4 m bronze statue of Afonso de Albuquerque, bas-reliefs on the base, gardens around and the pink Presidential Palace on one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "granite",
+        "colours": [
+          "#d8cfbd",
+          "#8a7a52",
+          "#7aa05a"
+        ],
+        "roofColour": "#8a7a52",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze, about 4 m"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "neo-Manueline column and base with four bas-reliefs"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low garden edge"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pra%C3%A7a_Afonso_de_Albuquerque",
+          "what": "neo-Manueline column supporting a 4 m bronze statue of Afonso de Albuquerque, four bas-reliefs on the base, in Belem near the Palacio Nacional de Belem (north side) with the Jardim Afonso de Albuquerque"
+        }
+      ],
+      "notes": "Statue height and column/relief theme are from the source; overall column height (~14 m with statue) and colours are estimates. The square is a garden with the pale-pink Belem palace behind."
+    },
+    "lisbon-community-workshop": {
+      "venueId": "lisbon-community-workshop",
+      "city": "lisbon",
+      "name": "Universidade Politecnica de Setubal",
+      "archetype": "campus-block",
+      "subject": "A polytechnic campus of low rendered teaching blocks linked by covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece8de",
+          "#c9a56a",
+          "#a8a8a4"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The Instituto Politecnico de Setubal campus; no building description found. Typed as 1980s Portuguese polytechnic."
+    },
+    "lisbon-market-game": {
+      "venueId": "lisbon-market-game",
+      "city": "lisbon",
+      "name": "Freeport Lisboa Fashion Outlet",
+      "archetype": "mall",
+      "subject": "An outlet village: rows of two-storey pastel shop fronts with pitched terracotta roofs and a clock tower around a pedestrian street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e7d08a",
+          "#d9a58f",
+          "#f0ece2"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 10
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "2004",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Outlet at Alcochete; no source fetched. Recalled as a themed village of pastel Portuguese-style fronts with tile roofs; treat as unverified."
+    },
+    "lisbon-meal-stop": {
+      "venueId": "lisbon-meal-stop",
+      "city": "lisbon",
+      "name": "Casa da Dizima",
+      "archetype": "restaurant",
+      "subject": "A restored historic stone house used as a restaurant, with a tiled roof and a small terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc9",
+          "#b9a77f",
+          "#f0ece2"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "17th-18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Casa da Dizima (tithe house) near Carcavelos; building not described in any fetched source. Typed from a rendered historic house."
+    },
+    "lisbon-osm-node-1191138578": {
+      "venueId": "lisbon-osm-node-1191138578",
+      "city": "lisbon",
+      "name": "Grutas da Quinta do Anjo",
+      "archetype": "park-landscape",
+      "subject": "A cave entrance in a low limestone hillside with a small visitor building and a fenced path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8cfbd",
+          "#a8998a",
+          "#7aa05a"
+        ],
+        "roofColour": "#a8998a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Show cave near Palmela; no description fetched. Typed as a hillside cave mouth."
+    },
+    "lisbon-osm-relation-3174204": {
+      "venueId": "lisbon-osm-relation-3174204",
+      "city": "lisbon",
+      "name": "Convento de Santos-o-Novo",
+      "archetype": "church-classical",
+      "subject": "The large unfinished 17th century convent: a long plain rendered block with a single-nave church, a big square cloister with semicircular-arch galleries behind",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#e3c58a",
+          "#d8cfbd",
+          "#f0ece2"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "large square cloister with round-arched galleries"
+        },
+        {
+          "id": "arches",
+          "count": 12
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "church front"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "baroque",
+      "era": "early 17th century (rebuilt after 1755)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Convento_de_Santos-o-Novo",
+          "what": "early 17th century convent of Santiago commendatories, never completed, partly destroyed in the 1755 earthquake and restored; large square cloister with semicircular arch galleries; single-nave church with five side chapels, azulejo panels and gilded woodwork"
+        }
+      ],
+      "notes": "Cloister and church description are from the source; the exterior colours (ochre plaster, white trim) and overall dimensions are estimates because the page does not describe the facade. Mostly plain, austere Mannerist (estilo cha) mass."
+    },
+    "lisbon-osm-relation-8198208": {
+      "venueId": "lisbon-osm-relation-8198208",
+      "city": "lisbon",
+      "name": "Praca de Toiros Amadeu Augusto dos Santos",
+      "archetype": "stadium",
+      "subject": "A small town bullring in Moita: a round three-tier ring of rendered stands with a ring of arches on the outside",
+      "form": {
+        "footprint": "round",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#ece8de",
+          "#b5593a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#b5593a",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "covered upper tier"
+        },
+        {
+          "id": "arches",
+          "count": 20
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Bullring of Moita; no fetched source. Typed from the Portuguese praca de toiros: round, arcaded, white or cream render with a red band."
+    },
+    "lisbon-osm-way-100443688": {
+      "venueId": "lisbon-osm-way-100443688",
+      "city": "lisbon",
+      "name": "Escola Superior de Teatro e Cinema",
+      "archetype": "campus-block",
+      "subject": "A low film and theatre school of rendered blocks with a big windowless studio volume",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece8de",
+          "#c9a56a",
+          "#a8a8a4"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "School in Amadora; no description found. Typed from the campus type; the big studio volume is a plausible guess, not verified."
+    },
+    "lisbon-osm-way-144001459": {
+      "venueId": "lisbon-osm-way-144001459",
+      "city": "lisbon",
+      "name": "Hospital de Santa Cruz",
+      "archetype": "hospital",
+      "subject": "A late-20th-century hospital: a long pale block with an entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece8de",
+          "#c9a56a",
+          "#a8a8a4"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Hospital in Carnaxide (Oeiras); nothing found about its form. Typed from the hospital type."
+    },
+    "lisbon-osm-way-179419205": {
+      "venueId": "lisbon-osm-way-179419205",
+      "city": "lisbon",
+      "name": "Nova School of Business and Economics",
+      "archetype": "campus-block",
+      "subject": "The Carcavelos campus: large white modern cubic volumes stepping down towards the sea facing the Sao Juliao fort, linked by shaded walkways and terraces",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#f0ece2",
+          "#b9b3a8",
+          "#6f8190"
+        ],
+        "roofColour": "#e8e2d4",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 3
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nova_School_of_Business_and_Economics",
+          "what": "faculty moved to the Carcavelos campus in 2018, facing the Fort of Sao Juliao da Barra; described by press as the most modern campus in Europe"
+        }
+      ],
+      "notes": "Campus location and opening are sourced; the white sculptural-cube look (Aires Mateus) is recalled from general knowledge and not stated by the fetched page. Mark as medium-low on form."
+    },
+    "lisbon-osm-way-243295693": {
+      "venueId": "lisbon-osm-way-243295693",
+      "city": "lisbon",
+      "name": "Parque da Vila",
+      "archetype": "park-landscape",
+      "subject": "A town park with lawns, pines, a small pavilion and play area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8cfbd",
+          "#7aa05a",
+          "#b9b3a8"
+        ],
+        "roofColour": "#a8a8a4",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Municipal park, no description found. Typed as a plain town park."
+    },
+    "lisbon-osm-way-254561957": {
+      "venueId": "lisbon-osm-way-254561957",
+      "city": "lisbon",
+      "name": "Almada Forum",
+      "archetype": "mall",
+      "subject": "A big covered shopping centre: a large pale block with a glazed entrance atrium and a multi-level car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d4",
+          "#c0623f",
+          "#7f93a3"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "2002",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Opened around 2002 in Almada; no source fetched. Typed from a big Iberian mall: terracotta accent bands, glazed entrance."
+    },
+    "lisbon-osm-way-364773455": {
+      "venueId": "lisbon-osm-way-364773455",
+      "city": "lisbon",
+      "name": "Forte da Casa",
+      "archetype": "heritage-fort",
+      "subject": "Remains of a Napoleonic-era redoubt of the Lines of Torres Vedras: low earthen ramparts with stone revetment in a star plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a8998a",
+          "#7a8f5a",
+          "#d8cfbd"
+        ],
+        "roofColour": "#7a8f5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "Vauban-style bastioned redoubt"
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1809-1810",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Forte_da_Casa",
+          "what": "Forte da Casa lies in Vila Franca de Xira; the town heraldry shows Vauban-style walling evoking the Torres Vedras lines, and ruins of forts from the invasion period; Reduto 38 restored with interpretive centre 2010"
+        }
+      ],
+      "notes": "Source describes the place and that forts/ruins exist, not their layout. Plan and size are typed from the Torres Vedras redoubt type; low confidence."
+    },
+    "lisbon-osm-way-36615985": {
+      "venueId": "lisbon-osm-way-36615985",
+      "city": "lisbon",
+      "name": "National Stadium",
+      "archetype": "stadium",
+      "subject": "The Jamor national stadium: a white stone horseshoe bowl open at one end, in a wooded valley, with no roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 200,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#e6e0d2",
+          "#b9b3a8",
+          "#7aa05a"
+        ],
+        "roofColour": "#c9c4b8",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1944",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Estadio Nacional at Jamor (about 37,000 seats, opened 1944, modelled on the Berlin Olympiastadion): recalled from general knowledge; the fetched pages were unavailable, so this is unverified. The open end faces the valley; sits in a forested park."
+    },
+    "lisbon-osm-way-42645796": {
+      "venueId": "lisbon-osm-way-42645796",
+      "city": "lisbon",
+      "name": "Centro Comercial Colombo",
+      "archetype": "mall",
+      "subject": "A vast shopping centre themed on the Age of Discoveries: a long warm-coloured block with glazed entrance arches and two tall glass office towers rising beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d3b0",
+          "#b5593a",
+          "#7f93a3"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "setback-tiers",
+          "count": 2,
+          "note": "two glass office towers of 13 floors (about 30 m) built 2009 and 2011"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Centro_Comercial_Colombo",
+          "what": "opened 15 Sept 1997, 114,131 m2 gross leasable area, 338 shops, 6,326 parking spaces, themed on the Portuguese Discoveries; interior renovated 2007-09; two 13-storey glass office towers (c.30 m) added 2009 and 2011"
+        }
+      ],
+      "notes": "Size, year and towers are from the source; the facade palette and block footprint are estimates (the source doesn't describe the exterior colours)."
+    },
+    "lisbon-osm-way-52430141": {
+      "venueId": "lisbon-osm-way-52430141",
+      "city": "lisbon",
+      "name": "NOVA School of Science and Technology",
+      "archetype": "campus-block",
+      "subject": "The Caparica campus: scattered low faculty buildings of exposed concrete and render in a pine-shaded park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b9b3a8",
+          "#d9a58f",
+          "#f0ece2"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Campus at Monte de Caparica; no source fetched. Typed from the 1970s Portuguese university campus: concrete blocks in pines."
+    },
+    "lisbon-osm-way-558565533": {
+      "venueId": "lisbon-osm-way-558565533",
+      "city": "lisbon",
+      "name": "Igreja de Sao Pedro",
+      "archetype": "church-classical",
+      "subject": "A white parish church with a baroque-style gable front, one side bell tower and tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#f0ece2",
+          "#e3c58a",
+          "#8a8a86"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Parish church in the Mafra / Sintra area; no description found. Typed as a typical whitewashed Portuguese village church with ochre or stone quoins."
+    },
+    "lisbon-osm-way-722649425": {
+      "venueId": "lisbon-osm-way-722649425",
+      "city": "lisbon",
+      "name": "Minicomboio da Caparica",
+      "archetype": "transport-station",
+      "subject": "A narrow-gauge beach railway: a small station shed with a single track and a short train of open carriages on the sands of Costa da Caparica",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e2d4",
+          "#c0623f",
+          "#5f8fa8"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Tourist train along Caparica's coast (opened in the mid-20th century as I recall); no fetched source. Typed from a small terminus."
+    },
+    "lisbon-osm-way-812621314": {
+      "venueId": "lisbon-osm-way-812621314",
+      "city": "lisbon",
+      "name": "Jardim da Quinta de Santa Clara",
+      "archetype": "park-landscape",
+      "subject": "A formal city garden with hedged beds, paths, a central fountain and an old villa with an azulejo-panelled wall at one edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#e3c58a",
+          "#7aa05a",
+          "#3b6ea5"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "azulejo panels"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Garden of a historic quinta in Lisbon; no description found. Typed as a formal Portuguese garden with azulejos and fountain."
+    },
+    "lisbon-quiet-reflection": {
+      "venueId": "lisbon-quiet-reflection",
+      "city": "lisbon",
+      "name": "Igreja de Montelavar",
+      "archetype": "church-classical",
+      "subject": "The Montelavar village church: a whitewashed single-nave church with a front gable, a corner bell tower and ochre trim",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ece2",
+          "#e3c58a",
+          "#8a8a86"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Village church in the Sintra municipality; no fetched description. Typed from the Portuguese rural parish church."
+    },
+    "lisbon-recreation": {
+      "venueId": "lisbon-recreation",
+      "city": "lisbon",
+      "name": "Quinta do Bonjardim",
+      "archetype": "park-landscape",
+      "subject": "A walled quinta garden with lawns, mature trees, a small chapel and a manor house at the end of an avenue",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#e3c58a",
+          "#7aa05a",
+          "#f0ece2"
+        ],
+        "roofColour": "#c0623f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Quinta near Sintra; no description fetched. Typed as a quinta with manor and garden."
+    },
+    "lisbon-transit": {
+      "venueId": "lisbon-transit",
+      "city": "lisbon",
+      "name": "Praca de Espanha",
+      "archetype": "transport-station",
+      "subject": "A large traffic square above the metro: a tree-lined roundabout with glass metro entrances and a bus stop, ringed by modern office blocks",
+      "form": {
+        "footprint": "round",
+        "width_m": 80,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d8cfbd",
+          "#7f93a3",
+          "#a8a8a4"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s with 1990s metro",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A major Lisbon interchange (metro, bus, roundabout); no fetched source. The model shows the metro entrance canopy and bus bays on the roundabout."
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1394519445",
+   "used": "building outline containing the venue point (about 26 x 10 m, 250 m2), used for the prayer hall"
+  },
+  {
+   "kind": "text",
+   "used": "brief only (typed guess, no photo found): white-and-green rendered prayer hall, central green dome, two corner minarets, arched windows"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -75
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "plinth": 0.6,
+    "bands": "#2f7a55",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    7.6
+   ],
+   "params": {
+    "radius": 4.3,
+    "profile": "onion",
+    "drum": 1.4,
+    "finial": 1.2,
+    "colour": "#2f7a55",
+    "drumColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -11,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "radius": 1.0,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "capColour": "#2f7a55"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    11,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "radius": 1.0,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f2efe6",
+    "capColour": "#2f7a55"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     10,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "arched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -17,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo: real OSM outline hall; dome, minarets and white-green colours are typical guesses"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "makurdi-central-mosque"
+}

@@ -1,0 +1,209 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://guardian.ng/?p=1222069",
+   "used": "small mini-stadium: covered stand of a few hundred seats, changing rooms, perimeter wall, floodlights (unconfirmed same site)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 10
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 130,
+    "width": 92,
+    "infield": false
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "start": [
+     -24,
+     0
+    ],
+    "end": [
+     24,
+     0
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "under": "open",
+    "seatColours": [
+     "#3f6b4e",
+     "#f2efe6"
+    ],
+    "blocks": 4,
+    "concreteColour": "#b9b4aa",
+    "canopy": {
+     "depth": 5,
+     "height": 6,
+     "colour": "#8d9296"
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing",
+   "footprint": {
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -37
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "bands": "#3f6b4e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 2.4,
+    "pillarEvery": 6,
+    "colour": "#b9b4aa"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    50,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    50,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    70,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable footprint; modest generic ground with one covered stand placed by text; stand position and ground size are assumptions"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "haliru-abdu-stadium-birnin-kebbi"
+}

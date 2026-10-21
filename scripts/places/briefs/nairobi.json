@@ -1,0 +1,1689 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "nairobi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "nairobi",
+    "climate": "highland",
+    "vernacular": "Equatorial highland capital at about 1,795 m: a compact CBD of 1920s-70s colonial, Art Deco and modernist blocks (cream, white and grey painted render and concrete) now ringed by glass-and-concrete towers and malls; suburbs of walled bungalows and flat blocks in cream render with red-brown, green or grey corrugated metal roofs; red-brown earth and mature jacaranda, fig and acacia trees throughout.",
+    "wallColours": [
+      "#ece6d4",
+      "#f3f0e6",
+      "#cfc9bb",
+      "#b4ada0",
+      "#a8624a",
+      "#c6a679"
+    ],
+    "roofColours": [
+      "#8e4a3a",
+      "#6c7479",
+      "#4f7a5a",
+      "#a69b87"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "glass-curtain",
+      "exposed-concrete",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile",
+      "thatch"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Colonial-era Gothic Revival and neoclassical civic buildings (Parliament clock tower, All Saints), 1930s Art Deco market halls, 1970s concrete modernist landmarks (KICC cylinder, cone and cuboid forms), South Asian carved-stone mandirs and mosques in Parklands and Ngara, thatched makuti-style pavilions in safari and restaurant settings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Nairobi",
+        "what": "Climate (subtropical highland, 1,795 m), 'Green City under the Sun', KICC (1973, cuboid halls, cylindrical tower, cone forms, concrete core and glass walls), Parliament, City Hall, Holy Family Cathedral, tree-rich suburbs, 1948 master plan"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Parliament_Buildings_(Kenya)",
+        "what": "1950s concrete-and-steel neoclassical Parliament with English-style clock tower"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Nairobi_National_Park",
+        "what": "open grassland, scattered acacia, highland dry forest on the western uplands"
+      }
+    ]
+  },
+  "places": {
+    "nairobi-airport-nairobi-airport": {
+      "venueId": "nairobi-airport-nairobi-airport",
+      "city": "nairobi",
+      "name": "Jomo Kenyatta International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1A, the 2014 three-level international terminal built after the 2013 fire, seen from the forecourt with a glazed front and the airport control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "1A international terminal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d5dde0",
+          "#51667a",
+          "#eceeef"
+        ],
+        "roofColour": "#b9c0c4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 6,
+          "note": "airside boarding bridges (12 gates reported for 1A)"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures drop-off canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "airport tower behind the terminals"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jomo_Kenyatta_International_Airport",
+          "what": "Terminal 1 is a semi-circular complex of units 1A-1E; 1978 building; Terminal 1A opened 1 July 2014, three levels, 30 check-in desks, 12 gates; Terminal 2 is a separate prefabricated building opened 2015"
+        }
+      ],
+      "notes": "Facts used: Terminal 1A opened 2014, three levels, 12 gates. Overall dimensions, colours and the glazed-front look are estimates from general knowledge of modern terminals; no source in this session gave measurements. The older 1978 Terminal 1 is semi-circular (1958 design influenced by Zurich Kloten). Keep the model as the new glass-fronted 1A block."
+    },
+    "nairobi-city-park": {
+      "venueId": "nairobi-city-park",
+      "city": "nairobi",
+      "name": "City Park",
+      "archetype": "park-landscape",
+      "subject": "City Park in Parklands: a large shaded public park of mature broadleaf trees, lawns and gravel paths with a simple entrance gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 260,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#6f8f4e",
+          "#8c6a4a"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gate"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small picnic shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter fence"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "what": "City Park listed as green space in Nairobi; about 20 ha lost to development since the 1980s"
+        }
+      ],
+      "notes": "Only the park's existence and shrinkage are sourced. Layout is not described anywhere found; typed as a tree-heavy urban park from the city style. Dense old trees (jacaranda, fig, eucalyptus) are typical but not verified for this park."
+    },
+    "nairobi-clinic": {
+      "venueId": "nairobi-clinic",
+      "city": "nairobi",
+      "name": "Kenyatta National Hospital",
+      "archetype": "hospital",
+      "subject": "Kenyatta National Hospital, Upper Hill: a large multi-storey public hospital block with long ward wings and a covered entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#a7a8a2",
+          "#c0392b"
+        ],
+        "roofColour": "#8e8c86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board, no brand marks"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "ward access balconies"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kenyatta_National_Hospital",
+          "what": "Founded 1901 as the Native Civil Hospital, renamed King George VI Hospital 1952, 45.7 acre complex, 1,800 beds, Hospital Road Upper Hill"
+        }
+      ],
+      "notes": "Only size (18.5 ha, 1,800 beds) and history are sourced. The building form is a typed guess: the real complex is many blocks over decades; model one representative ward block with cream render and grey concrete bands."
+    },
+    "nairobi-community-notices": {
+      "venueId": "nairobi-community-notices",
+      "city": "nairobi",
+      "name": "Kenya Parliament Buildings",
+      "archetype": "civic-palace",
+      "subject": "The Parliament Buildings on City Square: a pale modernist-neoclassical block with the tall English-style clock tower, seen from the Uhuru Park side",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#e6e3d8",
+          "#b4ac98",
+          "#7d8c86"
+        ],
+        "roofColour": "#6f8a7e",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tall English-style clock tower, a design requirement echoing Big Ben"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "security fence"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "small forecourt feature"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1954",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_Buildings_(Kenya)",
+          "what": "Architect Amyas Connell with Harold Thornley Dyer; built 1951-1954; concrete and steel; neoclassical (infobox); English-style clocktower required in the brief to echo the Palace of Westminster"
+        }
+      ],
+      "notes": "Architect, date, concrete-and-steel, neoclassical style and the clock tower are sourced. Dimensions, the pale stone-and-render colours and the greenish tower cap are from general knowledge and should be treated as approximate. The clock tower is the identifying silhouette."
+    },
+    "nairobi-community-voting-game": {
+      "venueId": "nairobi-community-voting-game",
+      "city": "nairobi",
+      "name": "August 7th Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "The August 7th Memorial Park on the former US embassy site: a small walled memorial garden with an inscribed wall of names and a low pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d9d3c4",
+          "#7e8f6a",
+          "#4a4a48"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "memorial wall inscribed with the names of the dead"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "low information building"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "ticketed entrance"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/1998_United_States_embassy_bombings",
+          "what": "Memorial park built on the former embassy site, dedicated on the 3rd anniversary, wall inscribed with the names of the dead, entry not free"
+        }
+      ],
+      "notes": "Only the wall of names and the fact it is a park on the former embassy site are sourced. Size, pavilion and gate are estimates; no logos or legible names to be modelled."
+    },
+    "nairobi-community-workshop": {
+      "venueId": "nairobi-community-workshop",
+      "city": "nairobi",
+      "name": "University of Nairobi - Main Campus",
+      "archetype": "campus-block",
+      "subject": "University of Nairobi main campus: a cluster of mid-rise 1960s-70s modernist academic blocks around a central quadrangle",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ede6d3",
+          "#b9b3a2",
+          "#7b6a58"
+        ],
+        "roofColour": "#8a8780",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central quadrangle"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Nairobi",
+          "what": "Urban campus on University Way; photos show main entrance and main quadrangle"
+        }
+      ],
+      "notes": "Only the urban campus setting and that it has a main entrance and quadrangle are in the source. Building heights and style are typed guesses from the city style; the real campus also has a few taller towers."
+    },
+    "nairobi-garden-city-mall": {
+      "venueId": "nairobi-garden-city-mall",
+      "city": "nairobi",
+      "name": "Garden City Mall",
+      "archetype": "mall",
+      "subject": "Garden City Mall on Thika Road: a wide three-level modern shopping centre with a glazed entrance, a long white-and-grey facade and a huge car park in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 250,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efefec",
+          "#9aa3a8",
+          "#2f7d6a"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed entrance atrium"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "about 2,200 spaces"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1,
+          "note": "entrance colonnade pillars"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Garden_City_Mall",
+          "what": "Three floors, 33,500 m2 gross retail space, architect Tirad Architects, about 2,200 parking spaces, part of a mixed-use development with housing"
+        }
+      ],
+      "notes": "Floors, floor area, architect and parking sourced. The width/depth, white-and-grey colours and entrance atrium are estimates; real exterior not described in any source read. Residential towers of the same development sit alongside; show only the mall."
+    },
+    "nairobi-impala-observation-point": {
+      "venueId": "nairobi-impala-observation-point",
+      "city": "nairobi",
+      "name": "Impala observation point",
+      "archetype": "park-landscape",
+      "subject": "A hilltop viewing point inside Nairobi National Park: a grassy ridge with acacia scrub, a timber-railed lookout deck and a picnic shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58b62",
+          "#7c8b4f",
+          "#5c4630"
+        ],
+        "roofColour": "#6b5a3e",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "railed lookout deck"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "picnic shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi_National_Park",
+          "what": "Park is open grassland with scattered Acacia bushes, elevation 1,533-1,760 m, rocky hillsides and valleys"
+        }
+      ],
+      "notes": "The viewpoint itself is not described in any source read; typed from the park's landscape (grassland, scattered acacia, rocky hills). Facility details are guesses."
+    },
+    "nairobi-market-game": {
+      "venueId": "nairobi-market-game",
+      "city": "nairobi",
+      "name": "City Market",
+      "archetype": "market-hall",
+      "subject": "Nairobi City Market: a 1930s covered market hall with a plain pale facade, a pitched metal roof and stalls of curios, flowers and produce inside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#eee9dc",
+          "#b9382f",
+          "#5d6770"
+        ],
+        "roofColour": "#6c7479",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 5,
+          "note": "arched entrance bays"
+        },
+        {
+          "id": "stalls",
+          "count": 40,
+          "note": "covered stalls inside"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "side market sheds"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1930",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "what": "Listed as a notable central Nairobi area; no source for the building itself could be fetched (page 404)"
+        }
+      ],
+      "notes": "Building description is from general knowledge (1930s hall, plain Art Deco-leaning facade, corrugated roof); not verified in this session because search budget ran out and the Wikipedia page was unavailable. Treat dimensions as rough."
+    },
+    "nairobi-meal-stop": {
+      "venueId": "nairobi-meal-stop",
+      "city": "nairobi",
+      "name": "Carnivore Restaurant",
+      "archetype": "restaurant",
+      "subject": "Carnivore in Langata: a big open-air restaurant under a thatched roof with a huge charcoal pit and garden dining",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#c6a679",
+          "#6b4a2f",
+          "#8b8b7a"
+        ],
+        "roofColour": "#a3844e",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "large open-sided dining pavilion"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "central charcoal pit with Maasai-sword skewers"
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carnivore_Restaurant",
+          "what": "Open-air restaurant on Langata Road, seats 350, charcoal pit, meat on Maasai swords, Simba Saloon night club, playground"
+        }
+      ],
+      "notes": "Open-air, 350 seats and the charcoal pit are sourced. The thatched makuti-style roof, dimensions and colours are from general knowledge and approximate. Make it clearly different from the plain hall-like restaurants elsewhere: low timber pavilion, big hip roof, garden around."
+    },
+    "nairobi-nairobi-national-museum": {
+      "venueId": "nairobi-nairobi-national-museum",
+      "city": "nairobi",
+      "name": "Nairobi National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Nairobi National Museum: a cream two-storey museum with a curved glass-fronted modern entrance and the dinosaur statue on the lawn",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eadfc7",
+          "#b66a3c",
+          "#4b5a60"
+        ],
+        "roofColour": "#a69b87",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "dinosaur model on the lawn"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed entrance of the 2008 rebuild"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1929, rebuilt 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi_National_Museum",
+          "what": "Coryndon Museum building built 1928-29, opened 1930; 2005-2007 rebuilding added an administration block and commercial centre, reopened 2008; dinosaur statue outside; Snake Park and Botanic Garden in grounds"
+        }
+      ],
+      "notes": "Dates, rebuild and the dinosaur statue are sourced. Dimensions, colours and the glazed entrance are estimates. The French-language venue name is a game quirk; the real place is the Nairobi National Museum on Museum Hill."
+    },
+    "nairobi-nairobi-safari-walk": {
+      "venueId": "nairobi-nairobi-safari-walk",
+      "city": "nairobi",
+      "name": "Nairobi Safari Walk",
+      "archetype": "park-landscape",
+      "subject": "Nairobi Safari Walk: raised timber boardwalks through fenced open savanna habitats with animal enclosures, entered through a thatched gate building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6b44",
+          "#7c8b4f",
+          "#c9b88a"
+        ],
+        "roofColour": "#9a7a4a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "raised timber boardwalk"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "thatched entrance building"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "habitat fencing"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "viewing shelters"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi_National_Park",
+          "what": "Kenya Wildlife Service Safari Walk highlights the variety of plants and animals of Kenya; park is open grassland with scattered Acacia"
+        }
+      ],
+      "notes": "Only that the Safari Walk exists and its purpose are sourced. Boardwalk, thatched entrance and layout are typed from the type of attraction."
+    },
+    "nairobi-nyayo-national-stadium": {
+      "venueId": "nairobi-nyayo-national-stadium",
+      "city": "nairobi",
+      "name": "Nyayo National Stadium",
+      "archetype": "stadium",
+      "subject": "Nyayo National Stadium: an oval concrete bowl with a roofed main stand, floodlight masts and the surrounding sports halls",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b5b3ab",
+          "#2d4f8a",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8b9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "new floodlights from the 2024 upgrade"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "partial roof over the stands"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1983, renovated 2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nyayo_National_Stadium",
+          "what": "Groundbreaking 1982, opened 1983, architects Nyanja Architects and Associates, 30,000 seats built (18,000 in infobox), 2024 renovation with new floodlighting and CCTV, aquatic centre and indoor gymnasium alongside"
+        }
+      ],
+      "notes": "Dates, architects, capacity, floodlights and satellite halls are sourced. Bowl dimensions, the roofed side and colours are estimates; the source does not describe the roof or stands. Keep it a clean oval with one roofed stand."
+    },
+    "nairobi-parklands-mosque": {
+      "venueId": "nairobi-parklands-mosque",
+      "city": "nairobi",
+      "name": "Parklands Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A Parklands neighbourhood mosque: a white painted prayer hall with a central dome, small corner domes and two slender minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1e8",
+          "#2f7a58",
+          "#c8b27a"
+        ],
+        "roofColour": "#e8e4d8",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "slender corner minarets"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "what": "Parklands is an established Nairobi district; no page for this mosque could be fetched"
+        }
+      ],
+      "notes": "No source describing this mosque was found (fetch attempts 404, search budget used up). Typed from the common form of Parklands-area mosques (the district has a long-established South Asian Muslim community) and the city style; dome and minaret counts are guesses."
+    },
+    "nairobi-quiet-reflection": {
+      "venueId": "nairobi-quiet-reflection",
+      "city": "nairobi",
+      "name": "All Saints Cathedral",
+      "archetype": "church-gothic",
+      "subject": "All Saints Cathedral beside Uhuru Park: a cruciform Anglican cathedral in grey stone with a squat crossing tower and steep tiled roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#a7a396",
+          "#c8c2b0",
+          "#6b5a48"
+        ],
+        "roofColour": "#7b5a45",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "central tower"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1917-1952",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/All_Saints'_Cathedral,_Nairobi",
+          "what": "Designed by Temple Moore; foundation stone 3 February 1917; dedicated unfinished 1918; further sections 1934 and 1952; consecrated 1952"
+        }
+      ],
+      "notes": "Architect (Temple Moore, an English Gothic Revival architect) and dates are sourced. Stone type, tower proportions and roof tile are from general knowledge and not verified; treat as medium. Plan is a cruciform nave with transepts."
+    },
+    "nairobi-recreation": {
+      "venueId": "nairobi-recreation",
+      "city": "nairobi",
+      "name": "Uhuru Park",
+      "archetype": "park-landscape",
+      "subject": "Uhuru Park beside the CBD: open lawns around an artificial lake with a fountain, the Nyayo monument and a bandstand-like assembly ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 360,
+        "depth_m": 360,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#cfc9b8",
+          "#6f9a4f",
+          "#4e87a6"
+        ],
+        "roofColour": "#8a8a85",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lake fountain"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Nyayo monument"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "boathouse/kiosk by the lake"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uhuru_Park",
+          "what": "12.9 ha park opened 1969; artificial lake, national monuments (National Monument, Nyayo Monument), assembly ground, fountain; views of the Nairobi skyline"
+        }
+      ],
+      "notes": "Size, date, lake, monuments, assembly ground and fountain are sourced. Footprint is a square equivalent of 12.9 ha (the generator should show a recognisable portion: lake, fountain, monument). Park is on the south side of the CBD towards Parliament."
+    },
+    "nairobi-sarit-centre": {
+      "venueId": "nairobi-sarit-centre",
+      "city": "nairobi",
+      "name": "Sarit Centre",
+      "archetype": "mall",
+      "subject": "Sarit Centre in Westlands: a large six-storey 1980s shopping centre with a long cream facade, stepped upper floors and a multi-level car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 110,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece3cf",
+          "#8a7860",
+          "#3d6b8c"
+        ],
+        "roofColour": "#a29a8c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "deck parking and walkway bands"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "about 4,000 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sarit_Centre",
+          "what": "Construction began 1981, opened April 1983, 74,000 m2, six floors, about 4,000 parking spaces, design based on Brent Cross Shopping Centre in London; revamped three times, third phase from 2017"
+        }
+      ],
+      "notes": "Date, six floors, floor area, parking and the Brent Cross inspiration are sourced. Colours and exact dimensions are estimates; the exterior is not described in the source. Boxier and older-looking than Garden City and Two Rivers."
+    },
+    "nairobi-satsang-temple": {
+      "venueId": "nairobi-satsang-temple",
+      "city": "nairobi",
+      "name": "East Africa Satsang Swaminarayan Temple",
+      "archetype": "temple-asian",
+      "subject": "A Swaminarayan Hindu mandir in Ngara: a carved light-stone temple with a central shikhara, smaller domed spires and a decorated entrance porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "marble",
+        "colours": [
+          "#e4cfb4",
+          "#c68a6a",
+          "#f1ece0"
+        ],
+        "roofColour": "#d8c3a2",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 5,
+          "note": "shikhara and ornamental spires"
+        },
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "small domes on the porch"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved stone ornament"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5,
+          "note": "scalloped arches"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "south-asian",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "what": "Nairobi has a sizeable South Asian community and established Hindu temples; no page for this temple could be fetched"
+        }
+      ],
+      "notes": "No description of this specific temple was found (fetch attempts 404). Typed from the common Swaminarayan mandir form (shikhara spires, domes, carved stone in warm cream/pink); treat all numbers and ornament as rough. Distinct from the mosque and cathedral by carving and spire cluster."
+    },
+    "nairobi-technical-university-of-kenya": {
+      "venueId": "nairobi-technical-university-of-kenya",
+      "city": "nairobi",
+      "name": "The Technical University of Kenya",
+      "archetype": "campus-block",
+      "subject": "The Technical University of Kenya on Haile Selassie Avenue: a mid-rise 1960s-70s concrete main block with ribbon windows and an entrance forecourt",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#8d8a82",
+          "#3f5f78"
+        ],
+        "roofColour": "#7e8083",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 4,
+          "note": "horizontal concrete floor bands"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Technical_University_of_Kenya",
+          "what": "Grew from Kenya Polytechnic in the CBD on Haile Selassie Avenue opposite Times Tower; no building description in the article"
+        }
+      ],
+      "notes": "Only the location is sourced. Form and materials are typed from the city style and the era of the institution (Kenya Polytechnic). Different from the University of Nairobi's quadrangle layout: slab block on a street frontage."
+    },
+    "nairobi-transit": {
+      "venueId": "nairobi-transit",
+      "city": "nairobi",
+      "name": "Nairobi Central Railway Station",
+      "archetype": "transport-station",
+      "subject": "Nairobi Central Railway Station: a long low colonial-modernist concourse with a clock, a covered platform canopy and tracks beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e7dfc9",
+          "#9d8f74",
+          "#b24a33"
+        ],
+        "roofColour": "#8e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "long iron-framed platform canopy"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "tracks and platforms"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "entrance clock"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1899, additions in 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi_Railway_Station",
+          "what": "Opened 1899, structural additions through the 20th century, stands on the site of Nairobi's first stone building (1904 Catholic church); listed under British colonial architecture in Kenya"
+        }
+      ],
+      "notes": "Date, colonial classification and site history are sourced; the building description is general knowledge (plain cream station with hip roof and platform canopy) and unverified. Note: station is the Railway Museum neighbour; the SGR terminal is elsewhere."
+    },
+    "nairobi-two-rivers-mall": {
+      "venueId": "nairobi-two-rivers-mall",
+      "city": "nairobi",
+      "name": "Two Rivers Mall",
+      "archetype": "mall",
+      "subject": "Two Rivers Mall in Runda: a vast contemporary mall with glass-and-stone facades, landscaped approach and the 60 m Eye of Kenya ferris wheel beside it",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "stone",
+        "colours": [
+          "#e8e4da",
+          "#b19d78",
+          "#3b8a9a"
+        ],
+        "roofColour": "#a9aeb1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2,
+          "note": "glazed atria"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "stand-in for the 60 m ferris wheel (no ferris-wheel feature id)"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "1,046 spaces reported"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Two_Rivers_Mall",
+          "what": "67,000 m2 GLA, largest mall in sub-Saharan Africa outside South Africa, architect Boogertman + Partners, structural engineer Howard Humphreys, 1,046 parking spaces, 60 m Eye of Kenya ferris wheel opened 2019"
+        }
+      ],
+      "notes": "Floor area, architects, parking and the ferris wheel are sourced. The three storeys, glazing ratio and colours are estimates. It is the largest of the four malls and the only one with a ferris wheel; Garden City is whiter and rectangular, Sarit older and boxier."
+    },
+    "nairobi-uhuru-gardens": {
+      "venueId": "nairobi-uhuru-gardens",
+      "city": "nairobi",
+      "name": "Uhuru Gardens",
+      "archetype": "monument",
+      "subject": "Uhuru Gardens Memorial Park: the 24 m Independence monument column topped by clasped hands and a dove, with a soldiers raising-the-flag statue at its base and a fountain",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d8d2c2",
+          "#7f8f5a",
+          "#b99a3d"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "24 m column topped with clasped hands and a dove"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "soldiers raising the Kenyan flag"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "Twenty-Five years of Uhuru monument"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uhuru_Gardens",
+          "what": "63 acre park; 1973 24 m column topped by clasped hands and a dove of peace; statue of soldiers raising the Kenyan flag; fountain for twenty-five years of Uhuru; Mugumo (Ficus sycomorus) tree"
+        }
+      ],
+      "notes": "Column height, year, clasped hands and dove, soldier statue, fountain and the mugumo tree are all sourced. Pedestal proportions and colours are estimated. A big old fig tree stands in the grounds."
+    },
+    "nairobi-yaya-centre": {
+      "venueId": "nairobi-yaya-centre",
+      "city": "nairobi",
+      "name": "Yaya Centre",
+      "archetype": "mall",
+      "subject": "Yaya Centre in Hurlingham: a 1990s mixed-use shopping centre with a low retail podium and a taller residential tower rising from one end",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dccb",
+          "#8c6e55",
+          "#4c5f6b"
+        ],
+        "roofColour": "#8b8b86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "retail podium"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "tower balconies"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1992",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yaya_Centre",
+          "what": "Opened 1992 on Argwings Kodhek Road, Hurlingham; part of a mixed-use development with the Yaya Towers (housing); the west wing tower remained incomplete"
+        }
+      ],
+      "notes": "Date, location and the mixed-use podium plus residential towers are sourced. Heights, colours and plan are typed guesses (the article gives none). The tower is taller than the podium; the incomplete west wing could be shown as a bare concrete frame."
+    }
+  }
+}

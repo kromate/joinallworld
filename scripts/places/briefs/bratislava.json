@@ -1,0 +1,1590 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bratislava",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bratislava",
+    "climate": "temperate",
+    "vernacular": "Central European city of layered periods: a compact Old Town of 14th-18th century Gothic and Baroque houses and palaces in pastel plaster (ochre, salmon, cream, pale green) under steep red clay-tile roofs; 19th-century neoclassical and Secession blocks; and, across the Danube in Petrzalka and in Dubravka, Karlova Ves and Ruzinov, vast communist-era prefabricated concrete panel housing estates (panelaky) of 8-13 storeys, often repainted in pastel insulation colours. Glass-and-steel offices, malls and towers from the 2000s stand along the river. Villages around the city (Stupava, Cunovo, Samorin) have low plastered houses with hip roofs and small Baroque churches.",
+    "wallColours": [
+      "#e3d3a0",
+      "#d7a48f",
+      "#f0ebdf",
+      "#b9c4b0",
+      "#c8c4b8",
+      "#a58f7a"
+    ],
+    "roofColours": [
+      "#a4573d",
+      "#7d5b4b",
+      "#6b6a6a",
+      "#4a4f57"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stucco",
+      "brick",
+      "stone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Baroque plaster facades with white window surrounds and cornices, steep tile roofs with dormers, Rococo and neoclassical palaces (Grassalkovich), Plague Column (1713) squares; panelak facades with coloured balcony bands and loggias; the single-pylon SNP bridge with its UFO deck as the modern emblem.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bratislava",
+        "what": "Old Town with medieval/Baroque buildings (Town Hall 14th-15th c., Michael's Gate, Grassalkovich Palace, Plague Column 1713); prefabricated panel high-rises in Petrzalka and Dubravka; 21st-century towers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Most_SNP",
+        "what": "SNP bridge (1967-72) with single pylon and UFO saucer restaurant"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bratislava_Airport",
+        "what": "terminal completed 2012"
+      }
+    ]
+  },
+  "places": {
+    "bratislava-airport-bratislava-airport": {
+      "venueId": "bratislava-airport-bratislava-airport",
+      "city": "bratislava",
+      "name": "M. R. Štefánik Airport",
+      "archetype": "airport-terminal",
+      "subject": "The single passenger terminal (completed 2012) seen from the forecourt: a long low glazed block with a flat canopy and a small control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#7b8791",
+          "#eceeee"
+        ],
+        "roofColour": "#9aa2a7",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures canopy over the kerb"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "surface and multi-storey parking"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "check-in hall"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2012 terminal (airport opened 1970)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bratislava_Airport",
+          "what": "single terminal completed July 2012, 29 check-in desks on the ground floor, 13 gates, separate general-aviation terminal"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q828379",
+          "what": "identity and coordinates (international airport, within 23 m)"
+        }
+      ],
+      "notes": "No OSM terminal footprint. Dimensions, colours and tower are estimates for a small regional terminal; the article confirms only the 2012 completion, 29 desks and 13 gates. Much smaller than Brussels and Bucharest terminals."
+    },
+    "bratislava-clinic": {
+      "venueId": "bratislava-clinic",
+      "city": "bratislava",
+      "name": "Psychiatrická nemocnica Philippa Pinela Pezinok",
+      "archetype": "hospital",
+      "subject": "One of the pavilion blocks of the Pezinok psychiatric hospital campus (campus about 540 x 320 m in parkland)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3a0",
+          "#b9a98a",
+          "#f0ebdf"
+        ],
+        "roofColour": "#a4573d",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "pavilion campus layout"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century pavilion campus (era unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/778564760",
+          "what": "hospital campus polygon 543 x 317 m, 119,362 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q61951440",
+          "what": "identity: psychiatric hospital in Pezinok"
+        }
+      ],
+      "notes": "Typed guess from the city style and the hospital type: individual building not described anywhere found. Campus is a spread of pavilions in grounds, so show one 3-storey plastered pavilion with hip tile roof."
+    },
+    "bratislava-community-notices": {
+      "venueId": "bratislava-community-notices",
+      "city": "bratislava",
+      "name": "Mestský úrad v Šamoríne",
+      "archetype": "civic-small",
+      "subject": "Šamorín town hall: a modest irregular-plan municipal building of about 30 x 21 m",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7e0cf",
+          "#8a8f94",
+          "#f3f1ea"
+        ],
+        "roofColour": "#7d5b4b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "Slovak, EU and municipal flag poles"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/61630694",
+          "what": "town hall building polygon 30.2 x 21.2 m, 437 m2, irregular plan"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q112103982",
+          "what": "identity: town hall (Rathaus)"
+        }
+      ],
+      "notes": "No description of the building found; typed guess. OSM gives an irregular polygon of 437 m2 so it is shown as a small two-storey civic block."
+    },
+    "bratislava-community-voting-game": {
+      "venueId": "bratislava-community-voting-game",
+      "city": "bratislava",
+      "name": "Námestie sv. Trojice",
+      "archetype": "park-landscape",
+      "subject": "The Holy Trinity square in Stupava with the Baroque-era parish church of St Stephen of Hungary and its tower at one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9c9488",
+          "#e9e2d0",
+          "#6b6a6a"
+        ],
+        "roofColour": "#6b6a6a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "column or statue implied by the Holy Trinity name (unverified)"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "parish church at the square edge"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/147538870",
+          "what": "nearest building: Roman Catholic church of St Stephen I of Hungary, 48.5 x 37.4 m, 892 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q112089281",
+          "what": "church is a national cultural monument in Stupava"
+        }
+      ],
+      "notes": "Venue is the square, not the church. Nothing found on its layout; shown as a paved village square with trees, a Trinity monument (name implies one, unverified) and the church at the edge. Low."
+    },
+    "bratislava-community-workshop": {
+      "venueId": "bratislava-community-workshop",
+      "city": "bratislava",
+      "name": "Fakulta sociálnych a ekonomických vied UK",
+      "archetype": "campus-block",
+      "subject": "A Comenius University faculty building: a wide four-storey block with ribbon windows (campus polygon about 133 x 89 m)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d3c6",
+          "#8a8f94",
+          "#f0ede4"
+        ],
+        "roofColour": "#7a7d80",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/799366809",
+          "what": "university polygon 132.9 x 88.5 m, 6,427 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12765706",
+          "what": "identity: Faculty of Social and Economic Sciences, Comenius University"
+        }
+      ],
+      "notes": "No building description found; typed from city style as a rendered concrete academic block. Dimensions are the OSM polygon, storeys and colours are guesses."
+    },
+    "bratislava-market-game": {
+      "venueId": "bratislava-market-game",
+      "city": "bratislava",
+      "name": "Bory Mall",
+      "archetype": "mall",
+      "subject": "Bory Mall, a large two-level shopping centre in a wide low block with big glazed entrance bays and a car-park apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 290,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e2d6",
+          "#7d8a96",
+          "#b9805a"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "large surface parking"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/8504516",
+          "what": "retail building, 2 levels, 291 x 187 m, 40,371 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11159994",
+          "what": "identity: shopping mall"
+        }
+      ],
+      "notes": "Only levels and footprint are measured. Colours and facade are estimates. Placed as the large of the two Bratislava malls beside Galeria Dubravka (smaller)."
+    },
+    "bratislava-meal-stop": {
+      "venueId": "bratislava-meal-stop",
+      "city": "bratislava",
+      "name": "UFO (SNP Bridge observation deck and restaurant)",
+      "archetype": "monument",
+      "subject": "The flying-saucer shaped UFO observation deck and restaurant on top of the single pylon of the Most SNP cable-stayed bridge",
+      "form": {
+        "footprint": "round",
+        "width_m": 26,
+        "depth_m": 26,
+        "storeys": 28,
+        "height_m": 95,
+        "roof": "curved",
+        "variant": "saucer-on-pylon"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#7d8791",
+          "#26303a",
+          "#c3cbd1"
+        ],
+        "roofColour": "#6f7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 2,
+          "note": "two slanted steel pylon legs carrying the saucer; lifts in the east leg, 430-step stair in the west"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "antenna on top of the saucer"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1967-72, opened 1972",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Most_SNP",
+          "what": "bridge built 1967-72, opened 26 Aug 1972; single pylon 84.6 m above ground, 87.2 m total, 95 m above the Danube; saucer houses restaurant and deck; asymmetric cable-stayed bridge, 303 m main span; lifts in east pillar, 430-step stairs in west pillar"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/378574918",
+          "what": "OSM: height 95, roof pyramidal metal, modernism, architects Lacko, Kusnir, Slamen, start 1971, footprint 25.8 x 25.7 m"
+        }
+      ],
+      "notes": "Recognisable as a flat disc (about 26 m across) on an A-shaped pylon with a thin antenna. height_m 95 is the figure above the river; the storeys figure (28) only stands for the pylon height. The deck is a monument/lookout, not a restaurant building. Unlike every other Bratislava venue it is a tall thin tower."
+    },
+    "bratislava-osm-node-27672692": {
+      "venueId": "bratislava-osm-node-27672692",
+      "city": "bratislava",
+      "name": "Akadémia Policajného zboru v Bratislave",
+      "archetype": "campus-block",
+      "subject": "The Police Force Academy campus: several linked three-to-four-storey blocks around open ground",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d1c5",
+          "#7d7f82",
+          "#ece8dd"
+        ],
+        "roofColour": "#7a7d80",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/16678424",
+          "what": "building complex polygon 315 x 140 m, 13,237 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11684709",
+          "what": "identity: police academy"
+        }
+      ],
+      "notes": "No appearance found. A rectilinear rendered institutional block typed from the city style."
+    },
+    "bratislava-osm-node-302428961": {
+      "venueId": "bratislava-osm-node-302428961",
+      "city": "bratislava",
+      "name": "Dračí hrádok",
+      "archetype": "heritage-fort",
+      "subject": "The ruin of the 13th-century Dračí hrádok (Dragon Castle): a knee-high stone tower stump behind a rock-cut moat on a wooded hill",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a8578",
+          "#6f6a60",
+          "#a39d90"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low wall stubs along a ridge, core about 20 m wide and over 100 m long"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "remains of the front tower, about 10 x 10 m square and about 2 m high"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "13th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dra%C4%8D%C3%AD_hr%C3%A1dok",
+          "what": "13th-century castle ruin about 370 m above sea level near Borinka; only part of the front tower remains (square about 10 x 10 m, about 2 m tall); castle core about 20 m wide and more than 100 m long; moat about 17 m wide and 6 m deep cut in rock; stone walls and tower, wooden parts burnt"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12764903",
+          "what": "castle ruin in Slovakia"
+        }
+      ],
+      "notes": "A ruin: show only a low stone stump and the moat in a forest clearing. Use rubble and weathered grey stone; no roof. Recognisable by the square tower footing and the deep cut moat."
+    },
+    "bratislava-osm-relation-3416687": {
+      "venueId": "bratislava-osm-relation-3416687",
+      "city": "bratislava",
+      "name": "Eberhard (manor house)",
+      "archetype": "manor",
+      "subject": "The manor house (kaštieľ) at Eberhard in Malinovo: a two-storey courtyard-plan country house of about 60 x 48 m",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3a0",
+          "#a8957a",
+          "#f0ebdf"
+        ],
+        "roofColour": "#a4573d",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central entrance (assumed)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "unknown (guess: 17th-18th century)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/3416687",
+          "what": "historic=manor polygon 59.5 x 48.4 m, 1,750 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12765124",
+          "what": "identity: manor house in Malinovo, Senec district"
+        }
+      ],
+      "notes": "No description of the building found. Style and storeys are a guess for a Slovak country manor (kastiel): plastered, hip tile roof, U plan around a court. Low."
+    },
+    "bratislava-osm-way-1051649120": {
+      "venueId": "bratislava-osm-way-1051649120",
+      "city": "bratislava",
+      "name": "štadión FC ŠTK 1914 Šamorín (Pomlé Stadium)",
+      "archetype": "stadium",
+      "subject": "Pomlé Stadium in Šamorín: a small football ground with a single covered main stand and open terraces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b8b0",
+          "#4d6f9e",
+          "#e8e8e2"
+        ],
+        "roofColour": "#6f7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1051649120",
+          "what": "stadium polygon 399.5 x 178.2 m incl. grounds, 57,528 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7227337",
+          "what": "Pomle Stadium, home football stadium in Samorin"
+        }
+      ],
+      "notes": "Only identity known. Polygon is the whole sports grounds, so the modelled stands are a typical small-town football ground. Different from Petrzalka (even smaller, new)."
+    },
+    "bratislava-osm-way-1178108642": {
+      "venueId": "bratislava-osm-way-1178108642",
+      "city": "bratislava",
+      "name": "Štadión FC Petržalka 1898",
+      "archetype": "stadium",
+      "subject": "The small FC Petržalka football ground: a covered grandstand along the west side and open bleachers on the east",
+      "form": {
+        "footprint": "rect",
+        "width_m": 115,
+        "depth_m": 85,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c9c2",
+          "#1f1f22",
+          "#f2f2ee"
+        ],
+        "roofColour": "#4d5760",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "west grandstand (roof unconfirmed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "assumed"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011-2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/FC_Petr%C5%BEalka",
+          "what": "stadium on Sklodowskej Street built 2011, opened 2012 (first match 5 Aug 2012), single 800-seat west grandstand, later bleachers on east, capacity 1,600-3,000"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1178108642",
+          "what": "stadium polygon 115.5 x 84.8 m, 9,501 m2"
+        }
+      ],
+      "notes": "Young, compact ground with one main stand; the roof is not confirmed by the article. White-black club colours are used only for stand trim."
+    },
+    "bratislava-osm-way-150644741": {
+      "venueId": "bratislava-osm-way-150644741",
+      "city": "bratislava",
+      "name": "Biely Kameň",
+      "archetype": "heritage-fort",
+      "subject": "The castle ruin of Biely Kameň in the Little Carpathians: broken grey stone walls and a tower base among beech woods",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8a7e",
+          "#6f6a60",
+          "#aaa496"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "ruined curtain walls (about 83 x 78 m site)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/150644741",
+          "what": "historic=castle polygon 83 x 78 m, 4,682 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3502157",
+          "what": "ruins of a castle in Slovakia"
+        }
+      ],
+      "notes": "Only that it is a castle ruin is known. Shown as low, irregular stone walls, no roof. Distinct from Drací hrádok by being a larger, wall-ringed site."
+    },
+    "bratislava-osm-way-15104547": {
+      "venueId": "bratislava-osm-way-15104547",
+      "city": "bratislava",
+      "name": "Zimný štadión Vladimíra Dzurillu",
+      "archetype": "stadium",
+      "subject": "The Vladimír Dzurilla ice stadium: a three-level windowless-looking arena hall with a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab0",
+          "#4d6f9e",
+          "#e3e0d6"
+        ],
+        "roofColour": "#6b7077",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid-20th century with later upgrades (unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/15104547",
+          "what": "building: 3 levels, roof flat, polygon 80.4 x 60.5 m, 4,858 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12779405",
+          "what": "indoor ice rink in Bratislava"
+        }
+      ],
+      "notes": "Measured: flat roof, 3 levels, 80 x 60 m. Facade colours are estimates. Smaller indoor arena, unlike the open bowls elsewhere."
+    },
+    "bratislava-osm-way-170458693": {
+      "venueId": "bratislava-osm-way-170458693",
+      "city": "bratislava",
+      "name": "Kostol Ducha Svätého (Devínska Nová Ves)",
+      "archetype": "church-modern",
+      "subject": "A compact Roman Catholic church of the Holy Spirit in Devínska Nová Ves, about 31 x 17 m with a modest tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#eee7d6",
+          "#a09282",
+          "#ffffff"
+        ],
+        "roofColour": "#8c5a45",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/170458693",
+          "what": "church polygon 31.4 x 16.7 m, 332 m2, Roman Catholic"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12769527",
+          "what": "identity: Holy Spirit church, Devinska Nova Ves"
+        }
+      ],
+      "notes": "Style unknown; typed as a plain plastered parish church with a gable roof and tower."
+    },
+    "bratislava-osm-way-216958979": {
+      "venueId": "bratislava-osm-way-216958979",
+      "city": "bratislava",
+      "name": "Lippayova záhrada",
+      "archetype": "park-landscape",
+      "subject": "Lippay Garden, a city park of about 218 x 165 m with lawns, trees and gravel paths",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a39d90",
+          "#6f9a4b",
+          "#d8d2c0"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "garden pavilion (assumed)"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "historic garden (era unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/216958979",
+          "what": "leisure=park polygon 217.7 x 165 m, 21,853 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q27809719",
+          "what": "identity: garden / urban park"
+        }
+      ],
+      "notes": "Nothing found on layout; typed as a quiet city garden with lawns, mature broadleaf trees and a few formal elements. Low."
+    },
+    "bratislava-osm-way-23963145": {
+      "venueId": "bratislava-osm-way-23963145",
+      "city": "bratislava",
+      "name": "Národný onkologický ústav",
+      "archetype": "hospital",
+      "subject": "The National Oncology Institute: a long six-storey hospital slab of about 182 x 100 m footprint",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 22,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d4c6",
+          "#8a8f94",
+          "#eeeadf"
+        ],
+        "roofColour": "#7a7d80",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century (unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/37372035",
+          "what": "hospital building: 6 levels, 182 x 99.6 m footprint, 8,377 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30531348",
+          "what": "identity: National Oncology Institute"
+        }
+      ],
+      "notes": "Six levels and footprint measured; facade guess. Main slab modelled at a clamp-friendly 90 m (full OSM footprint 182 m)."
+    },
+    "bratislava-osm-way-242774480": {
+      "venueId": "bratislava-osm-way-242774480",
+      "city": "bratislava",
+      "name": "Fakulta matematiky, fyziky a informatiky UK",
+      "archetype": "campus-block",
+      "subject": "The Mlynská dolina campus of the Faculty of Mathematics, Physics and Informatics: a large concrete slab block with strip windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a8a69c",
+          "#6f747a",
+          "#d0cdc2"
+        ],
+        "roofColour": "#6b7077",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s-80s (unverified, typical of the Mlynska dolina campus)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/242774480",
+          "what": "university complex polygon 432.5 x 314.9 m, 94,877 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2368460",
+          "what": "identity: Faculty of Mathematics, Physics and Informatics, Comenius University"
+        }
+      ],
+      "notes": "Style is a guess from the era of the Mlynska dolina campus; not confirmed. A big concrete slab; many buildings in reality."
+    },
+    "bratislava-osm-way-24985922": {
+      "venueId": "bratislava-osm-way-24985922",
+      "city": "bratislava",
+      "name": "Obchodné centrum Galéria",
+      "archetype": "mall",
+      "subject": "A two-level suburban shopping centre of about 245 x 158 m",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e0d8c8",
+          "#b05a43",
+          "#f2efe6"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s-2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24985922",
+          "what": "commercial building, 2 levels, 245 x 158 m, 25,778 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q13537707",
+          "what": "identity as location"
+        }
+      ],
+      "notes": "Only levels and footprint measured. Typed guess. Smaller and plainer than Bory Mall."
+    },
+    "bratislava-osm-way-258662338": {
+      "venueId": "bratislava-osm-way-258662338",
+      "city": "bratislava",
+      "name": "Kostol sv. Anny (Šenkvice)",
+      "archetype": "church-classical",
+      "subject": "The Roman Catholic church of St Anne in Šenkvice: a long narrow plastered church with a western tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e9d6",
+          "#b9a98a",
+          "#ffffff"
+        ],
+        "roofColour": "#a4573d",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/258662338",
+          "what": "church polygon 48.5 x 14.4 m, 568 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q13425291",
+          "what": "identity: Church of St Anne in Senkvice"
+        }
+      ],
+      "notes": "Only dimensions known. Shown as a plain Baroque-style village church; low confidence."
+    },
+    "bratislava-osm-way-273342996": {
+      "venueId": "bratislava-osm-way-273342996",
+      "city": "bratislava",
+      "name": "Cirkevné konzervatórium v Bratislave",
+      "archetype": "campus-block",
+      "subject": "The Church Conservatory building in Petržalka: a three-storey school block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c58a",
+          "#9ab0a8",
+          "#efece2"
+        ],
+        "roofColour": "#7a7d80",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/273342996",
+          "what": "college polygon 93.7 x 51.7 m, 4,475 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12764138",
+          "what": "identity: Church Conservatory in Bratislava"
+        }
+      ],
+      "notes": "No description found; modelled as a typical Petrzalka-era school block, repainted in pastel."
+    },
+    "bratislava-osm-way-5215299": {
+      "venueId": "bratislava-osm-way-5215299",
+      "city": "bratislava",
+      "name": "Nová tržnica (Market Hall)",
+      "archetype": "market-hall",
+      "subject": "The 1983 high-tech Nová tržnica market hall: a wide two-level steel-and-glass trading hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 53,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9c3c9",
+          "#5b6b78",
+          "#dfe3e5"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed hall"
+        },
+        {
+          "id": "stalls",
+          "count": 1,
+          "note": "trading floors inside"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/5215299",
+          "what": "marketplace: 2 levels, architecture high-tech, architect Ivan Matusik, start 1983, polygon 119.9 x 53.3 m, 4,757 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q13537584",
+          "what": "identity: market hall"
+        }
+      ],
+      "notes": "High-tech style and architect from OSM; roof shape and colours are guesses. Distinct from open stalls: a glazed hall with exposed steel."
+    },
+    "bratislava-quiet-reflection": {
+      "venueId": "bratislava-quiet-reflection",
+      "city": "bratislava",
+      "name": "Kostol svätého Michala (Čunovo)",
+      "archetype": "church-classical",
+      "subject": "The small Baroque parish church of St Michael in Čunovo with its short western tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e9d6",
+          "#b9a98a",
+          "#ffffff"
+        ],
+        "roofColour": "#a4573d",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1783",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/49293383",
+          "what": "church polygon 22.3 x 14.6 m, 213 m2, architecture baroque, start 1783, Roman Catholic"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q13425316",
+          "what": "identity: Church of Saint Michael, Cunovo"
+        }
+      ],
+      "notes": "Baroque, 1783 and the footprint are measured; plaster colours, tower and roof are typical Baroque village features assumed."
+    },
+    "bratislava-recreation": {
+      "venueId": "bratislava-recreation",
+      "city": "bratislava",
+      "name": "Zámocký Park",
+      "archetype": "park-landscape",
+      "subject": "A landscaped chateau park of about 390 x 290 m with lawns, tree avenues and gravel paths",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a39d90",
+          "#6f9a4b",
+          "#d8d2c0"
+        ],
+        "roofColour": "#6f6a60",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "historic park (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/4345760",
+          "what": "leisure=park polygon 387 x 293 m, 71,285 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q65952450",
+          "what": "listed as park"
+        }
+      ],
+      "notes": "Nothing found describing the park; typed as an English-style chateau park. Low."
+    },
+    "bratislava-transit": {
+      "venueId": "bratislava-transit",
+      "city": "bratislava",
+      "name": "Bratislava predmestie (railway station)",
+      "archetype": "transport-station",
+      "subject": "Bratislava-Predmestie railway station: a small three-storey plastered station building with platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3d3a0",
+          "#8a8f94",
+          "#f0ebdf"
+        ],
+        "roofColour": "#8c5a45",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown (probably early 20th century)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/60801913",
+          "what": "train_station building, 3 levels, 68.4 x 21.7 m, 1,009 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q9179063",
+          "what": "identity: Bratislava predmestie railway station"
+        }
+      ],
+      "notes": "Only levels and footprint are measured; style guessed from regional station houses. Low."
+    }
+  }
+}

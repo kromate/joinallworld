@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-node-3789244393",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/djibouti.json#djibouti-osm-node-3789244393",
+   "used": "open neighbourhood market, tin-roofed rows and umbrellas on sand; OSM match was a 14 m2 stall so not used; no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#8f8a80",
+    "wall_colour": "#a69f92",
+    "trim_colour": "#c0583a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    0,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#8f8a80",
+    "wall_colour": "#a69f92",
+    "trim_colour": "#c0583a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -4,
+    12,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "depth": 6,
+    "height": 3.4,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#8f8a80",
+    "wall_colour": "#a69f92",
+    "trim_colour": "#c0583a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#c0583a",
+     "#d8c9a6",
+     "#a69f92"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    20,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 4.5,
+    "kind": "umbrella",
+    "colours": [
+     "#d8c9a6",
+     "#c0583a"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c0583a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; layout of rows is typical, not surveyed."
+ }
+}

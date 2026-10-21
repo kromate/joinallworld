@@ -1,0 +1,1289 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "flying-fish-cove",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "flying-fish-cove",
+    "climate": "tropical-maritime",
+    "vernacular": "Remote Australian island settlement of mixed heritage: a British-colonial \"Settlement\" at the cove with Singapore/Malaya-derived pale render and louvred veranda houses, a Malay kampong precinct of raised timber houses, Cantonese Poon Saan with Singapore-style units and yellow-and-red Chinese shrines, 1970s aluminium-clad houses at Silver City, all under corrugated iron roofs in rainforest at the foot of limestone cliffs.",
+    "wallColours": [
+      "#efe9dc",
+      "#ece3c6",
+      "#e2b93b",
+      "#b9bec2",
+      "#d9c58a",
+      "#d99aa0"
+    ],
+    "roofColours": [
+      "#8a9094",
+      "#a64b36",
+      "#6f8a7a",
+      "#b3261e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "timber",
+      "concrete",
+      "metal-cladding",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "membrane"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Chinese temple red trim, yellow painted shrines with upturned eaves and incense burners in Poon Saan; louvred shutters and verandas on colonial houses; timber lattice and etched glass panels; stilted Malay kampong houses; ordered garden planting along Gaze Road.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+        "what": "Settlement style derived from British experience in Singapore/Malaya; Chinese terraced houses; Malay Kampong precinct; ordered garden planting; harbour"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+        "what": "Silver City 1970s aluminium-clad houses; Poon Saan temples; rainforest; limestone terraces; monsoon climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Poon_Saan",
+        "what": "Singapore-style units, cinema, Buddhist shrines traditionally painted yellow"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Administrator%27s_House,_Christmas_Island",
+        "what": "Administrator house (Tai Jin House) two storeys, 1965 remodel with portico and balcony"
+      }
+    ]
+  },
+  "places": {
+    "flying-fish-cove-airport-flying-fish-cove-airport": {
+      "venueId": "flying-fish-cove-airport-flying-fish-cove-airport",
+      "city": "flying-fish-cove",
+      "name": "Christmas Island International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the small 1970s Christmas Island Airport terminal seen from the forecourt, a low single-storey building with a deep flat canopy facing the 2.1 km runway",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 84,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece7da",
+          "#3d7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5babc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "roadside departures canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/316024700",
+          "what": "terminal footprint ~84 x 27 m, 2,030 m2, aeroway=terminal"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island_Airport",
+          "what": "built 1974; runway 18/36 2,103 m; duty-free shop and licensed kiosk in the terminal; terminal design not described"
+        }
+      ],
+      "notes": "Terminal size and date are sourced; its look is not described anywhere found. Low flat-roofed 1970s Australian remote-airport terminal typed. Sits on the plateau at ~270 m, with rainforest around, so trees are palm and broadleaf."
+    },
+    "flying-fish-cove-clinic": {
+      "venueId": "flying-fish-cove-clinic",
+      "city": "flying-fish-cove",
+      "name": "Christmas Island Hospital",
+      "archetype": "hospital",
+      "subject": "the island hospital near Poon Saan, a low sprawling multi-wing block of one and two storeys",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 96,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe9dc",
+          "#5f8fa3",
+          "#ffffff"
+        ],
+        "roofColour": "#8a9094",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s (estimated)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/5881577",
+          "what": "hospital building relation ~3,000 m2, 96 x 50 m, wing-shaped outline"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Poon_Saan",
+          "what": "Poon Saan: Singapore-style units, Poon Saan Club, cinema; Buddhist shrines traditionally painted yellow"
+        }
+      ],
+      "notes": "Real footprint (several joined wings) from OSM; Poon Saan article says Poon Saan is close to the island hospital. Look is typed from Australian remote-community hospitals; Christmas Island has an Anglo-Singapore building heritage but the hospital style was not found."
+    },
+    "flying-fish-cove-community-notices": {
+      "venueId": "flying-fish-cove-community-notices",
+      "city": "flying-fish-cove",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "a small settlement community hut with a noticeboard (placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10.6,
+        "depth_m": 5.8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dfbf",
+          "#5f8a6a",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/661500803",
+          "what": "nearest building 10.6 x 5.8 m, 62 m2, 65 m from the venue"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+          "what": "Settlement architecture: unified style derived from British experience in Singapore/Malaya; Chinese terraced houses; Malay Kampong precinct; small harbour; Administrator House heritage-listed"
+        }
+      ],
+      "notes": "(game venue) always low. Sized from the nearest OSM footprint; finish typed from the Settlement style (pale render, corrugated roof, Singapore/Malaya influence)."
+    },
+    "flying-fish-cove-community-voting-game": {
+      "venueId": "flying-fish-cove-community-voting-game",
+      "city": "flying-fish-cove",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "a small hall of Settlement-style construction with an irregular plan (placeholder)",
+      "form": {
+        "footprint": "L",
+        "width_m": 16.9,
+        "depth_m": 14.5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cd",
+          "#7a9c6c",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/355324981",
+          "what": "building containing the venue, 16.9 x 14.5 m, 211 m2, L-ish plan"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+          "what": "Settlement architecture: unified style derived from British experience in Singapore/Malaya; Chinese terraced houses; Malay Kampong precinct; small harbour; Administrator House heritage-listed"
+        }
+      ],
+      "notes": "(game venue) always low. Real footprint but unknown use; louvred veranda hall typed from the tropical colonial style the heritage entry describes."
+    },
+    "flying-fish-cove-community-workshop": {
+      "venueId": "flying-fish-cove-community-workshop",
+      "city": "flying-fish-cove",
+      "name": "Community workshop (game venue)",
+      "archetype": "industrial",
+      "subject": "a small corrugated workshop shed (placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5.8,
+        "depth_m": 5.4,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b9bec2",
+          "#4f7f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#8a9094",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1120072267",
+          "what": "nearest building 5.8 x 5.4 m, 31 m2"
+        }
+      ],
+      "notes": "(game venue) always low. Tiny shed, aluminium-clad like Silver City houses."
+    },
+    "flying-fish-cove-market-game": {
+      "venueId": "flying-fish-cove-market-game",
+      "city": "flying-fish-cove",
+      "name": "Market game (game venue)",
+      "archetype": "shophouse",
+      "subject": "a long single-storey shop and store building in the Settlement (placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "shop terrace"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead2",
+          "#b2392d",
+          "#ffffff"
+        ],
+        "roofColour": "#7a8a6a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/355325002",
+          "what": "nearest building 29.2 x 14.9 m, 435 m2, 29 m from the venue"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "(game venue) always low. The Settlement has a small supermarket and several restaurants; this stands in as a shop row."
+    },
+    "flying-fish-cove-meal-stop": {
+      "venueId": "flying-fish-cove-meal-stop",
+      "city": "flying-fish-cove",
+      "name": "Rumah Tinggi",
+      "archetype": "restaurant",
+      "subject": "a large raised Malay-style house (\"tall house\") with a wide veranda, used as a dining house, among tropical trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 36.6,
+        "depth_m": 20.4,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c58a",
+          "#6b8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandas"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1,
+          "note": "raised on posts"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/392389458",
+          "what": "building containing the venue, 36.6 x 20.4 m, 579 m2, many-notched outline"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+          "what": "a heritage Malay Kampong precinct exists within the settlement"
+        }
+      ],
+      "notes": "The name Rumah Tinggi is Malay for \"tall house\". Nothing found describes the building itself; the stilted timber veranda house with hip roof is typed from Malay kampong vernacular. Low confidence."
+    },
+    "flying-fish-cove-osm-node-11529873274": {
+      "venueId": "flying-fish-cove-osm-node-11529873274",
+      "city": "flying-fish-cove",
+      "name": "Island Alchemy Cafe",
+      "archetype": "restaurant",
+      "subject": "a cafe occupying one end of a large single building near the cove (only the cafe portion modelled)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "cafe in larger building"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead2",
+          "#d07a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#6f8a7a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/316025872",
+          "what": "containing building is large: 80 x 40 m, 2,674 m2, so the cafe is only a part of it"
+        }
+      ],
+      "notes": "The OSM building containing the cafe is 80 x 40 m; the model shows only a cafe-sized portion so it does not become a block. Everything else is typed."
+    },
+    "flying-fish-cove-osm-node-4160092423": {
+      "venueId": "flying-fish-cove-osm-node-4160092423",
+      "city": "flying-fish-cove",
+      "name": "Phosphate Mining Company Abandoned Railway",
+      "archetype": "transport-station",
+      "subject": "a stretch of disused narrow-gauge phosphate railway, rusting rails and sleepers cut through rainforest, with a derelict trackside shed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "abandoned track"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#6b5a45",
+          "#7a4a38",
+          "#a0a39a"
+        ],
+        "roofColour": "#7a4a38",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "rail-tracks",
+          "count": 2,
+          "note": "rusted rails on weathered sleepers"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "derelict loading shelter"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4160092423",
+          "what": "node named Phosphate Mining Company Abandoned Railway on the south side of the island, no building"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "Only the name and position are real (a node, no footprint). Phosphate mining is the island history; track and shed are typed. Overgrown by rainforest."
+    },
+    "flying-fish-cove-osm-node-4551931090": {
+      "venueId": "flying-fish-cove-osm-node-4551931090",
+      "city": "flying-fish-cove",
+      "name": "Pink House Research Station",
+      "archetype": "office-low",
+      "subject": "a small pink-painted research station house on the west coast, low with a verandah, in forest edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 26.9,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d99aa0",
+          "#f1ead2",
+          "#ffffff"
+        ],
+        "roofColour": "#8a9094",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "rainwater tank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/352026094",
+          "what": "building containing the venue, 26.9 x 15 m, 362 m2, notched outline"
+        }
+      ],
+      "notes": "The pink colour is inferred only from the name \"Pink House\"; no description found. Size from OSM footprint."
+    },
+    "flying-fish-cove-osm-node-4551940189": {
+      "venueId": "flying-fish-cove-osm-node-4551940189",
+      "city": "flying-fish-cove",
+      "name": "LB4 look out",
+      "archetype": "monument",
+      "subject": "a roadside coastal lookout, a small timber viewing deck and railing on the limestone terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "lookout"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#8a6a4a",
+          "#b9bec2",
+          "#ffffff"
+        ],
+        "roofColour": "#8a6a4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4551940189",
+          "what": "node only: LB4 look out on the west coast"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "No description found; a node on the west coast. Plain timber deck typed. Distinct from Margaret Knoll (hilltop) and Martin Point (clifftop)."
+    },
+    "flying-fish-cove-osm-node-4551940589": {
+      "venueId": "flying-fish-cove-osm-node-4551940589",
+      "city": "flying-fish-cove",
+      "name": "Margaret Knoll",
+      "archetype": "monument",
+      "subject": "a hilltop lookout knoll with a small concrete and timber viewing platform above rainforest",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "hilltop lookout"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b9b5a6",
+          "#7a5a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#b9b5a6",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "stairs up the knoll"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4551940589",
+          "what": "node only: Margaret Knoll, tourism viewpoint on the south terrace"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "Only a name and a node. A raised platform with rail is typed. Low."
+    },
+    "flying-fish-cove-osm-node-4551940689": {
+      "venueId": "flying-fish-cove-osm-node-4551940689",
+      "city": "flying-fish-cove",
+      "name": "Tai Jin House",
+      "archetype": "manor",
+      "subject": "Tai Jin House, the former Administrator residence on the hill above Flying Fish Cove: two-storey colonial house with a 1965 portico and balcony, bricked ground-floor arches and a service wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 20.6,
+        "depth_m": 15.6,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#efe8d4",
+          "#9b6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "1965 portico with balcony above"
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "ground-floor arches now bricked in"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "six-inch naval gun in the nearby emplacement"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "remodelled 1965",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrator%27s_House,_Christmas_Island",
+          "what": "two-storey residence with semi-detached service and servants wing and developed garden; 1965 remodelling: timber arches bricked, lattice replaced by etched glass, portico with balcony added, shuttered upstairs windows glazed; hilltop siting; gun emplacement and bunkers nearby; upper floor now a museum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/444609897",
+          "what": "building=house, 20.6 x 15.6 m, 321 m2"
+        }
+      ],
+      "notes": "Form, storeys, and 1965 changes are sourced. Wall and roof colours are not described anywhere found; pale render and red/tin roof are typed. Recognisable by the hilltop position and added portico with balcony."
+    },
+    "flying-fish-cove-osm-node-6473626309": {
+      "venueId": "flying-fish-cove-osm-node-6473626309",
+      "city": "flying-fish-cove",
+      "name": "Martin Point Lookout",
+      "archetype": "monument",
+      "subject": "a clifftop lookout on the western coast: a small sheltered timber platform at the edge of a limestone cliff",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed",
+        "variant": "cliff lookout"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#9a7a54",
+          "#c9c2ac",
+          "#ffffff"
+        ],
+        "roofColour": "#6a6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "cliff-edge barrier"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/6473626309",
+          "what": "node only: Martin Point Lookout, tourism viewpoint"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "Only a name and a node. Modelled with a small shelter to differ from the other lookouts. Low."
+    },
+    "flying-fish-cove-osm-way-1550247964": {
+      "venueId": "flying-fish-cove-osm-way-1550247964",
+      "city": "flying-fish-cove",
+      "name": "Poon Saan Park",
+      "archetype": "park-landscape",
+      "subject": "a small village park in Poon Saan with lawn, a shelter and Chinese-style gate among tropical trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 88,
+        "depth_m": 82,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "village park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#dbd1b0",
+          "#e2b93b",
+          "#b3261e"
+        ],
+        "roofColour": "#b3261e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open Chinese-style shelter"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "small shrine statue"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1550247964",
+          "what": "leisure=park polygon 88 x 82 m, ~5,200 m2, five-sided"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Poon_Saan",
+          "what": "Poon Saan: Singapore-style units, Poon Saan Club, cinema; Buddhist shrines traditionally painted yellow"
+        }
+      ],
+      "notes": "The park polygon is real; the Goddess of Mercy temple lies inside it (separate venue). Contents typed from Poon Saan style: yellow-painted shrine colours (Wikipedia) and red trim."
+    },
+    "flying-fish-cove-osm-way-438454016": {
+      "venueId": "flying-fish-cove-osm-way-438454016",
+      "city": "flying-fish-cove",
+      "name": "Le Cla",
+      "archetype": "restaurant",
+      "subject": "a modest single-storey restaurant in the Settlement with a veranda, set under frangipani and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26.3,
+        "depth_m": 16.2,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece3c6",
+          "#c0603c",
+          "#ffffff"
+        ],
+        "roofColour": "#6f8a7a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/438454016",
+          "what": "amenity=restaurant, building 26.3 x 16.2 m, 426 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+          "what": "Settlement architecture: unified style derived from British experience in Singapore/Malaya; Chinese terraced houses; Malay Kampong precinct; small harbour; Administrator House heritage-listed"
+        }
+      ],
+      "notes": "Name, type and footprint are real; look is typed from the Settlement tropical style."
+    },
+    "flying-fish-cove-quiet-reflection": {
+      "venueId": "flying-fish-cove-quiet-reflection",
+      "city": "flying-fish-cove",
+      "name": "Goddess of Mercy Temple",
+      "archetype": "temple-asian",
+      "subject": "a small Chinese Guan Yin temple in Poon Saan, yellow-painted with a red-trimmed tiled roof and an incense burner in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8.4,
+        "depth_m": 6.2,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable",
+        "variant": "swept eaves"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e2b93b",
+          "#b3261e",
+          "#f1ead2"
+        ],
+        "roofColour": "#b3261e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "upturned eaves"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "red trim bands"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "1970s (estimated)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/661594160",
+          "what": "named Goddess of Mercy Temple, building=temple, Taoist place of worship, 8.4 x 6.2 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Poon_Saan",
+          "what": "Buddhist shrines on the island traditionally painted yellow; most Poon Saan shrines date from the 1970s"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "Size and function real. Yellow paint and the 1970s date are the common pattern for Poon Saan shrines, not stated for this one. Red roof trim assumed. Small shrine."
+    },
+    "flying-fish-cove-recreation": {
+      "venueId": "flying-fish-cove-recreation",
+      "city": "flying-fish-cove",
+      "name": "Drumsite Park",
+      "archetype": "park-landscape",
+      "subject": "a long hillside park strip in Drumsite on the hill above the Settlement: grassed terrace, shade trees and a shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 273,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "hillside strip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9b0",
+          "#6f8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a9094",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/747451092",
+          "what": "leisure=park polygon 273 x 50 m, ~12,000 m2, long diagonal strip"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+          "what": "Settlement architecture: unified style derived from British experience in Singapore/Malaya; Chinese terraced houses; Malay Kampong precinct; small harbour; Administrator House heritage-listed"
+        }
+      ],
+      "notes": "Drumsite is the hill village (with Poon Saan and Silver City). The park is a long strip; only its recognisable portion should be shown (largest side limited to 120 m). Contents typed."
+    },
+    "flying-fish-cove-transit": {
+      "venueId": "flying-fish-cove-transit",
+      "city": "flying-fish-cove",
+      "name": "Flying Fish Cove",
+      "archetype": "transport-station",
+      "subject": "the cove harbour: a small boat landing and jetty at the foot of steep rainforest cliffs, with a sandy beach and a harbour-office shed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 17,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "harbour"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece3c6",
+          "#3d7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a9094",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "jetty into the cove"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1888 settlement",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/608136174",
+          "what": "nearest building 16.9 x 14.4 m on the cove"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Flying_Fish_Cove",
+          "what": "small harbour serving tourists with yachts; Settlement founded 1888 (Wikidata)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Christmas_Island",
+          "what": "Flying Fish Cove (The Settlement) capital with Anglo-Celtic influence; Poon Saan Cantonese village with seven Buddhist and ten Taoist temples; Silver City 1970s aluminium-clad houses; tropical rainforest; limestone terraces; monsoon climate"
+        }
+      ],
+      "notes": "The cove is a small bay with a jetty, backed by limestone cliffs and rainforest. Phosphate cantilever and port facilities are on the cove but were not verified. Harbour office building typed. The game \"transit\" venue is the cove itself."
+    }
+  }
+}

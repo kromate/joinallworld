@@ -1,0 +1,650 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-phare-des-mamelles",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:PhareMamelles4.JPG",
+   "licence": "Public domain",
+   "author": "Ji-Elle",
+   "view": "front",
+   "file": "/tmp/places-evidence/dakar/mam1.jpg",
+   "used": "white cylindrical tower, gallery rail, glazed lantern with small dome, two-storey flat-roofed keeper block on the right with antennas"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Phare_Des_Mamelles_-_Lit_(5651553800).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Jeff Attaway",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/dakar/mam2.jpg",
+   "used": "low whitewashed outbuildings with red tile roofs and boundary wall stepping down the hill"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1019706733",
+   "used": "containing 11 m square, keeper block scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "tower",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#f4f4f0",
+    "profile": [
+     [
+      3.6,
+      0,
+      "#e9e9e4"
+     ],
+     [
+      3.6,
+      0.8
+     ],
+     [
+      3.0,
+      13.0
+     ],
+     [
+      4.1,
+      13.0,
+      "#e4e4dc"
+     ],
+     [
+      4.1,
+      13.6
+     ],
+     [
+      3.0,
+      13.7,
+      "#f4f4f0"
+     ],
+     [
+      3.0,
+      14.9
+     ],
+     [
+      3.8,
+      14.9,
+      "#c9c58a"
+     ],
+     [
+      3.8,
+      15.2
+     ],
+     [
+      2.4,
+      15.2,
+      "#c9c58a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern-glass",
+   "at": [
+    0,
+    0,
+    15.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#9fb8c4",
+    "profile": [
+     [
+      2.3,
+      0,
+      "#9fb8c4"
+     ],
+     [
+      2.3,
+      2.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "mullions",
+   "at": [
+    0,
+    0,
+    15.2
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.14,
+       0.14
+      ],
+      "height": 2.5,
+      "colour": "#e6e3d8",
+      "topColour": "#e6e3d8"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 2.35,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 16,
+    "lod1Step": 2,
+    "lod2Step": 16
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern-mid-ring",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    16.3
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e6e3d8",
+    "openTop": true,
+    "profile": [
+     [
+      2.45,
+      0
+     ],
+     [
+      2.45,
+      0.15
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern-cap",
+   "at": [
+    0,
+    0,
+    17.7
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e6e3d8",
+    "profile": [
+     [
+      2.7,
+      0
+     ],
+     [
+      2.7,
+      0.3
+     ],
+     [
+      2.2,
+      0.55
+     ],
+     [
+      1.7,
+      0.9
+     ],
+     [
+      1.1,
+      1.4
+     ],
+     [
+      0.6,
+      1.9
+     ],
+     [
+      0.35,
+      2.3
+     ],
+     [
+      0.5,
+      2.5,
+      "#d8d2b0"
+     ],
+     [
+      0.25,
+      2.9
+     ],
+     [
+      0,
+      3.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "weathervane",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    20.7
+   ],
+   "params": {
+    "rect": [
+     0.06,
+     0.06
+    ],
+    "height": 1.4,
+    "colour": "#3a3a3a",
+    "topColour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "gallery-balusters",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    13.6
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.07,
+       0.07
+      ],
+      "height": 1.0,
+      "colour": "#8e9093",
+      "topColour": "#8e9093"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.95,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 36
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "gallery-handrail",
+   "at": [
+    0,
+    0,
+    14.55
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7e8083",
+    "openTop": true,
+    "profile": [
+     [
+      3.97,
+      0
+     ],
+     [
+      3.97,
+      0.08
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "lantern-balusters",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    15.2
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.06,
+       0.06
+      ],
+      "height": 0.9,
+      "colour": "#8e9093",
+      "topColour": "#8e9093"
+     }
+    },
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 3.6,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 30
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern-handrail",
+   "at": [
+    0,
+    0,
+    16.1
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#7e8083",
+    "openTop": true,
+    "profile": [
+     [
+      3.62,
+      0
+     ],
+     [
+      3.62,
+      0.07
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keeper-house",
+   "footprint": {
+    "rect": [
+     8,
+     7
+    ]
+   },
+   "at": [
+    6.8,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f4f0",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdcd4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "keeper-stub",
+   "footprint": {
+    "rect": [
+     3,
+     4
+    ]
+   },
+   "at": [
+    12.5,
+    -1
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#eeeee8",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc8",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3.2,
+    -3.4,
+    8.4
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.9,
+    "thickness": 0.05,
+    "kind": "fence",
+    "colour": "#4a4c4e"
+   }
+  },
+  {
+   "type": "array",
+   "id": "masts",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    8.4
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.08,
+       0.08
+      ],
+      "height": 2.6,
+      "colour": "#8a8c8e",
+      "topColour": "#8a8c8e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     4.8,
+     -2.6,
+     0
+    ],
+    "end": [
+     10.4,
+     -1.8,
+     0
+    ],
+    "count": 4,
+    "vary": {
+     "height": [
+      1.5,
+      3.2
+     ]
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dish",
+   "lod": [
+    0
+   ],
+   "at": [
+    11.2,
+    -3.0,
+    5.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "segments": 14,
+    "colour": "#b8bcc0",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.9,
+      0.3
+     ],
+     [
+      1.0,
+      0.45
+     ],
+     [
+      0.9,
+      0.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    0.6,
+    -3.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.5,
+     0.3
+    ],
+    "height": 2.7,
+    "colour": "#5d6f78",
+    "topColour": "#5d6f78"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0.6,
+    -4.4,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "rise": 0.7,
+    "run": 0.45,
+    "count": 4,
+    "colour": "#ecece6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 46,
+    "height": 1.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#efefe8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6.5,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "spread": 5,
+    "colour": "#2f4f33",
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gravel-yard",
+   "at": [
+    2,
+    -9
+   ],
+   "params": {
+    "rect": [
+     34,
+     12
+    ],
+    "z0": 0.0,
+    "height": 0.05,
+    "colour": "#b9b6aa",
+    "topColour": "#bdb9ac"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lantern is a glazed octagon with mullions, rails, ogee cap and vane; antennas are simple thin masts, no bougainvillea or leaning casuarina, ground is a flat paving plane (no gravel option)."
+ }
+}

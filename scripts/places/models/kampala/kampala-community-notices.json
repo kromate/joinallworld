@@ -1,0 +1,141 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1562493225",
+   "used": "real outline of the Kampala Capital City Authority building (about 89 x 70 m, three levels)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "city-hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.5
+   },
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.6,
+    "bands": "#b9ad90",
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "clock-tower",
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 13.5,
+    "height": 9,
+    "colour": "#e2d9c1",
+    "topColour": "#8a8f94",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "storeys": 2
+   },
+   "at": [
+    -8,
+    -24
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "tower-cap",
+   "params": {
+    "colour": "#7d8f6a",
+    "sections": [
+     {
+      "z": 22.5,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     },
+     {
+      "z": 26.5,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   },
+   "at": [
+    -8,
+    -24
+   ]
+  },
+  {
+   "type": "flag",
+   "id": "flags",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3.5,
+    "colours": [
+     "#111111",
+     "#fcdc04",
+     "#d90000"
+    ]
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "rotDeg": 52,
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building was found (only street scenes nearby); wall style, tower and flags are plausible but unverified; tower position is a guess on the OSM block."
+ }
+}

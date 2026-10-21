@@ -1,0 +1,137 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1135552236",
+   "used": "footprint (name match; an irregular 52 x 21 m single-storey row that contains the salon unit)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/enugu.json#ifenzi-beauty-salon",
+   "used": "pink painted front, awning, blank sign board, corrugated shed roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "row",
+   "footprint": {
+    "osm": true
+   },
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c8",
+    "windows": "none",
+    "bands": "#8a8f8c",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f757a",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.6,
+    "drop": 0.5,
+    "height": 2.7,
+    "colours": [
+     "#e7b9c6",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -14,
+    2.2
+   ],
+   "params": {
+    "width": 5,
+    "height": 1,
+    "bottom": 0.1,
+    "colour": "#e7b9c6",
+    "frameColour": "#ffffff",
+    "posts": false
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -6,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 3,
+    "kind": "glass",
+    "colour": "#e7b9c6"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this unit; salon sits somewhere along the OSM row, position of the pink front is a guess"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "ifenzi-beauty-salon"
+}

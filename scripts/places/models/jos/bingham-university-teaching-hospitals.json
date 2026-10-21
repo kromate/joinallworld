@@ -1,0 +1,234 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#bingham-university-teaching-hospitals",
+   "used": "no OSM match or photo found: H-plan 75x35 m three-storey rendered hospital, teal ribbon bands, flat roof, glazed entrance with cross plate, ambulance bay, car park, elevated tank"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wardA",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#4a7f8c",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wardB",
+   "footprint": {
+    "rect": [
+     14,
+     32
+    ]
+   },
+   "at": [
+    30,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#4a7f8c",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "bands": "#ffffff",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a7f8c",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "material": "concrete",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f1ead8",
+    "roofColour": "#c9ced1",
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -9.2,
+    6.5
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    40,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.2,
+    "tankHeight": 3,
+    "legHeight": 6,
+    "colour": "#4a7f8c"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    18,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "bingham-university-teaching-hospitals",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence; H plan and colours from brief; no photo to compare"
+ }
+}

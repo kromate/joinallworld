@@ -1,0 +1,126 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mahe_International_Airport.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Gerard Larose, Seychelles Tourism Board",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/victoria/airport1.jpg",
+   "used": "terminal is a low pale-roofed complex on the landward side of the apron with a hangar and fuel tanks beside, hills behind; not a ground view so no side-by-side match"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/101122154",
+   "used": "terminal outline (zig-zag airside frontage, about 240 x 72 m, scaled to fit)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 28,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#3f6f8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b6c8aa",
+    "material": "metal-sheet",
+    "parapet": 0.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "style": "round",
+    "colour": "#f1eee4",
+    "cabColour": "#4a6f80"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 8,
+    "height": 4.2,
+    "columns": 8,
+    "colour": "#e8e6df",
+    "edgeColour": "#3f6f8a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -55,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-airport-victoria-airport",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "only an aerial photo exists, so no ground-level match; scaled OSM outline, roof colour from aerial, no apron/hangar"
+ }
+}

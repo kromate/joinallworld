@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "josephs-pot-owerri",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Joseph%27s_pot_owerri.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Anumodu favour Amarachi",
+   "view": "detail",
+   "file": "/tmp/places-evidence/owerri/jp.jpg",
+   "used": "food close-up only; background shows the setting: split-bamboo screen fence, honey-coloured timber slat chairs, a dark fabric canopy with string lights and banana plants. Building not visible, so verified stays text"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small single-storey cream eatery, shed roof, veranda, umbrellas, blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe0b8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#b5654a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    9.5,
+    4
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d4a8",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "id": "veranda",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 2.7,
+    "columns": 5,
+    "colour": "#5a3a2a",
+    "edgeColour": "#7a4a35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8.5,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#7a2f3c",
+    "frameColour": "#4a3a30"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.9,
+    "thickness": 0.12,
+    "kind": "wall",
+    "pillarEvery": 1.2,
+    "colour": "#c9b07a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9,
+    -9,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "height": 1.9,
+    "thickness": 0.12,
+    "kind": "wall",
+    "pillarEvery": 1.2,
+    "colour": "#c9b07a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "height": 1.9,
+    "thickness": 0.12,
+    "kind": "wall",
+    "pillarEvery": 1.2,
+    "colour": "#c9b07a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -3,
+    -6.5,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "radius": 1.5,
+    "colours": [
+     "#7a2f3c",
+     "#e0b04a",
+     "#efe0b8"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5,
+    "count": 2,
+    "spread": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the eatery exists; composed from the brief and the courtyard ambience (bamboo screen, string-lit canopy). Dimensions and layout are typical, not surveyed."
+ }
+}

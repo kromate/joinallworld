@@ -1,0 +1,1553 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "serekunda",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "serekunda",
+  "climate": "savanna",
+  "vernacular": "Greater Banjul (Kombos) is low-rise: one to two storey cement-block houses in cream, white, pale blue and ochre paint behind compound walls, shops and workshops with corrugated iron roofs, and a few three to five storey concrete blocks in Banjul and along Kairaba Avenue. Banjul island keeps Victorian and Edwardian colonial buildings with verandas and louvred shutters. Streets are sandy, with mango, neem, oil palm and silk-cotton trees giving shade.",
+  "wallColours": [
+   "#f1e8d2",
+   "#e9dcc0",
+   "#d8c29a",
+   "#b8d0d8",
+   "#a9c4a0",
+   "#c5c0b6",
+   "#f5f3ee"
+  ],
+  "roofColours": [
+   "#8a5a44",
+   "#7d8286",
+   "#a9a49b",
+   "#4f6f8a"
+  ],
+  "wallMaterials": [
+   "painted-render",
+   "render",
+   "concrete",
+   "whitewash",
+   "stucco",
+   "brick"
+  ],
+  "roofMaterials": [
+   "corrugated",
+   "metal-sheet",
+   "concrete",
+   "clay-tile",
+   "thatch"
+  ],
+  "ground": "sand",
+  "vegetation": [
+   "palm",
+   "broadleaf",
+   "acacia"
+  ],
+  "ornament": "Colonial verandas with timber posts and louvred shutters in Banjul; pierced concrete breeze-block screens and arched openings on mosques; Islamic green-and-white trim; painted shop-front signs and murals; thatched palm shelters at beach bars.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Gambia",
+    "what": "traditional mud/thatch building and British Victorian/Edwardian colonial buildings in central Banjul"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Serekunda",
+    "what": "Kombos conurbation, Sayerr Jobe Avenue, Pipeline Mosque, markets, Sahelian cloudless climate"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Banjul",
+    "what": "island grid layout, Arch 22, Albert Market, mosques, colonial garrison origins"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Bijilo_Forest_Park",
+    "what": "coastal vegetation: Borassus palms, scrub, dunes"
+   }
+  ]
+ },
+ "places": {
+  "serekunda-airport-serekunda-airport": {
+   "venueId": "serekunda-airport-serekunda-airport",
+   "city": "serekunda",
+   "name": "Banjul International Airport",
+   "archetype": "airport-terminal",
+   "subject": "The 1990s passenger terminal at Yundum seen from the forecourt: a modest two-storey block with a flat canopy and a small control tower behind",
+   "form": {
+    "footprint": "rect",
+    "width_m": 110,
+    "depth_m": 40,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#ece6d6",
+     "#5a7a8c",
+     "#bdb7a8"
+    ],
+    "roofColour": "#9a9892",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "flat-canopy",
+     "count": 1
+    },
+    {
+     "id": "control-tower",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "1997",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Banjul_International_Airport",
+     "what": "modern terminal opened 1997, airport rebuilt 1963; no physical description"
+    }
+   ],
+   "notes": "Only the 1997 opening date is sourced; the terminal is typed as a small regional terminal with a drop-off canopy. The airport is at Yundum, well outside Banjul. Smaller and plainer than Abuja or Yaounde terminals."
+  },
+  "serekunda-clinic": {
+   "venueId": "serekunda-clinic",
+   "city": "serekunda",
+   "name": "Edward Francis Small Teaching Hospital",
+   "archetype": "hospital",
+   "subject": "Gambia's largest hospital in Banjul: a cluster of low colonial-era wards and newer blocks",
+   "form": {
+    "footprint": "H",
+    "width_m": 120,
+    "depth_m": 70,
+    "storeys": 2,
+    "height_m": 10,
+    "roof": "hip",
+    "variant": "pavilion",
+    "wings": 3
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe9da",
+     "#8fb0a6",
+     "#b9b4a6"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "balcony-bands",
+     "count": 1,
+     "note": "veranda-type ward fronts"
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "colonial",
+   "era": "1853",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Edward_Francis_Small_Teaching_Hospital",
+     "what": "founded 1853, 540 beds, largest hospital in the country; no physical description"
+    }
+   ],
+   "notes": "Founded 1853 by the colonial government (formerly Royal Victoria Hospital); 540 beds. Architecture is not described in found sources, so a pavilion-ward layout with verandas is typed from the colonial hospital type."
+  },
+  "serekunda-community-notices": {
+   "venueId": "serekunda-community-notices",
+   "city": "serekunda",
+   "name": "National Assembly of The Gambia",
+   "archetype": "civic-palace",
+   "subject": "The Parliament Buildings in Banjul: a formal low administrative building in pale paint with a central entrance and flags",
+   "form": {
+    "footprint": "rect",
+    "width_m": 70,
+    "depth_m": 35,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stucco",
+    "colours": [
+     "#f0eadb",
+     "#c9b88f",
+     "#fbf9f3"
+    ],
+    "roofColour": "#8d8a84",
+    "roofMaterial": "concrete",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "portico",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "plaza"
+   },
+   "style": "colonial",
+   "era": "1990s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/National_Assembly_of_the_Gambia",
+     "what": "seat at the Parliament Buildings, Banjul; Assembly founded 1997 succeeding House of Representatives; no building description"
+    }
+   ],
+   "notes": "No source describes the building. Typed as a formal civic block with a central portico in the Banjul colonial/post-colonial manner. Assembly created 1997."
+  },
+  "serekunda-community-voting-game": {
+   "venueId": "serekunda-community-voting-game",
+   "city": "serekunda",
+   "name": "Banjul City Council",
+   "archetype": "civic-small",
+   "subject": "Banjul City Council hall: a two-storey whitewashed municipal building on the island grid",
+   "form": {
+    "footprint": "rect",
+    "width_m": 40,
+    "depth_m": 18,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "whitewash",
+    "colours": [
+     "#efe9d8",
+     "#a9b9a6",
+     "#fbf9f3"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 1,
+     "note": "upper veranda"
+    },
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "colonial",
+   "era": "early 20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Banjul",
+     "what": "Banjul island grid and colonial building tradition; council building not described"
+    }
+   ],
+   "notes": "Not described anywhere found. Typed as a small colonial-style municipal building from the Banjul style; treat as placeholder-quality."
+  },
+  "serekunda-community-workshop": {
+   "venueId": "serekunda-community-workshop",
+   "city": "serekunda",
+   "name": "Bibliotheque nationale de Gambie (National Library)",
+   "archetype": "campus-block",
+   "subject": "The National Library in Banjul: a low two-storey colonial-style public building",
+   "form": {
+    "footprint": "L",
+    "width_m": 50,
+    "depth_m": 25,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stucco",
+    "colours": [
+     "#ece6d4",
+     "#7fa0a6",
+     "#fbf9f3"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "arcade",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "colonial",
+   "era": "early 20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Gambia",
+     "what": "central Banjul colonial buildings follow Victorian and Edwardian styles"
+    }
+   ],
+   "notes": "No description of the library building was found. Typed from the central Banjul colonial pattern (arched veranda, pale render)."
+  },
+  "serekunda-market-game": {
+   "venueId": "serekunda-market-game",
+   "city": "serekunda",
+   "name": "Albert Market",
+   "archetype": "market-open",
+   "subject": "Albert Market on Liberation Avenue in Banjul: a dense street market of stalls and low sheds around a gated entrance",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 110,
+    "depth_m": 80,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "metal-cladding",
+    "colours": [
+     "#d9cdb0",
+     "#b04a3a",
+     "#4f6f8a"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "stalls",
+     "count": 60
+    },
+    {
+     "id": "sheds",
+     "count": 10
+    },
+    {
+     "id": "umbrellas",
+     "count": 20
+    },
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "entrance on Liberation Avenue"
+    },
+    {
+     "id": "awning",
+     "count": 10
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "mid-19th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Albert_Market",
+     "what": "street market on Liberation Avenue, Banjul, built mid-19th century, formerly Royal Albert Market"
+    }
+   ],
+   "notes": "Sourced: mid-19th-century street market (Royal Albert Market) on Liberation Avenue, Banjul. The look (stalls, corrugated sheds, umbrellas, colourful awnings, cloth and craft goods) is typed. Differs from Serekunda market which is not in this set."
+  },
+  "serekunda-meal-stop": {
+   "venueId": "serekunda-meal-stop",
+   "city": "serekunda",
+   "name": "Tao",
+   "archetype": "restaurant",
+   "subject": "Tao: a small tourist-area restaurant, a one-storey rendered building with a shaded terrace",
+   "form": {
+    "footprint": "rect",
+    "width_m": 16,
+    "depth_m": 10,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "timber",
+    "colours": [
+     "#e9d9b4",
+     "#8a5a36",
+     "#f4efe3"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "(game venue) placeholder from OSM; nothing findable. Typed small tourist-coast eatery with a terrace."
+  },
+  "serekunda-osm-node-12025767906": {
+   "venueId": "serekunda-osm-node-12025767906",
+   "city": "serekunda",
+   "name": "Youna Clinic",
+   "archetype": "hospital",
+   "subject": "Youna Clinic: a small private clinic, one-storey rendered building with a signboard",
+   "form": {
+    "footprint": "L",
+    "width_m": 22,
+    "depth_m": 12,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#f1ece0",
+     "#7fb0b0",
+     "#d7d2c4"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "OSM node only; nothing found about the building. Typed as a small private clinic in the coastal suburbs (Brufut area)."
+  },
+  "serekunda-osm-node-6300945109": {
+   "venueId": "serekunda-osm-node-6300945109",
+   "city": "serekunda",
+   "name": "Campbeach Bar & Restaurant",
+   "archetype": "restaurant",
+   "subject": "Campbeach: a beachside bar and restaurant with a palm-thatched open shelter and timber deck",
+   "form": {
+    "footprint": "rect",
+    "width_m": 18,
+    "depth_m": 12,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "pyramidal"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "whitewash",
+    "colours": [
+     "#c9a672",
+     "#8a5a36",
+     "#efe6d0"
+    ],
+    "roofColour": "#b79b5a",
+    "roofMaterial": "thatch",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "terrace",
+     "count": 1,
+     "note": "timber deck"
+    },
+    {
+     "id": "sheds",
+     "count": 2,
+     "note": "open thatched shelters"
+    },
+    {
+     "id": "umbrellas",
+     "count": 6
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "OSM node on the south coast beach; the thatched shelter is typed from the common beach-bar type in coastal Gambia (see city style), not from a photo of this place."
+  },
+  "serekunda-osm-node-9080250964": {
+   "venueId": "serekunda-osm-node-9080250964",
+   "city": "serekunda",
+   "name": "Fabulous Restaurant",
+   "archetype": "restaurant",
+   "subject": "Fabulous Restaurant: a compound eatery with a rendered single-storey building and covered terrace",
+   "form": {
+    "footprint": "rect",
+    "width_m": 20,
+    "depth_m": 10,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "timber",
+    "colours": [
+     "#efd9a8",
+     "#b4654a",
+     "#f4efe3"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "OSM node only (Sanyang/south coast area); nothing findable. Typed from the city style. Painted a warmer yellow than Tao so the two differ."
+  },
+  "serekunda-osm-node-9158275429": {
+   "venueId": "serekunda-osm-node-9158275429",
+   "city": "serekunda",
+   "name": "Mama Mini Market",
+   "archetype": "shophouse",
+   "subject": "Mama Mini Market: a tiny roadside shop, one room under a corrugated roof with a painted front and awning",
+   "form": {
+    "footprint": "rect",
+    "width_m": 8,
+    "depth_m": 5,
+    "storeys": 1,
+    "height_m": 3.5,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "metal-cladding",
+    "colours": [
+     "#a9c4a0",
+     "#c8503c",
+     "#f4efe3"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "OSM node for a mini-market in a village; typical Gambian roadside shop typed from the city style, with a blank signboard."
+  },
+  "serekunda-osm-way-110043106": {
+   "venueId": "serekunda-osm-way-110043106",
+   "city": "serekunda",
+   "name": "Abuko Nature Reserve",
+   "archetype": "park-landscape",
+   "subject": "Abuko Nature Reserve: a fenced gallery-forest reserve entered through a gate and ticket hut, with forest paths and a stream",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 110,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "render",
+    "colours": [
+     "#8a6a44",
+     "#d8c29a",
+     "#f1e8d2"
+    ],
+    "roofColour": "#7a6a4a",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "entrance gate and ticket hut"
+    },
+    {
+     "id": "pavilion",
+     "count": 1,
+     "note": "visitor centre / hide"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "laterite",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "1916",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Abuko_Nature_Reserve",
+     "what": "107 ha; savanna and gallery forest with oil palm, mahogany, iroko; Lamin Stream; animal enclosures"
+    }
+   ],
+   "notes": "Sourced: 107 hectares, gallery forest and savanna with oil palm, mahogany, iroko and a stream; animal orphanage enclosures. The entrance structures are typed. Dense canopy is the recognisable element, vs. the palm-and-dune Bijilo."
+  },
+  "serekunda-osm-way-166695422": {
+   "venueId": "serekunda-osm-way-166695422",
+   "city": "serekunda",
+   "name": "Bijilo Forest Park",
+   "archetype": "park-landscape",
+   "subject": "Bijilo Forest Park (Monkey Park): a fenced coastal woodland with a timber gate, benches and a trail through palms and dunes",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 110,
+    "depth_m": 100,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "render",
+    "colours": [
+     "#9a7a4c",
+     "#d8c29a",
+     "#f1e8d2"
+    ],
+    "roofColour": "#8a7a50",
+    "roofMaterial": "thatch",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "timber entrance and ticket hut"
+    },
+    {
+     "id": "pavilion",
+     "count": 1,
+     "note": "viewing point"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "1990s",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Bijilo_Forest_Park",
+     "what": "51.3 ha fenced coastal woodland; Borassus palms, scrub, dunes; 4.5 km trail; viewing point, benches, signs; waterhole"
+    }
+   ],
+   "notes": "Sourced: 51.3 ha, closed-canopy woodland with many Borassus (fan) palms, coastal scrub, dunes, 4.5 km nature trail, benches and viewing point. Entrance buildings typed. Palm-heavy and sandy where Abuko is dense forest."
+  },
+  "serekunda-osm-way-249687879": {
+   "venueId": "serekunda-osm-way-249687879",
+   "city": "serekunda",
+   "name": "Serrekunda West",
+   "archetype": "park-landscape",
+   "subject": "Serrekunda West: an open suburban lookout / ground in the Kombos sprawl, sandy open space with a few trees and low boundary walls",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 90,
+    "depth_m": 70,
+    "storeys": 0,
+    "height_m": 0,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#cdbf9f",
+     "#b8d0d8",
+     "#f1e8d2"
+    ],
+    "roofColour": "#8a5a44",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [],
+   "notes": "OSM way named only \"Serrekunda West\" with kind viewing; nature unknown (neighbourhood or open ground). Typed as open sandy ground with a boundary wall and a roadside kiosk."
+  },
+  "serekunda-osm-way-255647179": {
+   "venueId": "serekunda-osm-way-255647179",
+   "city": "serekunda",
+   "name": "Eglise Sainte-Marie (St Mary's Church), Banjul",
+   "archetype": "church-classical",
+   "subject": "St Mary's Church in Banjul: a colonial-era church with a pitched roof, arched windows and a square bell tower",
+   "form": {
+    "footprint": "rect",
+    "width_m": 32,
+    "depth_m": 14,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stucco",
+    "colours": [
+     "#efe9da",
+     "#b8a67c",
+     "#fbf9f3"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "bell-tower",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "garden"
+   },
+   "style": "colonial",
+   "era": "early 20th century",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Banjul",
+     "what": "Anglican and Catholic churches named in Banjul; the Catholic cathedral is slightly larger than the Anglican cathedral"
+    }
+   ],
+   "notes": "OSM label in French is \"Eglise Sainte-Marie\" at the Banjul grid (likely the Anglican St Mary's Cathedral/Church). No description found; typed as a modest colonial church. Smaller and plainer than the Catholic cathedral."
+  },
+  "serekunda-osm-way-255647292": {
+   "venueId": "serekunda-osm-way-255647292",
+   "city": "serekunda",
+   "name": "King George V Stadium",
+   "archetype": "stadium",
+   "subject": "King George V Memorial Stadium in Banjul: a small football ground with one covered stand and a perimeter wall",
+   "form": {
+    "footprint": "oval",
+    "width_m": 130,
+    "depth_m": 95,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "flat",
+    "variant": "small-ground"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#d9d4c6",
+     "#2f6b4f",
+     "#f1ece0"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "stand-roof",
+     "count": 1,
+     "note": "single covered stand"
+    },
+    {
+     "id": "floodlights",
+     "count": 4
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "scoreboard",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "colonial",
+   "era": "1950s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Banjul football ground; nothing found describing it. Much smaller than Independence Stadium (Bakau, 1984, Chinese-built); typed as a one-stand ground."
+  },
+  "serekunda-osm-way-255649417": {
+   "venueId": "serekunda-osm-way-255649417",
+   "city": "serekunda",
+   "name": "Cathedral of Our Lady of the Assumption",
+   "archetype": "church-classical",
+   "subject": "The Catholic cathedral on Daniel Goddard Street in Banjul: a large early-20th-century colonial church with a pitched nave and bell tower",
+   "form": {
+    "footprint": "cross",
+    "width_m": 45,
+    "depth_m": 22,
+    "storeys": 2,
+    "height_m": 16,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "stucco",
+    "colours": [
+     "#eee3c6",
+     "#a8714c",
+     "#fbf9f3"
+    ],
+    "roofColour": "#8a5a44",
+    "roofMaterial": "corrugated",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "bell-tower",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "stained-glass",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "colonial",
+   "era": "1913-1916",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Our_Lady_of_the_Assumption_Cathedral,_Banjul",
+     "what": "built 1913-1916; became cathedral 1957; West Davidson Carrol Street at Daniel Goddard Street; slightly larger than the Anglican cathedral"
+    }
+   ],
+   "notes": "Sourced: built 1913-1916, cathedral since 1957, slightly larger than the Anglican cathedral in Banjul. The style, towers, colours and materials are NOT described in what was found; they are typed as a colonial-classical church."
+  },
+  "serekunda-osm-way-255895814": {
+   "venueId": "serekunda-osm-way-255895814",
+   "city": "serekunda",
+   "name": "International Trypanotolerance Centre (ITC)",
+   "archetype": "campus-block",
+   "subject": "ITC research station at Kerr Serign: a scattering of low laboratory and office blocks in a green compound",
+   "form": {
+    "footprint": "U",
+    "width_m": 60,
+    "depth_m": 40,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe9da",
+     "#8fb0a6",
+     "#b9b4a6"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "louvre",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "water-tank",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "1980s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Livestock research centre (trypanotolerant cattle); no building description found. Typed from a low research-compound type."
+  },
+  "serekunda-osm-way-263258266": {
+   "venueId": "serekunda-osm-way-263258266",
+   "city": "serekunda",
+   "name": "Fort Bullen",
+   "archetype": "heritage-fort",
+   "subject": "Fort Bullen at Barra: a small British coastal battery of low stone-and-brick walls with muzzle-loading cannon and a lookout over the river mouth",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 50,
+    "depth_m": 40,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "none",
+    "variant": "river-battery"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "laterite",
+    "colours": [
+     "#a8895f",
+     "#7a5a3a",
+     "#d8c29a"
+    ],
+    "roofColour": "#8a7a50",
+    "windows": "none",
+    "windowRatio": 0.03
+   },
+   "features": [
+    {
+     "id": "ramparts",
+     "count": 1
+    },
+    {
+     "id": "cannon",
+     "count": 3,
+     "note": "old muzzle-loading guns on the battery"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "palm",
+    "forecourt": "none"
+   },
+   "style": "colonial",
+   "era": "1826",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Banjul",
+     "what": "Banjul/Barra at the river mouth; Fort Bullen not described in the page fetched"
+    }
+   ],
+   "notes": "Builds on general knowledge that Fort Bullen at Barra was built by the British around 1826 to control the Gambia River mouth, with surviving guns; the Wikipedia pages for the fort could not be fetched, so details are weakly supported."
+  },
+  "serekunda-osm-way-370186566": {
+   "venueId": "serekunda-osm-way-370186566",
+   "city": "serekunda",
+   "name": "MRC Unit The Gambia at LSHTM",
+   "archetype": "hospital",
+   "subject": "The MRC Unit at Fajara: a research hospital and laboratory complex of low blocks with covered walkways in a landscaped compound",
+   "form": {
+    "footprint": "H",
+    "width_m": 90,
+    "depth_m": 60,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "flat",
+    "variant": "research-campus",
+    "wings": 3
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#f1ece0",
+     "#4f6f8a",
+     "#cdd6d8"
+    ],
+    "roofColour": "#a9a49b",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "solar-panels",
+     "count": 1
+    },
+    {
+     "id": "flat-canopy",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "1947",
+   "confidence": "low",
+   "sources": [],
+   "notes": "No building description was found. Typed from the research-campus type (low labs, covered walkways, palm landscaping), less colonial than Edward Francis Small hospital."
+  },
+  "serekunda-osm-way-374017688": {
+   "venueId": "serekunda-osm-way-374017688",
+   "city": "serekunda",
+   "name": "American International University West Africa",
+   "archetype": "campus-block",
+   "subject": "AIUWA campus in Kanifing: a few two- and three-storey rendered teaching blocks around a yard",
+   "form": {
+    "footprint": "U",
+    "width_m": 60,
+    "depth_m": 40,
+    "storeys": 3,
+    "height_m": 11,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "glass-curtain",
+    "colours": [
+     "#f0ecdf",
+     "#2f6b8a",
+     "#cfcac0"
+    ],
+    "roofColour": "#a9a49b",
+    "roofMaterial": "concrete",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2010s",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Nothing found on the buildings; typed from a private-university campus of rendered concrete blocks."
+  },
+  "serekunda-osm-way-816348601": {
+   "venueId": "serekunda-osm-way-816348601",
+   "city": "serekunda",
+   "name": "Independence Stadium (Bakau)",
+   "archetype": "stadium",
+   "subject": "Independence Stadium in Bakau: a Chinese-built 1984 concrete bowl with a covered main stand and floodlight masts",
+   "form": {
+    "footprint": "oval",
+    "width_m": 190,
+    "depth_m": 150,
+    "storeys": 3,
+    "height_m": 22,
+    "roof": "flat",
+    "variant": "bowl"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "painted-render",
+    "colours": [
+     "#d7d2c4",
+     "#c8503c",
+     "#f1ece0"
+    ],
+    "roofColour": "#b0ada5",
+    "roofMaterial": "concrete",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "stand-roof",
+     "count": 1,
+     "note": "main stand canopy"
+    },
+    {
+     "id": "floodlights",
+     "count": 4
+    },
+    {
+     "id": "scoreboard",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 4
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "palm",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1984",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Independence_Stadium_(Bakau)",
+     "what": "opened 1984, built by China; capacity listed 20,000; record 45,000; pitch 105 x 68 m; renovated 2011 and 2022-"
+    }
+   ],
+   "notes": "Sourced: opened 1984, built by the People's Republic of China, capacity about 20,000, 105 x 68 m pitch, renovated 2011 and 2022. Roof/stand layout is typed from the Chinese-built stadium type. Larger and more complete than King George V."
+  },
+  "serekunda-quiet-reflection": {
+   "venueId": "serekunda-quiet-reflection",
+   "city": "serekunda",
+   "name": "Pipeline Mosque",
+   "archetype": "mosque-domed",
+   "subject": "Pipeline Mosque on Kairaba Avenue: a modern concrete mosque with a green-trimmed dome and a tall 33 m minaret",
+   "form": {
+    "footprint": "rect",
+    "width_m": 40,
+    "depth_m": 30,
+    "storeys": 2,
+    "height_m": 14,
+    "roof": "dome",
+    "variant": "single-minaret"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#f1ece0",
+     "#2f7a54",
+     "#cfcac0"
+    ],
+    "roofColour": "#2f7a54",
+    "roofMaterial": "concrete",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "minaret",
+     "count": 1,
+     "note": "33 m minaret"
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "palm",
+    "forecourt": "road"
+   },
+   "style": "arab-islamic",
+   "era": "1990",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Serekunda",
+     "what": "Pipeline Mosque on Kairaba Avenue holds about 3,000 and has a 33 m minaret; opened 1990"
+    }
+   ],
+   "notes": "Sourced: capacity about 3,000, 33 m minaret, opened 1990, on Kairaba Avenue. Single central dome and green-and-white trim are typed from the common Gambian modern mosque pattern."
+  },
+  "serekunda-recreation": {
+   "venueId": "serekunda-recreation",
+   "city": "serekunda",
+   "name": "Methodist Mission",
+   "archetype": "church-modern",
+   "subject": "A Methodist mission church and hall in the south-coast hinterland: a plain rendered church with a gabled roof and small tower",
+   "form": {
+    "footprint": "rect",
+    "width_m": 22,
+    "depth_m": 10,
+    "storeys": 1,
+    "height_m": 7,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "concrete",
+    "colours": [
+     "#efe9da",
+     "#4f6f8a",
+     "#cfcac0"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "bell-tower",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "20th century",
+   "confidence": "low",
+   "sources": [],
+   "notes": "OSM point labelled \"Methodist Mission\" with game kind park. Nothing found; typed as a small mission church compound."
+  },
+  "serekunda-transit": {
+   "venueId": "serekunda-transit",
+   "city": "serekunda",
+   "name": "Garage Brufut",
+   "archetype": "transport-station",
+   "subject": "Brufut garage (motor park): a sandy lot where minibuses and shared taxis load, with a few corrugated shelters",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 70,
+    "depth_m": 50,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "concrete",
+    "colours": [
+     "#a9a49b",
+     "#b04a3a",
+     "#4f6f8a"
+    ],
+    "roofColour": "#7d8286",
+    "roofMaterial": "corrugated",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "sheds",
+     "count": 3
+    },
+    {
+     "id": "bus-bays",
+     "count": 6
+    },
+    {
+     "id": "kiosk",
+     "count": 3
+    },
+    {
+     "id": "signage-board",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "sand",
+    "trees": "broadleaf",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [],
+   "notes": "Local transport park; nothing found. Typed as open sand lot with minibus bays and roofed kiosks."
+  }
+ }
+}

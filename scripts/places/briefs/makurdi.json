@@ -1,0 +1,971 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "makurdi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "makurdi",
+    "climate": "savanna",
+    "vernacular": "Middle Belt river town on the Benue with a north bank and a south bank joined by the 1932 rail bridge and the 1978 dual-carriage road bridge. Ordinary buildings are 1-3 storey cement-block structures in cream, ochre or pale-green painted render under long-span coloured corrugated metal roofs, often with plain concrete verandas and louvred windows; walls are weathered by the heavy rains and red laterite dust. Traditional Tiv compounds (round mud-render huts under thatch) survive at the fringes. Large government and institutional compounds from the 1960s-80s are modernist concrete blocks. Colours here are typical Middle Belt Nigerian palettes, not individually sourced.",
+    "wallColours": [
+      "#eadfc4",
+      "#d9c08f",
+      "#c58f64",
+      "#cfd2cd",
+      "#a8b59a",
+      "#f4f1e8"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#5b6670",
+      "#2f6b4f",
+      "#a8643e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "laterite",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Plain verandas with concrete column rows and louvred windows; breeze-block screens and painted perimeter walls with gate piers; murals and political/commercial signboards on market walls; Tiv a'nger black-and-white stripe pattern occasionally appears in painted bands (cloth pattern only, no building evidence).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Makurdi",
+        "what": "Benue River town, north bank/south bank split, 1932 rail bridge and 1978 dual carriage bridge, hot humid savanna climate, rainfall ~1,217 mm, institutions named"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tiv_people",
+        "what": "Tiv people occupy Makurdi; no architecture detail available there, so traditional mud/thatch compound note is general knowledge"
+      }
+    ]
+  },
+  "places": {
+    "aper-aku-stadium": {
+      "venueId": "aper-aku-stadium",
+      "city": "makurdi",
+      "name": "Aper Aku Stadium",
+      "archetype": "stadium",
+      "subject": "Aper Aku Stadium, Makurdi: an 8,000-seat football stadium and home of Lobi Stars, an open oval bowl with a roofed main stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcac0",
+          "#2f6b4f",
+          "#e8e4da"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand on one side"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Aper_Aku_Stadium",
+          "what": "8,000 capacity, home of Lobi Stars, begun under Second Republic governor Aper Aku, renovated to host the 2007 FA Cup final, natural-grass pitch"
+        }
+      ],
+      "notes": "Capacity and history are sourced; the stand shape, roof and colours are inferred (Nigerian state stadium typology: single covered main stand, open terraces elsewhere, perimeter wall). Construction began in the Second Republic (1979-83)."
+    },
+    "benue-ministry-of-information-culture-tourism": {
+      "venueId": "benue-ministry-of-information-culture-tourism",
+      "city": "makurdi",
+      "name": "Benue State Ministry of Information, Culture & Tourism",
+      "archetype": "civic-palace",
+      "subject": "a state-government ministry block in Makurdi: a three-storey rendered office building with a veranda front, flagpole and gated forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc4",
+          "#a8b59a",
+          "#f4f1e8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Appearance not documented online. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Archetype follows contract (ministries -> civic-palace) but the building is likely an ordinary secretariat-type block, so keep it modest."
+    },
+    "benue-state-university": {
+      "venueId": "benue-state-university",
+      "city": "makurdi",
+      "name": "Benue State University",
+      "archetype": "campus-block",
+      "subject": "the Benue State University urban campus in Makurdi: a cluster of 2-4 storey cream-rendered lecture blocks around a quadrangle, with the large central library complex",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece3cf",
+          "#b4654a",
+          "#f4f1e8"
+        ],
+        "roofColour": "#7d8a92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Benue_State_University",
+          "what": "urban campus; Central Library Complex commissioned August 2016 (45,000 books, seats 3,000, TETFund-funded); football, basketball, tennis facilities"
+        }
+      ],
+      "notes": "Only the library facts are sourced (2016 complex seating 3,000). The facade styling is a typed guess for a Nigerian state university campus."
+    },
+    "bsu-teaching-hospital": {
+      "venueId": "bsu-teaching-hospital",
+      "city": "makurdi",
+      "name": "Benue State University Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "BSUTH, Makurdi: a multi-wing state teaching hospital with a painted-render main block, entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#4d8a6e",
+          "#d7d4c8"
+        ],
+        "roofColour": "#8f9aa1",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Benue_State_University",
+          "what": "teaching hospital is an affiliate of Benue State University; entrance photo exists, no description"
+        }
+      ],
+      "notes": "Affiliation sourced only; layout and colours are guessed. Make this look newer and more glazed than the Federal Medical Centre (older, 1967 General Hospital origin)."
+    },
+    "dajo-pottery": {
+      "venueId": "dajo-pottery",
+      "city": "makurdi",
+      "name": "Dajo Pottery",
+      "archetype": "shophouse",
+      "subject": "Dajo Pottery, Makurdi: a small craft workshop and showroom, a single-storey rendered building with a veranda, clay pots stacked outside under a thatched or sheet shade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#c9996a",
+          "#8b5a3c",
+          "#efe3cc"
+        ],
+        "roofColour": "#a8643e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No findable description of Dajo Pottery. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Earth-toned (terracotta/ochre) to read as a pottery."
+    },
+    "federal-medical-centre-makurdi": {
+      "venueId": "federal-medical-centre-makurdi",
+      "city": "makurdi",
+      "name": "Federal Medical Centre Makurdi",
+      "archetype": "hospital",
+      "subject": "Federal Medical Centre, Makurdi (Atiku Abubakar Road): an older tertiary-hospital complex of long 2-3 storey blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#8fae8f",
+          "#c8c3b3"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Makurdi",
+          "what": "established 1967 as General Hospital Makurdi, No 1 Atiku Abubakar Road, Mission Ward; emergency department; special amenities ward and molecular lab 2024"
+        }
+      ],
+      "notes": "History and address sourced; the physical form is a typed guess. Older and lower than BSUTH: hip roof, covered walkways."
+    },
+    "first-baptist-church-makurdi": {
+      "venueId": "first-baptist-church-makurdi",
+      "city": "makurdi",
+      "name": "First Baptist Church Makurdi",
+      "archetype": "church-modern",
+      "subject": "First Baptist Church, Makurdi: a broad gabled worship hall in plain painted render with a small front tower and cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#7a5a46",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Baptist mission church in the Mission Ward district, likely a mid-20th-century hall; keep plain."
+    },
+    "golden-plate-restaurant": {
+      "venueId": "golden-plate-restaurant",
+      "city": "makurdi",
+      "name": "Golden Plate Restaurant",
+      "archetype": "restaurant",
+      "subject": "Golden Plate Restaurant, Makurdi: a single-storey eatery with an open veranda and painted signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe0b8",
+          "#b7442e",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b4a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No findable description. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type."
+    },
+    "makurdi-central-mosque": {
+      "venueId": "makurdi-central-mosque",
+      "city": "makurdi",
+      "name": "Makurdi Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Makurdi Central Mosque: a modern Nigerian Friday mosque with a central green or gold dome, corner minarets and a rendered prayer hall in white and green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#2f7a55",
+          "#d6c58a"
+        ],
+        "roofColour": "#2f7a55",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No source describes it. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Typical Nigerian central-mosque template (one main dome, two minarets, arched windows, white and green); verify before showing as-is."
+    },
+    "north-bank-market": {
+      "venueId": "north-bank-market",
+      "city": "makurdi",
+      "name": "North bank market",
+      "archetype": "market-open",
+      "subject": "North bank market, Makurdi: a ground-level open market of timber and sheet stalls beside the road on the north side of the Benue, with a few lock-up shops",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a0795a",
+          "#6a737b",
+          "#d9c08f"
+        ],
+        "roofColour": "#9a5b3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "the city is divided into north and south banks; the market lies on the north bank (location from coordinates)"
+        }
+      ],
+      "notes": "No description found. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Smaller and more informal than Wurukum market, rusty corrugated sheds and tarpaulin umbrellas."
+    },
+    "our-lady-of-perpetual-help-cathedral": {
+      "venueId": "our-lady-of-perpetual-help-cathedral",
+      "city": "makurdi",
+      "name": "Our Lady of Perpetual Help Cathedral",
+      "archetype": "church-modern",
+      "subject": "Our Lady of Perpetual Help Cathedral, Makurdi: the seat of the Catholic Diocese of Makurdi, shown as a large cruciform rendered church with a front bell tower and a steep metal roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 48,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#eee4cf",
+          "#9a5b3c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Makurdi",
+          "what": "identifies Our Lady of Perpetual Help Cathedral as the cathedral of the diocese (Apostolic Prefecture 1934, diocese 1960); no architectural description"
+        }
+      ],
+      "notes": "Only identity and diocese dates are sourced; form is a guess. Cathedral should read larger and more imposing than First Baptist, with cruciform plan and a bell tower."
+    },
+    "university-of-agriculture-makurdi": {
+      "venueId": "university-of-agriculture-makurdi",
+      "city": "makurdi",
+      "name": "University of Agriculture, Makurdi",
+      "archetype": "campus-block",
+      "subject": "the University of Agriculture, Makurdi (Joseph Sarwuan Tarka University): a spacious urban campus of low cream-rendered faculty blocks with verandas, spread across lawns and mango trees",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#4f6b4a",
+          "#f4f1e8"
+        ],
+        "roofColour": "#4f6b4a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Joseph_Sarwuan_Tarka_University",
+          "what": "located in Makurdi at 7.73N 8.54E, urban campus; no building detail"
+        }
+      ],
+      "notes": "Location and campus type sourced only. A 1980s federal agricultural university; blocks assumed low with arcade verandas. Lower and greener than Benue State University."
+    },
+    "wurukum-market": {
+      "venueId": "wurukum-market",
+      "city": "makurdi",
+      "name": "Wurukum market",
+      "archetype": "market-open",
+      "subject": "Wurukum market, Makurdi: a large busy market of rows of lock-up shops, corrugated roofs and umbrella stalls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b99a",
+          "#8a3b2e",
+          "#e6dccb"
+        ],
+        "roofColour": "#9a5b3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "Makurdi markets distribute yams and cassava from the region (Modern Market named); Wurukum is not described"
+        }
+      ],
+      "notes": "No description of Wurukum market found. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Denser and larger than the north bank market, with concrete lock-up rows."
+    },
+    "zion-microfinance-bank": {
+      "venueId": "zion-microfinance-bank",
+      "city": "makurdi",
+      "name": "Zion Microfinance Bank Limited",
+      "archetype": "office-low",
+      "subject": "Zion Microfinance Bank, Makurdi: a small two-storey bank branch in painted render with a glass entrance and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#3a5a78",
+          "#d6d0c0"
+        ],
+        "roofColour": "#8f9aa1",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this building's appearance; brief is a typed guess from the Makurdi city style and the place type. Neutral brand colours; no logos."
+    }
+  }
+}

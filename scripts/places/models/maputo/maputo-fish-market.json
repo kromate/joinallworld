@@ -1,0 +1,197 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-fish-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/561303547",
+   "used": "name-matched building outline 64 x 27 m, rotated 43 degrees, an irregular hexagon (hall footprint)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: seafront fish market, open stalls and covered restaurant sheds, thatch-tint roofs, white and sea-blue walls on sand"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; hall roof form, stall layout and shed positions are plausible, not observed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "louvre",
+    "windowRatio": 0.12,
+    "bands": "#3f8aa6",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8744f",
+    "material": "thatch",
+    "pitch": 32,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -38,
+    18,
+    0
+   ],
+   "rotDeg": 43,
+   "params": {
+    "length": 18,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#a8744f",
+    "roof_material": "thatch"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    40,
+    -6,
+    0
+   ],
+   "rotDeg": 43,
+   "params": {
+    "length": 16,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#a8744f",
+    "roof_material": "thatch"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "rotDeg": 43,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#3f8aa6",
+     "#d9b98a",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    14,
+    44,
+    0
+   ],
+   "rotDeg": 43,
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#3f8aa6",
+     "#f4f1ea",
+     "#c76f4f"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    28,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#3f8aa6",
+     "#f4f1ea"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "rotDeg": 43,
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#3f8aa6",
+     "#f4f1ea"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     44
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ }
+}

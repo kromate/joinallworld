@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "zaget-mini-market-birnin-kebbi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: corner two-storey mini market 22x12 m, roller shutter, painted fascia, awning, roof terrace; OSM match only 'nearest' (26 m2, 16 m away) so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c19a",
+    "trimColour": "#f2efe6",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "left": "punched",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     22.4,
+     0.3
+    ],
+    "z0": 3.7,
+    "height": 1.0,
+    "colour": "#3f8f9a",
+    "trimColour": "#f2efe6"
+   },
+   "at": [
+    0,
+    -6.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     8,
+     0.25
+    ],
+    "z0": 5.0,
+    "height": 1.3,
+    "colour": "#3f8f9a",
+    "trimColour": "#f2efe6"
+   },
+   "at": [
+    -5,
+    -6.2
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    3,
+    -6.2,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "height": 3.3,
+    "colours": [
+     "#3f8f9a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -7,
+    -6.05,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 3.2,
+    "kind": "shutter",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    -3,
+    -6.05,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 3.2,
+    "kind": "shutter",
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "at": [
+    5,
+    0,
+    7
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "tables": 2,
+    "pergola": true,
+    "glass": false,
+    "bar": false
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -8,
+    3,
+    7
+   ],
+   "params": {
+    "radius": 1.0,
+    "height": 1.5,
+    "legs": 1.0,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.8,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; massing from brief only, colours from brief palette."
+ }
+}

@@ -1,0 +1,190 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "gtbank-minna",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/minna.json#gtbank-minna",
+   "used": "two-storey bank, glass and cream panels, canopy, ATM bay, security gate; no OSM outline and the only nearby photos are roundabout views, not this branch"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4b5560",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "bands": "#eceae4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-wing",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    -14.5,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#eceae4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    3,
+    -10,
+    4.2
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 0,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    -14.5,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14.5,
+    -7.2,
+    6.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#d8dbdc",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.2,
+    "thickness": 0.3,
+    "pillarEvery": 5,
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence for this branch; a typical two-storey bank for Minna sized from the brief"
+ }
+}

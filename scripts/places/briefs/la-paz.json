@@ -1,0 +1,1665 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "la-paz",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "la-paz",
+    "climate": "highland",
+    "vernacular": "Canyon city and its Altiplano neighbour El Alto at 3,600-4,100 m: unrendered red-brick and concrete-frame houses climbing the hillsides, flat roofs with exposed rebar, corrugated sheet roofs, a core of Spanish colonial and republican stucco buildings around Plaza Murillo, glass towers in the centre and brightly painted Neo-Andean cholets in El Alto, with eucalyptus, molle and little other greenery against the snow-capped Illimani.",
+    "wallColours": [
+      "#b4623f",
+      "#c98a5e",
+      "#d8c7a3",
+      "#e7dcc5",
+      "#8e8f8a",
+      "#6d7f9a",
+      "#c45a8a"
+    ],
+    "roofColours": [
+      "#a65a3c",
+      "#7d8286",
+      "#4f6f8a",
+      "#8a3b2e"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "brick",
+      "concrete",
+      "painted-render",
+      "stucco",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "none"
+    ],
+    "ornament": "Andean mestizo baroque carved stone facades (San Francisco), Tiwanaku-inspired geometric relief on modern civic buildings, cholet facades with mirrored glass, tiered balconies and bright mauve, pink and turquoise paint, large painted murals on university and school walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/La_Paz",
+        "what": "bowl-shaped canyon, makeshift brick hill houses, central colonial buildings around Plaza Murillo, highland climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Basilica_of_San_Francisco,_La_Paz",
+        "what": "Andean Baroque church on Plaza San Francisco"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Cathedral_Basilica_of_Our_Lady_of_Peace,_La_Paz",
+        "what": "neoclassical cathedral with Baroque elements on Plaza Murillo"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Valle_de_la_Luna_(Bolivia)",
+        "what": "beige, light-brown and reddish eroded clay and sandstone spires"
+      }
+    ]
+  },
+  "places": {
+    "la-paz-airport-la-paz-airport": {
+      "venueId": "la-paz-airport-la-paz-airport",
+      "city": "la-paz",
+      "name": "El Alto International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The El Alto terminal, the world's highest international airport at 4,062 m: a long two-storey terminal with a modern glazed departures hall and air bridges to the apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "high-altitude-terminal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d9dde0",
+          "#3f5f7a",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8e8f8a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1960s terminal, renovated 1974 and 2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Alto_International_Airport",
+          "what": "modernised late 1960s, 1974 and 2006 renovation, air bridges, old terminal had an iconic Tiwanaku-style facade, 4,000 m runway at 4,062 m"
+        }
+      ],
+      "notes": "Barren Altiplano with no trees. The old Tiwanaku-style facade is the recognisable detail but is not shown in the current frontage; sizes are estimated, no OSM building."
+    },
+    "la-paz-clinic": {
+      "venueId": "la-paz-clinic",
+      "city": "la-paz",
+      "name": "Hospital Municipal Viacha",
+      "archetype": "hospital",
+      "subject": "A small municipal hospital in Viacha: a two-storey brick-and-render block with a red-cross board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "provincial-hospital",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e7dcc5",
+          "#b4623f",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "regional brick/render building context"
+        }
+      ],
+      "notes": "The OSM building under the pin is only 13 x 8 m; the hospital is larger. Appearance typed from city style."
+    },
+    "la-paz-community-notices": {
+      "venueId": "la-paz-community-notices",
+      "city": "la-paz",
+      "name": "Estación Terrena Amachuma",
+      "archetype": "industrial",
+      "subject": "The Amachuma satellite earth station: a small control building with a large parabolic dish on the Altiplano plain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "satellite-ground-station",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece6d8",
+          "#8e8f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "large satellite dish and tower"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "Altiplano setting only"
+        }
+      ],
+      "notes": "Satellite ground station; no description found. The dish (mast feature) is what makes it recognisable; the OSM building is 18 x 6.5 m."
+    },
+    "la-paz-community-voting-game": {
+      "venueId": "la-paz-community-voting-game",
+      "city": "la-paz",
+      "name": "Museo de Arte Antonio Paredes Candia",
+      "archetype": "museum-theatre",
+      "subject": "A narrow four-storey museum tower in El Alto topped by a pyramidal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "pyramidal",
+        "variant": "narrow-art-museum",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8c7a3",
+          "#6d7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_de_Arte_Antonio_Paredes_Candia",
+          "what": "opened 29 May 2002 in El Alto, 300+ paintings and sculptures"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM outline 9.8 x 8.1 m, 4 levels, pyramidal roof"
+        }
+      ],
+      "notes": "Levels and roof shape come from OSM; the facade colours are typed. Tiny footprint on a tall, slim body in a dense El Alto street."
+    },
+    "la-paz-community-workshop": {
+      "venueId": "la-paz-community-workshop",
+      "city": "la-paz",
+      "name": "Instituto Tecnologico Bolivia Mar",
+      "archetype": "campus-block",
+      "subject": "A three-storey college block built 2009 with a flat roof and ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 34,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "technical-college",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e1d5b8",
+          "#b4623f",
+          "#ffffff"
+        ],
+        "roofColour": "#8e8f8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Instituto_Tecnol%C3%B3gico_Bolivia_Mar",
+          "what": "OSM start date 2009, 3 levels, 36 x 34 m building (college)"
+        }
+      ],
+      "notes": "Footprint and levels are measured from OSM; finishes typed from city style."
+    },
+    "la-paz-market-game": {
+      "venueId": "la-paz-market-game",
+      "city": "la-paz",
+      "name": "Mercado Lanza",
+      "archetype": "market-hall",
+      "subject": "The 2010 Mercado Lanza: a large multi-level covered market in downtown La Paz with 1,000+ stalls and an elevated footbridge entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 81,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "multi-level-market",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c8c0",
+          "#b5382a",
+          "#8e8f8a"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2008-2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Mercado_Lanza",
+          "what": "four sales levels, 1,050 stalls, built 2008-2010, four entrances incl. a footbridge from Pasaje Perez Velasco"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "117 x 81 m footprint, 6 levels tagged"
+        }
+      ],
+      "notes": "OSM says 6 levels (sales floors plus services); Wikipedia lists four sales levels. Exterior colours are not documented."
+    },
+    "la-paz-meal-stop": {
+      "venueId": "la-paz-meal-stop",
+      "city": "la-paz",
+      "name": "Il Portico",
+      "archetype": "restaurant",
+      "subject": "An upmarket Italian restaurant in the southern zone: a two-storey stucco house with an arched portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "restaurant-villa",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e7dcc5",
+          "#a65a3c",
+          "#ffffff"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Nothing findable; typed as a Zona Sur villa-restaurant. Name suggests a portico."
+    },
+    "la-paz-osm-node-12194828333": {
+      "venueId": "la-paz-osm-node-12194828333",
+      "city": "la-paz",
+      "name": "El Ricolin",
+      "archetype": "restaurant",
+      "subject": "A roadside comedor on the Altiplano road: a single-storey brick shed with a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "roadside-comedor",
+        "wings": 0
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b4623f",
+          "#e7dcc5",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "unrendered brick house context"
+        }
+      ],
+      "notes": "Nothing findable. Typed from city vernacular."
+    },
+    "la-paz-osm-node-2145192906": {
+      "venueId": "la-paz-osm-node-2145192906",
+      "city": "la-paz",
+      "name": "Batalla de Ingavi",
+      "archetype": "monument",
+      "subject": "A battlefield memorial on the plain at Ingavi: a tall column on a stepped base with flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 18,
+        "roof": "none",
+        "variant": "battle-column",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9c0ae",
+          "#8e8f8a",
+          "#e7dcc5"
+        ],
+        "roofColour": "#8e8f8a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "neoclassical",
+      "era": "1841 battle, memorial 19th-20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "regional context only"
+        }
+      ],
+      "notes": "Battle site of 1841 (Ingavi); the memorial shape is not documented. Typed as a monument column in an open field."
+    },
+    "la-paz-osm-node-2145197042": {
+      "venueId": "la-paz-osm-node-2145197042",
+      "city": "la-paz",
+      "name": "Combate de Mecapaca",
+      "archetype": "monument",
+      "subject": "A small commemorative monument at Mecapaca: a stone pillar on a stepped plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "combat-marker",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9c0ae",
+          "#8e8f8a",
+          "#e7dcc5"
+        ],
+        "roofColour": "#8e8f8a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th-20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "regional context only"
+        }
+      ],
+      "notes": "Nothing findable beyond the name. Typed as a small plinth marker."
+    },
+    "la-paz-osm-node-5273668603": {
+      "venueId": "la-paz-osm-node-5273668603",
+      "city": "la-paz",
+      "name": "Universidad Mayor de San Andres",
+      "archetype": "campus-block",
+      "subject": "The Monoblock Central of UMSA: a tall slab-like concrete university block on Av. Villazon, with a long mural-covered face",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 25,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "variant": "monoblock-slab",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b6ac",
+          "#6d7f9a",
+          "#e7dcc5"
+        ],
+        "roofColour": "#8e8f8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "large mural on the end wall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1940s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "dense central La Paz context"
+        }
+      ],
+      "notes": "OSM only gives a 167 x 136 m campus outline; the Monoblock height and mural are from general knowledge and not verified here."
+    },
+    "la-paz-osm-node-5354864623": {
+      "venueId": "la-paz-osm-node-5354864623",
+      "city": "la-paz",
+      "name": "Valle de las Agujas",
+      "archetype": "park-landscape",
+      "subject": "A valley of eroded clay and sandstone needles and ridges outside La Paz",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 15,
+        "roof": "none",
+        "variant": "eroded-spire-field",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8a97e",
+          "#a8704c",
+          "#d8c7a3"
+        ],
+        "roofColour": "#c8a97e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 12,
+          "note": "eroded spires up to ~15 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Valle_de_la_Luna_(Bolivia)",
+          "what": "comparable eroded spire formations, beige to light brown with red sections"
+        }
+      ],
+      "notes": "No page for this valley found; treated as a sibling of Moon Valley formations. Landform, not a building."
+    },
+    "la-paz-osm-node-5376703910": {
+      "venueId": "la-paz-osm-node-5376703910",
+      "city": "la-paz",
+      "name": "Trucha frita",
+      "archetype": "restaurant",
+      "subject": "A roadside row of trout-frying comedores at Pongo: low sheds with tin roofs along the highway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 132,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "roadside-food-row",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8c7a3",
+          "#6d7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "highland roadside context"
+        }
+      ],
+      "notes": "OSM names a 132 x 20 m \"restaurants, comederos and shops at Pongo\" strip. Typed as repeated small stalls with tin roofs."
+    },
+    "la-paz-osm-relation-11730900": {
+      "venueId": "la-paz-osm-relation-11730900",
+      "city": "la-paz",
+      "name": "Moon Valley",
+      "archetype": "park-landscape",
+      "subject": "Valle de la Luna: a 15 ha maze of eroded beige, brown and reddish clay spires and gullies with a visitor path and entrance gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 25,
+        "roof": "none",
+        "variant": "eroded-clay-spires",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d3b88e",
+          "#a8704c",
+          "#7a5a8a"
+        ],
+        "roofColour": "#d3b88e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 25,
+          "note": "clay spires, a few as tall as 25 m"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "ticket booth"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Valle_de_la_Luna_(Bolivia)",
+          "what": "15 ha protected area ~10 km south of La Paz, clay and sandstone eroded to craters, spires and caves; sides beige/light-brown, some almost red with dark violet bands"
+        }
+      ],
+      "notes": "The outline is 781 x 474 m; the model should show a recognisable portion. Landform, not a building."
+    },
+    "la-paz-osm-way-105592750": {
+      "venueId": "la-paz-osm-way-105592750",
+      "city": "la-paz",
+      "name": "Estadio Rafael Mendoza Castellon",
+      "archetype": "stadium",
+      "subject": "The Mallasilla home of The Strongest: a roofless 14,000-seat stadium with a black-and-gold main facade and four floodlight towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 135,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none",
+        "variant": "roofless-bowl",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6b422",
+          "#1a1a1a",
+          "#ffffff"
+        ],
+        "roofColour": "#8e8f8a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "four towers, 50 lamps each"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "anthropomorphic tiger kicking a ball at a tower base"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s, renovated 2017",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Rafael_Mendoza_Castell%C3%B3n",
+          "what": "14,000 seats, main facade painted gold and black for 2017, four light towers with 50 lamps each, tiger statue, grass pitch 114 x 75 m at 3,502 m"
+        }
+      ],
+      "notes": "Gold and black is the key recognisability cue (club identity). A roof over the stands was planned but is not built. Never include the club shield."
+    },
+    "la-paz-osm-way-105617730": {
+      "venueId": "la-paz-osm-way-105617730",
+      "city": "la-paz",
+      "name": "Universidad Catolica Boliviana San Pablo",
+      "archetype": "campus-block",
+      "subject": "The UCB San Pablo campus in Obrajes: low brick-and-render academic blocks around courtyards",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "private-campus",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b4623f",
+          "#e7dcc5",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "brick-heavy city context"
+        }
+      ],
+      "notes": "OSM campus outline 136 x 114 m; no building description found. Typed."
+    },
+    "la-paz-osm-way-114037395": {
+      "venueId": "la-paz-osm-way-114037395",
+      "city": "la-paz",
+      "name": "Estadio Olimpico Los Andes Cosmos 79",
+      "archetype": "stadium",
+      "subject": "A small El Alto stadium with an Olympic athletics track, synthetic pitch and two low stands (Preferencia and General) but unfinished curved ends",
+      "form": {
+        "footprint": "oval",
+        "width_m": 311,
+        "depth_m": 217,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "two-stand-athletics",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c4c1b6",
+          "#4f6f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8e8f8a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Los_Andes_Cosmos_79",
+          "what": "4,000 capacity, stands Preferencia and General, north and south curves not built, synthetic 105 x 68 m, athletics track, 4,080 m"
+        }
+      ],
+      "notes": "Open ends where the curves were never built; much smaller than the Municipal stadium in the same city."
+    },
+    "la-paz-osm-way-1313884277": {
+      "venueId": "la-paz-osm-way-1313884277",
+      "city": "la-paz",
+      "name": "Estadio Municipal de El Alto",
+      "archetype": "stadium",
+      "subject": "Villa Ingenio, \"El Titan\": a 25,000-seat concrete bowl with a curved metal roof over the stands, opened 2017",
+      "form": {
+        "footprint": "oval",
+        "width_m": 178,
+        "depth_m": 135,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved",
+        "variant": "bowl-curved-roof",
+        "wings": 0
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab0",
+          "#c8d0d6",
+          "#ffffff"
+        ],
+        "roofColour": "#c8ccd0",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "curved metal roof over the stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013-2017",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Municipal_de_El_Alto",
+          "what": "25,000 spectators, reinforced-concrete stands, grass pitch 110 x 68 m, begun 2013, opened 16 July 2017, 4,088 m, roof structure built 2015"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "tags: roof:shape curved, roof:material metal, 2 levels, 178 x 135 m"
+        }
+      ],
+      "notes": "Metal curved roof and two levels measured in OSM. The most modern stadium of the three in the metro area."
+    },
+    "la-paz-osm-way-1331129474": {
+      "venueId": "la-paz-osm-way-1331129474",
+      "city": "la-paz",
+      "name": "Basilica Maria Auxiliadora",
+      "archetype": "church-gothic",
+      "subject": "The Art Deco Salesian basilica on Av. 16 de Julio: a long stone nave with three arched doors and a tower stepping up to a bell tower and dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "gable",
+        "variant": "art-deco-gothic",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d8cdb5",
+          "#a89f88",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "three diminishing stages with dome"
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1946-",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Bas%C3%ADlica_de_Mar%C3%ADa_Auxiliadora_(La_Paz)",
+          "what": "Art Deco within modernism, straight lines recalling a Gothic church, three wooden doors with angular arches, tower in three diminishing stages to bell tower and dome, stained glass, begun 1946 by engineer Vittorio Aloisio"
+        }
+      ],
+      "notes": "Exterior colour is not documented; a pale stone/render is assumed. Footprint 43.8 x 14 m from OSM. Hemmed in between street buildings."
+    },
+    "la-paz-osm-way-44166578": {
+      "venueId": "la-paz-osm-way-44166578",
+      "city": "la-paz",
+      "name": "Jardin Botanico",
+      "archetype": "park-landscape",
+      "subject": "The La Paz botanical garden in Miraflores: gravel walks between planted beds and eucalyptus under a small greenhouse and a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 155,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "botanical-garden",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7dcc5",
+          "#6d7f9a",
+          "#b4623f"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "city context"
+        }
+      ],
+      "notes": "Wikidata item exists but no description found; typed as an urban garden park."
+    },
+    "la-paz-osm-way-526897787": {
+      "venueId": "la-paz-osm-way-526897787",
+      "city": "la-paz",
+      "name": "Basilica de San Francisco",
+      "archetype": "church-classical",
+      "subject": "The Andean Baroque (mestizo) basilica on Plaza San Francisco: a carved stone facade, a single bell tower and a tiled dome, fronted by wide steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 31,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable",
+        "variant": "andean-baroque",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "stucco",
+        "colours": [
+          "#b88f66",
+          "#d9c9a8",
+          "#8a5a3c"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "single tower begun 1885"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "closed 1753"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "large plaza steps"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved stone portal"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1743-1790",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilica_of_San_Francisco,_La_Paz",
+          "what": "Andean Baroque, carved facade finished 1790, single tower begun 1885, dome roofed 1753, on Plaza San Francisco"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "64 x 31 m, 3 levels, building:architecture baroque, start_date 1758"
+        }
+      ],
+      "notes": "The facade stone is a warm rosy-brown carved portal flanked by plain walls; colour assumed from public photos, not in the cited text. One tower only (asymmetric)."
+    },
+    "la-paz-osm-way-872831587": {
+      "venueId": "la-paz-osm-way-872831587",
+      "city": "la-paz",
+      "name": "Facultad de Medicina Veterinaria y Zootecnia",
+      "archetype": "campus-block",
+      "subject": "A veterinary faculty campus on the Altiplano: a spread of long single-storey brick teaching sheds and barns",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "agricultural-campus",
+        "wings": 3
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b4623f",
+          "#e7dcc5",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Paz",
+          "what": "brick context"
+        }
+      ],
+      "notes": "OSM outline 584 x 249 m campus; no description. Typed as agricultural teaching blocks."
+    },
+    "la-paz-quiet-reflection": {
+      "venueId": "la-paz-quiet-reflection",
+      "city": "la-paz",
+      "name": "Catedral Metropolitana",
+      "archetype": "church-classical",
+      "subject": "The Cathedral Basilica of Our Lady of Peace on Plaza Murillo: a large neoclassical stone cathedral with a columned portico, a central dome, two lateral towers and a stepped terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 41,
+        "storeys": 5,
+        "height_m": 34,
+        "roof": "dome",
+        "variant": "neoclassical-cathedral",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d8d2c4",
+          "#b8ae9a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8e8f8a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "lateral towers opened 1989"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1835-1925",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_Basilica_of_Our_Lady_of_Peace,_La_Paz",
+          "what": "neoclassical with Baroque elements, five naves, two lateral towers opened 1989, begun 1835 and inaugurated 1925, on Plaza Murillo"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "architect Antonio Camponovo, 75.6 x 41.2 m, 5 levels, neoclassical"
+        }
+      ],
+      "notes": "Dome and portico detail from general knowledge, not the cited page. Sits on a hillside with the plaza slope in front."
+    },
+    "la-paz-recreation": {
+      "venueId": "la-paz-recreation",
+      "city": "la-paz",
+      "name": "Parque Laguna de Cota Cota",
+      "archetype": "park-landscape",
+      "subject": "Cota Cota's artificial lagoon park: a pond with a central fountain and artificial waterfalls, paddle boats and a ring of eucalyptus, molle and poplar trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "lagoon-park",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#c4c1b6",
+          "#8a6a48",
+          "#e7dcc5"
+        ],
+        "roofColour": "#8a6a48",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "in the lagoon"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat landing"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Laguna_de_Cota_Cota",
+          "what": "artificial lagoon with fed waterfalls, fountain, two-seater boats, molle, eucalyptus, acacia, retama, poplar and elm, bike circuits and play areas, ~12,300 m2"
+        }
+      ],
+      "notes": "Park is 300 x 100 m in OSM; the lagoon is the central object. Pavilion and landing structures are typed."
+    },
+    "la-paz-transit": {
+      "venueId": "la-paz-transit",
+      "city": "la-paz",
+      "name": "Terminal de Buses La Paz",
+      "archetype": "transport-station",
+      "subject": "The 1917 Guaqui railway station turned bus terminal on Plaza Antofagasta: a long cream neoclassical front with an iron-framed shed behind and bus bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 206,
+        "depth_m": 47,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "variant": "railway-station-bus-terminal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6d8b5",
+          "#8e8f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8286",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "iron roof frame brought from Pittsburgh"
+        },
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1913-1917",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Terminal_de_Buses_de_La_Paz",
+          "what": "built 1913-1917 as the Guaqui-La Paz railway station, metal framework from Pittsburgh, design credited to Eiffel, built by Catalan builder Miguel Nogue, bus terminal since 1980, Plaza Antofagasta"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "206 x 47 m, building:transportation, architect Miguel Nogue, 1917"
+        }
+      ],
+      "notes": "Facade colour is assumed; the iron structure and the 206 m length are documented. Platform area behind the facade has bus bays, not trains."
+    }
+  }
+}

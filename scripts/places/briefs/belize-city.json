@@ -1,0 +1,1708 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "belize-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "belize-city",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-lying Caribbean port city on the Haulover Creek and Belize River: raised timber colonial houses with verandahs and louvres, painted white and pastel, under galvanised-zinc roofs, mixed with poured-concrete commercial blocks and a few early brick buildings built from ship-ballast bricks; Swing Bridge and creek-side stilt houses, palms and almond trees, flat swampy ground.",
+    "wallColours": [
+      "#f2efe6",
+      "#a8cfd8",
+      "#f5d57a",
+      "#e6a08a",
+      "#9bc8a2",
+      "#b7653b"
+    ],
+    "roofColours": [
+      "#8c9296",
+      "#a34a35",
+      "#3f6b4f",
+      "#5a6e86"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "concrete",
+      "brick",
+      "whitewash",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber fretwork and louvred shutters; verandahs and balcony galleries on stilted houses; Georgian arched windows and plastered brick on cathedrals; brightly painted shopfronts in yellow, coral and sky blue; mahogany interiors.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Belize_City",
+        "what": "Fort George area as most colonial district; St John's Cathedral orange ballast bricks 1812-1820; south-side stilt housing; Swing Bridge"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Holy_Redeemer_Cathedral",
+        "what": "brick from ship ballast, plastered in the 1920s, mahogany interior, hurricane-damaged towers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/St._John%27s_Cathedral_(Belize_City)",
+        "what": "orange brick, built 1812-1820, mahogany and sapodilla interior"
+      }
+    ]
+  },
+  "places": {
+    "belize-city-airport-belize-city-airport": {
+      "venueId": "belize-city-airport-belize-city-airport",
+      "city": "belize-city",
+      "name": "Philip S. W. Goldson International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Goldson terminal in Ladyville: a long two-storey pale terminal with a flat roof and an entrance canopy, a control tower rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 355,
+        "depth_m": 46,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee8d8",
+          "#2f6f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Philip_S._W._Goldson_International_Airport",
+          "what": "457 acres, 2,950 m runway, new terminal ground broken 1988"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/17268586",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1422858",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM terminal building (2 levels) is 355 x 46 m; shown as its central 120 m. Wikipedia: 457 acre site, single 2,950 m runway, a new terminal building started in 1988. No source describes the facade; colours are typed."
+    },
+    "belize-city-clinic": {
+      "venueId": "belize-city-clinic",
+      "city": "belize-city",
+      "name": "Karl Heusner Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "Karl Heusner Memorial Hospital, Belize City's public referral hospital on Princess Margaret Drive: a large three-storey concrete complex with long wings and covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9d9",
+          "#2f7f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance and walkways"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Heusner_Memorial_Hospital",
+          "what": "opened 1995, 134 beds, location, cost"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/295699808",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6371904",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: opened 18 September 1995, 134 beds, cost about BZ$45M, replaced the 1820 hospital, on Princess Margaret Drive. OSM building 210 x 87 m; shown clipped to 120 m. Storeys and colours are typed."
+    },
+    "belize-city-community-notices": {
+      "venueId": "belize-city-community-notices",
+      "city": "belize-city",
+      "name": "National Meteorological Service of Belize",
+      "archetype": "office-low",
+      "subject": "The National Meteorological Service building at the Goldson airport: a small two-storey office with a flat roof, antenna mast and a weather-instrument yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee0",
+          "#3f7f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "radar/antenna mast"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1061466212",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "Nearest OSM building (2 levels, 36 x 29 m) at the airport; the service is located at the Goldson airport. No description found."
+    },
+    "belize-city-community-voting-game": {
+      "venueId": "belize-city-community-voting-game",
+      "city": "belize-city",
+      "name": "Belize City Hall",
+      "archetype": "civic-small",
+      "subject": "Belize City Hall on Albert Street: a two-storey commercial-style hall with a flat concrete roof and white walls, and a pennant flag out front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e6",
+          "#7a9f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#f2f2ef",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/295592929",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q136804288",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM: townhall, building=commercial, flat roof, white concrete roof, 49.6 x 26 m. Wikidata Q136804288: town hall, inception year 1900. Walls, storeys and balcony inferred from the colonial-era Albert Street frontage; no photo description found."
+    },
+    "belize-city-community-workshop": {
+      "venueId": "belize-city-community-workshop",
+      "city": "belize-city",
+      "name": "Central America Health Sciences University",
+      "archetype": "campus-block",
+      "subject": "CAHSU, Belize Medical College main campus: a modern three-storey academic block with a glassed entrance and a pale render facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ebdc",
+          "#2b6a8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/963695037",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30266445",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM university polygon 370 x 260 m, Wikidata Q30266445 (founded 1996); only the main academic block is shown. No description found."
+    },
+    "belize-city-market-game": {
+      "venueId": "belize-city-market-game",
+      "city": "belize-city",
+      "name": "Craft Market",
+      "archetype": "market-hall",
+      "subject": "The Belize Tourist Village craft market: brightly painted two-storey shopfronts around a courtyard of souvenir stalls at the cruise terminal",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f5d57a",
+          "#e6677a",
+          "#4fa8c0"
+        ],
+        "roofColour": "#b4472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14955483",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "The OSM match is the Fort Street Tourist Village polygon (467 x 439 m, tourism=attraction), a cruise-passenger shopping village. The bright Caribbean pastel look is typed from the name and city style; no description fetched."
+    },
+    "belize-city-meal-stop": {
+      "venueId": "belize-city-meal-stop",
+      "city": "belize-city",
+      "name": "ABC Restaurant",
+      "archetype": "restaurant",
+      "subject": "A highway-side restaurant on the northern road, single storey with a hipped metal roof and a shaded terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1dfae",
+          "#d9573b",
+          "#ffffff"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/663299680",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "Nearest OSM building 23 x 16 m on the Northern Highway; name only."
+    },
+    "belize-city-osm-node-12596381963": {
+      "venueId": "belize-city-osm-node-12596381963",
+      "city": "belize-city",
+      "name": "Di Plaze",
+      "archetype": "restaurant",
+      "subject": "A small bar and eatery with a timber deck and a corrugated roof on stilts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8fb2c4",
+          "#f5d57a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/906673673",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building 11 x 8.5 m; name only."
+    },
+    "belize-city-osm-node-7047979386": {
+      "venueId": "belize-city-osm-node-7047979386",
+      "city": "belize-city",
+      "name": "Tomb of Baron Bliss",
+      "archetype": "monument",
+      "subject": "The Baron Bliss tomb at Fort George: a plain granite tomb on a raised terrace at the sea edge, with the white lighthouse standing beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8f8f8c",
+          "#c9c7bf",
+          "#ffffff"
+        ],
+        "roofColour": "#8f8f8c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low sea wall"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1926-1930s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baron_Bliss",
+          "what": "granite tomb near the sea, nearby lighthouse, Bliss Park"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Fort George area: Baron Bliss grave and lighthouse, Memorial Park, Museum of Belize"
+        }
+      ],
+      "notes": "Wikipedia (Baron Bliss): a granite tomb near the sea, with a lighthouse built nearby from his estate funds; Bliss Park is the site of the old Spanish fort. Exact tomb dimensions were not found, so the 8 x 5 m terrace and 3 m height are estimates. The OSM match is the Tourist Village polygon, not the tomb."
+    },
+    "belize-city-osm-relation-8504547": {
+      "venueId": "belize-city-osm-relation-8504547",
+      "city": "belize-city",
+      "name": "Kukumba Beach",
+      "archetype": "park-landscape",
+      "subject": "Kukumba Beach: a broad pale sand beach with a few thatched palapas, palms and a short wooden jetty on calm brown-green Caribbean water",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#efe3c2",
+          "#4fa8b0",
+          "#ffffff"
+        ],
+        "roofColour": "#c2a265",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "thatched palapas"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        }
+      ],
+      "notes": "OSM tourism=attraction relation 289 x 76 m; no description found. Generic Belizean beach."
+    },
+    "belize-city-osm-way-1015283263": {
+      "venueId": "belize-city-osm-way-1015283263",
+      "city": "belize-city",
+      "name": "Albert Hoy Stadium",
+      "archetype": "stadium",
+      "subject": "A small football ground with one covered stand on a side, a perimeter fence and light poles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 82,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d0c0",
+          "#2f6fb0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1015283263",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=stadium 99 x 82 m; no description found. Small sized ground typed."
+    },
+    "belize-city-osm-way-1119389631": {
+      "venueId": "belize-city-osm-way-1119389631",
+      "city": "belize-city",
+      "name": "Belize Healthcare Partners Limited",
+      "archetype": "hospital",
+      "subject": "A modern single-storey private hospital with a glazed entrance and a covered patient drop-off, clean white walls",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 48,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f6f4ee",
+          "#2f7f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#a0a4a6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/207186493",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM building (hospital, 1 level) 55 x 48 m; look typed from a modern clinic. No description found."
+    },
+    "belize-city-osm-way-113653382": {
+      "venueId": "belize-city-osm-way-113653382",
+      "city": "belize-city",
+      "name": "Digi Park",
+      "archetype": "park-landscape",
+      "subject": "Digi Park: a small city park with a paved court, play area and a shade pavilion under trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b8",
+          "#d9573b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/113653382",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 195 x 85 m; no description found."
+    },
+    "belize-city-osm-way-259179297": {
+      "venueId": "belize-city-osm-way-259179297",
+      "city": "belize-city",
+      "name": "Museum of Belize",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Belize in the 1850s former Her Majesty's Prison in the Fort George district: a long, solid two-storey colonial masonry block with small punched windows and a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#b36a4a",
+          "#e9e3d2",
+          "#7c3f2f"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "former prison compound wall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1854-57",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Belize",
+          "what": "built 1854-57 as prison; museum since 2002"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/259179297",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16979616",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: constructed 1854-57 as Her Majesty's Prison, used until 1993, restored as the national museum in 2002 (OSM footprint 43 x 17 m, Wikidata Q16979616). Brick matches the ballast-brick tradition cited for Belize City's cathedrals, but the facade finish and colour are not confirmed."
+    },
+    "belize-city-osm-way-259180757": {
+      "venueId": "belize-city-osm-way-259180757",
+      "city": "belize-city",
+      "name": "Holy Redeemer Cathedral",
+      "archetype": "church-classical",
+      "subject": "Holy Redeemer Cathedral on Regent Street: a plastered brick basilica with two shortened bell towers flanking the front and an iron-columned portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f0ead9",
+          "#b36a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin towers; steeples lost in 1931 and later hurricanes"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "two iron Corinthian pillars"
+        },
+        {
+          "id": "stained-glass",
+          "count": 3,
+          "note": "many lost in 1961 hurricane"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1858",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Redeemer_Cathedral",
+          "what": "brick shell, 1920s plaster, twin towers, iron Corinthian pillars, hurricane losses"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/259180757",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4163667",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: brick from sailing-ship ballast, exterior brick until plastered in the 1920s; side walls moved out in 1888 to align with side chapels and towers; twin towers whose onion domes then pyramidal steeples were destroyed by the 1931 hurricane, with shorter replacements later blown away; two iron Corinthian pillars at the portico. Plaster colour (off-white) and roof colour are not stated and are assumed."
+    },
+    "belize-city-osm-way-295702030": {
+      "venueId": "belize-city-osm-way-295702030",
+      "city": "belize-city",
+      "name": "University of Belize (Education Campus)",
+      "archetype": "campus-block",
+      "subject": "University of Belize's Belize City education campus on Princess Margaret Drive: several two- and three-storey concrete teaching blocks around a quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee8d6",
+          "#2b6a8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/295702030",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM university polygon 165 x 113 m. Layout typed; larger and more multi-wing than the compact UWI block next door."
+    },
+    "belize-city-osm-way-295702032": {
+      "venueId": "belize-city-osm-way-295702032",
+      "city": "belize-city",
+      "name": "University of the West Indies",
+      "archetype": "campus-block",
+      "subject": "The UWI Open Campus in Belize City: a compact two-storey teaching block with a covered entrance and pale walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3efe2",
+          "#9a3b2e",
+          "#ffffff"
+        ],
+        "roofColour": "#9a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/295702032",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM university polygon 102 x 92 m next to the University of Belize; no description found."
+    },
+    "belize-city-osm-way-375230999": {
+      "venueId": "belize-city-osm-way-375230999",
+      "city": "belize-city",
+      "name": "Wilton Park",
+      "archetype": "park-landscape",
+      "subject": "Wilton Park: a small neighbourhood park with a grass play field, shade trees and a low fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b8",
+          "#6a9f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/375230999",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 134 x 90 m; no description found."
+    },
+    "belize-city-osm-way-375289101": {
+      "venueId": "belize-city-osm-way-375289101",
+      "city": "belize-city",
+      "name": "St. Martin de Porres Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St Martin de Porres Catholic Church: a square-plan modern parish church with a steep gabled roof, a blocky belfry and pale walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ecdc",
+          "#2f6f9f",
+          "#c9bfa5"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "blocky entrance belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/375289101",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21010247",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM church 26 x 24.5 m (Wikidata Q21010247, Roman Catholic parish). Form is typed; shape contrasts with the brick cathedral."
+    },
+    "belize-city-osm-way-376017484": {
+      "venueId": "belize-city-osm-way-376017484",
+      "city": "belize-city",
+      "name": "Manatee Lookout Restaurant & Bar",
+      "archetype": "restaurant",
+      "subject": "Manatee Lookout: a timber waterside bar-restaurant on stilts over the lagoon, with a thatched-style palapa roof and a jetty",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a77f56",
+          "#4fa8b0",
+          "#f5d57a"
+        ],
+        "roofColour": "#c2a265",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/376017484",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM restaurant 17 x 12.5 m on the Belize River side of Ladyville; stilts and deck are typed from the lookout name and local waterside style."
+    },
+    "belize-city-osm-way-961547974": {
+      "venueId": "belize-city-osm-way-961547974",
+      "city": "belize-city",
+      "name": "Belize Medical Associates",
+      "archetype": "hospital",
+      "subject": "Belize Medical Associates, a private hospital on Eyre Street: a modern three-storey block in light render with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 37,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1eddf",
+          "#2f7f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#a0a4a6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/295698076",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4882975",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "OSM hospital 68 x 37 m, Wikidata Q4882975 (inception 1988). Storeys and colours typed; no description fetched."
+    },
+    "belize-city-osm-way-961896200": {
+      "venueId": "belize-city-osm-way-961896200",
+      "city": "belize-city",
+      "name": "Central America Health Sciences Belize Medical College",
+      "archetype": "campus-block",
+      "subject": "The Belize Medical College campus: a long campus of two-storey dormitory and lecture blocks with louvres and covered walkways in the open outskirts",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0eadb",
+          "#c9533d",
+          "#ffffff"
+        ],
+        "roofColour": "#a3462f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/961896200",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM college polygon 697 x 292 m (campus-wide); lower and more spread-out than the CAHSU main block, shown as one dormitory/lecture H."
+    },
+    "belize-city-quiet-reflection": {
+      "venueId": "belize-city-quiet-reflection",
+      "city": "belize-city",
+      "name": "St. John's Anglican Cathedral",
+      "archetype": "church-classical",
+      "subject": "St John's Anglican Cathedral, the oldest Anglican church in Central America: a plain orange ballast-brick Georgian church with a pitched roof and arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#b86a3c",
+          "#e9e3d2",
+          "#6a3f2a"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1812-1820",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._John%27s_Cathedral_(Belize_City)",
+          "what": "1812-1820, orange ballast brick, cathedral since 1891"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "oldest Anglican church in Central America; ballast brick"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/130793100",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4163413",
+          "what": "Wikidata entry confirming identity/type and inception year"
+        }
+      ],
+      "notes": "Wikipedia: built 1812-1820 of orange bricks that arrived as ship ballast, parish church until becoming a cathedral in 1891, interior in mahogany and sapodilla; OSM footprint 30 x 21 m (Wikidata Q4163413). Roof, tower and window details are not described in the fetched sources."
+    },
+    "belize-city-recreation": {
+      "venueId": "belize-city-recreation",
+      "city": "belize-city",
+      "name": "Buttonwood Bay Park",
+      "archetype": "park-landscape",
+      "subject": "Buttonwood Bay Park: a small waterfront green with a footpath, benches and a shade pavilion beside the lagoon",
+      "form": {
+        "footprint": "rect",
+        "width_m": 84,
+        "depth_m": 75,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b8",
+          "#6a9f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/376110638",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 84 x 75 m; no description found."
+    },
+    "belize-city-transit": {
+      "venueId": "belize-city-transit",
+      "city": "belize-city",
+      "name": "Belize City => Corozal Town",
+      "archetype": "transport-station",
+      "subject": "Novelo's bus terminal on Magazine Road: a wide open bus yard with long corrugated shelters and a row of coloured former school buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 51,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6cfbf",
+          "#f5c13a",
+          "#2f6fb0"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belize_City",
+          "what": "Belize City: Swing Bridge, Fort George area, St John's Cathedral ballast brick, south-side wooden housing, Government House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/883873660",
+          "what": "OpenStreetMap footprint and tags (measured width/depth)"
+        }
+      ],
+      "notes": "The venue is a bus route; the OSM Novelo's Bus Terminal polygon (77 x 51 m, amenity=bus_station) contains the point. Intercity buses here are typically repurposed school buses; shed shapes typed."
+    }
+  }
+}

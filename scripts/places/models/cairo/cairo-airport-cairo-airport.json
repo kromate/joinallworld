@@ -1,0 +1,736 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-airport-cairo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:CairoIntlAirportTerminal3.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "RolandUnger",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/t3b.jpg",
+   "used": "Terminal 3 landside: tall glass curtain wall between silver-clad round columns, grey metal-clad upper band, long louvred canopy of white slanted tubes over the kerb, taxis"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_Airport_Terminal_3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alensha",
+   "view": "street",
+   "used": "canopy structure: leaning white tube struts and slatted glazed roof, paved forecourt, raised ramp road behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_International_Airport.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ad Meskens",
+   "view": "street",
+   "used": "approach road, palms, pale stone walls (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/53579962",
+   "used": "Terminal 3 overall scale only (about 37,000 m2); a 112 m landside stretch is modelled, the OSM way matched Terminal 2 so it was not used for the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-glass",
+   "footprint": {
+    "rect": [
+     84,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c4d0d3",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#e8eef0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7bdc2",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-clad",
+   "footprint": {
+    "rect": [
+     84,
+     32
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 9,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9fa5aa",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c9cc",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -38,
+    0
+   ],
+   "params": {
+    "colour": "#f2c21b",
+    "count": 2,
+    "spacing": 5,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    8,
+    -41,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 6,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 5,
+    "spacing": 16
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#b9bdc1",
+      "sections": [
+       {
+        "z": 0,
+        "circle": 0.62
+       },
+       {
+        "z": 12.2,
+        "circle": 0.6
+       }
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -36,
+     -18.6,
+     0
+    ],
+    "end": [
+     36,
+     -18.6,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#d9e2e4",
+    "sections": [
+     {
+      "z": 12.0,
+      "rect": [
+       86,
+       18
+      ],
+      "cx": 0,
+      "cy": -26
+     },
+     {
+      "z": 12.35,
+      "rect": [
+       86,
+       18
+      ],
+      "cx": 0,
+      "cy": -26
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f4f5f5",
+      "sections": [
+       {
+        "z": 12.35,
+        "rect": [
+         0.28,
+         18
+        ],
+        "cx": 0,
+        "cy": -26
+       },
+       {
+        "z": 12.75,
+        "rect": [
+         0.28,
+         18
+        ],
+        "cx": 0,
+        "cy": -26
+       }
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -42,
+     0,
+     0
+    ],
+    "end": [
+     42,
+     0,
+     0
+    ],
+    "count": 96,
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#eceff0",
+    "sections": [
+     {
+      "z": 11.6,
+      "rect": [
+       86,
+       0.5
+      ],
+      "cx": 0,
+      "cy": -35
+     },
+     {
+      "z": 12.8,
+      "rect": [
+       86,
+       0.5
+      ],
+      "cx": 0,
+      "cy": -35
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      -42,
+      -18,
+      10.5
+     ],
+     [
+      -26,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      -30,
+      -18,
+      10.5
+     ],
+     [
+      -46,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      -30,
+      -18,
+      10.5
+     ],
+     [
+      -14,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      -18,
+      -18,
+      10.5
+     ],
+     [
+      -34,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      -18,
+      -18,
+      10.5
+     ],
+     [
+      -2,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      -6,
+      -18,
+      10.5
+     ],
+     [
+      -22,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      -6,
+      -18,
+      10.5
+     ],
+     [
+      10,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      6,
+      -18,
+      10.5
+     ],
+     [
+      -10,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      6,
+      -18,
+      10.5
+     ],
+     [
+      22,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      18,
+      -18,
+      10.5
+     ],
+     [
+      2,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      18,
+      -18,
+      10.5
+     ],
+     [
+      34,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      30,
+      -18,
+      10.5
+     ],
+     [
+      14,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.42,
+    "n": 8,
+    "points": [
+     [
+      30,
+      -18,
+      10.5
+     ],
+     [
+      46,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#f2f3f3"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.34,
+    "n": 8,
+    "points": [
+     [
+      42,
+      -18,
+      10.5
+     ],
+     [
+      26,
+      -34,
+      13.2
+     ]
+    ],
+    "colour": "#eef0f0"
+   }
+  },
+  {
+   "type": "loft",
+   "params": {
+    "colour": "#c9c8c2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       90,
+       0.7
+      ],
+      "cx": 0,
+      "cy": -16.4
+     },
+     {
+      "z": 0.18,
+      "rect": [
+       90,
+       0.7
+      ],
+      "cx": 0,
+      "cy": -16.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f1f1ee",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         1.1,
+         7
+        ],
+        "cx": 0,
+        "cy": -44
+       },
+       {
+        "z": 0.05,
+        "rect": [
+         1.1,
+         7
+        ],
+        "cx": 0,
+        "cy": -44
+       }
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     0,
+     0
+    ],
+    "end": [
+     18,
+     0,
+     0
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -18.4,
+    5.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.3,
+    "bottom": 0,
+    "colour": "#d6a62a",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Louvred flat canopy on crossing white struts, silver drum columns, grey cladding, zebra and kerb added, tower and end blocks removed; glass still renders dark blue from the shared glass texture, canopy is flat not sloped, camera cannot match the very low wide-angle viewpoint."
+ }
+}

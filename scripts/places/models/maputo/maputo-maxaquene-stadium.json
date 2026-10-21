@@ -1,0 +1,325 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Est%C3%A1dio_do_Desportivo.jpg",
+   "licence": "Public domain",
+   "author": "JojuH",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/maputo/stadium.jpg",
+   "used": "Wikidata image for Q2209011 but captioned Desportivo (330 m away, identity uncertain): used only as typical local ground: open grass pitch, one long uncovered raked concrete terrace with dark blue/red seat blocks, perimeter wall, trees; not claimed as this stadium"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/701768009",
+   "used": "real plot outline, 138 x 87 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 55,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -43.5,
+      -57.7
+     ],
+     [
+      -26.9,
+      -67.8
+     ],
+     [
+      31,
+      -66.8
+     ],
+     [
+      41.8,
+      -64.1
+     ],
+     [
+      43.9,
+      -55.5
+     ],
+     [
+      43.4,
+      52.8
+     ],
+     [
+      38.5,
+      59.8
+     ],
+     [
+      25.1,
+      65.7
+     ],
+     [
+      6.9,
+      70.5
+     ],
+     [
+      -5.4,
+      70.5
+     ],
+     [
+      -31.7,
+      64.6
+     ],
+     [
+      -43.5,
+      61.4
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b9ae98",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    1,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     64,
+     102
+    ],
+    "height": 0.1,
+    "colour": "#6f9a4c",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -36,
+     -46
+    ],
+    "end": [
+     -36,
+     48
+    ],
+    "flip": true,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "bay": 6,
+    "seatColours": [
+     "#3b4a6b",
+     "#8a3b3b",
+     "#9aa0a8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c3b6",
+    "underColour": "#b4aea2"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     36,
+     -30
+    ],
+    "end": [
+     36,
+     40
+    ],
+    "rows": 5,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "bay": 6,
+    "seatColours": [
+     "#3b4a6b",
+     "#8a3b3b",
+     "#9aa0a8"
+    ],
+    "blocks": 2,
+    "concreteColour": "#c9c3b6",
+    "underColour": "#b4aea2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -33,
+      -53
+     ],
+     [
+      33,
+      -53
+     ],
+     [
+      33,
+      55
+     ],
+     [
+      -33,
+      55
+     ],
+     [
+      -33,
+      -53
+     ]
+    ],
+    "height": 1.4,
+    "colour": "#e8e4da",
+    "thickness": 0.25
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    56,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40,
+    56,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "changing-block",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    22,
+    -62
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d4c8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "metal-sheet",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    -55,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "count": 6,
+    "kind": "palm"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-maxaquene-stadium",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "photo may show the neighbouring Desportivo ground so identity unconfirmed; terrace is straight not curved, no covered stand; floodlights/scoreboard assumed"
+ }
+}

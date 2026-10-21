@@ -1,0 +1,186 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+   "used": "city context only; placeholder clinic, no real counterpart"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-wing",
+   "footprint": {
+    "rect": [
+     28,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#4f9a8a",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-wing",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    -10,
+    -3
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#4f9a8a",
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    6,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3,
+    "roofColour": "#4f9a8a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -9.5,
+    3.0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 2.6,
+    "colour": "#c8362f",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.6,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -15,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     8
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Placeholder clinic, typed L plan"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "ph-clinic"
+}

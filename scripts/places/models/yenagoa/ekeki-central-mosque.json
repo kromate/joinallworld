@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "ekeki-central-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#ekeki-central-mosque",
+   "used": "30x28 m two-storey white prayer hall, central green dome, four corner domelets, two minarets, walled forecourt; Wikidata mosque Q125462610 has no usable photo and no OSM footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 9,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.6,
+    "bands": "#d4b46a",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portal",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "arched",
+    "windowRatio": 0.35,
+    "plinth": 0.5,
+    "bands": "#d4b46a",
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8f5a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    10.8
+   ],
+   "params": {
+    "radius": 8.5,
+    "profile": "hemi",
+    "drum": 2.5,
+    "drumRadius": 8.8,
+    "lantern": 1.2,
+    "finial": 2,
+    "colour": "#2f8f5a",
+    "drumColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -12.5,
+    -11.5,
+    10.8
+   ],
+   "params": {
+    "radius": 2.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "finial": 1,
+    "colour": "#2f8f5a",
+    "drumColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -12.5,
+    11.5,
+    10.8
+   ],
+   "params": {
+    "radius": 2.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "finial": 1,
+    "colour": "#2f8f5a",
+    "drumColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    12.5,
+    -11.5,
+    10.8
+   ],
+   "params": {
+    "radius": 2.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "finial": 1,
+    "colour": "#2f8f5a",
+    "drumColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    12.5,
+    11.5,
+    10.8
+   ],
+   "params": {
+    "radius": 2.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "finial": 1,
+    "colour": "#2f8f5a",
+    "drumColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -19,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "radius": 1.4,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f7f4ee",
+    "capColour": "#2f8f5a"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    19,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 36,
+    "radius": 1.4,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f7f4ee",
+    "capColour": "#2f8f5a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#f7f4ee",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    27,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#f7f4ee",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -25,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 54,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#f7f4ee",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    25,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 54,
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#f7f4ee",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   64,
+   64
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; typed mid-sized domed mosque, colours from brief"
+ }
+}

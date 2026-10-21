@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "union-baptist-church",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/378036327",
+   "used": "real multi-wing outline (1867 m2, building=cathedral), contained match"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "Baptist auditorium church, Odi-Olowo, broad gable front with entrance steps, bell tower, cream render with blue accents, grey metal roof; no photo of this building was found (Commons only has First Baptist Oke-Okanla, a different church)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#2f4a8a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8c8a",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -16
+   ],
+   "rotDeg": 62,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f4a8a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8c8a",
+    "material": "metal-sheet",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -4,
+    -20,
+    0
+   ],
+   "rotDeg": 62,
+   "params": {}
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -15
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this church exists; outline is the real OSM way, roof/colours/tower are brief-based guesses and the roof reads as a simple gable over the concave outline."
+ }
+}

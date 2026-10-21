@@ -1,0 +1,276 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#kyan-rikkos-village-head-palace",
+   "used": "no photo; OSM residential building 13x7 m too small to be the compound so only the brief used: U of single-storey rendered halls round a courtyard, taller audience hall, red hip roofs, gated white wall with flags"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     36
+    ],
+    "height": 0.08,
+    "colour": "#c9a77c",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-north",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#a2553a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    -14,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#a2553a",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    14,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d9c9a3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#a2553a",
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "audience-hall",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "bands": "#a2553a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6b2a22",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.6,
+    "height": 3.0,
+    "roof": "lean-to",
+    "roof_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 2.4,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.6,
+    "colour": "#a2553a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    6,
+    -14.5,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -14.5,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     27,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   64,
+   56
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "kyan-rikkos-village-head-palace",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real compound layout unknown, U plan and colours from the brief."
+ }
+}

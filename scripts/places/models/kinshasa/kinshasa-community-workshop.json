@@ -1,0 +1,443 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_de_Kinshasa.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Humprey J. L. Boyelo",
+   "view": "front",
+   "file": "/tmp/places-evidence/kinshasa/uni2.jpg",
+   "used": "main massing: marble-clad central entrance block with steps, two long wings of pierced concrete screens between piers under thin cantilevered roofs, set-back upper volume with ribbon windows, lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_de_Kinshasa_(Unikin1).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Humprey J. L. Boyelo",
+   "view": "side",
+   "file": "/tmp/places-evidence/kinshasa/uni1.jpg",
+   "used": "depth of the wings, projecting canopies, statue and cypress trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/783572547",
+   "used": "none: the OSM outline is the whole 70 ha campus; only this one administration building is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    -35,
+    -2
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d1c0",
+    "windows": "none",
+    "plinth": 0.9,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.45,
+       0.45
+      ],
+      "colours": [
+       "#e0d9c8",
+       "#d4ccba"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#5a5750"
+      },
+      "proud": 0.0
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 0.9,
+      "spacing": 2.6,
+      "colour": "#eee8da"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c",
+    "overhang": 3.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     44,
+     16
+    ]
+   },
+   "at": [
+    35,
+    -2
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d9d1c0",
+    "windows": "none",
+    "plinth": 0.9,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       0.45,
+       0.45
+      ],
+      "colours": [
+       "#e0d9c8",
+       "#d4ccba"
+      ],
+      "slits": {
+       "fraction": 0.5,
+       "colour": "#5a5750"
+      },
+      "proud": 0.0
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 0.9,
+      "spacing": 2.6,
+      "colour": "#eee8da"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c",
+    "overhang": 3.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#cfc8b8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "overhang": 3.8,
+    "parapet": 0.2
+   },
+   "z0": 8.5
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -8.5
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#9a7a7c",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lobby",
+   "footprint": {
+    "rect": [
+     9,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -11.4
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4d5a63",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -11.9
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2f7fb0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f7fb0"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -4.8,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 2.6,
+    "count": 4,
+    "height": 9,
+    "radius": 0.2,
+    "kind": "square",
+    "colour": "#e6dfd0"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    4.8,
+    -12.6,
+    0
+   ],
+   "params": {
+    "length": 2.6,
+    "count": 4,
+    "height": 9,
+    "radius": 0.2,
+    "kind": "square",
+    "colour": "#e6dfd0"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.1,
+    "run": 3.0,
+    "count": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cheek-w",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    -14.580000000000002,
+    -13.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8c6e70",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6e70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cheek-e",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    14.580000000000002,
+    -13.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8c6e70",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6e70"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall-w",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    -22,
+    -12
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8c6e70",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-wall-e",
+   "footprint": {
+    "rect": [
+     26,
+     1
+    ]
+   },
+   "at": [
+    22,
+    -12
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#8c6e70",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0b8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    17,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 13,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wing screens still read as slit panels rather than a regular perforated grid between full-height piers; roofs flat not upswept, upper volume not hipped; cheek walls are blocks not sloping, only a low stair; one conifer instead of cypress"
+ }
+}

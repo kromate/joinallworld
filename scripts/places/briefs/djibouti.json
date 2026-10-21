@@ -1,0 +1,1556 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "djibouti",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "djibouti",
+    "climate": "desert",
+    "vernacular": "Hot arid Red Sea port city (founded 1888) mixing French colonial, Yemeni and modern blocks: low to mid-rise flat-roofed buildings in white, cream and sun-bleached pastel render, arcaded Moorish-style squares in the centre (Place du 27 Juin), shuttered balconies on older Ras-Dika fronts, plain concrete-block houses and corrugated-iron sheds in Balbala, sand-coloured ground with sparse palms and acacia.",
+    "wallColours": [
+      "#f1ebdc",
+      "#e4d6b8",
+      "#d9c39a",
+      "#c9b8a0",
+      "#f4f1ea",
+      "#b9a58a"
+    ],
+    "roofColours": [
+      "#b8b2a6",
+      "#8f8a80",
+      "#a7523c",
+      "#6f6a62"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "whitewash",
+      "concrete",
+      "stone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "none"
+    ],
+    "ornament": "Moorish pointed and horseshoe arches and arcades around Place du 27 Juin, Yemeni-style timber shutters and balconies on older buildings, minimal ornament on newer concrete blocks; colours are sun-bleached rather than saturated. Hex values are inferred from the described white/cream/pastel look, not sampled from photos.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+        "what": "architecture blends native, Yemeni, French and modern; Moorish-inspired Place of 27 June; arid hot desert climate; 1949 grid plan"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Djibouti_(ville)",
+        "what": "founded by the French 1888, three communes Ras-Dika, Boulaos, Balbala; hot desert climate"
+      }
+    ]
+  },
+  "places": {
+    "djibouti-airport-djibouti-airport": {
+      "venueId": "djibouti-airport-djibouti-airport",
+      "city": "djibouti",
+      "name": "Djibouti-Ambouli International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Ambouli airport single passenger terminal seen from the landside forecourt, a low wide block beside the apron with a small tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e2d2",
+          "#4f6f86",
+          "#c9c2b4"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy (generic)"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1948 airfield; terminal enlarged 1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti%E2%80%93Ambouli_International_Airport",
+          "what": "single terminal building with one departure gate and one baggage carousel; runway 09/27 3,150 m; hard runway and terminal 1948, enlarged mid-1970s; building appearance not described"
+        }
+      ],
+      "notes": "Wikipedia confirms a small single terminal (one gate, one carousel) but gives no facade, size or architecture, so the form is a typed guess from a small desert-country terminal. Shares the airfield with Camp Lemonnier on its south side."
+    },
+    "djibouti-clinic": {
+      "venueId": "djibouti-clinic",
+      "city": "djibouti",
+      "name": "Hôpital Militaire",
+      "archetype": "hospital",
+      "subject": "A military hospital as a low whitewashed ward block with a covered entrance and an ambulance bay",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ebdc",
+          "#7a9a8c",
+          "#d9c39a"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s-1980s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "No description of this hospital was found; typed from the city style and a mid-size hospital in a hot dry climate (shaded verandas, flat roofs). Treat all dimensions as placeholders."
+    },
+    "djibouti-community-notices": {
+      "venueId": "djibouti-community-notices",
+      "city": "djibouti",
+      "name": "Poste frontière 1184 entre Djibouti et la Somalie",
+      "archetype": "civic-small",
+      "subject": "A small border post at Loyada: a single-storey checkpoint building with a barrier gate and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9cfba",
+          "#8a8f94",
+          "#b9b09c"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "vehicle barrier"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Frontier post on the Djibouti-Somaliland road near Loyada; no sources describe it. Generic low checkpoint building in sand colours."
+    },
+    "djibouti-community-voting-game": {
+      "venueId": "djibouti-community-voting-game",
+      "city": "djibouti",
+      "name": "Place Cheick Moussa",
+      "archetype": "park-landscape",
+      "subject": "A small paved city square with a few shade trees, benches and a central planter, surrounded by low cream buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4d6b8",
+          "#c9b8a0",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "central feature (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "No source describes this square; typed as a paved plaza in the colonial city grid. Inspired by the central Moorish-arch squares described for the city centre."
+    },
+    "djibouti-community-workshop": {
+      "venueId": "djibouti-community-workshop",
+      "city": "djibouti",
+      "name": "Collège de Hayel Saïd",
+      "archetype": "campus-block",
+      "subject": "A single-storey-plus-one school block with an open gallery along the classrooms and a walled yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 65,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ebdc",
+          "#6f8fa6",
+          "#c9b8a0"
+        ],
+        "roofColour": "#a7523c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "access gallery"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Lower secondary school (college); nothing findable about the building, so a typical Djibouti school block with outdoor galleries is used."
+    },
+    "djibouti-market-game": {
+      "venueId": "djibouti-market-game",
+      "city": "djibouti",
+      "name": "Djiba Djibouti",
+      "archetype": "market-hall",
+      "subject": "A small commercial hall at the Loyada road junction: a boxy single-storey shop with a deep awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#c0583a",
+          "#8f8a80"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Could not identify more than the name; modelled as a plain trading shed/shop at a border town. Low confidence in type."
+    },
+    "djibouti-meal-stop": {
+      "venueId": "djibouti-meal-stop",
+      "city": "djibouti",
+      "name": "Kiosque Lac-Abbé",
+      "archetype": "restaurant",
+      "subject": "A roadside kiosk cafe: a small box with a shaded terrace and plastic tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b8",
+          "#3a7d6c",
+          "#d8d0c0"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Name only; \"Lac-Abbé\" is the famous limestone-chimney salt lake, but this kiosk is on the coast near Djibouti city per its coordinates. A tiny kiosk-cafe is the safest guess."
+    },
+    "djibouti-osm-node-14221742154": {
+      "venueId": "djibouti-osm-node-14221742154",
+      "city": "djibouti",
+      "name": "Mémorial du Barrage de Djibouti EEGA",
+      "archetype": "monument",
+      "subject": "A small memorial on a low platform: a plain concrete stele with a flag and a few steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#8a8f94",
+          "#ece7dc"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "assumed stele"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th-21st century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Memorial linked to the Djibouti dam (barrage); nothing found about its form. Typed as a small stele on a plinth."
+    },
+    "djibouti-osm-node-3789244393": {
+      "venueId": "djibouti-osm-node-3789244393",
+      "city": "djibouti",
+      "name": "Marché de Hayableh",
+      "archetype": "market-open",
+      "subject": "Open neighbourhood market: rows of tin-roofed stalls and umbrellas on sandy ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a69f92",
+          "#c0583a",
+          "#d8c9a6"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Local market in the Hayableh area (south-west of centre). Looks assumed from Djibouti street markets: corrugated shade roofs, stalls, no tree cover."
+    },
+    "djibouti-osm-node-4787069324": {
+      "venueId": "djibouti-osm-node-4787069324",
+      "city": "djibouti",
+      "name": "Air Ops",
+      "archetype": "civic-small",
+      "subject": "Airfield operations building: a low flat-roofed block with a small apron-side canopy on the airfield south side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d6cdb6",
+          "#7a8791",
+          "#b9b09c"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Camp_Lemonnier",
+          "what": "airfield south side has concrete pads, maintenance buildings and containerised units; no named \"Air Ops\" building described"
+        }
+      ],
+      "notes": "Located on the airfield near Camp Lemonnier; modelled as a utilitarian concrete operations block. Nothing specific found."
+    },
+    "djibouti-osm-node-4932312785": {
+      "venueId": "djibouti-osm-node-4932312785",
+      "city": "djibouti",
+      "name": "Pizzaiolo Haramous",
+      "archetype": "restaurant",
+      "subject": "A small modern restaurant in Haramous with a glazed front and a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#b5482f",
+          "#5b6670"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Haramous is the upscale seafront neighbourhood with many villas and restaurants; the specific building is not described anywhere found."
+    },
+    "djibouti-osm-node-5313235263": {
+      "venueId": "djibouti-osm-node-5313235263",
+      "city": "djibouti",
+      "name": "maché wahle",
+      "archetype": "market-open",
+      "subject": "A modest local market: a handful of stalls and a corrugated shade shed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a69f92",
+          "#d9c39a",
+          "#c0583a"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Name misspelt in the source data (\"maché wahle\"); smaller than Hayableh in the model. No source found."
+    },
+    "djibouti-osm-node-5345093773": {
+      "venueId": "djibouti-osm-node-5345093773",
+      "city": "djibouti",
+      "name": "American Institute",
+      "archetype": "campus-block",
+      "subject": "A small private language-school building: two storeys, cream render, a tidy courtyard entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 35,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ebdc",
+          "#2f5d8a",
+          "#d9c39a"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Named only; no description found. Modelled as a small institute block next to the university area."
+    },
+    "djibouti-osm-node-5351742924": {
+      "venueId": "djibouti-osm-node-5351742924",
+      "city": "djibouti",
+      "name": "Café Gourmand",
+      "archetype": "restaurant",
+      "subject": "A cafe: a compact two-room building with an awning and street tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe3c6",
+          "#9a4a36",
+          "#d8d0c0"
+        ],
+        "roofColour": "#a7523c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "No source. Generic cafe; warm cream with terracotta trim to differ from the other cafes."
+    },
+    "djibouti-osm-node-5380475275": {
+      "venueId": "djibouti-osm-node-5380475275",
+      "city": "djibouti",
+      "name": "Centre de santé communautaire Tora-Dora",
+      "archetype": "hospital",
+      "subject": "A small community health centre: single-storey line of rooms with a covered walkway",
+      "form": {
+        "footprint": "L",
+        "width_m": 32,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#5e9bb5",
+          "#c9b8a0"
+        ],
+        "roofColour": "#a7523c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Community health centre in the Tora-Dora area of Balbala; typed as a small clinic, not a hospital."
+    },
+    "djibouti-osm-way-1051274500": {
+      "venueId": "djibouti-osm-way-1051274500",
+      "city": "djibouti",
+      "name": "El-Hadj Hassan Gouled Aptidon Stadium",
+      "archetype": "stadium",
+      "subject": "The national stadium in Djibouti city: an oval bowl with an eight-lane athletics track around artificial turf and a covered main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d7ccb2",
+          "#3b6ea5",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one of the two stands is covered"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "count assumed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1993",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Hadj_Hassan_Gouled_Aptidon_Stadium",
+          "what": "opened 26 June 1993 with Chinese engineers; capacity up to 20,000; artificial turf (replaced 2007); eight-lane track; two stands, one covered, ~10,000 spectators; renovations from 2002"
+        }
+      ],
+      "notes": "Facts on capacity, track, surface and covered stand are sourced; overall dimensions, colours and floodlight count are estimates. Chinese-assisted stadium typology: concrete stand tiers with a cantilever roof over the main stand only."
+    },
+    "djibouti-osm-way-114934833": {
+      "venueId": "djibouti-osm-way-114934833",
+      "city": "djibouti",
+      "name": "Mosquée Nouri",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque with a single small dome over a square prayer hall and one slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#3f8f6b",
+          "#d9c39a"
+        ],
+        "roofColour": "#2f7d5b",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hamoudi_Mosque",
+          "what": "for context only: Djibouti city mosques are single-minaret, e.g. Hamoudi (one minaret, Abbasid style)"
+        }
+      ],
+      "notes": "No page on this mosque found. Uses the common Djibouti pattern of one dome, one minaret and pointed-arch windows; green dome is a guess to differ from the other mosque."
+    },
+    "djibouti-osm-way-266382353": {
+      "venueId": "djibouti-osm-way-266382353",
+      "city": "djibouti",
+      "name": "Université de Djibouti",
+      "archetype": "campus-block",
+      "subject": "The university main campus at Plateau du Serpent: a cluster of two-to-three-storey teaching blocks around open quads",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ebdc",
+          "#2f5d8a",
+          "#c9b8a0"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006 (institution); buildings 2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Djibouti",
+          "what": "public university founded 7 January 2006 from the University Centre; five faculties and two institutes; campuses at Balbala and Plateau du Serpent; buildings not described"
+        }
+      ],
+      "notes": "Only the institution is documented, not the buildings. Typed from the city style and a modern campus; Plateau du Serpent campus is the larger, more formal one in the model."
+    },
+    "djibouti-osm-way-383773335": {
+      "venueId": "djibouti-osm-way-383773335",
+      "city": "djibouti",
+      "name": "Jardin",
+      "archetype": "park-landscape",
+      "subject": "A small public garden: gravel paths, palms in rows and a low pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4d6b8",
+          "#6b8e5a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "city has tree-lined boulevards and public parks (Lagarde Park is the largest); this garden is not named in the source"
+        }
+      ],
+      "notes": "Generic \"Jardin\" (garden) in the city centre. The big Lagarde Park is not this venue (not confirmed). Palm-lined paths only."
+    },
+    "djibouti-osm-way-549877936": {
+      "venueId": "djibouti-osm-way-549877936",
+      "city": "djibouti",
+      "name": "ARKAM",
+      "archetype": "mosque-domed",
+      "subject": "A mosque or prayer hall with a flat-roofed hall, a shallow dome and a short square minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cc",
+          "#2f6b8f",
+          "#c9b8a0"
+        ],
+        "roofColour": "#a7523c",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Marked as place of worship in OSM; \"ARKAM\" may be Al-Arqam. No page found, so the type is generic. Square minaret, to differ from Nouri."
+    },
+    "djibouti-osm-way-575079686": {
+      "venueId": "djibouti-osm-way-575079686",
+      "city": "djibouti",
+      "name": "Université de Djibouti - Campus de Balbala",
+      "archetype": "campus-block",
+      "subject": "The Balbala annex of the university: a few plain two-storey concrete teaching blocks beside the commune",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9cfba",
+          "#7a8791",
+          "#f1ebdc"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s-2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Djibouti",
+          "what": "university has campuses in Balbala and Plateau du Serpent; no building description"
+        }
+      ],
+      "notes": "Smaller and plainer than the main campus; no building facts found. Balbala is the fast-growing southwestern commune."
+    },
+    "djibouti-osm-way-711138844": {
+      "venueId": "djibouti-osm-way-711138844",
+      "city": "djibouti",
+      "name": "Al-Rahma Hospital",
+      "archetype": "hospital",
+      "subject": "A private hospital: a three-storey block with a glazed entrance and a car park, in the southern suburbs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#2f7d8f",
+          "#c9c2b4"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "No source describing it; modelled as a modern mid-rise private hospital to differ from the military hospital."
+    },
+    "djibouti-quiet-reflection": {
+      "venueId": "djibouti-quiet-reflection",
+      "city": "djibouti",
+      "name": "Cathédrale Notre-Dame du Bon-Pasteur",
+      "archetype": "church-modern",
+      "subject": "Roman Catholic cathedral of Djibouti (1964): a modern-movement church with a tall plain nave and a free-standing bell tower, white walls under a low roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#a89f8c",
+          "#8a8f94"
+        ],
+        "roofColour": "#9a958a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "assumed; tower design not found"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame-du-Bon-Pasteur_de_Djibouti",
+          "what": "built 1964, consecrated 12 January 1964 by Cardinal Tisserant; modern movement; architect Joseph Muller (Colmar), built by M. Calcagnile (Bad Gastein)"
+        }
+      ],
+      "notes": "Year, style and designers are sourced; facade, dimensions and colours were not described anywhere findable, so they are inferred from a 1960s modernist church. The bell-tower is an assumption (most Catholic cathedrals have one); verify."
+    },
+    "djibouti-recreation": {
+      "venueId": "djibouti-recreation",
+      "city": "djibouti",
+      "name": "Rond-point du Progrès",
+      "archetype": "park-landscape",
+      "subject": "A traffic roundabout with a landscaped centre: palms, a low planter wall and a small monument",
+      "form": {
+        "footprint": "round",
+        "width_m": 50,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#6b8e5a",
+          "#ece7dc"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "assumed"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "assumed"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Djibouti_City",
+          "what": "only the city-level style (Yemeni/French/modern, desert) was findable; no description of this specific place was found"
+        }
+      ],
+      "notes": "Named roundabout in Djibouti; the central ornament is not known. Round planting with a monument is typical of Djibouti roundabouts."
+    },
+    "djibouti-transit": {
+      "venueId": "djibouti-transit",
+      "city": "djibouti",
+      "name": "Nagad Station",
+      "archetype": "transport-station",
+      "subject": "Nagad railway station, the 2017 terminus of the Addis Ababa-Djibouti standard-gauge line: a wide low station hall with a long platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd6c8",
+          "#2f5d8a",
+          "#b0aaa0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4,
+          "note": "electrified standard gauge"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nagad_railway_station",
+          "what": "inaugurated 10 January 2017 with the 100 km Djibouti section; replaced the old Djibouti City Railway Station; passenger terminus for Addis Ababa-Djibouti Railway; near Ambouli airport; electrified standard gauge"
+        }
+      ],
+      "notes": "Role, date and electrified track are sourced; appearance and size are inferred from similar Chinese-built stations on the line. Note: it is in the south of the city, in the desert, so little vegetation."
+    }
+  }
+}

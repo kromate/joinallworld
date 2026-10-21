@@ -1,0 +1,1586 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "castries",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "castries",
+    "climate": "tropical-maritime",
+    "vernacular": "Compact harbour capital on a grid, rebuilt after fires (1805, 1813, above all 1948) so the centre is mostly 1-4 storey concrete and render shops and offices in pastel paint with corrugated-iron roofs, with older timber-and-fretwork Caribbean houses on the hillsides; steep green volcanic hills (Morne Fortune) behind, banana and palm farmland and rainforest inland.",
+    "wallColours": [
+      "#f0e6c8",
+      "#f2efe6",
+      "#e4b84a",
+      "#d98c5f",
+      "#8fb3a6",
+      "#7fa6c9",
+      "#b8574a"
+    ],
+    "roofColours": [
+      "#b5473a",
+      "#3f6e4f",
+      "#7d8587",
+      "#5a3a2e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "timber",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Eastern Caribbean vernacular: verandahs and galleries with timber fretwork (gingerbread) trim, jalousie shutters, steep corrugated roofs in red or green, contrasting pastel window and door surrounds; Catholic churches with plain arched openings. Typical-colour palette is general Eastern Caribbean practice, not a measured survey.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Castries",
+        "what": "grid layout on reclaimed flood plain, rebuilt after fires in 1805, 1813 and 1948, harbour, landmarks (cathedral, Derek Walcott Square, library, market, Government House)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Saint_Lucia",
+        "what": "mountainous volcanic island, tropical climate, Roman Catholic majority, English/French Creole, banana economy"
+      }
+    ]
+  },
+  "places": {
+    "castries-airport-castries-airport": {
+      "venueId": "castries-airport-castries-airport",
+      "city": "castries",
+      "name": "Hewanorra International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Vieux Fort terminal seen from the landside forecourt: a long, low two-storey terminal block with a flat roof, a covered drop-off canopy and a separate control tower",
+      "form": {
+        "footprint": "L",
+        "width_m": 168,
+        "depth_m": 62,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0e6c8",
+          "#3f6a8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt drop-off canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1950s airfield, terminal rebuilt later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hewanorra_International_Airport",
+          "what": "single E-W runway, opened 1941 as US military airfield, ~700,000 passengers a year; terminal appearance not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25693005",
+          "what": "OSM footprint 168.3 x 61.6 m, area 9087 m2"
+        }
+      ],
+      "notes": "Footprint (about 168 x 62 m, L-shaped with a northern extension) is measured from OSM; the wiki article does not describe the terminal, so cladding, colours and canopy are inferred from typical Caribbean regional terminals. Largest international gateway of the island; located in Vieux Fort at the south tip, not near Castries."
+    },
+    "castries-clinic": {
+      "venueId": "castries-clinic",
+      "city": "castries",
+      "name": "Victoria Hospital",
+      "archetype": "hospital",
+      "subject": "The old Victoria Hospital in Castries (opened 1887): a sprawling complex of low and mid-rise wings joined by covered walkways and verandahs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 57,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#8fb3a6",
+          "#e4e0d4"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandah galleries"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1887, extended 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victoria_Hospital_(Saint_Lucia)",
+          "what": "opened 1887, once the main hospital of the island, replaced by the Owen King EU Hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1077484546",
+          "what": "OSM footprint 120.3 x 57.1 m, area 4196 m2"
+        }
+      ],
+      "notes": "Opening date and role are sourced; the 120 x 57 m multi-wing footprint is from OSM. Colours and storeys are inferred (white/pale-green painted blocks with red corrugated roofs are typical of Eastern Caribbean hospitals) so confidence is medium at best. Contrast with the modern Owen King EU Hospital."
+    },
+    "castries-community-notices": {
+      "venueId": "castries-community-notices",
+      "city": "castries",
+      "name": "Government House",
+      "archetype": "civic-palace",
+      "subject": "Government House on Morne Fortune, residence of the Governor-General: a brick-built two-storey colonial mansion (built 1894-95) on the hilltop looking over Castries",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f2efe6",
+          "#a8452f",
+          "#7d8587"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "verandah galleries"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "panels installed by 2016"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1894-95",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Government_House,_Saint_Lucia",
+          "what": "present house is brick-built, begun 1894 and finished 1895 on the crest of Morne Fortune; solar panels by 2016; earlier 1819 house was a timber structure"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morne_Fortune",
+          "what": "official residence of the Governor-General on the northern side of Morne Fortune with views of Castries"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/115572297",
+          "what": "OSM footprint 67.7 x 29.8 m, area 1734 m2"
+        }
+      ],
+      "notes": "Brick construction, dates and hilltop position are sourced; the white-washed brick with red roof and verandahs are inferred from the Victorian colonial type, not from a described photo. OSM footprint 68 x 30 m is a rotated rectangle."
+    },
+    "castries-community-voting-game": {
+      "venueId": "castries-community-voting-game",
+      "city": "castries",
+      "name": "Local Village Council Office",
+      "archetype": "civic-small",
+      "subject": "A very small single-storey village council office (about 9 x 7 m) with a corrugated roof, at a rural crossroads",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4b84a",
+          "#f2efe6",
+          "#5a3a2e"
+        ],
+        "roofColour": "#3f6e4f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/396114466",
+          "what": "OSM footprint 9.4 x 7.1 m, area 66 m2"
+        }
+      ],
+      "notes": "Local Village Council Office (OSM amenity=townhall). Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-community-workshop": {
+      "venueId": "castries-community-workshop",
+      "city": "castries",
+      "name": "Spartan Health Science University",
+      "archetype": "campus-block",
+      "subject": "The Spartan Health Science University campus near Vieux Fort: low modern teaching blocks in render with covered walkways",
+      "form": {
+        "footprint": "L",
+        "width_m": 39,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#3f6a8a",
+          "#d98c5f"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "outdoor corridors"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/538375689",
+          "what": "OSM footprint 39.3 x 14.3 m, area 476 m2"
+        }
+      ],
+      "notes": "Private medical school at Vieux Fort. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses. The OSM footprint is an unnamed 39 x 14 m building that contains the venue point."
+    },
+    "castries-market-game": {
+      "venueId": "castries-market-game",
+      "city": "castries",
+      "name": "Rising Sun",
+      "archetype": "shophouse",
+      "subject": "A small roadside house-shop labelled Rising Sun: single storey, painted render with a corrugated gable roof and a front awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d98c5f",
+          "#f2efe6",
+          "#3f6e4f"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/399960352",
+          "what": "OSM footprint 19.8 x 8.1 m, area 161 m2"
+        }
+      ],
+      "notes": "OSM only has building=house here, so the venue is a village shop or bar. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-meal-stop": {
+      "venueId": "castries-meal-stop",
+      "city": "castries",
+      "name": "Hummingbird Beach Resort",
+      "archetype": "hotel",
+      "subject": "Hummingbird Beach Resort near Soufriere: a small low-rise beachfront inn of timber and painted-render cabins around a garden restaurant, seen from the beach road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e4b84a",
+          "#f2efe6",
+          "#3f6e4f"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandahs"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/398218784",
+          "what": "OSM footprint 32.9 x 30 m, area 986 m2"
+        }
+      ],
+      "notes": "OSM gives a hotel footprint about 33 x 30 m at the beachfront. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-node-10017170962": {
+      "venueId": "castries-osm-node-10017170962",
+      "city": "castries",
+      "name": "Oldest Baobab Tree",
+      "archetype": "park-landscape",
+      "subject": "A small fenced green around one very large baobab with a plaque board, in village farmland",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 52,
+        "depth_m": 31,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "tree site"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#6a8f4a",
+          "#b49a7a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8a8f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/397364269",
+          "what": "OSM footprint 52.4 x 30.8 m, area 974 m2"
+        }
+      ],
+      "notes": "The tree itself is the attraction; the contract has no tree feature, so the generator should place one very large trunked broadleaf as the centrepiece. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-node-10649346505": {
+      "venueId": "castries-osm-node-10649346505",
+      "city": "castries",
+      "name": "Rainforest Adventures",
+      "archetype": "park-landscape",
+      "subject": "The Rainforest Adventures park entrance: a timber visitor pavilion with a tin roof and a signed gate at the edge of the rainforest",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "variant": "visitor pavilion"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58b66",
+          "#3f6e4f",
+          "#e4dcc4"
+        ],
+        "roofColour": "#3f6e4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "forest canopy tram/zip-line park"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/920086127",
+          "what": "OSM footprint 13.1 x 7.3 m, area 96 m2"
+        }
+      ],
+      "notes": "Canopy tram and zip-line tour operator. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses. OSM building is 13 x 7 m, 15 m from the point."
+    },
+    "castries-osm-node-4027985616": {
+      "venueId": "castries-osm-node-4027985616",
+      "city": "castries",
+      "name": "Morne Le Blanc Heritage Site",
+      "archetype": "park-landscape",
+      "subject": "A grassy hilltop heritage site with a stone marker and viewing rail overlooking the south coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "hilltop"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6a8f4a",
+          "#9a9482",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8a8f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "natural/heritage",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing about the monument or heritage content was found, no OSM footprint. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-node-5221676738": {
+      "venueId": "castries-osm-node-5221676738",
+      "city": "castries",
+      "name": "Grande Riviere Secondary School",
+      "archetype": "campus-block",
+      "subject": "A rural secondary school: two to three low classroom blocks around a paved yard, painted render with a red/green corrugated roof",
+      "form": {
+        "footprint": "U",
+        "width_m": 75,
+        "depth_m": 69,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e6c8",
+          "#3f6e4f",
+          "#b5473a"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open corridors"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/447856526",
+          "what": "OSM footprint 75.5 x 69.4 m, area 4419 m2"
+        }
+      ],
+      "notes": "OSM amenity=school polygon about 75 x 69 m. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-node-6322922716": {
+      "venueId": "castries-osm-node-6322922716",
+      "city": "castries",
+      "name": "Barre de L'Isle rainforest trail",
+      "archetype": "park-landscape",
+      "subject": "The start of a rainforest trail on the Barre de l'Isle ridge: a timber trailhead shelter, wooden steps and a signboard under tall tree-fern forest",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "trailhead"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#4f7a3a",
+          "#a58b66",
+          "#d8d2c0"
+        ],
+        "roofColour": "#3f6e4f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "trailhead shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A rainforest hiking trail. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-node-7084016329": {
+      "venueId": "castries-osm-node-7084016329",
+      "city": "castries",
+      "name": "St Lucia's farmer market",
+      "archetype": "market-open",
+      "subject": "A village farmers' market: rows of stalls under blue tarps and a long corrugated shed next to the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 56,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e4e0d4",
+          "#3f6e4f",
+          "#7d8587"
+        ],
+        "roofColour": "#3f6e4f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/92800352",
+          "what": "OSM footprint 55.9 x 21.5 m, area 594 m2"
+        }
+      ],
+      "notes": "The OSM building nearest the point (26 m) is the Ministry of Agriculture Extension Office (56 x 22 m), used only for scale; the market itself is not described. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-1430525424": {
+      "venueId": "castries-osm-way-1430525424",
+      "city": "castries",
+      "name": "Grand Rivere Playing Field",
+      "archetype": "park-landscape",
+      "subject": "A flat village playing field of mown grass with goalposts and a small pavilion at one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 72,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "playing field"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#6a8f4a",
+          "#d8d2c0",
+          "#7d8587"
+        ],
+        "roofColour": "#7d8587",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1430525424",
+          "what": "OSM footprint 106.2 x 72.1 m, area 6829 m2"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 106 x 72 m (a pitch). Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-1479934483": {
+      "venueId": "castries-osm-way-1479934483",
+      "city": "castries",
+      "name": "Canaries Village Square",
+      "archetype": "park-landscape",
+      "subject": "Canaries' small paved village square beside the road, with a bench-lined plaza and a few shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "village square"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d2c0",
+          "#b5473a",
+          "#3f6e4f"
+        ],
+        "roofColour": "#7d8587",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1479934483",
+          "what": "OSM footprint 17.2 x 9.5 m, area 152 m2"
+        }
+      ],
+      "notes": "Tiny square, 17 x 10 m. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-257640501": {
+      "venueId": "castries-osm-way-257640501",
+      "city": "castries",
+      "name": "Sulphur Springs",
+      "archetype": "park-landscape",
+      "subject": "The Sulphur Springs geothermal field in a collapsed crater near Soufriere: grey-black bare ground, boiling mud pits with steam plumes and a timber viewing platform with a visitor shed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "geothermal crater"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#4d4a44",
+          "#c9b84a",
+          "#8f8a7e"
+        ],
+        "roofColour": "#3f6e4f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "viewing platform rail"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor shed"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sulphur_Springs,_Saint_Lucia",
+          "what": "crater with boiling springs about 100 C and steam plumes, blackened water and soil, viewing platform a few hundred feet away, Pitons visible in background, ~200,000 visitors a year"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/257640501",
+          "what": "OSM footprint 313.5 x 221.1 m, area 41828 m2"
+        }
+      ],
+      "notes": "The OSM attraction polygon (313 x 221 m) is the whole crater; the generator should clamp to the recognisable crater floor (steaming vents, black mud pools, yellow sulphur stains) with a timber viewing platform. Colours of the ground (black, grey, sulphur-yellow) follow the article text; the visitor shed is inferred."
+    },
+    "castries-osm-way-353009951": {
+      "venueId": "castries-osm-way-353009951",
+      "city": "castries",
+      "name": "Village Inn",
+      "archetype": "restaurant",
+      "subject": "The Village Inn: a long single-storey roadside restaurant with a covered veranda and a painted tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e4b84a",
+          "#f2efe6",
+          "#3f6e4f"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/353009951",
+          "what": "OSM footprint 43 x 20.8 m, area 674 m2"
+        }
+      ],
+      "notes": "OSM amenity=restaurant footprint 43 x 21 m. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-353723748": {
+      "venueId": "castries-osm-way-353723748",
+      "city": "castries",
+      "name": "Savannes Bay",
+      "archetype": "restaurant",
+      "subject": "A small beachside restaurant at Savannes Bay: a timber-and-render hall with an open veranda facing the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8fb3a6",
+          "#f2efe6",
+          "#a58b66"
+        ],
+        "roofColour": "#7d8587",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/353723748",
+          "what": "OSM footprint 19.3 x 12.2 m, area 216 m2"
+        }
+      ],
+      "notes": "Restaurant near the Savannes Bay nature reserve. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-396954377": {
+      "venueId": "castries-osm-way-396954377",
+      "city": "castries",
+      "name": "Owen King EU Hospital",
+      "archetype": "hospital",
+      "subject": "The Owen King European Union Hospital in Castries: a large modern multi-storey hospital complex in white render and blue glazing with several wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 182,
+        "depth_m": 101,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#3f6a8a",
+          "#b5473a"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victoria_Hospital_(Saint_Lucia)",
+          "what": "Victoria Hospital was replaced by the Owen King EU Hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/906514156",
+          "what": "OSM footprint 182.4 x 101.2 m, area 8080 m2"
+        }
+      ],
+      "notes": "Only the replacement role is sourced; no description of the building was found. OSM footprint 182 x 101 m is measured. Storeys/colours are guesses for a modern EU-funded hospital, and the helipad is a guess."
+    },
+    "castries-osm-way-399244147": {
+      "venueId": "castries-osm-way-399244147",
+      "city": "castries",
+      "name": "Choiseul Fish Market",
+      "archetype": "market-hall",
+      "subject": "A small fish-landing market hall by the Choiseul shore: open concrete-floored shed with a corrugated roof and cutting counters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e4e0d4",
+          "#3f6a8a",
+          "#7d8587"
+        ],
+        "roofColour": "#7d8587",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/399244147",
+          "what": "OSM footprint 15.9 x 9 m, area 143 m2"
+        }
+      ],
+      "notes": "OSM amenity=marketplace polygon 16 x 9 m. Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-434000880": {
+      "venueId": "castries-osm-way-434000880",
+      "city": "castries",
+      "name": "American International Medical University",
+      "archetype": "campus-block",
+      "subject": "The AIMU campus building at Gros Islet: a modern three-storey teaching block with a painted render facade and glazed stair core",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#3f6a8a",
+          "#d98c5f"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007+",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1025638481",
+          "what": "OSM footprint 46.9 x 31.7 m, area 1253 m2"
+        }
+      ],
+      "notes": "Medical school founded 2007 (Wikidata inception). Not described in any source found: typed from the Castries city style and the OSM footprint (measured), shape and colours are guesses."
+    },
+    "castries-osm-way-576357922": {
+      "venueId": "castries-osm-way-576357922",
+      "city": "castries",
+      "name": "Daren Sammy Cricket Ground",
+      "archetype": "stadium",
+      "subject": "The Daren Sammy Cricket Ground (formerly Beausejour) at Gros Islet: an oval cricket ground with a covered pavilion stand, hospitality suites, grass banks and six floodlight towers, backed by the Beausejour hills",
+      "form": {
+        "footprint": "oval",
+        "width_m": 210,
+        "depth_m": 195,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "curved",
+        "variant": "cricket oval",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4e0d4",
+          "#1f4e8a",
+          "#f2c230"
+        ],
+        "roofColour": "#2f4a7a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 6,
+          "note": "six towers installed 2006"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2002 (floodlit 2006)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daren_Sammy_Cricket_Ground",
+          "what": "completed 2002; 15,000 standard capacity (13,000 permanent, to 20,000); 18 hospitality suites; pavilion with team lounges, balcony; six floodlight towers 2006; renamed 2016; Beausejour hills; Pavilion End and Media Centre End"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/576357922",
+          "what": "OSM footprint 320.8 x 307.7 m, area 78203 m2"
+        }
+      ],
+      "notes": "Capacity, suites, pavilion and the six floodlights are sourced; the OSM polygon (321 x 308 m) is the whole precinct, so the oval and stands are modelled at ~210 x 195 m. Stand roof colours (blue and yellow seat blocks) are inferred from the ground's team branding and not verified. Note the grass banks and the single big pavilion stand."
+    },
+    "castries-quiet-reflection": {
+      "venueId": "castries-quiet-reflection",
+      "city": "castries",
+      "name": "Minor Basilica of the Immaculate Conception",
+      "archetype": "church-classical",
+      "subject": "The Cathedral Basilica of the Immaculate Conception on Derek Walcott Square: a large 1890s church, the biggest in the Caribbean by length, with a twin-towered front and a long nave",
+      "form": {
+        "footprint": "cross",
+        "width_m": 61,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "gable",
+        "variant": "twin-tower front",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e4b84a",
+          "#f2efe6",
+          "#a8452f"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "round-arched openings"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "interior mural by Dunstan St. Omer"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1894-1897",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_Basilica_of_the_Immaculate_Conception_in_Castries",
+          "what": "200 ft x 100 ft (61 x 30 m), described as the largest church in the Caribbean; foundation stone 1894, completed 1897; designed by Father Scoles; mural by Dunstan St. Omer"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/255580407",
+          "what": "OSM footprint 61 x 39.8 m, area 1801 m2"
+        }
+      ],
+      "notes": "Dimensions, dates, architect and the interior mural are sourced. Exterior details are NOT described by the article: the warm yellow-ochre render with white trim, the pair of front towers and round-arched windows come from general knowledge of the building and are unverified, so confidence is capped at medium. Faces Derek Walcott Square and stands 150 m from the Home pin."
+    },
+    "castries-recreation": {
+      "venueId": "castries-recreation",
+      "city": "castries",
+      "name": "Derek Walcott Square",
+      "archetype": "park-landscape",
+      "subject": "Derek Walcott Square in central Castries: a grassy city square bounded by four streets, with a bandstand, gated entrances, mature shade trees, and the cathedral and library on its edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 82,
+        "depth_m": 68,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "city square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6a8f4a",
+          "#d8d2c0",
+          "#f2efe6"
+        ],
+        "roofColour": "#7d8587",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "19th-20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Derek_Walcott_Square",
+          "what": "bounded by Bourbon, Brazil, Laborie and Micoud Streets; bandstand and gate pictured; Cathedral of the Immaculate Conception and Castries Central Library at the square"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/114732971",
+          "what": "OSM footprint 82.4 x 67.9 m, area 5437 m2"
+        }
+      ],
+      "notes": "Bandstand, gate, boundary streets and neighbours are sourced from the article and photo captions; the statue/monument and the large shade tree are not confirmed by the sources used. Take care: the square sits right next to the basilica (the two venues are about 60 m apart)."
+    },
+    "castries-transit": {
+      "venueId": "castries-transit",
+      "city": "castries",
+      "name": "Castries Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "The SLASPA ferry terminal on the Castries harbour front: a long low waterfront building with an open waiting hall, a flat roof and a quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 113,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#3f6a8a",
+          "#e4b84a"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "ferry quay"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Castries",
+          "what": "harbour receiving ferries, cruise ships; ferries to Fort-de-France, Martinique"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/148893960",
+          "what": "OSM footprint 112.6 x 36.2 m, area 4070 m2"
+        }
+      ],
+      "notes": "Only the footprint (OSM, 113 x 36 m, 340 m from the venue point) and the harbour role are sourced; the building style is a guess for a Caribbean port terminal."
+    }
+  }
+}

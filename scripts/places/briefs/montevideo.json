@@ -1,0 +1,1522 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "montevideo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "montevideo",
+    "climate": "temperate",
+    "vernacular": "Dense grid of two-to-six-storey rendered buildings in cream, ochre, pale yellow and terracotta, many with flat azotea roofs, balconies with iron railings and tall shuttered windows; Ciudad Vieja colonial and Italianate-French eclectic facades with cornices and pilasters; 1930s-40s Art Deco and rationalist apartment blocks in the Centro and Pocitos; brick and exposed-concrete mid-century public buildings; glass-and-concrete malls and towers along the Rambla, with plane trees, tipuanas and palms lining streets and the waterfront.",
+    "wallColours": [
+      "#e2d3b0",
+      "#d9b98a",
+      "#c98a6b",
+      "#ece6d6",
+      "#b9b3a6",
+      "#8b5a44",
+      "#a7b4a0"
+    ],
+    "roofColours": [
+      "#8f8a84",
+      "#a2573f",
+      "#5d625f",
+      "#c7c1b5"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "stucco",
+      "brick",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "clay-tile",
+      "metal-sheet",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Italianate and French eclectic cornices, pilasters, rusticated ground floors and wrought-iron balconies; Art Deco stepped parapets and rounded corners; turn-of-century domed corner towers and mansard roofs; ceramic tile panels; shuttered tall windows.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Uruguay",
+        "what": "Montevideo styles: colonial, Italian and French influenced eclectic buildings (Solis Theatre, Palacio Salvo, Legislative Palace), discreet Art Deco houses, grid plan and Rambla"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Terminal_Tres_Cruces",
+        "what": "brick-based Rossi-influenced contemporary public architecture"
+      }
+    ]
+  },
+  "places": {
+    "montevideo-airport-montevideo-airport": {
+      "venueId": "montevideo-airport-montevideo-airport",
+      "city": "montevideo",
+      "name": "Carrasco General Cesáreo L. Berisso International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 2009 Viñoly terminal seen from the forecourt: a long low curved-roof terminal with a glazed hall and a viewing deck on the top floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#dfe3e4",
+          "#8a949a",
+          "#f3f3f1"
+        ],
+        "roofColour": "#c9cdcf",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "sweeping wing-like roof over departures"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "over 1,200 spaces"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carrasco_International_Airport",
+          "what": "architect Rafael Viñoly, built 2007-2009 parallel to runway 06/24, separate arrivals and departures floors and top-floor viewing area, parking for over 1,200 cars"
+        }
+      ],
+      "notes": "Form, colours and storey count are typed from the type and known Viñoly curved-roof design, not measured; only architect, date, level split and parking are sourced. OSM geometry is only the runway."
+    },
+    "montevideo-clinic": {
+      "venueId": "montevideo-clinic",
+      "city": "montevideo",
+      "name": "Banco de Prótesis",
+      "archetype": "hospital",
+      "subject": "a mid-sized public health building of two to three storeys with plain rendered walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 119,
+        "depth_m": 67,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dccb",
+          "#9aa7ac",
+          "#c4beb0"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM hospital polygon about 119 x 67 m, Wikidata inception 1973 (prosthesis bank); no description of the building found, typed from the city style and type."
+    },
+    "montevideo-community-notices": {
+      "venueId": "montevideo-community-notices",
+      "city": "montevideo",
+      "name": "Residencia Presidencial de Suárez y Reyes",
+      "archetype": "manor",
+      "subject": "the eclectic 1908 presidential villa with a later tower, set in 3.8 ha gardens with mature trees and a rose garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 42,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece4d0",
+          "#b79b72",
+          "#f4f1e8"
+        ],
+        "roofColour": "#6f6a66",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "Carrara marble statues in the rose garden"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "pond"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Residencia_de_Su%C3%A1rez_y_Reyes",
+          "what": "eclectic style by Juan María Aubriot completed 1908; three storeys (basement service, ceremonial first floor, private second); tower added by Karl Trambauer after 1920; 3.8 ha gardens with pond, rose garden with Carrara statues, cedars, tipuanas, bald cypresses, pool"
+        }
+      ],
+      "notes": "Facade colours and roof are not described in the source; light stucco and grey-slate hipped roof typed from the eclectic style. Eclectic (French-inspired) has no STYLES id so neoclassical used. Tower is the later addition."
+    },
+    "montevideo-community-voting-game": {
+      "venueId": "montevideo-community-voting-game",
+      "city": "montevideo",
+      "name": "Canteras del Parque Rodó",
+      "archetype": "park-landscape",
+      "subject": "a large lawned city park of the Parque Rodó with the lake, tree-lined paths and old quarry stone retaining walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 450,
+        "depth_m": 300,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb59f",
+          "#6f9a5a",
+          "#8a8070"
+        ],
+        "roofColour": "#8a8070",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lake"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Parque+Jos%C3%A9+Enrique+Rod%C3%B3",
+          "what": "venue matched to Parque José Enrique Rodó, a 33 ha park in Montevideo"
+        }
+      ],
+      "notes": "OSM park polygon 900 x 600 m (shown cropped); the quarry ('canteras') is not described in any source found, so form is typed from a city park."
+    },
+    "montevideo-community-workshop": {
+      "venueId": "montevideo-community-workshop",
+      "city": "montevideo",
+      "name": "Instituto de Alta Especialización Las Piedras",
+      "archetype": "campus-block",
+      "subject": "a small single-storey rendered school-type building with a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc9",
+          "#7d8f9a",
+          "#c2bcae"
+        ],
+        "roofColour": "#9b9a95",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building tagged school, roof:shape flat, 13.8 x 6.2 m; nothing else found. Typed from the type."
+    },
+    "montevideo-market-game": {
+      "venueId": "montevideo-market-game",
+      "city": "montevideo",
+      "name": "Montevideo Shopping",
+      "archetype": "mall",
+      "subject": "an 1980s mall in Buceo beside the World Trade Center: a wide two-storey rendered block with a glazed entrance and a surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dfd0",
+          "#7f9aa8",
+          "#bdb6a6"
+        ],
+        "roofColour": "#9c9c98",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Montevideo+Shopping",
+          "what": "Wikidata: shopping mall, inception 1985"
+        }
+      ],
+      "notes": "Wikidata inception 1985 and OSM car park polygon 156 x 40 m only; mall body typed from the type."
+    },
+    "montevideo-meal-stop": {
+      "venueId": "montevideo-meal-stop",
+      "city": "montevideo",
+      "name": "Café Brasilero",
+      "archetype": "restaurant",
+      "subject": "a historic corner café in the Ciudad Vieja: a four-level old town building with a ground-floor café behind a preserved period facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 17,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e2d6b8",
+          "#4a3526",
+          "#f2ede0"
+        ],
+        "roofColour": "#8f8a84",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1870s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Caf%C3%A9_Brasilero",
+          "what": "founded 1877; facade and Art Nouveau bronze details and furniture preserved; first establishment declared Bien de Interés Departamental"
+        }
+      ],
+      "notes": "OSM building 22.9 x 17.4 m, 4 levels. Facade colours are typed from the old-town stucco style; the recognisable part is the wood-and-bronze period shopfront. Art Nouveau has no STYLES id."
+    },
+    "montevideo-osm-node-11285163368": {
+      "venueId": "montevideo-osm-node-11285163368",
+      "city": "montevideo",
+      "name": "Instituto Normal de Enseñanza Técnica",
+      "archetype": "campus-block",
+      "subject": "a long three-storey 1960s school block with horizontal window bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#7b8a94",
+          "#b2ab9c"
+        ],
+        "roofColour": "#8d8d89",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM school building 45 x 9.6 m with 3 levels; Wikidata inception 1962 (teacher training institute). Appearance typed from era and type."
+    },
+    "montevideo-osm-node-2623629243": {
+      "venueId": "montevideo-osm-node-2623629243",
+      "city": "montevideo",
+      "name": "Escuela de Parteras",
+      "archetype": "campus-block",
+      "subject": "a low two-storey university school building in rendered masonry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e1d8c2",
+          "#8795a0",
+          "#bdb7a8"
+        ],
+        "roofColour": "#9a9a95",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1940s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM university building 47.4 x 12.8 m; no description found; typed from city style."
+    },
+    "montevideo-osm-node-5978898986": {
+      "venueId": "montevideo-osm-node-5978898986",
+      "city": "montevideo",
+      "name": "Casa Quinta de Luis Alberto de Herrera",
+      "archetype": "manor",
+      "subject": "a small suburban casa quinta villa with a hipped tile roof and a front garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#ebdfc4",
+          "#a8785a",
+          "#f3efe4"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 22.9 x 21.8 m. Historic residence of the politician Luis Alberto de Herrera; nothing describing its look was found, typed as an early-20th-century quinta."
+    },
+    "montevideo-osm-relation-16865136": {
+      "venueId": "montevideo-osm-relation-16865136",
+      "city": "montevideo",
+      "name": "Costa Urbana Shopping",
+      "archetype": "mall",
+      "subject": "a 2010s two-storey suburban mall in Ciudad de la Costa with a surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#6e8d9b",
+          "#b1ada2"
+        ],
+        "roofColour": "#9b9b97",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM relation with a car-park polygon 85 x 65 m only; mall body typed from the type."
+    },
+    "montevideo-osm-relation-19405788": {
+      "venueId": "montevideo-osm-relation-19405788",
+      "city": "montevideo",
+      "name": "Facultad de Ciencias Sociales (Edificio Emilio Fontana)",
+      "archetype": "campus-block",
+      "subject": "the 1931 Vilamajó building of the Faculty of Social Sciences, an eight-level masonry block on Constituyente",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 24,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d9cdb2",
+          "#a05c43",
+          "#efe9da"
+        ],
+        "roofColour": "#8b8a85",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1930s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Facultad_de_Ciencias_Sociales_(Universidad_de_la_Rep%C3%BAblica)",
+          "what": "former Barraca de Emilio Fontán by Julio Vilamajó at Constituyente 1502, Cordón; faculty there since 1991"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Edificio+Emilio+Fontana",
+          "what": "architect Julio Villamajó, 1931, university building"
+        }
+      ],
+      "notes": "OSM: 39.5 x 24.3 m, 8 levels, flat roof. Colours typed from Vilamajó's brick-and-render rationalist work; not confirmed from photos."
+    },
+    "montevideo-osm-way-179188519": {
+      "venueId": "montevideo-osm-way-179188519",
+      "city": "montevideo",
+      "name": "Jardines del Hipódromo",
+      "archetype": "stadium",
+      "subject": "the grandstand and oval track of the Maroñas racecourse in a neighbourhood of low houses",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 145,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d1c4",
+          "#6f8a5d",
+          "#a39d90"
+        ],
+        "roofColour": "#8e8e8a",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM way tagged stadium, 162 x 145 m; the grandstand of the Hipódromo de Maroñas is assumed (no description found). Typed oval stand with an open grass infield."
+    },
+    "montevideo-osm-way-180467229": {
+      "venueId": "montevideo-osm-way-180467229",
+      "city": "montevideo",
+      "name": "Hospital Pasteur",
+      "archetype": "hospital",
+      "subject": "a 1920s public hospital block of about 90 m square, rendered with punched windows",
+      "form": {
+        "footprint": "U",
+        "width_m": 91,
+        "depth_m": 87,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e4dcc8",
+          "#9a9f9a",
+          "#c0b9a8"
+        ],
+        "roofColour": "#9b9a95",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM hospital 90.7 x 86.9 m, Wikidata inception 1922; no descriptive source found. Typed."
+    },
+    "montevideo-osm-way-203747760": {
+      "venueId": "montevideo-osm-way-203747760",
+      "city": "montevideo",
+      "name": "Fortaleza General Artigas (Fortaleza del Cerro)",
+      "archetype": "heritage-fort",
+      "subject": "the 1809 hill fortress of the Cerro: square stone-and-whitewash fort with ramparts and a small white brick lighthouse tower on top",
+      "form": {
+        "footprint": "rect",
+        "width_m": 49,
+        "depth_m": 49,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#d8d0bd",
+          "#f1efe8",
+          "#8a8272"
+        ],
+        "roofColour": "#b8b2a4",
+        "windows": "punched",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "thick sloped walls"
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "white cylindrical lighthouse tower with lantern, about 8 m tall, light 148 m above sea level"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1800s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fortaleza_del_Cerro",
+          "what": "fortress on the highest hill (134 m), construction ordered 1809 by Elío, finished 1839; white cylindrical brick lighthouse tower with balcony and lantern; Military Museum since 1916"
+        }
+      ],
+      "notes": "OSM 49.4 x 48.6 m (castle/museum). Wall material and colour are not in the source; stone with pale render typed. Lighthouse is the recognisable feature and uses the 'mast' id (no lighthouse feature)."
+    },
+    "montevideo-osm-way-205235002": {
+      "venueId": "montevideo-osm-way-205235002",
+      "city": "montevideo",
+      "name": "Zoo Parque Lecocq",
+      "archetype": "park-landscape",
+      "subject": "a 120 ha semi-wild zoo and conservation park on the Santa Lucía wetlands with low visitor buildings, paths and animal enclosures",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 900,
+        "depth_m": 500,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5dcc2",
+          "#6f9a5a",
+          "#b38b66"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 3,
+          "note": "animal houses"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Lecocq",
+          "what": "120 ha zoo about 19.5 km from the centre bordering the Santa Lucía wetlands; animals in semi-freedom; native woodland path; bird-watching lookout"
+        }
+      ],
+      "notes": "Layout is only described in words; buildings typed as simple low pavilions in rustic style. Shown cropped to the entrance area."
+    },
+    "montevideo-osm-way-243734894": {
+      "venueId": "montevideo-osm-way-243734894",
+      "city": "montevideo",
+      "name": "Hospital Vilardebó",
+      "archetype": "hospital",
+      "subject": "the 1880 psychiatric hospital: a long monumental pavilion complex with interior courtyards and a central chapel in a loosely Romanesque-classical style",
+      "form": {
+        "footprint": "H",
+        "width_m": 153,
+        "depth_m": 108,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e0d5b8",
+          "#b9a37c",
+          "#f1ecde"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "central chapel on the axis"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1880s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Vilardeb%C3%B3",
+          "what": "engineer Eduardo Canstatt (Beaux-Arts), monumental pavilions and interior courtyards, vaguely Romanesque with classical elements, central chapel facing the entrance vestibule, annex pavilions late 19th century"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hospital_Vilardeb%C3%B3",
+          "what": "opened 21 May 1880 on Avenida Millán, about 300 beds, in poor repair"
+        }
+      ],
+      "notes": "Footprint 152.8 x 108.1 m from OSM. Colours typed (rendered, weathered cream); storey count and roof are not in sources."
+    },
+    "montevideo-osm-way-283022176": {
+      "venueId": "montevideo-osm-way-283022176",
+      "city": "montevideo",
+      "name": "Antel Arena",
+      "archetype": "stadium",
+      "subject": "the 2018 indoor arena built on the site of the Cilindro Municipal: a large rounded metal-clad hall seating 10,000-15,000",
+      "form": {
+        "footprint": "oval",
+        "width_m": 139,
+        "depth_m": 93,
+        "storeys": 5,
+        "height_m": 32,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#cfd3d6",
+          "#4f5d68",
+          "#eef0f0"
+        ],
+        "roofColour": "#aab0b4",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antel_Arena",
+          "what": "multi-purpose indoor arena, about 15,000 for concerts and 10,000 for basketball, architects Bacchetta, Flores and Carámbula, opened 12 Nov 2018 on the former Cilindro Municipal site"
+        }
+      ],
+      "notes": "OSM footprint 139 x 93 m. Exterior cladding and colour are typed as a modern metal-clad bowl; not described in the source."
+    },
+    "montevideo-osm-way-37519468": {
+      "venueId": "montevideo-osm-way-37519468",
+      "city": "montevideo",
+      "name": "Capilla Santuario de la Beata Francisca Rubatto",
+      "archetype": "shrine-small",
+      "subject": "a small Catholic chapel with a gable roof and a modest frontispiece",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eee6d3",
+          "#a07a58",
+          "#f6f2e8"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM chapel 27.7 x 10.5 m; sanctuary of Blessed Francesca Rubatto (Capuchin sisters). No description of the building found."
+    },
+    "montevideo-osm-way-37663273": {
+      "venueId": "montevideo-osm-way-37663273",
+      "city": "montevideo",
+      "name": "Estadio Parque Abraham Paladino",
+      "archetype": "stadium",
+      "subject": "a small 8,000-seat football ground with open concrete stands around a grass pitch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 137,
+        "depth_m": 97,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcac0",
+          "#3f6aa0",
+          "#a9a496"
+        ],
+        "roofColour": "#8f8f8b",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Parque_Abraham_Paladino",
+          "what": "capacity 8,000, grass pitch, opened 1983, home ground of CA Progreso"
+        }
+      ],
+      "notes": "Capacity, surface and date are sourced; stands, roof and colours are typed (the blue accent is a guess)."
+    },
+    "montevideo-osm-way-734281143": {
+      "venueId": "montevideo-osm-way-734281143",
+      "city": "montevideo",
+      "name": "Parroquía Stella Maris",
+      "archetype": "church-modern",
+      "subject": "a mid-century parish church with a gabled nave and a tall slim bell tower, in a seaside suburb",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe9dc",
+          "#9c8a6c",
+          "#f7f4ec"
+        ],
+        "roofColour": "#8a5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Stella+Maris+Montevideo",
+          "what": "Wikidata: church building and cultural property in Montevideo"
+        }
+      ],
+      "notes": "OSM church 52.9 x 26.6 m only. Style and era are guesses; low."
+    },
+    "montevideo-osm-way-81796454": {
+      "venueId": "montevideo-osm-way-81796454",
+      "city": "montevideo",
+      "name": "Punta Carretas Shopping",
+      "archetype": "mall",
+      "subject": "the 1915 Punta Carretas prison converted into a mall in 1994: a heavy stone castle-like facade with a central arch entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b8ab93",
+          "#7d9aa8",
+          "#d9d1bf"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "preserved prison entrance arch"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1910s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Punta_Carretas_Shopping",
+          "what": "former Punta Carretas Penitentiary opened 1915, architect Domingo Sanguinetti; made of stone and masonry; arch and exterior facade retained; converted 1994 by López and Rodríguez; 3 floors, 210 stores"
+        }
+      ],
+      "notes": "Crenellation and the glass atrium are from general knowledge of the building, not the source; stone colour typed. Footprint approximated (OSM car park only)."
+    },
+    "montevideo-quiet-reflection": {
+      "venueId": "montevideo-quiet-reflection",
+      "city": "montevideo",
+      "name": "Santuario Nacional de María Auxiliadora",
+      "archetype": "church-gothic",
+      "subject": "the 1877 Salesian shrine in Colón: a gabled church with a front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc2",
+          "#a58f6c",
+          "#f3eddd"
+        ],
+        "roofColour": "#7d6a5c",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1870s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM church 31 x 16.5 m; Wikidata inception 1877. The Spanish Wikipedia page found under this name is for a Mexican shrine and was NOT used. Style is typed."
+    },
+    "montevideo-recreation": {
+      "venueId": "montevideo-recreation",
+      "city": "montevideo",
+      "name": "Parque Fernando Garcia",
+      "archetype": "park-landscape",
+      "subject": "a large lawned park in Carrasco with a historic villa museum, tall trees and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 500,
+        "depth_m": 320,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#eadfc6",
+          "#6f9a5a",
+          "#b59878"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "villa museum"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Museo+Fernando+Garc%C3%ADa",
+          "what": "Wikidata: Fernando García Museum, museum and park"
+        }
+      ],
+      "notes": "OSM park 507 x 317 m; villa form is typed (no description found)."
+    },
+    "montevideo-transit": {
+      "venueId": "montevideo-transit",
+      "city": "montevideo",
+      "name": "Terminal Tres Cruces",
+      "archetype": "transport-station",
+      "subject": "the 1994 Tres Cruces bus terminal and mall in dark brick, with a tower, emergent skylights and long bus platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 178,
+        "depth_m": 106,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#9b5a45",
+          "#bfb7a8",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 42,
+          "note": "platforms"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "Rossi-style tower"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Terminal_Tres_Cruces",
+          "what": "studio of Guillermo Gómez Platero, Aldo Rossi-influenced: control tower, emergent skylights, dominant axes, extensive brick; 42 platforms; built area 80,000 m2 after expansion; about 200 shop units"
+        }
+      ],
+      "notes": "Footprint 178 x 106 m (OSM, bus station + retail). Brick red tone is typed from 'extensive use of brick'."
+    }
+  }
+}

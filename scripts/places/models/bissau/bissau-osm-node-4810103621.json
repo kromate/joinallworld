@@ -1,0 +1,202 @@
+{
+ "name": "Rasoi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small Indian-style restaurant in a rendered single-storey shopfront; OSM building nearest at 12 m, not a name match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d8b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "parapet": 0.5,
+    "bands": "#b5503a",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    0,
+    -4.9
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     0.3
+    ],
+    "z0": 3.0,
+    "height": 1.1,
+    "colour": "#b5503a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door",
+   "at": [
+    -3.5,
+    -4.56
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "z0": 0,
+    "height": 2.3,
+    "colour": "#5a3e2e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shopfront-glass",
+   "at": [
+    2.6,
+    -4.55
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.15
+    ],
+    "z0": 0.6,
+    "height": 1.8,
+    "colour": "#7f9aa0"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.8,
+    "height": 2.7,
+    "colours": [
+     "#b5503a",
+     "#e8d8b0"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    -7.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -7.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -11,
+    5.5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 2.0,
+    "thickness": 0.25,
+    "colour": "#c9c3b3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    -6
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 1,
+    "spread": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-node-4810103621",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: plain rendered shopfront typical of the city, real facade unknown"
+ }
+}

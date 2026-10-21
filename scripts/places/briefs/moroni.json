@@ -1,0 +1,1328 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "moroni",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "moroni",
+    "climate": "tropical-maritime",
+    "vernacular": "Swahili-influenced Comorian towns: the Moroni medina of narrow alleys with lime-plastered coral-stone houses with carved wooden doors beside a small harbour; elsewhere 1-3 storey concrete-block buildings in painted render (white, cream, pastel blue/green, ochre) with corrugated metal roofs, black volcanic basalt walls near Karthala, flat concrete slab roofs with rebar, palms and mango/breadfruit trees.",
+    "wallColours": [
+      "#f0ebe0",
+      "#d8cfb8",
+      "#b9a58a",
+      "#8fb0b8",
+      "#d9b98a",
+      "#c4705a",
+      "#3f3b38"
+    ],
+    "roofColours": [
+      "#8a8f94",
+      "#a14a35",
+      "#5c5f62",
+      "#3f6f5b"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "render",
+      "stone",
+      "concrete",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Carved wooden doors and lintels with Swahili/Arab geometric motifs, lime-plastered niches and arches (mihrab-style), slender round-section minarets added in the 20th century, black lava-stone wall bases, green and white mosque trim.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Moroni,_Comoros",
+        "what": "Moroni medina of narrow alleys, Old Friday (Badjanani) Mosque built 1427, minaret added 1921, Swahili civilisation, small harbour, Volo Volo market"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Culture_of_the_Comoros",
+        "what": "Comoros part of Swahili cultural complex; small and large mosques built"
+      }
+    ]
+  },
+  "places": {
+    "moroni-airport-moroni-airport": {
+      "venueId": "moroni-airport-moroni-airport",
+      "city": "moroni",
+      "name": "Prince Said Ibrahim International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the small Hahaya international terminal: a low whitewashed block with a flat canopy and a small control tower, apron beyond (2,900 m runway)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#3f6f8a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Prince_Said_Ibrahim_International_Airport",
+          "what": "runway 2,900 m, 28 m elevation, near Hahaya"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Moroni,_Comoros",
+          "what": "airport at Hahaya, 15 km north; flights to Ethiopia, Tanzania, Reunion, Kenya"
+        }
+      ],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Wikipedia gives only the 2,900 x 45 m runway, 28 m elevation, location at Hahaya about 15 km north of Moroni; terminal size and appearance are assumed."
+    },
+    "moroni-clinic": {
+      "venueId": "moroni-clinic",
+      "city": "moroni",
+      "name": "Centre de sante de Mitsoudje",
+      "archetype": "hospital",
+      "subject": "a single-storey village health centre with a long covered veranda, painted render and a red-cross board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#8fb0b8",
+          "#c8c3b5"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-community-notices": {
+      "venueId": "moroni-community-notices",
+      "city": "moroni",
+      "name": "Marche de Bangoi",
+      "archetype": "market-open",
+      "subject": "a village market at Bangoi: roofed stalls and tables on an open courtyard of packed ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#8fb0b8",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. The game kind says statehouse, but the name is a market."
+    },
+    "moroni-community-voting-game": {
+      "venueId": "moroni-community-voting-game",
+      "city": "moroni",
+      "name": "Hotel de Ville Bambao Ya Djou",
+      "archetype": "civic-small",
+      "subject": "a small town hall: a two-storey whitewashed block with a front stair, flagpole and corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#a14a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-community-workshop": {
+      "venueId": "moroni-community-workshop",
+      "city": "moroni",
+      "name": "Bibliotheque",
+      "archetype": "campus-block",
+      "subject": "a small public library: a one- to two-storey block of painted render with a flat concrete roof and a shaded front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#b9a58a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-market-game": {
+      "venueId": "moroni-market-game",
+      "city": "moroni",
+      "name": "2eme marche",
+      "archetype": "market-open",
+      "subject": "a secondary market: a cluster of lock-up stalls and tarpaulin-roofed tables along a street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#c4705a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-meal-stop": {
+      "venueId": "moroni-meal-stop",
+      "city": "moroni",
+      "name": "Le Voyageur",
+      "archetype": "restaurant",
+      "subject": "a small roadside restaurant near the airport: a single-storey block with a terrace and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9b98a",
+          "#8fb0b8",
+          "#f0ebe0"
+        ],
+        "roofColour": "#a14a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Signage must stay blank."
+    },
+    "moroni-osm-node-12222798279": {
+      "venueId": "moroni-osm-node-12222798279",
+      "city": "moroni",
+      "name": "Restau Maman Choureik",
+      "archetype": "restaurant",
+      "subject": "a modest family restaurant: a one-storey painted-render house with a shaded front terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c4705a",
+          "#f0ebe0",
+          "#8fb0b8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-osm-node-13076688783": {
+      "venueId": "moroni-osm-node-13076688783",
+      "city": "moroni",
+      "name": "Stade Omni Sport",
+      "archetype": "stadium",
+      "subject": "a small town sports ground: a pitch ringed by low concrete terraces with one covered stand and a fence",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#3f6f8a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. OSM node only; may be a multi-sport court rather than a stadium."
+    },
+    "moroni-osm-node-13885184807": {
+      "venueId": "moroni-osm-node-13885184807",
+      "city": "moroni",
+      "name": "Marche de Boeni Bambao",
+      "archetype": "market-open",
+      "subject": "a village market at Boeni: roofed stalls around an open square under shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#c4705a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-osm-node-4784675163": {
+      "venueId": "moroni-osm-node-4784675163",
+      "city": "moroni",
+      "name": "Karthala Crater Viewpoint",
+      "archetype": "park-landscape",
+      "subject": "a bare viewpoint on the black volcanic slopes of Mount Karthala, with a rough path and a signboard",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#3f3b38",
+          "#6b6760",
+          "#f0ebe0"
+        ],
+        "roofColour": "#6b6760",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. A natural volcanic viewpoint (Karthala is an active shield volcano); no structures are known. Ground should read as dark lava rock."
+    },
+    "moroni-osm-node-6360018986": {
+      "venueId": "moroni-osm-node-6360018986",
+      "city": "moroni",
+      "name": "Starting Point Road to Karthala (380 m)",
+      "archetype": "park-landscape",
+      "subject": "the lowland trailhead of the Karthala road at 380 m: a track edge with a signboard among palms and lava stone",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#3f3b38",
+          "#6b6760",
+          "#f0ebe0"
+        ],
+        "roofColour": "#6b6760",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Waypoint marker; no building."
+    },
+    "moroni-osm-node-6360028085": {
+      "venueId": "moroni-osm-node-6360028085",
+      "city": "moroni",
+      "name": "End of the 4x4 road (1580 m)",
+      "archetype": "park-landscape",
+      "subject": "the end of the 4x4 track at 1,580 m: a cleared turning area of dark volcanic soil at the forest edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#3f3b38",
+          "#6b6760",
+          "#f0ebe0"
+        ],
+        "roofColour": "#6b6760",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Waypoint marker; no building. Highland forest edge, so broadleaf trees."
+    },
+    "moroni-osm-node-8804811617": {
+      "venueId": "moroni-osm-node-8804811617",
+      "city": "moroni",
+      "name": "Chez Bruno",
+      "archetype": "restaurant",
+      "subject": "a seaside restaurant on the north-east coast: a one-storey painted building with a thatch-like terrace roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#8fb0b8",
+          "#c4705a"
+        ],
+        "roofColour": "#a8744f",
+        "roofMaterial": "thatch",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Roof tint suggests thatch but this is an assumption."
+    },
+    "moroni-osm-way-1426392579": {
+      "venueId": "moroni-osm-way-1426392579",
+      "city": "moroni",
+      "name": "Poste de Sante",
+      "archetype": "hospital",
+      "subject": "a small village health post: a single-storey rectangular block in painted render with a red-cross board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#8fb0b8",
+          "#c8c3b5"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-osm-way-1430217861": {
+      "venueId": "moroni-osm-way-1430217861",
+      "city": "moroni",
+      "name": "Marche public",
+      "archetype": "market-hall",
+      "subject": "a public market building: a long covered hall with open sides, concrete pillars and a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8cfb8",
+          "#8fb0b8",
+          "#f0ebe0"
+        ],
+        "roofColour": "#a14a35",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Larger than the open village markets in this city; contrast intended."
+    },
+    "moroni-osm-way-390008871": {
+      "venueId": "moroni-osm-way-390008871",
+      "city": "moroni",
+      "name": "Plais Trambwe",
+      "archetype": "shrine-small",
+      "subject": "a small old coral-stone building at Trambwe, whitewashed, with a carved wooden door and flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#b9a58a",
+          "#6b6760"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved door frame"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "swahili",
+      "era": "historic",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. The name suggests a palace (plais = palais) but OSM tags it as worship; what the building actually is was not found. Treated as a small Comorian whitewashed coral-stone building."
+    },
+    "moroni-osm-way-392920702": {
+      "venueId": "moroni-osm-way-392920702",
+      "city": "moroni",
+      "name": "Universite des Comores, Faculte des Lettres et Sciences Humaines",
+      "archetype": "campus-block",
+      "subject": "a two-storey faculty building around a small yard with open corridors and painted render",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Faculties are separate buildings across the island; this is the arts one."
+    },
+    "moroni-osm-way-397444369": {
+      "venueId": "moroni-osm-way-397444369",
+      "city": "moroni",
+      "name": "Universite des Comores, Faculte des Sciences et Technologies",
+      "archetype": "campus-block",
+      "subject": "a three-storey science block: a long rectangular concrete building with ribbon windows and a stair core",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d4c8",
+          "#3f6f8a",
+          "#f0ebe0"
+        ],
+        "roofColour": "#9a9e9f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Contrast with the arts faculty (U-shaped) is a design choice, not documented."
+    },
+    "moroni-osm-way-452194135": {
+      "venueId": "moroni-osm-way-452194135",
+      "city": "moroni",
+      "name": "Zainaba Said",
+      "archetype": "mosque-domed",
+      "subject": "a small neighbourhood mosque: a white prayer hall with a single slender minaret and a flat or low-pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ebe0",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. OSM tags it as worship; whether it is a mosque or a shrine was not found."
+    },
+    "moroni-osm-way-485209014": {
+      "venueId": "moroni-osm-way-485209014",
+      "city": "moroni",
+      "name": "Universite des Comores, Direction et Administration",
+      "archetype": "campus-block",
+      "subject": "the university administration building: a two-storey formal block with a central entrance, flagpoles and a small forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#a14a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. "
+    },
+    "moroni-osm-way-646081451": {
+      "venueId": "moroni-osm-way-646081451",
+      "city": "moroni",
+      "name": "Stade Olympique de Malouzini",
+      "archetype": "stadium",
+      "subject": "the national stadium at Malouzini-Ikoni: a modern oval bowl with covered stands, floodlight masts and an athletics track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6e2d8",
+          "#3f8f6a",
+          "#c8372d"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. The national football venue of Comoros, recalled as a Chinese-assisted build; capacity, roof and colours were not verified."
+    },
+    "moroni-quiet-reflection": {
+      "venueId": "moroni-quiet-reflection",
+      "city": "moroni",
+      "name": "Ancienne Mosquee du Vendredi",
+      "archetype": "mosque-domed",
+      "subject": "the Old Friday (Badjanani) Mosque in the Moroni medina by the harbour: a whitewashed 15th-century prayer hall with a tall round white minaret added in 1921",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f0ebe0",
+          "#3f8f6a",
+          "#c8c3b5"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "1921 minaret"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "swahili",
+      "era": "1427; minaret 1921",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moroni,_Comoros",
+          "what": "oldest mosque in the medina, built 1427, minaret 1921; medina of narrow alleys"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Culture_of_the_Comoros",
+          "what": "port photo shows Badjanani mosque; Swahili mosque tradition"
+        }
+      ],
+      "notes": "Wikipedia: the oldest mosque in the Moroni medina, built 1427, minaret added 1921, next to the old harbour. Size, colours (white-washed with green trim) and pitched roof are from recalled photos and the Swahili coast tradition, not from the article. Has no large dome; keep the roof plain and the minaret slender."
+    },
+    "moroni-recreation": {
+      "venueId": "moroni-recreation",
+      "city": "moroni",
+      "name": "Ancien terrain de foot",
+      "archetype": "park-landscape",
+      "subject": "a worn open football pitch: bare grass with simple goalposts and a few shade trees at the edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#8fb0b8",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. A disused pitch; no stands."
+    },
+    "moroni-transit": {
+      "venueId": "moroni-transit",
+      "city": "moroni",
+      "name": "Gare du Nord",
+      "archetype": "transport-station",
+      "subject": "a northern taxi and bus park: a paved open lot with bus bays, a small shelter and kiosks (the Comoros has no railway)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8cfb8",
+          "#8fb0b8",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: no source describing this specific place was found, so the brief is a typed guess from the Comoros/Moroni city style and the place type. Comoros has no railway, so 'gare' means a taxi-brousse station."
+    }
+  }
+}

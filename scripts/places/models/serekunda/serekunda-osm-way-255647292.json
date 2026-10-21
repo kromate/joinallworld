@@ -1,0 +1,230 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255647292",
+   "used": "stadium outline for the perimeter wall and pitch orientation (bearing 8 deg)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: small ground, one covered stand, four floodlights, scoreboard, 1950s colonial; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "id": "perimeter",
+   "params": {
+    "points": [
+     [
+      -59,
+      -67.9
+     ],
+     [
+      -53.1,
+      -7.5
+     ],
+     [
+      -58.4,
+      -7.3
+     ],
+     [
+      -56.5,
+      7.2
+     ],
+     [
+      -42.2,
+      82.3
+     ],
+     [
+      -16.7,
+      78.8
+     ],
+     [
+      -7.1,
+      77.1
+     ],
+     [
+      60.8,
+      68.1
+     ],
+     [
+      44.5,
+      -83.6
+     ],
+     [
+      -59,
+      -67.9
+     ]
+    ],
+    "height": 2.6,
+    "thickness": 0.4,
+    "pillarEvery": 6,
+    "colour": "#d9d4c6"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    -2,
+    0,
+    0
+   ],
+   "rotDeg": 98,
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stadium-stand",
+   "id": "main-stand",
+   "at": [
+    -40,
+    -2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 58,
+    "depth": 14,
+    "height": 8,
+    "roof": "cantilever",
+    "rear": "ribbon",
+    "storeys": 2,
+    "seat_colour": "#2f6b4f",
+    "seat_colour2": "#f1ece0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    70,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -66,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    54,
+    62,
+    0
+   ],
+   "params": {
+    "height": 30
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    50,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 10,
+    "height": 4.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-house",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    -76
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8286",
+    "parapet": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-255647292",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo: outline from OSM, stand position/size, floodlights and scoreboard are assumptions from the brief; outline exceeds 120 m clamp"
+ }
+}

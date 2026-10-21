@@ -1,0 +1,318 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mosqu%C3%A9e_Saheb_Ettabaa.JPG",
+   "licence": "Public domain",
+   "author": "Rais67",
+   "view": "side",
+   "file": "/tmp/places-evidence/tunis/mosque.jpg",
+   "used": "sandstone ashlar walls #b99a74, green glazed-tile eave line, white round-arched gallery with dark railing, square sandstone minaret with white arched lantern, green octagonal balcony and pointed green cap with finial balls (OSM names this venue's building Saheb Ettaba mosque, 1814)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95132593",
+   "used": "compound outline of the mosque (93 x 77 m, mapped as Saheb Ettaba)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "compound",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b99a74",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a98d69",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    -4,
+    -2
+   ],
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b99a74",
+    "windows": "rect",
+    "windowRatio": 0.06,
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b55",
+    "material": "clay-tile",
+    "pitch": 12,
+    "overhang": 0.8
+   },
+   "z0": 2.6
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    -4,
+    -17.6,
+    2.6
+   ],
+   "params": {
+    "length": 34,
+    "height": 5.2,
+    "thickness": 2.6,
+    "bays": 6,
+    "shape": "arch",
+    "recess": 1.1,
+    "roof": true,
+    "colour": "#f0e8d6",
+    "trim": "#cfc3a8",
+    "cap_colour": "#2f6b55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -17.9,
+    7.9
+   ],
+   "params": {
+    "rect": [
+     35,
+     3.2
+    ],
+    "height": 0.5,
+    "colour": "#2f6b55"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#b99a74",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.6,
+       4.6
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       4.0,
+       4.0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    -14,
+    26
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e9e3d6",
+    "profile": [
+     [
+      2.5,
+      0
+     ],
+     [
+      2.5,
+      2.2
+     ],
+     [
+      2.6,
+      2.4,
+      "#2f5f9a"
+     ],
+     [
+      2.6,
+      3.2,
+      "#f4f4f0"
+     ],
+     [
+      2.5,
+      3.4,
+      "#2f5f9a"
+     ],
+     [
+      2.5,
+      4.2
+     ],
+     [
+      3.3,
+      4.5,
+      "#2f6b55"
+     ],
+     [
+      3.3,
+      4.9
+     ],
+     [
+      2.2,
+      5.0,
+      "#e9e3d6"
+     ],
+     [
+      2.2,
+      7.0
+     ],
+     [
+      2.8,
+      7.3,
+      "#2f6b55"
+     ],
+     [
+      2.8,
+      7.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    -14,
+    33.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2f6b55",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      1.9,
+      1.0
+     ],
+     [
+      1.0,
+      4.0
+     ],
+     [
+      0.0,
+      8.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    -14,
+    41.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#c9b27a",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.5,
+      0.5
+     ],
+     [
+      0.25,
+      1.0
+     ],
+     [
+      0.5,
+      1.5
+     ],
+     [
+      0.2,
+      2.0
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.0,
+    "kind": "wall",
+    "colour": "#d8cdb6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Arcade reads as glazed arched windows rather than open bays with paired columns and railing; minaret shaft is a plain square taper with no octagonal tile detailing; compound is the OSM block rather than a low wall; venue identified as Saheb Ettaba via OSM."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-quiet-reflection"
+}

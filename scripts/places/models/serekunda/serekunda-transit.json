@@ -1,0 +1,215 @@
+{
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; one nearest OSM shed plus typed canopies, kiosks and minibuses."
+ },
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/765451897",
+   "used": "the nearest building (22.7 x 11.8 m, bearing 141, 18 m from the venue point) as the main shed; match is nearest quality, so lot layout is typed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true,
+    "fit": 40
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9a49b",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-a",
+   "footprint": {
+    "rect": [
+     16,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    -10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b04a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-b",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    28,
+    8
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#4f6f8a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8286",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       2.4,
+       2.4
+      ]
+     },
+     "height": 2.4,
+     "storeys": 1,
+     "wall": {
+      "material": "render",
+      "colour": "#b04a3a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#7d8286",
+      "overhang": 0.4
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -14,
+     -24
+    ],
+    "end": [
+     10,
+     -24
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#d9d5c8",
+      "count": 1
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -30,
+     18
+    ],
+    "end": [
+     20,
+     18
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 2.2,
+    "colour": "#b04a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    34,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#4f6f8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-transit"
+}

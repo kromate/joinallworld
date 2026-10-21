@@ -1,0 +1,1611 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bauchi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bauchi",
+    "climate": "savanna",
+    "vernacular": "Plateau-edge Sudan savanna city of Hausa-Fulani emirate heritage: old quarters of thick mud-render compounds inside the remains of the 19th-century city wall, surrounded by newer 1-3 storey painted-render and block houses with rust-coloured or green corrugated metal roofs behind high compound walls, and concrete government blocks from the 1976 state-capital era. Dry red-brown laterite ground, neem and mango shade trees, granite outcrops and kopjes on the skyline.",
+    "wallColours": [
+      "#e8dcc0",
+      "#f2efe6",
+      "#b98e66",
+      "#9fc2b0",
+      "#a8a39a",
+      "#a8553a"
+    ],
+    "roofColours": [
+      "#8a4a32",
+      "#3f6b4e",
+      "#8d9296",
+      "#a8a39a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "mud-render",
+      "concrete",
+      "laterite",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Hausa mud-render compounds with rounded parapet corners and relief-pattern bands on gate houses and palace walls (zanko-style entrance halls), pointed-arch windows and green/white paint on mosques, plain painted-render faces with metal burglar-guards on modern buildings. Colours are typical regional palette values chosen from the sources below, not sampled from photographs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bauchi",
+        "what": "climate (hot, 14-38 C, savanna south / Sahelian north), Bauchi Plateau, Emir palace photo, Yankari"
+      },
+      {
+        "url": "https://kupi.com/en/explore/nigeria/bauchi/history",
+        "what": "city founded 1809 by Yakubu, c.10.5 km of defensive walls (low-authority source, used only for the wall history)"
+      },
+      {
+        "url": "https://guardian.ng/?p=1114860",
+        "what": "pre-colonial northern Nigerian architecture: mud walls, wooden beams, earth/thatch roofs"
+      },
+      {
+        "url": "https://www.islamicarchitecturalheritage.com/?p=1304",
+        "what": "Hausa palace/ gate architecture context (mostly Kano)"
+      }
+    ]
+  },
+  "places": {
+    "alhamus-restaurant-bauchi": {
+      "venueId": "alhamus-restaurant-bauchi",
+      "city": "bauchi",
+      "name": "Alhamus",
+      "archetype": "restaurant",
+      "subject": "a small single-storey roadside eatery with a forecourt awning and a few outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#9fc2b0",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "front shade awning over seating"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of this eatery was found. Typed brief from the Bauchi city style and the type (buka/restaurant). Not a documented building."
+    },
+    "atbu-stadium-bauchi": {
+      "venueId": "atbu-stadium-bauchi",
+      "city": "bauchi",
+      "name": "Abubakar Tafawa Balewa Stadium",
+      "archetype": "stadium",
+      "subject": "the 1985 Bauchi state stadium (home of Wikki Tourists) with a covered main stand, floodlight masts and a scoreboard behind one goal",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b4aa",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#6f7a80",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand only"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "energy-saving floodlight masts"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "FIFA-standard scoreboard / LED display"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter wall"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abubakar_Tafawa_Balewa_Stadium",
+          "what": "opened 1985, capacity 15,000, floodlights, FIFA-standard scoreboard + LED display, CCTV, media centre, 10-lane Olympic pool, 3 matches at the 2009 FIFA U-17 World Cup, 2024 plan to expand to 30,000"
+        }
+      ],
+      "notes": "Facts (capacity, floodlights, scoreboard, 1985) are sourced; the stand layout, roof and colours are not described anywhere found, so they are typed from similar Nigerian state stadiums. Soccerway lists 11,000 capacity; Wikipedia 15,000. Model the single main-stand roof, not a full bowl."
+    },
+    "atbu-teaching-hospital-bauchi": {
+      "venueId": "atbu-teaching-hospital-bauchi",
+      "city": "bauchi",
+      "name": "Abubakar Tafawa Balewa University Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "the main administrative and ward block of the federal teaching hospital (began as a leprosarium in 1918) with a gated entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 95,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#3f8f9a",
+          "#a8a39a"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign, no brand"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main gate"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "access galleries to wards"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1918 origin; mostly late 20th century blocks",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://atbuth.gov.ng/",
+          "what": "began as a leprosarium in 1918, became general then specialist hospital, federal teaching hospital since 2010"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abubakar_Tafawa_Balewa_University_Teaching_Hospital",
+          "what": "photo captions: main gate, administrative block, eye complex (no written description)"
+        }
+      ],
+      "notes": "History and the existence of a main gate, admin block and eye complex are sourced; their appearance is not. Form is typed from a Nigerian federal teaching hospital. Will read as a multi-block hospital rather than one landmark."
+    },
+    "atbu-yelwa-campus-bauchi": {
+      "venueId": "atbu-yelwa-campus-bauchi",
+      "city": "bauchi",
+      "name": "ATBU Yelwa Campus",
+      "archetype": "campus-block",
+      "subject": "a lecture and administration block of the Abubakar Tafawa Balewa University main campus at Yelwa, with the entrance gate arch in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#f2efe6",
+          "#a8553a",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1,
+          "note": "concrete sun-shading on west face"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "university gate"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "access galleries"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abubakar_Tafawa_Balewa_University",
+          "what": "founded 1980 as Federal University of Technology Bauchi; library 1981 with 1,000+ seats; university gate photographed"
+        }
+      ],
+      "notes": "Only the founding dates and the existence of a gate and library are known; appearance is typed as a 1980s Nigerian federal university teaching block."
+    },
+    "bauchi-central-mosque": {
+      "venueId": "bauchi-central-mosque",
+      "city": "bauchi",
+      "name": "Bauchi Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "the city central (Jumaat) mosque: a broad prayer hall under one main dome flanked by two minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f2efe6",
+          "#3f6b4e",
+          "#c9b48a"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "tall paired minarets, about 30 m"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arcaded entrance"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Searches found no description of this mosque. Typed brief of a Nigerian state central mosque (one dome, two minarets, green/white). Treat dimensions as a guess."
+    },
+    "bauchi-government-house": {
+      "venueId": "bauchi-government-house",
+      "city": "bauchi",
+      "name": "Government House",
+      "archetype": "civic-palace",
+      "subject": "the Bauchi Government House complex, reconstructed 2021-2024 with a conference centre and governor residence behind a gated forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#b9a98a",
+          "#8d9296"
+        ],
+        "roofColour": "#6a7075",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "columned entrance portico"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high perimeter wall and guard gate"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small central cupola on the conference centre"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "neoclassical",
+      "era": "rebuilt 2021-2024 (original 1976)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nannews.ng/2021/03/06/gov-bala-commissions-n6-2bn-govt-house-rehabilitation-project",
+          "what": "original built 1976, reconstruction ordered 2021 at N6.2bn"
+        },
+        {
+          "url": "https://thesun.ng/vice-president-shettima-commissions-new-bauchi-state-government-house-complex/",
+          "what": "new complex inaugurated May 2024: International Conference Centre, governor residence, staff residences"
+        }
+      ],
+      "notes": "Construction history is sourced; the architecture is not described in any text found. The neoclassical portico/hip-roof look is typed from Nigerian state government houses and is a guess."
+    },
+    "bauchi-local-government-secretariat": {
+      "venueId": "bauchi-local-government-secretariat",
+      "city": "bauchi",
+      "name": "Local Government Secretariat",
+      "archetype": "office-low",
+      "subject": "a 2-storey local-government office block with an external staircase and a flag pole in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#a8553a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open access gallery"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this building; typed from the Bauchi city style and typical Nigerian LGA secretariats."
+    },
+    "bauchi-state-secretariat": {
+      "venueId": "bauchi-state-secretariat",
+      "city": "bauchi",
+      "name": "State Secretariat",
+      "archetype": "office-low",
+      "subject": "a multi-wing state secretariat office block (probably the renovated Abubakar Umar Secretariat) around a central lawn",
+      "form": {
+        "footprint": "H",
+        "width_m": 85,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c3b4",
+          "#a8553a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1,
+          "note": "sun-shading fins on glazed bays"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1976-1980s, renovated",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nannews.ng/2021/03/06/gov-bala-commissions-n6-2bn-govt-house-rehabilitation-project",
+          "what": "Abubakar Umar Secretariat is the state civil-service administrative hub, renovated"
+        }
+      ],
+      "notes": "Identification with the Abubakar Umar Secretariat is plausible but not confirmed; the form is typed from 1970s state secretariats."
+    },
+    "bauchi-state-university-bauchi": {
+      "venueId": "bauchi-state-university-bauchi",
+      "city": "bauchi",
+      "name": "Bauchi State University, Bauchi Campus",
+      "archetype": "campus-block",
+      "subject": "a lecture block of the state university city campus: a plain 2-3 storey block with a covered walkway",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#3f8f9a",
+          "#a8a39a"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed contemporary state-university teaching block."
+    },
+    "emirs-palace-bauchi": {
+      "venueId": "emirs-palace-bauchi",
+      "city": "bauchi",
+      "name": "Emir's Palace",
+      "archetype": "heritage-fort",
+      "subject": "the walled Hausa emir palace (Gidan Sarki) in the old city: mud-render perimeter wall with a gate house, a palace mosque and low roofed compound ranges",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "whitewash",
+        "colours": [
+          "#b98e66",
+          "#e8dcc0",
+          "#8a4a32"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "tall mud-render perimeter wall with rounded top"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arched gate house (zaure)"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "rounded parapet pinnacles on the wall"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Hausa relief bands on the gate house"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "small corner pinnacles on the mosque"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "hausa-arewa",
+      "era": "19th century origin (Yakubu, 1809), repeatedly rebuilt",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/bauchi/history",
+          "what": "Bauchi founded 1809 by Yakubu, who built the city wall (travelogue-grade source)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gates_of_Hausa_kingdoms",
+          "what": "Gate of Wambai: house and gate built for the chief adviser when the city was extended"
+        },
+        {
+          "url": "https://asirimagazine.com/en/?p=6697",
+          "what": "palace mosques at Bauchi and Birnin Gwari attributed to the builder Babban Gwani (local tradition)"
+        }
+      ],
+      "notes": "Palace exists and is a walled Hausa complex with a palace mosque and a gate; no source found describes its present look. Form typed from documented Hausa emirate palaces (Kano Gidan Rumfa: walls up to about 4.6 m, many courtyards). Keep low."
+    },
+    "federal-polytechnic-bauchi": {
+      "venueId": "federal-polytechnic-bauchi",
+      "city": "bauchi",
+      "name": "Federal Polytechnic, Bauchi",
+      "archetype": "campus-block",
+      "subject": "a 2-storey polytechnic teaching block with a columned entrance, set on a wide lawn at the city edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#3f6b4e",
+          "#f2efe6"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1979 onward",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from the city style. Dimensions are a guess."
+    },
+    "first-bank-bauchi": {
+      "venueId": "first-bank-bauchi",
+      "city": "bauchi",
+      "name": "First Bank",
+      "archetype": "office-low",
+      "subject": "a 2-storey bank branch with a recessed glazed entrance, ATM bay and a plain blank fascia board (no brand marks)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#2f4a5c",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank neutral board"
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed bank-branch brief; appearance of the Bauchi branch not found. Use neutral colours, no logo."
+    },
+    "general-hospital-specialist-bauchi": {
+      "venueId": "general-hospital-specialist-bauchi",
+      "city": "bauchi",
+      "name": "General Hospital (Specialist)",
+      "archetype": "hospital",
+      "subject": "a state general/specialist hospital: long single-storey ward blocks with a covered corridor and a taller admin building",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#9fc2b0",
+          "#a8a39a"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "covered ward corridors"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid 20th century origin",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing describing this hospital was found; typed from the colonial-era pavilion ward pattern common to Nigerian state general hospitals."
+    },
+    "gtb-bauchi": {
+      "venueId": "gtb-bauchi",
+      "city": "bauchi",
+      "name": "GTB",
+      "archetype": "office-low",
+      "subject": "a 2-storey modern bank branch with a glazed ground floor and a blank, brand-neutral fascia",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#8d9296",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank neutral board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed bank-branch brief; no description of the Bauchi branch found. Different from First Bank: glass-front, grey cladding. No brand colours or logos."
+    },
+    "masallacin-rimi-bauchi": {
+      "venueId": "masallacin-rimi-bauchi",
+      "city": "bauchi",
+      "name": "Masallacin Rimi",
+      "archetype": "mosque-domed",
+      "subject": "a neighbourhood Friday mosque near the western edge of the city: a square prayer hall with a small dome and a single minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#e8dcc0",
+          "#3f8f9a",
+          "#f2efe6"
+        ],
+        "roofColour": "#e8dcc0",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single minaret about 18 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found (rimi means silk-cotton tree); typed small neighbourhood mosque in cream and turquoise, deliberately smaller than the Central Mosque."
+    },
+    "methodist-church-bauchi": {
+      "venueId": "methodist-church-bauchi",
+      "city": "bauchi",
+      "name": "Methodist Church",
+      "archetype": "church-modern",
+      "subject": "a plain gabled hall church with a front gable cross, a low bell tower over the entrance and a fenced compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f2efe6",
+          "#a8553a",
+          "#8d9296"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short entrance tower"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed mission-style hall church from the city style."
+    },
+    "mobil-car-station-bauchi": {
+      "venueId": "mobil-car-station-bauchi",
+      "city": "bauchi",
+      "name": "Mobil Car station",
+      "archetype": "transport-station",
+      "subject": "a roadside car park / taxi and minibus station with an open metal shelter and loading bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8a39a",
+          "#8a4a32",
+          "#f2efe6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "open steel shelter"
+        },
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named like a fuel/car station; no description found. Typed as an informal car park with canopy and kiosks."
+    },
+    "muda-lawal-market-bauchi": {
+      "venueId": "muda-lawal-market-bauchi",
+      "city": "bauchi",
+      "name": "Muda lawal market",
+      "archetype": "market-open",
+      "subject": "a crowded open-air central market of tightly packed stalls and lock-up shops under tin sheds and umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b4",
+          "#8a4a32",
+          "#3f6b4e"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60,
+          "note": "dense rows of timber and tin stalls"
+        },
+        {
+          "id": "sheds",
+          "count": 12,
+          "note": "long corrugated shed roofs"
+        },
+        {
+          "id": "umbrellas",
+          "count": 25,
+          "note": "colourful trader umbrellas"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main entrance gate"
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "long-established; shops rebuilt after 2020 fire",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://von.gov.ng/?p=217562",
+          "what": "one of the largest markets in the state capital, daily trade"
+        },
+        {
+          "url": "https://www.channelstv.com/2020/04/16/one-killed-in-bauchi-market-fire/",
+          "what": "2020 fire burnt 17 shops and vehicles"
+        },
+        {
+          "url": "https://www.withinnigeria.com/news/2021/08/07/we-are-in-support-of-govts-decision-to-relocate-traders-bauchi-market-association/",
+          "what": "congested, kiosks and stalls placed haphazardly"
+        }
+      ],
+      "notes": "Sources agree: open-air, about 500 outlets, congested, car parts and food. Exact layout and colours are typed. Crowded jumbled look is the recognisable trait."
+    },
+    "shadawanka-rock-painting-bauchi": {
+      "venueId": "shadawanka-rock-painting-bauchi",
+      "city": "bauchi",
+      "name": "Shadawanka Rock Painting",
+      "archetype": "park-landscape",
+      "subject": "a weathered granite outcrop with a rock-shelter face carrying faded red-ochre paintings, with a rough footpath",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 9,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8c8378",
+          "#a8553a",
+          "#6f6a60"
+        ],
+        "roofColour": "#8c8378",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "faded red-ochre figures on a vertical rock face"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "rough path up to the shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone boundary"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "prehistoric painting, natural outcrop",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kubanni.abu.edu.ng/handle/123456789/5832",
+          "what": "study of rock paintings in Bauchi and Jigawa: faded, defaced, some sites unfenced"
+        }
+      ],
+      "notes": "Rock-art sites exist in Bauchi State but nothing was found about this specific site. Typed as a granite outcrop with ochre paintings; no building."
+    },
+    "shukurah-restaurant-bauchi": {
+      "venueId": "shukurah-restaurant-bauchi",
+      "city": "bauchi",
+      "name": "SHUKURAH RESTAURANT BAUCHI",
+      "archetype": "restaurant",
+      "subject": "a small city restaurant: a one-storey painted shopfront with a door, a glass counter window and a front canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#9fc2b0",
+          "#f2efe6",
+          "#a8553a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed; green-painted to differ from Alhamus."
+    },
+    "st-john-catholic-church-bauchi": {
+      "venueId": "st-john-catholic-church-bauchi",
+      "city": "bauchi",
+      "name": "St. John Catholic Church",
+      "archetype": "church-modern",
+      "subject": "a parish church with a tall front bell tower, a broad nave under a pitched roof and a cross above the porch",
+      "form": {
+        "footprint": "cross",
+        "width_m": 38,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f2efe6",
+          "#a8553a",
+          "#3f6b4e"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tall entrance tower"
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "entrance arch"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid to late 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed Nigerian Catholic parish church. Larger and taller than the Methodist church."
+    },
+    "tafawa-balewa-mausoleum-bauchi": {
+      "venueId": "tafawa-balewa-mausoleum-bauchi",
+      "city": "bauchi",
+      "name": "Abubakar Tafawa Balewa Mausoleum, Bauchi",
+      "archetype": "monument",
+      "subject": "the tomb of Nigeria's first prime minister: a tall walled enclosure with a colourful wall, open to the sky, around a modest marble grave",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 5.2,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "marble",
+        "colours": [
+          "#d9a441",
+          "#3b7a57",
+          "#b5452f"
+        ],
+        "roofColour": "#d9a441",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "enclosing walls about 5 m (17 ft) high"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "colourful wall said to represent Nigeria ethnic diversity"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "descent into the open shaft"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1966 burial; memorial complex later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://connectciti.com/listing/tomb-of-nigerias-first-prime-minister",
+          "what": "walls up to 17 ft enclosing a modest marble grave"
+        },
+        {
+          "url": "https://www.channelstv.com/2020/01/18/bauchi-remembers-tafawa-balewa/",
+          "what": "grave behind a colourful wall symbolising ethnic diversity"
+        },
+        {
+          "url": "https://nannews.ng/bauchi-govt-to-rehabilitate-tafawa-balewas-tomb/",
+          "what": "complex neglected, museum with personal belongings, rehabilitation planned"
+        }
+      ],
+      "notes": "Recognisable by tall colourful blank walls around an open-to-sky tomb court. Wall height about 17 ft is from a listing site. Exact colour bands are a typed guess (multi-coloured). The roof is none."
+    },
+    "unity-park-bauchi": {
+      "venueId": "unity-park-bauchi",
+      "city": "bauchi",
+      "name": "Unity Park",
+      "archetype": "park-landscape",
+      "subject": "a small city park with a central paved plaza, a shaded pavilion, planted beds and a perimeter fence with a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8a39a",
+          "#3f6b4e",
+          "#e8dcc0"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed municipal park."
+    },
+    "yankari-motor-park-bauchi": {
+      "venueId": "yankari-motor-park-bauchi",
+      "city": "bauchi",
+      "name": "Yankari Motor park",
+      "archetype": "transport-station",
+      "subject": "an intercity motor park with a long open shelter, loading bays of buses and a ticket kiosk row",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a8a39a",
+          "#3f6b4e",
+          "#f2efe6"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "long open steel shed"
+        },
+        {
+          "id": "bus-bays",
+          "count": 12,
+          "note": "intercity bus bays"
+        },
+        {
+          "id": "kiosk",
+          "count": 5,
+          "note": "ticket kiosks"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Presumably the Yankari-line park (the national park is a destination from Bauchi); no description found. Larger than Mobil Car station and with a green roof."
+    },
+    "yelwa-market-bauchi": {
+      "venueId": "yelwa-market-bauchi",
+      "city": "bauchi",
+      "name": "Yelwa market",
+      "archetype": "market-open",
+      "subject": "a neighbourhood market near the university with rows of lock-up stalls and a few corrugated sheds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c3b4",
+          "#3f6b4e",
+          "#e8dcc0"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "long-established",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed; smaller and greener-roofed than Muda Lawal."
+    }
+  }
+}

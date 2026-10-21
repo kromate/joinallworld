@@ -1,0 +1,371 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_National_hospitalier_Universitaire_Hubert_Koutoukou_MAGA_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alex Ahdn",
+   "view": "street",
+   "file": "/tmp/places-evidence/cotonou/cnhu2.jpg",
+   "used": "main entrance: low cream single-storey flat-roofed entrance building with overhanging slab and barred windows, small white gate house with green window band, white multi-storey block behind, blue pylon sign, red-white kerbs, large broadleaf trees, paving-block roadway"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cnhu_cotonou_devanture1.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ptossavi",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/cnhu1.jpg",
+   "used": "gate wall with lattice panel, canopy-style entrance pavilion, ochre/cream low buildings, white sign board on poles"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11292030",
+   "used": "overall scale only (492 x 350 m campus exceeds the 118 m clamp); modelled as the entrance and the first two ward blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "entrance-building",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    4,
+    2
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e4d0",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3d3cc",
+    "overhang": 2.0,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-house",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    26,
+    -6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e6e4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a979e",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-window-band",
+   "at": [
+    26,
+    -8.6
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.2
+    ],
+    "z0": 1.6,
+    "height": 1.0,
+    "colour": "#3f6b4c",
+    "topColour": "#3f6b4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "barrier-post",
+   "at": [
+    31,
+    -6
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "z0": 0,
+    "height": 1.2,
+    "colour": "#e8802c",
+    "topColour": "#e8802c"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "barrier-arm",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.15,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      31,
+      -6,
+      1.2
+     ],
+     [
+      31,
+      -12,
+      1.3
+     ],
+     [
+      31,
+      -16,
+      2.0
+     ]
+    ],
+    "colour": "#f0ece4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-behind",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -24,
+    14
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1f1ee",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa4aa",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-post",
+   "at": [
+    -16,
+    -12
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     1.0
+    ],
+    "z0": 0,
+    "height": 13,
+    "colour": "#25418a",
+    "topColour": "#25418a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-logo",
+   "at": [
+    -16,
+    -12.7
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     0.4
+    ],
+    "z0": 9.0,
+    "height": 3.6,
+    "colour": "#f2f3f4",
+    "topColour": "#f2f3f4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-text",
+   "at": [
+    -16,
+    -12.7
+   ],
+   "params": {
+    "rect": [
+     4.0,
+     0.4
+    ],
+    "z0": 2.8,
+    "height": 5.8,
+    "colour": "#f2f3f4",
+    "topColour": "#f2f3f4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    4,
+    -10
+   ],
+   "params": {
+    "rect": [
+     64,
+     30
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#7c746c",
+    "topColour": "#7c746c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "median-grass",
+   "at": [
+    -4,
+    -18
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.5
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#6f9a47",
+    "topColour": "#6f9a47"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "kerb",
+   "at": [
+    -17,
+    -19.5,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 0.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#d4584a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 2,
+    "spread": 10,
+    "line": 14,
+    "colour": "#2f5a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 8,
+    "line": 10,
+    "colour": "#2f5a2c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   64,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Low cream flat-roofed entrance building with slab overhang, grey-white gatehouse with green window band and orange barrier post/arm, plain white block behind-left, tall blue pylon with white logo and text panels, dark broadleaf trees, red kerb and grass median, paving added; far ward blocks and water tower removed. Pylon logo/text are blank panels, kerb is solid red (not striped), paving-block pattern not textured, camera still wider than the photo."
+ }
+}

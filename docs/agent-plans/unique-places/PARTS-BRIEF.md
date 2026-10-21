@@ -1,0 +1,10 @@
+DIRECTION CHANGE from the coordinator. Read this, then act. The owner has rejected template generation: every place must be its own composition, backed by photo evidence. Read /Users/anthonyakpan/work/allworld-unique/docs/agent-plans/unique-places/PLACE-MODEL.md now.
+
+Your new job:
+1. Stop iterating on the variety of whole-building templates.
+2. Turn the signature pieces your archetypes already build into reusable PARTS that a per-place composer places one by one. Write them in scripts/places/blender/parts/<your-first-archetype-id>.py (one file that only you edit). It must export `PARTS = {'part-id': fn, ...}` where `fn(b, look, rng, detail, at=(x, y, z), rot=0.0, **params)` builds into Builder `b` at that position and yaw in degrees. `look` is lib.look(...). It must honour detail 0/1/2 and take explicit named params with sensible defaults: sizes in metres, colours as '#hex', style strings.
+   Examples of parts: minaret (pencil/square/sahelian/spiral), dome (with drum), semi-dome, spire, bell-tower, west-tower, buttress-row, rose-window, pagoda-roof, stupa, shikhara, gopuram, pinnacle, toron-beam-row, stand (stadium stand with roof), floodlight, ring-roof, track, stall-row, lock-up-row, umbrella-cluster, awning, shopfront, market-shed, colonnade, portico, clock-tower, mast, setback-tower, crown, flare-stack, tank, crane, silo, train-shed, platform-canopy, bus, jetty, veranda, chimney, crenellated-wall, bastion, cannon, gate-arch, pavilion, fountain, statue-on-plinth, obelisk.
+3. Put a module docstring listing each part with its params, units and what it looks like.
+4. Keep your archetype files working; they become a fallback.
+5. Test: write a small spec (PlaceModelV2 shape) per part group under scripts/places/fixtures/parts-<your-first-id>/ and check the parts render correctly. The composer and render-queue are being built in parallel. If scripts/places/blender/archetypes/compose.py does not exist yet, test with a tiny throwaway harness that calls your part functions inside a Builder.
+6. Report the list of part ids with their params. Same rules as before: one Blender process at a time, do not edit lib/ or other files.

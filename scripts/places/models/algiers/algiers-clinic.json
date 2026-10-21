@@ -1,0 +1,416 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mustapha_Pasha_hospital_entrance.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Yelles",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/hosp.jpg",
+   "used": "white rendered pavilions with flat roofs and projecting cornices, vertical louvred stair windows, pale yellow-brown inner walls, low railing and wall along the avenue, tall palms; shows one pavilion at the entrance, not the whole complex"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28919252",
+   "used": "overall complex size only (485 x 330 m); one representative pavilion court is modelled because the full outline exceeds the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "pavilion-a",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -24,
+    14
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 5,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e6e1d4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 0.6,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-b",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    2,
+    16
+   ],
+   "height": 13,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 5,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e6e1d4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 0.6,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-c",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    28,
+    8
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 5,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e6e1d4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 0.6,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion-d",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f1ea",
+    "windows": "punched",
+    "windowRatio": 0.17,
+    "bay": 5,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#e6e1d4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4c8",
+    "parapet": 0.6,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-corner",
+   "at": [
+    -12.5,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     2.6
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#ece8dc",
+    "windows": "none",
+    "topColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-b",
+   "at": [
+    13.5,
+    8
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     2.6
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#ece8dc",
+    "windows": "none",
+    "topColour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "louvre0",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.3
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#7d7a70",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -12.8,
+     5.2,
+     4
+    ],
+    "end": [
+     -12.8,
+     5.2,
+     13
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "louvre1",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.9,
+       0.3
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#7d7a70",
+      "windows": "none"
+     }
+    },
+    "mode": "line",
+    "count": 9,
+    "start": [
+     13.6,
+     6.9,
+     4
+    ],
+    "end": [
+     13.6,
+     6.9,
+     13
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    -11,
+    -1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#cfcabd"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.2,
+    "thickness": 0.4,
+    "colour": "#7d8794"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    0,
+    -24,
+    1.2
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.9,
+    "colour": "#25302c"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.4,
+    "depth": 1.2
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    14,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.4,
+    "depth": 1.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    -23,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 3,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Photo is one close street corner; pavilion court is a typical arrangement, not the survey; palms use the stock crown, no louvre grille detail beyond slats, no teal bollard"
+ }
+}

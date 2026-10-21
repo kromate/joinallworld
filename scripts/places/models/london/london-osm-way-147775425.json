@@ -1,0 +1,274 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:London_Academy_of_Music_and_Dramatic_Art,_24_February_2020.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Surplus London Photos",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/lamda2.jpg",
+   "used": "low red-brick base with railings, upper floors in buff cladding with tall glazed vertical fin bays, red-brick flytower box behind, tall gold vertically ribbed fly tower at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/147775425",
+   "used": "site extent, long street frontage about 50 x 20 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 62,
+  "aspect": 1.333,
+  "fit": "building",
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     44,
+     17
+    ]
+   },
+   "at": [
+    -8,
+    0.8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8523c",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     44,
+     19
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 3.2,
+   "height": 10.6,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8a67e",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "bay": 4.5,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#a89a72",
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 1.5,
+      "depth": 0.3,
+      "width": 0.16,
+      "colour": "#8b6f3f",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fly-brick",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -10,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#b4563f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    16,
+    11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 34,
+   "storeys": 7,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7a57b",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 1.4,
+    "pattern": [
+     {
+      "type": "fins",
+      "spacing": 0.9,
+      "depth": 0.4,
+      "width": 0.3,
+      "colour": "#a38d5a",
+      "faces": [
+       "front",
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -8.3,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 1.2,
+    "colour": "#2f3338",
+    "posts": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -8.4,
+    0.6
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "height": 2.6,
+    "colour": "#2a3238"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -33,
+      0
+     ],
+     [
+      27,
+      0
+     ]
+    ],
+    "height": 1.2,
+    "thickness": 0.2,
+    "kind": "railing",
+    "colour": "#1c1f22"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#4b3d36"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-147775425",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Upper facade glazing is uniform and too regular versus buff panels with irregular glazed bays; tower is boxier and a touch too tall; no bare tree; base undercut approximate."
+ }
+}

@@ -1,0 +1,393 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/837276070",
+   "used": "market area outline (wedge about 138 x 86 m, drawn at 85 percent scale to fit the 118 m limit); stalls laid in rows inside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oja_Oba_Market_Akure.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ei'eke",
+   "view": "street",
+   "used": "neighbouring Akure market street character: big umbrellas over traders, sacks and cloth, cobbled pavers (not of Erekesan itself)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/akure.json",
+   "used": "crowded open market of umbrella and tarpaulin stalls"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-ground",
+   "footprint": {
+    "polygon": [
+     [
+      -48,
+      23
+     ],
+     [
+      -46,
+      34
+     ],
+     [
+      -41.7,
+      47.3
+     ],
+     [
+      68.8,
+      -7.7
+     ],
+     [
+      68,
+      -27.6
+     ],
+     [
+      -41.1,
+      -25.6
+     ],
+     [
+      -41.4,
+      -21
+     ],
+     [
+      -46.9,
+      -19.5
+     ]
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8a07a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a74"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    12.200000000000003,
+    -23,
+    0
+   ],
+   "params": {
+    "count": 32,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#c9632f",
+     "#3b6a8a",
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    12.200000000000003,
+    -15,
+    0
+   ],
+   "params": {
+    "count": 32,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "size": 1.1,
+    "colours": [
+     "#3b6a8a",
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a",
+     "#c9632f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    12.200000000000003,
+    -7,
+    0
+   ],
+   "params": {
+    "count": 32,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a",
+     "#c9632f",
+     "#3b6a8a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    4.200000000000003,
+    1,
+    0
+   ],
+   "params": {
+    "count": 27,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "size": 1.1,
+    "colours": [
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a",
+     "#c9632f",
+     "#3b6a8a",
+     "#d9b04a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -3.799999999999997,
+    9,
+    0
+   ],
+   "params": {
+    "count": 22,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#c9632f",
+     "#3b6a8a",
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -11.799999999999997,
+    17,
+    0
+   ],
+   "params": {
+    "count": 17,
+    "pitch": 3.2,
+    "kind": "tarp",
+    "size": 1.1,
+    "colours": [
+     "#3b6a8a",
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a",
+     "#c9632f"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -19.799999999999997,
+    25,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a",
+     "#c9632f",
+     "#3b6a8a"
+    ],
+    "jitter": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -44,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "wall_colour": "#cfc7b5",
+    "roof_colour": "#8a4a3a",
+    "awning_colours": [
+     "#d8c08a",
+     "#b0473f",
+     "#3b6a8a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    40,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#8a4a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    10,
+    18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "colours": [
+     "#c9632f",
+     "#3b6a8a",
+     "#d9b04a",
+     "#b0473f",
+     "#5a8a5a",
+     "#e0d9c0",
+     "#8a4a3a",
+     "#6a5a8a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "erekesan-market",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of Erekesan; real outline and typed umbrella/tarp stalls, no lanes, people or goods detail"
+ }
+}

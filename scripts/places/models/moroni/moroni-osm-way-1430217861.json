@@ -1,0 +1,105 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-way-1430217861",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1430217861",
+   "used": "irregular pentagon footprint about 14 x 12 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "colour": "#bdb5a0"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a14a35",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "id": "stalls",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.6
+      ],
+      "height": 1.3,
+      "colour": "#8fb0b8",
+      "topColour": "#f0ebe0"
+     }
+    },
+    "start": [
+     -6,
+     0
+    ],
+    "end": [
+     6,
+     0
+    ],
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -12,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint/brief only, so facade details, colours and roof are typical for Moroni, not observed."
+ }
+}

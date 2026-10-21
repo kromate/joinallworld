@@ -1,0 +1,436 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uzgreen.jpg",
+   "licence": "Public domain",
+   "author": "Babakathy (Commons user)",
+   "view": "street",
+   "file": "/tmp/places-evidence/harare/uzgreen.jpg",
+   "used": "red-brick academic blocks of two to three storeys with white-framed window strips, round-arched ground-floor arcade, mown College Green edged by a low kerb and red-earth gravel path (people photo; caption names the UZ College Green but it shows only the edge of one block)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/harare.json#harare-community-workshop",
+   "used": "brief: ranges of 1950s blocks around the College Green with the Great Hall (Wikipedia); U-plan open to the front, flat-roofed brick ranges (hip tile roofs were dropped for the triangle budget), tiled hip roof on the Great Hall. The OSM match is only a running track containing the point, so no outline was used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 9,
+  "fovDeg": 55
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of the actual venue: only a people photo of the College Green edge (brick, window strips, arcade, kerb, red-earth path used as detail); Great Hall, layout and roofs from the brief; end wings plain on side faces for budget"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-range",
+   "footprint": {
+    "rect": [
+     15,
+     62
+    ]
+   },
+   "at": [
+    -42,
+    2
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a3493b",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#f2f2ee",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "ribbon"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 7.5,
+      "depth": 0.8,
+      "faces": [
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-range",
+   "footprint": {
+    "rect": [
+     15,
+     62
+    ]
+   },
+   "at": [
+    42,
+    2
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a3493b",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "glassColour": "#f2f2ee",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 7.5,
+      "depth": 0.8,
+      "faces": [
+       "left"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-range-w",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    -22,
+    40
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a3493b",
+    "windows": "ribbon",
+    "plinth": 0.5,
+    "windowRatio": 0.42,
+    "glassColour": "#f2f2ee",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-range-e",
+   "footprint": {
+    "rect": [
+     34,
+     15
+    ]
+   },
+   "at": [
+    22,
+    40
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a3493b",
+    "windows": "ribbon",
+    "plinth": 0.5,
+    "windowRatio": 0.42,
+    "glassColour": "#f2f2ee",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a6a5c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "great-hall",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    0,
+    42
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cb",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "windowShape": "arched",
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b89878",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d3a30",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    29,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f4efe2",
+    "roofColour": "#7d3a30"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     72
+    ],
+    "height": 0.15,
+    "colour": "#a8644a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     4
+    ],
+    "height": 0.15,
+    "colour": "#a8644a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 6,
+    "spread": 22,
+    "line": 0
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -58,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    60,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 9,
+    "colour": "#b0303c",
+    "hedge": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     62
+    ],
+    "height": 0.35,
+    "colour": "#b8b2a4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    33,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     62
+    ],
+    "height": 0.35,
+    "colour": "#b8b2a4",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-community-workshop"
+}

@@ -1,0 +1,344 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/29863497",
+   "used": "real outline of the garden (300 x 272 m, scaled by 0.39 to the 118 m clamp)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Un_arbre_qui_est_situe_dans_le_jardin_public_de_bujumbura.jpg",
+   "licence": "CC0",
+   "author": "Levy Stronger",
+   "view": "detail",
+   "file": "/tmp/places-evidence/bujumbura/jp1.jpg",
+   "used": "open mango grove with spreading dark-limbed trees over dry tan leaf-litter ground (no lawn), so the ground is dry tan and trees are mango"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "garden",
+   "footprint": {
+    "polygon": [
+     [
+      -58.4,
+      7.2
+     ],
+     [
+      -43.0,
+      46.0
+     ],
+     [
+      6.2,
+      52.9
+     ],
+     [
+      50.1,
+      44.6
+     ],
+     [
+      46.7,
+      -40.9
+     ],
+     [
+      -1.1,
+      -64.9
+     ],
+     [
+      -43.9,
+      -26.8
+     ],
+     [
+      -54.1,
+      -18.6
+     ],
+     [
+      -49.4,
+      -12.6
+     ],
+     [
+      -56.8,
+      -2.0
+     ]
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8905f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b39a66",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-ns",
+   "at": [
+    -2,
+    -5
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     100
+    ],
+    "z0": 0.5,
+    "height": 0.06,
+    "colour": "#d6c9a8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-ew",
+   "at": [
+    -4,
+    -5
+   ],
+   "params": {
+    "rect": [
+     80,
+     2.6
+    ],
+    "z0": 0.5,
+    "height": 0.06,
+    "colour": "#d6c9a8"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -3,
+    -5,
+    0.5
+   ],
+   "params": {
+    "radius": 4.5
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    20,
+    12,
+    0.5
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "office-tower/ticket-kiosk",
+   "at": [
+    -20,
+    -40,
+    0.5
+   ],
+   "params": {
+    "width": 3,
+    "depth": 2.6,
+    "height": 2.8,
+    "wall_colour": "#ece6d6",
+    "roof_colour": "#a8523a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -3,
+    -50,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "pillar": 1.0,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "stadium/park-bench",
+   "at": [
+    -7,
+    -12,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "stadium/park-bench",
+   "at": [
+    8,
+    -12,
+    0.5
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -52,
+    0.5
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.3,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#7a7a74"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "mango0",
+   "at": [
+    -35,
+    -20,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 8,
+    "spread": 16,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "mango1",
+   "lod": [
+    0
+   ],
+   "at": [
+    30,
+    -25,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 8,
+    "spread": 18,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "mango2",
+   "at": [
+    -40,
+    30,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 8,
+    "spread": 16,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "mango3",
+   "lod": [
+    0
+   ],
+   "at": [
+    15,
+    40,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 8,
+    "spread": 16,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "mango4",
+   "at": [
+    -5,
+    25,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 12,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "mango5",
+   "lod": [
+    0
+   ],
+   "at": [
+    40,
+    20,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 12,
+    "colour": "#4f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -5,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 6,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "photo only shows the mango grove, no comparison render; bandstand, kiosk, gate and paths are typed; outline scaled 0.39"
+ }
+}

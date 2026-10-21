@@ -1,0 +1,261 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/370186566",
+   "used": "only the type (hospital campus); the 650 m outline is a whole site boundary and not a building, so not used"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1947 research hospital and laboratory complex, low blocks, covered walkways, landscaped compound; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lab-west",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.4,
+    "bands": "#4f6f8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49b",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-east",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.4,
+    "bands": "#4f6f8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49b",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     38,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cdd6d8",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic-wing",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -34
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdd6d8",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49b",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 6,
+    "height": 3.6,
+    "columns": 4,
+    "colour": "#4f6f8a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 2.6,
+    "height": 3,
+    "columns": 5,
+    "colour": "#cdd6d8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    26,
+    -22,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 2.6,
+    "height": 3,
+    "columns": 5,
+    "colour": "#cdd6d8"
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    26,
+    0,
+    8.5
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 6
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -62
+   ],
+   "params": {
+    "width": 30,
+    "depth": 10,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     46,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-370186566",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and OSM outline is a site boundary; typical research campus blocks, walkways and solar panels are invented but plausible"
+ }
+}

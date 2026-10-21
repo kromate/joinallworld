@@ -1,0 +1,1431 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "mbabane",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "mbabane",
+    "climate": "highland",
+    "vernacular": "Hill-slung capital at about 1,240 m in the Mdzimba Mountains: a compact town centre of 2-6 storey face-brick and cream-painted blocks around the Swazi Plaza pedestrian core, suburban bungalows and walled houses with red or green corrugated-iron and tile roofs on the slopes, granite outcrops showing through eucalyptus and jacaranda, and traditional grass-thatched beehive huts surviving in royal and cultural settings.",
+    "wallColours": [
+      "#efe6d2",
+      "#d9c29a",
+      "#a8603f",
+      "#c9b98f",
+      "#8a9a8a",
+      "#b0aaa0",
+      "#e3d3b0"
+    ],
+    "roofColours": [
+      "#8a2f25",
+      "#4f6a5a",
+      "#7d8a8f",
+      "#a24a36"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "red-brick",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "brick",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "acacia"
+    ],
+    "ornament": "Swazi beehive-hut thatch forms and Emahlanga-style woven grass patterns used on craft and tourist buildings; national colours (blue, yellow, crimson) and the Sibebe-style granite boulder motif on municipal and royal-linked architecture; plain face-brick banding and shop-front awnings downtown.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Mbabane",
+        "what": "Mbabane at ~1,243 m in the Mdzimba Mountains, subtropical highland climate, colonial-era town, Swazi Plaza, post-independence government and embassy buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sibebe",
+        "what": "Sibebe granite monolith ~350 m above the Mbuluzi valley"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mbabane_Government_Hospital",
+        "what": "national hospital, 500 beds, Television Road"
+      }
+    ]
+  },
+  "places": {
+    "mbabane-airport-mbabane-airport": {
+      "venueId": "mbabane-airport-mbabane-airport",
+      "city": "mbabane",
+      "name": "King Mswati III International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Eswatini's 2014 international terminal near Sikhuphe: a modern two-storey glazed terminal with a sweeping roof and a free-standing control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#8a2f25",
+          "#f3efe6"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "limited bridges, regional traffic"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King_Mswati_III_International_Airport",
+          "what": "inaugurated 7 March 2014, commercial service from 30 Sept 2014, 3,600 m runway, 360,000 pax/yr design (terminal design not described)"
+        }
+      ],
+      "notes": "Date and capacity are sourced; the terminal's look is not. Modelled as a modern mid-size terminal sized for 360,000 passengers a year: long low glazed front with a swept roof. About 25 km from Mbabane; the venue point is the airport itself."
+    },
+    "mbabane-baylor-childrens-clinic": {
+      "venueId": "mbabane-baylor-childrens-clinic",
+      "city": "mbabane",
+      "name": "Baylor Childrens Clinic Eswatini",
+      "archetype": "hospital",
+      "subject": "A paediatric HIV clinic: a low two-storey painted building with bright child-friendly murals and a covered entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f3e3b5",
+          "#3b8ea5",
+          "#a24a36"
+        ],
+        "roofColour": "#a24a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. A small specialist clinic, kept far smaller than Mbabane Government Hospital. Murals are an assumption for a paediatric clinic; no logo."
+    },
+    "mbabane-clinic": {
+      "venueId": "mbabane-clinic",
+      "city": "mbabane",
+      "name": "Mbabane Government Hospital",
+      "archetype": "hospital",
+      "subject": "The national referral hospital on Television Road: 500 beds in multi-wing blocks with ward verandas and a main entrance block",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e3d3b0",
+          "#a8603f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a2f25",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane_Government_Hospital",
+          "what": "national hospital, 500 beds, Television Road, Mbabane (appearance not described)"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Bed count (500) and location are sourced. Form is typed as an older multi-wing ward complex with hipped red roofs; the larger of the two Mbabane hospitals."
+    },
+    "mbabane-community-notices": {
+      "venueId": "mbabane-community-notices",
+      "city": "mbabane",
+      "name": "Public Service Pension Fund",
+      "archetype": "office-low",
+      "subject": "The pension fund headquarters: a mid-rise office block in the town centre with a ribbon-glazed front and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#c9ced1",
+          "#2f4a5c",
+          "#e3d3b0"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context: post-independence government and office buildings in the centre"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Organisation and position are real; the building was not described. Typed as a 6-storey office, one of the taller buildings in the centre. Blank signage board."
+    },
+    "mbabane-community-voting-game": {
+      "venueId": "mbabane-community-voting-game",
+      "city": "mbabane",
+      "name": "Mbabane City Council",
+      "archetype": "civic-small",
+      "subject": "The city council offices: a two-storey civic building in cream render with a clock-less flat front and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#efe6d2",
+          "#a8603f",
+          "#7d8a8f"
+        ],
+        "roofColour": "#8a2f25",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Municipal offices; looks derived from a typical southern-African council building. Position is beside Swazi Plaza."
+    },
+    "mbabane-community-workshop": {
+      "venueId": "mbabane-community-workshop",
+      "city": "mbabane",
+      "name": "Univeristy of Eswatini (Mbabane Campus)",
+      "archetype": "campus-block",
+      "subject": "A town-centre campus annex of the University of Eswatini: a group of two-to-three storey teaching blocks around a quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e3d3b0",
+          "#a8603f",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Venue spelling kept as in the game data. A small urban campus, drawn smaller than a main university."
+    },
+    "mbabane-corner-plaza": {
+      "venueId": "mbabane-corner-plaza",
+      "city": "mbabane",
+      "name": "Corner Plaza Mall",
+      "archetype": "mall",
+      "subject": "A small-to-mid suburban mall: a wide two-storey block of shops with a glazed entrance and large car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#a24a36",
+          "#7d8a8f"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Located south of Mbabane in the Ezulwini corridor by its coordinates. Smaller and newer than Swazi Plaza; blank signage only."
+    },
+    "mbabane-gobholo-cave": {
+      "venueId": "mbabane-gobholo-cave",
+      "city": "mbabane",
+      "name": "Gobholo Cave",
+      "archetype": "park-landscape",
+      "subject": "A granite cave in the Sibebe hills: a low overhang of weathered boulders on a bush-covered slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8a8a82",
+          "#6b6358",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sibebe",
+          "what": "granite geology of the Sibebe area near Mbabane"
+        }
+      ],
+      "notes": "Rock/cave brief: modelled as a granite outcrop scene (boulders, bare dome, a few shrubs) shown as the recognisable portion within the 120 m scene clamp. No description of Gobholo Cave itself was found; boulder-cave shape is typed from the local granite geology."
+    },
+    "mbabane-market-game": {
+      "venueId": "mbabane-market-game",
+      "city": "mbabane",
+      "name": "Mbabane Market",
+      "archetype": "market-open",
+      "subject": "The municipal market beside the bus rank: rows of stalls and lock-ups under corrugated sheds with umbrellas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#3b8ea5",
+          "#a24a36"
+        ],
+        "roofColour": "#7d8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "market hut photo caption; no further market detail"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Wikipedia shows only a 1979 portable market hut photo. Modelled as a modern market of steel sheds with painted stall fronts."
+    },
+    "mbabane-mbabane-clinic": {
+      "venueId": "mbabane-mbabane-clinic",
+      "city": "mbabane",
+      "name": "Mbabane Clinic",
+      "archetype": "hospital",
+      "subject": "A private hospital in the suburbs: a three-storey cream-rendered block with a canopy entrance and a short wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f3e3b5",
+          "#8a2f25",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6a5a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Private hospital, so smaller and more polished than the Government Hospital; green tile roof to tell it apart."
+    },
+    "mbabane-mbabane-shopping-mall": {
+      "venueId": "mbabane-mbabane-shopping-mall",
+      "city": "mbabane",
+      "name": "Mbabane Shopping Mall",
+      "archetype": "mall",
+      "subject": "A downtown shopping block: a two-storey rendered mall with a street arcade and a flat parapet",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c29a",
+          "#7d8a8f",
+          "#efe6d2"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Opposite Swazi Plaza by coordinates. Drawn as a conventional street mall, smaller than Swazi Plaza."
+    },
+    "mbabane-meal-stop": {
+      "venueId": "mbabane-meal-stop",
+      "city": "mbabane",
+      "name": "The Albert Millin",
+      "archetype": "restaurant",
+      "subject": "A hillside restaurant and bar in a converted villa: single storey with a veranda, terrace and corrugated roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f3efe6",
+          "#8a2f25",
+          "#7a6a52"
+        ],
+        "roofColour": "#8a2f25",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. No source found. Assumed to be a house-style venue because of the personal name; low."
+    },
+    "mbabane-mvithiza-waterfall": {
+      "venueId": "mbabane-mvithiza-waterfall",
+      "city": "mbabane",
+      "name": "Mvithiza Waterfall",
+      "archetype": "park-landscape",
+      "subject": "A small waterfall: a cascade down a granite ledge into a pool, ringed by shrubs and a viewing rail",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "timber",
+        "colours": [
+          "#8a8a82",
+          "#6b6358",
+          "#7a8a6a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sibebe",
+          "what": "regional granite terrain near the Mbuluzi valley"
+        }
+      ],
+      "notes": "Typed brief: no description of the fall was found. Modelled as a short fall over a granite ledge with a pool and a simple viewing rail, shown as a recognisable portion."
+    },
+    "mbabane-national-library": {
+      "venueId": "mbabane-national-library",
+      "city": "mbabane",
+      "name": "Mbabane national library",
+      "archetype": "campus-block",
+      "subject": "The Eswatini National Library: a two-storey brick-and-render library in the town centre with a recessed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#a8603f",
+          "#efe6d2",
+          "#7d8a8f"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Larger and central compared to Sifundzani Library; assumed brick-faced for distinctness."
+    },
+    "mbabane-ngubhela-cave": {
+      "venueId": "mbabane-ngubhela-cave",
+      "city": "mbabane",
+      "name": "Ngubhela Cave",
+      "archetype": "park-landscape",
+      "subject": "A cave beneath boulders on the Sibebe slopes: a dark entrance under a huge granite slab",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#7d7a70",
+          "#5b554c",
+          "#a8a090"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sibebe",
+          "what": "Sibebe granite pluton area"
+        }
+      ],
+      "notes": "Rock/cave brief: modelled as a granite outcrop scene (boulders, bare dome, a few shrubs) shown as the recognisable portion within the 120 m scene clamp. A separate smaller overhang scene from Gobholo and Sibebe Cave."
+    },
+    "mbabane-quiet-reflection": {
+      "venueId": "mbabane-quiet-reflection",
+      "city": "mbabane",
+      "name": "Holy Resurrection church of Mbabane",
+      "archetype": "church-modern",
+      "subject": "A modern parish church: a rectangular hall with a steep gabled front, a small cross and a separate low bell frame",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f3efe6",
+          "#a8603f",
+          "#4f6a5a"
+        ],
+        "roofColour": "#4f6a5a",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context: early missions and churches"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. The denomination and building are not described in any source found. White gabled hall with a tiled/corrugated green roof."
+    },
+    "mbabane-recreation": {
+      "venueId": "mbabane-recreation",
+      "city": "mbabane",
+      "name": "Coronation Park",
+      "archetype": "park-landscape",
+      "subject": "Coronation Park: a broad lawn with tree lines, a ring path and a sports ground edge in the town centre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#c9b98f",
+          "#7a6a52",
+          "#d9c29a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Name suggests a coronation-era (1930s) civic park, which is an inference, not a sourced date. Includes a bandstand as a generic park feature."
+    },
+    "mbabane-sibebe-cave": {
+      "venueId": "mbabane-sibebe-cave",
+      "city": "mbabane",
+      "name": "Sibebe Cave",
+      "archetype": "park-landscape",
+      "subject": "A cave opening in the Sibebe granite face: a long low fissure under the big dome",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8a8a82",
+          "#6b6358",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sibebe",
+          "what": "Sibebe monolith, ~350 m above the Mbuluzi valley"
+        }
+      ],
+      "notes": "Rock/cave brief: modelled as a granite outcrop scene (boulders, bare dome, a few shrubs) shown as the recognisable portion within the 120 m scene clamp. Sits at the foot of Sibebe Rock; form differs from the other two caves (fissure rather than overhang)."
+    },
+    "mbabane-sibebe-rock": {
+      "venueId": "mbabane-sibebe-rock",
+      "city": "mbabane",
+      "name": "Sibebe Rock",
+      "archetype": "park-landscape",
+      "subject": "Sibebe Rock: a vast bare granite dome rising out of the Mbuluzi valley with scrub around its base and a hiking path up the slab",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 40,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8f8d86",
+          "#b6b2a8",
+          "#6b6358"
+        ],
+        "roofColour": "#8f8d86",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural (~3 billion years)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sibebe",
+          "what": "granite monolith ~10 km from Mbabane, rises roughly 350 m above the Mbuluzi River valley, nicknamed Bald Rock; Sibebe Survivor charity walk"
+        }
+      ],
+      "notes": "Height, location and the bald granite character are sourced. The model shows a portion of the dome (the real monolith is far larger than the 120 m scene) as a smooth pale-grey slab with a few streaks and shrubs at the base."
+    },
+    "mbabane-sifundzani-library": {
+      "venueId": "mbabane-sifundzani-library",
+      "city": "mbabane",
+      "name": "Sifundzani Library",
+      "archetype": "campus-block",
+      "subject": "A small neighbourhood library: a one-storey painted block with a gable porch and a fenced yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e3d3b0",
+          "#a8603f",
+          "#ffffff"
+        ],
+        "roofColour": "#a24a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Public community library in the Sifundzani suburb; smaller and plainer than the National Library."
+    },
+    "mbabane-sina-rock": {
+      "venueId": "mbabane-sina-rock",
+      "city": "mbabane",
+      "name": "Sina Rock",
+      "archetype": "park-landscape",
+      "subject": "A rocky hill outcrop: a rounded granite knob with grass and aloes on its sides and a track to the top",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 25,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8a8a82",
+          "#a8a090",
+          "#6b6358"
+        ],
+        "roofColour": "#8a8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sibebe",
+          "what": "regional granite geology"
+        }
+      ],
+      "notes": "Typed brief: no description found. A smaller granite knob than Sibebe Rock, with more vegetation."
+    },
+    "mbabane-swazi-plaza": {
+      "venueId": "mbabane-swazi-plaza",
+      "city": "mbabane",
+      "name": "Swazi Plaza",
+      "archetype": "mall",
+      "subject": "The central shopping plaza of Mbabane: a multi-level brick-and-render mall around an open pedestrian court with a mix of flat roofs and a tall central block",
+      "form": {
+        "footprint": "ring",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8603f",
+          "#efe6d2",
+          "#7d8a8f"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "photo caption names Swazi Plaza as a landmark; no description"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Its status as the town's main shopping centre comes from the Wikipedia caption; look is typed from the common late-20th-century southern-African town plaza: brick-faced, stepped, courtyard in the middle. Bigger and more courtyard-based than Mbabane Shopping Mall."
+    },
+    "mbabane-transit": {
+      "venueId": "mbabane-transit",
+      "city": "mbabane",
+      "name": "Mbabane Bus Rank",
+      "archetype": "transport-station",
+      "subject": "The main bus rank: a wide paved yard of minibus bays under long steel shelters with a market edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#3b8ea5",
+          "#a24a36"
+        ],
+        "roofColour": "#7d8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mbabane",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the place's appearance, so form and colours come from the Mbabane city style and the place type. Adjacent to Mbabane Market; shelters are long and low with open sides."
+    }
+  }
+}

@@ -1,0 +1,462 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cathedral_of_the_Immaculate_Conception,_Seychelles_1.jpg",
+   "licence": "CC0",
+   "author": "Vasilii Martynov",
+   "view": "front",
+   "file": "/tmp/places-evidence/victoria/cath1.jpg",
+   "used": "two-storey pedimented front block with arched windows, peach-cream walls with white trim, arched porch on the left, lower aisles with round windows, retaining wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/616378214",
+   "used": "overall plan: narrow nave stem with a wider transept/sanctuary block behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d2b0",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.08,
+    "bay": 7,
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b5a0",
+    "parapet": 0.3,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "z0": 0,
+   "height": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d2b0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9b5a0",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "z0": 0,
+   "height": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8c9a2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 3,
+    "plinth": 0.6,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f4efe6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e8c9a2",
+    "pitch": 24,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5.5,
+     4
+    ]
+   },
+   "at": [
+    -1.5,
+    -35
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e3c8",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bay": 5.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-l",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    -4.4,
+    -32.6
+   ],
+   "z0": 0,
+   "height": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "quoin-r",
+   "footprint": {
+    "rect": [
+     0.7,
+     0.7
+    ]
+   },
+   "at": [
+    4.4,
+    -32.6
+   ],
+   "z0": 0,
+   "height": 15,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe6"
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -30,
+    17
+   ]
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 10,
+    "cap": "hip",
+    "colour": "#9a9488",
+    "cap_colour": "#7d7a72",
+    "belfry": true,
+    "cap_height": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall",
+   "footprint": {
+    "rect": [
+     44,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -43
+   ],
+   "z0": 0,
+   "height": 2.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#d8d0bf"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     44,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -39.5
+   ],
+   "z0": 0,
+   "height": 0.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6f9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f9a4f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    -20,
+    -43
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    -10,
+    -43
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    0,
+    -43
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    10,
+    -43
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier4",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    20,
+    -43
+   ],
+   "z0": 0,
+   "height": 3.0,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Roof recoloured grey-green, taller peach front block with quoins, arched porch, piered retaining wall added; porch and clock tower are hidden/weak from the camera, no pediment statue, no planted terraces, paved plaza still flat."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-way-616378214"
+}

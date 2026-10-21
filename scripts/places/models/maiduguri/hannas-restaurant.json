@@ -1,0 +1,186 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/maiduguri.json",
+   "used": "small single-storey restaurant, 18x11 m, terrace, awning, blank signboard; the nearest OSM building (10 m) is a long unnamed strip and was not used; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining-hall",
+   "footprint": {
+    "rect": [
+     18,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#b4654a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    6,
+    8.5
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     18,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8c7a0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4.5,
+    "height": 3.0,
+    "form": "flat",
+    "colour": "#b4654a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.8,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "bottom": 0.2,
+    "colour": "#b4654a",
+    "posts": false
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -5,
+    -10.5,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "step": [
+     5,
+     0
+    ],
+    "count": 3,
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "palm",
+       "height": 2.4
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "trees": 0,
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "hannas-restaurant",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; a generic small modern restaurant sized from the brief."
+ }
+}

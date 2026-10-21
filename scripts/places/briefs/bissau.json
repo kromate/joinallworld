@@ -1,0 +1,1473 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bissau",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bissau",
+    "climate": "tropical-maritime",
+    "vernacular": "Small, low-rise Portuguese-colonial capital on the Geba estuary: pastel-rendered 1-3 storey colonial buildings with verandas and red clay-tile or corrugated roofs around Bissau Velho and the Amura fort, surrounded by dense districts of single-storey bare-cement-block or lightly rendered houses under rusty corrugated iron, with a few Soviet/Chinese-era and post-2000 concrete public blocks. Mango, cashew, palm and bombax trees shade red-laterite streets.",
+    "wallColours": [
+      "#e8d8b0",
+      "#d9a441",
+      "#c9876b",
+      "#b9c4b0",
+      "#9a9a94",
+      "#f2efe6",
+      "#7fa3b5"
+    ],
+    "roofColours": [
+      "#a8452f",
+      "#8a7f78",
+      "#6e6a66",
+      "#b5664a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Portuguese-colonial verandas with slender columns, shuttered tall windows, pediments and cornice bands on pastel facades; cast-iron balconies; Estado Novo tropical-modern blocks with brise-soleil and louvres; hand-painted murals and independence-era statues on plinths in roundabouts.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bissau",
+        "what": "Portuguese-built 18th-century Fortaleza de Amura, cathedral, civil-war-damaged palace, stadiums, landmarks"
+      },
+      {
+        "url": "https://pt.wikipedia.org/wiki/Catedral_de_Bissau",
+        "what": "Neo-Romanesque cathedral: tropical Portuguese design with verandas, ventilated double roofs, timber roof; Estado Novo era"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fortaleza_de_S%C3%A3o_Jos%C3%A9_da_Amura",
+        "what": "Vauban-style fort, pentagonal bastions, 38 gun openings, command house and barracks"
+      }
+    ]
+  },
+  "places": {
+    "bissau-airport-bissau-airport": {
+      "venueId": "bissau-airport-bissau-airport",
+      "city": "bissau",
+      "name": "Osvaldo Vieira International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small single-runway international airport terminal: a low, wide white-rendered terminal block with a covered forecourt and a short control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#8f9aa3",
+          "#c8c2b4"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1955 (terminal later rebuilt)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Osvaldo_Vieira_International_Airport",
+          "what": "Opened May 1955 as Francisco Craveiro Lopes Airport; closed 1998, reopened 1999; single 3,200 m runway 03/21"
+        }
+      ],
+      "notes": "Airport facts are sourced; the terminal appearance is not described anywhere found, so the form (small low terminal, flat roof, tower) is typed from a modest regional airport. The only international airport in the country."
+    },
+    "bissau-clinic": {
+      "venueId": "bissau-clinic",
+      "city": "bissau",
+      "name": "Hospital Nacional Simão Mendes",
+      "archetype": "hospital",
+      "subject": "National referral hospital: several low whitewashed pavilion wards in a walled compound around a central entrance block",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#e9e4d4",
+          "#6a8f9a",
+          "#c9c3b3"
+        ],
+        "roofColour": "#8a8f90",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "covered walkways"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Hospital not described; city context only"
+        }
+      ],
+      "notes": "No source describes the buildings. Typed as a 2-storey pavilion hospital from colonial-era hospital planning in West Africa and city style. Largest hospital in the country."
+    },
+    "bissau-community-notices": {
+      "venueId": "bissau-community-notices",
+      "city": "bissau",
+      "name": "Ministério das Finanças",
+      "archetype": "civic-palace",
+      "subject": "Two-storey Portuguese-colonial government building with a pastel render facade, veranda arcade and red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e3cc8f",
+          "#f2efe6",
+          "#a8452f"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor veranda"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1940s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Only the general city article (no place-specific description found)"
+        }
+      ],
+      "notes": "No source describes this ministry. It sits in the colonial administrative core next to the former Amura/palace area; typed as a Portuguese-colonial civic block (pastel render, tile roof). Colours from city style."
+    },
+    "bissau-community-voting-game": {
+      "venueId": "bissau-community-voting-game",
+      "city": "bissau",
+      "name": "Praça da Alfândega",
+      "archetype": "park-landscape",
+      "subject": "Small paved colonial square near the old customs house and port with a statue on a plinth, ringed by pastel colonial buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#e8d8b0",
+          "#c9876b",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "colonial era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "City context; Monument to Diogo Gomes stands at the same coordinates"
+        }
+      ],
+      "notes": "Same location as the Diogo Gomes monument. Typed as a small paved square; no detailed description found."
+    },
+    "bissau-community-workshop": {
+      "venueId": "bissau-community-workshop",
+      "city": "bissau",
+      "name": "Universidade Lusofona",
+      "archetype": "campus-block",
+      "subject": "Private university campus: a plain 2-3 storey rendered classroom block with an open stair and a small yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e4d4",
+          "#5b86a8",
+          "#bdb7a8"
+        ],
+        "roofColour": "#8a8f90",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Only the general city article (no place-specific description found)"
+        }
+      ],
+      "notes": "No source describes the campus buildings; typed as a modest private-university block from city style."
+    },
+    "bissau-market-game": {
+      "venueId": "bissau-market-game",
+      "city": "bissau",
+      "name": "Mercado de Bandim",
+      "archetype": "market-open",
+      "subject": "The huge Bandim market: dense rows of timber and corrugated-iron stalls, umbrellas and tarpaulin-roofed lock-ups along narrow lanes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "timber",
+        "colours": [
+          "#a9a49a",
+          "#8a5a36",
+          "#c9876b"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 12
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Bandim named as the main market district in the city context; very large informal market"
+        }
+      ],
+      "notes": "Largest market in the country, an informal sprawl of corrugated and tarpaulin shelters; shown as a recognisable portion. Structure typed from typical West African markets; no detailed layout source."
+    },
+    "bissau-meal-stop": {
+      "venueId": "bissau-meal-stop",
+      "city": "bissau",
+      "name": "Pelicano",
+      "archetype": "restaurant",
+      "subject": "Waterfront-style casual restaurant: a low open-sided rendered building with a thatch-look veranda and plastic chairs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8d8b0",
+          "#7a5a3a",
+          "#c9c3b3"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Only the general city article (no place-specific description found)"
+        }
+      ],
+      "notes": "Venue not described in any source found; typed as a casual local restaurant."
+    },
+    "bissau-osm-node-13648547577": {
+      "venueId": "bissau-osm-node-13648547577",
+      "city": "bissau",
+      "name": "GEARUFI-SC M Gabinete de Estudos",
+      "archetype": "office-low",
+      "subject": "Small office: a single-storey rendered block with a barred front and sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d6c9a8",
+          "#5b7f95",
+          "#b8b2a2"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure study-office node; no information found. Typed from city style."
+    },
+    "bissau-osm-node-2082479562": {
+      "venueId": "bissau-osm-node-2082479562",
+      "city": "bissau",
+      "name": "Mercado Central",
+      "archetype": "market-hall",
+      "subject": "Central market: a low rendered market hall with open arched bays and stalls spilling out around it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3cc8f",
+          "#a9a49a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "colonial era (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "City context only"
+        }
+      ],
+      "notes": "Not described in any source found; typed as a modest covered central market near the old centre. Distinct from Bandim: smaller, one roofed hall."
+    },
+    "bissau-osm-node-2084171134": {
+      "venueId": "bissau-osm-node-2084171134",
+      "city": "bissau",
+      "name": "Monumento aos Heróis da Independência",
+      "archetype": "monument",
+      "subject": "Independence heroes monument on a roundabout: a tall concrete plinth and sculpted figures",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#8a8a85",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s-80s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Monument to the Heroes of Independence named in a photo caption"
+        }
+      ],
+      "notes": "Named in the city article but not described. Praça dos Heróis Nacionais is at the same coordinates. Typed as a stepped plinth with figures; true form unverified."
+    },
+    "bissau-osm-node-4719996189": {
+      "venueId": "bissau-osm-node-4719996189",
+      "city": "bissau",
+      "name": "Feira de Artesanato e Ateliers / Mercado dos Coqueiros",
+      "archetype": "market-open",
+      "subject": "Craft fair: rows of small painted timber-and-tin craft stalls and ateliers under trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a8774a",
+          "#d9a441",
+          "#7fa3b5"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found; typed as an artisan market of small colourful stalls."
+    },
+    "bissau-osm-node-4810103621": {
+      "venueId": "bissau-osm-node-4810103621",
+      "city": "bissau",
+      "name": "rasoi resturant",
+      "archetype": "restaurant",
+      "subject": "Small Indian-style restaurant in a plain rendered shopfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d8b0",
+          "#b5503a",
+          "#c9c3b3"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure restaurant; no information. Typed shopfront."
+    },
+    "bissau-osm-node-4965931451": {
+      "venueId": "bissau-osm-node-4965931451",
+      "city": "bissau",
+      "name": "Coqueiros",
+      "archetype": "restaurant",
+      "subject": "Open-air terrace restaurant under coconut palms on the Coqueiros district road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9c9a0",
+          "#7a5a3a",
+          "#f2efe6"
+        ],
+        "roofColour": "#b5664a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure restaurant in Coqueiros district; typed."
+    },
+    "bissau-osm-node-5680620456": {
+      "venueId": "bissau-osm-node-5680620456",
+      "city": "bissau",
+      "name": "Monumento a Diogo Gomes",
+      "archetype": "monument",
+      "subject": "Statue of the navigator Diogo Gomes on a tall plinth in Praça da Alfândega",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 3,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb7a8",
+          "#8a8a85",
+          "#d6d0c0"
+        ],
+        "roofColour": "#bdb7a8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1940s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "City context only"
+        }
+      ],
+      "notes": "Named as a monument; no description found. Typed as a stone plinth statue consistent with Estado Novo-era commemorations of Portuguese navigators."
+    },
+    "bissau-osm-node-5711301327": {
+      "venueId": "bissau-osm-node-5711301327",
+      "city": "bissau",
+      "name": "Monumento a Teixeira Pinto",
+      "archetype": "monument",
+      "subject": "Colonial-era monument to the officer Teixeira Pinto: a statue on a stone plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 3,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb7a8",
+          "#8a8a85",
+          "#d6d0c0"
+        ],
+        "roofColour": "#bdb7a8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1930s-40s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named monument only; no description found. Typed as a plinth statue; dimensions not verified."
+    },
+    "bissau-osm-node-9108219424": {
+      "venueId": "bissau-osm-node-9108219424",
+      "city": "bissau",
+      "name": "Centro de Saúde de Prábis",
+      "archetype": "hospital",
+      "subject": "Rural health centre: a single-storey rendered clinic with a covered veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d6",
+          "#5b86a8",
+          "#c9c3b3"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rural health post; no information. Typed as a small clinic."
+    },
+    "bissau-osm-relation-9659980": {
+      "venueId": "bissau-osm-relation-9659980",
+      "city": "bissau",
+      "name": "Hôpital de Cumura (lèpre et tuberculose)",
+      "archetype": "hospital",
+      "subject": "Mission-run leprosy and tuberculosis hospital: scattered single-storey ward pavilions with verandas among trees",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#efe9da",
+          "#6a8f9a",
+          "#c9c3b3"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 3,
+          "note": "ward verandas"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s-60s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rural mission hospital in the Cumura area; no description found. Typed as spread-out ward pavilions; clearly lower/wider than the national hospital."
+    },
+    "bissau-osm-way-112723869": {
+      "venueId": "bissau-osm-way-112723869",
+      "city": "bissau",
+      "name": "Estádio Nacional 24 de Setembro",
+      "archetype": "stadium",
+      "subject": "The 20,000-seat national stadium: an oval concrete bowl with a covered main stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#bfbab0",
+          "#4f7a9a",
+          "#e5e0d3"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand covered"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1989; renovated 2011-13 and 2021-23",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Est%C3%A1dio_24_de_Setembro",
+          "what": "Opened 1989; renovated 2011-2013 and 2021-2023; capacity 20,000; pitch 105 x 68 m; grass"
+        }
+      ],
+      "notes": "Capacity, opening and renovations sourced; the bowl shape and covered main stand are typed (not described by any source)."
+    },
+    "bissau-osm-way-1288347449": {
+      "venueId": "bissau-osm-way-1288347449",
+      "city": "bissau",
+      "name": "Praça Titina Silá",
+      "archetype": "park-landscape",
+      "subject": "A small urban square named for a liberation-war heroine: paved plaza with trees and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#7fa87a",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "post-independence",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure square, no source. Typed."
+    },
+    "bissau-osm-way-130194162": {
+      "venueId": "bissau-osm-way-130194162",
+      "city": "bissau",
+      "name": "Faculdade de Direito",
+      "archetype": "campus-block",
+      "subject": "Law faculty: a 2-storey rendered classroom block with a long veranda facing a courtyard",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d8b0",
+          "#f2efe6",
+          "#a8452f"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1990s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Faculty of Law of the national university; no appearance info. Typed using colonial-institutional form."
+    },
+    "bissau-osm-way-572352190": {
+      "venueId": "bissau-osm-way-572352190",
+      "city": "bissau",
+      "name": "Parque Europa - Lagoa de M´batonha",
+      "archetype": "park-landscape",
+      "subject": "Lagoon park: a small lake with a paved edge, pavilions and mango and palm trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#7fa87a",
+          "#9a9a94"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found for this park; typed as a lagoon-side park."
+    },
+    "bissau-osm-way-729707869": {
+      "venueId": "bissau-osm-way-729707869",
+      "city": "bissau",
+      "name": "Estadio Lino Correia",
+      "archetype": "stadium",
+      "subject": "Small 12,000-seat football ground of Estrela Negra: an open concrete bowl with one covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 105,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c2b4",
+          "#b5503a",
+          "#e5e0d3"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "mid-20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Lino_Correia",
+          "what": "Capacity 12,000; home ground of Estrela Negra; night matches resumed after 36 years"
+        }
+      ],
+      "notes": "Capacity from source; look typed. Clearly smaller and plainer than the National Stadium."
+    },
+    "bissau-quiet-reflection": {
+      "venueId": "bissau-quiet-reflection",
+      "city": "bissau",
+      "name": "Bissau Cathedral",
+      "archetype": "church-gothic",
+      "subject": "Sé Catedral de Nossa Senhora da Candelária: a Neo-Romanesque twin-towered cathedral with a rose window, buttressed walls and a tall nave; the north tower doubles as a lighthouse",
+      "form": {
+        "footprint": "cross",
+        "width_m": 60,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#c2a77d",
+          "#8a6a4a"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "flanking the main facade; north tower also a lighthouse"
+        },
+        {
+          "id": "rose-window",
+          "count": 1,
+          "note": "centred between the towers"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1935-1950 (consecrated 1950)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Catedral_de_Bissau",
+          "what": "Neo-Romanesque; three aisles of five bays; two bell towers; rose window; buttressed walls; timber roof; designed by Vasco Regaleira 1942; consecrated 7 Dec 1950"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Cathedral is the city landmark and seat of the diocese"
+        }
+      ],
+      "notes": "Form and features are sourced from the Portuguese article; exact wall colour is not stated (pale cream/ochre render typed from city style). Tall narrow vertical windows between buttresses. Distinct twin-tower Romanesque silhouette."
+    },
+    "bissau-recreation": {
+      "venueId": "bissau-recreation",
+      "city": "bissau",
+      "name": "Praça dos Heróis Nacionais",
+      "archetype": "park-landscape",
+      "subject": "The large roundabout-plaza of the national heroes with the Independence monument at its centre and flagpoles",
+      "form": {
+        "footprint": "round",
+        "width_m": 90,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#7fa87a",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "post-independence",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bissau",
+          "what": "Monument to the Heroes of Independence shown in the city article"
+        }
+      ],
+      "notes": "Same location as the Independence heroes monument; the plaza itself not described. Typed."
+    },
+    "bissau-transit": {
+      "venueId": "bissau-transit",
+      "city": "bissau",
+      "name": "Paragem Central",
+      "archetype": "transport-station",
+      "subject": "Central bus stop and toca-toca minibus halt: an open paved lot with a basic shelter and parked minibuses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a49a",
+          "#c9876b",
+          "#8a7f78"
+        ],
+        "roofColour": "#8a7f78",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Informal public-transport stop; no source. Typed."
+    }
+  }
+}

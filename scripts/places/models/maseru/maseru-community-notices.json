@@ -1,0 +1,164 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: compact two-storey sandstone-coloured colonial-era courthouse, hip roof, small portico, steps, flags, boundary wall; OSM way is the 19,000 m2 compound, not the building"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "court",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9c29a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#efe6d2"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2c",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -27,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d9c29a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3a2c",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.5,
+    "height": 6.5,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#efe6d2",
+    "roofColour": "#7a3a2c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "colour": "#d9c29a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -20,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; massing and colours typical for the brief's sandstone colonial courthouse."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-community-notices"
+}

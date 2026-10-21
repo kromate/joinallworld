@@ -1,0 +1,241 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "federal-college-of-education-technical-asaba",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1236878919",
+   "used": "one real teaching block (26x10 m, 17 m from the point); other wings placed around an open quadrangle from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 2-3 storey rendered blocks with louvred corridors, brown corrugated roofs"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c9c3b3",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 16,
+    "colour": "#7a5a44",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south-wing",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    -4,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dac0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c9c3b3",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 16,
+    "colour": "#7a5a44",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     11,
+     34
+    ]
+   },
+   "at": [
+    -26,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c9c3b3",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 16,
+    "colour": "#7a5a44",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     11,
+     30
+    ]
+   },
+   "at": [
+    24,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dfd3b6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c9c3b3",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 16,
+    "colour": "#7a5a44",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "id": "corridor",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#c9c3b3",
+    "roofColour": "#a8744f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "college-board",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#a8744f",
+    "frameColour": "#c9c3b3"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "quad-trees",
+   "at": [
+    -8,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 5,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "tank",
+   "at": [
+    40,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 6,
+    "legs": 4,
+    "colour": "#8c9aa0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; only one OSM block, rest from brief"
+ }
+}

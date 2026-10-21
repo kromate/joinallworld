@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "st-john-catholic-church-bauchi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/624353146",
+   "used": "real outline (about 43 x 37 m, containing match) for the church body"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json#st-john-catholic-church-bauchi",
+   "used": "bell tower, gable roof, render walls with red-brick accent, clay tile roof"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "plinth": 0.6,
+    "bands": "#a8553a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a32",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -3,
+    -24
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a8553a",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    -3,
+    -24,
+    22.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.8,
+    "colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline used, bell tower placement and roof pitch are approximate."
+ }
+}

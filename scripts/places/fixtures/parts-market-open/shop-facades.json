@@ -1,0 +1,286 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "shop-facades",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "shop-block",
+   "at": [
+    -20,
+    0,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 12,
+    "storeys": 3,
+    "gallery": true,
+    "windows": "punched"
+   }
+  },
+  {
+   "type": "shop-block",
+   "at": [
+    22,
+    0,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 12,
+    "storeys": 2,
+    "arcade": true,
+    "roof": "flat",
+    "windows": "ribbon",
+    "wall_colour": "#e8e1cf",
+    "accent_colour": "#3f7fa6"
+   }
+  },
+  {
+   "type": "terrace-row",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "depth": 9,
+    "storeys": 3,
+    "kind": "euro",
+    "wall_material": "brick",
+    "wall_colour": "#b86a4d"
+   }
+  },
+  {
+   "type": "terrace-row",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 12,
+    "storeys": 3,
+    "kind": "asia",
+    "wall_colour": "#f1d9a8",
+    "roof_material": "clay-tile",
+    "roof_colour": "#a2573f"
+   }
+  },
+  {
+   "type": "terrace-row",
+   "at": [
+    -22,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 10,
+    "storeys": 3,
+    "kind": "naija",
+    "balcony": true
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    28,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "kind": "shutter",
+    "colour": "#3f7fa6"
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    33,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "kind": "glass",
+    "colour": "#c4452f",
+    "awning_colours": [
+     "#c4452f",
+     "#f1ece0"
+    ],
+    "depth": 3
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    38,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "kind": "open",
+    "colour": "#e0b030"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    44,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 3.4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    28,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "arch": false
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    44,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "wall_material": "mud-render",
+    "wall_colour": "#b58a5e"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    -5,
+    -52,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    10,
+    -52,
+    0
+   ],
+   "params": {
+    "length": 12
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    28,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    40,
+    -60,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.5
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    46,
+    -60,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "roof-sign",
+   "at": [
+    50,
+    -60,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "queue-posts",
+   "at": [
+    -8,
+    -62,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    -14,
+    -58,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "roof-terrace",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 8
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    16,
+    -72,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "ground": [
+   -45,
+   65,
+   -85,
+   20
+  ],
+  "az": 25,
+  "el": 38
+ }
+}

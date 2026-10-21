@@ -1,0 +1,285 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "first-bank-sokoto",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:First_Bank_Sokoto.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mahuta",
+   "view": "front",
+   "file": "/tmp/places-evidence/sokoto/firstbank.jpg",
+   "used": "white rendered two-storey box, flat roof, ground-floor ribbon glazing at left, blue-framed glazed entrance bay projecting at right, low blue canopy at left, white picket fence, flagpole, blank sign board top left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/318532522",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.25,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none",
+    "windowRatio": 0.18,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "parapet": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     5.4,
+     1.6
+    ]
+   },
+   "at": [
+    3.5,
+    -9.4
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c459b",
+    "windows": "curtain",
+    "windowRatio": 0.62,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "glassColour": "#c9d8e2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c459b",
+    "overhang": 0.4,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.5,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 8.0,
+    "height": 1.3,
+    "bottom": 1.0,
+    "colour": "#7f9bb0",
+    "frameColour": "#2c459b",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "blue-canopy",
+   "footprint": {
+    "rect": [
+     6.5,
+     2.6
+    ]
+   },
+   "at": [
+    -6.5,
+    -8.4
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9edf2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c459b",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5,
+    -6.4,
+    5.2
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#7a7e82",
+    "frameColour": "#5b5f63",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palisade",
+    "height": 1.7,
+    "thickness": 0.14,
+    "colour": "#f4f4f0",
+    "points": [
+     [
+      -14,
+      9
+     ],
+     [
+      -14,
+      -11.5
+     ],
+     [
+      14,
+      -11.5
+     ],
+     [
+      14,
+      9
+     ],
+     [
+      -14,
+      9
+     ]
+    ],
+    "pillarEvery": 0.0
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -3,
+    -11.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "pillar": 0.3,
+    "colour": "#e8e8e4",
+    "leafColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -9.5,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5.5,
+    -10.5,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "baseWidth": 1.4,
+    "topWidth": 0.4,
+    "panels": 10,
+    "colour": "#c8362f",
+    "colour2": "#f2f2ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Palisade spacing is wider than the photo (part has fixed picket pitch); ground-floor ribbon is a flat glazed board and reads faintly; flag is plain tricolour; entrance portal is shallower than the photo; fence returns not fully dense."
+ }
+}

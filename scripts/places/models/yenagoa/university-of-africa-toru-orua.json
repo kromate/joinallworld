@@ -1,0 +1,338 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "university-of-africa-toru-orua",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#university-of-africa-toru-orua",
+   "used": "private campus, U-plan about 90x40 m, 3 storeys, glazed lecture blocks, atrium, library, covered walkways, flags; Commons evidence only a flags map (not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     90,
+     14
+    ]
+   },
+   "at": [
+    0,
+    13
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#e6ecef",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -38,
+    -7
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6ea",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    38,
+    -7
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe6ea",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "faces": {
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    0,
+    4.5
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa6bd",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b8f",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd9de",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f6b8f",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.3,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#d4d4d0"
+   }
+  },
+  {
+   "type": "hospital/covered-walkway",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#2f6b8f",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "hospital/covered-walkway",
+   "at": [
+    20,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#2f6b8f",
+    "roofColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 2,
+    "spacing": 16,
+    "colours": [
+     "#1b7a43",
+     "#2f6b8f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -23.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 0.4,
+    "colour": "#2f6b8f",
+    "frameColour": "#ffffff",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -15,
+    -34,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this campus; composed from the brief"
+ }
+}

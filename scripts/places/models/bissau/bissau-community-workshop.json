@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/130194136",
+   "used": "real building outline (22 x 10 m, name match 'Universidade Lusofona'); within a 11 ha campus area"
+  },
+  {
+   "kind": "text",
+   "used": "brief: plain 3-storey rendered classroom block, flat roof, ribbon windows, blue accent band"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0cf",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#5b86a8",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "floors": 3,
+    "storeyHeight": 3.5,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.6
+   ],
+   "z0": 9.0,
+   "height": 1.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5b86a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b86a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#bdb7a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

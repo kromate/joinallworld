@@ -1,0 +1,1703 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-moresby",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-moresby",
+    "climate": "savanna",
+    "vernacular": "Dry-savanna Pacific capital: low 1-2 storey concrete-block and rendered buildings with long-span corrugated-iron roofs, louvre windows and deep verandas; stilted timber and iron houses in the Motu villages (Hanuabada, Porebada); compounds behind tall metal-sheeted fences and razor wire; a handful of glass towers and modern government blocks at Waigani and the harbour; parched ochre-brown hills with eucalyptus and acacia, palms on the coast.",
+    "wallColours": [
+      "#e9e1c9",
+      "#f2efe6",
+      "#c9b98f",
+      "#9fb8c4",
+      "#b8a17c",
+      "#8e9a7a"
+    ],
+    "roofColours": [
+      "#a9422f",
+      "#4f7a5c",
+      "#7c868c",
+      "#b9b4aa"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "metal-cladding",
+      "timber",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "acacia",
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Sepik haus tambaran-style steep gabled roofs and carved ceremonial motifs on national buildings (Parliament House, museum); painted murals and tribal patterns on boundary walls; Motu lakatoi-sail and stilt-house references at Hanuabada; security grilles and sheeted fences everywhere.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Port_Moresby",
+        "what": "Parliament House (1984) blends traditional design with modern building technology; Boroko, Waigani, Hanuabada; homes with big fences covered in metal sheeting and steel security doors; tropical savanna climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Papua_New_Guinea_National_Museum_and_Art_Gallery",
+        "what": "purpose-built national museum 1975-77 at Waigani; refurbished 2017 by Architectus"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/PNG_Football_Stadium",
+        "what": "Populous-designed 2015 stadium with permanent roofed grandstand"
+      }
+    ]
+  },
+  "places": {
+    "port-moresby-airport-port-moresby-airport": {
+      "venueId": "port-moresby-airport-port-moresby-airport",
+      "city": "port-moresby",
+      "name": "Port Moresby Jacksons International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Jacksons airport international terminal: a long low single-level terminal block with a covered walkway, aerobridges and a separate control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 153,
+        "depth_m": 58,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "long low terminal with aerobridge pier",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e1c9",
+          "#2c4c63",
+          "#f2efe6"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 4,
+          "note": "aerobridges at the international terminal"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkway linking domestic and international terminals"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jacksons_International_Airport",
+          "what": "two terminals (domestic and international); international terminal has four bays with aerobridges; covered walkway linking the terminals"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/958322117",
+          "what": "measured OSM outline 152.9 x 57.8 m, 8555 m2; tags building=yes, building:levels=1, aeroway=terminal"
+        }
+      ],
+      "notes": "Terminal outline (153 x 58 m, one level, tagged aeroway=terminal) and terminal arrangement are sourced; style, colours and canopy shape are assumed. Domestic terminal is a smaller, lower building next door."
+    },
+    "port-moresby-clinic": {
+      "venueId": "port-moresby-clinic",
+      "city": "port-moresby",
+      "name": "Laloki Psychiatric Hospital",
+      "archetype": "hospital",
+      "subject": "A ward block of Laloki Psychiatric Hospital: a single-storey corrugated-roof ward range with a long covered walkway, in a fenced compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "single-storey ward ranges",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1c9",
+          "#7c868c",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkway between wards"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/793402380",
+          "what": "measured OSM outline 430.7 x 325.4 m, 96908 m2; tags amenity=hospital"
+        }
+      ],
+      "notes": "OSM shows a large 431 x 325 m hospital compound (96,908 m2) but no building detail; Typed from city style; no building description found. The model shows one typical ward range, not the whole compound."
+    },
+    "port-moresby-community-notices": {
+      "venueId": "port-moresby-community-notices",
+      "city": "port-moresby",
+      "name": "PNG National Weather Services",
+      "archetype": "civic-small",
+      "subject": "The National Weather Service office near the airport: a single-storey rendered office block with a rooftop mast and a fenced instrument yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1c9",
+          "#9fb8c4",
+          "#f2efe6"
+        ],
+        "roofColour": "#7c868c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "weather mast / antenna"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/972724198",
+          "what": "measured OSM outline 24.7 x 16.4 m, 405 m2; tags building=yes, building:levels=1"
+        }
+      ],
+      "notes": "OSM: 405 m2, one level, about 25 x 16 m. Typed from city style; no building description found."
+    },
+    "port-moresby-community-voting-game": {
+      "venueId": "port-moresby-community-voting-game",
+      "city": "port-moresby",
+      "name": "Port Moresby City Hall",
+      "archetype": "civic-small",
+      "subject": "The National Capital District city hall: a square single-storey civic hall with a deep entrance veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 49,
+        "depth_m": 49,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "variant": "square civic hall"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e9e1c9",
+          "#a9422f",
+          "#f2efe6"
+        ],
+        "roofColour": "#7c868c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance veranda"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/942762390",
+          "what": "measured OSM outline 49.1 x 48.9 m, 2028 m2; tags building=yes, building:levels=1, amenity=townhall"
+        }
+      ],
+      "notes": "OSM tags this amenity=townhall, one level, 2,028 m2 (49 x 49 m). No facade description found; typed as a modernist concrete civic hall with a flag line."
+    },
+    "port-moresby-community-workshop": {
+      "venueId": "port-moresby-community-workshop",
+      "city": "port-moresby",
+      "name": "University of Papua New Guinea, Waigani Campus",
+      "archetype": "campus-block",
+      "subject": "A typical UPNG Waigani lecture block: a two-storey concrete teaching building with exterior walkways and louvre screens, on open grass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "long teaching block with external corridors",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e1d9c3",
+          "#7c868c",
+          "#f2efe6"
+        ],
+        "roofColour": "#a9422f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "external walkway levels"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Papua_New_Guinea",
+          "what": "university founded 1965, main campus at Waigani; Pacific Games Village (2015) converted to student dorms; new Australian-funded lecture theatre and business school complex"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25396668",
+          "what": "measured OSM outline 1553.6 x 1171.9 m, 985146 m2; tags wikidata=Q780975, amenity=university"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q780975",
+          "what": "Wikidata identity/type match: University of Papua New Guinea"
+        }
+      ],
+      "notes": "The campus is 1,550 x 1,170 m in OSM; this brief models one representative teaching block. Building appearance is not documented in the fetched sources, so style is assumed from 1970s tropical institutional concrete."
+    },
+    "port-moresby-market-game": {
+      "venueId": "port-moresby-market-game",
+      "city": "port-moresby",
+      "name": "JF Betlenut Market",
+      "archetype": "market-open",
+      "subject": "A roadside betel-nut and produce market: a long corrugated-iron shed with tables and sacks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "long open market shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#9aa3a8",
+          "#a9422f",
+          "#8d6e4a"
+        ],
+        "roofColour": "#a9422f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30,
+          "note": "trestle tables with betel nut and produce"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1493413574",
+          "what": "measured OSM outline 106.4 x 14.5 m, 1435 m2; tags amenity=marketplace"
+        }
+      ],
+      "notes": "OSM marketplace outline 106 x 14.5 m (1,435 m2), long and narrow. Typed from city style; no building description found. Betel nut is the main trade."
+    },
+    "port-moresby-meal-stop": {
+      "venueId": "port-moresby-meal-stop",
+      "city": "port-moresby",
+      "name": "Brews & Berries Cafe",
+      "archetype": "restaurant",
+      "subject": "A modern cafe in a small retail building with a verandah and outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 51,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "retail unit cafe"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#8e9a7a",
+          "#8d6e4a"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1493439328",
+          "what": "measured OSM outline 53 x 51.2 m, 2712 m2; tags building=retail"
+        }
+      ],
+      "notes": "OSM shows a 2,712 m2 building=retail at this location (53 x 51 m), probably a retail centre containing the cafe. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-node-6038606685": {
+      "venueId": "port-moresby-osm-node-6038606685",
+      "city": "port-moresby",
+      "name": "Canoe coffee",
+      "archetype": "restaurant",
+      "subject": "A small roadside coffee house with a verandah and a hand-painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#4f7a5c",
+          "#8d6e4a"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/825314928",
+          "what": "measured OSM outline 22.3 x 13.8 m, 300 m2; tags building=yes"
+        }
+      ],
+      "notes": "OSM: 300 m2 building, about 22 x 14 m. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1445648071": {
+      "venueId": "port-moresby-osm-way-1445648071",
+      "city": "port-moresby",
+      "name": "Unagi Park",
+      "archetype": "park-landscape",
+      "subject": "A suburban park: a long lawn with scattered acacia and eucalyptus trees, a shelter and a metal-sheeted fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "open public lawn"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9b98f",
+          "#4f7a5c",
+          "#9aa3a8"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small roofed shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1445648071",
+          "what": "measured OSM outline 284.5 x 84.9 m, 16062 m2; tags leisure=park"
+        }
+      ],
+      "notes": "OSM leisure=park 284 x 85 m. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1475514064": {
+      "venueId": "port-moresby-osm-way-1475514064",
+      "city": "port-moresby",
+      "name": "Metago Bible College",
+      "archetype": "campus-block",
+      "subject": "A rural Christian college: single-storey classroom range and a simple chapel hall with a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "classroom range and chapel hall",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#4f7a5c",
+          "#8d6e4a"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small open belfry on the chapel"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered veranda"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1475514064",
+          "what": "measured OSM outline 547.1 x 276.9 m, 94373 m2; tags amenity=college, religion=christian, denomination=united_methodist"
+        }
+      ],
+      "notes": "OSM: United Methodist college compound 547 x 277 m; building details unknown. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1481698449": {
+      "venueId": "port-moresby-osm-way-1481698449",
+      "city": "port-moresby",
+      "name": "Porebada Health Centre",
+      "archetype": "hospital",
+      "subject": "A village health centre at Porebada: a single-storey rendered clinic on low piers with a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "single-storey clinic",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#9fb8c4",
+          "#8d6e4a"
+        ],
+        "roofColour": "#a9422f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered porch"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1481698449",
+          "what": "measured OSM outline 76.7 x 39.8 m, 2726 m2; tags amenity=hospital"
+        }
+      ],
+      "notes": "OSM outline 77 x 40 m (2,726 m2). Typed from city style; no building description found. Porebada is a Motu coastal village whose houses stand on stilts."
+    },
+    "port-moresby-osm-way-1493439301": {
+      "venueId": "port-moresby-osm-way-1493439301",
+      "city": "port-moresby",
+      "name": "Water's Cafe",
+      "archetype": "restaurant",
+      "subject": "A small cafe-restaurant near Porebada: single-storey with an open front verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#9fb8c4",
+          "#8d6e4a"
+        ],
+        "roofColour": "#7c868c",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1493439301",
+          "what": "measured OSM outline 25.6 x 18.6 m, 427 m2; tags building=yes, amenity=restaurant"
+        }
+      ],
+      "notes": "OSM restaurant 26 x 19 m. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1495472122": {
+      "venueId": "port-moresby-osm-way-1495472122",
+      "city": "port-moresby",
+      "name": "Eliseo Makana Plaza",
+      "archetype": "market-hall",
+      "subject": "A covered trading plaza: a square single-storey hall with shop units and a high corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 56,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "square trading hall"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e1d9c3",
+          "#4f7a5c",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "shopfront",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1495472122",
+          "what": "measured OSM outline 56.1 x 54.6 m, 3060 m2; tags building=yes"
+        }
+      ],
+      "notes": "OSM building about 56 x 55 m (3,060 m2), tagged building=yes. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1495585405": {
+      "venueId": "port-moresby-osm-way-1495585405",
+      "city": "port-moresby",
+      "name": "Bomana Police College",
+      "archetype": "campus-block",
+      "subject": "Barracks-style training college: a long two-storey rendered dormitory and classroom block facing a parade ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "barracks and classroom blocks around a parade ground",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1c9",
+          "#4f7a5c",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1495585405",
+          "what": "measured OSM outline 1044.6 x 777.1 m, 455544 m2; tags amenity=college"
+        }
+      ],
+      "notes": "OSM: very large college compound (1,045 x 777 m); no building details. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1497930259": {
+      "venueId": "port-moresby-osm-way-1497930259",
+      "city": "port-moresby",
+      "name": "Bunka Cafe",
+      "archetype": "restaurant",
+      "subject": "A small neighbourhood cafe in a one-storey building with a painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#a9422f",
+          "#8d6e4a"
+        ],
+        "roofColour": "#7c868c",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1497930259",
+          "what": "measured OSM outline 22.1 x 13.8 m, 293 m2; tags building=yes, amenity=cafe"
+        }
+      ],
+      "notes": "OSM cafe about 22 x 14 m. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-1497997106": {
+      "venueId": "port-moresby-osm-way-1497997106",
+      "city": "port-moresby",
+      "name": "Vabukori Women's Market",
+      "archetype": "market-open",
+      "subject": "A small village women's market: a single corrugated-iron shelter over trestle tables of fresh produce",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "single open shelter"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#9aa3a8",
+          "#8d6e4a",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1497997106",
+          "what": "measured OSM outline 17.2 x 15.2 m, 232 m2; tags amenity=marketplace"
+        }
+      ],
+      "notes": "OSM marketplace 17 x 15 m (232 m2). Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-25178323": {
+      "venueId": "port-moresby-osm-way-25178323",
+      "city": "port-moresby",
+      "name": "Sir Hubert Murray Stadium",
+      "archetype": "stadium",
+      "subject": "Sir Hubert Murray Stadium (Konedobu): a rectangular grass stadium rebuilt in 2022 with a tall main stand, on reclaimed shoreline land",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "shed",
+        "variant": "rectangular redeveloped stadium with tall main stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#a9422f",
+          "#f2efe6"
+        ],
+        "roofColour": "#7c868c",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_Hubert_Murray_Stadium",
+          "what": "opened 1969 for the South Pacific Games; capacity about 20,000 (2023); renovated 2013-14, redeveloped rectangular format opened 2022; planned six-storey main stand; built on reclaimed mangrove shoreline"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25178323",
+          "what": "measured OSM outline 307.9 x 192.1 m, 46608 m2; tags wikidata=Q1633327, leisure=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1633327",
+          "what": "Wikidata identity/type match: Sir Hubert Murray Stadium"
+        }
+      ],
+      "notes": "Capacity, history and the tall main stand are sourced; stand colours are assumed. The 2022 stadium is modern, not the 1969 bowl; the OSM site is 308 x 192 m."
+    },
+    "port-moresby-osm-way-25178550": {
+      "venueId": "port-moresby-osm-way-25178550",
+      "city": "port-moresby",
+      "name": "Port Moresby Technical College",
+      "archetype": "campus-block",
+      "subject": "A technical college workshop and classroom block: single-storey rendered building with a wide shed roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 29,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e1c9",
+          "#7c868c",
+          "#f2efe6"
+        ],
+        "roofColour": "#7c868c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/840620122",
+          "what": "measured OSM outline 60.2 x 29 m, 1747 m2; tags amenity=college, building=yes"
+        }
+      ],
+      "notes": "OSM college building 60 x 29 m. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-25598649": {
+      "venueId": "port-moresby-osm-way-25598649",
+      "city": "port-moresby",
+      "name": "PNG National Museum and Art Gallery",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum and Art Gallery at Waigani (opened 1977): a broad low concrete building with a steep traditional-style roof and entrance courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 69,
+        "depth_m": 61,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "broad low museum with ridge roof",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e1d9c3",
+          "#a9422f",
+          "#f2efe6"
+        ],
+        "roofColour": "#a9422f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "carved/painted PNG motifs at the entrance"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Papua_New_Guinea_National_Museum_and_Art_Gallery",
+          "what": "purpose-built museum begun 1975, opened 27 June 1977; refurbished 2017 by Architectus (Australian firm)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25598649",
+          "what": "measured OSM outline 68.8 x 60.8 m, 3018 m2; tags building=yes, tourism=museum"
+        }
+      ],
+      "notes": "Only dates, function, refurbishment and the OSM outline (69 x 61 m) are sourced; appearance is not described anywhere fetched, so roof and colour are assumed from the PNG national-building idiom. Confirm before final art."
+    },
+    "port-moresby-osm-way-25601717": {
+      "venueId": "port-moresby-osm-way-25601717",
+      "city": "port-moresby",
+      "name": "Gerehu Sports Centre",
+      "archetype": "park-landscape",
+      "subject": "A suburban sports ground: wide grass playing fields with a low pavilion and floodlight masts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "sports fields with clubhouse"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1c9",
+          "#4f7a5c",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "clubhouse"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/25601717",
+          "what": "measured OSM outline 420.8 x 331.8 m, 89747 m2; tags leisure=park"
+        }
+      ],
+      "notes": "OSM leisure=park outline 421 x 332 m. Typed from city style; no building description found."
+    },
+    "port-moresby-osm-way-525253713": {
+      "venueId": "port-moresby-osm-way-525253713",
+      "city": "port-moresby",
+      "name": "Sir John Guise Stadium",
+      "archetype": "stadium",
+      "subject": "Sir John Guise Stadium at Waigani: an athletics stadium (rebuilt 2012-15) with an expanded grandstand and floodlights in a sports precinct",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "shed",
+        "variant": "athletics stadium with one big grandstand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#2c4c63",
+          "#f2efe6"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_John_Guise_Stadium",
+          "what": "opened 1991, rebuilt 2012-15 to 15,000 seats; expanded grandstand, new lighting, scoreboard, IAAF-certified athletics track; part of the Sir John Guise Sports Precinct with indoor arena and aquatics centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25396063",
+          "what": "measured OSM outline 502.7 x 466.1 m, 200391 m2; tags leisure=sports_centre"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2289928",
+          "what": "Wikidata identity/type match: Sir John Guise Stadium"
+        }
+      ],
+      "notes": "Seats, track, grandstand, lighting and scoreboard sourced; roof and colours assumed. Separate from the nearby football stadium, which is a roofed rectangular bowl."
+    },
+    "port-moresby-osm-way-615731680": {
+      "venueId": "port-moresby-osm-way-615731680",
+      "city": "port-moresby",
+      "name": "Santos National Football Stadium",
+      "archetype": "stadium",
+      "subject": "The PNG National Football Stadium (Populous, 2015, Konedobu): a rectangular football bowl with a permanent roofed grandstand and floodlight towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 210,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "curved",
+        "variant": "rectangular football stadium with a long roofed grandstand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#a9422f",
+          "#f2efe6"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "permanent cantilever roof over the main grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/PNG_Football_Stadium",
+          "what": "rebuilt 2015 (previously Lloyd Robson Oval); capacity about 14,800-15,000; Populous architect and contractor; rectangular natural-grass pitch; scoreboard"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Moresby",
+          "what": "National Football Stadium has a permanent roofed grandstand"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/615731680",
+          "what": "measured OSM outline 403.6 x 222.6 m, 67748 m2; tags wikidata=Q3257543, leisure=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3257543",
+          "what": "Wikidata identity/type match: PNG Football Stadium"
+        }
+      ],
+      "notes": "Roofed grandstand, Populous design, capacity and scoreboard are sourced; paint colours are assumed. OSM outline 404 x 223 m."
+    },
+    "port-moresby-quiet-reflection": {
+      "venueId": "port-moresby-quiet-reflection",
+      "city": "port-moresby",
+      "name": "St. Mary's Cathedral",
+      "archetype": "church-modern",
+      "subject": "St Mary's Catholic Cathedral: a tall single-volume church with a single steep skillion roof in navy blue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "shed",
+        "variant": "tall hall church with mono-pitch roof"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#1c2f4f",
+          "#c9b98f"
+        ],
+        "roofColour": "#1c2f4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "freestanding or integrated belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/895502854",
+          "what": "measured OSM outline 45.2 x 16.5 m, 652 m2; tags building=cathedral, height=17, roof:shape=skillion, roof:colour=navy, amenity=place_of_worship, religion=christian, denomination=roman_catholic"
+        }
+      ],
+      "notes": "OSM measures the cathedral at 17 m high with a skillion (mono-pitch) navy-coloured roof, 45 x 16.5 m: these dimensions and roof colour are measured data. Wall colour and bell-tower detail are assumed."
+    },
+    "port-moresby-recreation": {
+      "venueId": "port-moresby-recreation",
+      "city": "port-moresby",
+      "name": "Koiri Park",
+      "archetype": "park-landscape",
+      "subject": "A large suburban recreation park: wide grass ovals with a small pavilion and tree belts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "large lawn with sports pavilion"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1c9",
+          "#4f7a5c",
+          "#f2efe6"
+        ],
+        "roofColour": "#4f7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/301418557",
+          "what": "measured OSM outline 655.1 x 448.6 m, 236904 m2; tags leisure=park"
+        }
+      ],
+      "notes": "OSM park outline 655 x 449 m (23.7 ha); no features recorded. Typed from city style; no building description found."
+    },
+    "port-moresby-transit": {
+      "venueId": "port-moresby-transit",
+      "city": "port-moresby",
+      "name": "Boroko",
+      "archetype": "transport-station",
+      "subject": "The Boroko bus stop and PMV (public motor vehicle) stand: a tall open shelter with a corrugated roof beside bays where minibuses load",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed",
+        "variant": "open bus shelter with bays"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9aa3a8",
+          "#a9422f",
+          "#f2efe6"
+        ],
+        "roofColour": "#a9422f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 6,
+          "note": "PMV minibus loading bays"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Moresby",
+          "what": "Boroko once the commercial heart of the city, with many empty former shops"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/956489913",
+          "what": "measured OSM outline 31.2 x 26.4 m, 823 m2; tags building=yes, height=7, amenity=shelter"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4946224",
+          "what": "Wikidata identity/type match: Boroko"
+        }
+      ],
+      "notes": "OSM shows an amenity=shelter 7 m high, 31 x 26 m, here used as the transit hub. Appearance typed from the PMV stand style."
+    }
+  }
+}

@@ -1,0 +1,283 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-market-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20130610-IMG_2460_(9104571460)_(2).jpg",
+   "licence": "CC BY 2.0",
+   "author": "jbdodane",
+   "view": "street",
+   "used": "timber post and plank lock-ups with green-painted corrugated sheet, narrow earth lanes, hand-lettered shop fronts; not an exterior of the whole market"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bissau.json#bissau-market-game",
+   "used": "about 120x100 m informal sprawl of lock-ups, sheds and umbrella stalls on laterite; OSM nearest match is a 217 m2 house so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#2f6b4f",
+     "#8a5a36",
+     "#b5523a"
+    ],
+    "goods_colours": [
+     "#d9a63a",
+     "#3a6ea0",
+     "#c9876b"
+    ],
+    "awning_colours": [
+     "#3a6ea0",
+     "#c9876b",
+     "#d9a63a"
+    ],
+    "wall_colour": "#a9a49a",
+    "roof_colour": "#8a7f78"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#2f6b4f",
+     "#8a5a36",
+     "#b5523a"
+    ],
+    "goods_colours": [
+     "#d9a63a",
+     "#3a6ea0",
+     "#c9876b"
+    ],
+    "awning_colours": [
+     "#3a6ea0",
+     "#c9876b",
+     "#d9a63a"
+    ],
+    "wall_colour": "#a9a49a",
+    "roof_colour": "#8a7f78"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    14,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#2f6b4f",
+     "#8a5a36",
+     "#b5523a"
+    ],
+    "goods_colours": [
+     "#d9a63a",
+     "#3a6ea0",
+     "#c9876b"
+    ],
+    "awning_colours": [
+     "#3a6ea0",
+     "#c9876b",
+     "#d9a63a"
+    ],
+    "wall_colour": "#a9a49a",
+    "roof_colour": "#8a7f78"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -30,
+    36,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "depth": 4.5,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#2f6b4f",
+     "#8a5a36",
+     "#b5523a"
+    ],
+    "goods_colours": [
+     "#d9a63a",
+     "#3a6ea0",
+     "#c9876b"
+    ],
+    "awning_colours": [
+     "#3a6ea0",
+     "#c9876b",
+     "#d9a63a"
+    ],
+    "wall_colour": "#a9a49a",
+    "roof_colour": "#8a7f78"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    34,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "cladding": "#8a7f78",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    48,
+    18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -19,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    25,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -45,
+    -45,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 14,
+    "radius": 1.6,
+    "height": 2.4,
+    "tables": false
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "pillar": 1.2,
+    "colour": "#b8b2a2",
+    "leafColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 4,
+    "spread": 8,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo of the whole market: lanes of lock-ups, sheds and stalls are a plausible portion, not the real layout"
+ }
+}

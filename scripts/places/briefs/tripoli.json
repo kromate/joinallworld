@@ -1,0 +1,1407 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tripoli",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tripoli",
+    "climate": "mediterranean",
+    "vernacular": "Mediterranean port city of whitewashed and sand-coloured render. The walled Ottoman medina has narrow lanes, courtyard houses and hypostyle domed mosques reusing Roman columns; the Italian-era centre (1910s-40s) has arcaded cream and ochre blocks around Martyrs' Square; the rest is flat-roofed 1970s-2000s concrete blocks in grey, sand and whitewash with palm-lined avenues.",
+    "wallColours": [
+      "#f3efe6",
+      "#d8c39a",
+      "#c9a56b",
+      "#e5d2a8",
+      "#d9a68a",
+      "#aaa59b"
+    ],
+    "roofColours": [
+      "#b8b2a5",
+      "#b5603f",
+      "#3f7a52",
+      "#f1ede4"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "concrete",
+      "limestone",
+      "stucco",
+      "marble"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Ottoman and Karamanli carved stucco and coloured tilework, reused Roman columns, multi-domed whitewashed mosque roofs with octagonal minarets, Italian arcades and arches, crenellated castle walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+        "what": "medina form, hypostyle mosques, Italianate colonial buildings, whitewashed buildings, palms, climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gurgi_Mosque",
+        "what": "Ottoman mosque 1834 with 15 domes and marble"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Red_Castle_Museum",
+        "what": "Red Castle with arches by Armando Brasini, square by Di Fausto"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Martyrs%27_Square,_Tripoli",
+        "what": "bay-side square surrounded by commercial centre, large Italian-designed fountain"
+      }
+    ]
+  },
+  "places": {
+    "tripoli-abu-salem-market": {
+      "venueId": "tripoli-abu-salem-market",
+      "city": "tripoli",
+      "name": "Abu Salem Market",
+      "archetype": "market-open",
+      "subject": "Abu Salim neighbourhood market: rows of stalls and lock-up shops under awnings and sheet roofs between low concrete blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b8b2a5",
+          "#d8c39a",
+          "#f3efe6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description of this market was found; typed from the open-market type and Tripoli concrete-and-sand city style."
+    },
+    "tripoli-airport-mitiga-international-airport": {
+      "venueId": "tripoli-airport-mitiga-international-airport",
+      "city": "tripoli",
+      "name": "Mitiga International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Mitiga's low civil terminal beside the old Italian-built air base, with a small tower and a flat-roofed forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5ddc8",
+          "#8c8a84",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mitiga_International_Airport",
+          "what": "built 1923 as Italian air base, civil airport since 1995, shared civil/military use, runways 3,376 m and 1,829 m"
+        }
+      ],
+      "notes": "Only history and runway data were found; the terminal's look is typed (modest 1990s block). Do not model a large modern terminal."
+    },
+    "tripoli-clinic": {
+      "venueId": "tripoli-clinic",
+      "city": "tripoli",
+      "name": "Tripoli Central Hospital-TCH",
+      "archetype": "hospital",
+      "subject": "A large state hospital: six-storey rendered ward blocks with long balconies and an ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5ddc8",
+          "#9a9890",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Tripoli",
+          "what": "Tripoli Central Hospital is a teaching hospital of the University of Tripoli"
+        }
+      ],
+      "notes": "No building description found; typed from the Libyan state-hospital type and the city style."
+    },
+    "tripoli-community-notices": {
+      "venueId": "tripoli-community-notices",
+      "city": "tripoli",
+      "name": "Ministry of Tourism",
+      "archetype": "civic-palace",
+      "subject": "A government ministry block in cream render with a flag and plain columns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e5d2a8",
+          "#aaa59b",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed as a mid-rise ministry block from the Tripoli city style."
+    },
+    "tripoli-community-voting-game": {
+      "venueId": "tripoli-community-voting-game",
+      "city": "tripoli",
+      "name": "Martyrs Square",
+      "archetype": "park-landscape",
+      "subject": "The waterfront Martyrs' Square: a wide paved plaza with palms and a large central fountain, Italian-era arcaded buildings and the Red Castle at its edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#e5d2a8",
+          "#d9d2c2",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "large fountain by an Italian architect"
+        },
+        {
+          "id": "arcade",
+          "count": 2,
+          "note": "arcaded Italian-era frontages"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1930s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Martyrs%27_Square,_Tripoli",
+          "what": "downtown bay-side square, main commercial centre around it, large fountain designed by an Italian architect; two tall pillars on the seafront avenue; palms"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Red_Castle_Museum",
+          "what": "square redesigned in the 1930s by Florestano Di Fausto"
+        }
+      ],
+      "notes": "Show the square and fountain; surrounding arcaded blocks are Italian-era (cream and ochre) but are described only in general terms."
+    },
+    "tripoli-community-workshop": {
+      "venueId": "tripoli-community-workshop",
+      "city": "tripoli",
+      "name": "University of Tripoli",
+      "archetype": "campus-block",
+      "subject": "The main campus: rows of three-storey sand-coloured concrete faculty blocks around landscaped quads",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8c39a",
+          "#aaa59b",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Tripoli",
+          "what": "largest university; faculties; main campus in south-east Tripoli; no architecture described"
+        }
+      ],
+      "notes": "Page lists faculties and history only. Typed as a 1970s modernist campus block."
+    },
+    "tripoli-emerald-mall": {
+      "venueId": "tripoli-emerald-mall",
+      "city": "tripoli",
+      "name": "Mall of Emerald Tripoli",
+      "archetype": "mall",
+      "subject": "A modern two-level shopping mall with a glazed entrance atrium and big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1eee6",
+          "#3f7a52",
+          "#c9ced1"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed as a recent shopping mall."
+    },
+    "tripoli-international-stadium": {
+      "venueId": "tripoli-international-stadium",
+      "city": "tripoli",
+      "name": "Tripoli International Stadium",
+      "archetype": "stadium",
+      "subject": "The 11 June Stadium bowl: a large open concrete oval with tiered stands, floodlight masts and a renovated pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 190,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2c2",
+          "#6d7a86",
+          "#b8b2a5"
+        ],
+        "roofColour": "#aaa59b",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/11_June_Stadium",
+          "what": "Tripoli Stadium / Tripoli International Stadium, formerly June 11 Stadium; 50,000 seats; opened 1970; pitch 107 x 72 m; renovated March 2024"
+        }
+      ],
+      "notes": "The page gives no roof or stand details, so the bowl is typed open. Footprint scaled from a 50,000-seat bowl."
+    },
+    "tripoli-libyan-museum": {
+      "venueId": "tripoli-libyan-museum",
+      "city": "tripoli",
+      "name": "Libyan Museum",
+      "archetype": "museum-theatre",
+      "subject": "A city museum building: a two-storey sand-coloured block with a formal arched entrance and a small garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e5d2a8",
+          "#c9a56b",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Red_Castle_Museum",
+          "what": "the national Libyan Museum is in the Red Castle at Martyrs' Square, about 1.2 km from this venue's coordinates"
+        }
+      ],
+      "notes": "The game coordinates are not the Red Castle (which has its own venue), so this is another museum or a duplicate listing; nothing specific was found. Typed generic."
+    },
+    "tripoli-marcus-aurelius-arch": {
+      "venueId": "tripoli-marcus-aurelius-arch",
+      "city": "tripoli",
+      "name": "Marcus Aurelius Arch",
+      "archetype": "monument",
+      "subject": "The Roman four-faced marble triumphal arch beside the medina: a square tetrapylon under an unusual octagonal cupola, with pediments on the main faces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "limestone",
+        "colours": [
+          "#e3d9c3",
+          "#c9b48a",
+          "#9a9890"
+        ],
+        "roofColour": "#d9d0b9",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 2,
+          "note": "main faces show deities in chariots"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "octagonal cupola"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "AD 163",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arch_of_Marcus_Aurelius_(Tripoli)",
+          "what": "quadrifrons marble arch, octagonal cupola, pediments with Apollo and Minerva in chariots, empty statue niches, acid-rain damage, area reorganised by Di Fausto in the 1930s"
+        }
+      ],
+      "notes": "Overall dimensions are an estimate (about 11 m square, 9 m high); the page gives none. The arch is partly buried and sits at the medina's NE entrance. Roman style has no enum; neoclassical used."
+    },
+    "tripoli-market-game": {
+      "venueId": "tripoli-market-game",
+      "city": "tripoli",
+      "name": "ADDAHRA Market",
+      "archetype": "market-hall",
+      "subject": "Ad Dahra market: a covered hall of lock-up shops and stalls under flat concrete roofs with awnings and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8c39a",
+          "#aaa59b",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "lock-ups",
+          "count": 16
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed as a mid-rise covered souk next to the Ad Dahra bus station."
+    },
+    "tripoli-meal-stop": {
+      "venueId": "tripoli-meal-stop",
+      "city": "tripoli",
+      "name": "Wahat",
+      "archetype": "restaurant",
+      "subject": "A neighbourhood restaurant: a single-storey sand-rendered building with an awning and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9a56b",
+          "#f3efe6",
+          "#8c6a4a"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed small restaurant."
+    },
+    "tripoli-nadee-al-ulaa": {
+      "venueId": "tripoli-nadee-al-ulaa",
+      "city": "tripoli",
+      "name": "Nadee al Ulaa",
+      "archetype": "park-landscape",
+      "subject": "A neighbourhood sports club grounds and garden: lawns, palms, a low pavilion and railings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3efe6",
+          "#c9a56b",
+          "#aaa59b"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "Name suggests a club ('nadi'); nothing about its layout was found. Typed park/clubhouse."
+    },
+    "tripoli-qirqareesh-hospital": {
+      "venueId": "tripoli-qirqareesh-hospital",
+      "city": "tripoli",
+      "name": "QIRQARISH hospital",
+      "archetype": "hospital",
+      "subject": "A district hospital at Qargarish: low three-storey rendered wards with an ambulance bay and car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5ddc8",
+          "#8c8a84",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed small district hospital."
+    },
+    "tripoli-quiet-reflection": {
+      "venueId": "tripoli-quiet-reflection",
+      "city": "tripoli",
+      "name": "Gurgi Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The 1834 Ottoman Gurgi Mosque in the medina: a whitewashed hypostyle prayer hall under a roof of many small domes with a tall minaret with green marble balconies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "multi-dome",
+        "variant": "ottoman-hypostyle"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "marble",
+        "colours": [
+          "#f3efe6",
+          "#3f7a52",
+          "#c9a56b"
+        ],
+        "roofColour": "#f1ede4",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 15,
+          "note": "fifteen decorative domes"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 25 m, two balconies in green marble"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "1834",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gurgi_Mosque",
+          "what": "15 decorative domes, one minaret ~25 m with two green marble balconies, natural marble walls and columns, colourful floor tiles, Ottoman with European and Islamic geometry, completed 1834"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "Footprint 42 x 32 m is an estimate; the page gives only the minaret height. Minaret shaft shape not confirmed (Tripolitanian Ottoman minarets are usually octagonal)."
+    },
+    "tripoli-recreation": {
+      "venueId": "tripoli-recreation",
+      "city": "tripoli",
+      "name": "Tripoli Zoo",
+      "archetype": "park-landscape",
+      "subject": "Tripoli Zoo: a large green reserve of lawns, mature trees and enclosures behind a plain entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f3efe6",
+          "#c9a56b",
+          "#aaa59b"
+        ],
+        "roofColour": "#b5603f",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli_Zoo",
+          "what": "country's biggest zoo, a large reserve of plants, trees and open green space south of the city centre"
+        }
+      ],
+      "notes": "Only vegetation and location were found. Large site clamped to the scene; show the entrance and nearest trees."
+    },
+    "tripoli-red-castle": {
+      "venueId": "tripoli-red-castle",
+      "city": "tripoli",
+      "name": "The Red Castle",
+      "archetype": "heritage-fort",
+      "subject": "Assaraya al-Hamra, the Red Castle on its promontory by Martyrs' Square: a rambling crenellated fortress-palace of thick sand-coloured walls, courtyards and Italian-era arches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#e2d3b4",
+          "#c9a56b",
+          "#8c6a4a"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "punched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "16th c., remodelled 1920s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Red_Castle_Museum",
+          "what": "on a promontory next to the medina; museum entrance on Martyrs' Square; Armando Brasini renovated it in the early 1920s and designed its arches; reopened 2025 as the National Museum of Libya"
+        }
+      ],
+      "notes": "The page gives history, not the look; colours and plan are typed (pale sand walls despite the name). Footprint is approximate; the castle is bigger than the scene."
+    },
+    "tripoli-sea-fishing-institute": {
+      "venueId": "tripoli-sea-fishing-institute",
+      "city": "tripoli",
+      "name": "The intermediate institute for sea fishing professions",
+      "archetype": "campus-block",
+      "subject": "A small vocational institute: a two-storey rendered teaching block with a yard near the harbour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5d2a8",
+          "#8c8a84",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed small vocational school block."
+    },
+    "tripoli-sultan-mall": {
+      "venueId": "tripoli-sultan-mall",
+      "city": "tripoli",
+      "name": "Sultan Mall",
+      "archetype": "mall",
+      "subject": "A suburban shopping mall: a two-level rendered block with a glazed entrance and a signboard tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9d8",
+          "#7d6a4a",
+          "#c9ced1"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed as a recent suburban mall."
+    },
+    "tripoli-transit": {
+      "venueId": "tripoli-transit",
+      "city": "tripoli",
+      "name": "Ad Dahra Bus Station",
+      "archetype": "transport-station",
+      "subject": "The Ad Dahra bus park: open bays under long platform canopies with a small ticket building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b8b2a5",
+          "#d8c39a",
+          "#f3efe6"
+        ],
+        "roofColour": "#9a9890",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed as a bus park with canopies."
+    },
+    "tripoli-tripoli-commercial-center": {
+      "venueId": "tripoli-tripoli-commercial-center",
+      "city": "tripoli",
+      "name": "Tripoli Commercial Center",
+      "archetype": "mall",
+      "subject": "A commercial centre of shops and offices: a three-storey sand-coloured block with a long signboard band",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d2a8",
+          "#7d8288",
+          "#f3efe6"
+        ],
+        "roofColour": "#b8b2a5",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "what": "Tripoli: Ottoman medina, Italianate colonial buildings, whitewashed buildings, palms, hot semi-arid climate"
+        }
+      ],
+      "notes": "No description found; typed generic commercial centre."
+    },
+    "tripoli-university-campus-b": {
+      "venueId": "tripoli-university-campus-b",
+      "city": "tripoli",
+      "name": "University of Tripoli - Campus B",
+      "archetype": "campus-block",
+      "subject": "A second university campus: three-storey grey and sand concrete lecture blocks arranged around a quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 95,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c1b0",
+          "#aaa59b",
+          "#f3efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Tripoli",
+          "what": "several campuses; no architecture described"
+        }
+      ],
+      "notes": "No description found; typed to differ from the main campus block (grey concrete, U plan)."
+    }
+  }
+}

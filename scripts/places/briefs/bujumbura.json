@@ -1,0 +1,1485 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bujumbura",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bujumbura",
+    "climate": "savanna",
+    "vernacular": "Lakeside port city at about 774 m on Lake Tanganyika with a hot tropical-savanna climate. The centre keeps Belgian-era (1920s-60s) low-rise modernist and colonial blocks: 1-3 storey painted-render buildings, shop arcades, flat concrete roofs and red or grey corrugated-iron roofs. Residential districts are single-storey houses of render or brick behind walls, with red earth streets, mango, palm and flamboyant trees, and lakeshore bars and beach clubs.",
+    "wallColours": [
+      "#ece6d6",
+      "#e1cf9a",
+      "#b5603f",
+      "#9b978f",
+      "#c9b9a0",
+      "#d9a57a"
+    ],
+    "roofColours": [
+      "#9a4a35",
+      "#5c6b66",
+      "#a8523a",
+      "#8a8f93"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "brick",
+      "red-brick",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Belgian-era modernist details: shop arcades, concrete sun-breakers, flat canopies; traditional Burundian conical thatched huts and woven reed fences in cultural sites; boundary walls with painted trims; mango, palm and flamboyant street trees.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bujumbura",
+        "what": "port on Lake Tanganyika at ~774 m; tropical savanna climate; Belgian-era architecture in the centre; markets, stadium, parks, Livingstone-Stanley monument"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Intwari_Stadium",
+        "what": "city sports infrastructure"
+      }
+    ]
+  },
+  "places": {
+    "bujumbura-airport-bujumbura-airport": {
+      "venueId": "bujumbura-airport-bujumbura-airport",
+      "city": "bujumbura",
+      "name": "Bujumbura Melchior Ndadaye International Airport",
+      "archetype": "airport-terminal",
+      "subject": "A small international terminal at the only paved runway in Burundi (opened 1952): a low rendered terminal block with a new control tower being added",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#9b978f",
+          "#c9b9a0"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new tower under construction since 2024"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1952; renovation phases from 2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura_International_Airport",
+          "what": "opened 1952; single 3,600 m runway; renamed Melchior Ndadaye 2019; renovation from Aug 2024 with new control tower and planned new passenger terminal"
+        }
+      ],
+      "notes": "Current terminal appearance is not described in the retrieved text; size and finishes are estimates for a regional terminal. A new terminal is planned, so keep it modest."
+    },
+    "bujumbura-clinic": {
+      "venueId": "bujumbura-clinic",
+      "city": "bujumbura",
+      "name": "Hopital Militaire De Kamenge",
+      "archetype": "hospital",
+      "subject": "A military hospital in Kamenge: several single- and two-storey ward blocks of rendered brick with red roofs behind a gated wall",
+      "form": {
+        "footprint": "H",
+        "width_m": 85,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#ece6d6",
+          "#b5603f",
+          "#9b978f"
+        ],
+        "roofColour": "#9a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found about the buildings; typed from hospital type and city style."
+    },
+    "bujumbura-community-notices": {
+      "venueId": "bujumbura-community-notices",
+      "city": "bujumbura",
+      "name": "Palais présidentiel Ntare Rushatsi",
+      "archetype": "civic-palace",
+      "subject": "The presidential residence/office complex on the lakeshore side of town: a formal two-storey white palace behind a perimeter wall with guard posts and flag masts",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#c9b9a0",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named for the 20th-century \"Ntare Rushatsi\" (Mwami Ntare V). No source on its appearance was retrieved; typed as a walled colonial-style palace. Do not show any legible name."
+    },
+    "bujumbura-community-voting-game": {
+      "venueId": "bujumbura-community-voting-game",
+      "city": "bujumbura",
+      "name": "Palais des Congres de Kigobe",
+      "archetype": "civic-small",
+      "subject": "The congress hall in Kigobe: a broad low modern conference hall with a front colonnade and a big flat canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e1d9c6",
+          "#9b978f",
+          "#b5603f"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s-1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing describing the building was retrieved; typed as a modernist congress hall."
+    },
+    "bujumbura-community-workshop": {
+      "venueId": "bujumbura-community-workshop",
+      "city": "bujumbura",
+      "name": "Hope Africa University",
+      "archetype": "campus-block",
+      "subject": "A private university campus: several 2-3 storey cream-rendered teaching blocks with red roofs around a lawn",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#ece6d6",
+          "#b5603f",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed from campus type and city style."
+    },
+    "bujumbura-market-game": {
+      "venueId": "bujumbura-market-game",
+      "city": "bujumbura",
+      "name": "KANYOSHA MARKET",
+      "archetype": "market-open",
+      "subject": "A neighbourhood open market in southern Kanyosha: rows of timber and sheet stalls with umbrellas on a dusty open plot",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9b7a58",
+          "#8a8f93",
+          "#b5603f"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed as an open stall market. Differs from Musaga (covered, built blocks) and Gatumba (lakeside)."
+    },
+    "bujumbura-meal-stop": {
+      "venueId": "bujumbura-meal-stop",
+      "city": "bujumbura",
+      "name": "Maman Ngabo",
+      "archetype": "restaurant",
+      "subject": "A small family restaurant in Gatumba near the lake: single-storey painted-render room with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e1cf9a",
+          "#b5603f",
+          "#9b978f"
+        ],
+        "roofColour": "#9a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed small local restaurant."
+    },
+    "bujumbura-osm-node-1343582898": {
+      "venueId": "bujumbura-osm-node-1343582898",
+      "city": "bujumbura",
+      "name": "Marché Musaga",
+      "archetype": "market-hall",
+      "subject": "The Musaga neighbourhood market: a covered trading hall with a large corrugated roof on columns and stalls spilling into the surrounding yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c4",
+          "#b5603f",
+          "#9b978f"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found about its structure; typed as a covered hall. (Bujumbura's central market suffered a major fire in 2013, per Wikipedia, but this is a different market.)"
+    },
+    "bujumbura-osm-node-2135030807": {
+      "venueId": "bujumbura-osm-node-2135030807",
+      "city": "bujumbura",
+      "name": "Lumière",
+      "archetype": "restaurant",
+      "subject": "A restaurant/bar in the central-north suburbs: a two-storey rendered building with a street terrace and bright awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#ece6d6",
+          "#d9a57a",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed from city style."
+    },
+    "bujumbura-osm-node-2174030720": {
+      "venueId": "bujumbura-osm-node-2174030720",
+      "city": "bujumbura",
+      "name": "Geny's Beach",
+      "archetype": "restaurant",
+      "subject": "A lakeshore beach bar on Lake Tanganyika: a thatched open pavilion and umbrellas over sand with palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "beach-bar"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a8845a",
+          "#e1cf9a",
+          "#ece6d6"
+        ],
+        "roofColour": "#a8884f",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open thatched bar"
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "what": "Bujumbura is on the north-east shore of Lake Tanganyika; lakeshore leisure"
+        }
+      ],
+      "notes": "Obscure; no page about this venue. Typed as a lakeside beach bar; the lake and sand are the recognisable setting."
+    },
+    "bujumbura-osm-node-3349652326": {
+      "venueId": "bujumbura-osm-node-3349652326",
+      "city": "bujumbura",
+      "name": "Université des Grands Lacs",
+      "archetype": "campus-block",
+      "subject": "A private university: a three-storey cream rendered block with a covered entrance and red roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1cf9a",
+          "#ece6d6",
+          "#9b978f"
+        ],
+        "roofColour": "#9a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed. Yellow render to differ from Hope Africa (cream) and Lake Tanganyika University."
+    },
+    "bujumbura-osm-node-4169751891": {
+      "venueId": "bujumbura-osm-node-4169751891",
+      "city": "bujumbura",
+      "name": "Kwa Johnson Chez Johnson",
+      "archetype": "restaurant",
+      "subject": "A popular local bar/club with a walled yard, open-air seating and a coloured corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9a57a",
+          "#ece6d6",
+          "#5c6b66"
+        ],
+        "roofColour": "#5c6b66",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed as a walled local bar."
+    },
+    "bujumbura-osm-node-5542555221": {
+      "venueId": "bujumbura-osm-node-5542555221",
+      "city": "bujumbura",
+      "name": "Pagode Pascasia",
+      "archetype": "temple-asian",
+      "subject": "A small pagoda-style pavilion or shrine (name means pagoda) in the Kanyosha hills, with a tiered roof on a stone base",
+      "form": {
+        "footprint": "round",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "pyramidal",
+        "variant": "pagoda-pavilion"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece6d6",
+          "#b5603f",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Uncertain: only the name \"Pagode\" suggests the form; no source found. It could be a restaurant or a lookout. Kept small; archetype chosen from the name."
+    },
+    "bujumbura-osm-node-5648265555": {
+      "venueId": "bujumbura-osm-node-5648265555",
+      "city": "bujumbura",
+      "name": "Isoko Gatumba",
+      "archetype": "market-open",
+      "subject": "The Gatumba border-town market: lines of tarpaulin and sheet stalls along a dusty road near the lake and the DRC border",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9b7a58",
+          "#8a8f93",
+          "#ece6d6"
+        ],
+        "roofColour": "#7f8587",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Isoko means market in Kirundi; nothing else found. Typed."
+    },
+    "bujumbura-osm-way-10630191": {
+      "venueId": "bujumbura-osm-way-10630191",
+      "city": "bujumbura",
+      "name": "Stade Intwari",
+      "archetype": "stadium",
+      "subject": "The national stadium (opened 1962 as Prince Louis Rwagasore Stadium): an oval bowl with concrete terraces, a covered main stand and an artificial pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 140,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9b8",
+          "#9b978f",
+          "#b5603f"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1962; renovated 2008 and 2022 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Intwari_Stadium",
+          "what": "opened 1962 as Stade Prince Louis Rwagasore; 22,000 capacity; artificial turf; renovated 2008 and 2022-present; renamed Intwari 2019"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "what": "Intwari Stadium renovated and reopened January 2026; capacity quoted inconsistently 15,000 to 22,000"
+        }
+      ],
+      "notes": "Facts from Wikipedia; stand roof and colours are estimates. The renovated main stand should look fresher than the older terraces."
+    },
+    "bujumbura-osm-way-121963993": {
+      "venueId": "bujumbura-osm-way-121963993",
+      "city": "bujumbura",
+      "name": "STADE OLIMPIQUE",
+      "archetype": "stadium",
+      "subject": "A newer, partly built Olympic-style stadium site on the southern edge: a clean oval bowl with a continuous roof ring and a running track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 180,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "new-build"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e1d9c6",
+          "#9b978f",
+          "#5c6b66"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The name is \"Stade Olympique\" in OSM; I could not confirm the state of the building (it may be under construction). Typed as a modern stadium, different from the older Intwari."
+    },
+    "bujumbura-osm-way-124316871": {
+      "venueId": "bujumbura-osm-way-124316871",
+      "city": "bujumbura",
+      "name": "Université du Burundi",
+      "archetype": "campus-block",
+      "subject": "The state university's Mutanga campus: Belgian-era 3-4 storey modernist blocks with concrete sun-breakers, wide stairs and lawns",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c4",
+          "#ece6d6",
+          "#9b978f"
+        ],
+        "roofColour": "#9a968d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "what": "university buildings damaged in the 1990s conflict; Belgian-era architecture in the centre"
+        }
+      ],
+      "notes": "The Mutanga campus coordinates fit; its building details were not retrieved, so form is typed from the 1960s modernist campus type."
+    },
+    "bujumbura-osm-way-209975003": {
+      "venueId": "bujumbura-osm-way-209975003",
+      "city": "bujumbura",
+      "name": "CDS KOMEZA GUSENGA",
+      "archetype": "hospital",
+      "subject": "A small health centre (centre de santé): a single-storey rendered clinic with a covered waiting veranda",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d6",
+          "#9b978f",
+          "#b5603f"
+        ],
+        "roofColour": "#9a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rural health centre east of the city; nothing found."
+    },
+    "bujumbura-osm-way-211284748": {
+      "venueId": "bujumbura-osm-way-211284748",
+      "city": "bujumbura",
+      "name": "Lake Tanganyika University",
+      "archetype": "campus-block",
+      "subject": "A small private university in a converted/new two-storey block with pale blue and cream paint",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9d8dc",
+          "#ece6d6",
+          "#9b978f"
+        ],
+        "roofColour": "#5c6b66",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed. Pale blue render to differ from other campuses."
+    },
+    "bujumbura-osm-way-425918156": {
+      "venueId": "bujumbura-osm-way-425918156",
+      "city": "bujumbura",
+      "name": "Musée Vivant",
+      "archetype": "museum-theatre",
+      "subject": "The Living Museum: a garden site with a reconstructed traditional Burundian village of conical thatched huts, a museum hall and a small reptile area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "pyramidal",
+        "variant": "thatched-huts"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "mud-render",
+        "colours": [
+          "#a8845a",
+          "#c9b9a0",
+          "#ece6d6"
+        ],
+        "roofColour": "#a8884f",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 4,
+          "note": "conical thatched huts"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "woven reed fence"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "traditional forms; museum 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "what": "museums are among the city's attractions"
+        }
+      ],
+      "notes": "From general knowledge the Musée Vivant combines a traditional village and animal exhibits; no page retrieved. Thatch conical huts are the recognisable element."
+    },
+    "bujumbura-osm-way-46692291": {
+      "venueId": "bujumbura-osm-way-46692291",
+      "city": "bujumbura",
+      "name": "Place de l'Indépendance",
+      "archetype": "park-landscape",
+      "subject": "Independence Square in the town centre: an open paved plaza with a central monument, flagpoles and trimmed palms, ringed by Belgian-era blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d8d2c4",
+          "#9b978f",
+          "#ece6d6"
+        ],
+        "roofColour": "#9a968d",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "independence monument"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1962 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "what": "central Bujumbura monuments and Belgian-era architecture"
+        }
+      ],
+      "notes": "The exact monument shape is not verified; typed as a central obelisk-style monument on a plaza."
+    },
+    "bujumbura-osm-way-784755483": {
+      "venueId": "bujumbura-osm-way-784755483",
+      "city": "bujumbura",
+      "name": "Izere",
+      "archetype": "hospital",
+      "subject": "A small private clinic (Izere) in the southern suburbs: a two-storey rendered clinic building with a canopy and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece6d6",
+          "#9fb3b0",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed."
+    },
+    "bujumbura-quiet-reflection": {
+      "venueId": "bujumbura-quiet-reflection",
+      "city": "bujumbura",
+      "name": "Regina Mundi Cathedral",
+      "archetype": "church-modern",
+      "subject": "The Catholic cathedral of the archdiocese (capacity 2,100): a large rendered church with a tall separate bell tower and a broad front portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece6d6",
+          "#c9b9a0",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s-1961",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Regina_Mundi_Cathedral,_Bujumbura",
+          "what": "Roman Catholic cathedral of the Archdiocese of Bujumbura (created 2006); capacity 2,100; shown on a 1961 stamp"
+        }
+      ],
+      "notes": "Capacity and role from Wikipedia; its architecture is not described there, so the portico/bell tower massing is a typed estimate of a mid-century church."
+    },
+    "bujumbura-recreation": {
+      "venueId": "bujumbura-recreation",
+      "city": "bujumbura",
+      "name": "Jardin Public",
+      "archetype": "park-landscape",
+      "subject": "The public garden in the town centre: shaded lawns with palms and mango trees, gravel paths, a small bandstand and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#cfc9b8",
+          "#7aa05a",
+          "#9b978f"
+        ],
+        "roofColour": "#a8523a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1920s-1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bujumbura",
+          "what": "parks among the city's attractions"
+        }
+      ],
+      "notes": "No retrieved description; typed colonial public garden."
+    },
+    "bujumbura-transit": {
+      "venueId": "bujumbura-transit",
+      "city": "bujumbura",
+      "name": "Bujumbura Bus Station (Siyoni)",
+      "archetype": "transport-station",
+      "subject": "The Siyoni bus station: a large paved yard full of minibuses and coaches, with rows of kiosks and a covered waiting shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c4b6",
+          "#b5603f",
+          "#9b978f"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 14
+        },
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing found; typed as an open bus yard with kiosks."
+    }
+  }
+}

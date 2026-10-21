@@ -1,0 +1,263 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/777567481",
+   "used": "garden outline (28 x 28 m, name match) used as the lawn"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.kupi.com/en-ae/explore/nigeria/gombe",
+   "used": "general city guide only; lodge, gazebo, paths and trees come from the typed brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a8c70",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-a",
+   "params": {
+    "rect": [
+     26,
+     1.6
+    ],
+    "z0": 0.5,
+    "height": 0.05,
+    "colour": "#b8ad98"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "path-b",
+   "params": {
+    "rect": [
+     1.6,
+     22
+    ],
+    "z0": 0.5,
+    "height": 0.05,
+    "colour": "#b8ad98"
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mosque-domed/pavilion",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#e8e0cc",
+    "cap_colour": "#8b3a2b"
+   }
+  },
+  {
+   "type": "mosque-domed/fountain",
+   "at": [
+    0,
+    -7,
+    0.5
+   ],
+   "params": {
+    "radius": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -10,
+    -9
+   ],
+   "z0": 0.5,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "colour": "#b8ad98",
+    "board_colour": "#4a4a45"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    7,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -5,
+    9,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    8,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    3,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -8,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    3,
+    -12,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    -3,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -12,
+    4,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   50,
+   44
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the garden; only the outline is real, layout inside is typical"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "botanical-garden-gombe"
+}

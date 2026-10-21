@@ -1,0 +1,251 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "world-bank-market-owerri",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/owerri.json",
+   "used": "brief only: long two-storey lock-up block, green corrugated roof, shop fronts onto a yard of umbrella stalls; no photo or outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     62,
+     11
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9cdb4",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#a05a40",
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6b55",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     11,
+     26
+    ]
+   },
+   "at": [
+    -25.5,
+    -9
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ead8",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#a05a40"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4f6b55",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "sf1",
+   "at": [
+    -18,
+    3.4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.4,
+    "kind": "shutter",
+    "colour": "#a05a40",
+    "sign_colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "sf2",
+   "at": [
+    -8,
+    3.4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.4,
+    "kind": "shutter",
+    "colour": "#4a6b8a",
+    "sign_colour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "sf3",
+   "at": [
+    8,
+    3.4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.4,
+    "kind": "shutter",
+    "colour": "#a05a40",
+    "sign_colour": "#f1ead8"
+   }
+  },
+  {
+   "type": "shopfront",
+   "id": "sf4",
+   "at": [
+    18,
+    3.4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 3.4,
+    "kind": "shutter",
+    "colour": "#4a6b8a",
+    "sign_colour": "#d9cdb4"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "aw1",
+   "at": [
+    -13,
+    2.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#c8453a",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "id": "aw2",
+   "at": [
+    13,
+    2.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#3a7ab5",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stallsA",
+   "at": [
+    -4,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c8453a",
+     "#e0a830",
+     "#3a7ab5"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stallsB",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#e0a830",
+     "#4a9a5a",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.2,
+    "thickness": 0.3,
+    "colour": "#d9cdb4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typical Nigerian market lock-up block from the brief, not checked against the real market."
+ }
+}

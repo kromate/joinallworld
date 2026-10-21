@@ -1,0 +1,646 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-airport-harare-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Harare_International_Airport.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Macvivo",
+   "view": "front",
+   "file": "/tmp/places-evidence/harare/m0-airport.jpg",
+   "used": "terminal composition: tall tapering white tower with diamond-lattice skin and glass lantern with pyramid cap on a dark glazed podium, long low hall with ribbon glazing, row of white pylon-and-flat-canopy pavilions on the left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25512102",
+   "used": "overall terminal scale only; 437 m outline not modelled in full"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.64
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     100,
+     26
+    ]
+   },
+   "at": [
+    -52,
+    3
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#3a5a70",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6",
+    "parapet": 0.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    30,
+    4
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6df",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#3a5a70",
+    "faces": {
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -80,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 4,
+    "spacing": 3.4
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#f1efe9",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       22,
+       17
+      ],
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       22,
+       17
+      ]
+     },
+     {
+      "z": 1.9,
+      "ellipse": [
+       22.1,
+       17.1
+      ],
+      "colour": "#2e3f4c"
+     },
+     {
+      "z": 3.6,
+      "ellipse": [
+       22.1,
+       17.1
+      ],
+      "colour": "#2e3f4c"
+     },
+     {
+      "z": 3.7,
+      "ellipse": [
+       22,
+       17
+      ],
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 6.5,
+      "ellipse": [
+       22,
+       17
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    6.5
+   ],
+   "params": {
+    "colour": "#f1efe9",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       17,
+       17
+      ],
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 1.0,
+      "ellipse": [
+       17,
+       17
+      ]
+     },
+     {
+      "z": 1.1,
+      "ellipse": [
+       17.1,
+       17.1
+      ],
+      "colour": "#2e3f4c"
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       17.1,
+       17.1
+      ],
+      "colour": "#2e3f4c"
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       17,
+       17
+      ],
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       17,
+       17
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    10
+   ],
+   "params": {
+    "colour": "#f1efe9",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 13.5,
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 28.5,
+      "circle": 9.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    11.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#f1efe9",
+    "profile": [
+     [
+      13.130877192982455,
+      0,
+      "#f1efe9"
+     ],
+     [
+      13.130877192982455,
+      3.6
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 3.4,
+     "count": 16,
+     "width": 3.0,
+     "height": 3.0,
+     "sill": 0.3,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#6b7882",
+     "phase": 0
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    17.1
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#f1efe9",
+    "profile": [
+     [
+      12.339649122807016,
+      0,
+      "#f1efe9"
+     ],
+     [
+      12.339649122807016,
+      3.6
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 3.4,
+     "count": 16,
+     "width": 3.0,
+     "height": 3.0,
+     "sill": 0.3,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#6b7882",
+     "phase": 10
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    22.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#f1efe9",
+    "profile": [
+     [
+      11.548421052631578,
+      0,
+      "#f1efe9"
+     ],
+     [
+      11.548421052631578,
+      3.6
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 3.4,
+     "count": 16,
+     "width": 3.0,
+     "height": 3.0,
+     "sill": 0.3,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#6b7882",
+     "phase": 0
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    28.1
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#f1efe9",
+    "profile": [
+     [
+      10.75719298245614,
+      0,
+      "#f1efe9"
+     ],
+     [
+      10.75719298245614,
+      3.6
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 3.4,
+     "count": 16,
+     "width": 3.0,
+     "height": 3.0,
+     "sill": 0.3,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#6b7882",
+     "phase": 10
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    33.6
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "segments": 36,
+    "colour": "#f1efe9",
+    "profile": [
+     [
+      9.965964912280702,
+      0,
+      "#f1efe9"
+     ],
+     [
+      9.965964912280702,
+      3.6
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 3.4,
+     "count": 16,
+     "width": 3.0,
+     "height": 3.0,
+     "sill": 0.3,
+     "shape": "pointed",
+     "depth": 0.3,
+     "innerColour": "#6b7882",
+     "phase": 0
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    38.5
+   ],
+   "params": {
+    "colour": "#f1efe9",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 9.4,
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 0.7,
+      "circle": 10.2
+     },
+     {
+      "z": 0.9,
+      "circle": 8,
+      "colour": "#2e3f4c"
+     },
+     {
+      "z": 3.6,
+      "circle": 8,
+      "colour": "#2e3f4c"
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    38.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 8.4,
+    "count": 10,
+    "startDeg": 0,
+    "endDeg": 360,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 3.5,
+      "colour": "#f1efe9"
+     }
+    }
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    42.2
+   ],
+   "params": {
+    "colour": "#f1efe9",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 9.6,
+      "colour": "#f1efe9"
+     },
+     {
+      "z": 1.0,
+      "circle": 8.6
+     },
+     {
+      "z": 5,
+      "circle": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -95,
+     -14,
+     0
+    ],
+    "end": [
+     -32,
+     -14,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       -4,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        5,
+        5
+       ],
+       "height": 13,
+       "colour": "#f4f2ec"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       4,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        5,
+        5
+       ],
+       "height": 13,
+       "colour": "#f4f2ec"
+      }
+     },
+     {
+      "type": "canopy",
+      "at": [
+       0,
+       0,
+       13
+      ],
+      "params": {
+       "form": "flat",
+       "width": 26,
+       "depth": 15,
+       "height": 0,
+       "thickness": 0.5,
+       "colour": "#f6f6f4",
+       "edgeColour": "#d0d3d6"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -80,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0",
+    "count": 4,
+    "spacing": 3.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -48
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower is now a smooth white cone on a drum collar with lantern cab and pyramid cap, but chevron openings are pointed arches in rows, not a zigzag triangle pattern; pylon canopies hidden behind the hall in the camera view; only ~143 m of the 437 m terminal."
+ }
+}

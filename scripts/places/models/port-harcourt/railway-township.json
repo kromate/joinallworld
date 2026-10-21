@@ -1,0 +1,154 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/386399858",
+   "used": "84x14 m building outline containing the station point, bearing 72 deg"
+  },
+  {
+   "kind": "text",
+   "url": "https://sabiabuja.com/heritage-buildings-in-nigeria/",
+   "used": "colonial tin-roofed Old Township buildings, railway relics"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "station",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b0654a",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "bands": "#e8e0cc",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 24,
+    "colour": "#6e4a3a",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    4.1,
+    -13.4,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "depth": 6,
+    "height": 1.0
+   },
+   "rotDeg": 17
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    4.1,
+    -13.4,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 5,
+    "height": 3.4
+   },
+   "rotDeg": 17
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    7,
+    -23,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 2,
+    "spacing": 4.6
+   },
+   "rotDeg": 17
+  },
+  {
+   "type": "clock-tower-square",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 11,
+    "cap": "hip",
+    "clock": true,
+    "colour": "#e8e0cc",
+    "capColour": "#6e4a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -9,
+    2.8
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 2.6,
+    "colour": "#e8e0cc",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     16
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Real outline only; brick hip-roofed station, clock and platform typed from the brief, no photo found"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "railway-township"
+}

@@ -1,0 +1,418 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json#remo-kitchen",
+   "used": "two-bay open eatery 14 x 10 m, green and yellow render, brown corrugated gable roofs, pot station, plastic chairs, umbrellas, blank leaf-wrap menu board"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1274901983",
+   "used": "not used: nearest match only (97 m2, rotated), smaller than the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: brief is typed; bay layout, pot station and furniture are typical of an ofada buka, not observed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    4.6
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8c3a0",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#e6cf8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8c3a0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-left",
+   "footprint": {
+    "rect": [
+     0.5,
+     9.4
+    ]
+   },
+   "at": [
+    -6.8,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8c3a0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8c3a0",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-west",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    -3.5,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "left": "plain",
+     "right": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d5a3b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-east",
+   "footprint": {
+    "rect": [
+     7,
+     10
+    ]
+   },
+   "at": [
+    3.5,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8d5a3b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cook-room",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    4.6,
+    2.9
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8c3a0",
+    "windows": "screen",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d5a3b",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    1.2,
+    2.6,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.2,
+      0,
+      "#3a3a3a"
+     ],
+     [
+      0.9,
+      0.1,
+      "#3a3a3a"
+     ],
+     [
+      1.1,
+      0.9,
+      "#3a3a3a"
+     ],
+     [
+      1.0,
+      1.1,
+      "#555555"
+     ],
+     [
+      0.6,
+      1.1,
+      "#555555"
+     ]
+    ],
+    "segments": 18
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -0.4,
+    3.0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0.2,
+      0,
+      "#4a4a4a"
+     ],
+     [
+      0.7,
+      0.1,
+      "#4a4a4a"
+     ],
+     [
+      0.85,
+      0.7,
+      "#4a4a4a"
+     ],
+     [
+      0.75,
+      0.85,
+      "#666666"
+     ]
+    ],
+    "segments": 16
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -5,
+    -1,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#c43a2f"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -2.5,
+    -2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    1.5,
+    -1.2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#e8c13a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4.5,
+    -2.2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#c43a2f"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "colours": [
+     "#8d5a3b",
+     "#e6cf8a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.5,
+    -5.0,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.2,
+    "bottom": 3.0,
+    "colour": "#2f7a4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -8.5,
+    -4,
+    0
+   ],
+   "params": {
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -9.5,
+    -7,
+    0
+   ],
+   "params": {
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    8.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "colour": "#c43a2f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    10,
+    -1,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 2.0,
+    "height": 2.5,
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -11,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   34,
+   26
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "remo-kitchen"
+}

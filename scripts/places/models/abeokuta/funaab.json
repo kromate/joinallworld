@@ -1,0 +1,703 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_University_of_Agriculture_Abeokuta_gate,_Abeokuta.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kaizenify",
+   "view": "front",
+   "used": "gate pyramid with clock, yellow base with painted band, dark curved name beams, hedge, conifer, colours",
+   "file": "/tmp/places-evidence/abeokuta/funaab-gate.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nimbe_Adedipe_Library,_FUNAAB_.jpeg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kaizenify",
+   "view": "front",
+   "used": "library behind the gate: stepped yellow ribbon tiers, orange piers and entrance, lattice pyramid lantern"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round 2 of critic fixes applied: hipped painted base with dots and dark gate, steep pebble-dash pyramid, thin arcing beams, mast, forest, grass and clipped hedge. Remaining: no readable beam lettering (names not allowed, only a pale strip), painted band is dots not full pattern, hedge/library depth approximate."
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "gate-base",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12.5,
+       12.5
+      ]
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       11.6,
+       11.6
+      ]
+     },
+     {
+      "z": 4.6,
+      "rect": [
+       10.4,
+       10.4
+      ]
+     }
+    ],
+    "colour": "#e9b645",
+    "material": "painted-render"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     10.4,
+     10.4
+    ],
+    "z0": 4.4,
+    "height": 14.2,
+    "topScale": 0.02,
+    "colour": "#a9a7a1",
+    "material": "rough-concrete"
+   },
+   "id": "pyramid",
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "l-wall",
+   "footprint": {
+    "rect": [
+     15,
+     2.6
+    ]
+   },
+   "at": [
+    -19,
+    2
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0c04e",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#2aa3b5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0c04e",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "r-wall",
+   "footprint": {
+    "rect": [
+     15,
+     2.6
+    ]
+   },
+   "at": [
+    19,
+    2
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0c04e",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#2aa3b5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0c04e",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      -31,
+      -1,
+      2.6
+     ],
+     [
+      -18,
+      -1,
+      7.0
+     ],
+     [
+      -3.5,
+      -1,
+      9.6
+     ]
+    ],
+    "curve": true,
+    "colour": "#4a2b24"
+   },
+   "id": "left-beam"
+  },
+  {
+   "type": "sweep-path",
+   "params": {
+    "section": {
+     "rect": [
+      0.45,
+      0.7
+     ]
+    },
+    "points": [
+     [
+      3.5,
+      -1,
+      9.6
+     ],
+     [
+      18,
+      -1,
+      7.0
+     ],
+     [
+      31,
+      -1,
+      2.6
+     ]
+    ],
+    "curve": true,
+    "colour": "#4a2b24"
+   },
+   "id": "right-beam"
+  },
+  {
+   "type": "mass",
+   "id": "hedge",
+   "footprint": {
+    "rect": [
+     44,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4d7a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d7a3a",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -1.5,
+    0
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -32,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    13,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lib-t1",
+   "footprint": {
+    "rect": [
+     27.6,
+     15.6
+    ]
+   },
+   "at": [
+    0,
+    76
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a92e",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#f2b83a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8a92e",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lib-t2",
+   "footprint": {
+    "rect": [
+     24.6,
+     13.2
+    ]
+   },
+   "at": [
+    0,
+    76
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0b82f",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#f2b83a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0b82f",
+    "material": "concrete",
+    "overhang": 0
+   },
+   "z0": 2.0
+  },
+  {
+   "type": "mass",
+   "id": "lib-t3",
+   "footprint": {
+    "rect": [
+     21.6,
+     10.8
+    ]
+   },
+   "at": [
+    0,
+    76
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0b82f",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "bands": "#f2b83a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0b82f",
+    "material": "concrete",
+    "overhang": 0
+   },
+   "z0": 4.1
+  },
+  {
+   "type": "loft",
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       4.8,
+       4.8
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       0.36,
+       0.36
+      ]
+     }
+    ],
+    "colour": "#b5654a"
+   },
+   "id": "lib-lantern",
+   "at": [
+    0,
+    76,
+    6.2
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "lib-entry",
+   "footprint": {
+    "rect": [
+     8.4,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    57
+   ],
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8553a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e07a2a",
+    "material": "concrete",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    45.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#5c8a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "senate-block",
+   "footprint": {
+    "rect": [
+     20.4,
+     7.2
+    ]
+   },
+   "at": [
+    -45,
+    55
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece7d6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#4f7a4c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e7273",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "clock",
+   "params": {
+    "section": {
+     "circle": 1.2
+    },
+    "points": [
+     [
+      0.6,
+      -2.25,
+      12.2
+     ],
+     [
+      0.6,
+      -2.0,
+      12.2
+     ]
+    ],
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "dot0",
+   "params": {
+    "section": {
+     "circle": 0.55
+    },
+    "points": [
+     [
+      -4.2,
+      -6.15,
+      1.2
+     ],
+     [
+      -4.2,
+      -6.300000000000001,
+      1.2
+     ]
+    ],
+    "colour": "#2aa3b5"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "dot1",
+   "params": {
+    "section": {
+     "circle": 0.55
+    },
+    "points": [
+     [
+      -2.4,
+      -6.15,
+      1.2
+     ],
+     [
+      -2.4,
+      -6.300000000000001,
+      1.2
+     ]
+    ],
+    "colour": "#d9578a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "dot2",
+   "params": {
+    "section": {
+     "circle": 0.55
+    },
+    "points": [
+     [
+      2.6,
+      -6.15,
+      1.2
+     ],
+     [
+      2.6,
+      -6.300000000000001,
+      1.2
+     ]
+    ],
+    "colour": "#f08a2a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "dot3",
+   "params": {
+    "section": {
+     "circle": 0.55
+    },
+    "points": [
+     [
+      4.4,
+      -6.15,
+      1.2
+     ],
+     [
+      4.4,
+      -6.300000000000001,
+      1.2
+     ]
+    ],
+    "colour": "#2aa3b5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-opening",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    -0.2,
+    -6.1
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#1f1d1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f1d1c",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam-lettering",
+   "params": {
+    "section": {
+     "rect": [
+      0.18,
+      0.15
+     ]
+    },
+    "points": [
+     [
+      -27,
+      -1.45,
+      3.5
+     ],
+     [
+      -18,
+      -1.45,
+      6.6
+     ],
+     [
+      -8,
+      -1.45,
+      8.9
+     ]
+    ],
+    "curve": true,
+    "colour": "#c9c6bd"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "id": "mast",
+   "at": [
+    -6,
+    9,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "baseWidth": 2.4,
+    "topWidth": 0.6,
+    "panels": 12,
+    "colour": "#b9473a",
+    "colour2": "#e8e8e4"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "id": "forest",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 12,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 11,
+    "max_height": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "funaab"
+}

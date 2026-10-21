@@ -1,0 +1,1749 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ramallah",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ramallah",
+    "climate": "mediterranean",
+    "vernacular": "Hill-town on the Judaean ridge (about 870 m): 3-8 storey apartment blocks and villas clad in pale Jerusalem limestone or rendered concrete, flat roofs crowded with black water tanks and solar heaters, 1920s multi-storey stone villas with arched windows and red-tile hip roofs, walled terraced gardens with olives, pines and cypress, and basalt/limestone paving in the old centre.",
+    "wallColours": [
+      "#e6d9bd",
+      "#d9c6a0",
+      "#cdb994",
+      "#bfa98a",
+      "#efe7d6",
+      "#c9b08a"
+    ],
+    "roofColours": [
+      "#c9c3b6",
+      "#b5593c",
+      "#2b2b2b",
+      "#8f8a80"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "stone",
+      "render",
+      "concrete",
+      "painted-render",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "palm"
+    ],
+    "ornament": "Pointed and round arched windows with stone voussoirs, dressed ashlar with margin drafting, carved stone balustrades, wrought-iron balconies, flat-roof black water tanks and solar heaters, lion statues in the central square, olive trees and stone terrace walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ramallah",
+        "what": "well-built stone houses; 1920s multi-storey villas; 2000s apartment and hotel boom; Mediterranean climate; olive gardens at ~872 m"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mukataa",
+        "what": "Arafat mausoleum clad in Jerusalem stone; compound built in the 1930s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Birzeit_University",
+        "what": "new campus with stone facades in contemporary style among olive groves"
+      }
+    ]
+  },
+  "places": {
+    "ramallah-airport-ramallah-airport": {
+      "venueId": "ramallah-airport-ramallah-airport",
+      "city": "ramallah",
+      "name": "Ramallah Heliport",
+      "archetype": "airport-terminal",
+      "subject": "The presidential heliport inside the Muqata'a compound: a concrete helipad with a windsock, a small guard hut and stone perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 33,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "helipad with small shed"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#d9c6a0",
+          "#9a958c",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "marked circular pad"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stone perimeter wall"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mukataa",
+          "what": "Mukataa compound with helipad area; Jerusalem-stone buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/287710478",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM aeroway=helipad (34x33 m). There is no passenger terminal; model is a helipad with a small shed."
+    },
+    "ramallah-clinic": {
+      "venueId": "ramallah-clinic",
+      "city": "ramallah",
+      "name": "Martyr Yasser Arafat Government Hospital",
+      "archetype": "hospital",
+      "subject": "A two-storey governmental hospital block faced in cream stone with a covered ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "render",
+        "colours": [
+          "#e2d4b4",
+          "#cdb994",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 4
+        },
+        {
+          "id": "solar-panels",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "stone construction typical of the West Bank hill towns"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/624996989",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building:levels=2, hospital footprint 77x72 m (4,031 m2). Appearance typed from regional hospital type; the venue point is far from Ramallah itself (Salfit side)."
+    },
+    "ramallah-community-notices": {
+      "venueId": "ramallah-community-notices",
+      "city": "ramallah",
+      "name": "Palestinian Pension Authority",
+      "archetype": "office-low",
+      "subject": "A 4-storey stone-faced administrative office building with a recessed entrance and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d4b4",
+          "#9fb3be",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "2000s building boom of stone-clad offices and apartment blocks"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1492271841",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building 69x40 m only; nothing describes the real facade. Typed as a Ramallah stone-clad office block."
+    },
+    "ramallah-community-voting-game": {
+      "venueId": "ramallah-community-voting-game",
+      "city": "ramallah",
+      "name": "Al-Manara Square",
+      "archetype": "monument",
+      "subject": "Al-Manara Square: a traffic circle with a stone pillar topped by a lamp and ringed by stone lion statues, surrounded by fountains and flower beds",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "roundabout monument"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d8cbb0",
+          "#b9a98a",
+          "#efe7d6"
+        ],
+        "roofColour": "#d8cbb0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 8,
+          "note": "stone lions on the pillar base (five in 1951, eight after the 1999-2000 rebuild)"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "surrounding fountains"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "stone pillar carrying a skyward lamp"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1951 (rebuilt 1999-2000)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Manara_Square",
+          "what": "1951 monument had five stone lions on a stone pillar; rebuilt 1999-2000 with eight lions, topped by a lamp; fountains and flower beds; sits inside a traffic circle"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1218125404",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Venue is the central city roundabout, the best-known landmark of Ramallah. Show a round plaza with the lion-ringed pillar; buildings around are cream stone shops."
+    },
+    "ramallah-community-workshop": {
+      "venueId": "ramallah-community-workshop",
+      "city": "ramallah",
+      "name": "Birzeit University",
+      "archetype": "campus-block",
+      "subject": "Birzeit University's hilltop campus: several large cream limestone teaching blocks stepping down a hillside among olive groves",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "stepped hillside campus",
+        "wings": 4
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d9bd",
+          "#9fb3be",
+          "#cdb994"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1970s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Birzeit_University",
+          "what": "new campus atop a hill, large building complexes with stone facades in contemporary style, olive groves around; old campus around the Ottoman-era Nasir family house"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/193255177",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM campus polygon about 753x719 m. Storeys and exact massing not sourced; typed from the description of large stone-faced complexes."
+    },
+    "ramallah-market-game": {
+      "venueId": "ramallah-market-game",
+      "city": "ramallah",
+      "name": "Abu Khalid Market",
+      "archetype": "market-open",
+      "subject": "A small neighbourhood market: a corner shop with a street awning and fruit crates under a corrugated shade roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d4b4",
+          "#b9a98a",
+          "#efe7d6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "stone/render buildings of West Bank towns"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/976723730",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Nothing found about this venue; OSM has only a 13x11 m house nearby."
+    },
+    "ramallah-meal-stop": {
+      "venueId": "ramallah-meal-stop",
+      "city": "ramallah",
+      "name": "Yafa Cafe",
+      "archetype": "restaurant",
+      "subject": "A small stone-fronted cafe in Bethany/Al-Eizariya with outdoor tables under an awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#e2d4b4",
+          "#8c6a4a",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "West Bank stone town buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1525489914",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "No description of the real cafe found; OSM building 16x10 m."
+    },
+    "ramallah-osm-node-2675850287": {
+      "venueId": "ramallah-osm-node-2675850287",
+      "city": "ramallah",
+      "name": "Tell en-Nasbeh",
+      "archetype": "heritage-fort",
+      "subject": "Tell en-Nasbeh, a 3.2 ha Iron Age hill-top ruin mound (biblical Mizpah) with a collapsed city wall and the remains of a stone gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 0,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "low archaeological mound with wall remains"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbb98",
+          "#b4a07e",
+          "#e0d3b4"
+        ],
+        "roofColour": "#cdbb98",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "Iron Age city wall remains"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Iron Age four-chambered gate"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Iron Age (excavated 1926-35)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tell_en-Nasbeh",
+          "what": "3.2 ha tell, walled in Iron Age IIA, Iron Age city gate, condition: in ruins"
+        }
+      ],
+      "notes": "Show a rubble mound with a stone wall line and a gate gap; no standing roofed buildings."
+    },
+    "ramallah-osm-node-432260801": {
+      "venueId": "ramallah-osm-node-432260801",
+      "city": "ramallah",
+      "name": "Selwad Park",
+      "archetype": "park-landscape",
+      "subject": "A small town park in Silwad: terraced lawns with olive and pine trees, a stone-paved path and a shade pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "terraced park"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9c6a0",
+          "#bfa98a",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "olive gardens and hill terraces around Ramallah"
+        }
+      ],
+      "notes": "No data found; typed from highland terraced setting."
+    },
+    "ramallah-osm-node-432262059": {
+      "venueId": "ramallah-osm-node-432262059",
+      "city": "ramallah",
+      "name": "Abo Maysar",
+      "archetype": "restaurant",
+      "subject": "A roadside eatery: a one-storey rendered shop with a flat roof, tables and a shade awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d9bd",
+          "#b9a98a",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "rendered concrete small commercial buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1564314880",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Unknown venue; OSM building 23x14 m only."
+    },
+    "ramallah-osm-node-432267397": {
+      "venueId": "ramallah-osm-node-432267397",
+      "city": "ramallah",
+      "name": "Tomb of Lazarus",
+      "archetype": "shrine-small",
+      "subject": "The traditional Tomb of Lazarus at Bethany (Al-Eizariya): a street-level stone entrance with rock-cut steps descending to a rock-cut chamber, beside the Ottoman Al-Uzair mosque",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "rock-cut steps and masonry tomb entrance"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cdb994",
+          "#a99878",
+          "#e0d3b4"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "24 rock-cut steps down to the antechamber"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "nearby Ottoman al-Uzair mosque"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "ottoman",
+      "era": "Byzantine/Crusader origins; Ottoman mosque 16th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tomb_of_Lazarus",
+          "what": "rock-cut steps (24) down to a square prayer chamber and lower tomb chamber; al-Uzair Mosque built by Ottomans in 16th century; Catholic Church of St Lazarus 1952-55; Greek Orthodox church 1965"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1503430632",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building 18x9 m. Model the stepped entrance and small stone hall; the underground chambers (3.35x2.2 m antechamber) are not shown."
+    },
+    "ramallah-osm-node-432274045": {
+      "venueId": "ramallah-osm-node-432274045",
+      "city": "ramallah",
+      "name": "Turmus Ayaa Sweet",
+      "archetype": "shophouse",
+      "subject": "A small sweets (kunafeh) shop in Turmus Ayya: a two-storey cream stone corner building with a glass shopfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d4b4",
+          "#8fa3ae",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "stone-faced town buildings in the Ramallah governorate"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/458129070",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "No description available; OSM building 21x17 m."
+    },
+    "ramallah-osm-node-432281542": {
+      "venueId": "ramallah-osm-node-432281542",
+      "city": "ramallah",
+      "name": "Al-Quds Open University (Ramallah)",
+      "archetype": "campus-block",
+      "subject": "The Ramallah/Al-Bireh branch of Al-Quds Open University: a 4-storey cream stone teaching block with a plain entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 16,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#e2d4b4",
+          "#a69a86",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "2000s stone-clad educational buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1490431993",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata: Al-Quds Open University, inception 1991, branches across Palestine. OSM building 37x16 m."
+    },
+    "ramallah-osm-node-432286032": {
+      "venueId": "ramallah-osm-node-432286032",
+      "city": "ramallah",
+      "name": "Stadium",
+      "archetype": "stadium",
+      "subject": "A small village football ground with one covered concrete stand, a grass or artificial-turf pitch and a fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "small pitch with single stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b6",
+          "#496a8a",
+          "#efe7d6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Faisal_Al-Husseini_International_Stadium",
+          "what": "example of a West Bank football ground with artificial turf and light poles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1563979642",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Unnamed \"Stadium\" node; OSM building only 26x16 m. Typed as a small local ground, much smaller than the Al-Ram stadium."
+    },
+    "ramallah-osm-node-4753096643": {
+      "venueId": "ramallah-osm-node-4753096643",
+      "city": "ramallah",
+      "name": "Khirbet Tel Ai (Et-Tell)",
+      "archetype": "heritage-fort",
+      "subject": "Et-Tell, the large ruin-mound of biblical Ai above Deir Dibwan: rubble terraces and fortification traces on a plateau overlooking the Jordan Valley",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 330,
+        "depth_m": 330,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "large ruin mound with fortification lines"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbb98",
+          "#b4a07e",
+          "#e0d3b4"
+        ],
+        "roofColour": "#cdbb98",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "Early Bronze fortification lines"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Early Bronze Age to Iron Age",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Et-Tell",
+          "what": "Early Bronze city covered ~110,000 m2 with walls and four gates, temple-palace on an acropolis, later cisterns and terraced slopes; overlooks the Jordan Valley next to Deir Dibwan"
+        }
+      ],
+      "notes": "Show only rubble banks and wall lines; nothing roofed. Distinct from Tell en-Nasbeh by size and wide terraces."
+    },
+    "ramallah-osm-node-5133731942": {
+      "venueId": "ramallah-osm-node-5133731942",
+      "city": "ramallah",
+      "name": "Palestine Medical Complex",
+      "archetype": "hospital",
+      "subject": "The Palestine Medical Complex (Ramallah): a large government hospital campus of several 5-6 storey cream stone-clad wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "multi-wing hospital campus",
+        "wings": 3
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d4b4",
+          "#9fb3be",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 4
+        },
+        {
+          "id": "solar-panels",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "stone-clad public buildings of Ramallah"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1490265446",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM hospital footprint 225x202 m (34,348 m2). Real look not documented in sources reached."
+    },
+    "ramallah-osm-way-253373054": {
+      "venueId": "ramallah-osm-way-253373054",
+      "city": "ramallah",
+      "name": "Istishari Arab Hospital",
+      "archetype": "hospital",
+      "subject": "A modern private hospital (opened 2016): a 7-storey glazed and stone-clad block with a curved entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d9bd",
+          "#8fa3ae",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "2000s hospital/hotel/apartment building boom in Al-Masyoun"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/253373054",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "Wikidata: Istishari Arab Hospital, inception 2016; OSM footprint 79x54 m (listed in OSM as \"Al Reehan\"). Storey count and facade unverified."
+    },
+    "ramallah-osm-way-257319379": {
+      "venueId": "ramallah-osm-way-257319379",
+      "city": "ramallah",
+      "name": "Church of the Virgin Sultana of Peace",
+      "archetype": "church-classical",
+      "subject": "A small stone parish church (tagged \"latin church\") with a gable roof and a square bell tower over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "single-nave church with entrance tower"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e2d4b4",
+          "#b9a98a",
+          "#8a3b2e"
+        ],
+        "roofColour": "#b5593c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "Christian communities in Ramallah and Birzeit; stone churches"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/257319379",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 38x21 m; Wikidata labels it Church of the Virgin Sultana of Peace. Denomination tagged orthodox though named \"latin church\"; look is typed from regional parish churches."
+    },
+    "ramallah-osm-way-345024242": {
+      "venueId": "ramallah-osm-way-345024242",
+      "city": "ramallah",
+      "name": "Al-Quds University",
+      "archetype": "campus-block",
+      "subject": "Al-Quds University's Abu Dis main campus: pale stone teaching blocks around a landscaped pond and the Andalusian garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "campus around central pond",
+        "wings": 3
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d4b4",
+          "#9fb3be",
+          "#cdb994"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1990s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Quds_University",
+          "what": "Abu Dis campus 47 acres (190,000 m2), main building, man-made pond, Faculty of Science & Technology building, Andalusian Garden, Said Khoury IT Center (2004)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/345024242",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM polygon 570x291 m (11.8 ha). Building facade not described; stone-and-arch look is typed."
+    },
+    "ramallah-osm-way-41819706": {
+      "venueId": "ramallah-osm-way-41819706",
+      "city": "ramallah",
+      "name": "Faisal Al-Husseini International Stadium",
+      "archetype": "stadium",
+      "subject": "The 12,500-seat Faisal Al-Husseini International Stadium in Al-Ram: a compact artificial-turf bowl with one covered main stand, open terraces and corner light poles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 113,
+        "depth_m": 77,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "compact bowl with main stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b6",
+          "#2f6b4f",
+          "#efe7d6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Faisal_Al-Husseini_International_Stadium",
+          "what": "12,500 seats, opened 2008 (construction from 2007), artificial turf, light poles installed Oct 2008, FIFA-funded renovation 2019 added seats and new turf"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41819706",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM footprint 113x77 m. Stand and roof arrangement not documented; keep plain."
+    },
+    "ramallah-osm-way-419484958": {
+      "venueId": "ramallah-osm-way-419484958",
+      "city": "ramallah",
+      "name": "Aboud Gardens",
+      "archetype": "park-landscape",
+      "subject": "Aboud Gardens: a small village garden with stone terraces, olive trees and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 83,
+        "depth_m": 42,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "terraced garden"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9c6a0",
+          "#bfa98a",
+          "#efe7d6"
+        ],
+        "roofColour": "#c9c3b6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "olive gardens and terraced hillsides"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/419484958",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM leisure=garden 83x42 m (3,174 m2). No other data."
+    },
+    "ramallah-osm-way-701954745": {
+      "venueId": "ramallah-osm-way-701954745",
+      "city": "ramallah",
+      "name": "Yasser Arafat Mausoleum",
+      "archetype": "monument",
+      "subject": "The Mausoleum of Yasser Arafat in the Muqata'a compound: a rectangular hall clad in Jerusalem stone with large glazed panels, set in a paved court with flags and an honour guard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "rectangular stone-clad mausoleum hall"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d4b4",
+          "#8fa3ae",
+          "#efe7d6"
+        ],
+        "roofColour": "#d8cbb0",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mukataa",
+          "what": "later tomb clad in Jerusalem stone, designed by Palestinian architects, opened 11 Nov 2007; compound built in the 1930s as British Mandate police HQ"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/701954745",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM node is the grave itself (2.3x1 m); the surrounding structure dimensions are a typed estimate and the glazed panels are from general photo memory, not a cited source. The compound beyond is beige-stone mandate-era buildings."
+    },
+    "ramallah-quiet-reflection": {
+      "venueId": "ramallah-quiet-reflection",
+      "city": "ramallah",
+      "name": "Basilica of the Manifestation of the Lord (Emmaus-Qubeibeh)",
+      "archetype": "church-classical",
+      "subject": "The Franciscan sanctuary at El-Qubeibeh with the neo-Romanesque Church of St Cleophas: a rose-gold limestone gabled basilica with round-arched windows and a bell tower beside the apse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "variant": "neo-Romanesque single-nave church",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#dcc6a0",
+          "#b9a07a",
+          "#8a6d4a"
+        ],
+        "roofColour": "#a9553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1901",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1742712",
+          "what": "St. Cleophas Church: Romanesque architecture, El Qubeibeh"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1177037502",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM church 36x20 m, style Romanesque (revival). Contract has no romanesque-revival style, so neoclassical is the nearest. Exact stone colour is typed from regional limestone."
+    },
+    "ramallah-recreation": {
+      "venueId": "ramallah-recreation",
+      "city": "ramallah",
+      "name": "Mahmoud Darwish Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Mahmoud Darwish Museum in Al-Birweh Park (opened 2012): a low cream Jerusalem-stone gallery building by Jafar Tuqan, with a stepped open-air amphitheatre and the poet's grave in a garden",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 109,
+        "depth_m": 56,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "gallery plus amphitheatre",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6d9bd",
+          "#8fa3ae",
+          "#cdb994"
+        ],
+        "roofColour": "#d8cbb0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stepped open-air amphitheatre"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mahmoud_Darwish_Museum",
+          "what": "museum dedicated to the poet in Ramallah; architect Jafar Tuqan; inception 2012"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q61434689",
+          "what": "Wikidata record of the museum in Al-Birweh Park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1492038617",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM building 109x56 m inside a 10,197 m2 park polygon. Stone material and amphitheatre/grave are inferred from general descriptions of the site; not verified building-level."
+    },
+    "ramallah-transit": {
+      "venueId": "ramallah-transit",
+      "city": "ramallah",
+      "name": "Ramallah Bus and Taxi Center Station",
+      "archetype": "transport-station",
+      "subject": "The central bus and service-taxi station: an open concrete yard with a long flat canopy, parked buses and vans, kiosks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 54,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "open terminal yard with canopy"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b6",
+          "#8a8f94",
+          "#e2d4b4"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramallah",
+          "what": "public squares and transport nodes around Al-Manara"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1276547397",
+          "what": "OSM building footprint, levels and tags (measured data in repo facts file)"
+        }
+      ],
+      "notes": "OSM amenity=bus_station, 76x54 m. No building description found."
+    }
+  }
+}

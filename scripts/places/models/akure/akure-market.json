@@ -1,0 +1,194 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/493040670",
+   "used": "nearest building outline (about 35 x 22 m, 15 m from the venue point) as the two-storey block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Oja_Oba_Market_Akure.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ei'eke",
+   "view": "street",
+   "used": "general character only (not a view of this block): weathered grey painted-concrete multi-storey shops, external steel stair, cobbled paving blocks, big umbrellas over street traders"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/akure.json",
+   "used": "lock-up shops with balcony bands, covered trading hall beside open stalls"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a7a498",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "groundKind": "arcade",
+    "pattern": [
+     {
+      "type": "balconies",
+      "colour": "#8d8a82"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7f7c",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -34,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 3.6,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.6,
+    "wall_colour": "#c9bfa4",
+    "roof_colour": "#8a5a44",
+    "awning_colours": [
+     "#b86a4a",
+     "#d7b04a",
+     "#3f6f8f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#3b6a8a",
+     "#b0473f",
+     "#d9b04a",
+     "#5a8a5a",
+     "#6a5a8a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9632f",
+     "#3b6a8a",
+     "#e0d9c0",
+     "#5a8a5a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 7,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#b0473f",
+     "#d9b04a",
+     "#3b6a8a"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    34,
+    14,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7d7f7c"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "count": 3
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "groundColour": "#9a7f6a",
+  "forecourt": "road",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "akure-market",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "nearest OSM block only, uncertain it is Oja Oba; street photo is not a view of this block; layout of stalls and sheds typed"
+ }
+}

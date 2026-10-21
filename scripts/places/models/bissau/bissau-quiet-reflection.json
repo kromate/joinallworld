@@ -1,0 +1,456 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kathedrale_von_Bissau.png",
+   "licence": "CC BY-SA 3.0",
+   "author": "JNM",
+   "view": "front",
+   "file": "/tmp/places-evidence/bissau/cath.png",
+   "used": "cream rendered walls, twin square bell towers with grilled belfry openings, clocks and dark pyramid caps, low gabled porch with rose window and round-arched stone portal, orange clay-tile nave roof, stepped forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Catedral_de_Bissau_(2).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/bissau/cath2.jpg",
+   "used": "secondary check of the facade proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/130123261",
+   "used": "overall size (about 39 x 24 m); outline itself is irregular so the plan is composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 10,
+  "fovDeg": 34,
+  "aspect": 0.68,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     14,
+     34
+    ]
+   },
+   "at": [
+    0,
+    -2
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc79c",
+    "windows": "pointed",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0643a",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     4,
+     30
+    ]
+   },
+   "at": [
+    -9,
+    0
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c297",
+    "windows": "round",
+    "windowRatio": 0.08,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b0643a",
+    "material": "clay-tile",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     4,
+     30
+    ]
+   },
+   "at": [
+    9,
+    0
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c297",
+    "windows": "round",
+    "windowRatio": 0.08,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b0643a",
+    "material": "clay-tile",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9.4,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -18.5
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cca3",
+    "windows": "none",
+    "plinth": 1.0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0643a",
+    "material": "clay-tile",
+    "pitch": 45,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r-shaft",
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "at": [
+    8.0,
+    -16.5
+   ],
+   "z0": 0,
+   "height": 17,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc79c",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b38f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l-shaft",
+   "footprint": {
+    "rect": [
+     6.2,
+     6.2
+    ]
+   },
+   "at": [
+    -8.0,
+    -16.5
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc79c",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 1.0,
+    "cornice": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b38f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 13,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#b5ab98"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -6,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 6.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 8,
+    "colour": "#3f6b32"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "spread": 7
+   }
+  },
+  {
+   "type": "rose-window",
+   "at": [
+    0,
+    -23.6,
+    7.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -23,
+    16.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "tower-r-belfry",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    8.0,
+    -16.5
+   ],
+   "z0": 17,
+   "height": 9,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cca3",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "cornice": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d4a40",
+    "material": "slate",
+    "rise": 6.5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    8.0,
+    -16.5,
+    32.5
+   ],
+   "params": {
+    "height": 2.5
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    8.0,
+    -16.5,
+    35.0
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "tower-l-belfry",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -8.0,
+    -16.5
+   ],
+   "z0": 13,
+   "height": 9,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cca3",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "cornice": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5d4a40",
+    "material": "slate",
+    "rise": 6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8.0,
+    -16.5,
+    28
+   ],
+   "params": {
+    "height": 2.5
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    -8.0,
+    -16.5,
+    30.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "mass",
+   "id": "clock",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    8.0,
+    -19.85
+   ],
+   "z0": 12,
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#333333"
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    -23.55,
+    0.4
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 5.2,
+    "arch": true,
+    "colour": "#2a1d16",
+    "trim": "#a88a68"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "belfry grilles are plain rect windows rather than square louvre grid; clock is a flat square, not a disc; portal stepped arch simplified; rose window plain"
+ }
+}

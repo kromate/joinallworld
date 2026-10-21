@@ -1,0 +1,1651 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kuwait-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kuwait-city",
+    "climate": "desert",
+    "vernacular": "Dense low-to-mid-rise International-style city: flat-roofed 2-6 storey concrete blocks and villas in sand, cream and beige painted render or stone cladding, high boundary walls round villas, glass-and-steel towers in the downtown Sharq/Salmiya skyline, co-operative society supermarkets and malls with big car parks, and sand-coloured modern mosques with a single dome and a slender minaret.",
+    "wallColours": [
+      "#e4d5b7",
+      "#d6c19a",
+      "#f1ebde",
+      "#c8b08a",
+      "#b9a98c",
+      "#aeb9bd",
+      "#8fa3ad"
+    ],
+    "roofColours": [
+      "#b9b2a6",
+      "#8d8a84",
+      "#d9d2c4",
+      "#6f7479"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "glass-curtain",
+      "metal-cladding",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "none",
+      "acacia"
+    ],
+    "ornament": "Pointed and multifoil arches and carved-stone or GRC screens on mosques and civic buildings; wooden or metal mashrabiya-style screens as shading; spiral blue-green enamel-disc patterns recalling mosque domes on the Kuwait Towers; sculptural spires and spheres on water towers and towers; decoration concentrated at doors and windows in older houses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Kuwait",
+        "what": "Kuwaiti architecture: modest inward-facing traditional houses, modern International style, wooden screens, sculptural modern landmarks"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kuwait_City",
+        "what": "hot desert climate, sparse coastal vegetation, landmarks list"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kuwait_Towers",
+        "what": "spheres clad in eight shades of blue, green and grey enamelled steel discs in spiral patterns"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kuwait_National_Museum",
+        "what": "Ecochard courtyard-based complex echoing the traditional Arab courtyard house"
+      }
+    ]
+  },
+  "places": {
+    "kuwait-city-airport-kuwait-city-airport": {
+      "venueId": "kuwait-city-airport-kuwait-city-airport",
+      "city": "kuwait-city",
+      "name": "Kuwait International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Kuwait International Airport Terminal 1, the long low 1979 Kenzo Tange concrete terminal seen from the forecourt with the control tower behind and jet bridges on the airside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d0bd",
+          "#5d7480",
+          "#a89f8c"
+        ],
+        "roofColour": "#a9a69f",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "long forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuwait_International_Airport",
+          "what": "Terminal 1 designed by Kenzo Tange, opened 1979; Terminal 4 (2018, AECOM Spain) and Foster + Partners Terminal 2 (three-pointed star, under construction)"
+        }
+      ],
+      "notes": "Wikipedia confirms designer and dates only; no source fetched described the facade. Form is a guess from the Tange era: a wide, low, cast-concrete terminal. Terminal 4 (2018, 55,000 m2, nine boarding bridges, Kuwait Airways) and the Foster Terminal 2 are different buildings; OSM has no footprint here so size is estimated."
+    },
+    "kuwait-city-clinic": {
+      "venueId": "kuwait-city-clinic",
+      "city": "kuwait-city",
+      "name": "Amiri Hospital",
+      "archetype": "hospital",
+      "subject": "Amiri Hospital on Arabian Gulf Street, a tall slab-like concrete hospital block overlooking the Gulf",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 55,
+        "storeys": 13,
+        "height_m": 60,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e3dccd",
+          "#b8c3c8",
+          "#9a9488"
+        ],
+        "roofColour": "#a8a59e",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Amiri_Hospital",
+          "what": "current main building has ten floors plus a basement, on Arabian Gulf Street facing the sea; first govt hospital 1949"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/154721776",
+          "what": "OSM: building:levels 13, height 60 m, footprint ~80x56 m"
+        }
+      ],
+      "notes": "Wikipedia says 10 floors plus basement, OSM says 13 levels and 60 m; the OSM figures are used. Cladding colours are typed from the city style, not from a photo description."
+    },
+    "kuwait-city-community-notices": {
+      "venueId": "kuwait-city-community-notices",
+      "city": "kuwait-city",
+      "name": "Warba Disabled Sport Club",
+      "archetype": "civic-small",
+      "subject": "a low sports club hall with parking and flagpoles on a large event ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc2",
+          "#7d9aa8",
+          "#b7ad98"
+        ],
+        "roofColour": "#b0aca4",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/516685804",
+          "what": "OSM shows only a leisure=events area of about 252x154 m at this point"
+        }
+      ],
+      "notes": "Nothing findable describes the club building; OSM gives only a large events ground. Typed civic-small guess from the city style."
+    },
+    "kuwait-city-community-voting-game": {
+      "venueId": "kuwait-city-community-voting-game",
+      "city": "kuwait-city",
+      "name": "Al-Mailam Hall",
+      "archetype": "civic-small",
+      "subject": "Al-Mailam Hall, a two-storey community town hall with a plain rendered facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6d9bd",
+          "#c4b28d",
+          "#8f8a80"
+        ],
+        "roofColour": "#aaa69e",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/608671337",
+          "what": "OSM: amenity=townhall footprint about 62x28 m, 1,700 m2"
+        }
+      ],
+      "notes": "Footprint measured from OSM; the facade is a guess from the city style, nothing describes this hall."
+    },
+    "kuwait-city-community-workshop": {
+      "venueId": "kuwait-city-community-workshop",
+      "city": "kuwait-city",
+      "name": "Gulf University for Science and Technology",
+      "archetype": "campus-block",
+      "subject": "GUST campus, a long three-storey sand-coloured academic complex around a covered concourse in Mishref",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2d3b3",
+          "#7e98a6",
+          "#b7a98a"
+        ],
+        "roofColour": "#b4b0a7",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "three-storey concourse"
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gulf_University_for_Science_and_Technology",
+          "what": "three-storey concourse linking academic and social areas, phase one 2007, two parking areas and a central VIP entrance"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1024668",
+          "what": "OSM campus about 340x306 m"
+        }
+      ],
+      "notes": "Layout (three-storey concourse running both ways, courtyards) is from Wikipedia; facade colours are typed. The campus is bigger than the 120 m scene, so the model shows the main concourse block."
+    },
+    "kuwait-city-market-game": {
+      "venueId": "kuwait-city-market-game",
+      "city": "kuwait-city",
+      "name": "A5 Mall",
+      "archetype": "mall",
+      "subject": "a two-storey neighbourhood mall with a long sand-coloured front, entrance canopy and a big surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d8bc",
+          "#6e8793",
+          "#b3a48a"
+        ],
+        "roofColour": "#b1ada5",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuwait_City",
+          "what": "general city context only; no source describes this mall"
+        }
+      ],
+      "notes": "Venue name is real but nothing findable describes it; typed from the city style."
+    },
+    "kuwait-city-meal-stop": {
+      "venueId": "kuwait-city-meal-stop",
+      "city": "kuwait-city",
+      "name": "Johnny Carino's",
+      "archetype": "restaurant",
+      "subject": "a free-standing one-storey Italian chain restaurant with a deep entrance canopy and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e9dcc0",
+          "#a65f47",
+          "#7a6a58"
+        ],
+        "roofColour": "#a8a49c",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: restaurant building of about 33x23 m, Wikipedia tag en:Carino's Italian"
+        }
+      ],
+      "notes": "Only the footprint is measured; chain-restaurant look is a guess. Signage must be a blank board."
+    },
+    "kuwait-city-osm-node-10178336317": {
+      "venueId": "kuwait-city-osm-node-10178336317",
+      "city": "kuwait-city",
+      "name": "Al-Shayeb Karak",
+      "archetype": "restaurant",
+      "subject": "a tiny roadside karak (spiced tea) shop with a counter window and shaded seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7dbc1",
+          "#b5532f",
+          "#8d867a"
+        ],
+        "roofColour": "#b3aea5",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuwait_City",
+          "what": "context only"
+        }
+      ],
+      "notes": "Small karak tea shop (OSM footprint ~13x12 m); look typed from Gulf roadside tea-shop habits, not from a source."
+    },
+    "kuwait-city-osm-node-10211965934": {
+      "venueId": "kuwait-city-osm-node-10211965934",
+      "city": "kuwait-city",
+      "name": "Australian University",
+      "archetype": "campus-block",
+      "subject": "a mid-size private university campus of two to four storey sand-coloured blocks around a courtyard in West Mishref",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dac0",
+          "#6f8ea0",
+          "#b8aa8c"
+        ],
+        "roofColour": "#b2aea6",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4824005",
+          "what": "private university in Kuwait"
+        }
+      ],
+      "notes": "Wikidata only confirms it is a private university; nothing describes the buildings, so this is a typed campus block."
+    },
+    "kuwait-city-osm-node-14177476101": {
+      "venueId": "kuwait-city-osm-node-14177476101",
+      "city": "kuwait-city",
+      "name": "Hardees",
+      "archetype": "restaurant",
+      "subject": "a one-storey drive-through fast-food restaurant on a corner plot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece3cf",
+          "#9d3b30",
+          "#7c7569"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/14177476101",
+          "what": "OSM footprint about 24x13 m"
+        }
+      ],
+      "notes": "Chain fast-food pad with drive-through; colours neutral with a red accent, no logos or lettering."
+    },
+    "kuwait-city-osm-node-4365886397": {
+      "venueId": "kuwait-city-osm-node-4365886397",
+      "city": "kuwait-city",
+      "name": "Ministry of Health (health centre)",
+      "archetype": "hospital",
+      "subject": "a small two-storey government health centre building in a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5dcc6",
+          "#a9b6bb",
+          "#9a9488"
+        ],
+        "roofColour": "#aaa69e",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4365886397",
+          "what": "OSM: a 13x10 m building named after the Ministry of Health"
+        }
+      ],
+      "notes": "The Arabic name is just Ministry of Health. The OSM footprint is tiny, so the model is a small health-centre block, not the ministry headquarters. Low confidence."
+    },
+    "kuwait-city-osm-node-5284460222": {
+      "venueId": "kuwait-city-osm-node-5284460222",
+      "city": "kuwait-city",
+      "name": "Kuwait National Museum",
+      "archetype": "museum-theatre",
+      "subject": "the Kuwait National Museum, Ecochard 1983: a cluster of low sand-toned concrete blocks around a garden court, linked by raised walkways",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 155,
+        "depth_m": 98,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "sandstone",
+        "colours": [
+          "#d8c8a4",
+          "#b39f78",
+          "#8f8575"
+        ],
+        "roofColour": "#a9a398",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central garden court"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 3,
+          "note": "elevated walkways linking the five buildings"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "planetarium"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuwait_National_Museum",
+          "what": "designed by Michel Ecochard, opened 1983; five buildings around a central garden like a traditional Arab courtyard house; main buildings linked by elevated walkways; planetarium"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/5284460222",
+          "what": "OSM: 4 levels, 20 m, footprint ~155x98 m"
+        }
+      ],
+      "notes": "Layout is sourced. The sand-toned concrete finish and planetarium dome are from general knowledge of the building, not the fetched page. Make the blocks clearly separate masses with bridges."
+    },
+    "kuwait-city-osm-way-1456434409": {
+      "venueId": "kuwait-city-osm-way-1456434409",
+      "city": "kuwait-city",
+      "name": "Liberation Tower",
+      "archetype": "monument",
+      "subject": "the 372 m Liberation Tower: a very tall slender concrete telecom tower with an observation pod high up and a mast on top, rising from a low government complex",
+      "form": {
+        "footprint": "round",
+        "width_m": 28,
+        "depth_m": 28,
+        "storeys": 80,
+        "height_m": 372,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcac0",
+          "#8fa3ad",
+          "#a39e94"
+        ],
+        "roofColour": "#b8b4ab",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "tall steel antenna"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "attached government complex"
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "international",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Liberation_Tower,_Kuwait",
+          "what": "372 m telecommunications tower, completed 1993, started before 1990, resumed after the 1991 liberation; attached government offices and service centre; not open to tourists"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1456434409",
+          "what": "OSM: footprint about 16x16 m"
+        }
+      ],
+      "notes": "Height and role are sourced; the shaft and pod look (concrete shaft, bulbous observation pod near the top, steel mast) is from general knowledge. Height far exceeds the 120 m scene clamp: show it as a tall landmark with the shaft truncated and note it is recognisable by the pod."
+    },
+    "kuwait-city-osm-way-159761965": {
+      "venueId": "kuwait-city-osm-way-159761965",
+      "city": "kuwait-city",
+      "name": "Thamir Stadium",
+      "archetype": "stadium",
+      "subject": "Thamir Stadium in Salmiya, a small football stadium with a covered main stand and open stands, floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 196,
+        "depth_m": 136,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3c6",
+          "#2f6aa5",
+          "#8e8b84"
+        ],
+        "roofColour": "#9c9992",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thamir_Stadium",
+          "what": "multi-purpose football stadium in Salmiya, capacity 16,105, opened 28 December 2004, grass"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/159761965",
+          "what": "OSM footprint about 196x136 m"
+        }
+      ],
+      "notes": "Capacity and opening are sourced. No fetched page described the stands or roof; the covered main stand and colours are typed. Home of Al Salmiya Club."
+    },
+    "kuwait-city-osm-way-336814876": {
+      "venueId": "kuwait-city-osm-way-336814876",
+      "city": "kuwait-city",
+      "name": "American University of Kuwait",
+      "archetype": "campus-block",
+      "subject": "AUK in Salmiya, a compact campus of four to five storey blocks in garnet-and-gold accents around a landscaped court",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4d7ba",
+          "#8a2b3a",
+          "#c8a24a"
+        ],
+        "roofColour": "#b0aca4",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/American_University_of_Kuwait",
+          "what": "urban campus in Salmiya, school colours garnet and gold (page has no architecture description)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/336814876",
+          "what": "OSM campus footprint about 192x140 m"
+        }
+      ],
+      "notes": "Colours are the university palette only used as trim. Building design is not described in any fetched source, so form is typed."
+    },
+    "kuwait-city-osm-way-360268449": {
+      "venueId": "kuwait-city-osm-way-360268449",
+      "city": "kuwait-city",
+      "name": "Al-Da'wa Mosque",
+      "archetype": "mosque-domed",
+      "subject": "a typical Kuwaiti Sunni neighbourhood mosque: sand-coloured square prayer hall with a single central dome and one slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#e3d2ac",
+          "#c4ae82",
+          "#f3ede0"
+        ],
+        "roofColour": "#d8d3c6",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Kuwait",
+          "what": "modern Kuwaiti mosques; early minarets small square towers, later slender"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/360268449",
+          "what": "OSM: Sunni mosque footprint about 62x53 m"
+        }
+      ],
+      "notes": "Nothing describes this specific mosque (the Arabic name means \"the call\"). Typed from the common local pattern; minaret and dome count are a guess."
+    },
+    "kuwait-city-osm-way-456447601": {
+      "venueId": "kuwait-city-osm-way-456447601",
+      "city": "kuwait-city",
+      "name": "Sahah Al Nasser Mall Society",
+      "archetype": "mall",
+      "subject": "a co-operative society (jam'iya) supermarket and shopping block: a wide two-storey box with a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e7dcc2",
+          "#8c9ea6",
+          "#b4a68b"
+        ],
+        "roofColour": "#aaa69e",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/456447601",
+          "what": "OSM footprint about 152x92 m, no tags"
+        }
+      ],
+      "notes": "Kuwait co-operative societies are large neighbourhood supermarket malls. Footprint is measured; the finish is typed."
+    },
+    "kuwait-city-osm-way-457096707": {
+      "venueId": "kuwait-city-osm-way-457096707",
+      "city": "kuwait-city",
+      "name": "Al-Dabbus Shopping Mall",
+      "archetype": "mall",
+      "subject": "a mid-size neighbourhood shopping mall with a coloured glass entrance bay and rooftop signage frame",
+      "form": {
+        "footprint": "rect",
+        "width_m": 79,
+        "depth_m": 42,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d7bb",
+          "#7a98a8",
+          "#b09f82"
+        ],
+        "roofColour": "#b0ada5",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/457096707",
+          "what": "OSM footprint about 79x42 m, no tags"
+        }
+      ],
+      "notes": "Only the footprint is real; three storeys and the finish are guesses."
+    },
+    "kuwait-city-osm-way-47393892": {
+      "venueId": "kuwait-city-osm-way-47393892",
+      "city": "kuwait-city",
+      "name": "Sabah Al-Salem Stadium",
+      "archetype": "stadium",
+      "subject": "Sabah Al-Salem Stadium (the Castle of Cups), a 26,000-seat 1970s football bowl in Mansuriyah",
+      "form": {
+        "footprint": "oval",
+        "width_m": 215,
+        "depth_m": 154,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d7d1c3",
+          "#1f7a4a",
+          "#8b8880"
+        ],
+        "roofColour": "#9b9891",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sabah_Al-Salem_Stadium",
+          "what": "26,000 capacity, built 1977, opened 5 January 1979, in Mansuriyah, home of Al-Arabi, hosted the 1980 AFC Asian Cup final"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/47393892",
+          "what": "OSM: 215x154 m outline"
+        }
+      ],
+      "notes": "Capacity and dates are sourced; the roofed main stand and green trim (club colour) are typed. Differs from the other Kuwait stadiums by being larger and older with a concrete bowl."
+    },
+    "kuwait-city-osm-way-616859990": {
+      "venueId": "kuwait-city-osm-way-616859990",
+      "city": "kuwait-city",
+      "name": "Al-Sadaqua Walsalam Stadium",
+      "archetype": "stadium",
+      "subject": "Friendship and Peace (Al-Sadaqua Walsalam) Stadium, Kuwait's second-largest at about 21,500, a bowl with a covered main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 213,
+        "depth_m": 157,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd6c8",
+          "#2d5fa0",
+          "#8b8981"
+        ],
+        "roofColour": "#aaa7a0",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "over both long stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Sadaqua_Walsalam_Stadium",
+          "what": "capacity about 21,500, second-largest stadium in Kuwait, grass pitch"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/616859990",
+          "what": "OSM outline about 213x157 m"
+        }
+      ],
+      "notes": "Capacity is sourced; roof and colours are guesses. Make it a rounded bowl with roofs over the long sides, distinct from Thamir."
+    },
+    "kuwait-city-osm-way-627399824": {
+      "venueId": "kuwait-city-osm-way-627399824",
+      "city": "kuwait-city",
+      "name": "Kuwait Towers",
+      "archetype": "monument",
+      "subject": "Kuwait Towers: the 187 m main tower with two blue-green mosaic spheres, the 147 m water tower and the slim 113 m lighting needle on the Gulf promontory",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 187,
+        "roof": "none",
+        "variant": "three-tower-spheres"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#3a79a8",
+          "#3f8f87",
+          "#8a99a0"
+        ],
+        "roofColour": "#4a86b0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mosaic",
+          "count": 3,
+          "note": "spheres clad in eight blue/green/grey enamelled discs in spiral patterns"
+        },
+        {
+          "id": "spire",
+          "count": 3,
+          "note": "three needle-thin towers of 187, 147 and 113 m"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "international",
+      "era": "1970s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuwait_Towers",
+          "what": "main tower 187 m with two spheres, second 147 m water tower, third lighting tower; 41,000 enamelled steel discs in eight shades of blue, green and grey in spirals; prestressed concrete; upper sphere 123 m turns every 30 minutes"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Kuwait",
+          "what": "opened 1977-79, the country's most prominent modern landmark"
+        }
+      ],
+      "notes": "The most recognisable thing in Kuwait. Three towers in a loose row: main tower with a large lower sphere (water tank) and a smaller upper sphere above it, second tower with one sphere, third a plain needle. Spheres show spiral bands of blue, teal and grey. Height exceeds the 120 m clamp, so scale the group down."
+    },
+    "kuwait-city-osm-way-698737981": {
+      "venueId": "kuwait-city-osm-way-698737981",
+      "city": "kuwait-city",
+      "name": "Yousef Yaqoub Al-Mutawa and Moudhi Yousef Al-Mutawa Mosque",
+      "archetype": "mosque-domed",
+      "subject": "a donated Kuwaiti neighbourhood mosque: sand-stone prayer hall with one dome and a single tall minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#e8dcc0",
+          "#c9b78f",
+          "#f4eee2"
+        ],
+        "roofColour": "#dcd7cb",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/698737981",
+          "what": "OSM: Sunni mosque footprint about 49x38 m, named after the donors"
+        }
+      ],
+      "notes": "Charitable-donor mosques are typical in Kuwait. Nothing describes this one; typed to the local pattern with a different footprint from Al-Da'wa."
+    },
+    "kuwait-city-quiet-reflection": {
+      "venueId": "kuwait-city-quiet-reflection",
+      "city": "kuwait-city",
+      "name": "Imam Zayn Al-Abidin Mosque",
+      "archetype": "mosque-domed",
+      "subject": "a Shia mosque in the Persian-influenced style, with a tiled dome and two minarets flanking a decorated entrance iwan",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "render",
+        "colours": [
+          "#d9cdb2",
+          "#2f7da0",
+          "#e8e2d3"
+        ],
+        "roofColour": "#2a6f95",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "tiled dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "tilework panels"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "persian",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM: Shia mosque footprint about 38x29 m, Wikipedia tag de:Zain-al-Abidin-Moschee (Kuwait)"
+        }
+      ],
+      "notes": "Not found in any fetched source. A Shia mosque in Kuwait commonly shows Iranian-style blue tilework, so a blue-tile dome and two minarets are used but flagged as a guess; verify before relying."
+    },
+    "kuwait-city-recreation": {
+      "venueId": "kuwait-city-recreation",
+      "city": "kuwait-city",
+      "name": "Northwest Sulaibikhat Public Park",
+      "archetype": "park-landscape",
+      "subject": "a neighbourhood park with lawn, palms, walking paths and a small pavilion in sandy desert",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 78,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8cdb2",
+          "#9aa68a",
+          "#a39b88"
+        ],
+        "roofColour": "#c9bfa6",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM leisure=park about 102x78 m"
+        }
+      ],
+      "notes": "Only the park outline is known; amenities are typed from typical Kuwaiti municipal parks."
+    },
+    "kuwait-city-transit": {
+      "venueId": "kuwait-city-transit",
+      "city": "kuwait-city",
+      "name": "Hassawi",
+      "archetype": "transport-station",
+      "subject": "a small bus terminal: canopied bays beside a low terminal building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e5dac1",
+          "#7d8f99",
+          "#9a9387"
+        ],
+        "roofColour": "#b0aca4",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q18516978",
+          "what": "Hassawi is a locality in Kuwait"
+        }
+      ],
+      "notes": "No building footprint in OSM. Hassawi is a district; the model is a typed bus-hub."
+    }
+  }
+}

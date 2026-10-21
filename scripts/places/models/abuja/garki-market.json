@@ -1,0 +1,424 @@
+{
+  "schema": "allworld-place-model",
+  "version": 2,
+  "city": "abuja",
+  "venueId": "garki-market",
+  "verified": "photo",
+  "evidence": [
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Garki_International_Market_03.jpg",
+      "licence": "CC BY-SA 4.0",
+      "author": "Kritzolina",
+      "view": "front",
+      "file": "/tmp/places-evidence/abuja/garki3.jpg",
+      "used": "main exterior: long two-storey block with a ground-floor arcade and a row of upper windows, orange-brown brick walls, two-level hipped roof in copper-brown sheet, a lower range behind to the right, a small domed mosque at the right end, an open gravel parking forecourt in front"
+    },
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Garki_International_Market_05.jpg",
+      "licence": "CC BY-SA 4.0",
+      "author": "Kritzolina",
+      "view": "aerial",
+      "used": "second angle: wide access road, brick planter beds, palms, more hipped brown-roofed ranges farther back"
+    },
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Garki_Market.jpg",
+      "licence": "CC BY-SA 4.0",
+      "author": "Anass Sedrati",
+      "view": "street",
+      "file": "/tmp/places-evidence/abuja/garki0.jpg",
+      "used": "the older market streets: low lean-to sheet roofs over lock-ups, big coloured umbrellas, laterite street, parked cars"
+    },
+    {
+      "kind": "photo",
+      "url": "https://commons.wikimedia.org/wiki/File:Shops_in_Garki_Market.jpg",
+      "licence": "CC BY-SA 4.0",
+      "author": "Anass Sedrati",
+      "view": "street",
+      "used": "narrow lock-up alley with corrugated lean-to roofs and umbrellas"
+    },
+    {
+      "kind": "osm",
+      "ref": "way/1288724626",
+      "used": "size only: the whole market is about 520 x 300 m, so one representative corner (the arcaded block, the parking forecourt and the lock-up lanes behind) is modelled"
+    }
+  ],
+  "camera": {
+    "yawDeg": -2,
+    "pitchDeg": 15,
+    "fovDeg": 50,
+    "aspect": 1.333,
+    "margin": 0.03,
+    "fit": "building",
+    "shiftY": -0.08
+  },
+  "parts": [
+    {
+      "type": "mass",
+      "id": "arcade-block",
+      "footprint": {
+        "rect": [
+          62,
+          15
+        ]
+      },
+      "at": [
+        -14,
+        12
+      ],
+      "height": 8.2,
+      "storeys": 2,
+      "wall": {
+        "material": "brick",
+        "colour": "#b9794f",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "bay": 3.6,
+        "groundKind": "arched",
+        "groundHeight": 4.0,
+        "bands": "#efe6d2",
+        "plinth": 0.5,
+        "faces": {
+          "back": "plain",
+          "left": "plain",
+          "right": "plain"
+        }
+      },
+      "roof": {
+        "form": "hip",
+        "colour": "#8e5a3e",
+        "material": "metal-sheet",
+        "pitch": 15,
+        "overhang": 1.6
+      }
+    },
+    {
+      "type": "mass",
+      "id": "step-wing",
+      "footprint": {
+        "rect": [
+          20,
+          15
+        ]
+      },
+      "at": [
+        -35,
+        12
+      ],
+      "height": 8.2,
+      "z0": 0,
+      "wall": {
+        "material": "brick",
+        "colour": "#b9794f",
+        "windows": "none",
+        "plinth": 0.5,
+        "bands": "#e8d8bc"
+      },
+      "roof": {
+        "form": "hip",
+        "colour": "#9a6444",
+        "material": "metal-sheet",
+        "pitch": 15,
+        "overhang": 1.0
+      }
+    },
+    {
+      "type": "mass",
+      "id": "rear-range",
+      "footprint": {
+        "rect": [
+          44,
+          13
+        ]
+      },
+      "at": [
+        38,
+        32
+      ],
+      "rotDeg": -8,
+      "height": 6.6,
+      "storeys": 2,
+      "wall": {
+        "material": "brick",
+        "colour": "#b57650",
+        "windows": "punched",
+        "windowRatio": 0.22,
+        "bay": 3.8,
+        "groundKind": "arched",
+        "groundHeight": 3.4,
+        "bands": "#e1cfb2",
+        "plinth": 0.4,
+        "faces": {
+          "back": "plain"
+        }
+      },
+      "roof": {
+        "form": "hip",
+        "colour": "#8a5a40",
+        "material": "metal-sheet",
+        "pitch": 16,
+        "overhang": 1.0
+      }
+    },
+    {
+      "type": "mass",
+      "id": "far-range",
+      "footprint": {
+        "rect": [
+          70,
+          12
+        ]
+      },
+      "at": [
+        -10,
+        52
+      ],
+      "height": 5.6,
+      "storeys": 1,
+      "wall": {
+        "material": "painted-render",
+        "colour": "#c9a77c",
+        "windows": "none",
+        "plinth": 0.3
+      },
+      "roof": {
+        "form": "gable",
+        "colour": "#7e5038",
+        "material": "metal-sheet",
+        "pitch": 12,
+        "overhang": 1.2
+      }
+    },
+    {
+      "type": "mass",
+      "id": "mosque",
+      "footprint": {
+        "rect": [
+          8,
+          8
+        ]
+      },
+      "at": [
+        47,
+        6
+      ],
+      "height": 4.6,
+      "storeys": 1,
+      "wall": {
+        "material": "painted-render",
+        "colour": "#d9ad8d",
+        "windows": "arched",
+        "windowRatio": 0.18,
+        "plinth": 0.3
+      },
+      "roof": {
+        "form": "flat",
+        "colour": "#b8654a",
+        "parapet": 0.3
+      }
+    },
+    {
+      "type": "mosque-domed/dome",
+      "at": [
+        0,
+        0,
+        0
+      ],
+      "on": "mosque",
+      "params": {
+        "radius": 2.6,
+        "height": 2.4,
+        "drum": 1.2,
+        "colour": "#ece6d8",
+        "drum_colour": "#d9ad8d",
+        "finial": true,
+        "finial_height": 1.4
+      }
+    },
+    {
+      "type": "lock-up-row",
+      "at": [
+        -30,
+        38,
+        0
+      ],
+      "params": {
+        "length": 30,
+        "depth": 3.4,
+        "height": 3.1,
+        "roof": "shed",
+        "unit_width": 2.4,
+        "veranda": 1.5,
+        "roof_colour": "#8f7f74",
+        "wall_colour": "#bda486"
+      }
+    },
+    {
+      "type": "lock-up-row",
+      "at": [
+        8,
+        40,
+        0
+      ],
+      "params": {
+        "length": 24,
+        "depth": 3.4,
+        "height": 3.1,
+        "roof": "shed",
+        "unit_width": 2.4,
+        "veranda": 1.5,
+        "roof_colour": "#7f8a8e",
+        "wall_colour": "#c4a27c"
+      }
+    },
+    {
+      "type": "stall-row",
+      "at": [
+        -24,
+        30,
+        0
+      ],
+      "params": {
+        "count": 7,
+        "pitch": 3.8,
+        "kind": "umbrella",
+        "size": 1.2
+      }
+    },
+    {
+      "type": "stall-row",
+      "at": [
+        -4,
+        28,
+        0
+      ],
+      "params": {
+        "count": 6,
+        "pitch": 4.0,
+        "kind": "umbrella",
+        "size": 1.1
+      }
+    },
+    {
+      "type": "umbrella-cluster",
+      "at": [
+        -48,
+        -2,
+        0
+      ],
+      "params": {
+        "count": 5,
+        "spread": 5,
+        "radius": 1.7,
+        "tables": false,
+        "colours": [
+          "#2a9d8f",
+          "#e9c46a",
+          "#e76f51",
+          "#3a86c8"
+        ]
+      }
+    },
+    {
+      "type": "car-park",
+      "at": [
+        0,
+        -14,
+        0
+      ],
+      "params": {
+        "width": 74,
+        "depth": 20,
+        "density": 0.55
+      }
+    },
+    {
+      "type": "core/sign-board",
+      "at": [
+        -14,
+        3.5,
+        0
+      ],
+      "params": {
+        "width": 5.5,
+        "height": 2.2,
+        "bottom": 4.4,
+        "colour": "#d9c04a",
+        "posts": false
+      }
+    },
+    {
+      "type": "core/sign-board",
+      "at": [
+        -40,
+        3.5,
+        0
+      ],
+      "params": {
+        "width": 4.5,
+        "height": 2.0,
+        "bottom": 4.4,
+        "colour": "#3a86c8",
+        "posts": false
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        -44,
+        28,
+        0
+      ],
+      "params": {
+        "kind": "palm",
+        "height": 11,
+        "count": 3,
+        "spread": 12
+      }
+    },
+    {
+      "type": "core/tree",
+      "at": [
+        60,
+        18,
+        0
+      ],
+      "params": {
+        "kind": "broadleaf",
+        "height": 9,
+        "count": 3,
+        "spread": 10
+      }
+    },
+    {
+      "type": "lamp",
+      "at": [
+        -30,
+        -6,
+        0
+      ],
+      "params": {
+        "height": 7,
+        "count": 4,
+        "spacing": 18
+      }
+    }
+  ],
+  "site": {
+    "ground": "sand",
+    "groundColour": "#b9ae9a",
+    "forecourt": "none",
+    "trees": [],
+    "extent": [
+      150,
+      100
+    ]
+  },
+  "review": {
+    "rounds": 3,
+    "match": "close",
+    "gaps": "Only one corner of the 520 m market is modelled; ground-floor arcade is plain arches without the shop signage, playground and canopies; rear range and mosque are simplified; the real forecourt is large open gravel with fewer marked bays and the mosque has a lower hip roof with a small minaret."
+  }
+}

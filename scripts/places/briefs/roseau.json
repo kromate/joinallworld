@@ -1,0 +1,1535 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "roseau",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "roseau",
+    "climate": "tropical-maritime",
+    "vernacular": "Compact Caribbean port town under steep forested volcanic hills. Small two-storey Creole houses with stone or concrete ground floors and timber upper floors, galleries, jalousie shutters and steep galvanised-sheet roofs in red, green and grey, painted in pastel yellow, blue, pink and white; larger modern concrete blocks and French-colonial courtyard buildings in the centre, with Georgian-style English public buildings.",
+    "wallColours": [
+      "#e8d9a8",
+      "#8fb7c9",
+      "#d98c8c",
+      "#f2efe6",
+      "#7a8f5a",
+      "#b9b2a2",
+      "#9a9a94"
+    ],
+    "roofColours": [
+      "#a13d2d",
+      "#4f7a52",
+      "#8a8f94",
+      "#6b6f73"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "timber",
+      "stone",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber balconies and galleries with fretwork, louvred jalousie shutters and wooden window flaps, stone or volcanic-rock ground floors, brightly painted trim, steep hipped and gabled galvanised roofs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Roseau",
+        "what": "Roseau: French colonial and vernacular styles, tightly packed small and large houses with modern concrete structures, English-influenced colonial public buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Roseau_Cathedral",
+        "what": "Our Lady of Fair Haven: Gothic Romanesque Revival in volcanic rock, stubby clock bell tower, steeple completed 1916, Gothic windows with stained glass upper and wooden shutters lower"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dominica",
+        "what": "General Dominica context; colours and roof sheet types are typical regional vernacular and were judged from general descriptions, not measured"
+      }
+    ]
+  },
+  "places": {
+    "roseau-airport-roseau-airport": {
+      "venueId": "roseau-airport-roseau-airport",
+      "city": "roseau",
+      "name": "Douglas-Charles Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small low airport terminal seen from the forecourt, set below the hills at Melville Hall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#8fb7c9",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Douglas%E2%80%93Charles_Airport",
+          "what": "Terminal with 10 check-in counters, 2006 expansion, runway 09/27 1936 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/200857138",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Footprint measured from OSM (110 x 29 m, irregular outline). Wikipedia confirms 10 check-in counters and a 2006 expansion but not the facade colours; colours and the lack of jet bridges are typed from the small regional airport type. No control tower is mentioned in sources."
+    },
+    "roseau-clinic": {
+      "venueId": "roseau-clinic",
+      "city": "roseau",
+      "name": "Marigot Hospital",
+      "archetype": "hospital",
+      "subject": "Small rural district hospital block at Marigot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#7aa5b8",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/370396285",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Only OSM footprint (26.8 x 13.4 m) found; appearance typed from the city style and the small district-clinic type."
+    },
+    "roseau-community-notices": {
+      "venueId": "roseau-community-notices",
+      "city": "roseau",
+      "name": "pas de jonction",
+      "archetype": "civic-small",
+      "subject": "Small community notice building (placeholder-like name, no real building identified)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#8fb7c9",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No building matched this name (pas de jonction is a hill-pass name). Typed low-confidence small civic building from the city style."
+    },
+    "roseau-community-voting-game": {
+      "venueId": "roseau-community-voting-game",
+      "city": "roseau",
+      "name": "Grand Fond Community Center",
+      "archetype": "civic-small",
+      "subject": "Small village community centre at Grand Fond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#7a8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/271661481",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 18 x 9.6 m tagged townhall; no description found, typed from the city style."
+    },
+    "roseau-community-workshop": {
+      "venueId": "roseau-community-workshop",
+      "city": "roseau",
+      "name": "Dominica State College",
+      "archetype": "campus-block",
+      "subject": "Dominica State College campus block at Stock Farm, green and yellow college colours",
+      "form": {
+        "footprint": "L",
+        "width_m": 47,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e4a0",
+          "#4f7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dominica_State_College",
+          "what": "Campus 4 ha at Stock Farm, college colours green and yellow, 2008 China-funded new campus approved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/5963855",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Only the college colours (green, yellow) and a 4 ha site are documented; building from OSM block 47 x 17 m. Two storeys and balconies are typical, not verified."
+    },
+    "roseau-market-game": {
+      "venueId": "roseau-market-game",
+      "city": "roseau",
+      "name": "Bellevue Chopin Mall",
+      "archetype": "mall",
+      "subject": "Small commercial block at Bellevue Chopin, called a mall in the game",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e2cf",
+          "#a13d2d",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/19791871",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 46.8 x 37.7 m; nothing found describing the mall. Typed as a small retail block with parking."
+    },
+    "roseau-meal-stop": {
+      "venueId": "roseau-meal-stop",
+      "city": "roseau",
+      "name": "Molly's Food Spot",
+      "archetype": "restaurant",
+      "subject": "Small roadside eatery at Portsmouth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#d98c8c",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/526231626",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 12.5 x 10 m; no photos described. Typed from the city style."
+    },
+    "roseau-osm-node-11977639451": {
+      "venueId": "roseau-osm-node-11977639451",
+      "city": "roseau",
+      "name": "Windsor Park",
+      "archetype": "stadium",
+      "subject": "Windsor Park stadium, the national stadium of Dominica, a grass pitch with stands and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 148,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d3c9",
+          "#2f6f4f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dominica_Botanical_Gardens",
+          "what": "16 ha former sugar estate planted 1890; baobab toppled in Hurricane David (1979) crushing a school bus; Jack's Walk to Morne Bruce; Windsor Park opposite"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/174859525",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM pitch outline 161 x 149 m (that includes the pitch only). Wikipedia says only that Windsor Park lies opposite the Botanical Gardens as a former cricket venue; the roofed stand and floodlights are typical and unverified."
+    },
+    "roseau-osm-node-1418090286": {
+      "venueId": "roseau-osm-node-1418090286",
+      "city": "roseau",
+      "name": "Victoria Falls",
+      "archetype": "park-landscape",
+      "subject": "Victoria Falls, a jungle waterfall in a river gorge at Delices",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7f7f78",
+          "#4f7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dominica",
+          "what": "Dominica has many waterfalls in volcanic rainforest, no page on Victoria Falls itself"
+        }
+      ],
+      "notes": "Natural waterfall; no sources describing the site were found. Typed as a rock gorge with dense rainforest, a plunge pool and a short stepped trail."
+    },
+    "roseau-osm-node-3661886297": {
+      "venueId": "roseau-osm-node-3661886297",
+      "city": "roseau",
+      "name": "Trafalgar Falls",
+      "archetype": "park-landscape",
+      "subject": "Trafalgar Falls twin waterfalls in Morne Trois Pitons National Park with a small viewing shelter at the end of the trail",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7f7f78",
+          "#4f7a52",
+          "#e8e8e0"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small trail-end shelter (OSM 8.6 x 7.9 m)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Trafalgar_Falls",
+          "what": "Trafalgar village and Trafalgar Falls inside Morne Trois Pitons National Park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1360063815",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Falls inside Morne Trois Pitons National Park; the twin-falls form (two falls side by side down a dark volcanic cliff into one pool) and the viewing platform are from general knowledge of the site, not from a fetched page."
+    },
+    "roseau-osm-node-4568918989": {
+      "venueId": "roseau-osm-node-4568918989",
+      "city": "roseau",
+      "name": "View of Trafalgar Falls",
+      "archetype": "park-landscape",
+      "subject": "Roadside viewing platform with a small shelter looking over Trafalgar Falls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7a58",
+          "#4f7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/389825590",
+          "what": "OSM building footprint, size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Trafalgar_Falls",
+          "what": "Trafalgar village and Trafalgar Falls inside Morne Trois Pitons National Park"
+        }
+      ],
+      "notes": "OSM building 12.7 x 7 m; viewing shelter typed from general scenic-lookout type."
+    },
+    "roseau-osm-node-4650862492": {
+      "venueId": "roseau-osm-node-4650862492",
+      "city": "roseau",
+      "name": "3D Restaurant",
+      "archetype": "restaurant",
+      "subject": "Tiny roadside restaurant hut at Soufriere",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#8fb7c9",
+          "#e8d9a8",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/372532734",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint only 7.8 x 3.2 m; no description found, typed small shack from city style."
+    },
+    "roseau-osm-node-5238480521": {
+      "venueId": "roseau-osm-node-5238480521",
+      "city": "roseau",
+      "name": "Islet view",
+      "archetype": "restaurant",
+      "subject": "Small seaside restaurant with a sea view on the north-east coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#8fb7c9",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/525985592",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 13.7 x 11.6 m; nothing else found. Typed from the city style."
+    },
+    "roseau-osm-node-5779237653": {
+      "venueId": "roseau-osm-node-5779237653",
+      "city": "roseau",
+      "name": "House of the president",
+      "archetype": "civic-palace",
+      "subject": "The official residence of the President of Dominica, a large two-storey house beside the Botanical Gardens",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#a13d2d",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "gallery"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/525939745",
+          "what": "OSM building footprint, size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Roseau",
+          "what": "Roseau: French colonial and vernacular styles, tightly packed small and large houses with modern concrete structures, English-influenced colonial public buildings"
+        }
+      ],
+      "notes": "OSM building 46 x 26 m; Roseau article notes English-influenced colonial public buildings and Government House gardens beside the Botanical Gardens. Facade and colours not found; typed as a colonial official residence."
+    },
+    "roseau-osm-node-9682732830": {
+      "venueId": "roseau-osm-node-9682732830",
+      "city": "roseau",
+      "name": "Morne Bruce",
+      "archetype": "park-landscape",
+      "subject": "Morne Bruce lookout hill above Roseau with a view over the town and Botanical Gardens",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9a94",
+          "#4f7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dominica_Botanical_Gardens",
+          "what": "16 ha former sugar estate planted 1890; baobab toppled in Hurricane David (1979) crushing a school bus; Jack's Walk to Morne Bruce; Windsor Park opposite"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/369923932",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Jack's Walk trail from the Botanical Gardens leads to Morne Bruce. OSM structure 21 x 20 m. A large cross stands at the viewpoint, but no page found; typed as a hilltop lookout."
+    },
+    "roseau-osm-way-1102696829": {
+      "venueId": "roseau-osm-way-1102696829",
+      "city": "roseau",
+      "name": "Concord Playing Feild",
+      "archetype": "park-landscape",
+      "subject": "Village playing field at Concord, a grass pitch with a small pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 82,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d6d3c9",
+          "#4f7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1102696829",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM park 88 x 82 m; no further source."
+    },
+    "roseau-osm-way-145400476": {
+      "venueId": "roseau-osm-way-145400476",
+      "city": "roseau",
+      "name": "Botanical Gardens",
+      "archetype": "park-landscape",
+      "subject": "Dominica Botanical Gardens, a 16 ha planted estate with the toppled baobab and crushed school bus",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 552,
+        "depth_m": 233,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6b8f5a",
+          "#b9b2a2",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "conservation / parrot centre buildings"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "Jack's Walk to Morne Bruce"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1890",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dominica_Botanical_Gardens",
+          "what": "16 ha former sugar estate planted 1890; baobab toppled in Hurricane David (1979) crushing a school bus; Jack's Walk to Morne Bruce; Windsor Park opposite"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/145400476",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "16 ha former sugar estate, planting 1890, gov purchase 1891. Hurricane David (1979) felled a baobab onto a school bus, kept as a relic - recognisable feature. Cap the model to the garden portion near the entrance."
+    },
+    "roseau-osm-way-198518720": {
+      "venueId": "roseau-osm-way-198518720",
+      "city": "roseau",
+      "name": "Pierre Charles Secondary School",
+      "archetype": "campus-block",
+      "subject": "Two-storey secondary school block with a yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e4a0",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/526609847",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 42 x 22.5 m, tagged college. No description; typed from the city style."
+    },
+    "roseau-osm-way-361451994": {
+      "venueId": "roseau-osm-way-361451994",
+      "city": "roseau",
+      "name": "Old Market",
+      "archetype": "market-open",
+      "subject": "Old Market Plaza, the historic open market square at the heart of Roseau with a small covered pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#a13d2d",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1800s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roseau",
+          "what": "Roseau: French colonial and vernacular styles, tightly packed small and large houses with modern concrete structures, English-influenced colonial public buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/361451994",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Roseau article: streets radiate from the Old Market Plaza; French influence shows in the crooked streets. The plaza is small, paved and ringed by colonial town houses. The pavilion is from the OSM building (20 x 19 m); the red galvanise roof is typed."
+    },
+    "roseau-osm-way-389821142": {
+      "venueId": "roseau-osm-way-389821142",
+      "city": "roseau",
+      "name": "All Saints University School of Medicine",
+      "archetype": "campus-block",
+      "subject": "Two-storey school of medicine with a silver gabled metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#b9bcc0",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/389821142",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM tags give 2 levels, gabled roof, silver metal roof (measured). Wall colour typed. (OSM also tags building=supermarket, probably a former use.)"
+    },
+    "roseau-osm-way-396804252": {
+      "venueId": "roseau-osm-way-396804252",
+      "city": "roseau",
+      "name": "The University of the West Indies Open Campus",
+      "archetype": "campus-block",
+      "subject": "Small UWI Open Campus building in central Roseau",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e2cf",
+          "#8fb7c9",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/369421652",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 28.7 x 28.6 m; no description found, typed from the city style."
+    },
+    "roseau-osm-way-396970462": {
+      "venueId": "roseau-osm-way-396970462",
+      "city": "roseau",
+      "name": "Dominica-China Friendship Hospital",
+      "archetype": "hospital",
+      "subject": "Modern Chinese-built hospital block in Roseau",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/369891033",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM footprint 42 x 24 m; the name is from OSM and the hospital is a China aid project, but no page describing the building was fetched. Storeys are a guess."
+    },
+    "roseau-quiet-reflection": {
+      "venueId": "roseau-quiet-reflection",
+      "city": "roseau",
+      "name": "Our Lady of Fair Haven Cathedral",
+      "archetype": "church-gothic",
+      "subject": "Roseau Roman Catholic cathedral in grey volcanic stone with a stubby clock tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 52,
+        "depth_m": 44,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#8b8a85",
+          "#d6d3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#7a3a2f",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "stubby tower with large clock"
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "completed 1916"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "upper window sections"
+        },
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "wooden shutters in lower window sections"
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1916",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roseau_Cathedral",
+          "what": "Our Lady of Fair Haven: Gothic Romanesque Revival in volcanic rock, stubby clock bell tower, steeple completed 1916, Gothic windows with stained glass upper and wooden shutters lower"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/361451997",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "Gothic Romanesque Revival, volcanic rock inside and out, built to withstand earthquakes; spire 1916, consecrated 1925; looks small outside. Roof colour (dark red galvanise) is typed. Bell tower with clock stubby, steeple at west end."
+    },
+    "roseau-recreation": {
+      "venueId": "roseau-recreation",
+      "city": "roseau",
+      "name": "Lindo Park",
+      "archetype": "park-landscape",
+      "subject": "Lindo Park, an open grass park in Roseau",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 147,
+        "depth_m": 126,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#4f7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7a52",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/142324885",
+          "what": "OSM building footprint, size and tags (measured)"
+        }
+      ],
+      "notes": "OSM park 147 x 126 m with a Wikidata item, no description. Typed from the city style."
+    },
+    "roseau-transit": {
+      "venueId": "roseau-transit",
+      "city": "roseau",
+      "name": "Roseau",
+      "archetype": "transport-station",
+      "subject": "Roseau bus station building at the centre of town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1e6c8",
+          "#a13d2d",
+          "#ffffff"
+        ],
+        "roofColour": "#a13d2d",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/372323237",
+          "what": "OSM building footprint, size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Roseau",
+          "what": "Roseau: French colonial and vernacular styles, tightly packed small and large houses with modern concrete structures, English-influenced colonial public buildings"
+        }
+      ],
+      "notes": "OSM tags measured: 2 levels, hipped roof, red galvanised roof, cream cement-block walls, 37.6 x 26.2 m. Function (bus terminal) typed from hub kind."
+    }
+  }
+}

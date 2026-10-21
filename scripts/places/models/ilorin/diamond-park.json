@@ -1,0 +1,401 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "diamond-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo of the park found (Commons results near the venue were swimming pools); OSM match is a 113 m2 nearest building, not the park, so it is not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; diamond-shaped walk with cross paths, central hip-roofed pavilion, four flowerbeds, gate and two kiosks are composed from the brief and are unverified."
+ },
+ "parts": [
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      40,
+      0
+     ],
+     [
+      0,
+      30
+     ],
+     [
+      -40,
+      0
+     ],
+     [
+      0,
+      -30
+     ]
+    ],
+    "width": 3.0,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      -40,
+      0
+     ],
+     [
+      40,
+      0
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      30
+     ]
+    ],
+    "width": 2.2,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      -42
+     ]
+    ],
+    "width": 3.4,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.0,
+    "posts": 8,
+    "colour": "#d8c3a0",
+    "cap_colour": "#a8643f",
+    "floor_colour": "#c9b896"
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "colour": "#c4527a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "colour": "#c4527a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    -22,
+    14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "colour": "#c4527a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "garden-bed",
+   "at": [
+    22,
+    14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "colour": "#c4527a",
+    "hedge": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-w",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    -34,
+    -22
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7f9a80",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b36",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-e",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    34,
+    -22
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8643f",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4b36",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.8,
+    "pillar": 1.1,
+    "leaf": "bars",
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 88,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#7f9a80"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    42,
+    0
+   ],
+   "params": {
+    "length": 88,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#7f9a80"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#d8c3a0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "spread": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ }
+}

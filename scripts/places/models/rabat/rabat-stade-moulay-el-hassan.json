@@ -1,0 +1,482 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-stade-moulay-el-hassan",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_My_Hassan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LillyAndalucia",
+   "view": "street",
+   "file": "/tmp/places-evidence/rabat/stade-moulay-el-hassan0.jpg",
+   "used": "red and white seat blocks on raked terraces, red concrete band, one central covered stand with a dark flat roof, spear-topped black iron perimeter fence on a low white wall, palms behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/19859174",
+   "used": "overall oval size (170 x 129 m) and bearing; bowl scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.0,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ground",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     112,
+     88
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#7fa660"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 88,
+    "width": 58,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     52,
+     34
+    ],
+    "end": [
+     -52,
+     34
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.0,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#8f2a33",
+     "#ecebe6"
+    ],
+    "blocks": 4,
+    "concreteColour": "#7d2a30",
+    "underColour": "#6e262c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -34
+    ],
+    "end": [
+     52,
+     -34
+    ],
+    "rows": 3,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.6,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#8f2a33",
+     "#ecebe6"
+    ],
+    "blocks": 2,
+    "concreteColour": "#7d2a30",
+    "underColour": "#6e262c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     54,
+     -34
+    ],
+    "end": [
+     54,
+     34
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.6,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#8f2a33",
+     "#ecebe6"
+    ],
+    "blocks": 3,
+    "concreteColour": "#7d2a30",
+    "underColour": "#6e262c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -54,
+     34
+    ],
+    "end": [
+     -54,
+     -34
+    ],
+    "rows": 8,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.6,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#8f2a33",
+     "#ecebe6"
+    ],
+    "blocks": 3,
+    "concreteColour": "#7d2a30",
+    "underColour": "#6e262c"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    41,
+    7.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 8,
+    "height": 2.5,
+    "thickness": 0.5,
+    "columns": 6,
+    "colour": "#2e3136",
+    "edgeColour": "#2e3136"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glazed-box",
+   "at": [
+    0,
+    38,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     9,
+     3.5
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#9fb7bd",
+    "topColour": "#4a4f55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pillar-back",
+   "at": [
+    0,
+    45,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.2
+    ],
+    "z0": 0,
+    "height": 10,
+    "colour": "#7d2a30",
+    "topColour": "#2e3136"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 0.9,
+    "thickness": 0.35,
+    "colour": "#e4e2dc",
+    "points": [
+     [
+      -60,
+      -48
+     ],
+     [
+      60,
+      -48
+     ],
+     [
+      60,
+      48
+     ],
+     [
+      -60,
+      48
+     ],
+     [
+      -60,
+      -48
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0.9
+   ],
+   "params": {
+    "kind": "fence",
+    "height": 2.0,
+    "thickness": 0.1,
+    "colour": "#15171a",
+    "points": [
+     [
+      -60,
+      -48
+     ],
+     [
+      60,
+      -48
+     ],
+     [
+      60,
+      48
+     ],
+     [
+      -60,
+      48
+     ],
+     [
+      -60,
+      -48
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dugout-10",
+   "at": [
+    -10,
+    -31,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.4
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#f2f0ea",
+    "topColour": "#b63a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "dugout10",
+   "at": [
+    10,
+    -31,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     6,
+     1.4
+    ],
+    "z0": 0,
+    "height": 2.0,
+    "colour": "#f2f0ea",
+    "topColour": "#b63a40"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "lod": [
+    0
+   ],
+   "at": [
+    -62,
+    0,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "post_height": 3,
+    "facing": "east"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    -52,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0,
+    2
+   ],
+   "at": [
+    52,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     46
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     46
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     50
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Seat colour blocks are plain stripes not the big lettered pattern; central stand is a flat dark canopy with glazed box and pillared back but no stair rails; fence has plain bars without spear finials; dugouts are simple boxes; corners between stands are open."
+ }
+}

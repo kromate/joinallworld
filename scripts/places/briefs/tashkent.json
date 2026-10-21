@@ -1,0 +1,1739 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tashkent",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tashkent",
+    "climate": "temperate",
+    "vernacular": "Continental city (hot dry summers, snowy winters) rebuilt as a model Soviet capital after the 1966 earthquake: wide tree-lined avenues, 5-9 storey panel and brick apartment blocks in cream, ochre and grey, low brick or adobe courtyard houses in the old mahalla neighbourhoods, monumental concrete and marble civic buildings, and since 2000 white-marble and glass towers. Domes and portals of historic and new mosques are turquoise and blue majolica.",
+    "wallColours": [
+      "#d8c3a0",
+      "#e9e2d0",
+      "#b8a58a",
+      "#9a9a96",
+      "#c07a4e",
+      "#f3f3f0",
+      "#c9b27c"
+    ],
+    "roofColours": [
+      "#2f7fb5",
+      "#8b8f93",
+      "#7a4b36",
+      "#5f7d6a",
+      "#b9a98f"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "brick",
+      "painted-render",
+      "marble",
+      "glass-curtain",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "membrane",
+      "clay-tile",
+      "concrete",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Blue and turquoise majolica on domes and portals; geometric girih and ganch (carved plaster) panels; pointed-arch iwans; panjara lattice screens; Soviet-era ceramic mosaic panels and stylised cotton-boll and star motifs on concrete civic buildings; white marble cladding with gold-tone accents on new state buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Tashkent",
+        "what": "adobe old town destroyed by 1966 quake, rebuilt as model Soviet city with wide tree-shaded streets, parks, plazas, fountains and apartment blocks; post-independence towers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Chorsu_Bazaar",
+        "what": "Soviet modernist blue-domed bazaar building (1980, Azimov), next to the 16th-century Kukeldash madrasa"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tashkent_City",
+        "what": "high-tech glass towers 75-128 m, Nest One 95 m, 224,914 m2 mall, large fountain in Tashkent City Park"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tashkent_Metro",
+        "what": "metro stations themed with metal, glass, granite, marble, smalt, ceramics and alabaster"
+      }
+    ]
+  },
+  "places": {
+    "tashkent-airport-tashkent-airport": {
+      "venueId": "tashkent-airport-tashkent-airport",
+      "city": "tashkent",
+      "name": "Tashkent International Airport (Islam Karimov), Terminal 2",
+      "archetype": "airport-terminal",
+      "subject": "the international Terminal 2 seen from the forecourt: a long white-and-glass terminal with a drop-off canopy and a control tower behind it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8ecee",
+          "#4f7b9c",
+          "#f6f6f4"
+        ],
+        "roofColour": "#c8ccd0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "drop-off zone added in 2024 works"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1976 complex; rebuilt 2001; expanded 2021-25",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tashkent_International_Airport",
+          "what": "Terminal 2 international rebuilt 2001, expanded by 2022, airside section 2023, facade renovated 2024, arrivals hall enlarged 2025; new complex opened 1976"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q860952",
+          "what": "Wikidata record, coordinates verified"
+        }
+      ],
+      "notes": "Terminal dimensions and colours are estimates; text sources give phases but no visual description. Recognisable as a long pale terminal with a projecting forecourt canopy. Domestic Terminal 3 (2011) is a separate smaller building."
+    },
+    "tashkent-clinic": {
+      "venueId": "tashkent-clinic",
+      "city": "tashkent",
+      "name": "Surgery Department (former Tashkent Cadet Corps building)",
+      "archetype": "hospital",
+      "subject": "the three-storey hip-roofed historic Cadet Corps building (1900, Russian Revival) now housing a hospital surgery department",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d6bd8f",
+          "#a5623f",
+          "#f1ead9"
+        ],
+        "roofColour": "#6e7f6a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched windows, typed"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1900",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4452983",
+          "what": "Cadet Corps in Tashkent, style Russian Revival, built 1900"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/105820896",
+          "what": "building:levels 3, roof hipped, amenity hospital, footprint about 261 m by 140 m (measured)"
+        }
+      ],
+      "notes": "Tagged 3 levels and a hipped roof with a long multi-wing footprint. Style is imperial Russian Revival (no matching enum; colonial used). Ochre plaster with brick trim and green metal roof are typed colours."
+    },
+    "tashkent-community-notices": {
+      "venueId": "tashkent-community-notices",
+      "city": "tashkent",
+      "name": "Ministry of Defense of the Republic of Uzbekistan",
+      "archetype": "civic-palace",
+      "subject": "a ten-storey ministry headquarters, a stepped concrete-and-stone block behind a security wall with flagpoles",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfc8b8",
+          "#5d7a8c",
+          "#e9e6df"
+        ],
+        "roofColour": "#8b8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/87902526",
+          "what": "building:levels 10, footprint about 132 m by 83 m, 4,689 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20536318",
+          "what": "Ministry of Defense, founded 1991"
+        }
+      ],
+      "notes": "Levels and footprint are measured; façade finish and colours are typed. Mid-block 10-storey massing is what the generator should read."
+    },
+    "tashkent-community-voting-game": {
+      "venueId": "tashkent-community-voting-game",
+      "city": "tashkent",
+      "name": "Independence Square (Mustaqillik Maydoni)",
+      "archetype": "park-landscape",
+      "subject": "the vast Independence Square: a white-paved plaza with fountains, a golden globe of Uzbekistan on a tall plinth with a mother-and-child figure, the Ezgulik arch and flag rows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "ceremonial-square"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#f3f3f0",
+          "#d9c37a",
+          "#9a9a96"
+        ],
+        "roofColour": "#f3f3f0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "mother figure with child at the globe plinth"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "Ezgulik (Gate of Goodness) arch with storks"
+        },
+        {
+          "id": "flags",
+          "count": 20
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "globe on a tall column monument"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1991 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tashkent",
+          "what": "large parade plazas, fountains and monuments in the Soviet-built city"
+        }
+      ],
+      "notes": "Square size and monument details come from general knowledge of the independence monument and Ezgulik arch (the dedicated Wikipedia page could not be fetched), not from fetched text. Show the globe-on-column monument as the focal feature."
+    },
+    "tashkent-community-workshop": {
+      "venueId": "tashkent-community-workshop",
+      "city": "tashkent",
+      "name": "Tashkent International University of Education",
+      "archetype": "campus-block",
+      "subject": "a modern five-storey university building with glazed entrance atrium and pale facade, founded 2020",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#4a6b85",
+          "#f4f2ec"
+        ],
+        "roofColour": "#8b8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q111694614",
+          "what": "university founded 2020"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/103133045",
+          "what": "campus footprint 187 m by 152 m (measured)"
+        }
+      ],
+      "notes": "Campus footprint is measured (bent 9-point polygon); building look is typed."
+    },
+    "tashkent-market-game": {
+      "venueId": "tashkent-market-game",
+      "city": "tashkent",
+      "name": "Chorsu Bazaar",
+      "archetype": "market-hall",
+      "subject": "the Chorsu Bazaar blue-domed central hall: a huge round Soviet-modernist trading hall under one large turquoise-blue dome, ringed by open stalls, with the Kukeldash madrasa nearby",
+      "form": {
+        "footprint": "round",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 28,
+        "roof": "dome",
+        "variant": "domed-hall",
+        "wings": 4
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#d8c3a0",
+          "#2f7fb5",
+          "#e9e2d0"
+        ],
+        "roofColour": "#2f7fb5",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "characteristic blue dome; diameter and material not sourced"
+        },
+        {
+          "id": "stalls",
+          "count": 40,
+          "note": "open-air stalls around the hall"
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1980",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chorsu_Bazaar",
+          "what": "blue dome is the characteristic feature; designed 1980 by Vladimir Azimov and others in Soviet modernist style; opposite Chorsu metro station; near Kukeldash madrasa"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q13409233",
+          "what": "Chorsu Bazaar, bazaar record"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/174498975",
+          "what": "bazaar area 216,431 m2 (measured)"
+        }
+      ],
+      "notes": "Dome diameter (60 m for the hall) and height are my estimates. Stall area around the hall is much larger than the hall; clamp to the hall plus a ring of stalls."
+    },
+    "tashkent-meal-stop": {
+      "venueId": "tashkent-meal-stop",
+      "city": "tashkent",
+      "name": "Blue Domes Cafe (Moviy Gumbazlar)",
+      "archetype": "restaurant",
+      "subject": "1970 Soviet-modernist cafe whose roof is a cluster of blue-glazed shell domes over a glazed pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 36,
+        "depth_m": 29,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#cfd8dc",
+          "#2a74b8",
+          "#f3f3f0"
+        ],
+        "roofColour": "#2a74b8",
+        "roofMaterial": "clay-tile",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "blue domes; exact count not verified"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q122676623",
+          "what": "Blue domes cafe, café and architectural landmark"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/141676147",
+          "what": "architect V. Muratov, engineer E. Platsman, start_date 1970, footprint 36 m by 29 m (measured)"
+        }
+      ],
+      "notes": "Name and 1970 date are tagged; the dome count and glazing are inferred from the name and general knowledge. Recognisable by the blue domes."
+    },
+    "tashkent-osm-node-4246680743": {
+      "venueId": "tashkent-osm-node-4246680743",
+      "city": "tashkent",
+      "name": "Polina",
+      "archetype": "restaurant",
+      "subject": "a small one-storey cafe with a hip roof and a blank signboard on the outskirts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#c07a4e",
+          "#e9e2d0",
+          "#7a4b36"
+        ],
+        "roofColour": "#7a4b36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1441881652",
+          "what": "nearby building 10.8 m by 10.1 m (measured)"
+        }
+      ],
+      "notes": "Name only; typed small roadside cafe."
+    },
+    "tashkent-osm-node-4792118722": {
+      "venueId": "tashkent-osm-node-4792118722",
+      "city": "tashkent",
+      "name": "Kuritsa Grill (grill chicken)",
+      "archetype": "restaurant",
+      "subject": "a low grill-chicken takeaway shop with a flat roof, awning and window counter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6d3a0",
+          "#c04a2f",
+          "#f4efe2"
+        ],
+        "roofColour": "#8b8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/462327684",
+          "what": "commercial building 24 m by 12 m (measured)"
+        }
+      ],
+      "notes": "Name only; typed."
+    },
+    "tashkent-osm-relation-2712835": {
+      "venueId": "tashkent-osm-relation-2712835",
+      "city": "tashkent",
+      "name": "Uzbekistan State University of World Languages",
+      "archetype": "campus-block",
+      "subject": "a long four-storey Soviet-style university block in cream render with a central entrance and flagpoles",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e0cfa4",
+          "#9a9a96",
+          "#f3efe2"
+        ],
+        "roofColour": "#6f8a73",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1992 (university); building older",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4469711",
+          "what": "university founded 1992, public"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2712835",
+          "what": "campus about 597 m by 225 m (measured)"
+        }
+      ],
+      "notes": "Large campus of several blocks; one long block shown. Appearance typed."
+    },
+    "tashkent-osm-relation-6805138": {
+      "venueId": "tashkent-osm-relation-6805138",
+      "city": "tashkent",
+      "name": "Lokomotiv Stadium",
+      "archetype": "stadium",
+      "subject": "the mid-sized Lokomotiv football stadium with a covered main stand, open ends and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9bcc0",
+          "#2e6fb0",
+          "#f0f0ee"
+        ],
+        "roofColour": "#8b8f93",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand cover, typed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q770707",
+          "what": "Lokomotiv Stadium, stadium; dated 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6805138",
+          "what": "footprint about 160 m by 132 m (measured)"
+        }
+      ],
+      "notes": "Real stadium with measured outline, but roof arrangement and colours are not described anywhere found; typed. Smaller than the national stadium."
+    },
+    "tashkent-osm-relation-9423158": {
+      "venueId": "tashkent-osm-relation-9423158",
+      "city": "tashkent",
+      "name": "Public Security University (Tashkent Higher Military Technical School)",
+      "archetype": "campus-block",
+      "subject": "a barracks-style four-storey academy block with parade ground, flagpoles and a guarded gatehouse",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#d7c9a5",
+          "#a5623f",
+          "#efe9d8"
+        ],
+        "roofColour": "#6e7568",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4453002",
+          "what": "university record"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9423158",
+          "what": "campus about 862 m by 413 m, 277,132 m2 (measured)"
+        }
+      ],
+      "notes": "Huge compound; one block shown. Appearance typed as a military-institute block."
+    },
+    "tashkent-osm-way-107158839": {
+      "venueId": "tashkent-osm-way-107158839",
+      "city": "tashkent",
+      "name": "Kugaittepa",
+      "archetype": "heritage-fort",
+      "subject": "a small eroded earthen archaeological mound of an ancient settlement with sparse grass on top",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 44,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "tepa-mound"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#b49a74",
+          "#9c8460",
+          "#cdbb98"
+        ],
+        "roofColour": "#b49a74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "eroded earthen bank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ancient",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q122672869",
+          "what": "archaeological site"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/107158839",
+          "what": "site outline 44 m by 30 m (measured)"
+        }
+      ],
+      "notes": "Only that it is an archaeological mound is known. Height is a guess."
+    },
+    "tashkent-osm-way-1213517675": {
+      "venueId": "tashkent-osm-way-1213517675",
+      "city": "tashkent",
+      "name": "Khabadtepa (OSM: Xonobodtepa)",
+      "archetype": "heritage-fort",
+      "subject": "a longer low earthen mound with a flat top and grassy banks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "tepa-mound"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#a89268",
+          "#8f7b55",
+          "#c2b08a"
+        ],
+        "roofColour": "#a89268",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "eroded earthen banks"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ancient",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q25524412",
+          "what": "archaeological site Xonobodtepa"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1213517675",
+          "what": "outline about 120 m by 71 m (measured)"
+        }
+      ],
+      "notes": "Venue name is Khabadtepa but the OSM way is tagged Xonobodtepa, assumed the same site. Larger and greener than Kugaittepa."
+    },
+    "tashkent-osm-way-143446111": {
+      "venueId": "tashkent-osm-way-143446111",
+      "city": "tashkent",
+      "name": "Kox Ota Mosque",
+      "archetype": "mosque-domed",
+      "subject": "a modern Friday mosque with a turquoise central dome and two slender minarets in pale stone",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 38,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e5d9be",
+          "#2f8f9d",
+          "#f6f2e6"
+        ],
+        "roofColour": "#2f8f9d",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "count typed"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "ganch panels"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q122672875",
+          "what": "Kox Ota Mosque, newer image 2023"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/143446111",
+          "what": "building:levels 3, Sunni jome mosque, footprint 38 m by 35 m (measured)"
+        }
+      ],
+      "notes": "Three levels and footprint measured. Dome, minaret count and colours are typed from the common Uzbek mosque pattern."
+    },
+    "tashkent-osm-way-173258737": {
+      "venueId": "tashkent-osm-way-173258737",
+      "city": "tashkent",
+      "name": "Milliy Stadium (formerly Bunyodkor Stadium)",
+      "archetype": "stadium",
+      "subject": "the oval two-tier national stadium (GMP, 2012) with a continuous ring roof, light-coloured facade and floodlighting built into the roof edge",
+      "form": {
+        "footprint": "oval",
+        "width_m": 218,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "two-tier-bowl"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2e4e6",
+          "#3a7bbf",
+          "#c5c9cd"
+        ],
+        "roofColour": "#dfe3e6",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1,
+          "note": "integrated lighting, 3000 lux"
+        },
+        {
+          "id": "scoreboard",
+          "count": 2,
+          "note": "two large monitors"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bunyodkor_Stadium",
+          "what": "about 34,000 seats, two tiers, 50+ sectors, 105x68 m pitch, GMP architects, opened 2012, renamed Milliy 2018, facade lighting"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2413405",
+          "what": "height 24 m, footprint 218 m by 180 m (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2817374",
+          "what": "architect GMP"
+        }
+      ],
+      "notes": "Footprint, height, capacity and architect are sourced. Ring-roof, cladding and colours are inferred from the architect and general photos (not in the text). Clamp 218 m to 120 m scene by showing a section of the bowl."
+    },
+    "tashkent-osm-way-325125766": {
+      "venueId": "tashkent-osm-way-325125766",
+      "city": "tashkent",
+      "name": "Tashkent Tower (TV Tower)",
+      "archetype": "monument",
+      "subject": "the 375 m Tashkent TV tower: a tapering grey concrete shaft with observation and technical pods and a steel antenna on top, on a broad splayed base",
+      "form": {
+        "footprint": "round",
+        "width_m": 45,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 375,
+        "roof": "none",
+        "variant": "tv-tower"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c7c2",
+          "#9aa0a6",
+          "#e8e8e6"
+        ],
+        "roofColour": "#8a9096",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "steel antenna spire, total height 375 m"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "observation deck at 97 m"
+        },
+        {
+          "id": "pilotis",
+          "count": 3,
+          "note": "splayed supports at the base, typed from photos"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1978-1984, opened 1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tashkent_Tower",
+          "what": "375 m, steel cantilever structure per article, observation deck at 97 m, built 1978-84, architects Semashko and Terziev-Tsarukov, three lifts"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q868874",
+          "what": "structure record"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/325125766",
+          "what": "outbuilding complex 101 m by 83 m (measured)"
+        }
+      ],
+      "notes": "Height 375 m and the 97 m deck are sourced. Model the lower portion (clamped to the scene) with the deck and splayed legs; the tapering shaft and mast should fade out. Colours and base details are from memory of photos."
+    },
+    "tashkent-osm-way-394577950": {
+      "venueId": "tashkent-osm-way-394577950",
+      "city": "tashkent",
+      "name": "Kulaktepa (Quloqtepa)",
+      "archetype": "heritage-fort",
+      "subject": "a roughly round earthen settlement mound with grass and a faint rampart ring",
+      "form": {
+        "footprint": "round",
+        "width_m": 63,
+        "depth_m": 62,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "tepa-mound"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#b3a07a",
+          "#8f7b55",
+          "#c8b995"
+        ],
+        "roofColour": "#b3a07a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ancient",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q122671679",
+          "what": "archaeological site (gorodishche)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/394577950",
+          "what": "outline 63 m by 62 m (measured)"
+        }
+      ],
+      "notes": "Round outline measured; height typed. Rounder than the other two tepa mounds."
+    },
+    "tashkent-osm-way-749136173": {
+      "venueId": "tashkent-osm-way-749136173",
+      "city": "tashkent",
+      "name": "Tashkent City Park",
+      "archetype": "park-landscape",
+      "subject": "the modern Tashkent City Park: broad paved promenades, a very large fountain, pavilions and clipped trees, with glass towers rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 455,
+        "depth_m": 417,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e2d0",
+          "#4a8bb8",
+          "#9a9a96"
+        ],
+        "roofColour": "#e9e2d0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "largest fountain in Uzbekistan"
+        },
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tashkent_City",
+          "what": "park 186,804 m2, largest recreational park in Uzbekistan, largest fountain in Uzbekistan, towers 75-128 m around it"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q74002463",
+          "what": "urban park, inception 2019"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/749136173",
+          "what": "park outline about 455 m by 417 m (measured)"
+        }
+      ],
+      "notes": "Size, fountain and date sourced; pavilion/promenade layout typed. Show a section (fountain and pavilions) within the 120 m clamp."
+    },
+    "tashkent-osm-way-89407157": {
+      "venueId": "tashkent-osm-way-89407157",
+      "city": "tashkent",
+      "name": "Tashkent State Transport University",
+      "archetype": "campus-block",
+      "subject": "a long five-storey Soviet-era faculty building with a central columned entrance and a rail-themed forecourt",
+      "form": {
+        "footprint": "T",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a4",
+          "#8b8f93",
+          "#efe9d8"
+        ],
+        "roofColour": "#8b8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1931",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1822284",
+          "what": "university founded 1931"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/89407157",
+          "what": "campus about 939 m by 540 m (measured)"
+        }
+      ],
+      "notes": "Large campus; shown as one main block. Appearance typed from Soviet university pattern."
+    },
+    "tashkent-osm-way-908354621": {
+      "venueId": "tashkent-osm-way-908354621",
+      "city": "tashkent",
+      "name": "Victory Park Memorial Complex",
+      "archetype": "park-landscape",
+      "subject": "the Victory Park memorial: a grassed man-made mound containing the Museum of Glory, a central mother-figure monument, an entrance arch and flag-lined paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 609,
+        "depth_m": 399,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "memorial-mound"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "marble",
+        "colours": [
+          "#e9e2d0",
+          "#4f7a3a",
+          "#b9a98a"
+        ],
+        "roofColour": "#6f8a73",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Ode to Fortitude monument to a mother who lost five sons"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "entrance arch, details not sourced"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "museum pavilion built into a mound"
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 12
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victory_Park,_Tashkent",
+          "what": "opened 9 May 2020; Museum of Glory built as a man-made mound; Ode to Fortitude monument to Zulfiya Zakirova; entrance arch; Tree of Peace"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q96413986",
+          "what": "Victory Park record"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/908354621",
+          "what": "outline about 609 m by 399 m (measured)"
+        }
+      ],
+      "notes": "Show the mound with museum entrance and the central monument within the clamp. Fountain count is typed."
+    },
+    "tashkent-osm-way-982206779": {
+      "venueId": "tashkent-osm-way-982206779",
+      "city": "tashkent",
+      "name": "Rakat Mosque",
+      "archetype": "mosque-domed",
+      "subject": "a large multi-level Friday mosque with a big turquoise dome, tall paired minarets and a pale stone facade with a pointed portal",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 71,
+        "depth_m": 59,
+        "storeys": 5,
+        "height_m": 30,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "tile-cladding",
+        "colours": [
+          "#ece1c6",
+          "#1f8a9c",
+          "#f6f2e6"
+        ],
+        "roofColour": "#1f8a9c",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "count typed"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q130599794",
+          "what": "Rakat Mosque, mosque in Tashkent"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/982206779",
+          "what": "building:levels 5, footprint 71 m by 59 m (measured)"
+        }
+      ],
+      "notes": "Five levels and 71 x 59 m measured. Dome and minaret layout typed from Uzbek mosque practice. Larger and taller than Kox Ota."
+    },
+    "tashkent-quiet-reflection": {
+      "venueId": "tashkent-quiet-reflection",
+      "city": "tashkent",
+      "name": "Church of the Holy Equal-to-the-Apostles Grand Duke Vladimir",
+      "archetype": "church-classical",
+      "subject": "a small white Russian Orthodox church with a gilded onion dome on a drum, a separate bell-tower gable and a blue-tinted roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 30,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f1ece0",
+          "#d8b34a",
+          "#8aa7c4"
+        ],
+        "roofColour": "#6f8aa8",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1,
+          "note": "gilded onion dome; count not verified"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th-21st century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/450922976",
+          "what": "building=church, footprint 30 m by 17 m (measured)"
+        }
+      ],
+      "notes": "Orthodox church dedicated to St Vladimir at the venue point. Look is typed from Russian Orthodox norms (no matching enum style)."
+    },
+    "tashkent-recreation": {
+      "venueId": "tashkent-recreation",
+      "city": "tashkent",
+      "name": "\"Yangi Uzbekistan\" Park",
+      "archetype": "park-landscape",
+      "subject": "a large new landscaped park with lawns, ornamental ponds, young trees and a small pavilion building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 250,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e9e2d0",
+          "#5a8f4a",
+          "#9a9a96"
+        ],
+        "roofColour": "#8b8f93",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1469910241",
+          "what": "small park building 10.7 m by 5.5 m (measured)"
+        }
+      ],
+      "notes": "Only a small pavilion footprint is measured; park layout is typed. Greener and less paved than Tashkent City Park."
+    },
+    "tashkent-transit": {
+      "venueId": "tashkent-transit",
+      "city": "tashkent",
+      "name": "Novza (Hamza) Metro Station",
+      "archetype": "transport-station",
+      "subject": "a long Soviet-era Chilanzar-line metro station with a curved roof canopy over two tracks and a metro bridge approaching it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "curved",
+        "variant": "metro-surface"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdbab2",
+          "#5f87a6",
+          "#e9e2d0"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "station decorative panel, typed"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1977",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4495260",
+          "what": "Novza (metro station), opened 1977, formerly Khamza"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tashkent_Metro",
+          "what": "metro bridge over the Oqtepa channel between Novza and Milliy Bog; stations themed with metal, glass, granite, marble, ceramics; Novza also a depot"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1456526444",
+          "what": "station outline about 151 m by 21 m (measured)"
+        }
+      ],
+      "notes": "Long thin 151 x 21 m outline measured; whether the station is surface, elevated or covered is not confirmed. Typed as a canopy-covered surface station."
+    }
+  }
+}

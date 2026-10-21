@@ -1,0 +1,1501 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "san-marino",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "san-marino",
+    "climate": "temperate",
+    "vernacular": "Hill-country microstate on Monte Titano: the old town is built of pale grey-beige local limestone and sandstone with narrow cobbled lanes, medieval walls, towers and crenellated palaces under terracotta tile roofs. The lowland (Serravalle, Dogana, Domagnano) is Italian-style modern: two to five storey render and concrete blocks in cream, ochre and grey with clay-tile or flat roofs, shopping centres and sports grounds.",
+    "wallColours": [
+      "#c9b99a",
+      "#bfb39a",
+      "#e6dcc4",
+      "#eee8da",
+      "#c5c0b6",
+      "#d8cdb5"
+    ],
+    "roofColours": [
+      "#a85c3c",
+      "#8e4a33",
+      "#6e6a64"
+    ],
+    "wallMaterials": [
+      "stone",
+      "limestone",
+      "sandstone",
+      "render",
+      "stucco",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "cobble",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Battlements (merlons) on corbels, slender towers on the crag, pointed Gothic-revival windows on the Palazzo Pubblico, neoclassical Corinthian columns and pediment on the Basilica, flags and the three-feather coat of arms, blue and white national colours on signs and seats.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Palazzo_Pubblico_(San_Marino)",
+        "what": "crenellated corbelled Gothic-revival palace, clock tower, 1884-94"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Guaita",
+        "what": "double-walled medieval fortress on Monte Titano with battlements and tiled sloping roof"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/San_Marino",
+        "what": "hilly landlocked enclave, Monte Titano 749 m, nine castelli, humid climate with snow in winter"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Basilica_di_San_Marino",
+        "what": "neoclassical Corinthian basilica 1826-38"
+      }
+    ]
+  },
+  "places": {
+    "san-marino-airport-san-marino-airport": {
+      "venueId": "san-marino-airport-san-marino-airport",
+      "city": "san-marino",
+      "name": "Torraccia Airfield",
+      "archetype": "airport-terminal",
+      "subject": "the Aeroclub San Marino clubhouse and hangar beside the 650 m grass runway at Torraccia",
+      "form": {
+        "footprint": "L",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1,
+        "variant": "airstrip-clubhouse"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e4d6",
+          "#8a949c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "Aeroclub hangar"
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "H1 helipad listed for the airfield"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Torraccia_Airfield",
+          "what": "small GA aerodrome, one grass runway 650 m (16/34), Aeroclub hangar, structure opened 1985, helipad H1, 240 m elevation"
+        }
+      ],
+      "notes": "Not a real terminal: a small clubhouse plus hangar on a grass strip next to the Italian border. Walls and roof colours are assumed; only runway, hangar and helipad are sourced. Show the grass runway as the site."
+    },
+    "san-marino-clinic": {
+      "venueId": "san-marino-clinic",
+      "city": "san-marino",
+      "name": "Ospedale di Stato - Istituto per la Sicurezza Sociale",
+      "archetype": "hospital",
+      "subject": "the state hospital at Cailungo: a modern multi-storey block with a covered ambulance entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 42,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e3da",
+          "#6f8fa8",
+          "#c8c4ba"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Size and storeys are estimates for a national hospital of a state of about 34,000 people."
+    },
+    "san-marino-community-notices": {
+      "venueId": "san-marino-community-notices",
+      "city": "san-marino",
+      "name": "Casa del Castello di Domagnano",
+      "archetype": "civic-small",
+      "subject": "the municipal house of Domagnano castle, a small stone-and-render town hall with a flag",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e1d3b3",
+          "#9c8a6c",
+          "#f1ebdc"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "assumed small civic belfry"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. San Marino castelli each have a Casa del Castello as local office; the clock-tower feature is an assumption and may be dropped."
+    },
+    "san-marino-community-voting-game": {
+      "venueId": "san-marino-community-voting-game",
+      "city": "san-marino",
+      "name": "Palazzo Pubblico",
+      "archetype": "civic-palace",
+      "subject": "the Palazzo Pubblico on Piazza della Liberta: a crenellated Gothic-revival town hall with a clock tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 19,
+        "roof": "gable",
+        "wings": 1,
+        "variant": "palazzo-vecchio-style"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#c4b69a",
+          "#8e7f66",
+          "#e8e0cc"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "battlements over a row of corbels"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tower rising above the main block, same battlements and corbels"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Statua della Liberta in the piazza"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched ground-floor doorway"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1884-1894",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palazzo_Pubblico_(San_Marino)",
+          "what": "Francesco Azzurri, built 1884-1894, resembles Palazzo Vecchio in Florence at smaller scale, battlements over corbels, clock tower, Gae Aulenti restoration 1996, Statua della Liberta in front"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Marino",
+          "what": "seat of government in the historic centre on Monte Titano"
+        }
+      ],
+      "notes": "Recognisable by its battlemented corbelled parapet and slim clock tower, mimicking Florence Palazzo Vecchio. Stone colour is inferred as pale grey-beige; width and height are estimates. The square in front is a paved piazza with the white Liberty statue."
+    },
+    "san-marino-community-workshop": {
+      "venueId": "san-marino-community-workshop",
+      "city": "san-marino",
+      "name": "Universita della Repubblica di San Marino",
+      "archetype": "campus-block",
+      "subject": "the university seat in the historic centre: an old stone convent-style block around a small courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 45,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#cdbf9f",
+          "#a09074",
+          "#ece5d3"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.14
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "historic building, university since 1985",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_San_Marino",
+          "what": "university founded 1985, locations Citta di San Marino, Dogana, Montegiardino; photo of a central building"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. The article only confirms the university and a central building; the stone convent look is typical of the historic centre."
+    },
+    "san-marino-market-game": {
+      "venueId": "san-marino-market-game",
+      "city": "san-marino",
+      "name": "Azzurro",
+      "archetype": "shophouse",
+      "subject": "a small commercial shop unit in the Serravalle/Dogana area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5dcc6",
+          "#4a7fb0",
+          "#f3eee2"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Venue name is a bare business name; nothing was found."
+    },
+    "san-marino-meal-stop": {
+      "venueId": "san-marino-meal-stop",
+      "city": "san-marino",
+      "name": "Amici",
+      "archetype": "restaurant",
+      "subject": "a small trattoria-style restaurant in a modern low building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#eadfc4",
+          "#a85c3c",
+          "#f4efe3"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. "
+    },
+    "san-marino-osm-node-10718518174": {
+      "venueId": "san-marino-osm-node-10718518174",
+      "city": "san-marino",
+      "name": "Ci vediamo da Mario",
+      "archetype": "restaurant",
+      "subject": "a small village restaurant in the western hills of San Marino",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e3d6b8",
+          "#9c8a6c",
+          "#f2ecdd"
+        ],
+        "roofColour": "#8e4a33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. "
+    },
+    "san-marino-osm-node-11495475848": {
+      "venueId": "san-marino-osm-node-11495475848",
+      "city": "san-marino",
+      "name": "Dipartimento Scienze Umane",
+      "archetype": "campus-block",
+      "subject": "the Department of Human Sciences, a university department in an old stone building in the historic centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#cbbc9c",
+          "#a09074",
+          "#ece5d3"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Different from the other two university venues only by size and tint."
+    },
+    "san-marino-osm-node-12903309263": {
+      "venueId": "san-marino-osm-node-12903309263",
+      "city": "san-marino",
+      "name": "Street Bar",
+      "archetype": "restaurant",
+      "subject": "a roadside bar-cafe in a plain modern building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e0c9",
+          "#c0583a",
+          "#f4efe3"
+        ],
+        "roofColour": "#a8a49c",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. "
+    },
+    "san-marino-osm-node-5840181047": {
+      "venueId": "san-marino-osm-node-5840181047",
+      "city": "san-marino",
+      "name": "Universita degli studi",
+      "archetype": "campus-block",
+      "subject": "a university building at the edge of the historic centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#dccfae",
+          "#9c8a6c",
+          "#eee7d6"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_San_Marino",
+          "what": "university of the Republic, central building photographed 2016, founded 1985"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. "
+    },
+    "san-marino-osm-node-7194430374": {
+      "venueId": "san-marino-osm-node-7194430374",
+      "city": "san-marino",
+      "name": "Sanmarino Shinto Shrine",
+      "archetype": "shrine-small",
+      "subject": "a small Shinto shrine in the hills near Domagnano, a timber hall behind a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "shinto-haiden"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a47a52",
+          "#7a5535",
+          "#e8dcc0"
+        ],
+        "roofColour": "#6f6a64",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "torii-style gate assumed from the name"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Only the name was available; form is a generic small Shinto haiden with torii, an assumption."
+    },
+    "san-marino-osm-way-228380042": {
+      "venueId": "san-marino-osm-way-228380042",
+      "city": "san-marino",
+      "name": "Stadio Serravalle B",
+      "archetype": "stadium",
+      "subject": "the secondary pitch of the Serravalle sports complex with a small stand and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5c0b6",
+          "#7d7a74",
+          "#e6e3dc"
+        ],
+        "roofColour": "#6f7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small covered stand on one side"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Much smaller than the main San Marino Stadium next door; one stand only."
+    },
+    "san-marino-osm-way-32476612": {
+      "venueId": "san-marino-osm-way-32476612",
+      "city": "san-marino",
+      "name": "Centro Atlante",
+      "archetype": "mall",
+      "subject": "Centro Atlante, a modest two-level shopping centre in Serravalle with a big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d3c6",
+          "#4f7aa6",
+          "#f0ede5"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. "
+    },
+    "san-marino-osm-way-364803296": {
+      "venueId": "san-marino-osm-way-364803296",
+      "city": "san-marino",
+      "name": "Stadio di Baseball di Serravalle",
+      "archetype": "stadium",
+      "subject": "the Serravalle baseball ground: a diamond with a small roofed grandstand behind home plate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed",
+        "variant": "baseball-diamond"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5c0b6",
+          "#7d7a74",
+          "#e6e3dc"
+        ],
+        "roofColour": "#4f7aa6",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered grandstand behind home plate"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "outfield fence"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Baseball diamond layout is implied by the name; fan-shaped field rather than an oval."
+    },
+    "san-marino-osm-way-59305144": {
+      "venueId": "san-marino-osm-way-59305144",
+      "city": "san-marino",
+      "name": "Guaita Castle",
+      "archetype": "heritage-fort",
+      "subject": "the Guaita fortress on the Monte Titano crag: double stone walls with battlements, a keep and a bell tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "pyramidal",
+        "wings": 2,
+        "variant": "double-walled-keep"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#bfb39a",
+          "#8e7f66",
+          "#e1d9c4"
+        ],
+        "roofColour": "#a85c3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "outer wall battlements"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "double wall, outer with corner towers"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "inside the inner wall"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "staircase to upper gate"
+        },
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "national flag flown"
+        },
+        {
+          "id": "cannon",
+          "count": 2,
+          "note": "display cannon, assumed"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "11th century, rebuilt 15th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guaita",
+          "what": "11th-century oldest tower, double walls, outer wall with battlements and corner/gate towers, inner wall with bell tower and main keep (mastio), bertesca 1481, sloping roof added 16th century, on flag and coat of arms"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Three_Towers_of_San_Marino",
+          "what": "rebuilt in 15th century during war with Malatesta"
+        }
+      ],
+      "notes": "Place it on rock: the keep rises from the crag with an irregular enclosure. Stone colour (pale grey-beige limestone) is inferred; heights are estimates. The most recognisable of the three towers; it is the one on the national flag."
+    },
+    "san-marino-osm-way-59316453": {
+      "venueId": "san-marino-osm-way-59316453",
+      "city": "san-marino",
+      "name": "Santuario della Beata Vergine della Consolazione",
+      "archetype": "church-modern",
+      "subject": "the 1960s sanctuary church at Borgo Maggiore, a plain stone-faced modern church with a separate bell tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 38,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "gable",
+        "variant": "pilgrim-church"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#cfc4aa",
+          "#8c8576",
+          "#ebe5d6"
+        ],
+        "roofColour": "#7d7a74",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "free-standing campanile assumed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1964-1967",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Santuario_della_Beata_Vergine_della_Consolazione",
+          "what": "built 1964, consecrated 1967, Borgo Maggiore, Diocese of San Marino-Montefeltro (stub: no description)"
+        }
+      ],
+      "notes": "Only dates are confirmed. A citation hints at Giovanni Michelucci but the article does not credit him, so no architect is claimed. Form is a typed guess for a 1960s Italian pilgrimage church."
+    },
+    "san-marino-osm-way-59329675": {
+      "venueId": "san-marino-osm-way-59329675",
+      "city": "san-marino",
+      "name": "Torre del Montale",
+      "archetype": "heritage-fort",
+      "subject": "the Montale tower, the smallest of the three Monte Titano towers: a lone square stone tower with a high door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "none",
+        "variant": "prison-tower"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bfb39a",
+          "#8e7f66",
+          "#d9d0b9"
+        ],
+        "roofColour": "#8e7f66",
+        "windows": "punched",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "only entrance is a door about 7 m above ground, reached by a ladder or steps"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low enclosing wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "14th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Three_Towers_of_San_Marino",
+          "what": "third tower, 14th century, smallest summit, guards against Malatesta, used as a prison, only entrance a door about 7 m above ground, closed to the public"
+        }
+      ],
+      "notes": "Height, width and crenellation are estimates; the raised entrance door is the sourced recognisable detail. Shown as a small square tower on a wooded crest, quite different from the larger Guaita fortress."
+    },
+    "san-marino-osm-way-59329686": {
+      "venueId": "san-marino-osm-way-59329686",
+      "city": "san-marino",
+      "name": "De La Fratta Castle",
+      "archetype": "heritage-fort",
+      "subject": "the Cesta (Fratta) tower on the highest summit of Monte Titano: a tall stone tower within a low pentagonal curtain wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "summit-tower"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bcb097",
+          "#8a7d65",
+          "#ddd5c0"
+        ],
+        "roofColour": "#8e7f66",
+        "windows": "punched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "battlemented top"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low enclosing wall on the summit"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "13th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Three_Towers_of_San_Marino",
+          "what": "second tower (Cesta), 13th century on remains of Roman fort, highest summit, houses a museum of over 1,550 weapons since 1956"
+        }
+      ],
+      "notes": "Identification of this venue with the Cesta tower rests on the coordinates (on the Titano ridge) and the Fratta alternative name. Dimensions are estimates; keep it plainer and smaller than Guaita."
+    },
+    "san-marino-osm-way-59965584": {
+      "venueId": "san-marino-osm-way-59965584",
+      "city": "san-marino",
+      "name": "San Marino Stadium",
+      "archetype": "stadium",
+      "subject": "San Marino Stadium at Serravalle: a small all-seater football bowl with a roofed main stand and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 105,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c4ba",
+          "#3f6fa8",
+          "#eceae3"
+        ],
+        "roofColour": "#6f7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Marino_Stadium",
+          "what": "capacity up to 4,798 all-seater, opened 1969, grass pitch 103 x 67 m"
+        }
+      ],
+      "notes": "Stand layout, roof and light pylons are not described by the source and are typical for a 5,000-seat ground; the blue seat colour follows the national colours and is an assumption."
+    },
+    "san-marino-osm-way-614075300": {
+      "venueId": "san-marino-osm-way-614075300",
+      "city": "san-marino",
+      "name": "Parco Montelupo",
+      "archetype": "park-landscape",
+      "subject": "a community park at Montelupo with lawns, trees and a small sports area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#a85c3c",
+          "#f3eee2"
+        ],
+        "roofColour": "#a85c3c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small park shelter, assumed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. "
+    },
+    "san-marino-osm-way-770859631": {
+      "venueId": "san-marino-osm-way-770859631",
+      "city": "san-marino",
+      "name": "Parco Marino Nicolini 1° Maestro",
+      "archetype": "park-landscape",
+      "subject": "a small hillside public park named after a local figure, with lawn, paths and a few trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#a85c3c",
+          "#f3eee2"
+        ],
+        "roofColour": "#a85c3c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter, assumed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Smaller and greener than Parco Montelupo."
+    },
+    "san-marino-quiet-reflection": {
+      "venueId": "san-marino-quiet-reflection",
+      "city": "san-marino",
+      "name": "Basilica di San Marino",
+      "archetype": "church-classical",
+      "subject": "the neoclassical Basilica of San Marino: a six-column Corinthian portico under a pediment and a tall bell tower beside the nave",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "variant": "neoclassical-basilica"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#e6dfcd",
+          "#b8ab90",
+          "#f4f0e4"
+        ],
+        "roofColour": "#8c8a86",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "front porch of eight Corinthian columns, six across the front"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "columns along the portico"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square campanile beside the church"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Saint Marinus statue in front, assumed"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1826-1838",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilica_di_San_Marino",
+          "what": "Achille Serra design from 1807, built 1826-1838, neoclassical, front porch with eight Corinthian columns (six across), sixteen interior Corinthian columns, Latin inscription DIVO MARINO, basilica since 1926"
+        }
+      ],
+      "notes": "Pale stone, grey roof colours and the bell tower are not in the fetched article and are from general knowledge of the building; treat as medium for colours. Sits on a small paved piazza in the old town."
+    },
+    "san-marino-recreation": {
+      "venueId": "san-marino-recreation",
+      "city": "san-marino",
+      "name": "Parco delle Fontane Azzurre",
+      "archetype": "park-landscape",
+      "subject": "the Fontane Azzurre park: lawns and trees around a fountain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#a85c3c",
+          "#f3eee2"
+        ],
+        "roofColour": "#a85c3c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2,
+          "note": "blue-tinted fountains implied by the name"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "assumed"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Fountain feature is inferred from the name (Blue Fountains) only."
+    },
+    "san-marino-transit": {
+      "venueId": "san-marino-transit",
+      "city": "san-marino",
+      "name": "San Marino - Rimini",
+      "archetype": "transport-station",
+      "subject": "the bus terminal for the Rimini-San Marino coach line below the historic centre: bays under a long canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "bus-terminal"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcac0",
+          "#4f7aa6",
+          "#ebe8e0"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the San Marino city style and the place type. Venue is the Rimini coach link stop; real layout unknown."
+    }
+  }
+}

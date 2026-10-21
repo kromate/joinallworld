@@ -1,0 +1,1607 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "thimphu",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "thimphu",
+  "climate": "highland",
+  "vernacular": "Traditional Bhutanese architecture is mandated by regulation: whitewashed rammed-earth or masonry walls, multi-coloured painted timber frontages and windows with trefoil (arched) tops, small windows on lower floors and larger ones above, and gently sloping roofs in metal sheet, with red ochre bands under the eaves on monastic buildings. Buildings are mostly three storeys or lower. The city lies in a narrow valley at 2,300 m with blue pines on the slopes, prayer flags and mani walls.",
+  "wallColours": [
+   "#f1ede4",
+   "#e6dcc4",
+   "#b59a78",
+   "#a8452d",
+   "#d9a93a",
+   "#3b6e8f"
+  ],
+  "roofColours": [
+   "#8b4a3a",
+   "#6e7a5a",
+   "#7f8a92",
+   "#c9a23a"
+  ],
+  "wallMaterials": [
+   "whitewash",
+   "render",
+   "stone",
+   "timber",
+   "painted-render",
+   "concrete"
+  ],
+  "roofMaterials": [
+   "metal-sheet",
+   "corrugated",
+   "timber-shingle",
+   "gold-leaf"
+  ],
+  "ground": "paving",
+  "vegetation": [
+   "conifer",
+   "broadleaf"
+  ],
+  "ornament": "Painted wooden window frames with trefoil arched tops, multi-coloured timber frontages with dragon, lotus and cloud motifs, red ochre band with gold roundels below the eaves, gilded finials on roof corners, prayer wheels (mani), prayer flags on poles and chorten shapes.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Architecture_of_Bhutan",
+    "what": "Dzongs and everyday buildings: rammed earth with lime wash, small lower windows with trefoil motifs, steeply sloped roofs of shingle shifting to metal, red upper-wall stripes and gilded copper roofs, 1998 decree requiring multicoloured wood frontages and small arched windows"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Thimphu",
+    "what": "By regulation all buildings are in traditional style with Buddhist paintings and motifs; narrow valley along the Wang Chhu with conifers, prayer flags and mani walls"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Dzong_architecture",
+    "what": "High inward-sloping white walls of brick and stone, broad red ochre band, flared roofs now mostly corrugated iron, central tower"
+   }
+  ]
+ },
+ "places": {
+  "thimphu-airport-thimphu-airport": {
+   "venueId": "thimphu-airport-thimphu-airport",
+   "city": "thimphu",
+   "name": "Paro International Airport",
+   "archetype": "airport-terminal",
+   "subject": "The single Paro terminal building (commissioned 1999) in a deep valley beside the Paro Chhu: a long low building with sloping roofs and painted frontage, mountains behind",
+   "form": {
+    "footprint": "rect",
+    "width_m": 270,
+    "depth_m": 60,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#3b6e8f"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "control-tower",
+     "count": 1
+    },
+    {
+     "id": "jet-bridge",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "1999 (terminal); interior revamped 2022",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Paro_Airport",
+     "what": "Single terminal building commissioned 1999, 2,265 m runway at 2,235 m altitude in a deep valley beside the Paro Chhu; interior revamp 2022; architecture not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q44877",
+     "what": "airport identity; OSM building 270 m x 64 m"
+    }
+   ],
+   "notes": "Appearance is not described in the sources found. Typed from the national traditional-style rule (white walls, painted wood trim, sloping roof). The OSM footprint probably includes the terminal and attached blocks; clamped to 120 m."
+  },
+  "thimphu-clinic": {
+   "venueId": "thimphu-clinic",
+   "city": "thimphu",
+   "name": "Jigme Dorji Wangchuck National Referral Hospital",
+   "archetype": "hospital",
+   "subject": "The national hospital: low-to-mid-rise ward blocks (3-4 storeys) in white render with painted timber window frames and sloping metal roofs",
+   "form": {
+    "footprint": "H",
+    "width_m": 90,
+    "depth_m": 30,
+    "storeys": 4,
+    "height_m": 16,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#3b6e8f"
+    ],
+    "roofColour": "#6e7a5a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "1972-74 (original); new 350-bed hospital 2000s",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Jigme_Dorji_Wangchuck_National_Referral_Hospital",
+     "what": "Founded 1972/74; replacement 350-bed hospital funded partly by Japan, lab, quarters and compound wall finished by 2002, delays to 2007; no architecture described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q4314988",
+     "what": "OSM campus 265 m x 194 m"
+    }
+   ],
+   "notes": "Form typed from the Thimphu traditional-style rule (storeys and roofs). Roof colour is a green metal-sheet guess."
+  },
+  "thimphu-community-notices": {
+   "venueId": "thimphu-community-notices",
+   "city": "thimphu",
+   "name": "Kabesa Gewog Centre",
+   "archetype": "civic-small",
+   "subject": "A village gewog office (16 m by 11 m): a two-storey whitewashed building with a wood-framed upper floor and a sloped metal roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 16,
+    "depth_m": 11,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#d9a93a"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Architecture_of_Bhutan",
+     "what": "Used for the typical rural public building: whitewashed rammed earth, painted timber windows, sloped roofs"
+    },
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 16 m x 11.4 m; no further facts"
+    }
+   ],
+   "notes": "Nothing was published about this office; typed from the national style."
+  },
+  "thimphu-community-voting-game": {
+   "venueId": "thimphu-community-voting-game",
+   "city": "thimphu",
+   "name": "Clock Tower Square",
+   "archetype": "monument",
+   "subject": "The Thimphu clock tower: a Bhutanese-style carved and painted tower with four clock faces, dragons in gold paint and flower carvings, in a plaza with fountains and prayer wheels, surrounded by three-storey shops",
+   "form": {
+    "footprint": "rect",
+    "width_m": 8,
+    "depth_m": 8,
+    "storeys": 3,
+    "height_m": 14,
+    "roof": "pyramidal"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "whitewash",
+    "colours": [
+     "#a8452d",
+     "#d9a93a",
+     "#3b6e8f"
+    ],
+    "roofColour": "#c9a23a",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "clock-tower",
+     "count": 1,
+     "note": "four clock faces, carved and painted"
+    },
+    {
+     "id": "fountain",
+     "count": 2
+    },
+    {
+     "id": "statue",
+     "count": 1,
+     "note": "prayer wheels on the plaza"
+    },
+    {
+     "id": "flags",
+     "count": 3
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "1980s (unconfirmed)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Clock_Tower_Square",
+     "what": "Typical Bhutanese design with rich carvings and paintings, four clock faces, golden dragon paintings, flower carvings; plaza with fountains and prayer wheels; surrounding shops, restaurants and hotels in three-storey multi-coloured wood frontages with small arched windows and sloping roofs"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q15210985",
+     "what": "OSM square 69 m x 57 m"
+    }
+   ],
+   "notes": "Tower height and width are estimates (not given in the source). Shown as the tower on a plaza; 3-storey painted-wood shops frame the square."
+  },
+  "thimphu-community-workshop": {
+   "venueId": "thimphu-community-workshop",
+   "city": "thimphu",
+   "name": "National Library of Bhutan",
+   "archetype": "campus-block",
+   "subject": "The main library building at Kawajangtsa: a four-storey eight-cornered traditional building resembling the central tower of a dzong, with a white-washed body, painted timber windows and a tiered sloping roof",
+   "form": {
+    "footprint": "round",
+    "width_m": 32,
+    "depth_m": 32,
+    "storeys": 4,
+    "height_m": 20,
+    "roof": "pyramidal"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#d9a93a"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 1,
+     "note": "tiered roof"
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "1984",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/National_Library_of_Bhutan",
+     "what": "Main building four-storey, eight-cornered traditional building resembling the central tower temple of a dzong; consecrated 23 Nov 1984; National Archives building completed 2004 (two storeys)"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2602355",
+     "what": "OSM complex 132 m x 62 m"
+    }
+   ],
+   "notes": "Colours are not stated; whitewash with a red-ochre band and painted timber is typed from dzong architecture. The OSM complex also includes the 2004 archives wing. The 32 m width is an estimate."
+  },
+  "thimphu-market-game": {
+   "venueId": "thimphu-market-game",
+   "city": "thimphu",
+   "name": "Canteen (Paro)",
+   "archetype": "shophouse",
+   "subject": "A tiny roadside canteen kiosk (9 m by 5 m): a one-storey painted-wood shop with a sloping metal roof and blank sign board",
+   "form": {
+    "footprint": "rect",
+    "width_m": 9,
+    "depth_m": 5,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "whitewash",
+    "colours": [
+     "#d9a93a",
+     "#a8452d",
+     "#f1ede4"
+    ],
+    "roofColour": "#7f8a92",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    },
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "kiosk",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 9.2 m x 5.3 m near Paro; no further information"
+    }
+   ],
+   "notes": "No data beyond the footprint; typed small kiosk."
+  },
+  "thimphu-meal-stop": {
+   "venueId": "thimphu-meal-stop",
+   "city": "thimphu",
+   "name": "Menchuna",
+   "archetype": "restaurant",
+   "subject": "A roadside restaurant (about 35 m by 25 m): a two-storey whitewashed building with painted timber balconies and a wide sloping metal roof",
+   "form": {
+    "footprint": "L",
+    "width_m": 35,
+    "depth_m": 25,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#3b6e8f"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 34.9 m x 25.5 m; no further information"
+    }
+   ],
+   "notes": "No source describes this place; typed from the national style as a roadside restaurant."
+  },
+  "thimphu-osm-node-10308083192": {
+   "venueId": "thimphu-osm-node-10308083192",
+   "city": "thimphu",
+   "name": "Jungshina Neighbourhood Vegetable Market",
+   "archetype": "market-open",
+   "subject": "A small neighbourhood vegetable market: a roofed open hall with vendor tables and sacks under a sloping metal roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 18,
+    "depth_m": 14,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "concrete",
+    "colours": [
+     "#c9b79a",
+     "#a8452d",
+     "#8f8b82"
+    ],
+    "roofColour": "#6e7a5a",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "stalls",
+     "count": 12
+    },
+    {
+     "id": "sheds",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 18.3 m x 13.9 m"
+    }
+   ],
+   "notes": "Typed from the market type; no other information."
+  },
+  "thimphu-osm-node-10756662149": {
+   "venueId": "thimphu-osm-node-10756662149",
+   "city": "thimphu",
+   "name": "E/G88 Restaurant and Bar",
+   "archetype": "restaurant",
+   "subject": "A very small restaurant and bar (10 m by 7 m): one-storey rendered shop front with painted wood trim and a sloping roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 10,
+    "depth_m": 7,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "painted-render",
+    "accent": "timber",
+    "colours": [
+     "#e6dcc4",
+     "#3b6e8f",
+     "#a8452d"
+    ],
+    "roofColour": "#7f8a92",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "shopfront",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    },
+    {
+     "id": "awning",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 10.1 m x 7.1 m"
+    }
+   ],
+   "notes": "Typed from the national style; only the footprint is known."
+  },
+  "thimphu-osm-node-11933012275": {
+   "venueId": "thimphu-osm-node-11933012275",
+   "city": "thimphu",
+   "name": "Kuen-thun Restaurant and Bar",
+   "archetype": "restaurant",
+   "subject": "A small roadside restaurant and bar (14 m by 11 m): a two-storey whitewashed house with a balcony and sloped roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 14,
+    "depth_m": 11,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#d9a93a",
+     "#a8452d"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    },
+    {
+     "id": "lock-ups",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 13.6 m x 11.4 m"
+    }
+   ],
+   "notes": "Typed from the national style; only the footprint is known."
+  },
+  "thimphu-osm-node-11936865369": {
+   "venueId": "thimphu-osm-node-11936865369",
+   "city": "thimphu",
+   "name": "International Office (IRO)",
+   "archetype": "office-low",
+   "subject": "A small college international-relations office (18 m by 16 m): two-storey whitewashed building with painted wooden windows and a hip roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 18,
+    "depth_m": 16,
+    "storeys": 2,
+    "height_m": 8,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#3b6e8f",
+     "#a8452d"
+    ],
+    "roofColour": "#7f8a92",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 18.2 m x 16.2 m"
+    }
+   ],
+   "notes": "Typed from the national style; only the footprint is known."
+  },
+  "thimphu-osm-node-6161406390": {
+   "venueId": "thimphu-osm-node-6161406390",
+   "city": "thimphu",
+   "name": "Norbuling Rigter College",
+   "archetype": "campus-block",
+   "subject": "A small Buddhist college building (20 m by 12 m) in the Paro valley: a two-storey whitewashed block with a red band and painted wooden windows",
+   "form": {
+    "footprint": "rect",
+    "width_m": 20,
+    "depth_m": 12,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#d9a93a"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building 19.9 m x 12 m near Paro"
+    }
+   ],
+   "notes": "No facts found; typed from dzong-style monastic school buildings."
+  },
+  "thimphu-osm-relation-2532733": {
+   "venueId": "thimphu-osm-relation-2532733",
+   "city": "thimphu",
+   "name": "Tashichho Dzong",
+   "archetype": "heritage-fort",
+   "subject": "Tashichho Dzong: a vast whitewashed fortress-monastery with a two-storey main block around courtyards, four three-storey corner towers each topped by a triple-tiered golden roof, and a tall central utse tower",
+   "form": {
+    "footprint": "ring",
+    "width_m": 225,
+    "depth_m": 111,
+    "storeys": 2,
+    "height_m": 12,
+    "roof": "hip",
+    "wings": 4
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f3efe6",
+     "#9c3b2a",
+     "#c9a03a"
+    ],
+    "roofColour": "#c9a03a",
+    "roofMaterial": "gold-leaf",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "pagoda-roof",
+     "count": 5,
+     "note": "four corner towers and the utse, triple-tiered gold roofs"
+    },
+    {
+     "id": "courtyard",
+     "count": 2
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "ramparts",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "1641 (original); rebuilt 1962-68",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Tashichho_Dzong",
+     "what": "Main structure whitewashed two-storey, four three-storey corner towers with triple-tiered golden roofs, large central tower (utse); rebuilt 1962-1968 under the third king; thirty temples, chapels and shrines"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Dzong_architecture",
+     "what": "Inward-sloping white brick-and-stone walls, broad red ochre band with gold roundels, flared roofs, stone-paved courtyards"
+    }
+   ],
+   "notes": "Recognisable from the white walls, red ochre band and gold roofs on the corner towers. Footprint 225 m by 111 m is the OSM measurement; clamp to 120 m. Wall height is an estimate."
+  },
+  "thimphu-osm-way-1380032231": {
+   "venueId": "thimphu-osm-way-1380032231",
+   "city": "thimphu",
+   "name": "Motithang Takin Preserve",
+   "archetype": "park-landscape",
+   "subject": "A 3.4 ha fenced forested hillside habitat for the takin (national animal) with a traditionally styled gate and small information centre",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 200,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "whitewash",
+    "colours": [
+     "#a8452d",
+     "#f1ede4",
+     "#d9a93a"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "traditionally styled entrance gate, 2004"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1,
+     "note": "fenced enclosure"
+    },
+    {
+     "id": "pavilion",
+     "count": 1,
+     "note": "information centre"
+    },
+    {
+     "id": "signage-board",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "vernacular",
+   "era": "2004 (gate and centre)",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Motithang_Takin_Preserve",
+     "what": "3.4 ha demarcated and fenced, enclosed forested habitat in Motithang, traditionally styled entrance gate and small information centre added 2004"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q5459703",
+     "what": "OSM zoo polygon 559 m x 229 m"
+    }
+   ],
+   "notes": "The habitat is steep conifer forest; show the painted gate and fence."
+  },
+  "thimphu-osm-way-1380056477": {
+   "venueId": "thimphu-osm-way-1380056477",
+   "city": "thimphu",
+   "name": "Anniversary Park",
+   "archetype": "park-landscape",
+   "subject": "A hillside park (about 300 m by 175 m) with grassy slopes, pine trees and a small pavilion",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 175,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "stone",
+    "colours": [
+     "#a8452d",
+     "#d9a93a",
+     "#8f8b82"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 3
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "park 304 m x 177 m; no further facts"
+    }
+   ],
+   "notes": "Typed generic park."
+  },
+  "thimphu-osm-way-187025042": {
+   "venueId": "thimphu-osm-way-187025042",
+   "city": "thimphu",
+   "name": "National Museum of Bhutan (Ta Dzong)",
+   "archetype": "heritage-fort",
+   "subject": "Ta Dzong in Paro, built 1649 as a watchtower and since 1968 the National Museum: a thick-walled whitewashed tower on a hill with a broad lower block",
+   "form": {
+    "footprint": "round",
+    "width_m": 40,
+    "depth_m": 36,
+    "storeys": 4,
+    "height_m": 22,
+    "roof": "pyramidal"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "stone",
+    "colours": [
+     "#f1ede4",
+     "#9c3b2a",
+     "#8f8b82"
+    ],
+    "roofColour": "#8b6a4a",
+    "windows": "punched",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "pinnacles",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "ramparts",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "1649-1651; museum 1968",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/National_Museum_of_Bhutan",
+     "what": "Built 1649, completed 1651 as an outpost and watch tower, renovated for the museum in 1968; physical form not described"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Dzong_architecture",
+     "what": "Dzong walls: white, inward-sloping, thick, few windows low down, red band"
+    }
+   ],
+   "notes": "Round tower form is from the usual photographs of Ta Dzong (not stated in the fetched text); the 22 m height and 4 storeys are estimates. The venue point is in Paro, not Thimphu city."
+  },
+  "thimphu-osm-way-217728797": {
+   "venueId": "thimphu-osm-way-217728797",
+   "city": "thimphu",
+   "name": "Royal Textile Academy",
+   "archetype": "museum-theatre",
+   "subject": "The Royal Textile Academy and museum (about 41 m by 37 m): a three-storey traditional building with whitewashed walls, painted wood balconies and a sloped roof",
+   "form": {
+    "footprint": "U",
+    "width_m": 41,
+    "depth_m": 37,
+    "storeys": 3,
+    "height_m": 12,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#d9a93a"
+    ],
+    "roofColour": "#6e7a5a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "2000s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Royal_Textile_Academy_of_Bhutan",
+     "what": "Non-profit centre for traditional weaving in Thimphu; building not described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q15273539",
+     "what": "OSM museum 41 m x 37 m"
+    }
+   ],
+   "notes": "Appearance typed from the national style."
+  },
+  "thimphu-osm-way-369953190": {
+   "venueId": "thimphu-osm-way-369953190",
+   "city": "thimphu",
+   "name": "Changlimithang Stadium",
+   "archetype": "stadium",
+   "subject": "The national stadium, rebuilt in 2008: a football pitch (102 m by 69 m, artificial turf) with a 21-row stand beside the pitch and the archery range, a royal pavilion and floodlights, at 2,300 m",
+   "form": {
+    "footprint": "rect",
+    "width_m": 255,
+    "depth_m": 122,
+    "storeys": 3,
+    "height_m": 14,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "timber",
+    "colours": [
+     "#c4c0b6",
+     "#a8452d",
+     "#8f8b82"
+    ],
+    "roofColour": "#8f8b82",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "floodlights",
+     "count": 4,
+     "note": "added 2011"
+    },
+    {
+     "id": "pavilion",
+     "count": 1,
+     "note": "expanded royal pavilion"
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "1974; rebuilt 2007-2008",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Changlimithang_Stadium",
+     "what": "Capacity 15,000, 21-row stand beside pitch and archery range, VIP stand, expanded royal pavilion and banquet hall, floodlights 2011, artificial turf 2012, pitch 102.4 x 69.4 m, 2,300 m"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q1062074",
+     "what": "OSM 256 m x 123 m"
+    }
+   ],
+   "notes": "No roof mentioned in the source; shown open. Smaller and flatter than the larger stadia in other cities."
+  },
+  "thimphu-osm-way-431787600": {
+   "venueId": "thimphu-osm-way-431787600",
+   "city": "thimphu",
+   "name": "Royal Institute of Management",
+   "archetype": "campus-block",
+   "subject": "A management college block (about 76 m by 59 m): a three-storey whitewashed building around a courtyard with painted wooden windows and a hip roof",
+   "form": {
+    "footprint": "U",
+    "width_m": 76,
+    "depth_m": 59,
+    "storeys": 3,
+    "height_m": 13,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#3b6e8f",
+     "#a8452d"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q102223727",
+     "what": "OSM building=university, 75.7 m x 59 m"
+    }
+   ],
+   "notes": "Typed from the national style."
+  },
+  "thimphu-osm-way-435186557": {
+   "venueId": "thimphu-osm-way-435186557",
+   "city": "thimphu",
+   "name": "National Traditional Medicine Hospital",
+   "archetype": "hospital",
+   "subject": "The traditional-medicine hospital (46 m by 29 m): a three-storey whitewashed building in traditional style with painted wooden frontage and a sloping roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 46,
+    "depth_m": 29,
+    "storeys": 3,
+    "height_m": 12,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#d9a93a"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "1979 (institute, unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q4201619",
+     "what": "OSM building=hospital, 46 m x 29 m"
+    }
+   ],
+   "notes": "Typed from the national traditional-style rule and its purpose."
+  },
+  "thimphu-osm-way-541766925": {
+   "venueId": "thimphu-osm-way-541766925",
+   "city": "thimphu",
+   "name": "Chamgang BHU",
+   "archetype": "hospital",
+   "subject": "A small basic health unit (24 m by 9 m): a one-storey whitewashed clinic with a green sloping metal roof",
+   "form": {
+    "footprint": "rect",
+    "width_m": 24,
+    "depth_m": 9,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "gable"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#3b6e8f",
+     "#a8452d"
+    ],
+    "roofColour": "#6e7a5a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "building=hospital 23.6 m x 8.6 m"
+    }
+   ],
+   "notes": "No information; typed small clinic."
+  },
+  "thimphu-osm-way-663910123": {
+   "venueId": "thimphu-osm-way-663910123",
+   "city": "thimphu",
+   "name": "National Memorial Chorten",
+   "archetype": "temple-asian",
+   "subject": "The Memorial Chorten: a 33 m (108 ft) white Tibetan-style stupa flaring like a vase, topped with a gold spire, a smaller gold spire over the porch, four entrances, red prayer wheels and carved annexes in the four directions",
+   "form": {
+    "footprint": "round",
+    "width_m": 26,
+    "depth_m": 26,
+    "storeys": 4,
+    "height_m": 33,
+    "roof": "pyramidal"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f4f1ea",
+     "#d9a62b",
+     "#a33a28"
+    ],
+    "roofColour": "#d9a62b",
+    "windows": "none",
+    "windowRatio": 0.03
+   },
+   "features": [
+    {
+     "id": "stupa",
+     "count": 1
+    },
+    {
+     "id": "spire",
+     "count": 2,
+     "note": "large gold spire with sun-and-crescent, smaller one over the porch"
+    },
+    {
+     "id": "gate",
+     "count": 1,
+     "note": "slate-carved gate"
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "1974; renovated 2008",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Memorial_Chorten",
+     "what": "About 108 ft tall, white, rounded vase-shaped body, gold spire topped by crescent and sun, smaller gold spire over front porch, four entrances, red prayer wheels, three floors above ground floor, built 1974 and renovated 2008"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q864865",
+     "what": "OSM footprint 26 m x 26 m"
+    }
+   ],
+   "notes": "Recognisable from the white flared body and gold spire. Whitewash and gold-leaf colours are from the source."
+  },
+  "thimphu-quiet-reflection": {
+   "venueId": "thimphu-quiet-reflection",
+   "city": "thimphu",
+   "name": "Buddha Dordenma",
+   "archetype": "monument",
+   "subject": "The Buddha Dordenma, a 54 m gilded-bronze seated Buddha on a throne-hall base above Thimphu on the ruins of Kuensel Phodrang, with an interior of 100,000 smaller gilded statues",
+   "form": {
+    "footprint": "rect",
+    "width_m": 54,
+    "depth_m": 48,
+    "storeys": 6,
+    "height_m": 54,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "whitewash",
+    "colours": [
+     "#d6a52f",
+     "#e9e1cf",
+     "#a33a28"
+    ],
+    "roofColour": "#d6a52f",
+    "windows": "none",
+    "windowRatio": 0.05
+   },
+   "features": [
+    {
+     "id": "statue",
+     "count": 1,
+     "note": "54 m gilded bronze Buddha"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "terrace",
+     "count": 1
+    },
+    {
+     "id": "podium",
+     "count": 1,
+     "note": "meditation hall forming the throne"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "2015 (completed)",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Buddha_Dordenma_statue",
+     "what": "54 m tall, bronze gilded in gold, one of the largest Buddha statues, over 100,000 smaller gilded statues inside, meditation hall forms the throne, site on the ruins of Kuensel Phodrang, completed 25 Sept 2015"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q4097986",
+     "what": "OSM footprint 54 m x 48 m"
+    }
+   ],
+   "notes": "Always shown as a gold seated figure on a pale base; the hilltop is forested with conifers. Base height is an estimate."
+  },
+  "thimphu-recreation": {
+   "venueId": "thimphu-recreation",
+   "city": "thimphu",
+   "name": "Dangrina Recreational Park",
+   "archetype": "park-landscape",
+   "subject": "A recreation park (about 137 m by 107 m) with lawns, pine trees, paved paths and a prayer-flag pole",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 137,
+    "depth_m": 107,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "timber",
+    "accent": "stone",
+    "colours": [
+     "#a8452d",
+     "#d9a93a",
+     "#8f8b82"
+    ],
+    "roofColour": "#8b4a3a",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 6,
+     "note": "prayer flag poles"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "park 137 m x 106 m; no further facts"
+    }
+   ],
+   "notes": "Typed generic park."
+  },
+  "thimphu-transit": {
+   "venueId": "thimphu-transit",
+   "city": "thimphu",
+   "name": "City Bus Terminal",
+   "archetype": "transport-station",
+   "subject": "Thimphu city bus terminal (44 m by 20 m): a long two-storey painted-wood building with a platform canopy and bays for buses beside the clock tower area",
+   "form": {
+    "footprint": "rect",
+    "width_m": 44,
+    "depth_m": 20,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "hip"
+   },
+   "facade": {
+    "material": "whitewash",
+    "accent": "timber",
+    "colours": [
+     "#f1ede4",
+     "#a8452d",
+     "#3b6e8f"
+    ],
+    "roofColour": "#6e7a5a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "bus-bays",
+     "count": 6
+    },
+    {
+     "id": "platform-canopy",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank"
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "conifer",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "amenity 44 m x 20 m; no further facts"
+    }
+   ],
+   "notes": "Typed from the Thimphu traditional-style rule and the bus-terminal type."
+  }
+ }
+}

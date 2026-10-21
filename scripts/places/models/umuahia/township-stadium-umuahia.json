@@ -1,0 +1,287 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "township-stadium-umuahia",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/670739208",
+   "used": "name-matched stadium outline, about 143 m wide and 183 m long (long axis north-south): sets the bowl size and orientation"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json",
+   "used": "worn concrete bowl, one roofed main stand, terraced banks, two floodlight masts, scoreboard"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "rect": [
+     56,
+     90
+    ],
+    "height": 0.1,
+    "colour": "#6f9a4a"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 120,
+    "width": 70,
+    "lane_width": 6.5,
+    "pitch": false,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 78,
+    "startDeg": 150,
+    "endDeg": 210,
+    "rows": 16,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "facetDeg": 14,
+    "under": "solid",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#7a8a99",
+    "concreteColour": "#cfcac0",
+    "underColour": "#bdb8ae",
+    "canopy": {
+     "height": 1.0,
+     "depth": 14,
+     "thickness": 0.5,
+     "slopeDeg": 3,
+     "colour": "#8a8d90",
+     "edgeColour": "#6b6f73"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 78,
+    "startDeg": -35,
+    "endDeg": 35,
+    "rows": 8,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 0.6,
+    "facetDeg": 10,
+    "under": "open",
+    "slab": 0.4,
+    "seatColour": "#cfcac0",
+    "concreteColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 78,
+    "startDeg": 55,
+    "endDeg": 125,
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 0.5,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.4,
+    "seatColour": "#cfcac0",
+    "concreteColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 60,
+    "radiusY": 78,
+    "startDeg": 235,
+    "endDeg": 305,
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.9,
+    "firstHeight": 0.5,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.4,
+    "seatColour": "#cfcac0",
+    "concreteColour": "#cfcac0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    -74,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    74,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0
+   ],
+   "at": [
+    56,
+    -74,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "lod": [
+    0
+   ],
+   "at": [
+    -56,
+    74,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    80,
+    2
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "post_height": 2.4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -76,
+    -60,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    78,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; bowl size and orientation from the OSM outline, stand layout and the main-stand side are assumed from the brief."
+ }
+}

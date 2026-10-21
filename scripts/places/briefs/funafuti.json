@@ -1,0 +1,1076 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "funafuti",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "funafuti",
+    "climate": "tropical-maritime",
+    "vernacular": "Low coral-atoll town on a strip of land 20-400 m wide: one- and two-storey cement-block buildings, rendered or whitewashed and often left bare grey, under corrugated metal roofs in red, green or grey; a few traditional palm-thatch open-sided maneapa meeting houses; coral-gravel and sand ground, coconut palms and pandanus, with no high-rise.",
+    "wallColours": [
+      "#e9e5d8",
+      "#cfc8b4",
+      "#a9c3cc",
+      "#d9c58f",
+      "#b8b3a6",
+      "#8fae8a"
+    ],
+    "roofColours": [
+      "#8f3a30",
+      "#7a838a",
+      "#3f7a5a",
+      "#b9bcbf"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "whitewash",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Few applied ornaments: open-sided maneapa with steep thatch or tin roof on heavy posts, woven pandanus mat patterns, church blue-and-white paintwork, hand-painted signboards; buildings are plain and storm-hardened (Cyclone Bebe 1972 destroyed about 90% of houses).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Funafuti",
+        "what": "atoll strip 20-400 m wide, traditional palm-frond homes, newer cement-block homes, maneapa meeting house, Funafuti Conservation Area, Princess Margaret Hospital the only hospital"
+      },
+      {
+        "url": "https://en.wikivoyage.org/wiki/Funafuti",
+        "what": "oval strip of land around lagoon, beaches of sharp broken coral, Vaiaku Lagi Hotel ~50 m from airport terminal"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tuvalu",
+        "what": "Polynesian atoll nation, cyclone-prone, coral-based islets"
+      }
+    ]
+  },
+  "places": {
+    "funafuti-airport-funafuti-airport": {
+      "venueId": "funafuti-airport-funafuti-airport",
+      "city": "funafuti",
+      "name": "Funafuti International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Funafuti International Airport terminal (new building opened 2018) beside the runway apron, a low single-storey block with a covered drop-off",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "small-island"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e5d8",
+          "#3f6f8f",
+          "#c9c9c4"
+        ],
+        "roofColour": "#8f3a30",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "airside fence"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Funafuti_International_Airport",
+          "what": "new international terminal opened 2018, terminal photographed next to a maneapa, single asphalt runway used as community space, 9 ft elevation"
+        },
+        {
+          "url": "https://en.wikivoyage.org/wiki/Funafuti",
+          "what": "oval strip of land around lagoon, beaches of sharp broken coral, Vaiaku Lagi Hotel ~50 m from airport terminal"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: terminal way 1213208124, about 51 x 24 m, 1,187 m2"
+        }
+      ],
+      "notes": "Footprint is measured (OSM terminal, 1,187 m2); the matched OSM terminal sits about 200 m from the venue pin. Wikipedia only says a new terminal opened in 2018 and shows it beside a traditional maneapa; colours, roof and canopy are typed. No jet bridges: passengers walk to the apron. The sealed runway doubles as community space, so keep the apron open and low."
+    },
+    "funafuti-clinic": {
+      "venueId": "funafuti-clinic",
+      "city": "funafuti",
+      "name": "Princess Margaret Hospital",
+      "archetype": "hospital",
+      "subject": "Princess Margaret Hospital, the only hospital in Tuvalu: a two-storey cement-block ward building with a red cross sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "small-ward",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e2d3",
+          "#6fa0b8",
+          "#bdb8aa"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "first-floor walkway"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Funafuti",
+          "what": "atoll strip 20-400 m wide, traditional palm-frond homes, newer cement-block homes, maneapa meeting house, Funafuti Conservation Area, Princess Margaret Hospital the only hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 133496395, 20.7 x 15.7 m, 2 levels, named Princess Margret Hospital"
+        }
+      ],
+      "notes": "Wikipedia confirms it is the only hospital in Tuvalu on Fongafale; OSM gives a small two-level main building. The look (rendered block, corrugated roof, rainwater tanks, walkway) is typed from Tuvaluan public buildings. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-community-notices": {
+      "venueId": "funafuti-community-notices",
+      "city": "funafuti",
+      "name": "Government of Tuvalu",
+      "archetype": "civic-palace",
+      "subject": "Government of Tuvalu offices in Vaiaku: a three-storey multi-wing block of rendered concrete, the largest administrative building on the atoll",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 71,
+        "depth_m": 51,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "multi-wing",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece7d9",
+          "#b8453a",
+          "#c9c5b8"
+        ],
+        "roofColour": "#8c9399",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Funafuti",
+          "what": "atoll strip 20-400 m wide, traditional palm-frond homes, newer cement-block homes, maneapa meeting house, Funafuti Conservation Area, Princess Margaret Hospital the only hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: relation 7456977, ~71 x 51 m, 3 levels, 3,013 m2, irregular multi-wing outline"
+        }
+      ],
+      "notes": "Parliament and government departments are on Fongafale (Wikipedia). OSM gives a three-level, ~3,000 m2 irregular footprint with several wings; facade colours and roof are typed. It is the biggest civic mass in Funafuti, so keep it clearly larger than the hospital and the church."
+    },
+    "funafuti-community-voting-game": {
+      "venueId": "funafuti-community-voting-game",
+      "city": "funafuti",
+      "name": "Partnership House",
+      "archetype": "office-low",
+      "subject": "Partnership House: a two-storey rectangular office building in Vaiaku",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e7e1cf",
+          "#7fa6b4",
+          "#bfbaa9"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 136839527, ~32 x 18 m, 2 levels, named Partnership House"
+        }
+      ],
+      "notes": "Only OSM size and levels are known. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-community-workshop": {
+      "venueId": "funafuti-community-workshop",
+      "city": "funafuti",
+      "name": "Muster Station / Parade Grounds (maritime training campus)",
+      "archetype": "campus-block",
+      "subject": "A small training-campus block with a muster/parade ground at the north end of the Funafuti atoll",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e2d3",
+          "#4f7fa3",
+          "#bdb8aa"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "flagpole on parade ground"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1990s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 1559314434, amenity=college, ~27 x 18 m"
+        }
+      ],
+      "notes": "OSM tags the building amenity=college with a muster-station name at the north end of the atoll (probably the maritime training institute site, an unverified inference). Single-storey with an open parade ground. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-market-game": {
+      "venueId": "funafuti-market-game",
+      "city": "funafuti",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A placeholder market spot: a small open shed with a few stalls on bare coral ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 17,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc8b4",
+          "#8f3a30",
+          "#b8b3a6"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder venue; the OSM building at the pin (17 x 11 m) is only used for scale. Typed from city style."
+    },
+    "funafuti-meal-stop": {
+      "venueId": "funafuti-meal-stop",
+      "city": "funafuti",
+      "name": "Fast Food Restaurant",
+      "archetype": "restaurant",
+      "subject": "A modest roadside fast-food shop in a one-storey block with a small veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5dcc0",
+          "#b8453a",
+          "#c9c5b8"
+        ],
+        "roofColour": "#8f3a30",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "counter hatch"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 136842132, ~18 x 16 m building under the pin"
+        }
+      ],
+      "notes": "Unnamed place on the venue pin; OSM supplies the footprint only. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-osm-node-12470543601": {
+      "venueId": "funafuti-osm-node-12470543601",
+      "city": "funafuti",
+      "name": "Joy Seafood Restaurant",
+      "archetype": "restaurant",
+      "subject": "Joy Seafood Restaurant: a long low one-storey eatery by the lagoon road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9e1c5",
+          "#3f7fa0",
+          "#c2bba8"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 928259972, ~21 x 11 m"
+        }
+      ],
+      "notes": "Only footprint is known. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-osm-node-13332937401": {
+      "venueId": "funafuti-osm-node-13332937401",
+      "city": "funafuti",
+      "name": "3 Ts Restaurant",
+      "archetype": "restaurant",
+      "subject": "3 Ts Restaurant: a small square one-storey restaurant with a hipped tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#dfe3d2",
+          "#c9534a",
+          "#bdb8aa"
+        ],
+        "roofColour": "#b44a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 654543384, ~13 x 12 m"
+        }
+      ],
+      "notes": "Only footprint is known; it is the smallest of the three restaurants so keep it visibly smaller. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-osm-node-13987101501": {
+      "venueId": "funafuti-osm-node-13987101501",
+      "city": "funafuti",
+      "name": "David's Drill (Royal Society expedition 1896)",
+      "archetype": "monument",
+      "subject": "Memorial site of the 1896 Royal Society boring expedition: a small plinth with a plaque beside a modest roofed shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 2.2,
+        "roof": "none",
+        "variant": "plaque-memorial",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#b8b3a6",
+          "#6f6a60",
+          "#d9d4c4"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low coral-stone border"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank plaque"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small open shelter, about 14 x 11 m"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1896 expedition, later memorial",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Funafuti",
+          "what": "the 1896-1898 Royal Society boreholes tested Darwin's theory of atoll formation (Wikipedia calls it Darwin's Drill)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 136829812, ~14 x 11 m building next to the point"
+        }
+      ],
+      "notes": "Wikipedia confirms the borehole history but no source describes the memorial itself, so the plinth and shelter are typed. The building at the pin (14 x 11 m) is probably a shelter or hut beside the drill site."
+    },
+    "funafuti-osm-node-13987101601": {
+      "venueId": "funafuti-osm-node-13987101601",
+      "city": "funafuti",
+      "name": "Conservation Area Tour Office",
+      "archetype": "office-low",
+      "subject": "Funafuti Conservation Area tour office: a small one-storey office in town; the conservation islets themselves lie 15 km across the lagoon",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e7e3d2",
+          "#3f8f7a",
+          "#c0baa8"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Funafuti_Conservation_Area",
+          "what": "six islets, 33 km2 of reef, lagoon and islets; no buildings described; administered by the Falekaupule"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 136819949, ~18 x 12 m"
+        }
+      ],
+      "notes": "No source describes the office. The Conservation Area is reached by boat from Fongafale; this venue is just an ordinary small office on the atoll, so do not model islets here. Only OSM measurements and the city style were available; no web source describes this building, so appearance is typed from the place type and Funafuti vernacular. Web search budget was exhausted during research."
+    },
+    "funafuti-osm-way-136840917": {
+      "venueId": "funafuti-osm-way-136840917",
+      "city": "funafuti",
+      "name": "Ahmadiyya Tuvalu Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Tuvalu Mosque in Vaiaku: a small rectangular prayer hall with a modest dome and a short minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "dome",
+        "variant": "small-ahmadiyya"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1efe6",
+          "#3f8a6a",
+          "#c9c5b8"
+        ],
+        "roofColour": "#dcdcd4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "short, about 9 m"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q110975287",
+          "what": "Tuvalu Mosque, mosque in Vaiaku, Funafuti (Ahmadiyya)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 136840917, ~17 x 11 m, 186 m2"
+        }
+      ],
+      "notes": "Measured footprint and denomination are from OSM/Wikidata (a photo exists on Commons but could not be read). Dome and minaret are an assumption for a small Ahmadiyya mosque; treat as typed. Tuvalu has the Pacific's first Ahmadiyya mosque and a very small Muslim community, so keep it modest."
+    },
+    "funafuti-osm-way-1560044520": {
+      "venueId": "funafuti-osm-way-1560044520",
+      "city": "funafuti",
+      "name": "Sickbay",
+      "archetype": "hospital",
+      "subject": "A tiny single-room sickbay hut attached to the muster-station campus on the north of the atoll",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9.5,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "gable",
+        "variant": "sickbay"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ebe7d9",
+          "#c9534a",
+          "#c0baa8"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 1560044520, ~9.5 x 5 m, 48 m2"
+        }
+      ],
+      "notes": "Tiny OSM building tagged amenity=hospital named SICKBAY; nothing else is findable. Typed from the type and city style."
+    },
+    "funafuti-quiet-reflection": {
+      "venueId": "funafuti-quiet-reflection",
+      "city": "funafuti",
+      "name": "Teone Church",
+      "archetype": "church-modern",
+      "subject": "Teone Church (Catholic, Vaiaku): a small pitched-roof hall church with a short bell gable, the main Catholic church of Tuvalu",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "hall-church"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ede2",
+          "#3f6fa8",
+          "#c6c1b2"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short open bell tower or gable"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "small Marian statue"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Teone_Church",
+          "what": "main Catholic church of Tuvalu, small, in Vaiaku on the south coast of Fongafale"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q24263069",
+          "what": "Teone Church, church in Vaiaku, Tuvalu, tourism attraction"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building footprint via scripts/places/data/facts/funafuti.json: way 133496185, ~24 x 17 m, 425 m2"
+        }
+      ],
+      "notes": "Wikipedia: the main Catholic church in Tuvalu, small in size, in Vaiaku on the south coast of Fongafale; the diocese dates from 1982. Colours and tower are typed. The nearby Morning Star (Ekalesia Kelisiano) church is the atoll's most prominent building, so this one should read smaller and plainer."
+    },
+    "funafuti-recreation": {
+      "venueId": "funafuti-recreation",
+      "city": "funafuti",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "A placeholder recreation spot: an open grassy and coral-sand field with a small shelter and a few palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#cfc8b4",
+          "#3f7a5a",
+          "#b8b3a6"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open shelter"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder venue; typed from city style. The OSM building at the pin is Edwin Food City (shop, 19 x 18 m), not a park."
+    },
+    "funafuti-transit": {
+      "venueId": "funafuti-transit",
+      "city": "funafuti",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A placeholder transit stop: a small open bus shelter beside the main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 7.5,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "shed",
+        "variant": "bus-shelter"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc8b4",
+          "#3f7a5a",
+          "#b8b3a6"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder venue; typed from city style. Funafuti has minibus and scooter traffic only on one road."
+    }
+  }
+}

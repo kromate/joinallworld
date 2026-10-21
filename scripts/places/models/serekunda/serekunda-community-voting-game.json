@@ -1,0 +1,99 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255612628",
+   "used": "town hall outline (24 x 13 m); the only photos found are Banjul children's hospital interiors, so form from the brief: whitewashed two-storey colonial hall, upper veranda, hip roof"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "bands": "#a9b9a6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a44",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "floors": 1,
+    "storeyHeight": 4.2,
+    "proud": 1.4,
+    "rail": true,
+    "colour": "#fbf9f3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 20,
+    "colour": "#3a6ea5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building; footprint plus brief only"
+ }
+}

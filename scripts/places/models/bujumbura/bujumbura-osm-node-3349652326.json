@@ -1,0 +1,133 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/122023293",
+   "used": "building outline of the block (about 47 x 31 m, near the university point)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey cream/yellow rendered block, hip roof in red corrugated sheet, flat covered entrance canopy"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1cf9a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#ece6d6",
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a35",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -3,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4.5,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#9b978f"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -29,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#b5322a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     28,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-3349652326",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this building (the only UGL photo is another campus block); outline from OSM, canopy/sign placement approximate, hip roof fitted to bounding rectangle"
+ }
+}

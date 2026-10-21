@@ -1,0 +1,1311 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kaduna",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kaduna",
+    "climate": "savanna",
+    "vernacular": "Colonial-planned northern capital (founded 1913 for the Northern Nigeria Protectorate) on the Kaduna River: wide avenues of broadleaf shade trees, Lugard-era government buildings with verandas and red-tiled or corrugated hipped roofs, 1960s-70s regional-government modernist blocks in concrete and cream render, dense Hausa neighbourhoods of mud-render and painted sandcrete compounds, and red laterite ground.",
+    "wallColours": [
+      "#e6dcc8",
+      "#d9c7a0",
+      "#c7b08a",
+      "#a4563f",
+      "#9a9a94",
+      "#f2efe6",
+      "#b88a5e"
+    ],
+    "roofColours": [
+      "#7a3f2f",
+      "#8a8f94",
+      "#5b6670",
+      "#a8472f",
+      "#4f6d58"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "red-brick",
+      "mud-render",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Colonial verandas on slender columns, shuttered or louvred windows and hipped roofs on government buildings; Hausa/Arewa relief patterns, pinnacled parapets and pointed arches on mosques and northern-regional buildings (Lugard Hall is described as echoing emirs' palaces); modernist concrete screens and brise-soleil on 1960s-70s blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kaduna",
+        "what": "founded by the British near the Lagos-Kano railway, Lugard Hall, Murtala Square racecourse/polo, tropical savanna Aw climate, ~250 m elevation"
+      },
+      {
+        "url": "https://kupi.com/en/explore/nigeria/kaduna/history",
+        "what": "colonial-era designs still visible in the government district (secondary travel source)"
+      },
+      {
+        "url": "https://kubanni.abu.edu.ng/handle/123456789/681",
+        "what": "Lugard Hall thesis: colonial architecture of Northern Nigeria and its preservation"
+      },
+      {
+        "url": "https://connectciti.com/listing/lugard-hall",
+        "what": "Lugard Hall 1914, resembles emirs' palaces, distinctive dome (commercial listing, cautious)"
+      }
+    ]
+  },
+  "places": {
+    "ahmadu-bello-stadium": {
+      "venueId": "ahmadu-bello-stadium",
+      "city": "kaduna",
+      "name": "Ahmadu Bello Stadium",
+      "archetype": "stadium",
+      "subject": "Ahmadu Bello Stadium: the 1965 Jane Drew and Maxwell Fry bowl with track around the pitch and concrete terraces on all sides, floodlight masts at the corners",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 185,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#bdb8ac",
+          "#7a8a6a",
+          "#d5d0c4"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand cover (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ahmadu_Bello_Stadium",
+          "what": "opened 1965, designed by Jane Drew and Maxwell Fry, 16,000 capacity, track and football; rehabilitation to 32,000 announced 2026"
+        }
+      ],
+      "notes": "Facts are from Wikipedia (1965, Drew and Fry, 16,000, track + football). Roof, terrace layout and colours are not documented; modelled as a modernist concrete bowl. Tropical-modernist (Drew and Fry) so use deep shade and concrete screens rather than a glossy roof."
+    },
+    "arewa-house-museum": {
+      "venueId": "arewa-house-museum",
+      "city": "kaduna",
+      "name": "Arewa House Museum",
+      "archetype": "manor",
+      "subject": "Arewa House: the colonial-era residence of the Sardauna of Sokoto (Premier of the Northern Region) at No. 1 Rabah Road, a large cream villa with a veranda inside a tree-filled garden, now a research centre and museum",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe8d6",
+          "#7a3f2f",
+          "#b9b09a"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "small monument in garden"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arewa_House",
+          "what": "No. 1 Rabah Road, former residence and office of the Northern premier, research centre since 1970, garden with natural and planted trees, second gate on Zaria Road, Marble Office and library"
+        }
+      ],
+      "notes": "Wikipedia confirms location, function and the tree-filled garden but gives no description of the house itself, so form, colours and age are a colonial-villa guess. Recognisable by tree-filled garden and a second gate; the complex has several outbuildings (Marble Office, library, galleries)."
+    },
+    "chechinya-market": {
+      "venueId": "chechinya-market",
+      "city": "kaduna",
+      "name": "Chechinya Market",
+      "archetype": "market-open",
+      "subject": "Chechinya Market: a large open trading ground of timber-and-corrugated stalls and lock-up rows with umbrella stalls on trodden red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9a98a",
+          "#8a8f94",
+          "#7a3f2f"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. "
+    },
+    "giwa-hospital": {
+      "venueId": "giwa-hospital",
+      "city": "kaduna",
+      "name": "Giwa Hospital",
+      "archetype": "hospital",
+      "subject": "Giwa Hospital: a 2-storey Kaduna general hospital with long ward wings, veranda corridors and a covered drop-off",
+      "form": {
+        "footprint": "H",
+        "width_m": 95,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#4f8f7a",
+          "#bdb7a6"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Real hospital; no description found."
+    },
+    "kaduna-government-house": {
+      "venueId": "kaduna-government-house",
+      "city": "kaduna",
+      "name": "Kaduna Government House",
+      "archetype": "civic-palace",
+      "subject": "Kaduna State Government House: a long, formal governor's residence and office complex behind a gated wall, with a colonnaded portico, hipped roof and a flagpole forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe6d0",
+          "#7a3f2f",
+          "#c9bfa5"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        },
+        {
+          "url": "https://connectciti.com/listing/lugard-hall",
+          "what": "nearby Lugard Hall resembles an emir's palace with a dome: used as local civic precedent"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Governor's residence of Kaduna; nothing found describing its exterior, so modelled on the colonial government-house type of the city."
+    },
+    "kaduna-polytechnic": {
+      "venueId": "kaduna-polytechnic",
+      "city": "kaduna",
+      "name": "Kaduna Polytechnic",
+      "archetype": "campus-block",
+      "subject": "Kaduna Polytechnic: a Tudun Wada campus of long 2-3 storey concrete teaching blocks with ribbon windows and shaded walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d9d3c4",
+          "#3a7a9a",
+          "#a8a29a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna_Polytechnic",
+          "what": "founded 1956 as Kaduna Technical Institute, Tudun Wada, main campus and a Statistics Department building shown (no description)"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Photo captions show a main campus and department blocks only. Built form is a typical post-colonial technical-institute block."
+    },
+    "kaduna-secretariat": {
+      "venueId": "kaduna-secretariat",
+      "city": "kaduna",
+      "name": "Kaduna Secretariat",
+      "archetype": "office-low",
+      "subject": "Kaduna Secretariat: a mid-rise state ministry block of about six storeys in grey-cream render with long ribbon windows and a projecting stair core",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 20,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d0c0",
+          "#8a8f94",
+          "#b0aa9c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 6
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Height and storey count assumed for the 1970s regional-government secretariat type."
+    },
+    "kaduna-state-university": {
+      "venueId": "kaduna-state-university",
+      "city": "kaduna",
+      "name": "Kaduna State University",
+      "archetype": "campus-block",
+      "subject": "Kaduna State University main campus on Maiduguri Road: a gated campus of 2-3 storey cream lecture blocks and a library with a glazed entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e0cb",
+          "#3a7a9a",
+          "#b9b3a3"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "library entrance"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna_State_University",
+          "what": "main campus on Maiduguri Road, main library entrance, university gate, multipurpose centre, CBN-funded department building: no descriptions"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Wikipedia captions mention a gate, library entrance and multipurpose centre only."
+    },
+    "kaduna-war-memorial-stone": {
+      "venueId": "kaduna-war-memorial-stone",
+      "city": "kaduna",
+      "name": "Kaduna 2nd World War Memorial Stone",
+      "archetype": "monument",
+      "subject": "Kaduna 2nd World War Memorial Stone: a small dressed-stone memorial block on a stepped plinth within a low railed lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#bdb6a6",
+          "#8a8379",
+          "#d6d0c0"
+        ],
+        "roofColour": "#bdb6a6",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "stone shaft (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1940s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. The existence is implied by the venue name; no description or photograph source was found. Modelled as a small stone cenotaph-style memorial with a plinth; treat shape as a placeholder."
+    },
+    "kawo-motor-park": {
+      "venueId": "kawo-motor-park",
+      "city": "kaduna",
+      "name": "Kawo Motor Park",
+      "archetype": "transport-station",
+      "subject": "Kawo Motor Park: a bus and taxi park of open bays and covered loading sheds with tickets kiosks and parked buses on bare earth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#8a8f94",
+          "#a8472f",
+          "#d6d0c0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. "
+    },
+    "love-garden": {
+      "venueId": "love-garden",
+      "city": "kaduna",
+      "name": "Love Garden",
+      "archetype": "park-landscape",
+      "subject": "Love Garden: a small public garden with lawns, shaded paths, a gazebo pavilion and a blank entrance gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e0cb",
+          "#7aa05a",
+          "#b4654a"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Name is the only known fact; modelled as a landscaped city garden with gazebos."
+    },
+    "mafzee-collection-and-spa": {
+      "venueId": "mafzee-collection-and-spa",
+      "city": "kaduna",
+      "name": "MAFZEE Collection and Spa",
+      "archetype": "shophouse",
+      "subject": "MAFZEE Collection and Spa: a small two-storey boutique and spa shopfront in cream render with a glass entrance and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d8",
+          "#6b3f6a",
+          "#c9bfa5"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Private business; nothing findable on its building, so typed as a small modern retail unit. No brand marks."
+    },
+    "national-museum-kaduna": {
+      "venueId": "national-museum-kaduna",
+      "city": "kaduna",
+      "name": "National Museum Kaduna",
+      "archetype": "museum-theatre",
+      "subject": "National Museum Kaduna: a two-storey cream exhibition building with a central entrance hall, flat-roofed gallery wings and a garden courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc8",
+          "#7a3f2f",
+          "#bfb9aa"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "sculpture in forecourt"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. The National Commission for Museums and Monuments site; building shape unconfirmed."
+    },
+    "neuro-psychiatric-hospital-barnawa": {
+      "venueId": "neuro-psychiatric-hospital-barnawa",
+      "city": "kaduna",
+      "name": "Federal Neuro-Psychiatric Hospital Barnawa",
+      "archetype": "hospital",
+      "subject": "Federal Neuro-Psychiatric Hospital Barnawa: a campus of low single-storey wards linked by covered walkways around garden courts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0cb",
+          "#4f8f7a",
+          "#bdb7a6"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 4
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Psychiatric hospitals are normally low pavilion wards; typed from that."
+    },
+    "st-johns-catholic-church": {
+      "venueId": "st-johns-catholic-church",
+      "city": "kaduna",
+      "name": "St Johns Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St John's Catholic Church: a parish church with a broad gabled nave, a freestanding bell tower and a rendered cream facade with a plain cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#efe8d6",
+          "#a24a32",
+          "#c8bfa8"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. "
+    },
+    "sultan-bello-mosque": {
+      "venueId": "sultan-bello-mosque",
+      "city": "kaduna",
+      "name": "Sultan Bello Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Sultan Bello Mosque (Kaduna Central Mosque): a large white-and-green mosque completed 1962 and expanded 1994, with five domes, four minarets and a four-door main entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f1efe8",
+          "#3f7a58",
+          "#cfc8b6"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "dome",
+          "count": 4,
+          "note": "smaller domes (five in total)"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "four minarets"
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sultan_Bello_Mosque",
+          "what": "completed 1962, expanded 1994, architect Abdullahi Saidu Bello, five domes, four minarets, interior 2,300 m2, main entrance with four doors"
+        }
+      ],
+      "notes": "Dome count, minaret count, year and area are from Wikipedia; colours, minaret height (about 30 m) and exact plan are not documented here and are estimated from common Nigerian mosque colouring."
+    },
+    "television-market": {
+      "venueId": "television-market",
+      "city": "kaduna",
+      "name": "Television Market",
+      "archetype": "market-open",
+      "subject": "Television Market: an open commercial ground of lock-up shop rows and mixed corrugated stalls on bare earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9a98a",
+          "#8a8f94",
+          "#7a3f2f"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "lock-ups",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. "
+    },
+    "unguwan-rimi-market": {
+      "venueId": "unguwan-rimi-market",
+      "city": "kaduna",
+      "name": "Unguwan Rimi Market",
+      "archetype": "market-open",
+      "subject": "Unguwan Rimi Market: a neighbourhood market of timber-and-iron stalls and lock-up shops tucked along the main road, with shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9a98a",
+          "#a8472f",
+          "#7a3f2f"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "lock-ups",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Smaller neighbourhood market than Chechinya and Television."
+    },
+    "zenith-bank-kaduna": {
+      "venueId": "zenith-bank-kaduna",
+      "city": "kaduna",
+      "name": "Zenith Bank",
+      "archetype": "office-low",
+      "subject": "A modern bank branch in Kaduna: a 2-3 storey glass-and-render block with a canopy over the entrance, ATM bay and a blank brand-neutral signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd6d8",
+          "#b04040",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kaduna",
+          "what": "city context: colonial founding, savanna climate, shade trees"
+        }
+      ],
+      "notes": "No source describing this place's appearance was found; typed from the venue type and city style. Brand colours deliberately toned to a neutral red accent, no logo or text."
+    }
+  }
+}

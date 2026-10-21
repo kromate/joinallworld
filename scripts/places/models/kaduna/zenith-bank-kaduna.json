@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "zenith-bank-kaduna",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1257504066",
+   "used": "containing building outline (22 x 17 m, front lobe on -y); Commons head-office photo is a different building so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd6d8",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "bands": "#ffffff",
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-canopy",
+   "params": {
+    "rect": [
+     10,
+     4.5
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#b04040"
+   },
+   "at": [
+    0,
+    -14
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -4,
+     -15.5,
+     0
+    ],
+    "end": [
+     4,
+     -15.5,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.4,
+        0.4
+       ],
+       "z0": 0,
+       "height": 4.2,
+       "colour": "#ffffff"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "params": {
+    "rect": [
+     9,
+     0.4
+    ],
+    "z0": 8.6,
+    "height": 1.6,
+    "colour": "#b04040"
+   },
+   "at": [
+    0,
+    -11.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "atm-bay",
+   "params": {
+    "rect": [
+     3,
+     2.2
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#e8e8e8",
+    "topColour": "#8a8f94"
+   },
+   "at": [
+    13,
+    -4
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 3,
+  "treeKind": "palm",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this branch; canopy, signboard and ATM bay positions inferred from the brief."
+ }
+}

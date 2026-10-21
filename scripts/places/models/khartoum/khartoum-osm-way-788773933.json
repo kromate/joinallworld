@@ -1,0 +1,204 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/788773933",
+   "used": "hospital compound outline (about 117 x 151 m, 17,400 m2) as a low podium/service wing; the four-storey glazed main block, entrance bay, ambulance port and tank come from the brief only; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 0.62
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#2f7ea0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     60,
+     28
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 4.5,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "ribbon",
+    "windowRatio": 0.33,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#fbfaf5"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -25
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f7ea0",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fbfaf5",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -28.2,
+    10
+   ],
+   "params": {
+    "size": 3
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    22,
+    0,
+    20.5
+   ],
+   "params": {
+    "radius": 2,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -32,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    -36,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-osm-way-788773933",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; footprint-scaled podium plus assumed 4-storey block, glazing and tank from brief only."
+ }
+}

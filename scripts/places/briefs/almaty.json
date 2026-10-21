@@ -1,0 +1,1636 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "almaty",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "almaty",
+    "climate": "temperate",
+    "vernacular": "Soviet-planned city at the foot of the snow-capped Trans-Ili Alatau on a grid of tree-lined avenues: 4-9 storey pastel-painted render and panel apartment blocks, brick and concrete institutional buildings, marble-faced Soviet modernist civic landmarks (Wedding Palace, Lenin Palace), Russian-era timber and brick churches, plus post-2000 glass-and-aluminium towers and malls. Flat bitumen or grey/green metal roofs, wide paved boulevards, poplar, elm, spruce and wild-apple trees, and the mountains always on the southern horizon.",
+    "wallColours": [
+      "#d9cfae",
+      "#c8b89a",
+      "#e8e2d0",
+      "#9aa3a8",
+      "#b5684d",
+      "#f1efe6",
+      "#8a7f72"
+    ],
+    "roofColours": [
+      "#7a7f84",
+      "#8a3b2e",
+      "#5b6670",
+      "#3f6b4a",
+      "#969696"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "brick",
+      "render",
+      "marble",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Kazakh national ornament (koshkar-muiz ram-horn motif) in sun-grille screens and mosaics on Soviet civic buildings; yurt/shanyrak-inspired circular forms; Soviet mosaic panels and bas-reliefs; Russian Orthodox onion domes on timber and brick churches; white marble and polished granite on landmark facades; glass-and-aluminium cladding on newer stations and malls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Almaty",
+        "what": "Soviet earthquake-resistant housing, schools and cultural venues 1966-72 (Lenin Palace, Hotel Kazakhstan); brick after the 1887 quake; Zenkov Cathedral timber; foothills of Trans-Ili Alatau 700-900 m; humid continental climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Wedding_Palace_(Almaty)",
+        "what": "white marble facade with circular glazing, polished granite plinth, Kazakh-ornament sun grilles, yurt-shaped interior (1971)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Almaty-1_railway_station",
+        "what": "glass and aluminium cladding on the 1969-75 rebuilt station"
+      }
+    ]
+  },
+  "places": {
+    "almaty-airport-almaty-airport": {
+      "venueId": "almaty-airport-almaty-airport",
+      "city": "almaty",
+      "name": "Almaty International Airport (Terminal 2)",
+      "archetype": "airport-terminal",
+      "subject": "The new Terminal 2 (opened June 2024) seen from the landside forecourt: a long low glazed terminal with a curved roof edge and a row of jet bridges on the airfield side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8dc",
+          "#3d4f5c",
+          "#f2f2f0"
+        ],
+        "roofColour": "#b8bec2",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6,
+          "note": "six boarding bridges reported for the earlier unfinished terminal; T2 count unverified"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Almaty_International_Airport",
+          "what": "Terminal 2 opened 1 June 2024, 53,000 m2, designed by ADPi and built by TAV, 14 M pax/yr; Terminal 1 opened 2003"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q858844",
+          "what": "OSM T2 outline ~259 x 148 m, area 25,136 m2"
+        }
+      ],
+      "notes": "Sources give size, designer and dates but not the facade, roof shape or colours; the glass-fronted contemporary look and grey palette are inferred from comparable ADPi/TAV terminals. The older 2003 Terminal 1 is smaller and plainer. No logos on signage."
+    },
+    "almaty-clinic": {
+      "venueId": "almaty-clinic",
+      "city": "almaty",
+      "name": "City Cardiology Centre (Almaty)",
+      "archetype": "hospital",
+      "subject": "A long multi-wing Soviet-era hospital complex of 4-5 storey pale blocks joined by corridors, entrance block facing the street",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd6c4",
+          "#9aa3a8",
+          "#f1efe6"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Almaty",
+          "what": "Soviet-era hospitals built in 1966-72 as earthquake-resistant multi-storey blocks"
+        }
+      ],
+      "notes": "OSM outline is a 306 x 127 m multi-wing hospital polygon (area 6,690 m2 means thin wings); nothing found describing its facade, so storeys, colours and style are typed guesses from Almaty Soviet hospital blocks."
+    },
+    "almaty-community-notices": {
+      "venueId": "almaty-community-notices",
+      "city": "almaty",
+      "name": "Wedding Palace (Almaty)",
+      "archetype": "civic-small",
+      "subject": "The 1971 Wedding Palace: a two-storey cylindrical marble-faced pavilion, like two rings one inside the other, with a continuous band of glazing wrapped in sun grilles",
+      "form": {
+        "footprint": "round",
+        "width_m": 34,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 0,
+        "variant": "two nested cylinders"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#f0eee8",
+          "#6b6b6b",
+          "#8f8f8f"
+        ],
+        "roofColour": "#8f8f8f",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1,
+          "note": "continuous ring of sun grilles in a Kazakh national ornament pattern around the windows"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Kazakh ornament grille"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance steps up a polished granite plinth on the north side"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "interior mosaics and wall paintings; exterior copper frieze removed in 2001"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1971",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wedding_Palace_(Almaty)",
+          "what": "two-storey round building ~34 m diameter, white marble facade, circular glazing, granite plinth, sun grilles with Kazakh ornament, monolithic concrete roof, architects Mendikulov and Leppik; exterior restored in 2017"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q65175748",
+          "what": "OSM: 2 levels, roof colour #8f8f8f, footprint ~34.5 m"
+        }
+      ],
+      "notes": "Described well. A round white drum with a ring of window grilles is the whole silhouette; the grille pattern is a repeating national ornament. Restored 2017 to the 1971 look so show marble, not plasterboard."
+    },
+    "almaty-community-voting-game": {
+      "venueId": "almaty-community-voting-game",
+      "city": "almaty",
+      "name": "Almaty City Akimat (City Hall)",
+      "archetype": "civic-palace",
+      "subject": "The City Akimat on Republic Square: a large, wide pale-yellow civic block with a flag-lined entrance and flat grey roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 123,
+        "depth_m": 82,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#fff29e",
+          "#c8c0a4",
+          "#e8e2d0"
+        ],
+        "roofColour": "#969696",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "flagpoles in front"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q77711940",
+          "what": "OSM: building=public, building:colour #fff29e (pale yellow), roof:colour #969696, footprint 123 x 82 m, amenity=townhall"
+        }
+      ],
+      "notes": "Colours and footprint are measured OSM data (pale yellow, grey roof). Storeys, height and detailing are guesses for a Soviet-era city administration building; the true building may have a portico or colonnade that is not confirmed."
+    },
+    "almaty-community-workshop": {
+      "venueId": "almaty-community-workshop",
+      "city": "almaty",
+      "name": "Narxoz University",
+      "archetype": "campus-block",
+      "subject": "A long multi-storey university building in pale render with big window bands and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d0",
+          "#6a7f8c",
+          "#c8b89a"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1046493",
+          "what": "OSM: university footprint ~248 x 112 m; Narkhoz University founded 1963"
+        }
+      ],
+      "notes": "Only founding year and footprint are known; appearance is a typed guess from Almaty university blocks."
+    },
+    "almaty-market-game": {
+      "venueId": "almaty-market-game",
+      "city": "almaty",
+      "name": "Aport Mall",
+      "archetype": "mall",
+      "subject": "A big modern shopping centre, wide low box with glazed entrance atria and a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8dde0",
+          "#4b5a66",
+          "#f2f2f0"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q619735",
+          "what": "OSM: retail building, outline ~455 x 314 m (includes parking decks)"
+        }
+      ],
+      "notes": "Complex outline is 95,646 m2 incl. car parks. Facade is a typed guess for a 2010s regional mall; nothing describing it was fetched."
+    },
+    "almaty-meal-stop": {
+      "venueId": "almaty-meal-stop",
+      "city": "almaty",
+      "name": "Aqqu cafe",
+      "archetype": "restaurant",
+      "subject": "A single-storey restaurant pavilion with a dark slate-blue body and a pale grey flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#475766",
+          "#c8d0d6",
+          "#e8e2d0"
+        ],
+        "roofColour": "#b0b0b0",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ru.wikipedia.org/wiki/Акку_(кафе)",
+          "what": "OSM tag wikipedia=ru:Акку_(кафе), amenity=restaurant, 1 level, building:colour #475766, roof:colour #b0b0b0, footprint 46 x 36 m"
+        }
+      ],
+      "notes": "Dimensions, level and the two colours are OSM measured values; terrace/awning are typical for a park cafe and unverified."
+    },
+    "almaty-osm-node-10713558763": {
+      "venueId": "almaty-osm-node-10713558763",
+      "city": "almaty",
+      "name": "Oktyabrskaya cave",
+      "archetype": "park-landscape",
+      "subject": "A mountain cave entrance in a limestone outcrop on a forested slope in the Trans-Ili Alatau foothills",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 24,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a79d8d",
+          "#7a7064",
+          "#5c5a52"
+        ],
+        "roofColour": "#7a7064",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank trail sign"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only a named OSM node. Nothing was found describing the cave; typed as a natural rock outcrop with a dark mouth and spruce around it."
+    },
+    "almaty-osm-node-13690633205": {
+      "venueId": "almaty-osm-node-13690633205",
+      "city": "almaty",
+      "name": "Butakty (Бұтақты)",
+      "archetype": "park-landscape",
+      "subject": "A mountain-valley picnic and trail spot in the Ile-Alatau foothills with spruce, a stream and a rough track",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a7358",
+          "#6f5a43",
+          "#a79d8d"
+        ],
+        "roofColour": "#6f5a43",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "wooden picnic shelter, typed guess"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named OSM node only, no description found. Typed from Almaty mountain-recreation places; the shelter is a guess."
+    },
+    "almaty-osm-node-13691030944": {
+      "venueId": "almaty-osm-node-13691030944",
+      "city": "almaty",
+      "name": "Saka kurgan (Сакский курган)",
+      "archetype": "monument",
+      "subject": "A low grass-covered burial mound (kurgan) ringed with a stone kerb",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89a78",
+          "#7d9a5a",
+          "#8a8070"
+        ],
+        "roofColour": "#7d9a5a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "path up to the mound"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank information board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low kerb ring"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Saka period",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM places a tiny building (11 x 7 m) next to the node; the Saka kurgan itself is an earth mound. Size is a typed guess for a Saka burial mound."
+    },
+    "almaty-osm-relation-10082036": {
+      "venueId": "almaty-osm-relation-10082036",
+      "city": "almaty",
+      "name": "Almaty Arena",
+      "archetype": "stadium",
+      "subject": "The 2016 ice-hockey and concert arena: a large oval hall, blue-violet body with a low grey domed roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 139,
+        "depth_m": 104,
+        "storeys": 5,
+        "height_m": 30,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#464caa",
+          "#b8b8b8",
+          "#e8e8ee"
+        ],
+        "roofColour": "#b8b8b8",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "low shallow roof dome"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Almaty_Arena",
+          "what": "12,000 seats for hockey, opened 18 Sept 2016, complex of main arena + training rink + pool, site 9.96 ha"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18125175",
+          "what": "OSM: 5 levels, roof:shape=dome, roof:colour #b8b8b8, building:colour #464caa, footprint ~139 x 104 m"
+        }
+      ],
+      "notes": "Roof shape and colours come from OSM tags; cladding and glazing details are typed. Compact oval hall with a modest dome, blue-violet cladding."
+    },
+    "almaty-osm-relation-3048271": {
+      "venueId": "almaty-osm-relation-3048271",
+      "city": "almaty",
+      "name": "Almaty Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "A large botanical garden of lawns, mature broadleaf and conifer collections, paths and a main gate, with mountains behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 1000,
+        "depth_m": 600,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8b89a",
+          "#7d9a5a",
+          "#e8e2d0"
+        ],
+        "roofColour": "#8a7f72",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main entrance gate"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1932",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4062764",
+          "what": "OSM/Wikidata: park/botanical garden est. 1932, protected area of Kazakhstan, outline ~1566 x 903 m (98 ha)"
+        }
+      ],
+      "notes": "Real extent ~98 ha, shown as a recognisable portion. Gate/pavilion/fountain are typical garden furniture and not verified for this site."
+    },
+    "almaty-osm-way-1084732338": {
+      "venueId": "almaty-osm-way-1084732338",
+      "city": "almaty",
+      "name": "Jas Qyran Stadium",
+      "archetype": "stadium",
+      "subject": "A small football ground with one low covered stand and open terraces, fenced",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 65,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#9aa3a8",
+          "#4b5a66",
+          "#e8e2d0"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q135089978",
+          "what": "OSM: leisure=stadium, wikipedia=kk:Жас қыран (стадион), footprint ~106 x 65 m"
+        }
+      ],
+      "notes": "Only footprint and the Kazakh article name exist in data; the stand design is a typed guess for a small youth stadium."
+    },
+    "almaty-osm-way-1389306295": {
+      "venueId": "almaty-osm-way-1389306295",
+      "city": "almaty",
+      "name": "Sagadat Nurmagambetov Military Institute of the Ground Forces",
+      "archetype": "campus-block",
+      "subject": "A walled military-academy compound with a long central three-to-four storey Soviet building, gate and parade ground",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9cfae",
+          "#8a7f72",
+          "#f1efe6"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4062692",
+          "what": "Military Institute of the Kazakh Ground Forces, 1970; OSM compound ~517 x 496 m"
+        }
+      ],
+      "notes": "Whole compound is ~19 ha; shown as the central building. Appearance is a typed Soviet military-school guess."
+    },
+    "almaty-osm-way-1456509345": {
+      "venueId": "almaty-osm-way-1456509345",
+      "city": "almaty",
+      "name": "Almaty Central Stadium",
+      "archetype": "stadium",
+      "subject": "The 1958 Central Stadium: an oval two-tier concrete bowl in grey with a green-roofed covered grandstand and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 229,
+        "depth_m": 176,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#828282",
+          "#c8b89a",
+          "#e8e2d0"
+        ],
+        "roofColour": "#81ab5f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "metal roof on the west stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1958",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Almaty_Central_Stadium",
+          "what": "capacity 23,804, oval stands in four sectors, metal-roofed west stand"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q190788",
+          "what": "OSM: start 1957, 2 levels, height 12 m, building:colour #828282, roof:colour #81ab5f, footprint ~229 x 176 m"
+        }
+      ],
+      "notes": "Measured: size, height 12 m, colours grey with green roof. Entrance facade detail not described in fetched sources."
+    },
+    "almaty-osm-way-207798752": {
+      "venueId": "almaty-osm-way-207798752",
+      "city": "almaty",
+      "name": "MEGA Alma-Ata",
+      "archetype": "mall",
+      "subject": "A long, two-storey shopping centre with bright blue roof and wide car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 200,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#d8dde0",
+          "#25a5d0",
+          "#f2f2f0"
+        ],
+        "roofColour": "#25a5d0",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1916971",
+          "what": "OSM: retail, 2 levels, roof:colour #25a5d0, footprint ~400 x 205 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/MEGA_Alma-Ata",
+          "what": "OSM wikipedia tag; MEGA shopping centre"
+        }
+      ],
+      "notes": "Footprint size, levels and colours are OpenStreetMap/Wikidata measured data (scripts/places/data/facts/almaty.json). The blue roof is the recognisable colour; the cladding is a typed guess."
+    },
+    "almaty-osm-way-210871483": {
+      "venueId": "almaty-osm-way-210871483",
+      "city": "almaty",
+      "name": "Baum's grove (Роща Баума)",
+      "archetype": "park-landscape",
+      "subject": "A long woodland park of tall old broadleaf trees with winding paths, a lawn clearing and a pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 1500,
+        "depth_m": 844,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a7358",
+          "#7d9a5a",
+          "#c8b89a"
+        ],
+        "roofColour": "#6f5a43",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1894",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12534146",
+          "what": "Baum's grove, natural monument est. 1894, OSM outline ~3078 x 844 m (130 ha)"
+        }
+      ],
+      "notes": "Natural-monument woodland; outline is 3 km long, shown as a 1.5 km portion. Furniture is a typed guess."
+    },
+    "almaty-osm-way-231104375": {
+      "venueId": "almaty-osm-way-231104375",
+      "city": "almaty",
+      "name": "Cathedral of the Nativity of Christ (Almaty)",
+      "archetype": "church-classical",
+      "subject": "A modern (1995-2000) Russian Orthodox cathedral with a large central drum and dome, smaller domes and a bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 47,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "dome",
+        "wings": 2,
+        "variant": "upper and lower church"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#c9a227",
+          "#7a8a9a"
+        ],
+        "roofColour": "#c9a227",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5,
+          "note": "central dome weighing 15 t installed 1999, plus smaller domes"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "a temporary bell tower; seven bells totalling 3.5 t"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1995-2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ru.wikipedia.org/wiki/Собор_Рождества_Христова_(Алма-Ата)",
+          "what": "built 1995-2000, central dome installed 29 June 1999 (15 t), upper church, temporary bell tower, seven bells (3.5 t)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q60851968",
+          "what": "OSM: 2 levels, footprint ~47 x 26 m, Russian Orthodox"
+        }
+      ],
+      "notes": "Source gives structure but no colours; white walls and gold domes are the standard Russian Orthodox palette and an assumption. The OSM name \"Храм Христа Спасителя\" resolves to this cathedral via the wikidata tag."
+    },
+    "almaty-osm-way-286610625": {
+      "venueId": "almaty-osm-way-286610625",
+      "city": "almaty",
+      "name": "Almaty University of Power Engineering and Telecommunications",
+      "archetype": "campus-block",
+      "subject": "A long Soviet-era institute building of 5-6 storeys with ribbon windows and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8b89a",
+          "#9aa3a8",
+          "#e8e2d0"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1975",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4062778",
+          "what": "Energo University, 1975; OSM outline ~264 x 178 m"
+        }
+      ],
+      "notes": "Only founding year and footprint known. Typed from Almaty Soviet-era institute blocks."
+    },
+    "almaty-osm-way-389067729": {
+      "venueId": "almaty-osm-way-389067729",
+      "city": "almaty",
+      "name": "Our Lady of Kazan Cathedral (Almaty)",
+      "archetype": "church-classical",
+      "subject": "The small Kazan Cathedral: a compact cross-plan stone church with a central dome, smaller domes and a bell tower, reconstructed in 1898",
+      "form": {
+        "footprint": "cross",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 20,
+        "roof": "dome",
+        "wings": 2,
+        "variant": "central dome plus four corner domes (historic)"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe8d6",
+          "#3f6b8a",
+          "#c9a227"
+        ],
+        "roofColour": "#3f6b8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5,
+          "note": "central dome and four lesser domes in the original form"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "cast-iron churchyard fence historically"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1898",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ru.wikipedia.org/wiki/Казанский_собор_(Алма-Ата)",
+          "what": "reconstructed 1898 (architect Brusentsov); originally central dome plus four larger domes; bell tower; stone/wooden elements; St George chapel 1953; restoration 2021-22"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1112939",
+          "what": "OSM: church, footprint ~25 x 20 m"
+        }
+      ],
+      "notes": "Dome/tower arrangement is from the article, but colours are not described; palette is typed. Rendered in its restored historic form."
+    },
+    "almaty-osm-way-411621076": {
+      "venueId": "almaty-osm-way-411621076",
+      "city": "almaty",
+      "name": "Academy of Civil Aviation",
+      "archetype": "campus-block",
+      "subject": "A 4-storey academy block near the airport, pale render with window bands and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d0",
+          "#6a7f8c",
+          "#c8b89a"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1995",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4059229",
+          "what": "Academy of Civil Aviation (founded 1995), OSM outline ~196 x 159 m"
+        }
+      ],
+      "notes": "Only footprint and founding year known; typed guess."
+    },
+    "almaty-osm-way-50459830": {
+      "venueId": "almaty-osm-way-50459830",
+      "city": "almaty",
+      "name": "Tumar (former Alma-Ata carpet factory)",
+      "archetype": "industrial",
+      "subject": "The long 1936 two-storey brick-and-render carpet-factory block with rhythmic window bays and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 235,
+        "depth_m": 63,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b5684d",
+          "#e8e2d0",
+          "#8a7f72"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1936",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4062758",
+          "what": "Alma-Ata carpet factory est. 1936, OSM: 2 levels, outline ~236 x 63 m"
+        }
+      ],
+      "notes": "The OSM name \"Тумар\" is a trade centre/market in the old factory; only dims, levels and year known. Brick and render finishes are a typed guess for 1930s Soviet industry."
+    },
+    "almaty-quiet-reflection": {
+      "venueId": "almaty-quiet-reflection",
+      "city": "almaty",
+      "name": "Aksai Hermitage of St. Seraphim and Theognost (monastery church)",
+      "archetype": "church-classical",
+      "subject": "A mountain monastery church with onion domes, small cells and a wall in the Aksai gorge",
+      "form": {
+        "footprint": "cross",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 18,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#3f6b4a",
+          "#c9a227"
+        ],
+        "roofColour": "#3f6b4a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 3
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q79422224",
+          "what": "Aksai hermitage (Eastern Orthodox), OSM compound ~125 x 65 m"
+        }
+      ],
+      "notes": "No visual description found; typed as a small Orthodox monastery church with white walls and green roof among spruce."
+    },
+    "almaty-recreation": {
+      "venueId": "almaty-recreation",
+      "city": "almaty",
+      "name": "Kok-Tobe Park",
+      "archetype": "park-landscape",
+      "subject": "The Kok-Tobe hilltop recreation park at 1,100 m: viewing terraces, a Ferris wheel, an apple-shaped fountain and the Almaty Tower mast at the foot of the hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#c8b89a",
+          "#8a7358",
+          "#e8e2d0"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 2,
+          "note": "viewing platforms"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "apple-shaped Fountain of Desires"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Beatles statue"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "Almaty Tower 372 m with 114 m antenna, at the base of the hill"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "restaurants"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kok_Tobe",
+          "what": "hill 1,100 m; recreation area opened 2006 with Ferris wheel, rope park, restaurants, viewing platforms; apple-shaped Fountain of Desires; cable car; Almaty Tower 372 m at base; Beatles statue"
+        }
+      ],
+      "notes": "The tower stands at the base of the hill (not on the summit) in reality; shown as backdrop mast. Surface palette typed."
+    },
+    "almaty-transit": {
+      "venueId": "almaty-transit",
+      "city": "almaty",
+      "name": "Almaty-1 railway station",
+      "archetype": "transport-station",
+      "subject": "The 1970s Soviet-modern main station with a glass-and-aluminium-clad three-storey frontage and a monument outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 149,
+        "depth_m": 41,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d8",
+          "#8a9aa4",
+          "#e8e2d0"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "monument to Alibi Zhangildin outside"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1969-75",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Almaty-1_railway_station",
+          "what": "rebuilt 1969-75, facade of glass and aluminium, offices on ground floor, rest/dining upstairs, platforms below, renovated 2007"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q800370",
+          "what": "OSM: train_station, 3 levels, outline ~149 x 41 m"
+        }
+      ],
+      "notes": "Facade materials documented; tower/colours are not."
+    }
+  }
+}

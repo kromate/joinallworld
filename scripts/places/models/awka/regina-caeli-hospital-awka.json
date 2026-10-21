@@ -1,0 +1,23 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "awka", "venueId": "regina-caeli-hospital-awka",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/557909270", "used": "named building outline (61 x 59 m, name match score 1)"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 25, "fovDeg": 50, "fit": "all"},
+ "parts": [
+  {"type": "mass", "id": "wards", "footprint": {"osm": true}, "at": [0, 0], "height": 8, "storeys": 2,
+   "wall": {"material": "render", "colour": "#f5f2ea", "windows": "punched", "windowRatio": 0.24, "bay": 3.4, "plinth": 0.6, "cornice": true,
+            "pattern": [{"type": "bands", "colours": ["#bfb9a8"], "height": 0.4, "floors": "upper"}]},
+   "roof": {"form": "flat", "colour": "#a4553a", "parapet": 0.6}},
+  {"type": "mass", "id": "chapel", "footprint": {"rect": [9, 14]}, "at": [-14, -38], "height": 7, "storeys": 1,
+   "wall": {"material": "render", "colour": "#f5f2ea", "windows": "arched", "windowRatio": 0.3, "plinth": 0.5},
+   "roof": {"form": "gable", "colour": "#a4553a", "material": "clay-tile", "rise": 3.5, "overhang": 0.8}},
+  {"type": "hospital/ambulance-bay", "at": [30, -26, 0], "params": {"width": 12, "depth": 5.5, "height": 3.8}},
+  {"type": "hospital/covered-walkway", "at": [-10, -32, 0], "params": {"length": 20, "width": 2.6, "height": 3, "colour": "#d8d2c2", "roofColour": "#a4553a"}},
+  {"type": "core/sign-board", "at": [12, -36, 0], "params": {"width": 4, "height": 2, "bottom": 1.6, "colour": "#a8362a"}},
+  {"type": "core/car", "at": [38, -36, 0], "params": {"count": 4, "spacing": 3}}
+ ],
+ "site": {"ground": "asphalt", "forecourt": "parking", "trees": 4, "extent": [120, 100]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "only the OSM outline is real; roof is flat in place of the hipped tile roof (irregular outline), wings, chapel and bay positions are typed"}
+}

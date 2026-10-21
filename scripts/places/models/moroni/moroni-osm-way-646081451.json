@@ -1,0 +1,422 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tribune_Ouest_Malouzini.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "TeamLVF",
+   "view": "side",
+   "file": "/tmp/places-evidence/moroni/stade-west.jpg",
+   "used": "covered west stand: yellow, red and blue seat blocks, white concrete walls, blue steel arched trusses carrying pale membrane roof, blue running track, green pitch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Tribune_Sud_Malouzini.webp",
+   "licence": "CC BY-SA 4.0",
+   "author": "TeamLVF",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/moroni/stade-south.jpg",
+   "used": "oval bowl with uncovered grey tiers, white fascia wall, blue athletics track, white light pole, mountain backdrop"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/646081451",
+   "used": "overall scale only (bowl about 150 x 115 m per the brief); outline is a loose site polygon"
+  }
+ ],
+ "camera": {
+  "yawDeg": 172,
+  "pitchDeg": 16,
+  "fovDeg": 45,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      56.0,
+      0.0
+     ],
+     [
+      51.74,
+      16.46
+     ],
+     [
+      39.6,
+      30.41
+     ],
+     [
+      21.43,
+      39.73
+     ],
+     [
+      0.0,
+      43.0
+     ],
+     [
+      -21.43,
+      39.73
+     ],
+     [
+      -39.6,
+      30.41
+     ],
+     [
+      -51.74,
+      16.46
+     ],
+     [
+      -56.0,
+      0.0
+     ],
+     [
+      -51.74,
+      -16.46
+     ],
+     [
+      -39.6,
+      -30.41
+     ],
+     [
+      -21.43,
+      -39.73
+     ],
+     [
+      -0.0,
+      -43.0
+     ],
+     [
+      21.43,
+      -39.73
+     ],
+     [
+      39.6,
+      -30.41
+     ],
+     [
+      51.74,
+      -16.46
+     ]
+    ],
+    "z0": 0.08,
+    "height": 0.06,
+    "colour": "#3f86c4",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      52.0,
+      0.0
+     ],
+     [
+      48.04,
+      14.54
+     ],
+     [
+      36.77,
+      26.87
+     ],
+     [
+      19.9,
+      35.11
+     ],
+     [
+      0.0,
+      38.0
+     ],
+     [
+      -19.9,
+      35.11
+     ],
+     [
+      -36.77,
+      26.87
+     ],
+     [
+      -48.04,
+      14.54
+     ],
+     [
+      -52.0,
+      0.0
+     ],
+     [
+      -48.04,
+      -14.54
+     ],
+     [
+      -36.77,
+      -26.87
+     ],
+     [
+      -19.9,
+      -35.11
+     ],
+     [
+      -0.0,
+      -38.0
+     ],
+     [
+      19.9,
+      -35.11
+     ],
+     [
+      36.77,
+      -26.87
+     ],
+     [
+      48.04,
+      -14.54
+     ]
+    ],
+    "z0": 0.14,
+    "height": 0.06,
+    "colour": "#5fa043",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 61,
+    "radiusY": 47,
+    "startDeg": 212,
+    "endDeg": 328,
+    "rows": 7,
+    "rise": 0.65,
+    "run": 0.9,
+    "firstHeight": 1.2,
+    "facetDeg": 50,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#e8b923",
+     "#b3243a",
+     "#3d78c2"
+    ],
+    "blocks": 4,
+    "concreteColour": "#e6e2d8",
+    "underColour": "#d9d5cb",
+    "canopy": {
+     "height": 1.0,
+     "depth": 26,
+     "thickness": 0.5,
+     "slopeDeg": 6,
+     "colour": "#e9e7df",
+     "edgeColour": "#2d6cb5",
+     "overhangBack": 1.0
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 61,
+    "radiusY": 47,
+    "startDeg": 332,
+    "endDeg": 392,
+    "rows": 3,
+    "rise": 0.6,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "facetDeg": 60,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColour": "#b9b6ad",
+    "concreteColour": "#e6e2d8",
+    "underColour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 61,
+    "radiusY": 47,
+    "startDeg": 28,
+    "endDeg": 152,
+    "rows": 3,
+    "rise": 0.6,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "facetDeg": 60,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColour": "#b9b6ad",
+    "concreteColour": "#e6e2d8",
+    "underColour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 61,
+    "radiusY": 47,
+    "startDeg": 148,
+    "endDeg": 208,
+    "rows": 3,
+    "rise": 0.6,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "facetDeg": 60,
+    "under": "solid",
+    "slab": 0.4,
+    "seatColour": "#b9b6ad",
+    "concreteColour": "#e6e2d8",
+    "underColour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 64,
+    "radiusY": 50,
+    "startDeg": 216,
+    "endDeg": 324,
+    "count": 12,
+    "facing": "outward",
+    "lod1Step": 6,
+    "lod2Step": 4,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#2d6cb5",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.9,
+          1.0
+         ],
+         "cy": 0.5
+        },
+        {
+         "z": 8,
+         "rect": [
+          0.9,
+          1.0
+         ],
+         "cy": 0.5
+        },
+        {
+         "z": 11,
+         "rect": [
+          0.9,
+          4
+         ],
+         "cy": 2.0
+        },
+        {
+         "z": 13,
+         "rect": [
+          0.9,
+          9
+         ],
+         "cy": 4.5
+        },
+        {
+         "z": 14.5,
+         "rect": [
+          0.9,
+          15
+         ],
+         "cy": 7.5
+        },
+        {
+         "z": 15.5,
+         "rect": [
+          0.9,
+          21
+         ],
+         "cy": 10.5
+        },
+        {
+         "z": 16.2,
+         "rect": [
+          0.9,
+          26
+         ],
+         "cy": 13.0
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 28,
+    "colour": "#eef0f2"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "canopy ribs are simple stepped lofts, not true arched trusses with membrane; seat blocks only visible on the west stand; stand curve is faceted"
+ },
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -90,
+     -30
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-way-646081451"
+}

@@ -1,0 +1,1407 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "reykjavik",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "reykjavik",
+    "climate": "cold",
+    "vernacular": "Low city of timber houses clad in corrugated iron painted red, blue, yellow, green and white with contrasting roofs and window frames; cheap reinforced-concrete houses and apartment blocks from the early 20th century on, often painted or finished with a dashed mineral/shell render in white, cream or grey; functionalist and modernist concrete public buildings with flat or low roofs; steel-and-glass towers and halls (Harpa) and big-box malls on the edges. Few trees (birch, spruce), lava fields and treeless coast around.",
+    "wallColours": [
+      "#d9dcd8",
+      "#b34a3a",
+      "#3f6f9a",
+      "#e1c25a",
+      "#cfcfc9",
+      "#6f8f6a",
+      "#2f3a40"
+    ],
+    "roofColours": [
+      "#b03a30",
+      "#3c4650",
+      "#5a7a8a",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "metal-cladding",
+      "render",
+      "timber",
+      "exposed-concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Corrugated iron cladding in bright paint, white window frames, steep gabled roofs on old houses and low flat roofs on modernist ones, gable-fronted concrete houses of the Guðjón Samúelsson school, basalt-column motifs in civic buildings, lava rock and moss as landscaping.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Iceland",
+        "what": "corrugated iron cladding as a distinctly Icelandic feature, bright painted wooden houses, early concrete houses, steep pitched and low modernist roofs, functionalism from the 1930s with mineral and seashell dashed finishes, turf houses"
+      }
+    ]
+  },
+  "places": {
+    "reykjavik-airport-reykjavik-airport": {
+      "venueId": "reykjavik-airport-reykjavik-airport",
+      "city": "reykjavik",
+      "name": "Keflavik International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Leifsstöð at Keflavik: a long low terminal of metal cladding and glass with an airside gate pier and a separate control tower, on bare lava plain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9d0d4",
+          "#3f6f9a",
+          "#eef0f1"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 13
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1987, expanded 2001-2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Keflavík_International_Airport",
+          "what": "one terminal building with 13 jet-bridge gates and 17 remote stands, opened 1987, South Building 2001, North Building enlarged 2007, 2016 gates, eastern wing 2023-25 adding 30% area"
+        }
+      ],
+      "notes": "Layout facts from the source; the facade appearance (metal cladding and glass, pale blue-grey) and size are estimates. Surroundings are bare lava plain with no trees."
+    },
+    "reykjavik-clinic": {
+      "venueId": "reykjavik-clinic",
+      "city": "reykjavik",
+      "name": "Kleppsspítali",
+      "archetype": "hospital",
+      "subject": "Kleppur psychiatric hospital: a coastal group of white-painted concrete hospital buildings with pitched or low roofs beside the sea",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e6e0",
+          "#b03a30",
+          "#ffffff"
+        ],
+        "roofColour": "#b03a30",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "1907 and later",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-community-notices": {
+      "venueId": "reykjavik-community-notices",
+      "city": "reykjavik",
+      "name": "Ministry of Health",
+      "archetype": "office-low",
+      "subject": "Ministry of Health: a plain three- to four-storey concrete office block of the 20th century with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 16,
+        "storeys": 4,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9dcd8",
+          "#8a8f94",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-80s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-community-voting-game": {
+      "venueId": "reykjavik-community-voting-game",
+      "city": "reykjavik",
+      "name": "Reykjavik City Hall",
+      "archetype": "civic-small",
+      "subject": "Reykjavik City Hall (Ráðhús), 1992 by Studio Granda: a grey concrete and glass building standing partly in the Tjörnin pond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2,
+        "variant": "pond-edge"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9a9d9c",
+          "#6f8f9a",
+          "#d9dcd8"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 6,
+          "note": "bays standing in the water"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1992",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Reykjavík_City_Hall",
+          "what": "by Studio Granda, built 1992 beside the Tjörnin city pond; hosts a large 3D map of Iceland; floodlit in colours at night"
+        }
+      ],
+      "notes": "Architect, year and pond setting are from the source. Materials and shape (grey concrete and glass, a moss-covered wall to the pond) are from general knowledge of public photos, not the source; dimensions estimated."
+    },
+    "reykjavik-community-workshop": {
+      "venueId": "reykjavik-community-workshop",
+      "city": "reykjavik",
+      "name": "Menntaskólinn við Sund",
+      "archetype": "campus-block",
+      "subject": "Menntaskólinn við Sund: a long three-storey concrete school building of the 1960s with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcfc9",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-market-game": {
+      "venueId": "reykjavik-market-game",
+      "city": "reykjavik",
+      "name": "Smáralind",
+      "archetype": "mall",
+      "subject": "Smáralind: a very large three-level shopping mall with a long low metal-and-glass facade and big surface car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9dcd8",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Smáralind",
+          "what": "about 65,200 m2, three floors, 92 shops and a cinema, designed by BDP and built by ISTAK, opened 10 Oct 2001"
+        }
+      ],
+      "notes": "Footprint (~230 x 100 m) derived from the 65,200 m2 over three floors; facade materials and colours are estimates."
+    },
+    "reykjavik-meal-stop": {
+      "venueId": "reykjavik-meal-stop",
+      "city": "reykjavik",
+      "name": "Dill",
+      "archetype": "restaurant",
+      "subject": "Dill: a small restaurant in an old town-centre house of corrugated iron or render with a tiny frontage on Hverfisgata",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#2f3a40",
+          "#e1c25a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates. Dill is a known Nordic restaurant in the Reykjavik centre; the building could not be described from a source."
+    },
+    "reykjavik-osm-node-1243688088": {
+      "venueId": "reykjavik-osm-node-1243688088",
+      "city": "reykjavik",
+      "name": "Gljúfrasteinn",
+      "archetype": "manor",
+      "subject": "Gljúfrasteinn, the Laxness house: a low modernist 1945 house on the bank of the Kaldakvísl river in Mosfellsdalur, now a museum",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6e6e0",
+          "#6f8f6a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1945",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gljúfrasteinn",
+          "what": "architect Ágúst Pálsson, built 1945, on the banks of the river Kaldakvísl in Mosfellsbær near Laxness childhood home"
+        }
+      ],
+      "notes": "Architect, year and setting are from the source; the low modernist massing, light render and dark roof are from general memory of public photos and the dimensions are estimates."
+    },
+    "reykjavik-osm-node-6548895586": {
+      "venueId": "reykjavik-osm-node-6548895586",
+      "city": "reykjavik",
+      "name": "Icelandic Museum of Rock 'n' Roll",
+      "archetype": "museum-theatre",
+      "subject": "Rokksafn Íslands inside Hljómahöll in Keflavik: a modern flat-roofed concert and museum building of concrete and glass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcfc9",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-relation-8600434": {
+      "venueId": "reykjavik-osm-relation-8600434",
+      "city": "reykjavik",
+      "name": "Rauðhólar",
+      "archetype": "park-landscape",
+      "subject": "Rauðhólar: a cluster of rounded red-brown volcanic pseudocraters of scoria on the edge of Reykjavik with grassy paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a3b2a",
+          "#6f8a50",
+          "#b0603f"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "footpath between hills"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates. Red scoria mounds are known from public photos; the mound count and sizes are estimates."
+    },
+    "reykjavik-osm-way-101084753": {
+      "venueId": "reykjavik-osm-way-101084753",
+      "city": "reykjavik",
+      "name": "Verzlunarskóli Íslands",
+      "archetype": "campus-block",
+      "subject": "Verzlunarskóli Íslands (Commercial College of Iceland): a large multi-storey concrete school with linked wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9dcd8",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-167395358": {
+      "venueId": "reykjavik-osm-way-167395358",
+      "city": "reykjavik",
+      "name": "Bessastaðakirkja",
+      "archetype": "church-classical",
+      "subject": "Bessastaðakirkja: the small old stone church beside the presidential residence at Bessastaðir, with a squat tower at the west end",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e6e6e0",
+          "#6f6a60",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "squat west tower"
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "late 18th - early 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bessastaðir",
+          "what": "Bessastaðir was the president residence since 1941; the wiki page does not describe the church"
+        }
+      ],
+      "notes": "The church is part of the historic Bessastaðir estate; its appearance (white walls, dark roof, small tower) is from general memory, not a fetched source. Dimensions estimated."
+    },
+    "reykjavik-osm-way-169829966": {
+      "venueId": "reykjavik-osm-way-169829966",
+      "city": "reykjavik",
+      "name": "Rútstún",
+      "archetype": "park-landscape",
+      "subject": "Rútstún: a hilltop public lawn park in Kópavogur with paths and trees above the town centre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a9a4",
+          "#6f8a50",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-221045291": {
+      "venueId": "reykjavik-osm-way-221045291",
+      "city": "reykjavik",
+      "name": "Lágafellskirkja",
+      "archetype": "shrine-small",
+      "subject": "Lágafellskirkja in Mosfellsbær: a small white village church with a steep dark roof and a low tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f1f1ec",
+          "#6f6a60",
+          "#ffffff"
+        ],
+        "roofColour": "#b03a30",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "1889",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-222403700": {
+      "venueId": "reykjavik-osm-way-222403700",
+      "city": "reykjavik",
+      "name": "Fjölbrautaskólinn í Garðabæ",
+      "archetype": "campus-block",
+      "subject": "Fjölbrautaskólinn í Garðabæ: a modern two- to three-storey school with flat roofs and light render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dcd8",
+          "#b03a30",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-372405646": {
+      "venueId": "reykjavik-osm-way-372405646",
+      "city": "reykjavik",
+      "name": "Iceland University of the Arts",
+      "archetype": "campus-block",
+      "subject": "Listaháskóli Íslands at Laugarnes: a large converted concrete building with big window bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcfc9",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-64047767": {
+      "venueId": "reykjavik-osm-way-64047767",
+      "city": "reykjavik",
+      "name": "Landspítali",
+      "archetype": "hospital",
+      "subject": "Landspítali Hringbraut: the original 1930 hospital block with tall newer blocks and a rooftop helipad beside the Hringbraut road",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 35,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e6e0",
+          "#8a8f94",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1930 and later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Landspítali",
+          "what": "began operating 20 Dec 1930 at Hringbraut 101; 612 beds, emergency department and helipad; new national hospital complex under construction to 2028"
+        }
+      ],
+      "notes": "Facts from the source: location, 1930 start, helipad. No physical description was available; the form is an estimate. Construction of the new treatment centre means the surroundings are a building site."
+    },
+    "reykjavik-osm-way-684889280": {
+      "venueId": "reykjavik-osm-way-684889280",
+      "city": "reykjavik",
+      "name": "Mjóddin",
+      "archetype": "mall",
+      "subject": "Mjódd: a low shopping centre with a bus terminal at the heart of Breiðholt, with a flat roof and car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcfc9",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-720383792": {
+      "venueId": "reykjavik-osm-way-720383792",
+      "city": "reykjavik",
+      "name": "Arnarhóll",
+      "archetype": "park-landscape",
+      "subject": "Arnarhóll: a grassy hill in central Reykjavik crowned by the bronze statue of Ingólfur Arnarson on a tall stone pedestal, with steps and government buildings around",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9d9c",
+          "#6f8a50",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Ingólfur Arnarson on a stone pedestal"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "1924 statue",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The hill and statue of the settler Ingólfur Arnarson are well known; no fetched source covers them, so this is low confidence. Dimensions estimated."
+    },
+    "reykjavik-osm-way-895275808": {
+      "venueId": "reykjavik-osm-way-895275808",
+      "city": "reykjavik",
+      "name": "Meistaravellir",
+      "archetype": "stadium",
+      "subject": "Meistaravellir, the KR football ground: a small stadium with a covered main stand along one touchline, floodlights and a pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcfc9",
+          "#b03a30",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-975669150": {
+      "venueId": "reykjavik-osm-way-975669150",
+      "city": "reykjavik",
+      "name": "Stjörnuvöllur",
+      "archetype": "stadium",
+      "subject": "Stjörnuvöllur, Garðabær: a football stadium with a covered main stand on the long side, floodlights and an artificial turf pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcfc9",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-osm-way-976381108": {
+      "venueId": "reykjavik-osm-way-976381108",
+      "city": "reykjavik",
+      "name": "Akranesvöllur",
+      "archetype": "stadium",
+      "subject": "Akranesvöllur, Akranes: a football stadium on the Akranes coast with one covered stand and open terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcfc9",
+          "#e1c25a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-quiet-reflection": {
+      "venueId": "reykjavik-quiet-reflection",
+      "city": "reykjavik",
+      "name": "Árbæjarkirkja",
+      "archetype": "church-modern",
+      "subject": "Árbæjarkirkja: a modern Lutheran church in the Árbær district, a concrete box with a steep roof and a separate or integrated tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#f1f1ec",
+          "#8a8f94",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific place was found (web search budget exhausted during research; only Wikipedia pages could be fetched, and none covered it). Typed from the place type and Reykjavik city style; form, size and colours are estimates."
+    },
+    "reykjavik-recreation": {
+      "venueId": "reykjavik-recreation",
+      "city": "reykjavik",
+      "name": "Hellisgerði",
+      "archetype": "park-landscape",
+      "subject": "Hellisgerði: a small lava-rock garden in Hafnarfjörður with sculpted lava outcrops, mature trees, footpaths and a little cafe pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#6f6a60",
+          "#6f8a50",
+          "#a09a8c"
+        ],
+        "roofColour": "#b03a30",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small cafe"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1923",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Known as a small public lava garden planted in 1923; no fetched source, so low confidence. Layout estimated."
+    },
+    "reykjavik-transit": {
+      "venueId": "reykjavik-transit",
+      "city": "reykjavik",
+      "name": "Hlemmur mathöll",
+      "archetype": "market-hall",
+      "subject": "Hlemmur: the 1978 bus terminal building converted in 2017 into a food hall, a long low concrete-and-glass hall beside bus platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcfc9",
+          "#3f6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3c4650",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6,
+          "note": "platforms stayed in use until 2024"
+        },
+        {
+          "id": "stalls",
+          "count": 10,
+          "note": "food stalls inside"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1978, food hall 2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hlemmur",
+          "what": "bus terminal building from 1978 converted to a food court in 2017; adjacent bus platforms used until 2024, then Borgarlina station works"
+        }
+      ],
+      "notes": "Dates and use from the source; the form (low concrete-and-glass hall) is an estimate."
+    }
+  }
+}

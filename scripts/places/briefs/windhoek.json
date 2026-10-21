@@ -1,0 +1,1654 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "windhoek",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "windhoek",
+    "climate": "savanna",
+    "vernacular": "Semi-arid highland capital at about 1,655 m with a strong German colonial layer (1890s-1915): Wilhelmine and Art Nouveau civic buildings and castle-villas in cream or white render with red roofs and local quartz sandstone, set among newer glass-and-concrete offices and South African-style malls in the CBD, North Korean-built monuments from the 2000s, and low suburban houses behind walls. Katutura township is mostly small block houses and corrugated-iron shacks.",
+    "wallColours": [
+      "#efe3c2",
+      "#f5f1e6",
+      "#d9b47a",
+      "#c9a97a",
+      "#b9835a",
+      "#a8a090",
+      "#7d8a8f"
+    ],
+    "roofColours": [
+      "#9b3b2c",
+      "#7a3a2c",
+      "#8c8f92",
+      "#5b6670"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "sandstone",
+      "concrete",
+      "glass-curtain",
+      "metal-cladding",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "German colonial Wilhelmine / Jugendstil detailing: stepped and curved gables, turrets, crenellated castle towers, stained-glass church windows, corner quoins; Namibian aloe, quiver-tree and Herero-dress colour motifs on modern civic buildings; North Korean socialist-realist bronze statuary and obelisks on state monuments.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Windhoek",
+        "what": "Windhoek at ~1,655 m, semi-arid; Alte Feste (1890-1915), Heinitzburg/Sanderburg/Schwerinsburg castles by Wilhelm Sander, Tintenpalast 1912-13, Turnhalle neoclassical, Christuskirche, Supreme Court 1994-96, Independence Memorial Museum"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Christ_Church,_Windhoek",
+        "what": "quartz sandstone from near Avis Dam, Carrara marble portico, 24 m spire, mixed Romanesque / Art Nouveau / Gothic Revival, stained glass"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tintenpalast",
+        "what": "neoclassical front facade, regional materials, 1912-13, Parliament Gardens"
+      }
+    ]
+  },
+  "places": {
+    "windhoek-airport-windhoek-airport": {
+      "venueId": "windhoek-airport-windhoek-airport",
+      "city": "windhoek",
+      "name": "Hosea Kutako International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Namibia's international gateway, opened 1965: a low long terminal with a control tower and newer extensions, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe3c2",
+          "#6b7a80",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1965 (extended 2019+)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hosea_Kutako_International_Airport",
+          "what": "opened 1965 as J.G. Strijdom; check-in hall, 214 m2 lounge (2016), N$250m congestion alleviation project from 2019 (arrival hall, expanded departures); terminal itself not described"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. Dates and expansion are sourced, the facade is not. Drawn as a low horizontal 1960s terminal with a new glazed extension; 1,720 m elevation; terrain bare and dry around."
+    },
+    "windhoek-avis-dam-recreational-area": {
+      "venueId": "windhoek-avis-dam-recreational-area",
+      "city": "windhoek",
+      "name": "Avis Dam Recreational Area",
+      "archetype": "park-landscape",
+      "subject": "A reservoir recreation area south of the CBD: a rubble earth dam with a calm water body, picnic grounds and acacia scrub",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#a38b6e",
+          "#7a6a52",
+          "#b0aaa0"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1933",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Christ_Church,_Windhoek",
+          "what": "quartz sandstone for Christ Church was quarried near the Avis Dam"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city dams built to stabilise water supply"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. The Avis Dam completed in the 1930s is general knowledge, not from the fetched sources. Water body shown as the recognisable portion."
+    },
+    "windhoek-clinic": {
+      "venueId": "windhoek-clinic",
+      "city": "windhoek",
+      "name": "Windhoek Central Hospital",
+      "archetype": "hospital",
+      "subject": "The main state hospital: a multi-wing complex of three-to-five storey rendered blocks with a tall central ward tower and covered links",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8ddc4",
+          "#a8603f",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. Largest hospital in Windhoek, so given the tallest ward block of the hospitals in this city set."
+    },
+    "windhoek-community-notices": {
+      "venueId": "windhoek-community-notices",
+      "city": "windhoek",
+      "name": "National Assembly",
+      "archetype": "civic-palace",
+      "subject": "The Tintenpalast (Ink Palace), seat of Namibia's parliament, 1912-13: a two-storey neoclassical U-shaped building in cream render with a red hip roof, set in lawns on a rise",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "sandstone",
+        "colours": [
+          "#efe3c2",
+          "#f5f1e6",
+          "#9b3b2c"
+        ],
+        "roofColour": "#9b3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1912-13",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tintenpalast",
+          "what": "neoclassical front facade, designer Gottlieb Redecker, built 1912-13 by Sander & Kock from regional materials, opened 12 April 1913, surrounded by Parliament Gardens"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "Tintenpalast seats both chambers of Namibian Parliament"
+        }
+      ],
+      "notes": "Architect, date, neoclassical front and garden setting are sourced; the U-plan, two storeys, cream colour and red roof are from familiar photos of the Ink Palace and are rendered here without fine detail. Recognisable as a long symmetrical cream building with a prominent central block."
+    },
+    "windhoek-community-voting-game": {
+      "venueId": "windhoek-community-voting-game",
+      "city": "windhoek",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "A generic town-hall style polling building: one storey, cream render, shallow hip roof and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c2",
+          "#a8603f",
+          "#ffffff"
+        ],
+        "roofColour": "#9b3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city style only"
+        }
+      ],
+      "notes": "Game placeholder; no real place behind it. Typed from the Windhoek city style only."
+    },
+    "windhoek-community-workshop": {
+      "venueId": "windhoek-community-workshop",
+      "city": "windhoek",
+      "name": "Namibia University of Science and Technology (NUST)",
+      "archetype": "campus-block",
+      "subject": "The NUST main campus: groups of two-to-four storey rendered teaching blocks with sun-shades around plazas, and a taller library block",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8ddc4",
+          "#7d8a8f",
+          "#b9835a"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. University of 20,000 students; layout unknown. Not to be given brand marks."
+    },
+    "windhoek-heinitzburg": {
+      "venueId": "windhoek-heinitzburg",
+      "city": "windhoek",
+      "name": "Heinitzburg",
+      "archetype": "heritage-fort",
+      "subject": "Heinitzburg castle on its ridge above the CBD, 1914: a small rendered German castle with a crenellated round tower, a taller square tower and steep red roofs",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c2",
+          "#8a8a82",
+          "#9b3b2c"
+        ],
+        "roofColour": "#9b3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1914",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heinitzburg",
+          "what": "hilltop castle built 1914 by Wilhelm Sander, intact"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "one of three castles by Sander built after 1907: Heinitzburg, Sanderburg, Schwerinsburg"
+        }
+      ],
+      "notes": "Architect, date and hilltop castle form are sourced; the towers, crenellation and cream plaster are typical of the three Sander castles and recalled from photos, not read from the sources. Now a boutique hotel on a ridge with long CBD views."
+    },
+    "windhoek-heroes-acre": {
+      "venueId": "windhoek-heroes-acre",
+      "city": "windhoek",
+      "name": "Heroes Acre",
+      "archetype": "monument",
+      "subject": "Heroes' Acre: a hillside war memorial 10 km south of Windhoek with a white obelisk, a bronze Unknown Soldier, a symmetrical polygonal terrace and a parade ground below",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 35,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#e8e6e0",
+          "#6b6b68",
+          "#c9a24a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heroes%27_Acre_(Namibia)",
+          "what": "opened 26 Aug 2002, built by North Korean Mansudae Overseas Projects, symmetric polygon with marble obelisk and bronze Unknown Soldier at the centre, grandstand for 5,000, 174 tombs, parade grounds, gold-painted lettering"
+        }
+      ],
+      "notes": "Layout, materials and function are sourced; heights are estimates (obelisk about 35 m). Shown as the central polygon plateau and obelisk, with the grandstand and parade ground; barren dry hills around. The bronze soldier is a stylised North Korean figure and the lettering is gold."
+    },
+    "windhoek-independence-memorial-museum": {
+      "venueId": "windhoek-independence-memorial-museum",
+      "city": "windhoek",
+      "name": "Independence Memorial Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Independence Memorial Museum (opened 2014): a five-storey dark-brown tapering body (likened to a coffee pot) with a triangular glass front, glass lift, and bronze statue of Sam Nujoma before it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 36,
+        "storeys": 5,
+        "height_m": 40,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#5a4636",
+          "#3c4a52",
+          "#c9a24a"
+        ],
+        "roofColour": "#5a4636",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "2011-2014",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Independence_Memorial_Museum_(Namibia)",
+          "what": "five storeys, planned four 40 m walls, triangular glass structure, glass-fronted elevator, Mansudae Overseas Projects 2011-2014, Nujoma bronze statue in front, genocide memorial beside, shape compared to a potjie / coffee pot / molar tooth"
+        }
+      ],
+      "notes": "Storeys, 40 m height, glass front, the statues and the date are sourced. Colour (dark brown/bronze panelling) is from memory of public photos; the source says nothing on colour. Recognisable as the tall solid dark block with a glazed triangle, unlike the surrounding cream colonial buildings."
+    },
+    "windhoek-maerua-mall": {
+      "venueId": "windhoek-maerua-mall",
+      "city": "windhoek",
+      "name": "Maerua Mall & Business Park",
+      "archetype": "mall",
+      "subject": "Maerua Mall: a large two-level mall (54,128 m2 GLA after the 2006 double-size extension) with a long rendered front, glazed entrance atria and surface parking, next to an office park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe3c2",
+          "#7d8a8f",
+          "#b9835a"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006 expansion",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maerua_Mall",
+          "what": "expanded to more than double its size in 2006 by Concor; 54,128 m2 gross leasable area; cinema, gym, restaurants; opposite Centaurus High School"
+        }
+      ],
+      "notes": "Floor area and expansion date are sourced; the facade and colours are typed. Treat as a wide low mall; clamp to the recognisable entrance portion. Brand logos blank."
+    },
+    "windhoek-market-game": {
+      "venueId": "windhoek-market-game",
+      "city": "windhoek",
+      "name": "Soweto Market",
+      "archetype": "market-open",
+      "subject": "Soweto Market in Katutura: dense rows of corrugated-metal stalls and braai sheds, painted lock-ups and dust ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#b9835a",
+          "#3b8ea5"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "Katutura context; informal corrugated-iron structures noted"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. Famous informal market in Katutura with grilled meat stalls; building style from the city notes on informal structures."
+    },
+    "windhoek-meal-stop": {
+      "venueId": "windhoek-meal-stop",
+      "city": "windhoek",
+      "name": "Craft Café",
+      "archetype": "restaurant",
+      "subject": "A cafe in the old Breweries craft-centre complex: a restored brick-and-render industrial hall with a courtyard and a covered patio",
+      "form": {
+        "footprint": "L",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8603f",
+          "#efe3c2",
+          "#5b6670"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city context: converted colonial-era buildings"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. The cafe is believed to sit in the Namibia Craft Centre's old brewery buildings on Tal Street, but that is recalled, not fetched. Treat the heritage setting as unverified."
+    },
+    "windhoek-national-botanical-garden": {
+      "venueId": "windhoek-national-botanical-garden",
+      "city": "windhoek",
+      "name": "National Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "A small botanical garden: curving gravel paths, aloe and succulent beds, a few shade trees and a low administration building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c29a",
+          "#a8a090",
+          "#efe3c2"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "semi-arid highland climate; Katutura/ridge context"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. No description found; shown as an arid-plant garden with aloes and thorn trees."
+    },
+    "windhoek-national-museum-of-namibia": {
+      "venueId": "windhoek-national-museum-of-namibia",
+      "city": "windhoek",
+      "name": "National Museum of Namibia (Services)",
+      "archetype": "heritage-fort",
+      "subject": "The Alte Feste, Windhoek's oldest surviving building and home of the National Museum: a whitewashed fortress around an inner courtyard with high walls and four towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f3efe6",
+          "#8a8a82",
+          "#9b3b2c"
+        ],
+        "roofColour": "#9b3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1890-1915",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alte_Feste",
+          "what": "foundation 18 Oct 1890, final layout 1915, built around an inner courtyard, high walls, four towers, monument since 1957, renovated 1963, closed and awaiting renovation by 2023"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "Alte Feste foundation stone 1890, houses National Museum"
+        }
+      ],
+      "notes": "The venue is named for the museum's services unit; the Alte Feste is the fortress it occupies. Courtyard plan, four towers, high walls and dates are sourced; whitewash and red roof are recalled from photos. The Reiterdenkmal rider monument stood beside it before 2013."
+    },
+    "windhoek-national-theatre": {
+      "venueId": "windhoek-national-theatre",
+      "city": "windhoek",
+      "name": "National Theatre of Namibia",
+      "archetype": "museum-theatre",
+      "subject": "The National Theatre: a boxy, tiered, mid-century civic building with a fly-tower, two halls (471 and 250 seats) and a plain concrete front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a8a090",
+          "#efe3c2",
+          "#5b6670"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Theatre_of_Namibia",
+          "what": "main hall 471 seats, smaller hall 250, rehearsal rooms, next to National Art Gallery in CBD (exterior not described)"
+        }
+      ],
+      "notes": "Seat counts and location are sourced; exterior form and era are inferred. Window-light concrete block with a taller stage block behind."
+    },
+    "windhoek-owela-museum": {
+      "venueId": "windhoek-owela-museum",
+      "city": "windhoek",
+      "name": "Owela Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Owela Museum (natural history branch): a small two-storey rendered building with a pitched roof, set in a fenced plot beside the National Theatre",
+      "form": {
+        "footprint": "L",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8ddc4",
+          "#a8603f",
+          "#ffffff"
+        ],
+        "roofColour": "#9b3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "colonial layer in the CBD"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. The museum's actual building is not described. Kept smaller than the Independence Museum and Alte Feste."
+    },
+    "windhoek-parliament-garden": {
+      "venueId": "windhoek-parliament-garden",
+      "city": "windhoek",
+      "name": "Parliament Garden",
+      "archetype": "park-landscape",
+      "subject": "The Parliament Gardens: wide lawns with tree-lined paths, low walls and statuary around the cream Tintenpalast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b0aaa0",
+          "#d9c29a",
+          "#7a8a6a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1913",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tintenpalast",
+          "what": "Tintenpalast surrounded by Parliament Gardens, popular with residents"
+        }
+      ],
+      "notes": "The garden's existence and setting are sourced; its contents are not. Modelled as formal lawns and paths with a few mature trees and an unnamed statue. The Tintenpalast itself is a separate model under National Assembly."
+    },
+    "windhoek-quiet-reflection": {
+      "venueId": "windhoek-quiet-reflection",
+      "city": "windhoek",
+      "name": "Christ Church",
+      "archetype": "church-gothic",
+      "subject": "Christuskirche (dedicated 1910): a church of pale quartz sandstone with a Carrara marble portico, a tall slender tower with a 24 m spire and a steep dark roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "marble",
+        "colours": [
+          "#d8c8a8",
+          "#f2efe6",
+          "#5b6670"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1907-1910",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Christ_Church,_Windhoek",
+          "what": "architect Gottlieb Redecker; neo-Romanesque, Art Nouveau and Gothic Revival; quartz sandstone from near Avis Dam; Carrara marble portico; 24 m spire; part of roof shipped from Germany; coloured lead glass windows gift of Wilhelm II; foundation 11 Aug 1907, dedicated 16 Oct 1910"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "central landmark of the CBD"
+        }
+      ],
+      "notes": "Style, materials, spire height and windows are sourced. The sandstone reads pinkish-cream; slate-grey roof colour is from photos not the source. Recognisable by the slender spire and portico, and by sitting on a traffic island above the main avenue."
+    },
+    "windhoek-recreation": {
+      "venueId": "windhoek-recreation",
+      "city": "windhoek",
+      "name": "Zoo Park",
+      "archetype": "park-landscape",
+      "subject": "Zoo Park on Independence Avenue: a landscaped central park with a pond, children's playground and open-air theatre, shaded by mature trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#a8a090",
+          "#7a8a6a",
+          "#d9c29a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "Zoo Park on Independence Avenue: landscaped, pond, playground, open-air theatre"
+        }
+      ],
+      "notes": "Pond, playground and open-air theatre are sourced; the exact plan is not. Shown as lawn, pond and a stage area. The old Windhoek zoo and the Curt von Francois statue have been removed."
+    },
+    "windhoek-sam-nujoma-stadium": {
+      "venueId": "windhoek-sam-nujoma-stadium",
+      "city": "windhoek",
+      "name": "Sam Nujoma Stadium",
+      "archetype": "stadium",
+      "subject": "The Katutura football stadium (2005, 10,300 seats): a compact oval bowl with partial covered stands and floodlights, decommissioned by CAF in 2021 for structural defects",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 105,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a8a090",
+          "#2f4a8a",
+          "#e8e8e0"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sam_Nujoma_Stadium",
+          "what": "football stadium in Katutura, 10,300 capacity, finished 2005, out of use from 2021 over structural defects, CAF decommissioned as substandard"
+        }
+      ],
+      "notes": "Capacity, date and condition are sourced; stands and roof are not described and are typed. Smaller and plainer than Setsoto Stadium in Maseru."
+    },
+    "windhoek-town-square-mall": {
+      "venueId": "windhoek-town-square-mall",
+      "city": "windhoek",
+      "name": "Town Square Mall",
+      "archetype": "mall",
+      "subject": "An older CBD mall: a three-storey rendered block built around an open court with entrances on the pedestrian street",
+      "form": {
+        "footprint": "ring",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9b47a",
+          "#7d8a8f",
+          "#efe3c2"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. Next to Wernhil; here drawn as the smaller older block with ochre render so the two malls differ."
+    },
+    "windhoek-transit": {
+      "venueId": "windhoek-transit",
+      "city": "windhoek",
+      "name": "Windhoek Central Bus Station",
+      "archetype": "transport-station",
+      "subject": "The central bus station: an open paved terminal with long steel shelters, kiosks and a ticket hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#3b8ea5",
+          "#a24a36"
+        ],
+        "roofColour": "#7d8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. The CBD intercity/city bus terminal near the railway station; looks are typed."
+    },
+    "windhoek-transnamib-railway-museum": {
+      "venueId": "windhoek-transnamib-railway-museum",
+      "city": "windhoek",
+      "name": "TransNamib Railway Museum",
+      "archetype": "museum-theatre",
+      "subject": "The railway museum in the historic Windhoek station area: a Wilhelmine station hall with a steep tiled roof and steam locomotives on tracks outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c2",
+          "#9b3b2c",
+          "#f5f1e6"
+        ],
+        "roofColour": "#9b3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1912",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "Windhoek Railway Station is a historic station that still serves the city; German colonial era buildings"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alte_Feste",
+          "what": "comparison for the colonial-era Wilhelmine look"
+        }
+      ],
+      "notes": "The museum's exact building is not described. It is treated as the 1912 Wilhelmine station building and yard (the museum itself is housed in the station). Medium because the station is sourced; form is typed. Locomotives stand on a short length of track."
+    },
+    "windhoek-wernhil-shopping-centre": {
+      "venueId": "windhoek-wernhil-shopping-centre",
+      "city": "windhoek",
+      "name": "Wernhil Shopping Centre",
+      "archetype": "mall",
+      "subject": "Wernhil Park: a large multi-level CBD mall tied to a hotel and parkade, with a rendered curved front, glazed atrium and rooftop parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe3c2",
+          "#6b7a80",
+          "#9b3b2c"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "CBD context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. Windhoek's largest city-centre mall; bigger and taller than Town Square Mall. Details come from general knowledge, not a fetched source."
+    },
+    "windhoek-windhoek-city-hill": {
+      "venueId": "windhoek-windhoek-city-hill",
+      "city": "windhoek",
+      "name": "Windhoek City Hill",
+      "archetype": "park-landscape",
+      "subject": "City Hill above the CBD: a bare rocky ridge with scrub aloes, a gravel path and a lookout platform with a view of the city",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#a38b6e",
+          "#7a6a52",
+          "#b9835a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Windhoek",
+          "what": "hilly semi-arid setting at ~1,655 m"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Windhoek city style and the place type. No description; modelled as a rocky Khomas Hochland ridge with lookout, near Heinitzburg and the Tintenpalast ridge."
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "polaris-bank-calabar",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1467998201",
+   "used": "real outline: a long rotated rectangle about 37 x 16 m, named Polaris Bank, name-quality match"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey rendered branch, glazed banking hall, entrance canopy, blank signboard, car park; no public photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 9,
+   "storeys": 2,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dd",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "glassColour": "#4a4f5c",
+    "bands": "#c4bfb2",
+    "plinth": 0.4,
+    "groundKind": "curtain",
+    "groundHeight": 4.2,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8e8a",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#4a4f5c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2.2,
+    "bottom": 2.6,
+    "colour": "#c4bfb2",
+    "frameColour": "#4a4f5c"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -12
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     10
+    ],
+    "height": 8
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -10,
+     -26
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     -4,
+     -26
+    ],
+    "yawDeg": 0
+   },
+   {
+    "at": [
+     4,
+     -26
+    ],
+    "yawDeg": 180
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists: OSM outline plus brief only; facade details, canopy and colours are typical, not observed."
+ }
+}

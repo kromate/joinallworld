@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "yobe-state-house-of-assembly",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Yobe_State_House_of_Assembly",
+   "used": "role and seat only; no photo or OSM footprint found, so the composition is a typical Nigerian state assembly: two-storey cream chamber block with a columned entrance, small dome, flags and a fenced lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    -23,
+    2
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b9a98a",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    23,
+    2
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b9a98a",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     22,
+     28
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b9a98a",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6a7075",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 9,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f2efe6",
+    "roofColour": "#8d9296"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    6,
+    13
+   ],
+   "params": {
+    "radius": 5,
+    "profile": "hemi",
+    "drum": 2.5,
+    "lantern": 1.5,
+    "finial": 1.5,
+    "colour": "#c9c3b2",
+    "drumColour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -16,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.5,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -22,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 4,
+    "spread": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or footprint found; typical state-assembly composition (cream chamber block, portico, dome), not this actual building"
+ }
+}

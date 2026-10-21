@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "edo-line",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/84435892",
+   "used": "40x18 m booking office footprint (nearest match 7.5 m); rest from brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e3ddc9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#8a5b3c"
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.2,
+    "overhang": 1.2,
+    "colour": "#7a7a76",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    22,
+    -26
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 20,
+    "depth": 6,
+    "height": 3.4,
+    "colour": "#8a5b3c",
+    "roofColour": "#7a7a76"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -22,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#8a5b3c",
+    "posts": false
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "coach",
+    "density": 0.9,
+    "colours": [
+     "#f1f1ee",
+     "#c4bfb2",
+     "#8a5b3c"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "kind": "mixed",
+    "density": 0.7
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.4,
+    "colour": "#c4bfb2",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Footprint only; sheds, buses and wall are brief-typed, no photo."
+ }
+}

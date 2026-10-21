@@ -1,0 +1,272 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "ayegbaju-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/osogbo.json",
+   "used": "2014 state-built market: lock-up shop blocks with galleries, open stalls, warehouses; OSM building is only a 110 m2 piece of a 9 ha site so it is not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shops-north",
+   "footprint": {
+    "rect": [
+     70,
+     12
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    },
+    "plinth": 0.4,
+    "bands": "#2f6b8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops-west",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    -38,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#b8452e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "warehouse",
+   "footprint": {
+    "rect": [
+     30,
+     18
+    ]
+   },
+   "at": [
+    30,
+    2
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9fb0b8",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8c8a",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -10,
+     0
+    ],
+    "end": [
+     14,
+     -10,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "mass",
+     "id": "stall",
+     "footprint": {
+      "rect": [
+       5,
+       3.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0,
+     "height": 2.6,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#b8452e",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#2f6b8a",
+      "material": "corrugated",
+      "pitch": 6,
+      "overhang": 0.3
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -3,
+     0
+    ],
+    "end": [
+     14,
+     -3,
+     0
+    ],
+    "count": 8,
+    "of": {
+     "type": "mass",
+     "id": "stall2",
+     "footprint": {
+      "rect": [
+       5,
+       3.5
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "z0": 0,
+     "height": 2.6,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#2f6b8a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "shed",
+      "colour": "#b8452e",
+      "material": "corrugated",
+      "pitch": 6,
+      "overhang": 0.3
+     }
+    }
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "pillar": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.5,
+    "bottom": 2.0,
+    "colour": "#2f6b8a",
+    "frameColour": "#e8e4d8",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   80
+  ]
+ }
+}

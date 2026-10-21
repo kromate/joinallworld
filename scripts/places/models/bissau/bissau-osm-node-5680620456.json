@@ -1,0 +1,564 @@
+{
+ "name": "Monumento a Diogo Gomes",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DC_-_Foto_Serra_No_136_-_Monumento_a_Diogo_Gomes_e_Edif%C3%ADcio_das_Alf%C3%A2ndegas_-_Bissau.jpg",
+   "licence": "Public domain",
+   "author": "Foto Serra",
+   "view": "front",
+   "used": "tall pale plinth with bronze standing statue, long two-storey customs building behind with terracotta hip roof and round-cornered tower at right, paving, green benches, trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:DC_-_AGU_-_Guin%C3%A9_Portuguesa_-_Monumento_a_Diogo_Gomes%2C_em_Bissau.jpg",
+   "licence": "Public domain",
+   "author": "AGU",
+   "view": "side",
+   "used": "plinth proportion and statue size against the building"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/131390129",
+   "used": "customs building size only (31.8 x 13 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    -18,
+    -14
+   ],
+   "params": {
+    "rect": [
+     44,
+     30
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#cdc5b3"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "plaza-disc",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#d6cfbd",
+    "profile": [
+     [
+      0,
+      0.3
+     ],
+     [
+      10,
+      0.3
+     ],
+     [
+      10,
+      0.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "step-a",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#cbc5b5",
+    "profile": [
+     [
+      0,
+      0.6
+     ],
+     [
+      5.6,
+      0.6
+     ],
+     [
+      5.6,
+      0.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "step-b",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#d2ccbc",
+    "profile": [
+     [
+      0,
+      0.9
+     ],
+     [
+      4.2,
+      0.9
+     ],
+     [
+      4.2,
+      1.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    -14,
+    -8
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "z0": 1.2,
+    "height": 6.2,
+    "colour": "#d9d3c3",
+    "topColour": "#c9c3b3"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-cap",
+   "at": [
+    -14,
+    -8
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     3.5
+    ],
+    "z0": 7.4,
+    "height": 0.5,
+    "colour": "#c4bdac"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -14,
+    -8,
+    7.9
+   ],
+   "params": {
+    "height": 6.0,
+    "colour": "#6b6d62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "customs",
+   "footprint": {
+    "rect": [
+     36,
+     12
+    ]
+   },
+   "at": [
+    5,
+    27
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8cb",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "windowShape": "rect",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 1.6,
+      "spacing": 3.4,
+      "width": 0.5,
+      "colour": "#efe6da",
+      "backColour": "#a8a095",
+      "faces": [
+       "front"
+      ],
+      "storeys": 1
+     },
+     {
+      "type": "bands",
+      "colour": "#d4c4b3",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c8553a",
+    "material": "clay-tile",
+    "pitch": 13,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "at": [
+    20.5,
+    25
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#eadccd",
+    "topColour": "#d9c9b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-balcony",
+   "at": [
+    20.5,
+    25
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 14.5,
+    "height": 0.5,
+    "colour": "#d4c4b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "at": [
+    20.5,
+    25
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     5.6
+    ],
+    "z0": 17,
+    "height": 0.6,
+    "colour": "#c9b9a7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-slit",
+   "at": [
+    20.5,
+    22.3
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 3,
+    "height": 9,
+    "colour": "#6d665e"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -4,
+    -12
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    8,
+    -12
+   ],
+   "params": {
+    "count": 1
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    -5,
+    -18
+   ],
+   "params": {
+    "width": 30,
+    "depth": 8,
+    "colour": "#7aa05a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "tower-bay",
+   "at": [
+    20.5,
+    22.4,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#cfe0e2",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.7,
+      0
+     ],
+     [
+      1.7,
+      14.5
+     ],
+     [
+      0,
+      14.5
+     ]
+    ],
+    "arcade": {
+     "from": 1.2,
+     "to": 14,
+     "count": 8,
+     "width": 0.4,
+     "height": 12.4,
+     "sill": 1.4,
+     "shape": "rect",
+     "depth": 0.3
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 6,
+    "start": [
+     19.1,
+     20.7
+    ],
+    "end": [
+     21.9,
+     20.7
+    ],
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.12,
+       0.12
+      ],
+      "z0": 1.2,
+      "height": 12.8,
+      "colour": "#eadccd"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-room",
+   "at": [
+    20.5,
+    25
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.6
+    ],
+    "z0": 17.6,
+    "height": 2.6,
+    "colour": "#eadccd",
+    "topColour": "#c9b9a7"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-rail",
+   "at": [
+    20.5,
+    22.1
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     0.1
+    ],
+    "z0": 15.0,
+    "height": 0.9,
+    "colour": "#bfb5a6"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -3,
+    -10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    -9
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8.5,
+    "count": 3,
+    "spread": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -8
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "spread": 2.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1,
+    "spread": 0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    2,
+    -12
+   ],
+   "params": {
+    "count": 2
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    -18,
+    2
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3,
+    "colour": "#4f7f45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-node-5680620456",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower bay is a simple glazed cylinder with mullions, rail only a low slab; ground arcade is flat pilotis; statue generic; trees low-poly lollipops; hedges absent; building still shorter than photo"
+ }
+}

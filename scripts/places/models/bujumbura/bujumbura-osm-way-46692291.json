@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-way-46692291",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/46692291",
+   "used": "real outline of the plaza strip (205 m long, scaled by 0.575 to the 118 m clamp)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rond_point_Bujumbura.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Arthur Nkunzimana",
+   "view": "street",
+   "used": "setting only: low cream and red-trimmed Belgian-era shopfront blocks, pale stone monument gateway with a flag mast, palms; the square's own monument is not visible so the obelisk is a typed estimate"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "polygon": [
+     [
+      -13.3,
+      -21.6
+     ],
+     [
+      -11.6,
+      -66.1
+     ],
+     [
+      -9.9,
+      -68.6
+     ],
+     [
+      -5.8,
+      -70.5
+     ],
+     [
+      0.3,
+      -68.1
+     ],
+     [
+      3.7,
+      -30.5
+     ],
+     [
+      7.2,
+      -22.1
+     ],
+     [
+      22.3,
+      39.7
+     ],
+     [
+      22.8,
+      42.8
+     ],
+     [
+      22.2,
+      45.3
+     ],
+     [
+      20.6,
+      46.5
+     ],
+     [
+      17.9,
+      47.3
+     ],
+     [
+      -7.6,
+      47.1
+     ],
+     [
+      -9.7,
+      46.3
+     ],
+     [
+      -11.3,
+      45.1
+     ],
+     [
+      -12.8,
+      42.8
+     ]
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base1",
+   "at": [
+    5,
+    34
+   ],
+   "params": {
+    "rect": [
+     14,
+     14
+    ],
+    "z0": 0.5,
+    "height": 0.5,
+    "colour": "#a7a296"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base2",
+   "at": [
+    5,
+    34
+   ],
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "z0": 1.0,
+    "height": 0.5,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base3",
+   "at": [
+    5,
+    34
+   ],
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 1.5,
+    "height": 1.4,
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "obelisk",
+   "at": [
+    5,
+    34,
+    2.9
+   ],
+   "params": {
+    "colour": "#e4ded0",
+    "topColour": "#e4ded0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 16,
+      "rect": [
+       1.7,
+       1.7
+      ]
+     },
+     {
+      "z": 16.8,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "basin",
+   "at": [
+    5,
+    34,
+    0.5
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#cfcac0",
+    "profile": [
+     [
+      10.2,
+      0,
+      "#cfcac0"
+     ],
+     [
+      10.2,
+      0.6
+     ],
+     [
+      9.6,
+      0.6
+     ],
+     [
+      9.6,
+      0.2,
+      "#6fa8c4"
+     ],
+     [
+      0,
+      0.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -11,
+    16,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 5.5,
+    "colours": [
+     "#2e7d32",
+     "#c62828",
+     "#ffffff",
+     "#2e7d32",
+     "#c62828",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    -62,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "line": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -36,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 6,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    5,
+    34,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 10,
+    "spread": 24
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    5,
+    24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#bdb8aa"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-e",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    38,
+    13
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-w",
+   "footprint": {
+    "rect": [
+     28,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    13
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1cf9a",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f80",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   120,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the square or its monument: obelisk, flags and flanking blocks are typed estimates on the real outline scaled to 118 m"
+ }
+}

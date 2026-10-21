@@ -1,0 +1,1284 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "alofi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "alofi",
+    "climate": "tropical-maritime",
+    "vernacular": "A low, spread-out capital on a raised coral plateau: single-storey cyclone-resistant concrete-block buildings, rendered and painted in whites, creams and pastels, under low-pitched or hipped corrugated-iron roofs in red, green or blue, with louvred windows, open verandahs and concrete water tanks; many rebuilt after Cyclone Heta (2004). Coconut palms, pandanus and broadleaf trees on grass over sharp coral limestone.",
+    "wallColours": [
+      "#f1ece0",
+      "#d8c9a6",
+      "#9fc3c9",
+      "#e7b98f",
+      "#c8d5a8",
+      "#b5aca0"
+    ],
+    "roofColours": [
+      "#b5483c",
+      "#3d6b8a",
+      "#6f7f86",
+      "#3f7a5a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Niuean hiapo (tapa) geometric patterns and pandanus-weave motifs on cultural buildings, coral-rock boundary walls, open-sided fale-style shelters at beaches and lookouts, church towers with simple louvred belfries, and Niue and New Zealand flags on public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Niue",
+        "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Alofi",
+        "what": "Capital on Alofi Bay (west coast, elevation 21 m); Cyclone Heta (2004) destroyed many buildings incl. the hospital; government buildings moved to Fonuakula; tropical rainforest climate; small Sir Roberts Wharf"
+      }
+    ]
+  },
+  "places": {
+    "alofi-airport-alofi-airport": {
+      "venueId": "alofi-airport-alofi-airport",
+      "city": "alofi",
+      "name": "Niue International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Niue's single low terminal building beside the 2.3 km runway: one storey, long and skewed, with a deep forecourt canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "small-island-terminal"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f1ece0",
+          "#3d6b8a",
+          "#ffffff"
+        ],
+        "roofColour": "#6f7f86",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue_International_Airport",
+          "what": "Runway 10/28 about 2,335 m, upgraded 1981; elevation 64 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Airport built 1970, opened to commercial passengers 1971"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/110028544",
+          "what": "OSM way 110028544: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Footprint measured from OSM aeroway=terminal (55x20 m, 1,079 m2; a second 1,021 m2 terminal-tagged building exists). Wikipedia gives only the runway and dates, not the terminal look, so colours and canopy are typed from the island style."
+    },
+    "alofi-clinic": {
+      "venueId": "alofi-clinic",
+      "city": "alofi",
+      "name": "Niue Foou Hospital",
+      "archetype": "hospital",
+      "subject": "The single-storey Niue Foou (\"new\") Hospital, a multi-wing low block with a ground-mounted solar array in the front garden",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 49,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "multi-wing-single-storey",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f1ece0",
+          "#3d6b8a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "large ground array in front (about 30 kW)"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alofi",
+          "what": "Capital on Alofi Bay (west coast, elevation 21 m); Cyclone Heta (2004) destroyed many buildings incl. the hospital; government buildings moved to Fonuakula; tropical rainforest climate; small Sir Roberts Wharf"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1557077",
+          "what": "OSM relation 1557077: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Plan taken from OSM (89.5x49.4 m multi-wing outline with the stepped east end). Wikipedia confirms the ground-mounted solar array in front and that the previous hospital was destroyed by Cyclone Heta in 2004; storeys and colours inferred."
+    },
+    "alofi-community-notices": {
+      "venueId": "alofi-community-notices",
+      "city": "alofi",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "A tiny rendered hut with a pitched roof and a covered notice board in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7.3,
+        "depth_m": 6.6,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "hip",
+        "variant": "notice-hut"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#9fc3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank notice board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/661247351",
+          "what": "OSM way 661247351: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Nearest OSM building, 7.3x6.6 m, 30 m away."
+    },
+    "alofi-community-voting-game": {
+      "venueId": "alofi-community-voting-game",
+      "city": "alofi",
+      "name": "Niue Assembly",
+      "archetype": "civic-palace",
+      "subject": "The Fale Fono (Niue Assembly): a low irregular-plan government building with a hipped roof, front steps and flagpoles",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 38,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "variant": "small-legislature",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#3d6b8a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue_Assembly",
+          "what": "Assembly meets in Alofi; infobox photo only, no description"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alofi",
+          "what": "Capital on Alofi Bay (west coast, elevation 21 m); Cyclone Heta (2004) destroyed many buildings incl. the hospital; government buildings moved to Fonuakula; tropical rainforest climate; small Sir Roberts Wharf"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/311687088",
+          "what": "OSM way 311687088: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM building=government, 38x24 m, irregular eight-point outline, matches the point. No source describes the facade, so colours are from the island style. Government buildings moved to Fonuakula after 2004."
+    },
+    "alofi-community-workshop": {
+      "venueId": "alofi-community-workshop",
+      "city": "alofi",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "A plain block-built workshop with a gable corrugated roof and a concrete water tank beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable",
+        "variant": "workshop-shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5aca0",
+          "#6f7f86",
+          "#f1ece0"
+        ],
+        "roofColour": "#6f7f86",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "round concrete tank 9 m across"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/383348061",
+          "what": "OSM way 383348061: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. The nearest OSM object (38 m) is a round storage tank, 8.8 m across, used as the water-tank feature."
+    },
+    "alofi-market-game": {
+      "venueId": "alofi-market-game",
+      "city": "alofi",
+      "name": "Market of Niue",
+      "archetype": "market-open",
+      "subject": "A long open-sided market shed with a low corrugated roof and trestle stalls facing the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "roadside-market-shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#c9a77c",
+          "#f1ece0",
+          "#6f7f86"
+        ],
+        "roofColour": "#3d6b8a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/547136282",
+          "what": "OSM way 547136282: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM amenity=marketplace building named Market of Niue, 27x12 m; the open-sided form is typed from market conventions, not a described photo."
+    },
+    "alofi-meal-stop": {
+      "venueId": "alofi-meal-stop",
+      "city": "alofi",
+      "name": "Israel Cafe",
+      "archetype": "restaurant",
+      "subject": "A small L-plan block cafe with a covered veranda and plastic tables outside",
+      "form": {
+        "footprint": "L",
+        "width_m": 14,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "hip",
+        "variant": "roadside-cafe"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7b98f",
+          "#f1ece0",
+          "#3f7a5a"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/547134917",
+          "what": "OSM way 547134917: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Name from OSM; footprint from the nearest building (14x13 m, L-shaped outline, 2 m away). Appearance not found."
+    },
+    "alofi-osm-node-3173841972": {
+      "venueId": "alofi-osm-node-3173841972",
+      "city": "alofi",
+      "name": "Anaana Lookout",
+      "archetype": "park-landscape",
+      "subject": "A small open shelter and railed platform on the coral cliff edge above the west-coast sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "cliff-lookout"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#b5aca0",
+          "#c9a77c",
+          "#f1ece0"
+        ],
+        "roofColour": "#6f7f86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open shelter"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1387910034",
+          "what": "OSM way 1387910034: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM shows a 2 m shelter object at the point. Niue coast is raised coral limestone cliff (Wikipedia); the lookout is typed, nothing found on its design."
+    },
+    "alofi-osm-node-3173841984": {
+      "venueId": "alofi-osm-node-3173841984",
+      "city": "alofi",
+      "name": "Anapala Chasm",
+      "archetype": "park-landscape",
+      "subject": "A narrow freshwater chasm between steep limestone walls in forest, reached by a timber stair and viewing rail",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "chasm-with-stairs"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#b5aca0",
+          "#c9a77c",
+          "#8a8780"
+        ],
+        "roofColour": "#6f7f86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "descending timber stair"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1387879704",
+          "what": "OSM way 1387879704: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM swimming_area polygon 62x3 m on the line of the chasm. Niue is a raised coral limestone plateau with caves and chasms (Wikipedia); stair details are from general knowledge and not confirmed."
+    },
+    "alofi-osm-node-3173841987": {
+      "venueId": "alofi-osm-node-3173841987",
+      "city": "alofi",
+      "name": "Talava Arches",
+      "archetype": "park-landscape",
+      "subject": "Natural limestone sea arches and a cave mouth at the end of a forest track on the north-east coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "sea-arches"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#b5aca0",
+          "#8a8780",
+          "#c9c3b5"
+        ],
+        "roofColour": "#6f7f86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "natural rock arches"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+        }
+      ],
+      "notes": "No OSM building; point only. Wikipedia describes a natural stone arch at Limu Pools and coastal limestone caves, not Talava itself, so this is a typed natural feature."
+    },
+    "alofi-osm-node-3174114636": {
+      "venueId": "alofi-osm-node-3174114636",
+      "city": "alofi",
+      "name": "Vaiolama Cafe & Mini-golf",
+      "archetype": "restaurant",
+      "subject": "A small hut cafe with a veranda beside a short painted mini-golf course and shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6.3,
+        "depth_m": 3.7,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "shed",
+        "variant": "cafe-with-minigolf"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9fc3c9",
+          "#f1ece0",
+          "#c9a77c"
+        ],
+        "roofColour": "#3d6b8a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low mini-golf edging"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/383348065",
+          "what": "OSM way 383348065: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Name from OSM; the nearest building is 6x4 m. Nothing further found."
+    },
+    "alofi-osm-node-5084852122": {
+      "venueId": "alofi-osm-node-5084852122",
+      "city": "alofi",
+      "name": "Hio Cafe",
+      "archetype": "restaurant",
+      "subject": "A small beach cafe hut with a deck, under a gently pitched corrugated roof near the Hio coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8.7,
+        "depth_m": 5.6,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "gable",
+        "variant": "beach-cafe"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e7b98f",
+          "#f1ece0",
+          "#c9a77c"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/660565953",
+          "what": "OSM way 660565953: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM building containing the point is 8.7x5.6 m; appearance typed."
+    },
+    "alofi-osm-node-8637114457": {
+      "venueId": "alofi-osm-node-8637114457",
+      "city": "alofi",
+      "name": "Togo Chasm",
+      "archetype": "park-landscape",
+      "subject": "A jagged field of fossil coral pinnacles around a chasm hollow with a palm grove on the floor",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "coral-pinnacle-chasm"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#a39d92",
+          "#7f7a70",
+          "#c9c3b5"
+        ],
+        "roofColour": "#6f7f86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "ladder and path down"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+        }
+      ],
+      "notes": "Wikipedia (Niue) captions \"jagged fossilised coral pinnacles at Togo\". The palm-floored chasm and ladder access are from general knowledge, not fetched."
+    },
+    "alofi-osm-way-111378893": {
+      "venueId": "alofi-osm-way-111378893",
+      "city": "alofi",
+      "name": "Niue Cultural Centre",
+      "archetype": "museum-theatre",
+      "subject": "A small single-storey cultural centre with a hipped corrugated roof and a carved-board entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.6,
+        "roof": "hip",
+        "variant": "small-museum"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ece0",
+          "#7a5a2e",
+          "#9fc3c9"
+        ],
+        "roofColour": "#b5483c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "hiapo-style panels"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/111378893",
+          "what": "OSM way 111378893: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM tourism=museum building 13.1x9.9 m, name matches; no description found."
+    },
+    "alofi-osm-way-1191533235": {
+      "venueId": "alofi-osm-way-1191533235",
+      "city": "alofi",
+      "name": "Peniamina’s Grave",
+      "archetype": "monument",
+      "subject": "A low whitewashed stone tomb enclosed by a short wall in a village cemetery, shaded by palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4.4,
+        "depth_m": 3.9,
+        "storeys": 0,
+        "height_m": 1.2,
+        "roof": "none",
+        "variant": "grave-slab"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f7f4ee",
+          "#a9a59b",
+          "#7f7a70"
+        ],
+        "roofColour": "#f7f4ee",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low kerb wall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th century (missionary Nukai Peniamina, landed 1846)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Raised coral atoll with limestone cliffs and a ~60 m plateau; 14 villages; Niue Foou Hospital has a 30 kW ground-mounted solar array in front; airport built 1970, commercial 1971; jagged fossil coral pinnacles at Togo; Huvalu forest; coconut and taro"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1191533235",
+          "what": "OSM way 1191533235: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Wikipedia (Niue): the missionary Nukai Peniamina returned in 1846 and landed at Mutalau. OSM draws a 4.4x3.9 m enclosure. The grave look is typed."
+    },
+    "alofi-osm-way-310211852": {
+      "venueId": "alofi-osm-way-310211852",
+      "city": "alofi",
+      "name": "Washaway Cafe",
+      "archetype": "restaurant",
+      "subject": "A small beach-front cafe shed on stilts with a veranda facing the reef",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8.8,
+        "depth_m": 6.4,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed",
+        "variant": "beach-shed-cafe"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9fc3c9",
+          "#c9a77c",
+          "#f1ece0"
+        ],
+        "roofColour": "#3d6b8a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/310211852",
+          "what": "OSM way 310211852: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Name and 8.8x6.4 m building from OSM. Appearance typed."
+    },
+    "alofi-osm-way-311687085": {
+      "venueId": "alofi-osm-way-311687085",
+      "city": "alofi",
+      "name": "Falala Cafe & Bar",
+      "archetype": "restaurant",
+      "subject": "A rectangular cafe-bar with a wraparound veranda and a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16.6,
+        "depth_m": 11.4,
+        "storeys": 1,
+        "height_m": 4.4,
+        "roof": "hip",
+        "variant": "bar-cafe"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e7b98f",
+          "#f1ece0",
+          "#3f7a5a"
+        ],
+        "roofColour": "#3f7a5a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/311687085",
+          "what": "OSM way 311687085: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Name and 16.6x11.4 m building from OSM. Appearance typed."
+    },
+    "alofi-osm-way-693372026": {
+      "venueId": "alofi-osm-way-693372026",
+      "city": "alofi",
+      "name": "Swanson Complex",
+      "archetype": "market-hall",
+      "subject": "A large rambling retail complex of connected flat-roofed sheds around a car park in Alofi",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 81,
+        "depth_m": 64,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "supermarket-complex",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3c4",
+          "#3d6b8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/693372026",
+          "what": "OSM way 693372026: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM building 3,094 m2, 81x64 m, long diagonal outline with a courtyard notch. It is the biggest building in the town; nothing described its look."
+    },
+    "alofi-quiet-reflection": {
+      "venueId": "alofi-quiet-reflection",
+      "city": "alofi",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "church-modern",
+      "subject": "A white rendered church with a plain nave, a louvred front belfry and a pitched roof, facing a lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "village-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f7f4ee",
+          "#9fc3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#3d6b8a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front tower with louvred belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niue",
+          "what": "Ekalesia Niue is the largest church (61.4 percent); no building described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/438445888",
+          "what": "OSM way 438445888: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. The OSM way at the point is a car park (1,040 m2), so no footprint. Typed as a typical Pacific mission church."
+    },
+    "alofi-recreation": {
+      "venueId": "alofi-recreation",
+      "city": "alofi",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "A mown green with an open-sided fale-style shelter and shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "village-green-fale"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#6f8f4e",
+          "#f1ece0"
+        ],
+        "roofColour": "#3d6b8a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open fale shelter"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/383348085",
+          "what": "OSM way 383348085: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Nearest OSM building 14x10 m used as the shelter scale."
+    },
+    "alofi-transit": {
+      "venueId": "alofi-transit",
+      "city": "alofi",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A small roadside bus shelter with a pitched corrugated roof on posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11.6,
+        "depth_m": 7.7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable",
+        "variant": "bus-shelter"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5aca0",
+          "#6f7f86",
+          "#f1ece0"
+        ],
+        "roofColour": "#3d6b8a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/383348128",
+          "what": "OSM way 383348128: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Nearest OSM building 11.6x7.7 m."
+    }
+  }
+}

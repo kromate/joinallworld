@@ -1,0 +1,80 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "rafin-sanyi-rock",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "no photo found (Wikidata Q134622971 'Rocks in Taraba state'). Brief: bare granite inselberg, scrub and laterite, worn path. OSM nearest match is a small building 54 m away, not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 120,
+    "depth": 90,
+    "height": 35,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#8a8279",
+    "boulders": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    -38,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 6,
+    "spread": 4,
+    "line": 70
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    40,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 4,
+    "spread": 4,
+    "line": -40
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic granite inselberg, no footpath"
+ }
+}

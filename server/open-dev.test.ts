@@ -326,7 +326,7 @@ test('the Worker host: its import graph holds no open-mode code and not the Node
   assert.match(await openDevRefusal({ ALLWORLD_OPEN_DEV: '1' })!.text(), /never honoured here/);
   // The Worker calls it first thing, before it touches anything else.
   const worker = readFileSync(join(root, 'deploy/cloudflare-worker.ts'), 'utf8');
-  assert.match(worker, /async fetch\(request: Request, env: WorkerEnv\): Promise<Response> \{\s*\/\/[^\n]*\n\s*const misconfigured = openDevRefusal\(env\);\s*if \(misconfigured\) return misconfigured;/);
+  assert.match(worker, /async fetch\(request: Request, env: WorkerEnv(?:, ctx\?: \{ waitUntil\(work: Promise<unknown>\): void \})?\): Promise<Response> \{\s*\/\/[^\n]*\n\s*const misconfigured = openDevRefusal\(env\);\s*if \(misconfigured\) return misconfigured;/);
   const local = readFileSync(join(root, 'deploy/local.ts'), 'utf8');
   assert.match(local, /ALLWORLD_OPEN_DEV !== undefined\) \{ console\.error\([^\n]*process\.exit\(1\)/);
   assert.ok(!/ALLWORLD_OPEN_DEV/.test(local.split('\n').filter((line) => /bindings\[/.test(line)).join('\n')), 'the setting is never passed on to the Worker');

@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "katsina-lga-council",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/katsina.json",
+   "used": "typed brief: 45x18 m two-storey rendered office block, hip corrugated roof, flag pole, gated forecourt; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     45,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#8f6b4a",
+    "faces": {
+     "front": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 1.2,
+    "count": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#3f7f8a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2,
+    "colour": "#e8dfc8",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -22,
+    -22,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -27,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     -18
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     28,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typed from brief, details (gate relief, exact plan) unverified"
+ }
+}

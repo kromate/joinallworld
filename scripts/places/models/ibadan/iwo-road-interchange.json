@@ -1,0 +1,832 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "iwo-road-interchange",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ibadan_Iwo_Road_Bus_Terminal_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ogundele1",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ibadan/iwo1.jpg",
+   "used": "long flat grey roof slab on slim columns over open bus bays, cream solid end blocks, upper gallery with railing, leaning corner strut, red blank fascia board, white minibuses and umbrella stalls on the apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ibadan_Iwo_Road_Bus_Terminal_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ogundele1",
+   "view": "front",
+   "file": "/tmp/places-evidence/ibadan/iwo2.jpg",
+   "used": "overall length-to-height proportion and the end block with angled canopy edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     70
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#cdb48a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-l",
+   "at": [
+    -40,
+    6
+   ],
+   "z0": 0,
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d0b8",
+    "windows": "none",
+    "bands": "#c9bfa4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9094",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-r",
+   "at": [
+    38,
+    6
+   ],
+   "z0": 0,
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d0b8",
+    "windows": "none",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9094",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "at": [
+    0,
+    12
+   ],
+   "z0": 0,
+   "footprint": {
+    "rect": [
+     56,
+     4
+    ]
+   },
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d4cbb2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9094",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     58,
+     10
+    ],
+    "z0": 4.4,
+    "height": 0.5,
+    "colour": "#d9d0b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -3,
+    4.9
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.1,
+    "kind": "railing",
+    "colour": "#3c3f42"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof",
+   "at": [
+    0,
+    2
+   ],
+   "params": {
+    "rect": [
+     100,
+     26
+    ],
+    "z0": 8.8,
+    "height": 1.4,
+    "colour": "#585b5e",
+    "topColour": "#686b6e"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cols0",
+   "params": {
+    "mode": "line",
+    "count": 13,
+    "start": [
+     -33,
+     -9,
+     0
+    ],
+    "end": [
+     33,
+     -9,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.9
+      ],
+      "height": 8.8,
+      "colour": "#cfc6ac"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cols1",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -33,
+     -1,
+     0
+    ],
+    "end": [
+     33,
+     -1,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.9
+      ],
+      "height": 8.8,
+      "colour": "#cfc6ac"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cols2",
+   "params": {
+    "mode": "line",
+    "count": 13,
+    "start": [
+     -33,
+     7,
+     0
+    ],
+    "end": [
+     33,
+     7,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.9
+      ],
+      "height": 8.8,
+      "colour": "#cfc6ac"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut",
+   "params": {
+    "width": 1.1,
+    "height": 1.4,
+    "colour": "#6e7174",
+    "points": [
+     [
+      -52,
+      -16,
+      10.2
+     ],
+     [
+      -47,
+      -12,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-sign",
+   "at": [
+    -8,
+    -13.2
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "z0": 7.1,
+    "height": 1.8,
+    "colour": "#efe6cf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia-sign2",
+   "at": [
+    -8,
+    -13.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     0.3
+    ],
+    "z0": 7.7,
+    "height": 0.8,
+    "colour": "#c8372d"
+   }
+  },
+  {
+   "type": "array",
+   "id": "buses",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -30,
+     -8,
+     0
+    ],
+    "end": [
+     30,
+     -8,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.1,
+       5.4
+      ],
+      "height": 2.5,
+      "colour": "#f0f0ec",
+      "topColour": "#e6e6e2"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "at": [
+    0,
+    9.4
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.6
+    ],
+    "z0": 0,
+    "height": 8.8,
+    "colour": "#d9d0b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gallery-band",
+   "at": [
+    0,
+    -3.4
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.5
+    ],
+    "z0": 4.9,
+    "height": 1.0,
+    "colour": "#d9d0b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "strut2",
+   "params": {
+    "width": 0.9,
+    "height": 1.2,
+    "colour": "#6e7174",
+    "points": [
+     [
+      -50,
+      -14,
+      10.2
+     ],
+     [
+      -45.5,
+      -11,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "buses3",
+   "params": {
+    "mode": "line",
+    "count": 9,
+    "start": [
+     -32,
+     -6,
+     0
+    ],
+    "end": [
+     32,
+     -6,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.1,
+       5.4
+      ],
+      "height": 2.5,
+      "colour": "#f0f0ec",
+      "topColour": "#e6e6e2"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "buses4",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -30,
+     -20,
+     0
+    ],
+    "end": [
+     30,
+     -20,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.1,
+       5.4
+      ],
+      "height": 2.5,
+      "colour": "#eeeeea"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "umb0",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -34.0,
+     -28.0,
+     0
+    ],
+    "end": [
+     -10,
+     -28.0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#d65a4a",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        0.05,
+        1.9
+       ],
+       [
+        1.5,
+        2.0
+       ],
+       [
+        0.0,
+        2.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umb1",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -30.7,
+     -24.5,
+     0
+    ],
+    "end": [
+     -1,
+     -24.5,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#e0b030",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        0.05,
+        1.9
+       ],
+       [
+        1.5,
+        2.0
+       ],
+       [
+        0.0,
+        2.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umb2",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -27.4,
+     -21.0,
+     0
+    ],
+    "end": [
+     8,
+     -21.0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#4a7fc0",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        0.05,
+        1.9
+       ],
+       [
+        1.5,
+        2.0
+       ],
+       [
+        0.0,
+        2.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umb3",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -24.1,
+     -28.0,
+     0
+    ],
+    "end": [
+     17,
+     -28.0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#3f9a5a",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        0.05,
+        1.9
+       ],
+       [
+        1.5,
+        2.0
+       ],
+       [
+        0.0,
+        2.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umb4",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -20.8,
+     -24.5,
+     0
+    ],
+    "end": [
+     26,
+     -24.5,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#b04a9a",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        0.05,
+        1.9
+       ],
+       [
+        1.5,
+        2.0
+       ],
+       [
+        0.0,
+        2.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "umb5",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -17.5,
+     -21.0,
+     0
+    ],
+    "end": [
+     35,
+     -21.0,
+     0
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#e8e2d0",
+      "profile": [
+       [
+        0.05,
+        0
+       ],
+       [
+        0.05,
+        1.9
+       ],
+       [
+        1.5,
+        2.0
+       ],
+       [
+        0.0,
+        2.5
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "id": "poles",
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -30,
+     -34,
+     0
+    ],
+    "end": [
+     40,
+     -34,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 9,
+      "colour": "#7a6a58"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no crowd or traffic, stalls schematic, strut approximate, end block plain"
+ }
+}

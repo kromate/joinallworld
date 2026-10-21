@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-airport-moroni-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Air_Tanzania_B737_at_Hahaya_Airport.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Air Tanzania",
+   "view": "back",
+   "file": "/tmp/places-evidence/moroni/ap1.jpg",
+   "used": "long low terminal with a thin overhanging pale-grey curved-edge roof slab, white upper wall band, tall glazed bay at the right end, lower white plinth walls, apron, aircraft stairs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ST-DG-Moroni.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hegor",
+   "view": "detail",
+   "used": "blue-green reflective curtain glazing with diagonal bracing, grey louvred upper cladding, flat canopy edge, pale grey frame"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1054665956",
+   "used": "overall footprint scale (about 73 x 50 m); modelled as a longer, shallower airside-facing terminal as the photo shows"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.99,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     60,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d6",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d8d6",
+    "material": "metal-sheet",
+    "overhang": 3.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    40,
+    -3
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f5f0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d8d6",
+    "overhang": 0.5,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bay",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    28,
+    -3
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#f1efe8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d5d8d6",
+    "material": "metal-sheet",
+    "overhang": 3.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -40,
+    -6
+   ],
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c8c8",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-wall",
+   "footprint": {
+    "rect": [
+     34,
+     3
+    ]
+   },
+   "at": [
+    -30,
+    -14
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f3ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/airliner",
+   "at": [
+    -20,
+    -17,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "scale": 1.05,
+    "colour": "#f2f4f5",
+    "tailColour": "#efe6cf"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#e0e0e0",
+    "count": 2,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "stair",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 1.6,
+    "height": 3.2,
+    "run": 3.0,
+    "colour": "#c9c9c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "airliner is small and low against the terminal; roof edge is square not rounded; glazing is uniform across the hall front; lamp mast head is a single head"
+ }
+}

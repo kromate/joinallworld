@@ -1,0 +1,1643 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lima",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lima",
+    "climate": "desert",
+    "vernacular": "Mild coastal desert city under grey garua cloud: flat-roofed 2-6 storey concrete-frame and brick buildings plastered in beige, ochre, cream and pastel paint with exposed rebar on unfinished top floors, water tanks on the roof, a colonial and republican core of yellow-painted stucco with carved timber balconies, mid-century modernist public buildings in the 1950s, glass towers in San Isidro and Miraflores, and pre-Hispanic adobe huacas scattered among the districts.",
+    "wallColours": [
+      "#e3cfa8",
+      "#e9d9a0",
+      "#d5c3a3",
+      "#f0ebdd",
+      "#b9a58a",
+      "#c9806a",
+      "#7aa0b0"
+    ],
+    "roofColours": [
+      "#a8a39a",
+      "#8d867c",
+      "#a65a3c",
+      "#6f7b84"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "brick",
+      "stucco",
+      "glass-curtain",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "none"
+    ],
+    "ornament": "Carved timber enclosed balconies (cajones) on colonial and republican facades, Renaissance and baroque stone and stucco church fronts, mid-century modernist reliefs and murals, Paracas textile and Pre-Inca geometric motifs on new public architecture, gaudi-style mosaic benches in clifftop parks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Lima",
+        "what": "colonial cathedral/Basilica of San Francisco, republican and mid-20th-century public buildings, modern towers; mild desert climate with garua"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Cajamarquilla",
+        "what": "adobe pyramids and enclosures, ruined walls"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Jorge_Ch%C3%A1vez_International_Airport",
+        "what": "airport 2025 terminal and Paracas-textile themed design"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Huaca_Templo_Con_Con",
+        "what": "mud-cast and adobe construction with river stone mixed in"
+      }
+    ]
+  },
+  "places": {
+    "lima-airport-lima-airport": {
+      "venueId": "lima-airport-lima-airport",
+      "city": "lima",
+      "name": "Jorge Chavez International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2025 Jorge Chavez terminal seen from the central boulevard: a huge low-slung glass-fronted terminal with a long curved roof, air bridges and a tower beyond, the hotel standing in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved",
+        "variant": "new-mega-terminal",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd9de",
+          "#e3cfa8",
+          "#f0ebdd"
+        ],
+        "roofColour": "#d8d8d4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2025 (replaces 1965 terminal)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jorge_Ch%C3%A1vez_International_Airport",
+          "what": "new terminal opened 1 June 2025, new control tower April 2023, Wyndham Grand hotel in front on central boulevard, old 1965 terminal with 28 gates 19 with bridges"
+        }
+      ],
+      "notes": "No exterior description found; shape typed as a big modern glass terminal. Real width is far above the 120 m clamp, so show the central section. Nothing marks it as Lima apart from the tower and hotel."
+    },
+    "lima-clinic": {
+      "venueId": "lima-clinic",
+      "city": "lima",
+      "name": "Hospital Nacional Daniel Alcides Carrion",
+      "archetype": "hospital",
+      "subject": "The Callao national hospital opened in the 1940s: a long mid-century block of several storeys with a central entrance and projecting wings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 79,
+        "depth_m": 49,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "mid-century-hospital",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d9bf",
+          "#b9a58a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1941",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Nacional_Daniel_Alcides_Carri%C3%B3n",
+          "what": "OSM start_date 1941-12-30, 78.8 x 49.2 m (1,895 m2) hospital in Callao"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Lima",
+          "what": "state building boom of the mid-20th century"
+        }
+      ],
+      "notes": "Footprint and date from OSM. Storeys and colours are typed from the era and Lima context."
+    },
+    "lima-community-notices": {
+      "venueId": "lima-community-notices",
+      "city": "lima",
+      "name": "Instituto Geofisico del Peru",
+      "archetype": "campus-block",
+      "subject": "A small research institute building: a two-storey modernist block with a roof-mounted instrument mast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "research-institute",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9d9a0",
+          "#b9a58a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Instituto_Geof%C3%ADsico_del_Per%C3%BA",
+          "what": "OSM building 18.7 x 16.5 m"
+        }
+      ],
+      "notes": "Only the OSM footprint is measured; appearance typed."
+    },
+    "lima-community-voting-game": {
+      "venueId": "lima-community-voting-game",
+      "city": "lima",
+      "name": "Municipalidad de San Juan de Miraflores",
+      "archetype": "civic-small",
+      "subject": "The district town hall: a long three-storey block with a flag forecourt and a balcony over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 91,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "district-town-hall",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3cfa8",
+          "#c9806a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Distrito_de_San_Juan_de_Miraflores",
+          "what": "OSM townhall 90.6 x 25.9 m (1,893 m2)"
+        }
+      ],
+      "notes": "Only dimensions are measured. Colour is a typical Lima municipal palette."
+    },
+    "lima-community-workshop": {
+      "venueId": "lima-community-workshop",
+      "city": "lima",
+      "name": "Universidad Nacional Tecnologica de Lima Sur",
+      "archetype": "campus-block",
+      "subject": "A public technological university founded 2001: four-storey concrete academic blocks around a central yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "public-university",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d5c3a3",
+          "#7aa0b0",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2001 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Nacional_Tecnol%C3%B3gica_de_Lima_Sur",
+          "what": "OSM start date 2001, campus outline 158 x 149 m"
+        }
+      ],
+      "notes": "Only the outline and date are known. The facade is typed."
+    },
+    "lima-market-game": {
+      "venueId": "lima-market-game",
+      "city": "lima",
+      "name": "Real Plaza Pro",
+      "archetype": "mall",
+      "subject": "The Real Plaza Pro mall in Los Olivos: a long three-level box with a glazed entrance atrium and parking apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 168,
+        "depth_m": 65,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "regional-mall",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e3d6",
+          "#c9806a",
+          "#6f7b84"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Real_Plaza_Pro",
+          "what": "OSM building 168 x 65 m (6,800 m2); Wikidata item \"Peruvian mall\""
+        }
+      ],
+      "notes": "Dimensions from OSM. Colour and levels are typed; a template modern Peruvian mall."
+    },
+    "lima-meal-stop": {
+      "venueId": "lima-meal-stop",
+      "city": "lima",
+      "name": "Central",
+      "archetype": "restaurant",
+      "subject": "Central in Barranco: a restored 20th-century casona with a low frontage, lawn and large glazed entry designed by Rafael Freyre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "restored-casona",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d5c3a3",
+          "#4a4a44",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "old house restored 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Central_(restaurante)",
+          "what": "occupies a renovated old house in Barranco, ~3,000 m2, designed by architect Rafael Freyre; shared with Kjolle and Mayo bar"
+        }
+      ],
+      "notes": "Exterior is not described anywhere found; the casona base and the glazed entrance are assumed. The OSM outline under the pin is a different arts-centre building (65 x 62 m)."
+    },
+    "lima-osm-node-10294326057": {
+      "venueId": "lima-osm-node-10294326057",
+      "city": "lima",
+      "name": "Huaca Templo Con Con",
+      "archetype": "heritage-fort",
+      "subject": "A pre-Hispanic ceremonial adobe temple mound with thick walls on a hillside terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "stepped",
+        "variant": "adobe-temple-mound",
+        "wings": 0
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#a8845a",
+          "#8a6a48",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8845a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "andean",
+      "era": "pre-Hispanic",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Huaca_Templo_Con_Con",
+          "what": "ceremonial centre with thick walls; mud-cast and several adobe forms (conical, small rectangular bricks, adobones) mixed with river and hill stone; abandoned"
+        }
+      ],
+      "notes": "Dimensions are not documented; estimated as a small stepped mound. Shows eroded walls, not a clean reconstruction."
+    },
+    "lima-osm-node-1459528357": {
+      "venueId": "lima-osm-node-1459528357",
+      "city": "lima",
+      "name": "Santo Cristo",
+      "archetype": "church-classical",
+      "subject": "A two-storey colonial church in the old city centre with a painted stucco front and bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "colonial-parish-church",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e5c77a",
+          "#c9806a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "18th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Santo_Cristo",
+          "what": "OSM church 29.1 x 16.6 m, 2 levels, 14 m; Wikidata heritage site"
+        }
+      ],
+      "notes": "Dimensions and height are OSM; the church is a heritage listing with no description found. Yellow stucco is the typical Lima church paint."
+    },
+    "lima-osm-node-1728415463": {
+      "venueId": "lima-osm-node-1728415463",
+      "city": "lima",
+      "name": "Cajamarquilla",
+      "archetype": "heritage-fort",
+      "subject": "The ruined adobe city of Cajamarquilla: eroded rectangular enclosures and a central stepped adobe pyramid with a maze-like sector",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "stepped",
+        "variant": "adobe-pyramid-city",
+        "wings": 0
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#a8845a",
+          "#8a6a48",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8845a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 3
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "long adobe walls"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "andean",
+      "era": "Lima / Ychsma culture, c. 700-1500",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Cajamarquilla",
+          "what": "167 ha adobe city, rectangular and pyramidal buildings, four pyramid-centred complexes, walled enclosures, labyrinth sector reconstructed in the 1980s, badly eroded"
+        }
+      ],
+      "notes": "The site is 1.7 km2, so the model shows one pyramid and its walls. Colour of unburnt adobe assumed."
+    },
+    "lima-osm-relation-12280616": {
+      "venueId": "lima-osm-relation-12280616",
+      "city": "lima",
+      "name": "Universidad Nacional de Ingenieria",
+      "archetype": "campus-block",
+      "subject": "The UNI Rimac campus: a long cream modernist academic pavilion with a recessed colonnaded entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 59,
+        "depth_m": 42,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "variant": "main-pavilion",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9ddbd",
+          "#7b2d34",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Nacional_de_Ingenier%C3%ADa_(Per%C3%BA)",
+          "what": "66 ha Rimac campus with a main pavilion; institutional colours granate and crema"
+        }
+      ],
+      "notes": "The institutional colours (garnet and cream) are used for trim; the building form is not described in the source. Footprint 59 x 42 m from OSM."
+    },
+    "lima-osm-relation-6252388": {
+      "venueId": "lima-osm-relation-6252388",
+      "city": "lima",
+      "name": "Ciudad Universitaria de la Universidad Nacional Mayor de San Marcos",
+      "archetype": "campus-block",
+      "subject": "The San Marcos University City main plaza: the five-level Central Library on one side and the Rectorate on the other, with a monument between them",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "library-block",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d5c3a3",
+          "#b9a58a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#8d867c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "monument on the central plaza"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "designed 1949, opened late 1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Ciudad_Universitaria_de_la_Universidad_Nacional_Mayor_de_San_Marcos",
+          "what": "designed 1949 by Dammert, Valega, Morales Macchiavelo; Rectorate and Central Library flank the main plaza; library of four connected buildings on five levels, 19,800 m2; monument to fray Tomas de San Martin"
+        }
+      ],
+      "notes": "Colours not documented. The adjacent stadium (opened 1951, 67k capacity) is part of the campus but not this venue."
+    },
+    "lima-osm-way-375577634": {
+      "venueId": "lima-osm-way-375577634",
+      "city": "lima",
+      "name": "Estadio Municipal de La Molina",
+      "archetype": "stadium",
+      "subject": "A municipal football and athletics ground in La Molina with low stands on two sides",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 180,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "municipal-bowl",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d5c3a3",
+          "#7aa0b0",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Municipal_de_La_Molina",
+          "what": "OSM stadium 190 x 180 m (28,345 m2)"
+        }
+      ],
+      "notes": "Only the footprint is known. Small suburban stadium."
+    },
+    "lima-osm-way-379394923": {
+      "venueId": "lima-osm-way-379394923",
+      "city": "lima",
+      "name": "Estadio Municipal de Chorrillos",
+      "archetype": "stadium",
+      "subject": "A small municipal stadium in Chorrillos with open concrete terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 132,
+        "depth_m": 115,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "terraced-ground",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9b99a",
+          "#c9806a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Municipal_de_Chorrillos",
+          "what": "OSM stadium 132 x 115 m"
+        }
+      ],
+      "notes": "Only the footprint is known. Smaller and plainer than La Molina and VIDENA."
+    },
+    "lima-osm-way-401294974": {
+      "venueId": "lima-osm-way-401294974",
+      "city": "lima",
+      "name": "Estadio Atletico de la Villa Deportiva Nacional",
+      "archetype": "stadium",
+      "subject": "The VIDENA athletics stadium rebuilt for the 2019 Pan American Games: a red Olympic-grade track around a grass infield with demountable stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 226,
+        "depth_m": 186,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "athletics-oval",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c4c0b6",
+          "#b5382a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "remodelled 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Atl%C3%A9tico_de_la_Villa_Deportiva_Nacional",
+          "what": "6,800 permanent seats (up to 10,000 with demountable stands), red track, grass infield, remodelled 2019"
+        }
+      ],
+      "notes": "No roof described. Red track is the visible cue."
+    },
+    "lima-osm-way-401854468": {
+      "venueId": "lima-osm-way-401854468",
+      "city": "lima",
+      "name": "Centro Comercial Caminos del Inca",
+      "archetype": "mall",
+      "subject": "The Caminos del Inca shopping centre in Surco: a broad three-level mall with glazed fronts and a ground-level parking apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "neighbourhood-mall",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e3d6",
+          "#c9806a",
+          "#6f7b84"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Comercial_Caminos_del_Inca",
+          "what": "Wikidata shopping centre; the OSM way is a small 21.6 x 21 m bank pad building"
+        }
+      ],
+      "notes": "The OSM way is just a bank branch within the complex, so the mall size is estimated."
+    },
+    "lima-osm-way-436738985": {
+      "venueId": "lima-osm-way-436738985",
+      "city": "lima",
+      "name": "Iglesia Evangelica Coreana",
+      "archetype": "church-modern",
+      "subject": "The Korean Evangelical church in Miraflores: a plain modern box hall with a simple cross and stepped entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "evangelical-hall",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e3d6",
+          "#7aa0b0",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Inmigraci%C3%B3n_coreana_en_el_Per%C3%BA",
+          "what": "OSM 35.8 x 28 m church; Korean diaspora of Peru"
+        }
+      ],
+      "notes": "Nothing findable about the building itself; typed as a modern urban church."
+    },
+    "lima-osm-way-437330220": {
+      "venueId": "lima-osm-way-437330220",
+      "city": "lima",
+      "name": "Universidad San Juan Bautista",
+      "archetype": "campus-block",
+      "subject": "A private university campus in Chorrillos: tall glass-and-render academic towers around a car park yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "private-uni-campus",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d5c3a3",
+          "#4f6f8a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Privada_San_Juan_Bautista",
+          "what": "OSM campus outline 250 x 228 m (44,137 m2)"
+        }
+      ],
+      "notes": "Only the campus outline is known; the tall blocks are typed from the area."
+    },
+    "lima-osm-way-68674787": {
+      "venueId": "lima-osm-way-68674787",
+      "city": "lima",
+      "name": "Royal Plaza",
+      "archetype": "mall",
+      "subject": "The Royal Plaza shopping mall: a long single-level retail range about 11 m high with a deep front canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "retail-range",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3cfa8",
+          "#c9806a",
+          "#f0ebdd"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Royal_Plaza",
+          "what": "OSM building=retail, 1 level, height 11 m, 71.2 x 19 m"
+        }
+      ],
+      "notes": "Footprint and height come from OSM. Colours are typed."
+    },
+    "lima-osm-way-76554673": {
+      "venueId": "lima-osm-way-76554673",
+      "city": "lima",
+      "name": "Plaza Ramon Castilla",
+      "archetype": "park-landscape",
+      "subject": "The oval Plaza Ramon Castilla (Plaza Union) roundabout: a paved oval with a central monument and some palms",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "monument-roundabout",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c4c0b6",
+          "#8d867c",
+          "#f0ebdd"
+        ],
+        "roofColour": "#8d867c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central monument to the marshal"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "20th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Plaza_Ram%C3%B3n_Castilla_(Lima)",
+          "what": "oval at the junction of Alfonso Ugarte, Emancipacion and Argentina avenues, with a monument to Ramon Castilla"
+        }
+      ],
+      "notes": "Monument shape is not described; a statue on a stepped plinth is assumed. The fountain is an assumption."
+    },
+    "lima-osm-way-76738820": {
+      "venueId": "lima-osm-way-76738820",
+      "city": "lima",
+      "name": "Love Park",
+      "archetype": "park-landscape",
+      "subject": "Parque del Amor in Miraflores: a clifftop terrace above the Pacific with the giant kissing-couple sculpture, snaking mosaic walls and benches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 92,
+        "depth_m": 59,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "clifftop-mosaic-park",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e3cfa8",
+          "#c9806a",
+          "#4f8fa0"
+        ],
+        "roofColour": "#e3cfa8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "large kissing couple"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "curving tiled walls and benches"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "postmodern",
+      "era": "1993",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM park 91.7 x 59.1 m named Parque Alberto Andrade Carmona, Wikidata Q50643122"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_del_Amor_(Miraflores)",
+          "what": "page not retrievable; description of the kissing sculpture and mosaics from general knowledge"
+        }
+      ],
+      "notes": "The detail (a Victor Delfin sculpture, Gaudi-style mosaic walls) is from general knowledge and not confirmed by a fetched source; confidence medium. Edge of a sea cliff."
+    },
+    "lima-osm-way-808110260": {
+      "venueId": "lima-osm-way-808110260",
+      "city": "lima",
+      "name": "San Juan Bautista Penitentiary Center",
+      "archetype": "heritage-fort",
+      "subject": "The ruined island prison off Callao: abandoned concrete cell blocks and perimeter walls on a rocky outcrop",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "abandoned-prison",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#8d867c",
+          "#6f7b84",
+          "#b9a58a"
+        ],
+        "roofColour": "#8d867c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "perimeter walls"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1917-1986",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Matanza_en_los_penales_del_Per%C3%BA",
+          "what": "the penitentiary on the island, 1986 prison riots; OSM tags historic=ruins"
+        }
+      ],
+      "notes": "OSM marks it as ruins with a 346 x 145 m outline; built form is typed. Do not depict the 1986 events."
+    },
+    "lima-quiet-reflection": {
+      "venueId": "lima-quiet-reflection",
+      "city": "lima",
+      "name": "Islamic Association of Peru",
+      "archetype": "shrine-small",
+      "subject": "The Mosque of Lima in Magdalena del Mar: a former family house turned prayer hall behind a wall, not a conventional mosque",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "converted-house-mosque",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f0ebdd",
+          "#4f8fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "1986",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Mezquita_de_Magdalena_del_Mar",
+          "what": "a house donated by a Palestinian businessman in 1986 and used as a mosque; separate prayer rooms; facade unlike an Asian mosque"
+        }
+      ],
+      "notes": "Wikipedia says the facade is not like the typical mosque, so no dome or minaret is assumed. Footprint is the plot size from OSM (48 x 41 m)."
+    },
+    "lima-recreation": {
+      "venueId": "lima-recreation",
+      "city": "lima",
+      "name": "Capilla Santa Rosa",
+      "archetype": "shrine-small",
+      "subject": "A small whitewashed chapel in a green park with a short bell gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "park-chapel",
+        "wings": 0
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ebdd",
+          "#c9806a",
+          "#7b4a2a"
+        ],
+        "roofColour": "#a65a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bell gable"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Santa_Rosa",
+          "what": "OSM 20 x 9 m small chapel in a park, disambiguation page only"
+        }
+      ],
+      "notes": "Nothing is documented beyond the OSM footprint. Typed as a simple Lima chapel."
+    },
+    "lima-transit": {
+      "venueId": "lima-transit",
+      "city": "lima",
+      "name": "Estacion Estadio Nacional",
+      "archetype": "transport-station",
+      "subject": "A busy BRT station beside the National Stadium: a long enclosed glass-and-steel platform on the road median with a footbridge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "brt-median-station",
+        "wings": 0
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8d9ba4",
+          "#cfd9de",
+          "#6f7b84"
+        ],
+        "roofColour": "#8d9ba4",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Nacional_del_Per%C3%BA",
+          "what": "the Estadio Nacional is a 40,272-seat stadium opened 1952; nickname Coloso de Jose Diaz"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Lima",
+          "what": "Lima context"
+        }
+      ],
+      "notes": "The page for the station was not found; the OSM element under the pin is the stadium itself (422 x 201 m), not the station. A median bus station is assumed. The stadium (concrete four-stand bowl with a tower) could replace this if the station is not wanted."
+    }
+  }
+}

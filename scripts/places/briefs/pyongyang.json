@@ -1,0 +1,1626 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "pyongyang",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "pyongyang",
+    "climate": "cold",
+    "vernacular": "Planned socialist capital: wide boulevards lined with slab and tower apartment blocks of 10-45 storeys rendered in pastel pink, mint, pale yellow and sky blue; monumental granite, marble and concrete public buildings in Soviet-influenced neoclassical or modernist style, often crowned with traditional Korean upswept tiled roofs (green or blue-grey) as a national-hybrid motif; low traditional Korean tiled-roof buildings in reconstructed heritage sites; wide plazas, flag poles and mosaic or mural facades.",
+    "wallColours": [
+      "#e8c3c0",
+      "#bfd8c8",
+      "#ecdca0",
+      "#aac8dc",
+      "#eeeeea",
+      "#b9b6ae",
+      "#d8cdb8"
+    ],
+    "roofColours": [
+      "#5d6d6b",
+      "#4b7a5a",
+      "#8f9390",
+      "#9fb3b0"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "granite",
+      "marble",
+      "render",
+      "stone",
+      "tile-cladding",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "glass"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Traditional Korean upswept hip-and-gable tiled roofs (green and blue-grey) placed on modern concrete halls (People's Palace of Culture, Grand People's Study House); dancheong painted eaves on heritage buildings; mosaic and mural reliefs on monumental facades; rows of square columns and stone steps at state buildings; pastel-banded apartment facades; flagpoles and revolutionary slogans on roofs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_North_Korea",
+        "what": "post-war rebuilt capital; monuments, traditional-modern hybrids with tiled roofs on modern construction, high-rise modernism, pastel apartment complexes"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kumsusan_Palace_of_the_Sun",
+        "what": "modern and neoclassical state building with few windows, stone-paved plaza, moat"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Three_Revolution_Exhibition",
+        "what": "spherical-planet-with-rings domed central building, thematic exhibit halls"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Pyongyang_General_Hospital",
+        "what": "two-tower 1,000-bed hospital completed 2020s with helipad"
+      }
+    ]
+  },
+  "places": {
+    "pyongyang-airport-pyongyang-airport": {
+      "venueId": "pyongyang-airport-pyongyang-airport",
+      "city": "pyongyang",
+      "name": "Pyongyang Sunan International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Sunan airport Terminal 2 (2015) seen from the forecourt: a long three-level glass-fronted terminal with jet bridges and a new control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 116,
+        "depth_m": 34,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d8dcdc",
+          "#6f8fa8",
+          "#eeeeea"
+        ],
+        "roofColour": "#9a9d9c",
+        "windows": "curtain",
+        "windowRatio": 0.55,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pyongyang_Sunan_International_Airport",
+          "what": "Terminal 2 inaugurated 1 July 2015 with jet bridges, upper-level lounge, outdoor viewing area; Terminal 1 domestic 2016; new control tower and VIP terminal north of main terminal"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/356324168",
+          "what": "OSM terminal 116 x 34 m, 3 levels"
+        }
+      ],
+      "notes": "Footprint and 3 levels measured; glass front and colours inferred from the terminal type. The cited page does not describe the facade."
+    },
+    "pyongyang-clinic": {
+      "venueId": "pyongyang-clinic",
+      "city": "pyongyang",
+      "name": "Pyongyang General Hospital",
+      "archetype": "hospital",
+      "subject": "Pyongyang General Hospital (2020s): the twin-tower, 22-floor hospital joined by a lower podium, with a rooftop helipad",
+      "form": {
+        "footprint": "H",
+        "width_m": 322,
+        "depth_m": 99,
+        "storeys": 22,
+        "height_m": 85,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d8",
+          "#7a98ae",
+          "#c9c4b8"
+        ],
+        "roofColour": "#9a9d9c",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "lower connecting block"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pyongyang_General_Hospital",
+          "what": "two towers topped out June 2020, 1,000 beds, helipad, in front of Monument to Party Founding"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q96400526",
+          "what": "22 floors; OSM footprint about 323 x 99 m"
+        }
+      ],
+      "notes": "Twin towers, 22 floors, helipad are sourced. Facade colours are inferred; the footprint is the whole complex so the generator may show the two towers plus podium only."
+    },
+    "pyongyang-community-notices": {
+      "venueId": "pyongyang-community-notices",
+      "city": "pyongyang",
+      "name": "중앙검찰소",
+      "archetype": "civic-palace",
+      "subject": "Supreme Procurator's Office: a broad five-storey state building with a central stepped entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 128,
+        "depth_m": 66,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d8cdb8",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11271183",
+          "what": "Supreme Procurator's Office of the DPRK; OSM public building about 128 x 66 m"
+        }
+      ],
+      "notes": "No description found; typed from the Pyongyang state-building style."
+    },
+    "pyongyang-community-voting-game": {
+      "venueId": "pyongyang-community-voting-game",
+      "city": "pyongyang",
+      "name": "Pyongyang City People's Committee",
+      "archetype": "civic-palace",
+      "subject": "Pyongyang City People's Committee: a three-storey municipal government building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 102,
+        "depth_m": 44,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d8cdb8",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#5d6d6b",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16262566",
+          "what": "Pyongyang City People's Committee; OSM public building about 102 x 44 m, 3 levels"
+        }
+      ],
+      "notes": "Footprint and 3 levels measured; the rest is typed from the state-building style with the traditional tiled-roof hybrid motif."
+    },
+    "pyongyang-community-workshop": {
+      "venueId": "pyongyang-community-workshop",
+      "city": "pyongyang",
+      "name": "Kim Jong-il Political-Military University",
+      "archetype": "campus-block",
+      "subject": "Kim Jong-il Political-Military University: a large campus with a long pale teaching block",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/251911140",
+          "what": "OSM campus about 720 x 475 m"
+        }
+      ],
+      "notes": "The Wikidata match is not this university, so no real description. Typed campus block from city style."
+    },
+    "pyongyang-market-game": {
+      "venueId": "pyongyang-market-game",
+      "city": "pyongyang",
+      "name": "Cheonnae Market",
+      "archetype": "market-hall",
+      "subject": "Cheonnae Market: a covered market hall with stalls and umbrellas outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 49,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8dcc0",
+          "#aac8dc",
+          "#eeeeea"
+        ],
+        "roofColour": "#4b7a5a",
+        "windows": "louvre",
+        "windowRatio": 0.25,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1017177927",
+          "what": "OSM marketplace about 60 x 49 m"
+        }
+      ],
+      "notes": "Nothing specific found; typed from a North Korean market hall with a metal-sheet roof and stalls."
+    },
+    "pyongyang-meal-stop": {
+      "venueId": "pyongyang-meal-stop",
+      "city": "pyongyang",
+      "name": "Pyongyang Taedonggang Fish Restaurant",
+      "archetype": "restaurant",
+      "subject": "Taedonggang Seafood Restaurant (2018): a large riverside restaurant building of several storeys",
+      "form": {
+        "footprint": "rect",
+        "width_m": 145,
+        "depth_m": 78,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bfd8c8",
+          "#aac8dc",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q116869735",
+          "what": "Taedonggang Seafood Restaurant, 2018; OSM building about 145 x 78 m"
+        }
+      ],
+      "notes": "Appearance not described by any source found; only footprint is measured."
+    },
+    "pyongyang-osm-node-3090689020": {
+      "venueId": "pyongyang-osm-node-3090689020",
+      "city": "pyongyang",
+      "name": "Pyongyang Noodle Restaurant",
+      "archetype": "restaurant",
+      "subject": "Pyongyang Noodle Restaurant: a large three-level restaurant building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 72,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#aac8dc",
+          "#eeeeea"
+        ],
+        "roofColour": "#4b7a5a",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/132362930",
+          "what": "OSM building about 140 x 72 m, 3 levels"
+        }
+      ],
+      "notes": "Footprint and 3 levels from OSM; look typed with the traditional-roof hybrid motif. No description found."
+    },
+    "pyongyang-osm-relation-8310581": {
+      "venueId": "pyongyang-osm-relation-8310581",
+      "city": "pyongyang",
+      "name": "Cheonseok Restaurant",
+      "archetype": "restaurant",
+      "subject": "Mangyongdae 1,000-seat restaurant (1972): a wide low banquet hall building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 61,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ecdca0",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#5d6d6b",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q116757504",
+          "what": "Mangyondae 1,000 Seat Restaurant, 1972; OSM building about 90 x 61 m"
+        }
+      ],
+      "notes": "The map name differs (Cheonseok) from the Wikidata label; neither describes the look. Typed from the 1970s state-restaurant type."
+    },
+    "pyongyang-osm-way-1105308903": {
+      "venueId": "pyongyang-osm-way-1105308903",
+      "city": "pyongyang",
+      "name": "Pyongyang University of Architecture",
+      "archetype": "campus-block",
+      "subject": "Pyongyang University of Architecture: a campus of pale teaching blocks around a central quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6808526",
+          "what": "founded 1953; OSM campus about 329 x 271 m"
+        }
+      ],
+      "notes": "No description found; typed from the Pyongyang campus style."
+    },
+    "pyongyang-osm-way-1112393994": {
+      "venueId": "pyongyang-osm-way-1112393994",
+      "city": "pyongyang",
+      "name": "Sosan Football Stadium",
+      "archetype": "stadium",
+      "subject": "Sosan Football Stadium (1988): a mid-size football ground with covered stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 227,
+        "depth_m": 186,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5ba",
+          "#8f9390",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1988",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7451630",
+          "what": "Sosan Football Stadium, 1988; OSM about 227 x 186 m"
+        }
+      ],
+      "notes": "Appearance not found. Typed from a 1980s socialist football stadium."
+    },
+    "pyongyang-osm-way-184410022": {
+      "venueId": "pyongyang-osm-way-184410022",
+      "city": "pyongyang",
+      "name": "Kim Il-sung Stadium",
+      "archetype": "stadium",
+      "subject": "Kim Il-sung Stadium: the 40,000-seat concrete stadium with arched facade bays, rebuilt in 1969 and renovated in 1982",
+      "form": {
+        "footprint": "oval",
+        "width_m": 267,
+        "depth_m": 214,
+        "storeys": 4,
+        "height_m": 30,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d8d4c8",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "repeating arched bays on the facade (from general knowledge)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1969 (1926 original)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kim_Il-sung_Stadium",
+          "what": "built by the Japanese 1926 (Girimri Stadium), current version 1969 as Moranbong Stadium, renamed Kim Il Sung Stadium 1982, about 40,000 capacity, artificial turf"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1137515",
+          "what": "OSM about 267 x 214 m"
+        }
+      ],
+      "notes": "The Wikipedia page does not describe the facade; arched facade bays and the pale concrete tone are from general knowledge and not verified."
+    },
+    "pyongyang-osm-way-23697980": {
+      "venueId": "pyongyang-osm-way-23697980",
+      "city": "pyongyang",
+      "name": "East Pyongyang Stadium",
+      "archetype": "stadium",
+      "subject": "East Pyongyang Stadium (1960): a modest concrete stadium",
+      "form": {
+        "footprint": "oval",
+        "width_m": 257,
+        "depth_m": 184,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5ba",
+          "#8f9390",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5329205",
+          "what": "East Pyongyang Stadium, 1960; OSM about 258 x 184 m (Wikidata coordinates 4 km off)"
+        }
+      ],
+      "notes": "Not described anywhere found; typed."
+    },
+    "pyongyang-osm-way-300349055": {
+      "venueId": "pyongyang-osm-way-300349055",
+      "city": "pyongyang",
+      "name": "Kim Man-yu Hospital",
+      "archetype": "hospital",
+      "subject": "Kim Man-yu Hospital: a large campus of multi-storey ward blocks",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#bfd8c8",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11647845",
+          "what": "Kim Man-yu Hospital; OSM campus about 298 x 277 m"
+        }
+      ],
+      "notes": "No building description found; typed."
+    },
+    "pyongyang-osm-way-403889844": {
+      "venueId": "pyongyang-osm-way-403889844",
+      "city": "pyongyang",
+      "name": "Pyongyang University of Railways",
+      "archetype": "campus-block",
+      "subject": "Pyongyang University of Railways: a campus teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8c3c0",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5953489",
+          "what": "founded 1959; OSM campus about 569 x 388 m"
+        }
+      ],
+      "notes": "No description found; typed."
+    },
+    "pyongyang-osm-way-42416605": {
+      "venueId": "pyongyang-osm-way-42416605",
+      "city": "pyongyang",
+      "name": "Three Revolution Exhibition",
+      "archetype": "museum-theatre",
+      "subject": "Three Revolution Exhibition: the central domed ringed-sphere building of the exhibition complex",
+      "form": {
+        "footprint": "round",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 45,
+        "roof": "dome",
+        "wings": 6
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d8",
+          "#7a98ae",
+          "#b9b6ae"
+        ],
+        "roofColour": "#d8dcdc",
+        "windows": "ribbon",
+        "windowRatio": 0.25,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "planetarium dome shaped like a ringed planet"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Three_Revolution_Exhibition",
+          "what": "central building resembles a spherical planet with rings, houses a planetarium; six themed exhibit halls; outdoor vehicle display"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17033224",
+          "what": "OSM complex about 838 x 406 m"
+        }
+      ],
+      "notes": "Only the sphere shape is sourced; size and colours are estimates. The generator should show the sphere building, not the whole 838 m complex."
+    },
+    "pyongyang-osm-way-427620999": {
+      "venueId": "pyongyang-osm-way-427620999",
+      "city": "pyongyang",
+      "name": "Pyongyang University of Science and Technology",
+      "archetype": "campus-block",
+      "subject": "Pyongyang University of Science and Technology: modern low-rise campus blocks on a green site",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeeea",
+          "#9fb3b0",
+          "#b9b6ae"
+        ],
+        "roofColour": "#5d6d6b",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q710126",
+          "what": "opened 2010; OSM campus about 1169 x 622 m"
+        }
+      ],
+      "notes": "Large campus; look typed as modern campus blocks with the tiled hybrid roof motif. No building description found."
+    },
+    "pyongyang-osm-way-427808616": {
+      "venueId": "pyongyang-osm-way-427808616",
+      "city": "pyongyang",
+      "name": "Tomb of King Tongmyong",
+      "archetype": "shrine-small",
+      "subject": "Tomb of King Tongmyong: the reconstructed tomb mound with a Korean tiled shrine hall and approach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a8452d",
+          "#3d7a5a",
+          "#d8cdb8"
+        ],
+        "roofColour": "#4a4e50",
+        "windows": "none",
+        "windowRatio": 0,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "stone guardian figures"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "5th century (rebuilt 1993)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q710524",
+          "what": "tomb of King Tongmyong; OSM about 182 x 67 m"
+        }
+      ],
+      "notes": "The description is general: a grassed tomb mound with a Korean dancheong tiled gate and hall in the rebuilt complex. Not verified against a source."
+    },
+    "pyongyang-osm-way-518025824": {
+      "venueId": "pyongyang-osm-way-518025824",
+      "city": "pyongyang",
+      "name": "Ryongsong Residence",
+      "archetype": "manor",
+      "subject": "Ryongsong Residence: a walled residence compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 81,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8cdb8",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#4b7a5a",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1983",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7385314",
+          "what": "North Korean presidential residence, 1983; OSM building about 90 x 81 m"
+        }
+      ],
+      "notes": "A guarded compound with no public description; typed."
+    },
+    "pyongyang-osm-way-722791910": {
+      "venueId": "pyongyang-osm-way-722791910",
+      "city": "pyongyang",
+      "name": "Kumsusan Palace of the Sun",
+      "archetype": "civic-palace",
+      "subject": "Kumsusan Palace of the Sun: the vast, pale, few-windowed mausoleum palace seen across its stone plaza and moat",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "marble",
+        "colours": [
+          "#d8d2c4",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f9390",
+        "windows": "punched",
+        "windowRatio": 0.08,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "rows of tall square columns on the front"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide stair"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1976 (converted 1995, 2012)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kumsusan_Palace_of_the_Sun",
+          "what": "modern and neoclassical, few windows, about 10,700 m2, 500 m long stone plaza with moat on north and east sides"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q606069",
+          "what": "palace, height 10 (OSM), start 1976; OSM footprint about 375 x 185 m"
+        }
+      ],
+      "notes": "Roof, wall colour and the front columns are not stated in the cited article; the pale granite look and column rows come from general knowledge. OSM footprint (375 x 185 m) includes the wings and forecourt."
+    },
+    "pyongyang-osm-way-879112285": {
+      "venueId": "pyongyang-osm-way-879112285",
+      "city": "pyongyang",
+      "name": "Church of the Life-Giving Trinity",
+      "archetype": "church-classical",
+      "subject": "Church of the Life-Giving Trinity: the small five-domed Russian Orthodox church, 2006",
+      "form": {
+        "footprint": "cross",
+        "width_m": 32,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 22,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efece4",
+          "#c9a24a",
+          "#b9b6ae"
+        ],
+        "roofColour": "#c9a24a",
+        "windows": "arched",
+        "windowRatio": 0.12,
+        "roofMaterial": "gold-leaf"
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5,
+          "note": "gilded onion domes with crosses"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q13188242",
+          "what": "Russian Orthodox church, Pyongyang; OSM about 32 x 20 m"
+        }
+      ],
+      "notes": "The five-dome Russian layout is known from general knowledge; dome colour (gold) and the bell-tower attachment are not verified here."
+    },
+    "pyongyang-osm-way-974980487": {
+      "venueId": "pyongyang-osm-way-974980487",
+      "city": "pyongyang",
+      "name": "Kwangbopsa",
+      "archetype": "temple-asian",
+      "subject": "Kwangbopsa: the rebuilt Buddhist temple of tiled halls with red-and-green painted eaves in its walled courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a8452d",
+          "#3d7a5a",
+          "#efe8da"
+        ],
+        "roofColour": "#5a5f5c",
+        "windows": "screen",
+        "windowRatio": 0.15,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "stone pagoda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "392 (rebuilt after 1950)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3200813",
+          "what": "Buddhist temple, National Treasure no. 164, dated 392; OSM compound about 100 x 90 m"
+        }
+      ],
+      "notes": "The timber halls with dancheong eaves and grey tile roofs are the standard form for this temple type; specific hall sizes are estimates, not read from a source."
+    },
+    "pyongyang-quiet-reflection": {
+      "venueId": "pyongyang-quiet-reflection",
+      "city": "pyongyang",
+      "name": "Chilgol Church",
+      "archetype": "church-modern",
+      "subject": "Chilgol Church: a small Protestant church with a pitched roof and a short tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efece4",
+          "#b9b6ae",
+          "#5d6d6b"
+        ],
+        "roofColour": "#5d6d6b",
+        "windows": "arched",
+        "windowRatio": 0.2,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1992",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3585518",
+          "what": "Chilgol Church, Protestant; OSM about 23 x 16 m"
+        }
+      ],
+      "notes": "No description was read; typed small chapel."
+    },
+    "pyongyang-recreation": {
+      "venueId": "pyongyang-recreation",
+      "city": "pyongyang",
+      "name": "Pyongyang Folklore Park",
+      "archetype": "park-landscape",
+      "subject": "Pyongyang Folklore Park: a riverside park with Korean pavilions, paths and a gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 140,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a8452d",
+          "#3d7a5a",
+          "#d8cdb8"
+        ],
+        "roofColour": "#4a4e50",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "Korean tiled pavilions"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q59344",
+          "what": "amusement park opened 2012; flagged demolished in Wikidata"
+        }
+      ],
+      "notes": "Wikidata says the park was demolished; layout not described anywhere found. Typed."
+    },
+    "pyongyang-transit": {
+      "venueId": "pyongyang-transit",
+      "city": "pyongyang",
+      "name": "Puhung Station",
+      "archetype": "transport-station",
+      "subject": "Puhung metro station entrance building: a three-level stone-faced hall with a green hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 17,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "marble",
+        "colours": [
+          "#e6dcc4",
+          "#b9b6ae",
+          "#eeeeea"
+        ],
+        "roofColour": "#3f7a56",
+        "windows": "arched",
+        "windowRatio": 0.25,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q717274",
+          "what": "Puhung (Puhŭng) metro station, 1987"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1059930836",
+          "what": "OSM building 43 x 17 m, 3 levels, hipped roof coloured green"
+        }
+      ],
+      "notes": "Measured footprint, 3 levels, hipped green roof from OSM tags; stone facade colours typed."
+    }
+  }
+}

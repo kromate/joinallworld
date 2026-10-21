@@ -82,6 +82,7 @@ import '../src/game/routines/pack.ts'; // installs the routines of the regulars:
 import '../src/game/home-plan.ts';
 import { readTelemetryConfig } from '../server/telemetry/config.ts';
 import { createR2Models, type R2Models } from './r2-models.ts';
+import { isPlaceRequest, servePlaceModel } from './places-route.ts';
 import { appHeaders, apiHeaders, fileCache, isSandboxPath, sandboxHeaders, pageHeaders, inlineScriptHashes, telemetryOrigins, factsOfUrl } from '../server/security-headers.ts';
 import telemetryRoutes from '../server/telemetry/routes.ts';
 import { capacityConfig, type CapacityConfig, envReader, outboundFetch, sessionArchiver, lifeAuthority, lifeAnnouncer, routeHeaders, pageFor, cleanOrigin, cleanHost, absolutePreviewImage, validOperatorToken, bearerToken, accountsConfig, founderEmailHash, sessionCookie, isStrictOrigin, presentedSession, mayBind, addressBucket } from '../server/host-context.ts';
@@ -193,11 +194,11 @@ function sealJson(response: Response, url: URL): Response {
 }
 
 export default {
-  async fetch(request: Request, env: WorkerEnv): Promise<Response> {
+  async fetch(request: Request, env: WorkerEnv, ctx?: { waitUntil(work: Promise<unknown>): void }): Promise<Response> {
     // A local-development setting on a deployment is refused outright, before anything else runs (deploy/open-dev-refusal.ts).
     const misconfigured = openDevRefusal(env);
     if (misconfigured) return misconfigured;
-    return sealJson(await respond(request, env), new URL(request.url));
+    return sealJson(await respond(request, env, ctx), new URL(request.url));
   },
 };
 
@@ -211,7 +212,7 @@ const cityAssets = (env: WorkerEnv) => async (path: string): Promise<Uint8Array>
   return new Uint8Array(await response.arrayBuffer());
 };
 
-async function respond(request: Request, env: WorkerEnv): Promise<Response> {
+async function respond(request: Request, env: WorkerEnv, ctx?: { waitUntil(work: Promise<unknown>): void }): Promise<Response> {
   const url = new URL(request.url);
   const state = () => env.JOINALLWORLD.getByName('joinallworld-v1');
   // The admin address answers only a few paths (server/admin/host.ts); the game's own address does not serve its page.
@@ -235,6 +236,8 @@ async function respond(request: Request, env: WorkerEnv): Promise<Response> {
   let assetPath;
   try { assetPath = decodeURIComponent(url.pathname); } catch { return json(400, { error: 'invalid_path' }); }
   if (assetPath.endsWith('.map')) return json(404, { error: 'not_found' });
+  // The shared place models (R2 key places/<sha256>.glb, immutable, edge-cached): deploy/places-route.ts. Not an asset of the build, so the binding never sees it.
+  if (isPlaceRequest(url)) return servePlaceModel(request, env.MODELS, typeof caches === 'undefined' ? null : (caches as unknown as { default: Parameters<typeof servePlaceModel>[2] }).default, work => ctx?.waitUntil(work));
   if (url.pathname === '/old-character.html') {
     if (url.origin !== 'https://joinallworld.com') return json(404, { error: 'not_found' });
     return oldCharacterLanding(request.method === 'HEAD');

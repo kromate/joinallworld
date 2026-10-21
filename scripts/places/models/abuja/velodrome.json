@@ -1,0 +1,1383 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "velodrome",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Abuja_Velodrome_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kritzolina",
+   "view": "front",
+   "file": "/tmp/places-evidence/abuja/velodrome6.jpg",
+   "used": "main view: white multi-peaked tensioned roof with scalloped skirt low over a dark open base, ring of tall slim grey masts with stay cables, two gate pavilions with open steel frames, brick-paver plaza, green lawn, flags"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Abuja_Velodrome_05.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kritzolina",
+   "view": "front",
+   "file": "/tmp/places-evidence/abuja/velodrome5.jpg",
+   "used": "mast ring height versus roof (masts about twice the roof height), roof peak count"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Abuja_Velodrome_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kritzolina",
+   "view": "interior",
+   "used": "open sides with raw concrete piers under the cream membrane"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/223440553",
+   "used": "name-matched oval outline about 128 x 106 m (base wall)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof now five peaked tent cones with cable stays, piers and dark gantry rings, tall open cage gates; skirt not scalloped between peaks, gate cages simplified to posts and plates, brick plaza and lawn tone not matched"
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 47,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 30,
+    "lod1Step": 2,
+    "lod2Step": 3,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 6.6,
+      "colour": "#a9a59b"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "curve": true,
+    "steps": 4,
+    "colour": "#f2f1ea",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 7.2,
+      "ellipse": [
+       63,
+       52
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       58,
+       46
+      ]
+     },
+     {
+      "z": 13,
+      "ellipse": [
+       50,
+       32
+      ]
+     },
+     {
+      "z": 16.5,
+      "ellipse": [
+       42,
+       18
+      ]
+     },
+     {
+      "z": 19,
+      "ellipse": [
+       34,
+       6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -38,
+    0,
+    7.2
+   ],
+   "params": {
+    "colour": "#f4f3ed",
+    "segments": 12,
+    "profile": [
+     [
+      28,
+      0
+     ],
+     [
+      21,
+      3.036
+     ],
+     [
+      12,
+      6.210000000000001
+     ],
+     [
+      5,
+      10.350000000000001
+     ],
+     [
+      1.2,
+      13.11
+     ],
+     [
+      0.25,
+      13.8
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -19,
+    0,
+    7.2
+   ],
+   "params": {
+    "colour": "#f4f3ed",
+    "segments": 12,
+    "profile": [
+     [
+      28,
+      0
+     ],
+     [
+      21,
+      3.5860000000000003
+     ],
+     [
+      12,
+      7.335000000000001
+     ],
+     [
+      5,
+      12.225000000000001
+     ],
+     [
+      1.2,
+      15.485
+     ],
+     [
+      0.25,
+      16.3
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    7.2
+   ],
+   "params": {
+    "colour": "#f4f3ed",
+    "segments": 12,
+    "profile": [
+     [
+      28,
+      0
+     ],
+     [
+      21,
+      3.9160000000000004
+     ],
+     [
+      12,
+      8.01
+     ],
+     [
+      5,
+      13.350000000000001
+     ],
+     [
+      1.2,
+      16.91
+     ],
+     [
+      0.25,
+      17.8
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    19,
+    0,
+    7.2
+   ],
+   "params": {
+    "colour": "#f4f3ed",
+    "segments": 12,
+    "profile": [
+     [
+      28,
+      0
+     ],
+     [
+      21,
+      3.5860000000000003
+     ],
+     [
+      12,
+      7.335000000000001
+     ],
+     [
+      5,
+      12.225000000000001
+     ],
+     [
+      1.2,
+      15.485
+     ],
+     [
+      0.25,
+      16.3
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    38,
+    0,
+    7.2
+   ],
+   "params": {
+    "colour": "#f4f3ed",
+    "segments": 12,
+    "profile": [
+     [
+      28,
+      0
+     ],
+     [
+      21,
+      3.036
+     ],
+     [
+      12,
+      6.210000000000001
+     ],
+     [
+      5,
+      10.350000000000001
+     ],
+     [
+      1.2,
+      13.11
+     ],
+     [
+      0.25,
+      13.8
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    6.0
+   ],
+   "params": {
+    "radius": 0.9,
+    "colour": "#2b2f33",
+    "closed": true,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 57,
+     "radiusY": 46,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    4.2
+   ],
+   "params": {
+    "radius": 0.5,
+    "colour": "#2b2f33",
+    "closed": true,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 55,
+     "radiusY": 44,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    6.6
+   ],
+   "params": {
+    "radius": 0.45,
+    "colour": "#7b7f84",
+    "closed": true,
+    "arc": {
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 62,
+     "radiusY": 51,
+     "startDeg": 0,
+     "endDeg": 360
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 74,
+    "radiusY": 58,
+    "startDeg": 0,
+    "endDeg": 360,
+    "count": 10,
+    "lod2Step": 3,
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#9ea3a7",
+      "profile": [
+       [
+        1.1,
+        0
+       ],
+       [
+        1.0,
+        20
+       ],
+       [
+        0.65,
+        40
+       ],
+       [
+        0.3,
+        42
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      74.0,
+      0.0,
+      41
+     ],
+     [
+      38,
+      0,
+      22
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      74.0,
+      0.0,
+      36
+     ],
+     [
+      38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      59.86725758374611,
+      34.09154463296344,
+      41
+     ],
+     [
+      38,
+      0,
+      22
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      59.86725758374611,
+      34.09154463296344,
+      36
+     ],
+     [
+      38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      22.86725758374611,
+      55.161277945118904,
+      41
+     ],
+     [
+      19,
+      0,
+      24.5
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      22.86725758374611,
+      55.161277945118904,
+      36
+     ],
+     [
+      38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -22.867257583746103,
+      55.16127794511891,
+      41
+     ],
+     [
+      -19,
+      0,
+      24.5
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -22.867257583746103,
+      55.16127794511891,
+      36
+     ],
+     [
+      -38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -59.8672575837461,
+      34.09154463296345,
+      41
+     ],
+     [
+      -38,
+      0,
+      22
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -59.8672575837461,
+      34.09154463296345,
+      36
+     ],
+     [
+      -38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -74.0,
+      7.102951435054649e-15,
+      41
+     ],
+     [
+      -38,
+      0,
+      22
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -74.0,
+      7.102951435054649e-15,
+      36
+     ],
+     [
+      -38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -59.86725758374611,
+      -34.09154463296343,
+      41
+     ],
+     [
+      -38,
+      0,
+      22
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -59.86725758374611,
+      -34.09154463296343,
+      36
+     ],
+     [
+      -38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -22.86725758374612,
+      -55.161277945118904,
+      41
+     ],
+     [
+      -19,
+      0,
+      24.5
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      -22.86725758374612,
+      -55.161277945118904,
+      36
+     ],
+     [
+      -38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      22.867257583746095,
+      -55.16127794511891,
+      41
+     ],
+     [
+      19,
+      0,
+      24.5
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      22.867257583746095,
+      -55.16127794511891,
+      36
+     ],
+     [
+      38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "colour": "#555a5e",
+    "points": [
+     [
+      59.8672575837461,
+      -34.091544632963455,
+      41
+     ],
+     [
+      38,
+      0,
+      22
+     ]
+    ],
+    "sag": 0.6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 0.1,
+    "colour": "#555a5e",
+    "points": [
+     [
+      59.8672575837461,
+      -34.091544632963455,
+      36
+     ],
+     [
+      38,
+      0,
+      19
+     ]
+    ],
+    "sag": 0.5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse-w",
+   "footprint": {
+    "rect": [
+     13,
+     8
+    ]
+   },
+   "at": [
+    -46,
+    -47
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8b88",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -50,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 7,
+    "dy": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 28,
+      "colour": "#8d9296"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36.5,
+    -47,
+    10
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36.5,
+    -47,
+    19
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36.5,
+    -47,
+    28
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse-e",
+   "footprint": {
+    "rect": [
+     13,
+     8
+    ]
+   },
+   "at": [
+    46,
+    -47
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e0d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8b88",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    40,
+    -50,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 7,
+    "dy": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 28,
+      "colour": "#8d9296"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    43.5,
+    -47,
+    10
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    43.5,
+    -47,
+    19
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    43.5,
+    -47,
+    28
+   ],
+   "params": {
+    "rect": [
+     7.6,
+     6.6
+    ],
+    "height": 0.25,
+    "colour": "#8d9296"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -50,
+    5
+   ],
+   "params": {
+    "rect": [
+     16,
+     1.2
+    ],
+    "height": 4.5,
+    "colour": "#3a3a3a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.6,
+    "bottom": 1.4,
+    "colour": "#c14d2d"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -28,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1f8a4c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    30,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1f8a4c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -84,
+     -40
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     86,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -90,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ }
+}

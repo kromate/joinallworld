@@ -1,0 +1,210 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/djibouti.json#djibouti-osm-node-5313235263",
+   "used": "open market of about 50 x 35 m: rows of stalls under corrugated shade sheds, sand ground, umbrellas (OSM match is a 7 m2 stray building, not used; no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     20,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a69f92",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a80",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     14,
+     7
+    ]
+   },
+   "at": [
+    14,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c0583a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f7a70",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-c",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    -10,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9c39a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a948a",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    16,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c39a",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 2.6,
+      "depth": 2,
+      "colours": [
+       "#c0583a",
+       "#d9c39a"
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -18,
+     0
+    ],
+    "end": [
+     18,
+     -18,
+     0
+    ],
+    "count": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   64,
+   48
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text only; stall layout and shed positions are typical, not observed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-node-5313235263"
+}

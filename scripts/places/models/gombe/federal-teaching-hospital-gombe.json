@@ -1,0 +1,307 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Gombe",
+   "used": "500-bed scale, opened 2000"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1083848823",
+   "used": "checked only (155 m2 outbuilding 1.2 km away, not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "central",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f9a94"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-ward",
+   "footprint": {
+    "rect": [
+     18,
+     50
+    ]
+   },
+   "at": [
+    -50,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f9a94"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-ward",
+   "footprint": {
+    "rect": [
+     18,
+     50
+    ]
+   },
+   "at": [
+    50,
+    5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#6f9a94"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-w",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    -27,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-e",
+   "footprint": {
+    "rect": [
+     34,
+     8
+    ]
+   },
+   "at": [
+    27,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 7,
+    "height": 5,
+    "columns": 4,
+    "colour": "#6f9a94",
+    "edgeColour": "#f0ebdc"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "helipad",
+   "at": [
+    0,
+    24,
+    14
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    -8,
+    22,
+    14
+   ],
+   "params": {
+    "radius": 2,
+    "height": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.3
+    ],
+    "z0": 9,
+    "height": 1.5,
+    "colour": "#f7f4ee",
+    "topColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    32,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; H-plan ward complex typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "federal-teaching-hospital-gombe"
+}

@@ -1,0 +1,211 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: placeholder venue, no real counterpart, no OSM match; 12 x 8 m open-sided polling hall, terracotta piers, hand-painted board, folding tables outside"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-room",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#a05a3c"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 8,
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -1.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.6,
+    "thickness": 0.2,
+    "columns": 4,
+    "colour": "#8a8f94",
+    "edgeColour": "#bfb9aa"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-pier-5.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.5
+    ]
+   },
+   "at": [
+    -5.8,
+    -1.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a05a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfb9aa"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-pier5.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     5.5
+    ]
+   },
+   "at": [
+    5.8,
+    -1.5
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a05a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfb9aa"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#bfb9aa"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -9,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#a05a3c",
+    "frameColour": "#e8e0cf"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 0,
+    "table_colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -9.5,
+    0
+   ],
+   "params": {
+    "chairs": 0,
+    "table_colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 0,
+    "table_colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; text-only modest open-sided hall, rendered once"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "community-polling"
+}

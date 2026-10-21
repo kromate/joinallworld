@@ -1,0 +1,749 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "ilorin-national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nigerian_National_Museums,_Ilorin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Nigeria",
+   "view": "front",
+   "file": "/tmp/places-evidence/ilorin/museum.jpg",
+   "used": "single-storey ochre-yellow walls, wide red-pink hipped sheet roof with a central front cross-gable, dark green fascia board, front veranda with square piers, laterite forecourt, round green-and-white kerbed bed with a bronze figure and white horse heads, broadleaf trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1036276640",
+   "used": "footprint scale check (about 22 x 13 m main block; the photo shows a longer frontage so the front block is widened)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05,
+  "shiftY": -0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     44,
+     13
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb55c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bay": 5.5,
+    "faces": {
+     "front": "none",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d98c7a",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-bay",
+   "footprint": {
+    "rect": [
+     9,
+     3
+    ]
+   },
+   "at": [
+    -2,
+    -3.2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b050",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d98c7a",
+    "material": "corrugated",
+    "pitch": 26,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "params": {
+    "rect": [
+     47.5,
+     0.5
+    ],
+    "z0": 3.2,
+    "height": 0.45,
+    "colour": "#2f6b4f",
+    "topColour": "#2f6b4f"
+   },
+   "at": [
+    0,
+    -3.1
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "veranda-slab",
+   "params": {
+    "rect": [
+     44,
+     2.6
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#b9a98f"
+   },
+   "at": [
+    0,
+    -3.2
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 0.7,
+    "bottom": 3.7,
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    21,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    21,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#3a3f48",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "prism",
+   "id": "ground-laterite",
+   "params": {
+    "rect": [
+     50,
+     34
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#b5552f"
+   },
+   "at": [
+    0,
+    -6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drive-ring",
+   "params": {
+    "radius": 14,
+    "n": 32,
+    "z0": 0.04,
+    "height": 0.03,
+    "colour": "#a64a29"
+   },
+   "at": [
+    -4,
+    -17
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-kerb-base",
+   "params": {
+    "radius": 9.5,
+    "n": 40,
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#e8e8e0"
+   },
+   "at": [
+    -4,
+    -17
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "kerb-0",
+   "params": {
+    "mode": "arc",
+    "count": 10,
+    "centre": [
+     -4,
+     -17
+    ],
+    "radius": 9.3,
+    "startDeg": 0,
+    "endDeg": 324,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       1.0
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#e8e8e0"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "kerb-1",
+   "params": {
+    "mode": "arc",
+    "count": 10,
+    "centre": [
+     -4,
+     -17
+    ],
+    "radius": 9.3,
+    "startDeg": 18,
+    "endDeg": 342,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3.2,
+       1.0
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#2f6b4f"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bed-shrubs",
+   "params": {
+    "radius": 8.6,
+    "n": 24,
+    "z0": 0.3,
+    "height": 1.3,
+    "topScale": 0.9,
+    "colour": "#3f7a35",
+    "topColour": "#4f8f3f"
+   },
+   "at": [
+    -4,
+    -17
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "centre-plinth",
+   "params": {
+    "radius": 1.8,
+    "n": 12,
+    "z0": 1.5,
+    "height": 0.4,
+    "colour": "#4a4a46"
+   },
+   "at": [
+    -4,
+    -17
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -4,
+    -17,
+    1.9
+   ],
+   "params": {
+    "height": 11,
+    "pose": "stand",
+    "colour": "#4a3a30"
+   }
+  },
+  {
+   "type": "array",
+   "id": "horse-heads",
+   "params": {
+    "mode": "arc",
+    "count": 9,
+    "centre": [
+     -4,
+     -17
+    ],
+    "radius": 6.4,
+    "startDeg": 0,
+    "endDeg": 320,
+    "facing": "outward",
+    "dz": 0.8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.8,
+        1.8
+       ],
+       "z0": 0,
+       "height": 0.9,
+       "colour": "#2f6b4f"
+      }
+     },
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0.9,
+         "rect": [
+          1.36,
+          1.7
+         ],
+         "colour": "#f1f0ea"
+        },
+        {
+         "z": 2.61,
+         "rect": [
+          1.02,
+          1.53
+         ],
+         "cy": 0.18
+        },
+        {
+         "z": 3.75,
+         "rect": [
+          0.94,
+          2.04
+         ],
+         "cy": 0.54
+        },
+        {
+         "z": 4.7,
+         "rect": [
+          0.68,
+          1.7
+         ],
+         "cy": 0.9
+        },
+        {
+         "z": 5.08,
+         "rect": [
+          0.26,
+          0.68
+         ],
+         "cy": 1.08
+        }
+       ],
+       "colour": "#f1f0ea"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "chain",
+   "params": {
+    "section": {
+     "circle": 0.08
+    },
+    "closed": true,
+    "points": [
+     [
+      1.7999999999999998,
+      -17.0,
+      2.4
+     ],
+     [
+      1.602368873469957,
+      -15.498846108630108,
+      2.0
+     ],
+     [
+      1.0229437911810457,
+      -14.099993849896904,
+      2.0
+     ],
+     [
+      0.1012117985651706,
+      -12.898773136815054,
+      2.4
+     ],
+     [
+      -1.1000123002192352,
+      -11.977045556535451,
+      2.0
+     ],
+     [
+      -2.498866687290173,
+      -11.397625612521704,
+      2.0
+     ],
+     [
+      -4.000021304589599,
+      -11.200000000039129,
+      2.4
+     ],
+     [
+      -5.501174470009701,
+      -11.397636640613973,
+      2.0
+     ],
+     [
+      -6.900024600386299,
+      -11.97706686117023,
+      2.0
+     ],
+     [
+      -8.101241927749388,
+      -12.89880326610994,
+      2.4
+     ],
+     [
+      -9.022965095680282,
+      -14.100030750580695,
+      2.0
+     ],
+     [
+      -9.602379901411048,
+      -15.49888726597049,
+      2.0
+     ],
+     [
+      -9.799999999843488,
+      -17.0000426091792,
+      2.4
+     ],
+     [
+      -9.602357845226507,
+      -18.501195048629256,
+      2.0
+     ],
+     [
+      -9.022922486410721,
+      -19.900043050630376,
+      2.0
+     ],
+     [
+      -8.101181669159612,
+      -21.10125699225849,
+      2.4
+     ],
+     [
+      -6.89995079901872,
+      -22.02297574782824,
+      2.0
+     ],
+     [
+      -5.501092155328939,
+      -22.602385415268206,
+      2.0
+     ],
+     [
+      -3.9999360862312043,
+      -22.799999999647845,
+      2.4
+     ],
+     [
+      -2.4987843727714445,
+      -22.6023523309914,
+      2.0
+     ],
+     [
+      -1.0999384991646797,
+      -22.022911833923903,
+      2.0
+     ],
+     [
+      0.10127205671226402,
+      -21.10116660437383,
+      2.4
+     ],
+     [
+      1.0229863999084312,
+      -19.899932348579004,
+      2.0
+     ],
+     [
+      1.6023909290497782,
+      -18.501071576608112,
+      2.0
+     ]
+    ],
+    "colour": "#2a2a2a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "params": {
+    "radius": 0.12,
+    "n": 6,
+    "z0": 0,
+    "height": 16,
+    "colour": "#c8c8c8"
+   },
+   "at": [
+    -1,
+    -14
+   ]
+  },
+  {
+   "type": "array",
+   "id": "piers",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -18,
+     -3.4
+    ],
+    "end": [
+     18,
+     -3.4
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.3,
+       1.3
+      ],
+      "z0": 0,
+      "height": 3.2,
+      "colour": "#e0b84e"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "doors",
+   "params": {
+    "rect": [
+     6,
+     0.2
+    ],
+    "z0": 0.25,
+    "height": 2.8,
+    "colour": "#2a2f35"
+   },
+   "at": [
+    0,
+    -2.55
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panels-left",
+   "params": {
+    "rect": [
+     9,
+     0.2
+    ],
+    "z0": 0.9,
+    "height": 1.6,
+    "colour": "#3a4766"
+   },
+   "at": [
+    -11,
+    -2.55
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "panels-right",
+   "params": {
+    "rect": [
+     8,
+     0.2
+    ],
+    "z0": 0.9,
+    "height": 1.8,
+    "colour": "#5a4036"
+   },
+   "at": [
+    11,
+    -2.55
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "shrubs",
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -21,
+     -5.2
+    ],
+    "end": [
+     21,
+     -5.2
+    ],
+    "skip": [
+     3,
+     4
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.8,
+       1.2
+      ],
+      "z0": 0,
+      "height": 1.0,
+      "colour": "#3f7a35"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Horse heads are simplified tapered white forms (no ears or manes); statue is a stock figure without the raised horn; flat laterite ground with a single drive ring; veranda displays and doors are plain dark panels."
+ }
+}

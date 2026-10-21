@@ -1,0 +1,1060 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "emirates-museum-yola",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Fombina_Palace_Museum_Yola.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AbahEmma",
+   "view": "front",
+   "file": "/tmp/places-evidence/yola/fombina.jpg",
+   "used": "single-storey cream bungalow under a low hip roof of beige sheet metal, arched porch with maroon pillars and lintel on the left, mustard wall with maroon piers and black iron railing in front, water tank on a stand at right, red laterite yard, neem tree"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1120100809",
+   "used": "nearest match only (6-sided 689 m2 'house'); not used for the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "margin": 0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "rect": [
+     26,
+     13
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b4",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "trimColour": "#8e3a3a",
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d8c58f",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    -9,
+    2.5
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe1bd",
+    "windows": "none",
+    "trimColour": "#8e2f2f",
+    "faces": {
+     "front": "arched",
+     "left": "none"
+    },
+    "glassColour": "#3a3a3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e2f2f",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -18,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#8e2f2f",
+    "leafColour": "#151515"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -7.9,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.6,
+    "bottom": 0.1,
+    "colour": "#f3eddc",
+    "frameColour": "#8e3a3a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.1,
+    "tankHeight": 1.5,
+    "legHeight": 4,
+    "legs": 4,
+    "colour": "#2b2b2b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -14,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "spread": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    24,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "height": 2.4,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.875,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.875,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.525,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.525,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.175,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.175,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.825000000000001,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 0.9,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.825000000000001,
+    -7,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.475000000000001,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.475000000000001,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.125000000000002,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.125000000000002,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.875,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.875,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5249999999999999,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.5249999999999999,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.8249999999999997,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.8249999999999997,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.175,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 0.9,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.175,
+    -7,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.5249999999999995,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.5249999999999995,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.874999999999999,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.874999999999999,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.125,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.125,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.475,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.475,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.825,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.825,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.175,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 0.9,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.175,
+    -7,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.524999999999999,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.524999999999999,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.875,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.875,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16.125,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16.125,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.474999999999998,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17.474999999999998,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.825,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.825,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.174999999999997,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 0.9,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20.174999999999997,
+    -7,
+    0.9
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.525,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 1.4,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.525,
+    -7,
+    1.4
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22.875,
+    -7,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.35
+    ],
+    "height": 2.0,
+    "colour": "#d9b45a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22.875,
+    -7,
+    2.0
+   ],
+   "params": {
+    "rect": [
+     1.3499999999999999,
+     0.45
+    ],
+    "height": 0.18,
+    "colour": "#8e2f2f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    -7,
+    2.0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.2,
+    "kind": "railing",
+    "colour": "#111111"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   46,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Wall dips are shallow steps not a smooth V with sloped maroon coping; porch arch/maroon lintel simplified; camera is far wider than the portrait photo, so the wall does not fill the foreground; barbed wire and tree canopy not modelled."
+ }
+}

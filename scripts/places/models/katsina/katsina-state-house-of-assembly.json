@@ -1,0 +1,358 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "katsina-state-house-of-assembly",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 14,
+  "fovDeg": 48,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     70,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "bay": 6,
+    "plinth": 0.8,
+    "bands": "#b98a5e",
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamber",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 6,
+    "plinth": 0.8,
+    "bands": "#b98a5e",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    18,
+    19.2
+   ],
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "height": 2.2,
+    "topScale": 0.7,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-l",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -40,
+    -6
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 6,
+    "bands": "#b98a5e",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-r",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    40,
+    -6
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 6,
+    "bands": "#b98a5e",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 18
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 5,
+    "height": 9.5,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f7f4ee",
+    "roofColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    40,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 88,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 0
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    55,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 88,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 0
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.4,
+    "pillar": 1.2,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -34,
+    -37,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    34,
+    -37,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     46,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or footprint; typed from brief"
+ }
+}

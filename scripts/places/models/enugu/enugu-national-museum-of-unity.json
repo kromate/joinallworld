@@ -1,0 +1,896 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nat_Museum,_Enugu.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DipoTayo",
+   "view": "front",
+   "used": "cream concrete entrance arch on square columns with capitals, rust-red sculptural steel gates, red laterite road, trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Museum_Of_Unity,Enugu.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ebubechukwu1",
+   "view": "front",
+   "used": "arch proportions and colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1167573499",
+   "used": "museum building footprint (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8,
+    "scale": 0.4
+   },
+   "height": 6.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c0aa",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#c4b393",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "coping-1",
+   "at": [
+    24,
+    -57,
+    0
+   ],
+   "params": {
+    "rect": [
+     17.3,
+     0.8
+    ],
+    "height": 0.3,
+    "colour": "#d9b96c",
+    "z0": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-1",
+   "at": [
+    24,
+    -57,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#e8c981",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "coping-0",
+   "at": [
+    -22,
+    -57,
+    0
+   ],
+   "params": {
+    "rect": [
+     17.3,
+     0.8
+    ],
+    "height": 0.3,
+    "colour": "#d9b96c",
+    "z0": 2.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wall-0",
+   "at": [
+    -22,
+    -57,
+    0
+   ],
+   "params": {
+    "rect": [
+     17,
+     0.5
+    ],
+    "height": 2.2,
+    "colour": "#e8c981",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-right",
+   "at": [
+    8.2,
+    -56.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.35
+    ],
+    "height": 4.5,
+    "colour": "#9b2f22",
+    "z0": 0
+   },
+   "rotDeg": 70
+  },
+  {
+   "type": "prism",
+   "id": "pier-a",
+   "at": [
+    -11,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 9.0,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-a",
+   "at": [
+    -11,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-a",
+   "at": [
+    -11,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-b",
+   "at": [
+    -8.6,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 9.0,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-b",
+   "at": [
+    -8.6,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-b",
+   "at": [
+    -8.6,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-c",
+   "at": [
+    -1.2,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 9.0,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-c",
+   "at": [
+    -1.2,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-c",
+   "at": [
+    -1.2,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-d",
+   "at": [
+    1.2,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 9.0,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-d",
+   "at": [
+    1.2,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-d",
+   "at": [
+    1.2,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-e",
+   "at": [
+    4,
+    -57.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 8.6,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-e",
+   "at": [
+    4,
+    -57.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-e",
+   "at": [
+    4,
+    -57.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-f",
+   "at": [
+    10,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 8.6,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-f",
+   "at": [
+    10,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-f",
+   "at": [
+    10,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-g",
+   "at": [
+    12.4,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 8.6,
+    "colour": "#e8c981",
+    "z0": 0,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar-g",
+   "at": [
+    12.4,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 0.9,
+    "colour": "#e8c981",
+    "z0": 5.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "collar2-g",
+   "at": [
+    12.4,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.7,
+    "colour": "#e8c981",
+    "z0": 6.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "at": [
+    0.5,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     24,
+     3.2
+    ],
+    "height": 1.6,
+    "colour": "#e8c981",
+    "z0": 7.5,
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy-lip",
+   "at": [
+    0.5,
+    -59.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     24.4,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#d9b96c",
+    "z0": 9.1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit-0",
+   "at": [
+    -5.0,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     2.6
+    ],
+    "height": 0.6,
+    "colour": "#cdb06a",
+    "z0": 6.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit-1",
+   "at": [
+    6.5,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     2.6
+    ],
+    "height": 0.6,
+    "colour": "#cdb06a",
+    "z0": 6.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-base",
+   "at": [
+    0.5,
+    -58,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 1.6,
+    "colour": "#444444",
+    "z0": 9.1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0.5,
+    -58,
+    9.1
+   ],
+   "params": {
+    "height": 3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-left",
+   "at": [
+    -5.0,
+    -57.7,
+    0
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     0.35
+    ],
+    "height": 4.5,
+    "colour": "#9b2f22",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l-panel0",
+   "at": [
+    -6.5,
+    -57.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 3.6,
+    "colour": "#7d2a1e",
+    "z0": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l-panel1",
+   "at": [
+    -4.6,
+    -57.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#7d2a1e",
+    "z0": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-l-panel2",
+   "at": [
+    -3.1,
+    -57.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#7d2a1e",
+    "z0": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gear0",
+   "at": [
+    -5.5,
+    -58.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.35
+    ],
+    "height": 3.4,
+    "colour": "#9b2f22",
+    "z0": 2.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gear1",
+   "at": [
+    -5.5,
+    -58.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.35
+    ],
+    "height": 2.2,
+    "colour": "#9b2f22",
+    "z0": 3.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gear2",
+   "at": [
+    -5.5,
+    -58.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.35
+    ],
+    "height": 4.2,
+    "colour": "#9b2f22",
+    "z0": 2.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -56,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -54,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    24,
+    -48,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0.5,
+    -70,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     24
+    ],
+    "height": 0.08,
+    "colour": "#b5533a",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb0",
+   "at": [
+    -5.1,
+    -70,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     24
+    ],
+    "height": 0.15,
+    "colour": "#d9d2c0",
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb1",
+   "at": [
+    7.1,
+    -70,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     24
+    ],
+    "height": 0.15,
+    "colour": "#d9d2c0",
+    "z0": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "gate rebuilt (24 m canopy, stepped paired piers with collars, tall rust gates, gear, half-open leaf, rust road) but camera still frames the whole site so the gate stays small; canopy soffits are flat not arched; gate reliefs are stacked flat panels"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "enugu-national-museum-of-unity"
+}

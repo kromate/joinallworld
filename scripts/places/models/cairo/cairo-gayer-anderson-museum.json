@@ -1,0 +1,937 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museo_gayer_anderson,_esterno.JPG",
+   "licence": "CC BY 3.0",
+   "author": "Sailko",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/cairo-gayer-anderson-museum-6.jpg",
+   "used": "two tall plastered stone houses with a gap and a bridge between, rough ashlar lower storeys, dark mashrabiya screens and an oriel, flat roofs with screened terrace, timber loggia with lattice rail in foreground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bayt_al-Kritiliyya_(Gayer-Anderson_Museum),_16th-17th_cents.,_Cairo_(3).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Richard Mortel",
+   "view": "street",
+   "file": "/tmp/places-evidence/cairo/cairo-gayer-anderson-museum-2.jpg",
+   "used": "sand-coloured ashlar, projecting timber oriels, the bridge between the houses"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kairo_Gayer_Anderson_Museum_BW_3.jpg",
+   "licence": "CC BY 3.0",
+   "author": "Berthold Werner",
+   "view": "detail",
+   "file": "/tmp/places-evidence/cairo/cairo-gayer-anderson-museum-5.jpg",
+   "used": "mashrabiya lattice screens of the roof terrace"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/197958374",
+   "used": "overall extent only (about 51 x 41 m, rotated); houses placed as two blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "east-ground",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    8,
+    2
+   ],
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9a27a",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "bands",
+     "colour": "#a58f68"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-upper",
+   "footprint": {
+    "rect": [
+     13,
+     22
+    ]
+   },
+   "at": [
+    8,
+    2
+   ],
+   "z0": 5.5,
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb48d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-step",
+   "footprint": {
+    "rect": [
+     9,
+     22
+    ]
+   },
+   "at": [
+    18.5,
+    2
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4ad85",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-step-up",
+   "footprint": {
+    "rect": [
+     7,
+     14
+    ]
+   },
+   "at": [
+    19,
+    2
+   ],
+   "z0": 9,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb48d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-block",
+   "footprint": {
+    "rect": [
+     8,
+     14
+    ]
+   },
+   "at": [
+    26,
+    8
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cbb58c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-ground",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -17,
+    6
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b9a27a",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "bands",
+     "colour": "#a58f68"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-upper",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    -17,
+    6
+   ],
+   "z0": 5,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb48d",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-tower",
+   "footprint": {
+    "rect": [
+     8,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "z0": 16.5,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0b890",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bridge",
+   "footprint": {
+    "rect": [
+     7.5,
+     6
+    ]
+   },
+   "at": [
+    -2.25,
+    2
+   ],
+   "z0": 10,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b189",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a782",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "alley-dark",
+   "at": [
+    -2.25,
+    -1
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.8
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#2b211a",
+    "topColour": "#2b211a"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "alley-arch",
+   "at": [
+    -2.25,
+    -1.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 7,
+    "depth": 0.5,
+    "archWidth": 4,
+    "springHeight": 4.5,
+    "pointed": false,
+    "colour": "#1f1712"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-soffit",
+   "at": [
+    -2.25,
+    -1
+   ],
+   "params": {
+    "rect": [
+     7.5,
+     1.2
+    ],
+    "z0": 8.4,
+    "height": 0.7,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bridge-lattice",
+   "at": [
+    -2.25,
+    -1.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.3
+    ],
+    "z0": 10,
+    "height": 2.4,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sill-band-e",
+   "at": [
+    8,
+    -9.1
+   ],
+   "params": {
+    "rect": [
+     13.4,
+     0.4
+    ],
+    "z0": 5.5,
+    "height": 0.4,
+    "colour": "#a58f68",
+    "topColour": "#a58f68"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "corbel-l",
+   "at": [
+    3,
+    -9.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     1.2
+    ],
+    "z0": 5,
+    "height": 0.8,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "corbel-r",
+   "at": [
+    13,
+    -9.5
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     1.2
+    ],
+    "z0": 5,
+    "height": 0.8,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ground-lattice",
+   "at": [
+    8,
+    -9.1
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.4
+    ],
+    "z0": 0.8,
+    "height": 4.2,
+    "colour": "#7a4a36",
+    "topColour": "#7a4a36"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat-e1",
+   "at": [
+    8,
+    -9.15
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "z0": 7,
+    "height": 4.4,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat-e2",
+   "at": [
+    8,
+    -9.15
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "z0": 13.5,
+    "height": 3.8,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat-e3",
+   "at": [
+    18.5,
+    -9.15
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "z0": 6.0,
+    "height": 3.2,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-east",
+   "at": [
+    17,
+    -9.1
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3,
+    "colour": "#6d4a35",
+    "topColour": "#6d4a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat-step",
+   "at": [
+    18.5,
+    -9.1
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.3
+    ],
+    "z0": 10.5,
+    "height": 2,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "bay-window",
+   "id": "oriel-west",
+   "at": [
+    -14,
+    -2.4,
+    6.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4.2,
+    "depth": 1.4,
+    "height": 4.2,
+    "storeys": 1,
+    "colour": "#6b4630"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "oriel-west-brackets",
+   "at": [
+    -14,
+    -2.6
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     1.4
+    ],
+    "z0": 5.6,
+    "height": 0.9,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "bay-window",
+   "id": "mash-west-2",
+   "at": [
+    -22,
+    -2.1,
+    9.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 2.4,
+    "depth": 0.8,
+    "height": 3.0,
+    "storeys": 1,
+    "colour": "#6b4630"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat-w1",
+   "at": [
+    -8.5,
+    -2.15
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 8.5,
+    "height": 3,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lat-w2",
+   "at": [
+    -8.5,
+    -2.15
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "z0": 4,
+    "height": 1.6,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lat-w3",
+   "at": [
+    -19,
+    -2.15
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 11.5,
+    "height": 2.4,
+    "colour": "#5a3b28",
+    "topColour": "#5a3b28"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-screen",
+   "at": [
+    -17,
+    6
+   ],
+   "params": {
+    "rect": [
+     10,
+     8
+    ],
+    "z0": 16.5,
+    "height": 2.6,
+    "colour": "#6b4630",
+    "topColour": "#7a5636"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-screen-e",
+   "at": [
+    8,
+    2
+   ],
+   "params": {
+    "rect": [
+     7,
+     6
+    ],
+    "z0": 19,
+    "height": 2.4,
+    "colour": "#6b4630",
+    "topColour": "#7a5636"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "loggia-posts",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.8,
+      "colour": "#5c3d2a",
+      "topColour": "#5c3d2a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     -14
+    ],
+    "end": [
+     -9,
+     -14
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "array",
+   "id": "loggia-posts-back",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.4,
+      "colour": "#5c3d2a",
+      "topColour": "#5c3d2a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -27,
+     -9
+    ],
+    "end": [
+     -9,
+     -9
+    ],
+    "count": 7
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof-low",
+   "at": [
+    -18,
+    -9.5
+   ],
+   "params": {
+    "rect": [
+     20,
+     3
+    ],
+    "z0": 3.0,
+    "height": 0.4,
+    "colour": "#5c3d2a",
+    "topColour": "#5c3d2a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof-mid",
+   "at": [
+    -18,
+    -11.3
+   ],
+   "params": {
+    "rect": [
+     20,
+     2
+    ],
+    "z0": 3.4,
+    "height": 0.4,
+    "colour": "#5c3d2a",
+    "topColour": "#5c3d2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof-high",
+   "at": [
+    -18,
+    -13
+   ],
+   "params": {
+    "rect": [
+     20,
+     1.8
+    ],
+    "z0": 3.8,
+    "height": 0.4,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-rail",
+   "at": [
+    -18,
+    -14
+   ],
+   "params": {
+    "rect": [
+     18,
+     0.3
+    ],
+    "z0": 0.8,
+    "height": 1.3,
+    "colour": "#6b4630",
+    "topColour": "#6b4630"
+   }
+  },
+  {
+   "type": "array",
+   "id": "loggia-arches",
+   "params": {
+    "of": {
+     "type": "arched-window",
+     "params": {
+      "width": 1.2,
+      "height": 2.4,
+      "kind": "arch"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -25,
+     -14.2
+    ],
+    "end": [
+     -11,
+     -14.2
+    ],
+    "count": 6
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "courtyard",
+   "at": [
+    0,
+    -10
+   ],
+   "params": {
+    "rect": [
+     70,
+     44
+    ],
+    "z0": 0,
+    "height": 0.15,
+    "colour": "#cfc3a8",
+    "topColour": "#d8cdb2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -5,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-gayer-anderson-museum",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "mashrabiya as flat dark panels, no carved oriel brackets, loggia pergola roof stepped not sloped, no planting; a blue ground patch at right remains from unknown site layer"
+ }
+}

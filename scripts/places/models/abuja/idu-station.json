@@ -1,0 +1,597 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "idu-station",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Idu_Station_Terminal_Outside.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Liesel81",
+   "view": "front",
+   "file": "/tmp/places-evidence/abuja/idu1.jpg",
+   "used": "tall central glass hall between two pale stone-clad piers with pink granite bases, deep flat entrance canopy with dark soffit and a blank sign band on top, two lower glass-fronted wings with stone fascia bands, red and white lattice radio mast and a low grey utility building at the right, brick-paved forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Idu_Station_Platform.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Liesel81",
+   "view": "side",
+   "file": "/tmp/places-evidence/abuja/idu2.jpg",
+   "used": "platform side: flat cream concrete roof on grey columns over wide paved platforms, ballasted twin tracks, blue and white light-rail train, blank black sign boards"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/607064215",
+   "used": "name-matched station outline (about 165 m long, stepped plan): used for overall length and the two-wing proportion only, the photo shows a plain rectangular front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 2,
+  "fovDeg": 54,
+  "aspect": 2.0,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     21,
+     10
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5a6c",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "glassColour": "#52657a",
+    "plinth": 0.4,
+    "bay": 1.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bab4",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     4.5,
+     14
+    ]
+   },
+   "at": [
+    -12.5,
+    -3.5
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "plinth": 1.8,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.0,
+       2.5
+      ],
+      "colours": [
+       "#cfcfca",
+       "#c2c2bc",
+       "#d8d8d2"
+      ],
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c4be"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     4.5,
+     14
+    ]
+   },
+   "at": [
+    12.5,
+    -3.5
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "plinth": 1.8,
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.0,
+       2.5
+      ],
+      "colours": [
+       "#cfcfca",
+       "#c2c2bc",
+       "#d8d8d2"
+      ],
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4c4be"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-box",
+   "footprint": {
+    "rect": [
+     29,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "z0": 14,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.0,
+       2.5
+      ],
+      "colours": [
+       "#cfcfca",
+       "#c2c2bc",
+       "#d8d8d2"
+      ],
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bab4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     32,
+     10
+    ]
+   },
+   "at": [
+    -30.5,
+    1
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5a6c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#52657a",
+    "bay": 1.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca",
+    "parapet": 2.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    27.5,
+    1
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5a6c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#52657a",
+    "bay": 1.5,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfca",
+    "parapet": 2.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "utility",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    52,
+    5
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4c6c2",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a0a4a2",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-band",
+   "footprint": {
+    "rect": [
+     29,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 17.2,
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfcfca",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       2.0,
+       2.5
+      ],
+      "colours": [
+       "#cfcfca",
+       "#c2c2bc",
+       "#d8d8d2"
+      ],
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d4cd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "granite-left",
+   "footprint": {
+    "rect": [
+     4.7,
+     14.2
+    ]
+   },
+   "at": [
+    -13.5,
+    -3.5
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b98672",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98672"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "granite-right",
+   "footprint": {
+    "rect": [
+     4.7,
+     14.2
+    ]
+   },
+   "at": [
+    13.5,
+    -3.5
+   ],
+   "height": 1.8,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#b98672",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b98672"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "depth": 10,
+    "height": 1.0,
+    "colour": "#a9a39a"
+   }
+  },
+  {
+   "type": "station-canopy",
+   "at": [
+    0,
+    13,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "depth": 9,
+    "height_inner": 6,
+    "height_outer": 5.6,
+    "kind": "flat",
+    "attached": false,
+    "colour": "#d9d5c9"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    20.5,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "tracks": 2,
+    "spacing": 5.4
+   }
+  },
+  {
+   "type": "train",
+   "at": [
+    8,
+    20.5,
+    0
+   ],
+   "params": {
+    "carriages": 3,
+    "colour": "#2a55a8",
+    "loco_colour": "#2a55a8"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    43,
+    -1,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "baseWidth": 4,
+    "topWidth": 1.2,
+    "panels": 8,
+    "colour": "#c8362f",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    44,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.8,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#d0d2d0"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     26,
+     12.5
+    ]
+   },
+   "at": [
+    0,
+    -7.2
+   ],
+   "z0": 13.5,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9fa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa3a8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 3.4,
+    "colour": "#2b3036"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8.5,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.8,
+    "bottom": 3.4,
+    "colour": "#2b3036"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -12
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -8
+    ],
+    "height": 3.5
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Round 3 applied critic fixes: tall panel-grid piers and sign band, deeper pale soffit canopy, lighter mullioned glass, taller wings with pale fascia, shorter thicker mast. Panel colours/lighting still read bluer than photo; entrance sign boards are blank; platform side not compared."
+ }
+}

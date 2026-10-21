@@ -1,0 +1,149 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kinshasa",
+ "venueId": "kinshasa-osm-node-5331304126",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1412631827",
+   "used": "footprint (containing match, 22x16.5 m, bearing ~91)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kinshasa.json#kinshasa-osm-node-5331304126",
+   "used": "white-rendered two-storey lodge restaurant, clay-tile hip roof, arched windows, terrace with awning and umbrellas toward the river"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 7.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#a2553a",
+    "faces": {
+     "front": "arched",
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a2553a",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -9,
+    -8.6,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 3,
+    "height": 3.2,
+    "roof": "lean-to",
+    "wall_colour": "#f7f4ee",
+    "roof_colour": "#a2553a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    6,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.6,
+    "colours": [
+     "#2f6b8c",
+     "#f7f4ee"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 7,
+    "colours": [
+     "#2f6b8c",
+     "#f7f4ee",
+     "#a2553a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "water",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; facade details inferred from the brief."
+ }
+}

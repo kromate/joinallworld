@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-community-voting-game",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gaborone.json",
+   "used": "game venue placeholder: a small polling hall about 20 x 12 m, cream render, red corrugated gable roof, blank sign board and flag. No real building exists; the OSM match is the Parliament building (containing) and was deliberately not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8bd",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.35,
+    "bands": "#a8553a",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9442f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     7,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -7.7
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3ead6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a9442f",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 0.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 1.6,
+    "colour": "#a8553a",
+    "frameColour": "#e6d8bd"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -9.8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.35,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#c9c3b5"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -14,
+    -15,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.1,
+    "thickness": 0.25,
+    "colour": "#c9c3b5",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "acacia",
+      "height": 7,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     6,
+     0
+    ],
+    "end": [
+     -14,
+     -4,
+     0
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "acacia",
+      "height": 7,
+      "spread": 5
+     }
+    },
+    "mode": "line",
+    "start": [
+     14,
+     7,
+     0
+    ],
+    "end": [
+     16,
+     -5,
+     0
+    ],
+    "count": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists for this game placeholder; modest typical Gaborone community hall, flag omitted"
+ }
+}

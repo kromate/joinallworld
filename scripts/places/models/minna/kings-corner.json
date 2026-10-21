@@ -1,0 +1,161 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "kings-corner",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/574075971",
+   "used": "real 10 x 7 m footprint, 4-sided skewed rectangle, name match"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/minna.json",
+   "used": "small open-sided eatery with veranda, plastic chairs, painted render, green corrugated shed roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "margin": 0.2
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efdfb3",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#a64a35",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f6b4a",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.0,
+    0
+   ],
+   "params": {
+    "width": 8.5,
+    "depth": 2.6,
+    "height": 2.6,
+    "drop": 0.4,
+    "colours": [
+     "#a64a35",
+     "#efdfb3"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -1,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4.5,
+    "radius": 1.4,
+    "colours": [
+     "#c8362f",
+     "#2f6b4f",
+     "#efdfb3"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.6,
+    -5.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3.6,
+    "height": 1.1,
+    "bottom": 3.4,
+    "colour": "#a64a35",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.6,
+    "thickness": 0.25,
+    "colour": "#efdfb3"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 1.6,
+    "thickness": 0.25,
+    "colour": "#efdfb3"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; open sides, chairs and real colours are typed guesses on the true outline"
+ }
+}

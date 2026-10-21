@@ -1,0 +1,396 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-node-6813943851",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Au_bord_de_la_plage_de_%C3%AEles_de_soro.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Thierno ismael Diallo",
+   "view": "street",
+   "file": "/tmp/places-evidence/conakry/soro2.jpg",
+   "used": "broadleaf shade trees over a bare earth yard, low concrete pad and brick grill, white balustrade wall on the right, picnic tables and plastic chairs at the waterline, pale sand, sea behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Journ%C3%A9e_r%C3%A9cr%C3%A9atif_dans_le_%C3%AEles_de_soro.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Thierno ismael Diallo",
+   "view": "street",
+   "used": "red-brown earth under the tree canopy, palms behind"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/conakry.json#conakry-osm-node-6813943851",
+   "used": "Atlantic beach, palms, shacks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    20
+   ],
+   "params": {
+    "width": 60,
+    "depth": 8,
+    "colour": "#e6d8b5",
+    "bank": false
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    36
+   ],
+   "params": {
+    "width": 70,
+    "depth": 30,
+    "colour": "#7fc4c4",
+    "bank": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    2,
+    12
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "thickness": 0.3,
+    "kind": "balustrade",
+    "colour": "#f2efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb0",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb1",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    2
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb2",
+   "footprint": {
+    "rect": [
+     0.5,
+     8.3
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb3",
+   "footprint": {
+    "rect": [
+     0.5,
+     8.3
+    ]
+   },
+   "at": [
+    6,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6ac",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grill",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.0
+    ]
+   },
+   "at": [
+    12,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a4a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e6a64",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chimney",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    12.6,
+    6.3
+   ],
+   "rotDeg": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a4a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a3a",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -6,
+    10
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#2fa89a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -1,
+    11
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#c0392b"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4,
+    10
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#2fa89a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -11,
+    9
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#c0392b"
+   }
+  },
+  {
+   "type": "beach-row",
+   "at": [
+    -16,
+    19
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 6,
+    "umbrellas": false,
+    "loungers": true,
+    "colours": [
+     "#c0392b",
+     "#e0b03a"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    4
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    2
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    20,
+    10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -2,
+    16
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    8
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    28,
+    4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Critic fixes applied (earth yard, sea plane, kerb outline, bigger denser trees, no pavilion/kiosk) but the balustrade wall and brick grill do not read in the render, canopy is still lollipop trees not spreading crowns, camera is higher than the photo, and the sand/sea strip is thin."
+ }
+}

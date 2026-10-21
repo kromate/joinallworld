@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/731643082",
+   "used": "containing building outline (33 x 18 m, wedge shaped, 606 m2); the cafe takes the near part"
+  },
+  {
+   "kind": "text",
+   "used": "brief: cafe-patisserie, glazed shopfront, terrace with umbrellas; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     18,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede6d4",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "punched",
+     "back": "none"
+    },
+    "bands": "#b5503a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    13.5,
+    5
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0cbbd",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "colours": [
+     "#b5503a",
+     "#ede6d4"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.8,
+    4.7
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#b5503a",
+    "frameColour": "#ede6d4",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 9,
+    "colours": [
+     "#b5503a",
+     "#ede6d4",
+     "#d9a43a"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; typical glazed cafe with awning, terrace umbrellas."
+ }
+}

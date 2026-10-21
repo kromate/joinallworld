@@ -1,0 +1,622 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Felix_houphouet-boigny_university_(3).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Hanay",
+   "view": "front",
+   "file": "/tmp/places-evidence/abidjan/uni3.jpg",
+   "used": "granite stepped plinth with tall obelisk and dark crown; low 2-3 storey blocks with ochre walls, orange terracotta breeze-block screens, white ribbon bands, open upper galleries, flat roofs; red-white kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Universit%C3%A9_F%C3%A9lix-Houphou%C3%ABt-Boigny_en_2026_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dadrik",
+   "view": "front",
+   "file": "/tmp/places-evidence/abidjan/uni0.jpg",
+   "used": "long horizontal administration block with white upper bands and brick-red spandrels, central stair tower, lawns and trees"
+  },
+  {
+   "kind": "text",
+   "used": "nearest OSM building rejected: a 26 m2 shed, not the campus block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     56,
+     14
+    ]
+   },
+   "at": [
+    28,
+    20
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc69a",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ece0",
+    "overhang": 0.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-left",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    -32,
+    14
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab78",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain"
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#e4b88a",
+       "#efe9dc",
+       "#e4b88a"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#c98a52",
+    "rise": 1.6,
+    "overhang": 0.7,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-wing",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -8,
+    30
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfcc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c2",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-1",
+   "params": {
+    "rect": [
+     44,
+     16
+    ],
+    "z0": 0,
+    "height": 0.7,
+    "colour": "#4a5058",
+    "topColour": "#4a5058"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-2",
+   "params": {
+    "rect": [
+     30,
+     11
+    ],
+    "z0": 0.7,
+    "height": 0.8,
+    "colour": "#4a5058",
+    "topColour": "#4a5058"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "plinth-3",
+   "params": {
+    "rect": [
+     20,
+     7.5
+    ],
+    "z0": 1.5,
+    "height": 0.9,
+    "colour": "#4a5058",
+    "topColour": "#4a5058"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "obelisk",
+   "at": [
+    0,
+    -10,
+    2.4
+   ],
+   "params": {
+    "colour": "#5a5e66",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.4,
+       5.4
+      ]
+     },
+     {
+      "z": 2,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       3.0,
+       3.0
+      ]
+     },
+     {
+      "z": 23,
+      "rect": [
+       1.7,
+       1.7
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "crown",
+   "at": [
+    0,
+    -10,
+    25.4
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#3a2c22",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      1.6,
+      0.7
+     ],
+     [
+      1.9,
+      1.6
+     ],
+     [
+      1.2,
+      2.4
+     ],
+     [
+      0.4,
+      2.9
+     ],
+     [
+      0,
+      3.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "params": {
+    "rect": [
+     90,
+     5
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#555a5e",
+    "topColour": "#555a5e"
+   },
+   "at": [
+    0,
+    -22
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "params": {
+    "rect": [
+     90,
+     0.5
+    ],
+    "z0": 0.05,
+    "height": 0.15,
+    "colour": "#c9423a",
+    "topColour": "#c9423a"
+   },
+   "at": [
+    0,
+    -19.4
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5,
+    "line": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back",
+   "at": [
+    28,
+    21.25
+   ],
+   "params": {
+    "rect": [
+     56,
+     11.5
+    ],
+    "z0": 3.6,
+    "height": 7.2,
+    "colour": "#e6d9bd",
+    "topColour": "#f1ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "storeys": 2,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-0",
+   "params": {
+    "rect": [
+     56.6,
+     14
+    ],
+    "z0": 3.5,
+    "height": 0.4,
+    "colour": "#f4f0e6",
+    "topColour": "#f4f0e6"
+   },
+   "at": [
+    28,
+    20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-1",
+   "params": {
+    "rect": [
+     56.6,
+     14
+    ],
+    "z0": 7.1,
+    "height": 0.4,
+    "colour": "#f4f0e6",
+    "topColour": "#f4f0e6"
+   },
+   "at": [
+    28,
+    20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "slab-2",
+   "params": {
+    "rect": [
+     56.6,
+     14
+    ],
+    "z0": 10.7,
+    "height": 0.4,
+    "colour": "#f4f0e6",
+    "topColour": "#f4f0e6"
+   },
+   "at": [
+    28,
+    20
+   ]
+  },
+  {
+   "type": "array",
+   "id": "cols",
+   "params": {
+    "mode": "line",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.45,
+       0.45
+      ],
+      "z0": 3.9,
+      "height": 6.8,
+      "colour": "#f4f0e6",
+      "topColour": "#f4f0e6"
+     }
+    },
+    "start": [
+     1,
+     13.4
+    ],
+    "end": [
+     55,
+     13.4
+    ],
+    "count": 14
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terra-0",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 3.9,
+    "height": 6.8,
+    "colour": "#d98650",
+    "topColour": "#d98650"
+   },
+   "at": [
+    4,
+    12.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terra-1",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 3.9,
+    "height": 6.8,
+    "colour": "#d98650",
+    "topColour": "#d98650"
+   },
+   "at": [
+    28,
+    12.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terra-2",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 3.9,
+    "height": 6.8,
+    "colour": "#d98650",
+    "topColour": "#d98650"
+   },
+   "at": [
+    52,
+    12.9
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "rect": [
+     100,
+     32
+    ],
+    "z0": 0,
+    "height": 0.04,
+    "colour": "#6f8f45",
+    "topColour": "#6f8f45"
+   },
+   "at": [
+    0,
+    -3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "rect": [
+     50,
+     14
+    ],
+    "z0": 0.04,
+    "height": 0.04,
+    "colour": "#b8b4aa",
+    "topColour": "#b8b4aa"
+   },
+   "at": [
+    0,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "terra-l",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "z0": 3.8,
+    "height": 6.7,
+    "colour": "#d98650",
+    "topColour": "#d98650"
+   },
+   "at": [
+    -38,
+    6.8
+   ]
+  },
+  {
+   "type": "array",
+   "id": "horns",
+   "at": [
+    0,
+    -10,
+    26.6
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 0.1,
+    "count": 8,
+    "facing": "outward",
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       1.4
+      ],
+      "z0": 0,
+      "height": 0.5,
+      "colour": "#3a2c22",
+      "topColour": "#3a2c22"
+     },
+     "at": [
+      0,
+      2.2,
+      0
+     ]
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "scene reads small and far versus the near photo; plinth is wider and flatter than the photo, crown horns tiny, granite speckle absent, loggia is simplified (ribbon back wall, thin columns)"
+ }
+}

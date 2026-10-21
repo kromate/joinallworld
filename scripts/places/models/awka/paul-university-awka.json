@@ -1,0 +1,417 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "paul-university-awka",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paul_University_Library.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Odogwu123",
+   "view": "front",
+   "file": "/tmp/places-evidence/awka/paul2.jpg",
+   "used": "library block: tall stained pale-concrete slab with pink recessed entrance bay, big arched glazed door, pink steps, low wings with brown-framed windows and hip roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Paul_university.jpg",
+   "licence": "Public domain",
+   "author": "User:Nwabu2010",
+   "view": "side",
+   "file": "/tmp/places-evidence/awka/paul1.jpg",
+   "used": "cream rendered blocks with arched opening, red-brown tower, brown hip roofs, green planting"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     13,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#c2beb5",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "left": "punched",
+     "right": "punched"
+    },
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d988f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess-back",
+   "footprint": {
+    "rect": [
+     9.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -7.4
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b3706a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3706a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess-side-l",
+   "footprint": {
+    "rect": [
+     0.9,
+     3.2
+    ]
+   },
+   "at": [
+    -5.1,
+    -8.8
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b3706a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3706a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "recess-side-r",
+   "footprint": {
+    "rect": [
+     0.9,
+     3.2
+    ]
+   },
+   "at": [
+    5.1,
+    -8.8
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#b3706a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3706a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.8,
+    10
+   ],
+   "params": {
+    "rect": [
+     12,
+     3.6
+    ],
+    "height": 1.8,
+    "colour": "#cbc6bd",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -4.2,
+    -7.8
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 5,
+    "colour": "#a56b5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slot-l",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4.2,
+    -7.8
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#26302c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26302c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "slot-r",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    4.2,
+    -7.8
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#26302c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#26302c"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    0,
+    -7.8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 9,
+    "arch": true,
+    "colour": "#1f2d28"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    -13.5,
+    -2
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e2cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bay": 3.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8a5a3c"
+      ],
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8805a",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    13.5,
+    -2
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e9e2cf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "bay": 3.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8a5a3c"
+      ],
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8805a",
+    "material": "metal-sheet",
+    "rise": 2.2,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4,
+     6
+    ]
+   },
+   "at": [
+    18,
+    7
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a24a3c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3a2e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2f6b4a"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4a6a58",
+    "material": "metal-sheet",
+    "rise": 2.5,
+    "overhang": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -21,
+     -13
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "recessed pink porch, arch door with grid, steps and metal hip roofs now modelled; tree canopy overhang, plaster arch surround, stain streaks and shrubs not modelled; tower is a stair core placed from other photo"
+ }
+}

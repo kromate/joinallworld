@@ -1,0 +1,316 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "benue-state-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Benue-State-University_makurdi.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ukule thomas",
+   "view": "front",
+   "file": "/tmp/places-evidence/makurdi/bsu.jpg",
+   "used": "main gate: broad flat pale-grey canopy beam on four round columns with a lettering board (left blank here), peach-orange guardhouse with dark window and a blank name band, black bar gate, trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1386348543",
+   "used": "nearest building (46 x 31 m) informs the size of the lecture block behind the gate; the photo does not show the lecture blocks, their cream render comes from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 2,
+  "fovDeg": 62,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": -0.55,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "gate-beam",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -17,
+      -2.2
+     ],
+     [
+      17,
+      -2.2
+     ],
+     [
+      17,
+      2.2
+     ],
+     [
+      3,
+      2.2
+     ],
+     [
+      3,
+      8
+     ],
+     [
+      -17,
+      8
+     ]
+    ],
+    "z0": 6.0,
+    "height": 4.2,
+    "colour": "#c4c7cc"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-return",
+   "at": [
+    6,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     8
+    ],
+    "z0": 5.6,
+    "height": 2.2,
+    "colour": "#bfc3ca"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lettering",
+   "at": [
+    0,
+    -32.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     28,
+     0.25
+    ],
+    "z0": 7.4,
+    "height": 2.0,
+    "colour": "#2a2d3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "profile": [
+       [
+        0.01,
+        0
+       ],
+       [
+        0.65,
+        0,
+        "#c4c7cc"
+       ],
+       [
+        0.65,
+        6.5,
+        "#c4c7cc"
+       ],
+       [
+        0.01,
+        6.5
+       ]
+      ],
+      "segments": 14
+     }
+    },
+    "mode": "line",
+    "start": [
+     -15,
+     -0.5
+    ],
+    "end": [
+     15,
+     -0.5
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guardhouse",
+   "footprint": {
+    "rect": [
+     5,
+     4.5
+    ]
+   },
+   "at": [
+    2,
+    -27.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e39a74",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a85",
+    "parapet": 0.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "guard-fascia",
+   "at": [
+    2,
+    -29.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     0.7
+    ],
+    "z0": 4.6,
+    "height": 1.1,
+    "colour": "#e9dfc8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -28,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     24,
+     60
+    ],
+    "height": 0.05,
+    "colour": "#3b3b3e"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -9,
+    -29.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "pillar": 0.3
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    11,
+    -29.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "pillar": 0.3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 6,
+    "spread": 40
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Canopy is thicker with a dark lettering band and return wing, guardhouse taller with cream fascia, tarmac road and trees; lettering band blank, columns less chunky than photo, guardhouse barred windows and bar gates simplified."
+ }
+}

@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-airport-asmara-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AsmaraInternationalAirport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Grullab",
+   "view": "front",
+   "file": "/tmp/places-evidence/asmara/air1.jpg",
+   "used": "landside elevation: long low pale terminal with a ribbon-glazed ground floor, grey louvred upper band, tower with a glazed cab right of centre, lower left annex, vaulted walkway shelters, pale-blue fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Asmara_Air_Port.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Martin Schibbye",
+   "view": "aerial",
+   "used": "airside setting only (flat open apron); not modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 2.3
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdcd6",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#8d9298",
+    "plinth": 0.3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex-left",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e6dc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfc8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "upper-slats",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     15
+    ],
+    "z0": 5.2,
+    "height": 3.3,
+    "colour": "#8a8f95",
+    "windows": "none",
+    "pattern": {
+     "type": "louvres"
+    }
+   },
+   "at": [
+    10,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ground-glazing",
+   "params": {
+    "rect": [
+     56,
+     0.3
+    ],
+    "z0": 0.3,
+    "height": 4.6,
+    "colour": "#a9c3d6",
+    "windows": "none"
+   },
+   "at": [
+    10,
+    -8.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-shaft",
+   "params": {
+    "rect": [
+     4.5,
+     4.5
+    ],
+    "z0": 8.5,
+    "height": 10,
+    "colour": "#a99d86",
+    "windows": "none"
+   },
+   "at": [
+    20,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-stone",
+   "params": {
+    "rect": [
+     2.4,
+     0.4
+    ],
+    "z0": 8.5,
+    "height": 10,
+    "colour": "#8c7f68",
+    "windows": "none"
+   },
+   "at": [
+    20,
+    -1.35
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-glass",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "z0": 8.5,
+    "height": 10,
+    "colour": "#7fa5c4"
+   },
+   "at": [
+    17.9,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-glass-r",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     4.6
+    ],
+    "z0": 8.5,
+    "height": 10,
+    "colour": "#7fa5c4"
+   },
+   "at": [
+    22.1,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cab",
+   "params": {
+    "rect": [
+     7,
+     7
+    ],
+    "z0": 18.5,
+    "height": 3.6,
+    "colour": "#dcdcd6",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "topColour": "#e8e8e4"
+   },
+   "at": [
+    20,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-mast",
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 22.1,
+    "height": 5,
+    "colour": "#9aa0a5",
+    "windows": "none"
+   },
+   "at": [
+    20,
+    1
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "vault-right",
+   "at": [
+    46,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 22,
+    "depth": 9,
+    "height": 5,
+    "rise": 2.2,
+    "colour": "#f2f2ee",
+    "edgeColour": "#d8dcdf",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -6,
+     -10.5,
+     0
+    ],
+    "end": [
+     36,
+     -10.5,
+     0
+    ],
+    "count": 8,
+    "lod1Step": 2,
+    "lod2Step": 8,
+    "of": {
+     "type": "canopy",
+     "params": {
+      "form": "curved",
+      "width": 4.2,
+      "depth": 3,
+      "height": 3.2,
+      "rise": 1.1,
+      "colour": "#f2f2ee",
+      "edgeColour": "#cfd4d8",
+      "axis": "y"
+     }
+    }
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "vault-left",
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 26,
+    "depth": 6,
+    "height": 3.8,
+    "rise": 1.8,
+    "colour": "#f2f2ee",
+    "edgeColour": "#d8dcdf",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 1.6,
+    "kind": "rail",
+    "colour": "#6fb7c9"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    18,
+    -8.4,
+    7.2
+   ],
+   "params": {
+    "width": 16,
+    "height": 1,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 40
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#4189dd",
+     "#ea3a2a"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "colour": "#e8b923",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -56,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower shaft narrowed with stone panel and glass strips; terminal ground floor now a row of small white vaults; end vaults white; lawn added. Still simplified: louvre band is dark, no trolleys, fence is a thin rail, tower stone not textured."
+ }
+}

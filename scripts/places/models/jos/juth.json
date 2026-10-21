@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "juth",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JUTH_new_facility.jpg",
+   "licence": "CC0",
+   "author": "Twicebefore",
+   "view": "front",
+   "file": "/tmp/places-evidence/jos/juth3.jpg",
+   "used": "JUTH Twin Operating Theatre Suites front: cream render walls, deep terracotta-brown fascia band and columns, flat roof, blue-glazed punched windows, wire fence"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:JUTH_accident_and_emergency_unit_1.jpg",
+   "licence": "CC0",
+   "author": "Twicebefore",
+   "view": "front",
+   "used": "A&E unit: cream walls, terracotta fascia and column, plain blank signboard above"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/195584079",
+   "used": "not used for geometry: it is the whole 560 m hospital campus; the main block is composed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.78,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "kind": "H",
+    "size": [
+     90,
+     36
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c98f",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b0705a",
+    "plinth": 0.5,
+    "glassColour": "#2f5d94",
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0705a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "theatre-suites",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -15,
+    -12
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9c98a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#a35f50",
+    "cornice": true,
+    "glassColour": "#2f5d94"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a35f50",
+    "parapet": 1.0,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aande",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    27,
+    -12
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9c98a",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#a35f50",
+    "cornice": true,
+    "glassColour": "#2f5d94"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a35f50",
+    "parapet": 0.7,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -15,
+    -18.4
+   ],
+   "params": {
+    "width": 12,
+    "height": 2,
+    "bottom": 5.0,
+    "colour": "#f4f2ec",
+    "frameColour": "#a35f50",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    27,
+    -19
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "columns": 4,
+    "colour": "#a35f50",
+    "edgeColour": "#b6806f"
+   }
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    43,
+    -12
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3,
+    "vans": 2,
+    "colour": "#ead3a2",
+    "roofColour": "#a35f50"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -44,
+    32
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 3,
+    "tankHeight": 4,
+    "legHeight": 10,
+    "legs": 4,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -24
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.6,
+    "thickness": 0.1,
+    "kind": "fence",
+    "colour": "#5c7a52"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -50,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10,
+    "line": 1
+   }
+  },
+  {
+   "type": "array",
+   "id": "terracotta-columns",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -33,
+     -18.4
+    ],
+    "end": [
+     3,
+     -18.4
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "z0": 0,
+      "height": 4.6,
+      "colour": "#a35f50"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "low front wing, terracotta fascia and columns added; no dark brown door, paired window rows are generic, ward block and canopy from brief only"
+ }
+}

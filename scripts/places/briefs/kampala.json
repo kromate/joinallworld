@@ -1,0 +1,1427 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kampala",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kampala",
+    "climate": "rainforest",
+    "vernacular": "Capital spread over many red-earth hills with swampy valleys: downtown 1930s-60s Indian-Ugandan Art Deco and modernist shop blocks with balconies, glass and concrete towers around Kampala Road and Nakasero, hilltop mission churches in red brick (Namirembe, Rubaga), cream-painted villas and clinics with red or rust corrugated roofs, informal market sheds, and traditional Baganda reed-and-thatch domes.",
+    "wallColours": [
+      "#a4553a",
+      "#e8dcc0",
+      "#f2eee6",
+      "#b8b0a0",
+      "#c98a4a",
+      "#7d8f6a",
+      "#d6cdb8"
+    ],
+    "roofColours": [
+      "#9a4a36",
+      "#7a3a2e",
+      "#4f6f4a",
+      "#8a8f94",
+      "#b79a5b"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "red-brick",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Baganda thatched domes and reed fences with bark-cloth screens; Art Deco balconies and curved corners on downtown shop blocks; red-brick arched mission churches; mosque domes and minarets (Uganda National Mosque has five domes and a 50 m minaret); hand-painted signage and bright telecom paint.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kampala",
+        "what": "built on hills (Namirembe, Lubaga, Mengo, Kibuli) with missions and royal sites; Kasubi Tombs, Independence Monument, Baha'i Temple, National Mosque, cathedrals; Owino market; tropical rainforest climate; swamps and papyrus"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Uganda_National_Mosque",
+        "what": "five reinforced-concrete domes and a 50.5 m minaret that defines the skyline"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kasubi_Tombs",
+        "what": "traditional thatched dome, reed fence, bark-cloth fig trees"
+      }
+    ]
+  },
+  "places": {
+    "kampala-airport-kampala-airport": {
+      "venueId": "kampala-airport-kampala-airport",
+      "city": "kampala",
+      "name": "Entebbe International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Entebbe airport main terminal from the forecourt: a long two-storey 1972-73 block (Yugoslav Energoprojekt) with a modernised glazed front and the old control tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2ddd0",
+          "#3d6a88",
+          "#bfb9aa"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "survivor of the original 1970s terminal complex"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1972-73; expansion 2015-2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Entebbe_International_Airport",
+          "what": "main terminal 1972-73 designed by Aleksandar Kekovic, built by Energoprojekt; old terminal demolished except control tower and hall; Phase I 2015-2018 added a new passenger terminal and modernised the existing one"
+        }
+      ],
+      "notes": "Sourced: designer, builder, date, the surviving old tower, phased expansion. Facade, size and colours are estimates. On the shore of Lake Victoria, lush with palms; the 1976 raid happened in the old terminal, not this one."
+    },
+    "kampala-bahai-house-of-worship": {
+      "venueId": "kampala-bahai-house-of-worship",
+      "city": "kampala",
+      "name": "Baha'i House of Worship",
+      "archetype": "shrine-small",
+      "subject": "The Baha'i Mother Temple of Africa on Kikaya Hill: a nine-sided building under a tall green mosaic dome, in a landscaped garden",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 38,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#9fc4a8",
+          "#c8d6c9"
+        ],
+        "roofColour": "#3f8a5c",
+        "roofMaterial": "glass",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "green mosaic tiles from Italy"
+        },
+        {
+          "id": "stained-glass",
+          "count": 9,
+          "note": "green, amber and pale blue glass in the nine sides"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1958-1961",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Faith_in_Uganda",
+          "what": "designed by Mason Remey; foundation stone 1958, dedicated 1961; central dome on nine columns; about 127 ft tall, internal diameter about 84 ft, 600+ seats; dome green mosaic, rotunda white, lower walls pale green; coloured glass"
+        }
+      ],
+      "notes": "Nine-sided plan approximated as round; height 127 ft is about 38.7 m, internal diameter 84 ft is about 25.6 m (outer ring about 30 m). Distinct green dome, set on Kikaya Hill amid lawns and trees. Roofing: lower roof tiles from Belgium (colour not found)."
+    },
+    "kampala-clinic": {
+      "venueId": "kampala-clinic",
+      "city": "kampala",
+      "name": "Mengo Hospital",
+      "archetype": "hospital",
+      "subject": "Mengo Hospital on Namirembe Hill: a campus of older mission-hospital wards and newer blocks along Albert Cook Road",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#efe6cf",
+          "#a4553a",
+          "#7d8f6a"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "founded 1897",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mengo_Hospital",
+          "what": "founded 1897 by Albert Ruskin Cook; 300 beds; on Namirembe Hill along Albert Cook Road; buildings include the Sr. Albert Cook Building and Ernest Cook Radiology; architecture not described"
+        }
+      ],
+      "notes": "Oldest private hospital in Uganda; only facts about the institution found. Buildings are mission-style with verandas and red roofs plus modern wings; looks typed."
+    },
+    "kampala-community-notices": {
+      "venueId": "kampala-community-notices",
+      "city": "kampala",
+      "name": "KCCA Town Hall",
+      "archetype": "civic-palace",
+      "subject": "Kampala City Hall: a stately multi-storey civic block on Nakivubo / City Hall Square with a central entrance and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#eadfc2",
+          "#8a7a5a",
+          "#c9bfa5"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "assumed, unverified"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1930s-1960s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Name and role are known (Kampala Capital City Authority offices); building details were not found. Clock-tower is a guess; city halls of this era usually carry one."
+    },
+    "kampala-community-voting-game": {
+      "venueId": "kampala-community-voting-game",
+      "city": "kampala",
+      "name": "Independence Monument",
+      "archetype": "monument",
+      "subject": "The 1962 Independence Monument by Gregory Maloba: a concrete figure of a mother holding up a child, ropes at her legs and waist, in the King George V Jubilee Gardens on Nile Avenue",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 0,
+        "height_m": 8.8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c6bc",
+          "#8a8f94",
+          "#9fb08a"
+        ],
+        "roofColour": "#c9c6bc",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "mother and child, one arm raised"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "low plinth steps"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "garden railing"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Independence_Monument_(Uganda)",
+          "what": "unveiled 8 Oct 1962; concrete sculpture on a metal framework; mother holding a child with one raised hand and ropes around legs and waist; about 6-8.8 m tall (sources disagree); in King George V Jubilee Gardens on Nile Avenue, replaced the statue of King George V"
+        }
+      ],
+      "notes": "Height conflicts between sources (29 ft in the infobox, 6 m in the text); 8.8 m used. Colour is a guess (concrete grey, photos often show lighter weathered tones)."
+    },
+    "kampala-community-workshop": {
+      "venueId": "kampala-community-workshop",
+      "city": "kampala",
+      "name": "Makerere University Business School",
+      "archetype": "campus-block",
+      "subject": "MUBS at Nakawa: a 45-acre city campus of several multi-storey teaching blocks and a library around lawns",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6cf",
+          "#8a2f2f",
+          "#c8c0ae"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1997 merged; buildings 1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Makerere_University_Business_School",
+          "what": "45 acre campus at Plot 21A Port Bell Road, Nakawa, about 5.5 km east of city centre; buildings not described"
+        }
+      ],
+      "notes": "Institution and site size known; the architecture is typed from the city style. The maroon accent is a guess based on common university palettes (unverified)."
+    },
+    "kampala-fort-lugard": {
+      "venueId": "kampala-fort-lugard",
+      "city": "kampala",
+      "name": "Fort Lugard",
+      "archetype": "heritage-fort",
+      "subject": "The remains of Fort Lugard on Old Kampala hill beside the National Mosque: a small 50 x 40 m walled plot with a low museum building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "red-brick",
+        "colours": [
+          "#b8a58a",
+          "#a4553a",
+          "#8a8f94"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "remaining enclosure"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1890s-1908 (disputed)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Lugard",
+          "what": "colonial administrative site; Union Jack 1890; infobox 1908; reduced from 12 acres to 10, then to about 50 x 40 m; land donated by Amin for the 15,000-seat Uganda National Mosque; fort severely damaged in construction; status partly diminished"
+        }
+      ],
+      "notes": "Very little remains, so the model is a small plot, not a full fort; materials and structures remaining were not described and are guessed. The much larger National Mosque (five domes, 50 m minaret) stands next door and dominates the hill."
+    },
+    "kampala-garden-city": {
+      "venueId": "kampala-garden-city",
+      "city": "kampala",
+      "name": "Garden City",
+      "archetype": "mall",
+      "subject": "Garden City Shopping Mall on Yusuf Lule Road: a four-storey mall with a glass-roofed atrium, a long street frontage and a big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9db",
+          "#5b7a8f",
+          "#c9c4b6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007 (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "No page found; mall is known by name and location only. Made taller and wider than Oasis Mall, with a glazed atrium, as a differentiator; verify when sources are reachable."
+    },
+    "kampala-kasubi-royal-tombs": {
+      "venueId": "kampala-kasubi-royal-tombs",
+      "city": "kampala",
+      "name": "Kasubi Royal Tombs",
+      "archetype": "heritage-fort",
+      "subject": "Muzibu Azaala Mpanga at Kasubi: a huge circular building under a low thatched dome, behind a reed fence in a bark-cloth tree enclosure, UNESCO World Heritage Site",
+      "form": {
+        "footprint": "round",
+        "width_m": 31,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 7.5,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8c6a3a",
+          "#6b4a2a",
+          "#b79a5b"
+        ],
+        "roofColour": "#b79a5b",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "thatched on 52 palm rings"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "gatehouse"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "reed fence"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "circular hilltop courtyard"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1882; fire 2010; rebuilt 2014-2023",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kasubi_Tombs",
+          "what": "circular plan, domelike shape; wooden poles, reed wattle and daub; thick thatched dome on 52 palm-frond rings for the 52 clans; about 31 m (given as circumference) and 7.5 m high; 1938 steel and concrete core hidden; reed fence around Olugya courtyard; gatehouse; bark cloth fig trees; fire 2010, restored 2023"
+        }
+      ],
+      "notes": "The source states \"31 m circumference\" but UNESCO text and photos suggest the dome is about 31 m across; 31 m diameter used (the 7.5 m height is from the same source). Recognition: huge low thatched dome, no windows, entrance arch on the front."
+    },
+    "kampala-market-game": {
+      "venueId": "kampala-market-game",
+      "city": "kampala",
+      "name": "Owino Market",
+      "archetype": "market-open",
+      "subject": "Owino (St Balikuddembe) market: a dense maze of corrugated-roofed stalls and lock-ups on the Nakivubo channel",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#a79c8a",
+          "#b8553a",
+          "#cdb68e"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 80
+        },
+        {
+          "id": "sheds",
+          "count": 16
+        },
+        {
+          "id": "lock-ups",
+          "count": 25
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1920s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "Owino Market (St Balikuddembe) is one of Uganda's largest and busiest markets; physical description not found"
+        }
+      ],
+      "notes": "Huge and crowded; clamped to the scene size. Look is typed from the described density. Largest market in the programme set for Uganda."
+    },
+    "kampala-meal-stop": {
+      "venueId": "kampala-meal-stop",
+      "city": "kampala",
+      "name": "Cafe Javas",
+      "archetype": "restaurant",
+      "subject": "A modern casual dining restaurant near Yusuf Lule Road: a glazed two-storey box with an outdoor terrace, no brand marks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#7a3a2e",
+          "#5b6670"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Cafe Javas is a Kampala restaurant chain; this branch is near the Garden City/Oasis malls. No building description found."
+    },
+    "kampala-national-library": {
+      "venueId": "kampala-national-library",
+      "city": "kampala",
+      "name": "National Library of Uganda",
+      "archetype": "campus-block",
+      "subject": "The National Library at Plot 50 Buganda Road: a three-storey institutional block with a central entrance and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece4cd",
+          "#7a6a4a",
+          "#c8bfa8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2003 (institution)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Library_of_Uganda",
+          "what": "established 2003 by Act of Parliament replacing the Public Libraries Board (1964); building at Buganda Road Plot 50; architecture not described"
+        }
+      ],
+      "notes": "Only institution and address known; building not described. Typed as a mid-century civic block."
+    },
+    "kampala-oasis-mall": {
+      "venueId": "kampala-oasis-mall",
+      "city": "kampala",
+      "name": "Oasis Mall",
+      "archetype": "mall",
+      "subject": "Oasis Mall on Yusuf Lule Road: a smaller mid-rise mall with a curved glass front and a rooftop terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 95,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd8dc",
+          "#2f5d8a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "No building description found; modelled smaller and more glassy than Garden City to keep the two malls distinct."
+    },
+    "kampala-quiet-reflection": {
+      "venueId": "kampala-quiet-reflection",
+      "city": "kampala",
+      "name": "Namirembe Cathedral",
+      "archetype": "church-classical",
+      "subject": "St Paul's Cathedral, Namirembe (1915-19), the Church of Uganda cathedral on its hill: a big red earth-brick basilica under a clay-tiled roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": null,
+        "colours": [
+          "#a4553a",
+          "#e8dcc0",
+          "#7d5a3a"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "arched windows and arcade (assumed)"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "assumed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1915-1919",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Namirembe_Cathedral",
+          "what": "built 1915-1919, consecrated 1919; current building uses earthen bricks and earthen roof tiles; the previous thatched church burned in 1910"
+        }
+      ],
+      "notes": "Brick and tile sourced; plan, towers and size were not described. Prominent hilltop, with a large round-arched nave and cross plan guessed. Red-brick colour differs from the Catholic cathedral below."
+    },
+    "kampala-recreation": {
+      "venueId": "kampala-recreation",
+      "city": "kampala",
+      "name": "Entebbe Botanical Gardens",
+      "archetype": "park-landscape",
+      "subject": "The 1898 botanical gardens on the Lake Victoria shore at Entebbe: lawns, tall rainforest trees, palm avenues and a lakeside walk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6cf",
+          "#4f7a4a",
+          "#c9c4b6"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small garden pavilion (assumed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1898",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Entebbe",
+          "what": "extensive National Botanical Gardens laid out in 1898 in Entebbe, on the northern shore of Lake Victoria; tropical rainforest climate"
+        }
+      ],
+      "notes": "Gardens year and lake location sourced. Layout, buildings and tree mix are generic; the scene is cut from a much bigger site."
+    },
+    "kampala-royal-palace-of-buganda": {
+      "venueId": "kampala-royal-palace-of-buganda",
+      "city": "kampala",
+      "name": "Royal Palace of the King of Buganda",
+      "archetype": "heritage-fort",
+      "subject": "Lubiri (Mengo Palace) on Mengo Hill: a walled royal compound reached by the Wankaki gate at the end of Kabaka Anjagala Road, with low cream buildings and red roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f0e8d2",
+          "#a4553a",
+          "#8a8f94"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Wankaki main gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1885; restored 1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lubiri",
+          "what": "built 1885 by Mwanga II; about 4 km2 compound with traditional and modern elements; main gate Wankaki; main residence Twekobe; attacked in 1966, renovated 1999; connected to Bulange by Kabaka Anjagala Road; lush grounds and banana plantations"
+        }
+      ],
+      "notes": "Compound facts sourced; materials and colours were not described, so building looks are typed. The model shows only the gate end of the 4 km2 site. Not to be confused with the Kasubi Tombs."
+    },
+    "kampala-rubaga-cathedral": {
+      "venueId": "kampala-rubaga-cathedral",
+      "city": "kampala",
+      "name": "Rubaga Cathedral",
+      "archetype": "church-classical",
+      "subject": "St Mary's Cathedral Rubaga (1914-25), the Catholic cathedral of Kampala: a large red-brick church with twin towers on Lubaga Hill",
+      "form": {
+        "footprint": "cross",
+        "width_m": 65,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a85a40",
+          "#efe3c8",
+          "#7d4a2f"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin towers (from memory, unverified)"
+        },
+        {
+          "id": "arches",
+          "count": 9
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small crossing dome (unverified)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1914-1925",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rubaga_Cathedral",
+          "what": "construction began 1914, completed 1925, consecrated 31 December 1925; architecture not described in the article"
+        }
+      ],
+      "notes": "Only the dates were found; form is typed from the Catholic basilica pattern and unverified recollections (twin towers, small dome). Made larger and with white trim to differ from Namirembe."
+    },
+    "kampala-transit": {
+      "venueId": "kampala-transit",
+      "city": "kampala",
+      "name": "Buganda Bus Park",
+      "archetype": "transport-station",
+      "subject": "A dense taxi and bus park: a packed yard of white minibuses, a few shelters and kiosks on bare asphalt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#3d6a88",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 30
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "Kampala has dense minibus (taxi) parks in the old centre; this park is not described"
+        }
+      ],
+      "notes": "Size and shelter layout are guessed. The signature is rows of white taxi minibuses."
+    },
+    "kampala-uganda-museum": {
+      "venueId": "kampala-uganda-museum",
+      "city": "kampala",
+      "name": "Uganda Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Uganda Museum on Kitante Hill: a light, airy main building designed by Ernst May with a cultural village of traditional huts behind it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#eadfc6",
+          "#9a8a6a",
+          "#c9bfa5"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "planned for natural light and air"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s (moved to Kitante Hill 1954)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uganda_Museum",
+          "what": "established 1908, moved to the current Kitante Hill site in 1954; main building designed by German architect Ernst May; planned for plenty of natural light and air; ethnography and music galleries; cultural village with huts of many peoples"
+        }
+      ],
+      "notes": "Architect and aims sourced; materials, roof, size are guesses. The huts behind (Baganda, Acholi, Karamojong, etc., thatched) are not modelled in the main block; note for generators: add a few small round thatched huts in the site."
+    },
+    "kampala-victoria-university": {
+      "venueId": "kampala-victoria-university",
+      "city": "kampala",
+      "name": "Victoria University - Uganda",
+      "archetype": "campus-block",
+      "subject": "A private university campus in Kitante/Kamwokya: a few mid-rise teaching blocks with painted facades",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ebdc",
+          "#3d6a88",
+          "#c9bfa5"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Nothing found about the building; typed as a small urban campus near Uganda Museum."
+    },
+    "kampala-wankulukuku-stadium": {
+      "venueId": "kampala-wankulukuku-stadium",
+      "city": "kampala",
+      "name": "Mutesa II - Wankulukuku Stadium",
+      "archetype": "stadium",
+      "subject": "Wankulukuku (Mutesa II) Stadium in Rubaga: a small football stadium with a 105 x 68 m pitch, a single main stand and a low perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#d4c9ae",
+          "#a4553a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand canopy (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "count assumed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "renovated 2002 and from 2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mutesa_II_Stadium",
+          "what": "capacity 8,000; renovated 2002 and from 2024; pitch 105 m x 68 m; multi-purpose, mostly football; roof, stands and track not described"
+        }
+      ],
+      "notes": "Capacity and pitch sourced; the stand layout is assumed. Smaller than the Juba or Djibouti stadiums, and with no athletics track assumed (not stated)."
+    },
+    "kampala-wonder-world": {
+      "venueId": "kampala-wonder-world",
+      "city": "kampala",
+      "name": "Speke Resort Munyonyo",
+      "archetype": "hotel",
+      "subject": "Speke Resort Munyonyo on Lake Victoria: a sprawling resort of low and mid-rise wings, a conference centre and gardens down to the shore",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2ead6",
+          "#a4553a",
+          "#d6cdb8"
+        ],
+        "roofColour": "#9a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "lake jetty (assumed)"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kampala",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Known only by name and lakeside location in Munyonyo; no description found. Resort formed of cream wings with terracotta tile roofs; assumed."
+    }
+  }
+}

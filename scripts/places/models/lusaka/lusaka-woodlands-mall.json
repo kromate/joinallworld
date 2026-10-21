@@ -1,0 +1,159 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-woodlands-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/152165978",
+   "used": "mall outline (117 x 69 m, building=retail)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open-air single-storey strip of shops under a long metal roof, covered walkway, car park (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede2c9",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bands": "#a2523b",
+    "plinth": 0.4,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6b55",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 2.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 70,
+    "depth": 4,
+    "height": 3.8,
+    "columns": 14,
+    "colour": "#4f6b55",
+    "edgeColour": "#a2523b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -45,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 6,
+    "bottom": 3,
+    "colour": "#a2523b"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    45,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 6,
+    "bottom": 3,
+    "colour": "#f6f3ec"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -30,
+    -56,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 4.5,
+    "yaw": 180
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -38
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -30
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   118,
+   118
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "outline from OSM; shop fronts and roof are typed from the brief, no photo found"
+ }
+}

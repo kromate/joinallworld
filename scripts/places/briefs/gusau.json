@@ -1,0 +1,979 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "gusau",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "gusau",
+    "climate": "savanna",
+    "vernacular": "Capital of Zamfara State (1996); a railway town since 1927 with fired-brick colonial warehouses and corrugated roofs, now a mix of dense Hausa quarters in adobe, rendered government blocks and banks of 2-4 storeys in cream paint, and sprawling market sheds, on dry laterite with neem and acacia.",
+    "wallColours": [
+      "#ede6d2",
+      "#d5bf99",
+      "#c8b8a0",
+      "#f1ede2",
+      "#a85b3c",
+      "#8aa59a"
+    ],
+    "roofColours": [
+      "#8b3a2b",
+      "#8a8f94",
+      "#5b6670",
+      "#3f6e4e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "red-brick",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "acacia",
+      "broadleaf"
+    ],
+    "ornament": "Hausa motifs on palace and mosque buildings (thick walls, decorated facades); otherwise plain functional government and market architecture.",
+    "sources": [
+      {
+        "url": "https://kupi.com/en/explore/nigeria/gusau/history",
+        "what": "adobe Hausa quarters, colonial brick and corrugated railway buildings, modernist concrete after 1996 (travel site, treat cautiously)"
+      },
+      {
+        "url": "https://kupi.com/en/explore/nigeria/gusau",
+        "what": "Emir palace exterior shows northern Nigerian features"
+      },
+      {
+        "url": "https://guardian.ng/life/pre-colonial-traditional-architectures-of-nigeria/",
+        "what": "Hausa architecture"
+      }
+    ]
+  },
+  "places": {
+    "daula-hospital-gusau": {
+      "venueId": "daula-hospital-gusau",
+      "city": "gusau",
+      "name": "Daula Hospital Gusau",
+      "archetype": "hospital",
+      "subject": "a private or state hospital: a two-storey rendered building with a front veranda and a pitched corrugated roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d2",
+          "#6f9a8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; smaller than the federal and specialist hospitals. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "federal-college-of-education-technical-gusau": {
+      "venueId": "federal-college-of-education-technical-gusau",
+      "city": "gusau",
+      "name": "Federal College of Education (Technical), Gusau",
+      "archetype": "campus-block",
+      "subject": "a federal college campus: two- and three-storey workshop and lecture blocks in cream render with long ribbon windows",
+      "form": {
+        "footprint": "U",
+        "width_m": 75,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece5cd",
+          "#5f7a8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "international",
+      "era": "1989-90",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/news/governor-lawal-lauds-fcets-role-in-zamfara-education-reform/",
+          "what": "federal teacher-training college"
+        }
+      ],
+      "notes": "Established 1989, classes from 1990; building design is not described. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "federal-medical-centre-gusau": {
+      "venueId": "federal-medical-centre-gusau",
+      "city": "gusau",
+      "name": "Federal Medical Centre, Gusau",
+      "archetype": "hospital",
+      "subject": "the federal medical centre on Sokoto Bye Pass: a long three-storey main block with ward wings and a new two-storey doctors quarters beside it",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ebdc",
+          "#7a9ea0",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Gusau",
+          "what": "Sokoto Bye Pass Road, founded 1998"
+        },
+        {
+          "url": "https://21stcenturychronicle.com/governor-lawal-begins-construction-of-doctors-quarters-at-fmc-gusau/",
+          "what": "26-unit two-storey doctors quarters under construction 2025"
+        }
+      ],
+      "notes": "Founding and the quarters block are sourced; the main facade is typed. Larger than the state hospitals in Gusau."
+    },
+    "first-baptist-church-gusau": {
+      "venueId": "first-baptist-church-gusau",
+      "city": "gusau",
+      "name": "First Baptist Church Gusau",
+      "archetype": "church-modern",
+      "subject": "an older Baptist church: a gabled brick-and-render hall with a small entrance porch and a short square tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#ede4cf",
+          "#9a5a3a",
+          "#d8cfba"
+        ],
+        "roofColour": "#7b3f30",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.14
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short entrance tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Era assumed from the church name; it is \"First\" Baptist. No description exists. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "gusau-amusement-park": {
+      "venueId": "gusau-amusement-park",
+      "city": "gusau",
+      "name": "Gusau Amusement Park",
+      "archetype": "park-landscape",
+      "subject": "a small family amusement park: paved paths, shade trees, a pavilion with a gym and a few play rides under a fence wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe4c4",
+          "#d07a3a",
+          "#6f8fb0"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Gusau",
+          "what": "family amusement park open 8-19h with a gym"
+        }
+      ],
+      "notes": "Only hours and a gym are known. Rides are not in the feature enum, so the generator only gets a pavilion and gate."
+    },
+    "gusau-central-market": {
+      "venueId": "gusau-central-market",
+      "city": "gusau",
+      "name": "Gusau central market",
+      "archetype": "market-hall",
+      "subject": "the largest market in the state capital: dense two-storey blocks of shops with iron roofs and narrow lanes, with open stalls at the edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8b8a0",
+          "#b0482f",
+          "#e4dac2"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.channelstv.com/?p=570092",
+          "what": "largest market in the state capital, furniture section, fires affected 150+ shops"
+        },
+        {
+          "url": "https://www.nigeriahousingmarket.com/news/zamfara-hospitals-phcs-upgrade-healthcare-investment",
+          "what": "N3.6bn ultra-modern market planned on the old site (reported)"
+        }
+      ],
+      "notes": "Scale and fire damage are sourced; form is typed. A redevelopment is planned, so the old dense layout is modelled."
+    },
+    "gusau-yam-market": {
+      "venueId": "gusau-yam-market",
+      "city": "gusau",
+      "name": "Gusau Yam Market",
+      "archetype": "market-open",
+      "subject": "a produce market: low open-sided sheds over heaps of yams and sacks, with trucks and trader umbrellas around",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b69a70",
+          "#7a5a3a",
+          "#d9c7a0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Specialised produce section, smaller than the central market and open to the air. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "huda-university-gusau": {
+      "venueId": "huda-university-gusau",
+      "city": "gusau",
+      "name": "Huda University, Gusau",
+      "archetype": "campus-block",
+      "subject": "a small private university: one three-storey teaching block in cream render with a central entrance and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ece0",
+          "#4f7a63",
+          "#d9d4c6"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_University,_Gusau",
+          "what": "search found only Federal University Gusau; no Huda University record found"
+        }
+      ],
+      "notes": "Searches could not find a Huda University in Gusau at all, so this is a generic institution. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "our-lady-of-fatima-church-gusau": {
+      "venueId": "our-lady-of-fatima-church-gusau",
+      "city": "gusau",
+      "name": "Our Lady of Fatima Catholic Church",
+      "archetype": "church-modern",
+      "subject": "a Catholic parish church: a tall gabled nave in white render with a free-standing bell tower, arched windows and a statue niche",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f3efe3",
+          "#a85b3c",
+          "#cfc7b2"
+        ],
+        "roofColour": "#6b3a2b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Marian niche or statue"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://gcatholic.org/churches/data/all-NG.htm",
+          "what": "directory lists Cathedral of Our Lady of Fatima in Kano, not this parish"
+        }
+      ],
+      "notes": "Namesake of Our Lady of Fatima parishes; this Gusau church itself is undocumented. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "sardauna-memorial-stadium-gusau": {
+      "venueId": "sardauna-memorial-stadium-gusau",
+      "city": "gusau",
+      "name": "Sardauna Memorial Stadium",
+      "archetype": "stadium",
+      "subject": "the Gusau state stadium, remodelled for the pitch, stands and drainage: a small open bowl with concrete terraces and one covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#b9b5aa",
+          "#3f7a5a",
+          "#e8e4d8"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s, remodelled 2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sardauna_Memorial_Stadium",
+          "what": "multi-use stadium in Gusau, home of Zamfara United, listed capacity 5,000 (old)"
+        },
+        {
+          "url": "https://nairametrics.com/2024/01/31/zamfara-allocates-over-n1-billion-for-stadium-nysc-camp-upgrade/",
+          "what": "2024 reports of a 700-capacity venue getting N1bn upgrade"
+        },
+        {
+          "url": "https://leadership.ng/governor-dauda-impressed-with-work-on-sardauna-stadium/",
+          "what": "remodelling of pitch, stands, seating, drainage"
+        }
+      ],
+      "notes": "Capacity figures conflict (5,000 vs 700), so a small bowl is modelled. Smaller than Pantami Stadium in Gombe."
+    },
+    "yariman-bakura-specialist-hospital-gusau": {
+      "venueId": "yariman-bakura-specialist-hospital-gusau",
+      "city": "gusau",
+      "name": "Yariman Bakura Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "the state specialist hospital in Gusau, an older multi-wing complex being remodelled: low rendered wards around a two-storey main block with a pitched roof",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e2cc",
+          "#8aa59a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1980s-1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://von.gov.ng/?p=375751",
+          "what": "state specialist hospital being upgraded towards teaching status, structures reported in disrepair"
+        }
+      ],
+      "notes": "Condition and remodelling are sourced; form is typed. Older and lower than FMC Gusau."
+    },
+    "zamfara-ministry-of-environment-solid-minerals": {
+      "venueId": "zamfara-ministry-of-environment-solid-minerals",
+      "city": "gusau",
+      "name": "Zamfara State Ministry of Environment & Solid Minerals Development",
+      "archetype": "civic-palace",
+      "subject": "a ministry block: a three-storey rendered office with a flat roof, a central entrance porch and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ede6d2",
+          "#5f7a8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "State capital since 1996; most ministries are mid-rise concrete blocks. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "zamfara-ministry-of-information-culture-tourism": {
+      "venueId": "zamfara-ministry-of-information-culture-tourism",
+      "city": "gusau",
+      "name": "Zamfara State Ministry of Information, Culture and Tourism",
+      "archetype": "civic-palace",
+      "subject": "a low ministry building with a Hausa-patterned arched entrance, a flat roof and a pitched canopy over the porch",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#eadfc4",
+          "#a8794f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "hausa-arewa",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Culture ministry given a regional ornamental treatment by assumption. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "zamfara-state-gis-gusau": {
+      "venueId": "zamfara-state-gis-gusau",
+      "city": "gusau",
+      "name": "Zamfara State Geographic Information System",
+      "archetype": "office-low",
+      "subject": "a small government office: a single-storey rendered block with a hip roof, tinted windows and a signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ebd9",
+          "#6b8a7a",
+          "#d8cfba"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Agency office. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    },
+    "zamfara-state-library-gusau": {
+      "venueId": "zamfara-state-library-gusau",
+      "city": "gusau",
+      "name": "Zamfara State Library Board, Gusau",
+      "archetype": "campus-block",
+      "subject": "a state library: a two-storey rendered building with a columned entrance porch, a low dome or pediment feature and a fence wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee6d0",
+          "#8a6a4a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8b3a2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "neoclassical",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No findable record of the library building. Nothing findable describes this building, so the brief is a low-confidence typed guess from the city style and the place type."
+    }
+  }
+}

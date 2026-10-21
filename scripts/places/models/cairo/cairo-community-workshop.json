@@ -1,0 +1,670 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_University.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor (see file page)",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/cu1.jpg",
+   "used": "main building: golden sandstone ashlar, central hall with a tall drum and shallow olive-grey ribbed dome topped by a small balustraded lantern, two-storey open loggia with tiled hipped roof in front, flanking stair/corner blocks, lower wings with small punched windows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cairo_University-0.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Wikimedia Commons contributor (see file page)",
+   "view": "aerial",
+   "used": "overall layout: long wings either side of the central domed block, a tall tower to one side, palm-lined avenue in front"
+  },
+  {
+   "kind": "text",
+   "used": "OSM matched only a 30 x 9 m annex of the Giza campus, so the outline is NOT used; the main building is composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-block",
+   "footprint": {
+    "rect": [
+     46,
+     36
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 22,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#dcb877",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 18,
+    "faces": {
+     "front": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#e9d3a0",
+    "cornice": true,
+    "plinth": 1,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a968",
+      "at": 0.25
+     },
+     {
+      "type": "bands",
+      "colour": "#e9d3a0",
+      "at": 20.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7a47c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-l",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    -27,
+    2
+   ],
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#dcb877",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 16,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#e9d3a0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a968",
+      "at": 0.25
+     },
+     {
+      "type": "bands",
+      "colour": "#e9d3a0",
+      "at": 24.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9825a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corner-r",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    24,
+    2
+   ],
+   "height": 26,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#dcb877",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 16,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "cornice": true,
+    "trimColour": "#e9d3a0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a968",
+      "at": 0.25
+     },
+     {
+      "type": "bands",
+      "colour": "#e9d3a0",
+      "at": 24.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9825a",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    44,
+    8
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcb877",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 14,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.6,
+    "trimColour": "#e9d3a0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a968",
+      "at": 0.25
+     },
+     {
+      "type": "bands",
+      "colour": "#e9d3a0",
+      "at": 15.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7a47c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -47,
+    8
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#dcb877",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 14,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.6,
+    "trimColour": "#e9d3a0",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9a968",
+      "at": 0.25
+     },
+     {
+      "type": "bands",
+      "colour": "#e9d3a0",
+      "at": 15.8
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7a47c",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    0,
+    6,
+    22
+   ],
+   "params": {
+    "n": 20,
+    "radius": 19,
+    "height": 7,
+    "colour": "#dcb877",
+    "topColour": "#c9ad74"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    6,
+    35
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#a39a78",
+    "topColour": "#a89f7c",
+    "profile": [
+     [
+      17,
+      0,
+      "#e9d3a0"
+     ],
+     [
+      17,
+      0.6
+     ],
+     [
+      16.6,
+      1.4,
+      "#a39a78"
+     ],
+     [
+      14.5,
+      3.6
+     ],
+     [
+      11,
+      5.4
+     ],
+     [
+      6.5,
+      6.4
+     ],
+     [
+      3,
+      6.9
+     ],
+     [
+      0,
+      7.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "lantern",
+   "at": [
+    0,
+    6,
+    42
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#d6b982",
+    "profile": [
+     [
+      2.8,
+      0
+     ],
+     [
+      2.8,
+      2.6,
+      "#c9ad74"
+     ],
+     [
+      3.2,
+      2.6
+     ],
+     [
+      3.2,
+      3.0
+     ],
+     [
+      1.6,
+      3.8
+     ],
+     [
+      0.3,
+      5.6
+     ],
+     [
+      0.3,
+      7.6,
+      "#8a7a52"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -20,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b1b1b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms-front",
+   "at": [
+    -40,
+    -30
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 15,
+    "count": 2,
+    "spread": 4,
+    "line": 24
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum2",
+   "at": [
+    0,
+    6,
+    29
+   ],
+   "params": {
+    "n": 20,
+    "radius": 16.5,
+    "height": 6,
+    "colour": "#dcb877",
+    "topColour": "#c9ad74"
+   }
+  },
+  {
+   "type": "array",
+   "id": "drum-windows",
+   "at": [
+    0,
+    6,
+    30.5
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 16.6,
+    "count": 12,
+    "facing": "outward",
+    "lod1Step": 3,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.4
+      ],
+      "height": 2.6,
+      "colour": "#33302a",
+      "topColour": "#33302a"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back",
+   "at": [
+    -2,
+    -9.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.6
+    ],
+    "height": 12,
+    "colour": "#3a3226",
+    "topColour": "#3a3226"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-floor",
+   "at": [
+    -2,
+    -14,
+    6
+   ],
+   "params": {
+    "rect": [
+     30,
+     10
+    ],
+    "height": 0.7,
+    "colour": "#d9bd86",
+    "topColour": "#d9bd86"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "id": "colonnade-low",
+   "at": [
+    -2,
+    -18.5,
+    0.5
+   ],
+   "params": {
+    "length": 28,
+    "count": 8,
+    "height": 5.5,
+    "radius": 0.55,
+    "kind": "round",
+    "beamHeight": 0.6,
+    "colour": "#dcb877"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "id": "colonnade-up",
+   "at": [
+    -2,
+    -18.5,
+    6.7
+   ],
+   "params": {
+    "length": 28,
+    "count": 8,
+    "height": 4.6,
+    "radius": 0.5,
+    "kind": "round",
+    "beamHeight": 0.6,
+    "colour": "#dcb877"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "balustrade",
+   "id": "loggia-bal",
+   "at": [
+    -2,
+    -18.8,
+    6.7
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.0,
+    "postEvery": 1.6,
+    "colour": "#e9d3a0"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-roof",
+   "at": [
+    -2,
+    -14,
+    11.5
+   ],
+   "params": {
+    "rect": [
+     32,
+     11
+    ],
+    "height": 0.7,
+    "colour": "#b9825a",
+    "topColour": "#b9825a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    -2,
+    -21
+   ],
+   "params": {
+    "width": 22,
+    "rise": 0.9,
+    "run": 1.6,
+    "count": 4,
+    "colour": "#d9c9a0"
+   }
+  },
+  {
+   "type": "array",
+   "id": "garden-hedge",
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     -28,
+     0
+    ],
+    "radius": 16,
+    "startDeg": 180,
+    "endDeg": 360,
+    "count": 12,
+    "facing": "outward",
+    "lod1Step": 2,
+    "lod2Step": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4,
+       1.2
+      ],
+      "height": 1.2,
+      "colour": "#4f7a3a",
+      "topColour": "#4f7a3a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "garden-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -26
+     ],
+     [
+      34,
+      -26
+     ]
+    ],
+    "height": 0.8,
+    "kind": "wall",
+    "colour": "#d9c9a0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 2,
+  "treeKind": "palm",
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Shallow olive-tan dome on a stepped windowed drum with lantern, open two-storey round-column loggia with balustrade and tiled roof, smooth golden banded walls, low wings and a front garden hedge are in; dome has no vertical ribs, the real stair/corner blocks have richer pilaster detail and a coat of arms, and the layout is estimated from photos since OSM matched only an annex."
+ }
+}

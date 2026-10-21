@@ -1,0 +1,690 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "sultans-palace-sokoto",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sultan_Palace.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sani Maikatanga",
+   "view": "front",
+   "file": "/tmp/places-evidence/sokoto/palace3.jpg",
+   "used": "white gate tower with tall arched opening, green arch band, green crenellated crown, balcony inside the arch, low white wings with green capped corner domelets"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sultan%27s_palace_(Sokoto).JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jensbn (assumed)",
+   "view": "front",
+   "file": "/tmp/places-evidence/sokoto/palace2.jpg",
+   "used": "low white arcaded palace front with round arches, tall bare flagpoles on a lawn circle, green and white kerb"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:SULTAN_OF_SOKOTO%27S_PALACE_SOKOTO_NIGERIA_-_panoramio.jpg",
+   "licence": "CC BY 3.0",
+   "author": "el-siddeeq lame",
+   "view": "street",
+   "file": "/tmp/places-evidence/sokoto/palace1.jpg",
+   "used": "gate tower proportion, white perimeter wall, small side arch, low pierced fence"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 6,
+  "fovDeg": 34,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-pier-l",
+   "at": [
+    -3.25,
+    -20
+   ],
+   "footprint": {
+    "rect": [
+     1.5,
+     5.5
+    ]
+   },
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-pier-r",
+   "at": [
+    3.25,
+    -20
+   ],
+   "footprint": {
+    "rect": [
+     1.5,
+     5.5
+    ]
+   },
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-head",
+   "at": [
+    0,
+    -20
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     5.5
+    ]
+   },
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   },
+   "z0": 12
+  },
+  {
+   "type": "mass",
+   "id": "tower-back",
+   "at": [
+    0,
+    -17.6
+   ],
+   "footprint": {
+    "rect": [
+     5,
+     0.6
+    ]
+   },
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e3d8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e3d8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony",
+   "at": [
+    0,
+    -21.6
+   ],
+   "footprint": {
+    "rect": [
+     4.6,
+     0.7
+    ]
+   },
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   },
+   "z0": 7.6
+  },
+  {
+   "type": "mass",
+   "id": "balcony-screen",
+   "at": [
+    0,
+    -21.9
+   ],
+   "footprint": {
+    "rect": [
+     4.6,
+     0.5
+    ]
+   },
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcdad0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcdad0"
+   },
+   "z0": 5.2
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch-band",
+   "at": [
+    0,
+    -22.9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.5,
+      0.5
+     ]
+    },
+    "curve": true,
+    "steps": 6,
+    "points": [
+     [
+      -2.75,
+      0,
+      0
+     ],
+     [
+      -2.75,
+      0,
+      8
+     ],
+     [
+      -2.3,
+      0,
+      10.4
+     ],
+     [
+      0,
+      0,
+      12.4
+     ],
+     [
+      2.3,
+      0,
+      10.4
+     ],
+     [
+      2.75,
+      0,
+      8
+     ],
+     [
+      2.75,
+      0,
+      0
+     ]
+    ],
+    "colour": "#2e8b6a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "tower-crown-f",
+   "at": [
+    0,
+    -22.7,
+    20
+   ],
+   "params": {
+    "length": 8.4,
+    "height": 1.1,
+    "thickness": 0.6,
+    "pitch": 1.2,
+    "colour": "#2e8b6a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "tower-crown-b",
+   "at": [
+    0,
+    -17.9,
+    20
+   ],
+   "params": {
+    "length": 8.4,
+    "height": 1.1,
+    "thickness": 0.6,
+    "pitch": 1.2,
+    "colour": "#2e8b6a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "at": [
+    -13,
+    -19.5
+   ],
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "wing-top-l",
+   "at": [
+    -13,
+    -21.7,
+    6.0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.9,
+    "thickness": 0.5,
+    "pitch": 1.6,
+    "colour": "#2e8b6a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-l0",
+   "at": [
+    -21.5,
+    -21.2,
+    6.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.1,
+      0
+     ],
+     [
+      1.1,
+      0.5
+     ],
+     [
+      0.9,
+      1.1
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      0,
+      1.9
+     ]
+    ],
+    "colour": "#2e8b6a",
+    "segments": 12
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-l1",
+   "at": [
+    -4.5,
+    -21.2,
+    6.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.1,
+      0
+     ],
+     [
+      1.1,
+      0.5
+     ],
+     [
+      0.9,
+      1.1
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      0,
+      1.9
+     ]
+    ],
+    "colour": "#2e8b6a",
+    "segments": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "at": [
+    13,
+    -19.5
+   ],
+   "footprint": {
+    "rect": [
+     18,
+     4
+    ]
+   },
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ec",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "id": "wing-top-r",
+   "at": [
+    13,
+    -21.7,
+    6.0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.9,
+    "thickness": 0.5,
+    "pitch": 1.6,
+    "colour": "#2e8b6a"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-r0",
+   "at": [
+    4.5,
+    -21.2,
+    6.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.1,
+      0
+     ],
+     [
+      1.1,
+      0.5
+     ],
+     [
+      0.9,
+      1.1
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      0,
+      1.9
+     ]
+    ],
+    "colour": "#2e8b6a",
+    "segments": 12
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "cap-r1",
+   "at": [
+    21.5,
+    -21.2,
+    6.0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      1.1,
+      0
+     ],
+     [
+      1.1,
+      0.5
+     ],
+     [
+      0.9,
+      1.1
+     ],
+     [
+      0.5,
+      1.6
+     ],
+     [
+      0,
+      1.9
+     ]
+    ],
+    "colour": "#2e8b6a",
+    "segments": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-front",
+   "at": [
+    0,
+    4
+   ],
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "none",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "shape": "arch",
+     "bay": 5.1,
+     "opening": 0.62,
+     "height": 0.8,
+     "depth": 1.2,
+     "storeys": 1,
+     "colour": "#8b6e55"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d2",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "palace-wing",
+   "at": [
+    0,
+    22
+   ],
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe7d6",
+    "windows": "arched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d2c2",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-front-l",
+   "at": [
+    -36,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.4,
+    "thickness": 0.5,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-front-r",
+   "at": [
+    12,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.4,
+    "thickness": 0.5,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-back",
+   "at": [
+    -36,
+    36,
+    0
+   ],
+   "params": {
+    "length": 72,
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#f4f2ec"
+   }
+  },
+  {
+   "type": "flag",
+   "id": "poles",
+   "at": [
+    -24,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 6,
+    "spacing": 9,
+    "colour": "#c8ccd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -10
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -26
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "tower is now white with green arch band, crenellated crown and balcony; wings and arcaded palace behind are generic; tower has no batter, pierced screen and relief are plain blocks"
+ }
+}

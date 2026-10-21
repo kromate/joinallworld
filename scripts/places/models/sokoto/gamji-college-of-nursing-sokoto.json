@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "gamji-college-of-nursing-sokoto",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1296795593",
+   "used": "footprint of the main teaching block (17 x 7 m, containing match; Wikidata Q137712129 coordinates verified)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two long two-storey blocks, covered walkway, gated compound; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "osm": true,
+    "scale": 1.6,
+    "rotDeg": 27
+   },
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#7a9e8a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -12,
+    14
+   ],
+   "rotDeg": 90,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#7a9e8a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 3,
+    "colour": "#7a9e8a",
+    "roofColour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#7a9e8a",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.2,
+    "colour": "#e2d9c4",
+    "pillarEvery": 6,
+    "points": [
+     [
+      -30,
+      -18
+     ],
+     [
+      30,
+      -18
+     ],
+     [
+      30,
+      30
+     ],
+     [
+      -30,
+      30
+     ],
+     [
+      -30,
+      -18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.6,
+    "pillar": 0.6,
+    "colour": "#e2d9c4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; only one block outline is real, second wing, walkway and compound are typed from the brief."
+ }
+}

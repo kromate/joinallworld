@@ -1,0 +1,851 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:First_church_in_Nigeria_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Agbebiyi Adekunle (Tadek Photography)",
+   "view": "front",
+   "file": "/tmp/places-evidence/abeokuta/st-peter-cathedral-0.jpg",
+   "used": "single central west tower with corner pinnacles, dark crest panel, lancet openings; cream painted render (not red brick); low aisles with pointed windows; pale blue-grey railings on a low wall"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:First_Church_in_Nigeria,_Abeokuta,_Ogun.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Solasly",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/abeokuta/st-peter-cathedral-2.jpg",
+   "used": "nave and aisle proportions, long weathered green-grey corrugated gable roof, tower projecting at front, buttress rhythm along the side"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669568923",
+   "used": "overall length and width (39.5 x 17.6 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     15,
+     32
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d2",
+    "windows": "pointed-arch",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9aa88f",
+    "material": "corrugated",
+    "pitch": 28,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-w",
+   "footprint": {
+    "rect": [
+     5.5,
+     26
+    ]
+   },
+   "at": [
+    -10.2,
+    14
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d2",
+    "windows": "pointed-arch",
+    "windowRatio": 0.18,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa88f",
+    "material": "corrugated",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-e",
+   "footprint": {
+    "rect": [
+     5.5,
+     26
+    ]
+   },
+   "at": [
+    10.2,
+    14
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d2",
+    "windows": "pointed-arch",
+    "windowRatio": 0.18,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9aa88f",
+    "material": "corrugated",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     10,
+     9
+    ]
+   },
+   "at": [
+    0,
+    -5.5
+   ],
+   "height": 23,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d2",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "bands": "#c9c3ae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c0",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     5,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -10.7
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d2",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.2,
+    -9.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 18,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.0,
+    -9.9,
+    15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 6,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.8,
+    -9.9,
+    21
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 2,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.2,
+    -1.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 18,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5.0,
+    -1.1,
+    15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 6,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.8,
+    -1.1,
+    21
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 2,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.2,
+    -9.9,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 18,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.0,
+    -9.9,
+    15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 6,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.8,
+    -9.9,
+    21
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 2,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.2,
+    -1.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "height": 18,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    5.0,
+    -1.1,
+    15
+   ],
+   "params": {
+    "rect": [
+     1.3,
+     1.3
+    ],
+    "height": 6,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.8,
+    -1.1,
+    21
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     1.1
+    ],
+    "height": 2,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -4.9,
+    -9.8,
+    23
+   ],
+   "params": {
+    "baseWidth": 1.3,
+    "height": 2.2,
+    "sides": 4,
+    "colour": "#e6e2d2",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    -4.9,
+    -1.2,
+    23
+   ],
+   "params": {
+    "baseWidth": 1.1,
+    "height": 1.8,
+    "sides": 4,
+    "colour": "#e6e2d2",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    4.9,
+    -9.8,
+    23
+   ],
+   "params": {
+    "baseWidth": 1.3,
+    "height": 2.2,
+    "sides": 4,
+    "colour": "#e6e2d2",
+    "finial": false
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    4.9,
+    -1.2,
+    23
+   ],
+   "params": {
+    "baseWidth": 1.1,
+    "height": 1.8,
+    "sides": 4,
+    "colour": "#e6e2d2",
+    "finial": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -5.5,
+    23
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     7
+    ],
+    "height": 1.2,
+    "colour": "#d8d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.3,
+    24.7
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.5
+    ],
+    "height": 1.2,
+    "colour": "#d8d3c0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.05,
+    13.0
+   ],
+   "params": {
+    "rect": [
+     3.8,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#4d4a43"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.3,
+    14.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.2
+    ],
+    "height": 2.2,
+    "colour": "#a8342a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.05,
+    19.0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#b7a98a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.05,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.3
+    ],
+    "height": 4.2,
+    "colour": "#b09a6a",
+    "topScale": [
+     0.3,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -4,
+    13
+   ],
+   "params": {
+    "rect": [
+     13,
+     0.8
+    ],
+    "height": 2.4,
+    "colour": "#e6e2d2",
+    "topScale": [
+     0.4,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.7,
+    -0.1,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#3f464a",
+    "topScale": [
+     0.3,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.4,
+    -3.9,
+    15
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#3f464a",
+    "topScale": [
+     0.3,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.7,
+    -0.1,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 3.2,
+    "colour": "#3f464a",
+    "topScale": [
+     0.3,
+     1
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.4,
+    -3.9,
+    15
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.3
+    ],
+    "height": 1.6,
+    "colour": "#3f464a",
+    "topScale": [
+     0.3,
+     1
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.6,
+    "thickness": 0.5,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0.6
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.4,
+    "kind": "bars",
+    "colour": "#8fb3c6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -16,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    16,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#e6e2d2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -8
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "st-peter-cathedral",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower broadened with stepped corner buttresses, squat pinnacles, stepped parapet, dark crest panel with vent and lancet; louvres and window tracery are flat blocks, nave front gable step and aisle arched windows are small stand-ins, railings only approximate the pale blue fence."
+ }
+}

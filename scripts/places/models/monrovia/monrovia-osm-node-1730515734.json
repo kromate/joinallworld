@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-1730515734",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: huge old silk-cotton tree on an open sloping seaside site with a worn clearing and low surround; Commons photos nearby show West Point streets, not the tree; OSM 'nearest' is an unrelated building; no photo of this place found (Commons search, Wikidata P18 and brief sources checked)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "big-tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "height": 42,
+    "crown_radius": 19,
+    "trunk_radius": 3.2,
+    "colour": "#5f8f45"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 0.1,
+    "points": [
+     [
+      -14,
+      -12
+     ],
+     [
+      14,
+      -12
+     ],
+     [
+      14,
+      12
+     ],
+     [
+      -14,
+      12
+     ],
+     [
+      -14,
+      -12
+     ]
+    ],
+    "height": 0.7,
+    "thickness": 0.4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 1.6,
+    "count": 3,
+    "colour": "#9a9588"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.2,
+    "bottom": 1,
+    "colour": "#7a8a6a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic big tree stand-in, buttress roots and real crown shape not modelled"
+ }
+}

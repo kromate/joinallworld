@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "road-hub",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kano.json",
+   "used": "game venue with no real counterpart: open laterite motor park, two corrugated loading sheds, ticket kiosks, painted bus bays, blank route boards, perimeter wall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    14
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f94",
+    "windows": "none",
+    "windowRatio": 0.02
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a8085",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    28,
+    18
+   ],
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a05a3c",
+    "windows": "none",
+    "windowRatio": 0.02
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -2,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 38,
+    "depth": 7,
+    "height": 4.2,
+    "columns": 6,
+    "colour": "#8a8f94",
+    "edgeColour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "mixed",
+    "density": 0.9,
+    "coach_share": 0.4,
+    "colours": [
+     "#e0b030",
+     "#2f6fb0",
+     "#c8362f",
+     "#e9e3d3"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "van",
+    "density": 0.8,
+    "colours": [
+     "#e0b030",
+     "#e9e3d3",
+     "#2f8f5a"
+    ]
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -46,
+    -12,
+    0
+   ],
+   "params": {
+    "sign_colour": "#a05a3c"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "sign_colour": "#2f6fb0"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    12,
+    -14,
+    0
+   ],
+   "params": {
+    "sign_colour": "#c8362f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    36,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    46,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f8f5a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 3,
+    "colour": "#d6d0c0",
+    "frameColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    50,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 3,
+    "colour": "#a05a3c",
+    "frameColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -58,
+    -50,
+    0
+   ],
+   "params": {
+    "length": 116,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#d6d0c0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    56,
+    -34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -60,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo or outline; typical Kano motor park composition"
+ }
+}

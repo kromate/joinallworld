@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "voice-of-islam-hospital",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lafia.json",
+   "used": "L-shaped two-storey ward block about 55 x 20 m, cream render with green trim and roof, small entrance dome. No photo or OSM outline exists for this place; form, colours and details come from the typed brief and typical Nigerian private hospitals."
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "long-wing",
+   "footprint": {
+    "rect": [
+     55,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b4f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-wing",
+   "footprint": {
+    "rect": [
+     16,
+     20
+    ]
+   },
+   "at": [
+    -19.5,
+    17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe7d2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b4f",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-tower",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    6,
+    -9.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    6,
+    -9.5,
+    9.5
+   ],
+   "params": {
+    "radius": 2.6,
+    "profile": "onion",
+    "drum": 1.2,
+    "colour": "#2f6b4f",
+    "drum_colour": "#ffffff",
+    "finial": true
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3.5,
+    "height": 3.6,
+    "form": "flat",
+    "columns": 2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    6,
+    -12.1,
+    6.6
+   ],
+   "params": {
+    "size": 2.2
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 4.0,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -28,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    6,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.3,
+    "pillar": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -17,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; L plan, dome and colours are brief estimates."
+ }
+}

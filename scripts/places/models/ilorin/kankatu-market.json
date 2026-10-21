@@ -1,0 +1,258 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: covered hall market, two long sheet-roofed bays about 90 x 40 m with rows of lock-up shops; no OSM building matched and no photo found"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "from text only: bay layout, colours and gates are typical for a covered Nigerian market, not observed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bay-1",
+   "footprint": {
+    "rect": [
+     90,
+     15
+    ]
+   },
+   "at": [
+    0,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#8a4b36",
+    "bay": 6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6a6e",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bay-2",
+   "footprint": {
+    "rect": [
+     90,
+     15
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "louvre",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#8a4b36",
+    "bay": 6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6a6e",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "rise": 0.6,
+    "roof_colour": "#8a4b36",
+    "wall_colour": "#e8dcc0",
+    "awning_colours": [
+     "#8a4b36",
+     "#c9a64a",
+     "#2f6b4f"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    23,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "rise": 0.6,
+    "roof_colour": "#8a4b36",
+    "wall_colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.8,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    30,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.8,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.4,
+    "bottom": 3.2,
+    "colour": "#8a4b36",
+    "frameColour": "#4a4a48"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "count": 16,
+    "pitch": 5,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#e6c04a",
+     "#c9553d",
+     "#d6d2c6",
+     "#2f6b9a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -20,
+    -24.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#c9a64a",
+     "#8a4b36"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    20,
+    -24.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 1.8,
+    "colours": [
+     "#2f6b4f",
+     "#d6d2c6"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -52,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     52,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "kankatu-market"
+}

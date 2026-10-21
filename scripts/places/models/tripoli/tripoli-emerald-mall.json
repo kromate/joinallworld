@@ -1,0 +1,288 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-emerald-mall",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/tripoli.json",
+   "used": "modern two-level mall, painted render with green accents (name colour), glazed entrance atrium, big car park, palms and flags"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/456826425",
+   "used": "not used: containing polygon is 380 x 160 m, too large and irregular to be the mall itself; level count only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; massing, atrium and sign boards are typical for a regional mall; real extent and anchor layout unknown"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     96,
+     54
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "glassColour": "#6f93a3",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4,
+    "faces": {
+     "front": "curtain",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#3f7a52"
+      ],
+      "height": 0.9,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "anchor-east",
+   "footprint": {
+    "rect": [
+     28,
+     36
+    ]
+   },
+   "at": [
+    60,
+    -8
+   ],
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9ced1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa59b",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -32
+   ],
+   "height": 16,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d6dc",
+    "glassColour": "#6f93a3",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cfd6da",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -39.5
+   ],
+   "params": {
+    "rect": [
+     34,
+     6
+    ],
+    "z0": 6,
+    "height": 0.6,
+    "colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    -34,
+    -27.6
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "z0": 10,
+    "height": 3.2,
+    "colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board-2",
+   "at": [
+    34,
+    -27.6
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.5
+    ],
+    "z0": 10,
+    "height": 3.2,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "colour": "#1b7a43",
+    "count": 4,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -50,
+    0
+   ],
+   "params": {
+    "colour": "#b0b4b8",
+    "count": 6,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -57,
+    0
+   ],
+   "params": {
+    "colour": "#2d3033",
+    "count": 6,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -50,
+    0
+   ],
+   "params": {
+    "colour": "#d6d2c6",
+    "count": 5,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -44,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 5,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -48
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     58,
+     -42
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ }
+}

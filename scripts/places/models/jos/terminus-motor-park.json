@@ -1,0 +1,414 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "terminus-motor-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminus_Market_west.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Simoniwodi",
+   "view": "street",
+   "used": "bare concrete frame of the market block behind (flat slabs, thin columns, parapet blocks), umbrella stalls, dusty tarmac"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Terminus_market_traffic.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Simoniwodi",
+   "view": "street",
+   "used": "grey minibuses, orange and cream market block with a stepped cream tower end, hawkers among vehicles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/210768639",
+   "used": "checked: the 324 m outline is the whole Terminus market, not the motor park, so not used as the footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-block",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9792e",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59c",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "market-tower",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    -40,
+    36
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe1b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb9ae",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-roof",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -8,
+    4
+   ],
+   "z0": 3.8,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#7a7e82",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -8,
+    -1,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "count": 7,
+    "height": 3.8,
+    "radius": 0.15,
+    "kind": "square",
+    "beamHeight": 0.2,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -8,
+    9,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "count": 7,
+    "height": 3.8,
+    "radius": 0.15,
+    "kind": "square",
+    "beamHeight": 0.2,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     3.2,
+     2.6
+    ]
+   },
+   "at": [
+    26,
+    10
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "bands": "#c8362f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7e82",
+    "material": "corrugated",
+    "rise": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     3,
+     2.6
+    ]
+   },
+   "at": [
+    31,
+    10.5
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3f7a9a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7e82",
+    "material": "corrugated",
+    "rise": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-3",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.8
+    ]
+   },
+   "at": [
+    -34,
+    14
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4da",
+    "windows": "none",
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "rise": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-4",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    38,
+    20
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#e0a030",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7e82",
+    "material": "corrugated",
+    "rise": 0.4,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "mixed",
+    "density": 0.6,
+    "coach_share": 0.25,
+    "colours": [
+     "#8a8d90",
+     "#d9d4c6",
+     "#c9a43a",
+     "#4a7a9a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -4,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "van",
+    "density": 0.4,
+    "colours": [
+     "#8a8d90",
+     "#e8e4da",
+     "#b84a3a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 3,
+    "colour": "#d9c9a3",
+    "frameColour": "#6b6f73"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    20,
+    20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "colours": [
+     "#e8723a",
+     "#f2d14a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    14,
+    24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "colours": [
+     "#c8466a",
+     "#e8e4da"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -20,
+    24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 3,
+    "colours": [
+     "#3f9ac8",
+     "#e8e4da"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    45,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photos show the neighbouring market, not the motor park itself, so sheds, bays and kiosks are inferred; market block colours and stepped cream end taken from photo 2; no umbrella crowd or hawkers."
+ }
+}

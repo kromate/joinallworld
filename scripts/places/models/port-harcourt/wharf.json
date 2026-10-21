@@ -1,0 +1,182 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "wharf",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "old Port Harcourt wharf on the Bonny River: quay, brick warehouse sheds, rail track, gate, cranes (no OSM match, no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "quay",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 108,
+    "depth": 34,
+    "water_depth": 30,
+    "bollards": true
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    -34,
+    20,
+    0
+   ],
+   "params": {
+    "width": 32,
+    "depth": 14,
+    "height": 7.5,
+    "roof": "gable",
+    "doors": 3,
+    "colour": "#a35f48",
+    "roof_colour": "#7a8086",
+    "trim_colour": "#c6c0b0"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    2,
+    20,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 14,
+    "height": 7.5,
+    "roof": "gable",
+    "doors": 3,
+    "colour": "#a35f48",
+    "roof_colour": "#7a8086",
+    "trim_colour": "#c6c0b0"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    36,
+    20,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 14,
+    "height": 7,
+    "roof": "gable",
+    "doors": 2,
+    "colour": "#a35f48",
+    "roof_colour": "#7a8086",
+    "trim_colour": "#c6c0b0"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "tracks": 1
+   }
+  },
+  {
+   "type": "quay-crane",
+   "at": [
+    30,
+    3,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "height": 26,
+    "reach": 18,
+    "colour": "#7d6a4a"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    50,
+    30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "colour": "#6b6a66",
+    "board_colour": "#ece8dc"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -46,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    52,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "water",
+  "extent": [
+   116,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; brick sheds typed from the colonial-port pattern, generic crane"
+ }
+}

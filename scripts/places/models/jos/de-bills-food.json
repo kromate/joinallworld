@@ -1,0 +1,105 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "de-bills-food",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1165600008",
+   "used": "footprint of the eatery (named OSM match), 46 m2, skewed quad"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#a2553a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f6b54",
+    "material": "metal-sheet",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.2,
+    "height": 2.6,
+    "form": "flat",
+    "colour": "#a2553a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 0.9,
+    "bottom": 2.7,
+    "colour": "#a2553a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    7,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; real 46 m2 OSM outline with a plausible veranda, shed roof and blank board."
+ }
+}

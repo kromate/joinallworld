@@ -1,0 +1,351 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "melford-okilo-memorial-hospital",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/705002430",
+   "used": "real outline (name match), Douglas-Peucker simplified to fit the triangle budget and scaled 0.46 to 118 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#melford-okilo-memorial-hospital",
+   "used": "three-storey render and concrete blocks, canopied entrance, ambulance bay, helipad, water tank; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wards",
+   "footprint": {
+    "polygon": [
+     [
+      -58.7,
+      5.2
+     ],
+     [
+      -51.1,
+      5.6
+     ],
+     [
+      -57.7,
+      18.6
+     ],
+     [
+      -39.7,
+      9.8
+     ],
+     [
+      -35.1,
+      26.5
+     ],
+     [
+      -54.6,
+      28.6
+     ],
+     [
+      -45.5,
+      30.4
+     ],
+     [
+      -45.5,
+      45.0
+     ],
+     [
+      -33.8,
+      29.1
+     ],
+     [
+      -27.4,
+      37.3
+     ],
+     [
+      -42.6,
+      51.0
+     ],
+     [
+      -37.2,
+      56.9
+     ],
+     [
+      -5.5,
+      28.2
+     ],
+     [
+      -23.3,
+      12.6
+     ],
+     [
+      -16.6,
+      -12.7
+     ],
+     [
+      8.3,
+      -20.7
+     ],
+     [
+      27.5,
+      -1.6
+     ],
+     [
+      58.7,
+      -30.5
+     ],
+     [
+      52.4,
+      -37.2
+     ],
+     [
+      36.0,
+      -21.9
+     ],
+     [
+      28.5,
+      -28.6
+     ],
+     [
+      45.5,
+      -39.2
+     ],
+     [
+      36.5,
+      -36.9
+     ],
+     [
+      30.3,
+      -50.1
+     ],
+     [
+      26.0,
+      -30.2
+     ],
+     [
+      10.9,
+      -35.9
+     ],
+     [
+      21.5,
+      -54.3
+     ],
+     [
+      7.9,
+      -49.3
+     ],
+     [
+      8.3,
+      -56.9
+     ],
+     [
+      7.9,
+      -36.2
+     ],
+     [
+      -8.5,
+      -34.8
+     ],
+     [
+      -12.3,
+      -53.7
+     ],
+     [
+      -10.6,
+      -46.3
+     ],
+     [
+      -24.9,
+      -49.1
+     ],
+     [
+      -11.4,
+      -33.8
+     ],
+     [
+      -20.9,
+      -29.0
+     ],
+     [
+      -30.0,
+      -40.6
+     ],
+     [
+      -39.7,
+      -31.9
+     ],
+     [
+      -28.7,
+      -22.3
+     ],
+     [
+      -35.3,
+      -12.4
+     ],
+     [
+      -48.6,
+      -27.0
+     ],
+     [
+      -47.6,
+      -12.4
+     ],
+     [
+      -54.8,
+      -14.9
+     ],
+     [
+      -36.5,
+      -9.7
+     ],
+     [
+      -39.8,
+      6.8
+     ]
+    ]
+   },
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1e6",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#3d7ea6",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f4f1e6",
+       "#c9dbe6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-open/flat-canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.2,
+    "colour": "#3d7ea6"
+   }
+  },
+  {
+   "type": "hospital/ambulance-bay",
+   "at": [
+    24,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "hospital/red-cross-plate",
+   "at": [
+    0,
+    -31,
+    6
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "hospital/helipad",
+   "at": [
+    -50,
+    -40,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "ground": true
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    55,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.5,
+    "tankHeight": 3.5,
+    "legHeight": 8
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -20,
+    -45,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo found; real OSM wing layout scaled 0.46 to 118 m. Window rhythm dropped (floor colour bands instead) to stay in budget; canopy/entrance position unknown."
+ }
+}

@@ -1,0 +1,1599 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "brasilia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "brasilia",
+    "climate": "savanna",
+    "vernacular": "Planned modernist capital: white or pale concrete and marble Niemeyer public buildings with sculptural curves, pilotis and glass; Lucio Costa superblocks of six-storey apartment slabs on pilotis in pastel-painted render with cobogo and tile panels; low painted-render houses with clay-tile or fibre-cement roofs in the satellite towns; red cerrado soil, wide lawns and broadleaf cerrado trees.",
+    "wallColours": [
+      "#f2f0ea",
+      "#d9d4c7",
+      "#e8d9a8",
+      "#c9b79c",
+      "#b8553a",
+      "#8fa8b5"
+    ],
+    "roofColours": [
+      "#b5654a",
+      "#9a9a96",
+      "#d8d8d4",
+      "#6b6f73"
+    ],
+    "wallMaterials": [
+      "exposed-concrete",
+      "concrete",
+      "painted-render",
+      "marble",
+      "glass-curtain",
+      "render",
+      "tile-cladding",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Sculpted free-standing columns and curved concrete shells (Niemeyer); pilotis; Athos Bulcao azulejo and relief panels; cobogo screens; reflecting pools; Burle Marx gardens; superblock buildings with brise-soleil and painted end walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+        "what": "Brasilia city: Niemeyer white modernist public buildings, Lucio Costa superblocks (6 and 3 storeys), Burle Marx landscaping, Paranoa lake"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Pal%C3%A1cio_da_Alvorada",
+        "what": "modernist Niemeyer palace on the lakeshore, floor area about 7,000 m2"
+      },
+      {
+        "url": "https://pt.wikipedia.org/wiki/Instituto_Central_de_Ci%C3%AAncias",
+        "what": "Niemeyer concrete UnB building (\"Minhocao\") in three wings"
+      }
+    ]
+  },
+  "places": {
+    "brasilia-airport-brasilia-airport": {
+      "venueId": "brasilia-airport-brasilia-airport",
+      "city": "brasilia",
+      "name": "Presidente Juscelino Kubitschek International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 seen from the forecourt viaduct: a wide low terminal body with a metal canopy over the road level and a circular saucer-shaped satellite behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "central body with circular satellite and west pier",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd3d4",
+          "#5d7f93",
+          "#eceae4"
+        ],
+        "roofColour": "#a7adb0",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 13,
+          "note": "jetways grew from 13 to 29 in 2012-14"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "metal cover inaugurated 1992 over the access viaduct"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1971; refit 1990-94; south concourse 2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia_International_Airport",
+          "what": "opened 1971 (Tercio Pacheco, Air Force Ministry); 1990 refit with central body and satellite; circular satellite 1994 shaped like a flying saucer; metal cover and viaduct 1992; jetways 13 to 29; south concourse 2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20775905",
+          "what": "OSM Terminal 1 footprint 515 x 428 m including satellite and piers, 12 levels, height 28 m (building:levels/height tags)"
+        }
+      ],
+      "notes": "Whole OSM footprint is 515 x 428 m including the circular satellite; the model shows the terminal body (about 300 x 100 m) with the round satellite behind. Facade colours are typed from general knowledge of the glass-and-steel refit, not from a source."
+    },
+    "brasilia-clinic": {
+      "venueId": "brasilia-clinic",
+      "city": "brasilia",
+      "name": "Hospital SARAH Brasilia",
+      "archetype": "hospital",
+      "subject": "Hospital SARAH Brasilia: a large rehabilitation hospital with a tall ward block and low prefabricated wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 95,
+        "storeys": 10,
+        "height_m": 37,
+        "roof": "sawtooth",
+        "variant": "tall ward block with low shed-roofed wings",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6e3dc",
+          "#2f6da3",
+          "#c9c6bd"
+        ],
+        "roofColour": "#9a9ea0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "Lele-style ventilation louvres and shed lights"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960 first unit; Lele (J. Filgueiras Lima) additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Rede_Sarah",
+          "what": "Sarah network units designed by architect Joao Filgueiras Lima (Lele); first unit opened in Brasilia in 1960"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20967995",
+          "what": "OSM building: 175 x 104 m footprint, 10 levels, height 37 m"
+        }
+      ],
+      "notes": "Footprint and 10 levels / 37 m are OSM measured values for the tallest part. Shed (sawtooth) roofs, pale concrete and blue accent are typed from general knowledge of Lele hospitals and not verified in the fetched source."
+    },
+    "brasilia-community-notices": {
+      "venueId": "brasilia-community-notices",
+      "city": "brasilia",
+      "name": "Residencia Oficial da Granja do Torto",
+      "archetype": "manor",
+      "subject": "The presidential country retreat: a low single-storey official residence in a large garden on the Torto",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ece0",
+          "#8a6a4a",
+          "#6e7f5a"
+        ],
+        "roofColour": "#b5654a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Granja_do_Torto",
+          "what": "official residence of the President in Setor Habitacional Torto; building height capped at 15 m by IPHAN"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1525243618",
+          "what": "nearest OSM building 22 x 9 m, 1 level, 4.4 m"
+        }
+      ],
+      "notes": "Page gives no architecture description. Form from the nearest OSM building and typed from a country-house idea; materials and colours are not verified."
+    },
+    "brasilia-community-voting-game": {
+      "venueId": "brasilia-community-voting-game",
+      "city": "brasilia",
+      "name": "Praca dos Orixas",
+      "archetype": "park-landscape",
+      "subject": "A lakeside square paved in stone setts with sixteen orixa statues about 1.5 m tall and a taller central Iemanja statue",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a8f84",
+          "#6b5a4a",
+          "#cfc6b8"
+        ],
+        "roofColour": "#9a8f84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 17,
+          "note": "sixteen orixas plus central Iemanja on a larger pedestal"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1990s statues; reopened 2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pra%C3%A7a_dos_Orix%C3%A1s",
+          "what": "sixteen orixa statues about 1.5 m by Tatti Moreno, central area paved with paralelepipedos, Iemanja at centre on a bigger pedestal, beside Lago Paranoa, reopened 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/261771198",
+          "what": "OSM park polygon 158 x 128 m (Prainha)"
+        }
+      ],
+      "notes": "Statue colours/material not stated in the source; typed as dark stone-grey. The wiki gives a small 200 m2 site while OSM park is 158 x 128 m; model shows the paved statue court on the lakeshore."
+    },
+    "brasilia-community-workshop": {
+      "venueId": "brasilia-community-workshop",
+      "city": "brasilia",
+      "name": "Universidade de Brasilia - Campus Darcy Ribeiro (Instituto Central de Ciencias)",
+      "archetype": "campus-block",
+      "subject": "A 120 m portion of the long raw-concrete Instituto Central de Ciencias (\"Minhocao\"), the main UnB building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "long linear block (the full building runs about 700 m)",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b4aa",
+          "#8d8a82",
+          "#e1ddd2"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkway along the length"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1963-1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Instituto_Central_de_Ci%C3%AAncias",
+          "what": "ICC by Oscar Niemeyer, nicknamed Minhocao, North/Central/South wings, blocks A/B with three levels (basement, ground, mezzanine), built 1963-1971"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/332888307",
+          "what": "OSM campus polygon is 5.0 x 1.35 km; ICC chosen as the recognisable building"
+        }
+      ],
+      "notes": "The venue is the whole campus (5 km polygon); the model shows the ICC as its landmark. Length and concrete finish are from general knowledge; the source gives layout, levels and dates only."
+    },
+    "brasilia-market-game": {
+      "venueId": "brasilia-market-game",
+      "city": "brasilia",
+      "name": "ParkShopping",
+      "archetype": "mall",
+      "subject": "ParkShopping, a very large multi-level shopping centre with car-park decks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 290,
+        "depth_m": 255,
+        "storeys": 3,
+        "height_m": 21.7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1ddd3",
+          "#6f8a9a",
+          "#b9b4aa"
+        ],
+        "roofColour": "#a4a8aa",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "4,005 spaces"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_ParkShopping",
+          "what": "opened 8 Nov 1983, three floors, 127,592 m2 GLA, 12 escalators, 11 cinemas, 4,005 parking spaces"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/216491572",
+          "what": "OSM footprint 291 x 255 m, 6 levels, 21.7 m"
+        }
+      ],
+      "notes": "Size and levels measured; facade colours typed (neutral concrete with glazing), not verified from photos."
+    },
+    "brasilia-meal-stop": {
+      "venueId": "brasilia-meal-stop",
+      "city": "brasilia",
+      "name": "Casa de Cha",
+      "archetype": "restaurant",
+      "subject": "A small single-storey tea house cafe in a park setting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#8a6a4a",
+          "#5f7f95"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+          "what": "Brasilia city: Niemeyer white modernist public buildings, Lucio Costa superblocks (6 and 3 storeys), Burle Marx landscaping, Paranoa lake"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1340424680",
+          "what": "OSM cafe footprint 22 x 15 m, level -1"
+        }
+      ],
+      "notes": "Only a Wikidata entry (cafe) and a footprint exist; no description found. Typed from the city style as a modern cafe pavilion."
+    },
+    "brasilia-osm-node-2673931012": {
+      "venueId": "brasilia-osm-node-2673931012",
+      "city": "brasilia",
+      "name": "Museu do Catetinho",
+      "archetype": "manor",
+      "subject": "The Catetinho: the first presidential residence, a long two-storey timber lodge on pilotis built in 1956",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 7,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9c8161",
+          "#3f6b8f",
+          "#e8e2d0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1,
+          "note": "raised on posts"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "timber verandas"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1956",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Catetinho",
+          "what": "built in 1956 in ten days to Niemeyer design, wood (\"Palacio das Tabuas\"), raised on pilotis, some elements painted blue in 1991, repainted 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/405900717",
+          "what": "OSM footprint 33 x 6.5 m, architect tag Oscar Niemeyer"
+        }
+      ],
+      "notes": "Timber, pilotis and Niemeyer authorship are sourced; blue trim is from the 1991 repaint and the current colours are not stated. Roof form and material are typed."
+    },
+    "brasilia-osm-node-5496838926": {
+      "venueId": "brasilia-osm-node-5496838926",
+      "city": "brasilia",
+      "name": "Igreja Batista de Atos - BTA",
+      "archetype": "church-modern",
+      "subject": "A small four-level Baptist church in a satellite town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 13.4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e1d0",
+          "#5f7f95",
+          "#a9a59c"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+          "what": "Brasilia city: Niemeyer white modernist public buildings, Lucio Costa superblocks (6 and 3 storeys), Burle Marx landscaping, Paranoa lake"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20730970",
+          "what": "OSM building 32 x 22 m, 4 levels, 13.4 m"
+        }
+      ],
+      "notes": "No description of this church exists; footprint and height measured, everything else typed from the city style."
+    },
+    "brasilia-osm-way-141496566": {
+      "venueId": "brasilia-osm-way-141496566",
+      "city": "brasilia",
+      "name": "Centro de Ensino Tecnologico de Brasilia",
+      "archetype": "campus-block",
+      "subject": "A technical college building: a two- to three-storey painted block with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 103,
+        "depth_m": 59,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfc9",
+          "#c9b79c",
+          "#8d8a82"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+          "what": "Brasilia city: Niemeyer white modernist public buildings, Lucio Costa superblocks (6 and 3 storeys), Burle Marx landscaping, Paranoa lake"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/141496566",
+          "what": "OSM college footprint 103 x 59 m"
+        }
+      ],
+      "notes": "Footprint measured; no architectural description found, typed from city style."
+    },
+    "brasilia-osm-way-141913048": {
+      "venueId": "brasilia-osm-way-141913048",
+      "city": "brasilia",
+      "name": "Conjunto Nacional",
+      "archetype": "mall",
+      "subject": "Conjunto Nacional, the 1971 mall and commercial complex beside the bus station, with a long podium and rooftop office volumes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 92,
+        "storeys": 11,
+        "height_m": 34.6,
+        "roof": "flat",
+        "variant": "podium mall with stacked offices"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a8a59d",
+          "#c9c5ba",
+          "#4d6573"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conjunto_Nacional_(Bras%C3%ADlia)",
+          "what": "opened 21 Nov 1971 in the Central Zone near the bus station, about 118,100 m2 built area, 320 stores"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/141913048",
+          "what": "OSM footprint 230 x 92 m, 11 levels, 34.6 m"
+        }
+      ],
+      "notes": "Size and levels measured. Concrete grey tone and podium-and-offices form are typed from general knowledge; not verified in the fetched page."
+    },
+    "brasilia-osm-way-18140049": {
+      "venueId": "brasilia-osm-way-18140049",
+      "city": "brasilia",
+      "name": "Palacio da Alvorada",
+      "archetype": "civic-palace",
+      "subject": "The presidential palace seen across its reflecting pool: a long glass box wrapped in sculpted white columns, on the lake shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 158,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#6e8da0",
+          "#d8d4c8"
+        ],
+        "roofColour": "#eeeeea",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "the free-standing curved white columns that are the city symbol"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "reflecting pool in front"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "As Iaras sculpture floating in the pool"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance ramp"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1958",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pal%C3%A1cio_da_Alvorada",
+          "what": "clad in marble and sealed by glass curtains, white external pillars meeting the ground at one point, reflecting pool with Ceschiatti sculpture, about 7,000 m2 on three levels"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pal%C3%A1cio_da_Alvorada",
+          "what": "Niemeyer modernist palace on a peninsula at Lake Paranoa, 2 floors plus basement, height about 10 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/18140049",
+          "what": "OSM building 158 x 33 m, 3 levels, 10 m"
+        }
+      ],
+      "notes": "Recognisable by the repeated sculpted white columns that touch the ground at a point, glass behind them, and the reflecting pool. Chapel and heliport are separate buildings and not modelled."
+    },
+    "brasilia-osm-way-202664538": {
+      "venueId": "brasilia-osm-way-202664538",
+      "city": "brasilia",
+      "name": "Praca do DI",
+      "archetype": "park-landscape",
+      "subject": "Praca do DI in Taguatinga: a small urban square with paved areas, trees and a small pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 56,
+        "depth_m": 56,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d4c7",
+          "#a9a59c",
+          "#7a8f6a"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Pra%C3%A7a_do_DI_(Taguatinga)",
+          "what": "square exists in Taguatinga (title only; no description retrieved)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20694993",
+          "what": "OSM footprint 56 x 56 m, building 1 level 3.4 m"
+        }
+      ],
+      "notes": "No appearance description found; typed as a generic city square."
+    },
+    "brasilia-osm-way-242250854": {
+      "venueId": "brasilia-osm-way-242250854",
+      "city": "brasilia",
+      "name": "Estadio Augustinho Pires de Lima",
+      "archetype": "stadium",
+      "subject": "A modest regional football stadium with concrete stands on one or two sides",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b4aa",
+          "#d9d4c7",
+          "#8d8a82"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+          "what": "Brasilia city: Niemeyer white modernist public buildings, Lucio Costa superblocks (6 and 3 storeys), Burle Marx landscaping, Paranoa lake"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/242250854",
+          "what": "OSM stadium footprint 232 x 181 m incl. pitch and surroundings"
+        }
+      ],
+      "notes": "Only a Wikipedia stub exists; typed small regional stadium. Not verified."
+    },
+    "brasilia-osm-way-382528304": {
+      "venueId": "brasilia-osm-way-382528304",
+      "city": "brasilia",
+      "name": "Estadio JK Paranoa",
+      "archetype": "stadium",
+      "subject": "A small community stadium in Paranoa with a covered side stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d4c7",
+          "#3f6b8f",
+          "#b9b4aa"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paran%C3%B3a_JK_Stadium",
+          "what": "stadium listed (Wikidata Q9255286); no description retrieved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/382528304",
+          "what": "OSM stadium footprint 150 x 130 m"
+        }
+      ],
+      "notes": "No appearance description found; made visibly smaller and different in colour from the other Federal District stadium."
+    },
+    "brasilia-osm-way-41573440": {
+      "venueId": "brasilia-osm-way-41573440",
+      "city": "brasilia",
+      "name": "Hospital Universitario de Brasilia",
+      "archetype": "hospital",
+      "subject": "The UnB teaching hospital block at the university campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 103,
+        "depth_m": 41,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e2ddd0",
+          "#b9b4aa",
+          "#6b8aa0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Hospital_Universit%C3%A1rio_de_Bras%C3%ADlia",
+          "what": "founded 1972 as Hospital do Distrito Federal Presidente Medici, in Asa Norte"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1203826294",
+          "what": "OSM building 103 x 41 m (1 level, 5 m on the tagged part)"
+        }
+      ],
+      "notes": "No physical description exists in the source; raised to two storeys over the OSM single-level part and typed from city style."
+    },
+    "brasilia-osm-way-41573825": {
+      "venueId": "brasilia-osm-way-41573825",
+      "city": "brasilia",
+      "name": "Parque Olhos d'Agua",
+      "archetype": "park-landscape",
+      "subject": "A cerrado park with a small lake, tree-lined paths and a visitor pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 300,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9c8161",
+          "#7a8f6a",
+          "#d9d4c7"
+        ],
+        "roofColour": "#9c8161",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Parque_Olhos_D%27%C3%81gua",
+          "what": "park listed (Wikidata Q10345277); no description retrieved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41573825",
+          "what": "OSM park polygon 723 x 314 m"
+        }
+      ],
+      "notes": "Only the park extent is measured. Contents (lake, paths) typed from the name (springs) and the cerrado setting."
+    },
+    "brasilia-osm-way-424628555": {
+      "venueId": "brasilia-osm-way-424628555",
+      "city": "brasilia",
+      "name": "Torre de TV Digital",
+      "archetype": "monument",
+      "subject": "The Digital TV Tower \"Flor do Cerrado\": a slender concrete shaft with a flower-like observation deck and a metal mast",
+      "form": {
+        "footprint": "round",
+        "width_m": 22,
+        "depth_m": 22,
+        "storeys": 30,
+        "height_m": 120,
+        "roof": "flat",
+        "variant": "slender shaft with flared observation deck at about 80 m and metal mast above"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4e2dc",
+          "#b0aea8",
+          "#8d8a82"
+        ],
+        "roofColour": "#e4e2dc",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "flared deck with two observatories"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "about 62 m metal antenna section"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2009-2012",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia_Digital_TV_Tower",
+          "what": "Niemeyer, 180-182 m total, reinforced concrete up to about 120 m, metal structure about 50 m, 12 m antenna, observatory at about 80 m with restaurant, completed 2012, called Savannah Flower"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/424628555",
+          "what": "OSM footprint 20 x 20 m, height 119 m"
+        }
+      ],
+      "notes": "Height to concrete top is about 120 m; total with mast is about 182 m (mast is extra). Overall silhouette is a thin shaft with a wider deck, colour is pale concrete."
+    },
+    "brasilia-osm-way-43339378": {
+      "venueId": "brasilia-osm-way-43339378",
+      "city": "brasilia",
+      "name": "Igrejinha Nossa Senhora de Fatima",
+      "archetype": "church-modern",
+      "subject": "The Igrejinha: a U-shaped curved wall covered in blue-and-white azulejos under a tilted triangular concrete slab roof on three pillars",
+      "form": {
+        "footprint": "U",
+        "width_m": 32,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "inclined triangular roof slab on three columns"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#3f6fb0",
+          "#f2f0ea",
+          "#8a8a86"
+        ],
+        "roofColour": "#a9a59c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "Athos Bulcao exterior azulejo panel with Star of Bethlehem and dove"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1957-58",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Igrejinha_Nossa_Senhora_de_F%C3%A1tima",
+          "what": "Niemeyer, single U-shaped curved wall, inclined triangular reinforced-concrete roof slab on three pillars (\"nun hat\"), exterior azulejos by Athos Bulcao, 19 m high per page, ~300 m2, built 1957-58, first masonry Catholic church in Brasilia"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/43339378",
+          "what": "OSM footprint 31.8 x 23 m; OSM height tag 4.6 m (wall only)"
+        }
+      ],
+      "notes": "Text source says 19 m high while OSM tags 4.6 m; 12 m used as a compromise for the tilted slab apex. Tile colour is typed as blue-and-white from general knowledge (interior was painted blue), not stated in the source."
+    },
+    "brasilia-osm-way-480025603": {
+      "venueId": "brasilia-osm-way-480025603",
+      "city": "brasilia",
+      "name": "Instituto Rio Branco",
+      "archetype": "campus-block",
+      "subject": "The diplomatic academy building: a two-storey formal modern block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 37,
+        "storeys": 2,
+        "height_m": 8.3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "marble",
+        "colours": [
+          "#e2ddd0",
+          "#b9b4aa",
+          "#6b8aa0"
+        ],
+        "roofColour": "#a4a8aa",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Instituto_Rio_Branco",
+          "what": "new headquarters in Brasilia, with a palatial structure, in the late 1990s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20968002",
+          "what": "OSM building 71 x 37 m, 2 levels, 8.3 m"
+        }
+      ],
+      "notes": "Source says only \"moderna sede com estrutura palaciana\". Footprint and levels measured; materials typed."
+    },
+    "brasilia-osm-way-739637976": {
+      "venueId": "brasilia-osm-way-739637976",
+      "city": "brasilia",
+      "name": "Instituto de Ciencias Biologicas",
+      "archetype": "campus-block",
+      "subject": "A two-storey UnB teaching block with an overhanging concrete roof plane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 47,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b3aea4",
+          "#8d8a82",
+          "#cfd3d4"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Instituto_Central_de_Ci%C3%AAncias",
+          "what": "UnB campus building context (Niemeyer ICC); the Biological Sciences institute itself is not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1198915111",
+          "what": "OSM footprint 130 x 47 m, 2 levels"
+        }
+      ],
+      "notes": "No description; typed in the raw-concrete campus idiom. Made shorter and plainer than the ICC."
+    },
+    "brasilia-osm-way-84830646": {
+      "venueId": "brasilia-osm-way-84830646",
+      "city": "brasilia",
+      "name": "Memorial JK",
+      "archetype": "monument",
+      "subject": "The JK Memorial: a low white marble block with few openings, with a tall curved pylon carrying the statue of Juscelino Kubitschek",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 92,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "low marble block plus about 28 m curved pylon with statue",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#f1efe9",
+          "#8e8b84",
+          "#c9c5bb"
+        ],
+        "roofColour": "#e4e2dc",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "JK statue on a pedestal almost 30 m high"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "curved concrete pylon"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "ramp"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1981",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/JK_Memorial",
+          "what": "Niemeyer design, block of white marble with few openings, statue by Honorio Pecanha on a pedestal almost 30 m above ground, opened 1981"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/84830646",
+          "what": "OSM footprint 120 x 92 m, 2 levels, 5.2 m"
+        }
+      ],
+      "notes": "Block is low and wide, the statue pylon is the vertical accent. Exact pylon shape (curved sickle form) is from general knowledge."
+    },
+    "brasilia-quiet-reflection": {
+      "venueId": "brasilia-quiet-reflection",
+      "city": "brasilia",
+      "name": "Sara Nossa Terra",
+      "archetype": "church-modern",
+      "subject": "A three-storey evangelical church building on a plot in a satellite town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 9.9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#2f6da3",
+          "#a9a59c"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Comunidade_Evang%C3%A9lica_Sara_Nossa_Terra",
+          "what": "denomination page; branch building not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1197729365",
+          "what": "OSM building 18 x 14 m, 3 levels, 9.9 m"
+        }
+      ],
+      "notes": "Footprint and height measured; no description of this church building exists. Signage must be a blank board."
+    },
+    "brasilia-recreation": {
+      "venueId": "brasilia-recreation",
+      "city": "brasilia",
+      "name": "Parque Ecologico Aguas Claras",
+      "archetype": "park-landscape",
+      "subject": "A large urban ecological park with wooded trails, lake and a small visitor pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 350,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9c8161",
+          "#7a8f6a",
+          "#d9d4c7"
+        ],
+        "roofColour": "#9c8161",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Parque_Ecol%C3%B3gico_de_%C3%81guas_Claras",
+          "what": "park listed (Wikidata Q97405658); no description retrieved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/125232972",
+          "what": "OSM park polygon about 2.05 x 1.14 km"
+        }
+      ],
+      "notes": "Park is far larger than the model; shown as an entrance area. Contents typed from the cerrado setting."
+    },
+    "brasilia-transit": {
+      "venueId": "brasilia-transit",
+      "city": "brasilia",
+      "name": "Estacao Rodoferroviaria (Brasilia)",
+      "archetype": "transport-station",
+      "subject": "A long low three-level bus and rail station building with platforms and canopies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 290,
+        "depth_m": 74,
+        "storeys": 3,
+        "height_m": 12.7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5ba",
+          "#8d8a82",
+          "#6b7f8f"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+          "what": "Brasilia city: Niemeyer white modernist public buildings, Lucio Costa superblocks (6 and 3 storeys), Burle Marx landscaping, Paranoa lake"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/20685096",
+          "what": "OSM building 292 x 74 m, 3 levels, 12.7 m"
+        }
+      ],
+      "notes": "Venue name is just \"Brasilia\" (a hub); identification as the Rodoferroviaria is an inference from the coordinates and the long station footprint. Typed from the footprint and city style."
+    }
+  }
+}

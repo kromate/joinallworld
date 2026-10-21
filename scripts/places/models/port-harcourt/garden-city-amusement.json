@@ -1,0 +1,291 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/port-harcourt.json",
+   "used": "fenced park, ticket gate, ferris wheel, small rides under bright canopies; Wikidata Q109310697 has no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "ferris-wheel",
+   "at": [
+    18,
+    12
+   ],
+   "params": {
+    "radius": 10.5,
+    "gondolas": 16
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    -4,
+    -29
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1c84c",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#d9433a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2b6cb0",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    6,
+    -30
+   ],
+   "params": {
+    "width": 7,
+    "height": 4.2,
+    "colour": "#d9433a",
+    "board_colour": "#2b6cb0",
+    "arch": true
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "ride-a",
+   "at": [
+    -22,
+    8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 10,
+    "height": 4,
+    "columns": 4,
+    "colour": "#d9433a",
+    "edgeColour": "#f1c84c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -20,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 10,
+    "depth": 8,
+    "height": 3.4,
+    "columns": 4,
+    "colour": "#2b6cb0",
+    "edgeColour": "#f1c84c"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    6,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 7,
+    "height": 3.2,
+    "columns": 4,
+    "colour": "#f1c84c",
+    "edgeColour": "#d9433a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -14,
+    -20
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9433a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    18,
+    -18
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2b6cb0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    -4
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#f1c84c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -31
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#f1c84c",
+     "#d9433a",
+     "#2b6cb0"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -33
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 90,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#8c9096",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    35
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 90,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#8c9096",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 68,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#8c9096",
+    "kind": "fence"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    45,
+    1
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 68,
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#8c9096",
+    "kind": "fence"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     28
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this park; layout from brief (gate, wheel, canopies, kiosks)"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "garden-city-amusement"
+}

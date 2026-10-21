@@ -1,0 +1,119 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1046439360",
+   "used": "real outline of the shopping centre (name match, 16,500 m2 footprint), scaled to fit; rendered with brief facts (3 storeys, rendered blocks, blue band)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#ece8de",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#2f6b8a",
+    "faces": {
+     "front": "ribbon",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2f6b8a",
+      "height": 0.9,
+      "at": 0.55,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a396",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -10,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "bottom": 3,
+    "colour": "#2f6b8a",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -30,
+    -75,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -80
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: real OSM outline only, no glass entrance atrium placed, facade from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-playce-yaounde"
+}

@@ -1,0 +1,106 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-8617869166",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small fast-food shop 12x8 m, painted render in yellow with red accents, shed roof, awning, blank signboard; OSM nearest match 51 m away so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0e3a6",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#c0452f",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b8891",
+    "material": "metal-sheet",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#c0452f",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.1,
+    "bottom": 1.2,
+    "colour": "#c0452f",
+    "frameColour": "#ffffff"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -11,
+     -5
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   32
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; typical small shop from brief, colours and awning typed"
+ }
+}

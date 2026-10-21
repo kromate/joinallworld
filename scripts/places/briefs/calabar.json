@@ -1,0 +1,1218 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "calabar",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "calabar",
+    "climate": "rainforest",
+    "vernacular": "Old Efik port city on the Calabar River: 19th-century prefabricated timber colonial buildings (Old Residency), white-painted mission churches and schools, rendered one-to-three storey commercial buildings with rust corrugated roofs, big civic and stadium blocks of the 1970s, and lush tropical greenery with a festival-colour street culture.",
+    "wallColours": [
+      "#ece6d6",
+      "#e6dfca",
+      "#c8c1af",
+      "#a8744f",
+      "#6f9a7a",
+      "#2f6f9a"
+    ],
+    "roofColours": [
+      "#7a3b2c",
+      "#8a4a33",
+      "#6e6a63",
+      "#5f6a70"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "timber",
+      "render",
+      "concrete",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber verandas and louvres on colonial buildings, Efik chief regalia and Ekpe/Nsibidi motifs in murals and monuments, carnival-coloured painted hoardings, boat and river imagery around Marina.",
+    "sources": [
+      {
+        "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+        "what": "Calabar history and heritage overview"
+      },
+      {
+        "url": "https://kubanni.abu.edu.ng/items/01717996-0f74-4dfe-a447-8f6e59487d30/full",
+        "what": "European influence on Efik traditional house form 1800-1960"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Old_Residency_Museum",
+        "what": "1884 prefabricated Old Residency"
+      },
+      {
+        "url": "https://guardian.ng/?p=2878921",
+        "what": "prefabricated colonial buildings shipped in sections; Egbo Egbo Bassey House in Duke Town"
+      }
+    ]
+  },
+  "places": {
+    "apostolic-church-calabar": {
+      "venueId": "apostolic-church-calabar",
+      "city": "calabar",
+      "name": "The Apostolic Church (Calabar)",
+      "archetype": "church-modern",
+      "subject": "A Pentecostal-style church auditorium: a wide hall under a low-pitched metal roof with a small front tower and a canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ece0",
+          "#3d6b7a",
+          "#cfc8b6"
+        ],
+        "roofColour": "#5f6a70",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Nothing found about this church. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type."
+    },
+    "bassey-duke-statue": {
+      "venueId": "bassey-duke-statue",
+      "city": "calabar",
+      "name": "Bassey Duke Statue",
+      "archetype": "monument",
+      "subject": "A statue of an Efik chief on a stone plinth at a Calabar road junction, with a low railing",
+      "form": {
+        "footprint": "round",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#8e8b82",
+          "#6b5a44",
+          "#cfc8b6"
+        ],
+        "roofColour": "#8e8b82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "figure in traditional chief dress on a plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown (20th c.?)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Duke_Town",
+          "what": "Duke Town was the Efik city-state of the Duke family within modern Calabar; no statue page found"
+        }
+      ],
+      "notes": "No source describing the statue was found; a Bassey Duke Ephraim IX appears in lists of Efik kings only. Typed guess for a chief statue on a plinth."
+    },
+    "calabar-municipal-gardens": {
+      "venueId": "calabar-municipal-gardens",
+      "city": "calabar",
+      "name": "Calabar Municipal Gardens",
+      "archetype": "park-landscape",
+      "subject": "A small municipal garden beside the council offices: paved paths, flowerbeds, ornamental trees and a gazebo",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#6d8f4e",
+          "#c8c1af"
+        ],
+        "roofColour": "#8a4a33",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Nothing found about this garden. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type."
+    },
+    "calabar-municipal-hq": {
+      "venueId": "calabar-municipal-hq",
+      "city": "calabar",
+      "name": "Calabar Municipal Government Headquarters",
+      "archetype": "civic-small",
+      "subject": "A local-government office: a two-storey rendered block with a central entrance porch, flag poles and a gated compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#6d8a5c",
+          "#c8c1af"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Nothing found about the building. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type."
+    },
+    "chef-green-local-cuisine-hub": {
+      "venueId": "chef-green-local-cuisine-hub",
+      "city": "calabar",
+      "name": "Chef Green Signature Local Cuisine Hub",
+      "archetype": "restaurant",
+      "subject": "A neat local-cuisine restaurant: a single-storey painted building with a covered open dining area and bright awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e3dcc2",
+          "#4f8a4a",
+          "#f0ece4"
+        ],
+        "roofColour": "#6f4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Nothing found about this venue. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type."
+    },
+    "first-bank-calabar": {
+      "venueId": "first-bank-calabar",
+      "city": "calabar",
+      "name": "First Bank Nigeria (Calabar branch)",
+      "archetype": "office-low",
+      "subject": "A two-storey bank branch with a rendered facade, deep entrance canopy and ATM lobby, blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e3d7",
+          "#3f5b70",
+          "#c4bfb2"
+        ],
+        "roofColour": "#8e8e8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, neutral colours"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Branch not described. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type. No brand colours."
+    },
+    "millennium-park-calabar": {
+      "venueId": "millennium-park-calabar",
+      "city": "calabar",
+      "name": "Millennium Park",
+      "archetype": "park-landscape",
+      "subject": "Calabar Millennium Park: a large landscaped city park with open lawns, paved paths, a central flagpole and a fountain, beside the stadium district and the old prison wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 180,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d3c4",
+          "#6d8f4e",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a4a33",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "event pavilion / stage"
+        },
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "central flagpole"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.channelstv.com/2012/11/30/calabar-bound-flights-on-the-increase-as-festival-begins-today/",
+          "what": "park, formerly Eleven Eleven memorial, hosts Calabar Festival events, Christmas tree lighting"
+        },
+        {
+          "url": "https://www.poemhunter.com/poem/the-milennium-park/",
+          "what": "poem mentioning fountain, central flagpole and old prison wall (creative work, low reliability)"
+        }
+      ],
+      "notes": "Only its use as festival park and a former WWII memorial are sourced; fountain and flagpole come from a poem so treat as weak. Layout is a typed guess."
+    },
+    "national-museum-calabar": {
+      "venueId": "national-museum-calabar",
+      "city": "calabar",
+      "name": "National Museum, Calabar (Old Residency)",
+      "archetype": "museum-theatre",
+      "subject": "The Old Residency, a large prefabricated Scandinavian red-pine house shipped from Britain in 1884 as Government House, now the National Museum on the Calabar River bluff",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#e6dfca",
+          "#f1ede2",
+          "#6b4b36"
+        ],
+        "roofColour": "#8a4a33",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "wrap-around timber verandas on both floors (assumed from colonial prefab type)"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "broad entrance steps"
+        },
+        {
+          "id": "railings",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1884",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Old_Residency_Museum",
+          "what": "pre-fabricated in Britain, erected 1884 as Government House of the Southern Protectorate, museum since 1986"
+        },
+        {
+          "url": "https://businessday.ng/art-and-travel/article/a-tale-from-old-residency-building-2/",
+          "what": "Scandinavian red pinewood knock-down building, national monument 1959"
+        },
+        {
+          "url": "https://www.aljazeera.com/program/my-nigeria/2015/9/27/from-slave-trading-post-to-royal-prison/",
+          "what": "first resident Consul Hewett"
+        }
+      ],
+      "notes": "Timber prefab construction, 1884 date and function sourced. Storeys, verandas, paint scheme and roof are not described in text sources; inferred from the colonial residency type. Recognisable as a big timber colonial house on a lawn near Marina."
+    },
+    "native-delicacies-food": {
+      "venueId": "native-delicacies-food",
+      "city": "calabar",
+      "name": "Native Delicacies Food",
+      "archetype": "restaurant",
+      "subject": "A small buka-style eatery: a single-storey painted shop-house with plastic chairs under an awning and a handpainted-style blank board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#a8744f",
+          "#f0ece4"
+        ],
+        "roofColour": "#6f4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Nothing found about this venue. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type."
+    },
+    "navy-reference-hospital": {
+      "venueId": "navy-reference-hospital",
+      "city": "calabar",
+      "name": "Nigerian Navy Reference Hospital Calabar",
+      "archetype": "hospital",
+      "subject": "A military hospital: a three-storey rendered main block with wings, a covered ambulance bay and a gated naval compound",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eeeadd",
+          "#3c5a82",
+          "#c8c4b8"
+        ],
+        "roofColour": "#6f6f6c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank neutral sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Nothing found about the building. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type."
+    },
+    "polaris-bank-calabar": {
+      "venueId": "polaris-bank-calabar",
+      "city": "calabar",
+      "name": "Polaris Bank (Calabar branch)",
+      "archetype": "office-low",
+      "subject": "A bank branch in a two-storey rendered building with a glazed banking hall, entrance canopy and blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e6dd",
+          "#4a4f5c",
+          "#c4bfb2"
+        ],
+        "roofColour": "#8e8e8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, neutral colours"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+          "what": "Calabar history: Efik city-state, slave-trade port, colonial capital of Southern Protectorate"
+        }
+      ],
+      "notes": "Branch not described. No public source describes this building; the brief is a typed guess from the Calabar city style and the place type. No brand colours."
+    },
+    "sacred-heart-cathedral": {
+      "venueId": "sacred-heart-cathedral",
+      "city": "calabar",
+      "name": "Sacred Heart Cathedral (Calabar)",
+      "archetype": "church-classical",
+      "subject": "The Catholic Cathedral of the Archdiocese of Calabar: a large masonry cathedral with a pitched nave, a prominent bell tower and a pedimented front on Egerton Street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eee8d8",
+          "#a89878",
+          "#c9c1ae"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "foundation dug 1932",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.nigeriacatholicnetwork.com/?p=1900",
+          "what": "cathedral foundation dug 1932; described as one of the most outstanding cathedrals in Nigeria in aesthetics"
+        },
+        {
+          "url": "https://gcatholic.org/churches/africa/2982",
+          "what": "listed at Egerton St, Calabar"
+        }
+      ],
+      "notes": "Foundation date, address and its reputation for being architecturally notable are sourced; no source describes the actual form, so shape, tower and colours are a typed guess from Catholic colonial church norms. Needs a human check against photos."
+    },
+    "slave-history-museum": {
+      "venueId": "slave-history-museum",
+      "city": "calabar",
+      "name": "Slave History Museum (Calabar)",
+      "archetype": "museum-theatre",
+      "subject": "The Slave History Museum in a former barracoon at the Marina Resort: a low old warehouse-like building with a replica slave ship as the first display",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e9e1c9",
+          "#8a5b3c",
+          "#c4bfb2"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "figure group in the garden"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "warehouse site 15th-19th c.; museum 2007-2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Slave_History_Museum",
+          "what": "former barracoon at the site of a slave-trading warehouse, Marina Beach, Marina Resort Calabar"
+        },
+        {
+          "url": "https://www.vanguardngr.com/?p=202559",
+          "what": "replica slave ship about 12 ft high is first display"
+        },
+        {
+          "url": "https://slaveryandremembrance.org/partners/partner/?id=P0027",
+          "what": "Slave History Museum, Calabar"
+        }
+      ],
+      "notes": "Former barracoon building and its resort setting are sourced; dimensions, brick/render finish and colours are guesses. Distinct from the Old Residency: single-storey, low, near the water rather than a big timber house."
+    },
+    "ucth-calabar": {
+      "venueId": "ucth-calabar",
+      "city": "calabar",
+      "name": "University of Calabar Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "UCTH main campus: a large 850-bed teaching hospital with a four-storey rendered main block, ward wings, a covered entrance and separate new units",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eeebe0",
+          "#2f6f9a",
+          "#c8c4b8"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank neutral sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 2
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "move to permanent site began 2001, completed 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Calabar_Teaching_Hospital",
+          "what": "moved to permanent site on Unical Hotel Road; took over St Margaret hospital facilities"
+        },
+        {
+          "url": "https://21stcenturychronicle.com/850-bed-university-of-calabar-teaching-hospital-serving-five-million-patients-cmd/",
+          "what": "850-bed hospital, many wards and departments"
+        },
+        {
+          "url": "https://von.gov.ng/medical-tourism-university-of-calabar-teaching-hospital-upgrades-facilities/",
+          "what": "new ICU, isolation centre, two-storey 56-apartment house-officer block"
+        }
+      ],
+      "notes": "Scale (850 beds, 62 departments) and a multi-block campus are sourced; facade colours and block layout are guesses. Much larger than other hospitals in these cities."
+    },
+    "uj-esuene-stadium": {
+      "venueId": "uj-esuene-stadium",
+      "city": "calabar",
+      "name": "UJ Esuene Stadium",
+      "archetype": "stadium",
+      "subject": "U.J. Esuene Stadium, Calabar: an oval football and athletics bowl with a covered main stand, floodlight masts and a video scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 180,
+        "depth_m": 140,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d2c7",
+          "#2f6f4f",
+          "#f0eee8"
+        ],
+        "roofColour": "#c4c7c9",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "video matrix scoreboard"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "opened 1977",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/U._J._Esuene_Stadium",
+          "what": "capacity 16,000, opened 1977, electronic video-matrix scoreboard and floodlights"
+        },
+        {
+          "url": "https://mwnation.com/?p=103015",
+          "what": "upgraded with video scoreboard and floodlights, seats about 25,000"
+        }
+      ],
+      "notes": "Opening year, scoreboard and floodlights are sourced; capacity ranges 16,000-25,000 across sources; roof and stand layout not described. Older and plainer than the Asaba and Benin stadiums."
+    },
+    "unicross-main-campus": {
+      "venueId": "unicross-main-campus",
+      "city": "calabar",
+      "name": "University of Cross River State, Calabar Main Campus",
+      "archetype": "campus-block",
+      "subject": "The main campus of a merged state university: several three-storey rendered faculty blocks with open corridors, plus a new ICT block beside the Faculty of Engineering",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#2f5d8a",
+          "#c8c1af"
+        ],
+        "roofColour": "#7a7a76",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "former polytechnic; university formed 2022",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.timeshighereducation.co.uk/world-university-rankings/university-cross-river-state",
+          "what": "formed 2022 from Polytechnic Calabar and two other institutions; Calabar is main campus"
+        },
+        {
+          "url": "https://news.crossriverstate.gov.ng/university-of-cross-river-state-vc-inspects-key-projects-demands-quality-timely-delivery/",
+          "what": "new ICT block beside Faculty of Engineering"
+        }
+      ],
+      "notes": "Only the institutional history and an ICT block are sourced; building appearance is a typed guess for a Nigerian polytechnic campus."
+    },
+    "watt-market": {
+      "venueId": "watt-market",
+      "city": "calabar",
+      "name": "Watt Market",
+      "archetype": "market-open",
+      "subject": "Watt Market in Old Town Calabar, the city's oldest market: crowded rows of tin-roofed stalls and lock-up shops with umbrellas in the lanes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c3b3",
+          "#a8744f",
+          "#e4ddc9"
+        ],
+        "roofColour": "#6e6a63",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 45
+        },
+        {
+          "id": "umbrellas",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "lock-ups",
+          "count": 15
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "established 1901",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Watt_Market",
+          "what": "multipurpose market in Old Town Calabar, established 1901, largest market in the state"
+        },
+        {
+          "url": "https://www.finelib.com/listing/Watt-Market/86878",
+          "what": "shops, stalls and owner-operated businesses"
+        },
+        {
+          "url": "https://www.vanguardngr.com/?p=83798",
+          "what": "overcrowded market with outgrown infrastructure; relocation planned"
+        }
+      ],
+      "notes": "Age, location and stalls/shops mix sourced; roof forms and colours are guesses. Keep lower and more open than Oba Market in Benin."
+    }
+  }
+}

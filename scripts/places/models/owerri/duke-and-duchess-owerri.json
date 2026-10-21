@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "duke-and-duchess-owerri",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Owerri",
+   "used": "brief only: small two-storey salon shop, glazed ground floor, blank sign, awning; no photos or outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     10,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "groundKind": "curtain",
+    "groundHeight": 3.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bands": "#d9c9a3"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "awning",
+   "at": [
+    0,
+    -5.8,
+    3.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9.4,
+    "depth": 1.8,
+    "height": 0.1,
+    "thickness": 0.2,
+    "colour": "#b4506a",
+    "edgeColour": "#efe6d0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.3,
+    "bottom": 4.4,
+    "colour": "#7a2f45",
+    "frameColour": "#efe6d0",
+    "posts": false
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    3,
+    3,
+    7.2
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "text only: typical Owerri shophouse, no photo or outline found"
+ }
+}

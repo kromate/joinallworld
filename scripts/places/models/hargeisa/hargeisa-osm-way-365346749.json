@@ -1,0 +1,88 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/365346749",
+   "used": "real 1078 m2 long narrow footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c3a0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#f0ede4",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a69f",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    -6,
+    -26
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "height": 1.4,
+    "z0": 6.4,
+    "colour": "#a9c4d6"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "colour": "#cfd3d6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 2,
+  "treeKind": "acacia",
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-way-365346749",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "No photo found; outline-based two-storey shopfront, typed facade."
+ }
+}

@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "cg-facades",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cladding",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    -36,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#d9b48a",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "size": [
+       1.3,
+       1.0
+      ],
+      "colours": [
+       "#e0b98c",
+       "#c8905f",
+       "#efe3d0"
+      ],
+      "slits": {
+       "fraction": 0.14,
+       "colour": "#262a30"
+      },
+      "faces": [
+       "front",
+       "left",
+       "right"
+      ]
+     },
+     {
+      "type": "pilotis",
+      "inset": 3,
+      "spacing": 5.2,
+      "width": 0.9,
+      "colour": "#3a3d42",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#a9573e",
+    "windows": "arched",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.8,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#e5d9c0"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "floors",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#dddddd",
+    "windows": "ribbon",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#c7c2b4",
+       "#8d4f3a"
+      ]
+     },
+     {
+      "type": "fins",
+      "spacing": 2.2,
+      "depth": 0.5,
+      "width": 0.22,
+      "colour": "#f0ece2",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balc",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    42,
+    0
+   ],
+   "height": 15,
+   "storeys": 5,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d4",
+    "windows": "punched",
+    "windowShape": "round",
+    "pattern": [
+     {
+      "type": "balconies",
+      "depth": 1.4,
+      "every": 3.2,
+      "width": 2.4,
+      "colour": "#bdb6a6",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "louvres",
+      "colour": "#704a36",
+      "band": 0.5,
+      "floors": [
+       0
+      ],
+      "faces": [
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#555a5e",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   70
+  ]
+ }
+}

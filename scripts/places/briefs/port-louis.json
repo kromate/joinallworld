@@ -1,0 +1,1816 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-louis",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-louis",
+    "climate": "tropical-maritime",
+    "vernacular": "Creole colonial Mauritius: 1-2 storey houses and shops in painted render or timber with shuttered windows, wide verandas and fretwork, under red or green painted corrugated-iron roofs; dark basalt (volcanic stone) walls and sugar-estate chimneys; Indo-Mauritian mosques and Hindu temples; modern concrete and glass towers in central Port Louis; suburbs of flat-roofed rendered concrete houses with rebar-topped columns.",
+    "wallColours": [
+      "#f2ead7",
+      "#e8d9b8",
+      "#d7e0cc",
+      "#f6f3ec",
+      "#9c978d",
+      "#d9b9a1",
+      "#b9cfd6"
+    ],
+    "roofColours": [
+      "#9a3f32",
+      "#5f7d5a",
+      "#7a7f84",
+      "#b5652d"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "stone",
+      "timber",
+      "concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Wooden verandas with fretwork balustrades and shutters; French colonial symmetrical facades with hipped roofs; Indo-Islamic arches and slender minarets (Jummah Mosque); Hindu temple towers and Chinese pagoda gates in Chinatown; basalt block walls and tall sugar-factory chimneys.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Port_Louis",
+        "what": "traditional houses mostly wooden with shuttered windows and large porches; 18th-century French colonial buildings; concrete and glass high-rises replacing old stock; Chinatown pagoda; Jummah Mosque"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Citadelle_de_Port-Louis_(Maurice)",
+        "what": "Fort Adelaide built 1834-1840 of basalt blocks"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/State_House,_Mauritius",
+        "what": "Le Reduit built 1748-49 as a defended house, rebuilt 1778 after termite damage, cyclone repairs 1868 and 1892"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Jummah_Mosque_(Mauritius)",
+        "what": "Indian, Creole and Islamic mix; Moorish and Mughal influences"
+      }
+    ]
+  },
+  "places": {
+    "port-louis-airport-port-louis-airport": {
+      "venueId": "port-louis-airport-port-louis-airport",
+      "city": "port-louis",
+      "name": "Sir Seewoosagur Ramgoolam International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2013 passenger terminal at Plaine Magnien, a wide white and glass building whose folded roof is modelled on the traveller's palm, seen from the landside forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 240,
+        "depth_m": 130,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "wide fan-shaped terminal, pier wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6ebee",
+          "#2c4c63",
+          "#ffffff"
+        ],
+        "roofColour": "#d9dee1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "frond-like departures canopy echoing the traveller's palm"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 5,
+          "note": "five boarding gates with airbridges, one for the A380"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "rooftop photovoltaic cells"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_Seewoosagur_Ramgoolam_International_Airport",
+          "what": "terminal inaugurated 30 Aug 2013; shape modelled on the traveller's palm; about 57,000 m2; 5 airbridge gates incl. A380; insulated facades; photovoltaic cells"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/200519316",
+          "what": "measured OSM outline 240.6 x 208.5 m, 27422 m2; tags building=yes, aeroway=terminal"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q36460",
+          "what": "Wikidata identity/type match: Sir Seewoosagur Ramgoolam International Airport"
+        }
+      ],
+      "notes": "Footprint, size, gate count and palm-inspired form are sourced; exact colours are not and are assumed pale glass and white metal. OSM outline is 240 x 208 m irregular; model shows the main fan-shaped block at about 240 x 130 m."
+    },
+    "port-louis-clinic": {
+      "venueId": "port-louis-clinic",
+      "city": "port-louis",
+      "name": "Clinique du Nord",
+      "archetype": "hospital",
+      "subject": "A small private clinic in Pamplemousses/Baie du Tombeau: a compact two-storey rendered block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#5e8aa3",
+          "#d9d4c7"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/784223084",
+          "what": "measured OSM outline 27.7 x 21.8 m, 585 m2; tags amenity=hospital"
+        }
+      ],
+      "notes": "Nothing descriptive found; OSM shows a 585 m2 hospital-tagged outline of about 28 x 22 m. Typed from the Mauritian suburban style: flat-roofed rendered concrete with a small entrance canopy."
+    },
+    "port-louis-community-notices": {
+      "venueId": "port-louis-community-notices",
+      "city": "port-louis",
+      "name": "Le chateau du Reduit",
+      "archetype": "manor",
+      "subject": "Le Reduit, the 18th-century French colonial hilltop residence of the President (State House) in a large wooded park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 79,
+        "depth_m": 39,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "long two-storey house with ground-floor veranda and side wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f3efe4",
+          "#8d887c",
+          "#ffffff"
+        ],
+        "roofColour": "#6f7479",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "wide veranda along the main front"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "central entrance stair"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "estate perimeter wall and gate"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1748",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/State_House,_Mauritius",
+          "what": "built 1748-49 as a fortified house with battlements and drawbridge, rebuilt 1778 (date inscribed on main door); about 5,100 m2 floor area on a 97 ha estate; cyclone repairs 1868, 1892"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1006065313",
+          "what": "measured OSM outline 79.3 x 38.9 m, 1808 m2; tags building=yes, wikidata=Q7603371, historic=building"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7603371",
+          "what": "Wikidata identity/type match: State House"
+        }
+      ],
+      "notes": "Dates, floor area and estate are sourced; the present house is a plain French colonial mansion, not a fort. Facade colours (cream with grey roof) are assumed from typical official-residence photos and not confirmed. OSM outline 79 x 39 m includes wings; shown as president's residence set in lawns and trees."
+    },
+    "port-louis-community-voting-game": {
+      "venueId": "port-louis-community-voting-game",
+      "city": "port-louis",
+      "name": "Camp-Levieux",
+      "archetype": "civic-small",
+      "subject": "A neighbourhood community hall used as a polling station in Camp-Levieux (Vacoas-Phoenix): a single-storey rendered hall with a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b8",
+          "#9a3f32",
+          "#f6f3ec"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No matching building could be identified (no OSM outline). Camp-Levieux is a residential suburb; typed community hall from the Mauritian municipal style."
+    },
+    "port-louis-community-workshop": {
+      "venueId": "port-louis-community-workshop",
+      "city": "port-louis",
+      "name": "Royal College Curepipe",
+      "archetype": "campus-block",
+      "subject": "The symmetrical Edwardian main building of Royal College Curepipe (1914), long two-storey front with projecting centre, modelled on Buckingham Palace",
+      "form": {
+        "footprint": "U",
+        "width_m": 140,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "hip",
+        "variant": "long palace-fronted school with central projecting block",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e7e2d3",
+          "#9c978d",
+          "#ffffff"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "projecting central entrance"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "ground-floor loggia"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1914",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_College_Curepipe",
+          "what": "present Curepipe building: foundation stone 1912, inaugurated 1914, design inspired by Buckingham Palace; founded 1791"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/223523808",
+          "what": "measured OSM outline 140.3 x 90.7 m, 12729 m2; tags wikidata=Q2983886, amenity=college"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2983886",
+          "what": "Wikidata identity/type match: Royal College Curepipe"
+        }
+      ],
+      "notes": "Date and the Buckingham-Palace inspiration are sourced; colour and roof are assumed (pale rendered stone with grey roof). OSM outline is 140 x 91 m. Recognisable by the long symmetrical palace-style front."
+    },
+    "port-louis-market-game": {
+      "venueId": "port-louis-market-game",
+      "city": "port-louis",
+      "name": "Dr James Burty David Marketplace",
+      "archetype": "market-hall",
+      "subject": "The Mahebourg market: a long open-sided covered market hall with a corrugated roof on pillars and rows of stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 108,
+        "depth_m": 62,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "open-sided market shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#2f6b4f",
+          "#f6f3ec"
+        ],
+        "roofColour": "#5f7d5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40,
+          "note": "rows of produce stalls"
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/297229661",
+          "what": "measured OSM outline 108.6 x 62.3 m, 6763 m2; tags amenity=marketplace, building=yes"
+        }
+      ],
+      "notes": "OSM shows a marketplace-tagged building of 108 x 62 m at the Mahebourg waterfront-town location; no appearance sources found, so typed as an open-sided market hall with green corrugated roof in the island style."
+    },
+    "port-louis-meal-stop": {
+      "venueId": "port-louis-meal-stop",
+      "city": "port-louis",
+      "name": "Pakbo",
+      "archetype": "restaurant",
+      "subject": "Pakbo, a restaurant in Flic-en-Flac in a three-level house-like building with a street terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 19,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f6f3ec",
+          "#b9cfd6",
+          "#8d6e4a"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/508882347",
+          "what": "measured OSM outline 19.1 x 18.7 m, 356 m2; tags building=residential, building:levels=3"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q49566330",
+          "what": "Wikidata identity/type match: Pakbo"
+        }
+      ],
+      "notes": "Wikidata lists the restaurant (Flic-en-Flac) and OSM a 3-level building about 19 x 19 m, tagged residential; no description of its facade was found, so colours are typed from the beach-resort style."
+    },
+    "port-louis-osm-node-1793110377": {
+      "venueId": "port-louis-osm-node-1793110377",
+      "city": "port-louis",
+      "name": "Le Chamarel",
+      "archetype": "restaurant",
+      "subject": "Le Chamarel, a small hillside restaurant with a timber-framed view terrace overlooking the south-west coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a67c52",
+          "#5f7d5a",
+          "#d9d4c7"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "open view terrace"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/267826975",
+          "what": "measured OSM outline 10.5 x 9.7 m, 99 m2; tags building=yes"
+        }
+      ],
+      "notes": "Only a node and a ~10 x 10 m footprint (99 m2) in OSM; appearance typed from the hill-village timber style (no description found). Nominally set on the Chamarel plateau."
+    },
+    "port-louis-osm-node-3753991177": {
+      "venueId": "port-louis-osm-node-3753991177",
+      "city": "port-louis",
+      "name": "Primary School",
+      "archetype": "campus-block",
+      "subject": "A government primary school classroom block near Poste de Flacq, long single-storey with a covered veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "long classroom range"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b8",
+          "#5f7d5a",
+          "#f6f3ec"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered veranda along the classrooms"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/371851055",
+          "what": "measured OSM outline 65 x 15.5 m, 726 m2; tags amenity=hospital"
+        }
+      ],
+      "notes": "The game calls this a hospital, but the name is Primary School; OSM tags it amenity=hospital (726 m2, 65 x 15 m). Classified as a school block by name; appearance typed from Mauritian primary schools."
+    },
+    "port-louis-osm-node-5558934330": {
+      "venueId": "port-louis-osm-node-5558934330",
+      "city": "port-louis",
+      "name": "La marmite mauricienne",
+      "archetype": "restaurant",
+      "subject": "A small single-storey Mauritian eatery in Flic-en-Flac, a rendered building with an open front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2ead7",
+          "#d9b9a1",
+          "#8d6e4a"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/508876272",
+          "what": "measured OSM outline 26.8 x 14.5 m, 389 m2; tags building=yes, building:levels=1"
+        }
+      ],
+      "notes": "OSM shows 389 m2, one level, about 27 x 14 m. No description found; typed from island restaurant style."
+    },
+    "port-louis-osm-relation-14750287": {
+      "venueId": "port-louis-osm-relation-14750287",
+      "city": "port-louis",
+      "name": "Musee d'Histoire Naturelle",
+      "archetype": "museum-theatre",
+      "subject": "The Natural History Museum of Port Louis, on the ground floor of the 1880 Mauritius Institute building, a stately two-storey colonial building with a central porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "two-storey institute with central entrance"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f1e9d3",
+          "#8d887c",
+          "#ffffff"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arched openings"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1880",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Natural_History_Museum,_Port_Louis",
+          "what": "museum occupies the ground floor of the Mauritius Institute building, constructed 1880; oldest museum in Mauritius"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14750287",
+          "what": "measured OSM outline 48.1 x 22.6 m, 958 m2; tags building=yes, wikidata=Q110288946, tourism=museum"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q110288946",
+          "what": "Wikidata identity/type match: Natural History Museum, Port Louis"
+        }
+      ],
+      "notes": "Only date, function and OSM outline (48 x 23 m) are sourced. Style and colours are assumed from the typical Victorian-era colonial institute; confirm from photos before final art."
+    },
+    "port-louis-osm-way-154287619": {
+      "venueId": "port-louis-osm-way-154287619",
+      "city": "port-louis",
+      "name": "Sir Gaetan Duval Stadium",
+      "archetype": "stadium",
+      "subject": "The Rose Hill football stadium (formerly Rose Hill Stadium): an oval pitch ringed by concrete terraces with one covered stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 184,
+        "depth_m": 115,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "small football ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#2f6b4f",
+          "#f6f3ec"
+        ],
+        "roofColour": "#6e7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1972",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_Gaëtan_Duval_Stadium",
+          "what": "multi-use stadium in Beau Bassin-Rose Hill, opened 1972, capacity about 6,500, grass pitch, formerly Rose Hill Stadium"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/154287619",
+          "what": "measured OSM outline 183.8 x 114.6 m, 19324 m2; tags wikidata=Q30913462, leisure=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30913462",
+          "what": "Wikidata identity/type match: Sir Gaëtan Duval Stadium"
+        }
+      ],
+      "notes": "Capacity, date and location sourced; stand layout and colours are typed (the article gives none). A smaller ground than Anjalay Stadium."
+    },
+    "port-louis-osm-way-158575993": {
+      "venueId": "port-louis-osm-way-158575993",
+      "city": "port-louis",
+      "name": "St Louis Cathedral",
+      "archetype": "church-classical",
+      "subject": "St Louis Cathedral, Port Louis: the Catholic cathedral rebuilt 1930-33, a pale rendered church with a central bell tower on the street front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "variant": "basilica nave with a front bell tower"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe6d0",
+          "#9c978d",
+          "#ffffff"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front tower"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1932",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Louis_Cathedral,_Port-Louis",
+          "what": "first church 1752-56 by Charpentier de Cossigny; rebuilt 1782, 1814, 1819; rebuilt by Bishop Leen 1930-33; restored 2007"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2942379",
+          "what": "inception 1782"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/158575993",
+          "what": "measured OSM outline 48.6 x 32.2 m, 1325 m2; tags building=yes, wikidata=Q2942379, amenity=place_of_worship, religion=christian, denomination=catholic"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2942379",
+          "what": "Wikidata identity/type match: St. Louis Cathedral, Port-Louis"
+        }
+      ],
+      "notes": "Building history and OSM outline (49 x 32 m) are sourced; the architectural description is not available in sources fetched, so form and colour are assumed (cream rendered facade, grey roof). Verify against photos."
+    },
+    "port-louis-osm-way-170362036": {
+      "venueId": "port-louis-osm-way-170362036",
+      "city": "port-louis",
+      "name": "L'Aventure du Sucre",
+      "archetype": "museum-theatre",
+      "subject": "The sugar museum in the former Beau Plan sugar factory at Pamplemousses: dark basalt and brick factory halls with corrugated roofs and a tall chimney",
+      "form": {
+        "footprint": "L",
+        "width_m": 97,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "old factory halls around a courtyard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "red-brick",
+        "colours": [
+          "#5d5b57",
+          "#a85f45",
+          "#e8d9b8"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "tall sugar-mill chimney"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "victorian",
+      "era": "1860s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q18923518",
+          "what": "Wikidata: museum in the former sugar factory at Pamplemousses (L'Aventure du Sucre)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/170362036",
+          "what": "measured OSM outline 96.7 x 75.3 m, 5922 m2; tags building=yes, wikidata=Q18923518, tourism=museum"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18923518",
+          "what": "Wikidata identity/type match: L'Aventure du Sucre"
+        }
+      ],
+      "notes": "Museum identity, location and OSM outline (97 x 75 m) are sourced; the basalt-and-brick sugar factory with chimney is typical of Mauritian estates and the Beau Plan factory, but colours were not checked in sources. Recognisable by the tall chimney and old stone halls."
+    },
+    "port-louis-osm-way-287506166": {
+      "venueId": "port-louis-osm-way-287506166",
+      "city": "port-louis",
+      "name": "Stade Germain Comarmond",
+      "archetype": "stadium",
+      "subject": "The Bambous football stadium: a pitch with a low concrete stand on one side and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 183,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "football ground with one small stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#9a3f32",
+          "#f6f3ec"
+        ],
+        "roofColour": "#6e7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3495606",
+          "what": "Wikidata: association football venue, Stade Germain Comarmond (Bambous)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/287506166",
+          "what": "measured OSM outline 183.4 x 95.3 m, 15693 m2; tags wikidata=Q3495606, leisure=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3495606",
+          "what": "Wikidata identity/type match: Stade Germain Comarmond"
+        }
+      ],
+      "notes": "Only identity and outline (183 x 95 m) found; stand layout and colours typed from island football grounds."
+    },
+    "port-louis-osm-way-296191237": {
+      "venueId": "port-louis-osm-way-296191237",
+      "city": "port-louis",
+      "name": "Anjalay Stadium",
+      "archetype": "stadium",
+      "subject": "Anjalay Stadium at Belle Vue Maurel: a mid-sized grass football stadium with covered grandstands and floodlights, opened 1991",
+      "form": {
+        "footprint": "oval",
+        "width_m": 217,
+        "depth_m": 161,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed",
+        "variant": "grass football bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#3f6aa0",
+          "#f6f3ec"
+        ],
+        "roofColour": "#6e7a85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Anjalay_Stadium",
+          "what": "capacity 16,000, grass surface, opened 26 January 1991, renovated 2003"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9126798",
+          "what": "measured OSM outline 216.9 x 161.2 m, 9032 m2; tags wikidata=Q3495512, leisure=stadium, building=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3495512",
+          "what": "Wikidata identity/type match: Stade Anjalay"
+        }
+      ],
+      "notes": "Capacity, date and outline (217 x 161 m) are sourced; roofs, floodlight count and colours are assumed. Larger and later than Rose Hill and Bambous grounds."
+    },
+    "port-louis-osm-way-305142563": {
+      "venueId": "port-louis-osm-way-305142563",
+      "city": "port-louis",
+      "name": "Universite de technologie, Ile Maurice",
+      "archetype": "campus-block",
+      "subject": "A University of Technology teaching block at Pointe-aux-Sables: modern three-storey rendered building with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 51,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1ea",
+          "#2c4c63",
+          "#9c978d"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097363",
+          "what": "Wikidata: University of Technology, Mauritius, public research university in Port Louis"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/7159535",
+          "what": "measured OSM outline 72.3 x 51.3 m, 1973 m2; tags wikidata=Q1097363, amenity=university, building=school"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097363",
+          "what": "Wikidata identity/type match: University of Technology, Mauritius"
+        }
+      ],
+      "notes": "OSM block outline (72 x 51 m, tagged school) is the only measured fact; facade and colours typed as a modern Mauritian campus block."
+    },
+    "port-louis-osm-way-33142632": {
+      "venueId": "port-louis-osm-way-33142632",
+      "city": "port-louis",
+      "name": "Fort Adelaide",
+      "archetype": "heritage-fort",
+      "subject": "Fort Adelaide (the Citadel) on Citadel Hill: a dark basalt-block hill fort with ramparts, parapet and old cannon, overlooking Port Louis",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 118,
+        "depth_m": 53,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "hill fort with bastions"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#4d4b48",
+          "#8d887c",
+          "#d9d4c7"
+        ],
+        "roofColour": "#5a5855",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "thick basalt walls and bastions"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1840",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Citadelle_de_Port-Louis_(Maurice)",
+          "what": "built 1834-1840 as Fort Adelaide from basalt blocks on a hill; officers' quarters, barracks for about 200 men, 40,000-gallon water reserve, powder magazine; restored after 2005, reopened 1 Feb 2006"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Louis",
+          "what": "Fort Adelaide stone fortress on Citadel Hill, built after 1832 to deter uprisings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13476393",
+          "what": "measured OSM outline 118.1 x 53 m, 2495 m2; tags start_date=1840, wikidata=Q2974395, tourism=attraction, historic=castle, building=castle, building:levels=2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2974395",
+          "what": "Wikidata identity/type match: Citadelle de Port-Louis"
+        }
+      ],
+      "notes": "Material (basalt), date and function sourced; OSM outline 118 x 53 m, 2 levels. Walls are dark grey stone; cannon count is illustrative. Recognisable as a low massive grey fort with a rectangular parapet on a hilltop."
+    },
+    "port-louis-osm-way-445169724": {
+      "venueId": "port-louis-osm-way-445169724",
+      "city": "port-louis",
+      "name": "Health Center Montagne Blanche",
+      "archetype": "hospital",
+      "subject": "A small village health centre at Montagne Blanche: a single-storey rendered clinic with a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#5e8aa3",
+          "#d9d4c7"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/445169724",
+          "what": "measured OSM outline 14.5 x 11.1 m, 112 m2; tags amenity=hospital"
+        }
+      ],
+      "notes": "OSM outline only (112 m2, 15 x 11 m); no description found. Typed as a standard Mauritian community health centre."
+    },
+    "port-louis-osm-way-471868507": {
+      "venueId": "port-louis-osm-way-471868507",
+      "city": "port-louis",
+      "name": "Paul Octave Wiehe Auditorium",
+      "archetype": "museum-theatre",
+      "subject": "The University of Mauritius auditorium at Reduit: a large modern lecture/theatre block with a blank fly-tower volume and covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "auditorium hall"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d4c7",
+          "#9c978d",
+          "#f6f3ec"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097479",
+          "what": "Wikidata: University of Mauritius (Reduit), national university founded 1965"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/471868507",
+          "what": "measured OSM outline 69.7 x 31.1 m, 1526 m2; tags building=university, wikidata=Q1097479, amenity=university"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097479",
+          "what": "Wikidata identity/type match: University of Mauritius"
+        }
+      ],
+      "notes": "Name and outline (70 x 31 m, tagged university building) only; appearance typed as 1970s institutional modernist concrete hall."
+    },
+    "port-louis-osm-way-475489173": {
+      "venueId": "port-louis-osm-way-475489173",
+      "city": "port-louis",
+      "name": "New Eton College",
+      "archetype": "campus-block",
+      "subject": "New Eton College (private secondary school, est. 1932): a pair of two-storey classroom blocks around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 74,
+        "depth_m": 73,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "classroom blocks around a courtyard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b8",
+          "#3f6aa0",
+          "#f6f3ec"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1932",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q96395332",
+          "what": "Wikidata: New Eton College, secondary school founded 1932"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/475489173",
+          "what": "measured OSM outline 74.4 x 72.9 m, 4089 m2; tags wikidata=Q96395332, amenity=college"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q96395332",
+          "what": "Wikidata identity/type match: New Eton College"
+        }
+      ],
+      "notes": "Outline (74 x 73 m) and founding year only; building appearance typed from Mauritian secondary school style."
+    },
+    "port-louis-osm-way-495476854": {
+      "venueId": "port-louis-osm-way-495476854",
+      "city": "port-louis",
+      "name": "Mosquee Djoumaa",
+      "archetype": "mosque-domed",
+      "subject": "The Jummah Mosque of Port Louis (consecrated 1853, enlarged 1878-95): a cream and white two-level mosque with an arched colonnaded front, slender minarets, and an almond-tree courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "city-block mosque with arched front"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2ead7",
+          "#6b8f71",
+          "#ffffff"
+        ],
+        "roofColour": "#d9d4c7",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "slender minarets flanking the front"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "cusped arches on a colonnade"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "inner court with an Indian almond tree"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small dome over the prayer hall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "mughal",
+      "era": "1895",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jummah_Mosque_(Mauritius)",
+          "what": "combines Indian, Creole and Islamic architecture (Moorish and Mughal influences); first mosque 1853, expansion 1878-1895 filling a city block; materials and craftsmen from India; courtyard with Indian almond tree; glass chandeliers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/495476854",
+          "what": "measured OSM outline 43.6 x 30.6 m, 973 m2; tags building=yes, wikidata=Q6311002, amenity=place_of_worship, religion=muslim"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6311002",
+          "what": "Wikidata identity/type match: Port Louis Jummah Mosque"
+        }
+      ],
+      "notes": "Sourced: mixed Indo-Creole-Islamic style, date, courtyard and block-filling size. Colours (cream/white with green accents) and the exact minaret count are from general photo knowledge and not confirmed in the fetched source. The mosque stands among dense city streets, so it is shown as one block."
+    },
+    "port-louis-quiet-reflection": {
+      "venueId": "port-louis-quiet-reflection",
+      "city": "port-louis",
+      "name": "St Francois D'Assise",
+      "archetype": "church-classical",
+      "subject": "The Pamplemousses parish church of St Francis of Assisi: a whitewashed colonial church with a front bell tower beside the village square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 61,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "variant": "nave with front tower"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f6f3ec",
+          "#9c978d",
+          "#c9b99a"
+        ],
+        "roofColour": "#9a3f32",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1800s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q24039163",
+          "what": "Wikidata: church building Saint Francois d'Assise, Pamplemousses area"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/170358867",
+          "what": "measured OSM outline 61.2 x 25.6 m, 1033 m2; tags building=yes, wikidata=Q24039163, amenity=place_of_worship, religion=christian, denomination=catholic"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q24039163",
+          "what": "Wikidata identity/type match: Saint François d‘Assise"
+        }
+      ],
+      "notes": "Church identity and outline (61 x 26 m) only; style, colours and roof assumed from island parish churches."
+    },
+    "port-louis-recreation": {
+      "venueId": "port-louis-recreation",
+      "city": "port-louis",
+      "name": "Curepipe Botanic Gardens",
+      "archetype": "park-landscape",
+      "subject": "Curepipe Botanic Gardens (SSR garden, est. 1870): informal lawns, a lake and stream with palms and pandanus, and a Victorian-style wooden gazebo",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "informal garden with gazebo and lake"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f6f3ec",
+          "#5f7d5a",
+          "#9c978d"
+        ],
+        "roofColour": "#5f7d5a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Victorian-style gazebo with raised wooden floor on the front lawn"
+        },
+        {
+          "id": "gate",
+          "count": 2,
+          "note": "main gate on Botanical Garden Street and a secondary gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1870",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Curepipe_Botanic_Gardens",
+          "what": "about 27 acres; informal layout; Victorian-style gazebo with wooden floor; river and lake with Nandia palms and pandanus; founded 1870; main entrance Botanical Garden Street; rarest palm Hyophorbe amaricaulis, about 12 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/126227132",
+          "what": "measured OSM outline 748.1 x 388.8 m, 170494 m2; tags wikidata=Q3162393, leisure=park"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3162393",
+          "what": "Wikidata identity/type match: Curepipe Botanic Gardens"
+        }
+      ],
+      "notes": "The garden is much bigger than the game clamp (OSM outline 748 x 389 m); the model should show the gazebo, front lawn and lake edge only. Pavilion roof colour is assumed white/green."
+    },
+    "port-louis-transit": {
+      "venueId": "port-louis-transit",
+      "city": "port-louis",
+      "name": "Port Louis Victoria",
+      "archetype": "transport-station",
+      "subject": "Port Louis Victoria Metro Express terminus: a long raised light-rail platform with a canopy beside the Victoria bus terminal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "light-rail platform with canopy"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d9dee1",
+          "#2c4c63",
+          "#f6f3ec"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 6,
+          "note": "adjacent Victoria Urban Terminal"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Metro_Express_(Mauritius)",
+          "what": "Port Louis Victoria is a rail-bus interchange linked to the Victoria Urban Terminal, one terminus of the line to Curepipe; fully accessible; CAF Urbos light rail vehicles"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/737570938",
+          "what": "measured OSM outline 47.6 x 12.8 m, 609 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q110577591",
+          "what": "Wikidata identity/type match: Port Louis Victoria"
+        }
+      ],
+      "notes": "Role, interchange and vehicle type sourced; platform canopy form and colours assumed (white/grey steel, no logos). OSM outline 48 x 13 m."
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "hadiza-nakowa-restaurant-dutse",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "commons Wikimedia_Promotions_in_Binyaminu_Usman_College_of_Agriculture_(7).jpg (CC BY 4.0, Apdoull)",
+   "used": "looked at and rejected: it shows the polytechnic gate, not this restaurant"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dutse.json",
+   "used": "typed brief: small buka-style eatery with veranda, tables and a hand-painted board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence of this eatery exists; it is a modest typical Dutse buka with a hipped corrugated roof."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d9b8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#b9724e",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -6.6,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 2.2,
+    "height": 2.7,
+    "balustrade": false,
+    "steps": false,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -8,
+    2.2
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#f4f0e6",
+    "frameColour": "#b9724e",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 5,
+    "radius": 1.5,
+    "height": 2.3,
+    "colours": [
+     "#b9724e",
+     "#f4f0e6"
+    ],
+    "tables": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     12,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   40,
+   36
+  ]
+ }
+}

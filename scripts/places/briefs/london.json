@@ -1,0 +1,1641 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "london",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "london",
+    "climate": "temperate",
+    "vernacular": "Brick city: yellow London stock-brick Georgian and Regency terraces with white stucco and sash windows; red-brick Victorian and Edwardian terraces with bay windows and terracotta; 1930s tile-hung semis; post-war concrete and brick estates and slab blocks; glass towers in the City and Docklands. Pitched slate or clay-tile roofs with chimney stacks, and plane and oak street trees.",
+    "wallColours": [
+      "#c8b27d",
+      "#9b4a35",
+      "#7a6a5a",
+      "#e9e4d8",
+      "#b5aea3",
+      "#5d5750"
+    ],
+    "roofColours": [
+      "#4a4f57",
+      "#a2573f",
+      "#6b6460",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "stucco",
+      "stone",
+      "render",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Georgian double-hung sash windows with white frames and stucco quoins and cornices; Victorian polychrome brick bands, terracotta mouldings and bay windows; chimney stacks with pots; wrought-iron railings; coloured painted shop-fronts and fascia boards.",
+    "sources": [
+      {
+        "url": "https://camdocs.camden.gov.uk/CMWebDrawer/Record/6793539/file/document",
+        "what": "Camden conservation text: Regency/Georgian terraces in London yellow stock brick, Welsh slate mansard roofs, stucco mouldings painted white"
+      },
+      {
+        "url": "https://www.lbhf.gov.uk/sites/default/files/section_attachments/barons_court_11_20_tcm21-63694.pdf",
+        "what": "late Victorian terraces in red brick with moulded brickwork, slate roofs, terracotta"
+      },
+      {
+        "url": "https://www.sashwindow.com/victorian-architecture-guide/",
+        "what": "Georgian sash windows with white frames, bright Victorian doors, slate and terracotta details"
+      }
+    ]
+  },
+  "places": {
+    "london-airport-london-airport": {
+      "venueId": "london-airport-london-airport",
+      "city": "london",
+      "name": "London Heathrow Airport",
+      "archetype": "airport-terminal",
+      "subject": "Heathrow Central Terminal Area seen from the Terminal 3 forecourt: a wide low terminal block under a flat canopy, with the Gibberd-era control tower rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b0b4b6",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "2007 forecourt canopy and pedestrian plaza"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "T3 has 28 gates"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1961 terminal, forecourt 2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heathrow_Airport",
+          "what": "T3 98,962 m2 28 gates with 2007 forecourt canopy and plaza; Central Terminal Area and control tower by Frederick Gibberd; T2 by Luis Vidal 2014; T5 four-storey main building"
+        }
+      ],
+      "notes": "Coordinates fall at Terminal 3 / the Central Terminal Area. Sourced: T3 98,962 m2 with 28 gates and a 2007 forecourt canopy; CTA and control tower by Frederick Gibberd. Facade materials and colours are estimates of the glass-and-steel refits. Distinct from Abuja and Lagos by the much larger floor area, double-deck road, canopy and tower."
+    },
+    "london-clinic": {
+      "venueId": "london-clinic",
+      "city": "london",
+      "name": "London Clinic",
+      "archetype": "hospital",
+      "subject": "The London Clinic at Devonshire Place and Marylebone Road: a large eight-storey 1932 private hospital block in pale stone and brick with rows of balconies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 8,
+        "height_m": 34,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#cfc7b4",
+          "#8a5a46",
+          "#f1ede4"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "canopied entrance"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "iron railings"
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1932",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/London_Clinic",
+          "what": "corner of Devonshire Place and Marylebone Road, architect C H Biddulph-Pinchard, opened 1932, at least 8 floors plus basement"
+        }
+      ],
+      "notes": "Location, 1932 date, architect (Biddulph-Pinchard) and height of at least 8 floors above a basement are sourced; facade colour and stone/brick mix are inferred from the Marylebone context."
+    },
+    "london-community-notices": {
+      "venueId": "london-community-notices",
+      "city": "london",
+      "name": "The Croydon Law Courts",
+      "archetype": "civic-palace",
+      "subject": "Croydon Law Courts, Barclay Road front (1968): symmetrical four-storey concrete and glass courthouse with a heavy cantilevered panel bearing the Royal arms; the 1991 buff-stone Altyre Road courts with polygonal towers adjoin",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b5ab",
+          "#5f7480",
+          "#9a968c"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "cantilevered concrete panel carrying the Royal arms"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "alternating glass and concrete bands"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "brutalist",
+      "era": "1968 (second building 1991)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Croydon_Law_Courts",
+          "what": "Barclay Road 1968 modernist concrete and glass, four-storey symmetrical front, cantilevered concrete royal arms panel; Altyre Road 1991 buff stone with polygonal towers"
+        }
+      ],
+      "notes": "Wikipedia describes both courthouses: the 1968 Barclay Road block is the iconic one (side sections project forward with large concrete walls cantilevered over the pavement). The 1991 Altyre Road building is buff stone with canted wall, glass entrance with stone canopy and polygonal towers topped with the Royal arms; shown as the adjoining wing. Exact colours estimated."
+    },
+    "london-community-voting-game": {
+      "venueId": "london-community-voting-game",
+      "city": "london",
+      "name": "Bexley Civic Offices",
+      "archetype": "civic-small",
+      "subject": "Bexley Civic Offices, Bexleyheath: a large brown-brick 1980s council office block with a tiled roof and a wide entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#7a5a46",
+          "#c8b27d",
+          "#4a4f57"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bexley_Civic_Offices",
+          "what": "Civic Offices opened 1980 on Broadway site of demolished Oak House; search snippets also mention a pagoda-style Watling Street HQ and an 11,000 m2 1980s office building refurbished by Bennetts Associates (conflicting)"
+        }
+      ],
+      "notes": "Sources conflict: one says the civic offices opened 1980 on the Broadway on the site of Oak House; another snippet links the Watling Street HQ (a former Woolwich Building Society pagoda-style office, ~11,000 m2) with the council. Appearance (brown brick, tiled hip roof) is a guess for a 1980s civic block."
+    },
+    "london-community-workshop": {
+      "venueId": "london-community-workshop",
+      "city": "london",
+      "name": "Christ the King Sixth Form College",
+      "archetype": "campus-block",
+      "subject": "Christ the King Sixth Form College, Lewisham: a modern school complex of brick and render blocks around a playground",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#9b4a35",
+          "#e9e4d8",
+          "#4a4f57"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real sixth-form college in Lewisham; no building description retrieved. Typed from the London style and a generic school campus."
+    },
+    "london-market-game": {
+      "venueId": "london-market-game",
+      "city": "london",
+      "name": "Walthamstow Market",
+      "archetype": "market-open",
+      "subject": "Walthamstow Market, a section of the pedestrianised High Street: a long double row of stalls with awnings, flanked by two- and three-storey brick shop terraces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b86a4d",
+          "#d9c9a0",
+          "#3a6ea5"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "awning",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "signage-board",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "Victorian shops, market 1880s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Walthamstow_Market",
+          "what": "about 1 km pedestrianised High Street, ~500 stalls, second-longest outdoor market in Europe, shops lining it, Sainsbury with two-storey car park, Selborne Walk mall"
+        }
+      ],
+      "notes": "About 1 km long (second-longest outdoor market in Europe), ~500 stalls, pedestrianised; the model shows a 120 m portion. Shops range from small traditional units to large supermarkets; side streets are terraced housing. Stall awning colours are generic."
+    },
+    "london-meal-stop": {
+      "venueId": "london-meal-stop",
+      "city": "london",
+      "name": "Ace Cafe",
+      "archetype": "restaurant",
+      "subject": "Ace Cafe on the North Circular Road: a low 1930s-50s roadside transport cafe with a flat roof, canopy and a forecourt filled with parked motorcycles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e9e4d8",
+          "#b83a2f",
+          "#4a4f57"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "big forecourt"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in brand-neutral colours"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1938, rebuilt 1949",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ace_Cafe",
+          "what": "opened 1938 on the North Circular Road, rebuilt 1949 after war damage, refurbished 2001, between Grand Union Canal and Stonebridge Park depot, car park by entrance"
+        }
+      ],
+      "notes": "Dates and setting sourced (1938, rebuilt 1949 after bomb damage, refurbished 2001; between the Grand Union Canal and Stonebridge Park depot; car park by the entrance). The low flat-roofed massing, red trim and big bike forecourt are from public photos but not in the sources; no legible name."
+    },
+    "london-osm-node-266577545": {
+      "venueId": "london-osm-node-266577545",
+      "city": "london",
+      "name": "Polish War Memorial",
+      "archetype": "monument",
+      "subject": "Polish War Memorial, Northolt: a Portland stone obelisk crowned by a bronze eagle beside a trapezoid fountain pool and a sunken semicircular exedra, inside iron railings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "granite",
+        "colours": [
+          "#e2dccb",
+          "#6b4f2a",
+          "#a99f8c"
+        ],
+        "roofColour": "#e2dccb",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Portland stone column with flanking panels"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze eagle on top"
+        },
+        {
+          "id": "fountain",
+          "count": 2,
+          "note": "trapezoidal pool with fountains"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "down to sunken exedra"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "cast iron railings between Portland stone pillars"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1948",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Polish_War_Memorial",
+          "what": "Portland stone obelisk with bronze Polish eagle, trapezoidal pool with fountains, York stone paving, sunken semicircular exedra, cast iron railings and Portland stone pillars, flagpoles"
+        }
+      ],
+      "notes": "Fully described in the source: Portland stone, polished granite, bronze; York stone walkway; grass, flowerbeds and UK/Polish flagpoles. Overall height of the column is an estimate (~10 m)."
+    },
+    "london-osm-node-5656298167": {
+      "venueId": "london-osm-node-5656298167",
+      "city": "london",
+      "name": "Barnet Museum",
+      "archetype": "museum-theatre",
+      "subject": "Barnet Museum: a small red-brick early Georgian house in High Barnet with sash windows and a tiled hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a8573f",
+          "#f1ede4",
+          "#4a4f57"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "iron railings"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "early 18th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barnet_Museum",
+          "what": "museum in an early Georgian house in High Barnet, founded 1938"
+        }
+      ],
+      "notes": "Source only says the museum (founded 1938) is in its original home, an early Georgian house in High Barnet. Brick colour, hip roof and size are the Georgian norm, not verified."
+    },
+    "london-osm-relation-6617493": {
+      "venueId": "london-osm-relation-6617493",
+      "city": "london",
+      "name": "Hill Hall",
+      "archetype": "heritage-fort",
+      "subject": "Hill Hall, Theydon Mount: an Elizabethan courtyard country house with classical tiers of columns, giant-order facades and tall chimneys, set in Repton parkland",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a8573f",
+          "#d8cdb0",
+          "#6b5a4a"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 2,
+          "note": "tiered classical columns and friezes on the courtyard walls"
+        },
+        {
+          "id": "chimney",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1567-75 (fire 1969, restored)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hill_Hall_(Essex)",
+          "what": "Elizabethan country house at Theydon Mount, 1567-75, classical tiered columns and friezes on courtyard walls, giant order on facades, Repton parkland (~50 ha), 1969 fire"
+        }
+      ],
+      "notes": "Built for Sir Thomas Smith 1567-68 and 1572-73; first-floor wall paintings survived the 1969 fire; about 50 ha of Humphrey Repton parkland. Source does not state brick or roof; materials are a guess. Style tag neoclassical is the closest allowed value to an Elizabethan house with classical decoration (see enum gaps)."
+    },
+    "london-osm-way-147775425": {
+      "venueId": "london-osm-way-147775425",
+      "city": "london",
+      "name": "London Academy of Music and Dramatic Art",
+      "archetype": "museum-theatre",
+      "subject": "LAMDA on Talgarth Road: a drama school with a tall stage fly tower and studio theatres in a modern brick building beside the elevated A4",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8a7c6a",
+          "#d6d2c8",
+          "#3a3f45"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2003 conversion/extension",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/London_Academy_of_Music_and_Dramatic_Art",
+          "what": "Talgarth Road site since 2003 (former Royal Ballet School), Niall McLaughlin Architects; Sainsbury Theatre with full-height fly tower; studio theatres"
+        }
+      ],
+      "notes": "Sourced: since 2003 in the former Royal Ballet School premises on Talgarth Road, Niall McLaughlin Architects, Sainsbury Theatre (220 seats) with a full-height fly tower, Carne and Linbury studio theatres. Facade materials are not described; brick/glass is a guess. The venue is a drama school, not a quad."
+    },
+    "london-osm-way-18934744": {
+      "venueId": "london-osm-way-18934744",
+      "city": "london",
+      "name": "Barking Park",
+      "archetype": "park-landscape",
+      "subject": "Barking Park: a broad municipal park with a long boating lake, bowling greens, a war memorial, a flower garden and a splash park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 600,
+        "depth_m": 500,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9b4a35",
+          "#c8b27d",
+          "#8a8f94"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "war memorial"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boating lake landing"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Longbridge Road entrance"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "victorian",
+      "era": "1890s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barking_Park",
+          "what": "30 ha, 910 m boating lake, bowling greens, war memorial, flower garden, splash park, 1931 lido closed 1988, light railway"
+        }
+      ],
+      "notes": "30 ha, boating lake ~910 m long on the north side next to Loxford Water, two bowling greens (one indoor), tennis/basketball, playground, football pitches, a 340 m light railway formerly from the main entrance, 1931 lido closed 1988. Metropolitan Open Land. Opening decade is from memory."
+    },
+    "london-osm-way-24437604": {
+      "venueId": "london-osm-way-24437604",
+      "city": "london",
+      "name": "Chase Farm Hospital",
+      "archetype": "hospital",
+      "subject": "Chase Farm Hospital: the new single five-storey hospital building, with the older retained Highlands wing nearby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a3593f",
+          "#e9e4d8",
+          "#6b7a85"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s rebuild",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.arcadis.com/en/projects/europe/united-kingdom/chase-farm-hospital",
+          "what": "search result: new Chase Farm hospital is a single five-storey building; site ~37 acres; Highlands wing retained"
+        }
+      ],
+      "notes": "Sourced: 2015 consent to demolish most old buildings on the ~37 acre site and build a modern hospital as one five-storey building; Highlands wing retained as rehab wards. Materials/colours are not described and are typical for NHS brick-and-glass buildings."
+    },
+    "london-osm-way-24663862": {
+      "venueId": "london-osm-way-24663862",
+      "city": "london",
+      "name": "St. Anns Centre",
+      "archetype": "mall",
+      "subject": "St Ann's Centre, Harrow: a two-level covered shopping precinct with a brick street frontage, canopy entrance and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9b4a35",
+          "#e9e4d8",
+          "#4a4f57"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Wikipedia page not retrievable; typed from the shopping-centre type and the London style. Venue is classed \"market\" in the game but the real place is a covered shopping centre."
+    },
+    "london-osm-way-350349593": {
+      "venueId": "london-osm-way-350349593",
+      "city": "london",
+      "name": "Columbia Road Flower Market",
+      "archetype": "market-open",
+      "subject": "Columbia Road Flower Market on a Sunday: pitches of cut flowers and plants under the awnings of a terrace of Victorian shops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#c8b27d",
+          "#b5c9b0",
+          "#4a4f57"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "awning",
+          "count": 25
+        },
+        {
+          "id": "signage-board",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1860s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Columbia_Road_Flower_Market",
+          "what": "a road of Victorian shops off Hackney Road; Sunday market 8 am to 2 pm, 49 tenants"
+        }
+      ],
+      "notes": "Sourced: \"a road of Victorian shops\" off Hackney Road, market Sundays 8 am to 2 pm, 49 tenants, traders set up from 4 am. The yellow-stock terrace, pastel shopfronts and flower stalls with awnings are from public photos, not the source."
+    },
+    "london-osm-way-35279471": {
+      "venueId": "london-osm-way-35279471",
+      "city": "london",
+      "name": "Edgwarebury Park",
+      "archetype": "park-landscape",
+      "subject": "Edgwarebury Park: a suburban park with playing fields, a children’s playground, tree belts and a small cafe pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 280,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": null,
+        "colours": [
+          "#9b4a35",
+          "#e9e4d8",
+          "#4a4f57"
+        ],
+        "roofColour": "#a2573f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure; nothing retrieved. Typed municipal park (grass, tree belt, small pavilion)."
+    },
+    "london-osm-way-35597911": {
+      "venueId": "london-osm-way-35597911",
+      "city": "london",
+      "name": "North East Surrey College of Technology",
+      "archetype": "campus-block",
+      "subject": "NESCOT (North East Surrey College of Technology), Ewell: a mid-century further-education campus of brick and render teaching blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#b5654a",
+          "#e9e4d8",
+          "#4a4f57"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real college on Reigate Road; no description retrieved. Typed from the London style and a generic FE college."
+    },
+    "london-osm-way-663055373": {
+      "venueId": "london-osm-way-663055373",
+      "city": "london",
+      "name": "Champion Hill",
+      "archetype": "stadium",
+      "subject": "Champion Hill, home of Dulwich Hamlet FC: a small non-league ground with a covered main stand on the north side, a covered terrace opposite and open terraces behind the goals",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 85,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "brick",
+        "colours": [
+          "#c8c4b8",
+          "#d8749d",
+          "#1d2b53"
+        ],
+        "roofColour": "#6b7480",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered main stand (north) and covered opposite terrace"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Champion_Hill_Stadium",
+          "what": "Dulwich Hamlet FC ground, capacity 3,000 (500 seated), covered main stand on north, covered terrace opposite, uncovered end terraces"
+        }
+      ],
+      "notes": "Capacity 3,000 (500 seated), grass pitch. Layout is sourced; club colours (pink and navy) are widely known but the page does not mention ground colours."
+    },
+    "london-osm-way-707957524": {
+      "venueId": "london-osm-way-707957524",
+      "city": "london",
+      "name": "St Nicholas Church",
+      "archetype": "church-gothic",
+      "subject": "St Nicholas, Tooting Graveney: a Commissioners'-era Gothic parish church in grey stock brick with a west tower with pinnacles and an amber-brick apsidal chancel with red bands",
+      "form": {
+        "footprint": "cross",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#9a958a",
+          "#d9b66a",
+          "#b0a999"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1831-33; chancel 1873-75",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_Nicholas,_Tooting_Graveney",
+          "what": "1831-33 church by T W Atkinson, Gothic in grey brick with stone dressings, west tower with pinnacles, 1873-75 apsidal chancel in amber brick with red bands, Grade II"
+        }
+      ],
+      "notes": "Rebuilt 1831-33 by T W Atkinson (Gothic, grey brick with stone dressings), apsidal chancel and transept additions 1873-75 in amber brick with flush red brick bands, Grade II listed since 1955. Churchyard around it. The earlier church had a round Saxon-looking tower; ignore it."
+    },
+    "london-osm-way-7848020": {
+      "venueId": "london-osm-way-7848020",
+      "city": "london",
+      "name": "Richmond-upon-Thames College",
+      "archetype": "campus-block",
+      "subject": "Richmond upon Thames College, Twickenham: a large further-education campus with modern glazed teaching blocks and older brick wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9b4a35",
+          "#9fb8c4",
+          "#4a4f57"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1960s with 2000s extensions",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real college; no description retrieved. Typed."
+    },
+    "london-osm-way-7989344": {
+      "venueId": "london-osm-way-7989344",
+      "city": "london",
+      "name": "Vicarage Road Stadium",
+      "archetype": "stadium",
+      "subject": "Vicarage Road, Watford FC: a compact four-sided 22,000-seat football ground with a wavy-roofed two-tier west stand, a two-level Rookery end and a floodlit east stand named for Sir Elton John",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "brick",
+        "colours": [
+          "#d9d4c8",
+          "#f2c400",
+          "#c0392b"
+        ],
+        "roofColour": "#6b7480",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "LED floodlights on stands"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1922; stands 1986-2015",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vicarage_Road",
+          "what": "22,220 all-seater, pitch 105x68; four stands: Graham Taylor (west, two tiers, wavy roof), Rookery (6,960, two levels), Sir Elton John (east), Vicarage Road Stand (5,800); yellow/red/black seats; LED floodlights on stands"
+        }
+      ],
+      "notes": "Capacity 22,220, pitch 105 x 68 m. Stands: Graham Taylor (west, two tiers, executive boxes, distinctive wavy roof, red/yellow/black seats), Rookery (home end, 6,960, two levels, yellow/red seats), Sir Elton John (east, opened Dec 2014), Vicarage Road Stand (5,800, away fans). Stand cladding colours are estimates; seat colours sourced. No club badge."
+    },
+    "london-osm-way-81349520": {
+      "venueId": "london-osm-way-81349520",
+      "city": "london",
+      "name": "London Islamic Cultural Society",
+      "archetype": "mosque-domed",
+      "subject": "London Islamic Cultural Society, Wightman Road mosque: a sand-yellow brick building with green mosaic window surrounds, a golden dome over the prayer hall and a single minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "tile-cladding",
+        "colours": [
+          "#d8c28a",
+          "#2f7a5a",
+          "#d4a82f"
+        ],
+        "roofColour": "#d4a82f",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "golden dome crowning the prayer hall"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "patterned brickwork"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "green mosaic tiles around windows"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "2013",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/London_Islamic_Cultural_Society",
+          "what": "Wightman Road mosque completed 2013, sand-yellow brick pattern with green mosaic tiles round windows, golden dome over prayer hall, one minaret; site of former synagogue"
+        }
+      ],
+      "notes": "Haringey’s first purpose-built mosque (389 Wightman Road, N8), completed 2013 on the site of the former Wood Green and Hornsey synagogue bought 1987. Minaret height and mass dimensions are estimates; a terraced street surrounds it."
+    },
+    "london-quiet-reflection": {
+      "venueId": "london-quiet-reflection",
+      "city": "london",
+      "name": "St. Mary the Virgin",
+      "archetype": "church-gothic",
+      "subject": "St Mary the Virgin, Downe: a small medieval flint village church with a 13th-century west tower, timber south porch and an ancient yew in the churchyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#9a9484",
+          "#b0a999",
+          "#6b5a4a"
+        ],
+        "roofColour": "#8a5a46",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower with spire/shingled top (to confirm)"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "flint churchyard wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "13th century with later work",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.historicengland.org.uk/listing/the-list/list-entry/1359316",
+          "what": "search-result summary: church of St Mary the Virgin, Downe, Grade II*, flint with stone dressings, 13th-century west tower, timber south porch"
+        },
+        {
+          "url": "https://www.kentarchaeology.org.uk/notes/st-mary-the-virgin-church-downe",
+          "what": "search-result summary: church on clay-with-flints; Darwin family graves in churchyard; ancient yew"
+        }
+      ],
+      "notes": "Coordinates fall in Downe village, where Charles Darwin lived; the family graves are in this churchyard. Sources: flint with stone dressings, timber south porch, 13th-century west tower, Grade II*, ancient yew. Spire/tower top details and roof tile colour are less certain. Material flint is not in MATERIALS: tagged stone with grey flint colours (see enum gaps)."
+    },
+    "london-recreation": {
+      "venueId": "london-recreation",
+      "city": "london",
+      "name": "Wimbledon Common",
+      "archetype": "park-landscape",
+      "subject": "Wimbledon Common near the Pen Ponds: open heath, mixed woodland and broad shallow ponds with a tree-lined horse ride",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 700,
+        "depth_m": 500,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a5a3a",
+          "#6b8a4a",
+          "#c8b27d"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "ancient common",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wimbledon_Common",
+          "what": "~346 ha common: heathland, mixed woodland, windmill, three Pen Ponds (Kingsmere, Rushmere, Queensmere), Beverley Brook, golf courses, Caesar’s Camp"
+        }
+      ],
+      "notes": "About 346 ha: London’s largest heath, mixed woodland on London clay, Kingsmere and Rushmere (shallow) and Queensmere (deeper) ponds, Beverley Brook along the west, golf courses, a windmill near the centre and the Iron Age Caesar’s Camp. No buildings to model; a windmill feature would help but does not exist (see enum gaps)."
+    },
+    "london-transit": {
+      "venueId": "london-transit",
+      "city": "london",
+      "name": "Walton-on-Thames",
+      "archetype": "transport-station",
+      "subject": "Walton-on-Thames station: a four-platform commuter station with two outer platforms in use, a disused central island, a new footbridge and a forecourt with taxi rank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a8573f",
+          "#e9e4d8",
+          "#4a4f57"
+        ],
+        "roofColour": "#4a4f57",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "station 1838; building later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Walton-on-Thames_railway_station",
+          "what": "opened 1838, four platforms (outer two in use, central island disused), new footbridge 2024, taxi rank at main entrance"
+        }
+      ],
+      "notes": "Platform layout, 1838 opening, 2024 footbridge and the taxi rank are sourced; the page does not describe the station building, so brick/slate is a guess for a Southern-region suburban station."
+    }
+  }
+}

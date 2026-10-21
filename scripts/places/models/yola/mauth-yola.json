@@ -1,0 +1,282 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "mauth-yola",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: teaching hospital, several multi-storey H-plan blocks in white render with blue-grey glazed bands, ambulance bays, water tank, helipad, car park. The OSM outline is the whole 1.2 km campus so was not used. No photo found."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    -34,
+    6
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4a6a7a",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f4f1ea",
+       "#e3dfd5"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    34,
+    6
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4a6a7a",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f4f1ea",
+       "#e3dfd5"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link-block",
+   "footprint": {
+    "rect": [
+     52,
+     14
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4a6a7a",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f4f1ea",
+       "#e3dfd5"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "glassColour": "#4a6a7a",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f4f1ea",
+       "#e3dfd5"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a4",
+    "material": "membrane",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "porte-cochere",
+   "at": [
+    0,
+    -14
+   ],
+   "params": {
+    "width": 14,
+    "depth": 6.5,
+    "height": 4.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -20,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "vans": 2
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -14.6,
+    8.8
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -34,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3.6,
+    "legHeight": 7
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    44,
+    -18,
+    0
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 9,
+    "count": 4,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo and campus outline unusable: block layout, heights and positions are typed from the brief, not observed"
+ }
+}

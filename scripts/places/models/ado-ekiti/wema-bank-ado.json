@@ -1,0 +1,700 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "wema-bank-ado",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wema_Bank.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gabriel601",
+   "view": "front",
+   "file": "/tmp/places-evidence/ado-ekiti/wema.jpg",
+   "used": "two-storey grey panel-clad box, recessed ATM entrance in magenta, projecting first-floor canopy slab with coloured edge, recessed upper window void, horizontal white louvre screen with blank sign board, three entrance steps, grey boundary walls, interlock paving"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "plinth": 0.2,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-recess",
+   "footprint": {
+    "rect": [
+     6,
+     0.6
+    ]
+   },
+   "at": [
+    -3,
+    -6.05
+   ],
+   "height": 3.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a23f78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a23f78"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2.6,
+     2
+    ]
+   },
+   "at": [
+    -6.8,
+    -6.5
+   ],
+   "height": 4.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     2
+    ]
+   },
+   "at": [
+    0.3,
+    -6.5
+   ],
+   "height": 4.4,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     15,
+     9.5
+    ]
+   },
+   "at": [
+    0.5,
+    1.25
+   ],
+   "z0": 4.2,
+   "height": 6.3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-slab",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    -3.5,
+    -7.5
+   ],
+   "z0": 4.2,
+   "height": 0.7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "bands": "#a23f78"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9c9c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 24,
+    "start": [
+     4.8,
+     -6.2,
+     0.6
+    ],
+    "end": [
+     4.8,
+     -6.2,
+     9.6
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       6.2,
+       0.6
+      ],
+      "height": 0.14,
+      "colour": "#ecebe8"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "louvre-back",
+   "footprint": {
+    "rect": [
+     6.4,
+     0.5
+    ]
+   },
+   "at": [
+    4.8,
+    -5.8
+   ],
+   "height": 9.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8d8e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.6,
+    -6.3,
+    7.0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 2.0,
+    "bottom": 0,
+    "colour": "#a23f78",
+    "frameColour": "#a23f78",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#d6d1c0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#7f8587",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      -10,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#7f8587",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      0
+     ],
+     [
+      12,
+      18
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "void-back",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    -3,
+    -4.2
+   ],
+   "z0": 5.4,
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a23f78",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a23f78"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "up-front-l",
+   "footprint": {
+    "rect": [
+     2,
+     1.6
+    ]
+   },
+   "at": [
+    -7.0,
+    -5.35
+   ],
+   "z0": 4.2,
+   "height": 6.3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "up-front-r",
+   "footprint": {
+    "rect": [
+     6,
+     1.6
+    ]
+   },
+   "at": [
+    3.5,
+    -5.35
+   ],
+   "z0": 4.2,
+   "height": 6.3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "up-front-top",
+   "footprint": {
+    "rect": [
+     6,
+     1.6
+    ]
+   },
+   "at": [
+    -3,
+    -5.35
+   ],
+   "z0": 8.2,
+   "height": 2.3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "up-front-bot",
+   "footprint": {
+    "rect": [
+     6,
+     1.6
+    ]
+   },
+   "at": [
+    -3,
+    -5.35
+   ],
+   "z0": 4.2,
+   "height": 1.2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9c9c",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left",
+      "right",
+      "back"
+     ],
+     "colours": [
+      "#9a9c9c",
+      "#939595"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "void-glass",
+   "footprint": {
+    "rect": [
+     5.6,
+     0.5
+    ]
+   },
+   "at": [
+    -3,
+    -4.35
+   ],
+   "z0": 5.4,
+   "height": 0.9,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a7a8a",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a7a8a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-edge",
+   "params": {
+    "rect": [
+     15,
+     0.15
+    ],
+    "height": 0.25,
+    "colour": "#a23f78"
+   },
+   "at": [
+    0.5,
+    -5.6,
+    10.5
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "atm-door-l",
+   "footprint": {
+    "rect": [
+     1,
+     0.5
+    ]
+   },
+   "at": [
+    -4.4,
+    -5.6
+   ],
+   "height": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a2a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a3a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atm-door-r",
+   "footprint": {
+    "rect": [
+     1,
+     0.5
+    ]
+   },
+   "at": [
+    -1.6,
+    -5.6
+   ],
+   "height": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a2a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a3a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mast",
+   "at": [
+    4,
+    1,
+    10.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "colour": "#8a8c8c"
+     },
+     {
+      "z": 2,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "colour": "#8a8c8c"
+     },
+     {
+      "z": 3.2,
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "colour": "#8a8c8c"
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     16
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Walls are not canted, panel joints are only a pixel grid, louvre screen and steps are straight, no neighbouring scaffold building, and the ATM doors are plain dark panels."
+ }
+}

@@ -1,0 +1,259 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1232700550",
+   "used": "a 16 x 14 m building 15 m away (nearest match only): modelled as the main lock-up shop unit at the junction, not as the whole market"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/port-harcourt.json places.oil-mill-market",
+   "used": "ragged street-edge shed row, junction taxi stop, produce stalls and umbrellas, palms; the only listed photo (Mexico, San Juan de Dios market) is a different place and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "corner-shop",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    -18,
+    6
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c4b4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.2,
+    "bands": "#5a7f6a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5a4a3c",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    18,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "length": 26,
+    "depth": 6,
+    "height": 3.8,
+    "roof": "shed",
+    "cladding": "corrugated",
+    "roof_colour": "#5a4a3c",
+    "roof_material": "corrugated",
+    "goods": "sacks",
+    "wall_colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    34,
+    8,
+    0
+   ],
+   "rotDeg": -14,
+   "params": {
+    "length": 16,
+    "depth": 5.5,
+    "height": 3.4,
+    "roof": "gable",
+    "cladding": "corrugated",
+    "roof_colour": "#5a7f6a",
+    "roof_material": "corrugated",
+    "goods": "sacks",
+    "wall_colour": "#e8dcc0"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -8,
+    28,
+    0
+   ],
+   "rotDeg": 4,
+   "params": {
+    "length": 14,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "shed",
+    "cladding": "corrugated",
+    "roof_colour": "#6a5546",
+    "roof_material": "corrugated",
+    "goods": "sacks",
+    "wall_colour": "#c9c4b4"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d98a3a",
+     "#5a9a7a",
+     "#c0605a",
+     "#e8dcc0",
+     "#6d8fb0"
+    ],
+    "jitter": 0.7
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    4,
+    -1,
+    0
+   ],
+   "rotDeg": -6,
+   "params": {
+    "count": 6,
+    "pitch": 3.6,
+    "kind": "stall",
+    "colours": [
+     "#d98a3a",
+     "#5a9a7a",
+     "#c0605a",
+     "#e8dcc0"
+    ],
+    "jitter": 0.8
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#d98a3a",
+     "#5a9a7a",
+     "#c0605a"
+    ]
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3.0,
+    "yaw": 90,
+    "colour": "#e6b422"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#e8dcc0",
+    "frameColour": "#5a7f6a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this market exists; shed row, junction layout and OSM shop footprint are plausible not surveyed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "oil-mill-market"
+}

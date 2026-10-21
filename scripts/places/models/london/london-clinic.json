@@ -1,0 +1,409 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_London_Clinic,_Marylebone_Road_-_geograph.org.uk_-_7665649.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Adam Smith",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/clinic1.jpg",
+   "used": "red-brick slab over a two-storey pale stone base, tall glazed stair bays at both ends, arched top-floor windows under a cornice and zinc roof, stepped side wings, iron railings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:London_,_Westminster_-_Devonshire_Place_-_geograph.org.uk_-_2546546.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "geograph contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/clinic2.jpg",
+   "used": "red brick with stone dressings and white sash windows; surrounding street scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 7,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     68,
+     24
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9b2a0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 10,
+    "plinth": 0.6,
+    "glassColour": "#cfd6d6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a847a",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "body",
+   "footprint": {
+    "rect": [
+     68,
+     24
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 20.5,
+   "storeys": 6,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a30",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 10,
+    "glassColour": "#eef0ec",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony-band",
+   "footprint": {
+    "rect": [
+     69,
+     25.6
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 30,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc8b6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a3",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     62,
+     21
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 31,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a30",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "bay": 9,
+    "glassColour": "#eef0ec",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d868b",
+    "material": "metal-sheet",
+    "rise": 3.0,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-l",
+   "footprint": {
+    "rect": [
+     7,
+     24.6
+    ]
+   },
+   "at": [
+    -31,
+    0.7
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc8b6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "glassColour": "#e4e8e6",
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bdb6a3",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-r",
+   "footprint": {
+    "rect": [
+     7,
+     24.6
+    ]
+   },
+   "at": [
+    21,
+    0.7
+   ],
+   "rotDeg": 0,
+   "z0": 9.5,
+   "height": 27,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#cfc8b6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "glassColour": "#e4e8e6",
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "trimColour": "#ffffff"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#bdb6a3",
+    "rise": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -43,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 35,
+   "storeys": 9,
+   "wall": {
+    "material": "render",
+    "colour": "#9a4a30",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 10,
+    "glassColour": "#eef0ec",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f4348",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    41,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 31,
+   "storeys": 8,
+   "wall": {
+    "material": "render",
+    "colour": "#9a4a30",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 10,
+    "glassColour": "#eef0ec",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f4348",
+    "material": "metal-sheet",
+    "rise": 3.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-tower",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    10,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 35.6,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a4a30",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "windowRatio": 0.28,
+    "bay": 4.5,
+    "glassColour": "#eef0ec"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f4348",
+    "material": "metal-sheet",
+    "rise": 4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 74,
+    "height": 1.6,
+    "thickness": 0.15,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#1e1f21"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-clinic",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Darker brick, flush rusticated stone base, stone-surround stair bays with railings now present; real building has far more window columns, arched attic band with bracketed cornice and glazing bars on stair windows, arched doors, cars; windows coarser to stay in triangle budget."
+ }
+}

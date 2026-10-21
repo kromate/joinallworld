@@ -1,0 +1,1628 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ulaanbaatar",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ulaanbaatar",
+    "climate": "cold",
+    "vernacular": "Soviet-era city core of grey concrete panel and brick apartment blocks (four, five, nine and twelve storeys) and cream or yellow neoclassical public buildings, ringed by new glass-and-metal towers; sprawling hillside ger districts of white felt tents and fenced plots with small tin-roofed houses. Temples are Tibetan-Chinese in style with whitewashed walls, red timber and gilded roof ornaments. Steep or flat metal roofs in red, green and blue; larch, pine and poplar trees; long snow and dust seasons.",
+    "wallColours": [
+      "#b9b5ab",
+      "#d9cfb0",
+      "#a8523c",
+      "#e7e4dc",
+      "#7c8a96",
+      "#c9a24a",
+      "#8f8a80"
+    ],
+    "roofColours": [
+      "#7a3b2e",
+      "#4d6a4a",
+      "#6b6f73",
+      "#2f5d8c",
+      "#b9341f"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "red-brick",
+      "render",
+      "metal-cladding",
+      "glass-curtain",
+      "whitewash",
+      "timber"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "membrane",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Mongolian ulzii (endless-knot) and cloud patterns; red-painted columns and yellow friezes on Buddhist temples with gilded roof ornaments and upturned eaves; orange-painted ger roof poles and doors in blue or red; Soviet-style colonnades, pilasters and stars on public buildings; Sukhbaatar statue and Genghis Khan colonnade on the central square.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Mongolia",
+        "what": "Soviet 4-, 5-, 9-storey rectangular blocks, ger districts, temples with pyramidal roofs and Mongolian-Tibetan-Chinese styles, Dashchoilin yurt-style temple"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ulaanbaatar",
+        "what": "Soviet-style city centre, concrete tower blocks, 2010s high-rise boom, ger districts in the hills, cold semi-arid climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sukhbaatar_Square",
+        "what": "Concrete square, Government Palace 1951 with colonnade monument, Central Towers glass and metal, dark City Administration building, white former printing press"
+      }
+    ]
+  },
+  "places": {
+    "ulaanbaatar-airport-ulaanbaatar-airport": {
+      "venueId": "ulaanbaatar-airport-ulaanbaatar-airport",
+      "city": "ulaanbaatar",
+      "name": "Chinggis Khaan International Airport (Khoshig Valley)",
+      "archetype": "airport-terminal",
+      "subject": "The 2021 Chinggis Khaan International Airport terminal: a long, low, two-level glass-fronted terminal on the steppe with a tall control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "curved",
+        "wings": 2,
+        "variant": "steppe terminal"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d7dde0",
+          "#6f8191",
+          "#f1f1ef"
+        ],
+        "roofColour": "#c0c6ca",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures-level forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 8
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "concrete control tower"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chinggis_Khaan_International_Airport",
+          "what": "Passenger terminals 25,300 m2 with arrivals on the ground floor and departures on the second; opened 4 July 2021; concrete control tower"
+        }
+      ],
+      "notes": "Opened in 2021 in the Khoshig Valley, 50 km south of the city. Wikipedia does not describe the exterior, so glass-and-steel and a curved roof are typed from a modern airport pattern. Medium confidence on size/storeys, low on colours. Surroundings are bare steppe."
+    },
+    "ulaanbaatar-clinic": {
+      "venueId": "ulaanbaatar-clinic",
+      "city": "ulaanbaatar",
+      "name": "National Cancer Center of Mongolia",
+      "archetype": "hospital",
+      "subject": "A big hospital campus of several connected cream and grey blocks of four to six storeys",
+      "form": {
+        "footprint": "H",
+        "width_m": 199,
+        "depth_m": 178,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 3,
+        "variant": "multi-wing campus"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d2bd",
+          "#a9a69c",
+          "#f0eee6"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "boiler stack in a cold climate"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/47.913894/106.942019",
+          "what": "OSM amenity=hospital campus, 199 x 178 m, area 32,642 m2, Wikidata Q123757804"
+        }
+      ],
+      "notes": "Measured campus footprint only; building style typed from Ulaanbaatar hospital blocks (Soviet-era panel and render). Low confidence."
+    },
+    "ulaanbaatar-community-notices": {
+      "venueId": "ulaanbaatar-community-notices",
+      "city": "ulaanbaatar",
+      "name": "Ministry of Health",
+      "archetype": "civic-palace",
+      "subject": "A five-storey ministry block of cream render with a columned entrance in the Soviet administrative style",
+      "form": {
+        "footprint": "rect",
+        "width_m": 83,
+        "depth_m": 57,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d8cfb4",
+          "#a9a69c",
+          "#f0eee4"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1950s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/47.915974/106.920848",
+          "what": "OSM building named Ministry of Health (Эрүүл мэндийн яам), 83 x 57 m, 2047 m2"
+        }
+      ],
+      "notes": "Name and footprint are real; no photo description found. Styled as a Soviet-era government building. Low confidence."
+    },
+    "ulaanbaatar-community-voting-game": {
+      "venueId": "ulaanbaatar-community-voting-game",
+      "city": "ulaanbaatar",
+      "name": "Sukhbaatar Square",
+      "archetype": "park-landscape",
+      "subject": "Sukhbaatar Square from the south: an open concrete-paved square with the equestrian statue of Damdin Sukhbaatar in the centre and the Government Palace with its Genghis Khan colonnade across the north side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 170,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none",
+        "wings": 2,
+        "variant": "central square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#cdc8bc",
+          "#d9cfb0",
+          "#8f8a80"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "Sukhbaatar equestrian statue plus the Genghis Khan seated monument and flanking Khans"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "Government Palace (1951) colonnade on the north side"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide steps to the Genghis Khan monument"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1921 / palace 1951",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sukhbaatar_Square",
+          "what": "Concrete surface, Government Palace north (1951) with colonnade monument completed 2006, Sukhbaatar statue 1946 centre, Central Towers and a white former printing press around it"
+        }
+      ],
+      "notes": "Surrounded by a dark City Administration block (west), glass-and-metal Central Towers (east) and a sail-shaped tower to the south; the iconic view is the palace and monument. Medium confidence."
+    },
+    "ulaanbaatar-community-workshop": {
+      "venueId": "ulaanbaatar-community-workshop",
+      "city": "ulaanbaatar",
+      "name": "Mongolian International University",
+      "archetype": "campus-block",
+      "subject": "A small private university block of three to five storeys in pale cladding",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd7c8",
+          "#7c8a96",
+          "#f0eee6"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/47.9144/106.974168",
+          "what": "OSM building under construction (building=construction), 37 x 22 m; Wikidata Q1046619"
+        }
+      ],
+      "notes": "Footprint only; the OSM building was under construction. Low confidence."
+    },
+    "ulaanbaatar-market-game": {
+      "venueId": "ulaanbaatar-market-game",
+      "city": "ulaanbaatar",
+      "name": "Hunnu Mall",
+      "archetype": "mall",
+      "subject": "A large modern mall: boxy glass-and-metal-panel block with a wide forecourt car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 103,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8cfd6",
+          "#8f6a4a",
+          "#eef0f1"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/47.878621/106.851199",
+          "what": "OSM building, 160 x 103 m, 13,755 m2, Wikidata Q135218563"
+        }
+      ],
+      "notes": "Footprint measured; interior and look typed from Ulaanbaatar new malls (glass and panel). Low confidence."
+    },
+    "ulaanbaatar-meal-stop": {
+      "venueId": "ulaanbaatar-meal-stop",
+      "city": "ulaanbaatar",
+      "name": "Castle restaurant on the artificial lake",
+      "archetype": "restaurant",
+      "subject": "A medieval-style castle restaurant on the lake: crenellated stone-coloured towers and walls reflected in the water",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "castle pastiche"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d8cfbb",
+          "#b0a48a",
+          "#7a5a3c"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "castle parapets"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "round corner towers"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "postmodern",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/47.909111/106.920841",
+          "what": "OSM restaurant and tourist attraction named Castle, linked to the Mongolian-language page \"Хиймэл нууран дахь цайз\" (castle on the artificial lake); building 35 x 32 m"
+        }
+      ],
+      "notes": "A themed castle restaurant in the city park lake; look is inferred from its name and tag (tourism=attraction). Low confidence."
+    },
+    "ulaanbaatar-osm-node-1367931400": {
+      "venueId": "ulaanbaatar-osm-node-1367931400",
+      "city": "ulaanbaatar",
+      "name": "Holy Trinity Orthodox Church",
+      "archetype": "church-classical",
+      "subject": "A small Russian Orthodox church with a bell tower and gilded onion dome",
+      "form": {
+        "footprint": "cross",
+        "width_m": 33,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "dome",
+        "wings": 1,
+        "variant": "orthodox"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#eeeae0",
+          "#c9a24a",
+          "#7a5a3c"
+        ],
+        "roofColour": "#c9a24a",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 1,
+          "note": "gilded onion dome"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1367931400",
+          "what": "OSM place_of_worship, religion=christian, building 33 x 15 m"
+        }
+      ],
+      "notes": "Name and footprint only; Russian-Orthodox churches typically have white walls with an onion dome. Low confidence."
+    },
+    "ulaanbaatar-osm-node-2293321279": {
+      "venueId": "ulaanbaatar-osm-node-2293321279",
+      "city": "ulaanbaatar",
+      "name": "Natural History Museum of Mongolia (new building)",
+      "archetype": "museum-theatre",
+      "subject": "A large new museum building under construction on the south side of the city: a wide, low, white cuboid with a glass entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 133,
+        "depth_m": 131,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d7d5cd",
+          "#7c8a96",
+          "#eeece6"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/2293321279",
+          "what": "OSM building=construction 133 x 131 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mongolian_Natural_History_Museum",
+          "what": "1953 building demolished 7 Dec 2019; museum now in the former Lenin Museum; new building planned"
+        }
+      ],
+      "notes": "Under construction in OSM; final look unknown. Low confidence."
+    },
+    "ulaanbaatar-osm-node-2317267389": {
+      "venueId": "ulaanbaatar-osm-node-2317267389",
+      "city": "ulaanbaatar",
+      "name": "Dashchoilin Monastery",
+      "archetype": "temple-asian",
+      "subject": "A round, ger-shaped temple with whitewashed walls, a conical orange-red roof and gilded ornaments",
+      "form": {
+        "footprint": "round",
+        "width_m": 19,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "pyramidal",
+        "wings": 2,
+        "variant": "yurt-style temple"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#efece4",
+          "#b9341f",
+          "#c9a24a"
+        ],
+        "roofColour": "#b9341f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 1,
+          "note": "gilded roof finial"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "painted frieze"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "1990s (tradition 1737)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dashchoilin_Monastery",
+          "what": "After 1990 three concrete yurts built for the State Circus were given to the monastery; Chinese, Mongol and Tibetan influences"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Mongolia",
+          "what": "Dashchoilin Khiid is the yurt-style example among Ulaanbaatar temples"
+        }
+      ],
+      "notes": "Distinctive: the main temple has a circular ger plan, not a rectangular hall. Colours (white walls, red roof, gold finial) are typed from typical Mongolian temple pattern. Medium confidence."
+    },
+    "ulaanbaatar-osm-node-2321962180": {
+      "venueId": "ulaanbaatar-osm-node-2321962180",
+      "city": "ulaanbaatar",
+      "name": "Coffee Fellows",
+      "archetype": "restaurant",
+      "subject": "A tiny retail-unit coffee shop with a glazed front and an awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcac0",
+          "#7a5a3c",
+          "#f0eee6"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/2321962180",
+          "what": "OSM cafe in a small retail building 15 x 12 m"
+        }
+      ],
+      "notes": "Tiny shopfront; no description found. Low confidence."
+    },
+    "ulaanbaatar-osm-node-2355050258": {
+      "venueId": "ulaanbaatar-osm-node-2355050258",
+      "city": "ulaanbaatar",
+      "name": "Tsetsee Gun (mountain viewpoint)",
+      "archetype": "park-landscape",
+      "subject": "The summit of Tsetsee Gun on Bogd Khan Uul: a stony ridge with an ovoo cairn hung with blue prayer scarves and larch forest below",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8a80",
+          "#3f6fb0",
+          "#c9c6bb"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 6,
+          "note": "blue khadag prayer scarves and flags on the cairn"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Manzushir_Monastery",
+          "what": "Same Bogd Khan Uul area south of the city: cedar and larch forest, streams"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=18/47.808379/107.002694",
+          "what": "Summit coordinates of the Tsetsee Gun node"
+        }
+      ],
+      "notes": "Peak viewpoint, a natural feature; summit shrine/cairn is typed from Mongolian mountain-top practice (ovoo). Low confidence."
+    },
+    "ulaanbaatar-osm-node-3083953775": {
+      "venueId": "ulaanbaatar-osm-node-3083953775",
+      "city": "ulaanbaatar",
+      "name": "Ach Medical University",
+      "archetype": "campus-block",
+      "subject": "A small college building of three to four storeys in cream render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 16,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dad3bd",
+          "#a9a69c",
+          "#f0eee6"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/3083953775",
+          "what": "OSM building 31 x 16 m"
+        }
+      ],
+      "notes": "Name and footprint only. Low confidence."
+    },
+    "ulaanbaatar-osm-node-9832193961": {
+      "venueId": "ulaanbaatar-osm-node-9832193961",
+      "city": "ulaanbaatar",
+      "name": "Caffe Bene (Khan-Uul Tower)",
+      "archetype": "office-low",
+      "subject": "The Khan-Uul Tower, a mid-rise glass-and-panel office block with a cafe on the ground floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 24,
+        "storeys": 9,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9c2cb",
+          "#8a8f94",
+          "#eef0f1"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/9832193961",
+          "what": "OSM building named Khan-Uul Tower, 33 x 24 m"
+        }
+      ],
+      "notes": "The cafe sits in the Khan-Uul Tower; number of storeys is a guess (mid-rise). Low confidence."
+    },
+    "ulaanbaatar-osm-relation-21094827": {
+      "venueId": "ulaanbaatar-osm-relation-21094827",
+      "city": "ulaanbaatar",
+      "name": "National University of Mongolia",
+      "archetype": "campus-block",
+      "subject": "The main building of the National University of Mongolia: a cream-yellow Soviet-style academic block with a central columned entrance and wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 300,
+        "depth_m": 176,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "Soviet main building"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e0d4a8",
+          "#b9ad88",
+          "#f4f1e6"
+        ],
+        "roofColour": "#6b4a3c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1942 / 1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/21094827",
+          "what": "OSM amenity=university, 300 x 176 m, 27,893 m2, Wikidata Q1349150"
+        }
+      ],
+      "notes": "Footprint measured; the style is Soviet-era academic neoclassicism typical of the 1940s-50s city core, not read from a source. Low confidence."
+    },
+    "ulaanbaatar-osm-way-108195289": {
+      "venueId": "ulaanbaatar-osm-way-108195289",
+      "city": "ulaanbaatar",
+      "name": "Central Stadium (National Sports Stadium)",
+      "archetype": "stadium",
+      "subject": "Ulaanbaatar Central Stadium: an oval concrete-and-brick bowl with a roofed main stand on the west side and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 149,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "1958 stadium"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "red-brick",
+        "colours": [
+          "#b9b5ab",
+          "#a8523c",
+          "#d9d5c9"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "central roof over the main stand finished 1971"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1958 (roof 1971)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Sports_Stadium_(Mongolia)",
+          "what": "Reinforced concrete and brick, central roof finished 1971, opened 1958, 12,500 capacity, pitch 105 x 68"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/108195289",
+          "what": "OSM stadium 220 x 149 m, Wikidata Q1451543"
+        }
+      ],
+      "notes": "Older Soviet-style stadium used for Naadam-festival events. Medium confidence."
+    },
+    "ulaanbaatar-osm-way-129230039": {
+      "venueId": "ulaanbaatar-osm-way-129230039",
+      "city": "ulaanbaatar",
+      "name": "Natural History Museum of Mongolia",
+      "archetype": "museum-theatre",
+      "subject": "The three-storey Soviet-era museum block that houses the dinosaur hall: a boxy stone-clad building with a plain colonnaded entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9c3b2",
+          "#a9a69c",
+          "#e9e6dc"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/129230039",
+          "what": "OSM museum, 3 levels, 57 x 45 m, Wikidata Q2154359"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mongolian_Natural_History_Museum",
+          "what": "Museum now in the former Lenin Museum building after the 1953 building was demolished in 2019; known for Tarbosaurus skeleton"
+        }
+      ],
+      "notes": "Levels and size measured; the former Lenin Museum was a Soviet-monumental block. Look is typed. Medium confidence."
+    },
+    "ulaanbaatar-osm-way-1495767145": {
+      "venueId": "ulaanbaatar-osm-way-1495767145",
+      "city": "ulaanbaatar",
+      "name": "Ulaanbaatar Park",
+      "archetype": "park-landscape",
+      "subject": "A city park of lawns, paths and tree belts with a small pavilion and fountain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 565,
+        "depth_m": 289,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b7a60",
+          "#6f8a5a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1495767145",
+          "what": "OSM park 565 x 289 m, 108,340 m2, Wikidata Q131424861"
+        }
+      ],
+      "notes": "No description found; typed park. Low confidence."
+    },
+    "ulaanbaatar-osm-way-271049504": {
+      "venueId": "ulaanbaatar-osm-way-271049504",
+      "city": "ulaanbaatar",
+      "name": "Manjusri Monastery",
+      "archetype": "temple-asian",
+      "subject": "The rebuilt Tibetan-style main temple of Manjusri Monastery on the forested south slope of Bogd Khan Mountain: whitewashed walls under a dark red cornice and a hip roof with gilded ornaments",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "rebuilt Tibetan-style hall"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#efece4",
+          "#8a2f24",
+          "#c9a24a"
+        ],
+        "roofColour": "#4f5a4a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 3,
+          "note": "gilded roof ornaments"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone wall"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "1733 / rebuilt",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Manzushir_Monastery",
+          "what": "Founded 1733; 20 temples demolished in 1937; remains of 17 buildings; Togchin temple 1749 in Tibetan style; main building rebuilt as a museum; set in Bogdkhan Uul cedar forest"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/271049504",
+          "what": "OSM historic=monastery, whole site 440 x 373 m, Wikidata Q148612"
+        }
+      ],
+      "notes": "Whole site is 440 x 373 m with ruins on rising terrain; the model shows the rebuilt main hall. Medium confidence."
+    },
+    "ulaanbaatar-osm-way-961119183": {
+      "venueId": "ulaanbaatar-osm-way-961119183",
+      "city": "ulaanbaatar",
+      "name": "MFF Football Centre",
+      "archetype": "stadium",
+      "subject": "A small football stadium with one roofed stand, blue seating and floodlights beside the football federation offices",
+      "form": {
+        "footprint": "rect",
+        "width_m": 141,
+        "depth_m": 103,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed",
+        "variant": "5,000 seat stadium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c6bd",
+          "#2f5d8c",
+          "#eeece6"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2002 / 2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/MFF_Football_Centre",
+          "what": "5,000-seat stadium opened 2002 and expanded Oct 2013, artificial turf 110 x 73 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/961119183",
+          "what": "OSM stadium 141 x 103 m"
+        }
+      ],
+      "notes": "Artificial-turf stadium of the Mongolian Football Federation. Appearance typed. Medium confidence."
+    },
+    "ulaanbaatar-osm-way-972441327": {
+      "venueId": "ulaanbaatar-osm-way-972441327",
+      "city": "ulaanbaatar",
+      "name": "Intermed Hospital",
+      "archetype": "hospital",
+      "subject": "A private hospital: modern six-storey glass and panel block with a covered ambulance entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd5db",
+          "#8f9aa4",
+          "#f0f1f2"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/972441327",
+          "what": "OSM building=hospital, 71 x 45 m, Wikidata Q30641659"
+        }
+      ],
+      "notes": "Footprint measured; look typed. Low confidence."
+    },
+    "ulaanbaatar-osm-way-977856902": {
+      "venueId": "ulaanbaatar-osm-way-977856902",
+      "city": "ulaanbaatar",
+      "name": "Mongolian State University of Agriculture",
+      "archetype": "campus-block",
+      "subject": "A long Soviet-era academic block of cream render with side wings and a central entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 514,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 3,
+        "variant": "campus"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd4b8",
+          "#a9a69c",
+          "#f0eee4"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1950s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/977856902",
+          "what": "OSM university 514 x 200 m, Wikidata Q2514534"
+        }
+      ],
+      "notes": "Footprint measured; look typed from Soviet-era campuses in Ulaanbaatar. Low confidence."
+    },
+    "ulaanbaatar-quiet-reflection": {
+      "venueId": "ulaanbaatar-quiet-reflection",
+      "city": "ulaanbaatar",
+      "name": "Tolgoit Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A small white mosque with a single green dome and a slender minaret, in a walled plot at the edge of the ger district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome",
+        "wings": 1,
+        "variant": "small Sunni mosque"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#efece4",
+          "#3d7a52",
+          "#c9a24a"
+        ],
+        "roofColour": "#3d7a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "green dome"
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/47.926192/106.791102",
+          "what": "OSM place_of_worship, Muslim Sunni, building 19 x 16 m, Wikidata Q131463617"
+        }
+      ],
+      "notes": "Mosque used by the Muslim (largely Kazakh) community; no description of its look found, so the dome and minaret are typed from the type. Low confidence."
+    },
+    "ulaanbaatar-recreation": {
+      "venueId": "ulaanbaatar-recreation",
+      "city": "ulaanbaatar",
+      "name": "National Garden Park",
+      "archetype": "park-landscape",
+      "subject": "A landscaped national park of lawns, paths and conifer groves with a small pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 250,
+        "depth_m": 200,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b7a60",
+          "#6f8a5a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/47.897513/106.978741",
+          "what": "Location of the Mongolian-script-named National Garden Park; OSM nearby building 7 x 5 m"
+        }
+      ],
+      "notes": "No description found. Low confidence."
+    },
+    "ulaanbaatar-transit": {
+      "venueId": "ulaanbaatar-transit",
+      "city": "ulaanbaatar",
+      "name": "Ulaanbaatar Railway Station",
+      "archetype": "transport-station",
+      "subject": "The Ulaanbaatar railway station: a two-storey Soviet-style station hall with long platform canopies and the Trans-Mongolian tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "1949 station"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9cdb0",
+          "#a9a69c",
+          "#f0eee4"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 6
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1949",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ulaanbaatar_railway_station",
+          "what": "Opened 1949, 3 platforms (2 islands), 6 tracks"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=18/47.908199/106.883858",
+          "what": "OSM train station building 73 x 33 m"
+        }
+      ],
+      "notes": "Opened 1949; the building look is typed from Soviet-era stations. Low confidence."
+    }
+  }
+}

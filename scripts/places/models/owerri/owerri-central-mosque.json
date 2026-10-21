@@ -1,0 +1,280 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "owerri-central-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/owerri.json",
+   "used": "brief only: 24 x 22 m two-storey hall, central dome, single minaret, cream render with teal roof; no photo or OSM outline found (Commons search returned nothing)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f6f2e6",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched",
+    "bay": 4,
+    "plinth": 0.8,
+    "bands": "#d8c590",
+    "glassColour": "#3a5a55"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a8a7a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     12,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f6f2e6",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.45,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a8a7a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "radius": 6.4,
+    "n": 16,
+    "z0": 10.8,
+    "height": 2.6,
+    "colour": "#f6f2e6",
+    "topColour": "#d8c590",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "dome",
+   "at": [
+    0,
+    0,
+    13.4
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#3a8a7a",
+    "profile": [
+     [
+      6.6,
+      0,
+      "#d8c590"
+     ],
+     [
+      6.6,
+      0.5
+     ],
+     [
+      6.2,
+      1.9
+     ],
+     [
+      5.2,
+      3.4
+     ],
+     [
+      3.6,
+      4.7
+     ],
+     [
+      1.8,
+      5.5
+     ],
+     [
+      0,
+      5.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "finial",
+   "at": [
+    0,
+    0,
+    19.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#d8c590",
+    "profile": [
+     [
+      0.3,
+      0
+     ],
+     [
+      0.3,
+      1.2
+     ],
+     [
+      0.1,
+      1.4
+     ],
+     [
+      0.1,
+      2.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/minaret",
+   "id": "minaret",
+   "at": [
+    15.5,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "radius": 1.3,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f6f2e6",
+    "capColour": "#3a8a7a"
+   }
+  },
+  {
+   "type": "array",
+   "id": "cornerdomes",
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 24,
+    "dy": 22,
+    "of": {
+     "type": "revolve",
+     "at": [
+      0,
+      0,
+      10.8
+     ],
+     "params": {
+      "segments": 14,
+      "colour": "#3a8a7a",
+      "profile": [
+       [
+        1.5,
+        0
+       ],
+       [
+        1.5,
+        0.4
+       ],
+       [
+        1.1,
+        1.4
+       ],
+       [
+        0.5,
+        2
+       ],
+       [
+        0,
+        2.2
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#f6f2e6"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "pillar": 0.8,
+    "colour": "#d8c590"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "palm",
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline exists; typical Nigerian domed city mosque from the brief, not checked against the real building."
+ }
+}

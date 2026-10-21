@@ -1,0 +1,1496 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "larnaca",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "larnaca",
+    "climate": "mediterranean",
+    "vernacular": "Hot dry Mediterranean coastal town: flat-roofed two to four storey concrete-frame blocks rendered in sand, cream and white, with roof terraces carrying water tanks and solar water heaters; older quarters of golden sandstone and limestone with arcaded Ottoman and British colonial buildings, balconies and wooden shutters; a few red-tile pitched roofs on villas and village houses; palm-lined seafront and eucalyptus and pine on the hills.",
+    "wallColours": [
+      "#f0ebdf",
+      "#e0cfa6",
+      "#d4bf94",
+      "#e6c9a8",
+      "#b9b3a8",
+      "#c9d3d8"
+    ],
+    "roofColours": [
+      "#b8b2a6",
+      "#b5593a",
+      "#8e8a82",
+      "#d9d4c8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "sandstone",
+      "limestone",
+      "concrete",
+      "whitewash",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Cut-stone arches and arcades (Kamares aqueduct, Ottoman and British colonial street fronts), wooden shutters and balconies, wrought-iron railings, flat roofs with water tanks and solar heaters, Byzantine domed village churches with a separate bell tower, minarets of yellow stone, palms along the Finikoudes promenade.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Larnaca",
+        "what": "Finikoudes palm-lined promenade, Kamares aqueduct, castle, churches and Europe Square government buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hala_Sultan_Tekke",
+        "what": "yellow stone blocks, domes and minaret of the Ottoman mosque"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kamares_Aqueduct",
+        "what": "cut-stone arches of the 18th century aqueduct"
+      }
+    ]
+  },
+  "places": {
+    "larnaca-airport-larnaca-airport": {
+      "venueId": "larnaca-airport-larnaca-airport",
+      "city": "larnaca",
+      "name": "Larnaca International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2009 passenger terminal seen from the forecourt: a long low glazed block under a broad flat roof overhang with jet bridges behind and the control tower to one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d8",
+          "#6f7d88",
+          "#eceae4"
+        ],
+        "roofColour": "#b9bcbf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "wide departures forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 16
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate tower beside terminal"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "2,450 spaces"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Larnaca_International_Airport",
+          "what": "new terminal opened 7 Nov 2009, designed by Aeroports de Paris with Sofreavia, 16 jetways, 48 gates, 2,450 parking spaces, new control tower, departures upper level and arrivals ground level"
+        }
+      ],
+      "notes": "Facts (opening, jetways, parking, tower) are from the source; facade colours and exact size are estimates from general knowledge of a glass-and-steel terminal with a deep flat roof. The terminal is being extended westwards."
+    },
+    "larnaca-clinic": {
+      "venueId": "larnaca-clinic",
+      "city": "larnaca",
+      "name": "Larnaca General Hospital",
+      "archetype": "hospital",
+      "subject": "A mid-rise rendered hospital block with an entrance canopy and ambulance bay beside a car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfce",
+          "#b9b3a8",
+          "#f0ebdf"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the building was found; typed from the hospital type and the Larnaca city style (sand render, flat roof with water tanks)."
+    },
+    "larnaca-community-notices": {
+      "venueId": "larnaca-community-notices",
+      "city": "larnaca",
+      "name": "Beyarmudu Border Gate",
+      "archetype": "civic-small",
+      "subject": "A road crossing point on the Green Line: a low control building straddling the lanes under a flat canopy with flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4ca",
+          "#7c8790",
+          "#eceae4"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "over inspection lanes"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "barrier arms"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Crossing point on the buffer zone road; no description of the buildings found, typed as a small checkpoint with canopy. Signage must stay blank."
+    },
+    "larnaca-community-voting-game": {
+      "venueId": "larnaca-community-voting-game",
+      "city": "larnaca",
+      "name": "Europe square",
+      "archetype": "park-landscape",
+      "subject": "A paved civic square on the Larnaca seafront with palms, benches and government buildings along its edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d4bf94",
+          "#b9b3a8",
+          "#e0cfa6"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Larnaca",
+          "what": "Europe Square is named as the location of Larnaca District Administration and government buildings"
+        }
+      ],
+      "notes": "The article only names the square and its government buildings; layout is typed from the city style: paved plaza with palms. Not verified to have a fountain; generator may omit."
+    },
+    "larnaca-community-workshop": {
+      "venueId": "larnaca-community-workshop",
+      "city": "larnaca",
+      "name": "University of Central Lancashire Cyprus",
+      "archetype": "campus-block",
+      "subject": "A modern white and sand campus of connected three and four storey blocks around a plaza",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#8fa0ab",
+          "#c9bfa8"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "UCLan Cyprus is a new campus at Pyla; no description of the buildings was found. Typed from the campus type and city style."
+    },
+    "larnaca-market-game": {
+      "venueId": "larnaca-market-game",
+      "city": "larnaca",
+      "name": "Sunday Market",
+      "archetype": "market-open",
+      "subject": "Rows of stalls under striped awnings and umbrellas on a paved lot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#e6dfce",
+          "#c25a45",
+          "#f0ebdf"
+        ],
+        "roofColour": "#d9d4c8",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic weekly market; no specific layout found. Typed from the market type."
+    },
+    "larnaca-meal-stop": {
+      "venueId": "larnaca-meal-stop",
+      "city": "larnaca",
+      "name": "Coast of India",
+      "archetype": "restaurant",
+      "subject": "A single-storey beachside restaurant with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebdf",
+          "#e0a24f",
+          "#8fa0ab"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure restaurant on the south coast; nothing findable about its look. Typed from the restaurant type and coastal setting."
+    },
+    "larnaca-osm-node-4361248690": {
+      "venueId": "larnaca-osm-node-4361248690",
+      "city": "larnaca",
+      "name": "Ayia Anna taverna",
+      "archetype": "restaurant",
+      "subject": "A village taverna in a rendered stone house with a vine-covered yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc9",
+          "#b8a47e",
+          "#7a5a3a"
+        ],
+        "roofColour": "#b5593a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Village taverna in Ayia Anna; no description found. Typed from the traditional Cypriot village house: lime-washed walls, low tile roof."
+    },
+    "larnaca-osm-node-4401051294": {
+      "venueId": "larnaca-osm-node-4401051294",
+      "city": "larnaca",
+      "name": "Girokomio Athienou",
+      "archetype": "hospital",
+      "subject": "A two-storey care home (gerokomeio) with an entrance canopy and garden",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe4cf",
+          "#c9b48a",
+          "#f0ebdf"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Elderly care home in Athienou; no description found. Typed as small residential care building."
+    },
+    "larnaca-osm-node-9852870606": {
+      "venueId": "larnaca-osm-node-9852870606",
+      "city": "larnaca",
+      "name": "Beach Restaurant",
+      "archetype": "restaurant",
+      "subject": "A low beach restaurant on a sand terrace with umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebdf",
+          "#c9a56a",
+          "#5f8fa8"
+        ],
+        "roofColour": "#d9d4c8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure coastal restaurant, nothing found; typed from restaurant type and shoreline setting."
+    },
+    "larnaca-osm-relation-20507958": {
+      "venueId": "larnaca-osm-relation-20507958",
+      "city": "larnaca",
+      "name": "Kamares Aqueduct",
+      "archetype": "monument",
+      "subject": "A stretch of the 18th century Ottoman aqueduct: a long double row of tall pointed cut-stone arches on piers beside a road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#d4bf94",
+          "#c2ab7e",
+          "#e0cfa6"
+        ],
+        "roofColour": "#c2ab7e",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 40,
+          "note": "model shows a 120 m portion of the 75 surviving arches"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "coursed cut stone"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "ottoman",
+      "era": "1747-1750",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kamares_Aqueduct",
+          "what": "built 1747-1750 (Bekir Pasha aqueduct), cut-stone arches, 75 arches survive in three spans, restored 1854 and 1876, lit at night"
+        }
+      ],
+      "notes": "Arch count and date from the source; height ~10 m and width are estimates from memory of the monument. Warm golden stone, pointed arches on slim piers. Model shows only the recognisable portion because the full aqueduct is far longer than 120 m."
+    },
+    "larnaca-osm-way-1033582203": {
+      "venueId": "larnaca-osm-way-1033582203",
+      "city": "larnaca",
+      "name": "Avgorou Community Stadium",
+      "archetype": "stadium",
+      "subject": "A small village football ground with one covered stand, a fenced pitch and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d4ca",
+          "#7a8f7a",
+          "#eceae4"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one small covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small community ground; no description found. Typed from the stadium type at village scale."
+    },
+    "larnaca-osm-way-1251246319": {
+      "venueId": "larnaca-osm-way-1251246319",
+      "city": "larnaca",
+      "name": "Park of Georgia Kyriakidou",
+      "archetype": "park-landscape",
+      "subject": "A small municipal park with paths, lawns, pine trees and a playground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d4bf94",
+          "#7aa05a",
+          "#b9b3a8"
+        ],
+        "roofColour": "#8e8a82",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named for a person; no description found. Typed as a plain municipal park."
+    },
+    "larnaca-osm-way-1492777202": {
+      "venueId": "larnaca-osm-way-1492777202",
+      "city": "larnaca",
+      "name": "Hala Sultan Tekke",
+      "archetype": "mosque-domed",
+      "subject": "The Hala Sultan Tekke mosque in its walled garden: a square yellow-stone prayer hall with two domes and a single slim minaret, palms and cypresses around, the salt lake behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#e0c98c",
+          "#d6d2c6",
+          "#f0ebdf"
+        ],
+        "roofColour": "#d6d2c6",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "one over the prayer hall, one smaller"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "slim round shaft with a single balcony, repaired 1959"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "ablution courtyard in front"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "octagonal fountain opposite the mosque, c.1796"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "walled garden with an entry gate dated 1813"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "portico of the entrance side"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "ottoman",
+      "era": "1817 (shrine 1760)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hala_Sultan_Tekke",
+          "what": "square mosque of yellow stone blocks, two domes and one minaret, built 1817 in classical Ottoman style on a 1760 shrine; walled garden on the west bank of Larnaca Salt Lake; ablution courtyard; octagonal fountain; gate inscription 1813; guesthouses flank the entrance"
+        }
+      ],
+      "notes": "Layout and materials from the source. Dome and minaret colours (pale plaster) and the dimensions are estimates; the minaret is roughly 20-25 m. Very recognisable by palms, white domes and yellow walls against flat salt lake."
+    },
+    "larnaca-osm-way-149466626": {
+      "venueId": "larnaca-osm-way-149466626",
+      "city": "larnaca",
+      "name": "Panagia Aggeloktisti",
+      "archetype": "church-classical",
+      "subject": "The medieval Panagia Angeloktisti church at Kiti: a low stone Byzantine church with a domed core, tiled roofs and a later chapel beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#d4bf94",
+          "#b5593a",
+          "#e8dfc9"
+        ],
+        "roofColour": "#b5593a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small drum dome over the crossing"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "blind arcades on the walls"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "6th-century apse mosaic inside, not visible outside"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "11th century on a 6th-century base",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Larnaca",
+          "what": "named as a medieval church (Angeloktisti) in the Larnaca area"
+        }
+      ],
+      "notes": "Only the existence as a medieval church was confirmed by a fetched source. The form (low stone church, domed centre, tile roofs, Byzantine apse mosaic) is from general knowledge; size is an estimate. Treat as medium-low."
+    },
+    "larnaca-osm-way-186575346": {
+      "venueId": "larnaca-osm-way-186575346",
+      "city": "larnaca",
+      "name": "Chalkanoras Stadium",
+      "archetype": "stadium",
+      "subject": "The small football ground of Chalkanoras at Dali with a covered main stand and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d4ca",
+          "#5f7fa8",
+          "#eceae4"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chalkanoras_Idaliou",
+          "what": "club based in the village of Dali; ground named Chalkanoras Stadium"
+        }
+      ],
+      "notes": "Only the ground's location is confirmed; capacity and stand design not found. Typed as a small stadium with one covered stand."
+    },
+    "larnaca-osm-way-256609297": {
+      "venueId": "larnaca-osm-way-256609297",
+      "city": "larnaca",
+      "name": "Stavrovouni Monastery",
+      "archetype": "heritage-fort",
+      "subject": "Stavrovouni Monastery on its steep conical hilltop: a walled cluster of cream buildings with a small church and a tall plain bell tower, surrounded by rock and pines",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc9",
+          "#a8998a",
+          "#7a5a3a"
+        ],
+        "roofColour": "#b5593a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter wall at the cliff edge"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "balcony ringed with a railing at the summit"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "founded c.327; rebuilt after the 1888 fire",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stavrovouni_Monastery",
+          "what": "monastery on the peak of Stavrovouni hill near Pyrga, founded c.327-329 by St Helena, walls, church and cells almost entirely destroyed by fire in 1888 and rebuilt; small church with frescoes; the summit lacked water and electricity until recent decades"
+        }
+      ],
+      "notes": "Siting and history from the source. Appearance (cream and white plaster, red tile hips, small church, monastic cells hugging the summit rim) is from general knowledge; dimensions estimated. Add a sloping rocky site if the generator supports it."
+    },
+    "larnaca-osm-way-493412494": {
+      "venueId": "larnaca-osm-way-493412494",
+      "city": "larnaca",
+      "name": "Old GSZ Stadium",
+      "archetype": "stadium",
+      "subject": "The 1928 GSZ stadium: an old open ground with a concrete main stand and a track around the pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d0ccc0",
+          "#7a8f7a",
+          "#eceae4"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1928",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Neo_GSZ_Stadium",
+          "what": "original GSZ stadium dating from 1928, replaced by the newer 13,032 seat Neo GSZ stadium"
+        }
+      ],
+      "notes": "Date and succession confirmed only; looks not described. Typed as an older concrete ground with a single covered stand."
+    },
+    "larnaca-osm-way-513953442": {
+      "venueId": "larnaca-osm-way-513953442",
+      "city": "larnaca",
+      "name": "Larnaca College",
+      "archetype": "campus-block",
+      "subject": "A school of two and three storey rendered blocks around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe4cf",
+          "#c9b48a",
+          "#f0ebdf"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from a Cypriot secondary school: flat-roofed U-plan in sand render."
+    },
+    "larnaca-osm-way-513962296": {
+      "venueId": "larnaca-osm-way-513962296",
+      "city": "larnaca",
+      "name": "Catholic Church of The Virgin Mary of The Graces",
+      "archetype": "church-classical",
+      "subject": "A small whitewashed Latin church with a pedimented front and a short bell tower in a walled yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f0ebdf",
+          "#b9a77f",
+          "#8e8a82"
+        ],
+        "roofColour": "#b5593a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Catholic parish church in central Larnaca; no description found. Typed from Levantine Catholic church type: simple white nave, small tower."
+    },
+    "larnaca-osm-way-536939636": {
+      "venueId": "larnaca-osm-way-536939636",
+      "city": "larnaca",
+      "name": "Alexander College",
+      "archetype": "campus-block",
+      "subject": "A four storey modern college block with ribbon windows and a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e3d3",
+          "#8fa0ab",
+          "#c9bfa8"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Private college in Larnaca; no building description found. Typed as a modern mid-rise block."
+    },
+    "larnaca-osm-way-759244399": {
+      "venueId": "larnaca-osm-way-759244399",
+      "city": "larnaca",
+      "name": "Akıncılar Sağlık Merkezi",
+      "archetype": "hospital",
+      "subject": "A small single-storey rural health centre with a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe4cf",
+          "#b9b3a8",
+          "#f0ebdf"
+        ],
+        "roofColour": "#b8b2a6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Village health centre in Akincilar (Louroujina); nothing found. Typed as a small clinic."
+    },
+    "larnaca-quiet-reflection": {
+      "venueId": "larnaca-quiet-reflection",
+      "city": "larnaca",
+      "name": "Church of Saint Euphemianos",
+      "archetype": "church-classical",
+      "subject": "A stone village church in the Cypriot Orthodox manner with a tiled roof and a free-standing bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#d4bf94",
+          "#b5593a",
+          "#e8dfc9"
+        ],
+        "roofColour": "#b5593a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Village church (Agios Euphemianos, Lysi area); no description found. Typed from the typical Cypriot village church: sandstone walls, tile roof, bell tower."
+    },
+    "larnaca-recreation": {
+      "venueId": "larnaca-recreation",
+      "city": "larnaca",
+      "name": "Fountain & Statue of Artemis",
+      "archetype": "park-landscape",
+      "subject": "A small paved garden with a round fountain basin and a statue on a plinth",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "stone",
+        "colours": [
+          "#d6d2c6",
+          "#a8998a",
+          "#f0ebdf"
+        ],
+        "roofColour": "#b9b3a8",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "figure of the goddess on a plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only; no description of the actual fountain found. Typed as a monumental fountain with a classical figure."
+    },
+    "larnaca-transit": {
+      "venueId": "larnaca-transit",
+      "city": "larnaca",
+      "name": "Larnaca Central Station",
+      "archetype": "transport-station",
+      "subject": "An intercity bus station: a row of bus bays under a long flat platform canopy next to a small ticket building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4ca",
+          "#5f7fa8",
+          "#eceae4"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Bus terminus; no description found. Typed from the type."
+    }
+  }
+}

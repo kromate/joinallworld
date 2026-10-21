@@ -1,0 +1,294 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/966569768",
+   "used": "irregular prayer-hall outline (about 32 x 24 m, containing match), rotated to face -Y"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large cream and green neighbourhood central mosque, gold central dome, four green corner domes, two 35 m minarets, walled court; no photo found on Commons"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of this mosque exists in evidence: dome count, colours and minaret placement follow the brief, not an image"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 40
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.28,
+    "bands": "#2f6b4f",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bc",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    10.6
+   ],
+   "params": {
+    "radius": 7,
+    "height": 8.5,
+    "profile": "onion",
+    "drum": 2.5,
+    "colour": "#c9a64a",
+    "drum_colour": "#efe8d6",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    -10,
+    -10.5,
+    10.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#2f6b4f",
+    "drum_colour": "#efe8d6",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    -10,
+    10.5,
+    10.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#2f6b4f",
+    "drum_colour": "#efe8d6",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    10,
+    -10.5,
+    10.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#2f6b4f",
+    "drum_colour": "#efe8d6",
+    "finial": true
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    10,
+    10.5,
+    10.6
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 3.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#2f6b4f",
+    "drum_colour": "#efe8d6",
+    "finial": true
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -17,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 35,
+    "style": "pencil",
+    "colour": "#efe8d6",
+    "trim": "#2f6b4f",
+    "accent": "#c9a64a",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    17,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 35,
+    "style": "pencil",
+    "colour": "#efe8d6",
+    "trim": "#2f6b4f",
+    "accent": "#c9a64a",
+    "cap_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 4.2,
+    "thickness": 3,
+    "bays": 6,
+    "shape": "pointed",
+    "colour": "#efe8d6",
+    "trim": "#2f6b4f",
+    "cap_colour": "#d8d0bc"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#efe8d6",
+    "trim": "#2f6b4f"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -25,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 52,
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#efe8d6",
+    "trim": "#2f6b4f"
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    25,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 52,
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#efe8d6",
+    "trim": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.4,
+    "pillar": 1.1,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#efe8d6",
+    "leafColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -23,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     33,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "kankatu-central-mosque"
+}

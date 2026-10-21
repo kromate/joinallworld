@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "niger-state-house-of-assembly",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/672194345",
+   "used": "real irregular 70 x 66 m footprint, name match; storeys and cream/green livery from brief"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/minna.json",
+   "used": "cream rendered block, columned portico, green dome over chamber, flags, gated forecourt (typed guess, unverified)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.18,
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#3d7a52",
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3d7a52",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "on": "osm",
+   "params": {
+    "radius": 9,
+    "height": 6,
+    "profile": "hemi",
+    "drum": 3,
+    "drumRadius": 9.5,
+    "lantern": 1.5,
+    "finial": 3,
+    "colour": "#3d7a52",
+    "drumColour": "#f1ead8"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 9,
+    "columns": 8,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#ffffff",
+    "roofColour": "#3d7a52"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.4,
+    "colour": "#f1ead8",
+    "board_colour": "#3d7a52"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    10,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#f1ead8",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 5,
+    "spacing": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     10
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the Assembly; real outline with a typed portico/dome/green livery guess"
+ }
+}

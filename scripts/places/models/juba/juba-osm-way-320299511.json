@@ -1,0 +1,249 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-way-320299511",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/320299511",
+   "used": "name match: marketplace area 19,341 m2 (the matched building is an 11x5 m hut, not used); modelled as a 70x55 m tidy stall grid"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-osm-way-320299511",
+   "used": "denser, tidier grid of stalls under blue and green tarpaulins and small tin sheds"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "stall-row",
+   "at": [
+    -2,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 4.0,
+    "kind": "umbrella",
+    "colours": [
+     "#3d5f86",
+     "#4f7a54"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -2,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 4.0,
+    "kind": "umbrella",
+    "colours": [
+     "#4f7a54",
+     "#cdb68e"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -2,
+    6,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 4.0,
+    "kind": "umbrella",
+    "colours": [
+     "#3d5f86",
+     "#cdb68e"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -2,
+    18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 4.0,
+    "kind": "umbrella",
+    "colours": [
+     "#3d5f86",
+     "#4f7a54"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -24,
+    0,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "roof_colour": "#4f7a54"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    26,
+    12,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "roof_colour": "#3d5f86"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#3d5f86",
+     "#cdb68e"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    2,
+    26,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 6,
+    "colours": [
+     "#4f7a54",
+     "#3d5f86"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3d5f86"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2,
+    "bottom": 2.5,
+    "colour": "#3d5f86"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; stall layout and tarpaulin colours from brief text, real stall pattern unknown"
+ }
+}

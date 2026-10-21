@@ -1,0 +1,112 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/549877936",
+   "used": "small prayer hall outline, 14 x 10 m"
+  },
+  {
+   "kind": "text",
+   "used": "city-style prayer hall: arched windows, shallow dome, short square minaret"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cc",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "glassColour": "#2f6b8f",
+    "plinth": 0.5,
+    "bands": "#2f6b8f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b8a0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "on": "hall",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "radius": 3.4,
+    "height": 2.2,
+    "profile": "hemi",
+    "drum": 0.8,
+    "colour": "#2f6b8f",
+    "drumColour": "#ece3cc",
+    "finial": 1.0
+   }
+  },
+  {
+   "type": "mosque-domed/minaret",
+   "at": [
+    -7.5,
+    -6.5,
+    0
+   ],
+   "params": {
+    "height": 15,
+    "style": "square",
+    "base_width": 2.4,
+    "colour": "#ece3cc",
+    "trim": "#c9b8a0",
+    "accent": "#2f6b8f",
+    "cap_colour": "#2f6b8f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "thickness": 0.3,
+    "colour": "#d9cdb0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-way-549877936",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline only. Dome, square minaret and colours are typical guesses."
+ }
+}

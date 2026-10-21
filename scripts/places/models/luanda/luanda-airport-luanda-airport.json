@@ -1,0 +1,550 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-airport-luanda-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NAIL_Drop-off_view_of_departures_level.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/luanda/dropoff.jpg",
+   "used": "landside: long glass curtain wall in a grid of pale piers, deep white fascia roof edge, teal sills, small white entrance pods at ground, signboard on the roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:NAIL_Airside_View_of_Terminal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/luanda/airside.jpg",
+   "used": "layout: central terminal with white skylit roof, long low connector, three white barrel-roofed piers with jet bridges, round control tower behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/14459284",
+   "used": "airport terminal outline, 98,000 m2 and 400 m across: only a 118 m central portion is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 9,
+  "fovDeg": 55,
+  "aspect": 1.75,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    5,
+    70,
+    0
+   ],
+   "params": {
+    "rect": [
+     170,
+     60
+    ],
+    "height": 0.15,
+    "colour": "#9a9d9f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     150,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4f747c",
+    "glassColour": "#3f6a72",
+    "windows": "ribbon",
+    "windowRatio": 0.8,
+    "bay": 18,
+    "plinth": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "depth": 1.6,
+      "colour": "#dcdfdf",
+      "bay": 18
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#cfd3d3"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#eceeee",
+    "material": "metal-sheet",
+    "overhang": 3.5,
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fascia",
+   "at": [
+    0,
+    0,
+    15
+   ],
+   "params": {
+    "colour": "#f2f3f3",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       156,
+       38
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       156,
+       37
+      ]
+     },
+     {
+      "z": 3.6,
+      "rect": [
+       148,
+       36
+      ]
+     },
+     {
+      "z": 5.2,
+      "rect": [
+       140,
+       34
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "central-hall",
+   "footprint": {
+    "rect": [
+     56,
+     22
+    ]
+   },
+   "at": [
+    0,
+    30
+   ],
+   "z0": 0,
+   "height": 19,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dcdd",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1f2f2",
+    "material": "metal-sheet",
+    "overhang": 1,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4,
+    18.6
+   ],
+   "params": {
+    "width": 118,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#c4232b",
+    "frameColour": "#c4232b",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-l",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    -46,
+    -15.5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f4f4",
+    "glassColour": "#3d4a52",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-c",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    10,
+    -15.5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f4f4",
+    "glassColour": "#3d4a52",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pod-r",
+   "footprint": {
+    "rect": [
+     5,
+     4
+    ]
+   },
+   "at": [
+    62,
+    -15.5
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3f4f4",
+    "glassColour": "#3d4a52",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e8e8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sill",
+   "at": [
+    0,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     148,
+     0.6
+    ],
+    "height": 1.0,
+    "colour": "#3f8f93"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-w",
+   "footprint": {
+    "rect": [
+     18,
+     44
+    ]
+   },
+   "at": [
+    -60,
+    64
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eef0f0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#f3f4f4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-e",
+   "footprint": {
+    "rect": [
+     18,
+     44
+    ]
+   },
+   "at": [
+    70,
+    64
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eef0f0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#f3f4f4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -69,
+     48,
+     0
+    ],
+    "end": [
+     -69,
+     78,
+     0
+    ],
+    "count": 3,
+    "yaw": 90,
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     61,
+     48,
+     0
+    ],
+    "end": [
+     61,
+     78,
+     0
+    ],
+    "count": 3,
+    "yaw": 270,
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 14
+     }
+    }
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    10,
+    50,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#f1f1ee"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "viaduct",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     9
+    ],
+    "height": 0.5,
+    "colour": "#7e8387"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-c",
+   "footprint": {
+    "rect": [
+     18,
+     40
+    ]
+   },
+   "at": [
+    5,
+    78
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#eef0f0",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#f3f4f4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "connector",
+   "footprint": {
+    "rect": [
+     130,
+     10
+    ]
+   },
+   "at": [
+    5,
+    48
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8eaea",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3f4f4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -44
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -44
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tapered fascia loft, shorter sign, three barrel-roofed piers, connector, apron and smaller pods added; terminal widened to 150 m of the real 400 m. Curtain wall still shows dense vertical lines instead of a few 18 m bays with heavy piers; fascia does not sweep down at the ends."
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "canaanland-worship",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1299521557",
+   "used": "real V-shaped two-wing outline of Faith Tabernacle, auto-fitted to 118 m"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Inside_Faith_Tabernacle.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ogboinba",
+   "view": "interior",
+   "used": "not used for geometry (interior only); confirms clear-span hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "auditorium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e5da",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bands": "#b9bbbb"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adaf",
+    "material": "metal-sheet",
+    "overhang": 1.5,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -60,
+    3
+   ],
+   "params": {
+    "width": 14,
+    "height": 3,
+    "bottom": 1,
+    "colour": "#6f8da3",
+    "posts": true
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -20,
+    -62,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    20,
+    -62,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -70
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     55,
+     -70
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an interior photo exists; real V outline scaled 0.45 to the 118 m clamp, facade colours and canopy are typed from the brief."
+ }
+}

@@ -1,0 +1,1584 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "paris",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "paris",
+    "climate": "temperate",
+    "vernacular": "Dense Haussmann-era Paris of cream limestone ashlar apartment blocks, six to seven storeys, with continuous wrought-iron balconies, tall French windows with shutters, grey zinc mansard roofs and rows of chimney pots; suburbs (Ile-de-France) of buff meuliere stone and rendered houses with red-tile or slate roofs, 1960s-70s concrete tower and slab estates (grands ensembles), and glass-and-steel office and retail buildings in La Defense and the periphery. Plane and lime street trees, gravel and paved squares.",
+    "wallColours": [
+      "#d8cdb4",
+      "#c9bda0",
+      "#e8e3d6",
+      "#b9a98a",
+      "#9b5a42",
+      "#a7a39a",
+      "#7a8288"
+    ],
+    "roofColours": [
+      "#6f777c",
+      "#4d5258",
+      "#a8503a",
+      "#8c8f90"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "stone",
+      "render",
+      "brick",
+      "concrete",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf"
+    ],
+    "ornament": "Wrought-iron balconies and window railings, carved stone cornices and string courses, French windows with louvred shutters, mansard roofs with dormers and chimney pots, stone quoins and pediments on civic buildings, Art Nouveau metal and glass canopies on older stations; concrete grids and prefabricated panels on 1960s-70s estates.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+        "what": "red brick and white stone with slate roofs at Versailles; typical Ile-de-France limestone and slate palette"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Accor_Arena",
+        "what": "1980s Paris concrete architecture (Bercy pyramid with grassed walls)"
+      }
+    ]
+  },
+  "places": {
+    "paris-airport-paris-airport": {
+      "venueId": "paris-airport-paris-airport",
+      "city": "paris",
+      "name": "Charles de Gaulle International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Paris Charles de Gaulle Terminal 1: the circular concrete \"camembert\" building with glazed tubes crossing the inner court, ringed by service roads and separate satellites",
+      "form": {
+        "footprint": "round",
+        "width_m": 190,
+        "depth_m": 190,
+        "storeys": 7,
+        "height_m": 38,
+        "roof": "flat",
+        "variant": "circular terminal"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b7b4ac",
+          "#8fa0a8",
+          "#6c6a66"
+        ],
+        "roofColour": "#8e8c86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "brutalist",
+      "era": "1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paris_Charles_de_Gaulle_Airport",
+          "what": "Terminal 1 circular design (Paul Andreu) with satellites and a refurbished central body; Terminal 2 linear with sub-terminals 2A-2G linked by elevated walkways"
+        }
+      ],
+      "notes": "Terminal 1 is a 1974 design by Paul Andreu: a fat concrete drum with long glass-walled tubes through the central court. Dimensions are estimates from memory of aerial views (not in the cited text). T2 is linear and would look different."
+    },
+    "paris-clinic": {
+      "venueId": "paris-clinic",
+      "city": "paris",
+      "name": "Hôpital Henri Mondor",
+      "archetype": "hospital",
+      "subject": "Hopital Henri Mondor in Creteil: a large 1960s-70s university hospital with a tall concrete-and-glass central block and lower wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 12,
+        "height_m": 50,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcac0",
+          "#8aa0a8",
+          "#5f6366"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "No description fetched; typed as a French grand-hopital with a tall central slab. Heights are guesses."
+    },
+    "paris-community-notices": {
+      "venueId": "paris-community-notices",
+      "city": "paris",
+      "name": "Préfecture des Hauts-de-Seine",
+      "archetype": "civic-palace",
+      "subject": "Prefecture des Hauts-de-Seine in Nanterre: a large administrative complex of pale concrete and glass blocks with flags before the entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c6bc",
+          "#7e8f98",
+          "#6c6a66"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Prefecture buildings in Nanterre belong to the 1970s administrative city around La Defense. No source found; typed."
+    },
+    "paris-community-voting-game": {
+      "venueId": "paris-community-voting-game",
+      "city": "paris",
+      "name": "Mairie de Noisy-le-Grand",
+      "archetype": "civic-small",
+      "subject": "Mairie de Noisy-le-Grand: a modern town hall of pale stone and glass with a flagged entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d3cdbf",
+          "#7e8f98",
+          "#6c6a66"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Name real, no description found. Noisy-le-Grand is a 1970s-80s new-town commune so a modern-style town hall is assumed."
+    },
+    "paris-community-workshop": {
+      "venueId": "paris-community-workshop",
+      "city": "paris",
+      "name": "Institut supérieur de mécanique de Paris",
+      "archetype": "campus-block",
+      "subject": "Institut superieur de mecanique de Paris (Supmeca) in Saint-Ouen: engineering school in brick and concrete workshop-and-lab blocks",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9b5a42",
+          "#8aa0a8",
+          "#6c6a66"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "No description found; Saint-Ouen is a former industrial suburb so a brick-and-concrete school is assumed."
+    },
+    "paris-market-game": {
+      "venueId": "paris-market-game",
+      "city": "paris",
+      "name": "Aéroville",
+      "archetype": "mall",
+      "subject": "Aeroville in Roissy: a long two-level shopping centre with pale metal-and-glass facades and a big car park, beside Charles de Gaulle airport",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d7d8d5",
+          "#7f98a3",
+          "#4f5559"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "No description found; opened 2013 next to Roissy airport. Typed from a modern French retail centre."
+    },
+    "paris-meal-stop": {
+      "venueId": "paris-meal-stop",
+      "city": "paris",
+      "name": "Maison du Val",
+      "archetype": "restaurant",
+      "subject": "Maison du Val: a restaurant in a two-storey buff stone house with a steep slate roof and a small terrace in the western suburbs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#cbbf9d",
+          "#ece8dd",
+          "#4d5258"
+        ],
+        "roofColour": "#4d5258",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Nothing found for this venue; meuliere/limestone house with slate roof assumed for the Yvelines suburbs."
+    },
+    "paris-osm-node-1906996216": {
+      "venueId": "paris-osm-node-1906996216",
+      "city": "paris",
+      "name": "Menhirs de la propiété Talma, dits la femme et la fille de Loth",
+      "archetype": "monument",
+      "subject": "Menhirs of the Talma property (\"la femme et la fille de Loth\"): two upright standing stones in a private park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 5,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "standing stones"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a49f90",
+          "#8a8578",
+          "#6d6a5f"
+        ],
+        "roofColour": "#8a8578",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 2,
+          "note": "two upright prehistoric stones"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "Neolithic",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Two prehistoric menhirs in the Talma estate (Essonne); the stone sizes (about 3 m tall, a taller and a shorter one) are estimated."
+    },
+    "paris-osm-node-2295902532": {
+      "venueId": "paris-osm-node-2295902532",
+      "city": "paris",
+      "name": "Pyramide de Juvisy",
+      "archetype": "monument",
+      "subject": "Pyramide de Juvisy: a small stone survey pyramid on a square base, marking the end of the 18th-century Paris meridian baseline",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "pyramidal",
+        "variant": "survey pyramid"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#c9bda0",
+          "#b3a888",
+          "#7a7468"
+        ],
+        "roofColour": "#b3a888",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1750s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Geodesic pyramid in Juvisy-sur-Orge; dimensions estimated. Nothing fetched."
+    },
+    "paris-osm-node-6698144969": {
+      "venueId": "paris-osm-node-6698144969",
+      "city": "paris",
+      "name": "Télécom Paris",
+      "archetype": "campus-block",
+      "subject": "Telecom Paris at Palaiseau: modern engineering-school buildings of glass and pale cladding on the Saclay plateau",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d7d8d5",
+          "#7f98a3",
+          "#4f5559"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Not described in sources found; the Saclay plateau campus is mostly 2010s glass-and-aluminium."
+    },
+    "paris-osm-relation-1223157": {
+      "venueId": "paris-osm-relation-1223157",
+      "city": "paris",
+      "name": "Institut hospitalier franco-britannique - Site Kléber",
+      "archetype": "hospital",
+      "subject": "Institut hospitalier franco-britannique (site Kleber): a mid-rise private hospital of cream render and punched windows in Levallois-Perret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 7,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd5c2",
+          "#8aa0a8",
+          "#6c6a66"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "No description found; typed as an urban private clinic."
+    },
+    "paris-osm-way-111365747": {
+      "venueId": "paris-osm-way-111365747",
+      "city": "paris",
+      "name": "Parc de Ladoucette",
+      "archetype": "park-landscape",
+      "subject": "Parc de Ladoucette in Drancy: a public park with lawns, tree-lined gravel paths and a small pond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8cdb4",
+          "#7a8f6a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#6f777c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Name only; no sources found for its contents."
+    },
+    "paris-osm-way-130808774": {
+      "venueId": "paris-osm-way-130808774",
+      "city": "paris",
+      "name": "Rungis International Market",
+      "archetype": "market-hall",
+      "subject": "Rungis International Market: huge flat-roofed wholesale halls, long low pavilions of concrete frames and metal cladding on loading apron streets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "wholesale pavilions",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4d3cd",
+          "#6f8ca6",
+          "#8c8f90"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "membrane",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rungis_International_Market",
+          "what": "232 ha wholesale food market opened 1969; meat and seafood pavilions"
+        }
+      ],
+      "notes": "The market occupies 232 ha since 1969; colours and shed dimensions are estimates, shown as one representative pavilion block."
+    },
+    "paris-osm-way-1415157895": {
+      "venueId": "paris-osm-way-1415157895",
+      "city": "paris",
+      "name": "École Nationale Supérieure d'Architecture de Paris La Villette",
+      "archetype": "campus-block",
+      "subject": "Ecole nationale superieure d'architecture de Paris-La Villette: a long 1970s concrete and metal-framed school building near the Canal de l'Ourcq",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b3b0a7",
+          "#7b8a91",
+          "#4f5559"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "No description found for this building; school of architecture, appearance typed."
+    },
+    "paris-osm-way-252506849": {
+      "venueId": "paris-osm-way-252506849",
+      "city": "paris",
+      "name": "Accor Arena",
+      "archetype": "stadium",
+      "subject": "Accor Arena (Bercy): the pyramid-shaped arena with sloping walls covered in lawn, a flat concrete roof edge and steps down from the park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 140,
+        "storeys": 6,
+        "height_m": 33,
+        "roof": "pyramidal",
+        "variant": "frustum pyramid with grassed slopes"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#5f8a3c",
+          "#b3b0a7",
+          "#4f5559"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1984",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Accor_Arena",
+          "what": "pyramid-shaped, sloping walls covered with lawn; architects Andrault-Parat, Jean Prouve and Aydin Guvan; opened 1984, renovated 2014-15; 15,000-20,300 seats"
+        }
+      ],
+      "notes": "Palais omnisports de Paris-Bercy, opened 1984 by Andrault-Parat, Prouve and Guvan; the four sloping sides are covered with grass and the pyramid is truncated. Width/height are estimates (about 33 m tall)."
+    },
+    "paris-osm-way-346302141": {
+      "venueId": "paris-osm-way-346302141",
+      "city": "paris",
+      "name": "Église Saint-Didier",
+      "archetype": "church-gothic",
+      "subject": "Eglise Saint-Didier: a small village church of pale limestone with a slate gable roof and square west tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cbbf9d",
+          "#a8a090",
+          "#4d5258"
+        ],
+        "roofColour": "#4d5258",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Likely a medieval parish church of the Val-d'Oise plain; no source fetched for its exact look."
+    },
+    "paris-osm-way-365579410": {
+      "venueId": "paris-osm-way-365579410",
+      "city": "paris",
+      "name": "Parc Montreau",
+      "archetype": "park-landscape",
+      "subject": "Parc Montreau in Montreuil: a public garden with lawns, paths and flower beds",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8cdb4",
+          "#7a8f6a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#6f777c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Name only; park contents typed."
+    },
+    "paris-osm-way-39316077": {
+      "venueId": "paris-osm-way-39316077",
+      "city": "paris",
+      "name": "Stade Roland-Garros",
+      "archetype": "stadium",
+      "subject": "Roland-Garros: the tennis complex with the Philippe-Chatrier stadium (retractable roof, floodlights, dark green steel facade), the Suzanne-Lenglen court roof and the greenhouse court",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 130,
+        "storeys": 4,
+        "height_m": 35,
+        "roof": "tensile",
+        "variant": "tennis stadium",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#1f4a36",
+          "#c8643a",
+          "#e9e9e6"
+        ],
+        "roofColour": "#d7d8d5",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1928 (rebuilt 2019-2024)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Roland_Garros",
+          "what": "complex 13.5 ha; Philippe-Chatrier 15,225 seats rebuilt 2019 with retractable roof and floodlights; Suzanne-Lenglen retractable roof of two 100 x 20 m white canvas parts (2024); Simonne-Mathieu greenhouse court; red brick dust over white limestone"
+        }
+      ],
+      "notes": "Philippe-Chatrier is about 15,000 seats; the clay is white limestone topped with red brick dust. Facade colours (dark green and clay-orange) are from common photos; dimensions are estimates."
+    },
+    "paris-osm-way-46173452": {
+      "venueId": "paris-osm-way-46173452",
+      "city": "paris",
+      "name": "Hôpital Émile Roux",
+      "archetype": "hospital",
+      "subject": "Hopital Emile Roux in Limeil-Brevannes: a pavilion-plan geriatric hospital, brick-and-meuliere blocks with tiled roofs set in a park",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#9b5a42",
+          "#c9bda0",
+          "#a8503a"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Opened as a sanatorium-style hospital in the early 1900s; I recall a pavilion layout but did not source it."
+    },
+    "paris-osm-way-678745793": {
+      "venueId": "paris-osm-way-678745793",
+      "city": "paris",
+      "name": "Westfield Vélizy 2",
+      "archetype": "mall",
+      "subject": "Westfield Velizy 2: a large two-storey shopping centre with an extensive car park, pale panel walls and glass entrances; opened 1972",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d1cec4",
+          "#7f98a3",
+          "#4f5559"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/V%C3%A9lizy_2",
+          "what": "shopping centre opened 1972, 170+ shops, 4 cinema screens; Auchan car park beside Villacoublay runway"
+        }
+      ],
+      "notes": "Source gives opening 1972 and 170+ shops only; the box shape is typed."
+    },
+    "paris-osm-way-85301687": {
+      "venueId": "paris-osm-way-85301687",
+      "city": "paris",
+      "name": "Église Saint-Martin",
+      "archetype": "church-gothic",
+      "subject": "Eglise Saint-Martin (Herblay): a large stone parish church on a slope with a massive square tower, slate roof and buttressed Gothic nave",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#c9bda0",
+          "#a8a090",
+          "#4d5258"
+        ],
+        "roofColour": "#4d5258",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "12th-16th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Assumed identification with the Saint-Martin church of Herblay by position; not sourced."
+    },
+    "paris-osm-way-976068267": {
+      "venueId": "paris-osm-way-976068267",
+      "city": "paris",
+      "name": "Fort de Vaujours",
+      "archetype": "heritage-fort",
+      "subject": "Fort de Vaujours: a Sere de Rivieres fort of earthworks and masonry casemates with a ditch, entrance caponniere and a Mougin turret on top",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 260,
+        "depth_m": 180,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "earth-covered fort",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#8c877d",
+          "#6f8450",
+          "#5a5a52"
+        ],
+        "roofColour": "#6f8450",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "Mougin turret"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1876-1882",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Fort_de_Vaujours",
+          "what": "Sere de Rivieres fort built 1876-1882, 48 guns, 691 soldiers, entrance caponniere and ditch, Mougin turret added 1911, covered way to batteries; partly demolished after radioactive contamination"
+        }
+      ],
+      "notes": "Built 1876-82; modernised 1911 with turret. Site is contaminated and partly demolished; buildings once stood inside. Exact size is estimated."
+    },
+    "paris-quiet-reflection": {
+      "venueId": "paris-quiet-reflection",
+      "city": "paris",
+      "name": "Église Saint-Flaive",
+      "archetype": "church-gothic",
+      "subject": "Eglise Saint-Flaive: a small stone parish church with a short bell tower and a slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cbbf9d",
+          "#a8a090",
+          "#4d5258"
+        ],
+        "roofColour": "#4d5258",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Nothing found about this church; typed as a Val-d'Oise village church."
+    },
+    "paris-recreation": {
+      "venueId": "paris-recreation",
+      "city": "paris",
+      "name": "Parc de Versailles",
+      "archetype": "park-landscape",
+      "subject": "Versailles park: the formal gardens with clipped hedges, gravel walks, statues and fountains running to the Grand Canal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "formal garden"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cfc7b2",
+          "#4f6f3a",
+          "#d8cdb0"
+        ],
+        "roofColour": "#4f6f3a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "baroque",
+      "era": "17th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "palace facade about 402 m long; red brick, white stone and slate; park 815 ha with 93 ha of formal gardens, Grand Canal, Petit Canal, Orangerie and Pieces d'eau"
+        }
+      ],
+      "notes": "Royal park 815 ha, 93 ha formal gardens, Grand Canal and Petit Canal; the chateau is only seen far away. Model is a representative formal-garden scene."
+    },
+    "paris-transit": {
+      "venueId": "paris-transit",
+      "city": "paris",
+      "name": "Malakoff - Rue Étienne Dolet",
+      "archetype": "transport-station",
+      "subject": "Malakoff - Rue Etienne Dolet metro station: a small street-level entrance building with a glass canopy over the stairs, Line 13",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "metro entrance"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c6bc",
+          "#7f98a3",
+          "#4f5559"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palace_of_Versailles",
+          "what": "general Ile-de-France materials used for a typed guess"
+        }
+      ],
+      "notes": "Real metro station; building style assumed."
+    }
+  }
+}

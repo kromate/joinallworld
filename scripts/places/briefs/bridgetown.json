@@ -1,0 +1,1726 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bridgetown",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bridgetown",
+    "climate": "tropical-maritime",
+    "vernacular": "Coral-limestone island with a British colonial legacy: Georgian and Jacobean-influenced plantation houses and churches in plastered coral stone, Victorian Gothic civic buildings in Bridgetown, and a vast stock of timber chattel houses painted in bright pastels and saturated colours with white trim and steep gabled roofs of galvanised sheet or timber shingle. Modern building is rendered concrete block with flat or shallow-pitched roofs, jalousie windows and hurricane shutters, set among palms, mahogany, casuarina and bougainvillea.",
+    "wallColours": [
+      "#f1e6c8",
+      "#e9a3a0",
+      "#6fb7c4",
+      "#f2cc4b",
+      "#ffffff",
+      "#c9d8a6",
+      "#d8b48f"
+    ],
+    "roofColours": [
+      "#9aa0a4",
+      "#6b5a48",
+      "#b5503a",
+      "#4a5a68",
+      "#7d8b6a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "limestone",
+      "timber",
+      "render",
+      "concrete",
+      "whitewash",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "timber-shingle",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Gingerbread fretwork and jigsaw trim on chattel-house eaves and verandas; louvred jalousie windows and hurricane shutters; coral-stone quoins and shaped Jacobean gables on great houses; pitched roofs with dormers (Demerara windows); Victorian Gothic pointed windows and clock tower on Parliament; white trim picking out brightly painted walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Barbados",
+        "what": "chattel houses are small timber gabled houses in bright colours on coral-block supports; Georgian plantation houses in plastered coral stone with verandas; coral stone is the local material"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/St._James_Church,_Barbados",
+        "what": "early churches built from coral and limestone, the island's non-volcanic stone"
+      }
+    ]
+  },
+  "places": {
+    "bridgetown-airport-bridgetown-airport": {
+      "venueId": "bridgetown-airport-bridgetown-airport",
+      "city": "bridgetown",
+      "name": "Grantley Adams International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The airport terminal seen from the forecourt: two linked two-level buildings (older departures block and newer arrivals building) designed to read as one continuous structure under a translucent tensile membrane roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "tensile",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe4e6",
+          "#4a7fa3",
+          "#ffffff"
+        ],
+        "roofColour": "#f0f0ec",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "translucent membrane roof spanning the join between old and new terminals"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1970s terminal, 2010s arrivals extension",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grantley_Adams_International_Airport",
+          "what": "Phase II added a separate 6,500 m2 arrivals building beside the existing terminal, converted to departures; the two designed to appear as one continuous structure under a translucent tensile membrane; 23 ground-level gates"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25639014",
+          "what": "OSM footprint 428.6 x 147.2 m, area 43356 m2"
+        }
+      ],
+      "notes": "Form and tensile roof are sourced; facade colours are estimates. OSM terminal outline is irregular and 429 x 147 m; the model shows the central 300 m. Ground-level gates only (no jet bridges documented)."
+    },
+    "bridgetown-clinic": {
+      "venueId": "bridgetown-clinic",
+      "city": "bridgetown",
+      "name": "Queen Elizabeth Hospital",
+      "archetype": "hospital",
+      "subject": "The main block of the island's 519-bed national hospital, a 1960s multi-storey concrete ward block with long balcony and louvre bands",
+      "form": {
+        "footprint": "L",
+        "width_m": 180,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6e1d3",
+          "#7fa3b5",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 5
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1963-64",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen_Elizabeth_Hospital,_Barbados",
+          "what": "519-bed complex on the Constitution River, current building constructed 1963-64, opened 14 Nov 1964"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/95405735",
+          "what": "OSM footprint 224.7 x 96.7 m, area 7561 m2"
+        }
+      ],
+      "notes": "Only date and bed count are sourced. Storey count (about 6) and colours are estimates from the type; OSM complex outline is 225 x 97 m. Typical of mid-century Caribbean public hospitals."
+    },
+    "bridgetown-community-notices": {
+      "venueId": "bridgetown-community-notices",
+      "city": "bridgetown",
+      "name": "Caribbean Examinations Council (CXC)",
+      "archetype": "office-low",
+      "subject": "The regional examinations council headquarters at Pine Plantation Road: a modern three-storey rendered office building",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1e9d8",
+          "#3a6ea5",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Caribbean_Examinations_Council",
+          "what": "headquarters at Prince Road, Pine Plantation Road, Saint Michael"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/479780105",
+          "what": "OSM footprint 77.1 x 51 m, area 2576 m2 (nearest building only, may not be this venue)"
+        }
+      ],
+      "notes": "Appearance not documented; typed low-rise Caribbean office from the city style. The nearest OSM building is 77 x 51 m but may not be the CXC building."
+    },
+    "bridgetown-community-voting-game": {
+      "venueId": "bridgetown-community-voting-game",
+      "city": "bridgetown",
+      "name": "Barbados Supreme Court Complex",
+      "archetype": "civic-palace",
+      "subject": "The new Supreme Court complex, a five-storey reinforced-concrete courts building with a long rendered facade and central entrance block",
+      "form": {
+        "footprint": "L",
+        "width_m": 117,
+        "depth_m": 57,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece2c9",
+          "#6a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance block"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "opened about 2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Supreme_Court_of_Judicature_(Barbados)",
+          "what": "five-storey reinforced concrete structure of 183,000 sq ft (17,000 m2) housing civil and criminal courtrooms; opened about 2009 replacing the colonial-era court"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7644922",
+          "what": "Wikidata Q7644922 supreme court, inception 1982"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/235142705",
+          "what": "OSM footprint 116.8 x 56.9 m, area 4310 m2"
+        }
+      ],
+      "notes": "Storeys and floor area are sourced; colours and facade style are estimates (wikidata inception 1982 conflicts with the 2009 opening cited in the article, which describes a new building). Width and depth from OSM."
+    },
+    "bridgetown-community-workshop": {
+      "venueId": "bridgetown-community-workshop",
+      "city": "bridgetown",
+      "name": "Samuel Jackman Prescod Institute of Technology",
+      "archetype": "campus-block",
+      "subject": "A technical-college campus of two- and three-storey concrete teaching blocks around open yards",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e0cc",
+          "#2f7fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/597550558",
+          "what": "OSM footprint 59.3 x 41.7 m, area 1711 m2"
+        }
+      ],
+      "notes": "No description found for this campus; typed low from the type and Caribbean institutional style. OSM lookup gave no matching building."
+    },
+    "bridgetown-market-game": {
+      "venueId": "bridgetown-market-game",
+      "city": "bridgetown",
+      "name": "Sheraton Mall",
+      "archetype": "mall",
+      "subject": "A two-level suburban shopping centre in Christ Church with rendered walls, open walkways and a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 135,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0dcc3",
+          "#c4574b",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7494675",
+          "what": "Wikidata Q7494675: shopping and entertainment complex in Christ Church, Barbados"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/95179441",
+          "what": "OSM footprint 172.2 x 135.1 m, area 16599 m2"
+        }
+      ],
+      "notes": "Only the type and location are known; OSM footprint is 172 x 135 m. Colours are typical south-coast Barbados commercial pastels, not verified."
+    },
+    "bridgetown-meal-stop": {
+      "venueId": "bridgetown-meal-stop",
+      "city": "bridgetown",
+      "name": "Round House Restaurant",
+      "archetype": "restaurant",
+      "subject": "The Round House restaurant on the east coast near Bathsheba, a compact two-storey seaside building above the rocky Atlantic shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f4f1ea",
+          "#2f7fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#9a5a40",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "seaward dining terrace"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/796337926",
+          "what": "OSM footprint 25.9 x 21.6 m, area 395 m2"
+        }
+      ],
+      "notes": "Facade and shape are not documented; the building outline is a compact 26 x 22 m. Typed low from the type. Bathsheba is the rugged east coast: boulder-strewn beach, salt-weathered painted timber, a clifftop terrace."
+    },
+    "bridgetown-osm-node-11686666569": {
+      "venueId": "bridgetown-osm-node-11686666569",
+      "city": "bridgetown",
+      "name": "mamu's cafe",
+      "archetype": "restaurant",
+      "subject": "A tiny roadside cafe in a single-storey painted building on the south coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2cc4b",
+          "#3f9c8d",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/905497584",
+          "what": "OSM footprint 12.4 x 9.5 m, area 118 m2"
+        }
+      ],
+      "notes": "Nothing found about this cafe. Typed from the 12 x 9 m building underneath the OSM node and from Barbadian roadside shacks: bright paint, white trim, shed roof of corrugated sheet."
+    },
+    "bridgetown-osm-node-13686266671": {
+      "venueId": "bridgetown-osm-node-13686266671",
+      "city": "bridgetown",
+      "name": "Franz Phillips Memorial Picture Hole",
+      "archetype": "park-landscape",
+      "subject": "A small clifftop look-out on the rugged north-east coast of Barbados",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cdbfa0",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "viewpoint rail"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information could be found for this look-out. Typed as a rough coral-stone viewing spot with a rail and steps; a generator should keep it very small and plain."
+    },
+    "bridgetown-osm-node-8393535458": {
+      "venueId": "bridgetown-osm-node-8393535458",
+      "city": "bridgetown",
+      "name": "L'Azure Restaurant",
+      "archetype": "restaurant",
+      "subject": "A clifftop restaurant on the south-east Atlantic coast with an open terrace above the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2e1d3",
+          "#c98a7a",
+          "#ffffff"
+        ],
+        "roofColour": "#9a5a40",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1887 resort, restaurant modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/480462342",
+          "what": "OSM footprint 45.5 x 36.3 m, area 835 m2"
+        }
+      ],
+      "notes": "Nothing documented was found; coordinates sit on the south-east Atlantic clifftop (the nearest OSM building is a 45 x 36 m hotel/spa). Typed from a Caribbean resort restaurant: pale walls, hipped roof, wide terrace. The resort identification is from general knowledge, not sourced."
+    },
+    "bridgetown-osm-way-1042768231": {
+      "venueId": "bridgetown-osm-way-1042768231",
+      "city": "bridgetown",
+      "name": "Erdiston Teachers' Training College",
+      "archetype": "campus-block",
+      "subject": "The teacher-training college campus: a plantation-era house surrounded by low concrete teaching blocks on a large green site",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#efe5cc",
+          "#4f8a6b",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "founded 1948",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q60764292",
+          "what": "Wikidata: public teacher training institution in Barbados, founded 1948"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1042768231",
+          "what": "OSM footprint 277.7 x 205 m, area 44739 m2"
+        }
+      ],
+      "notes": "Only the 1948 founding and the 278 x 205 m site are known. The great-house core is a guess from the college's Pine Hill site; typed low."
+    },
+    "bridgetown-osm-way-1137316499": {
+      "venueId": "bridgetown-osm-way-1137316499",
+      "city": "bridgetown",
+      "name": "National Stadium and Sports Center",
+      "archetype": "stadium",
+      "subject": "The Wildey national stadium: an oval athletics and football stadium with concrete stands on steel supports, a velodrome, and the roofs now removed",
+      "form": {
+        "footprint": "oval",
+        "width_m": 250,
+        "depth_m": 200,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d3c8",
+          "#00267f",
+          "#ffc726"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "steel roof supports remain, roofs removed 2018-19"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4,
+          "note": "several gates on the north side"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1968-1970",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barbados_National_Stadium",
+          "what": "five named stands on steel supports with roofs; roofs removed Dec 2018 to Jan 2019; Randolph Fields Velodrome; construction 1968-70, opened 23 Oct 1970; capacity 5,000"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1137316499",
+          "what": "OSM footprint 266.4 x 245.6 m, area 50177 m2"
+        }
+      ],
+      "notes": "Stands, velodrome, steel supports and the roof removal are sourced. National colours (blue and gold) used for seats/trim as an estimate. OSM outline 266 x 246 m includes the track."
+    },
+    "bridgetown-osm-way-1432859122": {
+      "venueId": "bridgetown-osm-way-1432859122",
+      "city": "bridgetown",
+      "name": "Saint Joseph Hospital",
+      "archetype": "hospital",
+      "subject": "The former Saint Joseph hospital, a large 1960s low-rise ward complex now abandoned and overgrown",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d1bd",
+          "#8f9c8a",
+          "#ffffff"
+        ],
+        "roofColour": "#7d7d78",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank, weathered"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "opened 1966",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Joseph_Hospital,_Barbados",
+          "what": "hospital in Barbados, inception 1966; OSM tags the site as historic ruins"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1432859122",
+          "what": "OSM footprint 375.9 x 325 m, area 81391 m2"
+        }
+      ],
+      "notes": "OSM tags the 376 x 325 m site as ruins; appearance not documented. The model shows one ward block as weathered concrete with overgrown grass. Typed low."
+    },
+    "bridgetown-osm-way-255443003": {
+      "venueId": "bridgetown-osm-way-255443003",
+      "city": "bridgetown",
+      "name": "Fort Charles",
+      "archetype": "heritage-fort",
+      "subject": "Charles Fort on Needham's Point: low coral-stone gun batteries facing Carlisle Bay with cannon on the ramparts, now inside a hotel garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#cdbfa0",
+          "#a89a7e",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 6
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1650, rebuilt in stone 1740s, restored 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Fort_(Barbados)",
+          "what": "built 1650 as Needham's Fort, rebuilt in stone in the 1740s with two added batteries; decommissioned 1905; stabilised 1966 and restored 2004; sits on the grounds of the Hilton Barbados at Needham's Point overlooking Carlisle Bay"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/255443003",
+          "what": "OSM footprint 72 x 49.5 m, area 2799 m2"
+        }
+      ],
+      "notes": "Era, stone material and batteries are sourced; wall height and cannon count are estimates. Surroundings are manicured hotel lawn and palms with the sea beyond."
+    },
+    "bridgetown-osm-way-37935746": {
+      "venueId": "bridgetown-osm-way-37935746",
+      "city": "bridgetown",
+      "name": "National Heroes Square",
+      "archetype": "park-landscape",
+      "subject": "National Heroes Square (formerly Trafalgar Square): a paved square with the 1865 fountain and the empty Nelson plinth, with the neo-Gothic Parliament buildings on its west side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 34,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "painted-render",
+        "colours": [
+          "#d7c9a8",
+          "#8c7a5e",
+          "#ffffff"
+        ],
+        "roofColour": "#7d6a55",
+        "roofMaterial": "timber-shingle",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "1865 water-supply fountain"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "plinth (Nelson statue removed 2020)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "Parliament tower"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1813 square, fountain 1865",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Heroes_Square",
+          "what": "Nelson statue unveiled 1813 stood at west end until 2020; fountain of 1865 marks piped water; Cenotaph; west wing of Parliament seen from the square"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/37935746",
+          "what": "OSM footprint 106.2 x 33.9 m, area 2436 m2"
+        }
+      ],
+      "notes": "Fountain, cenotaph and Parliament are sourced; Parliament is a Victorian Gothic complex in coral stone with a clock tower, on the Careenage waterfront. Colours are estimates."
+    },
+    "bridgetown-osm-way-384916728": {
+      "venueId": "bridgetown-osm-way-384916728",
+      "city": "bridgetown",
+      "name": "St. James Parish Church",
+      "archetype": "church-gothic",
+      "subject": "The Holetown parish church: a modest coral-stone Anglican church with a gabled nave, west tower and belfry, rebuilt in the 1870s",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc2",
+          "#a89a7e",
+          "#ffffff"
+        ],
+        "roofColour": "#6b5a48",
+        "roofMaterial": "timber-shingle",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square belfry with the 1696 bell"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "1690s original, current building 1870s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._James_Church,_Barbados",
+          "what": "current structure 1870s; coral and limestone fabric; nave roof raised on new pillars and arches 1874; sanctuary and north porch added 1900s; belfry with 1696 bell"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7588447",
+          "what": "Wikidata Q7588447 church in Holetown"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/384916728",
+          "what": "OSM footprint 29.7 x 19.1 m, area 449 m2"
+        }
+      ],
+      "notes": "Materials, dates, belfry and nave are sourced; roof covering and window style are estimates. OSM footprint 30 x 19 m."
+    },
+    "bridgetown-osm-way-385052120": {
+      "venueId": "bridgetown-osm-way-385052120",
+      "city": "bridgetown",
+      "name": "Queen's College",
+      "archetype": "campus-block",
+      "subject": "A co-educational secondary school in Husbands, St James: two- and three-storey rendered teaching blocks around a quadrangle",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee3cc",
+          "#3a6ea5",
+          "#ffffff"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "school 1883, current site since 1990",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_College,_St_James",
+          "what": "school founded 1883, moved from Constitution Road in Bridgetown to its present site in Husbands, St James in 1990"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/946968185",
+          "what": "OSM footprint 26 x 25.5 m, area 661 m2"
+        }
+      ],
+      "notes": "Only founding date and the 1990 move are sourced, so the campus is modern (1990). Form and colours are typical Barbadian school blocks, not verified."
+    },
+    "bridgetown-osm-way-440434642": {
+      "venueId": "bridgetown-osm-way-440434642",
+      "city": "bridgetown",
+      "name": "St. Margaret's Anglican Church",
+      "archetype": "church-classical",
+      "subject": "A small Anglican parish church in St Andrew: a coral-stone rectangular nave with a gable roof and a modest bell turret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#e3d9c0",
+          "#b0a68c",
+          "#ffffff"
+        ],
+        "roofColour": "#7a7068",
+        "roofMaterial": "timber-shingle",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower or turret"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Margaret%27s_Church,_Barbados",
+          "what": "article on St. Margaret's Church, Barbados (not read in detail)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/440434642",
+          "what": "OSM footprint 22.9 x 10.3 m, area 236 m2"
+        }
+      ],
+      "notes": "Typed from the 23 x 10 m footprint and the common Barbados parish-church pattern. Not described in any source read, so low."
+    },
+    "bridgetown-osm-way-480461489": {
+      "venueId": "bridgetown-osm-way-480461489",
+      "city": "bridgetown",
+      "name": "Barbados Community College (BCC)",
+      "archetype": "campus-block",
+      "subject": "The community-college campus at Howell's Cross Road: a mix of old Eastry House and modern two- and three-storey teaching blocks around green courts",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d2",
+          "#2f7fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "founded 1968",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barbados_Community_College",
+          "what": "public community college founded 1968"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/480461489",
+          "what": "OSM footprint 458.1 x 257.1 m, area 75693 m2"
+        }
+      ],
+      "notes": "Only the 1968 founding and the 458 x 257 m site are sourced. Typed low. The campus is large; the model shows a representative block."
+    },
+    "bridgetown-osm-way-576678586": {
+      "venueId": "bridgetown-osm-way-576678586",
+      "city": "bridgetown",
+      "name": "Kensington Oval",
+      "archetype": "stadium",
+      "subject": "The 2007 Kensington Oval: a compact 30,000-seat cricket ground of tiered stands with sloping roofs, a media centre and a jumbo screen",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 170,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3d7d9",
+          "#1f4e9c",
+          "#f2c230"
+        ],
+        "roofColour": "#e6e9ea",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "jumbo video screen"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Sobers pavilion"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "rebuilt 2006-07",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kensington_Oval",
+          "what": "capacity 30,549; stands largely rebuilt for the 2007 Cricket World Cup by Arup Associates (Dipesh Patel); stands include 3Ws, Hall and Griffith, Challenor, Kensington, Pickwick; jumbo screen; grassy hill"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/576678586",
+          "what": "OSM footprint outline 260 x 218 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/576678586",
+          "what": "OSM footprint 260.5 x 218.3 m, area 45155 m2"
+        }
+      ],
+      "notes": "Capacity, designer, jumbo screen, stands and pavilion are sourced; roof shape and exact seat colours are estimates (maroon/blue/yellow cricket-ground palette). The Oval is a modest bowl rather than a ring, with a grassy hill at one end."
+    },
+    "bridgetown-osm-way-864190108": {
+      "venueId": "bridgetown-osm-way-864190108",
+      "city": "bridgetown",
+      "name": "Gun Hill Signal Station",
+      "archetype": "heritage-fort",
+      "subject": "The 1818 Gun Hill signal station on its ridge: a stout white tower with a crenellated top beside a kitchen, magazine and ruined barracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "limestone",
+        "colours": [
+          "#f3efe6",
+          "#b8ad94",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "tower parapet"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "carved lion on the hillside"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1818-19, restored 1981",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gun_Hill_Signal_Station",
+          "what": "signal station established 1818-19; prominent tower, kitchen, magazine, sentry box and ruined barracks; restored by the National Trust in 1981; a well-known lion sculpture on the hillside below"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/864190108",
+          "what": "OSM footprint 23.2 x 9.3 m, area 160 m2"
+        }
+      ],
+      "notes": "Tower, the outbuildings and the lion are sourced; the white colour and crenellated top are from general recollection and are unverified. Small site; the tower dominates."
+    },
+    "bridgetown-osm-way-93917192": {
+      "venueId": "bridgetown-osm-way-93917192",
+      "city": "bridgetown",
+      "name": "Queen's Park",
+      "archetype": "park-landscape",
+      "subject": "Queen's Park in Bridgetown: an open lawn with large old trees, a white Georgian former army commander's house and a theatre pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 434,
+        "depth_m": 186,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4f0e4",
+          "#6a8f6a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5503a",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Queen's Park House"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "house about 1780, park 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7270058",
+          "what": "Wikidata: national park and former residence of the British Army commander in Barbados"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/93917192",
+          "what": "OSM footprint 433.8 x 185.8 m, area 54522 m2"
+        }
+      ],
+      "notes": "Wikidata confirms the former military residence; house and pavilion forms are typed from general knowledge of Georgian Bajan houses. The park is known for a very large baobab tree (not modelled)."
+    },
+    "bridgetown-quiet-reflection": {
+      "venueId": "bridgetown-quiet-reflection",
+      "city": "bridgetown",
+      "name": "St. Philip's Parish Church",
+      "archetype": "church-gothic",
+      "subject": "The parish church of St Philip: a long coral-stone nave with a west tower, rebuilt in 1837 after hurricane damage and restored after a 1977 fire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e5dcc5",
+          "#a69a82",
+          "#ffffff"
+        ],
+        "roofColour": "#7a7068",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower"
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "1837",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Philip%27s_Parish_Church,_Barbados",
+          "what": "built 1640, destroyed by hurricanes 1780 and 1831, rebuilt and consecrated 20 Oct 1837, partly damaged by fire on 23 Feb 1977, since repaired"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/741736399",
+          "what": "OSM footprint 39.4 x 16.9 m, area 612 m2"
+        }
+      ],
+      "notes": "History sourced; tower, materials and architecture style are estimates from the common Barbados coral-stone Anglican pattern (no source describes the fabric). OSM footprint 39 x 17 m."
+    },
+    "bridgetown-recreation": {
+      "venueId": "bridgetown-recreation",
+      "city": "bridgetown",
+      "name": "Farley Hill National Park",
+      "archetype": "heritage-fort",
+      "subject": "Farley Hill: the roofless coral-stone ruin of the burnt plantation house on a hilltop lawn among mahogany and casuarina trees with sea views",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d8cba9",
+          "#9a8e75",
+          "#ffffff"
+        ],
+        "roofColour": "#7d6a55",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "ruined veranda"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "house 19th century, ruined in the 20th",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Farley_Hill,_Saint_Peter,_Barbados",
+          "what": "Farley Hill national park in Saint Peter occupies the site of Grenade Hall Plantation; ruins of the former plantation house in the park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/471281496",
+          "what": "OSM footprint 450.6 x 370.9 m, area 107067 m2"
+        }
+      ],
+      "notes": "Ruins and plantation location sourced; stone colour, arch count and roofless state are from general knowledge of the burnt house (the site later became a park). Hill-top grounds of 450 x 371 m."
+    },
+    "bridgetown-transit": {
+      "venueId": "bridgetown-transit",
+      "city": "bridgetown",
+      "name": "Speightstown Bus Terminal",
+      "archetype": "transport-station",
+      "subject": "The Speightstown bus terminal: an open covered bus station with a long corrugated roof on steel posts and bays for the blue-and-yellow public buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 33,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d3c8",
+          "#3a6ea5",
+          "#f2cc4b"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/12724653",
+          "what": "OSM footprint 66.9 x 33.3 m, area 1897 m2"
+        }
+      ],
+      "notes": "Nothing was found that describes the terminal. Typed from the 67 x 33 m footprint and the OSM bus_station tag: an open shed with bays. Public buses are blue with yellow trim, used for the trim colour."
+    }
+  }
+}

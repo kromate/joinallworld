@@ -1,0 +1,509 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D9%85%D8%B7%D8%A7%D8%B1_%D9%86%D9%88%D8%A7%D9%83%D8%B4%D9%88%D8%B7_%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A_%D8%A7%D9%85_%D8%A7%D9%84%D8%AA%D9%88%D9%86%D8%B3%D9%8A.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "elhassen sedigh",
+   "view": "front",
+   "file": "/tmp/places-evidence/nouakchott/a2.jpg",
+   "used": "landside front at night: low dark-glazed ground storey under a flat projecting canopy on round columns, upper glazed band, rooftop sign band, cream end piers, agave planting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:International_Nouakchott_airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "elhassen sedigh",
+   "view": "detail",
+   "used": "arrivals entrance: cream/ochre band above glazed doors, green signage band on roof edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/535582040",
+   "used": "overall terminal size (about 240 m long); 116 m central part modelled, wings and 6 jet bridges from Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     116,
+     30
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3c4648",
+    "windows": "curtain",
+    "windowRatio": 0.75,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "material": "concrete",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     116,
+     24
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4a5557",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b7b2a4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978d",
+    "material": "concrete",
+    "overhang": 1.2,
+    "parapet": 0.5
+   },
+   "z0": 5.6
+  },
+  {
+   "type": "mass",
+   "id": "end-pier-r",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    50,
+    4
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9c3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-pier-l",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    -50,
+    4
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4cdbf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b978d",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     92,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -4.4
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#39ff4a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#39ff4a"
+   },
+   "z0": 10.2
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -15,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 40,
+    "depth": 10,
+    "height": 3.5,
+    "thickness": 1.0,
+    "columns": 6,
+    "colour": "#4a3a2c",
+    "edgeColour": "#3b2e22"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "jet-bridge",
+     "params": {
+      "length": 16
+     },
+     "rotDeg": 90
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     26,
+     0
+    ],
+    "end": [
+     40,
+     26,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    78,
+    30,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "style": "round",
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb",
+   "footprint": {
+    "rect": [
+     100,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -22
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e6e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e6e0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "kerb-red",
+     "footprint": {
+      "rect": [
+       4,
+       0.75
+      ]
+     },
+     "at": [
+      0,
+      -27
+     ],
+     "height": 0.52,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#c8302a",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#c8302a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -48,
+     -22,
+     0
+    ],
+    "end": [
+     48,
+     -22,
+     0
+    ],
+    "count": 13
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "agave",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "agave",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -18,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "agave",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "agave",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    6,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "agave",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -25,
+    0
+   ],
+   "params": {
+    "kind": "agave",
+    "height": 3.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrier0",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.6
+    ]
+   },
+   "at": [
+    -12,
+    -19
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0701f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0701f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrier1",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.6
+    ]
+   },
+   "at": [
+    -3,
+    -19
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0701f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0701f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrier2",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.6
+    ]
+   },
+   "at": [
+    6,
+    -19
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0701f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0701f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "barrier3",
+   "footprint": {
+    "rect": [
+     2.4,
+     0.6
+    ]
+   },
+   "at": [
+    16,
+    -19
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0701f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0701f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-airport-nouakchott-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Night front photo only: rooftop sign is a flat green board (no lit Arabic lettering, no emissive); canopy/kerb/agave/barriers placed but simplified; wings/airside simplified to central 116 m; floodlit colours."
+ }
+}

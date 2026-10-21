@@ -1,0 +1,610 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Southwest_View_of_the_Church_of_Saint_Mary,_Downe_(05).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Doyle of London",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/ch1.jpg",
+   "used": "flint west tower with stone quoins and lancet, steep grey shingled broach spire, red clay-tile nave roof, flint churchyard wall, broadleaf trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Porch_on_the_South_Face_of_the_Church_of_Saint_Mary,_Downe_(02).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Doyle of London",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/ch2.jpg",
+   "used": "timber glazed south porch on a flint and stone base with tiled gable; stone buttress and traceried window; yew behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/61111910",
+   "used": "footprint split into tower, nave, chancel, porch, vestry"
+  }
+ ],
+ "camera": {
+  "yawDeg": -38,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     6.6,
+     6.6
+    ]
+   },
+   "at": [
+    -12.55,
+    -0.25
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8b80",
+    "windows": "pointed-arch",
+    "windowRatio": 0.05,
+    "bay": 7,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "pointed-arch",
+     "right": "plain"
+    },
+    "trimColour": "#cfc6ae"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5d5c58"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.75,
+    -3.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 15,
+    "colour": "#cfc6ae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -15.75,
+    2.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 15,
+    "colour": "#cfc6ae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.350000000000001,
+    -3.45,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 15,
+    "colour": "#cfc6ae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.350000000000001,
+    2.95,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "height": 15,
+    "colour": "#cfc6ae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.85,
+    -0.35,
+    0
+   ],
+   "params": {
+    "rect": [
+     22.5,
+     9
+    ],
+    "height": 5.6,
+    "colour": "#d2cdbd",
+    "slot": "rubble-flint",
+    "windows": "pointed-arch",
+    "windowShape": "pointed",
+    "windowRatio": 0.13,
+    "bay": 5.5,
+    "faces": {
+     "front": "pointed",
+     "back": "pointed",
+     "left": "plain",
+     "right": "plain"
+    },
+    "storeys": 1,
+    "trimColour": "#cfc6ae",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave-roof",
+   "footprint": {
+    "rect": [
+     22.5,
+     9
+    ]
+   },
+   "at": [
+    1.85,
+    -0.35
+   ],
+   "z0": 5.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a85d44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 40,
+    "axis": "x",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    15.2,
+    -0.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5.5,
+     7.4
+    ],
+    "height": 4.6,
+    "colour": "#d2cdbd",
+    "slot": "rubble-flint",
+    "windows": "pointed-arch",
+    "windowShape": "pointed",
+    "windowRatio": 0.13,
+    "bay": 4,
+    "faces": {
+     "front": "pointed",
+     "back": "plain",
+     "left": "plain",
+     "right": "pointed"
+    },
+    "storeys": 1,
+    "trimColour": "#cfc6ae",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel-roof",
+   "footprint": {
+    "rect": [
+     5.5,
+     7.4
+    ]
+   },
+   "at": [
+    15.2,
+    -0.2
+   ],
+   "z0": 4.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a85d44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 40,
+    "axis": "x",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    5.75,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     3.3
+    ],
+    "height": 3.4,
+    "colour": "#d2cdbd",
+    "slot": "rubble-flint",
+    "windows": "none",
+    "windowShape": "pointed",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "storeys": 1,
+    "trimColour": "#cfc6ae",
+    "plinth": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry-roof",
+   "footprint": {
+    "rect": [
+     8,
+     3.3
+    ]
+   },
+   "at": [
+    6,
+    5.75
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#a85d44",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85d44",
+    "material": "clay-tile",
+    "pitch": 40,
+    "axis": "x",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock",
+   "footprint": {
+    "rect": [
+     1.0,
+     0.5
+    ]
+   },
+   "at": [
+    -15.7,
+    -3.7
+   ],
+   "z0": 9.0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#2d5aa8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d5aa8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -12.55,
+    -0.25,
+    15
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.4,
+       7.4
+      ]
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       7.0,
+       7.0
+      ]
+     },
+     {
+      "z": 2.0,
+      "rect": [
+       4.6,
+       4.6
+      ]
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       3.4,
+       3.4
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 13.5,
+      "rect": [
+       0.12,
+       0.12
+      ]
+     }
+    ],
+    "colour": "#4a4a47",
+    "capBottom": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     4,
+     2.8
+    ]
+   },
+   "at": [
+    -4.1,
+    -6.2
+   ],
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5b4a38",
+    "windows": "pointed-arch",
+    "windowRatio": 0.45,
+    "bay": 1.2,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "pointed-arch",
+     "right": "pointed-arch"
+    },
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a05c42",
+    "material": "clay-tile",
+    "pitch": 42,
+    "axis": "y",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "mass",
+     "id": "buttress",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.9
+      ]
+     },
+     "at": [
+      0,
+      0
+     ],
+     "height": 3.6,
+     "storeys": 1,
+     "wall": {
+      "material": "stone",
+      "colour": "#b7ad98",
+      "windows": "none",
+      "windowRatio": 0,
+      "bay": 5,
+      "faces": {
+       "front": "plain",
+       "back": "plain",
+       "left": "plain",
+       "right": "plain"
+      }
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#b7ad98"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -5,
+     -5.1
+    ],
+    "end": [
+     11,
+     -5.1
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -3,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.3,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.8,
+    "pillar": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21,
+    -13,
+    1.3
+   ],
+   "params": {
+    "rect": [
+     48,
+     0.62
+    ],
+    "height": 0.2,
+    "colour": "#8a4a38",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   60,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Square battered tower with quoins and lancet, steep broach spire with flared skirt, low coping wall and smaller clock added; tower wall is plain stone colour not knapped flint texture, no louvred belfry slits or clock hood, trees generic, street/roundabout not modelled."
+ }
+}

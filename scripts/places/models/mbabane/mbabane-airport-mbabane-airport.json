@@ -1,0 +1,378 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:King_Mswati_III_International_Airport_-_Terminal.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "KrasseChecker",
+   "view": "front",
+   "file": "/tmp/places-evidence/mbabane/airport1.jpg",
+   "used": "long low glazed front in dark reflective glass, row of white columns with raked white struts on small plinths, dark flat soffit canopy under a white fascia, lawn with agaves in front, grey plinth strip"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5b6b73",
+    "windows": "curtain",
+    "windowRatio": 0.92,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "curtain"
+    },
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3f44",
+    "material": "metal-sheet",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "soffit",
+   "at": [
+    0,
+    -9
+   ],
+   "params": {
+    "rect": [
+     88,
+     18
+    ],
+    "z0": 13.2,
+    "height": 0.35,
+    "colour": "#3a3f44",
+    "topColour": "#3a3f44"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fascia",
+   "at": [
+    0,
+    -18.2
+   ],
+   "params": {
+    "rect": [
+     88,
+     0.4
+    ],
+    "z0": 13.0,
+    "height": 1.6,
+    "colour": "#f6f6f4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lettering",
+   "at": [
+    0,
+    -18.4
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.15
+    ],
+    "z0": 14.7,
+    "height": 1.0,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.2,
+          1.2
+         ]
+        },
+        {
+         "z": 1.5,
+         "rect": [
+          0.6,
+          0.6
+         ]
+        }
+       ],
+       "colour": "#c9bfae"
+      }
+     },
+     {
+      "type": "prism",
+      "id": "col",
+      "params": {
+       "rect": [
+        0.5,
+        0.5
+       ],
+       "z0": 1.5,
+       "height": 12.0,
+       "colour": "#f4f4f2"
+      }
+     },
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.3,
+         0.3
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         1.5
+        ],
+        [
+         0,
+         -3.4,
+         13.0
+        ]
+       ],
+       "colour": "#f4f4f2"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -40,
+     -14.6,
+     0
+    ],
+    "end": [
+     40,
+     -14.6,
+     0
+    ],
+    "count": 11,
+    "lod2Step": 20
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0,
+      -14
+     ]
+    ],
+    "width": 3,
+    "colour": "#b9b2a4"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -2,
+      0
+     ],
+     [
+      -2,
+      -14
+     ]
+    ],
+    "width": 0.3,
+    "colour": "#8a4b36"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      2,
+      0
+     ],
+     [
+      2,
+      -14
+     ]
+    ],
+    "width": 0.3,
+    "colour": "#8a4b36"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "profile": [
+        [
+         0,
+         0
+        ],
+        [
+         0.9,
+         0.35,
+         "#5f7f4a"
+        ],
+        [
+         0.5,
+         0.8,
+         "#5f7f4a"
+        ],
+        [
+         0,
+         1.0,
+         "#6f8f55"
+        ]
+       ]
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     6,
+     -28,
+     0
+    ],
+    "end": [
+     16,
+     -36,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "revolve",
+      "params": {
+       "profile": [
+        [
+         0,
+         0
+        ],
+        [
+         0.9,
+         0.35,
+         "#5f7f4a"
+        ],
+        [
+         0.5,
+         0.8,
+         "#5f7f4a"
+        ],
+        [
+         0,
+         1.0,
+         "#6f8f55"
+        ]
+       ]
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -34,
+     -24,
+     0
+    ],
+    "end": [
+     -20,
+     -26,
+     0
+    ],
+    "count": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-airport-mbabane-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lettering band is blank (names not legible by policy); glazing mullions and palm foreground not modelled; struts uniform; annexes, tower and jet bridge dropped as unsupported; path and agaves approximate."
+ }
+}

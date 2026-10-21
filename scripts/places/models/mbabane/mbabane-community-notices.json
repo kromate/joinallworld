@@ -1,0 +1,155 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/162186427",
+   "used": "checked and rejected: the containing outline is Mbabane Mall, not the pension fund; only its position was used. No photo of the building exists (nearby Commons images are unrelated), so a 6-storey town-centre office from the brief is modelled"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     45,
+     25
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4a5c",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "plinth": 0.8,
+    "bands": "#c9ced1",
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     50,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "core",
+   "at": [
+    16,
+    3
+   ],
+   "params": {
+    "rect": [
+     9,
+     9
+    ],
+    "z0": 24,
+    "height": 3.2,
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -24.4,
+    4.7
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#2f4a5c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-community-notices",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM outline belongs to Mbabane Mall; a 6-storey ribbon-glazed office with podium is typed from the brief."
+ }
+}

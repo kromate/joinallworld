@@ -1,0 +1,659 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "university-of-nigeria-enugu-campus",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_of_Nigeria_Enugu_Campus.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tech Mazi (Commons)",
+   "view": "front",
+   "file": "/tmp/places-evidence/enugu/unec.jpg",
+   "used": "campus entrance: teal and white boundary wall with piers and round portholes, tall teal/white gate tower on the left, right gate pylon with grey and cream blocks under an inverted-pyramid dark-green sign canopy, red railing on the wall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: colonial-era college blocks; OSM match is a 26 m away small building so it is not used. The photo shows only the gate, wall and a distant low block, so no large U-shaped block is modelled."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "fit": "building",
+  "margin": 0.06,
+  "shiftX": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "wall",
+   "at": [
+    -23,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.4
+    ],
+    "height": 2.4,
+    "colour": "#f1f1ea",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.12,
+    "storeys": 1,
+    "bay": 8,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -37,
+     0,
+     0
+    ],
+    "end": [
+     -9,
+     0,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.7
+       ],
+       "height": 3.0,
+       "colour": "#1f9a86"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "rail-left",
+   "at": [
+    -23,
+    0,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     30,
+     0.15
+    ],
+    "height": 0.7,
+    "colour": "#b5483a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-tower-white",
+   "at": [
+    -5.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.0
+    ],
+    "height": 8.5,
+    "colour": "#f1f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "left-tower-teal",
+   "at": [
+    -3.2,
+    -0.3,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     2.4
+    ],
+    "height": 9.2,
+    "colour": "#1f9a86",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.2,
+    "storeys": 3,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-a",
+   "at": [
+    -1.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 3.0,
+    "colour": "#1f9a86"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    5,
+    0,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.0,
+    "colour": "#6b2f27",
+    "board_colour": "#6b2f27"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-b",
+   "at": [
+    10.2,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 3.0,
+    "colour": "#1f9a86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-c",
+   "at": [
+    12.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 3.0,
+    "colour": "#1f9a86"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    16,
+    0,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.0,
+    "colour": "#6b2f27",
+    "board_colour": "#6b2f27"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-base",
+   "at": [
+    28,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     4.4
+    ],
+    "height": 3.8,
+    "colour": "#1f9a86",
+    "windows": "punched",
+    "windowShape": "round",
+    "windowRatio": 0.3,
+    "storeys": 1,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-white-l",
+   "at": [
+    22.6,
+    -0.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     4.5
+    ],
+    "height": 3.6,
+    "colour": "#f1f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-white-r",
+   "at": [
+    33.4,
+    -0.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     4.5
+    ],
+    "height": 3.6,
+    "colour": "#f1f1ea"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-grey",
+   "at": [
+    28,
+    0,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     6.2,
+     5
+    ],
+    "height": 3.6,
+    "colour": "#b4b4ae"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pylon-cream",
+   "at": [
+    28,
+    0,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     5.6,
+     4.6
+    ],
+    "height": 2.6,
+    "colour": "#e8dcb0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "sign-canopy",
+   "at": [
+    28,
+    0,
+    10.0
+   ],
+   "params": {
+    "colour": "#1f6a4d",
+    "topColour": "#1f6a4d",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       3
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       17,
+       10
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-edge",
+   "at": [
+    28,
+    0,
+    12.4
+   ],
+   "params": {
+    "rect": [
+     17.4,
+     10.2
+    ],
+    "height": 0.2,
+    "colour": "#175a40"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "at": [
+    28,
+    -5.0,
+    10.8
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.1
+    ],
+    "height": 1.4,
+    "colour": "#2f8a68"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "trunk",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "colour": "#4a3226",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.55
+     },
+     {
+      "z": 3,
+      "circle": 0.4,
+      "cx": 0.8
+     },
+     {
+      "z": 5,
+      "circle": 0.3,
+      "cx": 0.4
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0.4,
+      0,
+      5
+     ],
+     [
+      -3,
+      0,
+      7
+     ],
+     [
+      -6,
+      0.5,
+      8.2
+     ]
+    ],
+    "curve": true,
+    "colour": "#4a3226",
+    "radius": 0.2
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0.4,
+      0,
+      5
+     ],
+     [
+      4,
+      0,
+      7
+     ],
+     [
+      8,
+      0.5,
+      8.6
+     ]
+    ],
+    "curve": true,
+    "colour": "#4a3226",
+    "radius": 0.2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d4552a",
+    "profile": [
+     [
+      0,
+      7.6,
+      "#c9501f"
+     ],
+     [
+      5,
+      7.4,
+      "#c9501f"
+     ],
+     [
+      9,
+      8.2,
+      "#d4552a"
+     ],
+     [
+      10,
+      9.0,
+      "#d4552a"
+     ],
+     [
+      7,
+      10.0,
+      "#d9602a"
+     ],
+     [
+      0,
+      10.4,
+      "#c9501f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -9,
+    -5,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#5d7a2e",
+    "profile": [
+     [
+      0,
+      7.4,
+      "#5d7a2e"
+     ],
+     [
+      7,
+      7.2,
+      "#5d7a2e"
+     ],
+     [
+      10,
+      8.0,
+      "#5d7a2e"
+     ],
+     [
+      0,
+      8.6,
+      "#5d7a2e"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.5
+    ],
+    "height": 0.15,
+    "colour": "#cfcdc4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     5
+    ],
+    "height": 0.04,
+    "colour": "#3a3b3d"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -18,
+    -7,
+    0
+   ],
+   "params": {
+    "colour": "#1f3fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "distant-block",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    56,
+    26
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d49a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     30
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Gate pylon (grey/cream stack, teal base with round porthole, flared dark-green canopy), teal-pier white wall with portholes, left tower and red gate gaps are in; sign text is blank by rule, wall portholes are cut by the generic window grid so positions are approximate, the flame tree is a stylised umbrella crown, and the road and kerb are simplified."
+ }
+}

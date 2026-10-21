@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "uloma-food-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1418716625",
+   "used": "irregular 22 x 19 m building containing the venue, used as the two-storey lock-up block (match quality containing)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/owerri.json",
+   "used": "tin-roofed open sheds, umbrella stalls, a few lock-up shops; laterite ground"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lockup",
+   "footprint": {
+    "osm": true
+   },
+   "height": 5.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#a8a38e",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#b5654a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shedA",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#6b6f73",
+    "wall_colour": "#b5654a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shedB",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7a6f66",
+    "wall_colour": "#a8a38e"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shedC",
+   "at": [
+    22,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#6b6f73",
+    "wall_colour": "#efe6d0"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shedD",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8a5a46",
+    "wall_colour": "#a8a38e"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stallsA",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#c8453a",
+     "#e0a830",
+     "#3a7ab5",
+     "#efe6d0"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stallsB",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#e0a830",
+     "#4a9a5a",
+     "#c8453a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "id": "shops",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 3.5,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b5654a",
+     "#4a6b8a",
+     "#a8a38e"
+    ],
+    "roof_colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 6,
+    "colours": [
+     "#c8453a",
+     "#e0a830",
+     "#3a7ab5"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; sheds and stall layout invented to the brief's 80 x 60 m extent."
+ }
+}

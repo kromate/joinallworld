@@ -1,0 +1,482 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sacred-heart-cathedral.jpg",
+   "licence": "CC0",
+   "author": "Unknown author",
+   "view": "front",
+   "file": "/tmp/places-evidence/freetown/sacred2.jpg",
+   "used": "dark red-brown laterite brick walls, white-rendered central gable panel with cross and statue niche, round window, tall arched louvred windows with white surrounds, white string course, flat porch canopy, brick gable piers with cross finials, blue-grey roof"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sacred_Heart_Cathedral,_Freetown,_Sierra_Leone_-_Mapillary_(gPahUHmYFk3EUBsmvbUKNw).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "tommy001 @ Mapillary.com",
+   "view": "side",
+   "file": "/tmp/places-evidence/freetown/sacred1.jpg",
+   "used": "brick side aisle with blue corrugated lean-to roof, arched windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/177518789",
+   "used": "size and orientation of the nave (about 37 x 21 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 2.0,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.4,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#7b4636",
+    "windows": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.5,
+    "faces": {
+     "front": "none",
+     "back": "arched",
+     "left": "arched",
+     "right": "arched"
+    },
+    "plinth": 0.6,
+    "bands": "#ece6d8",
+    "trimColour": "#ece6d8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5f6f8a",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-panel",
+   "footprint": {
+    "rect": [
+     3.6,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -17.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.0
+    ]
+   },
+   "at": [
+    -3.2,
+    -17.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.8,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#7b4636",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5a3226",
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.0
+    ]
+   },
+   "at": [
+    3.2,
+    -17.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.8,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#7b4636",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#5a3226",
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    -3.2,
+    -17,
+    13.4
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    3.2,
+    -17,
+    13.4
+   ],
+   "params": {
+    "height": 2.2,
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -17,
+    12.6
+   ],
+   "params": {
+    "height": 2.0,
+    "colour": "#d8d3c4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.55,
+    8.6
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "height": 2.4,
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.8,
+    4.2
+   ],
+   "params": {
+    "points": [
+     [
+      -10.5,
+      0
+     ],
+     [
+      10.5,
+      0
+     ],
+     [
+      10.5,
+      0.5
+     ],
+     [
+      -10.5,
+      0.5
+     ]
+    ],
+    "height": 0.4,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.7,
+    6.3
+   ],
+   "params": {
+    "rect": [
+     19.8,
+     0.3
+    ],
+    "height": 0.35,
+    "colour": "#ece6d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -18.7,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     9,
+     3.2
+    ],
+    "height": 0.45,
+    "colour": "#d9cfae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.2,
+    -17.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#d9cfae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.2,
+    -17.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#d9cfae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -17.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.3
+    ],
+    "height": 2.6,
+    "colour": "#2f2a28"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.1,
+    -17.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.2
+    ],
+    "height": 4.4,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.1,
+    -17.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.0,
+     0.2
+    ],
+    "height": 4.4,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.1,
+    -17.6,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "height": 3.0,
+    "colour": "#b8b4ae"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.1,
+    -17.6,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     1.4,
+     0.2
+    ],
+    "height": 3.0,
+    "colour": "#b8b4ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5,
+     24
+    ]
+   },
+   "at": [
+    -12.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#7b4636",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none",
+     "back": "arched",
+     "left": "arched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#2f6fb0",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -20.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 0.2,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#e8e8e0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Front elevation matches: brick walls, white gable panel, piers, porch canopy, string course, arched windows, blue lean-to aisle. Missing round window, statue niche, separate grey bell tower, louvres in windows."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-osm-way-177518789"
+}

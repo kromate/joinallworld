@@ -1,0 +1,1253 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "brades",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "brades",
+    "climate": "tropical-maritime",
+    "vernacular": "Small Caribbean island town rebuilt after the 1995-97 eruptions: low one- and two-storey concrete-block buildings, rendered and painted in white and pastel colours, hip or gable roofs of corrugated or painted metal sheet, hurricane-resistant with louvred shutters and verandas; prefabricated government and school blocks; ash-grey volcanic ground and lush green hillsides with palms and broadleaf trees. The older Georgian stone-and-timber capital Plymouth lies buried under ash.",
+    "wallColours": [
+      "#f2eee3",
+      "#f3dd9a",
+      "#a9cfe0",
+      "#e9b7a8",
+      "#9ec8a0",
+      "#b9b4aa"
+    ],
+    "roofColours": [
+      "#b0463c",
+      "#7b8a8f",
+      "#3f6b4f",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "timber",
+      "stone",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Louvred jalousie shutters and hurricane shutters, timber verandas with simple fretwork, brightly painted doors and trim; Irish-heritage (\"Emerald Isle\") touches; grey volcanic ash and dust on surfaces; plain concrete public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Brades",
+        "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C (pastel palette and louvre/veranda detail are typical Caribbean style, typed, not from this page)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Plymouth,_Montserrat",
+        "what": "Plymouth: Georgian-era town 80% destroyed by 4-8 Aug 1997 eruptions, buried under ash; ghost town in exclusion zone"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/John_A._Osborne_Airport",
+        "what": "the island airport terminal opened 2005; the only Caribbean airport with a public tunnel under its runway"
+      }
+    ]
+  },
+  "places": {
+    "brades-airport-brades-airport": {
+      "venueId": "brades-airport-brades-airport",
+      "city": "brades",
+      "name": "John A. Osborne Airport",
+      "archetype": "airport-terminal",
+      "subject": "The small 2005 passenger terminal at Gerald's with its control tower, beside a 593 m runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ede4",
+          "#3c6fa0",
+          "#d9d6cf"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_A._Osborne_Airport",
+          "what": "passenger terminal dedicated Feb 2005, opened 11 July 2005, restaurant, air traffic control, runway 593 m asphalt, public tunnel under the runway, cost about US$18.5m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/404584261",
+          "what": "OSM building 39 x 20 m (97 m from venue point)"
+        }
+      ],
+      "notes": "Size from OSM; colours and hip roof typed (page has no description). Very small terminal: a model should look like a regional-airstrip building, not a jet airport."
+    },
+    "brades-clinic": {
+      "venueId": "brades-clinic",
+      "city": "brades",
+      "name": "Glendon Hospital",
+      "archetype": "hospital",
+      "subject": "The island general hospital, a low two-storey white block with a wide veranda-style entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 42,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee3",
+          "#a9cfe0",
+          "#b9b4aa"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/381881731",
+          "what": "OSM building=hospital 42 x 29 m"
+        }
+      ],
+      "notes": "Footprint measured; no description found. Typed from the island style."
+    },
+    "brades-community-notices": {
+      "venueId": "brades-community-notices",
+      "city": "brades",
+      "name": "Sports Department",
+      "archetype": "civic-small",
+      "subject": "A small single-storey government office building in Brades",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3dd9a",
+          "#f2eee3",
+          "#7b8a8f"
+        ],
+        "roofColour": "#b0463c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "post-1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/381894171",
+          "what": "OSM building 30 x 10 m"
+        }
+      ],
+      "notes": "Footprint measured; appearance typed from the island style (interim government buildings built in Brades after 1997)."
+    },
+    "brades-community-voting-game": {
+      "venueId": "brades-community-voting-game",
+      "city": "brades",
+      "name": "Office of the Auditor General",
+      "archetype": "office-low",
+      "subject": "A small two-storey government office with a veranda and louvred windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2eee3",
+          "#9ec8a0",
+          "#7b8a8f"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper veranda"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "post-1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        }
+      ],
+      "notes": "The venue point falls on a supermarket in OSM, so no real footprint is used. Typed from the island style; the offices in Brades are interim post-eruption buildings."
+    },
+    "brades-community-workshop": {
+      "venueId": "brades-community-workshop",
+      "city": "brades",
+      "name": "Montserrat Community College",
+      "archetype": "campus-block",
+      "subject": "The island college in Salem: several low classroom blocks around a green with covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 132,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee3",
+          "#a9cfe0",
+          "#b9b4aa"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q48799402",
+          "what": "Montserrat Community College (school) exists in Salem"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/750181857",
+          "what": "OSM college polygon 132 x 80 m"
+        }
+      ],
+      "notes": "Extent measured; buildings are typed low blocks. UWI Global Campus (a small separate building next door) is a much smaller one."
+    },
+    "brades-market-game": {
+      "venueId": "brades-market-game",
+      "city": "brades",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A generic small open market with stalls under awnings (placeholder venue)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e9b7a8",
+          "#f3dd9a",
+          "#a9cfe0"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1226601985",
+          "what": "nearest OSM building 6 x 5 m"
+        }
+      ],
+      "notes": "Game placeholder; no real place. Typed from the island style with bright stall colours."
+    },
+    "brades-meal-stop": {
+      "venueId": "brades-meal-stop",
+      "city": "brades",
+      "name": "Isle's Bay Beach Bar",
+      "archetype": "restaurant",
+      "subject": "A small open-sided beach bar-restaurant above the sand at Isles Bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77a",
+          "#a9cfe0",
+          "#f2eee3"
+        ],
+        "roofColour": "#b0463c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/525911948",
+          "what": "OSM restaurant building 17 x 16 m"
+        }
+      ],
+      "notes": "Footprint measured; no photo-based description found. Timber deck, sand and palms are typed from the beach-bar type."
+    },
+    "brades-osm-node-13341371451": {
+      "venueId": "brades-osm-node-13341371451",
+      "city": "brades",
+      "name": "Plymouth",
+      "archetype": "heritage-fort",
+      "subject": "The abandoned capital Plymouth: ruined two-storey Georgian-era buildings partly buried under grey volcanic ash",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "ash-buried ruin",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#8d8a84",
+          "#b0aca3",
+          "#6e6a63"
+        ],
+        "roofColour": "#6e6a63",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "town 18th-19th c.; buried 1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Plymouth,_Montserrat",
+          "what": "Plymouth: Georgian-era town 80% destroyed by 4-8 Aug 1997 eruptions, buried under ash; ghost town in exclusion zone; ash up to 1.4 m deep, streetlamp-high in places, St Anthony's church buried, vegetation regrowing"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/404579274",
+          "what": "nearest OSM building 9 x 9 m"
+        }
+      ],
+      "notes": "Ash-grey tone with partly buried walls and bare roof frames is the recognisable look. Georgian era is sourced; the stone/timber mix is typed. No other source describes the facades."
+    },
+    "brades-osm-node-13341390470": {
+      "venueId": "brades-osm-node-13341390470",
+      "city": "brades",
+      "name": "Fort St. George",
+      "archetype": "heritage-fort",
+      "subject": "Ruins of the 18th-century hilltop battery above Plymouth with low stone walls and old cannon",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "hilltop battery"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a84",
+          "#a8a59c",
+          "#7a8f6a"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Plymouth,_Montserrat",
+          "what": "Plymouth: Georgian-era town 80% destroyed by 4-8 Aug 1997 eruptions, buried under ash; ghost town in exclusion zone"
+        }
+      ],
+      "notes": "No description of the fort was retrieved (the dedicated article was not found). Typed as a small stone battery with cannon; location above Plymouth is from the coordinates."
+    },
+    "brades-osm-node-13341415105": {
+      "venueId": "brades-osm-node-13341415105",
+      "city": "brades",
+      "name": "Grand Park",
+      "archetype": "park-landscape",
+      "subject": "A small coastal park near Isles Bay with lawns, palms and a pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77a",
+          "#7a8f6a",
+          "#f2eee3"
+        ],
+        "roofColour": "#c9a77a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        }
+      ],
+      "notes": "No source for this park; point feature only. Typed generic park from the tropical-maritime style."
+    },
+    "brades-osm-node-358226040": {
+      "venueId": "brades-osm-node-358226040",
+      "city": "brades",
+      "name": "Montserrat Volcano Observatory",
+      "archetype": "office-low",
+      "subject": "The MVO building at Flemmings: a two-storey white office building on the hillside facing the volcano",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2eee3",
+          "#6f8a9a",
+          "#b9b4aa"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "antenna mast for monitoring"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "veranda facing the volcano"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Montserrat_Volcano_Observatory",
+          "what": "observatory in the village of Flemmings, near Salem (16.749 N, 62.213 W); no building description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/526086603",
+          "what": "OSM building 24 x 17 m"
+        }
+      ],
+      "notes": "Location sourced; building look typed."
+    },
+    "brades-osm-node-359010199": {
+      "venueId": "brades-osm-node-359010199",
+      "city": "brades",
+      "name": "Old Airport Viewpoint",
+      "archetype": "park-landscape",
+      "subject": "A lookout over the former airport and the ash plain on the east coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b4aa",
+          "#8d8a84",
+          "#7a8f6a"
+        ],
+        "roofColour": "#b9b4aa",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Plymouth,_Montserrat",
+          "what": "Plymouth: Georgian-era town 80% destroyed by 4-8 Aug 1997 eruptions, buried under ash; ghost town in exclusion zone"
+        }
+      ],
+      "notes": "No description found; typed as a roadside lookout platform on bare grey ground."
+    },
+    "brades-osm-way-1470063189": {
+      "venueId": "brades-osm-way-1470063189",
+      "city": "brades",
+      "name": "University of the West Indies Global Campus",
+      "archetype": "campus-block",
+      "subject": "A small single-building UWI centre with a veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2eee3",
+          "#a9cfe0",
+          "#7b8a8f"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/525946642",
+          "what": "OSM building 15 x 15 m"
+        }
+      ],
+      "notes": "Footprint measured; appearance typed."
+    },
+    "brades-osm-way-381894081": {
+      "venueId": "brades-osm-way-381894081",
+      "city": "brades",
+      "name": "National Museum of Montserrat",
+      "archetype": "museum-theatre",
+      "subject": "The National Trust museum at Little Bay, in a small white two-storey building on the Main Road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2eee3",
+          "#a8553a",
+          "#7b8a8f"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "opened 2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Montserrat",
+          "what": "opened 2012 on Main Road in Little Bay; no building description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/381894081",
+          "what": "OSM building 32 x 29 m"
+        }
+      ],
+      "notes": "Opening year and location sourced; look typed."
+    },
+    "brades-osm-way-397189233": {
+      "venueId": "brades-osm-way-397189233",
+      "city": "brades",
+      "name": "Hilltop Coffee House",
+      "archetype": "restaurant",
+      "subject": "A small hillside coffee house with a veranda and views",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b9916a",
+          "#f2eee3",
+          "#3f6b4f"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/397189233",
+          "what": "OSM restaurant 20 x 15 m"
+        }
+      ],
+      "notes": "Footprint measured; look typed. Different from the beach bar: a green hillside timber house rather than a sand-level open bar."
+    },
+    "brades-osm-way-409349407": {
+      "venueId": "brades-osm-way-409349407",
+      "city": "brades",
+      "name": "Blakes Estate Stadium",
+      "archetype": "stadium",
+      "subject": "The MFA Complex football ground: a small pitch with a short covered stand and perimeter fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5ba",
+          "#3c6fa0",
+          "#a8a59c"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blakes_Estate_Stadium",
+          "what": "completed 2 April 2002 as the MFA Inc. Complex funded by FIFA, capacity 1,000, near Lookout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/409349407",
+          "what": "OSM stadium footprint 185 x 159 m (includes pitch and surroundings)"
+        }
+      ],
+      "notes": "Capacity and year sourced; the stand size and colours are typed (1,000 capacity means a small stand). Floodlights count unverified."
+    },
+    "brades-osm-way-525902974": {
+      "venueId": "brades-osm-way-525902974",
+      "city": "brades",
+      "name": "Ziggy's",
+      "archetype": "restaurant",
+      "subject": "A small bar-restaurant in a painted two-colour building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9b7a8",
+          "#f3dd9a",
+          "#a9cfe0"
+        ],
+        "roofColour": "#b0463c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/525902974",
+          "what": "OSM restaurant 18 x 18 m"
+        }
+      ],
+      "notes": "Footprint measured; look typed in pastel Caribbean colours."
+    },
+    "brades-quiet-reflection": {
+      "venueId": "brades-quiet-reflection",
+      "city": "brades",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "A generic small chapel on the island (placeholder venue)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f6f3ea",
+          "#8d8a84",
+          "#3f6b4f"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        }
+      ],
+      "notes": "Game placeholder with no real place (the venue point falls in the grounds of Brades Primary School). Typed small whitewashed chapel."
+    },
+    "brades-recreation": {
+      "venueId": "brades-recreation",
+      "city": "brades",
+      "name": "Salem Park",
+      "archetype": "park-landscape",
+      "subject": "Salem Park, a community recreation ground with open lawn and a small pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5ba",
+          "#7a8f6a",
+          "#f3dd9a"
+        ],
+        "roofColour": "#c9c5ba",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1454779411",
+          "what": "OSM park polygon 202 x 160 m"
+        }
+      ],
+      "notes": "Extent measured; contents typed."
+    },
+    "brades-transit": {
+      "venueId": "brades-transit",
+      "city": "brades",
+      "name": "Montserrat Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "The Little Bay ferry terminal: a small white building at the quay with a covered waiting area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f2eee3",
+          "#3c6fa0",
+          "#7b8a8f"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "ferry quay"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brades",
+          "what": "Brades: seat of government since 1998 after Plymouth was buried; small shops, banks, government offices, school; tropical rainforest climate 25-28 C"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/525908409",
+          "what": "OSM ferry terminal 22 x 18 m"
+        }
+      ],
+      "notes": "Footprint measured; appearance typed."
+    }
+  }
+}

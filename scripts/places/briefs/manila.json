@@ -1,0 +1,1643 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "manila",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "manila",
+    "climate": "tropical-maritime",
+    "vernacular": "Hot-humid sprawling metropolis of painted-concrete hollow-block buildings: low-rise cream, grey and pastel houses and shops with corrugated galvanised roofs, narrow multi-storey commercial strips with bright signage, glass-and-concrete towers in Makati, Ortigas and Bonifacio Global City, and boxy mall blocks in cream and white. Heritage core of Spanish-era brick and stone baroque churches and American-era neoclassical civic buildings; Brutalist Marcos-era government blocks. Rain trees, palms and heavy overhead wiring.",
+    "wallColours": [
+      "#e8dfcc",
+      "#c9a77a",
+      "#b86b4b",
+      "#9a9a94",
+      "#f2f2ee",
+      "#6b8aa3",
+      "#d9d2bd"
+    ],
+    "roofColours": [
+      "#b4573a",
+      "#7a7f84",
+      "#a33a2e",
+      "#6b6f73"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "glass-curtain",
+      "stone",
+      "brick",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Spanish-era earthquake-baroque churches with thick buttresses, pilasters, plastered cornices and a detached or attached belfry; bahay na bato timber upper floors with capiz-shell sliding windows and balustrades; American-era neoclassical civic buildings with columns and pediments; Marcos-era Brutalist concrete; bright jeepney and shop-sign colours.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Philippines",
+        "what": "bahay na bato (stone ground floor, timber upper floor, capiz windows, tile roof), Spanish earthquake-baroque churches, American neoclassical and Beaux-Arts, concrete hollow block, Brutalist government buildings, modernism"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/St._Mary_Magdalene_Church_(Kawit)",
+        "what": "weathered brick walls with plastered cornices and pilasters, earthquake-baroque buttresses, four-storey belfry"
+      }
+    ]
+  },
+  "places": {
+    "manila-airport-manila-airport": {
+      "venueId": "manila-airport-manila-airport",
+      "city": "manila",
+      "name": "Ninoy Aquino International Airport",
+      "archetype": "airport-terminal",
+      "subject": "NAIA Terminal 3 (SOM, opened 2008) viewed from the forecourt: a very long glazed terminal with a sweeping canopy and a double-deck curbside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "curved",
+        "variant": "very long linear terminal, 1.2 km",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4dadd",
+          "#6a8ea3",
+          "#f1f1ee"
+        ],
+        "roofColour": "#c8cbcd",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "20 jet bridges plus 4 remote gates"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "NAIA tower in the Terminal 2 area"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ninoy_Aquino_International_Airport",
+          "what": "Terminal 3 designed by SOM, 182,500 m2, 1.2 km long, 20 jet bridges, 4 remote gates; Terminal 1 by L.V. Locsin 1982; Terminal 2 by ADP 1999"
+        }
+      ],
+      "notes": "The coordinate falls on the Terminal 3 side. Floor area, SOM design and gate count are sourced; facade and canopy colours are estimates. The real building is 1.2 km long, so the model shows a 120 m portion. Terminal 1 (Locsin 1982) is a lower concrete-and-glass building not shown."
+    },
+    "manila-clinic": {
+      "venueId": "manila-clinic",
+      "city": "manila",
+      "name": "St. Luke's Medical Center Global City",
+      "archetype": "hospital",
+      "subject": "St. Luke's Medical Center Global City (BGC): a large modern hospital with a five-level podium wing and glazed lobby",
+      "form": {
+        "footprint": "H",
+        "width_m": 165,
+        "depth_m": 140,
+        "storeys": 5,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeeea",
+          "#7fa3b5",
+          "#c8c4b8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Luke's_Medical_Center_%E2%80%93_Global_City",
+          "what": "OSM hospital 165x141 m, 5 levels, 16.9 m high"
+        }
+      ],
+      "notes": "Footprint, 5 levels and 16.9 m from OSM; the taller ward towers behind the podium are not in this OSM block. Colours estimated."
+    },
+    "manila-community-notices": {
+      "venueId": "manila-community-notices",
+      "city": "manila",
+      "name": "Batasang Pambansa Complex",
+      "archetype": "civic-palace",
+      "subject": "the Batasang Pambansa Main Building (Felipe Mendoza, 1978), the House of Representatives seat: a wide low concrete block with deep vertical fins and flanking wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#d4cfc2",
+          "#8a8f94",
+          "#ece8dc"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "tall fin-like columns"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1978",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Batasang_Pambansa_Complex",
+          "what": "architect Felipe M. Mendoza; North and South Wings finished December 1977, Main Building opened 31 May 1978; five main structures on about 16 ha; session hall seating about 1,500"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Philippines",
+          "what": "Brutalist government buildings marked the Marcos era"
+        }
+      ],
+      "notes": "Date, architect and the main-plus-wings layout are sourced; the fin detailing and the colours are estimated from the Marcos-era concrete style. OSM footprint about 97x90 m."
+    },
+    "manila-community-voting-game": {
+      "venueId": "manila-community-voting-game",
+      "city": "manila",
+      "name": "Rodriguez Municipal Hall",
+      "archetype": "civic-small",
+      "subject": "Rodriguez (Montalban) Municipal Hall, a small three-storey public building with a front portico and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 18.5,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfcc",
+          "#b4573a",
+          "#ffffff"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM: building=public, 21x18 m, labelled city hall in Wikidata. Nothing describes it; typed as a Philippine municipal hall. Low confidence."
+    },
+    "manila-community-workshop": {
+      "venueId": "manila-community-workshop",
+      "city": "manila",
+      "name": "San Beda College Alabang",
+      "archetype": "campus-block",
+      "subject": "a main academic block of the San Beda College Alabang campus (Benedictine school) with covered walkways round a plaza",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 55,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#7a1f2a",
+          "#ffffff"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Beda_College_Alabang",
+          "what": "college campus in Alabang (OSM 374x335 m)"
+        }
+      ],
+      "notes": "The OSM feature is the full campus. No building description read; maroon accent is a guess from the school colours. Low confidence."
+    },
+    "manila-market-game": {
+      "venueId": "manila-market-game",
+      "city": "manila",
+      "name": "SM Center Angono",
+      "archetype": "mall",
+      "subject": "SM Center Angono (Rizal): a medium three-level mall block in cream with a long front canopy and surface parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 225,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e1cf",
+          "#2f6f9a",
+          "#c9c5b8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/SM_Center_Angono",
+          "what": "SM Center mall in Angono, Rizal; OSM building=mall, 225x83 m"
+        }
+      ],
+      "notes": "Footprint measured. The block form and colours are typed from SM mall design; brand marks stay blank boards."
+    },
+    "manila-meal-stop": {
+      "venueId": "manila-meal-stop",
+      "city": "manila",
+      "name": "Zus Coffee",
+      "archetype": "restaurant",
+      "subject": "(game venue) a small drive-through style coffee shop unit with a glass front and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4da",
+          "#3d3d3d",
+          "#c9a66b"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank brand-neutral board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic cafe; OSM building is about 15x14 m. No brand marks."
+    },
+    "manila-osm-node-1782932802": {
+      "venueId": "manila-osm-node-1782932802",
+      "city": "manila",
+      "name": "Battle of Zapote River",
+      "archetype": "monument",
+      "subject": "the historical marker and monument for the 1897 Battle of Zapote River at the Las Pinas bridge, a modest stone memorial on a low plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#bdbab0",
+          "#6f6f6c",
+          "#e8e4da"
+        ],
+        "roofColour": "#bdbab0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1897 event",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Zapote_River",
+          "what": "battle of the Philippine Revolution at the Zapote River, Cavite/Las Pinas, 1897"
+        }
+      ],
+      "notes": "The coordinate falls on a commercial building (60x17 m) beside the river; the monument itself is not described anywhere read. Typed as a small commemorative marker; low confidence."
+    },
+    "manila-osm-way-108541189": {
+      "venueId": "manila-osm-way-108541189",
+      "city": "manila",
+      "name": "Playtime Filoil Centre",
+      "archetype": "stadium",
+      "subject": "the Playtime Filoil Centre (formerly Filoil Flying V Arena, 2006) in San Juan: a boxy 6,000-seat indoor basketball arena with a barrel-vaulted roof",
+      "form": {
+        "footprint": "oval",
+        "width_m": 68,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "barrel",
+        "variant": "indoor arena"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e4da",
+          "#2f6f9a",
+          "#b4573a"
+        ],
+        "roofColour": "#c8cbcd",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Filoil_Flying_V_Arena",
+          "what": "indoor arena in San Juan, 6,000 seats, opened 2006 as The Arena"
+        }
+      ],
+      "notes": "Capacity, date and 68x60 m footprint known; the barrel roof and colours are estimates. Far smaller than the MOA Arena."
+    },
+    "manila-osm-way-1234015855": {
+      "venueId": "manila-osm-way-1234015855",
+      "city": "manila",
+      "name": "Musoleo De Los Veteranos De La Revolucion",
+      "archetype": "monument",
+      "subject": "the Mausoleum of the Veterans of the Revolution (Arcadio Arellano, 1920) in Manila North Cemetery: a neoclassical cube on a raised podium crowned by a shallow dome on a drum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "dome",
+        "variant": "cube with shallow dome on a perforated drum"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "marble",
+        "colours": [
+          "#d9d4c4",
+          "#b9b4a4",
+          "#f1ede2"
+        ],
+        "roofColour": "#c8c4b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "shallow dome on a drum pierced by small ventilation openings"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "elevated square podium"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "swags, key-pattern fretwork and mourning figures"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1920",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mausoleum_of_the_Veterans_of_the_Revolution",
+          "what": "neoclassical; architect Arcadio de Guzman Arellano, design 1915, inaugurated May 1920; massive cube on elevated square podium, shallow dome on a drum with small openings; swags, key fretwork, mourning figures; repainted with lead-free paint in 2018"
+        }
+      ],
+      "notes": "Sourced form. Colour is an off-white stone; the 2018 repaint colour was not found. OSM footprint about 18x17 m."
+    },
+    "manila-osm-way-1435976373": {
+      "venueId": "manila-osm-way-1435976373",
+      "city": "manila",
+      "name": "The Medical City",
+      "archetype": "hospital",
+      "subject": "The Medical City in Ortigas, Pasig: a large hospital campus with a four-level base block and taller white ward tower",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 105,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1f0ea",
+          "#4f81a0",
+          "#c8c4b8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1960s, extended",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Medical_City_Ortigas",
+          "what": "OSM hospital building 131x108 m, 4 levels"
+        }
+      ],
+      "notes": "Footprint and four levels measured; colours estimated."
+    },
+    "manila-osm-way-165717167": {
+      "venueId": "manila-osm-way-165717167",
+      "city": "manila",
+      "name": "La Consolacion College of Novaliches",
+      "archetype": "campus-block",
+      "subject": "a main building of La Consolacion College Novaliches with an arcade, a covered court nearby and a hipped red roof",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#b4573a",
+          "#ffffff"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Consolacion_College_%E2%80%93_Novaliches",
+          "what": "catholic college in Novaliches, Quezon City (OSM 304x142 m)"
+        }
+      ],
+      "notes": "Only the campus footprint is measured; building form typed. Low confidence."
+    },
+    "manila-osm-way-223179404": {
+      "venueId": "manila-osm-way-223179404",
+      "city": "manila",
+      "name": "MCCID College of Technology",
+      "archetype": "campus-block",
+      "subject": "the small Manila Christian Computer Institute for the Deaf college building, a modest two-storey block with a plain painted facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1cf",
+          "#2f6f9a",
+          "#c9c5b8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Manila_Christian_Computer_Institute_for_the_Deaf",
+          "what": "college for deaf students; OSM building 26x17 m"
+        }
+      ],
+      "notes": "OSM tag college, 26x17 m. Nothing describes the building; typed from the city style. Low confidence."
+    },
+    "manila-osm-way-231404558": {
+      "venueId": "manila-osm-way-231404558",
+      "city": "manila",
+      "name": "Philippine Children's Medical Center",
+      "archetype": "hospital",
+      "subject": "the Philippine Children's Medical Center in Quezon City: a long multi-wing government hospital with an entrance porte-cochere and low wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 195,
+        "depth_m": 95,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e4d6",
+          "#6f93a6",
+          "#c8c4b8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Philippine_Children%27s_Medical_Center",
+          "what": "government paediatric hospital in Quezon City; OSM 196x98 m"
+        }
+      ],
+      "notes": "Only the OSM footprint is measured; levels and colours typed from a government hospital. Low confidence."
+    },
+    "manila-osm-way-280162481": {
+      "venueId": "manila-osm-way-280162481",
+      "city": "manila",
+      "name": "Felix Y. Manalo National Historical Landmark",
+      "archetype": "monument",
+      "subject": "the Felix Manalo birthplace memorial in Calzada, Taguig: a small walled plaza with a pavilion-like shrine and a marker",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "granite",
+        "colours": [
+          "#eeeae0",
+          "#8a8f94",
+          "#b4573a"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1986",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Felix_Y._Manalo_National_Historical_Landmark",
+          "what": "memorial and 744 m2 plaza in Calzada, Taguig; National Historical Landmark proclaimed 6 January 1986; birthplace of Felix Manalo (b. 1886)"
+        }
+      ],
+      "notes": "Only the plaza size and its status are sourced; structure and look are not described. Low confidence."
+    },
+    "manila-osm-way-28921378": {
+      "venueId": "manila-osm-way-28921378",
+      "city": "manila",
+      "name": "Cainta Church",
+      "archetype": "church-classical",
+      "subject": "Cainta Church (Jesuit baroque of 1716, rebuilt in reinforced concrete 1966-68 with the original facade kept): an attached arched bell tower, baroque facade with IHS monogram, long nave",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "variant": "baroque facade, attached bell tower, cruciform nave"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#eadfc4",
+          "#c8b88a",
+          "#ffffff"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "attached tower with arched windows"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 5,
+          "note": "original church had five buttresses"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "media naranja at the crossing in the original"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1716, rebuilt 1968",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cainta_Church",
+          "what": "baroque with Renaissance revival elements; first stone church 1707-1716; rebuilt 1966-68 in stone and reinforced concrete, original facade kept with IHS monogram; attached bell tower with arched windows; church 223 ft (68 m) long, walls 34.4 ft (10.5 m) high, 2,500 capacity; original had dome, transepts, five buttresses"
+        }
+      ],
+      "notes": "Sourced for style, tower, dimensions and the retained facade. The cream colour and tile roof are estimates. Compare to the Kawit church, which is brick-faced and has a four-stage tower on the right."
+    },
+    "manila-osm-way-308687760": {
+      "venueId": "manila-osm-way-308687760",
+      "city": "manila",
+      "name": "Old Meycauayan Station",
+      "archetype": "transport-station",
+      "subject": "the abandoned 1891 Meycauayan railway station house, a small two-storey bahay-na-bato style station with a timber upper floor and a hip roof, decayed and fenced",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8.5,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "bahay na bato station house"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#b9a98a",
+          "#7a5a3a",
+          "#e0d8c4"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1891",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Meycauayan_station",
+          "what": "opened 24 March 1891; old station house is in bahay na bato style and still stands in a deteriorated state; guarded because of informal settlers"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Philippines",
+          "what": "bahay na bato: stone/brick lower level, timber overhanging upper floor, tiled roof"
+        }
+      ],
+      "notes": "Age, style and condition are sourced; material colours and the corrugated roof are estimates. OSM footprint about 14x8.5 m, 2 levels."
+    },
+    "manila-osm-way-319524305": {
+      "venueId": "manila-osm-way-319524305",
+      "city": "manila",
+      "name": "168 Shopping Mall",
+      "archetype": "mall",
+      "subject": "168 Shopping Mall in Divisoria, a dense four-level wholesale mall with a plain grey-cream frontage and a crowded street stalls edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 118,
+        "depth_m": 74,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d0bd",
+          "#b4573a",
+          "#7a7f84"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Divisoria",
+          "what": "Divisoria wholesale and retail district of Manila (area context)"
+        }
+      ],
+      "notes": "OSM: building=retail, 4 levels, 118x74 m; the matched shape is the nearest to the coordinate. The crowded stalls in front are typical of Divisoria; colours estimated."
+    },
+    "manila-osm-way-368600427": {
+      "venueId": "manila-osm-way-368600427",
+      "city": "manila",
+      "name": "SM Mall of Asia Arena",
+      "archetype": "stadium",
+      "subject": "SM Mall of Asia Arena (Arquitectonica, 2012): an eye-shaped glass-clad arena on a slanted podium plinth that bridges over Pacific Drive",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 95,
+        "storeys": 5,
+        "height_m": 40,
+        "roof": "curved",
+        "variant": "eye-shaped"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#9fb4c0",
+          "#d6d2c4",
+          "#ffffff"
+        ],
+        "roofColour": "#c8cbcd",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "eight-storey annex parking"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_Asia_Arena",
+          "what": "architect Arquitectonica; opened 21 May 2012; designed in the form of an eye on a slanted podium plinth; part spans over Pacific Drive; facade of low-e coated fritted insulated glass units; 15,000-20,000 capacity; 52,000 m2; separate 8-storey 1,400-car annex"
+        }
+      ],
+      "notes": "Sourced: eye shape, fritted glass facade and slanted podium. The heights are estimated from photos. Distinct from Filoil by being much larger, glass-clad and eye-shaped."
+    },
+    "manila-osm-way-41374806": {
+      "venueId": "manila-osm-way-41374806",
+      "city": "manila",
+      "name": "Our Lady of the Annunciation Parish",
+      "archetype": "church-modern",
+      "subject": "Our Lady of the Annunciation Parish in Quezon City, a modern parish church with a simple gabled auditorium nave and a separate bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "parish church hall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efeadb",
+          "#2f6f9a",
+          "#b4573a"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "cross"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Annunciation_Parish",
+          "what": "Catholic parish in Quezon City (OSM church 34x14 m)"
+        }
+      ],
+      "notes": "Only the footprint is known; nothing describes the facade. Typed as a modest parish church; low confidence."
+    },
+    "manila-osm-way-51549859": {
+      "venueId": "manila-osm-way-51549859",
+      "city": "manila",
+      "name": "SM City Fairview",
+      "archetype": "mall",
+      "subject": "SM City Fairview (Quezon City): a very large four-level mall with a long cream frontage and corner entrance canopies",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 120,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "long main frontage and wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e1cf",
+          "#2f6f9a",
+          "#c9c5b8"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/SM_City_Fairview",
+          "what": "SM mall in Fairview, Quezon City; OSM commercial, 4 levels, 505x43 m main strip"
+        }
+      ],
+      "notes": "OSM measured the mall strip at 505x43 m, 4 levels; the model shows a 300 m wide portion. Colours estimated. Bigger and more complex than SM Center Angono."
+    },
+    "manila-osm-way-70411261": {
+      "venueId": "manila-osm-way-70411261",
+      "city": "manila",
+      "name": "Taguig City University",
+      "archetype": "campus-block",
+      "subject": "a main block of Taguig City University (Gen. Santos Ave campus): a four-storey cream building round a courtyard with an arched entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee6d0",
+          "#2f6f9a",
+          "#b4573a"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Taguig_City_University",
+          "what": "city university; OSM campus footprint 379x232 m"
+        }
+      ],
+      "notes": "Only the campus footprint is known; buildings typed from the city style. Low confidence."
+    },
+    "manila-quiet-reflection": {
+      "venueId": "manila-quiet-reflection",
+      "city": "manila",
+      "name": "Saint Mary Magdalene Parish Church",
+      "archetype": "church-classical",
+      "subject": "St. Mary Magdalene Church in Kawit (1737): a weathered brick earthquake-baroque church with thick buttresses and a four-storey belfry on the right of the facade capped by a metal dome",
+      "form": {
+        "footprint": "cross",
+        "width_m": 73,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "variant": "single nave cruciform, four-stage tower on the right"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#a9805a",
+          "#e0d4b8",
+          "#c9bda0"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "four storeys, square lower stages and an octagonal top, metal dome and weather vane"
+        },
+        {
+          "id": "buttresses",
+          "count": 6,
+          "note": "thick earthquake-baroque buttresses"
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "niche with statue of Mary Magdalene"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arched main portal and pilaster bays"
+        },
+        {
+          "id": "stained-glass",
+          "count": 14,
+          "note": "Stations of the Cross windows"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1737",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Mary_Magdalene_Church_(Kawit)",
+          "what": "Earthquake Baroque, thick buttresses, bricks, shells, stone and wood; about 73 m long and 28 m wide; weathered brick walls with plastered cornices and pilasters; four-storey right-hand tower square below and octagonal above, arched openings, metal dome with weather vane; pediment niche statue; cruciform single nave; 14 stained-glass windows"
+        }
+      ],
+      "notes": "Sourced. The main roof is not described (corrugated metal assumed). The facade is plain brick with plastered trim. Compare Cainta, whose facade is plastered and cream."
+    },
+    "manila-recreation": {
+      "venueId": "manila-recreation",
+      "city": "manila",
+      "name": "Valenzuela People's Park",
+      "archetype": "park-landscape",
+      "subject": "Valenzuela People's Park (opened 2015): a 1.5 ha civic park with an amphitheatre, interactive fountain, gazebo and play areas next to City Hall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 62,
+        "depth_m": 54,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d4d0c4",
+          "#6e8f6a",
+          "#b4573a"
+        ],
+        "roofColour": "#a33a2e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "interactive fountain"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "gazebo"
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "amphitheatre"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entry marker"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Valenzuela_People%27s_Park",
+          "what": "opened 14 February 2015, about 1.5 ha, amphitheater, interactive fountain, play areas, giant chess board, gazebo, small zoo and fish ponds, between MacArthur Highway and A. Pablo Street"
+        }
+      ],
+      "notes": "Feature list is sourced from image captions. Colours are estimated. Show the fountain-and-amphitheatre core."
+    },
+    "manila-transit": {
+      "venueId": "manila-transit",
+      "city": "manila",
+      "name": "Katipunan",
+      "archetype": "transport-station",
+      "subject": "the street-level entrance of Katipunan station, the only underground LRT Line 2 station, on Aurora Boulevard: a small glass-roofed stairwell block with escalators leading down",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "subway entrance pavilion"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#c8cbcd",
+          "#6b8aa3",
+          "#3d3d3d"
+        ],
+        "roofColour": "#a8adb0",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2,
+          "note": "visible only in the underground concourse"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katipunan_station",
+          "what": "underground LRT Line 2 station in Loyola Heights, Quezon City, opened 2003; two side platforms and two tracks; only underground station on the line; south entrance by PSBA, north entrance by St. Bridget School"
+        }
+      ],
+      "notes": "Sourced: underground, entrances on either side of Aurora Boulevard. The entrance design and colours are estimates. OSM 153x72 m is the station box, not a surface building."
+    }
+  }
+}

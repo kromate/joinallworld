@@ -1,0 +1,431 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_view_ACULTY_of_ALLIED_health_SCIENCES,_University_of_Maiduguri,_BORNO_STATE_Nigeria.jpg",
+   "licence": "see Commons page",
+   "author": "see Commons page",
+   "view": "front",
+   "file": "/tmp/places-evidence/maiduguri/university-of-maiduguri-5.jpg",
+   "used": "Faculty of Allied Health Sciences: three-storey peach-rendered block, deep vertical piers framing recessed windows with louvres and window air-conditioners, rounded glazed end at the left, flat roof, conifers along the front, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/476685225",
+   "used": "not used: 32 x 15 m nearest match, the photo block is longer"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 45,
+  "aspect": 2.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "faculty",
+   "footprint": {
+    "rect": [
+     60,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3a888",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "glassColour": "#59636d",
+    "plinth": 0.5,
+    "bay": 3.4,
+    "faces": {
+     "back": "punched",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a690",
+    "parapet": 0.5,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31,
+    -1,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "n": 16,
+    "height": 11.5,
+    "colour": "#dcb594",
+    "windows": "curtain",
+    "glassColour": "#7f8e9c",
+    "windowRatio": 0.6,
+    "storeys": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -34,
+    -7.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.5
+    ],
+    "height": 3.6,
+    "colour": "#e6e0d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    24,
+    -17.5
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcb594",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8a690",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.4,
+    "bottom": 0.8,
+    "colour": "#f3f0e6",
+    "frameColour": "#7a6a5a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.8,
+       1.0
+      ],
+      "height": 11.8,
+      "colour": "#e3bf9f"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -24,
+     -7,
+     0
+    ],
+    "end": [
+     26,
+     -7,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -6.8,
+    3.7
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.6
+    ],
+    "height": 0.45,
+    "colour": "#e3bf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -6.8,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.6
+    ],
+    "height": 0.45,
+    "colour": "#e3bf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3,
+    -6.8,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.7
+    ],
+    "height": 0.9,
+    "colour": "#e3bf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -7.5,
+    10.2
+   ],
+   "params": {
+    "rect": [
+     36,
+     0.1
+    ],
+    "height": 0.8,
+    "colour": "#2f3f8f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.8,
+       0.5
+      ],
+      "height": 0.55,
+      "colour": "#f4f4f2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -6.9,
+     2.1
+    ],
+    "end": [
+     20,
+     -6.9,
+     2.1
+    ],
+    "count": 7
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.8,
+       0.5
+      ],
+      "height": 0.55,
+      "colour": "#f4f4f2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -6.9,
+     5.9
+    ],
+    "end": [
+     16,
+     -6.9,
+     5.9
+    ],
+    "count": 5
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18.5,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     2.3
+    ],
+    "height": 8.5,
+    "colour": "#7a5a3c",
+    "topScale": 0.25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.5,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     2.3
+    ],
+    "height": 9.5,
+    "colour": "#667041",
+    "topScale": 0.25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     2.3
+    ],
+    "height": 8.5,
+    "colour": "#5f6a3c",
+    "topScale": 0.25
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    17,
+    -8.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.3,
+     2.3
+    ],
+    "height": 9,
+    "colour": "#6b6a3e",
+    "topScale": 0.25
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "university-of-maiduguri",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "piers and recess are proud piers and bands over a flat wall (no true recessed back wall or louvre per bay); curved end is a 16-sided drum; sign is a blank blue strip; AC boxes simple; conifers are tapered prisms"
+ }
+}

@@ -1,0 +1,911 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Igreja_Nossa_Senhora_dos_Remedios_Luanda.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Fabio Vanin",
+   "view": "front",
+   "file": "/tmp/places-evidence/luanda/cath1.jpg",
+   "used": "white facade with low segmental pediment and cross, two square bell towers with ochre edge stripes and arched belfry openings, three arched doors, two arched windows and a round window, gate piers with iron fence, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/376997812",
+   "used": "overall size of the church (about 41 x 23 m); nave depth taken from it"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     18,
+     30
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f1ede3",
+    "windows": "arched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "none"
+    },
+    "cornice": true,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5543a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "facade-block",
+   "footprint": {
+    "rect": [
+     13.2,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 9.2,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f3efe6",
+    "windows": "none",
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d4",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pediment",
+   "at": [
+    0,
+    -14,
+    9.2
+   ],
+   "params": {
+    "colour": "#f3efe6",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       13.6,
+       1.6
+      ]
+     },
+     {
+      "z": 0.7,
+      "rect": [
+       12.8,
+       1.6
+      ]
+     },
+     {
+      "z": 1.3,
+      "rect": [
+       11,
+       1.6
+      ]
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       8.5,
+       1.6
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       5.2,
+       1.6
+      ]
+     },
+     {
+      "z": 2.45,
+      "rect": [
+       2.2,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-l",
+   "at": [
+    -8.2,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 9.8,
+    "colour": "#f1ede3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-l",
+   "at": [
+    -8.2,
+    -13.4,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 3.2,
+    "colour": "#f1ede3",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "bay": 3.2,
+    "glassColour": "#2a2a2a",
+    "faces": {
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap-l",
+   "at": [
+    -8.2,
+    -13.4,
+    13.0
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     3.5
+    ],
+    "height": 1.5,
+    "colour": "#8c8a84",
+    "windows": "none",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-l0",
+   "at": [
+    -9.649999999999999,
+    -14.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-l1",
+   "at": [
+    -6.749999999999999,
+    -14.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-l2",
+   "at": [
+    -9.649999999999999,
+    -11.950000000000001,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-l3",
+   "at": [
+    -6.749999999999999,
+    -11.950000000000001,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower-r",
+   "at": [
+    8.2,
+    -13.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 9.8,
+    "colour": "#f1ede3",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "belfry-r",
+   "at": [
+    8.2,
+    -13.4,
+    9.8
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     3.2
+    ],
+    "height": 3.2,
+    "colour": "#f1ede3",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "bay": 3.2,
+    "glassColour": "#2a2a2a",
+    "faces": {
+     "back": "none"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cap-r",
+   "at": [
+    8.2,
+    -13.4,
+    13.0
+   ],
+   "params": {
+    "rect": [
+     3.5,
+     3.5
+    ],
+    "height": 1.5,
+    "colour": "#8c8a84",
+    "windows": "none",
+    "topScale": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-r0",
+   "at": [
+    6.749999999999999,
+    -14.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-r1",
+   "at": [
+    9.649999999999999,
+    -14.85,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-r2",
+   "at": [
+    6.749999999999999,
+    -11.950000000000001,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stripe-r3",
+   "at": [
+    9.649999999999999,
+    -11.950000000000001,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.34,
+     0.34
+    ],
+    "height": 13.0,
+    "colour": "#c98f4a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    0,
+    -14,
+    11.65
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.0,
+    "colour": "#2e2e2e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    0,
+    -14,
+    13.2
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "height": 0.3,
+    "colour": "#2e2e2e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    -3.6,
+    -15.0,
+    0.3
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3.8,
+    "arch": true,
+    "colour": "#1c1f1e",
+    "trim": "#f3efe6"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    0,
+    -15.0,
+    0.3
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3.8,
+    "arch": true,
+    "colour": "#1c1f1e",
+    "trim": "#f3efe6"
+   }
+  },
+  {
+   "type": "mosque-domed/church-door",
+   "at": [
+    3.6,
+    -15.0,
+    0.3
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 3.8,
+    "arch": true,
+    "colour": "#1c1f1e",
+    "trim": "#f3efe6"
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    -2.6,
+    -15.0,
+    5.2
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "kind": "arch",
+    "trim": "#d8cfae"
+   }
+  },
+  {
+   "type": "mosque-domed/arched-window",
+   "at": [
+    2.6,
+    -15.0,
+    5.2
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 2.4,
+    "kind": "arch",
+    "trim": "#d8cfae"
+   }
+  },
+  {
+   "type": "mosque-domed/rose-window",
+   "at": [
+    0,
+    -15.0,
+    8.0
+   ],
+   "params": {
+    "radius": 0.9
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#cfc6b0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "at": [
+    -5.5,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 4.5,
+    "colour": "#f3efe6",
+    "windows": "none",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-l",
+   "at": [
+    -5.5,
+    -24.95,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#b9893f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pcap-l",
+   "at": [
+    -5.5,
+    -24,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.25,
+    "colour": "#d8cfae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "globe-l",
+   "at": [
+    -5.5,
+    -24,
+    4.75
+   ],
+   "params": {
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.3,
+      0.05
+     ],
+     [
+      0.55,
+      0.3
+     ],
+     [
+      0.65,
+      0.65
+     ],
+     [
+      0.55,
+      1.0
+     ],
+     [
+      0.3,
+      1.25
+     ],
+     [
+      0,
+      1.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "at": [
+    5.5,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     1.8
+    ],
+    "height": 4.5,
+    "colour": "#f3efe6",
+    "windows": "none",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-r",
+   "at": [
+    5.5,
+    -24.95,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#b9893f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pcap-r",
+   "at": [
+    5.5,
+    -24,
+    4.5
+   ],
+   "params": {
+    "rect": [
+     2.1,
+     2.1
+    ],
+    "height": 0.25,
+    "colour": "#d8cfae",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "globe-r",
+   "at": [
+    5.5,
+    -24,
+    4.75
+   ],
+   "params": {
+    "colour": "#fafafa",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.3,
+      0.05
+     ],
+     [
+      0.55,
+      0.3
+     ],
+     [
+      0.65,
+      0.65
+     ],
+     [
+      0.55,
+      1.0
+     ],
+     [
+      0.3,
+      1.25
+     ],
+     [
+      0,
+      1.3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 15.6,
+    "height": 2.4,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#1f2224"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -4.6,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 9.2,
+    "height": 2.2,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#15181a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    6.4,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 15.6,
+    "height": 2.4,
+    "thickness": 0.12,
+    "kind": "railing",
+    "colour": "#1f2224"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    -21,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -21,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "array",
+   "id": "gate-bars",
+   "params": {
+    "mode": "line",
+    "count": 16,
+    "start": [
+     -3.7,
+     -24,
+     0
+    ],
+    "end": [
+     3.7,
+     -24,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.1,
+       0.1
+      ],
+      "height": 2.8,
+      "colour": "#101214",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-rail",
+   "at": [
+    0,
+    -24,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     0.12
+    ],
+    "height": 0.15,
+    "colour": "#101214",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-rail2",
+   "at": [
+    0,
+    -24,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     7.4,
+     0.12
+    ],
+    "height": 0.15,
+    "colour": "#101214",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   70,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Fence and gate are plain bars rather than ornate scrollwork; pediment reads as a low dome-like curve; no ochre-panel detail on piers beyond a single plate; palms are low-poly; neighbouring buildings absent."
+ }
+}

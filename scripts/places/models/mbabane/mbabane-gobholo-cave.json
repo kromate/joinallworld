@@ -1,0 +1,555 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-gobholo-cave",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Sibebe",
+   "used": "granite geology of the Sibebe hills: rounded weathered boulders; no photo or outline of Gobholo Cave itself was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "id": "slab-left",
+   "at": [
+    -14,
+    4,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a82",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       9,
+       7
+      ]
+     },
+     {
+      "z": 3.15,
+      "ellipse": [
+       9.450000000000001,
+       7.3500000000000005
+      ]
+     },
+     {
+      "z": 6.3,
+      "ellipse": [
+       6.75,
+       5.6000000000000005
+      ]
+     },
+     {
+      "z": 9,
+      "ellipse": [
+       2.6999999999999997,
+       2.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "slab-right",
+   "at": [
+    12,
+    4,
+    0
+   ],
+   "params": {
+    "colour": "#b0aaa0",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       10,
+       8
+      ]
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       10.5,
+       8.4
+      ]
+     },
+     {
+      "z": 5.6,
+      "ellipse": [
+       7.5,
+       6.4
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       3.0,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "roof-rock",
+   "at": [
+    -1,
+    3,
+    5.5
+   ],
+   "params": {
+    "colour": "#6b6358",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       15,
+       8
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       15.75,
+       8.4
+      ]
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       11.25,
+       6.4
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       4.5,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "back-dome",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a82",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       26,
+       14
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       27.3,
+       14.700000000000001
+      ]
+     },
+     {
+      "z": 7.0,
+      "ellipse": [
+       19.5,
+       11.200000000000001
+      ]
+     },
+     {
+      "z": 10,
+      "ellipse": [
+       7.8,
+       4.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "front-left",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#b0aaa0",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       5
+      ]
+     },
+     {
+      "z": 1.4,
+      "ellipse": [
+       6.300000000000001,
+       5.25
+      ]
+     },
+     {
+      "z": 2.8,
+      "ellipse": [
+       4.5,
+       4.0
+      ]
+     },
+     {
+      "z": 4,
+      "ellipse": [
+       1.7999999999999998,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "front-right",
+   "at": [
+    24,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#6b6358",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       4
+      ]
+     },
+     {
+      "z": 1.0499999999999998,
+      "ellipse": [
+       5.25,
+       4.2
+      ]
+     },
+     {
+      "z": 2.0999999999999996,
+      "ellipse": [
+       3.75,
+       3.2
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       1.5,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mid-boulder",
+   "at": [
+    -6,
+    -10,
+    0
+   ],
+   "params": {
+    "colour": "#8a8a82",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       4,
+       3.2
+      ]
+     },
+     {
+      "z": 0.9099999999999999,
+      "ellipse": [
+       4.2,
+       3.3600000000000003
+      ]
+     },
+     {
+      "z": 1.8199999999999998,
+      "ellipse": [
+       3.0,
+       2.5600000000000005
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       1.2,
+       0.96
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "far-left",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "colour": "#6b6358",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7,
+       6
+      ]
+     },
+     {
+      "z": 1.75,
+      "ellipse": [
+       7.3500000000000005,
+       6.300000000000001
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       5.25,
+       4.800000000000001
+      ]
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       2.1,
+       1.7999999999999998
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "far-right",
+   "at": [
+    36,
+    12,
+    0
+   ],
+   "params": {
+    "colour": "#b0aaa0",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       8,
+       6
+      ]
+     },
+     {
+      "z": 2.0999999999999996,
+      "ellipse": [
+       8.4,
+       6.300000000000001
+      ]
+     },
+     {
+      "z": 4.199999999999999,
+      "ellipse": [
+       6.0,
+       4.800000000000001
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       2.4,
+       1.7999999999999998
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "floor-hollow",
+   "at": [
+    0,
+    -2,
+    0.05
+   ],
+   "params": {
+    "colour": "#4a4238",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      6,
+      0.05
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.9,
+    "run": 1.4,
+    "count": 4,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.1,
+    "thickness": 0.2,
+    "kind": "rail",
+    "colour": "#6b6358"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -48,
+     -10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; granite boulder overhang from Sibebe geology, boulders read pale and the overhang is schematic."
+ }
+}

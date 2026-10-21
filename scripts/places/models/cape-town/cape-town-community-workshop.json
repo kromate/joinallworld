@@ -1,0 +1,748 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cape-town",
+ "venueId": "cape-town-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UCT_Upper_Campus_landscape_view.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adrian Frith",
+   "view": "front",
+   "file": "/tmp/places-evidence/cape-town/community-workshop-0.jpg",
+   "used": "whole Upper Campus: sandstone retaining wall with arched niche, great flight of steps, central hall with six-column portico and pediment, flanking brown-brick wings with red tile hips, cypress trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sarah_Baartman_Building_at_University_of_Cape_Town.jpg",
+   "licence": "CC0",
+   "author": "Gogontsi",
+   "view": "front",
+   "used": "hall portico: cream ionic columns, ochre-brown walls, low pediment, wide granite steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/2034106",
+   "used": "campus context only; the outline is a 1.3 km campus so the Jameson-axis ensemble is modelled instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     118,
+     35
+    ]
+   },
+   "at": [
+    0,
+    8.5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b99d70",
+    "windows": "none",
+    "plinth": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a89a7c",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.75,
+    "run": 1.4,
+    "count": 8,
+    "colour": "#b4ac98"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     26
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 6,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#b99f78",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "axis": "y",
+    "colour": "#6f6a5f",
+    "pitch": 14,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -9,
+    6
+   ],
+   "params": {
+    "width": 22,
+    "depth": 5,
+    "height": 10,
+    "columns": 6,
+    "pediment": true,
+    "steps": 0,
+    "colour": "#e8e0cc",
+    "roofColour": "#d6cdb6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-l",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    -20,
+    0
+   ],
+   "z0": 6,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#6f4e3e",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "bands": "#d8cdb2",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9593b",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pav-r",
+   "footprint": {
+    "rect": [
+     12,
+     16
+    ]
+   },
+   "at": [
+    20,
+    0
+   ],
+   "z0": 6,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#6a4a3b",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "bands": "#d8cdb2",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9593b",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l1",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    -36,
+    3
+   ],
+   "z0": 6,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#765240",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "bands": "#d8cdb2",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9593b",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r1",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    36,
+    -1
+   ],
+   "z0": 6,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#6c4a3a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "bands": "#d8cdb2",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9593b",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l2",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -52,
+    9
+   ],
+   "z0": 6,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9a885",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "bands": "#d8cdb2",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9593b",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r2",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    52,
+    6
+   ],
+   "z0": 6,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#6c4a3a",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 8,
+    "bands": "#d8cdb2",
+    "plinth": 0,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a9593b",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "retwall",
+   "footprint": {
+    "rect": [
+     22,
+     2.2
+    ]
+   },
+   "at": [
+    0,
+    -22.2
+   ],
+   "height": 5.4,
+   "wall": {
+    "material": "stone",
+    "colour": "#c4a678",
+    "windows": "none",
+    "plinth": 0,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b49a70",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      -11,
+      -22.2,
+      5.3
+     ],
+     [
+      -40,
+      -22.2,
+      1.2
+     ]
+    ],
+    "colour": "#c0a275",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      -11,
+      -22.2,
+      6.4
+     ],
+     [
+      -40,
+      -22.2,
+      2.3
+     ]
+    ],
+    "colour": "#a88c64",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      1.4
+     ]
+    },
+    "points": [
+     [
+      11,
+      -22.2,
+      5.3
+     ],
+     [
+      40,
+      -22.2,
+      1.2
+     ]
+    ],
+    "colour": "#c0a275",
+    "caps": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      11,
+      -22.2,
+      6.4
+     ],
+     [
+      40,
+      -22.2,
+      2.3
+     ]
+    ],
+    "colour": "#a88c64",
+    "caps": true
+   }
+  },
+  {
+   "type": "hospital/arch-portal",
+   "at": [
+    0,
+    -23.4,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 4.4,
+    "depth": 0.5,
+    "archWidth": 3.4,
+    "springHeight": 2.4,
+    "colour": "#7a5f3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -27,
+    -4,
+    6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 28,
+    "spread": 1.5
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -31,
+    -4,
+    6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 24,
+    "spread": 1.5
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    27,
+    -4,
+    6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 28,
+    "spread": 1.5
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    31,
+    -4,
+    6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 23,
+    "spread": 1.5
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -4,
+    6
+   ],
+   "params": {
+    "kind": "conifer",
+    "height": 20,
+    "spread": 1.5
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    62,
+    0
+   ],
+   "lod": [
+    0,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -35.0,
+      -14
+     ],
+     [
+      35.0,
+      -14
+     ],
+     [
+      31.5,
+      14
+     ],
+     [
+      -31.5,
+      14
+     ]
+    ],
+    "z0": 0,
+    "height": 52,
+    "topScale": 0.3,
+    "colour": "#857a6b",
+    "topColour": "#857a6b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    62,
+    0
+   ],
+   "lod": [
+    0,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -38.0,
+      -14
+     ],
+     [
+      38.0,
+      -14
+     ],
+     [
+      34.2,
+      14
+     ],
+     [
+      -34.2,
+      14
+     ]
+    ],
+    "z0": 0,
+    "height": 44,
+    "topScale": 0.45,
+    "colour": "#7d7366",
+    "topColour": "#7d7366"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -62,
+    62,
+    0
+   ],
+   "lod": [
+    0,
+    2
+   ],
+   "params": {
+    "points": [
+     [
+      -20.0,
+      -14
+     ],
+     [
+      20.0,
+      -14
+     ],
+     [
+      18.0,
+      14
+     ],
+     [
+      -18.0,
+      14
+     ]
+    ],
+    "z0": 0,
+    "height": 34,
+    "topScale": 0.5,
+    "colour": "#7a7164",
+    "topColour": "#7a7164"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   116,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "mountain is three plain tapered blocks (no crags, too regular); retaining wall and sloped stairs are simplified and low; cypress are still cone-like; wings staggered but boxy"
+ }
+}

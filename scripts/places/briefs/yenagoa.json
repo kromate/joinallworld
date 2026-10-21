@@ -1,0 +1,1867 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "yenagoa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "yenagoa",
+    "climate": "rainforest",
+    "vernacular": "Young creek-and-mangrove capital of Bayelsa (state capital only since 1996): simple single-storey gabled houses of painted render and sandcrete under rusty corrugated roofs in older neighbourhoods, late-modernist white government blocks of the 1990s-2000s around Onopa, newer oil-wealth towers, low flood-prone ground with raised plinths and drainage channels, and bright green palms, mangrove edges and waterways beside most roads.",
+    "wallColours": [
+      "#f7f4ee",
+      "#e8dfc4",
+      "#cfd8dc",
+      "#a9b8a0",
+      "#b5a48a",
+      "#9fb4c0",
+      "#c07a56"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#6e5a4a",
+      "#4a5f52",
+      "#8c9096"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "White late-modernist state buildings with plain colonnaded or canopied entrances, Ijaw heroes monuments and cenotaphs, murals of the Ijaw nation, raised plinths and drainage channels around buildings, and boats, jetties and mangrove banks as the backdrop.",
+    "sources": [
+      {
+        "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+        "what": "old neighbourhoods keep simple single-storey gabled houses built for heavy rain; government buildings of late 1990s-2000s are late-modernist; newer high-rises"
+      },
+      {
+        "url": "https://www.thisdaylive.com/2017/02/13/a-new-house-for-bayelsa/",
+        "what": "new Government House blocks painted all white on a large site in Onopa"
+      },
+      {
+        "url": "https://www.britannica.com/place/Yenagoa",
+        "what": "Yenagoa as a delta town and capital of Bayelsa state"
+      },
+      {
+        "url": "https://thingsnigeria.com/2019/03/25/yenagoa-a-sleepy-city-starts-to-rouse/",
+        "what": "city development as a state capital"
+      }
+    ]
+  },
+  "places": {
+    "alamieyesiegha-castle": {
+      "venueId": "alamieyesiegha-castle",
+      "city": "yenagoa",
+      "name": "Alamieyesiegha Castle",
+      "archetype": "manor",
+      "subject": "A castle-styled private residence: a white two-storey mansion with a central tower and crenellated parapets behind a high gated wall",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f4f1e6",
+          "#b8a77c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "central turret"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "postmodern",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Diepreye_Alamieyeseigha",
+          "what": "name refers to former governor Diepreye Alamieyeseigha (Amassoma-born); no source describes a castle"
+        }
+      ],
+      "notes": "No source describes this building; the name suggests a castle-style mansion, so a crenellated white residence is typed. Treated as low confidence; do not assume a real fort."
+    },
+    "bayelsa-state-government-house": {
+      "venueId": "bayelsa-state-government-house",
+      "city": "yenagoa",
+      "name": "Bayelsa State Government House",
+      "archetype": "civic-palace",
+      "subject": "Creek Heaven in Onopa: the governor's complex of three all-white blocks (governor's office, deputy governor's office, administrative hub) behind a gated flag-lined approach",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#b8a77c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1996, new blocks 2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.thisdaylive.com/2017/02/13/a-new-house-for-bayelsa/",
+          "what": "newer building painted all white with three main blocks on a large site in Onopa"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bayelsa_State_Government_House",
+          "what": "also called Creek Heaven; governor and deputy offices since 1996"
+        }
+      ],
+      "notes": "Layout (three white blocks), name and area are sourced; storeys, size and portico are estimated. Whiter and more campus-like than the High Court and the Secretariat."
+    },
+    "bayelsa-state-high-court": {
+      "venueId": "bayelsa-state-high-court",
+      "city": "yenagoa",
+      "name": "Bayelsa State High Court of Justice",
+      "archetype": "civic-palace",
+      "subject": "The state High Court: a formal two-storey courthouse with a central columned portico, steps and a small dome, in cream render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#8a6a45",
+          "#ffffff"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not described in the found sources; a formal columned courthouse is typed for a Nigerian state high court. Differs from the Secretariat by its portico and hip roof."
+    },
+    "bayelsa-state-secretariat": {
+      "venueId": "bayelsa-state-secretariat",
+      "city": "yenagoa",
+      "name": "State Secretariat Complex",
+      "archetype": "civic-palace",
+      "subject": "The state secretariat complex: linked rectangular ministry blocks of four to six storeys in white and pale grey render around a car-filled forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee8d8",
+          "#7d95a8",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 5
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1996-2005",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "government buildings of the late 1990s-2000s are late-modernist"
+        }
+      ],
+      "notes": "Late-modernist style is sourced for the era; the form is typed. Taller and plainer than the Government House."
+    },
+    "braids-salon-yenagoa": {
+      "venueId": "braids-salon-yenagoa",
+      "city": "yenagoa",
+      "name": "Braids",
+      "archetype": "shophouse",
+      "subject": "A small hair-braiding salon in a single-storey roadside shop with a bright painted front, a few chairs visible through the door and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f3d9a8",
+          "#c0508a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Real small business with no findable description. Typed as a one-room shop; bright pink-gold palette."
+    },
+    "crunchies-yenagoa": {
+      "venueId": "crunchies-yenagoa",
+      "city": "yenagoa",
+      "name": "Crunchies",
+      "archetype": "restaurant",
+      "subject": "A casual fast-food restaurant with a glazed corner, striped awning and a few outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f6e6c0",
+          "#e08a2c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not described anywhere found; yellow-orange palette to differ from Pepperoni."
+    },
+    "diete-koki-memorial-hospital": {
+      "venueId": "diete-koki-memorial-hospital",
+      "city": "yenagoa",
+      "name": "Diete-Koki Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "A state hospital: a broad two-storey rendered clinical block with a covered porte-cochere, ambulance bay and a long ward wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee0",
+          "#5aa58f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "porte-cochere"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "State-owned memorial hospital in Opolo, not described in the sources found. Typed as a wide, low ward hospital with a hip roof, unlike the Melford Okilo's taller blocks."
+    },
+    "ekeki-central-mosque": {
+      "venueId": "ekeki-central-mosque",
+      "city": "yenagoa",
+      "name": "Ekeki Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Ekeki Central Mosque: a large white prayer hall with a central green dome, four corner domelets and two tall minarets standing in a walled forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f7f4ee",
+          "#2f8f5a",
+          "#d4b46a"
+        ],
+        "roofColour": "#2f8f5a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "No source describes this mosque; Yenagoa is a mostly Christian Ijaw city so the central mosque is typed as a mid-sized community mosque. Larger than the Opolo mosque, with two minarets."
+    },
+    "ekeki-motor-park": {
+      "venueId": "ekeki-motor-park",
+      "city": "yenagoa",
+      "name": "Ekeki Motor Park",
+      "archetype": "transport-station",
+      "subject": "Ekeki motor park: a paved yard with rows of minibuses and taxis, a roofed waiting shed and ticket kiosks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc9b8",
+          "#d0a02c",
+          "#ffffff"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; typed from the usual Niger Delta motor park of tin sheds and loading bays. Bigger and busier than the Opolo park."
+    },
+    "first-bank-yenagoa": {
+      "venueId": "first-bank-yenagoa",
+      "city": "yenagoa",
+      "name": "First Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey cream block with a deep navy trim band, a glazed hall and a covered ATM lobby; no logos",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d4",
+          "#1f3b6e",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not individually documented; navy trim differs from the UBA and Zenith branches."
+    },
+    "gabriel-okara-cultural-centre": {
+      "venueId": "gabriel-okara-cultural-centre",
+      "city": "yenagoa",
+      "name": "Gabriel Okara Cultural Centre",
+      "archetype": "museum-theatre",
+      "subject": "The Ovom cultural centre named for poet Gabriel Okara: a modern low building with a curved entrance canopy, a hall and exhibition rooms",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ecdc",
+          "#2f6b8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://nico.gov.ng/?p=1801",
+          "what": "described as an ultra-modern building housing the Bayelsa State Council for Arts and Culture"
+        },
+        {
+          "url": "https://www.dailytrust.com.ng/renowned-writer-gabriel-okara-dies-at-98.html",
+          "what": "state named the library and cultural centre after Okara"
+        }
+      ],
+      "notes": "Only 'ultra-modern' and use are sourced; the form is typed. Recognisable by the curved entrance canopy and mural."
+    },
+    "igbogene-field": {
+      "venueId": "igbogene-field",
+      "city": "yenagoa",
+      "name": "Igbogene Field",
+      "archetype": "park-landscape",
+      "subject": "Igbogene Field: an open grassy sports and community field with goalposts, a few sheds and palm shade at the edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d0b8",
+          "#6e8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; a village-edge grass field near the Igbogene area."
+    },
+    "institute-of-science-technology-yenagoa": {
+      "venueId": "institute-of-science-technology-yenagoa",
+      "city": "yenagoa",
+      "name": "Institute of Science and Technology, Yenagoa",
+      "archetype": "campus-block",
+      "subject": "A polytechnic-style campus: a three-storey lecture block and workshop sheds around a paved forecourt",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d4",
+          "#4a6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented campus, typed. Smaller and plainer than University of Africa's glass blocks."
+    },
+    "may-exclusive-paradise-yenagoa": {
+      "venueId": "may-exclusive-paradise-yenagoa",
+      "city": "yenagoa",
+      "name": "May Exclusive Paradise",
+      "archetype": "shophouse",
+      "subject": "A beauty and salon shopfront with a pastel facade, tinted glass front, a small porch and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8d4e8",
+          "#9a5aa6",
+          "#ffffff"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "No description found. Pastel violet and tinted glass to differ from Braids."
+    },
+    "melford-okilo-memorial-hospital": {
+      "venueId": "melford-okilo-memorial-hospital",
+      "city": "yenagoa",
+      "name": "Melford Okilo Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "A state hospital: a three-storey concrete and render main block with a canopied entrance, linked ward blocks and a helipad pad on the lawn",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e6",
+          "#3d7ea6",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "State hospital with no description in found sources. Typed taller and bluer than Diete-Koki; the university hospital in Uyo (UUTH) is a separate city."
+    },
+    "national-museum-yenagoa": {
+      "venueId": "national-museum-yenagoa",
+      "city": "yenagoa",
+      "name": "National Museum, Yenagoa",
+      "archetype": "museum-theatre",
+      "subject": "The Yenagoa National Museum: a modest two-storey exhibition building in white render with a pitched roof and a carved Ijaw canoe on display outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead6",
+          "#8a5a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "carved canoe figure"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "No description found. Different from the Uyo museum by its hip roof and canoe display."
+    },
+    "onopa-market-yenagoa": {
+      "venueId": "onopa-market-yenagoa",
+      "city": "yenagoa",
+      "name": "Onopa Market",
+      "archetype": "market-open",
+      "subject": "Onopa Market: a small neighbourhood market of tarpaulin-covered tables and lock-up kiosks off a narrow street, selling fish and vegetables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b79a6b",
+          "#6e8f5a",
+          "#d0c6b0"
+        ],
+        "roofColour": "#7a6252",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.finelib.com/listing/Onopa-Market/90738/",
+          "what": "local market with many stores and workshops, perishable food, fresh fish, cereals and household items"
+        },
+        {
+          "url": "https://kashgain.net/blog/list-of-local-markets-and-their-locations-in-bayelsa-state/",
+          "what": "inside the Onopa community, serves everyday shopping: vegetables, seafood, cooking items"
+        }
+      ],
+      "notes": "Use is sourced; the physical form is typed. Smaller and more everyday than Swali Market."
+    },
+    "opolo-mosque-yenagoa": {
+      "venueId": "opolo-mosque-yenagoa",
+      "city": "yenagoa",
+      "name": "Opolo Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A small neighbourhood mosque: a plain painted prayer hall with one small dome and a single short minaret behind a low wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee8d4",
+          "#3f8f6a",
+          "#ffffff"
+        ],
+        "roofColour": "#3f8f6a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented. Simpler, smaller and with one minaret, unlike Ekeki Central."
+    },
+    "opolo-motor-park": {
+      "venueId": "opolo-motor-park",
+      "city": "yenagoa",
+      "name": "Opolo Motor Park",
+      "archetype": "transport-station",
+      "subject": "Opolo motor park: a smaller paved yard with a few minibuses, kiosks and a single tin shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3cdbb",
+          "#b0553d",
+          "#ffffff"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; a smaller version of the Ekeki park."
+    },
+    "pepperoni-yenagoa": {
+      "venueId": "pepperoni-yenagoa",
+      "city": "yenagoa",
+      "name": "Pepperoni",
+      "archetype": "restaurant",
+      "subject": "A pizza and grill restaurant: a one-storey painted block with a red tiled-look awning, glazed front and a covered patio",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3e0c8",
+          "#c0392b",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "No description found; warm red palette, hip roof to differ from Crunchies."
+    },
+    "samson-siasia-stadium": {
+      "venueId": "samson-siasia-stadium",
+      "city": "yenagoa",
+      "name": "Samson Siasia Stadium",
+      "archetype": "stadium",
+      "subject": "Samson Siasia Sports Stadium: a small football ground with a covered main stand and open terraces, home of Bayelsa United",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd0cc",
+          "#2f8f5a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://us.soccerway.com/team/bayelsa-united/fasjBzzf",
+          "what": "home ground of Bayelsa United, capacity about 5,000"
+        }
+      ],
+      "notes": "Capacity (about 5,000) and use are sourced; stand shape is estimated. Open bowl with one roofed stand, unlike the Uyo covered stadium."
+    },
+    "st-johns-catholic-yenagoa": {
+      "venueId": "st-johns-catholic-yenagoa",
+      "city": "yenagoa",
+      "name": "St John's Catholic Church",
+      "archetype": "church-modern",
+      "subject": "A parish church at Igbogene: a long white nave with a pitched roof, a free-standing bell tower and a cross over the porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f4f1e6",
+          "#8a6a45",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "No source for the building. Typed as a rural-edge parish church with a bell tower."
+    },
+    "st-lukes-anglican-yenagoa": {
+      "venueId": "st-lukes-anglican-yenagoa",
+      "city": "yenagoa",
+      "name": "St Lukes Anglican Church",
+      "archetype": "church-classical",
+      "subject": "An Anglican church: a rendered gabled nave with a square west tower, pointed windows and a red metal roof",
+      "form": {
+        "footprint": "T",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#8a6a45",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square west tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; Anglican churches in the Niger Delta are typically gabled rendered halls with a simple tower. Distinct from the Catholic churches in being older and more traditional."
+    },
+    "st-patrick-catholic-yenagoa": {
+      "venueId": "st-patrick-catholic-yenagoa",
+      "city": "yenagoa",
+      "name": "St. Patrick Catholic Church",
+      "archetype": "church-modern",
+      "subject": "A large Catholic parish church: a broad rendered hall with a steep front gable, a central cross and a glass-fronted entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#2f5d9e",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; larger and more modern than St John's."
+    },
+    "swale-market-yenagoa": {
+      "venueId": "swale-market-yenagoa",
+      "city": "yenagoa",
+      "name": "Swale Market",
+      "archetype": "market-open",
+      "subject": "Swali Market: the city's largest market, a huge riverside spread of tin-roofed stalls, fish tables and produce sellers beside the water with a solar cold-room container",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 95,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b79a6b",
+          "#5a7f6a",
+          "#d0c6b0"
+        ],
+        "roofColour": "#6e5a4a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "riverside landing"
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://leadership.ng/solar-powered-cold-room-improves-fortunes-of-bayelsa-market-women/",
+          "what": "Swali Market as biggest market in Bayelsa, near the river, solar cold-room installed"
+        },
+        {
+          "url": "https://blueprint.ng/?p=305293",
+          "what": "markets in Yenagoa were partly demolished (sanitation authority)"
+        }
+      ],
+      "notes": "Largest and busiest market in the city, near the river; layout and look typed. Far larger than Onopa Market."
+    },
+    "uba-bank-yenagoa": {
+      "venueId": "uba-bank-yenagoa",
+      "city": "yenagoa",
+      "name": "UBA Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a three-storey red-and-white glazed block with a deep canopy and a corner entrance; no logos",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d8dcdc",
+          "#b02a2a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not individually documented; red accent differs from First Bank's navy."
+    },
+    "university-of-africa-toru-orua": {
+      "venueId": "university-of-africa-toru-orua",
+      "city": "yenagoa",
+      "name": "University of Africa, Toru-Orua",
+      "archetype": "campus-block",
+      "subject": "A private university campus: modern glazed lecture buildings with covered walkways and a library, set in landscaped grounds near Toru-Orua",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e6ecef",
+          "#2f6b8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; typed as a contemporary private campus, glassier than the Institute of Science and Technology. Coordinates are approximate."
+    },
+    "zenith-bank-yenagoa": {
+      "venueId": "zenith-bank-yenagoa",
+      "city": "yenagoa",
+      "name": "Zenith Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey glazed and rendered block with a red-and-grey scheme and a covered ATM bay; no logos",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e0d0",
+          "#c0392b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://kupi.com/en/explore/nigeria/yenagoa/history",
+          "what": "Yenagoa city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not individually documented; lower and wider than the UBA branch."
+    }
+  }
+}

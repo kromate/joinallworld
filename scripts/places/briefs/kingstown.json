@@ -1,0 +1,1608 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kingstown",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kingstown",
+    "climate": "tropical-maritime",
+    "vernacular": "Steep volcanic hillsides dropping to a harbour, with a compact capital of 18th and 19th century British colonial stone and brick buildings (the 'City of Arches') with arcades, shuttered windows and galvanised iron roofs, rebuilt after the 1866 fire. Away from the centre are painted concrete-block houses and small shops in pastel and bright colours with red, green and grey zinc roofs stacked up the hills, and low modern civic and health buildings. Black volcanic sand beaches, coconut palms, breadfruit and mango trees.",
+    "wallColours": [
+      "#e8dcc0",
+      "#d8a27a",
+      "#7aa7c7",
+      "#cc6f5e",
+      "#f2f0e8",
+      "#8d8478",
+      "#e9c46a"
+    ],
+    "roofColours": [
+      "#a9402f",
+      "#6f757a",
+      "#4f7d57",
+      "#8a8f94",
+      "#b5651d"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "stone",
+      "red-brick",
+      "render",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Round-headed arches and arcades on the ground floor of colonial buildings; louvred shutters and jalousies; timber fretwork on verandahs; stone quoins and string courses; coloured painted walls with contrast trim; flag and crest motifs on civic buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kingstown",
+        "what": "French founding about 1722, British rule, 1866 fire, steep hills around the town, nickname City of Arches, tropical rainforest climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral,_Kingstown",
+        "what": "blended Moorish, Romanesque, Byzantine, Venetian and Flemish look contrasting with the rest of town"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fort_Charlotte,_Saint_Vincent",
+        "what": "stone fort on Berkshire Hill built 1763-1806"
+      }
+    ]
+  },
+  "places": {
+    "kingstown-airport-kingstown-airport": {
+      "venueId": "kingstown-airport-kingstown-airport",
+      "city": "kingstown",
+      "name": "Argyle International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Argyle International Airport terminal: a long two-level modern terminal on the windward coast with a glazed frontage, a flat forecourt canopy and a control tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 229.6,
+        "depth_m": 63.1,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#e9ecea",
+          "#4f7da3",
+          "#c4c9c8"
+        ],
+        "roofColour": "#b4b8b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Argyle_International_Airport",
+          "what": "opened 14 February 2017 replacing E.T. Joshua; 1.5 million passengers a year capacity; 23 commercial spaces, three restaurants, kiosk spots"
+        }
+      ],
+      "notes": "OSM terminal footprint 230 x 63 m. Source gives capacity and commercial spaces but not the look; colours and canopy are typed. Number of jet bridges unknown, none modelled."
+    },
+    "kingstown-clinic": {
+      "venueId": "kingstown-clinic",
+      "city": "kingstown",
+      "name": "Georgetown Health Centre",
+      "archetype": "hospital",
+      "subject": "Georgetown Health Centre: a two-storey rendered clinic with a pitched red zinc roof and a front ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 81.3,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#6a9bb0",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building=hospital 81 x 80 m at Georgetown on the windward coast. No description found."
+    },
+    "kingstown-community-notices": {
+      "venueId": "kingstown-community-notices",
+      "city": "kingstown",
+      "name": "Customs and Immigration",
+      "archetype": "civic-small",
+      "subject": "Customs and Immigration office at Chateaubelair: a small one-storey painted block building with a red zinc roof beside the sea road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.3,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9c46a",
+          "#a9402f",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "Obscure; OSM building 13 x 9 m only. Typed from town style."
+    },
+    "kingstown-community-voting-game": {
+      "venueId": "kingstown-community-voting-game",
+      "city": "kingstown",
+      "name": "Kingstown Magistrate Court",
+      "archetype": "civic-small",
+      "subject": "Kingstown Magistrate Court: a two-storey colonial court building in painted stone and render with round-arched ground floor openings and an iron roof, in the centre of Kingstown",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28.4,
+        "depth_m": 19.9,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#8d8478",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "19th century (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "Kingstown known as the City of Arches; 1866 fire destroyed much of town, rebuilt in stone and brick"
+        }
+      ],
+      "notes": "OSM tags the footprint building=retail, 28 x 20 m. Appearance is typed from Kingstown colonial style, not a description of this court."
+    },
+    "kingstown-community-workshop": {
+      "venueId": "kingstown-community-workshop",
+      "city": "kingstown",
+      "name": "Layou Learning Resource Center",
+      "archetype": "civic-small",
+      "subject": "Layou Learning Resource Center: a small single-storey community library block with a hip roof and a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15.8,
+        "depth_m": 8.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#cbe0d0",
+          "#a9402f",
+          "#ffffff"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "Obscure village library; OSM building 16 x 9 m."
+    },
+    "kingstown-market-game": {
+      "venueId": "kingstown-market-game",
+      "city": "kingstown",
+      "name": "Bayshore Mall",
+      "archetype": "mall",
+      "subject": "Bayshore Mall: a small single-storey strip of shops with a flat roof and awnings facing the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25.7,
+        "depth_m": 11.9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "strip plaza"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2d98d",
+          "#2a6f97",
+          "#ffffff"
+        ],
+        "roofColour": "#b4b8b8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "Obscure; OSM building 26 x 12 m. Not found in sources."
+    },
+    "kingstown-meal-stop": {
+      "venueId": "kingstown-meal-stop",
+      "city": "kingstown",
+      "name": "Cumberland Beach & Recreation Park",
+      "archetype": "park-landscape",
+      "subject": "Cumberland Beach and Recreation Park: a black volcanic-sand cove with coconut palms, a roofed open pavilion and a small concession building on the leeward coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a26b",
+          "#2a6f97",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "A beach and playground, not a restaurant. Building 14 x 10 m is a small concession shed."
+    },
+    "kingstown-osm-node-10601836368": {
+      "venueId": "kingstown-osm-node-10601836368",
+      "city": "kingstown",
+      "name": "Mount Peggy",
+      "archetype": "park-landscape",
+      "subject": "Mount Peggy: a scrub-covered hill viewpoint on the south coast overlooking the sea, shown as a grassy hilltop with a lookout post",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#8d8478",
+          "#6a7b4a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "No building at the OSM point. Nothing specific found."
+    },
+    "kingstown-osm-node-10723229405": {
+      "venueId": "kingstown-osm-node-10723229405",
+      "city": "kingstown",
+      "name": "Rock-Side Cafe",
+      "archetype": "restaurant",
+      "subject": "Rock-Side Cafe: a small open-air cafe of timber and block under a green zinc roof, built against rock above the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26.9,
+        "depth_m": 15.4,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#cc6f5e",
+          "#4f7d57",
+          "#ffffff"
+        ],
+        "roofColour": "#4f7d57",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "No description found; OSM building 27 x 15 m."
+    },
+    "kingstown-osm-node-11400861069": {
+      "venueId": "kingstown-osm-node-11400861069",
+      "city": "kingstown",
+      "name": "Argyle Isolation Center",
+      "archetype": "hospital",
+      "subject": "Argyle Isolation Center: a low single-storey prefabricated style medical block near the airport with a canopy entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25.3,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#eef0ee",
+          "#3f86a8",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found; typed pandemic-era isolation facility."
+    },
+    "kingstown-osm-node-11690643469": {
+      "venueId": "kingstown-osm-node-11690643469",
+      "city": "kingstown",
+      "name": "Volcano Oservatory",
+      "archetype": "office-low",
+      "subject": "Belmont Volcano Observatory: a single-storey grey concrete monitoring station with a hip roof and an antenna mast on the volcano's lower flank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.1,
+        "depth_m": 10.7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd2cf",
+          "#a9402f",
+          "#ffffff"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM name is misspelt 'Oservatory'. Appearance is typed; likely a small UWI Seismic Research Centre post."
+    },
+    "kingstown-osm-node-1228341374": {
+      "venueId": "kingstown-osm-node-1228341374",
+      "city": "kingstown",
+      "name": "Moonhole",
+      "archetype": "manor",
+      "subject": "Moonhole, Bequia: fanciful open-air houses of local stone and whalebone built into a rock arch above the sea, with wide open rooms and trade-wind windows",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a89d8a",
+          "#6b4f36",
+          "#d9d2c0"
+        ],
+        "roofColour": "#7a6a55",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "huge rock arch the first house was built beneath"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open central veranda"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1960s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moonhole",
+          "what": "houses built of native stone and whalebone with hardwoods; open-air rooms, large windows to trade winds, solar power and rain cisterns; 11 private homes plus 4 company houses; begun by Thomas and Gladys Johnston with masons from Paget Farm"
+        }
+      ],
+      "notes": "Private community on Bequia, no public access. OSM building is only 4 x 4 m; the model shows one signature open stone house."
+    },
+    "kingstown-osm-node-4451006141": {
+      "venueId": "kingstown-osm-node-4451006141",
+      "city": "kingstown",
+      "name": "Cafe Sole'",
+      "archetype": "restaurant",
+      "subject": "Cafe Sole': a large two-storey seaside restaurant building with a terrace and a hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 51.5,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2e3b8",
+          "#2a6f97",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building 68 x 52 m (probably includes adjoining buildings). No description found."
+    },
+    "kingstown-osm-node-4694400714": {
+      "venueId": "kingstown-osm-node-4694400714",
+      "city": "kingstown",
+      "name": "Spring View Park",
+      "archetype": "park-landscape",
+      "subject": "Spring View Park: a small hillside lookout park with a covered gazebo and low walls above Kingstown's south coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 36.3,
+        "depth_m": 23.8,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#cfc9b8",
+          "#4a8b57",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM park 36 x 24 m. Nothing found."
+    },
+    "kingstown-osm-node-5484802021": {
+      "venueId": "kingstown-osm-node-5484802021",
+      "city": "kingstown",
+      "name": "Bamboo Range La Soufriere",
+      "archetype": "park-landscape",
+      "subject": "Bamboo Range on La Soufriere trail: a dense bamboo and rainforest edge on the volcano's lower flank, with a small timber trail hut",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#7a6a4a",
+          "#4a6a3a",
+          "#d9d2c0"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building is only 6 x 6 m. Typed trail head on the active volcano (summit about 1,234 m)."
+    },
+    "kingstown-osm-way-384773635": {
+      "venueId": "kingstown-osm-way-384773635",
+      "city": "kingstown",
+      "name": "St George's Cathedral",
+      "archetype": "church-classical",
+      "subject": "St George's Cathedral, Kingstown: the Anglican cathedral, a Georgian church in pale yellow stucco with a square tower, round-arched windows and a hip roof, on Grenville Street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55.3,
+        "depth_m": 19.7,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#ecd9a0",
+          "#8d8478",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square tower at the west end"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "georgian",
+      "era": "1820s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "Kingstown the City of Arches, 1866 fire; cathedral recorded in OSM as 55 x 20 m, 1 level, Anglican (wikidata Q63400636)"
+        }
+      ],
+      "notes": "Colour and tower from memory of public photos; the exact style details were not confirmed from a fetched page. Georgian 1820s (typed)."
+    },
+    "kingstown-osm-way-385029456": {
+      "venueId": "kingstown-osm-way-385029456",
+      "city": "kingstown",
+      "name": "Black Point Tunnel",
+      "archetype": "monument",
+      "subject": "Black Point Tunnel: the 1815 hand-cut tunnel through a volcanic headland on the windward coast, a rock-cut arched portal with a cliff above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#4a4741",
+          "#8d8478",
+          "#6a7b4a"
+        ],
+        "roofColour": "#4a4741",
+        "roofMaterial": null,
+        "windows": "arched",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1815",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines",
+          "what": "Saint Vincent is volcanic and heavily forested with little level ground"
+        }
+      ],
+      "notes": "OSM park polygon 226 x 225 m on the headland. Tunnel is a known 19th century heritage site (about 110 m long, reported); not verified from a fetched page. Model the portal only."
+    },
+    "kingstown-osm-way-385029457": {
+      "venueId": "kingstown-osm-way-385029457",
+      "city": "kingstown",
+      "name": "Vermont Nature trail",
+      "archetype": "park-landscape",
+      "subject": "Vermont Nature Trail: a forest trail head in the Vermont valley rainforest with a small timber shelter and signboard",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#7a6a4a",
+          "#4a6a3a",
+          "#d9d2c0"
+        ],
+        "roofColour": "#4f7d57",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building 8 x 7 m. Habitat of the St Vincent parrot. Nothing else found."
+    },
+    "kingstown-osm-way-386078993": {
+      "venueId": "kingstown-osm-way-386078993",
+      "city": "kingstown",
+      "name": "American University of St Vincent School of Medicine",
+      "archetype": "campus-block",
+      "subject": "American University of St Vincent School of Medicine: a small two-storey rendered teaching building with a hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27.2,
+        "depth_m": 26.2,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#2a6f97",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building 27 x 26 m only; look is typed."
+    },
+    "kingstown-osm-way-386242566": {
+      "venueId": "kingstown-osm-way-386242566",
+      "city": "kingstown",
+      "name": "Arnos Vale Medical Center",
+      "archetype": "hospital",
+      "subject": "Arnos Vale Medical Center: a small one-storey rendered medical clinic with a red zinc roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33.9,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#6a9bb0",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building 34 x 13 m near the airport at Arnos Vale. No description."
+    },
+    "kingstown-osm-way-573635160": {
+      "venueId": "kingstown-osm-way-573635160",
+      "city": "kingstown",
+      "name": "Georgetown Mall",
+      "archetype": "mall",
+      "subject": "Georgetown Mall: a small two-storey rendered shopping block with a flat roof and shopfronts at Georgetown",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 23.3,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2d98d",
+          "#2a6f97",
+          "#ffffff"
+        ],
+        "roofColour": "#b4b8b8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "city context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM building 25 x 23 m only."
+    },
+    "kingstown-osm-way-850584945": {
+      "venueId": "kingstown-osm-way-850584945",
+      "city": "kingstown",
+      "name": "Fort Charlotte",
+      "archetype": "heritage-fort",
+      "subject": "Fort Charlotte on Berkshire Hill: a 1763-1806 British stone hilltop fort with thick walls, cannon along the ramparts and a two-storey barracks and officers' quarters, looking over Kingstown and its harbour",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#8d8478",
+          "#e8dcc0",
+          "#a9402f"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "dry moat and gun walls"
+        },
+        {
+          "id": "cannon",
+          "count": 12,
+          "note": "could hold 34 guns; some cannon dated 1811"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1763-1806",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Charlotte,_Saint_Vincent",
+          "what": "begun 1763, completed 1806; 601 ft hill at the top of Edinboro Road; 34 guns and 600 troops; redoubt reached by viaduct with guns pointing inland; barracks later a women's prison, officers' quarters a museum; dry moat"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28448431",
+          "what": "OSM way is a 48 x 21 m barracks inside the fort"
+        }
+      ],
+      "notes": "Stone and brick colour is typed (weathered grey stone with painted barracks); article does not give materials. Fort is bigger than the OSM building."
+    },
+    "kingstown-quiet-reflection": {
+      "venueId": "kingstown-quiet-reflection",
+      "city": "kingstown",
+      "name": "Assumption Cathedral",
+      "archetype": "church-classical",
+      "subject": "Assumption Cathedral, Kingstown: the Catholic cathedral whose eclectic Moorish, Romanesque, Byzantine and Venetian look contrasts strongly with the rest of town, in banded stone with arched openings and a tall tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28.5,
+        "depth_m": 26.8,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#a9805a",
+          "#d8c9a0",
+          "#f3efe2"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1823 start, completed 1930s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Assumption_Cathedral,_Kingstown",
+          "what": "first structure erected in stages from 1823, present building completed in the 1930s; blends Moorish, Romanesque, Byzantine, Venetian and Flemish influences, strongly contrasts with the city"
+        }
+      ],
+      "notes": "Date and eclectic mix are sourced. Stone colours, towers and roof are from memory of photos and uncertain. No STYLES id for eclectic Romanesque, nearest used is colonial."
+    },
+    "kingstown-recreation": {
+      "venueId": "kingstown-recreation",
+      "city": "kingstown",
+      "name": "Rawacou",
+      "archetype": "park-landscape",
+      "subject": "Rawacou: a flat coastal recreation park on Rawacou Point with lawn, palms and a long sea wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 315.5,
+        "depth_m": 131.2,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#cfc9b8",
+          "#4a8b57",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "Rawacou is OSM Rawacou Point near Argyle; city context only"
+        }
+      ],
+      "notes": "OSM park 316 x 131 m. Nothing about its facilities found."
+    },
+    "kingstown-transit": {
+      "venueId": "kingstown-transit",
+      "city": "kingstown",
+      "name": "Kingstown",
+      "archetype": "transport-station",
+      "subject": "Kingstown ferry terminal on the harbour front: a one-storey concrete terminal with a covered waiting area, a pier and bus bays for the Grenadines ferries",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18.7,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0e8",
+          "#2a6f97",
+          "#ffffff"
+        ],
+        "roofColour": "#a9402f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingstown",
+          "what": "country's main port and largest commercial centre"
+        }
+      ],
+      "notes": "OSM amenity=ferry_terminal, 22 x 19 m. Look typed; harbour has cruise and ferry berths."
+    }
+  }
+}

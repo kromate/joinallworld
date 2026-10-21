@@ -1,0 +1,1179 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "the-valley",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "the-valley",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-rise Caribbean island town on a flat limestone island: single-storey and two-storey concrete-block houses and shops rendered and painted in whites and pastels, renovated West Indian-style cottages with pitched roofs and verandas, and a few stone-and-timber colonial survivals. Roofs are painted corrugated or sheet metal in red, green, blue or galvanized grey. Dry scrub, sea grape, coconut palms and sandy or coral-stone ground; very few buildings above three storeys.",
+    "wallColours": [
+      "#f1ede2",
+      "#f0d98a",
+      "#8fb6cf",
+      "#e8a08c",
+      "#c9bd9f",
+      "#a8c9a0"
+    ],
+    "roofColours": [
+      "#b94a3a",
+      "#6b8f71",
+      "#9aa0a4",
+      "#3e6f9a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "stone",
+      "timber"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete",
+      "timber-shingle"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "broadleaf"
+    ],
+    "ornament": "Wooden fretwork and shutters on West Indian-style cottages, painted verandas, coral-stone and pebble work (St. Gerard's facade), bright painted fascia boards and shopfronts, louvred windows for ventilation.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/The_Valley,_Anguilla",
+        "what": "few colonial buildings survive; renovated West Indian-style cottages beside modernised shops; St. Gerard's pebble, stone, cement, wood and tile facade; flat site 9 m above sea level"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Wallblake_House",
+        "what": "18th-century coral-lime mortar, dressed stone and shingled hardwood-framed roof in the local colonial building tradition"
+      }
+    ]
+  },
+  "places": {
+    "the-valley-airport-the-valley-airport": {
+      "venueId": "the-valley-airport-the-valley-airport",
+      "city": "the-valley",
+      "name": "Clayton J. Lloyd International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small single-storey terminal of Anguilla's only airport, passengers walk to aircraft (no jetways)",
+      "form": {
+        "footprint": "L",
+        "width_m": 46,
+        "depth_m": 43,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9dc",
+          "#4a7aa5",
+          "#ffffff"
+        ],
+        "roofColour": "#c9c9c4",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Clayton_J._Lloyd_International_Airport",
+          "what": "small terminal with no jetways; single 1,665 m runway 10/28"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "terminal building footprint about 46 x 43 m, L-shaped"
+        }
+      ],
+      "notes": "Footprint is measured (OSM aeroway=terminal). Appearance, colours and the tower are typed from the 'small terminal, no jetways' description and the city style; verify against a photo before finalising. Colours are typical Caribbean pastel and painted-metal palette chosen for the city style; no photo-based colour source could be consulted for this venue."
+    },
+    "the-valley-clinic": {
+      "venueId": "the-valley-clinic",
+      "city": "the-valley",
+      "name": "Princess Alexandra Hospital",
+      "archetype": "hospital",
+      "subject": "Low-rise 32-bed island hospital in several wings, rebuilt roofs after Hurricane Irma",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ece0",
+          "#6aa3b8",
+          "#ffffff"
+        ],
+        "roofColour": "#a8483a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s (rebuilt after 2017)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Alexandra_Hospital,_Anguilla",
+          "what": "32 beds; Irma tore off roof, rebuild and maternity wing opened Nov 2018"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "hospital campus outline about 282 x 149 m, multi-wing"
+        }
+      ],
+      "notes": "Campus outline is measured; the model shows the main low wing. Wall and roof colours are typed from the city style. Rebuilt roofs after Hurricane Irma are the only described feature."
+    },
+    "the-valley-community-notices": {
+      "venueId": "the-valley-community-notices",
+      "city": "the-valley",
+      "name": "Public Utilities Commission",
+      "archetype": "civic-small",
+      "subject": "Small government office building in The Valley, stand-in office for the Public Utilities Commission",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc4",
+          "#b94a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#b94a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the Public Utilities Commission building was found. The game position falls inside the Fairplay Shopping Center outline (74 x 51 m), which is a different building, so the form is a typed small civic office from the city style. Colours are typical Caribbean pastel and painted-metal palette chosen for the city style; no photo-based colour source could be consulted for this venue."
+    },
+    "the-valley-community-voting-game": {
+      "venueId": "the-valley-community-voting-game",
+      "city": "the-valley",
+      "name": "National Health Insurance",
+      "archetype": "civic-small",
+      "subject": "Tiny single-storey office used as the National Health Insurance polling point",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ede2",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "named building footprint about 12.9 x 5.7 m"
+        }
+      ],
+      "notes": "Only the footprint is known (OSM). Everything else is typed from the city style. Colours are typical Caribbean pastel and painted-metal palette chosen for the city style; no photo-based colour source could be consulted for this venue."
+    },
+    "the-valley-community-workshop": {
+      "venueId": "the-valley-community-workshop",
+      "city": "the-valley",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "Generic low community office on the edge of the recreation ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#6b8f71",
+          "#ffffff"
+        ],
+        "roofColour": "#6b8f71",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder: no real building. Typed from the city style. The position lies in Ronald Webster Park."
+    },
+    "the-valley-market-game": {
+      "venueId": "the-valley-market-game",
+      "city": "the-valley",
+      "name": "Clarita Mason Shopping Centre",
+      "archetype": "mall",
+      "subject": "Two-storey Caribbean plaza-style shopping centre with an open walkway and shopfront row",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 44,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d9b0",
+          "#b94a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9091",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "unnamed commercial building footprint about 50 x 44 m at the venue position"
+        }
+      ],
+      "notes": "Only the footprint is known (OSM building=commercial at the position). Shape and colours typed from city style; a U-shaped plaza with walkway is a typical local plan but is not confirmed. Different from South Hill Plaza (long single-storey strip)."
+    },
+    "the-valley-meal-stop": {
+      "venueId": "the-valley-meal-stop",
+      "city": "the-valley",
+      "name": "Allan and Sue's Prickly Pear Restaurant",
+      "archetype": "restaurant",
+      "subject": "Small beachside restaurant with a shaded veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d9b98a",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#b94a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "restaurant footprint about 11.6 x 10.7 m"
+        }
+      ],
+      "notes": "Footprint measured (OSM); material and colours typed from the island's beach-bar vernacular. Not verified from a photo."
+    },
+    "the-valley-osm-node-2107724413": {
+      "venueId": "the-valley-osm-node-2107724413",
+      "city": "the-valley",
+      "name": "Lower West End Point",
+      "archetype": "park-landscape",
+      "subject": "Rocky limestone headland at the south-west tip of the island with scrub and sea-cliffs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8cfb5",
+          "#7d9a6a",
+          "#f1ede2"
+        ],
+        "roofColour": "#d8cfb5",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No building and no article found for this point; typed as a coastal viewpoint from the city style. Scrub (acacia), pale coral rock and sand."
+    },
+    "the-valley-osm-node-3652964299": {
+      "venueId": "the-valley-osm-node-3652964299",
+      "city": "the-valley",
+      "name": "Mary Elizabeth Recreation Park",
+      "archetype": "park-landscape",
+      "subject": "Small neighbourhood recreation park in The Valley with a little pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0d98a",
+          "#6b8f71",
+          "#ffffff"
+        ],
+        "roofColour": "#b94a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "nearest building about 12 x 5 m"
+        }
+      ],
+      "notes": "Only a 12 x 5 m building beside the point is known; the park layout is typed from the type and city style."
+    },
+    "the-valley-osm-way-230276598": {
+      "venueId": "the-valley-osm-way-230276598",
+      "city": "the-valley",
+      "name": "South Hill Plaza",
+      "archetype": "mall",
+      "subject": "Long single-storey strip plaza with a continuous covered shopfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ede2",
+          "#8fb6cf",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "named building footprint about 57 x 25 m"
+        }
+      ],
+      "notes": "Footprint measured; look typed from a Caribbean strip plaza. Distinct from Clarita Mason Shopping Centre (two-storey U plan)."
+    },
+    "the-valley-osm-way-360817333": {
+      "venueId": "the-valley-osm-way-360817333",
+      "city": "the-valley",
+      "name": "Wallblake House",
+      "archetype": "manor",
+      "subject": "Oldest surviving building on Anguilla: an 1787 plantation house with stone ground floor, timber upper floor and shingled roof, now the Catholic rectory",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#d8cdb0",
+          "#8b6b4a",
+          "#f5f1e6"
+        ],
+        "roofColour": "#6e5240",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1787",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wallblake_House",
+          "what": "built 1787; dressed stone walls with coral-lime mortar; stone foundation, timber upper floors; shingled roof framed in Guyanese hardwood; kitchen wing, stables and slave quarters intact"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Valley,_Anguilla",
+          "what": "plantation house on the western edge of town at Cross Roads; now owned by the Catholic Church as a rectory"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 26.7 x 18.9 m"
+        }
+      ],
+      "notes": "Stone ground floor and timber upper storey with a hardwood-framed shingled roof are from the article. Storey count, wall colour (limewashed pale stone assumed), chimney and veranda are not stated and are estimated; the colour scheme was restored to the original but not named. Recognisable by its low colonial massing with detached kitchen wing."
+    },
+    "the-valley-osm-way-361821807": {
+      "venueId": "the-valley-osm-way-361821807",
+      "city": "the-valley",
+      "name": "Madeariman Restaurant",
+      "archetype": "restaurant",
+      "subject": "Small coastal restaurant in a pastel painted block with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8a08c",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b8f71",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "restaurant footprint about 18 x 13 m"
+        }
+      ],
+      "notes": "Footprint measured (OSM); colours and veranda typed from the city style. No description found."
+    },
+    "the-valley-osm-way-362017267": {
+      "venueId": "the-valley-osm-way-362017267",
+      "city": "the-valley",
+      "name": "Heritage Collection Museum",
+      "archetype": "museum-theatre",
+      "subject": "Small West Indian bungalow beside the East End salt pond that housed Anguilla's heritage museum (closed 2024)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f3ecd8",
+          "#7aa6c2",
+          "#ffffff"
+        ],
+        "roofColour": "#b94a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "mid 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heritage_Collection_Museum",
+          "what": "museum occupies a bungalow next to the salt pond at East End; closed March 2024"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 16.3 x 11.9 m"
+        }
+      ],
+      "notes": "Described only as a bungalow; colours, veranda and roof typed from the West Indian bungalow type and city style."
+    },
+    "the-valley-osm-way-522219599": {
+      "venueId": "the-valley-osm-way-522219599",
+      "city": "the-valley",
+      "name": "WSC GROUP",
+      "archetype": "market-hall",
+      "subject": "Small covered marketplace building on a concrete forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d1c4",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "amenity=marketplace building about 19 x 12 m"
+        }
+      ],
+      "notes": "Footprint measured; appearance typed from city style. Name appears to be a company; nothing found on the building."
+    },
+    "the-valley-osm-way-793135698": {
+      "venueId": "the-valley-osm-way-793135698",
+      "city": "the-valley",
+      "name": "Owen Mussington Playing Field",
+      "archetype": "park-landscape",
+      "subject": "East End football and playing field: a flat grass pitch with a small stand and fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 130,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d6d1c4",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "leisure=park outline about 140 x 131 m"
+        }
+      ],
+      "notes": "Only the outline is known. Pitch, fence, small stand and lights are typed from the type."
+    },
+    "the-valley-osm-way-839159058": {
+      "venueId": "the-valley-osm-way-839159058",
+      "city": "the-valley",
+      "name": "Celeste Restaurant",
+      "archetype": "restaurant",
+      "subject": "Two-bay restaurant block with a covered veranda on the south-west coast road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0d98a",
+          "#8f3b2e",
+          "#ffffff"
+        ],
+        "roofColour": "#6b8f71",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "restaurant footprint about 30 x 16 m"
+        }
+      ],
+      "notes": "Footprint measured; colours typed from city style. Wider and yellower than the other restaurants in the city to keep them distinct."
+    },
+    "the-valley-quiet-reflection": {
+      "venueId": "the-valley-quiet-reflection",
+      "city": "the-valley",
+      "name": "St. Gerard's Catholic Church",
+      "archetype": "church-modern",
+      "subject": "Catholic church whose front is a highly original panel of pebbles, stones, cement, wood and tile",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "tile-cladding",
+        "colours": [
+          "#cdbf9f",
+          "#8b6b4a",
+          "#f1ede2"
+        ],
+        "roofColour": "#7d7468",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "mosaic",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Valley,_Anguilla",
+          "what": "'highly original facade of pebbles, stones, cement, wood and tile'"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "church footprint about 32.5 x 17.8 m"
+        }
+      ],
+      "notes": "The pebble, stone, cement, wood and tile entrance facade is the recognisable thing: model as a patterned mosaic-like front wall. Roof and body colours are estimates; the build date was not found."
+    },
+    "the-valley-recreation": {
+      "venueId": "the-valley-recreation",
+      "city": "the-valley",
+      "name": "Ronald Webster Park",
+      "archetype": "stadium",
+      "subject": "Anguilla's national sports ground: football pitch and cricket oval with a 4,000-seat stadium",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 130,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d6d1c4",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a4",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ronald_Webster_Park",
+          "what": "stadium holds 4,000; used for football, Leeward Islands cricket and athletics; outdoor gym added 2026"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "park outline about 489 x 211 m"
+        }
+      ],
+      "notes": "Capacity and uses are from the article; stand roof, scoreboard and lights are assumed. The park itself is about 490 m long; the model shows the main stand and pitch."
+    },
+    "the-valley-transit": {
+      "venueId": "the-valley-transit",
+      "city": "the-valley",
+      "name": "Blowing Point Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "Redesigned ferry terminal at Blowing Point (reopened 2023) with a landing pier and waiting hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede2",
+          "#3e6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#3e6f9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Blowing_Point",
+          "what": "terminal redesigned and reopened in 2023"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "terminal footprint about 70 x 55 m"
+        }
+      ],
+      "notes": "Only the 2023 rebuild and the footprint are known; colours and layout are typed from city style."
+    }
+  }
+}

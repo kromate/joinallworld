@@ -1,0 +1,263 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/547047428",
+   "used": "real outline of the New Mile 1 market block (about 6,400 m2, diagonal, elongated), height 3 storeys from the brief"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/port-harcourt.json places.mile-one-market",
+   "used": "multi-storey concrete trading block, lock-up shops, open stair bays, rooftop water tanks, crowded street stalls with umbrellas; the nearby Commons photos show a mosque and a street, not the market, so they were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc8b8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b0553d"
+      ],
+      "height": 0.7,
+      "at": 0.9,
+      "proud": 0.2,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -18,
+    10,
+    12.6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 1.4,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    2,
+    24,
+    12.6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 1.4,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    22,
+    -8,
+    12.6
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 1.4,
+    "legs": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "rotDeg": -39,
+   "params": {
+    "height": 12,
+    "length": 10,
+    "width": 1.4,
+    "colour": "#b0553d"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -40,
+    0
+   ],
+   "rotDeg": -39,
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -38,
+    -35,
+    0
+   ],
+   "rotDeg": -39,
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "stall",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    22,
+    50,
+    0
+   ],
+   "rotDeg": -39,
+   "params": {
+    "count": 7,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    40,
+    24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 5,
+    "colours": [
+     "#c0605a",
+     "#d4a94a",
+     "#6d8fb0",
+     "#7aa07a",
+     "#e6dcc4",
+     "#b8845a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -18,
+    0
+   ],
+   "rotDeg": -39,
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 6.0,
+    "colour": "#b0553d",
+    "frameColour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -52,
+    -46,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": -39,
+    "colour": "#e6b422"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the market exists in evidence; massing from the OSM outline only, stalls and stair positions are plausible not surveyed"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "mile-one-market"
+}

@@ -1,0 +1,1113 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "vatican-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "vatican-city",
+    "climate": "mediterranean",
+    "vernacular": "Compact papal city-state of Renaissance and Baroque stone: pale travertine and limestone for St Peter's, the colonnade and Museums facades; warm ochre, pink-ochre and cream rendered palazzi with white stone window frames for the Apostolic Palace, Governorate and service buildings; Fascist-era (1929-1940) travertine and marble civic blocks. Hipped terracotta-tile roofs, grey lead domes, sampietrini and travertine paving, clipped hedges, stone pines and cedars in the gardens, all inside high ochre defensive walls.",
+    "wallColours": [
+      "#d8cdb2",
+      "#d9b57c",
+      "#e3c9a0",
+      "#c9906b",
+      "#efe7d3",
+      "#b8a587"
+    ],
+    "roofColours": [
+      "#a85d44",
+      "#8f9296",
+      "#b57a58",
+      "#7d7468"
+    ],
+    "wallMaterials": [
+      "stone",
+      "limestone",
+      "stucco",
+      "painted-render",
+      "marble",
+      "brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Giant Corinthian orders and pilasters, travertine balustrades with saint statues, pedimented window aedicules, stucco relief on garden villas, obelisks and fountains, papal and Swiss-guard heraldry (render as blank shields), clipped box parterres.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/St._Peter%27s_Square",
+        "what": "oval 240 m across; 248 Tuscan columns four deep, 88 pilasters, 140 saint statues on cornice; red granite obelisk 25.5 m (41 m with base and cross) on bronze lions; two granite fountains; travertine paving"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Vatican_Gardens",
+        "what": "about 23 ha of fountains, topiary, lawns, stone pines and cedars of Lebanon, Casina Pio IV, Lourdes grotto"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Casina_Pio_IV",
+        "what": "Mannerist villa 1558-62 (Pirro Ligorio): rich sculptural stucco facade, elliptical courtyard, loggia with fountain, two free-standing portals"
+      }
+    ]
+  },
+  "places": {
+    "vatican-city-airport-vatican-city-airport": {
+      "venueId": "vatican-city-airport-vatican-city-airport",
+      "city": "vatican-city",
+      "name": "Eliporto Internazionale della Citta del Vaticano",
+      "archetype": "airport-terminal",
+      "subject": "The Vatican heliport: a small concrete landing pad with a round parking apron in the garden bastion of the Leonine Wall, no real terminal building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat",
+        "variant": "heliport"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#a9a69e",
+          "#b8a587",
+          "#d8cdb2"
+        ],
+        "roofColour": "#9b9a94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "25 x 17 m pad plus circular apron"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "bastion of the Leonine Wall"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "pad modern, bastion 16th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Heliport",
+          "what": "25 x 17 m concrete pad with circular parking area, in the French-style garden section in the westernmost bastion of the Leonine Wall"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Gardens",
+          "what": "about 23 ha of fountains, topiary, lawns, stone pines and cedars of Lebanon, Casina Pio IV, Lourdes grotto"
+        }
+      ],
+      "notes": "The only real figures are the 25 x 17 m rectangular concrete pad and circular parking area. Source describes no terminal; treat any small hut as a typed guess. Recognisable by the high ochre bastion wall behind and clipped garden around."
+    },
+    "vatican-city-clinic": {
+      "venueId": "vatican-city-clinic",
+      "city": "vatican-city",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "Placeholder small clinic in Vatican style: three-storey ochre rendered block with a hipped tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9b57c",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue placeholder, not a real building. Typed from the Vatican city style: ochre painted render, white stone window frames, hipped terracotta roof. Red-cross sign is a blank board."
+    },
+    "vatican-city-community-notices": {
+      "venueId": "vatican-city-community-notices",
+      "city": "vatican-city",
+      "name": "Financial Information Authority",
+      "archetype": "civic-palace",
+      "subject": "Small Vatican palazzo used by the Financial Information Authority: four-storey ochre rendered block with stone window frames",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9b57c",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The building could not be verified (lookups failed). Typed from the Vatican city style as an official ochre palazzo; do not rely on its dimensions."
+    },
+    "vatican-city-community-voting-game": {
+      "venueId": "vatican-city-community-voting-game",
+      "city": "vatican-city",
+      "name": "Saint Peter's Square",
+      "archetype": "park-landscape",
+      "subject": "Saint Peter's Square: the oval piazza framed by Bernini's four-column-deep colonnades, a red granite obelisk at the centre and two fountains; only the near part of the oval is shown",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 196,
+        "storeys": 2,
+        "height_m": 19,
+        "roof": "flat",
+        "variant": "oval-piazza"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#d8cdb2",
+          "#c9b99a",
+          "#efe9da"
+        ],
+        "roofColour": "#d8cdb2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 4,
+          "note": "Tuscan columns four deep, 248 columns, 88 pilasters, 140 statues on the cornice"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "red granite, 25.5 m, 41 m with base and cross"
+        },
+        {
+          "id": "fountain",
+          "count": 2,
+          "note": "granite fountains by Maderno (1613) and Bernini (1675)"
+        },
+        {
+          "id": "statue",
+          "count": 140,
+          "note": "life-size saints on the cornice"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1656-1667",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Peter%27s_Square",
+          "what": "oval 240 m across; 248 Tuscan columns four deep, 88 pilasters, 140 saint statues on cornice; red granite obelisk 25.5 m (41 m with base and cross) on bronze lions; two granite fountains; travertine paving"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
+          "what": "dome top 136.6 m, basilica 220 x 150 m, dome rests on four piers, giant-order facade"
+        }
+      ],
+      "notes": "Depth 196 m is an estimate of the oval minor axis (source gives the 240 m across). Travertine paving laid in radiating lines. The colonnade height (~19 m) is an estimate. Basilica facade (giant order, statues of Peter and Paul on the steps) closes the trapezoid end."
+    },
+    "vatican-city-community-workshop": {
+      "venueId": "vatican-city-community-workshop",
+      "city": "vatican-city",
+      "name": "Pontifical Ethiopian College",
+      "archetype": "campus-block",
+      "subject": "Pontifical Ethiopian College: a 1929 seminary building standing in the middle of the Vatican Gardens, modelled as a three-storey ochre block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9b57c",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1929",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Colleges",
+          "what": "Ethiopian College: new building of 1929 in the middle of the Vatican Gardens"
+        }
+      ],
+      "notes": "Only the date (new building of 1929) and its place in the gardens are sourced. The form is a typed guess from the Vatican city style."
+    },
+    "vatican-city-market-game": {
+      "venueId": "vatican-city-market-game",
+      "city": "vatican-city",
+      "name": "Market game (game venue)",
+      "archetype": "market-hall",
+      "subject": "Placeholder covered market hall in the Vatican style: low ochre rendered hall with hipped roof and a small awning front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d9b57c",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game venue placeholder, not a real building. Typed from the Vatican city style."
+    },
+    "vatican-city-meal-stop": {
+      "venueId": "vatican-city-meal-stop",
+      "city": "vatican-city",
+      "name": "Bistrot La Pigna",
+      "archetype": "restaurant",
+      "subject": "Bistrot La Pigna: a low cafe pavilion with umbrella terrace beside the Museums' Pigna courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe7d3",
+          "#d9b57c",
+          "#8f9296"
+        ],
+        "roofColour": "#a9a69e",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "21st century (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Museums",
+          "what": "museums at Viale Vaticano, Cortile della Pigna, Momo double-spiral ramp (1932), Neoclassical Braccio Nuovo with arched skylit roof"
+        }
+      ],
+      "notes": "The cafe was not researched in detail; the name and position (next to the Pigna courtyard) are the only facts. Typed as a modern glazed cafe pavilion with outdoor tables."
+    },
+    "vatican-city-osm-node-10774102205": {
+      "venueId": "vatican-city-osm-node-10774102205",
+      "city": "vatican-city",
+      "name": "Galleria delle Carte Geografiche",
+      "archetype": "museum-theatre",
+      "subject": "The Gallery of Maps wing, a long narrow block 120 m long over the Belvedere corridor with a vaulted interior of 40 painted maps; modelled as its plain exterior",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "hip",
+        "variant": "gallery-wing"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d8a77f",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1580-1583",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gallery_of_Maps",
+          "what": "120 m long gallery with 40 painted map panels (1580-83), vaulted Mannerist ceiling"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Museums",
+          "what": "museums at Viale Vaticano, Cortile della Pigna, Momo double-spiral ramp (1932), Neoclassical Braccio Nuovo with arched skylit roof"
+        }
+      ],
+      "notes": "The 120 m length and 40 panels are sourced. The interior is famous (gilded vault, maps) but the model shows only the long plain ochre wing exterior with arched windows; width and height are estimates."
+    },
+    "vatican-city-osm-node-1272283718": {
+      "venueId": "vatican-city-osm-node-1272283718",
+      "city": "vatican-city",
+      "name": "Punto panoramico di viale della Galea",
+      "archetype": "park-landscape",
+      "subject": "A garden viewpoint on viale della Galea: a gravel terrace with a stone parapet looking across the gardens to the dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "viewpoint"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8cdb2",
+          "#c9b99a",
+          "#b8a587"
+        ],
+        "roofColour": "#c9b99a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "n/a (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed as a terrace with parapet in the Vatican Gardens with stone pines around."
+    },
+    "vatican-city-osm-node-5108555139": {
+      "venueId": "vatican-city-osm-node-5108555139",
+      "city": "vatican-city",
+      "name": "Dome of Saint Peter",
+      "archetype": "monument",
+      "subject": "Michelangelo's dome of St Peter's: a ribbed double dome on a tall drum of paired columns, topped by a lantern, ball and cross, seen as a monument rising above the basilica roof",
+      "form": {
+        "footprint": "round",
+        "width_m": 42,
+        "depth_m": 42,
+        "storeys": 1,
+        "height_m": 136.6,
+        "roof": "dome",
+        "variant": "ribbed-dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#d9d2c0",
+          "#a5a8ab",
+          "#efece4"
+        ],
+        "roofColour": "#b0b3b4",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "ribbed, 16 ribs, rests on four great piers"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "paired columns around the drum"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "two small flanking domes"
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "lantern, ball and cross"
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1590",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
+          "what": "dome top 136.6 m, basilica 220 x 150 m, dome rests on four piers, giant-order facade"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Peter%27s_Square",
+          "what": "oval 240 m across; 248 Tuscan columns four deep, 88 pilasters, 140 saint statues on cornice; red granite obelisk 25.5 m (41 m with base and cross) on bronze lions; two granite fountains; travertine paving"
+        }
+      ],
+      "notes": "Top at 136.6 m is sourced. The ~42 m diameter is an estimate (inner diameter c. 41.5 m). The model should be the dome/drum/lantern rising above a short stone base representing the basilica attic. Storeys=1 is nominal."
+    },
+    "vatican-city-osm-node-5737556419": {
+      "venueId": "vatican-city-osm-node-5737556419",
+      "city": "vatican-city",
+      "name": "Caffe delle carrozze",
+      "archetype": "restaurant",
+      "subject": "Caffe delle carrozze: a small cafe beside the Carriage Pavilion area of the Museums, with a few tables outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe7d3",
+          "#d9b57c",
+          "#8f9296"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "n/a (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Museums",
+          "what": "museums at Viale Vaticano, Cortile della Pigna, Momo double-spiral ramp (1932), Neoclassical Braccio Nuovo with arched skylit roof"
+        }
+      ],
+      "notes": "Name and position only; no description found. Typed cafe in the Vatican style."
+    },
+    "vatican-city-osm-way-111699749": {
+      "venueId": "vatican-city-osm-way-111699749",
+      "city": "vatican-city",
+      "name": "Saints Martin and Sebastian of the Swiss",
+      "archetype": "shrine-small",
+      "subject": "The small church of the Swiss Guards: a plain Roman chapel with a gabled front and a small bell turret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e3c9a0",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bell turret"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "early modern (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched (searches unavailable); position is by the Swiss barracks near Porta Sant'Anna. Typed as a small plain church in Vatican ochre."
+    },
+    "vatican-city-osm-way-111996197": {
+      "venueId": "vatican-city-osm-way-111996197",
+      "city": "vatican-city",
+      "name": "Saint Peregrin's Church",
+      "archetype": "shrine-small",
+      "subject": "San Pellegrino: a small stone church near Porta Sant'Anna with a simple gabled front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9b57c",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "early modern (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched (searches unavailable). Typed as a small Roman church; gable front and a modest bell tower are assumptions."
+    },
+    "vatican-city-osm-way-112137587": {
+      "venueId": "vatican-city-osm-way-112137587",
+      "city": "vatican-city",
+      "name": "Vatican Museums",
+      "archetype": "museum-theatre",
+      "subject": "The Vatican Museums wings around the Cortile della Pigna: long arched ochre corridors with tiled hips, a large niche end and a stone entrance wing",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "hip",
+        "variant": "courtyard-wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d8a77f",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "Cortile della Pigna"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "15th-20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Museums",
+          "what": "museums at Viale Vaticano, Cortile della Pigna, Momo double-spiral ramp (1932), Neoclassical Braccio Nuovo with arched skylit roof"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gallery_of_Maps",
+          "what": "120 m long gallery with 40 painted map panels (1580-83), vaulted Mannerist ceiling"
+        }
+      ],
+      "notes": "Complex of about 24 galleries; the model is the recognisable Pigna courtyard group of wings, not the whole. Momo's 1932 double-spiral ramp (about 15 m wide stairwell) is interior. Colour is the warm ochre/pink render seen on the Belvedere wings."
+    },
+    "vatican-city-osm-way-44402133": {
+      "venueId": "vatican-city-osm-way-44402133",
+      "city": "vatican-city",
+      "name": "Pius IV House",
+      "archetype": "manor",
+      "subject": "Casina Pio IV: a Mannerist garden villa with a heavily stuccoed facade, a loggia with fountain and an elliptical courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 34,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "garden-villa",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e4dcc4",
+          "#b9b09a",
+          "#efe9da"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "loggia with fountain"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "elliptical"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2,
+          "note": "two free-standing portals"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "sculptural stucco facade"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1558-1562",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Casina_Pio_IV",
+          "what": "Mannerist villa 1558-62 (Pirro Ligorio): rich sculptural stucco facade, elliptical courtyard, loggia with fountain, two free-standing portals"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Gardens",
+          "what": "about 23 ha of fountains, topiary, lawns, stone pines and cedars of Lebanon, Casina Pio IV, Lourdes grotto"
+        }
+      ],
+      "notes": "Dimensions are estimates (not in the source). Stucco relief all over the front and the elliptical court are the identifying features. Renaissance/Mannerist style mapped to baroque; no closer enum exists."
+    },
+    "vatican-city-quiet-reflection": {
+      "venueId": "vatican-city-quiet-reflection",
+      "city": "vatican-city",
+      "name": "Pauline Chapel",
+      "archetype": "shrine-small",
+      "subject": "The Pauline Chapel in the Apostolic Palace: a compact hall chapel beside the Sala Regia, shown as a plain stone-faced block inside the palace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "palace-chapel"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d8a77f",
+          "#efe7d3",
+          "#c9906b"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "Michelangelo frescoes, brightened by 2009 restoration"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1538-1540",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cappella_Paolina",
+          "what": "chapel in the Apostolic Palace beside the Sala Regia, by Antonio da Sangallo the Younger, 1538-40; bright frescoed colours after 2009 restoration"
+        }
+      ],
+      "notes": "Built by Sangallo the Younger for Paul III; exterior is part of the Apostolic Palace and not visible as a separate building. Size is an estimate. Interior colour is vivid because of the 2009 restoration."
+    },
+    "vatican-city-recreation": {
+      "venueId": "vatican-city-recreation",
+      "city": "vatican-city",
+      "name": "French Garden",
+      "archetype": "park-landscape",
+      "subject": "The French-style formal garden: clipped parterres and hedges, gravel paths, fountains, and stone pines against the Leonine Wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "formal-garden"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9b58a",
+          "#d8cdb2",
+          "#6f8a4f"
+        ],
+        "roofColour": "#6f8a4f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "16th century onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Gardens",
+          "what": "about 23 ha of fountains, topiary, lawns, stone pines and cedars of Lebanon, Casina Pio IV, Lourdes grotto"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vatican_Heliport",
+          "what": "25 x 17 m concrete pad with circular parking area, in the French-style garden section in the westernmost bastion of the Leonine Wall"
+        }
+      ],
+      "notes": "The gardens are about 23 ha with fountains, topiary, lawns, stone pines and cedars. The French-style section contains the heliport bastion at the west edge. Plot size here is an estimate."
+    },
+    "vatican-city-transit": {
+      "venueId": "vatican-city-transit",
+      "city": "vatican-city",
+      "name": "Vatican City",
+      "archetype": "transport-station",
+      "subject": "Vatican City Station, the tiny marble and travertine railway terminus by the Leonine Wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "terminus"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "marble",
+        "colours": [
+          "#d8cdb2",
+          "#c9b99a",
+          "#efe9da"
+        ],
+        "roofColour": "#a85d44",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Station identification and its 1930s travertine/marble construction are from general knowledge; not verified in this research pass."
+    }
+  }
+}

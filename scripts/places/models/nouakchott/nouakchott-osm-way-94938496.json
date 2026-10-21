@@ -1,0 +1,382 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nouakchott",
+ "venueId": "nouakchott-osm-way-94938496",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faculty_of_science_and_techniques,_University_of_Nouakchott_Al_aasriya.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Chafei07",
+   "view": "street",
+   "file": "/tmp/places-evidence/nouakchott/univ.jpg",
+   "used": "long three-storey cream faculty blocks with salmon-pink accent bays, ribbon windows, external stair, lower two-storey block with overhanging flat roof, big hexagonal-paver court, clipped hedge, colonnade at left"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/94938496",
+   "used": "campus is about 390 m across, too large for the scene clamp; a representative 100 m group of blocks around the main court is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 6,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "court-paving",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     50
+    ],
+    "height": 0.08,
+    "colour": "#c9a887",
+    "topColour": "#c9a887"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     84,
+     13
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0d890",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bay": 7,
+    "cornice": true,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "front"
+      ],
+      "colour": "#d99a7e"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "colour": "#d99a7e"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbf9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "accent-bay",
+   "footprint": {
+    "rect": [
+     12,
+     3
+    ]
+   },
+   "at": [
+    -8,
+    18.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d99a7e",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a08c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     13,
+     46
+    ]
+   },
+   "at": [
+    -36,
+    -2
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efd596",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 9,
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "faces": [
+       "right"
+      ],
+      "colour": "#d99a7e"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbf9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-low",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    26,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3dc9c",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bay": 6.5,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d3c6",
+    "overhang": 1.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -27,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "count": 4,
+    "height": 4.5,
+    "radius": 0.4,
+    "kind": "round",
+    "beamHeight": 0.8,
+    "roofDepth": 4,
+    "colour": "#f0ece2",
+    "roofColour": "#d6bd84"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     2.5
+    ],
+    "height": 2.5,
+    "colour": "#3f6a35",
+    "topColour": "#4b7a3f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-w",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    -40,
+    18.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d99a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a08c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-e",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    40,
+    18.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d99a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a08c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-m1",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -14,
+    18.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d99a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a08c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-m2",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    14,
+    18.5
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d99a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a08c",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-stair",
+   "footprint": {
+    "rect": [
+     3,
+     6
+    ]
+   },
+   "at": [
+    50.5,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d99a7e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a08c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": [],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Representative 100 m group of a 390 m campus; no hexagonal paver texture; stair bays are plain salmon blocks; render still reads slightly cool under render lighting; hedge is a box, not rounded."
+ }
+}

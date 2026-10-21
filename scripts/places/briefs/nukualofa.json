@@ -1,0 +1,1499 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "nukualofa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "nukualofa",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-rise Pacific capital: single- and two-storey painted concrete-block houses and shops with corrugated-iron roofs (red, green, blue, grey), timber houses on stilts, large whitewashed churches that dominate each village, a few Victorian-style timber buildings from the 19th century monarchy, and traditional oval thatched fale with curved roofs lashed with sennit (coconut-fibre) rope. Coconut palms, banyan, flame trees. Wall and roof colours are estimates from general knowledge: no retrievable source gave a colour palette.",
+    "wallColours": [
+      "#f2efe8",
+      "#b9d3e0",
+      "#e6c9a8",
+      "#9ec1a3",
+      "#d9a79a",
+      "#c2b9a8"
+    ],
+    "roofColours": [
+      "#a33a2f",
+      "#3e6b4a",
+      "#8c9096",
+      "#b59a5b",
+      "#3f5f8a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "timber",
+      "render",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Traditional fale: curved limpet-shell roof of branches tied with sennit and thatched with woven palm leaves on tree-trunk pillars, woven screens between ground and eaves; church walls sometimes painted freehand with crosses, flowers and ngatu (barkcloth) motifs; coral-limestone mound tombs and trilithon; stone then iron fences around royal sites.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Culture_of_Tonga",
+        "what": "traditional fale: curved sennit-lashed thatched roof on trunk pillars with woven screens; church murals with ngatu motifs; stone langi and trilithon"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Royal_Palace,_Tonga",
+        "what": "wooden palace of 1867 by the waterfront, enclosed first by stone fence, later by a 3 m grid fence with iron-barred gates"
+      }
+    ]
+  },
+  "places": {
+    "nukualofa-airport-nukualofa-airport": {
+      "venueId": "nukualofa-airport-nukualofa-airport",
+      "city": "nukualofa",
+      "name": "Fua'amotu International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the international terminal at Fua'amotu seen from the car park: a long low single-storey hall with a deep canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 138,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe9dc",
+          "#7f9fb0",
+          "#d0c9b8"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower is a separate building"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/168878137",
+          "what": "OSM footprint 138.1 x 40.5 m, area 5546 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q975696",
+          "what": "Wikidata item (Fuaʻamotu International Airport)"
+        }
+      ],
+      "notes": "OSM International Terminal 138 x 40 m with a separate 2,390 m2 domestic terminal; Wikipedia gives no appearance. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-clinic": {
+      "venueId": "nukualofa-clinic",
+      "city": "nukualofa",
+      "name": "Mu'a Hospital",
+      "archetype": "hospital",
+      "subject": "Mu'a Hospital: low ward blocks with verandas in a village setting",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe8",
+          "#9ec1a3",
+          "#cfc9b8"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/319055128",
+          "what": "OSM footprint 55.7 x 23.3 m, area 963 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 56 x 23 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-community-notices": {
+      "venueId": "nukualofa-community-notices",
+      "city": "nukualofa",
+      "name": "MAFF",
+      "archetype": "office-low",
+      "subject": "the agriculture ministry (MAFF) office building at Vaini: a one-storey rendered office block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ebe0",
+          "#9ec1a3",
+          "#cfc9b8"
+        ],
+        "roofColour": "#3e6b4a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/183934808",
+          "what": "OSM footprint 32.9 x 15.5 m, area 510 m2 (measured)"
+        }
+      ],
+      "notes": "The venue name MAFF (ministry of agriculture, food, forests and fisheries) is the game label; OSM is an unnamed 33 x 16 m building. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-community-voting-game": {
+      "venueId": "nukualofa-community-voting-game",
+      "city": "nukualofa",
+      "name": "Makatolo a Maui Community Hall",
+      "archetype": "civic-small",
+      "subject": "Makatolo a Maui community hall: a single-storey hall with a wide pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8e1d0",
+          "#b9d3e0",
+          "#c2b9a8"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/318689869",
+          "what": "OSM footprint 28.8 x 18.2 m, area 522 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building (townhall) 29 x 18 m near the Ha'amonga region. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-community-workshop": {
+      "venueId": "nukualofa-community-workshop",
+      "city": "nukualofa",
+      "name": "Kolovai Community Public Library",
+      "archetype": "civic-small",
+      "subject": "Kolovai community public library, a tiny single-storey library with a porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ecdf",
+          "#b9d3e0",
+          "#cfc9b8"
+        ],
+        "roofColour": "#3f5f8a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "front porch"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/317154071",
+          "what": "OSM footprint 17.6 x 13.5 m, area 173 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 18 x 14 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-market-game": {
+      "venueId": "nukualofa-market-game",
+      "city": "nukualofa",
+      "name": "Prison Market",
+      "archetype": "market-open",
+      "subject": "Prison Market, a small open market under tin roofs with timber stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b59a6a",
+          "#8c9096",
+          "#d0c9b8"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/314822748",
+          "what": "OSM footprint 18.3 x 10.1 m, area 144 m2 (measured)"
+        }
+      ],
+      "notes": "OSM marketplace 18 x 10 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-meal-stop": {
+      "venueId": "nukualofa-meal-stop",
+      "city": "nukualofa",
+      "name": "'Oholei",
+      "archetype": "restaurant",
+      "subject": "'Oholei, a beachside open-air restaurant with a thatched fale-style roof",
+      "form": {
+        "footprint": "round",
+        "width_m": 19,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "thatched-fale"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b59a6a",
+          "#8a7a62",
+          "#d8cfb8"
+        ],
+        "roofColour": "#b59a5b",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/385654372",
+          "what": "OSM footprint 19.2 x 8.9 m, area 155 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building is an unnamed 19 x 9 m outline with rounded ends. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. 'Oholei is a beach resort and cultural-show venue by a sea cave; the fale-style open-sided thatched roof is general knowledge, unverified."
+    },
+    "nukualofa-osm-node-12072562069": {
+      "venueId": "nukualofa-osm-node-12072562069",
+      "city": "nukualofa",
+      "name": "Fishing pigs (on low tide)",
+      "archetype": "park-landscape",
+      "subject": "low-tide mudflat and shoreline where village pigs forage, with coconut palms behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "tidal-flat"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b59a6a",
+          "#8a7a62",
+          "#d8cfb8"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "pig fence"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The OSM match was a nearby church, which is ignored. It is a natural shoreline sight (pigs on the tidal flat). No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-node-1234123401": {
+      "venueId": "nukualofa-osm-node-1234123401",
+      "city": "nukualofa",
+      "name": "Pupu'a puhi",
+      "archetype": "park-landscape",
+      "subject": "Pupu'a puhi: a coastal coral-limestone shelf where sea spray jets from blowholes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "blowhole-cliff"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#b9b09a",
+          "#8a8472",
+          "#d6cfbc"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building; natural site. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. The name suggests the blowholes of the south-west coast; model a ragged limestone ledge with spray."
+    },
+    "nukualofa-osm-node-3230856831": {
+      "venueId": "nukualofa-osm-node-3230856831",
+      "city": "nukualofa",
+      "name": "Maketi Siamelie",
+      "archetype": "market-open",
+      "subject": "Maketi Siamelie, a small market shed with stalls beside the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b59a6a",
+          "#8c9096",
+          "#d0c9b8"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM nearest building 16 x 6 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-node-6441638780": {
+      "venueId": "nukualofa-osm-node-6441638780",
+      "city": "nukualofa",
+      "name": "Royal Sunset",
+      "archetype": "restaurant",
+      "subject": "Royal Sunset, a seaside bar-restaurant with a thatched-style roof and sea-facing terrace",
+      "form": {
+        "footprint": "round",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "thatched-fale"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b59a6a",
+          "#f2efe8",
+          "#8a7a62"
+        ],
+        "roofColour": "#b59a5b",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/332655973",
+          "what": "OSM footprint 22 x 13.8 m, area 276 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 22 x 14 m with rounded ends. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-relation-5274827": {
+      "venueId": "nukualofa-osm-relation-5274827",
+      "city": "nukualofa",
+      "name": "Loto-Tonga Soka Centre",
+      "archetype": "stadium",
+      "subject": "Loto-Tonga Soka Centre: an artificial-turf football pitch with a small covered stand and fence (2001 FIFA Goal project)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "pitch-with-stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c6",
+          "#3e6b4a",
+          "#b8b2a2"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "single small stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2001",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/5274827",
+          "what": "OSM footprint 359.4 x 161.2 m, area 55656 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21161757",
+          "what": "Wikidata item (Loto-Tonga Soka Centrek, inception 2001)"
+        }
+      ],
+      "notes": "Wikidata: football facility, inception 2001. OSM polygon 359 x 161 m includes grounds, so the pitch + stand portion is shown. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-relation-5274828": {
+      "venueId": "nukualofa-osm-relation-5274828",
+      "city": "nukualofa",
+      "name": "The University of the South Pacific Tonga Campus",
+      "archetype": "campus-block",
+      "subject": "USP Tonga Campus: low classroom blocks with covered walkways around lawns",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#9fc3c8",
+          "#cfc9b8"
+        ],
+        "roofColour": "#3f5f8a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/5274828",
+          "what": "OSM footprint 354 x 204.6 m, area 55161 m2 (measured)"
+        }
+      ],
+      "notes": "OSM university polygon 354 x 205 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-way-300336346": {
+      "venueId": "nukualofa-osm-way-300336346",
+      "city": "nukualofa",
+      "name": "Vainī Hosptial",
+      "archetype": "hospital",
+      "subject": "Vainī Hospital, a small clinic block with a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe8",
+          "#9ec1a3",
+          "#cfc9b8"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/300336346",
+          "what": "OSM footprint 32.3 x 14.6 m, area 385 m2 (measured)"
+        }
+      ],
+      "notes": "OSM building 32 x 15 m, name spelled \"Vainī Hosptial\" in OSM. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-way-307249636": {
+      "venueId": "nukualofa-osm-way-307249636",
+      "city": "nukualofa",
+      "name": "Teufaiva Stadium",
+      "archetype": "stadium",
+      "subject": "Teufaiva Sport Stadium: an oval grass stadium with a covered main stand, refurbished 2017 and rebuilt after Cyclone Gita",
+      "form": {
+        "footprint": "oval",
+        "width_m": 212,
+        "depth_m": 157,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "oval"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd7c9",
+          "#a33a2f",
+          "#b8b2a2"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand roof (unverified)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "refurbished 2017, reopened 2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Teufaiva_Stadium",
+          "what": "capacity 10,000, grass; fell into disrepair early 2000s, refurbished and reopened 2017, damaged by Cyclone Gita, reopened 2019"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/307249636",
+          "what": "OSM footprint 211.9 x 156.7 m, area 32343 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11767056",
+          "what": "Wikidata item (Mangweni Stadium)"
+        }
+      ],
+      "notes": "Capacity and history sourced; no source describes the stands or roof, so stand roof and colours are guesses. OSM outline 212 x 157 m."
+    },
+    "nukualofa-osm-way-307399349": {
+      "venueId": "nukualofa-osm-way-307399349",
+      "city": "nukualofa",
+      "name": "Royal Palace",
+      "archetype": "civic-palace",
+      "subject": "the Royal Palace on the Nuku'alofa waterfront: a two-storey white timber Victorian-style palace with deep verandas and steep red roofs, behind a grid fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#c8b9a2",
+          "#a33a2f"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "verandas on both storeys"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "grid fence about 3 m"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "iron-barred gates"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1867",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Palace,_Tonga",
+          "what": "wooden palace built 1867, 2 storeys (OSM), waterfront, stone fence replaced by ~3 m grid fence with iron bars on gates after 2000"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/307399349",
+          "what": "OSM footprint 59.4 x 38.7 m, area 1793 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2992825",
+          "what": "Wikidata item (Royal Palace of Nukuʻalofa, inception 1867)"
+        }
+      ],
+      "notes": "Wooden construction, 1867, 2 storeys, fence and gates are sourced. White walls, red roof and verandas are from general knowledge of the palace (prefabricated Victorian carpenter-gothic style) and not verified here. OSM outline is 59 x 39 m including verandas."
+    },
+    "nukualofa-osm-way-314371836": {
+      "venueId": "nukualofa-osm-way-314371836",
+      "city": "nukualofa",
+      "name": "Siasi 'o Tonga",
+      "archetype": "church-classical",
+      "subject": "a large whitewashed Methodist-tradition church (Siasi 'o Tonga) with a gabled front and a small tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f5f2ea",
+          "#b9d3e0",
+          "#cfc9b8"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "assumed"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Free_Church_of_Tonga",
+          "what": "Centenary/Centennial church photos only, no description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/314371836",
+          "what": "OSM footprint 45 x 16.5 m, area 744 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5117757",
+          "what": "Wikidata item (Church of Tonga)"
+        }
+      ],
+      "notes": "OSM building 45 x 17 m named Siasi 'o Tonga (Church of Tonga). No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Tongan churches are typically large and white."
+    },
+    "nukualofa-osm-way-319048856": {
+      "venueId": "nukualofa-osm-way-319048856",
+      "city": "nukualofa",
+      "name": "Fale Kai",
+      "archetype": "restaurant",
+      "subject": "Fale Kai, a large open-sided café-restaurant with a broad hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b59a6a",
+          "#f2efe8",
+          "#8a7a62"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/319048856",
+          "what": "OSM footprint 49.3 x 47.7 m, area 1450 m2 (measured)"
+        }
+      ],
+      "notes": "OSM cafe 49 x 48 m; \"fale kai\" means eating house. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-way-320590185": {
+      "venueId": "nukualofa-osm-way-320590185",
+      "city": "nukualofa",
+      "name": "Cathedral of the Immaculate Conception of Mary",
+      "archetype": "church-modern",
+      "subject": "Malia Tupu Imakulata cathedral (Catholic Cathedral of the Immaculate Conception of Mary): a large cross-plan white church",
+      "form": {
+        "footprint": "cross",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3f0e8",
+          "#c8b9a2",
+          "#cfc9b8"
+        ],
+        "roofColour": "#a33a2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Marian statue (assumed)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/320590185",
+          "what": "OSM footprint 74.1 x 56.9 m, area 2459 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q19841851",
+          "what": "Wikidata item (Roman Catholic Church of Tonga)"
+        }
+      ],
+      "notes": "OSM building=cathedral 74 x 57 m; Wikidata item exists. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured. Cross plan is inferred from its size."
+    },
+    "nukualofa-osm-way-323956968": {
+      "venueId": "nukualofa-osm-way-323956968",
+      "city": "nukualofa",
+      "name": "Maketi Talamahu",
+      "archetype": "market-hall",
+      "subject": "Talamahu Market, the main fresh-produce market: a long covered hall with rows of stalls under a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e2dccb",
+          "#3e6b4a",
+          "#b9b3a4"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building is only a 68 x 7 m strip so the hall is widened; Talamahu is the central market of Nuku'alofa. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-way-338584633": {
+      "venueId": "nukualofa-osm-way-338584633",
+      "city": "nukualofa",
+      "name": "Fa'onelua Park",
+      "archetype": "park-landscape",
+      "subject": "Fa'onelua Park: open grass with scattered palms and a pavilion near the palace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b59a6a",
+          "#6f8a5a",
+          "#d8cfb8"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/338584633",
+          "what": "OSM footprint 75.5 x 37.7 m, area 2784 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park 76 x 38 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-osm-way-687265667": {
+      "venueId": "nukualofa-osm-way-687265667",
+      "city": "nukualofa",
+      "name": "Ha'amonga 'a Maui",
+      "archetype": "monument",
+      "subject": "Ha'amonga 'a Maui: a coral-limestone trilithon of two upright slabs with a lintel across their tops, standing in a clearing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5.8,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 5.2,
+        "roof": "none",
+        "variant": "trilithon"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#b9b09a",
+          "#a39b86",
+          "#d0c9b8"
+        ],
+        "roofColour": "#b9b09a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "two uprights and one lintel; tenons in mortises"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "c. 13th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ha%CA%BBamonga_%CA%BBa_Maui",
+          "what": "trilithon of three coral limestone slabs, 5.2 m high, 1.4 m wide, 5.8 m long; uprights 30-40 t each, mortises on top of uprights hold the lintel; V mark on lintel"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/687265667",
+          "what": "OSM footprint 10.2 x 5.3 m, area 54 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1433433",
+          "what": "Wikidata item (Ha'amonga 'a Maui, inception 1300)"
+        }
+      ],
+      "notes": "Dimensions and material sourced (true slab thickness 1.4 m; depth_m set to the schema minimum 2). Stand the lintel on two slabs; each upright is roughly 1.4 m thick and 5 m tall. Surrounding clearing of short grass with coconut palms (general knowledge)."
+    },
+    "nukualofa-quiet-reflection": {
+      "venueId": "nukualofa-quiet-reflection",
+      "city": "nukualofa",
+      "name": "Nuku'alofa Tonga Temple",
+      "archetype": "church-modern",
+      "subject": "the Nuku'alofa Tonga Temple: a two-storey modern temple with textured cream walls, shingle roof and a single spire topped with a gold angel statue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 61,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1,
+        "variant": "lds-temple"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#efe9d8",
+          "#b8a98a",
+          "#f6f3ea"
+        ],
+        "roofColour": "#7a5c3a",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single spire with angel Moroni statue"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1983, renovated",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nuku%CA%BBalofa_Tonga_Temple",
+          "what": "modern design; 200 x 115 ft (about 61 x 35 m); R-wall finish and insulation over concrete block; roof of split cedar shake shingles; single spire topped with statue of angel Moroni; landscaped with flowers, shrubs, grass and native trees"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/313663820",
+          "what": "OSM footprint 62.7 x 39.3 m, area 2017 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3845259",
+          "what": "Wikidata item (Nukuʻalofa Tonga Temple)"
+        }
+      ],
+      "notes": "Dimensions, wall system, shake roof and single spire sourced; exact cream/white wall colour and storey count are estimates. Spire height is not stated (about 30 m is typical for small temples)."
+    },
+    "nukualofa-recreation": {
+      "venueId": "nukualofa-recreation",
+      "city": "nukualofa",
+      "name": "Tukingapahu",
+      "archetype": "park-landscape",
+      "subject": "Tukingapahu, a small grassy park with palms and a hardstand",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b59a6a",
+          "#6f8a5a",
+          "#d8cfb8"
+        ],
+        "roofColour": "#6f8a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/380697400",
+          "what": "OSM footprint 36.6 x 31.1 m, area 1064 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park 37 x 31 m. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    },
+    "nukualofa-transit": {
+      "venueId": "nukualofa-transit",
+      "city": "nukualofa",
+      "name": "Ferry to Islands",
+      "archetype": "transport-station",
+      "subject": "the inter-island ferry quay at Nuku'alofa harbour: a concrete wharf with a small terminal shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d1bf",
+          "#3f5f8a",
+          "#b8b2a2"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "concrete wharf"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM nearest building 13 x 11 m only; the wharf and shed are generic. No source describing the building itself was retrievable in this session (web search budget exhausted, Wikipedia pages thin), so appearance is a typed guess from the city style and the place type; only footprint, name and position are measured."
+    }
+  }
+}

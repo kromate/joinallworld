@@ -1,0 +1,523 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ASC_Leiden_-_F._van_der_Kraaij_Collection_-_12_-_098_-_Un_groupe_de_mendiants_est_assis_sur_le_sable_%C3%A0_l%27ombre_des_arbres_-_Bamako,_Mali,_1984.tif",
+   "licence": "CC BY-SA 4.0",
+   "author": "Floris van der Kraaij (ASC Leiden)",
+   "view": "street",
+   "file": "/tmp/places-evidence/bamako/mosque-leiden.jpg",
+   "used": "two tall slender cream concrete minarets: fluted shaft, flared lantern with petal-like collar, pointed cap with finial; tall plain pale perimeter wall with small high windows; street trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1327992",
+   "used": "footprint of the mosque compound (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 0.66,
+  "margin": 0.1,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecd6a8",
+    "windows": "punched",
+    "windowRatio": 0.05,
+    "windowShape": "rect",
+    "plinth": 0.4,
+    "cornice": false,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain",
+     "front": "punched"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcc79c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    9.0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#c9c4b4",
+    "profile": [
+     [
+      11,
+      0
+     ],
+     [
+      11,
+      3
+     ],
+     [
+      10.4,
+      5
+     ],
+     [
+      8.6,
+      7.4
+     ],
+     [
+      5.8,
+      9.2
+     ],
+     [
+      3,
+      10.1
+     ],
+     [
+      0,
+      10.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    19.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#b9b29a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.5,
+      3
+     ],
+     [
+      0.1,
+      3.2
+     ],
+     [
+      0.1,
+      5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -38,
+    -40,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      2.3,
+      0,
+      "#d3cab2"
+     ],
+     [
+      1.9,
+      2,
+      "#ebe3cf"
+     ],
+     [
+      1.6,
+      5,
+      "#ebe3cf"
+     ],
+     [
+      1.5,
+      40,
+      "#ebe3cf"
+     ],
+     [
+      1.9,
+      40.6,
+      "#d3cab2"
+     ],
+     [
+      2.4,
+      41.8,
+      "#ebe3cf"
+     ],
+     [
+      3.0,
+      43.2,
+      "#ebe3cf"
+     ],
+     [
+      2.3,
+      44.4,
+      "#d3cab2"
+     ],
+     [
+      2.0,
+      45,
+      "#ebe3cf"
+     ],
+     [
+      2.0,
+      46,
+      "#d8cfa8"
+     ],
+     [
+      2.4,
+      47.4,
+      "#d8cfa8"
+     ],
+     [
+      2.0,
+      49.5,
+      "#d8cfa8"
+     ],
+     [
+      1.2,
+      52,
+      "#d8cfa8"
+     ],
+     [
+      0.5,
+      54.5,
+      "#d8cfa8"
+     ],
+     [
+      0.1,
+      56.5,
+      "#d8cfa8"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -38,
+    -40,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      2.0,
+      0
+     ],
+     [
+      1.5,
+      40
+     ],
+     [
+      2.8,
+      43
+     ],
+     [
+      0.2,
+      56.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    50,
+    -24,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      2.3,
+      0,
+      "#d3cab2"
+     ],
+     [
+      1.9,
+      2,
+      "#ebe3cf"
+     ],
+     [
+      1.6,
+      5,
+      "#ebe3cf"
+     ],
+     [
+      1.5,
+      40,
+      "#ebe3cf"
+     ],
+     [
+      1.9,
+      40.6,
+      "#d3cab2"
+     ],
+     [
+      2.4,
+      41.8,
+      "#ebe3cf"
+     ],
+     [
+      3.0,
+      43.2,
+      "#ebe3cf"
+     ],
+     [
+      2.3,
+      44.4,
+      "#d3cab2"
+     ],
+     [
+      2.0,
+      45,
+      "#ebe3cf"
+     ],
+     [
+      2.0,
+      46,
+      "#d8cfa8"
+     ],
+     [
+      2.4,
+      47.4,
+      "#d8cfa8"
+     ],
+     [
+      2.0,
+      49.5,
+      "#d8cfa8"
+     ],
+     [
+      1.2,
+      52,
+      "#d8cfa8"
+     ],
+     [
+      0.5,
+      54.5,
+      "#d8cfa8"
+     ],
+     [
+      0.1,
+      56.5,
+      "#d8cfa8"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    50,
+    -24,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e6e0d0",
+    "profile": [
+     [
+      2.0,
+      0
+     ],
+     [
+      1.5,
+      40
+     ],
+     [
+      2.8,
+      43
+     ],
+     [
+      0.2,
+      56.5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -51,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -33,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     3,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     21,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     39,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -50
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     57,
+     -47
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     66,
+     -50
+    ],
+    "height": 16
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Minaret collar is a flared faceted lantern, not the real scalloped petals; trees are generic low-poly (lighter than the dark photo canopy); hall and dome typed from OSM/brief (photo shows only the plain wall and minarets); no people."
+ }
+}

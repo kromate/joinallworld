@@ -1,0 +1,518 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arewa_House_museum_Building.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Inyor4mr",
+   "view": "front",
+   "file": "/tmp/places-evidence/kaduna/arewa.jpg",
+   "used": "single-storey pale-yellow courtyard block, flat roofs with deep parapet, verandas with slanted grey columns, central entrance porch with a low white dome, tarmac forecourt with green-white kerb"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1247547325",
+   "used": "overall size only (47 x 21 m, nearest match 24 m away, not used as outline because the photo shows a courtyard plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     46,
+     12
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d48c",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "glassColour": "#4a4038",
+    "plinth": 0.5,
+    "bands": "#f4ead0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d3a0",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     6,
+     26
+    ]
+   },
+   "at": [
+    -25,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d48c",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "glassColour": "#4a4038",
+    "plinth": 0.5,
+    "bands": "#f4ead0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d3a0",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     6,
+     22
+    ]
+   },
+   "at": [
+    25,
+    2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d48c",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "glassColour": "#4a4038",
+    "plinth": 0.5,
+    "bands": "#f4ead0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d3a0",
+    "parapet": 0.5,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2d48c",
+    "windows": "none",
+    "windowRatio": 0.14,
+    "glassColour": "#4a4038",
+    "plinth": 0.5,
+    "bands": "#f4ead0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6d3a0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    5,
+    5.2
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#f2f0ea",
+    "profile": [
+     [
+      5.6,
+      0
+     ],
+     [
+      5.6,
+      0.9
+     ],
+     [
+      5.2,
+      1.2
+     ],
+     [
+      3,
+      2.2
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 0.3,
+    "colour": "#c9c3b2"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -5,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "church-door",
+   "at": [
+    0,
+    2.5,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 3.4,
+    "arch": true,
+    "colour": "#5a4a3c",
+    "trim": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21.2,
+    0,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     26
+    ],
+    "height": 0.4,
+    "colour": "#e6d3a0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    21.2,
+    2,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     4.8,
+     22
+    ],
+    "height": 0.4,
+    "colour": "#e6d3a0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -19.2,
+     -11
+    ],
+    "end": [
+     -19.2,
+     11
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#8f949a",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.35,
+          0.35
+         ]
+        },
+        {
+         "z": 3.5,
+         "rect": [
+          0.8,
+          0.5
+         ],
+         "cx": -0.3
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     19.2,
+     -8
+    ],
+    "end": [
+     19.2,
+     12
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "loft",
+      "params": {
+       "colour": "#8f949a",
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          0.35,
+          0.35
+         ]
+        },
+        {
+         "z": 3.5,
+         "rect": [
+          0.8,
+          0.5
+         ],
+         "cx": 0.3
+        }
+       ]
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    13,
+    -1,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     2.2
+    ],
+    "height": 1.3,
+    "colour": "#3f7a30"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -1,
+     0
+    ],
+    "end": [
+     -1,
+     -1,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.9,
+        0.3
+       ],
+       "height": 0.25,
+       "colour": "#f2f2ee"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -9.5,
+     -1,
+     0
+    ],
+    "end": [
+     -0.5,
+     -1,
+     0
+    ],
+    "count": 8,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.9,
+        0.3
+       ],
+       "height": 0.25,
+       "colour": "#2c8a6a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     24
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     26
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     22
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -2
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     32
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -3
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "arewa-house-museum",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Veranda wings with slanted grey fins, arched domed porch, tarmac, kerb, hedge and broadleaf trees added; porch bay is boxy not rounded, veranda is a slab on fins not recessed arcade bays, rear curved block missing."
+ }
+}

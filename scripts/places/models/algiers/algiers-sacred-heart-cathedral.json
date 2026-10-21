@@ -1,0 +1,333 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cath%C3%A9drale_du_Sacr%C3%A9-Coeur,_Alger.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ps2613",
+   "view": "detail",
+   "file": "/tmp/places-evidence/algiers/sacred-heart-cathedral-0.jpg",
+   "used": "central hyperboloid (waisted) white concrete tower with relief pattern and thin spire, folded sloping concrete roof planes, triangular brick-tile gable panels in tan board-marked concrete frames"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sacred_heart_of_Algiers.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Patrick Gruban",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/sacred-heart-cathedral-1.jpg",
+   "used": "tower seen over the street, tall pillared front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/263638059",
+   "used": "plan outline (about 36 x 52 m with apsidal ends)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 54
+   },
+   "height": 9,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a8977d",
+    "windows": "none",
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front",
+       "back",
+       "left",
+       "right"
+      ],
+      "colours": [
+       "#a8977d",
+       "#a8977d",
+       "#b49f84",
+       "#9a6a52"
+      ],
+      "cols": 6,
+      "rows": 2,
+      "slits": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f836f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "folded",
+    "width": 30,
+    "depth": 14,
+    "rise": 9,
+    "folds": 5,
+    "thickness": 0.5,
+    "slopeY": 6,
+    "z": 9,
+    "colour": "#9d8e75",
+    "edgeColour": "#a8977d",
+    "underColour": "#8d7f69"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "kind": "folded",
+    "width": 30,
+    "depth": 14,
+    "rise": 9,
+    "folds": 5,
+    "thickness": 0.5,
+    "slopeY": 6,
+    "z": 9,
+    "colour": "#9d8e75",
+    "edgeColour": "#a8977d",
+    "underColour": "#8d7f69"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -10,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "kind": "folded",
+    "width": 24,
+    "depth": 14,
+    "rise": 9,
+    "folds": 5,
+    "thickness": 0.5,
+    "slopeY": 6,
+    "z": 9,
+    "colour": "#9d8e75",
+    "edgeColour": "#a8977d",
+    "underColour": "#8d7f69"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    10,
+    0,
+    0
+   ],
+   "rotDeg": 270,
+   "params": {
+    "kind": "folded",
+    "width": 24,
+    "depth": 14,
+    "rise": 9,
+    "folds": 5,
+    "thickness": 0.5,
+    "slopeY": 6,
+    "z": 9,
+    "colour": "#9d8e75",
+    "edgeColour": "#a8977d",
+    "underColour": "#8d7f69"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    13
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#e4e0d2",
+    "profile": [
+     [
+      9,
+      0,
+      "#d8d2c2"
+     ],
+     [
+      7.8,
+      6
+     ],
+     [
+      6.6,
+      12
+     ],
+     [
+      6.9,
+      17
+     ],
+     [
+      8.4,
+      22,
+      "#e6e2d6"
+     ],
+     [
+      8.6,
+      23,
+      "#cfc9ba"
+     ],
+     [
+      8.6,
+      24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    13
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#e4e0d2",
+    "profile": [
+     [
+      9,
+      0
+     ],
+     [
+      6.6,
+      12
+     ],
+     [
+      8.6,
+      24
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "lod": [
+    0,
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    37
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "colour": "#bfb7a3"
+     },
+     {
+      "z": 14,
+      "rect": [
+       0.2,
+       0.2
+      ]
+     }
+    ],
+    "colour": "#bfb7a3"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    0,
+    50
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     1.4
+    ],
+    "height": 0.15,
+    "colour": "#bfb7a3"
+   }
+  },
+  {
+   "type": "core/steps",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.3,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#c5bba5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   100,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower Kufic relief not modelled (plain white shaft); roof folds are a zigzag surface ring rather than the tall asymmetric concrete gables with brick-tile infill; no narrow slit windows or board-marking detail on walls."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-sacred-heart-cathedral"
+}

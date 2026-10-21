@@ -1,0 +1,595 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cathedral_of_the_Holy_Cross,_Lusaka,_exterior.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "LittleT889",
+   "view": "front",
+   "file": "/tmp/places-evidence/lusaka/qr0.jpg",
+   "used": "tall square brick front tower between two concrete piers under a broad overhanging hipped roof, flat entrance canopy on posts, low brick aisle wings with vertical louvre windows, wide flight of steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cathedral_of_the_Holy_Cross_in_Lusaka_06.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "THE ONE PEOPLE",
+   "view": "side",
+   "used": "long nave side wall of vertical fins under a row of small gables, low projecting eaves"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1422882767",
+   "used": "overall extent only (91 m cross-shaped outline); not used as the footprint because the photo shows a compact tower and a long nave"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "landing",
+   "footprint": {
+    "rect": [
+     46,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 2.4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a49a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.4,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b59a6c",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d7a74",
+    "pitch": 8,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "soffit",
+   "footprint": {
+    "rect": [
+     15.8,
+     15.8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 28.9,
+   "height": 0.5,
+   "wall": {
+    "material": "timber",
+    "colour": "#3a342c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a342c"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pier-l",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#aaa294",
+    "sections": [
+     {
+      "z": 2.4,
+      "rect": [
+       2.4,
+       2.6
+      ],
+      "cx": -7.8,
+      "cy": -4.5
+     },
+     {
+      "z": 29.9,
+      "rect": [
+       1.4,
+       2.0
+      ],
+      "cx": -6.9,
+      "cy": -4.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pier-r",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#aaa294",
+    "sections": [
+     {
+      "z": 2.4,
+      "rect": [
+       2.4,
+       2.6
+      ],
+      "cx": 7.8,
+      "cy": -4.5
+     },
+     {
+      "z": 29.9,
+      "rect": [
+       1.4,
+       2.0
+      ],
+      "cx": 6.9,
+      "cy": -4.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8,
+    2.4
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 5,
+    "height": 8.0,
+    "thickness": 0.6,
+    "columns": 4,
+    "colour": "#6a6258",
+    "edgeColour": "#4a443d"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -5,
+     -8,
+     9.6
+    ],
+    "end": [
+     5,
+     -8,
+     9.6
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.15,
+        -2.2
+       ],
+       [
+        0.15,
+        -2.2
+       ],
+       [
+        0.15,
+        2.2
+       ],
+       [
+        -0.15,
+        2.2
+       ]
+      ],
+      "height": 0.5,
+      "colour": "#4a443d"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     3.2,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -5.65
+   ],
+   "z0": 2.4,
+   "height": 6,
+   "wall": {
+    "material": "timber",
+    "colour": "#8a5a34",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a5a34"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glaze-l",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    -2.8,
+    -5.65
+   ],
+   "z0": 2.4,
+   "height": 5.5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3238",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c3238"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glaze-r",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    2.8,
+    -5.65
+   ],
+   "z0": 2.4,
+   "height": 5.5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2c3238",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2c3238"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     11,
+     11
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 2.4,
+   "height": 27,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b59a6c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6d655b",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     20,
+     44
+    ]
+   },
+   "at": [
+    0,
+    28
+   ],
+   "z0": 2.4,
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b59a6c",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6d655b",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 1.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-base",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -34,
+    -8
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#b0a898",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a092"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-0",
+   "footprint": {
+    "rect": [
+     50,
+     1.7
+    ]
+   },
+   "at": [
+    0,
+    -12.85
+   ],
+   "z0": 0,
+   "height": 2.4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39f95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-1",
+   "footprint": {
+    "rect": [
+     50,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -13.7
+   ],
+   "z0": 0,
+   "height": 2.0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39f95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-2",
+   "footprint": {
+    "rect": [
+     50,
+     5.1
+    ]
+   },
+   "at": [
+    0,
+    -14.55
+   ],
+   "z0": 0,
+   "height": 1.6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39f95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-3",
+   "footprint": {
+    "rect": [
+     50,
+     6.8
+    ]
+   },
+   "at": [
+    0,
+    -15.4
+   ],
+   "z0": 0,
+   "height": 1.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39f95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-4",
+   "footprint": {
+    "rect": [
+     50,
+     8.5
+    ]
+   },
+   "at": [
+    0,
+    -16.25
+   ],
+   "z0": 0,
+   "height": 0.8,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39f95"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "step-5",
+   "footprint": {
+    "rect": [
+     50,
+     10.2
+    ]
+   },
+   "at": [
+    0,
+    -17.1
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a39f95",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39f95"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -18
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hip roof with soffit slab and tapering piers now read right; the roof is shallow and the piers sit too wide and thin versus the heavy photo piers; tower brick is flat colour; coffer beams and aisle louvres are simplified; the stair flight is shorter than the real one; shed aisle roof is a plain gable"
+ }
+}

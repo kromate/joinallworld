@@ -1,0 +1,155 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1291114107",
+   "used": "nearest OSM outline is a long thin L (26.7 x 7.7 m); main hall bar taken from it, veranda added per brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 9,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a9744e",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d7f7c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     24,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -6.1
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "pattern": {
+     "type": "pilotis"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d7f7c",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#a9744e",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 2.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.6,
+    "pillarEvery": 5,
+    "colour": "#e6dcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "ake-polling",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic colonial veranda hall from brief"
+ }
+}

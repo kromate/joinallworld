@@ -1,0 +1,1931 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "cairo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "cairo",
+    "climate": "desert",
+    "vernacular": "Dense sand-coloured city: 6-12 storey concrete-frame apartment blocks infilled with brick, often unrendered red brick or dusty beige render with flat roofs cluttered with water tanks, dishes and laundry; Khedival-era Haussmann-style downtown blocks in cream stone with iron balconies; Mamluk and Ottoman limestone mosques with banded stonework; modern gated compounds and malls in beige stone and glass.",
+    "wallColours": [
+      "#d6c19a",
+      "#c8b08a",
+      "#b59d78",
+      "#e4d5b5",
+      "#a68a64",
+      "#9c8f80",
+      "#b86b4b"
+    ],
+    "roofColours": [
+      "#a9a196",
+      "#8a7d6d",
+      "#c4b49a",
+      "#7f8a8c"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "limestone",
+      "red-brick",
+      "brick",
+      "stone",
+      "sandstone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Mashrabiya timber lattice screens and projecting balconies; muqarnas cornices and keel arches on Mamluk stonework; ablaq (alternating dark and light) banded masonry; Khedival neoclassical pediments and iron balcony rails; pharaonic revival motifs (lotus, cavetto cornice) on 1950s-60s monuments.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Khan_el-Khalili",
+        "what": "multi-storey stone khans/wikalas around courtyards with shops below, ornate stone gates"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mosque-Madrasa_of_Sultan_Hasan",
+        "what": "Mamluk stone construction, muqarnas cornice, banded stone and marble"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Egyptian_Museum",
+        "what": "Khedival neoclassical downtown with a pinkish-beige facade"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Abdeen_Palace",
+        "what": "Khedival French-influenced palace architecture"
+      }
+    ]
+  },
+  "places": {
+    "cairo-agricultural-museum": {
+      "venueId": "cairo-agricultural-museum",
+      "city": "cairo",
+      "name": "Agricultural Museum (Dokki)",
+      "archetype": "museum-theatre",
+      "subject": "The Agricultural Museum in its garden: a two-storey 19th-century palace-style building in cream render with a hipped roof and a shaded terrace, set among old trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e5d3aa",
+          "#c4a97a",
+          "#f4eed9"
+        ],
+        "roofColour": "#9c6a4c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "c. 1930 museum in a 19th-century royal palace",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/28829955",
+          "what": "OSM measured data: 458.8 x 320.2 m bounding box, 123162 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM shows a 12 ha park-and-museum polygon (459 x 320 m). Nothing fetched describes the main building; it is typed as a royal-palace villa in a garden from general recall. Low."
+    },
+    "cairo-airport-cairo-airport": {
+      "venueId": "cairo-airport-cairo-airport",
+      "city": "cairo",
+      "name": "Cairo International Airport (Terminal 3)",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3 at Cairo airport: a long modern glass-and-steel terminal with a curved landside canopy and a pier of jet bridges",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "wave",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd5d8",
+          "#5b7686",
+          "#efede6"
+        ],
+        "roofColour": "#d3d6d7",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 14
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo_International_Airport",
+          "what": "Terminal 3 inaugurated Dec 2008, opened Apr 2009, largest terminal, multiple concourses and piers, linked to Terminal 2; Terminal 1 opened 1963; Terminal 2 rebuilt, reopened 2016"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24724766",
+          "what": "OSM measured data: 611.3 x 300.3 m bounding box, 52358 m2 area"
+        }
+      ],
+      "notes": "Dates and layout sourced; OSM terminal polygon is 611 x 300 m (52,000 m2) so the real building is far bigger than the 120 m clamp: show a section of the main facade. Appearance (glass, steel, wave roof) inferred. Terminal 1 (1963) is smaller and older, more concrete and horizontal."
+    },
+    "cairo-al-azhar-university": {
+      "venueId": "cairo-al-azhar-university",
+      "city": "cairo",
+      "name": "Al-Azhar University (Nasr City campus)",
+      "archetype": "campus-block",
+      "subject": "An Al-Azhar University faculty block in Nasr City: a long five-storey cream building with arched windows and Islamic arcading",
+      "form": {
+        "footprint": "rect",
+        "width_m": 147,
+        "depth_m": 55,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#dfcfa6",
+          "#c2a87a",
+          "#f2ead2"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 24
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/16731311",
+          "what": "OSM measured data: 147 x 55.3 m bounding box, 4306 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM building about 147 x 55 m tagged university; the location is the Nasr City campus, not the 10th-century mosque in the old city. Style and storeys are typed; no source describes it."
+    },
+    "cairo-aquarium-grotto-garden": {
+      "venueId": "cairo-aquarium-grotto-garden",
+      "city": "cairo",
+      "name": "Aquarium Grotto Garden (Zamalek)",
+      "archetype": "park-landscape",
+      "subject": "The Zamalek grotto garden: a hill of artificial rock with winding paths, tunnels and shaded paths under old fig trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "rocky grotto hill"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#b9a98a",
+          "#8f8571",
+          "#d7c9a4"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1867 garden, grotto c. 1902",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24986650",
+          "what": "OSM measured data: 262.2 x 193.6 m bounding box, 39764 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM: 4 ha park tagged aquarium, 262 x 194 m. Artificial-rock grotto is from general knowledge; not fetched. Low."
+    },
+    "cairo-arab-al-mohammedi-park": {
+      "venueId": "cairo-arab-al-mohammedi-park",
+      "city": "cairo",
+      "name": "Arab Al Mohammedi Park",
+      "archetype": "park-landscape",
+      "subject": "A municipal city park with lawns, palm rows and paved paths between low service pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 140,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "municipal park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dccaa0",
+          "#b9a07a",
+          "#efe6cf"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/28821197",
+          "what": "OSM measured data: 339.4 x 214.1 m bounding box, 49791 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM: 5 ha park 340 x 214 m, no details. Generic."
+    },
+    "cairo-bandar-maadi-mall": {
+      "venueId": "cairo-bandar-maadi-mall",
+      "city": "cairo",
+      "name": "Bandar Maadi Mall",
+      "archetype": "mall",
+      "subject": "Bandar Maadi: a mid-sized outdoor-style mall in Maadi with a three-storey beige stone and glass front and an open car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d5b3",
+          "#5f7f88",
+          "#c3b392"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "No OSM polygon. Nothing found describing it. Typed from city style and the mall type."
+    },
+    "cairo-cairo-stadium": {
+      "venueId": "cairo-cairo-stadium",
+      "city": "cairo",
+      "name": "Cairo International Stadium",
+      "archetype": "stadium",
+      "subject": "The 75,000-seat Cairo International Stadium: a huge oval concrete bowl with tall outer arches, a partial roof on the main stands and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 268,
+        "depth_m": 220,
+        "storeys": 3,
+        "height_m": 34,
+        "roof": "curved",
+        "variant": "Werner March bowl"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cdc4b0",
+          "#a39a86",
+          "#e2dac6"
+        ],
+        "roofColour": "#b8b0a0",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cantilever roof on part of the stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "corner masts"
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 60,
+          "note": "outer arcade"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo_International_Stadium",
+          "what": "75,000 all-seated, architect Werner March, built 1955-1960, opened 1960, renovated 2005 and 2019"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/331203",
+          "what": "OSM measured data: 267.6 x 220 m bounding box, 29756 m2 area"
+        }
+      ],
+      "notes": "Capacity, architect and dates sourced; OSM bowl 268 x 220 m. Form (oval concrete bowl with arcaded outer wall, partial roof, corner floodlights) from recall of photos; the roof coverage is unverified."
+    },
+    "cairo-cairo-tower": {
+      "venueId": "cairo-cairo-tower",
+      "city": "cairo",
+      "name": "Cairo Tower",
+      "archetype": "monument",
+      "subject": "Cairo Tower on Gezira: a 187 m lotus-patterned concrete lattice tower with a flared base, a round observation deck and a revolving restaurant crown",
+      "form": {
+        "footprint": "round",
+        "width_m": 24.5,
+        "depth_m": 23.4,
+        "storeys": 16,
+        "height_m": 187,
+        "roof": "none",
+        "variant": "lattice tower"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#b5ae9d",
+          "#e1dccf"
+        ],
+        "roofColour": "#cfc9bb",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "observation deck and revolving restaurant at ~143-160 m"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "top spire/antenna"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "open lotus lattice"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "low entrance base"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1961",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo_Tower",
+          "what": "187 m, concrete lattice resembling a pharaonic lotus, circular observation deck, revolving restaurant, 16 floors, observation floor 143 m, roof 160 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/767933342",
+          "what": "OSM measured data: 24.5 x 23.4 m bounding box, 573 m2 area, height 187 m"
+        }
+      ],
+      "notes": "Height 187 m also in OSM, footprint 24.5 x 23.4 m. Colour is warm grey/beige concrete (estimated). The lattice should be open, flaring in the lower half and tapering into a pinched waist, then the round crown."
+    },
+    "cairo-child-museum": {
+      "venueId": "cairo-child-museum",
+      "city": "cairo",
+      "name": "Children Center for Civilization and Creativity (Child Museum)",
+      "archetype": "museum-theatre",
+      "subject": "The Child Museum in Heliopolis: a low modern building in a park with pharaonic-themed entrance gates and colourful parts",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e7d1a8",
+          "#c8553d",
+          "#2f6b8a"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "pharaonic-style entrance"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1232450754",
+          "what": "OSM measured data: 409.2 x 221 m bounding box, 56068 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM only a 5.6 ha park polygon 409 x 221 m. Details are not sourced; low."
+    },
+    "cairo-citadel": {
+      "venueId": "cairo-citadel",
+      "city": "cairo",
+      "name": "Salah El Din Citadel (with the Muhammad Ali Mosque)",
+      "archetype": "heritage-fort",
+      "subject": "The Citadel on its Muqattam spur: limestone curtain walls with round towers and crenellations, and the Ottoman-style Muhammad Ali Mosque with a large central dome and two pencil minarets on the summit",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "fortress with mosque",
+        "wings": 3
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#cdbd97",
+          "#b8a67e",
+          "#e6dcc0"
+        ],
+        "roofColour": "#8f9a9d",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "Muhammad Ali Mosque central dome with half-domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "tall pencil-like Ottoman minarets"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1176; mosque 1830-1857",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo_Citadel",
+          "what": "Saladin walls mostly Muqattam limestone, round and rectangular towers; Muhammad Ali Mosque 1830-1857 Ottoman style, large dome, tall pencil-like minarets, model Sultan Ahmed Mosque"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24908286",
+          "what": "OSM measured data: 797.2 x 601.1 m bounding box, 251167 m2 area"
+        }
+      ],
+      "notes": "Walls and mosque style sourced; the mosque dome colour (lead grey) is from recall. OSM complex is 797 x 601 m so only a recognisable portion is modelled: the walled mosque terrace. Make the mosque the focal mass."
+    },
+    "cairo-city-stars-mall": {
+      "venueId": "cairo-city-stars-mall",
+      "city": "cairo",
+      "name": "City Stars Mall",
+      "archetype": "mall",
+      "subject": "City Stars Mall in Nasr City: a vast multi-block mall complex in beige stone and glass with tall hotel and office towers behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 330,
+        "depth_m": 237,
+        "storeys": 4,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c9a5",
+          "#6a8794",
+          "#efe6cf"
+        ],
+        "roofColour": "#aaa296",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/284336557",
+          "what": "OSM measured data: 333.5 x 237.4 m bounding box, 52504 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM: 333 x 237 m, 52,500 m2 commercial footprint. Look is typed from general recall; the mass is far above the 120 m clamp so show the main frontage block."
+    },
+    "cairo-clinic": {
+      "venueId": "cairo-clinic",
+      "city": "cairo",
+      "name": "Coptic Hospital",
+      "archetype": "hospital",
+      "subject": "The Coptic Hospital in Ramses: a five-storey cream-painted city hospital with window bands and a covered ambulance entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 58,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d4ae",
+          "#b7a47f",
+          "#f1e9d2"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1930s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/774871347",
+          "what": "OSM measured data: 77.5 x 57.8 m bounding box, 4214 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM: hospital building 77 x 58 m. No source describes it. Typed from the city style."
+    },
+    "cairo-community-notices": {
+      "venueId": "cairo-community-notices",
+      "city": "cairo",
+      "name": "Abdeen Palace",
+      "archetype": "civic-palace",
+      "subject": "Abdeen Palace's long cream facade facing the square: a French-influenced three-storey palace with a central pavilion, tall windows and a flagpole, behind iron railings",
+      "form": {
+        "footprint": "U",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#e8dab4",
+          "#c4a975",
+          "#f5efdc"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "central pavilion"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1863-1874",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abdeen_Palace",
+          "what": "Architect Leon Rousseau; construction from 1863, inaugurated 1874; 500 rooms; wing added 1891 by Joseph Urban; now presidential museums"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/16734517",
+          "what": "OSM measured data: 319.8 x 157.6 m bounding box, 22367 m2 area"
+        }
+      ],
+      "notes": "History sourced; OSM compound 320 x 158 m. Facade colour (warm cream) and layout (long central block with side wings) are from recall of photos. Show the front court and iron fence."
+    },
+    "cairo-community-voting-game": {
+      "venueId": "cairo-community-voting-game",
+      "city": "cairo",
+      "name": "Tahrir Square",
+      "archetype": "park-landscape",
+      "subject": "Tahrir Square: a big downtown roundabout with a central planted island, ringed by pinkish-beige Khedival blocks and the curved Mogamma government building",
+      "form": {
+        "footprint": "round",
+        "width_m": 66,
+        "depth_m": 66,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "roundabout garden"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d9bfa0",
+          "#cdb98f",
+          "#a39a8c"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "central monument reported installed 2020; unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1860s plan, 1950s ring buildings",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Egyptian_Museum",
+          "what": "museum faces Tahrir Square; pinkish-beige neoclassical facade"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/30925727",
+          "what": "OSM measured data: 66.4 x 66.2 m bounding box, 3428 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM: the central garden is a 66 x 66 m park polygon. Surrounding buildings are context, not modelled. The central obelisk feature is from memory of a 2020 installation and unverified, treat the feature as optional."
+    },
+    "cairo-community-workshop": {
+      "venueId": "cairo-community-workshop",
+      "city": "cairo",
+      "name": "Cairo University",
+      "archetype": "campus-block",
+      "subject": "Cairo University main building at Giza: a long cream neoclassical block with a colonnaded entrance and a big central dome flanked by wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 200,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e6dab8",
+          "#c7b184",
+          "#f4ecd6"
+        ],
+        "roofColour": "#7f8d88",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome over the main hall"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1929-1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1135176280",
+          "what": "OSM measured data: 30.2 x 9.1 m bounding box, 275 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM matched only a 30 x 9 m annex; the dome-and-colonnade landmark is from general knowledge, not verified by a fetched page. Low."
+    },
+    "cairo-egyptian-museum": {
+      "venueId": "cairo-egyptian-museum",
+      "city": "cairo",
+      "name": "Egyptian Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Egyptian Museum on Tahrir Square: a two-storey neoclassical building in pinkish-beige with arched windows and an ornate facade, behind a garden with sphinx statues",
+      "form": {
+        "footprint": "U",
+        "width_m": 105,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#dcab90",
+          "#c99a7c",
+          "#f1e2d1"
+        ],
+        "roofColour": "#b79d85",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central entrance bay"
+        },
+        {
+          "id": "arches",
+          "count": 30
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1902",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Egyptian_Museum",
+          "what": "Neoclassical, Marcel Dourgnon and Hermann Grabe, pinkish-beige facade, arched windows, two main floors, opened 15 Nov 1902; garden with Mariette monument and 24 busts"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/10873198",
+          "what": "OSM measured data: 129.2 x 125.3 m bounding box, 11139 m2 area, height 16 m, colour #ff7e70"
+        }
+      ],
+      "notes": "OSM: 16 m high, roof/wall colour #ff7e70 (salmon), 129 x 125 m bounding box. Wikipedia says pinkish-beige; colour is set between the two. Roof is flat or low, not a dome. The garden holds Mariette's tomb with busts."
+    },
+    "cairo-gayer-anderson-museum": {
+      "venueId": "cairo-gayer-anderson-museum",
+      "city": "cairo",
+      "name": "Gayer-Anderson Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Gayer-Anderson Museum: two joined 16th-17th century stone houses against the Ibn Tulun mosque wall, a stone block with timber mashrabiya screens, a high courtyard and a roof terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 51,
+        "depth_m": 41,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "two courtyard houses joined by a bridge",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#cbb995",
+          "#7a5636",
+          "#e6dbc2"
+        ],
+        "roofColour": "#b5a58a",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "marble floor and a deep well"
+        },
+        {
+          "id": "bay-window",
+          "count": 6,
+          "note": "projecting mashrabiya screens"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "roof garden enclosed by mashrabiya"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "open maq'ad loggia"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "1540 and 1632",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gayer-Anderson_Museum",
+          "what": "Two houses (1540 and 1632) built against the Ibn Tulun mosque outer wall, linked by a third-floor bridge; marble courtyard with a 15 m well; flat roof garden enclosed by mashrabiya screens"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/197958374",
+          "what": "OSM measured data: 51.2 x 41.4 m bounding box, 1833 m2 area"
+        }
+      ],
+      "notes": "Sourced layout and materials; OSM footprint 51 x 41 m. Stone colour estimated from the Mamluk-Ottoman context. Massing is irregular and windowless low down, with timber screens up high."
+    },
+    "cairo-great-pyramid": {
+      "venueId": "cairo-great-pyramid",
+      "city": "cairo",
+      "name": "Great Pyramid of Giza",
+      "archetype": "monument",
+      "subject": "The Great Pyramid of Khufu as it stands today: a 138.5 m limestone pyramid with stepped, weathered courses and a few casing stones left at the base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 230,
+        "storeys": 40,
+        "height_m": 138.5,
+        "roof": "pyramidal",
+        "variant": "pyramid"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#c8a96e",
+          "#b89a62",
+          "#e5d6b0"
+        ],
+        "roofColour": "#c8a96e",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 200,
+          "note": "stepped courses of the core"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "c. 2560 BC",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+          "what": "Originally ~146.6 m, now ~138.5 m; base ~230 m; limestone, granite; white Tura casing largely stripped; slope 51 deg 50 min"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/4420397",
+          "what": "OSM measured data: 231.6 x 224.6 m bounding box, 51521 m2 area, 40 levels, height 138.8 m"
+        }
+      ],
+      "notes": "Measured by OSM at 231.6 x 224.6 m, 138.8 m high. Material is exposed core limestone in sand-tan; OSM roof colour #F69B3C is too orange, so the sandy value is used. Height exceeds the 120 m scene clamp in plan only (231 m base) so it will be scaled; show the north face. STYLES has no ancient-Egyptian option: vernacular used."
+    },
+    "cairo-market-game": {
+      "venueId": "cairo-market-game",
+      "city": "cairo",
+      "name": "Khan El Khalili",
+      "archetype": "market-open",
+      "subject": "Khan el-Khalili bazaar: narrow alleys between 2-4 storey stone khans with shopfronts, striped awnings, hanging lanterns and ornate stone gates, with a minaret rising behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "bazaar lanes",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#c9ae7e",
+          "#b09468",
+          "#e3d3ac"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "awning",
+          "count": 12
+        },
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "vaulted gate openings"
+        },
+        {
+          "id": "gate",
+          "count": 2,
+          "note": "Bab al-Ghuri-style stone gates"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "nearby Al-Hussein mosque"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "wikala courtyard"
+        },
+        {
+          "id": "bay-window",
+          "count": 6,
+          "note": "mashrabiya oriels"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "14th century, Mamluk/Ottoman",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Khan_el-Khalili",
+          "what": "Multi-storey khans/wikalas around inner courtyards with shops below and living quarters above, fixed stone shop structures, ornate stone gates of al-Ghuri era, coffeehouses and alleys"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/34204980",
+          "what": "OSM measured data: 319 x 217.9 m bounding box, 59392 m2 area"
+        }
+      ],
+      "notes": "Layout sourced; OSM bazaar polygon 319 x 218 m (the bazaar is bigger than the clamp, show a cluster). Colours of stone and awnings from recall, not fetched. Much of the area is open-air under awnings and street shop lanes, not a single hall."
+    },
+    "cairo-meal-stop": {
+      "venueId": "cairo-meal-stop",
+      "city": "cairo",
+      "name": "Cafe Riche",
+      "archetype": "restaurant",
+      "subject": "Cafe Riche on a Downtown street: the ground floor of a five-storey cream Khedival block with a recessed arched glass entrance and wrought-iron balconies above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e5d6b0",
+          "#bba67b",
+          "#f4ecd8"
+        ],
+        "roofColour": "#8d8a82",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "iron balconies"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1908 cafe in a late-19th-century block",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/98246962",
+          "what": "OSM measured data: 31.5 x 25.3 m bounding box, 797 m2 area, 5 levels"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM: building with 5 levels, 31 x 25 m. Cafe exterior is typed from the Downtown Khedival block style; the facade is not described in any fetched page. Low."
+    },
+    "cairo-nilometer": {
+      "venueId": "cairo-nilometer",
+      "city": "cairo",
+      "name": "Nilometer on Rhoda Island",
+      "archetype": "monument",
+      "subject": "The Rhoda Island nilometer: a small square stone structure housing a deep measuring shaft, covered by a conical roof, at the river bank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "pyramidal",
+        "variant": "stone shaft house with conical roof"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cbb893",
+          "#b3a07a",
+          "#e4d8b7"
+        ],
+        "roofColour": "#8a7a66",
+        "roofMaterial": "timber-shingle",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "pointed arches (Abbasid)"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stairs down the shaft"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Kufic band"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "861 AD, restored 872-873",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nilometer",
+          "what": "Roda nilometer visible today dates to 861 AD (al-Mutawakkil), restored 872-873; housed in an ornate stone structure under a conical cover that is modern"
+        }
+      ],
+      "notes": "Date and the modern conical cover are sourced; no OSM polygon. Footprint, height and colours are estimates. Conical roof colour/material is unknown (treated as dark brownish)."
+    },
+    "cairo-quiet-reflection": {
+      "venueId": "cairo-quiet-reflection",
+      "city": "cairo",
+      "name": "Sultan Hassan Mosque-Madrasa",
+      "archetype": "mosque-domed",
+      "subject": "The Mamluk Sultan Hassan complex: a huge square-ended stone block 150 x 68 m with a 38 m recessed portal, a muqarnas cornice, one tall minaret and a bulbous dome behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 68,
+        "storeys": 4,
+        "height_m": 36,
+        "roof": "flat",
+        "variant": "madrasa-mosque",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "sandstone",
+        "colours": [
+          "#c2ab80",
+          "#a89268",
+          "#dccfae"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "one original ~84 m, one rebuilt 1671"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "12 m mausoleum dome"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "38 m recessed portal angled 17 degrees"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "1.5 m muqarnas cornice"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "four-iwan courtyard"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1356-1363",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mosque-Madrasa_of_Sultan_Hasan",
+          "what": "About 150 m long, 68 m wide, 36 m high; four iwans around a courtyard; muqarnas cornice; 38 m portal; two minarets; mausoleum dome ~12 m, rebuilt 1671; stone exterior"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24908268",
+          "what": "OSM measured data: 156.3 x 87.8 m bounding box, 10682 m2 area"
+        }
+      ],
+      "notes": "Dimensions, features, materials sourced. Colour is estimated honey-grey limestone. OSM footprint 156 x 88 m. Contrast with Citadel and Gayer-Anderson: this is one solid windowless-looking stone mass with a monumental portal."
+    },
+    "cairo-recreation": {
+      "venueId": "cairo-recreation",
+      "city": "cairo",
+      "name": "Al-Azhar Park",
+      "archetype": "park-landscape",
+      "subject": "Al-Azhar Park on the Darassa hills: terraced formal lawns and water channels, planted orchards, Ayyubid wall towers with crenellations, and hilltop cafe pavilions with Fatimid arches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "hill park with pavilion and wall"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cdbc94",
+          "#b8a67e",
+          "#e6dcc0"
+        ],
+        "roofColour": "#a39a8c",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "restored Ayyubid wall with round towers"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 6,
+          "note": "Fatimid arch motif"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "2005 (park), 12th century wall",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Azhar_Park",
+          "what": "~30 ha on Darassa hills, five slope sections, water channels and fountains, Persian/Timurid-influenced fountains, uncovered 12th-century Ayyubid wall with round towers, Fatimid archways in park buildings, terraced formal gardens, orchard-like planting"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24745061",
+          "what": "OSM measured data: 1311.7 x 359.1 m bounding box, 284002 m2 area"
+        }
+      ],
+      "notes": "OSM polygon 1312 x 359 m, 28 ha; only a portion (terrace + wall + pavilion) is modelled. Wikipedia does not mention a lake. Building colour estimated from Mamluk stonework."
+    },
+    "cairo-saint-mercurius-church": {
+      "venueId": "cairo-saint-mercurius-church",
+      "city": "cairo",
+      "name": "Saint Mercurius Church (Abu Sefein), Coptic Cairo",
+      "archetype": "church-classical",
+      "subject": "Abu Sefein church inside the Coptic Cairo walled enclosure: a low basilica in sand-coloured brick and stone with a small dome and bell tower, entered through a narrow courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "low Coptic basilica",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "limestone",
+        "colours": [
+          "#c4a97e",
+          "#b09468",
+          "#e0d3b3"
+        ],
+        "roofColour": "#9a7a5c",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "10th-11th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1379086879",
+          "what": "OSM measured data: 68.1 x 54.3 m bounding box, 2047 m2 area"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "OSM monastery compound 68 x 54 m, 2,047 m2. Nothing fetched described the church; typed from the Coptic Cairo enclosure context. The church is mostly hidden behind high walls and the exterior is plain; interior has wooden barrel ceilings. Low."
+    },
+    "cairo-transit": {
+      "venueId": "cairo-transit",
+      "city": "cairo",
+      "name": "Ramses Station",
+      "archetype": "transport-station",
+      "subject": "Ramses railway station: a long arched cream-stone station building with a tall central entrance hall and, behind, an iron-and-glass train shed over the tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 52,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e0cfa6",
+          "#bda676",
+          "#f1e8cf"
+        ],
+        "roofColour": "#8a7d6d",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 9,
+          "note": "tall arched entrances"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "train shed"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "clock over the central bay (recall)"
+        },
+        {
+          "id": "bus-bays",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1892, upgraded 1955",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramses_railway_station",
+          "what": "Current building erected 1892, upgraded 1955, 2011 upgrade with marble flooring and escalators; some critics found the modernisation destroyed original style"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/579796924",
+          "what": "OSM measured data: 191.3 x 51.6 m bounding box, 9628 m2 area"
+        }
+      ],
+      "notes": "Dates sourced; OSM building 191 x 52 m. The Mamluk-revival styling, cream stone and train shed are from recall and unverified; the clock is the least certain feature."
+    },
+    "cairo-wissa-wassef-art-centre": {
+      "venueId": "cairo-wissa-wassef-art-centre",
+      "city": "cairo",
+      "name": "Ramses Wissa Wassef Art Centre",
+      "archetype": "museum-theatre",
+      "subject": "The Wissa Wassef Art Centre at Harraniya: a cluster of low sand-coloured mud-brick studios with vaults and domes among gardens and trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "multi-dome",
+        "variant": "mud-brick vaulted studios",
+        "wings": 3
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "stucco",
+        "colours": [
+          "#c8aa7e",
+          "#b3935f",
+          "#e4d4b0"
+        ],
+        "roofColour": "#c8aa7e",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 6,
+          "note": "vaulted arcade"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1951 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cairo",
+          "what": "city style only (beige concrete/brick fabric, Khedival downtown, Mamluk stonework); no building-specific description found"
+        }
+      ],
+      "notes": "No OSM data. The vaulted mud-brick buildings in the tradition of Hassan Fathy are from general knowledge; none of the fetched pages covered it. Low."
+    }
+  }
+}

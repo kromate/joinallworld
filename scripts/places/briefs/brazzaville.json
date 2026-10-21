@@ -1,0 +1,1660 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "brazzaville",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "brazzaville",
+    "climate": "savanna",
+    "vernacular": "Capital on the Congo River facing Kinshasa: a low, spread-out city of colonial-era (1910s-1950s) French AEF buildings in cream render and brick with verandas and arcades, 1960s-80s concrete modernist public buildings and Chinese-cooperation blocks (Palais des Congres, stadium), neighbourhoods of single-storey rendered or bare-block houses under rusting corrugated iron, and a few new glass towers and malls along the Corniche. Red sandy laterite soil, mango, oil-palm and flamboyant trees.",
+    "wallColours": [
+      "#e6dfcf",
+      "#c9b48a",
+      "#b86b4a",
+      "#9a9a96",
+      "#f2efe6",
+      "#d9a441",
+      "#7fa3b5"
+    ],
+    "roofColours": [
+      "#8c8c88",
+      "#a0503a",
+      "#2e7d5b",
+      "#6e6a66"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "brick",
+      "red-brick",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial arcades and openwork balconies with a two-tier roof on 1930s CFCO-era buildings; Roger Erell modernist forms in brick and concrete with glazed green roof tiles; bright hand-painted shopfronts and murals; Poto-Poto school painting motifs; flag-lined avenues and big sculpted portraits of national figures.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Brazzaville",
+        "what": "Colonial buildings 1910-15 (court, bank, Pasteur institute), Basilique Sainte-Anne by Roger Erell, Palais des Congres, stadium, CFCO railway, Poto-Poto"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Gare_de_Brazzaville",
+        "what": "1930s colonial station with arcades, openwork balconies and a two-tier roof; 1930s paired pavilions on Place de la Liberte"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_du_Sacr%C3%A9-C%C5%93ur_de_Brazzaville",
+        "what": "Brick cathedral built on-site from fired clay bricks, zinc roof ornament, wooden columns, statues of Peter and Paul"
+      }
+    ]
+  },
+  "places": {
+    "brazzaville-airport-brazzaville-airport": {
+      "venueId": "brazzaville-airport-brazzaville-airport",
+      "city": "brazzaville",
+      "name": "Maya-Maya International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Central-city airport: the 2010-2013 Chinese-built terminal, a long glassed block with a flat canopy and three jet bridges",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d5dde1",
+          "#3a566b",
+          "#eceff0"
+        ],
+        "roofColour": "#b9bfc3",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010-2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maya-Maya_Airport",
+          "what": "New terminal with three air bridges opened 2010; second phase completed 2013 ($160M) by a Chinese contractor; 3,300 m runway 05/23"
+        }
+      ],
+      "notes": "Terminal date and bridge count sourced; façade colours and exact size typed (no source describes the look). Airport lies in the city centre."
+    },
+    "brazzaville-arts-and-crafts": {
+      "venueId": "brazzaville-arts-and-crafts",
+      "city": "brazzaville",
+      "name": "Manufacture d'Arts et d'Artisanat Congolais",
+      "archetype": "museum-theatre",
+      "subject": "Craft and arts centre: a low rendered building with courtyard workshops and a display hall",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d3a8",
+          "#b86b4a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a0503a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the building; typed as a craft workshop complex."
+    },
+    "brazzaville-brazza-mall": {
+      "venueId": "brazzaville-brazza-mall",
+      "city": "brazzaville",
+      "name": "Brazza Mall",
+      "archetype": "mall",
+      "subject": "Modern shopping mall on the Corniche side: a 2-storey glazed and rendered box with a tall entrance frame and a big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#4a6a8a",
+          "#c4c0b4"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Only the general city article (no place-specific description found)"
+        }
+      ],
+      "notes": "No place-specific source was found; typed as a modern West/Central African shopping centre, brighter and glassier than Grand Fleuve."
+    },
+    "brazzaville-brazza-memorial": {
+      "venueId": "brazzaville-brazza-memorial",
+      "city": "brazzaville",
+      "name": "Mémorial Pierre Savorgnan de Brazza",
+      "archetype": "monument",
+      "subject": "The memorial and mausoleum of the founder: a neoclassical marble-and-glass memorial building behind a six-metre statue of Brazza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8e0",
+          "#9fb8c4",
+          "#c9c4b8"
+        ],
+        "roofColour": "#c0bbb0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "6 m statue of Brazza in front"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2005-2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/M%C3%A9morial_Pierre_Savorgnan_de_Brazza",
+          "what": "Built Feb 2005, inaugurated 3 Oct 2006; architect Eugene Emmanuel Okoko; neoclassical; crypt of glass and marble; statue about 6 m; houses remains and a museum"
+        }
+      ],
+      "notes": "Statue height, date and style are sourced; the overall mass and pale marble colour are typed."
+    },
+    "brazzaville-clinic": {
+      "venueId": "brazzaville-clinic",
+      "city": "brazzaville",
+      "name": "Centre Hospitalier Universitaire de Brazzaville (CHU-BZV)",
+      "archetype": "hospital",
+      "subject": "The national university hospital: a big compound of 2-4 storey cream concrete ward blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e6dfcf",
+          "#6a8f9a",
+          "#bdb7a8"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "City context only"
+        }
+      ],
+      "notes": "Largest hospital of the country; no description found of the blocks. Typed as multi-wing pavilion hospital; higher and more compact than Donka (Conakry)."
+    },
+    "brazzaville-community-notices": {
+      "venueId": "brazzaville-community-notices",
+      "city": "brazzaville",
+      "name": "Hôtel de Ville",
+      "archetype": "civic-palace",
+      "subject": "City hall: a formal two-storey white building with a central portico, flags and a forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe9dc",
+          "#b9a98a",
+          "#8c8c88"
+        ],
+        "roofColour": "#a0503a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1950s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Colonial municipal buildings 1910-15 are mentioned generally; this hall not described"
+        }
+      ],
+      "notes": "No source describes this hall (Hôtel de Ville is near the Mémorial de Brazza). Typed as colonial-modern civic building; clock tower is a guess and may be wrong."
+    },
+    "brazzaville-community-voting-game": {
+      "venueId": "brazzaville-community-voting-game",
+      "city": "brazzaville",
+      "name": "Mairie de Poto-Poto",
+      "archetype": "civic-small",
+      "subject": "District town hall in Poto-Poto: a modest rendered 2-storey block with a flag and a balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcb8",
+          "#c9876b",
+          "#f2efe6"
+        ],
+        "roofColour": "#a0503a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Only the general city article (no place-specific description found)"
+        }
+      ],
+      "notes": "Not described in any source found. Typed."
+    },
+    "brazzaville-community-workshop": {
+      "venueId": "brazzaville-community-workshop",
+      "city": "brazzaville",
+      "name": "Université Marien Ngouabi",
+      "archetype": "campus-block",
+      "subject": "The main state university (\"Bayardelle\"): long 2-4 storey concrete faculty blocks with balconies and exterior stairs",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e2dccd",
+          "#8f9aa3",
+          "#b4ae9e"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_Marien-Ngouabi",
+          "what": "11 establishments (5 faculties, 4 schools, 2 institutes); on avenue Bayardelle; building appearance not described"
+        }
+      ],
+      "notes": "Appearance not documented; typed as 1970s concrete faculty blocks."
+    },
+    "brazzaville-congo-gallery": {
+      "venueId": "brazzaville-congo-gallery",
+      "city": "brazzaville",
+      "name": "Musée galerie du bassin du Congo",
+      "archetype": "museum-theatre",
+      "subject": "Small museum-gallery: a modern one-storey exhibition hall with a canopy entrance and sculpture garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe5d6",
+          "#8a5a36",
+          "#b4ae9e"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "sculpture in the garden"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure; no description found. Typed."
+    },
+    "brazzaville-felix-eboue-stadium": {
+      "venueId": "brazzaville-felix-eboue-stadium",
+      "city": "brazzaville",
+      "name": "Félix Éboué Stadium",
+      "archetype": "stadium",
+      "subject": "Small municipal stadium in Poto-Poto: a rendered open bowl with a covered grandstand on one side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c2b4",
+          "#b86b4a",
+          "#e5e0d3"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1940s-50s (assumed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "City context only"
+        }
+      ],
+      "notes": "Named after the colonial governor Felix Eboue; no source describes it. Typed as a small older ground; clearly smaller than Massamba-Debat."
+    },
+    "brazzaville-grand-fleuve": {
+      "venueId": "brazzaville-grand-fleuve",
+      "city": "brazzaville",
+      "name": "Grand Fleuve",
+      "archetype": "mall",
+      "subject": "Riverside commercial complex: a mid-rise glass-and-render shopping and offices block close to the river",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd9de",
+          "#5a7a8f",
+          "#e6e3da"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed as a modern commercial centre on the Corniche. Taller and glassier than Brazza Mall."
+    },
+    "brazzaville-isg-university": {
+      "venueId": "brazzaville-isg-university",
+      "city": "brazzaville",
+      "name": "Institut Supérieur de Gestion (I.S.G. - UMN)",
+      "archetype": "campus-block",
+      "subject": "Management institute of the university: a compact 3-storey rendered block with a front stair",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6e0d0",
+          "#4a6a8a",
+          "#b4ae9e"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes it; typed."
+    },
+    "brazzaville-marien-ngouabi-esplanade": {
+      "venueId": "brazzaville-marien-ngouabi-esplanade",
+      "city": "brazzaville",
+      "name": "Esplanade Marien Ngouabi",
+      "archetype": "park-landscape",
+      "subject": "Ceremonial esplanade near the Corniche with a wide paved plaza, flag poles and the mausoleum precinct",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#7fa87a",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Marien Ngouabi mausoleum mentioned as a visitor destination"
+        }
+      ],
+      "notes": "Not described; typed as a wide ceremonial plaza."
+    },
+    "brazzaville-market-game": {
+      "venueId": "brazzaville-market-game",
+      "city": "brazzaville",
+      "name": "Marché Poto-Poto",
+      "archetype": "market-open",
+      "subject": "Poto-Poto market: crowded rows of stalls under corrugated and tarpaulin shades beside rendered shops",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9c9a0",
+          "#8a5a36",
+          "#b86b4a"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Brazzaville market pictured in a 1905 photo; Poto-Poto district is the central trading and arts district"
+        }
+      ],
+      "notes": "Large central market. Exact layout not documented; typed as stalls under shared sheds."
+    },
+    "brazzaville-massamba-debat-stadium": {
+      "venueId": "brazzaville-massamba-debat-stadium",
+      "city": "brazzaville",
+      "name": "Stade Alphonse Massamba-Débat",
+      "archetype": "stadium",
+      "subject": "The 33,000-seat national stadium (ex-Stade de la Révolution, built for the 1965 All-Africa Games): a large oval bowl with an athletics track and covered stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#2f6b4f",
+          "#e8e3d6"
+        ],
+        "roofColour": "#7b7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s (1965 All-Africa Games)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Alphonse_Massamba-D%C3%A9bat",
+          "what": "Capacity 33,037; formerly Stade de la Revolution; athletics track; hosted 1965 All-Africa Games and 2004 African Athletics Championships"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Stadium shown in an aerial photo"
+        }
+      ],
+      "notes": "Capacity, track and events are sourced; bowl colours and roof typed."
+    },
+    "brazzaville-meal-stop": {
+      "venueId": "brazzaville-meal-stop",
+      "city": "brazzaville",
+      "name": "Gourmandine",
+      "archetype": "restaurant",
+      "subject": "Popular café-patisserie: a modern shopfront with a glazed front, terrace and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ede6d4",
+          "#b5503a",
+          "#d0cbbd"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No place-specific source; typed."
+    },
+    "brazzaville-michel-dornano-gymnasium": {
+      "venueId": "brazzaville-michel-dornano-gymnasium",
+      "city": "brazzaville",
+      "name": "Gymnase Michel d'Ornano",
+      "archetype": "stadium",
+      "subject": "Indoor sports hall: a rectangular concrete gym with a low barrel-like roof, side entrances and a perimeter fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c4beb0",
+          "#4f7a9a",
+          "#e5e0d3"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-70s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named after a French minister; no description found. Typed as an indoor arena; small compared with the stadiums."
+    },
+    "brazzaville-moukondo-market": {
+      "venueId": "brazzaville-moukondo-market",
+      "city": "brazzaville",
+      "name": "Marché Moukondo",
+      "archetype": "market-open",
+      "subject": "Northern neighbourhood market: tight rows of tin-roof stalls and tarpaulin shelters on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a9a49a",
+          "#8a5a36",
+          "#c9876b"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "lock-ups",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described; typed as an informal neighbourhood market, less dense than Poto-Poto."
+    },
+    "brazzaville-national-library": {
+      "venueId": "brazzaville-national-library",
+      "city": "brazzaville",
+      "name": "Bibliothèque National",
+      "archetype": "campus-block",
+      "subject": "National library: a modern 3-storey concrete block with punched windows and a front entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#6a8f9a",
+          "#b4ae9e"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not described in found sources; typed."
+    },
+    "brazzaville-nkombo-market": {
+      "venueId": "brazzaville-nkombo-market",
+      "city": "brazzaville",
+      "name": "Marché de Nkombo",
+      "archetype": "market-open",
+      "subject": "Riverside market at Nkombo on the Congo River: small stalls and wooden shelters near canoe landings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "mud-render",
+        "colours": [
+          "#a8774a",
+          "#c9a77c",
+          "#8a5a36"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Remote river-district market; no source. Typed with timber stalls and a landing pier."
+    },
+    "brazzaville-palais-des-congres": {
+      "venueId": "brazzaville-palais-des-congres",
+      "city": "brazzaville",
+      "name": "Palais des Congrès",
+      "archetype": "civic-palace",
+      "subject": "1984 Sino-Congolese conference palace: a long concrete block with a pronounced entrance, colonnade and wide forecourt; housed both houses of parliament until 2021",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e4ded0",
+          "#9a9a94",
+          "#b9a98a"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1984",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Brazzaville",
+          "what": "Built 1984, inaugurated 22 July 1984 by Sassou-Nguesso; result of Sino-Congolese cooperation; hosted 1991 national conference; housed parliament until 2021; on boulevard Alfred Raoul"
+        }
+      ],
+      "notes": "Date, function and cooperation sourced; the façade and mass are typed (no source describes them)."
+    },
+    "brazzaville-place-rotary": {
+      "venueId": "brazzaville-place-rotary",
+      "city": "brazzaville",
+      "name": "Place Rotary",
+      "archetype": "monument",
+      "subject": "A traffic roundabout with a central plinth monument, planted verges and flags",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#7fa87a",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No information found on the monument at Place Rotary; typed as a roundabout feature."
+    },
+    "brazzaville-protestant-university": {
+      "venueId": "brazzaville-protestant-university",
+      "city": "brazzaville",
+      "name": "Université Protestante de Brazzaville",
+      "archetype": "campus-block",
+      "subject": "Small private church-run university campus: low 2-storey classroom block with a veranda and a small chapel",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e2d0",
+          "#4a6a8a",
+          "#bdb7a8"
+        ],
+        "roofColour": "#a0503a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure campus on the city outskirts; typed."
+    },
+    "brazzaville-quiet-reflection": {
+      "venueId": "brazzaville-quiet-reflection",
+      "city": "brazzaville",
+      "name": "Basilique Sainte-Anne",
+      "archetype": "church-modern",
+      "subject": "Basilique Sainte-Anne-du-Congo (Roger Erell, 1943): a monumental modernist brick-and-concrete basilica with a steep green glazed-tile roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 30,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#b0603f",
+          "#d8cbb0",
+          "#e6dfcf"
+        ],
+        "roofColour": "#2e7d5b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tall tower at the side"
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1943",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilique_Sainte-Anne-du-Congo",
+          "what": "Monumental Catholic church; architect Roger Erell; completed 1943; modern architecture"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "what": "Basilica pictured in the infobox"
+        }
+      ],
+      "notes": "Architect, date and style are sourced. The famous green glazed roof tiles and brick walls are from widely seen public photos, not from a source fetched; dimensions are estimates."
+    },
+    "brazzaville-recreation": {
+      "venueId": "brazzaville-recreation",
+      "city": "brazzaville",
+      "name": "Esplanade des Droits de l'Homme",
+      "archetype": "park-landscape",
+      "subject": "Riverside esplanade on the Corniche with paved walks, benches, flag poles and open lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bb",
+          "#7fa87a",
+          "#a9a49a"
+        ],
+        "roofColour": "#a9a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed as a Corniche riverside esplanade."
+    },
+    "brazzaville-sacre-coeur": {
+      "venueId": "brazzaville-sacre-coeur",
+      "city": "brazzaville",
+      "name": "Cathédrale Sacré-Cœur",
+      "archetype": "church-classical",
+      "subject": "The mission cathedral begun 1892: a long brick nave with side aisles, twin towers added 1903-04 and a pedimented facade with polychrome statues of Saints Peter and Paul",
+      "form": {
+        "footprint": "cross",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a8553a",
+          "#e0d3b8",
+          "#7a7a76"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "added 1903-04"
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "with small bell tower and cross"
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "polychrome Peter and Paul"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1892-1894 (towers 1903-04, remodelled 1952, 1993)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_du_Sacr%C3%A9-C%C5%93ur_de_Brazzaville",
+          "what": "Construction began May 1892, inaugurated 3 May 1894; original 37 x 12 m, nave and two aisles; towers 1903-04; transept 1913; bricks fired on site; zinc roof ornament; remodelled 1952 and 1993"
+        }
+      ],
+      "notes": "Dimensions are of the original building; today larger. Brick colour is deduced from the on-site fired clay-brick material."
+    },
+    "brazzaville-transit": {
+      "venueId": "brazzaville-transit",
+      "city": "brazzaville",
+      "name": "Gare CFCO",
+      "archetype": "transport-station",
+      "subject": "CFCO railway station in Poto-Poto: the 1962 modern station building facing Place de la Liberté, flanked by two 1930s colonial pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e1d0",
+          "#b9a98a",
+          "#8c8c88"
+        ],
+        "roofColour": "#8c8c88",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "on the 1930s pavilions"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1962 (replacing 1930s station)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gare_de_Brazzaville",
+          "what": "Original ~1930 concrete colonial station with arcades, openwork balconies and a two-tier roof; replaced 1962 by a larger modern building; Place de la Liberte with half-moon basins and two 1930s pavilions; service from 10 July 1934"
+        }
+      ],
+      "notes": "1962 building not described; modern horizontal form typed. Pavilions of the 1930s survive. Distinct from other transport hubs by its colonial wing pavilions."
+    }
+  }
+}

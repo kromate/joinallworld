@@ -1,0 +1,143 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/29066343",
+   "used": "real outline of the school (about 112 x 44 m, 4,400 m2): a long slab with a chamfered rear corner; glazed entrance placed on the long front edge"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc3",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": {
+     "colour": "#b8754d",
+     "height": 0.7
+    },
+    "plinth": 0.5,
+    "trimColour": "#b8754d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    18.3,
+    -13.1
+   ],
+   "rotDeg": 55.87145292585484,
+   "height": 11.8,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa0ab",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "glassColour": "#6f98a6",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "trimColour": "#b8754d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1.6,
+    "colour": "#b8754d",
+    "frameColour": "#b5b0a6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     -18
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     -48
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -5,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; outline is real OSM, upper-floor design and glazed entrance are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-isig"
+}

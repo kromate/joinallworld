@@ -1,0 +1,1420 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "luxembourg",
+  "style": {
+    "climate": "temperate",
+    "vernacular": "Sandstone and render country: buff-ochre Luxembourg sandstone for old town walls, bridges, churches and castles; pastel-rendered (cream, pale yellow, grey-white) terraced town houses with sandstone door and window surrounds; steep slate roofs (blue-grey) with dormers; red-brown pantile in rural south; glass-and-steel office blocks on Kirchberg and Belval; rusty-red industrial relics in the south (blast furnaces).",
+    "wallColours": [
+      "#cdb88f",
+      "#e6dcc2",
+      "#b9a77e",
+      "#d9cfae",
+      "#a8a398",
+      "#8c4f3b",
+      "#f0ece2"
+    ],
+    "roofColours": [
+      "#4a4f57",
+      "#5a5f66",
+      "#a2573f",
+      "#7a6f66"
+    ],
+    "wallMaterials": [
+      "render",
+      "sandstone",
+      "painted-render",
+      "stone",
+      "brick",
+      "glass-curtain",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "sandstone quoins, window surrounds and door cases on rendered facades; baroque-helmet or pointed slate spires on village churches; slate-hung gables; bays and dormers; cobbled lanes; fortress ramparts in the Upper Town.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Luxembourg",
+        "what": "Luxembourg architecture overview: sandstone construction, Romanesque/Gothic/Baroque churches, Pont du chateau 1735 in sandstone, Mudam, Philharmonie"
+      }
+    ],
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "luxembourg"
+  },
+  "places": {
+    "luxembourg-airport-luxembourg-airport": {
+      "venueId": "luxembourg-airport-luxembourg-airport",
+      "city": "luxembourg",
+      "name": "Luxembourg-Findel International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal A (2008) landside front: a long low glass-fronted terminal under a projecting canopy, with the control tower behind and Terminal B beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#6b7885",
+          "#e9ecee"
+        ],
+        "roofColour": "#aab0b5",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2008 (Terminal A), 2004 (Terminal B)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luxembourg_Airport",
+          "what": "Terminal A opened 2008 (old 1975 terminal demolished 2011-12), Terminal B opened 2004, footbridge link"
+        }
+      ],
+      "notes": "Dates are sourced; dimensions, glazing and colours are estimates of a modern glass-and-steel terminal. Terminal B is a smaller separate block. No brand signage."
+    },
+    "luxembourg-clinic": {
+      "venueId": "luxembourg-clinic",
+      "city": "luxembourg",
+      "name": "Centre Hospitalier de Luxembourg",
+      "archetype": "hospital",
+      "subject": "Centre Hospitalier de Luxembourg main hospital block on the Limpertsberg plateau: a large multi-wing building of pale render and concrete",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 7,
+        "height_m": 27,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e0dccf",
+          "#9a9a96",
+          "#f1efe8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s core with later extensions",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the place type and city style: the national central hospital is a large multi-block complex but no source on its appearance was fetched. Helipad and wings are plausible for a national hospital, unverified."
+    },
+    "luxembourg-community-notices": {
+      "venueId": "luxembourg-community-notices",
+      "city": "luxembourg",
+      "name": "Administration du cadastre et de la topographie",
+      "archetype": "office-low",
+      "subject": "Administration du cadastre et de la topographie: a modern four-storey government office building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 24,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#6f7c88",
+          "#f0eee8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Government survey and land-registry agency; no description found. Typed as a plain low-rise state office from city style."
+    },
+    "luxembourg-community-voting-game": {
+      "venueId": "luxembourg-community-voting-game",
+      "city": "luxembourg",
+      "name": "Château de Bettembourg",
+      "archetype": "manor",
+      "subject": "Chateau de Bettembourg: U-shaped 18th-century chateau with a stable wing and north main wing, set in a public park",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "sandstone",
+        "colours": [
+          "#e8dfc4",
+          "#b9a77e",
+          "#f3efe2"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "c.1733",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bettembourg_Castle",
+          "what": "U-shaped, south wing oldest (stables/barns), north wing later, c.1733 austere style, public park, panelling and fireplaces inside"
+        }
+      ],
+      "notes": "Source confirms the U-plan (oldest south wing = stables/barns, later north wing), c.1733 austere style and park. Facade colours, sandstone dressings and slate roof are typical of Luxembourg country houses and are an estimate. Not tall: keep plain, regular windows, no ornament. The bell-tower feature is a modest roof turret, unverified."
+    },
+    "luxembourg-community-workshop": {
+      "venueId": "luxembourg-community-workshop",
+      "city": "luxembourg",
+      "name": "Centre National de la littérature",
+      "archetype": "civic-small",
+      "subject": "Centre national de la litterature in Mersch: a rendered 19th-century townhouse-style building used as a literary archive",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "sandstone",
+        "colours": [
+          "#e6dcc2",
+          "#b9a77e",
+          "#f2eee4"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The national literature archive is in Mersch; exact building appearance not verified, so a typed small heritage-style civic house from city style."
+    },
+    "luxembourg-market-game": {
+      "venueId": "luxembourg-market-game",
+      "city": "luxembourg",
+      "name": "Centre Commercial Belle-Étoile",
+      "archetype": "mall",
+      "subject": "Centre commercial Belle-Etoile at Bertrange: a wide two-level shopping centre surrounded by surface car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "render",
+        "colours": [
+          "#c9c6bd",
+          "#7d3b2b",
+          "#e8e6e0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Large suburban mall; typed from the place type. Real colours unverified. No brand marks - blank signage board only."
+    },
+    "luxembourg-meal-stop": {
+      "venueId": "luxembourg-meal-stop",
+      "city": "luxembourg",
+      "name": "La Distillerie",
+      "archetype": "restaurant",
+      "subject": "La Distillerie: a restaurant in a stone-and-render countryside building",
+      "form": {
+        "footprint": "L",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "sandstone",
+        "colours": [
+          "#e6dcc2",
+          "#b9a77e",
+          "#f0ece2"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing verified about this building; typed as a village restaurant from city style."
+    },
+    "luxembourg-osm-node-258816379": {
+      "venueId": "luxembourg-osm-node-258816379",
+      "city": "luxembourg",
+      "name": "Château de Septfontaines",
+      "archetype": "heritage-fort",
+      "subject": "Chateau de Septfontaines (Habscht): medieval castle in the Vallee des sept chateaux, a grey stone keep and walls on a hill spur",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#a8a398",
+          "#b9a77e",
+          "#d0c7b0"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval, later rebuilt",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Ch%C3%A2teau_de_Septfontaines",
+          "what": "disambiguation: Habscht Septfontaines is a medieval castle in the Vallee des sept chateaux"
+        }
+      ],
+      "notes": "Source confirms only that it is a medieval castle (valley of seven castles). Tower, curtain wall and slate roof are typical of Luxembourg castles; actual layout unverified."
+    },
+    "luxembourg-osm-node-365760606": {
+      "venueId": "luxembourg-osm-node-365760606",
+      "city": "luxembourg",
+      "name": "Tumulus",
+      "archetype": "park-landscape",
+      "subject": "A tumulus: a grassed burial mound in woodland",
+      "form": {
+        "footprint": "round",
+        "width_m": 24,
+        "depth_m": 24,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a9a6a",
+          "#a8a398",
+          "#6f7f55"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "prehistoric or Roman",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the name 'Tumulus' is known. Show a low rounded grass mound with a few stones and a small information board; nothing more is verified."
+    },
+    "luxembourg-osm-node-4250666792": {
+      "venueId": "luxembourg-osm-node-4250666792",
+      "city": "luxembourg",
+      "name": "Guillou Campagne",
+      "archetype": "restaurant",
+      "subject": "Guillou Campagne: a countryside restaurant in a converted farmhouse",
+      "form": {
+        "footprint": "L",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "sandstone",
+        "colours": [
+          "#e8dfc4",
+          "#b9a77e",
+          "#f2eee4"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing verified; typed from city style as a rural restaurant."
+    },
+    "luxembourg-osm-node-588684577": {
+      "venueId": "luxembourg-osm-node-588684577",
+      "city": "luxembourg",
+      "name": "Vicus Ricciacus",
+      "archetype": "heritage-fort",
+      "subject": "Vicus Ricciacus: Gallo-Roman village site at Dalheim, with low excavated stone walls and a reconstructed theatre-like terraced bowl",
+      "form": {
+        "footprint": "oval",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b9a77e",
+          "#a8a398",
+          "#d0c7b0"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 3,
+          "note": "tiered terraces"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "restored arcade segments"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Roman (1st-4th century)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Known as the Gallo-Roman vicus at Dalheim (Ricciacus) with a theatre and temple; no page was fetched, so shapes are a typed ruin from the name. Low walls only, no roofs."
+    },
+    "luxembourg-osm-node-621867608": {
+      "venueId": "luxembourg-osm-node-621867608",
+      "city": "luxembourg",
+      "name": "The Bock",
+      "archetype": "heritage-fort",
+      "subject": "The Bock: the rocky sandstone promontory above the Alzette valley in Luxembourg City, with casemate openings, bastion walls and the Pont du chateau",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "stone",
+        "colours": [
+          "#b9a77e",
+          "#a8a398",
+          "#8c8576"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6,
+          "note": "casemate openings"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "10th century origin, fortified to 1867",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Luxembourg",
+          "what": "Luxembourg architecture overview: sandstone construction, Romanesque/Gothic/Baroque churches, Pont du chateau 1735 in sandstone, Mudam, Philharmonie"
+        }
+      ],
+      "notes": "A rocky outcrop crowned with ruined fortress walls; the Pont du chateau (1735) beside it is sandstone. Treat as a cliff-top of buff sandstone with wall segments and tunnel mouths. Overall shape from general knowledge, not a fetched description."
+    },
+    "luxembourg-osm-way-108752289": {
+      "venueId": "luxembourg-osm-way-108752289",
+      "city": "luxembourg",
+      "name": "Saint-Michel",
+      "archetype": "church-classical",
+      "subject": "Saint-Michel: a village parish church with a single west tower under a baroque-style slate helmet",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "render",
+        "colours": [
+          "#cdb88f",
+          "#a8a398",
+          "#e6dcc2"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Which Saint-Michel church this is was not verified; typed after the common Luxembourg village-church pattern (sandstone, tower, slate). Differs from Saint-Sebastien, which is a small chapel."
+    },
+    "luxembourg-osm-way-115712504": {
+      "venueId": "luxembourg-osm-way-115712504",
+      "city": "luxembourg",
+      "name": "Saint-Sébastien",
+      "archetype": "shrine-small",
+      "subject": "Saint-Sebastien: a small sandstone chapel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#cdb88f",
+          "#a8a398",
+          "#e6dcc2"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small roof turret"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing verified beyond the name; typed as a wayside chapel."
+    },
+    "luxembourg-osm-way-389682249": {
+      "venueId": "luxembourg-osm-way-389682249",
+      "city": "luxembourg",
+      "name": "Stade Jos Haupert",
+      "archetype": "stadium",
+      "subject": "Stade Jos Haupert: a small municipal football ground with one covered stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5b2a8",
+          "#4f6a8c",
+          "#e8e6e0"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Differdange-area municipal stadium; layout assumed (one main stand, open terrace elsewhere). Smaller than Stade de Luxembourg."
+    },
+    "luxembourg-osm-way-45252123": {
+      "venueId": "luxembourg-osm-way-45252123",
+      "city": "luxembourg",
+      "name": "Ma langue sourit",
+      "archetype": "restaurant",
+      "subject": "Ma langue sourit: a restaurant in a modest rendered building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc2",
+          "#8c4f3b",
+          "#f0ece2"
+        ],
+        "roofColour": "#a2573f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing verified; typed from city style."
+    },
+    "luxembourg-osm-way-460847721": {
+      "venueId": "luxembourg-osm-way-460847721",
+      "city": "luxembourg",
+      "name": "University of Luxembourg",
+      "archetype": "campus-block",
+      "subject": "University of Luxembourg at Belval: modern glass-and-steel campus blocks beside the preserved rust-red blast furnaces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#8c9097",
+          "#e9ecee"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2,
+          "note": "rust-red blast-furnace stacks beyond"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "General knowledge: Belval campus (Maison du Savoir etc.) is contemporary glass and steel next to the Esch-Belval blast furnaces; no source fetched, so low."
+    },
+    "luxembourg-osm-way-469054630": {
+      "venueId": "luxembourg-osm-way-469054630",
+      "city": "luxembourg",
+      "name": "Hôpital intercommunal de Steinfort",
+      "archetype": "hospital",
+      "subject": "Hopital intercommunal de Steinfort: a small regional hospital of three to four storeys",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e0dccf",
+          "#8a8f94",
+          "#f1efe8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small local hospital; appearance not verified. Smaller and lower than the Centre Hospitalier."
+    },
+    "luxembourg-osm-way-48992138": {
+      "venueId": "luxembourg-osm-way-48992138",
+      "city": "luxembourg",
+      "name": "University of Luxembourg - SnT",
+      "archetype": "campus-block",
+      "subject": "University of Luxembourg SnT on Kirchberg: a mid-rise research building of glass and metal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 28,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8c3cc",
+          "#6b7885",
+          "#e9ecee"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Interdisciplinary Centre for Security, Reliability and Trust, at Kirchberg's modern office district; appearance not verified."
+    },
+    "luxembourg-osm-way-50041968": {
+      "venueId": "luxembourg-osm-way-50041968",
+      "city": "luxembourg",
+      "name": "Place de Gand",
+      "archetype": "park-landscape",
+      "subject": "Place de Gand: a small paved urban square with trees and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a8a398",
+          "#cdb88f",
+          "#6f7f55"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small city-neighbourhood square; nothing verified."
+    },
+    "luxembourg-osm-way-526461841": {
+      "venueId": "luxembourg-osm-way-526461841",
+      "city": "luxembourg",
+      "name": "Parc Heintz",
+      "archetype": "park-landscape",
+      "subject": "Parc Heintz: a small city park with lawns, mature trees and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f7f55",
+          "#a8a398",
+          "#cdb88f"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small urban park; nothing verified."
+    },
+    "luxembourg-osm-way-707074800": {
+      "venueId": "luxembourg-osm-way-707074800",
+      "city": "luxembourg",
+      "name": "Stade de Luxembourg",
+      "archetype": "stadium",
+      "subject": "Stade de Luxembourg at Kockelscheuer: a fully roofed football bowl beside the A6 motorway",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 140,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#d3d6d8",
+          "#6b7885",
+          "#f1f1ef"
+        ],
+        "roofColour": "#aab0b5",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_de_Luxembourg",
+          "what": "9,386 capacity (15,000 concerts), fully covered seating, main stand on south side, east-west orientation beside A6, built 2017-2021, Beng Architectes with gmp Hamburg"
+        }
+      ],
+      "notes": "Sourced: capacity 9,386 (15,000 for concerts), fully covered seating, 2017-21, gmp with Beng. Facade materials, colours and dimensions are estimates of a modern compact covered bowl. Main stand on the south side."
+    },
+    "luxembourg-quiet-reflection": {
+      "venueId": "luxembourg-quiet-reflection",
+      "city": "luxembourg",
+      "name": "Notre-Dame des Mineurs",
+      "archetype": "church-modern",
+      "subject": "Notre-Dame des Mineurs: a plain 20th-century miners' parish church in the south mining basin",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d9cfae",
+          "#8c4f3b",
+          "#f0ece2"
+        ],
+        "roofColour": "#7a6f66",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named for the iron-mining community; style and form not verified. Typed as a simple industrial-town church, differing from the sandstone village churches."
+    },
+    "luxembourg-recreation": {
+      "venueId": "luxembourg-recreation",
+      "city": "luxembourg",
+      "name": "Parc Gerlache",
+      "archetype": "park-landscape",
+      "subject": "Parc Gerlache: a town park with lawns, trees and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f7f55",
+          "#a8a398",
+          "#cdb88f"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Town park in the south-west; contents of the park are assumed, not verified."
+    },
+    "luxembourg-transit": {
+      "venueId": "luxembourg-transit",
+      "city": "luxembourg",
+      "name": "Cents-Hamm",
+      "archetype": "transport-station",
+      "subject": "Cents-Hamm: a small suburban rail halt and bus stop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5b2a8",
+          "#4f6a8c",
+          "#e8e6e0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Neighbourhood transit stop in Luxembourg City; layout assumed from the place type."
+    }
+  }
+}

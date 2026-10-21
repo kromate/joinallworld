@@ -1,0 +1,1462 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dar-es-salaam",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dar-es-salaam",
+    "climate": "tropical-maritime",
+    "vernacular": "Hot humid Indian Ocean port: German-era (1890s-1916) and British-era coral-stone and rendered colonial buildings with arched verandas, Indian-style balconies and Swahili carved doors in Kisutu, Upanga and the old centre; dense 2-6 storey painted-concrete shophouses in Kariakoo; 1960s-70s modernist government blocks; new glass-and-concrete towers and malls; houses in painted render with corrugated or rust-red metal roofs.",
+    "wallColours": [
+      "#f1ece0",
+      "#e2cfa6",
+      "#d9b777",
+      "#b8c9c4",
+      "#9a9a94",
+      "#c47c5a",
+      "#e8c9a0"
+    ],
+    "roofColours": [
+      "#8c4a3a",
+      "#6f7478",
+      "#3e6b55",
+      "#a8553a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "stone",
+      "glass-curtain",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Arched verandas and pitched red roofs on German colonial buildings; carved Swahili timber doors and Indian-style timber balconies on older shophouses; louvred shutters; Gothic-revival stained glass at the Catholic and Lutheran churches; bronze monuments on stone plinths at roundabouts.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+        "what": "Old Boma (1866-67), State House, Azania Front Lutheran (1899-1902), St Joseph cathedral, Kisutu/Upanga colonial houses in Indian, Arabic and European styles; Kariakoo; tropical savanna climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kariakoo",
+        "what": "Kariakoo market (1923) and African quarter; German-era concrete housing"
+      }
+    ]
+  },
+  "places": {
+    "dar-es-salaam-airport-dar-es-salaam-airport": {
+      "venueId": "dar-es-salaam-airport-dar-es-salaam-airport",
+      "city": "dar-es-salaam",
+      "name": "Julius Nyerere International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3 (opened August 2019), the international terminal: a long modern glass-and-concrete block with a wide departures canopy and boarding bridges on the apron side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d8dde0",
+          "#8a8f94",
+          "#f0f0ee"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6,
+          "note": "count estimated"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Julius_Nyerere_International_Airport",
+          "what": "Terminal 3 opened Aug 2019 (phase I 3.5M pax); Terminal 2 reinforced concrete roofs resembling a forest canopy; photos of ATC and radar towers"
+        }
+      ],
+      "notes": "Terminal 3 is the model. Opening date and phasing sourced; dimensions and colours are estimates. Terminal 2 (domestic) has a distinctive tree-canopy concrete roof and would be a separate look if ever added."
+    },
+    "dar-es-salaam-ardhi-university": {
+      "venueId": "dar-es-salaam-ardhi-university",
+      "city": "dar-es-salaam",
+      "name": "Ardhi University",
+      "archetype": "campus-block",
+      "subject": "Ardhi University campus on Observation Hill: several two-to-four storey rendered teaching blocks around landscaped lawns",
+      "form": {
+        "footprint": "H",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#9a9a94",
+          "#3e6b55"
+        ],
+        "roofColour": "#8c4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ardhi_University",
+          "what": "urban campus on Observation Hill at Makongo, near University of Dar es Salaam; grew from Ardhi Institute 1974"
+        }
+      ],
+      "notes": "No building description found; typed institutional blocks."
+    },
+    "dar-es-salaam-askari-monument": {
+      "venueId": "dar-es-salaam-askari-monument",
+      "city": "dar-es-salaam",
+      "name": "Askari Monument",
+      "archetype": "monument",
+      "subject": "Askari Monument on the Samora Avenue roundabout: bronze African soldier with bayoneted rifle aimed at the harbour on a stone pedestal with relief plaques",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#b9b2a4",
+          "#4a3f2e",
+          "#8a8478"
+        ],
+        "roofColour": "#4a3f2e",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze askari soldier holding rifle with bayonet, facing the harbour"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stepped base"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 2,
+          "note": "two pictorial plaques (soldiers and Carrier Corps) on wide sides"
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "roundabout ring"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1927",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Askari_Monument",
+          "what": "bronze askari with bayoneted rifle by J. A. Stevenson, stone pedestal, plaques in Swahili and English, centre of roundabout on Samora Avenue, unveiled 1927"
+        }
+      ],
+      "notes": "Description sourced; statue height (about 3.5 m) and plinth (about 4 m) are estimates. The soldier is dark bronze, plinth pale stone. Stands in the middle of a traffic roundabout with palms and tall buildings around."
+    },
+    "dar-es-salaam-botanical-garden": {
+      "venueId": "dar-es-salaam-botanical-garden",
+      "city": "dar-es-salaam",
+      "name": "ex Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "Former botanical gardens beside the National Museum: lawns and mature tropical trees with paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b2a4",
+          "#9bb08a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1893",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "botanical gardens near the National Museum with tropical plants and trees"
+        }
+      ],
+      "notes": "Only a one-line source; size and layout typed. Gardens date from the German period (1890s) from general knowledge, not verified here."
+    },
+    "dar-es-salaam-clinic": {
+      "venueId": "dar-es-salaam-clinic",
+      "city": "dar-es-salaam",
+      "name": "Ocean Road Hospital",
+      "archetype": "hospital",
+      "subject": "Ocean Road Hospital on the waterfront: a long low colonial-era hospital building with verandas, founded by the Germans in 1895 and still the national cancer centre site",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#a8553a",
+          "#d9b777"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "verandas; typed from German colonial hospitals"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1895",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ocean_Road_Cancer_Institute",
+          "what": "founded 1895 by German colonial government for the German community; renamed Ocean Road Hospital after 1961"
+        }
+      ],
+      "notes": "Only history sourced (1895, German colonial); appearance is typed from colonial hospital form and the city style."
+    },
+    "dar-es-salaam-community-notices": {
+      "venueId": "dar-es-salaam-community-notices",
+      "city": "dar-es-salaam",
+      "name": "Kigamboni Municipal Council",
+      "archetype": "civic-small",
+      "subject": "Municipal council offices across the Kurasini creek: a two-storey modern rendered government office with flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#3e6b55",
+          "#f1ece0"
+        ],
+        "roofColour": "#8c4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found on the building; typed."
+    },
+    "dar-es-salaam-community-voting-game": {
+      "venueId": "dar-es-salaam-community-voting-game",
+      "city": "dar-es-salaam",
+      "name": "City Hall [9]",
+      "archetype": "civic-palace",
+      "subject": "Dar es Salaam City Hall: a formal multi-storey government building with flag mast, typed from civic-building style",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4da",
+          "#6f7478",
+          "#f1ece0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city style"
+        }
+      ],
+      "notes": "Several buildings share this name in the data (\"[9]\" is a map index). No source describes the building; typed."
+    },
+    "dar-es-salaam-community-workshop": {
+      "venueId": "dar-es-salaam-community-workshop",
+      "city": "dar-es-salaam",
+      "name": "Dar es Salaam Institute of Technology",
+      "archetype": "campus-block",
+      "subject": "DIT campus on Morogoro Road: several three-storey rendered teaching blocks with workshop sheds",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#9a9a94",
+          "#6f7478"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "workshop sheds"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam_Institute_of_Technology",
+          "what": "on Morogoro Road, Dar es Salaam Technical Institute 1957, college 1962, institute 1997"
+        }
+      ],
+      "notes": "Only history sourced; appearance typed."
+    },
+    "dar-es-salaam-kenyatta-grounds": {
+      "venueId": "dar-es-salaam-kenyatta-grounds",
+      "city": "dar-es-salaam",
+      "name": "Kenyatta Grounds",
+      "archetype": "park-landscape",
+      "subject": "Kenyatta Grounds: a broad open ground with mown grass, a few trees and a perimeter fence (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5ada0",
+          "#9bb08a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; generic urban open ground."
+    },
+    "dar-es-salaam-leaders-club": {
+      "venueId": "dar-es-salaam-leaders-club",
+      "city": "dar-es-salaam",
+      "name": "Leaders Club",
+      "archetype": "park-landscape",
+      "subject": "Leaders Club: a green sports and social club ground with a clubhouse pavilion, trees and a car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#3e6b55",
+          "#e2cfa6"
+        ],
+        "roofColour": "#8c4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "clubhouse"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found on the layout; typed from the club-ground type."
+    },
+    "dar-es-salaam-market-game": {
+      "venueId": "dar-es-salaam-market-game",
+      "city": "dar-es-salaam",
+      "name": "Kariakoo Market Cooperation",
+      "archetype": "market-hall",
+      "subject": "Kariakoo Market after the 2021 fire: the rebuilt six-storey market complex reopened in February 2026, with underground parking and a rooftop food court",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#3d5566",
+          "#c47c5a"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "rooftop food court"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1923 (rebuilt 2026)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kariakoo",
+          "what": "rebuilt six-storey complex inaugurated Feb 2026 after July 2021 fire; underground parking; rooftop food court; original market from 1923"
+        }
+      ],
+      "notes": "Storey count and amenities sourced; footprint, finishes and colours estimated. Surrounded by dense 3-5 storey shophouses in Kariakoo."
+    },
+    "dar-es-salaam-meal-stop": {
+      "venueId": "dar-es-salaam-meal-stop",
+      "city": "dar-es-salaam",
+      "name": "Akemi Revolving Restaurant",
+      "archetype": "restaurant",
+      "subject": "Revolving restaurant: a rotating glazed drum crowning a high-rise in the city centre (typed from the name)",
+      "form": {
+        "footprint": "round",
+        "width_m": 22,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8d4da",
+          "#3d5566",
+          "#e8e4da"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed drum"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city centre context"
+        }
+      ],
+      "notes": "No source found. Name implies a revolving restaurant on a rooftop; model only the restaurant drum on a short podium. Which tower it crowns is unverified."
+    },
+    "dar-es-salaam-mkapa-stadium": {
+      "venueId": "dar-es-salaam-mkapa-stadium",
+      "city": "dar-es-salaam",
+      "name": "Benjamin Mkapa Stadium",
+      "archetype": "stadium",
+      "subject": "Benjamin Mkapa National Stadium (60,000 seats, built 2005-2007 by Beijing Construction Engineering Group): a closed modern bowl with an extendable roof over the stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 250,
+        "depth_m": 220,
+        "storeys": 3,
+        "height_m": 36,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8dadc",
+          "#2f5d8a",
+          "#f0f0ee"
+        ],
+        "roofColour": "#d8dadc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "extendable roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 5,
+          "note": "five main entrances"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "parking for about 600 vehicles"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Benjamin_Mkapa_Stadium",
+          "what": "60,000 seats, extendable roof, five entrances, 600-car park, pitch 105x68 m, built 2005-2007, WMS Architects / Beijing Construction Engineering Group, USD 56M, next to Uhuru Stadium"
+        }
+      ],
+      "notes": "Facts sourced; bowl size and colours estimated. Sits directly beside the older, smaller Uhuru Stadium - keep the two visibly different."
+    },
+    "dar-es-salaam-mlimani-city": {
+      "venueId": "dar-es-salaam-mlimani-city",
+      "city": "dar-es-salaam",
+      "name": "Mlimani city",
+      "archetype": "mall",
+      "subject": "Mlimani City mall by the University of Dar es Salaam: a large air-conditioned shopping centre (30,000 m2, opened 2006) with a big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc0",
+          "#3d5566",
+          "#a8553a"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "large parking lot"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mlimani_City",
+          "what": "floor area 30,000 m2, opened Nov 2006, first indoor air-conditioned mall in Tanzania, cinema, big parking lot"
+        }
+      ],
+      "notes": "Floor area and opening sourced; storeys, footprint and colours estimated from the 30,000 m2 figure."
+    },
+    "dar-es-salaam-nafasi-art-space": {
+      "venueId": "dar-es-salaam-nafasi-art-space",
+      "city": "dar-es-salaam",
+      "name": "Nafasi Art Space",
+      "archetype": "museum-theatre",
+      "subject": "Nafasi Art Space: artists' studios and gallery in a converted warehouse with a sawtooth roof and murals (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "sawtooth"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b5ada0",
+          "#d9b777",
+          "#3e6b55"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city style"
+        }
+      ],
+      "notes": "The Wikipedia page did not exist; building history unverified. Warehouse form is a typed assumption."
+    },
+    "dar-es-salaam-national-museum": {
+      "venueId": "dar-es-salaam-national-museum",
+      "city": "dar-es-salaam",
+      "name": "National Museum of Tanzania",
+      "archetype": "museum-theatre",
+      "subject": "National Museum on Shaaban Robert Street beside the Botanical Gardens: a 1930s colonial memorial museum with a 1963 extension",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#a8553a",
+          "#d9b777"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "colonnaded veranda; assumed from period"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1934 (extension 1963)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Tanzania",
+          "what": "established 1934 as King George V memorial museum, open 1940, second building 1963, beside botanical gardens"
+        }
+      ],
+      "notes": "Only dates and location sourced; the building appearance is typed from British colonial public buildings."
+    },
+    "dar-es-salaam-open-university": {
+      "venueId": "dar-es-salaam-open-university",
+      "city": "dar-es-salaam",
+      "name": "The Open University of Tanzania",
+      "archetype": "campus-block",
+      "subject": "Open University headquarters campus: a few three-to-four storey rendered office and teaching blocks",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc0",
+          "#3d5566",
+          "#6f7478"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Open_University_of_Tanzania",
+          "what": "headquarters in Dar es Salaam"
+        }
+      ],
+      "notes": "Nothing about the buildings found; typed."
+    },
+    "dar-es-salaam-quiet-reflection": {
+      "venueId": "dar-es-salaam-quiet-reflection",
+      "city": "dar-es-salaam",
+      "name": "St. Joseph Cathedral",
+      "archetype": "church-gothic",
+      "subject": "St Joseph's Cathedral on Sokoine Drive facing the harbour: a German-built Gothic church (1897-1902) with stained-glass windows behind the altar",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efe9dc",
+          "#b9b2a4",
+          "#9a4a33"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "front tower with spire, from general knowledge, check photos"
+        },
+        {
+          "id": "stained-glass",
+          "count": 6
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "gothic-revival",
+      "era": "1897-1902",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Joseph%27s_Cathedral,_Dar_es_Salaam",
+          "what": "Gothic church built by the Germans 1897-1902, consecrated 1905, on Sokoine Drive facing the harbour, stained glass behind the altar"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "St Joseph cathedral as an early historic landmark"
+        }
+      ],
+      "notes": "Style, dates, site and stained glass sourced; materials, colours, dimensions and the single-tower spire are from general recollection and unverified. Sits near the Azania Front Lutheran church; this one has a Catholic Gothic profile with a taller spire."
+    },
+    "dar-es-salaam-recreation": {
+      "venueId": "dar-es-salaam-recreation",
+      "city": "dar-es-salaam",
+      "name": "Posta ya Zamani Park",
+      "archetype": "park-landscape",
+      "subject": "Old Post Office park in the city centre: a small paved square with trees and benches (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b2a4",
+          "#9bb08a",
+          "#ece6d8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city centre context"
+        }
+      ],
+      "notes": "Name means Old Post. Nothing found; typed small downtown park."
+    },
+    "dar-es-salaam-tandale-market": {
+      "venueId": "dar-es-salaam-tandale-market",
+      "city": "dar-es-salaam",
+      "name": "Tandale Market",
+      "archetype": "market-open",
+      "subject": "Tandale Market: a dense informal neighbourhood market of tin-roofed stalls and umbrellas on bare earth (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9a7a55",
+          "#8c4a3a",
+          "#b5ada0"
+        ],
+        "roofColour": "#8c4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city style"
+        }
+      ],
+      "notes": "Nothing found; typed as a big informal neighbourhood market, rougher and denser than Kariakoo."
+    },
+    "dar-es-salaam-transit": {
+      "venueId": "dar-es-salaam-transit",
+      "city": "dar-es-salaam",
+      "name": "Old Central Railway Station",
+      "archetype": "transport-station",
+      "subject": "Old Central Railway Station: a German-era station building with platforms and a train shed (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#a8553a",
+          "#d9b777"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "assumed; verify"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1900s-1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "German colonial-era centre"
+        }
+      ],
+      "notes": "Page fetch failed; the station is understood to be a German-era building but no source consulted. Typed."
+    },
+    "dar-es-salaam-uhuru-stadium": {
+      "venueId": "dar-es-salaam-uhuru-stadium",
+      "city": "dar-es-salaam",
+      "name": "Uhuru Stadium",
+      "archetype": "stadium",
+      "subject": "Uhuru Stadium (23,000, old national stadium beside the new one): an older concrete bowl with a covered main stand and artificial turf",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c8c4bb",
+          "#2f6b4f",
+          "#e6e1d4"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1961",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uhuru_Stadium",
+          "what": "capacity 23,000, artificial turf, year 1961 per infobox"
+        }
+      ],
+      "notes": "Capacity, surface and year only; shape typed. Deliberately older and smaller than Mkapa Stadium."
+    },
+    "dar-es-salaam-village-museum": {
+      "venueId": "dar-es-salaam-village-museum",
+      "city": "dar-es-salaam",
+      "name": "Village Museum",
+      "archetype": "park-landscape",
+      "subject": "Village Museum: an open-air compound of traditional houses from different Tanzanian peoples, mostly round or square huts with thatched roofs, arranged around shaded paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "timber",
+        "colours": [
+          "#a77d58",
+          "#7d5a3a",
+          "#d9b777"
+        ],
+        "roofColour": "#a38a54",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 12,
+          "note": "thatched huts"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1966",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "what": "city context"
+        }
+      ],
+      "notes": "Wikipedia page was not found; description is from general knowledge of the open-air museum and is unverified. Huts should vary in shape (round, rectangular, stilted) and thatch colour."
+    }
+  }
+}

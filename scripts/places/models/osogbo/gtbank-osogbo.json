@@ -1,0 +1,131 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "gtbank-osogbo",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/327544680",
+   "used": "footprint: 34 x 19 m rotated rectangle, tagged amenity=bank, containing match"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9dc",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#d98a3a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8,
+    "form": "flat",
+    "columns": 4,
+    "colour": "#d98a3a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 5.5,
+    "colour": "#d98a3a",
+    "frameColour": "#7a7a7a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "mobil-car-station-bauchi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1041738251",
+   "used": "real 25 x 9 m outline (nearest, 0.7 m) used as the open shelter footprint and its axis"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json mobil-car-station-bauchi",
+   "used": "open steel shelter, bus bays, kiosks, blank signboard, laterite forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "market-open/platform-canopy",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "height": 3.8,
+    "roof_colour": "#8d9296",
+    "wall_colour": "#a8a39a",
+    "trim_colour": "#5c5f63"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#8a4a32"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "kind": "mixed",
+    "density": 0.8,
+    "colours": [
+     "#f2efe6",
+     "#d8b13a",
+     "#a8a39a"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.8,
+    "colour": "#f2efe6",
+    "frameColour": "#8a4a32",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; shelter on OSM axis, kiosks and bays typical not observed"
+ }
+}

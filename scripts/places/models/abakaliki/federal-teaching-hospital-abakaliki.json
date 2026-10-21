@@ -1,0 +1,993 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Federal_teaching_hospital,_Abakaliki.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Hadassah Photostorie group",
+   "view": "street",
+   "used": "main entrance gateway: two teal pylons with white gable pediments joined by an arched beam, small cream-roofed guardhouse, low white walls with teal band, pedestrian arch, trees; colours"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/569464466",
+   "used": "campus is 245,000 m2 so only the entrance zone is modelled (OSM outline too large); blocks behind the gate follow the brief: white four-storey wings, entrance canopy, tank, solar"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.4,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gateL-legL",
+   "footprint": {
+    "rect": [
+     1.7,
+     1.5
+    ]
+   },
+   "at": [
+    -12.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gateL-legR",
+   "footprint": {
+    "rect": [
+     1.7,
+     1.5
+    ]
+   },
+   "at": [
+    -2.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gateL-lintel",
+   "footprint": {
+    "rect": [
+     11.399999999999999,
+     1.5
+    ]
+   },
+   "at": [
+    -7.35,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9.0,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gateL-frame2",
+   "at": [
+    -7.35,
+    0.3,
+    9.9
+   ],
+   "params": {
+    "colour": "#1db39b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12.399999999999999,
+       0.9
+      ],
+      "colour": "#1db39b"
+     },
+     {
+      "z": 2.252,
+      "rect": [
+       6.199999999999999,
+       0.9
+      ]
+     },
+     {
+      "z": 4.504,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gateL-frame1",
+   "at": [
+    -7.35,
+    0.3,
+    9.9
+   ],
+   "params": {
+    "colour": "#0f8d79",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       11.7,
+       0.9
+      ],
+      "colour": "#0f8d79"
+     },
+     {
+      "z": 2.0519999999999996,
+      "rect": [
+       5.85,
+       0.9
+      ]
+     },
+     {
+      "z": 4.103999999999999,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gateL-ped",
+   "at": [
+    -7.35,
+    -0.3,
+    9.9
+   ],
+   "params": {
+    "colour": "#f1efe8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10.899999999999999,
+       0.9
+      ],
+      "colour": "#f1efe8"
+     },
+     {
+      "z": 1.7099999999999997,
+      "rect": [
+       5.449999999999999,
+       0.9
+      ]
+     },
+     {
+      "z": 3.4199999999999995,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gateR-legL",
+   "footprint": {
+    "rect": [
+     1.7,
+     1.5
+    ]
+   },
+   "at": [
+    5.050000000000001,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gateR-legR",
+   "footprint": {
+    "rect": [
+     1.7,
+     1.5
+    ]
+   },
+   "at": [
+    12.25,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gateR-lintel",
+   "footprint": {
+    "rect": [
+     8.9,
+     1.5
+    ]
+   },
+   "at": [
+    8.65,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 7.8,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gateR-frame2",
+   "at": [
+    8.65,
+    0.3,
+    8.7
+   ],
+   "params": {
+    "colour": "#1db39b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.9,
+       0.9
+      ],
+      "colour": "#1db39b"
+     },
+     {
+      "z": 1.802,
+      "rect": [
+       4.95,
+       0.9
+      ]
+     },
+     {
+      "z": 3.604,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gateR-frame1",
+   "at": [
+    8.65,
+    0.3,
+    8.7
+   ],
+   "params": {
+    "colour": "#0f8d79",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9.200000000000001,
+       0.9
+      ],
+      "colour": "#0f8d79"
+     },
+     {
+      "z": 1.602,
+      "rect": [
+       4.6000000000000005,
+       0.9
+      ]
+     },
+     {
+      "z": 3.204,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "gateR-ped",
+   "at": [
+    8.65,
+    -0.3,
+    8.7
+   ],
+   "params": {
+    "colour": "#f1efe8",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       8.4,
+       0.9
+      ],
+      "colour": "#f1efe8"
+     },
+     {
+      "z": 1.335,
+      "rect": [
+       4.2,
+       0.9
+      ]
+     },
+     {
+      "z": 2.67,
+      "rect": [
+       0.6,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "oculus",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.25,
+      0.25
+     ]
+    },
+    "points": [
+     [
+      -9.05,
+      -1.0,
+      11.0
+     ],
+     [
+      -9.088060233744358,
+      -1.0,
+      11.191341716182546
+     ],
+     [
+      -9.196446609406728,
+      -1.0,
+      11.353553390593273
+     ],
+     [
+      -9.358658283817455,
+      -1.0,
+      11.461939766255643
+     ],
+     [
+      -9.55,
+      -1.0,
+      11.5
+     ],
+     [
+      -9.741341716182546,
+      -1.0,
+      11.461939766255643
+     ],
+     [
+      -9.903553390593274,
+      -1.0,
+      11.353553390593273
+     ],
+     [
+      -10.011939766255644,
+      -1.0,
+      11.191341716182546
+     ],
+     [
+      -10.05,
+      -1.0,
+      11.0
+     ],
+     [
+      -10.011939766255644,
+      -1.0,
+      10.808658283817454
+     ],
+     [
+      -9.903553390593274,
+      -1.0,
+      10.646446609406727
+     ],
+     [
+      -9.741341716182546,
+      -1.0,
+      10.538060233744357
+     ],
+     [
+      -9.55,
+      -1.0,
+      10.5
+     ],
+     [
+      -9.358658283817455,
+      -1.0,
+      10.538060233744357
+     ],
+     [
+      -9.196446609406728,
+      -1.0,
+      10.646446609406727
+     ],
+     [
+      -9.088060233744358,
+      -1.0,
+      10.808658283817454
+     ]
+    ],
+    "closed": true,
+    "colour": "#6f8f88"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finial0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -9.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 11.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "finial1",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8.2,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 11.0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.9,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      -3.0,
+      0,
+      9.6
+     ],
+     [
+      -1.2,
+      0,
+      11.4
+     ],
+     [
+      1.8,
+      0,
+      12.4
+     ],
+     [
+      4.4,
+      0,
+      11.4
+     ],
+     [
+      6.2,
+      0,
+      9.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guardhouse",
+   "footprint": {
+    "rect": [
+     6.2,
+     4.6
+    ]
+   },
+   "at": [
+    1.3,
+    4.0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.2,
+    "bands": "#1db39b"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#eadbb4",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gh-window-frame",
+   "footprint": {
+    "rect": [
+     1.7,
+     0.5
+    ]
+   },
+   "at": [
+    1.3,
+    1.6
+   ],
+   "rotDeg": 0,
+   "z0": 1.1,
+   "height": 1.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1db39b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "pa0",
+   "at": [
+    -3.0,
+    1.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 3.4,
+    "depth": 0.5,
+    "archWidth": 2.0,
+    "springHeight": 1.9,
+    "colour": "#0f8d79"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "pb0",
+   "at": [
+    -3.0,
+    0.6,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 3.0,
+    "depth": 0.4,
+    "archWidth": 1.3,
+    "springHeight": 1.6,
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "pa1",
+   "at": [
+    4.6,
+    1.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 3.4,
+    "depth": 0.5,
+    "archWidth": 2.0,
+    "springHeight": 1.9,
+    "colour": "#0f8d79"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "pb1",
+   "at": [
+    4.6,
+    0.6,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 3.0,
+    "depth": 0.4,
+    "archWidth": 1.3,
+    "springHeight": 1.6,
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "pa2",
+   "at": [
+    7.2,
+    1.0,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "height": 3.4,
+    "depth": 0.5,
+    "archWidth": 2.0,
+    "springHeight": 1.9,
+    "colour": "#0f8d79"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "id": "pb2",
+   "at": [
+    7.2,
+    0.6,
+    0
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 3.0,
+    "depth": 0.4,
+    "archWidth": 1.3,
+    "springHeight": 1.6,
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wallL",
+   "footprint": {
+    "rect": [
+     28,
+     0.5
+    ]
+   },
+   "at": [
+    -26,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none",
+    "bands": "#1db39b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wallR",
+   "footprint": {
+    "rect": [
+     26,
+     0.5
+    ]
+   },
+   "at": [
+    25,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d5c8",
+    "windows": "none",
+    "bands": "#1db39b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1db39b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-main",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    95
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efede4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#1db39b",
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     8
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     16
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     24
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     6,
+     22
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     26
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     10
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     22
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     34
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     36
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     38
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     46
+    ],
+    "height": 17
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     48
+    ],
+    "height": 17
+   }
+  ],
+  "extent": [
+   130,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "federal-teaching-hospital-abakaliki",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate enlarged with stepped frames, oculus, arched beam and nested pedestrian arches, but lettering, road/forecourt tones and exact tree mass are simplified; hospital block is brief-based and hidden behind trees; 245,000 m2 campus not modelled"
+ }
+}

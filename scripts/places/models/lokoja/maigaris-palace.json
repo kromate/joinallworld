@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lokoja",
+ "venueId": "maigaris-palace",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1124010126",
+   "used": "containing building outline (about 23 x 16 m) used for the audience hall"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lokoja.json",
+   "used": "walled compound, fortified mud-render gateway, crenellated parapet, pointed-arch entrance; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d7b98a",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "windowShape": "pointed",
+    "plinth": 0.5,
+    "parapet": 0.6,
+    "bands": "#f2efe6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39a",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     8,
+     20
+    ]
+   },
+   "at": [
+    24,
+    6
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#cfae7e",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "pointed",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     8,
+     20
+    ]
+   },
+   "at": [
+    -24,
+    6
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#cfae7e",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "windowShape": "pointed",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gatehouse",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -20
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d7b98a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "bands": "#7a5a3a",
+    "parapet": 0.8,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.2,
+      "spacing": 1.6,
+      "colour": "#7a5a3a",
+      "margin": 1.0,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39a",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    0,
+    -23.2,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 5,
+    "thickness": 1.0,
+    "opening": 3,
+    "shape": "pointed",
+    "finials": true,
+    "colour": "#d7b98a",
+    "trim": "#7a5a3a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    -5,
+    -20,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 25,
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#d7b98a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 25,
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#d7b98a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    -28,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#d7b98a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    28,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 40,
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#d7b98a"
+   }
+  },
+  {
+   "type": "crenellated-wall",
+   "at": [
+    -28,
+    20,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 3.0,
+    "thickness": 0.6,
+    "colour": "#d7b98a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    6,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   80
+  ],
+  "forecourtDepth": 8
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; compound wall corners leave small gaps; hall uses OSM outline, gate relief and interior layout are assumed"
+ }
+}

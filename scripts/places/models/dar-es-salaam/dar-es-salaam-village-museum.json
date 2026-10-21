@@ -1,0 +1,786 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-village-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nyakyusa_Village_at_Kijiji_Cha_Makumbusho,_Mikocheni,_Kinondoni_MC,_Dar_es_Salaam.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mangapwani",
+   "view": "street",
+   "file": "/tmp/places-evidence/dar-es-salaam/dsm-vm1.jpg",
+   "used": "courtyard of red-brown earth: round conical thatched hut with low bamboo walls in the middle, flanking gabled thatched huts, bamboo fence rails, big shade trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Makumbusho_ya_Taifa_Village_Museum_(34925722455).jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Stanley",
+   "view": "side",
+   "file": "/tmp/places-evidence/dar-es-salaam/dsm-vm2.jpg",
+   "used": "long low mud-walled house with grey thatch beside a reed-walled hut, pale sandy ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nyakyusa_House,_Kijiji_Cha_Makumbusho,_Mikocheni,_Kinondoni_MC,_Dar_es_Salaam.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mangapwani",
+   "view": "side",
+   "file": "/tmp/places-evidence/dar-es-salaam/dsm-vm3.jpg",
+   "used": "bamboo-walled gabled house colour, grey thatch roof with large overhang"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1252289621",
+   "used": "only one 18 x 10 m building is mapped; not used, huts placed from photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 52,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.12,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bamboo-house",
+   "footprint": {
+    "rect": [
+     5.5,
+     11
+    ]
+   },
+   "at": [
+    -6.0,
+    1.0
+   ],
+   "rotDeg": 0,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8bd72",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0a68a",
+    "material": "thatch",
+    "pitch": 36,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "timber-house",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    7.0,
+    2.5
+   ],
+   "rotDeg": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a36",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0a68a",
+    "material": "thatch",
+    "pitch": 34,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0.0,
+    3.0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#d2b66e"
+     ],
+     [
+      2.8,
+      0,
+      "#d2b66e"
+     ],
+     [
+      2.8,
+      1.6,
+      "#d2b66e"
+     ],
+     [
+      3.9,
+      1.5,
+      "#b7ad8c"
+     ],
+     [
+      1.8,
+      4.4,
+      "#c0b794"
+     ],
+     [
+      0.0,
+      6.6,
+      "#c0b794"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "long-house",
+   "footprint": {
+    "rect": [
+     15,
+     5.5
+    ]
+   },
+   "at": [
+    -15.0,
+    -11.0
+   ],
+   "rotDeg": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8bd72",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0a68a",
+    "material": "thatch",
+    "pitch": 30,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2.0,
+    -13.0,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#d2b66e"
+     ],
+     [
+      2.8,
+      0,
+      "#d2b66e"
+     ],
+     [
+      2.8,
+      1.6,
+      "#d2b66e"
+     ],
+     [
+      3.9,
+      1.5,
+      "#b7ad8c"
+     ],
+     [
+      1.8,
+      4.4,
+      "#c0b794"
+     ],
+     [
+      0.0,
+      6.6,
+      "#c0b794"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reed-hut",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    20.0,
+    -2.0
+   ],
+   "rotDeg": 0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8bd72",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b0a68a",
+    "material": "thatch",
+    "pitch": 45,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ]
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#6f9a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -20,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      24,
+      0
+     ],
+     [
+      24,
+      10
+     ],
+     [
+      0,
+      10
+     ]
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#6f9a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      22,
+      0
+     ],
+     [
+      22,
+      8
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#6f9a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -12,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      22,
+      0
+     ],
+     [
+      22,
+      8
+     ],
+     [
+      0,
+      8
+     ]
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#6f9a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    -8,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      10,
+      0
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      0,
+      6
+     ]
+    ],
+    "z0": 0,
+    "height": 0.06,
+    "colour": "#6f9a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.8,
+    -0.4,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      1.6,
+      0
+     ],
+     [
+      1.6,
+      0.3
+     ],
+     [
+      0,
+      0.3
+     ]
+    ],
+    "z0": 0,
+    "height": 1.7,
+    "colour": "#2b1f17"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      0.12
+     ],
+     [
+      0,
+      0.12
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      0.12
+     ],
+     [
+      0,
+      0.12
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      0.12
+     ],
+     [
+      0,
+      0.12
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      0.12
+     ],
+     [
+      0,
+      0.12
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      0.12,
+      0
+     ],
+     [
+      0.12,
+      0.12
+     ],
+     [
+      0,
+      0.12
+     ]
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -10,
+    0.5
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      32,
+      0
+     ],
+     [
+      32,
+      0.08
+     ],
+     [
+      0,
+      0.08
+     ]
+    ],
+    "z0": 0.5,
+    "height": 0.08,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -10,
+    1.1
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      32,
+      0
+     ],
+     [
+      32,
+      0.08
+     ],
+     [
+      0,
+      0.08
+     ]
+    ],
+    "z0": 1.1,
+    "height": 0.08,
+    "colour": "#c8a55a"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#7f9a4a"
+     ],
+     [
+      0.18,
+      0,
+      "#7f9a4a"
+     ],
+     [
+      0.18,
+      2.2,
+      "#7f9a4a"
+     ],
+     [
+      1.9,
+      2.5,
+      "#8fc24f"
+     ],
+     [
+      1.6,
+      3.2,
+      "#8fc24f"
+     ],
+     [
+      0,
+      3.6,
+      "#8fc24f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -16,
+    -8,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "profile": [
+     [
+      0.01,
+      0,
+      "#7f9a4a"
+     ],
+     [
+      0.18,
+      0,
+      "#7f9a4a"
+     ],
+     [
+      0.18,
+      2.2,
+      "#7f9a4a"
+     ],
+     [
+      1.9,
+      2.5,
+      "#8fc24f"
+     ],
+     [
+      1.6,
+      3.2,
+      "#8fc24f"
+     ],
+     [
+      0,
+      3.6,
+      "#8fc24f"
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     14
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     15
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     0
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Bamboo cane cladding and diamond lattice only as plain tan walls; grass verges are flat green patches; banana plants simplified to cones; layout invented around the huts seen in the photos."
+ }
+}

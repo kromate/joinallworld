@@ -1,0 +1,1670 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sydney",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sydney",
+    "climate": "temperate",
+    "vernacular": "Sandstone-and-brick harbour city: honey-yellow Sydney sandstone Georgian and Victorian public buildings; red-brick Federation houses and Victorian terraces with iron-lace verandahs and terracotta-tile roofs; inter-war cream-render bungalows; post-war brown-brick walk-ups and exposed-concrete campus blocks; glass-and-render shopping centres and glass towers. Grey Colorbond metal roofs on newer buildings; eucalypt bushland, jacaranda and fig trees.",
+    "wallColours": [
+      "#c9a36b",
+      "#a4533a",
+      "#e6dcc6",
+      "#f2f0ea",
+      "#8c7a68",
+      "#b9b2a6",
+      "#6f7479"
+    ],
+    "roofColours": [
+      "#b5532f",
+      "#6e7378",
+      "#4a4d52",
+      "#8c8f93"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "sandstone",
+      "render",
+      "painted-render",
+      "glass-curtain",
+      "exposed-concrete",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "corrugated",
+      "slate",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Cast-iron lace verandah balconies and terrace railings; Federation timber fretwork, gable ends and red-brick banding; sandstone ashlar with Second Empire mansard roofs and pedimented entries on civic buildings; terracotta Marseille tiles; face-brick walk-ups with ribbon windows.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Sydney",
+        "what": "Sydney sandstone for Victorian public buildings, brick, timber weatherboards, cast-iron lace, Federation Queen Anne and Californian Bungalow styles, post-war concrete"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sydney_Town_Hall",
+        "what": "yellowblock sandstone, slate mansard roofs, Second Empire civic style"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Macquarie_University",
+        "what": "Brutalist concrete academic core set in bushland and lawns"
+      }
+    ]
+  },
+  "places": {
+    "sydney-airport-sydney-airport": {
+      "venueId": "sydney-airport-sydney-airport",
+      "city": "sydney",
+      "name": "Sydney Kingsford Smith Airport, Terminal 1 (International)",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 international terminal seen from the departures forecourt: a long three-level glass-fronted terminal with piers running out to aerobridge gates and the heritage-listed control tower nearby",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 380,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "international-with-piers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d2d6",
+          "#55656f",
+          "#eceeed"
+        ],
+        "roofColour": "#aeb3b6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 25,
+          "note": "13 gates on Pier B, 12 on Pier C"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "1996 tower N-E of the terminal"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1970 opened, 2010 redevelopment",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sydney_Kingsford_Smith_Airport",
+          "what": "T1 opened 1970, three levels (arrivals, departures, airline offices), 25 aerobridge gates on Piers B and C, 254,000 m2 after 2010 redevelopment; 1996 control tower"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13594723",
+          "what": "OSM footprint 745 x 486.7 m (measured), levels 4"
+        }
+      ],
+      "notes": "Gate count, levels and tower date are sourced; the facade colours and glass treatment are typical of the 2010 redevelopment and not confirmed by a description. OSM footprint (745 x 487 m) is the whole terminal including piers; the model shows the central terminal portion."
+    },
+    "sydney-clinic": {
+      "venueId": "sydney-clinic",
+      "city": "sydney",
+      "name": "Hornsby Ku-ring-gai Hospital",
+      "archetype": "hospital",
+      "subject": "Hornsby Hospital: a large campus of mid-rise ward blocks with a newer pale clinical building and covered entrance at the front",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d2c3",
+          "#8c6f55",
+          "#9fb3bd"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s to 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/69548890",
+          "what": "OSM footprint 335.4 x 198.5 m (measured)"
+        }
+      ],
+      "notes": "No description of the buildings was retrieved (web search budget was exhausted). Typed from the OSM campus footprint (335 x 199 m, hospital) and the usual NSW public hospital: render and brick ward blocks. Treat as generic."
+    },
+    "sydney-community-notices": {
+      "venueId": "sydney-community-notices",
+      "city": "sydney",
+      "name": "Centrelink service centre",
+      "archetype": "office-low",
+      "subject": "A small two-storey government service-centre office, rotated on its block, with a glazed entrance and blank signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a4533a",
+          "#d9d2c3",
+          "#6e7378"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522791499",
+          "what": "OSM footprint 34.4 x 25.1 m (measured)"
+        }
+      ],
+      "notes": "OSM shows a 34 x 25 m office building only. The look is a guess from a typical suburban Australian agency office."
+    },
+    "sydney-community-voting-game": {
+      "venueId": "sydney-community-voting-game",
+      "city": "sydney",
+      "name": "Sydney Town Hall",
+      "archetype": "civic-palace",
+      "subject": "Sydney Town Hall on George Street: a sandstone Second Empire civic hall with a tall clock tower, corner pavilions and mansard roofs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 96,
+        "depth_m": 56,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "mansard",
+        "variant": "second-empire",
+        "wings": 2
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "stone",
+        "colours": [
+          "#c9a36b",
+          "#b08a55",
+          "#d9c9a6"
+        ],
+        "roofColour": "#4a4d52",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central tower completed 1873, clock 1884; about 75 m"
+        },
+        {
+          "id": "pediment",
+          "count": 2
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "pedimented breakfront entries on George St"
+        },
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "domed corner pavilions"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched upper balconies"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1868-1889",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sydney_Town_Hall",
+          "what": "Second Empire style, Sydney yellowblock sandstone, slate mansard roofs and curved-roof pavilions, clock tower 1873/1884, Centennial Hall 1889, foundation 1868 by Prince Alfred"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/104948253",
+          "what": "OSM footprint 96.4 x 56.1 m (measured), levels 4"
+        }
+      ],
+      "notes": "Style, materials and tower dates sourced from Wikipedia; tower height (~75 m) is from general knowledge. Facade colour: honey-yellow sandstone. OSM footprint 96 x 56 m, four levels."
+    },
+    "sydney-community-workshop": {
+      "venueId": "sydney-community-workshop",
+      "city": "sydney",
+      "name": "Western Sydney University, Parramatta South Campus",
+      "archetype": "campus-block",
+      "subject": "The Parramatta South campus core around the old Georgian Female Orphan School: a brick-and-sandstone hip-roofed block among lawns and mature trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "sandstone",
+        "colours": [
+          "#b57a55",
+          "#d4c3a0",
+          "#f2f0ea"
+        ],
+        "roofColour": "#8a6a58",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1818 original, later additions",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/202232454",
+          "what": "OSM footprint 45.4 x 24.2 m (measured)"
+        }
+      ],
+      "notes": "OSM building is 45 x 24 m tagged university/social_centre. That the campus contains the 1818 Female Orphan School (Georgian, brick) is from general knowledge and could not be re-verified; the exact building this footprint matches is uncertain."
+    },
+    "sydney-market-game": {
+      "venueId": "sydney-market-game",
+      "city": "sydney",
+      "name": "Westfield Eastgardens",
+      "archetype": "mall",
+      "subject": "Westfield Eastgardens: a very large two-level shopping centre with long pale render walls, a glazed entrance and rooftop car parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "regional-centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#8c7a68",
+          "#b9b2a6"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1987 opened, expanded 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/45492049",
+          "what": "OSM footprint 365.3 x 229.1 m (measured)"
+        }
+      ],
+      "notes": "OSM footprint 365 x 229 m is far above the 120 m clamp, so the model shows the main entrance portion. Appearance is typical of Westfield regional centres, not confirmed."
+    },
+    "sydney-meal-stop": {
+      "venueId": "sydney-meal-stop",
+      "city": "sydney",
+      "name": "Doyles on the Beach, Watsons Bay",
+      "archetype": "restaurant",
+      "subject": "Doyles on the Beach: a low white beachfront seafood restaurant with deep verandah, facing the harbour sand at Watsons Bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2f0ea",
+          "#3f6f8a",
+          "#8c7a68"
+        ],
+        "roofColour": "#a4533a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "adjacent Watsons Bay wharf"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "est. 1885, rebuilt several times",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1034473941",
+          "what": "OSM footprint 42.4 x 26.2 m (measured)"
+        }
+      ],
+      "notes": "OSM footprint 42 x 26 m, restaurant. Colours and form are from memory of the beachfront restaurant, unverified. Recognisable by its harbour-beach setting with the city skyline across the water."
+    },
+    "sydney-osm-node-2052073022": {
+      "venueId": "sydney-osm-node-2052073022",
+      "city": "sydney",
+      "name": "Cemetery Station No. 1 (ruins)",
+      "archetype": "transport-station",
+      "subject": "The ruined first Rookwood cemetery railway station: a low sandstone platform and footings in bushland",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#b9a07a",
+          "#8c7a68",
+          "#6f6a60"
+        ],
+        "roofColour": "#8c7a68",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "collapsed; only footings"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "victorian",
+      "era": "1860s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/194704016",
+          "what": "OSM footprint 31.2 x 15.3 m (measured)"
+        }
+      ],
+      "notes": "OSM tags it historic=ruins with a 31 x 15 m footprint; the Wikidata label says it is a railway station. No visual description was found; shown as weathered stone footings."
+    },
+    "sydney-osm-relation-7987675": {
+      "venueId": "sydney-osm-relation-7987675",
+      "city": "sydney",
+      "name": "Boronia House, Mosman",
+      "archetype": "manor",
+      "subject": "Boronia House, a former Mosman residence: a two-storey Victorian-Federation villa with a verandah and hip roof in a garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "brick",
+        "colours": [
+          "#c9a36b",
+          "#a4533a",
+          "#f2f0ea"
+        ],
+        "roofColour": "#a4533a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "iron-lace verandah"
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "late 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/7987675",
+          "what": "OSM footprint 25.2 x 18.9 m (measured)"
+        }
+      ],
+      "notes": "Only the OSM footprint (25 x 19 m, historic building) and a Wikidata label (former residence, Mosman) were found; materials and style are typed from Mosman heritage villas."
+    },
+    "sydney-osm-way-1075245506": {
+      "venueId": "sydney-osm-way-1075245506",
+      "city": "sydney",
+      "name": "Oatley Park",
+      "archetype": "park-landscape",
+      "subject": "Oatley Park on the Georges River: bushland slopes, picnic lawns and the small crenellated stone Oatley Castle lookout",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "bush-park"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#b9a07a",
+          "#8c7a68",
+          "#7c9a6a"
+        ],
+        "roofColour": "#8c7a68",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "small Depression-era stone castle lookout"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1930s works",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1075245506",
+          "what": "OSM footprint 1164.3 x 711 m (measured)"
+        }
+      ],
+      "notes": "OSM park 1164 x 711 m. The castle detail is from general knowledge and not verified here; treat the park as eucalypt bush with a river foreshore."
+    },
+    "sydney-osm-way-1126413889": {
+      "venueId": "sydney-osm-way-1126413889",
+      "city": "sydney",
+      "name": "Lakemba Mosque (Imam Ali bin Abi Talib Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "Lakemba Mosque on Wangee Road: a cream-white mosque with one central dome and three minarets, the main Sunni mosque of Sydney",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 42,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "variant": "one-dome-three-minarets",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2ede0",
+          "#2f7a5a",
+          "#c9a36b"
+        ],
+        "roofColour": "#d9d2c3",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 3,
+          "note": "height not sourced; about 30 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1977",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lakemba_Mosque",
+          "what": "one dome, three minarets, completed 1977 after about five years"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1126413889",
+          "what": "OSM footprint 79.6 x 63.6 m (measured)"
+        }
+      ],
+      "notes": "Dome and minaret counts and the 1977 date are sourced. Colours (cream walls, green accent) and minaret height are from memory and not confirmed. OSM footprint 80 x 64 m covers the whole complex; the prayer hall is smaller."
+    },
+    "sydney-osm-way-130512350": {
+      "venueId": "sydney-osm-way-130512350",
+      "city": "sydney",
+      "name": "Hazelhurst Regional Gallery and Arts Centre",
+      "archetype": "museum-theatre",
+      "subject": "Hazelhurst gallery complex in Gymea: low modern galleries and studios set in 1.4 ha of gardens with an earlier two-storey cottage",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "gallery-in-garden",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc6",
+          "#7c6a58",
+          "#9fb3bd"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hazelhurst_Regional_Gallery_and_Arts_Centre",
+          "what": "opened 22 Jan 2000; two galleries, theatrette, studios, cafe; gardens 1.4 ha; 1945-era two-storey cottage"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/130512350",
+          "what": "OSM footprint 126.6 x 121 m (measured)"
+        }
+      ],
+      "notes": "Opening date, programme and gardens are sourced. The facade materials and colours are not described in the source and are a guess."
+    },
+    "sydney-osm-way-1451898197": {
+      "venueId": "sydney-osm-way-1451898197",
+      "city": "sydney",
+      "name": "Oxford Falls Peace Park",
+      "archetype": "park-landscape",
+      "subject": "Oxford Falls Peace Park: a small bush park and events venue with lawn, a pavilion and sandstone-edged paths in eucalypt forest",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "bush-clearing"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8c7a68",
+          "#b9a07a",
+          "#7c9a6a"
+        ],
+        "roofColour": "#6e7378",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "peace monument, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1451898197",
+          "what": "OSM footprint 76.2 x 62.1 m (measured)"
+        }
+      ],
+      "notes": "Only the OSM footprint (76 x 62 m, park/events venue) exists. Contents are generic for a bush clearing park."
+    },
+    "sydney-osm-way-19234830": {
+      "venueId": "sydney-osm-way-19234830",
+      "city": "sydney",
+      "name": "Westfield Burwood",
+      "archetype": "mall",
+      "subject": "Westfield Burwood: a long four-level shopping centre with white render and glass frontage over a podium car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceeed",
+          "#6f7479",
+          "#c9d2d6"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s to 2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/19234830",
+          "what": "OSM footprint 282.4 x 103.1 m (measured), levels 4"
+        }
+      ],
+      "notes": "OSM: 282 x 103 m, four levels. Look is typical of a Westfield urban centre; unverified."
+    },
+    "sydney-osm-way-207693612": {
+      "venueId": "sydney-osm-way-207693612",
+      "city": "sydney",
+      "name": "Macquarie University, academic core",
+      "archetype": "campus-block",
+      "subject": "Macquarie University central academic block: stacked exposed-concrete Brutalist floors with deep window bands, set on lawn and bushland",
+      "form": {
+        "footprint": "rect",
+        "width_m": 104,
+        "depth_m": 45,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "variant": "brutalist-slab"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b2a6",
+          "#8c7a68",
+          "#6f7479"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1960s-70s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Macquarie_University",
+          "what": "academic core designed in the Brutalist style by Walter Abraham, 126 ha of lawns and bushland; library C3C 2011"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/141281549",
+          "what": "OSM footprint 104.2 x 44.9 m (measured), levels 8"
+        }
+      ],
+      "notes": "Brutalist style and bushland setting are sourced. The footprint (104 x 45 m, eight levels) is the OSM university building; colours are a guess from raw concrete."
+    },
+    "sydney-osm-way-273864558": {
+      "venueId": "sydney-osm-way-273864558",
+      "city": "sydney",
+      "name": "St George Hospital",
+      "archetype": "hospital",
+      "subject": "St George Hospital in Kogarah: the 2017 nine-level Acute Services Building built above the Emergency Department beside the older tower ward block",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 9,
+        "height_m": 38,
+        "roof": "flat",
+        "variant": "acute-services-tower",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#d9d2c3",
+          "#6f7479",
+          "#9fb3bd"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1894 founded, 2017 Acute Services Building",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_George_Hospital,_Sydney",
+          "what": "A$277m Acute Services Building 2017, nine levels, above the 24-hour ED; early-1970s tower ward block; helipad"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/273908629",
+          "what": "OSM footprint 119.9 x 118.4 m (measured)"
+        }
+      ],
+      "notes": "Levels, dates and helipad are sourced; materials and colours of the new block are a guess."
+    },
+    "sydney-osm-way-309039664": {
+      "venueId": "sydney-osm-way-309039664",
+      "city": "sydney",
+      "name": "Castle Towers",
+      "archetype": "mall",
+      "subject": "Castle Towers in Castle Hill: a three-level regional shopping centre with piazza entrance and large rooftop and structured car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "regional-centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc6",
+          "#8c7a68",
+          "#6f7479"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 3,
+          "note": "over 5,000 spaces"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1982 opened, extended to 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Castle_Towers",
+          "what": "three floors, about 117,700 m2 lettable, opened Oct 1982, over 5,000 parking spaces, 2019 level-1 expansion"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/309039664",
+          "what": "OSM footprint 543.9 x 214.8 m (measured), levels 6"
+        }
+      ],
+      "notes": "Levels, size and parking are sourced. OSM footprint 544 x 215 m is clamped; colours are typical and unconfirmed."
+    },
+    "sydney-osm-way-4385854": {
+      "venueId": "sydney-osm-way-4385854",
+      "city": "sydney",
+      "name": "ENGIE Stadium (Sydney Showground Stadium)",
+      "archetype": "stadium",
+      "subject": "Sydney Showground Stadium at Olympic Park: a 23,500-seat bowl with covered grandstands wrapping the south-west side and a big video screen at the north-east end",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "partial-roof-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d2c3",
+          "#f28a1e",
+          "#6f7479"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "LED, replaced 2024"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "video screen at the NE end"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1998, upgraded 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sydney_Showground_Stadium",
+          "what": "capacity 23,500; main grandstand on the SW half of the field plus side stands; 1998 and 2012 stands; one video screen at NE end; Populous 2012 redevelopment; LED lights 2024"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/4385854",
+          "what": "OSM footprint 262.6 x 235 m (measured)"
+        }
+      ],
+      "notes": "Layout is sourced. Roof shape and colours (orange accent for the home club) are from memory. Pitch is 164 x 128 m; OSM outline 263 x 235 m."
+    },
+    "sydney-osm-way-5310699": {
+      "venueId": "sydney-osm-way-5310699",
+      "city": "sydney",
+      "name": "Leichhardt Oval",
+      "archetype": "stadium",
+      "subject": "Leichhardt Oval in Lilyfield: a compact 20,000-capacity suburban rugby league ground with old-school low stands, grass banks and light towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed",
+        "variant": "suburban-oval"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d9d2c3",
+          "#2a2a2a",
+          "#f28a1e"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "Keith Barnes and Norm Robinson Stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1934, rebuilt 1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Leichhardt_Oval",
+          "what": "nominal capacity 20,000, opened 1934, Keith Barnes and Norm Robinson Stands, 1970s overhaul, antiquated facilities"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/5310699",
+          "what": "OSM footprint 210.9 x 205.5 m (measured)"
+        }
+      ],
+      "notes": "Name, capacity, stands and date are sourced. Roof detail and club colours (black and orange) are from memory and unconfirmed."
+    },
+    "sydney-osm-way-548322850": {
+      "venueId": "sydney-osm-way-548322850",
+      "city": "sydney",
+      "name": "Al-Zahra Mosque, Arncliffe",
+      "archetype": "mosque-domed",
+      "subject": "Al-Zahra Mosque: a small two-level Shia mosque in Iranian style with a dome and a pair of minarets on a suburban street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome",
+        "variant": "single-dome-persian"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f2ede0",
+          "#2f7aa6",
+          "#c9a36b"
+        ],
+        "roofColour": "#2f7aa6",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "count not verified"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "persian",
+      "era": "1980",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/548322850",
+          "what": "OSM footprint 29.3 x 25.2 m (measured), levels 2"
+        }
+      ],
+      "notes": "Only OSM data (29 x 25 m, two levels, started 1980, Shia) and a Wikidata style tag (architecture of Iran) were found. Blue tile accents are an assumption from Persian-style mosques."
+    },
+    "sydney-osm-way-610927146": {
+      "venueId": "sydney-osm-way-610927146",
+      "city": "sydney",
+      "name": "University of New South Wales, Kensington campus",
+      "archetype": "campus-block",
+      "subject": "UNSW lower campus: mid-century brick teaching blocks and later exposed-concrete and glass buildings around the central lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#a4533a",
+          "#b9b2a6",
+          "#6f7479"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_New_South_Wales",
+          "what": "Old Main Building opened 1955, Roundhouse 1961, quadrangle, lower and upper campus split by a rise"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/610927146",
+          "what": "OSM footprint 169.6 x 127.5 m (measured)"
+        }
+      ],
+      "notes": "Wikipedia confirms the campus layout and dates but not materials. Brick plus concrete is a typical mid-century university guess. OSM outline is the whole campus (170 x 128 m)."
+    },
+    "sydney-osm-way-666183098": {
+      "venueId": "sydney-osm-way-666183098",
+      "city": "sydney",
+      "name": "Endeavour Field (Ocean Protect Stadium), Woolooware",
+      "archetype": "stadium",
+      "subject": "Cronulla rugby league ground at Woolooware: a small grassed stadium with a covered main stand on one side and open terraces elsewhere",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed",
+        "variant": "suburban-oval"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d2c3",
+          "#3f8fbf",
+          "#6f7479"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s redevelopment",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/149721348",
+          "what": "OSM footprint 137.4 x 83.9 m (measured)"
+        }
+      ],
+      "notes": "Only OSM (a pitch, 137 x 84 m) and a Wikidata label (rugby league stadium in Woolooware) were found. Appearance is a generic guess."
+    },
+    "sydney-quiet-reflection": {
+      "venueId": "sydney-quiet-reflection",
+      "city": "sydney",
+      "name": "Newtown Mission Uniting Church",
+      "archetype": "church-gothic",
+      "subject": "Newtown Mission church on King Street: a modest two-level gabled church building hard against the shopfronts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable",
+        "variant": "street-chapel"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#a4533a",
+          "#e6dcc6",
+          "#6f7479"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "19th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/548526874",
+          "what": "OSM footprint 25 x 16 m (measured), levels 2"
+        }
+      ],
+      "notes": "OSM tags: church, two levels, gabled roof, 25 x 16 m. Wikidata calls it Newtown Mission Uniting Church. Brick and Gothic windows are an assumption for an inner-west Sydney Victorian church."
+    },
+    "sydney-recreation": {
+      "venueId": "sydney-recreation",
+      "city": "sydney",
+      "name": "Hurstville Oval",
+      "archetype": "park-landscape",
+      "subject": "Hurstville Oval: a suburban sports ground with a small grandstand, perimeter fence and mature trees",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "sports-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2c3",
+          "#8c7a68",
+          "#7c9a6a"
+        ],
+        "roofColour": "#6e7378",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/17499261",
+          "what": "OSM footprint 173.6 x 158.5 m (measured)"
+        }
+      ],
+      "notes": "OSM park/sports ground 174 x 159 m; nothing else found, so a generic oval with a pavilion."
+    },
+    "sydney-transit": {
+      "venueId": "sydney-transit",
+      "city": "sydney",
+      "name": "St Leonards station",
+      "archetype": "transport-station",
+      "subject": "St Leonards railway station building: a small service structure beside the platforms and the busy Pacific Highway crossing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b2a6",
+          "#6f7479",
+          "#d9d2c3"
+        ],
+        "roofColour": "#6e7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1900 opened, rebuilt later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/595660904",
+          "what": "OSM footprint 36.2 x 29.1 m (measured)"
+        }
+      ],
+      "notes": "OSM shows only a 36 x 29 m service building near the station; look is typed from a generic Sydney suburban rail station."
+    }
+  }
+}

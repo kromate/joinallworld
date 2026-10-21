@@ -1,0 +1,265 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bauchi_State_University.jpg",
+   "licence": "CC0",
+   "author": "M Bash Ne",
+   "view": "street",
+   "file": "/tmp/places-evidence/bauchi/uni.jpg",
+   "used": "entrance only: wide road split by a red-laterite island with a small flat-roofed cream guard booth, low peach-cream curved boundary walls with square pillars, rows of green trees; the lecture blocks are not visible"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1040801846",
+   "used": "nearest-quality match (18 m): L-shaped 33 x 12 m outline used only as a size cross-check"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 55,
+  "aspect": 1.4,
+  "margin": 0.1,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lecture-main",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bands": "#3f8f9a",
+    "plinth": 0.5,
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#f2efe6",
+      "#dfe3dc"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-wing",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    -16,
+    -4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#3f8f9a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -4,
+    2,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "count": 8,
+    "height": 3.2,
+    "radius": 0.2,
+    "colour": "#a8a39a",
+    "roofColour": "#3f8f9a",
+    "roofDepth": 2.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#f2efe6",
+    "frameColour": "#3f8f9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "island",
+   "footprint": {
+    "rect": [
+     8,
+     30
+    ]
+   },
+   "at": [
+    16,
+    -34
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0563a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0563a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-booth",
+   "footprint": {
+    "rect": [
+     3.5,
+     3
+    ]
+   },
+   "at": [
+    16,
+    -34
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -44,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.4,
+    "thickness": 0.4,
+    "colour": "#e8c9a0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.4,
+    "thickness": 0.4,
+    "colour": "#e8c9a0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -10,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#d0d0d0",
+    "count": 4,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Photo shows only the campus entrance; lecture block form and colours are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "bauchi-state-university-bauchi"
+}

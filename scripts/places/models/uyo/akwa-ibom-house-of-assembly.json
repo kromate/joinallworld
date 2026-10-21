@@ -1,0 +1,243 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/uyo.json",
+   "used": "civic brief: broad white three-storey U-plan block, central portico, low chamber dome, flag-lined forecourt, perimeter wall and gate"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9318370",
+   "used": "context only: containing building, complex outline too irregular to trust (159x124 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b8a77c",
+    "cornice": true,
+    "plinth": 0.6,
+    "bay": 6.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     24,
+     34
+    ]
+   },
+   "at": [
+    -33,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b8a77c",
+    "cornice": true,
+    "plinth": 0.6,
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     24,
+     34
+    ]
+   },
+   "at": [
+    33,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#b8a77c",
+    "cornice": true,
+    "plinth": 0.6,
+    "bay": 6.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 6,
+    "height": 12,
+    "columns": 6,
+    "steps": 6,
+    "colour": "#ffffff",
+    "roofColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "on": "centre",
+   "params": {
+    "radius": 9,
+    "profile": "hemi",
+    "drum": 3,
+    "lantern": 1.5,
+    "finial": 2,
+    "colour": "#e9e4d6",
+    "drumColour": "#f7f4ee"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -22,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 14,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -45,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 2,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#f0ece0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.6,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 6,
+    "spread": 80
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; white render, portico and dome typed from brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "akwa-ibom-house-of-assembly"
+}

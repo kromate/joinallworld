@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "cchub",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief: 294 Herbert Macaulay Way, Yaba, opened 2011; no photo or outline found, so a modest 4-storey open-plan hub block typical of Yaba."
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     28,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f1ea",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#f4f1ea",
+       "#e3e5e7"
+      ]
+     },
+     {
+      "type": "bands",
+      "colour": "#e8a33a",
+      "height": 1.0,
+      "floors": "upper",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "windowShape": "rect"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "material": "membrane",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-ground",
+   "footprint": {
+    "rect": [
+     24,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5b6670",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6670",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-core",
+   "footprint": {
+    "rect": [
+     5,
+     8
+    ]
+   },
+   "at": [
+    17,
+    3
+   ],
+   "z0": 0,
+   "height": 15.8,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3e5e7",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -10.3,
+    15.2
+   ],
+   "params": {
+    "width": 14,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#e8a33a",
+    "posts": false
+   }
+  },
+  {
+   "type": "roof-terrace",
+   "at": [
+    -4,
+    3,
+    15
+   ],
+   "params": {
+    "width": 12,
+    "depth": 7,
+    "tables": 3,
+    "pergola": true,
+    "glass": true,
+    "bar": true
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -15.6,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16.8,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-canopy",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "z0": 3.4,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a33a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8a33a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo: compact 28x20 m white/grey block with orange band, glazed lobby, roof signboard and terrace; real CcHub details unverified."
+ }
+}

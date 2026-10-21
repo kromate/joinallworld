@@ -1,0 +1,143 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/778712166",
+   "used": "footprint 17 x 16 m turned 41 deg (Wikidata Q68036226, border checkpoint)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Loyada_border_post.jpg",
+   "licence": "Public domain",
+   "author": "G.B. Grand Bazar, c. 1920-1935",
+   "view": "front",
+   "used": "only context: a 1930s postcard of the old French post (two-storey tower, outside stairs); NOT the current building so it was not matched"
+  }
+ ],
+ "camera": {
+  "yawDeg": 40,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "post",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9cfba",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "material": "membrane",
+    "overhang": 1.0,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "rotDeg": -41,
+   "params": {
+    "width": 14,
+    "depth": 6,
+    "height": 4.4,
+    "form": "flat",
+    "columns": 4,
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "rotDeg": -41,
+   "params": {
+    "width": 7,
+    "height": 1.2,
+    "colour": "#b03a2e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2,
+    "kind": "wall",
+    "colour": "#b9b09c"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.2,
+    "colour": "#4f6f86"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo of the current building; canopy, barrier and fence are typed guesses"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-community-notices"
+}

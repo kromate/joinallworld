@@ -1,0 +1,162 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/430366600",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ede4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#2f5d8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a3a69f",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-glass",
+   "at": [
+    0,
+    -34
+   ],
+   "params": {
+    "rect": [
+     18,
+     5
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#7fa6c0",
+    "topColour": "#2f5d8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 6,
+    "height": 4.2,
+    "colour": "#2f5d8a",
+    "edgeColour": "#2f5d8a",
+    "columns": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    14,
+    -33.5
+   ],
+   "params": {
+    "rect": [
+     6,
+     0.4
+    ],
+    "z0": 9.5,
+    "height": 2,
+    "colour": "#f4f4f4",
+    "topColour": "#f4f4f4"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -24,
+    -37,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car-park",
+   "at": [
+    30,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -42,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM quad outline used with typed three-storey blue/cream render, entrance and bay placed by assumption."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-way-430366600"
+}

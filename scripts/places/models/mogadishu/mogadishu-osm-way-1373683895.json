@@ -1,0 +1,412 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-way-1373683895",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1373683895",
+   "used": "name-matched hospital compound (312 x 122 m, bearing about 116); its outline is the boundary wall, scaled to 0.37 to fit the 118 m scene clamp, with the buildings kept at believable size inside"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/mogadishu.json",
+   "used": "brief: three-storey cream block, blue-green trimmed entrance, ambulance bay, water tanks, car park (no photo found on Commons or Wikipedia)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -5,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building exists in open sources; compound outline is real but scaled, building layout typed from the brief."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "compound",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58.5,
+      4.9
+     ],
+     [
+      -39.5,
+      45.6
+     ],
+     [
+      10.7,
+      22.0
+     ],
+     [
+      7.5,
+      15.2
+     ],
+     [
+      7.6,
+      14.7
+     ],
+     [
+      61.3,
+      -9.7
+     ],
+     [
+      45.2,
+      -44.8
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#cfc09a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     40,
+     15
+    ]
+   },
+   "at": [
+    -2.47,
+    -3.73
+   ],
+   "rotDeg": -7,
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#2f8a9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    -3.45,
+    -11.67
+   ],
+   "rotDeg": -7,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f8a9a",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8a9a",
+    "material": "membrane",
+    "parapet": 0.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-ward",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    -36.25,
+    16.54
+   ],
+   "rotDeg": -7,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#faf7ec"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-ward",
+   "footprint": {
+    "rect": [
+     24,
+     11
+    ]
+   },
+   "at": [
+    31.55,
+    -22.01
+   ],
+   "rotDeg": -7,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#2f8a9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    -10.73,
+    27.51
+   ],
+   "rotDeg": -7,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#faf7ec",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "bands": "#faf7ec"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a39a8b",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    20.62,
+    -12.61,
+    0
+   ],
+   "rotDeg": -7,
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "vans": 2,
+    "colour": "#faf7ec",
+    "roofColour": "#2f8a9a"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -3.79,
+    -14.45,
+    9.5
+   ],
+   "rotDeg": -7,
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    10.29,
+    1.76,
+    12
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -29.53,
+    5.64,
+    8.5
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.6,
+    "tankHeight": 2.4,
+    "legHeight": 4,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -28.73,
+    -20.65
+   ],
+   "rotDeg": -7,
+   "params": {
+    "width": 26,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -58.5,
+      4.9
+     ],
+     [
+      -39.5,
+      45.6
+     ],
+     [
+      10.7,
+      22.0
+     ],
+     [
+      7.5,
+      15.2
+     ],
+     [
+      7.6,
+      14.7
+     ],
+     [
+      61.3,
+      -9.7
+     ],
+     [
+      45.2,
+      -44.8
+     ],
+     [
+      -58.5,
+      4.9
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#efe6d0"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16.33,
+     -18.14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45.24,
+     -41.83
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -47.43,
+     23.96
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ }
+}

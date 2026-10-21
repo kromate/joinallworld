@@ -1,0 +1,702 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-24663862",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Harrow_St_Ann%27s_Centre.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Howard",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/-24663862_0.jpg",
+   "used": "limestone-clad entrance bay with blue steel portal canopy and glazed pyramid roof, flanking orange-brown brick wings with blue-framed windows, sloping glazed side canopies"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:St_Ann%27s_centre_frontage.jpg",
+   "licence": "CC BY 2.0",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/-24663862_3.jpg",
+   "used": "long brick street frontage with white fascia over shopfront glazing, blue-framed glazed canopy, gabled brick dormers, taller brick car-park block behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/24663862",
+   "used": "footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#bb7d4e",
+    "windows": "punched",
+    "windowRatio": 0.38,
+    "bay": 6,
+    "groundKind": "shopfront",
+    "groundHeight": 4.2,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#e8e2d2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6460"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark",
+   "footprint": {
+    "rect": [
+     50,
+     28
+    ]
+   },
+   "at": [
+    20,
+    34
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#b06a42",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#77716b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -61
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dbcfb4",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc4aa",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    -14,
+    -76,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -76,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -76,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -74,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.45
+    ],
+    "height": 16.5,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -64,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.45
+    ],
+    "height": 16.5,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -74,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.45
+    ],
+    "height": 16.5,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -64,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.45
+    ],
+    "height": 16.5,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -74,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     12.8,
+     0.5
+    ],
+    "height": 0.6,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -64,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     12.8,
+     0.5
+    ],
+    "height": 0.6,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -69,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.8
+    ],
+    "height": 0.6,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -69,
+    16.5
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     10.8
+    ],
+    "height": 0.6,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -69,
+    17.1
+   ],
+   "params": {
+    "colour": "#a9c3d2",
+    "topColour": "#a9c3d2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       12,
+       10
+      ]
+     },
+     {
+      "z": 4.0,
+      "rect": [
+       1.2,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.2,
+    -69.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 9.5,
+    "colour": "#dbcfb4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.2,
+    -69.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     2.4
+    ],
+    "height": 9.5,
+    "colour": "#dbcfb4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -21,
+    -71.5,
+    3.6
+   ],
+   "params": {
+    "colour": "#9fb7c6",
+    "topColour": "#7f9fb5",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       4
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       22,
+       0.6
+      ],
+      "cy": 1.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -31.5,
+    -73.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.8,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10.5,
+    -73.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.8,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    21,
+    -71.5,
+    3.6
+   ],
+   "params": {
+    "colour": "#9fb7c6",
+    "topColour": "#7f9fb5",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       4
+      ]
+     },
+     {
+      "z": 2.4,
+      "rect": [
+       22,
+       0.6
+      ],
+      "cy": 1.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.5,
+    -73.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.8,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    31.5,
+    -73.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 3.8,
+    "colour": "#1f3a8a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -68.63834,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.4
+    ],
+    "height": 3.6,
+    "colour": "#2d4f9e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -68.73834,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#3a4f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -69.35464,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.4
+    ],
+    "height": 3.6,
+    "colour": "#2d4f9e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -69.45464,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#3a4f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -70.89744,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.4
+    ],
+    "height": 3.6,
+    "colour": "#2d4f9e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    14,
+    -70.99744,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#3a4f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -71.61374,
+    5.8
+   ],
+   "params": {
+    "rect": [
+     5.0,
+     0.4
+    ],
+    "height": 3.6,
+    "colour": "#2d4f9e",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -71.71374,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     4.2,
+     0.3
+    ],
+    "height": 2.8,
+    "colour": "#3a4f66",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -24,
+    -67.20364,
+    11.5
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#bb7d4e",
+    "roof_colour": "#6b6460"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    -12,
+    -67.86484,
+    11.5
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#bb7d4e",
+    "roof_colour": "#6b6460"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    12,
+    -69.18724,
+    11.5
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#bb7d4e",
+    "roof_colour": "#6b6460"
+   }
+  },
+  {
+   "type": "dormer",
+   "at": [
+    24,
+    -69.84844,
+    11.5
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.4,
+    "colour": "#bb7d4e",
+    "roof_colour": "#6b6460"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Portal is a plain box frame with a solid pyramid, no glazing bars; wings lack stepped gabled bays, arched window and cream-limestone shopfronts; side canopies are simple sloped lofts"
+ }
+}

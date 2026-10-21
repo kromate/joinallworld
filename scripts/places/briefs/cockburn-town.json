@@ -1,0 +1,1080 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "cockburn-town",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "cockburn-town",
+    "climate": "tropical-maritime",
+    "vernacular": "Small Bermudian-founded salt-trade town on a low, hot semi-arid limestone island: one and two-storey houses and guesthouses of local limestone or painted render with timber verandas, shutters and tin roofs, pastel cream, yellow, turquoise and white, facing Front Street and the sea; newer government and commercial blocks are plain flat or hipped-roof painted concrete.",
+    "wallColours": [
+      "#f3efe4",
+      "#eadfc0",
+      "#efd98c",
+      "#8dc5c8",
+      "#e3a89a",
+      "#d6c9a8"
+    ],
+    "roofColours": [
+      "#8c9498",
+      "#a64b36",
+      "#b9bdbf",
+      "#e9e6de"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "limestone",
+      "whitewash",
+      "timber",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Bermudian-style upper and lower timber verandas with turned posts and railings, louvred shutters, steps up to the front door, old iron street lamps along Duke and Front Streets, low limestone garden walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Cockburn_Town",
+        "what": "historic architecture Bermudian in style, 18th-19th century, along Duke and Front Streets; old street lamps; Guinep House; prison 1830s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Grand_Turk_Island",
+        "what": "Bermudian salt settlement from 1681, hot semi-arid climate, tourism and cruise economy, 18 km2 island"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Turks_and_Caicos_National_Museum",
+        "what": "Guinep House built of local limestone with shipwreck timbers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Grand_Turk_Lighthouse",
+        "what": "white-washed cast-iron lighthouse on a limestone hill"
+      }
+    ]
+  },
+  "places": {
+    "cockburn-town-airport-cockburn-town-airport": {
+      "venueId": "cockburn-town-airport-cockburn-town-airport",
+      "city": "cockburn-town",
+      "name": "JAGS McCartney International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the small single-storey terminal of Grand Turk airport seen from the landside forecourt, with a replica Friendship 7 capsule at the entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 65,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#4a8aa6",
+          "#ffffff"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "free parking per Wikipedia"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "replica Friendship 7 spacecraft at the entrance"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "late 20th century (estimated)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/191802506",
+          "what": "terminal footprint 65 x 50 m, ~2,160 m2, irregular outline"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/JAGS_McCartney_International_Airport",
+          "what": "runway 12/30 1,939 m; restaurant, car rental, free parking; Friendship 7 replica at entrance; terminal itself not described"
+        }
+      ],
+      "notes": "Measured OSM footprint; the facade, colours and roof are inferred from small Caribbean regional terminals (no source describes the terminal appearance). Recognisable by the Friendship 7 capsule replica near the entrance. Low confidence on appearance."
+    },
+    "cockburn-town-clinic": {
+      "venueId": "cockburn-town-clinic",
+      "city": "cockburn-town",
+      "name": "Cockburn Town Medical Centre",
+      "archetype": "hospital",
+      "subject": "the low multi-wing government medical centre on Grand Turk, a cluster of one and two-storey blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 94,
+        "depth_m": 78,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#7fb0c8",
+          "#ffffff"
+        ],
+        "roofColour": "#a0a6a8",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board, neutral colour"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkway between wings"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "late 20th century (estimated)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/7550453",
+          "what": "hospital building relation: ~3,700 m2 footprint, 94 x 78 m, multi-wing outline"
+        }
+      ],
+      "notes": "Real site and footprint from OSM (hospital building ~3,700 m2 inside a ~12,000 m2 site); no source describes its look, so facade, colours and roof are a typed Caribbean-government-clinic guess. Do not read the 94 m as one block; it is several wings."
+    },
+    "cockburn-town-community-notices": {
+      "venueId": "cockburn-town-community-notices",
+      "city": "cockburn-town",
+      "name": "Governmental Information Service",
+      "archetype": "civic-small",
+      "subject": "a small two-storey government information office on Grand Turk",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14.7,
+        "depth_m": 9.8,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eadfc0",
+          "#7fb0c8",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper-floor veranda, Bermudian-Caribbean style"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/411579602",
+          "what": "building 14.7 x 9.8 m, building:levels=2 (unnamed; nearest building to the venue)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cockburn_Town",
+          "what": "historic Bermudian-style architecture lining Duke and Front Streets; old street lamps; narrow streets"
+        }
+      ],
+      "notes": "Venue name from the game; real office has no findable description. OSM gives 2 levels and 14.7 x 9.8 m. Look is the Cockburn Town typed style (pastel render, upper veranda, tin roof)."
+    },
+    "cockburn-town-community-voting-game": {
+      "venueId": "cockburn-town-community-voting-game",
+      "city": "cockburn-town",
+      "name": "Attorney General's Chambers",
+      "archetype": "civic-small",
+      "subject": "the Attorney General Chambers government office block, a two-storey irregular-plan building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 46,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#6f9fb5",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa0a3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/410132777",
+          "what": "building footprint 46 x 34 m, building:levels=2, angular plan; contains the venue point"
+        }
+      ],
+      "notes": "Only the OSM footprint and 2 levels are measured. Facade and roof are typed from the city style. The game polling kind is loose; this is an ordinary government office."
+    },
+    "cockburn-town-community-workshop": {
+      "venueId": "cockburn-town-community-workshop",
+      "city": "cockburn-town",
+      "name": "Victoria Public Library",
+      "archetype": "civic-small",
+      "subject": "the small historic Victoria Public Library on Front Street, Cockburn Town, a one-storey colonial stone building with a front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.2,
+        "depth_m": 10.9,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#e8dfc4",
+          "#4f7f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "19th century (OSM historic=building)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/412178556",
+          "what": "named Victoria Public Library, amenity=library, historic=building, 13.2 x 10.9 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cockburn_Town",
+          "what": "historic Bermudian-style architecture lining Duke and Front Streets; old street lamps; narrow streets"
+        }
+      ],
+      "notes": "Tagged historic and sits in the Bermudian-style Front Street waterfront, but no source retrieved describes the building; materials and veranda are inferred from the neighbouring Guinep House and the street style. Tiny: keep the model small and neat."
+    },
+    "cockburn-town-market-game": {
+      "venueId": "cockburn-town-market-game",
+      "city": "cockburn-town",
+      "name": "Windmills Plaza",
+      "archetype": "mall",
+      "subject": "a small two-storey shopping and restaurant plaza on Grand Turk",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "strip plaza"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0dc9a",
+          "#7fb0c8",
+          "#ffffff"
+        ],
+        "roofColour": "#b4b8ba",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper gallery"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/410413537",
+          "what": "named Windmills Plaza, 25 x 13.7 m, building:levels=2"
+        }
+      ],
+      "notes": "Name, size and levels are real (OSM); appearance is a typed pastel Caribbean strip plaza with ground-floor shopfronts and an upper gallery. Nothing about windmill motifs was verifiable so none is modelled."
+    },
+    "cockburn-town-meal-stop": {
+      "venueId": "cockburn-town-meal-stop",
+      "city": "cockburn-town",
+      "name": "The Inn Restaurant",
+      "archetype": "restaurant",
+      "subject": "a Bermudian-style guesthouse and restaurant on Front Street, two storeys with wrap-around verandas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22.5,
+        "depth_m": 18.5,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eadfc0",
+          "#4f7f6b",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "upper and lower verandas"
+        },
+        {
+          "id": "railings",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "19th-20th century (estimated)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/412178555",
+          "what": "nearest building tagged Grand Turk Inn, tourism=hotel, 22.5 x 18.5 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cockburn_Town",
+          "what": "historic Bermudian-style architecture lining Duke and Front Streets; old street lamps; narrow streets"
+        }
+      ],
+      "notes": "The nearest OSM building is the Grand Turk Inn (hotel), likely the venue; the look is typed from the historic Front Street style (timber verandas, shutters, tin roof). Not verified by any description."
+    },
+    "cockburn-town-osm-node-12828526601": {
+      "venueId": "cockburn-town-osm-node-12828526601",
+      "city": "cockburn-town",
+      "name": "Boaby Rock Point Snorkeling",
+      "archetype": "park-landscape",
+      "subject": "a rocky southern shoreline snorkelling point with a small beach hut and low scrub",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "snorkel beach"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9b68a",
+          "#7fb0c8",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter or hut"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522087818",
+          "what": "nearest building (9.5 x 7.7 m, 62 m2) 53 m from the point"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Turk_Island",
+          "what": "island context: Bermudian settlement 1681, hot semi-arid climate, tourism/cruise economy"
+        }
+      ],
+      "notes": "A snorkelling spot with no findable description; modelled as a sand and limestone shore with a small shelter, sea-grape scrub and umbrellas. Hot semi-arid climate so sparse vegetation."
+    },
+    "cockburn-town-osm-node-5662570237": {
+      "venueId": "cockburn-town-osm-node-5662570237",
+      "city": "cockburn-town",
+      "name": "Reef Shark Bay and Grill",
+      "archetype": "restaurant",
+      "subject": "a beachside bar and grill on the Grand Turk coast, a low open-sided building with a long shaded deck",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c9a0",
+          "#3f8fa8",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "sea-facing deck"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522097580",
+          "what": "building containing the venue, 48.6 x 39 m bbox, 694 m2, elongated irregular outline"
+        }
+      ],
+      "notes": "OSM building (694 m2, elongated, bearing 63 deg) contains the point; only the outline is real. Beach-bar look is typed from the type of place."
+    },
+    "cockburn-town-osm-way-410322609": {
+      "venueId": "cockburn-town-osm-way-410322609",
+      "city": "cockburn-town",
+      "name": "Turks and Caicos National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Guinep House on Front Street, the old limestone house holding the national museum, with a seaside garden and the guinep tree in the front yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14.7,
+        "depth_m": 13.9,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "timber",
+        "colours": [
+          "#e4d9bb",
+          "#6b4f3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper-floor veranda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low garden wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "before 1885 (c. 1830s-1880s)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Turks_and_Caicos_National_Museum",
+          "what": "housed in Guinep House on Front Street; local limestone with ship-wreck timbers, ship mast as a main support; at least two levels; built before 1885; garden beside; museum since 1991"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cockburn_Town",
+          "what": "Guinep House believed over 180 years old; Bermudian-style historic buildings on Front and Duke Streets"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/410322609",
+          "what": "footprint 14.7 x 13.9 m, tourism=museum, wikidata Q13525325"
+        }
+      ],
+      "notes": "Materials (local limestone, wreck timbers), two levels and age are sourced. Roof shape and colour, veranda, and the cream/limestone finish are typed from Bermudian Front Street houses, not confirmed. A big guinep (tree) in the front yard is a landmark; the museum also keeps the original lighthouse lens."
+    },
+    "cockburn-town-osm-way-410381421": {
+      "venueId": "cockburn-town-osm-way-410381421",
+      "city": "cockburn-town",
+      "name": "Grand Turk Lighthouse",
+      "archetype": "monument",
+      "subject": "the 1852 cast-iron lighthouse on its low limestone hill, a tapered white tower with gallery, lantern and a small keeper house at its side",
+      "form": {
+        "footprint": "round",
+        "width_m": 8.6,
+        "depth_m": 8.6,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "dome",
+        "variant": "lighthouse"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#f4f2ec",
+          "#7a4a38",
+          "#2f3235"
+        ],
+        "roofColour": "#2f3235",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "gallery guard rail, rusting"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "small keeper house with small windows beside the tower"
+        },
+        {
+          "id": "storage-tanks",
+          "count": 1,
+          "note": "kerosene store attached"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1852",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Turk_Lighthouse",
+          "what": "cast iron, 18 m (60 ft), tapered cylindrical tower with balcony and lantern, white tower and lantern, on a small limestone hill, attached kerosene store, small keeper house with small windows, designed by Alexander Gordon, built in the UK and shipped in pieces, completed 1852"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/410381421",
+          "what": "tag height 18 m, tower footprint ~8.6 m diameter"
+        }
+      ],
+      "notes": "Whitewashed cast iron tower, ~18 m, tapering slightly; wide lantern with domed cap and a gallery with rusting rail. The small keeper house and kerosene store sit at its foot. Lantern cap and rail colours (dark) are estimates. Site is the Historic Lighthouse Park (see recreation venue)."
+    },
+    "cockburn-town-osm-way-411579609": {
+      "venueId": "cockburn-town-osm-way-411579609",
+      "city": "cockburn-town",
+      "name": "Breeza Restaurant",
+      "archetype": "restaurant",
+      "subject": "a small casual restaurant on the Grand Turk waterfront road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20.4,
+        "depth_m": 13.7,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#8dc5c8",
+          "#f3efe4",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "open dining deck"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/411579609",
+          "what": "building 20.4 x 13.7 m, amenity=restaurant"
+        }
+      ],
+      "notes": "Only the name, type and footprint are known. Turquoise pastel finish chosen to differ from the neighbouring cream guesthouse; not observed."
+    },
+    "cockburn-town-osm-way-411904621": {
+      "venueId": "cockburn-town-osm-way-411904621",
+      "city": "cockburn-town",
+      "name": "Lester Williams Community Park",
+      "archetype": "park-landscape",
+      "subject": "a small public community park in Cockburn Town: lawn, a few shade trees, a play area and a small shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 54,
+        "depth_m": 38,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "community park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc7ae",
+          "#6f8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9498",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/411904621",
+          "what": "leisure=park polygon ~1,730 m2, 54 x 38 m, named Lester Williams Community Park"
+        }
+      ],
+      "notes": "Only the polygon and name are real. Contents (shelter, kiosk, low wall) are a typed small-park layout."
+    },
+    "cockburn-town-quiet-reflection": {
+      "venueId": "cockburn-town-quiet-reflection",
+      "city": "cockburn-town",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "a small quiet prayer hall or chapel on Grand Turk (placeholder venue)",
+      "form": {
+        "footprint": "L",
+        "width_m": 18.7,
+        "depth_m": 14.4,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f3efe4",
+          "#7fb0c8",
+          "#ffffff"
+        ],
+        "roofColour": "#a64b36",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522051090",
+          "what": "building containing the venue point, 18.7 x 14.4 m, L-shaped outline"
+        }
+      ],
+      "notes": "(game venue) placeholder, always low. Uses the containing OSM building outline and a Cockburn Town chapel typed style."
+    },
+    "cockburn-town-recreation": {
+      "venueId": "cockburn-town-recreation",
+      "city": "cockburn-town",
+      "name": "Historic Lighthouse Park",
+      "archetype": "park-landscape",
+      "subject": "Grand Turk Historic Lighthouse Park: open limestone headland around the lighthouse and keeper house, donkey trails down to the beach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 58,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "headland park"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8ccaa",
+          "#f4f2ec",
+          "#7a4a38"
+        ],
+        "roofColour": "#8c9498",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor shelter"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1852 lighthouse",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Turk_Lighthouse",
+          "what": "site called Grand Turk Historic Lighthouse Park; lighthouse and keeper house protected by National Trust; donkey trails to the beach; mangroves nearby"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/410381414",
+          "what": "leisure=park polygon 64 x 58 m, 3,690 m2, tourism=attraction"
+        }
+      ],
+      "notes": "Park centre can host the lighthouse model from the sibling venue; here show open rocky ground, low scrub, a gate and a visitor shelter. Dry limestone headland, not lawn."
+    },
+    "cockburn-town-transit": {
+      "venueId": "cockburn-town-transit",
+      "city": "cockburn-town",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "a simple roadside bus and taxi stop with shelter (placeholder; Grand Turk has no public transport)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "bus shelter"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2c0",
+          "#7fb0c8",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522050997",
+          "what": "nearest building 20.5 x 18.4 m, irregular"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/JAGS_McCartney_International_Airport",
+          "what": "no public transportation on the island"
+        }
+      ],
+      "notes": "(game venue) placeholder, always low. Real island has no public transit, so keep this a modest shelter with a couple of bays."
+    }
+  }
+}

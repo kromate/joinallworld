@@ -1,0 +1,221 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:ASC_Leiden_-_van_de_Bruinhorst_Collection_-_Somaliland_2019_-_4521_-_A_marble_plaque_on_a_wall_at_Hargeysa_War_Cemetery_1939-1945.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gerard van de Bruinhorst",
+   "view": "front",
+   "used": "random-rubble tan stone wall about 2.6 m high, pale stone coping, wide pale marble name panel set into it with a stone border and footing course, return wall at the left end, bare dirt ground, trees behind",
+   "file": "/tmp/places-evidence/hargeisa/cwgc.jpg"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q70850520",
+   "used": "identity: CWGC Hargeisa Memorial (Hargeysa War Cemetery 1939-1945); no building outline exists for the node"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 0,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rubble",
+   "footprint": {
+    "rect": [
+     13,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a681",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#b9a47c",
+       "#a8946e",
+       "#c8b690"
+      ],
+      "slits": 0.25,
+      "cols": 14,
+      "rows": 5
+     }
+    ],
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a681"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "marble-panel",
+   "footprint": {
+    "rect": [
+     11.7,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -0.6
+   ],
+   "height": 1.75,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ddd3ba",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd2b8"
+   },
+   "z0": 0.3
+  },
+  {
+   "type": "mass",
+   "id": "cap",
+   "footprint": {
+    "rect": [
+     13.1,
+     0.95
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d1bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d1bf"
+   },
+   "z0": 2.2
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.3
+    ]
+   },
+   "at": [
+    -6.55,
+    -0.2
+   ],
+   "height": 2.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9a681",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#b9a47c",
+       "#a8946e",
+       "#c8b690"
+      ],
+      "slits": 0.25,
+      "cols": 14,
+      "rows": 5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9a681"
+   },
+   "z0": 0
+  },
+  {
+   "type": "mass",
+   "id": "pier-cap",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.4
+    ]
+   },
+   "at": [
+    -6.55,
+    -0.2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d1bf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d1bf"
+   },
+   "z0": 2.2
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -3,
+     5
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     5,
+     6
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   26,
+   20
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-node-10225628867",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "marble panel is smooth grey-cream without lettering or joints, rubble band reads as plain stone not random rubble, trees are green low-poly vs dark canopy"
+ }
+}

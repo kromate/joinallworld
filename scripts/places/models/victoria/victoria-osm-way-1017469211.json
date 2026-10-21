@@ -1,0 +1,152 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1017469211",
+   "used": "14 x 9 m footprint, bearing 112"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey beach-side restaurant, terrace with railing, red corrugated roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe4",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {}
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d32",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     16,
+     5
+    ],
+    "height": 0.9,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "core/sweep-path",
+   "at": [
+    0,
+    -11.4,
+    0.9
+   ],
+   "params": {
+    "points": [
+     [
+      -8,
+      0
+     ],
+     [
+      8,
+      0
+     ]
+    ],
+    "section": {
+     "rect": [
+      0.08,
+      1.0
+     ]
+    },
+    "colour": "#8fb0c8"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -9,
+    0.9
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 5,
+    "height": 3.0,
+    "columns": 4,
+    "colour": "#8fb0c8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; storey height, terrace and colours from brief only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-way-1017469211"
+}

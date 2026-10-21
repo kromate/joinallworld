@@ -1,0 +1,1761 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "panama-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "panama-city",
+    "climate": "savanna",
+    "vernacular": "Dense Pacific-side skyline of glass and white-concrete towers (Punta Pacifica, Costa del Este, Avenida Balboa) beside the pastel colonial and French/Antillean townhouses of Casco Viejo with wrought-iron balconies and clay-tile or zinc roofs; mid-century Canal Zone and 1970s civic blocks are low, flat-roofed, cream or white painted concrete with louvred openings; older El Chorrillo houses are timber-framed, and everything sits under strong tropical rain and cloud with royal palms and broadleaf trees.",
+    "wallColours": [
+      "#efe8d6",
+      "#d9a96a",
+      "#c76b52",
+      "#8fb3a3",
+      "#7fa3c4",
+      "#f6f4ee",
+      "#b9b5ac"
+    ],
+    "roofColours": [
+      "#bf5f3c",
+      "#858881",
+      "#5d6b73",
+      "#a8472f"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "glass-curtain",
+      "stucco",
+      "render",
+      "stone",
+      "brick",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Casco Viejo wrought-iron balconies and louvred timber shutters, calicanto (lime, stone and brick) walls, arcaded ground-floor portales, French and Antillean timber verandas; baroque curved gables and mother-of-pearl inlaid belfries on colonial churches; neoclassical Ionic columns on early-1900s civic buildings; louvres and brise-soleil on modern blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Panama_City",
+        "what": "Casco Viejo mixes Spanish colonial, French, Antillean, Republican and art deco styles (~800 buildings); dense high-rise skyline (127 completed high-rises); calicanto walls; timber-framed El Chorrillo; tropical savanna climate"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Catedral_de_Panam%C3%A1",
+        "what": "colonial cathedral: stone facade, towers with mother-of-pearl inlay, white interior, gabled roof"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Iglesia_de_Santa_Ana_(Panam%C3%A1)",
+        "what": "baroque colonial church, masonry walls, corrugated zinc roof replacing tiles in 1911"
+      }
+    ]
+  },
+  "places": {
+    "panama-city-airport-panama-city-airport": {
+      "venueId": "panama-city-airport-panama-city-airport",
+      "city": "panama-city",
+      "name": "Tocumen International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Tocumen's long Terminal 2 (south terminal, opened 2022) seen from the landside forecourt: a wide glass-fronted block with a row of boarding bridges on the apron side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 75,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "long linear terminal with piers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dde4e8",
+          "#34505f",
+          "#f4f4f1"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "Terminal 2 adds 20 boarding gates"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "tower planned ~70 m"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2022",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tocumen_International_Airport",
+          "what": "Terminal 2 by Odebrecht, inaugurated Apr 2019, operations from 22 Jun 2022; terminal 1 expanded 2006 to 28 gates"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Aeropuerto_Internacional_de_Tocumen",
+          "what": "Terminal 2 85,000 m2, 20 gates; 70 m control tower planned; North Pier with 12 positions (A380-capable)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1311648672",
+          "what": "OSM measured footprint 1804.7 x 525.1 m"
+        }
+      ],
+      "notes": "Sources give areas, gate counts and dates but not the facade, so the glass-dominant look and colours are inferred from comparable recent terminals; treat colours as approximate. Terminal 1 (2006) is lower and older; the model shows the long horizontal Terminal 2 mass. Recognisable by the long low mass and the line of boarding bridges."
+    },
+    "panama-city-clinic": {
+      "venueId": "panama-city-clinic",
+      "city": "panama-city",
+      "name": "Hospital Nacional",
+      "archetype": "hospital",
+      "subject": "Hospital Nacional, a four-storey private hospital block on Avenida Cuba, seen from the street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "rhomboid footprint rotated 30 degrees"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efece4",
+          "#6f8fa8",
+          "#d9d4c7"
+        ],
+        "roofColour": "#9ea3a5",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/18042490",
+          "what": "building=hospital, 4 levels, footprint ~66 x 59 m; Wikidata Q5908505 inception 1973"
+        }
+      ],
+      "notes": "Only the OSM measurements (4 levels, ~3,900 m2 footprint) and Wikidata year (1973) are known; facade colours are typed from the city style, not from photographs."
+    },
+    "panama-city-community-notices": {
+      "venueId": "panama-city-community-notices",
+      "city": "panama-city",
+      "name": "Asamblea Nacional de Panama",
+      "archetype": "civic-palace",
+      "subject": "The Asamblea Nacional (Palacio Justo Arosemena), a wide white modernist legislative block with a rounded chamber volume behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 107,
+        "depth_m": 55,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "wide block with projecting chamber at rear",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ece8de",
+          "#b5ae9f",
+          "#ffffff"
+        ],
+        "roofColour": "#a5a8a6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance portico, unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "forecourt monuments, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/605386929",
+          "what": "building:levels 6; footprint ~107 x 76 m with a rear projection; Wikidata Q1368588"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Assembly_(Panama)",
+          "what": "Assembly meets in the Justo Arosemena Palace (no architectural description available)"
+        }
+      ],
+      "notes": "No architectural description was found; size and level count are measured (OSM), era and the massing (wide front block with projecting rear chamber) follow the footprint outline and typical Latin American legislature palaces. Colours are typed."
+    },
+    "panama-city-community-voting-game": {
+      "venueId": "panama-city-community-voting-game",
+      "city": "panama-city",
+      "name": "Palacio Municipal",
+      "archetype": "civic-small",
+      "subject": "The 1910 Palacio Municipal on Plaza de la Catedral: a neoclassical three-storey town hall with a central tower and two Ionic columns on the axis",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "square block with central tower"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe5cc",
+          "#c9a66b",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca4",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "central tower above the entrance axis"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "figures from Greek mythology atop the two Ionic columns"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "restored rooftop terrace"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1910",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Palacio_Municipal_de_Panam%C3%A1",
+          "what": "neoclassical with Renaissance/Mannerist ornament by Genaro Ruggieri, two big Ionic columns with sculptures on the central axis, central tower, big council-chamber window, rooftop terrace, repainted in original colours"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/301268537",
+          "what": "OSM measured footprint 26.2 x 26 m, 3 levels"
+        }
+      ],
+      "notes": "Form and ornament come from the Spanish Wikipedia article and OSM tags; the exact paint colours are not stated (restored to original colours) so cream/ochre with white trim is an informed guess. Stands beside the cathedral, so sits in the pale Casco Viejo palette."
+    },
+    "panama-city-community-workshop": {
+      "venueId": "panama-city-community-workshop",
+      "city": "panama-city",
+      "name": "Florida State University Panama",
+      "archetype": "campus-block",
+      "subject": "A four-storey FSU Panama academic block on the Ciudad del Saber campus (former Clayton army base)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "variant": "long academic block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e4d6",
+          "#8a9aa6",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9a9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open walkway galleries typical of the campus"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Florida_State_University-Panama",
+          "what": "FSU Panama campus (university building, 4 levels, ~40 x 22 m in OSM)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/387400207",
+          "what": "OSM measured footprint 40.4 x 22.2 m, 4 levels"
+        }
+      ],
+      "notes": "Campus occupies the former Clayton US army base (Canal Zone, 1950s barracks style). Only footprint and four levels are known; colours are typed from the city style."
+    },
+    "panama-city-market-game": {
+      "venueId": "panama-city-market-game",
+      "city": "panama-city",
+      "name": "Albrook Mall",
+      "archetype": "mall",
+      "subject": "A 120 m portion of Albrook Mall, the huge two-level mall on the former Albrook air base, seen from the car-park entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 1170,
+        "depth_m": 270,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "very long mall; show a 120 m entrance portion",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe4cd",
+          "#c0724f",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed entrance atria"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "large surface and deck parking"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Albrook_Mall",
+          "what": "two levels, ~307,000 m2, ~700 units, three food courts, on former Albrook air base land, between the national bus terminal and the Marcos Gelabert airport"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/273732972",
+          "what": "OSM measured footprint 1166.5 x 266.8 m, 2 levels"
+        }
+      ],
+      "notes": "Sizes are measured; the exterior is not described in sources, so the cream/terracotta look and glazed atria are inferred. The model should show a recognisable 120 m slice, long, low and wide, with a huge car park."
+    },
+    "panama-city-meal-stop": {
+      "venueId": "panama-city-meal-stop",
+      "city": "panama-city",
+      "name": "Cafe Lavanda",
+      "archetype": "restaurant",
+      "subject": "Cafe Lavanda, a small single-storey cafe building (~18 x 12 m) with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e0d3",
+          "#8f7aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#7f8a8f",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/386560136",
+          "what": "OSM measured footprint 18.5 x 11.6 m"
+        }
+      ],
+      "notes": "Nothing could be found about this cafe; typed low-confidence building from the OSM footprint (~18.5 x 11.6 m) and the city style. Lavender accent is a guess from the name only."
+    },
+    "panama-city-osm-node-2845942117": {
+      "venueId": "panama-city-osm-node-2845942117",
+      "city": "panama-city",
+      "name": "Pedro Miguel Locks",
+      "archetype": "industrial",
+      "subject": "Pedro Miguel Locks on the Panama Canal: twin concrete lock chambers with mitre gates and a small control house on the centre wall, shown as a 120 m portion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "twin lock chambers with centre wall; show a portion",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a8a0",
+          "#3f4d57",
+          "#d8d6cf"
+        ],
+        "roofColour": "#8e8e88",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 2,
+          "note": "steel mitre gates, V-shaped leaves, 14-25 m high"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2,
+          "note": "electric locomotive (mule) tracks along the walls"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "lamp and signal masts"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "international",
+      "era": "1914",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pedro_Miguel_Locks",
+          "what": "chamber 320 m x 33.5 m, 31 ft lift, steel mitre gates 14-25 m high with two V-meeting leaves, walls 8 ft thick at the top stepping to 45-55 ft at the base, 60 ft centre wall with galleries, mule tracks along the walls, control house on the centre wall"
+        }
+      ],
+      "notes": "Lock dimensions are from Wikipedia; colours (grey mass concrete, dark painted steel gates) are from general knowledge and not confirmed for this lock. The control house appearance is not described in sources: model it as a small boxy concrete building. Recognisable by long straight parallel concrete walls and V-gates."
+    },
+    "panama-city-osm-node-3882111329": {
+      "venueId": "panama-city-osm-node-3882111329",
+      "city": "panama-city",
+      "name": "Pio Pio",
+      "archetype": "restaurant",
+      "subject": "Pio Pio, a long single-storey restaurant block (~77 x 22 m footprint tagged retail) beside the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0e3b8",
+          "#c8452d",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9195",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in brand-neutral colour"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/3882111329",
+          "what": "OSM node with surrounding retail building ~77 x 22 m, 1 level"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/384856441",
+          "what": "OSM measured footprint 77.4 x 22 m, 1 levels"
+        }
+      ],
+      "notes": "No description found; the footprint is shared with other shops, so a ~40 m restaurant unit is assumed. Roadside chicken-restaurant look is typed; no brand marks."
+    },
+    "panama-city-osm-node-6460155335": {
+      "venueId": "panama-city-osm-node-6460155335",
+      "city": "panama-city",
+      "name": "Monumento Goethals",
+      "archetype": "monument",
+      "subject": "The Goethals Monument in Balboa: a white marble memorial with a tall central slab and lower stepped piles on either side",
+      "form": {
+        "footprint": "T",
+        "width_m": 33,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "central slab flanked by stepped side piles"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#f1efe8",
+          "#d6d2c6",
+          "#ffffff"
+        ],
+        "roofColour": "#f1efe8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide platform steps in front"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low retaining wall, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "international",
+      "era": "1954",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Goethals_Monument",
+          "what": "white Vermont marble, unveiled 31 Mar 1954; tall central section = Continental Divide; piles either side = canal locks; Spanish dedication"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/6460155335",
+          "what": "OSM tourism=attraction footprint ~33 x 33 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/387032142",
+          "what": "OSM measured footprint 33 x 32.9 m"
+        }
+      ],
+      "notes": "Height is not given in sources (14 m is an estimate). The marble colour is from the cited article; the 33 x 33 m is the mapped plaza/footprint. Place on the Balboa side near the former Canal Zone administration, lawn and royal palms nearby."
+    },
+    "panama-city-osm-relation-11719090": {
+      "venueId": "panama-city-osm-relation-11719090",
+      "city": "panama-city",
+      "name": "Parque Natural Metropolitano",
+      "archetype": "park-landscape",
+      "subject": "Metropolitan Natural Park, a 265 ha dry-forest reserve; the model shows a forest trailhead clearing with a timber visitor pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "trailhead clearing with visitor pavilion"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7b55",
+          "#6b5539",
+          "#d9d2c0"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor centre/pavilion at the trailhead, unverified"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1988",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Metropolitan_Natural_Park",
+          "what": "265 ha, ~75% Pacific tropical dry forest, 284 plant species, trails with views over the city; no visitor-centre description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/11719090",
+          "what": "OSM nature park; Wikidata inception 1988"
+        }
+      ],
+      "notes": "The park has no single landmark building; this is a typed low-confidence trailhead scene in tropical dry forest (deciduous broadleaf trees)."
+    },
+    "panama-city-osm-way-1053821129": {
+      "venueId": "panama-city-osm-way-1053821129",
+      "city": "panama-city",
+      "name": "Instituto Tecnico Superior Especializado (ITSE)",
+      "archetype": "campus-block",
+      "subject": "The ITSE technical college campus at Tocumen: a group of low modern teaching blocks around open yards",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "three teaching blocks around a yard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#2f6f9e",
+          "#ffffff"
+        ],
+        "roofColour": "#9fa5a8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1053821129",
+          "what": "college campus footprint ~469 x 271 m; Wikidata Q136333137 inception 2019"
+        }
+      ],
+      "notes": "Campus-scale site (~9.8 ha); the building form is a typed guess from the new-build campus era (2019). No photographs were described in sources."
+    },
+    "panama-city-osm-way-140348509": {
+      "venueId": "panama-city-osm-way-140348509",
+      "city": "panama-city",
+      "name": "Basilica Metropolitana Santa Maria la Antigua (Catedral)",
+      "archetype": "church-classical",
+      "subject": "Panama City Metropolitan Cathedral on Plaza de la Catedral in Casco Viejo: a pale stone facade with two towers capped by mother-of-pearl inlaid domes and a high gabled tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 39,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "gable",
+        "variant": "three-nave basilica with twin west towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#ece4d0",
+          "#c9a66b",
+          "#ffffff"
+        ],
+        "roofColour": "#bf5f3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin towers with mother-of-pearl inlay, once painted red at the top"
+        },
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "two tower cupolas plus the sacristy dome"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "raised on a platform with six steps"
+        },
+        {
+          "id": "stained-glass",
+          "count": 10,
+          "note": "ten tall art-deco influenced windows"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1796",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Catedral_de_Panam%C3%A1",
+          "what": "stone Renaissance/Jesuit-style facade, two rendered towers with mother-of-pearl inlay, high gabled roof, three naves, sacristy dome, ten stained-glass windows, six steps, listed area 2,820 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/140348509",
+          "what": "footprint ~62 x 39 m, 2 levels, roof colour #bf5f3c (terracotta), built 1688-1796"
+        }
+      ],
+      "notes": "Built 1688-1796. The facade is pale stone/cream; the roof reads terracotta in OSM and the towers are rendered with shell inlay. Easily the most recognisable church in the country. Next to the Palacio Municipal and Plaza de la Catedral."
+    },
+    "panama-city-osm-way-146820184": {
+      "venueId": "panama-city-osm-way-146820184",
+      "city": "panama-city",
+      "name": "Hospital Punta Pacifica",
+      "archetype": "hospital",
+      "subject": "Hospital Punta Pacifica (Johns Hopkins affiliate): a modern white and glass hospital tower block on the Punta Pacifica waterfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 81,
+        "depth_m": 58,
+        "storeys": 10,
+        "height_m": 42,
+        "roof": "flat",
+        "variant": "podium with tower block"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cfdbe4",
+          "#f2f0ea",
+          "#4c6e87"
+        ],
+        "roofColour": "#a5a9aa",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1999",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hospital_Punta_Pacifica",
+          "what": "private hospital opened 1999 on Punta Pacifica; OSM footprint ~81 x 58 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1472552870",
+          "what": "OSM measured footprint 81.3 x 57.7 m"
+        }
+      ],
+      "notes": "Height/storeys are an estimate from the neighbourhood (high-rise district); OSM carries no level tag. Typed glass/white look, no photo description."
+    },
+    "panama-city-osm-way-179079739": {
+      "venueId": "panama-city-osm-way-179079739",
+      "city": "panama-city",
+      "name": "Iglesia de Santa Ana",
+      "archetype": "church-classical",
+      "subject": "The 1764 baroque Iglesia de Santa Ana on Plaza Santa Ana: masonry walls, three-level front with a wavy baroque gable and a bell tower with a pyramidal spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "three-nave church with front bell tower"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#efe2c0",
+          "#b8864b",
+          "#ffffff"
+        ],
+        "roofColour": "#858881",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "campanile capped by a pyramidal chapiter inspired by the cathedral"
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "undulating baroque gable on a three-level facade"
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1764",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Iglesia_de_Santa_Ana_(Panam%C3%A1)",
+          "what": "rectangular masonry church 1678-1764, three-level facade with wavy baroque top, bell tower with pyramidal spire, tiles replaced by corrugated zinc in 1911"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/179079739",
+          "what": "footprint ~45 x 22 m, 3 levels, roof gabled colour #858881 (grey)"
+        }
+      ],
+      "notes": "Form and roof come from sources (grey corrugated zinc roof); facade colour is not stated and a warm cream is assumed. Interior has timber posts and a pair roof. Smaller and plainer than the cathedral."
+    },
+    "panama-city-osm-way-180003519": {
+      "venueId": "panama-city-osm-way-180003519",
+      "city": "panama-city",
+      "name": "Estadio Olimpico Rommel Fernandez Gutierrez",
+      "archetype": "stadium",
+      "subject": "Estadio Rommel Fernandez, the national football stadium (~23,000 seats): an open concrete oval bowl, multi-coloured seating and a cantilevered roof over the main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 226,
+        "depth_m": 179,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "oval bowl with main-stand cantilever roof"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcdc6",
+          "#2f6fb0",
+          "#f2b134"
+        ],
+        "roofColour": "#aeb1b3",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "light reinforced-concrete cantilever ~18 m over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "large screen after 2024 renovation"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Rommel_Fern%C3%A1ndez",
+          "what": "built 1968-70, ~23,000 capacity, only main grandstand roofed (18 m cantilevers), colour-coded seating, blue and grey eight-lane track, 2006-10 and 2023-24 renovations changed the facade"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/180003519",
+          "what": "bowl footprint ~226 x 179 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9080390",
+          "what": "OSM measured footprint 225.8 x 178.7 m"
+        }
+      ],
+      "notes": "Seats are colour-coded (yellow, green, blue/purple, grey, red, orange); only the main stand has a roof, rest open. Facade colours after the 2024 renovation are not described and are approximated."
+    },
+    "panama-city-osm-way-383814377": {
+      "venueId": "panama-city-osm-way-383814377",
+      "city": "panama-city",
+      "name": "Complejo Hospitalario Dr. Arnulfo Arias Madrid",
+      "archetype": "hospital",
+      "subject": "The Complejo Hospitalario Arnulfo Arias Madrid (Caja de Seguro Social): an 11-storey slab hospital tower on the Via Espana side of the city",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 75,
+        "storeys": 11,
+        "height_m": 44,
+        "roof": "flat",
+        "variant": "tall main tower with lower base wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6e1d4",
+          "#7e97aa",
+          "#b9b4a8"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/383814377",
+          "what": "hospital footprint ~85 x 75 m, building:levels 11; Wikidata Q50036551"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/18586318",
+          "what": "OSM measured footprint 84.9 x 75.3 m, 11 levels"
+        }
+      ],
+      "notes": "Only the footprint and 11 levels are measured; facade appearance typed from the city style. Tall pale slab dominating its neighbours is the recognisable feature."
+    },
+    "panama-city-osm-way-387387459": {
+      "venueId": "panama-city-osm-way-387387459",
+      "city": "panama-city",
+      "name": "King's College",
+      "archetype": "campus-block",
+      "subject": "King's College, a private English-medium school: a long two-storey classroom block with open walkways and a playground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "long classroom block",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#2a4f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/King's_College,_Panama",
+          "what": "private school; OSM building ~76 x 35 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/387387459",
+          "what": "OSM measured footprint 75.6 x 34.7 m"
+        }
+      ],
+      "notes": "No building description found; typed low-confidence school block from the OSM footprint. Colours (navy accent) are an informed guess for a school-uniform palette, not seen."
+    },
+    "panama-city-osm-way-550798044": {
+      "venueId": "panama-city-osm-way-550798044",
+      "city": "panama-city",
+      "name": "Estadio Juan Demostenes Arosemena",
+      "archetype": "stadium",
+      "subject": "Estadio Juan Demostenes Arosemena, an older (1938) bowl: two-tier concrete stands round a pitch with a partial roof over the main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 233,
+        "depth_m": 226,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "curved",
+        "variant": "old concrete bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c8c4b8",
+          "#3b5f8a",
+          "#e8e4d8"
+        ],
+        "roofColour": "#9a9d9e",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "partial roof over main stand, unverified"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1938",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Juan_Dem%C3%B3stenes_Arosemena",
+          "what": "opened 1938; capacity and demolition status conflicting in the article; nickname El Coloso de Cabo Verde"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/550798044",
+          "what": "stadium footprint ~233 x 226 m"
+        }
+      ],
+      "notes": "The source conflicts (infobox says closed 2014 / demolished 2016, text says still in use). Stands, roof and colours are not described; typed low-confidence stadium from the footprint and the 1938 date."
+    },
+    "panama-city-osm-way-570814678": {
+      "venueId": "panama-city-osm-way-570814678",
+      "city": "panama-city",
+      "name": "Universidad Tecnologica de Panama",
+      "archetype": "campus-block",
+      "subject": "A UTP campus teaching block: a long three-level university building with exposed walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 23,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "long teaching block"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d4c7",
+          "#b64a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8e9295",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/570814678",
+          "what": "building=university footprint ~64 x 23 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/902689558",
+          "what": "OSM measured footprint 63.6 x 22.6 m"
+        }
+      ],
+      "notes": "Only the OSM footprint is known; no description of this building. Typed from public-university blocks in Panama City."
+    },
+    "panama-city-osm-way-697812340": {
+      "venueId": "panama-city-osm-way-697812340",
+      "city": "panama-city",
+      "name": "Museo Afroantillano de Panama",
+      "archetype": "museum-theatre",
+      "subject": "The 1909-10 Christian Mission chapel (now Afro-Antillean Museum): a small timber Antillean church with a gabled roof and a front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable",
+        "variant": "small Caribbean wooden chapel"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#ece4cf",
+          "#a88a5d",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8186",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bay-window",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "timber veranda or porch, unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "1910",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Afro-Antillean_Museum_of_Panama",
+          "what": "built 1909-10 by Protestant workers from Barbados as the Christian Mission Chapel; abandoned, museum since 1980; heritage building since 2017"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/697812340",
+          "what": "museum/park footprint ~70 x 51 m (site)"
+        }
+      ],
+      "notes": "History is sourced; the timber build and gabled corrugated roof are inferred from the Antillean origin, not stated in the article. The OSM polygon is the museum lot, the chapel itself is far smaller (~16 x 11 m assumed)."
+    },
+    "panama-city-osm-way-74450873": {
+      "venueId": "panama-city-osm-way-74450873",
+      "city": "panama-city",
+      "name": "Biomuseo",
+      "archetype": "museum-theatre",
+      "subject": "Frank Gehry's Biomuseo on the Amador Causeway: a cluster of tilted, brightly coloured metal roof planes over angular white volumes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 92,
+        "depth_m": 88,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "wave",
+        "variant": "cluster of tilted roof planes",
+        "wings": 3
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#f1efe8",
+          "#e8453c",
+          "#2f80c0"
+        ],
+        "roofColour": "#f2c230",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "public atrium"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "multi-coloured folded roof/wall planes in red, yellow, blue, green"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Biomuseo",
+          "what": "designed by Frank Gehry; ~4,000 m2; eight galleries, public atrium, outdoor botanical garden; opened 2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/74450873",
+          "what": "footprint ~93 x 88 m"
+        }
+      ],
+      "notes": "Wikipedia confirms the architect and area but not the roofs; the multicoloured, angled metal roof planes (red, yellow, blue, green) are widely photographed and from general knowledge. Recognisable by the shatter of folded colourful roof pieces against white walls."
+    },
+    "panama-city-quiet-reflection": {
+      "venueId": "panama-city-quiet-reflection",
+      "city": "panama-city",
+      "name": "Templo de la Ciudad de Panama",
+      "archetype": "church-modern",
+      "subject": "The LDS Panama City Panama Temple: a white stone modern temple with a single central spire topped by a gold angel Moroni statue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "hip",
+        "variant": "single-spire temple (spire 34 m total)"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "stucco",
+        "colours": [
+          "#eeeae0",
+          "#d6b34a",
+          "#cfcabc"
+        ],
+        "roofColour": "#6f7a85",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single central spire 34 m total with gilded Moroni"
+        },
+        {
+          "id": "stained-glass",
+          "count": 6,
+          "note": "art-glass windows"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Panama_City_Panama_Temple",
+          "what": "China stone exterior, art-glass windows, single central spire 111 ft (34 m) with angel Moroni statue, 18,943 sq ft, dedicated 2008, \"classic modern\""
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/379779318",
+          "what": "OSM measured footprint 39.3 x 32.6 m"
+        }
+      ],
+      "notes": "Spire, exterior stone and height are from the cited article; roof colour is not described (grey assumed). Cream-white stone with gold statue is the colour identity."
+    },
+    "panama-city-recreation": {
+      "venueId": "panama-city-recreation",
+      "city": "panama-city",
+      "name": "Parque Municipal Summit",
+      "archetype": "park-landscape",
+      "subject": "Summit Municipal Park, a botanical garden and zoo (est. 1923) in the canal hills: shaded paths, animal enclosures and a small entrance gatehouse",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "entrance gatehouse and animal pavilions"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece3cf",
+          "#7c5a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "animal houses and picnic pavilion, unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1923",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parque_Municipal_Summit",
+          "what": "zoo and botanical garden, Wikidata inception 1923, OSM park footprint ~858 x 802 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/22946547",
+          "what": "OSM measured footprint 858.4 x 802 m"
+        }
+      ],
+      "notes": "No description of structures found; typed low-confidence parkland scene with dense broadleaf and palm cover."
+    },
+    "panama-city-transit": {
+      "venueId": "panama-city-transit",
+      "city": "panama-city",
+      "name": "5 de Mayo",
+      "archetype": "transport-station",
+      "subject": "The 5 de Mayo metro station entrance on Line 1: a small glazed and steel canopy over a stair down to the underground platform",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "metro entrance canopy"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4dde3",
+          "#c8372d",
+          "#8a9096"
+        ],
+        "roofColour": "#c8d0d4",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "glazed entrance canopy"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair down"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/776797114",
+          "what": "OSM measured footprint 4.1 x 3.8 m"
+        }
+      ],
+      "notes": "OSM maps only a ~4 x 4 m entrance building; the real station is underground (Line 1, 2014). The generic glass-and-steel entrance with red line colour is typed, not seen."
+    }
+  }
+}

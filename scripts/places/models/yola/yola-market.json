@@ -1,0 +1,796 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "yola-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jimeta_Modern_market.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kundushima Ben Isaac",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/yola/market.jpg",
+   "used": "Jimeta/Yola market from above: a dirt lane with dense multicoloured umbrella stalls on its west side, a long block of tan corrugated lock-ups with one green roof along the far side, sparser stalls with wooden pallets and open waste ground on the east side. Photo is of the Jimeta Modern Market area (Adamawa); Wikidata Q123369520 'Yola Market, Adamawa' has no photo of its own and the OSM match is only a nearby house, so layout is read from this photo."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 62,
+  "fovDeg": 45,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     92,
+     104
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#8f5c33",
+    "topColour": "#8f5c33"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    41,
+    40
+   ],
+   "params": {
+    "rect": [
+     14,
+     48
+    ],
+    "z0": 0.05,
+    "height": 0.05,
+    "colour": "#3a332c",
+    "topColour": "#3a332c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     104
+    ],
+    "z0": 0.05,
+    "height": 0.03,
+    "colour": "#7a4d2b",
+    "topColour": "#7a4d2b"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock0",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    -28.3,
+    -42.5
+   ],
+   "z0": 0,
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c7ab7c",
+    "material": "corrugated",
+    "rise": 1.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock1",
+   "footprint": {
+    "rect": [
+     15,
+     11
+    ]
+   },
+   "at": [
+    -30.1,
+    -31.1
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b99a6b",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock2",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    -27.6,
+    -18.3
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#cdb48a",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock3",
+   "footprint": {
+    "rect": [
+     13,
+     7
+    ]
+   },
+   "at": [
+    -27.7,
+    -7.1
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#3f8f5a",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock4",
+   "footprint": {
+    "rect": [
+     11,
+     13
+    ]
+   },
+   "at": [
+    -25.9,
+    4.1
+   ],
+   "z0": 0,
+   "height": 3.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d2bb93",
+    "material": "corrugated",
+    "rise": 1.7,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock5",
+   "footprint": {
+    "rect": [
+     13,
+     13
+    ]
+   },
+   "at": [
+    -27.9,
+    17.9
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a98c62",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock6",
+   "footprint": {
+    "rect": [
+     11,
+     9
+    ]
+   },
+   "at": [
+    -26.8,
+    30.1
+   ],
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c7ab7c",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lock7",
+   "footprint": {
+    "rect": [
+     11,
+     10
+    ]
+   },
+   "at": [
+    -26.8,
+    40.8
+   ],
+   "z0": 0,
+   "height": 4.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb994",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b99a6b",
+    "material": "corrugated",
+    "rise": 1.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    -16.5,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 34,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "size": 2.3,
+    "colours": [
+     "#b89462",
+     "#9a9690",
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c"
+    ],
+    "jitter": 0.7
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -13.8,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 34,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "size": 2.3,
+    "colours": [
+     "#9a9690",
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c",
+     "#b89462"
+    ],
+    "jitter": 0.7
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    -11.1,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 34,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "size": 2.3,
+    "colours": [
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c",
+     "#b89462",
+     "#9a9690"
+    ],
+    "jitter": 0.7
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8.4,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 34,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "size": 2.3,
+    "colours": [
+     "#b89462",
+     "#9a9690",
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c"
+    ],
+    "jitter": 0.7
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    9.5,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 12,
+    "pitch": 6.5,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#b89462",
+     "#9a9690",
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c"
+    ],
+    "jitter": 0.9
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    13.5,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 12,
+    "pitch": 6.5,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#9a9690",
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c",
+     "#b89462"
+    ],
+    "jitter": 0.9
+   }
+  },
+  {
+   "type": "stall-row",
+   "lod": [
+    0
+   ],
+   "at": [
+    18,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "count": 6,
+    "pitch": 12,
+    "kind": "umbrella",
+    "size": 1.9,
+    "colours": [
+     "#c2b8a0",
+     "#3f6a9c",
+     "#c4622f",
+     "#7a679a",
+     "#c4a63a",
+     "#5f7a58",
+     "#a8604f",
+     "#bdb4a4",
+     "#b08a58",
+     "#3f6a9c",
+     "#b89462",
+     "#9a9690"
+    ],
+    "jitter": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.3
+      ],
+      "z0": 0.05,
+      "height": 0.3,
+      "colour": "#8a6a45",
+      "topColour": "#8a6a45"
+     }
+    },
+    "mode": "line",
+    "start": [
+     11.8,
+     -45
+    ],
+    "end": [
+     11.8,
+     45
+    ],
+    "count": 10
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.0
+      ],
+      "z0": 0.35,
+      "height": 0.1,
+      "colour": "#3f6fb5",
+      "topColour": "#3f6fb5"
+     }
+    },
+    "mode": "line",
+    "start": [
+     11.8,
+     -42
+    ],
+    "end": [
+     11.8,
+     42
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.6,
+    45
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     4.6
+    ],
+    "z0": 0.1,
+    "height": 1.6,
+    "colour": "#e8e8e4",
+    "topColour": "#e8e8e4",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.6,
+    40
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     4.2
+    ],
+    "z0": 0.1,
+    "height": 1.6,
+    "colour": "#bcd0d8",
+    "topColour": "#bcd0d8",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.6,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     4.2
+    ],
+    "z0": 0.1,
+    "height": 1.6,
+    "colour": "#2f7a62",
+    "topColour": "#2f7a62",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.6,
+    -10
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     4.4
+    ],
+    "z0": 0.1,
+    "height": 1.6,
+    "colour": "#d8dcdc",
+    "topColour": "#d8dcdc",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.6,
+    -31
+   ],
+   "params": {
+    "rect": [
+     1.9,
+     4.2
+    ],
+    "z0": 0.1,
+    "height": 1.6,
+    "colour": "#cfd3d6",
+    "topColour": "#cfd3d6",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8.4,
+    31,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 8,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "shed",
+    "roof_colour": "#4a4038",
+    "wall_colour": "#3a2f28"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    -48,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 10,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Umbrella carpet capped by the 20k triangle budget so it is sparser than the photo and colours cleaner; no waste-ground texture, people or dense wooden pallet stalls on the east side; lock-up roofs are simple gable/hip masses, not the irregular corrugated patchwork; photo may show Jimeta Modern Market area rather than the exact venue."
+ }
+}

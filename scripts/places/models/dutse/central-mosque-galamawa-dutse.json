@@ -1,0 +1,291 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "central-mosque-galamawa-dutse",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "Wikidata Q125463939 confirms a mosque exists; the nearest OSM building is 48 m2, far too small to be the mosque, so it is not used. Form is a typical Nigerian state central mosque: cream render, central dome, four corner domes, two minarets (brief low confidence)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44,
+     30
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "pointed-arch",
+    "windowRatio": 0.25,
+    "plinth": 0.8,
+    "bands": "#2f6b4f",
+    "cornice": true,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb4",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     26,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "pointed-arch",
+    "windowRatio": 0.35,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ablution-court-wall",
+   "footprint": {
+    "rect": [
+     50,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cdb4"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    9
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 10,
+    "height": 8,
+    "profile": "onion",
+    "drum": 3,
+    "drumRadius": 10,
+    "lantern": 1.5,
+    "finial": 2,
+    "colour": "#2f6b4f",
+    "drumColour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -17,
+    -10,
+    0
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 3,
+    "height": 3,
+    "profile": "hemi",
+    "drum": 1,
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    17,
+    -10,
+    0
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 3,
+    "height": 3,
+    "profile": "hemi",
+    "drum": 1,
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -17,
+    10,
+    0
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 3,
+    "height": 3,
+    "profile": "hemi",
+    "drum": 1,
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    17,
+    10,
+    0
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 3,
+    "height": 3,
+    "profile": "hemi",
+    "drum": 1,
+    "colour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -26,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "radius": 1.3,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f7f4ee",
+    "capColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    26,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "radius": 1.3,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f7f4ee",
+    "capColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable outline exists; layout is a typical central mosque"
+ }
+}

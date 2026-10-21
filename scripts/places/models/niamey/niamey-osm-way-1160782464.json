@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-way-1160782464",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1160782464",
+   "used": "real park outline 98 x 42 m for the fenced ground; no photo found for the rides"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -46.4,
+      -18.9
+     ],
+     [
+      -45.4,
+      23
+     ],
+     [
+      22.8,
+      20.1
+     ],
+     [
+      36.7,
+      14.9
+     ],
+     [
+      45.8,
+      8.2
+     ],
+     [
+      49.7,
+      4.7
+     ],
+     [
+      51.2,
+      -20.4
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#c9ad86",
+    "slot": "sand"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -46.4,
+      -18.9
+     ],
+     [
+      -45.4,
+      23
+     ],
+     [
+      22.8,
+      20.1
+     ],
+     [
+      36.7,
+      14.9
+     ],
+     [
+      45.8,
+      8.2
+     ],
+     [
+      49.7,
+      4.7
+     ],
+     [
+      51.2,
+      -20.4
+     ],
+     [
+      -46.4,
+      -18.9
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#4a8fc9"
+   }
+  },
+  {
+   "type": "ferris-wheel",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 9,
+    "gondolas": 12
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -18,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9534f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -8,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#4a8fc9"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d9534f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -22,
+    -17,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#d9534f",
+     "#4a8fc9"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    -8,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     6,
+     24
+    ],
+    "height": 0.05,
+    "colour": "#b69a74"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    12,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     26,
+     2.4
+    ],
+    "height": 0.05,
+    "colour": "#b69a74"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -40,
+     14
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     16
+    ],
+    "height": 7
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -5,
+     18
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; ride set is only a ferris wheel, kiosks and a fence"
+ }
+}

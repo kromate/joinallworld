@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-way-638398364",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/638398364",
+   "used": "real quadrilateral park outline (133 x 121 m, scaled 0.68 to fit the scene clamp)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: neighbourhood park of grass and shade trees with paths and a pavilion; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -54.2,
+      25.0
+     ],
+     [
+      -15.8,
+      -55.9
+     ],
+     [
+      58.7,
+      -20.7
+     ],
+     [
+      8.6,
+      55.8
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#5a8a40"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.14
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      25
+     ],
+     [
+      -5,
+      -5
+     ],
+     [
+      55,
+      -30
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#d3cfc0"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.14
+   ],
+   "params": {
+    "points": [
+     [
+      -20,
+      -65
+     ],
+     [
+      -5,
+      -5
+     ],
+     [
+      10,
+      60
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#d3cfc0"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    -5,
+    -5,
+    0.14
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "border": 1,
+    "colour": "#d3cfc0",
+    "border_colour": "#efeadb"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    -5,
+    -5,
+    0.14
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "park-pavilion",
+   "at": [
+    30,
+    -18,
+    0.12
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#9a4a38"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -30,
+    3,
+    0.14
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "width": 70,
+    "depth": 70,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 7,
+    "max_height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; outline real, bandstand and pavilion positions inferred from the brief."
+ }
+}

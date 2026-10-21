@@ -1,0 +1,1566 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "abidjan",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "abidjan",
+    "climate": "rainforest",
+    "vernacular": "Lagoon city of towers and low-rise: the Plateau CBD has 1970s-80s concrete and glass office towers (Little Manhattan) over the Ebrie Lagoon; Cocody, Marcory and Treichville are 2-4 storey painted-render blocks, colonial-era grid streets and villas with corrugated or tile roofs, set among palms and broadleaf trees on humid, red-brown ground.",
+    "wallColours": [
+      "#f2ede2",
+      "#d9c9a8",
+      "#c7ccd0",
+      "#a8b4bc",
+      "#b97a56",
+      "#e8dcc0"
+    ],
+    "roofColours": [
+      "#8a4a35",
+      "#6b7278",
+      "#9aa3a8",
+      "#3f5a4a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "glass-curtain",
+      "render",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "concrete",
+      "clay-tile",
+      "corrugated"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Modernist monuments with strong geometry (triangular cathedral, tall concrete cross), brise-soleil and balcony bands on 1970s blocks, colourful ceramic panels and Ivorian motifs, Fokker-plane and lagoon-front landmarks; white and orange-white-green national colours on public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Abidjan",
+        "what": "Plateau skyscrapers and CCIA tower (1982), Cocody colonial-style villas, Treichville colonial grid, tropical wet-dry Koppen Aw climate, Banco forest"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Plateau,_Abidjan",
+        "what": "Plateau described as Little Manhattan: functionalist office towers with modernist monuments such as the cathedral"
+      }
+    ]
+  },
+  "places": {
+    "abidjan-airport-abidjan-airport": {
+      "venueId": "abidjan-airport-abidjan-airport",
+      "city": "abidjan",
+      "name": "Aéroport international Félix Houphouët-Boigny d'Abidjan",
+      "archetype": "airport-terminal",
+      "subject": "The extended international terminal at Port-Bouet seen from the forecourt, a long low glass-and-render block with a canopy and a control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe4e6",
+          "#c9cfd2",
+          "#f2f0ea"
+        ],
+        "roofColour": "#a9b0b4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s refurbishment",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Félix-Houphouët-Boigny_International_Airport",
+          "what": "International terminal extended from ~11,000 m2 to ~26,000 m2 after 2004 damage; check-in hall, gates, lounge; new forecourt car park; hotels on site"
+        }
+      ],
+      "notes": "Scale taken from the 26,000 m2 floor area; storeys, facade colours and bridge count are typed estimates (article gives no appearance). Recognisable as a long low pale terminal with glazed front and palm-lined forecourt."
+    },
+    "abidjan-banco-national-park": {
+      "venueId": "abidjan-banco-national-park",
+      "city": "abidjan",
+      "name": "Banco National Park",
+      "archetype": "park-landscape",
+      "subject": "Edge of the Banco primary forest: a forest-gate entrance with a small timber ranger pavilion and trail head in tall dense tropical trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a5f42",
+          "#4f6b3a",
+          "#d9d2bf"
+        ],
+        "roofColour": "#7a7f82",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1953 park, modern trails",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Parc_national_du_Banco",
+          "what": "~3,438 ha park, ~600 ha primary forest in a ~7.8 km square, mahogany and avodire trees, Gbangbo river, hiking and cycling trails"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Banco_National_Park",
+          "what": "Primary forest in central Abidjan along the Highway North, Attecoube"
+        }
+      ],
+      "notes": "The park is a huge dense tropical forest with red laterite tracks; the visitor entrance structures are not described in sources so the gate and pavilion are generic. Mood: tall broadleaf canopy, laterite path."
+    },
+    "abidjan-cap-nord": {
+      "venueId": "abidjan-cap-nord",
+      "city": "abidjan",
+      "name": "Cap Nord",
+      "archetype": "mall",
+      "subject": "Cap Nord shopping centre in Cocody: a two-storey beige-rendered mall with a covered entrance and car park (appearance typed from city style)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d6bd",
+          "#9fb0b8",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Cocody district with modern shopping and upscale residential areas; no building-specific description found"
+        }
+      ],
+      "notes": "No description of the building was found; typed from the Abidjan style and from the game kind (mall)."
+    },
+    "abidjan-clinic": {
+      "venueId": "abidjan-clinic",
+      "city": "abidjan",
+      "name": "Centre Hospitalier Universitaire de Treichville",
+      "archetype": "hospital",
+      "subject": "One three-storey pavilion block of the Treichville teaching hospital, part of a 42 ha campus of 101 separate buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe3d0",
+          "#b8bdb9",
+          "#9c3a2f"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1938 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_hospitalier_universitaire_de_Treichville",
+          "what": "Pavilion-style hospital opened 1938 as annex of the Plateau hospital; 42 ha, 101 buildings, 658 beds, emergency entrance"
+        }
+      ],
+      "notes": "Pavilion layout is documented; facade colour and storeys are a typed estimate for mid-century tropical hospital blocks with open galleries."
+    },
+    "abidjan-community-notices": {
+      "venueId": "abidjan-community-notices",
+      "city": "abidjan",
+      "name": "Bloc Ministériel",
+      "archetype": "civic-palace",
+      "subject": "A Plateau ministry block: a long ten-storey concrete slab with rhythmic window bands and sun breakers (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 22,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfd0cb",
+          "#7d8c96",
+          "#f0efe9"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Plateau,_Abidjan",
+          "what": "Plateau hosts many ministries in functionalist office towers from the 1960s-70s"
+        }
+      ],
+      "notes": "Exact appearance not found. Typed from the Plateau functionalist ministry-tower pattern."
+    },
+    "abidjan-community-voting-game": {
+      "venueId": "abidjan-community-voting-game",
+      "city": "abidjan",
+      "name": "Place des Martyrs",
+      "archetype": "park-landscape",
+      "subject": "A paved city square with a central memorial figure, flagpoles and low plantings (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d8d2c4",
+          "#8f948f",
+          "#2f6b3a"
+        ],
+        "roofColour": "#8d9396",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "No place-specific description found; typed from city style"
+        }
+      ],
+      "notes": "Nothing findable on the square beyond its name; typed as a paved memorial square."
+    },
+    "abidjan-community-workshop": {
+      "venueId": "abidjan-community-workshop",
+      "city": "abidjan",
+      "name": "Université Félix Houphouët-Boigny",
+      "archetype": "campus-block",
+      "subject": "A Cocody campus teaching block: a long three-storey concrete slab with open galleries and sun breakers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc9bb",
+          "#b49a74",
+          "#f1ede4"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Cocody area with 1970s-80s Europe-style blocks; university campus described only by location"
+        }
+      ],
+      "notes": "Campus appearance not found in sources; typed from 1960s-70s Ivorian modernist campus blocks."
+    },
+    "abidjan-market-game": {
+      "venueId": "abidjan-market-game",
+      "city": "abidjan",
+      "name": "Grand Marché de Treichville",
+      "archetype": "market-hall",
+      "subject": "Treichville central market: a big two-storey concrete hall with shaded stalls around it and awnings along the street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9cfb8",
+          "#c0742f",
+          "#a89f8d"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Treichville",
+          "what": "Treichville laid out on a colonial grid, home to the port, shops and landmarks; the market itself is not described"
+        }
+      ],
+      "notes": "Appearance not retrievable; typed. Busy covered hall with stalls spilling onto surrounding streets."
+    },
+    "abidjan-meal-stop": {
+      "venueId": "abidjan-meal-stop",
+      "city": "abidjan",
+      "name": "Le Débarcadère",
+      "archetype": "restaurant",
+      "subject": "A lagoon-side restaurant terrace at the Treichville waterfront: an open terrace with umbrellas and a small pier (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece4d0",
+          "#8a6a46",
+          "#2f6b8f"
+        ],
+        "roofColour": "#7b6a58",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Treichville",
+          "what": "Treichville faces the Ebrie Lagoon; no restaurant description found"
+        }
+      ],
+      "notes": "Name suggests a landing stage on the lagoon; nothing on the building was found so it is a typed lagoon terrace."
+    },
+    "abidjan-mosquee-aboubakar-sidik": {
+      "venueId": "abidjan-mosquee-aboubakar-sidik",
+      "city": "abidjan",
+      "name": "Mosquée Aboubakar Sidik",
+      "archetype": "mosque-domed",
+      "subject": "A large modern mosque: a cream-white prayer hall with a central green-capped dome and a tall slender minaret (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f1ece0",
+          "#2f7a5a",
+          "#c9b98a"
+        ],
+        "roofColour": "#2f7a5a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "No mosque-specific description found; Abidjan mosque styles typed from city style"
+        }
+      ],
+      "notes": "Sources not found for this mosque; dome and minaret counts are a typed guess for a neighbourhood congregational mosque."
+    },
+    "abidjan-musee-des-civilisations": {
+      "venueId": "abidjan-musee-des-civilisations",
+      "city": "abidjan",
+      "name": "Musée des Civilisations de Côte d’Ivoire",
+      "archetype": "museum-theatre",
+      "subject": "The 1940s colonial exhibition building in Plateau: a two-storey pale colonial block with a deep veranda and hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe6d0",
+          "#b6845a",
+          "#8c3f2f"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1940s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Musée_des_civilisations_de_Côte_d'Ivoire",
+          "what": "Existing building turned into artisan centre by governor Deschamps in 1942; main hall became exhibition hall 1944; site about 2 ha in Plateau"
+        }
+      ],
+      "notes": "Date and 2 ha site are sourced; style and colours are typed for a 1940s colonial public building."
+    },
+    "abidjan-orcaland": {
+      "venueId": "abidjan-orcaland",
+      "city": "abidjan",
+      "name": "Orcaland",
+      "archetype": "park-landscape",
+      "subject": "A small leisure park near the Marcory lagoon edge: a ticket gate, a few pavilions and kiosks around a paved square (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6efe8",
+          "#2c8fb0",
+          "#f2b543"
+        ],
+        "roofColour": "#2c8fb0",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Marcory is a mainly residential district with leisure areas; no Orcaland description found"
+        }
+      ],
+      "notes": "Nothing found about the attraction; typed as a colourful leisure-park entrance."
+    },
+    "abidjan-palais-de-la-culture": {
+      "venueId": "abidjan-palais-de-la-culture",
+      "city": "abidjan",
+      "name": "Palais de la Culture d'Abidjan",
+      "archetype": "museum-theatre",
+      "subject": "The 1999 postmodern cultural palace on the Treichville lagoon front: a broad stepped complex of halls with terraces and an open-air theatre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "stepped",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe3d3",
+          "#4f7a8f",
+          "#b0702f"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "postmodern",
+      "era": "1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Palais_de_la_culture_d'Abidjan",
+          "what": "Postmodern, architect Francis Sossah, built 1996-99 by Gansu Overseas Engineering; 12,900 m2; halls of 500 and 1,000 seats, 1,500 m2 rehearsal room; 2,500-seat open-air theatre; on lagoon between two bridges; Fokker F27 library in grounds"
+        }
+      ],
+      "notes": "Size and style are sourced; facade colours are a typed guess. Distinctive extras: a Fokker F27 plane used as a library in the grounds, lagoon side with two bridges."
+    },
+    "abidjan-place-de-la-republique": {
+      "venueId": "abidjan-place-de-la-republique",
+      "city": "abidjan",
+      "name": "Place de la République",
+      "archetype": "park-landscape",
+      "subject": "A broad Plateau civic square: a paved plaza edged by palms, with a central monument and flags (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d9d3c6",
+          "#8c918f",
+          "#c28a3a"
+        ],
+        "roofColour": "#8d9396",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Plateau,_Abidjan",
+          "what": "Plateau is a 1960s-70s town-planning model with office towers and ministries around public squares"
+        }
+      ],
+      "notes": "No square-specific description found; typed as a Plateau civic plaza."
+    },
+    "abidjan-playce-marcory": {
+      "venueId": "abidjan-playce-marcory",
+      "city": "abidjan",
+      "name": "PlaYce Marcory",
+      "archetype": "mall",
+      "subject": "A modern three-storey mall with a glazed atrium front and roof terrace in Marcory (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e5e9eb",
+          "#c7502f",
+          "#4a5560"
+        ],
+        "roofColour": "#adb2b5",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Marcory has upscale residential and commercial areas; no building description found"
+        }
+      ],
+      "notes": "Appearance not sourced; typed as a new-generation glazed mall, distinct from the older, lower Polygone and Cap Nord."
+    },
+    "abidjan-polygone": {
+      "venueId": "abidjan-polygone",
+      "city": "abidjan",
+      "name": "Centre comercial Polygone",
+      "archetype": "mall",
+      "subject": "Polygone: a long two-storey shopping centre with a covered walkway and warm orange-beige render (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e4c9a0",
+          "#a85a35",
+          "#f3eee2"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Marcory commercial area; no Polygone description found"
+        }
+      ],
+      "notes": "No appearance source; typed with arcaded walkway and tile roof to differ from PlaYce and Cap Nord."
+    },
+    "abidjan-quiet-reflection": {
+      "venueId": "abidjan-quiet-reflection",
+      "city": "abidjan",
+      "name": "Cathédrale Saint Paul d'Abidjan",
+      "archetype": "church-modern",
+      "subject": "The 1985 triangular cathedral on its hill: a concrete wedge body under a fabric-like roof, with a 70 m cross-shaped tower and seven stays, and terracotta panels on the steps from the lagoon",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 65,
+        "storeys": 5,
+        "height_m": 36,
+        "roof": "tensile",
+        "wings": 3
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "limestone",
+        "colours": [
+          "#d8d4cb",
+          "#b5603f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#ece9e2",
+        "roofMaterial": "membrane",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tall concrete cross 70 m with side wings"
+        },
+        {
+          "id": "bell-tower",
+          "count": 3,
+          "note": "three towers carrying the triangle"
+        },
+        {
+          "id": "stained-glass",
+          "count": 6
+        },
+        {
+          "id": "mosaic",
+          "count": 14,
+          "note": "fourteen terracotta ceramic panels on the stairs"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "grand steps from the lagoon"
+        },
+        {
+          "id": "mast",
+          "count": 7,
+          "note": "seven steel stay cables"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1985",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Paul%27s_Cathedral,_Abidjan",
+          "what": "Architect Aldo Spirito 1980-85; tall concrete cross with wings, seven cables to triangular main building; concrete, steel, travertine, stained glass; 14 terracotta ceramic panels on the lagoon steps; holds 5,000"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cathédrale_Saint-Paul_d'Abidjan",
+          "what": "Triangular 4,200 m2 building, 70 m cross-shaped tower, three towers carry the structure with seven steel stays, roof veil recalls a tent, white interior walls, 9 ha site"
+        }
+      ],
+      "notes": "Height_m is the main body; the cross rises to 70 m. Recognisable by the triangular plan, the huge cross with arm-like wings, the taut cables, and the colourful ceramic stair panels. Built by Italian architect Aldo Spirito, 1980-85."
+    },
+    "abidjan-recreation": {
+      "venueId": "abidjan-recreation",
+      "city": "abidjan",
+      "name": "Mandela Peace Park",
+      "archetype": "park-landscape",
+      "subject": "A small lagoon-side city park: lawns, palms and winding paths with a pavilion and a memorial plaque (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9d8",
+          "#7a8c6c",
+          "#c9b98a"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Plateau lagoon-front; no park description found"
+        }
+      ],
+      "notes": "No source on the park furniture; typed as a landscaped lagoon-side garden."
+    },
+    "abidjan-stade-felix-houphouet-boigny": {
+      "venueId": "abidjan-stade-felix-houphouet-boigny",
+      "city": "abidjan",
+      "name": "Stade Félix Houphouët-Boigny",
+      "archetype": "stadium",
+      "subject": "The 1964 national stadium in Plateau after its 2020-23 renovation: a closed bowl with a full roof, curved stands and national-colour seating",
+      "form": {
+        "footprint": "oval",
+        "width_m": 215,
+        "depth_m": 185,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "tensile",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e6de",
+          "#f08a00",
+          "#1f8a3d"
+        ],
+        "roofColour": "#e8e8e6",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "full roof added in renovation"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "16.5 x 5.7 m video board"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1964 / 2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Félix_Houphouët-Boigny",
+          "what": "33,000 seats, built 1964 for the Games of Abidjan, full roof added in 2020-23 renovation by Mota-Engil, grass pitch 105 x 68 m, stands painted in national colours, 16.5 x 5.7 m video board"
+        }
+      ],
+      "notes": "Capacity/roof/colours sourced; bowl dimensions are an estimate from capacity. Orange-white-green stands are the identifying feature."
+    },
+    "abidjan-stade-robert-champroux": {
+      "venueId": "abidjan-stade-robert-champroux",
+      "city": "abidjan",
+      "name": "Stade Robert Champroux",
+      "archetype": "stadium",
+      "subject": "The Marcory neighbourhood stadium: a smaller oval bowl with open concrete stands and palms standing between them",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d0c0",
+          "#b8452f",
+          "#f1ede3"
+        ],
+        "roofColour": "#8d9396",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small covered stand"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1963-72, 2007 renovation",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_Robert-Champroux",
+          "what": "About 10,000 capacity, oval layout with palm trees between stands, synthetic pitch installed 2007, electronic scoreboard added 2010s"
+        }
+      ],
+      "notes": "Dates in the source conflict (1963 vs 1972). Much smaller than the national stadium: open stands, palms, synthetic turf."
+    },
+    "abidjan-temple-d-abidjan": {
+      "venueId": "abidjan-temple-d-abidjan",
+      "city": "abidjan",
+      "name": "Temple d’Abidjan (Côte d’Ivoire)",
+      "archetype": "shrine-small",
+      "subject": "The single-storey Abidjan Ivory Coast Temple: a white lime-plaster temple with one attached end spire topped by a gold figure and geometric Mid-Century/African motifs around doors and windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#f2eee4",
+          "#cdbf9f",
+          "#8d8a82"
+        ],
+        "roofColour": "#7d8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single attached spire topped with a statue"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "geometric motifs around doors, windows and cornices"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2020s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan_Ivory_Coast_Temple",
+          "what": "17,362 sq ft single story, one attached end spire with angel Moroni, exterior lime plaster over concrete block, Mid-Century Modern with African motifs, FFKR Architects, landscaped grounds"
+        }
+      ],
+      "notes": "Roof colour is a guess. Compare the Accra temple: that one is granite-clad, this one is white plaster."
+    },
+    "abidjan-transit": {
+      "venueId": "abidjan-transit",
+      "city": "abidjan",
+      "name": "Gare de Treichville",
+      "archetype": "transport-station",
+      "subject": "Treichville railway station: a long low platform building with a covered platform canopy and metre-gauge tracks (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc2",
+          "#a85a35",
+          "#8d9396"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1930s-50s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Treichville",
+          "what": "Treichville is served by a railway station of RAN with passenger service to Ouagadougou; no building description"
+        }
+      ],
+      "notes": "Building appearance not found; typed as a low colonial-era station block on the Abidjan-Ouagadougou line."
+    },
+    "abidjan-universite-nangui-abrogoua": {
+      "venueId": "abidjan-universite-nangui-abrogoua",
+      "city": "abidjan",
+      "name": "Université Nangui Abrogoua",
+      "archetype": "campus-block",
+      "subject": "A newer painted-render campus: a three-storey lecture block with outer galleries and orange accent bands, around a courtyard (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0e8d4",
+          "#c7691f",
+          "#9aa0a0"
+        ],
+        "roofColour": "#a24a2f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abidjan",
+          "what": "Northern Abidjan (Abobo-Adjame area) outside the Plateau; no building description found"
+        }
+      ],
+      "notes": "University of Abobo-Adjame renamed Nangui Abrogoua; appearance is typed from city style."
+    }
+  }
+}

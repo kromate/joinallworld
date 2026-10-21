@@ -1,0 +1,884 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-market-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:March%C3%A9_DANTOKPA.jpg",
+   "licence": "CC BY 2.0",
+   "author": "jbdodane",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/dantokpa1.jpg",
+   "used": "long three-level hall: pink-salmon render, teal shutter windows on the upper floor, dark open ground-floor bays, set-back louvre band with low flat sheet roof, rooftop billboards and a lattice mast, lightweight corrugated stall sheds along the front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Dantokpa.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dominik Schwarz",
+   "view": "side",
+   "file": "/tmp/places-evidence/cotonou/dantokpa2.jpg",
+   "used": "roof billboard row, louvre top storey stepped back, mast, sheet-roofed sheds at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/241551999",
+   "used": "not used as footprint (it is the whole 18 ha market); hall sized from the brief, 66 x 44 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     66,
+     44
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c98f80",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#b08070",
+    "plinth": 0.3,
+    "cornice": true,
+    "groundKind": "arcade-open"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c9a96",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "top-louvre",
+   "footprint": {
+    "rect": [
+     50,
+     26
+    ]
+   },
+   "at": [
+    -2,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 8.6,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9c3b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "louvres"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b4",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "teal-shutters",
+   "lod": [
+    0
+   ],
+   "params": {
+    "rect": [
+     58,
+     0.4
+    ],
+    "z0": 5.0,
+    "height": 1.6,
+    "colour": "#4f8f86",
+    "topColour": "#4f8f86"
+   },
+   "at": [
+    0,
+    -22.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "ground-dark",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.5
+    ],
+    "z0": 0.4,
+    "height": 3.4,
+    "colour": "#2a2623",
+    "topColour": "#2a2623"
+   },
+   "at": [
+    0,
+    -22.05
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "id": "hall-sign",
+   "at": [
+    -4,
+    -11,
+    12.2
+   ],
+   "params": {
+    "width": 30,
+    "height": 2.3,
+    "bottom": 0,
+    "colour": "#4a2f22",
+    "frameColour": "#d8c9a3",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "billboard-1",
+   "at": [
+    -24,
+    -6,
+    12.2
+   ],
+   "params": {
+    "width": 7,
+    "height": 8,
+    "bottom": 1.0,
+    "colour": "#c9a54a",
+    "frameColour": "#6b6f73",
+    "posts": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/sign-board",
+   "id": "billboard-2",
+   "at": [
+    -13,
+    -6,
+    12.2
+   ],
+   "params": {
+    "width": 7,
+    "height": 8,
+    "bottom": 1.0,
+    "colour": "#b8603a",
+    "frameColour": "#6b6f73",
+    "posts": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "core/sign-board",
+   "id": "billboard-3",
+   "at": [
+    -34,
+    -6,
+    12.2
+   ],
+   "params": {
+    "width": 7,
+    "height": 8,
+    "bottom": 1.0,
+    "colour": "#8a6f4a",
+    "frameColour": "#6b6f73",
+    "posts": true
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "market-shed",
+   "id": "front-shed",
+   "at": [
+    -12,
+    -27.5,
+    0
+   ],
+   "params": {
+    "length": 42,
+    "depth": 7,
+    "height": 3.3,
+    "roof": "shed",
+    "post_pitch": 4,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#c9c5bd"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "front-shed-b",
+   "at": [
+    28,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 6,
+    "height": 3.0,
+    "roof": "gable",
+    "post_pitch": 4,
+    "roof_colour": "#a8573a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "blue-tanks",
+   "at": [
+    34,
+    -27,
+    0
+   ],
+   "params": {
+    "kind": "ground",
+    "radius": 0.9,
+    "tankHeight": 1.8,
+    "legHeight": 0,
+    "colour": "#2f6fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-rail",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     62,
+     0.3
+    ],
+    "z0": 4.2,
+    "height": 0.5,
+    "colour": "#5a5753",
+    "topColour": "#5a5753"
+   },
+   "at": [
+    0,
+    -22.3
+   ]
+  },
+  {
+   "type": "lattice-mast",
+   "id": "mast",
+   "at": [
+    -18,
+    2,
+    12.2
+   ],
+   "params": {
+    "height": 16,
+    "baseWidth": 1.8,
+    "topWidth": 0.5,
+    "panels": 6,
+    "colour": "#8e9498",
+    "colour2": "#c9cdd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast-head",
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "z0": 28,
+    "height": 1.2,
+    "colour": "#d0d3d5",
+    "topColour": "#d0d3d5"
+   },
+   "at": [
+    -18,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lagoon",
+   "params": {
+    "rect": [
+     118,
+     30
+    ],
+    "z0": 0,
+    "height": 0.05,
+    "colour": "#4a6a6a",
+    "topColour": "#4a6a6a"
+   },
+   "at": [
+    0,
+    70
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-0",
+   "at": [
+    -52,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#9a5a3c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-1",
+   "at": [
+    -50,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#8c9094"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-2",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#3f6fa8"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-3",
+   "at": [
+    -38,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#a8573a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-4",
+   "at": [
+    -22,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#b1b4b6"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-5",
+   "at": [
+    -20,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#9a5a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-6",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#8c9094"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-7",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#3f6fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-8",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#a8573a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-9",
+   "at": [
+    4,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#b1b4b6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-10",
+   "at": [
+    20,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#9a5a3c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-11",
+   "at": [
+    22,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#8c9094"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-12",
+   "at": [
+    32,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#3f6fa8"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-13",
+   "at": [
+    34,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#a8573a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-14",
+   "at": [
+    50,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 6,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#b1b4b6"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-15",
+   "at": [
+    46,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#9a5a3c"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-16",
+   "at": [
+    -50,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#8c9094"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-17",
+   "at": [
+    50,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#3f6fa8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-18",
+   "at": [
+    -50,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#a8573a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-19",
+   "at": [
+    50,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#b1b4b6"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-20",
+   "at": [
+    -50,
+    16,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#9a5a3c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-21",
+   "at": [
+    50,
+    16,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#8c9094"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-22",
+   "at": [
+    -50,
+    30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#3f6fa8"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "lean-23",
+   "at": [
+    50,
+    30,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 11,
+    "depth": 5,
+    "height": 2.4,
+    "roof": "shed",
+    "post_pitch": 3.5,
+    "cladding": "corrugated",
+    "goods": "sacks",
+    "roof_colour": "#a8573a"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   118,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "hall reads as a plain pink block: teal shutter band is a single strip, ground-floor dark arcade hidden behind sheds; billboards are blank blocks without scaffold tilt; no real lagoon/rubbish edge visible from this camera; ground is dark asphalt stand-in for mud"
+ }
+}

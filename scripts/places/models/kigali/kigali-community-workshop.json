@@ -1,0 +1,412 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/106508241",
+   "used": "teaching block cluster outline (24 points, about 98 x 38 m, name match 30 m from the venue point)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kigali.json",
+   "used": "2-3 storey cream-render blocks with terracotta trim and red metal hip roofs, a church-style hall; no photo of the campus on Commons (only an unrelated portrait on the Wikipedia article)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     13,
+     33
+    ]
+   },
+   "at": [
+    -45,
+    2.5
+   ],
+   "z0": 0,
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0573a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-west",
+   "footprint": {
+    "rect": [
+     28,
+     15
+    ]
+   },
+   "at": [
+    -24,
+    -6
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0573a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "south",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0573a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     42,
+     8
+    ]
+   },
+   "at": [
+    11,
+    2
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0573a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    33,
+    -4
+   ],
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0573a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-tower",
+   "footprint": {
+    "rect": [
+     14,
+     20
+    ]
+   },
+   "at": [
+    38,
+    14
+   ],
+   "z0": 0,
+   "height": 10.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0573a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "church-hall",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    -34
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f3e8",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a3f2c",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -30,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.18,
+    "run": 0.5,
+    "count": 4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.2,
+    "colour": "#b0573a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "cars": [
+   {
+    "at": [
+     -6,
+     -54
+    ],
+    "yawDeg": 0,
+    "colour": "#d9d9d9"
+   },
+   {
+    "at": [
+     0,
+     -54
+    ],
+    "yawDeg": 0,
+    "colour": "#2f3a44"
+   },
+   {
+    "at": [
+     6,
+     -54
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     30,
+     -50
+    ],
+    "yawDeg": 90,
+    "colour": "#8a1f1f"
+   }
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -26
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -30
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; wings approximated as rectangles over the OSM outline, church-style hall placed by assumption."
+ }
+}

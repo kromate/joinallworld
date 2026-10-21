@@ -1,0 +1,708 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-way-81349520",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Turnpike_Lane_Mosque_-_geograph.org.uk_-_4835453.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Jim Osley",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/mos2.jpg",
+   "used": "massing: square dome hall, 3-storey side block, tall corner minaret, taller grey entrance block with green arch; yellow brick, green pointed panels, copper ribbed dome"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:London_Islamic_Cultural_Society_and_Mosque_2024-07-17.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Tom Page",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/mos1.jpg",
+   "used": "ribbed copper dome profile, white dentil cornice, green mosaic panels, open minaret lantern, black railings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/81349520",
+   "used": "overall extent and orientation"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 6,
+  "fovDeg": 42,
+  "aspect": 1.2,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     15,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8b676",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "cornice": true,
+    "parapet": 0.5,
+    "bands": "#f4f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e4d8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-1",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    -3.2,
+    -7.2
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#3f6b55",
+    "windows": "pointed-arch",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f4f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-2",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.5
+    ]
+   },
+   "at": [
+    3.2,
+    -7.2
+   ],
+   "height": 6.4,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#3f6b55",
+    "windows": "pointed-arch",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f4f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "school-block",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -17,
+    7
+   ],
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "brick",
+    "colour": "#dcbf84",
+    "windows": "pointed-arch",
+    "windowRatio": 0.14,
+    "bay": 4.2,
+    "cornice": true,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#f4f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e4d8",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     8.5,
+     10
+    ]
+   },
+   "at": [
+    13,
+    3
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#a99c8c",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "bay": 4,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8478",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-arch",
+   "footprint": {
+    "rect": [
+     5.4,
+     0.9
+    ]
+   },
+   "at": [
+    13,
+    -2.4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9b9b0",
+    "windows": "pointed-arch",
+    "windowRatio": 0.4,
+    "faces": {
+     "front": "pointed-arch",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#3f6b55"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8b9ad"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    8.5
+   ],
+   "params": {
+    "profile": [
+     [
+      6.8,
+      0,
+      "#e8e2d4"
+     ],
+     [
+      6.8,
+      1.0,
+      "#e8e2d4"
+     ],
+     [
+      7.0,
+      1.2,
+      "#e8e2d4"
+     ],
+     [
+      6.5,
+      1.6,
+      "#b3814f"
+     ],
+     [
+      6.9,
+      2.8,
+      "#b3814f"
+     ],
+     [
+      6.6,
+      4.2,
+      "#b3814f"
+     ],
+     [
+      5.7,
+      5.6,
+      "#b3814f"
+     ],
+     [
+      4.4,
+      6.9,
+      "#b3814f"
+     ],
+     [
+      2.8,
+      8.0,
+      "#b3814f"
+     ],
+     [
+      1.4,
+      8.8,
+      "#b3814f"
+     ],
+     [
+      0.5,
+      9.2,
+      "#b3814f"
+     ],
+     [
+      0,
+      9.3,
+      "#b3814f"
+     ]
+    ],
+    "segments": 12,
+    "colour": "#b3814f",
+    "smooth": false,
+    "crease": 20
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    17.7
+   ],
+   "params": {
+    "profile": [
+     [
+      0.3,
+      0,
+      "#c9a24a"
+     ],
+     [
+      0.12,
+      0.5,
+      "#c9a24a"
+     ],
+     [
+      0.4,
+      0.8,
+      "#c9a24a"
+     ],
+     [
+      0.1,
+      1.6,
+      "#c9a24a"
+     ]
+    ],
+    "segments": 8,
+    "colour": "#c9a24a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "minaret-shaft",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    9,
+    -6.5
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#d3ae66",
+    "windows": "none",
+    "windowRatio": 0,
+    "bay": 8,
+    "bands": "#f4f1ea"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f1ea",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    9,
+    -6.5,
+    15
+   ],
+   "params": {
+    "profile": [
+     [
+      1.8,
+      0,
+      "#f4f1ea"
+     ],
+     [
+      1.8,
+      0.4,
+      "#f4f1ea"
+     ],
+     [
+      1.25,
+      0.4,
+      "#e9e4d8"
+     ],
+     [
+      1.25,
+      2.6,
+      "#e9e4d8"
+     ],
+     [
+      1.5,
+      2.6,
+      "#f4f1ea"
+     ]
+    ],
+    "segments": 10,
+    "colour": "#f4f1ea",
+    "arcade": {
+     "count": 6,
+     "width": 0.6,
+     "height": 1.9,
+     "sill": 0.4,
+     "shape": "pointed"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    9,
+    -6.5,
+    17.6
+   ],
+   "params": {
+    "profile": [
+     [
+      1.7,
+      0,
+      "#f4f1ea"
+     ],
+     [
+      1.7,
+      0.3,
+      "#f4f1ea"
+     ],
+     [
+      1.4,
+      0.3,
+      "#b3814f"
+     ],
+     [
+      1.2,
+      0.9,
+      "#b3814f"
+     ],
+     [
+      0.7,
+      1.5,
+      "#b3814f"
+     ],
+     [
+      0.3,
+      1.8,
+      "#b3814f"
+     ],
+     [
+      0.05,
+      2.0,
+      "#b3814f"
+     ],
+     [
+      0.05,
+      3.1,
+      "#c9a24a"
+     ]
+    ],
+    "segments": 12,
+    "colour": "#b3814f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -5,
+    -11.5,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.2,
+    "thickness": 0.25,
+    "kind": "railing",
+    "pillarEvery": 100,
+    "colour": "#25272a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    18.5
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12
+    },
+    "arc": {
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": -60,
+     "endDeg": 240
+    },
+    "plane": "xz",
+    "colour": "#c9a24a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    9,
+    -6.5,
+    20.4
+   ],
+   "params": {
+    "section": {
+     "circle": 0.07
+    },
+    "arc": {
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 0.5,
+     "startDeg": -60,
+     "endDeg": 240
+    },
+    "plane": "xz",
+    "colour": "#c9a24a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "start": [
+     -5,
+     -11.5
+    ],
+    "end": [
+     19,
+     -11.5
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.6,
+        0.6
+       ],
+       "height": 1.7,
+       "colour": "#d3ae66",
+       "windows": "none"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     3,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    -7.6
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#d8b676",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3814f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.1,
+    0
+   ],
+   "params": {
+    "width": 1.0,
+    "height": 2.0,
+    "bottom": 4.5,
+    "colour": "#2a2a2a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.2,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#cfd8c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3.2,
+    -7.6,
+    0
+   ],
+   "params": {
+    "width": 0.9,
+    "height": 1.6,
+    "bottom": 3.4,
+    "colour": "#cfd8c8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Ribbed copper dome now taller on white drum, minaret lantern, brick piers with railings, entrance recess and small apse added; crescent finials too small to read, diamond tile inlays only approximated by small boards, dome ribs are faceted not true ribs, school block windows simpler."
+ }
+}

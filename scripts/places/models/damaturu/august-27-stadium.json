@@ -1,0 +1,572 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:August_27th_Stadium_Football_Pitch,_Damaturu,_Yobe_State.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Escanor247",
+   "view": "side",
+   "file": "/tmp/places-evidence/damaturu/august-27-stadium-1.jpg",
+   "used": "long low green-roofed covered stand on thin posts, yellow/red/blue seat blocks, white railing, red track, striped green pitch, lattice floodlight mast with square lamp head, low white open terrace right"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_of_August_27th_Stadium_Football_Pitch,_Damaturu,_Yobe_State.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Escanor247",
+   "view": "side",
+   "used": "dark flat-roofed stand with glazed press box, white perimeter wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/219271106",
+   "used": "pitch (92 x 55 m containing outline) sets stadium centre; pitch drawn at standard 105x68"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 0.75,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "track",
+   "params": {
+    "rect": [
+     134,
+     92
+    ],
+    "height": 0.06,
+    "colour": "#a0463a",
+    "topColour": "#a0463a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     108,
+     68
+    ],
+    "z0": 0.06,
+    "height": 0.06,
+    "colour": "#2f7a38",
+    "topColour": "#2f7a38"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -43.2,
+     0
+    ],
+    "end": [
+     43.2,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       10.8,
+       68
+      ],
+      "z0": 0.12,
+      "height": 0.03,
+      "colour": "#3f8f45",
+      "topColour": "#3f8f45"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "halfway",
+   "params": {
+    "rect": [
+     0.4,
+     68
+    ],
+    "z0": 0.15,
+    "height": 0.03,
+    "colour": "#f2f2ee",
+    "topColour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "revolve",
+   "params": {
+    "profile": [
+     [
+      9.0,
+      0.15,
+      "#f2f2ee"
+     ],
+     [
+      9.4,
+      0.15,
+      "#f2f2ee"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     45,
+     52
+    ],
+    "end": [
+     -45,
+     52
+    ],
+    "rows": 9,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "seatColours": [
+     "#d4b23a",
+     "#c0392b",
+     "#2c6fa8"
+    ],
+    "blocks": 3,
+    "concreteColour": "#d9d6ce",
+    "underColour": "#b9b4aa",
+    "under": "open",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    60,
+    6.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 84,
+    "depth": 18,
+    "height": 6.5,
+    "thickness": 1.0,
+    "columns": 8,
+    "colour": "#2b2f2e",
+    "edgeColour": "#1c1f1e",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "press-box",
+   "at": [
+    0,
+    57.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     5
+    ],
+    "z0": 2.4,
+    "height": 4.0,
+    "colour": "#3a5a5a",
+    "topColour": "#2b2f2e"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -45,
+     -52
+    ],
+    "end": [
+     45,
+     -52
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "seatColour": "#e8e8e4",
+    "concreteColour": "#e2e0da",
+    "underColour": "#c9c6be",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     72,
+     -38
+    ],
+    "end": [
+     72,
+     38
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#e8e8e4",
+    "concreteColour": "#e2e0da",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -72,
+     38
+    ],
+    "end": [
+     -72,
+     -38
+    ],
+    "rows": 4,
+    "rise": 0.4,
+    "run": 0.8,
+    "firstHeight": 0.6,
+    "seatColour": "#e8e8e4",
+    "concreteColour": "#e2e0da",
+    "under": "open"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "wall",
+    "height": 2.2,
+    "colour": "#eeeeea",
+    "points": [
+     [
+      -76,
+      -56
+     ],
+     [
+      76,
+      -56
+     ],
+     [
+      76,
+      62
+     ],
+     [
+      -76,
+      62
+     ],
+     [
+      -76,
+      -56
+     ]
+    ],
+    "pillarEvery": 0
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -76.0,
+    -53.199999999999996,
+    0
+   ],
+   "params": {
+    "colour": "#7d8588",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    76.0,
+    -53.199999999999996,
+    0
+   ],
+   "params": {
+    "colour": "#7d8588",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -76.0,
+    58.9,
+    0
+   ],
+   "params": {
+    "colour": "#7d8588",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    76.0,
+    58.9,
+    0
+   ],
+   "params": {
+    "colour": "#7d8588",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -80,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 22,
+    "height": 2,
+    "colour": "#444a4d",
+    "topColour": "#444a4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    80,
+    -56,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 22,
+    "height": 2,
+    "colour": "#444a4d",
+    "topColour": "#444a4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -80,
+    62,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 22,
+    "height": 2,
+    "colour": "#444a4d",
+    "topColour": "#444a4d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    80,
+    62,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     3
+    ],
+    "z0": 22,
+    "height": 2,
+    "colour": "#444a4d",
+    "topColour": "#444a4d"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3,
+    "bottom": 0.4,
+    "colour": "#2f6b4f",
+    "posts": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "railing",
+    "height": 1.1,
+    "colour": "#f2f2ee",
+    "points": [
+     [
+      -67,
+      -46
+     ],
+     [
+      67,
+      -46
+     ],
+     [
+      67,
+      46
+     ],
+     [
+      -67,
+      46
+     ],
+     [
+      -67,
+      -46
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -95,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     95,
+     20
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "august-27-stadium",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "camera is a low pitch-level view so the render shows the whole stadium small; stripes, dark canopy, glazed press box and square-head masts now present; stripe tones and exact stand height only approximate"
+ }
+}

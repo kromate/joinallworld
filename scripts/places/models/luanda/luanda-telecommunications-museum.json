@@ -1,0 +1,192 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-telecommunications-museum",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/637669776",
+   "used": "nearest unnamed building 61 m away (123 m2): judged unreliable and NOT used for the footprint; no photo or building description found (web search and Commons)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dec9",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "glassColour": "#5a7384",
+    "plinth": 0.5,
+    "bands": "#f3efe6",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9190",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -5,
+    -12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b5aa",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9190",
+    "parapet": 0.2,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-wing",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    20,
+    -4
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a7384",
+    "windows": "none",
+    "bands": "#f3efe6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9190",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -24,
+    8,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "baseWidth": 2.6,
+    "topWidth": 0.6,
+    "panels": 9,
+    "colour": "#c8362f",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#5a7384"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or description of the real building found; massing, colours and mast are typical of a 1980s modernist telecom building from the brief, not verified"
+ }
+}

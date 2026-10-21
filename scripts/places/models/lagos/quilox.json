@@ -1,0 +1,417 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: two-storey Victoria Island nightclub, dark facade, purple and gold trim, canopy, queue barriers; no photo or OSM found (Commons has no files)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     36,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2a2a35",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bands": "#b06ad8",
+    "plinth": 0.3,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "panels",
+      "faces": [
+       "front"
+      ],
+      "size": [
+       1.6,
+       1.2
+      ],
+      "colours": [
+       "#2a2a35",
+       "#34344a",
+       "#2a2a35"
+      ],
+      "slits": {
+       "fraction": 0.12,
+       "colour": "#8a4fb0"
+      },
+      "floors": "upper"
+     },
+     {
+      "type": "fins",
+      "faces": [
+       "left",
+       "right"
+      ],
+      "spacing": 2.4,
+      "colour": "#8a4fb0",
+      "depth": 0.35
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a42",
+    "overhang": 0.5,
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-plant",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    10,
+    6
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#3a3a42",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2a35"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "colour": "#3a3a42"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -24,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-frontage",
+   "footprint": {
+    "rect": [
+     22,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -13.2
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#2a2a35",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4a82f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10,
+     -14.6,
+     0.5
+    ],
+    "end": [
+     10,
+     -14.6,
+     0.5
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 13.5,
+      "colour": "#d4a82f"
+     }
+    },
+    "lod2Step": 11
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -9,
+     -14.4,
+     0.5
+    ],
+    "end": [
+     9,
+     -14.4,
+     0.5
+    ],
+    "count": 10,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 12,
+      "colour": "#b06ad8"
+     }
+    },
+    "lod2Step": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.1,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     36.4,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b06ad8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.1,
+    9.6
+   ],
+   "params": {
+    "rect": [
+     36.4,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#d4a82f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    12.1,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     36.4,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#b06ad8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    18.1,
+    0,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     24.4
+    ],
+    "height": 0.9,
+    "colour": "#b06ad8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18.1,
+    0,
+    5.5
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     24.4
+    ],
+    "height": 0.9,
+    "colour": "#b06ad8"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -18.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5,
+    "height": 4.5,
+    "colour": "#d4a82f"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.7,
+      0.8
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "centre": [
+      0,
+      0
+     ],
+     "radius": 3.5,
+     "startDeg": 0,
+     "endDeg": 180
+    },
+    "colour": "#d4a82f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -14.8,
+    15
+   ],
+   "params": {
+    "width": 10,
+    "height": 2,
+    "bottom": 0,
+    "colour": "#2a2a35",
+    "frameColour": "#d4a82f"
+   }
+  },
+  {
+   "type": "queue-posts",
+   "at": [
+    -5,
+    -21,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spacing": 1.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "quilox",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo or OSM; fin-wall frontage, neon bands, gold portal canopy and queue lane from brief only."
+ }
+}

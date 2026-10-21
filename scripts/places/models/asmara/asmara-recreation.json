@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/81897918",
+   "used": "leisure=park polygon about 63x60 m (containing match); the brief's government-office reading contradicts the OSM tag so it is modelled as the park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#7fa35a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa35a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-x",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     3
+    ],
+    "z0": 0.25,
+    "height": 0.08,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path-y",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     3,
+     56
+    ],
+    "z0": 0.25,
+    "height": 0.08,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "bandstand",
+   "id": "bandstand",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "radius": 4.2,
+    "height": 3.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    -22,
+    18
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d99b82",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "fence-s",
+   "at": [
+    0,
+    -29,
+    0
+   ],
+   "params": {
+    "length": 62
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp1",
+   "at": [
+    8,
+    8,
+    0.3
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "id": "lamp2",
+   "at": [
+    -8,
+    -8,
+    0.3
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -28,
+     26
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   85
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: layout of paths, bandstand and kiosk is plausible not observed."
+ }
+}

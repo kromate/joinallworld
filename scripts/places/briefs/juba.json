@@ -1,0 +1,1519 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "juba",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "juba",
+    "climate": "savanna",
+    "vernacular": "Fast-grown capital on the White Nile: single-storey painted-render or cement-block houses with corrugated-iron roofs behind walls, round thatched tukuls on the outskirts, a few 1930s-40s Greek-built colonial blocks downtown (Juba Hotel, Central Bank), NGO compounds and shipping-container offices, red laterite roads and mango, neem and palm shade trees.",
+    "wallColours": [
+      "#e6dcc4",
+      "#cdb68e",
+      "#b8553a",
+      "#f2eee6",
+      "#a79c8a",
+      "#8aa3a8"
+    ],
+    "roofColours": [
+      "#7a3a2e",
+      "#4f7a54",
+      "#8a8f94",
+      "#3d5f86",
+      "#b59b60"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "brick",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Very little ornament: painted perimeter walls and gates, blank signboards, bright NGO and telecom paint, thatch conical roofs on tukuls, and 1930s-40s Greek-built shop fronts with shaded verandas downtown.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Juba",
+        "what": "tropical wet-and-dry climate; Greek merchants built many structures downtown (Juba Hotel mid-1930s, Central Bank mid-1940s); Bailey bridge over the White Nile"
+      }
+    ]
+  },
+  "places": {
+    "juba-airport-juba-airport": {
+      "venueId": "juba-airport-juba-airport",
+      "city": "juba",
+      "name": "Juba International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Juba airport terminal: a new smaller Chinese-built terminal inaugurated 2018, a long low block with a broad flat canopy facing the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4da",
+          "#3d5f86",
+          "#c9c4b6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba_International_Airport",
+          "what": "new smaller terminal built by the Chinese on the site of the original, inaugurated 29 October 2018; before that two adjacent tents; runway 3,100 m x 45 m"
+        }
+      ],
+      "notes": "Date and builder sourced; the facade/size are inferred from similar compact Chinese-built terminals in the region (not described). Previously tents, so no historic terminal to model."
+    },
+    "juba-clinic": {
+      "venueId": "juba-clinic",
+      "city": "juba",
+      "name": "Kwerjik Luri PHCU",
+      "archetype": "hospital",
+      "subject": "A rural primary health care unit: a short single-storey row of rooms with a veranda and a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#4f7a54",
+          "#a79c8a"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s-2010s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Primary Health Care Unit north of Juba; NGO-style single-storey clinic with a water tank. Nothing specific found."
+    },
+    "juba-community-notices": {
+      "venueId": "juba-community-notices",
+      "city": "juba",
+      "name": "PABX",
+      "archetype": "civic-small",
+      "subject": "A small telephone-exchange building: a squat concrete block with a roof mast and a perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#5b6670",
+          "#a79c8a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "PABX = private automatic branch exchange; probably a small telecom building. No source found; modelled with a mast."
+    },
+    "juba-community-voting-game": {
+      "venueId": "juba-community-voting-game",
+      "city": "juba",
+      "name": "Juba City Council - Mayor's Office",
+      "archetype": "civic-small",
+      "subject": "Juba City Council offices: a modest two-storey painted block with a covered entrance and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe6cf",
+          "#3d5f86",
+          "#a79c8a"
+        ],
+        "roofColour": "#4f7a54",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Location is in the downtown area; no description found. A hip-roofed council block in cream with green roof is typical for the town."
+    },
+    "juba-community-workshop": {
+      "venueId": "juba-community-workshop",
+      "city": "juba",
+      "name": "University of Juba",
+      "archetype": "campus-block",
+      "subject": "The University of Juba main campus: several long two-storey teaching blocks and a library around a lawn",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e8d4",
+          "#2f5d8a",
+          "#b8a98a"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1975 (institution); buildings 1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Juba",
+          "what": "founded 1975, first students 1977; urban campus in downtown Juba; ~40,000 students; 23 schools; buildings not described"
+        }
+      ],
+      "notes": "Institution facts only, no building description. Relocated to Khartoum during the civil war, so structures date from the 1970s with later additions."
+    },
+    "juba-market-game": {
+      "venueId": "juba-market-game",
+      "city": "juba",
+      "name": "Gudele Market",
+      "archetype": "market-open",
+      "subject": "A large unplanned open market on the outskirts: rows of corrugated-roofed stalls and tarpaulin awnings on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a79c8a",
+          "#b8553a",
+          "#cdb68e"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 45
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "lock-ups",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Gudele is a populous suburb west of the centre; no source on the market. Bigger and more chaotic than Gabat in the model."
+    },
+    "juba-meal-stop": {
+      "venueId": "juba-meal-stop",
+      "city": "juba",
+      "name": "Sunrise Restaurant",
+      "archetype": "restaurant",
+      "subject": "A roadside restaurant: a single-storey building with a shaded patio",
+      "form": {
+        "footprint": "L",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e6c6",
+          "#d98a2b",
+          "#a79c8a"
+        ],
+        "roofColour": "#3d5f86",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Far south of the city; no source. Generic restaurant with a veranda."
+    },
+    "juba-osm-node-11847004207": {
+      "venueId": "juba-osm-node-11847004207",
+      "city": "juba",
+      "name": "BOFA",
+      "archetype": "park-landscape",
+      "subject": "A small open area with a few trees and a low pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#4f7a54",
+          "#a79c8a"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Unidentified; \"BOFA\" may be a local abbreviation. Typed as a small green space."
+    },
+    "juba-osm-node-14022544197": {
+      "venueId": "juba-osm-node-14022544197",
+      "city": "juba",
+      "name": "Upper Nile University",
+      "archetype": "campus-block",
+      "subject": "A relocated university campus in Juba: a few low painted blocks with corrugated roofs around a yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe2c0",
+          "#b8553a",
+          "#a79c8a"
+        ],
+        "roofColour": "#4f7a54",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Upper_Nile_University",
+          "what": "main campus is Malakal; listed with a Juba campus; Juba buildings not described"
+        }
+      ],
+      "notes": "The main campus is in Malakal, so this Juba site is a satellite/office; modelled small."
+    },
+    "juba-osm-node-3453472489": {
+      "venueId": "juba-osm-node-3453472489",
+      "city": "juba",
+      "name": "Curry & Hurry",
+      "archetype": "restaurant",
+      "subject": "A small Indian-style eatery in a single-storey shopfront with a menu board and plastic tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4e3b8",
+          "#c0583a",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "No source. Small eatery type; bright yellow render to differ from Sunrise."
+    },
+    "juba-osm-node-3713157073": {
+      "venueId": "juba-osm-node-3713157073",
+      "city": "juba",
+      "name": "St Mary's College",
+      "archetype": "campus-block",
+      "subject": "A Catholic secondary school: low classroom wings of painted brick with corrugated roofs around a playground",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f0e6c6",
+          "#a35438",
+          "#8aa3a8"
+        ],
+        "roofColour": "#4f7a54",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Near the centre of Juba; no description found. Mission-school look: single-storey classroom wings."
+    },
+    "juba-osm-node-3830429174": {
+      "venueId": "juba-osm-node-3830429174",
+      "city": "juba",
+      "name": "Rock City Restaurant",
+      "archetype": "restaurant",
+      "subject": "A restaurant by a rocky outcrop: a thatched-roof bar and dining pavilion on a laterite terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#cdb68e",
+          "#7a4a2e",
+          "#e6dcc4"
+        ],
+        "roofColour": "#b59b60",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Name suggests rock outcrops (granite hills around Juba) but this is a guess; nothing found. Thatched pavilion chosen to set it apart from other restaurants."
+    },
+    "juba-osm-node-5719627126": {
+      "venueId": "juba-osm-node-5719627126",
+      "city": "juba",
+      "name": "Nya ying",
+      "archetype": "shophouse",
+      "subject": "A small neighbourhood shop: a one-room block with a covered front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0d0a8",
+          "#3d5f86",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Name only; marked as a viewpoint in the game but not identifiable. Typed as a small shop."
+    },
+    "juba-osm-node-5765453653": {
+      "venueId": "juba-osm-node-5765453653",
+      "city": "juba",
+      "name": "Mobil -Bori",
+      "archetype": "shophouse",
+      "subject": "A roadside filling station: a canopy over pumps beside a small shop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#b5482f",
+          "#8a8f94"
+        ],
+        "roofColour": "#b5482f",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, no brand"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Likely a petrol station at Bori on the Juba-Nimule road; no brand marks per contract."
+    },
+    "juba-osm-node-7250053086": {
+      "venueId": "juba-osm-node-7250053086",
+      "city": "juba",
+      "name": "Rajaf training centre.",
+      "archetype": "campus-block",
+      "subject": "A training centre at Rajaf: a few single-storey classrooms and a hall in a fenced compound",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe2c0",
+          "#5b8a6a",
+          "#a79c8a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Rajaf is south-west of Juba; no description of the centre found."
+    },
+    "juba-osm-node-7290956785": {
+      "venueId": "juba-osm-node-7290956785",
+      "city": "juba",
+      "name": "Good Shepherd",
+      "archetype": "shrine-small",
+      "subject": "A small church or chapel of the Good Shepherd: a plain rectangular hall with a gable roof and a simple cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#3d5f86",
+          "#a79c8a"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "May be linked to the Good Shepherd Peace Centre / Sisters, but no source for the building. Generic chapel."
+    },
+    "juba-osm-node-7290956786": {
+      "venueId": "juba-osm-node-7290956786",
+      "city": "juba",
+      "name": "Back side gate",
+      "archetype": "monument",
+      "subject": "A compound back gate: a pair of painted pillars and a steel gate in a long perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#a35438",
+          "#5b6670"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Just a gate; nothing known about its compound (probably Rajaf area). Small structure."
+    },
+    "juba-osm-node-8003564619": {
+      "venueId": "juba-osm-node-8003564619",
+      "city": "juba",
+      "name": "Nyakuron PHCC",
+      "archetype": "hospital",
+      "subject": "A primary health care centre: a wide single-storey building with an arrival veranda and a water tank",
+      "form": {
+        "footprint": "U",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e8d4",
+          "#3d8f6b",
+          "#a79c8a"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Nyakuron is a residential area near the centre; nothing findable about the building."
+    },
+    "juba-osm-relation-2893806": {
+      "venueId": "juba-osm-relation-2893806",
+      "city": "juba",
+      "name": "Juba Stadium",
+      "archetype": "stadium",
+      "subject": "Juba Stadium (opened 1962, renovated 2022-24): an oval bowl with artificial turf and concrete stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d7ccb2",
+          "#2f5d8a",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand canopy (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "count assumed"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1962; renovation 2022-2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba_Stadium",
+          "what": "multi-use stadium, opened 1962; capacity 7,000 with renovation to 19,000; artificial turf; renovation 2022-2024"
+        }
+      ],
+      "notes": "Capacity, surface and date sourced; stand structure, roof and colours not described. Rebuilt larger, so the model shows the enlarged bowl."
+    },
+    "juba-osm-way-320299511": {
+      "venueId": "juba-osm-way-320299511",
+      "city": "juba",
+      "name": "Gabat Market",
+      "archetype": "market-open",
+      "subject": "Gabat market in Hai Gabat: a denser, tidier grid of stalls under blue and green tarpaulins and small tin sheds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a79c8a",
+          "#3d5f86",
+          "#cdb68e"
+        ],
+        "roofColour": "#4f7a54",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Local market east of the centre; no source. Smaller than Gudele."
+    },
+    "juba-osm-way-786546062": {
+      "venueId": "juba-osm-way-786546062",
+      "city": "juba",
+      "name": "DMI Nursery",
+      "archetype": "campus-block",
+      "subject": "A nursery school: a small cheerful single-storey block with a covered playground",
+      "form": {
+        "footprint": "L",
+        "width_m": 26,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4e3b8",
+          "#d98a2b",
+          "#4f7a54"
+        ],
+        "roofColour": "#3d5f86",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "DMI (Daughters of Mary Immaculate?) is a guess; no source. Marked hospital in the game but named nursery, so typed as a school."
+    },
+    "juba-osm-way-822146512": {
+      "venueId": "juba-osm-way-822146512",
+      "city": "juba",
+      "name": "Munuki Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque in Munuki: a rectangular prayer hall under a single green dome with one square minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#3f8f6b",
+          "#cdb68e"
+        ],
+        "roofColour": "#3f8f6b",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Munuki is a populous suburb west of the centre; no description of the mosque found."
+    },
+    "juba-quiet-reflection": {
+      "venueId": "juba-quiet-reflection",
+      "city": "juba",
+      "name": "St. Theresa Cathedral",
+      "archetype": "church-modern",
+      "subject": "St Theresa Cathedral at Kator on Unity Avenue (construction began 1952): a long brick-and-render nave with a tall gabled front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f1e9d8",
+          "#a35438",
+          "#8a8f94"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "assumed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1952-1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Theresa_Cathedral,_Juba",
+          "what": "construction began 1952; became cathedral 12 Dec 1974 when Archdiocese of Juba erected; stands on Unity Avenue in Kator; about 5,000 sheltered there in the civil war"
+        }
+      ],
+      "notes": "Sourced: date, location, role. Architecture not described: form is a typed guess for a 1950s mission church. The bell-tower and brick accent are unverified."
+    },
+    "juba-recreation": {
+      "venueId": "juba-recreation",
+      "city": "juba",
+      "name": "#Nr143",
+      "archetype": "park-landscape",
+      "subject": "Unidentified open land: a grassy plot with scattered trees and a perimeter fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#4f7a54",
+          "#a79c8a"
+        ],
+        "roofColour": "#7a3a2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "The venue name \"#Nr143\" is just an ID, so nothing is known about it. Generic green plot."
+    },
+    "juba-transit": {
+      "venueId": "juba-transit",
+      "city": "juba",
+      "name": "Customs Bus Depot",
+      "archetype": "transport-station",
+      "subject": "A bus depot near customs: an open yard with a few shelters, parked buses and a ticket kiosk",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#3d5f86",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Juba",
+          "what": "only city-level style findable; no description of this specific place found"
+        }
+      ],
+      "notes": "Informal depot; no source. Red-earth yard dominates."
+    }
+  }
+}

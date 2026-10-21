@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "yariman-bakura-specialist-hospital-gusau",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/16375323",
+   "used": "rejected as outline: a sprawling 170 m spidery relation (27% filled); only its scale informed the 90x45 m H layout"
+  },
+  {
+   "kind": "text",
+   "ref": "https://von.gov.ng/?p=375751",
+   "used": "state specialist hospital under upgrade; low rendered wards, two-storey main block, pitched roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cc",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    30,
+    6
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cc",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     48,
+     10
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2cc",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2ecda",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#8aa59a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 24,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8aa59a",
+    "material": "concrete",
+    "parapet": 0.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5.5,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    12,
+    -18,
+    0
+   ]
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    28,
+    12,
+    0
+   ],
+   "params": {
+    "radius": 1.8,
+    "height": 2.4,
+    "legs": 5
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -34,
+    14,
+    5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rows": 2,
+    "cols": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of this hospital found (Commons has only General Hospital Gusau); H-plan wards and two-storey block are from the brief, not the sprawling OSM outline."
+ }
+}

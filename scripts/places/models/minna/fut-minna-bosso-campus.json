@@ -1,0 +1,979 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "fut-minna-bosso-campus",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FUT.Minna_main_entrance_bosso_20.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "OtuNwachinemere",
+   "view": "front",
+   "file": "/tmp/places-evidence/minna/FUT.Minna_main_entrance_bosso_20.jpg",
+   "used": "space-frame gate canopy on pairs of slim concrete posts, orange timber guard booth, white lattice boundary wall, wide asphalt road"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:FUT.Minna_Bosso_library_14.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "OtuNwachinemere",
+   "view": "detail",
+   "file": "/tmp/places-evidence/minna/FUT.Minna_Bosso_library_14.jpg",
+   "used": "not used for geometry: library photo only informs the brief; gate view is the model"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "sweep-path",
+   "id": "truss-top",
+   "params": {
+    "points": [
+     [
+      -22,
+      0.75,
+      9.4
+     ],
+     [
+      22,
+      0.75,
+      9.4
+     ]
+    ],
+    "radius": 0.1,
+    "colour": "#c9c3bd"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "truss-bot-a",
+   "params": {
+    "points": [
+     [
+      -22,
+      0,
+      7.9
+     ],
+     [
+      22,
+      0,
+      7.9
+     ]
+    ],
+    "radius": 0.09,
+    "colour": "#c9c3bd"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "truss-bot-b",
+   "params": {
+    "points": [
+     [
+      -22,
+      1.5,
+      7.9
+     ],
+     [
+      22,
+      1.5,
+      7.9
+     ]
+    ],
+    "radius": 0.09,
+    "colour": "#c9c3bd"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "truss-zig-0",
+   "params": {
+    "points": [
+     [
+      -22.0,
+      0,
+      7.9
+     ],
+     [
+      -20.5,
+      0.75,
+      9.4
+     ],
+     [
+      -19.0,
+      0,
+      7.9
+     ],
+     [
+      -17.5,
+      0.75,
+      9.4
+     ],
+     [
+      -16.0,
+      0,
+      7.9
+     ],
+     [
+      -14.5,
+      0.75,
+      9.4
+     ],
+     [
+      -13.0,
+      0,
+      7.9
+     ],
+     [
+      -11.5,
+      0.75,
+      9.4
+     ],
+     [
+      -10.0,
+      0,
+      7.9
+     ],
+     [
+      -8.5,
+      0.75,
+      9.4
+     ],
+     [
+      -7.0,
+      0,
+      7.9
+     ],
+     [
+      -5.5,
+      0.75,
+      9.4
+     ],
+     [
+      -4.0,
+      0,
+      7.9
+     ],
+     [
+      -2.5,
+      0.75,
+      9.4
+     ],
+     [
+      -1.0,
+      0,
+      7.9
+     ],
+     [
+      0.5,
+      0.75,
+      9.4
+     ],
+     [
+      2.0,
+      0,
+      7.9
+     ],
+     [
+      3.5,
+      0.75,
+      9.4
+     ],
+     [
+      5.0,
+      0,
+      7.9
+     ],
+     [
+      6.5,
+      0.75,
+      9.4
+     ],
+     [
+      8.0,
+      0,
+      7.9
+     ],
+     [
+      9.5,
+      0.75,
+      9.4
+     ],
+     [
+      11.0,
+      0,
+      7.9
+     ],
+     [
+      12.5,
+      0.75,
+      9.4
+     ],
+     [
+      14.0,
+      0,
+      7.9
+     ],
+     [
+      15.5,
+      0.75,
+      9.4
+     ],
+     [
+      17.0,
+      0,
+      7.9
+     ],
+     [
+      18.5,
+      0.75,
+      9.4
+     ],
+     [
+      20.0,
+      0,
+      7.9
+     ],
+     [
+      21.5,
+      0.75,
+      9.4
+     ]
+    ],
+    "radius": 0.07,
+    "colour": "#bdb7b1"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "truss-zig-1",
+   "params": {
+    "points": [
+     [
+      -22.0,
+      1.5,
+      7.9
+     ],
+     [
+      -20.5,
+      0.75,
+      9.4
+     ],
+     [
+      -19.0,
+      1.5,
+      7.9
+     ],
+     [
+      -17.5,
+      0.75,
+      9.4
+     ],
+     [
+      -16.0,
+      1.5,
+      7.9
+     ],
+     [
+      -14.5,
+      0.75,
+      9.4
+     ],
+     [
+      -13.0,
+      1.5,
+      7.9
+     ],
+     [
+      -11.5,
+      0.75,
+      9.4
+     ],
+     [
+      -10.0,
+      1.5,
+      7.9
+     ],
+     [
+      -8.5,
+      0.75,
+      9.4
+     ],
+     [
+      -7.0,
+      1.5,
+      7.9
+     ],
+     [
+      -5.5,
+      0.75,
+      9.4
+     ],
+     [
+      -4.0,
+      1.5,
+      7.9
+     ],
+     [
+      -2.5,
+      0.75,
+      9.4
+     ],
+     [
+      -1.0,
+      1.5,
+      7.9
+     ],
+     [
+      0.5,
+      0.75,
+      9.4
+     ],
+     [
+      2.0,
+      1.5,
+      7.9
+     ],
+     [
+      3.5,
+      0.75,
+      9.4
+     ],
+     [
+      5.0,
+      1.5,
+      7.9
+     ],
+     [
+      6.5,
+      0.75,
+      9.4
+     ],
+     [
+      8.0,
+      1.5,
+      7.9
+     ],
+     [
+      9.5,
+      0.75,
+      9.4
+     ],
+     [
+      11.0,
+      1.5,
+      7.9
+     ],
+     [
+      12.5,
+      0.75,
+      9.4
+     ],
+     [
+      14.0,
+      1.5,
+      7.9
+     ],
+     [
+      15.5,
+      0.75,
+      9.4
+     ],
+     [
+      17.0,
+      1.5,
+      7.9
+     ],
+     [
+      18.5,
+      0.75,
+      9.4
+     ],
+     [
+      20.0,
+      1.5,
+      7.9
+     ],
+     [
+      21.5,
+      0.75,
+      9.4
+     ]
+    ],
+    "radius": 0.07,
+    "colour": "#bdb7b1"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "post--22.5",
+   "at": [
+    -22.5,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 7.9,
+    "colour": "#cfc9c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post--18",
+   "at": [
+    -18,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 7.9,
+    "colour": "#cfc9c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-18",
+   "at": [
+    18,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 7.9,
+    "colour": "#cfc9c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "post-22.5",
+   "at": [
+    22.5,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 0,
+    "height": 7.9,
+    "colour": "#cfc9c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bracket--20.25",
+   "at": [
+    -20.25,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     0.7
+    ],
+    "z0": 6.9,
+    "height": 1.0,
+    "colour": "#cfc9c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bracket-20.25",
+   "at": [
+    20.25,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     6.0,
+     0.7
+    ],
+    "z0": 6.9,
+    "height": 1.0,
+    "colour": "#cfc9c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "guard-booth",
+   "footprint": {
+    "rect": [
+     3.4,
+     3
+    ]
+   },
+   "at": [
+    -5,
+    9
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#c97b43",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d6c9a8",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -1,
+    9,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.0,
+    "thickness": 0.12,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    12,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#ebe7dc",
+    "pillarEvery": 2.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    12,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.4,
+    "thickness": 0.3,
+    "colour": "#ebe7dc",
+    "pillarEvery": 2.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "verge",
+   "at": [
+    22,
+    10
+   ],
+   "params": {
+    "rect": [
+     30,
+     6
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#5f8f3c"
+   }
+  },
+  {
+   "type": "array",
+   "id": "kerb",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       0.4
+      ],
+      "z0": 0,
+      "height": 0.25,
+      "colour": "#1e1e1e"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -40,
+     6
+    ],
+    "end": [
+     40,
+     6
+    ],
+    "count": 54
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "kerb-w",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       0.42
+      ],
+      "z0": 0.01,
+      "height": 0.26,
+      "colour": "#f2f2f2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -39,
+     6
+    ],
+    "end": [
+     41,
+     6
+    ],
+    "count": 54
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "truss-lod2",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0.75
+   ],
+   "params": {
+    "rect": [
+     44,
+     1.5
+    ],
+    "z0": 7.9,
+    "height": 1.5,
+    "colour": "#bdb7b1"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t0",
+   "at": [
+    -27,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t1",
+   "at": [
+    -31,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t2",
+   "at": [
+    -24,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t3",
+   "at": [
+    -33,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t4",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t5",
+   "at": [
+    -28,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t6",
+   "at": [
+    24,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t7",
+   "at": [
+    28,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t8",
+   "at": [
+    21,
+    11,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t9",
+   "at": [
+    32,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t10",
+   "at": [
+    16,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t11",
+   "at": [
+    34,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t12",
+   "at": [
+    0,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t13",
+   "at": [
+    -12,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "t14",
+   "at": [
+    10,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "colour": "#264d26",
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Truss is a single-depth triangulated frame, not the dense W space frame, and lacks T brackets detail; trees are low-poly, not dense climber-covered; kerb stripes, lattice pattern and gate leaves barely read; road sits in a small asphalt patch"
+ }
+}

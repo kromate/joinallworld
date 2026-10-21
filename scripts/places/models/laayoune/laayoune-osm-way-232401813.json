@@ -1,0 +1,632 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_Cheikh_Laghdaf.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FifaWorldClub.",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/laayoune/laghdaf1.jpg",
+   "used": "oval open concrete bowl in sand-beige, continuous single tier of terraces, red-brown track, grass pitch, small white-roofed covered stand on the near side, floodlight masts, pink hall with white roof outside"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Estadio_Sheikh_Mohamed_Laghdaf.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Vanbasten 23",
+   "view": "interior",
+   "used": "ochre-beige terraces with stair aisles, red track, mesh fence, tall mast with a head of lamps"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/14932942",
+   "used": "overall size (about 210 x 126 m, oval)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 45,
+  "aspect": 1.94,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      60.0,
+      0.0
+     ],
+     [
+      57.75,
+      12.36
+     ],
+     [
+      51.21,
+      23.51
+     ],
+     [
+      41.04,
+      32.36
+     ],
+     [
+      28.21,
+      38.04
+     ],
+     [
+      14.0,
+      40.0
+     ],
+     [
+      -28.21,
+      38.04
+     ],
+     [
+      -41.04,
+      32.36
+     ],
+     [
+      -51.21,
+      23.51
+     ],
+     [
+      -57.75,
+      12.36
+     ],
+     [
+      -60.0,
+      0.0
+     ],
+     [
+      -57.75,
+      -12.36
+     ],
+     [
+      -51.21,
+      -23.51
+     ],
+     [
+      -41.04,
+      -32.36
+     ],
+     [
+      -28.21,
+      -38.04
+     ],
+     [
+      -14.0,
+      -40.0
+     ],
+     [
+      28.21,
+      -38.04
+     ],
+     [
+      41.04,
+      -32.36
+     ],
+     [
+      51.21,
+      -23.51
+     ],
+     [
+      57.75,
+      -12.36
+     ]
+    ],
+    "z0": 0,
+    "height": 0.1,
+    "colour": "#a8665a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      54.0,
+      0.0
+     ],
+     [
+      52.04,
+      9.89
+     ],
+     [
+      46.36,
+      18.81
+     ],
+     [
+      37.51,
+      25.89
+     ],
+     [
+      26.36,
+      30.43
+     ],
+     [
+      14.0,
+      32.0
+     ],
+     [
+      -26.36,
+      30.43
+     ],
+     [
+      -37.51,
+      25.89
+     ],
+     [
+      -46.36,
+      18.81
+     ],
+     [
+      -52.04,
+      9.89
+     ],
+     [
+      -54.0,
+      0.0
+     ],
+     [
+      -52.04,
+      -9.89
+     ],
+     [
+      -46.36,
+      -18.81
+     ],
+     [
+      -37.51,
+      -25.89
+     ],
+     [
+      -26.36,
+      -30.43
+     ],
+     [
+      -14.0,
+      -32.0
+     ],
+     [
+      26.36,
+      -30.43
+     ],
+     [
+      37.51,
+      -25.89
+     ],
+     [
+      46.36,
+      -18.81
+     ],
+     [
+      52.04,
+      -9.89
+     ]
+    ],
+    "z0": 0.1,
+    "height": 0.05,
+    "colour": "#5f8a3e",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 100,
+    "width": 64
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 64,
+    "radiusY": 46,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 11,
+    "rise": 0.35,
+    "run": 0.75,
+    "firstHeight": 1.0,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#d2bf94",
+    "concreteColour": "#d2bf94",
+    "underColour": "#d9c3a0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-stand",
+   "footprint": {
+    "rect": [
+     26,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -47
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c3a0",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fbfbf6",
+    "material": "metal-sheet",
+    "overhang": 0,
+    "parapet": 0.05
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy",
+   "footprint": {
+    "rect": [
+     36,
+     13
+    ]
+   },
+   "at": [
+    0,
+    -45
+   ],
+   "z0": 5.2,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f2ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fbfbf6",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post16",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    16,
+    -40
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    8,
+    -40
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post0",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post-8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -8,
+    -40
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "post-16",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -16,
+    -40
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4da",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e4da"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    78,
+    38
+   ],
+   "rotDeg": -20,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c98c78",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#eceae2",
+    "material": "metal-sheet",
+    "pitch": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -84,
+      -60
+     ],
+     [
+      84,
+      -60
+     ],
+     [
+      84,
+      60
+     ],
+     [
+      -84,
+      60
+     ],
+     [
+      -84,
+      -60
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.35,
+    "colour": "#c9a98a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -63.8,
+    -41.6,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62.35,
+    44.2,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    66.7,
+    45.5,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    63.8,
+    -39.0,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "head_width": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -90,
+     -64
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     90,
+     -64
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-232401813",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stand ring is a regular oval and lacks the real straight-and-bend shape; no arcaded base under canopy; surrounding town omitted"
+ }
+}

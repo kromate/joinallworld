@@ -1,0 +1,216 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "diamond-barbing-saloon",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ado-ekiti.json",
+   "used": "size, colours, shed roof and shopfront from the typed brief (no photo exists)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d7a8",
+    "windows": "none",
+    "bands": "#3a6aa0",
+    "groundKind": "shopfront",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7273",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door-panel",
+   "footprint": {
+    "rect": [
+     2.2,
+     0.5
+    ]
+   },
+   "at": [
+    -1.4,
+    -2.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a6aa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a6aa0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "window-panel",
+   "footprint": {
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    1.5,
+    -2.7
+   ],
+   "rotDeg": 0,
+   "z0": 0.9,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fc3d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fc3d6"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -3.6,
+    2.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 6.6,
+    "depth": 2.2,
+    "height": 0.2,
+    "thickness": 0.12,
+    "columns": 2,
+    "colour": "#3a6aa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -2.9,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "height": 0.8,
+    "bottom": 2.5,
+    "colour": "#ffffff",
+    "frameColour": "#3a6aa0",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    5.2,
+    -0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a6aa0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7273",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfae",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7273",
+    "material": "corrugated",
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   24,
+   22
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM outline exists for this place; massing, colours and elements are typed from the brief and the city style only."
+ }
+}

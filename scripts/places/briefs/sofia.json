@@ -1,0 +1,1376 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sofia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sofia",
+    "climate": "temperate",
+    "vernacular": "Central European capital under Vitosha mountain: a centre of neo-Renaissance, neo-Baroque and Vienna Secession buildings by Austro-Hungarian architects in cream and ochre render; Stalinist Gothic government buildings around the Largo; vast belts of grey prefabricated panel blocks and brutalist concrete in the outer districts (Lyulin, Mladost); post-1989 glass office towers; terracotta-tile hip roofs on older and village houses.",
+    "wallColours": [
+      "#cfcac0",
+      "#d8c9a0",
+      "#c07a58",
+      "#e6dfcf",
+      "#9a9a96",
+      "#b7b09c"
+    ],
+    "roofColours": [
+      "#a9533b",
+      "#6b6e72",
+      "#7aa392",
+      "#4e4f52"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "render",
+      "painted-render",
+      "brick",
+      "red-brick",
+      "stone",
+      "exposed-concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete",
+      "copper"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Neo-Renaissance and Secession friezes, cornices and pilasters on cream render; Stalinist Gothic towers and stepped masses at the Largo; bare panel-block grids with balcony bands; church domes in green copper and bell towers; Rotunda and Serdica ruins in red brick and stone.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Sofia",
+        "what": "centre in Neo-Baroque, Neo-Renaissance, Neoclassical and Secession by Austro-Hungarian architects; Stalinist Gothic Largo; prefabricated panel and brutalist outer districts; glass office buildings after 1989; Capital Fort 126 m; main parks Borisova gradina, South, West and North parks; Vitosha Nature Park"
+      }
+    ]
+  },
+  "places": {
+    "sofia-airport-sofia-airport": {
+      "venueId": "sofia-airport-sofia-airport",
+      "city": "sofia",
+      "name": "Sofia Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 2 seen from the forecourt: a large multi-level glazed terminal with seven air-bridge gates, a multi-storey car park and a landscaped lake and fountain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#aeb2b5",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "50 m tower, 2012, stands apart"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 7
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-storey, 820 spaces"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "artificial lake with fountain"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "Terminal 2 opened 27 December 2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sofia_Airport",
+          "what": "Terminal 2 opened 2006, about 50,000 m2, seven airbridge gates, 38 check-in desks, 820-space multi-storey car park, landscaping with an artificial lake and fountain; 50 m control tower inaugurated 2012"
+        }
+      ],
+      "notes": "Facade materials and colours estimated; sizes and gate counts sourced. Biggest airport brief in the three Balkan cities."
+    },
+    "sofia-clinic": {
+      "venueId": "sofia-clinic",
+      "city": "sofia",
+      "name": "ДПБ за лечение на наркомании и алкохолизъм",
+      "archetype": "hospital",
+      "subject": "a state psychiatric hospital of low pavilion blocks in a wooded compound",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d8d3c6",
+          "#b87a55",
+          "#f0eee8"
+        ],
+        "roofColour": "#a9533b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid 20th century (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-community-notices": {
+      "venueId": "sofia-community-notices",
+      "city": "sofia",
+      "name": "Regional Court - Kostinbrod",
+      "archetype": "civic-small",
+      "subject": "a small-town court house: a three-storey rendered block with a flag mast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d8d3c6",
+          "#8c8a85",
+          "#ffffff"
+        ],
+        "roofColour": "#a9533b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "small entrance canopy"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-community-voting-game": {
+      "venueId": "sofia-community-voting-game",
+      "city": "sofia",
+      "name": "Kapitan Petko Voivoda Sq.",
+      "archetype": "park-landscape",
+      "subject": "a village square with paved plaza, trees and a memorial",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d3c6",
+          "#8c8a85",
+          "#ffffff"
+        ],
+        "roofColour": "#a9533b",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "memorial, form unverified"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-community-workshop": {
+      "venueId": "sofia-community-workshop",
+      "city": "sofia",
+      "name": "University of finance, business and entrepreneurship",
+      "archetype": "campus-block",
+      "subject": "VUZF: a modern rendered and glazed college block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#5c7a92",
+          "#c9c6bd"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-market-game": {
+      "venueId": "sofia-market-game",
+      "city": "sofia",
+      "name": "Sofia Ring Mall",
+      "archetype": "mall",
+      "subject": "a large three-storey shopping centre with a long front, metal-clad boxes and a big surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#d0d0cc",
+          "#c0603a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Sizes typed from a typical Sofia ring-road mall."
+    },
+    "sofia-meal-stop": {
+      "venueId": "sofia-meal-stop",
+      "city": "sofia",
+      "name": "Под липите",
+      "archetype": "restaurant",
+      "subject": "a restaurant in a two-storey villa-style building with a lime-tree shaded terrace garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dfcf",
+          "#8c8a85",
+          "#6b4a32"
+        ],
+        "roofColour": "#a9533b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "early 20th century (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-node-1406576355": {
+      "venueId": "sofia-osm-node-1406576355",
+      "city": "sofia",
+      "name": "Кладнишка крепост",
+      "archetype": "heritage-fort",
+      "subject": "Kladnitsa fortress: ruined late-antique/medieval walls and a tower on a hilltop",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a69f90",
+          "#7a7466",
+          "#c9c3b5"
+        ],
+        "roofColour": "#7a7466",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "late antique / medieval",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Only the name is known; the fort is typed as a ruin."
+    },
+    "sofia-osm-node-14109563211": {
+      "venueId": "sofia-osm-node-14109563211",
+      "city": "sofia",
+      "name": "СБАЛОТ „Витоша“",
+      "archetype": "hospital",
+      "subject": "Vitosha specialised orthopaedic and traumatology hospital: a four-storey rendered block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ecebe6",
+          "#8c9aa3",
+          "#c9c6bd"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-node-3001939533": {
+      "venueId": "sofia-osm-node-3001939533",
+      "city": "sofia",
+      "name": "Kamen del",
+      "archetype": "park-landscape",
+      "subject": "Kamen Del: a wooded hilltop on the Vitosha foothills with rocky outcrops and a lookout terrace",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a69f90",
+          "#6b4a32",
+          "#c9c3b5"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "lookout"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-node-3114348357": {
+      "venueId": "sofia-osm-node-3114348357",
+      "city": "sofia",
+      "name": "Pyramids of Katina",
+      "archetype": "park-landscape",
+      "subject": "the earth pillars of Katina: a group of eroded sandy-clay pillars with caps on a bare slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c9a77a",
+          "#a8884e",
+          "#d8c9a0"
+        ],
+        "roofColour": "#a8884e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 8,
+          "note": "eroded earth pillars, natural"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Typed as a natural rock/earth-pillar formation from the name."
+    },
+    "sofia-osm-node-6221811642": {
+      "venueId": "sofia-osm-node-6221811642",
+      "city": "sofia",
+      "name": "Vazov's Oak",
+      "archetype": "park-landscape",
+      "subject": "a single large old oak with a protective fence and small memorial plaque",
+      "form": {
+        "footprint": "round",
+        "width_m": 25,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a69f90",
+          "#6b4a32",
+          "#c9c3b5"
+        ],
+        "roofColour": "#4e5a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "natural monument",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-relation-16476740": {
+      "venueId": "sofia-osm-relation-16476740",
+      "city": "sofia",
+      "name": "УМБАЛ „Лозенец“",
+      "archetype": "hospital",
+      "subject": "Lozenets University Hospital: a large 1980s complex with a tall central ward block and lower wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d2c8",
+          "#8c9aa3",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "unverified"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-way-1001043616": {
+      "venueId": "sofia-osm-way-1001043616",
+      "city": "sofia",
+      "name": "Мадарска градинка",
+      "archetype": "park-landscape",
+      "subject": "Madarska garden: a small central city garden with mature trees and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d3c6",
+          "#c9b79a",
+          "#ffffff"
+        ],
+        "roofColour": "#a9533b",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-way-111605510": {
+      "venueId": "sofia-osm-way-111605510",
+      "city": "sofia",
+      "name": "SkyCity",
+      "archetype": "mall",
+      "subject": "SkyCity: a glazed multi-level shopping and entertainment building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9fb4c2",
+          "#d0d0cc",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-way-1523767655": {
+      "venueId": "sofia-osm-way-1523767655",
+      "city": "sofia",
+      "name": "State University of Library Studies and Information Technologies",
+      "archetype": "campus-block",
+      "subject": "UniBIT: a modest rendered university block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d3c6",
+          "#8c8a85",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-way-179145803": {
+      "venueId": "sofia-osm-way-179145803",
+      "city": "sofia",
+      "name": "West Park",
+      "archetype": "park-landscape",
+      "subject": "West Park: wide tree-lined paths, lawns and a small lake",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d3c6",
+          "#c9b79a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sofia",
+          "what": "Western Park is one of Sofia's four principal parks, with Southern, Northern and Borisova gradina"
+        }
+      ],
+      "notes": "Only its existence as a principal park is sourced; interior features are typical not verified."
+    },
+    "sofia-osm-way-207570571": {
+      "venueId": "sofia-osm-way-207570571",
+      "city": "sofia",
+      "name": "Стадион \"Драгалевци\"",
+      "archetype": "stadium",
+      "subject": "a small village football ground with a simple stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a8a4",
+          "#7a7e82",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-way-258411873": {
+      "venueId": "sofia-osm-way-258411873",
+      "city": "sofia",
+      "name": "Германски манастир \"Св. Иван Рилски\"",
+      "archetype": "shrine-small",
+      "subject": "German Monastery: a small walled monastery with a stone church, a bell tower and a residential wing around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#b8ae98",
+          "#efece4",
+          "#6b4a32"
+        ],
+        "roofColour": "#a9533b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "wooden gallery"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval, rebuilt",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-osm-way-292960618": {
+      "venueId": "sofia-osm-way-292960618",
+      "city": "sofia",
+      "name": "Lokomotiv Stadium",
+      "archetype": "stadium",
+      "subject": "Lokomotiv Sofia home ground: a 16,000-capacity bowl with a main stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b4b2ac",
+          "#a82a2a",
+          "#e8e8e4"
+        ],
+        "roofColour": "#7a7e82",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand, unverified"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "built 1984-85, renovated 2000, 2013, 2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lokomotiv_Stadium_(Sofia)",
+          "what": "capacity 16,000 of which 11,200 seated; built 1984-85; renovated 2000, 2013, 2021; grass pitch 105x68"
+        }
+      ],
+      "notes": "Seat colour red is assumed from club colours; roof extent unverified."
+    },
+    "sofia-osm-way-315468410": {
+      "venueId": "sofia-osm-way-315468410",
+      "city": "sofia",
+      "name": "Technical University of Sofia",
+      "archetype": "campus-block",
+      "subject": "the Technical University central campus: a broad block originally army barracks, with several newer faculty buildings",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d8c9a0",
+          "#8c8a85",
+          "#f0eee8"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "former barracks plus 20th century buildings",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Technical_University_of_Sofia",
+          "what": "Central campus has 14 buildings; building 1 used to be army barracks and houses the administration"
+        }
+      ],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session). Facade colours are guessed."
+    },
+    "sofia-osm-way-409292553": {
+      "venueId": "sofia-osm-way-409292553",
+      "city": "sofia",
+      "name": "Seslavtsi Monastery St Nicholas",
+      "archetype": "shrine-small",
+      "subject": "a small medieval monastery church in stone with a steep tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#b8ae98",
+          "#efece4",
+          "#6b4a32"
+        ],
+        "roofColour": "#a9533b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-quiet-reflection": {
+      "venueId": "sofia-quiet-reflection",
+      "city": "sofia",
+      "name": "Балшенски манастир \"Св. Теодор Стратилат\"",
+      "archetype": "shrine-small",
+      "subject": "a small village monastery church with a modest bell tower",
+      "form": {
+        "footprint": "U",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#b8ae98",
+          "#efece4",
+          "#6b4a32"
+        ],
+        "roofColour": "#a9533b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval, rebuilt",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-recreation": {
+      "venueId": "sofia-recreation",
+      "city": "sofia",
+      "name": "Park „St. St. Peter & Pavel“",
+      "archetype": "park-landscape",
+      "subject": "a small city park with tree-lined paths and a church nearby",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d3c6",
+          "#c9b79a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "church tower at the edge, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    },
+    "sofia-transit": {
+      "venueId": "sofia-transit",
+      "city": "sofia",
+      "name": "Obelya",
+      "archetype": "transport-station",
+      "subject": "Obelya metro station: a low station entrance block with a canopy over platforms and bus bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c5ba",
+          "#5c7a92",
+          "#e8e6e0"
+        ],
+        "roofColour": "#6f6f6f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: typed brief from the city style and place type; no description of the actual building was found (web search budget was exhausted in this session)."
+    }
+  }
+}

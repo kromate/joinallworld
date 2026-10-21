@@ -1,0 +1,1960 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-harcourt",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-harcourt",
+    "climate": "rainforest",
+    "vernacular": "Oil-and-port city in the Niger Delta founded in 1913-14 as a British planned railway town: a gridded Old Township with early 20th-century brick and timber colonial administrative buildings under tin roofs, the Old GRA's low-density villas in gardens, and a dense modern sprawl of 2-4 storey painted-render and concrete blocks with long-span coloured metal roofs, heavy rain staining, walled compounds and palms, with oil-industry compounds and waterfront jetties on the creeks.",
+    "wallColours": [
+      "#f1ead8",
+      "#e8d9a8",
+      "#c9ccc8",
+      "#a6b8c4",
+      "#b0553d",
+      "#9a9a94",
+      "#f7f4ee"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#5b4636",
+      "#4a5f52",
+      "#8c9096"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "red-brick",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial verandas and louvred shutters on Old GRA houses; red-brick Government House; rain-stained concrete flyovers and murals themed on the Garden City; palm-lined avenues; Ijaw and Kalabari waterfront jetties with covered passenger sheds.",
+    "sources": [
+      {
+        "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+        "what": "Port Harcourt as a city with an old colonial core and new development beside it"
+      },
+      {
+        "url": "https://sabiabuja.com/heritage-buildings-in-nigeria/",
+        "what": "Old Township: early 20th-century colonial administrative buildings in timber, stone and tin roofing"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Old_GRA,_Port_Harcourt",
+        "what": "Old GRA was the European quarter, wide curving avenues, low-density houses in gardens"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Government_House,_Port_Harcourt",
+        "what": "Brick House of 1928 as the governor's residence and office"
+      }
+    ]
+  },
+  "places": {
+    "adokiye-stadium": {
+      "venueId": "adokiye-stadium",
+      "city": "port-harcourt",
+      "name": "Adokiye Amiesimaka Stadium",
+      "archetype": "stadium",
+      "subject": "The 2015 covered Omagwa stadium seen from the main stand side, a closed bowl with a continuous roof over the seating",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 170,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "tensile"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d9dc",
+          "#2f5d9e",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c4c8cc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof covers seating; reported as covered against wind"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adokiye_Amiesimaka_Stadium",
+          "what": "opened 19 July 2015, capacity 38,000, Omagwa north of the city"
+        },
+        {
+          "url": "https://athletics.africa/news/africa/nigeria/2nd-afn-golden-league-2018-moves-port-harcourt-13057",
+          "what": "official quoted saying the stadium is covered"
+        }
+      ],
+      "notes": "Capacity (38,000) and opening date are sourced; roof type and colours are not described in the sources, so the membrane roof and blue/white palette are inferred. Larger and newer than the Yakubu Gowon Stadium; recognisable by the full roof ring over the stands."
+    },
+    "airport": {
+      "venueId": "airport",
+      "city": "port-harcourt",
+      "name": "Port Harcourt International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2018 two-storey CCECC terminal seen from the landside forecourt, a long glazed block with a projecting departures canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dde3e6",
+          "#35566e",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.airport-technology.com/projects/port-harcourt-international-airport/",
+          "what": "two-storey terminal, apron, cargo terminal, built by CCECC, about seven million passengers a year"
+        },
+        {
+          "url": "https://guardian.ng/?p=1214810",
+          "what": "Spacefinish interior fit-out with Garden City themed mural"
+        }
+      ],
+      "notes": "Sources give two storeys, 25,163 m2 floor area (so about 12,500 m2 footprint), 24 check-in counters, commissioned October 2018; the facade is not described, so the glass-and-panel look is inferred from similar CCECC terminals. Smaller and plainer than Abuja's terminal."
+    },
+    "bole-kitchen": {
+      "venueId": "bole-kitchen",
+      "city": "port-harcourt",
+      "name": "Waterfront Bole Kitchen",
+      "archetype": "restaurant",
+      "subject": "An open-air creekside bole (roast plantain and fish) kitchen: a low open shed over tables and grills beside the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b79a6b",
+          "#7a5a3a",
+          "#d8cdb8"
+        ],
+        "roofColour": "#7a6a5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Harcourt_Tourist_Beach",
+          "what": "creekside setting on Kolabi Creek with restaurants and a jetty"
+        }
+      ],
+      "notes": "No source describes this particular venue. Typed from the Port Harcourt waterfront bole-and-fish grill pattern: open shed, plastic tables, parasols, grills; sits at the Tourist Beach waterfront."
+    },
+    "bonny-jetty": {
+      "venueId": "bonny-jetty",
+      "city": "port-harcourt",
+      "name": "Bonny/Nembe Waterside Terminal",
+      "archetype": "transport-station",
+      "subject": "The rebuilt Bonny-Bille-Nembe passenger jetty: a concrete landing with a long covered waiting shed and speedboats alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfcfca",
+          "#3d6f8f",
+          "#f2f2f0"
+        ],
+        "roofColour": "#4a5f52",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "concrete landing with boat berths"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "long covered waiting shed"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s (remodelled)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://sweetcrudereports.com/?p=349672",
+          "what": "search summary: dilapidated 1950s jetty remodelled by Wike government; exact layout not described"
+        },
+        {
+          "url": "https://www.ibomair.com/5-reasons-why-you-will-love-port-harcourt/",
+          "what": "Bonny Island about an hour by boat from the mainland"
+        }
+      ],
+      "notes": "Source confirms a 1950s jetty remodelled in the 2010s but not its form; the covered shed over a concrete pier is typed from the standard Rivers waterside terminal pattern."
+    },
+    "diobu-church": {
+      "venueId": "diobu-church",
+      "city": "port-harcourt",
+      "name": "Diobu Community Church",
+      "archetype": "church-modern",
+      "subject": "A neighbourhood church hall in dense Diobu: a plain rectangular auditorium with a wide-span metal roof and a small front tower or cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#b0553d",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small front tower with cross"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not documented anywhere; typed from the Port Harcourt style. Diobu is a dense mixed neighbourhood, so the church is a modest hall behind a perimeter wall."
+    },
+    "diobu-mosque": {
+      "venueId": "diobu-mosque",
+      "city": "port-harcourt",
+      "name": "Diobu Community Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque in Diobu: a square prayer hall with one low dome, a single slender minaret and a walled courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e6",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Not documented; typed from the usual Nigerian community mosque: green-and-white painted render, one dome, one minaret. Differs from the church by dome and minaret rather than gable and tower."
+    },
+    "garden-city-amusement": {
+      "venueId": "garden-city-amusement",
+      "city": "port-harcourt",
+      "name": "Garden City Amusement Park",
+      "archetype": "park-landscape",
+      "subject": "A fenced amusement park with a ticket gate, a ferris wheel and a few small rides under bright canopies",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f1c84c",
+          "#d9433a",
+          "#2b6cb0"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Harcourt_Pleasure_Park",
+          "what": "Port Harcourt recreation parks with rides, boats and play areas (related park, not this one)"
+        }
+      ],
+      "notes": "No source for this specific amusement park; typed generically. The ferris wheel is the recognisable silhouette."
+    },
+    "garden-city-evening": {
+      "venueId": "garden-city-evening",
+      "city": "port-harcourt",
+      "name": "Garden City Evening Garden",
+      "archetype": "park-landscape",
+      "subject": "A lit evening garden with a central bandstand, paved walks and trimmed hedges",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e6e0d0",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "evening lighting strips"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Venue coordinates coincide with Isaac Boro Park but no source describes an evening garden there; typed as a landscaped city park. Not a copy of Isaac Boro Park: this one centres on a bandstand and lights."
+    },
+    "garden-city-salon": {
+      "venueId": "garden-city-salon",
+      "city": "port-harcourt",
+      "name": "Garden City Salon",
+      "archetype": "shophouse",
+      "subject": "A single-storey hair salon in a roadside block with a glazed front, awning and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1d9c8",
+          "#c05a7a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Game placeholder with no real counterpart; typed from the city style."
+    },
+    "government-house": {
+      "venueId": "government-house",
+      "city": "port-harcourt",
+      "name": "Rivers State Government House Area",
+      "archetype": "civic-palace",
+      "subject": "The 1928 'Brick House' in the Old GRA: a long two-storey red-brick governor's residence and office with verandas behind a gated, flag-flying perimeter",
+      "form": {
+        "footprint": "H",
+        "width_m": 75,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a9573e",
+          "#ece6d6",
+          "#ffffff"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1928, renovated 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Government_House,_Port_Harcourt",
+          "what": "Brick House, established 1928, Old GRA off Azikiwe Road, named for its brick construction, remodelled by successive governments"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Old_GRA,_Port_Harcourt",
+          "what": "Old GRA as the former European quarter"
+        }
+      ],
+      "notes": "Name, date, setting and brick construction are sourced. Dimensions, roof and the extent of the modern additions are estimated. Venue is called 'Area', so the model shows the gate, flag poles and brick frontage rather than the full complex. Contrasts with the glass and concrete state blocks elsewhere."
+    },
+    "iaue": {
+      "venueId": "iaue",
+      "city": "port-harcourt",
+      "name": "Ignatius Ajuru University of Education",
+      "archetype": "campus-block",
+      "subject": "A university campus block: a three-storey rendered lecture building with open walkways and stair towers",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece3c8",
+          "#3f6f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Port_Harcourt",
+          "what": "other Rivers State university campuses used for context"
+        }
+      ],
+      "notes": "No source describes the Rumuolumeni campus buildings; typed from the Nigerian state-university block pattern. Smaller and lower than UNIPORT."
+    },
+    "isaac-boro-park": {
+      "venueId": "isaac-boro-park",
+      "city": "port-harcourt",
+      "name": "Isaac Boro Park",
+      "archetype": "park-landscape",
+      "subject": "The Old GRA city park opposite the Mile One flyover: lawns and paved walks around a monument and a statue of Major Isaac Adaka Boro",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d9d4c6",
+          "#4f6d5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Isaac Adaka Boro statue unveiled 2001"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "cenotaph-style memorial pillar (game scene variant)"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1960s park, statue 2001",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Isaac_Boro_Park",
+          "what": "public park in the Old GRA opposite the Mile One flyover"
+        },
+        {
+          "url": "https://www.finelib.com/about/places-and-attractions/attractions-activities-and-history-of-isaac-boro-garden-park-port-harcourt/665",
+          "what": "statue of Major Isaac Adaka Boro unveiled 2001; other monuments (travel directory, treat cautiously)"
+        }
+      ],
+      "notes": "Park location and the Boro statue are sourced; no source confirms a cenotaph so the memorial pillar follows the game scene only. Size is estimated."
+    },
+    "mile-one-market": {
+      "venueId": "mile-one-market",
+      "city": "port-harcourt",
+      "name": "New Mile One Market",
+      "archetype": "market-hall",
+      "subject": "The New Mile One Market: a multi-storey trading block with lock-up shops, open stair bays and rooftop water tanks above crowded street stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc8b8",
+          "#b0553d",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1,
+          "note": "ground-floor shop rows"
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "water-tank",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "No source describes the building; Mile One is a long-established central market and the 'New' market is typed as a concrete block with lock-ups. Compare with the open-shed Mile Three and Oil Mill markets."
+    },
+    "mile-three-market": {
+      "venueId": "mile-three-market",
+      "city": "port-harcourt",
+      "name": "Mile Three Market",
+      "archetype": "market-open",
+      "subject": "Mile Three Market: rows of tin-roofed stalls and tarpaulin-covered tables on laterite and asphalt between sheds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9a07c",
+          "#7a5a3a",
+          "#d0c6b0"
+        ],
+        "roofColour": "#7a6252",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented; open sheds in rows (the game variant is 'rows'). Larger and more open than Mile One's block and much lower."
+    },
+    "oil-mill-market": {
+      "venueId": "oil-mill-market",
+      "city": "port-harcourt",
+      "name": "Oil Mill Market",
+      "archetype": "market-open",
+      "subject": "Oil Mill Market at a busy junction: stalls of produce and goods spilling from a shed row onto the roadside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c4b4",
+          "#5a7f6a",
+          "#e8dcc0"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "bus-bays",
+          "count": 1,
+          "note": "junction taxi stop"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Undocumented. Junction market on the road to Trans-Amadi; modelled as a ragged street-edge shed row, different from Mile Three's regular rows."
+    },
+    "okrika-jetty": {
+      "venueId": "okrika-jetty",
+      "city": "port-harcourt",
+      "name": "Okrika Town Landing",
+      "archetype": "transport-station",
+      "subject": "Okrika town landing: a small concrete and timber pier on the creek with a modest roofed waiting shelter and canoes and boats alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#a5896a",
+          "#6b8ca0",
+          "#d8cdb8"
+        ],
+        "roofColour": "#6d6d68",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "small waiting shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.britannica.com/place/Okrika",
+          "what": "Okrika: formerly an Ijaw fishing village in the mangroves; port revived with the refinery jetty in 1965"
+        }
+      ],
+      "notes": "Britannica gives the setting (Ijaw mangrove island town) but no building description; the pier and shelter are typed. Smaller and more timber-built than the Bonny terminal."
+    },
+    "ph-clinic": {
+      "venueId": "ph-clinic",
+      "city": "port-harcourt",
+      "name": "Garden City Community Clinic",
+      "archetype": "hospital",
+      "subject": "A one-storey community clinic with a covered entrance, ambulance bay and a red cross board",
+      "form": {
+        "footprint": "L",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee0",
+          "#4f9a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Game placeholder, no real counterpart; typed from the city style. Much smaller than a tertiary hospital."
+    },
+    "ph-polling": {
+      "venueId": "ph-polling",
+      "city": "port-harcourt",
+      "name": "Garden City Civic Polling Centre",
+      "archetype": "civic-small",
+      "subject": "A single-storey civic hall used as a polling centre: a rendered block with a veranda and a flag pole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc4",
+          "#4a6f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#5b4636",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Game placeholder, no real counterpart; typed from the city style."
+    },
+    "pleasure-park": {
+      "venueId": "pleasure-park",
+      "city": "port-harcourt",
+      "name": "Port Harcourt Pleasure Park",
+      "archetype": "park-landscape",
+      "subject": "The 2017 Julius Berger-built pleasure park: lakeside lawns and promenades around a man-made lake with a fountain, boats, a climbing tower and low pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2ddd0",
+          "#3d7ea6",
+          "#ffffff"
+        ],
+        "roofColour": "#9aa2a8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lake water display"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat jetty"
+        },
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Harcourt_Pleasure_Park",
+          "what": "opened 26 May 2017, built by Julius Berger on Aba Road between Rumuomasi and Rumuola"
+        },
+        {
+          "url": "https://connectciti.com/listing/port-harcourt-pleasure-park",
+          "what": "listing of features: lake with fountain and love boats, climbing tower, mini golf, playgrounds, cinema"
+        }
+      ],
+      "notes": "Opening date, builder and feature list are sourced; the layout and sizes are estimated. The lake with boats and fountain is the signature. Bigger and more built-up than the evening garden or Isaac Boro Park."
+    },
+    "railway-township": {
+      "venueId": "railway-township",
+      "city": "port-harcourt",
+      "name": "Old Township and Railway Station",
+      "archetype": "transport-station",
+      "subject": "The Old Township railway station: a low colonial-era station building with a platform canopy and rail tracks, backed by tin-roofed colonial offices",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b0654a",
+          "#e8e0cc",
+          "#ffffff"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "small station clock"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1913-14",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://sabiabuja.com/heritage-buildings-in-nigeria/",
+          "what": "Old Township: early 20th-century colonial administrative buildings in timber, stone, tin roofing, railway relics"
+        },
+        {
+          "url": "https://arise.tv/ministry-of-transportation-hands-over-completed-62km-port-harcourt-aba-railway-to-nrc-for-operations/amp",
+          "what": "Port Harcourt station on the Eastern Narrow Gauge line, Port Harcourt-Aba section handed to NRC"
+        }
+      ],
+      "notes": "The port was founded as a railway terminus in 1913-14 and colonial offices survive in the Old Township, but no source describes the station building itself, so the brick, hip-roofed station is typed. Station and town blocks are not individually documented."
+    },
+    "refinery": {
+      "venueId": "refinery",
+      "city": "port-harcourt",
+      "name": "Port Harcourt Refinery Viewpoint",
+      "archetype": "industrial",
+      "subject": "A viewpoint over the Alesa-Eleme refinery: process columns, a tall flare stack and rows of round storage tanks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 45,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b8bcc0",
+          "#8c9096",
+          "#d9d9d6"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "flare-stack",
+          "count": 1,
+          "note": "tall flare"
+        },
+        {
+          "id": "storage-tanks",
+          "count": 8
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1965 and 1989 plants",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nannews.ng/port-harcourt-refinery-begins-operation/",
+          "what": "complex at Alesa-Eleme about 25 km east of Port Harcourt, old plant 60,000 bpd (1965) and new plant 150,000 bpd (1989)"
+        },
+        {
+          "url": "https://www.nsenergybusiness.com/?p=301713",
+          "what": "units: crude, vacuum distillation, reforming, FCC; four boilers and four turbo-generators"
+        }
+      ],
+      "notes": "Process units and capacities are sourced; the render shows an impression of columns, tanks and a flare, not a plant layout. The viewpoint is across the creek, so it is a distant industrial skyline."
+    },
+    "rsu": {
+      "venueId": "rsu",
+      "city": "port-harcourt",
+      "name": "Rivers State University",
+      "archetype": "campus-block",
+      "subject": "The Nkpolu-Oroworukwo campus: a modern Senate building and lecture blocks with a central forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ecdc",
+          "#2f5d9e",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.rsu.edu.ng/hon-justice-i-n-ndu-rtd-commends-gov-wike-over-massive-support-to-rsu/",
+          "what": "state government building new faculty buildings and a new Senate Building (no design given)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Oroworukwo",
+          "what": "campus is in Nkpolu-Oroworukwo"
+        }
+      ],
+      "notes": "The university is documented, but not the building design. Four-storey Senate block typed from the recent state-funded rebuild; the university was founded in 1980 so older low blocks also stand."
+    },
+    "rumuola-hub": {
+      "venueId": "rumuola-hub",
+      "city": "port-harcourt",
+      "name": "Rumuola Interchange",
+      "archetype": "transport-station",
+      "subject": "The Rumuola road interchange: a flyover junction with a bus lay-by, shelters and street kiosks under the concrete deck",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b8b2",
+          "#d0b84a",
+          "#ece8dc"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "A traffic interchange rather than a building. Not documented; rain-stained concrete flyover with a bus shelter. Distinct from the market and terminal archetypes by its elevated deck."
+    },
+    "rumuola-savings": {
+      "venueId": "rumuola-savings",
+      "city": "port-harcourt",
+      "name": "Rumuola Savings Hall",
+      "archetype": "office-low",
+      "subject": "A two-storey savings and loans office with a glazed entrance and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eee6d0",
+          "#3d6f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "city context only; no source describes this specific building"
+        }
+      ],
+      "notes": "Game placeholder with no real counterpart; typed from the city style."
+    },
+    "tourist-beach": {
+      "venueId": "tourist-beach",
+      "city": "port-harcourt",
+      "name": "Port Harcourt Tourist Beach",
+      "archetype": "park-landscape",
+      "subject": "The man-made white-sand beach on Kolabi Creek: a sand strip with parasols, a jetty and low restaurant sheds behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8ccb0",
+          "#8a6a45",
+          "#f2f2f0"
+        ],
+        "roofColour": "#7a6a5a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "standby jetty"
+        },
+        {
+          "id": "sheds",
+          "count": 3,
+          "note": "restaurant sheds"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Harcourt_Tourist_Beach",
+          "what": "man-made white sand urban beach on Kolabi Creek, created 1988, since declined"
+        },
+        {
+          "url": "https://www.finelib.com/about/places-and-attractions/attractions-activities-and-history-of-port-harcourt-tourist-beach/664",
+          "what": "jetty, restaurants, games room, museum"
+        }
+      ],
+      "notes": "The beach is a creek-side strip rather than open sea; sand, parasols, jetty and restaurant sheds are sourced but sizes are estimates."
+    },
+    "trans-amadi": {
+      "venueId": "trans-amadi",
+      "city": "port-harcourt",
+      "name": "Trans-Amadi Industrial Walk",
+      "archetype": "industrial",
+      "subject": "Trans-Amadi industrial layout: warehouse sheds, a tank farm and a gated yard with trucks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b3bcc2",
+          "#2f5d9e",
+          "#e0e0dc"
+        ],
+        "roofColour": "#7a8086",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "storage-tanks",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+          "what": "Port Harcourt industrial and oil-service growth (general)"
+        }
+      ],
+      "notes": "Trans-Amadi is the city's main industrial estate; no single building is documented, so the model shows a generic warehouse yard. Lower and plainer than the refinery."
+    },
+    "uniport": {
+      "venueId": "uniport",
+      "city": "port-harcourt",
+      "name": "University of Port Harcourt",
+      "archetype": "campus-block",
+      "subject": "UNIPORT Choba campus: a large circular multi-lecture 'Seven-in-One' block opposite the Senate building, with tree-lined avenues",
+      "form": {
+        "footprint": "ring",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ede6d0",
+          "#4f7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central void of the circular block"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1975 campus, 2019 block",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Port_Harcourt",
+          "what": "Choba campus, Senate building"
+        },
+        {
+          "url": "https://dailytrust.com/executive-secretary-commissions-tetfund-buildings-in-uniport/",
+          "what": "TETFund mega circular building (Seven-in-One) opposite the Senate building"
+        }
+      ],
+      "notes": "The circular TETFund lecture block is the only described form; colours and heights are inferred. Distinct from the U-shaped RSU and the lower IAUE blocks."
+    },
+    "wharf": {
+      "venueId": "wharf",
+      "city": "port-harcourt",
+      "name": "Old Wharf Road Walk",
+      "archetype": "transport-station",
+      "subject": "The old Port Harcourt wharf waterfront: a quay with warehouse sheds, mooring bollards and cranes along the Bonny River",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a35f48",
+          "#c6c0b0",
+          "#ece8dc"
+        ],
+        "roofColour": "#7a8086",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "quay edge"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://sabiabuja.com/heritage-buildings-in-nigeria/",
+          "what": "Old Township port-related buildings and railway relics, colonial period"
+        }
+      ],
+      "notes": "Port Harcourt's original port function is sourced; the quay buildings are not described. Brick warehouse sheds typed from the colonial-port pattern."
+    },
+    "yakubu-gowon-stadium": {
+      "venueId": "yakubu-gowon-stadium",
+      "city": "port-harcourt",
+      "name": "Yakubu Gowon Stadium",
+      "archetype": "stadium",
+      "subject": "The Elekahia stadium, being remodelled: open concrete stands with new roof trusses and cladding over the main stand and VIP section",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9cbca",
+          "#2f5d9e",
+          "#f2f2f0"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main-stand roof, trusses erected during 2026 remodel"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s-70s, remodelled 2026",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yakubu_Gowon_Stadium",
+          "what": "multi-purpose stadium in Elekahia, capacity about 16,000, renamed 2015, home of Rivers United"
+        },
+        {
+          "url": "https://allafrica.com/stories/202606090464.html",
+          "what": "2026 remodel: VIP/VVIP sections, roof trusses erected, cladding about 90% complete"
+        }
+      ],
+      "notes": "Capacity and the remodel are sourced; the original stand forms are not. Smaller (16,000) and open compared with the 38,000 covered Adokiye bowl."
+    }
+  }
+}

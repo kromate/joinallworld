@@ -1,0 +1,20 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "awka", "venueId": "old-timber-market-awka",
+ "verified": "text",
+ "evidence": [
+  {"kind": "osm", "ref": "way/1106212528", "used": "size and orientation only: a nearest-match 32 x 13 m building, not used as footprint"}
+ ],
+ "camera": {"yawDeg": 20, "pitchDeg": 18, "fovDeg": 50, "fit": "all"},
+ "parts": [
+  {"type": "market-open/market-shed", "at": [-14, -14, 0], "params": {"length": 30, "depth": 9, "height": 4.4, "roof": "shed", "roof_rise": 1.4, "goods": "timber", "roof_colour": "#8a4a36", "roof_material": "corrugated", "wall_colour": "#a5774f"}},
+  {"type": "market-open/market-shed", "at": [-14, 2, 0], "params": {"length": 30, "depth": 9, "height": 4.8, "roof": "gable", "roof_rise": 1.6, "goods": "timber", "roof_colour": "#7e5a4a", "roof_material": "corrugated", "wall_colour": "#8a6a46"}},
+  {"type": "market-open/market-shed", "at": [20, -6, 0], "params": {"length": 20, "depth": 10, "height": 4.2, "roof": "shed", "roof_rise": 1.2, "goods": "timber", "roof_colour": "#9a9a8e", "roof_material": "corrugated", "wall_colour": "#c9b28a"}},
+  {"type": "mass", "id": "lock-ups", "footprint": {"rect": [26, 4]}, "at": [-10, 20], "height": 3.2, "storeys": 1,
+   "wall": {"material": "timber", "colour": "#8a4a36", "windows": "none", "faces": {"front": "plain"}},
+   "roof": {"form": "shed", "colour": "#8a8f8a", "material": "corrugated", "rise": 0.8, "overhang": 0.5}},
+  {"type": "market-open/stall-row", "at": [8, -28, 0], "params": {"count": 7, "pitch": 4, "kind": "tarp", "colours": ["#c9b28a", "#a5774f"]}},
+  {"type": "core/sign-board", "at": [-30, -26, 0], "params": {"width": 5, "height": 2.2, "bottom": 2.6, "colour": "#8a4a36"}}
+ ],
+ "site": {"ground": "laterite", "forecourt": "road", "trees": [{"kind": "broadleaf", "at": [34, 14]}, {"kind": "broadleaf", "at": [-38, 8]}], "extent": [100, 80]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo of the actual yard exists; layout is a plausible timber-yard market of open sheds, not the real arrangement"}
+}

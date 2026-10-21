@@ -1,0 +1,441 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "railway-station",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nigerian_Railway_in_Kano_State.jpg",
+   "licence": "see Commons (Olusola Bakhita)",
+   "author": "Olusola Bakhita",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/rail1.jpg",
+   "used": "cream-grey rendered centre block with three round arches on the ground floor, flat overhanging roof slab, small parapet block with a blank sign board on the roof, lower wings either side with arches and a balustrade parapet"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Train_at_Nigerian_Railway_in_Kano.jpg",
+   "licence": "see Commons (Olusola Bakhita)",
+   "author": "Olusola Bakhita",
+   "view": "detail",
+   "used": "long platform with a steel-post canopy with curved eaves in grey-green, ballast tracks beside it, train in cream and yellow"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c6c1b2",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 7.3,
+      "opening": 0.84,
+      "height": 0.46,
+      "depth": 1.0,
+      "pierColour": "#bdb8aa"
+     }
+    ],
+    "glassColour": "#1c1d20"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa699",
+    "overhang": 1.0,
+    "parapet": 0.0,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    -26,
+    0.5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b3a2",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 5.0,
+      "opening": 0.72,
+      "height": 0.6,
+      "depth": 1.0,
+      "pierColour": "#bdb8aa"
+     }
+    ],
+    "glassColour": "#1c1d20"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a2",
+    "overhang": 0.3,
+    "parapet": 0.35,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    26,
+    0.5
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b9b3a2",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "arch",
+      "bay": 5.0,
+      "opening": 0.72,
+      "height": 0.6,
+      "depth": 1.0,
+      "pierColour": "#bdb8aa"
+     }
+    ],
+    "glassColour": "#1c1d20"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a2",
+    "overhang": 0.3,
+    "parapet": 0.35,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     8,
+     3.2
+    ],
+    "height": 1.0,
+    "colour": "#bdb8aa"
+   },
+   "at": [
+    0,
+    0,
+    9.0
+   ]
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "z0": 9.2,
+    "height": 0.9,
+    "colour": "#e2e0d6",
+    "material": "plain-render"
+   },
+   "at": [
+    0,
+    -1.5,
+    0
+   ]
+  },
+  {
+   "type": "station-platform",
+   "params": {
+    "length": 78,
+    "depth": 8,
+    "height": 1.0,
+    "colour": "#b9b0a0"
+   },
+   "at": [
+    0,
+    8,
+    0
+   ]
+  },
+  {
+   "type": "platform-canopy",
+   "params": {
+    "width": 60,
+    "depth": 6.5,
+    "height": 4.2,
+    "deck_height": 1.0,
+    "roof_colour": "#8e9a94",
+    "wall_colour": "#6f7d76"
+   },
+   "at": [
+    0,
+    12.2,
+    0
+   ]
+  },
+  {
+   "type": "rail-track",
+   "params": {
+    "length": 84,
+    "tracks": 3,
+    "spacing": 5.4
+   },
+   "at": [
+    0,
+    22,
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -18,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    18,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     20.4,
+     0.15
+    ],
+    "z0": 6.4,
+    "height": 1.5,
+    "colour": "#b4af9f",
+    "material": "plain-render"
+   },
+   "at": [
+    0,
+    -6.1,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -26,
+    -4.8,
+    5.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     0,
+     0
+    ],
+    "end": [
+     14,
+     0,
+     0
+    ],
+    "count": 29,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 0.8,
+      "colour": "#c9c4b5",
+      "material": "plain-render"
+     }
+    },
+    "lod2Step": 29
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     29,
+     0.5
+    ],
+    "z0": 5.9,
+    "height": 0.2,
+    "colour": "#c9c4b5",
+    "material": "plain-render"
+   },
+   "at": [
+    -26,
+    -4.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    26,
+    -4.8,
+    5.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -14,
+     0,
+     0
+    ],
+    "end": [
+     14,
+     0,
+     0
+    ],
+    "count": 29,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 0.8,
+      "colour": "#c9c4b5",
+      "material": "plain-render"
+     }
+    },
+    "lod2Step": 29
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "rect": [
+     29,
+     0.5
+    ],
+    "z0": 5.9,
+    "height": 0.2,
+    "colour": "#c9c4b5",
+    "material": "plain-render"
+   },
+   "at": [
+    26,
+    -4.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "forecourtDepth": 12,
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "arcade bays are now open dark arches with heavy piers and the centre block has an overhanging roof slab and blank sign band with a small stepped parapet block; render is a whole-building view while the photo is a close crop, balustrade is sparse, render weathering stains and the steel-post platform canopy at the rear are only approximate, lettering omitted by rule"
+ }
+}

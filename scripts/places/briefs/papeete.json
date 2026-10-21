@@ -1,0 +1,1655 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "papeete",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "papeete",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-rise French Polynesian town squeezed between the lagoon and green volcanic ridges: one to four-storey concrete and painted-render shops, offices and flats with deep shaded verandas, corrugated roofs in red, green or blue, and a few older colonial buildings of cream or yellow plaster with white trim; traditional fare houses of pandanus thatch and timber posts survive mainly in hotels, museums and gardens.",
+    "wallColours": [
+      "#f3efe6",
+      "#e7cf7a",
+      "#8db8cf",
+      "#bdb9b0",
+      "#b8cfa8",
+      "#e5a08e",
+      "#d9b99b"
+    ],
+    "roofColours": [
+      "#a8472f",
+      "#3f7a58",
+      "#3d6f9e",
+      "#8d9296",
+      "#c9bfa6"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "whitewash",
+      "timber",
+      "stucco",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Polynesian carved tiki and tapa-pattern motifs on civic and tourist buildings, hibiscus and tiare-flower relief, timber posts and open-sided verandas, pandanus-thatched fare roofs with steep gables, French colonial shutters and cast-iron railings on older buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Papeete",
+        "what": "tropical monsoon climate, narrow busy town-centre streets, Town Hall replica of the royal palace, waterfront esplanade and market, cathedral and presidential palace"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Papeete",
+        "what": "yellow plastered cathedral 1856-1875, 2005 restoration returned the original yellow"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Papeete_Tahiti_Temple",
+        "what": "stucco with imported white sand, blue tile roof, French and Polynesian influences"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_Tahiti_et_des_%C3%8Eles",
+        "what": "museum exterior inspired by traditional Polynesian architecture, contemporary exhibition hall, grounds facing the lagoon"
+      }
+    ]
+  },
+  "places": {
+    "papeete-airport-papeete-airport": {
+      "venueId": "papeete-airport-papeete-airport",
+      "city": "papeete",
+      "name": "Fa'a'a International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Tahiti Faa'a airport terminal: a long low two-level building on reclaimed reef land with a deep pitched roof and open airy Polynesian-style halls facing the apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 268,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "long low terminal with broad eaves",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece6d6",
+          "#8a6a48",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "deep forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "few airbridges, most boarding by stairs"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1960",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Faa'a_International_Airport",
+          "what": "opened 1960 on reclaimed coral reef, single 3,420 m runway, shuttle bus passes in front of the main terminal; no description of the terminal architecture"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/83979562",
+          "what": "OSM measured footprint 268.5 x 89.6 m"
+        }
+      ],
+      "notes": "The terminal is not described in any source found; the footprint (~268 x 90 m, OSM) and 1960 date are measured. The pitched, open Polynesian-style look is a guess and the colours are approximate. Place on a palm-fringed coast road with the mountains behind."
+    },
+    "papeete-clinic": {
+      "venueId": "papeete-clinic",
+      "city": "papeete",
+      "name": "Hopital psychiatrique de Taaone",
+      "archetype": "hospital",
+      "subject": "The Taaone hospital complex psychiatric wing: a long three-storey concrete block with covered walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 83,
+        "depth_m": 43,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "long ward block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#c9906a",
+          "#ffffff"
+        ],
+        "roofColour": "#9ea3a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/10242033",
+          "what": "OSM measured footprint 82.8 x 43.4 m"
+        }
+      ],
+      "notes": "Only the OSM footprint (~83 x 43 m, building=hospital) is known. Typed from the city style and the 1970s Taaone hospital campus; storeys are a guess."
+    },
+    "papeete-community-notices": {
+      "venueId": "papeete-community-notices",
+      "city": "papeete",
+      "name": "Presidence de la Polynesie francaise",
+      "archetype": "civic-palace",
+      "subject": "The Presidence (former Caserne Bruat, 1885-1890): a two-storey colonial barracks-style building around a rear court, with a central entrance and a hip roof; large white marquee behind",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "former barracks, symmetrical wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#f0e4bd",
+          "#ffffff",
+          "#b5a98a"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor gallery, typical of 19th-century colonial barracks"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1890",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Pr%C3%A9sidence_de_la_Polyn%C3%A9sie_fran%C3%A7aise",
+          "what": "built 1885-1890 as the Bruat military barracks, classical/functionalist, 19th-century colonial military architecture kept in the 1996-2000 restoration, spiral staircase in the entrance hall, president office on the first floor, large white marquee behind"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/204588753",
+          "what": "OSM measured footprint 110.5 x 100.8 m"
+        }
+      ],
+      "notes": "History, style and storeys are from the French Wikipedia article. Plan (U with court), roof and colours (cream/yellow plaster, red roof) are not stated and are assumed from comparable colonial buildings; OSM gives a ~110 x 101 m footprint. Formal lawn and flag poles at the front."
+    },
+    "papeete-community-voting-game": {
+      "venueId": "papeete-community-voting-game",
+      "city": "papeete",
+      "name": "Mairie de Arue",
+      "archetype": "civic-small",
+      "subject": "The Arue town hall (mairie): a small two-storey civic building with a hip roof and a covered front entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e8d4",
+          "#2d7a62",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "small entrance porch"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/728937900",
+          "what": "OSM measured footprint 22.9 x 16.1 m"
+        }
+      ],
+      "notes": "No description found; typed low-confidence townhall from the OSM footprint (~23 x 16 m) and city style."
+    },
+    "papeete-community-workshop": {
+      "venueId": "papeete-community-workshop",
+      "city": "papeete",
+      "name": "Universite de la Polynesie francaise",
+      "archetype": "campus-block",
+      "subject": "The University of French Polynesia campus at Outumaoro: low concrete teaching blocks with open walkways under a green hillside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "row of teaching blocks with open galleries",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6e1d4",
+          "#3f7a58",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1999",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_French_Polynesia",
+          "what": "established 1999; campus footprint ~760 x 270 m (OSM)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/283649950",
+          "what": "OSM measured footprint 760 x 270.5 m"
+        }
+      ],
+      "notes": "Campus-scale (~12 ha); the model shows a typical block. Building forms are typed; Wikidata gives the 1999 founding."
+    },
+    "papeete-market-game": {
+      "venueId": "papeete-market-game",
+      "city": "papeete",
+      "name": "Centre commercial (Arue)",
+      "archetype": "mall",
+      "subject": "A small neighbourhood shopping centre (~30 x 24 m): single-storey arcade of shops with a shared roof and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "strip centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe5cf",
+          "#4f8aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/204556920",
+          "what": "OSM measured footprint 30.2 x 23.7 m"
+        }
+      ],
+      "notes": "Unnamed centre commercial; typed from OSM footprint (building=retail). No facts found."
+    },
+    "papeete-meal-stop": {
+      "venueId": "papeete-meal-stop",
+      "city": "papeete",
+      "name": "Snack Resto Paea Manate",
+      "archetype": "restaurant",
+      "subject": "A small roadside snack-restaurant with an open veranda facing the coast road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6d2",
+          "#d9a35a",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/754471867",
+          "what": "OSM measured footprint 30.3 x 16.5 m"
+        }
+      ],
+      "notes": "Nothing found about this snack; typed from the OSM footprint (~30 x 16 m) and the open-veranda Polynesian roadside style."
+    },
+    "papeete-osm-node-1422688771": {
+      "venueId": "papeete-osm-node-1422688771",
+      "city": "papeete",
+      "name": "Marae",
+      "archetype": "shrine-small",
+      "subject": "A Polynesian marae: a rectangular paved court of coral and basalt stones with a low stone altar platform (ahu) at one end and upright backrest slabs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "marae stone court with ahu platform"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f6b63",
+          "#8b867a",
+          "#a39e90"
+        ],
+        "roofColour": "#6f6b63",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone enclosure"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stepped ahu platform"
+        },
+        {
+          "id": "obelisk",
+          "count": 3,
+          "note": "upright stone slabs on the ahu"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "pre-contact",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/754500376",
+          "what": "OSM measured footprint 9 x 5.2 m"
+        }
+      ],
+      "notes": "Place name only; the node is on the southern isthmus side of Tahiti and sources for this particular marae were not found. Typed generic marae of dry-laid dark basalt and coral slabs in a clearing under tamanu and breadfruit trees. OSM building outline is only 9 x 5 m."
+    },
+    "papeete-osm-node-2554433116": {
+      "venueId": "papeete-osm-node-2554433116",
+      "city": "papeete",
+      "name": "Concept Grill",
+      "archetype": "restaurant",
+      "subject": "Concept Grill, a single-storey grill restaurant in a retail unit with a covered terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe8da",
+          "#b8452d",
+          "#2e2e2e"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/740558815",
+          "what": "OSM measured footprint 29.8 x 22.1 m"
+        }
+      ],
+      "notes": "No description found; typed from the OSM retail footprint (~30 x 22 m). No brand marks."
+    },
+    "papeete-osm-node-6781735685": {
+      "venueId": "papeete-osm-node-6781735685",
+      "city": "papeete",
+      "name": "Captage 1000 sources",
+      "archetype": "industrial",
+      "subject": "A mountain-stream water intake (captage) building: a small concrete shed and tank beside a green valley stream",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat",
+        "variant": "small intake house with tank"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5b2a6",
+          "#6b6a60",
+          "#d0cdc1"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/640280921",
+          "what": "OSM measured footprint 5.1 x 4.7 m"
+        }
+      ],
+      "notes": "Only a ~5 x 5 m outline and the name are known. Typed minimal utility structure in dense valley vegetation."
+    },
+    "papeete-osm-node-6904941337": {
+      "venueId": "papeete-osm-node-6904941337",
+      "city": "papeete",
+      "name": "Rampe parapente",
+      "archetype": "park-landscape",
+      "subject": "A paragliding launch ramp on a ridge: a small timber and concrete take-off platform with a wind sock, on a grass hilltop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "launch ramp/platform"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#a08463",
+          "#b5b2a6",
+          "#d9d2c0"
+        ],
+        "roofColour": "#8a8d8f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "wind sock pole"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/740092511",
+          "what": "OSM measured footprint 9.1 x 5.8 m"
+        }
+      ],
+      "notes": "Only an OSM outline (~9 x 6 m) and the name. Typed hilltop launch scene; viewpoint over Tahiti and Moorea is the recognisable thing."
+    },
+    "papeete-osm-node-9695866739": {
+      "venueId": "papeete-osm-node-9695866739",
+      "city": "papeete",
+      "name": "Rohotu",
+      "archetype": "park-landscape",
+      "subject": "Rohotu, a south-coast lagoon-side spot: a small open-sided shelter on a grassy shore under palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "open fare shelter"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a08463",
+          "#7a5f42",
+          "#d9c8a5"
+        ],
+        "roofColour": "#c9bfa6",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open-sided fare-style shelter"
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/754460705",
+          "what": "OSM measured footprint 9.9 x 7.4 m"
+        }
+      ],
+      "notes": "Only the name and a ~10 x 7 m building outline are known. Typed shoreline shelter; no sources found."
+    },
+    "papeete-osm-relation-10242577": {
+      "venueId": "papeete-osm-relation-10242577",
+      "city": "papeete",
+      "name": "Musee de Tahiti et des Iles",
+      "archetype": "museum-theatre",
+      "subject": "The Museum of Tahiti and Its Islands (reopened 2023): a broad low pavilion with Polynesian-inspired exterior, facing the lagoon on a 4 ha garden site",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 104,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "wide open exhibition pavilion with Polynesian roof lines",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece4d0",
+          "#8a6a48",
+          "#ffffff"
+        ],
+        "roofColour": "#7b6a55",
+        "roofMaterial": "timber-shingle",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rock-armoured breakwater and sea wall on the lagoon side"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_Tahiti_et_des_%C3%8Eles",
+          "what": "architect Pierre-Jean Picart; exterior of traditional Polynesian inspiration, contemporary exhibition hall of ~1,400 m2 entirely open; ~4 ha fenced grounds facing the lagoon; Atea ethnobotanical garden; petroglyph; reopened 4 Mar 2023"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/10242577",
+          "what": "OSM measured footprint 106.5 x 104.4 m"
+        }
+      ],
+      "notes": "Sources describe concept and layout but not the materials or colours, so the roof material and colours are inferred (traditional-looking wood and shingle). OSM footprint ~106 x 104 m (site)."
+    },
+    "papeete-osm-way-204556995": {
+      "venueId": "papeete-osm-way-204556995",
+      "city": "papeete",
+      "name": "Phare de la Pointe Venus",
+      "archetype": "monument",
+      "subject": "Pointe Venus lighthouse, a square eight-storey tower (1867, raised 9 m in 1963) with a lantern, standing on the black-sand headland at Mahina",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 8,
+        "height_m": 34,
+        "roof": "dome",
+        "variant": "square tapering tower with gallery and lantern"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#eeeae0",
+          "#33383d",
+          "#ffffff"
+        ],
+        "roofColour": "#33383d",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "lantern cupola"
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "gallery rail"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1867",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Phare_de_la_pointe_V%C3%A9nus",
+          "what": "square eight-storey tower of rubble stone and coral, 34 m (originally 25 m, raised 9 m in 1963), 47 m above sea, white light every 5 s; WWII painted as coconut palms; architect Leonce Reynaud, 1867"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/204556995",
+          "what": "OSM measured footprint 5.6 x 5.1 m"
+        }
+      ],
+      "notes": "Height and material are sourced. Whitewashed look is from memory and is not stated; the dark lantern/cupola roof is assumed. Base 5.6 x 5.1 m (OSM)."
+    },
+    "papeete-osm-way-204557043": {
+      "venueId": "papeete-osm-way-204557043",
+      "city": "papeete",
+      "name": "Marche de Arue",
+      "archetype": "market-hall",
+      "subject": "A small covered market hall at Arue: open-sided roofed hall over stalls with a pitched corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "open-sided covered market"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e6dfcf",
+          "#c9906a",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/204557043",
+          "what": "OSM measured footprint 34.8 x 23 m"
+        }
+      ],
+      "notes": "OSM amenity=marketplace footprint ~35 x 23 m is the only fact. Typed as an open-sided pitched-roof hall. Do not confuse with the multi-storey Papeete central market."
+    },
+    "papeete-osm-way-32774088": {
+      "venueId": "papeete-osm-way-32774088",
+      "city": "papeete",
+      "name": "Cathedrale Notre-Dame de Papeete",
+      "archetype": "church-classical",
+      "subject": "Notre-Dame Cathedral in central Papeete: a modest yellow-plastered church (1875) with a tall front bell tower and gabled nave",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "single nave with west tower",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e9d26a",
+          "#ffffff",
+          "#b9a24a"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front bell tower 39 m"
+        },
+        {
+          "id": "stained-glass",
+          "count": 6,
+          "note": "facade windows from 1967, apse windows from 1989"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "marble-and-gold mosaic of Christ Pantocrator (2008) inside"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1875",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame_de_Papeete",
+          "what": "yellow facade (restored 2005 to the original yellow), about 40 x 15 m, bell tower 39 m, built 1856-1875, stained glass 1967 and 1989"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32774088",
+          "what": "footprint 39 x 17.5 m, building=cathedral, start 1875-12-23"
+        }
+      ],
+      "notes": "Distinctive for the strong yellow facade (not white). The roof material and colour are not stated and are assumed. The tower height of 39 m may include a spire; the nave itself is ~12 m."
+    },
+    "papeete-osm-way-41444450": {
+      "venueId": "papeete-osm-way-41444450",
+      "city": "papeete",
+      "name": "Stade Pater",
+      "archetype": "stadium",
+      "subject": "Stade Pater Te Hono Nui (1971, Pacific Games): a 15,000-seat oval bowl with concrete stands and a track around a grass pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 209,
+        "depth_m": 143,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "curved",
+        "variant": "oval bowl with athletics track"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5b8",
+          "#3d6f9e",
+          "#e8e4d8"
+        ],
+        "roofColour": "#9a9d9e",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one stand covered, unverified"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_Pater_Te_Hono_Nui",
+          "what": "built 1971 for the Pacific Games, up to 15,000 spectators, six-lane tartan athletics track from 1995, renovated 2003 and 2010, natural grass pitch"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41444450",
+          "what": "OSM measured footprint 208.9 x 143.3 m"
+        }
+      ],
+      "notes": "Capacity, track and dates are sourced; stands, roofs and colours are not described and are typed."
+    },
+    "papeete-osm-way-730928869": {
+      "venueId": "papeete-osm-way-730928869",
+      "city": "papeete",
+      "name": "O belvedere",
+      "archetype": "restaurant",
+      "subject": "O belvedere, a hillside restaurant in an apartment-style block with a terrace over the lagoon",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "hillside terraced block with restaurant terrace"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eee4cf",
+          "#7a5f42",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "view terrace"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/730928869",
+          "what": "OSM measured footprint 27.9 x 24.1 m"
+        }
+      ],
+      "notes": "OSM tags it building=apartments + amenity=restaurant (~28 x 24 m). Typed; the view terrace is inferred from the name (belvedere)."
+    },
+    "papeete-osm-way-734682036": {
+      "venueId": "papeete-osm-way-734682036",
+      "city": "papeete",
+      "name": "Papeete Tahiti Temple",
+      "archetype": "church-modern",
+      "subject": "The LDS Papeete Tahiti Temple: a stucco-white temple with blue tile roof and a single spire topped by a gilded angel Moroni, in a palm garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 34,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "temple with single spire ~20 m",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "whitewash",
+        "colours": [
+          "#f2efe6",
+          "#d6b34a",
+          "#cfc9b8"
+        ],
+        "roofColour": "#2f6aa8",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single spire ~20 m with gilded Moroni"
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1984",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Papeete_Tahiti_Temple",
+          "what": "stucco with imported white sand, blue tile roof, single 66 ft (20 m) spire with gilded Moroni statue, stained-glass facade, French/Polynesian blend, 12,150 sq ft, 1.7 acre site with palms; dedicated 1983-84"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/734682036",
+          "what": "OSM measured footprint 41.9 x 33.7 m"
+        }
+      ],
+      "notes": "Details are directly sourced; the roof colour blue is stated. Storeys are a guess (1-2)."
+    },
+    "papeete-osm-way-740564751": {
+      "venueId": "papeete-osm-way-740564751",
+      "city": "papeete",
+      "name": "CFPA",
+      "archetype": "campus-block",
+      "subject": "A CFPA vocational training centre: a small single-storey teaching block with workshops (the mapped outline is only 8 x 5 m, so a modest block is shown)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#dcd7c9",
+          "#3d6f9e",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/740563390",
+          "what": "OSM measured footprint 8 x 5.4 m"
+        }
+      ],
+      "notes": "No facts found; OSM outline of the mapped building is tiny (8 x 5 m) so the model is enlarged to a plausible classroom/workshop block. Mark as typed."
+    },
+    "papeete-osm-way-740565283": {
+      "venueId": "papeete-osm-way-740565283",
+      "city": "papeete",
+      "name": "C.C. (centre commercial)",
+      "archetype": "mall",
+      "subject": "A small commercial centre (~29 x 18 m): single-storey row of shops with a shared pitched roof and parking in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "strip centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0e6d0",
+          "#c9906a",
+          "#ffffff"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/740565283",
+          "what": "OSM measured footprint 29.1 x 18.5 m"
+        }
+      ],
+      "notes": "Name is only an abbreviation; typed strip centre from the OSM building=retail footprint."
+    },
+    "papeete-osm-way-895747028": {
+      "venueId": "papeete-osm-way-895747028",
+      "city": "papeete",
+      "name": "Parc Outuaraea",
+      "archetype": "park-landscape",
+      "subject": "Parc Outuaraea, an urban park in the Papeete conurbation: lawn, palms and a children area with a shade pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 79,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "small park with a pavilion"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eee4cf",
+          "#a08463",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "shade pavilion, unverified"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/895747028",
+          "what": "OSM measured footprint 90.6 x 79.2 m"
+        }
+      ],
+      "notes": "Only the name and the ~91 x 79 m park outline are known; contents are typed."
+    },
+    "papeete-quiet-reflection": {
+      "venueId": "papeete-quiet-reflection",
+      "city": "papeete",
+      "name": "Eglise Sainte Anne",
+      "archetype": "church-classical",
+      "subject": "The Sainte-Anne church: a small village Catholic church with a white-plastered gabled nave, a front square bell tower and a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "nave with front tower"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1e8",
+          "#4f8aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#a8472f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Papeete",
+          "what": "general French Polynesian town context; OSM footprint only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/548581484",
+          "what": "OSM measured footprint 32.5 x 20.8 m"
+        }
+      ],
+      "notes": "OSM/Wikidata record a Catholic church building (~32 x 21 m) but no description was found; the white-plaster nave with square tower is the typical Polynesian parish church form and is an assumption."
+    },
+    "papeete-recreation": {
+      "venueId": "papeete-recreation",
+      "city": "papeete",
+      "name": "Parc naturel Te Faa Iti",
+      "archetype": "park-landscape",
+      "subject": "Te Faa Iti natural park on the Taravao plateau: a forest trailhead with a small shelter and a lookout rail",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "trailhead shelter"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7b55",
+          "#6b5539",
+          "#d9d2c0"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "trailhead shelter"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Papeete",
+          "what": "city style used to type this low-confidence brief; no source describes this place"
+        }
+      ],
+      "notes": "No geometry or description found for this venue; typed low-confidence nature-park trailhead in dense tropical forest."
+    },
+    "papeete-transit": {
+      "venueId": "papeete-transit",
+      "city": "papeete",
+      "name": "Gare Maritime",
+      "archetype": "transport-station",
+      "subject": "The Gare Maritime (inter-island ferry terminal) on the Papeete waterfront: a long two-storey passenger terminal with a covered boarding side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 119,
+        "depth_m": 41,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed",
+        "variant": "long terminal on the quay",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece7d8",
+          "#3d6f9e",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "quay with moored inter-island boats"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered passenger quay"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Papeete",
+          "what": "waterfront esplanade and port context; OSM ferry_terminal footprint ~119 x 41 m, 2 levels"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/734654692",
+          "what": "OSM measured footprint 118.8 x 41.1 m, 2 levels"
+        }
+      ],
+      "notes": "Only OSM facts (ferry terminal, 2 levels, ~119 x 41 m); typed finish. Moorea ferries and inter-island cargo boats alongside the quay are the recognisable setting."
+    }
+  }
+}

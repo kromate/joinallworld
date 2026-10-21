@@ -1,0 +1,169 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/395444401",
+   "used": "containing building outline about 18 x 12 m, 4 levels (the nearby Commons street photos show Bank Al-Maghrib, not this building, so none were used)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/rabat.json#rabat-meal-stop",
+   "used": "city-street restaurant with an awning and terrace tables; Rabat ville nouvelle render in cream and ochre"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 13.2,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.24,
+    "windowShape": "rect",
+    "plinth": 0.4,
+    "trimColour": "#b9703f",
+    "bands": "#f4f1ea",
+    "pattern": [
+     {
+      "type": "balconies",
+      "faces": [
+       "front"
+      ],
+      "floors": "upper",
+      "depth": 0.9,
+      "width": 2.2,
+      "every": 4.5,
+      "railKind": "solid",
+      "colour": "#f4f1ea",
+      "railColour": "#3a3a3a"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "id": "restaurant-awning",
+   "at": [
+    0,
+    -6.5
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2.2,
+    "height": 3.0,
+    "colours": [
+     "#8a3b30",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "sign",
+   "at": [
+    -1,
+    -6.8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 3.4,
+    "colour": "#2a2a2a",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t1",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#8a3b30"
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t2",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#8a3b30"
+   }
+  },
+  {
+   "type": "table-set",
+   "id": "t3",
+   "at": [
+    4,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#8a3b30"
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palm",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this building exists on Commons; massing from the OSM outline and 4-level tag, facade and terrace typed from the city style, so the front direction and storey count are unverified."
+ }
+}

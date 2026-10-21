@@ -1,0 +1,561 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "uch",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:University_College_Hospital,_Ibadan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Eukoha",
+   "view": "front",
+   "file": "/tmp/places-evidence/ibadan/uch2.jpg",
+   "used": "long three-storey white block with ribbon windows, open central porte-cochere under a blank green name board, low red roof with deep eaves, taller end blocks, teal-roofed side shelters, teal guard booth"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_view_of_University_College_Hospital(UCH),_Ibadan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kemato",
+   "view": "street",
+   "used": "taller blocks and a red-roofed clerestory tower rising behind the front block, stone-faced gate piers"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/843737417",
+   "used": "not used: nearest-quality match covers only a 71 m strip, the photo shows a much longer front"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 58,
+  "aspect": 1.5,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     32,
+     15
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": {
+     "type": "bands",
+     "colours": [
+      "#d9d6cc"
+     ],
+     "height": 0.35,
+     "at": 0.0,
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     32,
+     15
+    ]
+   },
+   "at": [
+    26,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": {
+     "type": "bands",
+     "colours": [
+      "#d9d6cc"
+     ],
+     "height": 0.35,
+     "at": 0.0,
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     22,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "back": "ribbon",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 2.5,
+      "spacing": 4.4,
+      "width": 1.1,
+      "colour": "#d9d6cc",
+      "storeys": 2
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    -42.68,
+    2
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": {
+     "type": "bands",
+     "colours": [
+      "#d9d6cc"
+     ],
+     "height": 0.35,
+     "at": 0.0,
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     10,
+     12
+    ]
+   },
+   "at": [
+    42.68,
+    2
+   ],
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "left": "none",
+     "back": "none",
+     "right": "none"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": {
+     "type": "bands",
+     "colours": [
+      "#d9d6cc"
+     ],
+     "height": 0.35,
+     "at": 0.0,
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-l",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    -34,
+    22
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "ribbon"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": {
+     "type": "bands",
+     "colours": [
+      "#d9d6cc"
+     ],
+     "height": 0.35,
+     "at": 0.0,
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-r",
+   "footprint": {
+    "rect": [
+     14,
+     26
+    ]
+   },
+   "at": [
+    34,
+    22
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceae2",
+    "windows": "ribbon",
+    "windowRatio": 0.24,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "right": "none",
+     "left": "ribbon"
+    },
+    "plinth": 0.3,
+    "glassColour": "#7d8a91",
+    "pattern": {
+     "type": "bands",
+     "colours": [
+      "#d9d6cc"
+     ],
+     "height": 0.35,
+     "at": 0.0,
+     "floors": "all"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4705a",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 1.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.6,
+    9.0
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#2f7a4f",
+    "frameColour": "#d9d6cc",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -33,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 7,
+    "height": 4.0,
+    "columns": 5,
+    "colour": "#2a8a8e",
+    "edgeColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    33,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 24,
+    "depth": 7,
+    "height": 4.0,
+    "columns": 5,
+    "colour": "#2a8a8e",
+    "edgeColour": "#e8e8e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth",
+   "footprint": {
+    "rect": [
+     5,
+     3.5
+    ]
+   },
+   "at": [
+    10,
+    -12
+   ],
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4aa3a6",
+    "windows": "punched",
+    "windowRatio": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a8a8e",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 4,
+    "line": 4
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d4",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -33,
+    -8.5,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#7d7f80"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    33,
+    -8.5,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "thickness": 0.4,
+    "kind": "wall",
+    "colour": "#7d7f80"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "n": 24,
+    "radius": 6.5,
+    "height": 0.45,
+    "colour": "#b9b8b0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -18,
+    0.45
+   ],
+   "params": {
+    "n": 24,
+    "radius": 5.6,
+    "height": 0.5,
+    "colour": "#5f8f3a",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "forecourt trees/palms and stone-dado perforated side walls simplified; louvred ribbon windows approximated by ribbon bands; rear wings inferred"
+ }
+}

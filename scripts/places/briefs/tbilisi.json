@@ -1,0 +1,1422 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tbilisi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tbilisi",
+    "climate": "temperate",
+    "vernacular": "Old Tbilisi: two- to four-storey brick and plastered houses with carved wooden balconies and glazed veranda galleries in faded ochre, blue-green, brown and cream, on steep hillside streets; 19th-century eclectic and Art Nouveau mansions (Sololaki, Vera); Stalin-era neoclassical blocks on Rustaveli; Soviet concrete panel and brutalist blocks (Gldani, Varketili, Saburtalo); glass and steel landmarks after 2000. Roofs mostly corrugated or flat metal sheet, some clay tile, and flat membrane on blocks. Plane, pine and mulberry trees on steep slopes above the Mtkvari.",
+    "wallColours": [
+      "#d9b98a",
+      "#c4a073",
+      "#b7784f",
+      "#8fa89a",
+      "#7aa0b0",
+      "#e3d9c0",
+      "#a9a49a",
+      "#8b6a50"
+    ],
+    "roofColours": [
+      "#7b8a8f",
+      "#9a4a35",
+      "#6b6a68",
+      "#4f5a60"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "brick",
+      "render",
+      "timber",
+      "stone",
+      "concrete",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "clay-tile",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Carved and fretted timber balconies and glazed galleries, wrought-iron balustrades, Persian-influenced tilework, sulphur-bath domes, Stalin-era neoclassical columns and reliefs, brutalist concrete geometry, Georgian cross-in-square churches with conical drum domes.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Georgia_(country)",
+        "what": "oldest structures stone and wood then brick; Soviet socialist realism, brutalism (Isani metro 1971, Bank of Georgia HQ 1972-78), postmodern Wedding Palace, post-1991 Bridge of Peace and Fuksas Public Service Hall"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Old_Tbilisi",
+        "what": "Old Tbilisi: wooden houses with open carved balconies, eclectic 19th-century fabric, sulphur baths, cobbled streets"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tbilisi_State_University",
+        "what": "Corpus I built 1899-1906 by Simon Kldiashvili, former Nobility Gymnasium"
+      }
+    ]
+  },
+  "places": {
+    "tbilisi-airport-tbilisi-airport": {
+      "venueId": "tbilisi-airport-tbilisi-airport",
+      "city": "tbilisi",
+      "name": "Tbilisi International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Main terminal block with the 2007 international terminal and the 2017 arrivals extension, glazed and low",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5ccd0",
+          "#5f7a8c",
+          "#eef0f0"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 5
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1952 / 1968 / 2007 / 2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tbilisi_International_Airport",
+          "what": "2007 international terminal about 25,000 m2 (US$90.5m); 1968 terminal by Vladimer Beridze in International Style; 2017 arrivals terminal 12,000 m2 with a boarding bridge, five stands, 250-space car park"
+        }
+      ],
+      "notes": "Layers: Stalin-era 1952 terminal (now VIP), 1968 International Style terminal, glazed 2007 terminal, 2017 arrivals extension. Facade colours and exact size estimated; sources give areas but no appearance."
+    },
+    "tbilisi-clinic": {
+      "venueId": "tbilisi-clinic",
+      "city": "tbilisi",
+      "name": "Jo Ann University Hospital",
+      "archetype": "hospital",
+      "subject": "Modern private university hospital block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c8",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank cross board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed from city style."
+    },
+    "tbilisi-community-notices": {
+      "venueId": "tbilisi-community-notices",
+      "city": "tbilisi",
+      "name": "Georgian Intelligence Service",
+      "archetype": "office-low",
+      "subject": "Fenced government office compound with a plain modern block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#c9c4b8",
+          "#6f6f6a",
+          "#e4e0d4"
+        ],
+        "roofColour": "#6a6e72",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed as a guarded government block. No signage."
+    },
+    "tbilisi-community-voting-game": {
+      "venueId": "tbilisi-community-voting-game",
+      "city": "tbilisi",
+      "name": "Zurab Zhvania Square",
+      "archetype": "park-landscape",
+      "subject": "Paved city square with trees and a central lawn in a Saburtalo/Vake district setting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#6f7a5a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "post-1991",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named square in Tbilisi; layout not found. Fountain generic, unverified."
+    },
+    "tbilisi-community-workshop": {
+      "venueId": "tbilisi-community-workshop",
+      "city": "tbilisi",
+      "name": "Free and Agricultural Universities of Georgia",
+      "archetype": "campus-block",
+      "subject": "University campus of mid-rise Soviet-era and newer blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d0c0",
+          "#8b8f8c",
+          "#eeeae0"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Two private universities; appearance not found; typed."
+    },
+    "tbilisi-market-game": {
+      "venueId": "tbilisi-market-game",
+      "city": "tbilisi",
+      "name": "Merani Shopping Gallery",
+      "archetype": "mall",
+      "subject": "Small shopping gallery with glazed front and shopfronts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6d0c0",
+          "#5f7a8c",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed."
+    },
+    "tbilisi-meal-stop": {
+      "venueId": "tbilisi-meal-stop",
+      "city": "tbilisi",
+      "name": "Kiwi",
+      "archetype": "restaurant",
+      "subject": "Compact cafe-restaurant in an old residential street building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9b98a",
+          "#8b6a50",
+          "#eeeae0"
+        ],
+        "roofColour": "#9a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "carved wooden balcony"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th century building (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Old_Tbilisi",
+          "what": "Old Tbilisi: wooden houses with open carved balconies, eclectic 19th-century fabric, sulphur baths, cobbled streets"
+        }
+      ],
+      "notes": "Small cafe near the home location; building not described. Typed as an Old-Tbilisi-style house with a wooden balcony."
+    },
+    "tbilisi-osm-relation-13443464": {
+      "venueId": "tbilisi-osm-relation-13443464",
+      "city": "tbilisi",
+      "name": "Mtatsminda Park",
+      "archetype": "park-landscape",
+      "subject": "Hilltop amusement park around the Giant Wheel above Tbilisi, with the funicular upper station and nearby TV tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "hilltop amusement park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a9a49a",
+          "#8b6a50",
+          "#d8d2c4"
+        ],
+        "roofColour": "#6f7478",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "Mtatsminda TV tower on the ridge"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "501 m funicular, upper station at 727 m"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "carousel and ride pavilions"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "funicular 1905; park 1930s+",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mtatsminda_Park",
+          "what": "landscaped park about 770 m, over 100 ha, Giant Wheel 65 m, funicular built 1905, 501 m long, upper station 727 m, three-storey Ghost Castle dark ride"
+        }
+      ],
+      "notes": "Giant Wheel 65 m is the key silhouette; add a three-storey medieval-style ghost castle and funicular station. The TV tower is a separate nearby landmark."
+    },
+    "tbilisi-osm-relation-16507696": {
+      "venueId": "tbilisi-osm-relation-16507696",
+      "city": "tbilisi",
+      "name": "Georgian Technical University",
+      "archetype": "campus-block",
+      "subject": "Large Soviet-era polytechnic campus block on Kostava Avenue",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#bdb8a8",
+          "#8b8f8c",
+          "#e4e0d4"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1930s-1970s (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgian_Technical_University",
+          "what": "nine campuses; no architecture described"
+        }
+      ],
+      "notes": "Source gave no architecture. Typed as a large Soviet institutional block; colonnade guessed."
+    },
+    "tbilisi-osm-relation-16510616": {
+      "venueId": "tbilisi-osm-relation-16510616",
+      "city": "tbilisi",
+      "name": "Ivane Javakhishvili Tbilisi State University",
+      "archetype": "campus-block",
+      "subject": "Corpus I, the former Nobility Gymnasium on Chavchavadze Avenue",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e3d3b0",
+          "#b9a888",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b8a8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1899-1906",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tbilisi_State_University",
+          "what": "Corpus I, Ilia Chavchavadze Avenue, built 1899-1906 by Simon Kldiashvili, former Georgian Nobility Gymnasium, oldest university building"
+        }
+      ],
+      "notes": "Date, architect and function are sourced. Neoclassical/eclectic cream facade with a central portico is from general knowledge and not confirmed by the source; dimensions estimated."
+    },
+    "tbilisi-osm-relation-17823425": {
+      "venueId": "tbilisi-osm-relation-17823425",
+      "city": "tbilisi",
+      "name": "Dinamo Arena (Boris Paichadze)",
+      "archetype": "stadium",
+      "subject": "Large 1976 bowl stadium with a 30 m cantilevered roof over the upper tier, redeveloped 2006",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 200,
+        "storeys": 3,
+        "height_m": 35,
+        "roof": "curved",
+        "variant": "two-tier bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b5a8",
+          "#2f5a8a",
+          "#e4e0d4"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "30 m cantilever on 58 pylons"
+        },
+        {
+          "id": "scoreboard",
+          "count": 2,
+          "note": "two electronic boards"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1976, refurbished 2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dinamo_Arena",
+          "what": "capacity 54,139, opened 26 Sep 1976, architects Archil and Gia Kurdiani, second tier roofed by a 30 m console supported by 58 pylons, 52 executive suites, two electronic boards"
+        }
+      ],
+      "notes": "Sourced: 54,139 seats (74,354 originally), 30 m cantilevered roof over the second tier, 58 pylons. Facade colours and overall size estimated."
+    },
+    "tbilisi-osm-relation-17883776": {
+      "venueId": "tbilisi-osm-relation-17883776",
+      "city": "tbilisi",
+      "name": "Monastery of Shiomghvime",
+      "archetype": "shrine-small",
+      "subject": "Cliffside medieval stone monastery with a compact domed church above the Mtkvari gorge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "pyramidal",
+        "variant": "cross-in-square church with conical drum dome, cliff-top walls"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#b9a98a",
+          "#8f8368",
+          "#d8cdb0"
+        ],
+        "roofColour": "#7b7468",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "drum with conical roof"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "monastery wall"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "6th century, rebuilt later",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Famous Georgian cliff monastery (Mtkvari gorge, Mtskheta area). Wikipedia fetch failed, so the description comes from general knowledge, not a cited source. Church is small stone cross-in-square with conical dome."
+    },
+    "tbilisi-osm-relation-18294000": {
+      "venueId": "tbilisi-osm-relation-18294000",
+      "city": "tbilisi",
+      "name": "Sokhumi State University",
+      "archetype": "campus-block",
+      "subject": "University building in Tbilisi (displaced Abkhazia university), modern mid-rise block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6d0c0",
+          "#6f8aa0",
+          "#eeeae0"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed."
+    },
+    "tbilisi-osm-relation-3941505": {
+      "venueId": "tbilisi-osm-relation-3941505",
+      "city": "tbilisi",
+      "name": "Poladi Stadium",
+      "archetype": "stadium",
+      "subject": "Rustavi football stadium with open stands and concrete terraces around a turf pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "bowl with partial roof"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a49a",
+          "#8c8f91",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand only (unverified)"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1948; rebuilt 1985, 2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Poladi_Stadium",
+          "what": "Rustavi, capacity 4,657 (10,720 before seats), built 1948, partial reconstructions 1985 and 2009, artificial turf 105x70 m"
+        }
+      ],
+      "notes": "Sourced: 4,657 seats, 105x70 m turf, built 1948. Stand roofs not described; typed."
+    },
+    "tbilisi-osm-way-104122415": {
+      "venueId": "tbilisi-osm-way-104122415",
+      "city": "tbilisi",
+      "name": "Tbilisi Zoo",
+      "archetype": "park-landscape",
+      "subject": "Zoo spread along the Vere valley with entrance buildings, cages and wooded slopes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "zoo"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a9a49a",
+          "#8b6a50",
+          "#d8d2c4"
+        ],
+        "roofColour": "#6f7478",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1927 onward (unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tbilisi_Zoo",
+          "what": "Vere River valley, central Tbilisi, ~120 ha, ~300 species, four original sections (Caucasian, USSR, Exotic, Agricultural), marine aquarium opened 2007"
+        }
+      ],
+      "notes": "Zoo in the Vere valley. Entrance and enclosure forms not described in sources; generic gate, kiosks and fences."
+    },
+    "tbilisi-osm-way-1079090317": {
+      "venueId": "tbilisi-osm-way-1079090317",
+      "city": "tbilisi",
+      "name": "National Center for Tuberculosis and Lung Disease",
+      "archetype": "hospital",
+      "subject": "Soviet-era multi-block hospital compound",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#bdb8a8",
+          "#8b8f8c",
+          "#e4e0d4"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1950s-1980s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed Soviet medical block."
+    },
+    "tbilisi-osm-way-1136546674": {
+      "venueId": "tbilisi-osm-way-1136546674",
+      "city": "tbilisi",
+      "name": "Church of Saint Barbare",
+      "archetype": "church-modern",
+      "subject": "Small stone Georgian church with a drum dome and a simple porch",
+      "form": {
+        "footprint": "cross",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "dome",
+        "variant": "cross-in-square, conical drum"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9bfa5",
+          "#a89a7a",
+          "#e7dcc2"
+        ],
+        "roofColour": "#7b7468",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "drum with conical roof"
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small church; no description found. Typed from Georgian church conventions (stone, conical drum dome)."
+    },
+    "tbilisi-osm-way-1321501893": {
+      "venueId": "tbilisi-osm-way-1321501893",
+      "city": "tbilisi",
+      "name": "Betania Monastery of the Nativity of the Mother of God",
+      "archetype": "shrine-small",
+      "subject": "Medieval stone cross-in-square church with a high drum dome in a wooded valley",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "dome",
+        "variant": "cross-in-square, high drum dome, ruined tower nearby"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b9a98a",
+          "#8f8368",
+          "#d8cdb0"
+        ],
+        "roofColour": "#7b7468",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "high drum slightly east"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "carved multifoil niches on the east facade"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "ruined wall"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "ruined tower"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "c. 1200",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Betania_Monastery",
+          "what": "cross-in-square domed stone church, late 12th-early 13th century, high dome shifted east, carved eastern facade with multifoil niches, gate with star-shaped vault at south portal, small St George hall church 1196, ruined tower, isolated wooded Vere valley about 16 km from Tbilisi"
+        }
+      ],
+      "notes": "Sourced form: cross-in-square stone church with high dome; carved east facade. Stone colours and size estimated."
+    },
+    "tbilisi-osm-way-1429264291": {
+      "venueId": "tbilisi-osm-way-1429264291",
+      "city": "tbilisi",
+      "name": "Saint Marine Church",
+      "archetype": "church-modern",
+      "subject": "Small modern Orthodox village church with a domed drum",
+      "form": {
+        "footprint": "cross",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9bfa5",
+          "#a89a7a",
+          "#e7dcc2"
+        ],
+        "roofColour": "#7b7468",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed."
+    },
+    "tbilisi-osm-way-194271283": {
+      "venueId": "tbilisi-osm-way-194271283",
+      "city": "tbilisi",
+      "name": "Shevardeni Stadium",
+      "archetype": "stadium",
+      "subject": "Small club stadium with a single covered stand and low terraces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9a49a",
+          "#c2402e",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Home of FC Shevardeni-1906; appearance not found; typed."
+    },
+    "tbilisi-osm-way-38326853": {
+      "venueId": "tbilisi-osm-way-38326853",
+      "city": "tbilisi",
+      "name": "Chachava Clinic",
+      "archetype": "hospital",
+      "subject": "Private mid-rise clinic block in the city centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c8",
+          "#6f8aa0",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed."
+    },
+    "tbilisi-osm-way-551386185": {
+      "venueId": "tbilisi-osm-way-551386185",
+      "city": "tbilisi",
+      "name": "Man and Sun",
+      "archetype": "monument",
+      "subject": "Hilltop sculpture of a human figure and sun disc on a plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "sculpture on plinth"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#8b8f8c",
+          "#c9a84a",
+          "#bdb8a8"
+        ],
+        "roofColour": "#8b8f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "21st century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named landmark near Tbilisi Sea; sculpture form not found. Typed figure plus disc on a plinth."
+    },
+    "tbilisi-quiet-reflection": {
+      "venueId": "tbilisi-quiet-reflection",
+      "city": "tbilisi",
+      "name": "Rustavi Sioni",
+      "archetype": "church-modern",
+      "subject": "Orthodox church in Rustavi with a domed drum amid Soviet blocks",
+      "form": {
+        "footprint": "cross",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 18,
+        "roof": "dome",
+        "variant": "cross-in-square, conical drum dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9bfa5",
+          "#a89a7a",
+          "#e7dcc2"
+        ],
+        "roofColour": "#7b7468",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rustavi",
+          "what": "Rustavi: Old Rustavi Stalinist style, New Rustavi Soviet block apartments; source does not mention Sioni church"
+        }
+      ],
+      "notes": "Church not described; typed. Setting is a Soviet industrial city."
+    },
+    "tbilisi-recreation": {
+      "venueId": "tbilisi-recreation",
+      "city": "tbilisi",
+      "name": "Tbilisi Open Air Museum of Ethnography",
+      "archetype": "park-landscape",
+      "subject": "Hillside open-air village of relocated timber, stone and wattle buildings above Turtle Lake",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "open-air village on hill"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8b6a50",
+          "#a9a49a",
+          "#d8cdb0"
+        ],
+        "roofColour": "#8b6a50",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 6,
+          "note": "gable-roofed timber houses"
+        },
+        {
+          "id": "fence-wall",
+          "count": 3
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "mill / granary props"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "relocated 19th-20th c. buildings",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tbilisi_Open_Air_Museum_of_Ethnography",
+          "what": "52 ha hill west of Turtle Lake, eleven zones, about 70 buildings; western Georgian openwork timber gable houses with straw/board roofs; eastern stone flat-roofed houses, watchtowers, maize storages of wattle, wineries, mills"
+        }
+      ],
+      "notes": "Variety is the point: timber gabled houses with board roofs, flat-roofed stone houses, watchtowers and wattle storages on a hillside."
+    },
+    "tbilisi-transit": {
+      "venueId": "tbilisi-transit",
+      "city": "tbilisi",
+      "name": "300 Aragveli",
+      "archetype": "transport-station",
+      "subject": "Metro station entrance pavilion beside a Soviet-era housing district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "metro station"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a9a49a",
+          "#6f8aa0",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1980s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "300 Aragveli is a district and metro station in eastern Tbilisi; appearance not found. Typed Soviet metro entrance."
+    }
+  }
+}

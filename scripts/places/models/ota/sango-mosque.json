@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "sango-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ota.json#sango-mosque",
+   "used": "rendered prayer hall 20 x 18 m, two storeys, one central green dome, corner minaret, pointed-arch arcade, boundary wall, steps"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1247072576",
+   "used": "not used: 93 m2 nearest match 9 m away, too small for a 20 x 18 m hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.2
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this mosque; geometry is typed from the brief."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#3f7a52",
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d0b8",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade",
+   "footprint": {
+    "rect": [
+     20,
+     3.5
+    ]
+   },
+   "at": [
+    0,
+    -9.25
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d0b8",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "colour": "#f2eee6"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3f7a52",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    9.7
+   ],
+   "params": {
+    "radius": 5.5,
+    "profile": "hemi",
+    "drum": 1.8,
+    "drumRadius": 5.7,
+    "colour": "#3f7a52",
+    "drumColour": "#f2eee6",
+    "finial": 1.5
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -12,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "pencil",
+    "colour": "#f2eee6",
+    "accent": "#3f7a52",
+    "cap_colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#d9d0b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "pillarEvery": 4,
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -17,
+    0,
+    0
+   ],
+   "params": {
+    "length": 32,
+    "height": 1.8,
+    "pillarEvery": 4,
+    "colour": "#f2eee6",
+    "points": [
+     [
+      0,
+      -16
+     ],
+     [
+      0,
+      16
+     ]
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ }
+}

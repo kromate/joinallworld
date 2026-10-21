@@ -1,0 +1,124 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/193640392",
+   "used": "containing building outline (3254 m2), broad low hall"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e1d9c6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#9b978f",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 9,
+    "height": 7,
+    "columns": 6,
+    "colour": "#bdb8ae"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    30,
+    -55,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   120
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -45
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real containing outline, window rhythm and canopy placement assumed"
+ }
+}

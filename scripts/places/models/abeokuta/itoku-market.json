@@ -1,0 +1,994 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/abeokuta.json#itoku-market",
+   "used": "umbrella-shaded cloth stalls, indigo adire cloth on lines, dye pits behind, sheds, painted indigo wall (Culture Trip: labyrinth of textiles, women tying cotton under umbrellas, deep dye pits out back)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1291183288",
+   "used": "not used: nearest match is a 65 m2 building 29 m away, too small for the market yard"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market itself (nearby geo photos show other goods); layout of stalls, cloth lines, sheds and dye pits is typical, not surveyed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mural-wall",
+   "footprint": {
+    "rect": [
+     30,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    27
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#2f4a78"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8cfb8",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     18,
+     9
+    ]
+   },
+   "at": [
+    -30,
+    16
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e7273",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    28,
+    12
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7c7a",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 0.9
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#6e7273"
+   }
+  },
+  {
+   "type": "dye-pit-field",
+   "at": [
+    -8,
+    20,
+    0
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 6,
+    "spacing_x": 4.5,
+    "spacing_y": 4.0,
+    "colours": [
+     "#2f4a78",
+     "#1f3358"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#2f4a78",
+     "#f2efe6",
+     "#b86a4a",
+     "#3b5f9a"
+    ],
+    "goods_colours": [
+     "#2f4a78",
+     "#1f3358",
+     "#f2efe6",
+     "#3b5f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    3,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#f2efe6",
+     "#2f4a78",
+     "#d8a23a"
+    ],
+    "goods_colours": [
+     "#2f4a78",
+     "#1f3358",
+     "#f2efe6",
+     "#3b5f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "colours": [
+     "#2f4a78",
+     "#b86a4a",
+     "#f2efe6"
+    ],
+    "goods_colours": [
+     "#2f4a78",
+     "#1f3358",
+     "#f2efe6",
+     "#3b5f9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    4,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "colours": [
+     "#f2efe6",
+     "#3b5f9a",
+     "#2f4a78"
+    ],
+    "goods_colours": [
+     "#2f4a78",
+     "#1f3358",
+     "#f2efe6",
+     "#3b5f9a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -36,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "colours": [
+     "#2f4a78",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    32,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "colours": [
+     "#b86a4a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "colours": [
+     "#2f4a78",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5,
+    "colours": [
+     "#2f4a78",
+     "#f2efe6",
+     "#b86a4a"
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    -9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#2f4a78"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -25,
+    -9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20,
+    -9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1f3358"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -15,
+    -9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#3b5f9a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    6,
+    -12,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#2f4a78"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    11,
+    -12,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1f3358"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    21,
+    -12,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#3b5f9a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -30,
+    9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#2f4a78"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -25,
+    9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -20,
+    9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1f3358"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -15,
+    9,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#3b5f9a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    8,
+    10,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#2f4a78"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    13,
+    10,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f2efe6"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#1f3358"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    23,
+    10,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.6,
+      0.05
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      3.0
+     ],
+     [
+      2.8,
+      0,
+      2.2
+     ],
+     [
+      5.2,
+      0,
+      3.0
+     ]
+    ],
+    "curve": true,
+    "colour": "#3b5f9a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree",
+   "at": [
+    -36,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    36,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "itoku-market"
+}

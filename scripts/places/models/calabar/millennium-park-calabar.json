@@ -1,0 +1,194 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1544845318",
+   "used": "park outline (181 x 110 m, 1.3 ha) drawn as the lawn; no photo found, features (fountain, central flagpole, pavilion/stage, paths) from the brief with low confidence"
+  }
+ ],
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 80,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 28,
+    "border": 1.4,
+    "colour": "#d8d3c4",
+    "border_colour": "#f0eee8"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 4.5
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -30
+     ],
+     [
+      -17,
+      -10
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      17,
+      10
+     ],
+     [
+      50,
+      32
+     ]
+    ],
+    "width": 3,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    28,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 7,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#f0eee8",
+    "cap_colour": "#8a4a33"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 24,
+    "count": 12,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    34,
+    28,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 20,
+    "count": 9,
+    "kind": "broadleaf"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 4,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -55,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.4,
+    "thickness": 0.35,
+    "kind": "wall",
+    "colour": "#b8b2a2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "millennium-park-calabar",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; fountain, flagpole, pavilion, paths are a weak brief-based layout; park outline not drawn exactly"
+ }
+}

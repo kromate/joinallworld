@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "capital-medicare-abakaliki",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1395535133",
+   "used": "containing building, 28 x 24 m rotated rectangle at bearing 111; used as the footprint of the three-storey block"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2f8a7a",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9e9c",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.8,
+    "thickness": 0.4,
+    "colour": "#2f8a7a",
+    "columns": 2,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -18,
+    6.5
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.2,
+    "colour": "#2f8a7a"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    8,
+    2,
+    11
+   ],
+   "params": {
+    "radius": 1.3,
+    "height": 2,
+    "legs": 1.2,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -26,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "count": 2,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; real OSM outline only, facade, canopy and colours typed."
+ }
+}

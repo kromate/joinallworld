@@ -1,0 +1,849 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "beach",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Elegushi_Beach.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons",
+   "file": "/tmp/places-evidence/lagos/lbeach1.jpg",
+   "view": "aerial",
+   "used": "diagonal wet-sand shoreline with surf, long rock groin running out into teal-grey sea, wide tan sand, steel vendor frames at the sides; the venue is not tied to one beach, so this is a representative Lagos beach"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 22,
+  "fovDeg": 58
+ },
+ "parts": [
+  {
+   "type": "water-surface",
+   "at": [
+    -6,
+    44,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "width": 170,
+    "depth": 58,
+    "colour": "#46706e",
+    "bank": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      5,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      -56.09,
+      -14.22,
+      0
+     ],
+     [
+      -24.37,
+      0.57,
+      0
+     ],
+     [
+      7.35,
+      15.36,
+      0
+     ],
+     [
+      39.08,
+      30.15,
+      0
+     ],
+     [
+      70.8,
+      44.94,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#a8774f"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.2,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -57.61,
+      -10.96,
+      0
+     ],
+     [
+      -25.89,
+      3.83,
+      0
+     ],
+     [
+      5.83,
+      18.62,
+      0
+     ],
+     [
+      37.55,
+      33.42,
+      0
+     ],
+     [
+      69.27,
+      48.21,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#f4f6f4"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -59.3,
+      -7.33,
+      0
+     ],
+     [
+      -27.58,
+      7.46,
+      0
+     ],
+     [
+      4.14,
+      22.25,
+      0
+     ],
+     [
+      35.86,
+      37.04,
+      0
+     ],
+     [
+      67.58,
+      51.83,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#e8efee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.4,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -61.2,
+      -3.26,
+      0
+     ],
+     [
+      -29.48,
+      11.54,
+      0
+     ],
+     [
+      2.24,
+      26.33,
+      0
+     ],
+     [
+      33.96,
+      41.12,
+      0
+     ],
+     [
+      65.68,
+      55.91,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#dfe9e8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.0,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -63.1,
+      0.82,
+      0
+     ],
+     [
+      -31.38,
+      15.61,
+      0
+     ],
+     [
+      0.34,
+      30.41,
+      0
+     ],
+     [
+      32.06,
+      45.2,
+      0
+     ],
+     [
+      63.78,
+      59.99,
+      0
+     ]
+    ],
+    "curve": true,
+    "colour": "#cfdcdc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "start": [
+     -2.81,
+     13.49,
+     0
+    ],
+    "end": [
+     -25.15,
+     47.21,
+     0
+    ],
+    "count": 22,
+    "mode": "line",
+    "vary": {},
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#3a3835",
+      "profile": [
+       [
+        0.1,
+        0,
+        "#3a3835"
+       ],
+       [
+        1.9,
+        0.6,
+        "#3a3835"
+       ],
+       [
+        1.6,
+        1.6,
+        "#2f2d2b"
+       ],
+       [
+        0.1,
+        1.9,
+        "#2f2d2b"
+       ]
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.2
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      2.4,
+      1.0
+     ]
+    },
+    "points": [
+     [
+      -2.81,
+      13.49,
+      0
+     ],
+     [
+      -25.15,
+      47.21,
+      0
+     ]
+    ],
+    "colour": "#34322f"
+   },
+   "lod": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -48,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 3,
+    "mode": "line",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.08
+      },
+      "points": [
+       [
+        0,
+        -1.2,
+        0
+       ],
+       [
+        0,
+        0,
+        4.2
+       ],
+       [
+        0,
+        1.2,
+        0
+       ]
+      ],
+      "colour": "#c8a02a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 3,
+    "mode": "line",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.08
+      },
+      "points": [
+       [
+        0,
+        -1.2,
+        0
+       ],
+       [
+        0,
+        0,
+        4.2
+       ],
+       [
+        0,
+        1.2,
+        0
+       ]
+      ],
+      "colour": "#b03a2e"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -46,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 3,
+    "mode": "line",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.08
+      },
+      "points": [
+       [
+        0,
+        -1.2,
+        0
+       ],
+       [
+        0,
+        0,
+        4.2
+       ],
+       [
+        0,
+        1.2,
+        0
+       ]
+      ],
+      "colour": "#3f7a52"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    36,
+    -2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 3,
+    "mode": "line",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.08
+      },
+      "points": [
+       [
+        0,
+        -1.2,
+        0
+       ],
+       [
+        0,
+        0,
+        4.2
+       ],
+       [
+        0,
+        1.2,
+        0
+       ]
+      ],
+      "colour": "#c8a02a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    48,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     8,
+     0,
+     0
+    ],
+    "count": 3,
+    "mode": "line",
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "circle": 0.08
+      },
+      "points": [
+       [
+        0,
+        -1.2,
+        0
+       ],
+       [
+        0,
+        0,
+        4.2
+       ],
+       [
+        0,
+        1.2,
+        0
+       ]
+      ],
+      "colour": "#b03a2e"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -48,
+    -12,
+    2.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      8,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0.01
+     ]
+    ],
+    "colour": "#c8a02a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    40,
+    -4,
+    2.0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      8,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0.01
+     ]
+    ],
+    "colour": "#b03a2e"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.6
+    ]
+   },
+   "at": [
+    8,
+    -16
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c9553a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d8d0",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sky0",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    29.72,
+    90.45
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8aa4b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#6f8a98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa6ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sky1",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    35.16,
+    92.98
+   ],
+   "height": 30,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8aa4b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#6f8a98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa6ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sky2",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    40.59,
+    95.52
+   ],
+   "height": 18,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8aa4b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#6f8a98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa6ac"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sky3",
+   "footprint": {
+    "rect": [
+     4,
+     4
+    ]
+   },
+   "at": [
+    46.03,
+    98.05
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8aa4b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "glassColour": "#6f8a98"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa6ac"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Layout now follows the photo (diagonal shoreline, wet strip, surf bands, groin, swing frames, horizon towers) but water is a flat plane with no surf texture, shoreline angle/groin placement approximate, boulders are plain blobs, steel frames are thin line stand-ins, no vendors; skyline is oversized."
+ }
+}

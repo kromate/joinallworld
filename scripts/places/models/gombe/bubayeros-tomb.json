@@ -1,0 +1,225 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1084632625",
+   "used": "tomb outline (about 8 x 8 m, containing match; irregular, simplified)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Bubayero%27s_Tomb",
+   "used": "locked mausoleum inside a walled enclosure with two entrances (modelled as two gates on opposite walls)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tomb",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d1b58c",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8a29a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinnacle",
+   "at": [
+    -4,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 4.2,
+    "height": 0.8,
+    "topScale": 0.4,
+    "colour": "#c4a57a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinnacle",
+   "at": [
+    -4,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 4.2,
+    "height": 0.8,
+    "topScale": 0.4,
+    "colour": "#c4a57a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinnacle",
+   "at": [
+    4,
+    -3.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 4.2,
+    "height": 0.8,
+    "topScale": 0.4,
+    "colour": "#c4a57a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pinnacle",
+   "at": [
+    4,
+    3.5
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     0.6
+    ],
+    "z0": 4.2,
+    "height": 0.8,
+    "topScale": 0.4,
+    "colour": "#c4a57a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.0,
+    "thickness": 0.4,
+    "pillarEvery": 3.5,
+    "colour": "#cfb38a",
+    "points": [
+     [
+      -12,
+      -10
+     ],
+     [
+      12,
+      -10
+     ],
+     [
+      12,
+      10
+     ],
+     [
+      -12,
+      10
+     ],
+     [
+      -12,
+      -10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -4,
+    -10.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2.6,
+    "colour": "#cfb38a",
+    "board_colour": "#6b4a2e"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    6,
+    10.2,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 2.6,
+    "colour": "#cfb38a",
+    "board_colour": "#6b4a2e"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; mud-render hip-roof tomb shape and colours are typical Hausa mausolea, not seen"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "bubayeros-tomb"
+}

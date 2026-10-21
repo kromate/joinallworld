@@ -1,0 +1,478 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "bowers-tower",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Captain_Bower%27s_Tower-1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "JTSait",
+   "view": "front",
+   "file": "/tmp/places-evidence/ibadan/bowers-tower-0.jpg",
+   "used": "slim terracotta square shaft, small railed gallery and open belfry with arched openings and domed cap, low entrance base with red steps, lattice masts, rest houses and hip-roofed pavilions"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Iconic_Bowers_Tower_Monument_-_Layipo,_Ibadan,_Nigeria._02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ExploreWithTunde",
+   "view": "aerial",
+   "used": "layout: tower at hill-top lawn, flanking wing walls, paths, round gazebos, trees"
+  },
+  {
+   "kind": "text",
+   "used": "height 18.3 m, 3.4 m square shaft (brief sources)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 34,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.75,
+    "run": 0.9,
+    "count": 8,
+    "colour": "#b8644c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#a45a44"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#8a6a58",
+    "sections": [
+     {
+      "z": 0.6,
+      "rect": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 13,
+      "rect": [
+       3.3,
+       3.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.7,
+    5
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.1
+    ],
+    "height": 6.5,
+    "colour": "#d9c7b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.7,
+    0.8
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 2.0,
+    "colour": "#6b4a38"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    13
+   ],
+   "params": {
+    "rect": [
+     4.4,
+     4.4
+    ],
+    "height": 0.4,
+    "colour": "#8a8a88"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.08,
+      0.9
+     ]
+    },
+    "closed": true,
+    "points": [
+     [
+      -2.1,
+      -2.1,
+      13.9
+     ],
+     [
+      2.1,
+      -2.1,
+      13.9
+     ],
+     [
+      2.1,
+      2.1,
+      13.9
+     ],
+     [
+      -2.1,
+      2.1,
+      13.9
+     ]
+    ],
+    "colour": "#6e7074"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    13.4
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 1.8,
+    "dy": 1.8,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 3.0,
+      "colour": "#8a6a58"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    16.4
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "height": 0.4,
+    "colour": "#7a6050"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    16.8
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#7a7e82",
+    "profile": [
+     [
+      1.3,
+      0
+     ],
+     [
+      1.2,
+      0.4
+     ],
+     [
+      0.8,
+      0.8
+     ],
+     [
+      0.1,
+      1.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    3.2,
+    2.5,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "baseWidth": 2.6,
+    "topWidth": 1.6,
+    "panels": 4,
+    "colour": "#7e848a",
+    "colour2": "#7e848a"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    7,
+    5,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "baseWidth": 3.0,
+    "topWidth": 0.8,
+    "panels": 10,
+    "colour": "#8e949a",
+    "colour2": "#8e949a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 0,
+    "height": 0.6,
+    "colour": "#c4806a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge-r",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    19,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d8a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f5a4a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge-l",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -18,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d8a8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f5a4a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    22,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 2.8,
+    "roof": "hip",
+    "rise": 1.6,
+    "colour": "#bdb8a8",
+    "cap_colour": "#555a60"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -26,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 4.5,
+    "height": 2.6,
+    "roof": "hip",
+    "rise": 1.4,
+    "colour": "#bdb8a8",
+    "cap_colour": "#555a60"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "belfry and gallery rail simplified, lattice masts schematic with no dish; foreground wide curved steps not modelled; rest houses and gazebo are generic"
+ }
+}

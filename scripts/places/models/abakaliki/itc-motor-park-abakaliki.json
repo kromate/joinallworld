@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "itc-motor-park-abakaliki",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Abakaliki",
+   "used": "regional junction of Enugu, Afikpo and Ogoja roads, so a large motor park; layout and colours typed from the brief (no photo, no OSM outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "waiting-shed",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c3bdac",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a7f83",
+    "material": "metal-sheet",
+    "rise": 1.8,
+    "overhang": 2.5
+   }
+  },
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "width": 56,
+    "depth": 7,
+    "height": 3.8,
+    "wall_colour": "#c3bdac",
+    "roof_colour": "#7a7f83",
+    "accent_colour": "#d9a431"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -36,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 3.5,
+    "colour": "#d9a431",
+    "frameColour": "#6f757a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -30,
+     -1
+    ],
+    "end": [
+     30,
+     -1
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       1.8
+      ],
+      "height": 2.6,
+      "colour": "#d9a431",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -36,
+     -9
+    ],
+    "end": [
+     36,
+     -9
+    ],
+    "of": {
+     "type": "core/car",
+     "params": {
+      "colour": "#e8e4d8",
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 10,
+    "start": [
+     -36,
+     -16
+    ],
+    "end": [
+     36,
+     -16
+    ],
+    "of": {
+     "type": "core/car",
+     "params": {
+      "colour": "#c8b04a",
+      "count": 1
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline: typed shed, canopy, kiosks and car rows; buses are generic cars"
+ }
+}

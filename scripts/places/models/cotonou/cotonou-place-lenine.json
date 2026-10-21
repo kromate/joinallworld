@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-place-lenine",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Place_L%C3%A9nine_%C3%A0_cotonou_au_B%C3%A9nin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adoscam",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/lenine1.jpg",
+   "used": "wide red-brown stair flight up to a raised terrace, black tapering plinth with obelisk top where the statue stood, sloped grey concrete embankment on the right, interlocking-paver square, low background blocks and broadleaf trees"
+  },
+  {
+   "kind": "text",
+   "used": "fr.wikipedia Place Lenine (Cotonou): statue removed after the democratic transition, empty plinth remains"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 22,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05,
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "rect": [
+     34,
+     18
+    ],
+    "height": 3.2,
+    "colour": "#8c867b",
+    "topColour": "#9a9488"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -18,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 33,
+    "rise": 3.2,
+    "run": 9,
+    "count": 18,
+    "colour": "#7a4540"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    10,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     11,
+     5.5
+    ],
+    "height": 0.9,
+    "colour": "#16171a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18,
+    10,
+    4.1
+   ],
+   "params": {
+    "colour": "#16171a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.0,
+       4.2
+      ]
+     },
+     {
+      "z": 4.2,
+      "rect": [
+       5.4,
+       3.4
+      ]
+     },
+     {
+      "z": 6.0,
+      "rect": [
+       4.2,
+       2.8
+      ]
+     },
+     {
+      "z": 7.2,
+      "rect": [
+       2.4,
+       1.8
+      ]
+     },
+     {
+      "z": 8.0,
+      "rect": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -18,
+    10,
+    11.3
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "height": 6,
+    "colour": "#bdbdbd"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    18,
+    8,
+    0
+   ],
+   "params": {
+    "colour": "#9b968b",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       34,
+       19
+      ],
+      "cy": -0.5
+     },
+     {
+      "z": 1.6,
+      "rect": [
+       34,
+       11
+      ],
+      "cy": -4.5
+     },
+     {
+      "z": 3.1,
+      "rect": [
+       34,
+       4
+      ],
+      "cy": -7.5
+     },
+     {
+      "z": 3.3,
+      "rect": [
+       34,
+       2
+      ],
+      "cy": -8.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "height": 0.35,
+    "colour": "#6f6a62"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "height": 0.35,
+    "colour": "#6f6a62"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "school",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    -34,
+    40
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b25f",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "bands": "#8d6e52"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    26,
+    48
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a8a3",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8c88",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Embankment ramp reads weakly from this camera; plinth is smoother than the photo; no paver texture or foreground kerb detail; background blocks approximate."
+ }
+}

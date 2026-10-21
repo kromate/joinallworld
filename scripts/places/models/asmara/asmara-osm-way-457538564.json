@@ -1,0 +1,164 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/457538564",
+   "used": "building=ruins railway station footprint 17 x 8 m, bearing 85 deg"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ruin-shell",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#9b8c78",
+    "windows": "none",
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a867d",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     3
+    ],
+    "height": 0.9,
+    "colour": "#b3a890"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    2,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.7
+    ],
+    "height": 0.8,
+    "colour": "#9b8c78"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     4
+    ],
+    "height": 4.0,
+    "colour": "#8f816d"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.15
+    ],
+    "height": 0.12,
+    "colour": "#5a5248"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -15.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     0.15
+    ],
+    "height": 0.12,
+    "colour": "#5a5248"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     16,
+     12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     24,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; ruined stone shell modelled from the real 17 x 8 m outline, platform and rails typed from railway-station type."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-way-457538564"
+}

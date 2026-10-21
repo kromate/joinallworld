@@ -1,0 +1,1823 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-of-spain",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-of-spain",
+    "climate": "tropical-maritime",
+    "vernacular": "Caribbean colonial capital: wooden and masonry \"gingerbread\" houses with fretwork, jalousie shutters, galvanize (corrugated) roofs and deep verandas in Woodbrook and St Clair; late-Victorian/Edwardian civic buildings in stucco and limestone, many painted in cream, red or white; the Magnificent Seven mansions around Queen's Park Savannah; 1960s-80s concrete blocks and glass towers downtown; Hindu temples with jhandi flags and Gothic churches among them; backed by the green Northern Range.",
+    "wallColours": [
+      "#f4efe3",
+      "#e5d2b0",
+      "#c7dcd0",
+      "#e8b7a0",
+      "#a8c3da",
+      "#d9d2c2",
+      "#b8372f"
+    ],
+    "roofColours": [
+      "#9a3b30",
+      "#6f7c85",
+      "#8d8b86",
+      "#3f5a4a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "timber",
+      "limestone",
+      "brick",
+      "concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "slate",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Gingerbread fretwork and lace-like timber trim, wrought-iron and Scottish cast-iron balconies and railings, Demerara louvred windows, towers, turrets and pinnacles on the Magnificent Seven, Beaux-Arts columns and pediments on civic buildings, Hindu temple spires and jhandi flags, Carnival murals.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Port_of_Spain",
+        "what": "gingerbread houses in Woodbrook; Magnificent Seven; Woodford Square; Gothic cathedrals and churches; early wood-and-shingle buildings, brick after 1808 fire; limestone buildings; wrought-iron railings and wooden fretwork; Roomor black-and-white"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Magnificent_Seven_(Port_of_Spain)",
+        "what": "styles, architects and dates of the seven mansions, Scottish cast iron, Barbados limestone, Demerara windows"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Queen%27s_Park_Savannah",
+        "what": "260-acre flat savannah ringed by trees; Grand Stand on the south side; Magnificent Seven on Maraval Road"
+      }
+    ]
+  },
+  "places": {
+    "port-of-spain-airport-port-of-spain-airport": {
+      "venueId": "port-of-spain-airport-port-of-spain-airport",
+      "city": "port-of-spain",
+      "name": "Piarco International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The North Terminal of Piarco (opened 2002): a large glass-and-steel terminal with a glass-domed public atrium, two concourses with jet bridges, and the Northern Range behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "main terminal with glass-domed atrium and two concourse piers",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfe0e4",
+          "#3f5a74",
+          "#f4f1ea"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "public atrium glass dome, said to be the largest in the Caribbean"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 14,
+          "note": "mechanical bridges across two concourses"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new tower opened 2011"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2002",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Piarco_International_Airport",
+          "what": "North Terminal completed 2001, opened 25 May 2002; public atrium with largest glass dome in the Caribbean; 82 check-in positions; up to 29 gates incl. 14 jet bridges; separate Tobago concourse; new control tower 2011; views of the Northern Range"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q788810",
+          "what": "Wikidata identity/type match: Piarco International Airport"
+        }
+      ],
+      "notes": "Atrium dome, gate count, tower and opening date sourced. Overall width/depth (about 300 x 110 m) are estimates as no figure was found; colours are assumed (blue-green glass, pale steel). No OSM outline for the airport."
+    },
+    "port-of-spain-clinic": {
+      "venueId": "port-of-spain-clinic",
+      "city": "port-of-spain",
+      "name": "Port of Spain General Hospital",
+      "archetype": "hospital",
+      "subject": "The 1858 colonial main block of the General Hospital: a long classical stone-and-brick front on Charlotte Street with later modern ward blocks behind",
+      "form": {
+        "footprint": "U",
+        "width_m": 95,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "hip",
+        "variant": "long colonial classical front with side wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#d6c7a6",
+          "#a85f45",
+          "#f4efe3"
+        ],
+        "roofColour": "#8d8b86",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor loggia"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1858",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_of_Spain_General_Hospital",
+          "what": "main building begun 1854, opened 1858, local stone with imported brick facing, Classical-style facade; interior remodelled around 1960 by Devereux and Davies with murals by Althea McNish; 554 beds"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/131559736",
+          "what": "measured OSM outline 312.2 x 285.4 m, 67109 m2; tags wikidata=Q7231267, amenity=hospital"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7231267",
+          "what": "Wikidata identity/type match: Port of Spain General Hospital"
+        }
+      ],
+      "notes": "Stone-with-brick-facing, Classical facade and dates sourced. Width/depth, storeys and colours are estimates; the hospital grounds in OSM are 312 x 285 m. Recognisable by the long colonial classical block."
+    },
+    "port-of-spain-community-notices": {
+      "venueId": "port-of-spain-community-notices",
+      "city": "port-of-spain",
+      "name": "The Red House",
+      "archetype": "civic-palace",
+      "subject": "The Red House, seat of Parliament on Abercromby Street: a red-painted Beaux-Arts building of two blocks joined by a central rotunda, with white columns and pediments",
+      "form": {
+        "footprint": "H",
+        "width_m": 142,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "mansard",
+        "variant": "two blocks joined by a central rotunda passage",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#b8372f",
+          "#f4f1ea",
+          "#d9d2c2"
+        ],
+        "roofColour": "#6f7c85",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 2
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central rotunda with fountain"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1907",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Red_House_(Trinidad_and_Tobago)",
+          "what": "Beaux-Arts style; designed by D. M. Hahn; completed 1906, opened 4 Feb 1907; central rotunda with fountain between two blocks; name from red paint first applied 1897; purpleheart columns inside"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/138155533",
+          "what": "measured OSM outline 142 x 44.8 m, 4299 m2; tags building=yes, wikidata=Q7759880"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7759880",
+          "what": "Wikidata identity/type match: The Red House"
+        }
+      ],
+      "notes": "Style, architect, dates, two-block plan with central rotunda and the red colour (name) are sourced. Storeys, roof form and trim colours are estimates (red walls, white trim). OSM outline 142 x 45 m."
+    },
+    "port-of-spain-community-voting-game": {
+      "venueId": "port-of-spain-community-voting-game",
+      "city": "port-of-spain",
+      "name": "Ministry of Works and Transport, Maintenance Division, District of Caroni",
+      "archetype": "civic-small",
+      "subject": "A government works-division office and depot at Chaguanas: a two-storey rendered office with a workshop yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 76,
+        "depth_m": 58,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "office block with depot wing",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5d2b0",
+          "#6f7c85",
+          "#f4efe3"
+        ],
+        "roofColour": "#8d8b86",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/391177195",
+          "what": "measured OSM outline 76.1 x 57.9 m, 4210 m2; tags building=yes, amenity=courthouse"
+        }
+      ],
+      "notes": "OSM tags this amenity=courthouse (4,210 m2, 76 x 58 m); name suggests a public-works depot in Caroni county. Typed from city style; no building description found."
+    },
+    "port-of-spain-community-workshop": {
+      "venueId": "port-of-spain-community-workshop",
+      "city": "port-of-spain",
+      "name": "Alma Jordan Library",
+      "archetype": "campus-block",
+      "subject": "The Alma Jordan Library at UWI St Augustine: a square four-storey library block with a forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 73,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "square four-storey library"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4efe3",
+          "#a8c3da",
+          "#9c978d"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alma_Jordan_Library",
+          "what": "four-storied library, established 1962, at UWI St Augustine campus; renamed for Alma Jordan 2010/11"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/100763763",
+          "what": "measured OSM outline 75 x 72.9 m, 3982 m2; tags building=yes, building:levels=4"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4733560",
+          "what": "Wikidata identity/type match: Alma Jordan Library"
+        }
+      ],
+      "notes": "Four storeys and 75 x 73 m (OSM, levels=4) are measured; style and colours assumed as a 1960s-70s tropical modernist block with sun-shading."
+    },
+    "port-of-spain-market-game": {
+      "venueId": "port-of-spain-market-game",
+      "city": "port-of-spain",
+      "name": "Center City Shopping Complex",
+      "archetype": "mall",
+      "subject": "A two-level shopping complex in Chaguanas: a wide rendered block with a long covered front and rooftop signage frames",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "wide two-level shopping block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4efe3",
+          "#c7503a",
+          "#6f7c85"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 12
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/165665761",
+          "what": "measured OSM outline 52.6 x 46.6 m, 2324 m2; tags building=yes, amenity=bank"
+        }
+      ],
+      "notes": "OSM has a 52 x 47 m building=bank outline at this point; the game calls it a market. Complex footprint and appearance estimated from a typical Trinidad town shopping complex; Typed from city style; no building description found."
+    },
+    "port-of-spain-meal-stop": {
+      "venueId": "port-of-spain-meal-stop",
+      "city": "port-of-spain",
+      "name": "Starbucks",
+      "archetype": "restaurant",
+      "subject": "A modern coffee shop in a small single-storey building with a drive-through lane (no logos)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#f4efe3",
+          "#2f5d4a",
+          "#6f7c85"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, no logo"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1525792589",
+          "what": "measured OSM outline 17.9 x 12.4 m, 215 m2; tags building=yes, start_date=2026-06-03, amenity=cafe"
+        }
+      ],
+      "notes": "OSM shows a 215 m2 cafe building (18 x 12 m, start date 2026). Brand colours are not reproduced; typed as a neutral glass-fronted coffee kiosk. Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-node-1049039374": {
+      "venueId": "port-of-spain-osm-node-1049039374",
+      "city": "port-of-spain",
+      "name": "Saint Joseph Roman Catholic Church",
+      "archetype": "church-classical",
+      "subject": "The Roman Catholic church in St Joseph (the old colonial capital): a whitewashed masonry church with a front bell tower and a galvanize roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "variant": "nave with front tower"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f4efe3",
+          "#c7dcd0",
+          "#9c978d"
+        ],
+        "roofColour": "#9a3b30",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/120464898",
+          "what": "measured OSM outline 50.3 x 31 m, 1490 m2; tags amenity=parking"
+        }
+      ],
+      "notes": "OSM has only a parking-tagged outline here (50 x 31 m); no description of the church found, so dimensions and colours are estimated from Trinidad parish churches. Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-node-1530642487": {
+      "venueId": "port-of-spain-osm-node-1530642487",
+      "city": "port-of-spain",
+      "name": "Lookout",
+      "archetype": "park-landscape",
+      "subject": "A roadside scenic lookout on the north-coast road: a paved viewing terrace with a stone parapet over the sea and mountains",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "roadside lookout terrace"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#c9b98f",
+          "#9c978d",
+          "#f4efe3"
+        ],
+        "roofColour": "#8d8b86",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1443372161",
+          "what": "measured OSM outline 47.5 x 23.3 m, 514 m2; tags amenity=parking"
+        }
+      ],
+      "notes": "OSM shows a parking-tagged area (47 x 23 m) on the Northern Range coast road; there is no description of any structure. Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-node-2366018981": {
+      "venueId": "port-of-spain-osm-node-2366018981",
+      "city": "port-of-spain",
+      "name": "Hugh Wooding Law School",
+      "archetype": "campus-block",
+      "subject": "The Hugh Wooding Law School at St Augustine: a low rendered teaching block with a courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "small institutional block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4efe3",
+          "#6f7c85",
+          "#9c978d"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5933098",
+          "what": "Wikidata: Hugh Wooding Law School, educational institution established 1973"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/557638261",
+          "what": "measured OSM outline 22.9 x 22.8 m, 411 m2; tags building=yes"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5933098",
+          "what": "Wikidata identity/type match: Hugh Wooding Law School"
+        }
+      ],
+      "notes": "Only identity, founding year and a 23 x 23 m outline; appearance typed from the neighbouring university campus."
+    },
+    "port-of-spain-osm-node-4254280290": {
+      "venueId": "port-of-spain-osm-node-4254280290",
+      "city": "port-of-spain",
+      "name": "Chinese restaurant",
+      "archetype": "restaurant",
+      "subject": "A small Chinese restaurant in a single-storey shopfront with a red awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f4efe3",
+          "#b8372f",
+          "#d9d2c2"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic OSM node, no footprint and no name; Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-relation-11925862": {
+      "venueId": "port-of-spain-osm-relation-11925862",
+      "city": "port-of-spain",
+      "name": "Queen's Park Oval",
+      "archetype": "stadium",
+      "subject": "Queen's Park Oval, Port of Spain's Test cricket ground: an oval field ringed by tiered stands, the Brian Lara Pavilion and six floodlight towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 298,
+        "depth_m": 192,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "cricket oval with stands and pavilion"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#a9422f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#6f7c85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 3,
+          "note": "roofed stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 6,
+          "note": "six floodlight towers"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Brian Lara Pavilion, two-tier, renovated 2007"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1896",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_Park_Oval",
+          "what": "capacity about 18,000-20,000; six floodlight towers; pavilion dates to 1896, replaced by two-tier structure 1952, new pavilion 2007 (Brian Lara Pavilion); two new stands for the 2007 World Cup; first Test 1930"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/11925862",
+          "what": "measured OSM outline 297.8 x 192.2 m, 44743 m2; tags wikidata=Q2223408, leisure=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2223408",
+          "what": "Wikidata identity/type match: Queen's Park Oval, Port of Spain"
+        }
+      ],
+      "notes": "Capacity, floodlights, pavilion history and stands sourced; stand colours and roofs are assumed. The ground is smaller than the Savannah beside it (OSM 298 x 192 m)."
+    },
+    "port-of-spain-osm-way-100764338": {
+      "venueId": "port-of-spain-osm-way-100764338",
+      "city": "port-of-spain",
+      "name": "Hasely Crawford Stadium",
+      "archetype": "stadium",
+      "subject": "Hasely Crawford Stadium (1982) at Mucurapo: a 23,000-seat concrete football and athletics bowl with a covered main stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 243,
+        "depth_m": 168,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "concrete bowl with covered main stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#a9422f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8d8b86",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hasely_Crawford_Stadium",
+          "what": "opened 12 June 1982; capacity 23,000 with individual seats; VIP room for 250; renamed 1996 after Olympic champion Hasely Crawford; grass surface"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9105908",
+          "what": "measured OSM outline 243.2 x 167.6 m, 15517 m2; tags wikidata=Q702811, leisure=stadium, building=stadium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q702811",
+          "what": "Wikidata identity/type match: Hasely Crawford Stadium"
+        }
+      ],
+      "notes": "Capacity, date and grass pitch sourced; stands, roofs and colours are assumed. OSM building outline 243 x 168 m. Bigger and later than Queen's Park Oval; no cricket features."
+    },
+    "port-of-spain-osm-way-100764513": {
+      "venueId": "port-of-spain-osm-way-100764513",
+      "city": "port-of-spain",
+      "name": "Nelson Mandela Park",
+      "archetype": "park-landscape",
+      "subject": "A flat urban public park in Port of Spain: open lawns, rows of trees and a paved walkway with benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "urban lawn with pavilion"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4efe3",
+          "#c7dcd0",
+          "#9c978d"
+        ],
+        "roofColour": "#9a3b30",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/100764513",
+          "what": "measured OSM outline 371.6 x 160 m, 48432 m2; tags wikidata=Q49530892, leisure=park"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q49530892",
+          "what": "Wikidata identity/type match: Nelson Mandela Park"
+        }
+      ],
+      "notes": "OSM park outline 372 x 160 m (4.8 ha); no features documented. Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-way-100822158": {
+      "venueId": "port-of-spain-osm-way-100822158",
+      "city": "port-of-spain",
+      "name": "Fatima College",
+      "archetype": "campus-block",
+      "subject": "Fatima College (boys' secondary school at Mucurapo): a multi-wing three-storey school with open galleries around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 125,
+        "depth_m": 96,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "galleried school blocks around a yard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4efe3",
+          "#5b7aa6",
+          "#c9b98f"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open galleries"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5437829",
+          "what": "Wikidata: Fatima College, secondary school in Port of Spain"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/100822158",
+          "what": "measured OSM outline 125.4 x 95.8 m, 11087 m2; tags wikidata=Q5437829, amenity=college"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5437829",
+          "what": "Wikidata identity/type match: Fatima College"
+        }
+      ],
+      "notes": "Only OSM footprint (125 x 96 m, 11,087 m2) and identity; storeys, galleries and colours assumed from Trinidadian school buildings."
+    },
+    "port-of-spain-osm-way-100866002": {
+      "venueId": "port-of-spain-osm-way-100866002",
+      "city": "port-of-spain",
+      "name": "Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "Memorial Park, Port of Spain: a formal green with the cenotaph war memorial, paths and shade trees near the Savannah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 194,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "formal lawn with cenotaph"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d9d2c2",
+          "#f4efe3",
+          "#9c978d"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "cenotaph war memorial"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1945",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q22947783",
+          "what": "Wikidata: Memorial Park, Port of Spain, park, inception 1945"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/100866002",
+          "what": "measured OSM outline 194.3 x 99.9 m, 16787 m2; tags wikidata=Q22947783, leisure=park"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q22947783",
+          "what": "Wikidata identity/type match: Memorial Park, Port of Spain"
+        }
+      ],
+      "notes": "Park outline (194 x 100 m) and 1945 date are measured/sourced. The cenotaph as the central feature is recalled from general knowledge, not from a fetched source; form of the memorial is assumed."
+    },
+    "port-of-spain-osm-way-1058026060": {
+      "venueId": "port-of-spain-osm-way-1058026060",
+      "city": "port-of-spain",
+      "name": "Patches",
+      "archetype": "restaurant",
+      "subject": "A small seaside-area restaurant: a single-storey rendered building with a gable roof and open veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#a8c3da",
+          "#f4efe3",
+          "#8d6e4a"
+        ],
+        "roofColour": "#9a3b30",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/571041217",
+          "what": "measured OSM outline 29 x 12.4 m, 354 m2; tags amenity=restaurant, building=yes"
+        }
+      ],
+      "notes": "OSM restaurant 29 x 12 m (354 m2). Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-way-117671749": {
+      "venueId": "port-of-spain-osm-way-117671749",
+      "city": "port-of-spain",
+      "name": "Queen's Royal College",
+      "archetype": "campus-block",
+      "subject": "Queen's Royal College, the 1902 German-Renaissance school building on Maraval Road: a white castle-like block with a tall chiming clock tower, one of the Magnificent Seven",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "hip",
+        "variant": "symmetrical block with central clock tower",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f4efe3",
+          "#9c978d",
+          "#5b7aa6"
+        ],
+        "roofColour": "#6f7c85",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "chiming clock tower, lighted"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1902",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_Royal_College",
+          "what": "German Renaissance main building by D. M. Hahn; foundation stone 11 Nov 1902; cost 16,000 pounds; clock tower; six classrooms and a lecture hall for 500; North and Science Blocks 1930s"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Magnificent_Seven_(Port_of_Spain)",
+          "what": "most striking of the seven, chiming clock and lighted clock tower"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/117671749",
+          "what": "measured OSM outline 55.4 x 25.4 m, 1052 m2; tags building=college, building:levels=1, start_date=1902, wikidata=Q7270097, historic=yes"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7270097",
+          "what": "Wikidata identity/type match: Queen's Royal College"
+        }
+      ],
+      "notes": "Style, architect, date and the clock tower are sourced. Wall colour (white/cream with royal-blue school colour) and roof are assumed. No STYLES id for German Renaissance/Edwardian: used victorian."
+    },
+    "port-of-spain-osm-way-117872639": {
+      "venueId": "port-of-spain-osm-way-117872639",
+      "city": "port-of-spain",
+      "name": "Archbishop's House",
+      "archetype": "manor",
+      "subject": "The Archbishop's Palace (1903), one of the Magnificent Seven on Maraval Road: a wide two-storey house with a wrap-around porch and a porte-cochere on the east front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "two-storey house with wrap porch and porte-cochere",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#f4efe3",
+          "#b4a58a",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8b86",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "porch wrapping the building"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "porte-cochere on the east front"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1903",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Magnificent_Seven_(Port_of_Spain)",
+          "what": "Archbishop's Palace: Indian Empire style, Irish architect, built 1903 for Archbishop Flood; wrap-around porch, porte-cochere on east facade, first-floor chapel; 1968-69 chancery remodel"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/117872639",
+          "what": "measured OSM outline 40.7 x 37.7 m, 1114 m2; tags building=yes, wikidata=Q20828956, historic=building"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20828956",
+          "what": "Wikidata identity/type match: Magnificent Seven Houses"
+        }
+      ],
+      "notes": "Style label (Indian Empire), 1903 date, wrap porch and porte-cochere sourced; colours and roof are assumed (pale walls, grey metal roof). Distinguish from Mount St Benedict and the cathedral."
+    },
+    "port-of-spain-osm-way-386980356": {
+      "venueId": "port-of-spain-osm-way-386980356",
+      "city": "port-of-spain",
+      "name": "Holy Name",
+      "archetype": "shrine-small",
+      "subject": "A small convent chapel and school building of Holy Name in central Port of Spain: a modest two-storey rendered block with a gable and small cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f4efe3",
+          "#b9cfd6",
+          "#9c978d"
+        ],
+        "roofColour": "#9a3b30",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/386980356",
+          "what": "measured OSM outline 30.5 x 27.3 m, 517 m2; tags building=yes, wikidata=Q16844412, amenity=place_of_worship, religion=christian"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16844412",
+          "what": "Wikidata identity/type match: Holy Name Preparatory"
+        }
+      ],
+      "notes": "OSM tags a Christian place of worship (30 x 27 m); Wikidata shows Holy Name Preparatory school. Appearance not described; Typed from city style; no building description found."
+    },
+    "port-of-spain-osm-way-388729737": {
+      "venueId": "port-of-spain-osm-way-388729737",
+      "city": "port-of-spain",
+      "name": "National Museum & Art Gallery",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum and Art Gallery (est. 1892) on Frederick Street: a two-storey Victorian public building with a central entrance and arched openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "Victorian public institute"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe6cc",
+          "#9c978d",
+          "#ffffff"
+        ],
+        "roofColour": "#6f7c85",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1892",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6974436",
+          "what": "Wikidata: National Museum and Art Gallery, national and art museum, founded 1892"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/388729737",
+          "what": "measured OSM outline 42.6 x 32.9 m, 999 m2; tags building=yes, wikidata=Q6974436, tourism=museum"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6974436",
+          "what": "Wikidata identity/type match: National Museum and Art Gallery"
+        }
+      ],
+      "notes": "Foundation year and OSM outline (43 x 33 m) only; building description not found, so style and colours assumed."
+    },
+    "port-of-spain-osm-way-389725165": {
+      "venueId": "port-of-spain-osm-way-389725165",
+      "city": "port-of-spain",
+      "name": "St. Mary's College",
+      "archetype": "campus-block",
+      "subject": "St Mary's College (CIC), Frederick Street: a long single-storey galleried school range with arched verandas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 127,
+        "depth_m": 72,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "long school range with galleries",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f4efe3",
+          "#c7dcd0",
+          "#9c978d"
+        ],
+        "roofColour": "#9a3b30",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched galleries"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/544637769",
+          "what": "measured OSM outline 126.9 x 71.6 m, 3794 m2; tags building=college, building:levels=1"
+        }
+      ],
+      "notes": "OSM building=college, 127 x 72 m, 1 level. No description found; Typed from city style; no building description found."
+    },
+    "port-of-spain-quiet-reflection": {
+      "venueId": "port-of-spain-quiet-reflection",
+      "city": "port-of-spain",
+      "name": "Mount Saint Benedict",
+      "archetype": "church-classical",
+      "subject": "Mount St Benedict Abbey on a hill above St Augustine: a white monastery church and wings under red roofs, crowned by a tower, with views of the Caroni plains",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip",
+        "variant": "abbey with tower and red roofs",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f4efe3",
+          "#9a3b30",
+          "#c9b98f"
+        ],
+        "roofColour": "#9a3b30",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tower topping the complex"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "views north to the Northern Range"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1913",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Saint_Benedict",
+          "what": "Benedictine abbey on 240 acres about 700 ft above sea level; complex topped by a tower and red roofs; first Mass in the chapel 10 Aug 1913; Pax House guesthouse (1916) with views of the Northern Range and Caroni plains"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/229950409",
+          "what": "measured OSM outline 71.8 x 25.3 m, 1015 m2; tags building=yes"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6923390",
+          "what": "Wikidata identity/type match: Mount Saint Benedict"
+        }
+      ],
+      "notes": "Tower, red roofs, hillside and dates sourced. Wall colour (white) assumed. OSM outline 72 x 25 m. Distinct from city churches by its hill setting and red roofs."
+    },
+    "port-of-spain-recreation": {
+      "venueId": "port-of-spain-recreation",
+      "city": "port-of-spain",
+      "name": "Queen's Park Savannah",
+      "archetype": "park-landscape",
+      "subject": "Queen's Park Savannah: the vast flat 260-acre green ringed by trees, shown as its southern Grand Stand with the Carnival stage in front, with the Magnificent Seven's skyline behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "curved",
+        "variant": "grandstand on a huge open green"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#9a3b30",
+          "#f4efe3"
+        ],
+        "roofColour": "#6f7c85",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "the old racecourse Grand Stand, now Carnival venue"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen%27s_Park_Savannah",
+          "what": "about 260 acres, level land, 3.5 km perimeter; ring of trees; Grand Stand on the south side (former racecourse), Carnival stages built in front; the Hollows planted with shrubs; Magnificent Seven on the west edge"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/96579810",
+          "what": "measured OSM outline 1072.1 x 1019.7 m, 823662 m2; tags wikidata=Q7270070, leisure=park"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7270070",
+          "what": "Wikidata identity/type match: Queen's Park Savannah, Port of Spain"
+        }
+      ],
+      "notes": "The whole Savannah is 1,072 x 1,020 m in OSM, far over the 120 m clamp, so the model shows the Grand Stand and a slice of open lawn with a perimeter tree ring. Stand size and colours are assumed."
+    },
+    "port-of-spain-transit": {
+      "venueId": "port-of-spain-transit",
+      "city": "port-of-spain",
+      "name": "San Juan Bus Station",
+      "archetype": "transport-station",
+      "subject": "San Juan bus terminal: a long concrete passenger shelter with a flat canopy and a row of bus bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "passenger shelter with bays"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c7",
+          "#c7503a",
+          "#f4efe3"
+        ],
+        "roofColour": "#9c978d",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/841079736",
+          "what": "measured OSM outline 34.7 x 10.8 m, 354 m2; tags building=yes, amenity=fire_station"
+        }
+      ],
+      "notes": "The OSM outline at this spot (35 x 11 m) is tagged fire_station, not bus station; location may be a different building. Typed as a standard Trinidad PTSC bus terminal. Typed from city style; no building description found."
+    }
+  }
+}

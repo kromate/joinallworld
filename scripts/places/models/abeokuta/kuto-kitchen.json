@@ -1,0 +1,271 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/abeokuta.json#kuto-kitchen",
+   "used": "open-fronted buka, 14 x 9 m, plastic tables under a corrugated roof, kiosk, blank signboard, cream render with green trim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1291243696",
+   "used": "not used: 31 m2 nearest match, smaller than the brief's 14 x 9 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Text only (brief is a typed placeholder); open front, tables, kitchen room and kiosk are typical of a buka, not observed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-wall",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    4.3
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#3f7a4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d9b0",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-wall",
+   "footprint": {
+    "rect": [
+     0.5,
+     9
+    ]
+   },
+   "at": [
+    -6.8,
+    0
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#3f7a4a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8d9b0",
+    "material": "concrete",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen-room",
+   "footprint": {
+    "rect": [
+     5,
+     4.5
+    ]
+   },
+   "at": [
+    3.5,
+    1.8
+   ],
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b0",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#3f7a4a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a5a44",
+    "material": "corrugated",
+    "overhang": 0.3,
+    "rise": 0.7
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -1,
+    0,
+    0
+   ],
+   "params": {
+    "length": 13.5,
+    "depth": 8.6,
+    "height": 3.3,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#3f7a4a",
+    "accent": "#3f7a4a",
+    "roof_colour": "#8a5a44",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -4.5,
+    -1,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f2f2ee",
+    "chair_colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -1.5,
+    -1.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f2f2ee",
+    "chair_colour": "#c43a2f"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    1.5,
+    -0.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f2f2ee",
+    "chair_colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    2,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "table_colour": "#f2f2ee",
+    "chair_colour": "#e8c13a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    9.5,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.6,
+    "depth": 2.0,
+    "height": 2.5,
+    "colour": "#3f7a4a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -1,
+    -4.6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "colours": [
+     "#3f7a4a",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.0,
+    "bottom": 3.1,
+    "colour": "#3f7a4a",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -9,
+    -9,
+    0
+   ],
+   "params": {
+    "yaw": 90,
+    "colour": "#d8d8d4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   36,
+   28
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "kuto-kitchen"
+}

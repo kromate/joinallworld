@@ -1,0 +1,892 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "adamstown",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "adamstown",
+    "climate": "tropical-maritime",
+    "vernacular": "A hillside village of about fifty people on a volcanic slope above Bounty Bay: single-storey timber-framed or block bungalows with verandahs, painted white or pastel, under low gabled or hipped corrugated-iron roofs, each with a rainwater tank and roof solar panels, set in lawns with palms, banana and breadfruit, linked by narrow concrete tracks (quad bikes, no cars of note).",
+    "wallColours": [
+      "#f2efe6",
+      "#d9d2bf",
+      "#a9c7d4",
+      "#c9d9a5",
+      "#e3c9a0",
+      "#9aa0a3"
+    ],
+    "roofColours": [
+      "#b8574a",
+      "#3f6b4f",
+      "#7b8590",
+      "#4f6f8f"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "timber",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Carved miro-wood Bounty models and Pitcairn souvenirs, the Bounty anchor and Bible as relics in the Square, boat sheds with longboats at the landing, flagpoles, plain verandah posts with white balustrades; very little applied ornament.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+        "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Adamstown,_Pitcairn_Islands",
+        "what": "settlement on the central-north side of the island facing the Pacific, near Bounty Bay (only landing); wet, very warm climate (~1,543 mm rain/yr)"
+      }
+    ]
+  },
+  "places": {
+    "adamstown-airport-adamstown-airport": {
+      "venueId": "adamstown-airport-adamstown-airport",
+      "city": "adamstown",
+      "name": "Pitcairn",
+      "archetype": "transport-station",
+      "subject": "Pitcairn has no airport: this venue sits at the Bounty Bay landing, shown as a small concrete jetty with a corrugated boat shed and longboat slipway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "variant": "boat-landing-shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b5aa",
+          "#5f7f93",
+          "#e7e3d8"
+        ],
+        "roofColour": "#7b8590",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "short concrete landing jetty"
+        },
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "boat shed with open front"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamstown,_Pitcairn_Islands",
+          "what": "settlement on the central-north side of the island facing the Pacific, near Bounty Bay (only landing); wet, very warm climate (~1,543 mm rain/yr)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/17403882",
+          "what": "OSM relation 17403882: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "The only matched OSM object is the Pitcairn Islands Marine Protected Area (over 1,000 km across), which is useless as a footprint. Pitcairn has no airstrip; arrival is by boat at Bounty Bay below the Hill of Difficulty. Typed from the landing function and the village style; sizes are guesses."
+    },
+    "adamstown-transit": {
+      "venueId": "adamstown-transit",
+      "city": "adamstown",
+      "name": "Pitcairn",
+      "archetype": "transport-station",
+      "subject": "Bounty Bay jetty and winch at the foot of the Hill of Difficulty where longboats and supply ships are worked",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "jetty-crane"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#aeb0a8",
+          "#b8574a",
+          "#e7e3d8"
+        ],
+        "roofColour": "#7b8590",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "concrete jetty projecting into the bay"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamstown,_Pitcairn_Islands",
+          "what": "settlement on the central-north side of the island facing the Pacific, near Bounty Bay (only landing); wet, very warm climate (~1,543 mm rain/yr)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/17403882",
+          "what": "OSM relation 17403882: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Same coordinates as the airport venue (Bounty Bay). OSM match is the marine reserve, unusable. Wikipedia only says the Hill of Difficulty links jetty and town. Kept visibly different from the boat-shed venue by being an open jetty with no building."
+    },
+    "adamstown-clinic": {
+      "venueId": "adamstown-clinic",
+      "city": "adamstown",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "Small one-storey island clinic: an irregular L-shaped block under a hipped corrugated roof with a covered entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 21,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "variant": "village-clinic",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#a9c7d4",
+          "#ffffff"
+        ],
+        "roofColour": "#b8574a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "rooftop array"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/128192181",
+          "what": "OSM way 128192181: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Footprint taken from the OSM building containing the point (21x20 m, L-shaped, bearing 87). The Pitcairn Health Centre (hipped roof, 1 level) is a different OSM building matched to the workshop venue. Appearance is typed from the village style."
+    },
+    "adamstown-community-notices": {
+      "venueId": "adamstown-community-notices",
+      "city": "adamstown",
+      "name": "Secretary's Office",
+      "archetype": "office-low",
+      "subject": "The Pitcairn administration office beside the Square: a single-storey rectangular painted building with a verandah and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.6,
+        "depth_m": 9.1,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable",
+        "variant": "administration-office"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#4f6f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamstown,_Pitcairn_Islands",
+          "what": "settlement on the central-north side of the island facing the Pacific, near Bounty Bay (only landing); wet, very warm climate (~1,543 mm rain/yr)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/945638035",
+          "what": "OSM way 945638035: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Footprint 13.6x9.1 m from the OSM building shared with the courthouse venue (both points fall in it). The two venues are shown as different treatments of the same small footprint (gable office vs hipped courthouse). Real appearance not found; typed from village style."
+    },
+    "adamstown-community-voting-game": {
+      "venueId": "adamstown-community-voting-game",
+      "city": "adamstown",
+      "name": "Pitcairne Courthouse",
+      "archetype": "civic-small",
+      "subject": "The small Pitcairn court house in the Square: one-storey painted hall with a hipped roof and a front verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.6,
+        "depth_m": 9.1,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "variant": "courthouse"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e1cf",
+          "#7b8590",
+          "#ffffff"
+        ],
+        "roofColour": "#b8574a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered verandah"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adamstown,_Pitcairn_Islands",
+          "what": "settlement on the central-north side of the island facing the Pacific, near Bounty Bay (only landing); wet, very warm climate (~1,543 mm rain/yr)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/945638035",
+          "what": "OSM way 945638035: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM footprint 13.6x9.1 m (shared). No source describing the court house exterior was reachable; typed from the village style and civic-small type. Distinguished from the Secretary office by hipped roof, red roof, verandah portico."
+    },
+    "adamstown-community-workshop": {
+      "venueId": "adamstown-community-workshop",
+      "city": "adamstown",
+      "name": "Community workshop (game venue)",
+      "archetype": "office-low",
+      "subject": "A plain single-storey workshop block with a hipped corrugated roof and roller door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "hip",
+        "variant": "workshop-shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d2bf",
+          "#7b8590",
+          "#f2efe6"
+        ],
+        "roofColour": "#7b8590",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/103093102",
+          "what": "OSM way 103093102: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Nearest OSM building (1.8 m) is the named Pitcairn Health Centre (19x12 m, 1 level, hipped); only its dimensions and roof shape are borrowed, not its identity."
+    },
+    "adamstown-market-game": {
+      "venueId": "adamstown-market-game",
+      "city": "adamstown",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A few timber trestle stalls and an open corrugated shelter on the grass of the Square for the island trading day",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "gable",
+        "variant": "square-stalls"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#f2efe6",
+          "#7b8590"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "open-sided shelter"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/128192190",
+          "what": "OSM way 128192190: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Nearest OSM building is a 40x23 m irregular gabled building (1 level) that is far larger than a stall market, so the footprint is reduced. Typed guess."
+    },
+    "adamstown-meal-stop": {
+      "venueId": "adamstown-meal-stop",
+      "city": "adamstown",
+      "name": "Andy's Pizzeria",
+      "archetype": "restaurant",
+      "subject": "A small domestic-scale cafe: a square painted bungalow with a verandah and a couple of outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "hip",
+        "variant": "home-cafe"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3c9a0",
+          "#3f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#b8574a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/302471162",
+          "what": "OSM way 302471162: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Name and footprint (11x10 m building containing the point) come from OSM; no description of the premises was found. Appearance typed from village style."
+    },
+    "adamstown-osm-node-1196324630": {
+      "venueId": "adamstown-osm-node-1196324630",
+      "city": "adamstown",
+      "name": "Polynesian Petroglyphs",
+      "archetype": "monument",
+      "subject": "A basalt rock face carved with shallow petroglyph figures above the shoreline path, fenced with a low timber rail",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 6,
+        "depth_m": 3,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "rock-carvings"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6b6a66",
+          "#8a8780",
+          "#c9c3b5"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "incised figures on rock"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "pre-European Polynesian",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+        }
+      ],
+      "notes": "OSM node only; no building. Pitcairn was settled by Polynesians before the Bounty mutineers (basis for the name); the carving details here are generic and unverified."
+    },
+    "adamstown-osm-node-14080325436": {
+      "venueId": "adamstown-osm-node-14080325436",
+      "city": "adamstown",
+      "name": "Memorial plaque HMS Bounty",
+      "archetype": "monument",
+      "subject": "A low stone plinth carrying a bronze commemorative plaque to HMS Bounty beside the path",
+      "form": {
+        "footprint": "rect",
+        "width_m": 2,
+        "depth_m": 2,
+        "storeys": 0,
+        "height_m": 1.4,
+        "roof": "none",
+        "variant": "plaque-plinth"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a59b",
+          "#7a5a2e",
+          "#d5d0c4"
+        ],
+        "roofColour": "#a9a59b",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "blank plaque board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/128192147",
+          "what": "OSM way 128192147: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "OSM point is a plaque. The nearest OSM building (17x10 m, gabled, 1 level) is unrelated and ignored. Wikipedia confirms the Bounty wreck lies in Bounty Bay; plaque appearance is a typed guess."
+    },
+    "adamstown-osm-node-6982653163": {
+      "venueId": "adamstown-osm-node-6982653163",
+      "city": "adamstown",
+      "name": "The Whale's Tooth Tavern",
+      "archetype": "restaurant",
+      "subject": "The island tavern: a long single-storey painted hall with a deep verandah and a simple hand-painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.4,
+        "roof": "gable",
+        "variant": "island-tavern"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#a9c7d4",
+          "#f2efe6",
+          "#7a5a2e"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "verandah roof"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/943763971",
+          "what": "OSM way 943763971: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "Name from OSM. The nearest OSM building (15 m away, 17x9 m) is used only for scale, not confirmed to be the tavern."
+    },
+    "adamstown-osm-node-7034086618": {
+      "venueId": "adamstown-osm-node-7034086618",
+      "city": "adamstown",
+      "name": "Longboat",
+      "archetype": "monument",
+      "subject": "A long open-fronted boat shelter with a gabled corrugated roof sheltering a Pitcairn longboat",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "longboat-shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#4f6f8f",
+          "#e7e3d8"
+        ],
+        "roofColour": "#7b8590",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "open front"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "slipway"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/128192166",
+          "what": "OSM way 128192166: measured footprint/tags (via scripts/places/data/facts)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Adamstown is the only settlement, in a volcanic basin near Bounty Bay; all homes have solar systems; only church is Seventh-day Adventist (1954); Hill of Difficulty links the jetty to the town"
+        }
+      ],
+      "notes": "OSM building containing the point is 17.3x6 m, 1 level, gabled. Islanders still ship by longboat from Bounty Bay (consistent with Wikipedia landing description); boat details guessed."
+    },
+    "adamstown-quiet-reflection": {
+      "venueId": "adamstown-quiet-reflection",
+      "city": "adamstown",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "church-modern",
+      "subject": "A small white single-nave village church with a short front porch and a pitched corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 6.5,
+        "roof": "gable",
+        "variant": "small-village-church"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#a9c7d4",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6f8f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small porch tower"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+          "what": "Only church on the island is Seventh-day Adventist, built 1954"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Typed as the island church because Pitcairn has only one church building (SDA, 1954, appearance not found). The nearest OSM building (23x17 m, 70 m away) is irregular and not trusted; a standard small nave is used."
+    },
+    "adamstown-recreation": {
+      "venueId": "adamstown-recreation",
+      "city": "adamstown",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "A mown village green with a small open-sided pavilion shelter and a few palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "village-green"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#6f8f4e",
+          "#e7e3d8"
+        ],
+        "roofColour": "#3f6b4f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/128192164",
+          "what": "OSM way 128192164: measured footprint/tags (via scripts/places/data/facts)"
+        }
+      ],
+      "notes": "\"(game venue)\" placeholder. Nearest OSM building 13x7 m used as the pavilion scale."
+    }
+  }
+}

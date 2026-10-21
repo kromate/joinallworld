@@ -1,0 +1,148 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "zenith-bank-unity-road",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/968560446",
+   "used": "real 36 x 31 m building outline (containing match), bearing about 1 degree"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c8d0d4",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#8a1c2a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9892",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-core",
+   "footprint": {
+    "rect": [
+     7,
+     2.5
+    ]
+   },
+   "at": [
+    -8,
+    -18.8
+   ],
+   "height": 12.6,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f1f1ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a1c2a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     9,
+     0.6
+    ]
+   },
+   "at": [
+    8,
+    -18.4
+   ],
+   "z0": 8.6,
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a1c2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a1c2a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#f1f1ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -22
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this branch (Wikidata image is the head office); massing from OSM outline, facade and canopy typical for a Nigerian bank branch"
+ }
+}

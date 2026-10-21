@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "nassarawa-kitchen",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: Gama Tuwo and Masa Kitchen, 12 x 8 m eatery, shed corrugated roof, awning, painted board, benches"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0cdaa",
+    "windows": "none",
+    "plinth": 0.3,
+    "bands": "#a05a3c"
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 10,
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    0,
+    -4.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.4,
+    "drop": 0.5,
+    "height": 2.6,
+    "colours": [
+     "#a05a3c",
+     "#e0cdaa"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    0,
+    -4.3,
+    3.3
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.9,
+    "colour": "#a05a3c"
+   }
+  },
+  {
+   "type": "chimney",
+   "id": "flue",
+   "at": [
+    4,
+    2,
+    3.6
+   ],
+   "params": {
+    "height": 2.4,
+    "radius": 0.3
+   }
+  },
+  {
+   "type": "kiosk",
+   "id": "cook-stand",
+   "at": [
+    8.5,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.4,
+    "depth": 1.8,
+    "height": 2.3,
+    "colour": "#8a6544"
+   }
+  },
+  {
+   "type": "array",
+   "id": "benches",
+   "params": {
+    "mode": "line",
+    "count": 3,
+    "start": [
+     -4,
+     -7.5,
+     0
+    ],
+    "end": [
+     4,
+     -7.5,
+     0
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       0.5
+      ],
+      "z0": 0.45,
+      "height": 0.1,
+      "colour": "#8a6544"
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -5
+    ],
+    "height": 5
+   }
+  ],
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or OSM outline exists (placeholder venue); typed from the brief and Kano vernacular."
+ }
+}

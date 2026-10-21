@@ -1,0 +1,155 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "sagamu-polling",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1274777790",
+   "used": "containing-quality outline of the school-style block (399 m2)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json",
+   "used": "long verandah, blue-and-white walls, red roof, gate, flag"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9db9c9",
+    "windows": "louvre",
+    "windowRatio": 0.22,
+    "bands": "#f2eee6",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c3b2f",
+    "material": "corrugated",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 2.2,
+    "drop": 0.4,
+    "height": 2.9,
+    "colours": [
+     "#f2eee6",
+     "#9c3b2f"
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "colour": "#f2eee6",
+    "board_colour": "#9db9c9"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#f2eee6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; OSM outline of containing building used, verandah and colours from brief"
+ }
+}

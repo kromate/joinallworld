@@ -1,0 +1,244 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "sango-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ota.json#sango-park",
+   "used": "70 x 50 m open motor park at Sango junction: buses and trucks in bays, ticket kiosk row, tin canopy, two blank boards, lock-ups"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1252161896",
+   "used": "not used: 29 m2 block 33 m away"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the park; layout typed from the brief."
+ },
+ "parts": [
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.4,
+    "colours": [
+     "#e6cf8a",
+     "#9c3b2f",
+     "#f1f1ee",
+     "#4a6fa5"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "van",
+    "density": 0.7,
+    "colours": [
+     "#e6cf8a",
+     "#f1f1ee",
+     "#9c3b2f"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -28,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "truck",
+   "at": [
+    -20,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "colour": "#4a6fa5"
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 7,
+    "height": 4.0,
+    "colour": "#8e979c"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#e6cf8a",
+    "sign_colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -9,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#9aa3a8",
+    "sign_colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    -4,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#e6cf8a",
+    "sign_colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    1,
+    -20,
+    0
+   ],
+   "params": {
+    "colour": "#9aa3a8",
+    "sign_colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.0,
+    "height": 3.0,
+    "roof": "shed",
+    "shutter_colours": [
+     "#9aa3a8",
+     "#9c3b2f"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -32,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 3.5,
+    "colour": "#9c3b2f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    34,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 3.5,
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    36,
+    0
+   ],
+   "params": {
+    "length": 72,
+    "height": 2.0,
+    "pillarEvery": 6,
+    "colour": "#9aa3a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     28
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ }
+}

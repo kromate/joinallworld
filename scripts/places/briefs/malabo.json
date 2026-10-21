@@ -1,0 +1,1682 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "malabo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "malabo",
+    "climate": "rainforest",
+    "vernacular": "Capital of Equatorial Guinea on the north of volcanic Bioko island, wet (about 1,850 mm a year) and hazy under rainforest-covered slopes. The old centre keeps Spanish colonial buildings (1890s-1950s): rendered masonry and a few weathered 19th-century timber houses in white, pale blue and ochre, a Neo-Gothic cathedral with two 40 m towers, a square street grid, low skyline and many green spaces. Since the oil boom of the 1990s-2000s the outskirts are filled with white or pastel painted concrete blocks, glass-fronted banks, big stadiums and gated villas under red-brown or blue corrugated roofs. Streets are paved; roadsides are red-brown volcanic earth with palms and broadleaf trees. Colours are typical Gulf of Guinea palettes, not individually sourced.",
+    "wallColours": [
+      "#f1eee4",
+      "#d8c8a0",
+      "#9fb9c8",
+      "#c8a06a",
+      "#b9bdb6",
+      "#c4574a",
+      "#dfe4e1"
+    ],
+    "roofColours": [
+      "#9a4a38",
+      "#6d747a",
+      "#3d6a5a",
+      "#b88a54"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "timber",
+      "glass-curtain",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Neo-Gothic pointed arches and rose windows on the cathedral; colonial verandas with turned timber balusters and wooden louvre shutters on old houses; Spanish-style tiled eaves and pastel stucco; modern government buildings with flag poles, white columns and presidential-style gates.",
+    "sources": [
+      {
+        "url": "https://es.wikipedia.org/wiki/Malabo",
+        "what": "Spanish colonial architecture coexists with modern post-independence buildings; 19th-century wooden buildings on Nigeria and Rey Boncoro streets; Cathedral of Santa Isabel (1897-1916); Presidential and Justice palaces; Casa Teodolita 1902; National Library 1916; square street grid, low buildings, green areas; airport, port and 2007 stadium are modern"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Malabo",
+        "what": "tropical monsoon climate ~1,850 mm rain, wet March-November, fog and haze; 19th-century wooden buildings; renewed airport; Estadio de Malabo built 2007"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bioko",
+        "what": "island mostly covered by tropical rainforest; volcanic basalt; Pico Basile 3,012 m; Krio planters' cocoa farms"
+      }
+    ]
+  },
+  "places": {
+    "malabo-airport-malabo-airport": {
+      "venueId": "malabo-airport-malabo-airport",
+      "city": "malabo",
+      "name": "Malabo International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Malabo International Airport (SSG, Punta Europa) seen from the forecourt: a mid-sized terminal inaugurated in 2004 replacing the old prefabricated tin shed, with a single long concrete runway beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceae2",
+          "#5b7f95",
+          "#c4c9cc"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Aeropuerto_Internacional_de_Malabo",
+          "what": "before the 1990s a prefabricated covered metal shed terminal; new passenger terminal opened 2004; hangars for DC-10 / C-130; 2,940 m concrete runway"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo_International_Airport",
+          "what": "Punta Europa, 9 km from Malabo, 23 m elevation, runway 04/22 2,940 m concrete, 237,376 passengers in 2020"
+        }
+      ],
+      "notes": "History, runway and the 2004 replacement of a tin shed are sourced; dimensions, colours and the tower position are guessed from a regional-airport terminal of that era. Low-key compared with Abuja, one main block with a canopy."
+    },
+    "malabo-clinic": {
+      "venueId": "malabo-clinic",
+      "city": "malabo",
+      "name": "Hospital de Sampaka",
+      "archetype": "hospital",
+      "subject": "Hospital de Sampaka, Malabo (Sampaka district): a modern hospital block in white painted render with blue trim and a covered entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2f1ea",
+          "#4a7f9a",
+          "#d9dbd6"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-community-notices": {
+      "venueId": "malabo-community-notices",
+      "city": "malabo",
+      "name": "Senate of the Republic of Equatorial Guinea",
+      "archetype": "civic-palace",
+      "subject": "the Senate of Equatorial Guinea, Malabo: a formal government building with a columned entrance, flagpoles and a large paved forecourt in white",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f3f1ea",
+          "#b9a46a",
+          "#cfd3d4"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Malabo",
+          "what": "post-independence monumental government architecture sits beside colonial buildings; the article does not mention the Senate building"
+        }
+      ],
+      "notes": "No source describes this building. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Treat as a modern formal government block; verify before presenting as accurate."
+    },
+    "malabo-community-voting-game": {
+      "venueId": "malabo-community-voting-game",
+      "city": "malabo",
+      "name": "Ayuntamiento de Rebola",
+      "archetype": "civic-small",
+      "subject": "Ayuntamiento de Rebola: the town hall of Rebola, east of Malabo, a modest two-storey rendered council building with a flag and a small forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfbd",
+          "#a65a42",
+          "#ffffff"
+        ],
+        "roofColour": "#9a4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Spanish-influenced town-hall layout (balcony, hip roof) assumed."
+    },
+    "malabo-community-workshop": {
+      "venueId": "malabo-community-workshop",
+      "city": "malabo",
+      "name": "Université nationale de Guinée équatoriale",
+      "archetype": "campus-block",
+      "subject": "UNGE, Malabo (central campus on Hassan II Avenue): a mix of a colonial-era 1949 rectory building and newer 2-4 storey rendered teaching blocks around open lawns",
+      "form": {
+        "footprint": "U",
+        "width_m": 65,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ecdc",
+          "#7a9ab0",
+          "#cfc9b8"
+        ],
+        "roofColour": "#9a4a38",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1949 and later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_University_of_Equatorial_Guinea",
+          "what": "Malabo central campus on Hassan II Avenue; rectory headquarters built 1949, described as part of national architectural patrimony; residence for 200"
+        }
+      ],
+      "notes": "The 1949 rectory building and campus location are sourced; its facade and the other blocks are guessed. The 1949 block gets the colonial look (hip roof, balconies)."
+    },
+    "malabo-market-game": {
+      "venueId": "malabo-market-game",
+      "city": "malabo",
+      "name": "VENTAGE",
+      "archetype": "market-hall",
+      "subject": "VENTAGE, Malabo: a small covered retail store or trading shop, a single-storey rendered hall with a shopfront and a blank sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e5d8",
+          "#3d6a8a",
+          "#bfc3c0"
+        ],
+        "roofColour": "#6d747a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name is an OSM label and nothing was found about it. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-meal-stop": {
+      "venueId": "malabo-meal-stop",
+      "city": "malabo",
+      "name": "Equatore Restaurant",
+      "archetype": "restaurant",
+      "subject": "Equatore Restaurant: a roadside seaside-style restaurant on the east coast outside Malabo, a single-storey painted building with a veranda and a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe3c4",
+          "#2f6b88",
+          "#ffffff"
+        ],
+        "roofColour": "#9a4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-node-14180562901": {
+      "venueId": "malabo-osm-node-14180562901",
+      "city": "malabo",
+      "name": "Semu",
+      "archetype": "shophouse",
+      "subject": "Semu, central Malabo: a small shop or supermarket in a two-storey painted building with a shopfront at ground level",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#c4574a",
+          "#cfcfca"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Name is an OSM label with no description. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-node-3299210014": {
+      "venueId": "malabo-osm-node-3299210014",
+      "city": "malabo",
+      "name": "Gran Reserva",
+      "archetype": "restaurant",
+      "subject": "Gran Reserva, Malabo: a bar-restaurant in a modest two-storey rendered building with an awning front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6d9b9",
+          "#7a3b2e",
+          "#f4f1e8"
+        ],
+        "roofColour": "#7d8a92",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-node-4638964990": {
+      "venueId": "malabo-osm-node-4638964990",
+      "city": "malabo",
+      "name": "ECG Fabrication Yard",
+      "archetype": "industrial",
+      "subject": "ECG Fabrication Yard, west Malabo: an oil-and-gas industry fabrication yard with a few large steel sheds, laydown areas and a perimeter wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b8bdbe",
+          "#2f5f8a",
+          "#d8dadb"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "international",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No source found for this yard. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Grey steel sheds, no brand marks."
+    },
+    "malabo-osm-node-5670102933": {
+      "venueId": "malabo-osm-node-5670102933",
+      "city": "malabo",
+      "name": "Trailhead",
+      "archetype": "park-landscape",
+      "subject": "a rainforest trailhead on southern Bioko: a cleared patch of red volcanic earth with a wooden gate, a signboard and the forest wall behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "laterite",
+        "colours": [
+          "#8b6a4a",
+          "#5a7a3c",
+          "#c8a06a"
+        ],
+        "roofColour": "#6b5a45",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bioko",
+          "what": "island mostly covered by tropical rainforest; hiking to Moka falls; volcanic"
+        }
+      ],
+      "notes": "OSM trailhead node with no description. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Equatorial rainforest with dense broadleaf trees."
+    },
+    "malabo-osm-node-5909941285": {
+      "venueId": "malabo-osm-node-5909941285",
+      "city": "malabo",
+      "name": "Finca Sampaka",
+      "archetype": "park-landscape",
+      "subject": "Finca Sampaka: a farm estate in the Sampaka district with fruit and cocoa-type trees, a farmhouse and open grounds",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cc",
+          "#6b7f4a",
+          "#a8643e"
+        ],
+        "roofColour": "#9a4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bioko",
+          "what": "Krio planters turned from palm oil to cocoa farms in the late 19th century on Bioko"
+        }
+      ],
+      "notes": "Name is an OSM label; 'Finca' means farm. No further description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-node-9195927549": {
+      "venueId": "malabo-osm-node-9195927549",
+      "city": "malabo",
+      "name": "Centro Comercial Tomos",
+      "archetype": "mall",
+      "subject": "Centro Comercial Tomos, Malabo: a modest two-storey shopping centre with a glazed front and rooftop signage board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceae0",
+          "#3d6a8a",
+          "#c4c8c8"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-node-9554184978": {
+      "venueId": "malabo-osm-node-9554184978",
+      "city": "malabo",
+      "name": "Cafetería Muankaba",
+      "archetype": "restaurant",
+      "subject": "Cafeteria Muankaba: a small ground-floor cafe with an awning and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e4c0",
+          "#a8603a",
+          "#ffffff"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-node-9970815565": {
+      "venueId": "malabo-osm-node-9970815565",
+      "city": "malabo",
+      "name": "Salón del Reino de los Testigos de Jehová",
+      "archetype": "shrine-small",
+      "subject": "Kingdom Hall of Jehovah's Witnesses, Malabo: a small plain rectangular meeting hall with a low pitched roof, no cross, tower or ornament",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee6",
+          "#7a8f5a",
+          "#c5c3b8"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found for this hall. Kingdom Halls are generally simple single-hall buildings without crosses or towers (general knowledge, not sourced). No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-way-1364477067": {
+      "venueId": "malabo-osm-way-1364477067",
+      "city": "malabo",
+      "name": "Campus Universitario de Basupu",
+      "archetype": "campus-block",
+      "subject": "Basupu university campus, west Malabo: a newer campus of long white rendered teaching blocks with ribbon windows set among lawns and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f3ee",
+          "#3d7a8f",
+          "#d3d6d4"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM campus polygon with no description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Newer and more uniform than the UNGE central campus."
+    },
+    "malabo-osm-way-272208994": {
+      "venueId": "malabo-osm-way-272208994",
+      "city": "malabo",
+      "name": "La Paz Medical Center",
+      "archetype": "hospital",
+      "subject": "La Paz Medical Center, Malabo: a modern private medical centre of two to three storeys in white with a glazed entrance and a blank red-cross sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f5f4f0",
+          "#3b78a0",
+          "#dfe1de"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.38
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Smaller and more private-clinic in feel than Hospital de Sampaka."
+    },
+    "malabo-osm-way-347366427": {
+      "venueId": "malabo-osm-way-347366427",
+      "city": "malabo",
+      "name": "Estadio de Malabo",
+      "archetype": "stadium",
+      "subject": "Estadio de Malabo: the 15,250-seat national stadium built by Bouygues in 2007 on the site of the old national stadium, a two-tier oval bowl with a roofed grandstand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6e4dd",
+          "#2b5a8a",
+          "#b9bcbd"
+        ],
+        "roofColour": "#e9ebec",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_de_Malabo",
+          "what": "capacity about 15,250; built and opened 2007; main contractor Bouygues; home of the national team; on site of the former national stadium"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Malabo",
+          "what": "stadium over 15,000 spectators, inaugurated 2007, among modern functional buildings"
+        }
+      ],
+      "notes": "Capacity, builder, year and site are sourced; the roof shape and colours are inferred from the typical Bouygues 2007 AFCON-stadium layout (continuous canopy over the stands). Treat tier shape as approximate."
+    },
+    "malabo-osm-way-363635642": {
+      "venueId": "malabo-osm-way-363635642",
+      "city": "malabo",
+      "name": "Plaza de San Fernando",
+      "archetype": "park-landscape",
+      "subject": "Plaza de San Fernando, Malabo: a tree-shaded city square near the old centre with paved paths, benches and a small monument",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c0",
+          "#4f7a3c",
+          "#efe9d8"
+        ],
+        "roofColour": "#9a4a38",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Malabo",
+          "what": "old centre has a square street layout with pedestrian zones and many green areas"
+        }
+      ],
+      "notes": "Only the general green-square character of Malabo's centre is sourced. This square's own features are not described. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-osm-way-638398364": {
+      "venueId": "malabo-osm-way-638398364",
+      "city": "malabo",
+      "name": "Parque de Alcaide",
+      "archetype": "park-landscape",
+      "subject": "Parque de Alcaide, Malabo: a small neighbourhood park of grass and shade trees with paths and a pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d3cfc0",
+          "#5a8a40",
+          "#efeadb"
+        ],
+        "roofColour": "#9a4a38",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Malabo",
+          "what": "Malabo has many green areas in a low-rise city"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. More open lawn and fewer paved areas than Plaza de San Fernando."
+    },
+    "malabo-osm-way-678125725": {
+      "venueId": "malabo-osm-way-678125725",
+      "city": "malabo",
+      "name": "Estadio Pablo Boyas",
+      "archetype": "stadium",
+      "subject": "Estadio Pablo Boyas, Malabo: a small municipal football ground with a single roofed stand on one side and low open terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d3c8",
+          "#a8603a",
+          "#ece8dc"
+        ],
+        "roofColour": "#6d747a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type. Much smaller than Estadio de Malabo: one stand, low terraces, perimeter wall."
+    },
+    "malabo-osm-way-678128961": {
+      "venueId": "malabo-osm-way-678128961",
+      "city": "malabo",
+      "name": "Colegio María Cano",
+      "archetype": "campus-block",
+      "subject": "Colegio Maria Cano: a school with a two-storey L-shaped painted building around a playground, with verandas and a perimeter wall",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1e6c4",
+          "#4a7fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#9a4a38",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-quiet-reflection": {
+      "venueId": "malabo-quiet-reflection",
+      "city": "malabo",
+      "name": "Cathédrale Sainte-Élisabeth",
+      "archetype": "church-gothic",
+      "subject": "Cathedral of Santa Isabel, Malabo: the Neo-Gothic cathedral (1897-1916) seen from the front, a basilica with two 40 m towers flanking a facade with a large rose window",
+      "form": {
+        "footprint": "cross",
+        "width_m": 60,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d6cb",
+          "#8c8f92",
+          "#efece2"
+        ],
+        "roofColour": "#7d8387",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 2,
+          "note": "two towers about 40 m, finished 1927"
+        },
+        {
+          "id": "rose-window",
+          "count": 3,
+          "note": "main facade and both transept facades"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1897-1916",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Catedral_de_Santa_Isabel_(Malabo)",
+          "what": "Neo-Gothic basilica plan with transept, octagonal presbytery, three naves, three large rose windows, pointed ribbed vaults; masonry, dressed stone, ceramic and steel construction; towers about 40 m, finished 1927; finishes from Barcelona workshops; January 2020 roof fire"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "Gothic Revival, built 1897-1916, two spires 40 m high; Jan 2020 fire damaged the structure; restoration underway"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Malabo",
+          "what": "architect Luis Segarra Llairado, possibly with Gaudi supervising plans"
+        }
+      ],
+      "notes": "Style, plan, materials, rose windows and tower height are sourced. Exact colours are NOT stated in sources; pale grey-cream stone with grey roofs and spires is a best reading of public photos and should be treated as approximate. Cathedral roof burned in Jan 2020, show restored whole."
+    },
+    "malabo-recreation": {
+      "venueId": "malabo-recreation",
+      "city": "malabo",
+      "name": "Malabo National Park",
+      "archetype": "park-landscape",
+      "subject": "Malabo National Park: a green recreation park of lawns, shade trees and promenade paths with a small pavilion and railings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d3cfc0",
+          "#4f8a3c",
+          "#efeadb"
+        ],
+        "roofColour": "#9a4a38",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bioko",
+          "what": "Bioko is mostly covered in tropical rainforest with protected areas covering around 40% of the island"
+        }
+      ],
+      "notes": "No source describes this park (a Wikipedia page for it does not exist). Typed guess for an urban green space. No source describes this place's appearance; brief is a typed guess from the Malabo city style and the place type."
+    },
+    "malabo-transit": {
+      "venueId": "malabo-transit",
+      "city": "malabo",
+      "name": "Puerto de Malabo",
+      "archetype": "transport-station",
+      "subject": "Puerto de Malabo: the main commercial port on the north coast, with a concrete quay, container yard, harbour sheds and moored cargo ships",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9bcba",
+          "#2f5f8a",
+          "#d8dad8"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "international",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "what": "high-tonnage port with theoretical capacity of 200,000 tons a year"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Malabo",
+          "what": "port is a modern functional construction"
+        }
+      ],
+      "notes": "Port exists and has high-tonnage capacity (sourced); the shed and quay layout is a typed guess for a mid-sized African port."
+    }
+  }
+}

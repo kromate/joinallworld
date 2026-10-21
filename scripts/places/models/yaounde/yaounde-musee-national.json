@@ -1,0 +1,903 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_National_du_Cameroun_03.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Z. NGNOGUE",
+   "view": "front",
+   "file": "/tmp/places-evidence/yaounde/musee1.jpg",
+   "used": "white two-storey front with arched ground arcade, upper loggia with balustrades, central stepped parapet frontispiece, red tile hip roofs, golden-ball pillars and flag masts lining the axial lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188279621",
+   "used": "overall extent (88 x 22 m zigzag outline): modelled as an aligned main block with two rear wings"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     80,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f3f0e6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 6.5,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#e6e0d0",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6.5,
+      "opening": 0.62,
+      "depth": 0.8,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 0.6,
+      "width": 5.5,
+      "every": 6.5,
+      "railColour": "#f6f3ea",
+      "colour": "#f6f3ea",
+      "railKind": "solid",
+      "floors": "upper",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9553b",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.9,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "frontispiece",
+   "footprint": {
+    "rect": [
+     26,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -9.6
+   ],
+   "height": 14.2,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f3f0e6",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "bay": 6.5,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none",
+     "front": "punched"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6.5,
+      "opening": 0.62,
+      "depth": 0.6,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "balconies",
+      "depth": 0.5,
+      "width": 5.5,
+      "every": 6.5,
+      "railColour": "#efe9da",
+      "colour": "#efe9da",
+      "railKind": "solid",
+      "floors": "upper",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e3d4",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-1",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    -32,
+    18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f3f0e6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9553b",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing1",
+   "footprint": {
+    "rect": [
+     16,
+     30
+    ]
+   },
+   "at": [
+    32,
+    18
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f3f0e6",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9553b",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 13,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 6,
+    "colour": "#8a4a3c"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#f4f1ea",
+       "capTop": true,
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.7,
+          1.7
+         ]
+        },
+        {
+         "z": 2.5,
+         "rect": [
+          1.0,
+          1.0
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "profile": [
+        [
+         0,
+         2.5,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         2.7,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         3.5,
+         "#b08a32"
+        ],
+        [
+         1.2,
+         4.0,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         4.6,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         5.3,
+         "#b08a32"
+        ],
+        [
+         0,
+         5.5,
+         "#b08a32"
+        ]
+       ],
+       "segments": 10
+      }
+     },
+     {
+      "lod": [
+       0
+      ],
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.45,
+        0.45
+       ],
+       "height": 34,
+       "colour": "#c9ccce"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -13,
+     -17
+    ],
+    "end": [
+     -13.0,
+     -38
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#f4f1ea",
+       "capTop": true,
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.7,
+          1.7
+         ]
+        },
+        {
+         "z": 2.5,
+         "rect": [
+          1.0,
+          1.0
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "profile": [
+        [
+         0,
+         2.5,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         2.7,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         3.5,
+         "#b08a32"
+        ],
+        [
+         1.2,
+         4.0,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         4.6,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         5.3,
+         "#b08a32"
+        ],
+        [
+         0,
+         5.5,
+         "#b08a32"
+        ]
+       ],
+       "segments": 10
+      }
+     },
+     {
+      "lod": [
+       0
+      ],
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.45,
+        0.45
+       ],
+       "height": 34,
+       "colour": "#c9ccce"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     13,
+     -17
+    ],
+    "end": [
+     13.0,
+     -38
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#f4f1ea",
+       "capTop": true,
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.7,
+          1.7
+         ]
+        },
+        {
+         "z": 2.5,
+         "rect": [
+          1.0,
+          1.0
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "profile": [
+        [
+         0,
+         2.5,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         2.7,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         3.5,
+         "#b08a32"
+        ],
+        [
+         1.2,
+         4.0,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         4.6,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         5.3,
+         "#b08a32"
+        ],
+        [
+         0,
+         5.5,
+         "#b08a32"
+        ]
+       ],
+       "segments": 10
+      }
+     },
+     {
+      "lod": [
+       0
+      ],
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.45,
+        0.45
+       ],
+       "height": 34,
+       "colour": "#c9ccce"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     -28,
+     -17
+    ],
+    "end": [
+     -28.0,
+     -38
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": [
+     {
+      "type": "loft",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "colour": "#f4f1ea",
+       "capTop": true,
+       "sections": [
+        {
+         "z": 0,
+         "rect": [
+          1.7,
+          1.7
+         ]
+        },
+        {
+         "z": 2.5,
+         "rect": [
+          1.0,
+          1.0
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "profile": [
+        [
+         0,
+         2.5,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         2.7,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         3.5,
+         "#b08a32"
+        ],
+        [
+         1.2,
+         4.0,
+         "#b08a32"
+        ],
+        [
+         1.15,
+         4.6,
+         "#b08a32"
+        ],
+        [
+         0.7,
+         5.3,
+         "#b08a32"
+        ],
+        [
+         0,
+         5.5,
+         "#b08a32"
+        ]
+       ],
+       "segments": 10
+      }
+     },
+     {
+      "lod": [
+       0
+      ],
+      "type": "prism",
+      "at": [
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.45,
+        0.45
+       ],
+       "height": 34,
+       "colour": "#c9ccce"
+      }
+     }
+    ],
+    "mode": "line",
+    "start": [
+     28,
+     -17
+    ],
+    "end": [
+     28.0,
+     -38
+    ],
+    "count": 5,
+    "lod1Step": 5,
+    "lod2Step": 9
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.6,
+    "pillar": 0.3,
+    "leaf": "bars",
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.6
+   ],
+   "params": {
+    "colour": "#f3f0e6",
+    "rect": [
+     19,
+     2.4
+    ],
+    "height": 1.3,
+    "z0": 14.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.6
+   ],
+   "params": {
+    "colour": "#f3f0e6",
+    "rect": [
+     13,
+     2.2
+    ],
+    "height": 1.2,
+    "z0": 15.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -9.6
+   ],
+   "params": {
+    "colour": "#f3f0e6",
+    "rect": [
+     7,
+     2.0
+    ],
+    "height": 1.0,
+    "z0": 16.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.0
+   ],
+   "params": {
+    "colour": "#1f1d1a",
+    "rect": [
+     3.0,
+     0.3
+    ],
+    "height": 0.5,
+    "z0": 15.7
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.45
+   ],
+   "params": {
+    "colour": "#d9c27a",
+    "rect": [
+     16.8,
+     0.2
+    ],
+    "height": 1.5,
+    "z0": 9.9
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11.6
+   ],
+   "params": {
+    "colour": "#1f1d1a",
+    "rect": [
+     16,
+     0.2
+    ],
+    "height": 1.2,
+    "z0": 10.05
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "colour": "#cfd0cc",
+    "rect": [
+     14,
+     1.0
+    ],
+    "height": 0.25,
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -24
+   ],
+   "params": {
+    "colour": "#cfd0cc",
+    "rect": [
+     16,
+     1.0
+    ],
+    "height": 0.25,
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -36
+   ],
+   "params": {
+    "colour": "#cfd0cc",
+    "rect": [
+     18,
+     1.0
+    ],
+    "height": 0.25,
+    "z0": 0
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -19.5
+   ],
+   "params": {
+    "colour": "#8a8a86",
+    "rect": [
+     15,
+     0.8
+    ],
+    "height": 0.4,
+    "z0": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper floor reads as ribbon windows with balconies rather than open loggia; no statue, lettering band is a plain black board; tapered piers and thicker masts done"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-musee-national"
+}

@@ -1,0 +1,1422 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "maseru",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "maseru",
+    "climate": "highland",
+    "vernacular": "Small highland capital at about 1,600 m under the Maloti foothills: low 1-3 storey buildings along the paved Kingsway axis, local honey-coloured sandstone on colonial-era civic and church buildings, cream and ochre painted render on newer blocks, face-brick and plain concrete in the suburbs, and corrugated-iron or tile roofs. Thatched mud-brick rondavels, once universal, survive only at the edges and in tourist lodges; modern South African-style malls and glass-fronted offices have arrived since 2009.",
+    "wallColours": [
+      "#d9c29a",
+      "#c9a97a",
+      "#efe6d2",
+      "#b9835a",
+      "#a8a090",
+      "#e8ddc4",
+      "#7d8a8f"
+    ],
+    "roofColours": [
+      "#7a3a2c",
+      "#8c8f92",
+      "#4f6a5a",
+      "#a24a36"
+    ],
+    "wallMaterials": [
+      "sandstone",
+      "painted-render",
+      "render",
+      "red-brick",
+      "concrete",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "acacia"
+    ],
+    "ornament": "Basotho conical straw-hat (mokorotlo) silhouette on tourist and civic buildings, Basotho blanket stripe and diamond patterns in murals and railings, sandstone quoins and arched porches on colonial buildings, painted national-flag colours (blue, white, green, black) on signage and flagpoles.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Maseru",
+        "what": "Maseru at ~1,600 m, subtropical highland climate, Kingsway first paved road, rondavels replaced by modern blocks, Cathedral of Our Lady of Victories and St John's as surviving colonial buildings, Pioneer/Maseru Mall era"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Victories_Cathedral,_Maseru",
+        "what": "cathedral finished 1955 (architect E. H. A. Payens)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Queen_%27Mamohato_Memorial_Hospital",
+        "what": "modern PPP-built hospital replacing the ~100-year-old Queen Elizabeth II"
+      }
+    ]
+  },
+  "places": {
+    "maseru-airport-maseru-airport": {
+      "venueId": "maseru-airport-maseru-airport",
+      "city": "maseru",
+      "name": "Moshoeshoe I International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Maseru's small 1982 terminal seen from the landside forecourt: a low two-storey block with a short control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8ddc4",
+          "#6b7a80",
+          "#f3efe6"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt drop-off canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moshoeshoe_I_International_Airport",
+          "what": "built 1982 to replace Mejametalana, 3,200 m runway at 1,630 m elevation, upgrade since ~2019 (terminal not described)"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Only the build year (1982), the 3,200 m runway and a later upgrade are sourced. The terminal is a small regional one (a few flights a day), so it is kept low and horizontal with a lone tower; the roof has no known Basotho-hat styling."
+    },
+    "maseru-botho-university": {
+      "venueId": "maseru-botho-university",
+      "city": "maseru",
+      "name": "Botho University",
+      "archetype": "campus-block",
+      "subject": "A private university campus in Maseru: a few three-storey teaching blocks in cream render with blue-grey trim around a small yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#3e5f7a",
+          "#c9a97a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context: modern Maseru commercial and education blocks"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Botho University Lesotho is a recent private college; no description of its buildings was found. Do not show the brand colours or logo; blank signage board only."
+    },
+    "maseru-clinic": {
+      "venueId": "maseru-clinic",
+      "city": "maseru",
+      "name": "Maseru District Hospital",
+      "archetype": "hospital",
+      "subject": "A government district hospital: long two-storey ward blocks with covered walkways and a small entrance canopy",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8ddc4",
+          "#a24a36",
+          "#ffffff"
+        ],
+        "roofColour": "#a24a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context; Queen Elizabeth II Hospital replaced by Queen Mamohato Memorial Hospital in 2011"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. District-level government hospital, so modelled as older and lower than Queen Mamohato Memorial Hospital (the modern PPP hospital): H-plan wards, hipped corrugated roofs, burnt-red trim."
+    },
+    "maseru-community-notices": {
+      "venueId": "maseru-community-notices",
+      "city": "maseru",
+      "name": "Maseru Magistrate Court",
+      "archetype": "civic-small",
+      "subject": "The Magistrate Court: a compact one-to-two storey government courthouse in pale sandstone-coloured render with a small entrance portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c29a",
+          "#efe6d2",
+          "#7a3a2c"
+        ],
+        "roofColour": "#7a3a2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context: colonial-era sandstone civic buildings near the centre"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Placed close to the High Court and Palace of Justice on the civic axis. It is drawn smaller and older than the Palace of Justice."
+    },
+    "maseru-community-voting-game": {
+      "venueId": "maseru-community-voting-game",
+      "city": "maseru",
+      "name": "Sefika sa Moshoeshoe Park",
+      "archetype": "park-landscape",
+      "subject": "A small town park with a gravel path loop, lawn, a few mature trees and a low pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#b9a98a",
+          "#7a6a52",
+          "#d9c29a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only; park not described in sources"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Park beside Sefika Shopping Centre named for Moshoeshoe. Contents unknown, so a generic planted green with a pavilion is used."
+    },
+    "maseru-community-workshop": {
+      "venueId": "maseru-community-workshop",
+      "city": "maseru",
+      "name": "Limkokwing University of Creative Technology",
+      "archetype": "campus-block",
+      "subject": "A private creative-technology campus: a contemporary multi-storey block with bold curved forms and coloured panels",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#c0392b",
+          "#2f4a5c"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. The Limkokwing group is known for colourful, curved contemporary campus architecture (Malaysia); assumption for this campus not verified. Keep any colour accents unbranded."
+    },
+    "maseru-high-court": {
+      "venueId": "maseru-high-court",
+      "city": "maseru",
+      "name": "High Court",
+      "archetype": "civic-palace",
+      "subject": "The Lesotho High Court: a two-storey sandstone building with a columned entrance, seen from the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#d9c29a",
+          "#efe6d2",
+          "#7a3a2c"
+        ],
+        "roofColour": "#7a3a2c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context: sandstone colonial civic buildings, Kingsway axis"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Sits beside the Palace of Justice; here the High Court is the older, shorter, sandstone block and the Palace of Justice is the newer glass-and-render one so the two read differently."
+    },
+    "maseru-palace-of-justice": {
+      "venueId": "maseru-palace-of-justice",
+      "city": "maseru",
+      "name": "Palace of Justice",
+      "archetype": "civic-palace",
+      "subject": "The Palace of Justice: a newer, larger court complex with a flat-roofed glazed front and square columns",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#6b7a80",
+          "#b9835a"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Name and position are real; the building is assumed to be a modern court complex next to the older High Court."
+    },
+    "maseru-lancers-gap": {
+      "venueId": "maseru-lancers-gap",
+      "city": "maseru",
+      "name": "Lancer's Gap",
+      "archetype": "park-landscape",
+      "subject": "A hill pass and viewpoint east of Maseru: bare rocky slope with a gravel lay-by and a lookout wall over the valley",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#a38b6e",
+          "#7a6a52",
+          "#c9a97a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "setting: city sits at the foot of the Maloti foothills"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. A mountain pass named after British lancers (Berea battle, 1852). Shown as a roadside lookout with dry grass, exposed sandstone and a few pines; no monument is asserted."
+    },
+    "maseru-likatola-horse-riding": {
+      "venueId": "maseru-likatola-horse-riding",
+      "city": "maseru",
+      "name": "Likatola Horse Riding and Adventure",
+      "archetype": "park-landscape",
+      "subject": "A rural riding stables outside Maseru: a paddock, stable sheds and thatched rondavel lodges among dry grass",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "mud-render",
+        "colours": [
+          "#c9a97a",
+          "#a38b6e",
+          "#e8ddc4"
+        ],
+        "roofColour": "#c8aa6a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "paddock rails"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context: thatched rondavels still found at the edges"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Adventure operator on the Maseru outskirts; layout unknown. Typed as stone and thatch lodge with stables."
+    },
+    "maseru-market-game": {
+      "venueId": "maseru-market-game",
+      "city": "maseru",
+      "name": "Maseru Market",
+      "archetype": "market-open",
+      "subject": "The central open market: rows of stalls under shared corrugated sheds and umbrellas beside the bus rank",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#4f6a5a",
+          "#a24a36"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Open market near the Sefika/Kingsway centre; imagined as steel-frame sheds with painted stalls."
+    },
+    "maseru-maseru-central-park": {
+      "venueId": "maseru-maseru-central-park",
+      "city": "maseru",
+      "name": "Maseru Central Park",
+      "archetype": "park-landscape",
+      "subject": "An urban central park: lawn, tree lines, paved paths and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#c9a97a",
+          "#7a6a52",
+          "#e8ddc4"
+        ],
+        "roofColour": "#7a3a2c",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. No description found; typed from the park concept. Differs from Sefika sa Moshoeshoe Park and Makoanyane Square by being the larger lawn with a pavilion."
+    },
+    "maseru-maseru-mall": {
+      "venueId": "maseru-maseru-mall",
+      "city": "maseru",
+      "name": "Maseru Mall",
+      "archetype": "mall",
+      "subject": "A modern South African-style mall: a wide two-storey block with a glazed entrance tower, parapet and big surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#7d8a8f",
+          "#a24a36"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "Pioneer Mall (2009) paved the way for Maseru Mall and City Square; South African-style malls"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Wikipedia only says Maseru Mall exists as a modern mall in the Pioneer Mall mould. Blank signage boards only."
+    },
+    "maseru-meal-stop": {
+      "venueId": "maseru-meal-stop",
+      "city": "maseru",
+      "name": "Mochachos",
+      "archetype": "restaurant",
+      "subject": "A fast-casual restaurant: a small single-storey glass-fronted unit with an awning and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#a24a36",
+          "#3a3a3a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. A franchise outlet; model as brand-neutral with a blank signage board, never the logo."
+    },
+    "maseru-queen-mamohato-hospital": {
+      "venueId": "maseru-queen-mamohato-hospital",
+      "city": "maseru",
+      "name": "Queen Mamohato Memorial Hospital (QMMH)",
+      "archetype": "hospital",
+      "subject": "Lesotho's main referral hospital: a large modern 425-bed campus of linked three-storey blocks with wide glazed fronts and a central entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d2",
+          "#5a8aa8",
+          "#a24a36"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen_%27Mamohato_Memorial_Hospital",
+          "what": "425 beds, opened 2011 as a design-build-finance-operate PPP replacing Queen Elizabeth II (appearance not described)"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Size comes from the sourced 425 beds and 2011 date; storeys, colours and glazing are guesses. It is the biggest hospital in the country and should read larger and newer than Maseru District Hospital."
+    },
+    "maseru-quiet-reflection": {
+      "venueId": "maseru-quiet-reflection",
+      "city": "maseru",
+      "name": "Our Lady of Victories Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Catholic cathedral finished in 1955: a long sandstone nave with a squat western tower, round-arched openings and a steep roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "limestone",
+        "colours": [
+          "#d9c29a",
+          "#efe6d2",
+          "#7a3a2c"
+        ],
+        "roofColour": "#7a3a2c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1955",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Victories_Cathedral,_Maseru",
+          "what": "finished 1955, architect E. H. A. Payens (style and materials not described)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "listed as one of two main surviving colonial buildings near the centre"
+        }
+      ],
+      "notes": "Date and architect are sourced; form, materials and colours are inferred from mid-century Catholic cathedral design in southern Africa and the sandstone used for local civic buildings. Treat as typed. Recognisable as a large church, not Gothic: round arches, one tower."
+    },
+    "maseru-recreation": {
+      "venueId": "maseru-recreation",
+      "city": "maseru",
+      "name": "Makoanyane Square",
+      "archetype": "park-landscape",
+      "subject": "A civic square: broad paved plaza with flagpoles, a plinth with a statue, and lines of trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#b0aaa0",
+          "#7a6a52",
+          "#d9c29a"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Named for Makoanyane, the Basotho warrior; no description of the square found. Shown as a paved parade square with a plinth and flagpoles."
+    },
+    "maseru-sefika-shopping-centre": {
+      "venueId": "maseru-sefika-shopping-centre",
+      "city": "maseru",
+      "name": "Sefika Shopping Centre",
+      "archetype": "mall",
+      "subject": "A 1990s suburban shopping centre: long single-to-two-storey arcade of shops with a flat roof and a shared car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "painted-render",
+        "colours": [
+          "#e8ddc4",
+          "#a24a36",
+          "#b0aaa0"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Older, smaller and plainer than Maseru Mall; drawn as an L-shaped arcade with awnings."
+    },
+    "maseru-setsoto-stadium": {
+      "venueId": "maseru-setsoto-stadium",
+      "city": "maseru",
+      "name": "Setsoto Stadium",
+      "archetype": "stadium",
+      "subject": "The national stadium: a single-tier oval bowl with a roofed main stand on one side, artificial turf and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#2f4a8a",
+          "#e8e8e0"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s (renovated 2010-11)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Setsoto_Stadium",
+          "what": "football stadium, 13,900 capacity, artificial turf, renovated and enlarged 2010-11, 25,000-seat expansion announced 2025"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "national stadium holding 20,000-25,000"
+        }
+      ],
+      "notes": "Capacity (13,900 current; claims up to 20-25k elsewhere), artificial turf and the 2010-11 renovation are sourced. Roof, stand layout and colours are not described and are typed. 2025 expansion plan means the model should show the current smaller bowl."
+    },
+    "maseru-state-library": {
+      "venueId": "maseru-state-library",
+      "city": "maseru",
+      "name": "Lesotho State Library",
+      "archetype": "campus-block",
+      "subject": "The state library: a boxy two-storey modernist building with a low flat roof and a recessed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e8ddc4",
+          "#a24a36",
+          "#7d8a8f"
+        ],
+        "roofColour": "#a8a090",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Sits next to the UNESCO Library near Makoanyane Square. Drawn taller and plainer than the UNESCO Library."
+    },
+    "maseru-transit": {
+      "venueId": "maseru-transit",
+      "city": "maseru",
+      "name": "Maseru",
+      "archetype": "transport-station",
+      "subject": "The Maseru Bridge border crossing: a customs and immigration hall with lane canopies leading to the bridge over the Mohokare (Caledon) river",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "variant": "border-post"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#2f4a8a",
+          "#e8e8e0"
+        ],
+        "roofColour": "#8c8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context: Maseru sits on the South African border"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. The venue point (-29.298, 27.470) lies on the Maseru Bridge border crossing with South Africa rather than a bus station, from the coordinates. The building itself was not described anywhere."
+    },
+    "maseru-unesco-library": {
+      "venueId": "maseru-unesco-library",
+      "city": "maseru",
+      "name": "UNESCO Library",
+      "archetype": "campus-block",
+      "subject": "A small one-storey library in face brick with a shaded porch beside the State Library",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "render",
+        "colours": [
+          "#a8603f",
+          "#efe6d2",
+          "#6b5a4a"
+        ],
+        "roofColour": "#7a3a2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maseru",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Typed brief: no source describes the building's appearance, so form and colours are derived from the Maseru city style and the place type. Named library near Makoanyane Square; no description. Made a small brick hall so it is clearly different from the State Library."
+    }
+  }
+}

@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-clinic",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Centre_Hospitalier_Universitaire_de_Libreville.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Allmania23",
+   "view": "front",
+   "file": "/tmp/places-evidence/libreville/chu.jpg",
+   "used": "main gate: a wide flat dark-soffit entrance canopy on concrete piers carrying a blank pale fascia board, white steel sliding gates, cream guard post with dark brown base left, salmon-orange 3-storey block with balcony right, palm trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/410356077",
+   "used": "campus is 76,000 m2 (404 x 300 m), too large for the scene clamp: only the entrance and four ward blocks are modelled, sized from the brief (4 storeys, H plan)"
+  },
+  {
+   "kind": "text",
+   "used": "fr.wikipedia: largest hospital in Gabon, ~650 beds"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 24,
+  "aspect": 1.5,
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 62,
+    "depth": 9,
+    "height": 9.5,
+    "columns": 0,
+    "thickness": 2.0,
+    "colour": "#262a2e",
+    "edgeColour": "#3a3f44"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -29,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    29,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-ml",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    -9,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-mr",
+   "footprint": {
+    "rect": [
+     1.8,
+     1.8
+    ]
+   },
+   "at": [
+    9,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aeb2b2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2b2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -38.6,
+    9.5
+   ],
+   "params": {
+    "width": 62,
+    "height": 6.5,
+    "bottom": 0,
+    "colour": "#eceeee",
+    "frameColour": "#2d4f9a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -18,
+    -35.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "height": 4.2,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#7a4a3a",
+    "leafColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    19,
+    -35.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "height": 4.2,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "colour": "#7a4a3a",
+    "leafColour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-main",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    2,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfb8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.5,
+    "bands": "#f4f2ea",
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-l",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -27,
+    -20
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfb8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4a4f56",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-r",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    27,
+    -18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13.5,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0b78e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "balcony-bands",
+   "at": [
+    27,
+    -23.2,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "floors": 3,
+    "storeyHeight": 3.4,
+    "proud": 1.2,
+    "rail": true,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "gate canopy, fascia, white bar gates and salmon block present but camera framing is wider than the tight photo and fascia lettering is blank; ward behind typed not seen; no people or cars"
+ }
+}

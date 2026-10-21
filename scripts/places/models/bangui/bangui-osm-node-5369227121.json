@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bangui",
+ "venueId": "bangui-osm-node-5369227121",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/361532536",
+   "used": "containing outline, 3734 m2, 76x49 m, bearing 79"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Barth%C3%A9lemy_Boganda_Stadium",
+   "used": "stadium-area context only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d3c0",
+    "windows": "ribbon",
+    "windowRatio": 0.1,
+    "plinth": 0.8,
+    "bands": "#2f6f9a",
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.8,
+      "depth": 0.4,
+      "spacing": 6,
+      "colour": "#9c9a92",
+      "margin": 2
+     }
+    ]
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#a8acae",
+    "material": "metal-sheet",
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 4.2,
+    "colour": "#2f6f9a",
+    "columns": 4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -28,
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    30,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; barrel roof, entrance canopy and fins typed on the OSM outline; side gates omitted."
+ }
+}

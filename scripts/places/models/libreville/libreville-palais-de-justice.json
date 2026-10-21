@@ -1,0 +1,108 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-palais-de-justice",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/3381838",
+   "used": "real zig-zag outline (about 130 x 54 m, 4379 m2, courthouse), scaled to fit the scene"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Libreville",
+   "used": "1970s prestige civic style, pale painted concrete"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "courts",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 10,
+    "plinth": 0.6,
+    "cornice": true,
+    "bands": "#a8a496"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9d9a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 5,
+    "colours": [
+     "#2f8a4a",
+     "#f2cc2e",
+     "#2a63a8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real outline, 3 storeys and flat roof only. Columned entrance and steps of the brief are not placed because the front cannot be identified from the outline."
+ }
+}

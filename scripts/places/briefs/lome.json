@@ -1,0 +1,1624 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "lome",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "lome",
+    "climate": "savanna",
+    "vernacular": "Gulf of Guinea port capital on a sandy coast (tropical savanna, ~26.9 C mean, 84% humidity, 800-900 mm rain): German-colonial landmarks (neo-Gothic cathedral, tower-flanked governor palace) in cream and ochre, 1970s-80s concrete and glass government and bank blocks, dense neighbourhoods of 1-2 storey painted block houses with walled compounds under rusty or grey corrugated roofs, big covered market halls around the Grand Marche, and flat sandy ground with coconut palms.",
+    "wallColours": [
+      "#eadfc6",
+      "#c9953f",
+      "#f2eee4",
+      "#c27f62",
+      "#a7a39a",
+      "#6c9ac0",
+      "#d9c07a"
+    ],
+    "roofColours": [
+      "#8c4a37",
+      "#80858a",
+      "#4f6f55",
+      "#a7a39a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "German-colonial neo-Gothic polychromy (ochre on white) with rose windows and twin openwork spires; monumental palaces with flanking 18 m towers and patios; bold wax-print cloth colours from the Nana Benz traders in market stalls; Paul Ahyi style monumental sculpture on public squares; walled house compounds with painted gates.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+        "what": "colonial-era centre, Sacred Heart Cathedral (German neo-Gothic), Palace of the Governors, Grand Market three-storey hall, tropical savanna climate, Hotel du 2 Fevrier 36-storey modernist tower"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+        "what": "Grand Marche three-storey hall with Nana Benz cloth traders, Independence Monument by Paul Ahyi, Palais des Congres"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Palais_de_Lom%C3%A9",
+        "what": "German colonial architecture of the Governors Palace, two flanking 18 m towers"
+      }
+    ]
+  },
+  "places": {
+    "lome-aflao-market": {
+      "venueId": "lome-aflao-market",
+      "city": "lome",
+      "name": "Aflao Market",
+      "archetype": "market-open",
+      "subject": "The border-town open market at Aflao: crowded rows of stalls under umbrellas and tin sheds along a dusty frontier road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c27f62",
+          "#80858a",
+          "#eadfc6"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 80
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 25
+        },
+        {
+          "id": "lock-ups",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s-present",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome context; the coordinates are on the Ghana side of the border (Aflao town)"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the market is in Aflao, Ghana, on the border; no layout was found."
+    },
+    "lome-airport-lome-airport": {
+      "venueId": "lome-airport-lome-airport",
+      "city": "lome",
+      "name": "Aéroport International Gnassingbé Eyadema (AIGE)",
+      "archetype": "airport-terminal",
+      "subject": "Lome's international terminal opened in 2016 seen from the forecourt: a two-storey glass and metal-clad terminal with a wide flat departures canopy and a control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#3f6f9a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gnassingb%C3%A9_Eyad%C3%A9ma_International_Airport",
+          "what": "new terminal opened early 2016 with capacity of 2 million passengers a year; single asphalt runway 04/22 of 3,000 m"
+        }
+      ],
+      "notes": "Opening year and capacity are sourced; the terminal footprint and glass/metal envelope are typed from the modern-terminal type. Size set for ~2 Mpax: much smaller than Abuja or Lagos."
+    },
+    "lome-centre-de-loisirs-boad": {
+      "venueId": "lome-centre-de-loisirs-boad",
+      "city": "lome",
+      "name": "Centre de loisirs BOAD",
+      "archetype": "park-landscape",
+      "subject": "A coastal leisure centre of the West African Development Bank: a green garden with a low clubhouse, sports courts and open-air pavilions near the beach",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2eee4",
+          "#c9953f",
+          "#8a6a42"
+        ],
+        "roofColour": "#8c4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome context: BOAD headquarters is among the modern bank buildings"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; no information on the leisure centre itself was found."
+    },
+    "lome-clinic": {
+      "venueId": "lome-clinic",
+      "city": "lome",
+      "name": "CHU Tokoin",
+      "archetype": "hospital",
+      "subject": "The Tokoin university hospital: several 3-5 storey rendered blocks joined by covered walkways, with a long entrance forecourt",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 55,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc6",
+          "#8fb0a0",
+          "#f2eee4"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Tokoin is a Lome district (Tokoin-Hopital); no description of the hospital found"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the main national referral hospital."
+    },
+    "lome-community-notices": {
+      "venueId": "lome-community-notices",
+      "city": "lome",
+      "name": "New Presidency of the Republic of Togo",
+      "archetype": "civic-palace",
+      "subject": "The presidential seat: a large formal white palace with a long colonnaded front, a central pediment and flags set back behind a guarded forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2eee4",
+          "#c9b27a",
+          "#a7a39a"
+        ],
+        "roofColour": "#a7a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "2010s-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome government quarter context; no description of the new presidency building found"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; it replaces the older palace; formal frontal facade assumed. Differs from the German-colonial Palais de Lome by being long, flat-roofed and colonnaded."
+    },
+    "lome-community-voting-game": {
+      "venueId": "lome-community-voting-game",
+      "city": "lome",
+      "name": "Place de la Libération",
+      "archetype": "park-landscape",
+      "subject": "A paved city square with palm trees, benches and a central ceremonial space, ringed by taller buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d2bd",
+          "#c9953f",
+          "#f2eee4"
+        ],
+        "roofColour": "#a7a39a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shade shelter"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome squares (Place de la Colombe de la Paix, Independence Monument by Paul Ahyi); no source found for Place de la Liberation"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the square was not found in any source; a generic plaza is used."
+    },
+    "lome-community-workshop": {
+      "venueId": "lome-community-workshop",
+      "city": "lome",
+      "name": "University of Lomé",
+      "archetype": "campus-block",
+      "subject": "The main campus teaching blocks: long 3-4 storey exposed-concrete lecture buildings with brise-soleil and covered walkways under palm trees",
+      "form": {
+        "footprint": "L",
+        "width_m": 95,
+        "depth_m": 28,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#a7a39a",
+          "#eadfc6",
+          "#d9d2bd"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; main university of Togo, founded as a university in 1970; its 1970s concrete form is assumed."
+    },
+    "lome-eglise-des-assemblees-chretiennes": {
+      "venueId": "lome-eglise-des-assemblees-chretiennes",
+      "city": "lome",
+      "name": "Église des Assemblées Chrétiennes",
+      "archetype": "church-modern",
+      "subject": "A pentecostal church auditorium: a wide boxy hall in painted render with a tall entrance facade, blank sign board and a steel cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f2eee4",
+          "#6c9ac0",
+          "#bdb7a8"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; an evangelical assembly; modern auditorium assumed."
+    },
+    "lome-fauna-zoo": {
+      "venueId": "lome-fauna-zoo",
+      "city": "lome",
+      "name": "Fauna Zoo",
+      "archetype": "park-landscape",
+      "subject": "A small zoo and garden: shaded paths, thatch-roofed paillote shelters, animal enclosures with wire fences and a ticket gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b08a5a",
+          "#8a6a42",
+          "#e6d9b8"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; zoo layout is a generic zoo-garden guess."
+    },
+    "lome-la-concorde": {
+      "venueId": "lome-la-concorde",
+      "city": "lome",
+      "name": "La Concorde",
+      "archetype": "mall",
+      "subject": "A small commercial centre: a 2-storey rendered shopping block with a glazed ground floor, awnings and rooftop blank signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece3cc",
+          "#c27f62",
+          "#f2eee4"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; a modest supermarket-style mall."
+    },
+    "lome-marche-de-be": {
+      "venueId": "lome-marche-de-be",
+      "city": "lome",
+      "name": "Marché de Bè",
+      "archetype": "market-open",
+      "subject": "The market of the historic Bè district: a lively mix of ground-level stalls, wax-print cloth awnings and lock-up shops under low tin sheds on sandy ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 65,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9953f",
+          "#c27f62",
+          "#eadfc6"
+        ],
+        "roofColour": "#8c4a37",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 55
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 14
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "historic",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Be is the village east of Lome that marked the original city boundary"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; Be is the old indigenous quarter; stall and colour detail typed."
+    },
+    "lome-marche-de-djidjole": {
+      "venueId": "lome-marche-de-djidjole",
+      "city": "lome",
+      "name": "Marché de Djidjolé",
+      "archetype": "market-hall",
+      "subject": "A neighbourhood market hall: one long gabled shed with open sides, rows of tables, and a row of painted shop fronts on the road side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d0b8",
+          "#4f6f55",
+          "#f2eee4"
+        ],
+        "roofColour": "#4f6f55",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 35
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; covered-hall variant chosen so it differs from the other Lome markets."
+    },
+    "lome-market-game": {
+      "venueId": "lome-market-game",
+      "city": "lome",
+      "name": "Assigamé",
+      "archetype": "market-open",
+      "subject": "The Assigame market district beside the Grand Marche: a packed zone of cloth, spice and household stalls on narrow lanes beneath awnings and tarps, with multi-storey rendered shops around the edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c27f62",
+          "#6c9ac0",
+          "#eadfc6"
+        ],
+        "roofColour": "#8c4a37",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 90
+        },
+        {
+          "id": "awning",
+          "count": 20
+        },
+        {
+          "id": "umbrellas",
+          "count": 25
+        },
+        {
+          "id": "lock-ups",
+          "count": 18
+        },
+        {
+          "id": "signage-board",
+          "count": 4,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s-present",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Grand Marche three-storey hall; Nana Benz traders sell wax-print cloth on the first floor; near the colonial centre"
+        }
+      ],
+      "notes": "Assigame is not itself described in the sources; it is the market quarter by the Grand Marche so the dense cloth-stall look is typed from that. Colourful cloth awnings are the cue."
+    },
+    "lome-meal-stop": {
+      "venueId": "lome-meal-stop",
+      "city": "lome",
+      "name": "La Casa",
+      "archetype": "restaurant",
+      "subject": "A restaurant-bar in a converted villa: a one-storey rendered house with a shaded front terrace, small garden and blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eadfc6",
+          "#c27f62",
+          "#f2eee4"
+        ],
+        "roofColour": "#8c4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; no information on the real venue was found."
+    },
+    "lome-mosquee-de-totsi": {
+      "venueId": "lome-mosquee-de-totsi",
+      "city": "lome",
+      "name": "Mosquée de Totsi",
+      "archetype": "mosque-domed",
+      "subject": "A neighbourhood mosque: a rendered prayer hall with one central dome over a square drum and a single tall slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2eee4",
+          "#6a9a8a",
+          "#c9b27a"
+        ],
+        "roofColour": "#6a9a8a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; single-minaret variant; no sources about Totsi mosque."
+    },
+    "lome-mosquee-oumar-bno-abdoul-aziz": {
+      "venueId": "lome-mosquee-oumar-bno-abdoul-aziz",
+      "city": "lome",
+      "name": "Mosquée Oumar Bno Abdoul Aziz",
+      "archetype": "mosque-domed",
+      "subject": "A larger community mosque: wide prayer hall with a main dome and four smaller domes, two minarets and a pointed-arch arcade across the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "multi-dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe6d0",
+          "#4a8a6a",
+          "#d7c9a0"
+        ],
+        "roofColour": "#c9b27a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "one main dome plus four smaller"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; multi-dome two-minaret variant chosen to differ from Totsi mosque."
+    },
+    "lome-quiet-reflection": {
+      "venueId": "lome-quiet-reflection",
+      "city": "lome",
+      "name": "Sacred Heart Cathedral",
+      "archetype": "church-gothic",
+      "subject": "The 1902 German neo-Gothic cathedral behind the Grand Marche: a basilica with twin towers topped with openwork spires, a rose window and ochre-on-white polychrome facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f1ead8",
+          "#c9953f",
+          "#f6f3ea"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "twin towers, ~40 m (estimated)"
+        },
+        {
+          "id": "spire",
+          "count": 2,
+          "note": "openwork spires"
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1902",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_du_Sacr%C3%A9-C%C5%93ur_de_Lom%C3%A9",
+          "what": "basilican plan, seven-bay nave with groin vault and aisles, no true transept, gallery added 1914; facade inspired by north-European Gothic with a rose window and ochre-on-white polychromy; two twin bell towers with openwork spires; built April 1901 to September 1902; inspired by the church at Steyl"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sacred_Heart_Cathedral,_Lom%C3%A9",
+          "what": "built by German colonial authorities, consecrated 21 September 1902, stands behind the Grand Market"
+        }
+      ],
+      "notes": "Form, tower count, rose window and ochre-on-white polychromy are sourced. Overall dimensions, tower height (~40 m) and roof colour/material are estimates; no source states them. Seven bays give roughly 45-55 m length."
+    },
+    "lome-recreation": {
+      "venueId": "lome-recreation",
+      "city": "lome",
+      "name": "Palais de Lome",
+      "archetype": "manor",
+      "subject": "The former Governors Palace by the sea: a two-storey German-colonial block 41.5 m by 34 m with a central patio, flanked by two 18 m towers, terraced and set in a botanical garden",
+      "form": {
+        "footprint": "ring",
+        "width_m": 42,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6d0",
+          "#b08a5a",
+          "#f6f3ea"
+        ],
+        "roofColour": "#8c4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two flanking towers ~18 m"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "central patio"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "surrounding terraces"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "approach gate, historically a tusk arch"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1898-1905",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Palais_de_Lom%C3%A9",
+          "what": "German colonial architecture; two-storey main building about 41.5 x 34 m, 28 rooms; two 18 m towers flank it; patio like Honme Palace in Porto-Novo; built 1898-1905 under Governor Kohler by architect Ernst Schmidt; stands ~250 m from the beach with terraces; 10 ha botanical garden; restored and opened as art and culture centre end of 2019; UNESCO tentative list 2002"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "former residence of colonial governors; renovated opening November 2019"
+        }
+      ],
+      "notes": "Dimensions, storeys, towers, patio and garden are sourced. Colours and roof material are NOT documented; cream/white render with ochre trim and a red roof are assumed from the German-colonial vocabulary of the city. Original ceremonial tusk arch is not present now."
+    },
+    "lome-stade-de-kegue": {
+      "venueId": "lome-stade-de-kegue",
+      "city": "lome",
+      "name": "Stade de Kégué",
+      "archetype": "stadium",
+      "subject": "The 25,000-seat national stadium: an oval concrete bowl with a covered main stand, a running track around the grass pitch, and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c3b6",
+          "#c53a32",
+          "#f0ede4"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_de_K%C3%A9gu%C3%A9",
+          "what": "holds 25,000; opened 12 January 2000; designed by Chinese architect Yang Zhou; grass pitch"
+        }
+      ],
+      "notes": "Capacity, year and designer are sourced; roof and colour scheme are typed (I recall a Chinese-built concrete stadium with a covered main stand but no fetched source says so)."
+    },
+    "lome-tinga": {
+      "venueId": "lome-tinga",
+      "city": "lome",
+      "name": "Tinga",
+      "archetype": "park-landscape",
+      "subject": "A garden and leisure area: lawns and shaded paths with a low open-air pavilion and thatch-style shelters",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b08a5a",
+          "#c9953f",
+          "#e6d9b8"
+        ],
+        "roofColour": "#b79b5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; the venue could not be identified; treated as a generic leisure garden."
+    },
+    "lome-togo-national-museum": {
+      "venueId": "lome-togo-national-museum",
+      "city": "lome",
+      "name": "Togo National Museum",
+      "archetype": "museum-theatre",
+      "subject": "Togo national museum, housed in the large modernist Palais des Congres block by the Independence Monument: a wide concrete conference-hall building with a long flat canopy and steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d4c6",
+          "#6f8c96",
+          "#f0ede4"
+        ],
+        "roofColour": "#a7a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1975",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Togo_National_Museum",
+          "what": "established in 1975 in Lome; collections of musical instruments, baskets, pots, carvings, clothing, metalwork, tobacco pipes"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Palais des Congres is a modern building beside the Independence Monument, near the RPT headquarters (the museum is housed within it)"
+        }
+      ],
+      "notes": "The museum being in the Palais des Congres is from the Lome article and the museum article image name; no source describes the exterior, so the modernist block is typed. Museum is a modest part of a large civic building."
+    },
+    "lome-transit": {
+      "venueId": "lome-transit",
+      "city": "lome",
+      "name": "Gare routière de REX",
+      "archetype": "transport-station",
+      "subject": "A central bus park: a paved yard with a long low shelter, bus bays filled with minibuses and a row of ticket kiosks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb7a8",
+          "#6c9ac0",
+          "#eadfc6"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; near the Assigame/REX district; generic bus park."
+    },
+    "lome-universite-des-sciences-et-technologies": {
+      "venueId": "lome-universite-des-sciences-et-technologies",
+      "city": "lome",
+      "name": "Université des Sciences et Technologies du Togo",
+      "archetype": "campus-block",
+      "subject": "A smaller technical university campus: a pair of 2-3 storey rendered lecture blocks with louvres and a shaded forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc6",
+          "#6c9ac0",
+          "#d9d2bd"
+        ],
+        "roofColour": "#80858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lom%C3%A9",
+          "what": "Lome city context"
+        }
+      ],
+      "notes": "No source describes this building. Typed from the city style and the place type; newer and smaller than the University of Lome in this brief."
+    }
+  }
+}

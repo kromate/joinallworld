@@ -1,0 +1,1751 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dubai",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dubai",
+    "climate": "desert",
+    "vernacular": "A skyline of reflective blue and silver glass-curtain towers on podiums along Sheikh Zayed Road and the marinas; low and mid-rise sand-coloured and white rendered concrete blocks and two-storey villas elsewhere, with flat roofs, parapets and rooftop water tanks and air-conditioning; large air-conditioned malls clad in stone and glass; heritage districts (Al Fahidi, Heart of Sharjah) of coral and gypsum walls, teak and palm-frond ceilings and square barjeel wind towers; palms and irrigated lawns on sand.",
+    "wallColours": [
+      "#e5d9c0",
+      "#f1ede4",
+      "#c9b48a",
+      "#9bb2c2",
+      "#b7bbbd",
+      "#cfa77a",
+      "#a8a6a0"
+    ],
+    "roofColours": [
+      "#b5ada0",
+      "#d8d2c6",
+      "#8f8b84",
+      "#c8c2b4"
+    ],
+    "wallMaterials": [
+      "glass-curtain",
+      "painted-render",
+      "render",
+      "limestone",
+      "concrete",
+      "stone",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet",
+      "glass"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "none"
+    ],
+    "ornament": "Arabic geometric mashrabiya-pattern cladding and screens, pointed and ogee arches, merlon parapets, carved gypsum and wooden doors on heritage buildings, square barjeel wind towers, blue-and-white tilework on mosques, sail- and dhow-shaped landmark forms.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_the_United_Arab_Emirates",
+        "what": "traditional coral, mud, stone and seashell-lime construction, barjeel wind towers, courtyard houses; modern glass curtain walls; Burj Khalifa setbacks; Al Fahidi heritage district"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Heart_of_Sharjah",
+        "what": "coral and gypsum walls, teak and barasti ceilings, barjeel wind towers in the heritage district"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+        "what": "reflective glass, aluminium and stainless steel cladding; setbacks; Y-shaped plan"
+      }
+    ]
+  },
+  "places": {
+    "dubai-airport-dubai-airport": {
+      "venueId": "dubai-airport-dubai-airport",
+      "city": "dubai",
+      "name": "Dubai International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Dubai International Airport Terminal 3 forecourt: a vast glass-and-steel terminal under a huge arched vault, with a tall control tower and long vaulted concourses behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 150,
+        "storeys": 4,
+        "height_m": 40,
+        "roof": "barrel",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8de",
+          "#7d95a6",
+          "#e9ecee"
+        ],
+        "roofColour": "#c8d0d6",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "arched glazed vault"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "about 87 m"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dubai_International_Airport",
+          "what": "Terminal 3 over 1,713,000 m2, 10 floors including 4 basements, concourses A and B about 924 m and 945 m long, 40 m and 49.5 m high, control tower about 87 m; Terminal 1 original 1971 columns spread at the top like palm trees with ogee arches"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q193439",
+          "what": "Wikidata entity: Dubai International Airport"
+        }
+      ],
+      "notes": "No OSM footprint. The arched glazed vault roof is from general knowledge and is not stated in the page read. Show the central portion (<=120 m)."
+    },
+    "dubai-clinic": {
+      "venueId": "dubai-clinic",
+      "city": "dubai",
+      "name": "Dubai Hospital",
+      "archetype": "hospital",
+      "subject": "Dubai Hospital, Al Baraha: a 14-storey white ward tower rising from a two-storey emergency and outpatient podium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 14,
+        "height_m": 56,
+        "roof": "flat",
+        "variant": "tower-on-podium",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d8",
+          "#4a7aa0",
+          "#b9b1a0"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dubai_Hospital",
+          "what": "14 stories, lower two house Accident and Emergency and outpatients, upper ten wards, 2022 outpatient addition of 32,000 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/98642909",
+          "what": "OSM footprint 124.3x117.9 m, 2 levels, height 10 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5310555",
+          "what": "Wikidata entity: Dubai Hospital"
+        }
+      ],
+      "notes": "OSM podium 124 x 118 m (2 levels, 10 m, built 1983). Tower plan and colours are estimated."
+    },
+    "dubai-community-notices": {
+      "venueId": "dubai-community-notices",
+      "city": "dubai",
+      "name": "Ministry of Human Resources & Emiratisation",
+      "archetype": "civic-palace",
+      "subject": "Ministry of Human Resources and Emiratisation: a federal government office building with a stone-and-glass front and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 58,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d9c0",
+          "#6f8fa8",
+          "#f1ede4"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1115201459",
+          "what": "OSM footprint 68x57.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q134522772",
+          "what": "Wikidata entity: Ministry of Human Resources and Emiratisation"
+        }
+      ],
+      "notes": "OSM 68 x 58 m, Wikidata: federal ministry. No description found; typed from Gulf government building norms."
+    },
+    "dubai-community-voting-game": {
+      "venueId": "dubai-community-voting-game",
+      "city": "dubai",
+      "name": "Arts Square",
+      "archetype": "park-landscape",
+      "subject": "Sharjah Arts Square in the Heart of Sharjah: a paved open square ringed by low coral-coloured heritage buildings with arcades and wooden doors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#d9c7a3",
+          "#b08a5a",
+          "#efe5d2"
+        ],
+        "roofColour": "#b89b72",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s restoration of older houses",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heart_of_Sharjah",
+          "what": "heritage district of single-storey coral and gypsum houses with teak and palm-frond ceilings and barjeel wind towers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1429712765",
+          "what": "OSM footprint 927.3x472.9 m"
+        }
+      ],
+      "notes": "OSM has only the district polygon (927 x 473 m), not the square. The square itself is not described in the sources read; look is typed from the heritage district."
+    },
+    "dubai-community-workshop": {
+      "venueId": "dubai-community-workshop",
+      "city": "dubai",
+      "name": "I.A.U - Islamic Azad University",
+      "archetype": "campus-block",
+      "subject": "Islamic Azad University Dubai branch: a small mid-rise modern university building with glass and render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 42,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d9c0",
+          "#6f8fa8",
+          "#b7bbbd"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/313796138",
+          "what": "OSM footprint 95x41.9 m"
+        }
+      ],
+      "notes": "OSM building=university 95 x 42 m, no other data; typed guess."
+    },
+    "dubai-market-game": {
+      "venueId": "dubai-market-game",
+      "city": "dubai",
+      "name": "Dubai Hills Mall",
+      "archetype": "mall",
+      "subject": "Dubai Hills Mall: a large two-level mall around an open central courtyard with a light stone and glass facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5ddd0",
+          "#8fa7b5",
+          "#c9b99a"
+        ],
+        "roofColour": "#d8d2c6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2022",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dubai_Hills_Mall",
+          "what": "over 2,000,000 sq ft GLA on two levels around a central courtyard with streetscapes, skylight canopy planned, three pocket parks, parking for 7,000+ cars, opened 2022 per OSM"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/797700047",
+          "what": "OSM footprint 537.2x307.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q55610055",
+          "what": "Wikidata entity: Dubai Hills Mall"
+        }
+      ],
+      "notes": "Source is from pre-opening plans, so the built mall may differ. OSM 537 x 308 m."
+    },
+    "dubai-meal-stop": {
+      "venueId": "dubai-meal-stop",
+      "city": "dubai",
+      "name": "Pizza Hut",
+      "archetype": "restaurant",
+      "subject": "Pizza Hut branch: a small one-storey standalone fast-food restaurant with a dark roof-style fascia and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5d9c0",
+          "#b03a2e",
+          "#f1ede4"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/499990800",
+          "what": "OSM footprint 53.7x26.6 m"
+        }
+      ],
+      "notes": "Chain restaurant; signage must be a blank neutral board. OSM maps a 54 x 27 m post-office building at this point; the restaurant itself is a typed guess."
+    },
+    "dubai-osm-node-1532272198": {
+      "venueId": "dubai-osm-node-1532272198",
+      "city": "dubai",
+      "name": "St Marys Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St Mary's Catholic Church, Oud Metha: a cream-coloured 1960s parish church with a tall gabled hall, in a walled compound with a courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc3",
+          "#c9b48a",
+          "#f1ede4"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1967",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/386354589",
+          "what": "OSM footprint 46.6x39.6 m"
+        }
+      ],
+      "notes": "No source could be read (Wikipedia fetch 404). The year is from memory and not verified. OSM footprint 46.6 x 39.6 m. Typed guess; verify the bell tower before generating."
+    },
+    "dubai-osm-node-3272826588": {
+      "venueId": "dubai-osm-node-3272826588",
+      "city": "dubai",
+      "name": "Barjeel Art Foundation",
+      "archetype": "museum-theatre",
+      "subject": "Barjeel Art Foundation in Sharjah's Al Mureijah arts area: a long low two-storey gallery in sand-coloured render with wooden doors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#d9c8a4",
+          "#b08a5a",
+          "#efe5d2"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heart_of_Sharjah",
+          "what": "heritage district of coral and gypsum walls, wooden elements and courtyards"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/146378019",
+          "what": "OSM footprint 182.6x26.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15961599",
+          "what": "Wikidata entity: Barjeel Art Foundation"
+        }
+      ],
+      "notes": "OSM building 183 x 26 m (likely a row of arts spaces). The foundation's own facade is not described anywhere I read."
+    },
+    "dubai-osm-relation-13303178": {
+      "venueId": "dubai-osm-relation-13303178",
+      "city": "dubai",
+      "name": "University of Dubai",
+      "archetype": "campus-block",
+      "subject": "University of Dubai: a low modern campus of white and sand-coloured blocks around landscaped courtyards",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede4",
+          "#c9b48a",
+          "#9bb2c2"
+        ],
+        "roofColour": "#d8d2c6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13303178",
+          "what": "OSM footprint 665.8x488.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7895347",
+          "what": "Wikidata entity: University of Dubai"
+        }
+      ],
+      "notes": "OSM campus polygon 666 x 489 m, Wikidata: university. Building look typed."
+    },
+    "dubai-osm-relation-2844942": {
+      "venueId": "dubai-osm-relation-2844942",
+      "city": "dubai",
+      "name": "Latifa Hospital Women and Children",
+      "archetype": "hospital",
+      "subject": "Latifa Hospital (women and children), Oud Metha: a broad four-storey white hospital with long wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ede4",
+          "#c9b48a",
+          "#9bb2c2"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/2844942",
+          "what": "OSM footprint 331.9x160.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6496088",
+          "what": "Wikidata entity: Latifa Hospital"
+        }
+      ],
+      "notes": "OSM 332 x 161 m; Wikidata inception 1987. Typed form and colours."
+    },
+    "dubai-osm-way-104655711": {
+      "venueId": "dubai-osm-way-104655711",
+      "city": "dubai",
+      "name": "Palm Jumeirah Mall",
+      "archetype": "mall",
+      "subject": "Nakheel Mall (Palm Jumeirah Mall): a five-level mall on the Palm trunk, stone and glass clad with a central atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 120,
+        "storeys": 5,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d9c0",
+          "#9bb2c2",
+          "#c9b48a"
+        ],
+        "roofColour": "#d8d2c6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_the_Emirates",
+          "what": "for comparison only: Dubai malls mix Arabic and Mediterranean styles and connect each level to a car park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/104655711",
+          "what": "OSM footprint 290.9x231.8 m, 5 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q115803914",
+          "what": "Wikidata entity: Nakheel Mall"
+        }
+      ],
+      "notes": "OSM building 291 x 232 m, 5 levels. Wikidata label is Nakheel Mall. Facade is a typed guess, no description found."
+    },
+    "dubai-osm-way-175115425": {
+      "venueId": "dubai-osm-way-175115425",
+      "city": "dubai",
+      "name": "Mall of The Emirates",
+      "archetype": "mall",
+      "subject": "Mall of the Emirates: a vast four-level mall whose glazed, sloped Ski Dubai volume rises along one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 360,
+        "depth_m": 190,
+        "storeys": 4,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e5d9c0",
+          "#b7bbbd",
+          "#c9b48a"
+        ],
+        "roofColour": "#d8d2c6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "arches",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_the_Emirates",
+          "what": "four floors (also called three-storey), 220,000 m2, Arabic and Mediterranean design by F+A Architects, Ski Dubai indoor snow park, each level connected to a car park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1136937509",
+          "what": "OSM footprint 722.2x388.8 m, 4 levels, height 20 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1066448",
+          "what": "Wikidata entity: Mall of the Emirates"
+        }
+      ],
+      "notes": "The sloped silver Ski Dubai roof is from general knowledge; the source only names Ski Dubai. OSM 722 x 389 m, height 20 m."
+    },
+    "dubai-osm-way-201292184": {
+      "venueId": "dubai-osm-way-201292184",
+      "city": "dubai",
+      "name": "Maktoum Bin Rashid Al Maktoum Stadium",
+      "archetype": "stadium",
+      "subject": "Maktoum bin Rashid Al Maktoum Stadium: a mid-sized football stadium with one covered stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 147,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e5d9c0",
+          "#2a5d9a",
+          "#a8a6a0"
+        ],
+        "roofColour": "#a8a6a0",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/201292184",
+          "what": "OSM footprint 200.6x147.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2758483",
+          "what": "Wikidata entity: Maktoum Bin Rashid Al Maktoum Stadium"
+        }
+      ],
+      "notes": "OSM 201 x 147 m; Wikidata: Football stadium of Dubai. No description read; seat colours are a guess. Treated as distinct from Al-Maktoum Stadium."
+    },
+    "dubai-osm-way-202564429": {
+      "venueId": "dubai-osm-way-202564429",
+      "city": "dubai",
+      "name": "Al-Maktoum Stadium",
+      "archetype": "stadium",
+      "subject": "Al-Maktoum Stadium, Dubai: a rebuilt (2018) oval football stadium with an athletics-track history, low stands, and a 1995 west grandstand kept",
+      "form": {
+        "footprint": "oval",
+        "width_m": 169,
+        "depth_m": 152,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e4d8",
+          "#e8b620",
+          "#2a5d9a"
+        ],
+        "roofColour": "#a8a6a0",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "west grandstand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1978, rebuilt 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al_Maktoum_Stadium",
+          "what": "originally oval with low stands and athletics track, about 12,000 seats; west grandstand added 1995 and kept in 2017-2018 redevelopment; new stadium opened Dec 2018; capacity about 15,000; grass surface"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8865102",
+          "what": "OSM footprint 168.9x152.3 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3119433",
+          "what": "Wikidata entity: Al-Maktoum Stadium"
+        }
+      ],
+      "notes": "OSM building=grandstand, 169 x 152 m. Yellow-and-blue seat colours assume the home club colours; not in the source."
+    },
+    "dubai-osm-way-230629140": {
+      "venueId": "dubai-osm-way-230629140",
+      "city": "dubai",
+      "name": "Iranian Hospital Dubai",
+      "archetype": "hospital",
+      "subject": "Iranian Hospital Dubai, Satwa: a 1972 mid-rise hospital with a cream facade and a Persian-style entrance front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#ece6d8",
+          "#2f6fa8",
+          "#c9b48a"
+        ],
+        "roofColour": "#b5ada0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "persian",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/230629140",
+          "what": "OSM footprint 194.2x166.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20707857",
+          "what": "Wikidata entity: Iranian Hospital, Dubai"
+        }
+      ],
+      "notes": "Wikidata inception 1972, OSM 194 x 167 m compound. The blue-tile Persian accents are an assumption (the Iranian Mosque in Satwa is nearby but separate); verify before relying."
+    },
+    "dubai-osm-way-238918057": {
+      "venueId": "dubai-osm-way-238918057",
+      "city": "dubai",
+      "name": "City University College of Ajman",
+      "archetype": "campus-block",
+      "subject": "City University College of Ajman: a mid-rise university building in white render with glass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede4",
+          "#c9b48a",
+          "#9bb2c2"
+        ],
+        "roofColour": "#d8d2c6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/238918057",
+          "what": "OSM footprint 220.3x123.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15210735",
+          "what": "Wikidata entity: City University Ajman"
+        }
+      ],
+      "notes": "OSM 220 x 124 m; Wikidata: private university in Ajman. Typed."
+    },
+    "dubai-osm-way-311254501": {
+      "venueId": "dubai-osm-way-311254501",
+      "city": "dubai",
+      "name": "Mushrif National Park",
+      "archetype": "park-landscape",
+      "subject": "Mushrif National Park garden: a landscaped desert-edge park with lawns, ghaf and palm trees, and low shade pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 87,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e5d9c0",
+          "#c9b48a",
+          "#f1ede4"
+        ],
+        "roofColour": "#d8d2c6",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1264771923",
+          "what": "OSM footprint 86.5x70.4 m"
+        }
+      ],
+      "notes": "The OSM garden polygon is only 87 x 70 m (leisure=garden); no description found. Typed."
+    },
+    "dubai-osm-way-364819836": {
+      "venueId": "dubai-osm-way-364819836",
+      "city": "dubai",
+      "name": "Silicon Oasis Park",
+      "archetype": "park-landscape",
+      "subject": "Dubai Silicon Oasis park: a large irrigated lawn park with palms, paths and shade pavilions among modern blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 250,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e5d9c0",
+          "#c9b48a",
+          "#f1ede4"
+        ],
+        "roofColour": "#d8d2c6",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/364819836",
+          "what": "OSM footprint 595.7x586.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2839258",
+          "what": "Wikidata entity: Dubai Silicon Oasis"
+        }
+      ],
+      "notes": "OSM leisure=park 596 x 586 m. Wikidata links to the free zone. Typed guess."
+    },
+    "dubai-osm-way-376417463": {
+      "venueId": "dubai-osm-way-376417463",
+      "city": "dubai",
+      "name": "University Of Sharjah",
+      "archetype": "campus-block",
+      "subject": "University of Sharjah, University City: sand-cream academic blocks with Islamic arches and covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 79,
+        "depth_m": 61,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5d9c0",
+          "#c9b48a",
+          "#9bb2c2"
+        ],
+        "roofColour": "#d8d2c6",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/204709047",
+          "what": "OSM footprint 78.8x60.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7896294",
+          "what": "Wikidata entity: University of Sharjah"
+        }
+      ],
+      "notes": "OSM building 79 x 61 m; Wikidata inception 1997. Appearance is a typed assumption for a Gulf university campus."
+    },
+    "dubai-osm-way-551627055": {
+      "venueId": "dubai-osm-way-551627055",
+      "city": "dubai",
+      "name": "Dubai Safari Zoo Park",
+      "archetype": "park-landscape",
+      "subject": "Dubai Safari Park: a large zoo park of themed villages (African, Asian, Explorer) with a main gate building, enclosures and shaded paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#d9c7a3",
+          "#b08a5a",
+          "#efe5d2"
+        ],
+        "roofColour": "#b89b72",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dubai_Safari_Park",
+          "what": "about 12.8 million sq ft park with African Village, Explorer Village, Asian Village (ornate Asian architecture), Arabian Desert Safari and Al Wadi relaxation valley with fish ponds and waterfalls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1122322634",
+          "what": "OSM footprint 803.6x348.8 m"
+        }
+      ],
+      "notes": "OSM leisure=park 804 x 349 m. Building styles per village are only partly described; typed."
+    },
+    "dubai-osm-way-89654734": {
+      "venueId": "dubai-osm-way-89654734",
+      "city": "dubai",
+      "name": "Jumeirah Beach",
+      "archetype": "park-landscape",
+      "subject": "Jumeirah Beach: a wide strip of white sand on the Gulf with sun umbrellas and lifeguard huts, hotels behind and the Burj Al Arab sail on the skyline",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#f1ede4",
+          "#c9b48a",
+          "#9bb2c2"
+        ],
+        "roofColour": "#d8d2c6",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jumeirah_Beach",
+          "what": "white sand beach on the Gulf, lined by large hotels and resorts, Burj Al Arab, Wild Wadi, Jumeirah Beach Park, Madinat Jumeirah"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/89654734",
+          "what": "OSM footprint 2583.6x280.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6310943",
+          "what": "Wikidata entity: Jumeirah Beach"
+        }
+      ],
+      "notes": "OSM beach strip 2,584 x 281 m. Show the beach edge with umbrellas; the pier is optional."
+    },
+    "dubai-quiet-reflection": {
+      "venueId": "dubai-quiet-reflection",
+      "city": "dubai",
+      "name": "Dubai Grand Masjid",
+      "archetype": "mosque-domed",
+      "subject": "Dubai Grand Mosque (Bur Dubai): a sandy-grey Anatolian-style mosque with 54 domes around a tall lighthouse-like minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "timber",
+        "colours": [
+          "#b8ad98",
+          "#8a7e68",
+          "#d8cdb6"
+        ],
+        "roofColour": "#b8ad98",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 54,
+          "note": "45 small and 9 larger domes"
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 70 m, lighthouse-like, Anatolian style"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "six steps to the entrance"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "five entrance columns under a Quranic inscription band"
+        },
+        {
+          "id": "stained-glass",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1998",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dubai_Grand_Mosque",
+          "what": "about 70 m minaret resembling a lighthouse, Anatolian style, 54 domes (45 small and nine larger) around the minaret, sandy-grey mostly plain walls, large Quranic inscription above five entrance columns at the top of six steps, wooden windows with hand-made stained glass, current building dated 1998 and styled like the 1900 original"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/174965686",
+          "what": "OSM footprint 64.6x33.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5594813",
+          "what": "Wikidata entity: Grand Mosque"
+        }
+      ],
+      "notes": "Minaret should dominate the silhouette at about 70 m. OSM footprint 65 x 34 m."
+    },
+    "dubai-recreation": {
+      "venueId": "dubai-recreation",
+      "city": "dubai",
+      "name": "Al Wasl Park",
+      "archetype": "park-landscape",
+      "subject": "Al Wasl Park, Satwa: a small neighbourhood park with lawns, palms, paths and a pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 167,
+        "depth_m": 87,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e5d9c0",
+          "#c9b48a",
+          "#f1ede4"
+        ],
+        "roofColour": "#d8d2c6",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/230622240",
+          "what": "OSM footprint 167.3x86.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21737830",
+          "what": "Wikidata entity: Ḩadīqat al Waşl"
+        }
+      ],
+      "notes": "Wikipedia page for Al Wasl Park returned 404; OSM leisure=park 167 x 87 m. Typed guess."
+    },
+    "dubai-transit": {
+      "venueId": "dubai-transit",
+      "city": "dubai",
+      "name": "Burj Khalifa / Dubai Mall",
+      "archetype": "office-tower",
+      "subject": "Burj Khalifa rising beside the Dubai Mall podium: a Y-plan tower that steps back in spiral tiers to a slender spire, clad in reflective glass and silver metal",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 150,
+        "height_m": 700,
+        "roof": "stepped",
+        "variant": "y-plan-setback-spire",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9bccb",
+          "#c9d2d8",
+          "#e9ecee"
+        ],
+        "roofColour": "#c9d2d8",
+        "windows": "curtain",
+        "windowRatio": 0.65
+      },
+      "features": [
+        {
+          "id": "setback-tiers",
+          "count": 27,
+          "note": "spiral setbacks narrowing with height"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "spire about 244 m of steel above the roof"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "Dubai Mall base building with fountain lake"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Burj_Khalifa",
+          "what": "about 829.8 m to tip, roof at 739.4 m, Y-shaped tripartite plan, 27 spiral setbacks, spire over 4,000 t of steel, cladding of reflective glass, aluminium and stainless steel spandrel panels with vertical fins, designed from regional Islamic architecture"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dubai_Mall",
+          "what": "four floors, internal area about 550,000 m2, next to the Burj Khalifa, Dubai Fountain outside the mall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/47517410",
+          "what": "OSM footprint 122.4x29.3 m, 2 levels, height 10 m"
+        }
+      ],
+      "notes": "Real roof height is 739 m and 163 floors; values here are capped at the validator limits (700 m, 150 storeys) - the generator should clamp anyway. OSM marks the venue transit building 122 x 29 m (a domed train/metro link structure) which is ignored."
+    }
+  }
+}

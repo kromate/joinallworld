@@ -1,0 +1,590 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "ikenne-heritage",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Obafemi_Awolowo_House_Masoleum.jpg",
+   "licence": "Public domain",
+   "author": "Kaizenify",
+   "view": "front",
+   "file": "/tmp/places-evidence/sagamu/ikenne-mausoleum.jpg",
+   "used": "mausoleum: white box, deep flat canopy, barred glazed front with double door, marble steps with side ramps and chain posts, red pyramid roof with slit, potted palms, striped kerb, red-roofed yellow hall at left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Obafemi_Aolowo_House_Gate,_Ikenne,_Ogun_state.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kaizenify",
+   "view": "street",
+   "file": "/tmp/places-evidence/sagamu/ikenne-gate.jpg",
+   "used": "street gate: green-painted tall square piers with lamps, black wrought-iron double gate, white picket fence, red clay-tile roof of the house behind"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 4,
+  "fovDeg": 40,
+  "aspect": 1.5,
+  "margin": 0.1,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mausoleum-body",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e4",
+    "overhang": 1.8,
+    "parapet": 0.25
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mausoleum-pyramid",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    0,
+    2.5
+   ],
+   "height": 8.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c3f35",
+    "material": "clay-tile",
+    "pitch": 58,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pyr-slit",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -1.2
+   ],
+   "height": 2.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6d2a24",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d2a24"
+   },
+   "z0": 5.9
+  },
+  {
+   "type": "mass",
+   "id": "mausoleum-bars",
+   "footprint": {
+    "rect": [
+     9.5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -4.2
+   ],
+   "height": 3.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4d7d9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4d7d9"
+   },
+   "z0": 0.6
+  },
+  {
+   "type": "mass",
+   "id": "door-gap",
+   "footprint": {
+    "rect": [
+     2,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -4.3
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3a3d40",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3d40"
+   },
+   "z0": 0.6
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.2,
+    "run": 0.8,
+    "count": 4,
+    "colour": "#b9bec0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp-l",
+   "footprint": {
+    "rect": [
+     1.4,
+     3.4
+    ]
+   },
+   "at": [
+    -5.6,
+    -5.6
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ramp-r",
+   "footprint": {
+    "rect": [
+     1.4,
+     3.4
+    ]
+   },
+   "at": [
+    5.6,
+    -5.6
+   ],
+   "height": 1.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4f4f0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     7.4,
+     -9,
+     0
+    ],
+    "end": [
+     7.4,
+     -3,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.2,
+      "colour": "#f6f6f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -7.4,
+     -9,
+     0
+    ],
+    "end": [
+     -7.4,
+     -3,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.2,
+      "colour": "#f6f6f2"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -4.2,
+     -5.2,
+     0
+    ],
+    "end": [
+     4.2,
+     -5.2,
+     3.2
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 0.8,
+      "colour": "#b5532f"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -5.4,
+     -6.4,
+     0
+    ],
+    "end": [
+     5.4,
+     -6.4,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "height": 0.8,
+      "colour": "#b5532f"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 4,
+    "count": 1,
+    "spread": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    6,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 4,
+    "count": 1,
+    "spread": 1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12
+   ],
+   "params": {
+    "rect": [
+     24,
+     0.6
+    ],
+    "height": 0.15,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -11,
+     -12,
+     0.15
+    ],
+    "end": [
+     11,
+     -12,
+     0.15
+    ],
+    "count": 12,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1,
+       0.6
+      ],
+      "height": 0.05,
+      "colour": "#1d1f21"
+     }
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-yellow",
+   "footprint": {
+    "rect": [
+     16,
+     7
+    ]
+   },
+   "at": [
+    -19,
+    -2
+   ],
+   "height": 4.0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6c46a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4524a",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -20,
+    -16
+   ],
+   "height": 4.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#58c46a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58c46a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "footprint": {
+    "rect": [
+     2,
+     2
+    ]
+   },
+   "at": [
+    -13,
+    -16
+   ],
+   "height": 4.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#58c46a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#58c46a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -16.5,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 3.8,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#2d3033",
+    "leafColour": "#1d1f21"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -16,
+    4.6
+   ],
+   "params": {
+    "height": 0.8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -13,
+    -16,
+    4.6
+   ],
+   "params": {
+    "height": 0.8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -32,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#f2f2ee"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     17,
+     4
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Whole compound still framed so mausoleum is small versus the close-up photo; trees block the front steps, chain posts and pots; pyramid slit and chamfered canopy approximated; OSM residence footprint dropped (not shown in photos), yellow hall position typed."
+ }
+}

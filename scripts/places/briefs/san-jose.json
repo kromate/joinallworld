@@ -1,0 +1,1616 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "san-jose",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "san-jose",
+    "climate": "highland",
+    "vernacular": "Valley capital at about 1,170 m: low-rise grid of pastel-painted concrete and rendered single- and two-storey buildings behind bars and grilles, red and rusty corrugated zinc roofs, some surviving Victorian and Belle Epoque timber and zinc-clad houses in Barrio Amon, neoclassical civic buildings, brick and concrete mid-rises, and modern glass towers in Sabana and Escazu. Mountains and coffee-green hills behind.",
+    "wallColours": [
+      "#e8d9a8",
+      "#d6c3a0",
+      "#cfcfc8",
+      "#c9a27e",
+      "#7ea3a8",
+      "#e6b9a0",
+      "#b5503c"
+    ],
+    "roofColours": [
+      "#b5503c",
+      "#8a6a4f",
+      "#8a8f94",
+      "#6b6f73",
+      "#a2573f"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "brick",
+      "timber",
+      "stucco",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Belle Epoque and neoclassical cornices, pilasters and balustrades on civic buildings; wrought-iron balconies and window grilles; Victorian fretwork and prefabricated zinc panels in Barrio Amon; tiled eaves; murals; colourful painted facades.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9,_Costa_Rica",
+        "what": "San Jose: European-inspired and Belle Epoque (Barrio Amon) theatres and houses, Neoclassical music temple, modern towers, La Sabana largest park"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Catedral_metropolitana_de_San_Jos%C3%A9",
+        "what": "Cathedral: Neoclassical and Baroque, current building 1878, dome by Ramon Estrada, masonry towers replaced by metal and later reinforced concrete after 1990-91 quakes"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/San_Jos%C3%A9_(Costa_Rica)",
+        "what": "General city context; colour palette judged from general descriptions of pastel facades and corrugated zinc roofs, not measured"
+      }
+    ]
+  },
+  "places": {
+    "san-jose-airport-san-jose-airport": {
+      "venueId": "san-jose-airport-san-jose-airport",
+      "city": "san-jose",
+      "name": "Juan Santamaría International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Main terminal at Alajuela seen from the forecourt: long three-level glass terminal with boarding bridges and a control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 480,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 9,
+          "note": "ninth bridge reported 2010"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24829823",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Juan_Santamar%C3%ADa_International_Airport",
+          "what": "Airport: main terminal (M) and domestic terminal (D), AERIS expansion completed 2010 with ninth boarding bridge"
+        }
+      ],
+      "notes": "OSM terminal 481 x 120 m, 3 levels (measured). Wikipedia: main terminal and domestic terminal; 2001-2010 concession expansion; nine boarding bridges. Facade materials and roof curvature are typed from modern terminal type, not documented. Cap to a recognisable 120 m portion."
+    },
+    "san-jose-clinic": {
+      "venueId": "san-jose-clinic",
+      "city": "san-jose",
+      "name": "Hospital San Rafael",
+      "archetype": "hospital",
+      "subject": "Hospital San Rafael de Alajuela, a four-level hospital block with wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 190,
+        "depth_m": 183,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfc9",
+          "#3f7a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/91525942",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM hospital 190 x 183 m, 4 levels, Wikidata Hospital San Rafael de Alajuela. Appearance typed; no description fetched."
+    },
+    "san-jose-community-notices": {
+      "venueId": "san-jose-community-notices",
+      "city": "san-jose",
+      "name": "Archivo Nacional",
+      "archetype": "campus-block",
+      "subject": "Archivo Nacional de Costa Rica at Zapote, a modern archive building surrounded by lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 58,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d6d3c9",
+          "#7a8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1993",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13964947",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Archivo_Nacional_de_Costa_Rica",
+          "what": "Archivo Nacional: modern building surrounded by green areas, first stage inaugurated 1993 at Zapote"
+        }
+      ],
+      "notes": "OSM 72.7 x 58 m with Wikidata National Archives. Spanish Wikipedia: modern building surrounded by green areas, first stage inaugurated 1993. Facade colours and storeys typed."
+    },
+    "san-jose-community-voting-game": {
+      "venueId": "san-jose-community-voting-game",
+      "city": "san-jose",
+      "name": "Plaza de la Cultura",
+      "archetype": "park-landscape",
+      "subject": "Plaza de la Cultura, the paved civic square beside the National Theatre in central San Jose",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#cfcfc8",
+          "#e8d9a8",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "statues in front of the neoclassical National Theatre"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Theatre_of_Costa_Rica",
+          "what": "National Theatre: neoclassical, opened 1897, statues of Calderon de la Barca and Beethoven at the front, Chopin monument along the walkway"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24857113",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM data matched the adjacent National Theatre (72.7 x 32.4 m, 2 levels, opened 1897, neoclassical, statues of Calderon de la Barca and Beethoven) not the plaza. The plaza is a flat paved square with coffee kiosks beside the theatre; its size is estimated. A Chopin monument lines the theatre walkway."
+    },
+    "san-jose-community-workshop": {
+      "venueId": "san-jose-community-workshop",
+      "city": "san-jose",
+      "name": "Instituto Tecnológico de Costa Rica",
+      "archetype": "campus-block",
+      "subject": "Instituto Tecnologico de Costa Rica campus block in Cartago",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d3c9",
+          "#b5503c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1055513557",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM building at the venue is only 16.5 x 11.4 m; the campus has many blocks. Typed as a mid-rise university block with a modest width."
+    },
+    "san-jose-market-game": {
+      "venueId": "san-jose-market-game",
+      "city": "san-jose",
+      "name": "Mercado Central de San José",
+      "archetype": "market-hall",
+      "subject": "Mercado Central, a city-block covered market of narrow alleys with sodas and stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 84,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d9a8",
+          "#b5503c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1880",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/264040874",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_Central_Market",
+          "what": "Central Market: established 1880, fills a city block on Avenida Central, narrow alleys with over 200 shops, stalls and sodas"
+        }
+      ],
+      "notes": "Established 1880, fills one block on Avenida Central, more than 200 shops and sodas on narrow alleys (Wikipedia). OSM building 88 x 85 m (7211 m2, retail). Roof and facade are not documented: typed as a shed roof with perimeter shopfronts."
+    },
+    "san-jose-meal-stop": {
+      "venueId": "san-jose-meal-stop",
+      "city": "san-jose",
+      "name": "Isla Verde",
+      "archetype": "hotel",
+      "subject": "Isla Verde, a hotel with restaurant of three to four storeys",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 24,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dfc9",
+          "#3f7a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/381272433",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM restaurant building 37.8 x 24.4 m with Wikidata Isla Verde Hotel; storeys and colours typed."
+    },
+    "san-jose-osm-node-10186229658": {
+      "venueId": "san-jose-osm-node-10186229658",
+      "city": "san-jose",
+      "name": "Accidente aéreo Vuelo 32 de SANSA",
+      "archetype": "monument",
+      "subject": "Crash-site marker for SANSA Flight 32 on a mountain slope",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 2,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcfc8",
+          "#7a8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Memorial marker only; nothing found describing the site, typed as a small plaque and cross."
+    },
+    "san-jose-osm-node-1945457564": {
+      "venueId": "san-jose-osm-node-1945457564",
+      "city": "san-jose",
+      "name": "Monumento al Pacto del Jocote",
+      "archetype": "monument",
+      "subject": "Monument commemorating the 1948 Pacto del Jocote on a plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcfc8",
+          "#b5503c",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/316321431",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM data at the point is a school (98 x 72 m) not the monument; the monument's design was not found, typed as a small concrete memorial."
+    },
+    "san-jose-osm-relation-10650174": {
+      "venueId": "san-jose-osm-relation-10650174",
+      "city": "san-jose",
+      "name": "Universidad Nacional",
+      "archetype": "campus-block",
+      "subject": "Universidad Nacional (Omar Dengo campus) at Heredia, mid-rise concrete teaching blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d6d3c9",
+          "#b5503c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/10650174",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM campus relation 851 x 446 m; building typed as one representative block."
+    },
+    "san-jose-osm-relation-17706739": {
+      "venueId": "san-jose-osm-relation-17706739",
+      "city": "san-jose",
+      "name": "Universidad Latina de Costa Rica",
+      "archetype": "campus-block",
+      "subject": "Universidad Latina campus, a multi-storey private university block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/17706739",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM campus 275 x 150 m; no building description found, typed."
+    },
+    "san-jose-osm-way-1001557950": {
+      "venueId": "san-jose-osm-way-1001557950",
+      "city": "san-jose",
+      "name": "Estadio Ecológico",
+      "archetype": "stadium",
+      "subject": "Estadio Ecologico, the University of Costa Rica campus football ground at San Pedro",
+      "form": {
+        "footprint": "oval",
+        "width_m": 230,
+        "depth_m": 153,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d3c9",
+          "#2f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1001557950",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM stadium 230 x 153 m, Wikidata: soccer venue on the University of Costa Rica campus. Stand layout and roofing are typed."
+    },
+    "san-jose-osm-way-102243517": {
+      "venueId": "san-jose-osm-way-102243517",
+      "city": "san-jose",
+      "name": "Basílica de Nuestra Señora de Los Ángeles",
+      "archetype": "church-classical",
+      "subject": "Basilica of Our Lady of the Angels in Cartago, a large pilgrimage basilica in a mix of colonial and Byzantine style",
+      "form": {
+        "footprint": "cross",
+        "width_m": 74,
+        "depth_m": 58,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e6d9bf",
+          "#9a8c80",
+          "#ffffff"
+        ],
+        "roofColour": "#8a6a4f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1924",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/102243517",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_the_Angels",
+          "what": "Basilica: mix of colonial and 19th-century Byzantine style, architect Luis Llach Llagostera, 1912-1924"
+        }
+      ],
+      "notes": "Wikipedia: colonial and 19th-century Byzantine style, architect Luis Llach Llagostera, built 1639, rebuilt after earthquakes (infobox 1912-1924). OSM 74 x 58 m, 4 levels. Facade colours, number of towers and the dome shape were not described in sources: typed. Pilgrimage destination on 2 August."
+    },
+    "san-jose-osm-way-201513043": {
+      "venueId": "san-jose-osm-way-201513043",
+      "city": "san-jose",
+      "name": "Hospital San Vicente de Paúl",
+      "archetype": "hospital",
+      "subject": "Hospital San Vicente de Paul in Heredia, a four-level hospital block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 96,
+        "depth_m": 59,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfc9",
+          "#3f7a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/166084343",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM hospital 96 x 59 m, 4 levels; no description fetched, appearance typed."
+    },
+    "san-jose-osm-way-25400008": {
+      "venueId": "san-jose-osm-way-25400008",
+      "city": "san-jose",
+      "name": "Hospital México",
+      "archetype": "hospital",
+      "subject": "Hospital Mexico, a tall hospitalisation tower rising from a wide low clinical base with a front plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 220,
+        "depth_m": 80,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d3c9",
+          "#7a8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "horizontal clinical base"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1969",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/25400008",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_M%C3%A9xico",
+          "what": "Hospital Mexico: modern tower-and-base design by Alberto Linner, finished 1969, opened 1970, 1990s seismic reinforcement, 2020 new surgical tower"
+        }
+      ],
+      "notes": "Spanish Wikipedia: modern tower-and-base layout by architect Alberto Linner (Carlos Zetina and Alejandro Prieto Posada also took part), finished 1969, opened 1970; wide open spaces, gardens, front plaza; seismic reinforcement in the 1990s altered the main building; a new surgical tower from 2020. OSM complex is 650 x 390 m; main mass 220 x 80 m and 8 storeys are estimates. Concrete tower with horizontal bands."
+    },
+    "san-jose-osm-way-264042444": {
+      "venueId": "san-jose-osm-way-264042444",
+      "city": "san-jose",
+      "name": "Catedral Metropolitana de San José",
+      "archetype": "church-classical",
+      "subject": "Metropolitan Cathedral of San Jose on Calle Central, a Neoclassical and Baroque church with a dome and two reinforced-concrete towers",
+      "form": {
+        "footprint": "cross",
+        "width_m": 82,
+        "depth_m": 47,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8e2cf",
+          "#9a8c80",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "dome credited to Ramon Estrada, 1878"
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "rebuilt in reinforced concrete after the 1990-91 quakes"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1878",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/264042444",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Catedral_metropolitana_de_San_Jos%C3%A9",
+          "what": "Cathedral: Neoclassical and Baroque, current building 1878, dome by Ramon Estrada, masonry towers replaced by metal and later reinforced concrete after 1990-91 quakes"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Metropolitan_Cathedral_of_San_Jos%C3%A9",
+          "what": "Located on Calle Central and Avenues 2 and 4; original 1802 cathedral destroyed by earthquake"
+        }
+      ],
+      "notes": "Spanish Wikipedia: Neoclassical and Baroque; first church 1825-27 with calicanto walls; current building 1878; the masonry towers were replaced by metal ones that were out of proportion, then rebuilt in reinforced concrete after the 1990 and 1991 earthquakes. OSM 82 x 47 m, 4 levels. Facade colours and dome roofing are not described in the fetched sources: typed."
+    },
+    "san-jose-osm-way-301278166": {
+      "venueId": "san-jose-osm-way-301278166",
+      "city": "san-jose",
+      "name": "Bomberos de Costa Rica - Academia Nacional",
+      "archetype": "campus-block",
+      "subject": "National fire academy training campus with training buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d2c0",
+          "#b5503c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/301278166",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM college site 406 x 252 m; no description found, one representative block typed."
+    },
+    "san-jose-osm-way-30173401": {
+      "venueId": "san-jose-osm-way-30173401",
+      "city": "san-jose",
+      "name": "Parque de Diversiones",
+      "archetype": "park-landscape",
+      "subject": "Parque de Diversiones, a large amusement park with rides, gates and kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 300,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0b84a",
+          "#3f6fa0",
+          "#d98c8c"
+        ],
+        "roofColour": "#b5503c",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "mast",
+          "count": 2,
+          "note": "ride towers"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/30173401",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM theme park 1445 x 411 m, Wikidata amusement park; ride layout not described. No ferris-wheel / roller-coaster feature id exists, so rides are approximated by masts."
+    },
+    "san-jose-osm-way-305168533": {
+      "venueId": "san-jose-osm-way-305168533",
+      "city": "san-jose",
+      "name": "Plaza Cleto González Víquez",
+      "archetype": "park-landscape",
+      "subject": "Plaza Cleto Gonzalez Viquez, a small urban plaza in southern San Jose",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 58,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcfc8",
+          "#e8d9a8",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/659473172",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM park 73 x 58 m with Wikidata item; layout not described."
+    },
+    "san-jose-osm-way-415630885": {
+      "venueId": "san-jose-osm-way-415630885",
+      "city": "san-jose",
+      "name": "Parque Okayama",
+      "archetype": "park-landscape",
+      "subject": "Parque Okayama, a long landscaped park in Curridabat",
+      "form": {
+        "footprint": "rect",
+        "width_m": 164,
+        "depth_m": 61,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cfcfc8",
+          "#7a8f5a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/415630885",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM park 164 x 61 m; no layout description found. Name suggests a link to Okayama, Japan; no garden elements verified."
+    },
+    "san-jose-osm-way-617155310": {
+      "venueId": "san-jose-osm-way-617155310",
+      "city": "san-jose",
+      "name": "Estadio Alejandro Morera Soto",
+      "archetype": "stadium",
+      "subject": "Estadio Alejandro Morera Soto in Alajuela, La Catedral del Fútbol, home of Alajuelense (red and black)",
+      "form": {
+        "footprint": "oval",
+        "width_m": 149,
+        "depth_m": 118,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c4b8",
+          "#b5232a",
+          "#1a1a1a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "Palco Oeste west stand, opened 1998"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "renewed 2013"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "HD screen NW corner, LED advert boards"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1942",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/617155310",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Alejandro_Morera_Soto",
+          "what": "Stadium: opened 1942, 17,895 capacity, Palco Oeste 1998, floodlights 1970 and 2013, nickname La Catedral del Futbol, Alajuelense red and black"
+        }
+      ],
+      "notes": "Spanish Wikipedia: opened 1942, capacity 17,895 (said to hold 28,000 in total), early wooden stands from Estadio Nacional, ten cement stands before 1979, Sol Norte by 1985, Palco Oeste with broadcast booths 1998, floodlights 1970/2013, pitch 120 x 75 m. Red-black accents are club colours, structure grey is typed. Bowl is mostly open terraces."
+    },
+    "san-jose-osm-way-76579523": {
+      "venueId": "san-jose-osm-way-76579523",
+      "city": "san-jose",
+      "name": "Estadio ST Center",
+      "archetype": "stadium",
+      "subject": "Estadio ST Center, a small football ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 82,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcfc8",
+          "#3f6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/76579523",
+          "what": "OSM footprint size and tags (measured)"
+        }
+      ],
+      "notes": "OSM stadium 99.5 x 81.6 m with Wikidata association-football venue; nothing else found."
+    },
+    "san-jose-quiet-reflection": {
+      "venueId": "san-jose-quiet-reflection",
+      "city": "san-jose",
+      "name": "San José Costa Rica Temple",
+      "archetype": "church-modern",
+      "subject": "The LDS San Jose Costa Rica Temple at La Ribera, a white marble temple with a single spire topped by the angel Moroni",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": null,
+        "colours": [
+          "#f4f2ec",
+          "#d6d3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#8d99a6",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single spire with gilded angel Moroni statue"
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2000",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1301409416",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_Costa_Rica_Temple",
+          "what": "LDS temple: classic modern, white Blanco Guardiano marble, single spire with angel Moroni, 149 x 77 ft, 71 ft high, dedicated 2000"
+        }
+      ],
+      "notes": "Classic modern design, Blanco Guardiano marble from Torreon, Mexico; 149 x 77 ft footprint (45 x 23.5 m), 71 ft (22 m) height; 990 m2; dedicated June 2000. Architect Alvaro Inigo. Roof colour and material are typed. OSM footprint 45.4 x 25.7 m agrees."
+    },
+    "san-jose-recreation": {
+      "venueId": "san-jose-recreation",
+      "city": "san-jose",
+      "name": "Parque Metropolitano La Sabana",
+      "archetype": "park-landscape",
+      "subject": "La Sabana Metropolitan Park, 72 ha of lawns, lakes and sports fields with the National Stadium and art museum in the former airport terminal",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 1280,
+        "depth_m": 563,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#7a8f5a",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a6a4f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "former 1940 airport terminal, now Museo de Arte Costarricense"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1940",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/12657481",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Metropolitano_La_Sabana",
+          "what": "La Sabana: 72 ha, lakes, former 1940 airport terminal now the art museum, Estadio Nacional, mostly eucalyptus, cypress and pine, many sports courts"
+        }
+      ],
+      "notes": "72 ha, flat, lakes, trees mostly eucalyptus, cypress and pine, asphalt/concrete paths, many sports courts; the museum on the east side is the 1940 airport terminal (remodelled 1978); the National Stadium and gymnasium are inside the park. Model the museum / lake corner. Terminal wall colour typed."
+    },
+    "san-jose-transit": {
+      "venueId": "san-jose-transit",
+      "city": "san-jose",
+      "name": "Atlántico",
+      "archetype": "transport-station",
+      "subject": "Estacion del Ferrocarril al Atlantico, the 1908 terminal of the Limon line, a single long station building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d9a8",
+          "#b5503c",
+          "#ffffff"
+        ],
+        "roofColour": "#b5503c",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1908",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/31420765",
+          "what": "OSM footprint size and tags (measured)"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Estaci%C3%B3n_del_Ferrocarril_al_Atl%C3%A1ntico",
+          "what": "Atlantic station: built 1908, mix of Victorian, neoclassical, baroque with modernist details"
+        }
+      ],
+      "notes": "Built 1908; Spanish Wikipedia calls it a mix of Victorian, neoclassical and baroque with modernist details; main terminal for trains to and from Limon. OSM: 1 level, hipped roof, 44.8 x 15 m. Wall and roof colours are typed - not documented."
+    }
+  }
+}

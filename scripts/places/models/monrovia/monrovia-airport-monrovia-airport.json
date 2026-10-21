@@ -1,0 +1,360 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-airport-monrovia-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Robert_International_Airport,_Margibi_County,_Liberia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bethel. Anthony Chisom",
+   "view": "front",
+   "file": "/tmp/places-evidence/monrovia/airport2.jpg",
+   "used": "landside elevation: glazed ground floor under a long flat white canopy on slanted struts, taller blue-glazed wings with white horizontal bands, central ribbed fin block, right wing taller and longer"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:30JUL19_GLRB_Terminal.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sm105",
+   "view": "side",
+   "file": "/tmp/places-evidence/monrovia/airport1.jpg",
+   "used": "canopy with V struts and blue columns, white band-and-glass upper floors, stepped end block"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/775857813",
+   "used": "overall size (about 102 x 41 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     26,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6283",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#f4f5f5",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f3f3",
+    "parapet": 0.3,
+    "overhang": 3.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-block",
+   "footprint": {
+    "rect": [
+     26,
+     28
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f6283",
+    "windows": "curtain",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "faces": [
+       "front"
+      ],
+      "width": 0.5,
+      "depth": 1.2,
+      "spacing": 1.6,
+      "colour": "#f4f5f5"
+     }
+    ],
+    "plinth": 0,
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9dcde",
+    "parapet": 0.6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     46,
+     30
+    ]
+   },
+   "at": [
+    32,
+    0
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b5f80",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#f4f5f5",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f3f3",
+    "parapet": 0.3,
+    "overhang": 3.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-glass",
+   "footprint": {
+    "rect": [
+     86,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fc0d2",
+    "windows": "curtain",
+    "windowRatio": 0.9,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8eaeb"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -21,
+    5.8
+   ],
+   "params": {
+    "form": "flat",
+    "width": 108,
+    "depth": 13,
+    "height": 0.0,
+    "thickness": 0.45,
+    "columns": 0,
+    "colour": "#f2f3f3",
+    "edgeColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -14.8,
+    10.5
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#b3262e",
+    "posts": false,
+    "frameColour": "#b3262e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#b22234"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    30,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 18
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -26,
+     0
+    ],
+    "end": [
+     50,
+     -26,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f2f3f3",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         0.5
+        ]
+       },
+       {
+        "z": 5.6,
+        "rect": [
+         0.45,
+         0.45
+        ]
+       }
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -48,
+     -21,
+     0
+    ],
+    "end": [
+     48,
+     -21,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "loft",
+     "params": {
+      "colour": "#f2f3f3",
+      "sections": [
+       {
+        "z": 3.0,
+        "rect": [
+         0.4,
+         0.4
+        ],
+        "cy": 0
+       },
+       {
+        "z": 5.6,
+        "rect": [
+         0.4,
+         0.4
+        ],
+        "cy": 3.5
+       }
+      ]
+     }
+    }
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "wings are plain boxes (not raked/wedge), canopy struts approximate V, fisheye photo, no legible signage"
+ }
+}

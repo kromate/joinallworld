@@ -1,0 +1,300 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "holy-family-catholic-church-asaba",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM: typical parish church from the brief (gable nave, freestanding bell tower, porch, crosses); colours and proportions unverified"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     36,
+     19
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 90,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.18,
+    "bay": 4.5,
+    "plinth": 0.6,
+    "glassColour": "#3d5a78",
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     11,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "rotDeg": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ede2",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.9,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#c8c2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sanctuary",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    23
+   ],
+   "rotDeg": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e6dfd0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 24,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bell-tower",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -17,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#f1ede2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bands": "#a65c3c"
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#7a3b2c",
+    "material": "metal-sheet",
+    "pitch": 40,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-v",
+   "at": [
+    -17,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 19.2,
+    "height": 3.2,
+    "colour": "#a65c3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross-h",
+   "at": [
+    -17,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.35
+    ],
+    "z0": 20.8,
+    "height": 0.35,
+    "colour": "#a65c3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-cross-v",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 8.4,
+    "height": 3.2,
+    "colour": "#a65c3c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gable-cross-h",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.3
+    ],
+    "z0": 10.0,
+    "height": 0.3,
+    "colour": "#a65c3c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "colour": "#c8c2b2",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ }
+}

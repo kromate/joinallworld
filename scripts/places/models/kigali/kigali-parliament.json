@@ -1,0 +1,438 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-parliament",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:An_aerial_view_of_new_look_of_Rwanda_Parliament_Building_in_Kimihurura,_Kigali_on_May_16,_2019._Emmanuel_Kwizera.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Emmanuelkwizera",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/kigali/pl0.jpg",
+   "used": "white-rendered low blocks with pale green pitched roofs, rust-brown timber-panelled entrance bays, taller 5-storey white block behind with grey balcony slabs, low white fence on a terraced hillside"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/125898407",
+   "used": "stepped multi-wing footprint, flat roof, 5 levels"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lowblocks",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "simplify": 5
+   },
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeece6",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "bands": "#d9d7cf",
+    "bay": 14
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fbfae",
+    "overhang": 0.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tall-block",
+   "at": [
+    -25,
+    33
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     50,
+     14
+    ],
+    "z0": 0,
+    "height": 20,
+    "colour": "#e4e4de",
+    "windows": "rect",
+    "windowRatio": 0.45,
+    "storeys": 5,
+    "trimColour": "#8d9094",
+    "bay": 14,
+    "pattern": null
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tall-roof",
+   "at": [
+    -25,
+    33
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     51,
+     15
+    ],
+    "z0": 20,
+    "height": 0.8,
+    "colour": "#9a9ea2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-bay-1",
+   "at": [
+    -24,
+    -44
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     8,
+     3.5
+    ],
+    "z0": 0,
+    "height": 12,
+    "colour": "#a0562f",
+    "topScale": [
+     0.25,
+     1.0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entry-bay-2",
+   "at": [
+    -14,
+    -42
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     6,
+     3.5
+    ],
+    "z0": 0,
+    "height": 11,
+    "colour": "#a0562f",
+    "topScale": [
+     0.25,
+     1.0
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -20,
+    -50,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 18,
+    "rise": 0.9,
+    "run": 2.2,
+    "count": 6,
+    "colour": "#c9a77a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -34,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 5,
+    "colours": [
+     "#00a1de",
+     "#fad201",
+     "#20603d"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -70,
+    -60,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      40,
+      -4
+     ],
+     [
+      80,
+      -4
+     ],
+     [
+      110,
+      6
+     ],
+     [
+      140,
+      24
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.2,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    60,
+    -35,
+    0
+   ],
+   "rotDeg": 80,
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tall-end-strip",
+   "at": [
+    -48,
+    34
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     4,
+     14.5
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#a0562f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "at": [
+    -25,
+    33
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     8,
+     15
+    ],
+    "z0": 20,
+    "height": 5,
+    "colour": "#e4e4de"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace1",
+   "at": [
+    0,
+    -62
+   ],
+   "rotDeg": 0,
+   "params": {
+    "rect": [
+     120,
+     14
+    ],
+    "z0": 0,
+    "height": 0.5,
+    "colour": "#7fa85a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace2",
+   "at": [
+    0,
+    -72
+   ],
+   "params": {
+    "rect": [
+     120,
+     8
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "colour": "#6f9a4c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace3",
+   "at": [
+    0,
+    -80
+   ],
+   "params": {
+    "rect": [
+     120,
+     8
+    ],
+    "z0": 0,
+    "height": 1.3,
+    "colour": "#7fa85a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof0",
+   "at": [
+    -22,
+    -14
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     40,
+     14
+    ],
+    "z0": 10.6,
+    "height": 4.5,
+    "topScale": [
+     1.0,
+     0.12
+    ],
+    "colour": "#8fb59f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof1",
+   "at": [
+    18,
+    -24
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     30,
+     12
+    ],
+    "z0": 10.6,
+    "height": 4.5,
+    "topScale": [
+     1.0,
+     0.12
+    ],
+    "colour": "#8fb59f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof2",
+   "at": [
+    28,
+    6
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     26,
+     13
+    ],
+    "z0": 10.6,
+    "height": 4.5,
+    "topScale": [
+     1.0,
+     0.12
+    ],
+    "colour": "#8fb59f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof3",
+   "at": [
+    -35,
+    10
+   ],
+   "rotDeg": 10,
+   "params": {
+    "rect": [
+     24,
+     12
+    ],
+    "z0": 10.6,
+    "height": 4.5,
+    "topScale": [
+     1.0,
+     0.12
+    ],
+    "colour": "#8fb59f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -75,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -50
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     85,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pitched wing roofs are tapered-prism approximations placed by eye (LOD0 mass roof flat for triangle budget), zig-zag gable parapets, timber panels and curved fence only approximated; tall block set-back not exact"
+ }
+}

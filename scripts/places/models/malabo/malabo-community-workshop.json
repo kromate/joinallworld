@@ -1,0 +1,319 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UNED-GQ_IMG_6092_(6510079561).jpg",
+   "licence": "CC BY 2.0",
+   "author": "UNED (Universidad Nacional de Educacion a Distancia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/malabo/unge1.jpg",
+   "used": "central block with gabled green-fascia roof, cream render, three round arches over a wide stepped entrance, perforated screen panels in the upper wall, flanking one-storey wings with red roofs, palms, paved path, lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/276917529",
+   "used": "campus extent only (152 x 114 m); the 1949 rectory block is modelled alone"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     28,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6cf",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#3f8a5a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#3f8a5a",
+    "material": "concrete",
+    "pitch": 24,
+    "overhang": 2.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade-porch",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6cf",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -25.0,
+    2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2cf",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    25.0,
+    2
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2cf",
+    "windows": "arched",
+    "windowRatio": 0.45,
+    "plinth": 0.3,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5483c",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "rise": 0.9,
+    "run": 0.5,
+    "count": 5,
+    "colour": "#5f9a68"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5.95,
+    -8.1,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1,
+    "bottom": 7,
+    "colour": "#b9a98a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.0,
+    -8.1,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1,
+    "bottom": 7,
+    "colour": "#b9a98a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    5.95,
+    -8.1,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1,
+    "bottom": 7,
+    "colour": "#b9a98a",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    12,
+    -15,
+    0
+   ],
+   "params": {
+    "height": 4
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -6,
+    -15,
+    0
+   ]
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6,
+    -15,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -18,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     19,
+     -17
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "3 arches narrower than photo and no stepped-platform depth; lattice panels are plain boards; wings arcades only approximate; no white palm trunks, globe lamps are plain poles"
+ }
+}

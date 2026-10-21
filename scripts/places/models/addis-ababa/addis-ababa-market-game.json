@@ -1,0 +1,260 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/49911432",
+   "used": "NOT used: matched way is only the Tana Gebeya parking lot, not the Merkato"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Merkato_Market_-_Flickr_-_Dave_Proffer.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Dave Proffer",
+   "view": "detail",
+   "file": "/tmp/places-evidence/addis-ababa/merk1.jpg",
+   "used": "nothing of the layout: close ground detail of goods only, not used for verification"
+  },
+  {
+   "kind": "text",
+   "used": "brief: tin-roofed stall maze, shop blocks, mosque domes nearby"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "id": "shed-0",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "depth": 9,
+    "height": 3.4,
+    "roof": "gable",
+    "post_pitch": 4.4,
+    "cladding": "#8c8a82",
+    "goods": "sacks",
+    "roof_colour": "#7f7a70",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-1",
+   "at": [
+    -18,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 9,
+    "height": 3.4,
+    "roof": "gable",
+    "post_pitch": 4.4,
+    "cladding": "#a6553a",
+    "goods": "sacks",
+    "roof_colour": "#9b8b7a",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-2",
+   "at": [
+    -24,
+    8,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "depth": 9,
+    "height": 3.4,
+    "roof": "gable",
+    "post_pitch": 4.4,
+    "cladding": "#9b8b7a",
+    "goods": "sacks",
+    "roof_colour": "#7f7a70",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-3",
+   "at": [
+    -18,
+    24,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 9,
+    "height": 3.4,
+    "roof": "gable",
+    "post_pitch": 4.4,
+    "cladding": "#8c8a82",
+    "goods": "sacks",
+    "roof_colour": "#9b8b7a",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9b98f",
+     "#a6553a",
+     "#4f7d9e",
+     "#d8c04a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    6,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#8c8a82",
+     "#b5483a",
+     "#c9b98f"
+    ]
+   }
+  },
+  {
+   "type": "shop-block",
+   "id": "shops-east",
+   "at": [
+    44,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "width": 50,
+    "depth": 12,
+    "storeys": 3,
+    "floor_height": 3.2,
+    "ground_height": 4,
+    "windows": "punched",
+    "window_ratio": 0.22,
+    "wall_colour": "#c9b98f",
+    "roof_colour": "#8c8a82",
+    "awning_ratio": 0.5,
+    "shop_kind": "mixed"
+   }
+  },
+  {
+   "type": "shop-block",
+   "id": "shops-north",
+   "at": [
+    -4,
+    44,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 11,
+    "storeys": 2,
+    "floor_height": 3.2,
+    "ground_height": 3.8,
+    "windows": "punched",
+    "window_ratio": 0.2,
+    "wall_colour": "#b8a67c",
+    "roof_colour": "#a6553a",
+    "awning_ratio": 0.4
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -48,
+    10,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 2,
+    "colours": [
+     "#b5483a",
+     "#c9b98f"
+    ]
+   }
+  },
+  {
+   "type": "drum-dome",
+   "id": "anwar-dome",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "radius": 4.5,
+    "drum_height": 4,
+    "sides": 12,
+    "cross": false,
+    "colour": "#e7e0cc",
+    "cap_colour": "#6aa08b"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    32,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#4f7d9e",
+     "#d8c04a",
+     "#b5483a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-market-game",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No usable photo and OSM match is a car park; layout is a typed tin-roofed stall maze with shop blocks and a small dome, not a surveyed plan."
+ }
+}

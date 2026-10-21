@@ -1,0 +1,1079 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "birnin-kebbi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "birnin-kebbi",
+    "climate": "sahel",
+    "vernacular": "Hot semi-arid (BSh) Sokoto-Rima valley city, Gwandu emirate seat since 1906: sand-coloured and cream painted-render single and two-storey houses behind high compound walls, older mud-render compounds, wide dusty streets, flat-roofed concrete government blocks and rust or grey corrugated roofs, neem shade trees and date palms, flat plain with irrigated rice farms.",
+    "wallColours": [
+      "#d8c19a",
+      "#f2efe6",
+      "#a98a63",
+      "#a9c3cf",
+      "#c9b48a",
+      "#b9a98a"
+    ],
+    "roofColours": [
+      "#8a4a32",
+      "#8d9296",
+      "#3f6b4e",
+      "#a98a63"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "mud-render",
+      "concrete",
+      "whitewash",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Hausa-Fulani Sahelian motifs: relief bands and rounded parapet pinnacles on palace walls and gate houses, pointed arches and green/white paint on mosques, plain painted-render faces with burglar-guard windows on modern blocks. Palette values are typical regional choices, not sampled from photographs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Birnin_Kebbi",
+        "what": "BSh hot semi-arid climate, 65-104 F, Gwandu Emirate HQ since 1906, central masjid, Sir Yahaya Memorial Hospital oldest hospital"
+      },
+      {
+        "url": "https://blueprint.ng/gwandu-emirate-in-the-eyes-of-history/",
+        "what": "Gwandu Emirate, Birnin Kebbi as emirate seat"
+      },
+      {
+        "url": "https://guardian.ng/?p=1114860",
+        "what": "pre-colonial northern Nigerian architecture: mud walls, wooden beams, earth/thatch roofs"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gwandu_Emirate",
+        "what": "emirate seat, palace mosque in Birnin Kebbi"
+      }
+    ]
+  },
+  "places": {
+    "central-mosque-birnin-kebbi": {
+      "venueId": "central-mosque-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Birnin kebbi central mosque, Kebbi State.",
+      "archetype": "mosque-domed",
+      "subject": "the central Friday mosque of Birnin Kebbi: a wide prayer hall with a large central dome and a pair of minarets, white-washed with green trim",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f2efe6",
+          "#3f6b4e",
+          "#d8c19a"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 32 m minarets"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "arcaded front"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Birnin_Kebbi",
+          "what": "a central masjid is pictured; not described"
+        }
+      ],
+      "notes": "The mosque is shown in a photo but not described in text. Typed dome-and-two-minaret form in white and green. Palace mosque (Sarkin Gwandu) is a separate building."
+    },
+    "daula-restaurant-birnin-kebbi": {
+      "venueId": "daula-restaurant-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Daula Restaurant",
+      "archetype": "restaurant",
+      "subject": "a modest restaurant: a single-storey shopfront with a veranda and plastic chairs under a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8c19a",
+          "#a9c3cf",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed from the city style."
+    },
+    "deelad-place-birnin-kebbi": {
+      "venueId": "deelad-place-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "DEELAD PLACE",
+      "archetype": "restaurant",
+      "subject": "a larger eating and event place with a walled courtyard, a main hall and an open terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 26,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#a98a63",
+          "#8d9296"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed courtyard-style venue to differ from Daula."
+    },
+    "federal-medical-centre-birnin-kebbi": {
+      "venueId": "federal-medical-centre-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Federal Medical Centre, Birnin Kebbi",
+      "archetype": "hospital",
+      "subject": "a federal medical centre: a 3-storey main hospital block with a covered entrance drive and ambulance bay",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#3f8f9a",
+          "#a8a39a"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "porte-cochere"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Birnin_Kebbi",
+          "what": "Federal Medical Centre in the metropolis (no building description)"
+        }
+      ],
+      "notes": "Existence only. Typed contemporary federal hospital block."
+    },
+    "federal-university-birnin-kebbi": {
+      "venueId": "federal-university-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Federal University, Birnin Kebbi",
+      "archetype": "campus-block",
+      "subject": "a new federal-university teaching block with a ribbon-window facade and a concrete portico, in open sandy grounds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#f2efe6",
+          "#d8c19a",
+          "#a8a39a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fubk.edu.ng/about/",
+          "what": "university permanent site along Kalgo-Bunza road (638 ha); campus layout still under development"
+        }
+      ],
+      "notes": "Venue pin is inside the city (city/take-off site) rather than the permanent campus; sources conflict on the site. Typed new federal-university block."
+    },
+    "first-ecwa-bishara-church-birnin-kebbi": {
+      "venueId": "first-ecwa-bishara-church-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "1st ecwa Bishara church",
+      "archetype": "church-modern",
+      "subject": "an ECWA congregation hall: a wide gable-roofed auditorium with a front porch and a short cross-topped front tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f2efe6",
+          "#a98a63",
+          "#8d9296"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short front tower with cross"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed evangelical hall church."
+    },
+    "haliru-abdu-stadium-birnin-kebbi": {
+      "venueId": "haliru-abdu-stadium-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Haliru Abdu Stadium.",
+      "archetype": "stadium",
+      "subject": "a small state stadium with a covered main stand along the pitch, perimeter wall and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b4aa",
+          "#3f6b4e",
+          "#f2efe6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "single covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/?p=1222069",
+          "what": "FIFA/NFF mini-stadium on Kalgo Road in Birnin Kebbi: about 267 seats, covered stand, changing room, medical room, expandable to 5-6,000 (not confirmed to be this site)"
+        }
+      ],
+      "notes": "Stadium names not matched by any source. A FIFA/NFF mini-stadium on Kalgo Road may share this site; if so, the covered stand is small. Typed state stadium; keep low."
+    },
+    "kebbi-ministry-of-environment-solid-minerals": {
+      "venueId": "kebbi-ministry-of-environment-solid-minerals",
+      "city": "birnin-kebbi",
+      "name": "Ministry of Environment & Solid Minerals Kebbi State",
+      "archetype": "office-low",
+      "subject": "a 2-storey ministry office block with a central entrance porch and a flag pole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8c19a",
+          "#f2efe6",
+          "#8a4a32"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed state ministry block."
+    },
+    "kebbi-ministry-of-information-culture": {
+      "venueId": "kebbi-ministry-of-information-culture",
+      "city": "birnin-kebbi",
+      "name": "Kebbi State Ministry of Information and Culture",
+      "archetype": "office-low",
+      "subject": "a single-storey-plus-one ministry building with a Hausa-arch arcade entrance and cultural-motif wall panels",
+      "form": {
+        "footprint": "L",
+        "width_m": 38,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#a9c3cf",
+          "#a98a63"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "pointed-arch entrance arcade"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "cultural motif panels"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "hausa-arewa",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed with Hausa arch/relief nod for a culture ministry, a guess."
+    },
+    "sir-ahmadu-bello-airport-birnin-kebbi": {
+      "venueId": "sir-ahmadu-bello-airport-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Sir Ahmadu Bello International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 2013 terminal at Ambursa seen from the landside forecourt, with a flat canopy and an adjacent control tower beside a 3,100 m runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe5e8",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1,
+          "note": "one bridge or apron stairs; unverified"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_Ahmadu_Bello_International_Airport",
+          "what": "new ramp and terminal 2013; runway 06/24 extended to 3,100 m; ILS and DVOR-DME; at Ambursa 16 km east"
+        },
+        {
+          "url": "https://nannews.ng/fg-takes-over-sir-ahmadu-bello-international-airport-in-kebbi/",
+          "what": "federal government took over; about N18.8bn spent 2012-2015"
+        }
+      ],
+      "notes": "Existence, date and scale of spend are sourced; the terminal layout, dimensions and colours are not and are typed (small international terminal with Hajj flights). The runway is not modelled. Small compared with Abuja."
+    },
+    "sir-yahaya-memorial-hospital-birnin-kebbi": {
+      "venueId": "sir-yahaya-memorial-hospital-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Sir Yahaya Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "the oldest hospital in the city: long one-storey colonial-style ward ranges with a veranda and a corrugated hip roof",
+      "form": {
+        "footprint": "H",
+        "width_m": 75,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#a9c3cf",
+          "#a98a63"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Birnin_Kebbi",
+          "what": "described as the city oldest hospital"
+        }
+      ],
+      "notes": "Only the label oldest hospital in the city is sourced. Typed colonial pavilion ranges, a guess."
+    },
+    "st-dominics-catholic-church-birnin-kebbi": {
+      "venueId": "st-dominics-catholic-church-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "St. Dominic's Catholic Church Bernin Kebbi",
+      "archetype": "church-modern",
+      "subject": "a Catholic parish church with a steep gable front, a free-standing bell tower and a walled compound",
+      "form": {
+        "footprint": "cross",
+        "width_m": 34,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#f2efe6",
+          "#a8553a",
+          "#a98a63"
+        ],
+        "roofColour": "#8a4a32",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "free-standing tower"
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed Catholic mission church."
+    },
+    "waziri-umaru-federal-polytechnic-birnin-kebbi": {
+      "venueId": "waziri-umaru-federal-polytechnic-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Waziri Umaru Federal Polytechnic, Birnin Kebbi",
+      "archetype": "campus-block",
+      "subject": "a polytechnic lecture block: a two-storey wing with an external staircase and a central entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8c19a",
+          "#8a4a32",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed polytechnic block."
+    },
+    "yaryara-mini-market-birnin-kebbi": {
+      "venueId": "yaryara-mini-market-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Yaryara mini market",
+      "archetype": "shophouse",
+      "subject": "a small neighbourhood supermarket: a one-storey shop with a glazed front, shutters and a parking apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#a9c3cf",
+          "#8d9296"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed mini-supermarket."
+    },
+    "yusuf-bala-usman-library-birnin-kebbi": {
+      "venueId": "yusuf-bala-usman-library-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Dr. Yusuf Bala Usman LIbrary Complex, Birnin Kebbi, Kebbi State",
+      "archetype": "campus-block",
+      "subject": "a state library complex: a modern 2-storey block with a glazed entrance atrium and a landscaped forecourt",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe6",
+          "#2f4a5c",
+          "#d8c19a"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed entrance atrium"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; the venue is a library complex named after the historian Yusuf Bala Usman. Typed modern library."
+    },
+    "zaget-mini-market-birnin-kebbi": {
+      "venueId": "zaget-mini-market-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "zaget mini market",
+      "archetype": "shophouse",
+      "subject": "a corner mini market with a shop front, roller shutter and a painted fascia board, slightly larger than Yaryara",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8c19a",
+          "#3f8f9a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed two-storey shophouse to differ from Yaryara."
+    },
+    "zauro-ambrusa-general-hospital-birnin-kebbi": {
+      "venueId": "zauro-ambrusa-general-hospital-birnin-kebbi",
+      "city": "birnin-kebbi",
+      "name": "Zauro Ambrusa General Hospital",
+      "archetype": "hospital",
+      "subject": "a district general hospital at Ambursa: low ward blocks around an entrance court with a covered walkway",
+      "form": {
+        "footprint": "H",
+        "width_m": 65,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#3f6b4e",
+          "#a8a39a"
+        ],
+        "roofColour": "#3f6b4e",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; Ambursa is also the airport locality. Typed, green-roofed to differ from Sir Yahaya."
+    }
+  }
+}

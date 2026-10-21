@@ -1,0 +1,1352 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "vaduz",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "vaduz",
+    "climate": "temperate",
+    "vernacular": "Alpine Rhine-valley principality: whitewashed or cream rendered houses with steep gable roofs of red-brown clay tile, timber chalets with dark wood and stone bases up the slopes (Triesenberg, Malbun), tidy modern Swiss-style cubes in pale render, concrete and glass in the Vaduz centre, vineyards under the castle, and a backdrop of Rätikon limestone peaks.",
+    "wallColours": [
+      "#eee8da",
+      "#d9c08c",
+      "#c9c3b6",
+      "#6b4a32",
+      "#a8a39a",
+      "#8f8b84"
+    ],
+    "roofColours": [
+      "#8a4a35",
+      "#5f5a56",
+      "#7a3f30",
+      "#9a9692"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "timber",
+      "concrete",
+      "stone",
+      "glass-curtain",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "metal-sheet",
+      "membrane",
+      "timber-shingle"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Pitched roofs with deep eaves, window shutters, painted frames, small stepped gables; Gothic Revival church spires; modern minimal cubes with large glazing; dry-stone and render terrace walls for vineyards; timber balconies on alpine chalets.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Vaduz",
+        "what": "Vaduz Castle on a hill over the town; Cathedral of St Florin, Government House and Village Hall as varied styles; Kunstmuseum black tinted-concrete and basalt box (2000)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Vaduz_Castle",
+        "what": "12th-century keep ~12x13 m with 4 m walls, west side expanded 1613-1640, enlarged early 1930s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Triesen",
+        "what": "Triesen landmarks: St Mamerta chapel, Marienkapelle Romanesque, Kosthaus 1873, Gasometer 2006"
+      }
+    ]
+  },
+  "places": {
+    "vaduz-airport-vaduz-airport": {
+      "venueId": "vaduz-airport-vaduz-airport",
+      "city": "vaduz",
+      "name": "Balzers Heliport",
+      "archetype": "airport-terminal",
+      "subject": "A small heliport at Balzers: a helipad with a hangar shed and tiny operations building (Liechtenstein has no airport)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9ced1",
+          "#8a4a35",
+          "#eeeeea"
+        ],
+        "roofColour": "#7d8387",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Liechtenstein has no commercial airport; this is a small heliport. Typed low: a hangar and ops hut beside a helipad, with a fenced apron, in the Rhine plain."
+    },
+    "vaduz-clinic": {
+      "venueId": "vaduz-clinic",
+      "city": "vaduz",
+      "name": "Liechtensteinisches Landesspital",
+      "archetype": "hospital",
+      "subject": "The Landesspital in Vaduz: a compact multi-storey hospital block in pale render with a regular window grid",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e0d4",
+          "#6f8a99",
+          "#f2f1ec"
+        ],
+        "roofColour": "#7d7a74",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Country's only hospital; no building description found; typed Swiss-style regional hospital."
+    },
+    "vaduz-community-notices": {
+      "venueId": "vaduz-community-notices",
+      "city": "vaduz",
+      "name": "Landtag of the Principality of Liechtenstein",
+      "archetype": "civic-palace",
+      "subject": "Haus des Landtags on Peter-Kaiser-Platz, Vaduz: a long, low, modern parliament block in pale stone with glazed bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6cdb8",
+          "#7a8f9a",
+          "#efece4"
+        ],
+        "roofColour": "#8b8780",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "raised base on the plaza"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Landtag_of_Liechtenstein",
+          "what": "address Peter-Kaiser-Platz 3, Vaduz; photo of the Landtag building"
+        }
+      ],
+      "notes": "Parliament building opened 2008 (architect Hansjörg Göritz) by my background knowledge; the sourced page confirms only the address. Exact cladding and dimensions are estimates."
+    },
+    "vaduz-community-voting-game": {
+      "venueId": "vaduz-community-voting-game",
+      "city": "vaduz",
+      "name": "Rathaus Vaduz",
+      "archetype": "civic-small",
+      "subject": "Vaduz Town Hall on the Städtle: a four-storey rendered town building with a pitched roof and arched ground floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6d9b5",
+          "#8a7a62",
+          "#f3f0e8"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arches"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "small roof turret"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vaduz",
+          "what": "Village Hall listed among Vaduz's varied architectural styles and periods"
+        }
+      ],
+      "notes": "Only its existence and role are sourced; the form is typed from a Rhine-valley town hall. Whether it has a roof turret is unverified."
+    },
+    "vaduz-community-workshop": {
+      "venueId": "vaduz-community-workshop",
+      "city": "vaduz",
+      "name": "Private Universität im Fürstentum Liechtenstein (UFL)",
+      "archetype": "campus-block",
+      "subject": "A small private university occupying a modern office-style building in Triesen",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#6f8a99",
+          "#f2f1ec"
+        ],
+        "roofColour": "#7d7a74",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Private university in Triesen; no building description; typed low from Swiss-style office block."
+    },
+    "vaduz-market-game": {
+      "venueId": "vaduz-market-game",
+      "city": "vaduz",
+      "name": "Mühleholzmarkt",
+      "archetype": "market-hall",
+      "subject": "Mühleholz market: a modern supermarket-style hall with a long low pitched roof and loading front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e7e0d0",
+          "#8a4a35",
+          "#ffffff"
+        ],
+        "roofColour": "#6f6b66",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Retail market complex in the Vaduz Mühleholz district; nothing findable on its look; typed."
+    },
+    "vaduz-meal-stop": {
+      "venueId": "vaduz-meal-stop",
+      "city": "vaduz",
+      "name": "Restaurant Torkel",
+      "archetype": "restaurant",
+      "subject": "Torkel, the historic wine-press house restaurant above the Prince's vineyards: whitewashed, two-storey with a red-tile gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f0ebe0",
+          "#8a4a35",
+          "#6b4a32"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "garden terrace over the vineyard"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1700s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "I recall Torkel as an old farm building amid the princely vineyards below Vaduz Castle, but found no source in this run, so form and colours are typed from that memory and alpine vernacular."
+    },
+    "vaduz-osm-node-11381640081": {
+      "venueId": "vaduz-osm-node-11381640081",
+      "city": "vaduz",
+      "name": "Rhistaurant",
+      "archetype": "restaurant",
+      "subject": "A riverside restaurant on the Rhine dyke at Ruggell: a simple timber-and-render pavilion with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "render",
+        "colours": [
+          "#9b7a55",
+          "#eee8da",
+          "#6b4a32"
+        ],
+        "roofColour": "#5f5a56",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name suggests a Rhine (Rhi) restaurant; no description found; typed as a riverside pavilion."
+    },
+    "vaduz-osm-node-300209696": {
+      "venueId": "vaduz-osm-node-300209696",
+      "city": "vaduz",
+      "name": "Mattlerjoch",
+      "archetype": "park-landscape",
+      "subject": "Mattlerjoch, an alpine ridge saddle above Malbun: open grass slopes, scree and limestone peaks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 25,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8b82",
+          "#6a8a4a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8f8b82",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "mountain path"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Alpine pass at about 1,900 m near the Austrian border; sourced nowhere in this run. Typed as a grassy saddle with grey limestone rock; no buildings."
+    },
+    "vaduz-osm-node-354435079": {
+      "venueId": "vaduz-osm-node-354435079",
+      "city": "vaduz",
+      "name": "Vogelparadies Birka",
+      "archetype": "park-landscape",
+      "subject": "Vogelparadies Birka, a bird-watching reserve on the Rhine plain with reed ponds and a timber hide",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7a5a3a",
+          "#6a8a4a",
+          "#8aa7a0"
+        ],
+        "roofColour": "#5f5a56",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "timber observation hide"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nature reserve; typed from park type with reeds, water and a hide; not described anywhere found."
+    },
+    "vaduz-osm-node-498566336": {
+      "venueId": "vaduz-osm-node-498566336",
+      "city": "vaduz",
+      "name": "Wildschloss",
+      "archetype": "heritage-fort",
+      "subject": "Wildschloss, a medieval hillside castle ruin above Vaduz: broken rubble-stone walls and a stump of a tower in the woods",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a948a",
+          "#6e695f",
+          "#b8b2a6"
+        ],
+        "roofColour": "#9a948a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "broken wall tops"
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "13th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Known as a small castle ruin on the Vaduz/Schaan slopes; no specifics were found. Typed as rubble walls with a tower stump and no roof."
+    },
+    "vaduz-osm-node-5752404321": {
+      "venueId": "vaduz-osm-node-5752404321",
+      "city": "vaduz",
+      "name": "Russian Monument",
+      "archetype": "monument",
+      "subject": "The Russian Monument at Schellenberg: a small memorial of stone on a base, set in a quiet meadow",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a8a49a",
+          "#6e695f",
+          "#cfcac0"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1945+",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Commemorates Russian soldiers who were given refuge in 1945; specifics of form not found. Typed as a stone memorial on a stepped base."
+    },
+    "vaduz-osm-way-1324954458": {
+      "venueId": "vaduz-osm-way-1324954458",
+      "city": "vaduz",
+      "name": "Kräutergarten",
+      "archetype": "park-landscape",
+      "subject": "A herb garden with raised beds and gravel paths beside a small garden hut",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a7a55",
+          "#6a8a4a",
+          "#c7b98f"
+        ],
+        "roofColour": "#8a7a55",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Herb garden, no description found; typed."
+    },
+    "vaduz-osm-way-243055673": {
+      "venueId": "vaduz-osm-way-243055673",
+      "city": "vaduz",
+      "name": "Familienpark Äule",
+      "archetype": "park-landscape",
+      "subject": "Familienpark Äule, a family park in Vaduz near the Rhine meadows with play equipment and lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9b7a55",
+          "#6a8a4a",
+          "#d9c08c"
+        ],
+        "roofColour": "#9b7a55",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Family park; not described; typed from park type."
+    },
+    "vaduz-osm-way-298855541": {
+      "venueId": "vaduz-osm-way-298855541",
+      "city": "vaduz",
+      "name": "Alp Valüna-Säss",
+      "archetype": "restaurant",
+      "subject": "Alp Valüna-Säss, a mountain alp hut and inn: a dark timber chalet on a stone base with a shallow gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#6b4a32",
+          "#8f8b84",
+          "#d9c08c"
+        ],
+        "roofColour": "#5f5a56",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Alp inn in the Valüna high valley above Triesenberg; typed from alpine chalet type; the weathered dark-timber colour is assumed."
+    },
+    "vaduz-osm-way-330503932": {
+      "venueId": "vaduz-osm-way-330503932",
+      "city": "vaduz",
+      "name": "Pfarrkirche Sankt Josef",
+      "archetype": "church-modern",
+      "subject": "The parish church of St Joseph at Triesenberg: a plain modern church with a slender square bell tower on the hillside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#eeeae0",
+          "#8f8b84",
+          "#ffffff"
+        ],
+        "roofColour": "#5f5a56",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "slender tower beside the nave"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Triesen",
+          "what": "checked the neighbouring Triesen article; it does not cover this church"
+        }
+      ],
+      "notes": "Coordinates match Triesenberg; church not described in any retrieved source; typed as a modern Alpine parish church (the pastoral setting with conifers is characteristic)."
+    },
+    "vaduz-osm-way-47003798": {
+      "venueId": "vaduz-osm-way-47003798",
+      "city": "vaduz",
+      "name": "Aussenstelle der Universität Liechtenstein - Wachterhaus",
+      "archetype": "campus-block",
+      "subject": "A small annex of the University of Liechtenstein in a historic-looking pitched-roof house",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc2",
+          "#6b4a32",
+          "#f3f0e8"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The Wachterhaus annex is typed as a small gabled house (differs deliberately from the main campus block). No description found."
+    },
+    "vaduz-osm-way-484271148": {
+      "venueId": "vaduz-osm-way-484271148",
+      "city": "vaduz",
+      "name": "Universität Liechtenstein",
+      "archetype": "campus-block",
+      "subject": "The main University of Liechtenstein building in Vaduz: a modern teaching block of glass and pale concrete around a glazed hall",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcbc2",
+          "#6f8a99",
+          "#efece4"
+        ],
+        "roofColour": "#7d7a74",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Main campus not described in a retrieved source; typed modern Swiss-style university building."
+    },
+    "vaduz-osm-way-485353483": {
+      "venueId": "vaduz-osm-way-485353483",
+      "city": "vaduz",
+      "name": "Universität Liechtenstein - Wachterhaus",
+      "archetype": "campus-block",
+      "subject": "Wachterhaus: a mid-size education building of render and large windows next to the annex",
+      "form": {
+        "footprint": "L",
+        "width_m": 34,
+        "depth_m": 16,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ddd6c4",
+          "#6f8a99",
+          "#f3f0e8"
+        ],
+        "roofColour": "#7d7a74",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Same location as the annex entry; typed as a larger modern block so the two are distinct. No description found."
+    },
+    "vaduz-osm-way-491625232": {
+      "venueId": "vaduz-osm-way-491625232",
+      "city": "vaduz",
+      "name": "Freizeitpark Blumenau",
+      "archetype": "park-landscape",
+      "subject": "Freizeitpark Blumenau, a Rhine-meadow leisure park with lawns, a pond and sports lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9b7a55",
+          "#6a8a4a",
+          "#8aa7a0"
+        ],
+        "roofColour": "#9b7a55",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Leisure park; not described; typed."
+    },
+    "vaduz-osm-way-977381553": {
+      "venueId": "vaduz-osm-way-977381553",
+      "city": "vaduz",
+      "name": "St. Fridolin",
+      "archetype": "church-classical",
+      "subject": "The Ruggell parish church of St Fridolin: a white church with a tall pointed tower and a steep roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f0ece2",
+          "#6f6a62",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Parish church of Ruggell by coordinates; not described in any retrieved source; typed from the Rhine-valley village church type. Tower cap shape assumed."
+    },
+    "vaduz-osm-way-979391092": {
+      "venueId": "vaduz-osm-way-979391092",
+      "city": "vaduz",
+      "name": "Biedermannhaus",
+      "archetype": "manor",
+      "subject": "Biedermannhaus, a historic Mauren house: a plastered three-storey farmhouse with shutters and a broad gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6d9b5",
+          "#6b4a32",
+          "#f3f0e8"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "timber balcony"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1800s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Heritage house by name; not described in retrieved sources. Typed from the Rhine-valley rural house type."
+    },
+    "vaduz-quiet-reflection": {
+      "venueId": "vaduz-quiet-reflection",
+      "city": "vaduz",
+      "name": "Jubiläumskirche",
+      "archetype": "church-classical",
+      "subject": "The Jubiläumskirche in Balzers: a church with a rendered nave and a pointed tower in the south of the principality",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eee6d4",
+          "#8f8b84",
+          "#ffffff"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Jubilee church by name; nothing retrieved about its looks; typed from Rhine-valley church type."
+    },
+    "vaduz-recreation": {
+      "venueId": "vaduz-recreation",
+      "city": "vaduz",
+      "name": "Wasserpark Walserbünt",
+      "archetype": "park-landscape",
+      "subject": "Wasserpark Walserbünt, a water park on the Rhine plain with ponds, lawns and timber pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9b7a55",
+          "#6aa0b0",
+          "#d9c08c"
+        ],
+        "roofColour": "#7d7a74",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Leisure water park; typed."
+    },
+    "vaduz-transit": {
+      "venueId": "vaduz-transit",
+      "city": "vaduz",
+      "name": "Nendeln",
+      "archetype": "transport-station",
+      "subject": "Nendeln station on the Feldkirch-Buchs line: two side platforms and a small shelter in the Rhine valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9a9892",
+          "#2d5a8a",
+          "#d0cec8"
+        ],
+        "roofColour": "#5f5a56",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small stop (the only railway in Liechtenstein is the Feldkirch-Buchs line); no building description found; typed as a minimal platform stop."
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1290963698",
+   "used": "nearest OSM building 16.5x6.3 m used as the prayer-hall width; depth enlarged per brief (22x18)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.6,
+    "bands": "#3f8f6b",
+    "cornice": true,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a9a74",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "arcade",
+   "footprint": {
+    "rect": [
+     20,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -9.5
+   ],
+   "height": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "pattern": {
+     "type": "arcade",
+     "colour": "#3f8f6b"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a9a74",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    8.6
+   ],
+   "params": {
+    "radius": 6,
+    "profile": "hemi",
+    "drum": 1.6,
+    "colour": "#4a9a74",
+    "drumColour": "#f1efe6",
+    "finial": 1.4
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    -11,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "pencil",
+    "colour": "#f1efe6",
+    "accent": "#3f8f6b",
+    "cap_colour": "#4a9a74"
+   }
+  },
+  {
+   "type": "minaret",
+   "at": [
+    11,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "style": "pencil",
+    "colour": "#f1efe6",
+    "accent": "#3f8f6b",
+    "cap_colour": "#4a9a74"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.8,
+    "pillarEvery": 4,
+    "colour": "#f1efe6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     20,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "ake-mosque",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this mosque; form from brief and local idiom, OSM nearest outline too small to use"
+ }
+}

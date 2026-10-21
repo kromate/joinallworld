@@ -1,0 +1,165 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2688600",
+   "used": "real zig-zag plan of the Nouvelle Presidence (about 85 x 64 m); height, colonnaded portico and forecourt typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "osm": true,
+    "simplify": 2.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee4",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 6.5,
+    "plinth": 0.8,
+    "bands": "#c9b27a",
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a7a39a",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 26,
+    "depth": 6,
+    "height": 14,
+    "columns": 8,
+    "pediment": true,
+    "steps": 6,
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -16,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 2.6,
+    "kind": "wall",
+    "pillarEvery": 0,
+    "colour": "#a7a39a",
+    "points": [
+     [
+      -60,
+      -84
+     ],
+     [
+      60,
+      -84
+     ],
+     [
+      60,
+      70
+     ],
+     [
+      -60,
+      70
+     ],
+     [
+      -60,
+      -84
+     ]
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -84,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "colour": "#2d3033"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -52,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     52,
+     -60
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; only the real outline is used, portico and forecourt are typed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-community-notices"
+}

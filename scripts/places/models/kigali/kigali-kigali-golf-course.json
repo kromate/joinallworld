@@ -1,0 +1,369 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-kigali-golf-course",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/214643896",
+   "used": "identity only: the real course outline is about 1.4 km across and cannot be modelled; a clubhouse with the first tee, green and bunkers is composed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     24,
+     11
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "trimColour": "#7d6a4a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a34",
+    "material": "clay-tile",
+    "rise": 2.6,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pro-shop",
+   "footprint": {
+    "rect": [
+     9,
+     7
+    ]
+   },
+   "at": [
+    -17,
+    -6
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f2e4",
+    "windows": "punched",
+    "windowRatio": 0.22
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a34",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "params": {
+    "rect": [
+     24,
+     5
+    ],
+    "height": 0.35,
+    "colour": "#c9b896"
+   },
+   "at": [
+    0,
+    -16.5,
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "id": "terrace-shade",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4,
+    "height": 3,
+    "colour": "#7d6a4a",
+    "edgeColour": "#5e4f38",
+    "columns": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fairway",
+   "params": {
+    "points": [
+     [
+      -8,
+      10
+     ],
+     [
+      8,
+      10
+     ],
+     [
+      12,
+      60
+     ],
+     [
+      -12,
+      60
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#5f9a3c"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "green",
+   "params": {
+    "radius": 9,
+    "n": 18,
+    "height": 0.1,
+    "colour": "#3e8a34"
+   },
+   "at": [
+    0,
+    64,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bunker-a",
+   "params": {
+    "radius": 3.4,
+    "n": 10,
+    "height": 0.12,
+    "colour": "#e3d3a0"
+   },
+   "at": [
+    -9,
+    60,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bunker-b",
+   "params": {
+    "radius": 2.8,
+    "n": 10,
+    "height": 0.12,
+    "colour": "#e3d3a0"
+   },
+   "at": [
+    8,
+    57,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tee-box",
+   "params": {
+    "rect": [
+     6,
+     4
+    ],
+    "height": 0.15,
+    "colour": "#4f9a3a"
+   },
+   "at": [
+    0,
+    12,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag-pin",
+   "params": {
+    "radius": 0.05,
+    "n": 4,
+    "height": 2.6,
+    "colour": "#f2f2f2"
+   },
+   "at": [
+    1,
+    65,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "flag",
+   "params": {
+    "rect": [
+     0.9,
+     0.05
+    ],
+    "height": 0.5,
+    "colour": "#c8362f"
+   },
+   "at": [
+    1.5,
+    65,
+    2.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cart-path",
+   "params": {
+    "points": [
+     [
+      12,
+      -12
+     ],
+     [
+      14,
+      -12
+     ],
+     [
+      14,
+      20
+     ],
+     [
+      22,
+      40
+     ],
+     [
+      20,
+      42
+     ],
+     [
+      12,
+      22
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#bdb7a8"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "car-park",
+   "id": "car-park",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   110
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     38
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     24
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     26,
+     48
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     56
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     70
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     72
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo and the real course outline is 1.4 km wide, so only the clubhouse, first tee, one green and bunkers are modelled; layout is typical, not surveyed"
+ }
+}

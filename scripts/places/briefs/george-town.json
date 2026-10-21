@@ -1,0 +1,1543 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "george-town",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "george-town",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-lying coral-limestone island: one- to three-storey painted stucco and block buildings in pastel yellow, peach, aqua and white with hipped metal or tile roofs in red and green, hurricane-hardened since Ivan (2004); a few surviving timber Caymanian cottages with wraparound porches, shutters and fretwork; glass-and-stucco offices downtown and condo hotels along Seven Mile Beach; ironshore rock, coral-sand beaches, coconut palms and sea-grape.",
+    "wallColours": [
+      "#f4efe3",
+      "#f2d7a6",
+      "#bcd8d6",
+      "#e9b8a8",
+      "#d9d6cc",
+      "#8fb8c4"
+    ],
+    "roofColours": [
+      "#a64b3a",
+      "#6f7b80",
+      "#3d6e5c",
+      "#c8c3b8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "concrete",
+      "timber",
+      "limestone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "timber-shingle",
+      "corrugated"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Caymanian cottage vocabulary: timber clapboard, louvred shutters, gingerbread fretwork, deep covered verandas, hipped roofs; pastel colour-banded trim and white balustrades on commercial buildings; Mediterranean-style arches on resort and retail courts; hurricane shutters.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Cayman_Islands",
+        "what": "low-lying limestone islands, ironshore coast, Hurricane Ivan 2004 damaged 83% of dwellings, forest cover 53%, traditional Caymanian cottage in East End"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/George_Town,_Cayman_Islands",
+        "what": "Parliament, courts and administration in George Town; Old Courts Building now National Museum; Camana Bay pedestrian town centre; Seven Mile Beach crescent of coral sand; ships anchor offshore and tender passengers"
+      },
+      {
+        "url": "https://en.wikivoyage.org/wiki/Grand_Cayman",
+        "what": "Hell black rock formations; Boatswain's Beach 24-acre turtle marine park with snorkel lagoon, predator tank, aviary, Blue Hole and Caymanian Heritage Street; National Museum in the Old Courts Building; no cruise berths, ships tender to the harbour dock"
+      }
+    ]
+  },
+  "places": {
+    "george-town-airport-george-town-airport": {
+      "venueId": "george-town-airport-george-town-airport",
+      "city": "george-town",
+      "name": "Owen Roberts International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Owen Roberts International Airport terminal after its 2019 expansion: a long two-level glass-and-stucco terminal with a curved front canopy; the old rooftop waving gallery is gone",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "international",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eae8e0",
+          "#2b7a8c",
+          "#c7c5bc"
+        ],
+        "roofColour": "#c9c9c4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Owen_Roberts_International_Airport",
+          "what": "terminal expansion groundbroken 2015, completed late Feb 2019, reopened 27 March 2019; 2012 aquatic paintings in the customs hall; former observation waving gallery removed; runway 08/26 2,398 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 62184823, terminal outline ~220 x 82 m, 16,057 m2"
+        }
+      ],
+      "notes": "Footprint measured (about 220 x 82 m, irregular wings). Wikipedia describes timeline and interior art but not the exterior, so colours, canopy and the two jet bridges are typed. A bigger new terminal and runway extension were approved in 2025 and are not shown."
+    },
+    "george-town-clinic": {
+      "venueId": "george-town-clinic",
+      "city": "george-town",
+      "name": "George Town Hospital (Health Services Authority)",
+      "archetype": "hospital",
+      "subject": "The George Town Hospital: a low sprawl of connected two-storey wards around courtyards, pale stucco with red metal roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "multi-wing",
+        "wings": 4
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d6",
+          "#4f8aa8",
+          "#c9c3b4"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 3,
+          "note": "covered links between wings"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 372247875, hospital outline ~179 x 165 m, 2 levels, 14,419 m2, many wings"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Town,_Cayman_Islands",
+          "what": "Parliament, courts and administration in George Town; Old Courts Building now National Museum; Camana Bay pedestrian town centre; Seven Mile Beach crescent of coral sand; ships anchor offshore and tender passengers"
+        }
+      ],
+      "notes": "OSM shows a very large irregular two-level complex with many wings (about 179 x 165 m); width_m/depth_m are the main frontage block, not the whole outline. Colours and roof typed. Distinct from the Doctors Hospital and Health City."
+    },
+    "george-town-community-notices": {
+      "venueId": "george-town-community-notices",
+      "city": "george-town",
+      "name": "Department of Vehicle and Driver's Licensing",
+      "archetype": "civic-small",
+      "subject": "The vehicle and driver's licensing office: a small one-storey government office with a flat roof and a glazed counter hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6cf",
+          "#2f6f8f",
+          "#c7c1b2"
+        ],
+        "roofColour": "#c8c3b8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 361825308, tagged Department of Motor Vehicles ~28 x 20 m, 557 m2, 16 m from the pin"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Footprint is the nearest OSM building (16 m away), tagged DMV."
+    },
+    "george-town-community-voting-game": {
+      "venueId": "george-town-community-voting-game",
+      "city": "george-town",
+      "name": "Heliconia Court",
+      "archetype": "office-low",
+      "subject": "Heliconia Court: a three-storey stucco office-and-apartment court with arched ground-floor galleries and balconies",
+      "form": {
+        "footprint": "U",
+        "width_m": 84,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "garden-court",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#f2dfb4",
+          "#c9534a",
+          "#f3f0e6"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 550007564, ~84 x 58 m, 2,377 m2, about 5 m from the pin"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Only the measured footprint is known; a U-shaped court is inferred from the outline."
+    },
+    "george-town-community-workshop": {
+      "venueId": "george-town-community-workshop",
+      "city": "george-town",
+      "name": "Teacher Reedly Powery Memorial Library",
+      "archetype": "campus-block",
+      "subject": "The West Bay public library: a one-storey library in pastel stucco with a pitched metal roof and a small entrance porch",
+      "form": {
+        "footprint": "L",
+        "width_m": 35,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#f1dcae",
+          "#2f7f8f",
+          "#f3f0e6"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "small entrance porch"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 369192329, amenity=library ~35 x 21 m, 530 m2"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Footprint is measured (L-shaped outline)."
+    },
+    "george-town-market-game": {
+      "venueId": "george-town-market-game",
+      "city": "george-town",
+      "name": "Farmer's Market",
+      "archetype": "market-hall",
+      "subject": "A farmers market pavilion: a small open covered shed with tables of produce and a pitched metal roof on posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "open-sided"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0e4c4",
+          "#2f6b5a",
+          "#c6c0b0"
+        ],
+        "roofColour": "#3d6e5c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 550203456, building=retail ~21 x 17 m near the pin (7 m)"
+        },
+        {
+          "url": "https://en.wikivoyage.org/wiki/Grand_Cayman",
+          "what": "Hell black rock formations; Boatswain's Beach 24-acre turtle marine park with snorkel lagoon, predator tank, aviary, Blue Hole and Caymanian Heritage Street; National Museum in the Old Courts Building; no cruise berths, ships tender to the harbour dock"
+        }
+      ],
+      "notes": "Wikivoyage lists the Farmer's Market Cooperative on Thomas Russell Way, but this pin is in West Bay on Seven Mile Beach corridor, so identity is uncertain. Typed."
+    },
+    "george-town-meal-stop": {
+      "venueId": "george-town-meal-stop",
+      "city": "george-town",
+      "name": "Rum Point",
+      "archetype": "restaurant",
+      "subject": "Rum Point beach bar and restaurant: an open-sided timber bar-restaurant with a hipped shingle roof, wooden deck and hammocks on a sand beach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "beach-bar",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#d8bc8a",
+          "#2f8f9a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "wooden deck"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "short jetty"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q14219110",
+          "what": "Rum Point, settlement on Grand Cayman"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 373719218, The Retreat at Rum Point (hotel), ~17 x 16 m, 76 m from the pin"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. The nearest building is a small hotel; the venue is the Rum Point beach bar area on the North Side."
+    },
+    "george-town-osm-node-1550931122": {
+      "venueId": "george-town-osm-node-1550931122",
+      "city": "george-town",
+      "name": "Hell",
+      "archetype": "park-landscape",
+      "subject": "Hell in West Bay: a patch of jagged black ironshore rock seen from a viewing platform, with a fire-engine-red post office and a gift shop",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "rock-formation",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#b3262b",
+          "#1f1f22",
+          "#e5dfd0"
+        ],
+        "roofColour": "#b3262b",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "viewing platform"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "red post office"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "devil-themed figure"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hell,_Grand_Cayman",
+          "what": "short, dark black limestone formations about half a football field in size; viewing platforms; gift shop and service station; fire-engine-red hell-themed post office; Satan-themed art"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cayman_Islands",
+          "what": "the Hell landscape is exposed prehistoric reef called ironshore"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 141688701, building ~20 x 8 m named Devil's Hangout, 39 m from the pin"
+        }
+      ],
+      "notes": "The rock field is the star: black jagged limestone pinnacles behind a rail, with a small red post-office hut and a pale gift shop at the roadside. The red building and black rock are the recognisable colours."
+    },
+    "george-town-osm-node-5322136279": {
+      "venueId": "george-town-osm-node-5322136279",
+      "city": "george-town",
+      "name": "Airport Park",
+      "archetype": "park-landscape",
+      "subject": "Airport Park beside Owen Roberts International Airport: a grassy field with a covered pavilion and parking",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "sports-field"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#efe6cf",
+          "#2f6b5a",
+          "#c6c0b0"
+        ],
+        "roofColour": "#6f7b80",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 1190070189, building ~158 x 55 m, 7,515 m2, 50 m from the pin"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. A large building polygon nearby (158 x 55 m) did not look like the park, so it is not used for the form."
+    },
+    "george-town-osm-node-6340499785": {
+      "venueId": "george-town-osm-node-6340499785",
+      "city": "george-town",
+      "name": "Starfish Point",
+      "archetype": "park-landscape",
+      "subject": "Starfish Point on Grand Cayman's North Side: a calm shallow bay of pale coral sand with coconut palms and a small wooden walkway",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "beach"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f1e7c9",
+          "#1f9aa8",
+          "#d6c9a3"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "small timber walkway"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikivoyage.org/wiki/Grand_Cayman",
+          "what": "Hell black rock formations; Boatswain's Beach 24-acre turtle marine park with snorkel lagoon, predator tank, aviary, Blue Hole and Caymanian Heritage Street; National Museum in the Old Courts Building; no cruise berths, ships tender to the harbour dock"
+        }
+      ],
+      "notes": "No OSM or web description found; the Starfish Point beach is known for shallow clear water and sea stars. A natural beach with almost no structures. Typed."
+    },
+    "george-town-osm-node-778613443": {
+      "venueId": "george-town-osm-node-778613443",
+      "city": "george-town",
+      "name": "Cayman Islands National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum in the Old Courts Building on Harbour Drive: the island's oldest building, a two-storey whitewashed colonial block with hipped metal roof and a double-height veranda",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "colonial-courthouse",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#f1ece0",
+          "#5f7f66",
+          "#e3ded0"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "two-tier veranda"
+        },
+        {
+          "id": "railings",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1830s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cayman_Islands_National_Museum",
+          "what": "oldest building on Grand Cayman, dates from the 1830s; originally the Old Courts Building on Harbor Drive; later Lands and Survey; museum opened 1990"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Town,_Cayman_Islands",
+          "what": "Parliament, courts and administration in George Town; Old Courts Building now National Museum; Camana Bay pedestrian town centre; Seven Mile Beach crescent of coral sand; ships anchor offshore and tender passengers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 373680933, ~24 x 19 m irregular outline"
+        }
+      ],
+      "notes": "Age, use and location are sourced; the exterior (two-tier veranda, hipped roof, pale walls with green shutters) is typed from the building type and local colonial style. Previously a court, jail and the first post office."
+    },
+    "george-town-osm-way-217613994": {
+      "venueId": "george-town-osm-way-217613994",
+      "city": "george-town",
+      "name": "Dolphin Mall",
+      "archetype": "mall",
+      "subject": "Dolphin Mall on West Bay Road: a low pastel strip mall with arched shop fronts, a central entrance tower and parking",
+      "form": {
+        "footprint": "L",
+        "width_m": 63,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "strip-mall",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#f2d9a8",
+          "#3f9aa5",
+          "#f3f0e6"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "small entrance tower"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 217613994, building=retail Dolphin Mall, ~63 x 21 m, 978 m2, curved/L outline"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Town,_Cayman_Islands",
+          "what": "Parliament, courts and administration in George Town; Old Courts Building now National Museum; Camana Bay pedestrian town centre; Seven Mile Beach crescent of coral sand; ships anchor offshore and tender passengers"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Footprint measured (curved/L-shaped strip)."
+    },
+    "george-town-osm-way-369024905": {
+      "venueId": "george-town-osm-way-369024905",
+      "city": "george-town",
+      "name": "Cayman Motor Museum",
+      "archetype": "museum-theatre",
+      "subject": "Cayman Motor Museum in West Bay: a large single-storey exhibition shed with a broad frontage and a car forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "exhibition-hall"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "metal-cladding",
+        "colours": [
+          "#eae6da",
+          "#b3262b",
+          "#c6c3b8"
+        ],
+        "roofColour": "#7a838a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2689323",
+          "what": "Cayman Motor Museum, museum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 369024905, tourism=museum ~47 x 28 m, 1,240 m2"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Footprint measured. Distinct from the other museum by being a plain exhibition shed."
+    },
+    "george-town-osm-way-372662553": {
+      "venueId": "george-town-osm-way-372662553",
+      "city": "george-town",
+      "name": "The Lighthouse (restaurant)",
+      "archetype": "restaurant",
+      "subject": "The Lighthouse restaurant on the East End shore: a two-wing timber-and-stucco waterfront restaurant with an open deck, near the East End lighthouse",
+      "form": {
+        "footprint": "L",
+        "width_m": 32,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "waterfront",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#f3ead3",
+          "#3f8f9a",
+          "#e3d9bc"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "sea-facing deck"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "1990s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 372662553, amenity=restaurant ~32 x 21 m, 645 m2"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Footprint measured; the name suggests a link to the East End lighthouse, not verified."
+    },
+    "george-town-osm-way-374313515": {
+      "venueId": "george-town-osm-way-374313515",
+      "city": "george-town",
+      "name": "Pankin's Jerk Centre",
+      "archetype": "restaurant",
+      "subject": "Pankin's Jerk Centre: a small roadside jerk shack with a tin roof, a smoking grill and bright painted walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "variant": "jerk-shack"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e0b84a",
+          "#1f7a4a",
+          "#b3262b"
+        ],
+        "roofColour": "#6f7b80",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "smoker stack"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 374313515, amenity=restaurant ~20 x 15 m, 262 m2"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Jamaican-style jerk shack colours (yellow, green, red) are an assumption from the name and type."
+    },
+    "george-town-osm-way-615434121": {
+      "venueId": "george-town-osm-way-615434121",
+      "city": "george-town",
+      "name": "Public Beach (Seven Mile Beach)",
+      "archetype": "park-landscape",
+      "subject": "Seven Mile Beach Public Beach: a long crescent of coral sand with shade trees, a small changing/toilet block and picnic shelters",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "variant": "beach"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#f0e8d0",
+          "#2f8f9a",
+          "#c9bda0"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "picnic shelters"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "changing and toilet block"
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Town,_Cayman_Islands",
+          "what": "Parliament, courts and administration in George Town; Old Courts Building now National Museum; Camana Bay pedestrian town centre; Seven Mile Beach crescent of coral sand; ships anchor offshore and tender passengers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 615434121, leisure=park ~237 x 214 m, 32,891 m2"
+        }
+      ],
+      "notes": "Wikipedia describes Seven Mile Beach as a long crescent of coral-sand beach lined with hotels, condos and bars; the small public-beach structures are typed. Mostly open sand with sea-grape and palms."
+    },
+    "george-town-osm-way-62088563": {
+      "venueId": "george-town-osm-way-62088563",
+      "city": "george-town",
+      "name": "The Market at the Cricket Grounds",
+      "archetype": "market-hall",
+      "subject": "The Market at the Cricket Grounds: a long open-sided covered market shed beside the cricket ground, with rows of produce and craft stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "gable",
+        "variant": "open-sided"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0e6c8",
+          "#3d6e5c",
+          "#c6c0b0"
+        ],
+        "roofColour": "#3d6e5c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 14
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 62088563, amenity=marketplace ~37 x 17 m, 623 m2"
+        }
+      ],
+      "notes": "No web source describing this building was readable (search budget was exhausted), so appearance is typed from the place type and the Cayman city style. Footprint measured; it should look longer and more open than the small Farmer's Market pavilion."
+    },
+    "george-town-osm-way-62225884": {
+      "venueId": "george-town-osm-way-62225884",
+      "city": "george-town",
+      "name": "Cayman Turtle Centre",
+      "archetype": "park-landscape",
+      "subject": "Cayman Turtle Centre in West Bay: a 24-acre marine park with turtle breeding tanks, a snorkel lagoon, a predator tank, an aviary, a waterfall pool and a Caymanian Heritage Street of pastel cottages",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "marine-park",
+        "wings": 3
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stucco",
+        "colours": [
+          "#f1e0b0",
+          "#2f8f9a",
+          "#c2573f"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "waterfall pool"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 3,
+          "note": "cottage verandas"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "1968-2010s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cayman_Turtle_Centre",
+          "what": "23-acre site in West Bay; turtle breeding and feeding tanks; reef snorkel lagoon; freshwater lagoon with waterfall and water slide (2012); predator tank; nature trail and aviary; breeding pond moved inland after Hurricane Michelle 2001"
+        },
+        {
+          "url": "https://en.wikivoyage.org/wiki/Grand_Cayman",
+          "what": "Hell black rock formations; Boatswain's Beach 24-acre turtle marine park with snorkel lagoon, predator tank, aviary, Blue Hole and Caymanian Heritage Street; National Museum in the Old Courts Building; no cruise berths, ships tender to the harbour dock"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 62225884, park polygon ~249 x 218 m, 32,053 m2"
+        }
+      ],
+      "notes": "Layout elements come from Wikipedia and Wikivoyage (tanks, lagoon, waterfall pool, predator tank, aviary, Blue Hole, Heritage Street). Colours and building shapes are typed. Show several pools and a waterfall, not one building."
+    },
+    "george-town-quiet-reflection": {
+      "venueId": "george-town-quiet-reflection",
+      "city": "george-town",
+      "name": "St. Ignatius Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St. Ignatius Catholic Church on Walkers Road: a large 1981-82 fan-shaped hall church of pale concrete with a pitched roof and a freestanding bell cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "parish-hall-church",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#2f6f8f",
+          "#c9c3b4"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "low freestanding bell frame"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1981-1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Ignatius_Church,_George_Town",
+          "what": "Walkers Road building constructed 1981-82; earlier Shedden Road church 1959; School of St. Ignatius since 1971"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way 370952623, ~58 x 32 m, 902 m2 (way tagged St. Ignatius Catholic Church)"
+        }
+      ],
+      "notes": "Construction dates are sourced; Wikipedia has no description of the exterior, so shape, bell frame and colours are typed. Measured footprint ~58 x 32 m (902 m2) includes church and parish halls."
+    },
+    "george-town-recreation": {
+      "venueId": "george-town-recreation",
+      "city": "george-town",
+      "name": "Malportas Bird Sanctuary",
+      "archetype": "park-landscape",
+      "subject": "Malportas Pond bird sanctuary on the East End: a brackish mangrove pond ringed with reeds, with a short timber boardwalk and a bird hide",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 165,
+        "depth_m": 57,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "wetland"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9b78a",
+          "#3f6e4a",
+          "#9a8a68"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "screen",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "timber boardwalk"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "bird hide"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/george-town.json: way, leisure=park ~165 x 57 m, 3,810 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cayman_Islands",
+          "what": "low-lying limestone islands, ironshore coast, Hurricane Ivan 2004 damaged 83% of dwellings, forest cover 53%, traditional Caymanian cottage in East End"
+        }
+      ],
+      "notes": "Only the park extent is known; the pond, mangroves and hide are typed from the wetland type and the Cayman limestone/forest setting."
+    },
+    "george-town-transit": {
+      "venueId": "george-town-transit",
+      "city": "george-town",
+      "name": "Royal Watler Cruise Terminal",
+      "archetype": "transport-station",
+      "subject": "The Royal Watler Cruise Terminal at George Town harbour: a pier with a tender dock, a small terminal pavilion and shops, with ships anchored offshore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "tender-terminal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2ead6",
+          "#2f8f9a",
+          "#d4cdb6"
+        ],
+        "roofColour": "#a64b3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "tender dock"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Town,_Cayman_Islands",
+          "what": "Parliament, courts and administration in George Town; Old Courts Building now National Museum; Camana Bay pedestrian town centre; Seven Mile Beach crescent of coral sand; ships anchor offshore and tender passengers"
+        },
+        {
+          "url": "https://en.wikivoyage.org/wiki/Grand_Cayman",
+          "what": "Hell black rock formations; Boatswain's Beach 24-acre turtle marine park with snorkel lagoon, predator tank, aviary, Blue Hole and Caymanian Heritage Street; National Museum in the Old Courts Building; no cruise berths, ships tender to the harbour dock"
+        }
+      ],
+      "notes": "Sources only say cruise ships anchor offshore and tender passengers to the harbour dock beside a small shopping area; the terminal building itself is typed. (A cruise berthing project is planned and not shown.)"
+    }
+  }
+}

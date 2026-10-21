@@ -1,0 +1,224 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1391527452",
+   "used": "nearest building is a 8 x 3 m shed 13 m away, not the mosque, so NOT used; mosque is a typical large Khartoum/Omdurman congregational mosque from the brief (white walls, one central dome, two slender minarets, arched prayer-hall front); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe3",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "bands": "#2e7a5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3ddcc",
+    "material": "concrete",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico",
+   "footprint": {
+    "rect": [
+     34,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe3",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "arcade"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e3ddcc",
+    "material": "concrete",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    11
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#f3efe3"
+     ],
+     [
+      7,
+      0,
+      "#f3efe3"
+     ],
+     [
+      7,
+      1.5,
+      "#c9b88f"
+     ],
+     [
+      6.4,
+      3,
+      "#e3ddcc"
+     ],
+     [
+      4.5,
+      6,
+      "#e3ddcc"
+     ],
+     [
+      2,
+      7.6,
+      "#e3ddcc"
+     ],
+     [
+      0.2,
+      8.2,
+      "#c9b88f"
+     ],
+     [
+      0,
+      10,
+      "#c9b88f"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -19,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "radius": 1.1,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f3efe3",
+    "capColour": "#2e7a5a"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    19,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "radius": 1.1,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f3efe3",
+    "capColour": "#2e7a5a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2,
+    "thickness": 0.3,
+    "colour": "#c9b88f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 2,
+  "treeKind": "palm",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-quiet-reflection",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and OSM building is not the mosque; typical Sudanese mosque form, dimensions from brief."
+ }
+}

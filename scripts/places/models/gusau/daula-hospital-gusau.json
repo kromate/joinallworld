@@ -1,0 +1,189 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1207227131",
+   "used": "real building outline 37 x 26 m (containing match), two-storey massing on it"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json#daula-hospital-gusau",
+   "used": "two-storey rendered hospital, pitched corrugated roof, front veranda, blank cross board, ambulance bay, car park, water tank (low-confidence typed brief; no photo exists)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "fit": 37
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#6f9a8a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -14.8,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 2.8,
+    "height": 3.3,
+    "balustrade": true,
+    "steps": true,
+    "roof": "lean-to",
+    "wall_colour": "#f7f4ee",
+    "roof_colour": "#8b3a2b",
+    "roof_material": "corrugated",
+    "trim_colour": "#6f9a8a"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    19,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f7f4ee",
+    "roofColour": "#6f9a8a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.8,
+    "bottom": 1.4,
+    "colour": "#f7f4ee",
+    "frameColour": "#6f9a8a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -22,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.8,
+    "tankHeight": 2.6,
+    "legHeight": 5,
+    "legs": 4,
+    "colour": "#3f6f8f"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e4dcc4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "daula-hospital-gusau"
+}

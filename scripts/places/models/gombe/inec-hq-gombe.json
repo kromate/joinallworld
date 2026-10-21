@@ -1,0 +1,206 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "inec-hq-gombe",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yahuzaishat",
+   "used": "only a signboard (cream board, green lettering, rusty frame): used for the cream and green palette, not for the building shape",
+   "ref": "https://commons.wikimedia.org/wiki/File:INEC_GOMBE_STATE.jpg"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gombe.json#inec-hq-gombe",
+   "used": "two-storey rendered state office, entrance porch, flagpole, fence wall, gate; Bauchi Road behind a filling station"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 7.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cd",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.4,
+    "plinth": 0.5,
+    "bands": "#3f7a5a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-block",
+   "footprint": {
+    "rect": [
+     9,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -5
+   ],
+   "height": 4.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b3a2b",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -7.2,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "count": 4,
+    "height": 4.4,
+    "radius": 0.25,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    12,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "height": 2.2,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#efe6cd"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -10,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.8,
+    "pillar": 0.6,
+    "colour": "#efe6cd",
+    "leafColour": "#3f7a5a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 0.6,
+    "colour": "#efe6cd",
+    "frameColour": "#3f7a5a",
+    "posts": true
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -18,
+    -11,
+    0
+   ],
+   "params": {
+    "colour": "#cfd2d4",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 3,
+    "line": 18
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   62,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the building exists: typical state-office form from the brief; OSM match is a 66 m2 nearest building, too small to use"
+ }
+}

@@ -1,0 +1,277 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: small public garden with lawns, shaded paths, two gazebos, two kiosks, entrance gate, fountain; nearest OSM building is 54 m away and the Wikidata hit is a song, so no footprint used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 22,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "courtyard-garden",
+   "id": "lawn-paths",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 48,
+    "fountainRadius": 0,
+    "trees": 0,
+    "paths": true
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 4.2
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.6,
+    "pillar": 1.2,
+    "leaf": "bars",
+    "arch": false,
+    "colour": "#e8e0cb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e8e0cb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    6,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.8,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e8e0cb"
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "id": "gazebo-w",
+   "at": [
+    -24,
+    22,
+    0
+   ],
+   "params": {
+    "radius": 3.8,
+    "height": 3.0,
+    "thatch": false,
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#e8e0cb"
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "id": "gazebo-e",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "radius": 3.4,
+    "height": 2.8,
+    "thatch": false,
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#e8e0cb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-a",
+   "footprint": {
+    "rect": [
+     4,
+     3.2
+    ]
+   },
+   "at": [
+    -30,
+    -28
+   ],
+   "height": 2.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b4654a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-b",
+   "footprint": {
+    "rect": [
+     4,
+     3.2
+    ]
+   },
+   "at": [
+    30,
+    -26
+   ],
+   "height": 2.9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 4.5,
+    "count": 4,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -5
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -8
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     34
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     34
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     -20
+    ],
+    "height": 7
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     15
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     15
+    ],
+    "height": 10
+   }
+  ],
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or real outline; composed from the brief (small garden, two gazebos, two kiosks, gate, fountain). Layout is typical, not surveyed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "love-garden"
+}

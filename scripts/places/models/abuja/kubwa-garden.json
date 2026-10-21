@@ -1,0 +1,218 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "kubwa-garden",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/abuja.json#kubwa-garden",
+   "used": "brief only (raised plots, shade trees, small pavilion, gate, water tank; about 70 x 50 m); no photo and no reliable outline: the OSM building at the shared Kubwa point belongs to the clinic"
+  }
+ ],
+ "parts": [
+  {
+   "type": "raised-plots",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rows": 4,
+    "cols": 6,
+    "plot_width": 5,
+    "plot_depth": 3.2,
+    "crop_colours": [
+     "#7aa05a",
+     "#4f8a3a",
+     "#a3b552",
+     "#c9a23a",
+     "#3f7a4a",
+     "#8a5a36"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.5,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#8a5a36",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      17,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.5,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#8a5a36",
+    "points": [
+     [
+      23,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      60,
+      48
+     ],
+     [
+      0,
+      48
+     ],
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -7,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "pillar": 0.4,
+    "colour": "#8a5a36"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "depth": 4.5,
+    "height": 3,
+    "form": "shed",
+    "support": "timber",
+    "colour": "#7a8a70",
+    "accent": "#8a5a36"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    26,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.3,
+    "tankHeight": 2,
+    "legHeight": 3.5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -24,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 0.25,
+    "tankHeight": 0.8,
+    "legHeight": 1.2,
+    "colour": "#5b6670"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.0,
+    "depth": 1.5,
+    "height": 1.0,
+    "colour": "#3f5a3a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -24,
+    16,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 14,
+    "count": 4,
+    "min_height": 7,
+    "max_height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline: a community garden from the brief only; layout, crop colours and the open shelter are typical, not observed. Watering cans/compost bin approximated by a low box."
+ }
+}

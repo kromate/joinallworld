@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: local minibus stop with a paved bay beside the road, one shed, a kiosk and waiting vehicles; no OSM outline or photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bay",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b8b4aa",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    -6,
+    12,
+    0.5
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4.5,
+    "height": 3.2,
+    "colour": "#cc9a3a",
+    "roofColour": "#9a5a3e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    12,
+    12,
+    0.5
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.5,
+    "colour": "#cc9a3a",
+    "roof_colour": "#9a5a3e"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -12,
+    0,
+    0.5
+   ],
+   "params": {
+    "colour": "#f0ece2",
+    "stripe": "#cc9a3a",
+    "count": 3,
+    "spacing": 4.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    4,
+    -2,
+    0.5
+   ],
+   "params": {
+    "colour": "#cc9a3a",
+    "stripe": "#1f1f22",
+    "count": 1,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    8,
+    -5,
+    0.5
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -16,
+    -6,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence at all for this stop; a typical minibus bay for the city"
+ }
+}

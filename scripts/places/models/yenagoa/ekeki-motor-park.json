@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "ekeki-motor-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#ekeki-motor-park",
+   "used": "60x40 m paved/laterite yard, two tin waiting sheds, ticket kiosks, bus bays; no OSM match, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 16,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -26,
+    -2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#d0a02c",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e5a4a",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "height": 4.6,
+    "roof": "shed",
+    "rise": 1.2,
+    "doors": 0,
+    "colour": "#cfc9b8",
+    "roof_colour": "#6e5a4a"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "at": [
+    16,
+    12,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 8,
+    "height": 4.2,
+    "roof": "gable",
+    "rise": 1.5,
+    "doors": 0,
+    "colour": "#cfc9b8",
+    "roof_colour": "#7a6552"
+   }
+  },
+  {
+   "type": "office-tower/ticket-kiosk",
+   "at": [
+    -6,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d0a02c",
+    "sign_colour": "#d0a02c"
+   }
+  },
+  {
+   "type": "office-tower/ticket-kiosk",
+   "at": [
+    1,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 2.6,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#cfc9b8",
+    "sign_colour": "#d0a02c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#d0a02c"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "kind": "van",
+    "density": 0.8,
+    "colours": [
+     "#f0c030",
+     "#ffffff",
+     "#2f6b4f"
+    ]
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -8,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "kind": "taxi",
+    "density": 0.6,
+    "colours": [
+     "#f0c030",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -28,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 2.5,
+    "colour": "#d0a02c",
+    "frameColour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    27,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 2.2,
+    "thickness": 0.25,
+    "colour": "#cfc9b8",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   72,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo, typical Niger Delta motor park layout"
+ }
+}

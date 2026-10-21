@@ -1,0 +1,1594 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "zagreb",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "zagreb",
+    "climate": "temperate",
+    "vernacular": "Central European Austro-Hungarian city: Lower Town (Donji grad) street blocks of three- to four-storey plastered tenements in pale yellow, ochre, cream and pink with sash windows, cornices and Secession details under hip roofs of red-brown tile; Upper Town and Kaptol with baroque and neo-Gothic churches; Zagorje and Turopolje villages of white rendered houses and manor castles with red clay-tile roofs; socialist-era exposed-concrete faculties and slab blocks in Novi Zagreb; glass-and-render malls and offices around the ring roads, among linden, chestnut and plane trees.",
+    "wallColours": [
+      "#e3c978",
+      "#efe6d0",
+      "#d8a98c",
+      "#c8b79a",
+      "#b9c4bd",
+      "#a8a29a",
+      "#8c3f33"
+    ],
+    "roofColours": [
+      "#a4452f",
+      "#7a4a3a",
+      "#66625e",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "stucco",
+      "exposed-concrete",
+      "concrete",
+      "brick",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "slate",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Secession and historicist stucco ornament, sash and arched windows with moulded surrounds, cornices, wrought-iron balconies, baroque church towers with onion-shaped helmets, neo-Gothic spires, brutalist concrete relief and pilotis, and baroque manor frescoes and pediments.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+        "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+      }
+    ]
+  },
+  "places": {
+    "zagreb-airport-zagreb-airport": {
+      "venueId": "zagreb-airport-zagreb-airport",
+      "city": "zagreb",
+      "name": "Zagreb Franjo Tuđman International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Franjo Tudjman Airport 2017 terminal from the forecourt: a broad three-level glass-fronted terminal with a long thin roof overhang and jet bridges behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8d2d8",
+          "#5f7080",
+          "#eceeee"
+        ],
+        "roofColour": "#b4b8ba",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Zagreb_Airport",
+          "what": "New terminal designed by Neidhardt, built by Bouygues with Viadukt from 2013, 65,800 m2 on three levels, opened 2017"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Neidhardt-designed terminal, 65,800 m2, three levels, opened 2017. Source gives area and levels only; width, height and glass tint are estimated. The 1960s terminal is not shown."
+    },
+    "zagreb-clinic": {
+      "venueId": "zagreb-clinic",
+      "city": "zagreb",
+      "name": "University Psychiatric Hospital Vrapče",
+      "archetype": "hospital",
+      "subject": "Vrapce psychiatric hospital: a historic 19th-century pavilion hospital in cream plaster with red tile hip roofs among tall old trees",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "pavilion-hospital",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e5d6a8",
+          "#a4452f",
+          "#f4efe0"
+        ],
+        "roofColour": "#a4452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1879 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Hospital in the Vrapce area from the Austro-Hungarian period; no building description found. Typed as a pavilion complex in the city style."
+    },
+    "zagreb-community-notices": {
+      "venueId": "zagreb-community-notices",
+      "city": "zagreb",
+      "name": "Općina Kraljevec na Sutli",
+      "archetype": "civic-small",
+      "subject": "Municipality of Kraljevec na Sutli: a small two-storey office with a hip roof, a flagpole and a car park, in a border village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#eadfc4",
+          "#a4452f",
+          "#f6f2e6"
+        ],
+        "roofColour": "#a4452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description of the building found. Typed from village municipal offices in Zagorje."
+    },
+    "zagreb-community-voting-game": {
+      "venueId": "zagreb-community-voting-game",
+      "city": "zagreb",
+      "name": "Općina Stubičke Toplice",
+      "archetype": "civic-small",
+      "subject": "Municipality of Stubicke Toplice: a two-storey rendered office hall with a tiled hip roof in a spa town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e0ccaa",
+          "#b0553a",
+          "#f4efe4"
+        ],
+        "roofColour": "#8c3f33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Name only; typed. A clock-tower is assumed from spa-town halls and is unverified."
+    },
+    "zagreb-community-workshop": {
+      "venueId": "zagreb-community-workshop",
+      "city": "zagreb",
+      "name": "Kineziološki fakultet",
+      "archetype": "campus-block",
+      "subject": "Faculty of Kinesiology: a long modernist faculty block with concrete frame, wide ribbon windows and a lower sports hall wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 28,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb8ae",
+          "#6f7d86",
+          "#e5e2da"
+        ],
+        "roofColour": "#7b7d7f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found. Typed from Yugoslav-era faculty buildings."
+    },
+    "zagreb-market-game": {
+      "venueId": "zagreb-market-game",
+      "city": "zagreb",
+      "name": "King Cross Jankomir",
+      "archetype": "mall",
+      "subject": "King Cross Jankomir: a retail park with a long rendered two-storey front, big signs and a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#c0502f",
+          "#f0ede4"
+        ],
+        "roofColour": "#6d7073",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found; typed as a Zagreb retail park."
+    },
+    "zagreb-meal-stop": {
+      "venueId": "zagreb-meal-stop",
+      "city": "zagreb",
+      "name": "Noel",
+      "archetype": "restaurant",
+      "subject": "Noel: a restaurant on the ground floor of a Lower Town tenement, with a pavement terrace and awning under pastel-yellow plaster",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "tenement-ground-floor"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e3c978",
+          "#7a4a3a",
+          "#f4efe0"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th century tenement",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Generic name; no description found. Typed."
+    },
+    "zagreb-osm-relation-2086542": {
+      "venueId": "zagreb-osm-relation-2086542",
+      "city": "zagreb",
+      "name": "Dvorac Lukavec",
+      "archetype": "manor",
+      "subject": "Lukavec castle: a two-storey baroque manor in cream plaster with a steep hip roof, set in a park near Velika Gorica",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "baroque-castle",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#ecdca8",
+          "#d3c08a",
+          "#fbf8ee"
+        ],
+        "roofColour": "#8c3f33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "17th-18th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found for this specific castle; typed from nearby Zagorje and Turopolje baroque manor houses."
+    },
+    "zagreb-osm-relation-2680527": {
+      "venueId": "zagreb-osm-relation-2680527",
+      "city": "zagreb",
+      "name": "Fakultet strojarstva i brodogradnje",
+      "archetype": "campus-block",
+      "subject": "Faculty of Mechanical Engineering and Naval Architecture: a large modernist block in exposed concrete and glass around laboratory halls",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b6b2a8",
+          "#6f7d86",
+          "#e3e0d8"
+        ],
+        "roofColour": "#76797b",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Typed from Yugoslav-era engineering faculties; no description found."
+    },
+    "zagreb-osm-way-151506756": {
+      "venueId": "zagreb-osm-way-151506756",
+      "city": "zagreb",
+      "name": "Dvorac Brezovica",
+      "archetype": "manor",
+      "subject": "Brezovica castle: a late Baroque two-storey cream-yellow manor with frescoed walls, a central pediment and a steep hip roof, set in parkland",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "baroque-castle",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e8d49a",
+          "#c4a96a",
+          "#faf5e8"
+        ],
+        "roofColour": "#8c3f33",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "Seven Years War frescoes"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "mid 18th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hr.wikipedia.org/wiki/Dvorac_Brezovica",
+          "what": "Late Baroque castle built mid-18th century by Josip Kazimir Draskovic, walls decorated with Seven Years War frescoes"
+        }
+      ],
+      "notes": "Built by Josip Kazimir Draskovic in the mid-1700s, walls decorated with Seven Years War frescoes. The source gives no colours, plan or storeys; the form and colours are typed from Zagorje manor houses."
+    },
+    "zagreb-osm-way-261119216": {
+      "venueId": "zagreb-osm-way-261119216",
+      "city": "zagreb",
+      "name": "Stjepan Spajić",
+      "archetype": "stadium",
+      "subject": "Stjepan Spajic stadium: a small city football ground with a low covered main stand and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb9b0",
+          "#3d6a8c",
+          "#e8e5de"
+        ],
+        "roofColour": "#555d65",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Local football ground; no description found. Typed."
+    },
+    "zagreb-osm-way-29023160": {
+      "venueId": "zagreb-osm-way-29023160",
+      "city": "zagreb",
+      "name": "Bundek",
+      "archetype": "park-landscape",
+      "subject": "Bundek: a large lakeside park with a big lake and a small lake, a sandy beach, footbridge, winding paths, playgrounds and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "lake-park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a98e6a",
+          "#c9bfa8",
+          "#e8e2d2"
+        ],
+        "roofColour": "#7f7a70",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "beach and lake edge"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2005 renovation",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bundek",
+          "what": "545,000 m2 park south of the Sava with big and small lakes, 10,000 m2 beach, paths, barbecue areas, playgrounds, carousel, bridge, renovated 2005"
+        }
+      ],
+      "notes": "Source: 545,000 m2, Veliko jezero and Malo jezero, 10,000 m2 beach, bridge, paths, barbecue areas, playgrounds, carousel at festivals. No pavilions mentioned; the pier, kiosks and fountain features are assumptions."
+    },
+    "zagreb-osm-way-296100147": {
+      "venueId": "zagreb-osm-way-296100147",
+      "city": "zagreb",
+      "name": "Stadion Lučko",
+      "archetype": "stadium",
+      "subject": "Stadion Lucko: a small village football ground with a short stand along one side and low fences",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c2beb5",
+          "#2f5d3c",
+          "#e6e3dc"
+        ],
+        "roofColour": "#575d62",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Local club ground; no description found."
+    },
+    "zagreb-osm-way-30014192": {
+      "venueId": "zagreb-osm-way-30014192",
+      "city": "zagreb",
+      "name": "Gradski stadion Velika Gorica",
+      "archetype": "stadium",
+      "subject": "Velika Gorica city stadium: a football stadium with a covered main stand, a terrace opposite, floodlights and a scoreboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 95,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bfbbb2",
+          "#27508a",
+          "#e8e5de"
+        ],
+        "roofColour": "#5a6168",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Home of a top-division club; no description found. Typed as a small covered stadium."
+    },
+    "zagreb-osm-way-350664499": {
+      "venueId": "zagreb-osm-way-350664499",
+      "city": "zagreb",
+      "name": "Zdravstveno veleučilište",
+      "archetype": "campus-block",
+      "subject": "Zdravstveno veleucilište (health polytechnic): a modern four-storey college block in pale render with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2dccc",
+          "#7b8e9b",
+          "#f3f0e8"
+        ],
+        "roofColour": "#6e7174",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found. Typed."
+    },
+    "zagreb-osm-way-589021801": {
+      "venueId": "zagreb-osm-way-589021801",
+      "city": "zagreb",
+      "name": "Klinička bolnica Merkur",
+      "archetype": "hospital",
+      "subject": "Merkur clinical hospital: a multi-storey 1980s-style hospital block in pale render with ribbon windows and rooftop plant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 28,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0dacb",
+          "#7b8e9b",
+          "#f3f0e8"
+        ],
+        "roofColour": "#6e7174",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Hospital in the eastern centre; no description found. Typed as a mid-rise block, distinct from the Dubrava slab."
+    },
+    "zagreb-osm-way-676820357": {
+      "venueId": "zagreb-osm-way-676820357",
+      "city": "zagreb",
+      "name": "crkva Presvetog Trojstva",
+      "archetype": "church-classical",
+      "subject": "Church of the Holy Trinity: a rural Croatian parish church with a plastered baroque nave, a single west tower with a bulbous helmet and a red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable",
+        "variant": "single-tower-parish"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe4c0",
+          "#c9b98a",
+          "#faf6ea"
+        ],
+        "roofColour": "#a4452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "onion-shaped helmet"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found. Typed from Zagorje parish churches."
+    },
+    "zagreb-osm-way-713274174": {
+      "venueId": "zagreb-osm-way-713274174",
+      "city": "zagreb",
+      "name": "kapelica Uzvišenja Svetog Križa",
+      "archetype": "shrine-small",
+      "subject": "Chapel of the Exaltation of the Holy Cross: a tiny whitewashed roadside chapel with a gabled front, a small wooden bell-turret and a red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "roadside-chapel"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#b8ad94",
+          "#ffffff"
+        ],
+        "roofColour": "#a4452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small turret"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found; typed from typical hillside chapels in the Zagorje."
+    },
+    "zagreb-osm-way-761095793": {
+      "venueId": "zagreb-osm-way-761095793",
+      "city": "zagreb",
+      "name": "kapela svetog Roka",
+      "archetype": "shrine-small",
+      "subject": "Chapel of St Roch: a small Turopolje village chapel with a plain gable front, a short wooden turret and a shingle or tile roof under oak trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "village-chapel"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dcc0",
+          "#7a5a3a",
+          "#f7f2e6"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small turret"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "18th-19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Chapels to St Roch are common in plague-memory villages; no description found for this one."
+    },
+    "zagreb-osm-way-78326996": {
+      "venueId": "zagreb-osm-way-78326996",
+      "city": "zagreb",
+      "name": "Klinička bolnica Dubrava",
+      "archetype": "hospital",
+      "subject": "Dubrava clinical hospital: a tall 1980s hospital slab with rows of ribbon windows and lower treatment wings at its base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 26,
+        "storeys": 12,
+        "height_m": 42,
+        "roof": "flat",
+        "variant": "slab-tower",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cdc8bc",
+          "#6c7b86",
+          "#e9e6de"
+        ],
+        "roofColour": "#707375",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Large eastern Zagreb hospital; no description found. Typed as a high slab to differ from Merkur."
+    },
+    "zagreb-osm-way-875744638": {
+      "venueId": "zagreb-osm-way-875744638",
+      "city": "zagreb",
+      "name": "Park mladenaca",
+      "archetype": "park-landscape",
+      "subject": "Park mladenaca: a neighbourhood park in Novi Zagreb with lawns between slab blocks, young trees, playgrounds and a paved path",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#c1b8a4",
+          "#d9d2c0",
+          "#ece6d8"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found; typed from Novi Zagreb district parks."
+    },
+    "zagreb-osm-way-880362547": {
+      "venueId": "zagreb-osm-way-880362547",
+      "city": "zagreb",
+      "name": "Faculty of Economics and Business",
+      "archetype": "campus-block",
+      "subject": "Faculty of Economics and Business: a huge modernist concrete faculty slab raised above its entrance and lower lecture-hall volumes",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "variant": "slab-with-podium",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b8b4aa",
+          "#6a7881",
+          "#e0ddd5"
+        ],
+        "roofColour": "#75787a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1960s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Typed as a Yugoslav brutalist faculty near Trg J. F. Kennedyja; no description found."
+    },
+    "zagreb-quiet-reflection": {
+      "venueId": "zagreb-quiet-reflection",
+      "city": "zagreb",
+      "name": "kapela svete Terezije od Djeteta Isusa u Trnju",
+      "archetype": "shrine-small",
+      "subject": "Chapel of St Therese of the Child Jesus in Trnje: a small modern chapel with a pale rendered nave, a pitched roof and a short bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "modern-chapel"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e9e3d1",
+          "#a4452f",
+          "#f6f2e6"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "No description found; typed."
+    },
+    "zagreb-recreation": {
+      "venueId": "zagreb-recreation",
+      "city": "zagreb",
+      "name": "Novi dvori",
+      "archetype": "manor",
+      "subject": "Novi dvori: a two-storey classicist manor with a central pedimented block and corner wings in cream plaster, set in a park with ponds",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "classicist-castle",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#ece0b8",
+          "#cbbd94",
+          "#fbf8ee"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Manor in Zapresic area; no source reached. Typed as a Croatian classicist country house in a park."
+    },
+    "zagreb-transit": {
+      "venueId": "zagreb-transit",
+      "city": "zagreb",
+      "name": "Zagreb Zapadni kolodvor",
+      "archetype": "transport-station",
+      "subject": "Zagreb Zapadni kolodvor (West station): the preserved 1862 station building in the standard Austro-Hungarian template, two storeys in cream plaster with a hip roof and a covered platform",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "1862-station",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6d08c",
+          "#b9a27a",
+          "#f7f1de"
+        ],
+        "roofColour": "#8c3f33",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1862 restored 2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hr.wikipedia.org/wiki/Zagreb_Zapadni_kolodvor",
+          "what": "1862 station on a standard Austro-Hungarian railway template by Wilhelm Gustav Flattich, built by G. Pongratz, reception building almost fully in original form, protected 1986, restored 2007"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Croatia",
+          "what": "Zagreb: Lenuzzi's Lower Town grid, Vienna Secession buildings (Ethnographic Museum 1901, Kallina House 1903, State Archives 1912), baroque cathedral roof and neo-Gothic restoration, Yugoslav brutalism (Zagrepcanka, Cibona Tower, Rakete)"
+        }
+      ],
+      "notes": "Station opened 1 October 1862 on a standard template by W. G. Flattich, built by G. Pongratz, reception building kept almost in its original form, protected 1986, restored 2007. Colours, dimensions and the small clock tower are typed estimates."
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "remo-civic-hall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1274844394",
+   "used": "real outline of the containing building (15 x 11 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/sagamu.json",
+   "used": "one-storey neoclassical hall, low central dome over porch, arched windows, flagpoles"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": 17
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 6.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#a4573d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    6.5
+   ],
+   "params": {
+    "radius": 3.8,
+    "height": 2.6,
+    "profile": "hemi",
+    "drum": 1.2,
+    "finial": 0.8,
+    "colour": "#9aa3a8",
+    "drumColour": "#f2eee6"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 3,
+    "height": 4.8,
+    "columns": 4,
+    "pediment": true,
+    "steps": 3,
+    "colour": "#f2eee6",
+    "roofColour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    9,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#f2f2f2"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#d8cfb8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     6
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     15,
+     5
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; real outline is smaller than the typed 32x18 hall, so dome/portico are scaled to it; portico side vs outline orientation unverified."
+ }
+}

@@ -1,0 +1,274 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/6028411",
+   "used": "overall extent only (322 x 232 m campus of scattered blocks, name match); a central cluster of linked blocks is modelled at scene scale"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     22,
+     46
+    ]
+   },
+   "at": [
+    -42,
+    10
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "bands": "#5a8aa8",
+    "plinth": 0.4,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     22,
+     46
+    ]
+   },
+   "at": [
+    42,
+    10
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "bands": "#5a8aa8",
+    "plinth": 0.4,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     62,
+     14
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "bands": "#5a8aa8",
+    "plinth": 0.4,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "outpatients",
+   "footprint": {
+    "rect": [
+     64,
+     22
+    ]
+   },
+   "at": [
+    0,
+    -26
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9ceb4",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bay": 8,
+    "bands": "#5a8aa8",
+    "plinth": 0.4,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -40
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5a8aa8",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a24a36",
+    "material": "metal-sheet",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "id": "amb",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 3.8
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "id": "rc",
+   "at": [
+    0,
+    -44.2,
+    9.3
+   ],
+   "params": {
+    "size": 2.6
+   }
+  },
+  {
+   "type": "rooftop-helipad",
+   "id": "hp",
+   "at": [
+    42,
+    26,
+    11.8
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "flag",
+   "id": "fl",
+   "at": [
+    -12,
+    -50,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 3.5
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "cp",
+   "at": [
+    28,
+    -50,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 14,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "id": "tr",
+   "at": [
+    0,
+    -58,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 4,
+    "kind": "broadleaf",
+    "height_min": 6,
+    "height_max": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   120
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; blocks, atrium and helipad typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-queen-mamohato-hospital"
+}

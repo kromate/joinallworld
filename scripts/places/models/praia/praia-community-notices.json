@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praia-Pal%C3%A1cio_Presidencial_(1).jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ji-Elle",
+   "view": "front",
+   "file": "/tmp/places-evidence/praia/palace1.jpg",
+   "used": "two-storey nine-bay cream facade with white pilaster trim, balustraded parapet, low hipped terracotta roof set back, arched centre window, lower wings, pink and yellow garden wall, grey iron gate between white lamp piers, green-white striped sentry box, cobbled forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12850410",
+   "used": "overall size (42 x 25 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 36,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f0e4a8",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "cornice": true,
+    "parapet": 1.0,
+    "plinth": 0.5,
+    "bands": "#fbf8ee",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "trimColour": "#ffffff",
+    "glassColour": "#b98a3a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9552f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.2,
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -1.6
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#f4efdc",
+    "windows": "arched",
+    "windowRatio": 0.35,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efdc",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    -31,
+    7
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#efe6bf",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 4,
+    "cornice": true,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b9552f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     11
+    ]
+   },
+   "at": [
+    25,
+    5
+   ],
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#dfc06a",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "bay": 3,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.8,
+    "thickness": 0.5,
+    "colour": "#efd98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -17,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.5,
+    "thickness": 0.9,
+    "colour": "#e9b5b0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.8,
+    "thickness": 0.5,
+    "colour": "#efd98a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    22,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.5,
+    "thickness": 0.9,
+    "colour": "#e9b5b0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 6.5,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "colour": "#fbfaf4",
+    "leafColour": "#7f8da0"
+   }
+  },
+  {
+   "type": "guard-kiosk",
+   "at": [
+    16.5,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "depth": 2.2,
+    "height": 2.8,
+    "colour": "#2e7d4f",
+    "roofColour": "#2e7d4f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -6,
+    8,
+    9
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 15
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    3.3,
+    -10,
+    6.5
+   ],
+   "params": {
+    "height": 1.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    12.7,
+    -10,
+    6.5
+   ],
+   "params": {
+    "height": 1.6
+   }
+  },
+  {
+   "type": "plaza",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 80,
+    "depth": 18,
+    "border": 0.8,
+    "colour": "#55534f",
+    "border_colour": "#ece8dc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "none",
+  "extent": [
+   100,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no cobble pattern or white kerb on forecourt, no ornate window surrounds or ochre shutters beyond tinted glass, gate leaves are plain bars without medallions, east wing louvre approximated"
+ }
+}

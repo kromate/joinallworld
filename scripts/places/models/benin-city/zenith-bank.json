@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "zenith-bank",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "no OSM match; the Wikidata image is the Lagos head office, not this branch. Modest three-storey glazed block with ATM lobby, flat canopy, blank board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 6,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#c9d3d8",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.4,
+    "bands": "#eeeeec",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atm-lobby",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    -8,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb0b8",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d838a",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    6,
+    -13.5,
+    4.6
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 6,
+    "height": 0,
+    "thickness": 0.5,
+    "columns": 4,
+    "colour": "#eeeeec",
+    "edgeColour": "#4a5560"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -10.2,
+    9.4
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#eeeeec",
+    "frameColour": "#4a5560",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -16,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No evidence for this branch (Wikidata image is Lagos head office); generic glazed bank branch."
+ }
+}

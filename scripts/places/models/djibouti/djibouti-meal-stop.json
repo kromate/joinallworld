@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/755300100",
+   "used": "6.6 m roundish kiosk outline, containing match"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/djibouti.json#djibouti-meal-stop",
+   "used": "kiosk cafe with shaded terrace, plastic tables, acacia; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kiosk",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d9b8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.2,
+    "bands": "#3a7d6c"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a80",
+    "material": "metal-sheet",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "depth": 4,
+    "height": 2.8,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#3a7d6c",
+    "accent": "#d8d0c0",
+    "roof_colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -2.5,
+    -7,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    2.5,
+    -7,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   40,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; kiosk outline real, terrace and colours typed from the brief."
+ }
+}

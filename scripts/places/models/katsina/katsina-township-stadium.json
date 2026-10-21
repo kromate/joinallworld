@@ -1,0 +1,271 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "katsina-township-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/2844420",
+   "used": "athletics track outline (177.6 x 93.1 m, leisure=track): sets the track and bowl size, scaled to 150 x 80 m to fit the model budget; oriented along x here"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "width": 80,
+    "colour": "#a85a45"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     -50
+    ],
+    "end": [
+     42,
+     -50
+    ],
+    "rows": 12,
+    "seatColour": "#8f6b4a",
+    "seatColours": [
+     "#8f6b4a",
+     "#e8dfc8"
+    ],
+    "blocks": 4,
+    "canopy": {
+     "height": 8,
+     "depth": 10,
+     "colour": "#6b6e70",
+     "slopeDeg": 3,
+     "supports": 5
+    },
+    "backWall": 1.0,
+    "under": "solid",
+    "concreteColour": "#b0aaa0",
+    "underColour": "#9a948a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     42,
+     48
+    ],
+    "end": [
+     -42,
+     48
+    ],
+    "rows": 7,
+    "seatColour": "#b0aaa0",
+    "concreteColour": "#a8a298",
+    "under": "open"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     35,
+     0
+    ],
+    "radius": 45,
+    "radiusY": 45,
+    "startDeg": -70,
+    "endDeg": 70,
+    "rows": 5,
+    "seatColour": "#b0aaa0",
+    "concreteColour": "#a8a298",
+    "under": "open",
+    "facetDeg": 20
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -35,
+     0
+    ],
+    "radius": 45,
+    "radiusY": 45,
+    "startDeg": 110,
+    "endDeg": 250,
+    "rows": 5,
+    "seatColour": "#b0aaa0",
+    "concreteColour": "#a8a298",
+    "under": "open",
+    "facetDeg": 20
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    58,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    58,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "head_width": 5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.5,
+    "post_height": 2.4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "length": 132,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    66,
+    0
+   ],
+   "params": {
+    "length": 132,
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -60,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.0,
+    "colour": "#e8dfc8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -80,
+     -40
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     80,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; typed one covered stand plus open terraces; track scaled from 177x93 to 150x80 m"
+ }
+}

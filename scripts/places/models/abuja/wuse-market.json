@@ -1,0 +1,788 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "wuse-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wuse_Market_Abuja_Nigeria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/abuja/wuse3.jpg",
+   "used": "low lock-up shops with sagging corrugated eaves and cloth awnings, tall tilted umbrellas in mixed maroon, red/yellow, green, lilac, grey; rear two-storey block; telecom mast; beaten laterite-brown ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:WUSE_MARKET_ENTRANCE_GATE_ABUJA_NIGERIA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/abuja/wuse2.jpg",
+   "used": "entrance: cream square piers with stone caps, green steel bar gate leaves, tall blue pylon board (left blank in model), pitted road, tree line behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/299203155",
+   "used": "market outline 363 x 266 m: too large for the scene clamp, a representative corner is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 6,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "shop row with rusty eaves and tall varied umbrellas now visible over open fronts; umbrellas are not tilted, no people, hanging cloth or signboards, laterite ground only approximate, telecom mast far right"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     40,
+     8
+    ]
+   },
+   "at": [
+    2,
+    25
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a89478",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a6a58",
+    "overhang": 0.3,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -8,
+    10,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 4.2,
+    "height": 3.3,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 2.4,
+    "wall_colour": "#c6a98a",
+    "roof_colour": "#a0553a",
+    "shutter_colours": [
+     "#5d6b72",
+     "#7b4f3a",
+     "#3d4f3f"
+    ],
+    "awning_colours": [
+     "#a8303c",
+     "#d9a43a",
+     "#2f6a9a",
+     "#7a8a6a"
+    ],
+    "goods_colours": [
+     "#d94a3a",
+     "#2f6fb8",
+     "#e0b030",
+     "#c13a7a",
+     "#3d9a5a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 16,
+    "depth": 3.8,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 2.4,
+    "wall_colour": "#b8a384",
+    "roof_colour": "#9a5a40",
+    "awning_colours": [
+     "#d9a43a",
+     "#a8303c",
+     "#2f9a6a"
+    ]
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -8,
+    6.6,
+    3.4
+   ],
+   "params": {
+    "kind": "wave",
+    "width": 28,
+    "depth": 3.2,
+    "rise": 0.35,
+    "waves": 6,
+    "thickness": 0.1,
+    "slopeY": -0.12,
+    "colour": "#8d8a82",
+    "material": "corrugated"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -20,
+    7.4,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      5.6
+     ],
+     [
+      0.3,
+      5.949999999999999,
+      "#8a2f3a"
+     ],
+     [
+      4.0,
+      4.8999999999999995,
+      "#8a2f3a"
+     ],
+     [
+      4.1,
+      4.6499999999999995,
+      "#8a2f3a"
+     ],
+     [
+      4.0,
+      4.699999999999999,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      5.199999999999999,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -13,
+    6.2,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      6.2
+     ],
+     [
+      0.3,
+      6.55,
+      "#c8402f"
+     ],
+     [
+      4.4,
+      5.5,
+      "#c8402f"
+     ],
+     [
+      4.5,
+      5.25,
+      "#c8402f"
+     ],
+     [
+      4.4,
+      5.3,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      5.8,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    7.4,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      5.0
+     ],
+     [
+      0.3,
+      5.35,
+      "#2f8a5a"
+     ],
+     [
+      4.800000000000001,
+      4.3,
+      "#2f8a5a"
+     ],
+     [
+      4.9,
+      4.05,
+      "#2f8a5a"
+     ],
+     [
+      4.800000000000001,
+      4.1,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      4.6,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    1,
+    6.2,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      5.6
+     ],
+     [
+      0.3,
+      5.949999999999999,
+      "#a89ac0"
+     ],
+     [
+      3.6,
+      4.8999999999999995,
+      "#a89ac0"
+     ],
+     [
+      3.7,
+      4.6499999999999995,
+      "#a89ac0"
+     ],
+     [
+      3.6,
+      4.699999999999999,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      5.199999999999999,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    7.4,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      6.2
+     ],
+     [
+      0.3,
+      6.55,
+      "#d9a43a"
+     ],
+     [
+      4.0,
+      5.5,
+      "#d9a43a"
+     ],
+     [
+      4.1,
+      5.25,
+      "#d9a43a"
+     ],
+     [
+      4.0,
+      5.3,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      5.8,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    15,
+    6.2,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      5.0
+     ],
+     [
+      0.3,
+      5.35,
+      "#5a6aa8"
+     ],
+     [
+      4.4,
+      4.3,
+      "#5a6aa8"
+     ],
+     [
+      4.5,
+      4.05,
+      "#5a6aa8"
+     ],
+     [
+      4.4,
+      4.1,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      4.6,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    22,
+    7.4,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      5.6
+     ],
+     [
+      0.3,
+      5.949999999999999,
+      "#8a2f3a"
+     ],
+     [
+      4.800000000000001,
+      4.8999999999999995,
+      "#8a2f3a"
+     ],
+     [
+      4.9,
+      4.6499999999999995,
+      "#8a2f3a"
+     ],
+     [
+      4.800000000000001,
+      4.699999999999999,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      5.199999999999999,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    29,
+    6.2,
+    0
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#8a8a8a",
+    "profile": [
+     [
+      0.06,
+      0
+     ],
+     [
+      0.06,
+      6.2
+     ],
+     [
+      0.3,
+      6.55,
+      "#6f7f9a"
+     ],
+     [
+      3.6,
+      5.5,
+      "#6f7f9a"
+     ],
+     [
+      3.7,
+      5.25,
+      "#6f7f9a"
+     ],
+     [
+      3.6,
+      5.3,
+      "#4a3e3a"
+     ],
+     [
+      0.1,
+      5.8,
+      "#4a3e3a"
+     ]
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "stall-row",
+   "at": [
+    -18,
+    0.3,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 6.4,
+    "kind": "table",
+    "size": 1.4,
+    "colours": [
+     "#3c6a9a",
+     "#a8303c",
+     "#d9a43a"
+    ],
+    "goods_colours": [
+     "#d94a3a",
+     "#2f6fb8",
+     "#e0b030",
+     "#c13a7a"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.6,
+    "pillar": 1.5,
+    "leaf": "bars",
+    "colour": "#cbc4b4",
+    "leafColour": "#55704f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -8,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     0.6
+    ],
+    "height": 10,
+    "colour": "#24459a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -8,
+    10
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.7
+    ],
+    "height": 0.4,
+    "colour": "#e8e8ee"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    26,
+    30,
+    6
+   ],
+   "params": {
+    "colour": "#9aa0a4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.2,
+       2.2
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     },
+     {
+      "z": 11,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/lamp",
+   "at": [
+    -32,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 4,
+    "spacing": 24
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    44,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "lod": [
+    0,
+    1
+   ],
+   "type": "core/tree",
+   "at": [
+    -40,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    40,
+    26,
+    0
+   ],
+   "params": {
+    "colour": "#b9bcc0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.0,
+       2.0
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "groundColour": "#a8845f",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   60
+  ]
+ }
+}

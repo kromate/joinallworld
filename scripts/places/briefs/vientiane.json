@@ -1,0 +1,1659 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "vientiane",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "vientiane",
+    "climate": "savanna",
+    "vernacular": "Low-rise tropical river city: two- to four-storey shophouses and French-colonial villas in stucco painted ochre, cream and faded pastel with timber shutters, arched verandahs and orange-red clay-tile or grey corrugated roofs; modern concrete blocks and Chinese-built stadiums and malls; Buddhist wats with white or cream walls, red and gold trim and tiered, upswept roofs; stilted timber houses and bamboo in the suburbs. Red laterite soil, frangipani, palm and tamarind trees, hot humid air.",
+    "wallColours": [
+      "#eadfc2",
+      "#d9b45a",
+      "#f2efe6",
+      "#b8b2a2",
+      "#9aa88f",
+      "#c26a4a",
+      "#d8c9a0"
+    ],
+    "roofColours": [
+      "#b5532f",
+      "#8a3a28",
+      "#7d8083",
+      "#a6813b",
+      "#4a4f55"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "timber",
+      "brick",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "gold-leaf",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Naga (serpent) balustrades on temple stairs; tiered upswept temple roofs with chofa finials and gilded relief; lotus-bud stupa tops; French-colonial louvred shutters, arched verandahs and moulded cornices; painted murals on wat walls; Lao silk-pattern friezes.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Pha_That_Luang",
+        "what": "Gold-covered stupa with three stepped levels (68 x 69 m, 48 m, 30 m), 45 m tall, cloister wall 85 m, naga and Khmer sculpture"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Vientiane",
+        "what": "Capital under French rule, Wat Si Muang 1563, Pha That Luang, Patuxai 1957-68, Settha Palace Hotel 1932; hot humid tropical-savanna climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Patuxai",
+        "what": "Concrete monument, five towers, naga statues, Lao temple-style ornament on a Parisian-style arch plan"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Lao_National_Museum",
+        "what": "Colonial building of 1925 (French governor residence), now museum on Samsenthai Road"
+      }
+    ]
+  },
+  "places": {
+    "vientiane-airport-vientiane-airport": {
+      "venueId": "vientiane-airport-vientiane-airport",
+      "city": "vientiane",
+      "name": "Wattay International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Wattay international terminal: a low, wide two-level terminal with a flat canopy over the entrance and a control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 193,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2,
+        "variant": "international terminal"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e2d3",
+          "#6f8591",
+          "#f4f2ea"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1999, expanded 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wattay_International_Airport",
+          "what": "Began operation 1999, terminal renovated 2005 (Japanese grant), expansion completed August 2018 with a new domestic terminal"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=17/17.985052/102.566692",
+          "what": "OSM aeroway=terminal, building 193 x 101 m, 14,636 m2"
+        }
+      ],
+      "notes": "Wikipedia has no exterior description; low-rise size is measured (193 m wide), the finish is typed. A modest airport. Medium confidence on size, low on colours."
+    },
+    "vientiane-clinic": {
+      "venueId": "vientiane-clinic",
+      "city": "vientiane",
+      "name": "Mahosot Hospital",
+      "archetype": "hospital",
+      "subject": "Mahosot Hospital on the Mekong riverside: a pale yellow colonial-era block with deep verandahs and a red-tile hip roof, beside newer concrete wings",
+      "form": {
+        "footprint": "L",
+        "width_m": 97,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "colonial block plus new wing"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#e6d9b4",
+          "#cfc9bb",
+          "#f4efe2"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor verandah"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1903 / 2018 new",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mahosot_Hospital",
+          "what": "Founded 1903 on Quai Fa Ngum, new hospital building under construction in 2018"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.96021/102.611837",
+          "what": "OSM building=hospital 97 x 55 m, Wikidata Q6734848"
+        }
+      ],
+      "notes": "Founded 1903; the colonial look is typed from the era and the city, not from a photo description. Low confidence."
+    },
+    "vientiane-community-notices": {
+      "venueId": "vientiane-community-notices",
+      "city": "vientiane",
+      "name": "Institut Pasteur du Laos",
+      "archetype": "office-low",
+      "subject": "A one-storey institute building in white painted render with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 41,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d4",
+          "#c9c3b4",
+          "#f4f0e6"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.962637/102.615103",
+          "what": "OSM building, 1 level, 41 x 41 m"
+        }
+      ],
+      "notes": "Name and footprint only. Low confidence."
+    },
+    "vientiane-community-voting-game": {
+      "venueId": "vientiane-community-voting-game",
+      "city": "vientiane",
+      "name": "Ban Phosy Village Office",
+      "archetype": "civic-small",
+      "subject": "A single-storey village office: a plain rendered hall with a corrugated roof and a flag pole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2d8bc",
+          "#b8b2a2",
+          "#f4f0e6"
+        ],
+        "roofColour": "#7d8083",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.84394/102.629602",
+          "what": "Location only; no OSM building"
+        }
+      ],
+      "notes": "No data for this village office; typed from the Lao rural civic-building pattern. Low confidence."
+    },
+    "vientiane-community-workshop": {
+      "venueId": "vientiane-community-workshop",
+      "city": "vientiane",
+      "name": "National University of Laos",
+      "archetype": "campus-block",
+      "subject": "A two-to-three-storey university block with an open corridor facade in cream render and red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4d9b8",
+          "#c9c3b4",
+          "#f4efe2"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "open access corridor"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.03799/102.635633",
+          "what": "OSM building 38 x 25 m, Wikidata Q536280"
+        }
+      ],
+      "notes": "Footprint only; typed. Low confidence."
+    },
+    "vientiane-market-game": {
+      "venueId": "vientiane-market-game",
+      "city": "vientiane",
+      "name": "Talat Sao Mall",
+      "archetype": "mall",
+      "subject": "Talat Sao Mall: a long four-storey shopping centre with a tiered facade and a parking deck, replacing the old sloped-roof morning market",
+      "form": {
+        "footprint": "rect",
+        "width_m": 162,
+        "depth_m": 31,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "stepped",
+        "wings": 2,
+        "variant": "market-mall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7dcc2",
+          "#7f93a0",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8a3a28",
+        "roofMaterial": "clay-tile",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (market 1960s)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Talat_Sao",
+          "what": "Original market two storeys with several sloping roofs; newer four-storey shopping centre with indoor parking"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=17/17.964722/102.614065",
+          "what": "OSM building 162 x 31 m, Wikidata Q7678953"
+        }
+      ],
+      "notes": "Wikipedia confirms four storeys, indoor parking and the sloped-roof old market. The facade colours are typed. Medium confidence."
+    },
+    "vientiane-meal-stop": {
+      "venueId": "vientiane-meal-stop",
+      "city": "vientiane",
+      "name": "Chokdee Cafe & Beer Bar",
+      "archetype": "restaurant",
+      "subject": "A small open-fronted cafe and beer bar in a two-storey shophouse with a roller shutter and a hanging sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "shophouse bar"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9b45a",
+          "#7a4a2c",
+          "#f2efe6"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.963088/102.605821",
+          "what": "OSM building 26 x 14 m next to the riverside tourist street"
+        }
+      ],
+      "notes": "Typical riverside tourist-quarter shophouse. Low confidence."
+    },
+    "vientiane-osm-node-11486599694": {
+      "venueId": "vientiane-osm-node-11486599694",
+      "city": "vientiane",
+      "name": "Xaithani District Hospital",
+      "archetype": "hospital",
+      "subject": "A district hospital: low pavilion blocks joined by covered walkways, pale paint and a hip tile roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "district hospital"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d4",
+          "#cfc9bb",
+          "#f4efe2"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/11486599694",
+          "what": "OSM hospital node"
+        }
+      ],
+      "notes": "No building footprint or description. Low confidence."
+    },
+    "vientiane-osm-node-12114176243": {
+      "venueId": "vientiane-osm-node-12114176243",
+      "city": "vientiane",
+      "name": "Houaychiam Health Center (Palai)",
+      "archetype": "hospital",
+      "subject": "A small rural health centre: a single low rendered block with a red roof and a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc3",
+          "#cfc9bb",
+          "#f4efe2"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/12114176243",
+          "what": "OSM hospital node (health centre)"
+        }
+      ],
+      "notes": "No description; typed from rural health post. Low confidence."
+    },
+    "vientiane-osm-node-2244979473": {
+      "venueId": "vientiane-osm-node-2244979473",
+      "city": "vientiane",
+      "name": "Dane Soung Viewpoint",
+      "archetype": "park-landscape",
+      "subject": "A hilltop lookout over the hills and river: a timber pavilion and railed terrace on a forested slope",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6a44",
+          "#6f8a5a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#7d8083",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "timber rail"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.121737/102.43856",
+          "what": "Viewpoint node; no description found"
+        }
+      ],
+      "notes": "Name and point only. Low confidence."
+    },
+    "vientiane-osm-node-2340078795": {
+      "venueId": "vientiane-osm-node-2340078795",
+      "city": "vientiane",
+      "name": "Naxatythong Market",
+      "archetype": "market-open",
+      "subject": "A district market: a long steel-framed shed with a corrugated roof over rows of stalls and open edges for vendors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "covered stalls"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b2",
+          "#8f8a80",
+          "#e9e4d6"
+        ],
+        "roofColour": "#7d8083",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.073566/102.533517",
+          "what": "OSM building 45 x 21 m"
+        }
+      ],
+      "notes": "Typical Lao covered local market. Low confidence."
+    },
+    "vientiane-osm-node-3645511715": {
+      "venueId": "vientiane-osm-node-3645511715",
+      "city": "vientiane",
+      "name": "Vongphone Grilled",
+      "archetype": "restaurant",
+      "subject": "A roadside open-air grilled-food restaurant: a pitched tin roof on posts over timber tables with smoking grills at the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "variant": "open-air"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6a44",
+          "#b8b2a2",
+          "#4a3a2e"
+        ],
+        "roofColour": "#7d8083",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.887778/102.732434",
+          "what": "Node only"
+        }
+      ],
+      "notes": "Name suggests grilled meat/fish roadside place; typed. Low confidence."
+    },
+    "vientiane-osm-node-4384724640": {
+      "venueId": "vientiane-osm-node-4384724640",
+      "city": "vientiane",
+      "name": "Tat Vang-Nong",
+      "archetype": "park-landscape",
+      "subject": "A forest waterfall site: rocks and a stepped cascade in jungle with a timber viewing platform",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8a80",
+          "#3f6a3a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#7d8083",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.027406/102.446186",
+          "what": "Node only; tat means waterfall in Lao"
+        }
+      ],
+      "notes": "Tat means waterfall; the exact site is not described in what was read. Low confidence."
+    },
+    "vientiane-osm-node-5036948326": {
+      "venueId": "vientiane-osm-node-5036948326",
+      "city": "vientiane",
+      "name": "Kan Ngeun Dong Kham Xang",
+      "archetype": "campus-block",
+      "subject": "A two-storey school building with an open corridor and a red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcb6",
+          "#c9c3b4",
+          "#f4efe2"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.912043/102.665513",
+          "what": "OSM building 62 x 29 m"
+        }
+      ],
+      "notes": "Educational use per game data; no description. Low confidence."
+    },
+    "vientiane-osm-node-523575544": {
+      "venueId": "vientiane-osm-node-523575544",
+      "city": "vientiane",
+      "name": "Vientiane Jamia Masjid",
+      "archetype": "mosque-domed",
+      "subject": "A small mosque in white and green with a single dome and a minaret, hemmed in by the old-town streets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome",
+        "wings": 1,
+        "variant": "small urban mosque"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#eeeae0",
+          "#3d7a52",
+          "#c9a24a"
+        ],
+        "roofColour": "#3d7a52",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/523575544",
+          "what": "OSM place_of_worship labelled Mosquee, building 18 x 15 m"
+        }
+      ],
+      "notes": "Mosque of the Muslim community in the old town; colours are typical, not read from a source. Low confidence."
+    },
+    "vientiane-osm-node-524296626": {
+      "venueId": "vientiane-osm-node-524296626",
+      "city": "vientiane",
+      "name": "Kualao Restaurant",
+      "archetype": "restaurant",
+      "subject": "A Lao restaurant in a two-storey French-colonial villa with a wide verandah, yellow stucco and a red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1,
+        "variant": "colonial villa"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#d9b45a",
+          "#7a4a2c",
+          "#f2efe6"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor verandah"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1920s-1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/524296626",
+          "what": "OSM node/building 30 x 28 m near the city centre"
+        }
+      ],
+      "notes": "The building is typed as a colonial villa from the street it sits on; not confirmed by a read source. Low confidence."
+    },
+    "vientiane-osm-node-6978079256": {
+      "venueId": "vientiane-osm-node-6978079256",
+      "city": "vientiane",
+      "name": "National University of Laos, Faculty of Water Resources",
+      "archetype": "campus-block",
+      "subject": "A small faculty building of two storeys in cream render",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcb6",
+          "#c9c3b4",
+          "#f4efe2"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/17.990091/102.505479",
+          "what": "OSM building 15 x 15 m"
+        }
+      ],
+      "notes": "Footprint only. Low confidence."
+    },
+    "vientiane-osm-way-41566774": {
+      "venueId": "vientiane-osm-way-41566774",
+      "city": "vientiane",
+      "name": "Patuxai Victory Monument",
+      "archetype": "monument",
+      "subject": "Patuxai, the Vientiane victory monument: a seven-level concrete gate with four arches, five Lao-style towers and naga statues, beside a lotus-shaped pond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 23,
+        "storeys": 7,
+        "height_m": 55,
+        "roof": "stepped",
+        "wings": 4,
+        "variant": "four-way gate"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stucco",
+        "colours": [
+          "#c4bca6",
+          "#a6813b",
+          "#e6e0cf"
+        ],
+        "roofColour": "#a6813b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "four-way gateway arches"
+        },
+        {
+          "id": "pinnacles",
+          "count": 5,
+          "note": "five towers with temple-style spires"
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "naga kings at the corners"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lotus ponds and musical fountain"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "1957-1968",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Patuxai",
+          "what": "Seven floors, concrete, five towers, gateways on four sides, naga king statues spraying water into lotus-like ponds, roof inspired by the Taj Mahal, Lao in design, built 1957-68"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41566774",
+          "what": "OSM monument footprint 24.8 x 23.3 m, Wikidata Q1442518"
+        }
+      ],
+      "notes": "Often called the Arc de Triomphe of Vientiane but with Lao ornament and five tiered towers on top; weathered grey-beige concrete. Real height about 55 m (OSM tag of 174 m is wrong). High confidence."
+    },
+    "vientiane-osm-way-42389632": {
+      "venueId": "vientiane-osm-way-42389632",
+      "city": "vientiane",
+      "name": "Wat Si Muang",
+      "archetype": "temple-asian",
+      "subject": "Wat Si Muang: a Lao sim with a multi-tiered upswept red-tile roof, red and gold decoration at the entrance and a city-pillar shrine, with Khmer ruins at the rear",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "stepped",
+        "wings": 1,
+        "variant": "sim with tiered roof"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#a8322a",
+          "#c9a24a"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pinnacles",
+          "count": 3,
+          "note": "chofa gable finials"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "naga-balustraded stairs"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "King Sisavang Vong statue in front"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "1563, rebuilt 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wat_Si_Muang",
+          "what": "Completed 1563; two rooms, front quiet, rear main altar; Khmer Hindu shrine remains behind; statue of King Sisavang Vong in front"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vientiane",
+          "what": "Built 1563 on the ruins of a Khmer Hindu shrine; remains visible behind the ordination hall"
+        }
+      ],
+      "notes": "The sim is a Lao temple hall with tiered roofs; the colours are typed from the genre. Medium confidence."
+    },
+    "vientiane-osm-way-549654627": {
+      "venueId": "vientiane-osm-way-549654627",
+      "city": "vientiane",
+      "name": "Lao National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Lao National Museum: a two-storey yellow colonial building (1925 French governor residence) with white trim, shuttered windows and a red tile hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "colonial villa"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d9b45a",
+          "#f2efe6",
+          "#8a6a4a"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched ground-floor verandah"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1925",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lao_National_Museum",
+          "what": "Built 1925 as the French governor residence, on Samsenthai Road, grants in 2007, revamped in the 2010s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/549654627",
+          "what": "OSM museum building 72 x 55 m, Wikidata Q2572281"
+        }
+      ],
+      "notes": "Colonial-era style and use are confirmed; the yellow-and-white colours with red tile roof are typed from the standard French-colonial Lao scheme. Medium confidence."
+    },
+    "vientiane-osm-way-613407768": {
+      "venueId": "vientiane-osm-way-613407768",
+      "city": "vientiane",
+      "name": "Anouvong Stadium (Laos National Stadium)",
+      "archetype": "stadium",
+      "subject": "A 20,000-seat downtown athletics and football stadium with an oval bowl, a partly roofed main stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 187,
+        "depth_m": 184,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "older national stadium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcabb",
+          "#a8452a",
+          "#e9e4d6"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-1970s, renovated 2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Laos_National_Stadium",
+          "what": "Capacity 20,000, grass pitch 95 x 60 m, renovated March 2008, closed for renovation since 2025"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/613407768",
+          "what": "OSM stadium 187 x 184 m, Wikidata Q11257134"
+        }
+      ],
+      "notes": "Wikipedia confirms size, capacity and renovation but gives no look; concrete bowl with a partial roof typed. Medium confidence."
+    },
+    "vientiane-osm-way-665451513": {
+      "venueId": "vientiane-osm-way-665451513",
+      "city": "vientiane",
+      "name": "New Laos National Stadium (Main Stadium)",
+      "archetype": "stadium",
+      "subject": "A modern 25,000-seat Chinese-built bowl with a white steel canopy over the stands, red athletics track and floodlights, set in a sports complex",
+      "form": {
+        "footprint": "oval",
+        "width_m": 228,
+        "depth_m": 222,
+        "storeys": 3,
+        "height_m": 34,
+        "roof": "curved",
+        "variant": "2009 SEA Games stadium"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cd",
+          "#b9341f",
+          "#f0efec"
+        ],
+        "roofColour": "#e6e8ea",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "white steel canopy over the stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/New_Laos_National_Stadium",
+          "what": "Opened 2009 for the SEA Games, 25,000-seat main stadium, built by Shanghai Construction Group, grass field 95 x 60 m with running track"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/665451513",
+          "what": "OSM stadium 228 x 222 m, start date 2009, Wikidata Q1382956"
+        }
+      ],
+      "notes": "Capacity, year and builder are confirmed; the white steel canopy and red track are typed from the standard SEA Games stadium design. Medium confidence."
+    },
+    "vientiane-quiet-reflection": {
+      "venueId": "vientiane-quiet-reflection",
+      "city": "vientiane",
+      "name": "Pha That Luang",
+      "archetype": "temple-asian",
+      "subject": "Pha That Luang, the gold-covered national stupa: three stepped terraces under a tall lotus-bud spire, ringed by smaller stupas and a cloister wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 85,
+        "storeys": 4,
+        "height_m": 45,
+        "roof": "pyramidal",
+        "wings": 4,
+        "variant": "great stupa"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#e8c24a",
+          "#efe6cf",
+          "#a8322a"
+        ],
+        "roofColour": "#e8c24a",
+        "roofMaterial": "gold-leaf",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "main gilded stupa, three levels (68 m, 48 m, 30 m sides) rising 45 m"
+        },
+        {
+          "id": "pinnacles",
+          "count": 30,
+          "note": "smaller stupas ring the base"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "cloister wall about 85 m per side"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "naga sculptures"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "1566, rebuilt 1930s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pha_That_Luang",
+          "what": "Gold-covered stupa, three stepped levels about 68 x 69 m, 48 m and 30 m, 45 m tall, 30 small stupas around, cloister wall 85 m per side, Lao and Khmer sculpture, restored c.1900 and rebuilt 1930s"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vientiane",
+          "what": "Gilded stupa 45 m tall, originally built 1566, restored 1953"
+        }
+      ],
+      "notes": "The most recognisable place in Laos; bright gold stupa with a white-washed cloister. Medium-large clamped to 120 m. High confidence."
+    },
+    "vientiane-recreation": {
+      "venueId": "vientiane-recreation",
+      "city": "vientiane",
+      "name": "North Lake Park",
+      "archetype": "park-landscape",
+      "subject": "A lakeside public park: wide lawns, tamarind and palm trees, a path along the lake edge and a small sala (open pavilion)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6a44",
+          "#6f8a5a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#a8452a",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "open sala pavilions"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "southeast-asian",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.02114/102.759111",
+          "what": "Point only; no description found"
+        }
+      ],
+      "notes": "Name and point only. Low confidence."
+    },
+    "vientiane-transit": {
+      "venueId": "vientiane-transit",
+      "city": "vientiane",
+      "name": "Vientiane Railway Station (Laos-China Railway)",
+      "archetype": "transport-station",
+      "subject": "Vientiane Station of the China-Laos Railway: a large, modern station building with a wide forecourt and a broad multi-pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 195,
+        "depth_m": 64,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "stepped",
+        "wings": 2,
+        "variant": "high-speed rail station"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3ddd0",
+          "#7f8f9a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a3a28",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=16/18.047051/102.690742",
+          "what": "OSM train station 195 x 64 m, 2 levels"
+        }
+      ],
+      "notes": "Station of the Laos-China railway; appearance not read from a source, and a Lao-style roof is not confirmed. Low confidence."
+    }
+  }
+}

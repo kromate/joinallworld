@@ -1,0 +1,372 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/613753750",
+   "used": "real outline (218 x 148 m, bearing 156 deg, name match) for the oval extent and pitch orientation; whole model scaled to 0.62 to fit the 160 m scene clamp"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Sani_Abacha_Stadium",
+   "used": "16,000-seat two-tier concrete bowl, opened 1998, covered main stand, floodlight masts; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "rotDeg": 156,
+   "params": {
+    "points": [
+     [
+      44.0,
+      0.0
+     ],
+     [
+      43.33,
+      5.03
+     ],
+     [
+      41.35,
+      9.92
+     ],
+     [
+      38.1,
+      14.5
+     ],
+     [
+      33.71,
+      18.64
+     ],
+     [
+      28.28,
+      22.22
+     ],
+     [
+      22.0,
+      25.11
+     ],
+     [
+      15.05,
+      27.25
+     ],
+     [
+      7.64,
+      28.56
+     ],
+     [
+      0.0,
+      29.0
+     ],
+     [
+      -7.64,
+      28.56
+     ],
+     [
+      -15.05,
+      27.25
+     ],
+     [
+      -22.0,
+      25.11
+     ],
+     [
+      -28.28,
+      22.22
+     ],
+     [
+      -33.71,
+      18.64
+     ],
+     [
+      -38.1,
+      14.5
+     ],
+     [
+      -41.35,
+      9.92
+     ],
+     [
+      -43.33,
+      5.03
+     ],
+     [
+      -44.0,
+      0.0
+     ],
+     [
+      -43.33,
+      -5.03
+     ],
+     [
+      -41.35,
+      -9.92
+     ],
+     [
+      -38.1,
+      -14.5
+     ],
+     [
+      -33.71,
+      -18.64
+     ],
+     [
+      -28.28,
+      -22.22
+     ],
+     [
+      -22.0,
+      -25.11
+     ],
+     [
+      -15.05,
+      -27.25
+     ],
+     [
+      -7.64,
+      -28.56
+     ],
+     [
+      -0.0,
+      -29.0
+     ],
+     [
+      7.64,
+      -28.56
+     ],
+     [
+      15.05,
+      -27.25
+     ],
+     [
+      22.0,
+      -25.11
+     ],
+     [
+      28.28,
+      -22.22
+     ],
+     [
+      33.71,
+      -18.64
+     ],
+     [
+      38.1,
+      -14.5
+     ],
+     [
+      41.35,
+      -9.92
+     ],
+     [
+      43.33,
+      -5.03
+     ]
+    ],
+    "height": 0.15,
+    "colour": "#b9b5a8"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0.0,
+    0.0,
+    0.15
+   ],
+   "rotDeg": 156,
+   "params": {
+    "length": 52.5,
+    "width": 34.0
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0.0,
+    0.0,
+    0.12
+   ],
+   "rotDeg": 156,
+   "params": {
+    "length": 65.0,
+    "width": 43.0
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48.0,
+    "radiusY": 33.0,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 14,
+    "rise": 0.6,
+    "run": 0.7,
+    "firstHeight": 2.5,
+    "facetDeg": 9,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 5,
+    "seatColour": "#2f6b4f",
+    "seatColours": [
+     "#2f6b4f",
+     "#d9d4c4"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c9c4b6",
+    "underColour": "#a8a29a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0.0,
+    -37.0,
+    10
+   ],
+   "params": {
+    "form": "flat",
+    "width": 42.0,
+    "depth": 11,
+    "height": 0.5,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#8a8f94",
+    "edgeColour": "#d9d4c4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 41.94,
+    "radiusY": 29.84,
+    "startDeg": 45,
+    "endDeg": 315,
+    "count": 4,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "floodlight-mast",
+      "params": {
+       "height": 32,
+       "head_width": 5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0.0,
+    38.0,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0.0,
+    -44.0,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.6,
+    "colour": "#c9c4b6",
+    "board_colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9.68,
+    -47.0,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 4,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -54.0,
+    -15.0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    55.0,
+    15.0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   130,
+   115
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no photo found; outline-based oval bowl scaled to 0.5 to fit the 120 m clamp, stands and roof are estimated"
+ }
+}

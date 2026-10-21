@@ -1,0 +1,381 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:H%C3%B4pital_militaire_de_Tunis.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Flickr user 49503369@N00",
+   "view": "street",
+   "file": "/tmp/places-evidence/tunis/hosp.jpg",
+   "used": "tall cream slab tower with dark window strip on its end face, long 5-storey podium wing with dark teal ribbon bands, white blocks either side, low flat roofs"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/95199308",
+   "used": "site is ~280 m long; a representative 110 m portion is modelled (outline clamped by scene size)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 16,
+  "pitchDeg": 3,
+  "fovDeg": 60,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     84,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d5",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2f4d5c"
+      ],
+      "height": 0.6,
+      "floors": "all",
+      "proud": 0.3
+     }
+    ],
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f4d5c",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium-upper",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4e0d5",
+    "windows": "ribbon",
+    "windowRatio": 0.34,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2f4d5c"
+      ],
+      "height": 0.55,
+      "floors": "all",
+      "proud": 0.35
+     }
+    ],
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69c",
+    "parapet": 0.8
+   },
+   "z0": 7
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    3,
+    16.6
+   ],
+   "params": {
+    "rect": [
+     84.6,
+     16.6
+    ],
+    "height": 0.9,
+    "colour": "#1f3a47"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     20,
+     44
+    ]
+   },
+   "at": [
+    -6,
+    20
+   ],
+   "height": 44,
+   "storeys": 11,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6e2d8",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.2,
+    "bay": 11,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.4,
+      "spacing": 1.6,
+      "colour": "#cfcabd",
+      "faces": [
+       "left",
+       "right"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69c",
+    "parapet": 0.6
+   },
+   "z0": 17
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -50,
+    4
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ded2",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    47,
+    6
+   ],
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e5dc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "bay": 9
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa69c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    32,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.5,
+    -2.4,
+    17
+   ],
+   "params": {
+    "rect": [
+     3,
+     0.5
+    ],
+    "height": 27,
+    "colour": "#1f4650"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     5
+    ],
+    "height": 0.05,
+    "colour": "#55575a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "rect": [
+     130,
+     0.5
+    ],
+    "height": 0.2,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    12,
+    -21,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "kind": "coach",
+    "density": 1.0,
+    "colours": [
+     "#d9a81e"
+    ],
+    "yaw": 0,
+    "lines": false
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "colour": "#e8b81c",
+    "count": 1,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   116,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tower sides use fine fins but lack the photo's ribbed profile; podium steps back in only one tier; bus is a rigid coach not articulated; site shows 110 m of the 280 m complex; no lettering by rule."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-way-95199308"
+}

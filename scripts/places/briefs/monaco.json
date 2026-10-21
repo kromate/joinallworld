@@ -1,0 +1,1573 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "monaco",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "monaco",
+    "climate": "mediterranean",
+    "vernacular": "A dense hillside city-state on the Riviera: Belle Epoque and Beaux-Arts buildings in cream limestone and warm ochre, apricot, pink and pale yellow render with stucco ornament, wrought-iron balconies and green shutters; the Rock of Monaco-Ville has medieval Genoese-Italian houses in pastel render and a Louis XIV-style palace; modern Fontvieille is reclaimed land with white and cream mid-rise blocks with terraces and balconies; high-rises and glass towers climb the slopes. Mansard roofs in zinc or slate, terracotta tile, copper cupolas with green patina; palms, pines, agave and bougainvillea.",
+    "wallColours": [
+      "#e8d6a5",
+      "#d9a86c",
+      "#e6b7a1",
+      "#f1e9d6",
+      "#c9774f",
+      "#e5dcc4",
+      "#b8c4c8"
+    ],
+    "roofColours": [
+      "#b5593c",
+      "#8a6a52",
+      "#6e8b7c",
+      "#7a7f84",
+      "#c8c2b4"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "limestone",
+      "render",
+      "terracotta",
+      "stone",
+      "concrete",
+      "glass-curtain",
+      "marble"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "copper",
+      "slate",
+      "concrete",
+      "membrane",
+      "glass"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Garnier-era Beaux-Arts: carved pediments, caryatids, balustrades, twin ornate towers, wrought-iron balconies, striped awnings; Genoese pastel render with shutters and trompe-l oeil window frames on the Rock; Baroque Revival cliff-front staircases; terraces and balconies throughout.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Monaco",
+        "what": "French Belle Epoque with Italian/Genoese influence, Louis XIV palace, cream-coloured stone cathedral, locally sourced granite, marble and terracotta tile in modern buildings, coloured turrets, terraces and balconies. Specific hex colours are from general photographic knowledge of Monaco rather than a citation."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fontvieille,_Monaco",
+        "what": "Fontvieille is reclaimed land, built from 1966; parks, stadium, heliport and museums there"
+      }
+    ]
+  },
+  "places": {
+    "monaco-airport-monaco-airport": {
+      "venueId": "monaco-airport-monaco-airport",
+      "city": "monaco",
+      "name": "Monaco Heliport",
+      "archetype": "airport-terminal",
+      "subject": "Monaco Heliport: a compact two-storey helicopter terminal on the Fontvieille quay with a drop-off apron and helipads, hangars alongside, facing the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1e9d6",
+          "#6f93a8",
+          "#c9c2b0"
+        ],
+        "roofColour": "#b8b4a8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 8
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1976, extended later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monaco_Heliport",
+          "what": "Opened 1976; one terminal structure, eight pads (two extending over the sea), four hangars, underground parking and a drop-off area at the terminal front, elevation 6 m, Fontvieille coast"
+        }
+      ],
+      "notes": "Counts of pads/hangars are sourced; the terminal size and colours are estimated. Pads A and B project out over the water as piers."
+    },
+    "monaco-clinic": {
+      "venueId": "monaco-clinic",
+      "city": "monaco",
+      "name": "Centre Cardio Thoracique de Monaco",
+      "archetype": "hospital",
+      "subject": "Centre Cardio-Thoracique de Monaco: a compact modern cream-rendered clinic block with terraced balconies on a steep street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 7,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eadfc4",
+          "#c8b890",
+          "#f4efe2"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from Monaco apartment-and-clinic block pattern (cream render, terraces). Distinct from the larger Princess Grace complex."
+    },
+    "monaco-community-notices": {
+      "venueId": "monaco-community-notices",
+      "city": "monaco",
+      "name": "Palais de Justice",
+      "archetype": "civic-palace",
+      "subject": "Palais de Justice on the Rock of Monaco-Ville: a formal cream-stone court building with pilasters and a pedimented entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#e5dcc4",
+          "#c9a87a",
+          "#f4efe2"
+        ],
+        "roofColour": "#b5593c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A fetched source for the building was not found. Recalled as an early-20th-century stone courthouse on the Rock. Treat dimensions and details as typed."
+    },
+    "monaco-community-voting-game": {
+      "venueId": "monaco-community-voting-game",
+      "city": "monaco",
+      "name": "Casino Square",
+      "archetype": "museum-theatre",
+      "subject": "Casino de Monte-Carlo on Casino Square: the Garnier Beaux-Arts gaming house with ornate twin towers, balconies and a sculpted facade, fronting the square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "mansard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#e5dcc4",
+          "#c9b88a",
+          "#f6f1e2"
+        ],
+        "roofColour": "#6e8b7c",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1863, remodelled 1878-79",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monte_Carlo_Casino",
+          "what": "Beaux Arts style; built 1858-1863, transformed 1878-79 by Jules Dutrou and Charles Garnier, facade on Place du Casino, Hotel de Paris and Cafe de Paris on the same square, bus interchange"
+        }
+      ],
+      "notes": "Venue is Casino Square; shown as its dominant building, the Casino facade, because the square is defined by it. The twin towers with green copper cupolas are the signature. Hotel de Paris and Cafe de Paris are separate venues and need not be shown."
+    },
+    "monaco-community-workshop": {
+      "venueId": "monaco-community-workshop",
+      "city": "monaco",
+      "name": "International University of Monaco",
+      "archetype": "campus-block",
+      "subject": "International University of Monaco: classrooms and offices tucked beneath and beside the Stade Louis II concrete complex in Fontvieille",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d3c4",
+          "#7e9aa8",
+          "#f1efe8"
+        ],
+        "roofColour": "#8d9195",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Louis_II",
+          "what": "Stands house an underground complex including the International University of Monaco; stadium opened 1985; Fontvieille reclaimed land"
+        }
+      ],
+      "notes": "Location inside the Louis II complex is sourced; the facade is typed. The arch motif from the stadium makes it recognisable."
+    },
+    "monaco-market-game": {
+      "venueId": "monaco-market-game",
+      "city": "monaco",
+      "name": "Marché de Monte-Carlo",
+      "archetype": "market-hall",
+      "subject": "Marche de Monte-Carlo: a small covered market hall with arched openings and stalls under a pitched roof near the Boulevard des Moulins",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e6c98f",
+          "#6e8b7c",
+          "#f1e9d6"
+        ],
+        "roofColour": "#6e8b7c",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a small Riviera covered market."
+    },
+    "monaco-meal-stop": {
+      "venueId": "monaco-meal-stop",
+      "city": "monaco",
+      "name": "Café de Paris",
+      "archetype": "restaurant",
+      "subject": "Cafe de Paris on Casino Square: a Belle Epoque corner building with a broad glazed terrace under red-and-cream awnings",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "mansard"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#e3cfa0",
+          "#b43a34",
+          "#f4efe2"
+        ],
+        "roofColour": "#6f7a76",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "Belle Epoque",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monte_Carlo_Casino",
+          "what": "Cafe de Paris stands on Place du Casino beside the Casino and Hotel de Paris"
+        }
+      ],
+      "notes": "Location sourced; facade colours and awnings come from general photographs. Blank awnings, no lettering."
+    },
+    "monaco-osm-node-4354597820": {
+      "venueId": "monaco-osm-node-4354597820",
+      "city": "monaco",
+      "name": "Le Métropole",
+      "archetype": "mall",
+      "subject": "Le Metropole shopping gallery: an upscale arcade of boutiques in a cream Belle Epoque hotel complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "mansard"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe5c9",
+          "#c9b88a",
+          "#f9f4e4"
+        ],
+        "roofColour": "#6f7a76",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "Belle Epoque",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Shopping gallery attached to a hotel on Avenue de la Madone area; not described by a fetched source. Typed from city style."
+    },
+    "monaco-osm-node-4893574386": {
+      "venueId": "monaco-osm-node-4893574386",
+      "city": "monaco",
+      "name": "Le Grill",
+      "archetype": "hotel",
+      "subject": "Hotel de Paris (home of Le Grill on the top floor): a grand Second Empire / Belle Epoque hotel on Casino Square with mansard roofs and balconies",
+      "form": {
+        "footprint": "U",
+        "width_m": 95,
+        "depth_m": 35,
+        "storeys": 7,
+        "height_m": 32,
+        "roof": "mansard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#e5dcc4",
+          "#c9b88a",
+          "#f6f1e2"
+        ],
+        "roofColour": "#6f7a76",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1864",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/H%C3%B4tel_de_Paris_Monte-Carlo",
+          "what": "Opened 1864 by Societe des Bains de Mer, Belle Epoque / Second Empire, enlarged by Jules Dutrou from two storeys, on Place du Casino"
+        }
+      ],
+      "notes": "Le Grill restaurant is the hotel top-floor dining room; shown as the hotel building. Dimensions are estimates; style and location sourced."
+    },
+    "monaco-osm-node-5919288520": {
+      "venueId": "monaco-osm-node-5919288520",
+      "city": "monaco",
+      "name": "Musée des Timbres et des Monnaies",
+      "archetype": "museum-theatre",
+      "subject": "Musee des Timbres et des Monnaies: a small modern two-storey museum of stamps and coins in the Fontvieille terraces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1e9d6",
+          "#d9a86c",
+          "#c9c2b0"
+        ],
+        "roofColour": "#b8b4a8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fontvieille,_Monaco",
+          "what": "Museum of Stamps and Coins is in Fontvieille district"
+        }
+      ],
+      "notes": "Location sourced; building form typed from the Fontvieille cream mid-rise pattern."
+    },
+    "monaco-osm-node-6461009225": {
+      "venueId": "monaco-osm-node-6461009225",
+      "city": "monaco",
+      "name": "Jardin exotique - allée louis Barral",
+      "archetype": "park-landscape",
+      "subject": "Jardin Exotique: a cliff-hung terraced garden of cacti and succulents with footbridges and stairs descending the rock face",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8a98c",
+          "#7a9a5a",
+          "#d8cfb8"
+        ],
+        "roofColour": "#b8a98c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 4
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1933",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jardin_Exotique_de_Monaco",
+          "what": "Cliffside garden at Les Moneghetti, begun 1913, opened 1931 and inaugurated 1933, designed by Louis Notari with natural-looking rock features, footbridges, a grotto, over 1000 succulent species, Museum of Prehistoric Anthropology since 1959"
+        }
+      ],
+      "notes": "Spiky agave and cactus clusters on stepped rock terraces are the signature; no tall trees."
+    },
+    "monaco-osm-node-7857077111": {
+      "venueId": "monaco-osm-node-7857077111",
+      "city": "monaco",
+      "name": "Pavyllon",
+      "archetype": "restaurant",
+      "subject": "Pavyllon: a glass-fronted fine-dining pavilion within a Belle Epoque hotel setting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "stucco",
+        "colours": [
+          "#e8e2d2",
+          "#9aa8ac",
+          "#f4efe2"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Restaurant location only; building form not described. Typed as a modern glazed dining pavilion in the Monte Carlo hotel zone."
+    },
+    "monaco-osm-node-7930513065": {
+      "venueId": "monaco-osm-node-7930513065",
+      "city": "monaco",
+      "name": "Fondation Hector Ott",
+      "archetype": "hospital",
+      "subject": "Fondation Hector Otto: a small residential-care block in warm render with balconies on the hillside",
+      "form": {
+        "footprint": "L",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 5,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9a86c",
+          "#e8d6a5",
+          "#f1e9d6"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Care foundation; no building description found. Typed as an ochre Riviera mid-rise."
+    },
+    "monaco-osm-relation-13453960": {
+      "venueId": "monaco-osm-relation-13453960",
+      "city": "monaco",
+      "name": "New National Museum of Monaco",
+      "archetype": "manor",
+      "subject": "New National Museum of Monaco (Villa Sauber and Villa Paloma): Belle Epoque seafront villas used as galleries, white-rendered with decorative balconies",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#f1e9d6",
+          "#c9a87a",
+          "#fbf6e8"
+        ],
+        "roofColour": "#b5593c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "Belle Epoque",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Two villas on Avenue Princesse Grace; shown as one generic Riviera villa because no description was retrievable."
+    },
+    "monaco-osm-way-157719658": {
+      "venueId": "monaco-osm-way-157719658",
+      "city": "monaco",
+      "name": "Japanese Garden",
+      "archetype": "park-landscape",
+      "subject": "Japanese Garden: a seaside Zen garden with a stylised mountain, waterfall, brook, small lake and tea house, designed by Yasuo Beppu",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a67c4c",
+          "#7aa05a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#6b5a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "1994",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Japanese_Garden,_Monaco",
+          "what": "0.7 ha, Avenue Princesse Grace in Larvotto, commissioned by Prince Rainier III in 1994, designed by Yasuo Beppu: mountain, hill, waterfall, beach, brook, Zen garden, lake and tea house"
+        }
+      ],
+      "notes": "Raked gravel Zen area, small hill with waterfall, tea house with dark timber and dark tile roof. Dimensions derived from 0.7 ha."
+    },
+    "monaco-osm-way-157719659": {
+      "venueId": "monaco-osm-way-157719659",
+      "city": "monaco",
+      "name": "Jardins de la Petite Afrique",
+      "archetype": "park-landscape",
+      "subject": "Jardins de la Petite Afrique: a small terraced tropical garden above the Casino gardens with palms, exotic plants and stepped walks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8bda0",
+          "#6f9a52",
+          "#d8cfb8"
+        ],
+        "roofColour": "#c8bda0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small tropical garden near the Casino; no description found."
+    },
+    "monaco-osm-way-201286353": {
+      "venueId": "monaco-osm-way-201286353",
+      "city": "monaco",
+      "name": "Halles du marché de la Condamine",
+      "archetype": "market-hall",
+      "subject": "Halles du marche de la Condamine: an open-sided covered market hall with a pitched green metal roof and fruit-and-flower stalls on Place d Armes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#e6d6a8",
+          "#4f7a6a",
+          "#f1e9d6"
+        ],
+        "roofColour": "#4f7a6a",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Daily covered market at the foot of the Rock in La Condamine; no source retrieved. Typed from market-hall type; pastel buildings surround the square."
+    },
+    "monaco-osm-way-23715051": {
+      "venueId": "monaco-osm-way-23715051",
+      "city": "monaco",
+      "name": "Oceanographic Museum of Monaco",
+      "archetype": "museum-theatre",
+      "subject": "Oceanographic Museum of Monaco: a monumental Baroque Revival palace of pale La Turbie stone clinging to the sea cliff, with a long frieze and a wide entrance stair",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 42,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#e9e3d1",
+          "#cfc4a6",
+          "#f6f2e6"
+        ],
+        "roofColour": "#a79f8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1910",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oceanographic_Museum_of_Monaco",
+          "what": "About 100,000 tons of La Turbie stone, 85 m high (from sea level), frieze with names of twenty research vessels, Baroque Revival, set into sea cliff, inaugurated 1910 after eleven years"
+        }
+      ],
+      "notes": "Height 85 m is measured from the sea-level foot of the cliff; the building above the street is about 40 m. Present the street-side facade and the long sea-edge frieze. White/cream limestone, no bright colours."
+    },
+    "monaco-osm-way-49209155": {
+      "venueId": "monaco-osm-way-49209155",
+      "city": "monaco",
+      "name": "Louis II Stadium",
+      "archetype": "stadium",
+      "subject": "Stade Louis II: a white concrete oval stadium on reclaimed land, noted for the nine large arches at the away end, with a car park and university beneath",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 4,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#e8e6df",
+          "#c9c6bb",
+          "#8d9195"
+        ],
+        "roofColour": "#d8d6cc",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 9
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1985",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Louis_II",
+          "what": "16,360 seats, nine arches at the away end, built on reclaimed land May 1981 to 1984, opened 25 Jan 1985, pitch 105x68, oval stands, Salle Gaston Medecin, car park, university and offices under the stands"
+        }
+      ],
+      "notes": "The nine-arch facade is the signature element and must be on the end facing -Y. Colours are light concrete and white; dimensions estimated."
+    },
+    "monaco-osm-way-49209406": {
+      "venueId": "monaco-osm-way-49209406",
+      "city": "monaco",
+      "name": "Princess Grace Hospital",
+      "archetype": "hospital",
+      "subject": "Princess Grace Hospital Centre: a large multi-wing cream hospital with a tall central block and terraces",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 9,
+        "height_m": 36,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#eadfc4",
+          "#b8c4c8",
+          "#f4efe2"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1902, expanded 1958 and later",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Grace_Hospital_Centre",
+          "what": "Opened 1902 as Monaco Hospital, expanded 1958 with a polyclinic, 631 beds, avenue Pasteur"
+        }
+      ],
+      "notes": "The description of the building was a stub, so the storey count and colour are estimated; 631 beds implies a large multi-wing block."
+    },
+    "monaco-osm-way-49209644": {
+      "venueId": "monaco-osm-way-49209644",
+      "city": "monaco",
+      "name": "Chapelle de la Miséricorde",
+      "archetype": "shrine-small",
+      "subject": "Chapelle de la Misericorde on the Rock: a small Baroque chapel with a plain cream facade, a curved pediment and a tiny belfry on a narrow street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e8d6a5",
+          "#d9c28a",
+          "#f1e9d6"
+        ],
+        "roofColour": "#b5593c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "17th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Recalled as a small 17th-century confraternity chapel on the Rock; no source retrieved so low confidence."
+    },
+    "monaco-osm-way-94399398": {
+      "venueId": "monaco-osm-way-94399398",
+      "city": "monaco",
+      "name": "Chapelle Sainte-Dévote",
+      "archetype": "shrine-small",
+      "subject": "Chapelle Sainte-Devote: a small white-and-cream chapel at the foot of a ravine, reached by a flight of steps, with a slim bell tower and a pointed gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#e5dcc4",
+          "#c9b88a",
+          "#f4efe2"
+        ],
+        "roofColour": "#b5593c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "11th century origin, rebuilt 19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Patron saint chapel at the Sainte-Devote corner; viaduct above. Description recalled, not fetched."
+    },
+    "monaco-quiet-reflection": {
+      "venueId": "monaco-quiet-reflection",
+      "city": "monaco",
+      "name": "Église des Carmes",
+      "archetype": "church-classical",
+      "subject": "Eglise des Carmes: a modest parish church with a rendered facade, small bell tower and arched windows on the slope above Monte-Carlo",
+      "form": {
+        "footprint": "cross",
+        "width_m": 16,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8d6a5",
+          "#c9a87a",
+          "#f1e9d6"
+        ],
+        "roofColour": "#b5593c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a Riviera parish church."
+    },
+    "monaco-recreation": {
+      "venueId": "monaco-recreation",
+      "city": "monaco",
+      "name": "Fontvieille Park",
+      "archetype": "park-landscape",
+      "subject": "Fontvieille Park: a landscaped waterfront park on reclaimed land with a duck pond, lawns, sculpture and paths beside the Princess Grace Rose Garden",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8bda0",
+          "#6f9a52",
+          "#d8cfb8"
+        ],
+        "roofColour": "#c8bda0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1970s-80s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fontvieille,_Monaco",
+          "what": "About four hectares of Fontvieille Park and the Princess Grace Rose Garden on reclaimed land, zoological garden also there"
+        }
+      ],
+      "notes": "Area and location sourced; elements like pond and sculptures recalled. Backdrop of cream mid-rise blocks."
+    },
+    "monaco-transit": {
+      "venueId": "monaco-transit",
+      "city": "monaco",
+      "name": "Monaco - Monte Carlo",
+      "archetype": "transport-station",
+      "subject": "Monaco - Monte Carlo railway station: an underground station in a long curved tunnel with concrete portals cut into the hillside and sunlit entrance halls above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "stone",
+        "colours": [
+          "#bdb8aa",
+          "#d9a86c",
+          "#e8e6df"
+        ],
+        "roofColour": "#8d9195",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monaco-Monte-Carlo_station",
+          "what": "Entirely underground in a curved tunnel 466 m long, 22 m wide and 13 m high; three tracks, side platform and island platform; opened 7 Dec 1999 in the Sainte-Devote ravine"
+        }
+      ],
+      "notes": "Tunnel dimensions are sourced. Show the street-level hillside portal and entrance hall; tracks pass behind into rock."
+    }
+  }
+}

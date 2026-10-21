@@ -1,0 +1,446 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_International_Airport_Terminal.jpg",
+   "licence": "CC BY 2.0",
+   "author": "kopee15",
+   "view": "back",
+   "file": "/tmp/places-evidence/abuja/airport3.jpg",
+   "used": "airside elevation of the new terminal: long low glazed wing broken by grey slit-window piers, taller grey hall with a swept metal roof, lower light-grey annex, grey colours, glazing tint"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abuja_airport_expansion.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jamie Tubers",
+   "view": "street",
+   "used": "landside: angular folded roof over a diagonally braced glass gable, green fascia band, long flat canopy walkway"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nnamdi_Azikiwe_international_airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fawaz.tairou",
+   "view": "detail",
+   "used": "dark grey panel cladding with vertical slit windows, big overhanging swept roof edges"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/557738455",
+   "used": "overall size only (408 m long): a 114 m portion is modelled, the real outline is too long for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 176,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "glass-wing",
+   "footprint": {
+    "rect": [
+     62,
+     30
+    ]
+   },
+   "at": [
+    41,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#9fb2b6",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4aaae",
+    "material": "metal-sheet",
+    "overhang": 1.0,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-end",
+   "footprint": {
+    "rect": [
+     6,
+     31
+    ]
+   },
+   "at": [
+    51,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9da0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4aaae",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-mid",
+   "footprint": {
+    "rect": [
+     6,
+     31
+    ]
+   },
+   "at": [
+    31,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9da0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4aaae",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-in",
+   "footprint": {
+    "rect": [
+     6,
+     31
+    ]
+   },
+   "at": [
+    11,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9da0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4aaae",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     28,
+     34
+    ]
+   },
+   "at": [
+    -4,
+    1
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9a9ea3",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "curtain",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 4.5,
+    "overhang": 7,
+    "colour": "#a0a6ab",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-2",
+   "footprint": {
+    "rect": [
+     12,
+     28
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8f949a",
+    "windows": "none",
+    "windowRatio": 0.14,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 3.5,
+    "overhang": 6,
+    "colour": "#6c7279",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     20,
+     24
+    ]
+   },
+   "at": [
+    -42,
+    -2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#b9bcbf",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "bands": "#a4a8ab"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -4,
+    -18.5,
+    12.4
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#1f7a4d",
+    "posts": false
+   }
+  },
+  {
+   "type": "jet-bridge",
+   "at": [
+    -44,
+    10.0,
+    4.2
+   ],
+   "params": {
+    "length": 15,
+    "colour": "#b5bbc0"
+   }
+  },
+  {
+   "type": "airliner",
+   "at": [
+    -30,
+    64,
+    0
+   ],
+   "rotDeg": -80,
+   "params": {
+    "scale": 1.0,
+    "colour": "#eef1f2",
+    "tailColour": "#e07b2a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    30,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 6,
+    "spacing": 17
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-far",
+   "footprint": {
+    "rect": [
+     6,
+     31
+    ]
+   },
+   "at": [
+    71,
+    0
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#9a9da0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a4aaae",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof",
+   "at": [
+    -4,
+    1
+   ],
+   "params": {
+    "rect": [
+     44,
+     52
+    ],
+    "z0": 14.0,
+    "height": 2.2,
+    "topScale": 0.62,
+    "topOffset": [
+     0,
+     3
+    ],
+    "colour": "#b3b8bc",
+    "topColour": "#c2c6c9"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "wing-roof2",
+   "at": [
+    -27,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     40
+    ],
+    "z0": 11.0,
+    "height": 1.6,
+    "topScale": 0.6,
+    "topOffset": [
+     0,
+     3
+    ],
+    "colour": "#b3b8bc",
+    "topColour": "#c2c6c9"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     10,
+     -32
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only ~126 m of the ~400 m terminal is modelled; wing roofs are tapered slabs not folded plates; render sky-lighting still tints the grey cladding blue; no control tower."
+ }
+}

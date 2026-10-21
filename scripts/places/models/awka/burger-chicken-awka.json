@@ -1,0 +1,188 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "burger-chicken-awka",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1118161419",
+   "used": "real outline (151 m2, nearest match 5 m); size 13x12 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: single-storey fast-food unit, glazed front, red and yellow painted fascia, blank signage; no photo of this unit exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "unit",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4ede0",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#d9402a",
+    "plinth": 0.35,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9196",
+    "material": "concrete",
+    "overhang": 0.4,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     12,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -6.9
+   ],
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9402a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2c230",
+    "material": "concrete",
+    "overhang": 0.1
+   },
+   "z0": 3.4
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -6.4,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "height": 2.8,
+    "colours": [
+     "#d9402a",
+     "#f2c230"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8.5,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 4.5,
+    "bottom": 3.0,
+    "colour": "#f2c230",
+    "frameColour": "#d9402a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -5,
+    -10.5,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4.5,
+    "colours": [
+     "#d9402a",
+     "#f2c230"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -11,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    6,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#c9ccd0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the unit; modelled on the real 13x12 m outline plus brief colours."
+ }
+}

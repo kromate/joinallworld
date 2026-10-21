@@ -1,0 +1,378 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "uj-esuene-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:U.J_Esuene_Stadium,_Calabar.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ei'eke",
+   "view": "side",
+   "used": "low pale-grey concrete stand wall with a dark flat roof fascia, a blue two-storey admin block with a blue pitched roof at the right, tall floodlight masts with square lamp heads at the left, grass foreground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/617583331",
+   "used": "overall size and oval bowl shape (about 200 x 130 m, scaled down to the scene clamp)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 48,
+    "n": 16,
+    "height": 0.1,
+    "colour": "#5f8f4a",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 36,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 5,
+    "rise": 0.7,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "facetDeg": 26,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#b9b7b0",
+    "concreteColour": "#cfcdc6",
+    "underColour": "#c9c6be",
+    "canopy": {
+     "height": 0.6,
+     "depth": 8,
+     "thickness": 0.6,
+     "slopeDeg": 2,
+     "colour": "#3a3d40",
+     "edgeColour": "#d8d6d0",
+     "overhangBack": 0.8
+    }
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    20,
+    -40
+   ],
+   "height": 9,
+   "storeys": 2,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2b63b5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "glassColour": "#1d2b44",
+    "plinth": 0,
+    "bay": 3.5,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2b63b5",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin-wing",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    36,
+    -40
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e8e4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "glassColour": "#1d2b44",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a6",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "arc",
+    "centre": [
+     0,
+     0,
+     0
+    ],
+    "radius": 58,
+    "radiusY": 43,
+    "startDeg": 150,
+    "endDeg": 330,
+    "count": 4,
+    "facing": "outward",
+    "of": [
+     {
+      "type": "lattice-mast",
+      "params": {
+       "height": 30,
+       "baseWidth": 2.4,
+       "topWidth": 0.8,
+       "panels": 6,
+       "colour": "#8d9297",
+       "colour2": "#8d9297"
+      }
+     },
+     {
+      "type": "array",
+      "at": [
+       0,
+       0,
+       31
+      ],
+      "params": {
+       "mode": "grid",
+       "cols": 3,
+       "rows": 3,
+       "dx": 1.0,
+       "dy": 1.0,
+       "of": [
+        {
+         "type": "prism",
+         "params": {
+          "rect": [
+           0.7,
+           0.5
+          ],
+          "height": 0.7,
+          "colour": "#f2f2ee"
+         }
+        }
+       ]
+      },
+      "lod": [
+       0
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -44
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 3.5,
+    "colour": "#cfcdc6",
+    "frameColour": "#3a3d40"
+   }
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    44,
+    -30
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -44,
+    -38,
+    0
+   ],
+   "params": {
+    "colour": "#6b4f36",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": 1.8
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#b9b7b0",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "cx": -1.5
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -38.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.6
+    ],
+    "height": 2.6,
+    "colour": "#c9632b"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -38.5,
+    2.6
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.6
+    ],
+    "height": 2.6,
+    "colour": "#d9772f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -28,
+    -38.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     2.6
+    ],
+    "height": 2.6,
+    "colour": "#b8541f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -72,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bowl still a full oval and reads larger than the long low stand in the photo; floodlight heads are small lamp grids not tilted; leaning poles and telecom tower are simple; vegetation and cars omitted; camera is higher than the ground-level photo."
+ }
+}

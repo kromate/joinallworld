@@ -1,0 +1,245 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#kasuwan-mata",
+   "used": "no photo found; OSM building is a 63 m2 shed 6 m away so not trusted; dense women's market: back lock-up row, side lock-ups, open sheds, rows of umbrella stalls on laterite"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     48
+    ],
+    "height": 0.08,
+    "colour": "#b98a5e",
+    "material": "laterite"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups-back",
+   "footprint": {
+    "rect": [
+     44,
+     6
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9a77c",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a5a3c",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups-west",
+   "footprint": {
+    "rect": [
+     6,
+     30
+    ]
+   },
+   "at": [
+    -26,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a3",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "rise": 0.8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "shed",
+    "roof_colour": "#7a5a3c"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#d9a441",
+     "#2f6b8a",
+     "#b5453a",
+     "#4f8a3f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "colours": [
+     "#f0e6d0",
+     "#c9743a",
+     "#3a7a6b"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -16,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "stall",
+    "colours": [
+     "#8a8f94",
+     "#b5453a",
+     "#2f6b8a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 7,
+    "spread": 5,
+    "colours": [
+     "#d9a441",
+     "#b5453a",
+     "#2f6b8a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -3,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 28,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   64
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "kasuwan-mata",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stall layout, colours and sizes are estimates from the brief."
+ }
+}

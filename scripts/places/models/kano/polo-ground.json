@@ -1,0 +1,230 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "polo-ground",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/207548967",
+   "used": "real outline of the Polo Pitch (231 x 130 m, leisure=pitch), scaled to the 118 m scene clamp; pavilion and stand placed along its south side by the brief (colonial 1930s club, corrugated roofs)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "field",
+   "footprint": {
+    "osm": true,
+    "fit": 118,
+    "rotDeg": 0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7fa05a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa05a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clubhouse",
+   "footprint": {
+    "rect": [
+     18,
+     7
+    ]
+   },
+   "at": [
+    -18,
+    -56
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.4,
+    "bands": "#5f8f6a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "params": {
+    "length": 18,
+    "depth": 2.8,
+    "height": 3.0,
+    "roof": "lean-to"
+   },
+   "at": [
+    -18,
+    -62,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "stand",
+   "footprint": {
+    "rect": [
+     22,
+     5
+    ]
+   },
+   "at": [
+    14,
+    -58
+   ],
+   "z0": 1.2,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-deck",
+   "footprint": {
+    "rect": [
+     22,
+     6
+    ]
+   },
+   "at": [
+    14,
+    -61
+   ],
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a39a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -34,
+    -52,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "params": {
+    "length": 90,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 4.5,
+    "height_min": 9,
+    "height_max": 12
+   },
+   "at": [
+    0,
+    62,
+    0
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -45,
+    -70,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "params": {
+    "height": 18,
+    "head_width": 3
+   },
+   "at": [
+    -60,
+    -40,
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "params": {
+    "height": 18,
+    "head_width": 3
+   },
+   "at": [
+    60,
+    -40,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this place exists in evidence: outline scaled 0.45 to the scene clamp, clubhouse/stand follow the brief text only"
+ }
+}

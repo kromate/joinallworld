@@ -1,0 +1,161 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1034382925",
+   "used": "checked only: the containing outline (1483 m2, odd 8-point plan) looks like the whole compound, so the nave is a 32 x 16 m rectangle from the brief"
+  },
+  {
+   "kind": "text",
+   "used": "brief: gabled rendered colonial-era parish church, front bell tower, round-arched windows, clay-tile roof (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "rect": [
+     32,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "bay": 4.5,
+    "plinth": 0.6,
+    "bands": "#a8643f",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4b36",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "tower",
+   "params": {
+    "rect": [
+     5.4,
+     5.4
+    ],
+    "z0": 0,
+    "height": 15,
+    "colour": "#efe6d0",
+    "topColour": "#a8643f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "storeys": 3
+   },
+   "at": [
+    0,
+    -10.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "tower-cap",
+   "params": {
+    "rect": [
+     6.0,
+     6.0
+    ],
+    "z0": 15,
+    "height": 5,
+    "colour": "#8a4b36",
+    "topScale": 0.05
+   },
+   "at": [
+    0,
+    -10.7
+   ]
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -14.5
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.9,
+    "run": 2,
+    "count": 4,
+    "colour": "#b9ae98"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "boundary",
+   "at": [
+    0,
+    -34
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d8cfb8",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "id": "palms",
+   "at": [
+    -20,
+    -26
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 10,
+    "colour": "#4f7a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "st-james-catholic-church",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo; nave and tower massing from the brief only, OSM outline judged to be the compound"
+ }
+}

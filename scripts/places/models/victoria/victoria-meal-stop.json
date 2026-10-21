@@ -1,0 +1,130 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/616299944",
+   "used": "real outline (containing match, tagged 1 level, gabled, mixed material; OSM name differs: Island restaurant and cafe)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: seaside Creole cafe, one storey, veranda, tables outside, red roof"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "cafe",
+   "footprint": {
+    "osm": true,
+    "fit": 22
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb0c8",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#f4efe4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a63d32",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2.4,
+    "drop": 0.6,
+    "height": 2.6,
+    "colours": [
+     "#a63d32",
+     "#f4efe4"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "thickness": 0.1,
+    "kind": "fence",
+    "pillarEvery": 2.0,
+    "colour": "#f4efe4"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    15,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   55,
+   45
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-meal-stop",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: OSM outline plus brief; veranda, colours typed guesses."
+ }
+}

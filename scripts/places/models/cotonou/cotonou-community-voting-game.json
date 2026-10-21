@@ -1,0 +1,448 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_de_l'Amazone_au_Benin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Alfrednadjere",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/amz1.jpg",
+   "used": "whole statue: dark bronze-grey standing Amazon, rifle held upright in her right hand, machete down in left, rough rock behind legs, low pink-taupe base with black plaque, open paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Le_monument_de_l'Amazone.jpg",
+   "licence": "CC0",
+   "author": "Mister Kolson",
+   "view": "side",
+   "file": "/tmp/places-evidence/cotonou/amz2.jpg",
+   "used": "pose, proportions, rock support"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_de_l'amazone.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AKE Amazan",
+   "view": "detail",
+   "file": "/tmp/places-evidence/cotonou/ommunity-voting-game-1.jpg",
+   "used": "hammered pink-taupe plinth colour and inset black plaque"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base",
+   "params": {
+    "rect": [
+     15,
+     11
+    ],
+    "height": 1.6,
+    "colour": "#8c7a78",
+    "topScale": 0.9
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rock",
+   "at": [
+    0.8,
+    1.2,
+    1.6
+   ],
+   "params": {
+    "colour": "#8c7a78",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       9,
+       6
+      ]
+     },
+     {
+      "z": 4,
+      "rect": [
+       7,
+       4.6
+      ],
+      "cx": 0.5
+     },
+     {
+      "z": 9,
+      "rect": [
+       4.6,
+       3.4
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 11,
+      "rect": [
+       3,
+       2.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaque",
+   "at": [
+    0,
+    -5.52,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.2
+    ],
+    "height": 0.7,
+    "colour": "#1b1b1b"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-l",
+   "at": [
+    -1.5,
+    -0.4,
+    1.6
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.9,
+       1.5
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       0.9,
+       1.0
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       1.3,
+       1.3
+      ]
+     },
+     {
+      "z": 8.2,
+      "ellipse": [
+       1.6,
+       1.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-r",
+   "at": [
+    1.7,
+    -0.2,
+    1.6
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.9,
+       1.5
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       0.9,
+       1.0
+      ]
+     },
+     {
+      "z": 6,
+      "ellipse": [
+       1.2,
+       1.2
+      ]
+     },
+     {
+      "z": 8.5,
+      "ellipse": [
+       1.5,
+       1.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "skirt",
+   "at": [
+    0,
+    0,
+    9.4
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.5,
+       2.3
+      ]
+     },
+     {
+      "z": 3,
+      "ellipse": [
+       3.2,
+       2.2
+      ]
+     },
+     {
+      "z": 7,
+      "ellipse": [
+       2.6,
+       1.9
+      ]
+     },
+     {
+      "z": 9.4,
+      "ellipse": [
+       2.3,
+       1.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "id": "torso",
+   "at": [
+    0,
+    0,
+    18.6
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       2.4,
+       1.6
+      ]
+     },
+     {
+      "z": 2.5,
+      "ellipse": [
+       2.4,
+       1.7
+      ]
+     },
+     {
+      "z": 5.4,
+      "ellipse": [
+       3.0,
+       1.7
+      ]
+     },
+     {
+      "z": 6.2,
+      "ellipse": [
+       3.0,
+       1.6
+      ]
+     },
+     {
+      "z": 7.0,
+      "ellipse": [
+       0.9,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "head",
+   "at": [
+    0,
+    0,
+    25.5
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.8,
+      0.1
+     ],
+     [
+      1.25,
+      0.9
+     ],
+     [
+      1.3,
+      2.0
+     ],
+     [
+      1.0,
+      3.0
+     ],
+     [
+      0.5,
+      3.5
+     ],
+     [
+      0,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arm-left",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "radius": 0.7,
+    "points": [
+     [
+      -2.7,
+      0,
+      23.900000000000002
+     ],
+     [
+      -3.5,
+      -0.2,
+      20.6
+     ],
+     [
+      -3.9,
+      -0.3,
+      16.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "arm-right",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#4a4a4f",
+    "radius": 0.7,
+    "points": [
+     [
+      2.7,
+      0,
+      23.8
+     ],
+     [
+      3.7,
+      -0.5,
+      21.1
+     ],
+     [
+      4.0,
+      -0.8,
+      17.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "rifle",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#3a3a3e",
+    "radius": 0.25,
+    "points": [
+     [
+      4.2,
+      -0.9,
+      15.4
+     ],
+     [
+      4.1,
+      -0.9,
+      23.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -16,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 2,
+    "spacing": 32
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Faceted figure: no facial or clothing detail, machete in left hand and sash omitted, torso/hips blocky, rock support simplified, plinth is a low flat base with a plaque; crowd barriers and shrubs of the photo not modelled."
+ }
+}

@@ -1,0 +1,683 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "waziri-junaidu-museum-sokoto",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Waziri_Junaidu_History_and_Culture.jpg",
+   "licence": "CC0",
+   "author": "Mr. Snatch",
+   "view": "front",
+   "file": "/tmp/places-evidence/sokoto/museum1.jpg",
+   "used": "cream gateway beam on two mint-green pillars with blank sign board, white railing gates, curved pink-beige fence, long low hall with white hipped roof and round arched arcade behind trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/930298168",
+   "used": "site size (about 52 x 33 m U-shaped courtyard plan)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 60,
+  "aspect": 1.275
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "at": [
+    0,
+    16
+   ],
+   "footprint": {
+    "rect": [
+     34,
+     16
+    ]
+   },
+   "height": 5.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c3a5",
+    "windows": "none",
+    "plinth": 0.4,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ],
+     "shape": "arch",
+     "bay": 4.8,
+     "opening": 0.62,
+     "height": 0.8,
+     "depth": 1.4,
+     "storeys": 1,
+     "colour": "#e9dcc6"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#eef2ec",
+    "material": "metal-sheet",
+    "pitch": 26,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "at": [
+    -14,
+    30
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4bea0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4bea0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "at": [
+    14,
+    30
+   ],
+   "footprint": {
+    "rect": [
+     8,
+     16
+    ]
+   },
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4bea0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4bea0"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "pillar-l",
+   "at": [
+    -8.5,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#a8d8c2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.7,
+       1.7
+      ]
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-l",
+   "at": [
+    -8.5,
+    -12
+   ],
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ea"
+   },
+   "z0": 5.2
+  },
+  {
+   "type": "loft",
+   "id": "pillar-r",
+   "at": [
+    8.5,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#a8d8c2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.7,
+       1.7
+      ]
+     },
+     {
+      "z": 5.6,
+      "rect": [
+       1.1,
+       1.1
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cap-r",
+   "at": [
+    8.5,
+    -12
+   ],
+   "footprint": {
+    "rect": [
+     2.0,
+     2.0
+    ]
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ea"
+   },
+   "z0": 5.2
+  },
+  {
+   "type": "sweep-path",
+   "id": "beam",
+   "at": [
+    0,
+    -12,
+    6.3
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.2,
+      1.2
+     ]
+    },
+    "closed": true,
+    "curve": true,
+    "points": [
+     [
+      -10,
+      -0.9,
+      0
+     ],
+     [
+      -8,
+      -0.9,
+      0
+     ],
+     [
+      8,
+      -0.9,
+      0
+     ],
+     [
+      10,
+      -0.9,
+      0
+     ],
+     [
+      11,
+      0,
+      0
+     ],
+     [
+      10,
+      0.9,
+      0
+     ],
+     [
+      8,
+      0.9,
+      0
+     ],
+     [
+      -8,
+      0.9,
+      0
+     ],
+     [
+      -10,
+      0.9,
+      0
+     ],
+     [
+      -11,
+      0,
+      0
+     ]
+    ],
+    "colour": "#dcc2a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "board",
+   "at": [
+    0,
+    -12.95
+   ],
+   "footprint": {
+    "rect": [
+     7.5,
+     0.5
+    ]
+   },
+   "height": 1.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8f0f2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8f0f2"
+   },
+   "z0": 6.4
+  },
+  {
+   "type": "mass",
+   "id": "pier-l",
+   "at": [
+    -16.5,
+    -12
+   ],
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8d8c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ea"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail-in-l",
+   "params": {
+    "kind": "railing",
+    "length": 6.5,
+    "height": 1.7,
+    "thickness": 0.15,
+    "colour": "#f2f2f2",
+    "points": [
+     [
+      -9.5,
+      -12
+     ],
+     [
+      -15.8,
+      -12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-l",
+   "params": {
+    "length": 9,
+    "height": 1.3,
+    "thickness": 0.4,
+    "colour": "#d9b8a0",
+    "points": [
+     [
+      -17.2,
+      -12
+     ],
+     [
+      -26,
+      -12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallop-l",
+   "params": {
+    "of": {
+     "type": "mass",
+     "at": [
+      0,
+      0
+     ],
+     "footprint": {
+      "rect": [
+       1.6,
+       0.4
+      ]
+     },
+     "z0": 1.3,
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#d9b8a0",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d9b8a0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -17.8,
+     -12,
+     0
+    ],
+    "end": [
+     -25.4,
+     -12,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts-l",
+   "params": {
+    "of": {
+     "type": "mass",
+     "at": [
+      0,
+      0
+     ],
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 1.9,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#a8d8c2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a8d8c2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -12,
+     0
+    ],
+    "end": [
+     -25.5,
+     -12,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-r",
+   "at": [
+    16.5,
+    -12
+   ],
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8d8c2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ea"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "rail-in-r",
+   "params": {
+    "kind": "railing",
+    "length": 6.5,
+    "height": 1.7,
+    "thickness": 0.15,
+    "colour": "#f2f2f2",
+    "points": [
+     [
+      9.5,
+      -12
+     ],
+     [
+      15.8,
+      -12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "id": "wall-r",
+   "params": {
+    "length": 9,
+    "height": 1.3,
+    "thickness": 0.4,
+    "colour": "#d9b8a0",
+    "points": [
+     [
+      17.2,
+      -12
+     ],
+     [
+      26,
+      -12
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallop-r",
+   "params": {
+    "of": {
+     "type": "mass",
+     "at": [
+      0,
+      0
+     ],
+     "footprint": {
+      "rect": [
+       1.6,
+       0.4
+      ]
+     },
+     "z0": 1.3,
+     "height": 0.5,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#d9b8a0",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d9b8a0"
+     }
+    },
+    "mode": "line",
+    "start": [
+     17.8,
+     -12,
+     0
+    ],
+    "end": [
+     25.4,
+     -12,
+     0
+    ],
+    "count": 5
+   }
+  },
+  {
+   "type": "array",
+   "id": "posts-r",
+   "params": {
+    "of": {
+     "type": "mass",
+     "at": [
+      0,
+      0
+     ],
+     "footprint": {
+      "rect": [
+       0.5,
+       0.5
+      ]
+     },
+     "height": 1.9,
+     "storeys": 1,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#a8d8c2",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#a8d8c2"
+     }
+    },
+    "mode": "line",
+    "start": [
+     18,
+     -12,
+     0
+    ],
+    "end": [
+     25.5,
+     -12,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "tree",
+   "id": "front-trees",
+   "at": [
+    -4,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-b",
+   "at": [
+    5,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "id": "tree-c",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "stadium ring beam, tapered pillars, piers, railings and scalloped walls added; render framed too far away, arcade infill still reads as dark glazed arches, no big shade trees in front of hall, scallops are boxes"
+ }
+}

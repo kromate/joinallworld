@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "challenge-interchange",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "programme only: ticketing hall, covered bays, shops, lounge (Guardian, brief). OSM match is a 63 m2 shed 12 m away, not usable. Shape is a modest typical Ibadan terminal."
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     46,
+     14
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d4c8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#4a6a8a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "metal-sheet",
+    "parapet": 0.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lounge",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#f0efe8",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 14,
+    "height": 5,
+    "columns": 9,
+    "colour": "#7a8a99",
+    "edgeColour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -16,
+    -2,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.4,
+    "bottom": 6.2,
+    "colour": "#4a6a8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "bottom": 2.6,
+    "colour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9b27c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9b27c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -22,
+     0
+    ],
+    "end": [
+     20,
+     -22,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "car",
+     "params": {}
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -24,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or description of the real building; modest typical terminal from the brief programme"
+ }
+}

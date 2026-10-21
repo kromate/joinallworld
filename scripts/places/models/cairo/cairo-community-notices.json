@@ -1,0 +1,450 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cairo",
+ "venueId": "cairo-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GD-EG-Caire-Abedin001.JPG",
+   "licence": "CC BY-SA 2.5",
+   "author": "Gerard Ducher",
+   "view": "front",
+   "file": "/tmp/places-evidence/cairo/abdeen1.jpg",
+   "used": "long sand-grey stone facade with rusticated ground floor, pilaster bays with dark green shutters, central pavilion with big arched window and pediment, attic parapet, side gate-houses, ornate iron gate and railings, flagpole"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16734517",
+   "used": "compound size only (320 x 158 m); the front facade block is modelled with a rect"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "facade",
+   "footprint": {
+    "rect": [
+     84,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "render",
+    "colour": "#bdb095",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bay": 6,
+    "trimColour": "#d0c5ac",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#c9bb9e",
+    "windowShape": "rect",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#bcb097",
+      "at": 0.2
+     },
+     {
+      "type": "bands",
+      "colour": "#e0d6c0",
+      "at": 7.2
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     30,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 22,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c4b99f",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "bay": 8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "trimColour": "#e2d9c4",
+    "cornice": true,
+    "plinth": 1.2,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     22,
+     3.2
+    ]
+   },
+   "at": [
+    0,
+    -17.4
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c4b99f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9bfa6",
+    "pitch": 28,
+    "axis": "x"
+   },
+   "z0": 22
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c4b99f",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "bay": 6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0.4
+   },
+   "z0": 22
+  },
+  {
+   "type": "mass",
+   "id": "gate-house-l",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    -28,
+    -14
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#bdb095",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-house-r",
+   "footprint": {
+    "rect": [
+     11,
+     6
+    ]
+   },
+   "at": [
+    28,
+    -14
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#bdb095",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a82",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "main-gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "height": 4.2,
+    "pillar": 1.6,
+    "leaf": "bars",
+    "arch": false,
+    "colour": "#cfc4ac",
+    "leafColour": "#1e2022"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence-l",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -42,
+      -22
+     ],
+     [
+      -8,
+      -22
+     ]
+    ],
+    "height": 2.2,
+    "kind": "railing",
+    "colour": "#1e2022"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "fence-r",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      8,
+      -22
+     ],
+     [
+      42,
+      -22
+     ]
+    ],
+    "height": 2.2,
+    "kind": "railing",
+    "colour": "#1e2022"
+   }
+  },
+  {
+   "type": "core/flag",
+   "id": "flag",
+   "at": [
+    -4,
+    2,
+    17
+   ],
+   "params": {
+    "height": 16,
+    "colour": "#7a1c24"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "arch-window",
+   "at": [
+    0,
+    -16.6,
+    10
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 5,
+    "colour": "#2a3638",
+    "topColour": "#2a3638"
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "arch-head",
+   "at": [
+    0,
+    -16.7,
+    15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "segments": 16,
+    "colour": "#2a3638",
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      3.5,
+      0
+     ],
+     [
+      3.2,
+      1.6
+     ],
+     [
+      2.2,
+      2.8
+     ],
+     [
+      0,
+      3.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-0",
+   "at": [
+    -12.8,
+    -22,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#e8e0b8",
+    "topColour": "#e8e0b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-1",
+   "at": [
+    12.8,
+    -22,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#e8e0b8",
+    "topColour": "#e8e0b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-2",
+   "at": [
+    -4,
+    -22,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#e8e0b8",
+    "topColour": "#e8e0b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lamp-3",
+   "at": [
+    4,
+    -22,
+    4.2
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.6,
+    "colour": "#e8e0b8",
+    "topColour": "#e8e0b8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Smooth sand-grey render with rusticated base bands, a taller arched-window pavilion with pediment and stepped attic, arched gate-houses and a three-bay gate with lamp piers are in; real facade has green-shuttered windows between pilasters, balustraded balconies, a semicircular glazed arch with ornate scrolled iron gates; mine is a plain window grid and a bar gate. Only the front 84 m modelled."
+ }
+}

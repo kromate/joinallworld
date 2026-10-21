@@ -1,0 +1,163 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-tripoli-commercial-center",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/999742018",
+   "used": "real outline (name match, 33x31 m) as the main block; no photo found, so storeys, colours and signboard come from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e5d2a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 4,
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f3efe6",
+      "height": 0.6,
+      "at": 0.99
+     },
+     {
+      "type": "bands",
+      "colour": "#7d8288",
+      "height": 1.6,
+      "at": 0.3,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "signboard",
+   "footprint": {
+    "rect": [
+     28,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    -17.2
+   ],
+   "rotDeg": 0,
+   "z0": 10.2,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f3efe6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "awning",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -18.5
+   ],
+   "rotDeg": 0,
+   "z0": 3.6,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d8288",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d8288"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; massing from real OSM outline, storeys/colours/signboard from brief"
+ }
+}

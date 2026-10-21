@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "living-faith-church-umuahia",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1089970910",
+   "used": "overall size and orientation only (nearest match, 569 m2 irregular outline); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     44,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f2ea",
+    "windows": "ribbon",
+    "windowRatio": 0.18,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#7d6a9a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6f73",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "front-gable-glass",
+   "at": [
+    0,
+    -14.2
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.8
+    ],
+    "z0": 0.5,
+    "height": 13,
+    "colour": "#7fa3b8",
+    "topColour": "#7fa3b8",
+    "topScale": [
+     0.8,
+     1
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-wing",
+   "footprint": {
+    "rect": [
+     24,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7d6a9a",
+    "windows": "curtain",
+    "windowRatio": 0.45,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0d0d0",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "drive-canopy",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 7,
+    "height": 4.6,
+    "columns": 4,
+    "colour": "#d0d0d0",
+    "edgeColour": "#7d6a9a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.6,
+    "run": 0.5,
+    "count": 4,
+    "colour": "#c8c4bb"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26,
+    -34
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "bottom": 1.2,
+    "colour": "#7d6a9a",
+    "frameColour": "#d0d0d0"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -44
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "density": 0.6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; modelled from brief and OSM size only."
+ }
+}

@@ -1,0 +1,253 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1390118358",
+   "used": "nearest match is a 12 x 4 m shed only; not used"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Makurdi",
+   "used": "yam and cassava distribution market; rows of concrete lock-ups with corrugated roofs and umbrella stalls (brief)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "row-0",
+   "footprint": {
+    "rect": [
+     84,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    -28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b99a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a5b3c",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-1",
+   "footprint": {
+    "rect": [
+     66,
+     9
+    ]
+   },
+   "at": [
+    -1,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-2",
+   "footprint": {
+    "rect": [
+     84,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b99a",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a5b3c",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "row-3",
+   "footprint": {
+    "rect": [
+     66,
+     9
+    ]
+   },
+   "at": [
+    -1,
+    32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b06a45",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    46,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dccb",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "id": "umbrellas",
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "awning",
+     "params": {
+      "width": 3,
+      "depth": 3,
+      "height": 2.4,
+      "colours": [
+       "#d94f4f",
+       "#e7c33a",
+       "#3b7fd0"
+      ],
+      "stripe": 0.5
+     }
+    },
+    "mode": "grid",
+    "cols": 9,
+    "rows": 2,
+    "dx": 6,
+    "dy": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -52,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 8,
+    "line": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "wurukum-market",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; rows of lock-ups and stall layout are typical guesses, OSM match unusable"
+ }
+}

@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-polling",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1067526624",
+   "used": "real outline: 12.7 x 10.9 m, bearing about -15 degrees, nearest match 3.2 m"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ijebu-ode.json#ijebu-polling",
+   "used": "civic polling hall: gable corrugated roof, front porch, flagpole, blank green signboard, cream render with green band"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     12.7,
+     10.9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": -15,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "bands": "#2f6b4f",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4b32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -1.42,
+    -5.31,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "length": 8,
+    "depth": 2.6,
+    "eaveHeight": 2.8,
+    "attachHeight": 3.4,
+    "post": "square",
+    "postEvery": 2.7,
+    "colour": "#f2efe6",
+    "roofColour": "#8a4b32"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2.23,
+    -8.31,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.7,
+    "count": 2,
+    "colour": "#b0aaa0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9.8,
+    -5.66,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "width": 4.5,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#2f6b4f",
+    "frameColour": "#f2efe6",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    3.6,
+    -9.76,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 1,
+    "colours": [
+     "#1b7a43"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 6,
+  "extent": [
+   44,
+   36
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     8
+    ],
+    "height": 10
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this polling hall exists; real OSM outline size and bearing with a typical Ijebu civic hall (gable corrugated roof, porch) from the brief."
+ }
+}

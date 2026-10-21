@@ -1,0 +1,444 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sao_tome_palace.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Kotoviski (Henryk Kotowski)",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-tome/pal1.jpg",
+   "used": "pink two-storey L-shaped palace, pedimented portico block on the left, arched upper loggia and arched ground floor on the long wing, low pink wall with white piers and iron railings, palms, red-brown low roof behind parapet"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/198310275",
+   "used": "L outline proportions (about 60 m x 45 m, rotated), modelled square to the camera"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 48
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "head-block",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -18,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a09b",
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain"
+    },
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bands": "#f6f1e8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8573a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-block",
+   "footprint": {
+    "rect": [
+     11,
+     3
+    ]
+   },
+   "at": [
+    -18,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a09b",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "bands": "#f6f1e8"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#f6f1e8",
+    "pitch": 12,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-ground",
+   "footprint": {
+    "rect": [
+     34,
+     11
+    ]
+   },
+   "at": [
+    9,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a09b",
+    "windows": "none",
+    "plinth": 0.8,
+    "pattern": {
+     "type": "arcade",
+     "faces": [
+      "front"
+     ]
+    },
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f1e8",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-upper",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    9,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 4.8,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a09b",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.75,
+    "bands": "#f6f1e8",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8573a",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    -24,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3a09b",
+    "plinth": 0.8,
+    "faces": {
+     "back": "plain"
+    },
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bands": "#f6f1e8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8573a",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "balustrade",
+   "at": [
+    -8,
+    -4.6,
+    4.8
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.0,
+    "colour": "#f6f1e8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22.5,
+     -9.6,
+     0
+    ],
+    "end": [
+     -13.5,
+     -9.6,
+     0
+    ],
+    "count": 5,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.7,
+        0.5
+       ],
+       "height": 9.0,
+       "colour": "#f6f1e8"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    8,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#e3a09b"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    8,
+    -16,
+    2.2
+   ],
+   "params": {
+    "length": 76,
+    "height": 1.6,
+    "kind": "railing",
+    "colour": "#1f2226"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -16,
+     0
+    ],
+    "end": [
+     44,
+     -16,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.0,
+        1.0
+       ],
+       "height": 3.6,
+       "colour": "#f6f1e8"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-box",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.4
+    ]
+   },
+   "at": [
+    -26,
+    -15.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f1e8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f6f1e8",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -33,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#f6f1e8",
+    "leafColour": "#1f2226"
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -27,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 11
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -31,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 11
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     44,
+     4
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -36,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper loggia is arched windows not truly open arches; portico pediment is a shallow gable block without crest; sentry figure and dense planting omitted; wall panels not individually panelled"
+ }
+}

@@ -1,0 +1,162 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/906822696",
+   "used": "38.7x14 m rotated footprint (containing match, area 542 m2), kept as the plan"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#national-museum-yenagoa",
+   "used": "two-storey cream render building, hip roof in brown corrugated sheet, entrance portico with steps, carved canoe on display outside, flagpole; no photo of this building found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -58.6,
+  "pitchDeg": 9,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#8a5a3a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e5a4a",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    -6.7,
+    -4.1,
+    0
+   ],
+   "rotDeg": -58.6,
+   "params": {
+    "width": 9,
+    "depth": 3.5,
+    "height": 6,
+    "columns": 4,
+    "pediment": true,
+    "steps": 4,
+    "kind": "round",
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -14,
+    -12,
+    0.0
+   ],
+   "rotDeg": -58.6,
+   "params": {
+    "section": {
+     "ellipse": [
+      0.55,
+      0.4
+     ]
+    },
+    "points": [
+     [
+      -3.2,
+      0,
+      0.7
+     ],
+     [
+      0,
+      0,
+      0.4
+     ],
+     [
+      3.2,
+      0,
+      0.7
+     ]
+    ],
+    "curve": true,
+    "colour": "#7a4a2a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; facade details typed from brief; canoe approximated"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "national-museum-yenagoa"
+}

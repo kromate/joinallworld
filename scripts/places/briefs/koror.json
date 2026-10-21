@@ -1,0 +1,1543 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "koror",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "koror",
+    "climate": "tropical-maritime",
+    "vernacular": "Small tropical island town on Koror and Malakal: low (1-3 storey) concrete-block and painted-render buildings in white, pastel and faded tropical colours under corrugated metal roofs, a few surviving 1920s-30s Japanese South Seas administration concrete buildings, steep green volcanic slopes with secondary brush, coconut palms and mangroves, limestone Rock Islands offshore, and traditional Palauan thatched bai meeting houses on stone platforms.",
+    "wallColours": [
+      "#f2efe6",
+      "#d9d3c0",
+      "#8fb8c4",
+      "#e3cf8d",
+      "#b8b4a8",
+      "#7aa89a"
+    ],
+    "roofColours": [
+      "#9a4a3c",
+      "#587a5c",
+      "#8d9296",
+      "#4f6f86"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "metal-cladding",
+      "timber",
+      "stone"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Palauan bai gable boards carved and painted with legends in red, white, black and yellow; stone platforms and pathways (odesongel); Japanese-era stone lanterns and steps; storyboard carvings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Koror",
+        "what": "urban Koror mixed gardens/houses/businesses, cleared slopes with secondary brush, limestone Rock Islands, tropical rainforest climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Airai_Bai",
+        "what": "traditional bai: stone platform, 20.7 x 6.1 m, 12 m peak, legend decorations"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Supreme_Court_of_Palau",
+        "what": "Japanese-era (c.1922) administration building survived WWII in Koror"
+      }
+    ]
+  },
+  "places": {
+    "koror-airport-koror-airport": {
+      "venueId": "koror-airport-koror-airport",
+      "city": "koror",
+      "name": "Roman Tmetuchl International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The single small international terminal at Airai seen from the landside forecourt: a low white building with a covered entrance canopy and apron beyond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 74,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "small-international",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8dc",
+          "#6f95a8",
+          "#c9c5b8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered curb"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "small tower on field side"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Tmetuchl_International_Airport",
+          "what": "one 2,194 m runway, only international airport; no terminal exterior described"
+        }
+      ],
+      "notes": "No exterior description found. Footprint (80 x 74 m, irregular, with a long rear pier) comes from OSM terminal way; height and finishes are typed from the city style. Keep it modest: tiny terminal, not a jet-bridge airport."
+    },
+    "koror-clinic": {
+      "venueId": "koror-clinic",
+      "city": "koror",
+      "name": "Belau National Hospital",
+      "archetype": "hospital",
+      "subject": "Palau's national hospital complex at Meyuns: a spread of linked two-storey concrete wings with a covered entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 145,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "multi-wing-complex",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe7da",
+          "#4f8f8b",
+          "#c8c4b6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "island setting, tropical climate (used for city style only)"
+        }
+      ],
+      "notes": "Only OSM measured outline (15,352 m2 irregular polygon with many wings, ~150 m across). Appearance typed from city style; clamp to the main frontage."
+    },
+    "koror-community-notices": {
+      "venueId": "koror-community-notices",
+      "city": "koror",
+      "name": "Capitol of Palau",
+      "archetype": "civic-palace",
+      "subject": "The Ngerulmud Capitol, a white neoclassical copy of the US Capitol with a central dome and flanking executive and judicial wings, seen from the front lawn",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 66,
+        "depth_m": 51,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "dome",
+        "variant": "three-wing-capitol",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#f1eee6",
+          "#d7d2c4",
+          "#ffffff"
+        ],
+        "roofColour": "#c9ccd0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "flag on top"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1999-2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Capitol_of_Palau",
+          "what": "neoclassical, modelled on US Capitol, flag atop dome, three wings (Legislative centre, Executive west, Judicial east), built 1999-2006, architect Joseph Farrell of Hawaii"
+        }
+      ],
+      "notes": "Design explicitly based on the US Capitol, so a white three-part building with a central dome. OSM outline 66 x 51 m (area 2,381 m2). Colours and storeys are typed from the model it copies; the dome is smaller and lower than the US original. Stands almost alone on a bare hilltop plaza at Ngerulmud."
+    },
+    "koror-community-voting-game": {
+      "venueId": "koror-community-voting-game",
+      "city": "koror",
+      "name": "Palau Supreme Court",
+      "archetype": "civic-small",
+      "subject": "The Koror Supreme Court trial-division building: a Japanese-era (c.1922) two-storey administration block with later annexes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "japanese-era-courthouse",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dfcf",
+          "#a9a493",
+          "#f4f1e8"
+        ],
+        "roofColour": "#8a4a3c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "interior yard once a formal garden"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1922",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Supreme_Court_of_Palau",
+          "what": "built by the Japanese Administration c.1922, survived WWII, basement served as jail, interior formal garden, later annexes"
+        }
+      ],
+      "notes": "Only history is documented, not the facade. The OSM building under the pin is a 20 x 13 m annex (area 259 m2); the original is larger. Shown as a plain Japanese-colonial concrete block with a hipped roof and later annexes; appearance is a guess."
+    },
+    "koror-community-workshop": {
+      "venueId": "koror-community-workshop",
+      "city": "koror",
+      "name": "Palau Public Library",
+      "archetype": "campus-block",
+      "subject": "The Palau Public Library, a small one-to-two storey modern building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip",
+        "variant": "library",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece8dc",
+          "#7aa89a",
+          "#c8c4b6"
+        ],
+        "roofColour": "#587a5c",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "urban Koror low-rise context"
+        }
+      ],
+      "notes": "OSM measured footprint 21.5 x 17.3 m (372 m2) with Wikidata item but no description of the building. Appearance typed from city style."
+    },
+    "koror-market-game": {
+      "venueId": "koror-market-game",
+      "city": "koror",
+      "name": "WCTC Shopping Center",
+      "archetype": "mall",
+      "subject": "WCTC Shopping Center, a large low retail box with a deep forecourt and covered frontage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 49,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "strip-department-store",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e2d0",
+          "#4f7f9e",
+          "#b8b4a8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "urban Koror low-rise commercial context"
+        }
+      ],
+      "notes": "OSM measured 70 x 49 m (2,561 m2), 1-2 levels; appearance typed from city style. Keep signage blank."
+    },
+    "koror-meal-stop": {
+      "venueId": "koror-meal-stop",
+      "city": "koror",
+      "name": "Okemii Cafe",
+      "archetype": "restaurant",
+      "subject": "A small cafe building by the Capitol hilltop at Ngerulmud",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "variant": "roadside-cafe",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe4c0",
+          "#8a6a48",
+          "#ffffff"
+        ],
+        "roofColour": "#587a5c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "tropical low-rise context only"
+        }
+      ],
+      "notes": "Nothing findable about the building. OSM nearest building 14 x 14 m. Pure city-style guess."
+    },
+    "koror-osm-node-13333745401": {
+      "venueId": "koror-osm-node-13333745401",
+      "city": "koror",
+      "name": "Sakura",
+      "archetype": "restaurant",
+      "subject": "A small Japanese-style eatery on Malakal waterfront near dive shops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "waterfront-eatery",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#8fb8c4",
+          "#8a6a48"
+        ],
+        "roofColour": "#9a4a3c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "tropical low-rise context only"
+        }
+      ],
+      "notes": "Nearest OSM building is a dive centre (19 x 15 m); the venue itself is undocumented. City-style guess."
+    },
+    "koror-osm-node-1384146475": {
+      "venueId": "koror-osm-node-1384146475",
+      "city": "koror",
+      "name": "Elilai",
+      "archetype": "restaurant",
+      "subject": "A narrow single-storey restaurant building on the Koror main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "roadside-restaurant",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3cf8d",
+          "#f2efe6",
+          "#8d9296"
+        ],
+        "roofColour": "#9a4a3c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "tropical low-rise context only"
+        }
+      ],
+      "notes": "Nothing findable. OSM nearest building 21 x 8 m. City-style guess."
+    },
+    "koror-osm-node-357256713": {
+      "venueId": "koror-osm-node-357256713",
+      "city": "koror",
+      "name": "Palau Crocodile Preserves",
+      "archetype": "park-landscape",
+      "subject": "A small wildlife enclosure of mangrove ponds with a timber boardwalk and a shed-roofed ticket and viewing hut",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "mangrove-boardwalk",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8a6a48",
+          "#587a5c",
+          "#d9d3c0"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "timber boardwalk over mangroves"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "mangrove and secondary-forest setting"
+        }
+      ],
+      "notes": "No OSM building or description found; typed as a mangrove boardwalk park."
+    },
+    "koror-osm-node-357256793": {
+      "venueId": "koror-osm-node-357256793",
+      "city": "koror",
+      "name": "Ngaremeduu Bay Conservation Area",
+      "archetype": "park-landscape",
+      "subject": "A mangrove and shoreline conservation area on Ngaremeduu Bay with a small timber viewing pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "bay-reserve",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a48",
+          "#587a5c",
+          "#d9d3c0"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "timber"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "mangrove, cleared slopes, volcanic island forest"
+        }
+      ],
+      "notes": "Nature reserve; nothing documented about structures. Generic mangrove-bay park."
+    },
+    "koror-osm-node-4031085076": {
+      "venueId": "koror-osm-node-4031085076",
+      "city": "koror",
+      "name": "Airai Bai",
+      "archetype": "civic-small",
+      "subject": "The Airai Bai (Bai Ra Irrai): a long steep-gabled Palauan men's meeting house on a stone platform, facade boards painted with legends",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "bai",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#6b4a2e",
+          "#b5382a",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a7448",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stone platform steps"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "carved and painted gable facade in red, white, black and yellow"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "c.1890, restored 1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Airai_Bai",
+          "what": "c.1890, 68 x 20 ft (20.7 x 6.1 m), peak 40 ft (12 m), stone platform, facade and interior beams decorated with Palauan legends"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Meteu_%27L_Klechem",
+          "what": "Palauan stone-path and monument context"
+        }
+      ],
+      "notes": "Dimensions and decoration from Wikipedia; steep thatch gable roof with overhanging eaves and raised floor on posts is the standard bai form (from general knowledge, not the cited page). Open sides, no windows. Very distinct from every other building in the city."
+    },
+    "koror-osm-node-4080475589": {
+      "venueId": "koror-osm-node-4080475589",
+      "city": "koror",
+      "name": "Belau Medical Clinic",
+      "archetype": "hospital",
+      "subject": "A long single-storey private medical clinic on the Koror main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "clinic",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#ece8dc",
+          "#4f8f8b",
+          "#c8c4b6"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "urban Koror low-rise context"
+        }
+      ],
+      "notes": "OSM nearest building 42 x 11 m. Appearance typed; far smaller than the national hospital."
+    },
+    "koror-osm-node-6257235485": {
+      "venueId": "koror-osm-node-6257235485",
+      "city": "koror",
+      "name": "Airport Entrance",
+      "archetype": "monument",
+      "subject": "The airport access-road entrance: a low gateway with flags and blank welcome board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "entrance-gate",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3c0",
+          "#4f7f9e",
+          "#ffffff"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Tmetuchl_International_Airport",
+          "what": "airport location only"
+        }
+      ],
+      "notes": "Viewing node at the airport entrance; no structure documented. Typed as a simple gate and sign."
+    },
+    "koror-osm-node-6257235586": {
+      "venueId": "koror-osm-node-6257235586",
+      "city": "koror",
+      "name": "Natinal",
+      "archetype": "park-landscape",
+      "subject": "A roadside lookout with a small shelter near the Airai coast road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "roadside-lookout",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#c8c4b6",
+          "#8a6a48",
+          "#ece8dc"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "island setting only"
+        }
+      ],
+      "notes": "Name appears truncated in the source data (\"Natinal\") and nothing is documented; OSM nearest building 22 x 13 m. Generic shelter lookout."
+    },
+    "koror-osm-node-9049179001": {
+      "venueId": "koror-osm-node-9049179001",
+      "city": "koror",
+      "name": "Meteu 'L Klechem",
+      "archetype": "monument",
+      "subject": "A roughly octagonal standing/lying stone monolith (about 2.1 m long, 0.6 m thick) beside a village stream in Melekeok",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 3,
+        "storeys": 0,
+        "height_m": 1,
+        "roof": "none",
+        "variant": "monolith",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7d7a72",
+          "#5f5c55",
+          "#a8a59b"
+        ],
+        "roofColour": "#7d7a72",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "weathered surface"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "pre-contact",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Meteu_%27L_Klechem",
+          "what": "octagonal stone about 7 ft x 2 ft, 3,000 lb, once a stream bridge in Melekeok"
+        }
+      ],
+      "notes": "A single heavy dressed stone slab on grass, not a building; renderers should keep it tiny. The 14.8 x 8.4 m OSM building nearby is a shelter and is ignored."
+    },
+    "koror-osm-node-9530641571": {
+      "venueId": "koror-osm-node-9530641571",
+      "city": "koror",
+      "name": "Fish Market",
+      "archetype": "market-hall",
+      "subject": "A small open-sided fish market shed on the Koror waterfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "fish-shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3c0",
+          "#4f7f9e",
+          "#8d9296"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "harbour town context"
+        }
+      ],
+      "notes": "OSM building 13 x 10 m. Appearance typed: concrete tables under corrugated roof."
+    },
+    "koror-osm-way-35783457": {
+      "venueId": "koror-osm-way-35783457",
+      "city": "koror",
+      "name": "National Stadium",
+      "archetype": "stadium",
+      "subject": "The Palau National Stadium (PCC track and field stadium): a grass pitch inside a running track with a modest covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 180,
+        "depth_m": 78,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "athletics-stadium",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c4b6",
+          "#4f7f9e",
+          "#ece8dc"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Stadium_(Palau)",
+          "what": "multi-purpose, mainly track and field and football, capacity 4,000, natural grass"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1638468",
+          "what": "OSM-linked item; outline 180 x 78 m"
+        }
+      ],
+      "notes": "Capacity 4,000 means a single or double low stand, not a bowl. Roof/colours typed."
+    },
+    "koror-osm-way-436679166": {
+      "venueId": "koror-osm-way-436679166",
+      "city": "koror",
+      "name": "Belau National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Belau National Museum compound: a two-storey museum building beside a traditional thatched bai replica among the botanical garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "museum-with-bai",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe8d4",
+          "#8a6a48",
+          "#c8c4b6"
+        ],
+        "roofColour": "#587a5c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "reconstructed bai with steep thatch gable"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "first president on plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1970 building, bai rebuilt 1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belau_National_Museum",
+          "what": "founded 1955, two-storey building in botanical garden from 1970, traditional bai built 1969, burned 1979 and rebuilt early 1990s, statue of Haruo Remeliik"
+        }
+      ],
+      "notes": "Building exterior is not described; two storeys and the bai plus statue are documented. Treat the bai as a signature side pavilion."
+    },
+    "koror-osm-way-436679168": {
+      "venueId": "koror-osm-way-436679168",
+      "city": "koror",
+      "name": "Sacred Heart Church",
+      "archetype": "church-modern",
+      "subject": "Sacred Heart Roman Catholic church in Koror: a plain gabled hall church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "parish-hall-church",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#6f95a8",
+          "#c8c4b6"
+        ],
+        "roofColour": "#9a4a3c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "named as a notable Koror building, no description"
+        }
+      ],
+      "notes": "OSM footprint 37.4 x 18.9 m, tagged Roman Catholic. No description of the exterior was findable, so a typed modest white gabled church."
+    },
+    "koror-osm-way-441805822": {
+      "venueId": "koror-osm-way-441805822",
+      "city": "koror",
+      "name": "Surangel's Supercenter",
+      "archetype": "mall",
+      "subject": "Surangel's Supercenter, a large single-level supermarket box with a deep parking forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 38,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "supercenter",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e2d0",
+          "#b5382a",
+          "#b8b4a8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "commercial low-rise context"
+        }
+      ],
+      "notes": "OSM footprint 43 x 38 m (1,586 m2). Appearance typed; windowless supermarket box."
+    },
+    "koror-quiet-reflection": {
+      "venueId": "koror-quiet-reflection",
+      "city": "koror",
+      "name": "Nan'yō Shinto Shrine",
+      "archetype": "shrine-small",
+      "subject": "The site of the Japanese-era Nan'yo Shrine: a flight of stone steps, stone lanterns and a miniature replica shrine built in 1993",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "japanese-shrine-replica",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a6a48",
+          "#8a877e",
+          "#d9d3c0"
+        ],
+        "roofColour": "#6b5f55",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stone steps up to the former platform"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "simple torii-style frame"
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "stone lanterns"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "shrine 1940, dismantled 1944, replica 1993",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nan%27y%C5%8D_Shrine",
+          "what": "only stone steps to upper platform and stone lanterns remain; shrine dismantled 1944; miniature replica built 1993 by Japanese sponsors"
+        }
+      ],
+      "notes": "The original shrine is gone; the model shows what is there now: steps, lanterns, a small shrine replica. The torii-style gate is not confirmed by the source."
+    },
+    "koror-recreation": {
+      "venueId": "koror-recreation",
+      "city": "koror",
+      "name": "Asahi Baseball Field",
+      "archetype": "stadium",
+      "subject": "The Japanese-era Asahi baseball field: a diamond with a backstop, low grandstand and open outfield",
+      "form": {
+        "footprint": "round",
+        "width_m": 113,
+        "depth_m": 105,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "baseball-diamond",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8c4b6",
+          "#4f7f9e",
+          "#ece8dc"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small covered stand behind home plate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "outfield fence"
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1930s Japanese era",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "former South Seas Mandate capital under Japan"
+        }
+      ],
+      "notes": "Tagged as a park with a Wikidata item; no description. Footprint 113 x 105 m is the whole field. Typed as small baseball ground."
+    },
+    "koror-transit": {
+      "venueId": "koror-transit",
+      "city": "koror",
+      "name": "Koror Port",
+      "archetype": "transport-station",
+      "subject": "The Malakal harbour waterfront: a low shed-roofed terminal on a concrete quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "port-terminal",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3c0",
+          "#4f7f9e",
+          "#8d9296"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "concrete quay"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Koror",
+          "what": "Malakal Harbor sheltered deep-water anchorage in use since the 1840s"
+        }
+      ],
+      "notes": "OSM building 50 x 11 m near Malakal. Appearance typed; a working harbour with a quay and sheds, not a passenger station."
+    }
+  }
+}

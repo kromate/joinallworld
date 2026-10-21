@@ -1,0 +1,1653 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "san-salvador",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "san-salvador",
+    "climate": "savanna",
+    "vernacular": "Low-rise concrete-block and rendered houses painted cream, ochre, salmon or sky blue, with galvanised corrugated lamina roofs (or flat concrete slabs), barred windows and walled compounds; colonial-style single-storey casas with red clay-tile roofs survive in older barrios; recent glass-and-concrete towers and malls sit on the volcano-valley slopes. Earthquake-driven construction favours thick columns and short buildings.",
+    "wallColours": [
+      "#eadfc4",
+      "#d9b98c",
+      "#c98b6d",
+      "#9bb7c8",
+      "#f1efe8",
+      "#a9a39a",
+      "#c9d3a8"
+    ],
+    "roofColours": [
+      "#b5523b",
+      "#8a8f93",
+      "#7a3b2e",
+      "#c9c4b8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "brick",
+      "stucco",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "clay-tile",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Colourful naif murals and tile mosaics in the style of Fernando Llort; Spanish colonial arched corridors and wooden doors on older churches; Neo-Gothic and eclectic church towers; exposed concrete buttresses; bahareque (wattle-and-daub) and adobe heritage at Joya de Ceren; flags and national shield on public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/San_Salvador",
+        "what": "valley location at about 650 m, tropical wet-and-dry climate, repeated earthquake destruction of colonial buildings, styles from neo-Gothic to modernist, local ceramic tile and concrete block industry"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Metropolitan_Cathedral_of_San_Salvador",
+        "what": "colourful facade, history of repeated rebuilding, 1990s concrete cathedral"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Joya_de_Cer%C3%A9n",
+        "what": "wattle-and-daub walls and adobe columns of the Maya village buried by ash"
+      }
+    ]
+  },
+  "places": {
+    "san-salvador-airport-san-salvador-airport": {
+      "venueId": "san-salvador-airport-san-salvador-airport",
+      "city": "san-salvador",
+      "name": "El Salvador International Airport Saint Oscar Arnulfo Romero y Galdamez",
+      "archetype": "airport-terminal",
+      "subject": "The passenger terminal at Comalapa (opened 1980, expanded since): a long low two-level concrete and glass block with a deep canopy and a freestanding control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e0d4",
+          "#3f6f93",
+          "#f4f2ec"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980, expanded 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "regional context only"
+        }
+      ],
+      "notes": "The Wikipedia page for the airport could not be retrieved and OSM only gives the apron polygon (1131x293 m), so the terminal is a typed regional-airport brief; no appearance fact was verified."
+    },
+    "san-salvador-clinic": {
+      "venueId": "san-salvador-clinic",
+      "city": "san-salvador",
+      "name": "Hospital El Salvador",
+      "archetype": "hospital",
+      "subject": "Hospital El Salvador, the 2020 field hospital created inside the CIFCO convention centre, a low white exhibition-hall complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "converted-convention-centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#eeece6",
+          "#4d7fa3",
+          "#d8d6cf"
+        ],
+        "roofColour": "#d8d6cf",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q96650506: hospital in San Salvador, founded 2020 (set up during COVID-19)"
+        }
+      ],
+      "notes": "Appearance not found; a converted exhibition centre is a wide, windowless low block with hall roofs, which is what the brief models. The measured OSM building is a 47x32 m rotated rectangle."
+    },
+    "san-salvador-community-notices": {
+      "venueId": "san-salvador-community-notices",
+      "city": "san-salvador",
+      "name": "Asamblea Legislativa",
+      "archetype": "civic-palace",
+      "subject": "The Legislative Palace (Asamblea Legislativa) in the Centro de Gobierno, a boxy mid-rise cream building with flags and a front stair",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 42,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e1cb",
+          "#7c8c94",
+          "#f5f2ea"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Legislative_Assembly_of_El_Salvador",
+          "what": "seat of the unicameral legislature (Salon Azul); coordinates confirm the building location"
+        }
+      ],
+      "notes": "The sources describe the institution, not the building, so form comes from the measured OSM footprint (42.5x42.1 m) and a typed modernist-civic guess. The Salon Azul is the famous interior; the exterior is plain."
+    },
+    "san-salvador-community-voting-game": {
+      "venueId": "san-salvador-community-voting-game",
+      "city": "san-salvador",
+      "name": "Alcaldia Municipal",
+      "archetype": "civic-small",
+      "subject": "A small-town municipal hall (alcaldia) in the Colon area of La Libertad: a one- or two-storey painted building with a tiled roof and a front corridor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe3c4",
+          "#b35a46",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a65a40",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "regional context only; nearest OSM feature is a courthouse (Juzgado de Paz de Colon)"
+        }
+      ],
+      "notes": "The matching building is uncertain (the nearest OSM object is a 17x11 m courthouse), so this is a typed municipal hall from the local type: low whitewashed block with an arched front corridor facing a plaza."
+    },
+    "san-salvador-community-workshop": {
+      "venueId": "san-salvador-community-workshop",
+      "city": "san-salvador",
+      "name": "Universidad Centroamericana Jose Simeon Canas",
+      "archetype": "campus-block",
+      "subject": "A mid-rise classroom block of the UCA campus, a Jesuit university founded 1965 in the Antiguo Cuscatlan hills",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#cbbfa8",
+          "#a5603f",
+          "#efeae0"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Central_American_University,_San_Salvador",
+          "what": "private Jesuit university, founded 1965; OSM campus polygon 664x398 m"
+        }
+      ],
+      "notes": "Campus size is measured; buildings were not described, so one typical concrete-and-brick modernist block is shown. The campus is hilly and green."
+    },
+    "san-salvador-market-game": {
+      "venueId": "san-salvador-market-game",
+      "city": "san-salvador",
+      "name": "Metrocentro",
+      "archetype": "mall",
+      "subject": "Metrocentro, the large 1970s multi-section mall in San Salvador, a wide three-level cream and concrete complex linked by covered bridges",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 462,
+        "depth_m": 225,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dfcb",
+          "#7a8aa0",
+          "#f4f1e8"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Metrocentro_San_Salvador",
+          "what": "OSM/Wikidata: Metrocentro, founded 1970; tagged 3 levels, height 12 m, polygon 462x225 m (the Spanish article could not be retrieved)"
+        }
+      ],
+      "notes": "Measured size/levels; colours and walkways are typed. A long low blank-walled mall surrounded by large open car parks; the generator should clamp to 120 m and show the main entrance section."
+    },
+    "san-salvador-meal-stop": {
+      "venueId": "san-salvador-meal-stop",
+      "city": "san-salvador",
+      "name": "La Ramada 2",
+      "archetype": "restaurant",
+      "subject": "La Ramada 2, a seafood-style roadside restaurant: an open-sided ramada (shelter) with a pitched corrugated roof on timber posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "open-ramada"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#b79872",
+          "#d9b98c",
+          "#efe6d0"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "regional context only"
+        }
+      ],
+      "notes": "Nothing was found. The name (ramada) and the coastal location near La Libertad suggest an open shelter; the 18x8 m footprint is the measured OSM building. Low confidence."
+    },
+    "san-salvador-osm-node-3838426270": {
+      "venueId": "san-salvador-osm-node-3838426270",
+      "city": "san-salvador",
+      "name": "Monumento a La Constitucion",
+      "archetype": "monument",
+      "subject": "The Monument to the Constitution in San Salvador (1990), a long concrete memorial structure on a stepped plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 17,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "wall-monument"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#c9c3b3",
+          "#8d8778",
+          "#e7e2d6"
+        ],
+        "roofColour": "#c9c3b3",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q17622844: monument in San Salvador, inception 1990; OSM footprint 46x17 m"
+        }
+      ],
+      "notes": "The monument form could not be verified (page not retrievable). A broad low concrete plinth with a taller relief wall is a typed guess from the 46x17 m footprint."
+    },
+    "san-salvador-osm-node-4236378091": {
+      "venueId": "san-salvador-osm-node-4236378091",
+      "city": "san-salvador",
+      "name": "Cristo de La Paz",
+      "archetype": "monument",
+      "subject": "A statue of Christ (Cristo de la Paz) standing on a plinth in a small plaza on a hill on the south edge of San Salvador",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "statue-on-plinth"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f1efe8",
+          "#b7b3a8",
+          "#d9d4c6"
+        ],
+        "roofColour": "#f1efe8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Christ figure with open arms (typed)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monumento_al_Divino_Salvador_del_Mundo",
+          "what": "for comparison only: the better-known Divino Salvador del Mundo monument is elsewhere in the city (13.70, -89.22), so it is not this venue"
+        }
+      ],
+      "notes": "The nearest OSM feature is a cafe, not the statue; no source describes this particular Cristo de la Paz. A white concrete Christ figure on a stepped plinth is a typed guess. Do not confuse with the Salvador del Mundo monument."
+    },
+    "san-salvador-osm-node-448010104": {
+      "venueId": "san-salvador-osm-node-448010104",
+      "city": "san-salvador",
+      "name": "Estadio Espana",
+      "archetype": "stadium",
+      "subject": "Estadio Espana in Soyapango, a small municipal football stadium with a covered main stand and an open far end",
+      "form": {
+        "footprint": "oval",
+        "width_m": 155,
+        "depth_m": 79,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d0cbbd",
+          "#2f5f93",
+          "#f0eee6"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q9255029: stadium in Soyapango, El Salvador; OSM recreation ground 155x79 m"
+        }
+      ],
+      "notes": "No description found. Typed small-town football ground with one covered concrete grandstand on the long side."
+    },
+    "san-salvador-osm-node-7439633333": {
+      "venueId": "san-salvador-osm-node-7439633333",
+      "city": "san-salvador",
+      "name": "Santuario de Fatima",
+      "archetype": "church-modern",
+      "subject": "The Santuario de Fatima, a Catholic sanctuary/parish church in the south of San Salvador (typed from a Salvadoran modern parish church)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee2",
+          "#4a74a8",
+          "#d9d2bd"
+        ],
+        "roofColour": "#a65a40",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "regional context only; no OSM building was found at the point"
+        }
+      ],
+      "notes": "Not described anywhere found and OSM has only a node. A white parish church with a side bell tower and blue Marian accents is a typed guess; footprint is not measured."
+    },
+    "san-salvador-osm-relation-6127139": {
+      "venueId": "san-salvador-osm-relation-6127139",
+      "city": "san-salvador",
+      "name": "Sitio Arqueologico Joya de Ceren",
+      "archetype": "heritage-fort",
+      "subject": "Joya de Ceren, the Maya village buried by ash around AD 600: excavated adobe and wattle-and-daub houses sheltered under a modern protective roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 43,
+        "depth_m": 29,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "archaeological-shelter"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "timber",
+        "colours": [
+          "#9a7650",
+          "#7c5e3f",
+          "#c8b08a"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "c. AD 600",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Joya_de_Cer%C3%A9n",
+          "what": "about 70 buildings uncovered (storehouses, kitchens, living quarters, workshops, religious structure, sauna); wattle-and-daub walls and adobe columns; buried by 4-10 m of volcanic ash"
+        }
+      ],
+      "notes": "Walls and materials are sourced. The protective metal-roof shelters and tan earthen colours are from general knowledge of the site. Surfaces are low earthen walls in excavated pits, so the model should be low and rustic."
+    },
+    "san-salvador-osm-relation-6195189": {
+      "venueId": "san-salvador-osm-relation-6195189",
+      "city": "san-salvador",
+      "name": "Parque Cuscatlan",
+      "archetype": "park-landscape",
+      "subject": "Parque Cuscatlan, a city park with sports courts, pergolas, a cultural centre and exhibition hall, and a memorial to the civil-war dead",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 372,
+        "depth_m": 212,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d3c6",
+          "#4f8a5b",
+          "#f0ede4"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Cuscatl%C3%A1n",
+          "what": "monument and mural to memory and truth; Sala Nacional de Exposiciones Salarrue; El Trebol cultural centre; auditorium for 300; football and basketball courts, urban gym, parkour area, sand pit; pergolas, paths and walkways, LED lighting"
+        }
+      ],
+      "notes": "Facilities sourced from the Spanish article; the black granite memorial wall (naming civil-war victims) is from general knowledge and should be a long straight dark wall (fence-wall). Park is 372x212 m, mostly green space."
+    },
+    "san-salvador-osm-relation-8166884": {
+      "venueId": "san-salvador-osm-relation-8166884",
+      "city": "san-salvador",
+      "name": "Universidad Francisco Gavidia",
+      "archetype": "campus-block",
+      "subject": "A mid-rise urban campus block of Universidad Francisco Gavidia (founded 1981)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e0cc",
+          "#4d6e8f",
+          "#f4f1e8"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q9091552: university in El Salvador, inception 1981; OSM campus polygon 215x207 m"
+        }
+      ],
+      "notes": "No building-level description found; a typed urban campus block."
+    },
+    "san-salvador-osm-relation-8776526": {
+      "venueId": "san-salvador-osm-relation-8776526",
+      "city": "san-salvador",
+      "name": "Hospital Benjamin Bloom",
+      "archetype": "hospital",
+      "subject": "Hospital Nacional de Ninos Benjamin Bloom, a five-storey 1960s public paediatric hospital block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 91,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dcc6",
+          "#4a82a8",
+          "#f2efe6"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1967",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q96655743: hospital, inception 1967; OSM: 5 levels, height 18 m, footprint 91x50 m"
+        }
+      ],
+      "notes": "Levels, height and footprint are measured; colours are typed (cream painted concrete with blue trim)."
+    },
+    "san-salvador-osm-way-138475747": {
+      "venueId": "san-salvador-osm-way-138475747",
+      "city": "san-salvador",
+      "name": "Universidad Dr. Jose Matias Delgado | Campus I",
+      "archetype": "campus-block",
+      "subject": "Campus I of Universidad Dr. Jose Matias Delgado in Antiguo Cuscatlan, a compact teaching building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 19,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d4",
+          "#2f6f6f",
+          "#f6f3ea"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q4475794: private university in Antiguo Cuscatlan, inception 1977; OSM building 45x19 m"
+        }
+      ],
+      "notes": "Only the footprint is measured; the rest is a typed guess."
+    },
+    "san-salvador-osm-way-1546142604": {
+      "venueId": "san-salvador-osm-way-1546142604",
+      "city": "san-salvador",
+      "name": "Estadio Universitario Heroes y Martires del 30 de julio de 1975",
+      "archetype": "stadium",
+      "subject": "The University of El Salvador stadium: an open concrete bowl with long side stands and a track around the pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 183,
+        "depth_m": 131,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cdc8b9",
+          "#2f5f93",
+          "#efece3"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q3495897: multi-use stadium in San Salvador; OSM stadium polygon 183x131 m"
+        }
+      ],
+      "notes": "The stadium is named for the 30 July 1975 student massacre; a stark university stadium with exposed concrete terraces is the typed form. No description verified."
+    },
+    "san-salvador-osm-way-1546379365": {
+      "venueId": "san-salvador-osm-way-1546379365",
+      "city": "san-salvador",
+      "name": "Estadio Cuscatlan",
+      "archetype": "stadium",
+      "subject": "Estadio Cuscatlan, the 1976 national football stadium (about 45,000 seats), a large concrete bowl with colour-zoned stands painted blue and white and a partial roof over the main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 196,
+        "depth_m": 163,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8dde6",
+          "#2a5ca8",
+          "#f4f4f2"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "ring-roof",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1976",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Cuscatl%C3%A1n",
+          "what": "inaugurated 24 July 1976, designed by Lopez Munoz and Architects; capacity about 45,000 (up to 53,400); 2015 repaint in blue and white; 4K LED screen and metal-halide lighting added 2020; pitch 107x68.5 m; OSM height 20 m"
+        }
+      ],
+      "notes": "Sourced: date, capacity, colours, screen. The roof coverage is not confirmed by the article; the model should keep the roof partial. Stadium sits on sloping ground near the UCA."
+    },
+    "san-salvador-osm-way-196615967": {
+      "venueId": "san-salvador-osm-way-196615967",
+      "city": "san-salvador",
+      "name": "Iglesia El Carmen",
+      "archetype": "church-gothic",
+      "subject": "Iglesia El Carmen in Santa Tecla: a Gothic Revival Catholic church with a gabled nave and a pair of pointed bell towers",
+      "form": {
+        "footprint": "cross",
+        "width_m": 58,
+        "depth_m": 43,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#ece4cf",
+          "#b9ab88",
+          "#f7f4ec"
+        ],
+        "roofColour": "#7a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 2
+        },
+        {
+          "id": "bell-tower",
+          "count": 2
+        },
+        {
+          "id": "pinnacles",
+          "count": 1
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "Wikidata Q5991760: church in Santa Tecla, style Gothic Revival; OSM roof shape gabled, footprint 58x43 m"
+        }
+      ],
+      "notes": "Style and roof shape are tagged; the twin-tower facade and pale render colours are a typed neo-Gothic guess (the article could not be retrieved). Low confidence."
+    },
+    "san-salvador-osm-way-199426776": {
+      "venueId": "san-salvador-osm-way-199426776",
+      "city": "san-salvador",
+      "name": "El Boqueron National Park",
+      "archetype": "park-landscape",
+      "subject": "El Boqueron National Park on the San Salvador volcano: a forested crater rim with a viewpoint terrace and visitor centre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a8845b",
+          "#7a6a4a",
+          "#d9ccae"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Boquer%C3%B3n_National_Park",
+          "what": "national park on the San Salvador volcano; OSM park polygon 635x211 m"
+        }
+      ],
+      "notes": "The park is a forested volcano crater; only a small visitor pavilion and lookout terrace are modelled. No building-level description verified."
+    },
+    "san-salvador-osm-way-373925847": {
+      "venueId": "san-salvador-osm-way-373925847",
+      "city": "san-salvador",
+      "name": "Centro Comercial Multiplaza",
+      "archetype": "mall",
+      "subject": "Multiplaza, the Legorreta-designed shopping centre in Antiguo Cuscatlan: a three-level mall with saturated Mexican-modern colour walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 249,
+        "depth_m": 163,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8d3a8",
+          "#c4552e",
+          "#f4efe2"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s, expanded 2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Multiplaza",
+          "what": "Wikidata Q16609450: shopping centre in Antiguo Cuscatlan, architect Ricardo Legorreta; OSM: 3 levels, height 18 m, footprint 249x163 m"
+        }
+      ],
+      "notes": "Legorreta is known for thick coloured walls, deep square openings and plazas; the sandy-and-terracotta palette follows that style and is unverified here. It differs from Metrocentro (blank beige, wide) and Galerias (taller, mixed)."
+    },
+    "san-salvador-osm-way-38045211": {
+      "venueId": "san-salvador-osm-way-38045211",
+      "city": "san-salvador",
+      "name": "Centro Comercial Galerias",
+      "archetype": "mall",
+      "subject": "Galerias, the 1995 Escalon shopping centre with four upper levels and underground parking, adjoining the restored La Casona mansion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 174,
+        "depth_m": 114,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e2cc",
+          "#6a8f6a",
+          "#f5f2ea"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Comercial_Galer%C3%ADas_(El_Salvador)",
+          "what": "opened 1995 on Paseo General Escalon, about 115,000 m2, seven levels (three underground), La Casona European-style mansion restored beside it; 2006 added a floor for the cinema"
+        }
+      ],
+      "notes": "Levels and the La Casona neighbour are sourced; OSM gives 4 levels, 20 m. Colours and glazing are typed guesses."
+    },
+    "san-salvador-quiet-reflection": {
+      "venueId": "san-salvador-quiet-reflection",
+      "city": "san-salvador",
+      "name": "Catedral Metropolitana del Divino Salvador del Mundo",
+      "archetype": "church-classical",
+      "subject": "The Metropolitan Cathedral (completed 1999): a concrete cathedral with a big colourful facade, a tall front cross-tower element and a large central cupola",
+      "form": {
+        "footprint": "cross",
+        "width_m": 79,
+        "depth_m": 64,
+        "storeys": 3,
+        "height_m": 35,
+        "roof": "dome",
+        "variant": "concrete-cupola-cathedral",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e9e1cd",
+          "#d9863a",
+          "#b6c9de"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "cupola about 45 m tall"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1956-1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Metropolitan_Cathedral_of_San_Salvador",
+          "what": "third cathedral begun 12 Oct 1956, inaugurated 19 March 1999 (second wooden one burned in 1951); facade festive and colourful, faced south, formerly the Fernando Llort tile mural (removed 2012); cupola about 45 m high with 24 m radius; unfinished 1970s-80s structure had bare concrete, brick and iron buttresses"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "cathedral described as baroque/eclectic, 1950s; OSM height 35 m, architect tag"
+        }
+      ],
+      "notes": "The 2012 removal of the 2,700-tile ceramic mural means the facade is now bare, so the generator should use pale plastered concrete with a few colour bands, not the old mural. Main material colours are estimates."
+    },
+    "san-salvador-recreation": {
+      "venueId": "san-salvador-recreation",
+      "city": "san-salvador",
+      "name": "Centro Recreativo Cultural Puerta del Diablo",
+      "archetype": "park-landscape",
+      "subject": "Puerta del Diablo near Panchimalco: a gap between two rock outcrops on Cerro El Chulo with viewing terraces and a small visitor area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "rock-viewpoint"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#8d7f6c",
+          "#6b5f4f",
+          "#b6a98f"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Puerta_del_Diablo",
+          "what": "rock formation: a gap formed by two rock outcrops on Cerro El Chulo; panoramic views from the tops; about 1 km from Parque Balboa; formed after the October 1762 collapse of the hill"
+        }
+      ],
+      "notes": "The rocks are a tall twin-outcrop (tens of metres) that should dominate the model, with stairs and small shelters at the base. Heights and rock colour are estimated."
+    },
+    "san-salvador-transit": {
+      "venueId": "san-salvador-transit",
+      "city": "san-salvador",
+      "name": "Estacion de Tren FENADESAL",
+      "archetype": "transport-station",
+      "subject": "The old FENADESAL railway station in San Salvador: a long low platform building with a sheltered platform, now partly derelict",
+      "form": {
+        "footprint": "rect",
+        "width_m": 94,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d8c8a2",
+          "#9a5b3f",
+          "#efe8d6"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "what": "OSM building named FENADESAL, 94x15 m; FENADESAL is the national railway company"
+        }
+      ],
+      "notes": "Not described by any source. A long single-storey station shed with a deep platform canopy and rails is the typed form."
+    }
+  }
+}

@@ -1,0 +1,718 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monday_Market_Maiduguri.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Mr. Snatch",
+   "view": "street",
+   "file": "/tmp/places-evidence/maiduguri/monday2.jpg",
+   "used": "large open steel-truss sheds with low rust-red and grey-green corrugated roofs on red-brown columns, bare sandy trading yard, tricycles and parked cars, solar lamp posts, small street trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monday_market_Maiduguri,_Borno_State.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Mr. Snatch",
+   "view": "front",
+   "file": "/tmp/places-evidence/maiduguri/monday1.jpg",
+   "used": "entrance: white sign band across a gate, tall flagpole, guard booth, low pale-green lodge, grey-clad two storey block with red panel, kerbed roundabout with tree"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 0.75,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    -47.0,
+    25.0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 11,
+    "rows": 3,
+    "dx": 9.0,
+    "dy": 12.0,
+    "centred": false,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 7.0,
+      "colour": "#8a4a3a",
+      "topColour": "#8a4a3a"
+     }
+    },
+    "lod1Step": 99,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-a",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    34
+   ],
+   "params": {
+    "rect": [
+     98,
+     22
+    ],
+    "z0": 5.8,
+    "height": 1.0,
+    "colour": "#3f3a37",
+    "topColour": "#4a4541"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     103,
+     27
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "z0": 7.0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a4a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8523a",
+    "pitch": 4.5,
+    "overhang": 0,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -47.0,
+    -2.0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 9.0,
+    "dy": 11.0,
+    "centred": false,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 6.5,
+      "colour": "#8a4a3a",
+      "topColour": "#8a4a3a"
+     }
+    },
+    "lod1Step": 99,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-b",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    6
+   ],
+   "params": {
+    "rect": [
+     70,
+     20
+    ],
+    "z0": 5.3,
+    "height": 1.0,
+    "colour": "#3f3a37",
+    "topColour": "#4a4541"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     75,
+     25
+    ]
+   },
+   "at": [
+    -14,
+    6
+   ],
+   "z0": 6.5,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a4a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a8523a",
+    "pitch": 4.5,
+    "overhang": 0,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -47.0,
+    -29.0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 4,
+    "rows": 2,
+    "dx": 9.0,
+    "dy": 16.0,
+    "centred": false,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "z0": 0,
+      "height": 5.5,
+      "colour": "#8a4a3a",
+      "topColour": "#8a4a3a"
+     }
+    },
+    "lod1Step": 99,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "prism",
+   "id": "truss-c",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -24
+   ],
+   "params": {
+    "rect": [
+     38,
+     14
+    ],
+    "z0": 4.3,
+    "height": 1.0,
+    "colour": "#3f3a37",
+    "topColour": "#4a4541"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-c",
+   "footprint": {
+    "rect": [
+     43,
+     19
+    ]
+   },
+   "at": [
+    -30,
+    -24
+   ],
+   "z0": 5.5,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a4a3a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7e8f84",
+    "pitch": 4.5,
+    "overhang": 0,
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    -44,
+    -48
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa0a2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#c43a35"
+      ],
+      "height": 1.6,
+      "at": 0.5,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9395",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pole-40",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -40,
+    -14
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c9ccd0",
+    "topColour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel-40",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -39.2,
+    -14
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.9
+    ],
+    "z0": 9,
+    "height": 0.2,
+    "colour": "#2b3a52",
+    "topColour": "#2b3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pole8",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8,
+    -20
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c9ccd0",
+    "topColour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel8",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8.8,
+    -20
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.9
+    ],
+    "z0": 9,
+    "height": 0.2,
+    "colour": "#2b3a52",
+    "topColour": "#2b3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pole40",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    40,
+    -16
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#c9ccd0",
+    "topColour": "#c9ccd0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "panel40",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    40.8,
+    -16
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.9
+    ],
+    "z0": 9,
+    "height": 0.2,
+    "colour": "#2b3a52",
+    "topColour": "#2b3a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veh-8",
+   "at": [
+    -8,
+    -12
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.4
+    ],
+    "z0": 0.3,
+    "height": 1.8,
+    "colour": "#e0b72c",
+    "topColour": "#333333"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veh14",
+   "at": [
+    14,
+    -6
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.4
+    ],
+    "z0": 0.3,
+    "height": 1.8,
+    "colour": "#e0b72c",
+    "topColour": "#333333"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veh26",
+   "at": [
+    26,
+    -28
+   ],
+   "params": {
+    "rect": [
+     4.5,
+     2
+    ],
+    "z0": 0.3,
+    "height": 2.2,
+    "colour": "#eeeeee",
+    "topColour": "#333333"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veh-24",
+   "at": [
+    -24,
+    -8
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     1.4
+    ],
+    "z0": 0.3,
+    "height": 1.8,
+    "colour": "#e0b72c",
+    "topColour": "#333333"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-l",
+   "at": [
+    -9,
+    -52
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#e8e6df",
+    "topColour": "#e8e6df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-pier-r",
+   "at": [
+    9,
+    -52
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     1.6
+    ],
+    "z0": 0,
+    "height": 5.5,
+    "colour": "#e8e6df",
+    "topColour": "#e8e6df"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-band",
+   "at": [
+    0,
+    -52
+   ],
+   "params": {
+    "rect": [
+     20,
+     1.4
+    ],
+    "z0": 5.0,
+    "height": 1.8,
+    "colour": "#f2f0ea",
+    "topColour": "#dcdad2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lodge",
+   "footprint": {
+    "rect": [
+     20,
+     7
+    ]
+   },
+   "at": [
+    28,
+    -52
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9cc3a8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aeb2ae",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "booth",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    10,
+    -48
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6a2b3a",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcfcb"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "maiduguri-monday-market",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Sheds now low-pitched open roofs (rust, one grey-green) on slim columns with a dark truss band, but truss is a solid band not open lattice, roofs are plain without corrugation; vehicles and lamp posts are simple blocks, crowd and dense small street trees absent."
+ }
+}

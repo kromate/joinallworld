@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "timber-market-gombe",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1083419384",
+   "used": "nearest match is a 33 m2 shed 18 m away, unreliable; not used"
+  },
+  {
+   "kind": "text",
+   "used": "No photo found (Commons search for the Gombe timber market returns no images). Layout composed from brief: Kasuwar Katako, long open sheds with stacks of sawn planks and poles, scrap/metal section, perimeter wall."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     -14,
+     0
+    ],
+    "end": [
+     34,
+     -14,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "id": "row-a",
+      "footprint": {
+       "rect": [
+        15,
+        9
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 3.4,
+      "storeys": 1,
+      "wall": {
+       "material": "timber",
+       "colour": "#9c7448",
+       "windows": "none",
+       "faces": {
+        "front": "none"
+       }
+      },
+      "roof": {
+       "form": "shed",
+       "colour": "#8a8f94",
+       "material": "corrugated",
+       "pitch": 8,
+       "overhang": 0.8
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -34,
+     6,
+     0
+    ],
+    "end": [
+     34,
+     6,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "mass",
+      "id": "row-b",
+      "footprint": {
+       "rect": [
+        15,
+        9
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 3.8,
+      "storeys": 1,
+      "wall": {
+       "material": "timber",
+       "colour": "#7a5a3a",
+       "windows": "none",
+       "faces": {
+        "front": "none"
+       }
+      },
+      "roof": {
+       "form": "shed",
+       "colour": "#7c8288",
+       "material": "corrugated",
+       "pitch": 8,
+       "overhang": 0.8
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops-back",
+   "footprint": {
+    "rect": [
+     70,
+     6
+    ]
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b7a07a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 5,
+    "rows": 2,
+    "dx": 9,
+    "dy": 4,
+    "centre": [
+     0,
+     -1.5,
+     0
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        6,
+        1.6
+       ],
+       "height": 1.6,
+       "colour": "#c9a66b"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     5,
+     3
+    ],
+    "height": 2.2,
+    "colour": "#d9c7a0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 26
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -44,
+     16
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     44,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; layout typed from brief"
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-osm-node-10024259768",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/885883241",
+   "used": "containing 8x5.7 m building (45 m2, bearing ~180) as the kitchen/dining room; the open terrace in front is sized from the brief"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/conakry.json#conakry-osm-node-10024259768",
+   "used": "roadside restaurant, painted render, corrugated roof, open terrace, sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "room",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d8b0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#b85c3a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b7f84",
+    "material": "corrugated",
+    "overhang": 0.5,
+    "rise": 1.0
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -4.6
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2.2,
+    "height": 2.6,
+    "colours": [
+     "#b85c3a",
+     "#e8d8b0"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -9
+   ],
+   "rotDeg": 0,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4bdae",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7b7f84",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "rise": 0.6
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3,
+    -9
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -9
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    -7,
+    -12
+   ],
+   "params": {
+    "radius": 1.5,
+    "colour": "#b85c3a"
+   }
+  },
+  {
+   "type": "umbrella",
+   "at": [
+    7,
+    -12
+   ],
+   "params": {
+    "radius": 1.5,
+    "colour": "#e0b03a"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -8,
+    -5
+   ],
+   "params": {
+    "height": 4,
+    "width": 1.6,
+    "colour": "#b85c3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    4
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   40,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; terrace size and furniture typical; OSM outline unnamed."
+ }
+}

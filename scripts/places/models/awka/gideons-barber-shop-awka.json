@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "gideons-barber-shop-awka",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/awka.json",
+   "used": "6x5 m kiosk barber with painted front, awning and blank board"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo anywhere; kiosk typed from brief (6 x 5 m, shed roof, blue paint, blank board); OSM nearest footprint (94 m2) not used"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.1,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4d6e6",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "windowShape": "rect",
+    "glassColour": "#5d7183",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.25,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f757a",
+    "material": "corrugated",
+    "rise": 0.7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.9,
+    2.5
+   ],
+   "params": {
+    "rect": [
+     5.2,
+     0.12
+    ],
+    "height": 0.9,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0.5,
+    -2.5,
+    0
+   ],
+   "params": {
+    "width": 4.2,
+    "depth": 1.5,
+    "drop": 0.4,
+    "height": 2.5,
+    "colours": [
+     "#ffffff",
+     "#7f8a92"
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.6,
+    -2.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     0.5
+    ],
+    "height": 0.45,
+    "colour": "#8a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -2.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.6,
+    0.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     3.2
+    ],
+    "height": 2.4,
+    "colour": "#a9a39a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -5,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   18,
+   16
+  ]
+ }
+}

@@ -1,0 +1,1023 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "park",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Freedom_Park_At_Lagos,_Island,_Nigeria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Olusola David, Ayibiowu",
+   "view": "street",
+   "used": "cream gable-fronted hall with red pitched roofs, low flanking wings, red railings, arched glazed door, bronze dancing statue on a stepped plinth, brick ruin wall at right, round-crowned trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Freedom_Park_-Fish_Pond.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Olusola David, Ayibiowu",
+   "view": "detail",
+   "used": "pond edged by low white piers with red brick panels, white obelisk on brick plinth with red door, red-roofed cafe pavilion, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Freedom_Park_front_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Olusola David, Ayibiowu",
+   "view": "front",
+   "used": "cream gatehouse with striped blue/yellow/red band, red steel gate"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lagos.json#park",
+   "used": "1885 Broad Street prison, surviving brick wall and watchtower, pond, music stage, statues"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     15,
+     12
+    ]
+   },
+   "at": [
+    -4,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f1e4",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "bay": 3.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain",
+     "front": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9c4a40",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.3,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     24,
+     10
+    ]
+   },
+   "at": [
+    16,
+    1
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "plinth": 0.5,
+    "bay": 3.4,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5524a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -19,
+    1
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdc",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5524a",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ruin-wall",
+   "footprint": {
+    "rect": [
+     8,
+     1.2
+    ]
+   },
+   "at": [
+    22,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#c9b79c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a395"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb0",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -30.0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb1",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -27.4,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb2",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -24.8,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb3",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -22.2,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb4",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -19.6,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb5",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -17.0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb6",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -14.399999999999999,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb7",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -11.8,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb8",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -9.2,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb9",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -6.599999999999998,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb10",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -4.0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb11",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    -1.3999999999999986,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb12",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    1.2000000000000028,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb13",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    3.8000000000000043,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb14",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    6.399999999999999,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb15",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    9.0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb16",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    11.600000000000001,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb17",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    14.200000000000003,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb18",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    16.800000000000004,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb19",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    19.4,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb20",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    22.0,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb21",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    24.6,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb22",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    27.200000000000003,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0f0ec",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kerb23",
+   "footprint": {
+    "rect": [
+     2.6,
+     0.6
+    ]
+   },
+   "at": [
+    29.800000000000004,
+    -12.5
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -32,
+      -9.5
+     ],
+     [
+      32,
+      -9.5
+     ]
+    ],
+    "width": 5.5,
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "market-open/statue-on-plinth",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "height": 4.8,
+    "colour": "#5b4b34",
+    "plinth": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth-step",
+   "footprint": {
+    "rect": [
+     6,
+     3
+    ]
+   },
+   "at": [
+    -4,
+    -8.4
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a968c",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -34,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#8a1f1c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    6,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.0,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#8a1f1c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    3,
+    -7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -8,
+    20,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "count": 12,
+    "min_height": 9,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    -6,
+    22,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 10,
+    "colour": "#3f5a44",
+    "bank": true
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    -6,
+    30,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "base_width": 2,
+    "style": "square",
+    "steps": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -11,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Street frontage re-composed: gable hall with boxed eaves, low red-roof wings, bronze statue on plinth, brick ruin wall, red railings, black-white kerb; distant cell block, watchtower, stage dropped; window pairs, arched door, tuk-tuk mural and tree canopy over roof not modelled."
+ }
+}

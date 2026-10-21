@@ -1,0 +1,107 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gaborone",
+ "venueId": "gaborone-philatelic-museum",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/801832787",
+   "used": "Poso House footprint (containing the venue point), irregular plan about 53 x 23 m"
+  },
+  {
+   "kind": "text",
+   "used": "the only Commons file titled Philatelic Museum is a logo, not a building: not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "poso-house",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d8bd",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#a8553a",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8b88",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.2,
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.4,
+    "count": 3,
+    "colour": "#c9c3b5"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "extent": [
+   80,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -30,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     30,
+     20
+    ],
+    "height": 9
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; storeys and finishes typed from the brief's city style"
+ }
+}

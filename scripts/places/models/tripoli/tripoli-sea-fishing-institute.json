@@ -1,0 +1,171 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-sea-fishing-institute",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1049623484",
+   "used": "real building outline (named, exact match), used at true size; two storeys and ribbon windows are typed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "polygon": [
+     [
+      -19.9,
+      28.8
+     ],
+     [
+      8.7,
+      29.5
+     ],
+     [
+      9.7,
+      -15.2
+     ],
+     [
+      17.9,
+      -15
+     ],
+     [
+      18.1,
+      -24.6
+     ],
+     [
+      6,
+      -24.9
+     ],
+     [
+      5.7,
+      -16.3
+     ],
+     [
+      3.9,
+      -16.3
+     ],
+     [
+      4.2,
+      -24.5
+     ],
+     [
+      -14.8,
+      -24.9
+     ],
+     [
+      -15.1,
+      -10.5
+     ],
+     [
+      -2.9,
+      -10.2
+     ],
+     [
+      -2.8,
+      -15.6
+     ],
+     [
+      -0.7,
+      -15.6
+     ],
+     [
+      -0.8,
+      -10.2
+     ],
+     [
+      2.5,
+      -10.1
+     ],
+     [
+      1.7,
+      20.5
+     ],
+     [
+      -19.7,
+      20
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e5d2a8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#f3efe6",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#8c8a84"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    12,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 2,
+    "line": 25
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; footprint is real, storeys, colours and windows typed"
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "gusau-yam-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json",
+   "used": "brief: low open-sided corrugated sheds over heaps of yams and sacks, trader umbrellas, trucks; the OSM match is a 5 m hut 6 m away and was not used; nearby market photos (Commons 0024/0025, 231 m away) show ochre-rendered shopfronts with veranda posts and corrugated roofs, used only for wall and roof colours"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "goods": "sacks",
+    "wall_colour": "#b69a70",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "sacks",
+    "wall_colour": "#a98a5e",
+    "roof_colour": "#9a9ea2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shops",
+   "footprint": {
+    "rect": [
+     56,
+     5
+    ]
+   },
+   "at": [
+    0,
+    18
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c07a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "pitch": 6,
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 5,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 5
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#3f6b9a",
+    "count": 2,
+    "spacing": 3,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -22,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 2,
+    "colours": [
+     "#b6323a",
+     "#e8e4d8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -32,
+     -6
+    ],
+    "height": 7
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     34,
+     -8
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   85,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this market; layout of sheds, shop row and umbrellas is typed from the brief; trucks and heaps of yams are only suggested by sack goods"
+ }
+}

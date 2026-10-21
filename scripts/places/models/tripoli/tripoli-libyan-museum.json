@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-libyan-museum",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/102548344",
+   "used": "real museum outline (about 60 x 39 m, stepped diagonal plan), 4 building levels tagged"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/tripoli.json",
+   "used": "sand stucco, limestone trim, arched windows and formal arched entrance, garden forecourt with flags (no usable photo of this building found; Commons nearby images show the medina, not this building)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: facade detailing, entrance and roofline are typical colonial-Mediterranean assumptions; outline is the real OSM polygon"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "museum",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e0cda3",
+    "glassColour": "#4d5b66",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "plinth": 0.9,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#f1ead8"
+      ],
+      "height": 0.5,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -12,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 3,
+    "spacing": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -22
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -36
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ }
+}

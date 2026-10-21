@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-marche-nkembo",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/270078850",
+   "used": "real irregular footprint (name match, 1382 m2)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lbv-marché-NKembo3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Barada-nikto",
+   "view": "interior",
+   "file": "/tmp/places-evidence/libreville/nkembo.jpg",
+   "used": "interior only: round grey concrete columns, low rendered stall counters in rows; justifies open hall under a high roof with louvre openings"
+  },
+  {
+   "kind": "text",
+   "used": "brief: long hall, lock-up shops along street, teal/cream palette"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d0b8",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "louvre"
+    },
+    "plinth": 0.5,
+    "bands": "#4f6f66"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7b8084",
+    "material": "corrugated",
+    "parapet": 0.4,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -4,
+    -31,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.4,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#4f6f66",
+     "#c98f6b",
+     "#6a7a8a"
+    ],
+    "roof_colour": "#7b8084",
+    "wall_colour": "#d8d0b8"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -38,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c43a2f",
+     "#e8c13a",
+     "#2f5f9a",
+     "#3f7a4a",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c43a2f",
+     "#e8c13a",
+     "#2f5f9a",
+     "#3f7a4a",
+     "#e9dfc6"
+    ]
+   },
+   "rotDeg": 40
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.6,
+    "bottom": 5.4,
+    "colour": "#4f6f66",
+    "posts": false
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only an interior photo exists; exterior roof form, wall treatment and colours are typed from the brief and the interior photo."
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "gtbank-dutse",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/dutse.json",
+   "used": "typed brief only: two-storey branch, glazed ground floor, flat roof, blank signage board; no photo or OSM outline found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No evidence for this branch; massing and layout are a plausible two-storey bank on the city's cream render palette, unbranded."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeae0",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "plinth": 0.3,
+    "groundKind": "glass",
+    "bands": "#8a8f94",
+    "faces": {
+     "left": "punched",
+     "right": "punched",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.4,
+    "columns": 2,
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -9.4,
+    4.6
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#d9d4c6",
+    "frameColour": "#8a8f94",
+    "posts": false
+   }
+  },
+  {
+   "type": "atm-booth",
+   "at": [
+    -17,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#d9d4c6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ }
+}

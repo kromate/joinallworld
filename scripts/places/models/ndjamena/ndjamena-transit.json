@@ -1,0 +1,233 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/308210027",
+   "used": "only the scale and setting: a 334 x 215 m open sandy motor park, far larger than the 118 m scene clamp, so a representative 90 m portion near the ticket building is modelled"
+  },
+  {
+   "kind": "text",
+   "used": "brief: open sandy coach park (Chad has no railway), low rendered ticket building, shed shelters, rows of bus bays; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 22,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-hall",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c29c",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bands": "#c0392b",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d8a84",
+    "material": "corrugated",
+    "overhang": 1.2,
+    "pitch": 8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -18,
+    6,
+    0
+   ],
+   "params": {
+    "width": 26,
+    "depth": 4.5,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -18,
+    7.8,
+    4.4
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#c0392b",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "waiting-shed",
+   "footprint": {
+    "rect": [
+     30,
+     7
+    ]
+   },
+   "at": [
+    24,
+    10
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8d8a84",
+    "windows": "none",
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d8a84",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "pitch": 6
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "coach",
+    "density": 0.8,
+    "colours": [
+     "#e6e2d8",
+     "#2f6b4f",
+     "#c0392b",
+     "#e6b422"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.7,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -42,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "van",
+    "density": 0.6,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    4,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c0392b"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -45,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: only a 90 m portion of a 334 m motor park; layout of sheds, bays and ticket hall assumed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-transit"
+}

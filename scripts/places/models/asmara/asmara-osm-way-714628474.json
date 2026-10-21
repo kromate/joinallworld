@@ -1,0 +1,204 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/714628474",
+   "used": "campus area is 413 x 336 m, far over the scene clamp, so only a typical teaching core is modelled; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 20,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classroom-L",
+   "footprint": {
+    "kind": "L",
+    "size": [
+     52,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bands": "#d99b82",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lab-block",
+   "footprint": {
+    "rect": [
+     30,
+     12
+    ]
+   },
+   "at": [
+    -5,
+    36
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     18,
+     14
+    ]
+   },
+   "at": [
+    38,
+    34
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d99b82",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -10,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 4,
+    "height": 3.2,
+    "form": "flat",
+    "colour": "#9a968d"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      -32
+     ],
+     [
+      55,
+      -32
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#e8dcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -35,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     25
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or usable outline (campus area); typed rendered two-storey blocks in the city style."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-way-714628474"
+}

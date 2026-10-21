@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-8999008284",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: small rural roadside market of timber shelters and zinc roofs, ~40x30 m, 14 stalls, 4 sheds, umbrellas; OSM nearest is a 61 m2 building so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "market-shed",
+   "id": "shed-a",
+   "at": [
+    -12,
+    6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.4,
+    "cladding": "timber",
+    "goods": "sacks",
+    "roof_colour": "#8d5a3f",
+    "wall_colour": "#9d8c74"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-b",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 5,
+    "height": 3.2,
+    "cladding": "timber",
+    "goods": "sacks",
+    "roof_colour": "#8d5a3f",
+    "wall_colour": "#9d8c74"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-c",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "rotDeg": 4,
+   "params": {
+    "length": 10,
+    "depth": 4,
+    "height": 3.0,
+    "cladding": "timber",
+    "roof_colour": "#b8744f",
+    "wall_colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed-d",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "depth": 4,
+    "height": 3.0,
+    "cladding": "timber",
+    "roof_colour": "#8d5a3f",
+    "wall_colour": "#9d8c74"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.5,
+    "kind": "umbrella",
+    "colours": [
+     "#b8744f",
+     "#cfc9b8",
+     "#c0452f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -0.5,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4,
+    "kind": "table",
+    "colours": [
+     "#b8744f",
+     "#cfc9b8"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     18
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic roadside market layout from brief, stall positions invented"
+ }
+}

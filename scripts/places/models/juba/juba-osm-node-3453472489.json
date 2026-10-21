@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-node-3453472489",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-osm-node-3453472489",
+   "used": "small eatery in a 12x8 m single-storey shopfront, bright yellow render, terracotta band, striped awning, blank menu board, mono-pitch grey corrugated roof, neighbouring shop. Nearest OSM way (8.4 m away, 196 m2 irregular) is too uncertain and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -14,
+  "pitchDeg": 10,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     12,
+     8
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4e3b8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#c0583a",
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 1.2,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 1.8,
+    "height": 2.7,
+    "colours": [
+     "#c0583a",
+     "#f4e3b8"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#c0583a",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "neighbour-shop",
+   "footprint": {
+    "rect": [
+     8,
+     8
+    ]
+   },
+   "at": [
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b58a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    -5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   44,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; typical shopfront from brief text only."
+ }
+}

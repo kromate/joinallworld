@@ -1,0 +1,1664 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tegucigalpa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tegucigalpa",
+    "climate": "highland",
+    "vernacular": "Hillside highland capital at about 1,000 m: a colonial core of whitewashed and pastel (salmon, ochre) adobe and masonry buildings with red Spanish clay-tile roofs and Baroque churches; two-storey buildings until the 1980s, then concrete avenues, overpasses and blocks; dense hillside colonias of painted concrete-block houses under corrugated metal roofs; glass-and-render malls and towers on the ridges; pine and oak on the surrounding hills.",
+    "wallColours": [
+      "#f0ece0",
+      "#d9b36b",
+      "#e0a58a",
+      "#b0aca3",
+      "#8fb6c9",
+      "#a9c8a0",
+      "#c9a98a"
+    ],
+    "roofColours": [
+      "#b5532f",
+      "#9a5a3f",
+      "#a8aeb2",
+      "#6e7378"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "concrete",
+      "render",
+      "stucco",
+      "brick",
+      "exposed-concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "palm"
+    ],
+    "ornament": "Baroque church fronts with Solomonic columns and bell towers; colonial arcaded portals and wooden balconies with iron grilles; painted pastel facade bands; hillside walls with painted murals; red-tile eaves; wrought-iron window grilles on almost every house.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Tegucigalpa",
+        "what": "hilly valley city, two-storey buildings until the 1980s, colonial cathedral 1765 and churches, pine and oak hills, hillside poorer neighbourhoods, high-rise and malls on ridges"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tegucigalpa_Cathedral",
+        "what": "Baroque, salmon-coloured exterior restored, 60 x 11 x 18 m with a 30 m dome"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Iglesia_de_San_Francisco_(Tegucigalpa)",
+        "what": "Baroque church completed 1590, rebuilt 1735"
+      }
+    ]
+  },
+  "places": {
+    "tegucigalpa-airport-tegucigalpa-airport": {
+      "venueId": "tegucigalpa-airport-tegucigalpa-airport",
+      "city": "tegucigalpa",
+      "name": "Toncontín Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Toncontín terminal remodelled in 2006: a low wide hall with a flat canopy and jet bridges, sitting in a mountain-ringed valley at 1,008 m",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "highland-regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d2",
+          "#4f7a9a",
+          "#b0aca3"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1934, remodelled 2006",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Aeropuerto_Internacional_Toncont%C3%ADn",
+          "what": "terminal opened 1934; fully remodelled 2006; three boarding gates and two jet bridges; 1,008 m elevation; runway 02/20 2,163 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/29224987",
+          "what": "OSM footprint 209.3 x 63.7 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. Gate count, remodel date and mountain setting are sourced; the facade, storeys and colours are not described. OSM terminal is 209 x 64 m."
+    },
+    "tegucigalpa-clinic": {
+      "venueId": "tegucigalpa-clinic",
+      "city": "tegucigalpa",
+      "name": "Hospital Escuela Universitario",
+      "archetype": "hospital",
+      "subject": "Hospital Escuela: Honduras national teaching hospital, a large complex of multi-storey concrete ward blocks",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "ward-towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d0c0",
+          "#8fb6c9",
+          "#b0aca3"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1973-1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Escuela_Universitario",
+          "what": "construction began 1973, inaugurated November 1978, opened to the public March 1979; 1,306 beds; Materno Infantil block 1969; at least five floors"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/235351975",
+          "what": "OSM footprint 109.9 x 68.3 m (measured)"
+        }
+      ],
+      "notes": "Dates, bed count and a fifth floor are sourced. Style, colour and storeys (about six) are inferred from its 1970s date. OSM footprint 110 x 68 m."
+    },
+    "tegucigalpa-community-notices": {
+      "venueId": "tegucigalpa-community-notices",
+      "city": "tegucigalpa",
+      "name": "Corte Suprema de Justicia",
+      "archetype": "civic-palace",
+      "subject": "The Supreme Court building: a long formal government block with a central entrance and flags",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "variant": "justice-block"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e8e2d2",
+          "#b0aca3",
+          "#6e7378"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tegucigalpa",
+          "what": "downtown contains National Congress, city hall, museums; general civic context"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/312607114",
+          "what": "OSM footprint 117.2 x 35.3 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM courthouse footprint is 117 x 35 m; Wikidata describes the Court as the highest judicial authority in Honduras. The classical entrance is an assumption."
+    },
+    "tegucigalpa-community-voting-game": {
+      "venueId": "tegucigalpa-community-voting-game",
+      "city": "tegucigalpa",
+      "name": "Municipalidad de Cantarranas",
+      "archetype": "civic-small",
+      "subject": "The town hall of Cantarranas (San Juan de Flores): a single-storey whitewashed municipal building with a tiled roof and porch on the plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "colonial-town-hall"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ece0",
+          "#d9b36b",
+          "#8c5a3f"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/542906181",
+          "what": "OSM footprint 35.3 x 14.3 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. The OSM polygon matched to this venue is a 35 x 14 m Catholic church, which looks like the neighbouring plaza church rather than the town hall, so the shape here follows the usual Honduran municipal hall instead."
+    },
+    "tegucigalpa-community-workshop": {
+      "venueId": "tegucigalpa-community-workshop",
+      "city": "tegucigalpa",
+      "name": "UNITEC (Universidad Tecnologica Centroamericana)",
+      "archetype": "campus-block",
+      "subject": "UNITEC campus: modern four-storey classroom blocks with painted render, glazed stair cores and covered walkways on a hillside site",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d2",
+          "#2f5fa0",
+          "#b0aca3"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "founded 1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tegucigalpa",
+          "what": "context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/33918120",
+          "what": "OSM footprint 549.5 x 258.9 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. Only the founding date (1987 start_date on OSM) is known. OSM campus site is 550 x 259 m."
+    },
+    "tegucigalpa-market-game": {
+      "venueId": "tegucigalpa-market-game",
+      "city": "tegucigalpa",
+      "name": "Mercado Municipal",
+      "archetype": "market-hall",
+      "subject": "A town municipal market: a single-storey open-sided hall of columns under a shared metal roof with stalls and awnings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 37,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0ece0",
+          "#d9b36b",
+          "#b0aca3"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/761273404",
+          "what": "OSM footprint 40.8 x 36.8 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. The venue lies about 20 km south-west of the capital (in a small town). OSM marketplace building is 41 x 37 m."
+    },
+    "tegucigalpa-meal-stop": {
+      "venueId": "tegucigalpa-meal-stop",
+      "city": "tegucigalpa",
+      "name": "Espresso Americano cafe",
+      "archetype": "restaurant",
+      "subject": "A small cafe unit with glazed frontage and a street-side awning in a commercial block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e2d2",
+          "#6b3f2a",
+          "#b0aca3"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/312340203",
+          "what": "OSM footprint 110.5 x 47.7 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. The matched OSM polygon is a 110 x 48 m church, which is not the cafe, so dimensions here are a typical cafe unit. No brand marks are used."
+    },
+    "tegucigalpa-osm-node-11872479469": {
+      "venueId": "tegucigalpa-osm-node-11872479469",
+      "city": "tegucigalpa",
+      "name": "Torre (tower)",
+      "archetype": "monument",
+      "subject": "A slender lookout or communications tower on a hilltop north of the city",
+      "form": {
+        "footprint": "round",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 6,
+        "height_m": 25,
+        "roof": "none",
+        "variant": "lattice-mast"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b0aca3",
+          "#c0392b",
+          "#f2f0ea"
+        ],
+        "roofColour": "#8c8f93",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=12/0/0",
+          "what": "venue location only; no description found"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. Only a point called Torre (tower) exists; nothing found about its form."
+    },
+    "tegucigalpa-osm-node-12184570445": {
+      "venueId": "tegucigalpa-osm-node-12184570445",
+      "city": "tegucigalpa",
+      "name": "CODEL Amarateca",
+      "archetype": "civic-small",
+      "subject": "A long single-storey community hall of a rural development committee: painted block walls and a tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "community-hall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ece0",
+          "#8fb6c9",
+          "#b0aca3"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1198815590",
+          "what": "OSM footprint 75.2 x 12.6 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. CODEL is a local committee; the building is a 75 x 13 m structure from OSM. The use is not known."
+    },
+    "tegucigalpa-osm-node-12184594653": {
+      "venueId": "tegucigalpa-osm-node-12184594653",
+      "city": "tegucigalpa",
+      "name": "CODEL Aldea Cofradia",
+      "archetype": "civic-small",
+      "subject": "A small village committee house of painted block under a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "community-hall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9b36b",
+          "#f0ece0",
+          "#b0aca3"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1217235082",
+          "what": "OSM footprint 12.9 x 9.9 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM building is 13 x 10 m."
+    },
+    "tegucigalpa-osm-node-388490985": {
+      "venueId": "tegucigalpa-osm-node-388490985",
+      "city": "tegucigalpa",
+      "name": "Cristo del Picacho",
+      "archetype": "monument",
+      "subject": "The white Christ statue with outstretched arms on a stone plinth on the Picacho hilltop park above the city",
+      "form": {
+        "footprint": "round",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 25,
+        "roof": "none",
+        "variant": "christ-statue"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#f2f0ea",
+          "#b0aca3",
+          "#8c7a68"
+        ],
+        "roofColour": "#f2f0ea",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "white Christ, arms open, about 17 m tall (unverified)"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewpoint terrace"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tegucigalpa",
+          "what": "El Picacho hill rises above downtown; the park on it is a popular destination"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. Statue colour (white), open arms and the pine-covered hilltop are widely known but this session found no source for its height or date, so these numbers are approximate. No OSM polygon exists, only a point."
+    },
+    "tegucigalpa-osm-node-3887643459": {
+      "venueId": "tegucigalpa-osm-node-3887643459",
+      "city": "tegucigalpa",
+      "name": "Restaurante Revilla",
+      "archetype": "restaurant",
+      "subject": "A roadside family restaurant in the hills east of the city with a tiled roof and open terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0ece0",
+          "#d9b36b",
+          "#8c5a3f"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=12/0/0",
+          "what": "venue location only; no description found"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. No footprint exists; size is a typical roadside restaurant."
+    },
+    "tegucigalpa-osm-node-472563369": {
+      "venueId": "tegucigalpa-osm-node-472563369",
+      "city": "tegucigalpa",
+      "name": "Hospital Adventista",
+      "archetype": "hospital",
+      "subject": "A small private hospital: a two-storey painted render building with a covered drop-off and sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#2f7a5a",
+          "#b0aca3"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=12/0/0",
+          "what": "venue location only; no description found"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. Only a point exists; size is typical of a private clinic."
+    },
+    "tegucigalpa-osm-way-1203375623": {
+      "venueId": "tegucigalpa-osm-way-1203375623",
+      "city": "tegucigalpa",
+      "name": "Museo de Historia Republicana Villa Roy",
+      "archetype": "manor",
+      "subject": "Villa Roy, a former presidential mansion on a hill now a republican-history museum: a two-storey eclectic villa with a tiled hip roof and a terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 24,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "hillside-villa"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8e2d2",
+          "#8c5a3f",
+          "#c9a98a"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1203375623",
+          "what": "OSM footprint 24.1 x 21.2 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM tags it as a museum building 24 x 21 m. The Spanish Wikipedia page for Villa Roy could not be fetched. Form is typed from similar hillside villas."
+    },
+    "tegucigalpa-osm-way-1207066140": {
+      "venueId": "tegucigalpa-osm-way-1207066140",
+      "city": "tegucigalpa",
+      "name": "Basilica of Our Lady of Suyapa",
+      "archetype": "church-modern",
+      "subject": "The white Suyapa basilica: a Latin-cross modern church with two tall bell towers flanking three doors and a high central dome",
+      "form": {
+        "footprint": "cross",
+        "width_m": 93,
+        "depth_m": 54,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "gable",
+        "variant": "twin-towers-central-dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#d9d2c3",
+          "#b0aca3"
+        ],
+        "roofColour": "#d9d2c3",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "43 m each"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "46 m high, 11.5 m diameter"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1954-2005",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Bas%C3%ADlica_de_Suyapa",
+          "what": "modern style painted white; Latin cross; three main doors flanked by two bell towers 43 m high; dome 46 m high, 11.5 m diameter; 93 m long; nave 13.5 m wide with pointed arches; first stone 1954, inaugurated 2005"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1207066140",
+          "what": "OSM footprint 95 x 54.2 m (measured)"
+        }
+      ],
+      "notes": "Form and dimensions are sourced from the Spanish Wikipedia article. The model needs a dome over the crossing and a pair of square towers on the front. It is a pilgrimage church for Our Lady of Suyapa."
+    },
+    "tegucigalpa-osm-way-132362943": {
+      "venueId": "tegucigalpa-osm-way-132362943",
+      "city": "tegucigalpa",
+      "name": "Iglesia San Francisco",
+      "archetype": "church-classical",
+      "subject": "San Francisco church, a Baroque Franciscan church of 1590 rebuilt 1735: a long cream masonry nave with a single bell tower on the old centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "colonial-baroque"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f0e2c8",
+          "#d9b36b",
+          "#8c5a3f"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "Solomonic columns in the 18th-century altarpieces"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1590, rebuilt 1735",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Iglesia_de_San_Francisco_(Tegucigalpa)",
+          "what": "Baroque; construction 16th century, completed 1590; rebuilt 1735; Franciscan missionaries; gilded altarpieces; the neighbouring Cuartel San Francisco is not part of the original"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/132362943",
+          "what": "OSM footprint 44.3 x 13.9 m (measured)"
+        }
+      ],
+      "notes": "Style and dates are sourced; the facade colour, tower layout and tile roof are not described and are from typical colonial Honduran churches. OSM footprint 44 x 14 m."
+    },
+    "tegucigalpa-osm-way-309332039": {
+      "venueId": "tegucigalpa-osm-way-309332039",
+      "city": "tegucigalpa",
+      "name": "Universidad Catolica de Honduras, Campus Sagrado Corazon de Jesus",
+      "archetype": "campus-block",
+      "subject": "A Catholic university campus on a hillside: several painted three-storey classroom blocks with a chapel",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f0ece0",
+          "#d9b36b",
+          "#a4533a"
+        ],
+        "roofColour": "#b5532f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/309332039",
+          "what": "OSM footprint 208 x 144.6 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM campus is 208 x 145 m. The Wikidata label is Universidad Catolica de Honduras."
+    },
+    "tegucigalpa-osm-way-33908433": {
+      "venueId": "tegucigalpa-osm-way-33908433",
+      "city": "tegucigalpa",
+      "name": "Universidad Nacional Autonoma de Honduras (Ciudad Universitaria)",
+      "archetype": "campus-block",
+      "subject": "The UNAH main campus: large exposed-concrete and painted-render faculty blocks of four to six storeys joined by plazas and covered paths on the hill",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "variant": "faculty-slab"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c3b3",
+          "#2f5fa0",
+          "#8fb6c9"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1950s to 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tegucigalpa",
+          "what": "context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/33908433",
+          "what": "OSM footprint 1374.1 x 924.8 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. Murals and concrete blocks are from general knowledge of the campus and unverified. OSM campus is huge (1374 x 925 m); one block is shown."
+    },
+    "tegucigalpa-osm-way-406969067": {
+      "venueId": "tegucigalpa-osm-way-406969067",
+      "city": "tegucigalpa",
+      "name": "Universidad Pedagogica Nacional Francisco Morazan",
+      "archetype": "campus-block",
+      "subject": "The teacher-training university: a long, mid-height campus in pale render with outdoor corridors on a gently sloping site",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d2",
+          "#a9c8a0",
+          "#b0aca3"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/406969067",
+          "what": "OSM footprint 545.6 x 228.9 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM campus is 546 x 229 m."
+    },
+    "tegucigalpa-osm-way-421304389": {
+      "venueId": "tegucigalpa-osm-way-421304389",
+      "city": "tegucigalpa",
+      "name": "Espresso Americano cafe, east branch",
+      "archetype": "restaurant",
+      "subject": "A tiny cafe kiosk in a pedestrian precinct with glass frontage and an awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#6b3f2a",
+          "#8c8f93"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/421304389",
+          "what": "OSM footprint 13.8 x 12.5 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM cafe 14 x 12 m. No brand marks."
+    },
+    "tegucigalpa-osm-way-545966016": {
+      "venueId": "tegucigalpa-osm-way-545966016",
+      "city": "tegucigalpa",
+      "name": "Museo del Aire de Honduras",
+      "archetype": "museum-theatre",
+      "subject": "The Honduran Air Museum at the Toncontin air base: a plain exhibition hall beside an open-air park of preserved aircraft",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "barrel",
+        "variant": "hangar-hall"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b0aca3",
+          "#2f5fa0",
+          "#f2f0ea"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "static aircraft on plinths and ground"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_del_Aire_de_Honduras",
+          "what": "on the Honduran Air Force base near Toncontin; indoor exhibition hall plus open-air display of about 25 aircraft including a DC-6 and a C-130 in the aeronautical park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/545966016",
+          "what": "OSM footprint 176.1 x 146.7 m (measured)"
+        }
+      ],
+      "notes": "Indoor hall plus open-air aircraft park is sourced; the hall shape (hangar-like) and colours are a guess. OSM site is 176 x 147 m; the model shows the hall with parked aircraft."
+    },
+    "tegucigalpa-osm-way-637292919": {
+      "venueId": "tegucigalpa-osm-way-637292919",
+      "city": "tegucigalpa",
+      "name": "Estadio Nacional Jose de la Paz Herrera (Chelato Ucles)",
+      "archetype": "stadium",
+      "subject": "The national football stadium of Honduras: a two-tier concrete bowl of about 35,000 seats with an open pitch, partial roofs, floodlight towers and a large screen",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "two-tier-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cc",
+          "#2f5fa0",
+          "#8c8f93"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "about 15 x 10 m screen"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1948, remodelled 1981",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Nacional_Chelato_Ucl%C3%A9s",
+          "what": "built 1946, opened 15 March 1948 (architect Francisco Pratts); capacity about 35,000; expanded 1978, remodelled 1981; 105 x 65 m pitch; large electronic screen about 15 x 10 m 2009; new north stand with roof planned"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8843394",
+          "what": "OSM footprint 227.7 x 149.9 m (measured), levels 2"
+        }
+      ],
+      "notes": "Capacity, dates, architect, pitch and screen are sourced. The article gives no roof or colour description, so the partial canopy and blue accents are a guess. OSM two levels, 228 x 150 m."
+    },
+    "tegucigalpa-quiet-reflection": {
+      "venueId": "tegucigalpa-quiet-reflection",
+      "city": "tegucigalpa",
+      "name": "Tegucigalpa Honduras Temple",
+      "archetype": "church-modern",
+      "subject": "The LDS temple on its hill: a two-storey pale grey granite temple with a tiered central spire topped by a gold figure, with Maya-inspired stonework",
+      "form": {
+        "footprint": "cross",
+        "width_m": 38,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "hip",
+        "variant": "lds-temple-central-spire"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#cfd1d0",
+          "#8c8f93",
+          "#e5c07a"
+        ],
+        "roofColour": "#8c8f93",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tiered spire with gold Moroni, total height 41 m"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "lattice and orchid carvings in window grilles"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "dedicated 2013",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tegucigalpa_Honduras_Temple",
+          "what": "two stories, 28,254 sq ft, 41 m high; pale gray granite from China; tiered central spire with gold Moroni; modern design drawing on Mesoamerican and Mayan traditions; lattice and orchid motifs; dedicated 17 March 2013"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/373853817",
+          "what": "OSM footprint 38.2 x 33.3 m (measured)"
+        }
+      ],
+      "notes": "All form and material facts are sourced. The 41 m figure includes the spire, so the main mass is about 20 m. Colour of the roof is unspecified (grey is assumed)."
+    },
+    "tegucigalpa-recreation": {
+      "venueId": "tegucigalpa-recreation",
+      "city": "tegucigalpa",
+      "name": "Parque Espana",
+      "archetype": "park-landscape",
+      "subject": "Parque Espana in Tegucigalpa: a small urban park of paved paths, shade trees, benches and a central fountain or monument",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "urban-square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9d2c3",
+          "#8c7a68",
+          "#7c9a6a"
+        ],
+        "roofColour": "#8c8f93",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/32406022",
+          "what": "OSM footprint 178.2 x 109.4 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM park is 178 x 109 m; contents are typical of a Honduran city park."
+    },
+    "tegucigalpa-transit": {
+      "venueId": "tegucigalpa-transit",
+      "city": "tegucigalpa",
+      "name": "Empresa Aurora bus terminal",
+      "archetype": "transport-station",
+      "subject": "A long-distance bus company terminal: a wide low building with bus bays and a canopy over the loading area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e2d2",
+          "#c0392b",
+          "#8c8f93"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1444255264",
+          "what": "OSM footprint 64.4 x 33.7 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tegucigalpa city style. OSM building is 64 x 34 m. No logos are shown; signs are blank."
+    }
+  }
+}

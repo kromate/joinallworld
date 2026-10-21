@@ -1,0 +1,448 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kaduna_State_Polytechnic_03.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anasskoko",
+   "view": "front",
+   "used": "main gate: crimson-pink arched wall with cream arch trim, five round arches (tall centre), shield board, teal blank signboards, iron gates, scalloped parapet"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/kaduna.json#kaduna-polytechnic",
+   "used": "2-3 storey concrete teaching blocks behind the gate (assumed layout)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 1.8,
+    "height": 15,
+    "openings": 5,
+    "kind": "round",
+    "pier": 3.4,
+    "crest": "none",
+    "wall_colour": "#c23a5c",
+    "trim_colour": "#ecd5c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "parapet-cap",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     60.6,
+     2.2
+    ],
+    "z0": 15,
+    "height": 0.6,
+    "colour": "#ecd5c4"
+   }
+  },
+  {
+   "type": "array",
+   "id": "scallops",
+   "params": {
+    "mode": "line",
+    "start": [
+     -28,
+     -30,
+     15.6
+    ],
+    "end": [
+     28,
+     -30,
+     15.6
+    ],
+    "count": 15,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       2.2
+      ],
+      "z0": 0,
+      "height": 0.8,
+      "colour": "#ecd5c4"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "centre-step",
+   "at": [
+    0,
+    -30
+   ],
+   "params": {
+    "rect": [
+     22,
+     1.8
+    ],
+    "z0": 15.6,
+    "height": 2.2,
+    "colour": "#c23a5c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -31.0,
+    15.6
+   ],
+   "params": {
+    "width": 4,
+    "height": 5,
+    "bottom": 0,
+    "colour": "#2a9fbf",
+    "frameColour": "#c23a5c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -31.0,
+    11
+   ],
+   "params": {
+    "width": 13,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#1f8f93",
+    "frameColour": "#ecd5c4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -31.0,
+    11
+   ],
+   "params": {
+    "width": 17,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#1f8f93",
+    "frameColour": "#ecd5c4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -31.0,
+    7.5
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#2f6b4f",
+    "frameColour": "#ecd5c4",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-main",
+   "footprint": {
+    "rect": [
+     60,
+     14
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bay": 4,
+    "bands": "#a8a29a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-l",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    -38,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bay": 4,
+    "bands": "#3a7a9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-r",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    38,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "plinth": 0.4,
+    "bay": 4,
+    "bands": "#3a7a9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#c23a5c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    36,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 10,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#c23a5c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    16,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    44,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30.3,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 9.5,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1f2f3a",
+    "leafColour": "#1f2f3a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -9.5,
+    -30.3,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 6,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1f2f3a",
+    "leafColour": "#1f2f3a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    9.5,
+    -30.3,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 6,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1f2f3a",
+    "leafColour": "#1f2f3a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -19,
+    -30.3,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 4.6,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1f2f3a",
+    "leafColour": "#1f2f3a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    19,
+    -30.3,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 4.6,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1f2f3a",
+    "leafColour": "#1f2f3a"
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "One flat-topped wall rather than the stepped, tapering silhouette; arch trim and scalloped parapet only approximated; shield is a plain blue board; bar gates are generic; blocks behind assumed."
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "kaduna-polytechnic"
+}

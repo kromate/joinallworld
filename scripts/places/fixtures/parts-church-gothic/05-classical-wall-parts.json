@@ -1,0 +1,104 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "05-classical-wall-parts",
+ "verified": "text",
+ "evidence": [],
+ "note": "part test fixture, not a place",
+ "parts": [
+  {
+   "type": "portico",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "depth": 3.4,
+    "height": 6.2,
+    "columns": 6
+   }
+  },
+  {
+   "type": "pediment",
+   "at": [
+    0,
+    0,
+    7.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 12,
+    "rise": 2.8,
+    "oculus": "rose",
+    "glass": "#a8485a"
+   }
+  },
+  {
+   "type": "pilaster-row",
+   "at": [
+    -16,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "count": 4,
+    "height": 9
+   }
+  },
+  {
+   "type": "cornice-band",
+   "at": [
+    -16,
+    0,
+    9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    16,
+    -1,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "count": 5,
+    "height": 5
+   }
+  },
+  {
+   "type": "zakomari-row",
+   "at": [
+    16,
+    0,
+    9
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 12,
+    "count": 3,
+    "wall_height": 0
+   }
+  }
+ ],
+ "backdrop": {
+  "width": 44,
+  "height": 9
+ },
+ "ground": [
+  50,
+  18
+ ],
+ "azimuth": -12
+}

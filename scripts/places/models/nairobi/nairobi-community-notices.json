@@ -1,0 +1,668 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliament_of_Kenya_02.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ruslik0 (Commons)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/nairobi/parl2.jpg",
+   "used": "sandy-brown tower centred on the front with clock faces and open lattice belfry, long 3-storey ribbon-windowed tan wings either side with grey flat roofs, curved chamber block rear right, green forecourt lawn, entrance arch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliament_Buildings,_Nairobi,_Kenya_-entrance-15April2010.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Jorge Lascar",
+   "view": "detail",
+   "file": "/tmp/places-evidence/nairobi/parl1.jpg",
+   "used": "terracotta-orange folded arch gate on two relief-carved stone pylons"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/3224460",
+   "used": "overall extent only (142 x 87 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 32,
+  "fovDeg": 38,
+  "aspect": 0.75,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     46,
+     13
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a77c",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "plinth": 0.5,
+    "glassColour": "#4d5a5a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#e9dcc0"
+      ],
+      "height": 0.9,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ],
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8386",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     50,
+     13
+    ]
+   },
+   "at": [
+    32,
+    4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a77c",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "plinth": 0.5,
+    "glassColour": "#4d5a5a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#e9dcc0"
+      ],
+      "height": 0.9,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ],
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7f8386",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#bd9d77",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "glassColour": "#4d5a5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8a",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4a782",
+    "windows": "none",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "glassColour": "#4d5a5a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8a",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chamber",
+   "at": [
+    42,
+    30
+   ],
+   "params": {
+    "radius": 12,
+    "n": 16,
+    "z0": 0,
+    "height": 8,
+    "colour": "#c9ac86",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 4,
+    "height": 5.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#d9cbb0",
+    "roofColour": "#8a8d8a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#bd9d77",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7.5,
+       7.5
+      ]
+     },
+     {
+      "z": 38,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     },
+     {
+      "z": 39.2,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     },
+     {
+      "z": 39.4,
+      "rect": [
+       10.5,
+       10.5
+      ]
+     },
+     {
+      "z": 41,
+      "rect": [
+       10.5,
+       10.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6
+   ],
+   "params": {
+    "points": [
+     [
+      -5.4,
+      -5.4
+     ],
+     [
+      5.4,
+      -5.4
+     ],
+     [
+      5.4,
+      5.4
+     ],
+     [
+      -5.4,
+      5.4
+     ]
+    ],
+    "z0": 41,
+    "height": 0.5,
+    "colour": "#8a8d8a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -6,
+    41.5
+   ],
+   "params": {
+    "colour": "#cdb88e",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       7,
+       7
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       6.4,
+       6.4
+      ]
+     },
+     {
+      "z": 9.6,
+      "rect": [
+       7.6,
+       7.6
+      ]
+     }
+    ],
+    "capTop": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-n",
+   "footprint": {
+    "rect": [
+     5,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -9.8
+   ],
+   "z0": 31,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fff6dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fff6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-e",
+   "footprint": {
+    "rect": [
+     0.5,
+     5
+    ]
+   },
+   "at": [
+    3.7,
+    -6
+   ],
+   "z0": 31,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fff6dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fff6dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-w",
+   "footprint": {
+    "rect": [
+     0.5,
+     5
+    ]
+   },
+   "at": [
+    -3.7,
+    -6
+   ],
+   "z0": 31,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#fff6dc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#fff6dc"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      1.6,
+      1.8
+     ]
+    },
+    "curve": false,
+    "colour": "#e6dcc4",
+    "points": [
+     [
+      -9.5,
+      0,
+      0
+     ],
+     [
+      -9.5,
+      0,
+      4.5
+     ],
+     [
+      -4,
+      0,
+      8
+     ],
+     [
+      0,
+      0,
+      11
+     ],
+     [
+      4,
+      0,
+      8
+     ],
+     [
+      9.5,
+      0,
+      4.5
+     ],
+     [
+      9.5,
+      0,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-l",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    -12,
+    -44
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8672",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8672"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon-r",
+   "footprint": {
+    "rect": [
+     3.6,
+     3.6
+    ]
+   },
+   "at": [
+    12,
+    -44
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#8f8672",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8672"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -50
+   ],
+   "params": {
+    "points": [
+     [
+      -65,
+      -5
+     ],
+     [
+      65,
+      -5
+     ],
+     [
+      65,
+      5
+     ],
+     [
+      -65,
+      5
+     ]
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#55585a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    56
+   ],
+   "params": {
+    "points": [
+     [
+      -22,
+      -8
+     ],
+     [
+      22,
+      -8
+     ],
+     [
+      26,
+      2
+     ],
+     [
+      16,
+      10
+     ],
+     [
+      -16,
+      10
+     ],
+     [
+      -26,
+      2
+     ]
+    ],
+    "z0": 0.03,
+    "height": 0.1,
+    "colour": "#5d6b5a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 3,
+    "spread": 8,
+    "line": 30
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 2,
+    "spread": 8,
+    "line": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    48,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    46,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 5,
+    "spread": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   118,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "slim tower with clock faces, banded ribbon wings, cream peaked gate on stone pylons, chamber, road and pond added; lantern is a solid stand-in, clock faces are flat blank panels, curved chamber roofs and dense planting simplified"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-community-notices"
+}

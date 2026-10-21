@@ -1,0 +1,1771 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "katsina",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "katsina",
+    "climate": "sahel",
+    "vernacular": "Old walled Hausa city of mud-brick (tubali) and laterite-render compounds in earth ochre and tan, entered through a zaure gatehouse and organised around courtyards; flat or low-domed mud roofs in the old quarters, corrugated iron on newer houses; the modern city is 1-3 storey painted-render and concrete buildings behind perimeter walls, with long-span coloured metal roofs on civic and market buildings, red-brown sandy ground and sparse neem and acacia trees.",
+    "wallColours": [
+      "#b98a5e",
+      "#c9a77c",
+      "#d8c39a",
+      "#e8dfc8",
+      "#a9764f",
+      "#8f6b4a"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#6b6e70",
+      "#3f5a45",
+      "#a8a29a"
+    ],
+    "wallMaterials": [
+      "mud-render",
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Hausa tambarin arewa and geometric relief patterns on gates and facades, zaure entrance halls, projecting toron-style beams and tapered mud forms on historic towers and gates, perimeter walls as the key element; unpainted brown mud gates (Marusa) alongside painted ones.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+        "what": "laterite/earth walls, courtyard + room + perimeter wall, tubali style, relief decoration, mud/thatch/tin roofs, annual dry-season repair"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gates_of_Hausa_kingdoms",
+        "what": "Hausa gates about 5 m high and 10 m long, mud/grass/timber/brick, tambarin arewa patterns, painted or natural brown; Kofar Soro and Marusa gates in Katsina"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gobarau_Minaret",
+        "what": "Gobarau Minaret: 15 m, early Hausa/Sudano-Sahelian architecture in central Katsina"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Katsina",
+        "what": "tropical steppe climate bordering on savanna; landmarks Gidan Korau (emir palace), Kofar Soro, National Museum"
+      }
+    ]
+  },
+  "places": {
+    "baptist-church-katsina": {
+      "venueId": "baptist-church-katsina",
+      "city": "katsina",
+      "name": "Baptist Church Katsina",
+      "archetype": "church-modern",
+      "subject": "A small Baptist church: a rectangular hall with a gabled corrugated roof, painted render walls and a plain front porch (typed guess)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#b98a5e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description of this congregation building found. Typed from the church-modern archetype and Katsina city style (plain rendered hall, metal roof). Treat all form values as placeholders."
+    },
+    "central-market-katsina": {
+      "venueId": "central-market-katsina",
+      "city": "katsina",
+      "name": "Central Market, Katsina",
+      "archetype": "market-open",
+      "subject": "The main Katsina market: dense rows of lock-up shops and stalls under long metal-sheet roofs, rebuilt after the March 2021 fire",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#8f6b4a",
+          "#e8dfc8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 40
+        },
+        {
+          "id": "stalls",
+          "count": 50
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.thecable.ng/?p=539046",
+          "what": "March 2021 fire destroyed hundreds of shops (reported 605-608); congestion and blocked access cited"
+        },
+        {
+          "url": "https://gazettengr.com/katsina-fire-incident-govt-refusal-for-traders-to-rebuild-market-costing-n50-million-daily/",
+          "what": "dispute over traders rebuilding; state plan to rebuild with less congestion"
+        }
+      ],
+      "notes": "Sources describe the fire and congestion (shops packed so tightly fire engines could not reach), not the look of the market. Dense lock-ups with narrow lanes are inferred from that; the post-fire layout is unknown. Form typed from city style."
+    },
+    "central-mosque-katsina": {
+      "venueId": "central-mosque-katsina",
+      "city": "katsina",
+      "name": "Central Mosque (Katsina)",
+      "archetype": "mosque-sahelian",
+      "subject": "The Katsina Central Mosque in the old city near the Gobarau Minaret: a large Hausa-style prayer hall with a tapering minaret and a walled courtyard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#e8dfc8",
+          "#b98a5e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "tapering"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "corner pinnacles"
+        },
+        {
+          "id": "toron-beams",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "sahelian",
+      "era": "19th century core, modernised",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.britannica.com/place/Gobarau-Minaret",
+          "what": "Katsina central mosque tradition: the old Gobarau mosque was succeeded in the early 19th century by a new central mosque built by Sarkin Katsina Ummarun Dallaji (1805-1835), probably the current one"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+          "what": "Hausa mosque: prayer hall + walled courtyard, mud/thatch/tin roof"
+        }
+      ],
+      "notes": "Search results say the current central mosque probably dates from Ummarun Dallaji (1805-35) but give no physical description, and it may have been rebuilt in concrete. Form and colours typed from Hausa mosque conventions. Venue scene variant is mosque."
+    },
+    "central-motor-park-katsina": {
+      "venueId": "central-motor-park-katsina",
+      "city": "katsina",
+      "name": "Central Motor Park",
+      "archetype": "transport-station",
+      "subject": "The central motor park: an open sandy yard with rows of parked buses and vans, a few corrugated sheds and a perimeter wall (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b0aaa0",
+          "#8f6b4a",
+          "#e8dfc8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Motor parks in northern Nigeria are open lots with a handful of shed canopies and kiosks; typed that way. Placed beside the Katsina central market (about 200 m)."
+    },
+    "general-hospital-katsina": {
+      "venueId": "general-hospital-katsina",
+      "city": "katsina",
+      "name": "General Hospital Katsina",
+      "archetype": "hospital",
+      "subject": "A state general hospital: several one-to-two-storey wards linked by covered walkways, painted render walls, metal roofs (typed)",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#7a9e8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from a Nigerian general hospital convention (ward blocks, covered corridors). Do not treat dimensions as real."
+    },
+    "gobarau-minaret": {
+      "venueId": "gobarau-minaret",
+      "city": "katsina",
+      "name": "Gobarau Minaret",
+      "archetype": "monument",
+      "subject": "The 15 m mud-brick Gobarau Minaret, a tapering conical tower in central Katsina, once part of the city's first central mosque",
+      "form": {
+        "footprint": "round",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#b98a5e",
+          "#8f6b4a",
+          "#d8c39a"
+        ],
+        "roofColour": "#8f6b4a",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "toron-beams",
+          "count": 3,
+          "note": "projecting beam ends on each level (typical of the style; not confirmed by sources)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low protective wall around the base"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "sahelian",
+      "era": "15th-18th century (disputed)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gobarau_Minaret",
+          "what": "15 m tall minaret, early Hausa/Sudano-Sahelian architecture; renovated 1981-2008; mosque gone, minaret preserved"
+        },
+        {
+          "url": "https://www.britannica.com/place/Gobarau-Minaret",
+          "what": "probably 18th century (conflicts with Wikipedia 15th century); conical brick and clay"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "listed as the key historic building of the city"
+        }
+      ],
+      "notes": "Recognisable as a tapering conical mud-brick tower, much taller and narrower than the surrounding flat-roofed buildings. Sources say multi-storey and conical but give no level count; 3 levels is an estimate. Base diameter estimated. The mosque it belonged to is gone, so model the tower alone."
+    },
+    "kano-motor-park-katsina": {
+      "venueId": "kano-motor-park-katsina",
+      "city": "katsina",
+      "name": "Kano motor park",
+      "archetype": "transport-station",
+      "subject": "The Kano-road motor park: a smaller yard with a single long corrugated shed along one side, vans queuing and a few kiosks (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "long shed along the north side"
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Made deliberately smaller than the central motor park (one shed instead of several) so the two do not look identical; the real difference is not documented."
+    },
+    "kasuwar-kofar-kaura-katsina": {
+      "venueId": "kasuwar-kofar-kaura-katsina",
+      "city": "katsina",
+      "name": "Kasuwar Kofar Kaura",
+      "archetype": "market-open",
+      "subject": "A neighbourhood market named for the Kofar Kaura gate: rows of small stalls and shops under zinc sheds along a sandy lane (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b98a5e",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 35
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found; market is named for the old Kofar Kaura city gate. Typed as a smaller, mud-and-zinc market than the central market."
+    },
+    "katsina-eye-clinic": {
+      "venueId": "katsina-eye-clinic",
+      "city": "katsina",
+      "name": "Katsina Eye Clinic",
+      "archetype": "hospital",
+      "subject": "A small eye clinic: a single-storey rendered clinic building with a covered entrance and a walled compound (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#3f7f8a",
+          "#e8dfc8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Small specialised clinic, typed as a low rendered building."
+    },
+    "katsina-lga-council": {
+      "venueId": "katsina-lga-council",
+      "city": "katsina",
+      "name": "Katsina Local Government Area Council",
+      "archetype": "civic-small",
+      "subject": "The LGA secretariat: a two-storey rendered office block with a flag pole and a gated forecourt (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#8f6b4a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from the civic-small archetype; Hausa-style relief on the gate would fit the city but is unverified."
+    },
+    "katsina-new-government-house": {
+      "venueId": "katsina-new-government-house",
+      "city": "katsina",
+      "name": "Katsina State New Government House",
+      "archetype": "civic-palace",
+      "subject": "The N8 billion Government House complex inaugurated by President Jonathan: governor's office and lodge blocks, a presidential lodge, aides' chalets, a banquet hall and indoor games centre inside a walled compound",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ead8",
+          "#b98a5e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "northern-style arcade (typed)"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "hausa-arewa",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.icirnigeria.org/president-jonathan-inaugurates-n8-billion-katsina-govt-house/",
+          "what": "N8 bn complex: governor's office, lodge, first-lady offices, presidential lodge, aides' chalets, 200-seat banquet hall, indoor games and fitness centre; inaugurated by Jonathan"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city context"
+        }
+      ],
+      "notes": "Sources list the facilities but not the architecture; the multi-block U layout, colours and roof are typed from Nigerian government-house conventions. Large and spread out: show the main office block with its forecourt."
+    },
+    "katsina-polo-ground": {
+      "venueId": "katsina-polo-ground",
+      "city": "katsina",
+      "name": "Katsina Polo Ground",
+      "archetype": "park-landscape",
+      "subject": "The Katsina polo and durbar ground: a large open grass-and-sand field with a low grandstand pavilion and a perimeter fence (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#8f6b4a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "grandstand pavilion"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://von.gov.ng/katsina-shines-bright-in-grand-eid-ul-fitr-celebration/",
+          "what": "Hawan Sallah durbar procession of the emir on horseback runs between Kofar Guga and the palace; durbar is a major Sallah event"
+        },
+        {
+          "url": "https://businessday.ng/?p=975710",
+          "what": "plans for a state Equestrian City with a national durbar ground and polo club (not confirmed as this site)"
+        }
+      ],
+      "notes": "Sources confirm the durbar and polo culture but nothing about this ground's buildings. Typed as an open field with a simple pavilion. A new Equestrian City is planned elsewhere; do not model it here."
+    },
+    "katsina-state-house-of-assembly": {
+      "venueId": "katsina-state-house-of-assembly",
+      "city": "katsina",
+      "name": "Katsina State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The state legislature: a two-storey rendered chamber block with a central portico, flags and a walled gated compound (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ead8",
+          "#b98a5e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed from the civic-palace archetype. Sits close to the new government house (about 1.4 km), where the government quarter is."
+    },
+    "katsina-township-stadium": {
+      "venueId": "katsina-township-stadium",
+      "city": "katsina",
+      "name": "Katsina Township Stadium",
+      "archetype": "stadium",
+      "subject": "The older town stadium: a small bowl with one covered main stand, open terraces and four floodlight masts (typed)",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b0aaa0",
+          "#8f6b4a",
+          "#e8dfc8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand only"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a smaller, older stadium than Muhammadu Dikko Stadium (35,000 seats) so the two are clearly different: one covered stand, terraces, no ring roof."
+    },
+    "kofar-soro-katsina": {
+      "venueId": "kofar-soro-katsina",
+      "city": "katsina",
+      "name": "Kofar Soro",
+      "archetype": "monument",
+      "subject": "Kofar Soro, the historic main gate leading to the Emir's palace: a squat mud gate structure about 10 m wide set into the palace wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#b98a5e",
+          "#8f6b4a",
+          "#d8c39a"
+        ],
+        "roofColour": "#8f6b4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "central arched passage"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "tambarin arewa style patterning typical of Hausa gates"
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "wall stubs either side"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "hausa-arewa",
+      "era": "old city, restored",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gates_of_Hausa_kingdoms",
+          "what": "Kofar Soro: main gate to the Katsina palace; Hausa gates average about 5 m high and 10 m long, built of mud/brick, patterned (tambarin arewa) and either painted or natural brown mud"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "photo caption: Kofar Soro, a historic gate of Katsina City"
+        }
+      ],
+      "notes": "The generic Hausa gate dimensions (about 5 m by 10 m) come from the gates article; Kofar Soro itself is not described in detail, so colour (natural brown vs painted) is an estimate. The palace rampart beside it no longer exists, so the wall stubs are short."
+    },
+    "lady-m-katsina": {
+      "venueId": "lady-m-katsina",
+      "city": "katsina",
+      "name": "Lady m",
+      "archetype": "restaurant",
+      "subject": "A small restaurant/cafe: single-storey rendered unit with a canopy and signage board, outdoor seating under umbrellas (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#b4654a",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Name only; nothing found on the real venue. Typed as a small modern cafe."
+    },
+    "maryam-park-katsina": {
+      "venueId": "maryam-park-katsina",
+      "city": "katsina",
+      "name": "Maryam Park",
+      "archetype": "park-landscape",
+      "subject": "A municipal leisure park: lawns, paved paths, a few shade trees, a small pavilion and an entrance gate (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#3f7f5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a modern landscaped public park."
+    },
+    "modoji-central-mosque-katsina": {
+      "venueId": "modoji-central-mosque-katsina",
+      "city": "katsina",
+      "name": "Modoji Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A large modern central mosque in the Modoji area: a white domed prayer hall with two tall minarets and a walled forecourt (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f7f4ee",
+          "#3f7f6a",
+          "#d8c39a"
+        ],
+        "roofColour": "#3f7f6a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found for this mosque; typed as a modern domed central mosque (the venue scene variant is mosque). Deliberately different from the old-city Central Mosque, which is typed as a mud-style Sahelian mosque."
+    },
+    "muhammadu-dikko-stadium": {
+      "venueId": "muhammadu-dikko-stadium",
+      "city": "katsina",
+      "name": "Muhammadu Dikko Stadium",
+      "archetype": "stadium",
+      "subject": "The 35,000-seat all-seater football and athletics stadium (opened 2013 as Karkanda Stadium) with a running track, covered stands and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 195,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4cc",
+          "#2f6b4f",
+          "#f2f2f0"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over seating"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Muhammadu_Dikko_Stadium",
+          "what": "35,000 capacity, all-seater football/athletics stadium; construction began early 1990s, finished under Gov. Shema, opened 2013 as Karkanda Stadium, renamed 2016; gym and fitness club on site; home of Katsina United"
+        }
+      ],
+      "notes": "Capacity and age are sourced; the bowl size (about 240 m by 195 m) is derived from the 35,000 seats, and the canopy, colours and floodlight count are typical-for-type estimates, not sourced."
+    },
+    "national-museum-katsina": {
+      "venueId": "national-museum-katsina",
+      "city": "katsina",
+      "name": "National Museum, Katsina",
+      "archetype": "museum-theatre",
+      "subject": "The National Museum Katsina: a Hausa-style museum complex in a walled compound, entered through a decorated gate (building reportedly the 1921 Old Katsina College)",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#8f6b4a",
+          "#f1ead8"
+        ],
+        "roofColour": "#8f6b4a",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "decorated museum gate"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "hausa-arewa",
+      "era": "1921 (reported)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "Wikipedia shows the National Museum of Katsina with its gate"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+          "what": "Hausa courtyard-and-perimeter-wall building conventions used for the typed form"
+        }
+      ],
+      "notes": "Searches found only a weak travel-page claim that it occupies the 1921 Old Katsina College building, and a thesis note that the museum complex was designed in massive Hausa style. No physical details were verified. Typed as a Hausa-style courtyard complex; moderately unsure."
+    },
+    "s-cafe-katsina": {
+      "venueId": "s-cafe-katsina",
+      "city": "katsina",
+      "name": "S-cafe fast food and restaurant",
+      "archetype": "restaurant",
+      "subject": "A modern fast-food restaurant: a small two-storey rendered block with a canopy and large front windows (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#c9482e",
+          "#2f4a5c"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Name only; nothing found about the real venue. Typed as a small modern fast-food restaurant."
+    },
+    "st-martin-de-porres-cathedral-katsina": {
+      "venueId": "st-martin-de-porres-cathedral-katsina",
+      "city": "katsina",
+      "name": "Cathedral of St. Martin de Porres",
+      "archetype": "church-modern",
+      "subject": "The cathedral of the Diocese of Katsina (a parish church elevated in 2023): a modern hall church with a gabled metal roof, a front gable porch and a free-standing bell tower (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ead8",
+          "#a9764f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Diocese_of_Katsina",
+          "what": "Diocese of Katsina created 2023 from Sokoto; the existing St. Martin de Porres church designated cathedral"
+        },
+        {
+          "url": "https://gcatholic.org/churches/africa/6708",
+          "what": "listed as cathedral/parish; no architectural details"
+        }
+      ],
+      "notes": "Confirmed to exist as the existing parish church made cathedral in 2023; no description of the building was found. Form is typed; keep it modest in size, a parish church not a grand cathedral."
+    },
+    "uba-katsina": {
+      "venueId": "uba-katsina",
+      "city": "katsina",
+      "name": "United Bank for Africa",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey rendered block with a glazed ground-floor banking hall, a flat canopy and a gated yard with a generator house (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#b0aaa0",
+          "#6b6e70"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Branch building not described anywhere found. Typed as a standard Nigerian bank branch; no brand colours used."
+    },
+    "yusuf-bala-usman-college-katsina": {
+      "venueId": "yusuf-bala-usman-college-katsina",
+      "city": "katsina",
+      "name": "Yusuf Bala Usman College of Legal and General Studies",
+      "archetype": "campus-block",
+      "subject": "A state college campus: two or three long two-storey classroom blocks with covered walkways around a quad (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#a9764f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a low-rise college block layout typical of Nigerian state tertiary institutions."
+    },
+    "zenith-bank-katsina": {
+      "venueId": "zenith-bank-katsina",
+      "city": "katsina",
+      "name": "Zenith Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a three-storey block with a glazed banking hall and a flat canopy over the entrance in a walled yard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe5e8",
+          "#b0aaa0",
+          "#f2f2f0"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katsina",
+          "what": "city climate and landmarks used only for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Branch building not described anywhere found. Typed slightly taller and glassier than the UBA branch so the two bank branches differ; the real difference is unknown. No brand colours used."
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-7695068489",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/824168334",
+   "used": "real outline (540 m2, name match, irregular stepped plan)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: private two-storey plastered clinic, entrance canopy, ambulance bay, green metal roof (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ece0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#6f9bb3",
+    "plinth": 0.4,
+    "cornice": true,
+    "bay": 4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b57",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 3.8,
+    "columns": 2,
+    "colour": "#ffffff",
+    "edge_colour": "#6f9bb3"
+   }
+  },
+  {
+   "type": "shed-shelter",
+   "at": [
+    -18,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 4.5,
+    "height": 2.8,
+    "colour": "#f0ece0",
+    "roofColour": "#4f6b57"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -14
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; OSM outline with hip roof, canopy and shelter from brief; colours typed"
+ }
+}

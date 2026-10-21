@@ -1,0 +1,96 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-way-392920702",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/392920702",
+   "used": "campus-sized polygon (about 270 m) not a single building, so only the site context was used; U block sized from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "kind": "U",
+    "size": [
+     45,
+     30
+    ]
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebe0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#3f8f6a",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9bdbf",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -15.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2,
+    "height": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -3
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     4
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; footprint/brief only, so facade details, colours and roof are typical for Moroni, not observed."
+ }
+}

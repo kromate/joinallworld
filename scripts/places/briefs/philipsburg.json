@@ -1,0 +1,1607 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "philipsburg",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "philipsburg",
+    "climate": "tropical-maritime",
+    "vernacular": "Dutch-Caribbean seaside town: low one to three storey painted-render and timber buildings in pastel and saturated tropical colours (yellow, coral, turquoise, pink, white) with wooden balconies and verandas along Front Street; concrete-block commercial buildings with flat or hipped roofs of red clay or tin sheet elsewhere; many roofs rebuilt after Hurricane Irma (2017). Palms, flamboyant and sea-grape trees, white sand beach and boardwalk.",
+    "wallColours": [
+      "#f2d98a",
+      "#e8836b",
+      "#5fb7b0",
+      "#f4f1ea",
+      "#e9a3a0",
+      "#6fa3c9"
+    ],
+    "roofColours": [
+      "#b5473a",
+      "#8c9296",
+      "#5f8a64",
+      "#6b6460"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "timber",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "wooden Caribbean verandas and balconies with fretwork rails, white window trim and louvred shutters, wooden roof shingles on historic Methodist church front, hipped red roofs, painted shop awnings and signboards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Philipsburg,_Sint_Maarten",
+        "what": "Philipsburg is described as having colourful buildings, a 2006 boardwalk, courthouse, forts"
+      },
+      {
+        "url": "https://nl.wikipedia.org/wiki/Methodistenkerk_(Philipsburg)",
+        "what": "historic wooden church with characteristic wooden shingles on the front facade"
+      },
+      {
+        "url": "https://www.openstreetmap.org/#map=16/18.0250/-63.0450",
+        "what": "OSM roof shape/material tags show hipped roofs with tile or metal sheet are the norm; wall colours are general knowledge, not from a fetched source"
+      }
+    ]
+  },
+  "places": {
+    "philipsburg-airport-philipsburg-airport": {
+      "venueId": "philipsburg-airport-philipsburg-airport",
+      "city": "philipsburg",
+      "name": "Princess Juliana International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the rebuilt Princess Juliana terminal (about 27,000 m2) seen from the forecourt, a wide low glazed terminal block with boarding bridges on the apron side and the hilltop control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 235,
+        "depth_m": 86,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e5",
+          "#3f6f94",
+          "#f2f2ee"
+        ],
+        "roofColour": "#9aa1a6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4,
+          "note": "four bridges, three sized for a 747"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "on the hill overlooking the airport, in service 2004"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006, rebuilt 2021-2024",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/167636055",
+          "what": "OSM terminal footprint 235 x 86 m, flat metal roof"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Juliana_International_Airport",
+          "what": "27,000 m2 terminal opened 2006, four boarding bridges, roof torn off by Irma 2017, rebuilt 2021-24, control tower 2004"
+        }
+      ],
+      "notes": "Dimensions measured from OSM; function and bridges from Wikipedia. Facade colours and glazing share are estimated (no description of the facade was found). Runway 10/28 lies just north; Maho Beach is a separate venue."
+    },
+    "philipsburg-clinic": {
+      "venueId": "philipsburg-clinic",
+      "city": "philipsburg",
+      "name": "Mental Health Foundation",
+      "archetype": "hospital",
+      "subject": "a small single-storey clinic building with a hipped tile roof, typical Sint Maarten health office",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 9.4,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe7d0",
+          "#5fb7b0",
+          "#ffffff"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/521374467",
+          "what": "OSM footprint 23 x 9 m, hipped roof with roof tiles"
+        }
+      ],
+      "notes": "Only OSM size and roof tags were found; wall colour and detail typed from the city style."
+    },
+    "philipsburg-community-notices": {
+      "venueId": "philipsburg-community-notices",
+      "city": "philipsburg",
+      "name": "Immigration and Border Protection Service Office",
+      "archetype": "civic-small",
+      "subject": "a long two-storey government office block with a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3c8",
+          "#8c9296",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/261368964",
+          "what": "OSM footprint 41 x 13 m, 2 levels, hipped roof"
+        }
+      ],
+      "notes": "Only OSM size, levels and hipped roof found. Wall colour and details typed."
+    },
+    "philipsburg-community-voting-game": {
+      "venueId": "philipsburg-community-voting-game",
+      "city": "philipsburg",
+      "name": "Constitutional Court of Sint Maarten",
+      "archetype": "civic-palace",
+      "subject": "the historic Philipsburg courthouse on Wathey Square used by the Constitutional Court: a small two-storey white colonial court building with a hipped roof, fronting the square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4f1ea",
+          "#7a8b99",
+          "#ffffff"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper gallery"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small roof turret; recalled from general knowledge, unverified"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1793 (restored 2010)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.0239/-63.0457",
+          "what": "OSM footprint 27 x 10 m, hipped roof with tiles, start date 2010, wikidata Q26678493"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Constitutional_Court_of_Sint_Maarten",
+          "what": "court's first cases heard in the Philipsburg courthouse, designated monument"
+        }
+      ],
+      "notes": "Measured size from OSM; Wikipedia confirms this is the designated-monument courthouse. Exterior colours and the roof turret come from general knowledge of the square, not a fetched description."
+    },
+    "philipsburg-community-workshop": {
+      "venueId": "philipsburg-community-workshop",
+      "city": "philipsburg",
+      "name": "University of Sint Maarten",
+      "archetype": "campus-block",
+      "subject": "a two-storey campus block with hipped roof, rebuilt after Hurricane Lenny (1999)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe7d0",
+          "#6fa3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.0266/-63.0440",
+          "what": "OSM footprint 46 x 40 m, 2 levels, hipped roof; wikidata Q720323"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_St._Martin",
+          "what": "campus in Philipsburg, wiped out by Hurricane Lenny 1999 and restored"
+        }
+      ],
+      "notes": "Size and levels measured; facade and colours typed from the city style."
+    },
+    "philipsburg-market-game": {
+      "venueId": "philipsburg-market-game",
+      "city": "philipsburg",
+      "name": "Puerta Del Sol Plaza",
+      "archetype": "mall",
+      "subject": "a four-level hipped-roof plaza of shops and offices",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 46,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8836b",
+          "#f4f1ea",
+          "#5fb7b0"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.0334/-63.0915",
+          "what": "OSM footprint 48 x 46 m, 4 levels, hipped roof"
+        }
+      ],
+      "notes": "Only the OSM footprint, levels and roof shape found; colours typed from the city style."
+    },
+    "philipsburg-meal-stop": {
+      "venueId": "philipsburg-meal-stop",
+      "city": "philipsburg",
+      "name": "Hong Mian",
+      "archetype": "restaurant",
+      "subject": "a small two-storey restaurant with a flat tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.6,
+        "depth_m": 12.1,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2d98a",
+          "#e8836b",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.0133/-63.0422",
+          "what": "OSM footprint 14 x 12 m, 2 levels, flat metal roof"
+        }
+      ],
+      "notes": "Only OSM size/levels; nothing describing the restaurant was found."
+    },
+    "philipsburg-osm-node-12750078802": {
+      "venueId": "philipsburg-osm-node-12750078802",
+      "city": "philipsburg",
+      "name": "Billy Bones Boat Exursions",
+      "archetype": "shophouse",
+      "subject": "a small waterfront excursion kiosk with a short jetty on Great Bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#6fa3c9",
+          "#f4f1ea",
+          "#e8836b"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat jetty"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/12750078802",
+          "what": "OSM node, no tags beyond name; waterfront position"
+        }
+      ],
+      "notes": "No description found. OSM shows only a point; kiosk/jetty typed from the type of business."
+    },
+    "philipsburg-osm-node-13841746696": {
+      "venueId": "philipsburg-osm-node-13841746696",
+      "city": "philipsburg",
+      "name": "Maho Beach Airplane Spotting",
+      "archetype": "park-landscape",
+      "subject": "Maho Beach at the Runway 10 threshold: a narrow white sand beach with a fence and warning signs between the sand and the airport road, and the airport terminal beyond",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#ece0c0",
+          "#6fa3c9",
+          "#c93c3c"
+        ],
+        "roofColour": "#b5473a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "runway perimeter fence where spotters gather"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "jet-blast warning signs (blank boards)"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "beach bar"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "modern",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Juliana_International_Airport",
+          "what": "runway 10/28 final approach passes directly over Maho Beach at low altitude; viewing areas and jet blast warning signs"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/13841746696",
+          "what": "OSM attraction footprint 302 x 74 m, Wikidata Q922921 Maho Beach"
+        }
+      ],
+      "notes": "Recognisable by the runway fence right behind the sand and the large jet overhead. The beach bar and umbrellas are from general knowledge. Distinct from the Jet Blast Area venue, which is the fence/blast zone at the runway end."
+    },
+    "philipsburg-osm-node-1927202186": {
+      "venueId": "philipsburg-osm-node-1927202186",
+      "city": "philipsburg",
+      "name": "Fort Amsterdam",
+      "archetype": "heritage-fort",
+      "subject": "the ruined triangular 1631 Dutch fort on the Great Bay peninsula: low stone ramparts with a few rusted cannons overlooking the harbour",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8576",
+          "#6f6a5f",
+          "#a39d8f"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "triangular plan, low stone walls"
+        },
+        {
+          "id": "cannon",
+          "count": 5,
+          "note": "rusting 19th-century guns in place"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "information sign"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1631",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Amsterdam_(Sint_Maarten)",
+          "what": "triangular stone colonial fort built by the Dutch in 1631, small, in poor repair, rusting 19th-century cannons, harbour view"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/1927202186",
+          "what": "OSM ruins node with 11 x 5 m building remnant"
+        }
+      ],
+      "notes": "Shown as a larger recognisable portion of the ramparts than the small OSM building remnant. Wall height and ruin colours estimated."
+    },
+    "philipsburg-osm-node-3704027752": {
+      "venueId": "philipsburg-osm-node-3704027752",
+      "city": "philipsburg",
+      "name": "Champagne",
+      "archetype": "restaurant",
+      "subject": "a large single-storey bar/restaurant building with a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#5fb7b0",
+          "#b5473a"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/3704027752",
+          "what": "OSM building 86 x 46 m, metal roof, no other tags"
+        }
+      ],
+      "notes": "Nothing describing the venue was found; OSM footprint is much larger than a bar so the main mass is clamped to a plausible size. Typed from city style."
+    },
+    "philipsburg-osm-node-6074914982": {
+      "venueId": "philipsburg-osm-node-6074914982",
+      "city": "philipsburg",
+      "name": "Jet Blast Area",
+      "archetype": "park-landscape",
+      "subject": "the strip behind the fence at the end of Runway 10 where departing jets blast the beach: bare sand, a long fence and warning signs beside the runway threshold",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#ece0c0",
+          "#8c9296",
+          "#c93c3c"
+        ],
+        "roofColour": "#8c9296",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "long mesh fence along the runway end"
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blast warning signs (blank boards)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "modern",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Juliana_International_Airport",
+          "what": "jet blast hazards from departing aircraft at the runway end; warning signs; fatal incident 2017"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/6074914982",
+          "what": "OSM point sharing the Maho Beach attraction footprint"
+        }
+      ],
+      "notes": "Bare fenced zone with no beach furniture, to differ from the Maho Beach venue."
+    },
+    "philipsburg-osm-relation-10372197": {
+      "venueId": "philipsburg-osm-relation-10372197",
+      "city": "philipsburg",
+      "name": "Sint Maarten Medical Center",
+      "archetype": "hospital",
+      "subject": "the main hospital: a broad multi-storey flat-roofed concrete block with wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 99,
+        "depth_m": 98,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efece3",
+          "#6fa3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#a3a8ab",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/10372197",
+          "what": "OSM hospital footprint 99 x 98 m, flat concrete roof"
+        }
+      ],
+      "notes": "Footprint and flat concrete roof measured; storey count and colours estimated, no description found."
+    },
+    "philipsburg-osm-way-1417556522": {
+      "venueId": "philipsburg-osm-way-1417556522",
+      "city": "philipsburg",
+      "name": "Emmancipation Roundabout",
+      "archetype": "park-landscape",
+      "subject": "a small landscaped traffic roundabout with central planting and a commemorative monument",
+      "form": {
+        "footprint": "round",
+        "width_m": 27,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b5aea3",
+          "#7aa05a",
+          "#c8b27d"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central commemorative piece; form not found"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "kerb ring"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1417556522",
+          "what": "OSM park polygon 27 x 27 m"
+        }
+      ],
+      "notes": "No description found; typed as a small traffic island."
+    },
+    "philipsburg-osm-way-261368991": {
+      "venueId": "philipsburg-osm-way-261368991",
+      "city": "philipsburg",
+      "name": "St. Martin of Tours' Church",
+      "archetype": "church-classical",
+      "subject": "the Catholic parish church on Front Street with a gabled nave and a small front tower; first stone 1844, extended 1952",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead7",
+          "#c9a15a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1844, extended 1952",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Martin_of_Tours%27_Church,_Sint_Maarten",
+          "what": "Catholic church on Front Street (Voorstraat), first stone 1844, expanded and completed 30 May 1952, designated monument"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/261368991",
+          "what": "OSM footprint 29 x 14 m, 2 levels, roof tiles"
+        }
+      ],
+      "notes": "History and size sourced; colours and tower shape typed (no description of the facade was found)."
+    },
+    "philipsburg-osm-way-261373936": {
+      "venueId": "philipsburg-osm-way-261373936",
+      "city": "philipsburg",
+      "name": "Philipsburg Methodist Church",
+      "archetype": "church-classical",
+      "subject": "the historic wooden Methodist church on Front Street, rebuilt in its original form in 1979, with wooden shingles on the front facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e6e0d0",
+          "#6e5a44",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "shingled front gable"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "wooden shingles on front facade"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1851, rebuilt 1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Methodistenkerk_(Philipsburg)",
+          "what": "wooden church, 500 seats, Voorstraat 90, wood shingles on front facade are the characteristic detail, rebuilt 1979, monument since 2005"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/261373936",
+          "what": "OSM footprint 24 x 12 m"
+        }
+      ],
+      "notes": "Wood construction and shingle front are sourced; paint colour and exact tower/gable form not. Different from the stone-walled Catholic church."
+    },
+    "philipsburg-osm-way-363071670": {
+      "venueId": "philipsburg-osm-way-363071670",
+      "city": "philipsburg",
+      "name": "Cyrus Wathey Square",
+      "archetype": "park-landscape",
+      "subject": "the paved town square at the Front Street end with the historic courthouse on one side, benches, trees and a bandstand-style pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9cfb8",
+          "#7aa05a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b5473a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/363071670",
+          "what": "OSM park polygon 43 x 16 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Philipsburg,_Sint_Maarten",
+          "what": "courthouse and official buildings in the town"
+        }
+      ],
+      "notes": "Layout typed from the square type; no description fetched. The courthouse is a separate venue."
+    },
+    "philipsburg-osm-way-363228766": {
+      "venueId": "philipsburg-osm-way-363228766",
+      "city": "philipsburg",
+      "name": "Yoda Guy Movie Exhibit",
+      "archetype": "museum-theatre",
+      "subject": "a small two-storey hipped-roof exhibit building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 6,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2d98a",
+          "#5fb7b0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/363228766",
+          "what": "OSM footprint 20 x 4 m, 2 levels, hipped metal roof, tourism=museum"
+        }
+      ],
+      "notes": "Only OSM tags found; nothing describing the exhibit."
+    },
+    "philipsburg-osm-way-367767346": {
+      "venueId": "philipsburg-osm-way-367767346",
+      "city": "philipsburg",
+      "name": "Look Out Bar & Snack",
+      "archetype": "restaurant",
+      "subject": "a small two-storey beach snack bar with a tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13.8,
+        "depth_m": 12.9,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#5fb7b0",
+          "#f2d98a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/367767346",
+          "what": "OSM footprint 14 x 13 m, 2 levels, metal roof"
+        }
+      ],
+      "notes": "Only OSM tags; typed as a Caribbean beach bar."
+    },
+    "philipsburg-osm-way-368524649": {
+      "venueId": "philipsburg-osm-way-368524649",
+      "city": "philipsburg",
+      "name": "Windward Island Emergency Medical Services",
+      "archetype": "hospital",
+      "subject": "a two-storey hipped-roof ambulance base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efece3",
+          "#c93c3c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 3
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/368524649",
+          "what": "OSM footprint 31 x 27 m, 2 levels, hipped metal roof"
+        }
+      ],
+      "notes": "Only OSM tags; ambulance bays typed from the service."
+    },
+    "philipsburg-osm-way-368560586": {
+      "venueId": "philipsburg-osm-way-368560586",
+      "city": "philipsburg",
+      "name": "Shop 4 Less",
+      "archetype": "shophouse",
+      "subject": "a single-storey discount shop with a tin roof and shop awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8836b",
+          "#f4f1ea",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/368560586",
+          "what": "OSM footprint 33 x 15 m, metal roof"
+        }
+      ],
+      "notes": "Only OSM size/roof; typed from city style."
+    },
+    "philipsburg-osm-way-521520589": {
+      "venueId": "philipsburg-osm-way-521520589",
+      "city": "philipsburg",
+      "name": "The Wizzards Computer Repairs & Onsite Services",
+      "archetype": "office-low",
+      "subject": "a single-storey strip of commercial units with a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3c8",
+          "#6fa3c9",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/521520589",
+          "what": "OSM footprint 58 x 31 m, hipped roof"
+        }
+      ],
+      "notes": "Only OSM size/roof; typed."
+    },
+    "philipsburg-quiet-reflection": {
+      "venueId": "philipsburg-quiet-reflection",
+      "city": "philipsburg",
+      "name": "Mary Star of the Sea Church",
+      "archetype": "church-modern",
+      "subject": "the small Roman Catholic church in Simpson Bay, a chapel of 1897 extended in 1965, with a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#6fa3c9",
+          "#c8b27d"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1897, extended 1965",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Maria_Sterre_der_Zeekerk_(Simpson_Bay)",
+          "what": "chapel built 1897, expanded 1965 into current church on Simpson Bay Road"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.0387/-63.0974",
+          "what": "OSM footprint 18 x 11 m, metal roof"
+        }
+      ],
+      "notes": "History/size sourced; no description of the facade found so colours and bell tower typed."
+    },
+    "philipsburg-recreation": {
+      "venueId": "philipsburg-recreation",
+      "city": "philipsburg",
+      "name": "Emilio Wilson Park",
+      "archetype": "park-landscape",
+      "subject": "a large hillside park on the former Emilio Wilson estate with lawns, paths and trees and a low heritage house",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9cfb8",
+          "#7aa05a",
+          "#c8b27d"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "18th-19th c. estate",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/18.0428/-63.0644",
+          "what": "OSM park polygon 155 x 129 m"
+        }
+      ],
+      "notes": "Estate details could not be fetched; typed from OSM park extent. Do not claim any named structure."
+    },
+    "philipsburg-transit": {
+      "venueId": "philipsburg-transit",
+      "city": "philipsburg",
+      "name": "Anguilla-St. Maarten Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "a small ferry terminal on the lagoon shore: a low shed-roof passenger building with a jetty",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#6fa3c9",
+          "#e8836b"
+        ],
+        "roofColour": "#8c9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.0462/-63.1124",
+          "what": "OSM matched only a houseboat restaurant here, so no usable building facts"
+        }
+      ],
+      "notes": "No description or usable OSM building found; typed from the type of place."
+    }
+  }
+}

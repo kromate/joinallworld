@@ -1,0 +1,811 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahnhof_Antananarivo_2019-10-02_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Z thomas",
+   "view": "front",
+   "file": "/tmp/places-evidence/antananarivo/gare4.jpg",
+   "used": "long low station front: tan stone central pavilion with arched pediment, clock and small cupola, flanking paired columns and arched glazed portal, cream infill walls with arcade of arched windows under dark steel awnings, green tile frieze, balustraded parapet, two stone end blocks with green shuttered windows, blue-grey vaulted hall roof behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahnhof_Antananarivo_2019-10-02_4.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Z thomas",
+   "view": "side",
+   "used": "asymmetric wing lengths, pavilion position and hall roof"
+  },
+  {
+   "kind": "text",
+   "ref": "https://fr.wikipedia.org/wiki/Gare_de_Soarano",
+   "used": "1908-1910 station by Fouchard; the OSM way matched at 260 m (hotel) and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 5,
+  "fovDeg": 52,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     40,
+     13
+    ]
+   },
+   "at": [
+    -17,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6ae",
+    "windows": "none",
+    "plinth": 1.0,
+    "bay": 4.6,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 13,
+      "opening": 0.62,
+      "height": 0.85,
+      "depth": 0.8,
+      "pierColour": "#c0a47e",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#3f8a6c"
+      ],
+      "height": 0.6,
+      "at": 0.93,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ],
+    "bands": "#c8aa80"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbd8e",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     24,
+     13
+    ]
+   },
+   "at": [
+    28,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e3d6ae",
+    "windows": "none",
+    "plinth": 1.0,
+    "bay": 4.6,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 8,
+      "opening": 0.62,
+      "height": 0.85,
+      "depth": 0.8,
+      "pierColour": "#c0a47e",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#3f8a6c"
+      ],
+      "height": 0.6,
+      "at": 0.93,
+      "proud": 0.1,
+      "floors": "all"
+     }
+    ],
+    "bands": "#c8aa80"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbd8e",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-w",
+   "footprint": {
+    "rect": [
+     8,
+     13
+    ]
+   },
+   "at": [
+    -41,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#bfa27a",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "bay": 3.4,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0956f",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-e",
+   "footprint": {
+    "rect": [
+     8,
+     13
+    ]
+   },
+   "at": [
+    44,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#bfa27a",
+    "windows": "rect",
+    "windowRatio": 0.4,
+    "bay": 3.4,
+    "plinth": 0.8,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0956f",
+    "parapet": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pavilion",
+   "footprint": {
+    "rect": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    10,
+    -0.5
+   ],
+   "height": 17,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8996f",
+    "windows": "none",
+    "plinth": 1.2,
+    "cornice": true,
+    "bands": "#a3885f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0956f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "loft",
+   "id": "arch-gable",
+   "at": [
+    10,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#b59a76",
+    "topColour": "#b59a76",
+    "sections": [
+     {
+      "z": 16.5,
+      "rect": [
+       12.4,
+       2.4
+      ]
+     },
+     {
+      "z": 18.1,
+      "rect": [
+       12,
+       2.4
+      ]
+     },
+     {
+      "z": 19.7,
+      "rect": [
+       10.6,
+       2.4
+      ]
+     },
+     {
+      "z": 21.1,
+      "rect": [
+       8,
+       2.4
+      ]
+     },
+     {
+      "z": 22.3,
+      "rect": [
+       4.2,
+       2.4
+      ]
+     },
+     {
+      "z": 22.9,
+      "rect": [
+       1.6,
+       2.4
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     34
+    ]
+   },
+   "at": [
+    10,
+    24
+   ],
+   "height": 13,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#d8cca8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "rise": 7,
+    "colour": "#a4b4bd",
+    "material": "metal-sheet"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cupola",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "z0": 22.9,
+    "height": 3.2,
+    "topScale": 0.9,
+    "colour": "#b59a76",
+    "topColour": "#b59a76"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cupola-cap",
+   "at": [
+    10,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     3.0
+    ],
+    "z0": 26.1,
+    "height": 2.2,
+    "topScale": 0.15,
+    "colour": "#8c7a62",
+    "topColour": "#8c7a62"
+   }
+  },
+  {
+   "type": "core/spire",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -4,
+    28.3
+   ],
+   "params": {
+    "baseWidth": 0.3,
+    "height": 2.4,
+    "sides": 4,
+    "colour": "#555555"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    10,
+    -7.35,
+    18.9
+   ],
+   "params": {
+    "radius": 0.7,
+    "n": 6,
+    "closed": true,
+    "arc": {
+     "steps": 20,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 1.9,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "colour": "#d9c98a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    10,
+    -7.35,
+    18.9
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 0.5,
+    "n": 6,
+    "closed": true,
+    "arc": {
+     "steps": 14,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.8,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "colour": "#d9c98a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portal",
+   "at": [
+    10,
+    -7.55,
+    0
+   ],
+   "params": {
+    "rect": [
+     4.6,
+     0.4
+    ],
+    "height": 8,
+    "colour": "#34403f",
+    "topColour": "#34403f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     4.8,
+     -8.2,
+     0
+    ],
+    "end": [
+     6.4,
+     -8.2,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "revolve",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "segments": 10,
+      "colour": "#8c8f8a",
+      "profile": [
+       [
+        0.7,
+        0
+       ],
+       [
+        0.6,
+        0.3
+       ],
+       [
+        0.6,
+        7.5
+       ],
+       [
+        0.75,
+        7.9
+       ],
+       [
+        0.75,
+        8.3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     13.6,
+     -8.2,
+     0
+    ],
+    "end": [
+     15.2,
+     -8.2,
+     0
+    ],
+    "count": 2,
+    "of": {
+     "type": "revolve",
+     "lod": [
+      0,
+      1
+     ],
+     "params": {
+      "segments": 10,
+      "colour": "#8c8f8a",
+      "profile": [
+       [
+        0.7,
+        0
+       ],
+       [
+        0.6,
+        0.3
+       ],
+       [
+        0.6,
+        7.5
+       ],
+       [
+        0.75,
+        7.9
+       ],
+       [
+        0.75,
+        8.3
+       ]
+      ]
+     }
+    }
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -17,
+    -8.2,
+    4.6
+   ],
+   "params": {
+    "width": 38,
+    "depth": 3.2,
+    "height": 0.4,
+    "form": "flat",
+    "colour": "#3a4448"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    28,
+    -8.2,
+    4.6
+   ],
+   "params": {
+    "width": 22,
+    "depth": 3.2,
+    "height": 0.4,
+    "form": "flat",
+    "colour": "#3a4448"
+   }
+  },
+  {
+   "type": "core/spire",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    8.6,
+    -4,
+    26.5
+   ],
+   "params": {
+    "baseWidth": 0.1,
+    "height": 2.5,
+    "sides": 4,
+    "colour": "#aaaaaa"
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -37,
+     -6.2,
+     10.5
+    ],
+    "end": [
+     3,
+     -6.2,
+     10.5
+    ],
+    "count": 28,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 1.0,
+      "colour": "#d8c9a6"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16,
+     -6.2,
+     10.5
+    ],
+    "end": [
+     40,
+     -6.2,
+     10.5
+    ],
+    "count": 16,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 1.0,
+      "colour": "#d8c9a6"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -45,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 14.5,
+    "height": 1.4,
+    "topScale": 0.3,
+    "colour": "#bfa27a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -45,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 14.5,
+    "height": 1.4,
+    "topScale": 0.3,
+    "colour": "#bfa27a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 14.5,
+    "height": 1.4,
+    "topScale": 0.3,
+    "colour": "#bfa27a"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    48,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.9
+    ],
+    "z0": 14.5,
+    "height": 1.4,
+    "topScale": 0.3,
+    "colour": "#bfa27a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "extent": [
+   110,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -18
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "taller pavilion with arched pediment, clock, cupola, 3 arches per wing, taller end blocks with balustrade finials; no paired columns detail, awnings plain slabs, hall roof approximate"
+ }
+}

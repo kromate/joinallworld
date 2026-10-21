@@ -1,0 +1,664 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Hargeisa_War_Memorial_2007.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Didzis \u0160enbergs",
+   "view": "street",
+   "used": "brick pyramid on a white base, MiG nose up on a blue block, no mural yet in 2007",
+   "file": "/tmp/places-evidence/hargeisa/mig1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:MiG-17_Jet_Memorial_(42961308501).jpg",
+   "licence": "CC BY 2.0",
+   "author": "John Pavelka",
+   "view": "front",
+   "used": "proportions: white base with ochre mural panel left, red brick pyramid with plaster lettering band, blue block under the jet, camouflage grey-green jet with dark spots, green railings, flag pole right",
+   "file": "/tmp/places-evidence/hargeisa/mig2.jpg"
+  },
+  {
+   "kind": "text",
+   "used": "brief: MiG-17 on plinth in Freedom Square, rebuilt 2020; nearest OSM building is 32 m away and not the memorial, so no outline used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 45,
+  "aspect": 1.2,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base-mural",
+   "footprint": {
+    "rect": [
+     3.8,
+     4.2
+    ]
+   },
+   "at": [
+    -1.35,
+    0
+   ],
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8b57f",
+    "windows": "none",
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bc",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-white",
+   "footprint": {
+    "rect": [
+     2.7,
+     4.2
+    ]
+   },
+   "at": [
+    1.9,
+    0
+   ],
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bc",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-stripe",
+   "footprint": {
+    "rect": [
+     6.6,
+     4.4
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8de",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bc"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    1.7
+   ],
+   "params": {
+    "colour": "#8e4a3a",
+    "topColour": "#c8bfb2",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.0,
+       3.6
+      ]
+     },
+     {
+      "z": 3.8,
+      "rect": [
+       2.6,
+       1.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1.55,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.14
+    ],
+    "height": 0.7,
+    "colour": "#e2d8c0",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    5.5
+   ],
+   "params": {
+    "colour": "#3f78b4",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       1.8
+      ]
+     },
+     {
+      "z": 1.7,
+      "rect": [
+       1.7,
+       1.2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    7.3
+   ],
+   "params": {
+    "section": {
+     "circle": 0.75
+    },
+    "points": [
+     [
+      -5.8,
+      0,
+      1.5
+     ],
+     [
+      -3,
+      0,
+      0.85
+     ],
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      3.5,
+      0,
+      -0.9
+     ],
+     [
+      5.8,
+      0,
+      -1.5
+     ]
+    ],
+    "curve": true,
+    "taper": [
+     0.35,
+     1.0,
+     1.0,
+     0.75,
+     0.45
+    ],
+    "colour": "#b4bca0",
+    "n": 10
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    7.45
+   ],
+   "params": {
+    "points": [
+     [
+      -1.6,
+      0.3
+     ],
+     [
+      1.2,
+      0.3
+     ],
+     [
+      2.4,
+      5.0
+     ],
+     [
+      1.4,
+      5.0
+     ]
+    ],
+    "height": 0.18,
+    "colour": "#aeb69a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    7.45
+   ],
+   "params": {
+    "points": [
+     [
+      -1.6,
+      -0.3
+     ],
+     [
+      1.2,
+      -0.3
+     ],
+     [
+      2.4,
+      -5.0
+     ],
+     [
+      1.4,
+      -5.0
+     ]
+    ],
+    "height": 0.18,
+    "colour": "#aeb69a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    6.1
+   ],
+   "params": {
+    "points": [
+     [
+      4.2,
+      0.2
+     ],
+     [
+      5.6,
+      0.2
+     ],
+     [
+      6.1,
+      2.2
+     ],
+     [
+      5.5,
+      2.2
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#aeb69a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    6.1
+   ],
+   "params": {
+    "points": [
+     [
+      4.2,
+      -0.2
+     ],
+     [
+      5.6,
+      -0.2
+     ],
+     [
+      6.1,
+      -2.2
+     ],
+     [
+      5.5,
+      -2.2
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#aeb69a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    6.1
+   ],
+   "params": {
+    "colour": "#aeb69a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.4,
+       0.16
+      ],
+      "cx": 4.7
+     },
+     {
+      "z": 2.3,
+      "rect": [
+       0.9,
+       0.1
+      ],
+      "cx": 6.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -2.7,
+    0,
+    8.2
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.3,
+      0.03
+     ],
+     [
+      0.32,
+      0.2
+     ],
+     [
+      0.18,
+      0.45
+     ],
+     [
+      0,
+      0.5
+     ]
+    ],
+    "colour": "#6f8fa0"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -1.2,
+    0.1,
+    7.5200000000000005
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.4,
+      0.02
+     ],
+     [
+      0.4,
+      0.25
+     ],
+     [
+      0,
+      0.28
+     ]
+    ],
+    "colour": "#383a32",
+    "segments": 8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0.3,
+    -0.1,
+    7.38
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.45,
+      0.02
+     ],
+     [
+      0.45,
+      0.25
+     ],
+     [
+      0,
+      0.28
+     ]
+    ],
+    "colour": "#383a32",
+    "segments": 8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    1.8,
+    0.1,
+    7.1000000000000005
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.4,
+      0.02
+     ],
+     [
+      0.4,
+      0.25
+     ],
+     [
+      0,
+      0.28
+     ]
+    ],
+    "colour": "#383a32",
+    "segments": 8
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    3.2,
+    -0.1,
+    6.8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0
+     ],
+     [
+      0.35,
+      0.02
+     ],
+     [
+      0.35,
+      0.25
+     ],
+     [
+      0,
+      0.28
+     ]
+    ],
+    "colour": "#383a32",
+    "segments": 8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -3.2,
+    0
+   ],
+   "params": {
+    "length": 9.0,
+    "height": 0.9,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    3.2,
+    0
+   ],
+   "params": {
+    "length": 9.0,
+    "height": 0.9,
+    "kind": "railing",
+    "pillarEvery": 0,
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    5.4,
+    -2.8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#2f7a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-teal",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    8,
+    9
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4aa59a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a82"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shop-green",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    0,
+    9
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5c9a58",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a82"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     8,
+     6
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   22,
+   18
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "hargeisa",
+ "venueId": "hargeisa-osm-node-1138799338",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "jet is too thin and pitched too steeply with weak camouflage and no star roundel, canopy tiny; plinth is flat colour without brick courses, lettering or mural; backdrop shops are plain boxes"
+ }
+}

@@ -1,0 +1,308 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/105268971",
+   "used": "outline extent and cruciform layout of All Saints Cathedral (about 67 x 46 m: nave to the west front at -y, transept band, chancel, vestry wing); the real polygon is re-composed as four gabled masses because one roof over the irregular outline is wrong; no usable photo found on Commons or Wikipedia"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/All_Saints'_Cathedral,_Nairobi",
+   "used": "Temple Moore design (English Gothic Revival), built 1917-1952 in stages; brief: grey stone, squat crossing tower, steep tiled roof, pointed windows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     25,
+     31
+    ]
+   },
+   "at": [
+    -3.5,
+    -22.5
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a7a396",
+    "glassColour": "#2f3b45",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "bay": 4.5,
+    "plinth": 0.8,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b5a45",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    3.5
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a7a396",
+    "glassColour": "#2f3b45",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "bay": 4.5,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b5a45",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chancel",
+   "footprint": {
+    "rect": [
+     22,
+     19
+    ]
+   },
+   "at": [
+    -4,
+    21.5
+   ],
+   "height": 9.4,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a7a396",
+    "glassColour": "#2f3b45",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "bay": 4.5,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7b5a45",
+    "material": "clay-tile",
+    "pitch": 42,
+    "overhang": 0.4,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vestry",
+   "footprint": {
+    "rect": [
+     16,
+     17
+    ]
+   },
+   "at": [
+    17,
+    21.5
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a7a396",
+    "glassColour": "#2f3b45",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "bay": 4.5,
+    "plinth": 0.8
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7b5a45",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "prism",
+   "id": "crossing-tower",
+   "at": [
+    -4,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     11
+    ],
+    "z0": 6,
+    "height": 17,
+    "colour": "#a7a396",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.18,
+    "bay": 3.5,
+    "trimColour": "#c8c2b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     12
+    ],
+    "z0": 22.4,
+    "height": 1.2,
+    "colour": "#c8c2b0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    3,
+    0
+   ],
+   "params": {
+    "rect": [
+     10,
+     10
+    ],
+    "z0": 23.6,
+    "height": 5.5,
+    "colour": "#7b5a45",
+    "topScale": 0.1
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.5,
+    -39.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     3.4
+    ],
+    "z0": 0,
+    "height": 7.5,
+    "colour": "#a7a396",
+    "topScale": [
+     1,
+     0.6
+    ],
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -3.5,
+    -43,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.8,
+    "run": 1.0,
+    "count": 4,
+    "colour": "#b8b3a4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -20
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -22
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     34
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building found; cruciform massing from the OSM outline and brief (grey stone, steep tile roofs, squat crossing tower). Transept/chancel/vestry sizes are read off the outline, buttresses, west window, pinnacles and tower detail are not modelled."
+ }
+}

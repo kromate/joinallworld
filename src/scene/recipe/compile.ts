@@ -8,8 +8,10 @@ import type { PreparedCityAssets } from './prepare.ts';
 import { recipeRuntimeHost } from './runtime-host.ts';
 import { recipeCameraFit } from './camera-fit.ts';
 import { recipeSkyTint } from './sky.ts';
+import type { PlaceManifest } from '../places/manifest.ts';
 
-export function compileRecipe(value: ValidatedRecipe, prepared: PreparedCityAssets, metadata: RecipeRuntimeMetadata): SceneDef {
+/** `places`: the city's place-model manifest (src/scene/places). A venue it lists shows its own model behind the scene; every other venue is drawn as before. */
+export function compileRecipe(value: ValidatedRecipe, prepared: PreparedCityAssets, metadata: RecipeRuntimeMetadata, places: PlaceManifest | null = null): SceneDef {
   const { recipe } = value;
   const atlases = new Set(value.placements.map(p => (p.source === 'kit' ? prepared.kit : prepared.hero)?.models.get(p.node)?.parts[0]?.atlas));
   requireRecipe(!atlases.has(undefined), 'missing prepared placement');
@@ -29,7 +31,7 @@ export function compileRecipe(value: ValidatedRecipe, prepared: PreparedCityAsse
     ...(value.sky ? { skyTint: recipeSkyTint(value.sky) } : {}),
     mood: recipe.mood, accent: recipe.palette.accent, camera: { ...recipe.camera, start, fit: recipeCameraFit(value) },
     walk: { bounds, entrance: [recipe.entrance[0], recipe.entrance[1]], open: false, block: value.walk.block },
-    runtime: { createHost: recipeRuntimeHost(value, prepared, reservation), reservation, bounds, support: [{ rect: bounds, y: 0 }], entranceYaw: recipe.entrance[2],
+    runtime: { createHost: recipeRuntimeHost(value, prepared, reservation, places && Object.hasOwn(places.venues, recipe.venue) ? { manifest: places } : undefined), reservation, bounds, support: [{ rect: bounds, y: 0 }], entranceYaw: recipe.entrance[2],
       request: { id: `recipe:${recipe.city}:${recipe.venue}`, near: { url: asset.url, sha256: asset.measurement.sha256 }, far: { url: asset.url, sha256: asset.measurement.sha256 },
         indoors: recipe.mood !== 'outdoor', position: [0, 0, 0], yaw: 0,
         navigation: { entrance: [recipe.entrance[0] / METRES_TO_SCENE, recipe.entrance[1] / METRES_TO_SCENE, recipe.entrance[2]],

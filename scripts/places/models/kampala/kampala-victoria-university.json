@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-victoria-university",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/157839880",
+   "used": "real outline of the campus building (about 52 x 26 m, name match); storeys, colours and details from the brief, no usable exterior photo found"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No exterior photo of the building exists on Commons (only event photos); storey count, painted cream and blue palette and balcony bands are from the brief and not verified."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "parapet": 0.5,
+    "pattern": [
+     {
+      "type": "balconies",
+      "colour": "#3d6a88"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#3d6a88"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -9,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    9,
+    -27,
+    0
+   ]
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -24,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 2.8,
+    "colour": "#cfcfd0",
+    "yaw": 90
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   90,
+   90
+  ]
+ }
+}

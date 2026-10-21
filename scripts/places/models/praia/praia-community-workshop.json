@@ -1,0 +1,455 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praia_294A3394_University_of_Cape_Verde.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Christian Pirkl",
+   "view": "front",
+   "file": "/tmp/places-evidence/praia/unicv.jpg",
+   "used": "deep-red painted three-storey blocks with white banding and shallow terracotta hips, gate portal of red piers and white flat beams, tall slim red clock tower with round white window, grey railings, asphalt entrance with planted island, grey paving"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1002802348",
+   "used": "campus context only (475 x 343 m); the entrance group is modelled, not the whole outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-beam",
+   "footprint": {
+    "rect": [
+     26,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 5.4,
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe9e4",
+    "overhang": 1.2,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-slab",
+   "footprint": {
+    "rect": [
+     34,
+     3.4
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "z0": 7.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efe9e4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe9e4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     4.2,
+     4.2
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 26,
+   "storeys": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#efe9e4"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efe9e4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    1.7,
+    19
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 2.6,
+    "bottom": 0,
+    "colour": "#f2efe9",
+    "frameColour": "#efe9e4",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-west",
+   "footprint": {
+    "rect": [
+     13,
+     28
+    ]
+   },
+   "at": [
+    -40,
+    14
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3,
+    "bands": "#efe9e4",
+    "plinth": 0.3,
+    "faces": {}
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-east",
+   "footprint": {
+    "rect": [
+     13,
+     28
+    ]
+   },
+   "at": [
+    40,
+    14
+   ],
+   "z0": 0,
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3,
+    "bands": "#efe9e4",
+    "plinth": 0.3,
+    "faces": {}
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 10,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-west",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    -22,
+    34
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3,
+    "bands": "#efe9e4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-east",
+   "footprint": {
+    "rect": [
+     20,
+     12
+    ]
+   },
+   "at": [
+    22,
+    34
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 3,
+    "bands": "#efe9e4",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4663a",
+    "material": "clay-tile",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#7b838c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 1.6,
+    "thickness": 0.2,
+    "kind": "fence",
+    "pillarEvery": 5,
+    "colour": "#7b838c"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 3
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#f2efe0",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -11,
+    -4
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b2a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    11,
+    -4
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b2a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    -5,
+    -4
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b2a30"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "at": [
+    5,
+    -4
+   ],
+   "z0": 0,
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9b2a30",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9b2a30"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "blocks are straight not angled, no tower window grille or banded balconies, no raised planted island, fence simplified"
+ }
+}

@@ -1,0 +1,236 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-uganda-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Museum_Entrance_2.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lneruba",
+   "view": "street",
+   "file": "/tmp/places-evidence/kampala/mus1.jpg",
+   "used": "cream rendered two-storey wing with upper ribbon windows and louvred vents, deep verandah on slim steel posts, stone-clad stair tower, lower flat-roofed wing with tall narrow windows, kerbed drive and low planting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Uganda_National_Museum_Front_view.jpg",
+   "licence": "CC BY-SA",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/kampala/mus2.jpg",
+   "used": "stone-rubble boundary wall, cream blocks, stone stair tower, red-earth drive"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/358486215",
+   "used": "multi-wing comb footprint, about 90 x 72 m, 2 levels"
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Solid cream rendered walls now without the blue full-width glazing (clerestory slit band and louvres not modelled: wall pattern louvres overpowered the walls, so removed after the last render); 46 m sloped verandah canopy on 10 posts, hedge island, stone boundary wall and larger trees added but the canopy placement and black-and-white kerbs are approximate; stone stair tower simple."
+ },
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 50,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.0
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d29a",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "parapet": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b0a0",
+    "overhang": 0.8,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -24,
+    -4
+   ],
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#a58a6c",
+    "windows": "ribbon",
+    "windowRatio": 0.08
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7b0a0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ]
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -24,
+    -34,
+    0
+   ],
+   "params": {
+    "form": "shed",
+    "width": 5,
+    "depth": 46,
+    "height": 3.4,
+    "columns": 10,
+    "rise": 0.5,
+    "colour": "#8e8a80",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hedge-island",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 4,
+    "n": 20,
+    "height": 0.9,
+    "colour": "#3f6b34",
+    "topColour": "#4a7a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb-island",
+   "at": [
+    -8,
+    -34,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "radius": 4.6,
+    "n": 20,
+    "height": 0.2,
+    "colour": "#e8e4da",
+    "topColour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.1,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8a7860"
+   },
+   "at": [
+    -30,
+    -46,
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -2,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 3,
+  "treeKind": "broadleaf",
+  "extent": [
+   130,
+   120
+  ]
+ }
+}

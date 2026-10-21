@@ -1,0 +1,266 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "sir-yahaya-memorial-hospital-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/948140393",
+   "used": "one ward range outline and orientation (containing match); other wings added from the brief: oldest hospital (1952), colonial one-storey ranges"
+  },
+  {
+   "kind": "text",
+   "used": "brief: veranda, corrugated hip roof, louvre windows"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#a9c3cf",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    12,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#a9c3cf",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     44,
+     12
+    ]
+   },
+   "at": [
+    12,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#a9c3cf",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#a9c3cf",
+    "windows": "punched",
+    "windowShape": "rect",
+    "windowRatio": 0.22,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veranda-slab",
+   "params": {
+    "rect": [
+     44,
+     2.6
+    ],
+    "z0": 0,
+    "height": 0.3,
+    "colour": "#cfc8b8"
+   },
+   "at": [
+    12,
+    -33.3
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "height": 3.4,
+      "colour": "#f2efe6"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -8,
+     -33.2
+    ],
+    "end": [
+     32,
+     -33.2
+    ],
+    "count": 11
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "veranda-roof",
+   "params": {
+    "rect": [
+     44,
+     2.8
+    ],
+    "z0": 3.4,
+    "height": 0.25,
+    "colour": "#8a4a32"
+   },
+   "at": [
+    12,
+    -33.2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "params": {
+    "rect": [
+     3.2,
+     0.25
+    ],
+    "z0": 2.6,
+    "height": 1.4,
+    "colour": "#f2efe6",
+    "trimColour": "#c8362f"
+   },
+   "at": [
+    -34,
+    -8.2
+   ]
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -8,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "colour": "#f2efe6",
+    "roofColour": "#a9c3cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; OSM footprint is a single ward block, other wings and veranda are typical colonial layout, not measured."
+ }
+}

@@ -1,0 +1,157 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "shukurah-restaurant-bauchi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json shukurah-restaurant-bauchi",
+   "used": "16 x 10 m one-storey painted shopfront in green and cream, glass counter window, door, front awning, blank signboard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1040784772",
+   "used": "not used: 910 m2 outline is a whole complex, far larger than the restaurant"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9fc2b0",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#f2efe6",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a39a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tile-dado",
+   "footprint": {
+    "rect": [
+     16.1,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -5.1
+   ],
+   "height": 1.1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#a8553a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8553a"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 2.2,
+    "drop": 0.5,
+    "height": 2.9,
+    "colours": [
+     "#9fc2b0",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.3,
+    3.2
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#f2efe6",
+    "frameColour": "#a8553a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#c9c3b4",
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   45,
+   35
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; typed shopfront, colours and details from brief only"
+ }
+}

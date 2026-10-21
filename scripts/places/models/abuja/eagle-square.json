@@ -1,0 +1,598 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "eagle-square",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Overview_of_Eagle_Square_Abuja.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tofi (Commons user)",
+   "view": "street",
+   "file": "/tmp/places-evidence/abuja/eagleB.jpg",
+   "used": "huge empty paved arena, long low covered walkway stand along the near side with teal-green fascia and white roof, row of small white barrel-roofed cabins, flat-roofed stands on the far side, tall floodlight mast, flag rows along the far left"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Left_View_of_Eagle_square_Abuja.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Tofi (Commons user)",
+   "view": "street",
+   "used": "white corrugated barrel-roofed stand on the right side, three flat-roofed far stands, lattice floodlight masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Eagle_Square_fct.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DeSt (Commons user)",
+   "view": "aerial",
+   "used": "brown-grey paving colour, road around the square, palms, sky-blue mood"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     84
+    ],
+    "height": 0.03,
+    "colour": "#5d5f5e"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    4,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     112,
+     72
+    ],
+    "height": 0.25,
+    "colour": "#a39e92"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    4,
+    0.05
+   ],
+   "params": {
+    "rect": [
+     116,
+     76
+    ],
+    "height": 0.1,
+    "colour": "#7d7a73"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "near-terrace",
+   "footprint": {
+    "rect": [
+     84,
+     6
+    ]
+   },
+   "at": [
+    -8,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8f9a90",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d998c",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    -8,
+    -32,
+    3.0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 86,
+    "depth": 8,
+    "height": 0.0,
+    "thickness": 0.5,
+    "columns": 0,
+    "colour": "#f1f3f0",
+    "edgeColour": "#2f8f7a",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-stand",
+   "footprint": {
+    "rect": [
+     13,
+     44
+    ]
+   },
+   "at": [
+    56,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a9a92",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "bands": "#2f6b4f"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#eceeea",
+    "overhang": 1.5,
+    "rise": 2.5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cabin-0",
+   "footprint": {
+    "rect": [
+     7.5,
+     5.5
+    ]
+   },
+   "at": [
+    14,
+    -38.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#dfe6e0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "bands": "#3f8a6c"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#f3f4f1",
+    "overhang": 0.5,
+    "rise": 1.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cabin-1",
+   "footprint": {
+    "rect": [
+     7.5,
+     5.5
+    ]
+   },
+   "at": [
+    23,
+    -38.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#dfe6e0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "bands": "#3f8a6c"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#f3f4f1",
+    "overhang": 0.5,
+    "rise": 1.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cabin-2",
+   "footprint": {
+    "rect": [
+     7.5,
+     5.5
+    ]
+   },
+   "at": [
+    32,
+    -38.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#dfe6e0",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0,
+    "bands": "#3f8a6c"
+   },
+   "roof": {
+    "form": "barrel",
+    "colour": "#f3f4f1",
+    "overhang": 0.5,
+    "rise": 1.4,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -45,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 16
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -62,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "height": 11,
+    "count": 16,
+    "spacing": 4.5,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "flag",
+   "at": [
+    -58,
+    -20,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "height": 11,
+    "count": 16,
+    "spacing": 4.5,
+    "colours": [
+     "#ffffff",
+     "#1b7a43"
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/array",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 3.0,
+      "colour": "#3f8a6c"
+     }
+    },
+    "start": [
+     -42,
+     0
+    ],
+    "end": [
+     42,
+     0
+    ],
+    "count": 15,
+    "lod1Step": 3,
+    "lod2Step": 15
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -8,
+    -28.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     84,
+     0.5
+    ],
+    "z0": 2.6,
+    "height": 0.45,
+    "colour": "#2f8f7a"
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -24,
+     40
+    ],
+    "end": [
+     -62,
+     40
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "seatColours": [
+     "#3c4a52",
+     "#2f6b5f"
+    ],
+    "blocks": 3,
+    "concreteColour": "#8fa097",
+    "backWall": 1.0,
+    "under": "open",
+    "canopy": {
+     "height": 6,
+     "depth": 7,
+     "colour": "#7f938a",
+     "slopeDeg": 0,
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     19,
+     40
+    ],
+    "end": [
+     -19,
+     40
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "seatColours": [
+     "#3c4a52",
+     "#2f6b5f"
+    ],
+    "blocks": 3,
+    "concreteColour": "#8fa097",
+    "backWall": 1.0,
+    "under": "open",
+    "canopy": {
+     "height": 6,
+     "depth": 7,
+     "colour": "#7f938a",
+     "slopeDeg": 0,
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     62,
+     40
+    ],
+    "end": [
+     24,
+     40
+    ],
+    "rows": 5,
+    "rise": 0.5,
+    "run": 0.9,
+    "firstHeight": 0.8,
+    "seatColours": [
+     "#3c4a52",
+     "#2f6b5f"
+    ],
+    "blocks": 3,
+    "concreteColour": "#8fa097",
+    "backWall": 1.0,
+    "under": "open",
+    "canopy": {
+     "height": 6,
+     "depth": 7,
+     "colour": "#7f938a",
+     "slopeDeg": 0,
+     "supports": 5
+    }
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    36,
+    -27,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "baseWidth": 2.0,
+    "topWidth": 0.8,
+    "panels": 8,
+    "colour": "#b7bcc0",
+    "colour2": "#b7bcc0"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -30,
+    44,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "baseWidth": 2.0,
+    "topWidth": 0.8,
+    "panels": 8,
+    "colour": "#b7bcc0",
+    "colour2": "#b7bcc0"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    30,
+    44,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "baseWidth": 2.0,
+    "topWidth": 0.8,
+    "panels": 8,
+    "colour": "#b7bcc0",
+    "colour2": "#b7bcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   118,
+   100
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -44
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -44
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     10
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -66,
+     30
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -44
+    ],
+    "height": 12
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Plaza, kerb/road, raised walkway with teal fascia, three far stands and lattice masts added; only ~110 m of the 300 m arena, no VIP pavilion, walkway undercroft is plain posts, cabins sit at the right end."
+ }
+}

@@ -1,0 +1,1646 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-au-prince",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-au-prince",
+    "climate": "tropical-maritime",
+    "vernacular": "Dense city of low and mid-rise reinforced-concrete and concrete-block buildings, often unfinished with rebar on the roof, painted in bright blues, yellows, pinks and greens, with flat roofs and corrugated metal on informal hillside housing; older neighbourhoods keep Haitian gingerbread houses (timber, deep porches, fretwork, steep roofs, tall shutters). Public buildings are French-influenced white neoclassical or Beaux-Arts. Post-2010 rebuilding is plain and functional. Palms, mango and almond trees, open plazas, hot hazy light.",
+    "wallColours": [
+      "#6fa8c8",
+      "#e8c94f",
+      "#e5a0a8",
+      "#f2efe6",
+      "#5f9d6e",
+      "#b9b2a4",
+      "#c9743f"
+    ],
+    "roofColours": [
+      "#8f9498",
+      "#a8322d",
+      "#6b6460",
+      "#b66a3d"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "exposed-concrete",
+      "render",
+      "timber",
+      "stucco",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "gingerbread timber fretwork and latticework on deep verandas with tall windows and doors; white colonnaded porticos and domed pavilions on civic buildings; painted murals and bright signboards on concrete facades; red-and-green cast-iron work on the Marche en Fer.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Haiti",
+        "what": "gingerbread houses of the 1880s-1920s: decorative fretwork and latticework, large windows and doors, tall ceilings, deep porches; minimalist functional post-2010 rebuilding"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Palace_(Haiti)",
+        "what": "white-painted reinforced-concrete French-Renaissance-influenced civic architecture"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/March%C3%A9_en_Fer",
+        "what": "red iron halls with green accents"
+      },
+      {
+        "url": "https://www.openstreetmap.org/#map=13/18.54/-72.34",
+        "what": "bright concrete colours and corrugated metal are general knowledge of the city, not a fetched source"
+      }
+    ]
+  },
+  "places": {
+    "port-au-prince-airport-port-au-prince-airport": {
+      "venueId": "port-au-prince-airport-port-au-prince-airport",
+      "city": "port-au-prince",
+      "name": "Toussaint Louverture International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the two-level concrete-and-glass international terminal, a long low block with a few jet bridges and apron stairs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 234,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d5c9",
+          "#4f7f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#9a9ea1",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1965, repaired 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Toussaint_Louverture_International_Airport",
+          "what": "two-level concrete and glass international terminal, three jet bridges, damaged in 2010 and arrivals terminal reopened 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=17/18.5800/-72.2926",
+          "what": "OSM terminal footprint 234 x 54 m"
+        }
+      ],
+      "notes": "Level count and materials sourced; facade colours estimated."
+    },
+    "port-au-prince-clinic": {
+      "venueId": "port-au-prince-clinic",
+      "city": "port-au-prince",
+      "name": "Hopital la Trinite",
+      "archetype": "hospital",
+      "subject": "a small two-storey concrete clinic with a flat roof and a front walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e4d5",
+          "#6fa8c8",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.5545/-72.3108",
+          "what": "OSM footprint 23 x 10 m, no other tags"
+        }
+      ],
+      "notes": "Only OSM size; typed from the city style."
+    },
+    "port-au-prince-community-notices": {
+      "venueId": "port-au-prince-community-notices",
+      "city": "port-au-prince",
+      "name": "Annexe Mairie Croix des Bouquets",
+      "archetype": "civic-small",
+      "subject": "a tiny one-storey concrete municipal annex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 5.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8c94f",
+          "#f2efe6",
+          "#5f9d6e"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.6864/-72.3175",
+          "what": "OSM footprint 9 x 6 m, 1 level, concrete"
+        }
+      ],
+      "notes": "Only OSM size/material found."
+    },
+    "port-au-prince-community-voting-game": {
+      "venueId": "port-au-prince-community-voting-game",
+      "city": "port-au-prince",
+      "name": "Annexe de la Mairie de Thomazeau",
+      "archetype": "civic-small",
+      "subject": "a small single-storey concrete mairie annex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#6fa8c8",
+          "#e8c94f"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.6608/-72.2320",
+          "what": "OSM footprint 23 x 18 m"
+        }
+      ],
+      "notes": "Only OSM size; typed."
+    },
+    "port-au-prince-community-workshop": {
+      "venueId": "port-au-prince-community-workshop",
+      "city": "port-au-prince",
+      "name": "Université de Port-au-Prince",
+      "archetype": "campus-block",
+      "subject": "a low concrete teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5a0a8",
+          "#f2efe6",
+          "#6b6460"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.5374/-72.3206",
+          "what": "OSM footprint 33 x 10 m"
+        }
+      ],
+      "notes": "Only OSM size; typed."
+    },
+    "port-au-prince-market-game": {
+      "venueId": "port-au-prince-market-game",
+      "city": "port-au-prince",
+      "name": "Marché en Fer",
+      "archetype": "market-hall",
+      "subject": "the Iron Market: two iron-framed red halls joined by an entrance gate with four domed corner towers and a clock, rebuilt 2011",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "stone",
+        "colours": [
+          "#a8322d",
+          "#3f7d4a",
+          "#e8dcc0"
+        ],
+        "roofColour": "#9c3b2f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "central gate between the halls"
+        },
+        {
+          "id": "dome",
+          "count": 4,
+          "note": "four domed towers on the gate"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "clock on the gate facade"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "stalls",
+          "count": 20,
+          "note": "stalls inside the halls"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "cast-iron work"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1891, rebuilt 2011",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/March%C3%A9_en_Fer",
+          "what": "iron market made in Paris, two halls of about 2,000 m2 each, joined by a gate with four domed towers and a clock; painted red with green accents; rebuilt 2011; one hall burned 2018"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.5515/-72.3432",
+          "what": "OSM tag: 2 levels; footprint only covers the gate"
+        }
+      ],
+      "notes": "Halls about 50 x 40 m each flanking a roughly 15 m gate block (total about 110 x 45 m). Red iron frame with green trim is the recognisable thing. The 2018 fire destroyed one hall; this shows the 2011 two-hall form."
+    },
+    "port-au-prince-meal-stop": {
+      "venueId": "port-au-prince-meal-stop",
+      "city": "port-au-prince",
+      "name": "Hôtel Montana",
+      "archetype": "hotel",
+      "subject": "the rebuilt hillside hotel in white stone, around 60 rooms with a pool terrace and restaurant overlooking the city and bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 25,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#b9b2a4",
+          "#5f9d6e"
+        ],
+        "roofColour": "#8f9498",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "pool and bar terrace"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "international",
+      "era": "1947, rebuilt 2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/H%C3%B4tel_Montana",
+          "what": "opened 1947 as Hotel Beau-Site, 7 floors by 2005, collapsed in 2010 'heap of white stone', rebuilt with pool, restaurant, about 60 rooms"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=19/18.5274/-72.2976",
+          "what": "OSM footprint 26 x 24 m, building=hotel"
+        }
+      ],
+      "notes": "The pre-2010 tower was seven floors; the rebuilt hotel is lower and its exact massing was not found, so storeys and shape are guesses."
+    },
+    "port-au-prince-osm-node-1323785127": {
+      "venueId": "port-au-prince-osm-node-1323785127",
+      "city": "port-au-prince",
+      "name": "Marche de Fermathe",
+      "archetype": "market-open",
+      "subject": "a hillside village market of stalls under tin sheds and tarpaulins by the road, in cooler highlands",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 33,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b9b2a4",
+          "#6fa8c8",
+          "#e8c94f"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1323785127",
+          "what": "OSM building footprint 33 x 12 m"
+        }
+      ],
+      "notes": "No description found; typed from market type and highland setting."
+    },
+    "port-au-prince-osm-node-1584933011": {
+      "venueId": "port-au-prince-osm-node-1584933011",
+      "city": "port-au-prince",
+      "name": "Rustik",
+      "archetype": "restaurant",
+      "subject": "a small rustic highland restaurant with a pitched roof and timber veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12.6,
+        "depth_m": 5.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a6a48",
+          "#b9b2a4",
+          "#5f9d6e"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1584933011",
+          "what": "OSM footprint 13 x 6 m"
+        }
+      ],
+      "notes": "Only OSM size; the rustic look is inferred from the name and cool-hills location (Kenscoff area), not verified."
+    },
+    "port-au-prince-osm-node-1929227554": {
+      "venueId": "port-au-prince-osm-node-1929227554",
+      "city": "port-au-prince",
+      "name": "Ajoupas Beach Club",
+      "archetype": "restaurant",
+      "subject": "a beach club with a thatched open-sided ajoupa-style hut on sand under palms",
+      "form": {
+        "footprint": "round",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a15a",
+          "#f2efe6",
+          "#5fb7b0"
+        ],
+        "roofColour": "#a58a4f",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1929227554",
+          "what": "OSM footprint 10 x 10 m"
+        }
+      ],
+      "notes": "Thatch and open sides are inferred from the word ajoupa (Creole thatched hut) in the name; no photo description found."
+    },
+    "port-au-prince-osm-node-2753138714": {
+      "venueId": "port-au-prince-osm-node-2753138714",
+      "city": "port-au-prince",
+      "name": "Le Marron Inconnu",
+      "archetype": "monument",
+      "subject": "the Unknown Maroon: a bronze statue of a kneeling escaped slave blowing a conch, broken chain on his ankle and machete in hand, on a plinth in a plaza near the Champ de Mars",
+      "form": {
+        "footprint": "round",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#6b5a3e",
+          "#b9b2a4",
+          "#8f9498"
+        ],
+        "roofColour": "#6b5a3e",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze kneeling figure about 3.6 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "eternal flame shown as a low basin"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low plaza edge"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1967",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Le_Marron_Inconnu",
+          "what": "bronze, near-naked man kneeling on one knee, torso arched, conch to his lips, machete beside ankle, broken chain on left ankle, about 3.6 m, eternal flame in square"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/2753138714",
+          "what": "OSM park polygon 40 x 27 m"
+        }
+      ],
+      "notes": "Statue form is the point; plinth height and plaza finish estimated. Dark bronze with pale paving."
+    },
+    "port-au-prince-osm-node-4217575341": {
+      "venueId": "port-au-prince-osm-node-4217575341",
+      "city": "port-au-prince",
+      "name": "Petit Marché de Canaan",
+      "archetype": "market-open",
+      "subject": "a tiny informal roadside market of stalls under tarpaulin and tin roofs on dusty ground, in the Canaan settlement",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#b9b2a4",
+          "#6fa8c8",
+          "#c9743f"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4217575341",
+          "what": "OSM building 4 x 2 m only"
+        }
+      ],
+      "notes": "No description found; Canaan is an informal post-2010 settlement so tin-and-tarpaulin stalls are typed from that."
+    },
+    "port-au-prince-osm-node-4842345826": {
+      "venueId": "port-au-prince-osm-node-4842345826",
+      "city": "port-au-prince",
+      "name": "Mc-Intosh",
+      "archetype": "park-landscape",
+      "subject": "a small roadside viewpoint with a low wall and trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b2a4",
+          "#5f9d6e",
+          "#e8c94f"
+        ],
+        "roofColour": "#8f9498",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4842345826",
+          "what": "OSM point tagged only as a viewpoint"
+        }
+      ],
+      "notes": "Nothing found about this place; typed as a generic viewpoint."
+    },
+    "port-au-prince-osm-node-6356671168": {
+      "venueId": "port-au-prince-osm-node-6356671168",
+      "city": "port-au-prince",
+      "name": "Centre d’Enseignement des Techniques Appliquées",
+      "archetype": "campus-block",
+      "subject": "a small single-storey technical school block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 12.5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8c94f",
+          "#f2efe6",
+          "#5f9d6e"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/6356671168",
+          "what": "OSM footprint 13 x 12 m"
+        }
+      ],
+      "notes": "Only OSM size; typed."
+    },
+    "port-au-prince-osm-node-883450377": {
+      "venueId": "port-au-prince-osm-node-883450377",
+      "city": "port-au-prince",
+      "name": "Université de technologie d'Haïti",
+      "archetype": "campus-block",
+      "subject": "a small two-storey university building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#6fa8c8",
+          "#f2efe6",
+          "#6b6460"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/883450377",
+          "what": "OSM footprint 28 x 21 m"
+        }
+      ],
+      "notes": "Only OSM size; typed."
+    },
+    "port-au-prince-osm-relation-13545105": {
+      "venueId": "port-au-prince-osm-relation-13545105",
+      "city": "port-au-prince",
+      "name": "Hôpital Saint-Damien",
+      "archetype": "hospital",
+      "subject": "a sprawling low pediatric hospital campus of one to two-storey wards around courtyards",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#6fa8c8",
+          "#e8c94f"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 3
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13545105",
+          "what": "OSM campus 201 x 165 m, Saint Damien Pediatric Hospital"
+        }
+      ],
+      "notes": "Campus extent measured; building form and colours typed. The model shows a recognisable portion."
+    },
+    "port-au-prince-osm-way-27937322": {
+      "venueId": "port-au-prince-osm-way-27937322",
+      "city": "port-au-prince",
+      "name": "Port-au-Prince Cathedral",
+      "archetype": "church-classical",
+      "subject": "the ruined Cathedral of Our Lady of the Assumption: a wide roofless nave with standing lower walls, façade with its two entrance towers collapsed in the 2010 earthquake",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 46,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cfc8b8",
+          "#8f8878",
+          "#a8a090"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "towers flanking entrance collapsed in 2010; draw as broken stumps"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1884-1914, ruin since 2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Our_Lady_of_the_Assumption,_Port-au-Prince",
+          "what": "built 1884-1914 dedicated 1928; 2010 earthquake collapsed the roof and both entrance towers, lower parts of walls still standing; transitional cathedral behind"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/27937322",
+          "what": "OSM building=ruins 77 x 46 m"
+        }
+      ],
+      "notes": "Ruin state is the point (no roof, broken towers). Stone colour and bay details estimated; the exact original style was not described in fetched sources."
+    },
+    "port-au-prince-osm-way-310210009": {
+      "venueId": "port-au-prince-osm-way-310210009",
+      "city": "port-au-prince",
+      "name": "Université Quisqueya",
+      "archetype": "campus-block",
+      "subject": "a small campus building at Haut Turgeau",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#5f9d6e",
+          "#6b6460"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1988",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Quisqueya_University",
+          "what": "private university founded 1988 at Haut Turgeau"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/310210009",
+          "what": "OSM footprint 24 x 8 m"
+        }
+      ],
+      "notes": "Campus buildings are not described; typed."
+    },
+    "port-au-prince-osm-way-380648401": {
+      "venueId": "port-au-prince-osm-way-380648401",
+      "city": "port-au-prince",
+      "name": "Hôpital de l'Université d'État d'Haïti",
+      "archetype": "hospital",
+      "subject": "the large state university general hospital: a long multi-storey concrete block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 59,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e9e4d5",
+          "#8f9498",
+          "#6fa8c8"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/380648401",
+          "what": "OSM hospital building 106 x 59 m"
+        }
+      ],
+      "notes": "Size measured; storeys and colours estimated, no description found."
+    },
+    "port-au-prince-osm-way-48215560": {
+      "venueId": "port-au-prince-osm-way-48215560",
+      "city": "port-au-prince",
+      "name": "Haiti National Palace",
+      "archetype": "civic-palace",
+      "subject": "the white 1914 National Palace as built: an E-plan two-storey palace with a domed central pavilion on four Ionic columns under a pediment, and domed pavilions at each end (destroyed 2010, demolished 2012)",
+      "form": {
+        "footprint": "U",
+        "width_m": 88,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "multi-dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f6f4ee",
+          "#e0dccf",
+          "#8a949a"
+        ],
+        "roofColour": "#7d8a8f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "central pavilion dome and two end pavilion domes"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "four Ionic columns and pedimented portico"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1914 (destroyed 2010)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Palace_(Haiti)",
+          "what": "designed 1912 by Georges Baussan, French Renaissance influenced, two storeys of white-painted reinforced concrete, E-shaped, domed entrance pavilion with four Ionic columns and pedimented portico, matching domed end pavilions; destroyed in 2010; demolished 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/48215560",
+          "what": "OSM historic=ruins footprint 88 x 54 m"
+        }
+      ],
+      "notes": "Show the pre-2010 palace (white). Dome and roof colours are not recorded in the text sources, so the grey-green is an estimate. Wikipedia lists its style as Victorian, but its façade is better read as Beaux-Arts neoclassical."
+    },
+    "port-au-prince-osm-way-48277658": {
+      "venueId": "port-au-prince-osm-way-48277658",
+      "city": "port-au-prince",
+      "name": "Musée National d'Art d'Haïti",
+      "archetype": "museum-theatre",
+      "subject": "a two-storey square civic building near the Champ de Mars that houses the National Museum of Art",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 37,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe7d0",
+          "#a8322d",
+          "#ffffff"
+        ],
+        "roofColour": "#a8322d",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Champ_de_Mars_(Port-au-Prince)",
+          "what": "museums stand around the Champ de Mars"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/48277658",
+          "what": "OSM footprint 38 x 37 m, tourism=museum, wikidata Q16919423"
+        }
+      ],
+      "notes": "The facade was not described in any fetched source; typed from type and surrounding civic architecture."
+    },
+    "port-au-prince-osm-way-48279480": {
+      "venueId": "port-au-prince-osm-way-48279480",
+      "city": "port-au-prince",
+      "name": "Holy Trinity Cathedral",
+      "archetype": "church-classical",
+      "subject": "the Episcopal Holy Trinity Cathedral, a long single-nave church famed for its painted biblical murals; the original was destroyed in 2010",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#e9e1cd",
+          "#a8322d",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9498",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "interior biblical murals"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Trinity_Cathedral,_Port-au-Prince",
+          "what": "14 interior murals by Haitian painters 1950-51, heavily damaged in 2010 and later razed, reconstruction planned"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/48279480",
+          "what": "OSM footprint 43 x 18 m"
+        }
+      ],
+      "notes": "Exterior form and materials were not described; typed from a simple nave church. Different from the larger ruined Catholic cathedral."
+    },
+    "port-au-prince-quiet-reflection": {
+      "venueId": "port-au-prince-quiet-reflection",
+      "city": "port-au-prince",
+      "name": "Temple of Port-au-Prince",
+      "archetype": "church-modern",
+      "subject": "the Latter-day Saints Port-au-Prince Haiti Temple: a modern limestone-faced temple of about 965 m2 in tropical landscaping with palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dfd0",
+          "#b6ad9a",
+          "#5fb7b0"
+        ],
+        "roofColour": "#9a9ea1",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tower with spire; typical of the type, not confirmed in the fetched source"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port-au-Prince_Haiti_Temple",
+          "what": "limestone facade, 965 m2, hibiscus and woven palm motifs, tropical landscaping with palm trees, interior palette of turquoise, lime green, blue and gold"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=18/18.5290/-72.2682",
+          "what": "OSM temple footprint 48 x 34 m"
+        }
+      ],
+      "notes": "Limestone cladding and size sourced. The spire and exact roof form are assumed from the LDS temple type."
+    },
+    "port-au-prince-recreation": {
+      "venueId": "port-au-prince-recreation",
+      "city": "port-au-prince",
+      "name": "Champs de Mars",
+      "archetype": "park-landscape",
+      "subject": "the Champ de Mars: a long series of paved public squares divided by wide boulevards, with bronze statues of Haiti's founders and the museum plaza, opposite the National Palace site",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 57,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d5c9",
+          "#7aa05a",
+          "#b9b2a4"
+        ],
+        "roofColour": "#8f9498",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "Louverture, Dessalines, Petion, Christophe"
+        },
+        {
+          "id": "fountain",
+          "count": 2,
+          "note": "reflecting pools above the Pantheon museum"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1999 redesign",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Champ_de_Mars_(Port-au-Prince)",
+          "what": "largest public park, series of squares divided by large boulevards, statues of Dessalines, Louverture, Petion and Christophe, Pantheon museum on grounds, redesigned 1999"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mus%C3%A9e_du_Panth%C3%A9on_National_Ha%C3%AFtien",
+          "what": "semi-buried museum with roof reflecting pools and gardens; wide cement arc entrance"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=17/18.5433/-72.3355",
+          "what": "OSM park polygon 229 x 57 m"
+        }
+      ],
+      "notes": "Squares arranged in a row; the National Palace site is a separate venue. Statue count from the sources."
+    },
+    "port-au-prince-transit": {
+      "venueId": "port-au-prince-transit",
+      "city": "port-au-prince",
+      "name": "Portail Léogâne",
+      "archetype": "transport-station",
+      "subject": "an open bus and tap-tap park with a long low shed and bays, at the southern gate district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 112,
+        "depth_m": 46,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b2a4",
+          "#e8c94f",
+          "#6fa8c8"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/18.5360/-72.3466",
+          "what": "OSM footprint 112 x 46 m"
+        }
+      ],
+      "notes": "No description found; typed as a tap-tap park from the district's role."
+    }
+  }
+}

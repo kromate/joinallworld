@@ -1,0 +1,1739 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sao-paulo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sao-paulo",
+    "climate": "temperate",
+    "vernacular": "Dense continental-scale metropolis: Paulista modernist exposed-concrete and glass towers; endless mid-rise concrete-frame apartment blocks rendered in cream, ochre and grey; self-built red brick and block houses with slab roofs in the periphery; surviving neocolonial and Italian-immigrant brick and stucco buildings with clay-tile hipped roofs in older districts (Luz, Mooca, Horto); tile-clad facades; graffiti murals in Vila Madalena; roads lined with broadleaf trees and palms.",
+    "wallColours": [
+      "#a9a9a4",
+      "#e6e0d2",
+      "#c9a35a",
+      "#a8553b",
+      "#8fa7b8",
+      "#7d7f80",
+      "#ebe3cf"
+    ],
+    "roofColours": [
+      "#b0613f",
+      "#8a8d8f",
+      "#9aa0a4",
+      "#a9a7a0"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "exposed-concrete",
+      "concrete",
+      "red-brick",
+      "tile-cladding",
+      "glass-curtain",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Exposed board-marked concrete and brise-soleil (Paulista school); ceramic tile panels; neocolonial wide eaves with brackets, curved pediments and arches; painted street murals; butterfly roofs and primary-colour accents (Artigas).",
+    "sources": [
+      {
+        "url": "https://pt.wikipedia.org/wiki/Museu_Florestal_Oct%C3%A1vio_Vecchi",
+        "what": "neocolonial style with clay-tile roofs and arches"
+      },
+      {
+        "url": "https://pt.wikipedia.org/wiki/Segunda_Resid%C3%AAncia_de_Vilanova_Artigas",
+        "what": "Paulista modernist house: concrete butterfly roof, painted brick, glass band"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Neo_Qu%C3%ADmica_Arena",
+        "what": "white-tile and glass contemporary stadium"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Brazil",
+        "what": "colonial origins, neoclassical theatre, Niemeyer concrete modernism (Edificio Copan)"
+      }
+    ]
+  },
+  "places": {
+    "sao-paulo-airport-sao-paulo-airport": {
+      "venueId": "sao-paulo-airport-sao-paulo-airport",
+      "city": "sao-paulo",
+      "name": "São Paulo/Guarulhos–Governador André Franco Montoro International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3, the 2014 international terminal: a long glazed curbside block under a broad white roof, with a wide pier of jet-bridge gates behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "t3-pier",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d7dcdf",
+          "#5e7280",
+          "#f3f3f1"
+        ],
+        "roofColour": "#e4e4e0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 22,
+          "note": "T3 pier, five of which take the A380"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo%E2%80%93Guarulhos_International_Airport",
+          "what": "Terminal 3 is the newest, international only, 22 jet-bridge gates incl. five A380 gates, completed March 2014; Terminal 2 is the oldest and largest; Terminal 1 is a converted cargo terminal"
+        }
+      ],
+      "notes": "Exterior colours are typed from the glass-and-steel T3 type; the source gives gates and dates only. Terminal 2 (older, with two piers) is not shown. No OSM footprint was matched."
+    },
+    "sao-paulo-clinic": {
+      "venueId": "sao-paulo-clinic",
+      "city": "sao-paulo",
+      "name": "Hospital e Maternidade São Cristóvão",
+      "archetype": "hospital",
+      "subject": "A mid-rise private hospital and maternity block in the east of the city",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d4",
+          "#6b8aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#b6b3aa",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1965",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/198297951",
+          "what": "OSM footprint measured: 109.4 x 45.2 m, area 3062 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10298474",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Only the 1965 start date (OSM tag) is available; form typed from city style. The OSM footprint (109 x 45 m) is the whole building group."
+    },
+    "sao-paulo-community-notices": {
+      "venueId": "sao-paulo-community-notices",
+      "city": "sao-paulo",
+      "name": "Prefeitura Regional de Perus",
+      "archetype": "civic-small",
+      "subject": "The Perus regional sub-prefecture: a low two-storey municipal office with flags and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#8a6f4d",
+          "#ffffff"
+        ],
+        "roofColour": "#b0613f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/486885422",
+          "what": "OSM footprint measured: 59.5 x 23.8 m, area 1080 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4305958",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No description found; typed from civic-small type and the measured OSM footprint (60 x 24 m)."
+    },
+    "sao-paulo-community-voting-game": {
+      "venueId": "sao-paulo-community-voting-game",
+      "city": "sao-paulo",
+      "name": "Subprefeitura Jabaquara",
+      "archetype": "civic-small",
+      "subject": "The Jabaquara sub-prefecture office: a narrow three-storey public building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 12,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d6cc",
+          "#7d8a92",
+          "#ffffff"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/299599250",
+          "what": "OSM footprint measured: 26.2 x 12.3 m, area 287 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4262104",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "OSM gives 3 building levels and a 26 x 12 m footprint; appearance otherwise typed."
+    },
+    "sao-paulo-community-workshop": {
+      "venueId": "sao-paulo-community-workshop",
+      "city": "sao-paulo",
+      "name": "Instituto Martius-Staden",
+      "archetype": "campus-block",
+      "subject": "A two-storey library and archive building inside the Colégio Porto Seguro Panamby campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e6dcc7",
+          "#a8553b",
+          "#ffffff"
+        ],
+        "roofColour": "#b0613f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s (campus 1997); institute founded 1916",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Instituto_Martius-Staden",
+          "what": "two storeys (administration below, collection above), located within Colegio Visconde de Porto Seguro; institute inaugurated 1916"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/480404304",
+          "what": "OSM footprint measured: 282.7 x 185.3 m, area 32462 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20205300",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The institute building itself is not described; the venue point falls inside the Panamby school campus (1997), so a school-campus-style building is typed."
+    },
+    "sao-paulo-market-game": {
+      "venueId": "sao-paulo-market-game",
+      "city": "sao-paulo",
+      "name": "Mercado Central de Osasco Walter Edson de Abreu",
+      "archetype": "market-hall",
+      "subject": "Osasco municipal market hall (1953): a covered hall with entrances on each side and crossing aisles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 37,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc2",
+          "#8a6f4d",
+          "#ffffff"
+        ],
+        "roofColour": "#9a9ea1",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 4,
+          "note": "entrance on each side"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1953",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Mercado_Municipal_de_Osasco",
+          "what": "opened 1953 in Praca 21 de Dezembro; six corridors that cross inside the building"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/425971603",
+          "what": "OSM footprint measured: 54.4 x 36.7 m, area 1933 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10328775",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Only the year and the interior corridor layout are documented; exterior typed. OSM footprint 54 x 37 m."
+    },
+    "sao-paulo-meal-stop": {
+      "venueId": "sao-paulo-meal-stop",
+      "city": "sao-paulo",
+      "name": "Ragazzo",
+      "archetype": "restaurant",
+      "subject": "A small street-corner fast-food restaurant in a low commercial block (no brand marks)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dfcf",
+          "#b5483b",
+          "#ffffff"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/587975243",
+          "what": "OSM footprint measured: 30.1 x 23.7 m, area 588 m2"
+        }
+      ],
+      "notes": "Ragazzo is a restaurant chain; the OSM building at the coordinates is a 30 x 24 m retail shop, so only a generic corner restaurant is typed. No logos."
+    },
+    "sao-paulo-osm-node-4732250495": {
+      "venueId": "sao-paulo-osm-node-4732250495",
+      "city": "sao-paulo",
+      "name": "Parque da Mônica",
+      "archetype": "mall",
+      "subject": "Shopping SP Market, the mall that houses Parque da Mônica (a 15,000 m2 indoor theme park)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2dfd8",
+          "#4f7a98",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a7a0",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "mall of the 2000s; park opened there 2015",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Parque_da_M%C3%B4nica",
+          "what": "current park is inside Shopping SP Market, opened 4 July 2015, more than 15,000 m2, indoor covered theme park with a Ferris wheel and a steel coaster"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10345444",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The park is an indoor attraction inside a mall, so the mall is the visible building; its facade is typed."
+    },
+    "sao-paulo-osm-node-5602604506": {
+      "venueId": "sao-paulo-osm-node-5602604506",
+      "city": "sao-paulo",
+      "name": "Museu Florestal Octávio Vecchi",
+      "archetype": "museum-theatre",
+      "subject": "Neocolonial forestry museum in the Horto Florestal: two floors, recessed centre with a marble stair and porch, curved pediment, clay-tile hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "neocolonial-villa",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ebe3cf",
+          "#8a6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0613f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "curved pediment"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "masonry pinnacles on the projecting sections"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "marble staircase and porch"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1931",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Museu_Florestal_Oct%C3%A1vio_Vecchi",
+          "what": "neocolonial, wide eaves with brackets (cachorros), curved pediment, arches, clay-tile timber roof, two floors about 1000 m2, three-part facade with recessed centre, marble staircase and porch, mortar pinnacles, stained-glass arched upper windows, inaugurated 30 Sept 1931"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/586741188",
+          "what": "OSM footprint measured: 30 x 21.7 m, area 590 m2, height tag 8.806 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30884316",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Wall colours are not stated in the source; cream with white trim is typed. A marker for the Tropic of Capricorn stands beside the building."
+    },
+    "sao-paulo-osm-node-5890753625": {
+      "venueId": "sao-paulo-osm-node-5890753625",
+      "city": "sao-paulo",
+      "name": "Capela de São Miguel Paulista",
+      "archetype": "shrine-small",
+      "subject": "The small 17th-century Jesuit chapel of São Miguel Arcanjo: a plain whitewashed gabled chapel with a bell gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "colonial-chapel"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f1ede2",
+          "#8a6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0613f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "simple bell gable above the facade"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1622",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/421341833",
+          "what": "OSM footprint measured: 193.3 x 24.7 m, area 4665 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10276169",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The OSM point is the São Miguel Paulista railway-station polygon (193 x 25 m), not the chapel. The chapel is believed to be the early-colonial Jesuit chapel of the district (whitewashed, rammed earth), but no source was reachable to confirm colours or size, so a small colonial chapel is typed."
+    },
+    "sao-paulo-osm-node-6732845827": {
+      "venueId": "sao-paulo-osm-node-6732845827",
+      "city": "sao-paulo",
+      "name": "Igreja de Nossa Senhora da Penha",
+      "archetype": "church-classical",
+      "subject": "Santuário Eucarístico Nossa Senhora da Penha: a long neoclassical parish church with a front bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ebe4d3",
+          "#a89873",
+          "#ffffff"
+        ],
+        "roofColour": "#a6522f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/340166220",
+          "what": "OSM footprint measured: 48.1 x 18 m, area 773 m2, height tag 14.711 m"
+        }
+      ],
+      "notes": "OSM tags give a 48 x 18 m church with height 14.7 m (Catholic eucharistic sanctuary); style and colours typed."
+    },
+    "sao-paulo-osm-relation-6711205": {
+      "venueId": "sao-paulo-osm-relation-6711205",
+      "city": "sao-paulo",
+      "name": "Museum of Sacred Art of São Paulo",
+      "archetype": "museum-theatre",
+      "subject": "The Luz Monastery wing: a two-storey colonial/baroque cloistered building with a hipped terracotta roof around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 77,
+        "depth_m": 58,
+        "storeys": 2,
+        "height_m": 9.4,
+        "roof": "hip",
+        "variant": "monastery-cloister",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efe9dc",
+          "#8b6a45",
+          "#ffffff"
+        ],
+        "roofColour": "#a86e02",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1774, restored 1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Sacred_Art_of_S%C3%A3o_Paulo",
+          "what": "left wing of the Luz Monastery founded 1774 by Frei Galvao; colonial architecture restored in the 1970s to its early eighteenth-century appearance; IPHAN-listed 1943"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6711205",
+          "what": "OSM footprint measured: 77.1 x 57.9 m, area 3360 m2, height tag 9.449 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1954391",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "OSM tags give hipped roof colour #a86e02, baroque, height 9.4 m, architect Frei Galvao. White-washed walls are typed from the colonial monastery type, not from the cited text."
+    },
+    "sao-paulo-osm-way-1082441931": {
+      "venueId": "sao-paulo-osm-way-1082441931",
+      "city": "sao-paulo",
+      "name": "UNINOVE - Campus São Bernardo do Campo",
+      "archetype": "campus-block",
+      "subject": "A multi-storey private university teaching building with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d3d1c9",
+          "#4f7a98",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a7a0",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1082441931",
+          "what": "OSM footprint measured: 147.3 x 49.9 m, area 6924 m2"
+        }
+      ],
+      "notes": "University campus; no building description found. OSM footprint 147 x 50 m."
+    },
+    "sao-paulo-osm-way-1251674385": {
+      "venueId": "sao-paulo-osm-way-1251674385",
+      "city": "sao-paulo",
+      "name": "Casa VilaNova Artigas",
+      "archetype": "manor",
+      "subject": "The second Vilanova Artigas house (1949): a single-storey modernist house with a butterfly roof, glazed middle band over painted brick walls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "wave",
+        "variant": "butterfly-roof-house"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#d8c7a0",
+          "#b5483b",
+          "#ffffff"
+        ],
+        "roofColour": "#8d8d89",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair between the glass panels"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1949",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Segunda_Resid%C3%AAncia_de_Vilanova_Artigas",
+          "what": "Campo Belo 1949, single storey, asymmetric inclined concrete-slab butterfly roof draining to one gutter, glass panels over mostly unplastered painted brick walls, largest bedroom plastered and white, double-height living room, hedge instead of street wall, garage at front"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1251674385",
+          "what": "OSM footprint measured: 23.9 x 6.7 m, area 160 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28677920",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Now operated as a restaurant. The yellow/red/blue palette is attributed to Artigas by the source; exact paint colours are typed."
+    },
+    "sao-paulo-osm-way-158967597": {
+      "venueId": "sao-paulo-osm-way-158967597",
+      "city": "sao-paulo",
+      "name": "Faculdade de Medicina Veterinária e Zootecnia",
+      "archetype": "campus-block",
+      "subject": "USP veterinary faculty teaching building on the University of Sao Paulo campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dfd0",
+          "#8a9a8a",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a7a0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/400901288",
+          "what": "OSM footprint measured: 64.9 x 18.4 m, area 1195 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18477151",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No description found; typed from a USP campus building. OSM footprint 65 x 18 m."
+    },
+    "sao-paulo-osm-way-196866078": {
+      "venueId": "sao-paulo-osm-way-196866078",
+      "city": "sao-paulo",
+      "name": "Estádio Municipal Anacleto Campanella",
+      "archetype": "stadium",
+      "subject": "São Caetano municipal football ground with a covered main stand and open end stands in red and yellow",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed",
+        "variant": "football-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d3d0c8",
+          "#b5322b",
+          "#e8c23a"
+        ],
+        "roofColour": "#8b9094",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "metal roofs over the covered stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1955, reformed 2007-2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Est%C3%A1dio_Municipal_Anacleto_Campanella",
+          "what": "opened 1955, capacity about 14,700, metal roof replaced in 2007-2008, red and yellow sectors, natural grass pitch 105 x 68 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/196866078",
+          "what": "OSM footprint measured: 211.7 x 139.6 m, area 24296 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5401961",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The yellow stand and a four-storey box building were demolished in 2012 and 2014. Colour split is from the sector names."
+    },
+    "sao-paulo-osm-way-218678632": {
+      "venueId": "sao-paulo-osm-way-218678632",
+      "city": "sao-paulo",
+      "name": "Neo Química Arena",
+      "archetype": "stadium",
+      "subject": "Arena Corinthians: white tile-clad box stadium with a curved glass west front, huge east LED screen and a tree-lined reflecting-pool promenade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 267,
+        "depth_m": 228,
+        "storeys": 5,
+        "height_m": 43,
+        "roof": "flat",
+        "variant": "modern-arena",
+        "wings": 2
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2f2f0",
+          "#6d8aa0",
+          "#d3d3d3"
+        ],
+        "roofColour": "#eeeeee",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "scoreboard",
+          "count": 5,
+          "note": "170 x 20 m east LED screen plus four 30 x 7.5 m scoreboards"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "white membrane roof on 48 trusses spanning 170 m"
+        },
+        {
+          "id": "floodlights",
+          "count": 1,
+          "note": "roof-mounted pitch lights"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "curved glass west facade"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "west reflecting pool and fountain"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Neo_Qu%C3%ADmica_Arena",
+          "what": "48,905 seats; about 267 x 228 m and 43 m tall; roof on 48 trusses with about 40,000 m2 white TPO membrane; west facade about 6,200 m2 curved glass; 12,000 m2 white ceramic tile exterior; 170 x 20 m east LED screen; west tree-lined mall with reflecting pool; built 2011-2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/4585475",
+          "what": "OSM footprint measured: 279.7 x 229 m, area 40452 m2, height tag 30 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1362236",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Larger than the 120 m clamp, so the west glass facade and promenade are the recognisable portion."
+    },
+    "sao-paulo-osm-way-243738993": {
+      "venueId": "sao-paulo-osm-way-243738993",
+      "city": "sao-paulo",
+      "name": "Parque Rodrigo de Gasperi",
+      "archetype": "park-landscape",
+      "subject": "Linear city park with lawns, paths and a small gate pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4dcc8",
+          "#7aa05a",
+          "#ffffff"
+        ],
+        "roofColour": "#a6522f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/243738993",
+          "what": "OSM footprint measured: 577 x 133.6 m, area 42353 m2"
+        }
+      ],
+      "notes": "Park polygon 577 x 134 m; no description found, typed."
+    },
+    "sao-paulo-osm-way-276636672": {
+      "venueId": "sao-paulo-osm-way-276636672",
+      "city": "sao-paulo",
+      "name": "Escola Superior de Propaganda e Marketing ESPM",
+      "archetype": "campus-block",
+      "subject": "ESPM business school: a modern two-storey block with large glazed openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 8.2,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6d3cb",
+          "#5a7e96",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a7a0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/6358101",
+          "what": "OSM footprint measured: 75.3 x 54 m, area 3338 m2, height tag 8.18 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3847972",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "OSM building height tag 8.18 m and footprint 75 x 54 m; design otherwise typed."
+    },
+    "sao-paulo-osm-way-455336051": {
+      "venueId": "sao-paulo-osm-way-455336051",
+      "city": "sao-paulo",
+      "name": "Hospital Heliópolis",
+      "archetype": "hospital",
+      "subject": "A long public hospital block (INAMPS-era) in Heliópolis with ward floors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 24,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e5dfd2",
+          "#7b8f9a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca2",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1969",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Hospital_Heli%C3%B3polis",
+          "what": "founded 1969 as an INAMPS hospital, 330 beds; radiology and radiotherapy centre added 2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1415745538",
+          "what": "OSM footprint measured: 110 x 23.5 m, area 1573 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10298404",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Storeys and facade not documented; typed."
+    },
+    "sao-paulo-osm-way-547462224": {
+      "venueId": "sao-paulo-osm-way-547462224",
+      "city": "sao-paulo",
+      "name": "Parque Ecológico Guapituba",
+      "archetype": "park-landscape",
+      "subject": "Large ecological park of woodland and lawns with a small entrance pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 500,
+        "depth_m": 400,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4dcc8",
+          "#6f9a5e",
+          "#ffffff"
+        ],
+        "roofColour": "#a6522f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/547462224",
+          "what": "OSM footprint measured: 817.9 x 647.8 m, area 400873 m2"
+        }
+      ],
+      "notes": "Park polygon 818 x 648 m; no description found."
+    },
+    "sao-paulo-osm-way-75490092": {
+      "venueId": "sao-paulo-osm-way-75490092",
+      "city": "sao-paulo",
+      "name": "Albert Einstein Israelite Hospital",
+      "archetype": "hospital",
+      "subject": "Hospital Israelita Albert Einstein: a cluster of glazed multi-storey hospital towers in Morumbi with a covered drop-off",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 10,
+        "height_m": 42,
+        "roof": "flat",
+        "variant": "hospital-towers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#cfd8de",
+          "#4f7b96",
+          "#f4f4f2"
+        ],
+        "roofColour": "#b6b9b8",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "opened 1971, expanded since",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Albert_Einstein_Hospital",
+          "what": "construction began 14 Sept 1958 in Morumbi on donated land; opened 28 July 1971"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/75490092",
+          "what": "OSM footprint measured: 362.2 x 185.3 m, area 43473 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1630439",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Opening dates only are documented; the tower form is typed from the type. OSM campus polygon is 362 x 185 m."
+    },
+    "sao-paulo-quiet-reflection": {
+      "venueId": "sao-paulo-quiet-reflection",
+      "city": "sao-paulo",
+      "name": "Basílica Menor Nossa Senhora do Rosário",
+      "archetype": "church-gothic",
+      "subject": "Basilica of Our Lady of the Rosary, Caieiras: a large neo-Gothic basilica (about 60 m tall) inspired by Notre-Dame and Sainte-Chapelle",
+      "form": {
+        "footprint": "cross",
+        "width_m": 48,
+        "depth_m": 39,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "gable",
+        "variant": "neo-gothic-basilica",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e3ddd0",
+          "#8a7f6e",
+          "#c9a24b"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "overall height about 60 m"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "rose-window",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "2006-2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Bas%C3%ADlica_Nossa_Senhora_do_Ros%C3%A1rio_(Caieiras)",
+          "what": "neo-Gothic, inspired by Notre-Dame and Sainte-Chapelle, 60 m tall, interior walls windows and ceiling in blue red and gold, built 2006 to dedication 24 Feb 2008"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1499108656",
+          "what": "OSM footprint measured: 48 x 39.2 m, area 1608 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18500016",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Wall material and exterior colours are not in the source and are typed (pale render with stone trim); tower and rose window are typical of the cited inspirations."
+    },
+    "sao-paulo-recreation": {
+      "venueId": "sao-paulo-recreation",
+      "city": "sao-paulo",
+      "name": "Recanto Municipal da Árvore - Bosque Maia",
+      "archetype": "park-landscape",
+      "subject": "Bosque Maia, Guarulhos: a 170,000 m2 wooded city park with lawns and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 255,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4dcc8",
+          "#5f9a5a",
+          "#ffffff"
+        ],
+        "roofColour": "#a6522f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1972",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://pt.wikipedia.org/wiki/Bosque_Maia",
+          "what": "about 170,000 m2, largest urban park in Guarulhos, founded 1972 on a farm, open 6:00-22:00"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/5110800",
+          "what": "OSM footprint measured: 1168.8 x 255.3 m, area 142311 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16502223",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Layout and structures not described; typed."
+    },
+    "sao-paulo-transit": {
+      "venueId": "sao-paulo-transit",
+      "city": "sao-paulo",
+      "name": "Vila Madalena",
+      "archetype": "transport-station",
+      "subject": "Vila Madalena metro station entrance at street level, with blank signage, in the street-art district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bfc3c4",
+          "#4f7a98",
+          "#f2f2f0"
+        ],
+        "roofColour": "#a9adb0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1266532725",
+          "what": "OSM footprint measured: 37.3 x 18.4 m, area 685 m2, height tag 20 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5244825",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "OSM at the point is the 20 m Edifício Helbor Edition residential tower, not the station; the station design was not researched. Painted-mural reflects the neighbourhood known for street art (general knowledge)."
+    }
+  }
+}

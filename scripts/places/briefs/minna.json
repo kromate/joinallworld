@@ -1,0 +1,996 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "minna",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "minna",
+    "climate": "savanna",
+    "vernacular": "Niger State capital in a hot dusty Guinea-savanna with a harmattan dry season from November to April and rainy season May to October. Ordinary buildings are 1-2 storey cement-block houses and shops in cream, ochre and pale-green painted render under red-brown or green long-span corrugated sheets; older Nupe/Gbagyi/Hausa compounds are mud-render with thatch or zinc roofs and rendered parapets. Government and mosque buildings use white or cream render, green accents and domes, and the streets are lined with tricycles. Soil and verges are red-brown laterite. Colours are typical Northern Nigeria Middle Belt palettes, not individually sourced.",
+    "wallColours": [
+      "#efe6d2",
+      "#d8c3a0",
+      "#c4a07a",
+      "#b9b6ad",
+      "#9c5b44",
+      "#f6f3ea"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6b4a",
+      "#6a737b",
+      "#a8643e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "laterite",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Hausa-Arewa relief panels and scalloped/pointed arches on mosques and government gates; Nupe/Gbagyi plastered parapets and incised wall patterns on older compounds; breeze-block screens; green-and-white painted perimeter walls and gateway arches for state buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Minna",
+        "what": "tropical savanna climate, dry harmattan Nov-Apr, rains May-Oct, rainfall ~1,277 mm, highs ~38 C in March; city gate, Central Mosque, St Michael's Cathedral and Government House/Secretariat pictured; tricycle transport"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Niger_State",
+        "what": "West Sudanian savanna, ethnically diverse (Nupe, Gbagyi, Hausa, Fulani, Adara), Nupe Kingdom and Sokoto Caliphate history"
+      }
+    ]
+  },
+  "places": {
+    "federal-library-minna": {
+      "venueId": "federal-library-minna",
+      "city": "minna",
+      "name": "Federal Library Minna",
+      "archetype": "campus-block",
+      "subject": "Federal Library Minna (National Library of Nigeria branch): a two-storey rendered public library with a columned entrance and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d2",
+          "#4f6b4a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type."
+    },
+    "fut-minna-bosso-campus": {
+      "venueId": "fut-minna-bosso-campus",
+      "city": "minna",
+      "name": "Federal University of Technology Minna, Bosso Campus",
+      "archetype": "campus-block",
+      "subject": "FUT Minna Bosso (Mini) Campus: the former Government Teachers' College, Bosso, a set of long single-to-two-storey rendered blocks with louvred windows and veranda corridors around lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece3cb",
+          "#6b8a52",
+          "#f6f3ea"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_University_of_Technology,_Minna",
+          "what": "Bosso (Mini) Campus uses the former Government Teachers' College Bosso, houses the Auwal Ibrahim Library branch; floodlit sports arena"
+        }
+      ],
+      "notes": "Origin as a teachers' college and a branch library are sourced; the look is a guess (long low colonial-era college blocks with veranda corridors). Lower and older-looking than Gidan Kwano."
+    },
+    "fut-minna-main-campus": {
+      "venueId": "fut-minna-main-campus",
+      "city": "minna",
+      "name": "Federal University of Technology, Minna",
+      "archetype": "campus-block",
+      "subject": "FUT Minna main campus at Gidan Kwano: a very large modern campus around the Senate Building and the Ibrahim Badamasi Babangida Library, with broad walkways and school-of-technology buildings",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#3d6b8a",
+          "#c7c9c5"
+        ],
+        "roofColour": "#7d8a92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_University_of_Technology,_Minna",
+          "what": "main campus Gidan Kwano on Minna-Kataeregi-Bida Road covering 10,650 ha; Senate Building is the admin hub; IBB Library (est. 1984) with a walkway; SICT, Environmental Technology and Agriculture schools; floodlit arena, 9-hole golf course"
+        }
+      ],
+      "notes": "Campus extent and building names are sourced; the architecture is not. Show the Senate Building area as a larger glazed block than the Bosso campus, with a covered walkway."
+    },
+    "general-hospital-minna": {
+      "venueId": "general-hospital-minna",
+      "city": "minna",
+      "name": "General Hospital Minna",
+      "archetype": "hospital",
+      "subject": "General Hospital Minna: Minna's main public general hospital, a set of 1-2 storey old government blocks with veranda corridors",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eee8d6",
+          "#7aa886",
+          "#d1cdbd"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "the main general healthcare facility in the city alongside primary clinics"
+        }
+      ],
+      "notes": "Role is sourced only; the form is a guess. Older and lower than the Makurdi teaching hospital."
+    },
+    "gtbank-minna": {
+      "venueId": "gtbank-minna",
+      "city": "minna",
+      "name": "GTBank",
+      "archetype": "office-low",
+      "subject": "GTBank branch in Minna: a two-storey bank in glass and cream panels with a canopy, ATM bay and security gate; logos and brand colours omitted",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#eceae4",
+          "#4b5560",
+          "#cfd2d4"
+        ],
+        "roofColour": "#8f969b",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type. Brand-neutral colours only."
+    },
+    "kings-corner": {
+      "venueId": "kings-corner",
+      "city": "minna",
+      "name": "King's Corner",
+      "archetype": "restaurant",
+      "subject": "King's Corner, Minna: a small open-sided eatery and drinking spot with a veranda and plastic chairs, near the FUT main campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efdfb3",
+          "#a64a35",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b4a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type."
+    },
+    "kure-market": {
+      "venueId": "kure-market",
+      "city": "minna",
+      "name": "Kure Market",
+      "archetype": "market-hall",
+      "subject": "Kure Market, Minna: Minna's biggest market, shown as a covered trading complex of rows of rendered lock-up shops under long corrugated roofs with a gated entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6d9bd",
+          "#8a3b2e",
+          "#f2eddf"
+        ],
+        "roofColour": "#7d4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niger_State",
+          "what": "Minna is the commercial centre of an agricultural state (cotton, guinea corn, maize, ginger)"
+        }
+      ],
+      "notes": "No source describes Kure Market's architecture. Treated as the main covered market with a state-built 'ultra-modern' complex layout (recollection, not verified)."
+    },
+    "minna-bus-park": {
+      "venueId": "minna-bus-park",
+      "city": "minna",
+      "name": "Bus Park",
+      "archetype": "transport-station",
+      "subject": "Minna Bus Park: an open motor park with parked buses and minibuses, a ticketing shed and a covered waiting area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ad",
+          "#6a737b",
+          "#e6dccb"
+        ],
+        "roofColour": "#6a737b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "tricycles are typical local transport; no source on this park"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type."
+    },
+    "minna-stadium": {
+      "venueId": "minna-stadium",
+      "city": "minna",
+      "name": "Minna stadium",
+      "archetype": "stadium",
+      "subject": "Minna Stadium: a municipal football stadium with a covered main stand and a perimeter wall, terraces open on the other sides",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d3cfc2",
+          "#2f6b4f",
+          "#ece8dc"
+        ],
+        "roofColour": "#6a737b",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type. Typical Nigerian state stadium; larger and lower-key than Estadio de Malabo."
+    },
+    "niger-state-house-of-assembly": {
+      "venueId": "niger-state-house-of-assembly",
+      "city": "minna",
+      "name": "Niger State House Assembly",
+      "archetype": "civic-palace",
+      "subject": "Niger State House of Assembly: a state legislative complex shown as a cream-rendered block with a columned portico, a green dome over the chamber, flags and a gated forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f1ead8",
+          "#3d7a52",
+          "#ffffff"
+        ],
+        "roofColour": "#3d7a52",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "Niger State Government House and Secretariat are pictured in the city's article; the Assembly is not described"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type. The dome, portico and green accent are a typical Nigerian legislature template; verify."
+    },
+    "secretariat-juma-at-mosque": {
+      "venueId": "secretariat-juma-at-mosque",
+      "city": "minna",
+      "name": "Niger State Secretariat Juma'at Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Niger State Secretariat Friday Mosque: a government-complex mosque with a white prayer hall, a central dome and two slender minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e8",
+          "#3d7a52",
+          "#d9c88c"
+        ],
+        "roofColour": "#3d7a52",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "Minna Central Mosque is listed as a landmark; this Secretariat mosque is not described"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type. Should look smaller and plainer than a city central mosque."
+    },
+    "st-michaels-cathedral": {
+      "venueId": "st-michaels-cathedral",
+      "city": "minna",
+      "name": "St. Michael's Catholic Cathedral",
+      "archetype": "church-modern",
+      "subject": "St. Michael's Catholic Cathedral, Minna: the cathedral of the Diocese of Minna, a long gabled nave in rendered brick with a front bell tower and cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#efe6d0",
+          "#9a5b3c",
+          "#ffffff"
+        ],
+        "roofColour": "#7d4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Minna",
+          "what": "St Michael's is the cathedral; Apostolic Prefecture of Minna 1964, diocese from 1973; no architectural description"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "cathedral is pictured in the city's article"
+        }
+      ],
+      "notes": "Only identity and diocese dates are sourced; the form is a guess. The cathedral status dates from 1973, so a 1970s-80s church is assumed."
+    },
+    "veez-garden": {
+      "venueId": "veez-garden",
+      "city": "minna",
+      "name": "Veez Garden",
+      "archetype": "park-landscape",
+      "subject": "Veez Garden, Minna: a leisure garden with shaded seating, umbrellas, a small open pavilion and a fence wall with a gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d9d3c0",
+          "#4f8a3c",
+          "#f1ecdc"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type. Leisure garden with a fountain and umbrella seating."
+    },
+    "yemisi-suswam-garden": {
+      "venueId": "yemisi-suswam-garden",
+      "city": "minna",
+      "name": "Yemisi Suswam Garden",
+      "archetype": "park-landscape",
+      "subject": "Yemisi Suswam Garden, Minna: a quiet landscaped park with lawns, mature trees and a small pavilion, near the FUT main campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d3c2",
+          "#5a8a3c",
+          "#efe9d8"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Minna",
+          "what": "city context only"
+        }
+      ],
+      "notes": "No description found. No source describes this place's appearance; brief is a typed guess from the Minna city style and the place type. Open lawn and trees, less furniture than Veez Garden."
+    }
+  }
+}

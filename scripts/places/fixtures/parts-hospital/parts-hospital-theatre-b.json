@@ -1,0 +1,111 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-theatre-b",
+ "name": "Parts test: sails, lattice dome, conical drum, cap",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "podium-platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 60,
+    "depth": 44,
+    "height": 3,
+    "steps": 6
+   }
+  },
+  {
+   "type": "sail-cluster",
+   "at": [
+    0,
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "params": {
+    "pairs": 3,
+    "length": 26,
+    "width": 10,
+    "height": 18
+   }
+  },
+  {
+   "type": "lattice-dome",
+   "at": [
+    -48,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 16,
+    "height": 12,
+    "baseHeight": 6
+   }
+  },
+  {
+   "type": "conical-drum",
+   "at": [
+    48,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 16,
+    "tiers": 3,
+    "tierHeight": 4.5,
+    "roofColour": "#8a5a44"
+   }
+  },
+  {
+   "type": "ring-colonnade",
+   "at": [
+    -20,
+    -55,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 16,
+    "count": 16,
+    "height": 6
+   }
+  },
+  {
+   "type": "cap-roof",
+   "at": [
+    30,
+    -55,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 18,
+    "crown": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ }
+}

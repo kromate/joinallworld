@@ -1,0 +1,296 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json#sagamu-creative-hub",
+   "used": "L-plan two-storey 22 x 14 m, cream render with deep teal glass entrance, screen-fronted studio wing, louvre shade, rooftop mast, roof terrace"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1274826394",
+   "used": "not used: nearest match 155 m2, 18 x 8.5 m, no photo to confirm"
+  }
+ ],
+ "camera": {
+  "yawDeg": -28,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo: glazing extent, slit pattern and mast style are typical, not observed."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office-wing",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#e6cf8a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adaf",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-wing",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    -6.5,
+    -3.5
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d2c4",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front",
+      "left"
+     ],
+     "colours": [
+      "#2f4a5c",
+      "#3e5d70",
+      "#e6cf8a"
+     ],
+     "slits": 0.15
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adaf",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entry",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    4.5,
+    -3.5
+   ],
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f4a5c",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9adaf",
+    "material": "concrete",
+    "overhang": 1.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    4.5,
+    -7.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 3.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#e6cf8a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-rail",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    8,
+    4
+   ],
+   "height": 2.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6cf8a",
+    "material": "concrete"
+   },
+   "z0": 8.0
+  },
+  {
+   "type": "radio-mast",
+   "at": [
+    -8,
+    5,
+    8.0
+   ],
+   "params": {
+    "height": 14,
+    "radius": 0.25,
+    "banded": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6.5,
+    -10.8,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "bottom": 4.2,
+    "colour": "#2f4a5c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4.5,
+    -9.4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.6,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#c9c4b6"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "yaw": 90,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -14,
+    -12,
+    0
+   ],
+   "params": {
+    "yaw": 90,
+    "colour": "#2f4a5c"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "yaw": 90,
+    "colour": "#7a2f2a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -17,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   48,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "sagamu-creative-hub"
+}

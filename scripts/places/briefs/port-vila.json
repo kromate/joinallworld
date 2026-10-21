@@ -1,0 +1,1500 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "port-vila",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "port-vila",
+    "climate": "tropical-maritime",
+    "vernacular": "Small Melanesian harbour capital on Efate: low-rise (1-3 storey) painted concrete-block and render buildings with deep verandahs, French-quarter and British-paddock colonial legacy, corrugated-iron roofs in red, green and grey, waterfront timber and thatch (natangura leaf) nakamal and bungalow-style resort buildings, cyclone-hardened simple gable and hip roofs; lush tropical vegetation, coconut palms and banyan; one tall hotel-casino is the tallest building in the country.",
+    "wallColours": [
+      "#f1ece0",
+      "#d9c9a8",
+      "#8fb7c4",
+      "#e3b86b",
+      "#bfc4c2",
+      "#e8c9b5",
+      "#7aa37a"
+    ],
+    "roofColours": [
+      "#a94a3b",
+      "#4d7a5c",
+      "#9aa0a2",
+      "#6e7b86"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "timber",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Wall paintings on the post office and the building opposite the market hall; carved wooden totem poles and a stylised pig-tusk monument near Parliament; Melanesian carved posts and woven natangura thatch on nakamal and resort bungalows; French-quarter shuttered windows and verandahs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Port_Vila",
+        "what": "tropical rainforest climate, west-coast harbour, French quarter and British paddock, modern cathedral, wall paintings, tallest building is the hotel-casino, cyclone and earthquake damage. Wall and roof hex colours are typical observed palette choices, not measured."
+      }
+    ]
+  },
+  "places": {
+    "port-vila-airport-port-vila-airport": {
+      "venueId": "port-vila-airport-port-vila-airport",
+      "city": "port-vila",
+      "name": "Bauerfield International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Bauerfield international terminal on Efate: a low irregular-plan terminal with a single flat roof, apron-side canopy and a separate tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 104,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e4d6",
+          "#7aa6b8",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt drop-off canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bauerfield_International_Airport",
+          "what": "2,600 m runway rebuilt 2019 with World Bank funding; photo captions only mention an international terminal and apron"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/52246281",
+          "what": "OSM footprint 103.7 x 49.5 m, area 3870 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q811239",
+          "what": "Wikidata entry Bauerfield International Airport"
+        }
+      ],
+      "notes": "Measured terminal polygon 104 x 50 m (OSM) but the Wikipedia article does not describe the building, so facade colours and roof form are typed from regional airports of this size. Keep it a modest 2-storey terminal, much smaller than Abuja or Quito."
+    },
+    "port-vila-clinic": {
+      "venueId": "port-vila-clinic",
+      "city": "port-vila",
+      "name": "Port Vila Central Hospital",
+      "archetype": "hospital",
+      "subject": "Port Vila Central Hospital on its hillside above the lagoon: the 2014 Japan-funded extension block with outpatient, emergency and radiology wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#8fb7c4",
+          "#e8e3d6"
+        ],
+        "roofColour": "#a94a3b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014 extension (JICA), older core",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Vila_Central_Hospital",
+          "what": "sited on a hillside overlooking the lagoon; opened extended building 7 Nov 2014 with JICA/Japan: outpatient, emergency, laboratory, radiology, new theatre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/332758749",
+          "what": "OSM footprint 99.8 x 54 m, area 2977 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20047288",
+          "what": "Wikidata entry Port Vila Central Hospital"
+        }
+      ],
+      "notes": "Measured footprint is a multi-wing irregular plan (about 100 x 54 m). Storeys and colours are not sourced; typed low-rise hospital with several linked wings stepping down the slope."
+    },
+    "port-vila-community-notices": {
+      "venueId": "port-vila-community-notices",
+      "city": "port-vila",
+      "name": "Quarantine control",
+      "archetype": "civic-small",
+      "subject": "a small single-storey government office labelled Quarantine control in the south of Port Vila",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e4d6",
+          "#7aa37a",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/332682089",
+          "what": "OSM footprint 11.6 x 10.2 m, area 119 m2 (measured)"
+        }
+      ],
+      "notes": "No description found; only an unnamed 12 x 10 m building in OSM. Typed from city style as a small louvred office with hipped corrugated roof. Game name Quarantine control is a venue label."
+    },
+    "port-vila-community-voting-game": {
+      "venueId": "port-vila-community-voting-game",
+      "city": "port-vila",
+      "name": "Supreme Court",
+      "archetype": "civic-small",
+      "subject": "the Supreme Court building: a long low courthouse near the Parliament and Independence Park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#8fb7c4",
+          "#e8e3d6"
+        ],
+        "roofColour": "#a94a3b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/332685523",
+          "what": "OSM footprint 30.9 x 13.8 m, area 426 m2 (measured)"
+        }
+      ],
+      "notes": "OSM marks a 31 x 14 m courthouse polygon but no source describes its look. Typed as a modest verandah-style courthouse; archetype civic-small rather than civic-palace because the measured mass is small."
+    },
+    "port-vila-community-workshop": {
+      "venueId": "port-vila-community-workshop",
+      "city": "port-vila",
+      "name": "Vanuatu Institute of Technology",
+      "archetype": "campus-block",
+      "subject": "a long low teaching block of the Vanuatu Institute of Technology",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c9a8",
+          "#8fb7c4",
+          "#f5f3ee"
+        ],
+        "roofColour": "#4d7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q125566011",
+          "what": "Vanuatu Institute of Technology, technical school, inception 1970"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/332815985",
+          "what": "OSM footprint 47.6 x 11.7 m, area 559 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q125566011",
+          "what": "Wikidata entry Vanuatu Institute of Technology"
+        }
+      ],
+      "notes": "Only footprint (48 x 12 m) and founding year are known. Typed from city style: long louvred block with a green corrugated roof."
+    },
+    "port-vila-market-game": {
+      "venueId": "port-vila-market-game",
+      "city": "port-vila",
+      "name": "Marché de Manples",
+      "archetype": "market-hall",
+      "subject": "Marche de Manples: a covered market hall with a long corrugated roof over open produce stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 38,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bfc4c2",
+          "#e3b86b",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/868937789",
+          "what": "OSM footprint 79.6 x 38.2 m, area 2061 m2 (measured)"
+        }
+      ],
+      "notes": "OSM marketplace polygon 80 x 38 m. No description found of the Manples market; typed as an open-sided roofed hall. Distinct from the waterfront municipal market by being a larger suburban shed."
+    },
+    "port-vila-meal-stop": {
+      "venueId": "port-vila-meal-stop",
+      "city": "port-vila",
+      "name": "Le Life Resort",
+      "archetype": "hotel",
+      "subject": "Le Life Resort on the north-east coast: a small low resort block of the kind with verandahs and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c9a8",
+          "#7aa37a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "roofMaterial": "thatch",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q111235569",
+          "what": "Le Life Resort, hotel in Vanuatu"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/745041337",
+          "what": "OSM footprint 20.5 x 18.2 m, area 341 m2 (measured)"
+        }
+      ],
+      "notes": "Only identified as a resort hotel; nothing found about its architecture. Typed as a timber and thatch bungalow-style main building, which is common for Efate resorts but unverified."
+    },
+    "port-vila-osm-node-10297629756": {
+      "venueId": "port-vila-osm-node-10297629756",
+      "city": "port-vila",
+      "name": "Coco De Mer",
+      "archetype": "restaurant",
+      "subject": "Coco De Mer, a small open restaurant on the west coast of Efate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d9c9a8",
+          "#7aa37a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/332734135",
+          "what": "OSM footprint 17.9 x 16.9 m, area 229 m2 (measured)"
+        }
+      ],
+      "notes": "Nothing findable beyond a 18 x 17 m OSM building. Typed as an open timber pavilion with a thatched hip roof."
+    },
+    "port-vila-osm-node-1208562570": {
+      "venueId": "port-vila-osm-node-1208562570",
+      "city": "port-vila",
+      "name": "Musée National de Vanuatu",
+      "archetype": "museum-theatre",
+      "subject": "the Vanuatu National Museum (Vanuatu Cultural Centre) building in the town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9e4d6",
+          "#8a5a3a",
+          "#f5f3ee"
+        ],
+        "roofColour": "#a94a3b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Vila",
+          "what": "Port Vila landmarks: the town centre cultural institutions near Independence Park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1347181280",
+          "what": "OSM footprint 51.6 x 29.9 m, area 1358 m2 (measured)"
+        }
+      ],
+      "notes": "Building 52 x 30 m from OSM; no description of the architecture was found. Typed as a plain 2-storey painted block with a gabled corrugated roof. A Melanesian carved post at the entrance would suit but is unverified."
+    },
+    "port-vila-osm-node-5341017574": {
+      "venueId": "port-vila-osm-node-5341017574",
+      "city": "port-vila",
+      "name": "WW II Museum",
+      "archetype": "museum-theatre",
+      "subject": "WW II Museum, a tiny roadside museum hut in north-west Efate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable",
+        "variant": "hut"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9b48f",
+          "#6e7b86",
+          "#f1ece0"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/820668261",
+          "what": "OSM footprint 7.4 x 6.1 m, area 45 m2 (measured)"
+        }
+      ],
+      "notes": "Only a 7 x 6 m structure in OSM. A wartime relic display (US forces were based on Efate) but no description of the building found, so typed as a small corrugated-roof hut."
+    },
+    "port-vila-osm-node-6283844727": {
+      "venueId": "port-vila-osm-node-6283844727",
+      "city": "port-vila",
+      "name": "Lifechanger Christian College",
+      "archetype": "campus-block",
+      "subject": "Lifechanger Christian College: a school quad with low classroom blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#8fb7c4",
+          "#e3b86b"
+        ],
+        "roofColour": "#a94a3b",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1346327534",
+          "what": "OSM footprint 207.9 x 141.9 m, area 23260 m2 (measured)"
+        }
+      ],
+      "notes": "OSM site polygon is 208 x 142 m (campus), but no description of the buildings. Typed as U-shaped two-storey school blocks around a green yard; main mass sized as a plausible classroom range."
+    },
+    "port-vila-osm-node-6366258638": {
+      "venueId": "port-vila-osm-node-6366258638",
+      "city": "port-vila",
+      "name": "Summit",
+      "archetype": "park-landscape",
+      "subject": "Summit, a hilltop lookout above the west coast of Efate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "hilltop-lookout"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9b48f",
+          "#7aa37a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Vila",
+          "what": "city style only; no description of this venue found"
+        }
+      ],
+      "notes": "Viewpoint node with no building in OSM and nothing findable. Typed as a small hilltop viewing shelter with railing in grass and forest."
+    },
+    "port-vila-osm-node-6536259685": {
+      "venueId": "port-vila-osm-node-6536259685",
+      "city": "port-vila",
+      "name": "Francesca’s Beach Club Bar",
+      "archetype": "restaurant",
+      "subject": "Francesca’s Beach Club Bar, an open beachfront bar on the north-west coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d9c9a8",
+          "#8fb7c4",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/332765370",
+          "what": "OSM footprint 17.8 x 12.4 m, area 204 m2 (measured)"
+        }
+      ],
+      "notes": "Only an 18 x 12 m building in OSM; typed as a beach bar with a thatched hip roof and umbrellas on sand."
+    },
+    "port-vila-osm-way-105052376": {
+      "venueId": "port-vila-osm-way-105052376",
+      "city": "port-vila",
+      "name": "Port Vila Central Market",
+      "archetype": "market-hall",
+      "subject": "Port Vila Central Market (municipal market house) on the waterfront: a large open-sided roofed hall with produce stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 66,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "open-sided"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bfc4c2",
+          "#e3b86b",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "wall painting on the administration building opposite"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Vila",
+          "what": "market hall on the town centre waterfront; colourful wall painting on the administration building opposite the market hall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/105052376",
+          "what": "OSM footprint 68.1 x 66.5 m, area 3526 m2 (measured)"
+        }
+      ],
+      "notes": "Footprint 68 x 66 m (OSM). Described only as a market hall with colourful murals opposite; open-sided corrugated roof is typed from how such Pacific market houses are built. Larger and more central than the Manples market."
+    },
+    "port-vila-osm-way-164077407": {
+      "venueId": "port-vila-osm-way-164077407",
+      "city": "port-vila",
+      "name": "Korman Stadium",
+      "archetype": "stadium",
+      "subject": "Korman Stadium, the national stadium of Vanuatu, with low stands around a football pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "small-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bfc4c2",
+          "#4d7a5c",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered side"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Korman_Stadium",
+          "what": "national stadium and home of the Vanuatu national football team; capacity 6,500"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/164077407",
+          "what": "OSM footprint 52.4 x 46.5 m, area 2406 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1784475",
+          "what": "Wikidata entry Korman Stadium"
+        }
+      ],
+      "notes": "Capacity 6,500 so a small open bowl. OSM stand polygon is 52 x 46 m; the bowl including pitch is larger (approx 100 x 75). Roof and floodlights are typed, not sourced."
+    },
+    "port-vila-osm-way-307398428": {
+      "venueId": "port-vila-osm-way-307398428",
+      "city": "port-vila",
+      "name": "Fatumaru Bay Park",
+      "archetype": "park-landscape",
+      "subject": "Fatumaru Bay Park, a long narrow green strip beside the harbour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 266,
+        "depth_m": 42,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "waterfront-strip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7aa37a",
+          "#c9b48f",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/307398428",
+          "what": "OSM footprint 265.8 x 42.4 m, area 8115 m2 (measured)"
+        }
+      ],
+      "notes": "OSM leisure=park 266 x 42 m along the water. No description found; typed as grass with palms and a small shelter."
+    },
+    "port-vila-osm-way-319784751": {
+      "venueId": "port-vila-osm-way-319784751",
+      "city": "port-vila",
+      "name": "Chief's Nakamal",
+      "archetype": "shrine-small",
+      "subject": "Malvatu Mauri, the national council of chiefs nakamal building near Independence Park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "nakamal-hall"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8a5a3a",
+          "#d9c9a8",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "carved entrance posts"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malvatu_Mauri",
+          "what": "Malvatu Mauri, national Council of Chiefs; photo caption: assembly building nakamal in Port Vila"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/319784751",
+          "what": "OSM footprint 39.4 x 14.4 m, area 547 m2 (measured)"
+        }
+      ],
+      "notes": "The Wikipedia page only names it an assembly nakamal. A nakamal is an open meeting house, here sized from the OSM 39 x 14 m polygon; the long thatched or sheet roof and carved posts are typed from Melanesian meeting-house practice, not seen in a photo."
+    },
+    "port-vila-osm-way-331209807": {
+      "venueId": "port-vila-osm-way-331209807",
+      "city": "port-vila",
+      "name": "Port Vila Stadium",
+      "archetype": "stadium",
+      "subject": "Port Vila Stadium, a ground with an oval pitch and minimal stands (OSM wikidata tag is the wrong city and was ignored)",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 145,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "football-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bfc4c2",
+          "#7aa37a",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/331209807",
+          "what": "OSM footprint 162.6 x 146.6 m, area 19638 m2 (measured)"
+        }
+      ],
+      "notes": "OSM polygon 163 x 147 m but its wikidata tag points at Luganville Soccer Stadium on another island, so it is not reliable. Typed as a simple football ground with low terracing and floodlights; deliberately smaller and plainer than Korman Stadium."
+    },
+    "port-vila-osm-way-332907165": {
+      "venueId": "port-vila-osm-way-332907165",
+      "city": "port-vila",
+      "name": "PortVila Physio Sport Clinic",
+      "archetype": "hospital",
+      "subject": "PortVila Physio Sport Clinic, a small private clinic building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "variant": "clinic"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#8fb7c4",
+          "#f5f3ee"
+        ],
+        "roofColour": "#4d7a5c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/332907165",
+          "what": "OSM footprint 23.1 x 19 m, area 274 m2 (measured)"
+        }
+      ],
+      "notes": "Only a 23 x 19 m amenity=hospital polygon in OSM. Typed as a small single-storey clinic."
+    },
+    "port-vila-osm-way-41958385": {
+      "venueId": "port-vila-osm-way-41958385",
+      "city": "port-vila",
+      "name": "University of the South Pacific",
+      "archetype": "campus-block",
+      "subject": "University of the South Pacific Emalus Campus: the law school campus with long low teaching blocks",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#8fb7c4",
+          "#e3b86b"
+        ],
+        "roofColour": "#a94a3b",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1989",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_the_South_Pacific",
+          "what": "Emalus Campus opened in Vanuatu in 1989; hosts the School of Law and PacLII since 1996"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41958385",
+          "what": "OSM footprint 580.3 x 224.3 m, area 86777 m2 (measured)"
+        }
+      ],
+      "notes": "Campus polygon is 580 x 224 m; the model shows one typical block range. No description of the buildings was found, so the design is typed."
+    },
+    "port-vila-osm-way-424853171": {
+      "venueId": "port-vila-osm-way-424853171",
+      "city": "port-vila",
+      "name": "Kam Pusum Hed Klinik",
+      "archetype": "hospital",
+      "subject": "Kam Pusum Hed Klinik, a small neighbourhood clinic",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "clinic"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e4d6",
+          "#7aa37a",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/424853171",
+          "what": "OSM footprint 19.3 x 10.9 m, area 211 m2 (measured)"
+        }
+      ],
+      "notes": "Only a 19 x 11 m polygon. Typed as a small single-storey clinic with a gabled corrugated roof, smaller than the physio clinic."
+    },
+    "port-vila-osm-way-864040553": {
+      "venueId": "port-vila-osm-way-864040553",
+      "city": "port-vila",
+      "name": "belle-vue rodeo park",
+      "archetype": "park-landscape",
+      "subject": "belle-vue rodeo park, an open rodeo and event ground",
+      "form": {
+        "footprint": "oval",
+        "width_m": 106,
+        "depth_m": 99,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "rodeo-ground"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7aa37a",
+          "#c9b48f",
+          "#f1ece0"
+        ],
+        "roofColour": "#8b6b4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "timber rail around the arena"
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/864040553",
+          "what": "OSM footprint 106.5 x 99.4 m, area 10200 m2 (measured)"
+        }
+      ],
+      "notes": "OSM leisure=park 106 x 99 m. Nothing found on its appearance; typed as an oval grass arena with a timber fence and sheds."
+    },
+    "port-vila-quiet-reflection": {
+      "venueId": "port-vila-quiet-reflection",
+      "city": "port-vila",
+      "name": "Cathédrale du Sacré-Cœur",
+      "archetype": "church-modern",
+      "subject": "Cathedrale du Sacre-Coeur on rue Bougainville: a modern Roman Catholic cathedral",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#f1ece0",
+          "#c9b48f",
+          "#6e7b86"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cathédrale_du_Sacré-Cœur_de_Port-Vila",
+          "what": "built in a modern style, rue Bougainville, dedicated to the Sacred Heart"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Vila",
+          "what": "a modern Roman Catholic cathedral"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/319762684",
+          "what": "OSM footprint 39.9 x 34.7 m, area 961 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2942912",
+          "what": "Wikidata entry Cathédrale du Sacré-Coeur, Port Vila"
+        }
+      ],
+      "notes": "Only the modern style and a 40 x 35 m footprint are sourced. Concrete walls, a simple pitched roof and a freestanding or attached bell tower are typed; colours not verified. Avoid gothic features."
+    },
+    "port-vila-recreation": {
+      "venueId": "port-vila-recreation",
+      "city": "port-vila",
+      "name": "prima park",
+      "archetype": "park-landscape",
+      "subject": "prima park, a sports and recreation ground north of the town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 47,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "sports-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#7aa37a",
+          "#c9b48f",
+          "#f1ece0"
+        ],
+        "roofColour": "#9aa0a2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/435756621",
+          "what": "OSM footprint 105.8 x 47.1 m, area 4821 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park polygon 106 x 47 m. No description found; typed as a grass park with a shelter."
+    },
+    "port-vila-transit": {
+      "venueId": "port-vila-transit",
+      "city": "port-vila",
+      "name": "Local Bus",
+      "archetype": "transport-station",
+      "subject": "the local bus stop and shelter on the airport road (Local Bus)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "bus-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bfc4c2",
+          "#e3b86b",
+          "#f5f3ee"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/319765330",
+          "what": "OSM footprint 52.5 x 22.7 m, area 1190 m2 (measured)"
+        }
+      ],
+      "notes": "Matched to a 52 x 23 m polygon tagged as a terminal near the airport road. Port Vila buses are small minibuses; typed as a roofed bay with shed canopy."
+    }
+  }
+}

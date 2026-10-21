@@ -1,0 +1,123 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "sokoto-clinic-restaurant",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/318493293",
+   "used": "footprint (name match, 1 level, about 13 x 7 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 40,
+  "aspect": 1.4
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "eatery",
+   "footprint": {
+    "osm": true,
+    "fit": 14
+   },
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc8",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.3,
+    "bands": "#a9633f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6e70",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "id": "front-awning",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 2.4,
+    "height": 2.7,
+    "colours": [
+     "#a9633f",
+     "#f7f4ee"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sign",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.9,
+    "bottom": 3.0,
+    "colour": "#f7f4ee",
+    "frameColour": "#a9633f",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "id": "terrace",
+   "at": [
+    -1,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 6,
+    "colours": [
+     "#a9633f",
+     "#e8dfc8",
+     "#6b8f71"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     10,
+     4
+    ],
+    "height": 6
+   }
+  ],
+  "extent": [
+   40,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline with typed roof, awning, terrace"
+ }
+}

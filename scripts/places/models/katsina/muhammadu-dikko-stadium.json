@@ -1,0 +1,689 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "muhammadu-dikko-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muhammadu_Dikko_Stadium,_Formerly_KARKANDA_Stadium,_Katsina_State.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Uncle Bash007",
+   "view": "front",
+   "file": "/tmp/places-evidence/katsina/std1.jpg",
+   "used": "peach-tan concrete bowl with flat ring top, three-bay entrance frame with blank green-lettered boards, green hip-roofed ticket kiosk, floodlight masts, scoreboard on a post, low painted boundary wall, empty car park"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muhammadu_Dikko_Stadium,_Katsina.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Uncle Bash007",
+   "view": "interior",
+   "file": "/tmp/places-evidence/katsina/std2.jpg",
+   "used": "stands colour: tan walls, red/orange seats, green-edged canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9094032",
+   "used": "oval bowl outline, scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.5,
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bowl",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2ad7c",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.7,
+    "bay": 5.6,
+    "glassColour": "#6b4a35",
+    "bands": "#c98a58"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c98a58",
+    "material": "concrete",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-kiosk",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    -30,
+    -64
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dca775",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#2f6b4f",
+    "material": "metal-sheet",
+    "rise": 2.0,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -48,
+    -62,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      100,
+      0
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.4,
+    "colour": "#dcae7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -48,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    48,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -50,
+    50,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    50,
+    52,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    52,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 4.5,
+    "post_height": 9,
+    "facing": "south",
+    "colour": "#101214"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -76,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 18
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -50,
+    -72,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 8,
+    "colour": "#d4a070",
+    "topColour": "#d4a070"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -33,
+    -72,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 11,
+    "colour": "#d4a070",
+    "topColour": "#d4a070"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -21,
+    -72,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 11,
+    "colour": "#d4a070",
+    "topColour": "#d4a070"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -72,
+    0
+   ],
+   "params": {
+    "rect": [
+     2,
+     2
+    ],
+    "height": 8,
+    "colour": "#d4a070",
+    "topColour": "#d4a070"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -72,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "height": 4.4,
+    "colour": "#dcae7c",
+    "topColour": "#dcae7c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -72,
+    8.2
+   ],
+   "params": {
+    "rect": [
+     14,
+     1.2
+    ],
+    "height": 4.4,
+    "colour": "#dcae7c",
+    "topColour": "#dcae7c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13,
+    -72,
+    6.2
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.2
+    ],
+    "height": 4.4,
+    "colour": "#dcae7c",
+    "topColour": "#dcae7c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -42,
+    -72.7,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     7.199999999999999,
+     0.2
+    ],
+    "height": 0.7,
+    "colour": "#2f6b4f",
+    "topColour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27,
+    -72.7,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     5.3999999999999995,
+     0.2
+    ],
+    "height": 0.7,
+    "colour": "#2f6b4f",
+    "topColour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13,
+    -72.7,
+    7.5
+   ],
+   "params": {
+    "rect": [
+     7.199999999999999,
+     0.2
+    ],
+    "height": 0.7,
+    "colour": "#2f6b4f",
+    "topColour": "#2f6b4f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    6,
+    -62.3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#e9d9c0",
+    "topColour": "#e9d9c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    18,
+    -62.3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#9fb7c7",
+    "topColour": "#9fb7c7"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -62.3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#e6b46a",
+    "topColour": "#e6b46a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    42,
+    -62.3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#e9d9c0",
+    "topColour": "#e9d9c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    54,
+    -62.3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.1
+    ],
+    "height": 1.0,
+    "colour": "#e9d9c0",
+    "topColour": "#e9d9c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -40,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -90,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     9
+    ],
+    "height": 0.04,
+    "colour": "#f3efe8",
+    "topColour": "#f3efe8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     -60
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Bowl is still a scaled OSM drum with small arched windows rather than an open column arcade, and sits larger than in the photo; entrance piers/boards are blocky; no pinkish worn tarmac texture."
+ }
+}

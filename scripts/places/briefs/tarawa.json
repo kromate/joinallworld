@@ -1,0 +1,1558 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tarawa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tarawa",
+    "climate": "tropical-maritime",
+    "vernacular": "Low coral-atoll town on a strip under 3 m above sea level: one- and two-storey concrete-block buildings, rendered or whitewashed in pale blue, green and cream, under corrugated galvanised or rust-red iron roofs; multi-storey buildings are very uncommon. Traditional open-sided maneaba meeting houses with huge steep pandanus-thatch or iron roofs and low eaves; thatch houses on posts; coconut palms, pandanus, ironwood and mangroves on coral sand.",
+    "wallColours": [
+      "#f2f0ea",
+      "#8fb6c9",
+      "#a9c8a0",
+      "#b5b0a5",
+      "#d8c08a",
+      "#c9d6d0"
+    ],
+    "roofColours": [
+      "#a8aeb2",
+      "#9a5a3f",
+      "#4f7a5a",
+      "#b89a5e"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "painted-render",
+      "whitewash",
+      "render",
+      "timber",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm"
+    ],
+    "ornament": "Maneaba: very large steep roof reaching almost to the ground on coconut-timber posts with coral-stone bases, lashed with coconut-fibre sinnet, open sides; modern buildings are plain with louvre windows, deep eaves and painted concrete plinths; blank painted boards for signage.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/South_Tarawa",
+        "what": "multi-storey buildings very uncommon; dense low-rise houses; causeways link islets; coconut palms, mangroves and ironwood; land mostly under 3 m"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Maneaba",
+        "what": "maneaba roof of coconut timber on coral supports, pandanus-leaf thatch, tied with coconut string"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bairiki",
+        "what": "Bairiki islet under half a km2 at 3 m elevation, government ministries and State House, National Stadium"
+      }
+    ]
+  },
+  "places": {
+    "tarawa-airport-tarawa-airport": {
+      "venueId": "tarawa-airport-tarawa-airport",
+      "city": "tarawa",
+      "name": "Bonriki International Airport terminal",
+      "archetype": "airport-terminal",
+      "subject": "The small Bonriki terminal: a low single-storey concrete hall under a wide metal roof beside the apron, on a flat coral-atoll runway strip",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 34,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "small tower, unverified"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "post-war; upgrades unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bonriki_International_Airport",
+          "what": "single asphalt runway 2,011 x 41 m at 3 m elevation; built 1943 by US Seabees as Mullinix Field; terminal itself not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/90442745",
+          "what": "OSM footprint 81.9 x 33.9 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM terminal outline is 82 x 34 m. Runway and setting are sourced; the building is not described."
+    },
+    "tarawa-clinic": {
+      "venueId": "tarawa-clinic",
+      "city": "tarawa",
+      "name": "Tungaru Central Hospital, Female Ward",
+      "archetype": "hospital",
+      "subject": "A single-storey ward block of the national hospital in Nawerewere: whitewashed concrete with louvre windows and a long covered veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "ward-block"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/498370391",
+          "what": "OSM footprint 55 x 50.1 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM block is 55 x 50 m."
+    },
+    "tarawa-community-notices": {
+      "venueId": "tarawa-community-notices",
+      "city": "tarawa",
+      "name": "House of Assembly (Maneaba ni Maungatabu), Ambo",
+      "archetype": "civic-palace",
+      "subject": "Kiribati parliament house at Ambo: a modern low government building with a large pitched roof echoing the maneaba",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "maneaba-roof-parliament"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#4f7a5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/South_Tarawa",
+          "what": "House of Assembly is in Ambo; photo caption of Kiribati Parliament House"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/541856638",
+          "what": "OSM footprint 44.6 x 27.8 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. The Wikidata label confirms this is the parliament (House of Assembly). The big maneaba-inspired roof is an assumption."
+    },
+    "tarawa-community-voting-game": {
+      "venueId": "tarawa-community-voting-game",
+      "city": "tarawa",
+      "name": "Tenimanraoi Maneaba",
+      "archetype": "civic-small",
+      "subject": "A village maneaba: a huge open-sided meeting house whose steep roof sweeps down almost to the ground over low coral walls and timber posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "maneaba"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b89a5e",
+          "#8c7a68",
+          "#d8c08a"
+        ],
+        "roofColour": "#b89a5e",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open sides, posts, coral platform"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "traditional form",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maneaba",
+          "what": "high roof of coconut timber on coral supports, pandanus leaf thatch, tied with coconut string"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/291432462",
+          "what": "OSM footprint 42.8 x 20.3 m (measured)"
+        }
+      ],
+      "notes": "Form of a maneaba is sourced. This one may have an iron rather than thatch roof (many modern maneabas do); thatch is the traditional choice used here. OSM footprint 43 x 20 m (tagged townhall). Eaves nearly touch the ground; no walls."
+    },
+    "tarawa-community-workshop": {
+      "venueId": "tarawa-community-workshop",
+      "city": "tarawa",
+      "name": "Kiribati Technical Institute",
+      "archetype": "campus-block",
+      "subject": "A technical college campus on Tarawa: several single-storey painted classroom and workshop blocks around open sandy grounds",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#a9c8a0",
+          "#b5b0a5"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "workshops"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/227094913",
+          "what": "OSM footprint 204.4 x 103 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM college site is 204 x 103 m."
+    },
+    "tarawa-market-game": {
+      "venueId": "tarawa-market-game",
+      "city": "tarawa",
+      "name": "Betio Super Market",
+      "archetype": "market-hall",
+      "subject": "A covered supermarket and trading building at Betio: a long low concrete box with a deep awning and a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d6d0",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/335676916",
+          "what": "OSM footprint 57.9 x 36.2 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building is 58 x 36 m."
+    },
+    "tarawa-meal-stop": {
+      "venueId": "tarawa-meal-stop",
+      "city": "tarawa",
+      "name": "Swampy's",
+      "archetype": "restaurant",
+      "subject": "A small roadside eatery near Bonriki: a single-room concrete building with a verandah and iron roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#a9c8a0",
+          "#f2f0ea",
+          "#b5b0a5"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/468322535",
+          "what": "OSM footprint 16.2 x 12.1 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building is 16 x 12 m."
+    },
+    "tarawa-osm-node-12062288381": {
+      "venueId": "tarawa-osm-node-12062288381",
+      "city": "tarawa",
+      "name": "TTRP linear park",
+      "archetype": "park-landscape",
+      "subject": "A long narrow lagoon-side strip of grass and palms along the roadside in South Tarawa",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "linear-strip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b89a5e",
+          "#8c7a68",
+          "#7c9a6a"
+        ],
+        "roofColour": "#a8aeb2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open thatch-style shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/496794321",
+          "what": "OSM footprint 1191 x 80.4 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. What TTRP stands for was not found. OSM park polygon is 1191 x 80 m, so a recognisable portion is shown."
+    },
+    "tarawa-osm-node-2398053764": {
+      "venueId": "tarawa-osm-node-2398053764",
+      "city": "tarawa",
+      "name": "Titarbakti Cafe",
+      "archetype": "restaurant",
+      "subject": "A small cafe near Bonriki: a single-storey painted block with a verandah and iron roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#8fb6c9",
+          "#f2f0ea",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/871605854",
+          "what": "OSM footprint 22.4 x 15.6 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building is 22 x 16 m."
+    },
+    "tarawa-osm-node-4884735821": {
+      "venueId": "tarawa-osm-node-4884735821",
+      "city": "tarawa",
+      "name": "Eita (roadside building)",
+      "archetype": "shophouse",
+      "subject": "A tiny roadside building at Eita village: a one-room concrete or timber hut with a corrugated lean-to roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b89a5e",
+          "#a9c8a0",
+          "#b5b0a5"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1064983435",
+          "what": "OSM footprint 6.2 x 6 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM shows a 6 x 6 m building; the place name only is Eita (a village)."
+    },
+    "tarawa-osm-node-5504031221": {
+      "venueId": "tarawa-osm-node-5504031221",
+      "city": "tarawa",
+      "name": "Domestic Ferry Pier",
+      "archetype": "transport-station",
+      "subject": "A small ferry landing in Betio: a concrete jetty with a shelter hut and bollards on the lagoon edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "jetty"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5b0a5",
+          "#8fb6c9",
+          "#f2f0ea"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1062567762",
+          "what": "OSM footprint 6.5 x 5.6 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building near the pier is only 6.5 x 5.6 m; the model adds a short jetty."
+    },
+    "tarawa-osm-node-5850089485": {
+      "venueId": "tarawa-osm-node-5850089485",
+      "city": "tarawa",
+      "name": "Main port",
+      "archetype": "transport-station",
+      "subject": "A small port-side office and shed on the lagoon shore with a quay in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "port-office"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5b0a5",
+          "#8fb6c9",
+          "#f2f0ea"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1065992602",
+          "what": "OSM footprint 8.8 x 4.5 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building is 9 x 5 m; the Wikipedia pages say Betio, at the south-west, is the main harbour."
+    },
+    "tarawa-osm-node-5850089487": {
+      "venueId": "tarawa-osm-node-5850089487",
+      "city": "tarawa",
+      "name": "Bill house",
+      "archetype": "shophouse",
+      "subject": "A private house on the north-east coast: a single-storey painted concrete house with a verandah and iron roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "variant": "house"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d8c08a",
+          "#f2f0ea",
+          "#b5b0a5"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/866783705",
+          "what": "OSM footprint 13.8 x 12.3 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building is 14 x 12 m; the owner/purpose is unknown."
+    },
+    "tarawa-osm-way-1065417644": {
+      "venueId": "tarawa-osm-way-1065417644",
+      "city": "tarawa",
+      "name": "Betio Hospital",
+      "archetype": "hospital",
+      "subject": "A small health-centre building at Betio with whitewashed walls, a red cross sign and iron roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "health-centre"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/558583652",
+          "what": "OSM footprint 8.6 x 5 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM has only a 9 x 5 m building; enlarged slightly for a clinic."
+    },
+    "tarawa-osm-way-223373092": {
+      "venueId": "tarawa-osm-way-223373092",
+      "city": "tarawa",
+      "name": "Bairiki National Stadium",
+      "archetype": "stadium",
+      "subject": "The national sports ground at Bairiki: a big open grass field with a small covered grandstand and light poles, used for national meetings",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed",
+        "variant": "open-field-with-stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5b0a5",
+          "#f2f0ea",
+          "#8fb6c9"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bairiki",
+          "what": "Bairiki National Stadium holds sporting events and national meetings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/223373092",
+          "what": "OSM footprint 226.9 x 150.7 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM stadium outline is 227 x 151 m. The covered stand is an assumption; multi-tier stands do not exist on the atoll."
+    },
+    "tarawa-osm-way-223383917": {
+      "venueId": "tarawa-osm-way-223383917",
+      "city": "tarawa",
+      "name": "Tungaru Central Hospital",
+      "archetype": "hospital",
+      "subject": "Kiribati national hospital at Nawerewere: several low whitewashed ward blocks joined by covered walkways, with corrugated roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "pavilion-wards",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 2
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/South_Tarawa",
+          "what": "the Tungaru central hospital is in Nawerewere"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2747746",
+          "what": "OSM footprint 146.3 x 119.4 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. Wikipedia confirms the location only. OSM building complex is 146 x 119 m."
+    },
+    "tarawa-osm-way-231551186": {
+      "venueId": "tarawa-osm-way-231551186",
+      "city": "tarawa",
+      "name": "EBS Dormitory",
+      "archetype": "campus-block",
+      "subject": "A school dormitory block: two long single-storey painted wings around a sandy yard under iron roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "dormitory"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#a9c8a0",
+          "#f2f0ea",
+          "#b5b0a5"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/231551186",
+          "what": "OSM footprint 171.1 x 116.7 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. EBS may refer to Elaine Bernacchi School; this was not verified. OSM college site is 171 x 117 m."
+    },
+    "tarawa-osm-way-472259897": {
+      "venueId": "tarawa-osm-way-472259897",
+      "city": "tarawa",
+      "name": "Bouta Lodge Bar",
+      "archetype": "restaurant",
+      "subject": "A small guesthouse bar in northern Tarawa: a one-room timber and concrete building with an open verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#b89a5e",
+          "#f2f0ea",
+          "#8fb6c9"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/472259897",
+          "what": "OSM footprint 7.1 x 6 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building is 7 x 6 m."
+    },
+    "tarawa-osm-way-496795760": {
+      "venueId": "tarawa-osm-way-496795760",
+      "city": "tarawa",
+      "name": "Marine Training Centre",
+      "archetype": "campus-block",
+      "subject": "Betio maritime college: low classroom and workshop blocks with a training jetty and shipboard-style wheelhouse by the lagoon",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "maritime-college"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#3f6f8a",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1967 founded",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Betio",
+          "what": "Marine Training Centre founded in 1967"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/496795760",
+          "what": "OSM footprint 143.5 x 100 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. Only the founding year is sourced. OSM site is 144 x 100 m."
+    },
+    "tarawa-osm-way-497807556": {
+      "venueId": "tarawa-osm-way-497807556",
+      "city": "tarawa",
+      "name": "Kiribati National Museum and Cultural Centre (Te Umanibong)",
+      "archetype": "museum-theatre",
+      "subject": "A small cultural centre at Bairiki in maneaba spirit: a low hall with a very large pitched roof and open sides",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "variant": "maneaba-style"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#b89a5e",
+          "#d8c08a",
+          "#b5b0a5"
+        ],
+        "roofColour": "#b89a5e",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maneaba",
+          "what": "maneaba form: high roof of coconut timber on coral supports with pandanus thatch"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/497807556",
+          "what": "OSM footprint 23.3 x 15.4 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. Wikidata calls it Te Umanibong (museum in Kiribati). Maneaba-like form is an assumption borrowed from the local building tradition."
+    },
+    "tarawa-osm-way-791807366": {
+      "venueId": "tarawa-osm-way-791807366",
+      "city": "tarawa",
+      "name": "USP Kiribati Campus",
+      "archetype": "campus-block",
+      "subject": "The University of the South Pacific campus on Tarawa: a small two-storey painted concrete teaching block with a verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#3f6f8a",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/864216748",
+          "what": "OSM footprint 14.9 x 10.2 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM shows a 15 x 10 m building; the model is widened to a plausible two-storey block."
+    },
+    "tarawa-osm-way-851490550": {
+      "venueId": "tarawa-osm-way-851490550",
+      "city": "tarawa",
+      "name": "Tobwaan te Tongo Park",
+      "archetype": "park-landscape",
+      "subject": "A narrow lagoon-front park with sand, palms and a small open shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "lagoon-strip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b89a5e",
+          "#8c7a68",
+          "#7c9a6a"
+        ],
+        "roofColour": "#b89a5e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/851490550",
+          "what": "OSM footprint 275.2 x 62.5 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM park is 275 x 63 m."
+    },
+    "tarawa-quiet-reflection": {
+      "venueId": "tarawa-quiet-reflection",
+      "city": "tarawa",
+      "name": "Sacred Heart Cathedral, Teaoraereke",
+      "archetype": "church-modern",
+      "subject": "Sacred Heart Cathedral, the Roman Catholic cathedral of Tarawa: a long whitewashed hall church with a gabled iron roof and a small bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable",
+        "variant": "hall-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f2f0ea",
+          "#8fb6c9",
+          "#b5b0a5"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Sacred Heart figure, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/South_Tarawa",
+          "what": "Roman Catholic facilities are in Teaoraereke"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/90810971",
+          "what": "OSM footprint 54.8 x 27.4 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM tags it building=cathedral, 55 x 27 m, and Wikidata names Sacred Heart Cathedral in South Tarawa. Facade is not described anywhere found."
+    },
+    "tarawa-recreation": {
+      "venueId": "tarawa-recreation",
+      "city": "tarawa",
+      "name": "Amusement Park, South Tarawa",
+      "archetype": "park-landscape",
+      "subject": "A small open amusement ground near Teaoraereke: a few simple rides and stalls on sand under palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "amusement-ground"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9d6d0",
+          "#e5a52c",
+          "#8fb6c9"
+        ],
+        "roofColour": "#a8aeb2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=12/0/0",
+          "what": "venue location only; no description found"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. There is no OSM polygon for this venue and nothing was found about it."
+    },
+    "tarawa-transit": {
+      "venueId": "tarawa-transit",
+      "city": "tarawa",
+      "name": "Ferry to North Tarawa (landing)",
+      "archetype": "transport-station",
+      "subject": "A small ferry landing hut on the Tarawa causeway with a jetty and waiting shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "ferry-landing"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5b0a5",
+          "#8fb6c9",
+          "#f2f0ea"
+        ],
+        "roofColour": "#a8aeb2",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/223636381",
+          "what": "OSM footprint 17.1 x 9.9 m (measured)"
+        }
+      ],
+      "notes": "No description of this building was retrieved (the web search budget was exhausted), so it is typed from the OSM footprint and the Tarawa city style: low painted concrete block under a corrugated iron roof. OSM building near the landing is 17 x 10 m."
+    }
+  }
+}

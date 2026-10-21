@@ -1,0 +1,1690 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "sanaa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "sanaa",
+    "climate": "highland",
+    "vernacular": "High-altitude (2,250 m) arid city. The Old City is a dense cluster of 5-9 storey tower houses: dark basalt or stone lower floors, fired-brick upper floors, white lime/gypsum friezes and window frames, semicircular stained-glass fanlights (qamariya), flat roofs with stepped parapets and a top-floor mafraj room. The modern city is 3-6 storey concrete-frame blocks in sandy render, flat roofs with rooftop water tanks, high compound walls, shop fronts with roll shutters and very little street planting.",
+    "wallColours": [
+      "#a0583a",
+      "#7a4630",
+      "#d8c6a2",
+      "#f1ece0",
+      "#c9b48e",
+      "#6b6864",
+      "#e2d3b4"
+    ],
+    "roofColours": [
+      "#a29c92",
+      "#8d867a",
+      "#6b6864",
+      "#b9a98a"
+    ],
+    "wallMaterials": [
+      "brick",
+      "render",
+      "concrete",
+      "stone",
+      "whitewash",
+      "painted-render",
+      "mud-render"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "acacia",
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "White lime and gypsum geometric friezes outlining every window and storey line; qamariya semicircular fanlights of coloured glass in white tracery; stepped crenellated parapets; black basalt courses at the base; carved wooden doors with brass rings; brick laid in decorative patterns. Modern buildings echo these with white-painted window surrounds and green, red and white banding on mosques.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Old_City_of_Sana%27a",
+        "what": "multi-floor houses with flat roofs, friezes and carved frames, stained-glass windows, maqshama gardens, clay walls"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bab_al-Yaman",
+        "what": "surrounding houses of baked brick decorated and waterproofed with lime plaster and qadad; stained-glass fanlights; main gate of the fortified wall"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dar_al-Hajar",
+        "what": "basalt lower floors plus fired-brick upper floors, seven floors on rock, valley setting with doum palms"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Al_Saleh_Mosque",
+        "what": "modern Yemeni mosque in red, white and black limestone with black basalt"
+      }
+    ]
+  },
+  "places": {
+    "sanaa-airport-sanaa-airport": {
+      "venueId": "sanaa-airport-sanaa-airport",
+      "city": "sanaa",
+      "name": "Sanaa International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the modest 1970s passenger terminal and low control tower on the airfield side, as a two-storey flat-roofed concrete block with a shallow canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "regional",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d9cdb4",
+          "#8b8f8e",
+          "#f2eee4"
+        ],
+        "roofColour": "#9a958c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "low tower beside the terminal; struck in 2024"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sanaa_International_Airport",
+          "what": "opened 1964, small terminal from 1970s, terminal heavily damaged by 2015 airstrike, shared runway with Al-Dailami air base"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1165296",
+          "what": "Wikidata record, coordinates verified"
+        }
+      ],
+      "notes": "Sources give history only, no description of the terminal appearance. Form and colours are typed from the period and city style; low confidence. Recognisable as a small plain terminal with a tower."
+    },
+    "sanaa-clinic": {
+      "venueId": "sanaa-clinic",
+      "city": "sanaa",
+      "name": "Al Sabeen Maternal Hospital",
+      "archetype": "hospital",
+      "subject": "the main ward block of the large Al Sabeen maternity hospital compound, a five-storey concrete block with rooftop water tanks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dcc8",
+          "#b9a98a",
+          "#f5f2ea"
+        ],
+        "roofColour": "#a9a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 4,
+          "note": "rooftop tanks are universal in Sanaa"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1527602",
+          "what": "Al Sabeen Maternal Hospital, hospital in Yemen"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/87318804",
+          "what": "compound about 494 m by 180 m, 77,580 m2 (measured)"
+        }
+      ],
+      "notes": "Real compound is huge (OSM about 494 x 180 m); the model shows one recognisable block, clamped. No description of the building was found; typed from city style."
+    },
+    "sanaa-community-notices": {
+      "venueId": "sanaa-community-notices",
+      "city": "sanaa",
+      "name": "San`a' Net Control Centre",
+      "archetype": "office-low",
+      "subject": "a small three-storey telecom control building behind a compound wall with an antenna mast on the roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8c6a2",
+          "#8d867a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8d867a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "roof antenna mast"
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1089209412",
+          "what": "unnamed building 40 m by 22 m (measured)"
+        }
+      ],
+      "notes": "Venue is a telecom/internet control centre (game kind statehouse). Only the footprint is measured; everything else is typed."
+    },
+    "sanaa-community-voting-game": {
+      "venueId": "sanaa-community-voting-game",
+      "city": "sanaa",
+      "name": "Passports Authority (Al-Jawazat)",
+      "archetype": "civic-small",
+      "subject": "a three-storey government passport office with a flag, canopy over the public entrance and a perimeter wall",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#d8c6a2",
+          "#8f8a80",
+          "#f1ece0"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/60750456",
+          "what": "named townhall compound about 149 m by 128 m (measured)"
+        }
+      ],
+      "notes": "Venue is the passport office compound (game kind polling). Compound is large; model shows the main block. Appearance typed from city style."
+    },
+    "sanaa-community-workshop": {
+      "venueId": "sanaa-community-workshop",
+      "city": "sanaa",
+      "name": "Lebanese International University (Yemen)",
+      "archetype": "campus-block",
+      "subject": "a four-storey private university block with a central entrance, flagpole and perimeter wall",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece4d2",
+          "#5f7d92",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a9a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1834882",
+          "what": "LIU Yemen founded 2006"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1089200534",
+          "what": "campus footprint about 208 m by 130 m (measured)"
+        }
+      ],
+      "notes": "Branch of a Lebanese private university founded 2006; no building description found. Typed contemporary private-university block."
+    },
+    "sanaa-market-game": {
+      "venueId": "sanaa-market-game",
+      "city": "sanaa",
+      "name": "Souq Hamdan",
+      "archetype": "market-open",
+      "subject": "an open-air market yard of tarpaulin-covered stalls and corrugated sheds on the Hamdan outskirts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 62,
+        "depth_m": 62,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdb892",
+          "#8d867a",
+          "#a0583a"
+        ],
+        "roofColour": "#7f8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 24
+        },
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "awning",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1029288503",
+          "what": "marketplace footprint 62 m by 62 m (measured)"
+        }
+      ],
+      "notes": "Only the name and footprint are known; stall layout typed. Kept visually different from the qat market (coloured tarps there, corrugated sheds here)."
+    },
+    "sanaa-meal-stop": {
+      "venueId": "sanaa-meal-stop",
+      "city": "sanaa",
+      "name": "Layali al-Arab Restaurant and Broast",
+      "archetype": "restaurant",
+      "subject": "a two-storey roadside broast restaurant with a rooftop family section and a blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d3a0",
+          "#a0583a",
+          "#f4efe2"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1013497074",
+          "what": "nearest building 26 m by 24 m (measured, 65 m from the venue point)"
+        }
+      ],
+      "notes": "Only a nearby footprint is known. Typed Yemeni roadside restaurant."
+    },
+    "sanaa-osm-node-11554098569": {
+      "venueId": "sanaa-osm-node-11554098569",
+      "city": "sanaa",
+      "name": "Shaif Anan Farms",
+      "archetype": "park-landscape",
+      "subject": "terraced farm plots with low stone walls, a watchtower-style pump house and a few shade trees at the edge of the Sanaa plain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "mud-render",
+        "colours": [
+          "#8d867a",
+          "#b9a98a",
+          "#6b6864"
+        ],
+        "roofColour": "#8d867a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 4,
+          "note": "dry-stone field walls"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small farm rest hut"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Old_City_of_Sana%27a",
+          "what": "traditional agricultural gardens of the Sanaa area"
+        }
+      ],
+      "notes": "Name only (farms). Typed as green plots with stone walls."
+    },
+    "sanaa-osm-node-13384264101": {
+      "venueId": "sanaa-osm-node-13384264101",
+      "city": "sanaa",
+      "name": "Qat Market (Souq al-Qat)",
+      "archetype": "market-open",
+      "subject": "a qat market of bundle-laden tables under bright tarps and umbrellas on a paved lot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9b48e",
+          "#4f7a3a",
+          "#a0583a"
+        ],
+        "roofColour": "#4f7a3a",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30,
+          "note": "low tables piled with green qat bundles"
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 14
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Qat (khat) is sold daily in Sanaa from green bundles wrapped in plastic or leaves; a tarp-covered stall field is typed from that. No source for this specific market."
+    },
+    "sanaa-osm-node-13932020101": {
+      "venueId": "sanaa-osm-node-13932020101",
+      "city": "sanaa",
+      "name": "Ahmed Khadem Stall",
+      "archetype": "shophouse",
+      "subject": "a tiny roadside kiosk stall with a shade awning and a blank sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#7f8a8f",
+          "#a0583a",
+          "#e4dcc8"
+        ],
+        "roofColour": "#6b6864",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name-only stall; typed as roadside metal kiosk."
+    },
+    "sanaa-osm-node-13952707101": {
+      "venueId": "sanaa-osm-node-13952707101",
+      "city": "sanaa",
+      "name": "Souq al-Badrum (Basement Market)",
+      "archetype": "market-hall",
+      "subject": "a covered concrete trading block with ground-floor lock-up shops and shutters facing a service lane",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#bdb4a2",
+          "#a0583a",
+          "#e6dcc3"
+        ],
+        "roofColour": "#8d867a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 16
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name means basement market; typed as a concrete covered market block. No source."
+    },
+    "sanaa-osm-node-4190366692": {
+      "venueId": "sanaa-osm-node-4190366692",
+      "city": "sanaa",
+      "name": "Lulua (Pearl) Lookout",
+      "archetype": "park-landscape",
+      "subject": "a small hilltop lookout with a railed platform and a shade pavilion over the Sanaa plain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#8d867a",
+          "#b9a98a",
+          "#e4dcc8"
+        ],
+        "roofColour": "#8d867a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only (Lulua = pearl). Typed lookout; nothing was found about it."
+    },
+    "sanaa-osm-node-4298021192": {
+      "venueId": "sanaa-osm-node-4298021192",
+      "city": "sanaa",
+      "name": "Masjid Al Ansaar",
+      "archetype": "mosque-domed",
+      "subject": "a small neighbourhood mosque with one low dome, a single slim minaret and a green-painted arched entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc3",
+          "#3f7d5c",
+          "#f4f1e8"
+        ],
+        "roofColour": "#d8d2c4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 22 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "white lime window surrounds"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1089167456",
+          "what": "building footprint 29 m by 13 m (measured, 1.6 m from the venue point)"
+        }
+      ],
+      "notes": "Footprint is measured; dome and minaret counts are typed from the usual Sanaa neighbourhood mosque. Distinct from Al-Saleh and the Great Mosque by scale."
+    },
+    "sanaa-osm-node-4510701911": {
+      "venueId": "sanaa-osm-node-4510701911",
+      "city": "sanaa",
+      "name": "Yemen Military Museum",
+      "archetype": "museum-theatre",
+      "subject": "a two-storey museum building with captured guns and armour displayed in its yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d8c6a2",
+          "#8f8a80",
+          "#f1ece0"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 4,
+          "note": "artillery and armour displayed outdoors"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1836032",
+          "what": "Yemen Military Museum, museum in Sanaa, coordinates verified"
+        }
+      ],
+      "notes": "Real place with a Wikidata record but no architecture description found. Form typed; outdoor weapon display is typical of military museums."
+    },
+    "sanaa-osm-node-4858907323": {
+      "venueId": "sanaa-osm-node-4858907323",
+      "city": "sanaa",
+      "name": "Modern Sciences University",
+      "archetype": "campus-block",
+      "subject": "a small four-storey private college block with blue-glass strip windows and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 17,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc0",
+          "#4f7690",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1089226873",
+          "what": "nearest building 21 m by 17 m (measured)"
+        }
+      ],
+      "notes": "Tiny footprint so the model is a compact block, clearly smaller than Sanaa University and LIU."
+    },
+    "sanaa-osm-node-8583463118": {
+      "venueId": "sanaa-osm-node-8583463118",
+      "city": "sanaa",
+      "name": "Dam",
+      "archetype": "park-landscape",
+      "subject": "an earth-and-rock dam embankment with a crest road, railings and a still reservoir behind it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#8d867a",
+          "#6b6864",
+          "#b9a98a"
+        ],
+        "roofColour": "#8d867a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "crest road railings"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue is an unnamed \"Dam\" on the Sanaa plain. Nothing specific found; typed rock-faced embankment with water."
+    },
+    "sanaa-osm-relation-908271": {
+      "venueId": "sanaa-osm-relation-908271",
+      "city": "sanaa",
+      "name": "Great Mosque of Sana'a (Old Great Mosque)",
+      "archetype": "mosque-domed",
+      "subject": "the ancient Great Mosque seen from within the Old City: a low brick-and-stone hypostyle courtyard mosque with two old minarets and a small domed Ottoman treasury in the courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 66,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "courtyard-hypostyle",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#b9946f",
+          "#9d5d3f",
+          "#f1ece0"
+        ],
+        "roofColour": "#a79880",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "about 80 m by 60 m open court"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "stone arcades carrying flat roofs"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "east minaret early 9th century, west minaret added in 12th-century restoration; heights not sourced, about 25 m"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "Ottoman 16th-century domed building with alternating colour courses (ablaq) in the courtyard"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved painted wooden ceilings, white lime trim"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "7th c., rebuilt 705-715, 12th and 16th c.",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Sana%27a",
+          "what": "courtyard 80x60 m, brick and stone, stepped stone, flat roofs on stone arcades, two minarets, 16th-century domed building"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2548705",
+          "what": "width about 66 m, founded c. 700"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/908271",
+          "what": "footprint about 81 m by 66 m (measured)"
+        }
+      ],
+      "notes": "Recognisable as a low windowless-looking walled block with an inner courtyard, two stubby old minarets and a small striped domed building in the middle, among tall brick tower houses. Minaret heights are not sourced."
+    },
+    "sanaa-osm-way-1089171473": {
+      "venueId": "sanaa-osm-way-1089171473",
+      "city": "sanaa",
+      "name": "Lulua Cafeteria",
+      "archetype": "restaurant",
+      "subject": "a one-storey cafeteria with a covered terrace and large awning on a corner plot",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 29,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e2c9a0",
+          "#3f7d5c",
+          "#f4efe2"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1089171473",
+          "what": "restaurant footprint 29 m by 27 m (measured)"
+        }
+      ],
+      "notes": "Footprint measured; look typed. One storey so it differs from the broast restaurant (two storeys, rooftop)."
+    },
+    "sanaa-osm-way-1089201817": {
+      "venueId": "sanaa-osm-way-1089201817",
+      "city": "sanaa",
+      "name": "Sanaa University",
+      "archetype": "campus-block",
+      "subject": "a main faculty building of Sanaa University new campus, a long five-storey sand-coloured block with deep window reveals and a central entrance portal",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d1bf9b",
+          "#8f8a80",
+          "#ece4d2"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1,
+          "note": "deep reveals"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sanaa_University",
+          "what": "founded 1970, twelve faculties on the main campus"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4115304",
+          "what": "Wikidata record with new campus photo"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24466450",
+          "what": "faculty-of-agriculture campus area 388 m by 255 m (measured)"
+        }
+      ],
+      "notes": "University is real and large; text sources give no building description. Typed as a 1970s-80s modernist faculty block in local sand tones."
+    },
+    "sanaa-osm-way-120230549": {
+      "venueId": "sanaa-osm-way-120230549",
+      "city": "sanaa",
+      "name": "Al Thawra (Revolution) Hospital",
+      "archetype": "hospital",
+      "subject": "the central tower-slab of the big Al Thawra public hospital, a seven-storey concrete block with long balconies and rooftop tanks",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d4c8ae",
+          "#9a958c",
+          "#efe9db"
+        ],
+        "roofColour": "#a29c92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 5
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1527580",
+          "what": "Revolution Hospital, hospital in Yemen"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/120230549",
+          "what": "compound about 210 m by 203 m, 42,250 m2 (measured)"
+        }
+      ],
+      "notes": "Compound measured (about 210 x 203 m), building appearance not found; typed as large mid-century public hospital, taller than Al Sabeen."
+    },
+    "sanaa-osm-way-1530760059": {
+      "venueId": "sanaa-osm-way-1530760059",
+      "city": "sanaa",
+      "name": "Dar al-Hajar (Rock Palace)",
+      "archetype": "heritage-fort",
+      "subject": "the seven-storey Rock Palace perched on a boulder in Wadi Dhahr: black basalt lower floors, fired-brick upper floors with white lime window frames and a stepped parapet",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 11,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "variant": "rock-palace"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#2f2f31",
+          "#9a5a3c",
+          "#f1ece0"
+        ],
+        "roofColour": "#8f6a4c",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "stepped parapet"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "qamariya semicircular fanlights"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "white lime frames around every window"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stone-paved entrance passage"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "round black basalt water basin by the mafraj"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1786 base, completed 1920",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dar_al-Hajar",
+          "what": "seven floors following the rock, three basalt floors by Imam al-Mansur, fired-brick additions by Imam Yahya, completed 1920 on 1786 structure, doum palms"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3025692",
+          "what": "rammed-earth/royal palace record"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1530760059",
+          "what": "building footprint 12.8 m by 11 m (measured)"
+        }
+      ],
+      "notes": "Instantly recognisable as a tall narrow tower on a rock outcrop. Colours of upper floors are from general photos (brown-red brick with white trim), not text sources; total height about 28 m above the rock is an estimate."
+    },
+    "sanaa-osm-way-827493201": {
+      "venueId": "sanaa-osm-way-827493201",
+      "city": "sanaa",
+      "name": "Queen Arwa University",
+      "archetype": "campus-block",
+      "subject": "a private university building of four storeys with a curved glazed corner and blue-glass bands",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0e8d5",
+          "#5e8197",
+          "#e5dcc8"
+        ],
+        "roofColour": "#9a958c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7270228",
+          "what": "private university founded 1996"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/827493201",
+          "what": "campus footprint 94 m by 76 m (measured)"
+        }
+      ],
+      "notes": "Footprint is an irregular 10-point polygon so the model uses a bent form. Look typed."
+    },
+    "sanaa-quiet-reflection": {
+      "venueId": "sanaa-quiet-reflection",
+      "city": "sanaa",
+      "name": "Al-Saleh Mosque",
+      "archetype": "mosque-domed",
+      "subject": "the Al-Saleh (Grand) Mosque, 2008: huge cream-and-banded-stone prayer hall under a great central dome with four smaller domes and six tall slender minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 117,
+        "storeys": 2,
+        "height_m": 62,
+        "roof": "multi-dome",
+        "variant": "grand-mosque",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "granite",
+        "colours": [
+          "#e6dcc4",
+          "#2a2a2c",
+          "#a04a32"
+        ],
+        "roofColour": "#6f8f78",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "main dome 27.4 m across rising 39.6 m above the roof plus four 15.6 m domes (article also claims seven)"
+        },
+        {
+          "id": "minaret",
+          "count": 6,
+          "note": "six minarets, 100 m or 160 m depending on source (use about 100 m)"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "red, white and black banded limestone with black basalt"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "qamariya windows"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2008",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al_Saleh_Mosque",
+          "what": "inaugurated 2008, main dome 27.4 m, four domes 15.6 m, six minarets (100 m or 160 m), central hall 13,596 m2 on a 27,300 m2 site, red/white/black limestone and black basalt, wooden roofs"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4115837",
+          "what": "Wikidata record"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/554691321",
+          "what": "compound about 184 m by 183 m (measured)"
+        }
+      ],
+      "notes": "Largest mosque in Yemen. Dome colour is not stated in the text sources; dark green is typed, check against photos. Prayer hall about 117 m square (13,596 m2); compound clamped to 120 m so show hall plus two minarets if needed."
+    },
+    "sanaa-recreation": {
+      "venueId": "sanaa-recreation",
+      "city": "sanaa",
+      "name": "Park (Muntazah)",
+      "archetype": "park-landscape",
+      "subject": "a small public park of paved paths, scattered acacia and palm trees and one concrete shade pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 185,
+        "depth_m": 108,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb4a2",
+          "#4f7a3a",
+          "#e6dcc3"
+        ],
+        "roofColour": "#8d867a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/809877716",
+          "what": "park footprint 185 m by 108 m (measured)"
+        }
+      ],
+      "notes": "Unnamed park (name means park). Only the footprint is known."
+    },
+    "sanaa-transit": {
+      "venueId": "sanaa-transit",
+      "city": "sanaa",
+      "name": "Bab Alyemen Bus Station",
+      "archetype": "transport-station",
+      "subject": "a minibus and bus stand by the southern gate of the Old City, with brick tower houses behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "bus-stand"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "whitewash",
+        "colours": [
+          "#a0583a",
+          "#f1ece0",
+          "#7a4630"
+        ],
+        "roofColour": "#7f8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "Bab al-Yaman, main Old City gate, stands beside it"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bab_al-Yaman",
+          "what": "gate on the south edge of the Old City; surrounding houses of baked brick with lime plaster; Great Mosque about 300 yards away"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/333920441",
+          "what": "nearest building 33 m by 12 m (measured, 50 m from the venue point)"
+        }
+      ],
+      "notes": "The stand is typed; the surrounding brick tower houses and the gate are what make it recognisable."
+    }
+  }
+}

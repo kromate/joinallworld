@@ -1,0 +1,154 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-grand-theatre-national",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/234204438",
+   "used": "109 x 72 m rectangle, bearing and size only (name-quality match); no photo of the exterior"
+  }
+ ],
+ "camera": {
+  "yawDeg": -47,
+  "pitchDeg": 15,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo found (Commons has only auditorium interiors); massing from the 109 x 72 m OSM footprint plus the brief; roof shape, glazing and colours are plausible not observed"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     109,
+     71
+    ]
+   },
+   "rotDeg": -47,
+   "height": 24,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6dfcf",
+    "windows": "none",
+    "plinth": 0.8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#2f4a5c"
+      ],
+      "height": 1.4,
+      "at": 8,
+      "proud": 0.15
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "foyer",
+   "footprint": {
+    "rect": [
+     56,
+     11
+    ]
+   },
+   "at": [
+    -27.7,
+    -25.8
+   ],
+   "rotDeg": -47,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7aa0b4",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9ced1"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -33.6,
+    -31.3,
+    9.5
+   ],
+   "rotDeg": -47,
+   "params": {
+    "form": "curved",
+    "width": 60,
+    "depth": 10,
+    "height": 4,
+    "rise": 3,
+    "thickness": 0.6,
+    "colour": "#c9ced1",
+    "edgeColour": "#9aa4ab"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -40.9,
+    -38.1,
+    0
+   ],
+   "rotDeg": -47,
+   "params": {
+    "width": 50,
+    "rise": 0.9,
+    "run": 1.8,
+    "count": 5,
+    "colour": "#d8d2c2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -60
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     60
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ }
+}

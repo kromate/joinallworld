@@ -1,0 +1,874 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ethiopian_National_Museum_in_Addis_Ababa.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Ninaras",
+   "view": "front",
+   "file": "/tmp/places-evidence/addis-ababa/museum2.jpg",
+   "used": "three-storey board-marked grey concrete block with tall narrow red-brown louvre slits in vertical pairs, blue-and-gold mosaic panel above a flat entrance canopy, central stair flanked by cheek walls, barred ground-floor glazing, palms in the forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_museum_of_Ethiopia_New_facility.JPG",
+   "licence": "Public domain",
+   "author": "Richard van Alphen",
+   "view": "side",
+   "file": "/tmp/places-evidence/addis-ababa/museum1.jpg",
+   "used": "garden setting, sibling concrete block with the same slit pattern"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/200657467",
+   "used": "name match is only a 23 m block; photo shows a wider front so the main mass is sized from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 42,
+  "aspect": 1.5
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Louvre fins still read as full-height bars (not paired short slots); mosaic is a blocky tile approximation; stair cheek walls are plain boxes; yucca and shrubs are blocks."
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     42,
+     24
+    ]
+   },
+   "height": 21,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#a7a193",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.6,
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.3,
+      "spacing": 4.0,
+      "colour": "#5a2f26",
+      "margin": 3.0,
+      "from": 1
+     },
+     {
+      "type": "fins",
+      "width": 0.5,
+      "depth": 0.3,
+      "spacing": 4.0,
+      "colour": "#5a2f26",
+      "margin": 3.0,
+      "from": 0,
+      "to": 1
+     },
+     {
+      "type": "bands",
+      "colour": "#8d877b",
+      "height": 0.5,
+      "proud": 0.15,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8b82",
+    "parapet": 0.5,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entry-canopy",
+   "at": [
+    0,
+    -14.2,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 11,
+    "depth": 4.4,
+    "height": 8.2,
+    "thickness": 0.9,
+    "colour": "#9a948a",
+    "edgeColour": "#d8d2c0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0,
+    -16.5
+   ],
+   "params": {
+    "z0": 9.2,
+    "height": 1.0,
+    "colour": "#eef0f3",
+    "rect": [
+     10,
+     0.2
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mos-0-0",
+   "at": [
+    -2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 8.5,
+    "height": 3,
+    "colour": "#c8402e",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-0-1",
+   "at": [
+    -2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 11.5,
+    "height": 3,
+    "colour": "#e0782a",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-0-2",
+   "at": [
+    -2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 14.5,
+    "height": 3,
+    "colour": "#c8402e",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-0-3",
+   "at": [
+    -2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 17.5,
+    "height": 3,
+    "colour": "#e0782a",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-1-0",
+   "at": [
+    -0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 8.5,
+    "height": 3,
+    "colour": "#2f5fa8",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-1-1",
+   "at": [
+    -0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 11.5,
+    "height": 3,
+    "colour": "#3a8aa0",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-1-2",
+   "at": [
+    -0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 14.5,
+    "height": 3,
+    "colour": "#2f5fa8",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-1-3",
+   "at": [
+    -0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 17.5,
+    "height": 3,
+    "colour": "#3a8aa0",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-2-0",
+   "at": [
+    0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 8.5,
+    "height": 3,
+    "colour": "#e2b22e",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-2-1",
+   "at": [
+    0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 11.5,
+    "height": 3,
+    "colour": "#a83a2a",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-2-2",
+   "at": [
+    0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 14.5,
+    "height": 3,
+    "colour": "#e2b22e",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-2-3",
+   "at": [
+    0.75,
+    -12.2
+   ],
+   "params": {
+    "z0": 17.5,
+    "height": 3,
+    "colour": "#a83a2a",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-3-0",
+   "at": [
+    2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 8.5,
+    "height": 3,
+    "colour": "#e0782a",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-3-1",
+   "at": [
+    2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 11.5,
+    "height": 3,
+    "colour": "#c8402e",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-3-2",
+   "at": [
+    2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 14.5,
+    "height": 3,
+    "colour": "#e0782a",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mos-3-3",
+   "at": [
+    2.25,
+    -12.2
+   ],
+   "params": {
+    "z0": 17.5,
+    "height": 3,
+    "colour": "#c8402e",
+    "rect": [
+     1.5,
+     0.35
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "mosaic-frame",
+   "at": [
+    0,
+    -12.1
+   ],
+   "params": {
+    "z0": 8.3,
+    "height": 12.4,
+    "colour": "#7a7568",
+    "rect": [
+     6.8,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sign-strip",
+   "at": [
+    0,
+    -12.3
+   ],
+   "params": {
+    "z0": 7.4,
+    "height": 0.8,
+    "colour": "#eef0f3",
+    "rect": [
+     11,
+     0.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gw-l",
+   "at": [
+    -9.3,
+    -12.1
+   ],
+   "params": {
+    "z0": 1.8,
+    "height": 4.8,
+    "colour": "#3c4648",
+    "rect": [
+     6.4,
+     0.25
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "gw-bars-l",
+   "params": {
+    "count": 7,
+    "start": [
+     -12.3,
+     -12.3
+    ],
+    "end": [
+     -6.300000000000001,
+     -12.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.2
+      ],
+      "z0": 1.8,
+      "height": 4.8,
+      "colour": "#f2f2ee"
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gw-rail-l",
+   "at": [
+    -9.3,
+    -12.3
+   ],
+   "params": {
+    "z0": 4.1,
+    "height": 0.25,
+    "colour": "#f2f2ee",
+    "rect": [
+     6.4,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gw-r",
+   "at": [
+    9.3,
+    -12.1
+   ],
+   "params": {
+    "z0": 1.8,
+    "height": 4.8,
+    "colour": "#3c4648",
+    "rect": [
+     6.4,
+     0.25
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "gw-bars-r",
+   "params": {
+    "count": 7,
+    "start": [
+     6.300000000000001,
+     -12.3
+    ],
+    "end": [
+     12.3,
+     -12.3
+    ],
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.2
+      ],
+      "z0": 1.8,
+      "height": 4.8,
+      "colour": "#f2f2ee"
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gw-rail-r",
+   "at": [
+    9.3,
+    -12.3
+   ],
+   "params": {
+    "z0": 4.1,
+    "height": 0.25,
+    "colour": "#f2f2ee",
+    "rect": [
+     6.4,
+     0.2
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "entry-glass",
+   "at": [
+    0,
+    -12.1
+   ],
+   "params": {
+    "z0": 0.6,
+    "height": 6.8,
+    "colour": "#4d5a58",
+    "rect": [
+     7,
+     0.3
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "steps",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "rise": 0.8,
+    "run": 3.8,
+    "count": 8,
+    "colour": "#5f8a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cheek-l",
+   "at": [
+    -4.6,
+    -14.6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#9a9488",
+    "rect": [
+     1.0,
+     5.5
+    ],
+    "topColour": "#8d877b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cheek-r",
+   "at": [
+    4.6,
+    -14.6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#9a9488",
+    "rect": [
+     1.0,
+     5.5
+    ],
+    "topColour": "#8d877b"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-left",
+   "at": [
+    -19,
+    -13.5
+   ],
+   "params": {
+    "z0": 0,
+    "height": 4,
+    "colour": "#9a9488",
+    "rect": [
+     4,
+     3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shrub-0",
+   "at": [
+    -14,
+    -13.6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4f7a3f",
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shrub-1",
+   "at": [
+    -12,
+    -13.6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4f7a3f",
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shrub-2",
+   "at": [
+    12,
+    -13.6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4f7a3f",
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shrub-3",
+   "at": [
+    14,
+    -13.6
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#4f7a3f",
+    "rect": [
+     1.6,
+     1.6
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     9,
+     -21
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -26,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-national-museum-of-ethiopia"
+}

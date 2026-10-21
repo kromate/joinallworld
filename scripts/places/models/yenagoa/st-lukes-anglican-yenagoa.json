@@ -1,0 +1,128 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/650036571",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "used": "brief: Anglican gabled rendered nave with a square west tower, pointed windows, red metal roof; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "bands": "#8a6a45"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    4,
+    -18,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "width": 6,
+    "height": 17,
+    "cap": "hip",
+    "cap_height": 3,
+    "colour": "#efe6cf",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -23,
+    0
+   ],
+   "rotDeg": 14,
+   "params": {
+    "width": 4,
+    "rise": 0.6,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#efe6cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -20
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "st-lukes-anglican-yenagoa",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "OSM outline is larger than the brief's T plan; tower and roof direction estimated; no photo exists"
+ }
+}

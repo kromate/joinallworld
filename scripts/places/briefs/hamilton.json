@@ -1,0 +1,1695 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "hamilton",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "hamilton",
+    "climate": "tropical-maritime",
+    "vernacular": "British Atlantic island with pastel-painted limestone houses topped by low stepped white roofs of limestone slate, shallow hip roofs with small eaves, wide chimneys, white-washed stone walls, shutters in a third colour, rainwater tanks, cedar and palmetto, plus a grid of 3-6 storey pastel offices and shops in Hamilton.",
+    "wallColours": [
+      "#f4f1e8",
+      "#f2c6c6",
+      "#f3e2a6",
+      "#a9c9dc",
+      "#b8d8c4",
+      "#f0c9a8",
+      "#d9d3c0"
+    ],
+    "roofColours": [
+      "#f3f1ea",
+      "#e6e2d6",
+      "#8f9498",
+      "#b8bbbc"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "limestone",
+      "whitewash",
+      "stucco",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "slate",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "White stepped limestone-slate roofs (rainwater catchment), tall kitchen chimneys, buttress-like chimney stacks on gable ends, shutters and eaves in a contrasting third colour, moongates, Georgian-style porticos on wealthy homes, Bermuda cedar woodwork.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Bermuda",
+        "what": "walls of local limestone painted pastel or whitewashed; archetypal roof low, stepped and white; shallow hip roofs in thin hand-cut limestone slates; shutters and eaves in a third colour; chimneys; hurricane-resistant under 1 ft eaves; moongates and porticos"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bermuda",
+        "what": "law requires roof rainwater catchment into tanks at every house; pink sand beaches and blue water"
+      }
+    ]
+  },
+  "places": {
+    "hamilton-airport-hamilton-airport": {
+      "venueId": "hamilton-airport-hamilton-airport",
+      "city": "hamilton",
+      "name": "L.F. Wade International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The new passenger terminal completed in December 2020 on St. David's island: a long two-level glass-and-white-panel terminal with a canopy over the departures kerb",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "curved",
+        "variant": "new-terminal-2020",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#f4f1e8",
+          "#8f9498"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/L.F._Wade_International_Airport",
+          "what": "new terminal completed December 2020 under a 30-year concession, replacing the old terminal; control tower is a separate building on the north side"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/260532344",
+          "what": "OSM footprint 264.7x91.7 m, 20836 m2 (match: name)"
+        }
+      ],
+      "notes": "Only the completion date and the existence of the new terminal are sourced. Appearance and gate count typed. OSM terminal outline is 265x92 m (area 20,836 m2); showing the central 200 m."
+    },
+    "hamilton-clinic": {
+      "venueId": "hamilton-clinic",
+      "city": "hamilton",
+      "name": "Mid-Atlantic Wellness Institute",
+      "archetype": "hospital",
+      "subject": "A sprawling low-rise psychiatric hospital campus in Devonshire: several two-storey pastel wings linked by courtyards with white stepped roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 227,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "low-rise-campus",
+        "wings": 5
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#f4f1e8",
+          "#f3e2a6",
+          "#d9d3c0"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/2355231",
+          "what": "OSM footprint 226.8x125.3 m, 10143 m2 (match: name)"
+        }
+      ],
+      "notes": "Measured OSM relation 227x125 m (10,143 m2). Wing heights, colours and style are typed from the Bermudian vernacular, nothing found describing the buildings. Show the main block only."
+    },
+    "hamilton-community-notices": {
+      "venueId": "hamilton-community-notices",
+      "city": "hamilton",
+      "name": "Bermuda Civil Aviation Authority",
+      "archetype": "office-low",
+      "subject": "The BCAA headquarters near the airport: a long two-storey pale office block with a white roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "government-office",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1e8",
+          "#a9c9dc",
+          "#8f9498"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bermuda_Civil_Aviation_Authority",
+          "what": "headquarters located in St. George's parish, near the airport"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/182591934",
+          "what": "OSM footprint 75.5x21.2 m, 997 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM building 75x21 m with Wikidata link; appearance typed."
+    },
+    "hamilton-community-voting-game": {
+      "venueId": "hamilton-community-voting-game",
+      "city": "hamilton",
+      "name": "Town Hall (St. George's)",
+      "archetype": "civic-small",
+      "subject": "The old town hall of St. George's: a small two-storey whitewashed limestone building with a white stepped hip roof and a front stair",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "georgian-town-hall",
+        "wings": 0
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "limestone",
+        "colours": [
+          "#f4f1e8",
+          "#d9d3c0",
+          "#a9c9dc"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1782",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Bermuda",
+          "what": "style of the colonial public buildings: pastel/white limestone and white roofs"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/181329188",
+          "what": "OSM footprint 22.1x12.2 m, 214 m2 (match: name)"
+        }
+      ],
+      "notes": "Footprint (22x12 m, tagged government/townhall) is OSM. The 18th-century date and the exact facade are from memory/typed and not sourced: confidence low. Sits on the King's Square in St. George's (UNESCO town)."
+    },
+    "hamilton-community-workshop": {
+      "venueId": "hamilton-community-workshop",
+      "city": "hamilton",
+      "name": "Bermuda College",
+      "archetype": "campus-block",
+      "subject": "The 26-acre Stonington campus in Paget: several two-storey white painted teaching blocks with shallow roofs around lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "multi-block-campus",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e8",
+          "#a9c9dc",
+          "#8f9498"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bermuda_College",
+          "what": "26-acre suburban campus in Paget Parish"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/912385468",
+          "what": "OSM footprint 441.7x120 m, 47445 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM campus polygon is 442x120 m; the real buildings are not described anywhere I could open. Typed."
+    },
+    "hamilton-market-game": {
+      "venueId": "hamilton-market-game",
+      "city": "hamilton",
+      "name": "Clocktower Mall (Royal Naval Dockyard)",
+      "archetype": "mall",
+      "subject": "The Dockyard Clocktower Building: a long two-storey grey-limestone Victorian naval store with a central clock tower, now a shopping mall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 93,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "converted-naval-store",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#b8b4a6",
+          "#8f8a80",
+          "#e6e2d6"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central clock tower; exact count not verified"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1850s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Naval_Dockyard,_Bermuda",
+          "what": "pedestrian mall opened in the clock tower building; former warehouses converted to artists' shops; local limestone-sandstone used throughout"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/183494311",
+          "what": "OSM footprint 92.6x16.6 m, 1528 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "The OSM nearest building is 93x17 m, matching a long storehouse. The existence of the clock tower and mall is sourced; the colours (grey weathered limestone) are from general knowledge of the dockyard stonework."
+    },
+    "hamilton-meal-stop": {
+      "venueId": "hamilton-meal-stop",
+      "city": "hamilton",
+      "name": "The New Traditions Restaurant",
+      "archetype": "restaurant",
+      "subject": "A small pastel restaurant in a single-storey house-like building with a white stepped roof and a front terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 7.5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "cottage-restaurant",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3e2a6",
+          "#f4f1e8",
+          "#a9c9dc"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/915488862",
+          "what": "OSM footprint 22.6x7.4 m, 167 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Not described anywhere found; OSM nearest building 23x7.5 m is 43 m away so scale is approximate. Typed Bermudian cottage style."
+    },
+    "hamilton-osm-node-12249214673": {
+      "venueId": "hamilton-osm-node-12249214673",
+      "city": "hamilton",
+      "name": "Gibbs Hill Lighthouse",
+      "archetype": "monument",
+      "subject": "The 36 m white cast-iron tapering lighthouse on Gibbs Hill with a gallery and lantern, and the keeper's cottage tea room at its foot",
+      "form": {
+        "footprint": "round",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 0,
+        "height_m": 36,
+        "roof": "dome",
+        "variant": "cast-iron-lighthouse",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "limestone",
+        "colours": [
+          "#f4f4f0",
+          "#8f9498",
+          "#c9c4b8"
+        ],
+        "roofColour": "#2e3a40",
+        "roofMaterial": "copper",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "lantern gallery balcony"
+        },
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "185 internal steps; entrance stair"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "lantern room"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "victorian",
+      "era": "1844-46",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gibbs_Hill_Lighthouse",
+          "what": "36 m cast-iron tapering cylinder, white, balcony and lantern room, light 108 m above sea level, built by Royal Engineers 1844-46, Lighthouse Tea Room in keepers' quarters at the base"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1323719927",
+          "what": "OSM footprint 169.4x79.4 m, 9227 m2 (match: containing)"
+        }
+      ],
+      "notes": "Tapered white cylinder, widest at the base; keeper's cottage with white stepped roof at the foot. Venue point is Queen's View, the lookout beside the lighthouse. Base diameter ~9 m is an estimate."
+    },
+    "hamilton-osm-node-5519434022": {
+      "venueId": "hamilton-osm-node-5519434022",
+      "city": "hamilton",
+      "name": "Horseshoe Bay Beach",
+      "archetype": "park-landscape",
+      "subject": "Horseshoe Bay: a pink-sand crescent beach between low limestone headlands, with a pastel beach-service building and lifeguard station",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "pink-sand-beach",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3e2a6",
+          "#f4f1e8",
+          "#a9c9dc"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "cafe, toilets and showers building"
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rock cliff wall, headland"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "beach 1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Horseshoe_Bay,_Bermuda",
+          "what": "pink-hued sand from red foraminifera, one lifeguard station, cafe building with toilets/showers/foot-wash, headland with coastal artillery remains"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/916212674",
+          "what": "OSM footprint 60.8x33.6 m, 1797 m2 (match: name)"
+        }
+      ],
+      "notes": "Colours of the sand (#f3d4cc pinkish) matter more than the building. The OSM point is a car park; the beach is the subject."
+    },
+    "hamilton-osm-node-7289544262": {
+      "venueId": "hamilton-osm-node-7289544262",
+      "city": "hamilton",
+      "name": "Tucker's Point Golf Clubhouse",
+      "archetype": "restaurant",
+      "subject": "A broad two-storey golf clubhouse in Bermudian style: pastel-painted walls, white stepped roofs and a shaded veranda",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 47,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "resort-clubhouse",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#f2c6c6",
+          "#f4f1e8",
+          "#a9c9dc"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/183304896",
+          "what": "OSM footprint 46.8x31.8 m, 1219 m2 (match: containing)"
+        }
+      ],
+      "notes": "OSM 47x32 m irregular footprint. Facade colours are typed from the Bermudian style; resort colouring may differ."
+    },
+    "hamilton-osm-way-1150163054": {
+      "venueId": "hamilton-osm-way-1150163054",
+      "city": "hamilton",
+      "name": "Flora Duffy South Field Stadium",
+      "archetype": "stadium",
+      "subject": "South Field of the national sports centre: a grass pitch with a running track and two small stands with metal roofs",
+      "form": {
+        "footprint": "oval",
+        "width_m": 226,
+        "depth_m": 138,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed",
+        "variant": "training-field",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3c0",
+          "#8f9498",
+          "#4d7a86"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bermuda_National_Stadium",
+          "what": "national sports centre in Devonshire parish; capacity 8,500 for the main stadium; South Field is not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1150163054",
+          "what": "OSM footprint 225.9x137.8 m, 25582 m2 (match: name)"
+        }
+      ],
+      "notes": "The nationwide sports centre is next to it; this brief is for the practice field, shown with modest stands. OSM stadium polygon 226x138 m."
+    },
+    "hamilton-osm-way-1198079103": {
+      "venueId": "hamilton-osm-way-1198079103",
+      "city": "hamilton",
+      "name": "Washington Mall",
+      "archetype": "mall",
+      "subject": "Washington Mall in Hamilton: a five-level pastel shopping block on Church Street with arcaded frontage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 43,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "downtown-mall",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3d8c0",
+          "#f4f1e8",
+          "#a9c9dc"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/423965691",
+          "what": "OSM footprint 44.7x43 m, 1879 m2 (match: containing); levels 5"
+        }
+      ],
+      "notes": "OSM: retail building, 5 levels, 45x43 m. Colours typed in the Hamilton pastel style."
+    },
+    "hamilton-osm-way-175194099": {
+      "venueId": "hamilton-osm-way-175194099",
+      "city": "hamilton",
+      "name": "Shelly Bay Park",
+      "archetype": "park-landscape",
+      "subject": "Shelly Bay Park: a lawn park behind a sheltered beach with a mangrove inlet and playground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "bay-park",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1e8",
+          "#a9c9dc",
+          "#f3e2a6"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/175194099",
+          "what": "OSM footprint 266.9x174.4 m, 31211 m2 (match: name)"
+        }
+      ],
+      "notes": "Only the park outline is measured (267x174 m). Contents typed; keep to the shore: sand, shallow bay, lawn."
+    },
+    "hamilton-osm-way-181381774": {
+      "venueId": "hamilton-osm-way-181381774",
+      "city": "hamilton",
+      "name": "Fort St. Catherine",
+      "archetype": "heritage-fort",
+      "subject": "The grey limestone coastal fort at the north-east tip of St. George's island, with battlemented walls, a keep, and 10-inch Victorian muzzle-loading guns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "victorian-sea-fort",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#9a9a92",
+          "#c9c4b8",
+          "#6f6a60"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 6,
+          "note": "RML 10-inch guns from Fort Albert, displayed"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "victorian",
+      "era": "1614 original, rebuilt 5 times, last late 19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_St._Catherine",
+          "what": "wooden fort 1612, stone fort 1614, rebuilt five times, last at end of 19th century; mounts RML 10-inch guns; houses military museum; exposed position, not earthwork-protected"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/181381774",
+          "what": "OSM footprint 130x70.1 m, 4457 m2 (match: name)"
+        }
+      ],
+      "notes": "Footprint 130x70 m (4457 m2) measured. I recall a moat and drawbridge but the source does not state them; omitted. Grey weathered limestone is the dominant tone."
+    },
+    "hamilton-osm-way-181381778": {
+      "venueId": "hamilton-osm-way-181381778",
+      "city": "hamilton",
+      "name": "St. David's Battery",
+      "archetype": "heritage-fort",
+      "subject": "The derelict 1910 gun battery on Great Head cliff: a row of concrete gun emplacements with two 9.2-inch and two 6-inch guns, barracks and parade ground behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 168,
+        "depth_m": 58,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "coastal-battery",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#a39f94",
+          "#c4bfb2",
+          "#6f6a60"
+        ],
+        "roofColour": "#b5b8ba",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 4,
+          "note": "two 9.2-inch and two 6-inch breech-loading guns on pivot mounts"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1910",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._David%27s_Battery,_Bermuda",
+          "what": "completed 1910 by Royal Engineers, two 9.2-inch and two 6-inch guns on central pivot mounts, underground magazines, barracks and parade ground behind, searchlight station in cliff, derelict, now Great Head Park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/181381778",
+          "what": "OSM footprint 168.4x58.4 m, 3955 m2 (match: name)"
+        }
+      ],
+      "notes": "Concrete platforms on a cliff-top, big guns visible, low barracks building behind. Guns have some corrosion."
+    },
+    "hamilton-osm-way-183907775": {
+      "venueId": "hamilton-osm-way-183907775",
+      "city": "hamilton",
+      "name": "Somerset Country Squire",
+      "archetype": "restaurant",
+      "subject": "A waterfront pub-restaurant in Somerset village: a two-storey pastel Bermudian building with a white roof and a veranda over the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "waterside-pub",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#a9c9dc",
+          "#f4f1e8",
+          "#f3e2a6"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/183907775",
+          "what": "OSM footprint 27.2x12.9 m, 351 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM: restaurant building 27x13 m. Colours and veranda typed from the Somerset village style."
+    },
+    "hamilton-osm-way-326975395": {
+      "venueId": "hamilton-osm-way-326975395",
+      "city": "hamilton",
+      "name": "King Edward VII Memorial Hospital (Bermuda)",
+      "archetype": "hospital",
+      "subject": "Bermuda's main hospital in Paget: a large cluster of three- to five-storey pastel blocks with white roofs and a glazed entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 187,
+        "depth_m": 132,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "acute-hospital-campus",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f1e8",
+          "#a9c9dc",
+          "#b5b8ba"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1920 hospital, 2014 wing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/6441817",
+          "what": "OSM footprint 186.7x132.3 m, 11594 m2 (match: name)"
+        }
+      ],
+      "notes": "I could not open a page for the Bermuda hospital (the Wikipedia title fetched was the Falkland Islands hospital with the same name, so ignored). OSM gives a 187x132 m campus; heights, wing styles and the helipad are from general knowledge, confidence low."
+    },
+    "hamilton-osm-way-717069727": {
+      "venueId": "hamilton-osm-way-717069727",
+      "city": "hamilton",
+      "name": "St. John's Anglican Church (Pembroke)",
+      "archetype": "church-classical",
+      "subject": "The white Pembroke parish church: a long pale nave with a squat tower and an apse, white painted walls and a stepped white roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "parish-church-with-tower",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "limestone",
+        "colours": [
+          "#f4f1e8",
+          "#d9d3c0",
+          "#8f9498"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bells added 1970"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 2,
+          "note": "Bermudian stepped buttresses"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "church began c.1621, rebuilt after fires 1721 and 1821",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._John_the_Evangelist,_Bermuda",
+          "what": "original church 1621-25, rebuilt after fire 1721 and 1821, tower reconstructed, bells added 1970, apse added later, enlarged several times"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/717069727",
+          "what": "OSM building:colour=white, footprint 54x28 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/717069727",
+          "what": "OSM footprint 54.1x28.1 m, 824 m2 (match: name)"
+        }
+      ],
+      "notes": "White colour is tagged in OSM. Tower style and apse presence are sourced; the number of arches and buttresses are typed."
+    },
+    "hamilton-osm-way-834197246": {
+      "venueId": "hamilton-osm-way-834197246",
+      "city": "hamilton",
+      "name": "Masterworks Museum of Bermuda Art",
+      "archetype": "museum-theatre",
+      "subject": "The Masterworks museum in the Botanical Gardens: a converted mid-1800s arrowroot factory, a long stone-and-render building with a white stepped roof and a modern glazed extension",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "converted-factory",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6cc",
+          "#a9c9dc",
+          "#8f8a80"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "mid-1800s factory, 2008 museum",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Masterworks_Museum_of_Bermuda_Art",
+          "what": "former arrowroot factory dating to the mid-1800s, renovated 2004-2008 into a 16,000 sq ft space; Botanist Cafe in indoor-outdoor setting"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/834197246",
+          "what": "OSM footprint 40.3x25.2 m, 594 m2 (match: name)"
+        }
+      ],
+      "notes": "Age and area sourced; exterior colours and glazed extension are typed from images I recall; confidence medium."
+    },
+    "hamilton-osm-way-834354832": {
+      "venueId": "hamilton-osm-way-834354832",
+      "city": "hamilton",
+      "name": "Bermuda Botanical Gardens",
+      "archetype": "park-landscape",
+      "subject": "The 36-acre botanical gardens in Paget with lawns, specimen trees, glasshouse and the pastel Camden premier's residence",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "botanical-garden",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2c6c6",
+          "#f4f1e8",
+          "#8f8a80"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Camden house reception pavilion"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1896 land purchase",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bermuda_Botanical_Gardens",
+          "what": "36 acres (15 ha) of flowers, shrubs and trees in Paget; began with 10 acres bought under the Public Garden Act 1896; includes Camden, official residence of the Premier"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/834354832",
+          "what": "OSM footprint 614.9x381.9 m, 131912 m2 (match: name)"
+        }
+      ],
+      "notes": "Park is far larger than the clamp; show a lawn with a few trees and a pastel colonial house. Fountain is from a general garden layout and not verified."
+    },
+    "hamilton-osm-way-834369428": {
+      "venueId": "hamilton-osm-way-834369428",
+      "city": "hamilton",
+      "name": "Old Devonshire Church",
+      "archetype": "church-classical",
+      "subject": "A small cruciform limestone church with white-washed walls and a stepped white roof, rebuilt after a 1970 fire, set in a graveyard",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "cruciform-parish-church",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#f4f1e8",
+          "#d9d3c0",
+          "#8f8a80"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "graveyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1620s, rebuilt 1716 and after 1970 fire",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Old_Devonshire_Church",
+          "what": "cruciform design, limestone walls with cedar joists, Bermuda cedar pews, pulpit and altar screen, rebuilt 1716 and after a 1970 fire, graveyard with a 1817 hearse house"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/834369428",
+          "what": "OSM footprint 22.3x20.5 m, 249 m2 (match: name)"
+        }
+      ],
+      "notes": "Cruciform plan (footprint 22x20 m OSM) is the recognisable thing. White-wash and stepped roof assumed from the Bermudian norm."
+    },
+    "hamilton-osm-way-919300910": {
+      "venueId": "hamilton-osm-way-919300910",
+      "city": "hamilton",
+      "name": "Bermuda Institute of Ocean Sciences",
+      "archetype": "campus-block",
+      "subject": "The marine research campus at Ferry Reach: low pastel laboratory blocks on a waterfront with a dock for the research vessel",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 154,
+        "depth_m": 147,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "waterfront-labs",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e8",
+          "#a9c9dc",
+          "#f3e2a6"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "research vessel dock"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1932 station",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bermuda_Institute_of_Ocean_Sciences",
+          "what": "at Ferry Reach, St. George's; working waterfront with a dock for R/V Atlantic Explorer"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/919300910",
+          "what": "OSM footprint 154.2x146.9 m, 14899 m2 (match: name)"
+        }
+      ],
+      "notes": "The 154x147 m OSM polygon is the campus; the buildings are not described anywhere I could open. Typed."
+    },
+    "hamilton-quiet-reflection": {
+      "venueId": "hamilton-quiet-reflection",
+      "city": "hamilton",
+      "name": "St. Anthony's Catholic Church (Warwick)",
+      "archetype": "church-modern",
+      "subject": "Warwick Catholic church of 1957-58: a plain white modern nave with a low-pitch roof and a freestanding or attached bell cross",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable",
+        "variant": "mid-century-parish-church",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1e8",
+          "#d9d3c0",
+          "#8f9498"
+        ],
+        "roofColour": "#e6e2d6",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1957-58",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Anthony%27s_Church,_Warwick",
+          "what": "built and consecrated 1957-1958 at 26 Middle Road, Warwick; devotion of the Portuguese community"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/424119495",
+          "what": "OSM footprint 27x19.4 m, 400 m2 (match: name)"
+        }
+      ],
+      "notes": "Only the date, address and name are sourced; OSM footprint 27x19 m. Appearance typed."
+    },
+    "hamilton-recreation": {
+      "venueId": "hamilton-recreation",
+      "city": "hamilton",
+      "name": "Victoria Park",
+      "archetype": "park-landscape",
+      "subject": "Victoria Park, a city-block park in central Hamilton with a restored Victorian bandstand, flower beds, shaded paths and a perimeter fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 88,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "city-block-park",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f4f1e8",
+          "#a9c9dc",
+          "#2f6b4f"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "1889 Golden Jubilee bandstand, restored 2008-09"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1889",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victoria_Park,_Hamilton,_Bermuda",
+          "what": "full city block bounded by Victoria St, Washington St, Dundonald St, Cedar Ave; bandstand installed 1889 for the Golden Jubilee, restored 2008-09; flower gardens and endemic plants"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/75243034",
+          "what": "OSM footprint 89.5x87.6 m, 7638 m2 (match: name)"
+        }
+      ],
+      "notes": "Bandstand in the middle, urban frame of pastel shops around; bandstand colour (white with green roof) is typed."
+    },
+    "hamilton-transit": {
+      "venueId": "hamilton-transit",
+      "city": "hamilton",
+      "name": "St. George's Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "The small ferry landing at St. George's: a low pastel waiting shed and ticket hut on a stone quay with a dock",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "variant": "ferry-shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "limestone",
+        "colours": [
+          "#f3e2a6",
+          "#f4f1e8",
+          "#a9c9dc"
+        ],
+        "roofColour": "#f3f1ea",
+        "roofMaterial": "slate",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/182703352",
+          "what": "OSM footprint 23.5x16.8 m, 264 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "OSM building 24x17 m. Appearance typed from the Bermudian vernacular."
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/402347930",
+   "used": "containing-quality retail building (38 x 28 m) around the venue; not used for the outline because the unit itself is a 20 x 14 m franchise outlet per the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "unit",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#a24a36",
+    "plinth": 0.3,
+    "parapet": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-bay",
+   "footprint": {
+    "rect": [
+     5,
+     2
+    ]
+   },
+   "at": [
+    -4,
+    -8
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a24a36",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a3a3a",
+    "material": "membrane"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "aw",
+   "at": [
+    5,
+    -7.2,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 2.2,
+    "colours": [
+     "#3a3a3a",
+     "#a24a36"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "sb",
+   "at": [
+    7,
+    -7.5,
+    4.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 0,
+    "colour": "#a24a36",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "patio",
+   "at": [
+    6,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "colours": [
+     "#efe6d2",
+     "#a24a36",
+     "#3a3a3a"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "cp",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 8,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lp",
+   "at": [
+    16,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   50,
+   40
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the outlet found; compact glass-fronted unit with awning and patio is typed from the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-meal-stop"
+}

@@ -1,0 +1,170 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1040063451",
+   "used": "289 m2 outline, a wide auditorium plan with a stepped front, turned about 76 degrees"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Sokoto",
+   "used": "typed Pentecostal auditorium: plain wide hall, low-pitch metal roof, glazed front, blank signboard, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "auditorium",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -14
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#2f4a5c",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6b6e70",
+    "material": "metal-sheet",
+    "pitch": 10,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 4,
+    "height": 3.6,
+    "colour": "#2f4a5c",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "bottom": 2.4,
+    "colour": "#2f4a5c",
+    "frameColour": "#c9a77c"
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 30,
+    "depth": 9,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -30
+     ],
+     [
+      30,
+      -30
+     ],
+     [
+      30,
+      24
+     ],
+     [
+      -30,
+      24
+     ],
+     [
+      -30,
+      -30
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.8,
+    "pillar": 0.8,
+    "colour": "#2f4a5c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -26,
+     18
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   75,
+   65
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "mountain-of-fire-sokoto",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Real outline only; facade, roof and canopy typed from the brief, no photo found."
+ }
+}

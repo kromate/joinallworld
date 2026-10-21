@@ -1,0 +1,514 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emirs_Palace_Gombe.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gwanki",
+   "view": "front",
+   "file": "/tmp/places-evidence/gombe/palace2.jpg",
+   "used": "long cream arcaded front with round-arched ground bays, two open flat-roofed rooftop pavilions either side of a central white block carrying a small green dome, arched-panel wall at left, taller grey-brown block at right, red laterite forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1085805711",
+   "used": "checked only (61 m2 outbuilding, not the palace, so not used as footprint)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 40,
+  "aspect": 1.164
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     48,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cc",
+    "windows": "none",
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4,
+      "opening": 0.7,
+      "height": 0.65,
+      "depth": 1.0,
+      "colour": "#1f1b18",
+      "pierColour": "#ece3cc"
+     }
+    ],
+    "glassColour": "#2a2420"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc3",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-tower",
+   "footprint": {
+    "rect": [
+     11,
+     8
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "rotDeg": 0,
+   "z0": 6.5,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d2",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    3,
+    11
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#2f6b62",
+    "profile": [
+     [
+      2.0,
+      0
+     ],
+     [
+      2.0,
+      1.0
+     ],
+     [
+      2.0,
+      1.1
+     ],
+     [
+      2.1,
+      1.3
+     ],
+     [
+      1.9,
+      2.0
+     ],
+     [
+      1.4,
+      2.6
+     ],
+     [
+      0.5,
+      3.0
+     ],
+     [
+      0,
+      3.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -12.5,
+    0,
+    6.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 11,
+    "depth": 8,
+    "height": 3.0,
+    "columns": 4,
+    "colour": "#f1ece0",
+    "edgeColour": "#f1ece0",
+    "thickness": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    12.5,
+    0,
+    6.5
+   ],
+   "params": {
+    "form": "flat",
+    "width": 11,
+    "depth": 8,
+    "height": 3.0,
+    "columns": 4,
+    "colour": "#f1ece0",
+    "edgeColour": "#f1ece0",
+    "thickness": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wall",
+   "footprint": {
+    "rect": [
+     24,
+     1.5
+    ]
+   },
+   "at": [
+    -36,
+    -5.25
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4c8",
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 6,
+      "opening": 0.92,
+      "height": 0.88,
+      "depth": 0.3,
+      "colour": "#c8a26a",
+      "pierColour": "#efe4c8"
+     }
+    ],
+    "glassColour": "#c8a26a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6dcc3"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "right-block",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    32,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c8070",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.3,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5,
+      "opening": 0.6,
+      "height": 0.7,
+      "depth": 0.8,
+      "colour": "#1f1b18",
+      "pierColour": "#8c8070"
+     }
+    ],
+    "glassColour": "#2a2420"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7062",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-court-w",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    -5,
+    28
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dec3",
+    "windows": "arched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-court-e",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    28,
+    36
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc2",
+    "windows": "arched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -55,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "thickness": 0.4,
+    "colour": "#e6dcc3"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    3,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -20,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -58,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#223055"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#f2f2f2",
+    "count": 2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch--5--2.5",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -5,
+    -2.5
+   ],
+   "z0": 11,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch--5-5.5",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    -5,
+    5.5
+   ],
+   "z0": 11,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch-5--2.5",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    5,
+    -2.5
+   ],
+   "z0": 11,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "notch-5-5.5",
+   "footprint": {
+    "rect": [
+     1.2,
+     1.2
+    ]
+   },
+   "at": [
+    5,
+    5.5
+   ],
+   "z0": 11,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f4efe2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "emirs-palace-gombe",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Rooftop pavilions render as thin slabs with posts that are hard to see from the camera; left-wall panels have mullions; ground colour is fixed by the renderer (laterite already set); rear court is typed, not seen."
+ }
+}

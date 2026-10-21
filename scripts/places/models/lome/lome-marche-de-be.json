@@ -1,0 +1,348 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-marche-de-be",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Deventure_du_march%C3%A9_de_B%C3%A8_%C3%A0_Lom%C3%A9.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AHLIDJA",
+   "view": "front",
+   "file": "/tmp/places-evidence/lome/be2.jpg",
+   "used": "entrance front: low one-storey peach and orange rendered block with a wide deep-overhang flat roof, central open entrance bay under a blank board, barred punched windows, stalls with grey-white umbrellas and awnings spilling onto the forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Au_sein_du_march%C3%A9_de_B%C3%A8_%C3%A0_Lom%C3%A9.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AHLIDJA",
+   "view": "interior",
+   "file": "/tmp/places-evidence/lome/be1.jpg",
+   "used": "interior reading only: market hall of concrete floor, rust-orange round columns and a dark tin-sheet roof, stalls on low tables (colours and the one-storey height)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1012402865",
+   "used": "footprint (name match, 2620 m2)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 5,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9b070",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "faces": {
+     "front": "punched",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9792f",
+    "material": "concrete",
+    "overhang": 1.6,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     6,
+     1.4
+    ]
+   },
+   "at": [
+    17.89,
+    -17.96
+   ],
+   "rotDeg": 40,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2a2420",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9792f",
+    "overhang": 0.3,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-fascia",
+   "footprint": {
+    "rect": [
+     9,
+     2.6
+    ]
+   },
+   "at": [
+    18.34,
+    -18.5
+   ],
+   "rotDeg": 40,
+   "z0": 4.2,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9792f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9792f",
+    "overhang": 0.2,
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corbel-l",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.2
+    ]
+   },
+   "at": [
+    15.26,
+    -20.43
+   ],
+   "rotDeg": 40,
+   "z0": 3.4,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9792f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "corbel-r",
+   "footprint": {
+    "rect": [
+     0.9,
+     1.2
+    ]
+   },
+   "at": [
+    20.77,
+    -15.8
+   ],
+   "rotDeg": 40,
+   "z0": 3.4,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9792f",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    17.24,
+    -17.19,
+    5.0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "width": 8,
+    "height": 2.5,
+    "bottom": 0.1,
+    "colour": "#f2eee4",
+    "frameColour": "#d9792f",
+    "posts": false
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    4.55,
+    -31.63,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "count": 5,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#c9d3dc",
+     "#7f95a8",
+     "#e8e2d2"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    16.49,
+    -22.52,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "count": 5,
+    "pitch": 2.6,
+    "kind": "awning",
+    "size": 1.1,
+    "colours": [
+     "#7f95a8",
+     "#e8e2d2",
+     "#e8e2d2"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    27.47,
+    -12.27,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "count": 5,
+    "pitch": 2.6,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#e8e2d2",
+     "#9fb0bd",
+     "#e8e2d2"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    33.98,
+    -7.59,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "count": 5,
+    "pitch": 2.6,
+    "kind": "awning",
+    "size": 1.1,
+    "colours": [
+     "#9fb0bd",
+     "#c9d3dc",
+     "#e8e2d2"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    15.23,
+    -27.24,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 4,
+    "colours": [
+     "#c9d3dc",
+     "#7f95a8",
+     "#e8e2d2",
+     "#9fb0bd"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    26.84,
+    -16.19,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 3,
+    "colours": [
+     "#c9d3dc",
+     "#7f95a8",
+     "#e8e2d2",
+     "#9fb0bd"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "forecourtDepth": 10,
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "entrance bay, big board, ochre walls, orange fascia and front stall clutter added; the photo is a tight close-up so the wide OSM block is far longer than seen, stall goods are generic, no utility pole or wires"
+ }
+}

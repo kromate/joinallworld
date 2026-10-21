@@ -1,0 +1,237 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-node-1343582898",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/563704347",
+   "used": "building=retail outline, name match 'marche Musaga', 7173 m2"
+  },
+  {
+   "kind": "text",
+   "used": "brief: large corrugated roof hall with stalls spilling into yard; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 0.8
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d2c4",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#b5603f"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f93",
+    "material": "corrugated",
+    "rise": 1.8,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8.0,
+    40.0,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "length": 30,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "none",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    56.0,
+    28.0,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -56.0,
+    28.0,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "length": 24,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "yam",
+    "roof_colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls0",
+   "lod": [
+    0
+   ],
+   "at": [
+    -32.0,
+    -48.0,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls1",
+   "lod": [
+    0
+   ],
+   "at": [
+    8.0,
+    -49.6,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "count": 8,
+    "pitch": 3.0,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls2",
+   "lod": [
+    0
+   ],
+   "at": [
+    48.0,
+    -36.0,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "count": 7,
+    "pitch": 3.0,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls3",
+   "lod": [
+    0
+   ],
+   "at": [
+    -60.0,
+    0.0,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no photo: hall roof/outline from OSM, shed positions and stall rows invented; one large roof where real hall likely has several"
+ }
+}

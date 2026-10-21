@@ -1,0 +1,109 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-creative-studio",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/881005835",
+   "used": "containing footprint, rotated rectangle about 12.5 x 24 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "studio",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 40
+   },
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfa58c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#2f4a8a",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "balconies"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e4a3a",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.8,
+    "colours": [
+     "#2f4a8a",
+     "#f2efe6"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; footprint is real OSM, everything above it (roof, veranda, balconies, colours) follows the brief"
+ }
+}

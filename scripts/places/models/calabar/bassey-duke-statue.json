@@ -1,0 +1,151 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Duke_Town",
+   "used": "No photo found; OSM building is 24 m away and not the statue so not used. Chief statue on stepped stone plinth at a road junction with low railing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 12,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "round-paving",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#cfc8b6"
+     ],
+     [
+      6.2,
+      0,
+      "#cfc8b6"
+     ],
+     [
+      6.2,
+      0.25,
+      "#8e8b82"
+     ],
+     [
+      5.8,
+      0.25,
+      "#8e8b82"
+     ],
+     [
+      5.8,
+      0.12,
+      "#cfc8b6"
+     ]
+    ],
+    "segments": 28
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "id": "statue",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "height": 6.2,
+    "plinthHeight": 2.8,
+    "colour": "#6b5a44",
+    "plinthColour": "#8e8b82"
+   }
+  },
+  {
+   "type": "array",
+   "id": "railing-ring",
+   "params": {
+    "mode": "circle",
+    "count": 18,
+    "radius": 5.0,
+    "facing": "outward",
+    "of": {
+     "type": "railing",
+     "params": {
+      "length": 1.9,
+      "height": 0.9,
+      "colour": "#3a3d41"
+     }
+    }
+   },
+   "at": [
+    0,
+    0,
+    0.12
+   ]
+  },
+  {
+   "type": "tree",
+   "id": "palm1",
+   "at": [
+    -9,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm2",
+   "at": [
+    9,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamp",
+   "at": [
+    7,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "forecourtDepth": 12,
+  "trees": [],
+  "extent": [
+   36,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "bassey-duke-statue",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; statue figure is a generic standing chief, OSM building not the statue so layout is typical junction island"
+ }
+}

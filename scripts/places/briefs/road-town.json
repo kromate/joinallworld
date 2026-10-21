@@ -1,0 +1,1387 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "road-town",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "road-town",
+    "climate": "tropical-maritime",
+    "vernacular": "Small British Overseas Territory capital on Tortola: low-rise (1-3 storey) painted concrete and stone buildings with verandahs and louvred shutters, pastel Caribbean shopfronts along Main Street, corrugated or standing-seam metal roofs in red and green, older cut-stone colonial structures such as the 1774 prison and forts, a reclaimed Wickham’s Cay with newer marina and commercial blocks; steep green hills, palms and sea-grape on the shore, timber and thatch beach bars on outer islands.",
+    "wallColours": [
+      "#f6f3ea",
+      "#f2d98a",
+      "#e8b4a6",
+      "#7cc4c0",
+      "#b9b2a2",
+      "#d9c9a8",
+      "#c9703f"
+    ],
+    "roofColours": [
+      "#a8372f",
+      "#3f7a58",
+      "#8d9296",
+      "#5a6a78"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "stone",
+      "timber",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "clay-tile"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Caribbean gingerbread trim, louvred shutters and verandah posts in white; pastel-painted shopfronts and wooden beach bars; colonial cut-stone forts and prison; flag and Virgin Islands coat-of-arms signage.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Road_Town",
+        "what": "oldest building HM Prison 1774 on Main Street; Old Government House, House of Assembly and old Post Office on Main Street; Fort Burt and Fort George; Wickham’s Cay reclaimed 28 ha with marina and commercial buildings; ferry terminal. Wall and roof hex colours are typical palette choices for Caribbean towns, not measured."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Terrance_B._Lettsome_International_Airport",
+        "what": "Beef Island airport terminal rebuilt in 2004 renovation"
+      }
+    ]
+  },
+  "places": {
+    "road-town-airport-road-town-airport": {
+      "venueId": "road-town-airport-road-town-airport",
+      "city": "road-town",
+      "name": "Terrance B. Lettsome International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terrance B. Lettsome International Airport on Beef Island: a low modern terminal rebuilt in 2004 with a control tower beside a short runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 112,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f6f3ea",
+          "#7cc4c0",
+          "#d9c9a8"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "around 150 stalls"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Terrance_B._Lettsome_International_Airport",
+          "what": "2004 renovation of about $55 million: new 46,000 sq ft (4,300 m2) terminal, new control tower, larger apron, 150 parking stalls; runway 1,415 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/424714243",
+          "what": "OSM footprint 111.8 x 60.1 m, area 5395 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7703252",
+          "what": "Wikidata entry Terrance B. Lettsome International Airport"
+        }
+      ],
+      "notes": "The terminal and tower are sourced; the Wikipedia article does not describe architecture, so colours and hipped metal roof are typed. Smaller than Quito and Abuja terminals; only a regional jet apron."
+    },
+    "road-town-clinic": {
+      "venueId": "road-town-clinic",
+      "city": "road-town",
+      "name": "Peebles Hospital",
+      "archetype": "hospital",
+      "subject": "Peebles Hospital in Road Town: the new six-storey main building behind the original 1922 hospital",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 47,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f6f3ea",
+          "#7cc4c0",
+          "#b9b2a2"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s (original 1922)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Peebles_Hospital",
+          "what": "main building six storeys plus mechanical penthouse, about 168,700 sq ft; built immediately behind the original hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398735671",
+          "what": "OSM footprint 47.5 x 46.9 m, area 2227 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q23926484",
+          "what": "Wikidata entry Peebles Hospital"
+        }
+      ],
+      "notes": "6 storeys plus penthouse and 168,700 sq ft (15,700 m2) match the 47.5 x 46.9 m OSM footprint (about 2,230 m2 x 7 levels). Colours typed; helipad is a guess for a hospital this size, drop if not needed."
+    },
+    "road-town-community-notices": {
+      "venueId": "road-town-community-notices",
+      "city": "road-town",
+      "name": "Department of Motor Vehicles",
+      "archetype": "civic-small",
+      "subject": "the Department of Motor Vehicles in the West End area, a small government office",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2d98a",
+          "#3f7a58",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/336882327",
+          "what": "OSM footprint 26 x 15.2 m, area 362 m2 (measured)"
+        }
+      ],
+      "notes": "Only a 26 x 15 m OSM building with the name. No photos described; typed as a pastel one-storey government office with hipped metal roof."
+    },
+    "road-town-community-voting-game": {
+      "venueId": "road-town-community-voting-game",
+      "city": "road-town",
+      "name": "Virgin Islands Supreme Court",
+      "archetype": "civic-small",
+      "subject": "the Virgin Islands Supreme Court (High Court) building in Road Town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f6f3ea",
+          "#b9b2a2",
+          "#3f7a58"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "verandah entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/399711084",
+          "what": "OSM footprint 16.1 x 13.8 m, area 222 m2 (measured)"
+        }
+      ],
+      "notes": "OSM courthouse polygon is only 16 x 14 m; the actual court may occupy a larger complex. Typed as a two-storey colonial-style building with a verandah, unverified."
+    },
+    "road-town-community-workshop": {
+      "venueId": "road-town-community-workshop",
+      "city": "road-town",
+      "name": "H. Lavity Stoutt Community College",
+      "archetype": "campus-block",
+      "subject": "H. Lavity Stoutt Community College at Paraquita Bay: a three-storey academic building and an auditorium",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f6f3ea",
+          "#7cc4c0",
+          "#d9c9a8"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open walkways"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "1993 onwards",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/H._Lavity_Stoutt_Community_College",
+          "what": "moved in 1993 into a new three-storey building at Paraquita Bay; 15 classrooms and labs above, administration on the ground floor; Eileene L. Parsons auditorium"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398580541",
+          "what": "OSM footprint 739.6 x 439.2 m, area 224371 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15222431",
+          "what": "Wikidata entry H. Lavity Stoutt Community College"
+        }
+      ],
+      "notes": "Campus polygon is 740 x 439 m; the model shows the main 3-storey academic block. Colours and layout typed."
+    },
+    "road-town-market-game": {
+      "venueId": "road-town-market-game",
+      "city": "road-town",
+      "name": "Harbour Market",
+      "archetype": "market-hall",
+      "subject": "Harbour Market, a small pastel shopping and market building on the waterfront at Soper’s Hole in West End",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8b4a6",
+          "#7cc4c0",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "upper verandah"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/338335336",
+          "what": "OSM footprint 21.1 x 17.2 m, area 298 m2 (measured)"
+        }
+      ],
+      "notes": "Commercial 21 x 17 m polygon; location suggests the Soper’s Hole wharf complex of pastel Caribbean shops, but that identification is unverified. Typed as a two-storey painted shop with verandah and gable."
+    },
+    "road-town-meal-stop": {
+      "venueId": "road-town-meal-stop",
+      "city": "road-town",
+      "name": "Fat Hogs Bob",
+      "archetype": "restaurant",
+      "subject": "Fat Hogs Bob’s, a waterside open-air bar and grill on the east end of Tortola",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9703f",
+          "#7cc4c0",
+          "#f6f3ea"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/521985213",
+          "what": "OSM footprint 40.7 x 14.3 m, area 482 m2 (measured)"
+        }
+      ],
+      "notes": "41 x 14 m building only. Typed as a long open timber bar with shed roof facing the water."
+    },
+    "road-town-osm-node-13623762300": {
+      "venueId": "road-town-osm-node-13623762300",
+      "city": "road-town",
+      "name": "Big Fig Tree",
+      "archetype": "park-landscape",
+      "subject": "Big Fig Tree, a landmark mature fig tree beside the road",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "landmark-tree"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#4d7a5c",
+          "#8a5a3a",
+          "#c9b48f"
+        ],
+        "roofColour": "#8a5a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Road_Town",
+          "what": "city style only; no description of this venue found"
+        }
+      ],
+      "notes": "Just a point; nothing findable. The generator can render a single huge broadleaf tree on a lawn with a low wall."
+    },
+    "road-town-osm-node-13714339195": {
+      "venueId": "road-town-osm-node-13714339195",
+      "city": "road-town",
+      "name": "Island Tours & Taxi gathering",
+      "archetype": "transport-station",
+      "subject": "Island Tours & Taxi gathering, a taxi rank shelter in Road Town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed",
+        "variant": "taxi-rank"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#f2d98a",
+          "#3f7a58",
+          "#f6f3ea"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/673906491",
+          "what": "OSM footprint 40.8 x 16.8 m, area 686 m2 (measured)"
+        }
+      ],
+      "notes": "41 x 17 m building nearest the node. Typed as a roofed taxi shelter at the waterfront."
+    },
+    "road-town-osm-node-2762140557": {
+      "venueId": "road-town-osm-node-2762140557",
+      "city": "road-town",
+      "name": "Swim with Dolphins",
+      "archetype": "park-landscape",
+      "subject": "Swim with Dolphins, a dolphin lagoon attraction with a low welcome building and pens",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 33,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "lagoon-attraction"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f6f3ea",
+          "#7cc4c0",
+          "#e8b4a6"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1187685510",
+          "what": "OSM footprint 33.3 x 31.3 m, area 929 m2 (measured)"
+        }
+      ],
+      "notes": "A 33 x 31 m building by the water. Nothing on appearance found; typed with floating pier and shelters."
+    },
+    "road-town-osm-node-3985384932": {
+      "venueId": "road-town-osm-node-3985384932",
+      "city": "road-town",
+      "name": "JR O'Neal Trail",
+      "archetype": "park-landscape",
+      "subject": "JR O’Neal Trail, a hillside nature trail with a small trailhead shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "trailhead"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#4d7a5c",
+          "#8a5a3a",
+          "#c9b48f"
+        ],
+        "roofColour": "#8a5a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Road_Town",
+          "what": "city style only; no description of this venue found"
+        }
+      ],
+      "notes": "Viewpoint node only; no source on the trail. Typed as a timber trailhead among broadleaf forest."
+    },
+    "road-town-osm-node-4014810501": {
+      "venueId": "road-town-osm-node-4014810501",
+      "city": "road-town",
+      "name": "Tortola Express",
+      "archetype": "market-hall",
+      "subject": "Tortola Express, a mid-size commercial building on the Road Town waterfront",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2d98a",
+          "#7cc4c0",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/398613089",
+          "what": "OSM footprint 76.4 x 31.6 m, area 2120 m2 (measured)"
+        }
+      ],
+      "notes": "Commercial building 76 x 32 m (OSM). Business details unknown; typed as a two-storey trading block with awning shopfronts."
+    },
+    "road-town-osm-node-4653554739": {
+      "venueId": "road-town-osm-node-4653554739",
+      "city": "road-town",
+      "name": "Half Moon Point",
+      "archetype": "park-landscape",
+      "subject": "Half Moon Point, a small headland lookout on the south coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 20,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "coastal-point"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b2a2",
+          "#4d7a5c",
+          "#f6f3ea"
+        ],
+        "roofColour": "#b9b2a2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small beach shelter"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/521982426",
+          "what": "OSM footprint 6.6 x 5.7 m, area 28 m2 (measured)"
+        }
+      ],
+      "notes": "Tiny 6.6 x 5.7 m building next to a coastal point; nothing described. Rocky point with shelter."
+    },
+    "road-town-osm-node-4736438731": {
+      "venueId": "road-town-osm-node-4736438731",
+      "city": "road-town",
+      "name": "Cane Garden Beach",
+      "archetype": "park-landscape",
+      "subject": "Cane Garden Beach (Cane Garden Bay) on the north coast: a sandy crescent bay backed by beach bars and green hills",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "beach"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8b4a6",
+          "#7cc4c0",
+          "#f2d98a"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "colourful beach bars"
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1186113754",
+          "what": "OSM footprint 40 x 36.7 m, area 739 m2 (measured)"
+        }
+      ],
+      "notes": "Wikipedia fetch failed; description is from general knowledge: pale sand crescent, small pastel bars on the back beach, steep hills. Footprint of the nearest building is 40 x 37 m."
+    },
+    "road-town-osm-way-25839951": {
+      "venueId": "road-town-osm-way-25839951",
+      "city": "road-town",
+      "name": "Pirates Bight",
+      "archetype": "restaurant",
+      "subject": "Pirates Bight, a timber beach bar and restaurant on Norman Island",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a5a3a",
+          "#7cc4c0",
+          "#f6f3ea"
+        ],
+        "roofColour": "#8a5a3a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2,
+          "note": "pirate-themed bunting"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/25839951",
+          "what": "OSM footprint 25.9 x 25.8 m, area 543 m2 (measured)"
+        }
+      ],
+      "notes": "26 x 26 m building tagged restaurant on Norman Island. Appearance is typed from the beach-bar type; unverified."
+    },
+    "road-town-osm-way-398441044": {
+      "venueId": "road-town-osm-way-398441044",
+      "city": "road-town",
+      "name": "Culture Ville",
+      "archetype": "market-open",
+      "subject": "Culture Ville, a tiny artists’ market kiosk at Trellis Bay on Beef Island",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "craft-kiosk"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8b4a6",
+          "#7cc4c0",
+          "#f2d98a"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/398441044",
+          "what": "OSM footprint 9.7 x 9.3 m, area 90 m2 (measured)"
+        }
+      ],
+      "notes": "10 x 9 m marketplace in OSM; nothing found. Typed as brightly painted craft stalls."
+    },
+    "road-town-osm-way-398735674": {
+      "venueId": "road-town-osm-way-398735674",
+      "city": "road-town",
+      "name": "Queen Elizabeth Park",
+      "archetype": "park-landscape",
+      "subject": "Queen Elizabeth Park, a green waterfront public park in Road Town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 228,
+        "depth_m": 89,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "waterfront-park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#7aa37a",
+          "#f6f3ea",
+          "#b9b2a2"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/398735674",
+          "what": "OSM footprint 227.7 x 88.7 m, area 16068 m2 (measured)"
+        }
+      ],
+      "notes": "OSM park polygon 228 x 89 m. No description found; typed with lawn, palms, a gazebo-style bandstand and flagpoles."
+    },
+    "road-town-osm-way-399518614": {
+      "venueId": "road-town-osm-way-399518614",
+      "city": "road-town",
+      "name": "The Noel Lloyd Positive Action Movement Park",
+      "archetype": "park-landscape",
+      "subject": "The Noel Lloyd Positive Action Movement Park, a small civic park with memorial elements",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "memorial-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#7aa37a",
+          "#f6f3ea",
+          "#b9b2a2"
+        ],
+        "roofColour": "#8d9296",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/399518614",
+          "what": "OSM footprint 79.9 x 44.9 m, area 3057 m2 (measured)"
+        }
+      ],
+      "notes": "80 x 45 m park; nothing findable. Smaller and more paved than Queen Elizabeth Park."
+    },
+    "road-town-osm-way-521988587": {
+      "venueId": "road-town-osm-way-521988587",
+      "city": "road-town",
+      "name": "Cooper Island Beach Club",
+      "archetype": "restaurant",
+      "subject": "Cooper Island Beach Club, an open-air beach restaurant and bar on Cooper Island",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#b9b2a2",
+          "#8a5a3a",
+          "#f6f3ea"
+        ],
+        "roofColour": "#5a6a78",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/521988587",
+          "what": "OSM footprint 26.4 x 17.2 m, area 301 m2 (measured)"
+        }
+      ],
+      "notes": "Restaurant polygon 26 x 17 m. Details of its look not found; typed as a two-level timber building with a terrace on the beach."
+    },
+    "road-town-quiet-reflection": {
+      "venueId": "road-town-quiet-reflection",
+      "city": "road-town",
+      "name": "St. Williams Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St William’s Catholic Church in Road Town, a small 1957 parish church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f6f3ea",
+          "#b9b2a2",
+          "#3f7a58"
+        ],
+        "roofColour": "#a8372f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1957",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q23681839",
+          "what": "St. William’s Church, Road Town, church building, inception 1957"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/399684164",
+          "what": "OSM footprint 29.5 x 13.9 m, area 328 m2 (measured)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q23681839",
+          "what": "Wikidata entry St. William's Church, Road Town"
+        }
+      ],
+      "notes": "Footprint 29.5 x 13.9 m and year 1957 are sourced. White painted gabled church with a short bell tower is typed."
+    },
+    "road-town-recreation": {
+      "venueId": "road-town-recreation",
+      "city": "road-town",
+      "name": "The Baths National Park",
+      "archetype": "park-landscape",
+      "subject": "The Baths National Park on Virgin Gorda: giant rounded granite boulders forming grottoes and tidal pools along a white-sand beach",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "boulder-beach"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#b9b2a2",
+          "#e8e0c8",
+          "#4d7a5c"
+        ],
+        "roofColour": "#b9b2a2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "boulder arches and tunnels (no boulder feature in the contract)"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Baths",
+          "what": "beach on Virgin Gorda; scattered rounded granite boulders form tidal pools, tunnels, arches and grottoes open to the sea; largest boulders about 12 m long; BVI national park since 1990"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/522092918",
+          "what": "OSM footprint 7.1 x 6.7 m, area 39 m2 (measured)"
+        }
+      ],
+      "notes": "The generator should scatter large rounded grey granite boulders (up to 12 m) with passages between, plus palms and white sand. The OSM building is a 7 x 7 m hut and is not the subject."
+    },
+    "road-town-transit": {
+      "venueId": "road-town-transit",
+      "city": "road-town",
+      "name": "Great Harbour Ferry Dock",
+      "archetype": "transport-station",
+      "subject": "Great Harbour Ferry Dock on Jost Van Dyke: a small ferry landing with a short pier and shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "ferry-landing"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#e8b4a6",
+          "#7cc4c0",
+          "#f6f3ea"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jost_Van_Dyke",
+          "what": "Great Harbour is the island’s busiest port with small bars and restaurants lining the beach strip; ferries from Tortola, St Thomas, St John"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/329515788",
+          "what": "OSM footprint 14.2 x 8.6 m, area 122 m2 (measured)"
+        }
+      ],
+      "notes": "Only 14 x 9 m shelter in OSM. Beach strip lined with small bars is sourced; dock shelter details typed."
+    }
+  }
+}

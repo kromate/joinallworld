@@ -1,0 +1,1399 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "vilnius",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "vilnius",
+    "climate": "cold",
+    "vernacular": "Vilnius mixes a pastel Baroque and neoclassical Old Town (plastered brick in ochre, salmon, cream and pale green with white trim, red tile or grey metal roofs), red-brick Gothic and Renaissance churches, timber villas in Zverynas and the villages, and a Soviet belt of grey and pale panel apartment blocks, brick institutes and concrete civic buildings, with new glass offices around the Neris. Steep roofs shed snow; pine, birch and spruce surround most buildings.",
+    "wallColours": [
+      "#e8d3a0",
+      "#d98e73",
+      "#f0ebe0",
+      "#a85a45",
+      "#b8b6ae",
+      "#8fa38a",
+      "#7d6b58"
+    ],
+    "roofColours": [
+      "#a2523b",
+      "#5e5f63",
+      "#7a4a3a",
+      "#3e5a4a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "red-brick",
+      "brick",
+      "concrete",
+      "stucco",
+      "timber",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "slate",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Baroque twin-tower church fronts and pilastered pediments in white plaster; stepped brick gables; wooden fretwork porches on villas; Soviet mosaic and relief panels on civic buildings; wayside crosses and carved wooden chapel-poles in the countryside.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Culture_of_Lithuania",
+        "what": "Lithuanian architecture is chiefly Baroque and neoclassical, with about twenty castles and ethnographic villages"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Vilnius_Airport",
+        "what": "1934-36 three-storey modernist terminal; current terminal 1949-54 in standard Soviet 1950s airport design with sculptures of soldiers, workers and aviators; 1993 departures terminal; 14,400 m2 new departure terminal opened Feb 2025; six boarding bridges"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Vilnius_TV_Tower",
+        "what": "326.5 m, concrete base and hollow reinforced-concrete shaft about 190 m, concrete saucer, steel spike about 136 m, observation deck and rotating cafe at 165 m, built 1974-80, blue LED lighting since 2019"
+      }
+    ]
+  },
+  "places": {
+    "vilnius-airport-vilnius-airport": {
+      "venueId": "vilnius-airport-vilnius-airport",
+      "city": "vilnius",
+      "name": "Vilnius International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Vilnius Airport: the 1950s Soviet-standard terminal with its sculpted front, extended by the 1993 hall and the new 2025 glass departure terminal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "variant": "soviet-plus-glass",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcb5",
+          "#8fa3b0",
+          "#f0ebe0"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "Soviet-era front"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "soldier, worker and aviator sculptures"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1949-54 terminal, 1993 and 2025 additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vilnius_Airport",
+          "what": "1934-36 three-storey modernist terminal; current terminal 1949-54 in standard Soviet 1950s airport design with sculptures of soldiers, workers and aviators; 1993 departures terminal; 14,400 m2 new departure terminal opened Feb 2025; six boarding bridges"
+        }
+      ],
+      "notes": "Sourced: the current building is a standard 1950s Soviet airport design with sculpted soldiers, workers and aviators; 1993 departures hall; new 14,400 m2 departure terminal 2025; six boarding bridges. Colours, dimensions and the classical front are estimates. An earlier 1934-36 three-storey modernist terminal also existed."
+    },
+    "vilnius-clinic": {
+      "venueId": "vilnius-clinic",
+      "city": "vilnius",
+      "name": "Respublikine Vilniaus psichiatrijos ligonine",
+      "archetype": "hospital",
+      "subject": "Vilnius Republican Psychiatric Hospital: a campus of low and mid-rise brick pavilions among trees",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "pavilion-campus",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a85a45",
+          "#e8dcb5",
+          "#b8b6ae"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed from the city style as brick hospital pavilions in woodland."
+    },
+    "vilnius-community-notices": {
+      "venueId": "vilnius-community-notices",
+      "city": "vilnius",
+      "name": "Vilniaus misku urėdija",
+      "archetype": "office-low",
+      "subject": "Vilnius Forest Enterprise: a two-storey timber-and-render regional office",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dcb5",
+          "#7d6b58",
+          "#f0ebe0"
+        ],
+        "roofColour": "#5e5f63",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed forest-office building from the city style."
+    },
+    "vilnius-community-voting-game": {
+      "venueId": "vilnius-community-voting-game",
+      "city": "vilnius",
+      "name": "Tibeto skveras",
+      "archetype": "park-landscape",
+      "subject": "Tibet Square: a small paved city square with trees and benches in central Vilnius",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "pocket-square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8b6ae",
+          "#d9cdb4",
+          "#8a6a4a"
+        ],
+        "roofColour": "#b8b6ae",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "n/a (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only; no description found. Typed as a small paved square."
+    },
+    "vilnius-community-workshop": {
+      "venueId": "vilnius-community-workshop",
+      "city": "vilnius",
+      "name": "Vilniaus technologiju, verslo ir zemes ukio mokykla",
+      "archetype": "campus-block",
+      "subject": "Vilnius Technology, Business and Agriculture School: a long three-storey Soviet-era brick and concrete teaching block with workshops",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b8654a",
+          "#b8b6ae",
+          "#e8dcb5"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed Soviet vocational school block."
+    },
+    "vilnius-market-game": {
+      "venueId": "vilnius-market-game",
+      "city": "vilnius",
+      "name": "Gariunai Market",
+      "archetype": "market-open",
+      "subject": "Gariunai Market: the huge open-air Baltic wholesale market of rows of container stalls and shelters and an enormous car market, seen over a large asphalt yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 250,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "container-rows"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#7b8794",
+          "#c9613c",
+          "#b8b6ae"
+        ],
+        "roofColour": "#7b8794",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 10
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Page lookups failed; basics (largest open market in the Baltics, container-stall rows) are from general knowledge and not source-checked. The generator should clamp to a representative slice."
+    },
+    "vilnius-meal-stop": {
+      "venueId": "vilnius-meal-stop",
+      "city": "vilnius",
+      "name": "Neringa Restoranas",
+      "archetype": "restaurant",
+      "subject": "Neringa restaurant on Gedimino prospektas: a Soviet-era modernist city-centre restaurant with a glazed street front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c6bd",
+          "#7d9bb0",
+          "#e8e8e4"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The restaurant is well known on Gedimino but no source was read; the mid-century modernist glass-front form is recalled, not verified."
+    },
+    "vilnius-osm-node-1758423764": {
+      "venueId": "vilnius-osm-node-1758423764",
+      "city": "vilnius",
+      "name": "Papiskiu piliakalnis",
+      "archetype": "park-landscape",
+      "subject": "Papiskes hillfort: a steep grassy earth mound, flat on top, with a path and wooden steps among pines",
+      "form": {
+        "footprint": "round",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "none",
+        "variant": "hillfort-mound"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8fa07a",
+          "#a9b58a",
+          "#7d6b58"
+        ],
+        "roofColour": "#8fa07a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Iron Age to medieval (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Hillfort (piliakalnis) named only; size is a typed estimate. Differs from the other hillforts by being tallest with pine cover."
+    },
+    "vilnius-osm-node-1764384946": {
+      "venueId": "vilnius-osm-node-1764384946",
+      "city": "vilnius",
+      "name": "Mazosios Rieses piliakalnis",
+      "archetype": "park-landscape",
+      "subject": "Mazoji Riese hillfort: a lower wooded earth mound beside a stream valley",
+      "form": {
+        "footprint": "round",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "hillfort-mound"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7f9470",
+          "#a9b58a",
+          "#7d6b58"
+        ],
+        "roofColour": "#7f9470",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Iron Age to medieval (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Hillfort named only; typed, lower and broadleaf-wooded to differ from Papiskes."
+    },
+    "vilnius-osm-node-267533451": {
+      "venueId": "vilnius-osm-node-267533451",
+      "city": "vilnius",
+      "name": "Vilniaus Gedimino technikos universiteto Elektronikos fakultetas",
+      "archetype": "campus-block",
+      "subject": "VGTU Faculty of Electronics at the wooded Saulėtekis campus: a four-storey concrete and brick faculty block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b8b6ae",
+          "#a85a45",
+          "#e8e8e4"
+        ],
+        "roofColour": "#5e5f63",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s-80s (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vilnius_Gediminas_Technical_University",
+          "what": "Saulėtekis campus is in a wooded neighbourhood of Antakalnis"
+        }
+      ],
+      "notes": "Only the wooded campus setting is sourced; the building is typed."
+    },
+    "vilnius-osm-node-2788684638": {
+      "venueId": "vilnius-osm-node-2788684638",
+      "city": "vilnius",
+      "name": "Liubavas Manor",
+      "archetype": "manor",
+      "subject": "Liubavas Manor: a Baroque estate with an officine and orangery ensemble, terrace ponds and a stone bridge in the Zalesa valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "variant": "baroque-estate",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f0ebe0",
+          "#d98e73",
+          "#b8b6ae"
+        ],
+        "roofColour": "#a2523b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "orangery front"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "baroque",
+      "era": "18th century, mill 1902",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Liubavas_Manor",
+          "what": "11 surviving buildings, 18th-century Baroque officine and orangery ensemble, terrace ponds, 1902 mill, stone-paved road, museum since 2011"
+        }
+      ],
+      "notes": "Sourced: 11 surviving buildings, Baroque officine and orangery, terrace ponds, planted homestead, 1902 mill, museum from 2011. Colours and sizes are estimates, none stated in the source."
+    },
+    "vilnius-osm-node-2964272255": {
+      "venueId": "vilnius-osm-node-2964272255",
+      "city": "vilnius",
+      "name": "Murininku piliakalnis",
+      "archetype": "park-landscape",
+      "subject": "Murininkai hillfort: a small steep pine-covered mound",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "hillfort-mound"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8fa07a",
+          "#a9b58a",
+          "#7d6b58"
+        ],
+        "roofColour": "#8fa07a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Iron Age to medieval (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Hillfort named only; small round pine mound, typed."
+    },
+    "vilnius-osm-node-4515277514": {
+      "venueId": "vilnius-osm-node-4515277514",
+      "city": "vilnius",
+      "name": "TV Tower",
+      "archetype": "monument",
+      "subject": "Vilnius TV Tower: the 326.5 m concrete tower with its saucer at 165 m and a long steel spike, lit blue at night",
+      "form": {
+        "footprint": "round",
+        "width_m": 25,
+        "depth_m": 25,
+        "storeys": 30,
+        "height_m": 326.5,
+        "roof": "none",
+        "variant": "tv-tower"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b8b3",
+          "#8c9196",
+          "#4a82c4"
+        ],
+        "roofColour": "#8c9196",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "steel spike about 136 m"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "concrete base with transmitters and museum"
+        },
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "saucer with rotating cafe at 165 m"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1974-1980",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vilnius_TV_Tower",
+          "what": "326.5 m, concrete base and hollow reinforced-concrete shaft about 190 m, concrete saucer, steel spike about 136 m, observation deck and rotating cafe at 165 m, built 1974-80, blue LED lighting since 2019"
+        }
+      ],
+      "notes": "Sourced: 326.5 m total, hollow concrete shaft about 190 m, concrete saucer, steel spike about 136 m, deck at 165 m. Base plan size (25 m) is an estimate. Storeys=30 is nominal. January 1991 events museum on the ground floor."
+    },
+    "vilnius-osm-node-738082549": {
+      "venueId": "vilnius-osm-node-738082549",
+      "city": "vilnius",
+      "name": "Puckoriu atodanga",
+      "archetype": "park-landscape",
+      "subject": "Puckoriai exposure: a steep sandy river bluff above the Neris with a railed viewing terrace on top",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "none",
+        "variant": "river-bluff"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#c9a77a",
+          "#a9b58a",
+          "#7d6b58"
+        ],
+        "roofColour": "#c9a77a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name and use only (viewing spot). Bluff size and sandy colour are typed."
+    },
+    "vilnius-osm-relation-3662657": {
+      "venueId": "vilnius-osm-relation-3662657",
+      "city": "vilnius",
+      "name": "Vingis Park",
+      "archetype": "park-landscape",
+      "subject": "Vingis Park: the large riverside park with the open-air Song Festival amphitheatre, tall pines and oaks, and paths down to the Neris",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "park-with-amphitheatre"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#a9b58a",
+          "#b8b6ae",
+          "#8a6a4a"
+        ],
+        "roofColour": "#8a6a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "song festival stage"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1965 amphitheatre",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vingis_Park",
+          "what": "157-162 ha park in a bend of the Neris, 1965 amphitheatre modelled on the Tallinn Song Festival Grounds, pedestrian bridge to Zverynas"
+        }
+      ],
+      "notes": "Sourced: 157-162 ha park in a bend of the Neris; 1965 amphitheatre based on the Tallinn Song Festival Grounds; 1988 rally of 250,000 people. Trees and stage look are not in the source and are assumed (pines and oaks)."
+    },
+    "vilnius-osm-relation-8140496": {
+      "venueId": "vilnius-osm-relation-8140496",
+      "city": "vilnius",
+      "name": "Vilniaus miesto klinikine ligonine",
+      "archetype": "hospital",
+      "subject": "Vilnius City Clinical Hospital in Antakalnis: a tall Soviet-era slab hospital block with low wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "tile-cladding",
+        "colours": [
+          "#c4c2ba",
+          "#6f9ab0",
+          "#e8e8e4"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; a Soviet-style slab hospital with a painted panel exterior. Deliberately taller and more slab-like than the Santaros complex."
+    },
+    "vilnius-osm-way-275916982": {
+      "venueId": "vilnius-osm-way-275916982",
+      "city": "vilnius",
+      "name": "Parudaminio Kristaus Atsimainymo baznycia",
+      "archetype": "church-classical",
+      "subject": "A small rural church of the Transfiguration at Parudaminys: a modest single-tower church with a gabled front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "rural-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "red-brick",
+        "colours": [
+          "#f0ebe0",
+          "#a85a45",
+          "#b8b6ae"
+        ],
+        "roofColour": "#5e5f63",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched. The Transfiguration dedication may indicate an Orthodox parish, but the denomination is unconfirmed, so onion domes were not assumed."
+    },
+    "vilnius-osm-way-38883021": {
+      "venueId": "vilnius-osm-way-38883021",
+      "city": "vilnius",
+      "name": "Vilniaus dizaino kolegija",
+      "archetype": "campus-block",
+      "subject": "Vilnius College of Design: a modern four-storey college block with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e5dd",
+          "#7d9bb0",
+          "#5e5f63"
+        ],
+        "roofColour": "#6f7378",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed modern college."
+    },
+    "vilnius-osm-way-581534617": {
+      "venueId": "vilnius-osm-way-581534617",
+      "city": "vilnius",
+      "name": "Paneriu skulpturu parkas",
+      "archetype": "park-landscape",
+      "subject": "Paneriai sculpture park: an open meadow with sculptures set along paths at the edge of pine forest",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "sculpture-meadow"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9b58a",
+          "#b8b6ae",
+          "#7d6b58"
+        ],
+        "roofColour": "#a9b58a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "21st century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only; this is a sculpture park, not the Paneriai memorial. Typed meadow with sculptures."
+    },
+    "vilnius-osm-way-630196432": {
+      "venueId": "vilnius-osm-way-630196432",
+      "city": "vilnius",
+      "name": "Republican Vilnius University Hospital",
+      "archetype": "hospital",
+      "subject": "Santaros Clinics: a large campus of connected mid-rise therapy, diagnostics and surgery blocks from 1980-83",
+      "form": {
+        "footprint": "H",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 9,
+        "height_m": 34,
+        "roof": "flat",
+        "variant": "block-complex",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e4e0",
+          "#4a82c4",
+          "#b8b6ae"
+        ],
+        "roofColour": "#8c9196",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1980-1983 with later additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vilnius_University_Hospital_Santaros_Klinikos",
+          "what": "founded November 1980; therapy block and diagnostics first, surgery block 1983"
+        }
+      ],
+      "notes": "Sourced: founded 1980 as Republican Vilnius Clinical Hospital, therapy and diagnostics blocks first, surgery block 1983. Storeys, size and colours are estimates."
+    },
+    "vilnius-osm-way-877412367": {
+      "venueId": "vilnius-osm-way-877412367",
+      "city": "vilnius",
+      "name": "Vilniaus universiteto Matematikos ir informatikos fakulteta",
+      "archetype": "campus-block",
+      "subject": "Mathematics and Informatics building at the Akademijos site: a long four-storey Soviet-era research block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b8b6ae",
+          "#a85a45",
+          "#e8e8e4"
+        ],
+        "roofColour": "#5e5f63",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed Soviet research institute block."
+    },
+    "vilnius-osm-way-93867305": {
+      "venueId": "vilnius-osm-way-93867305",
+      "city": "vilnius",
+      "name": "Rykantu Svc. Trejybes baznycia",
+      "archetype": "church-classical",
+      "subject": "Rykantai Holy Trinity church: a low whitewashed three-nave brick church of 1585 with a Renaissance pedimented west front and a stone churchyard fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable",
+        "variant": "renaissance-parish",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "red-brick",
+        "colours": [
+          "#efe9dc",
+          "#c9bfa8",
+          "#a85a45"
+        ],
+        "roofColour": "#8b4a38",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "Renaissance gable with St George fresco niche"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "separate belfry"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stone churchyard fence"
+        },
+        {
+          "id": "buttresses",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1585",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://lt.wikipedia.org/wiki/Rykant%C5%B3_%C5%A0v%C4%8D._Trejyb%C4%97s_ba%C5%BEny%C4%8Dia",
+          "what": "1585 plastered-brick church, Gothic construction with Renaissance forms, Renaissance west pediment with St George fresco in the niche, three naves on piers, whitewashed 1888-89, stone churchyard fence"
+        }
+      ],
+      "notes": "Sourced: plastered brick, Gothic construction with Renaissance forms, west pediment with a 17th-century St George fresco in the niche, three naves on piers, wide presbytery, south sacristy, whitewashed 1888-89, stone churchyard fence. Sources disagree on whether it has a tower; a separate belfry is shown. Renaissance style mapped to neoclassical; roof colour and size are estimates."
+    },
+    "vilnius-quiet-reflection": {
+      "venueId": "vilnius-quiet-reflection",
+      "city": "vilnius",
+      "name": "Sudervės Svc. Trejybes baznycia",
+      "archetype": "church-classical",
+      "subject": "Suderve Holy Trinity church: a village Catholic church with a gabled front and a single slender tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "village-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f0ebe0",
+          "#d98e73",
+          "#b8b6ae"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th-19th century (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not researched; typed Lithuanian village church. Made whitewashed with salmon trim to differ from Rykantai."
+    },
+    "vilnius-recreation": {
+      "venueId": "vilnius-recreation",
+      "city": "vilnius",
+      "name": "Zalgiris 600",
+      "archetype": "park-landscape",
+      "subject": "Zalgiris 600: a countryside memorial park with a grassy clearing and an open paved commemorative area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "memorial-park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9b58a",
+          "#b8b6ae",
+          "#7d6b58"
+        ],
+        "roofColour": "#a9b58a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2010 (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only (the 600th anniversary of the Battle of Grunwald is 2010); no description found, typed."
+    },
+    "vilnius-transit": {
+      "venueId": "vilnius-transit",
+      "city": "vilnius",
+      "name": "Lentvaris",
+      "archetype": "transport-station",
+      "subject": "Lentvaris: a small town railway station, a low brick building with a platform canopy and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b8654a",
+          "#e8dcb5",
+          "#5e5f63"
+        ],
+        "roofColour": "#7a4a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century (unknown)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the existence of the station is documented; the building style is typed. The nearby Tyszkiewicz Tudor-style palace (1885) is a separate landmark and not this venue."
+    }
+  }
+}

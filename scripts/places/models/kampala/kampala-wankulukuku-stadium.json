@@ -1,0 +1,915 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-wankulukuku-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muteesa_II_Royal_Stadium,_Wankulukuku_08.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gadlee",
+   "view": "side",
+   "file": "/tmp/places-evidence/kampala/wk08.jpg",
+   "used": "striped grass pitch, low red and blue advertising boards along the touchline, wire fence on a grassy earth bank with spectators standing on it, trees and red iron-roofed buildings behind, plastic water tank"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muteesa_II_Royal_Stadium,_Wankulukuku_04.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gadlee",
+   "view": "street",
+   "file": "/tmp/places-evidence/kampala/wk04.jpg",
+   "used": "row of white peaked marquee tents along the far touchline, goal, big trees beyond, red roof at the far end"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/43868188",
+   "used": "overall size and rounded oval outline of the stadium grounds (about 180 x 240 m); pitch 105 x 68 m from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 3,
+  "fovDeg": 30,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": 0.12
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 105,
+    "width": 68,
+    "stripes": 10,
+    "markings": true,
+    "goals": true
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -60,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6f9b45",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10,
+       70
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       4,
+       70
+      ],
+      "cx": -3
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    60,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#6f9b45",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       10,
+       70
+      ]
+     },
+     {
+      "z": 3.5,
+      "rect": [
+       4,
+       70
+      ],
+      "cx": 3
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -12,
+    72,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.4,
+    "tankHeight": 2.4,
+    "legHeight": 3,
+    "colour": "#2d3a3f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -88,
+    60,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 16,
+    "count": 4,
+    "spread": 10,
+    "line": 30
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    70,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 3,
+    "spread": 10,
+    "line": 24
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#5f8f3a",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       116,
+       16
+      ],
+      "cy": 44
+     },
+     {
+      "z": 4,
+      "rect": [
+       116,
+       8
+      ],
+      "cy": 50
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#79a04c",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       116,
+       10
+      ],
+      "cy": -42
+     },
+     {
+      "z": 2.6,
+      "rect": [
+       116,
+       5
+      ],
+      "cy": -46
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -18,
+    48,
+    0.05
+   ],
+   "params": {
+    "colour": "#a5522f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       22,
+       5
+      ],
+      "cy": 0
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       18,
+       3.5
+      ],
+      "cy": 2
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    46,
+    0.05
+   ],
+   "params": {
+    "colour": "#a5522f",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       16,
+       4
+      ],
+      "cy": 0
+     },
+     {
+      "z": 1.8,
+      "rect": [
+       12,
+       3
+      ],
+      "cy": 2
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -56,
+    38.5,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 2,
+    "kind": "mesh",
+    "colour": "#aeb4b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -56,
+    -38.5,
+    0
+   ],
+   "params": {
+    "length": 112,
+    "height": 1.6,
+    "kind": "mesh",
+    "colour": "#aeb4b8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -46,
+     35.8
+    ],
+    "end": [
+     44.0,
+     35.8
+    ],
+    "count": 12,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#c9372c",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.5,
+         1.3
+        ]
+       },
+       {
+        "z": 1.2,
+        "rect": [
+         2.5,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -43.3,
+     35.8
+    ],
+    "end": [
+     46.7,
+     35.8
+    ],
+    "count": 12,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#f2f0ea",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.5,
+         1.3
+        ]
+       },
+       {
+        "z": 1.2,
+        "rect": [
+         2.5,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40.6,
+     35.8
+    ],
+    "end": [
+     49.4,
+     35.8
+    ],
+    "count": 12,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#2b5d9e",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.5,
+         1.3
+        ]
+       },
+       {
+        "z": 1.2,
+        "rect": [
+         2.5,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -44,
+     -35.8
+    ],
+    "end": [
+     42,
+     -35.8
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#c9372c",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.5,
+         1.3
+        ]
+       },
+       {
+        "z": 1.2,
+        "rect": [
+         2.5,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -41,
+     -35.8
+    ],
+    "end": [
+     45,
+     -35.8
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#2b5d9e",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.5,
+         1.3
+        ]
+       },
+       {
+        "z": 1.2,
+        "rect": [
+         2.5,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -38,
+     -35.8
+    ],
+    "end": [
+     48,
+     -35.8
+    ],
+    "count": 10,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "colour": "#f2f0ea",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         2.5,
+         1.3
+        ]
+       },
+       {
+        "z": 1.2,
+        "rect": [
+         2.5,
+         0.1
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52.0,
+     41
+    ],
+    "end": [
+     50,
+     41
+    ],
+    "count": 22,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      1.6
+     ],
+     "params": {
+      "colour": "#d94a3a",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       },
+       {
+        "z": 1.7,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -49.7,
+     43
+    ],
+    "end": [
+     50,
+     43
+    ],
+    "count": 22,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      2.4
+     ],
+     "params": {
+      "colour": "#3b6fb5",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       },
+       {
+        "z": 1.7,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -47.4,
+     45
+    ],
+    "end": [
+     50,
+     45
+    ],
+    "count": 22,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      3.0
+     ],
+     "params": {
+      "colour": "#e8e2d0",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       },
+       {
+        "z": 1.7,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -45.1,
+     42
+    ],
+    "end": [
+     50,
+     42
+    ],
+    "count": 22,
+    "of": {
+     "type": "loft",
+     "at": [
+      0,
+      0,
+      2.0
+     ],
+     "params": {
+      "colour": "#e0b030",
+      "sections": [
+       {
+        "z": 0,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       },
+       {
+        "z": 1.7,
+        "rect": [
+         0.5,
+         0.4
+        ]
+       }
+      ]
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "long-red-hall",
+   "footprint": {
+    "rect": [
+     60,
+     10
+    ]
+   },
+   "at": [
+    10,
+    74
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cdb5",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#b5483a",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-west",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -52,
+    70
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4aa",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a3b2c",
+    "material": "metal-sheet",
+    "pitch": 16,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    62,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 18,
+    "count": 4,
+    "spread": 10,
+    "line": 50
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   125,
+   125
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Content now matches (A-frame boards, mesh-fenced earth bank with spectators, long red-roofed hall, trees) but the auto-fit camera ignores fov/margin and still frames the whole plot small with grey surround; no marquee tents, no grass-level close view of the corner flag."
+ }
+}

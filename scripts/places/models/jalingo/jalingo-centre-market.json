@@ -1,0 +1,430 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "jalingo-centre-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_jalingo_main_market.jpg",
+   "licence": "CC0",
+   "author": "Usamanadda",
+   "view": "street",
+   "file": "/tmp/places-evidence/jalingo/market.jpg",
+   "used": "market street with 3-storey terracotta-rendered shop block with cream bands and black balcony rails, grey corrugated lean-to shop awnings, cream hip-roofed shop rows opposite, umbrella stalls and yellow keke tricycles in the road"
+  },
+  {
+   "kind": "text",
+   "used": "brief: covered trading hall with long-span corrugated roof behind the street frontage (not seen in the photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 26,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terracotta-block",
+   "footprint": {
+    "rect": [
+     38,
+     11
+    ]
+   },
+   "at": [
+    20,
+    -15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8624c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "bands": "#efe4cc",
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    },
+    "pattern": null
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "balcony-pods",
+   "at": [
+    20,
+    -20.6,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "floors": 3,
+    "floor_height": 3.3,
+    "every": 1,
+    "depth": 2.2,
+    "colour": "#efe4cc",
+    "rail_colour": "#2a2a2a",
+    "skip_ground": true
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    20,
+    -21,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 38,
+    "depth": 3.6,
+    "eaveHeight": 2.7,
+    "attachHeight": 3.6,
+    "colour": "#7a5a48",
+    "roofColour": "#b9bfc1"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-row",
+   "footprint": {
+    "rect": [
+     52,
+     10
+    ]
+   },
+   "at": [
+    -14,
+    16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efd9cf",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "bands": "#f6efe0",
+    "plinth": 0.4,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5,
+      "depth": 0.5,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#f1ece0",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "far-corner",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -46,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8b9a6",
+    "windows": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#efe9dc",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    -14,
+    10.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "depth": 3,
+    "eaveHeight": 2.6,
+    "attachHeight": 3.8,
+    "colour": "#5f5a52",
+    "roofColour": "#8e9a9e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "trading-hall",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    -10,
+    44
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a6",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#8b4a35"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#c9cfd0",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups-east",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    48,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "plinth": 0.3,
+    "groundKind": "shutter"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6d7a80",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "colours": [
+     "#e87a9a",
+     "#f0e0b0",
+     "#cc4a52",
+     "#ece7dc"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -34,
+    3,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.8,
+    "kind": "umbrella",
+    "colours": [
+     "#e0a8b8",
+     "#ece7dc",
+     "#d9b86a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -10,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#cc4a52",
+     "#d9b86a",
+     "#ece7dc"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    4,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.5,
+    "kind": "umbrella",
+    "colours": [
+     "#e87a9a",
+     "#f0e0b0"
+    ]
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -40,
+    -2,
+    0
+   ],
+   "params": {
+    "colour": "#e8b81a",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -20,
+    -1,
+    0
+   ],
+   "params": {
+    "colour": "#e8b81a",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 20
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "colour": "#e8b81a",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -2,
+    0
+   ],
+   "params": {
+    "colour": "#e8b81a",
+    "count": 2,
+    "spacing": 3.2,
+    "yaw": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -8
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "terracotta block, awnings, stalls, cream far row recoloured; no true crowd or keke geometry (yellow cars stand in), far-row arcade is shallow, trading hall behind is brief-only and reduced; photo is an oblique aerial so camera is approximate"
+ }
+}

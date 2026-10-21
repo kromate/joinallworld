@@ -1,0 +1,389 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-community-workshop",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/317923869",
+   "used": "checked only: it outlines the whole 45-acre campus (about 560 x 460 m), too large and not a building, so it is not used as a footprint"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Makerere_University_Business_School",
+   "used": "Makerere University Business School at Nakawa: city campus of several multi-storey teaching blocks and a library around lawns; no photo of this campus was in the evidence set"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-north",
+   "footprint": {
+    "rect": [
+     64,
+     16
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bay": 5,
+    "bands": "#8a2f2f",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    -30,
+    -4
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bay": 5,
+    "bands": "#8a2f2f",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     16,
+     46
+    ]
+   },
+   "at": [
+    30,
+    -4
+   ],
+   "z0": 0,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bay": 5,
+    "bands": "#8a2f2f",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     26,
+     18
+    ]
+   },
+   "at": [
+    -4,
+    -40
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "bay": 5,
+    "bands": "#8a2f2f",
+    "plinth": 0.4,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stair-core",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    31.5
+   ],
+   "params": {
+    "rect": [
+     7,
+     2.5
+    ],
+    "height": 18.5,
+    "colour": "#8a2f2f",
+    "topColour": "#8a2f2f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entrance-canopy",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -4,
+    -30.5
+   ],
+   "params": {
+    "rect": [
+     12,
+     4
+    ],
+    "z0": 3.4,
+    "height": 0.5,
+    "colour": "#8a2f2f"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4.5,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "colour": "#d8cfb8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 2.5,
+    "colours": [
+     "#d9a43a",
+     "#2a2a2a"
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d8cfb8",
+    "points": [
+     [
+      -40,
+      -60
+     ],
+     [
+      -6,
+      -60
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "height": 2.0,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#d8cfb8",
+    "points": [
+     [
+      6,
+      -60
+     ],
+     [
+      40,
+      -60
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lawn",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -2
+   ],
+   "params": {
+    "rect": [
+     40,
+     40
+    ],
+    "height": 0.08,
+    "colour": "#5d8a3e",
+    "topColour": "#5d8a3e"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "forecourt-path",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -47
+   ],
+   "params": {
+    "rect": [
+     4,
+     26
+    ],
+    "height": 0.1,
+    "colour": "#c8c0ae",
+    "topColour": "#c8c0ae"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     -30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -48
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     45
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   110,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or building outline for this campus in the evidence set: a typical U of four-storey teaching blocks, a library and a gate in cream render with a maroon accent (the maroon is unverified); real block count, positions and heights are unknown"
+ }
+}

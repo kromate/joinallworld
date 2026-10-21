@@ -1,0 +1,1561 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "podgorica",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "podgorica",
+    "climate": "mediterranean",
+    "vernacular": "Capital rebuilt after WWII bombing in Yugoslav socialist-modernist style: five- to ten-storey concrete and rendered blocks in cream, ochre and grey with flat or low-pitched roofs, wide boulevards and concrete squares; scattered Ottoman remains (stone clock tower, fortress walls) and Orthodox churches in pale stone with red-tile roofs; new glass and white-render towers and malls since 2000. Hot dry summers, flat plain between the Moraca and Ribnica rivers, plane trees, cypress and pine.",
+    "wallColours": [
+      "#c9c3b5",
+      "#e3dcc8",
+      "#d3b87a",
+      "#b4b0a6",
+      "#a89f8c",
+      "#d8d2c4"
+    ],
+    "roofColours": [
+      "#a8503a",
+      "#8a8f94",
+      "#6b6460",
+      "#b86a48"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "stone",
+      "painted-render",
+      "exposed-concrete",
+      "glass-curtain",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Plain socialist-modernist grid facades with small balconies, concrete brise-soleil and relief panels on public buildings; rough-dressed grey limestone and rubble walls with red pantile roofs for churches, monasteries and Ottoman-era forts; Orthodox crosses, bell gables and domes; fresh white render and glass on 21st-century towers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Podgorica",
+        "what": "city bombed more than 80 times in WWII and rebuilt (Titograd 1946-92); Ottoman rule 1474-1878; Clock Tower, Millennium Bridge, Independence Square; one of the wettest European capitals"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Resurrection_of_Christ,_Podgorica",
+        "what": "Romanesque, Italianate and Byzantine elements in a modern cathedral"
+      }
+    ]
+  },
+  "places": {
+    "podgorica-airport-podgorica-airport": {
+      "venueId": "podgorica-airport-podgorica-airport",
+      "city": "podgorica",
+      "name": "Podgorica Airport / Podgorica Golubovci Airbase",
+      "archetype": "airport-terminal",
+      "subject": "Podgorica airport terminal: a small one-level modern terminal of white render and glass with a flat canopy, with a control tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d6",
+          "#8fa4ad",
+          "#6b6460"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica_Airport",
+          "what": "terminal in use since 2006, single level, 7,900 m2, 8 check-in counters, 8 gates, no jet bridges"
+        }
+      ],
+      "notes": "Single-level 7,900 m2 terminal in use since 2006, no jet bridges. Facade colours and tower are assumed from civilian/military shared airfield; the airfield doubles as Golubovci airbase."
+    },
+    "podgorica-clinic": {
+      "venueId": "podgorica-clinic",
+      "city": "podgorica",
+      "name": "Dom zdravlja Konik",
+      "archetype": "hospital",
+      "subject": "Dom zdravlja Konik: a district health centre, a rendered three-storey block in cream with a flat roof and a small forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dcc8",
+          "#b4b0a6",
+          "#8a8f94"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "No description found; typed as a Yugoslav-era health centre in a residential district."
+    },
+    "podgorica-community-notices": {
+      "venueId": "podgorica-community-notices",
+      "city": "podgorica",
+      "name": "Agencija za Nacionalnu Bezbjednost",
+      "archetype": "office-low",
+      "subject": "Agency for National Security (ANB) building: a plain mid-rise government block in grey-cream render with strip windows and a fenced yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c3b5",
+          "#7f98a3",
+          "#6b6460"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Security agency; no description found. Typed as a Yugoslav-era administrative block."
+    },
+    "podgorica-community-voting-game": {
+      "venueId": "podgorica-community-voting-game",
+      "city": "podgorica",
+      "name": "Trg nezavisnosti",
+      "archetype": "park-landscape",
+      "subject": "Independence Square (Trg nezavisnosti): a wide paved central plaza ringed by 1950s-80s socialist-modernist blocks, with benches, planters and flag poles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "plaza"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d8d2c4",
+          "#a89f8c",
+          "#b4b0a6"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Named as a landmark square in the capital; the fountain and flag poles are assumed, not sourced."
+    },
+    "podgorica-community-workshop": {
+      "venueId": "podgorica-community-workshop",
+      "city": "podgorica",
+      "name": "Univerzitet Donja Gorica",
+      "archetype": "campus-block",
+      "subject": "University of Donja Gorica: a private university of modern white-render blocks with glass entrances and terraces on the south edge of Podgorica",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8dd",
+          "#7f98a3",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Founded in the 2000s; no architectural description found. Typed."
+    },
+    "podgorica-market-game": {
+      "venueId": "podgorica-market-game",
+      "city": "podgorica",
+      "name": "Mall of Montenegro",
+      "archetype": "mall",
+      "subject": "Mall of Montenegro: a three-storey shopping mall of pale panels and glass, opened 2010 on the former open-market site, with a covered green bazaar behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d6",
+          "#7f98a3",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_Montenegro",
+          "what": "3 floors, complex 58,000 m2 with 17,000 m2 mall, opened 2010 on the site of the former open market; includes covered Green Bazaar and a Ramada hotel"
+        }
+      ],
+      "notes": "Complex 58,000 m2 with 17,000 m2 mall, 3 floors; facade colours are assumed. A Ramada hotel is attached, shown separately."
+    },
+    "podgorica-meal-stop": {
+      "venueId": "podgorica-meal-stop",
+      "city": "podgorica",
+      "name": "Studentska menza",
+      "archetype": "restaurant",
+      "subject": "Studentska menza: a student canteen in a plain concrete and render building at the university campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#c9c3b5",
+          "#d3b87a",
+          "#8a8f94"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "University of Montenegro dining hall; no description found. Typed."
+    },
+    "podgorica-osm-node-2242615494": {
+      "venueId": "podgorica-osm-node-2242615494",
+      "city": "podgorica",
+      "name": "Poslednja Luka",
+      "archetype": "restaurant",
+      "subject": "Poslednja Luka (\"the last harbour\"): a waterside tavern in dressed stone with a red pantile roof and a wooden pier over the lake",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#a89f8c",
+          "#e3dcc8",
+          "#6b4a35"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Place name suggests a lakeside tavern near Skadar Lake; nothing else found. Typed from regional style."
+    },
+    "podgorica-osm-node-4345473682": {
+      "venueId": "podgorica-osm-node-4345473682",
+      "city": "podgorica",
+      "name": "Faculty of Political Science",
+      "archetype": "campus-block",
+      "subject": "Faculty of Political Science (University of Montenegro): a rendered three-storey faculty block with strip windows and a small entrance portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dcc8",
+          "#b4b0a6",
+          "#8a8f94"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "No description found; typed as a Yugoslav-era faculty."
+    },
+    "podgorica-osm-node-4751745100": {
+      "venueId": "podgorica-osm-node-4751745100",
+      "city": "podgorica",
+      "name": "Memorial to the Fallen of the Lješanska Nahija Region",
+      "archetype": "monument",
+      "subject": "Memorial to the Fallen of the Ljšanska Nahija region: a stone memorial slab on a stepped base in open karst country",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "memorial"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#b4b0a6",
+          "#a89f8c",
+          "#6b6460"
+        ],
+        "roofColour": "#a89f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1950s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Memorial to local fallen of WWII/Balkan wars; no description found, so a plain stone memorial is assumed."
+    },
+    "podgorica-osm-node-9896999137": {
+      "venueId": "podgorica-osm-node-9896999137",
+      "city": "podgorica",
+      "name": "Cemi holiday resort",
+      "archetype": "hotel",
+      "subject": "Cemi holiday resort: a small mountain holiday complex of stone-and-timber chalets with steep roofs in a highland valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a89f8c",
+          "#6b4a35",
+          "#e3dcc8"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Name only; typed as a small resort in the Cemi valley highlands."
+    },
+    "podgorica-osm-relation-15505766": {
+      "venueId": "podgorica-osm-relation-15505766",
+      "city": "podgorica",
+      "name": "Žabljak Crnojevića",
+      "archetype": "heritage-fort",
+      "subject": "Zabljak Crnojevica: a ruined hill fortress of tall rough-stone walls with towers and a single gate beside the Moraca river and Skadar Lake",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "ruined fortress",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89f8c",
+          "#8a8578",
+          "#6b6460"
+        ],
+        "roofColour": "#8a8578",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "ruined arches of the court and church"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "ottoman",
+      "era": "15th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C5%BDabljak_Crnojevi%C4%87a",
+          "what": "fortress at the Moraca/Lake Skadar confluence, tall walls with towers and one gate, courts of Ivan Crnojevic, Church of Saint George converted to a mosque, abandoned but mostly preserved"
+        }
+      ],
+      "notes": "Capital of Zeta 1466-78 under Ivan Crnojevic; Church of Saint George was turned into a mosque in Ottoman times; interior now abandoned but mostly preserved. Dimensions are estimates."
+    },
+    "podgorica-osm-way-1333029322": {
+      "venueId": "podgorica-osm-way-1333029322",
+      "city": "podgorica",
+      "name": "Gushing Water Tree",
+      "archetype": "park-landscape",
+      "subject": "Gushing Water Tree: a large tree beside a karst spring and rocks, with a small footpath and railing",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89f8c",
+          "#6b6460",
+          "#8a8f94"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "English OSM name of a natural spot east of Podgorica; no source. Spring and tree only."
+    },
+    "podgorica-osm-way-134769445": {
+      "venueId": "podgorica-osm-way-134769445",
+      "city": "podgorica",
+      "name": "Ramada Podgorica",
+      "archetype": "hotel",
+      "subject": "Ramada Podgorica: a nine-storey hotel block in white render and glass, attached to the Mall of Montenegro complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 9,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8dd",
+          "#7f98a3",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_Montenegro",
+          "what": "3 floors, complex 58,000 m2 with 17,000 m2 mall, opened 2010 on the site of the former open market; includes covered Green Bazaar and a Ramada hotel"
+        }
+      ],
+      "notes": "Part of the same 2010 complex; floor count assumed from comparable business hotels, not sourced."
+    },
+    "podgorica-osm-way-170592633": {
+      "venueId": "podgorica-osm-way-170592633",
+      "city": "podgorica",
+      "name": "Lesendro",
+      "archetype": "heritage-fort",
+      "subject": "Lesendro: a small ruined Ottoman-era fort of grey rubble stone on a rocky point of Lake Skadar",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "ruined fort"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89f8c",
+          "#8a8578",
+          "#6b6460"
+        ],
+        "roofColour": "#8a8578",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "ottoman",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Lesendro fort on Skadar Lake; I recall an Ottoman-era building but have no fetched source; dimensions estimated."
+    },
+    "podgorica-osm-way-175501033": {
+      "venueId": "podgorica-osm-way-175501033",
+      "city": "podgorica",
+      "name": "Cathedral of the Resurrection of Christ",
+      "archetype": "church-classical",
+      "subject": "Cathedral of the Resurrection of Christ: the Serbian Orthodox cathedral with twin bell towers, a big arched portal and domes, in pale stone with red roofs",
+      "form": {
+        "footprint": "cross",
+        "width_m": 45,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "multi-dome",
+        "variant": "twin-tower cathedral",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e6dcc0",
+          "#c9a46a",
+          "#a8503a"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "gold-ground iconographic murals (interior)"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1993-2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Resurrection_of_Christ,_Podgorica",
+          "what": "designed by Predrag Ristic, built 1993-2013, twin towers and prominent arch, influenced by Saint Tryphon in Kotor, Romanesque/Italianate/Byzantine, maximum height 41.5, gold-ground murals and marble floors inside"
+        }
+      ],
+      "notes": "Predrag Ristic; modelled on Saint Tryphon in Kotor with Romanesque, Italianate and Byzantine elements; total height 41.5. Facade colours (pale stone with warm banding, red roofs) are from common photos, not the source."
+    },
+    "podgorica-osm-way-185576891": {
+      "venueId": "podgorica-osm-way-185576891",
+      "city": "podgorica",
+      "name": "Univerzitet Crne Gore",
+      "archetype": "campus-block",
+      "subject": "University of Montenegro (Rectorate and faculties): a boxy 1970s socialist-modernist block in concrete and stone panels with strip windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#c9c3b5",
+          "#a89f8c",
+          "#6b6460"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "University of Montenegro is spread over several Yugoslav-era buildings; shown as one typical block."
+    },
+    "podgorica-osm-way-239484551": {
+      "venueId": "podgorica-osm-way-239484551",
+      "city": "podgorica",
+      "name": "Stadion Ljajkovići",
+      "archetype": "stadium",
+      "subject": "Stadion Ljajkovici: a small stadium with one covered main stand and open concrete terraces beside a grass pitch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b4b0a6",
+          "#a8503a",
+          "#6b6460"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Small Prva CFL ground; no description found. Typed."
+    },
+    "podgorica-osm-way-273450355": {
+      "venueId": "podgorica-osm-way-273450355",
+      "city": "podgorica",
+      "name": "Braća Velašević Stadium",
+      "archetype": "stadium",
+      "subject": "Braca Velasevic Stadium: a small town football ground with a single stand and a running track",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 85,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b4b0a6",
+          "#8a8f94",
+          "#a8503a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Small stadium; no description found. Typed."
+    },
+    "podgorica-osm-way-28130522": {
+      "venueId": "podgorica-osm-way-28130522",
+      "city": "podgorica",
+      "name": "Karađorđev park",
+      "archetype": "park-landscape",
+      "subject": "Karadjordjev park: a large central city park with mature plane and linden trees, gravel paths and benches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8d2c4",
+          "#7a8f6a",
+          "#a89f8c"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "City park named after Karadjordje; contents typed. Larger and more wooded than the adjacent Njegosev park."
+    },
+    "podgorica-osm-way-331572836": {
+      "venueId": "podgorica-osm-way-331572836",
+      "city": "podgorica",
+      "name": "Manastir Piperska Celija",
+      "archetype": "shrine-small",
+      "subject": "Piperska Celija monastery: a small Orthodox monastery of rough stone with a red-tile gable roof and a low bell gable",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#a89f8c",
+          "#e3dcc8",
+          "#6b4a35"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Nothing found; typical Montenegrin Orthodox monastery assumed (stone church plus cell range)."
+    },
+    "podgorica-osm-way-923891668": {
+      "venueId": "podgorica-osm-way-923891668",
+      "city": "podgorica",
+      "name": "Stadion Trešnjica",
+      "archetype": "stadium",
+      "subject": "Stadion Tresnjica: a small village stadium with a low main stand and open sides",
+      "form": {
+        "footprint": "rect",
+        "width_m": 105,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b4b0a6",
+          "#8a8f94",
+          "#a8503a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Small ground in Golubovci area; no description found."
+    },
+    "podgorica-quiet-reflection": {
+      "venueId": "podgorica-quiet-reflection",
+      "city": "podgorica",
+      "name": "Manastir Vranjina",
+      "archetype": "shrine-small",
+      "subject": "Vranjina monastery: a small stone church rebuilt in 1886 with a red-tile roof, beside a low lodging block, on a lake island",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#a89f8c",
+          "#e3dcc8",
+          "#6b4a35"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1886",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vranjina_Monastery",
+          "what": "monastery on Vranjina island in Skadar Lake; church of St Nicholas translation rebuilt 1886 by Prince Nicholas; one church and two lodgings (small one built 1998)"
+        }
+      ],
+      "notes": "On Vranjina island in Skadar Lake; one church and two lodgings (a small one built 1998). Stone and tile are assumed from regional norms; sizes estimated."
+    },
+    "podgorica-recreation": {
+      "venueId": "podgorica-recreation",
+      "city": "podgorica",
+      "name": "Njegošev park",
+      "archetype": "park-landscape",
+      "subject": "Njegosev park: a small formal park in the city centre with gravel walks, plane trees, benches and a central monument bed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8d2c4",
+          "#7a8f6a",
+          "#a89f8c"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Named after Petar II Petrovic-Njegos; the statue/bandstand/fountain are not sourced, only typical."
+    },
+    "podgorica-transit": {
+      "venueId": "podgorica-transit",
+      "city": "podgorica",
+      "name": "Bioče",
+      "archetype": "transport-station",
+      "subject": "Bioce railway station: a small two-storey station building of cream render beside a long single platform on the Belgrade-Bar line",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dcc8",
+          "#b4b0a6",
+          "#6b6460"
+        ],
+        "roofColour": "#a8503a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "what": "city background; Independence Square, Clock Tower and Millennium Bridge among landmarks"
+        }
+      ],
+      "notes": "Bioce is a stop on the mountain railway; appearance not found, typed as a small Yugoslav-era station."
+    }
+  }
+}

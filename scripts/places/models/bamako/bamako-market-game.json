@@ -1,0 +1,218 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/5544669",
+   "used": "real 5-sided outline (91 x 69 m) used for the hall; surrounding area way/201954582 is 9408 m2"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_March%C3%A9_-_Bamako,_MALI.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Carolinerre",
+   "view": "street",
+   "file": "/tmp/places-evidence/bamako/gm-grand1.jpg",
+   "used": "ring of street stalls: pale parasols, dark tarpaulin awnings, dense traffic of vans at the foot of the market; the hall itself is not visible so no building comparison"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Grand_march%C3%A9_de_Bamako.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mah-Fanta",
+   "view": "interior",
+   "file": "/tmp/places-evidence/bamako/gm-grand2.jpg",
+   "used": "low canvas-roofed stall lanes, timber posts (not used for the exterior shell)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true
+   },
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9a27a",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.5,
+    "cornice": true,
+    "bands": "#f1ece0",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#c9a27a",
+      "#d6b48c"
+     ]
+    },
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0aca3",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -5,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 2,
+    "colours": [
+     "#a65a3a",
+     "#f1ece0"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -5,
+    -44,
+    10
+   ],
+   "params": {
+    "width": 12,
+    "height": 2,
+    "colour": "#a65a3a"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -48,
+    -62,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9d2c0",
+     "#a8a499",
+     "#3b3a3a",
+     "#9aa09a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -48,
+    -70,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9d2c0",
+     "#a8a499",
+     "#3b3a3a",
+     "#9aa09a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -8,
+    60,
+    0
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#d9d2c0",
+     "#a8a499",
+     "#3b3a3a",
+     "#9aa09a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    10,
+    -70,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3.3,
+    "height": 3.2,
+    "shutter_colours": [
+     "#a65a3a",
+     "#7a8a8f"
+    ],
+    "wall_colour": "#c9a27a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -70,
+    -40,
+    0
+   ],
+   "params": {
+    "colour": "#2f7a4a",
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -70,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Hall facade not seen in any photo; ochre arcaded 3-storey shell comes from the brief and is an estimate; outline is real."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bamako",
+ "venueId": "bamako-market-game"
+}

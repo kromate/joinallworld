@@ -1,0 +1,315 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json#remo-stadium",
+   "used": "110 x 80 m ground, one concrete terrace, small covered main stand, four floodlights, perimeter wall, scoreboard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1275237070",
+   "used": "not used: nearest match, 169 m2 (a small structure beside the ground)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or stand data: roof, terrace length and seat colours are typical of a state-town sports ground, not observed."
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 104,
+    "width": 66,
+    "lane_width": 6,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -26,
+     -42
+    ],
+    "end": [
+     26,
+     -42
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.0,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#9c3b2f",
+     "#a8c3a0"
+    ],
+    "concreteColour": "#a9a59d",
+    "underColour": "#8f8b84",
+    "canopy": {
+     "height": 7.0,
+     "depth": 11,
+     "thickness": 0.5,
+     "slopeDeg": 4,
+     "colour": "#8e979c",
+     "edgeColour": "#6f6a62"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     40,
+     42
+    ],
+    "end": [
+     -40,
+     42
+    ],
+    "rows": 9,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.8,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColour": "#a9a59d",
+    "concreteColour": "#a9a59d",
+    "underColour": "#8f8b84"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-block",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -53
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8c3a0",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#9c3b2f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e979c",
+    "material": "concrete",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -56.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 1.0,
+    "run": 0.9,
+    "count": 4,
+    "colour": "#a9a59d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -48
+     ],
+     [
+      62,
+      -48
+     ],
+     [
+      62,
+      48
+     ],
+     [
+      -62,
+      48
+     ],
+     [
+      -62,
+      -48
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#c9c4b6",
+    "pillarEvery": 0
+   },
+   "lod": [
+    0,
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -56,
+    40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    56,
+    40,
+    0
+   ],
+   "params": {
+    "height": 28
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    50,
+    0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "west"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -70,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    70,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    -20,
+    -62,
+    0
+   ],
+   "params": {
+    "yaw": 0,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    22,
+    -62,
+    0
+   ],
+   "params": {
+    "yaw": 0,
+    "colour": "#7a2f2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 14,
+  "trees": [],
+  "extent": [
+   150,
+   125
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "remo-stadium"
+}

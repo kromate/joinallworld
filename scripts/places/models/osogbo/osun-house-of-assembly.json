@@ -1,0 +1,203 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "osun-house-of-assembly",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:State_of_Osun_house_of_assembly.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Omoeko Media",
+   "view": "street",
+   "file": "/tmp/places-evidence/osogbo/State_of_Osun_house_of_assembly.jpg",
+   "used": "only the access road and complex setting: red-tiled hip roofs on cream blocks, white-pillared low boundary rail, gate frame with glazed tower, tall dark cypress trees, a gold statue on a plinth. The main chamber block is not clearly visible, so the photo is not a direct comparison."
+  },
+  {
+   "kind": "osm",
+   "ref": "way/378192881",
+   "used": "irregular main block outline (about 43 x 32 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "simplify": 1.5
+   },
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfc9",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b84a33",
+    "material": "clay-tile",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "at": [
+    -42,
+    -22
+   ],
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d6b5",
+    "windows": "punched",
+    "windowRatio": 0.18
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b84a33",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    -2,
+    -26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 8,
+    "columns": 6,
+    "pediment": true,
+    "steps": 4,
+    "colour": "#f0ebdd"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.2,
+    "thickness": 0.3,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "gate-arch",
+   "at": [
+    -45,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 7,
+    "thickness": 1.5,
+    "opening": 10,
+    "shape": "flat",
+    "colour": "#c9a24a"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    20,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#c9a24a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -14,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 5,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "count": 5,
+    "kind": "palm",
+    "height_min": 9,
+    "height_max": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "The photo does not show the chamber block, so only the real OSM outline, the red-tile roof colour and the setting were taken; storey count, cream colour and portico are from the brief; no photo comparison image."
+ }
+}

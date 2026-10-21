@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "diobu-church",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.howwemadeitinafrica.com/niger-delta-building-a-new-city-alongside-the-old/4352/",
+   "used": "city context only; the geo photos found are of a mosque and street, not this church, and the OSM match is a market"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "faces": {
+     "front": "none"
+    },
+    "plinth": 0.5,
+    "bands": "#b0553d"
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 16,
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-tower",
+   "footprint": {
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -10
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 35,
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    0,
+    -10,
+    17
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -18.6,
+    2.4
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.2,
+    "colour": "#b0553d"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "height": 2.2,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#e8d9a8"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "colour": "#2f3a44"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19,
+     6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline of this church; plain auditorium with front tower and cross typed from Diobu neighbourhood style"
+ }
+}

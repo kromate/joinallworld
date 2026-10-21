@@ -1,0 +1,111 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/471941220",
+   "used": "stadium extent about 175 x 126 m, long axis rotated 26 degrees (bowl drawn on the long axis)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/akure.json",
+   "used": "concrete oval, cinder track, covered main stand, four floodlight masts, run-down (Wikipedia Sunshine Stars; Ripples Nigeria)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 170,
+    "depth": 124,
+    "height": 14,
+    "tiers": 2,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#8a8d86",
+    "seat_colour2": "#b9b4a2",
+    "main_height": 14,
+    "far_height": 8,
+    "end_height": 6,
+    "track": true,
+    "floodlights": true,
+    "roof_material": "metal-sheet"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    48,
+    6
+   ],
+   "params": {
+    "width": 10,
+    "height": 4,
+    "facing": "south",
+    "colour": "#3a3d41"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -30,
+    -76,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -70,
+    -70,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 14,
+    "count": 8
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    20,
+    -80,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "akure-sports-stadium",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real extent and brief only; bowl shape, stand cover and wear are generic, ground pad edge is ragged"
+ }
+}

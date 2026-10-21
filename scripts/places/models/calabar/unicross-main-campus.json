@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "unicross-main-campus",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://www.timeshighereducation.co.uk/world-university-rankings/university-cross-river-state",
+   "used": "merged state university (2022) on the former Polytechnic Calabar campus; no photo of the buildings found on Commons or Wikipedia"
+  },
+  {
+   "kind": "text",
+   "url": "https://news.crossriverstate.gov.ng/university-of-cross-river-state-vc-inspects-key-projects-demands-quality-timely-delivery/",
+   "used": "new ICT block beside the Faculty of Engineering"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin-spine",
+   "footprint": {
+    "rect": [
+     70,
+     14
+    ]
+   },
+   "at": [
+    0,
+    16
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#c8c1af",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#ece6d6",
+      "#e2dac6"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a76",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    -28,
+    -6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2f5d8a",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a76",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "engineering-wing",
+   "footprint": {
+    "rect": [
+     14,
+     40
+    ]
+   },
+   "at": [
+    28,
+    -6
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2f5d8a",
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7a76",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ict-block",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    56,
+    -2
+   ],
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f5d8a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#ece6d6",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 2.2,
+    "colour": "#2f5d8a",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 2,
+    "spacing": 16,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 44,
+    "depth": 12,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 28
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the real buildings exists; U-shaped three-storey rendered faculty blocks, ICT block and colours are typical for a Nigerian polytechnic campus."
+ }
+}

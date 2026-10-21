@@ -1,0 +1,185 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "kasuwar-kofar-kaura-katsina",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/katsina.json",
+   "used": "typed brief: neighbourhood market, mud-and-zinc stalls and sheds along sandy lanes, old Kofar Kaura gate"
+  }
+ ],
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    -20,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -20,
+    4,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "roof_colour": "#8a3b2e",
+    "wall_colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "roof_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    20,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.4,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    20,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 5,
+    "arch": true,
+    "wall_colour": "#b98a5e"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -48,
+     12
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     45,
+     22
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     0,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   95
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typical mud-and-zinc stall rows and sheds, real layout unknown"
+ }
+}

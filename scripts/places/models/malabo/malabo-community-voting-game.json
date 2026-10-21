@@ -1,0 +1,132 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-community-voting-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/307509417",
+   "used": "real footprint of Ayuntamiento de Rebola (22 x 17 m, front porch lobe towards the south)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 15,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 24
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfbd",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bands": "#a65a42"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a38",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    1.5,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.9,
+    "run": 0.4,
+    "count": 4
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    9,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "height": 1.2,
+    "bottom": 1.0,
+    "colour": "#2f6b4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -6
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     16,
+     -8
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -24
+    ],
+    "yawDeg": 270,
+    "colour": "#c8c8c8"
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; footprint plus brief; roof, porch steps and colours are guesses"
+ }
+}

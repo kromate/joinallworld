@@ -1,0 +1,137 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sagamu",
+ "venueId": "sagamu-salon",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/sagamu.json",
+   "used": "one-bay salon: mirrored window, painted wall, front canopy, blank sign board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shop",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "none",
+    "bands": "#a8c3a0",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8e979c",
+    "material": "corrugated",
+    "overhang": 0.6,
+    "rise": 0.7
+   }
+  },
+  {
+   "type": "shopfront",
+   "at": [
+    0,
+    -2.55,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 2.8,
+    "kind": "glass",
+    "sign_colour": "#9c3b2f",
+    "awning_colours": [
+     "#9c3b2f",
+     "#f2eee6"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 5.4,
+    "depth": 1.5,
+    "drop": 0.4,
+    "height": 2.6,
+    "colours": [
+     "#9c3b2f",
+     "#f2eee6"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mural",
+   "footprint": {
+    "rect": [
+     0.5,
+     4
+    ]
+   },
+   "at": [
+    3.2,
+    0
+   ],
+   "height": 2.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#a8c3a0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8c3a0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    9,
+    3,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   30,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo; OSM match 31 m away unreliable, small one-bay shop typed from brief"
+ }
+}

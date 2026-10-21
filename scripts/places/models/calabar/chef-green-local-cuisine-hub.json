@@ -1,0 +1,182 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://kupi.com/en/explore/nigeria/calabar/history",
+   "used": "No photo or footprint; 22x14 m single-storey painted restaurant with a covered open dining terrace, bright awning, umbrellas, blank signboard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     13,
+     12
+    ]
+   },
+   "at": [
+    4.5,
+    3
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3dcc2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "trimColour": "#f0ece4",
+    "bands": "#4f8a4a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f4a38",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-floor",
+   "at": [
+    -6.5,
+    -1
+   ],
+   "params": {
+    "rect": [
+     9,
+     13
+    ],
+    "height": 0.3,
+    "colour": "#cfc8b6"
+   }
+  },
+  {
+   "type": "awning",
+   "id": "awning",
+   "at": [
+    -6.5,
+    -7.4,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 3.2,
+    "drop": 0.6,
+    "height": 2.9,
+    "colours": [
+     "#4f8a4a",
+     "#f0ece4"
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "dining-roof",
+   "at": [
+    -6.5,
+    -1,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 12,
+    "height": 3.2,
+    "columns": 6,
+    "colour": "#4f8a4a",
+    "edgeColour": "#f0ece4"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umbrellas",
+   "at": [
+    -6.5,
+    -1,
+    0.3
+   ],
+   "params": {
+    "count": 4,
+    "spread": 3.2,
+    "radius": 1.3,
+    "height": 2.3,
+    "colours": [
+     "#4f8a4a",
+     "#f0ece4",
+     "#e8c23a"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "board",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.8,
+    "board_colour": "#4f8a4a"
+   }
+  },
+  {
+   "type": "tree",
+   "id": "palm",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "car",
+   "id": "cars",
+   "at": [
+    2,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spacing": 3,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [],
+  "extent": [
+   56,
+   44
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "chef-green-local-cuisine-hub",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; typed guess from brief, real layout and colours unknown"
+ }
+}

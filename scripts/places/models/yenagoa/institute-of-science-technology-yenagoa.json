@@ -1,0 +1,250 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "institute-of-science-technology-yenagoa",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#institute-of-science-technology-yenagoa",
+   "used": "polytechnic-style campus: L-shaped three-storey lecture block, two workshop sheds, paved forecourt; OSM match was a 5 m shed 20 m away so not used; Wikidata Q129693122 confirms the institution only"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lecture-block",
+   "footprint": {
+    "rect": [
+     48,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d4",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "bands": "#4a6f9a",
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#efe8d4",
+       "#e2dcc6"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    -16,
+    -10
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#4a6f9a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "hospital/balcony-bands",
+   "at": [
+    0,
+    -2,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "floors": 3,
+    "storeyHeight": 3.6,
+    "proud": 0.9,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-1",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    34,
+    -8
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c7ccd1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop-2",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    36,
+    12
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#c7ccd1",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    4,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.8,
+    "run": 0.35,
+    "count": 4,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1,
+    "colour": "#4a6f9a",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -35,
+     -25
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     25,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no usable OSM; text-only L block and two workshop sheds typical for a polytechnic."
+ }
+}

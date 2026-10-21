@@ -1,0 +1,1517 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "oranjestad",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "oranjestad",
+    "climate": "desert",
+    "vernacular": "Dutch Caribbean town: low rows of 1-2 storey painted-render buildings with hip roofs of terracotta or grey metal, restored colonial buildings in lime, yellow, pink and turquoise, modern pastel malls and resorts on reclaimed waterfront, and a dry cactus-and-limestone interior.",
+    "wallColours": [
+      "#f4d35e",
+      "#c9d36a",
+      "#e8a3a0",
+      "#8fd0c8",
+      "#f2e8d0",
+      "#f7f4ee",
+      "#e07a5f"
+    ],
+    "roofColours": [
+      "#b5523b",
+      "#9a9fa3",
+      "#c9c6bc",
+      "#6b7b8c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "limestone",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "membrane",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "none"
+    ],
+    "ornament": "Dutch colonial pastel facades, Cunucu-style simple gabled houses, coral-limestone fort walls, shuttered windows, bright pastel trim, cactus hedges and divi-divi trees (windswept).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Oranjestad,_Aruba",
+        "what": "Dutch colonial architecture, older buildings restored in bright colours, City Hall lime coloured, hot semi-arid climate, reclaimed waterfront"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fort_Zoutman",
+        "what": "coral/stone fort construction"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+        "what": "dry limestone plateau with cactus scrub; windswept trees"
+      }
+    ]
+  },
+  "places": {
+    "oranjestad-airport-oranjestad-airport": {
+      "venueId": "oranjestad-airport-oranjestad-airport",
+      "city": "oranjestad",
+      "name": "Queen Beatrix International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Aruba's main terminal seen from the landside forecourt: a long low pale terminal block with a flat departures canopy and a separate control tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efeadd",
+          "#2f7f9a",
+          "#d6d6d0"
+        ],
+        "roofColour": "#c9c6bc",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1950s core, expanded to 2025",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen_Beatrix_International_Airport",
+          "what": "air traffic control tower exists; separate non-US departures building; new US Check-In Terminal opened April 2025 (Gateway 2030); private-aircraft terminal 2007; in use since 1934"
+        }
+      ],
+      "notes": "Wikipedia confirms the parts (control tower, non-US departures building, new US check-in terminal 2025) but gives no dimensions or colours; form and colours are typed estimates. Recognisable by the free-standing control tower and wide canopy."
+    },
+    "oranjestad-clinic": {
+      "venueId": "oranjestad-clinic",
+      "city": "oranjestad",
+      "name": "IMSAN Dr. Rudy Engelbrecht Medical Center",
+      "archetype": "hospital",
+      "subject": "A mid-size private medical centre: a sprawling low complex of connected wings around car parking",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 64,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4f1e8",
+          "#4f9fb5",
+          "#d4d0c6"
+        ],
+        "roofColour": "#bdb9ae",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/382344982",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM footprint is an irregular 132 x 64 m multi-wing hospital polygon (area ~4,700 m2, site ~8,500 m2); no description of the facade found. Located at San Nicolas/Savaneta side of the island. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-community-notices": {
+      "venueId": "oranjestad-community-notices",
+      "city": "oranjestad",
+      "name": "Human Resources Aruba",
+      "archetype": "office-low",
+      "subject": "A small 1920s office building (former Arend Petroleum Company premises) set at an angle on its plot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1e7c6",
+          "#b5523b",
+          "#f7f4ee"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "assumed entrance porch"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q42586255",
+          "what": "OSM-linked Wikidata item: Arend Petroleum Company building, 1927 (oil refinery company, 1927-1953)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/175180276",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Identity (former Arend Petroleum Company, 1927) is from Wikidata; footprint 24.7 x 17.6 m from OSM. No photograph description found, so appearance is a typed Aruban-colonial office. The game kind is \"statehouse\" but the real building is a small office."
+    },
+    "oranjestad-community-voting-game": {
+      "venueId": "oranjestad-community-voting-game",
+      "city": "oranjestad",
+      "name": "City Hall",
+      "archetype": "civic-small",
+      "subject": "The Stadhuis on Wilhelminastraat: a small square two-storey Dutch colonial town hall painted lime green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#c9d36a",
+          "#f7f4ee",
+          "#8a6a4a"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "assumed upper-floor gallery"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1925 (heritage listing)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oranjestad,_Aruba",
+          "what": "Dutch colonial centre restored in bright colours; City Hall lime-coloured; hot semi-arid climate; reclaimed waterfront"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q42586328",
+          "what": "Stadhuis Oranjestad, cultural heritage monument, inception 1925"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/38755794",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Wikipedia: City Hall on Wilhelminastraat is a restored, lime-coloured landmark. Footprint 16.4 x 15.5 m from OSM. Roof and gallery details are typed from Dutch Caribbean town halls, not confirmed."
+    },
+    "oranjestad-community-workshop": {
+      "venueId": "oranjestad-community-workshop",
+      "city": "oranjestad",
+      "name": "Xavier University School of Medicine",
+      "archetype": "campus-block",
+      "subject": "A long two-storey school building in pastel render with a horizontal strip of windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 122,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2e8d0",
+          "#e8a3a0",
+          "#d9d4c8"
+        ],
+        "roofColour": "#bdb9ae",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q8043318",
+          "what": "Xavier University School of Medicine, Oranjestad, founded 2004"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/641210140",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM footprint 122 x 32 m in a stepped rectangle; facade not described anywhere found. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-market-game": {
+      "venueId": "oranjestad-market-game",
+      "city": "oranjestad",
+      "name": "Palm Beach Plaza Mall",
+      "archetype": "mall",
+      "subject": "The Palm Beach shopping mall: a broad two-level rendered mall block with a car park and palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 106,
+        "depth_m": 97,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4d9b0",
+          "#e07a5f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/4073810",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM footprint 106 x 97 m (relation). Appearance not described in sources fetched; pastel Caribbean mall typed from the city style."
+    },
+    "oranjestad-meal-stop": {
+      "venueId": "oranjestad-meal-stop",
+      "city": "oranjestad",
+      "name": "La Trattoria El Faro Blanco",
+      "archetype": "restaurant",
+      "subject": "The restaurant occupying the former lighthouse-keepers' service house beside the California Lighthouse, on the rocky limestone plateau at Hudishibana",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f3efe4",
+          "#c9a77c",
+          "#8a6a4a"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1910s keepers' house",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/California_Lighthouse",
+          "what": "restaurant La Trattoria el Faro Blanco is adjacent to the lighthouse in the former keepers' service house; 30 m tapered rubble-stone tower on a limestone plateau at Hudishibana; rocky jagged terrain"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/77888113",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Venue is the restaurant, not the lighthouse. The 30 m white tapered lighthouse tower (1914-16, rubble stone, double balcony, lantern) is the nearby landmark and could be included as a monument element. The OSM retail footprint (41 x 32 m) is the restaurant plot including terraces; body dimensions are estimated."
+    },
+    "oranjestad-osm-node-11591843520": {
+      "venueId": "oranjestad-osm-node-11591843520",
+      "city": "oranjestad",
+      "name": "Overhanging cliff",
+      "archetype": "park-landscape",
+      "subject": "A natural limestone cliff face with an overhanging lip on Aruba's dry scrub plateau",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d8c8a0",
+          "#b8a47c",
+          "#8a7a5a"
+        ],
+        "roofColour": "#b8a47c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+          "what": "southern limestone plateau with sparse low vegetation shaped by trade winds; cactus (tuna, bushi) common"
+        }
+      ],
+      "notes": "A natural viewpoint node with no building and no description found. Typed as a coral-limestone ledge with cactus scrub; no man-made structure."
+    },
+    "oranjestad-osm-node-1770257502": {
+      "venueId": "oranjestad-osm-node-1770257502",
+      "city": "oranjestad",
+      "name": "Model Train Museum",
+      "archetype": "museum-theatre",
+      "subject": "A small single-storey hobby museum building at the south-east end of the island",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f4d35e",
+          "#ffffff",
+          "#6b7b8c"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/639839348",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 12.6 x 11.7 m. No description of the building found. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-osm-node-1773562177": {
+      "venueId": "oranjestad-osm-node-1773562177",
+      "city": "oranjestad",
+      "name": "Sero Cabai",
+      "archetype": "park-landscape",
+      "subject": "A low dry-scrub hill (Seroe Cabai) with cactus cover, shown as a rocky hilltop",
+      "form": {
+        "footprint": "round",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cdbb94",
+          "#a89268",
+          "#7a7a4a"
+        ],
+        "roofColour": "#a89268",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q21972902",
+          "what": "Sero Cabai, mountain in Aruba"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+          "what": "dry cactus scrub on the plateau and hills"
+        }
+      ],
+      "notes": "Only the name and \"mountain\" class are verified. Hill is small; typed as a rock-and-cactus knoll."
+    },
+    "oranjestad-osm-node-3753152873": {
+      "venueId": "oranjestad-osm-node-3753152873",
+      "city": "oranjestad",
+      "name": "Hoi Sing Bar & Chinese Restaurant",
+      "archetype": "restaurant",
+      "subject": "A small one-storey Chinese restaurant and bar in a strip of rendered shops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#c0392b",
+          "#f7f4ee"
+        ],
+        "roofColour": "#9a9fa3",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/639896524",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 30 x 23 m near the Savaneta/Pos Chiquito area. No description found. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-osm-node-540115823": {
+      "venueId": "oranjestad-osm-node-540115823",
+      "city": "oranjestad",
+      "name": "Alto Vista Chapel",
+      "archetype": "shrine-small",
+      "subject": "The tiny bright-yellow Alto Vista pilgrim chapel on the north coast with white cross markers around it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2d21b",
+          "#ffffff",
+          "#8a7a5a"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stone benches outside"
+        },
+        {
+          "id": "statue",
+          "count": 14,
+          "note": "white cross markers (Stations of the Cross) around the chapel"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1952 (original 1750)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alto_Vista_Chapel",
+          "what": "stone chapel painted stark bright yellow; ~15 m x 4.9 m; facade faces east; completed 1952 on the 1750 footprint; no stained glass; stone pews outside; white graves/crosses marking the Stations of the Cross"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/93476341",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Recognisable by the saturated yellow paint and the ring of white crosses along the path. Roof shape/colour and any bell gable are not described in the fetched source and are typed (gable, red tile)."
+    },
+    "oranjestad-osm-node-540217531": {
+      "venueId": "oranjestad-osm-node-540217531",
+      "city": "oranjestad",
+      "name": "Sero Jamanota",
+      "archetype": "park-landscape",
+      "subject": "Aruba's highest point, a rocky scrub-covered dome of a hill",
+      "form": {
+        "footprint": "round",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#b8a47c",
+          "#8a7a5a",
+          "#6b7a4a"
+        ],
+        "roofColour": "#8a7a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "summit marker/antenna, unverified"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hooiberg",
+          "what": "Jamanota is Aruba's highest natural point at 188 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+          "what": "cactus-dominated dry vegetation"
+        }
+      ],
+      "notes": "Height (188 m) is verified; the summit appearance is typed. The mast is a guess and may be dropped. Contrast with Hooiberg (conical, masts) which is not a venue here."
+    },
+    "oranjestad-osm-node-540982491": {
+      "venueId": "oranjestad-osm-node-540982491",
+      "city": "oranjestad",
+      "name": "Guadirikiri Cave",
+      "archetype": "park-landscape",
+      "subject": "A small limestone cave with light shafts opening in the roof, set in dry scrub",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d5c9a5",
+          "#a89268",
+          "#6b5a3a"
+        ],
+        "roofColour": "#a89268",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "rough path down to the cave mouth"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arikok_National_Park",
+          "what": "Guadirikiri cave listed in the south conservation zone"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/966343024",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Cave interior not described in sources fetched; OSM shows a 6 m shelter at the entrance. Typed as an open rock-and-scrub knoll with a cave mouth."
+    },
+    "oranjestad-osm-node-8677634858": {
+      "venueId": "oranjestad-osm-node-8677634858",
+      "city": "oranjestad",
+      "name": "Grandiso Sopi Seafood Mix",
+      "archetype": "restaurant",
+      "subject": "A tiny seafood shack with an open roofed serving area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#8fd0c8",
+          "#f2e8d0",
+          "#6b7b8c"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/640456508",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 11.8 x 11.7 m near the south coast fishing area. No description found. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-osm-node-952400489": {
+      "venueId": "oranjestad-osm-node-952400489",
+      "city": "oranjestad",
+      "name": "Synagogue",
+      "archetype": "shrine-small",
+      "subject": "The Beth Israel synagogue in central Oranjestad: a modest square-plan rendered building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#2f6fa0",
+          "#d9d4c8"
+        ],
+        "roofColour": "#bdb9ae",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/38483085",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM place_of_worship 19.4 x 18.3 m. Local congregation history suggests a 1960s modern building but the building was not found described; appearance is typed. Do not render lettering or religious symbols as text."
+    },
+    "oranjestad-osm-way-190877206": {
+      "venueId": "oranjestad-osm-way-190877206",
+      "city": "oranjestad",
+      "name": "Super Food Plaza",
+      "archetype": "market-hall",
+      "subject": "A large supermarket box with a continuous flat roof and a front car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 92,
+        "depth_m": 68,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#c0392b",
+          "#d4d0c6"
+        ],
+        "roofColour": "#c9c6bc",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/190877206",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM commercial building 92 x 68 m. Appearance typed from the supermarket type. Blank sign boards only."
+    },
+    "oranjestad-osm-way-371524223": {
+      "venueId": "oranjestad-osm-way-371524223",
+      "city": "oranjestad",
+      "name": "Rococo Plaza",
+      "archetype": "mall",
+      "subject": "A compact two-level shopping plaza with open balconies in Caribbean pastels",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8a3a0",
+          "#f4d35e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/371524223",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM marketplace/commercial 37 x 26 m within a 4,400 m2 plot. Appearance typed; smaller and more pastel than the Palm Beach Plaza Mall."
+    },
+    "oranjestad-osm-way-491139601": {
+      "venueId": "oranjestad-osm-way-491139601",
+      "city": "oranjestad",
+      "name": "University of Aruba",
+      "archetype": "campus-block",
+      "subject": "The University of Aruba's historic monastery-school complex at J. Irausquinplein, a group of old colonial buildings around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 83,
+        "depth_m": 65,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f0e6d2",
+          "#b5523b",
+          "#d4c8a8"
+        ],
+        "roofColour": "#b5523b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "typed for the former convent chapel; unverified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1920s-30s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Aruba",
+          "what": "campus is a historical building complex incl. Huize de la Salle and Maria Convent (monumental, restored 2024) and Centro Educativo Christian"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/491139601",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Source states it is a historical monastery complex but gives no styling; colours and arches are typed from Dutch colonial convents. OSM footprint 83 x 65 m."
+    },
+    "oranjestad-osm-way-769698096": {
+      "venueId": "oranjestad-osm-way-769698096",
+      "city": "oranjestad",
+      "name": "Fort Zoutman",
+      "archetype": "heritage-fort",
+      "subject": "Fort Zoutman, Oranjestad's oldest stone fort, with the square Willem III tower attached to its west side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 32,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#e9dfc6",
+          "#c9bfa5",
+          "#8a7a5a"
+        ],
+        "roofColour": "#8a7a5a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 4,
+          "note": "originally four cannons"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "archways at the base of the tower form the west entrance"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "Willem III tower as a generic tower, ~15 m; it was a lighthouse (lit 1868), no clock confirmed"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1798, tower 1868",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Zoutman",
+          "what": "fort built 1796-1798 of stone, concrete and coral; walls rebuilt 1936; Willem III tower added 1866-68 on the west side with archways at its base, originally a lighthouse; historical museum since 1983"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q610796",
+          "what": "Fort Zoutman, 18th-century fortification and museum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/769698096",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Materials (stone, concrete, coral) and the west-side tower with archways are from Wikipedia. OSM plan about 20 x 19 m for the core, plot ~1,000 m2 so ~32 m square including bastions. Tower height and the pale colour are estimates. Gun-ports along the wall."
+    },
+    "oranjestad-osm-way-958543660": {
+      "venueId": "oranjestad-osm-way-958543660",
+      "city": "oranjestad",
+      "name": "Parke Curazon",
+      "archetype": "park-landscape",
+      "subject": "A large public park of lawns, scattered trees and paved paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 298,
+        "depth_m": 214,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8fb070",
+          "#d8cbb0",
+          "#c0392b"
+        ],
+        "roofColour": "#b5523b",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/958543660",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM leisure=park 298 x 214 m. Name means \"Heart Park\". No description found; contents typed. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-osm-way-959755657": {
+      "venueId": "oranjestad-osm-way-959755657",
+      "city": "oranjestad",
+      "name": "Green Corridor Linear park",
+      "archetype": "park-landscape",
+      "subject": "A narrow linear park/greenway strip with a path and shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8fb070",
+          "#d8cbb0",
+          "#7a8a60"
+        ],
+        "roofColour": "#9a9fa3",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/959755657",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM park is 2.9 km x 136 m; shown as a 400 m clamped stretch. No description found. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    },
+    "oranjestad-quiet-reflection": {
+      "venueId": "oranjestad-quiet-reflection",
+      "city": "oranjestad",
+      "name": "Seroe Colorado Community Church",
+      "archetype": "church-classical",
+      "subject": "The 1939 community church of the former Lago oil-company colony at Seroe Colorado: a small gabled church with a short tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f7f4ee",
+          "#2f4a5c",
+          "#d4c8a8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short entrance tower, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1939",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q98875016",
+          "what": "Seroe Colorado Community Church, cultural heritage site, 1939"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/97566669",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Wikidata confirms 1939 heritage status; OSM footprint 25.8 x 13.6 m. Appearance typed (American-colony church)."
+    },
+    "oranjestad-recreation": {
+      "venueId": "oranjestad-recreation",
+      "city": "oranjestad",
+      "name": "Ayo Rock Formation",
+      "archetype": "park-landscape",
+      "subject": "Ayo's field of huge rounded reddish-brown boulders standing on dry ground with sparse scrub",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#9a6b4f",
+          "#7a5238",
+          "#b08a64"
+        ],
+        "roofColour": "#7a5238",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "path and stairs between boulders"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/43109643",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "Typed from general knowledge of the Ayo rocks (large rounded boulders, reddish-brown, petroglyphs); no source fetched for it. OSM park polygon is 312 x 218 m. Show a cluster of 10-15 m boulders, not the whole park."
+    },
+    "oranjestad-transit": {
+      "venueId": "oranjestad-transit",
+      "city": "oranjestad",
+      "name": "De Palm Island Ferry Teminal",
+      "archetype": "transport-station",
+      "subject": "A small ferry ticket pavilion at the pier with a shade roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f7f4ee",
+          "#2f7f9a",
+          "#d4d0c6"
+        ],
+        "roofColour": "#2f7f9a",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/376283899",
+          "what": "measured building footprint (width/depth) from OpenStreetMap"
+        }
+      ],
+      "notes": "OSM building 13 x 11 m on the Barcadera shore. No description found. No source describing this building was found; typed from the venue type, measured OSM footprint and the Oranjestad city style."
+    }
+  }
+}

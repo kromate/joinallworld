@@ -1,0 +1,208 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (no photo, no OSM building): informal open market on the north bank, rusty corrugated sheds, timber stalls, tarpaulin umbrellas and a few lock-ups beside the road"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     10,
+     6
+    ]
+   },
+   "at": [
+    30,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#6a737b",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a5b3c",
+    "material": "corrugated",
+    "pitch": 7,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-open/lock-up-row",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "roof_colour": "#9a5b3c",
+    "wall_colour": "#a0795a"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "at": [
+    -18,
+    2,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#9a5b3c",
+    "wall_colour": "#a0795a"
+   }
+  },
+  {
+   "type": "market-open/market-shed",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks",
+    "roof_colour": "#7d4a32",
+    "wall_colour": "#6a737b"
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -5,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c0392b",
+     "#2f6fb3",
+     "#e8c14a",
+     "#2f7a55"
+    ],
+    "jitter": 0.4
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    2,
+    16,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.0,
+    "kind": "timber",
+    "jitter": 0.5
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    -26,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#c0392b",
+     "#e8c14a",
+     "#2f6fb3"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#d9c08f",
+    "frameColour": "#6a737b"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    32,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline: typical informal market layout of sheds, stalls and lock-ups"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "north-bank-market"
+}

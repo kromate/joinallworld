@@ -1,0 +1,203 @@
+{
+ "verified": "text",
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "farmhouse",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "height": 5,
+   "storeys": 1,
+   "z0": 0,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6cc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#a8643e"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a38",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-wing",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -12,
+    4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f4a38",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drying-shed",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    20,
+    12
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8643e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7d7a74",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2,
+    "drop": 0.4,
+    "height": 2.7,
+    "colours": [
+     "#a8643e",
+     "#efe6cc"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.3,
+    "thickness": 0.2,
+    "kind": "wall",
+    "colour": "#8a7a5a",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "pillar": 0.5,
+    "leaf": "bars",
+    "colour": "#efe6cc",
+    "leafColour": "#6b7f4a"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -6,
+    26
+   ],
+   "params": {
+    "width": 56,
+    "depth": 14,
+    "count": 22,
+    "kind": "broadleaf",
+    "min_height": 5,
+    "max_height": 10
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    22,
+    -2
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "count": 6,
+    "kind": "broadleaf",
+    "min_height": 4,
+    "max_height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-node-5909941285",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/malabo.json",
+   "used": "typed brief only; no photo found in the evidence file"
+  }
+ ],
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Typed guess: farmhouse, wing, drying shed and tree belt not observed."
+ }
+}

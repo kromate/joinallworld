@@ -1,0 +1,294 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Monument_at_Isaac_Adaka_Boro_park_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Bomaexpress",
+   "view": "front",
+   "file": "/tmp/places-evidence/port-harcourt/boro1.jpg",
+   "used": "setting only: royal palms, brick-paver paths, solar lamp posts, grey-black stone plinth and obelisk in the surrounding Isaac Boro Park; the bandstand itself has no photo"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/758353197",
+   "used": "containing park (Isaac Boro Park), extent and edge trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     16,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e0d0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0d0"
+   }
+  },
+  {
+   "type": "bandstand",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "radius": 5,
+    "height": 4
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    -18,
+    2
+   ],
+   "params": {
+    "radius": 3.6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    18,
+    2
+   ],
+   "params": {
+    "radius": 3.6,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 5.5
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -30,
+     -14
+    ],
+    "end": [
+     30,
+     -14
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "lamp",
+     "params": {
+      "height": 5.5
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -30,
+     14
+    ],
+    "end": [
+     30,
+     14
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    -6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 0.7,
+    "thickness": 0.3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    -6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 0.7,
+    "thickness": 0.3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 0.7,
+    "thickness": 0.3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    10
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "height": 0.7,
+    "thickness": 0.3,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obelisk",
+   "at": [
+    0,
+    -20
+   ],
+   "params": {
+    "rect": [
+     4,
+     4
+    ],
+    "height": 2,
+    "colour": "#2a2d2e"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -20,
+    2
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3,
+       3
+      ],
+      "colour": "#8d8777"
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.2,
+       1.2
+      ],
+      "colour": "#8d8777"
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -20
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     18
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     0
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     36,
+     0
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "bandstand/fountains from brief; photo is of the park monument, not the venue"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "garden-city-evening"
+}

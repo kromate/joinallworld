@@ -1,0 +1,1096 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "stanley",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "stanley",
+    "climate": "cold",
+    "vernacular": "Small windswept British-style harbour town on a north-facing slope: one- and two-storey houses built of wood and iron (timber frames clad in painted render or corrugated iron, a few stone and brick civic buildings), with brightly painted corrugated-metal roofs in red, green and blue, carved wooden fascia boards, porches and well-kept gardens. Treeless peat moorland behind, cypress hedges and gorse in gardens, red British post and telephone boxes.",
+    "wallColours": [
+      "#f0ede4",
+      "#e8dcc0",
+      "#c9d8e0",
+      "#d9c2c0",
+      "#9fb7a0",
+      "#8a8f93"
+    ],
+    "roofColours": [
+      "#a8392e",
+      "#3f6b4b",
+      "#3d5f8a",
+      "#7d8084",
+      "#5b5f63"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "timber",
+      "metal-cladding",
+      "stone",
+      "brick",
+      "render"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "slate"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "conifer",
+      "none"
+    ],
+    "ornament": "Carved wooden fascia boards and bargeboards, porches, bay windows, white-painted window frames, gardens with hedges and fuchsia, whalebone arch and red phone boxes as town icons. Wall and roof colours are typical of Stanley's bright painted houses as described in sources, not measured hex values.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Falkland_Islands",
+        "what": "Falkland houses known for bright paint, carved wooden fascia boards, timber kit houses; Britannica 1911 called Stanley's houses wood and iron"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Stanley,_Falkland_Islands",
+        "what": "north-facing slope, subpolar oceanic climate, Government House 1845, peat stacks, red post and telephone boxes"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Government_House,_Falkland_Islands",
+        "what": "grey stone Government House with slate roof, conservatory with grapevine"
+      }
+    ]
+  },
+  "places": {
+    "stanley-airport-stanley-airport": {
+      "venueId": "stanley-airport-stanley-airport",
+      "city": "stanley",
+      "name": "Port Stanley Airport",
+      "archetype": "airport-terminal",
+      "subject": "The small Port Stanley Airport terminal at Cape Pembroke: a compact two-storey block with a control tower on the airfield",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e4d8",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "OSM height 25 m for the terminal/tower element"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1979, later extended",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_Stanley_Airport",
+          "what": "opened 1 May 1979 at Cape Pembroke, two asphalt runways, civilian since 1986"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/210884209",
+          "what": "OSM aeroway terminal tag: 2 levels, height 25 m, footprint about 27 x 16 m (facts file)"
+        }
+      ],
+      "notes": "Footprint, two levels and height 25 m (likely including a tower) come from OSM; colours and roof are typed from the town style. No source describes the exterior."
+    },
+    "stanley-clinic": {
+      "venueId": "stanley-clinic",
+      "city": "stanley",
+      "name": "King Edward Memorial Hospital",
+      "archetype": "hospital",
+      "subject": "The King Edward VII Memorial Hospital: the islands' main hospital, a wide multi-wing block with a small ambulance entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e5da",
+          "#3d5f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stanley,_Falkland_Islands",
+          "what": "KEMH is the islands' main hospital with radiology, dental and emergency facilities"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/291390814",
+          "what": "OSM building=hospital, about 100 x 75 m, height 15 m (facts file)"
+        }
+      ],
+      "notes": "Only the OSM footprint and height are measured; no source describes the facade. Typed with the Stanley painted-render and red corrugated roof style. Era uncertain."
+    },
+    "stanley-community-notices": {
+      "venueId": "stanley-community-notices",
+      "city": "stanley",
+      "name": "Gilbert House",
+      "archetype": "civic-small",
+      "subject": "Gilbert House on Ross Road, the listed house that holds the Legislative Assembly members' offices",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e1cc",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bay-window",
+          "count": 1,
+          "note": "typed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "19th century (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gilbert_House_(Falkland_Islands)",
+          "what": "on Ross Road opposite the Malvina House Hotel; a listed building; members of the Legislative Assembly have offices there; formerly Dockyard Cottage"
+        }
+      ],
+      "notes": "Identity and use are sourced, but no source describes its appearance. Typed as a two-storey painted Stanley house with a red corrugated roof. OSM footprint about 18 x 12 m."
+    },
+    "stanley-community-voting-game": {
+      "venueId": "stanley-community-voting-game",
+      "city": "stanley",
+      "name": "Town Hall",
+      "archetype": "civic-small",
+      "subject": "Stanley Town Hall, which houses the post office, law court and dance hall, with its red post and telephone boxes outside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece7d8",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 2,
+          "note": "red British post box and telephone box beside the post office"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "20th century (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stanley,_Falkland_Islands",
+          "what": "town hall serves as post office, philatelic bureau, law court and dance hall; British red post and telephone boxes beside the post office; city status read out outside it in 2022"
+        }
+      ],
+      "notes": "Use and the red boxes are sourced; the building's materials, storeys and colours are typed. OSM footprint about 28 x 22 m."
+    },
+    "stanley-community-workshop": {
+      "venueId": "stanley-community-workshop",
+      "city": "stanley",
+      "name": "Christie Community Library",
+      "archetype": "campus-block",
+      "subject": "The Christie Community Library, in the same long school block as Falkland College on the western edge of town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5e0d2",
+          "#3d5f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#3d5f8a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source. OSM gives one 52 x 19 m 'college' building which also matches Falkland College; both briefs describe the same block with different roof colours (this one blue, the college green) for variety only."
+    },
+    "stanley-market-game": {
+      "venueId": "stanley-market-game",
+      "city": "stanley",
+      "name": "Market game (game venue)",
+      "archetype": "shophouse",
+      "subject": "Generic small commercial building for the market game venue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3dcc4",
+          "#3f6b4b",
+          "#ffffff"
+        ],
+        "roofColour": "#3f6b4b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder: OSM footprint at this spot is a small commercial/hotel building (about 20 x 11 m). Typed from the Stanley style only."
+    },
+    "stanley-meal-stop": {
+      "venueId": "stanley-meal-stop",
+      "city": "stanley",
+      "name": "Tasty Treat Bakery",
+      "archetype": "restaurant",
+      "subject": "A small bakery-cafe in a one- to two-storey painted building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe0b0",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM footprint (about 31 x 15 m) and the Stanley style."
+    },
+    "stanley-osm-node-10095786051": {
+      "venueId": "stanley-osm-node-10095786051",
+      "city": "stanley",
+      "name": "Sea Cabbage Cafe",
+      "archetype": "restaurant",
+      "subject": "A very long, narrow single-storey cafe building in a distant settlement outside Stanley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 4.2,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9d8e0",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source. Footprint about 25 x 4 m from OSM (long thin outbuilding-style); typed as a painted timber shed-style cafe with corrugated roof."
+    },
+    "stanley-osm-node-135001622": {
+      "venueId": "stanley-osm-node-135001622",
+      "city": "stanley",
+      "name": "1982 Liberation Memorial",
+      "archetype": "monument",
+      "subject": "The Liberation Memorial on Ross Road: a stone obelisk topped by a bronze Britannia, with a bronze relief and ten name plaques behind, facing the harbour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8a8d90",
+          "#b79a4a",
+          "#3a3d40"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "front carries the coat of arms in a laurel wreath and inscription"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze Britannia on top"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "bronze relief of famous moments of the war"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "ten plaques with 255 names behind"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1984",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/1982_Liberation_Memorial",
+          "what": "obelisk with bronze Britannia, coat of arms in laurel wreath, relief by Faith Winter, ten plaques with the names of 255 dead, in front of the Secretariat overlooking the harbour"
+        }
+      ],
+      "notes": "Form is sourced. Stone colour and total height are typed (OSM height 3 m is for the node only). Built 1984 is from general knowledge of the memorial's unveiling, not from the fetched sources."
+    },
+    "stanley-osm-node-1791574651": {
+      "venueId": "stanley-osm-node-1791574651",
+      "city": "stanley",
+      "name": "Cape Pembroke",
+      "archetype": "monument",
+      "subject": "Cape Pembroke Lighthouse: a black cast-iron tower with a white horizontal band, balcony and black lantern on the eastern headland",
+      "form": {
+        "footprint": "round",
+        "width_m": 5.2,
+        "depth_m": 5.2,
+        "storeys": 6,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#1c1c1e",
+          "#f2f2ee",
+          "#1c1c1e"
+        ],
+        "roofColour": "#1c1c1e",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "gallery balcony at the lantern"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1906",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Pembroke_Lighthouse",
+          "what": "cast-iron cylindrical tower 18 m, black with a horizontal white band, black lantern with balcony, rebuilt 1906, restored 1990s"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cape_Pembroke",
+          "what": "easternmost point of the Falklands, lighthouse built 1855 and rebuilt 1906, SS Atlantic Conveyor memorial 2007"
+        }
+      ],
+      "notes": "Sizes and colours are sourced. Treeless windswept heath; the keepers' cottage no longer stands."
+    },
+    "stanley-osm-node-9563237706": {
+      "venueId": "stanley-osm-node-9563237706",
+      "city": "stanley",
+      "name": "Moody Brook Barracks",
+      "archetype": "heritage-fort",
+      "subject": "The ruined Moody Brook Royal Marine barracks site: only concrete foundations and low wall stubs remain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 2.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8a8d90",
+          "#6f6f6a",
+          "#a8a8a2"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low wall remnants"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1960s, ruined",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moody_Brook",
+          "what": "Royal Marines barracks until 1982, site of an old wireless station, only foundations remain; attacked in Operation Rosario"
+        }
+      ],
+      "notes": "Foundations only per source, so modelled as low slabs and wall stubs on grass. Dimensions typed (no OSM polygon)."
+    },
+    "stanley-osm-way-168220217": {
+      "venueId": "stanley-osm-way-168220217",
+      "city": "stanley",
+      "name": "Christ Church Cathedral",
+      "archetype": "church-gothic",
+      "subject": "Christ Church Cathedral on Ross Road: a stone-and-brick Gothic Revival cathedral with a bell tower, and the whalebone arch of two blue-whale jawbones in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9a5a45",
+          "#b9b3a2",
+          "#d9d3c4"
+        ],
+        "roofColour": "#4f5459",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tower with a ring of five bells"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "19th and 20th century windows"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "whalebone arch of two blue-whale jaws in front, erected 1933"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1890-1892",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Christ_Church_Cathedral_(Falkland_Islands)",
+          "what": "designed by Sir Arthur Blomfield, built 1890-92 of local stone and brick, five bells, stained glass, whalebone arch erected 1933 from the jaws of two blue whales"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Stanley,_Falkland_Islands",
+          "what": "southernmost Anglican cathedral in the world, whalebone arch in front"
+        }
+      ],
+      "notes": "Materials, architect, tower and arch are sourced. Exact brick and roof colours are typed (red-brown brick, grey roof). The whalebone arch is the key recognisable feature."
+    },
+    "stanley-osm-way-209298805": {
+      "venueId": "stanley-osm-way-209298805",
+      "city": "stanley",
+      "name": "Falkland Islands Museum and National Trust",
+      "archetype": "museum-theatre",
+      "subject": "The Historic Dockyard Museum: dockyard-style low buildings of timber and metal with a large maritime hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#c9d4d8",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "dockyard store buildings"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "dockyard from 19th century; museum 1989, new dockyard 2014",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Falkland_Islands_Museum_and_National_Trust",
+          "what": "museum at the historic dockyard; new dockyard development opened 6 September 2014 with a large maritime history area; previously in a Brazilian prefabricated house (Britannia House) from 1989"
+        }
+      ],
+      "notes": "Wikipedia gives history but not appearance; buildings typed as dockyard-style timber and corrugated-iron sheds from the town style. OSM footprint about 21 x 20 m is the main hall."
+    },
+    "stanley-osm-way-323534124": {
+      "venueId": "stanley-osm-way-323534124",
+      "city": "stanley",
+      "name": "Cafe",
+      "archetype": "restaurant",
+      "subject": "A tiny roadside cafe kiosk building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 3,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9d8e0",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#3d5f8a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2010s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM footprint about 10 x 3 m, typed as a small painted timber cabin cafe."
+    },
+    "stanley-osm-way-942254769": {
+      "venueId": "stanley-osm-way-942254769",
+      "city": "stanley",
+      "name": "Falkland College",
+      "archetype": "campus-block",
+      "subject": "Falkland College in the school block on the western edge of Stanley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e5e0d2",
+          "#3f6b4b",
+          "#ffffff"
+        ],
+        "roofColour": "#3f6b4b",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s (typed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; OSM college polygon about 52 x 19 m (same as the Christie Community Library entry); typed from the Stanley style."
+    },
+    "stanley-quiet-reflection": {
+      "venueId": "stanley-quiet-reflection",
+      "city": "stanley",
+      "name": "Saint Mary's Church",
+      "archetype": "shrine-small",
+      "subject": "St Mary's Catholic church, a timber church of 1899 with oil murals on its west wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#efe9da",
+          "#a8392e",
+          "#ffffff"
+        ],
+        "roofColour": "#a8392e",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bell turret, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "oil murals by James Peck on the west wall (interior)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1899",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Mary%27s_Church,_Falkland_Islands",
+          "what": "timber church built and consecrated 1899, replaced a hall of 1866, oil murals by James Peck on west wall"
+        }
+      ],
+      "notes": "Timber construction and date are sourced; colours, roof and turret are typed. OSM footprint (about 18 x 6 m) may be only part of the church."
+    },
+    "stanley-recreation": {
+      "venueId": "stanley-recreation",
+      "city": "stanley",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "Generic recreation green for the game venue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#7aa05a",
+          "#c8bfa6",
+          "#e8e4d6"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; typed from the Stanley style: a small fenced green with a play shelter."
+    },
+    "stanley-transit": {
+      "venueId": "stanley-transit",
+      "city": "stanley",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "Generic small bus stop shelter and layby",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#cfd4d6",
+          "#3d5f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#3d5f8a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "(game venue) placeholder; the OSM spot is a small warehouse (about 20 x 10 m). Typed as a bus shelter."
+    }
+  }
+}

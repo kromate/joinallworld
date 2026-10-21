@@ -1,0 +1,150 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/779581543",
+   "used": "rejected: nearest building (60 m away) is a different, much larger two-storey school; not used. Modest buka-style eatery from the brief only"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "buka",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#a8744f",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f4a38",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    0,
+    -5.8,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 2.4,
+    "drop": 0.5,
+    "height": 2.6,
+    "colours": [
+     "#a8744f",
+     "#f0ece4"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-group",
+   "at": [
+    -3,
+    -9.5,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 7,
+    "colours": [
+     "#a8744f",
+     "#e8dcc0",
+     "#6f4a38"
+    ]
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    3,
+    -8.5,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -5,
+    -8,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -5.9,
+    2.7
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#f0ece4",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    11,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   40,
+   34
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "calabar",
+ "venueId": "native-delicacies-food",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence of this venue; typical buka eatery, OSM match rejected (a school)"
+ }
+}

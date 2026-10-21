@@ -1,0 +1,1336 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "enugu",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "enugu",
+    "climate": "savanna",
+    "vernacular": "Hilly former colonial coal-mining capital on the Udi escarpment. The Government Reserved Area keeps Georgian-style colonial houses on narrow winding roads; the rest of the city is 1-3 storey cream, white and ochre painted-render houses and shops with rust-red or grey corrugated and long-span metal roofs, with 5-10 storey bank and office blocks along Okpara Avenue and bare red laterite earth verges under mango, neem and palm trees.",
+    "wallColours": [
+      "#efe6d2",
+      "#f6f2ea",
+      "#d8c39a",
+      "#c9b9a2",
+      "#b9c3b0",
+      "#a8a49c",
+      "#b5694a"
+    ],
+    "roofColours": [
+      "#8a4a36",
+      "#6f757a",
+      "#3f6b4a",
+      "#9a9a94",
+      "#4a5f78"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "laterite",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Colonial-Georgian veranda posts and hip roofs in the Government Reserved Area; modern breeze-block screens and concrete sun-breakers on public buildings; carved-wood gates and painted wall murals on Igbo compounds; church and bank signage as blank coloured boards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Enugu",
+        "what": "tropical wet-and-dry (savanna) climate; Guinean forest-savanna mosaic; GRA retains Georgian-style buildings and narrow winding roads; township 1917; John Holt and UAC colonial firms"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Igbo_architecture",
+        "what": "Igbo vernacular: mud, laterite, thatch, carved timber doors and gates, painted mud figures; context for ornament motifs"
+      }
+    ]
+  },
+  "places": {
+    "access-bank-okpara-avenue": {
+      "venueId": "access-bank-okpara-avenue",
+      "city": "enugu",
+      "name": "Access Bank, Okpara Avenue",
+      "archetype": "office-low",
+      "subject": "A mid-rise commercial bank branch block on Okpara Avenue with a glazed ground floor and rendered upper floors, shown with blank neutral signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 22,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e6e0",
+          "#3d5a73",
+          "#b7bcc0"
+        ],
+        "roofColour": "#8b9094",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, brand-neutral"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "ground-floor entrance canopy"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Okpara Avenue is the main commercial street of Enugu lined with bank branches. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "agofure-park": {
+      "venueId": "agofure-park",
+      "city": "enugu",
+      "name": "Agofure Park",
+      "archetype": "park-landscape",
+      "subject": "A small public open space with a paved central area, a few shade trees, a kiosk and an entrance gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d2c0",
+          "#6f8f5a",
+          "#b9b2a0"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Name and position are real but no description of the place was found; the source list gives no facts about its layout. It could equally be a roadside park or a motor park; shown as a small public green. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "aguagwa": {
+      "venueId": "aguagwa",
+      "city": "enugu",
+      "name": "Aguagwa",
+      "archetype": "market-open",
+      "subject": "A neighbourhood roadside trading strip with tin-roofed stalls and kiosks beside the road",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8c39a",
+          "#6f757a",
+          "#b5694a"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Aguagwa is a district/neighbourhood name in south Enugu, not a single building. Nothing specific was found, so it is shown as a typical roadside trading strip. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "akanu-ibiam-international-airport": {
+      "venueId": "akanu-ibiam-international-airport",
+      "city": "enugu",
+      "name": "Akanu Ibiam International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The passenger terminal of Enugu airport (renovated and expanded from 2010) seen from the landside forecourt, a two-storey modern block with a projecting entrance canopy and a control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe3e4",
+          "#3f566a",
+          "#f1efe9"
+        ],
+        "roofColour": "#b8bdc0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010 expansion",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akanu_Ibiam_International_Airport",
+          "what": "runway 08/26 3,000 m asphalt, 142 m elevation; FAAN closed it 10 Feb 2010 for major renovation and expansion and reopened 16 Dec 2010; later phases completed"
+        }
+      ],
+      "notes": "Only the renovation dates and runway are sourced; the Wikipedia page has a photo but no text describing the terminal. Dimensions and materials are a typed guess for a Nigerian regional international terminal."
+    },
+    "central-mosque-islamic-centre": {
+      "venueId": "central-mosque-islamic-centre",
+      "city": "enugu",
+      "name": "Central Mosque, Islamic Centre",
+      "archetype": "mosque-domed",
+      "subject": "The central mosque of Enugu: a white prayer hall with one main dome and two corner minarets, with ablution buildings alongside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1e8",
+          "#2f7a5a",
+          "#c9c2ae"
+        ],
+        "roofColour": "#2f7a5a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 25 m"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Enugu is a predominantly Igbo Christian city so the mosque is small and urban. No description found; a typed domed-mosque brief in white and green. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "ekulu-garden": {
+      "venueId": "ekulu-garden",
+      "city": "enugu",
+      "name": "Ekulu Garden",
+      "archetype": "park-landscape",
+      "subject": "A riverside recreation garden with lawns, shade trees, paved walkways and a few open pavilions",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e4dcc8",
+          "#5f8a4e",
+          "#a5774f"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Named for the Ekulu river that runs through north Enugu. No description of the garden was found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "enugu-national-museum-of-unity": {
+      "venueId": "enugu-national-museum-of-unity",
+      "city": "enugu",
+      "name": "Enugu's National Museum of Unity",
+      "archetype": "museum-theatre",
+      "subject": "A single-storey colonial-style museum building with a wide veranda and hip roof set in a garden, in the manner of the GRA houses",
+      "form": {
+        "footprint": "L",
+        "width_m": 42,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 7.5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f1e9d6",
+          "#8b5a3c",
+          "#c4b393"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "front veranda posts"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "colonial-era building (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "Government Reserved Area retains Georgian-style colonial buildings; context for style of the museum quarter"
+        }
+      ],
+      "notes": "The National Museum of Unity (Nigerian Commission for Museums and Monuments) is in the old Enugu quarter; its building is thought to be a colonial-era house but this was not verified. Treat as a typed colonial-style brief. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "enugu-north-local-government-headquarters": {
+      "venueId": "enugu-north-local-government-headquarters",
+      "city": "enugu",
+      "name": "Enugu North Local Government Headquarters",
+      "archetype": "civic-small",
+      "subject": "A two-storey rendered local-government secretariat with a central entrance bay, flagpole and a perimeter wall",
+      "form": {
+        "footprint": "U",
+        "width_m": 44,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d2",
+          "#2f6b4a",
+          "#a8a49c"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Typed civic block; local-government offices in Nigeria are typically 1-3 storey rendered blocks with a flagpole. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "enugu-state-college-of-education-technical": {
+      "venueId": "enugu-state-college-of-education-technical",
+      "city": "enugu",
+      "name": "Enugu State College of Education (Technical)",
+      "archetype": "campus-block",
+      "subject": "A cluster of two- and three-storey lecture blocks with louvred windows around a quadrangle",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#4e7a9a",
+          "#b3ab9a"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Position and name are real; no description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "ifenzi-beauty-salon": {
+      "venueId": "ifenzi-beauty-salon",
+      "city": "enugu",
+      "name": "Ifenzi Beauty Salon",
+      "archetype": "shophouse",
+      "subject": "A small single-storey shop-unit salon with a coloured painted front, awning and blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e7b9c6",
+          "#ffffff",
+          "#8a8f8c"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank pink-neutral board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Small private business; nothing findable beyond the name. Shown as a generic Nigerian salon shop unit. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "institute-of-management-and-technology": {
+      "venueId": "institute-of-management-and-technology",
+      "city": "enugu",
+      "name": "Institute of Management and Technology (IMT)",
+      "archetype": "campus-block",
+      "subject": "A polytechnic campus of blocky three-storey lecture buildings with concrete sun-shading and a gate with security house",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#ece4d0",
+          "#a4533a",
+          "#b9b4a6"
+        ],
+        "roofColour": "#8c9194",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1965 foundation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Institute_of_Management_and_Technology,_Enugu",
+          "what": "IMT is a state-owned polytechnic in Enugu founded in 1965; stub article, no building description"
+        }
+      ],
+      "notes": "Founded 1965; 1960s-70s Nigerian polytechnic campuses are typically exposed-concrete blocks. Building form is a typed guess."
+    },
+    "jombos-kitchen": {
+      "venueId": "jombos-kitchen",
+      "city": "enugu",
+      "name": "Jombo's Kitchen",
+      "archetype": "restaurant",
+      "subject": "A small single-storey buka-style restaurant with a veranda, plastic chairs under an awning and a painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0d9a8",
+          "#b7472a",
+          "#ffffff"
+        ],
+        "roofColour": "#6a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Small restaurant, only name and position are real. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "lambi-church-polling": {
+      "venueId": "lambi-church-polling",
+      "city": "enugu",
+      "name": "Lambi Church (polling unit)",
+      "archetype": "church-modern",
+      "subject": "A small parish church hall with a front gable and short tower, used as an election polling unit",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ece0",
+          "#3a5f8a",
+          "#c4bfae"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short front tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Listed as a polling unit at a church called Lambi (Ngwo/Lambi area south-west Enugu); no description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "manuwa-bus-sop": {
+      "venueId": "manuwa-bus-sop",
+      "city": "enugu",
+      "name": "Manuwa Bus Stop",
+      "archetype": "transport-station",
+      "subject": "A roadside bus stop with a small waiting shelter, loading bay and kiosks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b4",
+          "#d9a431",
+          "#6f757a"
+        ],
+        "roofColour": "#7a7f83",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Informal roadside stop; yellow minibuses are typical in Enugu. Nothing specific was found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "national-orthopedic-hospital-enugu": {
+      "venueId": "national-orthopedic-hospital-enugu",
+      "city": "enugu",
+      "name": "National Orthopaedic Hospital, Enugu",
+      "archetype": "hospital",
+      "subject": "The federal orthopaedic hospital: several multi-storey rendered ward blocks linked by covered walkways, with an ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece9e0",
+          "#2f6f7a",
+          "#bfc3bf"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1975 (as Haile Selassie I Institute)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Orthopaedic_Hospital,_Enugu",
+          "what": "established 17 January 1975 as the Haile Selassie I Institute of Orthopaedic, Plastic and Ophthalmic Surgery; federal specialist hospital in Enugu; stub, no building description"
+        }
+      ],
+      "notes": "Founding date and original name are sourced. Building form is typed from a federal 1970s specialist hospital."
+    },
+    "niger-foundation-hospital": {
+      "venueId": "niger-foundation-hospital",
+      "city": "enugu",
+      "name": "Niger Foundation Hospital & Diagnostic Centre",
+      "archetype": "hospital",
+      "subject": "A private hospital: a clean white three-storey block with a glazed entrance and a car park",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f6f5f0",
+          "#2a6f9a",
+          "#c9ccc8"
+        ],
+        "roofColour": "#9a9e9c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Private foundation hospital; no building description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "nnamdi-azikiwe-stadium": {
+      "venueId": "nnamdi-azikiwe-stadium",
+      "city": "enugu",
+      "name": "Nnamdi Azikiwe Stadium",
+      "archetype": "stadium",
+      "subject": "The \"Cathedral\" football stadium of Enugu Rangers: an oval concrete bowl with a covered main stand, floodlight masts and a scoreboard behind one goal",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#bcb8ae",
+          "#1f4f9a",
+          "#e9e5da"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main (west) stand, typed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "videomatrix scoreboard"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1959; rebuilt 1986",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nnamdi_Azikiwe_Stadium",
+          "what": "nickname The Cathedral; capacity 22,000; 1959 railway sports ground, 1970 renovation, rebuilt and inaugurated 1986; artificial turf; videomatrix scoreboard added; 1999 refurbishment"
+        }
+      ],
+      "notes": "Capacity, dates, turf and scoreboard are sourced. The Rangers colours (blue/white) are used for seat colours; stand-roof detail is not confirmed by the source."
+    },
+    "ogbete-main-market": {
+      "venueId": "ogbete-main-market",
+      "city": "enugu",
+      "name": "Ogbete Main Market",
+      "archetype": "market-open",
+      "subject": "A vast dense trading district of lock-up stalls, tin sheds and umbrellas packed along narrow lanes, with taller concrete shop blocks at the edges",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9c9a6",
+          "#8a4a36",
+          "#a5a79f"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 25
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "colonial-era market, ongoing growth",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "Ogbete Main Market is the major market of Enugu; Holy Ghost Cathedral stands near it; Enugu township 1917"
+        }
+      ],
+      "notes": "Only the existence and location are sourced; layout is typed from typical Nigerian city markets. Scaled to the 120 m cap; a real market is much larger."
+    },
+    "university-of-nigeria-enugu-campus": {
+      "venueId": "university-of-nigeria-enugu-campus",
+      "city": "enugu",
+      "name": "University of Nigeria, Enugu Campus (UNEC)",
+      "archetype": "campus-block",
+      "subject": "Original 1950s colonial-era college buildings of the Enugu campus: long two- and three-storey rendered lecture blocks with deep verandas",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#eee5cf",
+          "#a4553a",
+          "#b7b09c"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s (Nigerian College of Arts, Science and Technology)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Nigeria",
+          "what": "Enugu Campus grew from the former Nigerian College of Arts, Science and Technology, incorporated 1961; original buildings form the current campus; about 200 ha in central Enugu; faculties of Law, Business, Environmental Studies, Basic Medical and Health Sciences"
+        }
+      ],
+      "notes": "Origin and site area are sourced; architectural style of the buildings is not described so the colonial-college form is a typed inference from the 1950s date."
+    },
+    "wesley-cathedral": {
+      "venueId": "wesley-cathedral",
+      "city": "enugu",
+      "name": "Wesley Cathedral",
+      "archetype": "church-modern",
+      "subject": "The Methodist Church Nigeria cathedral in Enugu: a large white rendered church with a prominent front bell tower and tall arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 17,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f2eee2",
+          "#5a3e8a",
+          "#bdb6a2"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front tower about 30 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Enugu",
+          "what": "city context: savanna climate, Georgian-style GRA, red-earth hilly setting"
+        }
+      ],
+      "notes": "Wesley Cathedral is a known Methodist cathedral in Enugu, near the Central Mosque. No source describing the building was found; form is a typed guess for a Nigerian Methodist cathedral. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    }
+  }
+}

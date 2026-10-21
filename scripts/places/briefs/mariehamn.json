@@ -1,0 +1,1423 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "mariehamn",
+  "style": {
+    "climate": "cold",
+    "vernacular": "Baltic island town: a regular 1861 grid of low painted-timber houses and villas (cream, ochre, pale yellow, Falu red, white) with glazed verandas, white-framed windows and carved trim; stone and rendered civic buildings by Lars Sonck from the 1920s-30s in a restrained national-romantic/classical style; steep roofs of dark sheet metal, red tile or shingle; pink-red Aland granite for plinths and monuments; modern low blocks of brick, render and glass; pine and birch with leafy lime-tree avenues along Torggatan.",
+    "wallColours": [
+      "#e6d9a8",
+      "#8e3a2e",
+      "#d2b36a",
+      "#eee9de",
+      "#b0786a",
+      "#a8b0a8",
+      "#c9c1a8"
+    ],
+    "roofColours": [
+      "#3b3d40",
+      "#8a3b2c",
+      "#5a5f66",
+      "#7a6a5a"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "render",
+      "granite",
+      "brick",
+      "stone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "timber-shingle",
+      "membrane",
+      "slate"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "carved wooden verandas and gable trim on 19th-century villas; white-painted corner boards and window casings on coloured timber; pink-red rapakivi granite plinths, steps and memorial stones; ship models, anchors and maritime motifs on civic buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Mariehamn",
+        "what": "Planned town layout largely intact; 19th-century wooden houses on Sodragatan; Lars Sonck town hall 1939, Maritime College 1927, St George church 1927; library 1989; barque Pommern in the Western Harbour"
+      },
+      {
+        "url": "https://sv.wikipedia.org/wiki/Mariehamns_stadshus",
+        "what": "Stone building on the town square, architect Lars Sonck, completed 1939, originally also fire station and ambulance garage, K-classified since 2014"
+      }
+    ],
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "mariehamn"
+  },
+  "places": {
+    "mariehamn-airport-mariehamn-airport": {
+      "venueId": "mariehamn-airport-mariehamn-airport",
+      "city": "mariehamn",
+      "name": "Mariehamn Airport",
+      "archetype": "airport-terminal",
+      "subject": "Mariehamn Airport terminal: a small one-storey regional terminal with a low flat canopy and a short apron beside the runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e1d2",
+          "#6b7885",
+          "#f1efe8"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mariehamn_Airport",
+          "what": "One asphalt runway 03/21 1,903 m, 5 m elevation, Jomala 3 km NW of town, ~42,000 passengers in 2025"
+        }
+      ],
+      "notes": "Only the airfield data (one 1,903 m asphalt runway, a few tens of thousands of passengers) is sourced; terminal size and finish are guessed as a small regional terminal. No jet bridges - passengers walk to the aircraft."
+    },
+    "mariehamn-clinic": {
+      "venueId": "mariehamn-clinic",
+      "city": "mariehamn",
+      "name": "Åland central hospital",
+      "archetype": "hospital",
+      "subject": "Aland central hospital: a mid-size pale hospital block with a long front and a covered entrance",
+      "form": {
+        "footprint": "L",
+        "width_m": 95,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e8dcc0",
+          "#a8553a",
+          "#f1efe8"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed from city style as a modest Nordic regional hospital."
+    },
+    "mariehamn-community-notices": {
+      "venueId": "mariehamn-community-notices",
+      "city": "mariehamn",
+      "name": "Ålands lagting",
+      "archetype": "civic-small",
+      "subject": "Aland's Lagting seat (Sjalvstyrelsegarden): a modern civic building near the town centre, set beside the Self-government park",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "granite",
+        "colours": [
+          "#d9cfae",
+          "#b0786a",
+          "#f0ece2"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://sv.wikipedia.org/wiki/%C3%85lands_lagting",
+          "what": "Lagting sits in the Sjalvstyrelsegarden in Mariehamn; first met 1922"
+        }
+      ],
+      "notes": "Source confirms only that the Lagting meets in the Sjalvstyrelsegarden in Mariehamn; the building's look is not described. Pink granite trim and flags are assumed."
+    },
+    "mariehamn-community-voting-game": {
+      "venueId": "mariehamn-community-voting-game",
+      "city": "mariehamn",
+      "name": "Mariehamns stadshus",
+      "archetype": "civic-small",
+      "subject": "Mariehamn town hall (stadshus) on the town square: a stone civic building by Lars Sonck, 1939",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#cfc4a6",
+          "#b0786a",
+          "#eee9de"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "1939",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://sv.wikipedia.org/wiki/Mariehamns_stadshus",
+          "what": "Stone building on the town square, architect Lars Sonck, completed 1939, originally also fire station and ambulance garage, K-classified since 2014"
+        }
+      ],
+      "notes": "Sourced: stone building, architect Lars Sonck, completed 1939, once also housing fire station and ambulance garage; protected since 2014. Colour, storeys, roof and dimensions are estimates of a Sonck-era restrained classical civic building. Clock-tower and portico are uncertain."
+    },
+    "mariehamn-community-workshop": {
+      "venueId": "mariehamn-community-workshop",
+      "city": "mariehamn",
+      "name": "Sjöfartsprogrammen vid Ålands yrkesgymnasium",
+      "archetype": "campus-block",
+      "subject": "Aland vocational school maritime programmes: a plain two-to-three-storey school block near the Sonck-era maritime college area",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e6d9a8",
+          "#a8553a",
+          "#eee9de"
+        ],
+        "roofColour": "#8a3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mariehamn",
+          "what": "Planned town layout largely intact; 19th-century wooden houses on Sodragatan; Lars Sonck town hall 1939, Maritime College 1927, St George church 1927; library 1989; barque Pommern in the Western Harbour"
+        }
+      ],
+      "notes": "The Maritime College main building is cited as by Lars Sonck (1927), but it is not established that this venue is that building. Typed from city style."
+    },
+    "mariehamn-market-game": {
+      "venueId": "mariehamn-market-game",
+      "city": "mariehamn",
+      "name": "Telegrafen",
+      "archetype": "market-hall",
+      "subject": "Telegrafen: a small central shopping and market building in the town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e6d9a8",
+          "#8e3a2e",
+          "#eee9de"
+        ],
+        "roofColour": "#3b3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance unverified. Typed as a two-storey town-centre building in the pale-yellow render typical of central Mariehamn."
+    },
+    "mariehamn-meal-stop": {
+      "venueId": "mariehamn-meal-stop",
+      "city": "mariehamn",
+      "name": "F.P. von KNORRING",
+      "archetype": "restaurant",
+      "subject": "F.P. von Knorring: a restaurant in a coloured timber building near the town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8e3a2e",
+          "#eee9de",
+          "#d2b36a"
+        ],
+        "roofColour": "#3b3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "19th century or later",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed as a Falu-red timber building, a normal sight in central Mariehamn."
+    },
+    "mariehamn-osm-node-14073432102": {
+      "venueId": "mariehamn-osm-node-14073432102",
+      "city": "mariehamn",
+      "name": "Taste of Himalaya",
+      "archetype": "restaurant",
+      "subject": "Taste of Himalaya: a small restaurant in a modern commercial unit",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e1d2",
+          "#c4452f",
+          "#f1efe8"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed as a retail-park unit in the north of town."
+    },
+    "mariehamn-osm-node-1804271293": {
+      "venueId": "mariehamn-osm-node-1804271293",
+      "city": "mariehamn",
+      "name": "Torpviken birdwatching tower",
+      "archetype": "monument",
+      "subject": "Torpviken birdwatching tower: a timber lookout tower on a reed-bay shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 3,
+        "height_m": 9,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a8260",
+          "#b69a6e",
+          "#7a6a5a"
+        ],
+        "roofColour": "#7a6a5a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the name is known; typed as a small open timber tower with a stair and a viewing deck over reeds."
+    },
+    "mariehamn-osm-node-1805019649": {
+      "venueId": "mariehamn-osm-node-1805019649",
+      "city": "mariehamn",
+      "name": "Ålands hotell- och restaurangskola",
+      "archetype": "campus-block",
+      "subject": "Aland hotel and restaurant school: a low school block with a training kitchen and cafe wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#d9cfae",
+          "#a8553a",
+          "#eee9de"
+        ],
+        "roofColour": "#8a3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed from city style."
+    },
+    "mariehamn-osm-node-3669569440": {
+      "venueId": "mariehamn-osm-node-3669569440",
+      "city": "mariehamn",
+      "name": "Plus Minnessten",
+      "archetype": "monument",
+      "subject": "Plus Minnessten: a memorial stone of pink-red granite on a small grass plot",
+      "form": {
+        "footprint": "round",
+        "width_m": 3,
+        "depth_m": 3,
+        "storeys": 0,
+        "height_m": 2.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#b0786a",
+          "#8e5a4a",
+          "#c9a898"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the name 'memorial stone' is known; Aland granite is red-pink, so a simple block is shown. No inscription."
+    },
+    "mariehamn-osm-node-5095859130": {
+      "venueId": "mariehamn-osm-node-5095859130",
+      "city": "mariehamn",
+      "name": "Önningebymuseet",
+      "archetype": "museum-theatre",
+      "subject": "Onningeby museum: a small museum in a traditional wooden farmhouse-style house of the artist colony village",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8e3a2e",
+          "#eee9de",
+          "#d2b36a"
+        ],
+        "roofColour": "#8a3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bay-window",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "around 1900",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Onningeby was an artist colony around 1900; the museum's building was not examined. Typed as an Aland villa in Falu red with white trim."
+    },
+    "mariehamn-osm-node-9299613331": {
+      "venueId": "mariehamn-osm-node-9299613331",
+      "city": "mariehamn",
+      "name": "Alandica Shipping Academy",
+      "archetype": "campus-block",
+      "subject": "Alandica Shipping Academy: a modern glass-and-render training building near the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#4f6a8c",
+          "#f1efe8"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed as a contemporary college block, in contrast to the older Sonck maritime college."
+    },
+    "mariehamn-osm-way-1173832356": {
+      "venueId": "mariehamn-osm-way-1173832356",
+      "city": "mariehamn",
+      "name": "Baltic friidrottsarena",
+      "archetype": "stadium",
+      "subject": "Baltic athletics arena: a small athletics track with a single low covered stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c6bd",
+          "#2f5f8a",
+          "#e8e6e0"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Athletics-oriented ground; layout assumed. Oval red track with a modest stand."
+    },
+    "mariehamn-osm-way-165234934": {
+      "venueId": "mariehamn-osm-way-165234934",
+      "city": "mariehamn",
+      "name": "S:t Mårtens kyrka",
+      "archetype": "church-gothic",
+      "subject": "S:t Martens church (Jomala): a large medieval stone parish church with whitewashed walls and a steep roof",
+      "form": {
+        "footprint": "cross",
+        "width_m": 34,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#e6e0d0",
+          "#8a8f94",
+          "#eee9de"
+        ],
+        "roofColour": "#3b3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval, 12th-13th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Aland's medieval stone churches are typically whitewashed with steep dark roofs; the specific Jomala church was not verified. Treated as a Gothic-leaning church shown with a mid-height tower and spire."
+    },
+    "mariehamn-osm-way-169355118": {
+      "venueId": "mariehamn-osm-way-169355118",
+      "city": "mariehamn",
+      "name": "Sittkoff",
+      "archetype": "mall",
+      "subject": "Sittkoff: a modern shopping centre in central Mariehamn, brick and render with glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a8553a",
+          "#8c9097",
+          "#e8e6e0"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1980s-1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified. No brand marks. Brick-faced, unlike the pale ZEIPELS front."
+    },
+    "mariehamn-osm-way-173383813": {
+      "venueId": "mariehamn-osm-way-173383813",
+      "city": "mariehamn",
+      "name": "ZEIPELS",
+      "archetype": "mall",
+      "subject": "ZEIPELS: a long central department-store style building along the main street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6d9a8",
+          "#b0786a",
+          "#eee9de"
+        ],
+        "roofColour": "#3b3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed as a three-storey pale-yellow urban department store, to differ from Sittkoff."
+    },
+    "mariehamn-osm-way-306321868": {
+      "venueId": "mariehamn-osm-way-306321868",
+      "city": "mariehamn",
+      "name": "Kungsö batteri",
+      "archetype": "heritage-fort",
+      "subject": "Kungso battery: concrete and stone remains of a Russian WWI coastal battery on a rocky shore",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#8a8f94",
+          "#a8a398",
+          "#6f7f55"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2,
+          "note": "emplacement mounts"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1914-1918",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://sv.wikipedia.org/wiki/Kungs%C3%B6_batteri",
+          "what": "Kungso battery: remains of a Russian WWI coastal battery in Jomala"
+        }
+      ],
+      "notes": "Sourced: remains of a Russian coastal battery from WWI at Kungso in Jomala. Concrete bunkers with granite revetments and gun pits are typical of such batteries but not described in the fetched page."
+    },
+    "mariehamn-osm-way-493148135": {
+      "venueId": "mariehamn-osm-way-493148135",
+      "city": "mariehamn",
+      "name": "Miramarparken",
+      "archetype": "park-landscape",
+      "subject": "Miramarparken: a seaside park with lawns, pines and a pavilion near the harbour",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6f7f55",
+          "#a8a398",
+          "#d9cfae"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Contents unverified; typed as a Nordic town park with a lakeside edge."
+    },
+    "mariehamn-osm-way-494277380": {
+      "venueId": "mariehamn-osm-way-494277380",
+      "city": "mariehamn",
+      "name": "Åland Pingstförsamling",
+      "archetype": "church-modern",
+      "subject": "Aland Pentecostal church: a plain modern hall-church with a low tower and glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e6e1d2",
+          "#8e3a2e",
+          "#f1efe8"
+        ],
+        "roofColour": "#3b3d40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed as a free-church hall."
+    },
+    "mariehamn-osm-way-496249920": {
+      "venueId": "mariehamn-osm-way-496249920",
+      "city": "mariehamn",
+      "name": "Ombudet Spel & Café",
+      "archetype": "restaurant",
+      "subject": "Ombudet Spel & Cafe: a games cafe in a small commercial building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e1d2",
+          "#4f6a8c",
+          "#f1efe8"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified."
+    },
+    "mariehamn-osm-way-527070540": {
+      "venueId": "mariehamn-osm-way-527070540",
+      "city": "mariehamn",
+      "name": "Självstyrelseparken",
+      "archetype": "park-landscape",
+      "subject": "Sjalvstyrelseparken (Self-government Park): a formal civic lawn beside the Lagting with paths, a flagpole and trimmed trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f7f55",
+          "#b0786a",
+          "#a8a398"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://sv.wikipedia.org/wiki/%C3%85lands_lagting",
+          "what": "Lagting sits in the Sjalvstyrelsegarden in Mariehamn; first met 1922"
+        }
+      ],
+      "notes": "Park named for Aland's self-government, next to the Lagting; monuments and flags assumed, not verified."
+    },
+    "mariehamn-quiet-reflection": {
+      "venueId": "mariehamn-quiet-reflection",
+      "city": "mariehamn",
+      "name": "Sankt Olofs kyrka",
+      "archetype": "church-gothic",
+      "subject": "Sankt Olofs church: a rural Aland medieval stone church with whitewashed walls, steep red or dark roof and a short west tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "granite",
+        "colours": [
+          "#e6e0d0",
+          "#8a8f94",
+          "#b0786a"
+        ],
+        "roofColour": "#8a3b2c",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Several Aland churches are dedicated to St Olof; which one is meant was not verified. Typed from the medieval stone-church pattern of the islands; granite walls with whitewash."
+    },
+    "mariehamn-recreation": {
+      "venueId": "mariehamn-recreation",
+      "city": "mariehamn",
+      "name": "Lilla holmen",
+      "archetype": "park-landscape",
+      "subject": "Lilla holmen: a small wooded islet park linked by a short bridge, with a pavilion and a pier",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#6f7f55",
+          "#9a8260",
+          "#d9cfae"
+        ],
+        "roofColour": "#7a6a5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name only; layout assumed."
+    },
+    "mariehamn-transit": {
+      "venueId": "mariehamn-transit",
+      "city": "mariehamn",
+      "name": "Mariehamn Western Harbour",
+      "archetype": "transport-station",
+      "subject": "Mariehamn Western Harbour: ferry terminal on the quay with the four-masted barque Pommern moored beside the maritime museum",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#4f6a8c",
+          "#f1efe8"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "mast",
+          "count": 4,
+          "note": "four-masted barque Pommern"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mariehamn",
+          "what": "Planned town layout largely intact; 19th-century wooden houses on Sodragatan; Lars Sonck town hall 1939, Maritime College 1927, St George church 1927; library 1989; barque Pommern in the Western Harbour"
+        }
+      ],
+      "notes": "Sourced: the barque Pommern and the Aland Maritime Museum are in the Western Harbour. Terminal building shape is a guess; the ship's four masts are the recognisable landmark. Differs from other transit stops by having a waterside quay."
+    }
+  }
+}

@@ -1,0 +1,957 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-national-sports-stadium",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:2003_Harare_Stadium,_Zimbabwe_557109164.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Flickr user (see Commons page)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/harare/h1014-stadium0.jpg",
+   "used": "long low oval bowl: dark lower concrete walls with vertical structure, continuous light roof ring all round, set in open bush; far hills; overall proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9080858",
+   "used": "oval outline (about 240 x 250 m real, scaled to the 118 m scene clamp), partly roofed ring"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 10,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       60,
+       55
+      ]
+     },
+     {
+      "z": 0.2,
+      "ellipse": [
+       60,
+       55
+      ]
+     }
+    ],
+    "colour": "#5a5853",
+    "round": 28
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.2,
+      "ellipse": [
+       38,
+       34
+      ]
+     },
+     {
+      "z": 0.3,
+      "ellipse": [
+       38,
+       34
+      ]
+     }
+    ],
+    "colour": "#b4553d",
+    "round": 28
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     34,
+     22
+    ],
+    "height": 0.1,
+    "colour": "#4f7f3a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       57,
+       52
+      ]
+     },
+     {
+      "z": 9.5,
+      "ellipse": [
+       57,
+       52
+      ]
+     }
+    ],
+    "colour": "#5a5853",
+    "round": 28
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 9.5,
+      "ellipse": [
+       57.4,
+       52.4
+      ]
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       57.4,
+       52.4
+      ]
+     }
+    ],
+    "colour": "#6d6b65",
+    "round": 28
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-ring",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      11,
+      0.9
+     ]
+    },
+    "points": [
+     [
+      56.0,
+      0.0,
+      12.2
+     ],
+     [
+      55.31,
+      7.98,
+      12.2
+     ],
+     [
+      53.26,
+      15.76,
+      12.2
+     ],
+     [
+      49.9,
+      23.15,
+      12.2
+     ],
+     [
+      45.3,
+      29.98,
+      12.2
+     ],
+     [
+      39.6,
+      36.06,
+      12.2
+     ],
+     [
+      32.92,
+      41.26,
+      12.2
+     ],
+     [
+      25.42,
+      45.44,
+      12.2
+     ],
+     [
+      17.3,
+      48.5,
+      12.2
+     ],
+     [
+      8.76,
+      50.37,
+      12.2
+     ],
+     [
+      0.0,
+      51.0,
+      12.2
+     ],
+     [
+      -8.76,
+      50.37,
+      12.2
+     ],
+     [
+      -17.3,
+      48.5,
+      12.2
+     ],
+     [
+      -25.42,
+      45.44,
+      12.2
+     ],
+     [
+      -32.92,
+      41.26,
+      12.2
+     ],
+     [
+      -39.6,
+      36.06,
+      12.2
+     ],
+     [
+      -45.3,
+      29.98,
+      12.2
+     ],
+     [
+      -49.9,
+      23.15,
+      12.2
+     ],
+     [
+      -53.26,
+      15.76,
+      12.2
+     ],
+     [
+      -55.31,
+      7.98,
+      12.2
+     ],
+     [
+      -56.0,
+      0.0,
+      12.2
+     ],
+     [
+      -55.31,
+      -7.98,
+      12.2
+     ],
+     [
+      -53.26,
+      -15.76,
+      12.2
+     ],
+     [
+      -49.9,
+      -23.15,
+      12.2
+     ],
+     [
+      -45.3,
+      -29.98,
+      12.2
+     ],
+     [
+      -39.6,
+      -36.06,
+      12.2
+     ],
+     [
+      -32.92,
+      -41.26,
+      12.2
+     ],
+     [
+      -25.42,
+      -45.44,
+      12.2
+     ],
+     [
+      -17.3,
+      -48.5,
+      12.2
+     ],
+     [
+      -8.76,
+      -50.37,
+      12.2
+     ],
+     [
+      -0.0,
+      -51.0,
+      12.2
+     ],
+     [
+      8.76,
+      -50.37,
+      12.2
+     ],
+     [
+      17.3,
+      -48.5,
+      12.2
+     ],
+     [
+      25.42,
+      -45.44,
+      12.2
+     ],
+     [
+      32.92,
+      -41.26,
+      12.2
+     ],
+     [
+      39.6,
+      -36.06,
+      12.2
+     ],
+     [
+      45.3,
+      -29.98,
+      12.2
+     ],
+     [
+      49.9,
+      -23.15,
+      12.2
+     ],
+     [
+      53.26,
+      -15.76,
+      12.2
+     ],
+     [
+      55.31,
+      -7.98,
+      12.2
+     ]
+    ],
+    "closed": true,
+    "colour": "#e6e4dc"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-fascia",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      1.6
+     ]
+    },
+    "points": [
+     [
+      61.2,
+      0.0,
+      12.0
+     ],
+     [
+      60.45,
+      8.79,
+      12.0
+     ],
+     [
+      58.2,
+      17.37,
+      12.0
+     ],
+     [
+      54.53,
+      25.51,
+      12.0
+     ],
+     [
+      49.51,
+      33.03,
+      12.0
+     ],
+     [
+      43.27,
+      39.74,
+      12.0
+     ],
+     [
+      35.97,
+      45.47,
+      12.0
+     ],
+     [
+      27.78,
+      50.07,
+      12.0
+     ],
+     [
+      18.91,
+      53.45,
+      12.0
+     ],
+     [
+      9.57,
+      55.51,
+      12.0
+     ],
+     [
+      0.0,
+      56.2,
+      12.0
+     ],
+     [
+      -9.57,
+      55.51,
+      12.0
+     ],
+     [
+      -18.91,
+      53.45,
+      12.0
+     ],
+     [
+      -27.78,
+      50.07,
+      12.0
+     ],
+     [
+      -35.97,
+      45.47,
+      12.0
+     ],
+     [
+      -43.27,
+      39.74,
+      12.0
+     ],
+     [
+      -49.51,
+      33.03,
+      12.0
+     ],
+     [
+      -54.53,
+      25.51,
+      12.0
+     ],
+     [
+      -58.2,
+      17.37,
+      12.0
+     ],
+     [
+      -60.45,
+      8.79,
+      12.0
+     ],
+     [
+      -61.2,
+      0.0,
+      12.0
+     ],
+     [
+      -60.45,
+      -8.79,
+      12.0
+     ],
+     [
+      -58.2,
+      -17.37,
+      12.0
+     ],
+     [
+      -54.53,
+      -25.51,
+      12.0
+     ],
+     [
+      -49.51,
+      -33.03,
+      12.0
+     ],
+     [
+      -43.27,
+      -39.74,
+      12.0
+     ],
+     [
+      -35.97,
+      -45.47,
+      12.0
+     ],
+     [
+      -27.78,
+      -50.07,
+      12.0
+     ],
+     [
+      -18.91,
+      -53.45,
+      12.0
+     ],
+     [
+      -9.57,
+      -55.51,
+      12.0
+     ],
+     [
+      -0.0,
+      -56.2,
+      12.0
+     ],
+     [
+      9.57,
+      -55.51,
+      12.0
+     ],
+     [
+      18.91,
+      -53.45,
+      12.0
+     ],
+     [
+      27.78,
+      -50.07,
+      12.0
+     ],
+     [
+      35.97,
+      -45.47,
+      12.0
+     ],
+     [
+      43.27,
+      -39.74,
+      12.0
+     ],
+     [
+      49.51,
+      -33.03,
+      12.0
+     ],
+     [
+      54.53,
+      -25.51,
+      12.0
+     ],
+     [
+      58.2,
+      -17.37,
+      12.0
+     ],
+     [
+      60.45,
+      -8.79,
+      12.0
+     ]
+    ],
+    "closed": true,
+    "colour": "#f2f0ea"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 49,
+    "radiusY": 44,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.5,
+    "seatColours": [
+     "#6f8a8f",
+     "#e6e2d8",
+     "#8a8e90"
+    ],
+    "blocks": 24,
+    "concreteColour": "#5a5853",
+    "underColour": "#4a4844",
+    "facetDeg": 20
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "scoreboard-block",
+   "at": [
+    -50,
+    -46,
+    0
+   ],
+   "params": {
+    "rect": [
+     1,
+     1
+    ],
+    "height": 0.1,
+    "colour": "#b9b5ac"
+   },
+   "lod": [
+    2
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -66,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    66,
+    48,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "head_width": 6,
+    "colour": "#aeb4ba"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    36,
+    0.2
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 2.4,
+    "facing": "south",
+    "colour": "#2a2d31"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -60,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "rise": 1.4,
+    "run": 2.2,
+    "count": 5,
+    "colour": "#bdb9ae"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -30,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 4,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    30,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 4,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -72,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 8,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.8,
+       1.0
+      ],
+      "height": 10.5,
+      "colour": "#6d6b65"
+     }
+    },
+    "mode": "arc",
+    "count": 48,
+    "radius": 57.4,
+    "radiusY": 52.4,
+    "facing": "outward"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -20,
+    58,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       55,
+       16
+      ]
+     },
+     {
+      "z": 3.5,
+      "ellipse": [
+       40,
+       9
+      ]
+     }
+    ],
+    "colour": "#7c9a55",
+    "round": 20
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -82,
+    0
+   ],
+   "params": {
+    "rect": [
+     120,
+     4
+    ],
+    "height": 0.05,
+    "colour": "#7c7566"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 9.5,
+      "ellipse": [
+       44,
+       40
+      ]
+     },
+     {
+      "z": 9.6,
+      "ellipse": [
+       44,
+       40
+      ]
+     }
+    ],
+    "colour": "#a8573f",
+    "round": 28
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 9.6,
+      "ellipse": [
+       36,
+       30
+      ]
+     },
+     {
+      "z": 9.7,
+      "ellipse": [
+       36,
+       30
+      ]
+     }
+    ],
+    "colour": "#6f8a45",
+    "round": 28
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -85,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     88,
+     10
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -90,
+     45
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     70,
+     70
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     40,
+     -85
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Lower and darker with ribs, roof disc removed and ring kept thin, but the bowl centre still renders as a flat dark grey disc (pitch not visible); embankment hidden behind the bowl; ground is flat pale green not olive scrub; photo is hazy."
+ }
+}

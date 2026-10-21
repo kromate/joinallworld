@@ -1,0 +1,228 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "ota-community-clinic",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only: low L-shaped painted clinic, veranda, ambulance bay, blank cross board; no photo of this place exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -3,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#3f7a52",
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c3b2f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     9,
+     15
+    ]
+   },
+   "at": [
+    10.5,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#3f7a52",
+    "faces": {
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c3b2f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -3,
+    -4.5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 2.6,
+    "height": 3.0,
+    "roof": "lean-to",
+    "roof_colour": "#9c3b2f",
+    "roof_material": "corrugated",
+    "wall_colour": "#f2eee6"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -3,
+    -4.6,
+    3.4
+   ],
+   "params": {
+    "size": 1.8
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.6,
+    "columns": 2,
+    "colour": "#f2eee6",
+    "roofColour": "#3f7a52",
+    "vans": 1
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    15,
+    10,
+    0
+   ],
+   "params": {
+    "radius": 1.3,
+    "height": 2.0,
+    "legs": 3.5,
+    "colour": "#3f7a52"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.6,
+    "thickness": 0.25,
+    "colour": "#9db9c9"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "colour": "#f2eee6",
+    "leafColour": "#3f7a52"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   56,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of this place exists; modelled from the brief (verified text). Exact layout, colours and street setting are typical, not surveyed."
+ }
+}

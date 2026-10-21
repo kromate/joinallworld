@@ -1,0 +1,1484 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bangui",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bangui",
+    "climate": "savanna",
+    "vernacular": "Riverside capital on the Ubangi: a colonial centre with wide boulevards, a triumphal arch and the presidential palace near the river; elsewhere low single-storey houses, many kodros of mud brick with thatch or rusted corrugated roofs, red laterite streets and tropical broadleaf and palm trees; public buildings are plain painted-render or concrete from the 1960s onward, often with weathered paint.",
+    "wallColours": [
+      "#b98a62",
+      "#d8c9a9",
+      "#e6dfd0",
+      "#9c7a5a",
+      "#c8b79a",
+      "#a86a4a"
+    ],
+    "roofColours": [
+      "#8f8a82",
+      "#7a4a35",
+      "#b59a5a",
+      "#5f6a6e"
+    ],
+    "wallMaterials": [
+      "mud-render",
+      "painted-render",
+      "brick",
+      "concrete",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf",
+      "acacia"
+    ],
+    "ornament": "Colonial arcades and verandas on 1930s-60s buildings, weathered whitewash, mud-brick kodros with thatched cones, hand-painted signboards, the Bokassa-era triumphal arch near the river; little ornament on modern public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bangui",
+        "what": "Colonial layout with wide boulevards and central market square, triumphal arch, presidential palace, many suburban kodros of mud brick with thatched roofs, tropical savanna climate, Ubangi River, low-lying neighbourhoods"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bangui",
+        "what": "Cathedral built 1934-37 on a 4 ha concession; shows colonial-era mission building"
+      }
+    ]
+  },
+  "places": {
+    "bangui-airport-bangui-airport": {
+      "venueId": "bangui-airport-bangui-airport",
+      "city": "bangui",
+      "name": "Bangui M'Poko International Airport",
+      "archetype": "airport-terminal",
+      "subject": "M'Poko airport terminal: a small, two-gate 1967 terminal beside a long runway, a low pale block with a squat control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfcf",
+          "#8f979c",
+          "#b98a62"
+        ],
+        "roofColour": "#9aa0a2",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1967",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui_M%27Poko_International_Airport",
+          "what": "Opened 1967 and not updated since; two boarding gates, food concession and bar; 2,600 m asphalt runway; ~€4 m renovation planned"
+        }
+      ],
+      "notes": "Scale is small (two gates). Size, colours and tower are typed. Asphalt runway 2,600 m."
+    },
+    "bangui-clinic": {
+      "venueId": "bangui-clinic",
+      "city": "bangui",
+      "name": "Saint Donatien",
+      "archetype": "hospital",
+      "subject": "Saint Donatien clinic: a long single-storey ward block with a deep veranda and rusted corrugated roof (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#7aa08a",
+          "#a86a4a"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1950s-60s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type. Probably a mission-style hospital building."
+    },
+    "bangui-community-notices": {
+      "venueId": "bangui-community-notices",
+      "city": "bangui",
+      "name": "Société de Distribution d’Eau de Centrafrique",
+      "archetype": "office-low",
+      "subject": "The SODECA water-company office: a plain two-storey painted-render block with a small water tank on the site (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dcc6",
+          "#2f6f9a",
+          "#9c9a92"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-community-voting-game": {
+      "venueId": "bangui-community-voting-game",
+      "city": "bangui",
+      "name": "La ville de Bégoua",
+      "archetype": "civic-small",
+      "subject": "Begoua town hall: a small single-storey rendered hall with a veranda and flagpole (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc7",
+          "#b98a62",
+          "#6b6a64"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type. Begoua is a suburb north of the centre."
+    },
+    "bangui-community-workshop": {
+      "venueId": "bangui-community-workshop",
+      "city": "bangui",
+      "name": "Groupe Elite Formation",
+      "archetype": "office-low",
+      "subject": "A small training-centre building: a two-storey block with an outside stair and bright blue painted balcony railings (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ecdfc3",
+          "#2b6fa6",
+          "#8f8a82"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-market-game": {
+      "venueId": "bangui-market-game",
+      "city": "bangui",
+      "name": "Marché Miskine",
+      "archetype": "market-open",
+      "subject": "Miskine market: an open grid of timber and sheet stalls with tarpaulins and rusting corrugated roofs along red-earth lanes (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "wings": 3
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#9c7a5a",
+          "#b05a2f",
+          "#cfc3a6"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "Bangui has a central market square near the river and a larger market and nightlife area to the north"
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-meal-stop": {
+      "venueId": "bangui-meal-stop",
+      "city": "bangui",
+      "name": "Chinese restaurant",
+      "archetype": "restaurant",
+      "subject": "A small Chinese-run restaurant: a single-storey rendered building with red lanterns-coloured trim and a covered front (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1e5c7",
+          "#b3261e",
+          "#d8a62c"
+        ],
+        "roofColour": "#b3261e",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type. Red and gold trim is a typed cue to distinguish it from other eateries."
+    },
+    "bangui-osm-node-2225267665": {
+      "venueId": "bangui-osm-node-2225267665",
+      "city": "bangui",
+      "name": "Centre de Santé Guitangola",
+      "archetype": "hospital",
+      "subject": "A tiny health centre: a two-room rendered building with a covered entrance and a clinic sign (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece4d2",
+          "#3f8f6a",
+          "#8f8a82"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-node-2225615058": {
+      "venueId": "bangui-osm-node-2225615058",
+      "city": "bangui",
+      "name": "Centre de Santé Urbain de Ouango Bangui",
+      "archetype": "hospital",
+      "subject": "A larger urban health centre: an L-shaped single-storey block with a veranda and ambulance bay (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 38,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7e1cf",
+          "#c7502f",
+          "#8f8a82"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-node-2381567443": {
+      "venueId": "bangui-osm-node-2381567443",
+      "city": "bangui",
+      "name": "La Brasserie",
+      "archetype": "restaurant",
+      "subject": "A riverside brasserie: a two-storey rendered building with a roofed terrace and plastic-chair tables (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e3c2",
+          "#8a5a36",
+          "#2b6fa6"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-node-4637219536": {
+      "venueId": "bangui-osm-node-4637219536",
+      "city": "bangui",
+      "name": "Institut New Tech",
+      "archetype": "campus-block",
+      "subject": "A small private institute: a single two-storey block with a painted facade and a canopy over the entrance (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e0c8",
+          "#2a5f8f",
+          "#8f8a82"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-node-4637748534": {
+      "venueId": "bangui-osm-node-4637748534",
+      "city": "bangui",
+      "name": "Marché d'Artisanat",
+      "archetype": "market-open",
+      "subject": "A craft market: rows of small open workshops and display stalls under thatch and sheet roofs (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "mud-render",
+        "colours": [
+          "#a57a4f",
+          "#c9a15a",
+          "#e6dcc2"
+        ],
+        "roofColour": "#b59a5a",
+        "roofMaterial": "thatch",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "Many suburban homes are kodros built of mud bricks with thatched roofs"
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type. Thatch is chosen to differ from Miskine and match kodro construction."
+    },
+    "bangui-osm-node-4733960505": {
+      "venueId": "bangui-osm-node-4733960505",
+      "city": "bangui",
+      "name": "Restaurante",
+      "archetype": "restaurant",
+      "subject": "A plain streetside restaurant: a single-storey rendered room with a front veranda and a hand-painted board (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6d8b8",
+          "#8a3b2a",
+          "#6b6a64"
+        ],
+        "roofColour": "#6e7479",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-node-5369227121": {
+      "venueId": "bangui-osm-node-5369227121",
+      "city": "bangui",
+      "name": "Salle omnisports",
+      "archetype": "stadium",
+      "subject": "An indoor sports hall: a rectangular concrete hall with a barrel roof, side entrances and no seating canopy (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "barrel",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3c0",
+          "#2f6f9a",
+          "#9c9a92"
+        ],
+        "roofColour": "#a8acae",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barthélemy_Boganda_Stadium",
+          "what": "Located next to the national stadium area; sports hall not described"
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-way-188492702": {
+      "venueId": "bangui-osm-way-188492702",
+      "city": "bangui",
+      "name": "National Museum Barthelemy Boganda",
+      "archetype": "museum-theatre",
+      "subject": "The Boganda museum: the former presidential residence of Barthelemy Boganda, a colonial-era villa with veranda, in a garden on avenue Boganda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe5cc",
+          "#b98a62",
+          "#7a4a35"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Musée_national_Barthélemy-Boganda",
+          "what": "On avenue Boganda in the former residence of President Boganda since 1964; originally six rooms A-F; looted in 2013, reopened 2021 after redevelopment"
+        }
+      ],
+      "notes": "Former residence is sourced; the villa form and colours are typed. A modest single-storey house museum."
+    },
+    "bangui-osm-way-188497852": {
+      "venueId": "bangui-osm-way-188497852",
+      "city": "bangui",
+      "name": "Stade Bonga Bonga",
+      "archetype": "stadium",
+      "subject": "A small neighbourhood football ground with a bare earth-and-grass pitch and a single low concrete stand (typed)",
+      "form": {
+        "footprint": "oval",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d3ccb8",
+          "#3f8f4a",
+          "#8f8a82"
+        ],
+        "roofColour": "#8d9396",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type. Kept far smaller than the national stadium."
+    },
+    "bangui-osm-way-235317733": {
+      "venueId": "bangui-osm-way-235317733",
+      "city": "bangui",
+      "name": "Stade Barthélémy Boganda",
+      "archetype": "stadium",
+      "subject": "The national stadium (2006): a Chinese-built bowl with covered main stands, grass pitch and tall floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 185,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e1ddd0",
+          "#2f6f9a",
+          "#b3261e"
+        ],
+        "roofColour": "#d5d8da",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barthélemy_Boganda_Stadium",
+          "what": "Built 2003-06, opened 30 Dec 2006, capacity 20,000 (text says up to 35,000), grass pitch"
+        }
+      ],
+      "notes": "Capacity sourced; the Chinese-built context is general knowledge. Bowl size and colours are typed."
+    },
+    "bangui-osm-way-316073499": {
+      "venueId": "bangui-osm-way-316073499",
+      "city": "bangui",
+      "name": "Jardin de Mairie",
+      "archetype": "park-landscape",
+      "subject": "The town-hall garden: lawn and mature trees with a small bandstand pavilion and paths, beside the mairie (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cc",
+          "#6b8a4a",
+          "#c9b98a"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "Old town keeps colonial plan with wide boulevards leading to a central square"
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-osm-way-405889132": {
+      "venueId": "bangui-osm-way-405889132",
+      "city": "bangui",
+      "name": "University of Bangui",
+      "archetype": "campus-block",
+      "subject": "The University of Bangui: a long two-storey concrete teaching block with exposed floor slabs and repeating windows (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc8b6",
+          "#a86a4a",
+          "#9c9a92"
+        ],
+        "roofColour": "#8d9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Bangui",
+          "what": "Established by ordinance in 1969, opened 1970; library in a separate building since 1981; building appearance not described"
+        }
+      ],
+      "notes": "Appearance typed from a 1970s African campus pattern."
+    },
+    "bangui-osm-way-800392634": {
+      "venueId": "bangui-osm-way-800392634",
+      "city": "bangui",
+      "name": "Faculté de la Théologie Biblique",
+      "archetype": "campus-block",
+      "subject": "A small Bible-college building: a one-and-a-half-storey rendered block with an arched veranda and a small cross (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e6cd",
+          "#b98a62",
+          "#7a4a35"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-quiet-reflection": {
+      "venueId": "bangui-quiet-reflection",
+      "city": "bangui",
+      "name": "Cathédrale Notre-Dame de l’Immaculée Conception",
+      "archetype": "church-classical",
+      "subject": "Notre-Dame Cathedral of Bangui: a 1930s mission cathedral with a pale rendered nave, a central front tower and a red corrugated roof, on a 4 ha plot",
+      "form": {
+        "footprint": "cross",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#ece3cb",
+          "#b98a62",
+          "#8a3b2a"
+        ],
+        "roofColour": "#8a3b2a",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1937",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cathédrale_Notre-Dame_de_Bangui",
+          "what": "Built 1934-1937 on a 4 ha concession granted by 1924 order; seat of the archdiocese; physical appearance not described"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "Notre-Dame Cathedral is the seat of the Archdiocese of Bangui"
+        }
+      ],
+      "notes": "Dates and plot are sourced; architecture is a typed guess for a 1930s colonial mission cathedral."
+    },
+    "bangui-recreation": {
+      "venueId": "bangui-recreation",
+      "city": "bangui",
+      "name": "parco",
+      "archetype": "park-landscape",
+      "subject": "A small public park: lawn, a few tall trees, a path loop and a shade pavilion (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eae0c6",
+          "#6b8a4a",
+          "#b98a62"
+        ],
+        "roofColour": "#7a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    },
+    "bangui-transit": {
+      "venueId": "bangui-transit",
+      "city": "bangui",
+      "name": "Terminal Nord",
+      "archetype": "transport-station",
+      "subject": "North terminal motor park: an open yard with a shelter roof, a ticket kiosk and a row of waiting minibuses (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e2d6bc",
+          "#2f6f9a",
+          "#8f8a82"
+        ],
+        "roofColour": "#8f8a82",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "what": "No description of this place was found; typed from the Bangui style and the venue type."
+        }
+      ],
+      "notes": "No description of this place was found; typed from the Bangui style and the venue type."
+    }
+  }
+}

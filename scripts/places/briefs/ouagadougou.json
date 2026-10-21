@@ -1,0 +1,1682 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ouagadougou",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ouagadougou",
+    "climate": "sahel",
+    "vernacular": "Flat Sudano-Sahelian savanna capital on red laterite earth: one- to three-storey flat-roofed cement-block and banco houses rendered in cream, white, ochre or sand-red behind plastered walls, many compounds roofed in rust corrugated sheet; broad avenues and roundabouts crowned with sculptural monuments from the Sankara era onward; banco-built colonial landmarks such as the cathedral; 1980s Chinese-built institutions; concrete-and-glass offices and the Ouaga 2000 district for government.",
+    "wallColours": [
+      "#9c5a3c",
+      "#b8754d",
+      "#e8dcc3",
+      "#efebe2",
+      "#6f8aa0",
+      "#b5b0a6",
+      "#d2a679"
+    ],
+    "roofColours": [
+      "#8a4a35",
+      "#7d8790",
+      "#a8a49a",
+      "#6b4a3a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "mud-render",
+      "laterite",
+      "concrete",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Gurunsi/Kassena painted geometric motifs in black, white and ochre on banco walls; round-arched Romanesque openings and unequal towers on banco colonial churches; calabash, star and clenched-fist motifs on Sankara-era and national monuments; Neo-Sudanic pinnacled parapets; sculpture-on-roundabout tradition.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+        "what": "Ouagadougou: Monument des Heros Nationaux, 6 m Naba Koom calabash statue, Place du Grand Lyon lion, Grand Marche rebuilt after 2003 fire, two state hospitals, University of Ouagadougou founded 1974"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_de_l%27Immacul%C3%A9e-Conception_de_Ouagadougou",
+        "what": "Cathedral built entirely of banco (unfired earth brick) in neo-Romanesque style, 1934-36"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_du_Burkina_Faso",
+        "what": "National museum site includes Habitats du Faso, traditional dwellings of eleven ethnic groups"
+      }
+    ]
+  },
+  "places": {
+    "ouagadougou-2ie": {
+      "venueId": "ouagadougou-2ie",
+      "city": "ouagadougou",
+      "name": "2iE",
+      "archetype": "campus-block",
+      "subject": "International water-and-environment engineering institute: modern two-storey classroom blocks and labs around a landscaped campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc3",
+          "#b8754d",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real engineering school; no photo description found. Typed."
+    },
+    "ouagadougou-airport-ouagadougou-airport": {
+      "venueId": "ouagadougou-airport-ouagadougou-airport",
+      "city": "ouagadougou",
+      "name": "Ouagadougou Thomas Sankara International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The existing city-centre passenger terminal: a low, flat-roofed rendered terminal with a forecourt canopy, control tower and parked aircraft behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efebe2",
+          "#6f8aa0",
+          "#a8a49a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thomas_Sankara_International_Airport",
+          "what": "Airport built in the 1960s, ~3,000 m runway, surrounded by urban development; Donsin replacement planned (terminal appearance not described)"
+        }
+      ],
+      "notes": "Terminal appearance was not described in any source reached; typed from city style as a modest regional-capital terminal. Recognisable by control tower and flat canopy."
+    },
+    "ouagadougou-clinic": {
+      "venueId": "ouagadougou-clinic",
+      "city": "ouagadougou",
+      "name": "CHU Yalgado Ouédraogo",
+      "archetype": "hospital",
+      "subject": "The national university hospital: a sprawl of two- to four-storey pavilion blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 5
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc3",
+          "#6f9a8a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "what": "One of the two state hospitals in Ouagadougou, centre hospitalier national Yalgado Ouedraogo (no building description)"
+        }
+      ],
+      "notes": "Appearance not described; scale reflects its status as the largest national hospital. Typed."
+    },
+    "ouagadougou-community-notices": {
+      "venueId": "ouagadougou-community-notices",
+      "city": "ouagadougou",
+      "name": "Mairie centrale de Ouagadougou",
+      "archetype": "civic-palace",
+      "subject": "The central city hall, a two-to-three-storey rendered administrative block with a flagged forecourt, fronting Place des Cinéastes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efebe2",
+          "#b8754d",
+          "#a8a49a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Place_des_Cin%C3%A9astes",
+          "what": "City hall faces the Place des Cinéastes monument (building itself not described)"
+        }
+      ],
+      "notes": "The Place des Cinéastes camera monument stands in front of it. Facade is typed from city style."
+    },
+    "ouagadougou-community-voting-game": {
+      "venueId": "ouagadougou-community-voting-game",
+      "city": "ouagadougou",
+      "name": "Place des Cineastes",
+      "archetype": "monument",
+      "subject": "A 12.25 m metal camera sculpture whose lens points to the sky, with film reels, zoom lenses and film strips, on a reinforced-concrete base in front of the city hall",
+      "form": {
+        "footprint": "round",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 4,
+        "height_m": 12.25,
+        "roof": "none",
+        "variant": "camera sculpture on concrete plinth"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b7bdc2",
+          "#2f3a45",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8a9298",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "12.25 m camera with lens to the sky, reels and telephoto lenses"
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "reinforced-concrete base"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1987",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Place_des_Cin%C3%A9astes",
+          "what": "Inaugurated March 1987 at FESPACO; designed by architect Ali Fao and urban planner Ignace Sawadogo; camera with lens to the sky; 4 mm sheet metal reinforced with large internal pipes on a reinforced-concrete base; 12.25 m tall, ~10 tonnes; built in Kossodo workshop by Boubakar Galbani"
+        }
+      ],
+      "notes": "Height, materials and design documented. Colour is not stated; shown as bare/grey painted metal. Filmmaker statues are on a nearby street, not on the square."
+    },
+    "ouagadougou-community-workshop": {
+      "venueId": "ouagadougou-community-workshop",
+      "city": "ouagadougou",
+      "name": "University Joseph Ki-Zerbo",
+      "archetype": "campus-block",
+      "subject": "Main campus of Burkina Faso's largest university: long concrete lecture blocks and amphitheatres in sandy red grounds",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d0c0",
+          "#b8754d",
+          "#a8a49a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "what": "University of Ouagadougou founded in 1974; around 40,000 students in 2010, about 83 per cent of the country's university students"
+        }
+      ],
+      "notes": "Founding and scale documented; the building design was not found and is typed as a 1970s-80s concrete campus."
+    },
+    "ouagadougou-fespaco": {
+      "venueId": "ouagadougou-fespaco",
+      "city": "ouagadougou",
+      "name": "Panafrican Film and Television Festival of Ouagadougou",
+      "archetype": "museum-theatre",
+      "subject": "The FESPACO festival headquarters and cinema venue: a modern two-storey cultural building with a wide entrance canopy and film-poster boards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efebe2",
+          "#b8754d",
+          "#2f3a45"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Place_des_Cin%C3%A9astes",
+          "what": "FESPACO festival tied to the Place des Cinéastes monument, created for the festival's 10th anniversary in 1987"
+        }
+      ],
+      "notes": "Venue represents the festival (HQ building near the city centre); exact building not described. Typed cultural centre."
+    },
+    "ouagadougou-grande-mosquee": {
+      "venueId": "ouagadougou-grande-mosquee",
+      "city": "ouagadougou",
+      "name": "Grande Mosquée",
+      "archetype": "mosque-domed",
+      "subject": "The Grand Mosque of Ouagadougou: a large prayer hall under a central dome with four minarets and a paved courtyard of about 7,000 m2",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 42,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efebe2",
+          "#b0a487",
+          "#8f8a80"
+        ],
+        "roofColour": "#d8d2c2",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "one central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "four minarets"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "~7,000 m2 paved court"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1979",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Mosque_of_Ouagadougou",
+          "what": "Four minarets, one central dome, prayer hall ~1,925 m2, two annexes for women, paved court ~7,000 m2; mosque since 1952, rebuilt 1973-79, inaugurated April 1979, funded by Oumarou Kanazoe (~320 million CFA)"
+        }
+      ],
+      "notes": "Counts and areas documented; the source does not describe colours or exact minaret height. Colours are a cream/white and stone-grey guess; minaret height typed (about 30 m)."
+    },
+    "ouagadougou-hopital-pediatrique": {
+      "venueId": "ouagadougou-hopital-pediatrique",
+      "city": "ouagadougou",
+      "name": "Hôpital pédiatrique Charles de Gaulles",
+      "archetype": "hospital",
+      "subject": "The paediatric hospital: two-storey painted ward blocks with covered walkways and a colourful entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1e4c8",
+          "#e08a3c",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "what": "The second of the two state hospitals in Ouagadougou (centre hospitalier national pediatrique Charles de Gaulle)"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_du_Burkina_Faso",
+          "what": "Sits across from the National Museum at the end of Boulevard Thomas Sankara"
+        }
+      ],
+      "notes": "Location and role documented, building not described. Typed."
+    },
+    "ouagadougou-isig": {
+      "venueId": "ouagadougou-isig",
+      "city": "ouagadougou",
+      "name": "ISIG",
+      "archetype": "campus-block",
+      "subject": "Private business and IT school: a 3-storey rendered block with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc3",
+          "#b8754d",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real private school; no description found. Typed."
+    },
+    "ouagadougou-mairie-bogodogo": {
+      "venueId": "ouagadougou-mairie-bogodogo",
+      "city": "ouagadougou",
+      "name": "Mairie de l'arrondissement de Bogodogo",
+      "archetype": "civic-small",
+      "subject": "District town hall of Bogodogo: a two-storey rendered block with a veranda and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efebe2",
+          "#b8754d",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real mairie; look not found. Typed."
+    },
+    "ouagadougou-marche-sankariare": {
+      "venueId": "ouagadougou-marche-sankariare",
+      "city": "ouagadougou",
+      "name": "Marché de Sankariaré",
+      "archetype": "market-open",
+      "subject": "A dense neighbourhood market of tin-roofed stalls and lock-ups on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b8754d",
+          "#8a4a35",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 35
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 14
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real market in the north; no description found. Typed."
+    },
+    "ouagadougou-marche-zogona": {
+      "venueId": "ouagadougou-marche-zogona",
+      "city": "ouagadougou",
+      "name": "Marché de Zogona",
+      "archetype": "market-open",
+      "subject": "Zogona neighbourhood market: rows of stalls under sheets and parasols",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b8754d",
+          "#8a4a35",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real market; no description found. Typed."
+    },
+    "ouagadougou-market-game": {
+      "venueId": "ouagadougou-market-game",
+      "city": "ouagadougou",
+      "name": "Grand Marché",
+      "archetype": "market-hall",
+      "subject": "The central Grand Marché, rebuilt after the 2003 fire as a large multi-storey concrete market hall with ground-floor arcades and a ring of shops around inner trading halls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e0d5bd",
+          "#a8483a",
+          "#a8a49a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "shop arcades on the ground floor"
+        },
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2003 rebuild",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "what": "One of West Africa's largest markets; burned down in 2003 and reopened with better facilities and improved fire prevention"
+        }
+      ],
+      "notes": "Role, scale and 2003 fire/rebuild are documented; the multi-storey form and colours are typed from memory of the rebuilt complex and are unverified."
+    },
+    "ouagadougou-meal-stop": {
+      "venueId": "ouagadougou-meal-stop",
+      "city": "ouagadougou",
+      "name": "Café de Vienne",
+      "archetype": "restaurant",
+      "subject": "City-centre café-restaurant: a single-storey rendered building with a shaded terrace and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc3",
+          "#b8754d",
+          "#6b4a3a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real café; no description found. Typed."
+    },
+    "ouagadougou-music-museum": {
+      "venueId": "ouagadougou-music-museum",
+      "city": "ouagadougou",
+      "name": "Musée de la Musique de Ouagadougou",
+      "archetype": "museum-theatre",
+      "subject": "The Music Museum: a modest modern building with a low roundel hall and a courtyard displaying instruments",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#e8dcc3",
+          "#b8754d",
+          "#6b4a3a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real museum; no description found. Typed small museum with courtyard."
+    },
+    "ouagadougou-national-heroes-monument": {
+      "venueId": "ouagadougou-national-heroes-monument",
+      "city": "ouagadougou",
+      "name": "Monument to National Heroes",
+      "archetype": "monument",
+      "subject": "The 55 m National Heroes Monument (Hall of Martyrs): two calabashes, one inverted and one upright, held by four 47 m supports encircled by a mid-height ring museum, with a granite stele at the foot",
+      "form": {
+        "footprint": "round",
+        "width_m": 45,
+        "depth_m": 45,
+        "storeys": 12,
+        "height_m": 55,
+        "roof": "dome",
+        "variant": "two calabashes on four pylons with ring"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#e4dfd3",
+          "#6f6a60",
+          "#a8a49a"
+        ],
+        "roofColour": "#d0cabc",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "two calabash shapes, one inverted and one upright holding water"
+        },
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "ring-shaped museum around the four supports at mid-height"
+        },
+        {
+          "id": "pilotis",
+          "count": 4,
+          "note": "four 47 m supports"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "raised clenched fists and flag star on stele"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Monument_aux_h%C3%A9ros_nationaux",
+          "what": "55 m, ~8,000 t; two calabashes (one inverted, one upright with water) on four 47 m supports for Independence, Republic, Revolution, Democracy; ring-shaped museum at mid-height; Laongo granite stele; first stone 2002, works to 2008, restored 2014; architects AIC; Ouaga 2000, sector 53"
+        }
+      ],
+      "notes": "Form and dimensions are documented; surface colour/material of the main structure is not stated (shown as pale concrete). The model should show the calabash silhouette on four pylons, not a generic tower."
+    },
+    "ouagadougou-national-museum": {
+      "venueId": "ouagadougou-national-museum",
+      "city": "ouagadougou",
+      "name": "Musée National",
+      "archetype": "museum-theatre",
+      "subject": "The national museum on its 29-hectare grounds: a modern main hall opened in 2004 with an open-air theatre and the Habitats du Faso village of traditional dwellings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 3,
+        "variant": "main hall plus open-air dwellings village"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#e8dcc3",
+          "#b8754d",
+          "#6b4a3a"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 4,
+          "note": "traditional dwellings of ethnic groups"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "open-air theatre"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "painted geometric motifs"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_national_du_Burkina_Faso",
+          "what": "Created 1962; first stone 23 Oct 2000, inaugurated 23 Dec 2004; 29-hectare site at the end of Boulevard Thomas Sankara; open-air theatre; Habitats du Faso (June 2022) shows dwellings of eleven ethnic groups"
+        }
+      ],
+      "notes": "Site layout and dates documented; main building facade not described; typed."
+    },
+    "ouagadougou-place-des-artistes": {
+      "venueId": "ouagadougou-place-des-artistes",
+      "city": "ouagadougou",
+      "name": "Place des Artistes",
+      "archetype": "park-landscape",
+      "subject": "A landscaped square with sculptures by Burkinabe artists on plinths and paved paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d2a679",
+          "#b8754d",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real square; works on display not found. Typed."
+    },
+    "ouagadougou-place-naaba-koom": {
+      "venueId": "ouagadougou-place-naaba-koom",
+      "city": "ouagadougou",
+      "name": "Place Naaba Koom",
+      "archetype": "park-landscape",
+      "subject": "The square facing the railway station with the 6 m statue of a woman pouring water from a calabash",
+      "form": {
+        "footprint": "round",
+        "width_m": 50,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d2a679",
+          "#b8754d",
+          "#a8a49a"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "6 m woman pouring water from a calabash"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou",
+          "what": "Naaba Koom statue is 6 m high, depicts a woman pouring water from a calabash, and faces the railway station"
+        }
+      ],
+      "notes": "Statue height and subject documented; plinth, pool layout and colour typed."
+    },
+    "ouagadougou-quiet-reflection": {
+      "venueId": "ouagadougou-quiet-reflection",
+      "city": "ouagadougou",
+      "name": "Ouagadougou Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Immaculate Conception cathedral: a banco basilica in neo-Romanesque style with a triple portal between two massive towers of unequal height, round-arched windows and oculi",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 62,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "wings": 2,
+        "variant": "neo-Romanesque banco basilica"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "brick",
+        "colours": [
+          "#a9683f",
+          "#8a5236",
+          "#d2b08a"
+        ],
+        "roofColour": "#8a4a35",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two massive towers of different heights, no spires"
+        },
+        {
+          "id": "arches",
+          "count": 5,
+          "note": "round-arched windows"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "triple portal"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1936",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_de_l%27Immacul%C3%A9e-Conception_de_Ouagadougou",
+          "what": "Built entirely of banco, basilica plan with three aisles, oculi and paired round-arched windows, triple portal between two massive towers of different heights without spires, neo-Romanesque, 1934-1936 under Mgr Thevenoud"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ouagadougou_Cathedral",
+          "what": "Dedicated 19 Jan 1936, Romanesque Revival, statue of Thevenoud in front, Marian altar behind"
+        }
+      ],
+      "notes": "Materials, plan and tower arrangement are documented. Dimensions (about 28x62 m, towers about 30 m and 24 m) and the red-brown earth colours are estimates. Make the towers clearly asymmetrical."
+    },
+    "ouagadougou-recreation": {
+      "venueId": "ouagadougou-recreation",
+      "city": "ouagadougou",
+      "name": "Jardin du 8 Mars",
+      "archetype": "park-landscape",
+      "subject": "A city garden with lawns, shade trees, paved walks and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d2a679",
+          "#b8754d",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Public garden named for International Women's Day; no description found. Typed."
+    },
+    "ouagadougou-rond-point-des-nations-unies": {
+      "venueId": "ouagadougou-rond-point-des-nations-unies",
+      "city": "ouagadougou",
+      "name": "Rond-Point des Nations Unis",
+      "archetype": "monument",
+      "subject": "A large traffic roundabout with a central sculpture on a circular raised plinth, ringed by trees",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d2a679",
+          "#b8754d",
+          "#a8a49a"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central sculpture, form unknown"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "UN-style flag poles"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only a name and coordinates; the sculpture was not identified. Typed. Ouagadougou has a tradition of sculpture on roundabouts."
+    },
+    "ouagadougou-stade-conombo": {
+      "venueId": "ouagadougou-stade-conombo",
+      "city": "ouagadougou",
+      "name": "Stade Docteur Issoufou Joseph Conombo",
+      "archetype": "stadium",
+      "subject": "Municipal stadium: a small oval concrete bowl with an athletics track, one covered stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d0c4",
+          "#a8483a",
+          "#8e8a82"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real municipal stadium; no description found. Typed as a smaller stadium."
+    },
+    "ouagadougou-stade-du-4-aout": {
+      "venueId": "ouagadougou-stade-du-4-aout",
+      "city": "ouagadougou",
+      "name": "Stade du 4-Août",
+      "archetype": "stadium",
+      "subject": "The national stadium built 1981-84 with Chinese cooperation: a large oval bowl, 105x68 m grass pitch and athletics track, modernised stands, floodlights and electronic scoreboards",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 200,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d0c4",
+          "#a8483a",
+          "#8e8a82"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cover over main stand (assumed)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1984",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_du_4-Ao%C3%BBt",
+          "what": "Built 1981-1984 by Burkina-China cooperation, inaugurated 18 July 1984 by Sankara; announced 55,000 places (about 29,800 seats; infobox 35,000); grass 105x68 m with athletics track; renovated 2021-2025 (changing rooms, lighting, sound, electronic displays) at about 15 billion CFA"
+        }
+      ],
+      "notes": "Dimensions of the pitch, dates and renovation scope are documented; the roof, stand layout and colours are NOT, and are typed from 1980s Chinese-built stadiums. The page gives conflicting capacities."
+    },
+    "ouagadougou-transit": {
+      "venueId": "ouagadougou-transit",
+      "city": "ouagadougou",
+      "name": "Gare Routière Ouaga-Inter",
+      "archetype": "transport-station",
+      "subject": "Long-distance coach station: a covered departures hall and ticket offices around a red-earth yard of parked coaches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efebe2",
+          "#2f6b9a",
+          "#8a4a35"
+        ],
+        "roofColour": "#7d8790",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real inter-city bus station in the south; no description found. Typed."
+    },
+    "ouagadougou-universite-aube-nouvelle": {
+      "venueId": "ouagadougou-universite-aube-nouvelle",
+      "city": "ouagadougou",
+      "name": "Université Aube Nouvelle",
+      "archetype": "campus-block",
+      "subject": "Private university: a three-storey rendered teaching block with an entrance forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc3",
+          "#b8754d",
+          "#b5b0a6"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real private university; no description found. Typed."
+    }
+  }
+}

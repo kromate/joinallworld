@@ -1,0 +1,1488 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "addis-ababa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "addis-ababa",
+    "climate": "highland",
+    "vernacular": "Highland capital at about 2,355 m: a patchwork of 1-3 storey painted-render and concrete houses with rust-red or galvanised corrugated-iron roofs, scattered Italian-era (1936-41) arcaded blocks around Piazza and Churchill Avenue, mid-century modernist ministries and campuses from the Haile Selassie era, Derg-era concrete squares, and a recent boom of glass-and-concrete towers, malls and apartment blocks wrapped in eucalyptus-pole scaffolding. Traditional round tukul and chika (mud-and-straw) houses survive on the edges. Eucalyptus trees (planted from Menelik II onward) line streets and hillsides.",
+    "wallColours": [
+      "#eae4d3",
+      "#c9a15b",
+      "#9a9890",
+      "#c27a4d",
+      "#a9b894",
+      "#6f8f9b",
+      "#d9cdb0"
+    ],
+    "roofColours": [
+      "#a6553a",
+      "#9a9a98",
+      "#8e3d33",
+      "#6b7378",
+      "#b39a7a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "stone",
+      "mud-render",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Ethiopian Orthodox crosses and round/octagonal church plans with concentric ambulatories; Aksumite-inspired stepped stone banding and stelae motifs on state buildings; green-yellow-red tricolour trims; Italian-era arcades and rationalist corners around Piazza; lion-of-Judah statuary; corrugated-iron fence sheets and eucalyptus scaffolding around construction sites.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+        "what": "highland capital, mix of eras, construction boom of towers and malls"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Addis_Ababa",
+        "what": "early mud-and-thatch round huts, Menelik II eucalyptus planting, Italian occupation planning with European-style axes, later modernist plans, tower boom, Sheger Park/Riverside greening"
+      }
+    ]
+  },
+  "places": {
+    "addis-ababa-abebe-bikila-stadium": {
+      "venueId": "addis-ababa-abebe-bikila-stadium",
+      "city": "addis-ababa",
+      "name": "Abebe Bikila Stadium",
+      "archetype": "stadium",
+      "subject": "A small neighbourhood football ground with a single covered concrete stand, perimeter wall and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 85,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b8b4aa",
+          "#8f8c84",
+          "#d8d2c4"
+        ],
+        "roofColour": "#7f8587",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not the national stadium (that is Addis Ababa Stadium at Meskel Square). The coordinates sit in the north-west of the city and nothing describing this ground was found; typed from the venue type and city style."
+    },
+    "addis-ababa-addis-ababa-stadium": {
+      "venueId": "addis-ababa-addis-ababa-stadium",
+      "city": "addis-ababa",
+      "name": "Addis Ababa Stadium",
+      "archetype": "stadium",
+      "subject": "The 1940 Italian-built city stadium beside Meskel Square: an oval concrete bowl with a pitch of 105 x 68 m and twelve entrance tunnels",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b9b4a8",
+          "#7f7b72",
+          "#e6dfcd"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 12,
+          "note": "twelve entrance tunnels around the bowl"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1940, renovated 1960/1999/2021-24",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa_Stadium",
+          "what": "opened 1940 as Stadio Littorio; capacity 20,000; pitch 105x68 m; 12 entrance tunnels; renovated 2021-24; near Meskel Square and Legehar station"
+        }
+      ],
+      "notes": "Facts (era, pitch, tunnels, capacity) are from Wikipedia; stand design, roof coverage and colours are not described there, so the outer dimensions and the open (unroofed) bowl are estimates from the capacity. Recognisable as a low open oval with tunnel arches."
+    },
+    "addis-ababa-adwa-victory-memorial-museum": {
+      "venueId": "addis-ababa-adwa-victory-memorial-museum",
+      "city": "addis-ababa",
+      "name": "Adwa Victory Memorial Museum",
+      "archetype": "museum-theatre",
+      "subject": "A contemporary museum building beside the Adwa victory memorial at Arat Kilo, shown as a modern stone-and-concrete block with a stepped entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d8d0bd",
+          "#8a7a62",
+          "#f0ece0"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "memorial sculpture at the site"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue name is real (memorial to the 1896 Battle of Adwa, Arat Kilo area) but no page describing the museum building could be retrieved; form typed from museum type and the city style."
+    },
+    "addis-ababa-airport-addis-ababa-airport": {
+      "venueId": "addis-ababa-airport-addis-ababa-airport",
+      "city": "addis-ababa",
+      "name": "Addis Ababa Bole International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The long international Terminal 2 (expanded 2019) seen from the landside, with the 38 m control tower between the two terminals",
+      "form": {
+        "footprint": "rect",
+        "width_m": 420,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8dc",
+          "#2f4a5c",
+          "#f2f2f0"
+        ],
+        "roofColour": "#d5d9dc",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "terminal 2 has about 50 gates in total; a representative row is shown"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "38 m tower between Terminal 1 and Terminal 2"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2003 terminal; Terminal 2 expansion opened Jan 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa_Bole_International_Airport",
+          "what": "T1 domestic ~10 gates, T2 international ~50 gates; 2019 expansion; 38 m control tower between T1 and T2; later phases 2022-26 on 80 ha"
+        }
+      ],
+      "notes": "Gate counts and tower height come from Wikipedia; facade materials and storeys are typical for the glass-fronted terminal but not described in the retrieved text. Clamp to 120 m by showing the central portion of the terminal and the tower."
+    },
+    "addis-ababa-anwar-grand-mosque": {
+      "venueId": "addis-ababa-anwar-grand-mosque",
+      "city": "addis-ababa",
+      "name": "Anwar Grand Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Addis Ababa's largest mosque (begun c.1922 by the Italian administration, finished by the Muslim community): white walls on green pillars under a white dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f3f1ea",
+          "#2f7d4f",
+          "#d8d2c0"
+        ],
+        "roofColour": "#e9e6dc",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "a large central dome plus smaller domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "green pillars carrying white outer walls"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "c.1922, completed later by community funds",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Anwar_Mosque",
+          "what": "built c.1922 by the Italian government, left unfinished and completed by the Muslim community; white and green; green pillars supporting white outer walls and domes; 2 domes, maybe more; largest mosque in the city"
+        }
+      ],
+      "notes": "White and green scheme and green-pillar facade are from Wikipedia; minaret count and exact dimensions are estimates. Sits beside Mercato; worshippers fill the compound during Ramadan."
+    },
+    "addis-ababa-clinic": {
+      "venueId": "addis-ababa-clinic",
+      "city": "addis-ababa",
+      "name": "St.Paul Hospital",
+      "archetype": "hospital",
+      "subject": "A large referral hospital campus: several 4-5 storey painted-render ward blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d0",
+          "#9fb3b0",
+          "#c9c4b6"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank brand-neutral board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s onward with later additions",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing the buildings was retrieved. Typed from hospital type and city style; real campus has a mix of older low blocks and newer taller wings."
+    },
+    "addis-ababa-community-notices": {
+      "venueId": "addis-ababa-community-notices",
+      "city": "addis-ababa",
+      "name": "Addis Ababa City Hall",
+      "archetype": "civic-palace",
+      "subject": "The city administration building at Piazza: a mid-century modernist concrete block with a slender tower element facing the flag-lined forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 35,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d9d4c6",
+          "#8c8a82",
+          "#f0ece0"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "slim tower element"
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description of the building was retrieved, so the form is typed from civic-building norms of 1960s Addis (modernist, Piazza/Churchill Avenue area) and city style."
+    },
+    "addis-ababa-community-voting-game": {
+      "venueId": "addis-ababa-community-voting-game",
+      "city": "addis-ababa",
+      "name": "Meskel Square",
+      "archetype": "park-landscape",
+      "subject": "The great paved central square: an open parade ground with a raised stage and tiered seating on one side, flags, LED boards and blocks of shops and offices around it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 140,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#c9c4b6",
+          "#9a9890",
+          "#e6dfcd"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "tiered seating and stage"
+        },
+        {
+          "id": "flags",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 6,
+          "note": "LED signboards, shown blank"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "stage canopy"
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Red Terror memorial at the east entrance"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "Derg-era layout (1980s), upgraded 2020-21",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Meskel_Square",
+          "what": "Derg-era parade square; Red Terror memorial at east entrance; 2020-21 upgrade with 1,400 underground parking spaces, 6 LED signboards and 24 retail units; burning demera pyramid at Meskel; public football screen"
+        }
+      ],
+      "notes": "Mostly flat paved plaza with no trees. For Meskel the demera pyramid is built in the middle (do not model it permanently). Dimensions are estimates; the real square is larger than the 120 m clamp so show the stage end."
+    },
+    "addis-ababa-community-workshop": {
+      "venueId": "addis-ababa-community-workshop",
+      "city": "addis-ababa",
+      "name": "Addis Ababa University",
+      "archetype": "campus-block",
+      "subject": "The Sidist Kilo main campus: a cluster of 3-4 storey modernist faculty blocks of painted render around lawns, near the old imperial palace buildings",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dcc6",
+          "#a89a78",
+          "#c9c4b6"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2,
+          "note": "covered walkways"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s-1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The AAU is a real multi-campus university; coordinates match the Sidist Kilo campus. No building-level description retrieved; typed from campus type and city style."
+    },
+    "addis-ababa-dembel-city-center": {
+      "venueId": "addis-ababa-dembel-city-center",
+      "city": "addis-ababa",
+      "name": "Dembel City Center",
+      "archetype": "mall",
+      "subject": "A modern multi-storey shopping-and-office complex on Bole Road: a glass and white cladding box with a taller tower block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#9fb6c0",
+          "#eae4d3",
+          "#5f7480"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real mall name; nothing describing its facade was retrieved. Typed from mall type and Addis tower-boom style."
+    },
+    "addis-ababa-garad-city-center": {
+      "venueId": "addis-ababa-garad-city-center",
+      "city": "addis-ababa",
+      "name": "Garad City Center",
+      "archetype": "mall",
+      "subject": "A smaller commercial centre of 4-5 storeys with rendered walls and ribbon windows in the Bole/Gerji area",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9cdb0",
+          "#6f8f9b",
+          "#eae4d3"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; deliberately smaller and L-shaped, with rendered walls instead of the glass box used for Dembel."
+    },
+    "addis-ababa-golf-club": {
+      "venueId": "addis-ababa-golf-club",
+      "city": "addis-ababa",
+      "name": "Addis Ababa Golf Club",
+      "archetype": "park-landscape",
+      "subject": "A rolling 18-hole golf course with a low clubhouse, eucalyptus belts and a parking forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 110,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#eae4d3",
+          "#7a5a3c",
+          "#a9b894"
+        ],
+        "roofColour": "#a6553a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "clubhouse"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Clubhouse is a typed guess; only the layout idea (course, belts of eucalyptus, hill-slope) is generic."
+    },
+    "addis-ababa-market-game": {
+      "venueId": "addis-ababa-market-game",
+      "city": "addis-ababa",
+      "name": "Mercato",
+      "archetype": "market-open",
+      "subject": "The Merkato: a dense maze of stalls under corrugated-iron sheets and multi-storey shop blocks, with the Anwar mosque domes nearby",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "variant": "tin-roofed stall maze"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b98f",
+          "#8c8a82",
+          "#a6553a"
+        ],
+        "roofColour": "#9b8b7a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 12,
+          "note": "long corrugated-iron roofed rows"
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 4,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "organic growth from the 1930s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+          "what": "Mercato is Addis Ababa's large central market district (general context)"
+        }
+      ],
+      "notes": "Well-known as one of the largest open-air markets in Africa, but no source on its physical build was retrieved; typed as tin-roofed stalls, which is the general form. Make it dense and low rather than a single building."
+    },
+    "addis-ababa-meal-stop": {
+      "venueId": "addis-ababa-meal-stop",
+      "city": "addis-ababa",
+      "name": "Tomoca Coffee",
+      "archetype": "restaurant",
+      "subject": "A small Italian-style coffee house at Piazza: a narrow single-storey shopfront with a long glass front and a counter bar",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9cdb0",
+          "#7a4a2f",
+          "#f0ece0"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank brand-neutral board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1953",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A famous Ethiopian roastery with an Italian-era feel; no description retrieved. Typed small café, warm browns and cream; no lettering."
+    },
+    "addis-ababa-medhane-alem-church": {
+      "venueId": "addis-ababa-medhane-alem-church",
+      "city": "addis-ababa",
+      "name": "Medhane Alem Church",
+      "archetype": "church-classical",
+      "subject": "Bole Medhane Alem Orthodox cathedral: a large circular-plan church with a high central dome, golden cross and surrounding compound wall",
+      "form": {
+        "footprint": "round",
+        "width_m": 55,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 28,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#c9b98f",
+          "#8a7a62",
+          "#f0ece0"
+        ],
+        "roofColour": "#b8892f",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "golden cross on lantern"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ambulatory around the sanctuary"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Bole Medhane Alem is a major Orthodox cathedral; no page describing it was retrievable. Ethiopian Orthodox churches use round or octagonal plans with concentric ambulatories, which is what is typed here. Differs from Holy Trinity (cross-plan basilica)."
+    },
+    "addis-ababa-national-museum-of-ethiopia": {
+      "venueId": "addis-ababa-national-museum-of-ethiopia",
+      "city": "addis-ababa",
+      "name": "National Museum of Ethiopia",
+      "archetype": "museum-theatre",
+      "subject": "The national museum near Sidist Kilo: a four-level (basement and three floors) 1960s block set in lawns, with a central exhibition hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d2c3a1",
+          "#8a7a62",
+          "#e8e0cc"
+        ],
+        "roofColour": "#9a9890",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "sculpture in forecourt"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1958 institute; museum building 1960s-70s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Ethiopia",
+          "what": "founded from the 1958 Institute of Archaeology; basement plus three exhibition floors; near AAU graduate school; central hall"
+        }
+      ],
+      "notes": "Floor structure from Wikipedia; facade materials and colours are estimates. The museum houses the Lucy fossil in the basement."
+    },
+    "addis-ababa-palais-du-jubile": {
+      "venueId": "addis-ababa-palais-du-jubile",
+      "city": "addis-ababa",
+      "name": "Palais du Jubilé",
+      "archetype": "civic-palace",
+      "subject": "The Jubilee Palace (built for Haile Selassie's 1955 jubilee): a long two-storey neoclassical-modernist palace with a central porch and wings in formal gardens",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#e0d6bd",
+          "#a89a78",
+          "#f2eee2"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "lion statuary near entrance"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1955",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Date and purpose are common knowledge (palace built for the 25th anniversary of the reign); no source on its appearance was retrieved, so the porch-and-wings form is a typed guess. Distinct from the Menelik palace compound in Unity Park."
+    },
+    "addis-ababa-quiet-reflection": {
+      "venueId": "addis-ababa-quiet-reflection",
+      "city": "addis-ababa",
+      "name": "Holy Trinity Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Orthodox cathedral of Addis Ababa: a square-plan basilica with transepts, a central dome, and tall carved stone facades in grey-ochre",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 38,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#b9a98a",
+          "#8a8070",
+          "#d8cdb0"
+        ],
+        "roofColour": "#6f7b78",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1931-1942",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Trinity_Cathedral,_Addis_Ababa",
+          "what": "founded 22 Dec 1931, completed 1942; basilica; a square church (circular is the usual type); three concentric zones modelled on Solomon's Temple; transepts, one with the imperial tombs; dome"
+        }
+      ],
+      "notes": "Plan, dates and transepts/dome are from Wikipedia; stone colours and tower are from general memory of photos and not source-checked. Resting place of Haile Selassie and Empress Menen. Distinct from the round Medhane Alem plan."
+    },
+    "addis-ababa-rakan-shopping-center": {
+      "venueId": "addis-ababa-rakan-shopping-center",
+      "city": "addis-ababa",
+      "name": "Rakan Shopping Center",
+      "archetype": "mall",
+      "subject": "A mid-size shopping centre of 4 storeys with a bright rendered facade and rooftop signs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e0cc",
+          "#c27a4d",
+          "#9a9890"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from mall type and city style. Deliberately a plain terracotta-trimmed block, unlike Dembel (glass) and Garad (L-plan)."
+    },
+    "addis-ababa-recreation": {
+      "venueId": "addis-ababa-recreation",
+      "city": "addis-ababa",
+      "name": "Sheger Park",
+      "archetype": "park-landscape",
+      "subject": "A riverside public park from the 2018-19 beautification project: landscaped lawns, paved promenades, pavilions and a small amphitheatre along a canalised stream",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 130,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#cfc9b8",
+          "#8aa078",
+          "#9a9890"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2018-2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Addis_Ababa",
+          "what": "Sheger Park and Riverside are greening projects along the city rivers"
+        }
+      ],
+      "notes": "Park name appears in the source only as part of the riverbank greening; layout is typed from park type. Treat as a green, paved promenade park."
+    },
+    "addis-ababa-st-marys-university-college": {
+      "venueId": "addis-ababa-st-marys-university-college",
+      "city": "addis-ababa",
+      "name": "St. Mary's University College",
+      "archetype": "campus-block",
+      "subject": "A private university campus of 4-5 storey rendered classroom blocks around a paved quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 75,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e0cc",
+          "#6f8f9b",
+          "#c27a4d"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from campus type and city style."
+    },
+    "addis-ababa-transit": {
+      "venueId": "addis-ababa-transit",
+      "city": "addis-ababa",
+      "name": "Long Distance Bus Station",
+      "archetype": "transport-station",
+      "subject": "The long-distance bus terminal: a broad paved yard with rows of coaches under long steel-framed canopies and a ticket hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c4b6",
+          "#8f8c84",
+          "#a6553a"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "platform-canopy",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue name is generic (\"Long Distance Bus Station\"); no building description found. Typed from station type: yard, canopies, kiosks."
+    },
+    "addis-ababa-unity-park": {
+      "venueId": "addis-ababa-unity-park",
+      "city": "addis-ababa",
+      "name": "Unity Park",
+      "archetype": "park-landscape",
+      "subject": "The 20 ha park in the National Palace compound at Arat Kilo (opened Oct 2019): historic palace halls with tin roofs, a zoo, an aviary and landscaped gardens",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#d2c3a1",
+          "#7a5a3c",
+          "#a9b894"
+        ],
+        "roofColour": "#a6553a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "historic palace halls"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "palace 1890s onward; park 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Unity_Park",
+          "what": "Unity Park is 20 ha in the National Palace compound at Arat Kilo, opened 10 Oct 2019, with a zoo (37 mammal species), aviary and historical artefacts including Haile Selassie's throne"
+        }
+      ],
+      "notes": "Park facts from Wikipedia. Palace-hall architecture (rambling low halls with corrugated roofs and wooden verandas) is from general knowledge, not the retrieved text. Show a garden with a couple of low palace halls rather than the whole 20 ha."
+    }
+  }
+}

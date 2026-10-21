@@ -42,6 +42,8 @@ import { createServerTelemetry, useTelemetry } from './telemetry/index.ts';
 import { readTelemetryConfig } from './telemetry/config.ts';
 import { appHeaders, pageHeaders, apiHeaders, fileCache, isSandboxPath, sandboxHeaders, inlineScriptHashes, telemetryOrigins, type RequestFacts } from './security-headers.ts';
 import { PLAY_SIGNING_ENV, siteFile } from './site-files.ts';
+import { defaultPlacesDir, servePlaceFile } from './places-files.ts';
+import { isPlaceModelRoute } from '../src/scene/places/paths.ts';
 import { ADMIN_HOST_ENV, ADMIN_ROBOTS, ADMIN_SHELL, adminAddress, adminHostName, adminHostRoute, isAdminHost } from './admin/host.ts';
 import { preparePathMeta, withPathMeta } from './path-meta.ts';
 import { sceneCataloguePage } from './scene-catalogue.ts';
@@ -81,6 +83,8 @@ export interface ServerOptions {
   streetAssets?: RouteContext['streetAssets']
   dataDir?: string
   distDir?: string
+  /** The folder of shared place models, `<sha256>.glb` files (scripts/places/manifest.ts fills it); default PLACES_DIR or scripts/places/out/store. */
+  placesDir?: string
   now?: () => number
   sessionTtlMs?: number
   actionWindowMs?: number
@@ -179,7 +183,7 @@ async function jsonBody(req: IncomingMessage, limit = 8192): Promise<Record<stri
   try { const value: unknown = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)); if (!isObject(value) || Array.isArray(value)) throw Error(); return value; } catch { throw fail(400, 'invalid_json'); }
 }
 
-export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
+export async function createServer({ dataDir = process.env.DATA_DIR || resolve('.data'), distDir = resolve('dist'), placesDir = defaultPlacesDir(), commerceGateway, streetAssets, now = Date.now, sessionTtlMs = Number(process.env.SESSION_TTL_DAYS || 30) * 86400000, actionWindowMs = ACTION_WINDOW_MS, maxActiveSessions: givenSessions, maxSockets: givenSockets, socketsPerAddress: givenPerAddress, voiceConfigProvider, callRelay: givenRelay, store: providedStore, routes: routeModules, wsModules,
   lazyFlushMs, shardIo, interactiveTeachingStarts = false, reverseGearIssuance = false,
   heartbeatMs = Number(process.env.HEARTBEAT_SECONDS || 10) * 1000,
   moderatorToken = process.env.MODERATOR_TOKEN,
@@ -490,6 +494,13 @@ export async function createServer({ dataDir = process.env.DATA_DIR || resolve('
       if (open && url.pathname === open.panelPath) {
         res.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
         res.end(method === 'HEAD' ? undefined : open.panelScript);
+        return;
+      }
+      // The shared place models: content-addressed .glb files in a local folder (the Worker reads them from R2).
+      if (adminKind === null && isPlaceModelRoute(url.pathname)) {
+        const answer = await servePlaceFile(placesDir, url.pathname, method, typeof req.headers['if-none-match'] === 'string' ? req.headers['if-none-match'] : null);
+        res.writeHead(answer.status, answer.headers);
+        res.end(answer.body ?? undefined);
         return;
       }
       const root = resolve(distDir);

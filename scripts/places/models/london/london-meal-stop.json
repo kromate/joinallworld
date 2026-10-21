@@ -1,0 +1,486 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-meal-stop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ace_Cafe_London_Ace_Corner_North_Circular_Road_London_NW10_7UD.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Spudgun67",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/aceD.jpg",
+   "used": "white painted single-storey hall with six tall glazed bays between white piers, black fascia band, raised parapet panel, clock tower at right, lower Ace Corner wing at left, empty tarmac forecourt"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ace_Cafe_2019.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Matt Brown",
+   "view": "side",
+   "file": "/tmp/places-evidence/london/aceC.jpg",
+   "used": "clock tower proportions, side entrance with awning, bar wing behind with porthole windows, brick store at rear"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ace_Cafe,_North_Circular_near_Stonebridge_-_geograph.org.uk_-_16153.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "geograph contributor",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/aceB.jpg",
+   "used": "flagpoles along the roof, bikes parked in front, relative heights of wing, hall and tower"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/312403524",
+   "used": "footprint scale only (32x13 m, containing quality)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    3,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "curtain",
+    "windowRatio": 0.78,
+    "bay": 3.66,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6ce",
+    "overhang": 0.5,
+    "parapet": 0.35
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     20,
+     6
+    ]
+   },
+   "at": [
+    2,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 5.2,
+   "height": 1.7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6ce",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ace-corner",
+   "footprint": {
+    "rect": [
+     9,
+     10
+    ]
+   },
+   "at": [
+    -13.5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bay": 2.2,
+    "faces": {
+     "front": "curtain",
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6ce",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     4.4,
+     6
+    ]
+   },
+   "at": [
+    17,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfccc4",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar-wing",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    8,
+    11
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfccc4",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-store",
+   "footprint": {
+    "rect": [
+     5,
+     6
+    ]
+   },
+   "at": [
+    -14,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8f4a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b5650",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3,
+    -6.15,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "height": 1.1,
+    "bottom": 4.1,
+    "colour": "#1b1c20",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -13.5,
+    -6.15,
+    0
+   ],
+   "params": {
+    "width": 8.6,
+    "height": 0.9,
+    "bottom": 3.5,
+    "colour": "#1b1c20",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    17.5,
+    -4.05,
+    0
+   ],
+   "params": {
+    "width": 4.4,
+    "height": 1.0,
+    "bottom": 6.8,
+    "colour": "#1b1c20",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    2,
+    -0.4,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "height": 0.9,
+    "bottom": 5.3,
+    "colour": "#1b1c20",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -4,
+    -3,
+    5.2
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#2b2b2b",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    3,
+    -3,
+    5.2
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#2b2b2b",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -3,
+    5.2
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#2b2b2b",
+    "count": 1
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    -2.0,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#c43a2a"
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    0.20000000000000018,
+    -12,
+    0
+   ],
+   "rotDeg": 100,
+   "params": {
+    "colour": "#1f2328"
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    2.4000000000000004,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#e0a22a"
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    4.6000000000000005,
+    -12,
+    0
+   ],
+   "rotDeg": 100,
+   "params": {
+    "colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    6.800000000000001,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#1f2328"
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    9.0,
+    -12,
+    0
+   ],
+   "rotDeg": 100,
+   "params": {
+    "colour": "#b83a2f"
+   }
+  },
+  {
+   "type": "motorbike",
+   "at": [
+    11.200000000000001,
+    -12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "colour": "#3a6ea5"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 9,
+    "density": 0.15
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -6,
+    -7.6,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -3.5,
+    -7.6,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Massing, fascia bands, clock tower and wings match the front photo; glazing mullions are plain, no clock face or porthole windows, fascia boards are blank, forecourt shows generic cars/bikes where the photo shows empty tarmac."
+ }
+}

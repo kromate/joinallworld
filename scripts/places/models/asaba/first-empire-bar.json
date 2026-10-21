@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "first-empire-bar",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM match is 49 m away so ignored; typical single-storey lounge bar from the brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lounge",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c9a7",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "glassColour": "#2e3438",
+    "bands": "#5a3b2a",
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6f4a38",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bar-wing",
+   "footprint": {
+    "rect": [
+     8,
+     9
+    ]
+   },
+   "at": [
+    -12,
+    -1
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f0ece4",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6f4a38",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.2,
+    "drop": 0.5,
+    "height": 3.0,
+    "colours": [
+     "#5a3b2a",
+     "#d9c9a7"
+    ]
+   }
+  },
+  {
+   "type": "neon-strip",
+   "at": [
+    0,
+    -7.15,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 3.6,
+    "colour": "#ff5fd0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 2.3,
+    "colour": "#5a3b2a"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 9,
+    "colours": [
+     "#f0ece4",
+     "#b5532f",
+     "#5a3b2a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -16,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   60,
+   45
+  ]
+ }
+}

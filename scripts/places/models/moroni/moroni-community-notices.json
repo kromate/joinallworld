@@ -1,0 +1,166 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/437275265",
+   "used": "small brick commercial building (about 10 x 8 m, rotated 147 degrees) used as the covered market hall; open courtyard of stalls added around it per the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 16,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 10
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9a58a",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-row-a",
+   "footprint": {
+    "rect": [
+     18,
+     3
+    ]
+   },
+   "at": [
+    -4,
+    -12
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8cfb8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#5c5f62",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stall-row-b",
+   "footprint": {
+    "rect": [
+     3,
+     14
+    ]
+   },
+   "at": [
+    14,
+    -4
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8fb0b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a14a35",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/array",
+   "params": {
+    "of": {
+     "type": "market-open/umbrella",
+     "params": {
+      "radius": 1.7,
+      "height": 2.4,
+      "colour": "#c4705a"
+     }
+    },
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -12,
+     -6
+    ],
+    "end": [
+     6,
+     -6
+    ]
+   }
+  },
+  {
+   "type": "market-open/tree",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "market-open/tree",
+   "at": [
+    20,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; stall layout and colours from the brief and Comorian village-market type"
+ }
+}

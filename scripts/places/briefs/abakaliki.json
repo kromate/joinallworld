@@ -1,0 +1,978 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "abakaliki",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "abakaliki",
+    "climate": "savanna",
+    "vernacular": "Capital of Ebonyi State (created 1996) in a forest-savanna belt at the junction of the Enugu, Afikpo and Ogoja roads. Mostly 1-2 storey painted-render and block houses, shops and lock-ups with rust-red or grey corrugated roofs; newer public buildings and bank branches are 2-5 storey rendered blocks; the state is known for concrete roads and big rice and yam markets, and flyovers and malls are recent additions.",
+    "wallColours": [
+      "#eee6d0",
+      "#f5f1e7",
+      "#d8c8a0",
+      "#c6d0b8",
+      "#b4b7b0",
+      "#c07a52",
+      "#a99f8e"
+    ],
+    "roofColours": [
+      "#8a4a36",
+      "#6f757a",
+      "#3f6b4a",
+      "#9a9a94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "brick",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Plain rendered public buildings with flag poles and painted state-colour bands (green and white); Ntezi basket-weave motifs and Igbo carved doors on cultural buildings; church towers topped with crosses; blank roadside billboards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Abakaliki",
+        "what": "capital of Ebonyi State; agricultural trade in yam, cassava, rice and palm; temperatures 14-33 C; federal hospital; road, mall and flyover projects; Catholic diocese seat since 1973"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ebonyi_State",
+        "what": "Ebonyi State created 1996; known for concrete roads; yam, rice, cassava; Ntezi baskets; mostly Christian"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Igbo_architecture",
+        "what": "Igbo architecture: mud, laterite, thatch, carved timber doors, mbari figures"
+      }
+    ]
+  },
+  "places": {
+    "abakaliki-rice-processing-market": {
+      "venueId": "abakaliki-rice-processing-market",
+      "city": "abakaliki",
+      "name": "Abakaliki Rice Processing Market",
+      "archetype": "market-open",
+      "subject": "A rice mill and trading yard: big open sheds and warehouses with stacked bags and parboiling drums, laterite ground and drying floors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b9b4a4",
+          "#6f757a",
+          "#a5774f"
+        ],
+        "roofColour": "#7a7f83",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 8,
+          "note": "long warehouse sheds"
+        },
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2,
+          "note": "silo-style bins"
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "Abakaliki is a centre of rice, yam and cassava trade"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ebonyi_State",
+          "what": "rice is a core crop of Ebonyi State"
+        }
+      ],
+      "notes": "Rice trade is sourced; the processing market yard layout is typed. Its character is large steel-clad sheds and rice-bag stacks, different from the Awka/Enugu stall markets. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "abakaliki-township-stadium": {
+      "venueId": "abakaliki-township-stadium",
+      "city": "abakaliki",
+      "name": "Abakaliki Township Stadium",
+      "archetype": "stadium",
+      "subject": "A medium state township stadium: a concrete oval bowl with one covered stand, a running track and four floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 165,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#bdb9ae",
+          "#2f6b4a",
+          "#e8e4d8"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand, typed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Name and position are real; no description of the stadium was found. Green/white state colours used. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "blessed-martins-college-of-nursing-sciences": {
+      "venueId": "blessed-martins-college-of-nursing-sciences",
+      "city": "abakaliki",
+      "name": "Blessed Martin's College of Nursing Sciences",
+      "archetype": "campus-block",
+      "subject": "A small nursing school: a two-storey teaching and hostel block with a front porch and louvred windows",
+      "form": {
+        "footprint": "L",
+        "width_m": 38,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8.5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eddf",
+          "#2f6a8a",
+          "#bdb8a8"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Private nursing college; nothing findable. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "capital-medicare-abakaliki": {
+      "venueId": "capital-medicare-abakaliki",
+      "city": "abakaliki",
+      "name": "Capital Medicare",
+      "archetype": "hospital",
+      "subject": "A small private hospital: a three-storey white block with a ground-floor entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f6f4ee",
+          "#2f8a7a",
+          "#c4c8c4"
+        ],
+        "roofColour": "#9a9e9c",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Private clinic; nothing findable. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "crunchies-restaurant-abakaliki": {
+      "venueId": "crunchies-restaurant-abakaliki",
+      "city": "abakaliki",
+      "name": "Crunchies Restaurant",
+      "archetype": "restaurant",
+      "subject": "A single-storey fast-casual restaurant with a glazed front, outdoor seating and a brightly painted blank sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3e3b8",
+          "#d9552a",
+          "#ffffff"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Private restaurant; nothing findable. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "ebonyi-ministry-of-works": {
+      "venueId": "ebonyi-ministry-of-works",
+      "city": "abakaliki",
+      "name": "Ebonyi State Ministry of Works",
+      "archetype": "civic-palace",
+      "subject": "A three-storey state ministry block with a central porch, state-colour green and white paint and a row of flagpoles",
+      "form": {
+        "footprint": "U",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee4",
+          "#2f7a4a",
+          "#b7b3a4"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "post-1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "State government offices created after state formation in 1996 (Ebonyi page); the block form is typed. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "ebonyi-state-library-board": {
+      "venueId": "ebonyi-state-library-board",
+      "city": "abakaliki",
+      "name": "Ebonyi State Library Board",
+      "archetype": "campus-block",
+      "subject": "A public library: a low two-storey rendered building with a flat roof, a small front colonnade and louvred reading-room windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f0ead8",
+          "#7a4a2f",
+          "#bdb7a5"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "post-1996",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "State library board; building not described anywhere found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "fatilami-park": {
+      "venueId": "fatilami-park",
+      "city": "abakaliki",
+      "name": "Fatilami Park",
+      "archetype": "park-landscape",
+      "subject": "A public park with open lawns, paved paths, an entrance gate, a bandstand-style pavilion and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e5ddc8",
+          "#5f8a4e",
+          "#a5774f"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Name and position are real; no description of the park was found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "federal-teaching-hospital-abakaliki": {
+      "venueId": "federal-teaching-hospital-abakaliki",
+      "city": "abakaliki",
+      "name": "Federal Teaching Hospital Abakaliki",
+      "archetype": "hospital",
+      "subject": "The federal teaching hospital campus: a large multi-wing complex of white four-storey blocks with a main entrance canopy and ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efede4",
+          "#2f6f8a",
+          "#bcc0bb"
+        ],
+        "roofColour": "#8a8f8c",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "the city has a federal hospital; recent projects include roads, malls and flyovers"
+        }
+      ],
+      "notes": "Only existence is sourced. Scaled to 110 m wide as a recognisable portion of a large teaching hospital campus. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "first-bank-abakaliki": {
+      "venueId": "first-bank-abakaliki",
+      "city": "abakaliki",
+      "name": "First Bank, Abakaliki",
+      "archetype": "office-low",
+      "subject": "A bank branch in a rendered three-storey building with dark-blue accents and blank signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeae0",
+          "#25406f",
+          "#bab8b0"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Bank branch; Abakaliki has fewer tall buildings than Enugu so this is shorter. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "itc-motor-park-abakaliki": {
+      "venueId": "itc-motor-park-abakaliki",
+      "city": "abakaliki",
+      "name": "ITC Motor Park Abakaliki",
+      "archetype": "transport-station",
+      "subject": "A large motor park on a tarmac and laterite lot with rows of buses, ticket booths and a long open waiting shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c3bdac",
+          "#d9a431",
+          "#6f757a"
+        ],
+        "roofColour": "#7a7f83",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city at the junction of Enugu, Afikpo and Ogoja roads, hence a transport hub"
+        }
+      ],
+      "notes": "Junction location sourced; layout typed. Larger than the Awka/Enugu stops since Abakaliki is a regional junction. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "national-museum-abakaliki": {
+      "venueId": "national-museum-abakaliki",
+      "city": "abakaliki",
+      "name": "National Museum, Abakaliki",
+      "archetype": "museum-theatre",
+      "subject": "A modest museum building with a traditional-inspired entrance bay, thatch-like roof motif and a courtyard with carved gate posts",
+      "form": {
+        "footprint": "U",
+        "width_m": 36,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe3c8",
+          "#8a4a2a",
+          "#a5774f"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "carved gate posts"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Ntezi-weave motif"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ebonyi_State",
+          "what": "Ntezi in Ebonyi is known for handmade baskets; cultural motif"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Igbo_architecture",
+          "what": "Igbo carved doors, gateways and painted symbolic figures"
+        }
+      ],
+      "notes": "A National Commission for Museums and Monuments site; building not described. Vernacular Igbo/Ntezi ornament is a typed assumption. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "st-theresas-cathedral-abakaliki": {
+      "venueId": "st-theresas-cathedral-abakaliki",
+      "city": "abakaliki",
+      "name": "St. Theresa's Cathedral, Abakaliki",
+      "archetype": "church-modern",
+      "subject": "The Catholic cathedral of the Diocese of Abakaliki: a large cream church with a tall front tower and a broad nave roof, with a wide forecourt",
+      "form": {
+        "footprint": "cross",
+        "width_m": 55,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 19,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#eee6d0",
+          "#6b4a3a",
+          "#bab29c"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front tower about 32 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "after 1973 diocese",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Abakaliki",
+          "what": "St. Theresa Cathedral is the cathedral of the Diocese of Abakaliki, erected 1 March 1973"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "Roman Catholic diocese seat since 1973; city mostly Christian"
+        }
+      ],
+      "notes": "Function and diocese founding date are sourced. Physical form not found; a cross plan with a front tower is typed."
+    },
+    "zenith-bank-ogoja-road-abakaliki": {
+      "venueId": "zenith-bank-ogoja-road-abakaliki",
+      "city": "abakaliki",
+      "name": "Zenith Bank, Ogoja Road",
+      "archetype": "office-low",
+      "subject": "A bank branch with a red-brick-and-glass front on Ogoja Road, two storeys with a tall entrance canopy; blank signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e5da",
+          "#a8362a",
+          "#b7b5ae"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abakaliki",
+          "what": "city context: agricultural trade centre, mostly Christian, new roads and malls"
+        }
+      ],
+      "notes": "Ogoja Road is one of the three main roads at the Abakaliki junction (sourced). Kept lower and a different colour from the First Bank brief. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    }
+  }
+}

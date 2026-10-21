@@ -1,0 +1,264 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/170165592",
+   "used": "named stadium outline, about 107 x 65 m: sets pitch size and overall scale"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Rwang_Pam_Township_Stadium",
+   "used": "15,000 seats, former athletics track; roofed main stand, ends open terraces; Commons photos nearby are street scenes, not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     116,
+     100
+    ],
+    "height": 0.08,
+    "colour": "#7f7a70",
+    "material": "asphalt"
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "length": 120,
+    "width": 80,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "length": 100,
+    "width": 64,
+    "stripes": 8
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -42,
+     -40
+    ],
+    "end": [
+     42,
+     -40
+    ],
+    "rows": 18,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 2.6,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "backWall": 0.5,
+    "bay": 6,
+    "seatColour": "#2f6b4f",
+    "seatColours": [
+     "#2f6b4f",
+     "#d9d5cb"
+    ],
+    "concreteColour": "#d9d5cb",
+    "underColour": "#a9a59b",
+    "canopy": {
+     "height": 3.6,
+     "depth": 13,
+     "thickness": 0.5,
+     "slopeDeg": 6,
+     "colour": "#6b6f73",
+     "edgeColour": "#f7f4ee"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 78,
+    "radiusY": 58,
+    "startDeg": 18,
+    "endDeg": 162,
+    "rows": 12,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "facetDeg": 14,
+    "under": "open",
+    "slab": 0.5,
+    "seatColour": "#d9d5cb",
+    "concreteColour": "#cfcabf"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.6,
+    "colour": "#d9d5cb"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    -44,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    62,
+    44,
+    0
+   ],
+   "params": {
+    "height": 32
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -20,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "height": 2.6,
+    "colour": "#d9d5cb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -70,
+     -56
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     72,
+     -58
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "rwang-pam-township-stadium",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of this ground; only the main stand is roofed, end terraces curved, real stand layout unknown; render over the 120 m clamp."
+ }
+}

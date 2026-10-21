@@ -1,17 +1,19 @@
 /*
- * OWNER: growth
- * Allworld's service worker. It does three things: show a notification when a push arrives, open the game
- * when that notification is tapped, and show a small "you are offline" page when a page load fails for want
- * of a network. It caches nothing: the offline page is written below, not stored, and every other request
- * (scripts, pictures, the game's data, the socket) never passes through here. A page load that works is
- * handed back untouched, so the worker cannot serve a stale game or change how anything loads.
+ * OWNER: growth (push, offline page), scenes (place models)
+ * Allworld's service worker. It does four things: show a notification when a push arrives, open the game
+ * when that notification is tapped, show a small "you are offline" page when a page load fails for want
+ * of a network, and keep the unique place models (see PLACE MODELS below). The offline page is written
+ * below, not stored; the only Cache Storage it uses is the place cache. Every other request (scripts,
+ * pictures, the game's data, the socket) never passes through here, and a page load that works is handed
+ * back untouched, so the worker cannot serve a stale game or change how anything else loads.
  *
- * SCOPE AND UPDATES. Registered at "/" in two cases: when a player switches notifications on (the Stay in
- * touch app), and inside the installed app (the Play Store app or Add to Home Screen; see
- * src/app/features/start/offlineWorker.ts), where a failed load would otherwise show the browser's error
- * screen. A visitor in an ordinary browser tab who never switches notifications on has no service worker.
- * The browser re-checks this file on its own (at most every 24 hours, and on navigation); a changed file
- * takes over at once (skipWaiting + clients.claim), which is safe because it holds no cache and no state.
+ * SCOPE AND UPDATES. Registered at "/" in three cases: when a player switches notifications on (the Stay in
+ * touch app), inside the installed app (the Play Store app or Add to Home Screen; see
+ * src/app/features/start/offlineWorker.ts), and by the game itself after the first place model has been
+ * shown (src/scene/places/persist.ts), so a return visit can find the models on the device. The browser
+ * re-checks this file on its own (at most every 24 hours, and on navigation); a changed file takes over at
+ * once (skipWaiting + clients.claim), which is safe because the only state it holds is the place cache,
+ * whose entries are content-addressed and never change.
  *
  * A push payload is JSON { title, body, url, tag } made by server/growth/outreach.ts. The words
  * are the server's own; nothing in a payload is run or inserted as markup.
@@ -20,7 +22,7 @@ self.addEventListener('install', () => { self.skipWaiting(); });
 self.addEventListener('activate', (event) => {
   // Navigation preload starts the page's request while the worker wakes, so the fetch handler below costs no time.
   const preload = self.registration && self.registration.navigationPreload ? self.registration.navigationPreload.enable().catch(() => {}) : Promise.resolve();
-  event.waitUntil(Promise.all([self.clients.claim(), preload]));
+  event.waitUntil(Promise.all([self.clients.claim(), preload, dropOldPlaceCaches()]));
 });
 
 /*
@@ -47,16 +49,51 @@ function offlinePage() {
     'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'",
   } });
 }
+/*
+ * PLACE MODELS. Every venue has its own model at /assets/places/<sha256>.glb and the models share one atlas at
+ * /assets/places/trim-<sha256>.webp (2048) and trim-1024-<sha256>.webp. Each address names the SHA-256 of the file's own bytes, so
+ * a cached answer can never be stale: it is cache-first, in Cache Storage under 'allworld-places-v1', which (with
+ * navigator.storage.persist(), asked once by the game) the browser keeps longer than its HTTP cache. Only a plain 200 from this
+ * origin is stored: an error, a redirect or a partial answer is never kept. A request with a Range header, any other method, any
+ * other origin and any other path is left to the browser. If Cache Storage fails, the network answer is used as it is.
+ */
+const PLACES_CACHE = 'allworld-places-v1';
+const PLACE_FILE = /^\/assets\/places\/(?:[0-9a-f]{64}\.glb|trim(?:-1024)?-[0-9a-f]{64}\.webp)$/;
+function dropOldPlaceCaches() {
+  return self.caches.keys().then((keys) => Promise.all(keys.filter((key) => /^allworld-places-v\d+$/.test(key) && key !== PLACES_CACHE).map((key) => self.caches.delete(key)))).catch(() => undefined);
+}
+function fromNetwork(event, request, key, cache) {
+  return fetch(request).then((response) => {
+    if (response.status === 200 && response.ok && response.type === 'basic' && !response.redirected) {
+      const copy = response.clone();
+      event.waitUntil(cache.put(key, copy).catch(() => undefined));
+    }
+    return response;
+  });
+}
+function placeResponse(event, request, key) {
+  return self.caches.open(PLACES_CACHE).then(
+    (cache) => cache.match(key).then((hit) => hit || fromNetwork(event, request, key, cache)),
+    () => fetch(request),
+  );
+}
 self.addEventListener('fetch', (event) => {
   const request = event.request;
-  if (request.mode !== 'navigate' || request.method !== 'GET') return;
-  event.respondWith((async () => {
-    try {
-      const preloaded = await event.preloadResponse;
-      if (preloaded) return preloaded;
-      return await fetch(request);
-    } catch (error) { return offlinePage(); }
-  })());
+  if (request.method !== 'GET') return;
+  if (request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        const preloaded = await event.preloadResponse;
+        if (preloaded) return preloaded;
+        return await fetch(request);
+      } catch (error) { return offlinePage(); }
+    })());
+    return;
+  }
+  let url;
+  try { url = new URL(request.url); } catch (error) { return; }
+  if (url.origin !== self.location.origin || !PLACE_FILE.test(url.pathname) || request.headers.has('range')) return;
+  event.respondWith(placeResponse(event, request, url.origin + url.pathname));
 });
 
 /*

@@ -1,0 +1,205 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "cg-surfaces",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "surface",
+   "at": [
+    -45,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "folded",
+    "folds": 4,
+    "rise": 2.5,
+    "colour": "#d98f6c",
+    "material": "copper"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -28,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "hypar",
+    "rise": 3,
+    "colour": "#cfcfc9"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -11,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "wave",
+    "waves": 2,
+    "rise": 2.5,
+    "colour": "#c7cfd4"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    6,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "dome-cap",
+    "rise": 3,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    23,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "conoid",
+    "rise": 3.5,
+    "colour": "#b9c3b4"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    42,
+    10,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 22,
+    "z": 1,
+    "thickness": 0.3,
+    "kind": "fan",
+    "rise": 7,
+    "folds": 6,
+    "startDeg": -80,
+    "endDeg": 80,
+    "colour": "#d98f6c",
+    "material": "copper"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -45,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "folded",
+    "folds": 3,
+    "rise": 2,
+    "foldAxis": "x",
+    "slopeX": 8,
+    "colour": "#9fb7c9"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -28,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 12,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "dome-cap",
+    "circle": true,
+    "rise": 3,
+    "colour": "#cba85a"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    -11,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 10,
+    "z": 2,
+    "thickness": 0.3,
+    "kind": "heights",
+    "heights": [
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      3,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ]
+    ],
+    "colour": "#a0b090"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   120,
+   80
+  ]
+ }
+}

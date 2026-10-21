@@ -1,0 +1,194 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1290240853",
+   "used": "name-matched hospital building outline, 42 x 12 m, bearing 120 deg (Wikidata Q30253917 UNIOSUN Teaching Hospital): used as the ward block footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/osogbo.json",
+   "used": "no photo found on Commons or Wikidata; 4 storeys, painted render in cream with blue bands, flat roof, ambulance bay and car park are from the brief (low confidence guess)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.4,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "bands": "#4a7a9a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -17
+   ],
+   "rotDeg": -30,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.32,
+    "plinth": 0.5,
+    "bands": "#4a7a9a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8c8a",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3,
+    "colour": "#f2efe6",
+    "roofColour": "#8a8c8a"
+   },
+   "rotDeg": -30
+  },
+  {
+   "type": "ambulance",
+   "at": [
+    10,
+    -31,
+    0
+   ],
+   "params": {
+    "heading": 60
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.6,
+    "colour": "#e8e4d8",
+    "frameColour": "#4a7a9a"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -6,
+    -33,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3,
+    "yaw": 60
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 14
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -24,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "lautech-teaching-hospital",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline only (42x12 m), storeys, colours and annex are brief guesses; balcony bands omitted"
+ }
+}

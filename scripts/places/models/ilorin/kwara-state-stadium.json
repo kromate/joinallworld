@@ -1,0 +1,659 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kwara_state_stadium_entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Major Lyte",
+   "view": "front",
+   "file": "/tmp/places-evidence/ilorin/stadium1.jpg",
+   "used": "peach-ochre entrance screen wall with two round arches, taller central pylon with round oculus and lantern finial, long blank sign bands either side, two tall rusty flagpoles in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kwara_State_Stadium_entrance_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Major Lyte",
+   "view": "front",
+   "file": "/tmp/places-evidence/ilorin/stadium2.jpg",
+   "used": "arch proportions, grey-green pointed arch mouldings, pale bare laterite forecourt, steel gates in the openings"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/170728987",
+   "used": "stadium overall size and orientation (about 217 x 134 m), scaled to a bowl behind the gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 80,
+    "height": 12,
+    "roof": "canopy",
+    "roof_style": "shed",
+    "wall": "ribs",
+    "seat_colour": "#2f6b4f",
+    "seat_colour2": "#d6d2c6",
+    "floodlights": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     60
+    ],
+    "height": 9,
+    "colour": "#b9ad98"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 12.5,
+    "depth": 2.4,
+    "height": 14.5,
+    "openings": 1,
+    "kind": "round",
+    "pier": 3.0,
+    "wall_colour": "#dcab7c",
+    "trim_colour": "#9fb09a",
+    "roof_colour": "#dcab7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.5,
+     2.4
+    ],
+    "height": 11,
+    "colour": "#dcab7c"
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 12.5,
+    "depth": 2.4,
+    "height": 14.5,
+    "openings": 1,
+    "kind": "round",
+    "pier": 3.0,
+    "wall_colour": "#dcab7c",
+    "trim_colour": "#9fb09a",
+    "roof_colour": "#dcab7c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "lod": [
+    2
+   ],
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "rect": [
+     12.5,
+     2.4
+    ],
+    "height": 11,
+    "colour": "#dcab7c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w1",
+   "footprint": {
+    "rect": [
+     13,
+     2.4
+    ]
+   },
+   "at": [
+    -9.5,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab7c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcab7c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "w2",
+   "footprint": {
+    "rect": [
+     13,
+     2.4
+    ]
+   },
+   "at": [
+    9.5,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab7c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcab7c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     7,
+     2.4
+    ]
+   },
+   "at": [
+    -31.5,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab7c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcab7c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     7,
+     2.4
+    ]
+   },
+   "at": [
+    31.5,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab7c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcab7c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-l",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    -36,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab7c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcab7c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-r",
+   "footprint": {
+    "rect": [
+     3,
+     2.4
+    ]
+   },
+   "at": [
+    36,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcab7c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dcab7c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pylon",
+   "footprint": {
+    "rect": [
+     5,
+     2.8
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8a574",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8a574",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "horn-l",
+   "footprint": {
+    "rect": [
+     1.1,
+     2.8
+    ]
+   },
+   "at": [
+    -2.3,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0a070",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0a070",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "horn-r",
+   "footprint": {
+    "rect": [
+     1.1,
+     2.8
+    ]
+   },
+   "at": [
+    2.3,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 17.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0a070",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d0a070",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-l",
+   "footprint": {
+    "rect": [
+     24,
+     0.5
+    ]
+   },
+   "at": [
+    -18,
+    -25.4
+   ],
+   "rotDeg": 0,
+   "z0": 8.8,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-r",
+   "footprint": {
+    "rect": [
+     24,
+     0.5
+    ]
+   },
+   "at": [
+    18,
+    -25.4
+   ],
+   "rotDeg": 0,
+   "z0": 8.8,
+   "height": 0.9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band-c",
+   "footprint": {
+    "rect": [
+     4,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -25.6
+   ],
+   "rotDeg": 0,
+   "z0": 10.5,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1c1c1c",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1c1c1c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    -24,
+    17.5
+   ],
+   "params": {
+    "profile": [
+     [
+      0.05,
+      0,
+      "#a8643f"
+     ],
+     [
+      0.25,
+      0.4,
+      "#a8643f"
+     ],
+     [
+      0.3,
+      1.2,
+      "#a8643f"
+     ],
+     [
+      0.12,
+      2.2,
+      "#a8643f"
+     ],
+     [
+      0.03,
+      2.8,
+      "#a8643f"
+     ]
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -2.1999999999999997,
+    -28,
+    0
+   ],
+   "params": {
+    "colour": "#8a4b2f",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.2
+     },
+     {
+      "z": 26,
+      "circle": 0.1,
+      "cx": -0.9
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    2.1999999999999997,
+    -28,
+    0
+   ],
+   "params": {
+    "colour": "#8a4b2f",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 0.2
+     },
+     {
+      "z": 26,
+      "circle": 0.1,
+      "cx": 0.9
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -48,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.2,
+    "colour": "#c9b79c",
+    "pillarEvery": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    48,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 2.2,
+    "colour": "#c9b79c",
+    "pillarEvery": 4
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "kwara-state-stadium",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "two see-through arches, low wide screen wall, notched-horn pylon with finial, black sign bands and bare leaning poles added; wing ends only step up (no smooth flare), no oculus, steel gates or railing in openings, bowl hidden behind wall"
+ }
+}

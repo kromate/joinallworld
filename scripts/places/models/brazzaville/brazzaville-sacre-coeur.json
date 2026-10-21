@@ -1,0 +1,597 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-sacre-coeur",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Cath%C3%A9drale_de_Brazzaville.jpg",
+   "licence": "Public domain",
+   "author": "unknown (postcard, Christmas 1917)",
+   "view": "front",
+   "file": "/tmp/places-evidence/brazzaville/sacrecoeur-1917.jpg",
+   "used": "front elevation: two square flat-topped towers with arched louvred slits, lower central block with a row of blind arches, pedimented centre with a clock tower and spire, arched portals with statues in niches, pale rendered upper walls over darker brick base, palms in front. Historic view (1917): the present building is remodelled and larger"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/731643099",
+   "used": "overall extent only (57 x 28 m cross-shaped footprint); massing composed from the photo and brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 4,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     13,
+     30
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "height": 10,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8714f",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain"
+    },
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-l",
+   "footprint": {
+    "rect": [
+     5,
+     24
+    ]
+   },
+   "at": [
+    -9,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8714f",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-r",
+   "footprint": {
+    "rect": [
+     5,
+     24
+    ]
+   },
+   "at": [
+    9,
+    2
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8714f",
+    "windows": "arched",
+    "windowRatio": 0.25,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     26,
+     8
+    ]
+   },
+   "at": [
+    0,
+    7
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8714f",
+    "windows": "arched",
+    "windowRatio": 0.18,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 30,
+    "overhang": 0.5,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    0,
+    17
+   ],
+   "height": 8,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8714f",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 30
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-base",
+   "footprint": {
+    "rect": [
+     13,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a52",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9582",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-arcade",
+   "footprint": {
+    "rect": [
+     13,
+     4.5
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2b79f",
+    "windows": "pointed",
+    "windowRatio": 0.55,
+    "windowShape": "pointed",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain",
+     "front": "pointed"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9582",
+    "material": "concrete",
+    "parapet": 0.3
+   },
+   "z0": 6.2
+  },
+  {
+   "type": "mass",
+   "id": "pediment",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -17.8
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#9a7a60",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "pointed"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "pitch": 42,
+    "overhang": 0.4,
+    "axis": "x"
+   },
+   "z0": 8.6
+  },
+  {
+   "type": "mass",
+   "id": "clock-tower",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    0,
+    -16.8
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2b79f",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "cornice": true
+   },
+   "roof": {
+    "form": "pyramidal",
+    "colour": "#8c8c88",
+    "material": "corrugated",
+    "rise": 5.5,
+    "overhang": 0.2
+   },
+   "z0": 11.2
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    0,
+    -16.8,
+    21.9
+   ],
+   "params": {
+    "baseWidth": 0.4,
+    "height": 3.2,
+    "sides": 4,
+    "colour": "#d8d2c4",
+    "finial": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base-l",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    -8.3,
+    -18.4
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a52",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9582",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-l",
+   "footprint": {
+    "rect": [
+     5.0,
+     5.0
+    ]
+   },
+   "at": [
+    -8.3,
+    -18.4
+   ],
+   "height": 9.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2b79f",
+    "windows": "pointed",
+    "windowRatio": 0.13,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed",
+     "left": "pointed",
+     "right": "pointed",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9582",
+    "material": "concrete",
+    "parapet": 0.5
+   },
+   "z0": 7.5
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    -8.3,
+    -21.3,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 6.2,
+    "depth": 0.7,
+    "archWidth": 3.4,
+    "springHeight": 3.6,
+    "pointed": true,
+    "colour": "#7a6552"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -8.3,
+    -21.6,
+    0.9
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#7b6f5c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-base-r",
+   "footprint": {
+    "rect": [
+     5.4,
+     5.4
+    ]
+   },
+   "at": [
+    8.3,
+    -18.4
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#8a6a52",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9582",
+    "material": "concrete",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-r",
+   "footprint": {
+    "rect": [
+     5.0,
+     5.0
+    ]
+   },
+   "at": [
+    8.3,
+    -18.4
+   ],
+   "height": 8.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2b79f",
+    "windows": "pointed",
+    "windowRatio": 0.13,
+    "windowShape": "pointed",
+    "faces": {
+     "front": "pointed",
+     "left": "pointed",
+     "right": "pointed",
+     "back": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9d9582",
+    "material": "concrete",
+    "parapet": 0.5
+   },
+   "z0": 7.5
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    8.3,
+    -21.3,
+    0
+   ],
+   "params": {
+    "width": 4.6,
+    "height": 6.2,
+    "depth": 0.7,
+    "archWidth": 3.4,
+    "springHeight": 3.6,
+    "pointed": true,
+    "colour": "#7a6552"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    8.3,
+    -21.6,
+    0.9
+   ],
+   "params": {
+    "height": 2.4,
+    "colour": "#7b6f5c"
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -19.9,
+    0
+   ],
+   "params": {
+    "width": 5.4,
+    "height": 7,
+    "depth": 0.9,
+    "archWidth": 3.8,
+    "springHeight": 4.2,
+    "pointed": true,
+    "colour": "#6e5a48"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21.2,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.7,
+    "count": 3,
+    "colour": "#cfc6b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -28
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -19,
+     -27
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -14
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "1917 postcard vs larger present building; tower slits are single short windows, no bargeboard fretwork or clock balcony rail, arcade is a pale band rather than 9 blind arches"
+ }
+}

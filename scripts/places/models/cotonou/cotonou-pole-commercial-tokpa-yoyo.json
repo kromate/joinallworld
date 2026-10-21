@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-pole-commercial-tokpa-yoyo",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: modern two-level retail block with long painted facade, parking in front. No photo of this place found; OSM relation (containing, 10,662 m2 saw-tooth outline) judged unreliable for the retail pole so it was not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     80,
+     26
+    ]
+   },
+   "at": [
+    0,
+    8
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d9c0",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "groundKind": "glass-shopfront",
+    "groundHeight": 4.2,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b65a3c",
+      "height": 0.9,
+      "at": 0.0,
+      "floors": [
+       1
+      ],
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -18,
+    -8
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7f8a8c",
+    "windows": "curtain",
+    "windowRatio": 0.7,
+    "bands": "#b65a3c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b65a3c",
+    "parapet": 0.6,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     18
+    ]
+   },
+   "at": [
+    51,
+    16
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d9c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d8f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    10,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 2.6,
+    "drop": 0.5,
+    "height": 3.6,
+    "colours": [
+     "#b65a3c",
+     "#e3d9c0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.4,
+    "bottom": 13.5,
+    "colour": "#b65a3c",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -14.5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 7,
+    "colour": "#7f8a8c",
+    "posts": true
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "density": 0.7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -45,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 4,
+    "spread": 3,
+    "line": 18
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 3,
+    "line": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline: typical two-level retail block from the brief."
+ }
+}

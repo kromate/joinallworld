@@ -1,0 +1,195 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lokoja",
+ "venueId": "federal-medical-centre-lokoja",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/632812533",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lokoja.json",
+   "used": "program, storeys, colours; no photo of this place found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-wing",
+   "footprint": {
+    "osm": true
+   },
+   "height": 10,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe3cd",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#f6f3ea",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ea",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "bands": "#a9b89a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "low-ward",
+   "footprint": {
+    "rect": [
+     28,
+     9
+    ]
+   },
+   "at": [
+    -4,
+    24
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe3cd",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "corrugated",
+    "pitch": 15,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#a9b89a"
+   }
+  },
+  {
+   "type": "water-tank",
+   "at": [
+    28,
+    22,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -23,
+    2.8
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "colour": "#f6f3ea"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -18
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -20,
+     -30
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -8,
+     -32
+    ],
+    "yawDeg": 90,
+    "colour": "#7a8691"
+   },
+   {
+    "at": [
+     22,
+     -30
+    ],
+    "yawDeg": 0,
+    "colour": "#c9c2b0"
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ }
+}

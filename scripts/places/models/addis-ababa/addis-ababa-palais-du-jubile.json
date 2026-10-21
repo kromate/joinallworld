@@ -1,0 +1,840 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Jubilee_Palace.png",
+   "licence": "Public domain",
+   "author": "Unknown",
+   "view": "front",
+   "file": "/tmp/places-evidence/addis-ababa/palace1.png",
+   "used": "cream neoclassical block on a raised terrace, central four-column portico with a taller attic and sculpture group on top, long lower wings with first-floor loggias, double flight of steps up the terrace, clipped conifers and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/120776245",
+   "used": "length of the complex (about 140 m); outline is irregular so the palace is composed as a long front, not the raw polygon"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 5,
+  "fovDeg": 40,
+  "aspect": 1.52
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Portico columns now run full height under a deep entablature and lion-group block, but the low camera is hidden behind the terrace wall so the wing loggia colonnades and double stair with balustrades barely show; conifers are generic cones; centre does not project much."
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    0,
+    -4
+   ],
+   "params": {
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#d9d1ba",
+    "rect": [
+     124,
+     34
+    ],
+    "topColour": "#cfc7ae"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wings",
+   "footprint": {
+    "rect": [
+     116,
+     19
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "z0": 3.6,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e1cb",
+    "windows": "none",
+    "windowRatio": 0.28,
+    "bay": 9,
+    "cornice": true,
+    "plinth": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": []
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     21
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 3.6,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 6,
+    "cornice": true,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 1.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "portico-attic",
+   "at": [
+    0,
+    -8.5
+   ],
+   "params": {
+    "z0": 15.1,
+    "height": 4.2,
+    "colour": "#e8e1cb",
+    "rect": [
+     24,
+     1.2
+    ],
+    "topColour": "#d9d1ba"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace-balustrade",
+   "at": [
+    0,
+    -20.6
+   ],
+   "params": {
+    "z0": 3.6,
+    "height": 1.1,
+    "colour": "#ebe5d2",
+    "rect": [
+     124,
+     0.5
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "flag-line",
+   "params": {
+    "count": 3,
+    "start": [
+     -9,
+     -31
+    ],
+    "end": [
+     9,
+     -31
+    ],
+    "of": {
+     "type": "core/flag",
+     "params": {
+      "height": 9,
+      "colour": "#1b7a43"
+     }
+    },
+    "mode": "line"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "id": "garden-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "height": 1.6,
+    "thickness": 0.5,
+    "colour": "#d4cdb6"
+   }
+  },
+  {
+   "type": "core/gate",
+   "id": "gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "pillar": 1.2,
+    "colour": "#d8d0bb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back-l",
+   "at": [
+    -38,
+    -7.6
+   ],
+   "params": {
+    "z0": 8.2,
+    "height": 5,
+    "colour": "#8a8270",
+    "rect": [
+     40,
+     0.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "loggia-cols-l",
+   "params": {
+    "count": 9,
+    "start": [
+     -20,
+     -9.6
+    ],
+    "end": [
+     -56,
+     -9.6
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#f0ead8",
+      "profile": [
+       [
+        0.8,
+        0
+       ],
+       [
+        0.7,
+        0.3
+       ],
+       [
+        0.6,
+        0.6
+       ],
+       [
+        0.6,
+        4.6
+       ],
+       [
+        0.8,
+        5
+       ]
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-slab-l",
+   "at": [
+    -38,
+    -9.0
+   ],
+   "params": {
+    "z0": 8.0,
+    "height": 0.3,
+    "colour": "#efe9d6",
+    "rect": [
+     42,
+     3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-rail-l",
+   "at": [
+    -38,
+    -10.3
+   ],
+   "params": {
+    "z0": 8.3,
+    "height": 0.9,
+    "colour": "#e4ddc8",
+    "rect": [
+     42,
+     0.3
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-back-r",
+   "at": [
+    38,
+    -7.6
+   ],
+   "params": {
+    "z0": 8.2,
+    "height": 5,
+    "colour": "#8a8270",
+    "rect": [
+     40,
+     0.3
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "loggia-cols-r",
+   "params": {
+    "count": 9,
+    "start": [
+     20,
+     -9.6
+    ],
+    "end": [
+     56,
+     -9.6
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#f0ead8",
+      "profile": [
+       [
+        0.8,
+        0
+       ],
+       [
+        0.7,
+        0.3
+       ],
+       [
+        0.6,
+        0.6
+       ],
+       [
+        0.6,
+        4.6
+       ],
+       [
+        0.8,
+        5
+       ]
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "loggia-slab-r",
+   "at": [
+    38,
+    -9.0
+   ],
+   "params": {
+    "z0": 8.0,
+    "height": 0.3,
+    "colour": "#efe9d6",
+    "rect": [
+     42,
+     3
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "loggia-rail-r",
+   "at": [
+    38,
+    -10.3
+   ],
+   "params": {
+    "z0": 8.3,
+    "height": 0.9,
+    "colour": "#e4ddc8",
+    "rect": [
+     42,
+     0.3
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "portico-slab",
+   "at": [
+    0,
+    -12.8
+   ],
+   "params": {
+    "z0": 3.6,
+    "height": 0.6,
+    "colour": "#e6e0cc",
+    "rect": [
+     22,
+     5.6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balcony-recess",
+   "at": [
+    0,
+    -10.4
+   ],
+   "params": {
+    "z0": 9,
+    "height": 6,
+    "colour": "#7a7261",
+    "rect": [
+     17,
+     0.4
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "portico-cols",
+   "params": {
+    "count": 4,
+    "start": [
+     -8,
+     -14.5
+    ],
+    "end": [
+     8,
+     -14.5
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#f4efe2",
+      "profile": [
+       [
+        1.2,
+        0
+       ],
+       [
+        1.05,
+        0.4
+       ],
+       [
+        0.95,
+        0.8
+       ],
+       [
+        0.95,
+        14.2
+       ],
+       [
+        1.15,
+        14.6
+       ],
+       [
+        1.3,
+        15.2
+       ]
+      ]
+     }
+    },
+    "mode": "line"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "entablature",
+   "at": [
+    0,
+    -12.6
+   ],
+   "params": {
+    "z0": 18.4,
+    "height": 2.2,
+    "colour": "#f0ead9",
+    "rect": [
+     22,
+     6.2
+    ],
+    "topColour": "#e0d9c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statuary",
+   "at": [
+    0,
+    -12.4
+   ],
+   "params": {
+    "z0": 20.6,
+    "height": 3.2,
+    "colour": "#e2dac0",
+    "rect": [
+     6,
+     2.2
+    ],
+    "topColour": "#e8e0c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statuary-2",
+   "at": [
+    -1.2,
+    -12.4
+   ],
+   "params": {
+    "z0": 23.8,
+    "height": 1.8,
+    "colour": "#ddd5ba",
+    "rect": [
+     2.2,
+     1.6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "statuary-3",
+   "at": [
+    1.6,
+    -12.4
+   ],
+   "params": {
+    "z0": 23.8,
+    "height": 1.2,
+    "colour": "#ddd5ba",
+    "rect": [
+     1.8,
+     1.4
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "landing",
+   "at": [
+    0,
+    -21.5
+   ],
+   "params": {
+    "z0": 0,
+    "height": 2.2,
+    "colour": "#ddd5bf",
+    "rect": [
+     24,
+     5
+    ],
+    "topColour": "#d4ccb5"
+   }
+  },
+  {
+   "type": "core/steps",
+   "id": "flight-mid",
+   "at": [
+    0,
+    -26.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 2.2,
+    "run": 3.6,
+    "count": 6,
+    "colour": "#ddd5bf"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "balust-l",
+   "at": [
+    -5.4,
+    -24.5
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#ebe5d2",
+    "rect": [
+     0.6,
+     10
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "landing-balust-l",
+   "at": [
+    -12,
+    -24
+   ],
+   "params": {
+    "z0": 2.2,
+    "height": 1.0,
+    "colour": "#ebe5d2",
+    "rect": [
+     0.5,
+     5
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balust-r",
+   "at": [
+    5.4,
+    -24.5
+   ],
+   "params": {
+    "z0": 0,
+    "height": 1.8,
+    "colour": "#ebe5d2",
+    "rect": [
+     0.6,
+     10
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "landing-balust-r",
+   "at": [
+    12,
+    -24
+   ],
+   "params": {
+    "z0": 2.2,
+    "height": 1.0,
+    "colour": "#ebe5d2",
+    "rect": [
+     0.5,
+     5
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "conifers",
+   "params": {
+    "count": 12,
+    "start": [
+     -55,
+     -33
+    ],
+    "end": [
+     55,
+     -33
+    ],
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#2c4a2c",
+      "profile": [
+       [
+        1.6,
+        0
+       ],
+       [
+        1.5,
+        1.2
+       ],
+       [
+        1.1,
+        4
+       ],
+       [
+        0.6,
+        6.2
+       ],
+       [
+        0.1,
+        7.4
+       ]
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "lions",
+   "params": {
+    "count": 2,
+    "start": [
+     -9,
+     -24.5
+    ],
+    "end": [
+     9,
+     -24.5
+    ],
+    "of": {
+     "type": "prism",
+     "id": "lion",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "z0": 2.2,
+      "height": 1.6,
+      "colour": "#b9aa85",
+      "rect": [
+       1.4,
+       2.6
+      ]
+     }
+    },
+    "mode": "line"
+   },
+   "lod": [
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -27
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     -27
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -27
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-palais-du-jubile"
+}

@@ -1,0 +1,457 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Praia_Harbor.jpg",
+   "licence": "Public domain",
+   "author": "Xandu",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/praia/harbor.jpg",
+   "used": "quay along the water, white ferry alongside at right, open pale-blue-roofed passenger shed at the front right, white control block with blue stair tower, cream-roofed warehouses and container stacks at left, red earth foreground"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/239429869",
+   "used": "nearest-only match rejected; layout from photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 26,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "quay",
+   "id": "quay",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 130,
+    "depth": 40,
+    "water_depth": 40,
+    "bollards": true,
+    "wall_colour": "#b5b0a4"
+   }
+  },
+  {
+   "type": "water-surface",
+   "id": "sea",
+   "at": [
+    0,
+    28,
+    0.12
+   ],
+   "params": {
+    "width": 140,
+    "depth": 56,
+    "colour": "#2f8fa0",
+    "bank": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "earth",
+   "at": [
+    0,
+    -60
+   ],
+   "params": {
+    "height": 0.3,
+    "colour": "#a85f35",
+    "z0": 0.05,
+    "rect": [
+     140,
+     40
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road",
+   "at": [
+    0,
+    -35
+   ],
+   "params": {
+    "height": 0.1,
+    "colour": "#3a3d42",
+    "z0": 0.02,
+    "rect": [
+     130,
+     6
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "road2",
+   "at": [
+    -45,
+    -22
+   ],
+   "params": {
+    "height": 0.1,
+    "colour": "#3a3d42",
+    "z0": 0.02,
+    "rect": [
+     6,
+     26
+    ]
+   }
+  },
+  {
+   "type": "open-shelter",
+   "id": "ferry-shed",
+   "at": [
+    26,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 45,
+    "depth": 7,
+    "height": 3.6,
+    "form": "shed",
+    "colour": "#8fb4d6",
+    "accent": "#d8dcdf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "control-block",
+   "footprint": {
+    "rect": [
+     9,
+     8
+    ]
+   },
+   "at": [
+    -2,
+    -14
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "render",
+    "colour": "#eceae4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "bay": 3,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fb4c4",
+    "material": "metal-sheet",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "stair-tower",
+   "id": "blue-stair",
+   "at": [
+    -7.2,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 3,
+    "depth": 3,
+    "height": 15,
+    "colour": "#4f8ec4",
+    "roofColour": "#4f8ec4"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "id": "wh1",
+   "at": [
+    -34,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "height": 6,
+    "roof": "gable",
+    "doors": 2,
+    "colour": "#e4d8b8",
+    "roof_colour": "#d8c79e"
+   }
+  },
+  {
+   "type": "warehouse-shed",
+   "id": "wh3",
+   "at": [
+    -22,
+    -28,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 9,
+    "height": 4.5,
+    "roof": "shed",
+    "doors": 1,
+    "colour": "#e2d4b2",
+    "roof_colour": "#d3c093"
+   }
+  },
+  {
+   "type": "container-stack",
+   "id": "cont1",
+   "at": [
+    -48,
+    -2,
+    0
+   ],
+   "params": {
+    "nx": 4,
+    "ny": 3,
+    "levels": 3
+   }
+  },
+  {
+   "type": "container-stack",
+   "id": "cont2",
+   "at": [
+    -22,
+    -8,
+    0
+   ],
+   "params": {
+    "nx": 3,
+    "ny": 2,
+    "levels": 3
+   }
+  },
+  {
+   "type": "car-park",
+   "id": "cars",
+   "at": [
+    10,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 8,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull",
+   "at": [
+    22,
+    9
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -6.5
+     ],
+     [
+      24,
+      -6.5
+     ],
+     [
+      31,
+      -3
+     ],
+     [
+      33,
+      0
+     ],
+     [
+      31,
+      3
+     ],
+     [
+      24,
+      6.5
+     ],
+     [
+      -30,
+      6.5
+     ]
+    ],
+    "height": 5.2,
+    "colour": "#f4f4f1",
+    "z0": 0.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hull-stripe",
+   "at": [
+    22,
+    9
+   ],
+   "params": {
+    "points": [
+     [
+      -30.0,
+      -6.565
+     ],
+     [
+      24.0,
+      -6.565
+     ],
+     [
+      31.0,
+      -3.0300000000000002
+     ],
+     [
+      33.0,
+      0.0
+     ],
+     [
+      31.0,
+      3.0300000000000002
+     ],
+     [
+      24.0,
+      6.565
+     ],
+     [
+      -30.0,
+      6.565
+     ]
+    ],
+    "height": 0.7,
+    "colour": "#2f5f93",
+    "z0": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck1",
+   "at": [
+    17,
+    9
+   ],
+   "params": {
+    "rect": [
+     42,
+     11.5
+    ],
+    "height": 3.2,
+    "colour": "#f7f7f4",
+    "z0": 5.4,
+    "windows": "ribbon",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck2",
+   "at": [
+    14,
+    9
+   ],
+   "params": {
+    "rect": [
+     30,
+     9.5
+    ],
+    "height": 3.0,
+    "colour": "#f7f7f4",
+    "z0": 8.6,
+    "windows": "ribbon",
+    "storeys": 1
+   }
+  },
+  {
+   "type": "prism",
+   "id": "deck3",
+   "at": [
+    10,
+    9
+   ],
+   "params": {
+    "rect": [
+     18,
+     7.5
+    ],
+    "height": 2.8,
+    "colour": "#f7f7f4",
+    "z0": 11.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "funnel",
+   "at": [
+    0,
+    9
+   ],
+   "params": {
+    "radius": 1.8,
+    "n": 10,
+    "height": 5,
+    "colour": "#e8c030",
+    "z0": 14.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast1",
+   "at": [
+    30,
+    9
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 10,
+    "colour": "#e8c030",
+    "z0": 5.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast2",
+   "at": [
+    16,
+    9
+   ],
+   "params": {
+    "rect": [
+     0.4,
+     0.4
+    ],
+    "height": 6,
+    "colour": "#e8c030",
+    "z0": 14.4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "ferry is blocky prisms (no portholes, lifeboats or hull flare); no hillside, road curve or small vehicles beyond the car park; sea basin is a flat rectangle without horizon; buildings simplified"
+ }
+}

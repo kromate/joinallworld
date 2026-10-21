@@ -1,0 +1,213 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-protestant-university",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1358118381",
+   "used": "campus outline is a 44,000 m2 site polygon, not a building; not copied. Placement reference only"
+  },
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/Category:Brazzaville",
+   "used": "no exterior photo found; brief: small church-run campus, two-storey L classroom block with veranda and small chapel"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "classroom-block",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e2d0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "bands": "#4a6a8a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a0503a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     12,
+     20
+    ]
+   },
+   "at": [
+    -14,
+    16
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2dccb",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "faces": {
+     "front": "none",
+     "back": "punched"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a0503a",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chapel",
+   "footprint": {
+    "rect": [
+     9,
+     14
+    ]
+   },
+   "at": [
+    28,
+    16
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "faces": {
+     "front": "pointed-arch"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4634",
+    "material": "corrugated",
+    "pitch": 32,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/spire",
+   "at": [
+    28,
+    8.5,
+    5
+   ],
+   "params": {
+    "baseWidth": 1.6,
+    "height": 6,
+    "colour": "#4a6a8a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -6.2,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "count": 12,
+    "height": 3.4,
+    "radius": 0.14,
+    "beamHeight": 0.4,
+    "roofDepth": 2.4,
+    "colour": "#e8e2d0",
+    "roofColour": "#4a6a8a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.2,
+    "bottom": 1.2,
+    "colour": "#4a6a8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 12,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -16
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     34
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or building outline; modest typical L classroom block, veranda, chapel."
+ }
+}

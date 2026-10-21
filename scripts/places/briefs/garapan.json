@@ -1,0 +1,1698 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "garapan",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "garapan",
+    "climate": "tropical-maritime",
+    "vernacular": "Rebuilt after 1944: flat-roofed reinforced-concrete buildings of one to four storeys, cream, white and pastel painted render, with taller resort hotels along Beach Road in Garapan; typhoon-hardened low-rise, corrugated metal roofs on houses and sheds, scattered Japanese-era coral-concrete ruins and shrines; limestone terraces, flame trees, coconut palms and tangantangan scrub.",
+    "wallColours": [
+      "#f2ede0",
+      "#d9c9a8",
+      "#e8b9a0",
+      "#9fc2cf",
+      "#c9c5bb",
+      "#f7f4ee"
+    ],
+    "roofColours": [
+      "#8a4a3a",
+      "#7c858c",
+      "#2f6b5a",
+      "#b9b9b5"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "metal-sheet",
+      "clay-tile",
+      "corrugated"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Japanese-era Shinto and memorial forms (torii gates, komainu guardian statues, stone lanterns, peace bells, hexagonal prayer halls); Spanish and German colonial church heritage; hotel porte-cocheres with pastel bands; Chamorro latte stones as a recurring motif.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Garapan",
+        "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Northern_Mariana_Islands",
+        "what": "Japanese era sugar economy, German administrative office and San Jose church, limestone terraces and fringing reefs, typhoons Kim 1986 and Yutu 2018"
+      },
+      {
+        "url": "https://en.wikivoyage.org/wiki/Saipan",
+        "what": "DFS Galleria large shopping centre in central Garapan; Forbidden Island bird sanctuary; Suicide Cliff and Banzai Cliff with Japanese memorials"
+      }
+    ]
+  },
+  "places": {
+    "garapan-airport-garapan-airport": {
+      "venueId": "garapan-airport-garapan-airport",
+      "city": "garapan",
+      "name": "Saipan International Airport (Francisco C. Ada)",
+      "archetype": "airport-terminal",
+      "subject": "Saipan International Airport terminal seen from the groundside forecourt: a two-level 1970s concrete terminal with a flat roof and a modest entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "regional",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#2f6f8f",
+          "#c9c5bb"
+        ],
+        "roofColour": "#b9b9b5",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1975",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saipan_International_Airport",
+          "what": "airfield and terminal significantly upgraded in 1975 for widebody aircraft, opened 25 July 1976; two runways 2,652 m and 2,134 m; Isely Field historic district"
+        }
+      ],
+      "notes": "Wikipedia gives the era (1975-76 terminal) and runway data but no description of the building; dimensions and look are estimated (no OSM terminal polygon). Keep it long, low and flat. Walk-out boarding; no jet bridges."
+    },
+    "garapan-clinic": {
+      "venueId": "garapan-clinic",
+      "city": "garapan",
+      "name": "Commonwealth Healthcare Corporation (Commonwealth Health Center)",
+      "archetype": "hospital",
+      "subject": "The Commonwealth Health Center, Saipan's main hospital: a long three-storey concrete complex of connected wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "variant": "multi-wing",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efeadb",
+          "#4f87a8",
+          "#bdb9ac"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 2,
+          "note": "covered connecting walkways"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: relation 3387273, outline 246 x 88 m, 3 levels, 11,148 m2, long multi-wing"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Garapan",
+          "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+        }
+      ],
+      "notes": "OSM shows a very large irregular 3-level complex (about 246 x 88 m, 11,148 m2); the model should show the main frontage block and one or two wings (width_m is the main mass, not the whole outline). Colours typed. The Japanese-era Nan'yo-cho hospital ruins are a different site."
+    },
+    "garapan-community-notices": {
+      "venueId": "garapan-community-notices",
+      "city": "garapan",
+      "name": "United States District Court for the Northern Mariana Islands",
+      "archetype": "office-low",
+      "subject": "The federal district court in Garapan: a three-storey rendered office block with a plain entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#4a6f8a",
+          "#c0bcb0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "US and CNMI flags"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 637982059, courthouse polygon ~72 x 41 m (long tilted outline)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Garapan",
+          "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+        }
+      ],
+      "notes": "OSM tags the polygon amenity=courthouse (~2,900 m2). The court is understood to sit in a commercial office building in Garapan (the Horiguchi Building lies near Kristo Rai Church per Wikipedia), but that link was not verified. Appearance typed."
+    },
+    "garapan-community-voting-game": {
+      "venueId": "garapan-community-voting-game",
+      "city": "garapan",
+      "name": "CNMI Legislature",
+      "archetype": "civic-palace",
+      "subject": "The Commonwealth of the Northern Mariana Islands legislature on Capital Hill: a two-storey flat-roofed civic block with a flagged forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ede7d6",
+          "#8b6f4e",
+          "#c7c1b3"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "covered entrance"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 637578124, CNMI Legislature ~52 x 50 m, 2,617 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Northern_Mariana_Islands",
+          "what": "Capital Hill is the administrative centre of the Commonwealth"
+        }
+      ],
+      "notes": "Wikipedia only says the legislature meets on Saipan and that Capital Hill is the administrative centre; footprint (52 x 50 m) is measured, facade is typed."
+    },
+    "garapan-community-workshop": {
+      "venueId": "garapan-community-workshop",
+      "city": "garapan",
+      "name": "Northern Marianas College",
+      "archetype": "campus-block",
+      "subject": "Northern Marianas College main campus (As Terlaje/Fina Sisu): scattered one- and two-storey classroom blocks around lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "scattered-blocks",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9d9",
+          "#2f6f8f",
+          "#c4c0b2"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Northern_Marianas_College",
+          "what": "main campus on Saipan, 14-acre campus, also Tinian and Rota sites"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 461386554, campus polygon ~423 x 240 m, 81,182 m2"
+        }
+      ],
+      "notes": "Campus polygon is large (81,000 m2, mostly open ground); form is the biggest recognisable classroom block only. Wikipedia gives no architecture. Colours typed."
+    },
+    "garapan-market-game": {
+      "venueId": "garapan-market-game",
+      "city": "garapan",
+      "name": "Public Farmer's Market",
+      "archetype": "market-hall",
+      "subject": "The Public Farmer's Market: a small covered open-sided pavilion with rows of tables under a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "open-sided"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e7e0cf",
+          "#2f6b5a",
+          "#bdb9ac"
+        ],
+        "roofColour": "#2f6b5a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 810905538, amenity=marketplace ~26.5 x 19 m, 507 m2"
+        }
+      ],
+      "notes": "Footprint measured from OSM; roof and open sides are typed from the market type. It is the small daily produce market beside the Garapan Thursday Night Market site; do not merge with that larger open market."
+    },
+    "garapan-meal-stop": {
+      "venueId": "garapan-meal-stop",
+      "city": "garapan",
+      "name": "Kinpachi Restaurant",
+      "archetype": "restaurant",
+      "subject": "Kinpachi Restaurant: a one-storey commercial restaurant building with a Japanese-style entrance awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe5d0",
+          "#8a3b2e",
+          "#c4bdae"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "dark tiled entrance awning"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 388861099, building=commercial ~22 x 14 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Garapan",
+          "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+        }
+      ],
+      "notes": "No web source describing this building or place was findable (search budget was exhausted), so appearance is typed from the place type and Saipan city style. Footprint is the OSM commercial building at the pin; the Japanese-restaurant look is inferred from the name only."
+    },
+    "garapan-osm-node-10666101305": {
+      "venueId": "garapan-osm-node-10666101305",
+      "city": "garapan",
+      "name": "Forbidden Island Lookout",
+      "archetype": "park-landscape",
+      "subject": "A cliff-top lookout over Forbidden Island on Saipan's east coast: a paved platform with a railing and stone steps",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "cliff-lookout"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#cfcabb",
+          "#8c7f6a",
+          "#9a9a96"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank interpretive board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikivoyage.org/wiki/Saipan",
+          "what": "DFS Galleria large shopping centre in central Garapan; Forbidden Island bird sanctuary; Suicide Cliff and Banzai Cliff with Japanese memorials"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q27728278",
+          "what": "Forbidden Island Lookout, a point; no OSM building"
+        }
+      ],
+      "notes": "Wikivoyage: Forbidden Island is a bird sanctuary reached by a hike from Kagman, with diving between island and shore. The lookout itself is not described; typed as a small overlook on scrubby limestone cliff."
+    },
+    "garapan-osm-node-1306225992": {
+      "venueId": "garapan-osm-node-1306225992",
+      "city": "garapan",
+      "name": "DFS Galleria Saipan",
+      "archetype": "mall",
+      "subject": "DFS Galleria in central Garapan: a long two-level duty-free shopping complex with a continuous pastel facade and a drop-off canopy",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "duty-free",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0e6d2",
+          "#c9534a",
+          "#cdc8bb"
+        ],
+        "roofColour": "#b0b0ac",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "porte-cochere for tour buses"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 251327169, 2 levels, long outline ~231 x 49 m, 9,892 m2"
+        },
+        {
+          "url": "https://en.wikivoyage.org/wiki/Saipan",
+          "what": "DFS Galleria large shopping centre in central Garapan; Forbidden Island bird sanctuary; Suicide Cliff and Banzai Cliff with Japanese memorials"
+        }
+      ],
+      "notes": "Wikivoyage calls it a large shopping centre in central Garapan; OSM gives the long two-level outline. The outline is a diagonal strip, so show the main frontage; colours typed."
+    },
+    "garapan-osm-node-1306235400": {
+      "venueId": "garapan-osm-node-1306235400",
+      "city": "garapan",
+      "name": "Bird Island Overlook",
+      "archetype": "park-landscape",
+      "subject": "Bird Island Overlook on the northeast coast: a small paved viewing terrace with a low rail looking down to the sea stack",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "cliff-lookout"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d4cfc0",
+          "#8c7f6a",
+          "#9a9a96"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikivoyage.org/wiki/Saipan",
+          "what": "Bird Island is an islet off the coast of Saipan (photo caption only)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 637559359, 5 x 2 m kiosk-sized structure 24 m away"
+        }
+      ],
+      "notes": "Only a tiny structure (5 x 2 m) was matched. The island itself is offshore; the lookout sits at the cliff edge. Typed."
+    },
+    "garapan-osm-node-1306334759": {
+      "venueId": "garapan-osm-node-1306334759",
+      "city": "garapan",
+      "name": "Coffee Care",
+      "archetype": "restaurant",
+      "subject": "Coffee Care: a small one-storey coffee shop with a glazed front and a short awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6d2",
+          "#6b4a35",
+          "#c6c0b0"
+        ],
+        "roofColour": "#a8a8a4",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 637990254, ~17 x 10 m"
+        }
+      ],
+      "notes": "No web source describing this building or place was findable (search budget was exhausted), so appearance is typed from the place type and Saipan city style. Footprint is the nearest OSM building (3 m from the pin)."
+    },
+    "garapan-osm-node-2628135393": {
+      "venueId": "garapan-osm-node-2628135393",
+      "city": "garapan",
+      "name": "Suicide Cliff",
+      "archetype": "park-landscape",
+      "subject": "Suicide Cliff memorial park at the northern tip of Saipan: a cliff-top paved plaza with Japanese memorials and a railing over the drop",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "cliff-memorial"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d6d1c2",
+          "#8c7f6a",
+          "#a0a09a"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 2,
+          "note": "stone memorial pillars"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Buddhist/Japanese memorial figure"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Suicide_Cliff",
+          "what": "cliff above Marpi Point Field; park and peace memorial by 1976; 9 acres listed on the NRHP in 1976; part of a 1985 National Historic Landmark district"
+        },
+        {
+          "url": "https://en.wikivoyage.org/wiki/Saipan",
+          "what": "DFS Galleria large shopping centre in central Garapan; Forbidden Island bird sanctuary; Suicide Cliff and Banzai Cliff with Japanese memorials"
+        }
+      ],
+      "notes": "Wikipedia and Wikivoyage confirm a memorial park with numerous Japanese memorials at the cliff edge; the number and shape of memorials are not given, so the pillars and figure are typed. Treat with a quiet, respectful look: no tourist kitsch."
+    },
+    "garapan-osm-node-2894726822": {
+      "venueId": "garapan-osm-node-2894726822",
+      "city": "garapan",
+      "name": "Overlook Point (Kingfisher Golf Links)",
+      "archetype": "park-landscape",
+      "subject": "A golf-course overlook on the east coast: a small shelter and rail at a cliff edge above the fairways",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "hip",
+        "variant": "cliff-lookout"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d2c8aa",
+          "#8c7f6a",
+          "#9a9a96"
+        ],
+        "roofColour": "#7c858c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open shelter"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 257204522, Kingfisher Golf Links leisure=golf_course ~1,314 x 920 m"
+        }
+      ],
+      "notes": "The pin falls inside the Kingfisher Golf Links polygon; nothing describes the overlook. Typed."
+    },
+    "garapan-osm-node-358021658": {
+      "venueId": "garapan-osm-node-358021658",
+      "city": "garapan",
+      "name": "Civic Center Park",
+      "archetype": "park-landscape",
+      "subject": "Civic Center Park in the southern Susupe/Chalan Kanoa area: a grassy park with a covered stage pavilion and paved court",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "civic-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e5dfcf",
+          "#2f6b5a",
+          "#bdb9ac"
+        ],
+        "roofColour": "#7c858c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "covered stage / multipurpose pavilion"
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way near pin: building ~49 x 24 m at 74 m distance"
+        }
+      ],
+      "notes": "Only a nearby building (49 x 24 m) matched; the park is not described anywhere found. Typed."
+    },
+    "garapan-osm-node-5526308198": {
+      "venueId": "garapan-osm-node-5526308198",
+      "city": "garapan",
+      "name": "Japanese Lighthouse",
+      "archetype": "monument",
+      "subject": "The 1934 Japanese Lighthouse above Tanapag Harbour: a white cylindrical tower with balcony and copper-domed lantern attached to a one-storey keeper's quarters, now a cafe",
+      "form": {
+        "footprint": "round",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "dome",
+        "variant": "lighthouse-with-quarters",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f1efe8",
+          "#7aa593",
+          "#b8b4a8"
+        ],
+        "roofColour": "#6f9a86",
+        "roofMaterial": "copper",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "copper lantern dome"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "gallery balcony round the lantern"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "cafe terrace at the keeper's quarters"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1934",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Japanese_Lighthouse_(Northern_Mariana_Islands)",
+          "what": "about 15 m cylindrical tower with balcony and lantern, white, burnt-coral concrete, attached one-storey keeper's quarters, copper dome returned in 1990, repainted 2007, refurbished 2021 as a cafe"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way near pin: ~22 x 17 m building (the keeper's quarters), 333 m2"
+        }
+      ],
+      "notes": "Tower: about 15 m, white, coral-and-shell concrete that weathers; dome colour is typed (copper that may be weathered green). Quarters: one-storey block ~22 x 17 m. Streaked weathering suits the asset. The main mass in form is the tower; the quarters are the wing."
+    },
+    "garapan-osm-way-1111959454": {
+      "venueId": "garapan-osm-way-1111959454",
+      "city": "garapan",
+      "name": "Kristo Rai Parish",
+      "archetype": "church-modern",
+      "subject": "Kristo Rai (Christ the King) Church in Garapan: a large modern concrete church built 1969-78 on the site of the Spanish church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "parish-compound",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#b0763f",
+          "#c8c3b5"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "separate bell tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Christ the King statue"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1969-1978",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kristo_Rai_Church",
+          "what": "first church built by the Spanish in 1876; demolished after WWII; new building 1969-1970; completed 1978"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Garapan",
+          "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 1111959454, compound polygon ~111 x 85 m, 9,218 m2"
+        }
+      ],
+      "notes": "Dates from Wikipedia; the polygon (9,218 m2) covers the whole parish compound so the church mass (45 x 30 m) is an estimate; colours and the bell tower are typed. Located just north of the Horiguchi Building in Garapan."
+    },
+    "garapan-osm-way-165351798": {
+      "venueId": "garapan-osm-way-165351798",
+      "city": "garapan",
+      "name": "North Field (Tinian)",
+      "archetype": "park-landscape",
+      "subject": "North Field on Tinian: a weathered coral-and-asphalt runway strip with the glass-covered atomic bomb loading pits and plaques at the side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "wartime-airfield"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c7c3b4",
+          "#6f6a60",
+          "#a8a49a"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank interpretive boards"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small roof over the pits"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1944-45",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11326323",
+          "what": "North Field (WWII airfield); coordinates are on Tinian"
+        }
+      ],
+      "notes": "The pin lies on Tinian, not Saipan. No web description was readable; the airstrip, atomic bomb loading pits with plaques and overgrown scrub are typed from general knowledge of the NHL site. Low."
+    },
+    "garapan-osm-way-257214501": {
+      "venueId": "garapan-osm-way-257214501",
+      "city": "garapan",
+      "name": "Thursday Night Market (Garapan Street Market)",
+      "archetype": "market-open",
+      "subject": "The Thursday Night Market in Garapan: a closed-off street lined with white tents, food stalls and string lights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "none",
+        "variant": "street-market"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f4f1ea",
+          "#c9534a",
+          "#a8a8a4"
+        ],
+        "roofColour": "#f2f2ee",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 12,
+          "note": "white pop-up tents"
+        },
+        {
+          "id": "stalls",
+          "count": 24
+        },
+        {
+          "id": "neon-strip",
+          "count": 1,
+          "note": "string lights"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 257214501, marketplace polygon ~112 x 62 m, 6,917 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Garapan",
+          "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+        }
+      ],
+      "notes": "Footprint is the OSM market area (a street/parking lot, not a building). Weekly evening street market; stalls and tents typed from the market type. Keep it open and low, distinct from the covered Farmer's Market."
+    },
+    "garapan-osm-way-345101524": {
+      "venueId": "garapan-osm-way-345101524",
+      "city": "garapan",
+      "name": "Our Lady of Mount Carmel Cathedral",
+      "archetype": "church-classical",
+      "subject": "Our Lady of Mount Carmel Cathedral in Chalan Kanoa: the Diocese of Chalan Kanoa's long white-rendered cathedral with a bell tower at the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 63,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "variant": "cathedral-nave"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3f0e7",
+          "#9b6a3b",
+          "#c9c4b6"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Our Lady statue"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1950s-1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Our_Lady_of_Mount_Carmel_Cathedral_(Chalan_Kanoa)",
+          "what": "Roman Catholic cathedral, mother church and seat of the bishop of the Diocese of Chalan Kanoa (stub, no appearance details)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 345101524, ~63 x 22 m, 1,424 m2"
+        }
+      ],
+      "notes": "Footprint is measured (63 x 22 m, long and narrow); the Wikipedia article has no description of the building, so towers, colours and window style are typed from Mariana church tradition. Keep it longer than Kristo Rai."
+    },
+    "garapan-osm-way-469267324": {
+      "venueId": "garapan-osm-way-469267324",
+      "city": "garapan",
+      "name": "Sugar King Park",
+      "archetype": "park-landscape",
+      "subject": "Sugar King Park in Garapan: a long park with a Matsue statue, a steam locomotive, komainu guardians, a hexagonal prayer hall with peace bell, and the Katori shrine",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "memorial-park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#d9d2bd",
+          "#b8453a",
+          "#9a9a96"
+        ],
+        "roofColour": "#7c858c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "Haruji Matsue statue and komainu guardians"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "hexagonal prayer hall with peace bell, Nanmeido temple"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "torii at the Katori shrine"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "German-era concrete stairway"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "1914-1990",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sugar_King_Park",
+          "what": "named for Haruji Matsue; Matsue statue with breadfruit tree; wood-burning steam locomotive; komainu; hexagonal prayer hall with peace bell; German-period concrete stairway; Katori shrine (1914, moved 1931, rebuilt 1985); Nanmeido temple 1990; across from the NMI Museum"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 469267324, park polygon ~339 x 91 m, 30,815 m2"
+        }
+      ],
+      "notes": "Features come from Wikipedia; their exact positions and colours are typed. Model the park as a landscape with several small structures (shrine, hexagonal hall, statue, locomotive) rather than one building."
+    },
+    "garapan-osm-way-643265134": {
+      "venueId": "garapan-osm-way-643265134",
+      "city": "garapan",
+      "name": "Ador Restaurant",
+      "archetype": "restaurant",
+      "subject": "Ador Restaurant: a narrow one-storey restaurant building in the southern part of the island",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eee5cd",
+          "#b0482f",
+          "#c6bfae"
+        ],
+        "roofColour": "#7c858c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way 643265134, amenity=restaurant ~20 x 6.6 m"
+        }
+      ],
+      "notes": "No web source describing this building or place was findable (search budget was exhausted), so appearance is typed from the place type and Saipan city style. Footprint measured, long and narrow."
+    },
+    "garapan-quiet-reflection": {
+      "venueId": "garapan-quiet-reflection",
+      "city": "garapan",
+      "name": "Saipan Hachiman Shrine (Saiban Hachiman Jinja)",
+      "archetype": "shrine-small",
+      "subject": "A small Shinto shrine: a wooden hall with a curved gable roof, a torii gate and stone lanterns on a stepped approach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "shinto-shrine"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#b3865a",
+          "#c8392b",
+          "#d9d4c4"
+        ],
+        "roofColour": "#4b4a48",
+        "roofMaterial": "timber-shingle",
+        "windows": "screen",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "torii"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "offering hall"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "stone lanterns or komainu"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "rebuilt post-war",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Garapan",
+          "what": "Japanese-era capital destroyed 1944; rebuilt late 1960s-70s with large resort hotels and condominiums; Paseo de Marianas; Kristo Rai Church; Nan'yo-cho hospital survives"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sugar_King_Park",
+          "what": "Katori shrine on Saipan: built 1914, moved 1931, rebuilt 1985; Japanese shrine forms (komainu) are present in Saipan parks"
+        }
+      ],
+      "notes": "Wikipedia lists a Hachiman Jinja among Japanese-era remains but gives no description; the nearest OSM building (12 x 11 m) is 36 m from the pin and is used for scale only. Appearance is typed from Shinto shrine conventions."
+    },
+    "garapan-recreation": {
+      "venueId": "garapan-recreation",
+      "city": "garapan",
+      "name": "Saipan Botanical Garden",
+      "archetype": "park-landscape",
+      "subject": "Saipan Botanical Garden on the slopes near Mount Tapochau: a landscaped garden with paths, a pavilion and a small entrance gate among trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "botanical-garden"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d9d2bd",
+          "#2f6b5a",
+          "#9a9a96"
+        ],
+        "roofColour": "#7c858c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "open pavilion"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q27728668",
+          "what": "Saipan Botanical Garden (park)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM footprint via scripts/places/data/facts/garapan.json: way, park polygon ~388 x 195 m, 67,236 m2"
+        }
+      ],
+      "notes": "Only the OSM extent is known; no web description was found for the garden layout or buildings. Typed."
+    },
+    "garapan-transit": {
+      "venueId": "garapan-transit",
+      "city": "garapan",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A placeholder transit stop: a simple covered bus shelter and bay beside the main road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "bus-shelter"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4cfc0",
+          "#2f6b5a",
+          "#a8a8a4"
+        ],
+        "roofColour": "#7c858c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Game placeholder venue; typed from city style."
+    }
+  }
+}

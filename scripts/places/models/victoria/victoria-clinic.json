@@ -1,0 +1,93 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/616315049",
+   "used": "building outline (about 59 x 26 m hospital polygon, containing match)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "scale": 0.6
+   },
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ecdf",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#3f8aa6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a63d32",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 2,
+    "vans": 1
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-clinic",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; real OSM outline scaled to 0.6, plain 2-storey hip-roofed block"
+ }
+}

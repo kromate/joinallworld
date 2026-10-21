@@ -1,0 +1,282 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:%D8%A8%D8%A7%D8%A8_%D8%A7%D9%84%D8%B1%D9%88%D8%A7%D8%AD.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dortiti",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/bab1.jpg",
+   "used": "two massive square ashlar towers of honey limestone flanking a slightly lower carved central panel with a stepped scalloped horseshoe arch, shallow plinth steps, palms either side, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/280437998",
+   "used": "plan: gate is the 29 m block between the ramparts, depth of the gate passage"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     7,
+     13
+    ]
+   },
+   "at": [
+    -14.5,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9a468",
+    "windows": "none",
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-right",
+   "footprint": {
+    "rect": [
+     7,
+     13
+    ]
+   },
+   "at": [
+    14.5,
+    0
+   ],
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c9a468",
+    "windows": "none",
+    "bay": 3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -5.2,
+    0
+   ],
+   "params": {
+    "width": 6.4,
+    "depth": 2.5,
+    "height": 9,
+    "openings": 1,
+    "kind": "round",
+    "relief": false,
+    "crenellated": false,
+    "steps": true,
+    "crest": "none",
+    "pinnacles": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel",
+   "footprint": {
+    "rect": [
+     22,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -1.5
+   ],
+   "height": 11.5,
+   "wall": {
+    "material": "limestone",
+    "colour": "#d0ac6e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     4.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -2.7
+   ],
+   "height": 6.2,
+   "wall": {
+    "material": "render",
+    "colour": "#2a2420",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2420"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band1",
+   "footprint": {
+    "rect": [
+     7.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -2.6
+   ],
+   "height": 7.6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b8935a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8935a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "band2",
+   "footprint": {
+    "rect": [
+     10.6,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -2.5
+   ],
+   "height": 9.0,
+   "wall": {
+    "material": "limestone",
+    "colour": "#c1a063",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c1a063"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     26,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -4.5
+   ],
+   "height": 0.6,
+   "wall": {
+    "material": "limestone",
+    "colour": "#b69a68",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b69a68"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-patch",
+   "footprint": {
+    "rect": [
+     7,
+     0.5
+    ]
+   },
+   "at": [
+    14.5,
+    -6.8
+   ],
+   "height": 3,
+   "wall": {
+    "material": "limestone",
+    "colour": "#9c7e50",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9c7e50"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "extent": [
+   70,
+   50
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -17,
+     -9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     17,
+     -9
+    ],
+    "height": 6
+   }
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-bab-rouah",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "scalloped horseshoe bands not modelled (plain round arch), limestone weathering patch only; no door detail"
+ }
+}

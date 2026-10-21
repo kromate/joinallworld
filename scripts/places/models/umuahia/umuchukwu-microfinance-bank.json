@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "umuchukwu-microfinance-bank",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1275428863",
+   "used": "checked only: nearest-quality 11.8 m away, irregular 10-vertex outline, unreliable, not used"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json",
+   "used": "two-storey cream rendered bank, glazed ground floor, hip roof, canopy, fenced forecourt"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bank",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#ffffff",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "brand-band",
+   "at": [
+    0,
+    -6.05,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 8,
+    "panel_width": 3.2,
+    "colour": "#6e8aa0"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entry-canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 8,
+    "depth": 4,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#ffffff",
+    "edgeColour": "#6e8aa0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "height": 2.0,
+    "pillarEvery": 4,
+    "colour": "#e8e0cc"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -8,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    9,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#2f3a4a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   44,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; brand colours and glazing from brief only."
+ }
+}

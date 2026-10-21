@@ -1,0 +1,538 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-stade-de-l-amitie",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_de_l%27amiti%C3%A9_de_Cotonou.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sdansou",
+   "view": "interior",
+   "file": "/tmp/places-evidence/cotonou/stade1.jpg",
+   "used": "open single-tier bowl with yellow and red seat blocks, red running track round green pitch, tall lattice floodlight mast with lamp head, roofed box stand at one end, pale concrete outer rail"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11283924",
+   "used": "oval bowl outline about 175 x 228 m, long axis north-south"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 45,
+  "aspect": 1.45,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "lod": [
+    0
+   ],
+   "at": [
+    0.0,
+    0.0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 114,
+    "width": 84,
+    "colour": "#b5442f"
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 43.5,
+    "radiusY": 58.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 6,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "seatColours": [
+     "#d9362b",
+     "#f2b705",
+     "#d9362b",
+     "#d9362b",
+     "#f2b705",
+     "#d9362b",
+     "#f2b705",
+     "#d9362b",
+     "#d9362b",
+     "#f2b705",
+     "#d9362b",
+     "#f2b705"
+    ],
+    "blocks": 12,
+    "concreteColour": "#d9d5c8",
+    "underColour": "#b8b2a4",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 48.6,
+    "radiusY": 65.35862068965517,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 6,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 5.7,
+    "facetDeg": 18,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "seatColours": [
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#2f8a4a",
+     "#2f8a4a",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705"
+    ],
+    "blocks": 12,
+    "concreteColour": "#d9d5c8",
+    "underColour": "#b8b2a4",
+    "backWall": 1.2
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    1,
+    2
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 43.5,
+    "radiusY": 58.5,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 10,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "facetDeg": 60,
+    "under": "solid",
+    "stepped": false,
+    "slab": 0.6,
+    "bay": 8,
+    "seatColours": [
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#2f8a4a",
+     "#2f8a4a",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705",
+     "#f2b705"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d9d5c8",
+    "underColour": "#b8b2a4",
+    "backWall": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "vip",
+   "footprint": {
+    "rect": [
+     16,
+     52
+    ]
+   },
+   "at": [
+    64,
+    0
+   ],
+   "z0": 0,
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9ba",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5a3a26",
+    "parapet": 0.4,
+    "overhang": 4
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 45,
+    "baseWidth": 6,
+    "topWidth": 3,
+    "panels": 6,
+    "colour": "#b8bcc0",
+    "colour2": "#d8dadc"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    -72,
+    45
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.5
+    ],
+    "height": 6,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    -62,
+    -72,
+    51
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#f4f4ee"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    -72,
+    0
+   ],
+   "params": {
+    "height": 45,
+    "baseWidth": 6,
+    "topWidth": 3,
+    "panels": 6,
+    "colour": "#b8bcc0",
+    "colour2": "#d8dadc"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    -72,
+    45
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.5
+    ],
+    "height": 6,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    62,
+    -72,
+    51
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#f4f4ee"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    72,
+    0
+   ],
+   "params": {
+    "height": 45,
+    "baseWidth": 6,
+    "topWidth": 3,
+    "panels": 6,
+    "colour": "#b8bcc0",
+    "colour2": "#d8dadc"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -62,
+    72,
+    45
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.5
+    ],
+    "height": 6,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    -62,
+    72,
+    51
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#f4f4ee"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    72,
+    0
+   ],
+   "params": {
+    "height": 45,
+    "baseWidth": 6,
+    "topWidth": 3,
+    "panels": 6,
+    "colour": "#b8bcc0",
+    "colour2": "#d8dadc"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    62,
+    72,
+    45
+   ],
+   "params": {
+    "rect": [
+     7,
+     1.5
+    ],
+    "height": 6,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0
+   ],
+   "at": [
+    62,
+    72,
+    51
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.8
+    ],
+    "height": 1.2,
+    "colour": "#f4f4ee"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 5,
+    "post_height": 3,
+    "facing": "north"
+   }
+  },
+  {
+   "type": "core/flag",
+   "lod": [
+    0
+   ],
+   "at": [
+    -20.4,
+    -76.2,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 6,
+    "spacing": 12,
+    "colours": [
+     "#1b7a43",
+     "#f2c200",
+     "#d4262b"
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "lod": [
+    0
+   ],
+   "at": [
+    -61.2,
+    -40.8,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -65,
+     -68
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     65,
+     -68
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     68,
+     41
+    ],
+    "height": 12
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Photo is an interior view; model is exterior: solid two-band bowl (red/yellow lower, yellow with green end upper), roofed brown-cantilever box stand on east, 4 lattice masts with simple slab lamp heads. No green track verge, no rail, no pitch wear."
+ }
+}

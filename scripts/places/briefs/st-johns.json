@@ -1,0 +1,1524 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "st-johns",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "st-johns",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-rise Caribbean town: one- to three-storey painted masonry and timber buildings with galvanised or corrugated metal roofs, plus 18th-century stone and brick Georgian survivors (the 1782 fire led to rules for brick walls and tiled or slate roofs). Pastel walls (white, cream, yellow, pink, pale blue), red and grey roofs, concrete 20th-century blocks, and a modernist Catholic cathedral and Baroque Anglican cathedral towers on the skyline. Palm and broadleaf trees, dry scrubby limestone-and-clay country around.",
+    "wallColours": [
+      "#e9e1cf",
+      "#e8c98a",
+      "#d99a8a",
+      "#a9c4d4",
+      "#bfb8a8",
+      "#8b8574"
+    ],
+    "roofColours": [
+      "#a5473a",
+      "#7d8084",
+      "#4f6b55",
+      "#9a8f80"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "stone",
+      "brick",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Georgian colonial stone arches and quoin-less rubble walls at the Dockyard and forts; wooden louvred shutters, fretwork trim and verandahs on town houses; pastel-painted shopfronts with awnings. Wall and roof colours here are typical Caribbean painted-building colours, not measured values.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/St._John%27s,_Antigua_and_Barbuda",
+        "what": "St John's: brick walls and tiled/slate roofs required after the 1782 fire, white baroque cathedral towers, tropical savanna climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Nelson%27s_Dockyard",
+        "what": "Georgian Naval Dockyard: stone wall, stone pillars, wooden storehouses, 1785-94 building programme"
+      }
+    ]
+  },
+  "places": {
+    "st-johns-airport-st-johns-airport": {
+      "venueId": "st-johns-airport-st-johns-airport",
+      "city": "st-johns",
+      "name": "V. C. Bird International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2015 two-level passenger terminal at V. C. Bird International Airport seen from the forecourt, a wide low glazed and rendered block with a flat canopy and jet bridges",
+      "form": {
+        "footprint": "rect",
+        "width_m": 236,
+        "depth_m": 71,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d6dadb",
+          "#9aa7b1",
+          "#eeeeea"
+        ],
+        "roofColour": "#b8bcbe",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4,
+          "note": "four jet bridges per Wikipedia"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "typed assumption: tower stands near the terminal"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "new car park built alongside"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/V._C._Bird_International_Airport",
+          "what": "new terminal opened August 2015, 23,000 m2, four jet bridges, 46 check-in counters, original terminal becoming cruise Terminal B"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/444994225",
+          "what": "OSM terminal footprint about 236 x 71 m"
+        }
+      ],
+      "notes": "Size and jet-bridge count are measured/sourced; exterior colours and storey count are typed from a modern Caribbean airport terminal because no source describes the facade. The old 1960s terminal beside it is a separate lower block."
+    },
+    "st-johns-clinic": {
+      "venueId": "st-johns-clinic",
+      "city": "st-johns",
+      "name": "Clare Hill Health Center",
+      "archetype": "hospital",
+      "subject": "A small single-storey government health centre on Clare Hill",
+      "form": {
+        "footprint": "L",
+        "width_m": 35,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dfc9",
+          "#6f9a8e",
+          "#f2f2ee"
+        ],
+        "roofColour": "#a5473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this clinic; typed from the OSM footprint (about 35 x 17 m, L-shaped) and the city style of painted concrete block with metal roof."
+    },
+    "st-johns-community-notices": {
+      "venueId": "st-johns-community-notices",
+      "city": "st-johns",
+      "name": "Antigua & Barbuda Transport Board Headquarters",
+      "archetype": "office-low",
+      "subject": "Low administrative office block of the Antigua & Barbuda Transport Board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c0",
+          "#7f8a93",
+          "#f0efe9"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes the building. The coordinates fall inside an OSM prison compound (about 198 x 128 m), so the exact building is uncertain; typed as a generic two-storey government office from the city style."
+    },
+    "st-johns-community-voting-game": {
+      "venueId": "st-johns-community-voting-game",
+      "city": "st-johns",
+      "name": "High Court",
+      "archetype": "civic-palace",
+      "subject": "The High Court building in central St John's, a low colonial-style courthouse block",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 43,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece5d2",
+          "#b5a98e",
+          "#ffffff"
+        ],
+        "roofColour": "#a5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance portico, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/150128834",
+          "what": "OSM courthouse footprint about 70 x 43 m, irregular outline"
+        }
+      ],
+      "notes": "Only the OSM footprint was found; no source describes the facade. Typed as a public colonial-type courthouse (pastel render, hip roof, entrance portico) from the city style."
+    },
+    "st-johns-community-workshop": {
+      "venueId": "st-johns-community-workshop",
+      "city": "st-johns",
+      "name": "American University of Antigua",
+      "archetype": "campus-block",
+      "subject": "A cluster of low university and teaching blocks of the medical school campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 177,
+        "depth_m": 83,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5dfce",
+          "#4f7f8f",
+          "#f4f4f0"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/American_University_of_Antigua",
+          "what": "private medical school founded 2004, located in St. John's, Antigua"
+        }
+      ],
+      "notes": "Wikipedia gives location and founding (2004) only. OSM footprint about 177 x 83 m is the campus polygon. Building appearance typed from the city style and campus type."
+    },
+    "st-johns-market-game": {
+      "venueId": "st-johns-market-game",
+      "city": "st-johns",
+      "name": "Heritage Market",
+      "archetype": "market-hall",
+      "subject": "The public market building near Market Street bus area: a large covered trading hall with surrounding stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 56,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8cfb8",
+          "#a5473a",
+          "#efeee8"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the building was found; typed from the OSM marketplace footprint and the city style of concrete halls with metal roofs and open stalls."
+    },
+    "st-johns-meal-stop": {
+      "venueId": "st-johns-meal-stop",
+      "city": "st-johns",
+      "name": "Abracadabra",
+      "archetype": "restaurant",
+      "subject": "A mid-sized restaurant and bar in the English Harbour area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9d9a8",
+          "#4f7f8f",
+          "#fffdf5"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes it; typed Caribbean waterfront restaurant from the city style. OSM footprint about 34 x 27 m."
+    },
+    "st-johns-osm-node-10243462034": {
+      "venueId": "st-johns-osm-node-10243462034",
+      "city": "st-johns",
+      "name": "Beach Bum Bar & Cafe",
+      "archetype": "restaurant",
+      "subject": "A tiny beachfront bar-cafe hut",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a574",
+          "#3f8a8f",
+          "#f4ecd8"
+        ],
+        "roofColour": "#8a6a45",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed beach shack from the OSM retail footprint (about 10 x 8 m) and city style."
+    },
+    "st-johns-osm-node-1264199603": {
+      "venueId": "st-johns-osm-node-1264199603",
+      "city": "st-johns",
+      "name": "Devil's Bridge",
+      "archetype": "park-landscape",
+      "subject": "The clifftop at Devil's Bridge on the Atlantic coast: a natural limestone arch over rough surf with blowholes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#cfc3a4",
+          "#a89c7e",
+          "#e6dec6"
+        ],
+        "roofColour": "#a89c7e",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "natural limestone arch over the sea"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low rope/stone barrier near the edge"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Natural landmark, not a building. Description (limestone arch eroded by surf, blowholes, dry scrub on an eastern headland) comes from general knowledge, not a fetched source, so confidence is low. Generator should show a pale limestone cliff shelf with an arch gap."
+    },
+    "st-johns-osm-node-13459831357": {
+      "venueId": "st-johns-osm-node-13459831357",
+      "city": "st-johns",
+      "name": "University of Health Sciences Antigua (Dow’s Hill Campus)",
+      "archetype": "campus-block",
+      "subject": "A long low academic block on the Dow's Hill campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3dcc8",
+          "#5d7d8a",
+          "#f2f2ee"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM footprint (about 35 x 9 m) and campus type."
+    },
+    "st-johns-osm-node-4709905915": {
+      "venueId": "st-johns-osm-node-4709905915",
+      "city": "st-johns",
+      "name": "Turners Beach Bar",
+      "archetype": "restaurant",
+      "subject": "A small open beach bar-restaurant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d6b98a",
+          "#3f8a8f",
+          "#f4ecd8"
+        ],
+        "roofColour": "#8a6a45",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed beach bar from the OSM restaurant footprint (about 20 x 20 m)."
+    },
+    "st-johns-osm-node-8761557614": {
+      "venueId": "st-johns-osm-node-8761557614",
+      "city": "st-johns",
+      "name": "Ebenezer Methodist Church",
+      "archetype": "church-classical",
+      "subject": "A gabled Methodist church in central St John's",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe8d6",
+          "#8f8672",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bell turret, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/8761557614",
+          "what": "OSM church footprint about 31 x 21 m"
+        }
+      ],
+      "notes": "No description found; typed as a Caribbean colonial Protestant church (rendered walls, round-arched windows, gabled roof, small tower) from the city style. Different from the modern Catholic cathedral in the same list."
+    },
+    "st-johns-osm-relation-5964183": {
+      "venueId": "st-johns-osm-relation-5964183",
+      "city": "st-johns",
+      "name": "Antigua and Barbuda Hospitality Training Institute",
+      "archetype": "campus-block",
+      "subject": "College campus of low teaching blocks and a training kitchen/restaurant block",
+      "form": {
+        "footprint": "U",
+        "width_m": 122,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e4dcc4",
+          "#4f7f8f",
+          "#f2f2ee"
+        ],
+        "roofColour": "#9a9a98",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from OSM college polygon (about 122 x 60 m)."
+    },
+    "st-johns-osm-way-1031834593": {
+      "venueId": "st-johns-osm-way-1031834593",
+      "city": "st-johns",
+      "name": "Fort James",
+      "archetype": "heritage-fort",
+      "subject": "Fort James headland battery guarding St John's harbour: low stone walls, cannons facing the sea and a surviving powder magazine",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 148,
+        "depth_m": 111,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#a39a86",
+          "#7d8a6a",
+          "#c8c0aa"
+        ],
+        "roofColour": "#8a8472",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "only the foundation of the fort wall survives per Wikipedia"
+        },
+        {
+          "id": "cannon",
+          "count": 8,
+          "note": "several cannons survive"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1706-1739",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_James,_Antigua_and_Barbuda",
+          "what": "built 1706-1739, barracks for 75 men in 1773, 36 guns in 1773, cannons survive, powder magazine remains, foundations of the wall only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1031834593",
+          "what": "OSM footprint about 148 x 111 m"
+        }
+      ],
+      "notes": "Sources give history and survivals but no colours; walls are typed as grey local rubble stone and grass-grown. The magazine and cannon line along the seaward wall are the recognisable parts. Much plainer and more ruined than the Naval Dockyard."
+    },
+    "st-johns-osm-way-1245381574": {
+      "venueId": "st-johns-osm-way-1245381574",
+      "city": "st-johns",
+      "name": "Antigua Naval Dockyard and Related Archaeological Sites",
+      "archetype": "heritage-fort",
+      "subject": "Nelson's Dockyard at English Harbour: stone-pillared Georgian storehouses and a stone yard wall around a working marina",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#cbbf9f",
+          "#8a5a43",
+          "#efeadb"
+        ],
+        "roofColour": "#a5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "stone pillars of the Boat House and Sail Loft"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "stone wall round the yard built 1755-65"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "georgian",
+      "era": "1740s-1790s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nelson%27s_Dockyard",
+          "what": "wooden storehouses first, stone wall 1755-65, Engineer's Workshop and Mast Houses 1773-78, Copper and Lumber Store 1789, Pitch and Tar Store (Admiral's Inn) 1785, stone pillars remain from Boat House and Sail Loft"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antigua",
+          "what": "Nelson's Dockyard at English Harbour is a UNESCO World Heritage Site"
+        }
+      ],
+      "notes": "The OSM area is the whole 2.7 km heritage zone, so the model shows the recognisable core: a Georgian stone-and-brick storehouse range with pillars beside the harbour wall. Colours and roof tiles are typed from the Georgian-era materials named in the sources; no source gives them directly."
+    },
+    "st-johns-osm-way-150145638": {
+      "venueId": "st-johns-osm-way-150145638",
+      "city": "st-johns",
+      "name": "Holy Family Cathedral",
+      "archetype": "church-modern",
+      "subject": "The modernist octagonal Catholic cathedral with a central bell tower topped by a very large cross, opened 1987",
+      "form": {
+        "footprint": "round",
+        "width_m": 35.5,
+        "depth_m": 35.5,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#ece6d8",
+          "#8a8d90",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8084",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "central tower carrying the largest external church cross in the country"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_St._John%27s-Basseterre",
+          "what": "Holy Family Cathedral completed and opened 1987, modernist, octagonal plan, bell tower at the centre, largest external church cross in the country"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Holy_Family_Catholic_Church.jpg",
+          "what": "photo exists, no description of colours"
+        }
+      ],
+      "notes": "Octagonal plan (modelled as a round/polygonal footprint about 35 m across) and central tower with big cross are sourced; wall and roof colours and the tower height are typed. Not to be confused with the white Baroque twin-tower Anglican St John's Cathedral."
+    },
+    "st-johns-osm-way-182023855": {
+      "venueId": "st-johns-osm-way-182023855",
+      "city": "st-johns",
+      "name": "Clarence House",
+      "archetype": "manor",
+      "subject": "Clarence House on Clarence Hill above English Harbour, the 1804 Georgian naval commissioner's house later used by the Governor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#c9bc9c",
+          "#ffffff",
+          "#efeadb"
+        ],
+        "roofColour": "#a5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandah or gallery, typed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1804",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://nationalparksantigua.com/clarence-house/",
+          "what": "built 1804, one of the finest examples of 19th-century living in Antigua, severely damaged by 1990s hurricanes, restored with stonemasons and local woodworkers"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Clarence_House,_English_Harbour",
+          "what": "built 1804 for the naval commissioner, later governor's country home, restored 2012; OSM says 2 storeys"
+        }
+      ],
+      "notes": "Stone masonry with timber work is implied by the restoration description; colours, hip roof and verandah are typed from Georgian West Indian house conventions. OSM footprint about 22 x 20 m, two levels."
+    },
+    "st-johns-osm-way-19881453": {
+      "venueId": "st-johns-osm-way-19881453",
+      "city": "st-johns",
+      "name": "Coolidge Cricket Ground",
+      "archetype": "stadium",
+      "subject": "Small oval cricket ground with a pavilion end and a grass bank, near the airport",
+      "form": {
+        "footprint": "round",
+        "width_m": 128,
+        "depth_m": 128,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d2bf",
+          "#2f5a8a",
+          "#f2f2ee"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "pavilion at the Pavilion End"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "typed: international match capability"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "rebuilt 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Coolidge_Cricket_Ground",
+          "what": "capacity 5,000, ends named Pavilion End and Airport Road End, rebuilt 2004 as the Stanford Cricket Ground, previously Airport Cricket Ground"
+        }
+      ],
+      "notes": "Capacity (5,000) and end names are sourced; stand shapes are typed. The oval is about 128 m across. Smaller and plainer than Sir Vivian Richards Stadium."
+    },
+    "st-johns-osm-way-19881528": {
+      "venueId": "st-johns-osm-way-19881528",
+      "city": "st-johns",
+      "name": "Sir Vivian Richards Stadium",
+      "archetype": "stadium",
+      "subject": "The 2007 World Cup cricket stadium: a five-storey South Stand and a lower Northern Stand around a large oval outfield",
+      "form": {
+        "footprint": "oval",
+        "width_m": 300,
+        "depth_m": 220,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#2f6aa0",
+          "#f2f2ee"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "South Stand roof damaged by high winds in 2008"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sir_Vivian_Richards_Stadium",
+          "what": "built 2006 for the 2007 Cricket World Cup, Northern Stand and five-storey South Stand, capacity about 10,000, about US$60m mostly Chinese grant, roof of South Stand damaged 2008"
+        }
+      ],
+      "notes": "OSM area (518 x 321 m) is the whole ground; the model shows the stands only (about 300 x 220 m clamped). Seat colours and cladding are typed. The five-storey South Stand is the recognisable mass."
+    },
+    "st-johns-osm-way-347984242": {
+      "venueId": "st-johns-osm-way-347984242",
+      "city": "st-johns",
+      "name": "Adelin Medical Centre",
+      "archetype": "hospital",
+      "subject": "A private medical centre, a two-storey rendered block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e7e1cf",
+          "#4f7f8f",
+          "#f4f4f0"
+        ],
+        "roofColour": "#a5473a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM hospital footprint (about 46 x 45 m)."
+    },
+    "st-johns-osm-way-459204144": {
+      "venueId": "st-johns-osm-way-459204144",
+      "city": "st-johns",
+      "name": "Sea View Farm Playfield",
+      "archetype": "park-landscape",
+      "subject": "A community playing field",
+      "form": {
+        "footprint": "rect",
+        "width_m": 194,
+        "depth_m": 184,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#7aa05a",
+          "#b4a98a",
+          "#e8e4d6"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small shelter, typed"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; open playfield from the OSM park polygon (about 194 x 184 m)."
+    },
+    "st-johns-osm-way-555984831": {
+      "venueId": "st-johns-osm-way-555984831",
+      "city": "st-johns",
+      "name": "National Hero's Park",
+      "archetype": "park-landscape",
+      "subject": "A small urban park with paths, shade trees and a monument area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 115,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7aa05a",
+          "#c8bfa6",
+          "#e8e4d6"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "heroes memorial, typed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found for this park; typed from the OSM park polygon (about 115 x 45 m) and name."
+    },
+    "st-johns-quiet-reflection": {
+      "venueId": "st-johns-quiet-reflection",
+      "city": "st-johns",
+      "name": "St Georges Church",
+      "archetype": "church-classical",
+      "subject": "St George's Anglican Church: a low three-gabled stone church with no tower and a heavy two-storey concrete porch, rebuilt 1735",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#a89f8a",
+          "#ffffff",
+          "#d8d0bc"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 3,
+          "note": "three gabled sections, each with a central wooden door and a gable window"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "two-storey heavy concrete porch on the central section"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "1735",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://de.wikipedia.org/wiki/St._George%E2%80%99s_Anglican_Church_(Antigua)",
+          "what": "rebuilt 1735, no tower, three single-storey sections side by side, symmetrical facade of three gables with wooden doors, tall round-arched windows between, corner pilasters, stucco crosses, exposed stone masonry, white bands round arches, later concrete porch"
+        }
+      ],
+      "notes": "Form comes from the German Wikipedia description (the one to model: three-gable Caribbean 'farmhouse' church). Roof material is not stated and is typed. Quite different from the Ebenezer church and the Catholic cathedral."
+    },
+    "st-johns-recreation": {
+      "venueId": "st-johns-recreation",
+      "city": "st-johns",
+      "name": "all saints park",
+      "archetype": "park-landscape",
+      "subject": "A small village park with a play area and shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 54,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7aa05a",
+          "#c8bfa6",
+          "#e8e4d6"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source; typed from the OSM park polygon (about 76 x 54 m) in All Saints."
+    },
+    "st-johns-transit": {
+      "venueId": "st-johns-transit",
+      "city": "st-johns",
+      "name": "East Bus Station",
+      "archetype": "transport-station",
+      "subject": "The East Bus Station: a long open lot where minibuses load, with low shelters beside the market area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc8b4",
+          "#a5473a",
+          "#efeee8"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 14
+        },
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source. The OSM building is a very long thin shape (458 x 67 m bounding box); modelled as the recognisable 120 x 40 m portion with bus bays and shelters. Typed from the type and city style."
+    }
+  }
+}

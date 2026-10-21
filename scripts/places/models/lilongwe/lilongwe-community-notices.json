@@ -1,0 +1,310 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parliamentbuilding.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Timon Zingg",
+   "view": "front",
+   "file": "/tmp/places-evidence/lilongwe/parl1.jpg",
+   "used": "long low block on a raised plinth, central pedimented colonnade with dark recessed bays, silver shallow dome behind, long wings of dark glazing between pale piers, flat roofs"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malawi_Parliament_Building.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Timon Zingg",
+   "view": "detail",
+   "used": "grey tile-clad gatehouse with flat slab roof and slim round columns, low colonnaded side range"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/12359795",
+   "used": "overall size only (about 100 m wide), outline too irregular for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     118,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#b8b09f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b09f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     44.4,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 3,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd0",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dark-bays",
+   "footprint": {
+    "rect": [
+     41.4,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "z0": 3,
+   "height": 6,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3b3f48",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3f48"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     40.7,
+     20
+    ]
+   },
+   "at": [
+    -42.5,
+    0
+   ],
+   "z0": 3,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#6d6a68",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bands": "#d9d4c6",
+    "pattern": {
+     "type": "fins",
+     "faces": [
+      "front"
+     ],
+     "colour": "#dcd7c9"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     33.3,
+     18
+    ]
+   },
+   "at": [
+    38.9,
+    0
+   ],
+   "z0": 3,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#7a7570",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#d9d4c6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "drum",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     20,
+     20
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 11,
+   "height": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d6cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d6cc"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    4,
+    14
+   ],
+   "params": {
+    "radius": 10,
+    "height": 3.5,
+    "profile": "hemi",
+    "colour": "#c3c8cc"
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -12,
+    3
+   ],
+   "params": {
+    "width": 41.4,
+    "depth": 4,
+    "height": 8,
+    "columns": 14,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#eeeae0",
+    "roofColour": "#d4d0c4"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 44.4,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#c9c2b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gable-block",
+   "footprint": {
+    "rect": [
+     10.4,
+     6
+    ]
+   },
+   "at": [
+    -14.8,
+    -14
+   ],
+   "z0": 3,
+   "height": 9,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eeeae0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#d4d0c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "scaled to 120 m clamp so wings still shorter than real; gable block off-centre hidden behind portico; stepped podium ramps only as plain steps; photo shows more recessed dark bays and trees/poles"
+ }
+}

@@ -1,0 +1,210 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gombe",
+ "venueId": "kasuwar-mata",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/914742997",
+   "used": "named marketplace outline (63 x 41 m, irregular polygon, name match): trodden-earth market floor; rows and stalls are placed inside it"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gombe.json#kasuwar-mata",
+   "used": "rows of lock-up shops with iron roofs and stalls under umbrellas, near Gombe State University; no photo of the market was found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-floor",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b99a72",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b0906a",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.6,
+    "height": 3.1,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.4,
+    "wall_colour": "#c9b99c",
+    "roof_colour": "#8b3a2b",
+    "shutter_colours": [
+     "#5d6b72",
+     "#7b4f3a",
+     "#b0482f"
+    ],
+    "awning_colours": [
+     "#b0482f",
+     "#d9a43a",
+     "#2f6a9a"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    10,
+    7,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 22,
+    "depth": 3.6,
+    "height": 3.3,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.4,
+    "wall_colour": "#bfae8e",
+    "roof_colour": "#7e3626",
+    "awning_colours": [
+     "#d9a43a",
+     "#a8303c"
+    ]
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -10,
+    30,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 14,
+    "depth": 3.4,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "veranda": 1.2,
+    "wall_colour": "#c9b99c",
+    "roof_colour": "#8b3a2b"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    4,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.1,
+    "colours": [
+     "#d94a3a",
+     "#2f6fb8",
+     "#e0b030",
+     "#3d9a5a",
+     "#c13a7a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    14,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "size": 1.0
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -4,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.0
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 2,
+    "line": 10
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -2,
+    22,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "sacks"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: row layout, stall positions and roof colours are plausible guesses; only the outline and the market type are sourced"
+ }
+}

@@ -1,0 +1,225 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "luanda",
+ "venueId": "luanda-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/234406012",
+   "used": "real marketplace outline 44 x 39 m, name match (Mercado da Chapada)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: kiosks, awning stalls, corrugated lock-ups"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "yard",
+   "params": {
+    "points": [
+     [
+      -22.2,
+      -19.1
+     ],
+     [
+      21.5,
+      -19.8
+     ],
+     [
+      22.2,
+      19.1
+     ],
+     [
+      -21.5,
+      19.8
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#8a8a86",
+    "topColour": "#8a8a86"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -6,
+    8,
+    0.2
+   ],
+   "params": {
+    "length": 26,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#7a7f84",
+    "wall_colour": "#c9b998"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    16,
+    0.2
+   ],
+   "params": {
+    "length": 34,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#c4533a",
+     "#3f6f8f",
+     "#7a7f84"
+    ],
+    "wall_colour": "#c9b998",
+    "roof_colour": "#7a7f84",
+    "unit_width": 2.6
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -17,
+    0.2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "shutter_colours": [
+     "#e8d9b0",
+     "#c4533a"
+    ],
+    "wall_colour": "#e8d9b0",
+    "roof_colour": "#6e7377",
+    "unit_width": 2.5
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -4,
+    0.2
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c4533a",
+     "#e0b83a",
+     "#3f6f8f",
+     "#4f8a3f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -12,
+    -9,
+    0.2
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#3f6f8f",
+     "#c4533a",
+     "#e8d9b0"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -4,
+    0.2
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#e0b83a",
+     "#c4533a",
+     "#4f8a3f"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    17,
+    -9,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c4533a",
+    "roof_colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -19,
+    0,
+    0.2
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f6f8f",
+    "roof_colour": "#7a7f84"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    20,
+    3,
+    0.2
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 3,
+    "line": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; stall layout and colours are typical Luanda informal market, not surveyed."
+ }
+}

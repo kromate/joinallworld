@@ -1,0 +1,1324 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bamako",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bamako",
+    "climate": "savanna",
+    "vernacular": "Sudano-Sahelian capital on the Niger: ordinary buildings are 1-3 storey cement-block and rendered-concrete houses and shophouses in earth ochre, cream and laterite red with flat roofs or rusting corrugated-iron sheets, set behind high compound walls on red-earth streets. Colonial-era administrative blocks are cream/ochre rendered; the 1970s onward adds Arabian-style concrete (Grand Mosque) and Neo-Sudanese towers such as the 20-storey BCEAO tower. Mango, neem and kapok-type shade trees and dust everywhere in the dry season.",
+    "wallColours": [
+      "#c9a27a",
+      "#b98b5e",
+      "#d8c3a0",
+      "#e8dcc4",
+      "#a65a3a",
+      "#b5b1a8",
+      "#f1ece0"
+    ],
+    "roofColours": [
+      "#8a8f94",
+      "#7a6a5c",
+      "#a84b32",
+      "#b0aca3"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "laterite",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Neo-Sudanese motifs on prestige buildings (tapering buttressed towers, conical pinnacles, projecting toron beams) after the Djenne and Timbuktu mosques; plain painted render with arched openings on colonial blocks; bright hand-painted shopfront signs and tailors' boards in the markets.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bamako",
+        "what": "Koppen Aw savanna climate; BCEAO tower classed as Neo-Sudanic modelled on Djenne/Timbuktu mosques; Cite administrative 2003-2010; National Museum is a cemented structure based on traditional Malian designs; airport opened 1974"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sudano-Sahelian_architecture",
+        "what": "mudbrick/adobe plaster, toron beams, conical pinnacles, tapering buttresses, red or white plaster, Neo-Sudanese revival 1906-1935"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Grande_mosquée_de_Bamako",
+        "what": "Saudi-funded 1974-76 mosque, two concrete minarets of Arabian-peninsula look, earlier mud-brick mosque on the site"
+      }
+    ]
+  },
+  "places": {
+    "bamako-african-photography-house": {
+      "venueId": "bamako-african-photography-house",
+      "city": "bamako",
+      "name": "Maison Africaine de la Photographie",
+      "archetype": "museum-theatre",
+      "subject": "MAP, the national photography institution housed on the Bibliotheque nationale du Mali grounds: a low rendered cultural building with a small forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#d8c3a0",
+          "#a65a3a",
+          "#f1ece0"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s (institution created 2004)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Maison_africaine_de_la_photographie",
+          "what": "institution created 2004, headquarters of the Rencontres africaines de la photographie, located within the premises of the Bibliotheque nationale du Mali; no architecture described"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Only the institution's location (inside the national library grounds) and founding date are sourced. Signboard must be blank."
+    },
+    "bamako-airport-bamako-airport": {
+      "venueId": "bamako-airport-bamako-airport",
+      "city": "bamako",
+      "name": "Modibo Keita International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Bamako-Senou airport terminal seen from the landside forecourt: a long two-storey concrete terminal with a flat canopy, adjoining control tower and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d2c4",
+          "#4a6a7a",
+          "#f1ece0"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1974 (upgraded 2007-2012)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako–Sénou_International_Airport",
+          "what": "opened 1974 as Bamako-Senou; 2007-2012 US$181M MCC-funded upgrade; single 2,706 m runway 06/24 about 15 km south of the city next to Air Base 101"
+        }
+      ],
+      "notes": "Airport facts (opening 1974, MCC upgrade, runway) are sourced; terminal size, glazing and colours are not and are typed from the city style and a typical West African regional terminal. Keep modest scale, not a megaproject."
+    },
+    "bamako-clinic": {
+      "venueId": "bamako-clinic",
+      "city": "bamako",
+      "name": "Hopital Gabriel Toure",
+      "archetype": "hospital",
+      "subject": "Gabriel Toure teaching hospital: a multi-pavilion cream-rendered hospital with covered walkways and a gate",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc4",
+          "#a65a3a",
+          "#b5b1a8"
+        ],
+        "roofColour": "#a84b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "mid-20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Large public university hospital (CHU) in the centre; pavilion-style with courtyards is typical but unverified."
+    },
+    "bamako-community-notices": {
+      "venueId": "bamako-community-notices",
+      "city": "bamako",
+      "name": "Hotel de Ville - Mairie du District de Bamako",
+      "archetype": "civic-palace",
+      "subject": "District town hall: a three-storey rendered administrative building with a flagpole forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8c3a0",
+          "#a65a3a",
+          "#f1ece0"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Hotel de Ville page could not be fetched."
+    },
+    "bamako-community-voting-game": {
+      "venueId": "bamako-community-voting-game",
+      "city": "bamako",
+      "name": "Malick Sidibe studio",
+      "archetype": "shophouse",
+      "subject": "Malick Sidibe's photography studio in the Bagadadji quarter: a small single-storey rendered studio-shop with a hand-painted signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9a27a",
+          "#f1ece0",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1962 (studio opened)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malick_Sidibé",
+          "what": "Sidibe opened his own studio in 1962 in the Bagadadji neighbourhood of Bamako; photos show cameras and negatives; tungsten lighting"
+        }
+      ],
+      "notes": "Only the studio's founding and quarter are sourced; the building's look is typed as an ordinary Bamako shophouse. Signboard must be blank, no photographs reproduced."
+    },
+    "bamako-community-workshop": {
+      "venueId": "bamako-community-workshop",
+      "city": "bamako",
+      "name": "E.N.I ABT",
+      "archetype": "campus-block",
+      "subject": "Ecole Nationale d'Ingenieurs Abderhamane Baba Toure: a three-storey rendered teaching block with walkway balconies and a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e8dcc4",
+          "#b5b1a8",
+          "#a65a3a"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-1980s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. State engineering school; form typed as a generic West African institutional block."
+    },
+    "bamako-faculty-administration": {
+      "venueId": "bamako-faculty-administration",
+      "city": "bamako",
+      "name": "Rectorat de l'Universite des Sciences, des Techniques et des Technologies de Bamako",
+      "archetype": "campus-block",
+      "subject": "USTTB rectorate: a modern three-storey administrative block with a central entrance bay and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8dcc4",
+          "#4a6a7a",
+          "#a65a3a"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Coordinates fall in a newer part of Bamako; style assumed contemporary."
+    },
+    "bamako-faculty-medicine": {
+      "venueId": "bamako-faculty-medicine",
+      "city": "bamako",
+      "name": "Faculte de Medecine et d'Odontostomatologie (FMOS)",
+      "archetype": "campus-block",
+      "subject": "FMOS: a long three-storey rendered faculty building with outdoor stair cores near the Point G hospital hill",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d8c3a0",
+          "#b5b1a8",
+          "#a65a3a"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Sits near Point G hill where the older hospital (built 1906-1913) stands, but this faculty building is not described."
+    },
+    "bamako-march-aux-fruits": {
+      "venueId": "bamako-march-aux-fruits",
+      "city": "bamako",
+      "name": "Marche aux fruits",
+      "archetype": "market-open",
+      "subject": "Open-air fruit market: rows of stalls under parasols and tarpaulins with crates, on bare red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9a27a",
+          "#a84b32",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "city-level style only (tropical savanna, concrete/cement building tradition, Neo-Sudanic influence)"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Fruit-market stalls with colourful umbrellas; mangoes and bananas are the identity. Distinct from the textile and general markets."
+    },
+    "bamako-march-de-djelibougou": {
+      "venueId": "bamako-march-de-djelibougou",
+      "city": "bamako",
+      "name": "Marche de Djelibougou",
+      "archetype": "market-open",
+      "subject": "Neighbourhood market in Djelibougou: a small enclosed yard of lock-up stalls with corrugated roofing and a wall gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#c9a27a",
+          "#b5b1a8",
+          "#a65a3a"
+        ],
+        "roofColour": "#7a6a5c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "city-level style only (tropical savanna, concrete/cement building tradition, Neo-Sudanic influence)"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Quarter-scale market; walled yard with rows of lock-ups and shed roofs."
+    },
+    "bamako-march-de-magnambougou": {
+      "venueId": "bamako-march-de-magnambougou",
+      "city": "bamako",
+      "name": "Marche de Magnambougou",
+      "archetype": "market-hall",
+      "subject": "Magnambougou market: a covered single-storey trading shed with concrete columns and rows of lock-up shops along the edges",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b5b1a8",
+          "#c9a27a",
+          "#a65a3a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "city-level style only (tropical savanna, concrete/cement building tradition, Neo-Sudanic influence)"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Chosen as a roofed hall rather than an open yard so it differs from Djelibougou and Medine; unverified."
+    },
+    "bamako-march-de-medine": {
+      "venueId": "bamako-march-de-medine",
+      "city": "bamako",
+      "name": "Marche de Medine",
+      "archetype": "market-open",
+      "subject": "Medine market: a dense open-air bazaar of cloth and dyed-fabric stalls under parasols and plastic sheets with narrow lanes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9a27a",
+          "#a84b32",
+          "#b5b1a8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "ongoing",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "city-level style only (tropical savanna, concrete/cement building tradition, Neo-Sudanic influence)"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Large market in the Medine quarter, dense stalls rather than a hall; textile bolts hung from stall frames."
+    },
+    "bamako-market-game": {
+      "venueId": "bamako-market-game",
+      "city": "bamako",
+      "name": "Grand Marche",
+      "archetype": "market-hall",
+      "subject": "Bamako Grand Marche: a large multi-level rendered market hall in ochre with arched arcades, lock-up shops and awnings, ringed by street stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#c9a27a",
+          "#a65a3a",
+          "#f1ece0"
+        ],
+        "roofColour": "#b0aca3",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "sahelian",
+      "era": "1990s-2000s (rebuilt, unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "named as one of the two largest markets of Commune III, the commercial centre"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Famous central market; only its prominence is sourced. Typed as the rebuilt multi-storey hall with arcaded Neo-Sudanese-flavoured ochre facade; treat colours and levels as estimates."
+    },
+    "bamako-meal-stop": {
+      "venueId": "bamako-meal-stop",
+      "city": "bamako",
+      "name": "Bafing Bistro",
+      "archetype": "restaurant",
+      "subject": "A small bistro: a single-storey rendered restaurant with a shaded terrace and blank signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc4",
+          "#a65a3a",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Business-listing place; no description found."
+    },
+    "bamako-muso-kunda": {
+      "venueId": "bamako-muso-kunda",
+      "city": "bamako",
+      "name": "MUSO KUNDA",
+      "archetype": "civic-small",
+      "subject": "Muso Kunda: a small community centre compound with a rendered single-storey hall and courtyard wall",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d8c3a0",
+          "#a65a3a",
+          "#f1ece0"
+        ],
+        "roofColour": "#a84b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Muso Kunda is a women's/community health and education organisation; building not described."
+    },
+    "bamako-park-happy-hour": {
+      "venueId": "bamako-park-happy-hour",
+      "city": "bamako",
+      "name": "Park Happy Hour",
+      "archetype": "park-landscape",
+      "subject": "Park Happy Hour: a leisure park with open lawn patches, shaded benches, a small pavilion and a kiosk on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc4",
+          "#a65a3a",
+          "#7a6a5c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Leisure venue on Bamako's east side; no description found."
+    },
+    "bamako-point-g-petroglyphs": {
+      "venueId": "bamako-point-g-petroglyphs",
+      "city": "bamako",
+      "name": "Prehistoric Petroglyphs (Point G)",
+      "archetype": "park-landscape",
+      "subject": "Point G hill: a rocky laterite escarpment above the city with cave shelters carrying rock paintings and the 1906-1913 hospital on the hilltop",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "laterite",
+        "accent": null,
+        "colours": [
+          "#a65a3a",
+          "#c9a27a",
+          "#b5b1a8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "prehistoric site; hospital 1906-1913",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "Point G is a hill with caves containing rock paintings; the Point G hospital, built 1906-1913, sits on it and overlooks the city"
+        }
+      ],
+      "notes": "Rocky outcrop with shelters, not a building. Sourced: caves with rock paintings and the hospital on the hill. Rock-face colours are typed from laterite sandstone; no motif detail."
+    },
+    "bamako-quiet-reflection": {
+      "venueId": "bamako-quiet-reflection",
+      "city": "bamako",
+      "name": "Grande Mosquee de Bamako",
+      "archetype": "mosque-domed",
+      "subject": "Bamako Grand Mosque seen from the street: a big pale concrete prayer hall behind a perimeter wall with two tall slender concrete minarets of Arabian look",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stucco",
+        "colours": [
+          "#e2dccb",
+          "#b9b5ab",
+          "#9aa3a8"
+        ],
+        "roofColour": "#9aa3a8",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "slender concrete, Arabian-peninsula style, taller than the hall"
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1974-1976",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Grande_mosquée_de_Bamako",
+          "what": "Saudi-funded; built 1974 to 30 July 1976; two concrete minarets resembling Arabian-peninsula architecture; perimeter wall; replaced a pre-colonial mud-brick mosque; near the grand market and the cathedral; renamed for King Faisal in 2017"
+        }
+      ],
+      "notes": "Sourced: two concrete minarets in Arabian style, Saudi funding, 1974-76, perimeter wall. Dimensions, central dome and colours are estimates. Recognisable by the pair of tall slender minarets, not by mud-brick Sudanese forms."
+    },
+    "bamako-recreation": {
+      "venueId": "bamako-recreation",
+      "city": "bamako",
+      "name": "Zoo Bamako",
+      "archetype": "park-landscape",
+      "subject": "National Zoo: shaded enclosures and walkways in woodland with a gate lodge and cages",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9a27a",
+          "#a65a3a",
+          "#f1ece0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "what": "the Mali National Zoo is named among the city's attractions; no details"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. Zoo on the wooded hillside north of the centre; enclosures and walkways under shade trees."
+    },
+    "bamako-stadium-mamadou-konate": {
+      "venueId": "bamako-stadium-mamadou-konate",
+      "city": "bamako",
+      "name": "Stade Mamadou Konate",
+      "archetype": "stadium",
+      "subject": "Stade Mamadou Konate: a modest football bowl with a covered main stand along one touchline, open terracing and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b5b1a8",
+          "#c9a27a",
+          "#a65a3a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_du_26-Mars",
+          "what": "contrast only: the national 26-Mars stadium is a different, larger ground (55,000, Chinese-built, 2001); Mamadou Konate not mentioned there"
+        }
+      ],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. This is a smaller local stadium and must look clearly different from the 55,000-seat Stade du 26 Mars (three stands, tartan track, eagle statue). One covered stand, open terraces."
+    },
+    "bamako-transit": {
+      "venueId": "bamako-transit",
+      "city": "bamako",
+      "name": "Bamako (transit hub)",
+      "archetype": "transport-station",
+      "subject": "Central Bamako hub identified with the Dakar-Niger railway station: a long single-storey colonial station building with a platform canopy and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc4",
+          "#a65a3a",
+          "#7a6a5c"
+        ],
+        "roofColour": "#a84b32",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "early 20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building could be fetched (web search budget was exhausted and the Wikipedia page was missing or silent on appearance); form is typed from the city style and the place type. The venue is named just 'Bamako' (hub); the identification with the railway station is an inference from the hub kind and central coordinates and is unverified. Passenger services are limited."
+    }
+  }
+}

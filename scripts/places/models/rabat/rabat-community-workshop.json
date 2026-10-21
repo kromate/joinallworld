@@ -1,0 +1,420 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-community-workshop",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UM5_Presidence.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ftpmail",
+   "view": "front",
+   "file": "/tmp/places-evidence/rabat/um5a.jpg",
+   "used": "cream stone core tower with grid openings and big overhanging grey roof slab, left stepped block with blue glass bands and white panel, right blue-glass ribbon wing, low cream curved drum"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/395368644",
+   "used": "size check only (83 x 64 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 6,
+  "fovDeg": 52,
+  "aspect": 1.778
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "core-tower",
+   "footprint": {
+    "rect": [
+     14,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 25,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#e0cfa8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 4.2,
+    "plinth": 0.4,
+    "faces": {
+     "left": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "glass-core",
+   "params": {
+    "rect": [
+     7,
+     0.8
+    ],
+    "z0": 0.5,
+    "height": 22,
+    "colour": "#2e3a46",
+    "topColour": "#2e3a46"
+   },
+   "at": [
+    0,
+    -8.3
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "params": {
+    "rect": [
+     24,
+     22
+    ],
+    "z0": 25,
+    "height": 2.6,
+    "colour": "#7a7f84",
+    "topColour": "#8a8f94",
+    "topScale": 0.55
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "left-block",
+   "footprint": {
+    "rect": [
+     11,
+     15
+    ]
+   },
+   "at": [
+    -13,
+    -2
+   ],
+   "height": 24,
+   "storeys": 6,
+   "wall": {
+    "material": "stone",
+    "colour": "#e0cfa8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "bands": "#6f93b8",
+    "plinth": 0,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0cfa8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "white-panel",
+   "params": {
+    "rect": [
+     12,
+     0.8
+    ],
+    "z0": 3,
+    "height": 16,
+    "colour": "#f2f2f0",
+    "topColour": "#f2f2f0",
+    "topScale": 0.9
+   },
+   "at": [
+    -13,
+    -9.9
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "right-wing",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    22,
+    2
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#5f7f9f",
+    "windows": "ribbon",
+    "windowRatio": 0.62,
+    "bands": "#e0cfa8",
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e0cfa8",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "drum",
+   "at": [
+    -17,
+    -10,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e6d6b2",
+    "profile": [
+     [
+      0,
+      7
+     ],
+     [
+      8.5,
+      7,
+      "#e6d6b2"
+     ],
+     [
+      8.5,
+      0,
+      "#e6d6b2"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -22
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "fence",
+    "colour": "#2a2e33",
+    "pillarEvery": 8
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -4,
+    -14
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#b5222a",
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -13,
+    -10.5,
+    11
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "bottom": 0,
+    "colour": "#f2f2f0",
+    "frameColour": "#f2f2f0",
+    "posts": false
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "prism",
+   "id": "pier-l",
+   "params": {
+    "rect": [
+     2,
+     0.9
+    ],
+    "z0": 0,
+    "height": 24,
+    "colour": "#e8d9b4",
+    "topColour": "#e8d9b4"
+   },
+   "at": [
+    -4.5,
+    -8.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-r",
+   "params": {
+    "rect": [
+     2,
+     0.9
+    ],
+    "z0": 0,
+    "height": 24,
+    "colour": "#e8d9b4",
+    "topColour": "#e8d9b4"
+   },
+   "at": [
+    4.5,
+    -8.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "bay-step",
+   "params": {
+    "rect": [
+     7,
+     5
+    ],
+    "z0": 0,
+    "height": 19,
+    "colour": "#e0cfa8",
+    "topColour": "#e0cfa8"
+   },
+   "at": [
+    10,
+    -5
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       0.5
+      ],
+      "z0": 9,
+      "height": 2,
+      "colour": "#3a3f45",
+      "topColour": "#3a3f45"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.5,
+     -8.6
+    ],
+    "end": [
+     4.5,
+     -8.6
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       0.5
+      ],
+      "z0": 14,
+      "height": 2,
+      "colour": "#3a3f45",
+      "topColour": "#3a3f45"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.5,
+     -8.6
+    ],
+    "end": [
+     4.5,
+     -8.6
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2,
+       0.5
+      ],
+      "z0": 19,
+      "height": 2,
+      "colour": "#3a3f45",
+      "topColour": "#3a3f45"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -4.5,
+     -8.6
+    ],
+    "end": [
+     4.5,
+     -8.6
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    -20,
+    -21
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "depth": 1.2,
+    "colour": "#3f6b34"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "treeKind": "palm",
+  "extent": [
+   90,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "White panel is a straight slab not a slanted trapezoid; wing glass lacks stepped corner bays and wing reads shorter; balcony recesses are dark patches; hedge is a bush row"
+ }
+}

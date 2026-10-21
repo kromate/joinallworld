@@ -1,0 +1,386 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/325686721",
+   "used": "market plot outline (name match, 10771 m2)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: timber and sheet stalls with umbrellas, corrugated sheds, laterite ground; no photo found on Commons or Wikidata"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true,
+    "scale": 0.6
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "laterite",
+    "colour": "#a8734f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a07048",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -13.2,
+    -24.0,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "sacks",
+    "roof_colour": "#8a8f93",
+    "wall_colour": "#9b7a58"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    12.0,
+    -18.0,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "timber",
+    "roof_colour": "#8a8f93",
+    "wall_colour": "#9b7a58"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -7.199999999999999,
+    12.0,
+    0.5
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "yam",
+    "roof_colour": "#8a8f93",
+    "wall_colour": "#9b7a58"
+   }
+  },
+  {
+   "type": "market-shed",
+   "id": "shed3",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    18.0,
+    24.0,
+    0.5
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 20,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "none",
+    "roof_colour": "#8a8f93",
+    "wall_colour": "#9b7a58"
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls0",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -18.0,
+    -36.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls1",
+   "lod": [
+    0
+   ],
+   "at": [
+    -3.0,
+    -37.199999999999996,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls2",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -21.0,
+    -15.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls3",
+   "lod": [
+    0
+   ],
+   "at": [
+    6.0,
+    -6.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls4",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    24.0,
+    3.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 7,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls5",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12.0,
+    30.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls6",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0.0,
+    36.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "id": "stalls7",
+   "lod": [
+    0
+   ],
+   "at": [
+    -18.0,
+    6.0,
+    0.5
+   ],
+   "rotDeg": 35,
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "mixed",
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "umb",
+   "lod": [
+    0
+   ],
+   "at": [
+    27,
+    12,
+    0.5
+   ],
+   "params": {
+    "count": 7,
+    "spread": 6,
+    "colours": [
+     "#b5603f",
+     "#c9a227",
+     "#3f6f8f",
+     "#8a3b3b",
+     "#e1cf9a"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 6,
+  "treeKind": "broadleaf",
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "no photo: plot outline real, stall/shed layout typical; stalls not mapped individually"
+ }
+}

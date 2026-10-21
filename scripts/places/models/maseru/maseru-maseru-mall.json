@@ -1,0 +1,682 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maseru_Chess_players_at_Maseru_Mall.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymblanter",
+   "view": "front",
+   "file": "/tmp/places-evidence/maseru/mall2.jpg",
+   "used": "dark-grey rendered block with banded parapet, glazed shopfront under a deep canopy on a diagonal timber and steel strut, red brick paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Maseru_Qoatsaneng_Mountain_seen_from_Maseru_Mall_parking_lot.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ymblanter",
+   "view": "street",
+   "file": "/tmp/places-evidence/maseru/mall1.jpg",
+   "used": "long low dark roof line with a cantilevered canopy, trimmed trees and light masts in a big surface car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/0",
+   "used": "overall scale only (outline is 475 m wide, far beyond the scene clamp); a 96 m frontage is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 45,
+  "aspect": 1.0,
+  "fit": "building",
+  "margin": 0.05,
+  "shiftX": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     88,
+     34
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8e92",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "groundKind": "shopfront",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#4a4d51",
+    "plinth": 0.3,
+    "parapet": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    -2
+   ],
+   "height": 11.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8e92",
+    "windows": "none",
+    "faces": {
+     "front": "plain"
+    },
+    "bands": "#43474b"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-entry",
+   "footprint": {
+    "rect": [
+     14,
+     4
+    ]
+   },
+   "at": [
+    -30,
+    -17
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#8a9a98",
+    "windows": "curtain",
+    "windowRatio": 0.85
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b5f63",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "anchor",
+   "footprint": {
+    "rect": [
+     26,
+     30
+    ]
+   },
+   "at": [
+    62,
+    4
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9c3b6",
+    "windows": "none",
+    "bands": "#a24a36"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8d90",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "canopy",
+   "at": [
+    8,
+    -23.5,
+    5.0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 6,
+    "height": 0,
+    "thickness": 0.5,
+    "colour": "#d8d6d0",
+    "edgeColour": "#5b5f63"
+   }
+  },
+  {
+   "type": "array",
+   "id": "struts",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.5,
+        0.7
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0.8
+       ],
+       [
+        0,
+        4,
+        5.0
+       ]
+      ],
+      "colour": "#6b5a48"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -26.5,
+     0
+    ],
+    "end": [
+     36,
+     -26.5,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "array",
+   "id": "strut-feet",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.8,
+        -0.8
+       ],
+       [
+        0.8,
+        -0.8
+       ],
+       [
+        0.45,
+        0.45
+       ],
+       [
+        -0.45,
+        0.45
+       ]
+      ],
+      "height": 0.9,
+      "colour": "#9a9d94"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -18,
+     -26.5,
+     0
+    ],
+    "end": [
+     36,
+     -26.5,
+     0
+    ],
+    "count": 7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "at": [
+    8,
+    -33,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -9
+     ],
+     [
+      34,
+      -9
+     ],
+     [
+      34,
+      9
+     ],
+     [
+      -34,
+      9
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#8a5a48"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "chess-white",
+   "at": [
+    20,
+    -34,
+    0.06
+   ],
+   "params": {
+    "points": [
+     [
+      -3,
+      -3
+     ],
+     [
+      3,
+      -3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      -3,
+      3
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#e4e2dc"
+   }
+  },
+  {
+   "type": "array",
+   "id": "chess-a",
+   "at": [
+    20,
+    -34,
+    0.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.75,
+        -0.75
+       ],
+       [
+        0.75,
+        -0.75
+       ],
+       [
+        0.75,
+        0.75
+       ],
+       [
+        -0.75,
+        0.75
+       ]
+      ],
+      "height": 0.03,
+      "colour": "#1c1c1e"
+     }
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 3.0,
+    "dy": 3.0,
+    "centred": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "id": "chess-b",
+   "at": [
+    20,
+    -34,
+    0.1
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "points": [
+       [
+        -0.75,
+        -0.75
+       ],
+       [
+        0.75,
+        -0.75
+       ],
+       [
+        0.75,
+        0.75
+       ],
+       [
+        -0.75,
+        0.75
+       ]
+      ],
+      "height": 0.03,
+      "colour": "#1c1c1e"
+     },
+     "at": [
+      1.5,
+      1.5
+     ]
+    },
+    "mode": "grid",
+    "cols": 2,
+    "rows": 2,
+    "dx": 3.0,
+    "dy": 3.0,
+    "centred": true
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail0",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -22,
+      -26.0,
+      5.9
+     ],
+     [
+      38,
+      -26.0,
+      5.9
+     ]
+    ],
+    "colour": "#2e3033"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail1",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -22,
+      -24.8,
+      5.9
+     ],
+     [
+      38,
+      -24.8,
+      5.9
+     ]
+    ],
+    "colour": "#2e3033"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "rail2",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      -22,
+      -23.6,
+      5.9
+     ],
+     [
+      38,
+      -23.6,
+      5.9
+     ]
+    ],
+    "colour": "#2e3033"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sign-board",
+   "id": "s1",
+   "at": [
+    28,
+    -17.2,
+    5.6
+   ],
+   "params": {
+    "width": 9,
+    "height": 1.4,
+    "bottom": 0,
+    "colour": "#a24a36",
+    "posts": false
+   }
+  },
+  {
+   "type": "sign-board",
+   "id": "s2",
+   "at": [
+    -30,
+    -13.5,
+    10.2
+   ],
+   "params": {
+    "width": 10,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#43474b",
+    "posts": false
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "id": "seat",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "spread": 4,
+    "colours": [
+     "#d9d2c0",
+     "#a24a36"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars-a",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "parked-car",
+     "params": {
+      "colour": "#9a9da0"
+     }
+    },
+    "mode": "grid",
+    "cols": 6,
+    "rows": 2,
+    "dx": 6.0,
+    "dy": 9.0,
+    "centred": true,
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "array",
+   "id": "cars-b",
+   "at": [
+    3,
+    -52,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "parked-car",
+     "params": {
+      "colour": "#d8d6d0"
+     }
+    },
+    "mode": "grid",
+    "cols": 5,
+    "rows": 2,
+    "dx": 6.0,
+    "dy": 9.0,
+    "centred": true,
+    "skip": [
+     0,
+     3,
+     5,
+     8
+    ],
+    "lod1Step": 3
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "id": "tr",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 6,
+    "kind": "broadleaf",
+    "height_min": 4,
+    "height_max": 5.5
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lp",
+   "at": [
+    -40,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 4,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   158,
+   110
+  ],
+  "trees": 0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photo is a close detail of one shopfront so whole-frontage view cannot match it; glass still reads slightly blue from sky reflection, canopy lacks the lattice fascia plate, struts are plain leaning beams, chess pieces omitted"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maseru",
+ "venueId": "maseru-maseru-mall"
+}

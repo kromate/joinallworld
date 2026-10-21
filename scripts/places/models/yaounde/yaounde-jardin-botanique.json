@@ -1,0 +1,348 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yaounde.json",
+   "used": "lawn-and-alley botanical garden with gate, pavilion, kiosk and fountain"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/188072747",
+   "used": "NOT used: containing match is the whole Universite de Yaounde I campus (484k m2), not the garden"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "width": 100,
+    "depth": 90,
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -45
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      45
+     ]
+    ],
+    "width": 3.2,
+    "colour": "#c4a37a"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -48,
+      5
+     ],
+     [
+      -10,
+      5
+     ],
+     [
+      10,
+      5
+     ],
+     [
+      48,
+      5
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#c4a37a"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -4,
+    -8
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 80,
+    "count": 9,
+    "kind": "broadleaf",
+    "gap": 8,
+    "height_min": 9,
+    "height_max": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -26,
+    22
+   ],
+   "params": {
+    "width": 34,
+    "depth": 28,
+    "count": 10,
+    "min_height": 7,
+    "max_height": 13
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    28,
+    -24
+   ],
+   "params": {
+    "width": 30,
+    "depth": 26,
+    "count": 9,
+    "min_height": 7,
+    "max_height": 12
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -46
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.6,
+    "pillar": 1.1,
+    "leaf": "bars",
+    "arch": false,
+    "colour": "#e9e1cd"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -50,
+    -46
+   ],
+   "params": {
+    "length": 42,
+    "height": 2.0,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d8c29a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    8,
+    -46
+   ],
+   "params": {
+    "length": 42,
+    "height": 2.0,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#d8c29a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -9,
+    -41
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.4,
+    "depth": 2.6,
+    "height": 2.7,
+    "colour": "#9a7a4c"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    24,
+    22
+   ],
+   "params": {
+    "width": 11,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "hip",
+    "rise": 2.2,
+    "posts": 6,
+    "colour": "#9a7a4c",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    0,
+    18
+   ],
+   "params": {
+    "radius": 3.2
+   }
+  },
+  {
+   "type": "bar-pavilion",
+   "at": [
+    -30,
+    -12
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 2.6,
+    "thatch": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "garden-office",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    40
+   ],
+   "rotDeg": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e1cd",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3,
+    "bands": "#9a7a4c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     0
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -42,
+     28
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -34
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     44,
+     10
+    ],
+    "height": 15
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     36
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     40
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline of the garden; layout is a typical lawn-and-alley garden from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-jardin-botanique"
+}

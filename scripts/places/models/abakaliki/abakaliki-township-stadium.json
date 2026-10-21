@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "abakaliki-township-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/669570802",
+   "used": "name-matched leisure=stadium, 279 x 137 m site at bearing 69; used for the overall extent only, the modelled bowl is a reduced oval-ended ground inside the 118 m scene clamp"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Abakaliki",
+   "used": "city context; green and white state colours"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     150,
+     112
+    ],
+    "height": 0.15,
+    "colour": "#b4ae9e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.15
+   ],
+   "params": {
+    "rect": [
+     104,
+     66
+    ],
+    "height": 0.1,
+    "colour": "#2f6b4a"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -48,
+     -40
+    ],
+    "end": [
+     48,
+     -40
+    ],
+    "rows": 16,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.5,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#2f6b4a",
+     "#e8e4d8",
+     "#2f6b4a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#bdb9ae",
+    "underColour": "#b4b0a5",
+    "canopy": {
+     "height": 1.0,
+     "depth": 16,
+     "thickness": 0.7,
+     "slopeDeg": 3,
+     "colour": "#8a8f93",
+     "edgeColour": "#6c7176",
+     "overhangBack": 0.8
+    },
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     48,
+     40
+    ],
+    "end": [
+     -48,
+     40
+    ],
+    "rows": 10,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#e8e4d8",
+     "#2f6b4a"
+    ],
+    "blocks": 8,
+    "concreteColour": "#bdb9ae",
+    "underColour": "#b4b0a5",
+    "facetDeg": 6
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     40.8,
+     0
+    ],
+    "radius": 32,
+    "radiusY": 30,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 8,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.5,
+    "seatColours": [
+     "#e8e4d8",
+     "#2f6b4a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#bdb9ae",
+    "underColour": "#b4b0a5",
+    "facetDeg": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -40.8,
+     0
+    ],
+    "radius": 32,
+    "radiusY": 30,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 8,
+    "rise": 0.42,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "solid",
+    "slab": 0.5,
+    "seatColours": [
+     "#e8e4d8",
+     "#2f6b4a"
+    ],
+    "blocks": 6,
+    "concreteColour": "#bdb9ae",
+    "underColour": "#b4b0a5",
+    "facetDeg": 12
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -60,
+    48,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    48,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "head_width": 5,
+    "colour": "#aeb4ba"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    56,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "colour": "#2a2d31",
+    "facing": "south"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 4.2,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    30,
+    -62,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 4.2,
+    "kind": "piers"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -75.44,
+      -60
+     ],
+     [
+      75.44,
+      -60
+     ],
+     [
+      75.44,
+      60
+     ],
+     [
+      -75.44,
+      60
+     ],
+     [
+      -75.44,
+      -60
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.3,
+    "colour": "#e8e4d8"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -90,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     90,
+     20
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stand layout typed (one roofed main stand, terraced ends); render slightly over the 120 m clamp."
+ }
+}

@@ -1,0 +1,364 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-arboretum-sibang",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arboretum_de_Sibang_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DiHM",
+   "view": "street",
+   "file": "/tmp/places-evidence/libreville/sib2.jpg",
+   "used": "plant-nursery shelter: thin steel posts under a dark shade net on a low concrete kerb, wrapped by dense equatorial undergrowth and tall forest behind"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Arboretum_de_Sibang_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DiHM",
+   "view": "street",
+   "file": "/tmp/places-evidence/libreville/sib1.jpg",
+   "used": "laterite leaf-strewn clearing, pale-barked slender trunks, fallen log, dark closed canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/322816664",
+   "used": "park outline 164,000 m2 is far larger than the scene clamp: only the entrance zone is modelled"
+  },
+  {
+   "kind": "text",
+   "used": "fr.wikipedia: concrete wall to the south and west, ~170 tree species, old planted okoume"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "width": 110,
+    "depth": 60,
+    "count": 78,
+    "kind": "broadleaf",
+    "min_height": 16,
+    "max_height": 30,
+    "keep_out": [
+     [
+      -30,
+      -5,
+      30,
+      10
+     ]
+    ]
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    -34,
+    36,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "crown_radius": 13,
+    "trunk_radius": 1.6,
+    "colour": "#2f5f35"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    30,
+    44,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "crown_radius": 14,
+    "trunk_radius": 1.8,
+    "colour": "#3a6a3a"
+   }
+  },
+  {
+   "type": "big-tree",
+   "at": [
+    2,
+    54,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "crown_radius": 11,
+    "trunk_radius": 1.4,
+    "colour": "#2f5f35"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "nursery-kerb",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b8b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b8b0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shade-net",
+   "footprint": {
+    "rect": [
+     14.6,
+     8.6
+    ]
+   },
+   "at": [
+    -4,
+    -16
+   ],
+   "rotDeg": 0,
+   "z0": 3.2,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f2a3d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2a3d"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post--6.6--3.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10.6,
+    -19.8
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post--6.6-3.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -10.6,
+    -12.2
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post-0--3.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -19.8
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post-0-3.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -12.2
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post-6.6--3.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.5999999999999996,
+    -19.8
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "post-6.6-3.8",
+   "footprint": {
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    2.5999999999999996,
+    -12.2
+   ],
+   "rotDeg": 0,
+   "z0": 0.6,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 14,
+    "count": 28,
+    "kind": "broadleaf",
+    "min_height": 1.2,
+    "max_height": 3.2,
+    "keep_out": [
+     [
+      -12,
+      -14,
+      4,
+      -4
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "nursery shelter present but forest is low-poly trees with sparse understory on green ground, no leaf litter or large-leaf plants; lodge/gate dropped; triangle budget caps tree count"
+ }
+}

@@ -25,7 +25,8 @@ import { CITY_TRIANGLES } from '../budgets.ts';
 import type { Kit } from '../scene/kit.ts';
 import { createBatch, sceneMaterials, hash } from '../scene/build.ts';
 import { sign, textWidth } from '../scene/props.ts';
-import { drawLandmark, PLINTH } from './landmarks.ts';
+import { BASE, drawLandmark, drawPlinth, PLINTH } from './landmarks.ts';
+import type { PlaceIcons } from '../scene/places/icons.ts';
 import type { Batch, LandmarkContext } from './landmarks.ts';
 import { miniVehicle, boat } from './vehicles.ts';
 import { pointInPolygon } from './roads.ts';
@@ -109,6 +110,12 @@ export interface City {
    * after the models have arrived, with a model for each of the six traffic paints; at most TRAFFIC_MODEL_LIMITS of each are drawn so the frame stays inside the budget.
    */
   setTrafficModels(models: TrafficModels | null): boolean;
+  /**
+   * Draw the venues' own LOD2 models (src/scene/places) on their plinths in place of the procedural buildings. Called once, after the models have arrived;
+   * a venue whose model is missing keeps its procedural building. The buildings of the venues named by `iconVenues` are drawn apart for exactly this
+   * (they are the fallback); without this call they stay as they are. True when something changed.
+   */
+  setPlaceIcons(icons: PlaceIcons | null): boolean;
   animate(seconds: number): void;
   dispose(): void;
 }
@@ -396,12 +403,12 @@ export function buildCity(kit: MapKit, pack: CityPack, network: Network, options
   for (;;) { const step = steps.next(); if (step.done) return step.value; }
 }
 /** What the city is built from besides the pack: the venues' definitions, and the coming-soon table. */
-export interface CityBuildOptions { venues?: Readonly<Record<string, CityVenue | undefined>>; soon?: object }
+export interface CityBuildOptions { venues?: Readonly<Record<string, CityVenue | undefined>>; soon?: object; /** Venues whose own map icon is on its way (src/scene/places/icons.ts): their procedural building is drawn apart, to be swapped. */ iconVenues?: ReadonlySet<string> }
 /**
  * buildCity as steps: the same build, paused (`yield`) between its parts so a caller can let a frame draw in between
  * (src/map3d/index.ts does). Driven to the end at once, it is exactly buildCity.
  */
-export function* buildCitySteps(kit: MapKit, pack: CityPack, network: Network, { venues = {}, soon = {} }: CityBuildOptions = {}): Generator<void, City, void> {
+export function* buildCitySteps(kit: MapKit, pack: CityPack, network: Network, { venues = {}, soon = {}, iconVenues }: CityBuildOptions = {}): Generator<void, City, void> {
   const { THREE } = kit;
   const shared = sceneMaterials(kit);
   const rng = mulberry(hash(`city:${pack.id}`));
@@ -558,6 +565,10 @@ export function* buildCitySteps(kit: MapKit, pack: CityPack, network: Network, {
   // ---- roads and bridges --------------------------------------------------------------------
   const b = createBatch(THREE), w = createBatch(THREE);
   const g: Builder = { b, w, at: (x, y, z, ry, draw) => b.at(x, y, z, ry, () => w.at(x, y, z, ry, () => draw(g), 0, 0, LANDMARK_SCALE), 0, 0, LANDMARK_SCALE) };
+  // The procedural buildings of the venues that have a model of their own coming are kept in a pair of batches apart: the fallback that is swapped out.
+  const builderFor = (batch: Batch, windows: Batch): Builder => { const apart: Builder = { b: batch, w: windows, at: (x, y, z, ry, draw) => batch.at(x, y, z, ry, () => windows.at(x, y, z, ry, () => draw(apart), 0, 0, LANDMARK_SCALE), 0, 0, LANDMARK_SCALE) }; return apart; };
+  const fb = createBatch(THREE), fw = createBatch(THREE), gf = builderFor(fb, fw);
+  const iconSites: { id: string; kind: string | undefined; variant: string | undefined; x: number; y: number; z: number; ry: number; top: number }[] = [];
   const hk = Math.sqrt(k), pk = Math.max(0.5, k);               // heights follow roads by the square root; paths never get thinner than half
   const segments: Segment[] = [];                              // every ground stretch of road, for keeping the fabric off it
   // A point `d` along a polyline and the stretch of it between two distances; the dashes, crossings and lamps follow the line, not its vertices.
@@ -711,7 +722,9 @@ export function* buildCitySteps(kit: MapKit, pack: CityPack, network: Network, {
     if (!venue || !node) continue;
     let top = 4;
     const lift = ground(node.x, node.z);
-    g.at(node.x, lift, node.z, node.ry, () => { top = drawLandmark(g, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
+    const apart = iconVenues?.has(id) === true, target = apart ? gf : g;
+    target.at(node.x, lift, node.z, node.ry, () => { top = drawLandmark(target, venue.scene?.kind, venue.scene?.variant).top * LANDMARK_SCALE; });
+    if (apart) iconSites.push({ id, kind: venue.scene?.kind, variant: venue.scene?.variant, x: node.x, y: lift, z: node.z, ry: node.ry, top });
     places[id] = { id, kind: 'venue', x: spot.x, z: spot.z, ry: node.ry, top: top + lift, gate: node.gate };
     shadows.push({ x: spot.x + 0.7, z: spot.z + 0.55, w: LOT + 1.3, d: LOT + 1.3, ry: node.ry });
     clear.push({ x: spot.x, z: spot.z, r: LOT * 0.78 });
@@ -997,6 +1010,54 @@ export function* buildCitySteps(kit: MapKit, pack: CityPack, network: Network, {
   const windowMesh = w.build({ solid: materials.windows, glow: materials.windows, glass: materials.windows }).meshes[0];
   if (windowMesh) { windowMesh.castShadow = false; windowMesh.receiveShadow = false; count(add(windowMesh, 'windows')); }
 
+  // The venues with a model of their own coming: their procedural buildings, apart, as the fallback until the models arrive.
+  const bakeApart = (batch: Batch, windows: Batch): Mesh[] => {
+    const made: Mesh[] = [];
+    for (const mesh of batch.build(shared).meshes) { mesh.castShadow = false; mesh.receiveShadow = false; count(add(mesh, `landmarks-${mesh.name}`, mesh.name === 'glass' ? 2 : 0)); made.push(mesh); }
+    const windowed = windows.build({ solid: materials.windows, glow: materials.windows, glass: materials.windows }).meshes[0];
+    if (windowed) { windowed.castShadow = false; windowed.receiveShadow = false; count(add(windowed, 'landmarks-windows')); made.push(windowed); }
+    return made;
+  };
+  let apartMeshes: Mesh[] = [];
+  if (iconSites.length) { if (fb.prepareAo) yield* fb.prepareAo(); apartMeshes = bakeApart(fb, fw); }
+  let iconsShown = false;
+  function setPlaceIcons(icons: PlaceIcons | null): boolean {
+    if (!icons || iconsShown || !iconSites.length) return false;
+    // An icon with no volume is as good as none: that venue keeps its procedural building.
+    const extent = new Map<string, { lo: number[]; hi: number[] }>();
+    for (const [id, icon] of icons.models) {
+      const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+      for (let i = 0; i < icon.position.length; i += 3) for (let a = 0; a < 3; a++) { const v = icon.position[i + a]!; if (v < lo[a]!) lo[a] = v; if (v > hi[a]!) hi[a] = v; }
+      if (hi.every((value, a) => value - lo[a]! > 0)) extent.set(id, { lo, hi });
+    }
+    const placed = iconSites.filter(site => extent.has(site.id)), missing = iconSites.filter(site => !extent.has(site.id));
+    if (!placed.length) return false;
+    iconsShown = true;
+    for (const mesh of apartMeshes) {
+      mesh.removeFromParent(); const at = own.indexOf(mesh.geometry); if (at >= 0) own.splice(at, 1);
+      triangles -= mesh.geometry.index!.count / 3; mesh.geometry.dispose();
+    }
+    apartMeshes = [];
+    if (missing.length) {
+      const mb = createBatch(THREE), mw = createBatch(THREE), gm = builderFor(mb, mw);
+      for (const site of missing) gm.at(site.x, site.y, site.z, site.ry, () => { drawLandmark(gm, site.kind, site.variant); });
+      apartMeshes = bakeApart(mb, mw);
+    }
+    // Each icon stands on the neutral plinth, centred, as large as its plinth (and the height the label above it expects) allow.
+    const ib = createBatch(THREE), iw = createBatch(THREE), gi = builderFor(ib, iw), usable = PLINTH * 0.88;
+    for (const site of placed) {
+      const icon = icons.models.get(site.id)!, { lo, hi } = extent.get(site.id)!;
+      const w = hi[0]! - lo[0]!, h = hi[1]! - lo[1]!, d = hi[2]! - lo[2]!;
+      const cap = Math.max(3.4, site.top / LANDMARK_SCALE - BASE), s = Math.min(usable / w, usable / d, cap / h);
+      gi.at(site.x, site.y, site.z, site.ry, () => {
+        drawPlinth(gi);
+        ib.at(-(lo[0]! + hi[0]!) / 2 * s, BASE - lo[1]! * s, -(lo[2]! + hi[2]!) / 2 * s, 0, () => { ib.geometry({ pos: icon.position, nor: icon.normal, idx: icon.index, col: icon.color }, '#ffffff'); }, 0, 0, s);
+      });
+    }
+    bakeApart(ib, iw);
+    return true;
+  }
+
   // The Home landmark: its own two small meshes in a group that is moved to the player's lot.
   const home = new THREE.Group();
   home.name = 'home';
@@ -1101,6 +1162,7 @@ export function* buildCitySteps(kit: MapKit, pack: CityPack, network: Network, {
     setTraffic(on: boolean) { if (trafficOn === Boolean(on)) return false; trafficOn = Boolean(on); placeTraffic(0); return true; },
     get traffic() { return trafficOn; },
     setTrafficModels,
+    setPlaceIcons,
     /** Only ever called from a running frame loop: nothing here moves while the map is idle. */
     animate(seconds: number) {
       waves.position.x = Math.sin(seconds * 0.5) * 0.9; waves.position.z = Math.cos(seconds * 0.37) * 0.35; waves.updateMatrix();

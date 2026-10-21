@@ -1,0 +1,417 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "emirs-palace",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Emir's_Palace,_Ilorin_063.jpg",
+   "licence": "CC0",
+   "author": "Akintundedaniel",
+   "view": "front",
+   "file": "/tmp/places-evidence/ilorin/e063.jpg",
+   "used": "wall palette only (sand-tan ashlar, terracotta and cream striped arch voussoirs, dark lattice gate leaves); the frame is a close-up so no massing was taken"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/967904478",
+   "used": "not used: nearest-quality match 34 m away tagged as a mosque, so the compound is composed from the brief (about 110 x 80 m walled compound)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 24,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the palace massing was found; layout, roof forms and heights are typical of Hausa-Fulani emirate palaces; only the wall palette is from a photo."
+ },
+ "parts": [
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -45,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 76,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    45,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 76,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  },
+  {
+   "type": "mosque-domed/gate-arch",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 7,
+    "thickness": 2.6,
+    "opening": 4.4,
+    "shape": "arch",
+    "finials": true,
+    "colour": "#d9c59a",
+    "trim": "#b5603f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-hall",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6d6ae",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.16,
+    "bay": 5.5,
+    "bands": "#b5603f",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a40",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     34
+    ]
+   },
+   "at": [
+    -30,
+    4
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d1a6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a40",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     30
+    ]
+   },
+   "at": [
+    30,
+    2
+   ],
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d1a6",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 6,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a5a40",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     14,
+     8
+    ]
+   },
+   "at": [
+    0,
+    5
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#d4bf92",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#b5603f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b387",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mosque-domed/arcade",
+   "at": [
+    0,
+    4.2,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 4.5,
+    "thickness": 1.2,
+    "shape": "pointed"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    14,
+    9
+   ],
+   "params": {
+    "radius": 4,
+    "height": 4.5,
+    "profile": "hemi",
+    "drum": 1.5,
+    "colour": "#d8a98a",
+    "finial": true
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -30,
+    4,
+    6.5
+   ],
+   "params": {
+    "radius": 2.5,
+    "height": 2.8,
+    "profile": "hemi",
+    "colour": "#d8a98a"
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    30,
+    2,
+    6.5
+   ],
+   "params": {
+    "radius": 2.5,
+    "height": 2.8,
+    "profile": "hemi",
+    "colour": "#d8a98a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "spread": 9
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    -8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "flagpole",
+   "at": [
+    8,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 12
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -33.5,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 23,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    33.5,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 23,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -13.25,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 17.5,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    13.25,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 17.5,
+    "height": 3.6,
+    "thickness": 0.8,
+    "colour": "#d9c59a",
+    "pitch": 2.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

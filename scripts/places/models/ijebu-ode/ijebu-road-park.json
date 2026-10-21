@@ -1,0 +1,472 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ijebu-road-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ijebu-ode.json#ijebu-road-park",
+   "used": "motor park: about 70 x 40 m paved yard, long open covered loading shed along the back, second shed, row of five ticket kiosks, yellow buses nose-in, gate and blank signs. The nearest OSM building is 32 m away so its outline is not used."
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 14,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "count": 14,
+    "height": 4.6,
+    "radius": 0.16,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "roofDepth": 8,
+    "colour": "#b9b4a8",
+    "roofColour": "#8a8c8a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    18.6
+   ],
+   "params": {
+    "rect": [
+     52,
+     0.3
+    ],
+    "height": 4.6,
+    "colour": "#d6c7a6"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 6,
+    "height": 3.6,
+    "radius": 0.14,
+    "kind": "square",
+    "beamHeight": 0.4,
+    "roofDepth": 4.5,
+    "colour": "#b9b4a8",
+    "roofColour": "#8a8c8a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -8.0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.6
+    ],
+    "height": 2.8,
+    "colour": "#2f5d8a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -8.0,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 0.2,
+    "colour": "#8a8c8a",
+    "z0": 2.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.8,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.6
+    ],
+    "height": 2.8,
+    "colour": "#b8452e"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -3.8,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 0.2,
+    "colour": "#8a8c8a",
+    "z0": 2.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0.40000000000000036,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.6
+    ],
+    "height": 2.8,
+    "colour": "#d4b84a"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0.40000000000000036,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 0.2,
+    "colour": "#8a8c8a",
+    "z0": 2.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.600000000000001,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.6
+    ],
+    "height": 2.8,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    4.600000000000001,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 0.2,
+    "colour": "#8a8c8a",
+    "z0": 2.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8.8,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3,
+     2.6
+    ],
+    "height": 2.8,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    8.8,
+    -6
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     3.2
+    ],
+    "height": 0.2,
+    "colour": "#8a8c8a",
+    "z0": 2.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     7,
+     4.5
+    ]
+   },
+   "at": [
+    -30,
+    -4
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c7a6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3,
+    "bands": "#2f5d8a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8c8a",
+    "material": "corrugated",
+    "pitch": 6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.6,
+    "bottom": 2.6,
+    "colour": "#d4b84a",
+    "frameColour": "#b9b4a8",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 2.8,
+    "colour": "#2f5d8a",
+    "frameColour": "#b9b4a8",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    2,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.5,
+       9
+      ],
+      "height": 3.0,
+      "colour": "#e0b82e"
+     }
+    },
+    "start": [
+     -22,
+     0
+    ],
+    "end": [
+     22,
+     0
+    ],
+    "count": 8,
+    "lod2Step": 2
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    2,
+    2.4
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.52,
+       9.02
+      ],
+      "height": 0.5,
+      "colour": "#2a2a2a"
+     }
+    },
+    "start": [
+     -22,
+     0
+    ],
+    "end": [
+     22,
+     0
+    ],
+    "count": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "colour": "#f2efe6",
+    "count": 3,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b9b4a8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#b9b4a8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   84,
+   52
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     14
+    ],
+    "height": 10
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     14
+    ],
+    "height": 11
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     36,
+     -10
+    ],
+    "height": 8
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline: modest typical Nigerian motor park composed from the brief (shed, kiosks, eight yellow buses)."
+ }
+}

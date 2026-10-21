@@ -1,0 +1,129 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-mbabane-shopping-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/162185813",
+   "used": "real saw-toothed 6440 m2 outline, name-matched"
+  },
+  {
+   "kind": "text",
+   "used": "No photo found on Commons or Wikidata; massing from the brief and OSM outline, colours from the Mbabane city style."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#d9c29a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#efe6d2",
+    "plinth": 0.4,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-entry",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    -5,
+    -50
+   ],
+   "rotDeg": 23,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7d8a8f",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a090",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -14,
+    -40,
+    0
+   ],
+   "rotDeg": 23,
+   "params": {
+    "width": 22,
+    "depth": 2.5,
+    "colours": [
+     "#7d8a8f",
+     "#efe6d2"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -35,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; facade details (arcade, awning) are plausible, not observed."
+ }
+}

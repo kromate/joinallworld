@@ -1,0 +1,219 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "st-dominics-catholic-church-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945875164",
+   "used": "nave outline and orientation"
+  },
+  {
+   "kind": "text",
+   "used": "brief: steep gable, free-standing bell tower, walled compound, red brick accents"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave-osm",
+   "footprint": {
+    "osm": true
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#a8553a",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a32",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.8,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     10,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 78,
+   "z0": 0,
+   "height": 6.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "trimColour": "#a8553a",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.16,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a4a32",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "porch",
+   "params": {
+    "rect": [
+     7,
+     4
+    ],
+    "height": 3.4,
+    "colour": "#a8553a",
+    "topColour": "#8a4a32"
+   },
+   "at": [
+    -24,
+    -4
+   ],
+   "rotDeg": 78
+  },
+  {
+   "type": "loft",
+   "id": "bell-tower",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 14,
+      "rect": [
+       4.2,
+       4.2
+      ]
+     },
+     {
+      "z": 14.4,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 17,
+      "rect": [
+       5,
+       5
+      ]
+     },
+     {
+      "z": 21,
+      "rect": [
+       0.4,
+       0.4
+      ]
+     }
+    ],
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "cross",
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "z0": 21,
+    "height": 1.8,
+    "colour": "#f2efe6"
+   },
+   "at": [
+    -34,
+    -16
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.6,
+       0.3
+      ],
+      "height": 1.8,
+      "colour": "#d8c19a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -46,
+     -34
+    ],
+    "end": [
+     46,
+     -34
+    ],
+    "count": 19,
+    "lod1Step": 3,
+    "lod2Step": 19
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 5,
+  "treeKind": "broadleaf",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found; tower, transept and wall are typical guesses placed around the real nave outline."
+ }
+}

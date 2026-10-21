@@ -1,0 +1,191 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-garden-city",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/199101899",
+   "used": "real mall outline (about 171 x 100 m, 60 nodes, name-quality match); storeys and height from the brief (4 storeys, 20 m)"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Kampala",
+   "used": "brief only: four-storey mall on Yusuf Lule Road with a glass-roofed atrium and car park; Commons images for this venue show other buildings (a distant office block and a plate of food) so no photo was used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true,
+    "simplify": 7.0
+   },
+   "height": 20,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e2d0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 16,
+    "plinth": 0.5,
+    "bands": "#5b7a8f",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#c9c4b6"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "material": "membrane",
+    "parapet": 1.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     12
+    ],
+    "z0": 20,
+    "height": 4.5,
+    "topScale": [
+     0.7,
+     0.5
+    ],
+    "colour": "#8fb3c4",
+    "topColour": "#a9cddb",
+    "slot": "glass-curtain"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium-ridge",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.0
+    ],
+    "z0": 24.4,
+    "height": 0.6,
+    "colour": "#5b7a8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "on": "mall",
+   "at": [
+    28,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4,
+    "bottom": 0.5,
+    "colour": "#5b7a8f",
+    "frameColour": "#b8bcc0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -38,
+    -48,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -38,
+    -54,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     -50
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -40
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of this mall exists in the evidence set so only the OSM outline, storeys and brief are used; facade rhythm, atrium position and signboard places are assumed; front sign and canopy positions are guesses"
+ }
+}

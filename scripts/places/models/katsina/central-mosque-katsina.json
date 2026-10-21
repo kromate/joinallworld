@@ -1,0 +1,557 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "central-mosque-katsina",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Places_in_Katsina_City_17.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Anasskoko",
+   "view": "street",
+   "file": "/tmp/places-evidence/katsina/places17.jpg",
+   "used": "Muhammadu Dikko Central Mosque: two tall ochre-gold minarets with a mid balcony, arched-slit upper stage and a flared onion cap with finial, pale yellow low buildings in front, tree line"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Muhammad_dikko_mosque.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musa Vacho77",
+   "view": "street",
+   "file": "/tmp/places-evidence/katsina/dikko.jpg",
+   "used": "pale pink boundary wall with darker salmon piers and triangle motifs, neem trees behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/379658753",
+   "used": "stepped prayer-hall outline (93 x 52 m), name-quality match"
+  }
+ ],
+ "camera": {
+  "yawDeg": -10,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 0.83
+ },
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   120
+  ]
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcc17e",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.08,
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 6.5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9a868",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#dcae55",
+    "profile": [
+     [
+      2.2,
+      0,
+      "#dcae55"
+     ],
+     [
+      2.0,
+      17.0
+     ],
+     [
+      3.0,
+      17.0,
+      "#c99440"
+     ],
+     [
+      3.0,
+      17.5
+     ],
+     [
+      1.9,
+      17.5,
+      "#e0b45a"
+     ],
+     [
+      1.9,
+      24.6
+     ],
+     [
+      3.9,
+      24.6,
+      "#e8956a"
+     ],
+     [
+      4.0,
+      25.0
+     ],
+     [
+      3.6,
+      25.6
+     ],
+     [
+      2.8,
+      26.4
+     ],
+     [
+      1.6,
+      27.0
+     ],
+     [
+      0.6,
+      27.4
+     ],
+     [
+      0.15,
+      27.8
+     ],
+     [
+      0.15,
+      29.8
+     ]
+    ],
+    "arcade": {
+     "from": 17.6,
+     "to": 24.6,
+     "count": 7,
+     "width": 0.55,
+     "height": 4.6,
+     "sill": 1.2,
+     "shape": "pointed",
+     "depth": 0.5
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    20,
+    -43,
+    0
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#dcae55",
+    "profile": [
+     [
+      2.2,
+      0,
+      "#dcae55"
+     ],
+     [
+      2.0,
+      17.0
+     ],
+     [
+      3.0,
+      17.0,
+      "#c99440"
+     ],
+     [
+      3.0,
+      17.5
+     ],
+     [
+      1.9,
+      17.5,
+      "#e0b45a"
+     ],
+     [
+      1.9,
+      24.6
+     ],
+     [
+      3.9,
+      24.6,
+      "#e8956a"
+     ],
+     [
+      4.0,
+      25.0
+     ],
+     [
+      3.6,
+      25.6
+     ],
+     [
+      2.8,
+      26.4
+     ],
+     [
+      1.6,
+      27.0
+     ],
+     [
+      0.6,
+      27.4
+     ],
+     [
+      0.15,
+      27.8
+     ],
+     [
+      0.15,
+      29.8
+     ]
+    ],
+    "arcade": {
+     "from": 17.6,
+     "to": 24.6,
+     "count": 7,
+     "width": 0.55,
+     "height": 4.6,
+     "sill": 1.2,
+     "shape": "pointed",
+     "depth": 0.5
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -14,
+    -44,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#dcae55",
+    "profile": [
+     [
+      2.2,
+      0,
+      "#dcae55"
+     ],
+     [
+      2.0,
+      17.0
+     ],
+     [
+      3.0,
+      17.0,
+      "#c99440"
+     ],
+     [
+      3.0,
+      17.5
+     ],
+     [
+      1.9,
+      17.5,
+      "#e0b45a"
+     ],
+     [
+      1.9,
+      24.6
+     ],
+     [
+      3.9,
+      24.6,
+      "#e8956a"
+     ],
+     [
+      4.0,
+      25.0
+     ],
+     [
+      3.6,
+      25.6
+     ],
+     [
+      2.8,
+      26.4
+     ],
+     [
+      1.6,
+      27.0
+     ],
+     [
+      0.6,
+      27.4
+     ],
+     [
+      0.15,
+      27.8
+     ],
+     [
+      0.15,
+      29.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    20,
+    -43,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#dcae55",
+    "profile": [
+     [
+      2.2,
+      0,
+      "#dcae55"
+     ],
+     [
+      2.0,
+      17.0
+     ],
+     [
+      3.0,
+      17.0,
+      "#c99440"
+     ],
+     [
+      3.0,
+      17.5
+     ],
+     [
+      1.9,
+      17.5,
+      "#e0b45a"
+     ],
+     [
+      1.9,
+      24.6
+     ],
+     [
+      3.9,
+      24.6,
+      "#e8956a"
+     ],
+     [
+      4.0,
+      25.0
+     ],
+     [
+      3.6,
+      25.6
+     ],
+     [
+      2.8,
+      26.4
+     ],
+     [
+      1.6,
+      27.0
+     ],
+     [
+      0.6,
+      27.4
+     ],
+     [
+      0.15,
+      27.8
+     ],
+     [
+      0.15,
+      29.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    3,
+    -37,
+    9
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#d8895a",
+    "profile": [
+     [
+      0.1,
+      0,
+      "#e8956a"
+     ],
+     [
+      3.2,
+      0
+     ],
+     [
+      3.4,
+      1.2,
+      "#e8956a"
+     ],
+     [
+      3.0,
+      2.6
+     ],
+     [
+      1.8,
+      4.0
+     ],
+     [
+      0.6,
+      5.0
+     ],
+     [
+      0.12,
+      5.6
+     ],
+     [
+      0.12,
+      7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -6,
+    -56,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "railing",
+    "pillarEvery": 8,
+    "colour": "#e8e8e4"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -51,
+    0
+   ],
+   "params": {
+    "length": 58,
+    "depth": 4,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 3.2,
+    "veranda": 1.2,
+    "wall_colour": "#e3c866",
+    "roof_colour": "#8d9090",
+    "shutter_colours": [
+     "#3f5f8a",
+     "#6a5a40"
+    ],
+    "awning_colours": [
+     "#d9833a",
+     "#7a8a6a"
+    ],
+    "goods_colours": [
+     "#d94a3a",
+     "#e0b030"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -34,
+    -44,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 12,
+    "count": 5,
+    "spread": 12,
+    "line": 60
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -30,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 14,
+    "count": 5,
+    "spread": 12,
+    "line": 56
+   }
+  }
+ ],
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "minaret lantern has only a few slits and no separate balcony stage under the cap; fence is a simple railing not mesh; hall walls and roof colours are inferred since only minarets are visible; neem row is low-poly"
+ }
+}

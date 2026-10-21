@@ -1,0 +1,457 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gare_de_Tunis.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "M D (Wikimedia user)",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/gare.jpg",
+   "used": "main hall is a modern concrete block: recessed dark ground floor on piers, upper floors of concrete frame with louvred grey panels, blue roof-top sign frame, palms; NOT the colonial hall the brief assumed"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/29993446",
+   "used": "size 94 x 38 m, height 13 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground",
+   "footprint": {
+    "rect": [
+     90,
+     23
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2c2f33",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a6a8a6",
+    "parapet": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     90,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "z0": 4.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d5c9",
+    "windows": "none",
+    "plinth": 0,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#8a9097",
+      "backColour": "#2a2d31",
+      "pitch": 0.3,
+      "band": 0.6,
+      "at": 0.2,
+      "floors": [
+       0,
+       1
+      ],
+      "margin": 2.0,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "fins",
+      "width": 1.8,
+      "depth": 0.9,
+      "spacing": 15,
+      "colour": "#c4bfb2",
+      "from": 0,
+      "margin": 0,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a6a8a6",
+    "parapet": 0.5,
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    13.1
+   ],
+   "params": {
+    "rect": [
+     91,
+     26.6
+    ],
+    "height": 1.3,
+    "colour": "#c9c4b7"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -8.7,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     70,
+     0.5
+    ],
+    "height": 0.9,
+    "colour": "#1f2226"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -9.8,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -42,
+     0,
+     0
+    ],
+    "end": [
+     42,
+     0,
+     0
+    ],
+    "count": 13,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "height": 4.2,
+      "colour": "#cfcabd"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     6
+    ],
+    "height": 5.6,
+    "colour": "#2c2f33"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -13.6,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     26,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#9a9a96"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -10.5,
+    5.6
+   ],
+   "params": {
+    "rect": [
+     24,
+     1.2
+    ],
+    "height": 0.9,
+    "colour": "#2d5aa8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -15,
+    -1,
+    14.4
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     30,
+     0,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.25,
+       0.25
+      ],
+      "height": 3.4,
+      "colour": "#7b7f84"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    17.0
+   ],
+   "params": {
+    "rect": [
+     32,
+     1.0
+    ],
+    "height": 3.0,
+    "colour": "#2d5aa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -1,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.4
+    ],
+    "height": 0.4,
+    "colour": "#7b7f84"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.35,
+     0.35
+    ],
+    "height": 22,
+    "colour": "#b8bbbd"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    43,
+    -13.8,
+    18.5
+   ],
+   "params": {
+    "rect": [
+     0.1,
+     2.6
+    ],
+    "height": 3.0,
+    "colour": "#c43333"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    34,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 92,
+    "depth": 14,
+    "height": 6,
+    "columns": 8,
+    "colour": "#b9bbb8",
+    "edgeColour": "#6e7479",
+    "axis": "x"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 3.5,
+    "count": 6,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 2,
+    "spread": 3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 26,
+    "rows": 5,
+    "dx": 1.3,
+    "dy": 1.4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.35
+      ],
+      "height": 1.7,
+      "colour": "#2e2a28"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -36,
+    -15,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.5,
+    "bottom": 2.5,
+    "colour": "#2f7a4f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rooftop sign is a flat blue band on a post frame (no angled lettering, by rule); entrance bays are not individually raised; crowd is sparse blocky figures; platform canopy behind is not photographed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-transit"
+}

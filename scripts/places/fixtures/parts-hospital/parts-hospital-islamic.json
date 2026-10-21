@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-islamic",
+ "name": "Parts test: Islamic civic hall front",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     60,
+     22
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e9e0c8",
+    "windows": "pointed-arch",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a948a"
+   }
+  },
+  {
+   "type": "iwan",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 13,
+    "height": 16,
+    "depth": 3,
+    "colour": "#e9e0c8",
+    "accentColour": "#2f7d6a"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    -20,
+    -11,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "depth": 2.8,
+    "springHeight": 3.4,
+    "topHeight": 5.8,
+    "shape": "pointed",
+    "bayWidth": 4.2,
+    "colour": "#e9e0c8"
+   }
+  },
+  {
+   "type": "arcade-bays",
+   "at": [
+    20,
+    -11,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "depth": 2.8,
+    "springHeight": 3.4,
+    "topHeight": 5.8,
+    "shape": "horseshoe",
+    "bayWidth": 4.2,
+    "colour": "#e9e0c8"
+   }
+  },
+  {
+   "type": "corner-tower-domed",
+   "at": [
+    -29,
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 20,
+    "radius": 1.4,
+    "domeColour": "#2f7d6a"
+   }
+  },
+  {
+   "type": "corner-tower-domed",
+   "at": [
+    29,
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 20,
+    "radius": 1.4,
+    "domeColour": "#2f7d6a"
+   }
+  },
+  {
+   "type": "dome-colonnaded",
+   "at": [
+    0,
+    0,
+    13
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 6.5,
+    "drum": 3.5,
+    "colonnade": false,
+    "profile": "pointed",
+    "lantern": 1.5,
+    "finial": 1.5,
+    "colour": "#2f7d6a",
+    "baseSquare": false
+   }
+  },
+  {
+   "type": "merlon-wall",
+   "at": [
+    0,
+    -11,
+    13
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 58,
+    "height": 0.0,
+    "mHeight": 0.8,
+    "colour": "#e9e0c8",
+    "trimColour": "#e9e0c8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "extent": [
+   100,
+   70
+  ]
+ }
+}

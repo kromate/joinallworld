@@ -1,0 +1,1638 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kuala-lumpur",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kuala-lumpur",
+    "climate": "tropical-maritime",
+    "vernacular": "Hot-humid tropical city of painted-concrete and brick low- and mid-rise buildings: two- to four-storey Chinese shophouses with five-foot-way arcades in cream, pastel and faded ochre; terracotta- or grey-tile pitched roofs on Malay-influenced civic buildings and mosques; modernist 1960s-70s concrete blocks with sunbreakers; sprawling malls and glass towers; mosques with a large central dome and a tall slender minaret. Heavy rain-tree, palm and angsana planting, monsoon drains and elevated rail.",
+    "wallColours": [
+      "#efe9dc",
+      "#d8c9a3",
+      "#c9a66b",
+      "#b9533c",
+      "#9a9a94",
+      "#6f93a6",
+      "#4f8f8a"
+    ],
+    "roofColours": [
+      "#b4573a",
+      "#6b6f73",
+      "#4b4b4b",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "glass-curtain",
+      "brick",
+      "tile-cladding",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Islamic geometric lattice screens and arches on mosques and civic buildings; Minangkabau-style up-curved roof gables on some government and Malay-heritage buildings; Mughal-Moorish arches, copper domes and clock tower on colonial civic buildings; five-foot-way arcades, louvred shutters and ceramic tile dado on shophouses; precast sunbreakers on 1960s modernist blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Malaysia",
+        "what": "Malaysian architecture overview: timber Malay houses on stilts, colonial Mughal/Tudor/Gothic Revival, KLIA wood-strip roof"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Malaysian_Houses_of_Parliament",
+        "what": "modernist concrete parliament with terrazzo sunbreakers and heat-absorbing glass on a 17-storey tower"
+      }
+    ]
+  },
+  "places": {
+    "kuala-lumpur-airport-kuala-lumpur-airport": {
+      "venueId": "kuala-lumpur-airport-kuala-lumpur-airport",
+      "city": "kuala-lumpur",
+      "name": "Kuala Lumpur International Airport",
+      "archetype": "airport-terminal",
+      "subject": "KLIA Terminal 1 main terminal building (Kisho Kurokawa, 1998) seen from the forecourt, a wide low glass-and-steel hall under a rippling grid of shell roof units with the torch-shaped control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 150,
+        "storeys": 4,
+        "height_m": 32,
+        "roof": "wave",
+        "variant": "grid of shell roof units",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdd5d8",
+          "#8a6a45",
+          "#f1f1ee"
+        ],
+        "roofColour": "#b9bdbf",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "upswept dished roof units of the 1998 terminal, 39 square units on a 38.4 m grid"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "original Tower East, 130 m, torch-shaped"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "contact pier"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuala_Lumpur_International_Airport",
+          "what": "architect Kisho Kurokawa, opened 27 June 1998, 39 square roof units on 38.4 m grid, Islamic geometry plus rainforest theme, Tower East 130 m torch shape"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Malaysia",
+          "what": "Malaysian architecture overview: timber Malay houses on stilts, colonial Mughal/Tudor/Gothic Revival, KLIA wood-strip roof"
+        }
+      ],
+      "notes": "The OSM footprint at this coordinate is a 55x25 m outbuilding and is ignored. Roof described as clad in narrow wood strips; glass walls and white/grey steel are inferred from public photos. Recognisable by the rippling run of identical upturned roof shells and the torch-like tower. Real terminal is far larger than the 120 m scene limit, so the model shows a portion."
+    },
+    "kuala-lumpur-clinic": {
+      "venueId": "kuala-lumpur-clinic",
+      "city": "kuala-lumpur",
+      "name": "Hospital Canselor Tuanku Muhriz UKM",
+      "archetype": "hospital",
+      "subject": "the UKM teaching hospital (HCTM, Cheras): a large multi-block hospital complex with a long tower block over lower wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 190,
+        "depth_m": 100,
+        "storeys": 8,
+        "height_m": 34,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e3dc",
+          "#7fa3b5",
+          "#b9b6ad"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1997",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hospital_Canselor_Tuanku_Muhriz_UKM",
+          "what": "hospital built 1993-1997 in Bandar Tun Razak, opened 1998; no appearance description"
+        }
+      ],
+      "notes": "OSM gives a 311x190 m footprint but no levels or colours; no source describes the facade. Storeys and colours are typed from a large Malaysian public teaching hospital; confidence low."
+    },
+    "kuala-lumpur-community-notices": {
+      "venueId": "kuala-lumpur-community-notices",
+      "city": "kuala-lumpur",
+      "name": "Malaysian Houses of Parliament",
+      "archetype": "civic-palace",
+      "subject": "the 1963 Parliament complex: a low three-storey chamber block in front of a slender 17-storey (about 77 m) concrete office tower wrapped in a sunbreaker grille",
+      "form": {
+        "footprint": "T",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "low chamber block with a 77 m, 17-storey tower rising behind",
+        "wings": 1
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4cfc2",
+          "#5f8a8a",
+          "#ece8dc"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1,
+          "note": "precast terrazzo sunbreakers forming a two-layer grille on the tower"
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1963",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malaysian_Houses_of_Parliament",
+          "what": "Modernist design by Ivor Shipley (PWD); 3-storey chamber block, 17-storey ~77 m tower, prestressed-concrete frame, grille-like double facade, precast terrazzo sunbreakers, heat-absorbing glass; hanging gardens"
+        }
+      ],
+      "notes": "Sourced: modernist 3-storey chamber block plus 17-storey (~77 m) tower with a grille facade. Colours are estimated from public photos (pale concrete/terrazzo, blue-green glass). The generator should make the tower the tall element behind the low hall. Distinct from any other civic building by that thin sunbreaker-clad tower."
+    },
+    "kuala-lumpur-community-voting-game": {
+      "venueId": "kuala-lumpur-community-voting-game",
+      "city": "kuala-lumpur",
+      "name": "Sepang Municipal Council",
+      "archetype": "civic-small",
+      "subject": "the Sepang Municipal Council (Majlis Perbandaran Sepang) headquarters in Cyberjaya, a modern mid-rise government office block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 55,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#6f93a6",
+          "#c9a66b"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Malaysia",
+          "what": "general Malaysian civic building character"
+        }
+      ],
+      "notes": "OSM says an office building of about 111x62 m; no source describes it. Typed from the city style as a municipal office; low confidence."
+    },
+    "kuala-lumpur-community-workshop": {
+      "venueId": "kuala-lumpur-community-workshop",
+      "city": "kuala-lumpur",
+      "name": "Islamic Science University of Malaysia",
+      "archetype": "campus-block",
+      "subject": "a lecture-hall and faculty block of the USIM Nilai campus (opened 2005) with Islamic arch motifs and a pitched roof",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#2f7a6a",
+          "#c9a64a"
+        ],
+        "roofColour": "#b4573a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "campus mosque dome in the background"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Universiti_Sains_Islam_Malaysia",
+          "what": "permanent campus at Nilai from 15 July 2005; no architectural description"
+        }
+      ],
+      "notes": "The OSM feature is the entire 2,950x1,300 m campus, not a building. No source describes the buildings; this is a typed Malaysian Islamic university block. Low confidence."
+    },
+    "kuala-lumpur-market-game": {
+      "venueId": "kuala-lumpur-market-game",
+      "city": "kuala-lumpur",
+      "name": "IOI City Mall",
+      "archetype": "mall",
+      "subject": "IOI City Mall (Putrajaya/Sepang), a very wide three-level contemporary shopping complex with a long glazed frontage and huge car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 420,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "phase 1 and phase 2 wings",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3ddd0",
+          "#7e9fb0",
+          "#b9533c"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "16,600 bays"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/IOI_City_Mall",
+          "what": "Sepang mall of 230,000 m2 floor area, phase 1 three levels, contemporary/modern style, parking for 16,600 vehicles"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kuala_Lumpur",
+          "what": "metropolitan context"
+        }
+      ],
+      "notes": "OSM measures 459x191 m and 3 levels; Wikipedia gives contemporary style and 16,600 parking bays. Colours are estimates. Larger than the scene limit, so show a portion with the main entrance."
+    },
+    "kuala-lumpur-meal-stop": {
+      "venueId": "kuala-lumpur-meal-stop",
+      "city": "kuala-lumpur",
+      "name": "Starbucks",
+      "archetype": "restaurant",
+      "subject": "(game venue) a roadside coffee shop unit in a Shah Alam commercial block, with glass front and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e4da",
+          "#2f6b4f",
+          "#4b4b4b"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank brand-neutral board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic placeholder cafe; OSM building (65x36 m) is the surrounding commercial block. No signage or brand marks to be modelled."
+    },
+    "kuala-lumpur-osm-node-11049175263": {
+      "venueId": "kuala-lumpur-osm-node-11049175263",
+      "city": "kuala-lumpur",
+      "name": "Tombstone of Teoh Beng Hock",
+      "archetype": "monument",
+      "subject": "a single granite grave headstone in a Chinese cemetery, a small low memorial slab with a rounded top",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 3,
+        "storeys": 0,
+        "height_m": 1.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "marble",
+        "colours": [
+          "#6f6f6c",
+          "#c8c4b8",
+          "#3f3f3d"
+        ],
+        "roofColour": "#6f6f6c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A grave marker, so keep it modest and respectful: a granite headstone with a small kerbed plot, set on a grassy cemetery slope. The 14 m2 OSM building is a nearby structure. No source consulted describes its look; typed as a typical Chinese-Malaysian granite headstone."
+    },
+    "kuala-lumpur-osm-node-2935650691": {
+      "venueId": "kuala-lumpur-osm-node-2935650691",
+      "city": "kuala-lumpur",
+      "name": "Masjid Asy - Syabab",
+      "archetype": "mosque-domed",
+      "subject": "a typical modern Malaysian neighbourhood mosque with one large central dome, an arcaded prayer hall and a tall slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 38,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "variant": "one dome, one minaret",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#2f7a6a",
+          "#c9a64a"
+        ],
+        "roofColour": "#3d7f72",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 35 m slender shaft with a small cap"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Malaysia",
+          "what": "Islamic geometric motifs and domes used in modern Malaysian buildings"
+        }
+      ],
+      "notes": "Name only; OSM is a landuse polygon. No description found, so a typical Malaysian mosque from the city style. Low confidence."
+    },
+    "kuala-lumpur-osm-node-8379958565": {
+      "venueId": "kuala-lumpur-osm-node-8379958565",
+      "city": "kuala-lumpur",
+      "name": "Istana Bukit Kayangan",
+      "archetype": "heritage-fort",
+      "subject": "Istana Bukit Kayangan in Shah Alam, the second official palace of the Sultan of Selangor, a broad palace block with a yellow-and-white colour scheme and hipped roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 65,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe6c8",
+          "#d4b13f",
+          "#ffffff"
+        ],
+        "roofColour": "#c9a43a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Istana_Bukit_Kayangan",
+          "what": "identifies it as the Sultan of Selangor second official palace in Shah Alam; stub, no appearance given"
+        }
+      ],
+      "notes": "Wikipedia confirms only that this is the Selangor second palace; OSM footprint is 90x78 m. The yellow-and-white palette is inferred from the Selangor royal colour (yellow), not from a photo description. Low confidence."
+    },
+    "kuala-lumpur-osm-relation-11365206": {
+      "venueId": "kuala-lumpur-osm-relation-11365206",
+      "city": "kuala-lumpur",
+      "name": "1 Utama Shopping Centre",
+      "archetype": "mall",
+      "subject": "1 Utama in Bandar Utama, a vast multi-wing four-level mall with glazed entrances and a large surface of rooftop parking",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 200,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "flat",
+        "variant": "Old Wing, New Wing, 1 Utama E",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4dccb",
+          "#8aa3b0",
+          "#b9533c"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "indoor rainforest atrium"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-storey and roof parking"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1995, 2003, 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/1_Utama",
+          "what": "519,000 m2 total, contemporary style, Old Wing 1995, New Wing 2003, 1 Utama E 2018, indoor rainforest from 2003"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bandar_Utama",
+          "what": "neighbourhood context"
+        }
+      ],
+      "notes": "OSM: 4 levels. Colours are estimates. Much larger than the scene limit, so show the main frontage only. Differs from IOI City Mall by being a multi-wing complex of three phases."
+    },
+    "kuala-lumpur-osm-relation-17060995": {
+      "venueId": "kuala-lumpur-osm-relation-17060995",
+      "city": "kuala-lumpur",
+      "name": "Hospital Assunta",
+      "archetype": "hospital",
+      "subject": "Assunta Hospital in Petaling Jaya: a mid-rise private hospital block with long ribbon-window floors and a covered drop-off",
+      "form": {
+        "footprint": "rect",
+        "width_m": 125,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeae0",
+          "#9ab3c2",
+          "#b9533c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1954 foundation, later blocks",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Assunta_Hospital",
+          "what": "Catholic private hospital in Petaling Jaya (OSM footprint 125x62 m)"
+        }
+      ],
+      "notes": "Only footprint is measured; storeys and colours are typed from a Malaysian private hospital. Low confidence."
+    },
+    "kuala-lumpur-osm-way-1033470607": {
+      "venueId": "kuala-lumpur-osm-way-1033470607",
+      "city": "kuala-lumpur",
+      "name": "Mitsui Outlet Park KLIA Sepang",
+      "archetype": "mall",
+      "subject": "Mitsui Outlet Park KLIA, a long two-level outlet mall of pitched-roof shop blocks along covered walkways beside the airport",
+      "form": {
+        "footprint": "rect",
+        "width_m": 340,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "outlet blocks along an arcaded street",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e2d2",
+          "#c9704a",
+          "#6b6f73"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6,
+          "note": "banner poles"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://zh.wikipedia.org/wiki/三井名牌城",
+          "what": "outlet mall near KLIA opened 2015 (OSM: retail, 2 levels, 346x142 m)"
+        }
+      ],
+      "notes": "Dimensions and 2 levels from OSM; form and colours from general outlet-mall design, not a description. Show a portion of the 346 m length."
+    },
+    "kuala-lumpur-osm-way-1207976408": {
+      "venueId": "kuala-lumpur-osm-way-1207976408",
+      "city": "kuala-lumpur",
+      "name": "Orang Asli Museum, Gombak",
+      "archetype": "museum-theatre",
+      "subject": "the Orang Asli Museum in Gombak (opened 1987), a long low museum building with a steep timber-clad pitched roof recalling a longhouse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "longhouse-inspired"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "brick",
+        "colours": [
+          "#8b6b4a",
+          "#c9a66b",
+          "#efe9dc"
+        ],
+        "roofColour": "#6e4b32",
+        "roofMaterial": "timber-shingle",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1987",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Orang_Asli_Museum",
+          "what": "opened 29 September 1987 in Gombak with a library and small theatre hall; no building description"
+        }
+      ],
+      "notes": "No source describes the facade. The longhouse-style timber look is an inference from the museum theme and Malay vernacular style; low confidence. OSM footprint 124x50 m."
+    },
+    "kuala-lumpur-osm-way-200560100": {
+      "venueId": "kuala-lumpur-osm-way-200560100",
+      "city": "kuala-lumpur",
+      "name": "Masjid Al-Munawwarah",
+      "archetype": "mosque-domed",
+      "subject": "Masjid Al-Munawwarah in Petaling: a large square-plan mosque with a central dome, four corner domes and a tall minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "multi-dome",
+        "variant": "central dome with four corner domes",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3efe4",
+          "#c9a64a",
+          "#3d7f72"
+        ],
+        "roofColour": "#3d7f72",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "tall slender minaret"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ms.wikipedia.org/wiki/Masjid_Al-Munawwarah,_Petaling",
+          "what": "Malay Wikipedia article for the mosque (not read in detail)"
+        }
+      ],
+      "notes": "OSM footprint 117x106 m with building=mosque. No description read; dome layout is typed from the common Malaysian state-mosque form. Low confidence. Differs from Asy-Syabab by being roughly twice as big with multiple domes."
+    },
+    "kuala-lumpur-osm-way-24691651": {
+      "venueId": "kuala-lumpur-osm-way-24691651",
+      "city": "kuala-lumpur",
+      "name": "Bukit Jalil National Stadium",
+      "archetype": "stadium",
+      "subject": "the Bukit Jalil National Stadium (1998, renovated 2017) bowl with a white membrane roof ring and a facade of twisted vertical louvres",
+      "form": {
+        "footprint": "oval",
+        "width_m": 288,
+        "depth_m": 225,
+        "storeys": 5,
+        "height_m": 50,
+        "roof": "tensile",
+        "variant": "fully covered seating bowl with membrane roof"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b7b0",
+          "#f2c230",
+          "#2b2b2b"
+        ],
+        "roofColour": "#e8e8e4",
+        "roofMaterial": "membrane",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "membrane roof ring over the stands"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "LED scoreboard"
+        },
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "twisted vertical louvres with LED lighting, 2017"
+        },
+        {
+          "id": "steps",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1998, rebuilt 2017",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bukit_Jalil_National_Stadium",
+          "what": "opened 11 July 1998; reinforced concrete; membrane roof; 2017 facade of twisted vertical louvres with LED lighting; yellow-and-black seats; 87,411 seats; designed by Arkitek FAA, Weidleplan, Schlaich Bergermann; renovation Populous"
+        }
+      ],
+      "notes": "Sourced. Roof membrane white; seats yellow and black; pitch 105x68 m. The real bowl is about 288x225 m, so the generator clamps it to the 120 m limit. Much taller and rounder than Selayang or Macau stadiums."
+    },
+    "kuala-lumpur-osm-way-342904301": {
+      "venueId": "kuala-lumpur-osm-way-342904301",
+      "city": "kuala-lumpur",
+      "name": "MARA-Japan Industrial Institute",
+      "archetype": "campus-block",
+      "subject": "MARA-Japan Industrial Institute (MJII) in Beranang: a row of low three-storey teaching blocks and workshops with sheet roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6e0d0",
+          "#2f6f9a",
+          "#b9b6ad"
+        ],
+        "roofColour": "#b4573a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "workshop sheds"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/MARA_Japan_Industrial_Institute_Beranang",
+          "what": "vocational institute with Japanese cooperation, Beranang"
+        }
+      ],
+      "notes": "OSM covers the entire 481x236 m campus. No facade description found; typed from the city style. Low confidence."
+    },
+    "kuala-lumpur-osm-way-404265345": {
+      "venueId": "kuala-lumpur-osm-way-404265345",
+      "city": "kuala-lumpur",
+      "name": "Kolej MARA Banting",
+      "archetype": "campus-block",
+      "subject": "a three-storey teaching or hostel block at Kolej MARA Banting with a corridor facade and a pitched tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e4d6",
+          "#2f6f9a",
+          "#b9b6ad"
+        ],
+        "roofColour": "#b4573a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kolej_MARA_Banting",
+          "what": "MARA college in Banting; OSM building 20x20 m"
+        }
+      ],
+      "notes": "Only a 20x20 m OSM block is known; real building size and look not found. Low confidence."
+    },
+    "kuala-lumpur-osm-way-487114579": {
+      "venueId": "kuala-lumpur-osm-way-487114579",
+      "city": "kuala-lumpur",
+      "name": "Titiwangsa Lake Park",
+      "archetype": "park-landscape",
+      "subject": "the lakeside promenade of Titiwangsa Lake Gardens, a former tin-mining lake with a jogging path, pavilions and a pier looking toward the KL skyline",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#cfc9b8",
+          "#8b6b4a",
+          "#6f93a6"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Titiwangsa_Lake_Gardens",
+          "what": "lake created by tin mining, jogging and cycling tracks, kayaking, canopy walk; 46 to 95 ha with a 57 ha lake"
+        }
+      ],
+      "notes": "Big lake set in lawns and rain-trees; jogging track around the water. The feature list (pier, pavilions) is typical and not individually sourced; the lake and tracks are sourced."
+    },
+    "kuala-lumpur-osm-way-823365646": {
+      "venueId": "kuala-lumpur-osm-way-823365646",
+      "city": "kuala-lumpur",
+      "name": "HELP University Subang Bestari Campus",
+      "archetype": "campus-block",
+      "subject": "the HELP University Subang 2 (Subang Bestari) campus: a five-storey modern teaching block with glazed corridors and a rooftop terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4da",
+          "#6f93a6",
+          "#b9533c"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/HELP_University",
+          "what": "private university in the Klang Valley; campus footprint 571x164 m from OSM"
+        }
+      ],
+      "notes": "No campus-building description found; typed from a contemporary Malaysian private-college block. Low confidence."
+    },
+    "kuala-lumpur-osm-way-914977615": {
+      "venueId": "kuala-lumpur-osm-way-914977615",
+      "city": "kuala-lumpur",
+      "name": "Gleneagles Kuala Lumpur",
+      "archetype": "hospital",
+      "subject": "Gleneagles Hospital Kuala Lumpur (Jalan Ampang), a tall private hospital with a five-level podium wing and a drive-in canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 77,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceae3",
+          "#8fb0c0",
+          "#4b6a8a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1996",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gleneagles_Hospital_Kuala_Lumpur",
+          "what": "private hospital on Jalan Ampang; OSM building has 5 levels, 117x78 m"
+        }
+      ],
+      "notes": "Footprint and 5 levels measured from OSM. Colours estimated. The real hospital has additional taller blocks that are not modelled."
+    },
+    "kuala-lumpur-osm-way-925097361": {
+      "venueId": "kuala-lumpur-osm-way-925097361",
+      "city": "kuala-lumpur",
+      "name": "Stadium Majlis Perbandaran Selayang",
+      "archetype": "stadium",
+      "subject": "the 16,000-seat Selayang Municipal Council Stadium (1999): an open oval bowl with a covered main stand, a running track and corner floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 216,
+        "depth_m": 163,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "open bowl with covered main stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab0",
+          "#2f6f9a",
+          "#e8e4da"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "digital scoreboard"
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Selayang_Municipal_Council_Stadium",
+          "what": "16,000 capacity, built 1997-1999, opened 26 November 1999; grass pitch, athletics track, digital scoreboard"
+        }
+      ],
+      "notes": "Capacity, date and scoreboard sourced; whether the stands carry a roof is not stated, so a partial covered main stand is assumed. Much smaller and more open than Bukit Jalil."
+    },
+    "kuala-lumpur-quiet-reflection": {
+      "venueId": "kuala-lumpur-quiet-reflection",
+      "city": "kuala-lumpur",
+      "name": "Masjid As-Saadah",
+      "archetype": "mosque-domed",
+      "subject": "Masjid As-Saadah, a mid-size neighbourhood mosque with a green-capped dome and a single minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome",
+        "variant": "one dome, one minaret",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2eee3",
+          "#2f8f6a",
+          "#d6b24c"
+        ],
+        "roofColour": "#2f8f6a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM: mosque 88x63 m near the coordinate. Nothing describes it, so typed from the city style; low confidence."
+    },
+    "kuala-lumpur-recreation": {
+      "venueId": "kuala-lumpur-recreation",
+      "city": "kuala-lumpur",
+      "name": "National Zoo",
+      "archetype": "park-landscape",
+      "subject": "the entrance plaza of the National Zoo of Malaysia (Ulu Klang), a forested zoo with a gate and an elephant sculpture monument at the entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#d8d0bd",
+          "#8b6b4a",
+          "#3d7f4a"
+        ],
+        "roofColour": "#6e4b32",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gate"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "elephant sculpture monument at the entrance"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1963",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Zoo_of_Malaysia",
+          "what": "about 45 ha in Ulu Klang, dense tropical vegetation, entrance monument with an elephant sculpture, tram stops, pavilions and exhibits"
+        }
+      ],
+      "notes": "Sourced: elephant monument at the entrance and dense jungle planting. Gate and pavilion forms are typical and not individually described. Distinct from Titiwangsa by an enclosed zoo entrance and a thick jungle backdrop."
+    },
+    "kuala-lumpur-transit": {
+      "venueId": "kuala-lumpur-transit",
+      "city": "kuala-lumpur",
+      "name": "Kepong Sentral",
+      "archetype": "transport-station",
+      "subject": "Kepong Sentral KTM Komuter station: an elevated station with two side platforms under long canopies and a link bridge to the MRT station",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "curved",
+        "variant": "elevated side platforms"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab0",
+          "#2f6f9a",
+          "#e8e4da"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kepong_Sentral_Komuter_station",
+          "what": "2 side platforms, 2 tracks, parking, link bridge to MRT Sri Damansara Timur, Tanjung Malim-Port Klang line"
+        }
+      ],
+      "notes": "OSM roof 151x24 m; Wikidata calls it an elevated station. Colours estimated. The elevated form with a roofed platform and link bridge is what makes it recognisable."
+    }
+  }
+}

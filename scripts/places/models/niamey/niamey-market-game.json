@@ -1,0 +1,372 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/687861467",
+   "used": "the market's real outline (name match, 102 x 31 m strip) as the market ground; lock-up rows, tin sheds and umbrella stalls laid along its long axis"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/niamey.json#niamey-market-game",
+   "used": "tin-roofed stalls and open-fronted lock-ups around sandy lanes; no photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "market-ground",
+   "footprint": {
+    "polygon": [
+     [
+      -43.2,
+      -9.2
+     ],
+     [
+      -36.8,
+      -33
+     ],
+     [
+      -8.4,
+      -20.8
+     ],
+     [
+      52.5,
+      15.8
+     ],
+     [
+      47.1,
+      25.8
+     ],
+     [
+      -1.8,
+      19.1
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9ad86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b48c",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -25.4,
+    -5.9,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 22,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#8b6a52",
+     "#6c7b84",
+     "#a3472f"
+    ],
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "wall_colour": "#c9ad86"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -3.6,
+    4.3,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 22,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#8b6a52",
+     "#6c7b84",
+     "#a3472f"
+    ],
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "wall_colour": "#c9ad86"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    18.1,
+    14.4,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 22,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#8b6a52",
+     "#6c7b84",
+     "#a3472f"
+    ],
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "wall_colour": "#c9ad86"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    38.1,
+    23.7,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 22,
+    "depth": 3.3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.5,
+    "veranda": 1.2,
+    "shutter_colours": [
+     "#8b6a52",
+     "#6c7b84",
+     "#a3472f"
+    ],
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "wall_colour": "#c9ad86"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14.6,
+    -14.7,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    16.2,
+    -0.3,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    37.9,
+    9.8,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "length": 16,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#8b6a52",
+    "roof_material": "corrugated",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -26.2,
+    -13.5,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c2562f",
+     "#e0b23a",
+     "#3f7fb0",
+     "#b5b0a6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -8.1,
+    -5.0,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c2562f",
+     "#e0b23a",
+     "#3f7fb0",
+     "#b5b0a6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    10.0,
+    3.4,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c2562f",
+     "#e0b23a",
+     "#3f7fb0",
+     "#b5b0a6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    28.1,
+    11.9,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "count": 5,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c2562f",
+     "#e0b23a",
+     "#3f7fb0",
+     "#b5b0a6"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo: stall and shed positions are plausible rows, not the real layout"
+ }
+}

@@ -1,0 +1,687 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maputo",
+ "venueId": "maputo-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mesquita_da_Baixa_Maputo_Mozambique.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ray Langsten",
+   "view": "street",
+   "file": "/tmp/places-evidence/maputo/maputo-quiet-reflection-0.jpg",
+   "used": "cream-yellow render with white trim, arched ground-floor windows, curved upper wall with white relief panels, teal domes, tall white fluted minaret with teal cap on a square arch-windowed base, tall white entrance arch"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mesquita_Maputo.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "James and Alex BonTempo",
+   "view": "street",
+   "file": "/tmp/places-evidence/maputo/maputo-quiet-reflection-1.jpg",
+   "used": "proportions of the curved front, minaret position at the right end, second dome behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/242985514",
+   "used": "overall extent (about 40 m) only; plan composed from the photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-hall",
+   "footprint": {
+    "rect": [
+     29,
+     9
+    ]
+   },
+   "at": [
+    -1.5,
+    0
+   ],
+   "height": 7.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e6dc98",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "bay": 4.2,
+    "plinth": 0.4,
+    "bands": "#f4f1ea",
+    "faces": {
+     "left": "none",
+     "right": "none"
+    },
+    "windows": "none",
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 3.6,
+      "depth": 0.55,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd5a0",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-hall",
+   "footprint": {
+    "polygon": [
+     [
+      -15,
+      0.5
+     ],
+     [
+      -12,
+      -1.3
+     ],
+     [
+      -9,
+      -2.7
+     ],
+     [
+      -6,
+      -3.7
+     ],
+     [
+      -3,
+      -4.3
+     ],
+     [
+      0,
+      -4.5
+     ],
+     [
+      3,
+      -4.3
+     ],
+     [
+      6,
+      -3.7
+     ],
+     [
+      9,
+      -2.7
+     ],
+     [
+      12,
+      -1.3
+     ],
+     [
+      14,
+      -0.14
+     ],
+     [
+      14,
+      6
+     ],
+     [
+      -15,
+      6
+     ]
+    ]
+   },
+   "at": [
+    -1,
+    3
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ebe5ae",
+    "windows": "none",
+    "bands": "#f4f1ea",
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f4f1ea",
+      "height": 0.5,
+      "floors": "all"
+     },
+     {
+      "type": "fins",
+      "spacing": 4.2,
+      "depth": 0.35,
+      "width": 1.6,
+      "colour": "#f4f1ea"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ddd5a0",
+    "parapet": 0.4
+   },
+   "z0": 7.0
+  },
+  {
+   "type": "mass",
+   "id": "minaret-base",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    18.5,
+    -1
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e8de9e",
+    "windows": "pointed",
+    "windowRatio": 0.3,
+    "cornice": true,
+    "bands": "#f4f1ea",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#f4f1ea",
+      "height": 0.6,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2dba0",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -4,
+    7,
+    14
+   ],
+   "params": {
+    "radius": 5.4,
+    "height": 4.6,
+    "profile": "hemi",
+    "colour": "#3fa59a",
+    "finial": 1.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -1,
+    -1.5,
+    6.9
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 2.0,
+    "profile": "hemi",
+    "colour": "#3fa59a",
+    "finial": 0.8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -4.6,
+    8.2
+   ],
+   "params": {
+    "width": 3,
+    "height": 0.8,
+    "bottom": 0,
+    "colour": "#3b3630",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -6,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    18.5,
+    -1,
+    10
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#f4f1ea",
+    "crease": 20,
+    "arcade": {
+     "from": 10.9,
+     "to": 12.5,
+     "count": 8,
+     "width": 0.5,
+     "height": 1.2,
+     "sill": 0.2,
+     "shape": "arch",
+     "depth": 0.3,
+     "innerColour": "#3b3630"
+    },
+    "profile": [
+     [
+      2.4,
+      0,
+      "#f4f1ea"
+     ],
+     [
+      2.1,
+      0.4
+     ],
+     [
+      1.9,
+      10.0
+     ],
+     [
+      2.6,
+      10.2
+     ],
+     [
+      2.8,
+      10.6
+     ],
+     [
+      1.55,
+      10.9
+     ],
+     [
+      1.55,
+      12.5
+     ],
+     [
+      2.1,
+      12.7
+     ],
+     [
+      2.1,
+      13.0
+     ],
+     [
+      1.4,
+      13.1
+     ],
+     [
+      1.2,
+      13.3,
+      "#3fa59a"
+     ],
+     [
+      1.55,
+      13.9,
+      "#3fa59a"
+     ],
+     [
+      1.5,
+      14.6,
+      "#3fa59a"
+     ],
+     [
+      0.9,
+      15.6,
+      "#3fa59a"
+     ],
+     [
+      0.35,
+      16.6,
+      "#3fa59a"
+     ],
+     [
+      0.08,
+      18.0,
+      "#3fa59a"
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10.5,
+    -4.4,
+    0
+   ],
+   "params": {
+    "colour": "#f4f1ea",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5.4,
+       0.9
+      ]
+     },
+     {
+      "z": 8,
+      "rect": [
+       5.4,
+       0.9
+      ]
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       4.4,
+       0.9
+      ]
+     },
+     {
+      "z": 12,
+      "rect": [
+       3.2,
+       0.9
+      ]
+     },
+     {
+      "z": 13.3,
+      "rect": [
+       2.0,
+       0.9
+      ]
+     },
+     {
+      "z": 14.2,
+      "rect": [
+       1.0,
+       0.9
+      ]
+     },
+     {
+      "z": 14.9,
+      "rect": [
+       0.3,
+       0.9
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    10.5,
+    -4.95,
+    0
+   ],
+   "params": {
+    "colour": "#2f2a26",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       0.4
+      ]
+     },
+     {
+      "z": 7,
+      "rect": [
+       3.6,
+       0.4
+      ]
+     },
+     {
+      "z": 9,
+      "rect": [
+       3.0,
+       0.4
+      ]
+     },
+     {
+      "z": 10.5,
+      "rect": [
+       2.1,
+       0.4
+      ]
+     },
+     {
+      "z": 11.8,
+      "rect": [
+       1.2,
+       0.4
+      ]
+     },
+     {
+      "z": 12.6,
+      "rect": [
+       0.3,
+       0.4
+      ]
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    10.5,
+    -4.95,
+    12.7
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#3fa59a",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -15.5,
+     -4.4,
+     7.0
+    ],
+    "end": [
+     5.5,
+     -4.4,
+     7.0
+    ],
+    "count": 42,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.22,
+       0.22
+      ],
+      "height": 0.8,
+      "colour": "#f4f1ea",
+      "windows": "none"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -4.4,
+    7.8
+   ],
+   "params": {
+    "rect": [
+     21,
+     0.35
+    ],
+    "height": 0.25,
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -4.4,
+    6.7
+   ],
+   "params": {
+    "rect": [
+     21,
+     0.9
+    ],
+    "height": 0.35,
+    "colour": "#f4f1ea",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.8,
+    -4.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "height": 3.4,
+    "colour": "#5a3a26",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    -4.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "height": 3.4,
+    "colour": "#5a3a26",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.6,
+    -4.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.15
+    ],
+    "height": 3.4,
+    "colour": "#5a3a26",
+    "windows": "none"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "Relief panels are plain fins (no rosettes or pierced lattice on minaret base); minaret fluting is a crease only; entrance medallion is a block; arch surrounds on ground arcade are plain; plan only loosely follows OSM"
+ }
+}

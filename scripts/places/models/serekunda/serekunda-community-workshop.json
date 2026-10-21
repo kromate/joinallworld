@@ -1,0 +1,127 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:GNLSA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gayobah13",
+   "view": "side",
+   "file": "/tmp/places-evidence/serekunda/lib1.jpg",
+   "used": "style reference only (photos show the Gambia National Library in Banjul, not a Serekunda workshop): single-storey terracotta-orange rendered building with white-framed barred windows, pitched metal roof with deep eaves, split-colour wall, planted yard"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gambia_National_Library.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gayobah13",
+   "view": "detail",
+   "used": "style reference only (photos show the Gambia National Library in Banjul, not a Serekunda workshop): entrance walkway under a dark barrel-vaulted canopy on lattice steel posts, low rendered side walls, short steps to white entrance wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/255713471",
+   "used": "stepped L outline (29 x 28 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 6,
+  "fovDeg": 50,
+  "aspect": 2.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f08a5a",
+    "windows": "punched",
+    "windowRatio": 0.4,
+    "plinth": 1.0,
+    "bands": "#f3efe6",
+    "glassColour": "#f3efe6"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a3a6a6",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 10,
+    "height": 3.2,
+    "form": "curved",
+    "rise": 1.2,
+    "columns": 4,
+    "colour": "#2d2a28",
+    "axis": "y"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -10,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -18,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "photos are of a different building (style reference only); window bars and AC unit approximated; no sign board by design"
+ }
+}

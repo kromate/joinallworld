@@ -1,0 +1,579 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "cg-redo-mosque",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lagos_Central_Mosque,_Lagos_Island.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Beendy234",
+   "view": "front",
+   "used": "four slim round minarets with wide arched-opening collar galleries and small gold caps with crescents, low tan hall with patterned frieze, two arched doorways, shallow gold dome behind, market crowd around",
+   "file": "/tmp/places-evidence/lagos/lgm1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Central_Mosque_Lagos_Island.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Juga",
+   "view": "aerial",
+   "used": "minaret arrangement (tall inner pair, shorter outer), gold ribbed dome with scalloped parapet, tan/gold colours, dense surroundings",
+   "file": "/tmp/places-evidence/lagos/lgm2.jpg"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 46,
+  "aspect": 0.64
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     50,
+     40
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb48e",
+    "windows": "none",
+    "plinth": 0.8,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 13,
+      "opening": 0.52,
+      "height": 0.8,
+      "depth": 0.9,
+      "pierColour": "#cdb48e",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#b89a6a"
+      ],
+      "height": 1.1,
+      "at": 0.88,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfa882",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    4,
+    0
+   ],
+   "on": "hall",
+   "params": {
+    "mode": "line",
+    "count": 1,
+    "of": [
+     {
+      "type": "revolve",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "segments": 36,
+       "colour": "#cfae58",
+       "profile": [
+        [
+         8.6,
+         0,
+         "#d9caa6"
+        ],
+        [
+         8.6,
+         2.0
+        ],
+        [
+         9.0,
+         2.1
+        ],
+        [
+         9.0,
+         2.7
+        ],
+        [
+         8.2,
+         2.8,
+         "#d4ae48"
+        ],
+        [
+         7.6,
+         4.0
+        ],
+        [
+         6.2,
+         5.2
+        ],
+        [
+         4.2,
+         6.2
+        ],
+        [
+         2.0,
+         6.9
+        ],
+        [
+         0.5,
+         7.2
+        ],
+        [
+         0.5,
+         8.3
+        ],
+        [
+         0.15,
+         9.6
+        ]
+       ]
+      }
+     },
+     {
+      "type": "revolve",
+      "lod": [
+       2
+      ],
+      "params": {
+       "segments": 8,
+       "colour": "#cfae58",
+       "profile": [
+        [
+         8.6,
+         0,
+         "#d9caa6"
+        ],
+        [
+         8.6,
+         2.0
+        ],
+        [
+         8.2,
+         2.8,
+         "#d4ae48"
+        ],
+        [
+         5,
+         5.5
+        ],
+        [
+         0.2,
+         7.2
+        ]
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -12,
+     -4,
+     0
+    ],
+    "end": [
+     12,
+     -4,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "revolve",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "segments": 24,
+       "colour": "#c4ab85",
+       "profile": [
+        [
+         1.5,
+         0
+        ],
+        [
+         1.5,
+         32.4,
+         "#c4ab85"
+        ],
+        [
+         3.4,
+         34.0,
+         "#d9caa6"
+        ],
+        [
+         3.4,
+         39.4
+        ],
+        [
+         3.6,
+         39.5
+        ],
+        [
+         3.6,
+         40.0
+        ],
+        [
+         1.6,
+         40.0
+        ],
+        [
+         1.55,
+         40.599999999999994,
+         "#6e5f50"
+        ],
+        [
+         1.55,
+         44.8
+        ],
+        [
+         1.75,
+         44.9,
+         "#d4ae48"
+        ],
+        [
+         1.75,
+         45.5
+        ],
+        [
+         1.45,
+         46.5
+        ],
+        [
+         0.8,
+         47.199999999999996
+        ],
+        [
+         0.12,
+         47.8
+        ]
+       ],
+       "arcade": {
+        "from": 34.0,
+        "to": 39.4,
+        "count": 12,
+        "width": 1.0,
+        "height": 3.6,
+        "sill": 1.2,
+        "shape": "pointed",
+        "depth": 0.4,
+        "innerColour": "#4a3426"
+       }
+      }
+     },
+     {
+      "type": "revolve",
+      "lod": [
+       2
+      ],
+      "params": {
+       "segments": 6,
+       "colour": "#c4ab85",
+       "profile": [
+        [
+         1.5,
+         0
+        ],
+        [
+         1.5,
+         32.4
+        ],
+        [
+         3.4,
+         34.0,
+         "#d9caa6"
+        ],
+        [
+         3.4,
+         40.0
+        ],
+        [
+         1.55,
+         40.0,
+         "#6e5f50"
+        ],
+        [
+         1.55,
+         44.4
+        ],
+        [
+         1.75,
+         44.4,
+         "#d4ae48"
+        ],
+        [
+         0.1,
+         47.9
+        ]
+       ]
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       48.4
+      ],
+      "lod": [
+       0
+      ],
+      "params": {
+       "radius": 0.07,
+       "n": 4,
+       "arc": {
+        "steps": 8,
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 0.55,
+        "startDeg": -50,
+        "endDeg": 230,
+        "plane": "xz"
+       },
+       "colour": "#d4ae48"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -22,
+     -4,
+     0
+    ],
+    "end": [
+     22,
+     -4,
+     0
+    ],
+    "count": 2,
+    "of": [
+     {
+      "type": "revolve",
+      "lod": [
+       0,
+       1
+      ],
+      "params": {
+       "segments": 24,
+       "colour": "#c4ab85",
+       "profile": [
+        [
+         1.5,
+         0
+        ],
+        [
+         1.5,
+         22.4,
+         "#c4ab85"
+        ],
+        [
+         3.4,
+         24.0,
+         "#d9caa6"
+        ],
+        [
+         3.4,
+         29.4
+        ],
+        [
+         3.6,
+         29.5
+        ],
+        [
+         3.6,
+         30.0
+        ],
+        [
+         1.6,
+         30.0
+        ],
+        [
+         1.55,
+         30.599999999999998,
+         "#6e5f50"
+        ],
+        [
+         1.55,
+         34.8
+        ],
+        [
+         1.75,
+         34.9,
+         "#d4ae48"
+        ],
+        [
+         1.75,
+         35.5
+        ],
+        [
+         1.45,
+         36.5
+        ],
+        [
+         0.8,
+         37.199999999999996
+        ],
+        [
+         0.12,
+         37.8
+        ]
+       ],
+       "arcade": {
+        "from": 24.0,
+        "to": 29.4,
+        "count": 12,
+        "width": 1.0,
+        "height": 3.6,
+        "sill": 1.2,
+        "shape": "pointed",
+        "depth": 0.4,
+        "innerColour": "#4a3426"
+       }
+      }
+     },
+     {
+      "type": "revolve",
+      "lod": [
+       2
+      ],
+      "params": {
+       "segments": 6,
+       "colour": "#c4ab85",
+       "profile": [
+        [
+         1.5,
+         0
+        ],
+        [
+         1.5,
+         22.4
+        ],
+        [
+         3.4,
+         24.0,
+         "#d9caa6"
+        ],
+        [
+         3.4,
+         30.0
+        ],
+        [
+         1.55,
+         30.0,
+         "#6e5f50"
+        ],
+        [
+         1.55,
+         34.4
+        ],
+        [
+         1.75,
+         34.4,
+         "#d4ae48"
+        ],
+        [
+         0.1,
+         37.9
+        ]
+       ]
+      }
+     },
+     {
+      "type": "sweep-path",
+      "at": [
+       0,
+       0,
+       38.4
+      ],
+      "lod": [
+       0
+      ],
+      "params": {
+       "radius": 0.07,
+       "n": 4,
+       "arc": {
+        "steps": 8,
+        "centre": [
+         0,
+         0,
+         0
+        ],
+        "radius": 0.55,
+        "startDeg": -50,
+        "endDeg": 230,
+        "plane": "xz"
+       },
+       "colour": "#d4ae48"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Round arcaded balcony drums with flared collars, dark upper shafts, gold caps and crescents, arched doors and frieze now match. Missing: dark shaft grooves, dome ribs, market clutter."
+ }
+}

@@ -1,0 +1,175 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "wikidata",
+   "ref": "Q68652114",
+   "used": "confirms a public library at this point; no image, no OSM building"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     34,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ead8",
+    "windows": "louvre",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a4a2f",
+    "faces": {
+     "front": "louvre",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9196",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "reading-wing",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -11,
+    -12
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a4a2f",
+    "windows": "louvre",
+    "windowRatio": 0.35,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9196",
+    "material": "concrete",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    3,
+    -10.5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 7,
+    "height": 4.2,
+    "radius": 0.28,
+    "beamHeight": 0.6,
+    "roofDepth": 3,
+    "colour": "#f0ead8",
+    "roofColour": "#bdb7a5"
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    3,
+    -13.8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#bdb7a5"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.7,
+    "colour": "#7a4a2f"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -22,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     6
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "ebonyi-state-library-board",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typical form from the brief"
+ }
+}

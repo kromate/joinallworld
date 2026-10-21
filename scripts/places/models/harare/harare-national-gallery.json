@@ -1,0 +1,442 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-national-gallery",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Gallery_Zimbabwe.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Awinda",
+   "view": "front",
+   "file": "/tmp/places-evidence/harare/h1014-gallery1.jpg",
+   "used": "long upper floor of cream stone-faced slab with ribbon glazing and louvred panels cantilevered over a recessed glazed ground floor on round columns; coloured mosaic mural at the west end; darker stone-clad end block; steps, low walls, black stone sculptures, flagpoles, planting"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Entrance_to_the_National_Gallery_of_Zimbabwe.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Unknown",
+   "view": "side",
+   "file": "/tmp/places-evidence/harare/h1014-gallery2.jpg",
+   "used": "deep soffit over the entrance, round concrete columns, reflecting water channel with railing in front, panel cladding on the slab edge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/297170048",
+   "used": "overall size (about 72 x 40 m, bent plan) and name match; modelled as a straight slab"
+  }
+ ],
+ "camera": {
+  "yawDeg": -32,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-recess",
+   "footprint": {
+    "rect": [
+     56,
+     8
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f2c29",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc6b2",
+    "overhang": 0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-slab",
+   "footprint": {
+    "rect": [
+     66,
+     16
+    ]
+   },
+   "at": [
+    2,
+    4
+   ],
+   "z0": 4.6,
+   "height": 6.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3c9b4",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "back": "ribbon"
+    },
+    "cornice": true,
+    "plinth": 0.0,
+    "pattern": [
+     {
+      "type": "louvres",
+      "colour": "#6c7070",
+      "at": "base"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3c9b4",
+    "material": "membrane",
+    "overhang": 1.2,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stone-end",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    27,
+    -5
+   ],
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#b2a48b",
+    "windows": "none",
+    "windowRatio": 0,
+    "faces": {
+     "front": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a96",
+    "overhang": 0.4,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "radius": 0.6,
+      "n": 10,
+      "height": 4.6,
+      "colour": "#bdb09a"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -26,
+     -3.2
+    ],
+    "end": [
+     22,
+     -3.2
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "rise": 1.2,
+    "run": 1.5,
+    "count": 6,
+    "colour": "#bdb5a4"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    10,
+    -10,
+    0.05
+   ],
+   "params": {
+    "width": 30,
+    "depth": 3.6,
+    "shape": "rect",
+    "colour": "#6fa3a0",
+    "bank": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -16.5
+     ],
+     [
+      28,
+      -16.5
+     ]
+    ],
+    "height": 0.9,
+    "thickness": 0.8,
+    "colour": "#bfb6a5"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -29.5,
+    -4.1,
+    6.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#c4785a",
+    "frameColour": "#c4785a",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -26.9,
+    -4.1,
+    6.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#3f6f9a",
+    "frameColour": "#3f6f9a",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24.3,
+    -4.1,
+    6.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#d8b04a",
+    "frameColour": "#d8b04a",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -21.7,
+    -4.1,
+    6.4
+   ],
+   "params": {
+    "width": 2.6,
+    "height": 4.2,
+    "bottom": 0,
+    "colour": "#7a5a8c",
+    "frameColour": "#7a5a8c",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -17,
+    -9.5,
+    0.8
+   ],
+   "params": {
+    "height": 4.32,
+    "pose": "stand",
+    "colour": "#2b2a28"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    -6,
+    -8.5,
+    0.8
+   ],
+   "params": {
+    "height": 3.84,
+    "pose": "stand",
+    "colour": "#34322f"
+   }
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    24,
+    -14.5,
+    0
+   ],
+   "params": {
+    "height": 4.56,
+    "pose": "stand",
+    "colour": "#262524"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4,
+    -9.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     48,
+     6
+    ],
+    "height": 0.8,
+    "colour": "#bdb5a4"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -28,
+    -12.4,
+    0.8
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.0,
+    "colour": "#3a3a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    -8.0,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "n": 6,
+    "height": 10.0,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    -5.8,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "n": 6,
+    "height": 9.2,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -36,
+    -3.5999999999999996,
+    0
+   ],
+   "params": {
+    "radius": 0.12,
+    "n": 6,
+    "height": 8.4,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -44,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Straight slab instead of bent plan; mosaic is four flat colour panels; sculptures small and silhouette-like; glazing reads as dark ribbon; site still draws default trees."
+ }
+}

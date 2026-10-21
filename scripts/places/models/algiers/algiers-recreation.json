@@ -1,0 +1,1184 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parc_de_la_Libert%C3%A9.JPG",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yelles",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/recreation-1.jpg",
+   "used": "dense mixed palms and old broadleaf trees on grass, curving pinkish paths, pond with pink coping, black lamp posts, white apartment blocks overlooking the park"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Liberty_Park_%2B_Buildings.jpg",
+   "licence": "see Commons",
+   "author": "Commons contributor",
+   "view": "street",
+   "file": "/tmp/places-evidence/algiers/recreation-4.jpg",
+   "used": "white Haussmann-style blocks with balcony bands behind palms, low iron fence along the path"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/28962727",
+   "used": "real park outline (about 173 x 157 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 5,
+  "fovDeg": 60,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.0,
+  "lookAtZ": 4,
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#5f8a3e",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8a3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-1",
+   "footprint": {
+    "rect": [
+     110,
+     26
+    ]
+   },
+   "at": [
+    0,
+    20
+   ],
+   "height": 1.6,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89a86",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8a3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-2",
+   "footprint": {
+    "rect": [
+     96,
+     22
+    ]
+   },
+   "at": [
+    0,
+    36
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89a86",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8a3e"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "terrace-3",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    48
+   ],
+   "height": 4.8,
+   "wall": {
+    "material": "stone",
+    "colour": "#a89a86",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5f8a3e"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -45,
+      -8,
+      0
+     ],
+     [
+      -25,
+      -14,
+      0
+     ],
+     [
+      -6,
+      -6,
+      0
+     ],
+     [
+      12,
+      -16,
+      0
+     ],
+     [
+      35,
+      -28,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#c9826f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -6,
+      -6,
+      0
+     ],
+     [
+      0,
+      4,
+      0
+     ],
+     [
+      8,
+      12,
+      0
+     ],
+     [
+      16,
+      16,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#c9826f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -40,
+      6,
+      0
+     ],
+     [
+      -20,
+      2,
+      0
+     ],
+     [
+      0,
+      6,
+      0
+     ],
+     [
+      20,
+      -2,
+      0
+     ],
+     [
+      45,
+      -12,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#c9826f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      3.0,
+      0.1
+     ]
+    },
+    "points": [
+     [
+      -30,
+      -22,
+      0
+     ],
+     [
+      0,
+      -24,
+      0
+     ],
+     [
+      30,
+      -14,
+      0
+     ],
+     [
+      48,
+      -4,
+      0
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#c9826f"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "stadium/water-surface",
+   "at": [
+    4,
+    -1,
+    0.45
+   ],
+   "params": {
+    "width": 21,
+    "depth": 13,
+    "shape": "oval",
+    "colour": "#d9a79a",
+    "bank": false
+   }
+  },
+  {
+   "type": "stadium/water-surface",
+   "at": [
+    4,
+    -1,
+    0.52
+   ],
+   "params": {
+    "width": 17,
+    "depth": 9.6,
+    "shape": "oval",
+    "colour": "#4d6f78",
+    "bank": true
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#222222",
+    "points": [
+     [
+      -45,
+      -9.8
+     ],
+     [
+      -25,
+      -15.8
+     ],
+     [
+      -6,
+      -7.8
+     ],
+     [
+      12,
+      -17.8
+     ],
+     [
+      35,
+      -29.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "thickness": 0.12,
+    "kind": "rail",
+    "colour": "#222222",
+    "points": [
+     [
+      -40,
+      4.2
+     ],
+     [
+      -20,
+      0.2
+     ],
+     [
+      0,
+      4.2
+     ],
+     [
+      20,
+      -3.8
+     ],
+     [
+      45,
+      -13.8
+     ]
+    ]
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -40,
+    -6.5,
+    0.5
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 6,
+    "spacing": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -35,
+    8,
+    0.5
+   ],
+   "params": {
+    "height": 5.5,
+    "count": 6,
+    "spacing": 14
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "block-1",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    -30,
+    60
+   ],
+   "height": 26,
+   "storeys": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "bay": 7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece8dc",
+       "#d6d0be"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-2",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    10,
+    60
+   ],
+   "height": 28,
+   "storeys": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "bay": 7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece8dc",
+       "#d6d0be"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-3",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    46,
+    60
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "bay": 7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece8dc",
+       "#d6d0be"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-4",
+   "footprint": {
+    "rect": [
+     10,
+     30
+    ]
+   },
+   "at": [
+    -52,
+    30
+   ],
+   "height": 25,
+   "storeys": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "bay": 7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece8dc",
+       "#d6d0be"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-5",
+   "footprint": {
+    "rect": [
+     10,
+     28
+    ]
+   },
+   "at": [
+    52,
+    25
+   ],
+   "height": 24,
+   "storeys": 7,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#ece8dc",
+    "windows": "none",
+    "bay": 7,
+    "cornice": true,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#ece8dc",
+       "#d6d0be"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a2",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -45,
+    -24,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    -26,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -14,
+    -25,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 15,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    2,
+    -27,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -48,
+    -4,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -40,
+    12,
+    2.1
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 17,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12,
+    -12,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    22,
+    -8,
+    0.5
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 12,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    38,
+    -2,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 17,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    48,
+    4,
+    0.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -4,
+    10,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -50,
+    22,
+    2.1
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 17,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -34,
+    24,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    26,
+    2.1
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 14,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    16,
+    24,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 13,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    48,
+    20,
+    2.1
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 11,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -26,
+    40,
+    3.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -6,
+    38,
+    3.7
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 16,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    34,
+    38,
+    3.7
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -36,
+    54,
+    5.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 14,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -12,
+    52,
+    5.3
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    10,
+    54,
+    5.3
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 16,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    34,
+    54,
+    5.3
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 16,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -38,
+    -14,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -8,
+    -4,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    24,
+    -14,
+    0.5
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -24,
+    18,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    8,
+    18,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    30,
+    16,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    -46,
+    30,
+    2.1
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 2.8,
+    "count": 2,
+    "spread": 2.5,
+    "colour": "#3f7a3a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Canopy about 2x denser but triangle budget prevents the dense overlapping canopy; trees are generic lollipops, no bare-branch trees or agave understorey; terraces are simple stone-walled lawns; fence/lamps tiny; apartment blocks are plain with floor-tone bands, not balcony rows."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-recreation"
+}

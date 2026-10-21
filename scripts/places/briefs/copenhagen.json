@@ -1,0 +1,1788 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "copenhagen",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "copenhagen",
+    "climate": "temperate",
+    "vernacular": "A brick city: four- to five-storey perimeter blocks of yellow and red brick with steep red clay-tile or flat tar roofs around courtyards in the centre; Functionalist and 1960s-70s concrete and brick housing estates and prefabricated low-rise settlements in the suburbs; whitewashed medieval village churches with red-tile roofs and stepped gables; white or yellow-washed half-timbered inns and farm buildings, some thatched; glass, steel and aluminium offices, malls and arenas in Orestad and the western suburbs. Green verdigris copper spires and roofs mark civic and church towers; beech, lime and lawns everywhere.",
+    "wallColours": [
+      "#d4b96a",
+      "#9b4a3a",
+      "#ece8dc",
+      "#6b4a3d",
+      "#b3b0a8",
+      "#d9b86a",
+      "#9db0bd"
+    ],
+    "roofColours": [
+      "#a8452f",
+      "#3f4448",
+      "#7aa392",
+      "#6b6a68"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "whitewash",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "copper",
+      "slate",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "stepped (crow-step) gables and whitewashed walls on village churches; slate roofs with copper-clad spires; yellow-brick stringcourses and white-framed windows on perimeter blocks; black half-timbering on inns; Nordic Classicism and Functionalist flat roofs with horizontal windows; coastal fort earthworks with concrete casemates; bicycle racks and cobbled lanes.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Denmark",
+        "what": "brick as main material, yellow and red brick, tile roofs and copper roofs and spires, whitewashed village churches with stepped gables, half-timbering, Functionalism, Orestad modern architecture"
+      },
+      {
+        "url": "https://da.wikipedia.org/wiki/Vedbæk_Kirke",
+        "what": "example: red brick church on granite plinth with slate roof and copper spire"
+      },
+      {
+        "url": "https://da.wikipedia.org/wiki/Jægersborg_Station",
+        "what": "1936 wooden S-train station buildings painted in distinct colours (red, black, dark green)"
+      },
+      {
+        "url": "https://da.wikipedia.org/wiki/Aldershvile",
+        "what": "classicist manor with white walls and blue-glazed hip roof (1782)"
+      }
+    ]
+  },
+  "places": {
+    "copenhagen-airport-copenhagen-airport": {
+      "venueId": "copenhagen-airport-copenhagen-airport",
+      "city": "copenhagen",
+      "name": "Copenhagen Kastrup Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3, the wing-shaped arrivals and departures building (1998) with the 1960 Terminal 2 beside it and the Hilton hotel and 2007 control tower behind, seen from the forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 280,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "curved",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9b9c4",
+          "#d5d6d4",
+          "#eceae5"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "wing-shaped Terminal 3 roof"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "2007 Naviair tower"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "rail and metro station under the terminal"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1960 T2, 1998 T3, 2001 hotel, 2007 tower",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Københavns_Lufthavn",
+          "what": "Terminal 3 (1998) wing-shaped arrival building designed by Vilhelm Lauritzen; Terminal 2 opened 30 April 1960; Hilton hotel 2001; Terminal 1 of seven pavilions closed 2015; new Naviair control tower in service 29 December 2007; railway station inside terminal, Metro since 2007"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Copenhagen_Airport",
+          "what": "Pier C 1969, A380 jet bridge 2015; Hilton 382 rooms 2001; terminal 3 handles arrivals"
+        }
+      ],
+      "notes": "No OSM terminal was matched. Facade materials are not described in the sources; glass-and-steel with light stone interiors is an estimate from the 1998 terminal type. Much larger and more complex than Chisinau or Abuja."
+    },
+    "copenhagen-clinic": {
+      "venueId": "copenhagen-clinic",
+      "city": "copenhagen",
+      "name": "Hvidovre Hospital",
+      "archetype": "hospital",
+      "subject": "Hvidovre Hospital (1968-79): four low main buildings of three to four storeys, spread over about 300,000 m2 and built unusually low for a hospital",
+      "form": {
+        "footprint": "H",
+        "width_m": 220,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b9b6ae",
+          "#8c6a52",
+          "#e1ded6"
+        ],
+        "roofColour": "#6b6a68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "assumed emergency pad"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1968-79, opened 26 March 1976",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hvidovre_Hospital",
+          "what": "built 1968 to 1979, official opening 26 March 1976; four main buildings of three stories; complex over 300,000 m2; unusual for being low-rise"
+        },
+        {
+          "url": "https://da.wikipedia.org/wiki/Hvidovre_Hospital",
+          "what": "four main buildings of four floors each, about 300,000 m2 constructed area"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/203861610",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3374772",
+          "what": "Wikidata item: Hvidovre Hospital"
+        }
+      ],
+      "notes": "Floors per sources are three (en) or four (da); four is used. OSM footprint 425 x 282 m is the whole campus, so 220 x 90 m shows the principal block. Materials and colours are estimates of a 1970s precast concrete and brick hospital; helipad is an assumption."
+    },
+    "copenhagen-community-notices": {
+      "venueId": "copenhagen-community-notices",
+      "city": "copenhagen",
+      "name": "The Danish Agency for Climate Data",
+      "archetype": "office-low",
+      "subject": "A six-storey brick perimeter-block office building with a flat grey roof, used by the Danish Agency for Climate Data",
+      "form": {
+        "footprint": "ring",
+        "width_m": 100,
+        "depth_m": 90,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#8c4a3a",
+          "#b3b0a8",
+          "#d8d3c7"
+        ],
+        "roofColour": "#808285",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "unknown, likely 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/2338363",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q29788118",
+          "what": "Wikidata item: The Danish Agency for Climate Data"
+        }
+      ],
+      "notes": "OSM: office building, 6 levels, brick, roof colour gray, 116 x 105 m with a 5,300 m2 area, meaning an open courtyard ring. Nothing else sourced; brick tone is an estimate. No signage."
+    },
+    "copenhagen-community-voting-game": {
+      "venueId": "copenhagen-community-voting-game",
+      "city": "copenhagen",
+      "name": "Frederiksberg Radhus",
+      "archetype": "civic-palace",
+      "subject": "Frederiksberg Town Hall (1942-53): a 60 x 120 m building with a 70 m tower at the corner of Smallegade and Allegade",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "limestone",
+        "colours": [
+          "#c9b27a",
+          "#b3a98f",
+          "#e8e1cf"
+        ],
+        "roofColour": "#7aa392",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "70 m tower with chime, melodies five times a day"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "1942-53",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Frederiksberg_Rådhus",
+          "what": "60 m wide, 120 m long; 70 m tower with chime donated by citizens; built 1942-53 by Henning Hansen, completed by Carl Nimb and Helge Holm; at Smallegade and Allegade"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Frederiksberg_Town_Hall",
+          "what": "inaugurated 9 May 1953; construction delayed by occupation material shortages; earlier 1886 Neo-Gothic town hall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/34106",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5499328",
+          "what": "Wikidata item: Frederiksberg Town Hall"
+        }
+      ],
+      "notes": "Facade material, colour and roof covering are not stated by sources; yellow-buff brick with a copper-green roof is an estimate typical of 1950s Danish civic building. OSM: 6 levels. Treat tower and roofline as the recognisable part."
+    },
+    "copenhagen-community-workshop": {
+      "venueId": "copenhagen-community-workshop",
+      "city": "copenhagen",
+      "name": "Hovedbiblioteket Albertslund",
+      "archetype": "campus-block",
+      "subject": "Albertslund main library in Albertslund Centrum (1973), renovated and extended 2003-04 by Henning Larsens Tegnestue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb9b0",
+          "#8ea3b0",
+          "#e4e1da"
+        ],
+        "roofColour": "#6b6a68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "2003-04 renovation"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1973, renovated 2003-04",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Albertslund_Bibliotek",
+          "what": "building opened 1973 in Albertslund Centrum; fully renovated 2003-04; new main library designed by Henning Larsens Tegnestue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/150139286",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        }
+      ],
+      "notes": "Material mix is an estimate: Albertslund Centrum is a 1960s-70s concrete and brick town centre, and the 2003-04 refit added glazing. OSM 92 x 86 m includes surrounding structures."
+    },
+    "copenhagen-market-game": {
+      "venueId": "copenhagen-market-game",
+      "city": "copenhagen",
+      "name": "City 2",
+      "archetype": "mall",
+      "subject": "City 2 shopping centre in Hoje Taastrup (1975, Staermose & Isager): a very large low shopping box of nearly 100,000 m2, modernised three times",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "regional-mall"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "render",
+        "colours": [
+          "#c9c6bf",
+          "#7d868c",
+          "#e8e6e1"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "large parking decks and lots"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1975, extended and modernised to 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/City_2",
+          "what": "shopping centre in Hoje Taastrup opened 1975, designed by Staermose & Isager, just under 100,000 m2, extended and modernised three times and renovated until 2012, 72 shops; Denmark third-largest centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25665260",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10453550",
+          "what": "Wikidata item: City 2"
+        }
+      ],
+      "notes": "OSM retail building 353 x 198 m (1975), clamped to 300 x 150. Exterior finishes are not described; light cladding is an estimate of the post-2012 refit."
+    },
+    "copenhagen-meal-stop": {
+      "venueId": "copenhagen-meal-stop",
+      "city": "copenhagen",
+      "name": "Morgenstedet",
+      "archetype": "restaurant",
+      "subject": "Morgenstedet, a small canteen-style vegetarian restaurant in Christiania with long indoor tables and uncovered outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d8c58a",
+          "#8a6a45",
+          "#efe9d8"
+        ],
+        "roofColour": "#8c4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "uncovered outdoor tables"
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "Christiania-style colour, unverified"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown (Christiania former military site)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Morgenstedet",
+          "what": "vegetarian restaurant in Christiania; three indoor tables seating about 4, 8 and 10; several uncovered outdoor tables; canteen character"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/107408808",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12327614",
+          "what": "Wikidata item: Morgenstedet"
+        }
+      ],
+      "notes": "The page gives layout but no architecture. OSM building 23.5 x 13 m. Facade is a typed low Christiania building; avoid logos or brand text."
+    },
+    "copenhagen-osm-node-290001160": {
+      "venueId": "copenhagen-osm-node-290001160",
+      "city": "copenhagen",
+      "name": "Oxbjerget",
+      "archetype": "park-landscape",
+      "subject": "Oxbjerget, a hilly green area with a dog park north-west of Copenhagen",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "hill-meadow"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9b9588",
+          "#7d786d",
+          "#b7ae9b"
+        ],
+        "roofColour": "#6e6a62",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "dog park fencing"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1072283716",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12330737",
+          "what": "Wikidata item: Oxbjerget"
+        }
+      ],
+      "notes": "OSM: leisure=dog_park, 475 x 312 m, height tag 1. Nothing else known. Render as a grassy rise with trees and a fenced meadow; no buildings."
+    },
+    "copenhagen-osm-relation-3003307": {
+      "venueId": "copenhagen-osm-relation-3003307",
+      "city": "copenhagen",
+      "name": "Herlev Bymidte",
+      "archetype": "mall",
+      "subject": "Herlev town centre: a low retail complex around a pedestrian square in a north-west Copenhagen suburb",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "town-centre"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#9b5a45",
+          "#b3b0a8",
+          "#e4e1da"
+        ],
+        "roofColour": "#6b6a68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown (suburban town centre)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/43544973",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q44693886",
+          "what": "Wikidata item: Herlev Bymidte Station"
+        }
+      ],
+      "notes": "OSM retail relation 130 x 122 m. No sources describing its look; typed 1960s-70s Danish suburban town-centre brick complex."
+    },
+    "copenhagen-osm-way-199052235": {
+      "venueId": "copenhagen-osm-way-199052235",
+      "city": "copenhagen",
+      "name": "Sollerod Kro",
+      "archetype": "restaurant",
+      "subject": "Sollerod Kro, a protected village inn of 1677 facing the village pond, a low long house with an inner yard",
+      "form": {
+        "footprint": "L",
+        "width_m": 49,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#efe9d6",
+          "#2f2a26",
+          "#8a6a45"
+        ],
+        "roofColour": "#b09a62",
+        "roofMaterial": "thatch",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1677, listed 1964",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Søllerød_Kro",
+          "what": "inn founded 1677 in old Sollerod; photo from 2015"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/S%C3%B8ller%C3%B8d_Kro",
+          "what": "old inn from 1677 facing the village pond, listed 1964; category suggests a thatched building but text does not confirm"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/199052235",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12338327",
+          "what": "Wikidata item: Søllerød Kro"
+        }
+      ],
+      "notes": "Thatched roof, whitewashed walls and black half-timber are typical of this North Zealand inn type and the Wikipedia category; they are not confirmed by a description. OSM footprint 49 x 28 m."
+    },
+    "copenhagen-osm-way-204999475": {
+      "venueId": "copenhagen-osm-way-204999475",
+      "city": "copenhagen",
+      "name": "Aldershvile Slotsruin",
+      "archetype": "heritage-fort",
+      "subject": "The ruin of Aldershvile manor (1782, Joseph Guione, burned 1909) by Bagsvaerd Lake: roofless classical walls with regular window openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "none",
+        "variant": "burned-manor-ruin"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#d9d4c4",
+          "#9b6a52",
+          "#b3b0a8"
+        ],
+        "roofColour": "#6b6a68",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "carriage gate and grotto nearby"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1782, burned 1909",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Aldershvile",
+          "what": "manor built 1782 by architect Joseph Guione, classicism, white walls, evenly spaced windows, strong cornice, hipped roof with blue-glazed tiles; burned 1909; ruin protected; Stenhuset c.1790, Sølyst 1782, carriage gate, grotto"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/204999475",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12300921",
+          "what": "Wikidata item: Aldershvile"
+        }
+      ],
+      "notes": "The original design is sourced; the current ruin shape (weathered plaster over brick, no roof) is typed from OSM building=ruins at 26 x 13 m."
+    },
+    "copenhagen-osm-way-24517109": {
+      "venueId": "copenhagen-osm-way-24517109",
+      "city": "copenhagen",
+      "name": "Waves",
+      "archetype": "mall",
+      "subject": "The Waves shopping centre on the Greve and Hundige edge: a large low retail complex with a long car park, started 1974",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "regional-mall"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d3c7",
+          "#5b8aa6",
+          "#efede8"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1974 start, later extended",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24517109",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4993535",
+          "what": "Wikidata item: Waves"
+        }
+      ],
+      "notes": "OSM building start_date 1974, 470 x 210 m (61,612 m2), wikidata linked but no description retrieved; the exterior is typed. The blue accent hints at the name but is a guess."
+    },
+    "copenhagen-osm-way-246489323": {
+      "venueId": "copenhagen-osm-way-246489323",
+      "city": "copenhagen",
+      "name": "Grøften",
+      "archetype": "restaurant",
+      "subject": "Grøften, the traditional restaurant in Tivoli Gardens (since 1874): a small ornate-pavilion style building with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a63c2f",
+          "#f2ede0",
+          "#4a3a2d"
+        ],
+        "roofColour": "#5a5a5a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1874",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Grøften",
+          "what": "restaurant in Tivoli, opened 1874 as Teatercafeen; entrance photo from 2013"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/246489323",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12314472",
+          "what": "Wikidata item: Grøften"
+        }
+      ],
+      "notes": "The page has no architectural description; the red-and-white timber pavilion look is an estimate of the Tivoli garden restaurants. OSM 26.8 x 14.4 m."
+    },
+    "copenhagen-osm-way-254493673": {
+      "venueId": "copenhagen-osm-way-254493673",
+      "city": "copenhagen",
+      "name": "Vedbæk Kirke",
+      "archetype": "church-gothic",
+      "subject": "Vedbaek Church: a small red-brick chapel church of 1870-71 on a granite plinth with a slate roof and a copper-clad spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "granite",
+        "colours": [
+          "#9b4a3a",
+          "#8d8a85",
+          "#d8d3c7"
+        ],
+        "roofColour": "#3f4448",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "copper-clad spire"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3,
+          "note": "J. T. Skovgaard 1946"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1870-71",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Vedbæk_Kirke",
+          "what": "red brick church on granite plinth, slate roof, copper-clad spire, built 1870-71 as chapel by architect Vilhelm Tvede, consecrated 4 June 1871, stained glass by J. T. Skovgaard 1946, 200 seats"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/254493673",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18948174",
+          "what": "Wikidata item: Vedbæk Church"
+        }
+      ],
+      "notes": "Pointed windows and buttresses are assumed from the neo-Gothic spire/slate type; materials are sourced. OSM 22.6 x 14.3 m including tower. Contrasts with the whitewashed Ganlose church."
+    },
+    "copenhagen-osm-way-25568322": {
+      "venueId": "copenhagen-osm-way-25568322",
+      "city": "copenhagen",
+      "name": "Gladsaxe Stadion",
+      "archetype": "stadium",
+      "subject": "Gladsaxe Stadium (1940): a 13,507-capacity football ground with a long double-decker side grandstand of 1998-99 and an older 1960s stand opposite",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed",
+        "variant": "football-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b3b0a8",
+          "#4a6a8a",
+          "#e0ddd6"
+        ],
+        "roofColour": "#6b6a68",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "long side upper and lower stand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "built from 1938, opened 1940; renovated 1998-99",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gladsaxe_Stadium",
+          "what": "13,507 capacity, 7,707 covered seats; 1998-99 renovation added long side with upper and lower grandstands and sponsor lounge; opposite stand from the 1960s; end stands uncovered standing; pitch 68 x 105 m; 700 lux; built from 1938, opened 1940"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25568322",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1986303",
+          "what": "Wikidata item: Gladsaxe Stadium"
+        }
+      ],
+      "notes": "Seat colours and cladding are estimates. The two uncovered end stands are the recognisable difference from Royal Arena."
+    },
+    "copenhagen-osm-way-25700603": {
+      "venueId": "copenhagen-osm-way-25700603",
+      "city": "copenhagen",
+      "name": "Borupgaard Gymnasium",
+      "archetype": "campus-block",
+      "subject": "Borupgaard Gymnasium in Ballerup: five square teaching blocks linked by a large canteen and study centre, a 12-track upper-secondary school",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "five-block-school",
+        "wings": 4
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#a35a40",
+          "#b3b0a8",
+          "#e4e1da"
+        ],
+        "roofColour": "#6b6a68",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "canteen and study centre link"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980 school, moved to this site 1983, extended 2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Borupgaard_Gymnasium",
+          "what": "school founded 1980, moved to current Ballerup site 1983; complex of five square buildings (blokke) linked by a large canteen and study centre; 12-track school; block 4, extra gym hall and study centre added 2004"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/127448216",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12304204",
+          "what": "Wikidata item: "
+        }
+      ],
+      "notes": "Layout is sourced; facade is an estimate of 1980s Danish school brick and flat roofs. OSM 100 x 91 m."
+    },
+    "copenhagen-osm-way-27890242": {
+      "venueId": "copenhagen-osm-way-27890242",
+      "city": "copenhagen",
+      "name": "Ganløse Kirke",
+      "archetype": "church-gothic",
+      "subject": "Ganlose Church, a village church from about 1100 in North Zealand: a whitewashed medieval church with a red-tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable",
+        "variant": "romanesque-village-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "brick",
+        "colours": [
+          "#efeadd",
+          "#9b4a3a",
+          "#c9c4b6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tower with stepped gable, typical for North Zealand"
+        },
+        {
+          "id": "buttresses",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "churchyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "c.1100",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Ganløse_Kirke",
+          "what": "built c.1100 near Frederikssund; page has photos but no architectural description"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Denmark",
+          "what": "village churches often whitewashed with stepped gables"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/27890242",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12313511",
+          "what": "Wikidata item: Ganløse Church"
+        }
+      ],
+      "notes": "Tower, gable and tile are typed from the Danish village-church pattern, not from a description. Footprint 20.9 x 14.4 m from OSM. Low."
+    },
+    "copenhagen-osm-way-28615766": {
+      "venueId": "copenhagen-osm-way-28615766",
+      "city": "copenhagen",
+      "name": "Dragør Fort",
+      "archetype": "heritage-fort",
+      "subject": "Dragor Fort (1910-15): a low coastal fortress on a small artificial island with earth-covered concrete casemates, strube caponiers, an observation post and a small cannon battery",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 74,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "coastal-fort"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8d8a85",
+          "#6f8c5a",
+          "#b3b0a8"
+        ],
+        "roofColour": "#6f8c5a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "grass-covered earthworks"
+        },
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "small battery"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1910-15",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Dragør_Fort",
+          "what": "built 1910-1915 on a small artificial island joined to Dragor by a land link, about 32,000 m2 of which 2,500 m2 built up; strube caponiers at the entrance, observation and fire-direction post, small cannon battery"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/671603544",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12308910",
+          "what": "Wikidata item: Dragør Fort"
+        }
+      ],
+      "notes": "Wikipedia gives parts but not materials; grey concrete with turf-covered mounds is typical of this fort type. OSM 196 x 74 m is clamped to 120 x 74."
+    },
+    "copenhagen-osm-way-391594117": {
+      "venueId": "copenhagen-osm-way-391594117",
+      "city": "copenhagen",
+      "name": "Royal Arena",
+      "archetype": "stadium",
+      "subject": "Royal Arena (2017) in Orestad: a 3XN-designed multi-purpose arena for 12,500 to 17,000 people with a distinctly Nordic design",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 112,
+        "storeys": 5,
+        "height_m": 32,
+        "roof": "curved",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#5f656b",
+          "#b9c0c4",
+          "#2e3338"
+        ],
+        "roofColour": "#4a4f54",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2013-16, opened 3 February 2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Arena",
+          "what": "arena in Orestad South by 3XN with HKS; capacity 12,500 ice hockey, 13,000 handball, up to 17,000 for concerts; groundbreaking 26 June 2013, opened 3 February 2017; cost DKK 1 billion; distinctly Nordic design"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/391594117",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5168452",
+          "what": "Wikidata item: Royal Arena"
+        }
+      ],
+      "notes": "The architect page was unreadable, so facade colour and finish are estimates (dark metal skin). OSM: 192 x 112 m, start 2017-01-28. Height 32 m is an estimate. A sealed indoor arena, unlike Gladsaxe."
+    },
+    "copenhagen-osm-way-4218311": {
+      "venueId": "copenhagen-osm-way-4218311",
+      "city": "copenhagen",
+      "name": "Flakfortet",
+      "archetype": "heritage-fort",
+      "subject": "Flakfortet (1910-16): a man-made fort island in the Oresund on the Flak sandbank, with casemates and earth ramparts, reached by summer boats from Nyhavn",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "sea-fort-island"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#8d8a85",
+          "#6f8c5a",
+          "#b3b0a8"
+        ],
+        "roofColour": "#6f8c5a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "landing for the boats from Nyhavn"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 1,
+          "note": "former gun positions"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1910-16, HAWK missiles until 1968",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Flakfortet",
+          "what": "artificial island built 1910-1916 on a sandbank (flak) in the Oresund; used by the military until 1968, last as a HAWK missile base; sold 2001; summer boats from Nyhavn 71"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/4218311",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3073253",
+          "what": "Wikidata item: Flakfortet"
+        }
+      ],
+      "notes": "Island shape and buildings are not described in sources. OSM footprint is 340 x 133 m, clamped to 120 x 90. Typed concrete and grass."
+    },
+    "copenhagen-osm-way-425763096": {
+      "venueId": "copenhagen-osm-way-425763096",
+      "city": "copenhagen",
+      "name": "Mosede Fort",
+      "archetype": "heritage-fort",
+      "subject": "Mosede Fort (1913-18): a land fort on Koge Bay with a restored casemate building that houses a World War I museum (opened 2014)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 84,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "land-fort"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#8d8a85",
+          "#6f8c5a",
+          "#9b6a52"
+        ],
+        "roofColour": "#6f8c5a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "casemate openings"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1913-18, museum 2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Mosede_Fort",
+          "what": "construction began 1913, manned June 1916, building work to 1918; casemate building restored by Greve Kommune from 2010; museum of Denmark in World War I opened 2014; coastal fortification on Koge Bay"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/425763096",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6915594",
+          "what": "Wikidata item: Mosede Fort"
+        }
+      ],
+      "notes": "Layout and finishes are not described; typed from the fort pattern. OSM 211 x 84 m, clamped to 120 x 84."
+    },
+    "copenhagen-osm-way-425777077": {
+      "venueId": "copenhagen-osm-way-425777077",
+      "city": "copenhagen",
+      "name": "Kongelundsfortet",
+      "archetype": "heritage-fort",
+      "subject": "Kongelundsfortet: a coastal battery of 1914-16 with gorge caponier, casemate building, a later radar platform and former barracks used as an asylum centre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "coastal-battery"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#8d8a85",
+          "#6f8c5a",
+          "#9b6a52"
+        ],
+        "roofColour": "#6f8c5a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2,
+          "note": "gorge caponier and casemate"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1914-16, radar 1959, closed 1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Kongelundsfortet",
+          "what": "built 1914-16 as Kongelunds Batteri to protect minefields in Koge Bay; 1959 NIKE radar station; closed 1982; Dragor municipality 1996; barracks used by Red Cross asylum centre; photo captions: gorge caponier, newer gorge building, casemate building, radar platform"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/425777077",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12322598",
+          "what": "Wikidata item: Kongelund Fort"
+        }
+      ],
+      "notes": "The wiki lists elements only through photo captions. Surface finishes are estimated. OSM 140 x 100 m."
+    },
+    "copenhagen-quiet-reflection": {
+      "venueId": "copenhagen-quiet-reflection",
+      "city": "copenhagen",
+      "name": "Vor Frue Kloster",
+      "archetype": "manor",
+      "subject": "Vor Frue Kloster at Asebakken: a Benedictine convent in a former country house (landsted) the sisters moved into in 1942",
+      "form": {
+        "footprint": "L",
+        "width_m": 47,
+        "depth_m": 42,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e8dfc0",
+          "#a8573f",
+          "#f2ece0"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small chapel bell turret (unverified)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "former country house; convent here since 1942",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Vor_Frue_Kloster_(Åsebakken)",
+          "what": "convent founded in Copenhagen 1914, Benedictine since 1937, moved 1942 into its current building, a former country estate (landsted); page is a stub"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2348273",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1261637",
+          "what": "Wikidata item: Åsebakken Priory"
+        }
+      ],
+      "notes": "No architecture described. Typed yellow-render country house with tile hip roof and a chapel wing. OSM 47 x 42 m."
+    },
+    "copenhagen-recreation": {
+      "venueId": "copenhagen-recreation",
+      "city": "copenhagen",
+      "name": "Farum Skulpturpark",
+      "archetype": "park-landscape",
+      "subject": "Farum Sculpture Park in Fredtofteparken (1999): a landscaped park with eight stone sculptures by international artists",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "sculpture-park"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a85",
+          "#b3b0a8",
+          "#6f8c5a"
+        ],
+        "roofColour": "#8d8a85",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 8,
+          "note": "abstract natural-stone sculptures (The Cloud, Meditative Place, Clair de Lune, Earth Weaving, Vandvogteren, Bulls, Playful Waves, Se ind i lyset)"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://sv.wikipedia.org/wiki/Farum_skulpturpark",
+          "what": "park in Fredtofteparken, Farum, established August 1999 on a proposal by Yael Artsi; eight natural-stone works including Svensson diabase piece"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/4787514",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10494205",
+          "what": "Wikidata item: "
+        }
+      ],
+      "notes": "The sources do not describe layout; sculptures are placed as eight stone pieces on lawns among trees. OSM park 247 x 147 m."
+    },
+    "copenhagen-transit": {
+      "venueId": "copenhagen-transit",
+      "city": "copenhagen",
+      "name": "Jægersborg Station",
+      "archetype": "transport-station",
+      "subject": "Jaegersborg S-train station: a 1936 wooden station building by K. T. Seest, now dark green, on the island platform with a roofed waiting hall; the water tower stands behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "small-wooden-station"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#2f4a3a",
+          "#f2ede0",
+          "#3f3f3f"
+        ],
+        "roofColour": "#3f4448",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "island platform with enclosed roofed waiting hall"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "4 tracks, 3 platforms"
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "Jaegersborg water tower in the background"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "1936",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://da.wikipedia.org/wiki/Jægersborg_Station",
+          "what": "opened 15 May 1936; wooden station building by K. T. Seest, the Hellerup-Holte stations got identical buildings in different colours; originally vermilion red, black in late 1970s, dark green about 2000; S-tog island platform with enclosed roofed waiting hall; Naerumbanen platform open shelter; 3 platforms, 4 tracks; water tower in the background"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/633393390",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10542069",
+          "what": "Wikidata item: Jægersborg"
+        }
+      ],
+      "notes": "OSM matched a 6 x 4 m service building 96 m away, so the building size (16 x 7 m) is an estimate. Roof covering is not stated; dark tile is a guess."
+    }
+  }
+}

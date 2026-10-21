@@ -1,0 +1,147 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lokoja",
+ "venueId": "gtbank-lokoja",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1113435755",
+   "used": "footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lokoja.json",
+   "used": "program, storeys, colours; no photo of this place found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "branch",
+   "footprint": {
+    "osm": true
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d8",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#6f8c96",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8b8f92",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 4,
+    "height": 3.4,
+    "form": "flat",
+    "colour": "#6f8c96"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -12.2,
+    5.2
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.4,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2,
+    "colour": "#bdb7a8"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    10,
+    -22,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -16
+    ]
+   }
+  ],
+  "cars": [
+   {
+    "at": [
+     -14,
+     -18
+    ],
+    "yawDeg": 0,
+    "colour": "#b8bcc2"
+   },
+   {
+    "at": [
+     -8,
+     -20
+    ],
+    "yawDeg": 90,
+    "colour": "#7a8691"
+   },
+   {
+    "at": [
+     14,
+     -18
+    ],
+    "yawDeg": 0,
+    "colour": "#c9c2b0"
+   }
+  ],
+  "extent": [
+   60,
+   50
+  ]
+ }
+}

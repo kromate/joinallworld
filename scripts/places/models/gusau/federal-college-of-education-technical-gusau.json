@@ -1,0 +1,262 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://commons.wikimedia.org/wiki/File:Wikipedia_Awareness_and_Training_in_Federal_College_of_Education(Technical)Gusua_10.jpg",
+   "used": "CC0 photo by Abubakar Yusuf Gusau reviewed: no building visible (person, banner, baobab, ochre gate pillar, laterite), so only the campus setting (baobab, shade trees, laterite) was taken"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/799035251",
+   "used": "nearest match is an 18 x 5 m outbuilding, too small to be the main block; not used as footprint"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json#federal-college-of-education-technical-gusau",
+   "used": "three-storey U-shaped teaching block in cream render with ribbon windows, balcony bands, steps, flag, blank signboard; est. 1989-90"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 16,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "spine",
+   "footprint": {
+    "rect": [
+     75,
+     15
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5cd",
+    "windows": "ribbon",
+    "windowRatio": 0.38,
+    "plinth": 0.5,
+    "bands": "#f7f4ee",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    -29.5,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0c6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#f7f4ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    29.5,
+    -5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece5cd",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#f7f4ee"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "material": "concrete",
+    "parapet": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "workshop",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    40
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9aa3a8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7f858a",
+    "material": "metal-sheet",
+    "rise": 1.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.35,
+    "count": 5,
+    "colour": "#d8d2c2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 1.6,
+    "colour": "#f7f4ee",
+    "frameColour": "#5f7a8a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "baobab",
+    "height": 13,
+    "spread": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 7,
+    "count": 3,
+    "line": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   120,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "federal-college-of-education-technical-gusau",
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of any FCET building exists; blocks are typed from the brief"
+ }
+}

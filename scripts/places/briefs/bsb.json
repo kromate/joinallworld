@@ -1,0 +1,1760 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bsb",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bsb",
+    "climate": "rainforest",
+    "vernacular": "Wealthy, orderly equatorial capital of cream and white painted concrete: low-rise government and commercial blocks of 2-4 storeys, three-storey shophouse rows with covered ground-floor walkways, and Malay-Islamic civic buildings with pitched or hipped roofs and gilded or coloured domes. Water-village houses on timber and concrete stilts (Kampong Ayer) in weathered brown timber with corrugated-metal roofs. Ample lawns, planted palms and tropical broadleaf trees; clean asphalt roads.",
+    "wallColours": [
+      "#efe8d8",
+      "#f4f2ec",
+      "#bfbab0",
+      "#c9b99a",
+      "#7a6a55",
+      "#d8d2c0"
+    ],
+    "roofColours": [
+      "#8a5a3c",
+      "#7d8084",
+      "#c9a227",
+      "#2f6fa8",
+      "#5f6b4e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "marble",
+      "timber",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "corrugated",
+      "concrete",
+      "gold-leaf"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Malay-Islamic motifs: gilded and coloured domes, slim minarets, trefoil and pointed arches, geometric and floral relief, calligraphy panels, songket-inspired mosaic patterns and kalat rope-like pillar motifs; pitched Malay-style roof forms with decorated gable ends on civic buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Omar_Ali_Saifuddien_Mosque",
+        "what": "cream mosque with gold mosaic dome, 51 m minaret, marble, lagoon and barge, songket-inspired mosaics, kalat pillars"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Istana_Nurul_Iman",
+        "what": "palace with golden domes and vaulted roofs reflecting Islamic and Malay influences"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kampong_Ayer",
+        "what": "stilt houses of timber (nibung, bulian), traditional roofs, timber and concrete walkways"
+      }
+    ]
+  },
+  "places": {
+    "bsb-airport-bsb-airport": {
+      "venueId": "bsb-airport-bsb-airport",
+      "city": "bsb",
+      "name": "Brunei International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The international terminal at Berakas: a long, low airport building with a wide arrivals hall and a mosque nearby inside the compound",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 280,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe8d8",
+          "#7a8a96",
+          "#bfbab0"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1974, arrivals hall 2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brunei_International_Airport",
+          "what": "construction began 1970, operational 1974; terminal for three million passengers; 40 check-in counters; mosque in compound; Phase 1A upgrade and new arrival hall opened Oct 2013"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1148514",
+          "what": "Brunei International Airport; OSM terminal relation about 336 x 279 m, 36,970 m2"
+        }
+      ],
+      "notes": "Sourced: dates, capacity, mosque in compound, and the OSM terminal extent. The articles describe no exterior (roof, colours); form, storeys and colours are typed. Mid-sized: larger than Dili airport, far smaller than Suvarnabhumi."
+    },
+    "bsb-clinic": {
+      "venueId": "bsb-clinic",
+      "city": "bsb",
+      "name": "Jerudong Park Medical Centre",
+      "archetype": "hospital",
+      "subject": "The main block of the private Jerudong Park Medical Centre: a U-shaped mid-rise with a covered entrance porch and ambulance bay",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#bfbab0",
+          "#c9b99a"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6185042",
+          "what": "Jerudong Park Medical Centre, private specialist hospital in Brunei; OSM relation about 121 x 118 m, 8,289 m2"
+        }
+      ],
+      "notes": "Low confidence: only identity and OSM extent (about 121 x 118 m) are sourced; the U plan, storeys and colours are typed. The Gleneagles JPMC venue is the same hospital (the operator): this brief shows the main wing complex, the other the nearer smaller block."
+    },
+    "bsb-community-notices": {
+      "venueId": "bsb-community-notices",
+      "city": "bsb",
+      "name": "Ministry of Religious Affairs",
+      "archetype": "civic-palace",
+      "subject": "The Ministry of Religious Affairs headquarters: a wide four-storey government block with a central entrance portico and Malay-Islamic accents",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#c9a227",
+          "#bfbab0"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small gilded dome over the entrance"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q19646292",
+          "what": "Ministry of Religious Affairs (Kementerian Hal Ehwal Ugama), OSM office about 101 x 66 m, 5,620 m2"
+        }
+      ],
+      "notes": "Low confidence: footprint (about 101 x 66 m) is measured; storeys, dome and arches are typed from Brunei government-building style, not seen in sources."
+    },
+    "bsb-community-voting-game": {
+      "venueId": "bsb-community-voting-game",
+      "city": "bsb",
+      "name": "Bandar Seri Begawan Royal Wharf",
+      "archetype": "transport-station",
+      "subject": "The royal wharf area on the Brunei River: a long low two-storey waterfront building beside a landing stage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 94,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe8d8",
+          "#8a5a3c",
+          "#c9a227"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "covered landing stage"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "arab-islamic",
+      "era": "unknown (historic building)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/508067587",
+          "what": "OSM historic building, 2 levels, about 94 x 12.5 m, nearest match 8 m from pin"
+        }
+      ],
+      "notes": "Low confidence: the real use of the historic building at the pin is not stated; only its extent (94 x 12.5 m, 2 levels, historic) is measured. The wharf/landing stage is inferred from the name."
+    },
+    "bsb-community-workshop": {
+      "venueId": "bsb-community-workshop",
+      "city": "bsb",
+      "name": "Lambak Kanan Library",
+      "archetype": "campus-block",
+      "subject": "A small public library: a two-storey modern building with a covered entrance and Malay-style hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#bfbab0",
+          "#8a5a3c"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q46113112",
+          "what": "Lambak Kanan Library, public library, Brunei Language and Literature Bureau library; OSM footprint 39 x 21 m, 716 m2"
+        }
+      ],
+      "notes": "Low confidence: footprint (39 x 21 m) sourced; storeys and roof typed. Smaller than the university libraries and plainer than the Brunei museum."
+    },
+    "bsb-market-game": {
+      "venueId": "bsb-market-game",
+      "city": "bsb",
+      "name": "Pasar Serbaneka Kampong Masin dan Kampong Bebatik",
+      "archetype": "market-hall",
+      "subject": "A small covered neighbourhood market (pasar serbaneka): a single-storey hall with wide eaves and open stall bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe8d8",
+          "#7a6a55",
+          "#bfbab0"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 14
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1213500438",
+          "what": "OSM marketplace building about 31.5 x 16.4 m, 517 m2"
+        }
+      ],
+      "notes": "Low confidence: footprint (31.5 x 16.4 m) measured; shape and colours typed. Small compared with Kampong Ayer-scale markets."
+    },
+    "bsb-meal-stop": {
+      "venueId": "bsb-meal-stop",
+      "city": "bsb",
+      "name": "Raziqin Restaurant",
+      "archetype": "shophouse",
+      "subject": "A restaurant on the ground floor of a three-storey commercial block (Block B), part of a shophouse row with covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 17,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#bfbab0",
+          "#7a6a55"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered ground-floor walkway"
+        },
+        {
+          "id": "signage-board",
+          "count": 4,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "shopfront",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1051831769",
+          "what": "OSM building \"Block B\", commercial, 3 levels, about 65 x 17 m, contains the pin"
+        }
+      ],
+      "notes": "Low confidence: OSM gives a three-storey commercial block of 65 x 17 m; the restaurant occupies part of it. Facade and awnings typed. Used shophouse rather than restaurant because the building is a shophouse block."
+    },
+    "bsb-osm-node-4723539711": {
+      "venueId": "bsb-osm-node-4723539711",
+      "city": "bsb",
+      "name": "Gleneagles JPMC",
+      "archetype": "hospital",
+      "subject": "The Gleneagles JPMC hospital block: a rectangular four-storey private hospital with a front porch and ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#7a8a96",
+          "#bfbab0"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6185042",
+          "what": "Jerudong Park Medical Centre (Gleneagles operator); OSM hospital way about 76.5 x 70.5 m, 4,172 m2"
+        }
+      ],
+      "notes": "Low confidence: same real hospital as bsb-clinic; this brief uses the smaller OSM building (76.5 x 70.5 m) as a rectangular block with a flat roof so it differs from the U-shaped main wing. Storeys typed."
+    },
+    "bsb-osm-node-4758981105": {
+      "venueId": "bsb-osm-node-4758981105",
+      "city": "bsb",
+      "name": "Mono",
+      "archetype": "restaurant",
+      "subject": "A small standalone single-storey cafe-restaurant with a glazed front and a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4f2ec",
+          "#7a6a55",
+          "#2f6fa8"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/483146366",
+          "what": "OSM building, 1 level, about 25 x 15.9 m"
+        }
+      ],
+      "notes": "Low confidence: only a 25 x 16 m single-storey footprint is measured; nothing is known of the real appearance."
+    },
+    "bsb-osm-node-4844890304": {
+      "venueId": "bsb-osm-node-4844890304",
+      "city": "bsb",
+      "name": "Diana Berudin",
+      "archetype": "restaurant",
+      "subject": "A small village eatery in Berudin: a simple one-storey building with a pitched metal roof and a front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe8d8",
+          "#8a5a3c",
+          "#5f6b4e"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/492467502",
+          "what": "OSM building, 1 level, about 23.2 x 11.6 m"
+        }
+      ],
+      "notes": "Low confidence: only a 23 x 12 m single-storey footprint is measured; a rural eatery style is typed."
+    },
+    "bsb-osm-way-265532229": {
+      "venueId": "bsb-osm-way-265532229",
+      "city": "bsb",
+      "name": "Taman Jubli Perak Sultan Haji Hassanal Bolkiah",
+      "archetype": "park-landscape",
+      "subject": "The Silver Jubilee Park: broad lawns, paved paths and a commemorative gateway in the town centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 230,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#c9a227",
+          "#bfbab0"
+        ],
+        "roofColour": "#c9a227",
+        "roofMaterial": "gold-leaf",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "commemorative gateway"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "jubilee park, circa 1992",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q48791724",
+          "what": "Sultan Haji Hassanal Bolkiah Silver Jubilee Park, Bandar Seri Begawan; OSM park about 304 x 229 m, 46,797 m2"
+        }
+      ],
+      "notes": "Low confidence: only identity and OSM extent (304 x 229 m) are sourced; the park contents are typed. A silver jubilee (25 years of reign) implies about 1992 but this is inferred, not found."
+    },
+    "bsb-osm-way-313407023": {
+      "venueId": "bsb-osm-way-313407023",
+      "city": "bsb",
+      "name": "Maktab Duli Pengiran Muda Al-Muhtadee Billah",
+      "archetype": "campus-block",
+      "subject": "A sixth-form college main block: a three-storey school building with open corridors and a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 39,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#bfbab0",
+          "#2f6fa8"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open corridors"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q30625453",
+          "what": "Duli Pengiran Muda Al-Muhtadee Billah College, sixth form centre in Brunei, inception 1974"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/464019078",
+          "what": "OSM school building, 3 levels, about 63.7 x 39.4 m"
+        }
+      ],
+      "notes": "Sourced: 1974 founding and a three-level building of 64 x 39 m (OSM). Roof, colours and facade typed."
+    },
+    "bsb-osm-way-428761669": {
+      "venueId": "bsb-osm-way-428761669",
+      "city": "bsb",
+      "name": "University of Brunei Darussalam",
+      "archetype": "campus-block",
+      "subject": "The UBD campus at Tungku Link: wide low-rise academic blocks with generous sheltered walkways, pitched roofs and a prominent university mosque",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#bfbab0",
+          "#2f6fa8"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "university mosque"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1985 foundation; campus 1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Universiti_Brunei_Darussalam",
+          "what": "campus at Tungku Link since 1995; mosque built 1992-94; Chancellor Hall by Arkitek Idris 2002; 2015 redevelopment adding ICT, medical, science and lecture buildings"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q569243",
+          "what": "UBD, national university founded 1985; OSM campus about 1,618 x 905 m"
+        }
+      ],
+      "notes": "Sourced: dates, campus location and building programme. Block form, colours and roof are typed (no description found). Largest campus in the BSB set."
+    },
+    "bsb-osm-way-430464616": {
+      "venueId": "bsb-osm-way-430464616",
+      "city": "bsb",
+      "name": "Nurul Iman Palace",
+      "archetype": "civic-palace",
+      "subject": "Istana Nurul Iman, the Sultan's residence: a vast riverside palace complex crowned by a cluster of golden domes and vaulted roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 5,
+        "height_m": 32,
+        "roof": "multi-dome",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#efe8d8",
+          "#d4a72c",
+          "#f4f2ec"
+        ],
+        "roofColour": "#d4a72c",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 5,
+          "note": "golden domes over the main ceremonial halls"
+        },
+        {
+          "id": "arches",
+          "count": 12
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1984",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Istana_Nurul_Iman",
+          "what": "by Leandro V. Locsin, golden domes and vaulted roofs, about 200,000 m2 of floor area, 1,788 rooms, banquet hall for 5,000, mosque for 1,500, on riverside hills, completed 1984"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1323932",
+          "what": "palace of Sultan of Brunei, 1984, architect Leandro Locsin; OSM footprint about 318 x 225 m, 51,835 m2"
+        }
+      ],
+      "notes": "Sourced: Locsin design, golden domes and vaulted roofs, immense footprint (about 318 x 225 m), 1984. Above-ground storeys (about five) and the cream wall colour are estimates; it is far bigger than 120 m, so show the central dome-crowned portion. Most distinctive silhouette in the BSB set."
+    },
+    "bsb-osm-way-438282545": {
+      "venueId": "bsb-osm-way-438282545",
+      "city": "bsb",
+      "name": "Brunei Museum",
+      "archetype": "museum-theatre",
+      "subject": "The Brunei Museum at Kota Batu: a three-storey 1970s civic building with traditional Malay motifs inspired by Sultan Bolkiah's tomb, set in a park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 112,
+        "depth_m": 51,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#c9a227",
+          "#bfbab0"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Malay motifs"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970-72",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brunei_Museum",
+          "what": "three floors, traditional Malay motifs inspired by the tomb of Sultan Bolkiah, built 1968-70, inaugurated 1972, on a 48 ha parkland site"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2756903",
+          "what": "Brunei Museum, national museum; OSM footprint about 112 x 51 m"
+        }
+      ],
+      "notes": "Sourced: three storeys, Malay motif design, 1970s, footprint 112 x 51 m. Roof form and colours not described anywhere found, so typed."
+    },
+    "bsb-osm-way-45840473": {
+      "venueId": "bsb-osm-way-45840473",
+      "city": "bsb",
+      "name": "Sultan Omar 'Ali Saifuddien Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Sultan Omar Ali Saifuddien Mosque seen across its lagoon: a cream marble mosque with a huge gold dome, a tall main minaret with four small ones, and the stone royal barge in the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 42,
+        "storeys": 2,
+        "height_m": 52,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#efe8d8",
+          "#d4a72c",
+          "#bfbab0"
+        ],
+        "roofColour": "#d4a72c",
+        "roofMaterial": "gold-leaf",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "gold dome about 52 m, mosaic of Venetian glass"
+        },
+        {
+          "id": "minaret",
+          "count": 5,
+          "note": "main minaret 51 m plus four small ones"
+        },
+        {
+          "id": "arches",
+          "count": 12,
+          "note": "trefoil arches"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "concrete royal barge in the lagoon"
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "mughal",
+      "era": "1958",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Omar_Ali_Saifuddien_Mosque",
+          "what": "single gold dome about 52 m of Venetian glass mosaic, 51 m main minaret plus four small ones, cream building 69 x 26 m, Italian marble and granite, lagoon, 16th-century style barge, built 1954-58, Mughal-influenced eclectic style"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q842921",
+          "what": "mosque, 1954, height 52 m; OSM building about 67 x 42 m"
+        }
+      ],
+      "notes": "Sourced in detail. Footprint (67 x 42 m) from OSM; roof dome 52 m from Wikipedia. The barge is a concrete replica of a royal barge in the lagoon (use pier for the platform). The landmark of the city; clearly different from Ash-Shaliheen (blue domes, Moorish) and Hassanal Bolkiah mosques."
+    },
+    "bsb-osm-way-45895096": {
+      "venueId": "bsb-osm-way-45895096",
+      "city": "bsb",
+      "name": "Raja Isteri Pengiran Anak Saleha Hospital",
+      "archetype": "hospital",
+      "subject": "RIPAS, the national hospital: a long mid-rise ward complex of seven blocks, with an 11-storey women and children's tower beside lower older blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe8d8",
+          "#bfbab0",
+          "#7a8a96"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1984, new block 2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Raja_Isteri_Pengiran_Anak_Saleha_Hospital",
+          "what": "opened 1984, 17 ha site, 1,260 beds, seven main blocks, 11-storey Women and Children centre inaugurated 2014"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7285454",
+          "what": "RIPAS hospital, 1984; OSM complex about 711 x 301 m, 143,472 m2"
+        }
+      ],
+      "notes": "Sourced: opening, bed count, seven blocks and an 11-storey block. Main-wing form, colours and storeys are estimates; show the 8-storey main wing with an 11-storey tower as a wing. The largest hospital in the BSB set."
+    },
+    "bsb-osm-way-45897644": {
+      "venueId": "bsb-osm-way-45897644",
+      "city": "bsb",
+      "name": "Seri Begawan Religious Teachers University College",
+      "archetype": "campus-block",
+      "subject": "An Islamic teachers' college: a three-storey block with Malay-Islamic arches and a small dome over the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f2ec",
+          "#2f6fa8",
+          "#bfbab0"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small entrance dome"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2007 (college status)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q24915008",
+          "what": "Kolej Universiti Perguruan Ugama Seri Begawan, teacher training college; OSM campus about 338 x 278 m"
+        }
+      ],
+      "notes": "Low confidence: only the college and campus extent (338 x 278 m) are sourced; the building is typed from Brunei Islamic institutional style."
+    },
+    "bsb-osm-way-45984870": {
+      "venueId": "bsb-osm-way-45984870",
+      "city": "bsb",
+      "name": "Lapau",
+      "archetype": "civic-small",
+      "subject": "The Lapau royal ceremonial hall in the city centre: a long, formal hall with a stepped Malay-style roof, next to the old legislative building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "stepped",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#c9a227",
+          "#bfbab0"
+        ],
+        "roofColour": "#c9a227",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 7
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1965-68",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lapau",
+          "what": "royal ceremonial hall, built August 1965 to 1968, designed by the Sultan and refined by Booty Edwards and Partners, in the complex with the old Dewan Majlis"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6488125",
+          "what": "Lapau; OSM building about 77 x 29 m, 2,252 m2"
+        }
+      ],
+      "notes": "Sourced: purpose, dates, designers and footprint (77 x 29 m). The roof shape and colours are not described in any source found and are typed from Brunei ceremonial buildings; low confidence on appearance."
+    },
+    "bsb-osm-way-506728677": {
+      "venueId": "bsb-osm-way-506728677",
+      "city": "bsb",
+      "name": "Hassanal Bolkiah National Stadium",
+      "archetype": "stadium",
+      "subject": "The national stadium at Berakas: an oval bowl with a roofed west grandstand, four tall floodlight towers and a video scoreboard at the north end",
+      "form": {
+        "footprint": "oval",
+        "width_m": 260,
+        "depth_m": 195,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bfbab0",
+          "#2f6fa8",
+          "#efe8d8"
+        ],
+        "roofColour": "#c8c8c4",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "aluminium roof about 60 x 41 m over the west grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "four towers about 60 m, 108 lamps"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "videomatrix at north end"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1983",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hassanal_Bolkiah_National_Stadium",
+          "what": "about 260 x 193 m, capacity 28,000-30,000, west grandstand roof 60 x 41 m aluminium, four 60 m light towers, northern videomatrix scoreboard, opened 23 Sept 1983, SAA Partnership"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2298668",
+          "what": "stadium, 1983; OSM relation about 260 x 196 m"
+        }
+      ],
+      "notes": "Sourced: size, roofed west grandstand, four 60 m light towers, scoreboard, 1983. Colours estimated. The largest stadium in the set."
+    },
+    "bsb-osm-way-525946664": {
+      "venueId": "bsb-osm-way-525946664",
+      "city": "bsb",
+      "name": "Masjid Hassanal Bolkiah",
+      "archetype": "mosque-domed",
+      "subject": "A large modern district mosque in Mentiri on a square-ish plan: a central dome flanked by minarets, inside a paved forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 73,
+        "storeys": 2,
+        "height_m": 40,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#c9a227",
+          "#2f6fa8"
+        ],
+        "roofColour": "#5f8f86",
+        "roofMaterial": "copper",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "main central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2017",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q48771285",
+          "what": "Hassanal Bolkiah Mosque, mosque in Mentiri, Brunei-Muara; OSM place of worship about 85 x 73 m, 4,155 m2"
+        }
+      ],
+      "notes": "Low confidence: the 2017 date and OSM footprint (85 x 73 m) are sourced; dome count, colours and minarets are typed. Not the same mosque as the 1966 Hassanal Bolkiah mosque described on Wikipedia; do not use those details."
+    },
+    "bsb-osm-way-936719394": {
+      "venueId": "bsb-osm-way-936719394",
+      "city": "bsb",
+      "name": "Peliunan Park",
+      "archetype": "park-landscape",
+      "subject": "A modest recreation park: lawns, a few shelters and tree-lined paths in the Brunei-Muara countryside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 315,
+        "depth_m": 170,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe8d8",
+          "#8a5a3c",
+          "#5f6b4e"
+        ],
+        "roofColour": "#8a5a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/936719394",
+          "what": "OSM park about 315 x 171 m, 30,387 m2"
+        }
+      ],
+      "notes": "Low confidence: only a named park of 315 x 171 m is known; contents are typed."
+    },
+    "bsb-quiet-reflection": {
+      "venueId": "bsb-quiet-reflection",
+      "city": "bsb",
+      "name": "Ash-Shaliheen Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Ash-Shaliheen Mosque in Moorish style: white walls under blue domes, two tall minarets, stacked spherical arches and a courtyard with a marble fountain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#2f6fa8",
+          "#b79b5f"
+        ],
+        "roofColour": "#2f6fa8",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "blue domes plus a low dome and an Italian mosaic dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "two tall minarets"
+        },
+        {
+          "id": "arches",
+          "count": 16,
+          "note": "stacked spherical arches for ventilation"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "sahn with fountain and Moroccan mosaic"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2012",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ash-Shaliheen_Mosque",
+          "what": "designed by Abdel-Wahed El-Wakil in Moorish style, blue domes, low domes and Italian mosaic dome, two tall minarets, stacked spherical arches, retractable roof, courtyard with marble fountain, about 2,100 m2, completed 2012"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q29830347",
+          "what": "Ash-Shaliheen Mosque, architect Abdel-Wahed El-Wakil; OSM building about 60 x 36 m"
+        }
+      ],
+      "notes": "Sourced in detail. Clearly different from the Omar Ali Saifuddien mosque (gold dome, cream): this one is blue-domed Moorish with a courtyard. Wall tone estimated white."
+    },
+    "bsb-recreation": {
+      "venueId": "bsb-recreation",
+      "city": "bsb",
+      "name": "Golden Jubilee Crown Park",
+      "archetype": "park-landscape",
+      "subject": "A long riverside commemorative park (Taman Mahkota Jubli Emas): paved promenades, lawns and a ceremonial pavilion, running along the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 600,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f2ec",
+          "#d4a72c",
+          "#bfbab0"
+        ],
+        "roofColour": "#c9a227",
+        "roofMaterial": "gold-leaf",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "ceremonial pavilion"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "arab-islamic",
+      "era": "golden jubilee park, circa 2017",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q48791736",
+          "what": "Taman Mahkota Jubli Emas, public urban park in Bandar Seri Begawan; OSM park about 735 x 174 m, 58,470 m2"
+        }
+      ],
+      "notes": "Low confidence: identity and OSM extent (735 x 174 m) sourced; contents typed from the commemorative name. A golden jubilee (50 years of reign, 2017) is inferred, not found."
+    },
+    "bsb-transit": {
+      "venueId": "bsb-transit",
+      "city": "bsb",
+      "name": "Serasa Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "The Serasa ferry terminal at Muara: a long low terminal building beside a passenger quay with boarding gangways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 179,
+        "depth_m": 53,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4f2ec",
+          "#7a8a96",
+          "#bfbab0"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "passenger quay"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q114315766",
+          "what": "Serasa Ferry Terminal, commercial ferry terminal in Brunei-Muara; OSM building about 179 x 53 m, 5,456 m2"
+        }
+      ],
+      "notes": "Low confidence: type and OSM footprint (179 x 53 m) sourced; appearance typed. Larger than Sala Ya station in Bangkok and the Dili harbour offices."
+    }
+  }
+}

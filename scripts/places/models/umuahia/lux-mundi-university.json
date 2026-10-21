@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "lux-mundi-university",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1273007922",
+   "used": "nearest match 38 m away, small 228 m2; not used for the footprint. Size from the brief (campus block ~55 x 22 m); no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     50,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.26,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#8a6a4a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "rise": 3,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -10.5
+   ],
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a3b2e",
+    "material": "clay-tile",
+    "rise": 2.4,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 11,
+    "depth": 3.6,
+    "height": 7.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 4,
+    "colour": "#ffffff",
+    "roofColour": "#8a6a4a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "z0": 0,
+      "height": 9,
+      "colour": "#c8c8c8",
+      "topColour": "#c8c8c8"
+     }
+    },
+    "mode": "line",
+    "start": [
+     16,
+     -14
+    ],
+    "step": [
+     3,
+     0
+    ],
+    "count": 3
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -26
+   ],
+   "params": {
+    "width": 36,
+    "depth": 10,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -32,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     32,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; modelled from brief (3-storey rendered block, portico, hip roof)."
+ }
+}

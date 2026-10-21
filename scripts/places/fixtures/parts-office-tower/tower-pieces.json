@@ -1,0 +1,184 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "tower-pieces",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "radio-mast",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 18
+   }
+  },
+  {
+   "type": "rooftop-helipad",
+   "at": [
+    45,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 7
+   }
+  },
+  {
+   "type": "rooftop-plant",
+   "at": [
+    90,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 20,
+    "water_tank": true,
+    "solar": true
+   }
+  },
+  {
+   "type": "podium-base",
+   "at": [
+    135,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 50,
+    "depth": 30,
+    "floors": 3
+   }
+  },
+  {
+   "type": "pilotis-base",
+   "at": [
+    180,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 40,
+    "depth": 16
+   }
+  },
+  {
+   "type": "porte-cochere",
+   "at": [
+    225,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 16
+   }
+  },
+  {
+   "type": "glass-lobby",
+   "at": [
+    0,
+    45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 16,
+    "height": 8
+   }
+  },
+  {
+   "type": "sky-bridge",
+   "at": [
+    45,
+    45,
+    12
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 8,
+    "depth": 10,
+    "height": 7
+   }
+  },
+  {
+   "type": "facade-wall",
+   "at": [
+    90,
+    45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "height": 36,
+    "floors": 9,
+    "kind": "curtain",
+    "fins": 6
+   }
+  },
+  {
+   "type": "facade-wall",
+   "at": [
+    135,
+    45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "height": 36,
+    "floors": 9,
+    "kind": "punched",
+    "deep": true,
+    "wall_colour": "#b9b5aa"
+   }
+  },
+  {
+   "type": "facade-wall",
+   "at": [
+    180,
+    45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "height": 36,
+    "floors": 9,
+    "kind": "ribbon",
+    "bands": "#e6e2d6",
+    "window_ratio": 0.5
+   }
+  },
+  {
+   "type": "x-bracing",
+   "at": [
+    225,
+    45,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "height": 36,
+    "floors": 9
+   }
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "az": 20,
+  "el": 24
+ }
+}

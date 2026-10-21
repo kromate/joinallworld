@@ -1,0 +1,64 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "06-classical-baroque",
+ "verified": "text",
+ "evidence": [],
+ "note": "part test fixture, not a place",
+ "parts": [
+  {
+   "type": "baroque-gable",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 26,
+    "nave_width": 14,
+    "lower_height": 7,
+    "upper_height": 12,
+    "rise": 3.5
+   }
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    -15,
+    3,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "height": 22,
+    "cap": "onion"
+   }
+  },
+  {
+   "type": "bell-tower",
+   "at": [
+    15,
+    3,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 5,
+    "height": 22,
+    "cap": "onion"
+   }
+  }
+ ],
+ "backdrop": {
+  "width": 26,
+  "height": 7
+ },
+ "ground": [
+  40,
+  18
+ ],
+ "azimuth": 15
+}

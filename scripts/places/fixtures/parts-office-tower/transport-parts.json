@@ -1,0 +1,275 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "transport-parts",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "tracks": 2
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    70,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50
+   }
+  },
+  {
+   "type": "station-canopy",
+   "at": [
+    140,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "kind": "iron"
+   }
+  },
+  {
+   "type": "station-canopy",
+   "at": [
+    210,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "attached": false,
+    "kind": "flat"
+   }
+  },
+  {
+   "type": "train",
+   "at": [
+    0,
+    60,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "carriages": 3
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    70,
+    60,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 4
+   }
+  },
+  {
+   "type": "coach",
+   "at": [
+    140,
+    60,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 3
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    210,
+    60,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40,
+    "kind": "mixed",
+    "density": 0.9
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    120,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "form": "shed"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    70,
+    120,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "form": "gable",
+    "support": "concrete"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    140,
+    120,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "form": "flat",
+    "support": "concrete"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    210,
+    120,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "form": "curved"
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    180,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "form": "sawtooth"
+   }
+  },
+  {
+   "type": "ticket-kiosk",
+   "at": [
+    70,
+    180,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "gateway-arch",
+   "at": [
+    140,
+    180,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "arch"
+   }
+  },
+  {
+   "type": "gateway-arch",
+   "at": [
+    210,
+    180,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "kind": "beam"
+   }
+  },
+  {
+   "type": "train-shed",
+   "at": [
+    0,
+    240,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50
+   }
+  },
+  {
+   "type": "ferry-jetty",
+   "at": [
+    70,
+    240,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 40
+   }
+  },
+  {
+   "type": "launch-boat",
+   "at": [
+    140,
+    240,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "metro-portal",
+   "at": [
+    210,
+    240,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {}
+  },
+  {
+   "type": "quay",
+   "at": [
+    0,
+    300,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "depth": 25
+   }
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "az": 26,
+  "el": 34
+ }
+}

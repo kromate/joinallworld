@@ -1,0 +1,1742 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "budapest",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "budapest",
+    "climate": "temperate",
+    "vernacular": "Dense Pest street blocks of four- to five-storey Historicist (eclectic, neo-Renaissance, Secession) apartment houses in cream, ochre and grey-beige render with rusticated ground floors, window pediments and wrought-iron balconies, built around inner courtyards with gallery access balconies. Buda hillsides carry lower villas and church towers under clay-tile hip roofs. Socialist-era grey and pastel prefabricated panel estates (panelhaz) of 4 to 10 storeys dominate the outer districts, with low glass-and-render retail boxes and pavilion hospitals from the 1890s to 1970s on the fringes. Plane, linden and chestnut street trees.",
+    "wallColours": [
+      "#d8c8a0",
+      "#e6d9b8",
+      "#c9a66b",
+      "#b5ad9d",
+      "#f0ece0",
+      "#9f4a3a",
+      "#8d8a85"
+    ],
+    "roofColours": [
+      "#a5503a",
+      "#6a6d70",
+      "#7e7a74",
+      "#8b4a36"
+    ],
+    "wallMaterials": [
+      "render",
+      "stucco",
+      "painted-render",
+      "brick",
+      "concrete",
+      "limestone",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Neo-Renaissance and eclectic window surrounds with triangular and segmental pediments, rusticated ground floors, wrought-iron balcony railings, carved gateways into courtyards, Secession floral relief and Zsolnay glazed roof tiles on landmark buildings, copper-roofed corner turrets, Baroque whitewashed village churches with red window bands, and prefab concrete panel walls with pastel paint on estates.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Budapest",
+        "what": "historic centre listed for classical monuments (Matthias Church, Buda Castle, Parliament, Opera, Basilica); communist-era gutting of Buda Castle"
+      },
+      {
+        "url": "https://hu.wikipedia.org/wiki/Gerbeaud-ház",
+        "what": "Pest example: 4-storey Secession-era late-eclectic twin building with unified Hild facade and glass-roofed courtyards"
+      },
+      {
+        "url": "https://hu.wikipedia.org/wiki/Újpesti_városháza",
+        "what": "1900 eclectic/Art Nouveau town hall; style type for outer-district civic buildings"
+      },
+      {
+        "url": "https://hu.wikipedia.org/wiki/Keresztelő_Szent_János-plébániatemplom_(Szentendre)",
+        "what": "Baroque whitewashed church walls with red bands around windows"
+      }
+    ]
+  },
+  "places": {
+    "budapest-airport-budapest-airport": {
+      "venueId": "budapest-airport-budapest-airport",
+      "city": "budapest",
+      "name": "Budapest Liszt Ferenc International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 2 with the five-level Sky Court connector between Terminal 2A (1950s) and 2B (1997), seen from the landside forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#a9bac6",
+          "#cfcdc6",
+          "#e9e8e3"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy over the Sky Court entrance"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "1977 tower behind the terminal"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "Sky Court departures hall"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1950s core, 1997 Terminal 2B, 2011 Sky Court",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Budapest_Liszt_Ferenc_International_Airport",
+          "what": "Terminal 2 designed 1939 by Karoly David Jr, finished 1950s; 2B opened 1997 (30,000 m2, seven gates); Sky Court five-level connector opened 27 March 2011; control tower 1977; 2A/2B refurbished 2011-12"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/218271823",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        }
+      ],
+      "notes": "Venue coordinates sit at Terminal 2, not at the OSM \"1. utasmolo\" (Pier 1) fragment matched 384 m away. Exact facade materials of Sky Court are not described in the sources: glass-and-steel is an estimate from the 2011 modern-terminal type. Width is the 2A + Sky Court + 2B frontage estimate. Larger and glassier than Abuja or Chisinau terminals."
+    },
+    "budapest-clinic": {
+      "venueId": "budapest-clinic",
+      "city": "budapest",
+      "name": "Bajcsy-Zsilinszky Korhaz es Rendelointezet",
+      "archetype": "hospital",
+      "subject": "The 1932 neo-Baroque main hospital block of the Bajcsy-Zsilinszky Hospital (Maroty Kalman and Szabolcs Ferenc design) with later 1950s-70s wings behind",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stucco",
+        "colours": [
+          "#dccfae",
+          "#b99a6a",
+          "#f1ead8"
+        ],
+        "roofColour": "#9a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central entrance"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "terraces of the 1930s sanatorium-style block"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1930-32 with 1955-71 and 1970s extensions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Bajcsy-Zsilinszky_Kórház",
+          "what": "neo-Baroque (neobarokk) style; built July 1930 to autumn 1931, opened 1932; designed by Kalman Maroty and Ferenc Szabolcs, plans compiled by Gyula Rimanoczy; promenade gardens and large terraces; extensions 1955-71 and 1970s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/550331255",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q788687",
+          "what": "Wikidata item: Bajcsy-Zsilinszky Hospital"
+        }
+      ],
+      "notes": "Style, era and terraced garden layout are sourced; floor count, render colour and roof are estimates. OSM footprint 226 x 183 m is the whole campus, so the model shows only the 1930s main block."
+    },
+    "budapest-community-notices": {
+      "venueId": "budapest-community-notices",
+      "city": "budapest",
+      "name": "Informacios Hivatal",
+      "archetype": "office-low",
+      "subject": "A small low office building used by the Hungarian Information Office, in a quiet residential setting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 23,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8d0bd",
+          "#a8a094",
+          "#eeeadf"
+        ],
+        "roofColour": "#7e7a74",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown (agency founded 1990)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097071",
+          "what": "Information Office Hungary: intelligence agency, inception 1990 (organisation only, no building description)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/248283168",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1097071",
+          "what": "Wikidata item: Information Office Hungary"
+        }
+      ],
+      "notes": "The only measured fact is the nearest OSM building (45 x 23 m, 1025 m2); nobody describes its look. Typed low-rise office from the Budapest style. Keep it anonymous: no signage, blank notice board."
+    },
+    "budapest-community-voting-game": {
+      "venueId": "budapest-community-voting-game",
+      "city": "budapest",
+      "name": "Varoshaza (Ujpest Town Hall)",
+      "archetype": "civic-small",
+      "subject": "Ujpest Town Hall on Szent Istvan ter: an 1899-1900 eclectic/Secession building with a Roland statue on the central gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 56,
+        "depth_m": 33,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#dccfa9",
+          "#9a5a43",
+          "#f0e8d3"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "main gable carrying the Roland statue"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "knight Roland symbolising municipal rights"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "rear balcony for addressing crowds"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1899-1900",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Újpesti_városháza",
+          "what": "designed by Henrik Bohm and Armin Hegedus, built May 1899 to summer 1900, eclectic/Art Nouveau; Roland statue on central main gable; rear balcony facing Szent Istvan ter; ground floor let to shops"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1764049",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1462162",
+          "what": "Wikidata item: Újpest town hall"
+        }
+      ],
+      "notes": "Floors: Wikidata says 3. Colours are typical Pest Secession estimates (pale render with brick-red detail). Footprint 56 x 33 m measured."
+    },
+    "budapest-community-workshop": {
+      "venueId": "budapest-community-workshop",
+      "city": "budapest",
+      "name": "Vecsey Lakotelepi Konyvtar",
+      "archetype": "campus-block",
+      "subject": "A neighbourhood library on the ground floor of a long ten-storey concrete panel housing slab on the Vecsey estate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 16,
+        "storeys": 10,
+        "height_m": 30,
+        "roof": "flat",
+        "variant": "housing-slab"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b9b6ae",
+          "#c9b48a",
+          "#9a9890"
+        ],
+        "roofColour": "#6e6c68",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 10,
+          "note": "continuous loggia rows"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s panel estate",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/512343925",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        }
+      ],
+      "notes": "Measured slab from OSM (apartments, 10 levels, building:colour grey, material concrete). The library is a ground-floor tenant so the model shows the whole slab with a library entrance and blank sign. Dramatically different from the Pest courtyard blocks."
+    },
+    "budapest-market-game": {
+      "venueId": "budapest-market-game",
+      "city": "budapest",
+      "name": "Campona",
+      "archetype": "mall",
+      "subject": "Campona shopping centre in Budatetény (XXII district): a wide two-level plaza-type mall opened 1999 with the Tropicarium and cinema inside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 330,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "plaza-mall"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d2c3",
+          "#7f8f9a",
+          "#f0eee8"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "large surface car park"
+        },
+        {
+          "id": "bus-bays",
+          "count": 4,
+          "note": "bus stops and bus station beside the mall"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "entrance atrium"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Campona_(bevásárlóközpont)",
+          "what": "opened 15 September 1999; plaza-type centre in Budatetény, 160 shops, cinema, Tropicarium; was Budapest largest mall for about 18 months"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/105668758",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q57978010",
+          "what": "Wikidata item: Campona"
+        }
+      ],
+      "notes": "OSM: commercial building, 2 levels, bounding box 486 x 161 m (area 47,466 m2), clamped to 330 x 150 for the scene. Facade colours are estimates; nothing sourced describes the exterior."
+    },
+    "budapest-meal-stop": {
+      "venueId": "budapest-meal-stop",
+      "city": "budapest",
+      "name": "Gerbeaud Confectionary",
+      "archetype": "restaurant",
+      "subject": "The Gerbeaud House on Vorosmarty ter: the 4-storey Hild-facade corner building with the cafe at ground floor and terrace tables in the square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#d9c9a4",
+          "#8c7a5a",
+          "#f1ead9"
+        ],
+        "roofColour": "#6f7173",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 6,
+          "note": "ground-floor shop and cafe awnings"
+        },
+        {
+          "id": "umbrellas",
+          "count": 8,
+          "note": "terrace tables on Vorosmarty ter"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched ground floor"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 2,
+          "note": "glass-roofed inner courtyard used as event hall"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1860s, 4th floor added 1912",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Gerbeaud-ház",
+          "what": "four storeys (third floor added 1912), twin building around 1862 with unified Hild Jozsef facade, several inner courtyards, glass-covered courtyard; Secession-era late-eclectic"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Caf%C3%A9_Gerbeaud",
+          "what": "cafe founded 1858; 1910 interior marble, exotic woods, bronze; Louis XV rococo stucco ceiling"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/11897",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q464845",
+          "what": "Wikidata item: Café Gerbeaud"
+        }
+      ],
+      "notes": "OSM matches the 70 x 40 m house (apartments, 5 levels, architect Hild Jozsef;Gottgeb Antal). Facade colour is an estimate of pale cream stucco with grey roof. A prominent cafe frontage with terrace is the recognisable part. No logos."
+    },
+    "budapest-osm-node-1996688188": {
+      "venueId": "budapest-osm-node-1996688188",
+      "city": "budapest",
+      "name": "Zsiros-hegyi Turistahaz romja",
+      "archetype": "heritage-fort",
+      "subject": "The roofless stone ruin of a former hikers hut on Zsiros-hegy in the Pilis hills",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#9b9588",
+          "#b7ae9b",
+          "#7d786d"
+        ],
+        "roofColour": "#6e6a62",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "broken wall stubs"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown, abandoned",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/937678493",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        }
+      ],
+      "notes": "Only the ruin footprint is measured; no description found. Render as a low rubble-and-render shell with no roof, set in woodland. Typed from type, not from photos."
+    },
+    "budapest-osm-node-3266194398": {
+      "venueId": "budapest-osm-node-3266194398",
+      "city": "budapest",
+      "name": "Nagy-Kevely",
+      "archetype": "park-landscape",
+      "subject": "Nagy-Kevely hilltop scenic viewpoint in the Pilis hills north-west of Budapest",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "hilltop"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9b9588",
+          "#7d786d",
+          "#b7ae9b"
+        ],
+        "roofColour": "#6e6a62",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q110254041",
+          "what": "Wikidata item: Nagy-Kevély"
+        }
+      ],
+      "notes": "No man-made structure is documented. Show a wooded rocky hilltop with grass and conifers; the generator should not add buildings. Low confidence on the exact look."
+    },
+    "budapest-osm-relation-17929549": {
+      "venueId": "budapest-osm-relation-17929549",
+      "city": "budapest",
+      "name": "Szent Laszlo Korhaz",
+      "archetype": "hospital",
+      "subject": "Szent Laszlo Hospital, an 1894 pavilion-system infectious-diseases hospital campus in Budapest IX, main entrance block on Gyali ut",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#c7b48a",
+          "#9a5a43",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central entrance of the main block"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1894, extended 1928-1938, 1981",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Szent_László_Kórház",
+          "what": "opened 1894 as 200-bed infectious disease hospital, eclectic style, designed by Jozsef Kauser; radiology 1928, laboratory 1933, more buildings 1938, new 338-bed building 1981; main entrance building on Gyali ut"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/17929549",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q81705285",
+          "what": "Wikidata item: Saint Ladislaus Hospital"
+        }
+      ],
+      "notes": "Campus is huge (192,724 m2 in OSM), so the model shows the main entrance block. Brick/render colours are typical of 1890s Budapest pavilion hospitals; not read from photos."
+    },
+    "budapest-osm-relation-7883285": {
+      "venueId": "budapest-osm-relation-7883285",
+      "city": "budapest",
+      "name": "Szent Janos Korhaz",
+      "archetype": "hospital",
+      "subject": "Szent Janos Hospital in Diosarok: an 1898 pavilion-system hospital with a stately entrance block among separate ward pavilions in the Buda hills",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e6dcc2",
+          "#a8573f",
+          "#f3eddc"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1898, additions 1903-1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Szent_János_Kórház",
+          "what": "new hospital opened 3 August 1898 with 420 beds in the pavilion system on the former Diosarok vineyard; designed by Elek Barcza and Jozsef Kauser; convalescent pavilion 1903, obstetrics 1935, orthopaedic block 1970, ENT 1980s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/190401233",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30280195",
+          "what": "Wikidata item: Saint John’s Hospital"
+        }
+      ],
+      "notes": "The matched OSM element is a tiny white-plaster cafe (75 m2) inside the hospital, so footprint is not used. The pavilion plan is sourced; facade tone is an estimate."
+    },
+    "budapest-osm-way-106940773": {
+      "venueId": "budapest-osm-way-106940773",
+      "city": "budapest",
+      "name": "Veresegyhaz Bear Sanctuary",
+      "archetype": "park-landscape",
+      "subject": "The Veresegyhaz bear sanctuary: a naturalistic 3.5 ha enclosure of pine forest and ponds with dens, plus wolf and coati areas and a small visitor area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "wildlife-park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6a45",
+          "#a58a63",
+          "#6d5436"
+        ],
+        "roofColour": "#5d5a54",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter and anti-jump wolf fence"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "cafe kiosk"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "opened 1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Veresegyházi_Medveotthon",
+          "what": "opened 1998; bear enclosure about 3.5 ha with 1.5 ha pine forest, two artificial ponds, twelve dens; wolf enclosure 2000; raccoon/coati 2010; cafe kiosk, miniature train, rope course"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/106940773",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1421031",
+          "what": "Wikidata item: Bear Farm Veresegyház"
+        }
+      ],
+      "notes": "The viewing platform is an assumption; remove if not wanted. Visual identity is forest, ponds and fenced enclosures, not a building."
+    },
+    "budapest-osm-way-115967431": {
+      "venueId": "budapest-osm-way-115967431",
+      "city": "budapest",
+      "name": "Szeplotelen Fogantatas kapolna (Budaorsi Ko-hegy)",
+      "archetype": "shrine-small",
+      "subject": "The small Immaculate Conception chapel of 1855 on Ko-hegy above Budaors, with a statue of Mary and a German inscription above the door",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 8.6,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#ece6d6",
+          "#a8a090",
+          "#c9b48a"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "statue of Mary given by Pope Pius IX"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1854-55, renovated 2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Szeplőtelen_fogantatás_kápolna_(Budaörs)",
+          "what": "built 1854-55 by farmer Ferenc Wendler on Ko-hegy, consecrated 15 October 1855, renovated 2003; German inscription above the entrance; Mary statue; cross-shaped cave beside it"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/115967431",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1297355",
+          "what": "Wikidata item: Immaculate Conception chapel"
+        }
+      ],
+      "notes": "Size from OSM (8.6 x 8 m). The wiki gives history but not the exterior look, so form and colours are a typed small Pannonian wayside chapel."
+    },
+    "budapest-osm-way-117107475": {
+      "venueId": "budapest-osm-way-117107475",
+      "city": "budapest",
+      "name": "Szent Imre ter (Csepel)",
+      "archetype": "church-gothic",
+      "subject": "The Kisboldogasszony parish church in the Szent Imre ter park in Csepel: a 1857-62 Romantic church rebuilt after 1944 with Gothic-style pointed windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e2d7bd",
+          "#a8987a",
+          "#f0eadb"
+        ],
+        "roofColour": "#7e7a74",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower (rebuilt form not described)"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "glazed 2006"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1857-62, rebuilt after 1944",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Kisboldogasszony-templom_(Csepel)",
+          "what": "built 1857-62, consecrated 8 September 1862, Romantic; destroyed roof July 1944; rebuilt with Gothic-style concrete barrel vault, iron roof truss 1945, pointed-arch windows, stained glass 2006"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/99049004",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12354026",
+          "what": "Wikidata item: Church of the Nativity of the Virgin Mary, Csepel"
+        }
+      ],
+      "notes": "The venue is the square; its dominant building is the church (OSM 46 x 23 m, building=church inside leisure=park). Wall colour and tower shape are not sourced."
+    },
+    "budapest-osm-way-1522779060": {
+      "venueId": "budapest-osm-way-1522779060",
+      "city": "budapest",
+      "name": "Budapest University of Economics, Faculty of Finance and Accounting",
+      "archetype": "campus-block",
+      "subject": "The BGE Faculty of Finance and Accountancy building on the Zugló campus, a mid-size teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d2c4",
+          "#7f8f9a",
+          "#efeee9"
+        ],
+        "roofColour": "#7e7a74",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q787329",
+          "what": "Wikidata: Budapest Business School Faculty of Finance and Accountancy (faculty, no building description)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1522779061",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q787329",
+          "what": "Wikidata item: Budapest Business School Faculty of Finance and Accountancy"
+        }
+      ],
+      "notes": "Only the 65 x 30 m footprint is measured (university building). Nothing found about its look; typed low-rise campus block."
+    },
+    "budapest-osm-way-178875079": {
+      "venueId": "budapest-osm-way-178875079",
+      "city": "budapest",
+      "name": "Barcza-kastely (Pusztazamor)",
+      "archetype": "manor",
+      "subject": "The Barcza mansion at Pusztazamor: an 18th-century country house remodelled by the Barcza family in the 19th century in a protected park, later restored to its original plan",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stucco",
+        "colours": [
+          "#e6dcbf",
+          "#b99a6a",
+          "#f2ecdc"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "18th century, remodelled 19th century, restored",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Barcza-kastély",
+          "what": "18th-century origin, remodelled by Barcza family in the 19th century, park over 3 ha with old trees, used as school and kindergarten after WWII, restored according to original plans"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/178875079",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q790373",
+          "what": "Wikidata item: Barcza Mansion, Pusztazámor"
+        }
+      ],
+      "notes": "OSM tags it as a castle (54.5 x 34 m). The wiki does not describe the facade, so storeys, colours and portico are typed from Hungarian Great Plain manor houses. Park trees are old broadleaf."
+    },
+    "budapest-osm-way-24254652": {
+      "venueId": "budapest-osm-way-24254652",
+      "city": "budapest",
+      "name": "Florian Uzletkozpont",
+      "archetype": "mall",
+      "subject": "The Florian shopping centre in Obuda, Hungary first shopping centre of 1976 (Torocsik Sandor, Lakoterv), renovated 2012",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 65,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "1970s-centre"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c6c3ba",
+          "#7c848b",
+          "#ece9e1"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1976, renovated 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Flórián_(üzletközpont)",
+          "what": "opened 30 June 1976 as Hungary first shopping centre; 19,000 m2; one storey; architect Sandor Torocsik, LAKOTERV; supply tunnel with 15 goods lifts; air-conditioned; renovated 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24254652",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q61360111",
+          "what": "Wikidata item: "
+        }
+      ],
+      "notes": "Sources give one above-ground storey and 19,000 m2 (hence basements/levels); OSM footprint is 75 x 65 m. Facade is a typed estimate of a 1970s concrete box refitted in 2012."
+    },
+    "budapest-osm-way-246472477": {
+      "venueId": "budapest-osm-way-246472477",
+      "city": "budapest",
+      "name": "Magyar Tancmuveszeti Foiskola",
+      "archetype": "campus-block",
+      "subject": "The Hungarian Dance University on Columbus utca in Zuglo, housed in the former Amizoni national girls education institute building with newer additions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#dccfa9",
+          "#a8573f",
+          "#f0e8d3"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century (former institute building)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Magyar_Táncművészeti_Egyetem",
+          "what": "address Columbus utca 87-89, occupies the former Amizoni Orszagos Magyar Nonevelo Intezet building with newer buildings added; founded 1950"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/246472477",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q15148601",
+          "what": "Wikidata item: Hungarian Dance University"
+        }
+      ],
+      "notes": "Only the address and former use are sourced; facade, colour and storeys are typed (period school house). 60 x 24 m footprint is OSM."
+    },
+    "budapest-osm-way-26763446": {
+      "venueId": "budapest-osm-way-26763446",
+      "city": "budapest",
+      "name": "Shopmark",
+      "archetype": "mall",
+      "subject": "Shopmark, the 1997 two-level shopping centre on Ullioi ut in Kispest (formerly Europark), refurbished 2018",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 77,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "strip-mall"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e4dfd3",
+          "#6f7f8a",
+          "#f4f2ec"
+        ],
+        "roofColour": "#8a8c8e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1997, refurbished 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Shopmark",
+          "what": "opened 11 March 1997 as Europark; Ullioi ut 201, Kispest; 25,600 m2 sales area; 60+ shops; closed April 2018, reopened 25 October 2018 after renovation"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/26763446",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q992811",
+          "what": "Wikidata item: Shopmark"
+        }
+      ],
+      "notes": "OSM retail building, 2 levels, 239 x 77 m. Facade look is estimated; the 2018 refit suggests light render and metal cladding. Narrower and longer than Campona."
+    },
+    "budapest-osm-way-353853403": {
+      "venueId": "budapest-osm-way-353853403",
+      "city": "budapest",
+      "name": "Nepomuki Szent Janos-kapolna (Dunakeszi-Alag)",
+      "archetype": "shrine-small",
+      "subject": "The 1905-06 chapel of St John of Nepomuk in Dunakeszi-Alag, with a mosaic above the entrance and stained-glass windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e8dfc8",
+          "#9a8a6a",
+          "#f2ecdc"
+        ],
+        "roofColour": "#8b4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "mosaic \"Christ the Teacher\" over the entrance (2003)"
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower assumed"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1905-06, restored 2001-02",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Nepomuki_Szent_János-kápolna_(Dunakeszi)",
+          "what": "built 1905-06 on the initiative of parish priest Istvan Reves, roof collapsed in 1952 explosion, restored 2001-02; entrance mosaic by Tolg-Molnar Zoltan and Brada Tibor; stained-glass window of St John of Nepomuk"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/353853403",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q97197280",
+          "what": "Wikidata item: Saint John of Nepomuk chapel in Dunakeszi-Alag"
+        }
+      ],
+      "notes": "OSM footprint is 34.5 x 26 m for the chapel plus annexes; main hall estimated at 24 x 12. Exterior style not described, so low."
+    },
+    "budapest-osm-way-376863655": {
+      "venueId": "budapest-osm-way-376863655",
+      "city": "budapest",
+      "name": "Guckler Karoly-kilatopont",
+      "archetype": "monument",
+      "subject": "The Guckler Karoly lookout tower on Harmashatar-hegy (2016): an octagonal glulam timber frame carrying a concrete viewing deck",
+      "form": {
+        "footprint": "round",
+        "width_m": 12.5,
+        "depth_m": 12.5,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "octagonal-timber-tower"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#b58a58",
+          "#8f8b82",
+          "#6d5436"
+        ],
+        "roofColour": "#8f8b82",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair around the frame"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing deck"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2015-16",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Guckler_Károly-kilátó",
+          "what": "2015-16 lookout by architect Jozsef Koller, regular octagon plan, reinforced-concrete viewing level on a timber frame of about 40 m3 glulam pine, 4.5 t of steel fittings, opened 14 July 2016, on the 495 m summit"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/376863655",
+          "what": "OSM element at the venue (measured footprint, levels, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q26422279",
+          "what": "Wikidata item: "
+        }
+      ],
+      "notes": "OSM: height 20 m, 12.5 x 12.5 m, 2015, architect Koller. The wiki mentions a viewing level about 4 m above ground (probably the first platform). Natural timber tone is an estimate."
+    },
+    "budapest-osm-way-742639578": {
+      "venueId": "budapest-osm-way-742639578",
+      "city": "budapest",
+      "name": "Matyas kiraly ter (XVI. keruelet)",
+      "archetype": "park-landscape",
+      "subject": "Matyas kiraly ter, a small urban square in the XVI district, as an open paved and grassed park square with trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "town-square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b3a5",
+          "#8a8579",
+          "#d8d2c3"
+        ],
+        "roofColour": "#8a8579",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q80693345",
+          "what": "Wikidata: Matyas kiraly Square, urban square in Budapest District XVI"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/742639578",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q80693345",
+          "what": "Wikidata item: Mátyás király Square"
+        }
+      ],
+      "notes": "No description found; OSM shows a 121 x 80 m leisure=park. Typed plain square with lawns, paths and broadleaf trees. No landmark features invented."
+    },
+    "budapest-quiet-reflection": {
+      "venueId": "budapest-quiet-reflection",
+      "city": "budapest",
+      "name": "Keresztelo Szent Janos-templom (Szentendre)",
+      "archetype": "church-gothic",
+      "subject": "The castle-hill parish church of St John the Baptist in Szentendre: whitewashed Baroque-remodelled medieval church with a 28.9 m tower and buttresses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#ece7da",
+          "#a8452f",
+          "#bdb4a0"
+        ],
+        "roofColour": "#9a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "28.91 m tower with plain tent roof (spire fell 1818)"
+        },
+        {
+          "id": "buttresses",
+          "count": 6,
+          "note": "medieval buttresses along the walls"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "churchyard wall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "c.1280 Romanesque, 14th c. Gothic, 1710s Baroque, 1818 tower roof",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://hu.wikipedia.org/wiki/Keresztelő_Szent_János-plébániatemplom_(Szentendre)",
+          "what": "oldest building of Szentendre on Vardomb; Romanesque then Gothic 14th century; 1710s Baroque remodel, walls whitewashed with red bands around windows; buttresses and stone window frames; tower 28.91 m, ornate spire collapsed 1818, replaced by plain tent roof; medieval sundial on buttress"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/75922434",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1107406",
+          "what": "Wikidata item: Castle church in Szentendre"
+        }
+      ],
+      "notes": "OSM building=church start 1280, 37 x 15 m. Nave roof material not stated; clay tile is an estimate. The red bands round the windows are a recognisable feature."
+    },
+    "budapest-recreation": {
+      "venueId": "budapest-recreation",
+      "city": "budapest",
+      "name": "Hosok tere (XVII. keruelet)",
+      "archetype": "park-landscape",
+      "subject": "Hosok tere in the XVII district: an open urban square with lawns and trees, probably with a war memorial",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "town-square"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b3a5",
+          "#8a8579",
+          "#d8d2c3"
+        ],
+        "roofColour": "#8a8579",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "assumed memorial from the name \"Heroes Square\"; unverified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q299978",
+          "what": "Wikidata: Hosok tere, urban square in Budapest District XVII"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2453420",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q299978",
+          "what": "Wikidata item: Hősök tere"
+        }
+      ],
+      "notes": "OSM leisure=park, 145 x 120 m. Contents are not described; the memorial is inferred from the name only. Not the famous Heroes Square in the city centre."
+    },
+    "budapest-transit": {
+      "venueId": "budapest-transit",
+      "city": "budapest",
+      "name": "Erd, autobusz-allomas",
+      "archetype": "transport-station",
+      "subject": "The 2005 Erd bus station: a low modern bus terminal building with a canopy over the bays",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "bus-station"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#9aa5ad",
+          "#d9d6cd",
+          "#5f6a72"
+        ],
+        "roofColour": "#7e7a74",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 12
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/3748563",
+          "what": "OSM element at the venue (measured footprint, tags)"
+        }
+      ],
+      "notes": "Only the date and the OSM footprint are known; appearance is a typed Hungarian regional bus station. Low confidence."
+    }
+  }
+}

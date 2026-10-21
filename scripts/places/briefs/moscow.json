@@ -1,0 +1,1570 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "moscow",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "moscow",
+    "climate": "cold",
+    "vernacular": "A layered capital: white-limestone and red-brick Kremlin-era core with Orthodox churches (white walls, gold and blue onion domes); Imperial neoclassical mansions in yellow and cream with white columns; Stalinist ochre and cream blocks and wedding-cake towers; vast areas of 1960s-80s prefabricated panel housing (5, 9, 12, 16 storeys) in grey, white and washed-out pastel panels with flat membrane roofs; and glass-and-steel towers, malls and stadiums from the 2000s. Streets are wide asphalt avenues; birch, linden, spruce and pine in courtyards, with snow for months.",
+    "wallColours": [
+      "#d8c7a0",
+      "#e9e0cc",
+      "#b85c3f",
+      "#a8a59d",
+      "#c9d3d8",
+      "#e4d29a",
+      "#8a8d90"
+    ],
+    "roofColours": [
+      "#5f6368",
+      "#8a3d2f",
+      "#3f5a45",
+      "#3d4044",
+      "#b48a3a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "brick",
+      "red-brick",
+      "stucco",
+      "glass-curtain",
+      "tile-cladding",
+      "whitewash",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "membrane",
+      "concrete",
+      "gold-leaf",
+      "copper",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Orthodox kokoshnik gables and onion domes; Stalinist spires, stars, colonnades and relief friezes; Imperial pediments and white columns on yellow mansions; Soviet panel-block balcony bands and mosaic panels on gable walls; metro vestibules with stained glass; modern high-rise glass curtain walls.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Moscow",
+        "what": "Limestone Kremlin walls, red-brick, 11,000+ standardised prefabricated apartment blocks stacked from factory panels, Moscow International Business Centre skyscrapers, Imperial-era neoclassical rebuilding. Hex colours come from general photographic knowledge of the city, not a citation."
+      }
+    ]
+  },
+  "places": {
+    "moscow-airport-moscow-airport": {
+      "venueId": "moscow-airport-moscow-airport",
+      "city": "moscow",
+      "name": "Sheremetyevo International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Sheremetyevo airport glass terminal (Terminal D / B type): a very long, glass-fronted international terminal with a stepped forecourt, jet bridges and a separate control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 25,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d8",
+          "#5c7488",
+          "#e9ecee"
+        ],
+        "roofColour": "#aeb4b8",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 22
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2009-2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sheremetyevo_International_Airport",
+          "what": "Terminal D opened Nov 2009, 172,000 m2, 22 jetways, 12 million passengers per year; Terminal B rebuilt 2018; Terminal C1 2020; Terminal F built for 1980 Olympics"
+        }
+      ],
+      "notes": "The page does not describe facades, so form and colours are from general knowledge (large rectangular glazed volumes with steel frame). Terminal F (1980) is an older, lower concrete-and-glass block and could be used for variety. Footprint is clamped to the scene."
+    },
+    "moscow-clinic": {
+      "venueId": "moscow-clinic",
+      "city": "moscow",
+      "name": "Детская городская клиническая больница имени З.А. Башляевой",
+      "archetype": "hospital",
+      "subject": "Bashlyaeva Children's City Clinical Hospital: a Soviet-era campus of white-and-pastel block wards with a taller main building and a children's courtyard",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 9,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e3dccb",
+          "#c9a87a",
+          "#f1efe9"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source on the building; typed from the Moscow municipal hospital pattern. A painted mural on the gable wall suits a children's hospital."
+    },
+    "moscow-community-notices": {
+      "venueId": "moscow-community-notices",
+      "city": "moscow",
+      "name": "ЗАГС",
+      "archetype": "civic-small",
+      "subject": "ZAGS (civil registry office): a small low brick-and-render administrative building with a canopy entrance and flag, in a northern Moscow district",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e3d2a8",
+          "#b85c3f",
+          "#f1ede0"
+        ],
+        "roofColour": "#8a3d2f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic registry office (ZAGS) at the given coordinates; not individually findable."
+    },
+    "moscow-community-voting-game": {
+      "venueId": "moscow-community-voting-game",
+      "city": "moscow",
+      "name": "площадь Амилкара Кабрала",
+      "archetype": "park-landscape",
+      "subject": "Amilcar Cabral Square: a wide paved city square in the east of Moscow, ringed by 9- and 16-storey panel blocks, with benches, lamp posts and a central lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdbab2",
+          "#4f8a4a",
+          "#a8a59d"
+        ],
+        "roofColour": "#a8a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Square named for the Guinea-Bissau independence leader; layout unfound. Shown as a Soviet micro-district plaza."
+    },
+    "moscow-community-workshop": {
+      "venueId": "moscow-community-workshop",
+      "city": "moscow",
+      "name": "Российская экономическая школа",
+      "archetype": "campus-block",
+      "subject": "Russian economic school building at the Skolkovo campus: a low, long glass-and-timber contemporary academic block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "timber",
+        "colours": [
+          "#c9d3d8",
+          "#a67c4c",
+          "#e8ecef"
+        ],
+        "roofColour": "#8d9195",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Skolkovo-area contemporary campus assumed from coordinates; specific building not described by a findable source."
+    },
+    "moscow-market-game": {
+      "venueId": "moscow-market-game",
+      "city": "moscow",
+      "name": "Aviapark",
+      "archetype": "mall",
+      "subject": "Aviapark: a vast six-storey shopping centre next to the old Khodynka airfield with a long glazed and clad facade and huge multi-level car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 140,
+        "storeys": 6,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfd3d6",
+          "#6f8aa0",
+          "#f1f2f2"
+        ],
+        "roofColour": "#8d9195",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Aviapark",
+          "what": "About 390,000 m2 total, six storeys including parking, 5,000 parking spaces, opened Nov 2014, tallest cylindrical aquarium inside"
+        }
+      ],
+      "notes": "Size, storeys and parking are sourced; the facade is not described in the source so its metal-and-glass look is from general photographs. Very wide: show the central entrance bay."
+    },
+    "moscow-meal-stop": {
+      "venueId": "moscow-meal-stop",
+      "city": "moscow",
+      "name": "Му-Му",
+      "archetype": "restaurant",
+      "subject": "A Mu-Mu self-service canteen restaurant in a ground-floor storefront of a Zamoskvorechye apartment block (no logo shown)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d2a8",
+          "#5a8a4a",
+          "#f1ede0"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A Russian canteen chain; the real outlet is a street-level shopfront. Signage must be a blank board; green fascia is optional."
+    },
+    "moscow-osm-node-3887492858": {
+      "venueId": "moscow-osm-node-3887492858",
+      "city": "moscow",
+      "name": "Рижский рынок",
+      "archetype": "market-hall",
+      "subject": "Rizhsky Market: a big covered market with long hall roofs, entrance gable and stalls beside Rizhskaya square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e3d2a8",
+          "#8a8d90",
+          "#f1ede0"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Historic covered rynok; no building description was retrievable. Typed from the Soviet covered-market pattern (long gabled hall with side lean-tos)."
+    },
+    "moscow-osm-node-4862008461": {
+      "venueId": "moscow-osm-node-4862008461",
+      "city": "moscow",
+      "name": "Покровское",
+      "archetype": "park-landscape",
+      "subject": "Pokrovskoye: a village-edge green with an old wooden house or chapel and a pond among birches at the southern edge of Moscow",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a67c4c",
+          "#4f8a4a",
+          "#d9c7a0"
+        ],
+        "roofColour": "#6b4a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Place-name only; not enough to identify an object. Typed as a green space."
+    },
+    "moscow-osm-relation-162802": {
+      "venueId": "moscow-osm-relation-162802",
+      "city": "moscow",
+      "name": "Grand Sports Arena of the Luzhniki Olympic Complex",
+      "archetype": "stadium",
+      "subject": "Luzhniki Grand Sports Arena: a huge oval stadium with a retained Stalinist colonnaded facade wrapped in a modern bowl and a white roof, Lenin statue forecourt",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 200,
+        "storeys": 5,
+        "height_m": 48,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d3c0",
+          "#8d9aa4",
+          "#f2f0ea"
+        ],
+        "roofColour": "#e8e8e4",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1956, rebuilt 2013-2017",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luzhniki_Stadium",
+          "what": "81,000 seats, opened 31 July 1956, original facade kept and reconnected to new building, roof retained, rebuilt 2013-2017, pitch 105x68, 26 ft bronze Lenin statue in front of main entrance from 1960"
+        }
+      ],
+      "notes": "The retained sandy-grey facade with slender columns surrounds the bowl; roof is a white translucent canopy. Statue and facade sourced; heights are estimates."
+    },
+    "moscow-osm-relation-1944912": {
+      "venueId": "moscow-osm-relation-1944912",
+      "city": "moscow",
+      "name": "Brateevo park",
+      "archetype": "park-landscape",
+      "subject": "Brateevo park: a long riverside park with lawns, birch groves, pond and a pavilion, bounded by blocks of flats",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b3b0a8",
+          "#4f8a4a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Public park, not individually described."
+    },
+    "moscow-osm-relation-2801575": {
+      "venueId": "moscow-osm-relation-2801575",
+      "city": "moscow",
+      "name": "Мытищинский филиал МГТУ им. Н. Э. Баумана (МГУЛ)",
+      "archetype": "campus-block",
+      "subject": "Mytishchi branch of Bauman University (Forestry): an older 1950s-60s teaching building in cream render with a central portico, plus a newer glass wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 80,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e3d2a8",
+          "#c9b88a",
+          "#f1ede0"
+        ],
+        "roofColour": "#8a3d2f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Forestry University campus (Mytishchi); building not described by a findable source."
+    },
+    "moscow-osm-relation-4080379": {
+      "venueId": "moscow-osm-relation-4080379",
+      "city": "moscow",
+      "name": "ЦКБ Управления делами Президента РФ",
+      "archetype": "hospital",
+      "subject": "Central Clinical Hospital of the Presidential Administration: a large, cleanly kept slab-and-wing medical complex of cream render with a prominent entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eadfc4",
+          "#8d9aa4",
+          "#f4efe2"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "soviet",
+      "era": "1960s, expanded",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Government hospital in Kuntsevo; fenced grounds with pines. Not described by a fetched source; typed."
+    },
+    "moscow-osm-relation-64496": {
+      "venueId": "moscow-osm-relation-64496",
+      "city": "moscow",
+      "name": "МГТУ им. Н. Э. Баумана (Главный учебный корпус)",
+      "archetype": "campus-block",
+      "subject": "Bauman Moscow State Technical University main building: a long historic institute block on the Yauza embankment in red-brick with a central pedimented entrance",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stucco",
+        "colours": [
+          "#a8553a",
+          "#e9e0cc",
+          "#d8c7a0"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bauman_Moscow_State_Technical_University",
+          "what": "Main Building at 2nd Baumanskaya 5, seen from the Yauza side, appears on a 2005 stamp; no architectural description given"
+        }
+      ],
+      "notes": "The page confirms the building but not its looks; the red-brick/stucco appearance is recalled and uncertain. Treat as low."
+    },
+    "moscow-osm-relation-6912449": {
+      "venueId": "moscow-osm-relation-6912449",
+      "city": "moscow",
+      "name": "Москворецкий дендропарк",
+      "archetype": "park-landscape",
+      "subject": "Moskvoretsky dendrological park: a wooded arboretum on the Moskva River bank with winding paths and a small gate and kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a67c4c",
+          "#3f6a3a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#6b4a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Arboretum; layout not retrievable. Dense spruce, pine and birch stands."
+    },
+    "moscow-osm-relation-7821481": {
+      "venueId": "moscow-osm-relation-7821481",
+      "city": "moscow",
+      "name": "Zorky",
+      "archetype": "stadium",
+      "subject": "Zorky stadium in Krasnogorsk: a mid-size football ground with a covered main stand and open terraces, floodlight masts around",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab2",
+          "#4a6a8a",
+          "#e8e6df"
+        ],
+        "roofColour": "#4a6a8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Home of a mid-level football club in Krasnogorsk; no stadium source retrieved. Typed."
+    },
+    "moscow-osm-relation-9993909": {
+      "venueId": "moscow-osm-relation-9993909",
+      "city": "moscow",
+      "name": "FSB Academy",
+      "archetype": "campus-block",
+      "subject": "FSB Academy: a closed institutional campus of brick-and-render blocks behind a fence with a gate and flagpole",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b0603f",
+          "#d8c7a0",
+          "#e9e0cc"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1960s-80s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Closed security-service academy; no public description, typed as a Soviet-era institutional campus."
+    },
+    "moscow-osm-way-1317128307": {
+      "venueId": "moscow-osm-way-1317128307",
+      "city": "moscow",
+      "name": "Спецобъект Коммунарка",
+      "archetype": "monument",
+      "subject": "Kommunarka special site: a fenced memorial to victims of Stalin-era repression with an entrance gate, a Wall of Remembrance and a church among pine trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "timber",
+        "colours": [
+          "#7e7e7a",
+          "#a67c4c",
+          "#c9c9c3"
+        ],
+        "roofColour": "#6b4a3a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1930s, memorial 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kommunarka_shooting_ground",
+          "what": "Former dacha of Yagoda used for executions 1937-1941; memorial complex opened 27 Oct 2018 with Wall of Remembrance of 6,609 names; Church of Russia's New Martyrs on the site; entrance gate"
+        }
+      ],
+      "notes": "Elements are sourced but the page does not describe look or dimensions; a plain granite wall, simple gate and a small church in woodland. Solemn, no signage text."
+    },
+    "moscow-osm-way-227741770": {
+      "venueId": "moscow-osm-way-227741770",
+      "city": "moscow",
+      "name": "Tupolev Tu-104",
+      "archetype": "monument",
+      "subject": "Tupolev Tu-104B jet airliner displayed on a plinth as a gate-guard monument beside the Vnukovo road: swept wings, twin engines at the roots, long fuselage",
+      "form": {
+        "footprint": "cross",
+        "width_m": 35,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 15,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d6d9db",
+          "#2f5a8a",
+          "#9aa0a4"
+        ],
+        "roofColour": "#d6d9db",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1950s aircraft",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tupolev_Tu-104",
+          "what": "Tu-104B CCCP-42507 preserved as a gate-guard monument outside Vnukovo airport; Tu-104B length 40.06 m, wingspan 34.54 m, height 11.9 m"
+        }
+      ],
+      "notes": "Dimensions sourced; livery (natural metal and white with a blue cheat line) is typical Aeroflot airliner paint and not confirmed for this airframe. The aircraft should be the \"statue\" element (a jet on a short pylon plinth)."
+    },
+    "moscow-osm-way-242466020": {
+      "venueId": "moscow-osm-way-242466020",
+      "city": "moscow",
+      "name": "Храм во имя иконы Божией Матери «Знамение» в Аксиньине",
+      "archetype": "church-classical",
+      "subject": "Church of the Sign of the Mother of God in Aksinyino: a modern white Orthodox church with five gilded onion domes and a detached bell tower",
+      "form": {
+        "footprint": "cross",
+        "width_m": 20,
+        "depth_m": 32,
+        "storeys": 1,
+        "height_m": 28,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#c9a85a",
+          "#3f6fa8"
+        ],
+        "roofColour": "#c9a85a",
+        "roofMaterial": "gold-leaf",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Parish church; building unseen in sources, typed."
+    },
+    "moscow-osm-way-50612064": {
+      "venueId": "moscow-osm-way-50612064",
+      "city": "moscow",
+      "name": "Church of the Exaltation of the Holy Cross in Altufyevo",
+      "archetype": "church-classical",
+      "subject": "Church of the Exaltation of the Holy Cross in Altufyevo: a white Moscow-style parish church with a bell tower and blue domes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 36,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "pyramidal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#3f6fa8",
+          "#c9a85a"
+        ],
+        "roofColour": "#3f6fa8",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "onion-dome",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Altufyevo parish church; nothing retrievable on this building, typed."
+    },
+    "moscow-osm-way-91742617": {
+      "venueId": "moscow-osm-way-91742617",
+      "city": "moscow",
+      "name": "Mytishchi Arena",
+      "archetype": "stadium",
+      "subject": "Mytishchi Arena: an indoor ice arena for about 7,000 in a boxy shell with a clad facade and a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c4cbd1",
+          "#4a6a8a",
+          "#e8ecef"
+        ],
+        "roofColour": "#9aa4ac",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mytishchi_Arena",
+          "what": "Capacity about 7,000 (7,114 infobox) for hockey, groundbreaking April 2002, opened 15 Oct 2005; no facade description"
+        }
+      ],
+      "notes": "Capacity and date sourced; facade and shape not described so typed as a standard 2000s clad arena."
+    },
+    "moscow-quiet-reflection": {
+      "venueId": "moscow-quiet-reflection",
+      "city": "moscow",
+      "name": "Храм Троицы Живоначальной",
+      "archetype": "church-modern",
+      "subject": "Church of the Life-Giving Trinity: a modern Orthodox parish church with white walls, a green-blue roof and a tall cluster of gilded domes",
+      "form": {
+        "footprint": "cross",
+        "width_m": 22,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 30,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#c9b88a",
+          "#4a8a7a"
+        ],
+        "roofColour": "#4a8a7a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "onion-dome",
+          "count": 5
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Trinity church name is generic (many in Moscow); not identifiable beyond coordinates. Typed as a 1990s-2000s parish church."
+    },
+    "moscow-recreation": {
+      "venueId": "moscow-recreation",
+      "city": "moscow",
+      "name": "Garden of the Future",
+      "archetype": "park-landscape",
+      "subject": "Garden of the Future: a newly landscaped urban park with lawns, curved paths, a glass pavilion and timber decks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b3b0a8",
+          "#4f8a4a",
+          "#c9d3d8"
+        ],
+        "roofColour": "#8a8d90",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s-20s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No findable description; typed as a modern city park."
+    },
+    "moscow-transit": {
+      "venueId": "moscow-transit",
+      "city": "moscow",
+      "name": "Черкизово",
+      "archetype": "transport-station",
+      "subject": "Cherkizovo / Cherkizovskaya station: a shallow single-vault metro station with a small ground vestibule on the ring road, corrugated metal panels inside, beside railway platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdbab2",
+          "#6f8aa0",
+          "#8a8d90"
+        ],
+        "roofColour": "#5e6266",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1990",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cherkizovskaya_(Moscow_Metro)",
+          "what": "Shallow single-vault station with island platform, walls faced in corrugated metal panels, stained-glass panels at platform ends, opened 1 Aug 1990, entrance at Okruzhnoy proyezd"
+        }
+      ],
+      "notes": "The surface part (vestibule, platforms, buses) is typed; the station interior is sourced. Blank sign board replaces the metro M."
+    }
+  }
+}

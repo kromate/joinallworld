@@ -1,0 +1,122 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "assembled-station",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "facade-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 44,
+    "height": 8,
+    "floors": 2,
+    "kind": "punched",
+    "wall_colour": "#e2dccb"
+   }
+  },
+  {
+   "type": "station-canopy",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "kind": "iron"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    10.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 80,
+    "tracks": 2
+   }
+  },
+  {
+   "type": "train",
+   "at": [
+    0,
+    10.2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "carriages": 3
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 50,
+    "depth": 5
+   }
+  },
+  {
+   "type": "station-canopy",
+   "at": [
+    0,
+    24.5,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 44,
+    "attached": false,
+    "kind": "flat",
+    "depth": 5
+   }
+  },
+  {
+   "type": "slab-entrance-canopy",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 10,
+    "depth": 5
+   }
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "az": 30,
+  "el": 28
+ }
+}

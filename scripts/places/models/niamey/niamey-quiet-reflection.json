@@ -1,0 +1,537 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Parc_de_la_Grande_Mosqu%C3%A9e.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Luciadecartagena",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/niamey/mosque5.jpg",
+   "used": "hemispherical green mosaic dome with slim crescent finial, cream-yellow walls with low parapet, flat roofs, fenced paved forecourt, red-ochre ground with scattered neem trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Niamey-Moschee4.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Dominik Schwarz",
+   "view": "interior",
+   "used": "palette only: cream plaster with dark green zellige tile, arched timber windows"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/38758638",
+   "used": "prayer hall outline (about 85 x 34 m, bearing 72)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "ochre-ground",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     118,
+     110
+    ],
+    "z0": -0.15,
+    "height": 0.15,
+    "colour": "#d9824a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d2a4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.06,
+    "plinth": 0.6,
+    "glassColour": "#3e5b4a",
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2f6b4f",
+      "height": 0.5
+     }
+    ],
+    "bay": 7.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e2c6a4",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    0,
+    11.9
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#2a5a3c",
+    "profile": [
+     [
+      9.6,
+      0,
+      "#d9c9a0"
+     ],
+     [
+      9.6,
+      0.8
+     ],
+     [
+      9.45,
+      2.4,
+      "#2a5a3c"
+     ],
+     [
+      8.9,
+      4.6
+     ],
+     [
+      7.8,
+      6.6
+     ],
+     [
+      6.2,
+      8.2
+     ],
+     [
+      4.2,
+      9.4
+     ],
+     [
+      2.1,
+      10.1
+     ],
+     [
+      0,
+      10.4
+     ]
+    ],
+    "topColour": "#356b48"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    2,
+    0,
+    11.9
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#2a5a3c",
+    "profile": [
+     [
+      9.6,
+      0
+     ],
+     [
+      9.5,
+      2.4
+     ],
+     [
+      6.2,
+      8.2
+     ],
+     [
+      0,
+      10.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#2f6b4f",
+      "profile": [
+       [
+        3.2,
+        0,
+        "#d9c9a0"
+       ],
+       [
+        3.2,
+        1.4
+       ],
+       [
+        3.4,
+        1.4,
+        "#2f6b4f"
+       ],
+       [
+        3.1,
+        2.6
+       ],
+       [
+        2.2,
+        3.6
+       ],
+       [
+        1.0,
+        4.2
+       ],
+       [
+        0,
+        4.4
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -14,
+     -4,
+     11.9
+    ],
+    "end": [
+     16,
+     6,
+     11.9
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-shaft",
+   "at": [
+    -33,
+    -8
+   ],
+   "rotDeg": 18,
+   "params": {
+    "rect": [
+     6.4,
+     6.4
+    ],
+    "z0": 0,
+    "height": 36,
+    "topScale": 0.92,
+    "colour": "#e3d2a4",
+    "plinth": 1.2,
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.1,
+    "storeys": 8,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#2f6b4f",
+      "height": 0.6
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-gallery",
+   "at": [
+    -33,
+    -8
+   ],
+   "rotDeg": 18,
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     6.8,
+     6.8
+    ],
+    "z0": 36,
+    "height": 1.2,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-lantern",
+   "at": [
+    -33,
+    -8
+   ],
+   "rotDeg": 18,
+   "params": {
+    "rect": [
+     3.4,
+     3.4
+    ],
+    "z0": 37.2,
+    "height": 4.2,
+    "colour": "#e3d2a4",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -33,
+    -8,
+    41.4
+   ],
+   "params": {
+    "segments": 4,
+    "phase": 45,
+    "colour": "#2f6b4f",
+    "profile": [
+     [
+      2.6,
+      0
+     ],
+     [
+      2.2,
+      0.4
+     ],
+     [
+      0,
+      3.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -33,
+    -8,
+    44.6
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3c4a40",
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.25,
+      2.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "minaret-stand-in",
+   "lod": [
+    2
+   ],
+   "at": [
+    -33,
+    -8
+   ],
+   "rotDeg": 18,
+   "params": {
+    "rect": [
+     6,
+     6
+    ],
+    "z0": 0,
+    "height": 44,
+    "topScale": 0.5,
+    "colour": "#e3d2a4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.2,
+    "thickness": 0.08,
+    "colour": "#e8dcc0",
+    "points": [
+     [
+      -62,
+      -40
+     ],
+     [
+      58,
+      -40
+     ],
+     [
+      64,
+      32
+     ]
+    ],
+    "kind": "railing",
+    "pillarEvery": 0
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    -60
+   ],
+   "params": {
+    "width": 110,
+    "depth": 14,
+    "count": 14,
+    "kind": "neem",
+    "min_height": 4.5,
+    "max_height": 7.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -5,
+    52
+   ],
+   "params": {
+    "width": 110,
+    "depth": 14,
+    "count": 14,
+    "kind": "neem",
+    "min_height": 4.5,
+    "max_height": 7.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    2,
+    0,
+    22.2
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#4a3a2a",
+    "profile": [
+     [
+      0.35,
+      0
+     ],
+     [
+      0.35,
+      0.6
+     ],
+     [
+      0.12,
+      0.9
+     ],
+     [
+      0.12,
+      3.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "sweep-path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "section": {
+     "circle": 0.12,
+     "segments": 6
+    },
+    "arc": {
+     "plane": "xz",
+     "centre": [
+      2,
+      0,
+      24.6
+     ],
+     "radius": 0.8,
+     "startDeg": -60,
+     "endDeg": 240
+    },
+    "colour": "#4a3a2a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "critic fixes applied (ochre ground, cream roof, deeper hemisphere dome, bronze crescent finial, railing fence, denser smaller neem); tree count capped by triangle budget so grove is sparser than the real dense rows; minaret form unverified by photo; roof still reads slightly grey in render"
+ }
+}

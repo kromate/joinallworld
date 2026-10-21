@@ -1,0 +1,342 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: coastal viewpoint over a bay, granite headland with palms and a low wall. The OSM building 19 m away (27 m2) is only a nearest match so no footprint is used; granite look taken from the Sainte Anne viewpoint photo of the same island."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 12,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "platform",
+   "params": {
+    "points": [
+     [
+      -9,
+      -6
+     ],
+     [
+      9,
+      -7
+     ],
+     [
+      11,
+      2
+     ],
+     [
+      4,
+      8
+     ],
+     [
+      -8,
+      6
+     ]
+    ],
+    "height": 0.5,
+    "colour": "#b5aea2",
+    "material": "paving"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -9,
+    -7,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      18,
+      -1
+     ],
+     [
+      20,
+      8
+     ],
+     [
+      13,
+      14
+     ],
+     [
+      1,
+      12
+     ]
+    ],
+    "height": 1.0,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8d8680"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -13,
+    8,
+    0
+   ],
+   "rotDeg": 20,
+   "params": {
+    "colour": "#8d8680",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       5,
+       3.5
+      ]
+     },
+     {
+      "z": 1.4400000000000002,
+      "ellipse": [
+       5.0,
+       3.3249999999999997
+      ]
+     },
+     {
+      "z": 2.72,
+      "ellipse": [
+       3.0,
+       1.9250000000000003
+      ]
+     },
+     {
+      "z": 3.2,
+      "ellipse": [
+       1.0,
+       0.7000000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    8,
+    12,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "colour": "#7a746d",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       6,
+       4
+      ]
+     },
+     {
+      "z": 1.1700000000000002,
+      "ellipse": [
+       6.0,
+       3.8
+      ]
+     },
+     {
+      "z": 2.21,
+      "ellipse": [
+       3.5999999999999996,
+       2.2
+      ]
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       1.2000000000000002,
+       0.8
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    14,
+    -4,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#9a948c",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       3.5,
+       3
+      ]
+     },
+     {
+      "z": 0.9900000000000001,
+      "ellipse": [
+       3.5,
+       2.8499999999999996
+      ]
+     },
+     {
+      "z": 1.87,
+      "ellipse": [
+       2.1,
+       1.6500000000000001
+      ]
+     },
+     {
+      "z": 2.2,
+      "ellipse": [
+       0.7000000000000001,
+       0.6000000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -15,
+    -2,
+    0
+   ],
+   "rotDeg": 40,
+   "params": {
+    "colour": "#6f6a64",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       4,
+       3
+      ]
+     },
+     {
+      "z": 0.81,
+      "ellipse": [
+       4.0,
+       2.8499999999999996
+      ]
+     },
+     {
+      "z": 1.53,
+      "ellipse": [
+       2.4,
+       1.6500000000000001
+      ]
+     },
+     {
+      "z": 1.8,
+      "ellipse": [
+       0.8,
+       0.6000000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "colour": "#8d8680",
+    "curve": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       7,
+       3.5
+      ]
+     },
+     {
+      "z": 0.7200000000000001,
+      "ellipse": [
+       7.0,
+       3.3249999999999997
+      ]
+     },
+     {
+      "z": 1.36,
+      "ellipse": [
+       4.2,
+       1.9250000000000003
+      ]
+     },
+     {
+      "z": 1.6,
+      "ellipse": [
+       1.4000000000000001,
+       0.7000000000000001
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "extent": [
+   45,
+   40
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-osm-node-8757739017",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and no reliable outline; headland, wall and palms are typical, not measured"
+ }
+}

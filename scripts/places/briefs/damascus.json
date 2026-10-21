@@ -1,0 +1,1696 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "damascus",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "damascus",
+    "climate": "desert",
+    "vernacular": "Cool-arid plateau city: dense mid-rise (4-8 storey) concrete-frame apartment blocks with flat roofs, water tanks and satellite dishes, finished in sand, cream and grey render; unplastered breeze-block and exposed concrete in informal districts; stone-clad and ablaq (alternating black-and-white stone) buildings in the walled old city, with courtyard houses, arched souqs and Ottoman and French Mandate public buildings in pale limestone. Poplars, cypress and plane trees along the Barada.",
+    "wallColours": [
+      "#d9c9a3",
+      "#e8dcc0",
+      "#b7b0a2",
+      "#cdb98e",
+      "#efeae0",
+      "#a89f8c",
+      "#c7a97a"
+    ],
+    "roofColours": [
+      "#a9a39a",
+      "#8d9296",
+      "#a85a3c",
+      "#6f6a62",
+      "#cfc6b0"
+    ],
+    "wallMaterials": [
+      "render",
+      "concrete",
+      "limestone",
+      "stone",
+      "painted-render",
+      "whitewash",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "corrugated"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer",
+      "palm"
+    ],
+    "ornament": "Arab-Islamic motifs: pointed and horseshoe arches, ablaq banded stonework, muqarnas portals, geometric tile and mosaic panels, tall slender Syrian minarets with square or octagonal shafts; Iranian-style blue and turquoise tiling and mirror-work on Shia shrines; carved wooden mashrabiya balconies in old houses.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Damascus",
+        "what": "old city keeps rectangular Roman plan; Umayyad Mosque, Nur al-Din Madrasa twin muqarnas domes, citadel, souqs; cool arid climate, ~130 mm rain, plateau 680 m; modern districts Mezzeh, Barzeh"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sayyidah_Ruqayya_Mosque",
+        "what": "modern Iranian-style shrine architecture with mirror work, gold and tile"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Sayyidah_Zaynab_Mosque",
+        "what": "gilded dome, two tiled minarets, large square courtyard"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hejaz_Railway_Station,_Damascus",
+        "what": "Spanish architect Fernando de Aranda, decorated ceilings, 1913"
+      }
+    ]
+  },
+  "places": {
+    "damascus-airport-damascus-airport": {
+      "venueId": "damascus-airport-damascus-airport",
+      "city": "damascus",
+      "name": "Damascus International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the main terminal building of Damascus International Airport (built by a French consortium, opened around 1970) seen from the landside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 281,
+        "depth_m": 133,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8cfb9",
+          "#4a6a7c",
+          "#efeae0"
+        ],
+        "roofColour": "#b4b2ac",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1970s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Damascus_International_Airport",
+          "what": "two terminals; described as Islamic architecture; built by French companies led by SCB from 1965; opened late 1960s/1970s; planned new third terminal not built"
+        }
+      ],
+      "notes": "Footprint is measured from OSM (about 281 x 133 m). The facade, canopy and jet-bridge count are typed; the wiki only says Islamic architecture and gives no description. Planned 2025 terminal is not shown."
+    },
+    "damascus-clinic": {
+      "venueId": "damascus-clinic",
+      "city": "damascus",
+      "name": "Mezzeh Military Hospital (Yousef Al-Azmeh)",
+      "archetype": "hospital",
+      "subject": "the big Mezzeh military hospital compound, shown as its principal multi-storey ward block in sand-coloured concrete",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "variant": "compound-main-block",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d4c8ac",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q122753154",
+          "what": "Yousef Al-Azmeh Military Hospital, Arabic Wikipedia article, hospital in Mezzeh"
+        }
+      ],
+      "notes": "OSM compound is about 454 x 270 m (too large to show). The visible hospital block and its look are typed from the city style; nothing descriptive was found."
+    },
+    "damascus-community-notices": {
+      "venueId": "damascus-community-notices",
+      "city": "damascus",
+      "name": "Ministry of Education",
+      "archetype": "civic-palace",
+      "subject": "the Syrian Ministry of Education building in Damascus: a four-storey stone-clad government block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 86,
+        "depth_m": 39,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a3",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6866853",
+          "what": "Syrian ministry responsible for education"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/842962557",
+          "what": "OSM building about 86 x 39 m"
+        }
+      ],
+      "notes": "Only the footprint is measured; limestone cladding and four storeys are typed as the usual Syrian ministry-block look."
+    },
+    "damascus-community-voting-game": {
+      "venueId": "damascus-community-voting-game",
+      "city": "damascus",
+      "name": "Abbassiyeen Square",
+      "archetype": "park-landscape",
+      "subject": "Abbassiyeen (Abbasiyyin) Square, a large paved traffic plaza with a central garden",
+      "form": {
+        "footprint": "round",
+        "width_m": 110,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b7b0a2",
+          "#7da05a",
+          "#d9c9a3"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Damascus",
+          "what": "Damascus modern districts and plateau city context"
+        }
+      ],
+      "notes": "No source describes the square (no OSM building matched). A roundabout garden with a central fountain/monument and street trees is typed."
+    },
+    "damascus-community-workshop": {
+      "venueId": "damascus-community-workshop",
+      "city": "damascus",
+      "name": "Higher Institute for Applied Sciences and Technology",
+      "archetype": "campus-block",
+      "subject": "the main teaching and laboratory block of HIAST on the Damascus-Homs road, a 1980s exposed-concrete campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b7b0a2",
+          "#6f8fa5",
+          "#d8d0bd"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1983",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q5758173",
+          "what": "University in Damascus, established 1983"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/842850104",
+          "what": "OSM campus polygon about 820 x 344 m, start_date 1983"
+        }
+      ],
+      "notes": "Only the campus extent and 1983 start are measured. The concrete teaching block is typed; the campus is far larger than a single model."
+    },
+    "damascus-market-game": {
+      "venueId": "damascus-market-game",
+      "city": "damascus",
+      "name": "Damasquino Mall",
+      "archetype": "mall",
+      "subject": "Damasquino Mall in Mezzeh: a four-storey modern shopping centre with a glass and stone front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 69,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c9a3",
+          "#4a6a7c",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1194503849",
+          "what": "OSM retail building about 72 x 69 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q63122405",
+          "what": "Damasquino Mall (Arabic Wikipedia entry)"
+        }
+      ],
+      "notes": "Footprint measured; materials, storeys and colours typed. No photo description found."
+    },
+    "damascus-meal-stop": {
+      "venueId": "damascus-meal-stop",
+      "city": "damascus",
+      "name": "Bawabet Demashq",
+      "archetype": "restaurant",
+      "subject": "Bawabet Demashq (\"Damascus Gate\") restaurant and leisure complex on the airport road, with a stone gate-style frontage",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9c9a3",
+          "#3a3a3a",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/129244063",
+          "what": "OSM leisure area about 159 x 114 m around the venue"
+        }
+      ],
+      "notes": "No description found. The name suggests a Damascene gate-style stone frontage with ablaq stripes; that and the courtyard are typed. Only the leisure extent is measured."
+    },
+    "damascus-osm-node-1246877089": {
+      "venueId": "damascus-osm-node-1246877089",
+      "city": "damascus",
+      "name": "Higher Institute of Dramatic Art",
+      "archetype": "museum-theatre",
+      "subject": "the Dar al-Assad for Culture and Arts (Damascus Opera House) on Umayyad Square, the five-level theatre building that houses the dramatic arts institute",
+      "form": {
+        "footprint": "rect",
+        "width_m": 189,
+        "depth_m": 115,
+        "storeys": 5,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1d6b8",
+          "#6f8fa5",
+          "#bdb5a2"
+        ],
+        "roofColour": "#b4b2ac",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Damascus_Opera_House",
+          "what": "opened 7 May 2004 on Umayyad Square; five-level building; opera theatre 1,300 seats, drama theatre 600, small hall 237"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12193500",
+          "what": "Higher Institute of Dramatic Art, Syrian arts institute"
+        }
+      ],
+      "notes": "The OSM building nearest the venue (189 x 115 m) is taken to be the opera-house complex, which hosts the institute; the cladding and colours are not confirmed from sources."
+    },
+    "damascus-osm-node-12989783743": {
+      "venueId": "damascus-osm-node-12989783743",
+      "city": "damascus",
+      "name": "Sayyidah Zaynab Shrine",
+      "archetype": "mosque-domed",
+      "subject": "the Sayyidah Zaynab mosque and mausoleum south of Damascus: a gilded dome, two tall tiled minarets and a large square courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome",
+        "variant": "shrine-courtyard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e9e4d6",
+          "#2e7f93",
+          "#c9a14a"
+        ],
+        "roofColour": "#c9a14a",
+        "roofMaterial": "gold-leaf",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "gilded from outside"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "high minarets tiled by Iranian artists"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "large square sahn"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "tile panels on porches and walls"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "1990",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sayyidah_Zaynab_Mosque",
+          "what": "completed 1990; one gilded dome, two high minarets and walls tiled by Iranian artists; large square courtyard, prayer hall to the east, newer north courtyard"
+        }
+      ],
+      "notes": "No OSM footprint; the 100 x 90 m extent is estimated. Tile blues and white marble are the usual look of the Iranian-style shrine; sources only confirm gold, tile and counts. Recognisable by the gold dome between two tall blue-tiled minarets."
+    },
+    "damascus-osm-node-13386461392": {
+      "venueId": "damascus-osm-node-13386461392",
+      "city": "damascus",
+      "name": "Tomb of Mu'awiya I",
+      "archetype": "shrine-small",
+      "subject": "the small tomb shrine of Caliph Mu'awiya I in the Bab al-Saghir cemetery, a low stone mausoleum within a walled graveyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#cdb98e",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small dome over the grave chamber"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "medieval, rebuilt",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Damascus",
+          "what": "old city and surrounding historic district context; no page describing this tomb was found"
+        }
+      ],
+      "notes": "No description found; the small tomb inside a cemetery wall is typed. Footprint and the dome are guesses."
+    },
+    "damascus-osm-node-3245444438": {
+      "venueId": "damascus-osm-node-3245444438",
+      "city": "damascus",
+      "name": "Souq al-Sukkariyya",
+      "archetype": "market-hall",
+      "subject": "Souq al-Sukkariyya, a narrow covered lane of small shops near the old city, typed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdb98e",
+          "#8c8576",
+          "#a85a3c"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "stalls",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "Ottoman",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/371956731",
+          "what": "OSM nearest building about 35 x 22 m"
+        }
+      ],
+      "notes": "Typed from the Damascus souq type (stone shopfronts, corrugated metal cover over a lane). The Arabic name means sugar market. Differs from the larger Souq al-Khuja hall."
+    },
+    "damascus-osm-node-354573941": {
+      "venueId": "damascus-osm-node-354573941",
+      "city": "damascus",
+      "name": "Bab Kisan",
+      "archetype": "heritage-fort",
+      "subject": "Bab Kisan, the south-eastern Roman-medieval city gate of the old city with the Chapel of St Paul beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cdb98e",
+          "#8c8576",
+          "#d9c9a3"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "adjoining stretch of city wall"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "Roman origin, medieval rebuild",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bab_Kisan",
+          "what": "one of the seven ancient city gates, south-east of the old city; Roman-era wall; chapel of Saint Paul marks the window of his escape"
+        }
+      ],
+      "notes": "Sources describe the gate role only. Stone and the single-arch gate in a wall are typed; the OSM building is a 26 x 24 m chapel at the gate."
+    },
+    "damascus-osm-relation-16920636": {
+      "venueId": "damascus-osm-relation-16920636",
+      "city": "damascus",
+      "name": "Al-Jalaa Sports Stadium",
+      "archetype": "stadium",
+      "subject": "Al-Jalaa Stadium (1976, Pan Arab Games), a concrete football bowl of 10,000 seats in the Jalaa sports complex",
+      "form": {
+        "footprint": "oval",
+        "width_m": 208,
+        "depth_m": 161,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#b7b0a2",
+          "#8c8576",
+          "#d8d0bd"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1976",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Jalaa_Stadium",
+          "what": "opened 1976 for the 5th Pan Arab Games; all-seater 10,000 since 2020; pitch 105 x 67 m with artificial turf; scoreboard; part of a 10 ha sports complex"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/71803",
+          "what": "OSM stadium footprint about 208 x 161 m"
+        }
+      ],
+      "notes": "Year, capacity and extent are sourced; stand roof and floodlights are typed."
+    },
+    "damascus-osm-relation-4614118": {
+      "venueId": "damascus-osm-relation-4614118",
+      "city": "damascus",
+      "name": "Damascus University",
+      "archetype": "campus-block",
+      "subject": "a Damascus University faculty block: a five-storey stone-clad teaching building around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a3",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Damascus_University",
+          "what": "university campuses and faculties across Damascus; headquarters at Baramkeh; former Hamidieh barracks; no architectural description"
+        }
+      ],
+      "notes": "No OSM building matched; the form is typed from mid-century Syrian university blocks. The older Hamidieh barracks building is not shown."
+    },
+    "damascus-osm-way-106775196": {
+      "venueId": "damascus-osm-way-106775196",
+      "city": "damascus",
+      "name": "Ibn Nafees Hospital",
+      "archetype": "hospital",
+      "subject": "Ibn Al-Nafis Hospital (1943), a low-rise state chest and general hospital of pavilion blocks in pale stone",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "render",
+        "colours": [
+          "#d9c9a3",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#a85a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1943",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q60575998",
+          "what": "Ibn al-Nafis Hospital (Damascus), Arabic Wikipedia"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/106775196",
+          "what": "OSM hospital compound about 388 x 379 m, start_date 1943"
+        }
+      ],
+      "notes": "Only the 1943 start and the big compound extent are measured. The pavilion style with pale stone and tile roofs is a guess for a French-Mandate-era hospital."
+    },
+    "damascus-osm-way-1120153082": {
+      "venueId": "damascus-osm-way-1120153082",
+      "city": "damascus",
+      "name": "Tomb of the Unknown Soldier",
+      "archetype": "monument",
+      "subject": "the Syrian Tomb of the Unknown Soldier (1990, by sculptor Mahmoud Hammad): a tall abstract stone monument on a low plinth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 37,
+        "roof": "none",
+        "variant": "tall-abstract-slab"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#cdc3ab",
+          "#6f6a62",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "obelisk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/30312138",
+          "what": "OSM: memorial, height 37.2 m, start 1990, footprint 37 x 8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2898923",
+          "what": "war memorial in Damascus; architect/sculptor Mahmoud Hammad"
+        }
+      ],
+      "notes": "Height, footprint and year measured. The exact silhouette of the monument is not described in what was found; an abstract tall form is typed as an obelisk-like slab on a podium. Remove the obelisk if photos show otherwise."
+    },
+    "damascus-osm-way-1121497973": {
+      "venueId": "damascus-osm-way-1121497973",
+      "city": "damascus",
+      "name": "Al-Muhafaza Stadium",
+      "archetype": "stadium",
+      "subject": "Al-Muhafaza Stadium (2011), a small 1,000-seat artificial-turf ground in a sports complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 174,
+        "depth_m": 98,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c7c2b6",
+          "#2b5d8a",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al-Muhafaza_Stadium",
+          "what": "multi-use all-seater stadium of 1,000 seats opened 2011 in Kafr Sousa, 2.8 million USD; artificial turf 105 x 67 m; complex with administration building, gym, theatre, restaurants and plazas"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1121497973",
+          "what": "OSM stadium footprint about 174 x 98 m"
+        }
+      ],
+      "notes": "Small low stands, not a big bowl. The page used for this match was requested by name and its link to this venue could not be double-checked; stand details are typed."
+    },
+    "damascus-osm-way-1486782802": {
+      "venueId": "damascus-osm-way-1486782802",
+      "city": "damascus",
+      "name": "Sayyidah Ruqayya Shrine",
+      "archetype": "mosque-domed",
+      "subject": "the Sayyidah Ruqayya shrine mosque beside the Umayyad Mosque in the old city: one dome, one minaret and a small courtyard in Iranian-style tile, mirror and gold",
+      "form": {
+        "footprint": "rect",
+        "width_m": 78,
+        "depth_m": 77,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome",
+        "variant": "shrine-courtyard"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "marble",
+        "colours": [
+          "#e1dccd",
+          "#2e7f93",
+          "#c9a14a"
+        ],
+        "roofColour": "#c9a14a",
+        "roofMaterial": "gold-leaf",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "small sahn in front of the shrine room"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "tile and mirror work"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "persian",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sayyidah_Ruqayya_Mosque",
+          "what": "completed 1985 around the mausoleum; modern version of Iranian architecture with much mirror and gold work; one dome, one minaret, intricate tilework; small courtyard"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1486782802",
+          "what": "OSM mosque footprint about 78 x 77 m"
+        }
+      ],
+      "notes": "Dome and minaret count, year and style are sourced. Colours (gold dome, turquoise tile) are typed from the Iranian-style type. In a dense old-city lane, so the courtyard is small."
+    },
+    "damascus-osm-way-166614282": {
+      "venueId": "damascus-osm-way-166614282",
+      "city": "damascus",
+      "name": "Souq al-Khuja",
+      "archetype": "market-hall",
+      "subject": "Souq al-Khuja, a covered hall of small shops with a vaulted arcade, typed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "barrel"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#cdb98e",
+          "#8c8576",
+          "#d9c9a3"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 12
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "Ottoman",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q20387377",
+          "what": "Souq al-Khuja (Arabic Wikipedia entry)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/166614282",
+          "what": "OSM marketplace building about 67 x 32 m"
+        }
+      ],
+      "notes": "Footprint measured; the barrel-vaulted cover over a stone-arcaded shop lane is the Damascus souq type, not confirmed for this souq."
+    },
+    "damascus-osm-way-28869028": {
+      "venueId": "damascus-osm-way-28869028",
+      "city": "damascus",
+      "name": "Sebki Park",
+      "archetype": "park-landscape",
+      "subject": "Sebki (Al-Sibki) Park, a formal public garden in central Damascus with mature trees, paths and a fountain",
+      "form": {
+        "footprint": "rect",
+        "width_m": 179,
+        "depth_m": 168,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b7b0a2",
+          "#6f9a54",
+          "#d9c9a3"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12207348",
+          "what": "park in Syria (Arabic Wikipedia: Sebki Garden)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28869028",
+          "what": "OSM park polygon about 179 x 168 m"
+        }
+      ],
+      "notes": "Only extent measured; formal garden elements are typed."
+    },
+    "damascus-osm-way-351273248": {
+      "venueId": "damascus-osm-way-351273248",
+      "city": "damascus",
+      "name": "Tishreen Military Hospital",
+      "archetype": "hospital",
+      "subject": "the big Tishreen Military Hospital (1982): a long multi-storey ward block on the hillside north-east of Damascus",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 9,
+        "height_m": 36,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "render",
+        "colours": [
+          "#d4c8ac",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1982",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12243187",
+          "what": "Tishreen Military Hospital, Syria"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/351273248",
+          "what": "OSM hospital compound about 651 x 391 m, start_date 1982-10"
+        }
+      ],
+      "notes": "The compound is much larger than a model; only the 1982 date and extent are measured. The main block is typed. Taller than Mezzeh hospital block, and shown with a different plan."
+    },
+    "damascus-osm-way-5057870": {
+      "venueId": "damascus-osm-way-5057870",
+      "city": "damascus",
+      "name": "Jasmine Stadium",
+      "archetype": "stadium",
+      "subject": "Jasmine Stadium, a mid-size Damascus football stadium of open concrete stands, typed",
+      "form": {
+        "footprint": "oval",
+        "width_m": 206,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c0b9a8",
+          "#a85a3c",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/71808",
+          "what": "OSM stadium footprint about 206 x 160 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11318928",
+          "what": "multi-use sport stadium in Damascus"
+        }
+      ],
+      "notes": "Only the footprint and its type are known; the English Wikipedia page could not be retrieved. Stand and floodlight details are typed."
+    },
+    "damascus-quiet-reflection": {
+      "venueId": "damascus-quiet-reflection",
+      "city": "damascus",
+      "name": "Nabi Habeel Mosque",
+      "archetype": "mosque-domed",
+      "subject": "the mosque over the tomb of Nabi Habeel (Abel) in the Barada valley north-west of Damascus, a small domed mosque with one minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 37,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome",
+        "variant": "single-dome-tomb-mosque"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#d9c9a3",
+          "#efeae0",
+          "#6f9a54"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "Ottoman, rebuilt",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2622376",
+          "what": "mosque in Damascus region"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/475003071",
+          "what": "OSM building about 37 x 33 m"
+        }
+      ],
+      "notes": "Only the footprint and the label are known. One dome and one minaret on a small stone building are typed. Dome colour is a guess."
+    },
+    "damascus-recreation": {
+      "venueId": "damascus-recreation",
+      "city": "damascus",
+      "name": "Umayyads Park",
+      "archetype": "park-landscape",
+      "subject": "Umayyads Park (Hadiqat al-Umawiyyin), a long landscaped public garden with lawns and shade trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 1070,
+        "depth_m": 467,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b7b0a2",
+          "#6f9a54",
+          "#d9c9a3"
+        ],
+        "roofColour": "#a9a39a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q12207358",
+          "what": "park in Syria (Arabic Wikipedia: Umayyads Garden)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/30419151",
+          "what": "OSM park polygon about 1070 x 467 m"
+        }
+      ],
+      "notes": "Only the extent is measured (a recognisable portion should be shown). Pavilion and fountain are typed."
+    },
+    "damascus-transit": {
+      "venueId": "damascus-transit",
+      "city": "damascus",
+      "name": "Hejaz Railway Station",
+      "archetype": "transport-station",
+      "subject": "the historic Hejaz station of Damascus (1913, Fernando de Aranda): an ornate two-storey Ottoman-era station with a grand decorated hall and a locomotive displayed in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 51,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#e1d6b8",
+          "#a89f8c",
+          "#efeae0"
+        ],
+        "roofColour": "#a85a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "ottoman",
+      "era": "1913",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hejaz_Railway_Station,_Damascus",
+          "what": "passenger building designed by Spanish architect Fernando de Aranda, commissioned 1913; decorated ceiling; historical monument; locomotive on display in front"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28843859",
+          "what": "OSM building: 2 levels, about 51 x 15 m"
+        }
+      ],
+      "notes": "Architect, 1913 and two levels sourced. Pale stone, ornate arched facade with tiled hip roof and the clock tower are recalled from photos, not confirmed in sources; drop the clock tower if absent."
+    }
+  }
+}

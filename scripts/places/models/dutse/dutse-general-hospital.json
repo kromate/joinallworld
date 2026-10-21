@@ -1,0 +1,277 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "dutse-general-hospital",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://gazettengr.com/jigawa-govt-to-spend-n172-million-on-solar-power-at-dutse-general-hospital/",
+   "used": "solar mini-grid at the hospital; buildings typed from typical Nigerian general hospitals, U-plan, no OSM match"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede5d0",
+    "windows": "rect",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#5f8f7a",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "pitch": 20,
+    "material": "corrugated",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     10,
+     34
+    ]
+   },
+   "at": [
+    -26,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede5d0",
+    "windows": "rect",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#5f8f7a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "pitch": 18,
+    "material": "corrugated",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     10,
+     34
+    ]
+   },
+   "at": [
+    26,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede5d0",
+    "windows": "rect",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#5f8f7a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "pitch": 18,
+    "material": "corrugated",
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     42,
+     8
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ede5d0",
+    "windows": "rect",
+    "windowRatio": 0.15,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b3a2b",
+    "pitch": 18,
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -20,
+    18,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 30,
+    "depth": 2.6,
+    "height": 3,
+    "roof": "lean-to"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f7f4ee",
+    "roofColour": "#5f8f7a",
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.8,
+    "bottom": 1.6,
+    "colour": "#f7f4ee",
+    "frameColour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    14,
+    38,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 6,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "core/solar-panels",
+   "at": [
+    0,
+    44,
+    4.8
+   ],
+   "params": {
+    "rows": 3,
+    "cols": 8,
+    "tilt": 15
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -28,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or outline; plan, wing lengths and solar placement typical"
+ }
+}

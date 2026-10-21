@@ -1,0 +1,244 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/96994557",
+   "used": "stadium plot outline (236 x 84 m skewed strip, bearing 143 deg) as the paved plot; stadium is Mellassine neighbourhood ground of Club olympique des transports (fr.wikipedia); no photo found on Commons or Wikipedia"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "plot",
+   "footprint": {
+    "osm": true,
+    "scale": 0.55
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc8b6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a3"
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "length": 84,
+    "width": 52,
+    "stripes": 6,
+    "goals": true
+   }
+  },
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.45
+   ],
+   "params": {
+    "length": 110,
+    "width": 78,
+    "lane_width": 6,
+    "infield": false,
+    "colour": "#b4553d"
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     -34,
+     -45
+    ],
+    "end": [
+     34,
+     -45
+    ],
+    "rows": 12,
+    "rise": 0.5,
+    "run": 0.85,
+    "under": "open",
+    "seatColours": [
+     "#2f5fa3",
+     "#d9d2c2"
+    ],
+    "concreteColour": "#d9d2c2",
+    "canopy": {
+     "depth": 7,
+     "height": 9,
+     "colour": "#a8a39a"
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "params": {
+    "start": [
+     34,
+     45
+    ],
+    "end": [
+     -34,
+     45
+    ],
+    "rows": 5,
+    "rise": 0.45,
+    "run": 0.8,
+    "under": "open",
+    "seatColours": [
+     "#2f5fa3",
+     "#e6d8b8"
+    ],
+    "concreteColour": "#d9d2c2"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    46,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    46,
+    0
+   ],
+   "params": {
+    "height": 26
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -56,
+    -52,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      112,
+      0
+     ],
+     [
+      112,
+      104
+     ],
+     [
+      0,
+      104
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#e6d8b8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.2,
+    "pillar": 1.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -62,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 5,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   130,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; outline used only as the paved plot (strip shape not a stadium bowl); pitch, track, two stands and masts are typical, not verified."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-way-96994557"
+}

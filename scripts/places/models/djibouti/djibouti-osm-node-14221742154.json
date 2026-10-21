@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "djibouti",
+ "venueId": "djibouti-osm-node-14221742154",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/djibouti.json#djibouti-osm-node-14221742154",
+   "used": "stele on a stepped platform with a flag; OSM match was a nearest residential block 18 m away so not used; no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "platform",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a6",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 1,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "stele",
+   "at": [
+    0,
+    1,
+    0.5
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       1.6
+      ]
+     },
+     {
+      "z": 4.5,
+      "rect": [
+       1.6,
+       1.0
+      ]
+     }
+    ],
+    "colour": "#ece7dc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     4,
+     3
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 0.5,
+   "height": 0.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a8f94",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    5,
+    3,
+    0.5
+   ],
+   "params": {
+    "height": 6,
+    "colour": "#6ab2e7"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   36,
+   30
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or description of the real form; stele, steps and flag are assumed."
+ }
+}

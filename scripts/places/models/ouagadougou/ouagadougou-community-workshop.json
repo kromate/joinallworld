@@ -1,0 +1,300 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:B%C3%A2timent_de_l%27Universit%C3%A9_de_Ouagadougou.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Ji-Elle",
+   "view": "street",
+   "file": "/tmp/places-evidence/ouagadougou/uni1.jpg",
+   "used": "five-storey cream concrete block with a rhombic lattice screen on the long face and brick-red panels on the end wall, low pale annex and white perimeter wall in front, white round monument plinth at the roundabout, sandy red ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:COLLECTIE_TROPENMUSEUM_Ingang_van_de_universiteit_van_Ouagadougou_TMnr_20010636.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Jan Broekhuijse",
+   "view": "detail",
+   "used": "raw concrete blocks with deep screens, flat roofs, sandy forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/27895270",
+   "used": "campus outline checked (925 x 838 m); only one representative block is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -30,
+  "pitchDeg": 2,
+  "fovDeg": 38,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     30,
+     13
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 21,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e7ddc9",
+    "windows": "screen",
+    "windowRatio": 0.6,
+    "faces": {
+     "back": "plain",
+     "right": "plain",
+     "left": "plain"
+    },
+    "glassColour": "#9a9486",
+    "bands": {
+     "colour": "#d4c9b2",
+     "height": 0.5
+    },
+    "pattern": [
+     {
+      "type": "floors",
+      "faces": [
+       "left"
+      ],
+      "colours": [
+       "#b5694a",
+       "#b5694a"
+      ]
+     },
+     {
+      "type": "bands",
+      "faces": [
+       "left"
+      ],
+      "colour": "#e7ddc9",
+      "height": 0.9,
+      "at": 0.0
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb6a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-wing",
+   "footprint": {
+    "rect": [
+     48,
+     13
+    ]
+   },
+   "at": [
+    8,
+    17
+   ],
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8d0c0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a49a",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    -14
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece2c8",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc8b6",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.1,
+    "colour": "#f4f1ea"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    30,
+    -26,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#f4f4ee",
+    "profile": [
+     [
+      5.2,
+      0
+     ],
+     [
+      5.2,
+      0.5
+     ],
+     [
+      5,
+      0.5
+     ],
+     [
+      5,
+      1.6
+     ],
+     [
+      0.7,
+      1.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    -26,
+    1.6
+   ],
+   "params": {
+    "colour": "#2e2a28",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.0
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       1.0,
+       0.9
+      ]
+     },
+     {
+      "z": 6.5,
+      "rect": [
+       0.8,
+       0.8
+      ],
+      "cx": 0.3
+     }
+    ]
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    30,
+    -26,
+    1.6
+   ],
+   "params": {
+    "colour": "#d8d4c8",
+    "sections": [
+     {
+      "z": 0,
+      "circle": 2.0
+     },
+     {
+      "z": 1.4,
+      "circle": 1.5
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     46,
+     -4
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     42,
+     -10
+    ],
+    "height": 18
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     6
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Rhombic lattice approximated by a vertical screen facade (no diamond cutouts); monument sculpture is a simple dark figure; perimeter railing is a plain low wall."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ouagadougou",
+ "venueId": "ouagadougou-community-workshop"
+}

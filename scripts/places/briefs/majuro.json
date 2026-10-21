@@ -1,0 +1,1304 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "majuro",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "majuro",
+    "climate": "tropical-maritime",
+    "vernacular": "Narrow coral-atoll strip (highest point under 3 m) with a single road along the island. Ordinary buildings are one- or two-storey concrete-block boxes, plastered and painted in whites, pale blues and yellows or left bare grey, under low-pitched corrugated metal roofs in red, green, blue or galvanised silver; stores and offices are flat-roofed concrete boxes with shop awnings; a few timber-and-thatch jaki-ed style open shelters survive. Crushed-coral and sand ground, dense coconut palms and breadfruit.",
+    "wallColours": [
+      "#e9e5d6",
+      "#cfd8dc",
+      "#f0e2a8",
+      "#9dbfd0",
+      "#b9b6ab",
+      "#d9c9a3"
+    ],
+    "roofColours": [
+      "#a33a2c",
+      "#aab0b3",
+      "#3b6e91",
+      "#4c7a54"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "whitewash",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "thatch"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Almost none: plain boxes with louvred or sliding windows, hand-painted shop boards, deep verandah awnings for shade, woven pandanus and coconut-frond motifs on traditional crafts, WWII relics (guns, aircraft wreckage) in the war memorial park.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Majuro",
+        "what": "coral atoll of 60+ islands/narrow landmasses, highest point under 3 m, coconut palms, airport runway water catchment, mixed concrete civic buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Marshall_Islands_International_Airport",
+        "what": "terminal is a series of single-floor structures completed 1971"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Alele_Museum",
+        "what": "purpose-built museum/library building, 1974, two floors"
+      }
+    ]
+  },
+  "places": {
+    "majuro-airport-majuro-airport": {
+      "venueId": "majuro-airport-majuro-airport",
+      "city": "majuro",
+      "name": "Marshall Islands International Airport (Amata Kabua)",
+      "archetype": "airport-terminal",
+      "subject": "The 1971 terminal: a long single-storey group of hangar-like sheds seen from the car-park side, no jet bridges (passengers walk from the apron)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 71,
+        "depth_m": 53,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "regional"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e9e5d6",
+          "#9dbfd0",
+          "#aab0b3"
+        ],
+        "roofColour": "#aab0b3",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered entrance and kerbside shade"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1971",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Marshall_Islands_International_Airport",
+          "what": "terminal made of single-floor structures like small hangars; built 1971; stairs boarding, no bridges"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM terminal footprint 70.8 x 52.6 m (collected facts)"
+        }
+      ],
+      "notes": "Footprint is measured (OSM); colours and roof finish are typed. Very low profile, shed-like; do not add a control tower on the terminal. The runway itself doubles as the island water catchment."
+    },
+    "majuro-clinic": {
+      "venueId": "majuro-clinic",
+      "city": "majuro",
+      "name": "Leroij Atama Zedkeia Medical Center (Majuro Hospital)",
+      "archetype": "hospital",
+      "subject": "The 101-bed national hospital: a two-storey concrete main block with covered walkways linking ward wings",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e5d6",
+          "#9dbfd0",
+          "#b9b6ab"
+        ],
+        "roofColour": "#a33a2c",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2,
+          "note": "covered walkways between wings"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "Majuro Hospital is a 101-bed facility (no visual details)"
+        }
+      ],
+      "notes": "OSM compound is 141 x 128 m (9,994 m2) so the model shows the main block only. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-community-notices": {
+      "venueId": "majuro-community-notices",
+      "city": "majuro",
+      "name": "Marshall Islands Visitors Authority (M.I.V.A)",
+      "archetype": "office-low",
+      "subject": "A small one-storey government office with a covered porch on the Delap/Uliga strip",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e2a8",
+          "#9dbfd0",
+          "#e9e5d6"
+        ],
+        "roofColour": "#3b6e91",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "porch"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM footprint 22.6 x 16 m. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-community-voting-game": {
+      "venueId": "majuro-community-voting-game",
+      "city": "majuro",
+      "name": "RMI Courts (Judiciary)",
+      "archetype": "civic-small",
+      "subject": "The courthouse compound beside the Alele museum: a wide one-to-two storey concrete block with a front porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e5d6",
+          "#b9b6ab",
+          "#cfd8dc"
+        ],
+        "roofColour": "#aab0b3",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alele_Museum",
+          "what": "adjacent civic precinct on the Delap-Uliga-Djarrit strip (Capitol area)"
+        }
+      ],
+      "notes": "OSM footprint 42 x 31 m. Next door to the Alele museum, so keep them visually different. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-community-workshop": {
+      "venueId": "majuro-community-workshop",
+      "city": "majuro",
+      "name": "University of the South Pacific, Marshall Islands Campus",
+      "archetype": "campus-block",
+      "subject": "Two-storey teaching block of the USP Majuro campus with external walkways",
+      "form": {
+        "footprint": "L",
+        "width_m": 38,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e5d6",
+          "#3b6e91",
+          "#b9b6ab"
+        ],
+        "roofColour": "#3b6e91",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "open walkway"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "USP has a presence on Majuro (no physical description)"
+        }
+      ],
+      "notes": "OSM college building 38 x 35 m. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-market-game": {
+      "venueId": "majuro-market-game",
+      "city": "majuro",
+      "name": "Wei Wei Store",
+      "archetype": "shophouse",
+      "subject": "A single-storey retail store with a flat roof and a deep awning along the road front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 11.5,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b9b6ab",
+          "#f0e2a8",
+          "#e9e5d6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM footprint 19.8 x 11.5 m, shared with the neighbouring restaurant venue. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-meal-stop": {
+      "venueId": "majuro-meal-stop",
+      "city": "majuro",
+      "name": "Jay's Restaurant",
+      "archetype": "restaurant",
+      "subject": "A small local restaurant: single-storey with a pitched metal roof and a shaded entrance deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 11.5,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#9dbfd0",
+          "#8a5a36",
+          "#e9e5d6"
+        ],
+        "roofColour": "#a33a2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "covered entrance deck"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM footprint 19.8 x 11.5 m shared with Wei Wei Store. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-node-11103492901": {
+      "venueId": "majuro-osm-node-11103492901",
+      "city": "majuro",
+      "name": "NDES",
+      "archetype": "civic-small",
+      "subject": "A small single-storey government office/depot building with a hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 9.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b6ab",
+          "#cfd8dc",
+          "#e9e5d6"
+        ],
+        "roofColour": "#4c7a54",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "Unknown small building beside the hospital; venue name NDES not documented. Typed from city style."
+    },
+    "majuro-osm-node-1563948641": {
+      "venueId": "majuro-osm-node-1563948641",
+      "city": "majuro",
+      "name": "Enra Restaurant",
+      "archetype": "restaurant",
+      "subject": "A restaurant in a small two-storey hotel-style building with an upper balcony",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e2a8",
+          "#8a5a36",
+          "#e9e5d6"
+        ],
+        "roofColour": "#a33a2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM tags this building as a hotel, 22.9 x 16 m. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-node-1583072058": {
+      "venueId": "majuro-osm-node-1583072058",
+      "city": "majuro",
+      "name": "University of the South Pacific (USP)",
+      "archetype": "campus-block",
+      "subject": "Library and classroom wing of the USP Majuro campus, wide and low with a covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 51,
+        "depth_m": 33,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfd8dc",
+          "#9dbfd0",
+          "#b9b6ab"
+        ],
+        "roofColour": "#aab0b3",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkway"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "USP presence on Majuro"
+        }
+      ],
+      "notes": "OSM building 51 x 33 m; a second USP venue, deliberately single-storey vs the two-storey block. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-node-2698631328": {
+      "venueId": "majuro-osm-node-2698631328",
+      "city": "majuro",
+      "name": "Tide Table Restaurant & Lounge",
+      "archetype": "restaurant",
+      "subject": "A restaurant and lounge in a wide single-storey hotel complex with an open waterfront terrace",
+      "form": {
+        "footprint": "L",
+        "width_m": 57,
+        "depth_m": 46,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9e5d6",
+          "#8a5a36",
+          "#9dbfd0"
+        ],
+        "roofColour": "#4c7a54",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "open lagoon-side deck"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 57.5 x 46.4 m, 1 level, tagged tourism=hotel (Robert Reimers Enterprises). No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-node-2698631329": {
+      "venueId": "majuro-osm-node-2698631329",
+      "city": "majuro",
+      "name": "DAR Coffee Corner",
+      "archetype": "restaurant",
+      "subject": "A small coffee house in a flat-roofed concrete shopfront with an outside seating strip",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#cfd8dc",
+          "#a33a2c",
+          "#e9e5d6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 33 x 25 m near the courts. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-node-3261641985": {
+      "venueId": "majuro-osm-node-3261641985",
+      "city": "majuro",
+      "name": "Island Cafe",
+      "archetype": "restaurant",
+      "subject": "A cafe in a long single-storey building with a pitched red roof and a shaded front porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e2a8",
+          "#a33a2c",
+          "#e9e5d6"
+        ],
+        "roofColour": "#a33a2c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 35 x 20 m. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-node-3993102171": {
+      "venueId": "majuro-osm-node-3993102171",
+      "city": "majuro",
+      "name": "Alele National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The 1974 museum and library: a plain two-storey concrete building, museum on the ground floor, library above",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e5d6",
+          "#b9b6ab",
+          "#9dbfd0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alele_Museum",
+          "what": "purpose-built premises completed 1974; museum on ground floor in three rooms, library on the second floor"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "photo caption: Alele Museum exterior"
+        }
+      ],
+      "notes": "Floors and year are sourced; footprint is OSM 30 x 18.7 m; colours and the flat roof are typed (exterior not described in text)."
+    },
+    "majuro-osm-node-9956412121": {
+      "venueId": "majuro-osm-node-9956412121",
+      "city": "majuro",
+      "name": "Seagull",
+      "archetype": "restaurant",
+      "subject": "A small bar and eatery in a one-storey painted concrete building with a covered deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#9dbfd0",
+          "#e9e5d6",
+          "#3b6e91"
+        ],
+        "roofColour": "#3b6e91",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 25 x 16 m named Seagull. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-way-1333499846": {
+      "venueId": "majuro-osm-way-1333499846",
+      "city": "majuro",
+      "name": "Majuro Track and Field Stadium",
+      "archetype": "stadium",
+      "subject": "An athletics oval with one covered main grandstand along the home straight and light masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 189,
+        "depth_m": 133,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "athletics"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ab",
+          "#3b6e91",
+          "#e9e5d6"
+        ],
+        "roofColour": "#3b6e91",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered grandstand on one side"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "a new stadium noted as under construction (no detail)"
+        }
+      ],
+      "notes": "OSM stadium area 23,599 m2, 189 x 133 m. No source describes the exterior; typed from the Majuro city style and the type of place. Track colours unknown; generator may use a red running track."
+    },
+    "majuro-osm-way-87621879": {
+      "venueId": "majuro-osm-way-87621879",
+      "city": "majuro",
+      "name": "Majuro Bridge",
+      "archetype": "monument",
+      "subject": "A short low concrete road bridge with railings across a channel between two islets, lagoon and ocean on either side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "bridge"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b6ab",
+          "#9a9a96",
+          "#e9e5d6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 2,
+          "note": "low concrete parapets"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "single span culvert-style"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "islets joined by causeways and bridges along the atoll road (no bridge detail)"
+        }
+      ],
+      "notes": "Only a 12 x 4 m OSM structure lies near the point. Bridge length, number of spans and era are guesses. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-osm-way-977982606": {
+      "venueId": "majuro-osm-way-977982606",
+      "city": "majuro",
+      "name": "Marshall Islands War Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "A beachfront park of WWII relics: Zero fighter wreckage, field guns and large ammunition laid out on grass under palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 59,
+        "depth_m": 49,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "war-relic park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b6ab",
+          "#8a8f6a",
+          "#e9e5d6"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 4,
+          "note": "WWII guns"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small open shelter"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "plinth with plaque"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1940s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Marshall_Islands_War_Memorial_Park",
+          "what": "34.9 acre beachfront park in Delap; weapons and vehicles including Mitsubishi A6M Zero fighters; NRHP-listed 1976"
+        }
+      ],
+      "notes": "Content (guns, aircraft relics) is sourced. Layout and colours are typed. Model shows the central relic display only."
+    },
+    "majuro-quiet-reflection": {
+      "venueId": "majuro-quiet-reflection",
+      "city": "majuro",
+      "name": "Cathedral of the Assumption",
+      "archetype": "church-modern",
+      "subject": "The Catholic cathedral of the Marshall Islands: a broad single-storey church with a pitched roof and a small front bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e5d6",
+          "#9dbfd0",
+          "#b9b6ab"
+        ],
+        "roofColour": "#3b6e91",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1898 foundation",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Assumption,_Majuro",
+          "what": "mission started 1898; seat of the Apostolic Prefecture; in Delap-Uliga-Djarrit (no physical description)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16825920",
+          "what": "Wikidata: Catholic cathedral, inception 1898"
+        }
+      ],
+      "notes": "OSM building tagged cathedral, 1 level, 27 x 24 m. The 1898 date is the mission foundation, the present building is probably later. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-recreation": {
+      "venueId": "majuro-recreation",
+      "city": "majuro",
+      "name": "Iakwe Katoj Park",
+      "archetype": "park-landscape",
+      "subject": "A long grassy waterfront strip with palms, picnic shelters and a path along the shore",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "linear shoreline park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b9b6ab",
+          "#8a5a36",
+          "#e9e5d6"
+        ],
+        "roofColour": "#4c7a54",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "picnic shelters"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "coral atoll; coconut palms; narrow landmass"
+        }
+      ],
+      "notes": "OSM park is 948 x 134 m (96,456 m2), so the model shows a 120 m portion with a few shelters. No source describes the exterior; typed from the Majuro city style and the type of place."
+    },
+    "majuro-transit": {
+      "venueId": "majuro-transit",
+      "city": "majuro",
+      "name": "CMI Bus Stop",
+      "archetype": "transport-station",
+      "subject": "A small open bus shelter on the atoll road with a bench and a low roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed",
+        "variant": "bus shelter"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ab",
+          "#3b6e91",
+          "#e9e5d6"
+        ],
+        "roofColour": "#3b6e91",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majuro",
+          "what": "city context only"
+        }
+      ],
+      "notes": "OSM building 16 x 10 m near the College of the Marshall Islands. Majuro minibus/taxi stops are open shelters. No source describes the exterior; typed from the Majuro city style and the type of place."
+    }
+  }
+}

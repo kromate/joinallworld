@@ -1,0 +1,1160 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "marigot",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "marigot",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-rise French Caribbean town: one to three storey Creole-style houses and shops in painted render or concrete with pastel walls (cream, salmon, turquoise, white), hip or gable roofs of painted corrugated metal sheet in red or green, timber-louvred shutters, covered verandas and some gingerbread fretwork. Hurricane Irma (2017) destroyed or damaged most French-side structures, so many buildings are post-2017 rebuilds in plain concrete with metal roofs. Dry scrub hills, palms and sea-grape trees, and beaches and marinas along the coast.",
+    "wallColours": [
+      "#f1e4bd",
+      "#e9b49a",
+      "#8fc1cf",
+      "#f4f0e6",
+      "#d9654f",
+      "#86b394",
+      "#e7c15c"
+    ],
+    "roofColours": [
+      "#b24a3a",
+      "#4f7c5d",
+      "#8d9296",
+      "#c9c4b8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "concrete",
+      "timber",
+      "render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Creole pastel colour schemes, white-trimmed louvre shutters, covered verandas with timber balusters, gingerbread fretwork on older houses, painted metal roofs, boat-front awnings along the marina.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Marigot,_Saint_Martin",
+        "what": "Marigot: Fort Louis (1789), 1941 church, white solar lighthouse on concrete base; page otherwise gives no building colours, so palette is from general knowledge of French Caribbean towns"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Saint_Martin_(island)",
+        "what": "dry forest on the hills, Hurricane Irma damaged 95% of French-side structures, so many rebuilt buildings"
+      }
+    ]
+  },
+  "places": {
+    "marigot-airport-marigot-airport": {
+      "venueId": "marigot-airport-marigot-airport",
+      "city": "marigot",
+      "name": "Grand Case-L'Espérance Airport",
+      "archetype": "airport-terminal",
+      "subject": "Small single-storey commuter terminal on the Grand Case airstrip with a short apron and a small control tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 76,
+        "depth_m": 32,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0ece2",
+          "#4a7fa6",
+          "#c9c9c5"
+        ],
+        "roofColour": "#b5b8ba",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "new tower built in the 2017 renovation"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017 renovation",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grand_Case-Esp%C3%A9rance_Airport",
+          "what": "terminal modernised in 2017 with new control tower and apron; single 1,200 m runway, ATR 72 traffic"
+        }
+      ],
+      "notes": "OSM terminal footprint is 76x32 m, elongated and slightly bent. Passenger boarding is on foot from the apron (no jet bridges). Colours and form of the terminal are typed, not photographed."
+    },
+    "marigot-clinic": {
+      "venueId": "marigot-clinic",
+      "city": "marigot",
+      "name": "Hôpital Louis Constant Fleming",
+      "archetype": "hospital",
+      "subject": "Main hospital of Saint-Martin, a wide multi-wing white concrete block",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 113,
+        "depth_m": 96,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efece4",
+          "#8fb7c4",
+          "#bdbdb6"
+        ],
+        "roofColour": "#a5a8a8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM hospital footprint 113x96 m (measured, irregular wings); storeys, colours and style are typed from city style. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-community-notices": {
+      "venueId": "marigot-community-notices",
+      "city": "marigot",
+      "name": "Préfecture déléguée",
+      "archetype": "civic-small",
+      "subject": "Two-storey colonial-Creole administrative building in Marigot",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 32,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1e4bd",
+          "#ffffff",
+          "#8d5b3a"
+        ],
+        "roofColour": "#b24a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "tricolour, EU, collectivité flags"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "veranda on upper floor"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM footprint 32x22 m (public building), a bent shape. Look is typed from Creole administrative buildings. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-community-voting-game": {
+      "venueId": "marigot-community-voting-game",
+      "city": "marigot",
+      "name": "Réserve Naturelle de Saint-Martin",
+      "archetype": "civic-small",
+      "subject": "Tiny reserve office or visitor hut on the Cul-de-Sac shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8a6c4c",
+          "#f2eee2",
+          "#4f7c5d"
+        ],
+        "roofColour": "#4f7c5d",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building is 7x7 m and tagged just building=yes; named after the nature reserve office. Typed small timber hut. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-community-workshop": {
+      "venueId": "marigot-community-workshop",
+      "city": "marigot",
+      "name": "Médiathèque",
+      "archetype": "campus-block",
+      "subject": "Two-storey public library and media centre block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 58,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#6d9eb5",
+          "#b9b9b2"
+        ],
+        "roofColour": "#a9aaa8",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM footprint 58x45 m, library amenity. Colours and storey count typed. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-market-game": {
+      "venueId": "marigot-market-game",
+      "city": "marigot",
+      "name": "Centre Commercial Aventura",
+      "archetype": "mall",
+      "subject": "Small two-level shopping centre with a wide open front car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f2e8c9",
+          "#d9654f",
+          "#c6c3ba"
+        ],
+        "roofColour": "#9a9d9e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM retail building 77x54 m. Typed from city style. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-meal-stop": {
+      "venueId": "marigot-meal-stop",
+      "city": "marigot",
+      "name": "Le Sand",
+      "archetype": "restaurant",
+      "subject": "Open-sided beach restaurant pavilion on Baie Longue sand with a thatch or timber roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a07a52",
+          "#f4efe4",
+          "#6e5a43"
+        ],
+        "roofColour": "#8c7b55",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "beach deck"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The OSM match is a very large hotel polygon (805x161 m) around Baie Longue, probably a luxury resort, not the restaurant itself, so the dimensions here are a typed beach-bar size, not measured. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-node-14181701799": {
+      "venueId": "marigot-osm-node-14181701799",
+      "city": "marigot",
+      "name": "Baie de Cul de Sac",
+      "archetype": "park-landscape",
+      "subject": "Viewpoint over Cul de Sac bay with a tiny shelter on the shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8a6c4c",
+          "#f2eee2",
+          "#4f7c5d"
+        ],
+        "roofColour": "#4f7c5d",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saint_Martin_(island)",
+          "what": "dry hills and bay shore context only"
+        }
+      ],
+      "notes": "OSM footprint 6x4 m. The real attraction is the bay, which the generator can show with a water forecourt. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-node-3276974411": {
+      "venueId": "marigot-osm-node-3276974411",
+      "city": "marigot",
+      "name": "Observatoire aux Oiseaux",
+      "archetype": "park-landscape",
+      "subject": "Bird observation hide beside the Salines d'Orient pond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8a6c4c",
+          "#c7b79a",
+          "#4f7c5d"
+        ],
+        "roofColour": "#6b6b66",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "boardwalk to hide"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM footprint 17x14 m. Shape typed as a timber bird hide. No source describes this building; typed from the city style and the OSM footprint (measured width/depth). Different from the other two observatories: bigger, with a boardwalk."
+    },
+    "marigot-osm-node-3324470538": {
+      "venueId": "marigot-osm-node-3324470538",
+      "city": "marigot",
+      "name": "Roche Gravée du Moho",
+      "archetype": "monument",
+      "subject": "Boulder with pre-Columbian rock engravings, fenced at the roadside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a82",
+          "#6d6a63",
+          "#b9b6ac"
+        ],
+        "roofColour": "#8d8a82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank interpretive board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "pre-Columbian rock art",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No building. Point feature for a carved rock near Moho; boulder size typed (about 5-6 m). The carvings are not documented in the sources fetched; represent as pale scratched relief. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-node-3375689678": {
+      "venueId": "marigot-osm-node-3375689678",
+      "city": "marigot",
+      "name": "Howell Center",
+      "archetype": "mall",
+      "subject": "Two-storey commercial centre with ground-floor shops in Marigot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 69,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9b49a",
+          "#ffffff",
+          "#8d5b3a"
+        ],
+        "roofColour": "#a9aaa8",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 6
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM footprint 69x30 m. Typed as Creole-coloured shopping block. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-node-3969654359": {
+      "venueId": "marigot-osm-node-3969654359",
+      "city": "marigot",
+      "name": "Observatoire des Oiseaux",
+      "archetype": "park-landscape",
+      "subject": "Small bird hide on the Salines d'Orient shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "timber",
+        "colours": [
+          "#8a6c4c",
+          "#6e5a43",
+          "#4f7c5d"
+        ],
+        "roofColour": "#6e5a43",
+        "roofMaterial": "timber-shingle",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM footprint 9x7 m, no building tag. Smaller and darker than the other observatory. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-node-542412470": {
+      "venueId": "marigot-osm-node-542412470",
+      "city": "marigot",
+      "name": "Fort Louis",
+      "archetype": "heritage-fort",
+      "subject": "Ruined 1789 French hilltop fort above Marigot harbour, low stone walls, a gate and cannon",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#a39d8f",
+          "#c9c1ae",
+          "#6f6a5f"
+        ],
+        "roofColour": "#8d8a82",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1789; restored from 1993",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Fort_Louis_(Marigot)",
+          "what": "built from 1789 under Governor de Durat to protect the port's warehouses; on the heights above Marigot; restored in the 19th century and from 1993; owned by the Collectivité"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Marigot,_Saint_Martin",
+          "what": "Fort Louis built 1789 to defend the port warehouses"
+        }
+      ],
+      "notes": "History is sourced but no page gives dimensions or wall materials; 40x30 m is an estimate of the walled enclosure and the masonry (grey rubble stone with pale lime mortar) is typed. The OSM match for this venue was the Fort Louis Marina polygon, not the fort. The fort overlooks the Marigot waterfront and Simpson Bay lagoon to the south."
+    },
+    "marigot-osm-relation-9565439": {
+      "venueId": "marigot-osm-relation-9565439",
+      "city": "marigot",
+      "name": "Pinel Island",
+      "archetype": "park-landscape",
+      "subject": "Small low limestone island in the Cul de Sac bay with white-sand beaches, dry scrub and a few thatched beach restaurants",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 560,
+        "depth_m": 535,
+        "storeys": 0,
+        "height_m": 19,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a07a52",
+          "#f4efe4",
+          "#6e5a43"
+        ],
+        "roofColour": "#8c7b55",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "beach restaurants"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "ferry jetty from Cul-de-Sac"
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "natural; tourist facilities modern",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pinel_Island",
+          "what": "0.115 km2 limestone ridge 170 m offshore, highest point 19 m, four beaches, dry savannah with thorny groves, two restaurants, half-hourly ferry from Cul-de-Sac"
+        }
+      ],
+      "notes": "Show a recognisable slice of the island (120 m clamp): beach, scrub, one thatched bar, ferry jetty. Island measures about 560x535 m by OSM bounding box."
+    },
+    "marigot-osm-way-330812306": {
+      "venueId": "marigot-osm-way-330812306",
+      "city": "marigot",
+      "name": "Carroserie",
+      "archetype": "restaurant",
+      "subject": "Tiny roadside cafe in a single-storey concrete shed with a painted front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e7c15c",
+          "#ffffff",
+          "#3e6b8a"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM cafe 10x10 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-way-366902209": {
+      "venueId": "marigot-osm-way-366902209",
+      "city": "marigot",
+      "name": "Marina Royale",
+      "archetype": "shophouse",
+      "subject": "Waterfront arcade of colourful shops and restaurants along Marigot's marina quay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e9b49a",
+          "#8fc1cf",
+          "#ffffff"
+        ],
+        "roofColour": "#b24a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "marina quay"
+        },
+        {
+          "id": "shopfront",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM way is only a 17x5 m fragment; the real Marina Royale is a longer waterfront strip with a marina in front, so 30x8 m is a typed estimate. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-osm-way-399788872": {
+      "venueId": "marigot-osm-way-399788872",
+      "city": "marigot",
+      "name": "Pearch Bar",
+      "archetype": "restaurant",
+      "subject": "Small beach-side bar in a timber and metal-roof cabin",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#6da1b5",
+          "#f4efe4",
+          "#8a6c4c"
+        ],
+        "roofColour": "#4f7c5d",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM cafe 13x10 m. No source describes this building; typed from the city style and the OSM footprint (measured width/depth). Brighter turquoise than Carroserie."
+    },
+    "marigot-quiet-reflection": {
+      "venueId": "marigot-quiet-reflection",
+      "city": "marigot",
+      "name": "Église Saint-Joseph",
+      "archetype": "church-classical",
+      "subject": "Small white parish church of Quartier d'Orléans with a gabled nave and a modest bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f4f1ea",
+          "#c9a96a",
+          "#8d8a82"
+        ],
+        "roofColour": "#b24a3a",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q42950059",
+          "what": "Wikidata item exists: church in Saint-Martin (no appearance described)"
+        }
+      ],
+      "notes": "OSM footprint 19x12 m, Roman Catholic. Whitewashed gabled church is typed, not photographed. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-recreation": {
+      "venueId": "marigot-recreation",
+      "city": "marigot",
+      "name": "Lili's Tropical Garden",
+      "archetype": "park-landscape",
+      "subject": "Small tropical garden with a gazebo and path under palms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#a07a52",
+          "#f4efe4",
+          "#4f7c5d"
+        ],
+        "roofColour": "#8c7b55",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM leisure=park with a 8x6 m building. Garden contents are typed. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    },
+    "marigot-transit": {
+      "venueId": "marigot-transit",
+      "city": "marigot",
+      "name": "Voyage de Standing",
+      "archetype": "transport-station",
+      "subject": "Small bus stop and travel office building with a lay-by on the Grand Case road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0ece2",
+          "#3e6b8a",
+          "#c9c9c5"
+        ],
+        "roofColour": "#9a9d9e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 22x18 m with no tags; name suggests a travel agency or bus operator. No source describes this building; typed from the city style and the OSM footprint (measured width/depth)."
+    }
+  }
+}

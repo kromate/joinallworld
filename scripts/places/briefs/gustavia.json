@@ -1,0 +1,1362 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "gustavia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "gustavia",
+    "climate": "tropical-maritime",
+    "vernacular": "Small Franco-Swedish Caribbean harbour town: one to two storey masonry and timber houses in whitewash and pastel render with red or grey painted metal and tile roofs, wooden galleries and fretwork balconies, stone-based warehouses on the quays, a dry hilly scrub island with palms and sea-grape.",
+    "wallColours": [
+      "#f4f0e6",
+      "#e9dcc0",
+      "#d8b98a",
+      "#b9d0d6",
+      "#c9675a",
+      "#8f8a80"
+    ],
+    "roofColours": [
+      "#a8452f",
+      "#8b3a2c",
+      "#7b7f82",
+      "#5e6a6e"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "timber",
+      "stone",
+      "stucco",
+      "render"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "corrugated"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Wooden verandas (varangues) and fretwork balconies on Swedish-era houses, red-painted roofs, stone ground floors with timber upper storeys, shuttered windows, 18th-century harbour batteries and a stone-and-timber Swedish clock tower.",
+    "sources": [
+      {
+        "url": "https://fr.wikipedia.org/wiki/Gustavia_(Saint-Barth%C3%A9lemy)",
+        "what": "little of Swedish past survives apart from wooden houses with worked balconies and varangues; Swedish clock tower stone and timber"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Gustavia,_Saint_Barth%C3%A9lemy",
+        "what": "three harbour forts, 1829 Catholic church, 1855 Anglican church, 1961 concrete lighthouse"
+      },
+      {
+        "url": "https://www.openstreetmap.org/relation/8767053",
+        "what": "OSM roof:colour tags across the town are overwhelmingly red or grey"
+      }
+    ]
+  },
+  "places": {
+    "gustavia-airport-gustavia-airport": {
+      "venueId": "gustavia-airport-gustavia-airport",
+      "city": "gustavia",
+      "name": "Gustaf III Airport (St. Jean)",
+      "archetype": "airport-terminal",
+      "subject": "The tiny St. Jean airport terminal beside the short runway and beach: a single-storey low building with a small apron, turboprop traffic only",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "tiny-regional",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ece0",
+          "#a8452f",
+          "#7b7f82"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "shaded kerbside front"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gustaf_III_Airport",
+          "what": "terminal inaugurated 1984, 646 m runway ending on the beach at Saint Jean, small turboprops only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/361894385",
+          "what": "OSM footprint 16.3x14.4 m, 234 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Terminal look is not described in any source found; typed small regional terminal from the city style. Recognisable by being tiny and sitting right at the beach with the runway on the doorstep. The OSM building in the facts file (Saint-Barth Electronique, 16x14) is a neighbouring business, not the terminal."
+    },
+    "gustavia-clinic": {
+      "venueId": "gustavia-clinic",
+      "city": "gustavia",
+      "name": "Centre hospitalier Irenee de Bruyn",
+      "archetype": "hospital",
+      "subject": "The two-storey island hospital in Gustavia: irregular wings of white render with a red roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 65,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "island-hospital",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1eee6",
+          "#c9675a",
+          "#9a9a96"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/8767053",
+          "what": "OSM footprint 64.9x34 m, 1648 m2 (match: name); levels 2"
+        }
+      ],
+      "notes": "OSM gives a measured 65x34 m irregular footprint with 2 levels; appearance, colours and age are guesses from the island vernacular."
+    },
+    "gustavia-community-notices": {
+      "venueId": "gustavia-community-notices",
+      "city": "gustavia",
+      "name": "Hotel de la Collectivite",
+      "archetype": "civic-palace",
+      "subject": "The Collectivity administration building in Gustavia: a two-storey white-rendered block of several staggered wings with a red roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 49,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f3efe4",
+          "#a8452f",
+          "#8f8a80"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "French, collectivity and EU flags"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gustavia,_Saint_Barth%C3%A9lemy",
+          "what": "seat of the territorial collectivity administration (French wiki: houses the administrative services)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/361630547",
+          "what": "OSM footprint 48.8x32 m, 1120 m2 (match: name)"
+        }
+      ],
+      "notes": "Footprint (49x32, stepped wings) measured from OSM; facade and colours are a typed guess from the city style. Not the historic Maison des Gouverneurs (the old town hall) which is a separate brief."
+    },
+    "gustavia-community-voting-game": {
+      "venueId": "gustavia-community-voting-game",
+      "city": "gustavia",
+      "name": "Espace Rockefeller",
+      "archetype": "civic-small",
+      "subject": "A small single-storey community hall in Gustavia with a red roof and a covered entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#a8452f",
+          "#8f8a80"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1445243129",
+          "what": "OSM footprint 19.8x6.9 m, 137 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Nothing found describing the hall. OSM nearest building is the 20x7 m Maison des Associations 13 m away, used only for scale; typed from the city style."
+    },
+    "gustavia-community-workshop": {
+      "venueId": "gustavia-community-workshop",
+      "city": "gustavia",
+      "name": "Bibliotheque de Lorient",
+      "archetype": "campus-block",
+      "subject": "The small Lorient library: a single-storey rectangular building with a red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable",
+        "variant": "village-library",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ebdd",
+          "#a8452f",
+          "#8f8a80"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/338583111",
+          "what": "OSM footprint 19x9.1 m, 172 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM names the building (library, red roof, 19x9 m). Everything else is typed from the city style."
+    },
+    "gustavia-market-game": {
+      "venueId": "gustavia-market-game",
+      "city": "gustavia",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "A typed small covered market spot in Gustavia with a few stalls under a red-roofed shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "variant": "shelter",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8b98a",
+          "#a8452f",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/362253295",
+          "what": "OSM footprint 10.6x7.9 m, 79 m2 (match: containing)"
+        }
+      ],
+      "notes": "Game venue placeholder; no real place. OSM nearest building (11x8 m, red roof) used only for scale."
+    },
+    "gustavia-meal-stop": {
+      "venueId": "gustavia-meal-stop",
+      "city": "gustavia",
+      "name": "Restaurant Le Gaïac",
+      "archetype": "restaurant",
+      "subject": "Le Gaiac, a long low beach-side restaurant with a grey roof and an open terrace, on the quiet east coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 31,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "hip",
+        "variant": "open-terrace",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#e9dcc0",
+          "#7b6a58",
+          "#f4f0e6"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/363590642",
+          "what": "OSM footprint 30.6x19 m, 479 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM gives a named restaurant footprint (31x19 m, grey roof). Appearance beyond that is typed; likely a hotel-style open-sided pavilion but not verified."
+    },
+    "gustavia-osm-node-3104286317": {
+      "venueId": "gustavia-osm-node-3104286317",
+      "city": "gustavia",
+      "name": "Colombier Viewpoint",
+      "archetype": "park-landscape",
+      "subject": "The Colombier hilltop viewpoint: a small lookout platform on a dry scrubby hill above the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 2.5,
+        "roof": "none",
+        "variant": "lookout",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a59d8f",
+          "#8f8a80",
+          "#d8d0be"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "small viewing platform"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1499311646",
+          "what": "OSM footprint 5.5x4.9 m, 27 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "Only a 5x5 m OSM structure at the point. Surroundings are dry-scrub hills with sea-grape and agave; typed as a simple lookout."
+    },
+    "gustavia-osm-node-3663052503": {
+      "venueId": "gustavia-osm-node-3663052503",
+      "city": "gustavia",
+      "name": "Fort Gustave (Gustave III battery)",
+      "archetype": "heritage-fort",
+      "subject": "The ruined Swedish hilltop battery above Gustavia harbour, with low stone ramparts, a few cannon and a small white weather-station building",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat",
+        "variant": "ruined-battery",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9b9487",
+          "#d9d3c0",
+          "#6f6a60"
+        ],
+        "roofColour": "#d8d8d4",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low stone battery walls"
+        },
+        {
+          "id": "cannon",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "weather mast on the station"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1780s battery, 1959 weather building",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gustavia,_Saint_Barth%C3%A9lemy",
+          "what": "three forts (Oscar, Karl, Gustav) built mid-late 18th century, Gustav site popular with hikers"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gustavia_(Saint-Barth%C3%A9lemy)",
+          "what": "Swedish battery of fort Gustave-III is a listed monument, now a weather station"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1300042388",
+          "what": "OSM footprint 9.9x7.1 m, 55 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "The measured OSM building is the 10x7 m 1959 weather station (start_date 1959). The ramparts and guns are the Swedish remains around it; extent of surviving wall is a guess. 30x25 m is the portion shown."
+    },
+    "gustavia-osm-node-3687052434": {
+      "venueId": "gustavia-osm-node-3687052434",
+      "city": "gustavia",
+      "name": "Le Ti St. Barth",
+      "archetype": "restaurant",
+      "subject": "A small open-fronted bar-restaurant with a red roof and a deck facing the bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "hip",
+        "variant": "beach-bar",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e9a27a",
+          "#a8452f",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522276953",
+          "what": "OSM footprint 9.8x9 m, 88 m2 (match: nearest, nearest building only, may not be the venue)"
+        }
+      ],
+      "notes": "OSM shows a 10x9 m building with 3.4 m height and red roof. Colours/deck are typed from the city style."
+    },
+    "gustavia-osm-node-5639324914": {
+      "venueId": "gustavia-osm-node-5639324914",
+      "city": "gustavia",
+      "name": "Maison Dinzey (Le Brigantin)",
+      "archetype": "manor",
+      "subject": "The historic Dinzey house, a Creole timber-and-masonry townhouse of the early 1800s with a red roof and wooden gallery",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 24,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "creole-townhouse",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#a8452f",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "wooden gallery (varangue)"
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone yard wall"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "early 19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gustavia_(Saint-Barth%C3%A9lemy)",
+          "what": "Maison Dinzey, dite Le Brigantin, is a protected monument; surviving Swedish-era wooden houses have worked balconies and varangues"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/362256025",
+          "what": "OSM footprint 24.3x21.4 m, 335 m2 (match: containing)"
+        }
+      ],
+      "notes": "Identity and heritage status sourced; the form is the typical surviving Gustavia wooden house with gallery. Colours and exact plan (OSM 24x21 m, irregular, 2 wings) are guesses. A wooden gallery and a stone ground floor are what make it recognisable."
+    },
+    "gustavia-osm-node-5639324916": {
+      "venueId": "gustavia-osm-node-5639324916",
+      "city": "gustavia",
+      "name": "Clocher suedois de Gustavia",
+      "archetype": "monument",
+      "subject": "The Swedish clock tower: a small stone-based tower with a timber upper stage, clock face and bell, standing in the old town",
+      "form": {
+        "footprint": "round",
+        "width_m": 4.6,
+        "depth_m": 4,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "pyramidal",
+        "variant": "bell-tower",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#cfc8b6",
+          "#e9e2d0",
+          "#6f6a60"
+        ],
+        "roofColour": "#6b5a4a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "clock added in 1931, facing the town"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bell cast in Stockholm 1799"
+        },
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "small timber lantern"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "nordic",
+      "era": "c.1800",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Clocher_su%C3%A9dois_de_Gustavia",
+          "what": "built c.1800, stone and wood, clock added 1931, bell cast Stockholm 1799, timber upper part collapsed in Irma 2017"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/363204391",
+          "what": "OSM footprint 4.6x4 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/363204391",
+          "what": "OSM footprint 4.6x4 m, 18 m2 (match: containing)"
+        }
+      ],
+      "notes": "Measured footprint is 4.6 m square, so keep it slender. Height (12 m) and colours are guesses; the timber upper section collapsed in Hurricane Irma (2017) and may be rebuilt."
+    },
+    "gustavia-osm-node-5639324918": {
+      "venueId": "gustavia-osm-node-5639324918",
+      "city": "gustavia",
+      "name": "Maison des Gouverneurs (hotel de ville)",
+      "archetype": "civic-small",
+      "subject": "The old governors house, now Gustavia town hall: a two-storey colonial building with a covered gallery and a red hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "governors-house",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1e6c8",
+          "#a8452f",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "first-floor gallery"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "Swedish period",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gustavia_(Saint-Barth%C3%A9lemy)",
+          "what": "Maison des Gouverneurs, former town hall now city hall, is a listed monument"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/363989968",
+          "what": "OSM footprint 28x18.1 m, 493 m2 (match: nearest, nearest building only, may not be the venue); levels 2"
+        }
+      ],
+      "notes": "Only the listing is sourced. OSM nearest building (28x18, 2 levels) is the footprint used; facade is a typed colonial-gallery guess."
+    },
+    "gustavia-osm-way-1193995016": {
+      "venueId": "gustavia-osm-way-1193995016",
+      "city": "gustavia",
+      "name": "Chapelle Sainte-Catherine-de-Sienne de Colombier",
+      "archetype": "shrine-small",
+      "subject": "A simple whitewashed village chapel in Colombier, low and elongated with a small bell gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "gable",
+        "variant": "village-chapel",
+        "wings": 0
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f4f1ea",
+          "#a8452f",
+          "#8f8a80"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown (recent)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1193995016",
+          "what": "OSM footprint 26.1x11.4 m, 227 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM tags: roman catholic chapel with Wikidata entry, height 4.2 m, 26x11 m footprint (irregular outline). Appearance not described anywhere found, typed from the vernacular."
+    },
+    "gustavia-osm-way-1286299984": {
+      "venueId": "gustavia-osm-way-1286299984",
+      "city": "gustavia",
+      "name": "Stade de Saint-Jean",
+      "archetype": "stadium",
+      "subject": "The small municipal stadium at Saint-Jean: an artificial-turf pitch with athletics track, one low covered stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 128,
+        "depth_m": 102,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed",
+        "variant": "pitch-and-track",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4b8",
+          "#a8452f",
+          "#7b7f82"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "one small covered stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s, resurfaced 2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_de_Saint-Jean",
+          "what": "capacity 400, only stadium on the island, artificial turf and athletics track installed in a renovation"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1286299984",
+          "what": "OSM footprint 127.5x101.6 m, 12361 m2 (match: name)"
+        }
+      ],
+      "notes": "Capacity 400 means small stands, not a bowl. Pitch + track is the recognisable part; the 128x102 m outline is the measured OSM stadium area."
+    },
+    "gustavia-osm-way-361887020": {
+      "venueId": "gustavia-osm-way-361887020",
+      "city": "gustavia",
+      "name": "Square de la Retrocession",
+      "archetype": "park-landscape",
+      "subject": "A narrow tree-lined public square in central Gustavia commemorating the 1878 return of the island to France",
+      "form": {
+        "footprint": "rect",
+        "width_m": 81,
+        "depth_m": 18,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "town-square",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#cfc8b6",
+          "#8f8a80",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8f8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "late 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/361887020",
+          "what": "OSM footprint 81x18.4 m, 1448 m2 (match: name)"
+        }
+      ],
+      "notes": "Only the park outline (81x18 m, 1448 m2) is known. Name commemorates the 1878 retrocession from Sweden to France; furniture not sourced."
+    },
+    "gustavia-osm-way-364607503": {
+      "venueId": "gustavia-osm-way-364607503",
+      "city": "gustavia",
+      "name": "Restaurant O'Corail",
+      "archetype": "restaurant",
+      "subject": "Restaurant O Corail, a tiny roadside beach shack with a timber deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "beach-shack",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8b98a",
+          "#4f8f9a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/364607503",
+          "what": "OSM footprint 5.9x3.8 m, 22 m2 (match: name)"
+        }
+      ],
+      "notes": "OSM shows a 6x4 m named restaurant building only. Everything else typed."
+    },
+    "gustavia-osm-way-496898761": {
+      "venueId": "gustavia-osm-way-496898761",
+      "city": "gustavia",
+      "name": "Eglise Notre-Dame-de-l'Assomption de Lorient",
+      "archetype": "church-classical",
+      "subject": "The village church of Lorient, a plain whitewashed nave with a red roof and a separate bell tower, dating from 1850",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "village-church",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f4f1ea",
+          "#8f8a80",
+          "#a8452f"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tower built c.1850, bell cast Nantes 1860"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "1850 (rebuilt 1820, 1871)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C3%89glise_de_Lorient_(Saint-Barth%C3%A9lemy)",
+          "what": "bell tower c.1850, bell cast Nantes 1860, church founded c.1724 and rebuilt 1820 and 1871, listed 1995"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/496898761",
+          "what": "OSM church footprint 30x17 m, start_date 1850"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/496898761",
+          "what": "OSM footprint 30.1x16.6 m, 457 m2 (match: name)"
+        }
+      ],
+      "notes": "Measured footprint and dates solid; plan and colours (whitewash, red roof) are the island norm, not confirmed by a photo description."
+    },
+    "gustavia-quiet-reflection": {
+      "venueId": "gustavia-quiet-reflection",
+      "city": "gustavia",
+      "name": "Eglise Notre-Dame-de-l'Assomption de Gustavia",
+      "archetype": "church-classical",
+      "subject": "The 1829 Gustavia church: a stucco-over-masonry nave on a tall stone base with a single arched entrance flanked by saint niches, and a detached bell tower on the slope behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "variant": "spanish-influenced-nave",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#9b9487",
+          "#a8452f"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "single vaulted opening on the main facade, saint niches between pillars"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "detached, on the hill behind"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1829 (restored 2006)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/%C3%89glise_Notre-Dame-de-l%27Assomption_de_Gustavia",
+          "what": "completed 1829; stone base over 2 m high; stucco-covered masonry; single vaulted opening facade with saint niches; detached bell tower; wooden false ceiling and two dormers; Spanish influence"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/363204411",
+          "what": "OSM footprint 29.2x15.4 m, 417 m2 (match: name)"
+        }
+      ],
+      "notes": "Recognisable by the tall plinth, plain Spanish-flavoured facade with one big arch, and the bell tower standing separately behind and above. Colours are the usual white stucco / red roof and not confirmed by a source."
+    },
+    "gustavia-recreation": {
+      "venueId": "gustavia-recreation",
+      "city": "gustavia",
+      "name": "La Maison des Plantes",
+      "archetype": "park-landscape",
+      "subject": "A small planted garden with paths and a little garden pavilion near the south coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 44,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "garden",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8b98a",
+          "#4f8f5a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/929036319",
+          "what": "OSM footprint 44.8x43.9 m, 1456 m2 (match: name)"
+        }
+      ],
+      "notes": "Only the OSM park outline (45x44 m) exists. Contents typed as a generic tropical garden."
+    },
+    "gustavia-transit": {
+      "venueId": "gustavia-transit",
+      "city": "gustavia",
+      "name": "Gustavia Ferry Terminal",
+      "archetype": "transport-station",
+      "subject": "The Gustavia harbour ferry terminal: a low waterfront shed and ticket hall on the quay with a short pier for the Saint-Martin boats",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "quay-shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f1ece0",
+          "#4f8f9a",
+          "#7b7f82"
+        ],
+        "roofColour": "#7b7f82",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1,
+          "note": "taxi bay"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Gustavia_(Saint-Barth%C3%A9lemy)",
+          "what": "ferries leave Gustavia terminal for Marigot and Philipsburg (Saint-Martin)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1030454050",
+          "what": "OSM footprint 29.7x6 m, 178 m2 (match: containing)"
+        }
+      ],
+      "notes": "Only the 30x6 m OSM building is known; typed as a quayside shed with ticket office."
+    }
+  }
+}

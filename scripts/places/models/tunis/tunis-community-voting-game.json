@@ -1,0 +1,784 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-community-voting-game",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Municipalite_de_Tunis-Kassus.jpg",
+   "licence": "CC BY 2.5",
+   "author": "Kassus",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/cityhall3.jpg",
+   "used": "whole front: long three-storey pink-beige stone block, projecting end bays with lattice screens, arched teal-glass ground windows, higher central bay, white monument with flags and curved ramps in front; monument fins, ramp walls, teal end strips"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_de_ville_de_Tunis,_partie_centrale_de_la_fa%C3%A7ade.jpg",
+   "licence": "CC BY 2.0",
+   "author": "David Weekly",
+   "view": "detail",
+   "file": "/tmp/places-evidence/tunis/cityhall1.jpg",
+   "used": "central bay: arched portal with balcony, tall teal glass strips with arched heads, lattice end panels, broad steps, flag"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5543363",
+   "used": "overall extent only (about 130 m wide); front modelled as a rectangular composition"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 52,
+  "aspect": 1.77,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     100,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9a995",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.8,
+    "cornice": true,
+    "bands": "#d8c8b8",
+    "windowShape": "rect",
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ground-arches",
+   "footprint": {
+    "rect": [
+     74,
+     1.4
+    ]
+   },
+   "at": [
+    0,
+    -13.6
+   ],
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f8f8a",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "none"
+    },
+    "plinth": 0.2,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9b4a2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre-bay",
+   "footprint": {
+    "rect": [
+     28,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 14.5,
+   "storeys": 2,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9a995",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "cornice": true,
+    "windowShape": "arched"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "attic",
+   "footprint": {
+    "rect": [
+     34,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -13
+   ],
+   "z0": 14.5,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#cdb09d",
+    "windows": "none",
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#cdb09d",
+      "#8c735f"
+     ],
+     "size": [
+      0.8,
+      1.0
+     ],
+     "mode": "stripes-v",
+     "slits": 0.0
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-bay-l",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    -43,
+    -14.5
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9a995",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#d2b8a4",
+      "#8a7262"
+     ],
+     "size": [
+      2.2,
+      2.2
+     ],
+     "mode": "checker",
+     "slits": 0.0
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-bay-r",
+   "footprint": {
+    "rect": [
+     14,
+     3
+    ]
+   },
+   "at": [
+    43,
+    -14.5
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#c9a995",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "panels",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#d2b8a4",
+      "#8a7262"
+     ],
+     "size": [
+      2.2,
+      2.2
+     ],
+     "mode": "checker",
+     "slits": 0.0
+    },
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     70,
+     24
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "height": 15,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#cbb8a8",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "none"
+    },
+    "bands": "#bfae9e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -19,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "rise": 0.35,
+    "run": 0.9,
+    "count": 6,
+    "colour": "#d8d0c4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-end-l",
+   "footprint": {
+    "rect": [
+     2.6,
+     3.2
+    ]
+   },
+   "at": [
+    -48.6,
+    -14.6
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f8f8a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-end-r",
+   "footprint": {
+    "rect": [
+     2.6,
+     3.2
+    ]
+   },
+   "at": [
+    48.6,
+    -14.6
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#3f8f8a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b2a6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "mon-base",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       16,
+       5.5
+      ]
+     },
+     {
+      "z": 3,
+      "rect": [
+       13,
+       5
+      ]
+     },
+     {
+      "z": 5.5,
+      "rect": [
+       8,
+       3.5
+      ]
+     }
+    ],
+    "colour": "#efece6"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fin-c",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       6,
+       3.4
+      ],
+      "cx": 0
+     },
+     {
+      "z": 9.1,
+      "rect": [
+       4.6,
+       2.2
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 18.2,
+      "rect": [
+       3.6,
+       1.5
+      ],
+      "cx": 0.0
+     },
+     {
+      "z": 26,
+      "rect": [
+       2.4,
+       1.2
+      ],
+      "cx": 0
+     }
+    ],
+    "colour": "#efece6",
+    "curve": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fin-l",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       3.4
+      ],
+      "cx": -4.2
+     },
+     {
+      "z": 7.35,
+      "rect": [
+       4.2,
+       2.2
+      ],
+      "cx": -3.4
+     },
+     {
+      "z": 14.7,
+      "rect": [
+       3.4,
+       1.5
+      ],
+      "cx": -2.4
+     },
+     {
+      "z": 21,
+      "rect": [
+       2.6,
+       1.2
+      ],
+      "cx": -1.5
+     }
+    ],
+    "colour": "#efece6",
+    "curve": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fin-r",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       5,
+       3.4
+      ],
+      "cx": 4.2
+     },
+     {
+      "z": 7.35,
+      "rect": [
+       4.2,
+       2.2
+      ],
+      "cx": 3.4
+     },
+     {
+      "z": 14.7,
+      "rect": [
+       3.4,
+       1.5
+      ],
+      "cx": 2.4
+     },
+     {
+      "z": 21,
+      "rect": [
+       2.6,
+       1.2
+      ],
+      "cx": 1.5
+     }
+    ],
+    "colour": "#efece6",
+    "curve": true
+   }
+  },
+  {
+   "type": "loft",
+   "id": "globe",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0.2,
+      "circle": 0.8
+     },
+     {
+      "z": 1.4,
+      "circle": 1.7
+     },
+     {
+      "z": 2.8,
+      "circle": 1.2
+     },
+     {
+      "z": 3.4,
+      "circle": 0.3
+     }
+    ],
+    "colour": "#2a2622"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-l",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.4
+     ]
+    },
+    "points": [
+     [
+      -13,
+      -24,
+      3.1999999999999997
+     ],
+     [
+      -17,
+      -29,
+      2.8
+     ],
+     [
+      -22,
+      -33,
+      1.9
+     ],
+     [
+      -28,
+      -35,
+      1.3
+     ]
+    ],
+    "curve": true,
+    "colour": "#c4937f",
+    "steps": 4
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "ramp-r",
+   "params": {
+    "section": {
+     "rect": [
+      1.8,
+      2.4
+     ]
+    },
+    "points": [
+     [
+      13,
+      -24,
+      3.1999999999999997
+     ],
+     [
+      17,
+      -29,
+      2.8
+     ],
+     [
+      22,
+      -33,
+      1.9
+     ],
+     [
+      28,
+      -35,
+      1.3
+     ]
+    ],
+    "curve": true,
+    "colour": "#c4937f",
+    "steps": 4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "colour": "#cc2229",
+    "count": 1
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -32,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#cc2229",
+    "count": 3,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#cc2229",
+    "count": 3,
+    "spacing": 9
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -6,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#cc2229",
+    "count": 2,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -38,
+    -32,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 76
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 2,
+    "spacing": 68
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 30,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Monument is a loft of four fins, not the exact carved shape; lattice is a checker-panel approximation; lamps are simple posts, flags are untilted; no pavement pattern."
+ }
+}

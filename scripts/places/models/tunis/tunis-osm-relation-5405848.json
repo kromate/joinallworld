@@ -1,0 +1,506 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_Menzah_Stadium_2.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "see Commons",
+   "view": "front",
+   "file": "/tmp/places-evidence/tunis/menzah1.jpg",
+   "used": "segmented raked concrete stands in separate wedges, pale concrete beams across each wedge, long dark-brown corrugated cantilever roof edge over the top, tall thin floodlight masts, flagpoles, palms and car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Stade_El_Menzah.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "see Commons",
+   "view": "interior",
+   "file": "/tmp/places-evidence/tunis/menzah2.jpg",
+   "used": "grey concrete stand wedges seen from the pitch, red track, green pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/5405848",
+   "used": "oval bowl size (about 235 x 240 m), scaled to the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "stand",
+   "lod": [
+    1,
+    2
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 43,
+    "rows": 6,
+    "rise": 2.0,
+    "run": 2.0,
+    "facetDeg": 45,
+    "seatColour": "#8f949a",
+    "concreteColour": "#e0ddd4",
+    "under": "open",
+    "canopy": {
+     "height": 3,
+     "depth": 14,
+     "colour": "#5b4a3c",
+     "supports": 0,
+     "slopeDeg": 3
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 43,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 8,
+    "rise": 1.6,
+    "run": 1.4,
+    "seatColour": "#cfcdc4",
+    "seatColours": [
+     "#cfcdc4",
+     "#bdbbb2"
+    ],
+    "blocks": 7,
+    "concreteColour": "#e0ddd4",
+    "under": "open",
+    "facetDeg": 24,
+    "canopy": {
+     "height": 3,
+     "depth": 14,
+     "colour": "#5b4a3c",
+     "supports": 0,
+     "slopeDeg": 3
+    },
+    "underColour": "#d4d1c8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     44,
+     62
+    ],
+    "height": 0.15,
+    "colour": "#4f8a3f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -48,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 34,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -48,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 34,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -48,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 34,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    48,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 34,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -48,
+    -48,
+    34
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    -48,
+    34
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -48,
+    48,
+    34
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    48,
+    34
+   ],
+   "params": {
+    "rect": [
+     2.4,
+     0.8
+    ],
+    "height": 1.6,
+    "colour": "#d8d8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    30,
+    -80,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.3,
+     0.3
+    ],
+    "height": 14,
+    "colour": "#d8d8d8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     -88
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -58,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -46,
+     -88
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -22,
+     -88
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     2,
+     -88
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -88
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     38,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -88
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -84
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     74,
+     -88
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tunis",
+ "venueId": "tunis-osm-relation-5405848",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "real roof is a scalloped corrugated cantilever over separate white-beamed concrete wedges with diagonal struts; model is still a continuous oval bowl with a flat dark ring roof"
+ }
+}

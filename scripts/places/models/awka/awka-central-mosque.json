@@ -1,0 +1,175 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "awka-central-mosque",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: modest mosque, central green dome, one ~20 m minaret, arched entrance, walled compound. OSM building is 60 m away and not reliable; photos listed are unrelated"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe2",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bands": "#c5bea8",
+    "plinth": 0.6,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c5bea8",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     14,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -14.5
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe2",
+    "windows": "none",
+    "plinth": 0.4,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a8a6a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    9
+   ],
+   "params": {
+    "radius": 8,
+    "height": 7,
+    "profile": "hemi",
+    "drum": 1.6,
+    "finial": 2.5,
+    "colour": "#3a8a6a",
+    "drumColour": "#f2efe2"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -17,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "radius": 1.1,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f2efe2",
+    "capColour": "#3a8a6a"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "colour": "#c5bea8",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3.2,
+    "pillar": 1.0,
+    "arch": true,
+    "colour": "#f2efe2"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; OSM outline 60 m away and unreliable so a typed rect hall, dome, 20 m minaret, porch and walled compound."
+ }
+}

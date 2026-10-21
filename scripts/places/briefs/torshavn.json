@@ -1,0 +1,1327 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "torshavn",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "torshavn",
+    "climate": "cold",
+    "vernacular": "Small timber houses in tarred black or brightly painted board cladding (red, yellow, white, blue) with white window frames, on steep grass slopes; old-town Tinganes roofs are turfed, newer roofs are corrugated metal or dark sheet; modern public buildings are concrete, render and glass with flat or low-pitched roofs, set in treeless green hillsides with sparse conifer plantations.",
+    "wallColours": [
+      "#2b2926",
+      "#9c3a2e",
+      "#ecebe6",
+      "#d9b44a",
+      "#5f7a8c",
+      "#b9b3a8"
+    ],
+    "roofColours": [
+      "#6f8a4a",
+      "#3a3d40",
+      "#7a2f27",
+      "#6b6e72"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "concrete",
+      "render",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "corrugated",
+      "membrane",
+      "slate"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "conifer",
+      "none"
+    ],
+    "ornament": "Tarred black plank walls with white-framed windows and white gable trim; Tinganes red-painted timber storehouses with turf roofs; turf-roof ridges edged with timber; small white village churches with a single bell tower; stone-walled enclosures.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/T%C3%B3rshavn",
+        "what": "Old town Tinganes: small wooden houses with turf roofs; Havnar kirkja 1788; Skansin fort"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Nordic_House_in_the_Faroe_Islands",
+        "what": "turf roof, green concept, Faroese exterior materials"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Faroese_National_Museum",
+        "what": "Heima á Garði farmhouse c.1812, turf roof"
+      }
+    ]
+  },
+  "places": {
+    "torshavn-airport-torshavn-airport": {
+      "venueId": "torshavn-airport-torshavn-airport",
+      "city": "torshavn",
+      "name": "Vágar Airport",
+      "archetype": "airport-terminal",
+      "subject": "Vágar Airport small single terminal (opened 2014) on the Vágar plateau with a short apron and a low control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9ced1",
+          "#4f5b63",
+          "#e8eaea"
+        ],
+        "roofColour": "#7d8387",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/V%C3%A1gar_Airport",
+          "what": "new terminal opened June 2014; one 1,799 m runway 12/30 at 85 m elevation near Sørvágur"
+        }
+      ],
+      "notes": "Only the 2014 date and runway are sourced; terminal form is a typed guess for a small regional terminal in grey cladding and glazing on a bare treeless plateau. No hangars or jet bridges (passengers walk to aircraft)."
+    },
+    "torshavn-clinic": {
+      "venueId": "torshavn-clinic",
+      "city": "torshavn",
+      "name": "National Hospital of the Faroe Islands",
+      "archetype": "hospital",
+      "subject": "Landssjúkrahúsið in Tórshavn: a cluster of pale multi-storey hospital blocks on the hillside",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4d2cb",
+          "#7f8e99",
+          "#eeeeea"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the building was found; typed from the hospital type and Faroese public-building style (pale render, ribbon windows, flat roof). Hillside site, little vegetation."
+    },
+    "torshavn-community-notices": {
+      "venueId": "torshavn-community-notices",
+      "city": "torshavn",
+      "name": "Department of Social Services",
+      "archetype": "office-low",
+      "subject": "A government social-services office block in Tórshavn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfc9bc",
+          "#6f7f8a",
+          "#ecebe6"
+        ],
+        "roofColour": "#5f6366",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed civic office block from city style. Game kind is statehouse but it is an agency office."
+    },
+    "torshavn-community-voting-game": {
+      "venueId": "torshavn-community-voting-game",
+      "city": "torshavn",
+      "name": "Kommunuskrivstovan",
+      "archetype": "civic-small",
+      "subject": "A municipal office in a Faroese village: small white timber-and-render building with a pitched dark roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ecebe6",
+          "#2b2926",
+          "#ffffff"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Municipal office (kommunuskrivstova) in a small village; not individually described anywhere found. Typed from village style."
+    },
+    "torshavn-community-workshop": {
+      "venueId": "torshavn-community-workshop",
+      "city": "torshavn",
+      "name": "Landsbókasavnið",
+      "archetype": "campus-block",
+      "subject": "The National Library of the Faroe Islands: a modern low institutional block in Tórshavn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c9",
+          "#6b7a85",
+          "#f0efeb"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "National library, no building description found; typed civic-cultural block from city style."
+    },
+    "torshavn-market-game": {
+      "venueId": "torshavn-market-game",
+      "city": "torshavn",
+      "name": "SMS",
+      "archetype": "mall",
+      "subject": "SMS, the Tórshavn shopping centre: a wide, low flat-roofed box with a large car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#c4c6c4",
+          "#9c3a2e",
+          "#f0f0ee"
+        ],
+        "roofColour": "#5f6366",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "SMS is the Faroes' main shopping centre; no detailed description was found, so it is typed from the mall type (clad box, large car park)."
+    },
+    "torshavn-meal-stop": {
+      "venueId": "torshavn-meal-stop",
+      "city": "torshavn",
+      "name": "Essabarr",
+      "archetype": "restaurant",
+      "subject": "A small Tórshavn bar-restaurant in a painted timber townhouse",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#9c3a2e",
+          "#ecebe6",
+          "#ffffff"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Venue not described in any source found; typed as a town-centre painted timber house with white-framed windows."
+    },
+    "torshavn-osm-node-13743098696": {
+      "venueId": "torshavn-osm-node-13743098696",
+      "city": "torshavn",
+      "name": "Føroya Fólkaháskúli",
+      "archetype": "campus-block",
+      "subject": "The Faroese folk high school: a modest school building with dormitory wings on a grass slope",
+      "form": {
+        "footprint": "L",
+        "width_m": 50,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3dfd3",
+          "#5f7a8c",
+          "#ffffff"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Folk high school; no description found, typed from city style."
+    },
+    "torshavn-osm-node-444659920": {
+      "venueId": "torshavn-osm-node-444659920",
+      "city": "torshavn",
+      "name": "Aaron's Cafe og Grill",
+      "archetype": "restaurant",
+      "subject": "A roadside cafe and grill in a small Streymoy village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9b44a",
+          "#2b2926",
+          "#ffffff"
+        ],
+        "roofColour": "#5f6366",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small cafe; nothing findable about the building, typed low from city style."
+    },
+    "torshavn-osm-node-4918755823": {
+      "venueId": "torshavn-osm-node-4918755823",
+      "city": "torshavn",
+      "name": "Trøllkonufingur",
+      "archetype": "park-landscape",
+      "subject": "Trøllkonufingur (\"the Witch's Finger\"), a sharp rock pinnacle on the west Vágar coast, viewed from the grassy hillside path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 60,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6e7468",
+          "#4f6a3a",
+          "#a8ab9f"
+        ],
+        "roofColour": "#6e7468",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "footpath"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A natural landform (a rock finger/ridge seen from the Gásadalur path). The generator should show a grass hillside with a tall dark basalt pinnacle; height here is a scene scale, not measured. No source retrieved for dimensions."
+    },
+    "torshavn-osm-node-5844823036": {
+      "venueId": "torshavn-osm-node-5844823036",
+      "city": "torshavn",
+      "name": "Náttúruvísindadeildin, Fróðskaparsetur Føroya",
+      "archetype": "campus-block",
+      "subject": "The Faculty of Science and Technology of the University of the Faroe Islands: a contemporary teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d7d3c8",
+          "#5f7a8c",
+          "#eeeeea"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/T%C3%B3rshavn",
+          "what": "University of the Faroe Islands located next to the national archives; natural history museum with botanical garden nearby"
+        }
+      ],
+      "notes": "Location context only; building form typed from city style."
+    },
+    "torshavn-osm-node-604992048": {
+      "venueId": "torshavn-osm-node-604992048",
+      "city": "torshavn",
+      "name": "HOTEL VÁGAR RESTAURANT",
+      "archetype": "restaurant",
+      "subject": "The restaurant of a small hotel in Sørvágur village on Vágar",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ecebe6",
+          "#7a2f27",
+          "#ffffff"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Hotel restaurant near Vágar Airport; typed from village style, no description found."
+    },
+    "torshavn-osm-node-683373731": {
+      "venueId": "torshavn-osm-node-683373731",
+      "city": "torshavn",
+      "name": "Syðrugøta",
+      "archetype": "park-landscape",
+      "subject": "Syðrugøta, a village on the east coast of Eysturoy: scattered colourful houses and a small harbour bay on a green slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#2b2926",
+          "#9c3a2e",
+          "#d9b44a"
+        ],
+        "roofColour": "#7a2f27",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "varied",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Village viewpoint; houses typed from Faroese vernacular (tarred and painted timber, turf or sheet roofs)."
+    },
+    "torshavn-osm-way-43493030": {
+      "venueId": "torshavn-osm-way-43493030",
+      "city": "torshavn",
+      "name": "Nordic House in the Faroe Islands",
+      "archetype": "museum-theatre",
+      "subject": "Norðurlandahúsið: a low grass-hill building whose turf roof (about 2,000 m2) is held by dragon-like steel struts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 75,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "curved",
+        "variant": "turf-roof-hill"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8a8d86",
+          "#6f8a4a",
+          "#c9ced1"
+        ],
+        "roofColour": "#6f8a4a",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "daylit lobby with cafe"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "recessed amphitheatre"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "snake-like ramp and stairs"
+        },
+        {
+          "id": "mast",
+          "count": 4,
+          "note": "steel roof struts rising above the turf"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "nordic",
+      "era": "1983",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nordic_House_in_the_Faroe_Islands",
+          "what": "architects Ola Steen and Kolbrun Ragnarsdottir, opened 1983; turf roof ~2,000 m2 with steel struts; hall ~800 m2; cast-concrete wall; Danish glass and anodised aluminium facades; design meant to look like an elf hill"
+        }
+      ],
+      "notes": "Recognisable by the grassed hill-like roof with exposed steel struts. Roof material is turf (not in ROOF_MATERIALS); roofColour grass green, no roofMaterial set. Plan dimensions are estimates."
+    },
+    "torshavn-osm-way-43917412": {
+      "venueId": "torshavn-osm-way-43917412",
+      "city": "torshavn",
+      "name": "Miðvágs kirkja",
+      "archetype": "church-classical",
+      "subject": "Miðvágur parish church: white village church with a west tower and dark roof on the Vágar shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ecebe6",
+          "#3a3d40",
+          "#ffffff"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "west tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mi%C3%B0v%C3%A1gur",
+          "what": "village location on the south coast of Vágar; no church description in the article"
+        }
+      ],
+      "notes": "No description of the church was found; typed as a white Faroese village church with a single tower. Also note Kálvalíð turf-roof museum house nearby."
+    },
+    "torshavn-osm-way-44619145": {
+      "venueId": "torshavn-osm-way-44619145",
+      "city": "torshavn",
+      "name": "Faroese National Heritage",
+      "archetype": "museum-theatre",
+      "subject": "Heima á Garði, Hoyvík: the museum's outdoor farmstead with a c.1812 farmhouse, black-tarred timber with turf roofs",
+      "form": {
+        "footprint": "L",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "farmstead"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#2b2926",
+          "#ecebe6",
+          "#7a6a55"
+        ],
+        "roofColour": "#6f8a4a",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stone yard walls"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1812",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Faroese_National_Museum",
+          "what": "Heima á Garði, Hoyvík farmhouse, principal structure about 1812, furnished as in 1920s, outdoor museum with buildings and tools"
+        }
+      ],
+      "notes": "Dimensions and exact colours are typical Faroese farmstead (tarred planks, white window frames, turf roof) rather than measured. Turf roof so no roofMaterial."
+    },
+    "torshavn-osm-way-44945414": {
+      "venueId": "torshavn-osm-way-44945414",
+      "city": "torshavn",
+      "name": "Vestmanna kirkja",
+      "archetype": "church-classical",
+      "subject": "Vestmanna parish church: white-walled church with a tower, in the village on the west coast of Streymoy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e8e5dc",
+          "#2f3236",
+          "#ffffff"
+        ],
+        "roofColour": "#2f3236",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vestmanna",
+          "what": "Vestmanna town on west coast of Streymoy; no church details in the article"
+        }
+      ],
+      "notes": "Church not described in any source found; typed as a Faroese village church. Make it slightly larger and with a taller tower than Miðvágur and Kvívík to keep silhouettes distinct."
+    },
+    "torshavn-osm-way-48075009": {
+      "venueId": "torshavn-osm-way-48075009",
+      "city": "torshavn",
+      "name": "Torgið",
+      "archetype": "park-landscape",
+      "subject": "Torgið, the small village square at Vestmanna harbour with benches and a monument",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a8a49a",
+          "#4f6a3a",
+          "#d0cdc4"
+        ],
+        "roofColour": "#a8a49a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "nordic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Plaza by the harbour; typed from the park/square type."
+    },
+    "torshavn-osm-way-493139327": {
+      "venueId": "torshavn-osm-way-493139327",
+      "city": "torshavn",
+      "name": "Magnus Cathedral",
+      "archetype": "heritage-fort",
+      "subject": "The roofless stone ruin of the medieval Magnus Cathedral at Kirkjubøur, standing between the farm and St Olav's Church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "none",
+        "variant": "roofless-church-ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#7c7a72",
+          "#5a5850",
+          "#a09d94"
+        ],
+        "roofColour": "#7c7a72",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2,
+          "note": "empty pointed window openings in the gable walls"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stone walls around the churchyard"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "gothic-revival",
+      "era": "c.1300",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kirkjub%C3%B8ur",
+          "what": "ruins from about 1300 under Bishop Erlendur; between Kirkjubøargarður and St Olav's Church; village on SW Streymoy facing Hestur, Koltur, Sandoy"
+        }
+      ],
+      "notes": "The cathedral was never completed or roofed; only the gable and side walls stand. Dimensions are an estimate (not retrieved). Style approximates medieval Gothic (nearest enum is gothic-revival); archetype heritage-fort covers ruins; roof none. Neighbouring St Olav's church is a small white 12th-century church."
+    },
+    "torshavn-osm-way-648765786": {
+      "venueId": "torshavn-osm-way-648765786",
+      "city": "torshavn",
+      "name": "Argir Stadium",
+      "archetype": "stadium",
+      "subject": "A small football ground at Argir on the southern edge of Tórshavn: a pitch with one low stand and floodlight masts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8f9490",
+          "#2d6a4f",
+          "#ecebe6"
+        ],
+        "roofColour": "#4f5b63",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gundadalur",
+          "what": "Tórshavn grounds: Gundadalur has a 5,000 all-seater and fields of 100x65 m; Argir ground itself not documented"
+        }
+      ],
+      "notes": "Argir ground not described; typed as a small Faroese league pitch with a single covered stand, using the Gundadalur facts for pitch scale."
+    },
+    "torshavn-osm-way-997129492": {
+      "venueId": "torshavn-osm-way-997129492",
+      "city": "torshavn",
+      "name": "Glasir",
+      "archetype": "campus-block",
+      "subject": "Glasir, the Tórshavn upper-secondary college: a large modern school block with extensive glazing",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#c7ccce",
+          "#5f7a8c",
+          "#eeeeea"
+        ],
+        "roofColour": "#6b6e72",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Glasir college; no description found; typed as a recent Nordic school building (glass and render, flat roof)."
+    },
+    "torshavn-quiet-reflection": {
+      "venueId": "torshavn-quiet-reflection",
+      "city": "torshavn",
+      "name": "Kvívíkar kirkja",
+      "archetype": "church-classical",
+      "subject": "Kvívík's 1903 village church: a small timber church with a short tower beside the river bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#2b2926",
+          "#ecebe6",
+          "#ffffff"
+        ],
+        "roofColour": "#3a3d40",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small steeple"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1903",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kv%C3%ADv%C3%ADk",
+          "what": "present church built 1903; village on both sides of a narrow bay with the river Stora; Viking house ruins"
+        }
+      ],
+      "notes": "Only the year is sourced. Black tarred timber with white trim is the common Faroese church finish but colour is an assumption. Smaller than the Vestmanna and Miðvágur churches."
+    },
+    "torshavn-recreation": {
+      "venueId": "torshavn-recreation",
+      "city": "torshavn",
+      "name": "Viðarlundin",
+      "archetype": "park-landscape",
+      "subject": "Viðarlundin, Tórshavn's plantation park: a rare patch of mature conifers and paths on the hillside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#4f6a3a",
+          "#2f4a2a",
+          "#8a6a45"
+        ],
+        "roofColour": "#4f6a3a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Known as the park/plantation in Tórshavn; layout typed generically (conifers, paths, pavilion). Few trees exist in the Faroes so the grove stands out."
+    },
+    "torshavn-transit": {
+      "venueId": "torshavn-transit",
+      "city": "torshavn",
+      "name": "M/F Teistin",
+      "archetype": "transport-station",
+      "subject": "M/F Teistin car ferry at a small Faroese ferry quay with a ramp and waiting shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#7f8587",
+          "#9c3a2e",
+          "#ecebe6"
+        ],
+        "roofColour": "#5f6366",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Ferry quay (location near Skopun on Sandoy by coordinates); vessel and terminal not described in findable sources; typed from harbour type. Drawn as a quay with a ramp and canopy."
+    }
+  }
+}

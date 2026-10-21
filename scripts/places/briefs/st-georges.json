@@ -1,0 +1,1606 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "st-georges",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "st-georges",
+    "climate": "tropical-maritime",
+    "vernacular": "Hillside Caribbean harbour town on the rim of an old volcanic crater: two- and three-storey masonry buildings of stone and stucco in white, yellow, pink and blue; 18th-century French and British stone forts and barracks; Georgian and Victorian churches with towers; painted timber and concrete houses with hip roofs; red-brown clay or painted red and green metal roofs (most homes were re-roofed after Hurricane Ivan destroyed or damaged 90% of them in 2004); palms, mango and nutmeg trees.",
+    "wallColours": [
+      "#efe9da",
+      "#e5c56a",
+      "#e0a08e",
+      "#7fa6c4",
+      "#8d8a82",
+      "#9a4b3a",
+      "#d4b66a"
+    ],
+    "roofColours": [
+      "#a2523a",
+      "#b0452f",
+      "#8b9396",
+      "#5f8a6a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stone",
+      "whitewash",
+      "concrete",
+      "timber",
+      "red-brick"
+    ],
+    "roofMaterials": [
+      "metal-sheet",
+      "clay-tile",
+      "corrugated",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Georgian and Gothic church towers; stone star-fort bastions; louvred shutters and jalousie windows; timber verandas and gallery balconies; brightly painted trims and shopfronts around the Carenage.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/St._George%27s,_Grenada",
+        "what": "horseshoe harbour on a volcanic crater rim, stone Fort George, 1818 cathedral tower, 1825 Anglican church, 1704 French barracks, bright-coloured church interior"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Immaculate_Conception_Cathedral,_St._George%27s",
+        "what": "Gothic tower, hilltop cathedral, roof lost to Hurricane Ivan"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Grenada",
+        "what": "Hurricane Ivan damaged 90% of homes; volcanic tropical island with moist forest and dry scrub"
+      }
+    ]
+  },
+  "places": {
+    "st-georges-airport-st-georges-airport": {
+      "venueId": "st-georges-airport-st-georges-airport",
+      "city": "st-georges",
+      "name": "Maurice Bishop International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Point Salines terminal: a long low two-level terminal with a flat canopy at the front and a small tower, on the island's southern tip",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed",
+        "variant": "regional-terminal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#8b9396",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1984, renamed 2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maurice_Bishop_International_Airport",
+          "what": "single 2,744 m asphalt runway; first commercial flight 28 Oct 1984; designed by a Canadian firm; renamed for Maurice Bishop in 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25528294",
+          "what": "OSM footprint measured: 192.8 x 70.2 m, area 10420 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q651339",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The page does not describe the terminal; form is typed from the measured OSM terminal footprint (193 x 70 m) and a regional airport type."
+    },
+    "st-georges-clinic": {
+      "venueId": "st-georges-clinic",
+      "city": "st-georges",
+      "name": "New Hampshire Medical Centre",
+      "archetype": "hospital",
+      "subject": "A small private medical centre: a one-storey clinic with a red metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/487428150",
+          "what": "OSM footprint measured: 17.5 x 9 m, area 146 m2"
+        }
+      ],
+      "notes": "OSM shows a 17.5 x 9 m building; nothing else found."
+    },
+    "st-georges-community-notices": {
+      "venueId": "st-georges-community-notices",
+      "city": "st-georges",
+      "name": "Parliament of Grenada",
+      "archetype": "civic-palace",
+      "subject": "The New Houses of Parliament (opened 2018): a two-storey government building with one chamber used by both houses, flags and a forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 48,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9da",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Grenada",
+          "what": "New Houses of Parliament opened 2018; one chamber used by House of Representatives and Senate; predecessor York House destroyed by Hurricane Ivan"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/877684637",
+          "what": "OSM footprint measured: 50.6 x 48.3 m, area 1884 m2"
+        }
+      ],
+      "notes": "Appearance not described by sources; typed. OSM footprint 50.6 x 48.3 m."
+    },
+    "st-georges-community-voting-game": {
+      "venueId": "st-georges-community-voting-game",
+      "city": "st-georges",
+      "name": "Grenville Magistrates Court",
+      "archetype": "civic-small",
+      "subject": "The Grenville magistrates court: a small one-storey court building with a red roof and flag",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc4",
+          "#8a6f4d",
+          "#ffffff"
+        ],
+        "roofColour": "#a23b2a",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/385939410",
+          "what": "OSM footprint measured: 19.1 x 8.3 m, area 157 m2"
+        }
+      ],
+      "notes": "OSM footprint 19 x 8 m only; typed."
+    },
+    "st-georges-community-workshop": {
+      "venueId": "st-georges-community-workshop",
+      "city": "st-georges",
+      "name": "St George's University Grand Anse Campus",
+      "archetype": "campus-block",
+      "subject": "A three-storey medical-university building with open galleries and terraces, painted in Caribbean pastels",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#e5c56a",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "1976 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._George%27s_University,_Grenada",
+          "what": "independent international university founded 1976"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/383802717",
+          "what": "OSM footprint measured: 177.4 x 140.1 m, area 20721 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7588178",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Campus buildings are not described in sources; typed with the island palette. OSM campus outline 177 x 140 m."
+    },
+    "st-georges-market-game": {
+      "venueId": "st-georges-market-game",
+      "city": "st-georges",
+      "name": "Gouyave Fish Friday",
+      "archetype": "market-open",
+      "subject": "Fish Friday street festival in Gouyave: open grill stalls and tents along the seafront street",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "street-festival"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e5c56a",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "weekly festival",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gouyave",
+          "what": "Fish Friday is a weekly Friday festival of fish dishes and entertainment promoting Gouyave as a fishing village"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1367666586",
+          "what": "OSM footprint measured: 8.4 x 8 m, area 67 m2"
+        }
+      ],
+      "notes": "The source does not describe stalls; layout is typed from the festival type. Gouyave lies on the west coast at about 80 m elevation; its nutmeg processing station is the largest building on the island."
+    },
+    "st-georges-meal-stop": {
+      "venueId": "st-georges-meal-stop",
+      "city": "st-georges",
+      "name": "By the Sea",
+      "archetype": "restaurant",
+      "subject": "A small seafront restaurant with an open terrace and red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f0e6c8",
+          "#3f86a8",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/236014816",
+          "what": "OSM footprint measured: 23 x 17.3 m, area 305 m2"
+        }
+      ],
+      "notes": "OSM building 23 x 17 m on the east coast; nothing else found."
+    },
+    "st-georges-osm-node-11159744805": {
+      "venueId": "st-georges-osm-node-11159744805",
+      "city": "st-georges",
+      "name": "Mt. Rich Petroglyphs",
+      "archetype": "park-landscape",
+      "subject": "Mount Rich Amerindian petroglyph site: a carved boulder beside a stream under forest, with a small visitor shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "rock-art-site"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a8f7a",
+          "#6f8a5a",
+          "#d9cfb8"
+        ],
+        "roofColour": "#8b8f8c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved boulder with petroglyphs"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "pre-Columbian carvings",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/851109202",
+          "what": "OSM footprint measured: 17 x 11.7 m, area 176 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q48814372",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Wikidata describes the place as rock art; the carvings are on a large boulder. The OSM building (17 x 12 m) is only a shelter. No description of the setting was reachable."
+    },
+    "st-georges-osm-node-11183191376": {
+      "venueId": "st-georges-osm-node-11183191376",
+      "city": "st-georges",
+      "name": "The Gazo",
+      "archetype": "restaurant",
+      "subject": "A small roadside bar and eatery with a bright painted front and a shed roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3b94f",
+          "#3f86a8",
+          "#ffffff"
+        ],
+        "roofColour": "#7a8a8f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/584746825",
+          "what": "OSM footprint measured: 13.5 x 11.4 m, area 154 m2"
+        }
+      ],
+      "notes": "OSM building 14 x 11 m only; typed."
+    },
+    "st-georges-osm-node-278214972": {
+      "venueId": "st-georges-osm-node-278214972",
+      "city": "st-georges",
+      "name": "Point of Fort Jeudy",
+      "archetype": "park-landscape",
+      "subject": "Fort Jeudy headland at the south-east tip of the island: a low scrub-covered point with a rock shoreline",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "headland"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a82",
+          "#9aa86a",
+          "#d9cfb8"
+        ],
+        "roofColour": "#8b8f8c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q24679909",
+          "what": "Wikidata item: a point (headland)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q24679909",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No structures known; typed as a viewing headland with dry scrub."
+    },
+    "st-georges-osm-node-3752214509": {
+      "venueId": "st-georges-osm-node-3752214509",
+      "city": "st-georges",
+      "name": "Mt. Hartman National Park and Dove Sanctuary",
+      "archetype": "park-landscape",
+      "subject": "Dry-scrub nature reserve for the critically endangered Grenada dove: low thorny woodland with a small entrance gate and sign",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "nature-reserve"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58a62",
+          "#7d8f58",
+          "#d9cfb8"
+        ],
+        "roofColour": "#8b8f8c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grenada",
+          "what": "island has moist and dry forests and xeric (dry) scrub; Grenada is volcanic with a hilly interior"
+        }
+      ],
+      "notes": "Setting typed from the dry scrub habitat of the south-west peninsula; no description of facilities."
+    },
+    "st-georges-osm-node-5976587886": {
+      "venueId": "st-georges-osm-node-5976587886",
+      "city": "st-georges",
+      "name": "Explorer",
+      "archetype": "park-landscape",
+      "subject": "A coastal viewpoint with a small open shelter and railing",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b4a074",
+          "#6f8a5a",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "caribbean",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing could be identified for the name \"Explorer\" at this point on the east coast; typed viewpoint."
+    },
+    "st-georges-osm-node-640501899": {
+      "venueId": "st-georges-osm-node-640501899",
+      "city": "st-georges",
+      "name": "Concord Waterfalls",
+      "archetype": "park-landscape",
+      "subject": "Concord Falls: a forest stream cascade with a small visitor shelter, steps and railings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "none",
+        "variant": "waterfall-site"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e5c56a",
+          "#6f8a5a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/50590362",
+          "what": "OSM footprint measured: 17 x 11.7 m, area 161 m2"
+        }
+      ],
+      "notes": "OSM tags only an attraction and a 17 x 12 m building. The cascade itself is a river feature the archetype cannot show."
+    },
+    "st-georges-osm-node-9858873098": {
+      "venueId": "st-georges-osm-node-9858873098",
+      "city": "st-georges",
+      "name": "Kirani James Athletic Stadium",
+      "archetype": "stadium",
+      "subject": "The national athletics and football stadium (8,000 seats): an oval running track with a covered main stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed",
+        "variant": "athletics-oval"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d4c8",
+          "#b0452f",
+          "#ffffff"
+        ],
+        "roofColour": "#8b9396",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "assumed roof over main stand"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kirani_James_Athletic_Stadium",
+          "what": "stadium holds 8,000 people; infobox lists China State Construction Engineering; home of the Grenada national football team"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14310614",
+          "what": "OSM footprint measured: 176.6 x 88.5 m, area 6789 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1545643",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Capacity and builder are sourced; stand roofs, colours and tower count are typed. OSM running-track polygon 177 x 88 m."
+    },
+    "st-georges-osm-way-154050153": {
+      "venueId": "st-georges-osm-way-154050153",
+      "city": "st-georges",
+      "name": "WINDREF Research Institute",
+      "archetype": "campus-block",
+      "subject": "A small two-storey research institute building with a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/154050153",
+          "what": "OSM footprint measured: 22.8 x 21.8 m, area 391 m2"
+        }
+      ],
+      "notes": "OSM building 23 x 22 m (research institute of the university); nothing else found."
+    },
+    "st-georges-osm-way-25532699": {
+      "venueId": "st-georges-osm-way-25532699",
+      "city": "st-georges",
+      "name": "Grand Etang Lake",
+      "archetype": "park-landscape",
+      "subject": "Grand Etang crater lake in the central highlands, ringed by montane forest with a small visitor shelter on the shore",
+      "form": {
+        "footprint": "oval",
+        "width_m": 390,
+        "depth_m": 280,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "none",
+        "variant": "crater-lake"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a58a62",
+          "#4f6f4a",
+          "#d9cfb8"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor centre shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "volcanic crater",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grenada",
+          "what": "Grand Etang is a crater lake in the volcanic mountainous interior (up to 840 m)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5594534",
+          "what": "Grand Etang Lake, Saint Andrew Parish, about 400 m wide"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25532699",
+          "what": "OSM footprint measured: 392.4 x 280.3 m, area 84108 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5594534",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Lake and forest are sourced; the visitor structures are typed. The oval is the OSM lake polygon (392 x 280 m)."
+    },
+    "st-georges-osm-way-383799104": {
+      "venueId": "st-georges-osm-way-383799104",
+      "city": "st-georges",
+      "name": "Excel Plaza",
+      "archetype": "mall",
+      "subject": "A small two-storey shopping plaza in Grand Anse with covered walkways and a car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 49,
+        "depth_m": 48,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9da",
+          "#e0a08e",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a7a0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/383799104",
+          "what": "OSM footprint measured: 48.7 x 48 m, area 1272 m2"
+        }
+      ],
+      "notes": "OSM building 49 x 48 m named Excel Plaza; nothing else found."
+    },
+    "st-georges-osm-way-435187821": {
+      "venueId": "st-georges-osm-way-435187821",
+      "city": "st-georges",
+      "name": "McDonald College",
+      "archetype": "campus-block",
+      "subject": "A Caribbean secondary-school campus: low classroom blocks around a yard, painted render with red roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/435187821",
+          "what": "OSM footprint measured: 180.8 x 154 m, area 20376 m2"
+        }
+      ],
+      "notes": "OSM campus 181 x 154 m in the north of the island; typed."
+    },
+    "st-georges-osm-way-435911842": {
+      "venueId": "st-georges-osm-way-435911842",
+      "city": "st-georges",
+      "name": "Aggie's Restaurant and Bar",
+      "archetype": "restaurant",
+      "subject": "A tiny coastal bar and restaurant with an open veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#7fa6c4",
+          "#e5c56a",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/435911842",
+          "what": "OSM footprint measured: 10.6 x 9.4 m, area 100 m2"
+        }
+      ],
+      "notes": "OSM building 10.6 x 9.4 m only; typed with bright Caribbean paint."
+    },
+    "st-georges-osm-way-439102912": {
+      "venueId": "st-georges-osm-way-439102912",
+      "city": "st-georges",
+      "name": "Princess Alice Hospital",
+      "archetype": "hospital",
+      "subject": "A small public hospital: a two-storey ward block with a hipped metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9da",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1356177876",
+          "what": "OSM footprint measured: 7.8 x 5.1 m, area 40 m2"
+        }
+      ],
+      "notes": "OSM only maps a 8 x 5 m building here; the size is an estimate for a district hospital."
+    },
+    "st-georges-osm-way-451481996": {
+      "venueId": "st-georges-osm-way-451481996",
+      "city": "st-georges",
+      "name": "Public access to L'Anse Aux Epines Beach",
+      "archetype": "park-landscape",
+      "subject": "A public beach access: a sandy strip under palms with a small sign and steps",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 65,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "beach-access"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#6f8a5a",
+          "#ffffff"
+        ],
+        "roofColour": "#a2523a",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/451481996",
+          "what": "OSM footprint measured: 64.5 x 39.6 m, area 1828 m2"
+        }
+      ],
+      "notes": "OSM leisure area 65 x 40 m; typed beach."
+    },
+    "st-georges-osm-way-456252083": {
+      "venueId": "st-georges-osm-way-456252083",
+      "city": "st-georges",
+      "name": "LaBorie Medical Station",
+      "archetype": "hospital",
+      "subject": "A small village medical station: a one-storey clinic with a red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#7fa6bd",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/456252083",
+          "what": "OSM footprint measured: 13.4 x 11.1 m, area 114 m2"
+        }
+      ],
+      "notes": "OSM building 13 x 11 m only; typed."
+    },
+    "st-georges-quiet-reflection": {
+      "venueId": "st-georges-quiet-reflection",
+      "city": "st-georges",
+      "name": "Cathedral of the Immaculate Conception",
+      "archetype": "church-gothic",
+      "subject": "The Catholic cathedral on its hilltop above the harbour: a stone church with a Gothic square bell tower (1818), rebuilt roof after Hurricane Ivan",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 31,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "gable",
+        "variant": "tower-and-nave",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d4b66a",
+          "#6d6a63",
+          "#ffffff"
+        ],
+        "roofColour": "#a8402f",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "Gothic tower of 1818"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "gothic-revival",
+      "era": "1804-1884",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Immaculate_Conception_Cathedral,_St._George%27s",
+          "what": "Gothic tower 1818, chapel of 1804, completed 1884, on a hill above the harbour; roof lost in Hurricane Ivan 2004 and rebuilt"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/St._George%27s,_Grenada",
+          "what": "interior painted in bright colours"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/383927620",
+          "what": "OSM footprint measured: 31.4 x 24.9 m, area 739 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q23831971",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Wall colour and the new roof material are not in the sources and are typed. A town landmark visible from the Carenage."
+    },
+    "st-georges-recreation": {
+      "venueId": "st-georges-recreation",
+      "city": "st-georges",
+      "name": "Camerhogne Park",
+      "archetype": "park-landscape",
+      "subject": "A linear coastal recreation park with lawns, paths and small kiosks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 237,
+        "depth_m": 54,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#efe9da",
+          "#6fa05a",
+          "#ffffff"
+        ],
+        "roofColour": "#b0452f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q24679844",
+          "what": "Wikidata item: a park in Grenada"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/383803426",
+          "what": "OSM footprint measured: 236.8 x 53.6 m, area 12047 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q24679844",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No description found; typed from OSM polygon (237 x 54 m)."
+    },
+    "st-georges-transit": {
+      "venueId": "st-georges-transit",
+      "city": "st-georges",
+      "name": "St George's Bus Terminus",
+      "archetype": "transport-station",
+      "subject": "The bus terminus on the Carenage: an open canopy over minibus bays beside the harbour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c6",
+          "#b0452f",
+          "#ffffff"
+        ],
+        "roofColour": "#8b9396",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/440466456",
+          "what": "OSM footprint measured: 14.7 x 14 m, area 205 m2"
+        }
+      ],
+      "notes": "OSM building 15 x 14 m only; the bays and canopy are typed from the type of transit hub in a Caribbean harbour town."
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "akure",
+ "venueId": "st-davids-cathedral",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/823271399",
+   "used": "real footprint: long nave with rounded east end, west front at the short side"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/akure.json",
+   "used": "Anglican cathedral at Ijomu: rendered nave, gabled west front, square bell tower, arched windows; no photo found on Commons or in the evidence file"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "arched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "bands": "#9c4a36"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e7273",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -31,
+    8,
+    0
+   ],
+   "rotDeg": -15,
+   "params": {
+    "width": 6.5,
+    "height": 22,
+    "cap": "hip",
+    "capRise": 4,
+    "windows": "punched",
+    "colour": "#efe9d8",
+    "capColour": "#6e7273"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -36,
+    8,
+    0
+   ],
+   "rotDeg": 75,
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1,
+    "count": 3,
+    "colour": "#bdb8ab"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; tower, steps and arched windows typed from brief; tower position guessed at the OSM west end"
+ }
+}

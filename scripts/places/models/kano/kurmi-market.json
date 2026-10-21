@@ -1,0 +1,256 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "kurmi-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Kurmi_Market",
+   "used": "quadrangle layout with ~755 clay stalls, mosque and courthouse; OSM match is a 29 m2 shed 53 m away, not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 92,
+    "depth": 3.6,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "wall_colour": "#b58a5e",
+    "roof_colour": "#8a8f94",
+    "roof_material": "corrugated",
+    "arch": true
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    38,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 92,
+    "depth": 3.6,
+    "height": 3.4,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "wall_colour": "#b58a5e",
+    "roof_colour": "#8a8f94",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "courthouse",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -36,
+    42
+   ],
+   "height": 5.5,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#d8bf9a",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "market-open/prayer-hall",
+   "at": [
+    44,
+    40,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 9,
+    "height": 4,
+    "minaret_height": 13,
+    "wall_colour": "#d8bf9a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "wall_colour": "#8a6544",
+    "roof_colour": "#8a8f94"
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -44,
+    -34,
+    0
+   ],
+   "params": {
+    "count": 13,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a24a",
+     "#7a9a6a",
+     "#b6523a"
+    ]
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -44,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 13,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a24a",
+     "#7a9a6a",
+     "#b6523a"
+    ]
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -44,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 13,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a24a",
+     "#7a9a6a",
+     "#b6523a"
+    ]
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -44,
+    2,
+    0
+   ],
+   "params": {
+    "count": 13,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a24a",
+     "#7a9a6a",
+     "#b6523a"
+    ]
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -44,
+    14,
+    0
+   ],
+   "params": {
+    "count": 13,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a24a",
+     "#7a9a6a",
+     "#b6523a"
+    ]
+   }
+  },
+  {
+   "type": "market-open/stall-row",
+   "at": [
+    -44,
+    26,
+    0
+   ],
+   "params": {
+    "count": 13,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c9a24a",
+     "#7a9a6a",
+     "#b6523a"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no exterior photo; quadrangle layout from Wikipedia, tin roofs assumed"
+ }
+}

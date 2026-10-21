@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-osm-node-7290956786",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/juba.json#juba-osm-node-7290956786",
+   "used": "brief only: two painted pillars with a steel gate in a long perimeter wall, 12 m wide, point feature with no OSM outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 8,
+  "fovDeg": 46,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 2.6,
+    "thickness": 0.35,
+    "colour": "#e6dcc4",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 2.6,
+    "thickness": 0.35,
+    "colour": "#e6dcc4",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 5.5,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#a35438",
+    "leafColour": "#5b6670"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6.5,
+    -0.8,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 0.9,
+    "bottom": 1.6,
+    "colour": "#a35438",
+    "posts": false
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    4.2,
+    -1.2,
+    0
+   ],
+   "params": {
+    "height": 4.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    5,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guard-hut",
+   "footprint": {
+    "rect": [
+     2.4,
+     2.4
+    ]
+   },
+   "at": [
+    8.5,
+    -2.2
+   ],
+   "rotDeg": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 0.4,
+    "overhang": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   44,
+   24
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or outline; gate and wall are typical, pillar style assumed"
+ }
+}

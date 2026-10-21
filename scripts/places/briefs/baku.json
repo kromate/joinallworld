@@ -1,0 +1,1616 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "baku",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "baku",
+    "climate": "desert",
+    "vernacular": "Dense Caspian-coast city of pale limestone: the walled Old City of narrow lanes, flat-roofed stone houses and caravanserais; Belle-Epoque oil-boom mansions and apartment blocks in cream and honey limestone with carved Baroque and Gothic ornament; Stalin-era limestone-clad monumental blocks; Soviet panel and brick estates in grey and ochre; and a modern skyline of white and glass towers. Mostly flat or low-pitched roofs, strong winds, little rain, sparse planting of pines, plane trees and mulberries.",
+    "wallColours": [
+      "#d9c8a0",
+      "#c8b487",
+      "#e8dcc0",
+      "#b9b2a4",
+      "#cfd8dc",
+      "#a58a64",
+      "#d9b8a0"
+    ],
+    "roofColours": [
+      "#7b8084",
+      "#a65a3a",
+      "#5c5e60",
+      "#b9b2a4"
+    ],
+    "wallMaterials": [
+      "limestone",
+      "stone",
+      "concrete",
+      "render",
+      "painted-render",
+      "glass-curtain",
+      "brick"
+    ],
+    "roofMaterials": [
+      "membrane",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Local Absheron limestone (cream to honey) dressed in carved Baroque and Moorish ornament on oil-boom facades; Shirvan-Absheron style pointed and ogee arches, stalactite (muqarnas) portals and ribbed domes; the buta (paisley/flame) motif in relief and railings; flame-shaped and fluid forms on modern landmarks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Baku",
+        "what": "climate (cold semi-arid, windy), Old City walls/narrow alleys, eclectic early 20th-century landmarks, all-glass towers, parks"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Azerbaijan",
+        "what": "Old City, Soviet-era marble/granite-faced and limestone monuments, Flame Towers, flame motif"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bibi-Heybat_Mosque",
+        "what": "local Gulbaht limestone used in current mosque; Shirvan school"
+      }
+    ]
+  },
+  "places": {
+    "baku-airport-baku-airport": {
+      "venueId": "baku-airport-baku-airport",
+      "city": "baku",
+      "name": "Heydar Aliyev International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 (2014), a four-level tricorn terminal with a semi-transparent undulating roof, seen from the landside forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 250,
+        "depth_m": 130,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd6da",
+          "#9a8466",
+          "#f2f2f0"
+        ],
+        "roofColour": "#e3e6e8",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "tall glazed hall under the translucent roof"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "sweeping roof edge over the forecourt"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12,
+          "note": "12 boarding bridges, 15 gates"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate ATC tower (2013) behind the terminal"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heydar_Aliyev_International_Airport",
+          "what": "Terminal 1 opened 2014: Arup engineering design, tricorn (three-lobed) form, semi-transparent roof, about 65,000 m2, 4 levels, 12 boarding bridges, Autoban interior with oak-veneer cocoons"
+        }
+      ],
+      "notes": "Form, level count and gate counts are sourced; facade colours (glass with silver/white framing, warm oak interior glimpsed through) are from general photo description, not a measured source. The tricorn plan is simplified to an irregular footprint; roof should read as a long wave with a translucent finish."
+    },
+    "baku-clinic": {
+      "venueId": "baku-clinic",
+      "city": "baku",
+      "name": "National Center of Oncology",
+      "archetype": "hospital",
+      "subject": "A mid-rise hospital block of the National Oncology Centre, simplified from its measured footprint",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 64,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d8d2c4",
+          "#9aa5ad",
+          "#f0eee8"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown (Soviet or post-Soviet)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/376244850",
+          "what": "OSM element (containing match): measured footprint 69.6x63.7 m, tags {\"building\": \"yes\"}"
+        }
+      ],
+      "notes": "No description of this specific building was found. The measured OSM building footprint (about 70 x 64 m, irregular, no level count) is used; storeys and finish are typed guesses from the city style for a Soviet/post-Soviet hospital. Any red-cross sign is a blank generic board."
+    },
+    "baku-community-notices": {
+      "venueId": "baku-community-notices",
+      "city": "baku",
+      "name": "Daşınmaz Əmlakın Reyestri İdarəsi",
+      "archetype": "civic-small",
+      "subject": "A small two-storey state registry office, a plain rotated box",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17.5,
+        "depth_m": 12.7,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d9c8a0",
+          "#b9b2a4",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1182100494",
+          "what": "OSM element (containing match): measured footprint 17.5x12.7 m, tags {\"building\": \"yes\", \"building:levels\": \"2\"}"
+        }
+      ],
+      "notes": "The real property-registry office was not described anywhere found. The measured OSM building (17.5 x 12.7 m, 2 levels, rotated 40 degrees) is typed as a plain civic box in cream render. Flag mast and blank sign are generic."
+    },
+    "baku-community-voting-game": {
+      "venueId": "baku-community-voting-game",
+      "city": "baku",
+      "name": "Freedom Square",
+      "archetype": "civic-palace",
+      "subject": "Government House on Azadliq (Freedom) Square: the huge Stalin-era limestone-clad monumental block facing the square",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 10,
+        "height_m": 48,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#dccdaa",
+          "#b8a47c",
+          "#efe6d0"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "tall pilaster/colonnade order on the central block"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "broad frontal steps and terrace"
+        },
+        {
+          "id": "flags",
+          "count": 3,
+          "note": "flagstaffs on the square side"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "square fountain in front"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1936-1952",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Government_House,_Baku",
+          "what": "built 1936-1952 to a Rudnev/Munts design, originally the Baku Soviet Palace, Baroque-classical style, faces Baku Boulevard on Neftchiler Avenue; Lenin monument replaced by a flag"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Azerbaijan",
+          "what": "Soviet-era monumental buildings, marble/granite facing"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/152809510",
+          "what": "OSM element (nearest match): measured footprint 103.9x67.3 m, tags {\"name\": \"Hökumət Evi\", \"building\": \"government\", \"building:levels\": \"10\", \"wikidata\": \"Q2347389\", \"amenity\": \"townhall\"}"
+        }
+      ],
+      "notes": "Name in the game is the square, but the measured nearest building (OSM Hokumet Evi, 10 levels, about 104 x 67 m) is Government House, so the model shows that building. Dimensions are rough because the real complex is very large (clamped in-scene anyway); colours are the usual cream limestone Stalinist-classical palette, not individually sourced. Stands on a large paved square with flagstaffs."
+    },
+    "baku-community-workshop": {
+      "venueId": "baku-community-workshop",
+      "city": "baku",
+      "name": "Baku Engineering University",
+      "archetype": "campus-block",
+      "subject": "A modern private-university campus building, white and glass, set in a landscaped campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 55,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#9fb1bc",
+          "#b9b2a4"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/32720577",
+          "what": "OSM element (name match): measured footprint 634.2x351.7 m, tags {\"name\": \"Bakı Mühəndislik Universiteti\", \"wikidata\": \"Q31293632\", \"amenity\": \"university\"}"
+        }
+      ],
+      "notes": "University is described only by name/coordinates (OSM campus polygon about 634 x 352 m, Khirdalan area). No building photographs were consulted; this is a typed 4-storey contemporary campus block from the city style."
+    },
+    "baku-market-game": {
+      "venueId": "baku-market-game",
+      "city": "baku",
+      "name": "28 Mall",
+      "archetype": "mall",
+      "subject": "The 28 Mall shopping centre: a beige-brick retail block with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 113,
+        "depth_m": 99,
+        "storeys": 5,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4c3a0",
+          "#8fa3ad",
+          "#efe8d8"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed entrance bay"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/188605211",
+          "what": "OSM element (name match): measured footprint 113.3x99.3 m, tags {\"name\": \"28 Mall\", \"building\": \"retail\", \"height\": \"25\", \"building:colour\": \"beige\", \"building:material\": \"brick\", \"wikidata\": \"Q65277381\"}"
+        }
+      ],
+      "notes": "OSM records this exact building as retail, height 25 m, building:colour beige, building:material brick, 113 x 99 m, so size and colour are measured. Facade detailing (glazed entrance, blank sign boards) is typed. Not in any narrative source."
+    },
+    "baku-meal-stop": {
+      "venueId": "baku-meal-stop",
+      "city": "baku",
+      "name": "Buta Palace Baku",
+      "archetype": "museum-theatre",
+      "subject": "Buta Palace, a caravanserai-styled concert and banquet hall with a large main hall and a broad arched entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 96,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9c8a0",
+          "#b59b6c",
+          "#efe6d0"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "large arched portal"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "buta (paisley) motif relief"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Buta_Palace",
+          "what": "opened 2006; caravanserai-stylised venue; main hall 1,572 m2 (about 2,000 guests), small hall 652 m2; 800-car parking"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/186259702",
+          "what": "OSM element (name match): measured footprint 95.5x79.5 m, tags {\"name\": \"Buta Palace\", \"building\": \"yes\", \"building:levels\": \"4\", \"wikidata\": \"Q2928809\"}"
+        }
+      ],
+      "notes": "Actual use is a concert/wedding venue named for the buta motif, so museum-theatre fits better than restaurant. Caravanserai styling (massive blocky stone mass, arched entrance, inward courtyard feel) is from the source; facade colour is typed from the city limestone palette. OSM: 4 levels, 95 x 80 m."
+    },
+    "baku-osm-node-10119666141": {
+      "venueId": "baku-osm-node-10119666141",
+      "city": "baku",
+      "name": "Ramana Castle",
+      "archetype": "heritage-fort",
+      "subject": "The Ramana tower: a square four-tier donjon with semicircular turrets and a small walled courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#c6b08a",
+          "#a8956f",
+          "#d9cdb0"
+        ],
+        "roofColour": "#9a8764",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low walled courtyard (about 28 x 10 m inner) with semicircular brick/stone turrets"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "arrow-shaped entrance gate within the defensive court"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "14th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ramana_Castle",
+          "what": "square four-tiered donjon, unlike the usual round Absheron towers; semicircular towers on four sides; walled courtyard 28 x 10 m; ridge-shaped roofs on the first and top tiers, flat middle tiers; 14th century (some say 12th), Shirvanshah era"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/331073738",
+          "what": "OSM element (containing match): measured footprint 10.3x8.3 m, tags {\"building\": \"yes\", \"building:levels\": \"9\", \"historic\": \"castle\"}"
+        }
+      ],
+      "notes": "Tower height is not in the source; 18 m is an estimate (OSM node polygon 10 x 8 m, level count 9 is unreliable). The tower stands on bare dry Absheron ground with a rough stone-and-lime finish. Make it clearly different from the round Maiden Tower style of Absheron towers."
+    },
+    "baku-osm-node-12766646790": {
+      "venueId": "baku-osm-node-12766646790",
+      "city": "baku",
+      "name": "Heydar Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Heydar Mosque (2014): a very large white-stone mosque with two domes and four tall slender minarets",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 65,
+        "storeys": 4,
+        "height_m": 30,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "marble",
+        "colours": [
+          "#eee6d3",
+          "#c9ab70",
+          "#ffffff"
+        ],
+        "roofColour": "#e8e6df",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "main dome about 55 m, second about 35 m"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "four minarets 95 m tall at the corners"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2014",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heydar_Mosque",
+          "what": "completed 2014, Shirvan-Absheron style; four minarets 95 m, two domes about 55 m and 35 m, Quranic verses inscribed on dome sides; site 12,000 m2, interior 4,200 m2, capacity 75,000 incl. underground prayer area"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/387570160",
+          "what": "OSM element (containing match): measured footprint 24.9x24.9 m, tags {\"building\": \"yes\", \"building:levels\": \"6\", \"roof:shape\": \"dome\"}"
+        }
+      ],
+      "notes": "Dimensions of the footprint are estimated from the 4,200 m2 interior and site; heights are sourced. Colour (pale cream-white stone, light domes, gold accents) is from general knowledge of photos. The minarets are the key silhouette: four, very tall and thin, 95 m, which exceed the 120 m scene clamp only in height."
+    },
+    "baku-osm-node-2768993504": {
+      "venueId": "baku-osm-node-2768993504",
+      "city": "baku",
+      "name": "Yanar Dag Burning Mountain",
+      "archetype": "park-landscape",
+      "subject": "Yanar Dag: a dry hillside scarp with the natural gas flame, a small museum pavilion and an open amphitheatre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#b9a88a",
+          "#8a7a62",
+          "#d8d0bd"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "tiered amphitheatre seating, about 500 seats"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "natural site; museum renovated 2017-2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yanar_Dag",
+          "what": "flames up to about 1-3 m from sandstone vents below a hillside scarp 2-4 m high and 200 m long; 64.55 ha reserve; 500-seat outdoor amphitheatre; museum of ancient stones; renovated 2017-2019"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1111584301",
+          "what": "OSM element (containing match): measured footprint 39.1x29.6 m, tags {\"tourism\": \"attraction\", \"historic\": \"archaeological_site\"}"
+        }
+      ],
+      "notes": "The flame itself is not in the feature list (enum gap: flame/fire effect); the generator can show a low brazier-like glowing strip. Terrain is dry yellow-brown hillside with a low rocky scarp. Building sizes are estimated."
+    },
+    "baku-osm-node-2947442051": {
+      "venueId": "baku-osm-node-2947442051",
+      "city": "baku",
+      "name": "Bibi Heybat Mosque",
+      "archetype": "mosque-domed",
+      "subject": "Bibi-Heybat Mosque (1990s reconstruction): a limestone mosque with three ribbed domes and two minarets beside the hilltop shrine",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "marble",
+        "colours": [
+          "#d6c7a3",
+          "#3f9a95",
+          "#efe6d0"
+        ],
+        "roofColour": "#4aa59f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 3,
+          "note": "ribbed (\"corrugated\") domes, turquoise/green interior mirrors"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "two slender minarets"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "Khatai-ornamented portal"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "13th century site; rebuilt 1997-1998",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bibi-Heybat_Mosque",
+          "what": "current mosque rebuilt in the 1990s on the original site in classic Shirvan style; three ribbed domes, two minarets; local Gulbaht limestone; portal with Khatai ornamentation; marble walls with carved calligraphy; green and turquoise interior mirrors"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/291299394",
+          "what": "OSM element (containing match): measured footprint 48.8x17 m, tags {\"building\": \"yes\", \"building:levels\": \"4\"}"
+        }
+      ],
+      "notes": "Dimensions are estimated from the OSM footprint (48.8 x 17 m); the domes read as ribbed and slightly bulbous. The dome exterior colour (blue-green) is from general photo memory and is uncertain; the limestone walls are sourced. Original minaret was about 22 m, new ones are somewhat taller."
+    },
+    "baku-osm-node-5320172364": {
+      "venueId": "baku-osm-node-5320172364",
+      "city": "baku",
+      "name": "Mud Volcano Lokbatan",
+      "archetype": "park-landscape",
+      "subject": "Lokbatan mud volcano: a low grey-brown clay cone on bare ground in an oil-field landscape",
+      "form": {
+        "footprint": "round",
+        "width_m": 60,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": null,
+        "colours": [
+          "#8f877a",
+          "#6f675c",
+          "#a59d8e"
+        ],
+        "roofColour": "#8f877a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source was fetched for this site (no Wikipedia page found under the tried title). Typed as a low natural mound of dry grey-brown mud, craters and cracks, with nearby oil-field infrastructure suggested by city style only. It is a natural landmark, not a building."
+    },
+    "baku-osm-way-1204756170": {
+      "venueId": "baku-osm-way-1204756170",
+      "city": "baku",
+      "name": "Moskva Dövlət Universitetinin Bakı Filialı",
+      "archetype": "campus-block",
+      "subject": "Baku branch of Moscow State University: a modern institutional campus block",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#e4dcc8",
+          "#a99a78",
+          "#f1ede2"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moscow_State_University",
+          "what": "branch campuses exist abroad; Baku branch is a university campus (no building description found)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1204756170",
+          "what": "OSM element (name match): measured footprint 278.3x249.2 m, tags {\"name\": \"Moskva Dövlət Universitetinin Bakı Filialı\", \"wikidata\": \"Q4075926\", \"amenity\": \"university\"}"
+        }
+      ],
+      "notes": "No description of this campus building was found; typed as a symmetric cream-render institutional block with a pillared entrance, which is a guess. OSM campus polygon about 278 x 249 m."
+    },
+    "baku-osm-way-178593266": {
+      "venueId": "baku-osm-way-178593266",
+      "city": "baku",
+      "name": "Izmir Garden",
+      "archetype": "park-landscape",
+      "subject": "Izmir Garden (Izmir Bagi): a small city park with paths, lawn and a pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 78,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#c8b487",
+          "#a58a64",
+          "#e8dcc0"
+        ],
+        "roofColour": "#7b8084",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/178593266",
+          "what": "OSM element (name match): measured footprint 140.5x78.5 m, tags {\"name\": \"İzmir Bağı\", \"wikidata\": \"Q108852627\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "Small park of about 140 x 78 m. The Turkish-themed name suggests a twinning gift park, but no description was found, so contents are generic urban-park furniture."
+    },
+    "baku-osm-way-271983522": {
+      "venueId": "baku-osm-way-271983522",
+      "city": "baku",
+      "name": "Dövlət Sərhəd Xidmətinin Akademiyası",
+      "archetype": "campus-block",
+      "subject": "Academy of the State Border Service: a formal institutional block on a walled parade campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d9c8a0",
+          "#b9b2a4",
+          "#efe8d8"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter wall and gate"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/271983522",
+          "what": "OSM element (name match): measured footprint 326.3x281.6 m, tags {\"name\": \"Dövlət Sərhəd Xidmətinin Akademiyası\", \"wikidata\": \"Q16416747\", \"amenity\": \"university\"}"
+        }
+      ],
+      "notes": "Military academy; no building description found. OSM campus polygon 326 x 282 m. Typed as a cream-render Soviet-style institutional building with perimeter wall and flagstaff."
+    },
+    "baku-osm-way-299424032": {
+      "venueId": "baku-osm-way-299424032",
+      "city": "baku",
+      "name": "Sabir Park",
+      "archetype": "park-landscape",
+      "subject": "Sabir Garden, a small central park with a statue of the poet Sabir among trees and lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 66,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#c8b487",
+          "#8a8d8f",
+          "#e8dcc0"
+        ],
+        "roofColour": "#7b8084",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "poet Mirza Alakbar Sabir on a plinth"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baku",
+          "what": "city parks and gardens context"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/299424032",
+          "what": "OSM element (name match): measured footprint 161.3x66.5 m, tags {\"name\": \"Sabir parkı\", \"wikidata\": \"Q4421712\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "The park is named for the satirist poet; a statue/bust of Sabir is expected but the exact monument form was not verified. Treated as a typed city garden of about 161 x 67 m with lawns and mature trees."
+    },
+    "baku-osm-way-323398478": {
+      "venueId": "baku-osm-way-323398478",
+      "city": "baku",
+      "name": "Heydər Əliyev adına Ali Hərbi Məktəb",
+      "archetype": "campus-block",
+      "subject": "Heydar Aliyev Higher Military School: a long institutional building and parade ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d9c8a0",
+          "#b9b2a4",
+          "#efe8d8"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/323398478",
+          "what": "OSM element (name match): measured footprint 911x387.3 m, tags {\"name\": \"Heydər Əliyev adına Ali Hərbi Məktəb\", \"wikidata\": \"Q724106\", \"amenity\": \"university\"}"
+        }
+      ],
+      "notes": "Large military school campus (OSM polygon 911 x 387 m); no building description found. Typed as a long cream-render barracks/academic building with flagstaff and wall."
+    },
+    "baku-osm-way-323751981": {
+      "venueId": "baku-osm-way-323751981",
+      "city": "baku",
+      "name": "ASCO Arena",
+      "archetype": "stadium",
+      "subject": "ASCO Arena (Bayil Stadium): a compact football ground with a covered main stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 123,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bd",
+          "#4f7ba6",
+          "#e6e3dc"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4874537",
+          "what": "Wikidata: venue resolved as Bayil Stadium (stadium)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/323751981",
+          "what": "OSM element (name match): measured footprint 122.6x80 m, tags {\"name\": \"ASCO Arena\", \"wikidata\": \"Q4874537\", \"leisure\": \"stadium\"}"
+        }
+      ],
+      "notes": "Small football stadium; measured OSM polygon 123 x 80 m. No image description found, so one covered stand and four floodlight masts are typed defaults."
+    },
+    "baku-osm-way-357033239": {
+      "venueId": "baku-osm-way-357033239",
+      "city": "baku",
+      "name": "Baku Olympic Stadium",
+      "archetype": "stadium",
+      "subject": "Baku Olympic Stadium (2015): a huge steel and translucent-clad oval bowl beside Boyukshor Lake",
+      "form": {
+        "footprint": "oval",
+        "width_m": 300,
+        "depth_m": 299,
+        "storeys": 6,
+        "height_m": 60,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4e6e8",
+          "#9aa3ab",
+          "#cfd4d8"
+        ],
+        "roofColour": "#d6d9dc",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "3,617-space parking facility"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "2015",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baku_Olympic_Stadium",
+          "what": "capacity about 68,700-69,870; six storeys, 60 m tall; about 205,000 m2 built area; designers TOCA/Heerim/ROSSETTI, Thornton Tomasetti engineers; construction 2011-2015, opened March 2015"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/5327164",
+          "what": "OSM element (name match): measured footprint 300.7x298.7 m, tags {\"name\": \"Bakı Olimpiya Stadionu\", \"start_date\": \"2015\", \"wikidata\": \"Q2612138\", \"leisure\": \"stadium\", \"building\": \"stadium\", \"building:levels\": \"10\"}"
+        }
+      ],
+      "notes": "Footprint 300 x 299 m from OSM is far above the 120 m scene clamp so only the recognisable portion should show (a stand section with the roof ring). Facade finish (silver/white translucent panels lit by LED at night) is from general photo recall, not the cited source. Distinct from smaller Baku stadiums: ring roof, 60 m tall."
+    },
+    "baku-osm-way-384863335": {
+      "venueId": "baku-osm-way-384863335",
+      "city": "baku",
+      "name": "Sharg Bazaar",
+      "archetype": "market-hall",
+      "subject": "Sharg Bazaar (Sherg Bazari): a four-level covered bazaar building with a multi-section roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 93,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "stepped"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#d9c8a0",
+          "#a58a64",
+          "#efe6d0"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arcade"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/384863335",
+          "what": "OSM element (name match): measured footprint 116.5x92.6 m, tags {\"name\": \"Şərq Bazarı\", \"building\": \"retail\", \"building:levels\": \"4\", \"roof:shape\": \"many\", \"wikidata\": \"Q126490544\", \"amenity\": \"marketplace\"}"
+        }
+      ],
+      "notes": "OSM lists a retail/marketplace building, 4 levels, roof:shape \"many\", about 116 x 93 m; nothing else was found. Typed as a covered bazaar block with a stepped multi-part roof and a ground arcade. Blank signs only."
+    },
+    "baku-osm-way-663814207": {
+      "venueId": "baku-osm-way-663814207",
+      "city": "baku",
+      "name": "Palms Sports Arena",
+      "archetype": "stadium",
+      "subject": "Palms Sports Arena (a football stadium): a modest low-rise ground with a small main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 148,
+        "depth_m": 109,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bd",
+          "#4f7ba6",
+          "#e6e3dc"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4032454",
+          "what": "Wikidata: venue resolved as Neftchi Arena (stadium)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9104673",
+          "what": "OSM element (name match): measured footprint 147.8x108.7 m, tags {\"name\": \"Palms Sports Arena\", \"wikidata\": \"Q4032454\", \"leisure\": \"stadium\", \"building\": \"stadium\", \"height\": \"8\"}"
+        }
+      ],
+      "notes": "OSM building:stadium height 8 m, polygon 148 x 109 m. No description found; typed as a compact stadium. Use a different roof layout from ASCO Arena (this one is wider, lower, shed roof on two sides)."
+    },
+    "baku-osm-way-674677959": {
+      "venueId": "baku-osm-way-674677959",
+      "city": "baku",
+      "name": "Ganjlik Mall",
+      "archetype": "mall",
+      "subject": "Ganjlik Mall: a six-level shopping centre with grey roof beside the Ganjlik metro area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 191,
+        "depth_m": 126,
+        "storeys": 6,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#c9ced1",
+          "#8fa3ad",
+          "#efe8d8"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s (unverified)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/674677959",
+          "what": "OSM element (name match): measured footprint 191.2x125.6 m, tags {\"name\": \"Gənclik Mall\", \"building\": \"retail\", \"building:levels\": \"6\", \"roof:colour\": \"grey\", \"wikidata\": \"Q65277536\"}"
+        }
+      ],
+      "notes": "OSM: retail, 6 levels, grey roof, 191 x 126 m. Glazed street-front with pale render is typed from comparable Baku malls, not from a source describing this building."
+    },
+    "baku-quiet-reflection": {
+      "venueId": "baku-quiet-reflection",
+      "city": "baku",
+      "name": "Cümə Məscidi",
+      "archetype": "mosque-domed",
+      "subject": "A district Friday (Juma) mosque: a modest single-dome mosque with one slender minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "render",
+        "colours": [
+          "#e4dcc2",
+          "#4aa59f",
+          "#ffffff"
+        ],
+        "roofColour": "#4aa59f",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single minaret, about 30 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1118157812",
+          "what": "OSM element (containing match): measured footprint 33.4x21.9 m, tags {\"building\": \"yes\", \"building:levels\": \"3\"}"
+        }
+      ],
+      "notes": "Generic name (Friday mosque) with no identifying detail, so this is a low-confidence typed brief. OSM building 33 x 22 m, 3 levels. Do not mimic the major Baku mosques: smaller, single dome."
+    },
+    "baku-recreation": {
+      "venueId": "baku-recreation",
+      "city": "baku",
+      "name": "Botanical Gardens, Baku",
+      "archetype": "park-landscape",
+      "subject": "Baku Botanical Garden: a very large landscaped park of planted beds, paths and a small gatehouse",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d9c8a0",
+          "#a58a64",
+          "#e8dcc0"
+        ],
+        "roofColour": "#7b8084",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/152322861",
+          "what": "OSM element (name match): measured footprint 1019x829.2 m, tags {\"name\": \"Nəbabət Bağı / Botanika Bağı\", \"wikidata\": \"Q20278670\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "OSM park polygon about 1,019 x 829 m (418,000 m2). No description of garden structures found; only gate, pavilion and wall are typed placeholders. Trees mainly conifer and mixed broadleaf on dry ground."
+    },
+    "baku-transit": {
+      "venueId": "baku-transit",
+      "city": "baku",
+      "name": "Shah Ismail Khatai",
+      "archetype": "transport-station",
+      "subject": "Shah Ismail Khatai metro station (Green Line, opened 1968): a small surface entrance vestibule",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#d9c8a0",
+          "#8a8d8f",
+          "#efe6d0"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stairs to the underground concourse"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1968",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Baku_Metro",
+          "what": "station opened 22 Feb 1968 as Shaumyan, renamed Khatai in 1990; western terminus section of Green Line"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/331258188",
+          "what": "OSM element (nearest match): measured footprint 31.1x30.4 m, tags {\"building\": \"transportation\", \"building:levels\": \"1\"}"
+        }
+      ],
+      "notes": "Only dates found; the vestibule design was not described. Typed as a Soviet metro entrance pavilion; OSM building is 1 level, 31 x 30 m."
+    }
+  }
+}

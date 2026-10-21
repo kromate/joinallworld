@@ -1,0 +1,1524 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "awka",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "awka",
+    "climate": "rainforest",
+    "vernacular": "Anambra state capital in a cleared rainforest/wooded-savanna zone with heavy rain (about 2,170 mm). Ordinary buildings are 1-3 storey painted-render houses and lock-up shops in cream, light green and terracotta with rust-red or long-span coloured metal roofs; new business buildings, banks on Zik Avenue and over fifteen three-star hotels are changing the skyline; older infrastructure is described as decaying.",
+    "wallColours": [
+      "#efe7d3",
+      "#f4efe6",
+      "#cfd9bd",
+      "#d9a37a",
+      "#b9c0c8",
+      "#a8a49c",
+      "#c07a52"
+    ],
+    "roofColours": [
+      "#8a4a36",
+      "#6b7a82",
+      "#3f6b4a",
+      "#9a9a94",
+      "#5f4a6b"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Igbo carved-wood doors and compound gates, mbari-style painted figures and uli wall designs on traditional sites (Imo-Oka shrine area, palaces); colonial watch towers in Awka town; modern churches with tall front towers and banks with coloured aluminium-composite fascias.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Awka",
+        "what": "tropical rainforest zone, 2,167 mm rain, forest cleared to wooded savannah; Zik Avenue banks; Eke Awka largest market; over 15 three-star hotels; Imo-Oka shrine remnants"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Igbo_architecture",
+        "what": "Igbo architecture: mud, laterite, thatch, carved timber doors and gateways, painted mud figures (mbari), uli designs; 1909 Awka watch tower"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Anambra_State",
+        "what": "state capital Awka; Awka City Stadium; governor residence Agu-Awka; palaces and heritage sites"
+      }
+    ]
+  },
+  "places": {
+    "anambra-ministry-of-works": {
+      "venueId": "anambra-ministry-of-works",
+      "city": "awka",
+      "name": "Anambra State Ministry of Works and Infrastructure",
+      "archetype": "civic-small",
+      "subject": "A three-storey rendered state-secretariat block with a central entrance porch and flag poles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#2f6b4a",
+          "#aaa699"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "The Anambra State Secretariat is on the Ekwueme Square side of Awka; this ministry is further south. No description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "anambra-state-house-of-assembly": {
+      "venueId": "anambra-state-house-of-assembly",
+      "city": "awka",
+      "name": "Anambra State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The state legislature complex beside Ekwueme Square: a broad two-storey white block with a columned portico over the main chamber and flagpoles at the forecourt",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#f4f1ea",
+          "#2f6b4a",
+          "#b9b3a2"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ekwueme_Square",
+          "what": "Ekwueme Square sits beside the Anambra State House of Assembly complex and next to the Federal High Court, Awka; access roads lead to the State Secretariat"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Anambra_State",
+          "what": "House of Assembly listed as state legislature"
+        }
+      ],
+      "notes": "Location context is sourced; architecture is not described anywhere found, so the neoclassical portico form is a typed guess for a Nigerian state legislature."
+    },
+    "archbishop-ibezim-college-of-education": {
+      "venueId": "archbishop-ibezim-college-of-education",
+      "city": "awka",
+      "name": "Archbishop Alexander Ibezim College of Education",
+      "archetype": "campus-block",
+      "subject": "A small college campus of two-storey lecture and administration blocks around a gate and lawn",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9d9",
+          "#7a3f2f",
+          "#b9b4a4"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "A Catholic-founded college of education; only the name and position are real. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "awka-central-mosque": {
+      "venueId": "awka-central-mosque",
+      "city": "awka",
+      "name": "Awka Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "A modest urban mosque with a central green dome, a single tall minaret and an arched entrance in a walled compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe2",
+          "#3a8a6a",
+          "#c5bea8"
+        ],
+        "roofColour": "#3a8a6a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "about 20 m"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Awka is predominantly Catholic Igbo, so the mosque is small. No description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "awka-city-stadium": {
+      "venueId": "awka-city-stadium",
+      "city": "awka",
+      "name": "Awka City Stadium",
+      "archetype": "stadium",
+      "subject": "A small football stadium with a covered main stand on one side, uncovered concrete terraces and four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 150,
+        "depth_m": 115,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b9b5aa",
+          "#c9372c",
+          "#e9e5da"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand, typed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Anambra_State",
+          "what": "Awka City Stadium listed among the stadiums of Anambra State; no description"
+        }
+      ],
+      "notes": "Listed on the Anambra State page; capacity and form are not sourced. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "burger-chicken-awka": {
+      "venueId": "burger-chicken-awka",
+      "city": "awka",
+      "name": "Burger Chicken and Co",
+      "archetype": "restaurant",
+      "subject": "A small fast-food restaurant unit with a glazed front, a bright painted fascia and blank signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f4ede0",
+          "#d9402a",
+          "#f2c230"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Private fast-food outlet; nothing findable beyond the name. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "christ-the-king-hospital-awka": {
+      "venueId": "christ-the-king-hospital-awka",
+      "city": "awka",
+      "name": "Christ The King Hospital, Awka",
+      "archetype": "hospital",
+      "subject": "A mission/mission-style hospital: two-storey white ward blocks with covered walkways and a small chapel-style tower",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f2efe6",
+          "#2f7a6a",
+          "#b9b3a2"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Mission-style hospital; the Catholic link is inferred from the name and not verified; no building description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "diamond-pizza-awka": {
+      "venueId": "diamond-pizza-awka",
+      "city": "awka",
+      "name": "Diamond Pizza & Restaurant",
+      "archetype": "restaurant",
+      "subject": "A two-storey rendered restaurant with a first-floor terrace and glass front, painted in warm colours",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1e0b8",
+          "#a8362a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Private restaurant; nothing findable. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "ecwa-awka": {
+      "venueId": "ecwa-awka",
+      "city": "awka",
+      "name": "ECWA Church, Awka",
+      "archetype": "church-modern",
+      "subject": "A plain evangelical church hall with a broad gabled roof, a small front porch and a modest cross on the gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efeadb",
+          "#4a6a9a",
+          "#bfb9a5"
+        ],
+        "roofColour": "#5f6a72",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Evangelical Church Winning All (ECWA); a low-key plain building, unlike the tall Catholic cathedrals of Awka. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "eke-awka-main-market": {
+      "venueId": "eke-awka-main-market",
+      "city": "awka",
+      "name": "Eke Awka Main Market",
+      "archetype": "market-hall",
+      "subject": "The largest market in Awka: dense rows of single- and two-storey concrete and corrugated-iron lock-up shops with a few open stalls along the lanes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c3b2",
+          "#8a4a36",
+          "#a8a79f"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 40
+        },
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "long-standing traditional Eke market",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "Eke Awka is the largest market in Awka: about 5,000 lock-up shops and stalls in under 35,000 m2; known for congestion; Nkwo Amaenyi is second"
+        }
+      ],
+      "notes": "About 5,000 lock-ups on less than 35,000 m2 is sourced (so very dense, mostly single-storey). Colours and roofing are typed. Scaled to the 120 m cap."
+    },
+    "ekwueme-square-awka": {
+      "venueId": "ekwueme-square-awka",
+      "city": "awka",
+      "name": "Ekwueme Square",
+      "archetype": "park-landscape",
+      "subject": "A large paved public square and parade ground beside the House of Assembly, with a flag-lined dais and surrounding fence wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#d9d4c4",
+          "#2f6b4a",
+          "#a8a496"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "covered viewing dais"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ekwueme_Square",
+          "what": "Alex Ekwueme Square in Awka, next to the Anambra State House of Assembly and Federal High Court; venue for the Independence Day parade, governor swearing-in, rallies and sports events (Police Games 2020)"
+        }
+      ],
+      "notes": "Uses and location are sourced; physical layout is a typed guess for a parade ground with a dais."
+    },
+    "first-bank-awka": {
+      "venueId": "first-bank-awka",
+      "city": "awka",
+      "name": "First Bank Nigeria, Awka",
+      "archetype": "office-low",
+      "subject": "A mid-rise bank branch with a dark-blue-accent facade, glazed banking hall and a tall parapet; blank signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ebe7dd",
+          "#1f3a6a",
+          "#b7b5ae"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank, brand-neutral"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Banks line Zik Avenue (sourced); this branch is a typed bank block. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "gideons-barber-shop-awka": {
+      "venueId": "gideons-barber-shop-awka",
+      "city": "awka",
+      "name": "Gideon's Barber Shop",
+      "archetype": "shophouse",
+      "subject": "A tiny kiosk-sized barber shop with a painted front, a small awning and a blank hand-painted board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d9e8",
+          "#ffffff",
+          "#7f8a92"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Tiny private business; typed from city style. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "lords-chosen-awka": {
+      "venueId": "lords-chosen-awka",
+      "city": "awka",
+      "name": "The Lord's Chosen Charismatic Revival Church",
+      "archetype": "church-modern",
+      "subject": "A large pentecostal auditorium: a wide gabled hall with a tall glazed front, a tower and a big parking lot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ede2",
+          "#7a2f4a",
+          "#bdb8a6"
+        ],
+        "roofColour": "#6f757a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Charismatic church; the largest pentecostal church in Awka is Winners Chapel (5,000 seats, Wikipedia), this is not it. Form is typed for a mid-size auditorium. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "mayfresh-savings-loans-awka": {
+      "venueId": "mayfresh-savings-loans-awka",
+      "city": "awka",
+      "name": "Mayfresh Savings & Loans",
+      "archetype": "office-low",
+      "subject": "A small two-storey microfinance office with a green-accent facade, glazed front door and blank sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ece0",
+          "#3f8a52",
+          "#c2bdac"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Private finance office; nothing findable. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "old-timber-market-awka": {
+      "venueId": "old-timber-market-awka",
+      "city": "awka",
+      "name": "Old Timber Market, Awka",
+      "archetype": "market-open",
+      "subject": "A timber yard market: open sheds stacked with sawn planks and logs, with simple corrugated roofs on timber posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a5774f",
+          "#8a4a36",
+          "#c9b28a"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "stalls",
+          "count": 15
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "The Awka area is known for woodcarving and trade in timber; the market itself was not described. Shown as open timber sheds, unlike the lock-up Eke Awka market. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "ora-palace-okpuno": {
+      "venueId": "ora-palace-okpuno",
+      "city": "awka",
+      "name": "Ora Palace, Okpuno",
+      "archetype": "heritage-fort",
+      "subject": "The palace compound of a traditional ruler in Okpuno: a walled courtyard with a main rendered hall, carved-wood gateway and flagpole",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe3c8",
+          "#8a3a2a",
+          "#a5774f"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "carved-wood gateway"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "wall relief"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Igbo_architecture",
+          "what": "Igbo palaces and compounds: carved wooden doors and gateways, painted wall art, symbolic figures at gateways"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "Awka cultural context"
+        }
+      ],
+      "notes": "Ora Palace in Okpuno is the seat of a traditional ruler (not independently verified), and no description of the building was found; Igbo vernacular ornament is applied from the Igbo architecture page. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "paul-university-awka": {
+      "venueId": "paul-university-awka",
+      "city": "awka",
+      "name": "Paul University",
+      "archetype": "campus-block",
+      "subject": "A private university campus: modern three-storey cream and green lecture blocks, a library and an admin block around a landscaped quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3eedf",
+          "#2f6b4a",
+          "#bdb7a5"
+        ],
+        "roofColour": "#4a6a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "Paul University is also located in Awka"
+        }
+      ],
+      "notes": "Church-founded private university (Anglican); building form typed from a typical modern Nigerian private campus. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "regina-caeli-hospital-awka": {
+      "venueId": "regina-caeli-hospital-awka",
+      "city": "awka",
+      "name": "Regina Caeli Hospital",
+      "archetype": "hospital",
+      "subject": "A Catholic mission hospital: white low-rise ward blocks with a clay-tile hipped roof and a small chapel gable",
+      "form": {
+        "footprint": "T",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f5f2ea",
+          "#a8362a",
+          "#bfb9a8"
+        ],
+        "roofColour": "#a4553a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "neutral blank sign"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Catholic-named hospital in east Awka; no description found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "st-patricks-cathedral-awka": {
+      "venueId": "st-patricks-cathedral-awka",
+      "city": "awka",
+      "name": "St. Patrick's Cathedral, Awka",
+      "archetype": "church-modern",
+      "subject": "The Catholic cathedral of the Diocese of Awka: a large cream and brown church with a tall front bell tower, a wide nave roof and wide steps",
+      "form": {
+        "footprint": "cross",
+        "width_m": 58,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe8d6",
+          "#7a5a3a",
+          "#b9b09a"
+        ],
+        "roofColour": "#8a4a36",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "front tower about 35 m"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "after 1977 diocese",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Catholic_Diocese_of_Awka",
+          "what": "St. Patrick's Cathedral is the cathedral of the Diocese of Awka, erected 10 November 1977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "one of two large Catholic cathedrals in Awka with St. Mary's"
+        }
+      ],
+      "notes": "Function and diocese date sourced; physical form not described anywhere found, so cross plan and tower are typed."
+    },
+    "star-sunny-motor-park-awka": {
+      "venueId": "star-sunny-motor-park-awka",
+      "city": "awka",
+      "name": "Star Sunny Motor Park",
+      "archetype": "transport-station",
+      "subject": "A motor park: an open tarmac and laterite lot with rows of buses and a long roofed waiting shed and ticket kiosks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c5bfae",
+          "#d9a431",
+          "#6f757a"
+        ],
+        "roofColour": "#7a7f83",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Intercity motor park; nothing specific found. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "uzondu-microfinance-bank-awka": {
+      "venueId": "uzondu-microfinance-bank-awka",
+      "city": "awka",
+      "name": "Uzondu Microfinance Bank Limited",
+      "archetype": "office-low",
+      "subject": "A small single-storey microfinance bank branch in a rendered building with a glazed door and blank sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4.2,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0ebdc",
+          "#a8472a",
+          "#c2bdac"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "city context: rainforest zone, banks on Zik Avenue, cleared-forest settlement"
+        }
+      ],
+      "notes": "Small microfinance branch near Eke Awka market; nothing findable. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    },
+    "vcs-gate-awka": {
+      "venueId": "vcs-gate-awka",
+      "city": "awka",
+      "name": "VC's Gate",
+      "archetype": "monument",
+      "subject": "A university entrance gate: a concrete arch with two gate piers, a security booth and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e0dacb",
+          "#2f6b4a",
+          "#9a968a"
+        ],
+        "roofColour": "#8d9196",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "what": "Photo captions mention the Unizik Gate; Nnamdi Azikiwe University is at Ifite, Awka"
+        }
+      ],
+      "notes": "Likely a gate of the Nnamdi Azikiwe University (Unizik) campus, but this was not confirmed. Shown as a generic university gate. No source describing this specific building was found; form, colours and size are a typed guess from the city style and the place type."
+    }
+  }
+}

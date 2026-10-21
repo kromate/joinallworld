@@ -1,0 +1,269 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-centre-culturel-islamique",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Inyubako_yabasilamu.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Germain92",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/cc3.jpg",
+   "used": "geotagged 59 m from the OSM mosque: long two-storey white hall with pointed-arch open gallery above a pointed-arch ground arcade, gold plinth band, square dome block at the left end with gold dome, tall white minaret with gold cap, external stair at right end, hedges. Assumed to be this centre's mosque building (geo match, not named in the caption)."
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Mosque_kadafi.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Muhirehussein12",
+   "view": "side",
+   "used": "side elevation: arched windows on the dome block, plain long flank, gold roof trim"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/106460341",
+   "used": "overall length (about 83 m long skewed L-shape) and bearing; modelled as a straight hall plus dome block instead"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.5,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall-ground",
+   "footprint": {
+    "rect": [
+     50,
+     20
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f3ec",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.9,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 4.2,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.4,
+      "storeys": 1,
+      "colour": "#e9e5d8",
+      "pierColour": "#fbfaf5"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-upper",
+   "footprint": {
+    "rect": [
+     50,
+     20
+    ]
+   },
+   "at": [
+    8,
+    0
+   ],
+   "z0": 5.2,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f3ec",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0,
+    "faces": {
+     "front": "plain"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ],
+      "shape": "pointed",
+      "bay": 4.2,
+      "opening": 0.7,
+      "height": 0.9,
+      "depth": 1.4,
+      "storeys": 1,
+      "colour": "#e9e5d8",
+      "pierColour": "#fbfaf5"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0eee6",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "dome-block",
+   "footprint": {
+    "rect": [
+     18,
+     21
+    ]
+   },
+   "at": [
+    -26,
+    0
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f5f3ec",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "windowShape": "pointed",
+    "plinth": 0.9,
+    "bands": "#e2b94c"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6bf52",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    -26,
+    0,
+    10.5
+   ],
+   "params": {
+    "radius": 6.5,
+    "height": 5.2,
+    "profile": "hemi",
+    "drum": 0,
+    "finial": 2.0,
+    "colour": "#dcb34a"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -33,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "radius": 1.3,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f7f5ee",
+    "capColour": "#d9ae48"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    35,
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 3,
+    "rise": 1.2,
+    "run": 1.4,
+    "count": 7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 0.8,
+    "kind": "wall",
+    "colour": "#2d6a3d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -18
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     22,
+     -17
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     45,
+     20
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Minaret cap is a cone instead of the flat gold lantern roof; no railings in the upper gallery, stair at the right end is a plain flight, no hedges; the real OSM outline is a skewed 83 m L-shape, modelled as a straight hall plus dome block from the photo."
+ }
+}

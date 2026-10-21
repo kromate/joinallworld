@@ -1,0 +1,301 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kofar_Mata_Dye_Pit_Entrance.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Solasly",
+   "view": "front",
+   "file": "/tmp/places-evidence/kano/dye.jpg",
+   "used": "pale weathered-render arch gateway with flat top band and corner horns (lettering omitted), dark iron gates, big shade tree behind, low pits at ground and washing lines, mud buildings beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1568863631",
+   "used": "nearest 11 m2 building checked only; not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.33,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": 0
+ },
+ "parts": [
+  {
+   "type": "arch-gateway",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 1.8,
+    "height": 14,
+    "openings": 1,
+    "kind": "round",
+    "pier": 4.5,
+    "crest": "board",
+    "pinnacles": 2,
+    "relief": true
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -3.8,
+    -23.5,
+    0
+   ],
+   "rotDeg": 25,
+   "params": {
+    "width": 3.6,
+    "height": 5,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#2d3033",
+    "leafColour": "#1f2224"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    3.8,
+    -23.5,
+    0
+   ],
+   "rotDeg": -25,
+   "params": {
+    "width": 3.6,
+    "height": 5,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#2d3033",
+    "leafColour": "#1f2224"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12.5,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.6,
+    "thickness": 0.4,
+    "colour": "#9a4630"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    12.5,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 2.6,
+    "thickness": 0.4,
+    "colour": "#9a4630"
+   }
+  },
+  {
+   "type": "market-open/dye-pit-field",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "rows": 4,
+    "cols": 8,
+    "spacing_x": 4.6,
+    "spacing_y": 3.8,
+    "radius": 1.1,
+    "rim": 0.4,
+    "cloth_lines": 3,
+    "colours": [
+     "#2f3f6b",
+     "#3b4f84",
+     "#e8e4da"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-a",
+   "footprint": {
+    "rect": [
+     7,
+     5
+    ]
+   },
+   "at": [
+    -26,
+    12
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b58a5e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-b",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -12,
+    16
+   ],
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#8a6544",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-c",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    24,
+    13
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c4a37a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3,
+    "depth": 2.2,
+    "height": 2.5,
+    "colour": "#2f3f6b"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 3,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#2f3f6b",
+     "#b58a5e"
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "height": 5,
+    "thickness": 1.0,
+    "colour": "#a9805a",
+    "kind": "wall"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 22,
+    "colour": "#1f3a22"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   40,
+   34
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "dye-pits",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Tall round arch with horned pinnacles, angled iron gates and tree match; wall colour renders tan not pinkish-grey, no raised lettering (blank board), tree sits partly in front of arch, washing lines and mud buildings beyond sparse"
+ }
+}

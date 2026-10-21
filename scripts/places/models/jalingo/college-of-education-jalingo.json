@@ -1,0 +1,253 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "college-of-education-jalingo",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Brief only (no photo). The nearest OSM building is a 61 m2 shed 10 m away, rejected. U of two-storey sandcrete wings round a quad with verandas and corrugated hip roofs."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-back",
+   "footprint": {
+    "rect": [
+     90,
+     14
+    ]
+   },
+   "at": [
+    0,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#bfb9aa"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     14,
+     46
+    ]
+   },
+   "at": [
+    -38,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#bfb9aa"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     14,
+     46
+    ]
+   },
+   "at": [
+    38,
+    -8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e3d3b0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#bfb9aa"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 25,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -30.5,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 40,
+    "count": 9,
+    "height": 3.6,
+    "radius": 0.2,
+    "roofDepth": 2,
+    "colour": "#bfb9aa",
+    "roofColour": "#8b4a35"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    30.5,
+    -8,
+    0
+   ],
+   "rotDeg": 90,
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 40,
+    "count": 9,
+    "height": 3.6,
+    "radius": 0.2,
+    "roofDepth": 2,
+    "colour": "#bfb9aa",
+    "roofColour": "#8b4a35"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    14,
+    0
+   ],
+   "lod": [
+    0
+   ],
+   "params": {
+    "length": 60,
+    "count": 13,
+    "height": 3.6,
+    "radius": 0.2,
+    "roofDepth": 2,
+    "colour": "#bfb9aa",
+    "roofColour": "#8b4a35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -10,
+    -42,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "bottom": 1.6,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    8,
+    -36,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -46,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 5,
+    "spread": 18
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -25,
+    -40,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; U layout, veranda and colours from the brief."
+ }
+}

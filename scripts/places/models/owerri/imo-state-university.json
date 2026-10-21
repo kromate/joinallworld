@@ -1,0 +1,646 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Faculty_of_Law,_Imo_State_University_Owerri.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "King ChristLike",
+   "view": "front",
+   "file": "/tmp/places-evidence/owerri/imsu-law.jpg",
+   "used": "three-storey cream rendered block, maroon plinth, grey hipped roof of small tiles, tall gabled entrance portico with round columns, narrow ventilation fin, paired windows with bars"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Imo_State_University_Owerri_Front_gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "King ChristLike",
+   "view": "front",
+   "file": "/tmp/places-evidence/owerri/imsu-gate.jpg",
+   "used": "campus front gate: flat white beam over piers, green guardroom, green tiled hipped roofs with tall green and grey fins"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/789875950",
+   "used": "campus building bearing only (a 62 m slab); the campus is modelled as the Faculty of Law block plus the gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-mid",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    -4,
+    0.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d3a2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8a82",
+    "material": "clay-tile",
+    "pitch": 30,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     13,
+     15
+    ]
+   },
+   "at": [
+    -17.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d3a2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8a82",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left-front",
+   "footprint": {
+    "rect": [
+     7,
+     2.5
+    ]
+   },
+   "at": [
+    -17.5,
+    -8.7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d3a2",
+    "windows": "none",
+    "windowRatio": 0.14,
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8a82",
+    "material": "clay-tile",
+    "pitch": 34,
+    "overhang": 0.5
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     10,
+     15
+    ]
+   },
+   "at": [
+    9,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.2,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d3a2",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8a82",
+    "material": "clay-tile",
+    "pitch": 32,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-bay",
+   "footprint": {
+    "rect": [
+     5,
+     3
+    ]
+   },
+   "at": [
+    -20,
+    -9.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.8,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d3a2",
+    "windows": "none",
+    "windowRatio": 0.14,
+    "bay": 4.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a8a82",
+    "material": "clay-tile",
+    "pitch": 38,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "portico-hall",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    21,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.4,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebdcb0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "bay": 4.2,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8a82",
+    "material": "clay-tile",
+    "pitch": 39,
+    "overhang": 1.2,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-band",
+   "at": [
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     40.8,
+     15.6
+    ],
+    "z0": 0,
+    "height": 2,
+    "colour": "#7a3a35",
+    "topColour": "#7a3a35"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-portico",
+   "at": [
+    21,
+    -1.5
+   ],
+   "params": {
+    "rect": [
+     14.4,
+     12.4
+    ],
+    "z0": 0,
+    "height": 2,
+    "colour": "#7a3a35",
+    "topColour": "#7a3a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-glass0",
+   "at": [
+    -21.2,
+    -10.75
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "z0": 2.4,
+    "height": 9.4,
+    "colour": "#2a3238"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "stair-glass1",
+   "at": [
+    -18.8,
+    -10.75
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.2
+    ],
+    "z0": 2.4,
+    "height": 9.4,
+    "colour": "#2a3238"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "id": "portico-columns",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 12,
+      "colour": "#ebdcb0",
+      "profile": [
+       [
+        0.8,
+        0,
+        "#7a3a35"
+       ],
+       [
+        0.8,
+        2,
+        "#7a3a35"
+       ],
+       [
+        0.6,
+        2,
+        "#ebdcb0"
+       ],
+       [
+        0.6,
+        9.6
+       ],
+       [
+        0.8,
+        9.8
+       ],
+       [
+        0.8,
+        10.2
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     15.5,
+     -9,
+     0
+    ],
+    "end": [
+     26.5,
+     -9,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "id": "portico-columns-back",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 10,
+      "colour": "#ebdcb0",
+      "profile": [
+       [
+        0.7,
+        0,
+        "#7a3a35"
+       ],
+       [
+        0.7,
+        1.6,
+        "#7a3a35"
+       ],
+       [
+        0.55,
+        1.6,
+        "#ebdcb0"
+       ],
+       [
+        0.55,
+        9.4
+       ],
+       [
+        0.7,
+        9.6
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "count": 3,
+    "start": [
+     16.5,
+     -6,
+     0
+    ],
+    "end": [
+     25.5,
+     -6,
+     0
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    21,
+    -10.8,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.6,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#7a3a35"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fin",
+   "at": [
+    3.2,
+    -7.6
+   ],
+   "params": {
+    "rect": [
+     0.9,
+     0.3
+    ],
+    "z0": 2,
+    "height": 10.6,
+    "colour": "#d6d0c0"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-beam",
+   "at": [
+    -50,
+    40
+   ],
+   "params": {
+    "rect": [
+     20,
+     5
+    ],
+    "z0": 4.4,
+    "height": 1.2,
+    "colour": "#f2f0e8",
+    "topColour": "#f2f0e8"
+   }
+  },
+  {
+   "type": "array",
+   "id": "gate-piers",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "z0": 0,
+      "height": 4.4,
+      "colour": "#eeeae0"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -58,
+     38.5,
+     0
+    ],
+    "end": [
+     -41,
+     38.5,
+     0
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "guardroom",
+   "at": [
+    -50,
+    40
+   ],
+   "params": {
+    "rect": [
+     4,
+     3.4
+    ],
+    "z0": 0,
+    "height": 3.6,
+    "colour": "#3f9a58",
+    "topColour": "#3f9a58"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-roof",
+   "at": [
+    -50,
+    40
+   ],
+   "params": {
+    "rect": [
+     19,
+     5.4
+    ],
+    "z0": 5.6,
+    "height": 2.6,
+    "colour": "#4fa86c",
+    "topColour": "#4fa86c",
+    "topScale": 0.45
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-fin",
+   "at": [
+    -56,
+    40
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     2.6
+    ],
+    "z0": 8.2,
+    "height": 3.6,
+    "colour": "#3f9a58"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "gate-fin2",
+   "at": [
+    -55,
+    40
+   ],
+   "params": {
+    "rect": [
+     0.6,
+     2.6
+    ],
+    "z0": 8.2,
+    "height": 3.6,
+    "colour": "#b8bcbd"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "owerri",
+ "venueId": "imo-state-university",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped hipped wings, tall open gabled portico, maroon plinth and stair glazing added; no wing dormers, tile texture and foliage simplified, oblique camera shows block more side-on than photo, gate kept apart as separate campus element."
+ }
+}

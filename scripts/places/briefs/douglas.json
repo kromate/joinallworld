@@ -1,0 +1,1568 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "douglas",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "douglas",
+    "climate": "temperate",
+    "vernacular": "Victorian seaside capital: long curving promenade terraces of former boarding houses in cream and white painted render and stucco with bays, pitched slate roofs and chimney stacks; Georgian merchants houses in the old town; grey and pink Manx stone and slate churches, farms and cottages (some whitewashed, a few thatched) in the countryside, small red-brick Victorian civic and market buildings, and modern office, hospital and college blocks around the edges.",
+    "wallColours": [
+      "#e4ddc8",
+      "#f2efe6",
+      "#9a9a94",
+      "#b86a4a",
+      "#c9b48a",
+      "#6f7a7e"
+    ],
+    "roofColours": [
+      "#4a525a",
+      "#6b6f72",
+      "#8a4b3a",
+      "#c8b27a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "stone",
+      "whitewash",
+      "red-brick",
+      "sandstone",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "slate",
+      "thatch",
+      "clay-tile",
+      "metal-sheet",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Victorian bay windows and balconies on promenade terraces, white-painted sash windows, Matcham theatre plasterwork, battlemented Gothic-revival country houses, Celtic crosses and the Three Legs of Man emblem, slate-hung gables, rubble stone field walls and thatch on a few fishermens cottages.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+        "what": "Loch Promenade 1870s boarding-house terrace, Castle Mona 1804, Georgian merchants houses (Isola on John Street), Gaiety Theatre 1900, Tower of Refuge 1832"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Government_House,_Isle_of_Man",
+        "what": "Regency farmhouse enlarged 1871, 1890 and 1903-06 into the Lieutenant Governors residence"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Milner%27s_Tower",
+        "what": "Bradda Head headland and key-shaped Milner Tower, 1871"
+      }
+    ]
+  },
+  "places": {
+    "douglas-airport-douglas-airport": {
+      "venueId": "douglas-airport-douglas-airport",
+      "city": "douglas",
+      "name": "Isle of Man Airport",
+      "archetype": "airport-terminal",
+      "subject": "Isle of Man Airport terminal seen from the forecourt: long low white terminal with the Three Legs of Man sculpture on the front and the control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e7e5df",
+          "#7d8c96",
+          "#c9ccd0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance canopy of the 2000 extension"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Three Legs of Man sculpture on the facade"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1950s core with 2000 extension",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q9001",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Isle_of_Man_Airport",
+          "what": "Ellis Brown Architects extension opened March 2000; Three Legs of Man sculpture on the facade; one terminal with five hardstand gates (no air bridges); control tower"
+        }
+      ],
+      "notes": "Recognisable by the large Three Legs of Man emblem on a low white terminal. Colours and exact massing are estimated from the type; sources give history, not a description of the facade. No jet bridges: aircraft are on hardstands."
+    },
+    "douglas-clinic": {
+      "venueId": "douglas-clinic",
+      "city": "douglas",
+      "name": "Noble's Hospital",
+      "archetype": "hospital",
+      "subject": "Nobles Hospital, the large modern hospital on its greenfield site at the edge of Douglas: several linked blocks of different heights",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d8d2c2",
+          "#a9533c",
+          "#8a9096"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/1483642",
+          "what": "OpenStreetMap object tags and measured footprint (233.6 x 218.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30293407",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Noble%27s_Hospital",
+          "what": "Hospital moved in 2003 into a new building on a greenfield site on the outskirts of Douglas"
+        }
+      ],
+      "notes": "Measured OSM footprint is an irregular 234 x 218 m multi-wing complex; scene is clamped to the main entrance blocks. Facade materials are a typed guess (pale render with brick), no description found."
+    },
+    "douglas-community-notices": {
+      "venueId": "douglas-community-notices",
+      "city": "douglas",
+      "name": "Government House",
+      "archetype": "manor",
+      "subject": "Government House, the Lieutenant Governors residence in Onchan: a Regency country house of two storeys with bay windows and a later (1903-06) enlarged entrance wing",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 47,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#ece6d6",
+          "#a8a496",
+          "#f4f1e8"
+        ],
+        "roofColour": "#4f565d",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bay-window",
+          "count": 2,
+          "note": "1890 reception and dining room bays"
+        },
+        {
+          "id": "chimney",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "c1825, extended 1871 and 1903-06",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/136360207",
+          "what": "OpenStreetMap object tags and measured footprint (47.2 x 44.7 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5588879",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Government_House,_Isle_of_Man",
+          "what": "Built c1820-30 as Bemahague Farm, rebuilt in Regency style; extended 1871, 1890 (bays, two-storey kitchen wing) and 1903-06 (new hall, porch, staircase)"
+        }
+      ],
+      "notes": "Footprint is the irregular OSM outline (L-ish with wings). Wall colour (pale painted render) is an informed guess; the Wikipedia article gives no colours."
+    },
+    "douglas-community-voting-game": {
+      "venueId": "douglas-community-voting-game",
+      "city": "douglas",
+      "name": "Douglas Town Hall",
+      "archetype": "civic-small",
+      "subject": "Douglas Town Hall, a two-storey stone Victorian-Edwardian civic building of about 1900",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "sandstone",
+        "colours": [
+          "#a49a86",
+          "#b5a58a",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "c1900",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/79143118",
+          "what": "OpenStreetMap object tags and measured footprint (39.8 x 29.6 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q118188669",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+          "what": "Victorian rebuilding of central Douglas, street schemes 1870s-1920s"
+        }
+      ],
+      "notes": "OSM tags: building:levels=2, building:material=stone, start_date ~1900, registered building. Colours are typical Manx stone, not measured from photographs."
+    },
+    "douglas-community-workshop": {
+      "venueId": "douglas-community-workshop",
+      "city": "douglas",
+      "name": "George Herdman Library",
+      "archetype": "campus-block",
+      "subject": "A long, low library building in Port Erin (the George Herdman Library) with a pitched slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#dcd6c4",
+          "#8d8a80",
+          "#f1eee6"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/60007309",
+          "what": "OpenStreetMap object tags and measured footprint (54.1 x 22.6 m bbox)"
+        }
+      ],
+      "notes": "The building at the coordinates is an unnamed OSM building 54 x 22 m; no description of the library was found. Typed from the Manx town style."
+    },
+    "douglas-market-game": {
+      "venueId": "douglas-market-game",
+      "city": "douglas",
+      "name": "The Market Hall",
+      "archetype": "market-hall",
+      "subject": "The Market Hall, Douglas: a small Victorian brick covered market of 1899 with a gabled slate and glass roof and arched openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a8553e",
+          "#c9b48a",
+          "#efe9da"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank fascia"
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1899",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/58706857",
+          "what": "OpenStreetMap object tags and measured footprint (26.7 x 18.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q118188655",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+          "what": "Victorian rebuilding of central Douglas; covered market on Market Street"
+        }
+      ],
+      "notes": "OSM: building=marketplace, 1 level, brick, start_date 1899, registered building. Roof form and brick colour are typical for the type."
+    },
+    "douglas-meal-stop": {
+      "venueId": "douglas-meal-stop",
+      "city": "douglas",
+      "name": "Isola",
+      "archetype": "restaurant",
+      "subject": "Isola restaurant on John Street, a mid-18th-century merchants house of three storeys with a pitched slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 9,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e6e0cf",
+          "#8d8a80",
+          "#2f3438"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "mid-18th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/79143392",
+          "what": "OpenStreetMap object tags and measured footprint (9.1 x 5.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q118188635",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+          "what": "Isola restaurant (John Street) is one of two mid-18th-century merchants houses in Douglas"
+        }
+      ],
+      "notes": "Georgian townhouse shape from the article; OSM footprint is only 9 x 5 m. Colours are a typed guess."
+    },
+    "douglas-osm-node-1697727831": {
+      "venueId": "douglas-osm-node-1697727831",
+      "city": "douglas",
+      "name": "Waterworks",
+      "archetype": "industrial",
+      "subject": "A small stone waterworks building (pump or treatment house) in the north-east Manx countryside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#c9c6bb"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+          "what": "Loch Promenade 1870s boarding-house terrace, Castle Mona 1804, Georgian merchants houses (Isola on John Street), Gaiety Theatre 1900, Tower of Refuge 1832"
+        }
+      ],
+      "notes": "No building or description found at this OSM node; typed from the Manx rural utility style."
+    },
+    "douglas-osm-node-283486904": {
+      "venueId": "douglas-osm-node-283486904",
+      "city": "douglas",
+      "name": "Dub Cottage",
+      "archetype": "manor",
+      "subject": "Dub Cottage, a small whitewashed Manx cottage with a slate roof beside the TT course road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#8d8a80",
+          "#2f3438"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rubble stone wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1168570385",
+          "what": "OpenStreetMap object tags and measured footprint (14.3 x 9 m bbox)"
+        }
+      ],
+      "notes": "Only the OSM footprint (14 x 9 m) is measured. The Wikidata link is a list of Mountain Course landmarks. Whitewash and slate are typical of Manx cottages, not verified for this house."
+    },
+    "douglas-osm-node-283492465": {
+      "venueId": "douglas-osm-node-283492465",
+      "city": "douglas",
+      "name": "Sulby Claddagh",
+      "archetype": "park-landscape",
+      "subject": "Sulby Claddagh, a flat riverside meadow campsite beside the Sulby river with scattered trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "camp-site"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6f4e",
+          "#c9b48a",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4a525a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stone field walls and hedges"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small site building"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/902050657",
+          "what": "OpenStreetMap object tags and measured footprint (378.5 x 159.7 m bbox)"
+        }
+      ],
+      "notes": "OSM: tourism=camp_site, 378 x 160 m. Model is open grass with a small shed; nothing else is documented."
+    },
+    "douglas-osm-node-283522771": {
+      "venueId": "douglas-osm-node-283522771",
+      "city": "douglas",
+      "name": "Niarbyl",
+      "archetype": "manor",
+      "subject": "The Niarbyl fishermens cottages: a thatched whitewashed cottage on the rocky shore beside the Niarbyl Cafe and Visitor Centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "thatched-cottage"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#8d8a80",
+          "#2f3438"
+        ],
+        "roofColour": "#a89870",
+        "roofMaterial": "thatch",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "cafe and visitor centre building nearby"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/62393619",
+          "what": "OpenStreetMap object tags and measured footprint (21.5 x 21.1 m bbox)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Niarbyl",
+          "what": "Rocky promontory on the south-west coast between Port Erin and Peel; fishermens cottage used as a filming location; Niarbyl Cafe & Visitor Centre"
+        }
+      ],
+      "notes": "Recognisable by the thatched cottage against rocks and the sea. Thatch and whitewash come from general knowledge of the cottage; the article does not describe it. OSM building at the node is the 21 x 21 m cafe."
+    },
+    "douglas-osm-node-300040027": {
+      "venueId": "douglas-osm-node-300040027",
+      "city": "douglas",
+      "name": "Bradda Hill",
+      "archetype": "monument",
+      "subject": "Milner Tower on Bradda Head above Port Erin: a stone tower of 1871 on a rugged grassy headland (built as a key-and-lock plan)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "headland-tower"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "victorian",
+      "era": "1871",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Milner%27s_Tower",
+          "what": "Bradda Head rises 116 m; Milners Tower built 1871 in memory of William Milner; key-and-lock shape in plan"
+        }
+      ],
+      "notes": "The coordinates are on Bradda Hill just north of the tower. The tower height, crenellation and stone colour are estimated (the article gives only the date and key-shaped plan); keep it a squat grey stone tower on a bare headland."
+    },
+    "douglas-osm-node-458533125": {
+      "venueId": "douglas-osm-node-458533125",
+      "city": "douglas",
+      "name": "Greeba Bridge",
+      "archetype": "monument",
+      "subject": "Greeba Bridge, a single-arch grey stone road bridge over the Greeba river on the TT course",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "bridge"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "parapet walls"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1313944052",
+          "what": "OpenStreetMap object tags and measured footprint (24.8 x 13.9 m bbox)"
+        }
+      ],
+      "notes": "Only an OSM footprint (25 x 14 m) and a Wikidata historic-site entry exist. Span, arch count and age are not verified."
+    },
+    "douglas-osm-node-5063392621": {
+      "venueId": "douglas-osm-node-5063392621",
+      "city": "douglas",
+      "name": "Kerroobeg",
+      "archetype": "manor",
+      "subject": "Kerroobeg Cottage, a small guest-house cottage in the Manx hills",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f2efe6",
+          "#8d8a80",
+          "#2f3438"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/59582056",
+          "what": "OpenStreetMap object tags and measured footprint (13.8 x 5.8 m bbox)"
+        }
+      ],
+      "notes": "OSM: tourism=guest_house, 14 x 6 m. Form typed from Manx cottage style."
+    },
+    "douglas-osm-way-1017175209": {
+      "venueId": "douglas-osm-way-1017175209",
+      "city": "douglas",
+      "name": "Dwight's Park",
+      "archetype": "park-landscape",
+      "subject": "Dwight's Park, a small grassed public park with a few trees and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 55,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1017175209",
+          "what": "OpenStreetMap object tags and measured footprint (61.8 x 56.7 m bbox)"
+        }
+      ],
+      "notes": "OSM leisure=park, 62 x 57 m; nothing else documented."
+    },
+    "douglas-osm-way-160506184": {
+      "venueId": "douglas-osm-way-160506184",
+      "city": "douglas",
+      "name": "Saint Adamnan's Church",
+      "archetype": "shrine-small",
+      "subject": "Saint Adamnans Church, Lonan: a very small stone parish church with a slate gable roof and bellcote",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#a39f93",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bellcote on the west gable"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "churchyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/160506184",
+          "what": "OpenStreetMap object tags and measured footprint (8.9 x 6.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7586691",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=church, 8.9 x 6.3 m, Anglican; no description found. Bellcote and stone colour are typical Manx assumptions."
+    },
+    "douglas-osm-way-217382559": {
+      "venueId": "douglas-osm-way-217382559",
+      "city": "douglas",
+      "name": "Old St Runius",
+      "archetype": "shrine-small",
+      "subject": "Old St Runius, the old church of Marown: a small stone church with a gabled slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a968a",
+          "#a39f93",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bellcote"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "graveyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval origin, later rebuilt",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/217382559",
+          "what": "OpenStreetMap object tags and measured footprint (11.1 x 7.8 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30693226",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM tags give roof:shape=gabled, roof:material=slate, building:material=stone, 11.1 x 7.8 m. Bellcote is an assumption; the church sits in an old graveyard."
+    },
+    "douglas-osm-way-414637480": {
+      "venueId": "douglas-osm-way-414637480",
+      "city": "douglas",
+      "name": "Costa",
+      "archetype": "restaurant",
+      "subject": "A Costa cafe in an old house in the centre of Castletown",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6e0cf",
+          "#8d8a80",
+          "#2f3438"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "18th-19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/414637480",
+          "what": "OpenStreetMap object tags and measured footprint (12.2 x 10.6 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q118188578",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM: building=house, registered building, 12 x 10.6 m. Appearance typed from the Castletown townhouse style; no brand marks."
+    },
+    "douglas-osm-way-59384695": {
+      "venueId": "douglas-osm-way-59384695",
+      "city": "douglas",
+      "name": "The Nunnery",
+      "archetype": "manor",
+      "subject": "The Nunnery, a battlemented Gothic-revival grey stone mansion in Douglas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 61,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#9a968a",
+          "#b8b4a6",
+          "#e8e3d3"
+        ],
+        "roofColour": "#6b6f72",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "castellated parapets"
+        },
+        {
+          "id": "bay-window",
+          "count": 2
+        },
+        {
+          "id": "chimney",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "early 19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/59384695",
+          "what": "OpenStreetMap object tags and measured footprint (60.7 x 20.7 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7754504",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM footprint 61 x 21 m (building tagged university in Wikidata as it is used by a college). Crenellated Gothic look is from general knowledge of The Nunnery; not verified in a fetched source."
+    },
+    "douglas-osm-way-71521258": {
+      "venueId": "douglas-osm-way-71521258",
+      "city": "douglas",
+      "name": "Laxey Woollen Mills",
+      "archetype": "industrial",
+      "subject": "Laxey Woollen Mills in the Laxey glen: a long stone mill block with a slate roof beside the stream",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#a39f93",
+          "#e8e3d3"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/71521258",
+          "what": "OpenStreetMap object tags and measured footprint (38.5 x 10.2 m bbox)"
+        }
+      ],
+      "notes": "OSM building=industrial, 38.5 x 10.2 m. Storeys and stone finish typed from the typical valley woollen mill type; no description found."
+    },
+    "douglas-osm-way-77964053": {
+      "venueId": "douglas-osm-way-77964053",
+      "city": "douglas",
+      "name": "University College Isle of Man",
+      "archetype": "campus-block",
+      "subject": "University College Isle of Man, a modern multi-wing college campus in Douglas",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ddd8c9",
+          "#6d7f8c",
+          "#b0b4b6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/77964054",
+          "what": "OpenStreetMap object tags and measured footprint (143 x 101 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3445987",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=university 143 x 101 m (several blocks). No appearance description found; typed as a modern college campus. Scene clamped to the main block."
+    },
+    "douglas-osm-way-79396808": {
+      "venueId": "douglas-osm-way-79396808",
+      "city": "douglas",
+      "name": "Cosy Nook Cafe",
+      "archetype": "restaurant",
+      "subject": "Cosy Nook Cafe, a tiny single-storey cafe by the Port Erin shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2efe6",
+          "#6f7a7e",
+          "#2f3438"
+        ],
+        "roofColour": "#4a525a",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/79396808",
+          "what": "OpenStreetMap object tags and measured footprint (14.3 x 6.3 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q118188700",
+          "what": "Wikidata identity of the place"
+        }
+      ],
+      "notes": "OSM building=commercial 14.3 x 6.3 m, registered building. Colours typed; no description found."
+    },
+    "douglas-quiet-reflection": {
+      "venueId": "douglas-quiet-reflection",
+      "city": "douglas",
+      "name": "Saint German's Cathedral",
+      "archetype": "church-gothic",
+      "subject": "St Germans Cathedral, Peel: a cruciform Gothic-revival church of red sandstone with green slate roofs and a square tower, built 1879-84",
+      "form": {
+        "footprint": "cross",
+        "width_m": 46,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "stone",
+        "colours": [
+          "#a65a46",
+          "#8d8a80",
+          "#e8e3d3"
+        ],
+        "roofColour": "#5e6b66",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square tower at the crossing or west end"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1879-84",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/147183435",
+          "what": "OpenStreetMap object tags and measured footprint (46 x 28.4 m bbox)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3445970",
+          "what": "Wikidata identity of the place"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/St_German%27s_Cathedral,_Peel",
+          "what": "Built 1879-84 as a Gothic Revival church replacing St Peters; Betjeman: green slate and red sandstone; Brindley & Foster organ"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+          "what": "Island Victorian context"
+        }
+      ],
+      "notes": "Red sandstone walls and green slate roofs are documented (Betjeman quote). Tower position and cruciform plan are assumptions from the 46 x 28 m OSM outline."
+    },
+    "douglas-recreation": {
+      "venueId": "douglas-recreation",
+      "city": "douglas",
+      "name": "Poulsom Park",
+      "archetype": "park-landscape",
+      "subject": "Poulsom Park, Castletown: a grassed public park with a bandstand-style pavilion and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8d8a80",
+          "#7a7870",
+          "#b3afa2"
+        ],
+        "roofColour": "#8d8a80",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/28714989",
+          "what": "OpenStreetMap object tags and measured footprint (333.9 x 106 m bbox)"
+        }
+      ],
+      "notes": "OSM leisure=park 334 x 106 m; contents are typed, not documented."
+    },
+    "douglas-transit": {
+      "venueId": "douglas-transit",
+      "city": "douglas",
+      "name": "Snaefell Summit",
+      "archetype": "transport-station",
+      "subject": "Snaefell Summit: the Snaefell Mountain Railway terminus and summit cafe building, a single-storey plastered building on bare moorland with radio masts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#dcd8cc",
+          "#8d8a80",
+          "#4a525a"
+        ],
+        "roofColour": "#6b6f72",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "electric mountain tramway ending at the summit"
+        },
+        {
+          "id": "mast",
+          "count": 3,
+          "note": "radio masts"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/136226759",
+          "what": "OpenStreetMap object tags and measured footprint (30.5 x 16.5 m bbox)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Snaefell_Mountain_Railway",
+          "what": "Summit station is the upper terminus at 621 m with no road access; summit masts; overhead wire removed in winter"
+        }
+      ],
+      "notes": "OSM: building:levels=1, building:material=plaster, 30.5 x 16.5 m, amenity=cafe. Colour of plaster is an estimate. Treeless windswept summit."
+    }
+  }
+}

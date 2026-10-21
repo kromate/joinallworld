@@ -1,0 +1,473 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "bodija-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bodija_market,_Ibadan.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Afolly",
+   "view": "street",
+   "file": "/tmp/places-evidence/ibadan/bodija-market-0.jpg",
+   "used": "crowded open ground under big yellow/red umbrellas, timber-framed gable hall with brown corrugated roof at left, elevated water tank and low lock-ups at the back, hazy light"
+  },
+  {
+   "kind": "text",
+   "used": "wholesaler concrete stalls and retailer open kiosks (brief: Wikipedia, BusinessDay)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 2,
+  "fovDeg": 48,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#5a4030",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#4a3226",
+    "material": "corrugated",
+    "pitch": 34,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    22,
+    0
+   ],
+   "params": {
+    "length": 26,
+    "depth": 7,
+    "height": 3.2,
+    "roof": "gable",
+    "roof_colour": "#4a3a30"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spread": 5.5,
+    "radius": 3.5,
+    "height": 3.2,
+    "colours": [
+     "#e8c84a",
+     "#d8453a",
+     "#e7d8b0",
+     "#3a7a4a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    1,
+    -12,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spread": 5.5,
+    "radius": 3.5,
+    "height": 3.2,
+    "colours": [
+     "#d8453a",
+     "#e8c84a",
+     "#e9a15a",
+     "#3a7a4a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spread": 5.5,
+    "radius": 3.5,
+    "height": 3.2,
+    "colours": [
+     "#e7d8b0",
+     "#d8453a",
+     "#e8c84a",
+     "#3a7a4a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spread": 5.5,
+    "radius": 3.5,
+    "height": 3.2,
+    "colours": [
+     "#e8c84a",
+     "#d8453a",
+     "#e7d8b0",
+     "#3a7a4a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "spread": 5.5,
+    "radius": 3.5,
+    "height": 3.2,
+    "colours": [
+     "#d8453a",
+     "#e8c84a",
+     "#e9a15a",
+     "#3a7a4a"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 3,
+    "dx": 4,
+    "dy": 4.5,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       1.0
+      ],
+      "height": 0.55,
+      "colour": "#d8453a"
+     }
+    },
+    "vary": {}
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 7,
+    "rows": 2,
+    "dx": 4.4,
+    "dy": 5,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.2,
+       0.9
+      ],
+      "height": 0.5,
+      "colour": "#3a7a4a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 6,
+    "rows": 2,
+    "dx": 5,
+    "dy": 5,
+    "centred": true,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.4,
+       1.0
+      ],
+      "height": 0.45,
+      "colour": "#e9a15a"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -4,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 0.12,
+    "colour": "#2f8a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.4
+    ],
+    "height": 0.6,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -3,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 0.12,
+    "colour": "#3a7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    20,
+    -3,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.4
+    ],
+    "height": 0.6,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -14,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 0.12,
+    "colour": "#2f8a7a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    26,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.4
+    ],
+    "height": 0.6,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -16,
+    2.2
+   ],
+   "params": {
+    "rect": [
+     4,
+     3
+    ],
+    "height": 0.12,
+    "colour": "#3a7a4a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -26,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     2.4
+    ],
+    "height": 0.6,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 1.3,
+    "tankHeight": 2,
+    "legHeight": 7,
+    "colour": "#3a3d40"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -8,
+    -2,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 5,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6b8aa0"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    8,
+    -9,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#a77b5a"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 3,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "umbrella cluster, hall and tank are closer to the photo but the dense crowd, goods and clutter are only a few low tables; laterite ground renders salmon (no darker ground option); no wires or poles detail"
+ }
+}

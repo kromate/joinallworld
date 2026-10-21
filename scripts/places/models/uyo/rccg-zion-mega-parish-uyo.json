@@ -1,0 +1,19 @@
+{
+ "schema":"allworld-place-model","version":2,"city":"uyo","venueId":"rccg-zion-mega-parish-uyo","verified":"text",
+ "evidence":[{"kind":"text","url":"https://kupi.com/en/explore/nigeria/uyo/history","used":"Uyo city context only; no photo or description of this parish was found, so a fan-shaped mega auditorium with a glass entrance atrium and forecourt is composed from the brief (about 70 x 55 m, 16 m high)"}],
+ "camera":{"yawDeg":15,"pitchDeg":10,"fovDeg":50},
+ "parts":[
+  {"type":"prism","at":[0,2,0],"params":{"points":[[-20,-14],[20,-14],[34,8],[28,24],[0,28],[-28,24],[-34,8]],"height":14,"colour":"#f4f1e6","windows":"none","trimColour":"#2f5d9e","plinth":0.4}},
+  {"type":"prism","at":[0,2,14],"params":{"points":[[-21,-15],[21,-15],[35,8],[29,25],[0,29],[-29,25],[-35,8]],"height":0.6,"colour":"#2f5d9e"}},
+  {"type":"surface","at":[0,2,14.6],"params":{"kind":"folded","width":64,"depth":40,"rise":2.5,"colour":"#8c9096"}},
+  {"type":"mass","id":"atrium","footprint":{"rect":[22,8]},"at":[0,-18],"height":16,"storeys":3,"wall":{"material":"glass-curtain","colour":"#9db7cc","windows":"curtain","windowRatio":0.85,"faces":{"left":"none","right":"none","back":"none"},"bands":"#f4f1e6"},"roof":{"form":"flat","colour":"#2f5d9e","overhang":1.0,"parapet":0.5}},
+  {"type":"mass","id":"canopy-block","footprint":{"rect":[34,6]},"at":[0,-26],"height":4.5,"storeys":1,"wall":{"material":"painted-render","colour":"#f4f1e6","windows":"none","faces":{"front":"none","left":"none","right":"none","back":"none"}},"roof":{"form":"flat","colour":"#2f5d9e","overhang":0.8}},
+  {"type":"array","at":[0,-28.5,0],"params":{"mode":"line","start":[-15,0,0],"end":[15,0,0],"count":7,"of":[{"type":"prism","at":[0,0,0],"params":{"radius":0.45,"n":8,"height":4.5,"colour":"#ffffff"}}]}},
+  {"type":"core/sign-board","at":[24,-34,0],"params":{"width":5,"height":2.2,"bottom":2.4,"colour":"#2f5d9e","frameColour":"#ffffff"}},
+  {"type":"flag","at":[-26,-32,0],"params":{"height":10,"count":2,"spacing":4}},
+  {"type":"lamp","at":[-30,-38,0],"params":{"height":8,"count":5,"spacing":15}},
+  {"type":"core/tree","at":[-40,-30,0],"params":{"kind":"palm","height":9,"count":3,"spread":4}}
+ ],
+ "review":{"rounds":0,"match":"rough","gaps":"No photo exists; modelled from the brief only. Real roof profile, glazing layout and colours unknown."},
+ "site":{"ground":"asphalt","forecourt":"parking","extent":[120,100]}
+}

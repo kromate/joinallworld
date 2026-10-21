@@ -1,0 +1,183 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mbabane",
+ "venueId": "mbabane-quiet-reflection",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/425010324",
+   "used": "real cruciform outline: E-W nave with two round apses/lobes N and S (about 19 x 18 m); Armenian Apostolic, built 1985-89 (OSM start_date 1989, Wikidata Q27686614)"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/mbabane.json#mbabane-quiet-reflection",
+   "used": "white render, green roof; Armenian church conical dome on drum at the crossing is typical for the denomination but not photo-confirmed"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "church",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede3",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4f6a5a",
+    "material": "metal-sheet",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0.7,
+    0.2,
+    5.4
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#f1ede3",
+    "profile": [
+     [
+      3.0,
+      0
+     ],
+     [
+      3.0,
+      2.6
+     ],
+     [
+      3.4,
+      2.8,
+      "#4f6a5a"
+     ],
+     [
+      2.8,
+      3.1
+     ],
+     [
+      1.0,
+      6.0
+     ],
+     [
+      0.15,
+      6.8
+     ],
+     [
+      0.15,
+      7.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -9.6,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     3.0
+    ],
+    "height": 3.2,
+    "colour": "#a8603f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.4,
+    "colour": "#e5dfd0",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.4,
+    "colour": "#e5dfd0",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -10
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    12
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    13,
+    -12
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of this church exists in sources; cruciform outline real, dome/roof inferred from Armenian type, doorway and windows generic"
+ }
+}

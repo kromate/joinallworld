@@ -1,0 +1,945 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Notre_Dame_d%27Afrique_2010.jpg",
+   "licence": "CC BY 2.0",
+   "author": "Magharebia",
+   "view": "front",
+   "file": "/tmp/places-evidence/algiers/notre-dame-d-afrique-0.jpg",
+   "used": "pale ochre limestone, entrance porch with three arches and wide steps, two round turrets with domed lantern caps and blue tile bands, big drum and dome with arcaded windows, rounded apse with semi-dome, cross finials"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/26614341",
+   "used": "overall size (about 54 x 33 m cross plan, cliff site)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 38,
+  "pitchDeg": 2,
+  "fovDeg": 42,
+  "aspect": 1.5,
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     22,
+     36
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#e0c48e",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.12,
+    "bay": 5,
+    "plinth": 1.2,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "arched",
+     "right": "arched"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#4d6aa6"
+      ],
+      "height": 2.4,
+      "at": 0.84,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbf9f",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept-w",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    -15,
+    4
+   ],
+   "height": 11,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d2b47c",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#4d6aa6"
+      ],
+      "height": 2.0,
+      "at": 0.8,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbf9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept-e",
+   "footprint": {
+    "rect": [
+     10,
+     16
+    ]
+   },
+   "at": [
+    15,
+    4
+   ],
+   "height": 11,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#d2b47c",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#4d6aa6"
+      ],
+      "height": 2.0,
+      "at": 0.8,
+      "proud": 0.12,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbf9f",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     26,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -21.5
+   ],
+   "height": 9.5,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#e0c48e",
+    "windows": "none",
+    "plinth": 1.0,
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 8.2,
+      "opening": 0.7,
+      "height": 0.82,
+      "depth": 1.8,
+      "pierColour": "#e0c48e",
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cbbf9f",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    8,
+    -28.5
+   ],
+   "height": 3.4,
+   "wall": {
+    "material": "sandstone",
+    "colour": "#dccda8",
+    "windows": "none",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dccda8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      9,
+      0,
+      "#b9a57d"
+     ],
+     [
+      9,
+      1.4
+     ],
+     [
+      9.3,
+      1.5,
+      "#e0c48e"
+     ],
+     [
+      9.3,
+      11
+     ],
+     [
+      9.6,
+      11.1,
+      "#c9a975"
+     ],
+     [
+      9.6,
+      12
+     ],
+     [
+      9,
+      12.1,
+      "#e0c48e"
+     ],
+     [
+      8,
+      12.6
+     ],
+     [
+      5.5,
+      14.6
+     ],
+     [
+      3,
+      16
+     ],
+     [
+      0.4,
+      16.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      9.3,
+      0
+     ],
+     [
+      9.3,
+      12
+     ],
+     [
+      0.3,
+      16.7
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    2,
+    33
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 3.4,
+    "colour": "#2d2a26"
+   }
+  },
+  {
+   "type": "prism",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    2,
+    34.8
+   ],
+   "params": {
+    "rect": [
+     2,
+     0.5
+    ],
+    "height": 0.5,
+    "colour": "#2d2a26"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -15,
+    4,
+    11
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      5.2,
+      0,
+      "#c9a975"
+     ],
+     [
+      5.2,
+      1.0,
+      "#e0c48e"
+     ],
+     [
+      4.6,
+      2.6
+     ],
+     [
+      3,
+      4.4
+     ],
+     [
+      0.3,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    15,
+    4,
+    11
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      5.2,
+      0,
+      "#c9a975"
+     ],
+     [
+      5.2,
+      1.0,
+      "#e0c48e"
+     ],
+     [
+      4.6,
+      2.6
+     ],
+     [
+      3,
+      4.4
+     ],
+     [
+      0.3,
+      5.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -33.5,
+    0
+   ],
+   "params": {
+    "width": 32,
+    "rise": 0.5,
+    "run": 1.1,
+    "count": 6,
+    "colour": "#dcc99a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -24.5,
+    9.5
+   ],
+   "params": {
+    "rect": [
+     26,
+     0.5
+    ],
+    "height": 1.1,
+    "colour": "#e6d3a2"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    2,
+    15
+   ],
+   "params": {
+    "segments": 32,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      12,
+      0,
+      "#c9a975"
+     ],
+     [
+      12,
+      8.6,
+      "#e0c48e"
+     ],
+     [
+      12.6,
+      8.7,
+      "#c9a975"
+     ],
+     [
+      12.6,
+      9.7
+     ],
+     [
+      11.4,
+      9.8,
+      "#e0c48e"
+     ],
+     [
+      10,
+      12
+     ],
+     [
+      7,
+      14.6
+     ],
+     [
+      3.5,
+      16.2
+     ],
+     [
+      0.5,
+      17
+     ]
+    ],
+    "arcade": {
+     "from": 3.2,
+     "to": 7.6,
+     "count": 16,
+     "width": 1.0,
+     "height": 3.4,
+     "sill": 1.0,
+     "shape": "arch",
+     "depth": 0.4,
+     "innerColour": "#4a3a2e"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    2,
+    15
+   ],
+   "params": {
+    "segments": 10,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      12,
+      0
+     ],
+     [
+      12,
+      9.7
+     ],
+     [
+      0.4,
+      17
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9.5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      2.4,
+      0,
+      "#c9a975"
+     ],
+     [
+      2.4,
+      23.5
+     ],
+     [
+      2.9,
+      23.7,
+      "#c9a975"
+     ],
+     [
+      2.9,
+      24.7
+     ],
+     [
+      2.5,
+      24.8,
+      "#4d6aa6"
+     ],
+     [
+      2.5,
+      26.5,
+      "#4d6aa6"
+     ],
+     [
+      2.9,
+      26.6,
+      "#c9a975"
+     ],
+     [
+      2.9,
+      27.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    -9.5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      2.4,
+      27.1
+     ],
+     [
+      0.3,
+      32.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -9.5,
+    -18.5,
+    27.1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      2.2,
+      3.0
+     ],
+     [
+      2.6,
+      3.1,
+      "#c9a975"
+     ],
+     [
+      2.2,
+      3.4
+     ],
+     [
+      2.6,
+      4.6,
+      "#d9c08a"
+     ],
+     [
+      1.4,
+      6.0,
+      "#d9c08a"
+     ],
+     [
+      0.3,
+      7.2
+     ],
+     [
+      0.3,
+      8.0
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 2.9,
+     "count": 6,
+     "width": 0.7,
+     "height": 2.4,
+     "sill": 0.2,
+     "shape": "arch",
+     "depth": 0.35,
+     "innerColour": "#4a3a2e"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9.5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      2.4,
+      0,
+      "#c9a975"
+     ],
+     [
+      2.4,
+      25.5
+     ],
+     [
+      2.9,
+      25.7,
+      "#c9a975"
+     ],
+     [
+      2.9,
+      26.7
+     ],
+     [
+      2.5,
+      26.8,
+      "#4d6aa6"
+     ],
+     [
+      2.5,
+      28.5,
+      "#4d6aa6"
+     ],
+     [
+      2.9,
+      28.6,
+      "#c9a975"
+     ],
+     [
+      2.9,
+      29.1
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    9.5,
+    -18.5,
+    0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      2.4,
+      0
+     ],
+     [
+      2.4,
+      29.1
+     ],
+     [
+      0.3,
+      34.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    9.5,
+    -18.5,
+    29.1
+   ],
+   "params": {
+    "segments": 14,
+    "colour": "#e0c48e",
+    "profile": [
+     [
+      2.2,
+      0
+     ],
+     [
+      2.2,
+      3.0
+     ],
+     [
+      2.6,
+      3.1,
+      "#c9a975"
+     ],
+     [
+      2.2,
+      3.4
+     ],
+     [
+      2.6,
+      4.6,
+      "#d9c08a"
+     ],
+     [
+      1.4,
+      6.0,
+      "#d9c08a"
+     ],
+     [
+      0.3,
+      7.2
+     ],
+     [
+      0.3,
+      8.0
+     ]
+    ],
+    "arcade": {
+     "from": 0.2,
+     "to": 2.9,
+     "count": 6,
+     "width": 0.7,
+     "height": 2.4,
+     "sill": 0.2,
+     "shape": "arch",
+     "depth": 0.35,
+     "innerColour": "#4a3a2e"
+    }
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0
+   ],
+   "at": [
+    9.5,
+    -18.5,
+    37.0
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#2d2a26",
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.25,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    0,
+    -24.5,
+    10.6
+   ],
+   "params": {
+    "segments": 6,
+    "colour": "#2d2a26",
+    "profile": [
+     [
+      0.25,
+      0
+     ],
+     [
+      0.25,
+      2.6
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -32,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -20
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ornamental blue tile frieze is plain bands; no statue or buttress pilasters; apse drum hidden from this view; camera sits higher than the photo."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "algiers",
+ "venueId": "algiers-notre-dame-d-afrique"
+}

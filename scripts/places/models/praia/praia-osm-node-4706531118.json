@@ -1,0 +1,176 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1019991209",
+   "used": "footprint (containing match, 40x32 m)"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/praia.json",
+   "used": "two levels, white and orange render, glass entrance, rooftop car park; no photo found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 15,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#f4f1ea",
+    "windows": "curtain",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "bands": "#d97a2b",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "membrane",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "atrium",
+   "at": [
+    0,
+    -14
+   ],
+   "rotDeg": 9,
+   "params": {
+    "rect": [
+     12,
+     5
+    ],
+    "height": 12.5,
+    "colour": "#7a8791",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "glassColour": "#9fb4bf",
+    "trimColour": "#d97a2b"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "rotDeg": 9,
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 4,
+    "height": 4,
+    "colour": "#d97a2b",
+    "edgeColour": "#f4f1ea",
+    "columns": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -17,
+    8
+   ],
+   "params": {
+    "width": 8,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#d97a2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    32,
+    0
+   ],
+   "params": {
+    "width": 36,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "line": 10
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -26,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-osm-node-4706531118",
+ "review": {
+  "rounds": 1,
+  "match": "fair",
+  "gaps": "no photo: real 40x32 m outline used but the brief's 90x45 m size ignored, glazing share and orange accents typed"
+ }
+}

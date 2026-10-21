@@ -1,0 +1,307 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "nairobi",
+ "venueId": "nairobi-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Carnivore_restaurant.jpg",
+   "licence": "CC BY 2.0",
+   "author": "shankar s.",
+   "view": "interior",
+   "file": "/tmp/places-evidence/nairobi/carn1.jpg",
+   "used": "interior only: dark timber posts and wall, glazed timber-framed windows, timber/thatch ceiling; used for colours and the low timber-and-thatch character"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:The_Carnivore_Restaurant_03.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Ferfive",
+   "view": "interior",
+   "file": "/tmp/places-evidence/nairobi/carn2.jpg",
+   "used": "charcoal pit ringed by tall skewer stands under a central roof: placed as a round thatched pit hall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/369118068",
+   "used": "real irregular outline of the restaurant (4,825 m2, name match), fitted to 96 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "restaurant",
+   "footprint": {
+    "osm": true,
+    "fit": 96,
+    "simplify": 7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a2f",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "material": "thatch",
+    "colour": "#a3844e",
+    "overhang": 1.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-w",
+   "footprint": {
+    "rect": [
+     24,
+     18
+    ]
+   },
+   "at": [
+    -26,
+    10
+   ],
+   "rotDeg": -35,
+   "z0": 3.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 36,
+    "material": "thatch",
+    "colour": "#a3844e",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-e",
+   "footprint": {
+    "rect": [
+     26,
+     16
+    ]
+   },
+   "at": [
+    22,
+    -18
+   ],
+   "rotDeg": -35,
+   "z0": 3.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 34,
+    "material": "thatch",
+    "colour": "#a8894f",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall-n",
+   "footprint": {
+    "rect": [
+     20,
+     16
+    ]
+   },
+   "at": [
+    -4,
+    34
+   ],
+   "rotDeg": -35,
+   "z0": 3.6,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#6b4a2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 36,
+    "material": "thatch",
+    "colour": "#9e7f4a",
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "revolve",
+   "id": "pit-hall",
+   "at": [
+    8,
+    -4,
+    0
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#a3844e",
+    "material": "thatch",
+    "profile": [
+     [
+      11,
+      0,
+      "#6b4a2f"
+     ],
+     [
+      11,
+      3.4
+     ],
+     [
+      11.8,
+      3.5,
+      "#a3844e"
+     ],
+     [
+      6,
+      9.5
+     ],
+     [
+      1.2,
+      12.5
+     ],
+     [
+      0,
+      13.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -18,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "ground",
+    "radius": 1.6,
+    "tankHeight": 2,
+    "colour": "#8b8b7a"
+   }
+  },
+  {
+   "type": "banded-stack",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "radius": 0.9,
+    "bands": false,
+    "colour": "#8b8b7a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -54,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 2.6,
+    "bottom": 1.4,
+    "colour": "#6b4a2f",
+    "frameColour": "#c6a679"
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    -30,
+    -66,
+    0
+   ],
+   "params": {
+    "width": 56,
+    "depth": 16,
+    "density": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -34,
+     0
+    ],
+    "end": [
+     -2,
+     -50,
+     0
+    ],
+    "count": 5,
+    "of": {
+     "type": "core/tree",
+     "params": {
+      "kind": "acacia",
+      "height": 8
+     }
+    }
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 4,
+    "spread": 16
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   140,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo, so roof forms over the real outline and the pit hall position are plausible, not compared; thatch pitch and eaves heights are estimates"
+ }
+}

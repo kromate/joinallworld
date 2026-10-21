@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-kigali-heights",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/472371264",
+   "used": "real footprint (about 92 m by 155 m, 5 levels) for the podium; stepped upper floors, cinema canopy and brise-soleil follow the brief. No photo of this building was found (the geo-tagged photos show other buildings)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#d3dce2",
+    "windows": "ribbon",
+    "bay": 12,
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "glassColour": "#6f7f89",
+    "bands": "#efe9dc",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9399",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "osm": true,
+    "scale": 0.7
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 9,
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#efe9dc",
+    "windows": "none",
+    "glassColour": "#6f7f89",
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#efe9dc"
+      ],
+      "height": 0.5
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9399",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "cinema-canopy",
+   "id": "cinema-front",
+   "at": [
+    -10,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 18,
+    "depth": 3,
+    "height": 4,
+    "finHeight": 12,
+    "colour": "#6f7f89",
+    "finColour": "#efe9dc",
+    "neon": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   120,
+   160
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -30
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; upper-floor stepping and facade are typed, only the podium outline is real"
+ }
+}

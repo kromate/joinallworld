@@ -1,0 +1,1585 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "new-york",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "new-york",
+    "climate": "temperate",
+    "vernacular": "Dense brick and stone city: brownstone and brick rowhouses with stoops and cornices, five-to-seven-storey brick tenements and prewar apartment blocks with iron fire escapes and rooftop wooden water tanks, limestone and terracotta Beaux-Arts civic buildings, setback Art Deco and glass-and-steel towers in Manhattan; outer boroughs and Staten Island/New Jersey with detached clapboard and brick houses in Victorian, Tudor and Colonial Revival styles, strip malls and large flat-roofed malls, and plane trees along streets.",
+    "wallColours": [
+      "#9b4a35",
+      "#7a4e3c",
+      "#b89a74",
+      "#d3c9b3",
+      "#8a8a86",
+      "#5f7480",
+      "#e5dcc6"
+    ],
+    "roofColours": [
+      "#4a4a4a",
+      "#6b6460",
+      "#8a8f94",
+      "#7a4e3c"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "brick",
+      "stone",
+      "limestone",
+      "concrete",
+      "glass-curtain",
+      "painted-render",
+      "terracotta",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "membrane",
+      "slate",
+      "concrete",
+      "metal-sheet",
+      "copper"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "stoops with iron railings, bracketed cornices, iron fire escapes, wooden rooftop water towers, arched limestone entrances and keystones, copper mansards, Art Deco crowns and setbacks, shop awnings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_New_York_City",
+        "what": "brownstone rowhouses, tenements, brick/stone materials, rooftop wooden water towers, setback skyscrapers, large Tudor Revival/Victorian houses in the outer boroughs"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Staten_Island_Borough_Hall",
+        "what": "brick and limestone Beaux-Arts civic building"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Coney_Island_Hospital",
+        "what": "white brick towers and yellow brick pavilion in hospital architecture"
+      }
+    ]
+  },
+  "places": {
+    "new-york-airport-new-york-airport": {
+      "venueId": "new-york-airport-new-york-airport",
+      "city": "new-york",
+      "name": "John F. Kennedy International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 4 seen from the forecourt: a very wide glass-fronted headhouse with the control tower behind and long gate concourses; the winged TWA Flight Center sits as a separate landmark",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d5dadd",
+          "#4a5d6b",
+          "#eef0f0"
+        ],
+        "roofColour": "#a9aeb2",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_F._Kennedy_International_Airport",
+          "what": "T4 by SOM opened 2001 (1.5M sq ft, 48 gates, A380 capable); T1 1998; T5 Gensler wraps Saarinen's 1962 TWA Flight Center; terminals arranged in a U around a central area"
+        }
+      ],
+      "notes": "Chose T4 as the representative terminal; sizes typed from its 1.5M sq ft area. No building polygon in OSM. The TWA Flight Center (winged concrete shell, 1962, Saarinen) is the other recognisable shape."
+    },
+    "new-york-clinic": {
+      "venueId": "new-york-clinic",
+      "city": "new-york",
+      "name": "NYC Health + Hospitals: South Brooklyn Health",
+      "archetype": "hospital",
+      "subject": "the Coney Island Hospital campus: a new eleven-storey tower beside two older white brick towers",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 235,
+        "depth_m": 225,
+        "storeys": 11,
+        "height_m": 48,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e6dc",
+          "#c9b45a",
+          "#9aa2a6"
+        ],
+        "roofColour": "#8e9195",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Coney_Island_Hospital",
+          "what": "two white brick towers opened 1954; Hammett Pavilion in yellow; eleven-storey Ruth Bader Ginsburg Hospital building opened May 2023; 2601 Ocean Parkway"
+        }
+      ],
+      "notes": "OSM polygon 234 x 225 m (campus). Colours for the new tower are typed; white brick towers and yellow pavilion are sourced."
+    },
+    "new-york-community-notices": {
+      "venueId": "new-york-community-notices",
+      "city": "new-york",
+      "name": "Brooklyn Community Board 9",
+      "archetype": "civic-small",
+      "subject": "a two-storey brick storefront office on a Crown Heights avenue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 6,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9b4a35",
+          "#d3c9b3",
+          "#4a4a4a"
+        ],
+        "roofColour": "#4a4a4a",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "cornice"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM building 25.7 x 6.3 m, height 10.7 m; Wikidata: community board. No detailed source; typed from prewar Brooklyn commercial rows."
+    },
+    "new-york-community-voting-game": {
+      "venueId": "new-york-community-voting-game",
+      "city": "new-york",
+      "name": "Staten Island Borough Hall",
+      "archetype": "civic-palace",
+      "subject": "the 1906 French Renaissance borough hall on its hilltop: a brick and limestone building with a steep roof and a clock tower",
+      "form": {
+        "footprint": "L",
+        "width_m": 59,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 27,
+        "roof": "mansard",
+        "wings": 1
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "limestone",
+        "colours": [
+          "#a2573f",
+          "#e0d8c3",
+          "#5f6f6a"
+        ],
+        "roofColour": "#5f6a66",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 13,
+          "note": "arched niches on the main floor"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Staten_Island_Borough_Hall",
+          "what": "designed by Carrere and Hastings, Beaux Arts / French Renaissance in brick and limestone, hilltop site, main floor with thirteen arched niches 13 ft high"
+        }
+      ],
+      "notes": "OSM: 59 x 31.6 m, height 26.8 m. The clock tower and slate-grey steep roof are from general knowledge; colours typed."
+    },
+    "new-york-community-workshop": {
+      "venueId": "new-york-community-workshop",
+      "city": "new-york",
+      "name": "Rutgers Biomedical and Health Sciences",
+      "archetype": "campus-block",
+      "subject": "an urban medical-school building in Newark: a mid-rise glass and brick academic block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 8,
+        "height_m": 34,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "brick",
+        "colours": [
+          "#6d808c",
+          "#a65c46",
+          "#d9dcde"
+        ],
+        "roofColour": "#8d9093",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM university polygon 498 x 401 m (whole Newark campus); a typical building is typed as a main mass of 120 x 45 m. No description found."
+    },
+    "new-york-market-game": {
+      "venueId": "new-york-market-game",
+      "city": "new-york",
+      "name": "American Dream",
+      "archetype": "mall",
+      "subject": "the 3,000,000 sq ft Meadowlands entertainment mall: a huge angular white building with LED-lit facade, an indoor ski-slope block and a giant observation wheel",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 897,
+        "depth_m": 427,
+        "storeys": 3,
+        "height_m": 35,
+        "roof": "flat",
+        "variant": "mega-mall"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eef0f0",
+          "#2f87c4",
+          "#c93b3b"
+        ],
+        "roofColour": "#b9bcbe",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "LED display facade facing the Turnpike"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/American_Dream_Meadowlands",
+          "what": "about 3,000,000 sq ft, 3 floors, repainted white in 2019, LED displays across the facade facing the Turnpike, Big Snow indoor ski slope, Dream Wheel 235 ft diameter opened 2022"
+        }
+      ],
+      "notes": "Shown as a cropped portion (120 m clamp). Colour accents (blue, red) are typed; main white and LED facade are sourced."
+    },
+    "new-york-meal-stop": {
+      "venueId": "new-york-meal-stop",
+      "city": "new-york",
+      "name": "John's of Bleecker Street",
+      "archetype": "restaurant",
+      "subject": "the 1929 Greenwich Village pizzeria on the ground floor of a five-storey brick tenement with a fire escape",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 16,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#a0553c",
+          "#e5dcc6",
+          "#1f1f1f"
+        ],
+        "roofColour": "#4a4a4a",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "fire escape bands"
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "rooftop wooden tank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=John%27s+of+Bleecker+Street",
+          "what": "Wikidata: pizzeria in Manhattan since 1929"
+        }
+      ],
+      "notes": "OSM apartment building 23.7 x 15.5 m, height 22.1 m. The shopfront and tenement style are typed from the Village; no photo-level source."
+    },
+    "new-york-osm-node-6018127885": {
+      "venueId": "new-york-osm-node-6018127885",
+      "city": "new-york",
+      "name": "Bamonte's",
+      "archetype": "restaurant",
+      "subject": "a two-storey Williamsburg brick restaurant with a ground-floor awning and a neon-style sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 8,
+        "storeys": 2,
+        "height_m": 7.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": null,
+        "colours": [
+          "#9b4a35",
+          "#e5dcc6",
+          "#1f3a2a"
+        ],
+        "roofColour": "#4a4a4a",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Bamonte%27s",
+          "what": "Wikidata: restaurant in Brooklyn"
+        }
+      ],
+      "notes": "OSM building 38.9 x 7.8 m, height 7.5 m. Facade details are typed."
+    },
+    "new-york-osm-relation-4479990": {
+      "venueId": "new-york-osm-relation-4479990",
+      "city": "new-york",
+      "name": "Spring Creek Park",
+      "archetype": "park-landscape",
+      "subject": "a wide shoreline marsh and meadow park beside Jamaica Bay with trails and a few low shelters",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 700,
+        "depth_m": 500,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#b8a98c",
+          "#7a9a5a",
+          "#8a8a86"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Spring+Creek+Park",
+          "what": "Wikidata: urban park in NYC"
+        }
+      ],
+      "notes": "OSM relation 1033 x 791 m; no layout source; typed as natural park."
+    },
+    "new-york-osm-relation-9462533": {
+      "venueId": "new-york-osm-relation-9462533",
+      "city": "new-york",
+      "name": "Fort Tilden Historic District",
+      "archetype": "heritage-fort",
+      "subject": "the former coastal artillery post at Rockaway: concrete gun emplacements half-buried in dunes with brick and stucco barracks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#a8a79e",
+          "#9b5a45",
+          "#d3c9b3"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM footprint; typed from the type (World War I coast artillery batteries, now a national park site) from general knowledge, not sourced."
+    },
+    "new-york-osm-way-108158013": {
+      "venueId": "new-york-osm-way-108158013",
+      "city": "new-york",
+      "name": "Rockefeller University",
+      "archetype": "campus-block",
+      "subject": "a river-side research campus: Founder's Hall (1903-06) in stone and brick with a classical entrance, beside modern lab blocks and a dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "limestone",
+        "colours": [
+          "#a8654a",
+          "#d9d0b8",
+          "#ece7da"
+        ],
+        "roofColour": "#5d625f",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rockefeller_University",
+          "what": "Founder's Hall built 1903-06 first building, National Historic Landmark 1974; 16-acre campus on York Avenue over the East River; Caspary Auditorium 1957 geodesic dome 90 ft across"
+        }
+      ],
+      "notes": "Campus polygon 462 x 172 m. Founder's Hall materials are typed (brick and limestone, georgian-colonial revival) - the source does not give them. Caspary dome is the other recognisable feature."
+    },
+    "new-york-osm-way-1489479553": {
+      "venueId": "new-york-osm-way-1489479553",
+      "city": "new-york",
+      "name": "St. John Lutheran Church",
+      "archetype": "church-gothic",
+      "subject": "an 1897 red-brick Lutheran church in Passaic with a front tower and gabled nave",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#9b4a35",
+          "#d3c9b3",
+          "#e8e0cc"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "gothic-revival",
+      "era": "1890s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=St.+John%27s+Evangelical+Lutheran+Church+Passaic",
+          "what": "Wikidata: church building, Passaic NJ, inception 1897"
+        }
+      ],
+      "notes": "OSM church 28.6 x 12.4 m. Style and materials typed from era and denomination; not found in a source."
+    },
+    "new-york-osm-way-1564487878": {
+      "venueId": "new-york-osm-way-1564487878",
+      "city": "new-york",
+      "name": "Reynier Speer House",
+      "archetype": "manor",
+      "subject": "a small 18th-century Dutch colonial stone farmhouse in Little Falls with a low gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#8c7a62",
+          "#c9b99a",
+          "#5d4636"
+        ],
+        "roofColour": "#5d4f45",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1700s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Reynier+Speer+House",
+          "what": "Wikidata: historic house in Little Falls NJ"
+        }
+      ],
+      "notes": "OSM house 15.2 x 9.7 m. Appearance typed as sandstone Dutch farmhouse; not confirmed."
+    },
+    "new-york-osm-way-167898277": {
+      "venueId": "new-york-osm-way-167898277",
+      "city": "new-york",
+      "name": "The Mills at Jersey Gardens",
+      "archetype": "mall",
+      "subject": "a 1.3M sq ft two-level outlet mall in Elizabeth: a very wide flat-roofed block with large entrance canopies and a vast car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 377,
+        "depth_m": 229,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3c2",
+          "#3d6f8a",
+          "#b5493a"
+        ],
+        "roofColour": "#a3a5a6",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Mills_at_Jersey_Gardens",
+          "what": "two floors, 1,292,611 sq ft gross leasable area, opened 1999"
+        }
+      ],
+      "notes": "Footprint 377 x 229 m from OSM (2 levels, flat roof). Colours typed. Source gives storeys and area but not shape or colours."
+    },
+    "new-york-osm-way-178575123": {
+      "venueId": "new-york-osm-way-178575123",
+      "city": "new-york",
+      "name": "Riverside Park",
+      "archetype": "park-landscape",
+      "subject": "the tiered Hudson River park on the Upper West Side with its stone Soldiers' and Sailors' Monument terrace, promenade, retaining walls and cherry trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 330,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#bfb9ab",
+          "#6f9a5a",
+          "#8a8a86"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Soldiers' and Sailors' Monument: round temple of 12 Corinthian columns on rusticated base"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stone retaining wall"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riverside_Park_(Manhattan)",
+          "what": "4 mile narrow tiered park 100-500 ft wide between Riverside Drive and the Hudson; Soldiers' and Sailors' Monument 1902 circular temple with twelve Corinthian columns on rusticated basement; stepped terraces; retaining walls; London plane trees; Cherry Walk"
+        }
+      ],
+      "notes": "OSM way 2660 x 210 m shown as a 330 m cropped portion. Monument is archetype park feature; walls are granite/stone."
+    },
+    "new-york-osm-way-245394269": {
+      "venueId": "new-york-osm-way-245394269",
+      "city": "new-york",
+      "name": "Holy Name Medical Center",
+      "archetype": "hospital",
+      "subject": "a Teaneck hospital campus with a mid-rise tan-brick tower and older wings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b89a74",
+          "#e0dacb",
+          "#7d8a92"
+        ],
+        "roofColour": "#8e9195",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Holy+Name+Medical+Center",
+          "what": "Wikidata: hospital in Teaneck NJ, 1925"
+        }
+      ],
+      "notes": "OSM campus 385 x 285 m; building is typed. No description found."
+    },
+    "new-york-osm-way-246242284": {
+      "venueId": "new-york-osm-way-246242284",
+      "city": "new-york",
+      "name": "Voorlezer's House",
+      "archetype": "manor",
+      "subject": "the c.1696 Dutch-influenced clapboard house of the Voorlezer: two storeys, steep unequal roof, stone-and-brick chimney",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#b9a98d",
+          "#8a8071",
+          "#5d4636"
+        ],
+        "roofColour": "#5d4f45",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "stone and brick at the northeast end"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1690s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Voorlezer%27s_House",
+          "what": "two-storey clapboard frame house, Dutch-influenced vernacular, fieldstone foundation, large stone and brick chimney at NE end, unequal roof pitch, low wide windows, leaded casements from 1981 restoration"
+        }
+      ],
+      "notes": "OSM: 9.8 x 7.4 m, height 9.4 m, built 1695. Colours not given in the source; weathered clapboard tone typed."
+    },
+    "new-york-osm-way-250026584": {
+      "venueId": "new-york-osm-way-250026584",
+      "city": "new-york",
+      "name": "Kings Plaza Shopping Center",
+      "archetype": "mall",
+      "subject": "the Mill Basin mall: a huge enclosed two-level block with four-storey anchors, a glass Flatbush Avenue entrance and a large parking garage beside a marina",
+      "form": {
+        "footprint": "rect",
+        "width_m": 257,
+        "depth_m": 180,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b69a7a",
+          "#7d93a0",
+          "#e4dfd3"
+        ],
+        "roofColour": "#8f9295",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "Flatbush Avenue glass entrance"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "garage for about 4,000 cars"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "postmodern",
+      "era": "1970s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kings_Plaza",
+          "what": "1.1M sq ft enclosed mall, two mall levels, 3-4 storey anchors, glass entrance on Flatbush 1999-2001, rooftop cogeneration plant, parking garage nearly 4,000 cars, marina along the garage perimeter"
+        }
+      ],
+      "notes": "OSM 256.8 x 180.1 m, height 21.6 m. Facade colours typed."
+    },
+    "new-york-osm-way-284831877": {
+      "venueId": "new-york-osm-way-284831877",
+      "city": "new-york",
+      "name": "Grace Episcopal Church",
+      "archetype": "church-gothic",
+      "subject": "an 1862 Carpenter Gothic timber church: a small board-and-batten nave with pointed windows and a front belfry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d9d0b8",
+          "#4a5d4a",
+          "#f1ece0"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1860s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grace_Episcopal_Church_(Bronx)",
+          "what": "built 1862 in Carpenter Gothic style (Gothic Revival), Italianate rectory, site under an acre"
+        }
+      ],
+      "notes": "OSM: 24.8 x 17.3 m, height 7.2 m. Wood-sided construction follows from 'Carpenter Gothic'; colours typed."
+    },
+    "new-york-osm-way-419060582": {
+      "venueId": "new-york-osm-way-419060582",
+      "city": "new-york",
+      "name": "Kean University - Main Campus",
+      "archetype": "campus-block",
+      "subject": "a two-storey brick and glass academic building with a flat roof on the Union campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 99,
+        "depth_m": 37,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#a65c46",
+          "#6f8493",
+          "#e0dacb"
+        ],
+        "roofColour": "#7d8186",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Kean+University",
+          "what": "Wikidata: public university in New Jersey founded 1855"
+        }
+      ],
+      "notes": "OSM building 98.7 x 36.5 m, 2 levels. Appearance typed."
+    },
+    "new-york-osm-way-527873169": {
+      "venueId": "new-york-osm-way-527873169",
+      "city": "new-york",
+      "name": "Calvary Hospital - Bronx Campus",
+      "archetype": "hospital",
+      "subject": "a nine-storey brick hospice hospital block in the Bronx",
+      "form": {
+        "footprint": "rect",
+        "width_m": 79,
+        "depth_m": 65,
+        "storeys": 9,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b08a68",
+          "#d9d3c2",
+          "#7d8a92"
+        ],
+        "roofColour": "#7d8186",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Calvary+Hospital+Bronx",
+          "what": "Wikidata: hospital, 1899"
+        }
+      ],
+      "notes": "OSM hospital 78.7 x 64.5 m, height 29.7 m. Facade typed."
+    },
+    "new-york-osm-way-604023701": {
+      "venueId": "new-york-osm-way-604023701",
+      "city": "new-york",
+      "name": "Citi Field",
+      "archetype": "stadium",
+      "subject": "the Mets ballpark: a brick, stone and green-steel facade reminiscent of Ebbets Field, with the Jackie Robinson Rotunda arches at the entrance",
+      "form": {
+        "footprint": "oval",
+        "width_m": 272,
+        "depth_m": 227,
+        "storeys": 5,
+        "height_m": 35,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "limestone",
+        "colours": [
+          "#8f4b38",
+          "#cfc3a8",
+          "#2a4a3a"
+        ],
+        "roofColour": "#2a4a3a",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 8,
+          "note": "Rotunda entrance arches"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "upper-deck canopy"
+        },
+        {
+          "id": "floodlights",
+          "count": 8
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Home Run Apple"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "2000s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Citi_Field",
+          "what": "41,922 seats (mostly green), facade reminiscent of Ebbets Field, Jackie Robinson Rotunda 160 ft diameter with arches and 8 ft '42', orange foul poles, Shea Bridge, Home Run Apple, scoreboard 17,400 sq ft, architect Populous"
+        }
+      ],
+      "notes": "OSM footprint 272 x 227 m. Brick/limestone/green steel colours are typed from general knowledge of the exterior; the source gives no facade materials."
+    },
+    "new-york-quiet-reflection": {
+      "venueId": "new-york-quiet-reflection",
+      "city": "new-york",
+      "name": "Temple of Israel",
+      "archetype": "shrine-small",
+      "subject": "the 1922 Rockaway Beach synagogue: a small stuccoed hall with a pedimented front and tall arched windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e5dcc0",
+          "#b3a07c",
+          "#f3eee1"
+        ],
+        "roofColour": "#5d625f",
+        "windows": "arched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Temple+of+Israel+Rockaway+Beach",
+          "what": "Wikidata: historic synagogue in Rockaway Beach, inception 1922"
+        }
+      ],
+      "notes": "OSM: 31.8 x 12.4 m, height 14.4 m. Style and colours typed; low."
+    },
+    "new-york-recreation": {
+      "venueId": "new-york-recreation",
+      "city": "new-york",
+      "name": "Proctor-Hopson Circle",
+      "archetype": "park-landscape",
+      "subject": "a small street circle with grass, trees, benches and a low kiosk in Jamaica, Queens",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8b2a2",
+          "#6f9a5a",
+          "#8a8a86"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=Proctor-Hopson+Circle",
+          "what": "Wikidata: traffic median in Queens"
+        }
+      ],
+      "notes": "OSM building 30 x 7 m, 3.2 m high on a traffic median. Typed as a small plaza."
+    },
+    "new-york-transit": {
+      "venueId": "new-york-transit",
+      "city": "new-york",
+      "name": "183rd Street",
+      "archetype": "transport-station",
+      "subject": "the Jerome Avenue Line elevated subway station: a steel viaduct with two side platforms, canopies and a street-level station house",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#4f6a55",
+          "#8a8a86",
+          "#d3cfc4"
+        ],
+        "roofColour": "#4f6a55",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1910s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:Search?search=183rd+Street+station+IRT+Jerome+Avenue+Line",
+          "what": "Wikidata: IRT Jerome Avenue Line subway station"
+        }
+      ],
+      "notes": "OSM building 30.5 x 15.3 m, height 4.5 m (station house). The elevated steel viaduct is from general knowledge; Wikidata says 'station located on surface', so confirm before relying on elevation."
+    }
+  }
+}

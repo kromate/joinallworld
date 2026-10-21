@@ -1,0 +1,575 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Lilongwe_Wildlife_Centre_-_entrance_-_Jan_2018.jpg",
+   "licence": "CC BY 3.0",
+   "author": "nesnad",
+   "view": "front",
+   "file": "/tmp/places-evidence/lilongwe/wc-entrance.jpg",
+   "used": "entrance gate: big hipped thatch roof with a ridge of dark capping logs on four rough timber poles, orange-brown timber soffit, blank dark board on the front beam, red laterite track, side fence/reed screen, lone thatched hut behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/442847669",
+   "used": "name-matched 23 x 11 m building footprint behind the gate (visitor shelter)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shelter",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    24
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8b6b47",
+    "windows": "none",
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9b8a62",
+    "material": "thatch",
+    "rise": 2.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     6,
+     40
+    ],
+    "height": 0.05,
+    "colour": "#a4502f"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.4,
+    -14.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.3,
+    "colour": "#7a4e2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.3,
+    -14.0,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.55,
+     0.55
+    ],
+    "height": 4.1,
+    "colour": "#7a4e2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.2,
+    -11.4,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.2,
+    "colour": "#7a4e2c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.5,
+    -11.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.5,
+     0.5
+    ],
+    "height": 4.4,
+    "colour": "#7a4e2c"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -12.8,
+    0
+   ],
+   "params": {
+    "colour": "#6f6252",
+    "capBottom": true,
+    "sections": [
+     {
+      "z": 4.0,
+      "rect": [
+       12.6,
+       7.4
+      ],
+      "colour": "#b5703a"
+     },
+     {
+      "z": 4.3,
+      "rect": [
+       13.0,
+       7.8
+      ],
+      "colour": "#6f6252"
+     },
+     {
+      "z": 4.8,
+      "rect": [
+       13.0,
+       7.8
+      ],
+      "colour": "#6f6252"
+     },
+     {
+      "z": 5.4,
+      "rect": [
+       12.2,
+       7.0
+      ],
+      "colour": "#6a5d4d"
+     },
+     {
+      "z": 6.1,
+      "rect": [
+       10.8,
+       5.8
+      ],
+      "colour": "#6f6252"
+     },
+     {
+      "z": 6.8,
+      "rect": [
+       8.8,
+       4.2
+      ],
+      "colour": "#665a49"
+     },
+     {
+      "z": 7.4,
+      "rect": [
+       6.4,
+       2.6
+      ],
+      "colour": "#6f6252"
+     },
+     {
+      "z": 7.8,
+      "rect": [
+       4.2,
+       1.4
+      ],
+      "colour": "#5f5444"
+     },
+     {
+      "z": 8.0,
+      "rect": [
+       3.4,
+       0.9
+      ],
+      "colour": "#3a2d22"
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -12.8,
+    7.95
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     0.6
+    ],
+    "height": 0.35,
+    "colour": "#2e2218"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.6,
+    -12.8,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.5
+    ],
+    "height": 0.3,
+    "colour": "#2a1f16"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -0.8,
+    -12.8,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.5
+    ],
+    "height": 0.3,
+    "colour": "#2a1f16"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.0,
+    -12.8,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.5
+    ],
+    "height": 0.3,
+    "colour": "#2a1f16"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0.8000000000000003,
+    -12.8,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.5
+    ],
+    "height": 0.3,
+    "colour": "#2a1f16"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.6,
+    -12.8,
+    8.3
+   ],
+   "params": {
+    "rect": [
+     0.45,
+     0.5
+    ],
+    "height": 0.3,
+    "colour": "#2a1f16"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -15.9,
+    3.2
+   ],
+   "params": {
+    "rect": [
+     5,
+     0.2
+    ],
+    "height": 0.9,
+    "colour": "#3a2a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -15.9,
+    3.1
+   ],
+   "params": {
+    "rect": [
+     11,
+     0.3
+    ],
+    "height": 0.12,
+    "colour": "#b5703a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 2.4,
+    "colour": "#4a3322"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -13.15,
+    0.7
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.08
+    ],
+    "height": 0.4,
+    "colour": "#3a2a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -13.15,
+    1.25
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.08
+    ],
+    "height": 0.4,
+    "colour": "#3a2a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9.5,
+    -13.15,
+    1.8
+   ],
+   "params": {
+    "rect": [
+     1.1,
+     0.08
+    ],
+    "height": 0.4,
+    "colour": "#3a2a1c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -13,
+    0
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.2
+    ],
+    "height": 1.6,
+    "colour": "#4a3322"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9.5,
+    -13.15,
+    1.1
+   ],
+   "params": {
+    "rect": [
+     1.8,
+     0.1
+    ],
+    "height": 0.8,
+    "colour": "#3a2a1c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    7.2,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 7,
+    "height": 2.0,
+    "thickness": 0.15,
+    "kind": "wall",
+    "colour": "#b79b64"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 26,
+    "height": 2.4,
+    "kind": "wall",
+    "colour": "#7a6a4a"
+   }
+  },
+  {
+   "type": "thatched-hut",
+   "at": [
+    11,
+    -1
+   ],
+   "params": {
+    "radius": 2.0
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -16,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     16,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     4,
+     -3
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -5,
+     -2
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     0,
+     24
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     19,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "thatch eaves smooth not shaggy; no board lettering by rule; woven reed screen is a plain fence"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-lilongwe-wildlife-center"
+}

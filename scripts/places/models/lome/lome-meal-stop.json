@@ -1,0 +1,187 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lome",
+ "venueId": "lome-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BIDC_Togo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Frappipi 01",
+   "view": "street",
+   "file": "/tmp/places-evidence/lome/ms1.jpg",
+   "used": "checked and rejected: shows the BIDC bank towers 105 m away, not La Casa; only the surrounding palms and broadleaf street trees were noted"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/249639426",
+   "used": "villa footprint (256 m2, name match, restaurant tag)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "villa",
+   "footprint": {
+    "osm": true,
+    "fit": 24
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#c27f62",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 22,
+    "colour": "#8c4a37",
+    "material": "clay-tile",
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    0,
+    -11.5,
+    0
+   ],
+   "params": {
+    "length": 13,
+    "depth": 2.8,
+    "height": 3.0,
+    "roof": "lean-to",
+    "roof_colour": "#8c4a37",
+    "trim_colour": "#6b4a2f"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -5,
+    -16,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4,
+    "radius": 1.5,
+    "colours": [
+     "#f2eee4",
+     "#c27f62"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    6,
+    -14,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    10,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 3.4,
+    "width": 1.6,
+    "colour": "#f2eee4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#eadfc6",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    14,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -12,
+    -19,
+    0
+   ],
+   "params": {
+    "length": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 8,
+  "extent": [
+   50,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "no photo of La Casa: footprint from OSM, villa form and terrace from the brief"
+ }
+}

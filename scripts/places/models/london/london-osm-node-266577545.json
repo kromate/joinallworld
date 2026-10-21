@@ -1,0 +1,779 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-osm-node-266577545",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Polish_War_Memorial_London.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "(Commons)",
+   "view": "front",
+   "used": "whole composition: slim pale Portland stone column with dark bronze eagle on top, low flanking stone panels, rectangular water pool in front, gateway of two stone piers with black iron railings, flagpoles with UK and Polish flags at both ends, flowerbeds and willow trees",
+   "file": "/tmp/places-evidence/london/london-osm-node-266577545_2.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:London_MMB_70_Polish_War_Memorial.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "mattbuck",
+   "view": "detail",
+   "used": "column and flanking panels proportions, pale cream stone colour (#d8d0bb), pavement",
+   "file": "/tmp/places-evidence/london/london-osm-node-266577545_1.jpg"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:London_MMB_71_Polish_War_Memorial.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "mattbuck",
+   "view": "detail",
+   "used": "curved granite exedra wall with engraved names",
+   "file": "/tmp/places-evidence/london/london-osm-node-266577545_0.jpg"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/639411723",
+   "used": "garden extent (65x36 m) for site size"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 20,
+  "aspect": 1.5,
+  "margin": 0.0,
+  "fit": "building",
+  "shiftY": -0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "column",
+   "footprint": {
+    "rect": [
+     1.3,
+     0.8
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bb",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-left",
+   "footprint": {
+    "rect": [
+     4.6,
+     1.2
+    ]
+   },
+   "at": [
+    -3.4,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bb",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "panel-right",
+   "footprint": {
+    "rect": [
+     4.6,
+     1.2
+    ]
+   },
+   "at": [
+    3.4,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bb",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     10,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d0bb",
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool",
+   "footprint": {
+    "polygon": [
+     [
+      -3.5,
+      -5
+     ],
+     [
+      3.5,
+      -5
+     ],
+     [
+      5,
+      3
+     ],
+     [
+      -5,
+      3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f8f9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "exedra",
+   "footprint": {
+    "polygon": [
+     [
+      11.0,
+      8.0
+     ],
+     [
+      10.63,
+      9.81
+     ],
+     [
+      9.53,
+      11.5
+     ],
+     [
+      7.78,
+      12.95
+     ],
+     [
+      5.5,
+      14.06
+     ],
+     [
+      2.85,
+      14.76
+     ],
+     [
+      0.0,
+      15.0
+     ],
+     [
+      -2.85,
+      14.76
+     ],
+     [
+      -5.5,
+      14.06
+     ],
+     [
+      -7.78,
+      12.95
+     ],
+     [
+      -9.53,
+      11.5
+     ],
+     [
+      -10.63,
+      9.81
+     ],
+     [
+      -11.0,
+      8.0
+     ],
+     [
+      -9.8,
+      8.0
+     ],
+     [
+      -9.47,
+      9.6
+     ],
+     [
+      -8.49,
+      11.1
+     ],
+     [
+      -6.93,
+      12.38
+     ],
+     [
+      -4.9,
+      13.37
+     ],
+     [
+      -2.54,
+      13.99
+     ],
+     [
+      0.0,
+      14.2
+     ],
+     [
+      2.54,
+      13.99
+     ],
+     [
+      4.9,
+      13.37
+     ],
+     [
+      6.93,
+      12.38
+     ],
+     [
+      8.49,
+      11.1
+     ],
+     [
+      9.47,
+      9.6
+     ],
+     [
+      9.8,
+      8.0
+     ]
+    ]
+   },
+   "at": [
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "granite",
+    "colour": "#a99f8c",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc7b2"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     2.2,
+     1.4
+    ]
+   },
+   "at": [
+    -3.6,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0cf",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     2.2,
+     1.4
+    ]
+   },
+   "at": [
+    3.6,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e2d0",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e0cf",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -26.5,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 21.7,
+    "height": 1.9,
+    "colour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    4.8,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 21.7,
+    "height": 1.9,
+    "colour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -24,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#1f3a7a",
+     "#ffffff",
+     "#c8102e"
+    ]
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    24,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colours": [
+     "#ffffff",
+     "#dc143c"
+    ]
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -26,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    26,
+    15,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -13,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.5,
+    "colour": "#c43a3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    13,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 8,
+    "height": 0.5,
+    "colour": "#c43a3a"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -14,
+    -4,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {}
+  },
+  {
+   "type": "tree",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    4,
+    10.5
+   ],
+   "params": {
+    "colour": "#3a2f24",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.8,
+       0.5
+      ]
+     },
+     {
+      "z": 0.3,
+      "rect": [
+       3.2,
+       0.35
+      ]
+     },
+     {
+      "z": 0.5,
+      "rect": [
+       1.0,
+       0.3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 4.8,
+    "height": 2.4,
+    "pillar": 0.15,
+    "leaf": "bars",
+    "colour": "#1c1c1e",
+    "leafColour": "#1c1c1e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.6,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 1.1,
+    "bottom": 1.3,
+    "colour": "#2b2b2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3.6,
+    -14.8,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 1.1,
+    "bottom": 1.3,
+    "colour": "#2b2b2b",
+    "posts": false
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -25,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.4,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    16,
+    -9,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.4,
+    "colour": "#c43a3a"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    16,
+    -7,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.4,
+    "colour": "#f2f2f0"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -25,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.4,
+    "colour": "#c43a3a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -14,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -4,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13
+   }
+  },
+  {
+   "type": "core/loft",
+   "at": [
+    0,
+    4,
+    10.5
+   ],
+   "params": {
+    "colour": "#3a2f24",
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.3,
+       0.3
+      ]
+     },
+     {
+      "z": 0.8,
+      "ellipse": [
+       0.35,
+       0.3
+      ]
+     },
+     {
+      "z": 1.3,
+      "ellipse": [
+       0.15,
+       0.15
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   52,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Column now smooth cream render with a spread-wing eagle, stout piers with plaques, taller iron railing, lawn and flowerbeds, UK/Polish flags; camera framing is wider than the photo so trees/flags read small, railing is plain bars without scrollwork, willows are generic broadleaf trees, pool barely visible."
+ }
+}

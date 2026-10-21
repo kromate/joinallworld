@@ -1,0 +1,1528 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "oslo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "oslo",
+    "climate": "cold",
+    "vernacular": "Nordic city of timber and brick: weatherboarded wooden houses painted falu red, ochre yellow, white or grey with white window frames and gable roofs; 19th-century yellow-plaster and brick apartment blocks in the centre; 1930s Functionalism (funkis) in white render and brick; post-war limestone-brick and raw-concrete blocks; glass and timber contemporary buildings at Bjorvika and in suburbs such as Lorenskog. Roofs are dark concrete tile, slate, sheet metal, or green copper on civic buildings, among spruce, pine and birch.",
+    "wallColours": [
+      "#8e3b2f",
+      "#d9b45a",
+      "#ece8dd",
+      "#8a8d8f",
+      "#8b4a3a",
+      "#4a3a30"
+    ],
+    "roofColours": [
+      "#4b4f54",
+      "#35383c",
+      "#9a4a3a",
+      "#6f9a8a"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "brick",
+      "concrete",
+      "glass-curtain",
+      "exposed-concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "metal-sheet",
+      "slate",
+      "copper",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Plain gable-roofed wooden houses with white window surrounds and corner boards; Swiss chalet and dragon-style gables with carved bargeboards on older villas; Functionalist white boxes with ribbon windows and flat roofs; green copper roofs and spires on civic buildings and churches; exposed oak and larch cladding on contemporary buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+        "what": "wood as main material with weatherboarded walls; neoclassical, Swiss chalet, dragon style, Jugendstil, Functionalism, brutalism in raw concrete; Oslo City Hall as key Functionalist example"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Oslo_Airport,_Gardermoen",
+        "what": "contemporary Oslo-region buildings use wood, metal and glass (oak-clad pier)"
+      }
+    ]
+  },
+  "places": {
+    "oslo-airport-oslo-airport": {
+      "venueId": "oslo-airport-oslo-airport",
+      "city": "oslo",
+      "name": "Oslo-Gardermoen International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Oslo Gardermoen terminal seen from the forecourt: a long low glass-fronted terminal under a light timber-rafter roof, with the 91 m control tower behind and an oak-clad pier",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "wave",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "timber",
+        "colours": [
+          "#dfe3e4",
+          "#b9925c",
+          "#9aa3a8"
+        ],
+        "roofColour": "#8d949a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1998 (pier 2017)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oslo_Airport,_Gardermoen",
+          "what": "opened 1998 by Aviaplan (Nordic Office of Architecture, Niels Torp et al); wood, metal and glass; light roof held up by timber rafters; 91 m control tower; piers (north pier 2017 clad in oak); terminal 265,000 m2"
+        }
+      ],
+      "notes": "Recognisable by the wide shallow wave-like timber roof over a glazed hall and the oak-clad piers (north pier 2017). Dimensions are an estimate of the visible central portion; the terminal is far larger (265,000 m2)."
+    },
+    "oslo-clinic": {
+      "venueId": "oslo-clinic",
+      "city": "oslo",
+      "name": "Sunnaas sykehus",
+      "archetype": "hospital",
+      "subject": "Sunnaas rehabilitation hospital on the Oslofjord shore at Nesodden: a group of light-coloured low-rise ward blocks in garden grounds, newest block finished 2015",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6e1d4",
+          "#b58a5a",
+          "#6f777c"
+        ],
+        "roofColour": "#5b6065",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1950s-2015",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://no.wikipedia.org/wiki/Sunnaas_sykehus",
+          "what": "newest section (bygg I) finished 2015; founder wanted patients in beautiful surroundings"
+        }
+      ],
+      "notes": "Only the 2015 completion of building I is sourced; form and colours are a typed guess for a Norwegian rehabilitation hospital with mixed old and new blocks. Name and location (Nesodden) are real."
+    },
+    "oslo-community-notices": {
+      "venueId": "oslo-community-notices",
+      "city": "oslo",
+      "name": "Bærum rådhus",
+      "archetype": "civic-small",
+      "subject": "Baerum radhus (town hall) in Sandvika: a mid-sized municipal office block with a flagged forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b8b5ac",
+          "#6d7f8a",
+          "#5a5d60"
+        ],
+        "roofColour": "#55595d",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "No description found; typed from the place type (Norwegian municipal town hall, assumed late-modernist concrete and glass block). Not verified."
+    },
+    "oslo-community-voting-game": {
+      "venueId": "oslo-community-voting-game",
+      "city": "oslo",
+      "name": "Vollebekk torg",
+      "archetype": "park-landscape",
+      "subject": "Vollebekk torg: a small paved neighbourhood square in the Oslo suburbs with benches, trees and a few low buildings around it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d9b45a",
+          "#ece8dd",
+          "#8a8d8f"
+        ],
+        "roofColour": "#4b4f54",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Only the name and position are real; the square is not described in any source found. Generic Nordic neighbourhood plaza."
+    },
+    "oslo-community-workshop": {
+      "venueId": "oslo-community-workshop",
+      "city": "oslo",
+      "name": "Høyskolen i Akershus",
+      "archetype": "campus-block",
+      "subject": "Akershus University College campus building at Kjeller/Lillestrom: a few brick and glass teaching blocks around a paved yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8b4a3a",
+          "#7f9099",
+          "#d8d6cf"
+        ],
+        "roofColour": "#5a5d60",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Name is real (Hogskolen i Akershus, now part of OsloMet) but no architectural description was found; typed as a Norwegian college block."
+    },
+    "oslo-market-game": {
+      "venueId": "oslo-market-game",
+      "city": "oslo",
+      "name": "Østerås senter",
+      "archetype": "mall",
+      "subject": "Osteras senter: a neighbourhood shopping centre in Baerum, a low rendered block with a surface car park and a pylon sign",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e0dccf",
+          "#7a8f8a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#55595d",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "No description found for the centre; typed from a Norwegian suburban shopping centre (Osterås is a 1970s Baerum district)."
+    },
+    "oslo-meal-stop": {
+      "venueId": "oslo-meal-stop",
+      "city": "oslo",
+      "name": "Vangen",
+      "archetype": "restaurant",
+      "subject": "Vangen: a small countryside eatery in a weatherboarded wooden house with a gable roof and a gravel yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8e3b2f",
+          "#ece8dd",
+          "#4a3a30"
+        ],
+        "roofColour": "#35383c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Nothing found about this venue; a red-painted wooden house with white trim is the typical Norwegian rural form."
+    },
+    "oslo-osm-node-1779117990": {
+      "venueId": "oslo-osm-node-1779117990",
+      "city": "oslo",
+      "name": "Stunnerøya",
+      "archetype": "park-landscape",
+      "subject": "Stunneroya: a forested shoreline point with paths and rock, no buildings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#6b5a40",
+          "#7a8f6a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#4b4f54",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "A natural place; only the name and position are known. Spruce and pine woodland by water with a path and boulders."
+    },
+    "oslo-osm-node-1914126620": {
+      "venueId": "oslo-osm-node-1914126620",
+      "city": "oslo",
+      "name": "Spenningsbygruva",
+      "archetype": "park-landscape",
+      "subject": "Spenningsbygruva: a disused mine site in forest, with a small timber hut and rock tip beside a footpath",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#6b5a40",
+          "#8a8d8f",
+          "#35383c"
+        ],
+        "roofColour": "#35383c",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Name implies a mine (\"gruva\"); nothing else found. Typed as a forest mine entrance with a rock spoil heap and a shed."
+    },
+    "oslo-osm-node-260042955": {
+      "venueId": "oslo-osm-node-260042955",
+      "city": "oslo",
+      "name": "Sandbakken",
+      "archetype": "restaurant",
+      "subject": "Sandbakken: a small suburban cafe or eatery in a one-storey painted wooden or rendered building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9b45a",
+          "#ece8dd",
+          "#4a3a30"
+        ],
+        "roofColour": "#4b4f54",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Nothing found; typed from a Norwegian roadside eatery."
+    },
+    "oslo-osm-node-540229469": {
+      "venueId": "oslo-osm-node-540229469",
+      "city": "oslo",
+      "name": "Kobberhaughytta",
+      "archetype": "restaurant",
+      "subject": "Kobberhaughytta: a forest cabin used as a walkers' hut, dark-stained log walls and a turf-grey gable roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#5c4330",
+          "#8e3b2f",
+          "#ece8dd"
+        ],
+        "roofColour": "#35383c",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "A \"hytte\" in the woods north of Oslo; no description was found. Classic Norwegian log cabin with a chimney and a porch bench."
+    },
+    "oslo-osm-relation-7757342": {
+      "venueId": "oslo-osm-relation-7757342",
+      "city": "oslo",
+      "name": "University of Oslo",
+      "archetype": "campus-block",
+      "subject": "University of Oslo: a group of 1930s-60s academic buildings in pale brick and render around lawns, with flat and low pitched roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#c9b48a",
+          "#ece8dd",
+          "#6f777c"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1930s-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Oslo",
+          "what": "Blindern campus erected in the 1930s in the western suburbs; central campus neoclassical (Schinkel-influenced)"
+        }
+      ],
+      "notes": "Only the 1930s Blindern date and the neoclassical character of the older central campus are sourced. Colours and heights are typed from what Blindern looks like in public photos; keep low confidence."
+    },
+    "oslo-osm-way-106902060": {
+      "venueId": "oslo-osm-way-106902060",
+      "city": "oslo",
+      "name": "Sverre Enevolds plass",
+      "archetype": "park-landscape",
+      "subject": "Sverre Enevolds plass: a small paved square with trees and benches between apartment blocks in north-east Oslo",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d9d2c0",
+          "#8a8d8f",
+          "#4b4f54"
+        ],
+        "roofColour": "#4b4f54",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Only the name and position are known (a named city square); no sources describe it."
+    },
+    "oslo-osm-way-129487913": {
+      "venueId": "oslo-osm-way-129487913",
+      "city": "oslo",
+      "name": "Nansenparken",
+      "archetype": "park-landscape",
+      "subject": "Nansenparken: a green public park with lawns, deciduous and conifer trees, and gravel paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d9d2c0",
+          "#7a8f6a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#4b4f54",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Park near Fornebu/Lysaker named after Fridtjof Nansen; not described in any source found."
+    },
+    "oslo-osm-way-143526382": {
+      "venueId": "oslo-osm-way-143526382",
+      "city": "oslo",
+      "name": "Radiumhospitalet",
+      "archetype": "hospital",
+      "subject": "Radiumhospitalet at Montebello: the national cancer hospital, a stepped group of pale rendered and brick blocks on a hillside",
+      "form": {
+        "footprint": "L",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cbb892",
+          "#8aa0a8",
+          "#6f777c"
+        ],
+        "roofColour": "#55595d",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1932 original, expanded",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Radium_Hospital",
+          "what": "Norwegian Radium Hospital independent cancer hospital 1932-2005 at Montebello, Oslo (no building description)"
+        }
+      ],
+      "notes": "Only the 1932 foundation is sourced; the buildings are typed. Several generations of block stand on the Montebello hill (original early block plus later expansions)."
+    },
+    "oslo-osm-way-308441483": {
+      "venueId": "oslo-osm-way-308441483",
+      "city": "oslo",
+      "name": "Ringkollen kapell",
+      "archetype": "shrine-small",
+      "subject": "Ringkollen kapell: a small timber chapel on a forested hill summit, steep gable roof and a small open belfry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8e3b2f",
+          "#ece8dd",
+          "#4a3a30"
+        ],
+        "roofColour": "#35383c",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "nordic",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "A hilltop chapel (Ringkollen, north-west of Oslo); nothing about its look was found. Small Norwegian timber chapel type assumed."
+    },
+    "oslo-osm-way-43222619": {
+      "venueId": "oslo-osm-way-43222619",
+      "city": "oslo",
+      "name": "Ullevaal Stadion",
+      "archetype": "stadium",
+      "subject": "Ullevaal Stadion seen from outside: four double-tier stands in grey concrete and steel around a 105 x 68 m pitch, floodlights mounted on the roof edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 202,
+        "depth_m": 162,
+        "storeys": 3,
+        "height_m": 23,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9adaf",
+          "#2f4e8c",
+          "#e9e9e6"
+        ],
+        "roofColour": "#6d7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1926 (rebuilt 1985-1998)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ullevaal_Stadion",
+          "what": "opened 1926; four rebuilt two-tier stands (west 1985, north/east c.1990, south 1998); stadium building 202 x 162 m, roof height 23 m, floodlights on roof, pitch 105 x 68 m, ~25,000-28,000 seats"
+        }
+      ],
+      "notes": "Main stands: west 1985, north/east c.1990, south 1998. Seats are blue and white. Dimensions 202 x 162 m x 23 m are from the sourced stadium building size. Pitch can be covered with a lifted plastic sheet."
+    },
+    "oslo-osm-way-443983964": {
+      "venueId": "oslo-osm-way-443983964",
+      "city": "oslo",
+      "name": "Intility Arena",
+      "archetype": "stadium",
+      "subject": "Intility Arena (Valle Hovin): a compact modern football stadium of 16,555 seats with four covered stands around an artificial pitch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#2e5f9a",
+          "#b8bcbd",
+          "#e9e9e6"
+        ],
+        "roofColour": "#5c6166",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Intility_Arena",
+          "what": "opened 2017, designed by Lille Froen AS and Stefan Ekberg Arkitekter, 16,555 seats, artificial pitch 105 x 68 m"
+        }
+      ],
+      "notes": "Home of Valerenga, opened 2017 at Valle Hovin. Stand colours blue and white are an assumption from club colours; size is an estimate from capacity."
+    },
+    "oslo-osm-way-48672338": {
+      "venueId": "oslo-osm-way-48672338",
+      "city": "oslo",
+      "name": "Tusenfryd",
+      "archetype": "park-landscape",
+      "subject": "Tusenfryd amusement park: forested hill with a tall drop tower and looping roller coaster track rising above rides and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece8dd",
+          "#d9b45a",
+          "#8e3b2f"
+        ],
+        "roofColour": "#4b4f54",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "drop tower (SpaceShot) rising above trees"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance with escalator through a coaster loop"
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tusenfryd",
+          "what": "amusement park on a hilly forested 55-acre site; SpaceShot tower and SpeedMonster track visible from the E6/E18 motorways; entrance escalator through a coaster loop; 34 attractions"
+        }
+      ],
+      "notes": "Recognisable by the tall drop tower and the steel coaster loop above the entrance; rides are not available as a feature id, so mast stands for the tower. Hilly spruce forest setting, 55 acres."
+    },
+    "oslo-osm-way-51446838": {
+      "venueId": "oslo-osm-way-51446838",
+      "city": "oslo",
+      "name": "Akershus universitetssykehus",
+      "archetype": "hospital",
+      "subject": "Akershus universitetssykehus (Ahus) in Lorenskog: a huge long hospital complex with a glass-covered street, pale cladding and wooden louvres",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 130,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e4e4df",
+          "#9bb0b8",
+          "#b58a5a"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akershus_University_Hospital",
+          "what": "new building opened 2008, designed by C. F. Moller, 953 beds, internal glass street atrium with art works"
+        }
+      ],
+      "notes": "C. F. Moller 2008 building with a central glass \"street\" atrium and 953 beds. Facade colours and floor count are estimates; the footprint is the visible central portion of a much larger campus."
+    },
+    "oslo-osm-way-760875553": {
+      "venueId": "oslo-osm-way-760875553",
+      "city": "oslo",
+      "name": "Jordal amfi",
+      "archetype": "stadium",
+      "subject": "Jordal Amfi (2020): a covered ice-hockey arena, a rectangular hall with a low-pitched curved roof and a clad entrance end",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#5c6a73",
+          "#c9ccce",
+          "#2e5f9a"
+        ],
+        "roofColour": "#6d7478",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "The Norwegian disambiguation shows a 1951 hall and a 2020 hall; dimensions and cladding of the new hall are estimated for an indoor ice arena of ~4,000 seats."
+    },
+    "oslo-osm-way-822899835": {
+      "venueId": "oslo-osm-way-822899835",
+      "city": "oslo",
+      "name": "Nittedal kirke",
+      "archetype": "church-gothic",
+      "subject": "Nittedal kirke: a white-painted wooden long church of 1869 with pointed windows and a copper-clad roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#ece8dd",
+          "#6f9a8a",
+          "#4a3a30"
+        ],
+        "roofColour": "#6f9a8a",
+        "roofMaterial": "copper",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1869",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://no.wikipedia.org/wiki/Nittedal_kirke",
+          "what": "wooden long church by Jacob Wilhelm Nordan, completed 1869, 375 seats, copper roof covering"
+        }
+      ],
+      "notes": "By Jacob Wilhelm Nordan (neo-Gothic architect), 375 seats. White paint and a bell tower at the west end are assumed from the common type; the source says only that corner turrets were removed when the copper roof was replaced."
+    },
+    "oslo-quiet-reflection": {
+      "venueId": "oslo-quiet-reflection",
+      "city": "oslo",
+      "name": "Betel Nærsnes",
+      "archetype": "church-modern",
+      "subject": "Betel Naersnes: a small free-church assembly hall in plain rendered walls with a low gable roof and a gravel car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece8dd",
+          "#8e3b2f",
+          "#6f777c"
+        ],
+        "roofColour": "#4b4f54",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Name suggests a Pentecostal \"Betel\" congregation hall; no description found. Typed as a simple Norwegian bedehus."
+    },
+    "oslo-recreation": {
+      "venueId": "oslo-recreation",
+      "city": "oslo",
+      "name": "Furuset kulturpark",
+      "archetype": "park-landscape",
+      "subject": "Furuset kulturpark: a city-district park with lawns, a paved events area and some sculpture, among 1970s housing blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d9d2c0",
+          "#7a8f6a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#4b4f54",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Norway",
+          "what": "general Norwegian timber and Functionalist building traditions used for typed guess"
+        }
+      ],
+      "notes": "Park in Furuset (east Oslo) described nowhere in what was found; contents are typed."
+    },
+    "oslo-transit": {
+      "venueId": "oslo-transit",
+      "city": "oslo",
+      "name": "Oslo Central Station",
+      "archetype": "transport-station",
+      "subject": "Oslo Central Station (Oslo S): a long main station building of 1980 with a large glass-roofed hall, the older Oslo O building beside it, and platforms with canopies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "brick",
+        "colours": [
+          "#cfd3d5",
+          "#8b4a3a",
+          "#5a5d60"
+        ],
+        "roofColour": "#6f777c",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 6
+        },
+        {
+          "id": "rail-tracks",
+          "count": 10
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oslo_Central_Station",
+          "what": "John Engh design, taken into use 1980; two buildings (Oslo Ø and Oslo S) with shopping malls; 19 platform tracks"
+        }
+      ],
+      "notes": "19 platform tracks, John Engh design taken into use 1980; the platform canopies are steel-and-glass. Overall dimensions are estimates."
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "yelwa-market-bauchi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json#yelwa-market-bauchi",
+   "used": "neighbourhood market, 70 x 55 m: lock-up rows, corrugated green-roofed sheds, umbrellas, gate; OSM match is a 156 m2 building so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "depth": 3.5,
+    "height": 3,
+    "roof": "shed",
+    "unit_width": 2.4,
+    "roof_colour": "#3f6b4e",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    20,
+    0
+   ],
+   "params": {
+    "length": 48,
+    "depth": 3.5,
+    "height": 3,
+    "roof": "shed",
+    "unit_width": 2.4,
+    "roof_colour": "#3f6b4e",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    0,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "roof_colour": "#3f6b4e",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.6,
+    "roof": "gable",
+    "roof_colour": "#6b7f5a",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -22,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    22,
+    10,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.4,
+    "colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -32,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   85,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; typed layout of lock-ups and sheds."
+ }
+}

@@ -1,0 +1,339 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-airport-malabo-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Aeropuerto_de_Malabo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Fernando2000",
+   "view": "front",
+   "file": "/tmp/places-evidence/malabo/ap1.jpg",
+   "used": "landside elevation: three low volumes, cream walls, long white swept flat roofs with deep overhangs, glazed central bay, light masts"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Malabo_International_Airport.jpg",
+   "licence": "GFDL",
+   "author": "UR-SDV",
+   "view": "side",
+   "used": "cream-yellow walls, red-brown roof of the end block, green glazed jet bridge, white roof fascias"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/654502246",
+   "used": "overall size only (284 m long in OSM incl. apron); the terminal block is modelled at about 120 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d29a",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "punched"
+    },
+    "plinth": 0.4,
+    "glassColour": "#a9bdb0"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#f4f4f0",
+    "material": "metal-sheet",
+    "overhang": 5.5,
+    "parapet": 0,
+    "pitch": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entry-bay",
+   "footprint": {
+    "rect": [
+     10,
+     4
+    ]
+   },
+   "at": [
+    0,
+    -14
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d29a",
+    "windows": "punched",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f0f0ec",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    -34,
+    1
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d29a",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#f4f4f0",
+    "material": "metal-sheet",
+    "overhang": 5.5,
+    "parapet": 0,
+    "pitch": 7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     34,
+     22
+    ]
+   },
+   "at": [
+    34,
+    1
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d29a",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a3b2e",
+    "material": "metal-sheet",
+    "overhang": 5.5,
+    "parapet": 0,
+    "pitch": 7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -16.5,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 1.2,
+    "bottom": 7.6,
+    "colour": "#2a3a4a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -54,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -36,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -18,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    36,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    54,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 16,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -20,
+    4.2
+   ],
+   "params": {
+    "form": "curved",
+    "width": 44,
+    "depth": 7,
+    "height": 4.2,
+    "rise": 1.2,
+    "columns": 6,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    44,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.4,
+    "bottom": 3,
+    "colour": "#c8372d"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "garden",
+  "forecourtDepth": 24,
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     -20
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -26
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     -18
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "wing roofs are low-pitch shed slabs, not truly upturned swept wings; masts are plain thin poles without double heads; no jet bridge or roadside wall; billboard small"
+ }
+}

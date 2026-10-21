@@ -1,0 +1,312 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/232401859",
+   "used": "real outline (about 209 x 123 m, rotated 39 degrees to the axes and scaled to 52 percent) as the embankment and fence line"
+  },
+  {
+   "kind": "text",
+   "used": "brief: one covered rectangular concrete stand with a green roof, grass embankments on the other sides, four floodlights, two gates. The linked Commons photo is the Colosseum in Rome, not this stadium, so it was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 30,
+  "fovDeg": 50
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this ground; stand side and embankment height are assumed; outline rotated to the axes"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -54.3,
+      -18.1
+     ],
+     [
+      -54.3,
+      32.0
+     ],
+     [
+      54.3,
+      32.0
+     ],
+     [
+      54.3,
+      -17.2
+     ],
+     [
+      25.7,
+      -17.2
+     ],
+     [
+      25.8,
+      -32.0
+     ],
+     [
+      -25.3,
+      -32.0
+     ],
+     [
+      -25.3,
+      -18.1
+     ]
+    ],
+    "z0": 0,
+    "height": 0.9,
+    "topScale": 0.9,
+    "colour": "#c9b48a",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     62,
+     36
+    ],
+    "z0": 0.9,
+    "height": 0.12,
+    "colour": "#b5655a",
+    "top": true
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    0,
+    1.05
+   ],
+   "params": {
+    "length": 54,
+    "width": 32
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -27,
+     -20
+    ],
+    "end": [
+     27,
+     -20
+    ],
+    "flip": true,
+    "rows": 12,
+    "rise": 0.45,
+    "run": 0.85,
+    "firstHeight": 1.2,
+    "under": "solid",
+    "bay": 6,
+    "seatColour": "#cfc6b0",
+    "concreteColour": "#cfc6b0",
+    "underColour": "#b7a98c",
+    "canopy": {
+     "height": 5.5,
+     "depth": 8,
+     "thickness": 0.4,
+     "slopeDeg": 6,
+     "colour": "#2e6b4a",
+     "edgeColour": "#25573c"
+    }
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    24,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "post_height": 2.4,
+    "facing": "south"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    -24,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#a8654a",
+    "board_colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    24,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#a8654a",
+    "board_colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -54.3,
+      -18.1
+     ],
+     [
+      -54.3,
+      32.0
+     ],
+     [
+      54.3,
+      32.0
+     ],
+     [
+      54.3,
+      -17.2
+     ],
+     [
+      25.7,
+      -17.2
+     ],
+     [
+      25.8,
+      -32.0
+     ],
+     [
+      -25.3,
+      -32.0
+     ],
+     [
+      -25.3,
+      -18.1
+     ],
+     [
+      -54.3,
+      -18.1
+     ]
+    ],
+    "height": 2.2,
+    "thickness": 0.3,
+    "colour": "#e8d3b0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    26,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    38,
+    26,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -46
+    ],
+    "height": 8
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     -46
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-osm-way-232401859"
+}

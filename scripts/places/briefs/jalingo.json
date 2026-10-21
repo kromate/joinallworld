@@ -1,0 +1,924 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "jalingo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "jalingo",
+    "climate": "savanna",
+    "vernacular": "Young state capital (Taraba State since 1991) on the Muri plateau fringe: low-rise sandcrete-block bungalows and 2-3 storey office blocks in cream, ochre or pale-green painted render, corrugated or long-span coloured metal roofs, red laterite earth and dust, scattered neem and mango trees and bare granite rock outcrops at the town edge; mosque domes and minarets are the tallest forms.",
+    "wallColours": [
+      "#e3d3b0",
+      "#d9c9a3",
+      "#c8a982",
+      "#b4654a",
+      "#ddd8cc",
+      "#a9b79a"
+    ],
+    "roofColours": [
+      "#8b4a35",
+      "#6d7a80",
+      "#a05a3c",
+      "#4f6d58"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Hausa/Fulani (Muri emirate) influence in pointed or scalloped arches and simple geometric relief on mosque and government facades; painted parapet bands and boundary walls; minimal ornament on markets, which are rows of lock-up shops and timber-pole sheds.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Jalingo",
+        "what": "tropical savanna climate, hot dry season, dust, named markets, state capital since 1991"
+      },
+      {
+        "url": "https://kupi.com/en/explore/nigeria/jalingo",
+        "what": "Muri emirate palace and Taraba State University as the main architectural landmarks (secondary travel source)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Taraba_State",
+        "what": "mixed Fulani, Jukun and Mumuye population; savanna setting"
+      }
+    ]
+  },
+  "places": {
+    "bando-market": {
+      "venueId": "bando-market",
+      "city": "jalingo",
+      "name": "Bando Market",
+      "archetype": "market-open",
+      "subject": "Bando Market: an open-air market of timber-pole and corrugated-iron sheds with lock-up shop rows and umbrella stalls on red laterite",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9a98a",
+          "#8b4a35",
+          "#6d7a80"
+        ],
+        "roofColour": "#6d7a80",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30,
+          "note": "rows of trader stalls"
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "lock-ups",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Jalingo markets are generally unplanned sheds and lock-up rows (Wikipedia lists Main, Yelwa, Grain and Mile Six markets, not Bando)."
+    },
+    "central-mosque-sabo-gari": {
+      "venueId": "central-mosque-sabo-gari",
+      "city": "jalingo",
+      "name": "Central Mosque Sabo Gari Jalingo",
+      "archetype": "mosque-domed",
+      "subject": "Central Mosque, Sabo Gari: a modern block-built Friday mosque with one large central dome, four corner domes and two slim minarets, white with green trim",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#f0ece0",
+          "#3f7a58",
+          "#c9c2b0"
+        ],
+        "roofColour": "#3f7a58",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "dome",
+          "count": 4,
+          "note": "smaller corner domes"
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "about 22 m"
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Typical Nigerian central mosque template (central dome, minarets, arched windows). Differs from the other Jalingo mosques by its larger footprint and two minarets."
+    },
+    "college-of-education-jalingo": {
+      "venueId": "college-of-education-jalingo",
+      "city": "jalingo",
+      "name": "College of Education, Jalingo",
+      "archetype": "campus-block",
+      "subject": "College of Education Jalingo: low pale-cream lecture blocks with long verandas around an open quad, sandcrete with corrugated roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d3b0",
+          "#8b4a35",
+          "#bfb9aa"
+        ],
+        "roofColour": "#8b4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "walkway verandas"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Kept as a modest institutional campus block."
+    },
+    "federal-medical-centre-jalingo": {
+      "venueId": "federal-medical-centre-jalingo",
+      "city": "jalingo",
+      "name": "Federal Medical Centre Jalingo",
+      "archetype": "hospital",
+      "subject": "Federal Medical Centre Jalingo: a multi-wing 2-3 storey hospital with covered ambulance bay and blank red-cross board, formerly the state General Hospital",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d2",
+          "#4f8f7a",
+          "#bdb7a6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Federal_Medical_Centre,_Jalingo",
+          "what": "established November 1999, formerly General Hospital Jalingo (nothing about the buildings)"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Wing count and heights are estimates."
+    },
+    "government-house-mosque-jalingo": {
+      "venueId": "government-house-mosque-jalingo",
+      "city": "jalingo",
+      "name": "Government House Mosque Jalingo",
+      "archetype": "mosque-domed",
+      "subject": "Government House Mosque: a compact government-compound mosque with a single stepped dome, one tall minaret and polished arcaded front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "marble",
+        "colours": [
+          "#efe9d8",
+          "#b8a15a",
+          "#d2cab8"
+        ],
+        "roofColour": "#b8a15a",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single tall minaret"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Smaller and plainer than the Sabo Gari and Nana Aishat mosques: one minaret, one dome, arcaded porch. Sits inside a secured government compound."
+    },
+    "jalingo-centre-market": {
+      "venueId": "jalingo-centre-market",
+      "city": "jalingo",
+      "name": "Jalingo centre market",
+      "archetype": "market-hall",
+      "subject": "Jalingo Centre Market: a dense block of lock-up shops and a covered trading hall with long-span corrugated roof and stall lanes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a3",
+          "#8b4a35",
+          "#7a8085"
+        ],
+        "roofColour": "#6d7a80",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 10
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "Jalingo Main Market is one of four named markets; no building description"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. May correspond to Wikipedia's Jalingo Main Market; this is not confirmed."
+    },
+    "jolly-nyame-stadium": {
+      "venueId": "jolly-nyame-stadium",
+      "city": "jalingo",
+      "name": "Jolly Nyame Stadium",
+      "archetype": "stadium",
+      "subject": "Jolly Nyame Stadium: a mid-size football bowl with concrete terraces on four sides, a covered main stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 190,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#c9c4b6",
+          "#2f6b4f",
+          "#a8a29a"
+        ],
+        "roofColour": "#4f6d58",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Taraba_State",
+          "what": "stadium belongs to the Taraba governor era of the 2000s (named for former governor Jolly Nyame); no construction details found"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Named for the state governor of 1999-2007. Capacity and roof extent unknown; modelled as a typical Nigerian state-capital stadium with one covered stand."
+    },
+    "nana-aishat-central-mosque": {
+      "venueId": "nana-aishat-central-mosque",
+      "city": "jalingo",
+      "name": "Nana Aishat Central Mosque Jalingo",
+      "archetype": "mosque-domed",
+      "subject": "Nana Aishat Central Mosque: a large modern Friday mosque with a tall central dome flanked by four minarets, cream with turquoise accents",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "multi-dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "whitewash",
+        "colours": [
+          "#efe6d0",
+          "#3b8f94",
+          "#c9bfa5"
+        ],
+        "roofColour": "#3b8f94",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "large central dome"
+        },
+        {
+          "id": "dome",
+          "count": 4,
+          "note": "corner domes"
+        },
+        {
+          "id": "minaret",
+          "count": 4,
+          "note": "four corner minarets"
+        },
+        {
+          "id": "arches",
+          "count": 8
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Deliberately given a four-minaret, multi-dome silhouette so it differs from the single-minaret Government House mosque and the two-minaret Sabo Gari mosque."
+    },
+    "our-lady-queen-of-peace-cathedral": {
+      "venueId": "our-lady-queen-of-peace-cathedral",
+      "city": "jalingo",
+      "name": "Our Lady Queen Of Peace Catholic Cathedral",
+      "archetype": "church-modern",
+      "subject": "Our Lady Queen of Peace Catholic Cathedral: a wide modern cathedral with a steep concrete gable nave, a free-standing bell tower and a cross over the porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#efeadb",
+          "#8c5a3c",
+          "#b9b2a0"
+        ],
+        "roofColour": "#7a3f2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Catholic diocesan cathedral of Jalingo; real appearance not documented in findable sources."
+    },
+    "rafin-sanyi-rock": {
+      "venueId": "rafin-sanyi-rock",
+      "city": "jalingo",
+      "name": "Rafin Sanyi Rock",
+      "archetype": "park-landscape",
+      "subject": "Rafin Sanyi Rock: a bare granite outcrop rising from scrub and laterite at the edge of Jalingo, with a worn footpath up the rock face",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 35,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#8a8279",
+          "#6f685f",
+          "#a39b8f"
+        ],
+        "roofColour": "#8a8279",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "worn path up the rock"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Taraba_State",
+          "what": "savanna terrain with rock outcrops (general only)"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. The rock is a natural feature; modelled as a rounded granite inselberg with scrub. Height is an estimate."
+    },
+    "specialist-hospital-jalingo": {
+      "venueId": "specialist-hospital-jalingo",
+      "city": "jalingo",
+      "name": "Specialist Hospital Jalingo",
+      "archetype": "hospital",
+      "subject": "Specialist Hospital Jalingo: a state-run 2-storey hospital with a central entrance block, two long ward wings and a covered drop-off canopy",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f0ead8",
+          "#3a7a9a",
+          "#bdb7a6"
+        ],
+        "roofColour": "#8b4a35",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Distinguished from Federal Medical Centre by smaller U plan and pitched corrugated roof."
+    },
+    "st-peters-catholic-church-jalingo": {
+      "venueId": "st-peters-catholic-church-jalingo",
+      "city": "jalingo",
+      "name": "St. Peter`s Catholic Church",
+      "archetype": "church-modern",
+      "subject": "St. Peter's Catholic Church: a small parish church with a simple gabled nave, a short porch tower and a blank cross on the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#efe8d6",
+          "#a24a32",
+          "#c8bfa8"
+        ],
+        "roofColour": "#8b4a35",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "short porch tower"
+        },
+        {
+          "id": "stained-glass",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Small parish church; far smaller than the cathedral."
+    },
+    "taraba-state-civil-service": {
+      "venueId": "taraba-state-civil-service",
+      "city": "jalingo",
+      "name": "Taraba State Civil Service",
+      "archetype": "office-low",
+      "subject": "Taraba State Civil Service: a three-storey government office block with a long ribbon-windowed front, projecting entrance portico and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc2",
+          "#2f6b4f",
+          "#bfb9aa"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jalingo",
+          "what": "climate and city context only"
+        }
+      ],
+      "notes": "No source describing this building's appearance was found; typed from the venue type and city style. Typical state-secretariat style office block in cream with green trim."
+    }
+  }
+}

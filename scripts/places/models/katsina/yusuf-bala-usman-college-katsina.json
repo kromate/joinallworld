@@ -1,0 +1,173 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "yusuf-bala-usman-college-katsina",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/katsina.json",
+   "used": "typed U-shaped state college campus around a quad; Wikidata Q108443815 only"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "north-wing",
+   "footprint": {
+    "rect": [
+     80,
+     12
+    ]
+   },
+   "at": [
+    0,
+    19
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#a9764f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     12,
+     38
+    ]
+   },
+   "at": [
+    -34,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#a9764f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     12,
+     38
+    ]
+   },
+   "at": [
+    34,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bands": "#a9764f",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "walkway",
+   "footprint": {
+    "rect": [
+     20,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9764f",
+    "material": "concrete",
+    "overhang": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -10,
+     -30
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     12,
+     -32
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; layout typed"
+ }
+}

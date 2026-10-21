@@ -1,0 +1,223 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/255797327",
+   "used": "not used: a 15,000 m2 place_of_worship area with no name, only containing the venue point; it informs only the 120 x 80 m site extent"
+  },
+  {
+   "kind": "text",
+   "used": "brief: youth centre with sports courts, a hall and open playing fields behind a wall"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     26,
+     14
+    ]
+   },
+   "at": [
+    -22,
+    -10
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#4f8a8c",
+    "plinth": 0.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a85f46",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-wing",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -4,
+    -14
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece3cc",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a85f46",
+    "material": "corrugated",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "football-pitch",
+   "at": [
+    22,
+    22,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "width": 36,
+    "stripes": 6
+   }
+  },
+  {
+   "type": "court-floor",
+   "at": [
+    -26,
+    18,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 14,
+    "colour": "#4f8a8c",
+    "pool": false
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "head_width": 2.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -14,
+    26,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "head_width": 2.5
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    2,
+    2,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5,
+    "colour": "#ece3cc",
+    "cap_colour": "#a85f46"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.2,
+    "colour": "#d9cfb4",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "colour": "#4f8a8c"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    18,
+    -31,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "colour": "#4f8a8c"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo or reliable outline; layout of hall, courts and pitch is a plausible youth-centre arrangement, not located from evidence"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "freetown",
+ "venueId": "freetown-recreation"
+}

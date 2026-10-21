@@ -1,0 +1,1477 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "niamey",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "niamey",
+    "climate": "sahel",
+    "vernacular": "Hot Sahelian river capital on the Niger: low (1-3 storey) flat-roofed compounds of sun-dried banco mud brick or cement-block rendered in sand, ochre or cream, behind plastered boundary walls; round thatched and conical-roofed huts and mat houses in older and rural-style quarters; wide boulevards and roundabouts; 1970s-80s uranium-era civic buildings in a Neo-Sudanic revival with pinnacled parapets; newer concrete and glass blocks in the centre.",
+    "wallColours": [
+      "#c9ad86",
+      "#d8c3a0",
+      "#e9dfc6",
+      "#f1ece0",
+      "#b5b0a6",
+      "#c28f5a",
+      "#a97c50"
+    ],
+    "roofColours": [
+      "#8b6a52",
+      "#7d8790",
+      "#a35a3c",
+      "#b0aaa0"
+    ],
+    "wallMaterials": [
+      "mud-render",
+      "render",
+      "concrete",
+      "painted-render",
+      "whitewash",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "acacia",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Hausa-style incised and relief geometric patterns on banco facades and gateways, battlemented/pinnacled parapets and toron-like projecting beams on Neo-Sudanic civic buildings, whitewashed or ochre rendered boundary walls, round thatched Songhai/Zarma/Fulani huts and Tuareg mat dwellings at heritage sites.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Niamey",
+        "what": "Niamey: grid plan with roundabouts, mudbrick as the common local material, uranium-funded 1970s-80s public buildings in a revival of the Sudanese style, 2010s multi-storey business districts"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Museum_of_Niger",
+        "what": "Niger national museum is categorised under Neo-Sudanic architecture; five traditional houses (Fulani, Hausa, Songhai, Tuareg, Zarma) are shown"
+      }
+    ]
+  },
+  "places": {
+    "niamey-airport-niamey-airport": {
+      "venueId": "niamey-airport-niamey-airport",
+      "city": "niamey",
+      "name": "Diori Hamani International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Niamey passenger terminal seen from the landside forecourt: a low rendered terminal block with a flat entrance canopy and a separate control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#5f7f8f",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Diori_Hamani_International_Airport",
+          "what": "Airport ~9 km SE of centre, shares site with Air Base 101, 3,800 m and 3,000 m runways, ASECNA tower and EAMAC school on the complex; terminal appearance is NOT described by the source"
+        }
+      ],
+      "notes": "Terminal appearance was not findable in the sources reached; form and colours are a typed guess for a modest West African regional-capital terminal (about 1.2 million pax/yr capacity class) from the city style. Recognisable by the flat canopy and an ASECNA control tower."
+    },
+    "niamey-clinic": {
+      "venueId": "niamey-clinic",
+      "city": "niamey",
+      "name": "Hôpital de Gawèye",
+      "archetype": "hospital",
+      "subject": "Gawèye district hospital: low rendered pavilion blocks in a walled compound",
+      "form": {
+        "footprint": "H",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#6f9a8a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real hospital in the Gawèye quarter (name and coordinates from the venue list); no description found, so a typed low-rise pavilion hospital from the city style."
+    },
+    "niamey-community-notices": {
+      "venueId": "niamey-community-notices",
+      "city": "niamey",
+      "name": "SONIDEP Dépôt de Sorey",
+      "archetype": "industrial",
+      "subject": "Fuel storage depot with cylindrical tanks, a pipework yard and a small office block behind a perimeter wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b8bcbc",
+          "#c9ad86",
+          "#8b6a52"
+        ],
+        "roofColour": "#7d8790",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "storage-tanks",
+          "count": 6,
+          "note": "cylindrical white/grey fuel tanks"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flare-stack",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The game kind says statehouse, but SONIDEP is the national petroleum products company, so a fuel depot is the honest archetype. No imagery or description found; typed from the place type. Tank count is a guess."
+    },
+    "niamey-community-voting-game": {
+      "venueId": "niamey-community-voting-game",
+      "city": "niamey",
+      "name": "Rond point Tolle",
+      "archetype": "park-landscape",
+      "subject": "A traffic roundabout with a landscaped central island and a low plinth, ringed by sand roads",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8c3a0",
+          "#c9ad86",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "central plinth or sculpture, form unknown"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low kerb wall"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A roundabout on the northwest edge of the city; nothing was found describing any monument on it. Typed as a landscaped circle from the city style."
+    },
+    "niamey-community-workshop": {
+      "venueId": "niamey-community-workshop",
+      "city": "niamey",
+      "name": "Abdou Moumouni University",
+      "archetype": "campus-block",
+      "subject": "Main faculty buildings of Niger's leading university: long two-storey rendered blocks with covered walkways around open sandy courts",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkways between blocks"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "what": "University described as Niger's most important university, on the right bank of the river (no building description)"
+        }
+      ],
+      "notes": "Venue kind was office but the real place is a university. Appearance not described in sources reached; typed campus block from city style."
+    },
+    "niamey-market-game": {
+      "venueId": "niamey-market-game",
+      "city": "niamey",
+      "name": "Marché de Bougoum",
+      "archetype": "market-open",
+      "subject": "A suburban neighbourhood market: rows of tin-roofed stalls and open-fronted lock-up shops around sandy lanes",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9ad86",
+          "#8b6a52",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8b6a52",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 25
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "lock-ups",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real market on the west edge of Niamey; nothing found about its form. Typed from city style."
+    },
+    "niamey-meal-stop": {
+      "venueId": "niamey-meal-stop",
+      "city": "niamey",
+      "name": "Restaurant Banodo",
+      "archetype": "restaurant",
+      "subject": "Roadside restaurant: single-storey rendered building with a shaded terrace and plastic tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#8b6a52"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small local restaurant; no description exists in findable sources. Typed generic."
+    },
+    "niamey-osm-node-10770891720": {
+      "venueId": "niamey-osm-node-10770891720",
+      "city": "niamey",
+      "name": "Restaurant Soniloga",
+      "archetype": "restaurant",
+      "subject": "Small local restaurant with a walled yard and a covered eating area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#8b6a52"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small local restaurant; no description exists in findable sources. Typed generic."
+    },
+    "niamey-osm-node-11419918096": {
+      "venueId": "niamey-osm-node-11419918096",
+      "city": "niamey",
+      "name": "Institut National de la Jeunesse, des Sports et de la Culture",
+      "archetype": "campus-block",
+      "subject": "Training institute: a main rendered block with sports ground beside it",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real national institute (INJS); no building description found. Typed campus block."
+    },
+    "niamey-osm-node-1684101906": {
+      "venueId": "niamey-osm-node-1684101906",
+      "city": "niamey",
+      "name": "Boubou Hama National Museum",
+      "archetype": "museum-theatre",
+      "subject": "The national museum park: a Neo-Sudanic pinnacled exhibition building with, scattered through shaded grounds, five traditional dwellings (Hausa flat-roofed banco house, Songhai/Zarma and Fulani round thatched huts, Tuareg mat hut) and a small domed shelter for the Tree of Ténéré",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "wings": 5,
+        "variant": "park of vernacular pavilions"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "whitewash",
+        "colours": [
+          "#c9ad86",
+          "#e9dfc6",
+          "#a97c50"
+        ],
+        "roofColour": "#a97c50",
+        "roofMaterial": "thatch",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 5,
+          "note": "five traditional houses: Fulani, Hausa, Songhai, Tuareg, Zarma"
+        },
+        {
+          "id": "pinnacles",
+          "count": 8,
+          "note": "Neo-Sudanic parapet pinnacles on main building"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Hausa-style incised wall pattern"
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "bust of Boubou Hama and giraffe sculptures"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "sahelian",
+      "era": "1959",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Niger",
+          "what": "Opened 1959 as the Musée National du Niger; museum in a park with cultural and scientific sections and a zoo; five traditional houses for Fulani, Hausa, Songhai, Tuareg, Zarma; Tree of Ténéré remains in own mausoleum since 1979; Neo-Sudanic category; bust and giraffe sculptures by Issoufou Lankondé"
+        }
+      ],
+      "notes": "Source gives layout and the five-house programme but not facade design or colours; banco/ochre colours and pinnacles follow the Neo-Sudanic classification and local vernacular. The zoo is omitted from the model."
+    },
+    "niamey-osm-node-2454056091": {
+      "venueId": "niamey-osm-node-2454056091",
+      "city": "niamey",
+      "name": "AGRHYMET Regional Center",
+      "archetype": "campus-block",
+      "subject": "Regional agro-meteorology research and training centre: low rendered office and classroom wings in a walled garden",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1,
+          "note": "weather instrument compound / panels"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real CILSS regional centre; no building description found. Typed from city style."
+    },
+    "niamey-osm-node-2715713022": {
+      "venueId": "niamey-osm-node-2715713022",
+      "city": "niamey",
+      "name": "Place Djibo Bakary",
+      "archetype": "park-landscape",
+      "subject": "A paved city square named for Djibo Bakary with trees, benches and a central feature",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8c3a0",
+          "#c9ad86",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A central-Niamey square; nothing found about its design. Features are a guess from typical town squares."
+    },
+    "niamey-osm-node-4491536811": {
+      "venueId": "niamey-osm-node-4491536811",
+      "city": "niamey",
+      "name": "École des Mines de l'industrie et de la Geologie",
+      "archetype": "campus-block",
+      "subject": "Engineering school: a two-storey classroom block with workshop sheds beside it",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real school (EMIG) beside the university quarter; no description found. Typed campus block."
+    },
+    "niamey-osm-node-7444882086": {
+      "venueId": "niamey-osm-node-7444882086",
+      "city": "niamey",
+      "name": "Kangaweydo",
+      "archetype": "park-landscape",
+      "subject": "A riverside outdoor leisure site on the edge of the city: sandy ground, scattered acacia and a few shade shelters",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9ad86",
+          "#8b6a52",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8b6a52",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "thatched shade shelters"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only a place name and coordinates were available; what the site is was not found. Typed open-air leisure site."
+    },
+    "niamey-osm-way-1013753293": {
+      "venueId": "niamey-osm-way-1013753293",
+      "city": "niamey",
+      "name": "Marché Kalley Plateau",
+      "archetype": "market-open",
+      "subject": "A plateau-district market: lines of lock-up shops and tin-roofed stalls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9ad86",
+          "#8b6a52",
+          "#b5b0a6"
+        ],
+        "roofColour": "#8b6a52",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real market in Kalley/Plateau, north Niamey; no description found. Typed."
+    },
+    "niamey-osm-way-1160782464": {
+      "venueId": "niamey-osm-way-1160782464",
+      "city": "niamey",
+      "name": "Parc d'Attraction Aéroport",
+      "archetype": "park-landscape",
+      "subject": "Amusement park by the airport: fenced grounds with a small ferris wheel, kiosks and shaded paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9ad86",
+          "#d9534f",
+          "#4a8fc9"
+        ],
+        "roofColour": "#8b6a52",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real amusement park near the airport per the venue list; rides not documented, so only a gate, kiosks and a fence are given. Typed."
+    },
+    "niamey-osm-way-1186878593": {
+      "venueId": "niamey-osm-way-1186878593",
+      "city": "niamey",
+      "name": "MATERNITE",
+      "archetype": "hospital",
+      "subject": "A maternity clinic: single-storey rendered ward block with a shaded veranda",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#6f9a8a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic maternity ward in northeast Niamey; no description found. Typed."
+    },
+    "niamey-osm-way-308752310": {
+      "venueId": "niamey-osm-way-308752310",
+      "city": "niamey",
+      "name": "National Hospital of Niamey",
+      "archetype": "hospital",
+      "subject": "The country's largest referral hospital: several multi-storey rendered ward blocks linked by covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9dfc6",
+          "#5f9a8a",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "what": "Niamey National Hospital described as the country's largest referral hospital (no building description)"
+        }
+      ],
+      "notes": "Appearance not described in sources reached; block layout and colours typed from city style. Size reflects its status as the largest hospital."
+    },
+    "niamey-osm-way-380017757": {
+      "venueId": "niamey-osm-way-380017757",
+      "city": "niamey",
+      "name": "Église Notre-Dame du Perpétuel Secours",
+      "archetype": "church-modern",
+      "subject": "Catholic church: a plain rendered nave with a square bell tower and a gabled entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#c28f5a",
+          "#8b6a52"
+        ],
+        "roofColour": "#8b6a52",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real Catholic church in central Niamey; its actual architecture was not found. Typed small mission-style church. Do not treat the tower as documented."
+    },
+    "niamey-osm-way-611735693": {
+      "venueId": "niamey-osm-way-611735693",
+      "city": "niamey",
+      "name": "Stade Général Seyni Kountché",
+      "archetype": "stadium",
+      "subject": "The national stadium: an oval concrete bowl with a covered main stand, athletics track, floodlight masts and a scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d0c4",
+          "#a8483a",
+          "#8e8a82"
+        ],
+        "roofColour": "#a8a49a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cover over the main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Stade_G%C3%A9n%C3%A9ral-Seyni-Kountch%C3%A9",
+          "what": "35,000 seats, inaugurated 19 Dec 1988 via Nigerien-Chinese cooperation, natural grass, renovated 1999 (Chinese-funded) into a complex with indoor arena"
+        }
+      ],
+      "notes": "Capacity, date and Chinese cooperation are documented; the roof, stand layout and colours are NOT, so they follow 1980s Chinese-built stadiums (concrete bowl, one covered stand). The ~3,000-seat indoor arena is outside the model."
+    },
+    "niamey-osm-way-628422326": {
+      "venueId": "niamey-osm-way-628422326",
+      "city": "niamey",
+      "name": "Parc d'agrément",
+      "archetype": "park-landscape",
+      "subject": "A fenced public leisure park with tree-lined paths, lawns and a central pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8c3a0",
+          "#c9ad86",
+          "#b5b0a6"
+        ],
+        "roofColour": "#b0aaa0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Generic name (pleasure park) on the west side of the city; no description found. Typed."
+    },
+    "niamey-osm-way-921259734": {
+      "venueId": "niamey-osm-way-921259734",
+      "city": "niamey",
+      "name": "Restaurant Bani Bani",
+      "archetype": "restaurant",
+      "subject": "Restaurant: a rendered single-storey building with a garden terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#8b6a52"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Typed generic."
+    },
+    "niamey-quiet-reflection": {
+      "venueId": "niamey-quiet-reflection",
+      "city": "niamey",
+      "name": "Great Mosque of Niamey",
+      "archetype": "mosque-domed",
+      "subject": "The Grand Mosque (the 1977-1989 Libyan-funded \"Mosquée Kadhafi\") with a central dome over a broad prayer hall and a tall minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe8d6",
+          "#c9ad86",
+          "#8f8a80"
+        ],
+        "roofColour": "#d8d2c2",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "tall square minaret, height not documented"
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1977-1989",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Grande_mosqu%C3%A9e_de_Niamey",
+          "what": "First stone 25 Feb 1977, completed May 1989, supported by Libya (nickname Mosquée Kadhafi); hosts Friday and Eid prayers"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "what": "Grand Mosque built under Seyni Kountché and funded by Libya"
+        }
+      ],
+      "notes": "Dates and funding are documented, but no source reached describes the form (dome, minaret height, colours). Typed as a Libyan-funded late-1970s Arab-Islamic domed mosque; a Neo-Sudanic design is also possible. Treat all form values as unverified."
+    },
+    "niamey-recreation": {
+      "venueId": "niamey-recreation",
+      "city": "niamey",
+      "name": "Zen Espace",
+      "archetype": "park-landscape",
+      "subject": "A private leisure garden with shaded seating, a small building and gravel paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9dfc6",
+          "#c28f5a",
+          "#8b6a52"
+        ],
+        "roofColour": "#8b6a52",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only a name and coordinates; actual nature of the venue unverified. Typed as a leisure garden."
+    },
+    "niamey-transit": {
+      "venueId": "niamey-transit",
+      "city": "niamey",
+      "name": "Sonef Tranport Voyageurs",
+      "archetype": "transport-station",
+      "subject": "Long-distance coach depot: an open sandy yard with a small ticket office and a row of parked coaches under a shade roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9dfc6",
+          "#2f6b9a",
+          "#8b6a52"
+        ],
+        "roofColour": "#7d8790",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Private coach company terminal; no description found. Typed bus station from the place type."
+    }
+  }
+}

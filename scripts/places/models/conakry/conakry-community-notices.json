@@ -1,0 +1,373 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "conakry",
+ "venueId": "conakry-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_Mohammed_V_13.jpg",
+   "licence": "CC0",
+   "author": "Aboubacarkhoraa",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/palace2.jpg",
+   "used": "round drum hall with ring of radial gable fins, shallow grey dome with lantern drum, two bands of pierced screen, low service wing right, colours"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_Mohammed_V.jpg",
+   "licence": "CC0",
+   "author": "Aboubacarkhoraa",
+   "view": "front",
+   "file": "/tmp/places-evidence/conakry/palace1.jpg",
+   "used": "confirm folded zigzag roof ring and drum proportions"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7889571",
+   "used": "overall site extent only (205 m wide, hall is the round core)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 44,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "drum",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 20,
+    "radius": 31,
+    "height": 15,
+    "colour": "#d4ccae",
+    "windows": "none",
+    "material": "painted-render",
+    "glassColour": "#cfc6a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 20,
+    "radius": 31.5,
+    "z0": 4,
+    "height": 2.4,
+    "colour": "#e4ddc8",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 20,
+    "radius": 31.5,
+    "z0": 7.5,
+    "height": 2.4,
+    "colour": "#e4ddc8",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 20,
+    "radius": 32.5,
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#bdb49a",
+    "windows": "none",
+    "material": "painted-render"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    0,
+    0,
+    14.5
+   ],
+   "params": {
+    "segments": 28,
+    "colour": "#5d5f61",
+    "profile": [
+     [
+      28,
+      0
+     ],
+     [
+      27,
+      2.5
+     ],
+     [
+      23,
+      6
+     ],
+     [
+      16,
+      9.5
+     ],
+     [
+      9,
+      11.5
+     ],
+     [
+      6.5,
+      12.2
+     ],
+     [
+      6.5,
+      13
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 10,
+    "z0": 27,
+    "height": 3,
+    "colour": "#6e6c68",
+    "windows": "none",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0
+   ],
+   "params": {
+    "n": 10,
+    "radius": 11,
+    "z0": 30,
+    "height": 1.1,
+    "colour": "#5f6163",
+    "windows": "none",
+    "material": "painted-render"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     36,
+     16
+    ]
+   },
+   "at": [
+    58,
+    -12
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3cab0",
+    "windows": "ribbon",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9c9a90",
+    "pitch": 10,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    14.5
+   ],
+   "params": {
+    "kind": "folded",
+    "circle": true,
+    "width": 76,
+    "depth": 76,
+    "rise": 5,
+    "folds": 14,
+    "thickness": 0.6,
+    "colour": "#7c7566",
+    "edgeColour": "#c4a85c"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "circle",
+    "count": 24,
+    "radius": 31.6,
+    "facing": "outward",
+    "lod2Step": 28,
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.9,
+       0.5
+      ]
+     },
+     "height": 14.5,
+     "wall": {
+      "material": "painted-render",
+      "colour": "#d8d0b6",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#d8d0b6"
+     }
+    }
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "seawall",
+   "footprint": {
+    "rect": [
+     110,
+     0.7
+    ]
+   },
+   "at": [
+    0,
+    -52
+   ],
+   "height": 2.0,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9c3b0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb8a6"
+   }
+  },
+  {
+   "type": "revolve",
+   "lod": [
+    2
+   ],
+   "at": [
+    0,
+    0,
+    14.5
+   ],
+   "params": {
+    "segments": 12,
+    "colour": "#7c7566",
+    "profile": [
+     [
+      34,
+      0
+     ],
+     [
+      30,
+      3
+     ],
+     [
+      0,
+      5
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -48
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     12,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -48
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "drum reads bluish and lacks the two pierced-screen frieze bands; roof ring is a radial folded surface with offset peaks rather than 14 even chevrons; seafront wall is a plain bar; background towers omitted"
+ }
+}

@@ -1,0 +1,1677 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "colombo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "colombo",
+    "climate": "tropical-maritime",
+    "vernacular": "Humid coastal capital: low and mid-rise concrete frame buildings finished in whitewash or pastel-painted render, deep verandahs and overhanging eaves, red half-round clay tile hip roofs on colonial and Bawa-era buildings, flat concrete roofs with water tanks on newer blocks, and glass towers rising along the Beira Lake and Galle Road corridors. Heavily weathered, mildew-streaked walls and coconut palms and rain trees everywhere.",
+    "wallColours": [
+      "#f2eee2",
+      "#e6d9b8",
+      "#d8b470",
+      "#b8b3a8",
+      "#b5593c",
+      "#c9d2b4",
+      "#e9dcc9"
+    ],
+    "roofColours": [
+      "#a2452a",
+      "#7d3a28",
+      "#8d9296",
+      "#a9a59d",
+      "#5f6b61"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "render",
+      "concrete",
+      "glass-curtain",
+      "stucco",
+      "brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "concrete",
+      "corrugated",
+      "metal-sheet",
+      "copper"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial (Dutch and British) arcaded verandahs, Corinthian porticos and pediments on civic buildings; Kandyan-style tiered tile roofs, carved timber pillars and moonstone/lion motifs on monuments and temples; Geoffrey Bawa tropical-modernist courtyards, colonnades and pools; whitewashed dagobas and bo-tree shrines.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Sri_Lanka",
+        "what": "Dutch and British colonial buildings (Palladian/neoclassical/neo-baroque) in Colombo, Bawa tropical modernism with terracotta-tiled roofs, colonnades and pools"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Town_Hall,_Colombo",
+        "what": "neoclassical civic building with Corinthian columns and dome"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Independence_Memorial_Hall",
+        "what": "Kandyan royal audience hall as the model for a modern monument"
+      }
+    ]
+  },
+  "places": {
+    "colombo-airport-colombo-airport": {
+      "venueId": "colombo-airport-colombo-airport",
+      "city": "colombo",
+      "name": "Bandaranaike International Colombo Airport",
+      "archetype": "airport-terminal",
+      "subject": "the main international terminal block (Terminal 1, opened 1967) with its long arm-shaped boarding pier, seen from the landside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 550,
+        "depth_m": 332,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "pier",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d6cf",
+          "#3b6e8f",
+          "#f0efe9"
+        ],
+        "roofColour": "#b4b2ac",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 8,
+          "note": "pier with eight aero-bridges opened 2005"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s with 2000s additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bandaranaike_International_Airport",
+          "what": "Terminal 1 opened 1967 as largest terminal with one arm-shaped concourse of gates; horizontal arrival/departure split; pier with eight aero-bridges opened Nov 2005; Terminal 2 planned/halted"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28531413",
+          "what": "OSM terminal footprint about 550 x 332 m, irregular, with pier arms"
+        }
+      ],
+      "notes": "Form is measured from OSM (footprint with piers); height, finish and colours are typed from general knowledge of the 1967 concrete terminal with later glazed frontage. Show main hall block plus the long pier; the new Terminal 2 is not built."
+    },
+    "colombo-clinic": {
+      "venueId": "colombo-clinic",
+      "city": "colombo",
+      "name": "North Colombo Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "the 2-storey zig-zag ward pavilions of the teaching hospital at Ragama, painted cream with tiled roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 126,
+        "depth_m": 115,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e9e1c9",
+          "#4f7f9a",
+          "#f1efe8"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 2,
+          "note": "open courts between pavilions"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/8206337",
+          "what": "OSM: hospital building, 2 levels, irregular zig-zag footprint about 126 x 115 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30265271",
+          "what": "healthcare organization in Colombo"
+        }
+      ],
+      "notes": "Only the OSM footprint and 2 levels are measured. Pitched tile roofs and cream paint are a guess from typical Sri Lankan state hospital wards; not verified from photos."
+    },
+    "colombo-community-notices": {
+      "venueId": "colombo-community-notices",
+      "city": "colombo",
+      "name": "Parliament of Sri Lanka",
+      "archetype": "civic-palace",
+      "subject": "Geoffrey Bawa's 1982 Parliament complex on its lake island at Kotte: tiered steeply pitched copper roofs over pale walls, reached across water",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 85,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "stepped",
+        "variant": "tiered-kandyan-roofs",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e2d2",
+          "#9a8a6e",
+          "#6d7f6b"
+        ],
+        "roofColour": "#6f7f66",
+        "roofMaterial": "copper",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "open pillared verandahs"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Sri_Lanka",
+          "what": "designed by Geoffrey Bawa; opened 29 April 1982; stands on 5-hectare island Duwa in the Diyawanna Oya at Kotte"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/330906531",
+          "what": "OSM footprint about 85 x 55 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Sri_Lanka",
+          "what": "Bawa tropical modernism: terracotta/tiled roofs, colonnades, pools"
+        }
+      ],
+      "notes": "The copper-sheathed, multi-tier steep roofs over a pale rendered base are recalled from public photos, not described in the fetched sources. Recognisable by the stacked roof pitches, the surrounding water and the long causeway approach. Not the old Parliament in Fort."
+    },
+    "colombo-community-voting-game": {
+      "venueId": "colombo-community-voting-game",
+      "city": "colombo",
+      "name": "Town Hall, Colombo",
+      "archetype": "civic-palace",
+      "subject": "the white neoclassical Colombo Town Hall (1928) facing Viharamahadevi Park, with a six-column Corinthian portico and a central dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 108,
+        "depth_m": 51,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#f5f3ee",
+          "#d9d2c0",
+          "#c8c2b2"
+        ],
+        "roofColour": "#e8e6e1",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "six Corinthian columns, columns 11.6 m high"
+        },
+        {
+          "id": "colonnade",
+          "count": 2,
+          "note": "ten columns along each side"
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "over the central council chamber"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1920s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Town_Hall,_Colombo",
+          "what": "neoclassical, inspired by US Capitol; about 108 m long, 51.3 m wide; six Corinthian columns on porch, columns 11.6 m high; dome over council chamber; S. J. Edwards; 1924-1928"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13887429",
+          "what": "OSM tags for the town hall: architect S. J. Edwards, roof:colour white"
+        }
+      ],
+      "notes": "Whiteness of walls and roof from OSM roof:colour and the well-known appearance. The wiki gives a total height equal to width (51 m) which includes the dome; main mass set lower, dome as feature. Strongly recognisable by the long colonnade and white dome."
+    },
+    "colombo-community-workshop": {
+      "venueId": "colombo-community-workshop",
+      "city": "colombo",
+      "name": "Institute of Engineering Technology",
+      "archetype": "campus-block",
+      "subject": "a low institute teaching block at Katunayake, typed from the OSM footprint",
+      "form": {
+        "footprint": "U",
+        "width_m": 88,
+        "depth_m": 82,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dec8",
+          "#7a8f9b",
+          "#f1efe8"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6040285",
+          "what": "diploma awarding institute in Katunayake, Sri Lanka"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/6191699",
+          "what": "OSM nearest building about 88 x 82 m (footprint only)"
+        }
+      ],
+      "notes": "Nothing is published about the building. Footprint is from the nearest OSM building; form and colours are typed from the Colombo style."
+    },
+    "colombo-market-game": {
+      "venueId": "colombo-market-game",
+      "city": "colombo",
+      "name": "Majestic City Shopping Mall",
+      "archetype": "mall",
+      "subject": "Majestic City on Galle Road, Bambalapitiya: a multi-storey mall built around a central atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 104,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4cc",
+          "#2e6f8e",
+          "#f2f2f0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "central atrium"
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Majestic_City",
+          "what": "seven-storey complex (two below ground), 23,000 m2, built around a central atrium, opened 4 April 1991, second phase 1994, refurbished 2008"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/208814352",
+          "what": "OSM retail footprint about 104 x 60 m"
+        }
+      ],
+      "notes": "Atrium plan, floor count and footprint are sourced; facade finish and colours are typed because no description was found. Facade faces Galle Road."
+    },
+    "colombo-meal-stop": {
+      "venueId": "colombo-meal-stop",
+      "city": "colombo",
+      "name": "Jade Restaurant",
+      "archetype": "restaurant",
+      "subject": "a two-storey restaurant building near Battaramulla, typed from the OSM footprint",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#8a3b2e",
+          "#f1efe8"
+        ],
+        "roofColour": "#7d3a28",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/514454750",
+          "what": "OSM containing building about 43 x 25 m, no other tags"
+        }
+      ],
+      "notes": "No description of this venue was found; typed from the city style. Footprint only is measured."
+    },
+    "colombo-osm-node-1252487341": {
+      "venueId": "colombo-osm-node-1252487341",
+      "city": "colombo",
+      "name": "St. Matthias Church",
+      "archetype": "church-classical",
+      "subject": "a white-rendered Catholic parish church with a gabled front and a bell tower, typed from the OSM footprint (Moratuwa/Rathmalana side)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "nave-and-tower"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f3efe6",
+          "#d8c9a4",
+          "#a2452a"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/997344722",
+          "what": "OSM containing building about 38 x 24 m, no church tags"
+        }
+      ],
+      "notes": "No description found; the Sri Lankan Catholic parish-church type (white facade, tower, red tile roof) is assumed. Footprint is the only measured fact."
+    },
+    "colombo-osm-node-618557052": {
+      "venueId": "colombo-osm-node-618557052",
+      "city": "colombo",
+      "name": "Western Hospital",
+      "archetype": "hospital",
+      "subject": "a small private hospital block in Colombo, typed (the OSM node sits on a tiny 10 x 8 m outbuilding)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#eceae2",
+          "#4f7f9a",
+          "#d8d4cc"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q20047300",
+          "what": "hospital in Sri Lanka"
+        }
+      ],
+      "notes": "The matched OSM building is only 61 m2, judged not to be the hospital main block, so dimensions are a typed guess for a small city hospital."
+    },
+    "colombo-osm-way-1023143295": {
+      "venueId": "colombo-osm-way-1023143295",
+      "city": "colombo",
+      "name": "St. Lawrence's Church, Wellawatte",
+      "archetype": "church-modern",
+      "subject": "St. Lawrence's Catholic church on Galle Road, Wellawatte (foundation 1954, completed 1968)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "variant": "west-facing-facade"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#c9b890",
+          "#8d8a84"
+        ],
+        "roofColour": "#8d9296",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1954-1968",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Lawrence%27s_Church,_Wellawatte",
+          "what": "foundation stone 17 Jan 1954, completed 6 Mar 1968, facade faces west, on Galle Road near Pereira Lane"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1023143295",
+          "what": "OSM church footprint about 57 x 36 m"
+        }
+      ],
+      "notes": "Dates and footprint are sourced; the look (mid-century church with a tower, light render) is a typed guess because no description was found."
+    },
+    "colombo-osm-way-102650989": {
+      "venueId": "colombo-osm-way-102650989",
+      "city": "colombo",
+      "name": "Lanka Hospital",
+      "archetype": "hospital",
+      "subject": "the 11-storey white concrete tower block of Lanka Hospitals at Narahenpita",
+      "form": {
+        "footprint": "rect",
+        "width_m": 69,
+        "depth_m": 66,
+        "storeys": 11,
+        "height_m": 44,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1f1ee",
+          "#5f8aa3",
+          "#c9cbc8"
+        ],
+        "roofColour": "#d4d3ce",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1028948060",
+          "what": "OSM tags: building:levels 11, roof:shape flat, building:colour white, building:material concrete, footprint 69 x 66 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lanka_Hospitals",
+          "what": "private hospital in Colombo"
+        }
+      ],
+      "notes": "Levels, colour, material and roof come from OSM. Window banding and teal glazing accents are an assumption."
+    },
+    "colombo-osm-way-193287676": {
+      "venueId": "colombo-osm-way-193287676",
+      "city": "colombo",
+      "name": "Buddhist & Pali University of Sri Lanka",
+      "archetype": "campus-block",
+      "subject": "the low teaching blocks, library and gate of the university campus at Homagama",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 246,
+        "depth_m": 88,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ebe4cf",
+          "#c9a14a",
+          "#f1efe8"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main gate"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Buddhist_and_Pali_University_of_Sri_Lanka",
+          "what": "in Homagama; established 1981, opened 1982; photo captions mention library building, main gate and computer teaching unit"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/193287676",
+          "what": "OSM campus polygon about 246 x 88 m"
+        }
+      ],
+      "notes": "Only the polygon, location and the existence of a library, gate and computer unit are sourced. Saffron accent colour hints at a Buddhist institution but is a guess."
+    },
+    "colombo-osm-way-235938853": {
+      "venueId": "colombo-osm-way-235938853",
+      "city": "colombo",
+      "name": "Pearl Residences",
+      "archetype": "hotel",
+      "subject": "a mid-rise residential/hostel block at Malabe tagged with the SLIIT campus, typed from the footprint",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 19,
+        "storeys": 8,
+        "height_m": 28,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e4d6",
+          "#6f8fa5",
+          "#bdb9ad"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/340444573",
+          "what": "OSM building about 47 x 19 m, tagged with the SLIIT hospitality faculty"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7585924",
+          "what": "SLIIT, university in Sri Lanka"
+        }
+      ],
+      "notes": "Storeys and look are guessed from the name Residences and the narrow slab footprint; nothing is published about the building."
+    },
+    "colombo-osm-way-27712165": {
+      "venueId": "colombo-osm-way-27712165",
+      "city": "colombo",
+      "name": "Galle Face Green",
+      "archetype": "park-landscape",
+      "subject": "the long seafront green in central Colombo: an open lawn and promenade along the Indian Ocean with food stalls and kite flyers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 944,
+        "depth_m": 113,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b4a6",
+          "#7da05a",
+          "#d9d2c0"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 6,
+          "note": "weekend food vendors (crab, prawn, mango)"
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "seaward promenade rail"
+        },
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "national day celebrations held here each 4 Feb"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "sea-wall steps"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1859",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Galle_Face_Green",
+          "what": "about 5 ha, 500 m along the sea; promenade authorised 1856, completed 1859; Galle Face Hotel at one end, Inter-Continental at the other; food vendors, kite flying; national day venue"
+        }
+      ],
+      "notes": "Mostly open lawn with a stone/concrete seaward promenade; the generator should show a recognisable portion (a stretch of green, sea wall, stalls). Photos not described by the source; sea wall and palms are recalled, not sourced."
+    },
+    "colombo-osm-way-303909847": {
+      "venueId": "colombo-osm-way-303909847",
+      "city": "colombo",
+      "name": "Independence Memorial Hall",
+      "archetype": "monument",
+      "subject": "the Independence Memorial Hall in Independence Square: an open pillared hall on a stepped platform under a broad red-tile roof, modelled on the Kandyan audience hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "kandyan-audience-hall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "granite",
+        "colours": [
+          "#efece4",
+          "#b8a98a",
+          "#7b5a3c"
+        ],
+        "roofColour": "#8c4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "two rows of pillars carry the roof"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "broad stepped platform"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Prime Minister D. S. Senanayake statue at the head"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "south-asian",
+      "era": "1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Independence_Memorial_Hall",
+          "what": "designed by eight architects led by Tom Neville Wynne-Jones on the Kandyan Magul Maduwa audience hall; floor area 930 m2; statue of D. S. Senanayake; Independence Square, Cinnamon Gardens"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1078848223",
+          "what": "OSM footprint about 55 x 22 m"
+        }
+      ],
+      "notes": "Whitewashed hall on a raised base with a broad low hip roof of reddish tile with upturned eaves recalled from photos; roof colour and lion-carved details not in the source. Recognisable by the open sides and heavy roof."
+    },
+    "colombo-osm-way-441724047": {
+      "venueId": "colombo-osm-way-441724047",
+      "city": "colombo",
+      "name": "President's House",
+      "archetype": "civic-palace",
+      "subject": "the colonial President's House (formerly Queen's House) in the Fort: a two-storey Dutch-colonial building with deep verandahs and a tiled roof",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 63,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f1ead8",
+          "#c9b890",
+          "#e8e8e2"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "17th-18th century origins",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/President%27s_House,_Colombo",
+          "what": "Dutch Colonial style; the last Dutch governor built a two-storey residence on the site of a Portuguese church; Geoffrey Bawa directed refurbishments in the 1980s-90s"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/441724047",
+          "what": "OSM building: 2 levels, about 130 x 63 m"
+        }
+      ],
+      "notes": "The white walls and red tile roof are recalled from photos, not in the fetched text. It is a restricted compound inside the Fort; visible mostly from the outside gate and wall."
+    },
+    "colombo-osm-way-48893708": {
+      "venueId": "colombo-osm-way-48893708",
+      "city": "colombo",
+      "name": "National Zoological Gardens",
+      "archetype": "park-landscape",
+      "subject": "the Dehiwala zoo: shaded landscaped paths, arched concrete bridges over enclosures and an elephant arena",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 410,
+        "depth_m": 279,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b4a6",
+          "#7da05a",
+          "#d9d2c0"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "arched concrete bridges over enclosures"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "aviaries and the elephant arena"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1936",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Zoological_Gardens_of_Sri_Lanka",
+          "what": "about 10 ha; dense tree cover and landscaped gardens; arched concrete bridges across enclosures; aquarium, reptile house, aviaries, elephant arena"
+        }
+      ],
+      "notes": "Show the entrance plaza and a shaded garden path with a concrete arch bridge. Entrance design was not described; it is typed."
+    },
+    "colombo-osm-way-51193146": {
+      "venueId": "colombo-osm-way-51193146",
+      "city": "colombo",
+      "name": "Sugathadasa Stadium",
+      "archetype": "stadium",
+      "subject": "the Sugathadasa national athletics and football stadium (opened 1962): an open concrete bowl around a track with floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 211,
+        "depth_m": 155,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#b9b5ab",
+          "#8f8a80",
+          "#d8d4c8"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small covered stand on the main side"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sugathadasa_Stadium",
+          "what": "multi-purpose; construction began 1957, opened 16 Dec 1962; capacity about 25,000; Desso grass and Mondo track; indoor stadium added 1991"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9080868",
+          "what": "OSM stadium footprint about 211 x 155 m"
+        }
+      ],
+      "notes": "Stands, floodlights and colours are typed; the sources give year, capacity and track. A 2024-26 renovation to 50,000 seats is planned and not shown."
+    },
+    "colombo-osm-way-51208063": {
+      "venueId": "colombo-osm-way-51208063",
+      "city": "colombo",
+      "name": "P. Saravanamuttu Stadium",
+      "archetype": "stadium",
+      "subject": "the small P. Sara Oval cricket ground: half-ringed by low stands and half by grass banks, with the famous ivy-covered scoreboard",
+      "form": {
+        "footprint": "round",
+        "width_m": 150,
+        "depth_m": 146,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "red-brick",
+        "colours": [
+          "#c9c4b6",
+          "#a2452a",
+          "#5f7a4a"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "ivy-covered, the most famous feature"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered pavilion stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1945",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paikiasothy_Saravanamuttu_Stadium",
+          "what": "capacity 15,000, established 1945; half surrounded by lower-level stands and half by grass banks; ivy-covered scoreboard is the most famous feature"
+        }
+      ],
+      "notes": "Ivy scoreboard and half-stand/half-bank bowl are sourced. Floodlights, pavilion roof and colours are typed and low in certainty."
+    },
+    "colombo-osm-way-665919418": {
+      "venueId": "colombo-osm-way-665919418",
+      "city": "colombo",
+      "name": "R. Premadasa International Cricket Stadium",
+      "archetype": "stadium",
+      "subject": "the R. Premadasa (Khettarama) cricket stadium: a large oval bowl of two-tier pavilions with tall floodlight pylons and a big scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 221,
+        "depth_m": 213,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c7c2b6",
+          "#2b5d8a",
+          "#f0efe8"
+        ],
+        "roofColour": "#d4d3ce",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered pavilions"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1986",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/R._Premadasa_Stadium",
+          "what": "established 1986, formerly Khettarama; capacity 35,000-40,000; four main stands, pavilions A and B two-tier with corporate boxes; scoreboard; media box for 200 journalists"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/665919418",
+          "what": "OSM footprint about 221 x 213 m"
+        }
+      ],
+      "notes": "Stand structure is sourced; seat blue and pylon count are typed from general knowledge of the ground."
+    },
+    "colombo-osm-way-666495757": {
+      "venueId": "colombo-osm-way-666495757",
+      "city": "colombo",
+      "name": "Colombo City Center",
+      "archetype": "office-tower",
+      "subject": "Colombo City Centre by Beira Lake: a glass high-rise (hotel, apartments) rising from a 5-level retail podium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 50,
+        "height_m": 193,
+        "roof": "flat",
+        "variant": "tower-on-podium"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#6f8fa5",
+          "#c9d2d6",
+          "#3f4c55"
+        ],
+        "roofColour": "#6c7378",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "about 124 x 57 m retail podium, OSM 11 levels / 40 m"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2020",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Colombo_City_Centre",
+          "what": "mixed-use, 50 storeys, 193 m; 5-storey retail section with 170-room hotel and 192 apartments; on Sir James Peiris Mawatha overlooking Beira Lake; architects Aedas and KWA; residential completed 2020"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/666495757",
+          "what": "OSM podium: retail, 11 levels, 40 m, flat roof, 2020, about 124 x 57 m"
+        }
+      ],
+      "notes": "Sources conflict on height (OSM 40 m podium vs wiki 193 m tower); the tower silhouette is the recognisable thing, so tower footprint (about 50 x 40 m) is estimated and the podium is a feature. Glazing colour typed."
+    },
+    "colombo-osm-way-98391431": {
+      "venueId": "colombo-osm-way-98391431",
+      "city": "colombo",
+      "name": "St. Sebastian College",
+      "archetype": "campus-block",
+      "subject": "a long two-storey school range at St. Sebastian College, Moratuwa, with arcaded verandahs and a tiled roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ebe4cf",
+          "#b5593c",
+          "#f1efe8"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor verandah"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "late 19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/993013699",
+          "what": "OSM school building about 67 x 13 m"
+        }
+      ],
+      "notes": "Only the long narrow footprint is measured; the rest is the Colombo colonial school type, typed."
+    },
+    "colombo-quiet-reflection": {
+      "venueId": "colombo-quiet-reflection",
+      "city": "colombo",
+      "name": "Sumatipala Na Himi Hermitage",
+      "archetype": "shrine-small",
+      "subject": "a tiny Theravada Buddhist hermitage hall (aramaya) outside the city, typed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f3efe6",
+          "#c9a14a",
+          "#8d8a84"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q35286007",
+          "what": "Buddhist meditation centre in Sri Lanka"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1105378926",
+          "what": "OSM Theravada place of worship, building about 8 x 7 m"
+        }
+      ],
+      "notes": "Nothing found beyond the Wikidata label and footprint. A whitewashed hall with tile roof under trees is the typed guess."
+    },
+    "colombo-recreation": {
+      "venueId": "colombo-recreation",
+      "city": "colombo",
+      "name": "Weras Ganga Park",
+      "archetype": "park-landscape",
+      "subject": "a small riverside public park at Boralesgamuwa, typed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 83,
+        "depth_m": 58,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b4a6",
+          "#7da05a",
+          "#d9d2c0"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Weras_Ganga_Park",
+          "what": "park by the Weras Ganga river"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/594531505",
+          "what": "OSM park polygon about 83 x 58 m"
+        }
+      ],
+      "notes": "No description of the layout was found; a lawn, a shelter and a railed water edge are typed."
+    },
+    "colombo-transit": {
+      "venueId": "colombo-transit",
+      "city": "colombo",
+      "name": "Maradana Railway Station",
+      "archetype": "transport-station",
+      "subject": "Maradana station (opened 1908): a two-storey British colonial station building with a footbridge over the platforms",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e6d9b8",
+          "#a2452a",
+          "#f1efe8"
+        ],
+        "roofColour": "#a2452a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1908",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maradana_railway_station",
+          "what": "British colonial architecture; two floors with ticket office, waiting area and railway administrative offices; footbridge to platforms; opened 1908"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/400153469",
+          "what": "OSM station building about 30 x 30 m"
+        }
+      ],
+      "notes": "Two storeys, colonial style and 1908 are sourced. Paint colour, tile roof and the clock feature are recalled/typed; remove the clock if photos disagree."
+    }
+  }
+}

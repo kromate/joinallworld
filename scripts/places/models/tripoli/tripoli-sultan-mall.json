@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-sultan-mall",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/339247902",
+   "used": "real named outline (30 x 30 m, bearing 79 deg) at true size; glazed entrance, signboard and parking typed from the brief"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "mall",
+   "footprint": {
+    "polygon": [
+     [
+      -16.9,
+      11.6
+     ],
+     [
+      12.5,
+      17.2
+     ],
+     [
+      16.6,
+      -11.4
+     ],
+     [
+      -11.9,
+      -17.6
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe9d8",
+    "windows": "curtain",
+    "windowRatio": 0.25,
+    "faces": {
+     "front": "curtain"
+    },
+    "bands": "#7d6a4a",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b8b2a5",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 16,
+    "depth": 6,
+    "height": 4.5,
+    "colour": "#7d6a4a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    26,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 9,
+    "bottom": 10,
+    "colour": "#7d6a4a",
+    "frameColour": "#c9ced1"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 5,
+    "spread": 2,
+    "line": 40
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -10,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    -4,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -32,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; footprint is real at 30 m (smaller than the brief's 100x60), facade typed"
+ }
+}

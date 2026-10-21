@@ -1,0 +1,1450 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "maiduguri",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "maiduguri",
+    "climate": "sahel",
+    "vernacular": "Flat, sun-baked Sahel city (hot semi-arid, ~700 mm rain) laid out on broad roads with large colonial-era shade trees and drainage ditches; low 1-3 storey concrete-block and painted-render buildings in cream, ochre and pale grey behind perimeter walls, flat concrete roofs and long-span metal-sheet roofs on markets and civic buildings, sandy ground; the old Kanuri/Hausa quarters use plastered earth and laterite compounds.",
+    "wallColours": [
+      "#e3d3b0",
+      "#d8c39a",
+      "#c9a77c",
+      "#b0aaa0",
+      "#f1ead8",
+      "#a9764f"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#6b6e70",
+      "#3f5a45",
+      "#a8a29a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "mud-render",
+      "laterite",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "broadleaf",
+      "acacia",
+      "palm"
+    ],
+    "ornament": "Northern Islamic arches and domes on mosques, Kanuri/Hausa geometric relief on gate walls and palace fences, sun-shading deep eaves and verandas; flat parapeted roofs; a 65 km earthen berm ring around the city.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Maiduguri",
+        "what": "hot semi-arid climate; broad well-kept roads, drainage ditches, large colonial-era shade trees; mosques predominate; St. Patrick's church; markets; 65 km earthen berm"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hausa_architecture",
+        "what": "earthen/laterite compound building tradition shared across northern Nigeria"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Borno_Emirate",
+        "what": "Shehu of Borno seat at Maiduguri (Yerwa) since 1907"
+      }
+    ]
+  },
+  "places": {
+    "access-bank-maiduguri": {
+      "venueId": "access-bank-maiduguri",
+      "city": "maiduguri",
+      "name": "Access Bank",
+      "archetype": "office-low",
+      "subject": "A bank branch: a two-storey block with a glazed ground-floor hall, flat canopy and walled yard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ead8",
+          "#b0aaa0",
+          "#6b6e70"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Branch not described anywhere found. Typed as a standard bank branch; no brand colours. Sits beside the UBA branch and the Adamawa motor park."
+    },
+    "adamawa-sunshine-motor-park": {
+      "venueId": "adamawa-sunshine-motor-park",
+      "city": "maiduguri",
+      "name": "Adamwa Sunshine Motor Park",
+      "archetype": "transport-station",
+      "subject": "A private transport company's motor park: a sandy yard with a passenger shed, ticket kiosks and rows of coaches (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 55,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#6b6e70",
+          "#f1ead8"
+        ],
+        "roofColour": "#3f5a45",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Named for a transport operator, so typed as a walled coach park with one passenger shed. Brand colours not used."
+    },
+    "al-ansar-university": {
+      "venueId": "al-ansar-university",
+      "city": "maiduguri",
+      "name": "Al-Ansar University",
+      "archetype": "campus-block",
+      "subject": "A private university campus: a few two to three storey rendered academic blocks around a central yard, with a mosque-style arched entrance (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#3f7f6a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. The Islamic-arch detail is a guess from the Islamic-sounding name; nothing was verified."
+    },
+    "bexil-gardens": {
+      "venueId": "bexil-gardens",
+      "city": "maiduguri",
+      "name": "BEXIL GARDENS",
+      "archetype": "park-landscape",
+      "subject": "A private leisure garden: lawns and planted beds with palm trees, a small pavilion and shaded seating areas behind a wall (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#3f7f5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a small commercial garden/leisure venue."
+    },
+    "borno-government-house": {
+      "venueId": "borno-government-house",
+      "city": "maiduguri",
+      "name": "Government House (Borno)",
+      "archetype": "civic-palace",
+      "subject": "Borno State Government House: a large walled complex with a main two-storey office block fronted by a columned portico, flags and a ceremonial gate (typed)",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ead8",
+          "#c9a77c",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found; physical look is a typed state-government-house convention. Located in the south of the city on a different site from the Assembly."
+    },
+    "borno-house-of-assembly": {
+      "venueId": "borno-house-of-assembly",
+      "city": "maiduguri",
+      "name": "Borno State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The state legislature: a rendered two-storey chamber block with a central portico and dome-less flat roof in a gated compound (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e3d3b0",
+          "#b0aaa0",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Near the Central Mosque and Shehu's palace (about 400 m); form typed from the civic-palace archetype."
+    },
+    "borno-state-specialist-hospital": {
+      "venueId": "borno-state-specialist-hospital",
+      "city": "maiduguri",
+      "name": "Borno State Specialist Hospital",
+      "archetype": "hospital",
+      "subject": "A large state specialist hospital: several two-storey ward and clinic blocks linked by covered walkways, with an ambulance bay (typed)",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#7a9e8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a mid-size ward-block hospital; the University of Maiduguri Teaching Hospital is typed as a larger multi-storey complex."
+    },
+    "el-kanemi-stadium": {
+      "venueId": "el-kanemi-stadium",
+      "city": "maiduguri",
+      "name": "El-Kanemi Stadium",
+      "archetype": "stadium",
+      "subject": "The 10,000-seat multi-use football stadium, home of El-Kanemi Warriors: a modest bowl with a covered main stand and open terraces",
+      "form": {
+        "footprint": "oval",
+        "width_m": 170,
+        "depth_m": 130,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4ba",
+          "#2f6b4f",
+          "#e8dfc8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main stand covered"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El-Kanemi_Stadium",
+          "what": "10,000 seats, multi-use stadium in Maiduguri, mainly football, home of El-Kanemi Warriors; named after Muhammad al-Amin al-Kanemi"
+        }
+      ],
+      "notes": "Only capacity and use are sourced. Size derived from 10,000 seats; roof, colours and era are typed estimates. Deliberately smaller than the 35,000-seat stadium in Katsina."
+    },
+    "gamboru-market": {
+      "venueId": "gamboru-market",
+      "city": "maiduguri",
+      "name": "Gamboru Market",
+      "archetype": "market-open",
+      "subject": "Gamboru, a large open-air trading market: dense stalls and iron-roofed lock-ups crowding sandy lanes (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "lock-ups",
+          "count": 40
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 15
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "Maiduguri is the principal trading hub for northeastern Nigeria; the city has three main markets"
+        }
+      ],
+      "notes": "Only the trading-hub context found; no physical description of Gamboru. Typed as a dense, large, mostly open market with iron roofs, bigger and more irregular than the Monday Market block."
+    },
+    "hannas-restaurant": {
+      "venueId": "hannas-restaurant",
+      "city": "maiduguri",
+      "name": "HANNAS RESTAURANT",
+      "archetype": "restaurant",
+      "subject": "A small restaurant: a single-storey rendered building with a terrace, an awning and a blank signboard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f7f4ee",
+          "#b4654a",
+          "#c9a77c"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Name only; nothing found about the real venue. Typed as a small modern restaurant."
+    },
+    "kasuwan-shanu": {
+      "venueId": "kasuwan-shanu",
+      "city": "maiduguri",
+      "name": "Kasuwan Shanu",
+      "archetype": "market-open",
+      "subject": "Kasuwan Shanu (Hausa for cattle market): a large sandy livestock market with fenced pens, a few shade sheds and trading booths (typed from the name)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b98a5e",
+          "#6b6e70",
+          "#e8dfc8"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 5
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "fence-wall",
+          "count": 4,
+          "note": "livestock pens"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city is the livestock/trading hub of the northeast (context only)"
+        }
+      ],
+      "notes": "The name means cattle market; building appearance not found. Typed as pens plus shade sheds, so very few permanent structures. Different from Gamboru (shops) and the Monday Market (modern block)."
+    },
+    "kayat-restaurant": {
+      "venueId": "kayat-restaurant",
+      "city": "maiduguri",
+      "name": "KAYAT RESTAURANT",
+      "archetype": "restaurant",
+      "subject": "A roadside restaurant: a low rendered building with an open terrace, umbrellas and a blank signboard (typed)",
+      "form": {
+        "footprint": "L",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#3f7f6a",
+          "#c9a77c"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Name only; nothing found about the real venue. Made distinct from Hannas (L-plan, shed roof, car park) without evidence."
+    },
+    "maiduguri-central-mosque": {
+      "venueId": "maiduguri-central-mosque",
+      "city": "maiduguri",
+      "name": "Maiduguri Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "The Maiduguri Central Mosque beside the Shehu's palace: a large domed prayer hall with minarets and a walled courtyard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f7f4ee",
+          "#c9a77c",
+          "#3f7f6a"
+        ],
+        "roofColour": "#c9a77c",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome"
+        },
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "the Central Mosque is the first mosque named among the city's mosques (with the Indimi Jumma'a mosque)"
+        }
+      ],
+      "notes": "Existence and importance confirmed; no description of its dome or minaret count found. Typed as a domed city mosque; venue scene variant is mosque. Different from the Katsina and Sokoto mosques by being larger with two minarets."
+    },
+    "maiduguri-international-park": {
+      "venueId": "maiduguri-international-park",
+      "city": "maiduguri",
+      "name": "Maiduguri International Park",
+      "archetype": "park-landscape",
+      "subject": "A public recreation park: lawns, paved paths, a central fountain, pavilions and an entrance gate (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8dfc8",
+          "#3f7f5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "No description found. Typed as a landscaped public park; the city has a tradition of shaded roadside greenery rather than formal gardens."
+    },
+    "maiduguri-monday-market": {
+      "venueId": "maiduguri-monday-market",
+      "city": "maiduguri",
+      "name": "Maiduguri Monday Market",
+      "archetype": "market-hall",
+      "subject": "The modern Monday Market: large covered trading halls of lock-up shops under long iron-sheet roofs, rebuilt after a fire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8c39a",
+          "#6b6e70",
+          "#f1ead8"
+        ],
+        "roofColour": "#6b6e70",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "the city has a modern \"Monday market\" among its three markets"
+        },
+        {
+          "url": "https://gazettengr.com/maiduguri-monday-market-reopens-eight-months-after-inferno/",
+          "what": "Monday Market reopened eight months after a fire"
+        }
+      ],
+      "notes": "Sources say modern and that it burned and reopened; the layout is typed (blocks of lock-up shops under shared roofs). Dimensions are guesses."
+    },
+    "shehu-of-borno-palace": {
+      "venueId": "shehu-of-borno-palace",
+      "city": "maiduguri",
+      "name": "Shehu of Borno's Palace",
+      "archetype": "heritage-fort",
+      "subject": "The Shehu of Borno's palace compound in Maiduguri: a walled complex of low plastered buildings and a decorated entrance gate with flagpoles (typed)",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "mud-render",
+        "colours": [
+          "#e8dfc8",
+          "#b98a5e",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "ceremonial entrance gate"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "high perimeter wall"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "hausa-arewa",
+      "era": "1907 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shehu_of_Borno",
+          "what": "the Shehus have sat at Yerwa (Maiduguri) since 1907"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Borno_Emirate",
+          "what": "current (20th) Shehu since 2009; Maiduguri is seat of the Borno Emirate"
+        }
+      ],
+      "notes": "Palace location and history are sourced; no description of its architecture found. Typed as a walled traditional-ruler palace compound (palaces are described as larger versions of domestic compounds); parapet crenellation and relief gate are style assumptions."
+    },
+    "st-patricks-cathedral-maiduguri": {
+      "venueId": "st-patricks-cathedral-maiduguri",
+      "city": "maiduguri",
+      "name": "St. Patrick's Catholic Cathedral",
+      "archetype": "church-modern",
+      "subject": "St. Patrick's Catholic church/cathedral: a broad rendered hall church with a gabled front, a low tower and a walled compound (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f1ead8",
+          "#a9764f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "the city page shows St. Patrick's Catholic Church; mosques predominate in the city"
+        }
+      ],
+      "notes": "Its existence is confirmed (pictured on the city page) but no description found. Typed as a modest hall church. Quite different in form from the Katsina cathedral by being a wider hall with a low tower."
+    },
+    "uba-maiduguri": {
+      "venueId": "uba-maiduguri",
+      "city": "maiduguri",
+      "name": "UBA",
+      "archetype": "office-low",
+      "subject": "A bank branch: a rendered three-storey block with a glazed banking hall and flat canopy in a walled yard (typed)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 15,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#b0aaa0",
+          "#6b6e70"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board in neutral colour"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "city climate, roads and tree cover used for the typed city style; this venue itself is not described"
+        }
+      ],
+      "notes": "Not described anywhere found. Typed as a standard bank branch, a storey taller than the Access Bank branch nearby; no brand colours."
+    },
+    "umth-maiduguri": {
+      "venueId": "umth-maiduguri",
+      "city": "maiduguri",
+      "name": "University Of Maiduguri Teaching Hospital",
+      "archetype": "hospital",
+      "subject": "The teaching hospital: a large complex of multi-storey clinical blocks and ward wings linked by covered walkways (typed)",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#7a9e8a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Maiduguri",
+          "what": "UMTH is the University of Maiduguri's teaching hospital; wounded were brought here after a 2017 suicide bombing (no architectural detail)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "University of Maiduguri has a College of Medical Sciences"
+        }
+      ],
+      "notes": "Only its role as the teaching hospital is sourced. Form typed as the biggest hospital among the three Maiduguri hospitals-to-be; helipad is a guess and may be removed."
+    },
+    "university-of-maiduguri": {
+      "venueId": "university-of-maiduguri",
+      "city": "maiduguri",
+      "name": "University of Maiduguri",
+      "archetype": "campus-block",
+      "subject": "The University of Maiduguri campus (est. 1975, ~25,000 students): large three-storey faculty and lecture blocks with long verandas and an administrative building at the centre",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d3b0",
+          "#a9764f",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "veranda bands"
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1975",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Maiduguri",
+          "what": "urban campus, established 1975 by the federal government, about 25,000 students; photo caption \"University of Maiduguri's garden\""
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maiduguri",
+          "what": "founded 1975"
+        }
+      ],
+      "notes": "Established date and scale are sourced; buildings are not described. Brise-soleil and veranda bands are typical of 1970s Nigerian campuses. The campus is much larger than a single block, show the central administration/faculty group."
+    }
+  }
+}

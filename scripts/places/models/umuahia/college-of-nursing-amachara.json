@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "college-of-nursing-amachara",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json#college-of-nursing-amachara",
+   "used": "two L-arranged two-storey ranges with balconies around a lawn; no OSM outline, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "range-a",
+   "footprint": {
+    "rect": [
+     60,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#7d8b6e",
+    "plinth": 0.4,
+    "faces": {
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b55",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "range-b",
+   "footprint": {
+    "rect": [
+     12,
+     40
+    ]
+   },
+   "at": [
+    -24,
+    -26
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#7d8b6e",
+    "plinth": 0.4,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b55",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "balcony-a",
+   "footprint": {
+    "rect": [
+     58,
+     2
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dddddd"
+   },
+   "z0": 4.4
+  },
+  {
+   "type": "mass",
+   "id": "balcony-b",
+   "footprint": {
+    "rect": [
+     2,
+     38
+    ]
+   },
+   "at": [
+    -17,
+    -26
+   ],
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#dddddd"
+   },
+   "z0": 4.4
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -8.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 0.5,
+    "run": 0.9,
+    "count": 3,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -50,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -4,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -12
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typed from brief."
+ }
+}

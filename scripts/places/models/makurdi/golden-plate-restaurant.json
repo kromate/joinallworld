@@ -1,0 +1,195 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (no photo found): single-storey eatery 18 x 10 m with open front veranda, awning, blank signboard in cream/red/green; OSM match is a 6 m shed 1.4 m away and is too small to use"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -1,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe0b8",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "plinth": 0.4,
+    "bands": "#b7442e",
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f6b4a",
+    "material": "corrugated",
+    "pitch": 9,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     5,
+     7
+    ]
+   },
+   "at": [
+    10.5,
+    4
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4d3a6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#4f6b4a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "market-open/veranda",
+   "at": [
+    -1,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 2.8,
+    "height": 3,
+    "balustrade": false,
+    "steps": true,
+    "roof": "lean-to",
+    "wall_colour": "#ffffff",
+    "roof_colour": "#4f6b4a"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -7,
+    -7.3,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "depth": 1.8,
+    "drop": 0.5,
+    "height": 2.6,
+    "colours": [
+     "#b7442e",
+     "#ffffff"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -9.5,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 3.4,
+    "height": 1.5,
+    "bottom": 1.3,
+    "colour": "#b7442e",
+    "frameColour": "#efe0b8"
+   }
+  },
+  {
+   "type": "market-open/umbrella-cluster",
+   "at": [
+    -1,
+    -11,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 4.5,
+    "radius": 1.5,
+    "height": 2.4,
+    "colours": [
+     "#b7442e",
+     "#e8c14a",
+     "#ffffff"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    12,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 8,
+    "density": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo or usable outline: modest typical eatery at brief size"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "makurdi",
+ "venueId": "golden-plate-restaurant"
+}

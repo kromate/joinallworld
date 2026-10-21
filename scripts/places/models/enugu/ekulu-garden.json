@@ -1,0 +1,320 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/enugu.json#ekulu-garden",
+   "used": "riverside garden with lawns, shade trees, paved walks, three open pavilions, fountain, gate; the only nearby OSM building (37 m away, 287 m2) is not used; no photo or description found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 7,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.6,
+    "posts": 4,
+    "colour": "#a5774f",
+    "cap_colour": "#8a4a36"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    16,
+    8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.5,
+    "posts": 4,
+    "colour": "#a5774f",
+    "cap_colour": "#8a4a36"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 6,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#a5774f",
+    "cap_colour": "#8a4a36"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "radius": 3.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "colour": "#e4dcc8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.6,
+    "thickness": 0.3,
+    "pillarEvery": 6,
+    "colour": "#e4dcc8"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -34
+     ],
+     [
+      0,
+      -6
+     ],
+     [
+      -10,
+      -6
+     ],
+     [
+      -18,
+      -6
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      6
+     ],
+     [
+      16,
+      8
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      4
+     ],
+     [
+      0,
+      24
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "terrace",
+   "at": [
+    -18,
+    -6,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     10
+    ],
+    "height": 0.25,
+    "colour": "#cbc6bb",
+    "z0": 0,
+    "material": "paving"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -32,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -28,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    34,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -8,
+    34,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    22,
+    32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -34,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    10,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; layout typed from brief, not from a survey"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "ekulu-garden"
+}

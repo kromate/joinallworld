@@ -1,0 +1,143 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-web-du-bois-centre",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/447559518",
+   "used": "real building outline (about 37 x 17 m, containing match): the single-storey bungalow of the centre; veranda along the long side, hipped roof, per the brief. No exterior photo found (nearby Commons photos are museum-interior displays)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e8d0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.5,
+    "bands": "#7a4a35"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a4a35",
+    "material": "corrugated",
+    "overhang": 0.6,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    26,
+    4,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 5,
+    "height": 3.4,
+    "colour": "#f1e8d0",
+    "cap_colour": "#8a4a35"
+   }
+  },
+  {
+   "type": "statue-on-stepped-plinth",
+   "at": [
+    -6,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#3a3a36",
+    "plinthColour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "kind": "wall",
+    "colour": "#f1e8d0",
+    "pillarEvery": 6
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -24,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    16,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": 4,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo: outline from OSM, flat low roof stands in for a hip because the irregular outline cannot take a hip; veranda, statue, pavilion and gate are typed from the brief"
+ }
+}

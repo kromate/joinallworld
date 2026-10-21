@@ -1,0 +1,289 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/754697673",
+   "used": "real Government House outline: two 40 x 42 m wing blocks about 70 m apart joined by a rear link; positions and proportions taken at 0.61 scale as two separate hip-roofed brick wings"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:A_Green_Environment.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Goodymeraj",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-harcourt/gh2.jpg",
+   "used": "perimeter wall: white with tall blue panels, flagpoles with green and blue flags behind it, royal palm line, brick-paver footpath, lawn (street photo 140 m away, not the house)"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Government_House,_Port_Harcourt",
+   "used": "1928 red brick house, Old GRA"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     24,
+     26
+    ]
+   },
+   "at": [
+    -36.6,
+    -1.2
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a9573e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 6,
+    "plinth": 0.6,
+    "bands": "#ece6d6",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e4a3a",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     24,
+     26
+    ]
+   },
+   "at": [
+    31.4,
+    -1.2
+   ],
+   "height": 10.5,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a9573e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 6,
+    "plinth": 0.6,
+    "bands": "#ece6d6",
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e4a3a",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     44,
+     5
+    ]
+   },
+   "at": [
+    -2.5,
+    10.5
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#a9573e",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "bay": 5,
+    "plinth": 0.5,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6e4a3a",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    -36.6,
+    -15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 18,
+    "depth": 2.6,
+    "height": 3.2,
+    "roof": "lean-to",
+    "wall_colour": "#ece6d6"
+   }
+  },
+  {
+   "type": "veranda",
+   "at": [
+    31.4,
+    -15
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 18,
+    "depth": 2.6,
+    "height": 3.2,
+    "roof": "lean-to",
+    "wall_colour": "#ece6d6"
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    -2.5,
+    -6
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 8,
+    "columns": 4,
+    "steps": 3,
+    "colour": "#ece6d6"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -48
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.6,
+    "colour": "#ece6d6",
+    "board_colour": "#2b6cb0"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -48
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 48,
+    "height": 2.6,
+    "thickness": 0.3,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    30,
+    -48
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 48,
+    "height": 2.6,
+    "thickness": 0.3,
+    "colour": "#f4f4f2"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -8,
+    -46
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 8,
+    "colours": [
+     "#1b7a43",
+     "#2b6cb0",
+     "#ffffff"
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -44
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -30,
+     -44
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -44
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -44
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "rough",
+  "gaps": "no photo of the house itself"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "government-house"
+}

@@ -1,0 +1,1645 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "andorra-la-vella",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "andorra-la-vella",
+    "climate": "highland",
+    "vernacular": "Pyrenean stone: farmhouses and churches of irregular local granite and slate stone, lime-rendered facades, steep double-pitch roofs of grey slate slabs (llicorella), timber balconies and bell towers or bellcotes; the Romanesque church tradition lasted late here. The valley floor towns (Andorra la Vella, Escaldes) are dense with 1960s-2000s concrete, render and glass blocks, spa and shopping buildings; ski villages (Pas de la Casa, Soldeu, Arinsal) mix chalet-style timber and stone with tall apartment blocks. Conifer forest and bare high pastures above.",
+    "wallColours": [
+      "#8a8478",
+      "#6f6b63",
+      "#a39c8e",
+      "#d8d2c4",
+      "#5b5750",
+      "#b5aa95"
+    ],
+    "roofColours": [
+      "#4b4f56",
+      "#5f6368",
+      "#3e4247",
+      "#7a4a36"
+    ],
+    "wallMaterials": [
+      "stone",
+      "granite",
+      "render",
+      "whitewash",
+      "timber",
+      "concrete",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "slate",
+      "metal-sheet",
+      "timber-shingle"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Square stone bell towers with round-arched belfry openings and pyramidal slate roofs; Lombard bands and bellcotes (espadanya) on small chapels; small oculus under the gable apex; timber balconies and iron balcony railings on casas; wrought-iron grilles from the Ordino forges; stone-and-slate chalet styling in ski villages.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Andorra",
+        "what": "Romanesque dominance in the Pyrenees, churches (Sant Joan de Caselles, Santa Coloma, Sant Esteve), Casa de la Vall, old town 15th-early 20th c., Baroque examples"
+      },
+      {
+        "url": "https://ca.wikipedia.org/wiki/Sant_Pere_del_Tarter",
+        "what": "irregular local stone walls, lime-rendered main facade, double-pitched slate-slab roof, bellcote"
+      },
+      {
+        "url": "https://ca.wikipedia.org/wiki/Sant_Andreu_d%27Arinsal",
+        "what": "irregular stonework in clay mortar, llicorella slate roof, square bell tower with four-pitched roof"
+      }
+    ]
+  },
+  "places": {
+    "andorra-la-vella-airport-andorra-la-vella-airport": {
+      "venueId": "andorra-la-vella-airport-andorra-la-vella-airport",
+      "city": "andorra-la-vella",
+      "name": "Andorra la Vella Heliport",
+      "archetype": "airport-terminal",
+      "subject": "Andorra la Vella heliport: a flat helipad pad beside a small one-storey passenger building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "heliport",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8c2b4",
+          "#7d8e9a",
+          "#8a8f93"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/648871704",
+          "what": "OSM measured footprint 34 x 16.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q9287543",
+          "what": "Wikidata Andorra la Vella Heliport (airport in Andorra la Vella)"
+        }
+      ],
+      "notes": "Wikidata: heliport in Andorra la Vella (OSM aeroway=helipad, 34 x 16 m). No building description found; a small terminal is typed from the heliport type. The country has no airport; the heliport is the only air facility."
+    },
+    "andorra-la-vella-clinic": {
+      "venueId": "andorra-la-vella-clinic",
+      "city": "andorra-la-vella",
+      "name": "Hospital of Our Lady of Meritxell",
+      "archetype": "hospital",
+      "subject": "Hospital Nostra Senyora de Meritxell in Escaldes-Engordany: the national hospital, a multi-storey white-rendered block with a helipad on the valley floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 7,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e0d8",
+          "#8aa0aa",
+          "#a39c8e"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s with later wings",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1058436401",
+          "what": "OSM measured footprint 24.8 x 8.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q47993296",
+          "what": "Wikidata Nostra Senyora de Meritxell Hospital (hospital in Escaldes-Engordany, Andorra)"
+        }
+      ],
+      "notes": "OSM gives only a 25 x 8 m pavilion at the coordinate; the real hospital is a multi-storey block. Storey count, colours and wings are estimates from general knowledge."
+    },
+    "andorra-la-vella-community-notices": {
+      "venueId": "andorra-la-vella-community-notices",
+      "city": "andorra-la-vella",
+      "name": "Govern d'Andorra",
+      "archetype": "civic-palace",
+      "subject": "Edifici Administratiu del Govern d'Andorra on Carrer Prat de la Creu: a large concrete and stone administrative building whose roof is the Placa del Poble",
+      "form": {
+        "footprint": "rect",
+        "width_m": 93,
+        "depth_m": 47,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#bdb7ac",
+          "#8a8478",
+          "#5b5750"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "roof plaza above"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Pla%C3%A7a_del_Poble",
+          "what": "the Placa del Poble sits on the rooftop of the administrative building of the Government of Andorra, reachable by lift on Carrer Prat de la Creu"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/613379897",
+          "what": "OSM measured footprint 92.9 x 46.7 m"
+        }
+      ],
+      "notes": "Same OSM footprint (93 x 47 m) as Placa del Poble. Show the building face; the roof plaza is modelled separately. Colours and storeys are estimates."
+    },
+    "andorra-la-vella-community-voting-game": {
+      "venueId": "andorra-la-vella-community-voting-game",
+      "city": "andorra-la-vella",
+      "name": "De Sant Serni De Canillo",
+      "archetype": "church-classical",
+      "subject": "Sant Serni de Canillo: the parish church of the old town, a stone Baroque rebuild of a Romanesque church with a tall square bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#a39c8e",
+          "#8a8478",
+          "#d8d2c4"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "square tower attached to the nave, described as the tallest in Andorra"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "12th c. Romanesque, rebuilt 17th-18th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Serni_de_Canillo",
+          "what": "Baroque church of the 17th-18th c. keeping Romanesque remains; rectangular plan; square bell tower attached to the nave, the tallest in Andorra; Romanesque granite baptistery"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/7790584",
+          "what": "OSM measured footprint 22.5 x 15.5 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5397747",
+          "what": "Wikidata Església de Sant Serni de Canillo (church building in Canillo, Andorra)"
+        }
+      ],
+      "notes": "Tower height (about 25 m) and slate roof are estimates; plan is rectangular per the source. Distinct from Arinsal and Ordino by the larger size and taller tower."
+    },
+    "andorra-la-vella-community-workshop": {
+      "venueId": "andorra-la-vella-community-workshop",
+      "city": "andorra-la-vella",
+      "name": "Universitat d'Andorra",
+      "archetype": "campus-block",
+      "subject": "Universitat d'Andorra in Sant Julia de Loria: a four-storey modern university building of render and glass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 54,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#7d8e9a",
+          "#8a8478"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/270902310",
+          "what": "OSM measured footprint 53.7 x 35.1 m, 4 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q648838",
+          "what": "Wikidata Universitat d'Andorra (university in Sant Julià de Lòria, Andorra)"
+        }
+      ],
+      "notes": "OSM: university building with 4 levels, 54 x 35 m. Materials and colours are estimates."
+    },
+    "andorra-la-vella-market-game": {
+      "venueId": "andorra-la-vella-market-game",
+      "city": "andorra-la-vella",
+      "name": "Pyrénées Hyper-Centre",
+      "archetype": "mall",
+      "subject": "Pyrenees department store at Pas de la Casa: a tall duty-free shopping building among apartment blocks at the French border",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 23,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb7ac",
+          "#7d8e9a",
+          "#5b5750"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/54858984",
+          "what": "OSM measured footprint 43.8 x 23 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5596036",
+          "what": "Wikidata Grans Magatzems Pyrénées (building)"
+        }
+      ],
+      "notes": "OSM: 44 x 23 m building wikidata-tagged to the Pyrenees department store enterprise (founded 1931). Appearance and storeys are estimates; Pas de la Casa is full of concrete ski-resort blocks. Blank sign boards only."
+    },
+    "andorra-la-vella-meal-stop": {
+      "venueId": "andorra-la-vella-meal-stop",
+      "city": "andorra-la-vella",
+      "name": "Refugi de Sorteny",
+      "archetype": "restaurant",
+      "subject": "Refugi de Sorteny (Borda de Sorteny): a stone and timber mountain hut with a slate roof in the Sorteny valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#8a8478",
+          "#7a6a55",
+          "#d8d2c4"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1981",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Pere_del_Tarter",
+          "what": "local stone and slate roof typical of Andorran buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/206379041",
+          "what": "OSM measured footprint 17.2 x 13.5 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3931665",
+          "what": "Wikidata Refugi de Sorteny"
+        }
+      ],
+      "notes": "Wikidata: mountain hut, founded 1981; OSM 17 x 13 m \"Refugi Borda de Sorteny\" (an old borda barn turned alpine hut). Stone walls with a steep slate gable roof assumed from the region."
+    },
+    "andorra-la-vella-osm-node-10089764818": {
+      "venueId": "andorra-la-vella-osm-node-10089764818",
+      "city": "andorra-la-vella",
+      "name": "Port de Cabús",
+      "archetype": "park-landscape",
+      "subject": "Port de Cabus mountain pass on the Spanish border: a gravel parking lay-by with a signboard and stone border marker among scree and conifers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 25,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a8478",
+          "#a39c8e",
+          "#6f6b63"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/852609324",
+          "what": "OSM measured footprint 64.5 x 25.3 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7231065",
+          "what": "Wikidata port de Cabús (mountain pass between Androrra and Spain)"
+        }
+      ],
+      "notes": "OSM: a 64 x 25 m parking area; Wikidata: mountain saddle between Andorra and Spain (CG-4). No structure described."
+    },
+    "andorra-la-vella-osm-node-1894423912": {
+      "venueId": "andorra-la-vella-osm-node-1894423912",
+      "city": "andorra-la-vella",
+      "name": "Restaurant Refugi del Llac de Pessons",
+      "archetype": "restaurant",
+      "subject": "Restaurant Refugi del Llac de Pessons: a large ski-area mountain restaurant by the Pessons lake in Grandvalira",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#7a6a55",
+          "#8a8478",
+          "#d8d2c4"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/358057724",
+          "what": "OSM measured footprint 39.8 x 24.7 m"
+        }
+      ],
+      "notes": "OSM: unnamed 40 x 25 m building. Typed as a modern timber-and-stone mountain restaurant with a large terrace; bigger than the Sorteny hut. Snow ground for the high alpine setting."
+    },
+    "andorra-la-vella-osm-node-321679777": {
+      "venueId": "andorra-la-vella-osm-node-321679777",
+      "city": "andorra-la-vella",
+      "name": "la Rabassa",
+      "archetype": "restaurant",
+      "subject": "La Rabassa: a forest-edge restaurant chalet near the Rabassa nordic area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#7a6a55",
+          "#8a8478",
+          "#d8d2c4"
+        ],
+        "roofColour": "#5f6368",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/208401232",
+          "what": "OSM measured footprint 20.2 x 11 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3212119",
+          "what": "Wikidata La Rabassa (ski resort in Andorra)"
+        }
+      ],
+      "notes": "OSM: 20 x 11 m building; Wikidata La Rabassa is a ski resort. No building description found; a small timber chalet is typed."
+    },
+    "andorra-la-vella-osm-node-4516461789": {
+      "venueId": "andorra-la-vella-osm-node-4516461789",
+      "city": "andorra-la-vella",
+      "name": "Madriu-Perafita-Claror Valley",
+      "archetype": "park-landscape",
+      "subject": "Madriu-Perafita-Claror Valley: a UNESCO glacial valley of high pasture, stone shepherd huts and conifer slopes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a8478",
+          "#a39c8e",
+          "#6f6b63"
+        ],
+        "roofColour": "#4b4f56",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "dry-stone field walls"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "cultural landscape",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Andorra",
+          "what": "mountain setting; Wikidata describes the valley as a protected glacial valley"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q332800",
+          "what": "Wikidata Madriu-Perafita-Claror Valley (glacial valley in Andorra)"
+        }
+      ],
+      "notes": "Wikidata: glacial valley, protected area. No building at the coordinate; model as alpine meadow with a few stone borda huts and a stone wall (huts are typed from regional tradition, not sourced)."
+    },
+    "andorra-la-vella-osm-node-6698440905": {
+      "venueId": "andorra-la-vella-osm-node-6698440905",
+      "city": "andorra-la-vella",
+      "name": "Jardins de Juberri",
+      "archetype": "park-landscape",
+      "subject": "Jardins de Juberri: a small terraced garden in the Sant Julia de Loria hills with a pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a39c8e",
+          "#7a6a55",
+          "#d8d2c4"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/817197764",
+          "what": "OSM measured footprint 30.6 x 20.6 m"
+        }
+      ],
+      "notes": "OSM: a 31 x 21 m building at the point. Garden contents are not described anywhere found; a small stone pavilion in lawn terraces is typed."
+    },
+    "andorra-la-vella-osm-way-194556039": {
+      "venueId": "andorra-la-vella-osm-way-194556039",
+      "city": "andorra-la-vella",
+      "name": "Epizen",
+      "archetype": "mall",
+      "subject": "Epizen: a three-level shopping and leisure centre on the valley floor between Santa Coloma and Sant Julia",
+      "form": {
+        "footprint": "rect",
+        "width_m": 133,
+        "depth_m": 62,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8c2b4",
+          "#7d8e9a",
+          "#5b5750"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/194556039",
+          "what": "OSM measured footprint 133.4 x 61.6 m, 3 levels"
+        }
+      ],
+      "notes": "OSM: retail building 133 x 62 m, 3 levels. Appearance is an estimate; boxy cladded shopping centre with rooftop car deck."
+    },
+    "andorra-la-vella-osm-way-202614660": {
+      "venueId": "andorra-la-vella-osm-way-202614660",
+      "city": "andorra-la-vella",
+      "name": "Museu Casa Rull",
+      "archetype": "manor",
+      "subject": "Museu Casa Rull in Sispony: a 1623 rectangular stone farmhouse on three bays built into the slope, plastered south front, two-slope slate roof with wide eaves",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 4,
+        "height_m": 12,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#cfc6b2",
+          "#8d8678",
+          "#7a6a55"
+        ],
+        "roofColour": "#4f5358",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "railings",
+          "count": 2,
+          "note": "iron balcony railings"
+        },
+        {
+          "id": "bay-window",
+          "count": 2,
+          "note": "sill balconies on the top floor"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "segmental-arched entrance door 2 m wide"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "orchard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1623",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Museu_Casa_Rull",
+          "what": "rectangular, three bays, built into the slope; four levels; 1623; plastered south facade; two-slope roof with overhanging eaves after a 19th-c. fire; 2 m entrance door with segmental arch, iron-grilled windows, iron balcony and sill balconies; orchard on the northeast side"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/202614660",
+          "what": "OSM measured footprint 19.8 x 13.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2124368",
+          "what": "Wikidata Museu Casa Rull (historic house in La Massana, Andorra)"
+        }
+      ],
+      "notes": "Four levels (ground, two floors and the top \"cap de casa\" floor). Render colour and slate are estimates. Note: the English wiki \"Casa Rull\" is a different (Reus) house."
+    },
+    "andorra-la-vella-osm-way-202616749": {
+      "venueId": "andorra-la-vella-osm-way-202616749",
+      "city": "andorra-la-vella",
+      "name": "Sant Andreu d’Arinsal",
+      "archetype": "church-classical",
+      "subject": "Sant Andreu d'Arinsal: a tiny 17th-century rough-stone church built on the rock with a square bell tower attached to the facade and neighbouring house",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a8478",
+          "#6f6b63",
+          "#a39c8e"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "quadrangular tower with round-arched openings and a four-pitched roof"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "17th c., restored 1963-64 and 2004",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Andreu_d%27Arinsal",
+          "what": "small quadrangular plan on rock, chamfered corner, irregular stonework bound with clay mortar, no render; two-pitch roof with timber trusses and llicorella slate; square bell tower with a round-arched opening on each side and a four-pitched roof; simple wooden door and oculus under the apex"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/202616749",
+          "what": "OSM measured footprint 11 x 9.1 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5397724",
+          "what": "Wikidata Església de Sant Andreu d'Arinsal (church building in Arinsal, Andorra)"
+        }
+      ],
+      "notes": "Smallest of the Andorran churches here; unrendered rough stone, tower integral with the facade and a passage beneath it."
+    },
+    "andorra-la-vella-osm-way-202617257": {
+      "venueId": "andorra-la-vella-osm-way-202617257",
+      "city": "andorra-la-vella",
+      "name": "Museu Etnogràfic Casa Cristo",
+      "archetype": "manor",
+      "subject": "Museu Etnografic Casa Cristo in Encamp: a traditional Andorran stone farmhouse with a slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a39c8e",
+          "#7a6a55",
+          "#d8d2c4"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bay-window",
+          "count": 2,
+          "note": "timber balcony"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "traditional (museum)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/202617257",
+          "what": "OSM measured footprint 24.4 x 22.3 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5047802",
+          "what": "Wikidata Casa Cristo (house in Encamp, Andorra)"
+        }
+      ],
+      "notes": "Wikidata: ethnographic museum in a house in Encamp; OSM 24 x 22 m. No physical description found; typed as a traditional Pyrenean casa pairal."
+    },
+    "andorra-la-vella-osm-way-202640608": {
+      "venueId": "andorra-la-vella-osm-way-202640608",
+      "city": "andorra-la-vella",
+      "name": "Església de Sant Corneli i Sant Cebrià d'Ordino",
+      "archetype": "church-classical",
+      "subject": "Esglesia de Sant Corneli i Sant Cebria d'Ordino: a Baroque-remodelled stone parish church beside the village square, with a bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 17,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "render",
+        "colours": [
+          "#a39c8e",
+          "#d8d2c4",
+          "#8a8478"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "medieval, remodelled 17th-19th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Corneli_i_Sant_Cebri%C3%A0_d%27Ordino",
+          "what": "medieval church heavily remodelled between the 17th and 19th c., Baroque, with five Baroque altarpieces; wrought-iron grilles from Ordino forges; communion shelter (comunidor) in the square"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/202640608",
+          "what": "OSM measured footprint 21.6 x 17.3 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21077406",
+          "what": "Wikidata Església de Sant Corneli i Sant Cebrià d'Ordino (church building in Ordino, Andorra)"
+        }
+      ],
+      "notes": "Tower and stone colour are estimates; the source does not describe the exterior."
+    },
+    "andorra-la-vella-osm-way-352338250": {
+      "venueId": "andorra-la-vella-osm-way-352338250",
+      "city": "andorra-la-vella",
+      "name": "Centre Comercial Pyrénées Andorra",
+      "archetype": "mall",
+      "subject": "Centre Comercial Pyrenees Andorra on Avinguda Meritxell: the large department store of Andorra la Vella, a tall boxy shopping building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 103,
+        "depth_m": 51,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8c2b4",
+          "#7d8e9a",
+          "#5b5750"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "mid/late 20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Pla%C3%A7a_del_Poble",
+          "what": "Andorra la Vella main-street context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/352338250",
+          "what": "OSM measured footprint 102.9 x 51.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5596036",
+          "what": "Wikidata Grans Magatzems Pyrénées (building)"
+        }
+      ],
+      "notes": "OSM: 103 x 51 m building tagged to the Pyrenees department store (company founded 1931). Storeys and facade are estimates. Larger and boxier than the Pas de la Casa store."
+    },
+    "andorra-la-vella-osm-way-361846817": {
+      "venueId": "andorra-la-vella-osm-way-361846817",
+      "city": "andorra-la-vella",
+      "name": "Plaça del Poble",
+      "archetype": "park-landscape",
+      "subject": "Placa del Poble: a rooftop civic plaza on the Government administrative building, with the \"Homage to the Immigrant\" statue and views down the valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 93,
+        "depth_m": 47,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "roof-plaza",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#bdb7ac",
+          "#8a8478",
+          "#5b5750"
+        ],
+        "roofColour": "#8a8f93",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Homage to the Immigrant (Antonio Tenreiro, 2010)"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "parapet"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "plaza on the administrative building roof; statue 2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Pla%C3%A7a_del_Poble",
+          "what": "square sits on the rooftop of the Government administrative building, reachable by lift on Carrer Prat de la Creu; sculpture Homenatge a l'immigrant by Antonio Tenreiro donated in 2010"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/613379897",
+          "what": "OSM measured footprint 92.9 x 46.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18005708",
+          "what": "Wikidata Plaça del Poble (Andorra la Vella)"
+        }
+      ],
+      "notes": "Same footprint as the Govern building (93 x 47 m); the plaza is its roof deck. Paving is estimated."
+    },
+    "andorra-la-vella-osm-way-385230804": {
+      "venueId": "andorra-la-vella-osm-way-385230804",
+      "city": "andorra-la-vella",
+      "name": "Centre Mèdic Grau",
+      "archetype": "hospital",
+      "subject": "Centre Medic Grau in Grau Roig: a small ski-area medical centre in a chalet-style building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#7a6a55",
+          "#8a8478",
+          "#e3e0d8"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "snow",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/385230804",
+          "what": "OSM measured footprint 28.2 x 12.7 m"
+        }
+      ],
+      "notes": "OSM: hospital-tagged 28 x 13 m building in the Grandvalira ski area. No description found; typed as an alpine chalet clinic."
+    },
+    "andorra-la-vella-osm-way-908107551": {
+      "venueId": "andorra-la-vella-osm-way-908107551",
+      "city": "andorra-la-vella",
+      "name": "Mirador Roc del Quer",
+      "archetype": "monument",
+      "subject": "Mirador Roc del Quer near Canillo: a narrow steel-and-glass cantilevered viewing platform jutting out over a cliff",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 2.5,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "cantilever-lookout",
+        "wings": 0
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#5b5f63",
+          "#9fb4be",
+          "#8a8f93"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "cantilevered walkway out from the cliff"
+        },
+        {
+          "id": "railings",
+          "count": 1,
+          "note": "glass-and-steel balustrade"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Serni_de_Canillo",
+          "what": "Canillo parish context only; OSM 8.7 x 2.3 m viewpoint, built 2016"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/908107551",
+          "what": "OSM measured footprint 8.7 x 2.3 m, start 2016"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q66384866",
+          "what": "Wikidata Mirador Roc del Quer"
+        }
+      ],
+      "notes": "OSM start 2016, 8.7 x 2.3 m. Shown as a thin cantilevered platform; steel and glass inferred from the 2016 build."
+    },
+    "andorra-la-vella-osm-way-968544460": {
+      "venueId": "andorra-la-vella-osm-way-968544460",
+      "city": "andorra-la-vella",
+      "name": "Cadran solaire de Tristaina",
+      "archetype": "monument",
+      "subject": "Mirador Solar de Tristaina: a round stone sundial viewpoint at about 2,300 m above the Tristaina lakes, with a tall central gnomon",
+      "form": {
+        "footprint": "round",
+        "width_m": 22.7,
+        "depth_m": 22.7,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "sundial",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a8478",
+          "#a39c8e",
+          "#6f6b63"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "gnomon of the sundial"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Pere_del_Tarter",
+          "what": "regional stone building tradition context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/968544460",
+          "what": "OSM measured footprint 22.7 x 22.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q115654232",
+          "what": "Wikidata Mirador solar de Tristaina"
+        }
+      ],
+      "notes": "OSM: 22.7 x 22.7 m circular viewpoint; Wikidata: scenic viewpoint. Sundial layout inferred from the name; heights and stone colour are estimates. Bare alpine ground, no trees."
+    },
+    "andorra-la-vella-quiet-reflection": {
+      "venueId": "andorra-la-vella-quiet-reflection",
+      "city": "andorra-la-vella",
+      "name": "Sant Pere del Tarter",
+      "archetype": "shrine-small",
+      "subject": "Sant Pere del Tarter near Ransol: a 16th-century chapel of rough local stone with a lime-rendered facade, slate-slab roof and a stone bellcote",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9.4,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#a39c8e",
+          "#d8d2c4",
+          "#6f6b63"
+        ],
+        "roofColour": "#4b4f56",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "simple semicircular-arched bellcote (espadanya) above the facade"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "segmental-arched door and two flanking windows"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "1527 authorisation, finished 1545, restored 1966",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Sant_Pere_del_Tarter",
+          "what": "rectangular plan, square apse hidden outside; double-pitched slate-slab roof on timber; irregular local stone with dressed corners, lime-rendered main facade with a central door and two windows, all segmental arches; square choir window; semicircular bellcote"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/202636510",
+          "what": "OSM measured footprint 15 x 9.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5397740",
+          "what": "Wikidata Església de Sant Pere del Tarter (church building in Canillo, Andorra)"
+        }
+      ],
+      "notes": "Small chapel; the rendered front with a bellcote and rough-stone flanks is the recognisable look."
+    },
+    "andorra-la-vella-recreation": {
+      "venueId": "andorra-la-vella-recreation",
+      "city": "andorra-la-vella",
+      "name": "Parc Central",
+      "archetype": "park-landscape",
+      "subject": "Parc Central in Andorra la Vella: the city's largest green space beside the Valira river, with lawns, fountains, a children's play area, a skatepark and a bar-restaurant with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "timber",
+        "colours": [
+          "#d8d2c4",
+          "#7d8e9a",
+          "#7a6a55"
+        ],
+        "roofColour": "#6b6f74",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "bar-restaurant with terrace"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "river wall"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "designed by Daniel Gelabert Fontova",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Parc_Central_d%27Andorra",
+          "what": "about 33,000 m2 beside the Valira river; play area, green zones, skatepark, bar-restaurant with terrace, fountains; architect Daniel Gelabert Fontova; large paid car park on Pere d'Urtx street"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/6275507",
+          "what": "OSM measured footprint 236.6 x 108.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7136369",
+          "what": "Wikidata Parc Central, Andorra la Vella (Andorra park)"
+        }
+      ],
+      "notes": "Layout and the cafe pavilion shape are estimates."
+    },
+    "andorra-la-vella-transit": {
+      "venueId": "andorra-la-vella-transit",
+      "city": "andorra-la-vella",
+      "name": "National Bus Station",
+      "archetype": "transport-station",
+      "subject": "Estacio Nacional d'Autobusos in Andorra la Vella: a long low bus terminal with a row of bays under a canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 135,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "bus-station",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8c2b4",
+          "#7d8e9a",
+          "#5b5750"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://ca.wikipedia.org/wiki/Pla%C3%A7a_del_Poble",
+          "what": "Andorra la Vella city centre context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/604030704",
+          "what": "OSM measured footprint 135.3 x 27.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q98387430",
+          "what": "Wikidata "
+        }
+      ],
+      "notes": "Wikidata: bus station (Estacio Nacional d'Autobusos) with a 2021 photo; OSM footprint 135 x 28 m. Facade and canopy are estimates."
+    }
+  }
+}

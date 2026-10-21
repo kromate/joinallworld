@@ -1,0 +1,272 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: governor's walled compound, pale two-storey residence with portico, two wings, flagpoles, green roof for state colours (assumption). The nearest OSM building (22.6 m away, odd L plan) was judged unreliable and not used; no photo found"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "typical colonial-style state house from text only; real plan, roof colour and portico unknown"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "residence",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#c4a27a",
+    "plinth": 0.7,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b4f",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -25,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#c4a27a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b4f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    25,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e8d6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#c4a27a",
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#2f6b4f",
+    "material": "clay-tile",
+    "pitch": 20,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 5,
+    "height": 8.5,
+    "columns": 6,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#f6f1e3",
+    "roofColour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 12,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.8,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "colour": "#f0e8d6",
+    "leafColour": "#2d3033"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -36,
+      0
+     ],
+     [
+      -5,
+      0
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.4,
+    "colour": "#e3d8bf",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5,
+      0
+     ],
+     [
+      36,
+      0
+     ]
+    ],
+    "height": 2.8,
+    "thickness": 0.4,
+    "colour": "#e3d8bf",
+    "pillarEvery": 4
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "colour": "#1c1f22",
+    "count": 3,
+    "spacing": 3,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -16
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -16
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ilorin",
+ "venueId": "kwara-government-house"
+}

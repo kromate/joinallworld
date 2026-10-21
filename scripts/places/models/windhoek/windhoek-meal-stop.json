@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/390315090",
+   "used": "426 m2 containing outline (not name-matched) as the brick hall"
+  },
+  {
+   "kind": "text",
+   "used": "brief: restored brick-and-render industrial hall, courtyard, covered patio; heritage setting unverified; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "brick-hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "brick",
+    "colour": "#a8603f",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.2,
+    "bay": 3.2,
+    "plinth": 0.4,
+    "cornice": true,
+    "bands": "#efe3c2"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8c8f92",
+    "material": "corrugated",
+    "pitch": 28,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "render-annex",
+   "footprint": {
+    "rect": [
+     10,
+     8
+    ]
+   },
+   "at": [
+    -14,
+    -12
+   ],
+   "rotDeg": -21,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#efe3c2",
+    "windows": "arched",
+    "windowRatio": 0.25
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.2,
+    "colour": "#8c8f92",
+    "material": "corrugated"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 6,
+    "height": 3,
+    "columns": 4,
+    "colour": "#5b6670"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 9,
+    "count": 2,
+    "spread": 8,
+    "colour": "#7c8a4c"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -27,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.0,
+    "thickness": 0.4,
+    "colour": "#a8603f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "trees": 0,
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; heritage setting unverified, outline only a containing match, patio and annex placed by guess"
+ }
+}

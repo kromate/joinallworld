@@ -1,0 +1,194 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "yankari-motor-park-bauchi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json#yankari-motor-park-bauchi",
+   "used": "intercity motor park: long open steel shed, ticket kiosks, bus bays, gate; OSM match is a 78 m2 building 11 m away so not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "platform-canopy",
+   "at": [
+    0,
+    8,
+    0
+   ],
+   "params": {
+    "width": 60,
+    "depth": 10,
+    "height": 5,
+    "roof_colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    0,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    12,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    24,
+    -4,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.7,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.8,
+    "coach_share": 0.5
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "van",
+    "density": 0.7
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.6,
+    "colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 4,
+    "colour": "#3f6b4e"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -38,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "height": 2,
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline; typed layout of shed, kiosks, bays."
+ }
+}

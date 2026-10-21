@@ -1,0 +1,1425 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "prague",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "prague",
+    "climate": "temperate",
+    "vernacular": "Dense historic core of stucco-rendered Baroque, Neoclassical and Art Nouveau townhouses in pastel ochre, cream, pink and grey with steep red clay-tile roofs and dormers; late-19th-century perimeter blocks with rich plaster ornament; 1960s-80s concrete panel (panelak) housing estates on the edge in grey, white and pastel-painted panels with flat membrane roofs; Baroque chateaux and village churches in white or yellow render with red tile; glass-and-render malls and offices at the periphery.",
+    "wallColours": [
+      "#e8d9b0",
+      "#d9b26a",
+      "#d8a7a0",
+      "#f0ece0",
+      "#a9a9a4",
+      "#b9c4b0",
+      "#c9a66b"
+    ],
+    "roofColours": [
+      "#b5532f",
+      "#8a4a37",
+      "#5b5f63",
+      "#7a7a78"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "render",
+      "concrete",
+      "brick",
+      "stone",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Baroque and Art Nouveau plaster ornament, sgraffito, pastel-painted facades with white window surrounds and cornices, mansard roofs with dormers, steep red clay-tile roofs, Secession decorative bands; on estates, prefabricated panel joints and coloured balcony panels.",
+    "sources": [
+      {
+        "url": "https://cs.wikipedia.org/wiki/Psychiatrická_nemocnice_Bohnice",
+        "what": "Secession church and water tower (1919) and a Baroque-chateau-styled administration building: Czech early-20th-century institutional style"
+      },
+      {
+        "url": "https://cs.wikipedia.org/wiki/Zámek_Štiřín",
+        "what": "Baroque one-upper-floor three-wing chateau of 1750: typical Central Bohemian Baroque manor"
+      },
+      {
+        "url": "https://cs.wikipedia.org/wiki/Zámek_Lobkovice",
+        "what": "Renaissance four-wing chateau with hipped roof and mansard tower: Central Bohemian manor type"
+      }
+    ]
+  },
+  "places": {
+    "prague-airport-prague-airport": {
+      "venueId": "prague-airport-prague-airport",
+      "city": "prague",
+      "name": "Václav Havel Airport Prague",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 2 (2006) and Terminal 1 (1968, rebuilt 1997) seen from the landside forecourt: a long low glass-and-steel terminal with a flat canopy and gate piers behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d8",
+          "#5d6d7a",
+          "#eef0f1"
+        ],
+        "roofColour": "#aeb4b7",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy over kerb"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1968, T2 2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Václav_Havel_Airport_Prague",
+          "what": "T1 opened 1968 and rebuilt 1997; T2 opened 17 Jan 2006; planned jet-bridge concourse; Terminal 4 (1937) is the oldest part"
+        }
+      ],
+      "notes": "Facts from Wikipedia only (opening years, terminal layout). Facade materials and colours are typical for 2000s Czech airport terminals and are estimates; the 1937 functionalist Terminal 4 by Adolf Benš is not modelled."
+    },
+    "prague-clinic": {
+      "venueId": "prague-clinic",
+      "city": "prague",
+      "name": "Psychiatrická nemocnice Bohnice",
+      "archetype": "hospital",
+      "subject": "Bohnice psychiatric hospital: the Baroque-chateau-styled administration building and parkland pavilions with the tall Secession water tower behind",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "pavilion-campus"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe1b8",
+          "#c9a66b",
+          "#f4f1e6"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "Secession water tower ~45 m, four tanks (Roštlapil)"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "Church of St Wenceslas, Secession, 1919"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "central pediment on admin building"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1903-1916",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://cs.wikipedia.org/wiki/Psychiatrická_nemocnice_Bohnice",
+          "what": "64 ha complex built 1903-16, 28 pavilions 1906-12, Secession church (Roštlapil, 1919) in centre, ~45 m Secession water tower, administration building designed to resemble a small Baroque chateau, mature public park"
+        }
+      ],
+      "notes": "Recognisable by the park of numbered pavilions, the church and the tall water tower. Facade colours (cream with ochre, red tile roofs) are estimated from typical Czech institutional buildings; the source gives no colours or materials."
+    },
+    "prague-community-notices": {
+      "venueId": "prague-community-notices",
+      "city": "prague",
+      "name": "Obecní úřad Borek",
+      "archetype": "civic-small",
+      "subject": "Municipal office of the small Central Bohemian village of Borek: a two-storey rendered village hall with a hipped red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9b0",
+          "#c9a66b",
+          "#f4f1e6"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-community-voting-game": {
+      "venueId": "prague-community-voting-game",
+      "city": "prague",
+      "name": "Úřad městské části Praha - Újezd",
+      "archetype": "civic-small",
+      "subject": "Prague-Újezd borough office: a modest two- to three-storey rendered administration building with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc2",
+          "#a9a9a4",
+          "#f4f1e6"
+        ],
+        "roofColour": "#9a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-community-workshop": {
+      "venueId": "prague-community-workshop",
+      "city": "prague",
+      "name": "Infocentrum s knihovnou",
+      "archetype": "civic-small",
+      "subject": "Small municipal information centre with a library: low rendered public building with a pitched roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece3cc",
+          "#b9c4b0",
+          "#f4f1e6"
+        ],
+        "roofColour": "#8a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-market-game": {
+      "venueId": "prague-market-game",
+      "city": "prague",
+      "name": "Westfield Černý Most",
+      "archetype": "mall",
+      "subject": "Westfield Černý Most: a wide two- to three-level shopping centre with a flat roof, blank-boarded entrance canopies and surface parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cf",
+          "#8a96a0",
+          "#eef0f1"
+        ],
+        "roofColour": "#9a9ea0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 2,
+          "note": "entrance canopies"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. The mall sits beside the Černý Most metro terminus; a large surface car park surrounds it."
+    },
+    "prague-meal-stop": {
+      "venueId": "prague-meal-stop",
+      "city": "prague",
+      "name": "Cyberdog",
+      "archetype": "restaurant",
+      "subject": "Cyberdog: a small neon-trimmed club/shop frontage with a dark facade and glowing strip lighting",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#2a2a30",
+          "#6bd6c8",
+          "#f0f0f0"
+        ],
+        "roofColour": "#555a5e",
+        "roofMaterial": "membrane",
+        "windows": "screen",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board, no brand marks"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. Cyberdog is a known futuristic-fashion brand with a club venue; its building could not be verified."
+    },
+    "prague-osm-node-13922405680": {
+      "venueId": "prague-osm-node-13922405680",
+      "city": "prague",
+      "name": "Panevropská univerzita",
+      "archetype": "campus-block",
+      "subject": "Pan-European University campus: a plain three-storey rendered teaching block with ribbon windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e2dccb",
+          "#8a96a0",
+          "#f4f1e6"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-node-3481221272": {
+      "venueId": "prague-osm-node-3481221272",
+      "city": "prague",
+      "name": "vyhlídka na Housle",
+      "archetype": "park-landscape",
+      "subject": "Housle viewpoint: a small open lookout terrace above the Vltava valley with a railing and benches among trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a79f8e",
+          "#7a8a5a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "open clifftop viewing platform"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. Housle is a hill/viewpoint north of Prague (Ďáblice/Čimice area)."
+    },
+    "prague-osm-node-963907924": {
+      "venueId": "prague-osm-node-963907924",
+      "city": "prague",
+      "name": "zřícenina hrádku Karlík",
+      "archetype": "heritage-fort",
+      "subject": "Karlík: the weathered ruins of a small medieval hilltop castle - broken stone walls and a stump of a tower in woodland",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 34,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9588",
+          "#6f6a60",
+          "#b8b2a2"
+        ],
+        "roofColour": "#6f6a60",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "low ruined curtain wall"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "14th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. A ruined small castle (hrádek); wall sizes are guessed."
+    },
+    "prague-osm-relation-7096099": {
+      "venueId": "prague-osm-relation-7096099",
+      "city": "prague",
+      "name": "park Maxe van der Stoela",
+      "archetype": "park-landscape",
+      "subject": "Max van der Stoel park: a small urban public park of lawns, mature trees and paved paths in central Prague",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a9a4",
+          "#7a9a5a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-way-1016659823": {
+      "venueId": "prague-osm-way-1016659823",
+      "city": "prague",
+      "name": "rozhledna Hradiště - Závist",
+      "archetype": "monument",
+      "subject": "Hradiště-Závist lookout tower: a slim tower with a viewing platform over the Závist hillfort and Vltava valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#8a6a48",
+          "#7a7a78",
+          "#b8a888"
+        ],
+        "roofColour": "#5b5f63",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair to platform"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. Height, material and shape of the tower are estimates; the surroundings are the Celtic Závist hillfort in woodland."
+    },
+    "prague-osm-way-1050400363": {
+      "venueId": "prague-osm-way-1050400363",
+      "city": "prague",
+      "name": "OC Spektrum",
+      "archetype": "mall",
+      "subject": "OC Spektrum: a low neighbourhood shopping centre in Prague 11 with a flat roof and surface parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cf",
+          "#c25a3a",
+          "#f4f1e6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-way-1190106231": {
+      "venueId": "prague-osm-way-1190106231",
+      "city": "prague",
+      "name": "Korunka",
+      "archetype": "park-landscape",
+      "subject": "Korunka: a wooded hilltop outcrop and viewpoint in the Berounka/Vltava hills south-west of Prague",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#9a9588",
+          "#6f8a50",
+          "#c9c3b0"
+        ],
+        "roofColour": "#6f6a60",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "rocky lookout"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-way-139745554": {
+      "venueId": "prague-osm-way-139745554",
+      "city": "prague",
+      "name": "sv. Kliment",
+      "archetype": "shrine-small",
+      "subject": "Church of St Clement (Levý Hradec): a small old stone-and-render church with a steep red roof and a modest tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#efe9dc",
+          "#a79f8e",
+          "#d8d2c0"
+        ],
+        "roofColour": "#9a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small tower"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "9th century origin",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. Believed to be the Levý Hradec church of St Clement (first Christian church in Bohemia, much rebuilt); not verified."
+    },
+    "prague-osm-way-23093458": {
+      "venueId": "prague-osm-way-23093458",
+      "city": "prague",
+      "name": "IKEM",
+      "archetype": "hospital",
+      "subject": "IKEM Prague-Krč: a large multi-storey hospital/research block of the 1970s-80s with long ribbon-window floors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 32,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d6d2c6",
+          "#4f6f8a",
+          "#eef0f1"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://cs.wikipedia.org/wiki/Institut_klinické_a_experimentální_medicíny",
+          "what": "IKEM founded 1971 at Vídeňská 9, Prague-Krč, by merging six institutes"
+        }
+      ],
+      "notes": "Page gave only the founding date and address; the building form is an estimate for a late-socialist/ post-1990 hospital block."
+    },
+    "prague-osm-way-258815975": {
+      "venueId": "prague-osm-way-258815975",
+      "city": "prague",
+      "name": "zámek Štiřín",
+      "archetype": "manor",
+      "subject": "Štiřín chateau: a one-upper-floor Baroque three-wing chateau with a hipped roof, now a hotel with parkland and a golf course",
+      "form": {
+        "footprint": "U",
+        "width_m": 75,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe3c0",
+          "#d9b26a",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central entrance bay"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1750",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://cs.wikipedia.org/wiki/Zámek_Štiřín",
+          "what": "Baroque one-upper-floor three-wing building of 1750 on a medieval tvrz site; park partly turned into a golf course in the 1990s"
+        }
+      ],
+      "notes": "Style, storeys and wings are from the source. Facade colour (cream) and the roof being red clay tile are estimates typical of Central Bohemian chateaux; dimensions estimated."
+    },
+    "prague-osm-way-28310118": {
+      "venueId": "prague-osm-way-28310118",
+      "city": "prague",
+      "name": "Metropolitan University of Prague",
+      "archetype": "campus-block",
+      "subject": "Metropolitan University Prague: a modern four-storey rendered and glazed teaching building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 26,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cc",
+          "#4f6f8a",
+          "#eef0f1"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-way-34963462": {
+      "venueId": "prague-osm-way-34963462",
+      "city": "prague",
+      "name": "Přímské náměstí",
+      "archetype": "park-landscape",
+      "subject": "Přímské náměstí: a paved suburban square with a lawn, benches and trees in eastern Prague",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a9a4",
+          "#7a9a5a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-way-37111399": {
+      "venueId": "prague-osm-way-37111399",
+      "city": "prague",
+      "name": "kostel sv. Jakuba Většího",
+      "archetype": "church-classical",
+      "subject": "Church of St James the Greater: a Central Bohemian village church with a nave, a tower with a pointed or onion cap and white render under a red roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ece0",
+          "#a79f8e",
+          "#d8d2c0"
+        ],
+        "roofColour": "#9a4a30",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "18th century (assumed)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates."
+    },
+    "prague-osm-way-4019771": {
+      "venueId": "prague-osm-way-4019771",
+      "city": "prague",
+      "name": "Metropole Zličín",
+      "archetype": "mall",
+      "subject": "Metropole Zličín: a large flat-roofed shopping and entertainment centre beside the Zličín metro terminus, with a cinema and large surface car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 230,
+        "depth_m": 110,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d6cf",
+          "#b04a3a",
+          "#eef0f1"
+        ],
+        "roofColour": "#9a9ea0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2002 (rebuilt 2014)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://cs.wikipedia.org/wiki/Metropole_Zličín",
+          "what": "~44,000 m2 floor area, opened Oct 2002, architect Chapman Taylor, reconstructed 2014, cinema on the second mezzanine"
+        }
+      ],
+      "notes": "Size from the 44,000 m2 floor area over about three levels; facade materials and colours are estimates for a 2000s UK-designed retail centre."
+    },
+    "prague-osm-way-51001576": {
+      "venueId": "prague-osm-way-51001576",
+      "city": "prague",
+      "name": "Zámek Lobkovice",
+      "archetype": "manor",
+      "subject": "Lobkovice chateau: a one-upper-floor Renaissance chateau with four wings around a courtyard on a trapezoid plan, hipped roof and a three-storey tower with a mansard cap",
+      "form": {
+        "footprint": "ring",
+        "width_m": 48,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe3c0",
+          "#a79f8e",
+          "#f6f3ea"
+        ],
+        "roofColour": "#a8502f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "three-storey prismatic tower with mansard roof"
+        },
+        {
+          "id": "chimney",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1403 origin, rebuilt 1679 and c.1829",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://cs.wikipedia.org/wiki/Zámek_Lobkovice",
+          "what": "former tvrz, small Renaissance chateau, one upper floor, four wings on a trapezoid plan, hipped roof, three-storey tower with mansard roof, farm courtyard on Elbe terrace; rebuilt 1679 and c.1829"
+        }
+      ],
+      "notes": "Form from the source. Colours (cream render, red tile) and dimensions are estimates; it sits inside a farm complex on the Elbe bank."
+    },
+    "prague-quiet-reflection": {
+      "venueId": "prague-quiet-reflection",
+      "city": "prague",
+      "name": "monastýr sv. Václava a Ludmily",
+      "archetype": "shrine-small",
+      "subject": "Monastery of St Wenceslas and St Ludmila: a small monastic complex of a chapel/church with a bell tower and low cell ranges around a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 30,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#a8502f",
+          "#d8d2c0"
+        ],
+        "roofColour": "#8a4a37",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. The monastery type and denomination could not be verified, so no denomination-specific features (onion domes) were assumed."
+    },
+    "prague-recreation": {
+      "venueId": "prague-recreation",
+      "city": "prague",
+      "name": "Pietní území Lidice",
+      "archetype": "park-landscape",
+      "subject": "Lidice memorial: a large open memorial landscape with a rose garden, a field of bronze children figures, a cross at the mass-grave site and a museum building at the edge",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 140,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#bdb8a8",
+          "#7a9a5a",
+          "#d8d2c0"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 82,
+          "note": "bronze memorial to the 82 murdered children (Marie Uchytilová)"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "memorial cross/stele at the mass grave"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1945-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Lidice village was destroyed in 1942; the memorial area and the rose garden of peace and friendship are known to me from general knowledge, but the Czech Wikipedia page could not be fetched so no source was used. Layout dimensions are estimates."
+    },
+    "prague-transit": {
+      "venueId": "prague-transit",
+      "city": "prague",
+      "name": "I. P. Pavlova",
+      "archetype": "transport-station",
+      "subject": "I. P. Pavlova metro station: an underground station with a small street-level vestibule at the Vinohrady/Nusle junction beside tram stops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b5aa",
+          "#4f6f8a",
+          "#e8e4da"
+        ],
+        "roofColour": "#7a7a78",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2,
+          "note": "tram/bus stops"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing this specific building was found (web search budget exhausted during research; only Wikipedia pages could be fetched). Typed from the place type and Prague city style; form, size and colours are estimates. Opened with Line C in 1974 (author knowledge, unverified)."
+    }
+  }
+}

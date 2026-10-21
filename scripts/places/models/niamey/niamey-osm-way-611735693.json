@@ -1,0 +1,551 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-way-611735693",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Niger,_Niamey,_Kountch%C3%A9_Stadium_(1).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "NigerTZai",
+   "view": "interior",
+   "file": "/tmp/places-evidence/niamey/stadium.jpg",
+   "used": "orange-ochre concrete walls and pylons, deep cantilevered main-stand roof with dark ribbed soffit, stepped concrete terraces without seat shells, red running track, green pitch"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9099509",
+   "used": "oval bowl shape and long axis north-south (238 x 160 m, scaled to the scene clamp as 92 x 126 m)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -60,
+  "pitchDeg": 10,
+  "fovDeg": 60,
+  "aspect": 1.333,
+  "margin": 0.05,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      46.0,
+      0.0
+     ],
+     [
+      42.5,
+      24.11
+     ],
+     [
+      32.53,
+      44.55
+     ],
+     [
+      17.6,
+      58.2
+     ],
+     [
+      0.0,
+      63.0
+     ],
+     [
+      -17.6,
+      58.2
+     ],
+     [
+      -32.53,
+      44.55
+     ],
+     [
+      -42.5,
+      24.11
+     ],
+     [
+      -46.0,
+      0.0
+     ],
+     [
+      -42.5,
+      -24.11
+     ],
+     [
+      -32.53,
+      -44.55
+     ],
+     [
+      -17.6,
+      -58.2
+     ],
+     [
+      -0.0,
+      -63.0
+     ],
+     [
+      17.6,
+      -58.2
+     ],
+     [
+      32.53,
+      -44.55
+     ],
+     [
+      42.5,
+      -24.11
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#c9a66e",
+    "slot": "paving"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      26.0,
+      0.0
+     ],
+     [
+      24.02,
+      16.46
+     ],
+     [
+      18.38,
+      30.41
+     ],
+     [
+      9.95,
+      39.73
+     ],
+     [
+      0.0,
+      43.0
+     ],
+     [
+      -9.95,
+      39.73
+     ],
+     [
+      -18.38,
+      30.41
+     ],
+     [
+      -24.02,
+      16.46
+     ],
+     [
+      -26.0,
+      0.0
+     ],
+     [
+      -24.02,
+      -16.46
+     ],
+     [
+      -18.38,
+      -30.41
+     ],
+     [
+      -9.95,
+      -39.73
+     ],
+     [
+      -0.0,
+      -43.0
+     ],
+     [
+      9.95,
+      -39.73
+     ],
+     [
+      18.38,
+      -30.41
+     ],
+     [
+      24.02,
+      -16.46
+     ]
+    ],
+    "height": 0.08,
+    "colour": "#b5513a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.18
+   ],
+   "params": {
+    "points": [
+     [
+      20.0,
+      0.0
+     ],
+     [
+      18.48,
+      14.16
+     ],
+     [
+      14.14,
+      26.16
+     ],
+     [
+      7.65,
+      34.18
+     ],
+     [
+      0.0,
+      37.0
+     ],
+     [
+      -7.65,
+      34.18
+     ],
+     [
+      -14.14,
+      26.16
+     ],
+     [
+      -18.48,
+      14.16
+     ],
+     [
+      -20.0,
+      0.0
+     ],
+     [
+      -18.48,
+      -14.16
+     ],
+     [
+      -14.14,
+      -26.16
+     ],
+     [
+      -7.65,
+      -34.18
+     ],
+     [
+      -0.0,
+      -37.0
+     ],
+     [
+      7.65,
+      -34.18
+     ],
+     [
+      14.14,
+      -26.16
+     ],
+     [
+      18.48,
+      -14.16
+     ]
+    ],
+    "height": 0.06,
+    "colour": "#5a8a3a",
+    "slot": "grass"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 57,
+    "startDeg": 135,
+    "endDeg": 225,
+    "rows": 20,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 16,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#b89a78",
+    "concreteColour": "#c98a55",
+    "underColour": "#c98a55",
+    "canopy": {
+     "height": 10,
+     "depth": 30,
+     "thickness": 3,
+     "slopeDeg": 6,
+     "colour": "#5a3f2c",
+     "edgeColour": "#c98a55",
+     "overhangBack": 1.2
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 57,
+    "startDeg": -45,
+    "endDeg": 45,
+    "rows": 20,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 30,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#b89a78",
+    "concreteColour": "#c98a55",
+    "underColour": "#c98a55"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 57,
+    "startDeg": 45,
+    "endDeg": 135,
+    "rows": 20,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 30,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#b89a78",
+    "concreteColour": "#c98a55",
+    "underColour": "#c98a55"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 40,
+    "radiusY": 57,
+    "startDeg": 225,
+    "endDeg": 315,
+    "rows": 20,
+    "rise": 0.7,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 30,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.7,
+    "bay": 6,
+    "seatColour": "#b89a78",
+    "concreteColour": "#c98a55",
+    "underColour": "#c98a55"
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    42,
+    0,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "post_height": 3,
+    "facing": "west"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    0,
+    -65,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4.2
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 18,
+    "colour": "#c98a55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 18,
+    "colour": "#c98a55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 18,
+    "colour": "#c98a55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    14,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 18,
+    "colour": "#c98a55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -46,
+    28,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.2,
+     2.2
+    ],
+    "height": 18,
+    "colour": "#c98a55"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -30,
+    0,
+    18
+   ],
+   "params": {
+    "rect": [
+     1,
+     90
+    ],
+    "height": 1.2,
+    "colour": "#d8d8d8"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -58,
+     -20
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     56,
+     20
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   150,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "ochre solid-terrace bowl with deep cantilever canopy and wide track; canopy soffit ribs, glazed press-box back block and roof-edge floodlight gantry are only suggested; photo is an interior view"
+ }
+}

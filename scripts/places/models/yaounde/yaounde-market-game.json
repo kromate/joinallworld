@@ -1,0 +1,238 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/218539499",
+   "used": "real 245x138 m marketplace outline (name match), fitted to the scene as the multi-storey trading block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:WikiAfr20_MarcJP46_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MarcJP46",
+   "view": "street",
+   "used": "NOT a view of the market (yellow Yaounde taxis in traffic); only the taxi yellow for the bus bays"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "fit": 110
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14.5,
+   "storeys": 3,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d3c9b0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#b4654a",
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#d3c9b0",
+      "#c4baa0"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a396",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -25.0,
+    -35.2
+   ],
+   "params": {
+    "count": 14,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 1.0,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -15.0,
+    -39.6
+   ],
+   "params": {
+    "count": 12,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "size": 0.9,
+    "colours": [
+     "#d9732b",
+     "#3a8a4a",
+     "#e0b03a",
+     "#2f6a9a",
+     "#c0392b"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    35.0,
+    -16.5
+   ],
+   "params": {
+    "count": 10,
+    "spread": 9,
+    "colours": [
+     "#c0392b",
+     "#2f6a9a",
+     "#e0b03a",
+     "#3a8a4a",
+     "#d9732b"
+    ],
+    "tables": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "awning",
+   "at": [
+    -35.0,
+    -24.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 2,
+    "colours": [
+     "#b4654a",
+     "#e9e1cd"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -5.0,
+    -36.3,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3,
+    "bottom": 2.5,
+    "colour": "#b4654a",
+    "frameColour": "#d3c9b0",
+    "posts": true
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -15.0,
+    -49.5
+   ],
+   "params": {
+    "length": 40,
+    "kind": "taxi",
+    "density": 0.8,
+    "colours": [
+     "#e0b03a"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -48.0,
+    5.0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    46.0,
+    -5.5
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   120,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the market block; height and storeys from the brief, outline is the OSM marketplace area."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-market-game"
+}

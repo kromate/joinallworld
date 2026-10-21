@@ -1,0 +1,317 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ibadan",
+ "venueId": "moniya-station",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Obafemi_Awolowo_Train_Station,_Moniya,_Ibadan._02.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Haylad",
+   "view": "front",
+   "file": "/tmp/places-evidence/ibadan/station02.jpg",
+   "used": "central glass-curtain hall under an arched wavy roof, long two-storey wings with ribbon glazing and wide flat eaves, grey-white render, green name board, forecourt canopy"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/863990411",
+   "used": "name-matched building about 110 x 24 m (rect used, rotation dropped to face the camera)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 50,
+  "aspect": 2.2,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     37,
+     22
+    ]
+   },
+   "at": [
+    -36.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7dadb",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#c3c8ca",
+    "plinth": 0.3,
+    "glassColour": "#8fa6b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d4",
+    "material": "metal-sheet",
+    "overhang": 2.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     37,
+     22
+    ]
+   },
+   "at": [
+    36.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d7dadb",
+    "windows": "punched",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    },
+    "bands": "#c3c8ca",
+    "plinth": 0.3,
+    "glassColour": "#8fa6b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd3d4",
+    "material": "metal-sheet",
+    "overhang": 2.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     36,
+     24
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9bccb",
+    "windows": "curtain",
+    "windowRatio": 0.85,
+    "faces": {
+     "front": "curtain",
+     "back": "curtain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#d7dadb",
+    "glassColour": "#a9bccb"
+   },
+   "roof": {
+    "form": "curved",
+    "curve": "arch",
+    "colour": "#d3d7d8",
+    "material": "metal-sheet",
+    "rise": 5,
+    "overhang": 3.5
+   }
+  },
+  {
+   "type": "flat-canopy",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 4,
+    "height": 4.2,
+    "thickness": 0.4,
+    "colour": "#d7dadb"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.3,
+    10.6
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 0.0,
+    "colour": "#2f6b4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.3,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#c8c8c4"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 100,
+    "depth": 8,
+    "height": 5.2,
+    "thickness": 0.4,
+    "columns": 10,
+    "colour": "#c8cdd0"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "core/lamp",
+     "params": {
+      "height": 16
+     }
+    },
+    "mode": "line",
+    "count": 2,
+    "start": [
+     -48,
+     -24
+    ],
+    "end": [
+     50,
+     -24
+    ]
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -34,
+    -28,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -27,
+    -28,
+    0
+   ],
+   "params": {
+    "colour": "#222428",
+    "yaw": 0
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -12.3,
+    6.5
+   ],
+   "params": {
+    "width": 14,
+    "height": 1.0,
+    "bottom": 0.0,
+    "colour": "#2f6b4f",
+    "posts": false
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    -62,
+    -6,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "baseWidth": 2.2,
+    "topWidth": 0.6,
+    "panels": 8,
+    "colour": "#b8bcc0",
+    "colour2": "#b8bcc0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -44,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hall roof is a single arch rather than the photo's wavy swoop, wings still a little tall and plain, tower/mast and name board approximate."
+ }
+}

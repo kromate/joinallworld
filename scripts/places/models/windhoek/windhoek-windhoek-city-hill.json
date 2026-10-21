@@ -1,0 +1,139 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-windhoek-city-hill",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/360001757",
+   "used": "real park outline (6568 m2, 92 x 84 m) sets the hill footprint"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 88,
+    "depth": 80,
+    "height": 11,
+    "seed": 7,
+    "stairs": true,
+    "rock_colour": "#a38b6e",
+    "boulders": 14
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lookout",
+   "footprint": {
+    "rect": [
+     10,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 9.5,
+   "height": 0.7,
+   "storeys": 1,
+   "wall": {
+    "material": "stone",
+    "colour": "#b9835a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "railing",
+   "at": [
+    -5,
+    -9.6,
+    10.2
+   ],
+   "params": {
+    "length": 10,
+    "height": 1.1,
+    "colour": "#5a5f64"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -25,
+    2
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 3,
+    "spread": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    -20,
+    2
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -45,
+     -40
+    ],
+    "height": 7
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     50,
+     -35
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; ridge shape, lookout deck and acacia scrub are typed assumptions, only the park outline size is real"
+ }
+}

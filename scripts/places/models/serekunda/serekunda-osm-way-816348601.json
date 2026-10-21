@@ -1,0 +1,247 @@
+{
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Deep pink canopy on thick piers, larger raised green board, grey ribbed bowl, tall lattice mast and tree mass at left are in; forecourt still renders pinkish not orange, bowl wall paler than photo, crowd/taxi/banner and wall lights not modelled."
+ },
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Independence_Stadium_(Gambia)_0002.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "fiskhandlarn",
+   "view": "front",
+   "file": "/tmp/places-evidence/serekunda/stad2.jpg",
+   "used": "low pink flat-roofed entrance gateway with green blank sign board, pink piers with latticed panels, grey louvred bowl wall behind, steel lattice floodlight mast at left, red-orange sand forecourt, palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Independence_Stadium_(Gambia)_0001.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "fiskhandlarn",
+   "view": "side",
+   "used": "gateway depth, bowl wall louvres and pink roof fascia"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/816348601",
+   "used": "overall extent only (outline includes the grounds); bowl sized to 190 x 150 m from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": -12,
+  "pitchDeg": 4,
+  "fovDeg": 30,
+  "aspect": 1.333,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "stadium-bowl",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 168,
+    "depth": 126,
+    "height": 22,
+    "roof": "canopy",
+    "roof_style": "flat",
+    "wall": "ribs",
+    "seat_colour": "#7d8387",
+    "seat_colour2": "#9aa0a4",
+    "track": true,
+    "floodlights": false
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-canopy",
+   "at": [
+    8,
+    -62
+   ],
+   "params": {
+    "rect": [
+     64,
+     16
+    ],
+    "z0": 8.0,
+    "height": 1.4,
+    "colour": "#d98a80",
+    "topColour": "#c97a70"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-fascia",
+   "at": [
+    8,
+    -70.2
+   ],
+   "params": {
+    "rect": [
+     64,
+     0.8
+    ],
+    "z0": 7.2,
+    "height": 3.0,
+    "colour": "#e39a8e"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       4.2,
+       4.2
+      ],
+      "height": 8.0,
+      "colour": "#d98a80"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -18,
+     -66
+    ],
+    "end": [
+     34,
+     -66
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.6,
+       0.6
+      ],
+      "height": 5.5,
+      "colour": "#f0c4b8"
+     }
+    },
+    "mode": "line",
+    "count": 4,
+    "start": [
+     -18,
+     -68.2
+    ],
+    "end": [
+     34,
+     -68.2
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -70.4,
+    10.2
+   ],
+   "params": {
+    "width": 34,
+    "height": 4.4,
+    "bottom": 0,
+    "colour": "#2f7a62",
+    "frameColour": "#e8d6cc",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -69,
+    0
+   ],
+   "params": {
+    "length": 76,
+    "height": 2.6,
+    "kind": "bars",
+    "pillarEvery": 6,
+    "colour": "#2a2c2e"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    -56,
+    0
+   ],
+   "params": {
+    "height": 35,
+    "head_width": 14,
+    "colour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -68,
+    -72,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 8,
+    "spread": 16
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -80,
+    -50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 6,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    62,
+    -74,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-816348601"
+}

@@ -1,0 +1,239 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-oasis-mall",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1068059387",
+   "used": "nearest building is a 31 x 21 m cement-block shop at 0.3 m, not a reliable outline; not used"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lusaka",
+   "used": "no building-level source; L-shaped two-storey mall typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front",
+   "footprint": {
+    "rect": [
+     58,
+     16
+    ]
+   },
+   "at": [
+    -8,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0e6cf",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2e8b8f",
+    "plinth": 0.4,
+    "cornice": true,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90",
+    "overhang": 0.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     18,
+     34
+    ]
+   },
+   "at": [
+    21,
+    -7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f6f3ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#2e8b8f",
+    "plinth": 0.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f90",
+    "overhang": 0.5,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "teal-tower",
+   "footprint": {
+    "rect": [
+     7,
+     6
+    ]
+   },
+   "at": [
+    -30,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 2,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#2e8b8f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2e8b8f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -8,
+    0,
+    3.6
+   ],
+   "params": {
+    "width": 50,
+    "depth": 3.5,
+    "height": 0.35,
+    "form": "flat",
+    "colour": "#2e8b8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 2.5,
+    "colour": "#2e8b8f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 2.2,
+    "colour": "#f6f3ec"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    -28,
+    0
+   ],
+   "params": {
+    "rect": [
+     56,
+     26
+    ],
+    "height": 0.08,
+    "colour": "#55595c"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "grid",
+    "cols": 8,
+    "rows": 2,
+    "dx": 6,
+    "dy": 9,
+    "centre": [
+     -6,
+     -28,
+     0
+    ],
+    "of": [
+     {
+      "type": "core/car",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {}
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -30
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline: L plan, teal accents, awning and car park typed."
+ }
+}

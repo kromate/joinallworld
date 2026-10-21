@@ -1,0 +1,167 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "katsina",
+ "venueId": "kano-motor-park-katsina",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/katsina.json",
+   "used": "typed brief: 70x50 m yard, one long corrugated shed on the north side, kiosks, vans"
+  }
+ ],
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    18,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "depth": 9,
+    "height": 4.2,
+    "roof": "shed",
+    "roof_rise": 1.2,
+    "cladding": "corrugated",
+    "goods": "none",
+    "roof_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#3f7f8a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    -4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    31,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#6b6e70"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    31,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -18,
+    0,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spacing": 3.2,
+    "yaw": 90,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -18,
+    -7,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 90,
+    "colour": "#e6b422"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2,
+    "colour": "#c9a77c",
+    "pillarEvery": 7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2,
+    "bottom": 3,
+    "colour": "#3f7f8a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -38,
+     20
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     38,
+     24
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or outline; typed yard with one long shed, kiosks and vans, real layout unknown"
+ }
+}

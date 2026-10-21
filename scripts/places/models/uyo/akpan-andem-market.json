@@ -1,0 +1,335 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/uyo.json",
+   "used": "market-hall brief: two-storey shop blocks, tin-roofed sheds, stall lanes; size 120x90 modelled as a portion (OSM marketplace polygon is 478 m, beyond scene clamp)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/669841155",
+   "used": "overall scale only: marketplace polygon 119,000 m2, too large for the scene clamp"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-0",
+   "footprint": {
+    "rect": [
+     44,
+     20
+    ]
+   },
+   "at": [
+    -34,
+    18
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc9b8",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-1",
+   "footprint": {
+    "rect": [
+     40,
+     18
+    ]
+   },
+   "at": [
+    30,
+    22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-2",
+   "footprint": {
+    "rect": [
+     52,
+     16
+    ]
+   },
+   "at": [
+    -6,
+    -26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b0553d",
+    "windows": "ribbon",
+    "windowRatio": 0.22,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    },
+    "cornice": true,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -30,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 36,
+    "depth": 9,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#6a5a4c",
+    "wall_colour": "#7a6a5a"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    22,
+    -4,
+    0
+   ],
+   "params": {
+    "length": 30,
+    "depth": 9,
+    "height": 3.6,
+    "roof": "gable",
+    "roof_colour": "#7b6755"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -46,
+    -34,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#6a5a4c"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    40,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8a6a50"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -10,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3.3,
+    "height": 3.2,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b0553d",
+     "#2f6b4f",
+     "#4a6a8a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    6,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c0392b",
+     "#e0a030",
+     "#2f6b8a",
+     "#3a8a4a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    18,
+    8,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#e0a030",
+     "#c0392b",
+     "#6a3a8a"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -34,
+    7.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "colours": [
+     "#c0392b",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    30,
+    12.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "colours": [
+     "#2f6b8a",
+     "#e8dcc0"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "colour": "#b0553d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    55,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "trees": 2,
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; dense market typed from brief, only a 120x90 portion of the 478 m market"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "akpan-andem-market"
+}

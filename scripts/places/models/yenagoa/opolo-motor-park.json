@@ -1,0 +1,194 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/yenagoa.json#opolo-motor-park",
+   "used": "small paved yard ~40x28 m with a few minibuses, two kiosks and one tin shelter; no OSM outline, no photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 16,
+  "fovDeg": 52,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     6,
+     4
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d3cdbb",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e5a4a",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    -8,
+    6,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3.8,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#6e5a4a",
+    "accent": "#b0553d"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    15,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#b0553d"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    19,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d3cdbb",
+    "width": 2.6,
+    "depth": 2
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    -10,
+    -6,
+    0
+   ],
+   "params": {
+    "colour": "#e6b422",
+    "stripe": "#1f1f22",
+    "count": 3,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "minibus",
+   "at": [
+    6,
+    -9,
+    0
+   ],
+   "params": {
+    "colour": "#ffffff",
+    "stripe": "#2f6f9a",
+    "count": 2,
+    "spacing": 3.4,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    15,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "height": 2,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#d3cdbb"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -18,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 1.2,
+    "bottom": 2.2,
+    "colour": "#b0553d",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    21,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -21,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "extent": [
+   52,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typed yard"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "opolo-motor-park"
+}

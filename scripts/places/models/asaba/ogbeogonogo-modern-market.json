@@ -1,0 +1,248 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "ogbeogonogo-modern-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ogbe-Ogonogo_Modern_Market_Asaba.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Idoghor Melody",
+   "view": "street",
+   "file": "/tmp/places-evidence/asaba/market1.jpg",
+   "used": "two-storey cream render block with caged arched openings, pitched orange-brown corrugated roof over an arcaded ground floor, a one-storey orange-roof kiosk, big muted umbrellas filling the lane"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ogbe-Ogonogo_Market_Asaba3.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Idoghor Melody",
+   "view": "street",
+   "file": "/tmp/places-evidence/asaba/market3.jpg",
+   "used": "orange-fascia lock-up shops with flat shed roofs, produce and shoe stalls spilling onto the road, billboard (blank here)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -82,
+  "pitchDeg": 4,
+  "fovDeg": 65,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.0,
+  "shiftX": 0
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Lane layout, dense umbrellas, 4.5 m storeys, orange tile roof and orange lock-up row now follow the photo; block sits on the left of the lane (photo has it on the right), no caged arch grilles, stained render streaks, tarp awnings or hanging clothes, umbrellas still smaller and neater than the crowded photo"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-n",
+   "footprint": {
+    "rect": [
+     56,
+     11
+    ]
+   },
+   "at": [
+    0,
+    9.5
+   ],
+   "rotDeg": 0,
+   "height": 9.0,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#c9bfa6",
+    "windows": "punched",
+    "windowRatio": 0.32,
+    "windowShape": "rect",
+    "glassColour": "#2c2f30",
+    "plinth": 0.3,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 4.0,
+      "depth": 0.7,
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#8e8570"
+      ],
+      "height": 0.6,
+      "floors": "upper"
+     }
+    ]
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5683c",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -26,
+    -7.5,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "length": 52,
+    "depth": 4,
+    "height": 3.2,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "awning_colours": [
+     "#d9731f"
+    ],
+    "trim_colour": "#d9731f",
+    "accent_colour": "#d9731f"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -1.6,
+    0
+   ],
+   "params": {
+    "count": 17,
+    "pitch": 2.9,
+    "kind": "umbrella",
+    "size": 2.2,
+    "jitter": 0.3,
+    "colours": [
+     "#8a3e46",
+     "#c8a878",
+     "#7f8f78",
+     "#d9a0a0",
+     "#8a8a84",
+     "#9c5a58"
+    ],
+    "goods_colours": [
+     "#b84a4a",
+     "#3a5a8a",
+     "#e0c060",
+     "#6a8a5a",
+     "#a05a9a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22.7,
+    1.0,
+    0
+   ],
+   "params": {
+    "count": 17,
+    "pitch": 2.9,
+    "kind": "umbrella",
+    "size": 2.2,
+    "jitter": 0.3,
+    "colours": [
+     "#8a3e46",
+     "#c8a878",
+     "#7f8f78",
+     "#d9a0a0",
+     "#8a8a84",
+     "#9c5a58"
+    ],
+    "goods_colours": [
+     "#b84a4a",
+     "#3a5a8a",
+     "#e0c060",
+     "#6a8a5a",
+     "#a05a9a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -6,
+    -3.8,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 10,
+    "radius": 1.25,
+    "height": 2.4,
+    "colours": [
+     "#8a3e46",
+     "#c8a878",
+     "#7f8f78",
+     "#d9a0a0",
+     "#8a8a84",
+     "#9c5a58"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    14,
+    -3.6,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "spread": 10,
+    "radius": 1.25,
+    "height": 2.4,
+    "colours": [
+     "#8a3e46",
+     "#c8a878",
+     "#7f8f78",
+     "#d9a0a0",
+     "#8a8a84",
+     "#9c5a58"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    30,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "bottom": 2.6,
+    "colour": "#b5532f"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": 0,
+  "extent": [
+   70,
+   40
+  ]
+ }
+}

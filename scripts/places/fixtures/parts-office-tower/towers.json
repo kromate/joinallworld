@@ -1,0 +1,168 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "towers",
+ "verified": "text",
+ "evidence": [],
+ "parts": [
+  {
+   "type": "tower-block",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 36,
+    "depth": 26,
+    "height": 80,
+    "facade": "curtain",
+    "glass_colour": "#9fb7c9",
+    "fins": 6
+   }
+  },
+  {
+   "type": "tower-block",
+   "at": [
+    75,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 40,
+    "depth": 30,
+    "height": 70,
+    "shape": "chamfer",
+    "facade": "ribbon",
+    "window_ratio": 0.55,
+    "bands": "#e0dcd0",
+    "wall_colour": "#c9c3b4"
+   }
+  },
+  {
+   "type": "tower-block",
+   "at": [
+    150,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 44,
+    "depth": 34,
+    "height": 60,
+    "shape": "tri",
+    "facade": "punched",
+    "wall_colour": "#bdb7a6",
+    "balcony_pods": true
+   }
+  },
+  {
+   "type": "tower-block",
+   "at": [
+    225,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 48,
+    "depth": 30,
+    "height": 90,
+    "shape": "L",
+    "facade": "curtain",
+    "setback_at": 0.62,
+    "plant_band": true
+   }
+  },
+  {
+   "type": "tower-block",
+   "at": [
+    300,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "height": 100,
+    "shape": "round",
+    "facade": "curtain",
+    "glass_colour": "#b4c7dc"
+   }
+  },
+  {
+   "type": "round-tower",
+   "at": [
+    0,
+    75,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 16,
+    "height": 110,
+    "profile": "bulge"
+   }
+  },
+  {
+   "type": "round-tower",
+   "at": [
+    75,
+    75,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 14,
+    "radius_y": 20,
+    "height": 90,
+    "profile": "taper",
+    "dome": false
+   }
+  },
+  {
+   "type": "stepped-tower",
+   "at": [
+    150,
+    75,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 40,
+    "depth": 30,
+    "height": 90,
+    "tiers": 3,
+    "wall_colour": "#d8d0b8",
+    "trim_colour": "#efe8d4"
+   }
+  },
+  {
+   "type": "stepped-tower",
+   "at": [
+    225,
+    75,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 46,
+    "depth": 34,
+    "height": 110,
+    "tiers": 4,
+    "facade": "ribbon",
+    "wall_colour": "#b9bcbf"
+   }
+  }
+ ],
+ "site": {},
+ "_harness": {
+  "az": 28,
+  "el": 30
+ }
+}

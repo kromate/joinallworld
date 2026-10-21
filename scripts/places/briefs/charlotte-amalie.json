@@ -1,0 +1,1621 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "charlotte-amalie",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "charlotte-amalie",
+    "climate": "tropical-maritime",
+    "vernacular": "Danish colonial harbour town on steep hills: rubble-stone and ballast-brick two to three storey warehouses and townhouses in Georgian-derived Caribbean style, lime-washed or stuccoed in yellow, white and red with arched ground-floor arcades, shuttered openings and red or grey metal roofs, stepping up the hillsides in white and pastel concrete houses; modern resort and mall blocks in pastel render along the shore.",
+    "wallColours": [
+      "#e8c15a",
+      "#f4f1ea",
+      "#a8362b",
+      "#c9b79a",
+      "#e9d9b5",
+      "#6c8f7b",
+      "#d98c5f"
+    ],
+    "roofColours": [
+      "#a63d2f",
+      "#8a8d8f",
+      "#5d4036",
+      "#b9714a"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "stone",
+      "brick",
+      "painted-render",
+      "whitewash",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Georgian proportions with arched stone or brick ground-floor arcades, louvred green or white shutters, cast-iron or timber balconies and galleries, ballast-brick step streets, lime-washed rubblestone, pedimented fronts on churches, and cannons and chain fences left over from the harbour forts.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands",
+        "what": "largest collection of colonial buildings in the Caribbean, classic Caribbean adaptations of English Georgian built by the Danes in the 1830s; red walls of Fort Christian; step streets of ballast bricks; colonial warehouses in alleys turned into shops; three historic quarters"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Fort_Christian",
+        "what": "stone fort with diamond bastions, Victorian clock tower 1874"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/St._Thomas_Synagogue",
+        "what": "rubblestone walls, brick pillars, Greek Revival front with Gothic arched windows, hip roof"
+      }
+    ]
+  },
+  "places": {
+    "charlotte-amalie-airport-charlotte-amalie-airport": {
+      "venueId": "charlotte-amalie-airport-charlotte-amalie-airport",
+      "city": "charlotte-amalie",
+      "name": "Cyril E. King Airport",
+      "archetype": "airport-terminal",
+      "subject": "The two-storey 1990 passenger terminal at Cyril E. King Airport seen from the landside forecourt, a long low building with a covered curbside canopy and 11 gates",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 230,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0e6c8",
+          "#3f6a8a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "curbside canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2,
+          "note": "planned in modernization"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990 terminal, rebuilt after Hurricane Irma",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cyril_E._King_Airport",
+          "what": "two-story terminal opened November 1990, two departure areas, 11 gates, severely damaged by Hurricane Irma 2017, modernization from 2021 adding a second-floor departure lounge and jet bridges"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/25712664",
+          "what": "OSM footprint 269.2 x 205.9 m, area 21177 m2"
+        }
+      ],
+      "notes": "Storeys, opening year, gate count and the Irma/modernization history are sourced; the OSM polygon (270 x 206 m, rotated) includes aprons, so the main mass is modelled at ~230 x 80 m. The facade is not described: pastel render with a canopy is typical of the 1990s Caribbean regional terminals and is unverified. Expansion work may have added jet bridges and a new upper lounge."
+    },
+    "charlotte-amalie-clinic": {
+      "venueId": "charlotte-amalie-clinic",
+      "city": "charlotte-amalie",
+      "name": "Roy Lester Schneider Hospital",
+      "archetype": "hospital",
+      "subject": "The five-level Roy Lester Schneider Hospital (now Schneider Regional Medical Center) at Sugar Estate: large irregular concrete wings stepped along the hillside",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 188,
+        "depth_m": 90,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#e4e0d4",
+          "#8fb3a6",
+          "#b5473a"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/334517148",
+          "what": "OSM footprint 188.1 x 90.1 m, 5 levels, area 9854 m2"
+        }
+      ],
+      "notes": "Five levels and the irregular, multi-wing footprint (188 x 90 m) are measured from OSM (building:levels=5). The cream-and-pastel concrete finish, the helipad and the era are guesses for a Caribbean territorial hospital; no photo description was found."
+    },
+    "charlotte-amalie-community-notices": {
+      "venueId": "charlotte-amalie-community-notices",
+      "city": "charlotte-amalie",
+      "name": "Government House",
+      "archetype": "civic-palace",
+      "subject": "Government House in Kongens Kvarter, Charlotte Amalie (1867, Danish colonial): a formal masonry government building (assumed three storeys, unverified) with galleries and a hip roof, beside Emancipation Garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f4f1ea",
+          "#6c8f7b",
+          "#c9b79a"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "galleries"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arches"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1867",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Emancipation_Garden",
+          "what": "Government House is one of the historic buildings around Emancipation Garden"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands",
+          "what": "Government House in Kongens Kvarter, the historic government area"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/323829748",
+          "what": "OSM footprint 20.8 x 17.7 m, area 367 m2"
+        }
+      ],
+      "notes": "Start date (1867) and position next to Emancipation Garden are from OSM/Wikipedia; the white stucco with green shutters, the three storeys and the gallery treatment are from general knowledge of the building and are unverified (a HABS survey photograph exists but was not read). Footprint is a compact 21 x 18 m."
+    },
+    "charlotte-amalie-community-voting-game": {
+      "venueId": "charlotte-amalie-community-voting-game",
+      "city": "charlotte-amalie",
+      "name": "Market Square",
+      "archetype": "market-open",
+      "subject": "Market Square (Vendors Plaza), historic open-air market at the west end of Dronningens Gade: a long open iron shed over market stalls and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "iron market shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#a8362b",
+          "#e8c15a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "caribbean",
+      "era": "19th century open market, later shelters",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands",
+          "what": "Market Square at the western end of Dronningens Gade, once a major slave-market auction site, now an open-air area of stalls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/522510236",
+          "what": "OSM footprint 24.4 x 10.1 m, area 246 m2"
+        }
+      ],
+      "notes": "Role, position and the open-air stalls are sourced; the iron-roofed shed with red/yellow paint is inferred from the historical look of the pavilion and is unverified. The OSM building is only 24 x 10 m but the surrounding square is 1,640 m2."
+    },
+    "charlotte-amalie-community-workshop": {
+      "venueId": "charlotte-amalie-community-workshop",
+      "city": "charlotte-amalie",
+      "name": "Enid M. Baa Library and Archives",
+      "archetype": "campus-block",
+      "subject": "The Enid M. Baa Library and Archives, housed in a restored Danish-era townhouse (Baron von Bretton House) in the old town: a two-storey yellow stucco house with arched ground floor and a red hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 7,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "historic townhouse"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8c15a",
+          "#f4f1ea",
+          "#a63d2f"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "first-floor gallery"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "18th-19th century (Danish period)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/717669370",
+          "what": "OSM footprint 11.7 x 7.2 m, area 84 m2"
+        }
+      ],
+      "notes": "Named by OSM as Baron Von Bretton House (11.7 x 7.2 m) 2 m from the library point. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-market-game": {
+      "venueId": "charlotte-amalie-market-game",
+      "city": "charlotte-amalie",
+      "name": "Bordeaux Farmers' Market",
+      "archetype": "market-open",
+      "subject": "The Bordeaux Farmers' Market on the west end of St Thomas: an open-sided concrete pavilion with a metal roof and produce stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e4e0d4",
+          "#3f6e4f",
+          "#a63d2f"
+        ],
+        "roofColour": "#3f6e4f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "20th-21st century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522515683",
+          "what": "OSM footprint 31.7 x 23.4 m, area 743 m2"
+        }
+      ],
+      "notes": "OSM amenity=marketplace 32 x 23 m. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-meal-stop": {
+      "venueId": "charlotte-amalie-meal-stop",
+      "city": "charlotte-amalie",
+      "name": "Waterfront Bistro",
+      "archetype": "restaurant",
+      "subject": "A small waterfront bistro on St Thomas east end (Red Hook area): a single-storey painted house with a veranda deck over the water",
+      "form": {
+        "footprint": "L",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#8fb3a6",
+          "#f4f1ea",
+          "#a63d2f"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/376258805",
+          "what": "OSM footprint 15.9 x 11.5 m, area 143 m2"
+        }
+      ],
+      "notes": "Only OSM building=house exists at the point (16 x 12 m). No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses. Name could not be confirmed to be one specific business."
+    },
+    "charlotte-amalie-osm-node-13381802291": {
+      "venueId": "charlotte-amalie-osm-node-13381802291",
+      "city": "charlotte-amalie",
+      "name": "Waterfront Restaurant at Lovango Resort",
+      "archetype": "restaurant",
+      "subject": "The waterfront restaurant of Lovango Resort + Beach Club on Lovango Cay: an open-sided timber-and-tin beach restaurant with a deck on the shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "beach restaurant"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#b99a6b",
+          "#f4f1ea",
+          "#3f6a8a"
+        ],
+        "roofColour": "#7d8587",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2018+",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1323220373",
+          "what": "OSM footprint 194.2 x 85.2 m, area 11927 m2"
+        }
+      ],
+      "notes": "The OSM building is the whole resort (194 x 85 m, tourism=hotel), too big to be one restaurant, so the restaurant is modelled at ~30 x 14 m. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-node-356559520": {
+      "venueId": "charlotte-amalie-osm-node-356559520",
+      "city": "charlotte-amalie",
+      "name": "Antonio Jarvis Square",
+      "archetype": "park-landscape",
+      "subject": "Antonio Jarvis Square: a small shaded pocket square in old Charlotte Amalie with brick paving, benches and mature trees next to a historic building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "pocket square"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": null,
+        "colours": [
+          "#c9b79a",
+          "#a8362b",
+          "#6a8f4a"
+        ],
+        "roofColour": "#8a8d8f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/292984598",
+          "what": "OSM footprint 15 x 7.5 m, area 108 m2"
+        }
+      ],
+      "notes": "Wikidata lists it as a park; the OSM building 39 m away (15 x 7.5 m) is used only for scale. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-node-356559567": {
+      "venueId": "charlotte-amalie-osm-node-356559567",
+      "city": "charlotte-amalie",
+      "name": "Hassel Island Historic District",
+      "archetype": "heritage-fort",
+      "subject": "Hassel Island at the mouth of Charlotte Amalie harbour: ruined stone fort batteries (Fort Willoughby, Cowell's Battery) and the 1840s Creque Marine Railway with its power house, overgrown with scrub",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 28,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "ruined battery"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#b9a98a",
+          "#a8362b",
+          "#8a8d8f"
+        ],
+        "roofColour": "#8a8d8f",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 3
+        },
+        {
+          "id": "arches",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "colonial",
+      "era": "1801-02 fort, 1840s railway",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hassel_Island",
+          "what": "Fort Willoughby ruins on the site of a Danish battery, built c.1801-02; Cowell's Battery with signal station used to the 1970s; Creque Marine Railway built 1840s with a steam engine and separate power house; Royal Mail Inn; coaling station 1871; most of the island is now Virgin Islands National Park"
+        }
+      ],
+      "notes": "Ruins, dates and structure list are sourced; materials (rubble stone and brick) and the greyish colours are inferred from Danish military construction elsewhere on the island. No OSM footprint; size is an estimate of one battery ruin, the most photographed element."
+    },
+    "charlotte-amalie-osm-node-356559609": {
+      "venueId": "charlotte-amalie-osm-node-356559609",
+      "city": "charlotte-amalie",
+      "name": "Saint Annes Chapel",
+      "archetype": "shrine-small",
+      "subject": "Saint Anne's Chapel: a small whitewashed chapel with a gabled front and a modest bell gable on the west edge of Charlotte Amalie",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#f4f1ea",
+          "#a63d2f",
+          "#c9b79a"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bell gable"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522514736",
+          "what": "OSM footprint 24.6 x 16.3 m, area 284 m2"
+        }
+      ],
+      "notes": "OSM building 25 x 16 m contains the point. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-node-452044421": {
+      "venueId": "charlotte-amalie-osm-node-452044421",
+      "city": "charlotte-amalie",
+      "name": "Crown Bay Center",
+      "archetype": "mall",
+      "subject": "Crown Bay Center beside the cruise dock and marina: a two-storey pastel stucco shopping arcade with covered walkways and a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 74,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8c15a",
+          "#6c8f7b",
+          "#f4f1ea"
+        ],
+        "roofColour": "#b9714a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/216281991",
+          "what": "OSM footprint 140.1 x 73.8 m, area 5418 m2"
+        }
+      ],
+      "notes": "OSM building=retail 140 x 74 m. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-node-6003432587": {
+      "venueId": "charlotte-amalie-osm-node-6003432587",
+      "city": "charlotte-amalie",
+      "name": "Sunset Grille",
+      "archetype": "restaurant",
+      "subject": "The Sunset Grille: a beachfront restaurant with a long open timber deck and a hip roof, looking over the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 24,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e9d9b5",
+          "#3f6a8a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#5d4036",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522509819",
+          "what": "OSM footprint 56 x 38.3 m, area 1152 m2"
+        }
+      ],
+      "notes": "Beach restaurant near Secret Harbour; the OSM building (56 x 38 m) probably includes the deck. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-node-9451357027": {
+      "venueId": "charlotte-amalie-osm-node-9451357027",
+      "city": "charlotte-amalie",
+      "name": "Trunk Bay Outlook",
+      "archetype": "park-landscape",
+      "subject": "The overlook above Trunk Bay on St John (Virgin Islands National Park): a stone-walled roadside lookout terrace over the white crescent beach",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "viewpoint"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9a98a",
+          "#6a8f4a",
+          "#e9e4d2"
+        ],
+        "roofColour": "#8a8d8f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone parapet"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses. Trunk Bay itself is a very well known white-sand bay; the outlook is a roadside pull-off."
+    },
+    "charlotte-amalie-osm-node-9453513417": {
+      "venueId": "charlotte-amalie-osm-node-9453513417",
+      "city": "charlotte-amalie",
+      "name": "St Thomas Airport Outlook",
+      "archetype": "park-landscape",
+      "subject": "A small plane-spotting outlook beside the St Thomas runway: a covered roadside shelter and low wall with a view of the airfield",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "viewpoint shelter"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e4e0d4",
+          "#3f6a8a",
+          "#8a8d8f"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/522492966",
+          "what": "OSM footprint 22.7 x 15 m, area 340 m2"
+        }
+      ],
+      "notes": "OSM building 23 x 15 m, 58 m away. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-relation-14560476": {
+      "venueId": "charlotte-amalie-osm-relation-14560476",
+      "city": "charlotte-amalie",
+      "name": "Fort Christian",
+      "archetype": "heritage-fort",
+      "subject": "Fort Christian, Charlotte Amalie's oldest standing building (c.1672-80): a stone fort painted red with four diamond bastions, living quarters along the three remaining curtain walls, a Gothic Revival central block and a Victorian clock tower over the 1874 entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 64,
+        "depth_m": 52,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 4
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#a8362b",
+          "#f4f1ea",
+          "#5d4036"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "Victorian clock tower over the 1874 entrance"
+        },
+        {
+          "id": "ramparts",
+          "count": 4,
+          "note": "diamond bastions"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "c.1672-80, entrance 1874",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fort_Christian",
+          "what": "roughly square, stone curtain walls and diamond bastions at the corners, three walls and four bastions survive with living quarters; circular central tower replaced in the 19th century by a Gothic Revival structure; Victorian clock tower on the 1874 entrance; now St Thomas Museum; ~1.92 acres"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands",
+          "what": "the red walls of Fort Christian"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/14560476",
+          "what": "OSM footprint 63.9 x 52.3 m, area 1455 m2"
+        }
+      ],
+      "notes": "Recognisable by the red-painted stone walls, the four bastions and the clock tower rising over the entrance. Roof colours and the crenellation are inferred (the bastion tops are shown low and flat). The walkway to the harbour is separated by Veterans Drive; the site is in front of the Home pin."
+    },
+    "charlotte-amalie-osm-way-1155633919": {
+      "venueId": "charlotte-amalie-osm-way-1155633919",
+      "city": "charlotte-amalie",
+      "name": "Bluewater Bible College & Institute",
+      "archetype": "campus-block",
+      "subject": "Bluewater Bible College & Institute: a small hillside campus of two-storey concrete classroom blocks with covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4f1ea",
+          "#3f6a8a",
+          "#b5473a"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1155633919",
+          "what": "OSM footprint 148.5 x 129.8 m, area 10800 m2"
+        }
+      ],
+      "notes": "OSM amenity=college polygon about 148 x 130 m is the whole campus; the main block is modelled at 70 x 50 m. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-way-38311399": {
+      "venueId": "charlotte-amalie-osm-way-38311399",
+      "city": "charlotte-amalie",
+      "name": "Emancipation Gardens Park",
+      "archetype": "park-landscape",
+      "subject": "Emancipation Garden: a small rectangular city park beside Fort Christian, shaded by lignum vitae trees, with a gazebo, a Liberty Bell replica, a conch-blower bust and a fence of ship anchor chains and old cannon",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 38,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "town garden"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#6a8f4a",
+          "#d8d2c0",
+          "#a8362b"
+        ],
+        "roofColour": "#a63d2f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "concert gazebo"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze bust of conch-blower"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "chain-and-cannon fence"
+        },
+        {
+          "id": "cannon",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1848 commemoration",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Emancipation_Garden",
+          "what": "park commemorating the 3 July 1848 emancipation; gazebo for concerts; Liberty Bell replica and bronze bust of a freed slave blowing a conch; lignum vitae trees; fence of salvaged ship anchor chain and cannons; Government House and the post office around it"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/38311399",
+          "what": "OSM footprint 66.8 x 38.1 m, area 1936 m2"
+        }
+      ],
+      "notes": "Gazebo, bell replica, conch bust, chain-and-cannon fence and trees are sourced; paving colours and the white/red gazebo paint are inferred. Government House (1867) and the old post office frame the garden edges."
+    },
+    "charlotte-amalie-osm-way-38351557": {
+      "venueId": "charlotte-amalie-osm-way-38351557",
+      "city": "charlotte-amalie",
+      "name": "Four Winds Plaza",
+      "archetype": "mall",
+      "subject": "Four Winds Plaza: a long single-storey strip shopping centre with a continuous covered walkway and a big car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "strip mall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0e6c8",
+          "#d98c5f",
+          "#f4f1ea"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/38351557",
+          "what": "OSM footprint 310.4 x 79.3 m, area 16028 m2"
+        }
+      ],
+      "notes": "OSM building=retail 310 x 79 m; the plaza is modelled at ~200 x 60 m. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-osm-way-469663512": {
+      "venueId": "charlotte-amalie-osm-way-469663512",
+      "city": "charlotte-amalie",
+      "name": "Coral World Ocean Park",
+      "archetype": "park-landscape",
+      "subject": "Coral World Ocean Park at Coki Point, East End: an open-air marine park with a circular reef tank, sea lion enclosure and the signature underwater observatory tower reached by a jetty",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat",
+        "variant": "marine park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#e4e0d4",
+          "#3f6a8a",
+          "#e8c15a"
+        ],
+        "roofColour": "#3f6a8a",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "jetty to observatory"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "circular tank wall"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1970",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Coral_World_Ocean_Park",
+          "what": "Underwater Observatory Tower descending 20 ft (6.1 m); circular Caribbean Reef Encounter tank of 80,000 US gal; sea lion enclosure; open-water system; next to Coki Beach, East End of St Thomas; since 1970"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/469663512",
+          "what": "OSM footprint 276.8 x 110.9 m, area 22440 m2"
+        }
+      ],
+      "notes": "Observatory, circular tank, sea lions and beach setting are sourced; colours and the layout of the buildings are not and the 277 x 111 m OSM polygon is the whole park. Model a recognisable portion: circular tank, observatory tower on a jetty, sea lion pen. (Contract has no aquarium/tank feature.)"
+    },
+    "charlotte-amalie-osm-way-522510228": {
+      "venueId": "charlotte-amalie-osm-way-522510228",
+      "city": "charlotte-amalie",
+      "name": "Saints Peter and Paul Cathedral",
+      "archetype": "church-classical",
+      "subject": "The Cathedral of Saints Peter and Paul in Charlotte Amalie (present building 1848): a modest colonial Catholic cathedral with a pedimented gabled front and a bell tower, over a ceiling painted with Old and New Testament scenes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8c15a",
+          "#f4f1ea",
+          "#a8362b"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "ceiling murals inside"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1848",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Saints_Peter_and_Paul_in_Saint_Thomas",
+          "what": "present building completed 1848, earlier church 1828 largely destroyed by 1837 hurricane; ceiling murals of Old and New Testament scenes"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/522510228",
+          "what": "OSM footprint 28 x 19.6 m, area 518 m2"
+        }
+      ],
+      "notes": "Date, history and ceiling murals are sourced; the external colour (warm yellow/cream stucco), tower and pediment are from general knowledge and not verified. 28 x 20 m footprint from OSM."
+    },
+    "charlotte-amalie-osm-way-917673033": {
+      "venueId": "charlotte-amalie-osm-way-917673033",
+      "city": "charlotte-amalie",
+      "name": "University of the Virgin Islands Saint Thomas Campus",
+      "archetype": "campus-block",
+      "subject": "The UVI Saint Thomas campus on two hills above John Brewer's Bay: low blocks of volcanic rock and cement with red metal roofs, plus the large sports and fitness centre",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "painted-render",
+        "colours": [
+          "#a69a82",
+          "#e9d9b5",
+          "#1f4e9c"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "1960s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_the_Virgin_Islands",
+          "what": "St Thomas campus on two hills; most buildings of volcanic rock and cement; 64,000 sq ft Sports and Fitness Center seating ~3,500; 2012 residence hall; own beach John Brewer's Bay; official colours Reflex Blue and White"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/522511333",
+          "what": "OSM footprint 33.2 x 25.2 m, area 603 m2"
+        }
+      ],
+      "notes": "Material (volcanic rock and cement) and colours (blue/white branding) are sourced; the roof colour and the U-shaped quad are generic. OSM point snaps to a Dining Pavilion (33 x 25 m), only used for scale."
+    },
+    "charlotte-amalie-quiet-reflection": {
+      "venueId": "charlotte-amalie-quiet-reflection",
+      "city": "charlotte-amalie",
+      "name": "Saint Thomas Synagogue",
+      "archetype": "shrine-small",
+      "subject": "The St Thomas Synagogue (Beracha Veshalom Vegmiluth Hasidim, 1833): a single-storey rubblestone building set back behind a courtyard, with a Greek Revival temple front on brick pillars, Gothic arched windows and a shallow hip roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "brick",
+        "colours": [
+          "#d9cdb0",
+          "#a65a43",
+          "#f4f1ea"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "Greek Revival temple front"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "entry courtyard in front"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1833",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Thomas_Synagogue",
+          "what": "rubblestone walls bonded with lime, sand and molasses mortar; pediment supported by brick pillars; Greek Revival temple front with Gothic Revival arched windows; shallow-pitched hip roof; recessed from street with entry courtyard; single storey; site under one acre; built 1833, congregation founded 1796"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/215454486",
+          "what": "OSM footprint 19.2 x 12.2 m, area 233 m2"
+        }
+      ],
+      "notes": "Form, materials and style are sourced; the wall colour is inferred (lime-washed stone in pale cream), the white pediment and brick-red pillars are unverified. Interior has a sand floor, a famed feature, but the article text does not confirm it. Small building, about 19 x 12 m."
+    },
+    "charlotte-amalie-recreation": {
+      "venueId": "charlotte-amalie-recreation",
+      "city": "charlotte-amalie",
+      "name": "FDR Park",
+      "archetype": "park-landscape",
+      "subject": "FDR Park (Franklin D. Roosevelt Park) on the Charlotte Amalie waterfront: an open lawn with a few shade trees, benches and a small stage shelter along the harbour road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 74,
+        "depth_m": 52,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "waterfront lawn"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#6a8f4a",
+          "#d8d2c0",
+          "#a63d2f"
+        ],
+        "roofColour": "#a63d2f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/38485624",
+          "what": "OSM footprint 74.4 x 51.6 m, area 3758 m2"
+        }
+      ],
+      "notes": "OSM leisure=park 74 x 52 m. No description of the building was found: typed from the Charlotte Amalie city style and measured OSM footprint, shape and colours are guesses."
+    },
+    "charlotte-amalie-transit": {
+      "venueId": "charlotte-amalie-transit",
+      "city": "charlotte-amalie",
+      "name": "Frenchman's Cove",
+      "archetype": "hotel",
+      "subject": "The Marriott Frenchman's Cove resort at the east end of Charlotte Amalie: a six-level, long slab hotel block in pastel stucco stepping down the hillside to the cove",
+      "form": {
+        "footprint": "rect",
+        "width_m": 144,
+        "depth_m": 20,
+        "storeys": 6,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "slab"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e8c15a",
+          "#f4f1ea",
+          "#3f6a8a"
+        ],
+        "roofColour": "#a63d2f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 6
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "1980s-1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/452341661",
+          "what": "OSM footprint 143.7 x 20.3 m, 6 levels, area 1969 m2"
+        }
+      ],
+      "notes": "The venue pin is the cove itself; the building (named Marriott Frenchman's Cove, 6 levels, 144 x 20 m in OSM) is 245 m away. The pastel stucco finish and the balcony stack are guesses. Game kind \"hub\" is loose: this is a resort hotel."
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:El_Wak_Stadium.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Macabe5387",
+   "view": "side",
+   "file": "/tmp/places-evidence/accra/elwak.jpg",
+   "used": "long low covered stand on thin posts, white two-storey press box with ribbon glazing on top centre, red track, green pitch, ochre rear wall"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/11951674",
+   "used": "overall stadium extent only"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 24,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 150,
+    "width": 88,
+    "colour": "#7a3028"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stand-back",
+   "footprint": {
+    "rect": [
+     118,
+     3
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c98f45",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9b5a8"
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-terrace",
+   "params": {
+    "start": [
+     -60,
+     50
+    ],
+    "end": [
+     60,
+     50
+    ],
+    "rows": 7,
+    "rise": 0.4,
+    "run": 0.75,
+    "firstHeight": 0.6,
+    "seatColours": [
+     "#d8c24a",
+     "#cfcab8"
+    ],
+    "concreteColour": "#c8c2b0",
+    "backWall": 0.0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "stand-roof",
+   "params": {
+    "rect": [
+     124,
+     13
+    ],
+    "z0": 5.6,
+    "height": 0.5,
+    "colour": "#a9b5a8"
+   },
+   "at": [
+    0,
+    45
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.4,
+       0.4
+      ],
+      "z0": 0,
+      "height": 5.6,
+      "colour": "#6a7075"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -60,
+     40
+    ],
+    "end": [
+     60,
+     40
+    ],
+    "count": 17
+   }
+  },
+  {
+   "type": "mass",
+   "id": "press-box",
+   "footprint": {
+    "rect": [
+     34,
+     10
+    ]
+   },
+   "at": [
+    0,
+    44
+   ],
+   "z0": 5.9,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#fafaf5",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e8e0",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "east-roof",
+   "params": {
+    "rect": [
+     8,
+     55
+    ],
+    "z0": 4.2,
+    "height": 0.4,
+    "colour": "#a9b5a8"
+   },
+   "at": [
+    -66,
+    18
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "west-roof",
+   "params": {
+    "rect": [
+     8,
+     55
+    ],
+    "z0": 4.2,
+    "height": 0.4,
+    "colour": "#a9b5a8"
+   },
+   "at": [
+    66,
+    18
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "fence",
+   "params": {
+    "rect": [
+     130,
+     0.15
+    ],
+    "z0": 0,
+    "height": 1.6,
+    "colour": "#9aa09a"
+   },
+   "at": [
+    0,
+    36
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -80,
+     60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     85,
+     58
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   140
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-el-wak-stadium",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Camera framing wider than photo; no spectators or green posts; mesh fence is a plain panel; masts removed."
+ }
+}

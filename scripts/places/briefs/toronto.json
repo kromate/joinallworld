@@ -1,0 +1,1630 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "toronto",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "toronto",
+    "climate": "temperate",
+    "vernacular": "Brick-and-glass lakeside metropolis: Victorian bay-and-gable and Georgian red-brick houses downtown, post-war brick bungalows and slab towers in the suburbs, pink sandstone and limestone for institutions, big-box malls and campuses ringed by car parks in Scarborough, North York and Etobicoke, and glass condo and office towers. Pitched asphalt-shingle roofs, flat membrane roofs on commercial buildings, broadleaf street trees with conifers, and ravine parkland.",
+    "wallColours": [
+      "#9b4a35",
+      "#c9a77a",
+      "#c4a08a",
+      "#9a9a96",
+      "#5f8f96",
+      "#e8e4da"
+    ],
+    "roofColours": [
+      "#4a4a4d",
+      "#6b6460",
+      "#a2573f",
+      "#d3d3d3"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "brick",
+      "sandstone",
+      "limestone",
+      "glass-curtain",
+      "concrete",
+      "exposed-concrete",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "membrane",
+      "slate",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Victorian bay-and-gable timber bargeboards and brick polychrome bands; Georgian and Regency symmetry on early houses; Queenston and Credit-valley sandstone and limestone on civic buildings; International Style black and glass towers; strip-mall signage fascias.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Toronto",
+        "what": "bay-and-gable houses, red brick default, pinkish Credit River sandstone, limestone civic buildings, post-war brick slab towers, glazed condo towers, concrete and aluminium modern landmarks"
+      }
+    ]
+  },
+  "places": {
+    "toronto-airport-toronto-airport": {
+      "venueId": "toronto-airport-toronto-airport",
+      "city": "toronto",
+      "name": "Toronto Pearson International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 seen from the departures forecourt: a very long glass-and-steel terminal with curved glazed roofs and linked concourses",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 320,
+        "depth_m": 110,
+        "storeys": 4,
+        "height_m": 28,
+        "roof": "curved",
+        "wings": 3
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8dc",
+          "#7f8f99",
+          "#f2f2f0"
+        ],
+        "roofColour": "#b8c0c4",
+        "roofMaterial": "glass",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "arched glazed roof over the departures hall"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "apron control tower for ground traffic"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "drop-off canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Toronto_Pearson_International_Airport",
+          "what": "Terminal 1 opened 2004, designed by Skidmore Owings and Merrill, Adamson and Moshe Safdie; about 346,000 m2, 58 gates, concourses D/E/F; apron control tower at T1"
+        }
+      ],
+      "notes": "The real terminal is much longer than 120 m; show the central departures hall with one concourse. Glass, steel and curved roof from the T1 design brief; exact colours are estimated. The game position is at Terminal 1."
+    },
+    "toronto-clinic": {
+      "venueId": "toronto-clinic",
+      "city": "toronto",
+      "name": "Scarborough Health Network - Centenary Hospital",
+      "archetype": "hospital",
+      "subject": "1967 suburban hospital: a brick-and-concrete slab block with later 1986 and 1991 additions",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b08a6e",
+          "#cfc9bd",
+          "#8a8a88"
+        ],
+        "roofColour": "#7d7d7b",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1967",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Centenary_Hospital",
+          "what": "opened 1 July 1967 as Scarborough Centenary; 307 beds; additions 1986 and 1991"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "hospital campus footprint about 174 x 133 m"
+        }
+      ],
+      "notes": "Year, beds and additions are sourced; facade materials, storeys and the helipad are not stated and are typed from a late-1960s Ontario hospital. Campus is measured at 174 x 133 m; the model shows the main slab."
+    },
+    "toronto-community-notices": {
+      "venueId": "toronto-community-notices",
+      "city": "toronto",
+      "name": "Archives of Ontario",
+      "archetype": "office-low",
+      "subject": "Provincial archives and the York University Research Tower: a modern teal-glazed block on the Keele campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 48,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#5d8f93",
+          "#c8d0d2",
+          "#e6e6e3"
+        ],
+        "roofColour": "#e6e6e3",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2009",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Archives_of_Ontario",
+          "what": "building at 134 Ian Macdonald Blvd shared with the York University Research Tower; opened 2 April 2009"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "the footprint at the position is Kaneff Tower, teal glass with white roof, about 81 x 48 m"
+        }
+      ],
+      "notes": "The game position falls on Kaneff Tower (teal glass, white roof) rather than on the Archives building itself, and no description of the Archives facade was found. Size and colours borrowed from the Kaneff footprint; treat as low."
+    },
+    "toronto-community-voting-game": {
+      "venueId": "toronto-community-voting-game",
+      "city": "toronto",
+      "name": "Etobicoke Civic Centre",
+      "archetype": "civic-small",
+      "subject": "1950s modernist civic centre in Queenston limestone, glass and aluminium with a low clock tower and a 1968 limestone cenotaph",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb5a0",
+          "#8aa1ac",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "non-numeric clock face"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1956-1958",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Etobicoke_Civic_Centre",
+          "what": "designed by Shore and Moffat 1956-58, Queenston limestone, glass and aluminium frame, clock tower with non-numeric face, 1973 addition, 1968 limestone cenotaph with metal cross"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 188 x 122 m, tagged 4 levels"
+        }
+      ],
+      "notes": "Original was one storey with a 1973 addition by the same firm; OSM tags 4 levels for the whole complex, so two storeys is used for the main mass. The clock tower is its signature. Ornamental pool removed; surrounded by lawns, trees and parking."
+    },
+    "toronto-community-workshop": {
+      "venueId": "toronto-community-workshop",
+      "city": "toronto",
+      "name": "Toronto Public Library - North York Central Library",
+      "archetype": "campus-block",
+      "subject": "North York Central Library inside the North York City Centre complex, built around a seven-storey atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#7f9aa5",
+          "#b9b2a5",
+          "#d3d3d3"
+        ],
+        "roofColour": "#d3d3d3",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "seven-storey interior atrium"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/North_York_Central_Library",
+          "what": "designed by Moriyama and Teshima, opened 13 May 1987 at 5150 Yonge St in the twin-tower North York City Centre complex; seven-storey atrium; renovated 2016-18"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "North York Centre building about 175 x 100 m, 4 levels, light grey roof"
+        }
+      ],
+      "notes": "Exterior materials are not stated in the sources; the glass-and-concrete mix is estimated. The atrium is the main identifiable feature. Different from Seneca and Tyndale (campuses) and from Etobicoke (limestone)."
+    },
+    "toronto-market-game": {
+      "venueId": "toronto-market-game",
+      "city": "toronto",
+      "name": "Woodbine Mall",
+      "archetype": "mall",
+      "subject": "1985 two-storey suburban mall with a skylit atrium and indoor amusement park, surrounded by car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b3a6",
+          "#7a6a5a",
+          "#d9d6cf"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "skylit atrium"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Woodbine_Centre",
+          "what": "two-storey mall opened 1985 by Cadillac Fairview, about 750,000 sq ft, skylit atrium, Fantasy Fair indoor amusement park, food court on level 2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building outline about 309 x 290 m"
+        }
+      ],
+      "notes": "Exterior look is not described in the sources; blank windowless concrete or masonry mass with entrance canopies is typical and assumed. Outline of 309 x 290 m includes anchor stores."
+    },
+    "toronto-meal-stop": {
+      "venueId": "toronto-meal-stop",
+      "city": "toronto",
+      "name": "Tiflisi",
+      "archetype": "restaurant",
+      "subject": "Narrow two-storey red-brick shopfront row restaurant with a bay window above the shop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#9b4a35",
+          "#d9c9a8",
+          "#f1ede2"
+        ],
+        "roofColour": "#4a4a4d",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "early 1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "the building at the position is a thin 20.6 x 4.9 m slice of a row"
+        }
+      ],
+      "notes": "Georgian restaurant; nothing describing the building found. Typed as a Victorian brick storefront from the Toronto city style."
+    },
+    "toronto-osm-node-2424870841": {
+      "venueId": "toronto-osm-node-2424870841",
+      "city": "toronto",
+      "name": "Legoland Discovery Centre",
+      "archetype": "mall",
+      "subject": "Vaughan Mills outlet mall, the single-storey racetrack-shaped super-regional centre that holds the Legoland Discovery Centre",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9c4b8",
+          "#a2573f",
+          "#6b6460"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vaughan_Mills",
+          "what": "super-regional outlet centre about 1.3 million sq ft at Highway 400 and Rutherford; Legoland Discovery Centre opened March 2013 in the former NASCAR Speedpark space"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "mall outline about 854 x 263 m, 1 level"
+        }
+      ],
+      "notes": "The real outline is 854 m long; the model shows a representative 300 m portion with an entrance. Exterior materials not described in the source; masonry-and-metal outlet-mall look assumed."
+    },
+    "toronto-osm-node-5369170123": {
+      "venueId": "toronto-osm-node-5369170123",
+      "city": "toronto",
+      "name": "Shoushin",
+      "archetype": "restaurant",
+      "subject": "Sushi restaurant in a low commercial strip on Yonge Street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 39,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#c8b394",
+          "#e8e4da",
+          "#6b6460"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "retail building about 39 x 14 m at the position"
+        }
+      ],
+      "notes": "No description of the restaurant building was found. Typed as a cream-brick two-storey commercial strip; distinct from Tiflisi's red-brick Victorian front."
+    },
+    "toronto-osm-relation-11005099": {
+      "venueId": "toronto-osm-relation-11005099",
+      "city": "toronto",
+      "name": "Centreville",
+      "archetype": "park-landscape",
+      "subject": "Centreville amusement park on Centre Island, laid out as a 1900s turn-of-the-century village with a carousel and a windmill-styled Ferris wheel",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 380,
+        "depth_m": 220,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8d9a8",
+          "#b4654a",
+          "#4f7aa5"
+        ],
+        "roofColour": "#8a3b2e",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "1907 Dentzel carousel house"
+        },
+        {
+          "id": "windmill",
+          "count": 1,
+          "note": "Ferris wheel decorated as a windmill"
+        },
+        {
+          "id": "kiosk",
+          "count": 5
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1,
+          "note": "miniature train loop"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1960s park, 1900s village theme",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Centreville_Amusement_Park",
+          "what": "1900s village theme; 1907 Dentzel carousel with 52 hand-carved animals; Ferris wheel decorated as a windmill; miniature train; Far Enough Farm; reached by Toronto Island ferry"
+        }
+      ],
+      "notes": "Layout is a themed village of small cottage-style buildings around a central plaza with a cast-iron planter, carousel, windmill Ferris wheel and miniature train loop. Park outline is about 400 x 230 m."
+    },
+    "toronto-osm-way-299944185": {
+      "venueId": "toronto-osm-way-299944185",
+      "city": "toronto",
+      "name": "Mississauga Hospital",
+      "archetype": "hospital",
+      "subject": "Large 751-bed city hospital built from 1958 with bus terminal on its north side",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 8,
+        "height_m": 34,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b9b4aa",
+          "#9b6a52",
+          "#7d7d7b"
+        ],
+        "roofColour": "#7d7d7b",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1958",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mississauga_Hospital",
+          "what": "founded 1958 as South Peel Hospital, renamed 1980; 751 beds; MiWay bus terminal on north side; redevelopment announced 2022"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "outline about 197 x 193 m"
+        }
+      ],
+      "notes": "Only history and the outline are sourced; the storeys, cladding and helipad are typed from a late-20th-century Ontario hospital. Taller than Centenary and without the H plan so the two read differently."
+    },
+    "toronto-osm-way-30082934": {
+      "venueId": "toronto-osm-way-30082934",
+      "city": "toronto",
+      "name": "Lawrence Allen Centre",
+      "archetype": "mall",
+      "subject": "1989 two-level shopping centre with offices on upper floors, grey exterior, and a central atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 204,
+        "depth_m": 132,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#9a9a96",
+          "#6b6460",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1989",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lawrence_Allen_Centre",
+          "what": "formerly Lawrence Square, opened 1989, two retail floors with offices on floors 3 and 4, about 679,575 sq ft, atrium, owned by RioCan"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building colour gray, about 204 x 132 m, 2 levels"
+        }
+      ],
+      "notes": "Grey exterior is the OSM building colour; cladding type estimated. Retail base with a four-storey office block on top."
+    },
+    "toronto-osm-way-33711256": {
+      "venueId": "toronto-osm-way-33711256",
+      "city": "toronto",
+      "name": "Colonel Samuel Smith Park",
+      "archetype": "park-landscape",
+      "subject": "Lakeshore park in Etobicoke with a rocky peninsula, picnic shelters, observation decks and a view to the CN Tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 250,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9aa88a",
+          "#8b6b4a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8b6b4a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Colonel_Samuel_Smith_Park",
+          "what": "194.6 acre park on Lake Ontario, peninsula trail, rocky beaches, observation decks, picnic shelter beside Humber College, view of CN Tower"
+        }
+      ],
+      "notes": "Park is 1.3 km long; the model shows a representative shoreline stretch with a picnic shelter and observation deck. Lake on one side."
+    },
+    "toronto-osm-way-35545706": {
+      "venueId": "toronto-osm-way-35545706",
+      "city": "toronto",
+      "name": "Birchmount Stadium",
+      "archetype": "stadium",
+      "subject": "Scarborough community stadium: a west grandstand over an artificial-turf field and running track, scoreboard on the Kingston Road side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 207,
+        "depth_m": 129,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a9a8a2",
+          "#4f7aa5",
+          "#e8e4da"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "electronic scoreboard with video screen on the Kingston Road side"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "west grandstand terraces"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s, renovated 2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Birchmount_Stadium",
+          "what": "opened 1960s, 6,345 seats originally; east grandstand demolished 2006; new track and artificial turf 2006; west stand; scoreboard with video monitor"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "outline about 207 x 129 m"
+        }
+      ],
+      "notes": "Only the west grandstand remains (about 2,000 seats). Roof and lights are not mentioned in the source; floodlights are assumed."
+    },
+    "toronto-osm-way-60483157": {
+      "venueId": "toronto-osm-way-60483157",
+      "city": "toronto",
+      "name": "Toronto and Region Islamic Congregation",
+      "archetype": "mosque-domed",
+      "subject": "TARIC mosque: a 1991 box-shaped building with an oriental motif, housing a library, gymnasium and prayer hall, beside the Highway 401/400 interchange",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stucco",
+        "colours": [
+          "#d9d0bd",
+          "#6b8f9a",
+          "#f1ede2"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "assumed, not stated in the source"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "arab-islamic",
+      "era": "1991",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Toronto_and_Region_Islamic_Congregation",
+          "what": "current building opened 1991; box-shaped with an oriental motif; houses library, gymnasium and main prayer hall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 43 x 17 m"
+        }
+      ],
+      "notes": "Source says box-shaped with an oriental motif and does not mention dome, minaret or materials. Keep the box form and treat any dome as optional. Colours are estimated."
+    },
+    "toronto-osm-way-61956858": {
+      "venueId": "toronto-osm-way-61956858",
+      "city": "toronto",
+      "name": "Heintzman House",
+      "archetype": "manor",
+      "subject": "c.1817 Thornhill house that grew from an adobe farmhouse into a 13-room Georgian and Classic Revival mansion with a pillared portico",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "red-brick",
+        "colours": [
+          "#e6dcc3",
+          "#9b5a3f",
+          "#f5f1e6"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "pillars and portico added by the Heintzmans"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "pillars"
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "c.1817 with later additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heintzman_House",
+          "what": "built c.1817, adobe, fired brick and frame construction; Georgian and Classic Revival mix; five original central bays; 13-room mansion; pillars and portico; black walnut interior"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 43.5 x 22.2 m"
+        }
+      ],
+      "notes": "Storeys, roof form and wall colour are not stated and are estimated (render over adobe and brick). The pillared portico on a symmetrical five-bay front is the recognisable feature."
+    },
+    "toronto-osm-way-656128849": {
+      "venueId": "toronto-osm-way-656128849",
+      "city": "toronto",
+      "name": "Edwards Gardens",
+      "archetype": "park-landscape",
+      "subject": "Botanical garden on Wilket Creek with manicured lawns, flower beds, a rockery, a fountain and the Moriyama Pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 300,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "timber",
+        "colours": [
+          "#9aa88a",
+          "#8b6b4a",
+          "#e8e4da"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Moriyama Pavilion"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "Greensward fountain"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1950s onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Edwards_Gardens",
+          "what": "garden on Wilket Creek; Toronto Botanical Garden in the Milne home since 1959; rockery, lawns and flower beds; Moriyama Pavilion; Greensward Fountain; landscape-award car park 2013"
+        }
+      ],
+      "notes": "Park is about 870 x 680 m; the model shows the central lawns, pavilion and fountain. The pavilion's glass-and-timber look is estimated."
+    },
+    "toronto-osm-way-661050155": {
+      "venueId": "toronto-osm-way-661050155",
+      "city": "toronto",
+      "name": "Pacific Mall",
+      "archetype": "mall",
+      "subject": "1997 two-floor Chinese-Canadian market mall in red brick, steel and glass with a domed central courtyard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 216,
+        "depth_m": 91,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#8a5a44",
+          "#b9d3d8",
+          "#d9d4cb"
+        ],
+        "roofColour": "#e8e8e6",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "cathedral-style dome ceiling over the central courtyard"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1997",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pacific_Mall",
+          "what": "two floors plus basement, red brick, steel beams and glass by Wallman Clewes Bergman; shed typology; central indoor courtyard with cathedral-style dome and stage; about 450 condo units"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "brown building colour, white roof, opened 1997, about 216 x 91 m"
+        }
+      ],
+      "notes": "Deliberately not Chinese-styled; reads as a big shed with a glazed and brick skin. White flat roof; brown brick."
+    },
+    "toronto-osm-way-681295729": {
+      "venueId": "toronto-osm-way-681295729",
+      "city": "toronto",
+      "name": "Scarborough Health Network - General Campus",
+      "archetype": "hospital",
+      "subject": "Scarborough General: a large 1956 suburban hospital campus of linked brick and concrete blocks with a newer tower wing",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 120,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b59a82",
+          "#cfc9bd",
+          "#8a8a88"
+        ],
+        "roofColour": "#7d7d7b",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1956 and later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Scarborough_Health_Network",
+          "what": "General hospital opened 1956 at Lawrence and McCowan as Scarborough's first general hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "campus outline about 396 x 267 m"
+        }
+      ],
+      "notes": "Only opening year and campus outline known; building look is typed. Campus is about 400 m across, the model shows the main block. Taller and more irregular than Centenary."
+    },
+    "toronto-osm-way-702100748": {
+      "venueId": "toronto-osm-way-702100748",
+      "city": "toronto",
+      "name": "Tyndale University",
+      "archetype": "campus-block",
+      "subject": "Tyndale's Bayview campus, the former St. Joseph's Morrow Park convent and school, with a notable chapel",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#a8664a",
+          "#c9c4b8",
+          "#e8e4da"
+        ],
+        "roofColour": "#5a5a58",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tyndale_University",
+          "what": "Bayview campus is the former St. Joseph's Morrow Park acquired from the Sisters of St. Joseph in 2013; chapel kept as sacred space"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "campus outline about 632 x 459 m"
+        }
+      ],
+      "notes": "Building style, age and architect not found. Brick U-plan with a courtyard is typed from an institutional convent-school; the chapel is not modelled separately."
+    },
+    "toronto-osm-way-703666033": {
+      "venueId": "toronto-osm-way-703666033",
+      "city": "toronto",
+      "name": "Seneca Polytechnic",
+      "archetype": "campus-block",
+      "subject": "Newnham Campus: 1969 concrete and brick college blocks with a 2011 glazed building and a high-rise residence",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 80,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#a9a8a2",
+          "#8b5e4a",
+          "#6b8a99"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "2011 building atrium"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1969, extended 2011 and 2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Seneca_College",
+          "what": "Newnham campus first building 1969 (Hurst, Parkin with Searle Wilbee Rowland, arena by Abram Nowski McLaughlin); 19,000 m2 Dialog building 2011; CITE 2019; 1,113-bed residence tower 1998"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "campus outline about 839 x 505 m"
+        }
+      ],
+      "notes": "Materials are estimated from the era (concrete, brick, large glazing). Campus is about 840 m across; the model shows the older main block with the 2011 atrium wing."
+    },
+    "toronto-osm-way-85544826": {
+      "venueId": "toronto-osm-way-85544826",
+      "city": "toronto",
+      "name": "Holy Family Catholic Church",
+      "archetype": "church-classical",
+      "subject": "Roman Renaissance church in Parkdale, rebuilt 1999-2001 after a fire destroyed the 1902 building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#d4c7a8",
+          "#b5a07c",
+          "#f1ede2"
+        ],
+        "roofColour": "#6b6460",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "2001",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Family_Roman_Catholic_Church_(Parkdale,_Toronto)",
+          "what": "new church by Brian Atkins, Roman Renaissance style, built 1999-2001 after the 1997 fire of the 1902 church, on King Street West"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "building colour beige, 2 levels, footprint about 36 x 29 m"
+        }
+      ],
+      "notes": "Beige colour and two levels are OSM tags; the pediment, portico and arches are inferred from the Roman Renaissance style and not confirmed in the source."
+    },
+    "toronto-quiet-reflection": {
+      "venueId": "toronto-quiet-reflection",
+      "city": "toronto",
+      "name": "Knox Presbyterian Church",
+      "archetype": "church-modern",
+      "subject": "Agincourt congregation (1925) in a plain brick church with a 1950s hall named John Forbes Hall",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#a8664a",
+          "#c9c4b8",
+          "#e8e4da"
+        ],
+        "roofColour": "#5a5a58",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1925, hall 1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Knox_Presbyterian_Church_(Agincourt)",
+          "what": "founded 1925; 1950s John Forbes Hall addition; 4156 Sheppard Avenue East"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "footprint about 45.5 x 25.8 m"
+        }
+      ],
+      "notes": "The building itself is not described anywhere found. Typed as a brick suburban church with an attached hall; different in plan and colour from Holy Family."
+    },
+    "toronto-recreation": {
+      "venueId": "toronto-recreation",
+      "city": "toronto",
+      "name": "Étienne Brûlé Park",
+      "archetype": "park-landscape",
+      "subject": "Humber River valley park with the 1916 arched stone Old Mill Bridge, riverside trail and wooded banks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 200,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89f8a",
+          "#7d9a6a",
+          "#c9c4b8"
+        ],
+        "roofColour": "#7d9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "1916 arched stone bridge"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "georgian",
+      "era": "1916 bridge; park 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89tienne_Br%C3%BBl%C3%A9_Park",
+          "what": "Humber River valley park; Old Mill Bridge 1916 arched stone bridge crossing the river; mill site since 1793; Tommy Thompson Trail; winter skiing"
+        }
+      ],
+      "notes": "Park is about 1.7 km long along the river; the model shows the river, the arched stone bridge and wooded banks."
+    },
+    "toronto-transit": {
+      "venueId": "toronto-transit",
+      "city": "toronto",
+      "name": "Bay",
+      "archetype": "transport-station",
+      "subject": "Bay subway station surface entrance in the base of the grey concrete 1240 Bay Street office building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#9a9a96",
+          "#7f9aa5",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1966",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bay_station_(Toronto)",
+          "what": "underground station on Line 2 at 1240 Bay St, opened 26 Feb 1966, centre platform on two levels, glass mosaic added 2026"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "1240 Bay is a 9-level grey concrete office, about 62 x 20 m"
+        }
+      ],
+      "notes": "The station is underground; the surface presence is a glazed street entrance inside the nine-storey grey concrete 1240 Bay office block. Model shows the entrance and the lower podium of that block."
+    }
+  }
+}

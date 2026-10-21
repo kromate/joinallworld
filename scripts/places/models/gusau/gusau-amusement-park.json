@@ -1,0 +1,1003 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AGP_Wikipedia_Training_0142.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abubakar Yusuf Gusau",
+   "view": "street",
+   "file": "/tmp/places-evidence/gusau/park1.jpg",
+   "used": "row of six rounded bumper cars (purple, blue, cyan, red, yellow, orange) on black tyre rings, grey concrete ride floor, pale teal railing behind, blue railing posts, large shade trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AGP_Wikipedia_Training_0143.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Abubakar Yusuf Gusau",
+   "view": "street",
+   "file": "/tmp/places-evidence/gusau/park2.jpg",
+   "used": "low concrete kerb wall topped with blue scrolled railing, pale paving-block path, blue/maroon scooter-seat rides, tall columnar trees behind, white pylon centrepiece"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1207469264",
+   "used": "6 x 5.5 m building nearest the park centre, modelled as a small kiosk"
+  },
+  {
+   "kind": "text",
+   "ref": "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Gusau",
+   "used": "family park open 8-19h with a gym; pavilion, gate, fence wall, umbrellas"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 14,
+  "fovDeg": 24,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.0,
+  "shiftY": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm-kiosk",
+   "footprint": {
+    "osm": true,
+    "fit": 6
+   },
+   "at": [
+    -24,
+    19
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe4c4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8a29a",
+    "material": "corrugated",
+    "rise": 0.6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "params": {
+    "points": [
+     [
+      -20,
+      -2
+     ],
+     [
+      20,
+      -2
+     ],
+     [
+      20,
+      16
+     ],
+     [
+      -20,
+      16
+     ]
+    ],
+    "height": 0.12,
+    "colour": "#a9a8a2"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -14,
+      0
+     ],
+     [
+      -6,
+      1
+     ],
+     [
+      -5,
+      6
+     ],
+     [
+      -13,
+      5
+     ]
+    ],
+    "height": 0.02,
+    "colour": "#8f8e88"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      4,
+      -1
+     ],
+     [
+      15,
+      0
+     ],
+     [
+      14,
+      5
+     ],
+     [
+      6,
+      6
+     ]
+    ],
+    "height": 0.02,
+    "colour": "#b4b3ad"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      8
+     ],
+     [
+      8,
+      9
+     ],
+     [
+      9,
+      13
+     ],
+     [
+      -3,
+      12
+     ]
+    ],
+    "height": 0.02,
+    "colour": "#97968f"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -2,
+    0.0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cfd0cb"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    16,
+    0.12
+   ],
+   "params": {
+    "length": 40,
+    "height": 1.2,
+    "thickness": 0.25,
+    "kind": "railing",
+    "colour": "#64c4b8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    17.2,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 3.0,
+    "thickness": 0.2,
+    "kind": "railing",
+    "colour": "#1f2f8a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    12.0,
+    0.12
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    12.1,
+    0.42
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 0.75,
+    "colour": "#7b4fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    12.3,
+    1.17
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#7b4fb0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -12.5,
+    11.38,
+    0.5
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -13.05,
+    11.36,
+    0.75
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11.95,
+    11.36,
+    0.75
+   ],
+   "rotDeg": -8,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    12.5,
+    0.12
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    12.6,
+    0.42
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 0.75,
+    "colour": "#2f6fd0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    12.8,
+    1.17
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#2f6fd0"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -7.5,
+    11.88,
+    0.5
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8.05,
+    11.86,
+    0.75
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6.95,
+    11.86,
+    0.75
+   ],
+   "rotDeg": 5,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    12.0,
+    0.12
+   ],
+   "rotDeg": -3,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    12.1,
+    0.42
+   ],
+   "rotDeg": -3,
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 0.75,
+    "colour": "#25a8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    12.3,
+    1.17
+   ],
+   "rotDeg": -3,
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#25a8d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2.5,
+    11.38,
+    0.5
+   ],
+   "rotDeg": -3,
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -3.05,
+    11.36,
+    0.75
+   ],
+   "rotDeg": -3,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -1.95,
+    11.36,
+    0.75
+   ],
+   "rotDeg": -3,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    12.5,
+    0.12
+   ],
+   "rotDeg": 6,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    12.6,
+    0.42
+   ],
+   "rotDeg": 6,
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 0.75,
+    "colour": "#d83a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    12.8,
+    1.17
+   ],
+   "rotDeg": 6,
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#d83a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2.5,
+    11.88,
+    0.5
+   ],
+   "rotDeg": 6,
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1.95,
+    11.86,
+    0.75
+   ],
+   "rotDeg": 6,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    3.05,
+    11.86,
+    0.75
+   ],
+   "rotDeg": 6,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    12.0,
+    0.12
+   ],
+   "rotDeg": -5,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    12.1,
+    0.42
+   ],
+   "rotDeg": -5,
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 0.75,
+    "colour": "#f0c81e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    12.3,
+    1.17
+   ],
+   "rotDeg": -5,
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#f0c81e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7.5,
+    11.38,
+    0.5
+   ],
+   "rotDeg": -5,
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    6.95,
+    11.36,
+    0.75
+   ],
+   "rotDeg": -5,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    8.05,
+    11.36,
+    0.75
+   ],
+   "rotDeg": -5,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    12.5,
+    0.12
+   ],
+   "rotDeg": 4,
+   "params": {
+    "rect": [
+     2.0,
+     1.6
+    ],
+    "height": 0.3,
+    "colour": "#1a1a1a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    12.6,
+    0.42
+   ],
+   "rotDeg": 4,
+   "params": {
+    "rect": [
+     1.6,
+     1.2
+    ],
+    "height": 0.75,
+    "colour": "#e8682a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    12.8,
+    1.17
+   ],
+   "rotDeg": 4,
+   "params": {
+    "rect": [
+     1.2,
+     0.8
+    ],
+    "height": 0.5,
+    "colour": "#e8682a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    12.5,
+    11.88,
+    0.5
+   ],
+   "rotDeg": 4,
+   "params": {
+    "rect": [
+     1.0,
+     0.1
+    ],
+    "height": 0.55,
+    "colour": "#f2f2ee"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11.95,
+    11.86,
+    0.75
+   ],
+   "rotDeg": 4,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    13.05,
+    11.86,
+    0.75
+   ],
+   "rotDeg": 4,
+   "params": {
+    "rect": [
+     0.28,
+     0.1
+    ],
+    "height": 0.28,
+    "colour": "#1a1a1a"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -9,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "spread": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    1,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "spread": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    21,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "spread": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -18,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "poplar",
+    "height": 13,
+    "spread": 2.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -15,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "poplar",
+    "height": 12,
+    "spread": 2.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    16,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "poplar",
+    "height": 13,
+    "spread": 2.2,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    19,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "poplar",
+    "height": 12,
+    "spread": 2.2,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   50,
+   36
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "gusau-amusement-park",
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Cars rebuilt as boxy tyre-ring cars with hump and white face panel but still small in frame; trees are low-poly lollipops, not the dense overhanging canopy; ride floor lacks wear texture; camera still frames a wide strip with empty sky."
+ }
+}

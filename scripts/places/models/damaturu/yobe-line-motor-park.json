@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "damaturu",
+ "venueId": "yobe-line-motor-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1390282026",
+   "used": "containing building only 11 x 7 m (a booking office), used as the size of the ticket office; shed and bays follow the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "core/canopy",
+   "id": "loading-shed",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 56,
+    "depth": 16,
+    "height": 5.5,
+    "thickness": 0.4,
+    "columns": 8,
+    "colour": "#8d9296",
+    "edgeColour": "#cdb68e"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 52,
+    "kind": "coach",
+    "density": 0.85,
+    "colours": [
+     "#d8d8d0",
+     "#2f6b4f",
+     "#c9a23a"
+    ],
+    "yaw": 90
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "kind": "mixed",
+    "density": 0.5,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    -30,
+    -2
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb68e",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.8,
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -18,
+    -6
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    -8,
+    -6
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb68e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-3",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    2,
+    -6
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-4",
+   "footprint": {
+    "rect": [
+     3,
+     3
+    ]
+   },
+   "at": [
+    12,
+    -6
+   ],
+   "z0": 0,
+   "height": 2.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb68e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    32,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 3.2,
+    "pillar": 0.8,
+    "leaf": "bars",
+    "colour": "#a8a39a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    24,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 2.6,
+    "colour": "#2f6b4f",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; shed, bays and kiosks from the brief only, real layout unknown"
+ }
+}

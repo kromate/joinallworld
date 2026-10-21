@@ -1,0 +1,260 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-way-124316871",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UNIVERSITE_DU_BURUNDI_03.jpg",
+   "licence": "CC0",
+   "author": "Edouard mhg",
+   "view": "front",
+   "file": "/tmp/places-evidence/bujumbura/ub1.jpg",
+   "used": "long four-storey slab, pale concrete-grey panels with vertical piers, repeating paired ribbon windows on every floor, open ground storey, one taller stair/lift tower slightly left of centre, flat roof, car park in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:UNIVERSITE_DU_BURUNDI_14.jpg",
+   "licence": "CC0",
+   "author": "Edouard mhg",
+   "view": "street",
+   "file": "/tmp/places-evidence/bujumbura/ub2.jpg",
+   "used": "long covered walkway on thin rust-red steel posts with a corrugated roof, cobbled paths, palms"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/1290006",
+   "used": "campus is a comb of wings ~128 x 64 m: long block plus side wings placed from the outline, the stepped outline itself not copied"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.06
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     112,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcbbd",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "punched"
+    },
+    "bands": "#e4e0d2",
+    "groundKind": "pilotis",
+    "groundHeight": 3.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "stair-tower",
+   "footprint": {
+    "rect": [
+     8,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    -2.5
+   ],
+   "height": 17.6,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b6aa",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     15,
+     32
+    ]
+   },
+   "at": [
+    44,
+    23
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcbbd",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#e4e0d2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     15,
+     24
+    ]
+   },
+   "at": [
+    -44,
+    19
+   ],
+   "height": 13,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcbbd",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "bay": 4.2,
+    "plinth": 0.5,
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "bands": "#e4e0d2"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8c82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    18,
+    -9.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 44,
+    "depth": 3.2,
+    "height": 3.4,
+    "columns": 10,
+    "colour": "#7a5a48",
+    "edgeColour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -28,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     0
+    ],
+    "end": [
+     40,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "car",
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    52,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   90
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 3,
+  "match": "close",
+  "gaps": "Facade ribbons are coarser than the photo's paired windows; real ground floor is an open pilotis with shopfronts and the stair tower is slightly narrower; OSM comb outline not copied."
+ }
+}

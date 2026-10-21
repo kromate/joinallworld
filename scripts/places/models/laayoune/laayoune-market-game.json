@@ -1,0 +1,439 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-market-game",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1098678391",
+   "used": "named OSM marketplace (about 300 x 170 m); a 100 x 70 m part is modelled because the scene clamp is 118 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: walled sand lot with rail pens, tin-roof shelters, loading ramps"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 18,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -35
+     ],
+     [
+      50,
+      -35
+     ],
+     [
+      50,
+      35
+     ],
+     [
+      -50,
+      35
+     ],
+     [
+      -50,
+      -35
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.35,
+    "colour": "#c9b896"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.12,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#8a6f4e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.12,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#8a6f4e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.12,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#8a6f4e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.12,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#8a6f4e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.12,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#8a6f4e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    18,
+    -14,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      20,
+      0
+     ],
+     [
+      20,
+      10
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "height": 1.5,
+    "thickness": 0.12,
+    "kind": "rail",
+    "pillarEvery": 4,
+    "colour": "#8a6f4e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "shed-n",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    -22,
+    27
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9c958a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a82",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed-e",
+   "footprint": {
+    "rect": [
+     8,
+     24
+    ]
+   },
+   "at": [
+    42,
+    6
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a39b8d",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8f8a82",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office",
+   "footprint": {
+    "rect": [
+     12,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -30
+   ],
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0d2b2",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -18,
+    -35,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "pillar": 1.0,
+    "colour": "#c9b896"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -44,
+    -28,
+    0
+   ],
+   "params": {
+    "radius": 2,
+    "tankHeight": 3,
+    "legHeight": 5,
+    "colour": "#7f8c8d"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    34,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "rise": 1.2,
+    "run": 2.4,
+    "count": 4,
+    "colour": "#b7ab94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "trees": 0,
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; layout of pens and sheds is typical, only the OSM name and extent are real"
+ }
+}

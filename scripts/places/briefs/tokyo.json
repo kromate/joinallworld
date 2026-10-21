@@ -1,0 +1,1667 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tokyo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tokyo",
+    "climate": "temperate",
+    "vernacular": "Dense low- and mid-rise city of reinforced-concrete and steel buildings clad in pale ceramic tile, painted render or precast panels, in white, beige and grey; narrow apartment blocks with stacked balcony bands, rooftop water tanks and vending-machine fronts. Older wooden houses and shrines have dark grey ceramic kawara tile roofs, plaster walls and deep eaves; shrines add vermilion. Towers downtown are glass and metal. Zelkova, ginkgo, cherry and pine street and park trees.",
+    "wallColours": [
+      "#d9d5c9",
+      "#e8e4d8",
+      "#bfb8a8",
+      "#a7a8a8",
+      "#8d7a66",
+      "#5d6770",
+      "#f1efe8"
+    ],
+    "roofColours": [
+      "#4a4f55",
+      "#5c6a76",
+      "#9a9d9f",
+      "#6b4a3c",
+      "#3b3b3d"
+    ],
+    "wallMaterials": [
+      "concrete",
+      "tile-cladding",
+      "render",
+      "painted-render",
+      "glass-curtain",
+      "metal-cladding",
+      "exposed-concrete",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "membrane",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Hip-and-gable (irimoya) ceramic tile roofs with deep eaves on temples; vermilion torii and shrine gates; stacked balcony bands and handrails on apartment blocks; rooftop water tanks and antennas; overhead wires; stone lanterns and gravel paths in gardens; Kenzo Tange grid-pattern curtain walls on Shinjuku towers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Japan",
+        "what": "Tiled roofs, plastered timber, early reinforced concrete, vermilion shrines, deep eaves and bracket systems, black plaster storehouses"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tokyo_Metropolitan_Government_Building",
+        "what": "Tange twin-tower grid-patterned downtown tower, 48 storeys"
+      },
+      {
+        "url": "https://www.openstreetmap.org/way/89877471",
+        "what": "OSM tag building:colour #CCCFDB for the Metropolitan Government Building; used as light blue-grey wall tone"
+      }
+    ]
+  },
+  "places": {
+    "tokyo-airport-tokyo-airport": {
+      "venueId": "tokyo-airport-tokyo-airport",
+      "city": "tokyo",
+      "name": "Tokyo Haneda International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Haneda Terminal 2 seen from the landside forecourt: a long, low-ish white and glass terminal with a curved roof and a control tower rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 420,
+        "depth_m": 80,
+        "storeys": 5,
+        "height_m": 36,
+        "roof": "curved",
+        "wings": 2,
+        "variant": "domestic-international"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#6f7f8c",
+          "#f4f4f2"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "long forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 27,
+          "note": "T2 has 27 jet-bridge gates (Wikipedia)"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "Haneda control tower stands beside the terminals"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "rooftop observation deck with open-air restaurant"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/18910656",
+          "what": "Terminal 2 OSM relation, Wikidata Q57080454; very long (1.4 km incl. piers) and about 409 m deep with piers; main mass 80 m deep is an estimate"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Haneda_Airport",
+          "what": "T2 opened 1 Dec 2004, 27 jet-bridge gates, six-storey shopping/restaurant zone, rooftop restaurant, 387-room hotel"
+        }
+      ],
+      "notes": "The OSM terminal polygon includes the airside piers; the model should show the landside terminal block only, clamped to 120 m. Wikipedia does not describe the facade, so colours and curved roof are a typed estimate for a modern Japanese airport terminal. Medium confidence."
+    },
+    "tokyo-clinic": {
+      "venueId": "tokyo-clinic",
+      "city": "tokyo",
+      "name": "Saiseikai Kawaguchi General Hospital",
+      "archetype": "hospital",
+      "subject": "A seven-storey hospital block in white tile with a stepped plan, seen from the entrance drive",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 78,
+        "depth_m": 70,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "render",
+        "colours": [
+          "#e6e2d6",
+          "#b9b2a2",
+          "#f4f2ec"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "rooftop plant"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13591428",
+          "what": "OSM building=hospital, building:levels 7, footprint about 78 x 70 m, area 4238 m2"
+        }
+      ],
+      "notes": "Only footprint size and seven storeys are measured; appearance is typed from the generic Japanese general-hospital pattern (pale tile, ribbon windows). No photo description found; low confidence."
+    },
+    "tokyo-community-notices": {
+      "venueId": "tokyo-community-notices",
+      "city": "tokyo",
+      "name": "Tokyo Metropolitan Government Building No. 1",
+      "archetype": "civic-palace",
+      "subject": "The 243 m Tange twin-tower Tokyo Metropolitan Government Building No. 1 seen from the plaza, a gridded light-grey tower that splits into two tops above the 33rd floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 46,
+        "storeys": 48,
+        "height_m": 243,
+        "roof": "stepped",
+        "wings": 2,
+        "variant": "twin-tower"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cccfdb",
+          "#8793a3",
+          "#e4e6ec"
+        ],
+        "roofColour": "#b9bdc8",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "setback-tiers",
+          "count": 3,
+          "note": "twin towers split from the 33rd floor with stepped setbacks"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "antennas on both tower tops"
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "low block at the base"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "postmodern",
+      "era": "1991",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tokyo_Metropolitan_Government_Building",
+          "what": "48 storeys in No. 1, splits in two at the 33rd floor, roof 242.9 m, Kenzo Tange, completed 1990, opened 1991; design compared to an integrated circuit and a Gothic cathedral"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/89877471",
+          "what": "OSM: 48 levels, building:colour/roof:colour #CCCFDB, architect Kenzo Tange, start 1991; footprint 110 x 47 m for the whole base"
+        }
+      ],
+      "notes": "Highly recognisable: pale blue-grey grid facade of fine horizontal and vertical mullions (the grid reads like a circuit board), twin tops with sloping setbacks. The base plaza and No. 2 and Assembly buildings are separate masses and may be omitted. OSM height tag of 133 m is for the lower portion; Wikipedia gives 242.9 m."
+    },
+    "tokyo-community-voting-game": {
+      "venueId": "tokyo-community-voting-game",
+      "city": "tokyo",
+      "name": "Soka City Hall",
+      "archetype": "civic-small",
+      "subject": "Soka City Hall, a mid-rise municipal office block in pale panels with a frontage drive",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 32,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d4d0c4",
+          "#8a9aa6",
+          "#f0eee8"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/search?query=Soka+City+Hall",
+          "what": "Soka City Hall (Wikidata Q17222884), OSM amenity=townhall, footprint 50 x 32 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17222884",
+          "what": "Soka City Hall entity"
+        }
+      ],
+      "notes": "Footprint measured (about 50 x 32 m, 1587 m2); number of storeys and facade colours are guesses from the generic Japanese city-hall pattern. Low confidence."
+    },
+    "tokyo-community-workshop": {
+      "venueId": "tokyo-community-workshop",
+      "city": "tokyo",
+      "name": "Seibu Library",
+      "archetype": "campus-block",
+      "subject": "A two-storey municipal library in pale tile and glass set in a small park-like plot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 62,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2ddd0",
+          "#7f8f9a",
+          "#f2f0ea"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/35.798702/139.940694",
+          "what": "Location of the library; OSM building polygon about 62 x 40 m, 2261 m2"
+        }
+      ],
+      "notes": "Name and coordinates are real but nothing about its appearance was found; typed from Japanese public-library norm. Low confidence."
+    },
+    "tokyo-market-game": {
+      "venueId": "tokyo-market-game",
+      "city": "tokyo",
+      "name": "AEON Shin-Urayasu Shopping Center",
+      "archetype": "mall",
+      "subject": "A large eight-level suburban shopping centre in beige concrete with a rooftop car deck, seen from the main entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 158,
+        "depth_m": 116,
+        "storeys": 8,
+        "height_m": 40,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d3c4",
+          "#a8a9a8",
+          "#eeece6"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-level parking deck"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards in neutral colours"
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=17/35.648962/139.914895",
+          "what": "OSM retail building, levels 8, building:material concrete, footprint 158 x 116 m, Wikidata Q11308174"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11308174",
+          "what": "AEON Shinurayasu Shopping Center"
+        }
+      ],
+      "notes": "Measured: area 17141 m2, eight levels, concrete. Likely a big-box mall with a rooftop parking deck and plain concrete cladding; no brand colours (use neutral boards). Medium confidence."
+    },
+    "tokyo-meal-stop": {
+      "venueId": "tokyo-meal-stop",
+      "city": "tokyo",
+      "name": "Tully's Coffee",
+      "archetype": "restaurant",
+      "subject": "A small corner coffee shop on the ground floor of a three-to-five-storey office building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 21,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d2c4",
+          "#7d5a3c",
+          "#f0eee8"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/35.589041/139.731027",
+          "what": "Venue sits in an OSM office building, 31 x 21 m"
+        }
+      ],
+      "notes": "Chain cafe unit in an office building; only the building size is measured. Show a ground-floor glazed cafe front with awning, no logo. Low confidence."
+    },
+    "tokyo-osm-node-11964372050": {
+      "venueId": "tokyo-osm-node-11964372050",
+      "city": "tokyo",
+      "name": "Koo-ji (高応寺)",
+      "archetype": "temple-asian",
+      "subject": "A small neighbourhood Buddhist temple hall with a dark tiled gable roof and a gravel yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1,
+        "variant": "irimoya hall"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a58b6b",
+          "#e6e0d2",
+          "#4a3a2e"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 1,
+          "note": "incense burner and stone lantern in yard"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/11964372050",
+          "what": "OSM node for the temple; building polygon about 20 x 19 m"
+        }
+      ],
+      "notes": "Nothing about this temple was found online beyond its name and footprint; typed from small Japanese temple pattern: irimoya roof of grey ceramic tile, timber and plaster walls. Low confidence."
+    },
+    "tokyo-osm-node-1420782236": {
+      "venueId": "tokyo-osm-node-1420782236",
+      "city": "tokyo",
+      "name": "Kyorin University Hospital",
+      "archetype": "hospital",
+      "subject": "A large multi-wing university hospital of about ten storeys in pale tile with a rooftop helipad",
+      "form": {
+        "footprint": "U",
+        "width_m": 183,
+        "depth_m": 129,
+        "storeys": 10,
+        "height_m": 44,
+        "roof": "flat",
+        "wings": 2,
+        "variant": "university-hospital"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e5e0d3",
+          "#8f9ba4",
+          "#f4f2ec"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1970s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1420782236",
+          "what": "OSM hospital building: height 44 m, area 12069 m2, about 183 x 129 m, Wikidata Q11522606"
+        }
+      ],
+      "notes": "Footprint and the 44 m height are measured; the facade is a typed estimate. Medium confidence."
+    },
+    "tokyo-osm-node-1420785573": {
+      "venueId": "tokyo-osm-node-1420785573",
+      "city": "tokyo",
+      "name": "Tokyo Metropolitan Geriatric Medical Center",
+      "archetype": "hospital",
+      "subject": "A big care and hospital complex of pale low and mid-rise wings around a central drive",
+      "form": {
+        "footprint": "H",
+        "width_m": 141,
+        "depth_m": 97,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 3,
+        "variant": "care-complex"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "render",
+        "colours": [
+          "#e0dccf",
+          "#b9b2a2",
+          "#f2f0ea"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/1420785573",
+          "what": "OSM building 141 x 97 m, area 8954 m2, labelled Metropolitan Elder Care Center"
+        }
+      ],
+      "notes": "Name given as Metropolitan Elder Care Center in game data; real facility not confirmed. Large pale complex typed from footprint. Low confidence."
+    },
+    "tokyo-osm-node-1420795772": {
+      "venueId": "tokyo-osm-node-1420795772",
+      "city": "tokyo",
+      "name": "Tokyo Metropolitan Daigo Fukuryu Maru Exhibition Hall",
+      "archetype": "museum-theatre",
+      "subject": "A compact hall in Yumenoshima whose tall bright volume houses the wooden fishing boat Daigo Fukuryu Maru (28.6 m long)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "shed",
+        "variant": "boat hall"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcdc6",
+          "#7f8f9a",
+          "#eeece6"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "the boat is displayed in a tall hall"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1976",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daigo_Fukuryu_Maru",
+          "what": "Exhibition hall in Tokyo holds the 28.56 m long, 5.9 m beam wooden tuna boat, displayed since 1976"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/1420795772",
+          "what": "OSM building about 44 x 26 m, Wikidata Q11525586"
+        }
+      ],
+      "notes": "Footprint and the boat size are measured; the hall must be tall enough to enclose a 28.6 m hull. Facade colours typed. Medium confidence."
+    },
+    "tokyo-osm-node-7064887959": {
+      "venueId": "tokyo-osm-node-7064887959",
+      "city": "tokyo",
+      "name": "Myoho-ji (妙法寺)",
+      "archetype": "temple-asian",
+      "subject": "A Nichiren-school temple hall in the east-Tokyo suburbs with a wide tiled gable roof and timber doors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 1,
+        "variant": "main hall"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a4885f",
+          "#e3ddcd",
+          "#43342a"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "roof finials"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/7064887959",
+          "what": "OSM node; building 35 x 19 m, 504 m2"
+        }
+      ],
+      "notes": "Only the name and footprint are known. Typed from Japanese temple norm. Low confidence."
+    },
+    "tokyo-osm-node-9553352249": {
+      "venueId": "tokyo-osm-node-9553352249",
+      "city": "tokyo",
+      "name": "Kawawa Fujizuka (川和富士塚)",
+      "archetype": "shrine-small",
+      "subject": "A small earth Fuji-mound shrine (fujizuka) with a stone stair, a torii at the foot and a tiny shrine at the top",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "fuji-mound"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#8f8f86",
+          "#9b3b2c",
+          "#5a4a3a"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "red torii at the foot"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "stone markers"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "east-asian",
+      "era": "Edo to Meiji",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/9553352249",
+          "what": "OSM node (archaeological/historic site); detached building 14 x 8 m"
+        }
+      ],
+      "notes": "Fujizuka are artificial small hills modelled on Mt Fuji, typically with a stone staircase and a small shrine on top; this specific mound is not described online. Low confidence."
+    },
+    "tokyo-osm-relation-15635177": {
+      "venueId": "tokyo-osm-relation-15635177",
+      "city": "tokyo",
+      "name": "Higashi-Ohgishima East Park",
+      "archetype": "park-landscape",
+      "subject": "A flat reclaimed-island waterfront park: wide lawns, tree belts, sea wall and harbour cranes in the distance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 804,
+        "depth_m": 332,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c6bb",
+          "#7a8b74",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "sea wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/15635177",
+          "what": "OSM leisure=park, 804 x 332 m, Wikidata Q11527049 (Higashi-Ohgishima East Park)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11527049",
+          "what": "Park on the Higashi-Ohgishima reclaimed island in Kawasaki"
+        }
+      ],
+      "notes": "Park on reclaimed land in Tokyo Bay: broad lawns, sparse trees, sea wall. Low confidence: no photo description read."
+    },
+    "tokyo-osm-relation-18950099": {
+      "venueId": "tokyo-osm-relation-18950099",
+      "city": "tokyo",
+      "name": "Tsurumi University",
+      "archetype": "campus-block",
+      "subject": "A hillside private university campus: several pale mid-rise lecture blocks around a central yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 267,
+        "depth_m": 163,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 3,
+        "variant": "multi-block campus"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#e1dccf",
+          "#a8a39a",
+          "#f2f0ea"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/18950099",
+          "what": "OSM amenity=university, 267 x 163 m, area 20714 m2, Wikidata Q7850294"
+        }
+      ],
+      "notes": "Footprint measured; building details typed. Low confidence."
+    },
+    "tokyo-osm-relation-8135061": {
+      "venueId": "tokyo-osm-relation-8135061",
+      "city": "tokyo",
+      "name": "Nakayama Racecourse",
+      "archetype": "stadium",
+      "subject": "The wide Nakayama grandstand beside the turf oval, seen from the track: multi-tier stand with a long roof and a big screen in the infield",
+      "form": {
+        "footprint": "rect",
+        "width_m": 360,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 38,
+        "roof": "curved",
+        "wings": 2,
+        "variant": "racecourse-grandstand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d8d3",
+          "#6e8aa0",
+          "#f0efec"
+        ],
+        "roofColour": "#c8ccd0",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "long canopy over the stands"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "infield video screen"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "rails"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nakayama_Racecourse",
+          "what": "Two turf courses (outer oval 1840 m, inner 1667 m), dirt 1493 m, jump course with steep embankments, capacity 165,676"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8135061",
+          "what": "OSM leisure=stadium, 815 x 756 m, Wikidata Q1055536"
+        }
+      ],
+      "notes": "Whole track is about 815 x 756 m so only the grandstand (about 360 m wide) is shown, with a short stretch of turf. Grandstand appearance typed from the standard JRA grandstand pattern. Medium confidence."
+    },
+    "tokyo-osm-way-119477713": {
+      "venueId": "tokyo-osm-way-119477713",
+      "city": "tokyo",
+      "name": "Nissan Stadium (International Stadium Yokohama)",
+      "archetype": "stadium",
+      "subject": "The 72,000-seat Nissan Stadium: a huge oval bowl under a translucent white roof, with pale concrete ramps and spiral walkways outside",
+      "form": {
+        "footprint": "oval",
+        "width_m": 314,
+        "depth_m": 300,
+        "storeys": 6,
+        "height_m": 56,
+        "roof": "curved",
+        "variant": "covered-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d7d0",
+          "#9aa3ab",
+          "#f2f2ef"
+        ],
+        "roofColour": "#e9ebed",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "translucent membrane roof ring over all stands"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 8,
+          "note": "lights on the roof edge"
+        },
+        {
+          "id": "scoreboard",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide external stairs and ramps"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/International_Stadium_Yokohama",
+          "what": "72,327 seats, the largest in Japan, grass pitch 107 x 72 m, opened 1 March 1998, Shin-Yokohama Park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/119477713",
+          "what": "OSM stadium 314 x 314 m, 3 levels, Wikidata Q116601"
+        }
+      ],
+      "notes": "Wikipedia gives only capacity and pitch; the translucent white membrane roof over every stand is from general knowledge of the stadium. Medium confidence."
+    },
+    "tokyo-osm-way-136302688": {
+      "venueId": "tokyo-osm-way-136302688",
+      "city": "tokyo",
+      "name": "Jumonji Women's University",
+      "archetype": "campus-block",
+      "subject": "A three-storey private-university teaching block in pale tile with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 55,
+        "storeys": 3,
+        "height_m": 14.3,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e2ddd0",
+          "#8a9aa6",
+          "#f2f0ea"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/136302688",
+          "what": "OSM building height 14.3 m, 72 x 55 m"
+        }
+      ],
+      "notes": "Height and footprint measured (about 3 storeys); facade typed. Low confidence."
+    },
+    "tokyo-osm-way-1486519713": {
+      "venueId": "tokyo-osm-way-1486519713",
+      "city": "tokyo",
+      "name": "Onarimon Gate",
+      "archetype": "monument",
+      "subject": "A single-bay timber gate with a black-lacquered frame, bronze fittings and a tiled gable roof, in the old Tokugawa mausoleum precinct",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "karamon-style gate"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#2c2824",
+          "#b8963e",
+          "#7a7a74"
+        ],
+        "roofColour": "#3b3b3d",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "roof ridge ornaments"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "east-asian",
+      "era": "Edo (17th century)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1486519713",
+          "what": "OSM historic=city_gate, 8.2 x 6.1 m, Wikidata Q10856360 (Taitoku-in Mausoleum)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Z%C5%8Dj%C5%8D-ji",
+          "what": "Taitoku-in Mausoleum of Tokugawa Hidetada at Zojoji; no gate description given"
+        }
+      ],
+      "notes": "The gate is the Onarimon of the Taitoku-in mausoleum area near Zojoji; no visual description found, so black-lacquer and gold fittings are the typical Tokugawa mausoleum idiom, not verified. Low confidence."
+    },
+    "tokyo-osm-way-214703224": {
+      "venueId": "tokyo-osm-way-214703224",
+      "city": "tokyo",
+      "name": "Musashi-Kosugi Tokyu Square",
+      "archetype": "mall",
+      "subject": "A five-level station-side shopping complex with a glass front and bright bands, built directly above the commuter station approach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 97,
+        "depth_m": 57,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d0d6",
+          "#8a8f94",
+          "#eef0f1"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/214703224",
+          "what": "OSM retail 5 levels, height 26 m, 97 x 57 m, Wikidata Q65271980, station complex"
+        }
+      ],
+      "notes": "Levels and height are measured; the glass front and metal bands are typed. Medium confidence."
+    },
+    "tokyo-osm-way-459589547": {
+      "venueId": "tokyo-osm-way-459589547",
+      "city": "tokyo",
+      "name": "Akigase Park",
+      "archetype": "park-landscape",
+      "subject": "A huge Arakawa riverside park: flat lawns, wide cycling road, dense tree groves and a children's lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 1400,
+        "depth_m": 500,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b7a60",
+          "#6f8a5a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#6b4a3c",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3,
+          "note": "picnic shelters"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/459589547",
+          "what": "OSM leisure=park, 2.8 km x 0.9 km, area 969,058 m2, Wikidata Q4700903"
+        }
+      ],
+      "notes": "A very large park (2.8 km long in reality; width capped here at 1.4 km); the model shows a short stretch: lawn, groves and a small pavilion. Low confidence."
+    },
+    "tokyo-osm-way-463900052": {
+      "venueId": "tokyo-osm-way-463900052",
+      "city": "tokyo",
+      "name": "Sankyo Frontier Kashiwa Stadium",
+      "archetype": "stadium",
+      "subject": "A compact football-specific stadium with a fully roofed single-tier stand and floodlight masts, yellow seats and a bright pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 152,
+        "depth_m": 129,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "football-specific"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4d2cb",
+          "#f0c514",
+          "#6e7a84"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof over all stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1985 renovated",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/463900052",
+          "what": "OSM stadium 152 x 129 m, area 8723 m2, Wikidata Q1366075 (Hitachi Kashiwa Soccer Stadium)"
+        }
+      ],
+      "notes": "Football-only stadium of the Kashiwa Reysol club (club colour yellow; use yellow seat accent). Roof extent typed. Medium confidence."
+    },
+    "tokyo-quiet-reflection": {
+      "venueId": "tokyo-quiet-reflection",
+      "city": "tokyo",
+      "name": "Kannon-ji (観音寺)",
+      "archetype": "temple-asian",
+      "subject": "A small Kannon temple hall with a tiled hip roof and a stone lantern",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1,
+        "variant": "kannon hall"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#a68c68",
+          "#e5dfd0",
+          "#43342a"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/#map=18/35.623621/139.60163",
+          "what": "OSM building at the coordinates, 16.5 x 15.3 m"
+        }
+      ],
+      "notes": "Name and coordinates only; no description. Typed small-temple. Low confidence."
+    },
+    "tokyo-recreation": {
+      "venueId": "tokyo-recreation",
+      "city": "tokyo",
+      "name": "Shakujii Park",
+      "archetype": "park-landscape",
+      "subject": "Two ponds (Shakujii and Sanpoji) ringed with zelkova, cherry and pine, with a boat pier, small Shinto shrines and a lakeside path",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 452,
+        "depth_m": 354,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b7a60",
+          "#6f8a5a",
+          "#c9c6bb"
+        ],
+        "roofColour": "#6b4a3c",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "boat rental pier on Shakujii Pond"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "shrine torii"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "east-asian",
+      "era": "Kamakura ruins, park 1959",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Shakujii_Park",
+          "what": "Two ponds Sanpo-ji and Shakujii, small Shinto shrines, Kamakura-era castle ruins, 223,786 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/search?query=Shakujii+Park",
+          "what": "OSM park 452 x 354 m, Wikidata Q4388784"
+        }
+      ],
+      "notes": "Pond-and-woodland park; Shakujii Pond is known for boating. Medium confidence."
+    },
+    "tokyo-transit": {
+      "venueId": "tokyo-transit",
+      "city": "tokyo",
+      "name": "JR Nippori Station",
+      "archetype": "transport-station",
+      "subject": "The elevated JR Nippori Station building with a glass and steel concourse, rail overpass and many parallel tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 76,
+        "depth_m": 67,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1,
+        "variant": "elevated station"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c8cdd1",
+          "#6e7a84",
+          "#e4e6e7"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 6
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1905, rebuilt",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nippori_Station",
+          "what": "Elevated station with many JR platforms (3 4 9 10 11 12), Keisei raised platform, Nippori-Toneri Liner island platform"
+        },
+        {
+          "url": "https://www.openstreetmap.org/#map=17/35.72838/139.770982",
+          "what": "OSM train_station building 76 x 67 m, Wikidata Q124799406"
+        }
+      ],
+      "notes": "A major interchange with many parallel tracks (JR, Keisei, Toneri Liner). Building appearance typed from modern JR East station pattern. Medium confidence."
+    }
+  }
+}

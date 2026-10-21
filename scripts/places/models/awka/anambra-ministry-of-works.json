@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "awka",
+ "venueId": "anambra-ministry-of-works",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1127327939",
+   "used": "footprint 27x12 m, nearest match 6.7 m"
+  },
+  {
+   "kind": "text",
+   "used": "brief: three-storey rendered secretariat block, porch, flag poles; no photo exists"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0
+   },
+   "height": 12,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#aaa699",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "corrugated",
+    "overhang": 0.8,
+    "pitch": 18
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    -4,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 7,
+    "depth": 3.5,
+    "height": 7.5,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#e8e0cc",
+    "roofColour": "#2f6b4a"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    14,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "market-open/flagpole",
+   "at": [
+    -18,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    20,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#2f6b4a"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 8,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -6
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building exists; shape is the OSM block with brief colours, hip roof, porch and flags are typed."
+ }
+}

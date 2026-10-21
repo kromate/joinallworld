@@ -1,0 +1,193 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "edo-state-sport-council",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "brief: small ground, single covered stand, admin block",
+   "used": "programme; OSM match 29 m away (30x16 block) too weak to trust"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "football-pitch",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 84,
+    "width": 54,
+    "stripes": 6
+   }
+  },
+  {
+   "type": "stand",
+   "id": "main-stand",
+   "params": {
+    "start": [
+     -30,
+     -20
+    ],
+    "end": [
+     30,
+     -20
+    ],
+    "rows": 9,
+    "canopy": {
+     "depth": 6,
+     "height": 8,
+     "colour": "#8a8f8c"
+    },
+    "seatColours": [
+     "#5f7f56",
+     "#d3cfc5"
+    ],
+    "concreteColour": "#d3cfc5"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     26,
+     12
+    ]
+   },
+   "at": [
+    -42,
+    -32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d3cfc5",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#f0eee8",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f8c",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    52,
+    40,
+    0
+   ],
+   "params": {
+    "height": 24
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#1b7a43",
+     "#ffffff"
+    ],
+    "count": 2
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -58,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 116,
+    "height": 2.4,
+    "colour": "#d3cfc5",
+    "pillarEvery": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     60,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stand, admin block and masts typed from the brief; stand placement not tuned against any evidence."
+ }
+}

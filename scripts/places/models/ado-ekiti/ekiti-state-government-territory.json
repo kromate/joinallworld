@@ -1,0 +1,289 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "ekiti-state-government-territory",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ado-ekiti.json",
+   "used": "U-plan columned two-storey government house, tile hip roofs, flagpoles, gate and fenced forecourt from typed brief (no photo, no OSM)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 8,
+  "fovDeg": 52,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     44,
+     22
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#c9b79a",
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-l",
+   "footprint": {
+    "rect": [
+     20,
+     40
+    ]
+   },
+   "at": [
+    -34,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#c9b79a",
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-r",
+   "footprint": {
+    "rect": [
+     20,
+     40
+    ]
+   },
+   "at": [
+    34,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2eee0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#c9b79a",
+    "cornice": true,
+    "bay": 5,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/portico",
+   "at": [
+    0,
+    -5.5,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 5,
+    "height": 10,
+    "columns": 8,
+    "pediment": true,
+    "steps": 5,
+    "colour": "#ffffff",
+    "roofColour": "#8a4a3a"
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -34,
+    -20.5,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 6,
+    "height": 8,
+    "colour": "#ffffff",
+    "roofColour": "#f2eee0",
+    "roofDepth": 2.5
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    34,
+    -20.5,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 6,
+    "height": 8,
+    "colour": "#ffffff",
+    "roofColour": "#f2eee0",
+    "roofDepth": 2.5
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 4,
+    "spacing": 8,
+    "colours": [
+     "#1b7a43",
+     "#f2f2f2",
+     "#1b7a43",
+     "#2a5db0"
+    ]
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 4.5,
+    "pillar": 1.4,
+    "leaf": "bars",
+    "arch": true,
+    "colour": "#f2eee0"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -45,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 12,
+    "colour": "#f2eee0",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      33,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    12,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 12,
+    "colour": "#f2eee0",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      33,
+      0
+     ]
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 16,
+  "trees": 0,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM outline exists for this place; massing, colours and elements are typed from the brief and the city style only."
+ }
+}

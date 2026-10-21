@@ -1,0 +1,259 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "national-gallery-art-museum-umuahia",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1276407602",
+   "used": "real outline (containing match, 414 m2 skewed rectangle) for the main block; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true
+   },
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d0",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    },
+    "plinth": 0.5,
+    "bands": "#6e8aa0"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#aaa9a3",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-bay",
+   "footprint": {
+    "rect": [
+     7,
+     3
+    ]
+   },
+   "at": [
+    -1,
+    -11
+   ],
+   "rotDeg": -14,
+   "z0": 0,
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6e8aa0",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "overhang": 0.5,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -1,
+    -14.5
+   ],
+   "rotDeg": -14,
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.5,
+    "count": 3,
+    "colour": "#c8c4bb"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-panel",
+   "at": [
+    10,
+    -9
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.3
+    ],
+    "z0": 0.5,
+    "height": 5,
+    "colour": "#c9884a",
+    "topColour": "#c9884a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-a",
+   "at": [
+    -14,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#d9d4c8",
+    "topColour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-b",
+   "at": [
+    16,
+    -20
+   ],
+   "params": {
+    "rect": [
+     1.2,
+     1.2
+    ],
+    "z0": 0,
+    "height": 1.4,
+    "colour": "#d9d4c8",
+    "topColour": "#d9d4c8"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -20,
+    1.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#3a3a38",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.4,
+      1.8
+     ],
+     [
+      0.3,
+      2.4
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    16,
+    -20,
+    1.4
+   ],
+   "params": {
+    "segments": 8,
+    "colour": "#7a5a3a",
+    "profile": [
+     [
+      0.5,
+      0
+     ],
+     [
+      0.4,
+      1.8
+     ],
+     [
+      0.3,
+      2.4
+     ],
+     [
+      0,
+      2.6
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "flagpole",
+   "at": [
+    8,
+    -16
+   ],
+   "params": {
+    "rect": [
+     0.15,
+     0.15
+    ],
+    "z0": 0,
+    "height": 8,
+    "colour": "#cccccc",
+    "topColour": "#cccccc"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -4
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; OSM outline plus brief; mural, glazed bay and statues are from text."
+ }
+}

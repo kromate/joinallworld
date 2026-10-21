@@ -1,0 +1,495 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "enugu",
+ "venueId": "akanu-ibiam-international-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Akanu_Ibiam_International_Airport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "TheSokks",
+   "view": "front",
+   "file": "/tmp/places-evidence/enugu/ap1.jpg",
+   "used": "long two-storey terminal: glazed ground floor with diagonal struts, white panelled upper band, thick dark grey sloping roof fascia, dark central entrance block with blank sign, low dark right annex, tall floodlight poles"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Akanu_Ibiam_International_Airport_-2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "TheSokks",
+   "view": "front",
+   "file": "/tmp/places-evidence/enugu/ap2.jpg",
+   "used": "second view of the same facade, proportions and strut rhythm"
+  }
+ ],
+ "camera": {
+  "yawDeg": -26,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": -0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-glazing",
+   "footprint": {
+    "rect": [
+     116,
+     26
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "height": 5.4,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#b9bec0",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "plinth": 0.3,
+    "glassColour": "#27303a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-white",
+   "footprint": {
+    "rect": [
+     116,
+     26
+    ]
+   },
+   "at": [
+    2,
+    0
+   ],
+   "z0": 5.4,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#ecedec",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": {
+     "type": "floors",
+     "faces": [
+      "front"
+     ],
+     "colours": [
+      "#eeeeec",
+      "#e0e2e1"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a5156",
+    "parapet": 0.1
+   }
+  },
+  {
+   "type": "loft",
+   "id": "fascia",
+   "params": {
+    "sections": [
+     {
+      "z": 10.6,
+      "rect": [
+       122,
+       31
+      ],
+      "cy": -0.5,
+      "colour": "#41484d"
+     },
+     {
+      "z": 13.2,
+      "rect": [
+       122,
+       22
+      ],
+      "cy": 3.0,
+      "colour": "#4a5156"
+     }
+    ],
+    "colour": "#454c51",
+    "topColour": "#4a5156"
+   },
+   "at": [
+    2,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "porch2",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    24,
+    -15.5
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a5156",
+    "windows": "curtain",
+    "windowRatio": 0.5,
+    "glassColour": "#232b31",
+    "faces": {
+     "front": "curtain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4146",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-block",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -8,
+    -17
+   ],
+   "height": 6.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a5156",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "curtain"
+    },
+    "plinth": 0.2,
+    "glassColour": "#232b31"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4146",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     16,
+     18
+    ]
+   },
+   "at": [
+    76,
+    -2
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a5156",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "faces": {
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3a4146",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -50,
+     -17.5,
+     0
+    ],
+    "end": [
+     44,
+     -17.5,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "sweep-path",
+     "params": {
+      "section": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "points": [
+       [
+        0,
+        0,
+        0
+       ],
+       [
+        3,
+        4.6,
+        10.6
+       ]
+      ],
+      "colour": "#c9cdce"
+     }
+    }
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -8,
+    -21.8,
+    4.9
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.2,
+    "colour": "#f3f3f0"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    20,
+    -14.4,
+    9.2
+   ],
+   "params": {
+    "width": 30,
+    "height": 1.0,
+    "colour": "#2f7d5b"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -2,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#f5f5f2",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -30,
+     -34,
+     0
+    ],
+    "end": [
+     70,
+     -34,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "sweep-path",
+      "params": {
+       "section": {
+        "rect": [
+         0.7,
+         0.7
+        ]
+       },
+       "points": [
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         30
+        ]
+       ],
+       "colour": "#b9bdbf"
+      }
+     },
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        3.5,
+        1
+       ],
+       "z0": 30,
+       "height": 1.6,
+       "colour": "#3a3f43"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron",
+   "params": {
+    "rect": [
+     118,
+     34
+    ],
+    "z0": 0,
+    "height": 0.08,
+    "colour": "#a8a69f"
+   },
+   "at": [
+    2,
+    -38
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "kerb-black",
+   "params": {
+    "rect": [
+     116,
+     0.7
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#1d1f21"
+   },
+   "at": [
+    2,
+    -23
+   ]
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -54,
+     -23,
+     0
+    ],
+    "end": [
+     58,
+     -23,
+     0
+    ],
+    "count": 22,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       3,
+       0.72
+      ],
+      "z0": 0,
+      "height": 0.22,
+      "colour": "#f2f2f0"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "id": "taxi-line",
+   "params": {
+    "section": {
+     "rect": [
+      0.6,
+      0.06
+     ]
+    },
+    "points": [
+     [
+      20,
+      -60,
+      0.1
+     ],
+     [
+      40,
+      -46,
+      0.1
+     ],
+     [
+      56,
+      -44,
+      0.1
+     ],
+     [
+      60,
+      -50,
+      0.1
+     ]
+    ],
+    "curve": true,
+    "colour": "#e3b620"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   124,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper band still renders slightly glossy blue-white; framing still wider than photo (camera fit includes site); lamp clusters are single heads; no raised struts at wall top"
+ }
+}

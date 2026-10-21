@@ -1,0 +1,1770 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "santo-domingo",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "santo-domingo",
+    "climate": "tropical-maritime",
+    "vernacular": "Humid tropical Caribbean capital: reinforced-concrete frame and hollow-block buildings with flat roofs (often with rooftop water tanks and rebar stubs), painted in cream, ochre, pastel green and white; louvred jalousie windows and balconies; a 16th-century Colonial City of golden coral limestone and masonry (cathedral, forts, palaces) with clay-tile roofs; mid-century modernist concrete civic buildings; glass mid-rise towers on the Malecon and Piantini; corrugated zinc sheet roofs on lower-income housing; royal palms and almond trees.",
+    "wallColours": [
+      "#e8dcc0",
+      "#d6b46e",
+      "#f1efe6",
+      "#c9a77a",
+      "#9fc3b0",
+      "#d0c8b4",
+      "#b9b5ab"
+    ],
+    "roofColours": [
+      "#9b978c",
+      "#a6522f",
+      "#8c8f90",
+      "#b44a3c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "whitewash",
+      "limestone",
+      "glass-curtain",
+      "exposed-concrete",
+      "stone"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "corrugated",
+      "clay-tile",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial City coral-limestone arches, Gothic-Plateresque portals and battlements; louvred jalousie windows; concrete balconies with metal railings; pastel painted bands on shop-fronts; monumental concrete forms such as the cross-shaped Columbus Lighthouse.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Cathedral_of_Santo_Domingo",
+        "what": "golden coral limestone Gothic cathedral, brick and masonry walls, battlemented atrium"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_the_Dominican_Republic",
+        "what": "Colonial City contains the first cathedral, palace, monastery and fortress of the Americas"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Columbus_Lighthouse",
+        "what": "reinforced-concrete monumental modernism, 1992"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Santo_Domingo_Dominican_Republic_Temple",
+        "what": "white granite modern temple among palms"
+      }
+    ]
+  },
+  "places": {
+    "santo-domingo-airport-santo-domingo-airport": {
+      "venueId": "santo-domingo-airport-santo-domingo-airport",
+      "city": "santo-domingo",
+      "name": "Las Américas International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Las Américas terminal complex (Terminals A and B with their concourse fingers) seen from the departures forecourt",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 420,
+        "depth_m": 150,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "concourse-fingers",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d6cc",
+          "#6f8896",
+          "#f2f0ea"
+        ],
+        "roofColour": "#b8b6ae",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 9,
+          "note": "Terminal A concourse gates A2-A6 plus concourse B gates B1-B4"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "separate tower; not described in sources"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1959, extended 2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Las_Am%C3%A9ricas_International_Airport",
+          "what": "two terminals A and B with five and four jet-bridge gates; opened 1959; original building described as modern-looking; new terminal due 2028"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/29491548",
+          "what": "OSM footprint measured: 421.1 x 151.7 m, area 34806 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1062676",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Facade colours and canopy form are typed (no source describes the exterior). The OSM terminal footprint (421 x 152 m) is measured and is wide and low with finger concourses. A new terminal is under construction (from 2025) but the model shows the existing terminals."
+    },
+    "santo-domingo-clinic": {
+      "venueId": "santo-domingo-clinic",
+      "city": "santo-domingo",
+      "name": "Plaza de la Salud",
+      "archetype": "hospital",
+      "subject": "Main block of Hospital General de la Plaza de la Salud, a large mid-rise medical campus opened in the 1990s",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e3da",
+          "#6d8fa6",
+          "#f4f4f0"
+        ],
+        "roofColour": "#bdbab2",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hospital_General_de_la_Plaza_de_la_Salud",
+          "what": "opened 1996/97 on a state-funded site shared with CEDIMAT, PAHO/WHO and the emergency operations centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/164695925",
+          "what": "OSM footprint measured: 548.7 x 448 m, area 179046 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5908446",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No source describes the exterior; typed as a mid-rise hospital block. The OSM site polygon (549 x 448 m) is the whole health campus, not one building."
+    },
+    "santo-domingo-community-notices": {
+      "venueId": "santo-domingo-community-notices",
+      "city": "santo-domingo",
+      "name": "Ministerio de Relaciones Exteriores",
+      "archetype": "civic-palace",
+      "subject": "Headquarters of the Ministry of External Relations (Estancia San Gerónimo, Av. Independencia) as a low government block with a flag line",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e9e2cf",
+          "#b7a47a",
+          "#ffffff"
+        ],
+        "roofColour": "#a9a59b",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ministry_of_External_Relations_(Dominican_Republic)",
+          "what": "headquarters named Estancia San Geronimo, Avenida Independencia 752; photo dated 2016, no appearance description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/327261539",
+          "what": "OSM footprint measured: 171.4 x 76.1 m, area 5989 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28344904",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No description of the building was found; typed from civic type and the measured L-shaped OSM footprint (171 x 76 m)."
+    },
+    "santo-domingo-community-voting-game": {
+      "venueId": "santo-domingo-community-voting-game",
+      "city": "santo-domingo",
+      "name": "Junta Distrito Municipal La Victoria",
+      "archetype": "civic-small",
+      "subject": "A small municipal district board office (Junta de Distrito) with a flag pole and blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4d7b5",
+          "#3d6fa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No facts or description found for this office; typed as a one-storey Dominican municipal office from the city style."
+    },
+    "santo-domingo-community-workshop": {
+      "venueId": "santo-domingo-community-workshop",
+      "city": "santo-domingo",
+      "name": "Instituto Tecnológico de Santo Domingo",
+      "archetype": "campus-block",
+      "subject": "INTEC campus main academic block: a three-storey concrete teaching building around a shaded courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd6c6",
+          "#8a9aa3",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Santo_Domingo_Institute_of_Technology",
+          "what": "private university founded 1972; the article does not describe the buildings"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/30087660",
+          "what": "OSM footprint measured: 495.5 x 103.5 m, area 29365 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6041601",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "University founded 1972; buildings not described in sources. The OSM campus outline is elongated (495 x 103 m); a typical block is shown."
+    },
+    "santo-domingo-market-game": {
+      "venueId": "santo-domingo-market-game",
+      "city": "santo-domingo",
+      "name": "Parador Ejecutivo",
+      "archetype": "restaurant",
+      "subject": "A roadside parador (rest stop with food stalls and parking) on the highway north-west of Santo Domingo",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8c98a",
+          "#a6522f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing findable about the building; the kind is a market but it is believed to be a roadside parador, so a restaurant archetype with a kiosk is typed from the city style."
+    },
+    "santo-domingo-meal-stop": {
+      "venueId": "santo-domingo-meal-stop",
+      "city": "santo-domingo",
+      "name": "Club Nautico Haina",
+      "archetype": "restaurant",
+      "subject": "A small waterfront yacht-club restaurant at Haina with a covered terrace and a short jetty",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "painted-render",
+        "colours": [
+          "#f2efe6",
+          "#2f6f9f",
+          "#ffffff"
+        ],
+        "roofColour": "#b44a3c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "short jetty"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1029864274",
+          "what": "OSM footprint measured: 16 x 15.8 m, area 253 m2"
+        }
+      ],
+      "notes": "OSM shows only a 16 x 16 m generic building at this point; appearance is typed as a one-storey Caribbean waterfront club."
+    },
+    "santo-domingo-osm-way-111187823": {
+      "venueId": "santo-domingo-osm-way-111187823",
+      "city": "santo-domingo",
+      "name": "Estadio Quisqueya",
+      "archetype": "stadium",
+      "subject": "Estadio Quisqueya Juan Marichal baseball park: two-tier horseshoe grandstand around the diamond with light towers and the green outfield wall",
+      "form": {
+        "footprint": "oval",
+        "width_m": 235,
+        "depth_m": 230,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "none",
+        "variant": "baseball-park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d3c6",
+          "#2f6b3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8e8e88",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 6,
+          "note": "first night-lit ballpark in the Dominican league (1955); tower count estimated"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "LED display"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1955, rebuilt 2007-2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Quisqueya_Juan_Marichal",
+          "what": "opened 1955 as Estadio Trujillo; architect Bienvenido Martinez Brea, modelled on Bobby Maduro Stadium in Miami; 13,186 baseball seats; outfield wall nicknamed Monstruo Verde (18 ft); LED scoreboard"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/111187823",
+          "what": "OSM footprint measured: 238.7 x 230.7 m, area 46855 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5400466",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Recognisable by the tall green outfield wall and light towers. Roof over the stands is not described and is omitted. Footprint measured from OSM (239 x 231 m)."
+    },
+    "santo-domingo-osm-way-1170357043": {
+      "venueId": "santo-domingo-osm-way-1170357043",
+      "city": "santo-domingo",
+      "name": "Parque Central de San Antonio de Guerra",
+      "archetype": "park-landscape",
+      "subject": "Small town central square with paths, a bandstand and shade trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 46,
+        "depth_m": 46,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc0",
+          "#7aa05a",
+          "#ffffff"
+        ],
+        "roofColour": "#a6522f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1170357043",
+          "what": "OSM footprint measured: 46 x 45.7 m, area 2102 m2"
+        }
+      ],
+      "notes": "No description found; typed as a small town plaza."
+    },
+    "santo-domingo-osm-way-222941453": {
+      "venueId": "santo-domingo-osm-way-222941453",
+      "city": "santo-domingo",
+      "name": "Hospital Infantil Robert Reid Cabral",
+      "archetype": "hospital",
+      "subject": "Children's hospital: a four-storey concrete-framed block with ward wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e5d8",
+          "#7fa3bf",
+          "#ffffff"
+        ],
+        "roofColour": "#b9b6ac",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q50036679",
+          "what": "paediatric hospital in Santo Domingo founded 1956"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/222941453",
+          "what": "OSM footprint measured: 140.5 x 130.8 m, area 10405 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q50036679",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Founded 1956; no description of the building found. Typed from the era and hospital type."
+    },
+    "santo-domingo-osm-way-250861349": {
+      "venueId": "santo-domingo-osm-way-250861349",
+      "city": "santo-domingo",
+      "name": "Autódromo Internacional de Las Américas",
+      "archetype": "stadium",
+      "subject": "Race circuit main grandstand and pit-lane building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "shed",
+        "variant": "race-circuit"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4d2cb",
+          "#7a7f85",
+          "#ffffff"
+        ],
+        "roofColour": "#9ea4a8",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "long cantilever roof over grandstand"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4826253",
+          "what": "paved racing circuit in the Dominican Republic"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/250861349",
+          "what": "OSM footprint measured: 1099.3 x 333.6 m, area 347021 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4826253",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The OSM circuit polygon is 1099 x 334 m; the model shows only the grandstand/pit building. Appearance typed because no description was reachable."
+    },
+    "santo-domingo-osm-way-250877911": {
+      "venueId": "santo-domingo-osm-way-250877911",
+      "city": "santo-domingo",
+      "name": "Universidad Nacional Pedro Henríquez Ureña (UNPHU)",
+      "archetype": "campus-block",
+      "subject": "UNPHU campus main academic building: a four-storey rendered block with covered walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1dccb",
+          "#b8402f",
+          "#ffffff"
+        ],
+        "roofColour": "#aaa59b",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1966 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894297",
+          "what": "public university founded 1966"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/250877911",
+          "what": "OSM footprint measured: 770.5 x 333.3 m, area 201546 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894297",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Campus polygon is 770 x 333 m; no building descriptions found."
+    },
+    "santo-domingo-osm-way-28809979": {
+      "venueId": "santo-domingo-osm-way-28809979",
+      "city": "santo-domingo",
+      "name": "Estadio Olímpico Félix Sánchez",
+      "archetype": "stadium",
+      "subject": "The open-air Olympic stadium bowl with a single tier of seats, floodlight masts and scoreboard",
+      "form": {
+        "footprint": "oval",
+        "width_m": 225,
+        "depth_m": 176,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "none",
+        "variant": "athletics-bowl"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d1c6",
+          "#3b5f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#9b978c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "LED display"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1974, renovated 2003, 2010, 2022-2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/F%C3%A9lix_S%C3%A1nchez_Olympic_Stadium",
+          "what": "open-air multipurpose stadium, opened 1974, 24,863 seats, artificial turf, LED scoreboard, presidential box; renovated several times"
+        },
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Ol%C3%ADmpico_Juan_Pablo_Duarte",
+          "what": "main stadium of the Centro Olimpico Juan Pablo Duarte"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28809979",
+          "what": "OSM footprint measured: 225.5 x 176.4 m, area 13092 m2, height tag 15 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q770641",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "OSM building height tag 15 m. Seating colours are not documented; the grey/blue palette is typed."
+    },
+    "santo-domingo-osm-way-300113579": {
+      "venueId": "santo-domingo-osm-way-300113579",
+      "city": "santo-domingo",
+      "name": "Pabellón de la Fama del Deporte Dominicano",
+      "archetype": "museum-theatre",
+      "subject": "Small sports hall of fame museum and auditorium inside the Olympic Centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 49,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4d6",
+          "#5d7f96",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2012",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Pabell%C3%B3n_de_la_Fama_del_Deporte_Dominicano",
+          "what": "hall of fame, sports museum and auditorium; founded 1967; current auditorium on Avenida Ortega y Gasset since 2012"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/300113579",
+          "what": "OSM footprint measured: 48.8 x 32.2 m, area 1215 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21281842",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Building appearance not described; typed from a hall-of-fame/auditorium building."
+    },
+    "santo-domingo-osm-way-316141824": {
+      "venueId": "santo-domingo-osm-way-316141824",
+      "city": "santo-domingo",
+      "name": "Templo de Santo Domingo (LDS)",
+      "archetype": "church-modern",
+      "subject": "The Santo Domingo Dominican Republic Temple: white granite temple with a single square entrance tower topped by an angel statue, tall arched windows, palms on a landscaped rise",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "single-spire-temple"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#ece9e1",
+          "#c7c2b6",
+          "#ffffff"
+        ],
+        "roofColour": "#7d8588",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "square-based central tower topped by an angel Moroni statue; tower height not given"
+        },
+        {
+          "id": "arches",
+          "count": 6,
+          "note": "tall arched windows"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2000",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Santo_Domingo_Dominican_Republic_Temple",
+          "what": "classic modern design, single entrance tower topped by angel Moroni statue, Regina white granite, 67,000 sq ft, tall arched windows, 6.42-acre elevated landscaped site with palms, dedicated 2000"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/316141824",
+          "what": "OSM footprint measured: 71.2 x 60.4 m, area 2732 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3844709",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "The roof colour and exact tower height are not in sources and are typed. The white granite and the single tower with statue are the recognisable features."
+    },
+    "santo-domingo-osm-way-338342953": {
+      "venueId": "santo-domingo-osm-way-338342953",
+      "city": "santo-domingo",
+      "name": "Universidad Católica Santo Domingo (UCSD)",
+      "archetype": "campus-block",
+      "subject": "Catholic university campus teaching block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfcc",
+          "#4d7a9a",
+          "#ffffff"
+        ],
+        "roofColour": "#aeaaa0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2120374",
+          "what": "university founded 1982"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/338342953",
+          "what": "OSM footprint measured: 340.1 x 282.2 m, area 60949 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2120374",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Founded 1982; no building description found, typed."
+    },
+    "santo-domingo-osm-way-358599439": {
+      "venueId": "santo-domingo-osm-way-358599439",
+      "city": "santo-domingo",
+      "name": "Centro Olímpico Juan Pablo Duarte",
+      "archetype": "park-landscape",
+      "subject": "Multi-sport Olympic park (about 620,000 m2) of pavilions, courts, a velodrome and pool set among planted trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 450,
+        "depth_m": 320,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "sports-complex"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d4c8",
+          "#4a7a4e",
+          "#ffffff"
+        ],
+        "roofColour": "#9b978c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 4,
+          "note": "volleyball, gymnastics, combat sports and fencing pavilions"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1974 onwards",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Ol%C3%ADmpico_Juan_Pablo_Duarte",
+          "what": "multi-sport park of about 620,000 m2 with stadium, sports palace, aquatic centre, velodrome, pavilions, courts; trees planted by volunteers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/358599439",
+          "what": "OSM footprint measured: 936.7 x 682.3 m, area 497816 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5062863",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Facility list is documented; building colours and styling are typed. The 120 m clamp means the model shows a cluster of pavilions rather than the whole park."
+    },
+    "santo-domingo-osm-way-378243851": {
+      "venueId": "santo-domingo-osm-way-378243851",
+      "city": "santo-domingo",
+      "name": "Centro de Medicina Avanzada Dr. Abel González",
+      "archetype": "hospital",
+      "subject": "Private advanced medicine centre: a four-storey glazed clinic block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#cdd7dc",
+          "#e8e4d8",
+          "#ffffff"
+        ],
+        "roofColour": "#b6b3aa",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q107519298",
+          "what": "healthcare organisation in Santo Domingo"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/378243851",
+          "what": "OSM footprint measured: 133.7 x 83.2 m, area 8282 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q107519298",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "No description found; typed from type and measured OSM footprint (134 x 83 m)."
+    },
+    "santo-domingo-osm-way-410061868": {
+      "venueId": "santo-domingo-osm-way-410061868",
+      "city": "santo-domingo",
+      "name": "Universidad del Caribe",
+      "archetype": "campus-block",
+      "subject": "Single university building with rendered facades",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e4dfd0",
+          "#5c8aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#b0aca2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894336",
+          "what": "university in the Dominican Republic founded 1996"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/13729136",
+          "what": "OSM footprint measured: 72.1 x 68.8 m, area 4111 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894336",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Founded 1996; no description found; typed. OSM footprint 72 x 69 m."
+    },
+    "santo-domingo-osm-way-41565898": {
+      "venueId": "santo-domingo-osm-way-41565898",
+      "city": "santo-domingo",
+      "name": "Basílica Catedral Metropolitana Santa María de la Encarnación",
+      "archetype": "church-gothic",
+      "subject": "The Primate Cathedral of the Americas: a golden coral-limestone Gothic church with a Gothic-Plateresque west portal, battlemented atrium and no completed tower, on Parque Colón",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 54,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "gable",
+        "variant": "unfinished-tower",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d6b46e",
+          "#b99552",
+          "#8a7350"
+        ],
+        "roofColour": "#b3a58a",
+        "windows": "pointed-arch",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "battlemented atrium on the Plaza side"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "three entrance portals"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1512-1540",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Santo_Domingo",
+          "what": "Gothic, golden-tinted coral limestone front, Gothic-Plateresque entrance, 3 naves 54 m x 23 m and 16 m to vault, side chapels, battlemented atrium, bell tower halted in 1547"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Parque_Col%C3%B3n",
+          "what": "cathedral borders Parque Colon"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/41565898",
+          "what": "OSM footprint measured: 74 x 40.3 m, area 2521 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2391099",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Recognisable by the warm golden-ochre limestone and the lack of towers (the bell tower was never completed). Style is original late Gothic with Plateresque detail, not Gothic Revival (contract has no plain gothic id). Roof material is not described and is omitted."
+    },
+    "santo-domingo-osm-way-53622354": {
+      "venueId": "santo-domingo-osm-way-53622354",
+      "city": "santo-domingo",
+      "name": "Faro a Colón",
+      "archetype": "monument",
+      "subject": "The Columbus Lighthouse: a vast cross-shaped reinforced-concrete monument and mausoleum, shown from its long arm",
+      "form": {
+        "footprint": "cross",
+        "width_m": 210,
+        "depth_m": 59,
+        "storeys": 3,
+        "height_m": 30,
+        "roof": "flat",
+        "variant": "cross-monument"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "stone",
+        "colours": [
+          "#cbc6b8",
+          "#8f8a7c",
+          "#e8e4d8"
+        ],
+        "roofColour": "#9b978c",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 157,
+          "note": "beams projecting a cross of light into the sky"
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1992 (plans 1931)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Columbus_Lighthouse",
+          "what": "cross-shaped reinforced concrete monument about 210 x 59 m, designed by J. L. Gleave (plans 1931), completed 1992, 157 projected beams forming a cross"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/53622354",
+          "what": "OSM footprint measured: 208.7 x 51.8 m, area 4458 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2983646",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Height (about 30 m) is estimated from OSM building:levels=3 and is not in the cited text. The cross plan with a long arm is the whole identity of the place."
+    },
+    "santo-domingo-osm-way-80445127": {
+      "venueId": "santo-domingo-osm-way-80445127",
+      "city": "santo-domingo",
+      "name": "Museo del Hombre Dominicano",
+      "archetype": "museum-theatre",
+      "subject": "Museum of the Dominican Man: a three-floor concrete museum in the Plaza de la Cultura with statues at the entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 66,
+        "depth_m": 49,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#b9b5ab",
+          "#8b877e",
+          "#d8d4c9"
+        ],
+        "roofColour": "#a09c92",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "Bartolome de las Casas, Enriquillo and Lemba at the entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1973",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_del_Hombre_Dominicano",
+          "what": "designed by architect Jose Antonio Caro Alvarez, inaugurated 12 October 1973, three floors, statues of Las Casas, Enriquillo and Lemba at the entrance"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/80445127",
+          "what": "OSM footprint measured: 66.3 x 48.7 m, area 2892 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20018970",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Floors, architect and entrance statues are sourced; facade materials and colours are typed (1970s concrete culture-plaza building)."
+    },
+    "santo-domingo-quiet-reflection": {
+      "venueId": "santo-domingo-quiet-reflection",
+      "city": "santo-domingo",
+      "name": "Ministerios Casa De Zion",
+      "archetype": "church-modern",
+      "subject": "A small evangelical church hall with a gabled roof and a blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ece0",
+          "#3b5f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9093",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/464003751",
+          "what": "OSM footprint measured: 36.4 x 18.4 m, area 664 m2"
+        }
+      ],
+      "notes": "Typed from the small-church type and the measured OSM footprint (36 x 18 m)."
+    },
+    "santo-domingo-recreation": {
+      "venueId": "santo-domingo-recreation",
+      "city": "santo-domingo",
+      "name": "Parque Colón",
+      "archetype": "park-landscape",
+      "subject": "The central plaza of the Colonial City: a paved square with the Columbus statue on a plinth, shade trees, bordered by the cathedral and old palaces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 94,
+        "depth_m": 68,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "colonial-plaza"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#cfc7b3",
+          "#8a7b55",
+          "#6b8f5a"
+        ],
+        "roofColour": "#b3a58a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Columbus statue on a plinth, pointing north"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "colonial square, 19th-century statue",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parque_Col%C3%B3n",
+          "what": "statue of Columbus (French sculptor E. Gilbert) at the centre; bust of Bartholomew Columbus; bordered by the cathedral, Palacio Borgella and Palacio Consistorial"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28101419",
+          "what": "OSM footprint measured: 94.3 x 67.6 m, area 5598 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7139633",
+          "what": "Wikidata item matched to the venue coordinates"
+        }
+      ],
+      "notes": "Statue date is not in the cited page. Building colours around the square are not described; the cathedral stands on the south side."
+    },
+    "santo-domingo-transit": {
+      "venueId": "santo-domingo-transit",
+      "city": "santo-domingo",
+      "name": "Amín Abel Hasbún",
+      "archetype": "transport-station",
+      "subject": "Santo Domingo Metro station entrance at street level with blank signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9ced1",
+          "#4f7a98",
+          "#f2f2f0"
+        ],
+        "roofColour": "#a9adb0",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2009-2013",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/413444672",
+          "what": "OSM footprint measured: 35.5 x 19.6 m, area 696 m2"
+        }
+      ],
+      "notes": "Identified from the name as a Santo Domingo Metro station; station design not researched, so a generic metro entrance is typed. OSM at the point is a 36 x 20 m 5-level commercial building."
+    }
+  }
+}

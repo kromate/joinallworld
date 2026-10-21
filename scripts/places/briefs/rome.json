@@ -1,0 +1,1513 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "rome",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "rome",
+    "climate": "mediterranean",
+    "vernacular": "The old centre is a dense layering of ochre, terracotta-red and cream stuccoed palazzi (four to six storeys) with green shutters, clay-tile roofs and baroque church fronts; travertine and tuff ancient masonry; Roman brick aqueducts; 1930s white travertine and marble Fascist-era EUR and Foro Italico buildings; the suburbs are post-war 6-9 storey blocks in cream and tan render, with umbrella pines, cypresses and plane trees.",
+    "wallColours": [
+      "#d9a85f",
+      "#a8593d",
+      "#e3d9c2",
+      "#ecdcb8",
+      "#c98a6b",
+      "#8d8577",
+      "#eeeae0"
+    ],
+    "roofColours": [
+      "#a65a3a",
+      "#8c4a30",
+      "#b87456",
+      "#7a7068"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "limestone",
+      "brick",
+      "marble",
+      "stone",
+      "render"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "copper",
+      "concrete",
+      "membrane",
+      "slate"
+    ],
+    "ground": "cobble",
+    "vegetation": [
+      "conifer",
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Baroque pediments, aedicules and volutes on church fronts; travertine cornices and rustication; green wooden shutters; Cosmatesque marble floors; obelisks and fountains in piazzas; Roman brick-and-tuff arches; monumental statues and plain white travertine arches in 1930s Fascist architecture.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Rome",
+        "what": "ancient concrete and brick, Romanesque basilicas, Renaissance, Baroque with obelisk squares, Neoclassical after 1870, Fascist EUR by Piacentini 1938"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Stadio_dei_Marmi",
+        "what": "white Carrara marble architecture and sixty statues, 1932"
+      },
+      {
+        "url": "https://it.wikipedia.org/wiki/Palazzo_Orsini_(Monterotondo)",
+        "what": "medieval-Renaissance-Baroque palace with tower and octagonal courtyard columns"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Villa_Mondragone",
+        "what": "late 16th-century Castelli Romani hilltop villa"
+      }
+    ]
+  },
+  "places": {
+    "rome-airport-rome-airport": {
+      "venueId": "rome-airport-rome-airport",
+      "city": "rome",
+      "name": "Rome-Fiumicino Leonardo da Vinci International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the Fiumicino terminal complex seen from the landside: a very wide, low glass-and-metal terminal block with piers and satellite buildings on the airfield side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 320,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 3,
+        "variant": "multi-pier"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe4e6",
+          "#4f6f8c",
+          "#f2f2ef"
+        ],
+        "roofColour": "#b8bdc0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 20,
+          "note": "many boarding bridges across Pier A and the satellites"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1961, terminals rebuilt 1990s-2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci%E2%80%93Fiumicino_Airport",
+          "what": "Terminal 1 with new three-storey boarding area and Pier A (13 boarding + 10 remote gates), Terminal 3 largest terminal incorporating former T5 and a satellite for non-Schengen departures, SkyBridge people mover since 1999, control tower photo 2015"
+        }
+      ],
+      "notes": "Terminal organisation is sourced; the facade is not described, so the glass-and-metal look and pale colours are inferred. Show the biggest recognisable portion (T3 front) clamped to the 120 m limit. Umbrella pines around the access roads."
+    },
+    "rome-clinic": {
+      "venueId": "rome-clinic",
+      "city": "rome",
+      "name": "Ospedale Sant'Andrea",
+      "archetype": "hospital",
+      "subject": "the large university hospital on Via di Grottarossa: tall rendered ward blocks with ribbon windows and a covered entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 55,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e4ddcc",
+          "#9c8f78",
+          "#cfc8b8"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "assumed rooftop helipad"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. The Italian Wikipedia page was not found, so no description was retrieved. Height and layout are estimates for a major teaching hospital."
+    },
+    "rome-community-notices": {
+      "venueId": "rome-community-notices",
+      "city": "rome",
+      "name": "Palazzo Orsini",
+      "archetype": "civic-palace",
+      "subject": "Palazzo Orsini-Barberini in Monterotondo, the town hall: a medieval-Renaissance-Baroque fortified palace with a tall tower over its main courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "castle-palace"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d8b27a",
+          "#9c8566",
+          "#efe3c8"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2,
+          "note": "Cortile Grande and Cortile del Pozzo"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "tall tower on the southeast side, the town emblem; clock assumed"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "medieval fortified parts, assumed"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "octagonal columns in the courtyard"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "13th century, Baroque works 1626",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://it.wikipedia.org/wiki/Palazzo_Orsini_(Monterotondo)",
+          "what": "Piazza Angelo Frammartino 4; 1286 first record; Renaissance decoration late 16th c.; Barberini baroque works from 1626; two entrances to Cortile Grande with a tall tower on the SE as the town emblem; octagonal courtyard columns with Orsini and Barberini arms; second courtyard with 16th-c marble cistern; combines medieval, Renaissance and Baroque; seat of the municipality since 1890"
+        }
+      ],
+      "notes": "Layout elements are sourced; facade colour (warm ochre stucco) and dimensions are inferred. The tall tower on the courtyard side is the recognisable feature."
+    },
+    "rome-community-voting-game": {
+      "venueId": "rome-community-voting-game",
+      "city": "rome",
+      "name": "Municipio Roma VI",
+      "archetype": "civic-small",
+      "subject": "the Municipio Roma VI seat in the eastern suburbs: a plain modern office-style block with a flag and forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0d6c0",
+          "#8c8577",
+          "#f1ece0"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. "
+    },
+    "rome-community-workshop": {
+      "venueId": "rome-community-workshop",
+      "city": "rome",
+      "name": "Villa Mondragone",
+      "archetype": "manor",
+      "subject": "Villa Mondragone above Frascati/Monte Porzio Catone: a huge late-Renaissance villa-palace on a hilltop, now a Tor Vergata university seat",
+      "form": {
+        "footprint": "U",
+        "width_m": 95,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "hilltop-palace-villa"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#dcb877",
+          "#a07a52",
+          "#eee2c2"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor loggia, assumed"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "garden fountain, assumed"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1573",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Villa_Mondragone",
+          "what": "Martino Longhi the Elder for Cardinal Altemps from 1573; hill about 416 m near ancient Tusculum, ~20 km SE of Rome; Jesuit college 1865-1953; sold to the university in 1981, seat of Tor Vergata"
+        }
+      ],
+      "notes": "Architect, date, hilltop setting and use are sourced; facade colours, loggia and garden features are from general knowledge of Roman Castelli villas. Cypress and pine park around it."
+    },
+    "rome-market-game": {
+      "venueId": "rome-market-game",
+      "city": "rome",
+      "name": "Porta di Roma",
+      "archetype": "mall",
+      "subject": "Porta di Roma, a very large shopping centre on the northeast edge of Rome with colonnaded pale facades and huge car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d6bb",
+          "#b5683f",
+          "#f3eee0"
+        ],
+        "roofColour": "#a8a49c",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "colonnaded promenade, assumed"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "2007",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. Wikipedia pages for the centre returned 404. Dimensions are estimates for one of Rome's largest malls."
+    },
+    "rome-meal-stop": {
+      "venueId": "rome-meal-stop",
+      "city": "rome",
+      "name": "Cencio la Parolaccia",
+      "archetype": "restaurant",
+      "subject": "a Trastevere trattoria on the ground floor of a four-storey ochre townhouse with outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9a85f",
+          "#4d6b4a",
+          "#efe3c8"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "18th-19th century building",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. Green shutters and ochre render are typical of Trastevere."
+    },
+    "rome-osm-node-1172691363": {
+      "venueId": "rome-osm-node-1172691363",
+      "city": "rome",
+      "name": "Babington's",
+      "archetype": "restaurant",
+      "subject": "the tea room at the foot of the Spanish Steps on Piazza di Spagna: a tall rose-ochre building with a plain shopfront and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 14,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#d98f6b",
+          "#9c4a35",
+          "#efe3c8"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "Spanish Steps adjacent"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1893 tea room",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. The Wikipedia page for the tea rooms returned 404; only well-known setting (Piazza di Spagna, rose-ochre Roman palazzo, Spanish Steps) used."
+    },
+    "rome-osm-node-618491090": {
+      "venueId": "rome-osm-node-618491090",
+      "city": "rome",
+      "name": "Galeria",
+      "archetype": "heritage-fort",
+      "subject": "Galeria Antica: the ruins of an abandoned tuff-stone hill village, broken walls and a roofless church tower",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "ruined-village"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8f8672",
+          "#6f6a58",
+          "#b8ad94"
+        ],
+        "roofColour": "#6f6a58",
+        "windows": "punched",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "ruined walls"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "ruined church tower, assumed"
+        },
+        {
+          "id": "arches",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval, abandoned 1809",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. Identification as Galeria Antica (abandoned medieval village on the Rome-Viterbo edge) is from the coordinates and name, not from a fetched page."
+    },
+    "rome-osm-node-8413119694": {
+      "venueId": "rome-osm-node-8413119694",
+      "city": "rome",
+      "name": "Castel Savello",
+      "archetype": "heritage-fort",
+      "subject": "the broken tuff walls of Castel Savello on its hill: irregular ruined curtain walls and tower stumps, no roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a806c",
+          "#6b6454",
+          "#b3a88e"
+        ],
+        "roofColour": "#6b6454",
+        "windows": "punched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "ruined curtain walls"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "partial, assumed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "13th century, razed 1435",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Castel_Savello",
+          "what": "built 13th century under Honorius III/IV by the Savelli family, razed by cardinal Vitelleschi in 1435 and never rebuilt; ruins on Monte Savello near Albano Laziale"
+        }
+      ],
+      "notes": "Date and ruined state sourced; wall shape and colours are inferred (volcanic tuff). Overgrown with scrub; keep it low and broken, unlike the intact Orsini palace."
+    },
+    "rome-osm-relation-11558912": {
+      "venueId": "rome-osm-relation-11558912",
+      "city": "rome",
+      "name": "Parco degli Acquedotti",
+      "archetype": "park-landscape",
+      "subject": "Parco degli Acquedotti: open meadows crossed by tall rows of Roman brick-and-tuff aqueduct arches, with umbrella pines",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 22,
+        "roof": "none",
+        "variant": "aqueduct-park"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#a6784f",
+          "#8c8272",
+          "#c9b99a"
+        ],
+        "roofColour": "#8c8272",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 20,
+          "note": "two rows of aqueduct arches (Aqua Claudia, Anio Novus) about 20+ m tall"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Roman, 1st century AD",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page was retrieved. Described from general knowledge: broken lines of tall Roman arches in brick and tuff across open grass. Treat arch count and height as estimates."
+    },
+    "rome-osm-relation-1517075": {
+      "venueId": "rome-osm-relation-1517075",
+      "city": "rome",
+      "name": "International University of Rome",
+      "archetype": "campus-block",
+      "subject": "UNINT, a university in a multi-storey rendered block on the Via Cristoforo Colombo",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 28,
+        "storeys": 6,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e1d6bd",
+          "#7a6a52",
+          "#f1ece0"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. "
+    },
+    "rome-osm-relation-17854343": {
+      "venueId": "rome-osm-relation-17854343",
+      "city": "rome",
+      "name": "Pontificia Facoltà di Scienze dell'Educazione",
+      "archetype": "campus-block",
+      "subject": "a pontifical teaching faculty: a modest four-storey Church-run college block with a small chapel wing",
+      "form": {
+        "footprint": "L",
+        "width_m": 55,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e3c9a0",
+          "#a8593d",
+          "#efe9d8"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. "
+    },
+    "rome-osm-relation-1876703": {
+      "venueId": "rome-osm-relation-1876703",
+      "city": "rome",
+      "name": "Ospedale San Giovanni - Presidio Santa Maria",
+      "archetype": "hospital",
+      "subject": "a historic Roman hospital complex of long pavilion blocks with tiled roofs, near the Lateran",
+      "form": {
+        "footprint": "U",
+        "width_m": 110,
+        "depth_m": 50,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip",
+        "wings": 2,
+        "variant": "pavilion-hospital"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#dcb98a",
+          "#a8593d",
+          "#efe3c8"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. Different from Sant'Andrea (tall, modern) by being low, tiled and ochre."
+    },
+    "rome-osm-relation-2819550": {
+      "venueId": "rome-osm-relation-2819550",
+      "city": "rome",
+      "name": "Ippodromo di Tor di Valle",
+      "archetype": "stadium",
+      "subject": "the closed Tor di Valle racecourse: a long concrete grandstand with a cantilevered roof facing the oval track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 220,
+        "depth_m": 90,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "shed",
+        "variant": "racecourse-grandstand"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b5aa",
+          "#6f6a60",
+          "#e0ddd4"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cantilevered grandstand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "track rail"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1959",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ippodromo_di_Tor_di_Valle",
+          "what": "one of the biggest racecourses in Europe with racetrack and training track, closed 2013 for the AS Roma stadium plan, project halted 2021; tribunes by Julio Lafuente per link title"
+        }
+      ],
+      "notes": "Concrete grandstand shape is from general knowledge of the 1959 Olympic-era tribune (Lafuente / Nervi school), not the fetched page. The building is disused; render slightly weathered."
+    },
+    "rome-osm-relation-6533345": {
+      "venueId": "rome-osm-relation-6533345",
+      "city": "rome",
+      "name": "Castello",
+      "archetype": "heritage-fort",
+      "subject": "a small medieval tuff-stone castle in the countryside south of Rome: a square keep with corner towers on a hill",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "none",
+        "variant": "keep-castle"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89c82",
+          "#7a7058",
+          "#cdc3a8"
+        ],
+        "roofColour": "#7a7058",
+        "windows": "punched",
+        "windowRatio": 0.04
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "ramparts",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "medieval",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. The venue name is just \"Castello\"; the real castle could not be identified from coordinates."
+    },
+    "rome-osm-way-23951383": {
+      "venueId": "rome-osm-way-23951383",
+      "city": "rome",
+      "name": "Stadio dei Marmi",
+      "archetype": "stadium",
+      "subject": "the white marble Stadio dei Marmi at the Foro Italico: a long open running arena ringed by tiers of white marble and a crown of sixty statues",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "open-marble-bowl"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#eeeae0",
+          "#c7c1b0",
+          "#f7f5ee"
+        ],
+        "roofColour": "#eeeae0",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 60,
+          "note": "sixty athletic statues, each about 4 m tall, ringing the top of the stands"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "marble terraced tiers"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1932",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stadio_dei_Marmi",
+          "what": "Enrico Del Debbio, opened 1932 in the Foro Mussolini complex begun 1928; capacity 5,280; plain white marble architecture; sixty Carrara marble athlete statues about 4 m tall by 24 sculptors"
+        }
+      ],
+      "notes": "The statue ring is the identifier. Track shape is long with rounded ends (not a perfect oval). Pale marble with a tan track and dark umbrella pines behind."
+    },
+    "rome-osm-way-27036246": {
+      "venueId": "rome-osm-way-27036246",
+      "city": "rome",
+      "name": "Ospedale San Filippo Neri",
+      "archetype": "hospital",
+      "subject": "a modern district hospital on Monte Mario's slope: tall rendered ward blocks with a covered entrance",
+      "form": {
+        "footprint": "T",
+        "width_m": 105,
+        "depth_m": 50,
+        "storeys": 8,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e5dcc8",
+          "#9c8f78",
+          "#c9c2b2"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.28
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. Slightly shorter and T-shaped to differ from Sant'Andrea."
+    },
+    "rome-osm-way-370461335": {
+      "venueId": "rome-osm-way-370461335",
+      "city": "rome",
+      "name": "LUISS",
+      "archetype": "campus-block",
+      "subject": "the LUISS Viale Pola campus: the 1930s Ciano residence, a pale rationalist villa-style block with a garden court",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e6d8b8",
+          "#b9ac90",
+          "#f4efe3"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.16
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "assumed entrance colonnade"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1930s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/LUISS",
+          "what": "Viale Pola main campus building was the 1930s residence of Count Galeazzo Ciano and Edda Mussolini, now rectorate; Via Parenzo law building by Pietro Aschieri 1929-31; Villa Blanc 2018"
+        }
+      ],
+      "notes": "Use and 1930s date sourced; style and colours inferred. The venue coordinates (Viale Pola) match the Ciano residence. Villa-like rather than a modern glass block."
+    },
+    "rome-osm-way-499070475": {
+      "venueId": "rome-osm-way-499070475",
+      "city": "rome",
+      "name": "Parrocchia Santa Maria e San Biagio",
+      "archetype": "church-classical",
+      "subject": "a small hill-town parish church with a plain stuccoed facade and a stone campanile",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e1c99a",
+          "#a09074",
+          "#efe6d0"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "17th-18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. "
+    },
+    "rome-osm-way-878963031": {
+      "venueId": "rome-osm-way-878963031",
+      "city": "rome",
+      "name": "Piazzale degli Eroi",
+      "archetype": "park-landscape",
+      "subject": "a paved square dedicated to heroes/fallen on a hillside, with trees and low walls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e3d9c2",
+          "#b9ac90",
+          "#f4efe3"
+        ],
+        "roofColour": "#8c8577",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. No monument is claimed; an obelisk or statue may exist."
+    },
+    "rome-osm-way-880583236": {
+      "venueId": "rome-osm-way-880583236",
+      "city": "rome",
+      "name": "Nuovo Santuario Divino Amore",
+      "archetype": "church-modern",
+      "subject": "the new Divino Amore sanctuary: a very large 1999 pilgrimage church of pale stone and concrete, with a broad forecourt, low-lying beneath the hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "pilgrimage-hall"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e6dfcd",
+          "#a8a090",
+          "#f3eee2"
+        ],
+        "roofColour": "#8c8a86",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tall free-standing campanile, assumed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "large pilgrim forecourt"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1996-1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://it.wikipedia.org/wiki/Santuario_della_Madonna_del_Divino_Amore",
+          "what": "new sanctuary by Padre Costantino Ruggeri, first stone 8 Jan 1996 by Card. Ruini, completed 1999 for the Jubilee, capacity over 1,500, at the foot of the hill outside the old walls; old Baroque sanctuary begun 1745 with miracle tower"
+        }
+      ],
+      "notes": "Architect, dates and capacity sourced; form and materials not described, so the pale stone/concrete look is inferred. Separate from the older 1745 Baroque sanctuary uphill, which is not shown."
+    },
+    "rome-quiet-reflection": {
+      "venueId": "rome-quiet-reflection",
+      "city": "rome",
+      "name": "Chiesa di Sant'Ippolito e Lucia a Porto",
+      "archetype": "shrine-small",
+      "subject": "a small church on the Isola Sacra near Fiumicino: a plain whitewashed nave with a stuccoed bell-gable",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "rural-church"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#eee7d4",
+          "#c9b99a",
+          "#f6f1e4"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bell-gable"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. The church was inferred from the name; no description was retrieved."
+    },
+    "rome-recreation": {
+      "venueId": "rome-recreation",
+      "city": "rome",
+      "name": "Parco Centrale del Lago",
+      "archetype": "park-landscape",
+      "subject": "the EUR lake park: lawns and plane trees around the artificial lake with Fascist-era white travertine buildings behind",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "lake-park"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "marble",
+        "colours": [
+          "#e3d9c2",
+          "#b9ac90",
+          "#f4efe3"
+        ],
+        "roofColour": "#d4ccb8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lake fountain, assumed"
+        },
+        {
+          "id": "pier",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "neoclassical",
+      "era": "1930s EUR",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Rome",
+          "what": "Fascist architecture 1922-43; EUR district designed in 1938 by Marcello Piacentini incl. Palazzo della Civilta Italiana"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the Rome city style and the place type. The lake is the water forecourt; only the EUR district context is sourced."
+    },
+    "rome-transit": {
+      "venueId": "rome-transit",
+      "city": "rome",
+      "name": "Roma Prenestina",
+      "archetype": "transport-station",
+      "subject": "Roma Prenestina railway station: a 1930s two-storey rendered station building with four platforms and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "variant": "station-building"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e1c99a",
+          "#b9ac90",
+          "#f1e8d2"
+        ],
+        "roofColour": "#a65a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2
+        },
+        {
+          "id": "rail-tracks",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "station clock, assumed"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1936-1939",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roma_Prenestina_railway_station",
+          "what": "current station opened 21 April 1939, building built 1936-38 to a design by engineer Paolo Perilli, four platforms, serves FL2 and Rome-Sulmona-Pescara line"
+        }
+      ],
+      "notes": "Date, designer and platform count sourced; colours and shape inferred from 1930s FS stations (plain stucco)."
+    }
+  }
+}

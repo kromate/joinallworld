@@ -1,0 +1,21 @@
+{
+ "schema": "allworld-place-model", "version": 2, "city": "maputo", "venueId": "maputo-community-workshop",
+ "verified": "footprint",
+ "evidence": [
+  {"kind": "osm", "ref": "way/245797539", "used": "real U-shaped outline (41 x 31 m, 849 m2); nearby UEM library/student-centre photos are different buildings and were not used"}
+ ],
+ "camera": {"yawDeg": 28, "pitchDeg": 20, "fovDeg": 50},
+ "parts": [
+  {"type": "mass", "id": "osm", "footprint": {"osm": true}, "at": [0, 0], "z0": 0, "height": 11.4, "storeys": 3,
+   "wall": {"material": "exposed-concrete", "colour": "#d9d4c8", "windows": "ribbon", "windowRatio": 0.35, "plinth": 0.4,
+            "pattern": [
+              {"type": "balconies", "faces": ["front"], "depth": 1.6, "rail": 1.0, "continuous": true, "railKind": "solid", "railColour": "#9fb7a8", "colour": "#cfc9bb", "floors": "upper"},
+              {"type": "louvres", "faces": ["left", "right"], "colour": "#9fb7a8", "backColour": "#bdb8aa", "floors": "all"}
+            ]},
+   "roof": {"form": "flat", "colour": "#7d8387", "material": "concrete", "parapet": 0.5}},
+  {"type": "core/steps", "at": [-10, -16, 0], "params": {"width": 6, "rise": 0.9, "run": 0.6, "count": 5, "colour": "#cfc9bb"}},
+  {"type": "core/tree", "at": [-18, -24, 0], "params": {"kind": "acacia", "height": 8, "count": 3, "spread": 36, "line": 1}}
+ ],
+ "site": {"ground": "asphalt", "forecourt": "garden", "extent": [70, 60]},
+ "review": {"rounds": 1, "match": "rough", "gaps": "no photo of this block: outline real; storeys, concrete walkway bands, louvre sides and colours follow the brief's UEM modernist description"}
+}

@@ -1,0 +1,1426 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "riga",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "riga",
+    "climate": "temperate",
+    "vernacular": "Baltic port city on the Daugava: a medieval Old Town of red-brick Gothic churches and ochre-stuccoed merchant houses with stepped gables; a huge belt of Art Nouveau apartment blocks (5-6 storeys, pastel render with sculpted faces); streets of 19th-century wooden houses with carved window frames; Soviet-era panel estates in grey and pastel; modern glass offices and malls. Pitched roofs of red clay tile or dark metal; Scots pine, birch and lime trees.",
+    "wallColours": [
+      "#d6b77a",
+      "#9a4a38",
+      "#b9b6ae",
+      "#c9b58f",
+      "#8b6a47",
+      "#e4dccb",
+      "#7c8794"
+    ],
+    "roofColours": [
+      "#9a4630",
+      "#6d7378",
+      "#4a4f57",
+      "#6f9a8a"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "render",
+      "red-brick",
+      "timber",
+      "concrete",
+      "glass-curtain",
+      "limestone"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "slate",
+      "copper",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Art Nouveau facades: sculpted faces and masks, floral and geometric reliefs, vertical Perpendicular composition, National Romantic folk-art motifs; stepped Gothic brick gables in the Old Town; carved wooden window frames and verandas on wooden houses; plain prefabricated panel facades with balcony bands on Soviet blocks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Art_Nouveau_architecture_in_Riga",
+        "what": "Eclectic, Perpendicular, National Romantic and Neo-Classical Art Nouveau phases; floral then geometric ornament; six-storey / 21.3 m height limit"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Riga",
+        "what": "historic centre with Art Nouveau and 19th-century wooden architecture; Riga Cathedral, St Peter's; post-1944 microdistrict apartment blocks"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Salaspils",
+        "what": "Soviet-era multi-storey housing blocks in microraion style near Riga"
+      }
+    ]
+  },
+  "places": {
+    "riga-airport-riga-airport": {
+      "venueId": "riga-airport-riga-airport",
+      "city": "riga",
+      "name": "Riga International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the two-storey Riga terminal seen from the forecourt with two long piers (B and C) and jet bridges on the airfield side",
+      "form": {
+        "footprint": "T",
+        "width_m": 210,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2,
+        "variant": "two-pier"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cdd6da",
+          "#3b4d61",
+          "#eef0f1"
+        ],
+        "roofColour": "#8d9499",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 16,
+          "note": "each pier has eight jet-bridge stands"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1973, expanded 2001-2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riga_International_Airport",
+          "what": "single two-storey terminal, upper floor check-in with 36 counters, piers B and C with eight jet-bridge stands each, opened 1973, modernised 2001, north extensions 2006 and 2016, control tower photo"
+        }
+      ],
+      "notes": "Structure and counts are sourced; the glass-and-metal facade colours are inferred from the extensions. Recognisable by two long parallel piers. Pine and birch trees around the apron."
+    },
+    "riga-clinic": {
+      "venueId": "riga-clinic",
+      "city": "riga",
+      "name": "Pauls Stradins Clinical University Hospital",
+      "archetype": "hospital",
+      "subject": "Latvia's largest hospital: the modern Block A wing with glass bands beside older pale-rendered pavilions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e6e0",
+          "#6f8fa8",
+          "#c8c4ba"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1910; new wing 2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pauls_Stradi%C5%86%C5%A1_Clinical_University_Hospital",
+          "what": "founded 1910 as 2nd Riga City Hospital, 840 beds, new wing Block A stage one opened 2017, second stage due 2026, teaching hospital of University of Latvia"
+        }
+      ],
+      "notes": "Only history and bed count are sourced; the building look is inferred (new block white render and glass, older buildings pale brick). A mix of eras is the distinctive trait."
+    },
+    "riga-community-notices": {
+      "venueId": "riga-community-notices",
+      "city": "riga",
+      "name": "Body of European Regulators for Electronic Communications",
+      "archetype": "office-low",
+      "subject": "BEREC office in a five-storey 19th-century city-centre block near the Esplanade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 22,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "mansard"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#d6c9a6",
+          "#8f7a5c",
+          "#efe9db"
+        ],
+        "roofColour": "#5d6165",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2,
+          "note": "EU flag assumed"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. The game labels it statehouse but it is an EU agency office; the inner-city boulevard setting suggests a stucco apartment/office block of the early 1900s."
+    },
+    "riga-community-voting-game": {
+      "venueId": "riga-community-voting-game",
+      "city": "riga",
+      "name": "Baumaņa skvērs",
+      "archetype": "park-landscape",
+      "subject": "Baumana square, a small city-centre green square with paths, trees and benches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 55,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#d6b77a",
+          "#8f4a35",
+          "#efe7d6"
+        ],
+        "roofColour": "#9a4630",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. No features claimed: render as lawn, paths and mature lime/maple trees only."
+    },
+    "riga-community-workshop": {
+      "venueId": "riga-community-workshop",
+      "city": "riga",
+      "name": "Rīgas Valsts tehnikums",
+      "archetype": "campus-block",
+      "subject": "a vocational school: a four-storey rendered block with a hipped tile roof",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 32,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "red-brick",
+        "colours": [
+          "#e0cfa6",
+          "#9a4a38",
+          "#efe9db"
+        ],
+        "roofColour": "#9a4630",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. "
+    },
+    "riga-market-game": {
+      "venueId": "riga-market-game",
+      "city": "riga",
+      "name": "Ozols",
+      "archetype": "shophouse",
+      "subject": "a small neighbourhood shop in a Soviet-era residential district on the east side of Riga",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9c4b6",
+          "#6f8f5a",
+          "#eceae2"
+        ],
+        "roofColour": "#6d7378",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Bare business name."
+    },
+    "riga-meal-stop": {
+      "venueId": "riga-meal-stop",
+      "city": "riga",
+      "name": "Briezes",
+      "archetype": "restaurant",
+      "subject": "a roadside country restaurant in a timber-and-render building amid pine forest",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#8b6a47",
+          "#d8cdb5",
+          "#efe9dc"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Rural Vidzeme setting east of Riga assumed from coordinates."
+    },
+    "riga-osm-node-5257943276": {
+      "venueId": "riga-osm-node-5257943276",
+      "city": "riga",
+      "name": "Daugavgrīvas cietoksnis",
+      "archetype": "heritage-fort",
+      "subject": "Daugavgriva fortress at the river mouth: low grassed earth bastions with brick casemates and a water moat",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 120,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "star-bastion-earthwork"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "stone",
+        "colours": [
+          "#8f5240",
+          "#7d7a62",
+          "#d8cdb5"
+        ],
+        "roofColour": "#6a5a4a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "grassed star-shaped earth bastions"
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "brick casemate arches, assumed"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "17th-19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The Wikipedia pages tried for this fort returned 404, so nothing was fetched. Form is typed from general knowledge of Baltic bastion forts (Dunamunde, Swedish/Russian era, Soviet naval use). Mostly earth and brick, low profile; do not give it tall towers."
+    },
+    "riga-osm-node-837991340": {
+      "venueId": "riga-osm-node-837991340",
+      "city": "riga",
+      "name": "Daugavas muzejs",
+      "archetype": "museum-theatre",
+      "subject": "the small Daugava Museum, a low rendered exhibition building near the river",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc2",
+          "#8b6a47",
+          "#f1ece0"
+        ],
+        "roofColour": "#7a3b2c",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Salaspils",
+          "what": "area is Salaspils on the Daugava with Soviet microraion housing and a river dam"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. "
+    },
+    "riga-osm-way-104407997": {
+      "venueId": "riga-osm-way-104407997",
+      "city": "riga",
+      "name": "Church of the Resurrection",
+      "archetype": "church-gothic",
+      "subject": "the Lutheran Resurrection church at the Great Cemetery: a red-brick Gothic-revival chapel-church with a pointed spire",
+      "form": {
+        "footprint": "cross",
+        "width_m": 32,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "variant": "cemetery-church"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "limestone",
+        "colours": [
+          "#8f4a3a",
+          "#cfc3a8",
+          "#e2d8c2"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.14
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "assumed"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1890-1891, rebuilt to 2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Church_of_the_Resurrection,_Riga",
+          "what": "Lutheran parish church; New Chapel of the Great Cemetery built 1890-91 by Karlis Neiburgers, destroyed in the 1960s, reconstruction finished and church consecrated 2000"
+        }
+      ],
+      "notes": "Identity and dates sourced; style, brick colour and spire are inferred from the 1890s date and Neiburgers's period. Set among old cemetery pines."
+    },
+    "riga-osm-way-1309603872": {
+      "venueId": "riga-osm-way-1309603872",
+      "city": "riga",
+      "name": "Dauderu parks",
+      "archetype": "park-landscape",
+      "subject": "Dauderi park: pine woodland with paths on the edge of Mezaparks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6a47",
+          "#d8cdb5",
+          "#efe9dc"
+        ],
+        "roofColour": "#7a3b2c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "assumed small shelter"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "nordic",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riga_Zoo",
+          "what": "adjacent Mezaparks neighbourhood and park on the west bank of Kisezers lake"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Heavily wooded with Scots pine as in the Mezaparks area."
+    },
+    "riga-osm-way-153019384": {
+      "venueId": "riga-osm-way-153019384",
+      "city": "riga",
+      "name": "Salaspils stadium",
+      "archetype": "stadium",
+      "subject": "a small-town football and athletics ground with a single roofed stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb9b0",
+          "#4f7aa6",
+          "#e5e2da"
+        ],
+        "roofColour": "#6d7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Smaller than Daugava Stadium: one low stand."
+    },
+    "riga-osm-way-25867450": {
+      "venueId": "riga-osm-way-25867450",
+      "city": "riga",
+      "name": "Spice",
+      "archetype": "mall",
+      "subject": "the Spice shopping centre in Riga's left-bank district, a wide three-level box with glazed entrances and a large car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d3c4",
+          "#d98a3c",
+          "#f0ede5"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Accent orange is a neutral guess, not a brand mark."
+    },
+    "riga-osm-way-37953112": {
+      "venueId": "riga-osm-way-37953112",
+      "city": "riga",
+      "name": "Domina Shopping",
+      "archetype": "mall",
+      "subject": "Domina Shopping, a large multi-level mall in northern Riga with a tall glazed entrance hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 160,
+        "depth_m": 80,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfcdc6",
+          "#2f5f86",
+          "#eeece6"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Taller and darker than Spice."
+    },
+    "riga-osm-way-380059745": {
+      "venueId": "riga-osm-way-380059745",
+      "city": "riga",
+      "name": "Rīga Stradiņš University",
+      "archetype": "campus-block",
+      "subject": "the university's Dzirciema campus: modern rendered and glazed teaching blocks in a green setting",
+      "form": {
+        "footprint": "L",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3e0d6",
+          "#7a3b2c",
+          "#cfcbbf"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1950-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riga_Stradi%C5%86%C5%A1_University",
+          "what": "main campus on Dzirciema iela, Anatomicum on Kronvalda bulvaris (former Orthodox seminary)"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. The photo of the main campus is not described in the article."
+    },
+    "riga-osm-way-38247112": {
+      "venueId": "riga-osm-way-38247112",
+      "city": "riga",
+      "name": "Xiaomi Arēna",
+      "archetype": "stadium",
+      "subject": "Arena Riga, the roofed multi-purpose indoor arena (hockey, basketball, concerts) with a large low box and a wide entrance plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 105,
+        "storeys": 4,
+        "height_m": 26,
+        "roof": "flat",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c8ccd0",
+          "#46536a",
+          "#eef0f1"
+        ],
+        "roofColour": "#7d848a",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "flat steel-truss roof over the bowl"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glazed entrance foyer"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arena_Riga",
+          "what": "up to 14,500 for concerts, 11,200 basketball, 10,300 ice hockey; built 2004-2006 by SCI Architects with SIA Merks and SIA Nams; built for the 2006 IIHF World Championship"
+        }
+      ],
+      "notes": "Capacity, architects and date are sourced; the exterior form and cladding colours are inferred. Sponsor name is not shown; render blank boards."
+    },
+    "riga-osm-way-385118270": {
+      "venueId": "riga-osm-way-385118270",
+      "city": "riga",
+      "name": "Turiba University",
+      "archetype": "campus-block",
+      "subject": "Turiba business university building: a five-storey rendered and glazed block on the south bank of the Daugava",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dad7cc",
+          "#2f5f86",
+          "#eceae2"
+        ],
+        "roofColour": "#8a8d90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.33
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. "
+    },
+    "riga-osm-way-406039559": {
+      "venueId": "riga-osm-way-406039559",
+      "city": "riga",
+      "name": "Olaines lutērāņu bāznca",
+      "archetype": "church-classical",
+      "subject": "a small Lutheran parish church in Olaine, a whitewashed nave with a short tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "red-brick",
+        "colours": [
+          "#ece6d6",
+          "#9a4a38",
+          "#d8d2c2"
+        ],
+        "roofColour": "#5d6165",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Olaine",
+          "what": "town named after St Olaf church of the Swedish period; modern Olaine grew around peat works from 1939"
+        }
+      ],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. The old St Olaf church stood in Jaunolaine; the actual building in this venue is not described."
+    },
+    "riga-osm-way-4469063": {
+      "venueId": "riga-osm-way-4469063",
+      "city": "riga",
+      "name": "Riga National Zoological Garden",
+      "archetype": "park-landscape",
+      "subject": "Riga Zoo in Mezaparks: pine-wooded grounds with animal houses, enclosures and paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 160,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "zoo"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "red-brick",
+        "colours": [
+          "#8b6a47",
+          "#9a4a38",
+          "#efe9dc"
+        ],
+        "roofColour": "#7a3b2c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "animal houses, e.g. flamingo / bear house, giraffe house"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "nordic",
+      "era": "1912",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riga_Zoo",
+          "what": "16.4 ha in Mezaparks on the west bank of Kisezers; opened 14 Oct 1912; flamingo and bear houses 1980-85; aquarium 1950; giraffe house 2007; African savannah 2019"
+        }
+      ],
+      "notes": "Area and building list sourced; shown as a woodland site with low animal houses and fenced yards. Entrance look not described."
+    },
+    "riga-osm-way-476926467": {
+      "venueId": "riga-osm-way-476926467",
+      "city": "riga",
+      "name": "Daugava Stadium",
+      "archetype": "stadium",
+      "subject": "Daugava Stadium, Latvia's national football stadium: a renovated west stand and new stands behind the goals",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c4c1b8",
+          "#7a1f2b",
+          "#eceae3"
+        ],
+        "roofColour": "#6d7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered west stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1,
+          "note": "electronic scoreboard installed 2018"
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1927, renovated 2017-2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daugava_Stadium_(Riga)",
+          "what": "10,461 seats; first stadium 1927; stands behind goals rebuilt; west stand renovated with indoor athletics, conference rooms, VIP; scoreboard 2018; grass pitch, athletics track; largest in Latvia"
+        }
+      ],
+      "notes": "Stand configuration sourced; roof over the west terrace was only planned. Seat colour (maroon, from the Latvian flag) and light pylons are assumptions."
+    },
+    "riga-osm-way-479748207": {
+      "venueId": "riga-osm-way-479748207",
+      "city": "riga",
+      "name": "RSU Sporta akadēmija",
+      "archetype": "campus-block",
+      "subject": "the RSU sports academy: a plain two-storey sports hall with a long flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "sports-hall"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c4c1b8",
+          "#4f7aa6",
+          "#e5e2da"
+        ],
+        "roofColour": "#7d848a",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. "
+    },
+    "riga-osm-way-976058477": {
+      "venueId": "riga-osm-way-976058477",
+      "city": "riga",
+      "name": "Riga Aviation Museum",
+      "archetype": "park-landscape",
+      "subject": "the open-air aircraft park beside the airport: Soviet jets and helicopters standing on grass and apron near a hangar",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "aircraft-field"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#a9b0b5",
+          "#6d7378",
+          "#e5e5e0"
+        ],
+        "roofColour": "#8d9399",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "hangar / display shed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1956",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Riga_Aviation_Museum",
+          "what": "founded 1956 at the airport, privatised 1997, most aircraft displayed outdoors incl. Tu-22M1, Mi-6, MiG-15/21/23/25/29, Su-7, An-2, Tu-134; moved to Skulte beside the airport 2022"
+        }
+      ],
+      "notes": "The generator has no aircraft feature; the site should read as a scatter of large silver-grey aircraft shapes on grass with one shed. Buildings are not described by the source."
+    },
+    "riga-quiet-reflection": {
+      "venueId": "riga-quiet-reflection",
+      "city": "riga",
+      "name": "Biķeru Svētās Katrīnas bāznica",
+      "archetype": "shrine-small",
+      "subject": "a small village chapel-church at Biķeri: a timber or whitewashed nave with a steep roof and tiny belfry",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "village-chapel"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#ebe5d4",
+          "#8b6a47",
+          "#d8d2c2"
+        ],
+        "roofColour": "#5d6165",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small belfry"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Church denomination and age not verified."
+    },
+    "riga-recreation": {
+      "venueId": "riga-recreation",
+      "city": "riga",
+      "name": "Zemitāna laukums",
+      "archetype": "park-landscape",
+      "subject": "a public square in Teika with lawns, paths and tall trees between Soviet apartment blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b6ae",
+          "#7c8794",
+          "#e2dfd8"
+        ],
+        "roofColour": "#6d7378",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1960s-70s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. No features claimed."
+    },
+    "riga-transit": {
+      "venueId": "riga-transit",
+      "city": "riga",
+      "name": "Kalngale",
+      "archetype": "transport-station",
+      "subject": "Kalngale railway halt on the Riga-Skulte line: two low platforms with a small shelter among pine woods",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed",
+        "variant": "halt"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#bdb9b0",
+          "#8b6a47",
+          "#e5e2da"
+        ],
+        "roofColour": "#6d7378",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describes this specific place; typed from the Riga city style and the place type. Line name inferred from coordinates (north of Riga towards Saulkrasti); not verified."
+    }
+  }
+}

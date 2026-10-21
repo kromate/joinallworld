@@ -1,0 +1,229 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief: paved public square, low central plinth, kiosks, acacia trees; nearest OSM building is 52 m away so unreliable"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "revolve",
+   "id": "plinth",
+   "params": {
+    "segments": 16,
+    "colour": "#d6c7a5",
+    "topColour": "#e7dfc9",
+    "profile": [
+     [
+      7,
+      0,
+      "#9d9585"
+     ],
+     [
+      7,
+      0.5
+     ],
+     [
+      5.5,
+      0.5
+     ],
+     [
+      5.5,
+      1.0
+     ],
+     [
+      4,
+      1.0
+     ],
+     [
+      4,
+      2.0
+     ],
+     [
+      2.2,
+      2.0
+     ],
+     [
+      2.2,
+      5.2
+     ],
+     [
+      2.8,
+      5.2
+     ],
+     [
+      2.8,
+      5.6
+     ],
+     [
+      1.6,
+      6.2
+     ],
+     [
+      0,
+      6.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lion-block",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     1.4
+    ],
+    "z0": 6.2,
+    "height": 1.6,
+    "colour": "#c4b48c",
+    "topColour": "#c4b48c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lion-head",
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "z0": 7.8,
+    "height": 0.9,
+    "colour": "#c4b48c",
+    "topColour": "#c4b48c"
+   },
+   "at": [
+    0.9,
+    0
+   ]
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.3,
+    "run": 1.2,
+    "count": 3,
+    "colour": "#bdb49f"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -30,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#c9b98e",
+    "roof_colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    30,
+    14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.6,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#9d9585",
+    "roof_colour": "#8f8a80"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "count": 5,
+    "start": [
+     -36,
+     24
+    ],
+    "end": [
+     36,
+     24
+    ],
+    "of": [
+     {
+      "type": "core/tree",
+      "params": {
+       "kind": "acacia",
+       "height": 7,
+       "spread": 5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 0.6,
+    "thickness": 0.4,
+    "colour": "#b5ab95"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -5,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 4,
+    "spacing": 13
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No layout source for Lion's Heart Square; plinth and lion block are generic stand-ins."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "khartoum",
+ "venueId": "khartoum-community-voting-game"
+}

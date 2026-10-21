@@ -1,0 +1,911 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "windhoek",
+ "venueId": "windhoek-independence-memorial-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Namibia.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "IUM 240052021",
+   "view": "front",
+   "file": "/tmp/places-evidence/windhoek/im2.jpg",
+   "used": "tall rectangular portal frame in cream tile with black glazed side piers, large cream drum cantilevered across the opening with a dark band and a sun emblem, glass lift ladders on both outer edges, Nujoma statue on a stone plinth, wide flagstone steps"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Windhuk_Christuskirche_%26_Independence_Memorial_Museum_1.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Zairon",
+   "view": "side",
+   "file": "/tmp/places-evidence/windhoek/im1.jpg",
+   "used": "tan tile colour and black glass side wall, scale beside the church"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/311181729",
+   "used": "site centre and approximate 36 m plan (round rear, not used as outline)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 52,
+  "aspect": 0.75
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pier-left",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#11181d",
+    "topColour": "#2a3238",
+    "rect": [
+     7,
+     26
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "front-pier-left",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#c9b78f",
+    "topColour": "#b5a47e",
+    "rect": [
+     5.5,
+     4
+    ]
+   },
+   "at": [
+    -12.75,
+    -11
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "side-pier-left",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#c9b78f",
+    "topColour": "#b5a47e",
+    "rect": [
+     5.5,
+     20
+    ]
+   },
+   "at": [
+    -12.75,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pier-right",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#11181d",
+    "topColour": "#2a3238",
+    "rect": [
+     7,
+     26
+    ]
+   },
+   "at": [
+    19,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "front-pier-right",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#c9b78f",
+    "topColour": "#b5a47e",
+    "rect": [
+     5.5,
+     4
+    ]
+   },
+   "at": [
+    12.75,
+    -11
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "side-pier-right",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#c9b78f",
+    "topColour": "#b5a47e",
+    "rect": [
+     5.5,
+     20
+    ]
+   },
+   "at": [
+    12.75,
+    2
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "back-wall",
+   "params": {
+    "z0": 0,
+    "height": 52,
+    "colour": "#c9b78f",
+    "topColour": "#b5a47e",
+    "rect": [
+     20,
+     5
+    ],
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#b19f78",
+      "height": 0.15,
+      "spacing": 2.2
+     }
+    ]
+   },
+   "at": [
+    0,
+    10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "top-beam",
+   "params": {
+    "z0": 44,
+    "height": 8,
+    "colour": "#cdbb93",
+    "topColour": "#b5a47e",
+    "rect": [
+     31,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -11
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "top-beam-band",
+   "params": {
+    "z0": 48,
+    "height": 1.4,
+    "colour": "#1a2227",
+    "topColour": "#1a2227",
+    "rect": [
+     20,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -13.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "roof-slab",
+   "params": {
+    "z0": 51.4,
+    "height": 0.8,
+    "colour": "#a99872",
+    "topColour": "#8f7f5c",
+    "rect": [
+     45,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum",
+   "params": {
+    "z0": 14,
+    "height": 21,
+    "colour": "#d1bf97",
+    "topColour": "#b5a47e",
+    "radius": 11,
+    "n": 28
+   },
+   "at": [
+    0,
+    -3.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum-band",
+   "params": {
+    "z0": 23.5,
+    "height": 1.8,
+    "colour": "#1a2227",
+    "topColour": "#1a2227",
+    "radius": 11.3,
+    "n": 28
+   },
+   "at": [
+    0,
+    -3.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum-soffit",
+   "params": {
+    "z0": 13.4,
+    "height": 0.7,
+    "colour": "#2c241d",
+    "topColour": "#2c241d",
+    "radius": 11,
+    "n": 28
+   },
+   "at": [
+    0,
+    -3.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "drum-column",
+   "params": {
+    "z0": 0,
+    "height": 14,
+    "colour": "#c9b78f",
+    "topColour": "#b5a47e",
+    "rect": [
+     6,
+     6
+    ]
+   },
+   "at": [
+    0,
+    4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "lift-rail-left",
+   "params": {
+    "z0": 0,
+    "height": 49,
+    "colour": "#4f9c8f",
+    "topColour": "#4f9c8f",
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    -22.9,
+    -12.2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    -22.9,
+    -12.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     2
+    ],
+    "end": [
+     0,
+     0,
+     48
+    ],
+    "count": 24,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       1.5
+      ],
+      "z0": 0,
+      "height": 0.3,
+      "colour": "#7fc2b2",
+      "topColour": "#c9a24a"
+     }
+    },
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "lift-rail-right",
+   "params": {
+    "z0": 0,
+    "height": 49,
+    "colour": "#4f9c8f",
+    "topColour": "#4f9c8f",
+    "rect": [
+     0.5,
+     0.5
+    ]
+   },
+   "at": [
+    22.9,
+    -12.2
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    22.9,
+    -12.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     2
+    ],
+    "end": [
+     0,
+     0,
+     48
+    ],
+    "count": 24,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1.5,
+       1.5
+      ],
+      "z0": 0,
+      "height": 0.3,
+      "colour": "#7fc2b2",
+      "topColour": "#c9a24a"
+     }
+    },
+    "lod1Step": 2
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "params": {
+    "z0": 0,
+    "height": 8,
+    "colour": "#8a6652",
+    "topColour": "#7a5c46",
+    "rect": [
+     7,
+     7
+    ],
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#5f4638",
+      "height": 0.18,
+      "spacing": 0.8
+     }
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -27,
+    -26,
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    27,
+    -26,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step1",
+   "params": {
+    "z0": 0,
+    "height": 2.8,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     45.6,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -12.95
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step2",
+   "params": {
+    "z0": 0,
+    "height": 2.5999999999999996,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     45.2,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -13.85
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step3",
+   "params": {
+    "z0": 0,
+    "height": 2.4,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     44.8,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -14.75
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step4",
+   "params": {
+    "z0": 0,
+    "height": 2.1999999999999997,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     44.4,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -15.649999999999999
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step5",
+   "params": {
+    "z0": 0,
+    "height": 1.9999999999999998,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     44.0,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -16.55
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step6",
+   "params": {
+    "z0": 0,
+    "height": 1.7999999999999998,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     43.6,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -17.45
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step7",
+   "params": {
+    "z0": 0,
+    "height": 1.5999999999999996,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     43.2,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -18.35
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step8",
+   "params": {
+    "z0": 0,
+    "height": 1.3999999999999997,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     42.8,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -19.25
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step9",
+   "params": {
+    "z0": 0,
+    "height": 1.1999999999999997,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     42.4,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -20.15
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step10",
+   "params": {
+    "z0": 0,
+    "height": 0.9999999999999998,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     42.0,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -21.049999999999997
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step11",
+   "params": {
+    "z0": 0,
+    "height": 0.7999999999999998,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     41.6,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -21.95
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step12",
+   "params": {
+    "z0": 0,
+    "height": 0.5999999999999996,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     41.2,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -22.85
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step13",
+   "params": {
+    "z0": 0,
+    "height": 0.39999999999999947,
+    "colour": "#9b7a52",
+    "topColour": "#a8875c",
+    "rect": [
+     40.8,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -23.75
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "step14",
+   "params": {
+    "z0": 0,
+    "height": 0.19999999999999973,
+    "colour": "#86694a",
+    "topColour": "#a8875c",
+    "rect": [
+     40.4,
+     0.9
+    ]
+   },
+   "at": [
+    0,
+    -24.65
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sun-emblem",
+   "params": {
+    "z0": 31,
+    "height": 3.6,
+    "colour": "#c9a24a",
+    "topColour": "#c9a24a",
+    "rect": [
+     3.6,
+     0.4
+    ]
+   },
+   "at": [
+    0,
+    -14.7
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "leg0",
+   "params": {
+    "z0": 8,
+    "height": 7.5,
+    "colour": "#6b4a34",
+    "topColour": "#6b4a34",
+    "rect": [
+     1.3,
+     1.4
+    ]
+   },
+   "at": [
+    -0.8,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "leg1",
+   "params": {
+    "z0": 8,
+    "height": 7.5,
+    "colour": "#6b4a34",
+    "topColour": "#6b4a34",
+    "rect": [
+     1.3,
+     1.4
+    ]
+   },
+   "at": [
+    0.8,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "torso",
+   "params": {
+    "z0": 15.5,
+    "height": 6,
+    "colour": "#6b4a34",
+    "topColour": "#6b4a34",
+    "rect": [
+     3.4,
+     1.9
+    ]
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "head",
+   "params": {
+    "z0": 21.5,
+    "height": 1.8,
+    "colour": "#6b4a34",
+    "topColour": "#6b4a34",
+    "radius": 0.95,
+    "n": 10
+   },
+   "at": [
+    0,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arm-down",
+   "params": {
+    "z0": 16,
+    "height": 5,
+    "colour": "#6b4a34",
+    "topColour": "#6b4a34",
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    1.9,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "arm-up",
+   "params": {
+    "z0": 16.5,
+    "height": 10,
+    "colour": "#6b4a34",
+    "topColour": "#6b4a34",
+    "rect": [
+     0.9,
+     1.0
+    ]
+   },
+   "at": [
+    -1.9,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "book",
+   "params": {
+    "z0": 26.5,
+    "height": 2.2,
+    "colour": "#2f2319",
+    "topColour": "#2f2319",
+    "rect": [
+     1.8,
+     0.5
+    ]
+   },
+   "at": [
+    -1.9,
+    -17.5
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -28,
+     -10
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     28,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "drum and piers are flat colour without the tile grid; lift ladders are thin rails with rings, not glass; statue is a generic low-poly figure with a prism arm; plinth rubble is banded colour not true stone"
+ }
+}

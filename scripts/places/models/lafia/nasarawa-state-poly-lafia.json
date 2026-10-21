@@ -1,0 +1,199 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "nasarawa-state-poly-lafia",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lafia.json",
+   "used": "polytechnic teaching blocks: cream rendered L-plan, two-storey block with veranda colonnade, single-storey wing, green corrugated hip roofs; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "teaching-block",
+   "footprint": {
+    "rect": [
+     42,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.28,
+    "plinth": 0.5,
+    "bands": "#a2553a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b54",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing",
+   "footprint": {
+    "rect": [
+     12,
+     26
+    ]
+   },
+   "at": [
+    -15,
+    19
+   ],
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#a2553a"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#4f6b54",
+    "material": "corrugated",
+    "pitch": 18,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    0,
+    -7.5,
+    0
+   ],
+   "params": {
+    "length": 38,
+    "count": 10,
+    "height": 3.6,
+    "radius": 0.22,
+    "kind": "square",
+    "beamHeight": 0.5,
+    "roofDepth": 2.4,
+    "colour": "#ffffff",
+    "roofColour": "#a2553a"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -11,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#c9c3b8"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    18,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.2,
+    "colour": "#a2553a",
+    "frameColour": "#ffffff"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    34,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    10,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or OSM outline; massing from the brief."
+ }
+}

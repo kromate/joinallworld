@@ -1,0 +1,1347 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "tallinn",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "tallinn",
+    "climate": "cold",
+    "vernacular": "Medieval limestone Old Town with steep red-tile gabled merchant houses in ochre, cream and pink plaster; 19th-century painted timber houses (Kalamaja, Kadriorg, Nomme) in muted green, ochre, red and grey with board cladding and iron or tile roofs; Soviet-era 5- and 9-storey grey-beige concrete panel blocks (Lasnamae, Mustamae) and Stalinist/functionalist brick blocks; glass and render office and mall boxes after 2000. Birch, pine and linden trees, limestone cliffs and coast.",
+    "wallColours": [
+      "#d9c9a0",
+      "#c9b98f",
+      "#e7d9b8",
+      "#b9bfae",
+      "#a9a49a",
+      "#8c5a45",
+      "#c46a4a",
+      "#d8d2c4"
+    ],
+    "roofColours": [
+      "#9a4a35",
+      "#6b4a40",
+      "#4a4f55",
+      "#7b7f83",
+      "#3f4a45"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "limestone",
+      "timber",
+      "concrete",
+      "brick",
+      "glass-curtain",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "membrane",
+      "concrete",
+      "corrugated"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Hanseatic stepped gables and stone portals in the Old Town; Baroque doorways; jigsaw-cut timber porches and window frames on Kalamaja wooden houses; Art Nouveau reliefs; modernist/functionalist white concrete blocks of the 1930s; Soviet panel facades with balcony bands.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Estonia",
+        "what": "Tallinn styles: Gothic burgher houses and churches, Petrine Baroque, Classicism, Art Nouveau, Russian Revival, contemporary"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Kalamaja",
+        "what": "Kalamaja is one of the best preserved wooden-architecture districts, colourful working-class houses built after 1870"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Tallinn_Old_Town",
+        "what": "Old Town keeps its intact 13th-century medieval and Hanseatic plan, most structures built 13th-16th centuries, within the town walls"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Olde_Hansa",
+        "what": "Old Town Baroque warehouse with stone portals and slabs, kept original facade"
+      }
+    ]
+  },
+  "places": {
+    "tallinn-airport-tallinn-airport": {
+      "venueId": "tallinn-airport-tallinn-airport",
+      "city": "tallinn",
+      "name": "Lennart Meri Tallinn Airport",
+      "archetype": "airport-terminal",
+      "subject": "The T-shaped terminal seen from the forecourt: long low concrete and glass block with a central gallery to the gates, small control tower behind",
+      "form": {
+        "footprint": "T",
+        "width_m": 220,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2,
+        "variant": "T-shaped terminal with central gallery"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#c9ced1",
+          "#8b9298",
+          "#eef0f0"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 9,
+          "note": "nine passenger bridges per Wikipedia"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980, extended 2006-08",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lennart_Meri_Tallinn_Airport",
+          "what": "1980 terminal by Mihhail Piskov, 2006-08 extension of 35,000 m2 by Bonnard/Tasa/Sirkel-Suviste, T-shaped with central gallery, nine passenger bridges, concrete construction"
+        }
+      ],
+      "notes": "Real facts: 1980 terminal by Mihhail Piskov (housebarn-inspired), extended 35,000 m2 by 2008 into a T with a central gallery; concrete frame won Concrete Building of the Year 2008. Colours and exact dimensions are estimates; facade photos not described in sources."
+    },
+    "tallinn-clinic": {
+      "venueId": "tallinn-clinic",
+      "city": "tallinn",
+      "name": "Wismari Haigla",
+      "archetype": "hospital",
+      "subject": "Small private city-centre hospital building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c8",
+          "#7f95a3",
+          "#f0eee8"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name is real (Wismari clinic, central Tallinn). Appearance not found; typed guess from city style."
+    },
+    "tallinn-community-notices": {
+      "venueId": "tallinn-community-notices",
+      "city": "tallinn",
+      "name": "eu-LISA (EU agency for large-scale IT systems)",
+      "archetype": "office-low",
+      "subject": "Modern agency headquarters block in Tallinn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfd2d4",
+          "#5f7a8c",
+          "#f2f2f0"
+        ],
+        "roofColour": "#6a6e72",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2,
+          "note": "EU and Estonian flags"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Eu-LISA",
+          "what": "headquarters address Vesilennuki 5, Tallinn; no building description available"
+        }
+      ],
+      "notes": "Building description not found; typed low-confidence office block. Game name is a long agency name; show only a plain office with blank signage."
+    },
+    "tallinn-community-voting-game": {
+      "venueId": "tallinn-community-voting-game",
+      "city": "tallinn",
+      "name": "Islandi valjak (Iceland Square)",
+      "archetype": "park-landscape",
+      "subject": "Small paved city square with lawn strips and street trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#6f7a5a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "20th-21st century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real small square in Tallinn; layout not found. Typed from city style; no named features invented."
+    },
+    "tallinn-community-workshop": {
+      "venueId": "tallinn-community-workshop",
+      "city": "tallinn",
+      "name": "Sisekaitseakadeemia (Academy of Security Sciences)",
+      "archetype": "campus-block",
+      "subject": "Police-and-rescue academy campus of modern low blocks",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d6d0c0",
+          "#8c5a45",
+          "#eeeae0"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Campus appearance not found; typed guess. Estonian academy of the Interior Ministry."
+    },
+    "tallinn-market-game": {
+      "venueId": "tallinn-market-game",
+      "city": "tallinn",
+      "name": "Nomme turuhoone",
+      "archetype": "market-hall",
+      "subject": "Neighbourhood covered market hall with a gabled roof and market yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9c9a0",
+          "#8c5a45",
+          "#eeeae0"
+        ],
+        "roofColour": "#7b3f35",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "mid 20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nomme market hall in the garden suburb of Nomme; appearance not found. Typed from city style."
+    },
+    "tallinn-meal-stop": {
+      "venueId": "tallinn-meal-stop",
+      "city": "tallinn",
+      "name": "Olde Hansa",
+      "archetype": "restaurant",
+      "subject": "Medieval-themed restaurant in the Baroque Pakkhoone warehouse at Vana turg 1, Old Town",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "Old Town warehouse, gable on the market square"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stucco",
+        "colours": [
+          "#cdbf9f",
+          "#a98f6a",
+          "#e7dcc2"
+        ],
+        "roofColour": "#9a4a35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 2,
+          "note": "Baroque stone portals"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank hanging board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1655-57",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Olde_Hansa",
+          "what": "Pakkhoone (3 storerooms joined 1655-57 into one Baroque structure), Baroque portals and stone slabs, facade kept, three floors, heritage-listed 1997"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tallinn_Old_Town",
+          "what": "Old Town keeps its intact 13th-century medieval and Hanseatic plan, most structures built 13th-16th centuries, within the town walls"
+        }
+      ],
+      "notes": "Heritage Pakkhoone; Baroque portals and stone slabs on the facade, steep tile roof. Colours/dimensions estimated from Old Town style. Medieval-theme restaurant, opened 1997, three floors."
+    },
+    "tallinn-osm-node-11071633601": {
+      "venueId": "tallinn-osm-node-11071633601",
+      "city": "tallinn",
+      "name": "Pohjakonn Stairs",
+      "archetype": "park-landscape",
+      "subject": "Timber/stone stairs descending a coastal slope to the Gulf of Finland shore",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a6b4a",
+          "#9aa0a0",
+          "#c9c4b8"
+        ],
+        "roofColour": "#6f7478",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "long coastal stair"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing platform at top"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2000s-2010s (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Viewing stairs on the northern Tallinn-area coast; shape not found. Show a long stair with a small platform among pines."
+    },
+    "tallinn-osm-node-1606298155": {
+      "venueId": "tallinn-osm-node-1606298155",
+      "city": "tallinn",
+      "name": "Arukula randrahn (Arukula erratic boulder)",
+      "archetype": "monument",
+      "subject": "Large glacial erratic boulder standing in a clearing",
+      "form": {
+        "footprint": "round",
+        "width_m": 7,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 3.5,
+        "roof": "none",
+        "variant": "erratic boulder"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8c8a86",
+          "#a8a49c",
+          "#6a6862"
+        ],
+        "roofColour": "#8c8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "glacial",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A natural boulder (randrahn = erratic). Size not found; typical Estonian erratics are 3-5 m tall. Model as rounded granite rock with moss on top."
+    },
+    "tallinn-osm-node-638572868": {
+      "venueId": "tallinn-osm-node-638572868",
+      "city": "tallinn",
+      "name": "Kabelikivi",
+      "archetype": "monument",
+      "subject": "Large rounded boulder marker beside a path",
+      "form": {
+        "footprint": "round",
+        "width_m": 6,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "erratic boulder"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8c8a86",
+          "#9a968c",
+          "#6a6862"
+        ],
+        "roofColour": "#8c8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "glacial",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Named stone (kivi); details not found. Typed as a granite boulder; no further facts found."
+    },
+    "tallinn-osm-node-687057209": {
+      "venueId": "tallinn-osm-node-687057209",
+      "city": "tallinn",
+      "name": "Metsanurme Local Lore Museum",
+      "archetype": "museum-theatre",
+      "subject": "Small village local lore museum in a modest single-storey building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#d9c9a0",
+          "#8c5a45",
+          "#eeeae0"
+        ],
+        "roofColour": "#6b4a40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small local museum; building not described anywhere found. Typed from rural Estonian vernacular."
+    },
+    "tallinn-osm-relation-1205174": {
+      "venueId": "tallinn-osm-relation-1205174",
+      "city": "tallinn",
+      "name": "Tallinna Tehnikaulikool (TalTech)",
+      "archetype": "campus-block",
+      "subject": "Mustamae main campus: long 1960s-70s modernist academic blocks beside newer glass buildings",
+      "form": {
+        "footprint": "U",
+        "width_m": 180,
+        "depth_m": 60,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b5a8",
+          "#6f8696",
+          "#e4e0d4"
+        ],
+        "roofColour": "#6f7478",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "newer glass building"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "soviet",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tallinn_University_of_Technology",
+          "what": "institution identity and colours (white, magenta, burgundy); article gives no architecture"
+        }
+      ],
+      "notes": "Source gave no architecture. Typed from general knowledge of a Soviet-era concrete campus with newer glass additions; treat as low."
+    },
+    "tallinn-osm-way-1213651720": {
+      "venueId": "tallinn-osm-way-1213651720",
+      "city": "tallinn",
+      "name": "Kurna moisa park",
+      "archetype": "park-landscape",
+      "subject": "Old manor park with mature trees and lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#6f7a5a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "manor-era park",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Manor park (moisa = manor); layout not found. Mature broadleaf trees and lawns."
+    },
+    "tallinn-osm-way-227571444": {
+      "venueId": "tallinn-osm-way-227571444",
+      "city": "tallinn",
+      "name": "Peetri park",
+      "archetype": "park-landscape",
+      "subject": "Suburban village park with lawns, paths and birch trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#6f7a5a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Park in Peetri; layout not found. Typed."
+    },
+    "tallinn-osm-way-230751799": {
+      "venueId": "tallinn-osm-way-230751799",
+      "city": "tallinn",
+      "name": "A. Le Coq Arena",
+      "archetype": "stadium",
+      "subject": "Small national football stadium with covered stands on all sides, seen from the main stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "football bowl with four stands"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#6f7478",
+          "#2f6aa0",
+          "#d8d8d8"
+        ],
+        "roofColour": "#8f9498",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 4
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2001, expanded 2016-18",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A._Le_Coq_Arena",
+          "what": "capacity 14,336, pitch 105x68 m, opened 2 June 2001, expanded 2016-2018, architect Haldo Oravas, set between railway lines at Lilleküla"
+        }
+      ],
+      "notes": "Capacity 14,336 after 2016-18 expansion; pitch 105 x 68 m. Stand roof forms and colours not described in the source; blue/grey palette is a guess. Hemmed in by railway lines."
+    },
+    "tallinn-osm-way-25822425": {
+      "venueId": "tallinn-osm-way-25822425",
+      "city": "tallinn",
+      "name": "Pirita Velodroom",
+      "archetype": "stadium",
+      "subject": "Open-air concrete cycling track around an artificial-turf football pitch with small stands",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 85,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "velodrome with infield pitch"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#8c8f91",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1969, renovated 2015",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pirita_Velodrome",
+          "what": "opened 1969, renovated 2015, concrete track, artificial-turf field 90.5x49 m, 1602 seats; no roof mentioned"
+        }
+      ],
+      "notes": "Opened 1969 (Soviet), renovated 2015. Banked concrete track around a 90.5x49 m turf pitch; 1,602 seats, no roof. Track outline dimensions estimated."
+    },
+    "tallinn-osm-way-26846079": {
+      "venueId": "tallinn-osm-way-26846079",
+      "city": "tallinn",
+      "name": "Rocca al Mare Shopping Centre",
+      "archetype": "mall",
+      "subject": "Large suburban mall box with glazed entrances and a big parking lot",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4c8",
+          "#4a7a9a",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank brand-neutral boards"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rocca_al_Mare",
+          "what": "described as Estonia's third largest shopping centre, in Haabersti; no appearance details"
+        }
+      ],
+      "notes": "Third largest shopping centre in Estonia; appearance not described; typed mall box."
+    },
+    "tallinn-osm-way-26895161": {
+      "venueId": "tallinn-osm-way-26895161",
+      "city": "tallinn",
+      "name": "Tallinna Tehnikakorgkool",
+      "archetype": "campus-block",
+      "subject": "Technical college building on the city-centre edge, a mid-century block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#d8d2b8",
+          "#8c5a45",
+          "#eeeae0"
+        ],
+        "roofColour": "#7b3f35",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "mid 20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not found; typed."
+    },
+    "tallinn-osm-way-26908368": {
+      "venueId": "tallinn-osm-way-26908368",
+      "city": "tallinn",
+      "name": "Jarve keskus",
+      "archetype": "mall",
+      "subject": "Large neighbourhood shopping centre with a long flat facade and big parking area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#c46a4a",
+          "#f0eee8"
+        ],
+        "roofColour": "#7b7f83",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Jarve Centre in Mustamae; appearance not found; typed."
+    },
+    "tallinn-osm-way-722994268": {
+      "venueId": "tallinn-osm-way-722994268",
+      "city": "tallinn",
+      "name": "EEVK Nabala vennastekoguduse palvemaja",
+      "archetype": "shrine-small",
+      "subject": "Small evangelical brethren prayer house in a village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e7dcc2",
+          "#8c6a4a",
+          "#f0eee8"
+        ],
+        "roofColour": "#6b4a40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Prayer house (palvemaja) of the Evangelical Brethren Church in Nabala; no description found."
+    },
+    "tallinn-osm-way-81647511": {
+      "venueId": "tallinn-osm-way-81647511",
+      "city": "tallinn",
+      "name": "Rannamoisa kirik",
+      "archetype": "church-classical",
+      "subject": "Small rural stone church with a short tower and steep roof near the coast",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "single-nave village church"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "whitewash",
+        "colours": [
+          "#d8d2b8",
+          "#b9b5a8",
+          "#eeeae0"
+        ],
+        "roofColour": "#6b4a40",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century (unverified)",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rannamoisa village church; appearance not found. Typed as a small limestone village church."
+    },
+    "tallinn-osm-way-951559494": {
+      "venueId": "tallinn-osm-way-951559494",
+      "city": "tallinn",
+      "name": "Tallinn University",
+      "archetype": "campus-block",
+      "subject": "Narva mnt 25 campus: six linked buildings (Terra, Mare, Astra, Nova, Silva, Vita) around a courtyard",
+      "form": {
+        "footprint": "ring",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 7,
+        "height_m": 28,
+        "roof": "flat",
+        "wings": 5,
+        "variant": "courtyard campus"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#cfd2d4",
+          "#7f95a3",
+          "#e7dcc2"
+        ],
+        "roofColour": "#6a6e72",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1938 Terra; 2006-2020 additions",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tallinn_University",
+          "what": "six connected buildings (Terra, Astra, Mare, Nova, Silva, Vita) around a courtyard; Terra 1938 heritage; Mare 2006; Nova and Astra 2012; Vita 2020"
+        }
+      ],
+      "notes": "Six buildings around a courtyard, oldest Terra (1938, functionalist, heritage). Heights and facade colours estimated; newer blocks glass and render."
+    },
+    "tallinn-quiet-reflection": {
+      "venueId": "tallinn-quiet-reflection",
+      "city": "tallinn",
+      "name": "Juri kirik",
+      "archetype": "church-gothic",
+      "subject": "Lutheran village church with a tall slender tower, rebuilt in 1885 on a medieval site",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable",
+        "variant": "nave with western tower"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "render",
+        "colours": [
+          "#d8d2b8",
+          "#b9b5a8",
+          "#eeeae0"
+        ],
+        "roofColour": "#4a4f55",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tall western tower (unverified)"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1885",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/J%C3%BCri",
+          "what": "current church built in 1885 on the site of an older medieval church"
+        }
+      ],
+      "notes": "Only the date (1885) is sourced. Neo-Gothic limestone village church assumed from era; tower height guessed."
+    },
+    "tallinn-recreation": {
+      "venueId": "tallinn-recreation",
+      "city": "tallinn",
+      "name": "Keila keskpark",
+      "archetype": "park-landscape",
+      "subject": "Small-town central park with lawns, paths and old trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a9a49a",
+          "#6f7a5a",
+          "#d8d2c4"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Keila",
+          "what": "Keila town context: central park only pictured, church and manor are landmarks"
+        }
+      ],
+      "notes": "Central park of Keila town; layout not found. Bandstand and fountain are generic park furniture, not verified."
+    },
+    "tallinn-transit": {
+      "venueId": "tallinn-transit",
+      "city": "tallinn",
+      "name": "Saue",
+      "archetype": "transport-station",
+      "subject": "Small commuter railway halt with low platforms and a shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable",
+        "variant": "commuter station"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9c9a0",
+          "#8c5a45",
+          "#eeeae0"
+        ],
+        "roofColour": "#6b4a40",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1870 line; building unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saue",
+          "what": "Saue station on the Tallinn-Keila line served by Elron; line completed 1870; Saue Manor Baroque 1792"
+        }
+      ],
+      "notes": "Saue station on the Elron Tallinn-Keila line. Building not described; typed halt with canopy and two tracks."
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1297789453",
+   "used": "nearest OSM building is only 7.5x5.3 m: too small; used the brief's L-shaped clinic size instead, orientation from bearing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "polygon": [
+     [
+      -17,
+      -4
+     ],
+     [
+      10,
+      -4
+     ],
+     [
+      10,
+      10
+     ],
+     [
+      -2,
+      10
+     ],
+     [
+      -2,
+      3
+     ],
+     [
+      -17,
+      3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe9d8",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#7fa58f",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a5a44",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda",
+   "footprint": {
+    "rect": [
+     9,
+     2.6
+    ]
+   },
+   "at": [
+    -3,
+    -5.3
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa58f",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "store",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "height": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a5a44",
+    "material": "corrugated",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ambulance-bay",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    -24,
+    -3
+   ],
+   "height": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7fa58f",
+    "material": "corrugated",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -12,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.6,
+    "bottom": 1.2,
+    "colour": "#ffffff",
+    "frameColour": "#c0392b"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "pillarEvery": 5,
+    "colour": "#e9e2cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -8
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     8
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   50
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "abeokuta-clinic",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic clinic from brief, L shape not from OSM"
+ }
+}

@@ -1,0 +1,340 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "uyo",
+ "venueId": "unity-park-uyo",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unity_Park,_Uyo._Akwa_Ibom_State,_Nigeria.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mosesumoh",
+   "view": "street",
+   "file": "/tmp/places-evidence/uyo/park1.jpg",
+   "used": "open mown lawn with bare patches, scattered large broadleaf trees and a few palms along the far edge, low buildings beyond"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Unity_Park_in_Uyo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Mosesumoh",
+   "view": "street",
+   "file": "/tmp/places-evidence/uyo/park2.jpg",
+   "used": "long unmown yellow-green grass and tall spreading trees"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/607068827",
+   "used": "park outline, scaled to 0.105 (about 110 m across) to fit the scene clamp"
+  },
+  {
+   "kind": "text",
+   "used": "brief: pavilion and gate are planned only; removed from the model as not seen in photos"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -75,
+      -40
+     ],
+     [
+      75,
+      -40
+     ],
+     [
+      75,
+      60
+     ],
+     [
+      -75,
+      60
+     ]
+    ],
+    "height": 0.2,
+    "colour": "#8fb04a",
+    "top": false
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -35,
+    -25,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      15,
+      -5
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      -2,
+      -5
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -15,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      15,
+      -5
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      -2,
+      -5
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    5,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      15,
+      -5
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      -2,
+      -5
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    40,
+    -30,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      15,
+      -5
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      -2,
+      -5
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -55,
+    15,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      15,
+      -5
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      -2,
+      -5
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    25,
+    25,
+    0.2
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      15,
+      -5
+     ],
+     [
+      6,
+      -9
+     ],
+     [
+      -2,
+      -5
+     ]
+    ],
+    "height": 0.05,
+    "colour": "#b99a6e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -70,
+    50,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 24,
+    "count": 12,
+    "spread": 10,
+    "line": 140
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -65,
+    58,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 20,
+    "count": 8,
+    "spread": 10,
+    "line": 130
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -72,
+    54,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 12,
+    "count": 5,
+    "spread": 4,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tree line and bare-patch lawn now match the low view; trees are low-poly and uniform, near foreground shows grey pad instead of lawn. Pavilion, gate and fountain removed (planned, not seen). Lawn is a schematic rectangle, not the real outline."
+ }
+}

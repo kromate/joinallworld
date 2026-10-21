@@ -1,0 +1,390 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "wole-soyinka-station",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Prof_Wole_Soyinka_railway_sation.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Jayeola (Commons user)",
+   "view": "front",
+   "file": "/tmp/places-evidence/abeokuta/soyinka2.jpg",
+   "used": "central glazed hall under a wavy white roof, white curved fin piers, low two-storey grey-white clad wings, forecourt parking, green lawn"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wole_SOYINKA_TRAIN_station,_Abeokuta.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Commons user",
+   "view": "street",
+   "file": "/tmp/places-evidence/abeokuta/soyinka1.jpg",
+   "used": "wing proportions: right wing longer with ribbon windows, left wing low; laterite ground"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abeokuta_station.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "FrankvEck",
+   "view": "front",
+   "used": "symmetric elevation proportions only (an illustration)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1323182112",
+   "used": "overall size only (outline is a skewed quad, not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 45
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "roof is an asymmetric sinuous slab but still flatter than the real wave; fins read as separate arches; hall glass darker than the real pale cyan; blue block still visible atop hall; no mullion detail"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     22,
+     28
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#a9cbd6",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    },
+    "plinth": 0.3,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ecebe6",
+    "material": "concrete",
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     28,
+     18
+    ]
+   },
+   "at": [
+    -29,
+    2
+   ],
+   "height": 5,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#e4e3dc",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e2",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     36,
+     20
+    ]
+   },
+   "at": [
+    33,
+    3
+   ],
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#f2f1ec",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#e4e3dc",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e6e6e2",
+    "parapet": 0.5,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "roof-edge",
+   "params": {
+    "section": {
+     "rect": [
+      6,
+      1.8
+     ]
+    },
+    "points": [
+     [
+      -34,
+      -15,
+      8
+     ],
+     [
+      -20,
+      -15,
+      9.5
+     ],
+     [
+      -8,
+      -15,
+      11.5
+     ],
+     [
+      2,
+      -15,
+      14
+     ],
+     [
+      14,
+      -15,
+      11
+     ],
+     [
+      26,
+      -15,
+      9.5
+     ],
+     [
+      36,
+      -15,
+      8.5
+     ]
+    ],
+    "curve": true,
+    "steps": 16,
+    "colour": "#f6f5f1"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fin-left",
+   "params": {
+    "section": {
+     "rect": [
+      3,
+      2.4
+     ]
+    },
+    "points": [
+     [
+      -11,
+      -14.5,
+      0
+     ],
+     [
+      -13,
+      -14.5,
+      5
+     ],
+     [
+      -17,
+      -14.5,
+      7.5
+     ],
+     [
+      -22,
+      -14.5,
+      8.5
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#f1f0ec"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "fin-right",
+   "params": {
+    "section": {
+     "rect": [
+      3,
+      2.4
+     ]
+    },
+    "points": [
+     [
+      11,
+      -14.5,
+      0
+     ],
+     [
+      13,
+      -14.5,
+      5
+     ],
+     [
+      17,
+      -14.5,
+      7.5
+     ],
+     [
+      22,
+      -14.5,
+      8.5
+     ]
+    ],
+    "curve": true,
+    "steps": 8,
+    "colour": "#f1f0ec"
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "entrance-canopy",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 4.2,
+    "thickness": 0.4,
+    "colour": "#d8dadb"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -14,
+    14.6
+   ],
+   "params": {
+    "width": 8,
+    "height": 1,
+    "bottom": 0,
+    "colour": "#2e8b4f",
+    "posts": false,
+    "frameColour": "#2e8b4f"
+   },
+   "rotDeg": 180
+  },
+  {
+   "type": "lawn",
+   "id": "lawn",
+   "at": [
+    8,
+    -24,
+    0.15
+   ],
+   "params": {
+    "width": 76,
+    "depth": 14,
+    "colour": "#5f9a3f"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "hedge",
+     "params": {
+      "length": 5,
+      "height": 0.9,
+      "depth": 1,
+      "colour": "#4f7d3b"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -20,
+     -20,
+     0
+    ],
+    "end": [
+     30,
+     -20,
+     0
+    ],
+    "count": 6
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -24,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 9,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 14,
+    "count": 3,
+    "spacing": 22
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     25
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   90
+  ]
+ }
+}

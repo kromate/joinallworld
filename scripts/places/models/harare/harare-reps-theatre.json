@@ -1,0 +1,560 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "harare",
+ "venueId": "harare-reps-theatre",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://en.wikipedia.org/wiki/File:RepsFront.jpg",
+   "licence": "public domain",
+   "author": "self-published (Wikipedia)",
+   "view": "front",
+   "file": "/tmp/places-evidence/harare/reps.jpg",
+   "used": "two-storey white slab with deep overhang over a continuous dark mullioned upper glazing band, yellow fascia board (blank) at the slab edge, wide maroon ground wall with ribbon window, white round columns left and centre, projecting white entrance porch with wooden door on the right, paved forecourt"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/25446865",
+   "used": "footprint 51 x 22 m"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e9e7df",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcdc4",
+    "parapet": 0.3,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fly-tower",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    12
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#dcd8cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a94",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -8,
+    -17.5,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.3,
+    "run": 1.0,
+    "count": 2,
+    "colour": "#b8b4a8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -14.4,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.5
+    ],
+    "height": 2.7,
+    "colour": "#a84a48"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -14.450000000000001,
+    3.0
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.3
+    ],
+    "height": 0.8,
+    "colour": "#566468"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -14.450000000000001,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.4
+    ],
+    "height": 0.3,
+    "colour": "#e9e7df"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    -14.5,
+    4.1
+   ],
+   "params": {
+    "rect": [
+     32,
+     0.3
+    ],
+    "height": 2.2,
+    "colour": "#2f3b3f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -14.75,
+    6.35
+   ],
+   "params": {
+    "width": 28,
+    "height": 1.1,
+    "bottom": 0,
+    "colour": "#e5c94a",
+    "frameColour": "#c9b24a",
+    "posts": false
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -16.3,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     11,
+     3.8
+    ],
+    "height": 3.8,
+    "colour": "#efede6"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -18.25,
+    0.3
+   ],
+   "params": {
+    "rect": [
+     3.2,
+     0.3
+    ],
+    "height": 2.9,
+    "colour": "#6b4a2e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -18.3,
+    0.5
+   ],
+   "params": {
+    "rect": [
+     2.6,
+     0.3
+    ],
+    "height": 2.5,
+    "colour": "#587076"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    11,
+    -18.3,
+    3.6
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.3
+    ],
+    "height": 0.9,
+    "colour": "#f5f4ee"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -6,
+    -16.2,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 0.9,
+    "thickness": 0.15,
+    "colour": "#f0efe8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -24,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 6.9,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -10,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 6.9,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -15.8,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.0,
+     1.0
+    ],
+    "height": 6.9,
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -23,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -17,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -11,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -8,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -5,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    1,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    7,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    10,
+    -14.700000000000001,
+    4.1
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     0.2,
+     0.25
+    ],
+    "height": 2.2,
+    "colour": "#dcd9cf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Front now reads as white overhanging slab, continuous dark upper glazing, maroon wall, columns and right-hand porch; fly tower and depth behind the front are assumed, ribbon windows and railing are simplified, trees and signage text omitted."
+ }
+}

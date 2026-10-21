@@ -1,0 +1,140 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "praia",
+ "venueId": "praia-airport-praia-airport",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/95775295",
+   "used": "terminal outline (aeroway=terminal, 168 x 125 m, name-matched aerodrome Nelson Mandela RAI)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: white two-level terminal with blue glass and curved entrance canopy, control tower beside it; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "osm": true,
+    "fit": 104,
+    "simplify": 2
+   },
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eee6",
+    "windows": "curtain",
+    "windowRatio": 0.35,
+    "glassColour": "#4b7ea6",
+    "bands": "#d9d6cf",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b6ae",
+    "material": "concrete",
+    "parapet": 0.6,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -48,
+    0
+   ],
+   "params": {
+    "form": "curved",
+    "width": 60,
+    "depth": 10,
+    "height": 6,
+    "rise": 2.5,
+    "colour": "#f1eee6",
+    "edgeColour": "#4b7ea6",
+    "columns": 6
+   }
+  },
+  {
+   "type": "core/control-tower",
+   "at": [
+    45,
+    35,
+    0
+   ],
+   "params": {
+    "height": 32,
+    "style": "round",
+    "colour": "#e6e2d8",
+    "cabColour": "#4b7ea6"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    0,
+    -68,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 14,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -58,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -50,
+    -62,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 4,
+    "line": 24
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; outline from OSM, facade, canopy and tower are typed from the brief"
+ }
+}

@@ -1,0 +1,1612 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "auckland",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "auckland",
+    "climate": "temperate",
+    "vernacular": "Timber city: Victorian and Edwardian villas and Californian bungalows in painted kauri weatherboard with verandahs and corrugated-iron roofs (some Marseilles tile), brick-and-roughcast 1920s-30s Tudor and Arts and Crafts houses, 1950s-60s concrete and glass modernist civic blocks, and glass-and-metal contemporary malls, hospitals and campuses. Volcanic cones, basalt dry-stone walls, pohutukawa, nikau and tree ferns.",
+    "wallColours": [
+      "#f0ede4",
+      "#e3d7b5",
+      "#8d9296",
+      "#9aa58f",
+      "#8c4a3a",
+      "#4a4d50",
+      "#d8d6d2"
+    ],
+    "roofColours": [
+      "#9a3b2e",
+      "#7f858a",
+      "#5c7a5a",
+      "#b4573a",
+      "#4a4d50"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "brick",
+      "concrete",
+      "glass-curtain",
+      "metal-cladding",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Villa verandahs with cast-iron or timber fretwork and bay windows; Californian bungalow gables and tapered porch piers; Tudor-revival half-timbering and tall brick chimneys; dry-stone basalt walls; carved Maori pou, tomokanga gateways and koru motifs on public buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_New_Zealand",
+        "what": "timber early buildings, corrugated iron replacing shingles, Marseilles tile 1890s-1920s, Californian bungalow with verandah, concrete and glass International style from the 1950s-60s"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mount_Eden,_New_Zealand",
+        "what": "Mount Eden villas of kauri, matai and totara; Victorian and Edwardian villas unchanged on King Edward Street and Burnley Terrace"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Middlemore_Hospital",
+        "what": "1940s Auckland hospital buildings in pink stucco with white trim and clay-tile roofs"
+      }
+    ]
+  },
+  "places": {
+    "auckland-airport-auckland-airport": {
+      "venueId": "auckland-airport-auckland-airport",
+      "city": "auckland",
+      "name": "Auckland International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the three-level international terminal seen from the forecourt: a long low glass-and-concrete block with finger piers behind and a carved Maori gateway in the hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 400,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "international-terminal-with-piers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#cfd6da",
+          "#5c6b78",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b0b4b6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 14,
+          "note": "Piers A and B: 10 + 4 airbridge gates"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "tomokanga carved gateway (Pier A, 1994)"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1977 (departures level added 2005)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Auckland_Airport",
+          "what": "international terminal built 1977 on three levels; 2005 new departures level above arrivals; Pier A 10 airbridges plus 4 bus gates, Pier B about 2009 (5,500 m2); tomokanga carved gateway in Pier A 1994"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/11818752",
+          "what": "OSM terminal outline about 820 x 425 m, 2 levels tagged"
+        }
+      ],
+      "notes": "Shown as the central forecourt portion (clamped). Colours and curtain-wall facade of the 2005 departures level are typed; the Maori gateway and finger piers are what make it recognisable."
+    },
+    "auckland-clinic": {
+      "venueId": "auckland-clinic",
+      "city": "auckland",
+      "name": "Middlemore Hospital",
+      "archetype": "hospital",
+      "subject": "Middlemore Hospital: a six-storey inpatient block (Edmund Hillary Block, 2009) beside low pink-stucco tile-roofed 1940s wards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "variant": "tower-with-historic-wards",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d6d2",
+          "#d9a99c",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1947 wards; 2009-2014 blocks",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Middlemore_Hospital",
+          "what": "original 1940s main buildings timber-framed with pink stucco walls, white trim and clay-tile roofs (10 two-storey wards); Galbraith block 1964; six-storey Edmund Hillary Block 2009; five-storey Harley Gray Building 2014"
+        }
+      ],
+      "notes": "Pink-stucco clay-tile wing colours come from the source; the new blocks' glazing and colours are typed. Differs from Auckland City and North Shore by the pink stucco wings."
+    },
+    "auckland-community-notices": {
+      "venueId": "auckland-community-notices",
+      "city": "auckland",
+      "name": "Inland Revenue North Shore - Takapuna Office (IRD)",
+      "archetype": "office-low",
+      "subject": "a flat-roofed two-storey suburban office block with ribbon windows and a car park (PD Insurance House)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "suburban-office"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d6d2",
+          "#6b7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/324695466",
+          "what": "OSM: PD Insurance House, building=commercial, 44 x 40 m"
+        }
+      ],
+      "notes": "OSM tags the containing building as one-level commercial; the IRD office itself is not described.  Typed from the city style and building type; no description of this specific building was found."
+    },
+    "auckland-community-voting-game": {
+      "venueId": "auckland-community-voting-game",
+      "city": "auckland",
+      "name": "Freyberg Place",
+      "archetype": "civic-small",
+      "subject": "the Ellen Melville Centre on Freyberg Place: a 1962 modernist community hall with a colonnaded entrance, fronting a small square with fountain, statue and concrete seating steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "community-hall-on-square"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d6d2c8",
+          "#6b8793",
+          "#f1ece0"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "entrance colonnade"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "concrete steps doubling as seating"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Baron Freyberg in WWII uniform"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ellen_Melville_Centre",
+          "what": "opened 1962 as Pioneer Women's and Ellen Melville Memorial Hall, designed by city architect Tibor Donner, colonnaded entrance, refurbished 2017"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Freyberg_Place",
+          "what": "small square off High and O'Connell Streets: pohutukawa, nikau palms, concrete steps as seating, fountain and Freyberg statue"
+        }
+      ],
+      "notes": "Plaza features are sourced; the colours of the hall are typed. Recognisable for its colonnade and the sunken steps and fountain in the square."
+    },
+    "auckland-community-workshop": {
+      "venueId": "auckland-community-workshop",
+      "city": "auckland",
+      "name": "Massey University",
+      "archetype": "campus-block",
+      "subject": "Massey Albany campus: a few three- to four-storey glass-and-metal teaching blocks around open lawns, with a giant golden chicken-wing sculpture",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "campus",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd6da",
+          "#5c6b78",
+          "#e3d7b5"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "large golden chicken wing sculpture recalling the site's chicken-farm past"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Massey_University",
+          "what": "Albany campus on Auckland's North Shore since 1993, chicken-wing sculpture, new science building, on-campus accommodation 2015"
+        }
+      ],
+      "notes": "Only the sculpture and campus setting are described. OSM treats the campus as 870 x 540 m; one block cluster modelled."
+    },
+    "auckland-market-game": {
+      "venueId": "auckland-market-game",
+      "city": "auckland",
+      "name": "Ormiston Town Centre",
+      "archetype": "mall",
+      "subject": "Ormiston Town Centre in Flat Bush: a two-level enclosed shopping centre opened 2021 beside a park, with a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "enclosed-town-centre"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d6d2",
+          "#4f6d86",
+          "#e3d7b5"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "1,000+ spaces"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ormiston_Town_Centre",
+          "what": "enclosed centre of about 30,000-40,000 m2 opened March 2021, architects NH Architecture and Jasmax, parking for over 1,000 vehicles, next to Barry Curtis Park"
+        }
+      ],
+      "notes": "Storey count and facade materials are typed; size and architect from the source. Lower and more horizontal than Sylvia Park."
+    },
+    "auckland-meal-stop": {
+      "venueId": "auckland-meal-stop",
+      "city": "auckland",
+      "name": "Cornwall Park Bistro",
+      "archetype": "restaurant",
+      "subject": "the 1908 Cornwall Park Kiosk: a low timber park pavilion with a verandah and tables on a lawn",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 23,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "park-kiosk"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f0ede4",
+          "#5c7a5a",
+          "#8c4a3a"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "1908",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24010567",
+          "what": "OSM: start_date=1908, building 25 x 23 m, restaurant"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cornwall_Park,_Auckland",
+          "what": "park of 270 ha around One Tree Hill, tree-lined avenues, working sheep farm"
+        }
+      ],
+      "notes": "Only the date, size and use are sourced; timber construction, roof and colours are typed from the Edwardian park-pavilion type (no Edwardian style id exists, so victorian is used)."
+    },
+    "auckland-osm-node-2006136519": {
+      "venueId": "auckland-osm-node-2006136519",
+      "city": "auckland",
+      "name": "Parkinsons Lookout",
+      "archetype": "monument",
+      "subject": "a timber viewing platform on a forested ridge in the Waitakere Ranges looking over the coast",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 21,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "lookout-platform"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6f4e",
+          "#5c7a5a",
+          "#c9c2b2"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "viewing deck"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "timber railing"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Waitakere_Ranges",
+          "what": "ranges are forested with kauri, rata, rimu and nikau over volcanic rock, coastal cliffs over 300 m"
+        }
+      ],
+      "notes": "Wikidata calls it a lookout point in West Auckland; the 21 x 19 m OSM building nearby is the closest footprint. The structure itself is not described. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "auckland-osm-node-4258039707": {
+      "venueId": "auckland-osm-node-4258039707",
+      "city": "auckland",
+      "name": "HMS Orpheus Graves",
+      "archetype": "monument",
+      "subject": "a small coastal clearing near the Manukau Heads with a few marked graves and an information board, beside a car park",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 30,
+        "depth_m": 16,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "graves-memorial"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8e8a80",
+          "#5c7a5a",
+          "#c9c2b2"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "information board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1863 wreck; later memorial",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/HMS_Orpheus_(1860)",
+          "what": "three unknown victims buried in marked graves near Cornwallis Beach; many other unmarked burials; information board at Kakamatua; area heavily overgrown; wreck 7 Feb 1863 at Manukau Bar"
+        }
+      ],
+      "notes": "Small low memorial surrounded by native scrub and a dark sand coast; the OSM geometry is the nearby car park (84 x 16 m)."
+    },
+    "auckland-osm-relation-16177458": {
+      "venueId": "auckland-osm-relation-16177458",
+      "city": "auckland",
+      "name": "Auckland Institute of Studies",
+      "archetype": "campus-block",
+      "subject": "a college of three- to four-storey rendered teaching blocks with a car park",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "college",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e3d7b5",
+          "#8c4a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM shows a 270 x 180 m college site; no building description found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "auckland-osm-relation-9089456": {
+      "venueId": "auckland-osm-relation-9089456",
+      "city": "auckland",
+      "name": "Sylvia Park",
+      "archetype": "mall",
+      "subject": "Sylvia Park: a long two-level mall with a vast surface car park in front and the cinema and railway station at the rear",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "regional-mall",
+        "wings": 2
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d6d2",
+          "#c8442f",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "3,800 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3,
+          "note": "blank"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "rail station at rear"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sylvia_Park",
+          "what": "total floor area 106,427 m2, two floors, 3,800 parking spaces, 200+ stores, cinemas and railway station at the rear"
+        }
+      ],
+      "notes": "Size from the source; facade materials typed. Much larger and flatter than Glenfield Mall."
+    },
+    "auckland-osm-way-11019403": {
+      "venueId": "auckland-osm-way-11019403",
+      "city": "auckland",
+      "name": "Glenfield Mall",
+      "archetype": "mall",
+      "subject": "Glenfield Mall: a 1971 suburban mall rebuilt in 2000 to five levels with rooftop parking, set on a hill",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 120,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "variant": "tiered-suburban-mall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d7b5",
+          "#8d9296",
+          "#ffffff"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "multi-level plus roof car park, 1,506 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1971 (rebuilt 2000)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Glenfield_Mall",
+          "what": "opened 8 Nov 1971; Westfield 2000 renovation enlarged to five levels, 29,700 m2, 1,506 parking spaces, bounded by Glenfield Rd, Downing St and Bentley Ave"
+        }
+      ],
+      "notes": "Five levels from the source (shops plus parking decks). Taller and more stacked than Sylvia Park."
+    },
+    "auckland-osm-way-26155148": {
+      "venueId": "auckland-osm-way-26155148",
+      "city": "auckland",
+      "name": "Go Media Stadium / Mount Smart Stadium",
+      "archetype": "stadium",
+      "subject": "Mount Smart Stadium: an oval ground built into the quarried Rarotonga volcanic cone, grassed banks and a roofed grandstand on one side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "none",
+        "variant": "quarry-bowl",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bb",
+          "#2f5a8f",
+          "#ffffff"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roofed grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "count unverified"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1967",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Smart_Stadium",
+          "what": "built in the quarried remnant of the Rarotonga / Mount Smart volcanic cone in Penrose, grass surface, roofed grandstand, 25,000 for sport, up to about 47,000-60,000 for concerts with temporary stands"
+        }
+      ],
+      "notes": "Grassed banks and the volcanic bowl setting are suggested by the quarry-cone source; stand colours and floodlight count are typed."
+    },
+    "auckland-osm-way-32868818": {
+      "venueId": "auckland-osm-way-32868818",
+      "city": "auckland",
+      "name": "Auckland City Hospital",
+      "archetype": "hospital",
+      "subject": "the 2003 Auckland City Hospital: a nine-level glass-and-panel block joined by an atrium to the 1970s support tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 9,
+        "height_m": 36,
+        "roof": "flat",
+        "variant": "main-block-with-atrium",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd6da",
+          "#5c7a8a",
+          "#f1f1ef"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2003 (1975 support tower)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Auckland_City_Hospital",
+          "what": "main building opened 2003, nine levels (ten with plant), 75,575 m2, by Jasmax and McConnel Smith & Johnson; older 1965-75 Stephenson & Turner tower linked by an atrium; helipad NZJL"
+        }
+      ],
+      "notes": "Levels, area, atrium and helipad are sourced; colours typed. OSM matched a tiny library building here, which should be ignored. Taller and glassier than Middlemore."
+    },
+    "auckland-osm-way-336630313": {
+      "venueId": "auckland-osm-way-336630313",
+      "city": "auckland",
+      "name": "St Barnabas Anglican Church",
+      "archetype": "church-gothic",
+      "subject": "St Barnabas, Mount Eden: a small Selwyn-era church whose 1848 timber nave was surrounded by an incomplete 1903 brick rebuild, with a 1964 war memorial campanile",
+      "form": {
+        "footprint": "cross",
+        "width_m": 43,
+        "depth_m": 31,
+        "storeys": 1,
+        "height_m": 11,
+        "roof": "gable",
+        "variant": "selwyn-church",
+        "wings": 1
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "timber",
+        "colours": [
+          "#9b5a43",
+          "#d9c9a0",
+          "#f1ece0"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "war memorial campanile 1964"
+        },
+        {
+          "id": "buttresses",
+          "count": 4,
+          "note": "brick buttresses; count unverified"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1848 (brick 1903)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_Barnabas_Church,_Mount_Eden",
+          "what": "designed by Frederick Thatcher as a Selwyn church 1848; nave widened 1866, enlarged 1886, brick rebuild begun 1903 never completed, vestry 1932, campanile 1964"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mount_Eden,_New_Zealand",
+          "what": "Category 2 heritage church on Bellevue Road"
+        }
+      ],
+      "notes": "History is sourced; roof material and exact colours are typed. The mixed timber and brick fabric with a detached campanile is what to show; contrasts with St Mary's all-timber chapel."
+    },
+    "auckland-osm-way-33871472": {
+      "venueId": "auckland-osm-way-33871472",
+      "city": "auckland",
+      "name": "Barfoot & Thompson Stadium",
+      "archetype": "stadium",
+      "subject": "an indoor arena opened 1987 on the Selwyn College grounds in Kohimarama: a large windowless hall with a low-pitched roof and a glazed foyer",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "shed",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9d2d6",
+          "#2f5a8f",
+          "#f1f1ef"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barfoot_%26_Thompson_Stadium",
+          "what": "indoor multi-purpose venue in Kohimarama on Selwyn College grounds, opened 1 July 1987, seats about 3,700, hosted 1990 Commonwealth Games gymnastics"
+        }
+      ],
+      "notes": "Use and date sourced; exterior is typed as a large clad hall. An enclosed hall, unlike the open bowl at Mount Smart."
+    },
+    "auckland-osm-way-339310375": {
+      "venueId": "auckland-osm-way-339310375",
+      "city": "auckland",
+      "name": "Nathan Homestead",
+      "archetype": "manor",
+      "subject": "Nathan Homestead in Manurewa, built 1923-25: a two-storey Tudor-revival house, brick and roughcast below and half-timbered above, with a terracotta tile roof and four tall chimneys",
+      "form": {
+        "footprint": "L",
+        "width_m": 38,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "tudor-revival-house",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e4d6b8",
+          "#4a3a2a",
+          "#9b5a43"
+        ],
+        "roofColour": "#b4573a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 4,
+          "note": "prominent brick chimneys"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "stone-supported entrance portico"
+        },
+        {
+          "id": "bay-window",
+          "count": 3,
+          "note": "half-timbered and faceted lead-light bays"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "sleeping balcony clad in terracotta shingles"
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "terracotta-coloured water tower nearby"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "tudor",
+      "era": "1923-25",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nathan_Homestead",
+          "what": "brick and timber house by Daniel B. Patterson 1923-25, Tudor Revival with Arts and Crafts and Bungalow influences, cavity brick with brushed render ground floor, timber-framed plastered first floor, hipped and gabled terracotta tile roof, four brick chimneys, half-timbered bays, verandahs with brick piers, stone-supported portico"
+        }
+      ],
+      "notes": "Exterior paint colours are not given in the source; neutral cream with dark half-timber is typed. A good contrast to the colonial villas in the same city."
+    },
+    "auckland-osm-way-58379525": {
+      "venueId": "auckland-osm-way-58379525",
+      "city": "auckland",
+      "name": "North Shore Hospital",
+      "archetype": "hospital",
+      "subject": "North Shore Hospital: a six-level 1984 concrete tower block with wings, beside Lake Pupuke",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "tower-block",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#cfc9bd",
+          "#6b8793",
+          "#f1ece0"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "brutalist",
+      "era": "1984",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/North_Shore_Hospital",
+          "what": "main Tower Block opened 2 April 1984 by PM David Lange; original maternity hospital 1958; Lakeview Cardiology 2011; Elective Surgery Centre 2013"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/11501813",
+          "what": "OSM building:levels=6, complex 291 x 121 m"
+        }
+      ],
+      "notes": "Era and levels sourced; exposed-concrete treatment is typed from 1980s NZ public-hospital norms. Lower and darker than Auckland City."
+    },
+    "auckland-osm-way-680869064": {
+      "venueId": "auckland-osm-way-680869064",
+      "city": "auckland",
+      "name": "Toroa",
+      "archetype": "transport-station",
+      "subject": "the 1925 steam ferry Toroa moored at Henderson under restoration: a long double-ended two-deck hull with a wheelhouse at each end and a funnel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "variant": "moored-ferry"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#f0ede4",
+          "#2b2b2b",
+          "#8a2f2a"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "steam funnel"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "mooring jetty"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1925",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Toroa_(ferry)",
+          "what": "launched 28 April 1925, 39.85 m long, 9.6 m beam, two decks, double-ended with a wheelhouse at each end, triple-expansion steam engine, kauri and macrocarpa planking under restoration at Henderson"
+        }
+      ],
+      "notes": "A vessel shown as a moored hull; the colours (white superstructure, dark hull) are typed because the source does not describe them."
+    },
+    "auckland-osm-way-68312672": {
+      "venueId": "auckland-osm-way-68312672",
+      "city": "auckland",
+      "name": "Fred Taylor Park",
+      "archetype": "park-landscape",
+      "subject": "a large sports park in Whenuapai with a grass football pitch, small clubrooms and floodlights",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 376,
+        "depth_m": 291,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "sports-park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f0ede4",
+          "#5c7a5a",
+          "#8c4a3a"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "clubrooms, assumed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "assumed"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th-21st century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Fred_Taylor_Park",
+          "what": "football ground with grass pitch, capacity 1,000, city of Auckland owned, tenants Waitakere United 2004-2021 and West Coast Rangers"
+        }
+      ],
+      "notes": "Capacity and surface sourced; clubrooms and lights assumed. OSM park outline is 376 x 291 m."
+    },
+    "auckland-osm-way-930842670": {
+      "venueId": "auckland-osm-way-930842670",
+      "city": "auckland",
+      "name": "Auckland New Zealand Temple",
+      "archetype": "church-modern",
+      "subject": "the Latter-day Saint temple at Flat Bush, dedicated 2025: a pale building with rows of rectangular windows, a tall arch over the entrance and a square-based spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "variant": "temple-single-spire"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#e8e6e0",
+          "#b9bbb6",
+          "#f6f4ee"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "rises from a square base with a rectangular window on each side"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "tall arch above the entrance"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2025",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Auckland_New_Zealand_Temple",
+          "what": "announced 2018, groundbreaking 2020, dedicated 13 April 2025, 4,223 m2, rows of rectangular windows, tall arch above the entrance, spire on a square base, green and red bushes and trees in landscaping"
+        }
+      ],
+      "notes": "Colour, materials and statue are not stated in the source (assumed pale stone, no statue). Wider and lower than the Asuncion temple."
+    },
+    "auckland-osm-way-97144423": {
+      "venueId": "auckland-osm-way-97144423",
+      "city": "auckland",
+      "name": "Otuataua Stonefields Historic Reserve",
+      "archetype": "park-landscape",
+      "subject": "a 100 ha reserve of volcanic cone, grassy quarried crater and low Maori and European dry-stone walls and garden mounds down to the Manukau shore",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "stonefield"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#5f5a54",
+          "#8aa05a",
+          "#a9a393"
+        ],
+        "roofColour": "#6b6460",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 8,
+          "note": "low dry-stone basalt walls"
+        },
+        {
+          "id": "terrace",
+          "count": 2,
+          "note": "stone garden mounds"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank interpretive board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "15th century gardens",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C5%8Ctuataua_Stonefields",
+          "what": "about 100 ha, 15th-century Maori stone garden mounds and Maori and European dry-stone walls, Otuataua volcanic cone quarried in the 1950s leaving a shallow grassy crater, forest remnant on lava field, sandy beaches and tidal flats to the Manukau"
+        }
+      ],
+      "notes": "Dark basalt rubble walls on green pasture are the recognisable motif; no buildings."
+    },
+    "auckland-quiet-reflection": {
+      "venueId": "auckland-quiet-reflection",
+      "city": "auckland",
+      "name": "Saint Mary's Old Convent Chapel",
+      "archetype": "church-gothic",
+      "subject": "the 1866 cruciform timber Gothic-revival chapel by Edward Mahoney, steeply pitched with a central spire, repainted in 2022-24 in assumed original colours",
+      "form": {
+        "footprint": "cross",
+        "width_m": 21,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "timber-chapel"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#e6dcc0",
+          "#6b4a30",
+          "#ffffff"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "central spire"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "east window of Our Lady of Mercy with St Catherine and St Cecilia"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1866",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_Mary%27s_Old_Convent_Chapel",
+          "what": "Gothic Revival by Edward Mahoney, built 1865-66, wooden cruciform plan, steeply pitched roof and central spire, kauri stalls, east stained glass, repainted 2022-24 in assumed original colours"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/396119569",
+          "what": "OSM footprint about 21 x 16 m"
+        }
+      ],
+      "notes": "The paint scheme was repainted from paint analysis but the colours were not stated in the source; cream with brown trim is typed. Roof material assumed."
+    },
+    "auckland-recreation": {
+      "venueId": "auckland-recreation",
+      "city": "auckland",
+      "name": "Stockade Hill",
+      "archetype": "park-landscape",
+      "subject": "a grassed hill park in Howick with the 1921 war memorial at the centre of the old 1863 stockade and a visible earth ditch and bank around it",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 260,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "memorial-hill"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5bb",
+          "#8aa05a",
+          "#f0ede4"
+        ],
+        "roofColour": "#7f858a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Howick War Memorial; exact form unverified"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "stockade bank and ditch"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1921 memorial",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stockade_Hill",
+          "what": "Howick War Memorial unveiled 13 Jan 1921 at the centre of the old stockade site; WWI memorial also on the hill; 1863 perimeter ditch and bank visible; ANZAC parade ends at the top"
+        }
+      ],
+      "notes": "Memorial shape and style are not described in the source; an obelisk-type memorial on grass is a placeholder."
+    },
+    "auckland-transit": {
+      "venueId": "auckland-transit",
+      "city": "auckland",
+      "name": "Glen Eden",
+      "archetype": "transport-station",
+      "subject": "Glen Eden railway station: two side platforms on a double track, with the 1880 timber station building (verandahs added 1929 and 1940) moved beside the platform",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "variant": "suburban-station",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f0ede4",
+          "#8c4a3a",
+          "#5c7a5a"
+        ],
+        "roofColour": "#7f858a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 2,
+          "note": "verandahs on both sides of the heritage building"
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1880",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Glen_Eden_railway_station",
+          "what": "two side platforms and two tracks, station building completed 1880 with a ridged gable roof, verandahs added 1929 and 1940, restored and moved in 2001 and now a cafe, level crossing beside the station"
+        }
+      ],
+      "notes": "Colours of the building are not given; cream with a red-brown roof trim is typed. Venue point is the suburb, so the station is the nearest real landmark."
+    }
+  }
+}

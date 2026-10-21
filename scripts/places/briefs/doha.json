@@ -1,0 +1,1779 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "doha",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "doha",
+    "climate": "desert",
+    "vernacular": "Sand-coloured low and mid-rise reinforced-concrete buildings in cream and beige render and limestone cladding, flat roofs with parapets, small recessed windows and screens for shade; villas and compounds behind high walls; heritage-style buildings with plastered coral-stone walls, exposed timber pole ends and battlement parapets; a skyline of reflective blue-glass towers in West Bay and sculptural landmark buildings in Education City, Msheireb and the Corniche; palms and irrigated lawns.",
+    "wallColours": [
+      "#d9c7a3",
+      "#e8dcc3",
+      "#f2efe8",
+      "#b89a6a",
+      "#9fb4c4",
+      "#a8a6a0",
+      "#cdb48b"
+    ],
+    "roofColours": [
+      "#b9b2a3",
+      "#c8c2b4",
+      "#8f8b84",
+      "#d9d2c3"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "limestone",
+      "glass-curtain",
+      "concrete",
+      "stone",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet",
+      "glass"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "acacia",
+      "none"
+    ],
+    "ornament": "Islamic geometric screens and mashrabiya-pattern cladding; pointed and round arches; battlement (merlon) parapets on heritage-style buildings; carved gypsum screens and niches; exposed round timber poles (danchal) in souq-style buildings; blue-and-gold tile accents on mosques; sculptural landmarks inspired by desert rose, dhow sail and fanar lantern.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Qatar",
+        "what": "traditional Qatari architecture: courtyards, flat roofs, small windows, limestone and coral slabs with gypsum plaster, arches, niches and battlements; modern landmarks in Education City"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Barzan_Tower",
+        "what": "coral stone and limestone walls bonded with mud mortar and gypsum plaster, wooden pole roofs, buttresses"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Museum_of_Qatar",
+        "what": "desert-rose form of 539 interlocking discs clad in glass-fibre reinforced concrete"
+      }
+    ]
+  },
+  "places": {
+    "doha-airport-doha-airport": {
+      "venueId": "doha-airport-doha-airport",
+      "city": "doha",
+      "name": "Hamad International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Hamad International Airport passenger terminal seen from the forecourt: a vast low terminal under a white undulating barrel-vault roof, with the slim control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 600,
+        "depth_m": 250,
+        "storeys": 4,
+        "height_m": 40,
+        "roof": "wave",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe2e4",
+          "#8a9aa6",
+          "#f0efec"
+        ],
+        "roofColour": "#cfd3d6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "wave-styled roof edge"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 12
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "giant lamp-bear sculpture in the duty-free hall seen through glass"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hamad_International_Airport",
+          "what": "designed by HOK with oasis/water theme and wave-styled roofs, 36 km2 site, Lamp Bear sculpture about 7 m tall in the duty-free hall, mushroom-shaped aluminium and glass mosque dome, 10,000 m2 Orchard garden"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1318168311",
+          "what": "OSM footprint 13.8x8.3 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1198791",
+          "what": "Wikidata entity: Hamad International Airport"
+        }
+      ],
+      "notes": "OSM geometry for the venue is a tiny 14 x 8 m node-building and was ignored. Terminal dimensions are estimates; show the central portion (<=120 m)."
+    },
+    "doha-clinic": {
+      "venueId": "doha-clinic",
+      "city": "doha",
+      "name": "Al Ahli Hospital",
+      "archetype": "hospital",
+      "subject": "Al Ahli Hospital, Hamad bin Abdullah Al-Sadd area: a large white private hospital block with blue glazing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0eee8",
+          "#3d6f8f",
+          "#c8b48a"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/247909086",
+          "what": "OSM footprint 257.7x184.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30260308",
+          "what": "Wikidata entity: Al-Ahli Hospital"
+        }
+      ],
+      "notes": "OSM compound 258 x 184 m (46,766 m2); Wikidata: private hospital. Appearance typed from the city style."
+    },
+    "doha-community-notices": {
+      "venueId": "doha-community-notices",
+      "city": "doha",
+      "name": "Embassy of India",
+      "archetype": "civic-small",
+      "subject": "Embassy of India chancery: a small two-storey walled embassy building with flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc3",
+          "#b89a6a",
+          "#f2efe8"
+        ],
+        "roofColour": "#c8c2b4",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/490598248",
+          "what": "OSM footprint 29.5x20.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5369723",
+          "what": "Wikidata entity: Embassy of India, Doha"
+        }
+      ],
+      "notes": "OSM building=government, 29.5 x 20.6 m. No description found; typed guess. No emblems or legible signage."
+    },
+    "doha-community-voting-game": {
+      "venueId": "doha-community-voting-game",
+      "city": "doha",
+      "name": "Katara Square",
+      "archetype": "museum-theatre",
+      "subject": "Katara Cultural Village amphitheatre: a round marble open-air theatre with tiered seating, arched gateways and sand-coloured surrounding buildings",
+      "form": {
+        "footprint": "round",
+        "width_m": 100,
+        "depth_m": 97,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "limestone",
+        "colours": [
+          "#e8dcc3",
+          "#c8b48a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#e8dcc3",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "tiered seating"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Katara_Cultural_Village",
+          "what": "designed to resemble a traditional Qatari village, low flat-roofed sand-coloured buildings, 3,275 m2 marble amphitheatre blending Greek and Arabic design seating 5,000, pigeon towers about 15 m tall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/548147174",
+          "what": "OSM footprint 103.6x96.9 m, 1 levels, height 5 m"
+        }
+      ],
+      "notes": "Venue is named Katara Square; the OSM building at this point is a 104 x 97 m, 1-level events venue (height 5 m), taken as the amphitheatre. Ambiguous; marked medium for the village style, not exact form."
+    },
+    "doha-community-workshop": {
+      "venueId": "doha-community-workshop",
+      "city": "doha",
+      "name": "Qatar National Convention Center",
+      "archetype": "museum-theatre",
+      "subject": "Qatar National Convention Centre: a huge white exhibition and conference hall whose front is held up by giant branching tree-like columns symbolising the Sidrat al-Muntaha tree",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e9e6",
+          "#5b7389",
+          "#b8c3cb"
+        ],
+        "roofColour": "#d9d9d6",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 2,
+          "note": "giant branching tree-like columns across the entrance front"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Qatar_National_Convention_Centre",
+          "what": "designed by Arata Isozaki with RHWL; front columns symbolise the Sidrat al-Muntaha sacred tree"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/10725661",
+          "what": "OSM footprint 539.3x256.7 m, height 25 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7267112",
+          "what": "Wikidata entity: Qatar National Convention Centre"
+        }
+      ],
+      "notes": "OSM: 539 x 257 m, height 25 m. Show the tree-column front; white colour is from general photos."
+    },
+    "doha-market-game": {
+      "venueId": "doha-market-game",
+      "city": "doha",
+      "name": "Mall of Qatar",
+      "archetype": "mall",
+      "subject": "Mall of Qatar, Al Rayyan: a very large three-floor sand-coloured shopping mall with a central glass dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8c7a3",
+          "#8aa0b0",
+          "#f2eee4"
+        ],
+        "roofColour": "#c8c2b4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "high central glass dome, eight floors high"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mall_of_Qatar",
+          "what": "three floors, high central glass dome eight floors high, architect Chapman Taylor, floor area 256,000 m2 in the infobox"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/463697424",
+          "what": "OSM footprint 469.7x288.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q22948422",
+          "what": "Wikidata entity: Mall of Qatar"
+        }
+      ],
+      "notes": "OSM 470 x 289 m. The facade finish is typed from the city style; the dome comes from the source."
+    },
+    "doha-meal-stop": {
+      "venueId": "doha-meal-stop",
+      "city": "doha",
+      "name": "Levantine Doha",
+      "archetype": "restaurant",
+      "subject": "Levantine Doha restaurant: a small two-storey Mediterranean-style restaurant building with a terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc3",
+          "#b89a6a",
+          "#f2efe8"
+        ],
+        "roofColour": "#c8c2b4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1265637402",
+          "what": "OSM footprint 46.5x23.4 m, 38 levels, height 150 m"
+        }
+      ],
+      "notes": "The OSM point lies in the same 46 x 23 m, 38-level tower block as The Kitchen Doha, so no separate footprint exists. This place is typed from the city style as a small restaurant; no description found."
+    },
+    "doha-osm-node-13278587089": {
+      "venueId": "doha-osm-node-13278587089",
+      "city": "doha",
+      "name": "Site of the 2022 FIFA World Cup Final",
+      "archetype": "stadium",
+      "subject": "Lusail Stadium (2022 World Cup final venue): a huge round bowl in gold-coloured faceted cladding with a ring roof",
+      "form": {
+        "footprint": "round",
+        "width_m": 275,
+        "depth_m": 275,
+        "storeys": 4,
+        "height_m": 45,
+        "roof": "tensile"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#c9a24b",
+          "#8a6f35",
+          "#e8dcc0"
+        ],
+        "roofColour": "#bfa66a",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1,
+          "note": "lights built into the roof edge"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2021",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lusail_Stadium",
+          "what": "capacity 88,966, architects Foster + Partners and Populous"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9489554",
+          "what": "OSM footprint 275.8x275 m, height 30 m"
+        }
+      ],
+      "notes": "OSM building=stadium 276 x 275 m, height 30 m. Gold faceted facade and the lantern-bowl look are from general knowledge, not the source read. Height 45 m is an estimate."
+    },
+    "doha-osm-node-3424940793": {
+      "venueId": "doha-osm-node-3424940793",
+      "city": "doha",
+      "name": "Souq Waqif",
+      "archetype": "market-open",
+      "subject": "Souq Waqif: restored traditional Qatari souq of narrow covered alleys, plastered walls the colour of sand and exposed round timber beam ends under flat roofs",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 93,
+        "depth_m": 92,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#d6b98a",
+          "#b08a5a",
+          "#efe5d2"
+        ],
+        "roofColour": "#b89b72",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "lock-ups",
+          "count": 10
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "small mosque minaret"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "late 19th century, restored 2006-2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Souq_Waqif",
+          "what": "traditional Qatari architecture dating from the late 19th or early 20th century, restored 2006-2008 conserving the original form, narrow alleyways, tiled balconies"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Qatar",
+          "what": "timber poles and bamboo in roofs, gypsum plaster, battlement and arch features"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/18139209",
+          "what": "OSM footprint 93.1x91.8 m, height 10 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4117959",
+          "what": "Wikidata entity: Souq Waqif"
+        }
+      ],
+      "notes": "OSM height 10 m, 93 x 92 m. Show the walled alley lane with exposed beam ends; colours are typed from heritage Qatari plaster tones."
+    },
+    "doha-osm-node-6785101974": {
+      "venueId": "doha-osm-node-6785101974",
+      "city": "doha",
+      "name": "The Kitchen Doha",
+      "archetype": "hotel",
+      "subject": "The Kitchen Doha in The Pearl: shown as the 38-storey hotel tower block OSM places it in",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 23,
+        "storeys": 38,
+        "height_m": 150,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#9fb4c4",
+          "#e8dcc3",
+          "#c8c2b4"
+        ],
+        "roofColour": "#a8a6a0",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "setback-tiers",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1265637402",
+          "what": "OSM footprint 46.5x23.4 m, 38 levels, height 150 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q82692847",
+          "what": "Wikidata entity: The Kitchen Doha"
+        }
+      ],
+      "notes": "OSM places the restaurant inside a 46.5 x 23.4 m building mapped as tourism=hotel with 38 levels and height 150 m. Restaurant interior unseen; tower finish is typed."
+    },
+    "doha-osm-relation-10664399": {
+      "venueId": "doha-osm-relation-10664399",
+      "city": "doha",
+      "name": "Fanar Qatar Islamic Cultural Center",
+      "archetype": "mosque-domed",
+      "subject": "Fanar Qatar Islamic Cultural Center: a sand-brown brick mosque beside the sea with a large dome and a spiral minaret inspired by Samarra",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 65,
+        "storeys": 3,
+        "height_m": 25,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#cdb48b",
+          "#a8896a",
+          "#e8dcc3"
+        ],
+        "roofColour": "#c8b48a",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "single spiral minaret, tallest in Qatar, modelled on Samarra"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Abdulla_Bin_Zaid_Al_Mahmoud_Islamic_Cultural_Center",
+          "what": "one spiral minaret inspired by the Great Mosque of Samarra, the tallest in Qatar, brick and mortar construction, completed 2008"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/10664399",
+          "what": "OSM footprint 80.6x74.5 m, 5 levels, height 25 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3057368",
+          "what": "Wikidata entity: Abdulla Bin Zaid Al Mahmoud Islamic Cultural Center"
+        }
+      ],
+      "notes": "OSM: 81 x 75 m, 5 levels, height 25 m. Warm tan colouring is from general photos; the source does not state colours or the minaret height."
+    },
+    "doha-osm-relation-13338453": {
+      "venueId": "doha-osm-relation-13338453",
+      "city": "doha",
+      "name": "NCCCR (Al Amal Hospital)",
+      "archetype": "hospital",
+      "subject": "National Center for Cancer Care and Research (Al Amal Hospital): a mid-rise white hospital building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2efe8",
+          "#6f8fa8",
+          "#d9c7a3"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/13338453",
+          "what": "OSM footprint 135.1x106.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30263872",
+          "what": "Wikidata entity: National Center for Cancer Care and Research"
+        }
+      ],
+      "notes": "OSM relation 135 x 106 m; Wikidata: healthcare organisation. Typed from the city style."
+    },
+    "doha-osm-way-103002122": {
+      "venueId": "doha-osm-way-103002122",
+      "city": "doha",
+      "name": "Landmark Shopping Mall",
+      "archetype": "mall",
+      "subject": "Landmark Shopping Mall, Al Gharrafa: a long low two-floor sand-coloured mall with a wide entrance front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 120,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e0d2b2",
+          "#8aa0b0",
+          "#f2eee4"
+        ],
+        "roofColour": "#c8c2b4",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/103002122",
+          "what": "OSM footprint 406.4x159.6 m, 2 levels, height 8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17067835",
+          "what": "Wikidata entity: Landmark Mall"
+        }
+      ],
+      "notes": "OSM: 2 levels, 8 m high, 406 x 160 m; Wikidata inception 2000. Facade finish is typed."
+    },
+    "doha-osm-way-154525758": {
+      "venueId": "doha-osm-way-154525758",
+      "city": "doha",
+      "name": "Qatar University",
+      "archetype": "campus-block",
+      "subject": "Qatar University main campus building: sand-coloured teaching blocks with Islamic geometric screens and shaded walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 116,
+        "depth_m": 113,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d9c7a3",
+          "#a8896a",
+          "#ece3cf"
+        ],
+        "roofColour": "#c8c2b4",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Qatar_University",
+          "what": "founded 1973, university 1977, campus about 2,000 acres in Al Tarfa; old college buildings with separate entrances"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1442853859",
+          "what": "OSM footprint 116.4x112.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1574578",
+          "what": "Wikidata entity: Qatar University"
+        }
+      ],
+      "notes": "The source gives no appearance; geometric screens and sandy colour are a typed assumption for a 1970s-80s Gulf campus."
+    },
+    "doha-osm-way-154923131": {
+      "venueId": "doha-osm-way-154923131",
+      "city": "doha",
+      "name": "Jassim bin Hamad Stadium",
+      "archetype": "stadium",
+      "subject": "Jassim bin Hamad Stadium (Al Sadd): an older oval football stadium with a roofed main stand and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 198,
+        "depth_m": 178,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8ebee",
+          "#1d4e9b",
+          "#b8b8b4"
+        ],
+        "roofColour": "#9c9a94",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/2081778",
+          "what": "OSM footprint 198.5x178.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1073161",
+          "what": "Wikidata entity: Jassim Bin Hamad Stadium"
+        }
+      ],
+      "notes": "OSM stadium start_date 1974, 198 x 179 m. Blue-white seats assume the home club colours; roof detail is typed."
+    },
+    "doha-osm-way-155039774": {
+      "venueId": "doha-osm-way-155039774",
+      "city": "doha",
+      "name": "Saoud bin Abdulrahman Al-Thani Stadium",
+      "archetype": "stadium",
+      "subject": "Saoud bin Abdulrahman Al-Thani Stadium (Al Wakrah): a medium football stadium with a low oval bowl and a partial canopy",
+      "form": {
+        "footprint": "oval",
+        "width_m": 222,
+        "depth_m": 189,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e4d8",
+          "#c8402f",
+          "#a8a6a0"
+        ],
+        "roofColour": "#a8a6a0",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/2083128",
+          "what": "OSM footprint 223.3x189.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q38250455",
+          "what": "Wikidata entity: Saoud bin Abdulrahman Stadium"
+        }
+      ],
+      "notes": "OSM stadium 223 x 189 m; Wikidata: multi-purpose stadium. No description found; red accents are a guess."
+    },
+    "doha-osm-way-238026555": {
+      "venueId": "doha-osm-way-238026555",
+      "city": "doha",
+      "name": "Hamad Medical City",
+      "archetype": "hospital",
+      "subject": "Hamad General Hospital (Hamad Medical City): a broad white five-storey hospital complex with connected wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 190,
+        "depth_m": 120,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f0eee8",
+          "#6f8fa8",
+          "#d9c7a3"
+        ],
+        "roofColour": "#b9b2a3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1982",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/10405076",
+          "what": "OSM footprint 245.8x228.5 m, height 20 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q30254334",
+          "what": "Wikidata entity: Hamad General Hospital"
+        }
+      ],
+      "notes": "OSM building=hospital 246 x 229 m, height 20 m; Wikidata label Hamad General Hospital. Wings and finish are typed."
+    },
+    "doha-osm-way-239171216": {
+      "venueId": "doha-osm-way-239171216",
+      "city": "doha",
+      "name": "West End Park International Cricket Stadium",
+      "archetype": "stadium",
+      "subject": "West End Park International Cricket Stadium: a compact round cricket ground with low bleacher stands and a small pavilion",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 199,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#e8dcc3",
+          "#2f6f4f",
+          "#bdb8ac"
+        ],
+        "roofColour": "#9c9a94",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/9095982",
+          "what": "OSM footprint 200x199.6 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18378601",
+          "what": "Wikidata entity: West End Park International Cricket Stadium"
+        }
+      ],
+      "notes": "OSM 200 x 200 m stadium; Wikidata: cricket ground. No description found."
+    },
+    "doha-osm-way-256250988": {
+      "venueId": "doha-osm-way-256250988",
+      "city": "doha",
+      "name": "Barzan Towers",
+      "archetype": "heritage-fort",
+      "subject": "Barzan Towers (Umm Salal Mohammed): two 16 m coral-stone watchtowers, one with conical walls and one with an external staircase, joined to a walled majlis and mosque",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#e3d6b8",
+          "#b8a07a",
+          "#f0e8d4"
+        ],
+        "roofColour": "#b89b72",
+        "windows": "punched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 2
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "external staircase on the second tower"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "arab-islamic",
+      "era": "late 19th century, restored 2003",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Barzan_Tower",
+          "what": "two towers 16 m high, one cone-shaped and one with a massive staircase, walls about 1 m thick with buttresses, coral stone and limestone bonded with mud mortar under gypsum plaster, majilis, L-shaped pavilion and mosque, built late 19th century and renovated 1910, restored 2003"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/256250988",
+          "what": "OSM footprint 156.6x90.4 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4866084",
+          "what": "Wikidata entity: Barzan Tower"
+        }
+      ],
+      "notes": "The plastered colour is estimated as pale sand; crenellated tops are from photos and not in the source read. OSM compound 157 x 90 m."
+    },
+    "doha-osm-way-684144291": {
+      "venueId": "doha-osm-way-684144291",
+      "city": "doha",
+      "name": "Northwestern University in Qatar",
+      "archetype": "campus-block",
+      "subject": "Northwestern University in Qatar, Education City: a courtyard campus block in sand and terracotta tones with bold square openings",
+      "form": {
+        "footprint": "U",
+        "width_m": 150,
+        "depth_m": 110,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "terracotta",
+        "colours": [
+          "#d6b48a",
+          "#b8643f",
+          "#ece3cf"
+        ],
+        "roofColour": "#c8b48a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Education_City",
+          "what": "Education City master plan by Arata Isozaki, 2001; Media Majlis opened at NU-Q in 2019"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9491598",
+          "what": "OSM footprint 155.2x147.7 m, height 20 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q890759",
+          "what": "Wikidata entity: Northwestern University in Qatar"
+        }
+      ],
+      "notes": "OSM: 155 x 148 m, height 20 m. The sand/terracotta courtyard look is a recollection of Education City buildings, not confirmed by the sources read."
+    },
+    "doha-osm-way-684407873": {
+      "venueId": "doha-osm-way-684407873",
+      "city": "doha",
+      "name": "Virginia Commonwealth University - Qatar",
+      "archetype": "campus-block",
+      "subject": "Virginia Commonwealth University in Qatar (VCUarts Qatar): a pink-sand art school building around a skylit atrium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 115,
+        "depth_m": 95,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9a98f",
+          "#7a4a3a",
+          "#f0e6d6"
+        ],
+        "roofColour": "#c8b48a",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/684407874",
+          "what": "OSM footprint 115.2x112.2 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q24896812",
+          "what": "Wikidata entity: Virginia Commonwealth University - Qatar"
+        }
+      ],
+      "notes": "OSM: 115 x 112 m. Pinkish sand colour is from memory of Education City art school photos, not confirmed by sources read."
+    },
+    "doha-osm-way-770633250": {
+      "venueId": "doha-osm-way-770633250",
+      "city": "doha",
+      "name": "Aspire Tower",
+      "archetype": "office-tower",
+      "subject": "Aspire Tower (The Torch): a 300 m hyperboloid hotel tower with a glass skin and a flared torch-like top",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 36,
+        "height_m": 300,
+        "roof": "curved",
+        "variant": "hyperboloid-torch"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#b9c4cc",
+          "#e8e8e6",
+          "#7c8fa0"
+        ],
+        "roofColour": "#b9c4cc",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "flared top ring like a torch flame"
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "low base building"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "high-tech",
+      "era": "2006",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Aspire_Tower",
+          "what": "300 m, 36 floors, hyperboloid structure with concrete core and cantilevered steel beams, energy-efficient glass skin, glass-fibre reinforced concrete at module bases, LED lighting, elliptical pool 80 m up cantilevered 12 m, architects Hadi Simaan and AREP"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/770633250",
+          "what": "OSM footprint 70x69.9 m, 36 levels, height 318 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q737602",
+          "what": "Wikidata entity: Aspire Tower"
+        }
+      ],
+      "notes": "OSM base 70 x 70 m, height 318 m (includes the torch). Waist is narrower than the base; the swimming pool bulge at 80 m is a distinguishing detail."
+    },
+    "doha-quiet-reflection": {
+      "venueId": "doha-quiet-reflection",
+      "city": "doha",
+      "name": "Church of Our Lady of the Rosary",
+      "archetype": "church-modern",
+      "subject": "Church of Our Lady of the Rosary, Abu Hamour: a low sand-coloured Catholic church with no external spire or cross, in the shared religious complex",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "limestone",
+        "colours": [
+          "#e0cfa8",
+          "#b89a6a",
+          "#f2efe8"
+        ],
+        "roofColour": "#c8b48a",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/239713638",
+          "what": "OSM footprint 71.3x64 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q630655",
+          "what": "Wikidata entity: Catholic Church of Our Lady of the Rosary"
+        }
+      ],
+      "notes": "The Wikipedia page could not be read (404) and no description was found; the church was built about 2008 in the Religious Complex and, as I understand it, shows no external cross or bell tower. This is a typed guess from the city style. OSM compound 71 x 64 m."
+    },
+    "doha-recreation": {
+      "venueId": "doha-recreation",
+      "city": "doha",
+      "name": "Al Bidda Park",
+      "archetype": "park-landscape",
+      "subject": "Al Bidda Park on the Corniche: a very large landscaped public park with lawns, palms, playgrounds, a heritage village and small shops",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 180,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e8dcc3",
+          "#b89a6a",
+          "#f2efe8"
+        ],
+        "roofColour": "#c8c2b4",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1990s, reopened 2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Al_Bidda_Park",
+          "what": "188 ha park on Corniche Street, children playground, small shops, cultural village and heritage centre, created in 1990s, reopened Feb 2018"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/12719187",
+          "what": "OSM footprint 1954.8x664.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q22948531",
+          "what": "Wikidata entity: Al Bidda Park"
+        }
+      ],
+      "notes": "OSM 1,955 x 665 m (806,036 m2). Pavilion forms are typed in the heritage style."
+    },
+    "doha-transit": {
+      "venueId": "doha-transit",
+      "city": "doha",
+      "name": "National Museum",
+      "archetype": "transport-station",
+      "subject": "Doha Metro station building at the National Museum stop: a long low sand-coloured station with a glazed entrance and platform access",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9c7a3",
+          "#8aa0b0",
+          "#e8dcc3"
+        ],
+        "roofColour": "#c8c2b4",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Qatar",
+          "what": "desert-rose National Museum nearby: 539 interlocking discs in glass-fibre reinforced concrete, 40,000 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/684494011",
+          "what": "OSM footprint 172.9x34 m"
+        }
+      ],
+      "notes": "Venue is named National Museum with kind hub. The OSM building at the point is a transportation building (173 x 34 m, start date 2019-11-21), which is read as a metro station, not the museum itself. If the museum itself was intended, use desert-rose discs in sand-pink concrete (museum-theatre). Station look is typed."
+    }
+  }
+}

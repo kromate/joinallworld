@@ -1,0 +1,217 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1521027098",
+   "used": "main ward block footprint 39 x 30 m, bearing 112 deg; hospital site area way/783951928 is 5457 m2"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe3c4",
+    "windows": "ribbon",
+    "windowRatio": 0.26,
+    "bands": "#9cb18e",
+    "plinth": 0.5,
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    38,
+    -8
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#9cb18e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     22,
+     9
+    ]
+   },
+   "at": [
+    -36,
+    12
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#9cb18e"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    2,
+    -34
+   ],
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a968d",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    2,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 6,
+    "height": 4.2,
+    "form": "flat",
+    "colour": "#9cb18e"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 1.8,
+    "bottom": 1.5,
+    "colour": "#efe3c4",
+    "frameColour": "#9cb18e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -42
+     ],
+     [
+      50,
+      -42
+     ]
+    ],
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#e8dcc0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -34
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     24,
+     -36
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; real outline for the main block, other wards typed, canopy and blank sign board placed from the brief."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-way-783951928"
+}

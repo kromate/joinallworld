@@ -1,0 +1,212 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "bole-kitchen",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Port_Harcourt_Tourist_Beach",
+   "used": "creekside setting with restaurants and a jetty; no photo of this venue found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "rect": [
+     18,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b79a6b",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "left": "none",
+     "right": "none",
+     "back": "plain"
+    },
+    "plinth": 0.2
+   },
+   "roof": {
+    "form": "shed",
+    "high": "back",
+    "rise": 1.4,
+    "colour": "#7a6a5a",
+    "material": "corrugated",
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "grill-room",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    11.5,
+    -2
+   ],
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d8cdb8",
+    "windows": "punched",
+    "windowRatio": 0.12
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a3a",
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -5,
+    -1,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": false
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -1,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    5,
+    -1,
+    0
+   ],
+   "params": {
+    "chairs": 4
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -4,
+    -9,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "spread": 6,
+    "colours": [
+     "#d8cdb8",
+     "#b0553d",
+     "#3d6f8f"
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1,
+    -5.3,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "width": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "colour": "#d8cdb8"
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 22,
+    "colour": "#7a8f7a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     8
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline (nearest OSM building 48 m away, wrong size); open shed, tables and creek are typed from the Tourist Beach waterfront pattern"
+ }
+}

@@ -1,0 +1,229 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "tripoli",
+ "venueId": "tripoli-recreation",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Tripoli_Zoo",
+   "used": "largest zoo in the country, a large reserve of lawns and mature trees south of the centre; no photo found, nearest OSM building (31 m away) is not the zoo so it is not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "height": 4.5,
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ticket-pavilion",
+   "footprint": {
+    "rect": [
+     16,
+     8
+    ]
+   },
+   "at": [
+    -18,
+    -24
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#f3efe6",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#b5603f",
+    "overhang": 1.2,
+    "pitch": 22
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    16,
+    -22
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a56b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6a4a",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     4,
+     3.5
+    ]
+   },
+   "at": [
+    26,
+    -14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#c9a56b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c6a4a",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "enclosure-house",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    20,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#aaa59b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9890"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.2,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#aaa59b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    50,
+    0
+   ],
+   "params": {
+    "length": 80,
+    "height": 2.0,
+    "thickness": 0.2,
+    "kind": "fence",
+    "colour": "#4a5a4a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 8,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11,
+    "count": 8,
+    "spread": 22
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    35,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 13,
+    "count": 6,
+    "spread": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; entrance, kiosks and tree stands are typed, not the real layout"
+ }
+}

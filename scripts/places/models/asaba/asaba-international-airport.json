@@ -1,0 +1,262 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asaba",
+ "venueId": "asaba-international-airport",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AsabaInternationalAirport.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "AAC (Commons uploader)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/asaba/airport2.jpg",
+   "used": "two barrel-vaulted halls clad dark grey with pale metal roofs, glazed gable on the west hall, flat tan-roofed central block with deep fascia canopy, square dark control tower with white bands in front, lattice water tank, forecourt road and car park at right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/495687558",
+   "used": "overall scale only (about 110 x 85 m, rotated)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.8,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "west-hall",
+   "footprint": {
+    "rect": [
+     34,
+     48
+    ]
+   },
+   "at": [
+    -40,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#33383c",
+    "windows": "none",
+    "plinth": 0.5,
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.12,
+    "glassColour": "#7f9aa6"
+   },
+   "roof": {
+    "form": "barrel",
+    "axis": "y",
+    "rise": 6,
+    "colour": "#bfc0b9",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-hall",
+   "footprint": {
+    "rect": [
+     52,
+     26
+    ]
+   },
+   "at": [
+    10,
+    32
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#33383c",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "barrel",
+    "axis": "x",
+    "rise": 5,
+    "colour": "#b4b4ac",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "flat-block",
+   "footprint": {
+    "rect": [
+     56,
+     30
+    ]
+   },
+   "at": [
+    12,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#33383c",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.08,
+    "bands": "#8a8d8f"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cdbf9f",
+    "material": "concrete",
+    "overhang": 3.5,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "id": "drop-off",
+   "at": [
+    16,
+    -12,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 42,
+    "depth": 8,
+    "height": 4.8,
+    "thickness": 0.6,
+    "columns": 5,
+    "colour": "#9fa1a2",
+    "edgeColour": "#b8b9b6"
+   }
+  },
+  {
+   "type": "control-tower",
+   "id": "tower",
+   "at": [
+    -4,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "shaftRadius": 2.8,
+    "cabRadius": 4.6,
+    "style": "square",
+    "colour": "#2e3236",
+    "cabColour": "#1d2327",
+    "bandColour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "id": "tank",
+   "at": [
+    -18,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 3,
+    "tankHeight": 4,
+    "legHeight": 9,
+    "legs": 4,
+    "colour": "#9a9fa2"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "id": "airport-sign",
+   "at": [
+    36,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3,
+    "bottom": 1.8,
+    "colour": "#1f5d4b",
+    "frameColour": "#b8bcc0"
+   }
+  },
+  {
+   "type": "car",
+   "id": "cars",
+   "at": [
+    10,
+    -30,
+    0
+   ],
+   "params": {
+    "colour": "#d8d8d8",
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 90
+   }
+  },
+  {
+   "type": "lamp",
+   "id": "lamps",
+   "at": [
+    50,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 4,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "Gable glazing is a plain punched face; no jet bridges, apron or lattice tower legs; flat block roof lighter than photo"
+ }
+}

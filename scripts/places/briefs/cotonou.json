@@ -1,0 +1,1557 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "cotonou",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "cotonou",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-lying lagoon and Atlantic-coast port city on a sandy bar: dense 1-3 storey rendered concrete-block houses and shops, faded cream, ochre and pastel paint, rust-streaked corrugated-iron roofs, a few French-colonial and Afro-Brazilian-influenced civic buildings from the 1930s-1950s, Chinese-built public works since the 1990s, and sprawling market shelters (apatams) of timber and sheet. Sandy red-grey ground, coconut palms and neem/broadleaf street trees, and constant yellow zemidjan motorcycle taxi traffic.",
+    "wallColours": [
+      "#e9e1cf",
+      "#d9c28f",
+      "#c8b79b",
+      "#b97a56",
+      "#9fb09a",
+      "#d8d2c4",
+      "#f2efe8"
+    ],
+    "roofColours": [
+      "#8b5a44",
+      "#6e7377",
+      "#a8573a",
+      "#b9b4a8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "whitewash",
+      "tile-cladding",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Faded painted render with contrasting door and window surrounds; pilasters and arched openings on Afro-Brazilian and colonial-era buildings; striped ceramic tile on the cathedral; Somba tata-inspired earthen-tower motifs on the Palais des Congres; bright wax-print textile colours at markets; Dahomey Amazon warrior imagery on monuments.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Cotonou",
+        "what": "tropical wet-dry climate, humidity ~80%, landmarks (cathedral, Amazon monument, Presidency, congress palace)"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame-de-Mis%C3%A9ricorde_de_Cotonou",
+        "what": "white and red ceramic-tile stripes, basilica plan"
+      },
+      {
+        "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Cotonou",
+        "what": "Chinese-built 2003, inspired by Somba tata houses"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dantokpa_Market",
+        "what": "apatam shelters of bamboo/wood around a central multi-level hall"
+      }
+    ]
+  },
+  "places": {
+    "cotonou-africa-land": {
+      "venueId": "cotonou-africa-land",
+      "city": "cotonou",
+      "name": "Africa Land",
+      "archetype": "park-landscape",
+      "subject": "Africa Land: a gated leisure and amusement park with rides, kiosks and a ticketed entrance",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8d9a8",
+          "#6fa45a",
+          "#b97a56"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source found describing the layout. Typed from the park type and Cotonou city style: sandy ground, palms, painted kiosks, entrance gate. Game venue coordinates sit in north Cotonou."
+    },
+    "cotonou-airport-cotonou-airport": {
+      "venueId": "cotonou-airport-cotonou-airport",
+      "city": "cotonou",
+      "name": "Aeroport Cardinal Bernardin Gantin de Cotonou",
+      "archetype": "airport-terminal",
+      "subject": "Cotonou-Cadjehoun international airport terminal seen from the landside forecourt: a low white-and-glass terminal with a canopy and a control tower beside a single runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceae2",
+          "#4f6f86",
+          "#c8c3b6"
+        ],
+        "roofColour": "#a8b0b4",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt drop-off canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1960s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cotonou_Cadjehoun_Airport",
+          "what": "single asphalt runway 06/24 2,400 m, 6 m elevation, Cadjehoun district; terminal not described"
+        }
+      ],
+      "notes": "Only the runway and location are documented; the terminal form is a typed guess for a mid-size West African airport. The airport is named for Cardinal Bernardin Gantin. A long-planned replacement at Glo-Djigbe was reported stalled."
+    },
+    "cotonou-centre-de-promotion-de-l-artisanat": {
+      "venueId": "cotonou-centre-de-promotion-de-l-artisanat",
+      "city": "cotonou",
+      "name": "Centre de promotion de l'artisanat",
+      "archetype": "market-hall",
+      "subject": "Cotonou handicraft promotion centre: a courtyard of craft workshops and display shops under pitched roofs",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e0c9a0",
+          "#8a5a3c",
+          "#f1ead8"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 12
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the building was found. Typed as a single-storey courtyard craft-market in Cotonou painted-render style, with warm ochre walls to read differently from the larger market halls."
+    },
+    "cotonou-centre-international-de-conference": {
+      "venueId": "cotonou-centre-international-de-conference",
+      "city": "cotonou",
+      "name": "Centre international de conference (Palais des Congres)",
+      "archetype": "museum-theatre",
+      "subject": "Palais des Congres on Boulevard de la Marina: a Chinese-built two-floor congress and entertainment centre whose forms echo Somba tata dwellings",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c3a0",
+          "#9b5a3c",
+          "#f2efe8"
+        ],
+        "roofColour": "#7a6a5f",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 5
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "tata somba tower motifs"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "small tower-like turrets echoing Somba granaries"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Palais_des_congr%C3%A8s_de_Cotonou",
+          "what": "opened Aug 2003 China-Benin cooperation, 10,053 m2, two floors, 13 rooms, tata somba inspiration"
+        }
+      ],
+      "notes": "Real facts: total area 10,053 m2 over two floors, design inspired by Somba tata houses (earthen houses with turret granaries), renovation from 2017. Colours and turret treatment are inferred from that inspiration, not read off photos."
+    },
+    "cotonou-clinic": {
+      "venueId": "cotonou-clinic",
+      "city": "cotonou",
+      "name": "Centre National Hospitalier Universitaire (CNHU) Hubert K. Maga",
+      "archetype": "hospital",
+      "subject": "CNHU on Avenue Jean-Paul II: a large 1960s public teaching hospital of several connected 2-4 storey blocks",
+      "form": {
+        "footprint": "H",
+        "width_m": 160,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dfcd",
+          "#8fa3a0",
+          "#c3b9a3"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Centre_national_hospitalier_et_universitaire_Hubert_Koutoukou_Maga",
+          "what": "founded 1962 as 'Hopital 350 lits', renamed 1973, 642 beds in 2018, Avenue Jean-Paul II"
+        }
+      ],
+      "notes": "Date, capacity and street are sourced; building form and colours are typed from the era and city style (no description found). Largest hospital in Benin, so scaled as a multi-block campus."
+    },
+    "cotonou-community-notices": {
+      "venueId": "cotonou-community-notices",
+      "city": "cotonou",
+      "name": "Palais de la Marina (Presidency of the Republic)",
+      "archetype": "civic-palace",
+      "subject": "Palais de la Marina, the presidential palace on the Atlantic boulevard: a pale neoclassical block built in 1950 behind a guarded wall",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 21,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f0ebe0",
+          "#d8cdb5",
+          "#9a8f7a"
+        ],
+        "roofColour": "#8c8a85",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1950",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Palais_de_la_Marina",
+          "what": "neoclassical, built 1950, 21 m high, east facade faces Institut francais, modernised 2016"
+        }
+      ],
+      "notes": "Sourced: neoclassical style, 1950, 21 m height, renovated 2016. Pale colour scheme, portico and wings are inferred and should be treated as an educated guess."
+    },
+    "cotonou-community-voting-game": {
+      "venueId": "cotonou-community-voting-game",
+      "city": "cotonou",
+      "name": "Place de l'Amazone",
+      "archetype": "monument",
+      "subject": "The Amazon Monument on the Atlantic boulevard: a very tall statue of a Dahomey Amazon warrior on a plinth with an open esplanade",
+      "form": {
+        "footprint": "round",
+        "width_m": 30,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 30,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#8a7f6a",
+          "#b9b0a0",
+          "#5a5448"
+        ],
+        "roofColour": "#8a7f6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "tall female warrior figure"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cotonou",
+          "what": "Amazon Monument in the 12th arrondissement between Boulevard de la Marina and the ocean; called the second tallest statue in Africa; honours the Dahomey Amazons"
+        }
+      ],
+      "notes": "Wikipedia confirms location and that it honours Dahomey Amazons and is among Africa's tallest statues. The ~30 m height and 2008 date are from general knowledge and unverified here. Recognisable by its single huge female warrior silhouette."
+    },
+    "cotonou-community-workshop": {
+      "venueId": "cotonou-community-workshop",
+      "city": "cotonou",
+      "name": "Universite d'Abomey-Calavi",
+      "archetype": "campus-block",
+      "subject": "University of Abomey-Calavi main campus: an entrance gate and long 3-4 storey lecture blocks and amphitheatres across open ground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e1cf",
+          "#9fb09a",
+          "#c8b79b"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance portal"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Universit%C3%A9_d%27Abomey-Calavi",
+          "what": "entrance portal exists; faculties spread across several towns; no physical description"
+        }
+      ],
+      "notes": "Only the entrance portal is mentioned. Faculty blocks typed from city style. Located north of Cotonou in Abomey-Calavi."
+    },
+    "cotonou-fondation-zinsou": {
+      "venueId": "cotonou-fondation-zinsou",
+      "city": "cotonou",
+      "name": "Fondation Zinsou",
+      "archetype": "museum-theatre",
+      "subject": "A small contemporary art gallery in a whitewashed two-storey building with a garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f2efe8",
+          "#3f6f8a",
+          "#c8b79b"
+        ],
+        "roofColour": "#9a948a",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "contemporary art mural"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Fondation_Zinsou",
+          "what": "foundation's best known museum is the Villa Ajavon in Ouidah (early 20th-c French colonial villa); a Cotonou lab at Fidjrosse exists"
+        }
+      ],
+      "notes": "The foundation's Ouidah museum is a colonial villa, but the game venue is its Cotonou location and no description was found. Typed as a small white gallery with a mural to stay distinct from the Palais des Congres."
+    },
+    "cotonou-jardin-botanique-et-zoologique": {
+      "venueId": "cotonou-jardin-botanique-et-zoologique",
+      "city": "cotonou",
+      "name": "Jardin Botanique et Zoologique Edouard Adjanohoun",
+      "archetype": "park-landscape",
+      "subject": "Botanical garden and small zoo at Abomey-Calavi: tree-lined paths, animal enclosures and a visitor pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 260,
+        "depth_m": 180,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e0d4b0",
+          "#5f8f55",
+          "#b97a56"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the layout found. Typed from park type; heavy broadleaf tree cover is the defining trait."
+    },
+    "cotonou-marche-st-michel": {
+      "venueId": "cotonou-marche-st-michel",
+      "city": "cotonou",
+      "name": "Marche St Michel",
+      "archetype": "market-hall",
+      "subject": "Marche Saint-Michel: a busy covered neighbourhood market hall with sheet roofs and stall rows spilling onto the street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd0b0",
+          "#8f5f48",
+          "#b8b0a0"
+        ],
+        "roofColour": "#6e7377",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 8
+        },
+        {
+          "id": "umbrellas",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the building found. Typed as a two-level sheet-roofed market hall. Made chunkier and greyer than Dantokpa, which is a sprawl of low shelters."
+    },
+    "cotonou-market-game": {
+      "venueId": "cotonou-market-game",
+      "city": "cotonou",
+      "name": "Marche Dantokpa",
+      "archetype": "market-open",
+      "subject": "Dantokpa, West Africa's largest open market: a roughly 66 x 44 m multi-level main hall ringed by thousands of bamboo and timber apatam stalls and raised kanter platforms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9c9a8",
+          "#a8573a",
+          "#8fa3a0"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 25
+        },
+        {
+          "id": "awning",
+          "count": 12
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "raised kanter platforms"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s-present",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dantokpa_Market",
+          "what": "main building ~66x44 m multi-level, ~1,100 stalls; apatams of bamboo/wood; kanter platforms; 18.7 ha; mosque built 1986; altar to Dan"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cotonou",
+          "what": "tropical climate and lagoon-side location"
+        }
+      ],
+      "notes": "Recognisable by the contrast between one stern multi-level concrete hall and the dense carpet of low lightweight shelters around it. Scene shows only the central hall and its immediate apatams; the full market is over 18 ha."
+    },
+    "cotonou-meal-stop": {
+      "venueId": "cotonou-meal-stop",
+      "city": "cotonou",
+      "name": "Livingstone",
+      "archetype": "restaurant",
+      "subject": "Livingstone, a well-known Cotonou bar-restaurant: a low painted building with a shaded terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dcc0",
+          "#7a4a32",
+          "#c8b79b"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real venue in the Haie Vive area but nothing describing the building was found; typed as a low terraced bar-restaurant."
+    },
+    "cotonou-mosquee-centrale-d-avotrou": {
+      "venueId": "cotonou-mosquee-centrale-d-avotrou",
+      "city": "cotonou",
+      "name": "Mosquee centrale d'Avotrou",
+      "archetype": "mosque-domed",
+      "subject": "Avotrou central mosque: a neighbourhood mosque with a single dome and one minaret in cream and green",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#ede6d2",
+          "#3f7a55",
+          "#c9b98e"
+        ],
+        "roofColour": "#3f7a55",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "~28 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a mid-sized neighbourhood mosque, cream and green. Same-type mosques in Cotonou differ by colour and minaret count."
+    },
+    "cotonou-mosquee-centrale-de-godomey": {
+      "venueId": "cotonou-mosquee-centrale-de-godomey",
+      "city": "cotonou",
+      "name": "Mosquee centrale de Godomey",
+      "archetype": "mosque-domed",
+      "subject": "Godomey central mosque: a larger two-minaret mosque with a central dome, white and grey with blue trim",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 32,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#f2f0ea",
+          "#4a6f9a",
+          "#b7b2a6"
+        ],
+        "roofColour": "#6e7377",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 2,
+          "note": "~32 m each"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed with two minarets and a white/blue scheme to differ from Avotrou and Zongo."
+    },
+    "cotonou-mosquee-zongo": {
+      "venueId": "cotonou-mosquee-zongo",
+      "city": "cotonou",
+      "name": "Mosquee Zongo Cotonou",
+      "archetype": "mosque-domed",
+      "subject": "Zongo mosque in the old Muslim quarter: a compact mosque with a squat dome and a tall slender minaret, ochre and white",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#d9bf8a",
+          "#f1ead8",
+          "#8a6a3c"
+        ],
+        "roofColour": "#b9b4a8",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "tall slender ~25 m"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "arab-islamic",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found. Zongo is Cotonou's old Muslim neighbourhood; typed as a small older mosque in ochre."
+    },
+    "cotonou-place-lenine": {
+      "venueId": "cotonou-place-lenine",
+      "city": "cotonou",
+      "name": "Place Lenine",
+      "archetype": "park-landscape",
+      "subject": "Place Lenine in Akpakpa: a paved traffic square whose Lenin statue has been removed, leaving an empty plinth",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#a9a395",
+          "#c8c2b4",
+          "#6e6a60"
+        ],
+        "roofColour": "#a9a395",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "empty plinth"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "soviet",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Place_L%C3%A9nine_(Cotonou)",
+          "what": "Akpakpa, 4th arrondissement; closed square; Lenin statue removed after democratic transition"
+        }
+      ],
+      "notes": "Only the history is sourced (statue removed after the early-1990s democratic transition). Current appearance of the plinth is an assumption."
+    },
+    "cotonou-pole-commercial-tokpa-yoyo": {
+      "venueId": "cotonou-pole-commercial-tokpa-yoyo",
+      "city": "cotonou",
+      "name": "Pole Commercial Tokpa Yoyo",
+      "archetype": "mall",
+      "subject": "Tokpa Yoyo commercial pole: a modern two-level retail block with a long painted facade and parking in front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3d9c0",
+          "#b65a3c",
+          "#7f8a8c"
+        ],
+        "roofColour": "#8a8d8f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from the commercial-complex type. Distinguished from St Michel by a flat roof and brighter rendered facade."
+    },
+    "cotonou-quiet-reflection": {
+      "venueId": "cotonou-quiet-reflection",
+      "city": "cotonou",
+      "name": "Cathedrale Notre-Dame de Misericorde",
+      "archetype": "church-classical",
+      "subject": "Cotonou Cathedral: a neo-Romanesque basilica clad entirely in burgundy-red and white striped ceramic tiles, with a round-arched portal and a single bell tower at the side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "tile-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#f0ece4",
+          "#8b1f2d",
+          "#7a6a5f"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "single tower along the north wall, ~38 m"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "round-arched portal with four archivolts, two side doors"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "rectangular pinnacles on the facade"
+        },
+        {
+          "id": "rose-window",
+          "count": 1,
+          "note": "oculus above the portal"
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "horizontal red and white tile bands"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1912-1938",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://fr.wikipedia.org/wiki/Cath%C3%A9drale_Notre-Dame-de-Mis%C3%A9ricorde_de_Cotonou",
+          "what": "built 1912-1935, blessed 1938; basilica plan with three naves; round-arched portal with four archivolts; oculus; two rectangular pinnacles; single bell tower on north wall; white and red tile stripes"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cathedral_of_Our_Lady_of_Mercy,_Cotonou",
+          "what": "known for burgundy and white striped tiled walls"
+        }
+      ],
+      "notes": "The unmistakable feature is the horizontal red/white tile banding across walls. Dimensions (about 55 x 22 m, tower ~38 m) and the roof material are estimates; the source gives no dimensions."
+    },
+    "cotonou-recreation": {
+      "venueId": "cotonou-recreation",
+      "city": "cotonou",
+      "name": "Parc Cardinal Bernardin Gantin",
+      "archetype": "park-landscape",
+      "subject": "Cardinal Bernardin Gantin park: a landscaped public green with paths, lawns and a small pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcc0",
+          "#5f8f55",
+          "#b97a56"
+        ],
+        "roofColour": "#8b5a44",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No source describing the layout; typed from park type with palms and lawn. It lies close to the Palais de la Marina."
+    },
+    "cotonou-stade-de-l-amitie": {
+      "venueId": "cotonou-stade-de-l-amitie",
+      "city": "cotonou",
+      "name": "Stade de l'Amitie Mathieu Kerekou",
+      "archetype": "stadium",
+      "subject": "Friendship Stadium: a 35,000-seat bowl with a covered main stand and floodlight masts, seen from the outer concourse",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 170,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#2f6f4a",
+          "#b8b2a4"
+        ],
+        "roofColour": "#b8b4aa",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "c. 2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_de_l%27Amiti%C3%A9",
+          "what": "multi-purpose stadium in Cotonou, capacity 35,000, athletics facilities"
+        }
+      ],
+      "notes": "Capacity and athletics track are sourced. The commonly reported Chinese construction (about 2000) is from general knowledge, not verified in the fetched page. Roof, colours and massing are typical-stadium estimates."
+    },
+    "cotonou-transit": {
+      "venueId": "cotonou-transit",
+      "city": "cotonou",
+      "name": "Gare routiere",
+      "archetype": "transport-station",
+      "subject": "Cotonou long-distance bus park: open parking bays for coaches and minibuses under a long sheet-roofed waiting shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dcd0b0",
+          "#4f7aa0",
+          "#a9a393"
+        ],
+        "roofColour": "#6e7377",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 10
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from the motor-park type."
+    },
+    "cotonou-universite-des-sciences-et-technologies": {
+      "venueId": "cotonou-universite-des-sciences-et-technologies",
+      "city": "cotonou",
+      "name": "Universite des Sciences et Technologies du Benin",
+      "archetype": "campus-block",
+      "subject": "A science and technology campus: a modern 3-storey teaching block and workshops around a quad",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#eae2d0",
+          "#7f8a8c",
+          "#b97a56"
+        ],
+        "roofColour": "#7f7a72",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed from the university type. Kept a U-shaped quad plan so it differs from the Abomey-Calavi campus row layout."
+    }
+  }
+}

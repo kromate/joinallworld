@@ -1,0 +1,708 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Yaound%C3%A9_Palais_des_Congr%C3%A8s.jpg",
+   "licence": "Public domain",
+   "author": "Ruediger Nassauer",
+   "view": "street",
+   "file": "/tmp/places-evidence/yaounde/palais1.jpg",
+   "used": "hill-top stepped white/cream complex: long central glazed hall with white fins above a lower base, taller left block, lower right block with a small roof box"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/37757299",
+   "used": "footprint of the base volume (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 6,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "loft",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#5f8a3c",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       78,
+       62
+      ]
+     },
+     {
+      "z": 8,
+      "ellipse": [
+       74,
+       54
+      ]
+     },
+     {
+      "z": 18,
+      "ellipse": [
+       68,
+       46
+      ]
+     },
+     {
+      "z": 28,
+      "ellipse": [
+       62,
+       40
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "osm": true,
+    "fit": 108
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e2dccb",
+    "windows": "none",
+    "windowRatio": 0.1,
+    "plinth": 0.6,
+    "cornice": false,
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a2",
+    "parapet": 0.5
+   },
+   "z0": 28
+  },
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     58,
+     16
+    ]
+   },
+   "at": [
+    8,
+    -22
+   ],
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "fins",
+      "width": 0.8,
+      "depth": 1.0,
+      "spacing": 3.2,
+      "colour": "#f5f3ec",
+      "faces": [
+       "front"
+      ],
+      "skipGround": false
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#efece2",
+    "overhang": 3.5,
+    "parapet": 0.4
+   },
+   "z0": 40
+  },
+  {
+   "type": "mass",
+   "id": "tower-left",
+   "footprint": {
+    "rect": [
+     26,
+     24
+    ]
+   },
+   "at": [
+    -44,
+    -14
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#e6e1d2",
+    "windows": "punched",
+    "windowRatio": 0.07,
+    "plinth": 0,
+    "bay": 11,
+    "cornice": true,
+    "faces": {
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a497",
+    "parapet": 0.5
+   },
+   "z0": 40
+  },
+  {
+   "type": "mass",
+   "id": "block-right",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e4d8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a2",
+    "parapet": 0.5
+   },
+   "z0": 40
+  },
+  {
+   "type": "prism",
+   "at": [
+    48,
+    6
+   ],
+   "params": {
+    "colour": "#e0dccf",
+    "rect": [
+     10,
+     8
+    ],
+    "height": 5,
+    "z0": 48
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -48,
+    28
+   ],
+   "rotDeg": 180,
+   "params": {
+    "width": 30,
+    "rise": 0.6,
+    "run": 1.0,
+    "count": 6,
+    "colour": "#cfcabb"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -55,
+    -45,
+    10
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -20,
+    -54,
+    8
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    25,
+    -52,
+    9
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    55,
+    -40,
+    12
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -62,
+    -20,
+    16
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    62,
+    -12,
+    17
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "revolve",
+   "at": [
+    5,
+    -60,
+    4
+   ],
+   "params": {
+    "profile": [
+     [
+      0,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      0,
+      "#5a4632"
+     ],
+     [
+      0.5,
+      4.05,
+      "#5a4632"
+     ],
+     [
+      4.05,
+      4.05,
+      "#3f6b2a"
+     ],
+     [
+      4.5,
+      8.1,
+      "#3f6b2a"
+     ],
+     [
+      2.6999999999999997,
+      11.700000000000001,
+      "#4a7a30"
+     ],
+     [
+      0,
+      13.049999999999999,
+      "#4a7a30"
+     ]
+    ],
+    "segments": 8
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38,
+    -62
+   ],
+   "params": {
+    "rect": [
+     30,
+     16
+    ],
+    "height": 6,
+    "z0": 3,
+    "colour": "#ece8da"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -38,
+    -62
+   ],
+   "params": {
+    "rect": [
+     32,
+     18
+    ],
+    "height": 0.7,
+    "z0": 3,
+    "colour": "#4f8a6a"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -56,
+    -60,
+    3
+   ],
+   "params": {
+    "colour": "#ece8da",
+    "capTop": true,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       1.8,
+       1.8
+      ]
+     },
+     {
+      "z": 23,
+      "rect": [
+       2.6,
+       2.6
+      ]
+     },
+     {
+      "z": 26,
+      "rect": [
+       1.6,
+       1.6
+      ]
+     },
+     {
+      "z": 31,
+      "rect": [
+       0.2,
+       0.2
+      ],
+      "colour": "#4f8a6a"
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "hill is a smooth cone with few trees; mosque is a simple block; base is plain, left block and right fins approximate; OSM outline scaled"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-palais-des-congres"
+}

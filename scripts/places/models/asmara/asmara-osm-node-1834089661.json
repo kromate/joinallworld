@@ -1,0 +1,152 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/235909107",
+   "used": "containing outline (214 m2, stepped 8-point plan) as the bar building"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/asmara.json",
+   "used": "peach-pink render, stone base, rust corrugated gable roof, front terrace with awning"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 16,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "bar",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "render",
+    "colour": "#d99b82",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.7,
+    "bands": "#8a867d"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#a65a3d",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -14,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     5
+    ],
+    "height": 0.3,
+    "colour": "#b8ae9a"
+   }
+  },
+  {
+   "type": "market-open/awning",
+   "at": [
+    -2,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.5,
+    "colours": [
+     "#efe3c4",
+     "#a65a3d"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 3.5,
+    "height": 1,
+    "bottom": 3,
+    "colour": "#efe3c4",
+    "frameColour": "#8a867d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -20,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    16,
+    -18,
+    0
+   ],
+   "params": {
+    "colour": "#c9c4b6",
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 8,
+  "trees": [],
+  "extent": [
+   70,
+   60
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "asmara",
+ "venueId": "asmara-osm-node-1834089661",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; terrace, colours and gable roof typed from brief."
+ }
+}

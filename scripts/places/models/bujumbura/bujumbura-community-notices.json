@@ -1,0 +1,138 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-community-notices",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/748670662",
+   "used": "real outline of the presidential palace block, 2 storeys"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "osm": true
+   },
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.6,
+    "cornice": true,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8523a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 1.0,
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "portico",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "flag",
+   "at": [
+    -28,
+    -48,
+    0
+   ],
+   "params": {
+    "height": 12,
+    "count": 3,
+    "spacing": 4
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {
+    "length": 90
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -62,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "extent": [
+   130,
+   130
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -45,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     45,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     50,
+     30
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo found; real outline and brief only; roof is flat (hip over the 8-point outline exceeded the LOD1 budget); portico position estimated"
+ }
+}

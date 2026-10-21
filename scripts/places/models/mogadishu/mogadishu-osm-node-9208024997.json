@@ -1,0 +1,873 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "mogadishu",
+ "venueId": "mogadishu-osm-node-9208024997",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Imaam_Ahmed_Gurey.jpg",
+   "licence": "CC0",
+   "author": "Ugaas Raage",
+   "view": "side",
+   "file": "/tmp/places-evidence/mogadishu/imaam.jpg",
+   "used": "dark green-bronze equestrian statue (rider with round shield and lance on a walking horse, facing right) on a tan stone block pedestal with a stepped, recessed upper face and a darker lower recess"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Gragne.jpg",
+   "licence": "Public domain",
+   "author": "Somali government",
+   "view": "side",
+   "used": "pedestal block courses and statue silhouette"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/427222568",
+   "used": "circular park island (Kilometre 4 roundabout, about 32 m across)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 32,
+  "aspect": 0.88,
+  "fit": "building",
+  "shiftY": 0.0
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "grass-ring",
+   "params": {
+    "radius": 16,
+    "n": 28,
+    "height": 0.12,
+    "colour": "#7a8f55",
+    "topColour": "#7a8f55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving",
+   "params": {
+    "radius": 9.5,
+    "n": 28,
+    "z0": 0.12,
+    "height": 0.14,
+    "colour": "#cfc6b2",
+    "topColour": "#cfc6b2"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-1",
+   "params": {
+    "rect": [
+     10.4,
+     6.4
+    ],
+    "z0": 0.26,
+    "height": 0.6,
+    "colour": "#cfc2a0",
+    "topColour": "#cfc2a0"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth-2",
+   "params": {
+    "rect": [
+     9.8,
+     5.8
+    ],
+    "z0": 0.86,
+    "height": 0.6,
+    "colour": "#d3c5a2",
+    "topColour": "#d3c5a2"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-lower",
+   "params": {
+    "rect": [
+     9.2,
+     5.2
+    ],
+    "z0": 1.46,
+    "height": 2.2,
+    "colour": "#cdbb97",
+    "topColour": "#cdbb97",
+    "pattern": {
+     "type": "bands",
+     "colour": "#b9a77f"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-upper",
+   "params": {
+    "rect": [
+     9.0,
+     5.0
+    ],
+    "z0": 3.6599999999999997,
+    "height": 1.8,
+    "colour": "#d2c19c",
+    "topColour": "#d2c19c",
+    "pattern": {
+     "type": "bands",
+     "colour": "#b3a27b"
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pedestal-step",
+   "params": {
+    "rect": [
+     8.4,
+     4.4
+    ],
+    "z0": 5.460000000000001,
+    "height": 0.3,
+    "colour": "#d8caa6",
+    "topColour": "#d8caa6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "door-panel",
+   "params": {
+    "rect": [
+     3.2,
+     0.4
+    ],
+    "z0": 1.46,
+    "height": 1.8,
+    "colour": "#3b3a34",
+    "topColour": "#3b3a34"
+   },
+   "at": [
+    0,
+    -2.7
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "door-lintel",
+   "params": {
+    "rect": [
+     4.2,
+     0.5
+    ],
+    "z0": 3.3,
+    "height": 0.3,
+    "colour": "#b9a77f",
+    "topColour": "#b9a77f"
+   },
+   "at": [
+    0,
+    -2.65
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course-0",
+   "params": {
+    "rect": [
+     9.3,
+     5.3
+    ],
+    "z0": 2.0,
+    "height": 0.12,
+    "colour": "#a8976f",
+    "topColour": "#a8976f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course-1",
+   "params": {
+    "rect": [
+     9.3,
+     5.3
+    ],
+    "z0": 2.9,
+    "height": 0.12,
+    "colour": "#a8976f",
+    "topColour": "#a8976f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "course-2",
+   "params": {
+    "rect": [
+     9.3,
+     5.3
+    ],
+    "z0": 4.5,
+    "height": 0.12,
+    "colour": "#a8976f",
+    "topColour": "#a8976f"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "horse-body",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.9,
+      "ellipse": [
+       2.3,
+       0.7
+      ],
+      "cx": -0.1
+     },
+     {
+      "z": 2.6,
+      "ellipse": [
+       2.9,
+       0.95
+      ]
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       2.85,
+       0.95
+      ]
+     },
+     {
+      "z": 4.0,
+      "ellipse": [
+       2.2,
+       0.7
+      ],
+      "cx": -0.2
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "neck",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.3,
+      "ellipse": [
+       0.9,
+       0.65
+      ],
+      "cx": 2.1
+     },
+     {
+      "z": 4.4,
+      "ellipse": [
+       0.7,
+       0.55
+      ],
+      "cx": 2.8
+     },
+     {
+      "z": 5.5,
+      "ellipse": [
+       0.5,
+       0.42
+      ],
+      "cx": 3.4
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "head",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 4.6,
+      "ellipse": [
+       0.5,
+       0.32
+      ],
+      "cx": 4.6
+     },
+     {
+      "z": 5.3,
+      "ellipse": [
+       0.45,
+       0.34
+      ],
+      "cx": 4.3
+     },
+     {
+      "z": 5.9,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 3.9
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "tail",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.3,
+      "ellipse": [
+       0.2,
+       0.18
+      ],
+      "cx": -3.1
+     },
+     {
+      "z": 2.4,
+      "ellipse": [
+       0.3,
+       0.2
+      ],
+      "cx": -3.0
+     },
+     {
+      "z": 3.6,
+      "ellipse": [
+       0.3,
+       0.2
+      ],
+      "cx": -2.6
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "leg-rear-near",
+   "at": [
+    -1.9,
+    -0.4,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.4,
+       0.35
+      ],
+      "cx": -0.4
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": -0.1
+     },
+     {
+      "z": 1.9,
+      "ellipse": [
+       0.5,
+       0.38
+      ]
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-rear-far",
+   "at": [
+    -1.4,
+    0.4,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.4,
+       0.35
+      ],
+      "cx": 0.4
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 1.9,
+      "ellipse": [
+       0.5,
+       0.38
+      ]
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-fore-down",
+   "at": [
+    1.9,
+    0.4,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.4,
+       0.35
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 0.9,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0.05
+     },
+     {
+      "z": 1.9,
+      "ellipse": [
+       0.5,
+       0.38
+      ]
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-fore-raised-up",
+   "at": [
+    1.9,
+    -0.4,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.0,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0.9
+     },
+     {
+      "z": 1.5,
+      "ellipse": [
+       0.32,
+       0.3
+      ],
+      "cx": 0.6
+     },
+     {
+      "z": 1.95,
+      "ellipse": [
+       0.5,
+       0.38
+      ]
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "leg-fore-raised-low",
+   "at": [
+    2.8,
+    -0.4,
+    6.699999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "ellipse": [
+       0.4,
+       0.3
+      ]
+     },
+     {
+      "z": 0.5,
+      "ellipse": [
+       0.28,
+       0.28
+      ],
+      "cx": 0.1
+     },
+     {
+      "z": 1.1,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": 0.3
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "rider-torso",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 4.0,
+      "ellipse": [
+       0.45,
+       0.45
+      ],
+      "cx": -0.4
+     },
+     {
+      "z": 5.2,
+      "ellipse": [
+       0.5,
+       0.5
+      ],
+      "cx": -0.4
+     },
+     {
+      "z": 6.3,
+      "ellipse": [
+       0.4,
+       0.4
+      ],
+      "cx": -0.35
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rider-head",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 6.3,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": -0.35
+     },
+     {
+      "z": 6.9,
+      "ellipse": [
+       0.36,
+       0.36
+      ],
+      "cx": -0.35
+     },
+     {
+      "z": 7.4,
+      "ellipse": [
+       0.3,
+       0.3
+      ],
+      "cx": -0.35
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "rider-thigh",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 3.7,
+      "ellipse": [
+       0.6,
+       0.35
+      ],
+      "cx": -0.3,
+      "cy": -0.65
+     },
+     {
+      "z": 4.1,
+      "ellipse": [
+       0.5,
+       0.3
+      ],
+      "cx": 0.1,
+      "cy": -0.7
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       0.4,
+       0.3
+      ],
+      "cx": -0.3,
+      "cy": -0.65
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "rider-shin",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 2.7,
+      "ellipse": [
+       0.35,
+       0.3
+      ],
+      "cx": 0.3,
+      "cy": -0.75
+     },
+     {
+      "z": 3.4,
+      "ellipse": [
+       0.3,
+       0.28
+      ],
+      "cx": 0.2,
+      "cy": -0.75
+     },
+     {
+      "z": 4.0,
+      "ellipse": [
+       0.4,
+       0.3
+      ],
+      "cx": 0.1,
+      "cy": -0.75
+     }
+    ],
+    "colour": "#5a6552",
+    "topColour": "#5a6552"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "shield",
+   "at": [
+    0.3,
+    -0.75,
+    6.199999999999999
+   ],
+   "params": {
+    "radius": 0.8,
+    "n": 12,
+    "z0": 4.5,
+    "height": 0.16,
+    "colour": "#4a5444",
+    "topColour": "#4a5444"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "id": "lance",
+   "at": [
+    0,
+    0,
+    6.199999999999999
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 1.9,
+      "ellipse": [
+       0.07,
+       0.07
+      ],
+      "cx": -1.3,
+      "cy": -0.6
+     },
+     {
+      "z": 4.5,
+      "ellipse": [
+       0.07,
+       0.07
+      ],
+      "cx": -0.5,
+      "cy": -0.6
+     },
+     {
+      "z": 8.6,
+      "ellipse": [
+       0.07,
+       0.07
+      ],
+      "cx": 0.1,
+      "cy": -0.6
+     }
+    ],
+    "colour": "#4a5444",
+    "topColour": "#4a5444"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     8
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     14,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     13,
+     11
+    ]
+   }
+  ],
+  "extent": [
+   60,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "horse is faceted lofts (blocky head/legs, no mane or reins); pedestal courses simplified; statue small at building-fit framing"
+ }
+}

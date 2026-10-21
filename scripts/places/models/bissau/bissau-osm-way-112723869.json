@@ -1,0 +1,268 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-way-112723869",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Viagem_de_Bissau_para_Bolama,_Guin%C3%A9-Bissau_%E2%80%93_2018-03-02_%E2%80%93_DSCN0973.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Helena Maria Pestana",
+   "view": "side",
+   "file": "/tmp/places-evidence/bissau/stadium.jpg",
+   "used": "long dark flat cantilever roof over the main stand, peach/orange concourse facade with white glazed ribbon, yellow and green seats, four lattice floodlight masts"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/112723869",
+   "used": "overall site extent and pitch scale (pitch 105 x 68 m per Wikipedia)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 1,
+  "fovDeg": 45,
+  "aspect": 1.35,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "pitch",
+   "params": {
+    "rect": [
+     105,
+     68
+    ],
+    "height": 0.1,
+    "colour": "#5f8f4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "main-facade",
+   "footprint": {
+    "rect": [
+     56,
+     8
+    ]
+   },
+   "at": [
+    24,
+    -52
+   ],
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a77a",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "glassColour": "#eef2f0",
+    "trimColour": "#f2efe6"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc2ad",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -38
+    ],
+    "end": [
+     52,
+     -38
+    ],
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 1.5,
+    "seatColours": [
+     "#e8b830",
+     "#e8b830",
+     "#3f8a55"
+    ],
+    "blocks": 4,
+    "concreteColour": "#d8c8b0",
+    "underColour": "#c9b79c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "main-roof",
+   "at": [
+    0,
+    -44,
+    8.5
+   ],
+   "params": {
+    "rect": [
+     104,
+     16
+    ],
+    "height": 0.4,
+    "colour": "#3f444a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -37,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -52,
+     0
+    ],
+    "end": [
+     52,
+     0
+    ],
+    "count": 9,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.7,
+       0.7
+      ],
+      "height": 8.5,
+      "colour": "#8a8f94"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 62,
+    "radiusY": 44,
+    "startDeg": 0,
+    "endDeg": 360,
+    "rows": 4,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 0.8,
+    "facetDeg": 14,
+    "seatColour": "#e8b830",
+    "seatColours": [
+     "#e8b830",
+     "#3f8a55"
+    ],
+    "blocks": 6,
+    "concreteColour": "#d8c8b0"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#9aa0a6",
+    "head_width": 8
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -46,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#9aa0a6",
+    "head_width": 8
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    46,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#9aa0a6",
+    "head_width": 8
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    46,
+    0
+   ],
+   "params": {
+    "height": 38,
+    "colour": "#9aa0a6",
+    "head_width": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -50,
+     -62
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     -62
+    ]
+   }
+  ],
+  "extent": [
+   116,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Blurry distant photo. Concourse facade covers only the right half so yellow/green seats show on the left, as in the photo; oval end bowl lowered to 4 rows; masts are generic thin lattice (head widened); far masts still read smaller only through perspective; no trees or town backdrop."
+ }
+}

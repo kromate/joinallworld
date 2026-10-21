@@ -1,0 +1,177 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "libreville",
+ "venueId": "libreville-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/251363804",
+   "used": "real park outline (310 x 227 m, 5.1 ha) as the lawn, scaled to the scene"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Owendo,_Libreville,_Estuaire_Province,_Gabon_(CAPELLA_C14_SP_GEO_HH_20241124061258_20241124061335).png",
+   "licence": "CC BY 4.0",
+   "author": "Capella Space",
+   "view": "aerial",
+   "used": "nothing: a radar scene, not usable for the garden layout"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lawn",
+   "footprint": {
+    "osm": true
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6d9a4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6d9a4f"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      -45,
+      -25
+     ],
+     [
+      -15,
+      -10
+     ],
+     [
+      15,
+      -10
+     ],
+     [
+      45,
+      5
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.55
+   ],
+   "params": {
+    "points": [
+     [
+      0,
+      -30
+     ],
+     [
+      0,
+      -10
+     ],
+     [
+      0,
+      20
+     ]
+    ],
+    "width": 2.6,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "fountain-basin",
+   "at": [
+    0,
+    0,
+    0.5
+   ],
+   "params": {
+    "radius": 4.5,
+    "tiers": 2
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    22,
+    12,
+    0.5
+   ],
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "hip",
+    "rise": 1.8,
+    "colour": "#ece3cc",
+    "cap_colour": "#8d4b34"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    -30,
+    -6,
+    0.5
+   ],
+   "params": {
+    "length": 60,
+    "count": 8,
+    "kind": "palm",
+    "gap": 6,
+    "height_min": 8,
+    "height_max": 11
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -25,
+    18,
+    0.5
+   ],
+   "params": {
+    "width": 30,
+    "depth": 20,
+    "count": 8,
+    "kind": "broadleaf"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   150,
+   130
+  ]
+ },
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No ground photo; real park outline as lawn, pavilion/fountain/paths from the brief are invented layout."
+ }
+}

@@ -1,0 +1,331 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/abeokuta.json#kuto-market",
+   "used": "wide yard, long corrugated-roof sheds over produce stalls, lock-up shops (2024 fire destroyed about 15), umbrellas; 110 x 70 m"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1291056053",
+   "used": "not used: 153 m2 containing block (20 x 8 m) is one building inside the market, not its extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; shed and lock-up layout is plausible from the brief, not surveyed."
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    -36,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 9,
+    "height": 4.0,
+    "roof": "gable",
+    "roof_colour": "#7d5a44",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -12,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 9,
+    "height": 4.0,
+    "roof": "gable",
+    "roof_colour": "#7d5a44",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    12,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 9,
+    "height": 4.0,
+    "roof": "gable",
+    "roof_colour": "#7d5a44",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    36,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 9,
+    "height": 4.0,
+    "roof": "gable",
+    "roof_colour": "#7d5a44",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -24,
+    12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#7d5a44",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 8,
+    "height": 3.8,
+    "roof": "gable",
+    "roof_colour": "#7d5a44",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "market-office",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    44,
+    30
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc7b5",
+    "windows": "none",
+    "windowRatio": 0,
+    "bands": "#b86a4a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d5a44",
+    "material": "corrugated",
+    "overhang": 0.4,
+    "rise": 0.8
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    0,
+    33,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b86a4a",
+     "#8a5a44",
+     "#6a7a8a"
+    ],
+    "roof_colour": "#7d5a44",
+    "wall_colour": "#cfc7b5"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -52,
+    12,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 36,
+    "depth": 4,
+    "height": 3.4,
+    "roof": "shed",
+    "shutter_colours": [
+     "#b86a4a",
+     "#e9dfc6",
+     "#6a7a8a"
+    ],
+    "roof_colour": "#7d5a44",
+    "wall_colour": "#cfc7b5"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#c43a2f",
+     "#e8c13a",
+     "#3f7a4a",
+     "#e9dfc6"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#e8c13a",
+     "#2f5f9a",
+     "#c43a2f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "count": 10,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#3f7a4a",
+     "#e9dfc6",
+     "#b86a4a"
+    ]
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "height": 4.2,
+    "colour": "#cfc7b5",
+    "board_colour": "#b86a4a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#cfc7b5"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -50,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    48,
+    26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    46,
+    -26,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "kuto-market"
+}

@@ -1,0 +1,113 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "parts-hospital-theatre-a",
+ "name": "Parts test: oval theatre with wing roof, fly tower",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "Parts test fixture (invented composition, not a real place)."
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "kind": "oval",
+    "size": [
+     70,
+     50
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#cfd8dc",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "none"
+   }
+  },
+  {
+   "type": "wing-roof",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 70,
+    "depth": 50,
+    "rise": 12,
+    "overhang": 6,
+    "baseHeight": 10,
+    "roofColour": "#2f5f7a"
+   }
+  },
+  {
+   "type": "fly-tower",
+   "at": [
+    60,
+    10,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 20,
+    "depth": 14,
+    "height": 28,
+    "colour": "#d8d4c8"
+   }
+  },
+  {
+   "type": "cinema-canopy",
+   "at": [
+    60,
+    -10,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 18,
+    "depth": 3.2,
+    "height": 3.4,
+    "finHeight": 12,
+    "colour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "amphitheatre",
+   "at": [
+    -60,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "radius": 14,
+    "tiers": 5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 6,
+  "extent": [
+   160,
+   90
+  ]
+ }
+}

@@ -1,0 +1,361 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "cotonou",
+ "venueId": "cotonou-community-notices",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_de_la_Marina_ou_Pr\u00e9sidence_de_la_R\u00e9publique_du_B\u00e9nin_01.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adoscam",
+   "view": "front",
+   "file": "/tmp/places-evidence/cotonou/ommunity-notices-1.jpg",
+   "used": "long block on brown pilotis, tan cladding, large blue glass panels, brown fin tower at right, lawn, brick paving"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Pr\u00e9sidence_du_B\u00e9nin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Charbel1719",
+   "view": "street",
+   "file": "/tmp/places-evidence/cotonou/ommunity-notices-2.jpg",
+   "used": "black iron fence with dark piers, cream gate walls, palms, flagpoles"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/272739399",
+   "used": "complex scale (147 x 92 m, wings behind the front block)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 28,
+  "pitchDeg": 4,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     34,
+     20
+    ]
+   },
+   "at": [
+    -17,
+    2
+   ],
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b18f",
+    "windows": "curtain",
+    "windowRatio": 0.32,
+    "windowShape": "rect",
+    "glassColour": "#6a9bd0",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 0.5,
+      "spacing": 5.2,
+      "width": 1.5,
+      "kind": "square",
+      "colour": "#8a5a3e",
+      "backColour": "#c9b18f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     30,
+     20
+    ]
+   },
+   "at": [
+    13,
+    4
+   ],
+   "rotDeg": 20,
+   "height": 17,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b18f",
+    "windows": "curtain",
+    "windowRatio": 0.32,
+    "windowShape": "rect",
+    "glassColour": "#6a9bd0",
+    "faces": {
+     "back": "plain"
+    },
+    "pattern": [
+     {
+      "type": "pilotis",
+      "inset": 0.5,
+      "spacing": 5.2,
+      "width": 1.5,
+      "kind": "square",
+      "colour": "#8a5a3e",
+      "backColour": "#c9b18f"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-a",
+   "footprint": {
+    "rect": [
+     2.6,
+     7
+    ]
+   },
+   "at": [
+    -1.5,
+    -8.5
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a5a3e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e4630"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fin-b",
+   "footprint": {
+    "rect": [
+     2.6,
+     7
+    ]
+   },
+   "at": [
+    2.5,
+    -8.2
+   ],
+   "height": 24,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a5a3e",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6e4630"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing-l",
+   "footprint": {
+    "rect": [
+     22,
+     32
+    ]
+   },
+   "at": [
+    -34,
+    26
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b18f",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#7aa6d6",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-wing-r",
+   "footprint": {
+    "rect": [
+     22,
+     32
+    ]
+   },
+   "at": [
+    34,
+    26
+   ],
+   "height": 16,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c9b18f",
+    "windows": "curtain",
+    "windowRatio": 0.4,
+    "glassColour": "#7aa6d6",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8a86",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -46,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "pillar": 1.1,
+    "leaf": "bars",
+    "colour": "#d8c7a3"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -30,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "count": 3,
+    "spacing": 4,
+    "colours": [
+     "#008751",
+     "#fcd116",
+     "#e8112d"
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    30,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 13,
+    "count": 2,
+    "spacing": 4,
+    "colours": [
+     "#008751",
+     "#fcd116",
+     "#e8112d"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 4,
+    "spread": 4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    -30,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 10,
+    "count": 3,
+    "spread": 4
+   }
+  },
+  {
+   "type": "lawn",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 50,
+    "depth": 14,
+    "colour": "#5f9a3e"
+   }
+  },
+  {
+   "type": "lamp-post",
+   "at": [
+    30,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   140,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Bent plan, twin fins and tall pilotis added; glazing still reads as continuous curtain wall rather than grouped panes in tan panel bays, wings meet at a flat join, right end wall plain, no lawn/brick paving, ground storey shows glazing between piers."
+ }
+}

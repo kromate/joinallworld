@@ -1,0 +1,648 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Asibiti.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Sadammuhammad11234",
+   "view": "street",
+   "file": "/tmp/places-evidence/kaduna/hospital.jpg",
+   "used": "entrance gate (ochre-yellow end piers, brown central pier, black grilles, blank lintel board), black-and-white kerbed island, clipped hedges, gravel drive, direction-sign post"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low single-storey wards with covered walkways around garden courts (the photo shows only the gate; wards are not photographed)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 6,
+  "pitchDeg": 6,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-pier-w",
+   "footprint": {
+    "rect": [
+     4,
+     2.4
+    ]
+   },
+   "at": [
+    -9.2,
+    -44
+   ],
+   "height": 3.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a830",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a87a1c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-e",
+   "footprint": {
+    "rect": [
+     4,
+     2.4
+    ]
+   },
+   "at": [
+    9.2,
+    -44
+   ],
+   "height": 3.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e0a830",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a87a1c",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-pier-c",
+   "footprint": {
+    "rect": [
+     2.2,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -44
+   ],
+   "height": 4.4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a5a3a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a5a3a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "gate-lintel",
+   "params": {
+    "rect": [
+     19,
+     1.4
+    ],
+    "z0": 3.8,
+    "height": 1.2,
+    "colour": "#f4f2ea"
+   },
+   "at": [
+    0,
+    -44
+   ]
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "colour": "#222222",
+    "leafColour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    4,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "pillar": 0.1,
+    "leaf": "bars",
+    "colour": "#222222",
+    "leafColour": "#1e1e1e"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -2,
+    -32,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 0.35,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#f0f0f0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-a",
+   "footprint": {
+    "rect": [
+     40,
+     12
+    ]
+   },
+   "at": [
+    -34,
+    -6
+   ],
+   "height": 4.6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#4f8f7a",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "ward-b",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    30,
+    -8
+   ],
+   "height": 3.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cb",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#4f8f7a",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "ward-c",
+   "footprint": {
+    "rect": [
+     28,
+     12
+    ]
+   },
+   "at": [
+    -30,
+    28
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cb",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#4f8f7a",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   },
+   "rotDeg": 0
+  },
+  {
+   "type": "mass",
+   "id": "ward-d",
+   "footprint": {
+    "rect": [
+     36,
+     11
+    ]
+   },
+   "at": [
+    26,
+    30
+   ],
+   "height": 4.8,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d2",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bands": "#4f8f7a",
+    "plinth": 0.3,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 0.8
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "mass",
+   "id": "admin",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 5.4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "bands": "#4f8f7a",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -12,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 2.9,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    12,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "width": 2.6,
+    "height": 2.9,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -14,
+    19,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "width": 2.6,
+    "height": 2.9,
+    "colour": "#bdb7a6",
+    "roofColour": "#7a3f2f"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    0,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 5,
+    "height": 3.6,
+    "columns": 3,
+    "colour": "#e8e0cb",
+    "roofColour": "#7a3f2f",
+    "vans": 1
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    -18,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "trees": 2,
+    "paths": true
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    18,
+    10,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "depth": 14,
+    "trees": 2,
+    "paths": true
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -41.5,
+     0
+    ],
+    "end": [
+     0,
+     -20.5,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1,
+       0.6
+      ],
+      "height": 0.4,
+      "colour": "#1c1c1c"
+     }
+    }
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     -40.5,
+     0
+    ],
+    "end": [
+     0,
+     -19.5,
+     0
+    ],
+    "count": 11,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       1,
+       0.6
+      ],
+      "height": 0.4,
+      "colour": "#f2f2ee"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "island-bed",
+   "params": {
+    "rect": [
+     1.6,
+     21
+    ],
+    "height": 0.45,
+    "colour": "#4a3524"
+   },
+   "at": [
+    0,
+    -31
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 3.5,
+    "count": 3,
+    "spread": 1.5,
+    "line": 8
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.5,
+    "depth": 1.6,
+    "colour": "#2f5f2f"
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    11,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.5,
+    "depth": 1.6,
+    "colour": "#2f5f2f"
+   }
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    6,
+    -36,
+    0
+   ],
+   "params": {
+    "height": 4.4,
+    "width": 2.2,
+    "colour": "#2a2a2a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.2,
+    -36,
+    3.6
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 0.45,
+    "bottom": 3.6,
+    "colour": "#2f8f6a",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.2,
+    -36,
+    3.0
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 0.45,
+    "bottom": 3.0,
+    "colour": "#e8b020",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    6.2,
+    -36,
+    2.4
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 0.45,
+    "bottom": 2.4,
+    "colour": "#2f6fb0",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -18
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     30
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     36
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "neuro-psychiatric-hospital-barnawa",
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Only the gate and drive are photographed; kerbed island, sign cluster and hedges are small in the render and the pink-grey gravel is laterite red; wards are composed from the brief."
+ }
+}

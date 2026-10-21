@@ -1,0 +1,126 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "minna",
+ "venueId": "federal-library-minna",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/630008904",
+   "used": "real stepped 8-point outline, about 34 x 25 m, 742 m2 (name match)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.5
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#ece3cf",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bay": 3.6,
+    "plinth": 0.5,
+    "bands": "#ffffff"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "corrugated",
+    "pitch": 17,
+    "overhang": 1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 60,
+    "height": 1.8,
+    "thickness": 0.3,
+    "pillarEvery": 4,
+    "colour": "#e6dfcd"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    22,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -14,
+    -25.5,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 0.8,
+    "colour": "#2f5a3a",
+    "posts": true
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     14
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -26,
+     22
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; outline is real but facade, hip roof and portico position are inferred from the brief"
+ }
+}

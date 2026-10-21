@@ -1,0 +1,476 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sao_Tome_Airport_1_(15627228594).jpg",
+   "licence": "CC BY 2.0",
+   "author": "Chuck Moravec",
+   "view": "front",
+   "file": "/tmp/places-evidence/sao-tome/air1.jpg",
+   "used": "low white terminal with a long dark navy fascia band, taller navy clerestory block behind with glazed bands, glazed end bay, floodlight mast, apron barrier"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/167597061",
+   "used": "terminal size only (about 90 m x 25 m); outline is rotated and ragged so a clean rectangle is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": -8,
+  "pitchDeg": 4,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     84,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "plinth": 0.6,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fascia",
+   "footprint": {
+    "rect": [
+     84,
+     1.6
+    ]
+   },
+   "at": [
+    0,
+    -8.9
+   ],
+   "rotDeg": 0,
+   "z0": 3.0,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f2f4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2f4f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     60,
+     9
+    ]
+   },
+   "at": [
+    10,
+    2.5
+   ],
+   "rotDeg": 0,
+   "z0": 5.2,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f2f4f",
+    "windows": "ribbon",
+    "windowRatio": 0.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#1f2f4f",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-end",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -46,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "ribbon",
+    "windowRatio": 0.6,
+    "plinth": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     9,
+     9
+    ]
+   },
+   "at": [
+    -57,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bfc2c4"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    10,
+    -11.5,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 50,
+    "depth": 4,
+    "height": 3.8,
+    "thickness": 0.3,
+    "columns": 6,
+    "colour": "#f1efe8",
+    "edgeColour": "#1f2f4f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "navy-plinth",
+   "footprint": {
+    "rect": [
+     84,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -8.3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#1f2f4f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-right",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    49,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "ribbon",
+    "windowRatio": 0.6
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfd2d4"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     16,
+     -17,
+     0
+    ],
+    "end": [
+     56,
+     -17,
+     0
+    ],
+    "count": 13,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        3.0,
+        0.4
+       ],
+       "height": 3.4,
+       "colour": "#2a3038"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     17,
+     -17.6,
+     0
+    ],
+    "end": [
+     55,
+     -17.6,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        4.4,
+        1.0
+       ],
+       "height": 0.9,
+       "colour": "#e3b52a"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     19.5,
+     -17.6,
+     0
+    ],
+    "end": [
+     57.5,
+     -17.6,
+     0
+    ],
+    "count": 7,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.8,
+        1.0
+       ],
+       "height": 0.9,
+       "colour": "#1a1d22"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "loft",
+   "at": [
+    -58,
+    -14,
+    0
+   ],
+   "params": {
+    "colour": "#9aa0a6",
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "z": 22,
+      "rect": [
+       0.5,
+       0.5
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -58,
+    -14,
+    22
+   ],
+   "params": {
+    "rect": [
+     3.4,
+     1.0
+    ],
+    "height": 1.6,
+    "colour": "#7b8187"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -59.2,
+     -14.6,
+     23.6
+    ],
+    "end": [
+     -56.8,
+     -14.6,
+     23.6
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.5,
+        0.3
+       ],
+       "height": 0.5,
+       "colour": "#f2f2e8"
+      }
+     }
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -70,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     70,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sao-tome",
+ "venueId": "sao-tome-airport-sao-tome-airport",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fascia lettering and raked blast-fence slabs simplified to dark blocks with yellow/black bases; forecourt parking not in photo; foreground apron colour/people absent"
+ }
+}

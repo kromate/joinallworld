@@ -1,0 +1,498 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Marina_Mall,_Accra.jpg",
+   "licence": "CC BY 2.0",
+   "author": "jbdodane",
+   "view": "front",
+   "file": "/tmp/places-evidence/accra/mall.jpg",
+   "used": "beige stone-clad horizontal fascia bands, projecting entrance canopy on round columns with blank sign board, glass balcony strip at first floor, blue poster-panel wall at right, teal glass tower behind right, three flags, paver car park"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/313071709",
+   "used": "checked only (containing quality, irregular), composed as blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 14,
+  "pitchDeg": 4,
+  "fovDeg": 36,
+  "aspect": 1.5
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     70,
+     34
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "limestone",
+    "colour": "#dccfb4",
+    "windows": "none",
+    "windowRatio": 0.3,
+    "faces": {
+     "front": "none",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b9b8b0",
+    "parapet": 1.2
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 14,
+      "colour": "#c9b896",
+      "profile": [
+       [
+        0.8,
+        0
+       ],
+       [
+        0.8,
+        4.2
+       ]
+      ]
+     }
+    },
+    "mode": "line",
+    "start": [
+     -30,
+     -18
+    ],
+    "end": [
+     22,
+     -18
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "prism",
+   "id": "canopy",
+   "params": {
+    "rect": [
+     58,
+     10
+    ],
+    "z0": 4.0,
+    "height": 1.8,
+    "colour": "#d6c9ae"
+   },
+   "at": [
+    -3,
+    -17.5
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "name-black",
+   "params": {
+    "rect": [
+     20,
+     0.3
+    ],
+    "z0": 4.6,
+    "height": 1.1,
+    "colour": "#222226"
+   },
+   "at": [
+    -17,
+    -22.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "name-red",
+   "params": {
+    "rect": [
+     16,
+     0.3
+    ],
+    "z0": 4.6,
+    "height": 1.1,
+    "colour": "#c8302b"
+   },
+   "at": [
+    7,
+    -22.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony-glass",
+   "params": {
+    "rect": [
+     48,
+     0.3
+    ],
+    "z0": 5.8,
+    "height": 1.6,
+    "colour": "#a8cfcb"
+   },
+   "at": [
+    -6,
+    -13
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balcony-slab",
+   "params": {
+    "rect": [
+     48,
+     4
+    ],
+    "z0": 5.8,
+    "height": 0.3,
+    "colour": "#cfc2a6"
+   },
+   "at": [
+    -6,
+    -11
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "upper-fascia",
+   "params": {
+    "rect": [
+     50,
+     1.5
+    ],
+    "z0": 7.4,
+    "height": 3.4,
+    "colour": "#cdbf9f"
+   },
+   "at": [
+    -4,
+    -10
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-fascia",
+   "params": {
+    "rect": [
+     22,
+     1
+    ],
+    "z0": 3.0,
+    "height": 2.4,
+    "colour": "#d6c9ae"
+   },
+   "at": [
+    24,
+    -17.4
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "poster-wall",
+   "params": {
+    "rect": [
+     22,
+     0.8
+    ],
+    "z0": 6.0,
+    "height": 6.6,
+    "colour": "#2a4fb0"
+   },
+   "at": [
+    24,
+    -17.6
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "poster-1",
+   "params": {
+    "rect": [
+     3.4,
+     0.2
+    ],
+    "z0": 6.8,
+    "height": 4.6,
+    "colour": "#d9c4b0"
+   },
+   "at": [
+    17.5,
+    -18.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "poster-2",
+   "params": {
+    "rect": [
+     3.4,
+     0.2
+    ],
+    "z0": 6.8,
+    "height": 4.6,
+    "colour": "#e8e4de"
+   },
+   "at": [
+    23,
+    -18.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "poster-3",
+   "params": {
+    "rect": [
+     3.4,
+     0.2
+    ],
+    "z0": 6.8,
+    "height": 4.6,
+    "colour": "#c9a98c"
+   },
+   "at": [
+    28.5,
+    -18.1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "wing-shops",
+   "params": {
+    "rect": [
+     22,
+     0.5
+    ],
+    "z0": 0,
+    "height": 3.0,
+    "colour": "#6c7a80"
+   },
+   "at": [
+    24,
+    -17.4
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     26,
+     20
+    ]
+   },
+   "at": [
+    22,
+    12
+   ],
+   "z0": 12,
+   "height": 16,
+   "storeys": 4,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#4aa8a6",
+    "windows": "curtain",
+    "windowRatio": 0.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa0a3",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -26,
+    -6,
+    12
+   ],
+   "params": {
+    "height": 10,
+    "colours": [
+     "#d4a82f",
+     "#c8302b",
+     "#2f7a43"
+    ],
+    "count": 3,
+    "spacing": 5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pavers",
+   "params": {
+    "rect": [
+     70,
+     22
+    ],
+    "z0": 0.02,
+    "height": 0.05,
+    "colour": "#a29a8e"
+   },
+   "at": [
+    0,
+    -32
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car0",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#c9ccd0"
+   },
+   "at": [
+    -24,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car1",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#202226"
+   },
+   "at": [
+    -8,
+    -21
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car2",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#bfc3c8"
+   },
+   "at": [
+    8,
+    -20
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car3",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#2a2c30"
+   },
+   "at": [
+    24,
+    -21
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car4",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#b9bdc2"
+   },
+   "at": [
+    -14,
+    -28
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car5",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#c9ccd0"
+   },
+   "at": [
+    14,
+    -28
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "car6",
+   "params": {
+    "rect": [
+     5.2,
+     2.2
+    ],
+    "z0": 0.1,
+    "height": 1.7,
+    "colour": "#d0cfc6"
+   },
+   "at": [
+    30,
+    -28
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 3,
+  "treeKind": "palm",
+  "extent": [
+   140,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-marina-mall",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Cars are plain boxes with a brick-like texture; tower glazing reads darker than the teal in the photo; stepped balcony and canopy are slab approximations; poster portraits are flat tinted panels; camera still looks wider than the photo."
+ }
+}

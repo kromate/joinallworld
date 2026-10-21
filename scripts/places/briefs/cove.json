@@ -1,0 +1,652 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "cove",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "cove",
+    "climate": "cold",
+    "vernacular": "No permanent buildings on Heard Island. The cleared Atlas Cove ANARE station (1947-55, about 25 buildings) and 1928 Admiralty Hut survive only as ruins; remains are small weathered huts and modified water-tank shelters of corrugated iron and timber in faded orange and grey, among black volcanic rock and sand, glaciers and storm-swept cushion-plant tussocks.",
+    "wallColours": [
+      "#b5472f",
+      "#7b8084",
+      "#8a4a2e",
+      "#d06a35",
+      "#e8ecee",
+      "#3a3a3d"
+    ],
+    "roofColours": [
+      "#6e7478",
+      "#52575b",
+      "#3f4347",
+      "#8a4a2e"
+    ],
+    "wallMaterials": [
+      "metal-cladding",
+      "timber",
+      "stone",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet"
+    ],
+    "ground": "sand",
+    "vegetation": [
+      "none"
+    ],
+    "ornament": "None; utilitarian field huts, fuel drums, flagpoles, rusted try pots, a small mast and stencilled blank boards. Orange paint is the only accent.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+        "what": "Atlas Cove station: ~25 buildings, cleared, recreation-hut ruins; water-tank shelters; Admiralty Hut 1928 ruins; Antarctic climate; Azorella, no trees; volcanic geology"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Atlas_Cove",
+        "what": "inlet on north coast; camps 1947-55, 1969, 1971"
+      }
+    ]
+  },
+  "places": {
+    "cove-airport-cove-airport": {
+      "venueId": "cove-airport-cove-airport",
+      "city": "cove",
+      "name": "Atlas Cove Station Helipad",
+      "archetype": "airport-terminal",
+      "subject": "a bare gravel helicopter landing pad beside a small orange field hut on the black volcanic shore of Atlas Cove",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed",
+        "variant": "helipad"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#b5472f",
+          "#7b8084",
+          "#e8ecee"
+        ],
+        "roofColour": "#6e7478",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "bare gravel pad with painted ring"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "small radio mast"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 3,
+          "note": "fuel drums"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/946458967",
+          "what": "amenity=research_institute polygon 241 x 174 m, 29,000 m2 containing the venue (station site outline, no building detail)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Atlas_Cove",
+          "what": "inlet on north coast of Heard Island; camps for scientists 1947-55, American 1969, French 1971"
+        }
+      ],
+      "notes": "No source describes a helipad building. The pad and orange hut are typed from Australian Antarctic field practice and the island facts (fuel drums, diesel generators and landing-craft remains listed at Atlas Cove). Mark all as inferred. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-clinic": {
+      "venueId": "cove-clinic",
+      "city": "cove",
+      "name": "Clinic (game venue)",
+      "archetype": "hospital",
+      "subject": "a tiny first-aid hut, a small orange timber and metal field shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4.5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#c9503a",
+          "#e8ecee",
+          "#ffffff"
+        ],
+        "roofColour": "#6e7478",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-community-notices": {
+      "venueId": "cove-community-notices",
+      "city": "cove",
+      "name": "Community notices (game venue)",
+      "archetype": "civic-small",
+      "subject": "a small timber hut with a noticeboard and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 7,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#8a4a2e",
+          "#b9bec2",
+          "#e8ecee"
+        ],
+        "roofColour": "#6e7478",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank notice board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-community-voting-game": {
+      "venueId": "cove-community-voting-game",
+      "city": "cove",
+      "name": "Community voting simulation (game venue)",
+      "archetype": "civic-small",
+      "subject": "a plain open-fronted meeting hut with a long bench, in the weathered Atlas Cove station style",
+      "form": {
+        "footprint": "rect",
+        "width_m": 9,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#7b8084",
+          "#b5472f",
+          "#e8ecee"
+        ],
+        "roofColour": "#52575b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "porch"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/946458967",
+          "what": "polygon containing the venue (research_institute site outline)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-community-workshop": {
+      "venueId": "cove-community-workshop",
+      "city": "cove",
+      "name": "Community workshop (game venue)",
+      "archetype": "industrial",
+      "subject": "a squat round shelter made from a converted water tank, like the water-tank huts surviving at Atlas Cove, with a bulldozer and generator beside it",
+      "form": {
+        "footprint": "round",
+        "width_m": 7.4,
+        "depth_m": 7.3,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "dome",
+        "variant": "water-tank shelter"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#8c9094",
+          "#b5472f",
+          "#d6d9db"
+        ],
+        "roofColour": "#6a6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "storage-tanks",
+          "count": 2,
+          "note": "fuel drums"
+        },
+        {
+          "id": "sheds",
+          "count": 1,
+          "note": "lean-to"
+        },
+        {
+          "id": "chimney",
+          "count": 1,
+          "note": "stove flue"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/946458972",
+          "what": "nearest OSM building: round 7.4 x 7.3 m, 42 m2, 37 m from the venue"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "The nearest OSM footprint is a round 7.4 m building; Wikipedia says two modified water-tank shelters remain at Atlas Cove, so a round tank hut is plausible (not confirmed that this is one). (game venue) workshop is a placeholder. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-market-game": {
+      "venueId": "cove-market-game",
+      "city": "cove",
+      "name": "Market game (game venue)",
+      "archetype": "market-open",
+      "subject": "a lean-to stores shed with crates and drums, standing in for a market",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10.3,
+        "depth_m": 5.3,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#7a5a40",
+          "#b5472f",
+          "#d6d9db"
+        ],
+        "roofColour": "#6e7478",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 2,
+          "note": "crates and drum tables"
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/946458975",
+          "what": "nearest OSM building 10.3 x 5.3 m, 54 m2, 54 m from the venue"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. Footprint of the nearest OSM building used for size. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-meal-stop": {
+      "venueId": "cove-meal-stop",
+      "city": "cove",
+      "name": "Visitor meal stop (game venue)",
+      "archetype": "restaurant",
+      "subject": "a small galley hut with a stove chimney, orange walls and a steep tin roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5.5,
+        "storeys": 1,
+        "height_m": 3.2,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#d06a35",
+          "#b9bec2",
+          "#e8ecee"
+        ],
+        "roofColour": "#5d6266",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-quiet-reflection": {
+      "venueId": "cove-quiet-reflection",
+      "city": "cove",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "a plain low chapel-like hut of dark timber facing the cove (placeholder)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14.3,
+        "depth_m": 6.1,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#4a4d52",
+          "#b9bec2",
+          "#e8ecee"
+        ],
+        "roofColour": "#3f4347",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/946458969",
+          "what": "nearest OSM building 14.3 x 6.1 m, 88 m2, 68 m from the venue"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. Size from the nearest OSM footprint, which may be a ruin or hut remnant. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    },
+    "cove-recreation": {
+      "venueId": "cove-recreation",
+      "city": "cove",
+      "name": "Recreation area (game venue)",
+      "archetype": "park-landscape",
+      "subject": "a rocky black-sand shore with cushion-plant tussocks and the ruined walls of the old recreation hut",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "variant": "ruined hut and shore"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#3a3a3d",
+          "#6e7a55",
+          "#cfd6d9"
+        ],
+        "roofColour": "#6e7478",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low stone and timber ruin of the recreation hut"
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2,
+          "note": "rusted try-pot style tanks"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Atlas_Cove",
+          "what": "inlet on north coast of Heard Island; camps for scientists 1947-55, American 1969, French 1971"
+        }
+      ],
+      "notes": "Wikipedia: only the ruins of the ANARE recreation hut remain at the cleared Atlas Cove site; vegetation is Azorella cushion plants (olive green), no trees, volcanic black rock and sand; snow patches possible. (game venue) placeholder, low."
+    },
+    "cove-transit": {
+      "venueId": "cove-transit",
+      "city": "cove",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "a rough landing point on the cove shore with a beached landing craft, a bulldozer and a small shelter",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "landing"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "timber",
+        "colours": [
+          "#6a6f73",
+          "#b5472f",
+          "#cfd6d9"
+        ],
+        "roofColour": "#52575b",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "rough landing ramp"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "storage-tanks",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1947-1955 ANARE era (remains)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+          "what": "Atlas Cove ANARE station 1947-55 (about 25 buildings, mostly cleared; ruins of recreation hut remain), two modified water-tank shelters, Admiralty Hut ruins (1928); Antarctic climate, no trees, Azorella cushion plants, volcanic rock"
+        }
+      ],
+      "notes": "(game venue) always low. The island has no transit; leftover landing-craft wreck and bulldozer are listed in the Wikipedia article and inspire this stop. Heard Island has no permanent settlement; this venue is a game placeholder placed on the abandoned Atlas Cove station site, so it is a small weathered field hut typed from the sparse remains, low confidence."
+    }
+  }
+}

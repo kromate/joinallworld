@@ -1,0 +1,1579 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "honiara",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "honiara",
+    "climate": "rainforest",
+    "vernacular": "Post-war, rapidly grown Pacific capital on a narrow coastal strip: 1-3 storey cream or pastel-painted concrete-block buildings with deep verandas and corrugated-iron roofs (red, green, grey), timber and fibro houses on low stilts, Chinatown shophouses with high porches (partly rebuilt after 2006), and traditional leaf-roofed houses at the Cultural Centre. Hot, humid, dusty red-brown ground with coconut palms and tropical broadleaf trees against steep green ridges.",
+    "wallColours": [
+      "#efe6cf",
+      "#d8c9a0",
+      "#c98a6b",
+      "#8fb3b0",
+      "#f4f0e6",
+      "#a8a89a",
+      "#6f9a77"
+    ],
+    "roofColours": [
+      "#a8473a",
+      "#6b7a6a",
+      "#8c8f90",
+      "#4f6b78"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "timber",
+      "render",
+      "metal-cladding"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "thatch"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Melanesian carved and painted motifs (shell inlay, canoe-prow and nguzunguzu figures) on civic buildings and church altars; roofs echoing traditional Temotu cones and Guadalcanal ridged roofs; open verandas; WWII memorial markers and relics (guns, wrecks) along the coast.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Honiara",
+        "what": "tropical rainforest climate; concrete Parliament building; Chinatown high porches; Central Market; Holy Cross Cathedral; botanical garden"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Solomon_Islands_Parliament_Building",
+        "what": "conical concrete shell roof inspired by Temotu and Guadalcanal roof forms"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Honiara_Central_Market",
+        "what": "covered market building on Mendana Avenue waterfront"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Holy_Cross_Cathedral,_Honiara",
+        "what": "Pacific architecture, carved altar and lectern"
+      }
+    ]
+  },
+  "places": {
+    "honiara-airport-honiara-airport": {
+      "venueId": "honiara-airport-honiara-airport",
+      "city": "honiara",
+      "name": "Honiara International Airport (Henderson Field)",
+      "archetype": "airport-terminal",
+      "subject": "The Henderson Field terminal: a long low 1-2 storey passenger building with a wide overhanging roof canopy on the landside and a small control tower to one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 91,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "variant": "long low terminal",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e3d2",
+          "#6f8f9a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "deep overhanging entrance canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s-2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Honiara_International_Airport",
+          "what": "main international airport, ~8 km from Honiara, runway 06/24 2,200 m; terminal ceiling damaged by the Nov 2022 earthquake"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/136866059",
+          "what": "OSM terminal building ~91x33 m, area 2,983 m2"
+        }
+      ],
+      "notes": "Footprint is OSM-measured (91x33 m); the page gives no description of the facade so the look is a typed guess for a small Pacific terminal. Single runway, no jet bridges known."
+    },
+    "honiara-clinic": {
+      "venueId": "honiara-clinic",
+      "city": "honiara",
+      "name": "National Referral Hospital",
+      "archetype": "hospital",
+      "subject": "The hospital's main ward block: a long low painted-concrete building with covered walkways and a corrugated red roof",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "main frontage block",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e3d2",
+          "#6f9a77",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/3626556",
+          "what": "OSM hospital building ~223x90 m, area 7,295 m2 (shared by both hospital venues)"
+        }
+      ],
+      "notes": "The national hospital campus (~223x90 m footprint) is a long set of linked low wards under corrugated roofs; no description of the buildings was found. Typed guess. Two venue pins land on this same hospital: this one shows the main frontage block."
+    },
+    "honiara-osm-node-1958123256": {
+      "venueId": "honiara-osm-node-1958123256",
+      "city": "honiara",
+      "name": "National Referral Hospital",
+      "archetype": "hospital",
+      "subject": "A rear ward wing of the national hospital: a plainer one-storey linked ward block with deep verandas",
+      "form": {
+        "footprint": "H",
+        "width_m": 70,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "rear ward wing",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e3d2",
+          "#6f9a77",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered walkways"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/3626556",
+          "what": "OSM hospital building ~223x90 m, area 7,295 m2 (shared by both hospital venues)"
+        }
+      ],
+      "notes": "The national hospital campus (~223x90 m footprint) is a long set of linked low wards under corrugated roofs; no description of the buildings was found. Typed guess. Two venue pins land on this same hospital: this one shows the rear ward wing."
+    },
+    "honiara-community-notices": {
+      "venueId": "honiara-community-notices",
+      "city": "honiara",
+      "name": "National Parliament of Solomon Islands",
+      "archetype": "civic-palace",
+      "subject": "The 1993 Parliament House: a two-storey concrete building under a large conical shell roof with a ridged crown of seven elements and a deep cantilevered eave",
+      "form": {
+        "footprint": "round",
+        "width_m": 40,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "pyramidal",
+        "variant": "conical shell roof 37 m across; crown with seven elements",
+        "wings": 0
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6e2d4",
+          "#7a9a9a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8a8f84",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1993",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Solomon_Islands_Parliament_Building",
+          "what": "two-storey conical concrete shell roof, ~37.1 m across and 13 m high; cone follows Temotu roofs, ridge echoes Guadalcanal roofs; crown of seven elements for seven provinces; 18 m column-free interior; 2.8 m perimeter cantilever; steel frame, concrete, extensive glazing; ~2,000 m2; US$5m US gift, built 1993"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Honiara",
+          "what": "concrete conical building inaugurated 1993"
+        }
+      ],
+      "notes": "Recognisable by the huge cone-like shell roof with a ridged crown (seven elements). Colours are not described in text; pale concrete walls and a grey-green roof are inferred. The roof is nearly as wide as the building, so the cone dominates the silhouette."
+    },
+    "honiara-community-voting-game": {
+      "venueId": "honiara-community-voting-game",
+      "city": "honiara",
+      "name": "Honiara City Council",
+      "archetype": "civic-small",
+      "subject": "A two-storey painted-concrete council office building with a veranda and corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 26,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e3d2",
+          "#8fb3b0",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/723910078",
+          "what": "OSM building at the pin, ~44x26 m, area 1,085 m2"
+        }
+      ],
+      "notes": "No description found for the council building; OSM footprint (44x26 m) only. Typed guess."
+    },
+    "honiara-community-workshop": {
+      "venueId": "honiara-community-workshop",
+      "city": "honiara",
+      "name": "National Library of Solomon Islands",
+      "archetype": "campus-block",
+      "subject": "The National Library area: a modest 1-2 storey painted block with a covered entrance, in a small compound",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#6f9a77",
+          "#f4f0e6"
+        ],
+        "roofColour": "#6b7a6a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Honiara",
+          "what": "Honiara government and civic buildings from post-war colonial period onward"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/726022073",
+          "what": "OSM National Library Area, wikidata Q130718410, site ~67x66 m"
+        }
+      ],
+      "notes": "Wikidata/OSM mark a National Library area (~67x66 m); the buildings are not described. Footprint here is the main block guessed inside the site."
+    },
+    "honiara-market-game": {
+      "venueId": "honiara-market-game",
+      "city": "honiara",
+      "name": "Panatina Plaza",
+      "archetype": "mall",
+      "subject": "A two-storey flat-roofed shopping plaza in Panatina: a wide cream block with a continuous shop frontage, signage boards and an open forecourt for parking",
+      "form": {
+        "footprint": "rect",
+        "width_m": 92,
+        "depth_m": 62,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#efe6cf",
+          "#c98a6b",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/281733741",
+          "what": "OSM building ~92x62 m, area 4,499 m2, named Panatina Plaza"
+        }
+      ],
+      "notes": "Only OSM footprint known (92x62 m). Appearance typed as a Pacific town shopping plaza; boards are blank brand-neutral."
+    },
+    "honiara-meal-stop": {
+      "venueId": "honiara-meal-stop",
+      "city": "honiara",
+      "name": "The Ofis",
+      "archetype": "restaurant",
+      "subject": "A small waterfront bar-restaurant in a low timber-and-iron building with a veranda, west of the centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#c9a77c",
+          "#6f9a77",
+          "#f4f0e6"
+        ],
+        "roofColour": "#6b7a6a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/725212692",
+          "what": "OSM residential building 12x7 m nearest to the pin"
+        }
+      ],
+      "notes": "OSM only shows a ~12x7 m residential building next to the pin. No description of the venue found; typed from small Honiara waterfront eateries."
+    },
+    "honiara-osm-node-12097880001": {
+      "venueId": "honiara-osm-node-12097880001",
+      "city": "honiara",
+      "name": "Cozy Cove Café",
+      "archetype": "restaurant",
+      "subject": "A small airport-side cafe in a one-storey painted building with a veranda and corrugated roof near Henderson",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "OSM block is larger (58x45 m)",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#8fb3b0",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 5
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/745628692",
+          "what": "OSM building containing the pin, ~58x45 m"
+        }
+      ],
+      "notes": "No description found. OSM building containing the pin is ~58x45 m (a larger structure than a cafe); main mass here is a guess."
+    },
+    "honiara-osm-node-1958123258": {
+      "venueId": "honiara-osm-node-1958123258",
+      "city": "honiara",
+      "name": "Jina Restaurant",
+      "archetype": "restaurant",
+      "subject": "A single-storey Chinese-style restaurant building in central Honiara with a flat roof, painted facade and covered front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 34,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8c9a0",
+          "#a8473a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/271980887",
+          "what": "OSM building at pin ~40x34 m, area 875 m2"
+        }
+      ],
+      "notes": "OSM footprint only. Appearance typed."
+    },
+    "honiara-osm-node-1958150211": {
+      "venueId": "honiara-osm-node-1958150211",
+      "city": "honiara",
+      "name": "Solomon Islands National University - Kukum Campus",
+      "archetype": "campus-block",
+      "subject": "Kukum campus: several two-storey painted-concrete teaching blocks with louvred verandas around lawns",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "several parallel blocks",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#6f9a77",
+          "#f4f0e6"
+        ],
+        "roofColour": "#4f6b78",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/730970964",
+          "what": "OSM university Kukum Campus ~394x209 m, area 55,492 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Solomon_Islands_National_University",
+          "what": "SINU established 2013, main campus in Honiara"
+        }
+      ],
+      "notes": "Campus site is ~394x209 m but buildings not described. Show one two-storey block; look typed from Honiara institutional buildings."
+    },
+    "honiara-osm-node-4959354922": {
+      "venueId": "honiara-osm-node-4959354922",
+      "city": "honiara",
+      "name": "Vilu War Museum",
+      "archetype": "park-landscape",
+      "subject": "Vilu Village open-air war museum on the Guadalcanal coast: a grassy compound with WWII guns and aircraft wrecks displayed under trees, with a small shelter and memorial",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "open-air relic park"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#6b7a6a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#6b7a6a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 4,
+          "note": "displayed WWII guns"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "small shelter"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Guadalcanal",
+          "what": "contents list mentions Vilu War Museum and Guadalcanal American Memorial (no body text retrieved)"
+        }
+      ],
+      "notes": "Open-air museum west of Honiara with wartime guns and aircraft remains, no building described; form typed as an open compound with a few relic displays."
+    },
+    "honiara-osm-node-5489888721": {
+      "venueId": "honiara-osm-node-5489888721",
+      "city": "honiara",
+      "name": "Hells Point",
+      "archetype": "park-landscape",
+      "subject": "Hells Point, a WWII headland east of the airport: a low grassy rise by the shore with a small memorial marker among palms",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "coastal headland"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a8a89a",
+          "#6b7a6a",
+          "#d8d4c6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1942",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Guadalcanal",
+          "what": "Marines landed between Koli Point and Lunga Point on 7 Aug 1942; Hells Point not described in the retrieved text"
+        }
+      ],
+      "notes": "No source describing the site was retrieved; typed as a coastal headland with a small marker."
+    },
+    "honiara-osm-node-5591435621": {
+      "venueId": "honiara-osm-node-5591435621",
+      "city": "honiara",
+      "name": "Red Beach",
+      "archetype": "park-landscape",
+      "subject": "Red Beach, the 1942 Guadalcanal landing beach: a long dark-sand shore fringed by coconut palms, with a small memorial marker",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "beach strip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a8a89a",
+          "#6b7a6a",
+          "#d8d4c6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1942",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Guadalcanal",
+          "what": "US Marines landed on 7 Aug 1942 between Koli Point and Lunga Point; \"Red Beach\" name not in retrieved text"
+        }
+      ],
+      "notes": "Beach; no structure described. Sand and palms with at most a small memorial."
+    },
+    "honiara-osm-node-5834144885": {
+      "venueId": "honiara-osm-node-5834144885",
+      "city": "honiara",
+      "name": "Sinking ship (Bonegi wreck)",
+      "archetype": "park-landscape",
+      "subject": "Shipwreck viewing spot on the Guadalcanal north-west coast: a black-sand beach with a rusted wartime wreck standing out of the shallows",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "beach with wreck hull"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#6b4f3a",
+          "#8a6a4a",
+          "#3a3a38"
+        ],
+        "roofColour": "#6b4f3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1942",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Battle_of_Guadalcanal",
+          "what": "WWII wrecks off Guadalcanal; no page text on this site retrieved"
+        }
+      ],
+      "notes": "Likely the Bonegi wrecks (WWII Japanese transports) west of Honiara - identification from the pin location, not confirmed. Typed as a beach with a rusted hull."
+    },
+    "honiara-osm-node-7138527971": {
+      "venueId": "honiara-osm-node-7138527971",
+      "city": "honiara",
+      "name": "Ausmart",
+      "archetype": "mall",
+      "subject": "A large single-storey supermarket box with a long flat roof, deep entrance canopy and a big surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 143,
+        "depth_m": 141,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "flat",
+        "variant": "big-box with side loading yard",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e9e3d2",
+          "#4f6b78",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/631329726",
+          "what": "OSM building ~143x141 m, area 6,273 m2"
+        }
+      ],
+      "notes": "OSM footprint is large (6,273 m2); look is typed as a big retail box. Brand boards kept blank. Largest dimension clamped to 120 m."
+    },
+    "honiara-osm-way-1204579380": {
+      "venueId": "honiara-osm-way-1204579380",
+      "city": "honiara",
+      "name": "Solomon Islands National Stadium",
+      "archetype": "stadium",
+      "subject": "The new 10,000-seat Honiara national stadium: a modern bowl with tiered stands, a canopy over the main stand and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 178,
+        "depth_m": 172,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "single bowl with canopy over the main stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d6cc",
+          "#4f6b78",
+          "#f2f2ee"
+        ],
+        "roofColour": "#e0ddd2",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "canopy over main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Stadium_(Honiara)",
+          "what": "10,000-seat venue; groundbreaking 5 May 2021, handed over 14 Sep 2023; gift of China, US$71m; grass; football, rugby, athletics"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1204579380",
+          "what": "OSM stadium ~178x172 m, area 25,729 m2"
+        }
+      ],
+      "notes": "Capacity, year and size are sourced; roof/stand detail is not described in the text, so the canopy and tier layout are typical for this class of Chinese-aid stadiums (inferred). Contrast with the older Lawson Tama."
+    },
+    "honiara-osm-way-1370454204": {
+      "venueId": "honiara-osm-way-1370454204",
+      "city": "honiara",
+      "name": "SINU Ranadi Campus",
+      "archetype": "campus-block",
+      "subject": "Ranadi campus: a long two-storey teaching block and workshops with a corrugated roof near the airport road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "gable",
+        "variant": "long block plus workshop sheds",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8c9a0",
+          "#6f9a77",
+          "#f4f0e6"
+        ],
+        "roofColour": "#6b7a6a",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1370454204",
+          "what": "OSM university campus, wikidata Q110442979, ~357x137 m, area 24,455 m2"
+        }
+      ],
+      "notes": "Campus extent known (357x137 m); buildings not described. Typed trade-school look to contrast with Kukum and Panatina."
+    },
+    "honiara-osm-way-613190463": {
+      "venueId": "honiara-osm-way-613190463",
+      "city": "honiara",
+      "name": "Lawson Tama Stadium",
+      "archetype": "stadium",
+      "subject": "Lawson Tama, the 1964 hillside stadium: a grass oval with one long stand built into the hillside, a small covered pavilion and light masts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed",
+        "variant": "one long stand built into the hillside; ~92x17 m stand"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b4b0a4",
+          "#6f9a77",
+          "#e0ddd2"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "small covered section"
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lawson_Tama_Stadium",
+          "what": "opened 1964; capacity listed 20,000 (no official figure); one stand built into the hillside, grassland around"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/613190463",
+          "what": "OSM building ~92x17 m (the stand)"
+        }
+      ],
+      "notes": "Mostly an open grass bowl; the OSM building is the ~92x17 m stand. Keep very different from the new National Stadium: low, single stand, large grass banks."
+    },
+    "honiara-osm-way-730970960": {
+      "venueId": "honiara-osm-way-730970960",
+      "city": "honiara",
+      "name": "Bulkshop",
+      "archetype": "market-hall",
+      "subject": "A wholesale store: a long, low steel-framed shed with corrugated cladding, roller doors and a loading apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 0
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9c2ae",
+          "#4f6b78",
+          "#e9e3d2"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/730970960",
+          "what": "OSM building named Bulkshop ~65x18 m, area 1,150 m2"
+        }
+      ],
+      "notes": "OSM only; shape and use typed as a trade store."
+    },
+    "honiara-osm-way-730970978": {
+      "venueId": "honiara-osm-way-730970978",
+      "city": "honiara",
+      "name": "SINU Panatina Campus",
+      "archetype": "campus-block",
+      "subject": "Panatina campus: a larger campus of two-storey cream blocks around a quadrangle with a flagpole and covered walkways",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "variant": "blocks around a quad",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6cf",
+          "#a8473a",
+          "#f4f0e6"
+        ],
+        "roofColour": "#a8473a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/730970978",
+          "what": "OSM university campus ~272x231 m, area 45,466 m2, wikidata Q110442979"
+        }
+      ],
+      "notes": "Campus extent known; building design not described. Typed U-plan campus block to differ from Kukum and Ranadi."
+    },
+    "honiara-quiet-reflection": {
+      "venueId": "honiara-quiet-reflection",
+      "city": "honiara",
+      "name": "Holy Cross Cathedral",
+      "archetype": "church-modern",
+      "subject": "Holy Cross Cathedral: a large 1970s Catholic cathedral on a hill east of the centre, with a wide steep-pitched roof, open side walls and local carving at the altar",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "variant": "wide nave, hilltop; Pacific-style design"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#ece6d6",
+          "#8c8f90",
+          "#f4f0e6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "screen",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "freestanding bell frame"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1976-78",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Holy_Cross_Cathedral,_Honiara",
+          "what": "Pacific architecture; foundation stone 1976, consecrated 1978; carved altar and lectern in local culture; stands on the pro-cathedral hill (earlier a Quonset-hut church)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/271790885",
+          "what": "OSM cathedral ~55x35 m, area 1,517 m2"
+        }
+      ],
+      "notes": "Pacific-style cathedral on the hill in the east of central Honiara. The text gives no shape or colour; wide gable, concrete frame and open screens are inferred. The earlier pro-cathedral on the same hill was a Quonset hut and is not modelled."
+    },
+    "honiara-recreation": {
+      "venueId": "honiara-recreation",
+      "city": "honiara",
+      "name": "Honiara Children's Park",
+      "archetype": "park-landscape",
+      "subject": "A waterfront park beside Mendana Avenue: open grass with palms, a few shelters and play equipment, edged by a seawall eroded by the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 130,
+        "depth_m": 57,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "seafront lawn"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c2ae",
+          "#6f9a77",
+          "#e9e3d2"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s-2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Honiara",
+          "what": "Honiara Children's Park; coastal erosion threatens it"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/330742477",
+          "what": "OSM park ~130x57 m, area 6,546 m2"
+        }
+      ],
+      "notes": "Shape/size from OSM; coastal erosion noted by Wikipedia. Shelter and play details inferred."
+    },
+    "honiara-transit": {
+      "venueId": "honiara-transit",
+      "city": "honiara",
+      "name": "Lunga bus stop",
+      "archetype": "transport-station",
+      "subject": "A roadside bus stop and shelter on Kukum Highway at Lunga: a small open timber-and-iron shelter by a minibus lay-by",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9a77c",
+          "#6b7a6a",
+          "#d8d4c6"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/747647223",
+          "what": "OSM small building ~16x7 m nearest the pin"
+        }
+      ],
+      "notes": "No named station exists in sources; \"Lunga\" is a hub label. Minibuses stop at roadside; typed shelter."
+    }
+  }
+}

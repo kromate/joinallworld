@@ -1,0 +1,1465 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ljubljana",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ljubljana",
+    "climate": "temperate",
+    "vernacular": "Central European city under a castle hill: compact old town of Baroque and Secession (Vienna Art Nouveau) buildings in cream, ochre, salmon and pale green stucco with steep red-tile roofs; Plecnik-designed stone, colonnades and columns; socialist-era grey concrete panel blocks and low brick halls in the suburbs; villages with gabled houses under red clay tile roofs, onion-capped or spired church towers and wooden hayracks; wooded hills of beech and spruce.",
+    "wallColours": [
+      "#e0c88a",
+      "#efe6cf",
+      "#d9a58c",
+      "#b8c8a8",
+      "#f0eee8",
+      "#b0aea8",
+      "#c9b48a"
+    ],
+    "roofColours": [
+      "#a94c37",
+      "#8c4a3a",
+      "#6e6a66",
+      "#b5593a"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "render",
+      "limestone",
+      "brick",
+      "concrete",
+      "glass-curtain",
+      "timber"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "metal-sheet",
+      "concrete",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Baroque pilasters, volute gables and stone portals (e.g. the 1762 Selo mansion), Secession floral stucco and pastel facades, Plecnik columns and stone details, wooden balconies with carved balustrades and gable finials on villas, onion or spire-capped church towers, steep hip roofs with dormers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Ljubljana",
+        "what": "Baroque rebuilding after the 1511 earthquake, Secession districts after 1895, Plecnik and Ravnikar, Romanesque-Gothic-Renaissance castle on Castle Hill"
+      },
+      {
+        "url": "https://sl.wikipedia.org/wiki/Dvorec_Selo,_Ljubljana",
+        "what": "late Baroque two-storey manor with projecting central bay and stone portal"
+      },
+      {
+        "url": "https://sl.wikipedia.org/wiki/Kunstljeva_vila",
+        "what": "two-storey villa with wooden balconies and double-pitched roof with gable finials"
+      }
+    ]
+  },
+  "places": {
+    "ljubljana-airport-ljubljana-airport": {
+      "venueId": "ljubljana-airport-ljubljana-airport",
+      "city": "ljubljana",
+      "name": "Ljubljana Joze Pucnik Airport",
+      "archetype": "airport-terminal",
+      "subject": "The expanded terminal seen from the forecourt: a low glazed and clad block with a flat roof overhang, the original wing and the 2021 western extension side by side, mountains behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 55,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d8",
+          "#6f7d88",
+          "#eceae4"
+        ],
+        "roofColour": "#b9bcbf",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 1,
+          "note": "one air bridge added in 2021"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "original terminal with 2021 extension",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ljubljana_Jo%C5%BEe_Pu%C4%8Dnik_Airport",
+          "what": "terminal complex 28,587 m2, original terminal 13,000 m2 plus a 10,000 m2 extension to the west opened July 2021 (built July 2019-June 2021), 2007 upper-level extension, 22 check-in desks, one new air bridge"
+        }
+      ],
+      "notes": "Areas and phasing are from the source; width and height are estimates derived from the area (two floors). Colours estimated; architecture not described in the source. Alps backdrop in the real place."
+    },
+    "ljubljana-clinic": {
+      "venueId": "ljubljana-clinic",
+      "city": "ljubljana",
+      "name": "Univerzitetni rehabilitacijski institut Republike Slovenije - Soca",
+      "archetype": "hospital",
+      "subject": "The national rehabilitation institute: a long mid-rise white block with a ramped entrance and green grounds",
+      "form": {
+        "footprint": "L",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece8de",
+          "#7f93a3",
+          "#c9c4b8"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s with later additions",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rehabilitation institute in the Bezigrad-Moste area of Ljubljana (as I recall); no description found. Typed from the hospital type."
+    },
+    "ljubljana-community-notices": {
+      "venueId": "ljubljana-community-notices",
+      "city": "ljubljana",
+      "name": "Selo Mansion",
+      "archetype": "manor",
+      "subject": "A late Baroque mansion on Zaloska cesta: a two-storey plastered block with fifteen window axes, a projecting central bay with stone portal and volute attic, and flanking wings",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e0c88a",
+          "#efe6cf",
+          "#a8998a"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "volute-shaped attic over the central projecting bay"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "stone portal"
+        },
+        {
+          "id": "arcade",
+          "count": 2,
+          "note": "two arcaded stable buildings flanking the courtyard"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "baroque",
+      "era": "1762",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://sl.wikipedia.org/wiki/Dvorec_Selo,_Ljubljana",
+          "what": "built 1762 (1760 per infobox) by Jozef Desselbruner in late Baroque style, two storeys, 15 window axes, projecting central bay (risalit) with stone portal topped by a volute attic, west, central and east wings, two rectangular arcaded stable buildings, at Zaloska cesta 69 opposite a petrol station"
+        }
+      ],
+      "notes": "Plan and facade from the source; the source did not give colours or roof, so ochre-cream plaster and red tile hip roof are typical Ljubljana Baroque choices. Width and depth estimated from 15 window axes (about 4.5 m each)."
+    },
+    "ljubljana-community-voting-game": {
+      "venueId": "ljubljana-community-voting-game",
+      "city": "ljubljana",
+      "name": "Krekov trg",
+      "archetype": "park-landscape",
+      "subject": "A small paved square below the castle hill: a three-tier fountain basin, the large Mestni dom building along one side and a funicular station behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e0c88a",
+          "#efe6cf",
+          "#b0aea8"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lower part of a three-tier fountain placed c.1965"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1898 (Mestni dom)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://sl.wikipedia.org/wiki/Krekov_trg,_Ljubljana",
+          "what": "square beneath the castle hill, largest building is the Mestni dom (1898, Ciril Metod Koch, first a fire station with hall), Peglezen triangular building, Hotel Pri avstrijskem dvoru (mid-19th c.), Ljudska hranilnica building c.1860, three-tier fountain c.1965, funicular to the castle since 2006, today a car park"
+        }
+      ],
+      "notes": "Elements from the source; the square is a car park beside the buildings, so the model shows the plaza with the fountain and edge buildings in cream and ochre stucco. Colours estimated."
+    },
+    "ljubljana-community-workshop": {
+      "venueId": "ljubljana-community-workshop",
+      "city": "ljubljana",
+      "name": "Knjiznica Medvode",
+      "archetype": "campus-block",
+      "subject": "A modern municipal library in Medvode: a two-storey glazed and timber-clad block with a flat roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#c9b48a",
+          "#8c6a4a"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Medvode library; no description found. Typed as a small modern library."
+    },
+    "ljubljana-market-game": {
+      "venueId": "ljubljana-market-game",
+      "city": "ljubljana",
+      "name": "Aleja",
+      "archetype": "mall",
+      "subject": "A shopping centre in Ljubljana: a long rectangular box with pale panelled facade, a glazed entrance and a rooftop car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4ca",
+          "#b5593a",
+          "#6f7d88"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Aleja shopping centre in Ljubljana; no source fetched. Typed from a mid-sized Slovenian shopping centre."
+    },
+    "ljubljana-meal-stop": {
+      "venueId": "ljubljana-meal-stop",
+      "city": "ljubljana",
+      "name": "AHotel",
+      "archetype": "hotel",
+      "subject": "A three-storey modern hotel and restaurant with a white box form and large windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6cf",
+          "#6f7d88",
+          "#b0aea8"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Obscure hotel; nothing findable. Typed from the hotel type and city style."
+    },
+    "ljubljana-osm-node-14208096624": {
+      "venueId": "ljubljana-osm-node-14208096624",
+      "city": "ljubljana",
+      "name": "Academy of Fine Arts and Design - Tobacna",
+      "archetype": "campus-block",
+      "subject": "The former tobacco factory (Tobacna) now arts campus: long brick-and-render factory blocks with rows of arched windows and a chimney",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8573d",
+          "#d9c9a0",
+          "#e8e2d2"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 12
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "c.1880-1930",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The ALUO Tobacna site is in the former tobacco factory complex (as I recall); no description fetched. Typed from industrial-heritage brick blocks."
+    },
+    "ljubljana-osm-node-7930305265": {
+      "venueId": "ljubljana-osm-node-7930305265",
+      "city": "ljubljana",
+      "name": "Museum of Post and Telecommunications",
+      "archetype": "museum-theatre",
+      "subject": "A small museum housed in the castle-like mansion of Polhov Gradec: a plastered two-storey block with a courtyard and a corner tower",
+      "form": {
+        "footprint": "U",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#c9b48a",
+          "#a94c37"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "baroque",
+      "era": "17th-18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Postal museum in Polhov Gradec, in a manor; building not described in any fetched source. Typed from Carniolan manor type; low confidence."
+    },
+    "ljubljana-osm-relation-13216937": {
+      "venueId": "ljubljana-osm-relation-13216937",
+      "city": "ljubljana",
+      "name": "Park Gradascica",
+      "archetype": "park-landscape",
+      "subject": "A riverside park along the Gradascica stream with lawns, a footbridge and mature broadleaf trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8d4ca",
+          "#7aa05a",
+          "#b0aea8"
+        ],
+        "roofColour": "#8e8a82",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Urban park by the Gradascica; no description found. Typed as a plain riverside park."
+    },
+    "ljubljana-osm-relation-15822689": {
+      "venueId": "ljubljana-osm-relation-15822689",
+      "city": "ljubljana",
+      "name": "Stadion ZAK",
+      "archetype": "stadium",
+      "subject": "The small ZAK ground: a football pitch with a track, a low concrete stand on one side and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 85,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d8d4ca",
+          "#5f7fa8",
+          "#eceae4"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small stadium in the Bezigrad area; no description found. Typed from the stadium type."
+    },
+    "ljubljana-osm-way-106674045": {
+      "venueId": "ljubljana-osm-way-106674045",
+      "city": "ljubljana",
+      "name": "Kunstljeva vila",
+      "archetype": "manor",
+      "subject": "The 1911 Kunstelj villa in Vrhnika: a two-storey bourgeois villa with wooden balconies, a double-pitched roof ending in decorated finials on the gables and a pyramidal accent on the front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#c9b48a",
+          "#8c6a4a"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "wooden balconies"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "stylised gable finials"
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1911",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://sl.wikipedia.org/wiki/Kunstljeva_vila",
+          "what": "two-storey villa on Trzaska cesta in Vrhnika built in 1911 by builder Filip Supancic for the timber merchant Josip Kunstelj; wooden balconies; double-pitched roof with stylised gable finials; pyramidal accent on the facade; renovated 2012; cultural heritage ID 23310"
+        }
+      ],
+      "notes": "Storeys, balconies, roof and age from the source; footprint dimensions and plaster colours estimated. The source names no style or colours."
+    },
+    "ljubljana-osm-way-1119457186": {
+      "venueId": "ljubljana-osm-way-1119457186",
+      "city": "ljubljana",
+      "name": "Stadion Domzale",
+      "archetype": "stadium",
+      "subject": "A modern small-town football stadium with a covered main stand, a roofed west stand and floodlights",
+      "form": {
+        "footprint": "rect",
+        "width_m": 125,
+        "depth_m": 90,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4ca",
+          "#8c1f2a",
+          "#eceae4"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Domzale stadium (about 3,000 seats as I recall); no description fetched. Typed from the stadium type."
+    },
+    "ljubljana-osm-way-122905766": {
+      "venueId": "ljubljana-osm-way-122905766",
+      "city": "ljubljana",
+      "name": "Planinski dom Komenda",
+      "archetype": "restaurant",
+      "subject": "A timber mountain hut-style lodge with a wide gable roof, balcony and a simple terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "whitewash",
+        "colours": [
+          "#c9a56a",
+          "#efe6cf",
+          "#6e6a66"
+        ],
+        "roofColour": "#6e6a66",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Mountain lodge near Komenda; nothing found. Typed as Alpine hut: whitewashed ground floor, timber upper, grey sheet gable roof."
+    },
+    "ljubljana-osm-way-1561472443": {
+      "venueId": "ljubljana-osm-way-1561472443",
+      "city": "ljubljana",
+      "name": "Academy of Fine Arts and Design",
+      "archetype": "campus-block",
+      "subject": "A university arts building: a modern two-to-three storey block with a plain render facade and big studio windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#7f93a3",
+          "#b0aea8"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Main ALUO building; no description fetched. Typed from the campus type."
+    },
+    "ljubljana-osm-way-166770310": {
+      "venueId": "ljubljana-osm-way-166770310",
+      "city": "ljubljana",
+      "name": "Bostanjski grad",
+      "archetype": "heritage-fort",
+      "subject": "The ruined Bostanj castle: a Renaissance fortress-like rectangular central block with corner towers and a surrounding wall, roofless and overgrown on a hilltop",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "limestone",
+        "colours": [
+          "#b9b3a8",
+          "#d8cfbd",
+          "#7a8f5a"
+        ],
+        "roofColour": "#7a8f5a",
+        "windows": "punched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "surrounding wall"
+        },
+        {
+          "id": "pinnacles",
+          "count": 2,
+          "note": "corner towers (ruined)"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "mid-16th century (burned 1943)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bo%C5%A1tanj_Castle",
+          "what": "Renaissance castle laid out like a fortress, central rectangular building with towers and a defensive wall, standing on Roman fortification foundations, built up in the mid-16th century with late Gothic and Renaissance elements, plundered and burned in September 1943, survives as ruins"
+        }
+      ],
+      "notes": "Plan and condition from the source; dimensions and stone colours are estimates. Render ruinous: no roof, broken towers."
+    },
+    "ljubljana-osm-way-173167317": {
+      "venueId": "ljubljana-osm-way-173167317",
+      "city": "ljubljana",
+      "name": "Arena Stozice",
+      "archetype": "stadium",
+      "subject": "The Dragon's Nest arena: a huge shell-like domed hall with a four-level concourse and stands, set half into the park, beside the football stadium",
+      "form": {
+        "footprint": "oval",
+        "width_m": 125,
+        "depth_m": 105,
+        "storeys": 4,
+        "height_m": 32,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#b9bcbf",
+          "#6f7d88",
+          "#eceae4"
+        ],
+        "roofColour": "#9a9ca0",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1,
+          "note": "shell-shaped dome roof"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 6
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arena_Sto%C5%BEice",
+          "what": "opened August 2010, designed by Sadar + Vuga, capacity 12,480 for basketball and 10,500 for ice hockey, four levels of concourses and stands covered by a shell-shaped dome, nicknamed Zmajevo gnezdo (Dragon's Nest)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sto%C5%BEice_Stadium",
+          "what": "adjacent Stozice stadium (16,038 seats, 2010): only the roof over the stands rises above the park plane as a monolithic crater"
+        }
+      ],
+      "notes": "Shell dome and levels are from the source; width/depth/height and the grey metal colours are estimates. The football stadium next door is not modelled."
+    },
+    "ljubljana-osm-way-200914350": {
+      "venueId": "ljubljana-osm-way-200914350",
+      "city": "ljubljana",
+      "name": "Slajmer Park",
+      "archetype": "park-landscape",
+      "subject": "A small urban park with lawn, a playground and mature trees by apartment blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#d8d4ca",
+          "#7aa05a",
+          "#b0aea8"
+        ],
+        "roofColour": "#8e8a82",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "bandstand",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small park, no description. Typed as plain park."
+    },
+    "ljubljana-osm-way-23057646": {
+      "venueId": "ljubljana-osm-way-23057646",
+      "city": "ljubljana",
+      "name": "Shopping Center Citypark",
+      "archetype": "mall",
+      "subject": "A big shopping centre: a long low box in pale panel with a glazed entrance and a large surface car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d4ca",
+          "#b5593a",
+          "#6f7d88"
+        ],
+        "roofColour": "#8e8a82",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Citypark shopping centre in Ljubljana; no source fetched. Typed from a big suburban retail box."
+    },
+    "ljubljana-osm-way-23061342": {
+      "venueId": "ljubljana-osm-way-23061342",
+      "city": "ljubljana",
+      "name": "Bolnica Dr. Petra Drzaja",
+      "archetype": "hospital",
+      "subject": "A small hospital: a three-storey plastered block with a pitched roof and an ambulance bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#efe6cf",
+          "#b9a77f",
+          "#f0eee8"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A small private/specialty hospital in Ljubljana; no description. Typed from the hospital type and Ljubljana cream stucco and red-tile style."
+    },
+    "ljubljana-osm-way-244860591": {
+      "venueId": "ljubljana-osm-way-244860591",
+      "city": "ljubljana",
+      "name": "Zupnijska cerkev svetega Jakoba",
+      "archetype": "church-gothic",
+      "subject": "The St James parish church in Skofja Loka: a Gothic hall church with a steep tiled roof and a tall slender bell tower with a pointed cap, plastered white",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#b0aea8",
+          "#8c8a86"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tall tower with pointed cap"
+        },
+        {
+          "id": "buttresses",
+          "count": 4
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "15th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Parish church of St James in Skofja Loka's old town (recalled as a Gothic hall church of about 1471); no fetched source, so the nave size and tower style are estimates."
+    },
+    "ljubljana-osm-way-301226113": {
+      "venueId": "ljubljana-osm-way-301226113",
+      "city": "ljubljana",
+      "name": "Cerkev svete Marjete",
+      "archetype": "church-classical",
+      "subject": "A small hilltop Baroque parish church with a single tower topped by a tall pointed spire, plastered cream",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#b0aea8",
+          "#a94c37"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "baroque",
+      "era": "17th-18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Rural church of St Margaret; nothing found. Typed from the typical Carniolan village church: white nave, red tile roof, slender spire."
+    },
+    "ljubljana-quiet-reflection": {
+      "venueId": "ljubljana-quiet-reflection",
+      "city": "ljubljana",
+      "name": "Zupnijska cerkev svetega Vida",
+      "archetype": "church-classical",
+      "subject": "A village parish church of St Vitus: a whitewashed nave with a front bell tower under a pointed spire and a red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#efe6cf",
+          "#b0aea8",
+          "#a94c37"
+        ],
+        "roofColour": "#a94c37",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "18th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Parish church of St Vitus south of Ljubljana; no fetched source. Typed from the usual Carniolan parish church."
+    },
+    "ljubljana-recreation": {
+      "venueId": "ljubljana-recreation",
+      "city": "ljubljana",
+      "name": "Park slovenske reformacije",
+      "archetype": "park-landscape",
+      "subject": "A small city park with a tall pedestal monument, lawns, paths and old plane trees beside a street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#d8d4ca",
+          "#7aa05a",
+          "#8c8a86"
+        ],
+        "roofColour": "#8e8a82",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "pedestal monument"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Park of the Slovenian Reformation in central Ljubljana, a reformation memorial (as I recall); no fetched description. Typed as a small monument-park."
+    },
+    "ljubljana-transit": {
+      "venueId": "ljubljana-transit",
+      "city": "ljubljana",
+      "name": "Trzin",
+      "archetype": "transport-station",
+      "subject": "A small suburban bus stop hub in Trzin: a shelter roof over two bus bays and a ticket kiosk",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#d8d4ca",
+          "#5f7fa8",
+          "#eceae4"
+        ],
+        "roofColour": "#9a9892",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Suburban hub in Trzin; no description found. Typed from the transit hub type."
+    }
+  }
+}

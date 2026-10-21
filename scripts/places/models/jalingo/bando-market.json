@@ -1,0 +1,475 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jalingo",
+ "venueId": "bando-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "No photo found (Commons, Wikidata P18 and search empty). Layout from the brief: timber-pole sheds with corrugated roofs, lock-up rows, umbrella stalls on laterite."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 25,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lockups-n",
+   "footprint": {
+    "rect": [
+     96,
+     6
+    ]
+   },
+   "at": [
+    0,
+    38
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c2b394",
+    "windows": "none",
+    "bay": 3,
+    "groundKind": "shutter"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6d7a80",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups-w",
+   "footprint": {
+    "rect": [
+     6,
+     60
+    ]
+   },
+   "at": [
+    -52,
+    8
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8a583",
+    "windows": "none",
+    "groundKind": "shutter"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed0",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    -36.38100379461571,
+    -30.415767029557276
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6d7a80",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed1",
+   "footprint": {
+    "rect": [
+     16,
+     11
+    ]
+   },
+   "at": [
+    -33.70358890661798,
+    -4.842496997104515
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c8488",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed2",
+   "footprint": {
+    "rect": [
+     22,
+     11
+    ]
+   },
+   "at": [
+    -35.3399041393513,
+    20.690658117141474
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8977a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed3",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    -6.160085919786059,
+    -28.798208645828137
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c8488",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed4",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    -5.796070081059872,
+    -2.156308148662795
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed5",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    17.32759109911116,
+    -31.00450583762556
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8977a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8b4a35",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed6",
+   "footprint": {
+    "rect": [
+     16,
+     13
+    ]
+   },
+   "at": [
+    20.042776076506634,
+    20.028845337297625
+   ],
+   "rotDeg": 90,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#8b6f55",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6d7a80",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed7",
+   "footprint": {
+    "rect": [
+     18,
+     13
+    ]
+   },
+   "at": [
+    40.17075103881714,
+    -4.305075687202439
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#a8977a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6d7a80",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed8",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    40.830669578596435,
+    23.250369274538482
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "faces": {
+     "front": "none",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7c8488",
+    "material": "corrugated",
+    "pitch": 10,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -19,
+    -46,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "revolve",
+     "params": {
+      "segments": 8,
+      "colour": "#c8553d",
+      "profile": [
+       [
+        0.1,
+        0,
+        "#555555"
+       ],
+       [
+        0.1,
+        2.2
+       ],
+       [
+        1.5,
+        2.2,
+        "#c8553d"
+       ],
+       [
+        0.1,
+        2.9
+       ]
+      ]
+     }
+    },
+    "mode": "grid",
+    "cols": 6,
+    "rows": 3,
+    "dx": 7,
+    "dy": 5,
+    "lod1Step": 3,
+    "lod2Step": 99
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -52,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.4,
+    "bottom": 2.6,
+    "colour": "#8b4a35"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    60,
+    -40,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 4,
+    "spread": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; sheds and stalls are typical, not surveyed."
+ }
+}

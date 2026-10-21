@@ -1,0 +1,333 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1122593187",
+   "used": "named garden outline (about 80 x 43 m, 2044 m2): ground polygon"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#sculpture-garden",
+   "used": "no photo found; sculptures on plinths, an obelisk, paved paths, shade trees"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -39.4,
+      15.4
+     ],
+     [
+      -37.5,
+      -1.3
+     ],
+     [
+      -35.7,
+      -12.3
+     ],
+     [
+      -25.7,
+      -11.3
+     ],
+     [
+      -15.8,
+      -8.3
+     ],
+     [
+      -10,
+      -10.4
+     ],
+     [
+      -8.5,
+      -21.2
+     ],
+     [
+      17.1,
+      -13.8
+     ],
+     [
+      28.8,
+      -8.8
+     ],
+     [
+      41.7,
+      -13.3
+     ],
+     [
+      43.3,
+      -3.8
+     ],
+     [
+      30.2,
+      10.9
+     ],
+     [
+      20.7,
+      10.5
+     ],
+     [
+      7.2,
+      14.5
+     ],
+     [
+      -4.1,
+      21.6
+     ],
+     [
+      -8.7,
+      22.2
+     ],
+     [
+      -11.5,
+      12.1
+     ],
+     [
+      -18.4,
+      9.9
+     ],
+     [
+      -24,
+      11.8
+     ]
+    ],
+    "height": 0.1,
+    "colour": "#5f8f3f",
+    "material": "grass"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -38,
+      2
+     ],
+     [
+      -20,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      20,
+      -2
+     ],
+     [
+      40,
+      -6
+     ]
+    ],
+    "width": 2.8,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.12
+   ],
+   "params": {
+    "points": [
+     [
+      -4,
+      20
+     ],
+     [
+      -2,
+      8
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      4,
+      -10
+     ],
+     [
+      10,
+      -12
+     ]
+    ],
+    "width": 2.4,
+    "colour": "#cbc6bb"
+   }
+  },
+  {
+   "type": "obelisk",
+   "at": [
+    0,
+    2,
+    0.1
+   ],
+   "params": {
+    "height": 9,
+    "base_width": 1.4,
+    "style": "square",
+    "steps": 3
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    -24,
+    2,
+    0.1
+   ],
+   "params": {
+    "height": 4.2,
+    "steps": 2,
+    "figure": "stand",
+    "figure_colour": "#6a583b"
+   }
+  },
+  {
+   "type": "statue-plinth",
+   "at": [
+    22,
+    -3,
+    0.1
+   ],
+   "params": {
+    "height": 3.8,
+    "steps": 2,
+    "figure": "stand",
+    "figure_colour": "#c58b5c"
+   }
+  },
+  {
+   "type": "statue-on-plinth",
+   "at": [
+    -4,
+    14,
+    0.1
+   ],
+   "params": {}
+  },
+  {
+   "type": "statue-figure",
+   "at": [
+    16,
+    -8,
+    0.1
+   ],
+   "params": {
+    "height": 3,
+    "colour": "#c58b5c"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    -10,
+    4,
+    0.1
+   ],
+   "params": {
+    "count": 2,
+    "spacing": 2.4
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    -33,
+    -6,
+    0.1
+   ],
+   "params": {}
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.2,
+    "colour": "#b0aaa0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     10,
+     16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     4
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     -14
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "sculpture-garden",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; garden outline is real but sculpture positions and forms are guesses."
+ }
+}

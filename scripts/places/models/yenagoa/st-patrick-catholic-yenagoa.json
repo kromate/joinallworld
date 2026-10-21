@@ -1,0 +1,202 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (no OSM footprint, no photo found): large rendered hall with steep front gable, central cross, glass-fronted entrance porch, bell tower, car park"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     40,
+     22
+    ]
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#2f5d9e",
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 32,
+    "overhang": 0.8,
+    "axis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -13.5
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#dfe9ef",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 38,
+    "overhang": 0.6,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 4,
+    "height": 3.6,
+    "thickness": 0.35,
+    "columns": 4,
+    "colour": "#ffffff"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -24,
+    -13,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 20,
+    "cap": "pyramid",
+    "cap_height": 4,
+    "colour": "#2f5d9e",
+    "cap_colour": "#ffffff"
+   }
+  },
+  {
+   "type": "church-gothic/cross",
+   "at": [
+    0,
+    -15.5,
+    14
+   ],
+   "params": {
+    "height": 4
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -21,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.7,
+    "run": 0.7,
+    "count": 4,
+    "colour": "#cfd0cc"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -40,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    -14,
+    -32,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 3.2,
+    "yaw": 0
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -34,
+     -24
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   85,
+   75
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yenagoa",
+ "venueId": "st-patrick-catholic-yenagoa",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no OSM footprint and no photo; everything from the brief"
+ }
+}

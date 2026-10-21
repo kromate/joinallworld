@@ -1,0 +1,305 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yola",
+ "venueId": "fmc-yola",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1092299218",
+   "used": "rejected: a 61 m2 'house' 5.5 m away, not the hospital campus"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q112939172",
+   "used": "identity (hospital, founded 1998 as Yola Specialist Hospital)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: H-plan 2-storey ward blocks in white and cream render, red cross sign, ambulance bay, car park, water tank"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 18,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     14,
+     38
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f3efe4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "trimColour": "#d8c9a8",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     14,
+     38
+    ]
+   },
+   "at": [
+    22,
+    0
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a8",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "trimColour": "#f3efe4",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     30,
+     10
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 5.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dfca",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "trimColour": "#d8c9a8",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "none",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -7
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c9a8",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "trimColour": "#d8c9a8",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "concrete",
+    "parapet": 0.5,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "covered-walkway",
+   "at": [
+    -8,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "width": 2.6,
+    "height": 3.0,
+    "colour": "#9aa0a4",
+    "roofColour": "#8a8f94"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    0,
+    -10.6,
+    5.4
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    22,
+    -27,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#9aa0a4",
+    "roofColour": "#8a8f94",
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    -36,
+    18,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.4,
+    "tankHeight": 3.2,
+    "legHeight": 7,
+    "legs": 4,
+    "colour": "#9aa0a4"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    -20,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 28,
+    "depth": 10,
+    "density": 0.6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    -32,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    8,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 1.6,
+    "bottom": 1.0,
+    "colour": "#f3efe4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   120,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; H-plan and details are typed from the brief, OSM match rejected."
+ }
+}

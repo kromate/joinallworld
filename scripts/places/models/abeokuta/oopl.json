@@ -1,0 +1,360 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_view_of_the_Olusegun_Obasanjo_Presidential_Library.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Kaizenify",
+   "view": "front",
+   "file": "/tmp/places-evidence/abeokuta/oopl-0.jpg",
+   "used": "cream rendered four-storey drum-fronted block with columned glazed ground-floor portico, slate-grey spandrel band on the lower mid wing, lower right block, steel water tower at right, landscaped terraces"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:OOPL_Abeokuta_Nigeria.jpg",
+   "licence": "CC BY 4.0",
+   "author": "Deebaba007",
+   "view": "side",
+   "file": "/tmp/places-evidence/abeokuta/oopl-1.jpg",
+   "used": "stepped massing from the lake side, slim windows, water tower with decked tank"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1291182718",
+   "used": "overall extent only (about 100 m wide); photos used for the massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    2,
+    0
+   ],
+   "params": {
+    "n": 24,
+    "radius": 12,
+    "height": 19,
+    "colour": "#efeadc",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "storeys": 4,
+    "plinth": 0.5,
+    "trimColour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    2,
+    19
+   ],
+   "params": {
+    "n": 24,
+    "radius": 12.3,
+    "height": 0.6,
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     26,
+     15
+    ]
+   },
+   "at": [
+    3,
+    3
+   ],
+   "height": 17,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e4d6",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mid-band",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6dcd2",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.5,
+    "bands": "#5a6670"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -2,
+    0
+   ],
+   "params": {
+    "n": 8,
+    "radius": 9,
+    "height": 11,
+    "colour": "#e9e5d8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "storeys": 3,
+    "plinth": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    27,
+    -2,
+    11
+   ],
+   "params": {
+    "n": 8,
+    "radius": 9.2,
+    "height": 0.5,
+    "colour": "#8a8f93"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "left-wing",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -40,
+    4
+   ],
+   "height": 11,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efeadc",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f93",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/colonnade",
+   "at": [
+    -20,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "count": 7,
+    "height": 6,
+    "radius": 0.35,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -8,
+    6
+   ],
+   "params": {
+    "rect": [
+     18,
+     6
+    ],
+    "height": 0.6,
+    "colour": "#f4f1e8"
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    44,
+    10,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "baseWidth": 7,
+    "topWidth": 6,
+    "panels": 5,
+    "colour": "#7d8084",
+    "colour2": "#7d8084"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    44,
+    10,
+    24
+   ],
+   "params": {
+    "rect": [
+     8,
+     7
+    ],
+    "height": 4,
+    "colour": "#8a8d90"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.4,
+    "run": 1.4,
+    "count": 4,
+    "colour": "#cfc9b8"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 90,
+    "height": 1.6,
+    "colour": "#c88f78"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     70,
+     6
+    ],
+    "height": 0.9,
+    "colour": "#7c9a52"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    8,
+    -25,
+    0
+   ],
+   "params": {
+    "length": 70,
+    "height": 1.6,
+    "thickness": 0.6,
+    "colour": "#b88a6c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     100,
+     5
+    ],
+    "height": 0.5,
+    "colour": "#7c9a52"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -52,
+     -14
+    ],
+    "height": 9
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -17
+    ],
+    "height": 13
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abeokuta",
+ "venueId": "oopl",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Round drum is now a 24-sided prism with ribbon windows but lacks vertical window columns and glazed portico (colonnade only); lattice tower is a thin mast without the heavy cross-bracing; slate spandrel band on the mid wing is only a band colour; terraces are flat green slabs, not retaining-wall terraces."
+ }
+}

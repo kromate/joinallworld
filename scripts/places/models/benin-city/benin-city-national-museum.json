@@ -1,0 +1,267 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "benin-city",
+ "venueId": "benin-city-national-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Nat_Museum,_Benin.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "DipoTayo",
+   "view": "front",
+   "file": "/tmp/places-evidence/benin-city/museum.jpg",
+   "used": "rust-red rendered drum with vertical slits raised on a recessed ground storey, green fascia board, low flat block and round tower at right, hedges and lawn"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/7326215",
+   "used": "overall size only (about 30 m across)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 3,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-floor",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -3,
+    -1
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#6e3a2c",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a24d35",
+    "overhang": 0.2
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "drum",
+   "at": [
+    -9,
+    3
+   ],
+   "params": {
+    "radius": 14.5,
+    "n": 40,
+    "z0": 5,
+    "height": 8.5,
+    "colour": "#b5573b",
+    "topColour": "#a84e36",
+    "windows": "none",
+    "pattern": {
+     "type": "fins",
+     "spacing": 6.5,
+     "depth": 0.1,
+     "colour": "#6a3022"
+    }
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "drum-lip",
+   "at": [
+    -9,
+    3
+   ],
+   "params": {
+    "radius": 14.9,
+    "n": 40,
+    "z0": 13.3,
+    "height": 0.4,
+    "colour": "#c86a4a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side-block",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    11,
+    3
+   ],
+   "height": 6.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b8573a",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c86a4a",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/prism",
+   "id": "tower",
+   "at": [
+    18,
+    5
+   ],
+   "params": {
+    "radius": 4.3,
+    "n": 24,
+    "z0": 0,
+    "height": 13.5,
+    "colour": "#b0553a",
+    "topColour": "#a84e36"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -1,
+    -6.6,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "height": 1.5,
+    "bottom": 3.7,
+    "colour": "#1f5d4e",
+    "frameColour": "#1f5d4e",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -2,
+    -7
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#cfc7b4"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    18,
+    5,
+    13
+   ],
+   "params": {
+    "height": 7,
+    "colour": "#1b7a43"
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    -14,
+    -14
+   ],
+   "params": {
+    "length": 14,
+    "height": 1.0,
+    "depth": 1.2
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    -2,
+    -17
+   ],
+   "params": {
+    "length": 10,
+    "height": 0.9,
+    "depth": 1.2
+   }
+  },
+  {
+   "type": "market-open/hedge",
+   "at": [
+    10,
+    -19
+   ],
+   "params": {
+    "length": 9,
+    "height": 0.9,
+    "depth": 1.2
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "conifer",
+    "at": [
+     -24,
+     -12
+    ],
+    "height": 5
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     5,
+     -12
+    ],
+    "height": 6
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -8
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     6
+    ],
+    "height": 14
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "close",
+  "gaps": "No vertical slit recesses on drum, no sign lettering/emblem, hedge parterre and trees generic, side block roof lip simplified"
+ }
+}

@@ -1,0 +1,1839 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ho-chi-minh-city",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ho-chi-minh-city",
+    "climate": "tropical-maritime",
+    "vernacular": "Dense tropical metropolis: narrow deep \"nha ong\" tube houses 3-6 storeys tall in rendered pastel and ochre with balconies, roller shutters and tiled or flat roofs with water tanks; a core of yellow-and-white French colonial civic buildings with shutters and red tile roofs; concrete towers with glass curtain walls; Buddhist pagodas with upswept red-tile roofs; large old rain trees and tamarinds lining streets, scooters everywhere.",
+    "wallColours": [
+      "#e8d9a8",
+      "#f1ece0",
+      "#dcc08c",
+      "#e3b9a2",
+      "#a9bfa5",
+      "#c9c4b8",
+      "#d8a24a"
+    ],
+    "roofColours": [
+      "#b5533c",
+      "#8c8f90",
+      "#7b4a3a",
+      "#c9772f"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "tile-cladding",
+      "glass-curtain",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "French colonial yellow render with white moulded trim, louvred green or brown shutters and arched verandas; Vietnamese pagoda roofs with upturned eaves, dragon and phoenix ridge figures and red columns; tube-house frontages with wrought-iron balcony grilles and tiled lower facades; ceramic mosaic dragons.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+        "what": "French colonial concrete/Western style in Saigon; curved tile roofs with dragon/phoenix figures; brick, terracotta and ceramic decoration"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh_City_Hall",
+        "what": "Beaux-Arts colonial civic building with tower, sculpted facade and pediments (1898-1908)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/B%E1%BA%BFn_Th%C3%A0nh_Market",
+        "what": "French Indochinese market hall with clock tower and four gateways (1912-14)"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/V%C4%A9nh_Nghi%C3%AAm_Pagoda",
+        "what": "Vietnamese traditional-style concrete pagoda with seven-storey tower (1964 onward)"
+      }
+    ]
+  },
+  "places": {
+    "ho-chi-minh-city-airport-ho-chi-minh-city-airport": {
+      "venueId": "ho-chi-minh-city-airport-ho-chi-minh-city-airport",
+      "city": "ho-chi-minh-city",
+      "name": "Tan Son Nhat International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Tan Son Nhat international Terminal 2 seen from the landside forecourt: a long, wide low glass-and-steel terminal with a curved departures canopy and a row of jet bridges on the airfield side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 26,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4dde2",
+          "#3d5566",
+          "#eef0f1"
+        ],
+        "roofColour": "#c3c9cd",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "forecourt canopy over departures drop-off"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10,
+          "note": "T2 phase 1 added 2 bridges, 26 gates in total"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "70 m tower in use since 2013"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tan_Son_Nhat_International_Airport",
+          "what": "T2 international terminal opened Dec 2007 by Japanese contractors, 115,834 m2, 26 gates; T1 domestic; T3 opened 2025; 70 m control tower 2013"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q478595",
+          "what": "airport identity and 1930 origin"
+        }
+      ],
+      "notes": "Real terminal sizes and years come from Wikipedia, but no source I could read describes the exterior; glass-and-steel look, canopy shape and colours are typed from the type of airport and the Japanese-built T2 era. Model shows T2 as the recognisable international face; T3 (2025, 112,500 m2, 27 gates) is a separate larger domestic terminal."
+    },
+    "ho-chi-minh-city-clinic": {
+      "venueId": "ho-chi-minh-city-clinic",
+      "city": "ho-chi-minh-city",
+      "name": "CI Hospital (City International Hospital)",
+      "archetype": "hospital",
+      "subject": "City International Hospital in the Shangri-La Hi-Tech Medical Park: a modern multi-storey private hospital block with a rooftop helipad",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 48,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efede8",
+          "#4b7a8f",
+          "#d5d9db"
+        ],
+        "roofColour": "#9a9d9f",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "emergency helipad reported"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board in neutral colours"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/City_International_Hospital",
+          "what": "founded 5 Jan 2014, 320 beds, emergency department and helipad, in Shangri-La Hi-Tech Medical Park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1211762403",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint 102.8 x 49.1 m is measured from OSM. Storey count and facade colours are typed (modern private hospital typology); only the helipad and bed count are sourced."
+    },
+    "ho-chi-minh-city-community-notices": {
+      "venueId": "ho-chi-minh-city-community-notices",
+      "city": "ho-chi-minh-city",
+      "name": "UBND phường Dĩ An (Dĩ An Ward People's Committee)",
+      "archetype": "civic-small",
+      "subject": "A Vietnamese ward People's Committee office: a 3-storey cream-rendered administrative block with a flagpole and gated forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#ece3c4",
+          "#c9a64e",
+          "#f5f2ea"
+        ],
+        "roofColour": "#b5533c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2,
+          "note": "national flag and party flag on pole"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+          "what": "generic Vietnamese civic building language used for the typed brief"
+        }
+      ],
+      "notes": "No source found describing this office and no OSM building match. Typed from the common Vietnamese ward-office pattern (2-3 storeys, cream or yellow render, pitched tile roof, flagpole). Low confidence."
+    },
+    "ho-chi-minh-city-community-voting-game": {
+      "venueId": "ho-chi-minh-city-community-voting-game",
+      "city": "ho-chi-minh-city",
+      "name": "Ho Chi Minh City Hall (People's Committee building)",
+      "archetype": "civic-palace",
+      "subject": "The Hotel de Ville facade on Nguyen Hue boulevard: a long ochre-and-white Beaux-Arts town hall with a tall central clock tower flanked by two attic towers and richly sculpted pediments",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 44,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "mansard",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "limestone",
+        "colours": [
+          "#e6c36a",
+          "#f3efe4",
+          "#8d6a3a"
+        ],
+        "roofColour": "#8a4a3a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central tower rising to a point with clock and flagpole, around 30 m to ridge"
+        },
+        {
+          "id": "pediment",
+          "count": 3,
+          "note": "three pediments carrying Marianne sculptures"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arched entrances with iron doors"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "statue on the square in front"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1908",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ho_Chi_Minh_City_Hall",
+          "what": "Beaux-Arts, architect Fernand Gardes, built 1898-1908, central pointed tower with clock, two attic towers, pediments with Marianne, Corinthian columns, Art Nouveau iron doors"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2227195",
+          "what": "identity and dates"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/341504305",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint 199 x 44 m (OSM, 3 levels, architect Femand Gardes, 1898). The model shows the central 100 m of the front. Yellow/ochre walls with white ornament and red tile roof are the widely photographed colours; the Wikipedia article itself does not give colours. The tower is what makes it recognisable."
+    },
+    "ho-chi-minh-city-community-workshop": {
+      "venueId": "ho-chi-minh-city-community-workshop",
+      "city": "ho-chi-minh-city",
+      "name": "Ton Duc Thang University",
+      "archetype": "campus-block",
+      "subject": "A modern Vietnamese university teaching block: a long 6-storey white-and-glass building with ribbon windows and a covered ground-floor walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 25,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eeeae0",
+          "#5d86a1",
+          "#cfd3d6"
+        ],
+        "roofColour": "#9ea1a3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "corridor balconies"
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/T%C3%B4n_%C4%90%E1%BB%A9c_Th%E1%BA%AFng_University",
+          "what": "founded 1997, main campus in Tan Hung ward; buildings not described"
+        }
+      ],
+      "notes": "The OSM polygon at the venue position is the university sports centre (80.6 x 45.6 m), not a teaching block. Appearance is typed from city style and campus typology; low confidence."
+    },
+    "ho-chi-minh-city-market-game": {
+      "venueId": "ho-chi-minh-city-market-game",
+      "city": "ho-chi-minh-city",
+      "name": "Ben Thanh Market",
+      "archetype": "market-hall",
+      "subject": "Ben Thanh Market seen from the south gate on Quach Thi Trang Square: a cream-and-white French Indochinese hall with a prominent clock tower over the main entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "hip",
+        "variant": "four-gate hall with south clock tower",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "concrete",
+        "colours": [
+          "#e9dcb0",
+          "#f2ede2",
+          "#7d6a5c"
+        ],
+        "roofColour": "#7d6a5c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "bell/clock tower over the south (main) entrance, roughly 25-30 m"
+        },
+        {
+          "id": "gate",
+          "count": 4,
+          "note": "four gateways: south main, north, east, west"
+        },
+        {
+          "id": "arches",
+          "count": 4,
+          "note": "arched entrance bays"
+        },
+        {
+          "id": "stalls",
+          "count": 40
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "projecting banners/eaves for shade"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1914",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/B%E1%BA%BFn_Th%C3%A0nh_Market",
+          "what": "French Indochinese style, built by Brossard & Maupin 1912-14 with fireproof metal frame, 13,056 m2 floor area, bell tower, four main gateways (S Le Loi/Quach Thi Trang, N Le Thanh Ton, E Phan Boi Chau, W Phan Chau Trinh)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/39514795",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint measured by OSM at 138 x 99 m; the model shows a 100 x 75 m portion scaled to the 120 m cap. Wikipedia gives style, tower and gates but no colours or roof; cream-yellow render with pale trim and a darker low roof are typed from general appearance, so medium."
+    },
+    "ho-chi-minh-city-meal-stop": {
+      "venueId": "ho-chi-minh-city-meal-stop",
+      "city": "ho-chi-minh-city",
+      "name": "Cà Phê 39A",
+      "archetype": "restaurant",
+      "subject": "A small Vietnamese street coffee shop: a narrow 2-storey tube-house frontage with open ground floor, roller shutter and plastic stools out front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e3b9a2",
+          "#4e7a59",
+          "#f1ece0"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "one first-floor balcony with grille"
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+          "what": "generic urban Vietnamese shophouse language"
+        }
+      ],
+      "notes": "Nothing findable for this specific cafe; typed tube-house cafe from city style. (game venue style placeholder: low)."
+    },
+    "ho-chi-minh-city-osm-way-1023330892": {
+      "venueId": "ho-chi-minh-city-osm-way-1023330892",
+      "city": "ho-chi-minh-city",
+      "name": "Ho Chi Minh City University of Culture",
+      "archetype": "campus-block",
+      "subject": "A university main block: a 5-storey cream-rendered teaching building with long corridor balconies around an open court",
+      "form": {
+        "footprint": "U",
+        "width_m": 85,
+        "depth_m": 80,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#ede6cf",
+          "#b88a4c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#9a9c9d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+          "what": "generic building language"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1023330892",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM gives a university polygon 85 x 82 m with Wikidata link but no building details and I found no description. Form typed from Vietnamese campus typology. Low confidence."
+    },
+    "ho-chi-minh-city-osm-way-1529292331": {
+      "venueId": "ho-chi-minh-city-osm-way-1529292331",
+      "city": "ho-chi-minh-city",
+      "name": "Hospital for Tropical Diseases (Benh vien Benh Nhiet doi)",
+      "archetype": "hospital",
+      "subject": "A city public hospital block in District 5: a four-storey cream building with covered walkways between wards",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#ece3c4",
+          "#6e9a8a",
+          "#f4f1ea"
+        ],
+        "roofColour": "#9a9c9d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+          "what": "generic building language"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1529292320",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building is only 27.8 x 18.1 m (one block of a larger compound). No source describing the hospital found; typed from Vietnamese public-hospital typology. Dimensions scaled up slightly to a plausible main block."
+    },
+    "ho-chi-minh-city-osm-way-198047671": {
+      "venueId": "ho-chi-minh-city-osm-way-198047671",
+      "city": "ho-chi-minh-city",
+      "name": "Bệnh viện Thống Nhất (Thong Nhat Hospital)",
+      "archetype": "hospital",
+      "subject": "A large 1970s-era public hospital campus in Tan Binh: a long concrete ward block with horizontal balcony bands and a central entrance porch",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0c8",
+          "#b8ae94",
+          "#f4f1ea"
+        ],
+        "roofColour": "#9a9c9d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "ward corridor balconies"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+          "what": "South Vietnam International-style adapted to climate (1954-75)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18456128",
+          "what": "Thong Nhat Hospital identity, inception 1972; OSM start_date 1978"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/198047671",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM compound is 345 x 179 m (43,535 m2); main ward block dimensions and appearance are typed from 1970s Vietnamese hospital typology. Dates conflict (Wikidata 1972, OSM 1978)."
+    },
+    "ho-chi-minh-city-osm-way-306440163": {
+      "venueId": "ho-chi-minh-city-osm-way-306440163",
+      "city": "ho-chi-minh-city",
+      "name": "Saigon International University",
+      "archetype": "campus-block",
+      "subject": "A long, narrow modern private-university building: a 5-storey white and glass block with horizontal window bands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efede8",
+          "#5a85a0",
+          "#cfd3d6"
+        ],
+        "roofColour": "#9ea1a3",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Saigon_International_University",
+          "what": "university founded 2007 (Wikidata Q10829119)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/306440163",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM footprint is a long thin building 181 x 36 m; the model uses 120 m of its length. No description of the building was found; appearance typed."
+    },
+    "ho-chi-minh-city-osm-way-32735038": {
+      "venueId": "ho-chi-minh-city-osm-way-32735038",
+      "city": "ho-chi-minh-city",
+      "name": "Saigon Zoo and Botanical Gardens",
+      "archetype": "park-landscape",
+      "subject": "The entrance zone of Vietnam's oldest zoo: shady colonial-era grounds with lakes, a Sino-Vietnamese Hung Kings temple pavilion and tall old trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "terracotta",
+        "colours": [
+          "#e6d9a8",
+          "#a8472e",
+          "#f2eee2"
+        ],
+        "roofColour": "#a8472e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "main gate on Nguyen Binh Khiem street"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "Hung Kings temple and reptile house"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lake edge"
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1865",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saigon_Zoo_and_Botanical_Gardens",
+          "what": "founded 1864-69; lakes with lotuses, Temple of Hung King (built as WWI Indochinese soldiers memorial), museum of history, reptile house near gate, over 1,800 trees (some 100+ years old), about 20 ha"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32735038",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 630 x 392 m; model is a representative portion of the entrance and lake. Wikipedia describes the layout and buildings but not their look; roofs/colours typed for the Sino-colonial Hung Kings temple."
+    },
+    "ho-chi-minh-city-osm-way-32735046": {
+      "venueId": "ho-chi-minh-city-osm-way-32735046",
+      "city": "ho-chi-minh-city",
+      "name": "Công viên Văn hóa Đầm Sen (Dam Sen Cultural Park)",
+      "archetype": "park-landscape",
+      "subject": "A lakeside family theme park: broad lakes with paddle boats, themed pavilions, a Roman-style square of classical pillars and statues, and a monorail track elevated about 5 m",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8ddb8",
+          "#4c8f9f",
+          "#f1ece0"
+        ],
+        "roofColour": "#b5533c",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "themed pavilions and puppet theatre"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "lakeside boat pier"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "3,000-seat musical water show with 28 m water screen"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "classical-style statues"
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C4%90%E1%BA%A7m_Sen_Park",
+          "what": "about 50 ha, lakes 20 percent, 30 zones, 2 km monorail 5 m above ground, Roman square with classical pillars and statues, musical water show, rock garden with waterfalls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32735046",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Wikipedia gives zones and features; colours and exact pavilion forms are typed. Model shows a lake-edge portion of the 1 km park."
+    },
+    "ho-chi-minh-city-osm-way-32735082": {
+      "venueId": "ho-chi-minh-city-osm-way-32735082",
+      "city": "ho-chi-minh-city",
+      "name": "Le Van Tam Park",
+      "archetype": "park-landscape",
+      "subject": "A city-centre park laid out on a former cemetery: lawns, shade trees and a large monument statue of Le Van Tam, with a children's playground",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "granite",
+        "colours": [
+          "#cfc7b8",
+          "#8a8a86",
+          "#e9e5dc"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "dominant sculpture of Le Van Tam on a plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "tall boundary wall"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/L%C3%AA_V%C4%83n_T%C3%A1m_Park",
+          "what": "6 ha park opened 1985 on former military/Mac Dinh Chi cemetery, dominated by a sculpture of Le Van Tam, children's playground, tall concrete boundary walls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/32735082",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Park area 6 ha (OSM 243 x 224 m). The statue plinth/colours are typed; Wikipedia confirms the sculpture dominates the park. Old cemetery walls were concrete."
+    },
+    "ho-chi-minh-city-osm-way-463548000": {
+      "venueId": "ho-chi-minh-city-osm-way-463548000",
+      "city": "ho-chi-minh-city",
+      "name": "Khu du lịch Suối Tiên (Suoi Tien Theme Park)",
+      "archetype": "park-landscape",
+      "subject": "A colourful Vietnamese-legend theme park: giant sculpted dragons in blue and orange pastels, a waterfall carved with an emperor's face, Buddha statues and a roller coaster above lush gardens",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d89a4a",
+          "#4f93b8",
+          "#e9e3cf"
+        ],
+        "roofColour": "#4f93b8",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "giant sculpted dragons and Buddha statues"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "themed entrance"
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "painted-mural",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "Tien Dong waterfall"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1995",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Su%E1%BB%91i_Ti%C3%AAn_Amusement_Park",
+          "what": "opened 1995; giant dragons painted in blue and orange pastels; man-made Tien Dong beach with waterfall carved with an emperor's face; red Buddha statues; dinosaur garden; roller coaster"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/463548000",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 1102 x 515 m. Wikipedia gives the dragon colour scheme and waterfall carving; modelled as a representative dragon-and-waterfall portion."
+    },
+    "ho-chi-minh-city-osm-way-494789249": {
+      "venueId": "ho-chi-minh-city-osm-way-494789249",
+      "city": "ho-chi-minh-city",
+      "name": "Vinh Nghiem Pagoda",
+      "archetype": "temple-asian",
+      "subject": "Vinh Nghiem Pagoda: a Vietnamese traditional-style concrete temple hall with upswept red-tile roofs beside a slender seven-tier tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "curved",
+        "variant": "main hall with separate 7-tier tower",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe3b8",
+          "#a8332a",
+          "#d9a441"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 7,
+          "note": "seven-storey tower, about 40 m, with tiled eaves at each tier"
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "tam quan triple gate"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "seated Buddha in main hall; Peace Bell nearby"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "dragon ridge figures"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "1964",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/V%C4%A9nh_Nghi%C3%AAm_Pagoda",
+          "what": "first pagoda in Vietnam in traditional style built in concrete; seven-storey tower about 40 m; modeled on 11th-century Vinh Nghiem pagoda in Bac Giang; started 1964; site about 6,000 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7932538",
+          "what": "identity"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/343886793",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint (48 x 34 m) is measured from OSM and covers the main hall; the 40 m tower is a separate square mass beside it. Colours (cream walls, red columns, orange-brown tile roof) are typed from usual Vietnamese pagoda appearance, not stated in the article."
+    },
+    "ho-chi-minh-city-osm-way-503561771": {
+      "venueId": "ho-chi-minh-city-osm-way-503561771",
+      "city": "ho-chi-minh-city",
+      "name": "Chùa Linh Phước",
+      "archetype": "temple-asian",
+      "subject": "A suburban Vietnamese Buddhist temple: a two-tier main hall with upswept tiled roof, a small tower and statue in a walled forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe3b8",
+          "#a8332a",
+          "#d9a441"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 2,
+          "note": "two-tier hall roof"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "east-asian",
+      "era": "1950s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Vietnam",
+          "what": "generic Vietnamese pagoda language"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/503561771",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "WARNING: the OSM way carries wikidata Q10748461 which is the Linh Phuoc Temple in Da Lat (49 m mosaic dragon, 37 m bell tower, 1949-52). This venue is at 10.882N 106.767E in Thu Duc, HCMC, so those Da Lat features are NOT used. Footprint 83 x 30 m from OSM; the rest is typed. Low confidence."
+    },
+    "ho-chi-minh-city-osm-way-516639172": {
+      "venueId": "ho-chi-minh-city-osm-way-516639172",
+      "city": "ho-chi-minh-city",
+      "name": "University of Labour and Social Affairs (campus 2)",
+      "archetype": "campus-block",
+      "subject": "A mid-sized university campus block in Hoc Mon / district 12: a long 5-storey cream teaching building with corridor balconies",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 21,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#ede6cf",
+          "#b88a4c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#9a9c9d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q10829086",
+          "what": "university identity, inception 1976"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/516639172",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 309 x 97 m is the whole campus; building form is typed, no description found."
+    },
+    "ho-chi-minh-city-osm-way-613756783": {
+      "venueId": "ho-chi-minh-city-osm-way-613756783",
+      "city": "ho-chi-minh-city",
+      "name": "Quan khu 7 Stadium",
+      "archetype": "stadium",
+      "subject": "A military-region football stadium: an oval bowl with one covered main stand and uncovered terraces on the other sides, with four floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 110,
+        "depth_m": 75,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfc9bb",
+          "#a63a2f",
+          "#f1ece0"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main grandstand on one side"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q2770718",
+          "what": "stadium identity (Quan khu 7 Stadium)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9105777",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building:stadium polygon 218 x 139 m (area 8,881 m2 covers the stands); the model reduces it to a 110 x 75 m portion. Roof and colours typed."
+    },
+    "ho-chi-minh-city-osm-way-665450065": {
+      "venueId": "ho-chi-minh-city-osm-way-665450065",
+      "city": "ho-chi-minh-city",
+      "name": "Thong Nhat Stadium",
+      "archetype": "stadium",
+      "subject": "Vietnam's oldest stadium (1931): a football bowl with four stands, the original reinforced-concrete covered main stand, 2017-18 added seats and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 130,
+        "depth_m": 100,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "shed",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#d6cfc0",
+          "#9a8f7c",
+          "#f2eee4"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "reinforced cement roof over original main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "1,500 lux system installed late 2017"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "art-deco",
+      "era": "1931",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Th%E1%BB%91ng_Nh%E1%BA%A5t_Stadium",
+          "what": "opened 1931 as Renault Field, expanded 1959-60, renovations 2017-19; stands A (main), B, C, D; capacity about 15,000; pitch 100 x 68 m; reinforced cement roof over original stand"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/665450065",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint 199 x 150 m from OSM. Wikipedia gives history, stands, pitch and floodlights but no roof shape or colours; style tag art-deco is a guess for a 1930s concrete stand. Medium."
+    },
+    "ho-chi-minh-city-osm-way-806860787": {
+      "venueId": "ho-chi-minh-city-osm-way-806860787",
+      "city": "ho-chi-minh-city",
+      "name": "Dan Sinh Market (Cho Dan Sinh)",
+      "archetype": "market-hall",
+      "subject": "The Yersin Street market of war surplus and tools: a dense two-storey block of tiny shops with roller shutters, awnings and goods spilling on to the pavement",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e0d4b0",
+          "#a8472e",
+          "#f1ece0"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "lock-ups",
+          "count": 20
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/D%C3%A2n_Sinh_Market",
+          "what": "market known for Vietnam War-era memorabilia and military surplus on Yersin Street, District 1; article is a stub"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10748771",
+          "what": "identity"
+        }
+      ],
+      "notes": "OSM has only a 15 x 10 m building 69 m away (nearest match), so size is guessed from the street-block market typology. Known: surplus/tool market, District 1."
+    },
+    "ho-chi-minh-city-osm-way-808022726": {
+      "venueId": "ho-chi-minh-city-osm-way-808022726",
+      "city": "ho-chi-minh-city",
+      "name": "Ho Chi Minh Museum (Dragon House wharf, Ben Nha Rong)",
+      "archetype": "museum-theatre",
+      "subject": "The Dragon House: the 1863 colonial harbour headquarters, a two-storey European-Asian hybrid with an orange tiled roof crowned by a pair of dragons, facing the Saigon River",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "hip",
+        "variant": "colonial hybrid with dragon ridge ornaments"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#ebc3a7",
+          "#f2e7d6",
+          "#8a5a3c"
+        ],
+        "roofColour": "#e69151",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "two dragons on roof ridge give the house its name"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arched veranda"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "statue/memorial in the park in front"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1863",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dragon_House_(Ho_Chi_Minh_City)",
+          "what": "built 1862-64 as the Messageries Maritimes/Saigon Port HQ at the Saigon River and Ben Nghe junction; Ho Chi Minh departed from here in 1911; since 1979 a museum/memorial park"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/808022726",
+          "what": "OSM tags building:colour #EBC3A7, roof:colour #E69151, 2 levels, 34.5 x 27.6 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/808022726",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Colours are measured OSM tags (wall #EBC3A7, roof #E69151). The Wikipedia article lacks architectural description; the dragon pair on the roof ridge and arched veranda are from general knowledge of the building. Venue name in the game is the museum."
+    },
+    "ho-chi-minh-city-quiet-reflection": {
+      "venueId": "ho-chi-minh-city-quiet-reflection",
+      "city": "ho-chi-minh-city",
+      "name": "Hoang Phap Temple",
+      "archetype": "temple-asian",
+      "subject": "Hoang Phap Temple in Hoc Mon: a large Buddhist complex with a main sanctuary hall, a statue of Quan The Am (Avalokiteshvara) and the Nhi Nghiem Tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 41,
+        "depth_m": 24,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "curved",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6c4",
+          "#a8332a",
+          "#d9a441"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 3,
+          "note": "Nhi Nghiem tower with tiled tiers"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Quan The Am statue"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "1957",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ho%E1%BA%B1ng_Ph%C3%A1p_Temple",
+          "what": "temple built 1957 in Hoc Mon; main sanctuary, Quan The Am statue, Nhi Nghiem Tower; Thich Nhat Hanh retreats"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1314396510",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "Footprint 41 x 24 m from OSM; Wikipedia names main hall, statue and tower but gives no appearance. Colours and roof typed from Vietnamese temple tradition."
+    },
+    "ho-chi-minh-city-recreation": {
+      "venueId": "ho-chi-minh-city-recreation",
+      "city": "ho-chi-minh-city",
+      "name": "Tao Dan Park",
+      "archetype": "park-landscape",
+      "subject": "Tao Dan Park behind Reunification Palace: old shady rain trees and tamarinds, bird-cage cafe corners, a small Champa-style shrine and the Hung King memorial temple",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "terracotta",
+        "colours": [
+          "#e6d9a8",
+          "#a8472e",
+          "#f2eee2"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "Hung King memorial temple (1992) and small Champa-style shrine"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "statue of Dinh Bo Linh holding a reed flag"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2,
+          "note": "cafes"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tao_%C4%90%C3%A0n_Park",
+          "what": "10 ha park, former Jardin de la Ville of the French Governor, 150-year-old trees, Hung King memorial temple (1992), Champa-style temple, Dinh Bo Linh statue, bird cafe"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/500888743",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM polygon 499 x 334 m. Wikipedia lists features; colours and exact building forms typed. Many mature shade trees are the signature."
+    },
+    "ho-chi-minh-city-transit": {
+      "venueId": "ho-chi-minh-city-transit",
+      "city": "ho-chi-minh-city",
+      "name": "Go Vap railway station",
+      "archetype": "transport-station",
+      "subject": "A small North-South railway station on the Saigon suburban line: a single low station building beside two tracks with a short platform shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "render",
+        "colours": [
+          "#e9d79a",
+          "#a8472e",
+          "#f1ece0"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/G%C3%B2_V%E1%BA%A5p_railway_station",
+          "what": "station at 1 Le Lai street on the North-South line between Binh Trieu and Saigon; stub article, no building description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1043653130",
+          "what": "OSM footprint/tags used for size, levels and dates"
+        }
+      ],
+      "notes": "OSM building:train_station 30.4 x 9.5 m (containing match). Style/colour typed from small Vietnamese railway stations. Low."
+    }
+  }
+}

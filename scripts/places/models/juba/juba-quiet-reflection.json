@@ -1,0 +1,520 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "juba",
+ "venueId": "juba-quiet-reflection",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kator_church.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Lomoraronald",
+   "view": "front",
+   "file": "/tmp/places-evidence/juba/cathedral.jpg",
+   "used": "ochre-orange rendered walls, white pier towers flanking the gabled front, tall arched windows, central stained grid window under a blank board, white-edged gable with eaves brackets, lower aisle wall with white pilasters and arched windows, entrance canopy and wide steps, red cross on the ridge"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/192610317",
+   "used": "overall size only (about 50 x 34 m with transepts); modelled as a nave plus two side aisles"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 3,
+  "fovDeg": 46,
+  "aspect": 1.38,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     19,
+     40
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a02e",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.2,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain"
+    },
+    "pattern": {
+     "type": "fins",
+     "width": 0.7,
+     "depth": 0.35,
+     "spacing": 4.2,
+     "colour": "#f1ede2",
+     "faces": [
+      "left",
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#e9e2d0",
+    "material": "metal-sheet",
+    "rise": 5.5,
+    "overhang": 1.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-right",
+   "footprint": {
+    "rect": [
+     5.5,
+     30
+    ]
+   },
+   "at": [
+    12,
+    2
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a02e",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "left": "plain"
+    },
+    "plinth": 0.5,
+    "pattern": {
+     "type": "fins",
+     "width": 0.7,
+     "depth": 0.35,
+     "spacing": 4.2,
+     "colour": "#f1ede2",
+     "faces": [
+      "right"
+     ]
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e9e2d0",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "aisle-left",
+   "footprint": {
+    "rect": [
+     5.5,
+     30
+    ]
+   },
+   "at": [
+    -12,
+    2
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a02e",
+    "windows": "punched",
+    "plinth": 0.5,
+    "windowRatio": 0.22,
+    "windowShape": "arched",
+    "faces": {
+     "front": "plain",
+     "back": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "fins",
+     "width": 0.7,
+     "depth": 0.35,
+     "spacing": 4.2,
+     "colour": "#f1ede2",
+     "faces": [
+      "left"
+     ]
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#e9e2d0",
+    "material": "metal-sheet",
+    "rise": 1.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "apse-annex",
+   "footprint": {
+    "rect": [
+     24,
+     9
+    ]
+   },
+   "at": [
+    2,
+    24
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e39a2a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e2d0",
+    "parapet": 0.3,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    -8.2,
+    -20.6
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e2d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     3.4,
+     2.2
+    ]
+   },
+   "at": [
+    8.2,
+    -20.6
+   ],
+   "height": 14,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede2",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e9e2d0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     18,
+     2.4
+    ]
+   },
+   "at": [
+    0,
+    -21.3
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8a02e",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1ede2",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -23.0,
+    0.1
+   ],
+   "params": {
+    "width": 19,
+    "rise": 0.2,
+    "run": 0.7,
+    "count": 7,
+    "colour": "#b0663a"
+   }
+  },
+  {
+   "type": "mosque-domed/cross",
+   "at": [
+    0,
+    -19,
+    19.4
+   ],
+   "params": {
+    "height": 3.2,
+    "colour": "#c2272d"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 7.8,
+    "bottom": 3.8,
+    "colour": "#a8413f",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -0.8,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.1,
+    "bottom": 4.6,
+    "colour": "#c2272d",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.8,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.1,
+    "bottom": 4.6,
+    "colour": "#e0b83a",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -0.8,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.1,
+    "bottom": 6.4,
+    "colour": "#e0b83a",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0.8,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.1,
+    "bottom": 6.4,
+    "colour": "#c2272d",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.1,
+    "height": 1.1,
+    "bottom": 8.2,
+    "colour": "#3f6fb0",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 3.6,
+    "height": 2.2,
+    "bottom": 11.6,
+    "colour": "#7a2330",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -4.9,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 6.2,
+    "bottom": 4.8,
+    "colour": "#3f6fb0",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    4.9,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.3,
+    "height": 6.2,
+    "bottom": 4.8,
+    "colour": "#3f6fb0",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -3.4,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3,
+    "bottom": 0.5,
+    "colour": "#6b4a3a",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    3.4,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.2,
+    "height": 3,
+    "bottom": 0.5,
+    "colour": "#6b4a3a",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -20.4,
+    0
+   ],
+   "params": {
+    "width": 1.8,
+    "height": 3.2,
+    "bottom": 0.4,
+    "colour": "#5a4030",
+    "frameColour": "#f1ede2",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 20,
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stained-glass grid is a few coloured cells, not the full lattice; eaves brackets, entrance canopy and arched side doors omitted; pilasters are uniform; rear annex simplified."
+ }
+}

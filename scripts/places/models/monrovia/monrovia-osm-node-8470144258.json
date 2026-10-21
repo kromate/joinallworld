@@ -1,0 +1,145 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-osm-node-8470144258",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/299865131",
+   "used": "real outline of the long bar (75 x 20 m, diagonal)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Liberia,_Africa_-_panoramio_(315).jpg",
+   "licence": "CC BY 2.0",
+   "author": "jbdodane",
+   "view": "aerial",
+   "used": "photo is taken FROM the hotel roof, not of it: weathered grey concrete, overgrown grounds with palms and ruined round pool beside the beach (not compared)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: 1979 OAU hotel, 5 storeys, derelict, tiered balconies, pilotis"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 80
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a9a699",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a9a699",
+       "#8f8c80"
+      ]
+     },
+     {
+      "type": "balconies"
+     }
+    ],
+    "plinth": 0.5,
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f8a80",
+    "material": "concrete",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pool-ruin",
+   "footprint": {
+    "kind": "round",
+    "size": [
+     14,
+     14
+    ]
+   },
+   "at": [
+    -30,
+    -40
+   ],
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7a8070",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7a70",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -40,
+     -30
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -20,
+     -50
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -40
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     25
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo OF the hotel (nearby photos are views from its roof); pilotis/ruin damage and balcony tiers not seen, outline only"
+ }
+}

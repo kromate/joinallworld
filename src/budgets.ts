@@ -6,6 +6,9 @@
 //   status 'current'      the number the code and tests already enforce: moving it here changed nothing.
 //   status 'provisional'  a target from the realism plan that nothing measures yet (or a baseline taken from today's build):
 //                         scripts/download-budget.ts reports it, and fails on it only when it finds something to measure.
+//   status 'proposed'     a number the owner agreed in principle (docs/agent-plans/unique-places/PLAN.md) that code and tests enforce on
+//                         the files and the scene, but that no real phone has timed yet. It stays 'proposed' until a frame time is
+//                         recorded; nothing else may rely on it as a ceiling that was proven.
 //
 // Entries are separate exports (not one big object) so a bundle only carries the ones its module reads;
 // BUDGETS at the end lists them all for the report and the tests, and nothing in the app imports it.
@@ -17,7 +20,7 @@ export interface Budget {
   readonly unit: BudgetUnit
   /** 'max': the measurement may not exceed `value`. 'min': it may not fall below it (a floor that catches a model gone empty). */
   readonly limit: 'max' | 'min'
-  readonly status: 'current' | 'provisional'
+  readonly status: 'current' | 'provisional' | 'proposed'
   /** The file or script that checks it. */
   readonly enforcedIn: string
   readonly why: string
@@ -209,9 +212,9 @@ export const FIRST_PAINT_BROTLI: Budget = {
   why: 'Shell first paint may not grow: index.html, its stylesheet and the chunks it statically imports (baseline after phase 0, with the boot-recovery and old-browser notice: 36.6 kB, plus about 0.6%).',
 }
 export const STARTUP_BROTLI: Budget = {
-  value: 196_300, unit: 'brotli bytes', limit: 'max', status: 'provisional',
+  value: 196_500, unit: 'brotli bytes', limit: 'max', status: 'provisional',
   enforcedIn: 'scripts/download-budget.ts',
-  why: 'The automatic startup (shell, engine, the default city) may not grow (baseline after phase 0: the largest of the cities, Lagos, measures 195.4 kB, plus about 0.1%). Raised by 500 on 18 Oct 2026 for Lite and the feed apps (measured 195,912), under the owner\'s 17 Oct direction. Raised by 200 on 19 Oct 2026: the engine lists the 284 city-rules chunk hashes, which change whenever a lazy chunk does, and their brotli size moves by about ±100 bytes with no code change (raw startup unchanged at 615,827; measured 196,149).',
+  why: 'The automatic startup (shell, engine, the default city) may not grow (baseline after phase 0: the largest of the cities, Lagos, measures 195.4 kB, plus about 0.1%). Raised by 500 on 18 Oct 2026 for Lite and the feed apps (measured 195,912), under the owner\'s 17 Oct direction. Raised by 200 on 19 Oct 2026: the engine lists the 284 city-rules chunk hashes, which change whenever a lazy chunk does, and their brotli size moves by about ±100 bytes with no code change (raw startup unchanged at 615,827; measured 196,149). Raised by 200 more on 20 Oct 2026 for the same reason, with the unique-places change: a build of its base commit measures 196,234, with it 196,397, and the raw (613,913) and gzip (223,139) startup are identical in both, so the 163 bytes are the hashes of the new and rebuilt lazy chunks, not code.',
 }
 export const BASE_BODY_BROTLI: Budget = {
   value: 300_000, unit: 'brotli bytes', limit: 'max', status: 'provisional',
@@ -286,6 +289,48 @@ export const HERO_BROTLI: Budget = {
   why: 'One city landmark is a bounded optional dependency of that city scene pack.',
 }
 
+// ---- Unique place models (src/scene/places, scripts/places) --------------------------------------------------------------------
+// One model per public place, drawn behind a venue scene (LOD0 or LOD1) and as the map icon (LOD2). Its triangles are NOT part of
+// SCENE_SCENERY_TRIANGLES: scenery keeps its 15,000, and a place model has this allowance of its own. Its draw calls DO count toward
+// the shared SCENE_DRAW_CALLS. The whole-frame worst case is therefore 15,000 + 72,000 + 20,000 triangles; only LOD0 on a capable
+// device reaches the top, and every other device draws LOD1 (4,000) until a real phone's frame time is recorded.
+
+export const PLACE_MODEL_TRIANGLES: Budget = {
+  value: 20000, unit: 'triangles', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/places.test.ts, src/scene/places/manifest.ts (PLACE_MODEL_LIMITS), scripts/places/pack.ts, src/scene/body/render-cost.ts (measured as its own category)',
+  why: 'Owner decision of 19 Oct 2026: realism first, LOD0 up to 15,000 to 20,000 triangles per place. A separate allowance so the 15,000 scenery cap is not silently raised. Not timed on a phone: LOD1 is the default on unknown devices.',
+}
+export const PLACE_MODEL_LOD1_TRIANGLES: Budget = {
+  value: 4000, unit: 'triangles', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/places.test.ts, src/scene/places/manifest.ts (PLACE_MODEL_LIMITS), scripts/places/pack.ts',
+  why: 'The place model for Light mode, Save-Data, weak phones and any device not known to be strong.',
+}
+export const PLACE_MODEL_LOD2_TRIANGLES: Budget = {
+  value: 500, unit: 'triangles', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/places.test.ts, src/scene/places/manifest.ts (PLACE_MODEL_LIMITS), scripts/places/pack.ts',
+  why: 'The city-map icon: a few dozen of them are drawn at once beside the 90,000-triangle city budget.',
+}
+export const PLACE_MODEL_DRAW_CALLS: Budget = {
+  value: 2, unit: 'draw calls', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/places.test.ts',
+  why: 'One merged mesh on the one shared atlas (casting no shadow, so one draw call; two leave room for a shadow pass). Counted inside the shared 60.',
+}
+export const PLACE_MODEL_LOD0_BROTLI: Budget = {
+  value: 110_000, unit: 'brotli bytes', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/manifest.ts (PLACE_MODEL_LIMITS), scripts/places/pack.ts',
+  why: 'A place fetches its model once and keeps it (the service worker, then the HTTP cache). Target 60 to 100 KB; 110 KB is the gate.',
+}
+export const PLACE_MODEL_LOD1_BROTLI: Budget = {
+  value: 30_000, unit: 'brotli bytes', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/manifest.ts (PLACE_MODEL_LIMITS), scripts/places/pack.ts',
+  why: 'The default place model on weak phones and in Light mode: target 15 to 25 KB.',
+}
+export const PLACE_MODEL_LOD2_BROTLI: Budget = {
+  value: 6000, unit: 'brotli bytes', limit: 'max', status: 'proposed',
+  enforcedIn: 'src/scene/places/manifest.ts (PLACE_MODEL_LIMITS), scripts/places/pack.ts',
+  why: 'A map icon: about 2 KB each, a city of icons in tens of KB.',
+}
+
 export const BUDGETS = {
   SCENE_SCENERY_TRIANGLES, SCENE_CHARACTER_TRIANGLES, SCENE_TRIANGLES, SCENE_DRAW_CALLS, SCENE_SCENERY_MESHES, SCENE_LIGHTS,
   NATIVE_FULL_BODY_TRIANGLES, CANONICAL_FULL_BODY_TRIANGLES, CANONICAL_LOD_BODY_TRIANGLES,
@@ -295,6 +340,7 @@ export const BUDGETS = {
   FIRST_PAINT_BROTLI, STARTUP_BROTLI, BASE_BODY_BROTLI, CLIP_PACK_BROTLI, WARDROBE_ITEM_BROTLI, WARDROBE_ITEM_TRIANGLES, WARDROBE_ITEM_TEXTURE_PX,
   STREET_TILE_BROTLI, STREET_TILE_TRIANGLES, PHONE_SCENE_DRAW_CALLS,
   CITY_SCENE_RECIPES_BYTES, TALK_INDEX_BYTES, TALK_CITY_PACK_BYTES, CITY_CONTENT_RECIPE_TALK_BYTES, SCENE_KIT_BROTLI, HERO_BROTLI,
+  PLACE_MODEL_TRIANGLES, PLACE_MODEL_LOD1_TRIANGLES, PLACE_MODEL_LOD2_TRIANGLES, PLACE_MODEL_DRAW_CALLS, PLACE_MODEL_LOD0_BROTLI, PLACE_MODEL_LOD1_BROTLI, PLACE_MODEL_LOD2_BROTLI,
 } as const satisfies Record<string, Budget>
 
 export type BudgetName = keyof typeof BUDGETS

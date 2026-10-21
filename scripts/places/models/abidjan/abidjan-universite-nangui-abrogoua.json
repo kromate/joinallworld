@@ -1,0 +1,625 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-universite-nangui-abrogoua",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:AMPHI_A_UNIVERSITE_NANGUI_ABROGOUA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Esilue",
+   "view": "front",
+   "file": "/tmp/places-evidence/abidjan/uni1.jpg",
+   "used": "two-storey lecture block: pale weathered concrete parapet panels between proud red-brick piers, recessed bays of dark steel-framed grid windows, low brick end wall, red steel entrance pergola, grass banks and a path"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:BUREAUX_DES_ENSEIGNANTS_UNIVERSITE_NANGUI_ABROGOUA.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Esilue",
+   "view": "side",
+   "file": "/tmp/places-evidence/abidjan/uni2.jpg",
+   "used": "neighbouring white two-storey office blocks with small square vent windows on the gable and shaded window bays with air-conditioners"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q3551460",
+   "used": "identity (University of Abobo-Adjame, renamed Nangui Abrogoua, founded 1996); no OSM building outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 8,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     65,
+     13
+    ]
+   },
+   "at": [
+    2.5,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabf",
+    "windows": "punched",
+    "windowRatio": 0.72,
+    "windowShape": "rect",
+    "glassColour": "#1e2226",
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "none"
+    },
+    "bay": 4.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plinth",
+   "footprint": {
+    "rect": [
+     65,
+     1.2
+    ]
+   },
+   "at": [
+    2.5,
+    -6.9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcabf"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier0",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    -28,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier1",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    -19,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier2",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    -10,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier3",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    -1,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier4",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    8,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier5",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    17,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier6",
+   "footprint": {
+    "rect": [
+     4.6,
+     3.4
+    ]
+   },
+   "at": [
+    26,
+    -8.2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5614a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "parapet",
+   "footprint": {
+    "rect": [
+     65,
+     4.2
+    ]
+   },
+   "at": [
+    2.5,
+    -7.9
+   ],
+   "rotDeg": 0,
+   "z0": 7.0,
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcabf",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b5b0a4",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-end",
+   "footprint": {
+    "rect": [
+     16,
+     15
+    ]
+   },
+   "at": [
+    42,
+    -1.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9.8,
+   "storeys": 2,
+   "wall": {
+    "material": "red-brick",
+    "colour": "#b5614a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9573f"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tall-hall",
+   "footprint": {
+    "rect": [
+     22,
+     8
+    ]
+   },
+   "at": [
+    -10,
+    13
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c4bfb4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a59b",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pergola-roof",
+   "footprint": {
+    "rect": [
+     12,
+     1.4
+    ]
+   },
+   "at": [
+    30,
+    -10.2
+   ],
+   "rotDeg": 0,
+   "z0": 3.3,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a3b2f",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a3b2f"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     24.5,
+     -10.7,
+     0
+    ],
+    "end": [
+     35.5,
+     -10.7,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.3,
+       0.3
+      ],
+      "height": 3.3,
+      "colour": "#8a3b2f"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -20,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     9
+    ],
+    "height": 2.2,
+    "topScale": [
+     0.75,
+     0.45
+    ],
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -2,
+    -22,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     7
+    ],
+    "height": 1.4,
+    "topScale": [
+     0.75,
+     0.45
+    ],
+    "colour": "#5f9a45"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -40
+     ],
+     [
+      -40,
+      -30
+     ],
+     [
+      -8,
+      -34
+     ],
+     [
+      18,
+      -22
+     ],
+     [
+      30,
+      -13.5
+     ]
+    ],
+    "width": 4.5,
+    "colour": "#b49a82"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      -62,
+      -37.6
+     ],
+     [
+      -40,
+      -27.6
+     ],
+     [
+      -8,
+      -31.6
+     ],
+     [
+      18,
+      -19.8
+     ],
+     [
+      28,
+      -12
+     ]
+    ],
+    "width": 0.4,
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "office-block",
+   "footprint": {
+    "rect": [
+     24,
+     11
+    ]
+   },
+   "at": [
+    -60,
+    50
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#efeee9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9fa29f",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    8,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6.5,
+    "count": 3,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -40,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -52,
+    25,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "pale panel weathering, 2x3 pane grid and reveal depth approximated by one punched window band; mounds are tapered prisms"
+ }
+}

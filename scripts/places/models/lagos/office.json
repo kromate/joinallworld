@@ -1,0 +1,455 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "office",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lagos.json places.office",
+   "used": "Victoria Island style tower, 36 x 30 m plan, 14 storeys, 56 m, glass curtain wall with concrete bands, podium, atrium glass, rooftop plant and helipad, car park, plaza; no photos or OSM position exist"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 8,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "podium",
+   "footprint": {
+    "rect": [
+     52,
+     24
+    ]
+   },
+   "at": [
+    0,
+    -4
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b7b0a4",
+    "windows": "curtain",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "faces": {
+     "front": "curtain",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#8f897f"
+      ],
+      "height": 0.9,
+      "at": 0.9,
+      "proud": 0.3,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower",
+   "footprint": {
+    "rect": [
+     36,
+     28
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 9,
+   "height": 42,
+   "storeys": 11,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#7fa3b3",
+    "windows": "curtain",
+    "windowRatio": 0.6,
+    "pattern": [
+     {
+      "type": "bands",
+      "colours": [
+       "#b7b0a4"
+      ],
+      "height": 0.7,
+      "proud": 0.25,
+      "floors": "all"
+     }
+    ],
+    "bay": 8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     22
+    ],
+    "z0": 51,
+    "height": 4.5,
+    "topScale": 0.92,
+    "colour": "#b7b0a4",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -6,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     11,
+     9
+    ],
+    "z0": 55.5,
+    "height": 3.5,
+    "colour": "#9aa3a8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "office-tower/rooftop-helipad",
+   "at": [
+    9,
+    6,
+    55.6
+   ],
+   "params": {
+    "radius": 6
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "bottom": 1.2,
+    "colour": "#3a4a58"
+   }
+  },
+  {
+   "type": "office-tower/tree-avenue",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "count": 6,
+    "kind": "palm"
+   }
+  },
+  {
+   "type": "market-open/car-park",
+   "at": [
+    40,
+    4,
+    0
+   ],
+   "params": {
+    "width": 20,
+    "depth": 24
+   }
+  },
+  {
+   "type": "office-tower/glass-lobby",
+   "at": [
+    0,
+    -17,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 8,
+    "curtain_colour": "#6f9aa8"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "count": 7,
+    "of": [
+     {
+      "type": "mass",
+      "id": "fin",
+      "footprint": {
+       "rect": [
+        0.6,
+        0.6
+       ]
+      },
+      "at": [
+       0,
+       0
+      ],
+      "height": 42,
+      "storeys": 1,
+      "wall": {
+       "material": "concrete",
+       "colour": "#d9d4c8",
+       "windows": "none",
+       "windowRatio": 0
+      },
+      "roof": {
+       "form": "flat",
+       "colour": "#d9d4c8"
+      }
+     }
+    ],
+    "lod1Step": 2,
+    "lod2Step": 100,
+    "start": [
+     -16,
+     -8.3,
+     9
+    ],
+    "end": [
+     16,
+     -8.3,
+     9
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core-corner",
+   "footprint": {
+    "rect": [
+     7,
+     7
+    ]
+   },
+   "at": [
+    15,
+    -6
+   ],
+   "z0": 9,
+   "height": 46,
+   "storeys": 12,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8a8378",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8378"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "chamfer-crown",
+   "footprint": {
+    "rect": [
+     22,
+     16
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "z0": 59,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#d9d4c8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8"
+   }
+  },
+  {
+   "type": "hospital/lattice-mast",
+   "at": [
+    -12,
+    10,
+    59
+   ],
+   "params": {
+    "height": 14,
+    "baseWidth": 1.2,
+    "topWidth": 0.3,
+    "panels": 6,
+    "colour": "#c8362f",
+    "colour2": "#f2f2ee"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -6,
+    -5.6,
+    44
+   ],
+   "params": {
+    "width": 10,
+    "height": 2.4,
+    "bottom": 0,
+    "colour": "#3a4a58",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -14,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 3,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "office-tower/atm-booth",
+   "at": [
+    10,
+    -32,
+    0
+   ],
+   "params": {
+    "width": 2.8,
+    "depth": 2.4
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.2,
+    "pillar": 0.6,
+    "leaf": "bars"
+   }
+  },
+  {
+   "type": "office-tower/gate-lodge",
+   "at": [
+    -8,
+    -33,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "office-tower/outbuilding",
+   "at": [
+    -38,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "depth": 4,
+    "height": 3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "carpark-block",
+   "footprint": {
+    "rect": [
+     22,
+     24
+    ]
+   },
+   "at": [
+    -38,
+    18
+   ],
+   "height": 14,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a8a398",
+    "windows": "none",
+    "windowRatio": 0,
+    "pattern": [
+     {
+      "type": "floors",
+      "colours": [
+       "#a8a398",
+       "#8f897f"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9aa3a8",
+    "parapet": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": 0,
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Text-only; Victoria Island style campus with podium, fins, chamfered crown; real building unknown."
+ }
+}

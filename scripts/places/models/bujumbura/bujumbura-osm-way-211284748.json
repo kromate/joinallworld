@@ -1,0 +1,279 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-way-211284748",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Building_de_l%27Universit%C3%A9_du_Lac_Tanganyika_%C3%A0_Kigobe.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Arthur Nkunzimana",
+   "view": "street",
+   "file": "/tmp/places-evidence/bujumbura/lt1.jpg",
+   "used": "four-storey bare grey concrete block, small blue-framed windows in loose rhythm, cream horizontal bands per floor, salmon-red vertical stripes, turquoise corner stripe, dark blue-green mono-pitch roof, low rendered boundary wall with a red-brown roof shed in front"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/211284748",
+   "used": "site is ~123 x 94 m; main block sized from the photographed block, not the irregular site outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -35,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     54,
+     15
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 15,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#6c6e6b",
+    "windows": "punched",
+    "windowRatio": 0.16,
+    "bay": 10.8,
+    "plinth": 0.6,
+    "faces": {
+     "left": "plain",
+     "right": "punched"
+    },
+    "glassColour": "#1f3470"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#34505c",
+    "material": "metal-sheet",
+    "pitch": 6,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -27.3,
+    -7.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     1.6,
+     0.5
+    ],
+    "height": 15,
+    "colour": "#1f9a9a"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    -7.7,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -18,
+     0
+    ],
+    "end": [
+     18,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0
+      ],
+      "params": {
+       "rect": [
+        0.5,
+        0.18
+       ],
+       "height": 15,
+       "colour": "#d05a50"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    -34,
+    -11
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfc4aa",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a8342a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 2.5,
+    "kind": "wall",
+    "points": [
+     [
+      -48,
+      -20
+     ],
+     [
+      48,
+      -20
+     ]
+    ],
+    "colour": "#bfae8a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    40,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.55,
+    3.4
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.2
+    ],
+    "height": 0.5,
+    "colour": "#d9cfa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.55,
+    7.2
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.2
+    ],
+    "height": 0.5,
+    "colour": "#d9cfa8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -7.55,
+    10.9
+   ],
+   "params": {
+    "rect": [
+     54,
+     0.2
+    ],
+    "height": 0.5,
+    "colour": "#d9cfa8"
+   }
+  },
+  {
+   "type": "balcony",
+   "at": [
+    22,
+    -8.1,
+    7.2
+   ],
+   "params": {
+    "width": 4.5,
+    "depth": 1.4,
+    "railing_colour": "#2a3a5a"
+   }
+  },
+  {
+   "type": "external-stair",
+   "at": [
+    24.8,
+    -7.6,
+    0
+   ],
+   "params": {
+    "height": 10.8,
+    "length": 3,
+    "width": 1.1,
+    "colour": "#3a4048"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   100,
+   60
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Windows still smaller and more regular than the photo; fire stair and balcony are approximate; boundary wall and shed simplified; full building length assumed from a close oblique photo."
+ }
+}

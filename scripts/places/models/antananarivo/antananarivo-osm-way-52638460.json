@@ -1,0 +1,627 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-osm-way-52638460",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Palais_royal_Rova_Manjakamiadana_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Dalbergiaada",
+   "view": "front",
+   "file": "/tmp/places-evidence/antananarivo/rova1.jpg",
+   "used": "two square corner towers with paired arched belfry windows and flat capped tops, three storeys of tan granite ashlar, arched loggia openings with dark timber infill on the front, balustraded terrace between the towers, steep dark slate pyramid roof set back with small dormers"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Reconstructed_Rova_Antananarivo_Madagascar.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Hery Zo Rakotondramanana",
+   "view": "front",
+   "used": "overall proportions and stone colour"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Rova_of_Antananarivo",
+   "used": "about 30 x 20 m, 37 m high with roof, four corner towers; the OSM outline is the palace plus veranda strip and was not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 12,
+  "fovDeg": 55,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "rect": [
+     30,
+     17
+    ]
+   },
+   "at": [
+    0,
+    1.5
+   ],
+   "height": 25,
+   "storeys": 3,
+   "wall": {
+    "material": "stone",
+    "colour": "#bfa384",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.7,
+    "plinth": 0.6,
+    "bay": 5.2,
+    "cornice": true,
+    "faces": {
+     "left": "arched",
+     "right": "arched",
+     "back": "arched"
+    },
+    "pattern": [
+     {
+      "type": "arcade",
+      "shape": "arch",
+      "bay": 5.2,
+      "opening": 0.6,
+      "height": 0.8,
+      "depth": 1.2,
+      "pierColour": "#c9ae8e",
+      "faces": [
+       "front"
+      ]
+     },
+     {
+      "type": "bands",
+      "colours": [
+       "#a58a6e"
+      ],
+      "height": 0.5,
+      "at": 0.66,
+      "proud": 0.15,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f98",
+    "parapet": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-w",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.6
+    ]
+   },
+   "at": [
+    -11.5,
+    -9.5
+   ],
+   "height": 38,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#b99c7e",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "arched",
+     "back": "arched",
+     "front": "arched",
+     "right": "arched"
+    },
+    "bay": 2.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8794",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "tower-e",
+   "footprint": {
+    "rect": [
+     5.6,
+     5.6
+    ]
+   },
+   "at": [
+    11.5,
+    -9.5
+   ],
+   "height": 41,
+   "storeys": 5,
+   "wall": {
+    "material": "stone",
+    "colour": "#b99c7e",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "left": "arched",
+     "back": "arched",
+     "front": "arched",
+     "right": "arched"
+    },
+    "bay": 2.8
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7c8794",
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "prism",
+   "id": "roof-hip",
+   "params": {
+    "rect": [
+     14,
+     9
+    ],
+    "z0": 25,
+    "height": 12,
+    "topScale": 0.12,
+    "colour": "#3f4856",
+    "topColour": "#3f4856"
+   },
+   "at": [
+    0,
+    3,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dormer-a",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 27,
+    "height": 2.6,
+    "topScale": 0.2,
+    "colour": "#59606b",
+    "topColour": "#3f4856"
+   },
+   "at": [
+    -3.5,
+    -0.5,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap-w",
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "z0": 38,
+    "height": 1.2,
+    "topScale": 0.5,
+    "colour": "#7c8794",
+    "topColour": "#7c8794"
+   },
+   "at": [
+    -11.5,
+    -9.5,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "cap-e",
+   "params": {
+    "rect": [
+     5.2,
+     5.2
+    ],
+    "z0": 41,
+    "height": 1.2,
+    "topScale": 0.5,
+    "colour": "#7c8794",
+    "topColour": "#7c8794"
+   },
+   "at": [
+    11.5,
+    -9.5,
+    0
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     15.6,
+     -8.5,
+     0
+    ],
+    "end": [
+     15.6,
+     8.5,
+     0
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9,
+      "colour": "#cdb89a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "veranda-roof",
+   "params": {
+    "rect": [
+     2.2,
+     20
+    ],
+    "z0": 10,
+    "height": 0.4,
+    "colour": "#7c8794"
+   },
+   "at": [
+    16.4,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "dormer-b",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 27,
+    "height": 2.6,
+    "topScale": 0.2,
+    "colour": "#59606b",
+    "topColour": "#3f4856"
+   },
+   "at": [
+    3.5,
+    -0.5,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -6.5,
+     -9.2,
+     25
+    ],
+    "end": [
+     6.5,
+     -9.2,
+     25
+    ],
+    "count": 14,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.35,
+       0.35
+      ],
+      "height": 1.1,
+      "colour": "#d4c0a2"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "balu-rail",
+   "params": {
+    "rect": [
+     13.6,
+     0.4
+    ],
+    "z0": 26.1,
+    "height": 0.25,
+    "colour": "#d4c0a2"
+   },
+   "at": [
+    0,
+    -9.2,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    -6.2,
+    -7.1,
+    20
+   ],
+   "params": {
+    "radius": 0.18,
+    "n": 6,
+    "closed": true,
+    "arc": {
+     "steps": 14,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "colour": "#6e5a44"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    6.2,
+    -7.1,
+    20
+   ],
+   "params": {
+    "radius": 0.18,
+    "n": 6,
+    "closed": true,
+    "arc": {
+     "steps": 14,
+     "centre": [
+      0,
+      0,
+      0
+     ],
+     "radius": 0.9,
+     "startDeg": 0,
+     "endDeg": 360,
+     "plane": "xz"
+    },
+    "colour": "#6e5a44"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.4,
+     -7.1,
+     10.5
+    ],
+    "end": [
+     10.4,
+     -7.1,
+     10.5
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "height": 4.6,
+      "topScale": 0.9,
+      "colour": "#3b2c22",
+      "topColour": "#3b2c22"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -10.4,
+     -7.1,
+     18
+    ],
+    "end": [
+     10.4,
+     -7.1,
+     18
+    ],
+    "count": 5,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.4,
+       0.3
+      ],
+      "height": 4.6,
+      "topScale": 0.9,
+      "colour": "#3b2c22",
+      "topColour": "#3b2c22"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail-1",
+   "params": {
+    "rect": [
+     21,
+     0.2
+    ],
+    "z0": 8.3,
+    "height": 0.9,
+    "colour": "#2a2a2a"
+   },
+   "at": [
+    0,
+    -7.3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "rail-2",
+   "params": {
+    "rect": [
+     21,
+     0.2
+    ],
+    "z0": 15.9,
+    "height": 0.9,
+    "colour": "#2a2a2a"
+   },
+   "at": [
+    0,
+    -7.3,
+    0
+   ],
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   70,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -20
+    ]
+   },
+   {
+    "kind": "conifer",
+    "at": [
+     -8,
+     -18
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -16
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     10
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "towers now taller and projecting with belfry windows, steeper set-back roof with dormers, balustrade; front loggia arches only partly read (dark shutters instead of open arches), no tracery/clock detail"
+ }
+}

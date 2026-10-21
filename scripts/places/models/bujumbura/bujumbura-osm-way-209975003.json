@@ -1,0 +1,152 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bujumbura",
+ "venueId": "bujumbura-osm-way-209975003",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/209975003",
+   "used": "real outline: 18 x 11 m L-shaped single-storey block, name-matched"
+  },
+  {
+   "kind": "text",
+   "used": "brief: rendered health centre, red-brown corrugated hip roof, covered waiting veranda, blank sign board; no photograph found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "clinic",
+   "footprint": {
+    "osm": true,
+    "fit": 18
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dfcb",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#b5603f"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a35",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mosque-domed/veranda",
+   "at": [
+    -8,
+    -5.6,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 2.2,
+    "height": 2.8,
+    "rise": 0.5,
+    "colour": "#b5603f",
+    "cap_colour": "#9a4a35"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -9,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 1.4,
+    "bottom": 1.2,
+    "colour": "#f1f1ee",
+    "frameColour": "#c8362f"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "length": 4,
+    "height": 1.4,
+    "kind": "wall",
+    "points": [
+     [
+      -16,
+      -12
+     ],
+     [
+      18,
+      -12
+     ],
+     [
+      18,
+      12
+     ],
+     [
+      -16,
+      12
+     ],
+     [
+      -16,
+      -12
+     ]
+    ],
+    "colour": "#cfc6b0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   44,
+   34
+  ],
+  "trees": []
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photograph found; outline is real OSM, roof, veranda and colours follow the brief."
+ }
+}

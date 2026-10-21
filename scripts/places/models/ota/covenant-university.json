@@ -1,0 +1,424 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ota",
+ "venueId": "covenant-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Covenant_University_Library.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Ambassador84",
+   "view": "front",
+   "file": "/tmp/places-evidence/ota/cov0.jpg",
+   "used": "Centre for Learning Resources front: green stone-clad central block with ribbon glazing, recessed cream porch with two round granite columns, flanking cream wings with column rows"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Covenant_University_Campus_View.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Covenant University",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/ota/cov1.jpg",
+   "used": "setting: round lawn, hedges, palms and low cream halls of residence"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/11348081",
+   "used": "campus-library complex size only (irregular outline not used)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 2,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.02,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "wing-left",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    -24,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c8a4",
+    "trimColour": "#2b3a2e",
+    "glassColour": "#26323a",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-right",
+   "footprint": {
+    "rect": [
+     20,
+     14
+    ]
+   },
+   "at": [
+    24,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c8a4",
+    "trimColour": "#2b3a2e",
+    "glassColour": "#26323a",
+    "windows": "punched",
+    "windowRatio": 0.5,
+    "plinth": 0.3,
+    "bay": 3.2
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-wall",
+   "footprint": {
+    "rect": [
+     17,
+     2
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 10,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8c8a4",
+    "trimColour": "#2b3a2e",
+    "glassColour": "#26323a",
+    "windows": "punched",
+    "windowRatio": 0.55,
+    "plinth": 0.3,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8e8a80",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-left",
+   "footprint": {
+    "rect": [
+     3.5,
+     10
+    ]
+   },
+   "at": [
+    -11,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 11,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f7a62",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5a49",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "pier-right",
+   "footprint": {
+    "rect": [
+     5,
+     10
+    ]
+   },
+   "at": [
+    10.5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16.5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f7a62",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5a49",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-ribbon",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    -1.5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 10,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f7a62",
+    "windows": "ribbon",
+    "plinth": 0,
+    "faces": {
+     "front": "ribbon"
+    },
+    "windowRatio": 0.6,
+    "trimColour": "#2b3a2e",
+    "glassColour": "#26323a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5a49",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-top",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    -3.5,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 15,
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f7a62",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5a49",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "green-top-r",
+   "footprint": {
+    "rect": [
+     4,
+     10
+    ]
+   },
+   "at": [
+    8,
+    -1
+   ],
+   "rotDeg": 0,
+   "z0": 15,
+   "height": 1.5,
+   "storeys": 1,
+   "wall": {
+    "material": "tile-cladding",
+    "colour": "#5f7a62",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4d5a49",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    -5.5,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 0.1,
+    "count": 1,
+    "height": 10,
+    "radius": 0.6,
+    "kind": "round",
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    4.5,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 0.1,
+    "count": 1,
+    "height": 10,
+    "radius": 0.6,
+    "kind": "round",
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    -33,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 5,
+    "height": 7,
+    "radius": 0.4,
+    "kind": "round",
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "colonnade",
+   "at": [
+    14,
+    -5,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "count": 5,
+    "height": 7,
+    "radius": 0.4,
+    "kind": "round",
+    "colour": "#b9b3a4"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -1,
+    -6.2,
+    9.8
+   ],
+   "params": {
+    "width": 19,
+    "height": 1.5,
+    "bottom": 0,
+    "colour": "#f2f4f6",
+    "frameColour": "#c8ccd2",
+    "posts": false
+   }
+  },
+  {
+   "type": "steps",
+   "at": [
+    0,
+    -6.5,
+    0
+   ],
+   "params": {
+    "width": 14,
+    "rise": 0.4,
+    "run": 0.6,
+    "count": 2,
+    "colour": "#c8c2b4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "garden",
+  "forecourtDepth": 14,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -24,
+     -12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     26,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     30,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Stepped green slab, tall recessed porch with full-height columns and gridded glazing now present; sign board renders with a blue edge and no text, forecourt paving is grey (no brick ground option), glazing is a dark ribbon not a pane grid, wings only approximate."
+ }
+}

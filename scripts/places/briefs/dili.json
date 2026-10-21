@@ -1,0 +1,1696 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "dili",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "dili",
+    "climate": "savanna",
+    "vernacular": "Small, dusty tropical port capital of whitewashed and pastel-painted render. Portuguese colonial buildings of 1-2 storeys with arcaded verandas, shutters and red clay-tile roofs sit along the seafront grid; Indonesian-era (1975-99) concrete-block and brick buildings with flat or low-pitched corrugated-metal roofs fill the rest; recent donor-built concrete blocks and mall-style buildings stand in the centre. Outside Dili, villages use block walls with corrugated-iron roofs, and in places wooden houses. Dry savanna vegetation with palms, tamarind and fig trees.",
+    "wallColours": [
+      "#f2efe6",
+      "#e8dcc0",
+      "#d9c7a0",
+      "#c9d3c0",
+      "#b7b1a2",
+      "#c98a6a",
+      "#8a8a80"
+    ],
+    "roofColours": [
+      "#a8523a",
+      "#8a8f94",
+      "#7d8084",
+      "#6b6460"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "painted-render",
+      "concrete",
+      "brick",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Portuguese colonial arcaded verandas, shutters and turrets (Palacio de Lahane, Government Palace with three two-storey blocks linked by an arcade); Indonesian-era concrete screens and Catholic churches with bell towers and porticos; Balinese split gates (candi bentar) and tiered meru roofs on the Hindu temple; Timorese uma lulik pitched roofs as local motif.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Dili",
+        "what": "Portuguese colonial quarter with one- and two-storey masonry buildings, Government Palace with three two-storey blocks linked by an arcade, Indonesian-era cathedral and Hindu temple, concrete and brick walls, dry savanna climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Palácio_de_Lahane",
+        "what": "Portuguese colonial with Art Deco influences, early-1930s residence with chalet-like look"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Port_of_Dili",
+        "what": "port warehouses with corrugated-iron roofs, 280 m wharf"
+      }
+    ]
+  },
+  "places": {
+    "dili-airport-dili-airport": {
+      "venueId": "dili-airport-dili-airport",
+      "city": "dili",
+      "name": "Presidente Nicolau Lobato International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The small 1980s terminal at Comoro: a low single-block terminal with a simple front canopy, arrival, departure and VIP sections, on a short runway apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 88,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#a8523a",
+          "#b7b1a2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1978-81",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Presidente_Nicolau_Lobato_International_Airport",
+          "what": "terminal built during the 1978-1981 rebuilding under Indonesian administration (Comoro Airport); divided into arrivals, departures and VIP; 1,850 m runway; new terminal due 2028"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1432488",
+          "what": "airport in Dili; OSM Terminal 1 about 88 x 66 m, 3,982 m2"
+        }
+      ],
+      "notes": "Sourced: 1978-81 terminal, three sections, runway length, and OSM terminal 88 x 66 m. Exterior look is not described anywhere found; typed from Indonesian-era public buildings. Much smaller than Suvarnabhumi and BWN. Generators should not use the planned 2025 terminal."
+    },
+    "dili-clinic": {
+      "venueId": "dili-clinic",
+      "city": "dili",
+      "name": "Hospital Nacional Guido Valadares",
+      "archetype": "hospital",
+      "subject": "The national hospital at Culu Hun: a campus of long low ward blocks linked by open walkways, the largest hospital in Timor-Leste",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#a8523a",
+          "#b7b1a2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1982-83",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guido_Valadares_National_Hospital",
+          "what": "founded 1982, built 1983 as Rumah Sakit Umum Pusat Dili; largest hospital in Timor-Leste; 260-340 beds; 14 wards; new building handover 2003; five-storey paediatric/coronary unit approved Oct 2022"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q14543918",
+          "what": "general hospital in Dili; OSM building under pin about 19 x 18 m"
+        }
+      ],
+      "notes": "Sourced: dates, scale, the ward-campus programme. The OSM building under the pin is only 19 x 18 m so the U-shaped ward complex and 2-storey height are typed from Indonesian-era hospitals. Do not model the 2023 five-storey unit."
+    },
+    "dili-community-notices": {
+      "venueId": "dili-community-notices",
+      "city": "dili",
+      "name": "Sede Suco Seloi Craic",
+      "archetype": "civic-small",
+      "subject": "A village (suco) office: a small single-storey block building with a pitched corrugated roof and a front veranda",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#8a8a80",
+          "#a8523a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1083634999",
+          "what": "OSM building, 1 level, about 20 x 7 m, named Sede Suco Seloi Craic"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2268614",
+          "what": "Seloi Craic, suco in Aileu"
+        }
+      ],
+      "notes": "Low confidence: only a 20 x 7 m single-level footprint and the suco (Aileu district) identity are sourced. Appearance typed from Timorese village offices."
+    },
+    "dili-community-voting-game": {
+      "venueId": "dili-community-voting-game",
+      "city": "dili",
+      "name": "Parlamento Nacional",
+      "archetype": "civic-palace",
+      "subject": "The National Parliament building in Dili: a formal two-storey government building with flags and a gated forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 57,
+        "depth_m": 47,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#a8523a",
+          "#b7b1a2"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "parliament since 2002",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q680806",
+          "what": "National Parliament of East Timor, unicameral legislature, 2002; OSM building about 57 x 47 m, 2,202 m2"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Parliament_of_East_Timor",
+          "what": "meets in Parlamento Nacional, Dili; building not described"
+        }
+      ],
+      "notes": "Low confidence: location and footprint (57 x 47 m) sourced; the Wikipedia article does not describe the building. Storeys, portico, colours typed from Dili civic style. Larger and more formal than the Palacio de Lahane."
+    },
+    "dili-community-workshop": {
+      "venueId": "dili-community-workshop",
+      "city": "dili",
+      "name": "Universidade da Paz",
+      "archetype": "campus-block",
+      "subject": "A small private university building: a three-storey concrete block with ribbon windows and a pitched metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#b7b1a2",
+          "#a8523a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "university founded 2004",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7894358",
+          "what": "Universidade da Paz, university in East Timor, 2004; OSM building under pin about 43 x 26 m"
+        }
+      ],
+      "notes": "Low confidence: only the founding (2004) and a 43 x 26 m building are sourced; storeys and colours are typed."
+    },
+    "dili-market-game": {
+      "venueId": "dili-market-game",
+      "city": "dili",
+      "name": "Timor Plaza",
+      "archetype": "mall",
+      "subject": "Timor Plaza (Dili Central), the first shopping mall in Timor-Leste: a four-storey rectangular block with plain facades and glass-sided elevators",
+      "form": {
+        "footprint": "rect",
+        "width_m": 101,
+        "depth_m": 64,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4d8",
+          "#7a8a96",
+          "#b7b1a2"
+        ],
+        "roofColour": "#a8a39a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards"
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Timor_Plaza",
+          "what": "four storeys high, construction by 2010, first phase opened Oct 2011, part of a 5 ha development, glass-sided elevators"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q42513263",
+          "what": "Timor Plaza shopping centre; OSM building about 101 x 64 m, 5,934 m2"
+        }
+      ],
+      "notes": "Sourced: four storeys, 2011 opening and OSM footprint of about 101 x 64 m. Exterior colours not described; typed. Distinct from Central Westgate by smaller footprint and Dili setting."
+    },
+    "dili-meal-stop": {
+      "venueId": "dili-meal-stop",
+      "city": "dili",
+      "name": "Tibar Restaurant",
+      "archetype": "restaurant",
+      "subject": "A casual seaside restaurant at Tibar: a simple one-storey open-sided building with a pitched roof and a sea-facing terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f2efe6",
+          "#8a5a3c",
+          "#2f6fa8"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Low confidence: nothing findable beyond the name and coordinates (Tibar, west of Dili, coast road). No OSM building matches. Typed as a seaside eatery in coastal style."
+    },
+    "dili-osm-node-1777614913": {
+      "venueId": "dili-osm-node-1777614913",
+      "city": "dili",
+      "name": "Bereleu",
+      "archetype": "hospital",
+      "subject": "A small community health post in Bereleu: a single-storey block building with a corrugated roof and a front porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#7ea0a0",
+          "#8a8a80"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1083402292",
+          "what": "OSM building about 15.4 x 12 m, 184 m2, nearest 2 m from pin"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q818986",
+          "what": "Bereleu, suco of East Timor"
+        }
+      ],
+      "notes": "Low confidence: only the suco identity and a 15 x 12 m building footprint are sourced; the clinic role is inferred from the game kind."
+    },
+    "dili-osm-node-2595285980": {
+      "venueId": "dili-osm-node-2595285980",
+      "city": "dili",
+      "name": "Motael Church",
+      "archetype": "church-classical",
+      "subject": "Igreja de Santo Antonio de Motael, Dili's oldest church: a white colonial church with a front portico and bell tower beside the waterfront road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 23,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#a8523a",
+          "#c9b99a"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "tower added after 1937"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "portico added after 1937"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "church 1800, rebuilt 1955",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Motael_Church",
+          "what": "church built around 1800, reconstructed from 1901, partly destroyed by Japanese air raids in WWII, rebuilt 1955; bell tower and portico added after 1937"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4120850",
+          "what": "Motael Church, church in Dili; OSM church about 35 x 23 m"
+        }
+      ],
+      "notes": "Sourced: dates, bell tower and portico added after 1937, OSM footprint 35 x 23 m. White wash and red tile are estimates; no source gives colours. Differs from the big cathedral by being small and colonial."
+    },
+    "dili-osm-node-4188634589": {
+      "venueId": "dili-osm-node-4188634589",
+      "city": "dili",
+      "name": "National University of Timor Leste",
+      "archetype": "campus-block",
+      "subject": "The UNTL central campus in Dili: a two-storey former technical school building with verandas and a hipped roof, renovated with donor funds",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#f2efe6",
+          "#a8523a"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "veranda"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "university founded 1986; central campus building 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_University_of_East_Timor",
+          "what": "central campus in the former Technical High School in central Dili, renovated with USAID funds; Caicoli, Balide and Hera campuses"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q75639",
+          "what": "National University of East Timor, public university founded 1965 (Wikidata)"
+        }
+      ],
+      "notes": "Low confidence: the OSM building at the pin is the police headquarters (156 m away) and was ignored; only the university's central campus in a former technical school is sourced. Form is typed. Wikidata gives 1965 inception for the institution, English Wikipedia describes reopening in 2000."
+    },
+    "dili-osm-node-5225733660": {
+      "venueId": "dili-osm-node-5225733660",
+      "city": "dili",
+      "name": "Centru Saude Tulataqeu",
+      "archetype": "hospital",
+      "subject": "A community health centre: a long single-storey clinic block with a pitched corrugated roof and a covered porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#7ea0a0",
+          "#8a8a80"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/540105756",
+          "what": "OSM building=hospital, about 21.6 x 11.3 m, 239 m2"
+        }
+      ],
+      "notes": "Low confidence: only the name (health centre) and a 22 x 11 m footprint are sourced. Typed as a village clinic; different from Bereleu by length and ambulance bay."
+    },
+    "dili-osm-node-6846547213": {
+      "venueId": "dili-osm-node-6846547213",
+      "city": "dili",
+      "name": "Wild Timor Coffee",
+      "archetype": "restaurant",
+      "subject": "A small coffee shop: a one-storey building with a pitched roof, front counter and a few outdoor tables",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dcc0",
+          "#7a5a3c",
+          "#2f6fa8"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1088065821",
+          "what": "OSM building about 11.8 x 10.8 m, nearest 19 m from pin"
+        }
+      ],
+      "notes": "Low confidence: only a small 12 x 11 m building near the pin is known. Typed as a coffee house in highland Timor."
+    },
+    "dili-osm-node-7371972885": {
+      "venueId": "dili-osm-node-7371972885",
+      "city": "dili",
+      "name": "Dolok Oan Beach",
+      "archetype": "park-landscape",
+      "subject": "Dolok Oan Beach: a sandy shoreline with a line of palms, a few simple shelters and low beach huts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9b99a",
+          "#7a5a3c",
+          "#8a8f94"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "open beach shelters"
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q22813569",
+          "what": "Dolok Oan Beach, beach near Dili"
+        }
+      ],
+      "notes": "Low confidence: only the name and location (a beach east of Dili) are sourced; structures are typed. No OSM footprint."
+    },
+    "dili-osm-way-1084202931": {
+      "venueId": "dili-osm-way-1084202931",
+      "city": "dili",
+      "name": "Monumentu Nicolau Lobato",
+      "archetype": "monument",
+      "subject": "A memorial to Nicolau Lobato: a statue on a stone plinth on a small paved plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 36,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#b7b1a2",
+          "#8a8a80",
+          "#d9c7a0"
+        ],
+        "roofColour": "#8a8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "figure on a plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "post-2002",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1084202931",
+          "what": "OSM named park about 35.7 x 35.6 m"
+        }
+      ],
+      "notes": "Low confidence: only a 36 x 36 m named monument park is sourced; the statue and plinth are typed. Nicolau Lobato (1946-1978) was a national resistance leader."
+    },
+    "dili-osm-way-1084635480": {
+      "venueId": "dili-osm-way-1084635480",
+      "city": "dili",
+      "name": "Mercado Fahi - Soi",
+      "archetype": "market-hall",
+      "subject": "A very small covered village market: a single-storey open-sided hall with a pitched roof over concrete stall benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcc0",
+          "#8a8a80",
+          "#7ea0a0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1084635480",
+          "what": "OSM marketplace about 18.4 x 8.5 m, 1 level"
+        }
+      ],
+      "notes": "Low confidence: only the named OSM marketplace (18 x 8.5 m, 1 level) is known; shape and colour typed."
+    },
+    "dili-osm-way-1084644386": {
+      "venueId": "dili-osm-way-1084644386",
+      "city": "dili",
+      "name": "Market Lakbo",
+      "archetype": "market-open",
+      "subject": "A long open market shed: a single-storey open-sided structure with a low corrugated roof over rows of stalls",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a8967a",
+          "#7d8084",
+          "#c9b99a"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "awning",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1084644386",
+          "what": "OSM marketplace about 27.8 x 8.1 m, 1 level"
+        }
+      ],
+      "notes": "Low confidence: only the named OSM marketplace (27.8 x 8.1 m, 1 level) is known. Open-shed variant so it differs from Fahi-Soi."
+    },
+    "dili-osm-way-1084644387": {
+      "venueId": "dili-osm-way-1084644387",
+      "city": "dili",
+      "name": "Jardim Remexio",
+      "archetype": "park-landscape",
+      "subject": "A small town garden in Remexio: a tiny paved square with a few trees, benches and a low wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b7b1a2",
+          "#8a8a80",
+          "#d9c7a0"
+        ],
+        "roofColour": "#8a8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1084644387",
+          "what": "OSM park about 23.4 x 20.8 m"
+        }
+      ],
+      "notes": "Low confidence: only a 23 x 21 m named park in Remexio is known; contents typed."
+    },
+    "dili-osm-way-1122811001": {
+      "venueId": "dili-osm-way-1122811001",
+      "city": "dili",
+      "name": "Faculdade Engenharia UNTL",
+      "archetype": "campus-block",
+      "subject": "The UNTL engineering faculty at Hera: a rebuilt three-storey concrete block around a courtyard, after the 1999 destruction",
+      "form": {
+        "footprint": "U",
+        "width_m": 89,
+        "depth_m": 88,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c4b6",
+          "#f2efe6",
+          "#a8523a"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "rebuilt after 1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1122811001",
+          "what": "OSM university building, 3 levels, concrete material, about 89 x 88 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/National_University_of_East_Timor",
+          "what": "Hera campus engineering school buildings looted and burned in 1999 and rebuilt with ACIAR and Japanese help"
+        }
+      ],
+      "notes": "Sourced: OSM tags (3 levels, concrete, 89 x 88 m) and the Hera rebuild history. U plan and colours are typed."
+    },
+    "dili-osm-way-154331114": {
+      "venueId": "dili-osm-way-154331114",
+      "city": "dili",
+      "name": "Igreza Catedral da Imaculada Conceição (Díli)",
+      "archetype": "church-modern",
+      "subject": "The Immaculate Conception Cathedral, Dili: a very large white 1980s church with a wide nave under a broad roof and a freestanding bell tower, reportedly the largest in Southeast Asia",
+      "form": {
+        "footprint": "cross",
+        "width_m": 68,
+        "depth_m": 44,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2efe6",
+          "#a8523a",
+          "#b7b1a2"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "blank statue niche over the entrance"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1988",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Immaculate_Conception_Cathedral,_Dili",
+          "what": "plans 1984, inaugurated 2 Nov 1988, about 1,800 m2 on a 10,000 m2 plot, capacity 2,000, reportedly the largest in Southeast Asia, Indonesia funded ~US$235,000"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dili",
+          "what": "Indonesian-era landmark meant to be the largest church in Southeast Asia"
+        }
+      ],
+      "notes": "Sourced: dates, 1,800 m2 floor area, capacity 2,000. The OSM footprint is 68 x 44 m. The cross plan, tower, colours and portico are typed; no architectural description found. Distinct from Motael Church (small colonial)."
+    },
+    "dili-osm-way-166301201": {
+      "venueId": "dili-osm-way-166301201",
+      "city": "dili",
+      "name": "Palácio de Lahane",
+      "archetype": "manor",
+      "subject": "The Palacio de Lahane, the old governor's residence: a white two-storey Portuguese colonial villa with Art Deco touches and chalet-like roofs on a hillside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#a8523a",
+          "#c9b99a"
+        ],
+        "roofColour": "#a8523a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1933",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palácio_de_Lahane",
+          "what": "Portuguese colonial with Art Deco influences; early-1930s residence replacing an 1884-86 turreted building; damaged after 1999; renovated 2004-2008"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2048499",
+          "what": "Palacio de Lahane, historic palace; OSM building about 44 x 19 m"
+        }
+      ],
+      "notes": "Sourced: Portuguese colonial/Art Deco, chalet-like look, 1930s, OSM footprint 44 x 19 m. Storeys, wall and roof colours are estimates. The original turreted building was replaced."
+    },
+    "dili-osm-way-558964564": {
+      "venueId": "dili-osm-way-558964564",
+      "city": "dili",
+      "name": "Estadium Cafe Gleno",
+      "archetype": "stadium",
+      "subject": "A small town football stadium in Gleno: an oval pitch with low terraces and one roofed stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 184,
+        "depth_m": 117,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b7b1a2",
+          "#f2efe6",
+          "#7ea0a0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/558964564",
+          "what": "OSM stadium about 184 x 117 m, 20,393 m2"
+        }
+      ],
+      "notes": "Low confidence: only the OSM stadium extent (184 x 117 m) is known; terraces, stand and floodlights typed. Much smaller than Hassanal Bolkiah stadium."
+    },
+    "dili-osm-way-999353312": {
+      "venueId": "dili-osm-way-999353312",
+      "city": "dili",
+      "name": "Dili Harbor Lighthouse",
+      "archetype": "monument",
+      "subject": "The Farol do Porto de Dili: a 19 m octagonal metal skeletal tower on a massive masonry base with a gallery and lantern",
+      "form": {
+        "footprint": "round",
+        "width_m": 9,
+        "depth_m": 9,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e4d8",
+          "#7d8084",
+          "#b7b1a2"
+        ],
+        "roofColour": "#7d8084",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "exposed spiral stairway"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "skeletal lattice tower"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1896",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dili_Harbor_Lighthouse",
+          "what": "octagonal metal skeletal tower 17-19 m on massive masonry base, lantern and gallery, exposed spiral stair, built 1889-1896, rebuilt 1932 and 1948-49"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q10280196",
+          "what": "lighthouse, 1896, height 19 m; OSM footprint about 9 x 9 m"
+        }
+      ],
+      "notes": "Sourced in detail: shape, height (19 m OSM, 17 m Wikipedia), materials and dates. Colours are estimated (not stated). Tiny footprint, tall form: the clearest silhouette in the Dili set."
+    },
+    "dili-quiet-reflection": {
+      "venueId": "dili-quiet-reflection",
+      "city": "dili",
+      "name": "Pura Girinatha",
+      "archetype": "temple-asian",
+      "subject": "The Balinese Hindu temple in Dili: a walled sanctuary with a split gateway (candi bentar), tiered meru shrines with black thatched roofs and carved stone reliefs",
+      "form": {
+        "footprint": "rect",
+        "width_m": 118,
+        "depth_m": 35,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "stepped",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "stucco",
+        "colours": [
+          "#8a867c",
+          "#c9b99a",
+          "#d4a72c"
+        ],
+        "roofColour": "#2b2b2b",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "candi bentar split gate"
+        },
+        {
+          "id": "pagoda-roof",
+          "count": 3,
+          "note": "meru tiered shrine roofs"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "carved stone reliefs"
+        },
+        {
+          "id": "statue",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "built during the Indonesian period (1975-99)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q21540492",
+          "what": "Hindu temple in Dili, Indonesian Balinese Hindu temple in East Timor; OSM footprint about 118 x 35 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Dili",
+          "what": "Pura Girinatha Hindu temple built during Indonesian occupation"
+        }
+      ],
+      "notes": "Sourced: Balinese Hindu temple type, Indonesian-period date and OSM extent (118 x 35 m). Materials and colours follow Balinese temple convention (grey volcanic stone, black ijuk thatch on meru roofs) and are estimates for this specific temple."
+    },
+    "dili-recreation": {
+      "venueId": "dili-recreation",
+      "city": "dili",
+      "name": "Jardim Colmera",
+      "archetype": "park-landscape",
+      "subject": "A narrow seafront garden in central Dili: paved paths, lawn strips and palm trees running along the waterfront road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 142,
+        "depth_m": 42,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b7b1a2",
+          "#d9c7a0",
+          "#8a8a80"
+        ],
+        "roofColour": "#8a8a80",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q116203475",
+          "what": "Jardim Colmera, park in Dili; OSM park about 142 x 42 m, 3,289 m2"
+        }
+      ],
+      "notes": "Low confidence: only a 142 x 42 m park footprint is sourced; contents typed."
+    },
+    "dili-transit": {
+      "venueId": "dili-transit",
+      "city": "dili",
+      "name": "Porto de Dili",
+      "archetype": "transport-station",
+      "subject": "The Port of Dili: a 280 m concrete wharf with two ro-ro ramps, dockside container yard, low warehouses with corrugated-iron roofs and a small passenger/ferry terminal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 280,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8e4d8",
+          "#8a8f94",
+          "#c9b99a"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "corrugated",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "main wharf 280 m"
+        },
+        {
+          "id": "sheds",
+          "count": 5,
+          "note": "warehouses with corrugated roofs"
+        },
+        {
+          "id": "storage-tanks",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "wharf 20th century, modernised",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Port_of_Dili",
+          "what": "wharf 280 m, two ro-ro ramps, harbour master building, administration building and warehouses with corrugated iron roofs, one gantry crane, roughly 1,000 container yard"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/999355279",
+          "what": "OSM ferry terminal about 300 x 124 m, 32,945 m2"
+        }
+      ],
+      "notes": "Sourced: wharf length, ramps, warehouse type and OSM extent (300 x 124 m). Colours and exact building sizes are estimates; show the 120 m portion with warehouses and a ramp. Distinct from Serasa Ferry Terminal (passenger terminal) by the cargo character."
+    }
+  }
+}

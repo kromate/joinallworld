@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "refinery",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Gates_of_oil_refinery_in_Port_Harcourt.jpg",
+   "licence": "CC BY 2.0",
+   "used": "context only: red steel perimeter gate and a distant flare stack with a smoke plume over low sheds; the gate is not of the viewpoint itself, so structures are typed from the brief"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "viewpoint-deck",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    -48,
+    -34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b4b2aa",
+    "windows": "punched",
+    "windowRatio": 0.0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "overhang": 0.8,
+    "parapet": 0.9
+   }
+  },
+  {
+   "type": "tank-farm",
+   "at": [
+    -28,
+    18,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "rows": 2,
+    "radius": 9,
+    "height": 13,
+    "bund": true,
+    "colour": "#d9dcde"
+   }
+  },
+  {
+   "type": "storage-tank",
+   "at": [
+    42,
+    30,
+    0
+   ],
+   "params": {
+    "radius": 11,
+    "height": 15,
+    "roof": "floating",
+    "colour": "#e4e2dc"
+   }
+  },
+  {
+   "type": "storage-tank",
+   "at": [
+    42,
+    -4,
+    0
+   ],
+   "params": {
+    "radius": 9,
+    "height": 12,
+    "roof": "cone",
+    "colour": "#c9cdd0"
+   }
+  },
+  {
+   "type": "process-column",
+   "at": [
+    2,
+    26,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 46,
+    "colour": "#b9bec2"
+   }
+  },
+  {
+   "type": "process-column",
+   "at": [
+    10,
+    26,
+    0
+   ],
+   "params": {
+    "radius": 2.0,
+    "height": 38,
+    "colour": "#a9aeb3"
+   }
+  },
+  {
+   "type": "process-column",
+   "at": [
+    17,
+    24,
+    0
+   ],
+   "params": {
+    "radius": 1.6,
+    "height": 28,
+    "colour": "#c4c7c9"
+   }
+  },
+  {
+   "type": "furnace-stack",
+   "at": [
+    -4,
+    6,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "height": 9,
+    "stack_height": 22,
+    "colour": "#a8aeb2"
+   }
+  },
+  {
+   "type": "pipe-rack",
+   "at": [
+    8,
+    10,
+    0
+   ],
+   "params": {
+    "length": 62,
+    "height": 7,
+    "levels": 2,
+    "width": 3.6,
+    "pipes": 6,
+    "colour": "#7e8a92"
+   }
+  },
+  {
+   "type": "lpg-sphere",
+   "at": [
+    -52,
+    34,
+    0
+   ],
+   "params": {
+    "radius": 7,
+    "colour": "#d8dcdf"
+   }
+  },
+  {
+   "type": "lpg-sphere",
+   "at": [
+    -36,
+    44,
+    0
+   ],
+   "params": {
+    "radius": 6,
+    "colour": "#d0d4d7"
+   }
+  },
+  {
+   "type": "flare-stack",
+   "at": [
+    56,
+    50,
+    0
+   ],
+   "params": {
+    "height": 75
+   }
+  },
+  {
+   "type": "banded-stack",
+   "at": [
+    -8,
+    46,
+    0
+   ],
+   "params": {
+    "height": 34,
+    "radius": 1.8,
+    "bands": true
+   }
+  },
+  {
+   "type": "mass",
+   "id": "control-room",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    28,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfcbc0",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c9096",
+    "overhang": 0.5,
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    0,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    60,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 22,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -12,
+    -4,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "head_width": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -44,
+    0
+   ],
+   "params": {
+    "length": 130,
+    "height": 2.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#8a8f90"
+   }
+  },
+  {
+   "type": "gate-piers",
+   "at": [
+    26,
+    -44,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "kind": "beam"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -66,
+     -30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     70,
+     -36
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   160,
+   130
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the viewpoint or plant itself; columns, tanks and flare placed from the brief, no OSM outline"
+ }
+}

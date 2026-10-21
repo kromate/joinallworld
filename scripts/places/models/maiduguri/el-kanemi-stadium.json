@@ -1,0 +1,392 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1092997412",
+   "used": "pitch outline 111x78 m, long axis bearing about 159 degrees (containing match); pitch scaled/aligned in the scene"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/El-Kanemi_Stadium",
+   "used": "10,000 seats, football; covered main stand and open terraces (no usable photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 18,
+  "fovDeg": 52,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -60,
+      -42
+     ],
+     [
+      60,
+      -42
+     ],
+     [
+      60,
+      42
+     ],
+     [
+      -60,
+      42
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.1,
+    "colour": "#b5532e",
+    "top": true
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.1
+   ],
+   "params": {
+    "points": [
+     [
+      -52,
+      -35
+     ],
+     [
+      52,
+      -35
+     ],
+     [
+      52,
+      35
+     ],
+     [
+      -52,
+      35
+     ]
+    ],
+    "z0": 0.0,
+    "height": 0.08,
+    "colour": "#4f8a3f",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -52,
+     -42
+    ],
+    "end": [
+     52,
+     -42
+    ],
+    "flip": true,
+    "rows": 22,
+    "rise": 0.5,
+    "run": 0.8,
+    "firstHeight": 2.5,
+    "under": "open",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColours": [
+     "#2f6b4f",
+     "#e8dfc8"
+    ],
+    "blocks": 4,
+    "concreteColour": "#c9c4ba",
+    "underColour": "#a9a49a",
+    "canopy": {
+     "height": 3.4,
+     "depth": 14,
+     "thickness": 0.5,
+     "slopeDeg": 3,
+     "colour": "#6b6e70",
+     "edgeColour": "#e8dfc8",
+     "overhangBack": 1.0
+    },
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     52,
+     42
+    ],
+    "end": [
+     -52,
+     42
+    ],
+    "flip": true,
+    "rows": 14,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.2,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "seatColours": [
+     "#c9c4ba",
+     "#2f6b4f"
+    ],
+    "blocks": 6,
+    "concreteColour": "#c9c4ba",
+    "underColour": "#a9a49a",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     -49.92,
+     0
+    ],
+    "radius": 26,
+    "radiusY": 42,
+    "startDeg": 90,
+    "endDeg": 270,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#c9c4ba",
+    "seatColour": "#c9c4ba",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     49.92,
+     0
+    ],
+    "radius": 26,
+    "radiusY": 42,
+    "startDeg": -90,
+    "endDeg": 90,
+    "rows": 10,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 1.0,
+    "under": "open",
+    "slab": 0.5,
+    "bay": 6,
+    "concreteColour": "#c9c4ba",
+    "seatColour": "#c9c4ba",
+    "facetDeg": 16
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -63.0,
+    -45.0,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    63.0,
+    -45.0,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -63.0,
+    45.0,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    63.0,
+    45.0,
+    0
+   ],
+   "params": {
+    "height": 28,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "scoreboard",
+   "footprint": {
+    "rect": [
+     10,
+     1.2
+    ]
+   },
+   "at": [
+    0,
+    52
+   ],
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#2d3033",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2d3033",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -74,
+      -60
+     ],
+     [
+      74,
+      -60
+     ],
+     [
+      74,
+      60
+     ],
+     [
+      -74,
+      60
+     ],
+     [
+      -74,
+      -60
+     ]
+    ],
+    "height": 2.4,
+    "thickness": 0.4,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#e8dfc8"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -76,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colour": "#1b7a43",
+    "count": 4,
+    "spacing": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -80,
+     -60
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     80,
+     -62
+    ]
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -84,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "el-kanemi-stadium",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stand layout, colours and the covered main stand side are typed; pitch size and orientation only roughly from OSM."
+ }
+}

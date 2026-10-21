@@ -1,0 +1,406 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Administrative_Block_ATBUTH.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Yq2Yq",
+   "view": "front",
+   "file": "/tmp/places-evidence/bauchi/hosp2.jpg",
+   "used": "two-storey cream administrative block with terracotta-orange hipped roofs, projecting centre bay, paved forecourt, young trees and palms"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Main_Gate_ATBUTH.jpg",
+   "licence": "CC0",
+   "author": "Yq2Yq",
+   "view": "front",
+   "file": "/tmp/places-evidence/bauchi/hosp3.jpg",
+   "used": "entrance gate: central brick tower with blank board and blue glazing, flat cantilevered beige canopies on piers, side walls"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Abubakar_Tafawa_Balewa_Teaching_Hospital.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Musaddam Idriss",
+   "view": "front",
+   "used": "older cream arched gateway with sloped sides (not modelled)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/794320953",
+   "used": "hospital complex size (about 69 x 52 m); outline not used, the admin block was composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -22,
+  "pitchDeg": 3,
+  "fovDeg": 48,
+  "aspect": 0.75,
+  "fit": "building",
+  "margin": 0.0
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "centre",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    0,
+    6
+   ],
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8e",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2efe6",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4553a",
+    "material": "clay-tile",
+    "rise": 3.2,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     11,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -3.5
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8e",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2efe6",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4553a",
+    "material": "clay-tile",
+    "rise": 3.6,
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     16,
+     22
+    ]
+   },
+   "at": [
+    -24,
+    -2
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8e",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2efe6",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4553a",
+    "material": "clay-tile",
+    "rise": 3.0,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     16,
+     26
+    ]
+   },
+   "at": [
+    24,
+    2
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6cf8e",
+    "windows": "punched",
+    "windowRatio": 0.28,
+    "bands": "#f2efe6",
+    "plinth": 0.4,
+    "faces": {
+     "front": "punched",
+     "back": "punched",
+     "left": "punched",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#c4553a",
+    "material": "clay-tile",
+    "rise": 3.0,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-rear",
+   "footprint": {
+    "rect": [
+     50,
+     10
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 9,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#3f8f9a",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9296",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 9,
+    "depth": 4,
+    "height": 3.4,
+    "columns": 2,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -7.3,
+    6.6
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#1f4a8a",
+    "posts": false
+   }
+  },
+  {
+   "type": "fountain",
+   "at": [
+    -8,
+    -14,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "prism",
+   "id": "garage-recess",
+   "at": [
+    -24,
+    -13.1,
+    0
+   ],
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "height": 3.4,
+    "colour": "#3a3228"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -3.6,
+    -10.6,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     7.2,
+     0
+    ],
+    "count": 4,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "height": 3.4,
+      "colour": "#f2efe6"
+     }
+    }
+   }
+  },
+  {
+   "type": "prism",
+   "id": "paving",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "rect": [
+     60,
+     16
+    ],
+    "height": 0.05,
+    "colour": "#d8c9b0"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -16,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -6,
+    -19,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 12
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    18,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 11
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    30,
+    -17,
+    0
+   ],
+   "params": {
+    "kind": "neem",
+    "height": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "trees": [],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Ochre walls, darker tile roofs, garage recess, porch columns, plaza and tall trees applied; render camera still wide with empty ground, wing U-layout and fountain are approximate, trees are generic low-poly."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "atbu-teaching-hospital-bauchi"
+}

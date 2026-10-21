@@ -1,0 +1,280 @@
+{
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "Only photo is a dark night street view, so no comparison; block layout and heights are typed inside the real campus outline, red hipped roofs from the photo background."
+ },
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/374017688",
+   "used": "campus outline (170 x 135 m, bearing 138) as the paved site; blocks placed inside it"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:IEC_Road.jpg",
+   "licence": "CC0",
+   "author": "Mahawajabb",
+   "view": "street",
+   "used": "only the white rendered two-storey buildings with red hipped roofs and arched porch at the roadside; too dark to compare, no comparison render made"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 28,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "campus",
+   "footprint": {
+    "osm": true,
+    "simplify": 6
+   },
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc9bb",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfc9bb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     44,
+     14
+    ]
+   },
+   "at": [
+    -18,
+    -6
+   ],
+   "rotDeg": 48,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.4,
+    "bands": "#cfc8b8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9e4b3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     14,
+     30
+    ]
+   },
+   "at": [
+    24,
+    -26
+   ],
+   "rotDeg": 48,
+   "height": 10.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.4,
+    "bands": "#cfc8b8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9e4b3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     34,
+     13
+    ]
+   },
+   "at": [
+    16,
+    30
+   ],
+   "rotDeg": 48,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.4,
+    "bands": "#cfc8b8"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9e4b3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "library",
+   "footprint": {
+    "rect": [
+     16,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    18
+   ],
+   "rotDeg": 48,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efece2",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "bay": 6,
+    "plinth": 0.4,
+    "bands": "#cfc8b8"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9e4b3a",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "atrium",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    -6,
+    -22
+   ],
+   "rotDeg": 48,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f6b8a",
+    "windows": "curtain",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9a49b",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -44,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 1.6,
+    "colour": "#2f6b8a"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -40,
+    -36,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/tree",
+   "lod": [
+    0
+   ],
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 6,
+    "spread": 30
+   }
+  },
+  {
+   "type": "car",
+   "lod": [
+    0
+   ],
+   "at": [
+    -30,
+    -44,
+    0
+   ],
+   "rotDeg": 48,
+   "params": {
+    "count": 5,
+    "spacing": 3
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   160,
+   160
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "serekunda",
+ "venueId": "serekunda-osm-way-374017688"
+}

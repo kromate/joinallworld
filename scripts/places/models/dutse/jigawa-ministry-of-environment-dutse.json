@@ -1,0 +1,224 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dutse",
+ "venueId": "jigawa-ministry-of-environment-dutse",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/dutse.json",
+   "used": "48x18 m two-storey rendered block, arched entrance porch, flagpoles, 1990s government quarter"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/9267836",
+   "used": "containing match only, outline is a 1650 m2 irregular blob: not used for the form"
+  }
+ ],
+ "camera": {
+  "yawDeg": 12,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "rect": [
+     48,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe8d6",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "none",
+     "right": "none",
+     "back": "punched"
+    },
+    "plinth": 0.5,
+    "bands": "#4f7a63",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 18,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch-block",
+   "footprint": {
+    "rect": [
+     10,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -11.5
+   ],
+   "z0": 0,
+   "height": 5.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "none",
+    "plinth": 0.4,
+    "bands": "#4f7a63"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a29a",
+    "parapet": 0.4,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    0,
+    -14.1,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 5,
+    "depth": 0.6,
+    "archWidth": 4.2,
+    "springHeight": 3.0,
+    "pointed": false,
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 3,
+    "colour": "#b8b3a6"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -9,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    9,
+    -16,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "colours": [
+     "#1b7a43",
+     "#ffffff",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -24,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.6,
+    "bottom": 0.8,
+    "colour": "#4f7a63",
+    "frameColour": "#d6d2c8"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    18,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 9,
+    "density": 0.5
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     32,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     10
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found; typed from brief, OSM blob not used"
+ }
+}

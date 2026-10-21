@@ -1,0 +1,164 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1285219521",
+   "used": "707 m2 outline of the building, a long irregular plan turned about 66 degrees; used for the prayer hall"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Sokoto",
+   "used": "typed local white single-domed mosque with one minaret and a walled courtyard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 10,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "rotDeg": -24,
+    "simplify": 1.0
+   },
+   "height": 6.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "pointed-arch",
+    "windowRatio": 0.2,
+    "bay": 3.5,
+    "plinth": 0.5,
+    "bands": "#3f7f6a",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e8e2d4",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mosque-domed/dome",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "on": "hall",
+   "params": {
+    "radius": 5.5,
+    "height": 4.5,
+    "drum": 1.8,
+    "colour": "#f7f4ee",
+    "drum_colour": "#b98a5e",
+    "finial": true,
+    "finial_height": 1.6
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -22,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "radius": 1.1,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f7f4ee",
+    "capColour": "#3f7f6a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -40,
+      -26
+     ],
+     [
+      40,
+      -26
+     ],
+     [
+      40,
+      28
+     ],
+     [
+      -40,
+      28
+     ],
+     [
+      -40,
+      -26
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "pillar": 0.8,
+    "colour": "#b98a5e"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 3,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "sokoto",
+ "venueId": "masallacin-nana-aisha-sokoto",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "OSM outline is an odd long plan; dome and minaret positions are guesses, no photo found."
+ }
+}

@@ -1,0 +1,1669 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "willemstad",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "willemstad",
+    "climate": "tropical-maritime",
+    "vernacular": "Dutch Caribbean colonial town on a hot semi-arid island: tall narrow gabled merchant houses and long low villas in saturated pastel stucco (yellow, pink, blue, orange, green, white trim) with red clay-tile or pantile roofs, shuttered windows and galleries; plantation houses (landhuizen) with high saddle roofs and surrounding galleries; plain white and cream concrete-and-render suburbs and modern hospital, university and mall blocks; dry scrub with divi-divi trees, cacti and palms.",
+    "wallColours": [
+      "#f1d56a",
+      "#e9a0a6",
+      "#6fa7c8",
+      "#e8935a",
+      "#9bc9a0",
+      "#f3efe6",
+      "#c99a4a"
+    ],
+    "roofColours": [
+      "#b3472f",
+      "#c8602f",
+      "#8a9099",
+      "#d9d4c6"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "whitewash",
+      "render",
+      "limestone",
+      "concrete",
+      "brick"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Dutch step and curved (tuit) gables, tall shuttered or louvred windows with white frames and trim, deep galleries and verandas under lean-to roofs, pronounced white cornices, keystones and quoins, arcaded ground floors in Otrobanda and Punda.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Willemstad",
+        "what": "colonial Dutch-influenced city centre in four quarters (Punda, Otrobanda, Scharloo, Pietermaai); UNESCO site 1997; hot semi-arid climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Otrobanda",
+        "what": "colourful buildings of Willemstad, Rif Fort coral walls, Queen Emma Bridge"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Scharloo",
+        "what": "19th-century villas in Spanish style around patios with fountains; Wedding Cake building"
+      },
+      {
+        "url": "https://nl.wikipedia.org/wiki/Landhuis_Ascencion",
+        "what": "typical landhuis: central block with saddle roof, corner towers and surrounding galleries"
+      }
+    ]
+  },
+  "places": {
+    "willemstad-airport-willemstad-airport": {
+      "venueId": "willemstad-airport-willemstad-airport",
+      "city": "willemstad",
+      "name": "Hato International Airport (Curaçao International Airport)",
+      "archetype": "airport-terminal",
+      "subject": "Curaçao International Airport: a wide, air-conditioned two-level terminal in white and pastel render and glass with a long departure hall and a single control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "caribbean-international"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3efe6",
+          "#e8935a",
+          "#6fa7c8"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cura%C3%A7ao_International_Airport",
+          "what": "old terminal demolished in the 2010s; new fully air-conditioned departure hall using seawater cooling; plaza with retail and catering; separate jet centre"
+        }
+      ],
+      "notes": "Only that the terminal was replaced in the 2010s is sourced; the shape and colours are typed from the city style. No OSM terminal footprint was found. Distinct from Wellington and West Island airports by being a large two-level terminal with jet bridges."
+    },
+    "willemstad-clinic": {
+      "venueId": "willemstad-clinic",
+      "city": "willemstad",
+      "name": "Curaçao Medical Center",
+      "archetype": "hospital",
+      "subject": "Curaçao Medical Center beside Otrobanda: a large four-storey white and pastel-accented hospital with a long street frontage and deep sun-shading",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 177,
+        "depth_m": 151,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3efe6",
+          "#e8935a",
+          "#6fa7c8"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2019",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cura%C3%A7ao_Medical_Center",
+          "what": "opened 15 November 2019; 300 beds; replaces Sint Elisabeth Hospital"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1378716139",
+          "what": "hospital 177 x 151 m, 4 levels, opened 2019-11-15"
+        }
+      ],
+      "notes": "Measured footprint (177 x 151 m) and four levels from OSM. Colours are estimated; no description of the facade was found. Biggest hospital of the three cities' venues by plan."
+    },
+    "willemstad-community-notices": {
+      "venueId": "willemstad-community-notices",
+      "city": "willemstad",
+      "name": "Parliament of Curaçao (Statengebouw)",
+      "archetype": "civic-palace",
+      "subject": "The Statengebouw on Julianaplein in Punda: a compact four-level colonial-style civic building in pastel stucco with a broad flight of 21 steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 20,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f1d56a",
+          "#f3efe6",
+          "#a14a3c"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 21,
+          "note": "21 steps for the 21 seats"
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th century, renovated 2010-2014",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_of_Cura%C3%A7ao",
+          "what": "housed in the Statengebouw on Julianaplein, Punda; 21 steps representing the 21 seats; renovated 2010-2014"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/250834080",
+          "what": "building 20 x 20 m, 4 levels, start_date 2010"
+        }
+      ],
+      "notes": "The 21 steps, location and footprint are sourced. Pastel yellow stucco and red tile roof are estimates and may be wrong; confirm colour from a photo if available."
+    },
+    "willemstad-community-voting-game": {
+      "venueId": "willemstad-community-voting-game",
+      "city": "willemstad",
+      "name": "Bentana di informashon",
+      "archetype": "civic-small",
+      "subject": "Bentana di informashon, a long low two-storey town-hall style building in Willemstad: painted stucco with arched ground-floor openings and shutters",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 29,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e9a0a6",
+          "#f3efe6",
+          "#a14a3c"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "19th-20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/372920585",
+          "what": "amenity=townhall, 48 x 29 m"
+        }
+      ],
+      "notes": "Only the OSM town hall tag and footprint are known; the name is Papiamento for 'information window'. Colonial pastel look is typed from the city style."
+    },
+    "willemstad-community-workshop": {
+      "venueId": "willemstad-community-workshop",
+      "city": "willemstad",
+      "name": "Biblioteka Nashonal Kòrsou",
+      "archetype": "campus-block",
+      "subject": "Biblioteka Nashonal Kòrsou, the national library of Curaçao: a two-storey rendered building with shaded galleries and tall shuttered windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f1d56a",
+          "#f3efe6",
+          "#a14a3c"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "20th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/266407585",
+          "what": "containing building 40 x 25 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q25702525",
+          "what": "Wikidata: national library of Curaçao"
+        }
+      ],
+      "notes": "Only the location, footprint and function are confirmed. The appearance is typed."
+    },
+    "willemstad-market-game": {
+      "venueId": "willemstad-market-game",
+      "city": "willemstad",
+      "name": "LXRY Mall",
+      "archetype": "mall",
+      "subject": "LXRY Mall: a low modern shopping centre of rendered white boxes with big glass entrances, canopies and an open car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 122,
+        "depth_m": 56,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3efe6",
+          "#6fa7c8",
+          "#e8935a"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1552105131",
+          "what": "building 122 x 56 m, name LXRY Mall"
+        }
+      ],
+      "notes": "Only the footprint is known. Look is typed."
+    },
+    "willemstad-meal-stop": {
+      "venueId": "willemstad-meal-stop",
+      "city": "willemstad",
+      "name": "Porto Marie Beach",
+      "archetype": "restaurant",
+      "subject": "Porto Marie beach bar-restaurant: a small thatched palapa with an open timber deck, umbrellas and loungers on a white-sand cove",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d8c9a6",
+          "#6fa7c8",
+          "#ffffff"
+        ],
+        "roofColour": "#c9b27a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1413015257",
+          "what": "building 10 x 8 m, tourism attraction, Playa Porto Marie"
+        }
+      ],
+      "notes": "Only the name and 10 x 8 m footprint are known. The palapa look is a typed guess for a beach bar."
+    },
+    "willemstad-osm-node-1680059162": {
+      "venueId": "willemstad-osm-node-1680059162",
+      "city": "willemstad",
+      "name": "Kokomo Beach",
+      "archetype": "restaurant",
+      "subject": "Kokomo Beach, a beach club on a rocky cove: a low-slung whitewashed bar and lounge with sun deck, canvas shades and wooden steps to the water",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f3efe6",
+          "#6fa7c8",
+          "#9bc9a0"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/401020641",
+          "what": "building 25 x 19 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q119140236",
+          "what": "Wikidata: beach in Curaçao"
+        }
+      ],
+      "notes": "Only the beach identity and 25 x 19 m footprint are known. Layout is typed. Distinct from Porto Marie by being larger, whitewashed and flat-roofed."
+    },
+    "willemstad-osm-node-295322115": {
+      "venueId": "willemstad-osm-node-295322115",
+      "city": "willemstad",
+      "name": "Flamingo observation tower",
+      "archetype": "monument",
+      "subject": "A small flamingo-watching tower: a two-level timber lookout on legs beside a salt-pan lagoon with a railed viewing platform",
+      "form": {
+        "footprint": "rect",
+        "width_m": 4,
+        "depth_m": 4,
+        "storeys": 2,
+        "height_m": 6,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7a56",
+          "#c99a4a",
+          "#d8d0bc"
+        ],
+        "roofColour": "#9a7a56",
+        "roofMaterial": "timber-shingle",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/938227316",
+          "what": "building 3.6 x 3.2 m"
+        }
+      ],
+      "notes": "Only the name and tiny 4 x 3 m footprint are known. Shown as a generic timber bird-hide tower beside brackish water with scrub."
+    },
+    "willemstad-osm-node-3125134023": {
+      "venueId": "willemstad-osm-node-3125134023",
+      "city": "willemstad",
+      "name": "Villapark Wind Gate",
+      "archetype": "park-landscape",
+      "subject": "Villapark Wind Gate: a small gatehouse at a windy park entrance with a plain wall and a distant wind turbine",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d4c6",
+          "#8a9099",
+          "#f3efe6"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "windmill",
+          "count": 1,
+          "note": "wind turbine; no contract feature for turbines"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1433594235",
+          "what": "building 26 x 14 m"
+        }
+      ],
+      "notes": "The name and 26 x 14 m footprint are the only facts. 'Wind' probably refers to Curaçao's trade-wind turbines but this is not confirmed. A generic gatehouse by a scrubby verge is typed."
+    },
+    "willemstad-osm-node-4148045689": {
+      "venueId": "willemstad-osm-node-4148045689",
+      "city": "willemstad",
+      "name": "Overkempe Estate",
+      "archetype": "restaurant",
+      "subject": "A former estate house now used for dining and apartments: a single-storey pastel plantation-style house with a tile roof, a wide gallery and a gravel yard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#f1d56a",
+          "#f3efe6",
+          "#a14a3c"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.18
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "front gallery"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "18th-19th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/377468228",
+          "what": "building 17 x 13 m, Mundi Shack Streetfood restaurant and apartments"
+        }
+      ],
+      "notes": "Only the OSM restaurant-and-apartments building (17 x 13 m) is known. Whether it is the historic Overkempe landhuis is not confirmed, so the look follows the landhuis style from the city sources."
+    },
+    "willemstad-osm-node-614709247": {
+      "venueId": "willemstad-osm-node-614709247",
+      "city": "willemstad",
+      "name": "Fuikbaai",
+      "archetype": "park-landscape",
+      "subject": "Fuik Bay (Fuikbaai): a narrow beach cove with coarse white sand between low limestone cliffs, scrub, palms and a few beach shelters",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 180,
+        "depth_m": 50,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9d4c6",
+          "#c99a4a",
+          "#8a9099"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q96291351",
+          "what": "Wikidata: bay in Curaçao"
+        }
+      ],
+      "notes": "Only 'bay in Curaçao' is known. Shown as a generic sand cove with cliffs, scrub and palms."
+    },
+    "willemstad-osm-node-621938358": {
+      "venueId": "willemstad-osm-node-621938358",
+      "city": "willemstad",
+      "name": "Hato Caves",
+      "archetype": "park-landscape",
+      "subject": "Hato Caves visitor entrance: a small cafe and ticket building at the base of a terraced limestone cliff, with a stair up to the cave mouth",
+      "form": {
+        "footprint": "rect",
+        "width_m": 17,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": null,
+        "colours": [
+          "#d9d4c6",
+          "#c99a4a",
+          "#f3efe6"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor cafe"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stair to the cave"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hato_Caves",
+          "what": "caves on the third terrace on the island's northern coast, about 240 m long, 4,900 m2"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/462959136",
+          "what": "cafe building 17 x 10 m"
+        }
+      ],
+      "notes": "Cave size is sourced; the entrance buildings are typed (OSM cafe 17 x 10 m). Limestone terraces and dry scrub are the setting."
+    },
+    "willemstad-osm-node-8754288674": {
+      "venueId": "willemstad-osm-node-8754288674",
+      "city": "willemstad",
+      "name": "Museum Landhuis Ascencion",
+      "archetype": "manor",
+      "subject": "Landhuis Ascencion, a 1672 plantation house on a hill: a rectangular central block with a saddle roof, two low corner towers and galleries on every side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 33,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "gable",
+        "variant": "landhuis-with-towers"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f3efe6",
+          "#c99a4a",
+          "#a14a3c"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "galleries around the house"
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "low corner towers (not belfries)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1672",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Landhuis_Ascencion",
+          "what": "plantation house from 1672; rectangular central section with saddle roof, two corner towers and surrounding galleries; training centre and museum; Natuurpark Ascension"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/322890086",
+          "what": "historic manor, 33 x 30 m"
+        }
+      ],
+      "notes": "Form (saddle roof, two corner towers, wrap-around galleries) is sourced; wall colour (whitewash with ochre trim) is an estimate. Distinct from Landhuis Daniel: square plan with towers and galleries on all sides, no T plan."
+    },
+    "willemstad-osm-way-1380095524": {
+      "venueId": "willemstad-osm-way-1380095524",
+      "city": "willemstad",
+      "name": "St. Martinus University (Faculty of Medicine)",
+      "archetype": "campus-block",
+      "subject": "St. Martinus University Faculty of Medicine: a small two-storey white-rendered teaching building with a covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 6,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f3efe6",
+          "#6fa7c8",
+          "#d9d4c6"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1467549560",
+          "what": "university building 10 x 6 m"
+        }
+      ],
+      "notes": "Only a tiny OSM footprint (10 x 6 m) is known; the look is typed."
+    },
+    "willemstad-osm-way-301593974": {
+      "venueId": "willemstad-osm-way-301593974",
+      "city": "willemstad",
+      "name": "Pearl of the Caribbean",
+      "archetype": "park-landscape",
+      "subject": "Pearl of the Caribbean: a small waterfront park with a little kiosk, a few palms and benches facing the water",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": null,
+        "colours": [
+          "#f3efe6",
+          "#6fa7c8",
+          "#c99a4a"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "caribbean",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1427310047",
+          "what": "leisure=park with a 4.7 x 4.7 m building"
+        }
+      ],
+      "notes": "Only a tiny building of 5 x 5 m inside a leisure=park way is known. Shown as a small seaside park with kiosk."
+    },
+    "willemstad-osm-way-312133712": {
+      "venueId": "willemstad-osm-way-312133712",
+      "city": "willemstad",
+      "name": "Mikvé Israel-Emanuel Synagogue",
+      "archetype": "shrine-small",
+      "subject": "Mikvé Israel-Emanuel Synagogue in Punda: a rectangular 1730 brick-built Sephardic synagogue behind a quiet entrance courtyard, with a Hebrew inscription over the western door, arched windows and azure stained glass",
+      "form": {
+        "footprint": "rect",
+        "width_m": 29,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#e8d9a8",
+          "#f3efe6",
+          "#6fa7c8"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "quiet entrance courtyard"
+        },
+        {
+          "id": "stained-glass",
+          "count": 1,
+          "note": "azure stained glass"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1730 (completed 1732)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mikv%C3%A9_Israel-Emanuel_Synagogue",
+          "what": "congregation from 1651, current building dated 5490 (1730) over the west entrance, completed 1732; brick; interior like the Portuguese Synagogue in Amsterdam; three high vaulted ceilings; mahogany ark and bemah; azure stained glass; sand floor; entry through a courtyard"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/312133712",
+          "what": "synagogue 29 x 18 m, 526 m2"
+        }
+      ],
+      "notes": "Date, brick material, courtyard, west facade and stained glass are sourced. The plastered yellow-cream colouring and tiled hip roof are estimates and not confirmed. Described as the oldest surviving synagogue in the Americas; the sand floor is internal only."
+    },
+    "willemstad-osm-way-370349178": {
+      "venueId": "willemstad-osm-way-370349178",
+      "city": "willemstad",
+      "name": "Sint Anna Basiliek (Santa Anna Basilica)",
+      "archetype": "church-classical",
+      "subject": "Basilica of Saint Anne in Otrobanda: a tall two-level, narrow church with a pale plastered front, a central tower and arched windows facing a small square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 19,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#ece3cf",
+          "#a48f6e",
+          "#ffffff"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "19th century (unverified)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/370349178",
+          "what": "minor basilica, 44 x 19 m, 2 levels"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Otrobanda",
+          "what": "described as the first Roman Catholic church on the island"
+        }
+      ],
+      "notes": "Only the footprint (44 x 19 m), 2 levels and its being the island's first Roman Catholic church are known. Style, tower count and colours are a typed guess; confirm from photos if possible. Narrower plan than the Pietermaai cathedral."
+    },
+    "willemstad-osm-way-375316022": {
+      "venueId": "willemstad-osm-way-375316022",
+      "city": "willemstad",
+      "name": "Fromer I.P.O Police Academy",
+      "archetype": "campus-block",
+      "subject": "Police academy campus: a flat low group of two-storey white-and-grey barrack and classroom blocks around a parade ground",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f3efe6",
+          "#8a9099",
+          "#6fa7c8"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/375316022",
+          "what": "college site 200 x 194 m, 22,971 m2"
+        }
+      ],
+      "notes": "Only the campus extent is known; building layout is typed. Distinct from the university campus by a closed parade-ground layout."
+    },
+    "willemstad-osm-way-687410566": {
+      "venueId": "willemstad-osm-way-687410566",
+      "city": "willemstad",
+      "name": "University of Curaçao Dr. Moises Da Costa Gomez",
+      "archetype": "campus-block",
+      "subject": "University of Curaçao main campus: wide white and pastel rendered teaching blocks with deep walkways and shade trees around open courtyards",
+      "form": {
+        "footprint": "H",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f3efe6",
+          "#e8935a",
+          "#6fa7c8"
+        ],
+        "roofColour": "#d9d4c6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/687410566",
+          "what": "university site 404 x 307 m, 102,661 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1708838",
+          "what": "Wikidata: state university of Curaçao"
+        }
+      ],
+      "notes": "Campus extent (404 x 307 m) is measured; individual buildings are typed. A larger, more open layout than the police academy."
+    },
+    "willemstad-osm-way-696020924": {
+      "venueId": "willemstad-osm-way-696020924",
+      "city": "willemstad",
+      "name": "Stadion Ergilio Hato",
+      "archetype": "stadium",
+      "subject": "Ergilio Hato Stadium: an open football stadium seating 15,000 with concrete stands, a covered main stand, four floodlight masts and a running track",
+      "form": {
+        "footprint": "oval",
+        "width_m": 205,
+        "depth_m": 140,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d4c6",
+          "#6fa7c8",
+          "#e8935a"
+        ],
+        "roofColour": "#8a9099",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "renovated 2013",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ergilio_Hato_Stadium",
+          "what": "capacity 15,000; pitch 105 x 67 m; renovated in 2013"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/696020924",
+          "what": "stadium 205 x 140 m, 23,476 m2"
+        }
+      ],
+      "notes": "Capacity, pitch and renovation are sourced; stand roofs, colours and track are typed. Smaller and lower than Wellington's stadium."
+    },
+    "willemstad-osm-way-946150393": {
+      "venueId": "willemstad-osm-way-946150393",
+      "city": "willemstad",
+      "name": "Landhuis Daniël",
+      "archetype": "manor",
+      "subject": "Landhuis Daniel, an 18th-century plantation house: a T-shaped house with a high saddle roof, four dormers, a curved tuit gable on the front, and a narrow gallery under a lean-to roof on three sides",
+      "form": {
+        "footprint": "T",
+        "width_m": 20,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1d56a",
+          "#f3efe6",
+          "#a14a3c"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "narrow gallery on three sides under a lean-to roof"
+        },
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "curved tuit gable"
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "rainwater cistern with a matching saddle roof"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "acacia",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "18th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://nl.wikipedia.org/wiki/Landhuis_Dani%C3%ABl",
+          "what": "18th-century plantation house; T-shaped with high saddle roof and four dormers; narrow gallery on three sides; tuit gable; cistern with a similar roof; ruins of storehouse and slave quarters"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/946150393",
+          "what": "historic manor 20 x 18 m"
+        }
+      ],
+      "notes": "Form is sourced from the Dutch Wikipedia text; colours are estimates (the page gives none). Distinct from Landhuis Ascencion: T plan, dormers and a curved gable instead of corner towers."
+    },
+    "willemstad-quiet-reflection": {
+      "venueId": "willemstad-quiet-reflection",
+      "city": "willemstad",
+      "name": "Katedral di Pietermaai",
+      "archetype": "church-classical",
+      "subject": "Queen of the Most Holy Rosary Cathedral in Pietermaai: a broad rectangular colonial cathedral of 1870 with a plastered pale front, central tower and round-arched openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 33,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#f0e3b8",
+          "#b0a38a",
+          "#ffffff"
+        ],
+        "roofColour": "#b3472f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1870",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pietermaai",
+          "what": "built 1870 for the Pietermaai parish to replace an older Gothic church; became the island's only cathedral in 1958"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/371810812",
+          "what": "cathedral, 53 x 33 m, 1,310 m2"
+        }
+      ],
+      "notes": "Date, role and footprint are sourced; the exterior style, tower and colours are not and are typed (colonial plastered church). Wider and lower than Saint Anna basilica."
+    },
+    "willemstad-recreation": {
+      "venueId": "willemstad-recreation",
+      "city": "willemstad",
+      "name": "Rif Mangrove Park",
+      "archetype": "park-landscape",
+      "subject": "Rif Mangrove Park near Rif Fort: a mangrove-fringed shoreline with a boardwalk, sand paths, low shelters and the shallow lagoon behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 380,
+        "depth_m": 300,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9a7a56",
+          "#6b7d5a",
+          "#d8d0bc"
+        ],
+        "roofColour": "#9a7a56",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1,
+          "note": "timber boardwalk through the mangroves"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/237592022",
+          "what": "nature park 382 x 303 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q137802420",
+          "what": "Wikidata: urban and nature park in Curaçao"
+        }
+      ],
+      "notes": "Only the extent and the nature-park designation are known; mangrove trees fill the shoreline; shown as green clumps over water."
+    },
+    "willemstad-transit": {
+      "venueId": "willemstad-transit",
+      "city": "willemstad",
+      "name": "Punda Ferry Dock",
+      "archetype": "transport-station",
+      "subject": "The Punda end of the Queen Emma pontoon bridge and ferry landing: a long narrow floating bridge, a small operator's cabin, a quay edge and lighting arches over St Anna Bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 167,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#8a9099",
+          "#f3efe6",
+          "#e8935a"
+        ],
+        "roofColour": "#8a9099",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "167 m pontoon bridge"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1,
+          "note": "small operator's cabin"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "lighting arches added 1955"
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1888, renovated 1939-2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queen_Emma_Bridge",
+          "what": "hinged pontoon bridge across St Anna Bay, 167 m long and 9.8 m wide, opened 1888; swung by diesel engines with an operator at the far end; lighting arches from 1955"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/371920317",
+          "what": "building 16 x 7 m at the position"
+        }
+      ],
+      "notes": "The bridge facts are sourced; the venue name is 'Punda Ferry Dock' so it may refer to the free ferry across St Anna Bay near the bridge. The shown model is the pontoon bridge landing. Largest dimension is clamped by the generator."
+    }
+  }
+}

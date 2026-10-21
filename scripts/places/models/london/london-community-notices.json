@@ -1,0 +1,374 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Courts,_Barclay_Road_(1)_(geograph_6091345).jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Stephen Richards",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/courts2.jpg",
+   "used": "1968 Barclay Road front: concrete blocks with window grid, left tower core, heavy blank upper floors cantilevered over a glazed ground storey, brick plinth and brick end block"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:View_Towards_Croydon_Law_Courts_-_geograph.org.uk_-_4018912.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Peter Trimming",
+   "view": "back",
+   "file": "/tmp/places-evidence/london/courts1.jpg",
+   "used": "buff-stone colour of the stepped 1991 blocks behind (not modelled in detail)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 4,
+  "fovDeg": 48,
+  "aspect": 1.28,
+  "margin": 0.04,
+  "shiftY": -0.03
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "annex-l",
+   "footprint": {
+    "rect": [
+     12,
+     18
+    ]
+   },
+   "at": [
+    -40,
+    2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a7a293",
+    "windows": "ribbon",
+    "windowRatio": 0.2,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-l",
+   "footprint": {
+    "rect": [
+     26,
+     22
+    ]
+   },
+   "at": [
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8e867a",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "bay": 3.4,
+    "bands": "#6e5f4f",
+    "glassColour": "#6f8189",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "core",
+   "footprint": {
+    "rect": [
+     14,
+     12
+    ]
+   },
+   "at": [
+    -20,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 22,
+   "storeys": 6,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a19c8d",
+    "windows": "none",
+    "windowRatio": 0.15,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glazed-gf",
+   "footprint": {
+    "rect": [
+     34,
+     24
+    ]
+   },
+   "at": [
+    19,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#46606a",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper",
+   "footprint": {
+    "rect": [
+     36,
+     26
+    ]
+   },
+   "at": [
+    19,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 4.6,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8a80",
+    "windows": "none",
+    "windowRatio": 0.12,
+    "bay": 12,
+    "glassColour": "#5d7683",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-plinth",
+   "footprint": {
+    "rect": [
+     30,
+     1.6
+    ]
+   },
+   "at": [
+    22,
+    -16.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a6a5a",
+    "windows": "none",
+    "faces": {
+     "left": "plain",
+     "right": "plain",
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "brick-end",
+   "footprint": {
+    "rect": [
+     8,
+     24
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 15.5,
+   "storeys": 4,
+   "wall": {
+    "material": "brick",
+    "colour": "#7a6a5a",
+    "windows": "punched",
+    "windowRatio": 0.08,
+    "bay": 6,
+    "faces": {
+     "left": "plain",
+     "back": "plain",
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plant",
+   "footprint": {
+    "rect": [
+     8,
+     6
+    ]
+   },
+   "at": [
+    -20,
+    9
+   ],
+   "rotDeg": 0,
+   "z0": 22,
+   "height": 3.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8c8a80",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    -10,
+    -20,
+    0
+   ],
+   "params": {}
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    0,
+    15.5
+   ],
+   "params": {
+    "length": 24,
+    "height": 1.1,
+    "thickness": 0.1,
+    "kind": "railing",
+    "pillarEvery": 4,
+    "colour": "#555a5e"
+   },
+   "lod": [
+    0
+   ]
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    16,
+    -19.2,
+    11.5
+   ],
+   "params": {
+    "width": 20,
+    "height": 1.6,
+    "bottom": 0,
+    "colour": "#4d6470",
+    "frameColour": "#8d8a80",
+    "posts": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     -24
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   100
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-community-notices",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Heavy blank upper slab cantilevered over recessed glazed ground floor, ribbon-window left block with brown spandrels, taller core with plant box and railing, grey-brown brick plinth and end block now match; upper slab window band is a single flat strip rather than 5-6 separate windows, no Royal arms panel, no buff-stone courts behind."
+ }
+}

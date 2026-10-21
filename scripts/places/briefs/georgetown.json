@@ -1,0 +1,1629 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "georgetown",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "georgetown",
+    "climate": "tropical-maritime",
+    "vernacular": "Low-lying Atlantic-coast colonial capital laid out on a Dutch/British grid with drainage canals and kokers: ordinary buildings are Caribbean timber houses, often raised on stilts, painted white or pastel, with jalousie louvre windows, fretwork, gabled porches and corrugated zinc roofs; newer buildings are plain concrete-block boxes in painted render.",
+    "wallColours": [
+      "#f4f1e8",
+      "#e8dcae",
+      "#a9c4b5",
+      "#9db7cc",
+      "#e7b8a4",
+      "#c9c3b6"
+    ],
+    "roofColours": [
+      "#8c8f8f",
+      "#9a4a3a",
+      "#5f7f66",
+      "#6b6f73"
+    ],
+    "wallMaterials": [
+      "timber",
+      "painted-render",
+      "concrete",
+      "whitewash"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Timber fretwork and lattice, jalousie (louvre) windows and shutters, gabled porches and turrets, white-painted Gothic Revival and Victorian detailing, thatched benab huts echoing Amerindian building; seawall, canals and avenues lined with palms and flowering trees (the Garden City of the Caribbean).",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+        "what": "British and Dutch colonial influenced architecture, many wooden colonial buildings, canals and kokers, hot tropical climate, Garden City of the Caribbean"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/St._George's_Cathedral,_Georgetown",
+        "what": "Gothic Revival timber construction as the signature building type"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Stabroek_Market",
+        "what": "Victorian iron-and-steel market with clock tower"
+      }
+    ]
+  },
+  "places": {
+    "georgetown-airport-georgetown-airport": {
+      "venueId": "georgetown-airport-georgetown-airport",
+      "city": "georgetown",
+      "name": "Cheddi Jagan International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The Timehri international terminal complex with the 2018 arrivals building, a long low block with jet bridges on the airfield side",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 182,
+        "depth_m": 71,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe5e8",
+          "#3b5a70",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 4,
+          "note": "Wikipedia gives four boarding bridges (facilities) and eight (history); four used"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "Aubrey Williams murals of Guyana interior rock motifs are mentioned"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2018 expansion",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cheddi_Jagan_International_Airport",
+          "what": "US$150m modernisation: new arrivals building completed Dec 2018, jet bridges, Aubrey Williams murals"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/343775232",
+          "what": "terminal footprint ~182 x 71 m, irregular polygon (via facts file)"
+        }
+      ],
+      "notes": "Footprint is measured OSM data; storeys, colours and finish are typed guesses for a 2018 terminal because no source describes the exterior. Bridge count is inconsistent in the source."
+    },
+    "georgetown-clinic": {
+      "venueId": "georgetown-clinic",
+      "city": "georgetown",
+      "name": "St. Joseph Mercy Hospital",
+      "archetype": "hospital",
+      "subject": "St. Joseph Mercy Hospital, Parade Street: a mid-sized private hospital block of painted concrete (footprint measured from OSM)",
+      "form": {
+        "footprint": "L",
+        "width_m": 113,
+        "depth_m": 105,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ede2",
+          "#a9c4b5",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1945 founding, later wings",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Joseph_Mercy_Hospital",
+          "what": "founded 1945 on Parade Street, 70 beds, oldest wing burned 10 May 2010"
+        }
+      ],
+      "notes": "Source gives no appearance. Footprint measured (113 x 105 m); height, colours and roof are typed from the city style. Old wing was lost to fire in 2010."
+    },
+    "georgetown-community-notices": {
+      "venueId": "georgetown-community-notices",
+      "city": "georgetown",
+      "name": "Parliament Building",
+      "archetype": "civic-palace",
+      "subject": "The Parliament Building, Brickdam: a long two-storey Renaissance Revival masonry building completed in 1834",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e9e4d6",
+          "#b9b2a2",
+          "#f6f3ea"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "ground-floor arches"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1834",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Parliament_Building,_Guyana",
+          "what": "Renaissance Revival, built 1829-1834 by Joseph Hadfield, cost 50,000 pounds, decorated chamber ceiling"
+        }
+      ],
+      "notes": "Style, date, architect and footprint (80 x 31 m, OSM) are sourced. Arcaded ground floor, portico and the pale colours are typed from the style label and memory of photos, not from a source text."
+    },
+    "georgetown-community-voting-game": {
+      "venueId": "georgetown-community-voting-game",
+      "city": "georgetown",
+      "name": "Georgetown City Hall",
+      "archetype": "civic-small",
+      "subject": "Georgetown City Hall: a three-storey white-painted timber Gothic Revival building with a tall tower topped by a pyramidal spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 27,
+        "depth_m": 17,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable",
+        "wings": 1,
+        "variant": "gothic-timber-tower"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1e8",
+          "#7a3b32",
+          "#ffffff"
+        ],
+        "roofColour": "#7a3b32",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "square pyramidal flat-topped spire, about 29 m overall"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "wrought-iron crenellations on tower"
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "conical pillars around spire"
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "gothic-revival",
+      "era": "1889",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown_City_Hall",
+          "what": "Gothic Revival timber, 3 floors, 27.1 x 17.4 x 29.3 m high, tower with pyramidal spire, hammer-beam roof, Rev. Ignatius Scoles 1887-1889"
+        }
+      ],
+      "notes": "Dimensions, material and tower form are sourced (OSM footprint 29 x 18 m agrees). White walls and a dark red roof are estimated from memory of photos; the source gives no colours. 29.3 m is total height including the tower; main-mass height set lower."
+    },
+    "georgetown-community-workshop": {
+      "venueId": "georgetown-community-workshop",
+      "city": "georgetown",
+      "name": "University of Guyana (Turkeyen campus, Chemistry and Biology building)",
+      "archetype": "campus-block",
+      "subject": "A long two-storey concrete teaching block at the Turkeyen campus (footprint measured from the OSM Faculty of Natural Sciences building)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 67,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d2c4",
+          "#7f8f98",
+          "#f0ede6"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Guyana",
+          "what": "Turkeyen campus with faculty buildings; first opened 1963 at Queen's College"
+        }
+      ],
+      "notes": "Only the footprint is measured (67 x 10.7 m). Everything else is a typed tropical-campus guess; no source describes the building."
+    },
+    "georgetown-market-game": {
+      "venueId": "georgetown-market-game",
+      "city": "georgetown",
+      "name": "Stabroek Market",
+      "archetype": "market-hall",
+      "subject": "Stabroek Market: the 1881 Victorian cast-iron and steel market hall with its prominent clock tower, seen from the riverside side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 82,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#e9e6dc",
+          "#4c6a58",
+          "#ffffff"
+        ],
+        "roofColour": "#7b8c82",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "prominent tower at the top of the building, a Georgetown landmark"
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 20
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "victorian",
+      "era": "1881",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stabroek_Market",
+          "what": "iron and steel structure with clock tower, Victorian, about 7,000 m2, opened 1881, architect Nathaniel McKay, ironwork by Edgemoor Iron Co."
+        }
+      ],
+      "notes": "Structure, age, clock tower and area (OSM 85 x 82 m) are sourced. Paint colours and roof tone are estimates. Recognisable by the pre-fabricated iron frame with big hipped roof sections and the corner clock tower."
+    },
+    "georgetown-meal-stop": {
+      "venueId": "georgetown-meal-stop",
+      "city": "georgetown",
+      "name": "Madinah Halaal Restaurant",
+      "archetype": "restaurant",
+      "subject": "A small roadside halal restaurant on the West Bank Demerara road, modelled as a two-storey concrete-block shopfront with a metal roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dcae",
+          "#a9c4b5",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "what": "city style: typical small-town concrete and timber shopfronts with zinc roofs"
+        }
+      ],
+      "notes": "Nothing findable about this restaurant; footprint comes from the nearest OSM building (23 x 12 m). Typed from the city style."
+    },
+    "georgetown-osm-node-4179922366": {
+      "venueId": "georgetown-osm-node-4179922366",
+      "city": "georgetown",
+      "name": "The Lotus",
+      "archetype": "restaurant",
+      "subject": "The Lotus, a restaurant near Timehri (footprint from the nearest OSM building), modelled as a single-storey hip-roofed eatery",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 27,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#9a4a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#9a4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "what": "city style: plain painted-concrete commercial buildings"
+        }
+      ],
+      "notes": "No findable description. Footprint 40 x 27 m from OSM; the rest is a typed guess."
+    },
+    "georgetown-osm-node-8060672985": {
+      "venueId": "georgetown-osm-node-8060672985",
+      "city": "georgetown",
+      "name": "Farm land",
+      "archetype": "park-landscape",
+      "subject": "Open farm land on the coastal plain with a small tin-roofed shed and a ditch-and-fence boundary",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9c3b6",
+          "#9a8f78",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "n/a",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "what": "city style: coastal plain of cane fields and savannah"
+        }
+      ],
+      "notes": "An unnamed OSM viewing point with no building; the model is a generic Guyanese farm plot (flat green field, drainage trench, a palm or two, a corrugated shed)."
+    },
+    "georgetown-osm-node-8773177618": {
+      "venueId": "georgetown-osm-node-8773177618",
+      "city": "georgetown",
+      "name": "Viewpoint \"2\"",
+      "archetype": "park-landscape",
+      "subject": "An unnamed OSM viewpoint beside a small building on the East Bank Demerara road, modelled as a small roadside shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8dcae",
+          "#a9c4b5",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "what": "city style: simple concrete roadside shelters"
+        }
+      ],
+      "notes": "The venue is named only \"2\" in OSM; nothing is known. Footprint (15 x 9 m) from the nearest OSM building."
+    },
+    "georgetown-osm-relation-11213168": {
+      "venueId": "georgetown-osm-relation-11213168",
+      "city": "georgetown",
+      "name": "Georgetown Public Hospital Corporation",
+      "archetype": "hospital",
+      "subject": "Georgetown Public Hospital, the national referral hospital: a multi-block concrete complex with covered walkways",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9d9",
+          "#7f9aa8",
+          "#ffffff"
+        ],
+        "roofColour": "#a8a29a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1950s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "what": "city style: painted concrete public buildings"
+        }
+      ],
+      "notes": "The OSM relation only holds a 25 x 8 m ward block, but the real GPHC is a large multi-wing complex. Overall size is an estimate; no source consulted describes it. Typed from the city style."
+    },
+    "georgetown-osm-way-215619747": {
+      "venueId": "georgetown-osm-way-215619747",
+      "city": "georgetown",
+      "name": "St. George's Cathedral",
+      "archetype": "church-gothic",
+      "subject": "St. George's Anglican Cathedral, Church Street: a tall white-painted all-timber Gothic Revival cathedral by Sir Arthur Blomfield with a slender central spire",
+      "form": {
+        "footprint": "cross",
+        "width_m": 54,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 20,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#f4f2ec",
+          "#6f6a64",
+          "#ffffff"
+        ],
+        "roofColour": "#5b6670",
+        "roofMaterial": "metal-sheet",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "central spire; building is 43.5 m (143 ft) overall"
+        },
+        {
+          "id": "buttresses",
+          "count": 8
+        },
+        {
+          "id": "pinnacles",
+          "count": 4
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1892-1899",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._George's_Cathedral,_Georgetown",
+          "what": "Gothic Revival timber construction, 43.5 m, Sir Arthur Blomfield, opened 1892, consecrated 1894"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/215619747",
+          "what": "footprint ~54 x 34 m"
+        }
+      ],
+      "notes": "One of the tallest wooden buildings in the world. Wikipedia gives no colours; white walls and a grey roof are estimated from memory of photos. height_m is the nave; the 43.5 m total is reached by the spire."
+    },
+    "georgetown-osm-way-30765532": {
+      "venueId": "georgetown-osm-way-30765532",
+      "city": "georgetown",
+      "name": "Guyana Zoo",
+      "archetype": "park-landscape",
+      "subject": "Guyana Zoo, a large botanical-garden-style zoo with a tree-lined entrance, palms, ponds and low animal houses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 440,
+        "depth_m": 185,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8dcae",
+          "#a9c4b5",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1895 gardens, 1952 zoo",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guyana_Zoo",
+          "what": "site used as botanical gardens from 1895, zoo opened 1952, tropical flowers, palms, Victoria Regia lily, harpy eagles and manatees"
+        }
+      ],
+      "notes": "Size from the OSM area (446 x 187 m); only a recognisable slice (gate, lawns, palms, animal sheds) is shown. Buildings are typed because sources describe no structures."
+    },
+    "georgetown-osm-way-403108105": {
+      "venueId": "georgetown-osm-way-403108105",
+      "city": "georgetown",
+      "name": "Umana Yana",
+      "archetype": "civic-small",
+      "subject": "Umana Yana, a large conical palm-thatched benab on Main Street, copied from the Wai-Wai Amerindian meeting house",
+      "form": {
+        "footprint": "round",
+        "width_m": 26,
+        "depth_m": 26,
+        "storeys": 1,
+        "height_m": 17,
+        "roof": "pyramidal",
+        "variant": "conical-thatch"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a98f5e",
+          "#6b4a2f",
+          "#c8b384"
+        ],
+        "roofColour": "#a98f5e",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1972",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umana_Yana",
+          "what": "conical hut, 17 m tall, ~460 m2, allibanna and manicole palm thatch on wallaba posts lashed with vines; Wai-Wai benab model"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/403108105",
+          "what": "footprint 26 x 26 m, one level"
+        }
+      ],
+      "notes": "Distinctive: a smooth tall cone of thatch down almost to the ground, open sides at the base with wallaba posts. Needs a cone roof; pyramidal is the nearest roof id (see enumGaps)."
+    },
+    "georgetown-osm-way-403113847": {
+      "venueId": "georgetown-osm-way-403113847",
+      "city": "georgetown",
+      "name": "Eve Leary Sports Ground",
+      "archetype": "park-landscape",
+      "subject": "Eve Leary Sports Ground, a flat grass sports field with a small pavilion and fencing",
+      "form": {
+        "footprint": "rect",
+        "width_m": 187,
+        "depth_m": 132,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f4f1e8",
+          "#9a4a3a",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/403113847",
+          "what": "leisure=park, 187 x 132 m, wikipedia tag pt:Eve Leary Sports Ground"
+        }
+      ],
+      "notes": "Nothing about the grounds was found beyond the OSM extent; the pavilion and floodlights are typical but unverified."
+    },
+    "georgetown-osm-way-405708710": {
+      "venueId": "georgetown-osm-way-405708710",
+      "city": "georgetown",
+      "name": "Castellani House",
+      "archetype": "museum-theatre",
+      "subject": "Castellani House (National Gallery of Art), a large three-storey nineteenth-century timber mansion by Cesar Castellani",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 19,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#f4f1e8",
+          "#6e8a76",
+          "#ffffff"
+        ],
+        "roofColour": "#8a9490",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2,
+          "note": "timber galleries"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1882",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Castellani_House,_Guyana",
+          "what": "designed by Maltese architect Cesar Castellani, built 1879-1882, third storey added 1942, altered 1965; large nineteenth-century building"
+        }
+      ],
+      "notes": "Age, architect, storeys and footprint (32 x 19 m, OSM) are sourced. Timber construction, white colour and galleries are typed from the Georgetown wooden-colonial norm and memory of photos."
+    },
+    "georgetown-osm-way-405722320": {
+      "venueId": "georgetown-osm-way-405722320",
+      "city": "georgetown",
+      "name": "Queenstown Jama Masjid",
+      "archetype": "mosque-domed",
+      "subject": "Queenstown Mosque, rebuilt 2007: a three-storey masonry mosque with two minarets, founded in 1895 by the Afghan community",
+      "form": {
+        "footprint": "rect",
+        "width_m": 36,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ece0",
+          "#2f7a55",
+          "#ffffff"
+        ],
+        "roofColour": "#d8d2c4",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "minaret",
+          "count": 2
+        },
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "dome count not confirmed"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2007 rebuild",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Queenstown_Mosque",
+          "what": "three-storey, 36.5 x 24.5 m, capacity 1,000, two minarets, established 1895, current building replaced one demolished 10 Feb 2007"
+        }
+      ],
+      "notes": "Size, storeys and minarets sourced. Dome count, colours and window style are typed guesses (green accent is a generic mosque convention)."
+    },
+    "georgetown-osm-way-408614791": {
+      "venueId": "georgetown-osm-way-408614791",
+      "city": "georgetown",
+      "name": "Joe Chinese",
+      "archetype": "restaurant",
+      "subject": "Joe Chinese, a Chinese restaurant in Georgetown (footprint 26 x 21 m), modelled as a two-storey concrete shophouse restaurant",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 21,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#b6392c",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Guyana",
+          "what": "city style: painted concrete commercial buildings"
+        }
+      ],
+      "notes": "No description found. Footprint measured from OSM; the red accent is a generic nod to Chinese restaurants."
+    },
+    "georgetown-osm-way-479572609": {
+      "venueId": "georgetown-osm-way-479572609",
+      "city": "georgetown",
+      "name": "Happy Acres Reserve",
+      "archetype": "park-landscape",
+      "subject": "Happy Acres Reserve, a small residential green reserve on the East Coast with grass, a few trees and a fence",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 66,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9c3b6",
+          "#9a8f78",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/479572609",
+          "what": "leisure=park, 77 x 66 m"
+        }
+      ],
+      "notes": "Nothing was found about it; generic neighbourhood reserve from the OSM extent."
+    },
+    "georgetown-osm-way-576678606": {
+      "venueId": "georgetown-osm-way-576678606",
+      "city": "georgetown",
+      "name": "Guyana National Stadium (Providence Stadium)",
+      "archetype": "stadium",
+      "subject": "Providence Stadium, the Indian-funded 2006 cricket stadium on the East Bank Demerara, an oval bowl with covered stands and tall floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 291,
+        "depth_m": 241,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "curved",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dcdd",
+          "#2e7d5b",
+          "#ffffff"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2,
+          "note": "covered stands over Pavilion End and Media Centre End"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Providence_Stadium",
+          "what": "opened 2006, built by Shapoorji Pallonji with Indian funding, designed by CRN Architects Chennai, 15,000-20,000 seats, floodlit, Pavilion End and Media Centre End"
+        }
+      ],
+      "notes": "Capacity, builder, floodlights and bounds (291 x 241 m) are sourced. Roof form and colours are estimates; the stadium shares its complex with a mall and apartments in the source."
+    },
+    "georgetown-osm-way-790600904": {
+      "venueId": "georgetown-osm-way-790600904",
+      "city": "georgetown",
+      "name": "Diamond Market",
+      "archetype": "market-open",
+      "subject": "Diamond Market on the East Bank Demerara road: rows of open stalls under long metal-roofed sheds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 48,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e8dcae",
+          "#5f7f66",
+          "#ffffff"
+        ],
+        "roofColour": "#5f7f66",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/790600904",
+          "what": "amenity=marketplace, 77 x 48 m"
+        }
+      ],
+      "notes": "No article found. Open market shed typed from the Guyanese market norm (see Stabroek for the real big one)."
+    },
+    "georgetown-osm-way-818881326": {
+      "venueId": "georgetown-osm-way-818881326",
+      "city": "georgetown",
+      "name": "Guyana School of Agriculture",
+      "archetype": "campus-block",
+      "subject": "Guyana School of Agriculture, a large coastal farm campus: low teaching blocks in front of farmland (only the main block is modelled)",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1ead8",
+          "#5f7f66",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/818881326",
+          "what": "amenity=university area 1141 x 362 m (farmland campus)"
+        }
+      ],
+      "notes": "The OSM polygon is the whole 41 ha campus, not a building. The shown block is typed from the city style."
+    },
+    "georgetown-quiet-reflection": {
+      "venueId": "georgetown-quiet-reflection",
+      "city": "georgetown",
+      "name": "Cathedral of the Immaculate Conception",
+      "archetype": "church-classical",
+      "subject": "The Roman Catholic Cathedral of the Immaculate Conception on Brickdam: a heavy Romanesque church with a central dome over the crossing, by Leonard Stokes",
+      "form": {
+        "footprint": "cross",
+        "width_m": 66,
+        "depth_m": 39,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#a39f96",
+          "#85817a",
+          "#d8d4cb"
+        ],
+        "roofColour": "#7b8084",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "dome 74 ft 10 in high"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1921",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Brickdam_Cathedral",
+          "what": "Romanesque style, Leonard Stokes, consecrated 1921, centre ceiling 60 ft 6 in, dome 74 ft 10 in"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/215619747",
+          "what": "footprint 66 x 39 m (via facts file)"
+        }
+      ],
+      "notes": "Dome and style sourced; Romanesque is not in STYLES so neoclassical is used. Colour is inferred from a filename (\"Grey church\") only, so a grey stone-like tone is a low-certainty choice."
+    },
+    "georgetown-recreation": {
+      "venueId": "georgetown-recreation",
+      "city": "georgetown",
+      "name": "Foulis playground",
+      "archetype": "park-landscape",
+      "subject": "Foulis playground, a village sports pitch on the East Coast with a grass field and a small shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 154,
+        "depth_m": 91,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9c3b6",
+          "#9a8f78",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "leisure=pitch, 154 x 91 m"
+        }
+      ],
+      "notes": "Nothing is findable; a generic village pitch with the OSM extent."
+    },
+    "georgetown-transit": {
+      "venueId": "georgetown-transit",
+      "city": "georgetown",
+      "name": "West Bank Bus Park",
+      "archetype": "transport-station",
+      "subject": "The bus park for West Bank Demerara minibuses by the Stabroek riverside: an open lot with bays and a small metal-roofed shelter",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#c9c3b6",
+          "#3b6ea5",
+          "#ffffff"
+        ],
+        "roofColour": "#8c8f8f",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "caribbean",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "nearby OSM building 22 x 12 m"
+        }
+      ],
+      "notes": "Real minibus parks near Stabroek are crowded open lots; shelter size from the nearest OSM building, rest typed."
+    }
+  }
+}

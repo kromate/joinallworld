@@ -1,0 +1,177 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/jos.json#christ-methodist-cathedral",
+   "used": "no matching photo (Commons geo photos are street scenes) and OSM nearest building 60 m away not trusted: 38x22 m concrete church, tall gabled nave under grey sheet, front tower left, entrance steps, plaza, boundary wall"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     38,
+     16
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead8",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "windowShape": "pointed",
+    "plinth": 0.6,
+    "bay": 4,
+    "bands": "#6b4f3a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5b6670",
+    "material": "metal-sheet",
+    "pitch": 30,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "narthex",
+   "footprint": {
+    "rect": [
+     14,
+     6
+    ]
+   },
+   "at": [
+    0,
+    -8
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "exposed-concrete",
+    "colour": "#d8d0bf",
+    "windows": "none",
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ffffff",
+    "material": "concrete",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/tower",
+   "at": [
+    -14,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 24,
+    "cap": "hip",
+    "capRise": 4,
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "colour": "#f1ead8",
+    "capColour": "#5b6670"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "rise": 0.9,
+    "run": 0.7,
+    "count": 5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.8,
+    "thickness": 0.3,
+    "colour": "#f1ead8",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 2,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "jos",
+ "venueId": "christ-methodist-cathedral",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no evidence; real form unverified; no photo to compare"
+ }
+}

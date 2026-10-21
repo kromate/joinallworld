@@ -1,0 +1,267 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ado-ekiti",
+ "venueId": "ekiti-state-house-of-assembly",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ado-ekiti.json",
+   "used": "L-plan two-storey block with rotunda chamber, entrance steps and flagpoles from typed brief (no photo)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 18,
+  "pitchDeg": 9,
+  "fovDeg": 52,
+  "fit": "all",
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     48,
+     18
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#6b4a3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6670",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "side",
+   "footprint": {
+    "rect": [
+     17,
+     32
+    ]
+   },
+   "at": [
+    23.5,
+    7
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "bands": "#6b4a3a"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#5b6670",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -14,
+    -14,
+    0
+   ],
+   "params": {
+    "radius": 10,
+    "n": 16,
+    "height": 11,
+    "colour": "#e3dccb",
+    "topColour": "#5b6670",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "storeys": 2
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -14,
+    -14,
+    11
+   ],
+   "params": {
+    "segments": 24,
+    "colour": "#b9c2c8",
+    "profile": [
+     [
+      10.6,
+      0
+     ],
+     [
+      10.2,
+      0.6
+     ],
+     [
+      7,
+      2.2
+     ],
+     [
+      3,
+      3.4
+     ],
+     [
+      0,
+      3.8
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    -14,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 1.2,
+    "run": 2.2,
+    "count": 6,
+    "colour": "#d6cfbd"
+   }
+  },
+  {
+   "type": "core/canopy",
+   "at": [
+    10,
+    -11,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 14,
+    "depth": 5,
+    "height": 4.5,
+    "columns": 4,
+    "colour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -2,
+    -34,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 3,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#f2f2f2",
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -30,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#f2eee0",
+    "frameColour": "#6b4a3a"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    18,
+    -38,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "pillar": 1,
+    "leaf": "bars",
+    "colour": "#ece6d4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -36,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 2,
+    "thickness": 0.35,
+    "pillarEvery": 5,
+    "colour": "#ece6d4",
+    "points": [
+     [
+      0,
+      0
+     ],
+     [
+      50,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -38,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or OSM outline exists for this place; massing, colours and elements are typed from the brief and the city style only."
+ }
+}

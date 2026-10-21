@@ -1,0 +1,345 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json#federal-medical-centre-gusau",
+   "used": "Sokoto Bye Pass Road, founded 1998: long three-storey main block with two ward wings (H plan), plus a 26-unit two-storey doctors quarters under construction 2025 (21stcenturychronicle.com)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1210106807",
+   "used": "nearest match is a 40 x 6 m building 13 m away; used only to size the long frontage, not as outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": -24,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found (Commons has none); H-plan blocks, ribbon windows and colours are typed from the brief"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     78,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a9ea0",
+    "cornice": true,
+    "bay": 5.5,
+    "faces": {
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-west",
+   "footprint": {
+    "rect": [
+     16,
+     36
+    ]
+   },
+   "at": [
+    -30,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a9ea0",
+    "bay": 5.5,
+    "faces": {
+     "left": "punched",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ward-east",
+   "footprint": {
+    "rect": [
+     16,
+     36
+    ]
+   },
+   "at": [
+    30,
+    26
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 12.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece6d4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#7a9ea0",
+    "bay": 5.5,
+    "faces": {
+     "left": "none",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     44,
+     10
+    ]
+   },
+   "at": [
+    0,
+    15
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f0ebdc",
+    "windows": "ribbon",
+    "windowRatio": 0.15,
+    "plinth": 0.5,
+    "bands": "#7a9ea0",
+    "bay": 5.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "doctors-quarters",
+   "footprint": {
+    "rect": [
+     34,
+     12
+    ]
+   },
+   "at": [
+    68,
+    -6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f4efe2",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "plinth": 0.4,
+    "bands": "#7a9ea0",
+    "bay": 5.5,
+    "faces": {
+     "back": "none",
+     "right": "none"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#7d6a5c",
+    "material": "metal-sheet",
+    "pitch": 14,
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "depth": 5,
+    "height": 7,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "kind": "square",
+    "colour": "#f7f4ee"
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    -26,
+    -10,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "depth": 5.5,
+    "height": 3.8,
+    "columns": 3,
+    "colour": "#f7f4ee",
+    "roofColour": "#7a9ea0",
+    "vans": 2
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    14,
+    -26,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2,
+    "bottom": 1.5,
+    "colour": "#f7f4ee",
+    "frameColour": "#7a9ea0"
+   }
+  },
+  {
+   "type": "helipad",
+   "at": [
+    -62,
+    30,
+    0
+   ],
+   "params": {
+    "radius": 8
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    0,
+    48,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 2.6,
+    "tankHeight": 3.4,
+    "legHeight": 8,
+    "legs": 4,
+    "colour": "#bfc4c6"
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    22,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 34,
+    "depth": 10,
+    "density": 0.4
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -52,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "spread": 7,
+    "count": 3,
+    "line": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     34
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -44,
+     50
+    ]
+   }
+  ],
+  "extent": [
+   160,
+   120
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "federal-medical-centre-gusau"
+}

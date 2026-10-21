@@ -1,0 +1,270 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "umuahia",
+ "venueId": "ulo-ama-umuochoko-park",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/umuahia.json",
+   "used": "village civic park with an open ulo ama meeting hall with a hip roof on posts, lawns, shade trees, a gate and a kiosk"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/874866344",
+   "used": "checked only: nearest-quality 10x4 m building, too small to be the hall, so not used as the outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 22,
+  "pitchDeg": 24,
+  "fovDeg": 50,
+  "aspect": 1.4,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "pavilion",
+   "at": [
+    0,
+    6,
+    0
+   ],
+   "params": {
+    "width": 15,
+    "depth": 10,
+    "height": 4.2,
+    "roof": "hip",
+    "rise": 2.6,
+    "posts": 10,
+    "colour": "#c9a77c",
+    "cap_colour": "#7b5a3c",
+    "floor_colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    0,
+    0.8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.5,
+    "run": 1.0,
+    "count": 3
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -24,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.4,
+    "height": 2.6,
+    "wall_colour": "#4f6b55",
+    "roof_colour": "#7b5a3c"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3,
+    "colour": "#c9a77c",
+    "board_colour": "#7b5a3c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -18,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    18,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 30,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 60,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -33,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 48,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    33,
+    2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 48,
+    "height": 1.4,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#c9a77c"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -11,
+    0.02
+   ],
+   "params": {
+    "rect": [
+     3,
+     22
+    ],
+    "height": 0.05,
+    "colour": "#b7b2a8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -22,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 14,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -12,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 1,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -26,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 2,
+    "spread": 4
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   80,
+   62
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo exists; open hip-roofed hall on posts with gate, kiosk and trees composed from the brief; sizes typical, not surveyed."
+ }
+}

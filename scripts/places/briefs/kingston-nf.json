@@ -1,0 +1,1253 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kingston-nf",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kingston-nf",
+    "climate": "temperate",
+    "vernacular": "Small subtropical Pacific island settlement of rolling green pasture, tall Norfolk Island pines and black basalt shore. The Kingston and Arthur's Vale convict settlement (1825-1855) keeps Georgian military and official buildings in local calcarenite and basalt stone, whitewashed or limewashed, with hip roofs, deep verandahs and shingle or iron roofing. Everyday island houses are single-storey weatherboard or rendered bungalows with corrugated iron roofs, picket fences and verandahs, widely spaced on large plots, plus low modern shops at Burnt Pine.",
+    "wallColours": [
+      "#f1ede0",
+      "#d6c9a6",
+      "#8b8a85",
+      "#e4d2a0",
+      "#bcd0d6",
+      "#7d5a45"
+    ],
+    "roofColours": [
+      "#8f3b2b",
+      "#7c8185",
+      "#4c6b4f",
+      "#5a4a3c",
+      "#b0b4b6"
+    ],
+    "wallMaterials": [
+      "whitewash",
+      "stone",
+      "render",
+      "timber",
+      "painted-render",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "timber-shingle",
+      "clay-tile"
+    ],
+    "ground": "grass",
+    "vegetation": [
+      "conifer",
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Georgian symmetry with sash windows and six-panel doors; deep timber verandahs with plain posts; white picket fences; dressed pale stone quoins and window surrounds on rubble walls; Norfolk Island pines (Araucaria) lining roads and shore.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kingston_and_Arthur%27s_Vale_Historic_Area",
+        "what": "convict-era buildings: Government House 1829, Old Military Barracks 1829-34, New Military Barracks 1836, Commissariat Store 1835, Quality Row, gaol, crankmill, pier"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+        "what": "Norfolk Island pine, widely separated homesteads, calcareous rock near Kingston, Pitcairner occupation of old buildings"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Government_House,_Norfolk_Island",
+        "what": "Government House built 1829"
+      }
+    ]
+  },
+  "places": {
+    "kingston-nf-airport-kingston-nf-airport": {
+      "venueId": "kingston-nf-airport-kingston-nf-airport",
+      "city": "kingston-nf",
+      "name": "Norfolk Island International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Norfolk Island Airport: a small single-storey passenger terminal with a cafe and an adjacent small cargo shed beside the runway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68.6,
+        "depth_m": 36.7,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e6dc",
+          "#4c7a8c",
+          "#ffffff"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "single controller; small tower assumed"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1970s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island_Airport",
+          "what": "small terminal with check-in, security, customs, baggage, a small cafe and a small cargo terminal; two asphalt runways 11/29 1,950 m and 04/22 1,435 m; single air traffic controller"
+        }
+      ],
+      "notes": "Text confirms a small terminal; exterior colours and shape are typed. OSM footprint 69 x 37 m, tagged building=transportation."
+    },
+    "kingston-nf-clinic": {
+      "venueId": "kingston-nf-clinic",
+      "city": "kingston-nf",
+      "name": "Norfolk Island Hospital",
+      "archetype": "hospital",
+      "subject": "Norfolk Island Hospital: a long single-storey rendered health building with a hipped roof and ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 92.7,
+        "depth_m": 40.7,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe8d4",
+          "#6e9aa5",
+          "#ffffff"
+        ],
+        "roofColour": "#8f3b2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "No description found. OSM footprint 93 x 41 m. Typed as a low island health complex."
+    },
+    "kingston-nf-community-notices": {
+      "venueId": "kingston-nf-community-notices",
+      "city": "kingston-nf",
+      "name": "Council Chambers",
+      "archetype": "civic-small",
+      "subject": "Council Chambers: a low rendered administration building at Burnt Pine with a pitched iron roof and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31.1,
+        "depth_m": 29.4,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe6cf",
+          "#7a8c7a",
+          "#ffffff"
+        ],
+        "roofColour": "#8f3b2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "Nothing specific found; typed civic building."
+    },
+    "kingston-nf-community-voting-game": {
+      "venueId": "kingston-nf-community-voting-game",
+      "city": "kingston-nf",
+      "name": "Government House",
+      "archetype": "manor",
+      "subject": "Government House, Quality Row: the 1829 Georgian official residence in the Kingston convict settlement, a pale rendered stone house with a hip roof and deep verandah on a lawn lined with pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38.3,
+        "depth_m": 34.3,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "verandah"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ede0",
+          "#d6c9a6",
+          "#ffffff"
+        ],
+        "roofColour": "#8f3b2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "rear service court"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "georgian",
+      "era": "1829",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Government_House,_Norfolk_Island",
+          "what": "built 1829, part of KAVHA"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston_and_Arthur%27s_Vale_Historic_Area",
+          "what": "Government House 1829 listed with Quality Row"
+        }
+      ],
+      "notes": "Date and context are sourced. Storeys, verandah and colours are from memory of public photos, not fetched text. Today the residence of the Administrator."
+    },
+    "kingston-nf-community-workshop": {
+      "venueId": "kingston-nf-community-workshop",
+      "city": "kingston-nf",
+      "name": "Public Library",
+      "archetype": "civic-small",
+      "subject": "Public Library: a very small weatherboard-and-iron library hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20.1,
+        "depth_m": 8.8,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e1c8",
+          "#5f7f8a",
+          "#ffffff"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found. OSM footprint is only 20 x 9 m."
+    },
+    "kingston-nf-market-game": {
+      "venueId": "kingston-nf-market-game",
+      "city": "kingston-nf",
+      "name": "Norfolk Mall",
+      "archetype": "mall",
+      "subject": "Norfolk Mall: a low shopping centre of shops along an arcade in Burnt Pine, single storey with a pitched iron roof",
+      "form": {
+        "footprint": "L",
+        "width_m": 97,
+        "depth_m": 55.2,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#efe0b4",
+          "#a65b3d",
+          "#ffffff"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "No description found for this building. OSM footprint 97 x 55 m. Burnt Pine is the island's shopping strip."
+    },
+    "kingston-nf-meal-stop": {
+      "venueId": "kingston-nf-meal-stop",
+      "city": "kingston-nf",
+      "name": "SeaView",
+      "archetype": "hotel",
+      "subject": "SeaView: a small low-rise guest-house hotel in rendered walls with a verandah",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34.7,
+        "depth_m": 20.6,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f1e4c4",
+          "#4c7a8c",
+          "#ffffff"
+        ],
+        "roofColour": "#8f3b2b",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM tourism=hotel, 35 x 21 m. No description found."
+    },
+    "kingston-nf-osm-node-14248062703": {
+      "venueId": "kingston-nf-osm-node-14248062703",
+      "city": "kingston-nf",
+      "name": "Kingston and Arthur's Vale Historic Area",
+      "archetype": "heritage-fort",
+      "subject": "KAVHA: a long Georgian convict-era stone building of the Kingston settlement with a plain hip roof, rubble walls and dressed pale quoins, set on a green with pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 11.2,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9bc9a",
+          "#e8e2cc",
+          "#ffffff"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": "timber-shingle",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "georgian",
+      "era": "1825-1855",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston_and_Arthur%27s_Vale_Historic_Area",
+          "what": "convict settlement 1825-1855; Government House 1829; Old Military Barracks 1829-34; New Military Barracks 1836; Commissariat Store 1835; Quality Row; gaol remains; landing pier 1839-47"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "calcareous rock near Kingston"
+        }
+      ],
+      "notes": "OSM point sits on a small 20 x 11 m building inside KAVHA, which one is not identified. Brief is a typical KAVHA stone Georgian building (stone from the local area; colours typed). UNESCO World Heritage listed."
+    },
+    "kingston-nf-osm-node-291675297": {
+      "venueId": "kingston-nf-osm-node-291675297",
+      "city": "kingston-nf",
+      "name": "Mount Pitt",
+      "archetype": "park-landscape",
+      "subject": "Mount Pitt summit lookout: a grassy 318 m peak with a small timber shelter and viewing platform overlooking pine forest and the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#8a6f4f",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "Mount Pitt summit, pine and shrub vegetation; Mount Bates is the highest point"
+        }
+      ],
+      "notes": "OSM building 5 x 3.5 m. Typed as a small lookout."
+    },
+    "kingston-nf-osm-node-3514345221": {
+      "venueId": "kingston-nf-osm-node-3514345221",
+      "city": "kingston-nf",
+      "name": "Dry Waterfall",
+      "archetype": "park-landscape",
+      "subject": "Dry Waterfall: a forest creek-bed walk of mossy basalt boulders under Norfolk Island pine, shown as a wooded clearing with a rock step in the stream bed",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 10,
+        "depth_m": 10,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#6c6a63",
+          "#4a6a42",
+          "#e0dccb"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "A natural walking point. Nothing found beyond the name; the brief is a placeholder for a wooded creek."
+    },
+    "kingston-nf-osm-node-4780829101": {
+      "venueId": "kingston-nf-osm-node-4780829101",
+      "city": "kingston-nf",
+      "name": "Arthur's Vale Viewing Platform",
+      "archetype": "park-landscape",
+      "subject": "Arthur's Vale Viewing Platform: a small timber deck with a rail looking over the green vale toward the Kingston settlement and sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#9a8061",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston_and_Arthur%27s_Vale_Historic_Area",
+          "what": "KAVHA area context"
+        }
+      ],
+      "notes": "Typed from the name; nothing found about the structure."
+    },
+    "kingston-nf-osm-node-6385448042": {
+      "venueId": "kingston-nf-osm-node-6385448042",
+      "city": "kingston-nf",
+      "name": "Anson Coffee",
+      "archetype": "restaurant",
+      "subject": "Anson Coffee: a small single-storey cafe building near Anson Bay with a pitched iron roof and a deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20.6,
+        "depth_m": 18.3,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#d6c9a6",
+          "#7d5a45",
+          "#ffffff"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found; typed island cafe."
+    },
+    "kingston-nf-osm-node-6385462303": {
+      "venueId": "kingston-nf-osm-node-6385462303",
+      "city": "kingston-nf",
+      "name": "Sublime Lounge Cafe",
+      "archetype": "restaurant",
+      "subject": "Sublime Lounge Cafe: a tiny cafe shack with an iron roof and umbrellas on a deck",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14.4,
+        "depth_m": 9.1,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "painted-render",
+        "colours": [
+          "#bcd0d6",
+          "#f1ede0",
+          "#ffffff"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "Nothing found; OSM footprint 14 x 9 m."
+    },
+    "kingston-nf-osm-node-6385467662": {
+      "venueId": "kingston-nf-osm-node-6385467662",
+      "city": "kingston-nf",
+      "name": "Polynesian Settlement Site",
+      "archetype": "park-landscape",
+      "subject": "Polynesian Settlement Site: a grassy cliff-top interpretation spot at Emily Bay with an information board and low stone line marking the early Polynesian marae area",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 25,
+        "depth_m": 18,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "timber",
+        "colours": [
+          "#a9a393",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "archaeological, AD 1200-1600",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kingston_and_Arthur%27s_Vale_Historic_Area",
+          "what": "stone tools and a possible marae show Polynesian settlement, radiocarbon dates AD 1200-1600"
+        }
+      ],
+      "notes": "Archaeological site, no standing building. Brief shows a signed grass clearing with low stones."
+    },
+    "kingston-nf-osm-way-671777091": {
+      "venueId": "kingston-nf-osm-way-671777091",
+      "city": "kingston-nf",
+      "name": "The Arches",
+      "archetype": "heritage-fort",
+      "subject": "The Arches, Longridge: ruined arched stone building with open arches and roofless walls beside the road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35.5,
+        "depth_m": 13.5,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#c9bc9a",
+          "#9a8f78",
+          "#e8e2cc"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "georgian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q38154617",
+          "what": "Commonwealth heritage site 'Arched Building, Longridge'; OSM historic=ruins"
+        }
+      ],
+      "notes": "OSM tags historic=ruins, 36 x 14 m; the name suggests a row of arches. No description fetched; materials assumed local stone."
+    },
+    "kingston-nf-osm-way-681850666": {
+      "venueId": "kingston-nf-osm-way-681850666",
+      "city": "kingston-nf",
+      "name": "Lions Park",
+      "archetype": "park-landscape",
+      "subject": "Lions Park: a roadside lawn park with picnic shelters and Norfolk pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 155.5,
+        "depth_m": 55,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#9a8061",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM park 156 x 55 m next to Council Chambers. Nothing else found."
+    },
+    "kingston-nf-osm-way-681850758": {
+      "venueId": "kingston-nf-osm-way-681850758",
+      "city": "kingston-nf",
+      "name": "Norfolk Island Memorial Park",
+      "archetype": "park-landscape",
+      "subject": "Norfolk Island Memorial Park: a lawn with a memorial stone and plaques among pine trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 66.6,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#b0a998",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "No description found; typed memorial lawn."
+    },
+    "kingston-nf-quiet-reflection": {
+      "venueId": "kingston-nf-quiet-reflection",
+      "city": "kingston-nf",
+      "name": "Quiet reflection space (game venue)",
+      "archetype": "shrine-small",
+      "subject": "A small whitewashed stone chapel-like reflection hut in the Kingston settlement, typed from the local Georgian style",
+      "form": {
+        "footprint": "rect",
+        "width_m": 19.1,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1ede0",
+          "#d6c9a6",
+          "#ffffff"
+        ],
+        "roofColour": "#5a4a3c",
+        "roofMaterial": "timber-shingle",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "georgian",
+      "era": "19th century (typed)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "Game venue placeholder, not a real named place. The nearest OSM building is a 19 x 10 m museum in KAVHA."
+    },
+    "kingston-nf-recreation": {
+      "venueId": "kingston-nf-recreation",
+      "city": "kingston-nf",
+      "name": "Pop's Corner",
+      "archetype": "park-landscape",
+      "subject": "Pop's Corner: a tiny roadside park corner with a seat and a small shelter under pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10.1,
+        "depth_m": 6.2,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#9a8061",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": null,
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "OSM leisure=park polygon 10 x 6 m. Nothing found."
+    },
+    "kingston-nf-transit": {
+      "venueId": "kingston-nf-transit",
+      "city": "kingston-nf",
+      "name": "City transit stop (game venue)",
+      "archetype": "transport-station",
+      "subject": "A small roadside bus shelter with a pitched iron roof on timber posts",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16.2,
+        "depth_m": 5.4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "concrete",
+        "colours": [
+          "#9a8061",
+          "#6a7b5a",
+          "#e8e2cc"
+        ],
+        "roofColour": "#7c8185",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "modern",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norfolk_Island",
+          "what": "island context only; no building-specific description found"
+        }
+      ],
+      "notes": "Game venue placeholder, not a real named place."
+    }
+  }
+}

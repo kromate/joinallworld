@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dar-es-salaam",
+ "venueId": "dar-es-salaam-nafasi-art-space",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1137577719",
+   "used": "the OSM way is a ~174 x 163 m compound polygon (arts_centre), too large and irregular to be one building: used only for site extent and name"
+  },
+  {
+   "kind": "text",
+   "used": "brief (typed, confidence low): converted warehouse with sawtooth roof, studios and gallery, murals, blank sign board, sand/dirt yard with broadleaf trees. The only nearby Commons photo (VitaMalulu.jpg) is a portrait of a person, not the building, so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.08
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "warehouse",
+   "footprint": {
+    "rect": [
+     56,
+     28
+    ]
+   },
+   "height": 7,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b5ada0",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.5,
+    "pattern": [
+     {
+      "type": "panels",
+      "colours": [
+       "#d9b777",
+       "#3e6b55",
+       "#b5ada0"
+      ],
+      "slits": 0,
+      "faces": [
+       "front"
+      ]
+     }
+    ]
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 56,
+    "depth": 28,
+    "z": 7,
+    "folds": 7,
+    "rise": 2.6,
+    "thickness": 0.3,
+    "colour": "#7b8085",
+    "material": "corrugated",
+    "foldAxis": "x"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "studio-wing",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    -17,
+    -20
+   ],
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9b777",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f7478",
+    "parapet": 0.3,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gallery-shed",
+   "footprint": {
+    "rect": [
+     16,
+     10
+    ]
+   },
+   "at": [
+    24,
+    -19
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dfd2",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-1",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -8,
+    -14.15,
+    1
+   ],
+   "params": {
+    "rect": [
+     16,
+     0.3
+    ],
+    "height": 4.5,
+    "colour": "#3e6b55"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mural-2",
+   "lod": [
+    0
+   ],
+   "at": [
+    12,
+    -14.2,
+    1.5
+   ],
+   "params": {
+    "rect": [
+     9,
+     0.3
+    ],
+    "height": 3.5,
+    "colour": "#c4553a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign-board",
+   "lod": [
+    0,
+    1
+   ],
+   "at": [
+    -17,
+    -26.2,
+    4
+   ],
+   "params": {
+    "rect": [
+     7,
+     0.4
+    ],
+    "height": 1.6,
+    "colour": "#3e6b55"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -38,
+     -18
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     40,
+     -24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     14
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   110,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of the building (only a portrait); typed sawtooth-roof warehouse with studio wing, gallery shed and mural patches; OSM way is a compound, not used for the footprint."
+ }
+}

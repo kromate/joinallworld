@@ -1,0 +1,156 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "gusau",
+ "venueId": "our-lady-of-fatima-church-gusau",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1193585830",
+   "used": "church outline (about 41 x 24 m, tagged building=church, rotated 57 degrees) used for the nave and transept mass"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/gusau.json",
+   "used": "brief: tall gabled nave in white render, free-standing bell tower, arched windows, Marian niche, red-brown clay-tile roof; no photo of this church found on Commons"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 10,
+  "fovDeg": 40
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.8
+   },
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ede0",
+    "windows": "punched",
+    "windowShape": "arched",
+    "windowRatio": 0.14,
+    "plinth": 0.6,
+    "bay": 4.5,
+    "pattern": [
+     {
+      "type": "bands",
+      "colour": "#a85b3c",
+      "height": 0.5,
+      "at": 0.0,
+      "floors": "all"
+     }
+    ]
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 32,
+    "colour": "#6b3a2b",
+    "material": "clay-tile",
+    "overhang": 0.7
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -3,
+    0
+   ],
+   "on": "nave",
+   "params": {
+    "width": 7,
+    "rise": 1.2,
+    "run": 0.6,
+    "count": 4,
+    "colour": "#cfc7b2"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    -26,
+    -18,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4.2,
+    "height": 17,
+    "cap": "pyramid",
+    "cap_height": 4,
+    "colour": "#f3efe3",
+    "cap_colour": "#6b3a2b"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -36,
+    -30,
+    0
+   ],
+   "params": {
+    "length": 72,
+    "height": 1.6,
+    "thickness": 0.35,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#a85b3c"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.2,
+    "colour": "#a85b3c",
+    "leafColour": "#2d3033"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "forecourtDepth": 10,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -40,
+     10
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     -20
+    ],
+    "height": 7
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of this church found; real outline used for the nave, tower position and Marian niche are from the brief only; no front portal or statue niche modelled"
+ }
+}

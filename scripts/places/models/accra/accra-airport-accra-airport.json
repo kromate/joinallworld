@@ -1,0 +1,517 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kotoka_International_Airport,_Accra,_Ghana.JPG",
+   "licence": "CC BY-SA 3.0",
+   "author": "Rjruiziii",
+   "view": "side",
+   "file": "/tmp/places-evidence/accra/kia1.jpg",
+   "used": "Terminal 3 east end: kente-patterned orange brick block, cream stone block, long copper-brown curved-front wing with ribbon windows, bay window box, swept grey-green roof, control tower beyond"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/598559575",
+   "used": "scale only (377 m terminal, a 70 m frontage is modelled)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -34,
+  "pitchDeg": 3,
+  "fovDeg": 44,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "kente-block",
+   "footprint": {
+    "rect": [
+     22,
+     26
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "height": 20,
+   "storeys": 5,
+   "wall": {
+    "material": "brick",
+    "colour": "#b9683c",
+    "windows": "none",
+    "trimColour": "#d8a46a",
+    "plinth": 0,
+    "pattern": {
+     "type": "panels",
+     "size": [
+      2.2,
+      1.5
+     ],
+     "colours": [
+      "#d9893f",
+      "#d8b27a",
+      "#8a4a26"
+     ],
+     "faces": "all"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a8f82",
+    "parapet": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cream-block",
+   "footprint": {
+    "rect": [
+     13,
+     17
+    ]
+   },
+   "at": [
+    -8,
+    -5
+   ],
+   "height": 19,
+   "storeys": 4,
+   "wall": {
+    "material": "limestone",
+    "colour": "#e3d8bd",
+    "windows": "none",
+    "trimColour": "#cbbf9f",
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c9c1ac",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "control-tower",
+   "at": [
+    78,
+    30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "style": "square",
+    "colour": "#b9876a"
+   }
+  },
+  {
+   "type": "loft",
+   "id": "copper-skin",
+   "at": [
+    35,
+    0,
+    0
+   ],
+   "params": {
+    "colour": "#a85a34",
+    "material": "metal-cladding",
+    "capTop": true,
+    "curve": false,
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       58,
+       19
+      ],
+      "cy": 1.5
+     },
+     {
+      "z": 3,
+      "rect": [
+       58,
+       22
+      ],
+      "cy": 0.0
+     },
+     {
+      "z": 7,
+      "rect": [
+       58,
+       22.5
+      ],
+      "cy": -0.25
+     },
+     {
+      "z": 11,
+      "rect": [
+       58,
+       21
+      ],
+      "cy": 0.5
+     },
+     {
+      "z": 14,
+      "rect": [
+       58,
+       20
+      ],
+      "cy": 1.0
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "slab-step",
+   "at": [
+    -8,
+    -5,
+    19
+   ],
+   "params": {
+    "rect": [
+     14,
+     18
+    ],
+    "height": 0.5,
+    "colour": "#cbbf9f"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "step-slab",
+   "at": [
+    8,
+    -1,
+    14
+   ],
+   "params": {
+    "rect": [
+     22,
+     20
+    ],
+    "height": 0.4,
+    "colour": "#c9c1ac"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hall-box",
+   "at": [
+    12,
+    6,
+    14.4
+   ],
+   "params": {
+    "rect": [
+     38,
+     18
+    ],
+    "height": 5.8,
+    "colour": "#2f3a3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "wing-roof",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "poly": [
+      [
+       -9,
+       0.9
+      ],
+      [
+       -7,
+       0.2
+      ],
+      [
+       -3,
+       -0.2
+      ],
+      [
+       2,
+       0.2
+      ],
+      [
+       6,
+       1.3
+      ],
+      [
+       9.5,
+       3.4
+      ],
+      [
+       9.5,
+       3.9
+      ],
+      [
+       6,
+       1.7
+      ],
+      [
+       2,
+       0.7
+      ],
+      [
+       -3,
+       0.3
+      ],
+      [
+       -7,
+       0.7
+      ],
+      [
+       -9,
+       1.4
+      ]
+     ]
+    },
+    "points": [
+     [
+      -2,
+      -3,
+      20.0
+     ],
+     [
+      44,
+      -3,
+      20.0
+     ]
+    ],
+    "colour": "#5f7468"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    23,
+    -10.1,
+    10.2
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     36,
+     0,
+     0
+    ],
+    "count": 20,
+    "of": {
+     "type": "prism",
+     "id": "rw",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.1,
+       0.5
+      ],
+      "height": 0.9,
+      "colour": "#2d3a44"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "array",
+   "at": [
+    40,
+    -10.1,
+    9.6
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0,
+     0
+    ],
+    "end": [
+     34,
+     0,
+     0
+    ],
+    "count": 20,
+    "of": {
+     "type": "prism",
+     "id": "fin",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.15,
+       1.0
+      ],
+      "height": 1.5,
+      "colour": "#c9b89a"
+     }
+    }
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "sunshade-1",
+   "at": [
+    40,
+    -10.6,
+    11.2
+   ],
+   "params": {
+    "rect": [
+     38,
+     1.8
+    ],
+    "height": 0.25,
+    "colour": "#c9b89a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-window",
+   "at": [
+    23,
+    -12.2,
+    4.8
+   ],
+   "params": {
+    "rect": [
+     8,
+     2.6
+    ],
+    "height": 3.4,
+    "colour": "#a85a34"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "bay-glass",
+   "at": [
+    23,
+    -13.55,
+    5.4
+   ],
+   "params": {
+    "rect": [
+     6.4,
+     0.2
+    ],
+    "height": 2.2,
+    "colour": "#4a5a66"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sunshade-2",
+   "at": [
+    40,
+    -11.5,
+    3.8
+   ],
+   "params": {
+    "rect": [
+     18,
+     1.4
+    ],
+    "height": 0.3,
+    "colour": "#c9b89a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "apron-wall",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     1.0
+    ],
+    "height": 1.2,
+    "colour": "#c9c4b8"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plinth",
+   "at": [
+    -10,
+    -16,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     1.4
+    ],
+    "height": 0.5,
+    "colour": "#b8b3a6"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hoarding",
+   "at": [
+    -10,
+    -16.1,
+    1.2
+   ],
+   "params": {
+    "rect": [
+     90,
+     0.4
+    ],
+    "height": 2.4,
+    "colour": "#3fa83a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [],
+  "extent": [
+   160,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Only the east end (~70 m of 377 m) is modelled; copper skin is a lofted bulge but its ends are blunt; upturned roof is a swept profile, less sharp than the real wing; kente block is a random 3-colour panel grid, not true zigzags; hoarding is blank."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-airport-accra-airport"
+}

@@ -1,0 +1,265 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "community-polling",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/abuja.json#community-polling",
+   "used": "authored game venue, no real building or photo found: 24x12 m single-storey hall, mono-pitch terracotta shed roof high at the back, deep open front veranda with posts across 24 m, large blank signboard at entrance, queue rails and benches, one flag, low kerb wall, acacia trees beside a road"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     24,
+     12
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#2f6b4f",
+    "bay": 3.5
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#b4502f",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.0,
+    "high": "back"
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.4,
+    "eaveHeight": 3.0,
+    "attachHeight": 4.0,
+    "post": "square",
+    "postEvery": 3.0,
+    "railHeight": 0.0,
+    "colour": "#f2efe6",
+    "roofColour": "#b4502f"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14.5,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "bottom": 1.4,
+    "colour": "#2f6b4f",
+    "frameColour": "#d6d0c4",
+    "posts": true
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    13.5,
+    -8.5,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1,
+    "colours": [
+     "#1b7a43"
+    ]
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.1,
+       1.1
+      ],
+      "height": 2.2,
+      "colour": "#7c7468"
+     }
+    },
+    "start": [
+     -9,
+     0
+    ],
+    "end": [
+     9,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -0.0,
+    -10.2,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -12.6,
+    0
+   ],
+   "params": {
+    "rect": [
+     22,
+     0.12
+    ],
+    "height": 1.0,
+    "colour": "#2f6b4f"
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    -7.3,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       2.2,
+       0.5
+      ],
+      "height": 0.5,
+      "colour": "#6b4a2e"
+     }
+    },
+    "start": [
+     -9,
+     0
+    ],
+    "end": [
+     9,
+     0
+    ],
+    "count": 4
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.5,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#b0aaa0"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "forecourtDepth": 6,
+  "extent": [
+   50,
+   40
+  ],
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     -17,
+     -5
+    ],
+    "height": 8
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     18,
+     6
+    ],
+    "height": 9
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -16,
+     10
+    ],
+    "height": 7
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "Text-only authored venue, no photo exists: mono-pitch terracotta shed roof, deep front veranda, queue rails and benches, big entrance sign composed from the brief; sign faces sideways, no real building to compare."
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "shadawanka-rock-painting-bauchi",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "briefs/bauchi.json shadawanka-rock-painting-bauchi",
+   "used": "granite outcrop ~45 x 30 x 9 m, rock-shelter face with faded red-ochre figures, rough steps, low boundary wall, acacia; no photo found (Wikidata Q26235318 has no image)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1040777257",
+   "used": "not used: 43 m away and a 91 m2 building, not the outcrop"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 10,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "rock-hill",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 42,
+    "depth": 28,
+    "height": 9,
+    "seed": 7,
+    "stairs": false,
+    "rock_colour": "#8c8378",
+    "boulders": 9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "ochre-panel",
+   "footprint": {
+    "rect": [
+     7,
+     0.6
+    ]
+   },
+   "at": [
+    -3,
+    -10.2
+   ],
+   "z0": 2.2,
+   "height": 3.2,
+   "wall": {
+    "material": "stone",
+    "colour": "#a8553a",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-lip",
+   "footprint": {
+    "rect": [
+     11,
+     2
+    ]
+   },
+   "at": [
+    -3,
+    -10.8
+   ],
+   "z0": 5.2,
+   "height": 0.9,
+   "wall": {
+    "material": "granite",
+    "colour": "#6f6a60",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f6a60"
+   }
+  },
+  {
+   "type": "market-open/steps",
+   "at": [
+    6,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 2.2,
+    "rise": 0.5,
+    "run": 1.2,
+    "count": 5,
+    "colour": "#8c8378"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -20,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "height": 0.9,
+    "thickness": 0.5,
+    "kind": "wall",
+    "colour": "#8c8378"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 3,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   70,
+   55
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; generic granite mound, ochre panel hidden from default view, no shelter overhang"
+ }
+}

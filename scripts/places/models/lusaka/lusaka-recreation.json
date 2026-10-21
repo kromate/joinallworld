@@ -1,0 +1,343 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lusaka",
+ "venueId": "lusaka-recreation",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1346006477",
+   "used": "park outline (225 x 100 m, bearing 161), drawn at about 0.4 scale as a lawn plate; the park is not a building"
+  },
+  {
+   "kind": "text",
+   "used": "Tazara Memorial Park: memorial to the Tanzania-Zambia railway (1975); contents (obelisk, rail relics, gate, flags) typed from the name, no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "rails-bed",
+   "footprint": {
+    "rect": [
+     3,
+     28
+    ]
+   },
+   "at": [
+    -16,
+    -6
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#7d6a55",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6a5a48"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "plaza",
+   "footprint": {
+    "rect": [
+     18,
+     18
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 0.5,
+   "wall": {
+    "material": "concrete",
+    "colour": "#cfc8b8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d2c4"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "obelisk",
+   "params": {
+    "rect": [
+     2.6,
+     2.6
+    ],
+    "z0": 0.5,
+    "height": 16,
+    "topScale": 0.45,
+    "colour": "#d7d1c3",
+    "topColour": "#c9c2b2"
+   },
+   "at": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "obelisk-base",
+   "footprint": {
+    "rect": [
+     5,
+     5
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 1.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#b9b3a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c4beae"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "mass",
+     "footprint": {
+      "rect": [
+       0.15,
+       26
+      ]
+     },
+     "height": 0.2,
+     "wall": {
+      "material": "concrete",
+      "colour": "#5a4a3c",
+      "windows": "none"
+     },
+     "roof": {
+      "form": "flat",
+      "colour": "#5a4a3c"
+     }
+    },
+    "mode": "line",
+    "start": [
+     -1,
+     -4
+    ],
+    "end": [
+     1,
+     -4
+    ],
+    "count": 2
+   },
+   "at": [
+    -16,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "loco-body",
+   "footprint": {
+    "rect": [
+     2.8,
+     9
+    ]
+   },
+   "at": [
+    -16,
+    -14
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f5d7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f33"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "mass",
+   "id": "loco-cab",
+   "footprint": {
+    "rect": [
+     2.8,
+     3
+    ]
+   },
+   "at": [
+    -16,
+    -8
+   ],
+   "height": 4.2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#2f5d7c",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2a2f33"
+   },
+   "z0": 0.5
+  },
+  {
+   "type": "gate",
+   "at": [
+    -14,
+    -38,
+    0
+   ],
+   "rotDeg": 10,
+   "params": {
+    "width": 8,
+    "height": 3.5,
+    "colour": "#cfc8b8"
+   }
+  },
+  {
+   "type": "flag",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      36
+     ],
+     [
+      -7,
+      -40
+     ],
+     [
+      34,
+      -36
+     ],
+     [
+      7,
+      40
+     ],
+     [
+      -34,
+      36
+     ]
+    ],
+    "height": 1.6,
+    "thickness": 0.25,
+    "kind": "fence",
+    "colour": "#3a3d41"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     20
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     22,
+     24
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     -22
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -8,
+     28
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     14,
+     -30
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -22,
+     -4
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     6
+    ],
+    "height": 9
+   }
+  ],
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo anywhere: contents (obelisk, loco relic, rails) are assumed from the name; lawn plate is a scaled-down park outline"
+ }
+}

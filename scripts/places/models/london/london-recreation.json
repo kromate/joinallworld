@@ -1,0 +1,847 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "london",
+ "venueId": "london-recreation",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Wimbledon_Windmill.jpg",
+   "licence": "Public domain",
+   "author": "Adrian Robson",
+   "view": "front",
+   "file": "/tmp/places-evidence/london/rec1.jpg",
+   "used": "the common's landmark windmill: octagonal buff-brown brick base with a white railed gallery, black tapering smock tower, white cap with four white lattice sails; dark clipped hedge and tall pines around it, open grass in front"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bridleway_on_Wimbledon_Common_-_geograph.org.uk_-_1670112.jpg",
+   "licence": "CC BY-SA 2.0",
+   "author": "Peter Trimming",
+   "view": "street",
+   "file": "/tmp/places-evidence/london/rec2.jpg",
+   "used": "straight wide bridleway with open heath on the left and broadleaf oak and thorn trees along the right, a low waymarker post"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/4285108",
+   "used": "extent and character only (about 350 ha common); modelled as a 300 m vignette around the windmill, ponds and bridleway"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 4,
+  "fovDeg": 38,
+  "aspect": 1.333,
+  "fit": "building",
+  "margin": 0.15,
+  "shiftX": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      5.82,
+      2.411
+     ],
+     [
+      2.411,
+      5.82
+     ],
+     [
+      -2.411,
+      5.82
+     ],
+     [
+      -5.82,
+      2.411
+     ],
+     [
+      -5.82,
+      -2.411
+     ],
+     [
+      -2.411,
+      -5.82
+     ],
+     [
+      2.411,
+      -5.82
+     ],
+     [
+      5.82,
+      -2.411
+     ]
+    ],
+    "height": 7.4,
+    "colour": "#9c7a52",
+    "material": "brick",
+    "windows": "punched",
+    "windowRatio": 0.06,
+    "bay": 6,
+    "storeys": 1,
+    "plinth": 0.3,
+    "trimColour": "#e8e4d8"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    7.4
+   ],
+   "params": {
+    "points": [
+     [
+      5.451,
+      2.258
+     ],
+     [
+      2.258,
+      5.451
+     ],
+     [
+      -2.258,
+      5.451
+     ],
+     [
+      -5.451,
+      2.258
+     ],
+     [
+      -5.451,
+      -2.258
+     ],
+     [
+      -2.258,
+      -5.451
+     ],
+     [
+      2.258,
+      -5.451
+     ],
+     [
+      5.451,
+      -2.258
+     ]
+    ],
+    "height": 0.35,
+    "colour": "#f2efe6"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    8.4
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.12,
+      0.12
+     ]
+    },
+    "points": [
+     [
+      5.27,
+      2.18,
+      0
+     ],
+     [
+      2.18,
+      5.27,
+      0
+     ],
+     [
+      -2.18,
+      5.27,
+      0
+     ],
+     [
+      -5.27,
+      2.18,
+      0
+     ],
+     [
+      -5.27,
+      -2.18,
+      0
+     ],
+     [
+      -2.18,
+      -5.27,
+      0
+     ],
+     [
+      2.18,
+      -5.27,
+      0
+     ],
+     [
+      5.27,
+      -2.18,
+      0
+     ],
+     [
+      5.27,
+      2.18,
+      0
+     ]
+    ],
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    7.75
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        3.603,
+        1.4923626
+       ],
+       [
+        1.4923626,
+        3.603
+       ],
+       [
+        -1.4923626,
+        3.603
+       ],
+       [
+        -3.603,
+        1.4923626
+       ],
+       [
+        -3.603,
+        -1.4923626
+       ],
+       [
+        -1.4923626,
+        -3.603
+       ],
+       [
+        1.4923626,
+        -3.603
+       ],
+       [
+        3.603,
+        -1.4923626
+       ]
+      ]
+     },
+     {
+      "z": 3.5,
+      "poly": [
+       [
+        2.7945,
+        1.1574819
+       ],
+       [
+        1.1574819,
+        2.7945
+       ],
+       [
+        -1.1574819,
+        2.7945
+       ],
+       [
+        -2.7945,
+        1.1574819
+       ],
+       [
+        -2.7945,
+        -1.1574819
+       ],
+       [
+        -1.1574819,
+        -2.7945
+       ],
+       [
+        1.1574819,
+        -2.7945
+       ],
+       [
+        2.7945,
+        -1.1574819
+       ]
+      ]
+     }
+    ],
+    "colour": "#1f2022"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    11.25
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "poly": [
+       [
+        2.7945,
+        1.1574819
+       ],
+       [
+        1.1574819,
+        2.7945
+       ],
+       [
+        -1.1574819,
+        2.7945
+       ],
+       [
+        -2.7945,
+        1.1574819
+       ],
+       [
+        -2.7945,
+        -1.1574819
+       ],
+       [
+        -1.1574819,
+        -2.7945
+       ],
+       [
+        1.1574819,
+        -2.7945
+       ],
+       [
+        2.7945,
+        -1.1574819
+       ]
+      ]
+     },
+     {
+      "z": 4.5,
+      "poly": [
+       [
+        1.755,
+        0.7269209999999999
+       ],
+       [
+        0.7269209999999999,
+        1.755
+       ],
+       [
+        -0.7269209999999999,
+        1.755
+       ],
+       [
+        -1.755,
+        0.7269209999999999
+       ],
+       [
+        -1.755,
+        -0.7269209999999999
+       ],
+       [
+        -0.7269209999999999,
+        -1.755
+       ],
+       [
+        0.7269209999999999,
+        -1.755
+       ],
+       [
+        1.755,
+        -0.7269209999999999
+       ]
+      ]
+     },
+     {
+      "z": 6.1,
+      "poly": [
+       [
+        1.478,
+        0.6121876
+       ],
+       [
+        0.6121876,
+        1.478
+       ],
+       [
+        -0.6121876,
+        1.478
+       ],
+       [
+        -1.478,
+        0.6121876
+       ],
+       [
+        -1.478,
+        -0.6121876
+       ],
+       [
+        -0.6121876,
+        -1.478
+       ],
+       [
+        0.6121876,
+        -1.478
+       ],
+       [
+        1.478,
+        -0.6121876
+       ]
+      ]
+     }
+    ],
+    "colour": "#f2f0e8"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    0,
+    0,
+    17.35
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       3.6,
+       4.2
+      ]
+     },
+     {
+      "z": 2.2,
+      "rect": [
+       3.2,
+       3.8
+      ]
+     },
+     {
+      "z": 3.0,
+      "rect": [
+       1.0,
+       2.8
+      ]
+     }
+    ],
+    "colour": "#f2f0e8"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      0.7071067811865476,
+      -2.5,
+      20.257106781186543
+     ],
+     [
+      7.4246212024587495,
+      -2.5,
+      26.974621202458746
+     ]
+    ],
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -0.7071067811865475,
+      -2.5,
+      20.257106781186543
+     ],
+     [
+      -7.424621202458749,
+      -2.5,
+      26.974621202458746
+     ]
+    ],
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      -0.7071067811865477,
+      -2.5,
+      18.84289321881345
+     ],
+     [
+      -7.42462120245875,
+      -2.5,
+      12.12537879754125
+     ]
+    ],
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.3,
+      2.0
+     ]
+    },
+    "points": [
+     [
+      0.7071067811865474,
+      -2.5,
+      18.84289321881345
+     ],
+     [
+      7.424621202458747,
+      -2.5,
+      12.125378797541249
+     ]
+    ],
+    "colour": "#f4f2ea"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "door",
+   "footprint": {
+    "rect": [
+     1.6,
+     0.6
+    ]
+   },
+   "at": [
+    0,
+    -6.9
+   ],
+   "height": 2.2,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#d8d4c8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#5a3a2a",
+    "pitch": 40,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 17,
+    "count": 1,
+    "colour": "#1d3322"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 15,
+    "count": 2,
+    "spread": 7,
+    "colour": "#1d3322"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    14,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "count": 2,
+    "spread": 6,
+    "colour": "#1d3322"
+   }
+  },
+  {
+   "type": "path-strip",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -75,
+      -18
+     ],
+     [
+      -30,
+      -17
+     ],
+     [
+      30,
+      -19
+     ],
+     [
+      75,
+      -16
+     ]
+    ],
+    "width": 5,
+    "colour": "#b9a98a"
+   }
+  },
+  {
+   "type": "tree-avenue",
+   "at": [
+    5,
+    22,
+    0
+   ],
+   "params": {
+    "length": 120,
+    "count": 10,
+    "kind": "broadleaf",
+    "gap": 4,
+    "height_min": 9,
+    "height_max": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    -52,
+    32,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 40,
+    "count": 14,
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    55,
+    40,
+    0
+   ],
+   "params": {
+    "width": 40,
+    "depth": 40,
+    "count": 14,
+    "min_height": 8,
+    "max_height": 14
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    2,
+    -10.5,
+    0
+   ],
+   "params": {
+    "rect": [
+     30,
+     1.6
+    ],
+    "height": 2.2,
+    "colour": "#22382a",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    -4.6,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#8a4a38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -4.6,
+    4.6,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#8a4a38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.6,
+    -4.6,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#8a4a38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    4.6,
+    4.6,
+    7.4
+   ],
+   "params": {
+    "rect": [
+     0.7,
+     0.7
+    ],
+    "height": 1.8,
+    "colour": "#8a4a38",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    7.75
+   ],
+   "params": {
+    "mode": "line",
+    "count": 8,
+    "start": [
+     -5.0,
+     -2.3
+    ],
+    "end": [
+     5.0,
+     -2.3
+    ],
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.1,
+        0.1
+       ],
+       "height": 0.9,
+       "colour": "#f4f2ea",
+       "windows": "none"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "none",
+  "extent": [
+   160,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Tower now black lower and white boarded upper smock with broader white sails and corner chimneys, fewer base windows, dark clipped hedge, ponds removed; sails lack true lattice slats, gallery X-lattice only hinted, pines are generic broadleaf crowns not umbrella Scots pines, common is a stylised vignette."
+ }
+}

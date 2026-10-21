@@ -1,0 +1,571 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "sabon-market",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Sabon_Gari_Market_Kano.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gwanki",
+   "view": "street",
+   "file": "/tmp/places-evidence/kano/sabon1.jpg",
+   "used": "two-storey pale dusty-beige block, arched openings on both storeys, flat parapet roof, shutter shopfronts with striped green/red awnings, wide open junction in front, white booth, blank billboard on mast, street lamps, broadleaf trees to the right"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1569657387",
+   "used": "overall extent only (about 100 x 115 m marketplace); the polygon is irregular so the blocks are composed from the photo"
+  }
+ ],
+ "camera": {
+  "yawDeg": -18,
+  "pitchDeg": 20,
+  "fovDeg": 50,
+  "aspect": 1.78,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-0",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    -31,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 8.0,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb995",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#a99a80",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-1",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    -10,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 9.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d6c4a2",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#a99a80",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-2",
+   "footprint": {
+    "rect": [
+     22,
+     13
+    ]
+   },
+   "at": [
+    11,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c4b08c",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#a99a80",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "front-3",
+   "footprint": {
+    "rect": [
+     20,
+     13
+    ]
+   },
+   "at": [
+    32,
+    6
+   ],
+   "rotDeg": 0,
+   "height": 8.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d0bd9a",
+    "windows": "arched",
+    "windowRatio": 0.4,
+    "windowShape": "arched",
+    "pattern": [
+     {
+      "type": "arcade",
+      "faces": [
+       "front"
+      ]
+     }
+    ],
+    "bands": "#a99a80",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9488",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-block",
+   "footprint": {
+    "rect": [
+     14,
+     22
+    ]
+   },
+   "at": [
+    52,
+    -6
+   ],
+   "rotDeg": 0,
+   "height": 8.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdbb9a",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-block",
+   "footprint": {
+    "rect": [
+     14,
+     10
+    ]
+   },
+   "at": [
+    -40,
+    -24
+   ],
+   "rotDeg": 0,
+   "height": 8.4,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c7b794",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "back-block",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    10,
+    36
+   ],
+   "rotDeg": 0,
+   "height": 8.8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c7a0",
+    "windows": "none",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -34,
+    -9.5,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 3,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.6,
+    "awning_colours": [
+     "#2f8f5a",
+     "#c8362f",
+     "#e9e3d3"
+    ],
+    "shutter_colours": [
+     "#6b7a82",
+     "#a05a3c"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -12,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "colours": [
+     "#2f8f5a",
+     "#e9e3d3",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    2,
+    -1,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "depth": 1.6,
+    "colours": [
+     "#2f9fc0",
+     "#c8362f",
+     "#e9e3d3"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    20,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2.2,
+    "depth": 2.2,
+    "height": 2.6,
+    "colour": "#ece8da"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -10,
+    -22,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 4,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#2f6fb0",
+     "#e0b030"
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    28,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 3,
+    "spacing": 14
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    62,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    70,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "lattice-mast",
+   "at": [
+    46,
+    16,
+    0
+   ],
+   "params": {
+    "height": 30,
+    "baseWidth": 1.0,
+    "topWidth": 0.5,
+    "panels": 8,
+    "colour": "#3f7a52",
+    "colour2": "#3f7a52"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    34,
+    15,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "height": 5,
+    "bottom": 9,
+    "colour": "#2f5fa8",
+    "frameColour": "#b8bcc0",
+    "posts": true
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    25,
+    -18,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 6
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 2,
+    "depth": 2,
+    "height": 2.5,
+    "colour": "#ece8da"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -16,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#6b7a82"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 1,
+    "pitch": 3,
+    "kind": "umbrella",
+    "colours": [
+     "#6b7a82"
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "road-front",
+   "footprint": {
+    "rect": [
+     118,
+     12
+    ]
+   },
+   "at": [
+    0,
+    -24
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8579",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8579"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "road-cross",
+   "footprint": {
+    "rect": [
+     12,
+     118
+    ]
+   },
+   "at": [
+    -10,
+    -5
+   ],
+   "rotDeg": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#8d8579",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8579"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   150,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "upper floor still reads as arched windows not an open dark gallery; frontage cleaner than the weathered photo; mast thin, billboard blank blue, handcarts and striped bollards omitted; roads are flat slabs"
+ }
+}

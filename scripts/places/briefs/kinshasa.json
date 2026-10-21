@@ -1,0 +1,1511 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "kinshasa",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "kinshasa",
+    "climate": "savanna",
+    "vernacular": "Huge river capital on flat low ground beside the Congo. Belgian-era grid and 1950s modernist blocks (white or cream concrete, brise-soleil, pilotis) in Gombe and Limete; vast self-built communes of 1-2 storey cement-block houses in painted render with rust or grey corrugated roofs; Mobutu-era monumental government and sport buildings; Chinese-built landmarks after 1990 (stadium, palaces). Sandy-red earth, oil palms and mango trees, and walls hand-painted in bright commercial colours.",
+    "wallColours": [
+      "#f1ead8",
+      "#d9c9a3",
+      "#c58b5c",
+      "#9fb7c6",
+      "#b0aaa0",
+      "#e0b24a",
+      "#a2553a"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#6b6f73",
+      "#4f6b54",
+      "#9a6b3c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "brick",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Colonial 1950s tropical modernism (brise-soleil, concrete grilles, pilotis, curved canopies); Mobutu-era monumentalism and authenticite statuary; hand-painted advertising murals and telecom-coloured shopfronts; arched colonnades on older Belgian buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Kinshasa",
+        "what": "Koppen Aw flat low terrain; Belgian colonial grid, prefabricated Danish houses, 1950s two-storey housing and apartment blocks, Palace of the Nation, Academie des Beaux-Arts"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Ndjili_International_Airport",
+        "what": "colonial-era terminal by Leon Marcel Chapeaux with 2012 bronze-glass facade"
+      }
+    ]
+  },
+  "places": {
+    "kinshasa-airport-kinshasa-airport": {
+      "venueId": "kinshasa-airport-kinshasa-airport",
+      "city": "kinshasa",
+      "name": "Ndjili International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the colonial-era (1950s) Ndjili terminal with its 2012 bronze-glass facade, plus the circular rotunda hall used for domestic flights and a separate control tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 170,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#8a6a3c",
+          "#d9d5cb",
+          "#f2f2f0"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1959, facade 2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ndjili_International_Airport",
+          "what": "original terminal by Leon Marcel Chapeaux; rotunda for domestic flights; 2012 bronze-glass facade; international terminal opened 2015; airport opened Feb 1959"
+        }
+      ],
+      "notes": "Design and bronze glazing are sourced; width, height and canopy details are estimates. Bronze-tinted glass front over pale concrete is the recognisable look."
+    },
+    "kinshasa-clinic": {
+      "venueId": "kinshasa-clinic",
+      "city": "kinshasa",
+      "name": "Centre hospitalier Nganda",
+      "archetype": "hospital",
+      "subject": "a district clinic: a two-storey rendered block with a covered entrance and ambulance bay",
+      "form": {
+        "footprint": "L",
+        "width_m": 45,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#4a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Neighbourhood health centre; real layout unknown. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-community-notices": {
+      "venueId": "kinshasa-community-notices",
+      "city": "kinshasa",
+      "name": "Institut Congolais pour la Conservation de la Nature",
+      "archetype": "office-low",
+      "subject": "a conservation agency HQ: a modest two-storey rendered office block with flagpoles behind a wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 32,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4da",
+          "#2f6b4f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Real national park agency (ICCN); building not described. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-community-voting-game": {
+      "venueId": "kinshasa-community-voting-game",
+      "city": "kinshasa",
+      "name": "Bureau de Quartier Kinkole Pecheur",
+      "archetype": "civic-small",
+      "subject": "a neighbourhood office of the fishing village of Kinkole: a one-storey cement-block hall with a corrugated roof near the river bank",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#9fb7c6",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Kinkole is a Congo River fishing settlement. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-community-workshop": {
+      "venueId": "kinshasa-community-workshop",
+      "city": "kinshasa",
+      "name": "Universite de Kinshasa",
+      "archetype": "campus-block",
+      "subject": "a hillside campus block on Mont Amba (ex-Lovanium): wide 1950s-60s concrete lecture and administration buildings with deep brise-soleil, set among eroded red slopes",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d5cb",
+          "#a2553a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1954 onward",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/University_of_Kinshasa",
+          "what": "Lovanium opened 1954 on a 400 ha Mount Amba campus in Lemba; Rectorat main admin building; 14 residences; erosion damage; Notre-Dame de la Sagesse chapel on campus"
+        }
+      ],
+      "notes": "Campus history is sourced; building form and colours are typical-1950s-tropical-modernism estimates. Many buildings are weathered and eroded at the base."
+    },
+    "kinshasa-market-game": {
+      "venueId": "kinshasa-market-game",
+      "city": "kinshasa",
+      "name": "Marche Wenzeyambila",
+      "archetype": "market-open",
+      "subject": "a crowded open market: tight rows of plank stalls with tarpaulin and corrugated covers on red earth",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a68a64",
+          "#d9c9a3",
+          "#6b6f73"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "hand-painted shop walls"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Neighbourhood market in the eastern communes. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-meal-stop": {
+      "venueId": "kinshasa-meal-stop",
+      "city": "kinshasa",
+      "name": "petit restaurant et plage",
+      "archetype": "restaurant",
+      "subject": "a small riverside beach eatery: open-sided pavilion with plastic chairs facing a sand beach",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#c9a77c",
+          "#2f6b8c",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "pier",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Roof may be thatch in reality; corrugated chosen as the commoner covering. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-node-12684273365": {
+      "venueId": "kinshasa-osm-node-12684273365",
+      "city": "kinshasa",
+      "name": "Simon Kimbangu",
+      "archetype": "monument",
+      "subject": "a statue of Simon Kimbangu, founder of Kimbanguism, on a concrete plinth with steps in a small paved plaza",
+      "form": {
+        "footprint": "round",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 7,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c4b8",
+          "#6b4f3a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM node; likely a statue or memorial, shape unverified. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-node-2298412028": {
+      "venueId": "kinshasa-osm-node-2298412028",
+      "city": "kinshasa",
+      "name": "Patrice Lumumba",
+      "archetype": "monument",
+      "subject": "a Patrice Lumumba monument: a tall bronze-coloured statue on a stepped plinth, on a traffic-circle plaza",
+      "form": {
+        "footprint": "round",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 0,
+        "height_m": 10,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#cfc9bd",
+          "#3b4a3a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#cfc9bd",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM node on the Limete side; an inaugurated Lumumba memorial exists there but its design is not verified here. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-node-5331304126": {
+      "venueId": "kinshasa-osm-node-5331304126",
+      "city": "kinshasa",
+      "name": "Villa Bahari",
+      "archetype": "restaurant",
+      "subject": "a lodge-style riverside restaurant villa: white-rendered terrace building with a tiled roof overlooking the Congo",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#f7f4ee",
+          "#a2553a",
+          "#2f6b8c"
+        ],
+        "roofColour": "#a2553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Western riverside location; style guessed. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-node-6575061831": {
+      "venueId": "kinshasa-osm-node-6575061831",
+      "city": "kinshasa",
+      "name": "Eglisse Makaro",
+      "archetype": "church-modern",
+      "subject": "a neighbourhood church: a plain rectangular hall in painted render with a tall facade cross and corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#4a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Misspelt OSM name; local parish church. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-node-6743676049": {
+      "venueId": "kinshasa-osm-node-6743676049",
+      "city": "kinshasa",
+      "name": "Marche de Mitendi",
+      "archetype": "market-open",
+      "subject": "a roadside village market on the south-west edge: pole-and-plank stalls with thatch-like and sheet covers",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 55,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#a68a64",
+          "#c9a77c",
+          "#6b6f73"
+        ],
+        "roofColour": "#7a5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 3
+        },
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Peri-urban market, smaller and rougher than city markets. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-node-7802162236": {
+      "venueId": "kinshasa-osm-node-7802162236",
+      "city": "kinshasa",
+      "name": "Marche de Buma",
+      "archetype": "market-open",
+      "subject": "a market with rows of concrete table stalls under long corrugated sheds",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9c9a3",
+          "#a2553a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 3
+        },
+        {
+          "id": "stalls",
+          "count": 4
+        },
+        {
+          "id": "umbrellas",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Eastern outskirts market; shed rows distinguish it from Mitendi. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-way-102422512": {
+      "venueId": "kinshasa-osm-way-102422512",
+      "city": "kinshasa",
+      "name": "Hopital du Cinquantenaire",
+      "archetype": "hospital",
+      "subject": "a large modern hospital block named for the 50th anniversary of independence (2010): a multi-storey white block with a central entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 100,
+        "depth_m": 35,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#4a7f8c",
+          "#c9ced1"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name implies c. 2010 build; size and look unverified. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-way-109431897": {
+      "venueId": "kinshasa-osm-way-109431897",
+      "city": "kinshasa",
+      "name": "Academie des Beaux-Arts",
+      "archetype": "campus-block",
+      "subject": "the art academy on its 10 ha site on Avenue de la Liberation: low 1950s modernist teaching wings around gardens with outdoor sculptures",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#efe6d2",
+          "#a2553a",
+          "#d9d5cb"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1951",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Acad%C3%A9mie_des_Beaux-Arts_(Kinshasa)",
+          "what": "10 ha site allocated 1949 on Avenue Josephine Charlotte (now Avenue de la Liberation); first buildings completed about two years later; campus grounds with outdoor sculptures"
+        }
+      ],
+      "notes": "Site, date and sculpture garden are sourced; architectural style is inferred from the Belgian colonial modernist period, and dimensions/colours are estimates."
+    },
+    "kinshasa-osm-way-129297066": {
+      "venueId": "kinshasa-osm-way-129297066",
+      "city": "kinshasa",
+      "name": "Stade Cardinal Malula",
+      "archetype": "stadium",
+      "subject": "the old Kinshasa football ground (ex-Stade Reine Astrid / Stade du 24 Novembre): a compact 24,000-seat bowl with concrete terraces, a covered main stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 160,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d5cb",
+          "#2f6b8c",
+          "#f7f4ee"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1937",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_Cardinal_Malula",
+          "what": "opened 1937, 24,000 seats; ex-Stade Reine Astrid and Stade du 24 Novembre; renamed for Cardinal Joseph Malula; home of AS Dragons"
+        }
+      ],
+      "notes": "Opening year, capacity and former names are sourced; appearance is not described, so stands, roof and colours are estimates for a 1930s colonial stadium. Smaller than Stade des Martyrs."
+    },
+    "kinshasa-osm-way-1536197976": {
+      "venueId": "kinshasa-osm-way-1536197976",
+      "city": "kinshasa",
+      "name": "Espace MATELO",
+      "archetype": "restaurant",
+      "subject": "a lounge-restaurant and cultural space: a rendered two-storey building with an open terrace and bar",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e3d3b0",
+          "#a2553a",
+          "#2f4a5c"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Modern venue in the western hills; look guessed. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-way-23465935": {
+      "venueId": "kinshasa-osm-way-23465935",
+      "city": "kinshasa",
+      "name": "Universite protestante du Congo",
+      "archetype": "campus-block",
+      "subject": "a church-run campus: two-storey brick-and-render lecture blocks with a chapel on a wooded campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a2553a",
+          "#f1ead8",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Protestant university; brick is a guess to contrast with the Catholic campus. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-way-331313850": {
+      "venueId": "kinshasa-osm-way-331313850",
+      "city": "kinshasa",
+      "name": "Universite catholique du Congo",
+      "archetype": "campus-block",
+      "subject": "a Catholic university: pale rendered 3-storey slab blocks with ribbon windows and a chapel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#4a7f8c",
+          "#c9c4b8"
+        ],
+        "roofColour": "#b0aaa0",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Different massing from UPC: long slab rather than courtyard. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-way-362188754": {
+      "venueId": "kinshasa-osm-way-362188754",
+      "city": "kinshasa",
+      "name": "Memorial aux anciens combattants de la Force Publique",
+      "archetype": "monument",
+      "subject": "a memorial to Force Publique veterans: a pale stone pylon with bronze figures and plinth steps in a railed plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 12,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#cfc9bd",
+          "#6b4f3a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#cfc9bd",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "art-deco",
+      "era": "1950s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Colonial-era memorial; actual composition unverified. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-osm-way-4402561": {
+      "venueId": "kinshasa-osm-way-4402561",
+      "city": "kinshasa",
+      "name": "Stade des Martyrs de la Pentecote",
+      "archetype": "stadium",
+      "subject": "the 80,000-seat national stadium built by a Chinese consortium: a vast oval concrete bowl with floodlight masts and a modern pitch",
+      "form": {
+        "footprint": "oval",
+        "width_m": 250,
+        "depth_m": 210,
+        "storeys": 3,
+        "height_m": 32,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d5cb",
+          "#c9423a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#8f969a",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1988-1994",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stade_des_Martyrs",
+          "what": "80,000 seats, Africa fourth largest; groundbreaking 1988, finished 1993, opened 1994; Chinese consortium; ~US$38m; 2008 renovation with new lighting, scoreboard, press tribune"
+        }
+      ],
+      "notes": "Capacity, dates and builders are sourced; roof coverage and colours are not described and are estimated. Scaled down to fit the 120 m scene."
+    },
+    "kinshasa-osm-way-700648669": {
+      "venueId": "kinshasa-osm-way-700648669",
+      "city": "kinshasa",
+      "name": "Hopital Provincial General de Reference de Kinshasa",
+      "archetype": "hospital",
+      "subject": "the former Mama Yemo hospital on Avenue Colonel Ebeya: a sprawling 2,000-bed complex of long low colonial wards linked by covered walkways, with a newer multi-storey block",
+      "form": {
+        "footprint": "H",
+        "width_m": 160,
+        "depth_m": 60,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d2",
+          "#4a7f8c",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1912-1924 core",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kinshasa_General_Hospital",
+          "what": "built 1912, opened 1924; 2,000 beds; Avenue Colonel Ebeya in Gombe; formerly Mama Yemo Hospital; eight operating suites rebuilt after 1997"
+        }
+      ],
+      "notes": "History and bed count are sourced; the pavilion/ward layout is a typical-colonial-hospital estimate. A worn, busy public hospital in faded cream render."
+    },
+    "kinshasa-quiet-reflection": {
+      "venueId": "kinshasa-quiet-reflection",
+      "city": "kinshasa",
+      "name": "Mosquee Diya Kingambua",
+      "archetype": "mosque-domed",
+      "subject": "a neighbourhood mosque: white-rendered prayer hall with a green dome and a single minaret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f7f4ee",
+          "#2f6b4f",
+          "#d9c9a3"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Congolese mosques are mostly small; scale kept modest. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    },
+    "kinshasa-recreation": {
+      "venueId": "kinshasa-recreation",
+      "city": "kinshasa",
+      "name": "Parc Naturel de la Nsele (Mangiers)",
+      "archetype": "park-landscape",
+      "subject": "the Nsele Valley Park entrance zone: wooded rolling hills with a lodge pavilion, a restaurant made from a plane wreck, solar arrays and a water tank on a plateau",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a68a64",
+          "#7a5a3c",
+          "#b0aaa0"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "solar-panels",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2018",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nsele_Valley_Park",
+          "what": "20,000 ha park created June 2018; rolling hills, riverbanks, floodplains; restaurant, nightclub and VIP lounge in converted plane wrecks; solar, wind, small hydro; water pumped to ~300 m plateau"
+        }
+      ],
+      "notes": "Park-wide facts sourced; the specific pavilion form is an estimate. Plane-wreck fuselage restaurant is a distinctive recognisable element (shown as a long cylinder pavilion if the generator supports it)."
+    },
+    "kinshasa-transit": {
+      "venueId": "kinshasa-transit",
+      "city": "kinshasa",
+      "name": "Kinshasa Est",
+      "archetype": "transport-station",
+      "subject": "a rail-side station: a long single-storey platform building with a canopy over tracks and a forecourt bus bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 16,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3d3b0",
+          "#8a3b2e",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1930s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Next to the 1905 Gare Centrale area; this may not be the same building. Not described in any findable source; typed brief derived from the Kinshasa city style and the type of place, so dimensions and colours are estimates."
+    }
+  }
+}

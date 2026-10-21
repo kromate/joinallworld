@@ -1,0 +1,345 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Victoria_StPaul%27s_Cathedral_asv2024-09_img3.jpg",
+   "licence": "FAL",
+   "author": "A.Savin",
+   "view": "front",
+   "file": "/tmp/places-evidence/victoria/stp1.jpg",
+   "used": "cream-white walls, green metal pitched roofs with a gabled pointed-window front, white bell tower with red pyramid spire and cross, low white boundary wall with pointed-arch panels"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/518099006",
+   "used": "site extent (54 x 45 m parish plot); church modelled compactly"
+  }
+ ],
+ "camera": {
+  "yawDeg": -40,
+  "pitchDeg": 5,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "nave",
+   "footprint": {
+    "rect": [
+     12,
+     26
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d4",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "faces": {
+     "front": "punched"
+    },
+    "bay": 5,
+    "plinth": 0.5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#52665a",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "transept",
+   "footprint": {
+    "rect": [
+     26,
+     9
+    ]
+   },
+   "at": [
+    0,
+    4
+   ],
+   "z0": 0,
+   "height": 6,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d4",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.12,
+    "bay": 5
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#52665a",
+    "material": "metal-sheet",
+    "pitch": 50,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "porch",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -15.5
+   ],
+   "z0": 0,
+   "height": 4.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe6d4",
+    "windows": "punched",
+    "windowShape": "pointed",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#52665a",
+    "material": "metal-sheet",
+    "pitch": 45
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-front",
+   "footprint": {
+    "rect": [
+     36,
+     0.5
+    ]
+   },
+   "at": [
+    -4,
+    -20
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead9",
+    "windows": "none",
+    "faces": {}
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dccb"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-side",
+   "footprint": {
+    "rect": [
+     0.5,
+     34
+    ]
+   },
+   "at": [
+    -22,
+    -3
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dccb"
+   }
+  },
+  {
+   "type": "mosque-domed/bell-tower",
+   "at": [
+    3.5,
+    10,
+    0
+   ],
+   "params": {
+    "width": 3.2,
+    "height": 13,
+    "cap": "spire",
+    "cap_height": 7,
+    "colour": "#f4efe6",
+    "cap_colour": "#7b3a30",
+    "belfry": true
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    0,
+    -13.05,
+    2.2
+   ],
+   "params": {
+    "width": 2.2,
+    "height": 5.2,
+    "kind": "pointed",
+    "trim": "#f4efe6"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -18,
+    -20.3,
+    0.2
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 1.1,
+    "kind": "pointed",
+    "trim": "#d9d0bd"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -13,
+    -20.3,
+    0.2
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 1.1,
+    "kind": "pointed",
+    "trim": "#d9d0bd"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -8,
+    -20.3,
+    0.2
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 1.1,
+    "kind": "pointed",
+    "trim": "#d9d0bd"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    -3,
+    -20.3,
+    0.2
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 1.1,
+    "kind": "pointed",
+    "trim": "#d9d0bd"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    2,
+    -20.3,
+    0.2
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 1.1,
+    "kind": "pointed",
+    "trim": "#d9d0bd"
+   }
+  },
+  {
+   "type": "arched-window",
+   "at": [
+    7,
+    -20.3,
+    0.2
+   ],
+   "params": {
+    "width": 2.0,
+    "height": 1.1,
+    "kind": "pointed",
+    "trim": "#d9d0bd"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wall-corner",
+   "footprint": {
+    "rect": [
+     6,
+     0.5
+    ]
+   },
+   "at": [
+    -21,
+    -18
+   ],
+   "z0": 0,
+   "height": 1.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ead9",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#e4dccb"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     18,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -14,
+     -22
+    ]
+   }
+  ],
+  "extent": [
+   80,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Church modelled compactly (not the full OSM plot); blind arches are small pointed niche stand-ins on a straight wall (wall does not curve round the corner); tower has no corner pinnacles; gable window plain pointed, no tracery; roof green still slightly bright."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "victoria",
+ "venueId": "victoria-quiet-reflection"
+}

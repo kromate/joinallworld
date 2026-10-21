@@ -1,0 +1,332 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abuja",
+ "venueId": "baze-university",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baze.university_block_A,B,C_%26_E_02.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Wikimedia Commons contributor (see Commons page)",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/abuja/bu2.jpg",
+   "used": "teaching blocks around landscaped courtyards: near block is a square ring with a large low-pitched pale-grey standing-seam metal hip roof with deep eaves, dark grey ground-floor band with glazing and white upper walls, solar panels on the roof, two U-shaped blocks behind, a long white four-storey block at the back, gravel forecourt and parking, trees"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Baze_University_Main_Gate.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Amigoumar",
+   "view": "front",
+   "file": "/tmp/places-evidence/abuja/bu1.jpg",
+   "used": "white concrete frame gate arches and guard post (colour only; the gate is not modelled at campus scale)"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/798017176",
+   "used": "not used for massing: the match is the whole 790 x 455 m campus; one representative teaching-block group is modelled"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 38,
+  "fovDeg": 40,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     56,
+     46
+    ]
+   },
+   "at": [
+    0,
+    -16
+   ],
+   "rotDeg": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceeed",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "glassColour": "#4a5a66",
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "ribbon",
+     "right": "ribbon"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#5d6468",
+      "#eceeed"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d3d6d6",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     38,
+     26
+    ]
+   },
+   "at": [
+    -33,
+    26
+   ],
+   "rotDeg": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceeed",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "glassColour": "#4a5a66",
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#5d6468",
+      "#eceeed"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d3d6d6",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east",
+   "footprint": {
+    "kind": "ring",
+    "size": [
+     38,
+     26
+    ]
+   },
+   "at": [
+    33,
+    26
+   ],
+   "rotDeg": 0,
+   "height": 6.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceeed",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "glassColour": "#4a5a66",
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#5d6468",
+      "#eceeed"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#d3d6d6",
+    "material": "metal-sheet",
+    "pitch": 9,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear",
+   "footprint": {
+    "rect": [
+     52,
+     10
+    ]
+   },
+   "at": [
+    0,
+    50
+   ],
+   "rotDeg": 0,
+   "height": 11.5,
+   "storeys": 3,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eceeed",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.4,
+    "glassColour": "#4a5a66",
+    "bay": 6,
+    "faces": {
+     "front": "ribbon",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "floors",
+     "colours": [
+      "#5d6468",
+      "#eceeed"
+     ]
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d3d6d6",
+    "parapet": 0.6,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "solar-panels",
+   "at": [
+    -6,
+    -31,
+    7.8
+   ],
+   "params": {
+    "rows": 2,
+    "cols": 5,
+    "tilt": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 7,
+    "count": 4,
+    "line": 40
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -49,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 1.4,
+    "bottom": 0.4,
+    "colour": "#eeeeee",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -12,
+    -45,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -40,
+    -45,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 1,
+    "line": 30
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "forecourtDepth": 14,
+  "trees": 4,
+  "treeKind": "broadleaf",
+  "extent": [
+   120,
+   120
+  ],
+  "groundColour": "#aa9f8a",
+  "cars": [
+   {
+    "at": [
+     -50,
+     -34.0
+    ],
+    "yawDeg": 90,
+    "colour": "#d9d9d9"
+   },
+   {
+    "at": [
+     50,
+     -34.0
+    ],
+    "yawDeg": 90,
+    "colour": "#a62b2b"
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Hip roofs lack standing-seam lines and ridge detail; courtyards plain with no cross-path garden; only 2 cars and few trees (LOD1 budget); one representative block group of the 790 m campus."
+ }
+}

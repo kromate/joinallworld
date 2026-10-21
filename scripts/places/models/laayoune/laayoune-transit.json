@@ -1,0 +1,162 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "laayoune",
+ "venueId": "laayoune-transit",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1034652636",
+   "used": "station yard polygon (124 x 107 m): size of the paved bus yard"
+  },
+  {
+   "kind": "text",
+   "used": "brief: low terminal with ticket hall, long flat canopy over bays, sand and asphalt yard"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "terminal",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 6.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e1c49c",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "bands": "#b7694a",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b3a898",
+    "material": "concrete",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "canopy-bays",
+   "footprint": {
+    "rect": [
+     56,
+     10
+    ]
+   },
+   "at": [
+    0,
+    -6
+   ],
+   "z0": 3.8,
+   "height": 0.5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1e7d3",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b7694a"
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "mode": "line",
+    "start": [
+     -26,
+     -10,
+     0
+    ],
+    "end": [
+     26,
+     -10,
+     0
+    ],
+    "count": 6,
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 3.8,
+      "colour": "#8c8c88",
+      "windows": "none"
+     }
+    }
+   }
+  },
+  {
+   "type": "office-tower/bus-park-row",
+   "at": [
+    0,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "kind": "coach",
+    "density": 0.7,
+    "coach_share": 0.7,
+    "yaw": 0
+   }
+  },
+  {
+   "type": "prism",
+   "id": "sign",
+   "at": [
+    0,
+    3,
+    6.5
+   ],
+   "params": {
+    "rect": [
+     12,
+     0.5
+    ],
+    "height": 1.8,
+    "colour": "#b7694a",
+    "windows": "none"
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; terminal, canopy and coaches from the brief"
+ }
+}

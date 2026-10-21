@@ -1,0 +1,222 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "used": "brief only (veterinary department of the Faculty of Medicine, Ampandrianomby, paired two-storey institutional blocks round a yard, colonial era); nearest OSM building is a 124 m2 unnamed footprint 4.6 m away, too small for the campus so not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main-block",
+   "footprint": {
+    "rect": [
+     50,
+     11
+    ]
+   },
+   "at": [
+    0,
+    10
+   ],
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "back": "plain"
+    },
+    "bands": "#9a9a94",
+    "plinth": 0.5,
+    "groundKind": "arcade",
+    "groundHeight": 3.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-west",
+   "footprint": {
+    "rect": [
+     11,
+     28
+    ]
+   },
+   "at": [
+    -19.5,
+    -8
+   ],
+   "rotDeg": 0,
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "left": "plain",
+     "back": "plain"
+    },
+    "bands": "#9a9a94",
+    "plinth": 0.5,
+    "groundKind": "arcade",
+    "groundHeight": 3.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-east",
+   "footprint": {
+    "rect": [
+     11,
+     28
+    ]
+   },
+   "at": [
+    19.5,
+    -8
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.25,
+    "faces": {
+     "right": "plain",
+     "back": "plain"
+    },
+    "bands": "#9a9a94",
+    "plinth": 0.5,
+    "groundKind": "arcade",
+    "groundHeight": 3.4,
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 24,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -23,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 1.4,
+    "bottom": 2.2,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 1.6,
+    "thickness": 0.3,
+    "pillarEvery": 5,
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "courtyard-garden",
+   "at": [
+    0,
+    -8,
+    0
+   ],
+   "params": {
+    "width": 24,
+    "depth": 20,
+    "trees": 3,
+    "paths": true
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -30,
+    -20,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 3,
+    "spread": 10
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 8,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -22
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     16
+    ]
+   }
+  ],
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or usable outline; U of three blocks with ground-floor corridor and hip clay-tile roofs is typed, dimensions from the brief only."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-osm-node-623568960"
+}

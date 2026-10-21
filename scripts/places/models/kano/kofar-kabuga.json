@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kano",
+ "venueId": "kofar-kabuga",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Kano_(city)",
+   "used": "city wall about 9 m high; gate as stout mud-render gatehouse with rounded arch and crenellated top (typical kofa). No photo found; OSM match is an unrelated house 15 m away, not used"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mosque-domed/gate-arch",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "width": 16,
+    "height": 9.5,
+    "thickness": 12,
+    "opening": 5.2,
+    "shape": "arch",
+    "finials": true,
+    "colour": "#b58a5e",
+    "trim": "#d8bf9a"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-l",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    -19,
+    0
+   ],
+   "height": 8,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#a98056",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rampart-r",
+   "footprint": {
+    "rect": [
+     22,
+     7
+    ]
+   },
+   "at": [
+    19,
+    0
+   ],
+   "height": 7,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b08a62",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a9805a",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mosque-domed/crenellated-wall",
+   "at": [
+    -8,
+    -5.5,
+    9.5
+   ],
+   "params": {
+    "length": 16,
+    "height": 1.2,
+    "thickness": 0.9,
+    "colour": "#d8bf9a"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    30,
+    -10,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   90,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo; typical Kano kofa form assumed"
+ }
+}

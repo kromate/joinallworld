@@ -1,0 +1,366 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lagos",
+ "venueId": "police",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Ilupeju_Police_Station.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Adorable3",
+   "view": "front",
+   "used": "representative Lagos division station (Ilupeju): long single-storey charcoal block with dark low roof, two-storey salmon block behind with red hip roof, black railings on a low wall with hedge, blue-green-yellow steel gate, blank blue sign board, flagpole, street trees. The brief's police venue is a generic Lagos station, so this real station is the visual reference, not the same building."
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lagos.json#police",
+   "used": "authored venue, single storey, fenced yard, flagpole, signage board"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 8,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all",
+  "margin": 0.02
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "front-block",
+   "footprint": {
+    "rect": [
+     34,
+     9
+    ]
+   },
+   "at": [
+    -8,
+    0
+   ],
+   "z0": 0,
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#3e4247",
+    "windows": "ribbon",
+    "windowRatio": 0.12,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#33363a",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 1.0
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-block",
+   "footprint": {
+    "rect": [
+     22,
+     10
+    ]
+   },
+   "at": [
+    -4,
+    9
+   ],
+   "z0": 0,
+   "height": 7,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6a583",
+    "windows": "ribbon",
+    "windowRatio": 0.16,
+    "plinth": 0.4,
+    "bay": 3.4
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8483f",
+    "material": "corrugated",
+    "pitch": 16,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "guardroom",
+   "footprint": {
+    "rect": [
+     6,
+     5
+    ]
+   },
+   "at": [
+    20,
+    -1
+   ],
+   "z0": 0,
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#5a5e63",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#4a4d51",
+    "parapet": 0.2
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -25,
+    -6,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 1.8,
+    "thickness": 0.15,
+    "kind": "fence",
+    "colour": "#1f2124",
+    "pillarEvery": 5
+   }
+  },
+  {
+   "type": "hedge",
+   "at": [
+    -8,
+    -7.6,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 0.9,
+    "depth": 1.0,
+    "colour": "#3f6e33"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    13,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 2.4,
+    "pillar": 0.8,
+    "leaf": "solid",
+    "leafColour": "#2a5fa8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-stripe",
+   "footprint": {
+    "rect": [
+     5.4,
+     0.5
+    ]
+   },
+   "at": [
+    13,
+    -6.3
+   ],
+   "z0": 0.6,
+   "height": 0.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d4b030",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d4b030"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -8,
+    -4.7,
+    1.4
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.2,
+    "bottom": 0,
+    "colour": "#2a5fa8",
+    "frameColour": "#d4b030",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    18,
+    -3,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "colour": "#1b7a43",
+    "count": 1
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -26,
+    4,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "colour": "#8a8d90"
+     },
+     {
+      "z": 26,
+      "rect": [
+       0.25,
+       0.25
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -23,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 1
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    24,
+    -7,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -29,
+    6,
+    0
+   ],
+   "params": {
+    "smooth": true,
+    "curve": true,
+    "steps": 4,
+    "colour": "#2f5a2d",
+    "sections": [
+     {
+      "z": 0.5,
+      "ellipse": [
+       2.5,
+       2.5
+      ]
+     },
+     {
+      "z": 5,
+      "ellipse": [
+       3.6,
+       3.6
+      ]
+     },
+     {
+      "z": 11,
+      "ellipse": [
+       3,
+       3
+      ]
+     },
+     {
+      "z": 15,
+      "ellipse": [
+       0.6,
+       0.6
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "type": "tree-grove",
+   "at": [
+    28,
+    8,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 12,
+    "count": 6,
+    "min_height": 10,
+    "max_height": 15
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -6,
+    -13,
+    0
+   ],
+   "params": {
+    "colour": "#f1f1ee",
+    "count": 1,
+    "yaw": 90
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   64,
+   36
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Reference is a different real Lagos station (Ilupeju) used as typical example; yard shrunk, block close behind railing and hedge, sign board, striped gate, mast and pole added; window details, wall graphics, wires and exact tree shapes simplified."
+ }
+}

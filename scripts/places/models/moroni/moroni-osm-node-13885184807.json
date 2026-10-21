@@ -1,0 +1,117 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "moroni",
+ "venueId": "moroni-osm-node-13885184807",
+ "verified": "text",
+ "evidence": [],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "market-shed",
+   "at": [
+    0,
+    10,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "depth": 6,
+    "height": 3.6,
+    "roof": "shed",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 14,
+    "depth": 5,
+    "height": 3.4,
+    "roof": "gable"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -6,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "colours": [
+     "#c4705a",
+     "#e8d9a8",
+     "#3f6f8a"
+    ]
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -3,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spread": 5,
+    "colours": [
+     "#c4705a",
+     "#f0ebe0"
+    ]
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 12,
+    "spread": 9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -4,
+    2,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "extent": [
+   60,
+   45
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo, no OSM footprint; typical market sheds and stalls"
+ }
+}

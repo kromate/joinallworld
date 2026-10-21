@@ -1,0 +1,1377 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "st-peter-port",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "st-peter-port",
+    "climate": "temperate",
+    "vernacular": "Terraced granite harbour town: steep cobbled streets of grey granite and pastel-rendered Georgian and Regency houses rising from the harbour, slate roofs, sash windows, Victorian market and civic buildings, granite fortifications and Martello-style towers, and low granite farmhouses and cottages in the countryside parishes.",
+    "wallColours": [
+      "#8d9296",
+      "#b2aaa0",
+      "#e3c9c0",
+      "#d9d2b8",
+      "#b6c9d1",
+      "#eee9dc"
+    ],
+    "roofColours": [
+      "#5c6368",
+      "#7a7f84",
+      "#8a5a48"
+    ],
+    "wallMaterials": [
+      "granite",
+      "painted-render",
+      "stucco",
+      "render",
+      "stone",
+      "whitewash",
+      "brick"
+    ],
+    "roofMaterials": [
+      "slate",
+      "clay-tile",
+      "membrane",
+      "concrete"
+    ],
+    "ground": "cobble",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Georgian sash windows and fanlit doors, granite quoins, painted pastel render, pedimented civic fronts, wrought-iron railings, granite steps and passageways, massive coastal fortifications with gun platforms.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/St._Peter_Port",
+        "what": "steep narrow streets and steps, cobbled old town, Castle Cornet linked to the harbour breakwater 1859, Elizabeth College 1826, Georgian-era Market, Town Church and Royal Court"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Br%C3%A9hon_Tower",
+        "what": "Guernsey coastal towers built of granite"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Castle_Cornet",
+        "what": "castle built of diorite and ashlar, joined to the harbour breakwater"
+      }
+    ]
+  },
+  "places": {
+    "st-peter-port-airport-st-peter-port-airport": {
+      "venueId": "st-peter-port-airport-st-peter-port-airport",
+      "city": "st-peter-port",
+      "name": "Guernsey Airport",
+      "archetype": "airport-terminal",
+      "subject": "Guernsey Airport's 2004 terminal: a low curved-roof glass and render building with the control tower beyond",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e1e4e6",
+          "#5c7a8c",
+          "#f1f1ef"
+        ],
+        "roofColour": "#b5babd",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Guernsey_Airport",
+          "what": "new terminal construction began 2002, opened 19 April 2004, designed for about 1.25 million passengers a year; old terminal demolished May 2004"
+        }
+      ],
+      "notes": "Sources give dates and capacity only. Curved roof and glazing are inferred from a typical 2000s regional terminal."
+    },
+    "st-peter-port-clinic": {
+      "venueId": "st-peter-port-clinic",
+      "city": "st-peter-port",
+      "name": "Princess Elizabeth Hospital",
+      "archetype": "hospital",
+      "subject": "The Princess Elizabeth Hospital on Rue Mignot: a long mid-rise ward block of render and brick with later glazed additions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 30,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e3ded0",
+          "#9b5a44",
+          "#c9ccce"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1949, extended",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Princess_Elizabeth_Hospital",
+          "what": "opened 23 June 1949, 12 wards, 104 beds, Rue Mignot, only acute hospital in Guernsey"
+        }
+      ],
+      "notes": "Appearance not described in sources; storeys and finishes estimated. The Emergency Department and Renal Unit venues are separate smaller wings."
+    },
+    "st-peter-port-community-notices": {
+      "venueId": "st-peter-port-community-notices",
+      "city": "st-peter-port",
+      "name": "Chief Pleas & Seneschal's Court",
+      "archetype": "civic-small",
+      "subject": "Sark's small granite assembly hall with a slate roof and flag",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 9,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "painted-render",
+        "colours": [
+          "#a39a90",
+          "#e8e2d2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Coordinates fall on Sark; Chief Pleas (island parliament) meets in a small granite building."
+    },
+    "st-peter-port-community-voting-game": {
+      "venueId": "st-peter-port-community-voting-game",
+      "city": "st-peter-port",
+      "name": "Castel Douzaine Room",
+      "archetype": "civic-small",
+      "subject": "The Castel parish meeting room: a small granite hall by the parish church",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8d9296",
+          "#b2aaa0",
+          "#eee9dc"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Guernsey parish douzaine rooms are small; exact building unknown."
+    },
+    "st-peter-port-community-workshop": {
+      "venueId": "st-peter-port-community-workshop",
+      "city": "st-peter-port",
+      "name": "Priaulx Library",
+      "archetype": "campus-block",
+      "subject": "The Priaulx Library: a narrow three-storey house-library in painted render with sash windows",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stone",
+        "colours": [
+          "#e3c9c0",
+          "#f1efe8",
+          "#7a7f84"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "georgian",
+      "era": "19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Georgian-style house assumed for a library near Candie Road."
+    },
+    "st-peter-port-market-game": {
+      "venueId": "st-peter-port-market-game",
+      "city": "st-peter-port",
+      "name": "Market Square",
+      "archetype": "market-hall",
+      "subject": "The Guernsey Market halls in St Peter Port: arcaded Victorian granite and stucco market buildings with a slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stucco",
+        "colours": [
+          "#b2aaa0",
+          "#e8e2d2",
+          "#44505a"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "victorian",
+      "era": "1820s-1870s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Peter_Port",
+          "what": "The Market, Town Church and Royal Court appear on Guernsey banknotes; main shopping streets pedestrian priority"
+        }
+      ],
+      "notes": "Sources confirm the market is a civic landmark but not its facade. Granite and stucco with arcades from general knowledge, not verified."
+    },
+    "st-peter-port-meal-stop": {
+      "venueId": "st-peter-port-meal-stop",
+      "city": "st-peter-port",
+      "name": "Portelet Kiosk",
+      "archetype": "shophouse",
+      "subject": "A small kiosk on a west-coast slipway with a serving hatch and awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#d9d2b8",
+          "#3a6f9a",
+          "#f1efe8"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Beach kiosk assumed."
+    },
+    "st-peter-port-osm-node-13544152092": {
+      "venueId": "st-peter-port-osm-node-13544152092",
+      "city": "st-peter-port",
+      "name": "Emergency Department",
+      "archetype": "hospital",
+      "subject": "The A&E entrance wing of the hospital: a low two-storey block with an ambulance bay canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3ded0",
+          "#c9302c",
+          "#c9ccce"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 2
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s-2010s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Wing of the Princess Elizabeth Hospital; inferred."
+    },
+    "st-peter-port-osm-node-1552743655": {
+      "venueId": "st-peter-port-osm-node-1552743655",
+      "city": "st-peter-port",
+      "name": "Le Gouffre Cafe & Restaurant",
+      "archetype": "restaurant",
+      "subject": "A small granite cafe-restaurant above the south-coast cliffs at Le Gouffre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 9,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "painted-render",
+        "colours": [
+          "#8d9296",
+          "#eee9dc",
+          "#44505a"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Hamlet cafe assumed."
+    },
+    "st-peter-port-osm-node-2512811018": {
+      "venueId": "st-peter-port-osm-node-2512811018",
+      "city": "st-peter-port",
+      "name": "Rousse Kiosk",
+      "archetype": "shophouse",
+      "subject": "A kiosk on the north-east shore near Rousse headland",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 4,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#b6c9d1",
+          "#c9a99a",
+          "#f1efe8"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Not described."
+    },
+    "st-peter-port-osm-node-277523228": {
+      "venueId": "st-peter-port-osm-node-277523228",
+      "city": "st-peter-port",
+      "name": "Doyle monument",
+      "archetype": "monument",
+      "subject": "The granite Doyle Column on the Jerbourg peninsula: a tall plain obelisk on a stepped base",
+      "form": {
+        "footprint": "rect",
+        "width_m": 5,
+        "depth_m": 5,
+        "storeys": 0,
+        "height_m": 16,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d9296",
+          "#7a7f84",
+          "#b2aaa0"
+        ],
+        "roofColour": "#8d9296",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2,
+          "note": "stepped base"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "neoclassical",
+      "era": "1803",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Obelisk to Sir John Doyle at Jerbourg, from general knowledge; height estimated."
+    },
+    "st-peter-port-osm-node-6504570133": {
+      "venueId": "st-peter-port-osm-node-6504570133",
+      "city": "st-peter-port",
+      "name": "Renal Unit",
+      "archetype": "hospital",
+      "subject": "The renal dialysis wing: a small single-storey brick and render annex of the hospital",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e3ded0",
+          "#9b5a44",
+          "#c9ccce"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Annex of the hospital; inferred."
+    },
+    "st-peter-port-osm-node-6669704986": {
+      "venueId": "st-peter-port-osm-node-6669704986",
+      "city": "st-peter-port",
+      "name": "Viewing Gallery",
+      "archetype": "park-landscape",
+      "subject": "A viewing platform on the north-east coast with railings and steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 15,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "coastal lookout"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d9296",
+          "#7a7f84",
+          "#b2aaa0"
+        ],
+        "roofColour": "#8d9296",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Possibly a former wartime post turned lookout; unverified."
+    },
+    "st-peter-port-osm-node-6699211785": {
+      "venueId": "st-peter-port-osm-node-6699211785",
+      "city": "st-peter-port",
+      "name": "Moulin Huet bay through the trees, Pierre-Auguste Renoir 1883",
+      "archetype": "park-landscape",
+      "subject": "A wooded Moulin Huet valley viewpoint over the bay, the scene Renoir painted in 1883",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none",
+        "variant": "wooded valley viewpoint"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f8c5a",
+          "#8d9296",
+          "#c9b79a"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "picture board"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "natural",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. An information board at a viewpoint; no building."
+    },
+    "st-peter-port-osm-way-115109408": {
+      "venueId": "st-peter-port-osm-way-115109408",
+      "city": "st-peter-port",
+      "name": "Footes Lane Sports Stadium",
+      "archetype": "stadium",
+      "subject": "The Footes Lane ground: a small football stadium with one covered stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 105,
+        "depth_m": 70,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9ccce",
+          "#2f5d9a",
+          "#e1ded6"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Home of the island football club; capacity a few thousand."
+    },
+    "st-peter-port-osm-way-243103087": {
+      "venueId": "st-peter-port-osm-way-243103087",
+      "city": "st-peter-port",
+      "name": "St Philippe, Torteval",
+      "archetype": "church-gothic",
+      "subject": "Torteval parish church: a small granite church on a hilltop with a tall slender spire",
+      "form": {
+        "footprint": "cross",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#8d9296",
+          "#b2aaa0",
+          "#eee9dc"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tall slender spire"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1816",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. The spire is recalled from general knowledge, not verified."
+    },
+    "st-peter-port-osm-way-440654796": {
+      "venueId": "st-peter-port-osm-way-440654796",
+      "city": "st-peter-port",
+      "name": "Le Trépied Dolmen",
+      "archetype": "monument",
+      "subject": "Le Trepied, a prehistoric passage grave with a large capstone on upright stones",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 12,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 2.2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d8a84",
+          "#7f7c76",
+          "#6f8c5a"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "Neolithic",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Dimensions estimated; capstone and supports."
+    },
+    "st-peter-port-osm-way-522604715": {
+      "venueId": "st-peter-port-osm-way-522604715",
+      "city": "st-peter-port",
+      "name": "Bréhon Tower",
+      "archetype": "heritage-fort",
+      "subject": "Bréhon Tower: an oval granite tower on a rock in the Little Russell channel, three levels with a gun platform",
+      "form": {
+        "footprint": "oval",
+        "width_m": 26,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 10.4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#8d9296",
+          "#7a7f84",
+          "#8d9296"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.03
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 14,
+          "note": "14 cannon ports"
+        },
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "jetty on the St Peter Port side"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "gun platform"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "1856-57",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Br%C3%A9hon_Tower",
+          "what": "oval tower of Herm granite, 65 by 85 ft, 34 ft high, three levels plus gun platform, 14 cannon ports, jetty, built 1854-57"
+        }
+      ],
+      "notes": "Footprint 20 x 26 m (65x85 ft), 10.4 m high. WWII German additions: gun embrasure in north wall and two AA gun mounts on the roof."
+    },
+    "st-peter-port-osm-way-552204319": {
+      "venueId": "st-peter-port-osm-way-552204319",
+      "city": "st-peter-port",
+      "name": "Cambridge Park",
+      "archetype": "park-landscape",
+      "subject": "A town park with lawns, a pavilion and sports pitches",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f8c5a",
+          "#a39a90",
+          "#c9b79a"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Not described."
+    },
+    "st-peter-port-osm-way-573718984": {
+      "venueId": "st-peter-port-osm-way-573718984",
+      "city": "st-peter-port",
+      "name": "College of Further Education",
+      "archetype": "campus-block",
+      "subject": "A modern further-education campus of linked three-storey blocks in render and glass",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3ded0",
+          "#5c7a8c",
+          "#c9ccce"
+        ],
+        "roofColour": "#7a7f84",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Not described."
+    },
+    "st-peter-port-osm-way-80438718": {
+      "venueId": "st-peter-port-osm-way-80438718",
+      "city": "st-peter-port",
+      "name": "Delancey Park",
+      "archetype": "park-landscape",
+      "subject": "Delancey Park: sports fields and paths on a former quarry slope",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f8c5a",
+          "#a39a90",
+          "#c9b79a"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Not described."
+    },
+    "st-peter-port-osm-way-913686540": {
+      "venueId": "st-peter-port-osm-way-913686540",
+      "city": "st-peter-port",
+      "name": "Notre Dame du Rosaire",
+      "archetype": "church-classical",
+      "subject": "A Catholic church in St Peter Port town in granite with a plain gabled front and a small bell turret",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stucco",
+        "colours": [
+          "#8d9296",
+          "#e8e2d2",
+          "#f1efe8"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "early 19th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No page describing this specific place could be retrieved (web search budget exhausted); typed brief from the city style and place type. Style assumed; Catholic church in the old town."
+    },
+    "st-peter-port-quiet-reflection": {
+      "venueId": "st-peter-port-quiet-reflection",
+      "city": "st-peter-port",
+      "name": "St Tugual's Chapel",
+      "archetype": "shrine-small",
+      "subject": "The Norman chapel of St Tugual on Herm: a tiny rendered granite chapel with a pitched slate roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 5,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "whitewash",
+        "colours": [
+          "#e8e2d2",
+          "#8d9296",
+          "#f1efe8"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "pointed-arch",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "stained-glass",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "small graveyard wall"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "11th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/St_Tugual%27s_Chapel",
+          "what": "11th-century Norman chapel on Herm incorporating an earlier structure, small graveyard, stained-glass window, re-roofed and re-rendered 2010-11"
+        }
+      ],
+      "notes": "Re-rendered in 2010-11 so the walls read as pale render. Size estimated."
+    },
+    "st-peter-port-recreation": {
+      "venueId": "st-peter-port-recreation",
+      "city": "st-peter-port",
+      "name": "Saumarez Park",
+      "archetype": "park-landscape",
+      "subject": "Saumarez Park: lawns and gardens with the manor house and walled garden",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#6f8c5a",
+          "#e8e2d2",
+          "#8d9296"
+        ],
+        "roofColour": "#6f8c5a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "walled garden"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "victorian",
+      "era": "19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saumarez_Park",
+          "what": "19th-century gardens by Baron Saumarez: bamboo walk, Japanese garden, camellia lawn, rose garden, walled garden, duck pond, cafe, manor house now a care home"
+        }
+      ],
+      "notes": "Park with a large lawn, duck pond and walled garden; the manor house is a separate mass."
+    },
+    "st-peter-port-transit": {
+      "venueId": "st-peter-port-transit",
+      "city": "st-peter-port",
+      "name": "St Peter Port Harbour",
+      "archetype": "transport-station",
+      "subject": "St Peter Port Harbour: ferry pier and marina with Castle Cornet joined to the breakwater",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "painted-render",
+        "colours": [
+          "#8d9296",
+          "#e3c9c0",
+          "#44505a"
+        ],
+        "roofColour": "#5c6368",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "Castle Cornet at the breakwater end"
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "georgian",
+      "era": "1800s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Castle_Cornet",
+          "what": "castle joined to the harbour breakwater in 1859; built of diorite and ashlar"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/St._Peter_Port",
+          "what": "main port of the island, ferry harbour below the steep town"
+        }
+      ],
+      "notes": "Quay with a small terminal, kiosk and pier, backed by pastel houses. Castle Cornet is the recognisable end of the breakwater."
+    }
+  }
+}

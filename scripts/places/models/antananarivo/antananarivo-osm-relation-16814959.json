@@ -1,0 +1,591 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-osm-relation-16814959",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Antananarivo01.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Bernard Gagnon",
+   "view": "aerial",
+   "file": "/tmp/places-evidence/antananarivo/mahamasina.jpg",
+   "used": "pre-2021 bowl: grass pitch inside a red-brown track, curved light-grey end terraces on an arcaded dark outer wall, near main stand with grey slanted facade and a large red folded roof, far stand with a small brown block and central box tower with blue panels; photo predates the 2021 rebuild"
+  },
+  {
+   "kind": "osm",
+   "ref": "relation/16814959",
+   "used": "overall size (about 245 x 234 m): modelled at about half scale because of the scene clamp; the real outline has an irregular notch so an oval bowl is used"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.46,
+  "fit": "all",
+  "margin": 0.05
+ },
+ "parts": [
+  {
+   "type": "athletics-track",
+   "at": [
+    0,
+    0,
+    0.05
+   ],
+   "params": {
+    "length": 84,
+    "width": 58,
+    "infield": true,
+    "pitch": true,
+    "colour": "#a8523c"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 42,
+    "startDeg": -48,
+    "endDeg": 48,
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 8,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 5,
+    "seatColour": "#b9b6ae",
+    "concreteColour": "#bdb8ad",
+    "underColour": "#6e5546"
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 50,
+    "radiusY": 42,
+    "startDeg": 132,
+    "endDeg": 228,
+    "rows": 14,
+    "rise": 0.5,
+    "run": 0.85,
+    "firstHeight": 3,
+    "facetDeg": 8,
+    "under": "open",
+    "slab": 0.6,
+    "bay": 5,
+    "seatColour": "#b9b6ae",
+    "concreteColour": "#bdb8ad",
+    "underColour": "#6e5546"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -50,
+      -28
+     ],
+     [
+      -55,
+      0
+     ],
+     [
+      -50,
+      32
+     ],
+     [
+      -40,
+      43
+     ],
+     [
+      -40,
+      39
+     ],
+     [
+      -47,
+      30
+     ],
+     [
+      -51,
+      0
+     ],
+     [
+      -47,
+      -26
+     ],
+     [
+      -40,
+      -34
+     ],
+     [
+      -40,
+      -38
+     ]
+    ],
+    "height": 10,
+    "colour": "#6b5242",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      50,
+      -28
+     ],
+     [
+      55,
+      0
+     ],
+     [
+      50,
+      32
+     ],
+     [
+      40,
+      43
+     ],
+     [
+      40,
+      39
+     ],
+     [
+      47,
+      30
+     ],
+     [
+      51,
+      0
+     ],
+     [
+      47,
+      -26
+     ],
+     [
+      40,
+      -34
+     ],
+     [
+      40,
+      -38
+     ]
+    ],
+    "height": 10,
+    "colour": "#6b5242",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    44,
+    0
+   ],
+   "params": {
+    "rect": [
+     40,
+     9
+    ],
+    "height": 6,
+    "colour": "#7d5a42",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    47,
+    0
+   ],
+   "params": {
+    "rect": [
+     12,
+     9
+    ],
+    "height": 20,
+    "colour": "#9a6a48",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    -9,
+    44.5,
+    8
+   ],
+   "params": {
+    "rect": [
+     8,
+     1
+    ],
+    "height": 1.2,
+    "colour": "#2f5f9e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    9,
+    44.5,
+    8
+   ],
+   "params": {
+    "rect": [
+     8,
+     1
+    ],
+    "height": 1.2,
+    "colour": "#2f5f9e"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    44.5,
+    20
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "height": 0.6,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -35,
+      -57
+     ],
+     [
+      -14,
+      -55
+     ],
+     [
+      0,
+      -51
+     ],
+     [
+      14,
+      -55
+     ],
+     [
+      35,
+      -57
+     ],
+     [
+      35,
+      -45
+     ],
+     [
+      -35,
+      -45
+     ]
+    ],
+    "height": 9,
+    "colour": "#b9b4a8",
+    "windows": "none"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    -52,
+    0.8
+   ],
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     44,
+     0.4
+    ],
+    "height": 3,
+    "colour": "#3a3f45"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -50.5,
+    9
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 72,
+    "depth": 13,
+    "rise": 0.3,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeY": 20,
+    "colour": "#c23a2e",
+    "edgeColour": "#a52f25",
+    "underColour": "#8a2a22"
+   }
+  },
+  {
+   "type": "surface",
+   "at": [
+    0,
+    -39.5,
+    9
+   ],
+   "params": {
+    "kind": "folded",
+    "width": 72,
+    "depth": 13,
+    "rise": 0.3,
+    "folds": 1,
+    "thickness": 0.5,
+    "slopeY": -20,
+    "colour": "#c23a2e",
+    "edgeColour": "#a52f25",
+    "underColour": "#8a2a22"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -40,
+     -44.5
+    ],
+    "end": [
+     40,
+     -44.5
+    ],
+    "count": 7,
+    "of": {
+     "type": "prism",
+     "at": [
+      0,
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       1.6,
+       1.6
+      ],
+      "height": 8,
+      "colour": "#8e8a80"
+     }
+    }
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -30,
+    -62,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 20
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    -40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    58,
+    40,
+    0
+   ],
+   "params": {
+    "height": 26,
+    "head_width": 4.5
+   }
+  },
+  {
+   "type": "scoreboard",
+   "at": [
+    0,
+    36,
+    7
+   ],
+   "params": {
+    "width": 9,
+    "height": 4,
+    "post_height": 1.5,
+    "facing": "north"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "forecourtDepth": 18,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -45,
+     -66
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     -68
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     25,
+     -67
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     -62
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -55,
+     45
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     55,
+     48
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -30,
+     62
+    ]
+   }
+  ],
+  "extent": [
+   150,
+   150
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "photo predates 2021 rebuild; roof wings are two sloped red slabs rather than the real folded V with faceted facade; outer ring wall is a plain brown wall at the ends only, not arcaded or joined to the far stand; far stand is a low block with a boxy tower, schematic"
+ }
+}

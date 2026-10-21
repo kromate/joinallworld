@@ -1,0 +1,220 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1192056601",
+   "used": "only a 138 m2 building 25 m from the centre (nearest match): too small to be the market, used only as a hint that the site is low sheds; layout is typical, not traced"
+  },
+  {
+   "kind": "text",
+   "ref": "https://en.wikipedia.org/wiki/Lafia",
+   "used": "historic Benue Valley trade market (yams, sorghum, millet, cotton); modern look from brief: lock-up rows and corrugated shed roofs, stalls"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 22,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "lockups-back",
+   "footprint": {
+    "rect": [
+     64,
+     6
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c9a3",
+    "windows": "none",
+    "bands": "#a2553a",
+    "groundKind": "shopfront"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6b6f73",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockups-left",
+   "footprint": {
+    "rect": [
+     6,
+     40
+    ]
+   },
+   "at": [
+    -38,
+    4
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c9b58a",
+    "windows": "none",
+    "bands": "#a2553a"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a5a4a",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 28,
+    "depth": 12,
+    "height": 3.6,
+    "roof": "gable",
+    "cladding": "#6b6f73",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    20,
+    2,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 24,
+    "depth": 10,
+    "height": 3.2,
+    "roof": "shed",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    8,
+    -18,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "depth": 8,
+    "height": 3.4,
+    "roof": "gable",
+    "goods": "sacks"
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -30,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#c8362f",
+     "#2f6b4f",
+     "#e0b43a",
+     "#3b6fb0"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -4,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 2.8,
+    "kind": "umbrella",
+    "colours": [
+     "#e0b43a",
+     "#ffffff",
+     "#c8362f"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    34,
+    -14,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "pitch": 3.0,
+    "kind": "umbrella"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -44,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 11,
+    "count": 1,
+    "spread": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    42,
+    20,
+    0
+   ],
+   "params": {
+    "height": 10,
+    "count": 1,
+    "spread": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "lafia-market",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or reliable outline: layout is typical, not traced"
+ }
+}

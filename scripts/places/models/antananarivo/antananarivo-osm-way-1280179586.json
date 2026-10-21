@@ -1,0 +1,211 @@
+{
+ "venueId": "antananarivo-osm-way-1280179586",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/913925293",
+   "used": "real building outline (about 12 x 9 m) inside the 5800 m2 named plot"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/antananarivo.json#antananarivo-osm-way-1280179586",
+   "used": "walled two-storey rendered house, clay tile hip roof, gate, garden courtyard; no photo found"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "house",
+   "footprint": {
+    "polygon": [
+     [
+      -6.4,
+      -3.4
+     ],
+     [
+      -5,
+      5.3
+     ],
+     [
+      6.4,
+      3.4
+     ],
+     [
+      5,
+      -5.3
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.4,
+    "bands": "#9bb08a",
+    "cornice": true,
+    "bay": 3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 28,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     8,
+     5
+    ]
+   },
+   "at": [
+    10,
+    -6
+   ],
+   "rotDeg": -10,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "punched",
+    "windowRatio": 0.15,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 14,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -16,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -17,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 32,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    17,
+    0,
+    0
+   ],
+   "rotDeg": 90,
+   "params": {
+    "length": 32,
+    "height": 2.4,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 4,
+    "colour": "#e6dcc4"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -16,
+    0
+   ],
+   "params": {
+    "width": 4,
+    "height": 2.6,
+    "pillar": 0.6,
+    "leaf": "bars",
+    "colour": "#e6dcc4",
+    "leafColour": "#4f6b47"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -12,
+     6
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     12,
+     10
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -10,
+     -10
+    ]
+   }
+  ],
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; house outline is real but annex, wall and colours follow the brief"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.06
+ }
+}

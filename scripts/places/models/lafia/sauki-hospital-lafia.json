@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lafia",
+ "venueId": "sauki-hospital-lafia",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "wikidata",
+   "ref": "Q128848354",
+   "used": "identity only (healthcare centre in Nigeria); no image."
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/lafia.json",
+   "used": "Two-storey white clinic block about 40 x 16 m, teal accent, terracotta hip roof, covered ambulance entrance. No photo or OSM outline exists for this place; form, colours and details come from the typed brief and typical Nigerian private hospitals."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ward-block",
+   "footprint": {
+    "rect": [
+     40,
+     16
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f7f4ee",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#4a7f8c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 20,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "mass",
+   "id": "entrance-bay",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -4,
+    -10.5
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ffffff",
+    "windows": "ribbon",
+    "windowRatio": 0.45,
+    "plinth": 0.5,
+    "bands": "#4a7f8c"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a3b2e",
+    "material": "metal-sheet",
+    "pitch": 22,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 4,
+    "height": 4.2,
+    "form": "flat",
+    "columns": 2,
+    "colour": "#4a7f8c"
+   }
+  },
+  {
+   "type": "red-cross-plate",
+   "at": [
+    -4,
+    -13.1,
+    6.2
+   ],
+   "params": {
+    "size": 2.4
+   }
+  },
+  {
+   "type": "ambulance-bay",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 4.0,
+    "columns": 3,
+    "vans": 1
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    -24,
+    0
+   ],
+   "params": {
+    "length": 44,
+    "height": 1.8,
+    "thickness": 0.25,
+    "kind": "wall",
+    "colour": "#e6dfcf"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -4,
+    -24,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.3,
+    "pillar": 0.5
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -24,
+    -14,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -18,
+    -19,
+    0
+   ],
+   "params": {
+    "count": 4,
+    "spacing": 2.8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   60,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo exists; every dimension and colour is a brief estimate."
+ }
+}

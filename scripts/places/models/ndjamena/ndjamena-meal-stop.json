@@ -1,0 +1,263 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-meal-stop",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1196901447",
+   "used": "nearest building footprint 14x10 m (8 m away), matches the brief's 14x9 size; rotation ~1 degree"
+  },
+  {
+   "kind": "text",
+   "ref": "brief ndjamena-meal-stop",
+   "used": "cream render, red band, corrugated shed roof, open terrace shelter with plastic tables; No photo of this place found on Wikimedia Commons or Wikipedia (Commons searches by name returned nothing)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "room",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 3.8,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc8",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#c0392b",
+    "faces": {
+     "back": "plain",
+     "left": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d8a84",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -13,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 6,
+    "height": 2.8,
+    "form": "shed",
+    "support": "timber",
+    "colour": "#b79a62",
+    "accent": "#7a6a5c"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -8.0,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.0,
+    "bottom": 3.0,
+    "colour": "#c0392b",
+    "frameColour": "#7a6a5c",
+    "posts": false
+   }
+  },
+  {
+   "type": "mass",
+   "id": "table0",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -4.5,
+    -11.5
+   ],
+   "height": 0.75,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c0392b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "table1",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    0.0,
+    -11.5
+   ],
+   "height": 0.75,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "table2",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    4.5,
+    -11.5
+   ],
+   "height": 0.75,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c0392b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "table3",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    -4.5,
+    -14.3
+   ],
+   "height": 0.75,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "table4",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    0.0,
+    -14.3
+   ],
+   "height": 0.75,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#c0392b",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "table5",
+   "footprint": {
+    "rect": [
+     1.0,
+     1.0
+    ]
+   },
+   "at": [
+    4.5,
+    -14.3
+   ],
+   "height": 0.75,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1efe8",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f1efe8"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -10,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "trees": [],
+  "extent": [
+   44,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo; terrace shelter and table layout are typical, not observed."
+ }
+}

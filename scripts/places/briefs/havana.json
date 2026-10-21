@@ -1,0 +1,1752 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "havana",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "havana",
+    "climate": "tropical-maritime",
+    "vernacular": "Dense Spanish-colonial and eclectic stock: 2-4 storey stucco townhouses with arcaded portales, tall wooden shutters and wrought-iron balconies in sun-faded pastels (ochre, pink, turquoise, cream), many peeling or stained; Vedado and Miramar mansions with columned porches; 1950s modernist slabs and flat-roofed concrete blocks, Soviet-era prefab blocks outside the centre; flat concrete roofs with water tanks, clay tile on older houses; royal palms and laurel/ficus shade trees.",
+    "wallColours": [
+      "#e6c9a8",
+      "#d9b24c",
+      "#c9776a",
+      "#9fc3c6",
+      "#efe9dc",
+      "#b9b3a6",
+      "#7fa59a"
+    ],
+    "roofColours": [
+      "#b5623f",
+      "#9a9a94",
+      "#5f6a70",
+      "#d9d4c6"
+    ],
+    "wallMaterials": [
+      "stucco",
+      "painted-render",
+      "concrete",
+      "limestone",
+      "stone",
+      "exposed-concrete"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "membrane",
+      "corrugated"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Arcaded portales and Doric/Ionic column rows, fanlights (mediopuntos) in stained glass over doors, wooden louvred shutters, wrought-iron balcony rails, baroque cornices and parapets, art-deco bands on 1930s-50s blocks, revolutionary murals and steel-outline portraits on state buildings.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Havana",
+        "what": "colourful Spanish Colonial-era buildings, classical 19th-century mansions, Old Havana and Vedado districts"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/El_Capitolio",
+        "what": "neoclassical civic architecture in granite/stone"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Havana_Central_railway_station",
+        "what": "eclectic Plateresque-influenced station architecture"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/National_Schools_of_Art",
+        "what": "1960s brick and terracotta Catalan-vault modernism"
+      }
+    ]
+  },
+  "places": {
+    "havana-airport-havana-airport": {
+      "venueId": "havana-airport-havana-airport",
+      "city": "havana",
+      "name": "José Martí International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3, the 1998 international terminal, seen from the landside forecourt: a broad low glazed-and-grey block with a white flat roof and a two-level (departures over arrivals) front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "variant": "two-level kerb, angled plan",
+        "wings": 1
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b4b4b0",
+          "#7e97a6",
+          "#e8e8e4"
+        ],
+        "roofColour": "#f0f0ee",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "departures kerb canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/José_Martí_International_Airport",
+          "what": "Terminal 3 by Mario Girona, opened 1998, departures upper level / arrivals lower level, largest and most modern terminal"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/145645162",
+          "what": "OSM Terminal 3: 3 levels, roof white, building grey, footprint ~224x182 m bounding box (area 18,829 m2, skewed plan)"
+        }
+      ],
+      "notes": "OSM measured the plan (3 levels, grey walls, white roof, 18.8k m2 footprint on a diagonal); glazing ratio, canopy and the tower are inferred from typical late-1990s terminals. Width/depth here are the main frontage block, not the full skewed bounding box."
+    },
+    "havana-clinic": {
+      "venueId": "havana-clinic",
+      "city": "havana",
+      "name": "Hospital Militar Dr. Carlos J. Finlay",
+      "archetype": "hospital",
+      "subject": "The main block of the Finlay military hospital campus: a large pale mid-century multi-storey ward block with flat roof and ribbon windows",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "campus of linked wards",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc4",
+          "#b9b3a6",
+          "#f0ece0"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1940s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/38804278",
+          "what": "OSM: hospital campus, wikidata Q17514597, ~413x406 m site, area 118,435 m2"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q17514597",
+          "what": "Carlos J. Finlay Military Hospital, inception 1943"
+        }
+      ],
+      "notes": "Only the campus extent (118k m2) and 1943 founding are known; no description of the buildings was found, so the block form is a typed guess from Havana hospital stock (painted concrete ward blocks). Large campus: show one representative ward block."
+    },
+    "havana-community-notices": {
+      "venueId": "havana-community-notices",
+      "city": "havana",
+      "name": "National Capitol (El Capitolio)",
+      "archetype": "civic-palace",
+      "subject": "El Capitolio seen from Paseo de Martí: a 207 m long white stone neoclassical block, a monumental granite stair and Ionic portico, and a tall stone-clad dome rising behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 206,
+        "depth_m": 78,
+        "storeys": 5,
+        "height_m": 30,
+        "roof": "hip",
+        "variant": "dome ~92 m on centre; building 207x91 m",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "granite",
+        "colours": [
+          "#e9e4d6",
+          "#bdb7a7",
+          "#f5f2ea"
+        ],
+        "roofColour": "#d6d1c3",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "cupola about 92 m high, stone-clad over steel frame"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "central portico ~36 m wide with Ionic columns 14 m tall"
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "wide granite stair of ~55 steps"
+        },
+        {
+          "id": "statue",
+          "count": 2,
+          "note": "two ~6.5 m bronze figures flanking the stair (Work and Tutelary Virtue)"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1929",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Capitolio",
+          "what": "207 m long, 91 m wide; dome almost 92 m, stone-clad over steel; granite stair (55-56 steps), portico ~36 m wide with Ionic columns over 14 m; two 6.5 m statues by Zanelli; 14.6 m gilded Statue of the Republic inside"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/12639209",
+          "what": "OSM: building:levels 5, height 30 m, hipped roof, white concrete, architects Govantes and Cabarrocas"
+        }
+      ],
+      "notes": "Recognisable by its US-Capitol-like dome set forward over a long symmetrical wing, with a grand granite stair and 12-column Ionic portico. Exterior colour is not stated in the text sources: pale cream-white stone is from OSM building:colour=white and general photographs. Main mass height 30 m excludes the dome."
+    },
+    "havana-community-voting-game": {
+      "venueId": "havana-community-voting-game",
+      "city": "havana",
+      "name": "Plaza de la Revolución (José Martí Memorial)",
+      "archetype": "monument",
+      "subject": "The José Martí Memorial on Plaza de la Revolución: a tall star-shaped grey stone tower rising from a low base with a seated white marble statue of Martí in front, set on a vast paved plaza",
+      "form": {
+        "footprint": "cross",
+        "width_m": 40,
+        "depth_m": 45,
+        "storeys": 0,
+        "height_m": 109,
+        "roof": "none",
+        "variant": "star-shaped tower with tall base, plaza behind",
+        "wings": 1
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "concrete",
+        "colours": [
+          "#b8b6ae",
+          "#e6e4dc",
+          "#8e8c84"
+        ],
+        "roofColour": "#b8b6ae",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.02
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "five-pointed star-section tower ~109 m"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "seated marble Martí at the base"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1958",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Havana",
+          "what": "Plaza de la Revolución is a major civic square in Vedado/Plaza district (page text did not detail the memorial)"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mart%C3%AD_Memorial",
+          "what": "page unreachable in this session; memorial form (star-shaped tower, statue at base, 1958) from prior knowledge"
+        }
+      ],
+      "notes": "Venue pin is the plaza itself (no OSM building). Memorial details (star-shaped tower ~109 m, statue, granite/marble) are recalled from general knowledge, not fetched. The square is also fronted by ministry buildings with steel-outline portraits of Che and Camilo; those are not modelled. Show the tower at the plaza edge."
+    },
+    "havana-community-workshop": {
+      "venueId": "havana-community-workshop",
+      "city": "havana",
+      "name": "Academia de las FAR General Máximo Gómez",
+      "archetype": "campus-block",
+      "subject": "A low military-academy block east of Havana: a long 2-storey flat-roofed concrete building with a covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8cfae",
+          "#8c8f86",
+          "#efece0"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/387270362",
+          "what": "OSM: nearest feature is a ~42x34 m building=roof (roofed structure) at the pin; no building description"
+        }
+      ],
+      "notes": "Military academy east of Havana; no description of its buildings found. Typed guess from Cuban institutional blocks (painted concrete, flat roof). OSM only shows a roofed structure ~42x34 m next to the pin."
+    },
+    "havana-market-game": {
+      "venueId": "havana-market-game",
+      "city": "havana",
+      "name": "Mercado Agropecuario",
+      "archetype": "market-open",
+      "subject": "A Cuban state agro-market: rows of concrete-topped produce stalls under long metal-sheet roofs with open sides",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed",
+        "variant": "long shed over stall counters"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c2ae",
+          "#7e8a8c",
+          "#e9e3d2"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 30
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "awning",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Havana",
+          "what": "general city context; the named agro-market was not individually described in any source found"
+        }
+      ],
+      "notes": "Name generic (agropecuario markets are state farm-produce markets). OSM shows only a 25x10 m dormitory-tagged building at the pin. Typed guess from Cuban agromercados: open-sided sheds, tiled/concrete counters, hand-painted boards (kept blank)."
+    },
+    "havana-meal-stop": {
+      "venueId": "havana-meal-stop",
+      "city": "havana",
+      "name": "El Cuarto de Tula",
+      "archetype": "restaurant",
+      "subject": "A colonial townhouse restaurant in Old Havana: a two-storey stucco building with a street arcade, wooden shutters and an inner courtyard dining room",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "block-width courtyard house"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d9b24c",
+          "#7fa59a",
+          "#efe9dc"
+        ],
+        "roofColour": "#b5623f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "18th-19th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q111121814",
+          "what": "Wikidata Q111121814: El Cuarto de Tula, described as a hotel in Havana"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Havana",
+          "what": "Old Havana colonial townhouse stock"
+        }
+      ],
+      "notes": "Wikidata lists El Cuarto de Tula as a Havana hotel/venue; no description of the building found. OSM block at the pin is ~73x44 m (a whole city block); the venue is only part of it. Form typed from Old Havana colonial courtyard houses."
+    },
+    "havana-osm-node-2199414676": {
+      "venueId": "havana-osm-node-2199414676",
+      "city": "havana",
+      "name": "Finca Vigía (Hemingway House)",
+      "archetype": "manor",
+      "subject": "Finca Vigía, Hemingway Museum in San Francisco de Paula: a long single-storey white colonial country house with a tile roof and wide veranda, with a separate white workshop tower and pool nearby in tropical gardens",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip",
+        "variant": "plus separate 3-storey tower and guest house",
+        "wings": 2
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "timber",
+        "colours": [
+          "#efe9dc",
+          "#6a8f7a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "louvre",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "veranda along the house front"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "separate guest house/garage block"
+        },
+        {
+          "id": "water-tank",
+          "count": 1,
+          "note": "workshop tower (white, 3 levels)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1886",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Finca_Vigía",
+          "what": "built 1886 by Catalan architect Miguel Pascual y Baguer on a hill ~8 miles SE of Havana; 15-acre estate; back veranda and tower; pool, tennis court; separate tower workshop built 1946; one-storey guest house; flamboyan trees"
+        },
+        {
+          "url": "https://www.openstreetmap.org/node/2199414676",
+          "what": "OSM museum building at pin ~16x13 m"
+        }
+      ],
+      "notes": "Recognisable by the long low single-storey house under a hip tile roof among large flamboyan and ceiba trees, with the little white tower beside it. Colours (white walls, red-brown roof, green shutters) are from memory of public photos, not from the text sources; the Wikipedia page gives no colours."
+    },
+    "havana-osm-node-4157873423": {
+      "venueId": "havana-osm-node-4157873423",
+      "city": "havana",
+      "name": "Instituto de Neurología y Neurocirugía",
+      "archetype": "hospital",
+      "subject": "A mid-rise Vedado specialist-hospital block: 4-5 storeys of painted concrete with ribbon windows and a front entrance canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 28,
+        "storeys": 5,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd2b8",
+          "#a9a69c",
+          "#efece0"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/4157873423",
+          "what": "OSM building=hospital at the pin, ~39x28 m, area 987 m2"
+        }
+      ],
+      "notes": "No source describes this building; footprint is OSM-measured, everything else is a typed guess for a Havana specialist hospital."
+    },
+    "havana-osm-node-993692568": {
+      "venueId": "havana-osm-node-993692568",
+      "city": "havana",
+      "name": "Paladar La Guarida",
+      "archetype": "restaurant",
+      "subject": "A four-storey early-20th-century Centro Habana tenement in faded cream and grey with balconies and a worn entrance, housing the paladar on its upper floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 12,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "variant": "narrow tenement with tall ground floor"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#d9cdb0",
+          "#a8a395",
+          "#e9e3d2"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1900s-1910s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/node/993692568",
+          "what": "OSM: building with 4 levels, ~14x12 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Havana",
+          "what": "Centro Habana neoclassical/eclectic tenements (cuarterías), weathered stucco"
+        }
+      ],
+      "notes": "Known as a fourth-floor paladar in a decaying tenement (marble stairway, peeling plaster) on Calle Concordia; the OSM footprint and 4 levels are measured, the faded-cream look is recalled from public photos. Do not show a legible name board."
+    },
+    "havana-osm-relation-17595359": {
+      "venueId": "havana-osm-relation-17595359",
+      "city": "havana",
+      "name": "Universidad Tecnológica de La Habana José Antonio Echeverría (CUJAE)",
+      "archetype": "campus-block",
+      "subject": "The 1960s CUJAE technical-university campus: long 4-storey exposed-concrete teaching blocks with deep brise-soleil and raised walkways",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 22,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "multiple parallel blocks",
+        "wings": 3
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#bdb8ac",
+          "#7e97a6",
+          "#e0ddd2"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/17595359",
+          "what": "OSM university, wikidata Q7227041, site ~1053x734 m (area 579k m2)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7227041",
+          "what": "Polytechnic José Antonio Echeverría"
+        }
+      ],
+      "notes": "Huge campus (579k m2). Appearance not documented in the sources reached; 1960s modernist blocks are the type for this Havana technical university. Show one representative block."
+    },
+    "havana-osm-way-1170872914": {
+      "venueId": "havana-osm-way-1170872914",
+      "city": "havana",
+      "name": "Estadio Pedro Marrero",
+      "archetype": "stadium",
+      "subject": "Estadio Pedro Marrero, the 1930 concrete stadium in Havana: an older, low open bowl of weathered concrete stands around a grass pitch, with floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 240,
+        "depth_m": 200,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "none",
+        "variant": "single-tier older bowl, mostly open"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b4b0a4",
+          "#8c8c86",
+          "#d6d2c4"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "partial small cover"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1930",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Pedro_Marrero",
+          "what": "built 1929, opened 10 Oct 1930; 30,000; grass; built for baseball, now football; manual scoreboard"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1170872914",
+          "what": "OSM stadium ~240x200 m, area 34,042 m2"
+        }
+      ],
+      "notes": "Smaller older stadium; shape and stand material (concrete) inferred from its 1929-30 build date and capacity, not from a described photo. Keep clearly smaller and lower than Latinoamericano and Panamericano."
+    },
+    "havana-osm-way-1419495076": {
+      "venueId": "havana-osm-way-1419495076",
+      "city": "havana",
+      "name": "Monumento a Leonor Pérez",
+      "archetype": "monument",
+      "subject": "The small 1958 monument to José Martí's mother in Old Havana: a modest stone plinth with a statue in a tiny plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "plinth and statue"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb7a7",
+          "#8e8a80",
+          "#d9d4c6"
+        ],
+        "roofColour": "#bdb7a7",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1958",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1419495076",
+          "what": "OSM historic=monument, start_date 1958-02-18, ~14x6 m, wikidata Q5484785 (Leonor Pérez Cabrera)"
+        }
+      ],
+      "notes": "Only OSM data found: a 14x6 m monument dated 1958 commemorating Leonor Pérez Cabrera; physical form is a typed guess (plinth with statue)."
+    },
+    "havana-osm-way-1490900566": {
+      "venueId": "havana-osm-way-1490900566",
+      "city": "havana",
+      "name": "Estadio Panamericano",
+      "archetype": "stadium",
+      "subject": "The 1991 Pan American Games stadium: an oval athletics stadium with a running track, open concrete stands and a roofed grandstand along the east side, set in parkland near Cojímar",
+      "form": {
+        "footprint": "oval",
+        "width_m": 264,
+        "depth_m": 196,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "track around pitch; east stand covered"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5b8",
+          "#7e8a8c",
+          "#e4e1d6"
+        ],
+        "roofColour": "#d9d9d6",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "east grandstand covered"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Panamericano,_Havana",
+          "what": "built 1990, opened 1 Aug 1991; oval track around football field; mostly open stands with partly covered east grandstand; artificial turf since 2008; 34,000-45,000"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1490900566",
+          "what": "OSM stadium ~264x196 m, area 38,898 m2"
+        }
+      ],
+      "notes": "Page fetch of the exact title redirected to a disambiguation; facts above are from the Pan American Stadium (Havana) article text summary. Distinguish by the athletics track and the single covered east stand."
+    },
+    "havana-osm-way-23919819": {
+      "venueId": "havana-osm-way-23919819",
+      "city": "havana",
+      "name": "Parque John Lennon",
+      "archetype": "park-landscape",
+      "subject": "Parque John Lennon in Vedado: a small shaded city park with paths and a life-size bronze figure of Lennon seated on a bench",
+      "form": {
+        "footprint": "rect",
+        "width_m": 113,
+        "depth_m": 108,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "paved paths among trees"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b3a6",
+          "#7d7a70",
+          "#d9d4c6"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "seated bronze figure on a bench"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/23919819",
+          "what": "OSM park, start_date 2000-12-08, wikidata Q1144587, ~113x108 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1144587",
+          "what": "John Lennon Park, urban park, inception 2000"
+        }
+      ],
+      "notes": "The park opened on 8 Dec 2000 with the Lennon statue (bronze, seated on a park bench, by José Villa Soberón) - statue detail from memory, not fetched. Use mature broadleaf and laurel trees on paved paths."
+    },
+    "havana-osm-way-245349429": {
+      "venueId": "havana-osm-way-245349429",
+      "city": "havana",
+      "name": "Parque de la Fraternidad",
+      "archetype": "park-landscape",
+      "subject": "Parque de la Fraternidad beside the Capitolio: a paved plaza-park laid out in 1928 with a large ceiba tree, busts and statues, and a ring of traffic around it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 104,
+        "depth_m": 53,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none",
+        "variant": "park wedge with central plaza"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#bdb7a7",
+          "#7d7a70",
+          "#d9d4c6"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "busts/statues of American leaders"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1928",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/245349429",
+          "what": "OSM park, wikidata Q6062740, ~104x53 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6062740",
+          "what": "Parque de la Fraternidad, inception 1928"
+        }
+      ],
+      "notes": "Sits across Paseo de Martí from the Capitolio. The big ceiba tree with soil from the American countries and the busts are recalled facts, not fetched; the exact fountain count is uncertain."
+    },
+    "havana-osm-way-257926030": {
+      "venueId": "havana-osm-way-257926030",
+      "city": "havana",
+      "name": "Acuario Nacional de Cuba",
+      "archetype": "museum-theatre",
+      "subject": "The Miramar coastal aquarium: a low modern pavilion building with a separate open dolphin-show amphitheatre by the sea",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 25,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "flat",
+        "variant": "dolphinarium amphitheatre beside",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8e1e0",
+          "#6a9aa8",
+          "#f0f0ec"
+        ],
+        "roofColour": "#b9b3a6",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Acuario_Nacional_de_Cuba",
+          "what": "coastal Havana aquarium with Dolphinarium; original show stadium damaged by hurricane in 1998 and a new stadium opened 2000"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/257926030",
+          "what": "OSM tourism attraction building ~31x25 m"
+        }
+      ],
+      "notes": "Page does not describe the buildings. Main building footprint is OSM-measured; the pavilion look and the separate dolphin amphitheatre (rebuilt 2000) are typed guesses."
+    },
+    "havana-osm-way-312320219": {
+      "venueId": "havana-osm-way-312320219",
+      "city": "havana",
+      "name": "Gran Sinagoga Bet Shalom",
+      "archetype": "shrine-small",
+      "subject": "The Vedado synagogue Bet Shalom: a mid-century modernist white-and-cream building with a plain stepped front, tall entrance with a Star of David on the facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "modernist hall with frontal screen"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe9dc",
+          "#b4b4b0",
+          "#f7f4ee"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Star of David motif on the front"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/312320219",
+          "what": "OSM place of worship, jewish, wikidata Q4897631, ~44.5x19.5 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4897631",
+          "what": "Beth Shalom Temple, synagogue in Cuba"
+        }
+      ],
+      "notes": "Wikipedia page was unreachable; the 1950s modernist look (white facade with Star of David) is recalled from public photos. Footprint is OSM-measured. Do not render any legible lettering."
+    },
+    "havana-osm-way-331472906": {
+      "venueId": "havana-osm-way-331472906",
+      "city": "havana",
+      "name": "Instituto Superior de Arte (Escuelas Nacionales de Arte)",
+      "archetype": "campus-block",
+      "subject": "The Cubanacán art schools: low organic brick and terracotta buildings with Catalan-vaulted roofs, curving colonnaded arcades and domes set into landscaped former golf-course ground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "barrel",
+        "variant": "Catalan-vault brick roofs and domes",
+        "wings": 3
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "terracotta",
+        "colours": [
+          "#b5532f",
+          "#c4673b",
+          "#8a6a4a"
+        ],
+        "roofColour": "#a8553a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 2,
+          "note": "curving colonnaded paths"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "terracotta domes (ballet school)"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "planted roof terraces"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1961-65",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Schools_of_Art",
+          "what": "Porro/Garatti/Gottardi; locally made brick and terracotta, Catalan vaults; organic irregular forms; curving colonnaded paths; domes; lush growth"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/331472906",
+          "what": "pin lies in the campus (OSM feature at pin is a swimming pool)"
+        }
+      ],
+      "notes": "Venue pin is within the campus. Brick/terracotta and the vaults are documented; the exact reds are inferred from colour of fired brick. Not a rectilinear block: show curving arcade, vaults and terracotta domes among trees."
+    },
+    "havana-osm-way-379448607": {
+      "venueId": "havana-osm-way-379448607",
+      "city": "havana",
+      "name": "Parroquia de San Juan Bosco",
+      "archetype": "church-classical",
+      "subject": "A Salesian parish church in Havana: a plain rendered nave with a front gable, a small bell tower and arched doors",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable",
+        "variant": "single nave with front tower"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#e6dcc4",
+          "#c9776a",
+          "#f0ece0"
+        ],
+        "roofColour": "#b5623f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th c.",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/379448607",
+          "what": "OSM Catholic place of worship, wikidata Q118533831, ~43x16 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q118533831",
+          "what": "Church of St. John Bosco, Catholic church in Havana"
+        }
+      ],
+      "notes": "No description found; footprint measured. Style, tower and colours typed from Havana parish churches."
+    },
+    "havana-osm-way-385503017": {
+      "venueId": "havana-osm-way-385503017",
+      "city": "havana",
+      "name": "INSTEC (Instituto Superior de Ciencias y Tecnologías Aplicadas)",
+      "archetype": "campus-block",
+      "subject": "A compact university research-institute block in Plaza de la Revolución: a four-storey flat-roofed painted concrete building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 19,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d8cfae",
+          "#a9a69c",
+          "#efece0"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/385503017",
+          "what": "OSM university/research institute building ~60x19 m, area 798 m2"
+        }
+      ],
+      "notes": "Only OSM footprint is known; look is a typed guess."
+    },
+    "havana-osm-way-665673095": {
+      "venueId": "havana-osm-way-665673095",
+      "city": "havana",
+      "name": "Estadio Latinoamericano",
+      "archetype": "stadium",
+      "subject": "The Latin American baseball stadium, a large blue-trimmed two-tier concrete oval with partial roof canopies and tall floodlight towers",
+      "form": {
+        "footprint": "oval",
+        "width_m": 199,
+        "depth_m": 196,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "curved",
+        "variant": "two-tier bowl with canopy over the home side"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#3a67a8",
+          "#c9c5b8",
+          "#f2f2ee"
+        ],
+        "roofColour": "#c9c5b8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "upper-tier canopy"
+        },
+        {
+          "id": "floodlights",
+          "count": 6
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1946",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Estadio_Latinoamericano",
+          "what": "opened 1946 with 31,000; enlarged 1971 to ~55,000; grass; extended gardens; major-league lighting"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/665673095",
+          "what": "OSM stadium ~199x196 m, area 31,494 m2, building:colour=blue"
+        }
+      ],
+      "notes": "OSM tags the building colour as blue, so the facade is blue-painted concrete; roof canopy and tiers are typical but not documented in the text sources. Largest and most colourful of Havana's three stadiums."
+    },
+    "havana-quiet-reflection": {
+      "venueId": "havana-quiet-reflection",
+      "city": "havana",
+      "name": "Basílica Menor de San Francisco de Asís",
+      "archetype": "church-classical",
+      "subject": "The baroque basilica and former convent on Plaza de San Francisco: a three-bay stone facade with statues and a tall freestanding bell tower beside the cloister",
+      "form": {
+        "footprint": "L",
+        "width_m": 48,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "gable",
+        "variant": "church plus cloister wing; tower 42 m",
+        "wings": 1
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d6c7a1",
+          "#b5a986",
+          "#efe9d4"
+        ],
+        "roofColour": "#b5623f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "42 m tower attached to the church"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "Immaculate Conception, St Francis, St Dominic on the facade"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "cloister"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "Fuente de los Leones in the plaza"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1738",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Basilica_Menor_de_San_Francisco_de_Asis",
+          "what": "baroque, tower 138 ft (42 m), facade on Calle Oficios with three stone statues, plaza from 1628 with Fuente de los Leones (1836), cloister museum, concert hall"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4703397",
+          "what": "Wikidata Q4703397: Franciscan friary / former church; OSM footprint ~48x30 m, 3 levels"
+        }
+      ],
+      "notes": "Recognisable by the very tall slender bell tower rising from the corner of the baroque facade and the cobbled plaza. Stone colour (warm buff coralline limestone) is from memory of photos; text sources give none."
+    },
+    "havana-recreation": {
+      "venueId": "havana-recreation",
+      "city": "havana",
+      "name": "Jardín Zoológico de La Habana",
+      "archetype": "park-landscape",
+      "subject": "The Nuevo Vedado zoo grounds: shaded animal enclosures and paths in a large landscaped park, with a modest entrance gate and ticket kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 250,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "sprawling park with enclosures"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c9c2ae",
+          "#7e8a8c",
+          "#e9e3d2"
+        ],
+        "roofColour": "#9a9a94",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 3
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1943",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6171782",
+          "what": "Havana Zoo, Q6171782, inception 1943; OSM zoo park ~509x401 m, area 159,238 m2"
+        }
+      ],
+      "notes": "Only extent and 1943 date known. Typed guess: tree-shaded zoo with low enclosure buildings and fences. Show the central portion (clamped to 120 m)."
+    },
+    "havana-transit": {
+      "venueId": "havana-transit",
+      "city": "havana",
+      "name": "Estación Central de Ferrocarriles (Havana Central railway station)",
+      "archetype": "transport-station",
+      "subject": "Havana Central station: a four-storey stone eclectic facade on Avenida de Bélgica with two ornate end towers, tall arches and a long covered platform hall behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 78,
+        "depth_m": 27,
+        "storeys": 4,
+        "height_m": 22,
+        "roof": "hip",
+        "variant": "twin end towers; ten covered tracks behind",
+        "wings": 2
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "stone",
+        "colours": [
+          "#d8c9a4",
+          "#b5a986",
+          "#efe9d4"
+        ],
+        "roofColour": "#8c8f90",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two towers, one for the Cuban arms and one for the Havana arms"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "Plateresque ornament"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 10
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "1912",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Havana_Central_railway_station",
+          "what": "eclectic, four floors and mezzanine; facade on Belgica Avenue with two towers (Cuba and Havana coats of arms); architect Kenneth MacKenzie Murchison, Spanish Plateresque decoration; ~1 km platforms; 10 covered tracks; opened 1912"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3545062",
+          "what": "Wikidata Q3545062, OSM ~78x27 m, 4 levels"
+        }
+      ],
+      "notes": "The twin towers and Plateresque ornament are documented; the buff stone and platform-hall roof colours are from memory of photos. No stylistic id fits Beaux-Arts/Plateresque eclecticism, so neoclassical is used."
+    }
+  }
+}

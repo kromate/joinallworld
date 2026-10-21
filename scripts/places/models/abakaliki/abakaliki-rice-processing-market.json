@@ -1,0 +1,346 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "abakaliki-rice-processing-market",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "url": "https://commons.wikimedia.org/wiki/File:Abakaliki_rice_mill_33.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "MediaMOF",
+   "used": "ground colour only: warm ochre husk and sand drying floor with round winnowing trays; the photo shows no buildings and is not of this exact yard"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1420448934",
+   "used": "size cue only: nearest match is 43 m away and is a 38 x 15 m building, not reliable as the market outline"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 18,
+  "fovDeg": 55
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed1",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -32,
+    -18
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b4a4",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a7f83",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed2",
+   "footprint": {
+    "rect": [
+     34,
+     14
+    ]
+   },
+   "at": [
+    -32,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#a9a595",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a7f83",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed3",
+   "footprint": {
+    "rect": [
+     30,
+     14
+    ]
+   },
+   "at": [
+    -32,
+    18
+   ],
+   "height": 7.5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b9b4a4",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a7f83",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shed4",
+   "footprint": {
+    "rect": [
+     30,
+     16
+    ]
+   },
+   "at": [
+    8,
+    -20
+   ],
+   "height": 9,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#9fa39a",
+    "windows": "none",
+    "plinth": 0.6,
+    "faces": {
+     "front": "plain"
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#7a7f83",
+    "material": "corrugated",
+    "pitch": 14,
+    "overhang": 1.2
+   }
+  },
+  {
+   "type": "mass",
+   "id": "mill",
+   "footprint": {
+    "rect": [
+     18,
+     16
+    ]
+   },
+   "at": [
+    36,
+    -6
+   ],
+   "height": 13,
+   "storeys": 2,
+   "wall": {
+    "material": "concrete",
+    "colour": "#a5774f",
+    "windows": "rect",
+    "windowRatio": 0.08,
+    "bay": 4
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6f757a",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "bagstore",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    38,
+    20
+   ],
+   "height": 6,
+   "storeys": 1,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#b79a76",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#6f757a",
+    "material": "corrugated",
+    "pitch": 12,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "silo",
+   "at": [
+    26,
+    -26,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 12,
+    "colour": "#b9bec3"
+   }
+  },
+  {
+   "type": "silo",
+   "at": [
+    31,
+    -26,
+    0
+   ],
+   "params": {
+    "radius": 2.6,
+    "height": 12,
+    "colour": "#b9bec3"
+   }
+  },
+  {
+   "type": "chimney",
+   "at": [
+    46,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "radius": 0.9,
+    "material": "brick"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    8,
+    6,
+    0
+   ],
+   "params": {
+    "rect": [
+     26,
+     18
+    ],
+    "height": 0.12,
+    "colour": "#c79a62"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "prism",
+     "params": {
+      "rect": [
+       2.2,
+       1.2
+      ],
+      "height": 1.5,
+      "colour": "#d8cdb0"
+     }
+    },
+    "mode": "grid",
+    "cols": 5,
+    "rows": 3,
+    "dx": 4,
+    "dy": 3.5,
+    "centre": [
+     8,
+     6
+    ]
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    0,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 2.6,
+    "colour": "#6f757a"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -60,
+     -30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     62,
+     30
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -62,
+     32
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo of any building here; layout, sheds, silos and mill are typed from the brief."
+ }
+}

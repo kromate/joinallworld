@@ -1,0 +1,135 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "test",
+ "venueId": "03-gothic-masses",
+ "verified": "text",
+ "evidence": [],
+ "note": "part test fixture, not a place",
+ "parts": [
+  {
+   "type": "apse",
+   "at": [
+    -18,
+    0,
+    0
+   ],
+   "rotDeg": 180,
+   "params": {
+    "radius": 3.5,
+    "wall_height": 7,
+    "roof_rise": 4,
+    "sides": 5,
+    "glass": "#5a74c8"
+   }
+  },
+  {
+   "type": "gable-roof",
+   "at": [
+    -3,
+    0,
+    6
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 9,
+    "length": 18,
+    "rise": 5,
+    "axis": "y"
+   }
+  },
+  {
+   "type": "lean-roof",
+   "at": [
+    -9.5,
+    0,
+    2
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 4.5,
+    "length": 18,
+    "rise": 2.5,
+    "side": 1
+   }
+  },
+  {
+   "type": "spire",
+   "at": [
+    14,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "base": "octagon",
+    "radius": 1.8,
+    "height": 16,
+    "drum_height": 3
+   }
+  },
+  {
+   "type": "cross",
+   "at": [
+    20,
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "height": 2.4
+   }
+  },
+  {
+   "type": "cloister",
+   "at": [
+    34,
+    8,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 22,
+    "depth": 20,
+    "height": 7,
+    "roof": "gable",
+    "windows": "arched"
+   }
+  },
+  {
+   "type": "headstones",
+   "at": [
+    -20,
+    12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "count": 14,
+    "width": 16,
+    "depth": 10
+   }
+  },
+  {
+   "type": "boundary-wall",
+   "at": [
+    -2,
+    -12,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "width": 30,
+    "depth": 30,
+    "gate_width": 4,
+    "height": 1.1
+   }
+  }
+ ],
+ "ground": [
+  84,
+  34
+ ],
+ "azimuth": 30,
+ "elevation": 30
+}

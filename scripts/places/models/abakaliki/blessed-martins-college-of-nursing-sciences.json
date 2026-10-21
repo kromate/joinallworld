@@ -1,0 +1,243 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abakaliki",
+ "venueId": "blessed-martins-college-of-nursing-sciences",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1184098761",
+   "used": "rejected: the nearest OSM building is Crunchies Restaurant, a different venue; not used"
+  },
+  {
+   "kind": "text",
+   "url": "https://www.wikidata.org/wiki/Q137910241",
+   "used": "identity only: private college of nursing in Ohatekwe, Ebonyi"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 12,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block",
+   "footprint": {
+    "polygon": [
+     [
+      -19,
+      -5
+     ],
+     [
+      19,
+      -5
+     ],
+     [
+      19,
+      5
+     ],
+     [
+      -5,
+      5
+     ],
+     [
+      -5,
+      10
+     ],
+     [
+      -19,
+      10
+     ]
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 8.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1eddf",
+    "windows": "rect",
+    "windowShape": "rect",
+    "windowRatio": 0.25,
+    "bay": 3.2,
+    "bands": "#2f6a8a",
+    "plinth": 0.5,
+    "cornice": true,
+    "faces": {
+     "front": "rect"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a36",
+    "material": "corrugated",
+    "pitch": 22,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "portico-pedimented",
+   "at": [
+    0,
+    -5,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 4,
+    "height": 4.2,
+    "columns": 4,
+    "pediment": false,
+    "steps": 3,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -7,
+    4.2
+   ],
+   "params": {
+    "width": 9,
+    "depth": 4.5,
+    "height": 0.3,
+    "thickness": 0.35,
+    "colour": "#2f6a8a",
+    "columns": 0
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "width": 5,
+    "height": 1.8,
+    "colour": "#2f6a8a"
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "colour": "#2f6a8a",
+    "board_colour": "#f1eddf"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -30,
+      -22
+     ],
+     [
+      -4,
+      -22
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.25,
+    "colour": "#bdb8a8"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      4,
+      -22
+     ],
+     [
+      30,
+      -22
+     ],
+     [
+      30,
+      18
+     ],
+     [
+      -30,
+      18
+     ],
+     [
+      -30,
+      -22
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.25,
+    "colour": "#bdb8a8"
+   },
+   "lod": [
+    0,
+    2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -26,
+     -12
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     26,
+     -14
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     24,
+     14
+    ]
+   }
+  ],
+  "extent": [
+   70,
+   50
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo and the OSM match is a different venue; L-block and colours typed from the brief."
+ }
+}

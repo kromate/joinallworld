@@ -1,0 +1,245 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ijebu-ode",
+ "venueId": "ojude-oba-forecourt",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Red_Rug_At_Ojude_Oba_Pavilion_2025.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Billchinedu",
+   "view": "street",
+   "used": "red carpeted ground, rows of green seating with cream concrete aisles and a roofed upper tier, white marquee at the left edge"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ijebu-ode.json#ojude-oba-forecourt",
+   "used": "context only; palace removed from the model as unverified"
+  }
+ ],
+ "camera": {
+  "yawDeg": -6,
+  "pitchDeg": 9,
+  "fovDeg": 65
+ },
+ "parts": [
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -8
+   ],
+   "params": {
+    "rect": [
+     90,
+     34
+    ],
+    "height": 0.08,
+    "colour": "#d8201e"
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     34,
+     12
+    ],
+    "end": [
+     -34,
+     12
+    ],
+    "rows": 14,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 1.0,
+    "seatColours": [
+     "#4cc13a",
+     "#5fd04a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#46b436",
+    "underColour": "#b5ad98",
+    "backWall": 1.0,
+    "canopy": {
+     "depth": 5,
+     "height": 9.5,
+     "colour": "#e8e4d8"
+    },
+    "stepped": false,
+    "flip": false
+   }
+  },
+  {
+   "type": "core/stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "start": [
+     -34,
+     -10
+    ],
+    "end": [
+     -34,
+     11
+    ],
+    "rows": 8,
+    "rise": 0.4,
+    "run": 1.0,
+    "firstHeight": 0.9,
+    "seatColours": [
+     "#4cc13a",
+     "#5fd04a"
+    ],
+    "blocks": 4,
+    "concreteColour": "#46b436",
+    "underColour": "#b5ad98",
+    "backWall": 0.6,
+    "flip": false
+   }
+  },
+  {
+   "type": "core/array",
+   "at": [
+    0,
+    18.5,
+    0
+   ],
+   "params": {
+    "of": {
+     "type": "core/prism",
+     "at": [
+      0,
+      0
+     ],
+     "params": {
+      "rect": [
+       0.5,
+       0.5
+      ],
+      "height": 9.5,
+      "colour": "#d9cfb8"
+     }
+    },
+    "start": [
+     -32,
+     0
+    ],
+    "end": [
+     32,
+     0
+    ],
+    "count": 9
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -40,
+    -4,
+    0
+   ],
+   "params": {
+    "rect": [
+     9,
+     7
+    ],
+    "height": 2.4,
+    "colour": "#f4f4f0"
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    -40,
+    -4,
+    2.4
+   ],
+   "params": {
+    "rect": [
+     9.4,
+     7.4
+    ],
+    "height": 3,
+    "topScale": 0.05,
+    "colour": "#fafaf6"
+   }
+  },
+  {
+   "type": "core/car",
+   "at": [
+    -46,
+    -8,
+    0
+   ],
+   "params": {
+    "colour": "#1f2226",
+    "count": 1
+   }
+  },
+  {
+   "type": "core/prism",
+   "at": [
+    0,
+    -27
+   ],
+   "params": {
+    "rect": [
+     90,
+     6
+    ],
+    "height": 0.05,
+    "colour": "#c9b9a6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   60
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     -6
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     14
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     48,
+     26
+    ],
+    "height": 11
+   }
+  ]
+ },
+ "review": {
+  "rounds": 3,
+  "match": "fair",
+  "gaps": "Red ground, bright green stand, white marquee and dark van at left now match; the roofed upper tier canopy is not visible from the low camera, the camera is higher and farther than the photo, ground clutter and the Awujale palace frontage (text only) were dropped."
+ }
+}

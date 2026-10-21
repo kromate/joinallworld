@@ -1,0 +1,1730 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "delhi",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "delhi",
+    "climate": "savanna",
+    "vernacular": "Hot monsoon-influenced capital: dense 3-5 storey reinforced-concrete frame buildings with brick infill finished in cream, yellow and dusty-pink plaster, flat roofs with water tanks and terraces, exposed brick and weathered grey concrete in older colonies and government flats (CPWD blocks); red sandstone and white marble Indo-Islamic tombs and Mughal monuments; Lutyens-era colonnaded stone buildings in New Delhi; elevated concrete-and-steel metro viaducts; neem, peepal, gulmohar and kikar trees along dusty roads.",
+    "wallColours": [
+      "#e8dcc0",
+      "#d9b878",
+      "#d8a8a0",
+      "#efeae0",
+      "#b3ada1",
+      "#a8553a",
+      "#c9755a"
+    ],
+    "roofColours": [
+      "#a9a59d",
+      "#c9bfa6",
+      "#a85a3c",
+      "#8d9296",
+      "#eee8da"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "red-brick",
+      "sandstone",
+      "marble",
+      "stucco",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "membrane",
+      "metal-sheet",
+      "corrugated",
+      "clay-tile"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Indo-Islamic and Mughal motifs: red sandstone banded with white marble, multifoil/cusped arches, domed chhatri pavilions, jali lattice screens, inlay, battered (sloping) Tughlaq walls; Hindu shikhara spires, carved pillars and elephant plinths; Lutyens-era chhajja eaves and colonnades; painted street murals and hand-painted signs in the old city.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Delhi",
+        "what": "Sultanate/Mughal architecture with white marble and red sandstone, Lutyens-era government buildings, post-independence modernist and brutalist works such as the Lotus Temple"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Delhi",
+        "what": "hot dry/humid subtropical climate, high tree cover, monsoon; Ridge; Old Delhi and Lutyens Delhi"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mehrauli_Archaeological_Park",
+        "what": "Delhi sultanate, Lodhi and Mughal tombs and mosques of stone; true arch and dome at Balban tomb"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Akshardham_(Delhi)",
+        "what": "pink sandstone and Carrara marble Mandir"
+      }
+    ]
+  },
+  "places": {
+    "delhi-airport-delhi-airport": {
+      "venueId": "delhi-airport-delhi-airport",
+      "city": "delhi",
+      "name": "Indira Gandhi International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 3 of Delhi airport (HOK, 2010): a very long two-level glass and steel terminal with a sweeping low roof and a row of jet bridges",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 720,
+        "depth_m": 438,
+        "storeys": 2,
+        "height_m": 24,
+        "roof": "curved",
+        "variant": "long-pier",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8dc",
+          "#6a7b85",
+          "#efeae0"
+        ],
+        "roofColour": "#c9ced1",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.7
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 78,
+          "note": "78 aerobridges at 48 contact stands"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "long sweeping departures canopy"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "giant hand-mudra sculptures in the hall"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indira_Gandhi_International_Airport",
+          "what": "Terminal 3 about 6.4 million sq ft, two levels (arrivals below, departures above), architect HOK, 78 aerobridges at 48 contact stands, hasta-mudra sculptures; Terminal 1 rebuilt 2025 as one building with guitar-neck pier"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1429256812",
+          "what": "OSM terminal polygon about 720 x 438 m"
+        }
+      ],
+      "notes": "Size, levels and jet bridges sourced. Glass and a wave-like roof with light grey cladding are the usual look; the colours are typed. The venue point sits at Terminal 3 (west of Terminal 1). Show a recognisable portion of the long frontage."
+    },
+    "delhi-clinic": {
+      "venueId": "delhi-clinic",
+      "city": "delhi",
+      "name": "Kailash Hospital & Heart Institute",
+      "archetype": "hospital",
+      "subject": "a multi-storey private hospital block in Noida, typed from the OSM footprint",
+      "form": {
+        "footprint": "rect",
+        "width_m": 31,
+        "depth_m": 19,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#eceae2",
+          "#3a6f8f",
+          "#c9cbc8"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/352555201",
+          "what": "OSM containing building about 31 x 19 m, no tags"
+        }
+      ],
+      "notes": "The OSM building is small and may be a wing; storeys and finish are typed for a Noida private hospital."
+    },
+    "delhi-community-notices": {
+      "venueId": "delhi-community-notices",
+      "city": "delhi",
+      "name": "Sashastra Seema Bal",
+      "archetype": "office-low",
+      "subject": "a long government office block of the paramilitary force headquarters in south-west Delhi, typed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 66,
+        "depth_m": 17,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e3d3b0",
+          "#a8553a",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sashastra_Seema_Bal",
+          "what": "Central Armed Police Force, Indian border guarding force"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1443349199",
+          "what": "OSM building about 66 x 17 m"
+        }
+      ],
+      "notes": "Only the footprint is measured; a CPWD-style four-storey government block is typed."
+    },
+    "delhi-community-voting-game": {
+      "venueId": "delhi-community-voting-game",
+      "city": "delhi",
+      "name": "Bawana Chowk",
+      "archetype": "market-open",
+      "subject": "Bawana Chowk, a busy outer-Delhi road junction lined with small shops and stalls",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#d9b878",
+          "#d8a8a0",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 8
+        },
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "lock-ups",
+          "count": 6
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Delhi",
+          "what": "urban context of outer Delhi; no source for the junction itself"
+        }
+      ],
+      "notes": "No source and no OSM building matched. A chowk (crossing) with two-storey shops, awnings and stalls is typed."
+    },
+    "delhi-community-workshop": {
+      "venueId": "delhi-community-workshop",
+      "city": "delhi",
+      "name": "Netaji Subhas University of Technology",
+      "archetype": "campus-block",
+      "subject": "the main academic block of NSUT in Dwarka: a large red-brown brick and concrete engineering college building",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 60,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8553a",
+          "#b3ada1",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Netaji_Subhas_University_of_Technology",
+          "what": "state public university in South West Delhi, upgraded 1997"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/16034563",
+          "what": "OSM campus polygon about 1061 x 805 m"
+        }
+      ],
+      "notes": "Only the campus extent and date are measured. The block shape and brick finish are typed."
+    },
+    "delhi-market-game": {
+      "venueId": "delhi-market-game",
+      "city": "delhi",
+      "name": "Metro Walk Mall",
+      "archetype": "mall",
+      "subject": "Metro Walk, an open-plan mall in Rohini (Sector 10): a boxy glass and painted-render shopping centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d4cc",
+          "#3a6f8f",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Delhi",
+          "what": "urban context; no description of the mall was found"
+        }
+      ],
+      "notes": "No facts found and no OSM building matched; all values typed for an Indian open mall."
+    },
+    "delhi-meal-stop": {
+      "venueId": "delhi-meal-stop",
+      "city": "delhi",
+      "name": "Karim's",
+      "archetype": "restaurant",
+      "subject": "Karim's, the famous Mughlai restaurant down a lane beside Jama Masjid in Old Delhi: a narrow, tightly packed three-storey old-city front with a hand-painted blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "red-brick",
+        "colours": [
+          "#d9b878",
+          "#a8553a",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank board"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "none",
+        "forecourt": "none"
+      },
+      "style": "mughal",
+      "era": "1913",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Delhi",
+          "what": "Old Delhi (Shahjahanabad) context"
+        }
+      ],
+      "notes": "A page for the restaurant could not be fetched; the lane setting beside Jama Masjid is general knowledge. Facade is typed old-city stucco with a signage board left blank."
+    },
+    "delhi-osm-node-10823999060": {
+      "venueId": "delhi-osm-node-10823999060",
+      "city": "delhi",
+      "name": "Lodhi Art District",
+      "archetype": "office-low",
+      "subject": "the Lodhi Colony street-art district: 1960s government apartment blocks whose end walls are covered in giant murals",
+      "form": {
+        "footprint": "rect",
+        "width_m": 72,
+        "depth_m": 10,
+        "storeys": 3,
+        "height_m": 10,
+        "roof": "flat",
+        "variant": "residential-flats"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#d8a8a0",
+          "#e8dcc0",
+          "#a8553a"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 3,
+          "note": "huge murals on gable end walls"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1940s-60s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/348222292",
+          "what": "OSM nearest building: apartments, 3 levels, pink colour, about 72 x 10 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q113426962",
+          "what": "art district in New Delhi"
+        }
+      ],
+      "notes": "Three levels and the pink paint come from OSM; murals are the signature (use abstract colour fields, no readable text). Flats are low government housing; roof tanks typed."
+    },
+    "delhi-osm-node-13293400515": {
+      "venueId": "delhi-osm-node-13293400515",
+      "city": "delhi",
+      "name": "P. F. Chang's",
+      "archetype": "restaurant",
+      "subject": "the open-air Cyber Hub food street in Gurugram: a long three-level glass and steel dining strip with canopies facing a central plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 187,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "food-street"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd8dc",
+          "#6a7b85",
+          "#d9b878"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        },
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/844694020",
+          "what": "OSM containing building: 3 levels, 12 m, flat roof, about 187 x 35 m"
+        }
+      ],
+      "notes": "Levels, height and flat roof are OSM; the glass-and-steel food street look is typed from general knowledge of the DLF Cyber Hub, not confirmed. No brand marks."
+    },
+    "delhi-osm-node-6465991440": {
+      "venueId": "delhi-osm-node-6465991440",
+      "city": "delhi",
+      "name": "Paschim Vihar West",
+      "archetype": "transport-station",
+      "subject": "Paschim Vihar West, an elevated Delhi Metro Green Line station: a concrete viaduct with a long arched translucent platform roof and green accent signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "curved",
+        "variant": "elevated-metro"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b3ada1",
+          "#2a8f4e",
+          "#e8e8e2"
+        ],
+        "roofColour": "#cfd4d6",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "pilotis",
+          "count": 1,
+          "note": "viaduct piers"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7141809",
+          "what": "metro station in Delhi"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/350581568",
+          "what": "OSM nearest building about 23 x 8 m (entrance block)"
+        }
+      ],
+      "notes": "The OSM building is only the entrance; the station is typed as the standard elevated Delhi Metro station (viaduct piers, arched sheet roof over platforms). Line accent colour is a guess."
+    },
+    "delhi-osm-way-102758345": {
+      "venueId": "delhi-osm-way-102758345",
+      "city": "delhi",
+      "name": "Ghiyas-ud-Din Tughlaq's Tomb",
+      "archetype": "heritage-fort",
+      "subject": "the 14th-century tomb of Ghiyath al-Din Tughluq in its pentagonal fortified enclosure: sloping red sandstone walls under a white marble dome",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 96,
+        "depth_m": 62,
+        "storeys": 1,
+        "height_m": 22,
+        "roof": "dome",
+        "variant": "tomb-in-bastioned-enclosure"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "marble",
+        "colours": [
+          "#a8553a",
+          "#eee8da",
+          "#6f6a62"
+        ],
+        "roofColour": "#eee8da",
+        "roofMaterial": "concrete",
+        "windows": "pointed-arch",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "white marble dome over red sandstone"
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "battered enclosure walls with bastions"
+        },
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "mughal",
+      "era": "1320s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/102758345",
+          "what": "OSM historic fort/attraction about 96 x 62 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Delhi",
+          "what": "Sultanate-era tombs and forts of red sandstone and marble in Delhi"
+        }
+      ],
+      "notes": "The red sandstone and white marble dome with inward-sloping (battered) walls inside a pentagonal bastioned court on a causeway, near Tughlaqabad Fort, is recalled from photos; the source gave only footprint. Colours are not sourced."
+    },
+    "delhi-osm-way-111698030": {
+      "venueId": "delhi-osm-way-111698030",
+      "city": "delhi",
+      "name": "Indira Gandhi Arena",
+      "archetype": "stadium",
+      "subject": "the Indira Gandhi Indoor Stadium (1982, Asian Games): a huge round covered arena with a shallow-domed roof and concrete ring",
+      "form": {
+        "footprint": "round",
+        "width_m": 169,
+        "depth_m": 167,
+        "storeys": 3,
+        "height_m": 32,
+        "roof": "dome",
+        "variant": "indoor-arena"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d4cdb8",
+          "#8c8576",
+          "#efeae0"
+        ],
+        "roofColour": "#b4b2ac",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "ring-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1982",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indira_Gandhi_Arena",
+          "what": "indoor arena for 1982 Asian Games, 14,349 seats, renovated 2010; within a large complex with a velodrome and indoor hall"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/111698030",
+          "what": "OSM footprint about 169 x 167 m"
+        }
+      ],
+      "notes": "Footprint and year sourced. The roof form and cladding are typed; if photos show a flatter or cable-supported roof, change the roof to tensile."
+    },
+    "delhi-osm-way-1162586312": {
+      "venueId": "delhi-osm-way-1162586312",
+      "city": "delhi",
+      "name": "Swami Shraddhanand College",
+      "archetype": "campus-block",
+      "subject": "a long Delhi University college building in Alipur, typed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e8dcc0",
+          "#a8553a",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Swami_Shraddhanand_College,_Delhi",
+          "what": "college of Delhi University"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1162586312",
+          "what": "OSM campus polygon about 318 x 126 m"
+        }
+      ],
+      "notes": "Only the campus extent is measured; a typical DU college block is typed."
+    },
+    "delhi-osm-way-1326248225": {
+      "venueId": "delhi-osm-way-1326248225",
+      "city": "delhi",
+      "name": "Army College Of Medical Sciences",
+      "archetype": "campus-block",
+      "subject": "the seven-storey brown college block of Army College of Medical Sciences at Delhi Cantonment",
+      "form": {
+        "footprint": "rect",
+        "width_m": 138,
+        "depth_m": 62,
+        "storeys": 7,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#9a7a60",
+          "#d8d0bd",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/355059671",
+          "what": "OSM: college building, 7 levels, flat roof, building colour brown, about 138 x 62 m"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Army_College_of_Medical_Sciences",
+          "what": "college in New Delhi"
+        }
+      ],
+      "notes": "Levels, flat roof and brown colour are OSM data; anything else is typed."
+    },
+    "delhi-osm-way-154708937": {
+      "venueId": "delhi-osm-way-154708937",
+      "city": "delhi",
+      "name": "Jagannath Temple",
+      "archetype": "temple-asian",
+      "subject": "the Jagannath Temple at Hauz Khas, a modern Odia-style Hindu temple with a tall curvilinear shikhara tower over a hall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 35,
+        "storeys": 3,
+        "height_m": 28,
+        "roof": "pyramidal",
+        "variant": "odia-rekha-deula"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "painted-render",
+        "colours": [
+          "#d9a07a",
+          "#efeae0",
+          "#a8553a"
+        ],
+        "roofColour": "#d9a07a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "tall curved shikhara"
+        },
+        {
+          "id": "pinnacles",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "south-asian",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jagannath_Temple,_Delhi",
+          "what": "modern temple built by the Odia community of Delhi, Hauz Khas, known for Rathyatra"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/154708937",
+          "what": "OSM temple polygon about 53 x 35 m"
+        }
+      ],
+      "notes": "Only the Odia builders and the footprint are sourced. The sandstone-coloured curved tower is typed from the Kalinga temple type; confirm with photos."
+    },
+    "delhi-osm-way-189447678": {
+      "venueId": "delhi-osm-way-189447678",
+      "city": "delhi",
+      "name": "Bharat Vandana Park",
+      "archetype": "park-landscape",
+      "subject": "Bharat Vandana Park in Dwarka, a landscaped public park with lawns, paths and a small pavilion",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 150,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#c9755a",
+          "#6f9a54",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q130527973",
+          "what": "urban park in Delhi"
+        }
+      ],
+      "notes": "No facts beyond a Wikidata label; no OSM building matched. Layout typed."
+    },
+    "delhi-osm-way-400921719": {
+      "venueId": "delhi-osm-way-400921719",
+      "city": "delhi",
+      "name": "Akshardham",
+      "archetype": "temple-asian",
+      "subject": "the Akshardham Mandir in Delhi (2005): a monumental pink sandstone and white marble temple with nine domes, carved pillars and an elephant plinth, ringed by a moat",
+      "form": {
+        "footprint": "rect",
+        "width_m": 96,
+        "depth_m": 109,
+        "storeys": 2,
+        "height_m": 43,
+        "roof": "multi-dome",
+        "variant": "maru-gurjara"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "marble",
+        "colours": [
+          "#e0a890",
+          "#efeae0",
+          "#c9755a"
+        ],
+        "roofColour": "#e0a890",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 9,
+          "note": "nine domes"
+        },
+        {
+          "id": "pinnacles",
+          "count": 20
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "234 carved pillars"
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "deities, dancers, flora carved over the walls"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 148,
+          "note": "life-size elephants on the Gajendra Pith plinth"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "south-asian",
+      "era": "2005",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Akshardham_(Delhi)",
+          "what": "about 43 m high, 96 m wide, 109 m long; Rajasthani pink sandstone and Carrara marble; 234 pillars, nine domes; Gajendra Pith with 148 elephants; Narayan Sarovar lake around; Maru-Gurjara style; opened 2005"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/400921719",
+          "what": "OSM temple 43 m tall, started 2005-11-06, about 66 x 66 m"
+        }
+      ],
+      "notes": "OSM only marks the central block (about 66 x 66 m); the 96 x 109 m figure is from Wikipedia for the whole mandir with plinth. Recognisable by the many domes and the carved pink stone. No ferrous metal is used in the real build."
+    },
+    "delhi-osm-way-467108001": {
+      "venueId": "delhi-osm-way-467108001",
+      "city": "delhi",
+      "name": "Maharaja Surajmal College",
+      "archetype": "campus-block",
+      "subject": "the main academic block of Maharaja Surajmal Institute of Technology in Janakpuri, typed",
+      "form": {
+        "footprint": "U",
+        "width_m": 130,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e3d3b0",
+          "#a8553a",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maharaja_Surajmal_Institute_of_Technology",
+          "what": "college affiliated to GGSIP University"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/467108001",
+          "what": "OSM college polygon about 250 x 145 m"
+        }
+      ],
+      "notes": "Only the extent is measured; the block is typed."
+    },
+    "delhi-osm-way-611735160": {
+      "venueId": "delhi-osm-way-611735160",
+      "city": "delhi",
+      "name": "Chhatrasal Stadium",
+      "archetype": "stadium",
+      "subject": "Chhatrasal Stadium, Model Town, a modest athletics and wrestling stadium with open stands and floodlights, typed",
+      "form": {
+        "footprint": "oval",
+        "width_m": 207,
+        "depth_m": 162,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#c0b9a8",
+          "#8c8576",
+          "#d9b878"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Chhatrasal_Stadium",
+          "what": "building in India; sports stadium in Model Town"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/9099585",
+          "what": "OSM stadium footprint about 207 x 162 m"
+        }
+      ],
+      "notes": "Only the footprint is measured; open concrete terraces and floodlights are typed."
+    },
+    "delhi-osm-way-749743849": {
+      "venueId": "delhi-osm-way-749743849",
+      "city": "delhi",
+      "name": "Malcha Mahal",
+      "archetype": "heritage-fort",
+      "subject": "Malcha Mahal, a ruined 14th-century Tughlaq hunting lodge in the wooded Ridge near Chanakyapuri: a weathered stone block with arched openings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 27,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "flat",
+        "variant": "ruin"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "mud-render",
+        "colours": [
+          "#8c8576",
+          "#a89f8c",
+          "#6f6a62"
+        ],
+        "roofColour": "#8c8576",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "broken parapet"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "mughal",
+      "era": "14th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Malcha_Mahal",
+          "what": "Tughluq-era hunting lodge in Chanakyapuri, mostly in ruins, near the ISRO Delhi Earth Station"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/749743849",
+          "what": "OSM historic ruins about 28 x 27 m"
+        }
+      ],
+      "notes": "Ruined state, era and extent sourced. Weathered grey-brown rubble stone, arched openings and dry kikar scrub are recalled from photos, not sourced. A restricted private-residence ruin."
+    },
+    "delhi-osm-way-80936826": {
+      "venueId": "delhi-osm-way-80936826",
+      "city": "delhi",
+      "name": "Ajmal Khan Park",
+      "archetype": "park-landscape",
+      "subject": "Ajmal Khan Park in Karol Bagh, a large urban park with shade trees, a jogging track and lawns",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 359,
+        "depth_m": 275,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": null,
+        "colours": [
+          "#c9755a",
+          "#6f9a54",
+          "#efeae0"
+        ],
+        "roofColour": "#a9a59d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q19456690",
+          "what": "park in Karol Bagh"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/80936826",
+          "what": "OSM park polygon about 359 x 275 m"
+        }
+      ],
+      "notes": "Only the extent is measured; park furniture is typed."
+    },
+    "delhi-osm-way-816798914": {
+      "venueId": "delhi-osm-way-816798914",
+      "city": "delhi",
+      "name": "Delhi State Cancer Institute",
+      "archetype": "hospital",
+      "subject": "the five-storey Delhi State Cancer Institute at Dilshad Garden, a white-painted state hospital block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 111,
+        "depth_m": 70,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece6d6",
+          "#4f7f9a",
+          "#b3ada1"
+        ],
+        "roofColour": "#a9a59d",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/352436189",
+          "what": "OSM: hospital building, 5 levels, about 111 x 70 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q52843693",
+          "what": "facility in Delhi"
+        }
+      ],
+      "notes": "Levels and extent are measured; finish and colour are typed."
+    },
+    "delhi-quiet-reflection": {
+      "venueId": "delhi-quiet-reflection",
+      "city": "delhi",
+      "name": "Lotus Temple",
+      "archetype": "temple-asian",
+      "subject": "the Lotus Temple, the Baha'i House of Worship (1986): 27 free-standing white marble petals in three rings of nine, surrounded by nine pools",
+      "form": {
+        "footprint": "round",
+        "width_m": 70,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 41,
+        "roof": "curved",
+        "variant": "lotus-27-petals"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "sandstone",
+        "colours": [
+          "#f4f1ea",
+          "#c9755a",
+          "#b3ada1"
+        ],
+        "roofColour": "#f4f1ea",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "red sandstone podium and walkways"
+        },
+        {
+          "id": "steps",
+          "count": 4,
+          "note": "steps and bridges across the pools"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1,
+          "note": "glass-and-steel skylight at the crown"
+        },
+        {
+          "id": "fountain",
+          "count": 9,
+          "note": "nine surrounding pools"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "modernist",
+      "era": "1986",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lotus_Temple",
+          "what": "27 marble-clad concrete petals in three sets of nine; height 40.8 m; 70 m across the petals; nine pools; white Pentelic marble; red sandstone podium walkways; glass-and-steel skylight; 26.6-acre site; Fariborz Sahba"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/44827278",
+          "what": "OSM temple polygon about 69 x 68 m, white building and roof, started 1986"
+        }
+      ],
+      "notes": "Not a standard Asian temple; generator should use the lotus-petal variant (27 petals, 9-sided plan, three rings). Leaf heights: entrance 7.8 m, outer 22.5 m, inner 33.6 m."
+    },
+    "delhi-recreation": {
+      "venueId": "delhi-recreation",
+      "city": "delhi",
+      "name": "Mehrauli Archaeological Park",
+      "archetype": "park-landscape",
+      "subject": "Mehrauli Archaeological Park: scattered Sultanate, Lodhi and Mughal sandstone tombs, a mosque and stepwells among scrub and kikar trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 758,
+        "depth_m": 705,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "sandstone",
+        "accent": "stone",
+        "colours": [
+          "#a8553a",
+          "#a89f8c",
+          "#6f6a62"
+        ],
+        "roofColour": "#a89f8c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 2,
+          "note": "domed tombs such as Balban and Jamali Kamali"
+        },
+        {
+          "id": "arches",
+          "count": 4
+        },
+        {
+          "id": "ramparts",
+          "count": 1,
+          "note": "ruined Lal Kot walls"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "stepwell flights"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "acacia",
+        "forecourt": "none"
+      },
+      "style": "mughal",
+      "era": "11th-16th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mehrauli_Archaeological_Park",
+          "what": "81 ha next to Qutb complex; over 100 monuments; Lal Kot 1060 CE; Balban tomb c.1287 with first true arch and dome; Jamali Kamali mosque and tomb 1520s-30s; Quli Khan tomb; stepwells Rajon ki Baoli and Gandhak ki Baoli"
+        }
+      ],
+      "notes": "Show a recognisable cluster: a sandstone tomb with a plain dome, a mosque arcade and scrub trees on dry ground. Exact stone colours are typed."
+    },
+    "delhi-transit": {
+      "venueId": "delhi-transit",
+      "city": "delhi",
+      "name": "Ramesh Nagar",
+      "archetype": "transport-station",
+      "subject": "Ramesh Nagar, an elevated Delhi Metro Blue Line station: concrete viaduct, glazed concourse and a long arched platform roof with blue accent signage",
+      "form": {
+        "footprint": "rect",
+        "width_m": 140,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "curved",
+        "variant": "elevated-metro"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b3ada1",
+          "#2a5ea8",
+          "#e8e8e2"
+        ],
+        "roofColour": "#cfd4d6",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q259656",
+          "what": "metro station in Delhi"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/350591024",
+          "what": "OSM nearest building about 16 x 8 m (entrance kiosk)"
+        }
+      ],
+      "notes": "Only a tiny entrance building is in OSM. The elevated station is typed from the standard Delhi Metro design and is intentionally longer and bluer than the Paschim Vihar West model."
+    }
+  }
+}

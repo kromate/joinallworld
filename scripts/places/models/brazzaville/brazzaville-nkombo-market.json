@@ -1,0 +1,201 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "brazzaville",
+ "venueId": "brazzaville-nkombo-market",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/595453407",
+   "used": "market area (75 x 57 m, tagged marketplace), river side taken as +y"
+  },
+  {
+   "kind": "text",
+   "used": "brief: riverside market on the Congo near canoe landings; timber stalls, sheds, pier; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 25,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -18,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "umbrella",
+    "colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ],
+    "goods_colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -24,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.2,
+    "kind": "tin",
+    "colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ],
+    "goods_colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ]
+   }
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -20,
+    3,
+    0
+   ],
+   "params": {
+    "count": 6,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ],
+    "goods_colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ]
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    -14,
+    18,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8c88",
+    "cladding": "timber"
+   }
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    14,
+    10,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 7,
+    "height": 3.4,
+    "roof": "gable",
+    "roof_colour": "#8c8c88"
+   }
+  },
+  {
+   "type": "pier-boardwalk",
+   "at": [
+    22,
+    26,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 22,
+    "width": 3,
+    "height": 0.9
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 11,
+    "count": 6,
+    "spread": 50,
+    "line": 1
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    8,
+    -10,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 7,
+    "colours": [
+     "#a8774a",
+     "#c9a77c",
+     "#8a5a36",
+     "#3b6a8c",
+     "#d9a43a"
+    ],
+    "tables": false
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "water",
+  "trees": [],
+  "extent": [
+   100,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; stalls, sheds and a landing pier typical for a riverside market."
+ }
+}

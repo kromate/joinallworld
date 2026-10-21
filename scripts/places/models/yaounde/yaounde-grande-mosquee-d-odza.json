@@ -1,0 +1,165 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/222110585",
+   "used": "real 15 x 12 m rotated rectangular outline (name match); no photo found on Commons or the web"
+  },
+  {
+   "kind": "text",
+   "used": "brief: modern domed mosque, two slim minarets, pale render with green trim (low confidence)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 30,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "prayer-hall",
+   "footprint": {
+    "osm": true,
+    "scale": 1.0,
+    "fit": 30
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f1ece0",
+    "windows": "arched",
+    "windowShape": "arched",
+    "windowRatio": 0.22,
+    "trimColour": "#2f7a54",
+    "plinth": 0.5,
+    "bands": "#2f7a54",
+    "cornice": true
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#cfcac0",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "core/dome",
+   "at": [
+    0,
+    0,
+    7.5
+   ],
+   "params": {
+    "radius": 4.6,
+    "height": 4.2,
+    "profile": "onion",
+    "drum": 1.6,
+    "drumRadius": 4.3,
+    "finial": 1.6,
+    "colour": "#2f7a54",
+    "drumColour": "#f1ece0"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    -9,
+    -8,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "radius": 0.8,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f1ece0",
+    "capColour": "#2f7a54"
+   }
+  },
+  {
+   "type": "core/minaret",
+   "at": [
+    9,
+    7,
+    0
+   ],
+   "params": {
+    "height": 20,
+    "radius": 0.8,
+    "balconies": 2,
+    "style": "pencil",
+    "colour": "#f1ece0",
+    "capColour": "#2f7a54"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "length": 30,
+    "height": 2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "pillarEvery": 5,
+    "colour": "#cfcac0"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -18
+   ],
+   "params": {
+    "width": 5,
+    "height": 2.6,
+    "pillar": 0.6,
+    "colour": "#2f7a54",
+    "leafColour": "#2d3033"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "extent": [
+   50,
+   45
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -20,
+     12
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -12
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo found: dome, minarets and trim from the brief (low confidence), footprint from OSM"
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "yaounde",
+ "venueId": "yaounde-grande-mosquee-d-odza"
+}

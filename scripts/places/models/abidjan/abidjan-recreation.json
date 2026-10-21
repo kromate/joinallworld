@@ -1,0 +1,245 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/757286787",
+   "used": "real park outline, a small triangle 40 x 19 m (376 m2) at true scale"
+  },
+  {
+   "kind": "text",
+   "used": "brief: lagoon-side lawn, palms, winding paths, small pavilion, memorial plaque; the nearby Mapillary frames show a curved office block on the road, not the park, so were not used"
+  }
+ ],
+ "camera": {
+  "yawDeg": -15,
+  "pitchDeg": 22,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     80,
+     60
+    ],
+    "height": 0.08,
+    "colour": "#c9b98a"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.08
+   ],
+   "params": {
+    "points": [
+     [
+      -14.2,
+      -2
+     ],
+     [
+      18.8,
+      -15
+     ],
+     [
+      -4.6,
+      17
+     ]
+    ],
+    "height": 0.25,
+    "colour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0.33
+   ],
+   "params": {
+    "points": [
+     [
+      -12,
+      -1
+     ],
+     [
+      -6,
+      0.4
+     ],
+     [
+      2,
+      0
+     ],
+     [
+      8,
+      -5
+     ],
+     [
+      14,
+      -10
+     ],
+     [
+      14.8,
+      -9.2
+     ],
+     [
+      8.6,
+      -4
+     ],
+     [
+      2.4,
+      0.9
+     ],
+     [
+      -6,
+      1.2
+     ],
+     [
+      -12,
+      -0.2
+     ]
+    ],
+    "height": 0.04,
+    "colour": "#d9cfae"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    1,
+    6,
+    0.33
+   ],
+   "params": {
+    "width": 5,
+    "depth": 4,
+    "height": 3.2,
+    "roof": "hip",
+    "rise": 1.4,
+    "posts": 4,
+    "colour": "#efe9d8",
+    "cap_colour": "#8a4a35"
+   }
+  },
+  {
+   "type": "basin-fountain",
+   "at": [
+    -5,
+    -3,
+    0.33
+   ],
+   "params": {
+    "radius": 1.6
+   }
+  },
+  {
+   "type": "mosque-domed/statue-on-plinth",
+   "at": [
+    11,
+    -9,
+    0.33
+   ],
+   "params": {
+    "height": 3.2,
+    "plinth_height": 1.0
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    6,
+    -3,
+    0.33
+   ],
+   "rotDeg": 30,
+   "params": {
+    "count": 2,
+    "spacing": 2.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -8,
+    6,
+    0.33
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 3,
+    "spread": 6
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    12,
+    -4,
+    0.33
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 8,
+    "count": 2,
+    "spread": 5
+   }
+  },
+  {
+   "type": "water-surface",
+   "at": [
+    18,
+    30,
+    0
+   ],
+   "params": {
+    "width": 70,
+    "depth": 26,
+    "colour": "#6f8f8f",
+    "bank": true
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -20,
+    -9,
+    0.08
+   ],
+   "params": {
+    "height": 5,
+    "count": 3,
+    "spacing": 12
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo of the park; real 40x19 m triangle plus brief furniture, positions plausible not surveyed."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-recreation"
+}

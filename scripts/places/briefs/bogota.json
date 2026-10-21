@@ -1,0 +1,1624 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "bogota",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "bogota",
+    "climate": "highland",
+    "vernacular": "A red-brick city on a high plateau: exposed brick (ladrillo) apartment blocks, houses and institutional buildings in rust-red; whitewashed colonial and republican houses with clay-tile roofs in La Candelaria and the old towns; concrete and glass towers in the north and the international district; fibre-cement and corrugated roofs on peripheral self-built neighbourhoods; eucalyptus, pine and broadleaf street trees under a cool grey sky.",
+    "wallColours": [
+      "#a8553a",
+      "#c27a55",
+      "#e9e4d6",
+      "#8c8c88",
+      "#d6b46a",
+      "#5f7f95"
+    ],
+    "roofColours": [
+      "#b05a3c",
+      "#8a8a86",
+      "#6d6f72",
+      "#a89a8a"
+    ],
+    "wallMaterials": [
+      "red-brick",
+      "brick",
+      "whitewash",
+      "painted-render",
+      "exposed-concrete",
+      "glass-curtain",
+      "concrete",
+      "render"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Neo-Mudejar brickwork with horseshoe arches, alfiz frames and brick lattice (Santamaria bullring); whitewashed colonial walls with exposed timber, clay roof tiles and iron fences; Rogelio Salmona-style brick geometry; wall murals and graffiti; blank commercial signboards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Bogot%C3%A1",
+        "what": "Bogota: highland city (cool climate), colonial La Candelaria with Plateresque and colonial churches, modern international district towers"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Plaza_Cultural_la_Santamar%C3%ADa",
+        "what": "neo-Mudejar red brick, horseshoe arches, battlements"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Catedral_de_Santiago_Ap%C3%B3stol_(Bogot%C3%A1)",
+        "what": "white-painted colonial church with brick pillars and clay-tile roof"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Arquitectura_de_Bogot%C3%A1",
+        "what": "colonial core around La Candelaria; brick and clay tile"
+      }
+    ]
+  },
+  "places": {
+    "bogota-airport-bogota-airport": {
+      "venueId": "bogota-airport-bogota-airport",
+      "city": "bogota",
+      "name": "El Dorado International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminal 1 (2014 Zyscovich design) seen from the forecourt: a very wide glass terminal with long concourse piers, with the control tower behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 130,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "h-shaped terminal with north international and south domestic piers",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#cfd5d8",
+          "#5d7686",
+          "#eef0f0"
+        ],
+        "roofColour": "#c9ccce",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 20
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2014-2017 terminal (original 1959)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Dorado_International_Airport",
+          "what": "Terminal 1 h-shaped with international concourse north and domestic south, 235,000 m2, 32 gates, designed by Zyscovich Architects, completed 2014 (final work 2017); terminal 2 Puente Aereo built 1981"
+        }
+      ],
+      "notes": "Form and size from the article; glass-and-steel look and curved roof are typed from general knowledge of the 2014 terminal. The 1959 original terminal is gone."
+    },
+    "bogota-clinic": {
+      "venueId": "bogota-clinic",
+      "city": "bogota",
+      "name": "Clinica Nuestra Senora del Rosario",
+      "archetype": "hospital",
+      "subject": "A mid-rise private clinic in brick and glass in northern Bogota",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 35,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b05f45",
+          "#d9d6cf",
+          "#5f7f95"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogot%C3%A1",
+          "what": "Bogota: highland city (cool climate), colonial La Candelaria with Plateresque and colonial churches, modern international district towers"
+        }
+      ],
+      "notes": "No page or footprint found for this clinic. Typed as a six-storey brick clinic from the city style (brick-clad institutional buildings are common)."
+    },
+    "bogota-community-notices": {
+      "venueId": "bogota-community-notices",
+      "city": "bogota",
+      "name": "Fiscalia Montevideo",
+      "archetype": "civic-small",
+      "subject": "A prosecutor-service office building in Montevideo (Fontibon), an irregular multi-wing complex",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 77,
+        "depth_m": 26,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8553a",
+          "#b9b4aa",
+          "#5f7f95"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Fiscal%C3%ADa_General_de_la_Naci%C3%B3n_(Colombia)",
+          "what": "agency for this OSM courthouse (page title only used)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/18995838",
+          "what": "OSM courthouse footprint 77 x 26 m (irregular outline)"
+        }
+      ],
+      "notes": "Footprint measured; appearance not described anywhere found. Typed as a state office block in brick with flagpoles."
+    },
+    "bogota-community-voting-game": {
+      "venueId": "bogota-community-voting-game",
+      "city": "bogota",
+      "name": "Plaza de Soacha",
+      "archetype": "park-landscape",
+      "subject": "The central plaza of Soacha, a paved town square with trees and benches",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 2,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bc",
+          "#a8a59c",
+          "#7a8f6a"
+        ],
+        "roofColour": "#a8a59c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogot%C3%A1",
+          "what": "Bogota: highland city (cool climate), colonial La Candelaria with Plateresque and colonial churches, modern international district towers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/546691700",
+          "what": "nearest OSM building 42 x 7 m (shop row)"
+        }
+      ],
+      "notes": "Square not described by any source found; typed from the city style. A parish church and shop rows would flank a real plaza but are not verified."
+    },
+    "bogota-community-workshop": {
+      "venueId": "bogota-community-workshop",
+      "city": "bogota",
+      "name": "UDR UNAD Soacha",
+      "archetype": "office-low",
+      "subject": "A distance-university regional unit in a two-storey brick building in Soacha",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b0603f",
+          "#e9e4d6",
+          "#6d6f72"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogot%C3%A1",
+          "what": "Bogota: highland city (cool climate), colonial La Candelaria with Plateresque and colonial churches, modern international district towers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/384765984",
+          "what": "venue lies inside a school polygon (IE Leon XIII Chiloe, 175 x 70 m); building size not known"
+        }
+      ],
+      "notes": "Venue sits in a school polygon, so the real UNAD premises are not isolated. Typed."
+    },
+    "bogota-market-game": {
+      "venueId": "bogota-market-game",
+      "city": "bogota",
+      "name": "Centro Comercial Santafe",
+      "archetype": "mall",
+      "subject": "Centro Comercial Santafe in Suba, a very large multi-level shopping centre with a parking tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 268,
+        "depth_m": 237,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#dcd8cf",
+          "#6f8a9a",
+          "#b9b4aa"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "parking tower, 4,100 spaces"
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Comercial_Santaf%C3%A9_(Bogot%C3%A1)",
+          "what": "opened 13 May 2006, ~244,000 m2, three to four floors, ~4,100 parking spaces incl. parking tower, 572 stores, eight plazas"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/28551320",
+          "what": "OSM footprint 268 x 237 m (building=commercial)"
+        }
+      ],
+      "notes": "Size and levels sourced; facade colours typed (the page does not describe the facade)."
+    },
+    "bogota-meal-stop": {
+      "venueId": "bogota-meal-stop",
+      "city": "bogota",
+      "name": "Cafeteria La Central",
+      "archetype": "restaurant",
+      "subject": "A small single-storey campus cafeteria with teal-blue walls and a green (grass) roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 2.5,
+        "roof": "flat",
+        "variant": "green roof"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#275e75",
+          "#51681a",
+          "#e9e4d6"
+        ],
+        "roofColour": "#51681a",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/409391089",
+          "what": "OSM tags: building:colour #275e75, roof:colour #51681a, roof:material grass, 1 level, 2.5 m; Javeriana campus"
+        }
+      ],
+      "notes": "Colours, grass roof and 1 storey / 2.5 m are measured OSM tags; interior and detailing are typed. Roof material \"grass\" has no matching roofMaterial id so the field is omitted."
+    },
+    "bogota-osm-node-1194775794": {
+      "venueId": "bogota-osm-node-1194775794",
+      "city": "bogota",
+      "name": "Monumento Angeles Agustinianos",
+      "archetype": "monument",
+      "subject": "A small monument of angel figures on a plinth beside a school complex in northern Bogota",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#cfc9bc",
+          "#a8a59c",
+          "#7a6a5a"
+        ],
+        "roofColour": "#a8a59c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogot%C3%A1",
+          "what": "Bogota: highland city (cool climate), colonial La Candelaria with Plateresque and colonial churches, modern international district towers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1395623583",
+          "what": "nearest OSM building 43 x 23 m, no tags"
+        }
+      ],
+      "notes": "No description found for this monument. Typed as a small statue group on a concrete plinth; size is a guess."
+    },
+    "bogota-osm-relation-19012716": {
+      "venueId": "bogota-osm-relation-19012716",
+      "city": "bogota",
+      "name": "Plaza de Toros La Santamaria",
+      "archetype": "stadium",
+      "subject": "The Santamaria bullring: a round neo-Mudejar red-brick ring with horseshoe arches, battlements and two towers flanking the main facade",
+      "form": {
+        "footprint": "round",
+        "width_m": 90,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 20,
+        "roof": "none",
+        "variant": "bullring with tiers around open ring and two facade towers"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#a4452f",
+          "#d9c9a8",
+          "#6e2d20"
+        ],
+        "roofColour": "#a8a59c",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 24,
+          "note": "horseshoe arches with alfiz frames"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "decorative brick battlements round the top"
+        },
+        {
+          "id": "bell-tower",
+          "count": 2,
+          "note": "two towers flanking the facade"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1,
+          "note": "interlaced brick lattice in the spandrels"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "arab-islamic",
+      "era": "1931 (facade 1940s)",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Plaza_Cultural_la_Santamar%C3%ADa",
+          "what": "neo-Mudejar, red brick, horseshoe arches with alfiz, brick battlements, two towers flanking central facade, first reinforced-concrete bullring in the city, 14,500 spectators, opened 8 Feb 1931"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Santamar%C3%ADa_Bullring",
+          "what": "capacity 14,500, built 1931"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/19012716",
+          "what": "OSM footprint about 91 x 90 m"
+        }
+      ],
+      "notes": "Instantly recognisable by the red-brick horseshoe-arch facade and flanking towers. Arena is open (no roof). Tower heights are estimated."
+    },
+    "bogota-osm-relation-19135828": {
+      "venueId": "bogota-osm-relation-19135828",
+      "city": "bogota",
+      "name": "Centro Comercial Portal 80",
+      "archetype": "mall",
+      "subject": "Portal 80 shopping centre beside the TransMilenio portal: a wide four-level mall block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 225,
+        "depth_m": 149,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d4c7",
+          "#7a8f9a",
+          "#a8553a"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "1,150 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2004",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Comercial_Portal_80",
+          "what": "opened 21 May 2004 (construction from Jan 2003), 4 levels, 88,000 m2, 1,150 parking spaces"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/19135828",
+          "what": "OSM footprint 225 x 149 m"
+        }
+      ],
+      "notes": "Size, levels and parking sourced; facade colours typed. Made lower and plainer than Santafe and Mallplaza."
+    },
+    "bogota-osm-way-1008418546": {
+      "venueId": "bogota-osm-way-1008418546",
+      "city": "bogota",
+      "name": "Estadio Compensar",
+      "archetype": "stadium",
+      "subject": "A small synthetic-turf football stadium with low covered stands in the Compensar recreation centre",
+      "form": {
+        "footprint": "rect",
+        "width_m": 117,
+        "depth_m": 97,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b4aa",
+          "#2f6da3",
+          "#d9d4c7"
+        ],
+        "roofColour": "#6d6f72",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_de_Compensar",
+          "what": "capacity 4,500, synthetic turf (only pro pitch in Bogota), opened 1998 in the Compensar urban recreation centre"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1008418546",
+          "what": "OSM stadium footprint 117 x 97 m"
+        }
+      ],
+      "notes": "Capacity and turf sourced; stands/roof are typed as a small covered stand. Pitch colour is bright artificial green."
+    },
+    "bogota-osm-way-1377259992": {
+      "venueId": "bogota-osm-way-1377259992",
+      "city": "bogota",
+      "name": "Parque Metropolitano El Tunal",
+      "archetype": "park-landscape",
+      "subject": "El Tunal park: wide lawns, artificial lakes, a plaza with the open-air stage (tarima) and sports courts",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 500,
+        "depth_m": 400,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9bc",
+          "#a8a59c",
+          "#7a8f6a"
+        ],
+        "roofColour": "#a8a59c",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bandstand",
+          "count": 1,
+          "note": "the tarima where the Pope preached in 1986"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "library building"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Metropolitano_El_Tunal",
+          "what": "55 ha, artificial lakes about 3 ha, sports courts and coliseum, skating tracks, event plaza and templete (Pope John Paul II 1986), library"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/61129932",
+          "what": "nearest OSM building \"Tarima\" theatre 23 x 18 m"
+        }
+      ],
+      "notes": "Contents sourced; layout and tree species typed (eucalyptus and pine are typical of Bogota parks)."
+    },
+    "bogota-osm-way-177256716": {
+      "venueId": "bogota-osm-way-177256716",
+      "city": "bogota",
+      "name": "Iglesia Santiago Apostol",
+      "archetype": "church-classical",
+      "subject": "The Santiago Apostol church: a white-painted colonial church with a tower topped by a dome and Jesuit cross, brick buttress pillars and a clay-tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 51,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "brick",
+        "colours": [
+          "#f2eee2",
+          "#a8553a",
+          "#c9b79c"
+        ],
+        "roofColour": "#b05a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "five-level tower with dome and cross"
+        },
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 4,
+          "note": "exposed brick pillars"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1608-1632; restored 1948-55",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Catedral_de_Santiago_Ap%C3%B3stol_(Bogot%C3%A1)",
+          "what": "colonial basilica plan, west facade with five-level bell tower topped by a dome and cross, exterior white, exposed-brick pillars, clay-tile roof, nave about 15 m high, built 1608-1632"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/177256716",
+          "what": "OSM building=cathedral 51 x 22 m"
+        }
+      ],
+      "notes": "The OSM element carries the es-wiki link for the cathedral article, whose description is used here; the article describes a much older Jesuit-era basilica so there may be a mismatch with the Fontibon building actually at these coordinates. Colours white, brick red and clay roof are consistent across both."
+    },
+    "bogota-osm-way-24152211": {
+      "venueId": "bogota-osm-way-24152211",
+      "city": "bogota",
+      "name": "Parque Estadio Olaya Herrera",
+      "archetype": "stadium",
+      "subject": "A small neighbourhood football stadium in a park, with three covered stands on the west side and tall floodlight towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b4aa",
+          "#a8553a",
+          "#6d6f72"
+        ],
+        "roofColour": "#6d6f72",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered west stands"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "night lighting installed 2023"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "perimeter fence designed not to block views"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1950s pitch; 2023 renovation",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Estadio_Olaya_Herrera",
+          "what": "capacity 2,500, natural grass, three west stands with six booths and a roof, concrete terraces, floodlights, perimeter fence, remodelled 2023"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24152211",
+          "what": "OSM park polygon 405 x 236 m"
+        }
+      ],
+      "notes": "Stadium is only part of the park polygon; modelled as the stand building and pitch. Smaller than Compensar, with a one-sided roof."
+    },
+    "bogota-osm-way-24410567": {
+      "venueId": "bogota-osm-way-24410567",
+      "city": "bogota",
+      "name": "Estadio Alfonso Lopez Pumarejo",
+      "archetype": "stadium",
+      "subject": "The 1938 University City stadium: an open oval of concrete terraces with a running track, weathered and run-down",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 160,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "open bowl, no roof"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#a8a59c",
+          "#8d8a82",
+          "#cfc9bc"
+        ],
+        "roofColour": "#8d8a82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1938",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Alfonso_L%C3%B3pez_Pumarejo",
+          "what": "capacity 12,000, opened 1938, German architect Leopoldo Rother, natural turf, in an advanced state of abandon (2025)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24410567",
+          "what": "OSM stadium footprint 202 x 163 m"
+        }
+      ],
+      "notes": "Sourced: 1938, Rother, 12,000 capacity, abandoned. Open concrete bowl shape and no roof are typed (modernist era stadium); weathered grey concrete."
+    },
+    "bogota-osm-way-24421901": {
+      "venueId": "bogota-osm-way-24421901",
+      "city": "bogota",
+      "name": "Mallplaza NQS",
+      "archetype": "mall",
+      "subject": "Mallplaza NQS, a three-level mall with its facade on Avenida NQS",
+      "form": {
+        "footprint": "rect",
+        "width_m": 293,
+        "depth_m": 228,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e2ddd3",
+          "#c8423a",
+          "#8f9aa0"
+        ],
+        "roofColour": "#9a9a96",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "2,500 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Mallplaza_NQS",
+          "what": "3 levels, ~240,000 m2, 400 stores, 2,500 parking spaces, designed by Nagui Sabet, opened 9 Dec 2011"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/24421901",
+          "what": "OSM footprint 293 x 228 m"
+        }
+      ],
+      "notes": "Size and levels sourced; coloured accent is a guess (neutral palette). Taller wall panels than Portal 80, sloped site."
+    },
+    "bogota-osm-way-26930352": {
+      "venueId": "bogota-osm-way-26930352",
+      "city": "bogota",
+      "name": "Parque Mundo Aventura",
+      "archetype": "park-landscape",
+      "subject": "Mundo Aventura theme park: colourful ride towers (Gravity tower 57 m, X-Treme 47 m, Vertical Swing 41 m), two coasters and themed zones, with an entrance gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 560,
+        "depth_m": 330,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "theme park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e53935",
+          "#fbc02d",
+          "#1e88e5"
+        ],
+        "roofColour": "#fbc02d",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 3,
+          "note": "ride towers 41, 47 and 57 m"
+        },
+        {
+          "id": "pavilion",
+          "count": 4
+        },
+        {
+          "id": "flags",
+          "count": 10
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1998; Gravity tower 2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Mundo_Aventura",
+          "what": "13 ha, 33 attractions incl. 2 coasters, Gravity tower 57 m (2023), X-Treme 47 m, Vertical Swing 41 m, opened 30 Jan 1998"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/26930352",
+          "what": "OSM theme park polygon 562 x 327 m"
+        }
+      ],
+      "notes": "Ride heights from the article; colours are typical bright theme-park primaries, typed. No ride/coaster feature id exists so tall ride towers use mast."
+    },
+    "bogota-osm-way-398077902": {
+      "venueId": "bogota-osm-way-398077902",
+      "city": "bogota",
+      "name": "Universidad Externado de Colombia sede El Alcazar",
+      "archetype": "campus-block",
+      "subject": "The El Alcazar recreational and teaching site: low brick pavilions among gardens and sports fields",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8553a",
+          "#d9d6cf",
+          "#6d6f72"
+        ],
+        "roofColour": "#b05a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Externado_de_Colombia",
+          "what": "university with 65,000 m2 campus and the 14 ha El Alcazar recreational site in north Bogota"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/398077902",
+          "what": "OSM university polygon 257 x 230 m"
+        }
+      ],
+      "notes": "The source gives only that El Alcazar is a 14 ha recreation site; building design is typed from brick-heavy campus idiom in Bogota."
+    },
+    "bogota-osm-way-663327841": {
+      "venueId": "bogota-osm-way-663327841",
+      "city": "bogota",
+      "name": "Museo del Chico",
+      "archetype": "museum-theatre",
+      "subject": "The Chico Museum: an 18th-century colonial hacienda-type house with republican touches, whitewashed with a tiled roof, set in gardens with centuries-old trees behind an iron fence",
+      "form": {
+        "footprint": "U",
+        "width_m": 76,
+        "depth_m": 42,
+        "storeys": 1,
+        "height_m": 6.5,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f1ece0",
+          "#8b5a3c",
+          "#6d6f72"
+        ],
+        "roofColour": "#b05a3c",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "zaguan entrance hall"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "iron fence round the park"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "covered corridor round the patio"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "18th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_del_Chic%C3%B3",
+          "what": "18th-century colonial house with republican touches, typical Sabana de Bogota hacienda, zaguan entrance, small interlinked rooms, gardens and centenary trees, iron perimeter fence"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/663327841",
+          "what": "OSM museum footprint 76 x 42 m"
+        }
+      ],
+      "notes": "Style and setting sourced; storeys, roof and colours are typed from the colonial hacienda type (whitewash, timber, clay tile)."
+    },
+    "bogota-osm-way-675058435": {
+      "venueId": "bogota-osm-way-675058435",
+      "city": "bogota",
+      "name": "Centro Industrial y de Desarrollo Empresarial",
+      "archetype": "campus-block",
+      "subject": "A SENA training centre: several low brick workshop and classroom blocks round a yard",
+      "form": {
+        "footprint": "U",
+        "width_m": 187,
+        "depth_m": 146,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "painted-render",
+        "colours": [
+          "#b0603f",
+          "#e9e4d6",
+          "#4f7a5a"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Servicio_Nacional_de_Aprendizaje",
+          "what": "training network (SENA); this centre is not described"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogot%C3%A1",
+          "what": "Bogota: highland city (cool climate), colonial La Candelaria with Plateresque and colonial churches, modern international district towers"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/675058435",
+          "what": "OSM college footprint 187 x 146 m"
+        }
+      ],
+      "notes": "Only the campus extent is measured; typed as brick workshops. Distinct from the SENA wood/construction centre which is a single smaller block."
+    },
+    "bogota-osm-way-86369735": {
+      "venueId": "bogota-osm-way-86369735",
+      "city": "bogota",
+      "name": "Centro de Tecnologias para la Construccion y la Madera (SENA)",
+      "archetype": "campus-block",
+      "subject": "A single compact SENA workshop block for construction and timber training",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#d6cdb7",
+          "#8b5a3c",
+          "#6d6f72"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "sheds",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Servicio_Nacional_de_Aprendizaje",
+          "what": "training network (SENA); this centre not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/501889808",
+          "what": "OSM building=university footprint 38 x 36 m"
+        }
+      ],
+      "notes": "Footprint measured only. Timber accents hint at the carpentry school but are typed, not observed."
+    },
+    "bogota-osm-way-99625014": {
+      "venueId": "bogota-osm-way-99625014",
+      "city": "bogota",
+      "name": "Basilica del Senor de Monserrate",
+      "archetype": "church-classical",
+      "subject": "The Monserrate sanctuary on the summit at 3,152 m: a whitewashed church with tile roof and bell tower, with an open forecourt and wide views over the city",
+      "form": {
+        "footprint": "cross",
+        "width_m": 50,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f4f1e8",
+          "#e48864",
+          "#9a8f84"
+        ],
+        "roofColour": "#e48864",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "forecourt steps"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "atrium overlooking the city"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "church 1920-1925 (hermitage 17th c.)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Bas%C3%ADlica_del_Se%C3%B1or_de_Monserrate",
+          "what": "current church by Arturo Jaramillo Concha, inaugurated 1920 and finished 1925, historicist/neo-Gothic per article, at the summit, Fallen Lord image"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Monserrate",
+          "what": "summit 3,152 m, 17th-century church with El Senor Caido shrine, funicular and cable car, restaurants and shops"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/99625014",
+          "what": "OSM church tags: building:colour white, roof:colour #E48864, material stone; footprint 92 x 50 m including atrium"
+        }
+      ],
+      "notes": "White walls and orange-terracotta roof are OSM tags. The article calls the design neo-Gothic; the facade look (simple whitewashed church with a bell tower) is from general knowledge, so confidence is medium. Footprint 92 x 50 m includes the forecourt."
+    },
+    "bogota-quiet-reflection": {
+      "venueId": "bogota-quiet-reflection",
+      "city": "bogota",
+      "name": "Mision Carismatica Internacional sede Mosquera",
+      "archetype": "church-modern",
+      "subject": "A pentecostal church hall in Mosquera: a long plain auditorium building with a tall front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e9e4d6",
+          "#2f6da3",
+          "#8a8a86"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Misi%C3%B3n_Carism%C3%A1tica_Internacional",
+          "what": "denomination (Wikidata church building); local branch not described"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1224832137",
+          "what": "OSM building 35 x 12 m"
+        }
+      ],
+      "notes": "Footprint measured; building appearance is typed. Signage must stay a blank board."
+    },
+    "bogota-recreation": {
+      "venueId": "bogota-recreation",
+      "city": "bogota",
+      "name": "Humedal Santa Maria del Lago",
+      "archetype": "park-landscape",
+      "subject": "A wetland park in Engativa: a reed-fringed lake with timber boardwalks, lawns and an urban edge of brick apartment blocks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 250,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#9c8161",
+          "#7a8f6a",
+          "#cfc9bc"
+        ],
+        "roofColour": "#9c8161",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "timber boardwalk"
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Humedal_Santa_Mar%C3%ADa_del_Lago",
+          "what": "urban wetland (Wikidata Q6445413) in Bogota; contents not retrieved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/313340063",
+          "what": "nearest OSM building 22 x 10 m (173 m away)"
+        }
+      ],
+      "notes": "Page was not read; wetland park character is from the type. Features typed."
+    },
+    "bogota-transit": {
+      "venueId": "bogota-transit",
+      "city": "bogota",
+      "name": "Estacion Intermedia Bicentenario",
+      "archetype": "transport-station",
+      "subject": "A TransMilenio intermediate station: a long glazed hall with canopy and bus bays on the busway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 113,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "curved"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9bec2",
+          "#d3392c",
+          "#6f8a9a"
+        ],
+        "roofColour": "#9aa0a4",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Bicentenario_(estaci%C3%B3n)",
+          "what": "TransMilenio station listed (OSM wikipedia tag); contents not retrieved"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/8237819",
+          "what": "OSM bus station footprint 113 x 54 m (relation)"
+        }
+      ],
+      "notes": "Footprint measured; the red accent is the TransMilenio livery, typed. No description of the building was retrieved."
+    }
+  }
+}

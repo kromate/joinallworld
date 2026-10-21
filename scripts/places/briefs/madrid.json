@@ -1,0 +1,1444 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "madrid",
+  "style": {
+    "climate": "mediterranean",
+    "vernacular": "Castilian brick city: red-brown and ochre brick with granite plinths for the Habsburg and 19th-century core; rendered mid-rise blocks in ochre, cream and terracotta with wrought-iron balconies; low-pitched clay-tile roofs and dark slate roofs on palaces; 1960s-80s exposed-brick and concrete blocks in the suburbs; glass towers in the north (AZCA, Four Towers); dry holm-oak and stone-pine scrub around the sierra edge.",
+    "wallColours": [
+      "#a8553a",
+      "#c9a66b",
+      "#e8dcc0",
+      "#b3562f",
+      "#8f8c85",
+      "#d9c29a",
+      "#f0ece2"
+    ],
+    "roofColours": [
+      "#b3562f",
+      "#4a4f57",
+      "#8a5a44",
+      "#8a8f94"
+    ],
+    "wallMaterials": [
+      "brick",
+      "red-brick",
+      "render",
+      "granite",
+      "stucco",
+      "painted-render",
+      "glass-curtain",
+      "concrete"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "slate",
+      "membrane",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "wrought-iron balconies and railings; brick Mudejar towers with blind arches; granite doorways and plinths; Habsburg-style slate spires; Neo-Mudejar horseshoe-arch brickwork; tiled benches and ceramic house numbers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Madrid",
+        "what": "Madrid: brick Habsburg-era facades, Mudejar brick towers, cast iron, neoclassical, Herrerian, neo-Mudejar, Modernismo styles"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Royal_Palace_of_El_Pardo",
+        "what": "El Pardo: 1406 castle, 1540s moated alcazar, Philip II added Flemish-style slate roofs, rebuilt after 1604 fire, Sabatini courtyards 18th c."
+      }
+    ],
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "madrid"
+  },
+  "places": {
+    "madrid-airport-madrid-airport": {
+      "venueId": "madrid-airport-madrid-airport",
+      "city": "madrid",
+      "name": "Adolfo Suárez Madrid–Barajas Airport",
+      "archetype": "airport-terminal",
+      "subject": "Madrid-Barajas Terminal 4: a very long, low terminal with an undulating bamboo-lined roof on colour-coded steel columns and a glass landside front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 600,
+        "depth_m": 110,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "wave",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dde0",
+          "#e3a53a",
+          "#f1f1ef"
+        ],
+        "roofColour": "#c8c6bd",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.55
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 10
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Madrid%E2%80%93Barajas_Airport",
+          "what": "T4 by Lamela, Rogers and Vidal opened 5 Feb 2006, T4 ~470,000 m2 + satellite 290,000 m2, glass instead of walls, wood ceilings, 71 m control tower from 1998"
+        }
+      ],
+      "notes": "Sourced: Lamela/Rogers/Vidal, opened 2006, glass instead of walls, wood-lined ceilings, 71 m control tower. The wave roof, bamboo ceiling and brightly coloured columns are recalled from general knowledge, not from the fetched page; dimensions are scaled to the recognisable portion (the real terminal is far longer, so show only a section)."
+    },
+    "madrid-clinic": {
+      "venueId": "madrid-clinic",
+      "city": "madrid",
+      "name": "Hospital Universitario de Getafe",
+      "archetype": "hospital",
+      "subject": "Hospital Universitario de Getafe: a large 1991 multi-wing hospital block beside the A-42 motorway",
+      "form": {
+        "footprint": "H",
+        "width_m": 140,
+        "depth_m": 75,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#b0603f",
+          "#c9c6bd",
+          "#e8e6e0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1991",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Universitario_de_Getafe",
+          "what": "Opened April 1991, 78,509 m2 built area, 650 beds, km 12 Autovia de Toledo"
+        }
+      ],
+      "notes": "Sourced: opened 1991, 78,509 m2 built area, 650 beds. Brick cladding and the H-plan are typical of Madrid-region hospitals of the period and are estimated; unverified for this building."
+    },
+    "madrid-community-notices": {
+      "venueId": "madrid-community-notices",
+      "city": "madrid",
+      "name": "Junta Municipal de Distrito de Barajas.",
+      "archetype": "civic-small",
+      "subject": "Junta Municipal de Distrito de Barajas: a small district council office in the old Barajas village",
+      "form": {
+        "footprint": "rect",
+        "width_m": 35,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e0cfa8",
+          "#a8553a",
+          "#f0ece2"
+        ],
+        "roofColour": "#b3562f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "District council office; no description found. Typed as a three-storey town office in Madrid ochre render."
+    },
+    "madrid-community-voting-game": {
+      "venueId": "madrid-community-voting-game",
+      "city": "madrid",
+      "name": "Junta Municipal de Distrito de Moncloa-Aravaca.",
+      "archetype": "civic-small",
+      "subject": "Junta Municipal de Distrito de Moncloa-Aravaca: a district council building in a residential street",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 4,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#a8553a",
+          "#e8dcc0",
+          "#f0ece2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No description found; typed as a mid-century brick district office. Differs from the Barajas junta by being brick and a storey taller."
+    },
+    "madrid-community-workshop": {
+      "venueId": "madrid-community-workshop",
+      "city": "madrid",
+      "name": "Universidad Rey Juan Carlos",
+      "archetype": "campus-block",
+      "subject": "Universidad Rey Juan Carlos, Mostoles: a campus of brick-and-glass teaching blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b0603f",
+          "#6b7885",
+          "#e8e6e0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed from the place type and city style."
+    },
+    "madrid-market-game": {
+      "venueId": "madrid-market-game",
+      "city": "madrid",
+      "name": "Centro Comercial Parque Corredor",
+      "archetype": "mall",
+      "subject": "Centro Comercial Parque Corredor, Torrejon de Ardoz: a large suburban mall with a long rendered front and surface car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 240,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e0cfa8",
+          "#b3562f",
+          "#f0ece2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not verified. No brand marks - blank boards only."
+    },
+    "madrid-meal-stop": {
+      "venueId": "madrid-meal-stop",
+      "city": "madrid",
+      "name": "Vips",
+      "archetype": "restaurant",
+      "subject": "A corner restaurant of a Spanish diner chain: glass-fronted ground floor under an awning",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#c9c6bd",
+          "#a8553a",
+          "#f0ece2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Only the chain name is known; no brand marks. Typed as a modern street-corner restaurant."
+    },
+    "madrid-osm-relation-18324181": {
+      "venueId": "madrid-osm-relation-18324181",
+      "city": "madrid",
+      "name": "Palacio Real de El Pardo",
+      "archetype": "civic-palace",
+      "subject": "Royal Palace of El Pardo: a square, moated-style royal residence with slate-roofed corner towers and courtyards",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "granite",
+        "colours": [
+          "#e6dccb",
+          "#8f8c85",
+          "#f0ece2"
+        ],
+        "roofColour": "#4a4f57",
+        "roofMaterial": "slate",
+        "windows": "punched",
+        "windowRatio": 0.22
+      },
+      "features": [
+        {
+          "id": "crenellation",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 2
+        },
+        {
+          "id": "bell-tower",
+          "count": 4,
+          "note": "corner towers with slate spires"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "1540s, rebuilt after 1604; Sabatini additions 18th c.",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Palace_of_El_Pardo",
+          "what": "El Pardo: 1406 castle, 1540s moated alcazar, Philip II added Flemish-style slate roofs, rebuilt after 1604 fire, Sabatini courtyards 18th c."
+        }
+      ],
+      "notes": "Sourced: Spanish Renaissance/neoclassical, moated alcazar form, Flemish-style slate roofs (Philip II), 1604 fire rebuild, Sabatini courtyards. Plan size, cream colour with granite dressings and the four corner towers are recalled from general knowledge, not the fetched page."
+    },
+    "madrid-osm-way-198982440": {
+      "venueId": "madrid-osm-way-198982440",
+      "city": "madrid",
+      "name": "Estadio Fernando Torres",
+      "archetype": "stadium",
+      "subject": "Estadio Fernando Torres (Fuenlabrada): a small municipal football ground with one covered stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 85,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c6bd",
+          "#a8553a",
+          "#e8e6e0"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Small local ground; layout assumed."
+    },
+    "madrid-osm-way-28742252": {
+      "venueId": "madrid-osm-way-28742252",
+      "city": "madrid",
+      "name": "Parque Dehesa Boyal",
+      "archetype": "park-landscape",
+      "subject": "Parque Dehesa Boyal: a large open dehesa park with holm oaks, gravel paths and dry grass",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89a6a",
+          "#8a9a6a",
+          "#a8a398"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Name suggests common pasture woodland; contents unverified. Dry-summer palette."
+    },
+    "madrid-osm-way-28744628": {
+      "venueId": "madrid-osm-way-28744628",
+      "city": "madrid",
+      "name": "Universidad Rey Juan Carlos (Campus de Vicálvaro)",
+      "archetype": "campus-block",
+      "subject": "URJC Vicalvaro campus: low brick-and-render teaching blocks around plazas",
+      "form": {
+        "footprint": "U",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "render",
+        "colours": [
+          "#b0603f",
+          "#e8dcc0",
+          "#f0ece2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed from city style. Different plan (U with courtyard) from the Mostoles campus."
+    },
+    "madrid-osm-way-32030445": {
+      "venueId": "madrid-osm-way-32030445",
+      "city": "madrid",
+      "name": "Parque de Las Presillas",
+      "archetype": "park-landscape",
+      "subject": "Parque de Las Presillas: a municipal park with lawns, pine trees and playground",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#8a9a6a",
+          "#a8a398",
+          "#c9a66b"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Nothing verified about layout."
+    },
+    "madrid-osm-way-35817901": {
+      "venueId": "madrid-osm-way-35817901",
+      "city": "madrid",
+      "name": "Puente ferroviario la Poveda",
+      "archetype": "monument",
+      "subject": "Puente ferroviario de La Poveda: a railway viaduct across the Jarama valley",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "brick",
+        "colours": [
+          "#b5b2a8",
+          "#8f8c85",
+          "#d0cdc4"
+        ],
+        "roofColour": "#8a8f94",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "railings",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Bridge near La Poveda; material and arch count not verified (concrete arches assumed). Show as a multi-arch deck over open ground."
+    },
+    "madrid-osm-way-368926226": {
+      "venueId": "madrid-osm-way-368926226",
+      "city": "madrid",
+      "name": "Escuela Técnica Superior de Ingenieros Informáticos UPM",
+      "archetype": "campus-block",
+      "subject": "ETSI Ingenieros Informaticos (UPM), Montegancedo: a modern glazed teaching and lab block among pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 80,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d3d9",
+          "#6b7885",
+          "#e9ecee"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed from the place type."
+    },
+    "madrid-osm-way-394889267": {
+      "venueId": "madrid-osm-way-394889267",
+      "city": "madrid",
+      "name": "Hospital Universitario Infanta Sofía",
+      "archetype": "hospital",
+      "subject": "Hospital Universitario Infanta Sofia: a modern public hospital of staggered wings with pale render and coloured panels",
+      "form": {
+        "footprint": "H",
+        "width_m": 150,
+        "depth_m": 80,
+        "storeys": 7,
+        "height_m": 30,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e8e4da",
+          "#4f8aa8",
+          "#f1efe8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Opened 2008 (general knowledge); facade colour treatment is not verified."
+    },
+    "madrid-osm-way-394889270": {
+      "venueId": "madrid-osm-way-394889270",
+      "city": "madrid",
+      "name": "Hospital del Henares",
+      "archetype": "hospital",
+      "subject": "Hospital del Henares, Coslada: a mid-size modern hospital of five storeys",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 22,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece0c8",
+          "#a8553a",
+          "#f1efe8"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2008",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Opened 2008 (general knowledge). Typed as warmer-toned and lower than Infanta Sofia."
+    },
+    "madrid-osm-way-409110880": {
+      "venueId": "madrid-osm-way-409110880",
+      "city": "madrid",
+      "name": "Estadio Cerro del Espino",
+      "archetype": "stadium",
+      "subject": "Estadio Cerro del Espino (Majadahonda): small football ground with a single covered grandstand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c6bd",
+          "#2f5f8a",
+          "#e8e6e0"
+        ],
+        "roofColour": "#5a5f66",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Layout assumed."
+    },
+    "madrid-osm-way-444827472": {
+      "venueId": "madrid-osm-way-444827472",
+      "city": "madrid",
+      "name": "Ermita de Santa María la Antigua",
+      "archetype": "shrine-small",
+      "subject": "Ermita de Santa Maria la Antigua (Carabanchel): a small 13th-century Romanesque-Mudejar hermitage with a slim brick tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12.2,
+        "depth_m": 9.85,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#a8553a",
+          "#b9a98a",
+          "#d9c29a"
+        ],
+        "roofColour": "#b3562f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.06
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "brick tower ~20 m, 5.7x2.25 m footprint"
+        },
+        {
+          "id": "arches",
+          "count": 3,
+          "note": "triple round-arch south portal"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "13th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Ermita_de_Santa_Mar%C3%ADa_la_Antigua_(Madrid)",
+          "what": "13th c Romanesque-Mudejar; 12.20x9.85 m three-nave plan, rubble with brick courses, semicircular apse, brick tower 5.70x2.25 m about 20 m, timber roof"
+        }
+      ],
+      "notes": "Sourced in detail: rectangular three-nave plan 12.20x9.85 m, rubble masonry with brick courses, semicircular apse, brick tower about 20 m with six belfry openings, timber roof (clay tile cover assumed). Style is Romanesque-Mudejar; not in the STYLES list so vernacular is used."
+    },
+    "madrid-osm-way-48582857": {
+      "venueId": "madrid-osm-way-48582857",
+      "city": "madrid",
+      "name": "Palacio del Canto del Pico",
+      "archetype": "manor",
+      "subject": "Palacio del Canto del Pico (Torrelodones): a 1920s granite eclectic palace with reused medieval elements, terraces and fountain-ponds",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 17,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "granite",
+        "accent": "stone",
+        "colours": [
+          "#a39d92",
+          "#8f8c85",
+          "#d0cdc4"
+        ],
+        "roofColour": "#9a5a3f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "Gothic cloister"
+        },
+        {
+          "id": "terrace",
+          "count": 2
+        },
+        {
+          "id": "fountain",
+          "count": 2,
+          "note": "fountain-ponds"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "2 m stone wall"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "corner tower"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1920-1922",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Palacio_del_Canto_del_Pico",
+          "what": "Eclectic 1920-22 palace mostly in granite, designed by owner Jose Maria de Palacio, reused Gothic columns, doors and a Gothic cloister; 2 m stone wall, fountain-ponds, terraces; 1998 roof fire"
+        }
+      ],
+      "notes": "Sourced: eclectic, built 1920-22 mostly of granite by its owner, with reused Gothic columns, doors and cloister, 2 m perimeter wall, fountain-ponds, terraces and staircases to lookouts; 1998 roof fire. Roof material and tower count are not in the source and are estimated."
+    },
+    "madrid-osm-way-596798361": {
+      "venueId": "madrid-osm-way-596798361",
+      "city": "madrid",
+      "name": "Iglesia de San Cipriano",
+      "archetype": "church-classical",
+      "subject": "Iglesia de San Cipriano: a Castilian village parish church of brick and stone with a square west tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 26,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stone",
+        "colours": [
+          "#b0603f",
+          "#b9a98a",
+          "#d9c29a"
+        ],
+        "roofColour": "#b3562f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not verified; typed from Madrid-region village church practice (brick, stone corners, clay tile)."
+    },
+    "madrid-osm-way-70656562": {
+      "venueId": "madrid-osm-way-70656562",
+      "city": "madrid",
+      "name": "Universidad Europea de Madrid",
+      "archetype": "campus-block",
+      "subject": "Universidad Europea de Madrid (Villaviciosa de Odon): large white-rendered and glazed campus blocks",
+      "form": {
+        "footprint": "L",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#6b7885",
+          "#d0cdc4"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s-2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Appearance not verified; typed as a private campus, whiter than the public universities."
+    },
+    "madrid-osm-way-7990496": {
+      "venueId": "madrid-osm-way-7990496",
+      "city": "madrid",
+      "name": "Centro Comercial Palacio de Hielo",
+      "archetype": "mall",
+      "subject": "Centro Comercial Palacio de Hielo: a multi-level shopping centre with a large ice rink",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 90,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3c4",
+          "#4f6a8c",
+          "#f0ece2"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Known as a mall with an ice rink in Barajas; appearance not verified."
+    },
+    "madrid-quiet-reflection": {
+      "venueId": "madrid-quiet-reflection",
+      "city": "madrid",
+      "name": "Iglesia de Santa María de Caná",
+      "archetype": "church-modern",
+      "subject": "Iglesia de Santa Maria de Cana: a modern brick parish church with a plain tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "concrete",
+        "colours": [
+          "#a8553a",
+          "#c9c6bd",
+          "#e8e6e0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Not verified; typed as a late-20th-century Madrid parish church."
+    },
+    "madrid-recreation": {
+      "venueId": "madrid-recreation",
+      "city": "madrid",
+      "name": "Dehesa de Navalcarbón",
+      "archetype": "park-landscape",
+      "subject": "Dehesa de Navalcarbon: an open holm-oak dehesa park with dirt paths",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 150,
+        "depth_m": 120,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89a6a",
+          "#8a9a6a",
+          "#a8a398"
+        ],
+        "roofColour": "#8a9a6a",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Woodland pasture park in Las Rozas; contents unverified."
+    },
+    "madrid-transit": {
+      "venueId": "madrid-transit",
+      "city": "madrid",
+      "name": "Fuencarral",
+      "archetype": "transport-station",
+      "subject": "Fuencarral: a suburban rail and metro stop with platform canopies and a bus bay",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b5b2a8",
+          "#c4452f",
+          "#e8e6e0"
+        ],
+        "roofColour": "#8a8f94",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 3
+        },
+        {
+          "id": "bus-bays",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [],
+      "notes": "Typed from the place type."
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/bauchi.json",
+   "used": "typed brief: small single-storey roadside eatery, 14 x 9 m, shed roof, forecourt awning, outdoor tables (no photo or description found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    3
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8dcc0",
+    "windows": "punched",
+    "windowRatio": 0.2,
+    "faces": {
+     "front": "punched",
+     "back": "none",
+     "left": "none",
+     "right": "punched"
+    },
+    "bands": "#9fc2b0",
+    "plinth": 0.4
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "rise": 0.9,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "open-shelter",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "length": 12,
+    "depth": 4.5,
+    "height": 3.0,
+    "form": "shed",
+    "support": "steel",
+    "colour": "#9fc2b0",
+    "accent": "#9fc2b0",
+    "roof_colour": "#8a4a32",
+    "roof_material": "corrugated"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -4,
+    -4.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#9fc2b0"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    0,
+    -4.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#c9b27a"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    4,
+    -4.5,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "chair_colour": "#9fc2b0"
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    -7,
+    -10,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true,
+    "chair_colour": "#c9b27a"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -0.6,
+    3.1
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#9fc2b0",
+    "posts": false
+   }
+  },
+  {
+   "type": "core/water-tank",
+   "at": [
+    8,
+    8,
+    0
+   ],
+   "params": {
+    "kind": "elevated",
+    "radius": 0.9,
+    "tankHeight": 1.4,
+    "legHeight": 3.5,
+    "colour": "#2f4f6f"
+   }
+  },
+  {
+   "type": "parked-car",
+   "at": [
+    10,
+    -9,
+    0
+   ],
+   "params": {
+    "yaw": 90,
+    "colour": "#d8d8d4"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -9,
+    7,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [],
+  "extent": [
+   36,
+   28
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "Text only; OSM building nearby is 44 x 19 m, larger than the briefed eatery so it was not used."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bauchi",
+ "venueId": "alhamus-restaurant-bauchi"
+}

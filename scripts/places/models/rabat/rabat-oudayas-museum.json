@@ -1,0 +1,140 @@
+{
+ "name": "Musée des Oudayas",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/283167034",
+   "used": "name-matched palace outline (1,247 m2, 60 x 30 m)"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Musée_des_Oudayas_interior_courtyard.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Manfred Ewel",
+   "view": "interior",
+   "file": "/tmp/places-evidence/rabat/rabat-oudayas-museum-4.jpg",
+   "used": "palette only (interior, not compared): white plaster, terracotta brick columns #b9703f, dark cedar #3a2a22, horseshoe arches; no exterior photo found, so the exterior is footprint-verified"
+  },
+  {
+   "kind": "text",
+   "ref": "brief",
+   "used": "kasbah white-and-blue palette, 2 storeys, 17th-century palace of Moulay Ismail"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 25,
+  "fovDeg": 40,
+  "aspect": 1.333
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no exterior photo: windows, roof terrace and the courtyard void are not modelled; portal position is a guess"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "palace",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 9,
+   "storeys": 2,
+   "wall": {
+    "material": "whitewash",
+    "colour": "#f4f1ea",
+    "windows": "punched",
+    "windowRatio": 0.12,
+    "windowShape": "arched",
+    "glassColour": "#3a2a22",
+    "plinth": 0.7,
+    "bands": "#3f6fb0",
+    "cornice": 0.5
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d9d1c0",
+    "parapet": 0.8
+   }
+  },
+  {
+   "type": "arch-portal",
+   "at": [
+    19.8,
+    -0.7,
+    0
+   ],
+   "rotDeg": 39.6,
+   "params": {
+    "width": 9,
+    "height": 6.5,
+    "depth": 0.7,
+    "archWidth": 3.4,
+    "springHeight": 3.4,
+    "pointed": true,
+    "colour": "#b9703f"
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    22,
+    -3.4,
+    0
+   ],
+   "rotDeg": 39.6,
+   "params": {
+    "width": 4.5,
+    "rise": 0.25,
+    "run": 0.6,
+    "count": 3,
+    "colour": "#c9b79a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -6,
+    30,
+    0
+   ],
+   "params": {
+    "length": 34,
+    "height": 2.6,
+    "thickness": 0.5,
+    "colour": "#f1eee6"
+   }
+  }
+ ],
+ "site": {
+  "ground": "cobble",
+  "forecourt": "garden",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -10,
+     32
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     4,
+     34
+    ]
+   }
+  ],
+  "extent": [
+   100,
+   80
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "rabat",
+ "venueId": "rabat-oudayas-museum"
+}

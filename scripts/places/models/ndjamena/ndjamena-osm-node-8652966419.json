@@ -1,0 +1,208 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "ndjamena",
+ "venueId": "ndjamena-osm-node-8652966419",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/ndjamena.json#ndjamena-osm-node-8652966419",
+   "used": "small rendered restaurant 14 x 9 m, shaded front terrace, sand street"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1425737816",
+   "used": "not used: nearest match only (16.6 m, unrelated name), 827 m2 L-shaped block"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 10,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "all",
+  "margin": 0.15
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "dining",
+   "footprint": {
+    "rect": [
+     14,
+     9
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 4.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c29c",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3,
+    "bands": "#2f6f4f",
+    "faces": {
+     "front": "punched",
+     "back": "plain",
+     "left": "plain",
+     "right": "punched"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9588",
+    "parapet": 0.5,
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kitchen",
+   "footprint": {
+    "rect": [
+     5,
+     4.5
+    ]
+   },
+   "at": [
+    4.5,
+    7.2
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cdb58a",
+    "windows": "none",
+    "windowRatio": 0.2,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d8a84"
+   }
+  },
+  {
+   "type": "awning",
+   "at": [
+    -1,
+    -5.0,
+    0
+   ],
+   "params": {
+    "width": 10,
+    "depth": 3.2,
+    "drop": 0.6,
+    "height": 2.8,
+    "colours": [
+     "#2f6f4f",
+     "#e9dfc6"
+    ],
+    "posts": true
+   }
+  },
+  {
+   "type": "umbrella-cluster",
+   "at": [
+    -2,
+    -8.5,
+    0
+   ],
+   "params": {
+    "count": 5,
+    "spread": 4.5,
+    "radius": 1.5,
+    "colours": [
+     "#2f6f4f",
+     "#e9dfc6",
+     "#d9c29c"
+    ],
+    "tables": true
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    0,
+    -4.6,
+    3.2
+   ],
+   "params": {
+    "width": 6,
+    "height": 0.9,
+    "bottom": 0,
+    "colour": "#2f6f4f",
+    "frameColour": "#e9dfc6",
+    "posts": false
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -8,
+    -11,
+    0
+   ],
+   "params": {
+    "length": 20,
+    "height": 1.2,
+    "thickness": 0.25,
+    "colour": "#cdb58a"
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    -10,
+    -3,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  },
+  {
+   "type": "tree",
+   "at": [
+    11,
+    -6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 5
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    10,
+    -12,
+    0
+   ],
+   "params": {
+    "colour": "#bfc3c4"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "road",
+  "extent": [
+   50,
+   40
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo or specific source: modest rendered restaurant from the brief, layout and colours plausible not surveyed."
+ }
+}

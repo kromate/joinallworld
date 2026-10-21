@@ -1,0 +1,276 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "antananarivo",
+ "venueId": "antananarivo-osm-way-798028413",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/798028413",
+   "used": "name match; the outline is a 178 x 113 m campus site, not a building, so only its scale informed the grouping of a main block, two wings and a hall"
+  },
+  {
+   "kind": "text",
+   "ref": "scripts/places/briefs/antananarivo.json",
+   "used": "two-storey rendered teaching block, clay-tile hip roof, blank signage board, entrance steps (no photo found)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 18,
+  "fovDeg": 45,
+  "aspect": 1.333
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "main",
+   "footprint": {
+    "rect": [
+     40,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.6,
+    "bands": "#9a9a94",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-w",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    -23,
+    -12
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.6,
+    "bands": "#9a9a94",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "wing-e",
+   "footprint": {
+    "rect": [
+     12,
+     24
+    ]
+   },
+   "at": [
+    23,
+    -12
+   ],
+   "rotDeg": 0,
+   "height": 7.5,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.6,
+    "bands": "#9a9a94",
+    "cornice": true
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lecture-hall",
+   "footprint": {
+    "rect": [
+     22,
+     12
+    ]
+   },
+   "at": [
+    0,
+    26
+   ],
+   "rotDeg": 0,
+   "height": 6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc4",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.6,
+    "bay": 3.6,
+    "bands": "#9a9a94",
+    "cornice": true
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#9a4a33",
+    "material": "clay-tile",
+    "pitch": 22,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "link",
+   "footprint": {
+    "rect": [
+     16,
+     5
+    ]
+   },
+   "at": [
+    0,
+    -6.5
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#9a9a94",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6f73",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -10.5,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 3,
+    "colour": "#9a9a94"
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    -14,
+    -20,
+    0
+   ],
+   "params": {
+    "width": 4.5,
+    "height": 2,
+    "bottom": 1.2,
+    "colour": "#6b6f73"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "colour": "#9a9a94"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "plaza",
+  "forecourtDepth": 12,
+  "extent": [
+   90,
+   80
+  ],
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -34,
+     -28
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     34,
+     -28
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -8,
+     -26
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     38,
+     20
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo exists; massing is a typical U-shaped Antananarivo institute block sized from the brief, not from evidence"
+ }
+}

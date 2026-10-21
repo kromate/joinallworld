@@ -1,0 +1,1654 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "managua",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "managua",
+    "climate": "savanna",
+    "vernacular": "Low-rise, spread-out capital rebuilt after the 1972 earthquake: one- and two-storey reinforced concrete-block houses and shops, plastered and painted in bright cream, ochre, pink and sky blue, under galvanised zinc sheet roofs (clay teja only on older colonial buildings), barred windows and walled yards. Government and institutional buildings are plain grey or cream concrete blocks of 2-4 storeys, with a few glass towers and shopping malls. Wide asphalt avenues, lake Xolotlan and Tiscapa crater, trees everywhere.",
+    "wallColours": [
+      "#f2e7c9",
+      "#d9a05b",
+      "#e6c9c1",
+      "#8fb8c9",
+      "#c4684a",
+      "#b8b8b2"
+    ],
+    "roofColours": [
+      "#8c8f91",
+      "#a84e32",
+      "#7f4a2f",
+      "#c9c5bb"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "brick",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "acacia"
+    ],
+    "ornament": "Sandinista-era murals and slogans in red and black, flagpoles with the blue-white flag, the steel Sandino silhouette on Tiscapa, bright wall paint, barred windows, painted concrete trees (\"arboles de la vida\") in plazas, colonial white-and-cream churches with bell towers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Managua",
+        "what": "post-1972 reconstruction, low-rise housing, grey Legorreta cathedral, Tiscapa and Sandino silhouette, malls, tree species (chilamate, ceibo, royal palm)"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Metrocentro_Managua",
+        "what": "mall facts: 50,000 m2, 950 parking spaces, anchor stores, hotel"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Plaza_de_la_Fe_Juan_Pablo_II",
+        "what": "public square with John Paul II monument, fountains, lake views"
+      }
+    ]
+  },
+  "places": {
+    "managua-airport-managua-airport": {
+      "venueId": "managua-airport-managua-airport",
+      "city": "managua",
+      "name": "Augusto C. Sandino International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The passenger terminal: a long two-storey concrete terminal with a glazed front, a covered kerb and jet bridges at seven gates",
+      "form": {
+        "footprint": "rect",
+        "width_m": 242,
+        "depth_m": 54,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#5b7fa3",
+          "#b8b8b2"
+        ],
+        "roofColour": "#c9c5bb",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 7
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "covered kerbside"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2006",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Augusto_C._Sandino_International_Airport",
+          "what": "expansion completed July 2006 with seven jet-bridge gates; two boarding bridges added in 1996; lobby portraits of Sandino and Dario"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM terminal 242 x 54 m, 13,048 m2"
+        }
+      ],
+      "notes": "Gate count and size sourced; facade finish and colours typed. Shown as the central 120 m portion."
+    },
+    "managua-clinic": {
+      "venueId": "managua-clinic",
+      "city": "managua",
+      "name": "Hospital Carlos Marx (Hospital Aleman-Nicaraguense)",
+      "archetype": "hospital",
+      "subject": "A large pavilion-style hospital of 3-4 storey concrete wards linked by covered corridors, built with East German aid in the 1980s",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d3c0",
+          "#8fb8c9",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 2
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "soviet",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1630426",
+          "what": "Wikidata: Aleman-Nicaraguense hospital, inception 1985"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM hospital compound 316 x 183 m"
+        }
+      ],
+      "notes": "Date and compound size measured; the soviet-bloc slab style is inferred from the German aid origin, unverified. Main block only."
+    },
+    "managua-community-notices": {
+      "venueId": "managua-community-notices",
+      "city": "managua",
+      "name": "MARENA (Ministerio del Ambiente y los Recursos Naturales)",
+      "archetype": "civic-palace",
+      "subject": "A ministry office block: a plain two-storey cream concrete building with a flag court",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 20,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f2e7c9",
+          "#4c7a54",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Managua",
+          "what": "government buildings built after 1972"
+        }
+      ],
+      "notes": "No OSM building near the venue point; dimensions guessed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-community-voting-game": {
+      "venueId": "managua-community-voting-game",
+      "city": "managua",
+      "name": "Plaza de la Fe Juan Pablo II",
+      "archetype": "park-landscape",
+      "subject": "A huge lakeside esplanade with a monument to Pope John Paul II at its centre, fountains, planters and lit walkways facing Lake Xolotlan",
+      "form": {
+        "footprint": "rect",
+        "width_m": 227,
+        "depth_m": 142,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "event plaza"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#d9d3c0",
+          "#b8b8b2",
+          "#f2e7c9"
+        ],
+        "roofColour": "#b8b8b2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "John Paul II monument at centre"
+        },
+        {
+          "id": "fountain",
+          "count": 3
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Plaza_de_la_Fe_Juan_Pablo_II",
+          "what": "monument at centre, pedestrian areas, planters, fountains, scenic lighting, views of lake Xolotlan and Momotombo"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q134862182",
+          "what": "Wikidata: square and event venue, inaugurated 2000"
+        }
+      ],
+      "notes": "Content sourced; size from OSM (227 x 142 m); colours typed. Shown as the 120 m central portion."
+    },
+    "managua-community-workshop": {
+      "venueId": "managua-community-workshop",
+      "city": "managua",
+      "name": "Universidad Catolica Redemptoris Mater (UNICA)",
+      "archetype": "campus-block",
+      "subject": "A Catholic university campus: several 2-3 storey cream blocks with covered walkways around a courtyard",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 50,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "shed",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#f2e7c9",
+          "#a84e32",
+          "#b8b8b2"
+        ],
+        "roofColour": "#a84e32",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small chapel"
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1992",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q16256657",
+          "what": "Wikidata: Catholic University Redemptoris Mater, founded 1992"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM campus 325 x 154 m"
+        }
+      ],
+      "notes": "Campus area measured; building forms typed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-market-game": {
+      "venueId": "managua-market-game",
+      "city": "managua",
+      "name": "Mercado Municipal de Ciudad Sandino",
+      "archetype": "market-hall",
+      "subject": "A municipal market: a large gable-roofed zinc hall with open sides, stalls packed under it and awnings around",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9a05b",
+          "#8c8f91",
+          "#f2e7c9"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 80
+        },
+        {
+          "id": "awning",
+          "count": 4
+        },
+        {
+          "id": "sheds",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q134762297",
+          "what": "Wikidata: market in Ciudad Sandino"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM marketplace 157 x 142 m"
+        }
+      ],
+      "notes": "Site size measured; hall form typed. Unlike Mercado de Mayoreo (wholesale, many sheds and a bus terminal) this is a single hall. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-meal-stop": {
+      "venueId": "managua-meal-stop",
+      "city": "managua",
+      "name": "Papa John's & Narcy's Chicken",
+      "archetype": "restaurant",
+      "subject": "A fast-food restaurant: a single-storey modern box with a mono-pitch roof, glazed front and a drive-up area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 30,
+        "storeys": 1,
+        "height_m": 5.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#a84e32",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank boards, brand-neutral"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM restaurant building 37.8 x 30.1 m"
+        }
+      ],
+      "notes": "Footprint measured. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-node-14225260759": {
+      "venueId": "managua-osm-node-14225260759",
+      "city": "managua",
+      "name": "Estadio Olimpico del IND",
+      "archetype": "stadium",
+      "subject": "An older multi-sport stadium: athletics oval around a football pitch with concrete terraces and light masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 178,
+        "depth_m": 94,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "shed",
+        "variant": "athletics"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b8b2",
+          "#3b6e91",
+          "#f2e7c9"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1355066",
+          "what": "Wikidata: football and athletics stadium in District I, Walter Ferretti club home"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM track 178 x 94 m"
+        }
+      ],
+      "notes": "Track size measured; stands typed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-node-1787488316": {
+      "venueId": "managua-osm-node-1787488316",
+      "city": "managua",
+      "name": "Monumento a los Martires",
+      "archetype": "monument",
+      "subject": "A memorial: a tall concrete stela on a stepped plinth, with an eternal-flame style bowl and a flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "stela memorial"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b8b8b2",
+          "#c4684a",
+          "#f2e7c9"
+        ],
+        "roofColour": "#b8b8b2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q139628149",
+          "what": "Wikidata: monument in Managua municipality (no description)"
+        }
+      ],
+      "notes": "Only the wikidata entry exists; form of the monument is a guess. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-node-2355682005": {
+      "venueId": "managua-osm-node-2355682005",
+      "city": "managua",
+      "name": "Zoologico Nacional",
+      "archetype": "park-landscape",
+      "subject": "A shady zoo: an entrance gate, paths among large trees, animal enclosures and a small kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "zoo"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9a05b",
+          "#4c7a54",
+          "#f2e7c9"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Managua",
+          "what": "city trees: chilamate, ceibo, genizaro, madrono"
+        }
+      ],
+      "notes": "No size data. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-node-4001705843": {
+      "venueId": "managua-osm-node-4001705843",
+      "city": "managua",
+      "name": "Iglesia El Carmen",
+      "archetype": "church-classical",
+      "subject": "A colonial-style parish church: whitewashed facade with a pedimented front and a single bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "painted-render",
+        "colours": [
+          "#f2e7c9",
+          "#c4684a",
+          "#b8b8b2"
+        ],
+        "roofColour": "#a84e32",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q138880232",
+          "what": "Wikidata: church building (no description)"
+        }
+      ],
+      "notes": "Only a point on the map; dimensions guessed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-node-497371428": {
+      "venueId": "managua-osm-node-497371428",
+      "city": "managua",
+      "name": "Busto Jose Marti",
+      "archetype": "monument",
+      "subject": "A bronze bust of Jose Marti on a tall squared plinth in a small paved plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "bust on plinth"
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "concrete",
+        "colours": [
+          "#d9d3c0",
+          "#5a4a3a",
+          "#b8b8b2"
+        ],
+        "roofColour": "#5a4a3a",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze bust"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Managua",
+          "what": "monuments and plazas of the post-1972 city"
+        }
+      ],
+      "notes": "Bust-on-plinth type follows from the name; the site is a small plaza near a car wash (OSM building 7.5 x 5.6 m is a roofed wash, not the monument). Sizes guessed."
+    },
+    "managua-osm-node-889552361": {
+      "venueId": "managua-osm-node-889552361",
+      "city": "managua",
+      "name": "Iglesia Santo Domingo",
+      "archetype": "church-classical",
+      "subject": "A wide colonial-style church with a flat facade, a small central tower and a tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 39,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2e7c9",
+          "#c4684a",
+          "#b8b8b2"
+        ],
+        "roofColour": "#a84e32",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q138880258",
+          "what": "Wikidata: church building (no description)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM church compound 46.9 x 38.6 m"
+        }
+      ],
+      "notes": "Footprint measured, facade typed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-relation-20576117": {
+      "venueId": "managua-osm-relation-20576117",
+      "city": "managua",
+      "name": "Parque Luis Alfonso Velasquez Flores",
+      "archetype": "park-landscape",
+      "subject": "A very large green urban park created in 1983: wide lawns, tree-lined paths, a lagoon-side promenade and some monuments",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "large urban park"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d9d3c0",
+          "#b8b8b2",
+          "#f2e7c9"
+        ],
+        "roofColour": "#b8b8b2",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 2
+        },
+        {
+          "id": "statue",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1983",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q134862210",
+          "what": "Wikidata: urban park, inception 1983"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM park 447 x 368 m, 118,452 m2"
+        }
+      ],
+      "notes": "Size and date measured; shown as a 120 m portion. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-relation-21143410": {
+      "venueId": "managua-osm-relation-21143410",
+      "city": "managua",
+      "name": "Mercado de Mayoreo",
+      "archetype": "market-open",
+      "subject": "A giant wholesale market of long zinc-roofed sheds, stacked produce, trucks and a bus terminal on a 12-hectare yard",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "shed",
+        "variant": "wholesale yard"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b8b8b2",
+          "#d9a05b",
+          "#8c8f91"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 120
+        },
+        {
+          "id": "sheds",
+          "count": 8
+        },
+        {
+          "id": "bus-bays",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q134761708",
+          "what": "Wikidata: wholesale market and transport hub, District VI, 1980s, ~12 ha, 1,200+ stalls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM market 485 x 333 m"
+        }
+      ],
+      "notes": "Scale and function sourced; shed colours typed. Shown as a 120 m slice with sheds and a bus bay."
+    },
+    "managua-osm-relation-5844843": {
+      "venueId": "managua-osm-relation-5844843",
+      "city": "managua",
+      "name": "Parque Las Piedrecitas",
+      "archetype": "park-landscape",
+      "subject": "A neighbourhood park from 1920 with shaded lawns, paved paths and a small stone-faced kiosk",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "none",
+        "variant": "neighbourhood park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b8b8b2",
+          "#d9a05b",
+          "#f2e7c9"
+        ],
+        "roofColour": "#8c8f91",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1920",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q135187938",
+          "what": "Wikidata: park, inception 1920"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM park 426 x 266 m"
+        }
+      ],
+      "notes": "Date and size measured; features typed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-way-160261758": {
+      "venueId": "managua-osm-way-160261758",
+      "city": "managua",
+      "name": "Estadio Nacional de futbol de Nicaragua",
+      "archetype": "stadium",
+      "subject": "The 2011 national football stadium: bowl with a roofed main grandstand, newer end stands and artificial turf",
+      "form": {
+        "footprint": "oval",
+        "width_m": 200,
+        "depth_m": 195,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "curved",
+        "variant": "football"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9d3c0",
+          "#3b6e91",
+          "#b8b8b2"
+        ],
+        "roofColour": "#e9e5d6",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "main grandstand roof"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2011",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nicaragua_National_Football_Stadium",
+          "what": "capacity 20,000, artificial turf, opened 14 April 2011, first stage with main grandstand, end stands later, planned as the most modern in Central America"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM stadium 200 x 195 m"
+        }
+      ],
+      "notes": "Stage 1 main grandstand dominates; roof geometry and colours typed."
+    },
+    "managua-osm-way-241368647": {
+      "venueId": "managua-osm-way-241368647",
+      "city": "managua",
+      "name": "Universidad Nicaraguense de Ciencia y Tecnologia (UNICIT)",
+      "archetype": "campus-block",
+      "subject": "A modern private university: a three-storey concrete block with ribbon windows and a front court",
+      "form": {
+        "footprint": "L",
+        "width_m": 85,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#5b7fa3",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2003",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q17042706",
+          "what": "Wikidata: Nicaraguan University of Science and Technology, 2003"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM 170 x 86 m"
+        }
+      ],
+      "notes": "Size measured. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-osm-way-363530474": {
+      "venueId": "managua-osm-way-363530474",
+      "city": "managua",
+      "name": "Hospital Militar Escuela Dr. Alejandro Davila Bolanos",
+      "archetype": "hospital",
+      "subject": "A large modern military teaching hospital: multi-storey cream and glass wards joined by walkways and a big entrance canopy",
+      "form": {
+        "footprint": "H",
+        "width_m": 130,
+        "depth_m": 60,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#5b7fa3",
+          "#b8b8b2"
+        ],
+        "roofColour": "#c9c5bb",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q86684705",
+          "what": "Wikidata: New Military Hospital Managua"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM hospital 370 x 240 m"
+        }
+      ],
+      "notes": "Large complex measured; modern new-build form typed. No source describes the exterior; typed from the Managua city style and the type of place. Distinct from Carlos Marx: newer, glazed, with helipad."
+    },
+    "managua-osm-way-38578726": {
+      "venueId": "managua-osm-way-38578726",
+      "city": "managua",
+      "name": "Metrocentro",
+      "archetype": "mall",
+      "subject": "The big shopping mall: three-level cream box with glass entrance bays, parking decks and a hotel tower beside it",
+      "form": {
+        "footprint": "rect",
+        "width_m": 203,
+        "depth_m": 174,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#5b7fa3",
+          "#b8b8b2"
+        ],
+        "roofColour": "#c9c5bb",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 2,
+          "note": "two-level parking structure"
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "setback-tiers",
+          "count": 1,
+          "note": "hotel tower beside"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1974-2004",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Metrocentro_Managua",
+          "what": "50,000 m2, 120 shops, 3-level Carrion store, 2-level parking, 950 spaces, cinema, Intercontinental hotel from 1998, third stage 2004"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM retail, 3 levels, 203 x 174 m"
+        }
+      ],
+      "notes": "Facts sourced; colours typed. The hotel tower was added in 1998."
+    },
+    "managua-osm-way-38578925": {
+      "venueId": "managua-osm-way-38578925",
+      "city": "managua",
+      "name": "Universidad Nacional Casimiro Sotelo Montenegro",
+      "archetype": "campus-block",
+      "subject": "A long thin single-storey classroom range with a covered walkway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2e7c9",
+          "#8fb8c9",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2023",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Nacional_Casimiro_Sotelo_Montenegro",
+          "what": "public university founded 2023 (listed in wikidata)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building 64.8 x 10.8 m, 1 level"
+        }
+      ],
+      "notes": "Size and levels measured; colours typed."
+    },
+    "managua-osm-way-70193885": {
+      "venueId": "managua-osm-way-70193885",
+      "city": "managua",
+      "name": "Universidad Americana (UAM)",
+      "archetype": "campus-block",
+      "subject": "A modern private university tower block: four storeys of glass and white render with a canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 15,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f2e7c9",
+          "#5b7fa3",
+          "#b8b8b2"
+        ],
+        "roofColour": "#c9c5bb",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1992",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q6465575",
+          "what": "Wikidata: private university, 1992"
+        }
+      ],
+      "notes": "The OSM building is only 11 x 8 m; the main campus is larger, so dimensions are guessed. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-quiet-reflection": {
+      "venueId": "managua-quiet-reflection",
+      "city": "managua",
+      "name": "Iglesia Santa Maria de Guadalupe",
+      "archetype": "church-modern",
+      "subject": "A small plain parish church: a concrete box nave with a pitched zinc roof and a short side bell frame",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 18,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2e7c9",
+          "#8fb8c9",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "stained-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q139437864",
+          "what": "Wikidata: Catholic church in Managua"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM church 22.1 x 17.9 m"
+        }
+      ],
+      "notes": "Footprint measured. No source describes the exterior; typed from the Managua city style and the type of place."
+    },
+    "managua-recreation": {
+      "venueId": "managua-recreation",
+      "city": "managua",
+      "name": "Polideportivo Espana",
+      "archetype": "stadium",
+      "subject": "An indoor multi-sport hall from 1974: a wide barrel-roofed concrete gymnasium with side entrances",
+      "form": {
+        "footprint": "rect",
+        "width_m": 73,
+        "depth_m": 36,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "barrel",
+        "variant": "indoor arena"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b8b8b2",
+          "#3b6e91",
+          "#f2e7c9"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "louvre",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q135152125",
+          "what": "Wikidata: multi-sports venue, inception 1974"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building 72.8 x 36.3 m"
+        }
+      ],
+      "notes": "Type, year and size sourced; barrel roof and colours typed."
+    },
+    "managua-transit": {
+      "venueId": "managua-transit",
+      "city": "managua",
+      "name": "TICABUS Central Managua",
+      "archetype": "transport-station",
+      "subject": "A small coach terminal: low terminal building with ticket hall and an apron of long-distance buses",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 19,
+        "storeys": 1,
+        "height_m": 4.5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f2e7c9",
+          "#3b6e91",
+          "#b8b8b2"
+        ],
+        "roofColour": "#8c8f91",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 4
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q139677097",
+          "what": "Wikidata: bus station in Managua"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building 20.3 x 19.1 m"
+        }
+      ],
+      "notes": "Station type and size measured; colours typed."
+    }
+  }
+}

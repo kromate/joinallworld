@@ -1,0 +1,1533 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "belgrade",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "belgrade",
+    "climate": "temperate",
+    "vernacular": "Danube-Sava city of layered styles: pastel-rendered Central European neoclassical and Secession apartment blocks (ochre, cream, pale grey) with tall hipped roofs of terracotta tile; Zemun's Austrian Baroque low houses and bell-towered single-nave churches; interwar modernist and Art Deco blocks; and vast grey concrete socialist-modernist and brutalist slab blocks in Novi Beograd, with later glass offices and malls. Serbian Orthodox churches in stone and brick with domes.",
+    "wallColours": [
+      "#d8c08a",
+      "#e6dcc4",
+      "#c9b48e",
+      "#b9b6af",
+      "#a65a43",
+      "#e9e4d8",
+      "#8d8a84"
+    ],
+    "roofColours": [
+      "#a8512f",
+      "#5f6063",
+      "#7b7c7e",
+      "#8b3f2b"
+    ],
+    "wallMaterials": [
+      "render",
+      "painted-render",
+      "stucco",
+      "concrete",
+      "exposed-concrete",
+      "brick",
+      "glass-curtain",
+      "stone"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "membrane",
+      "metal-sheet",
+      "concrete",
+      "slate"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "broadleaf",
+      "conifer"
+    ],
+    "ornament": "Secession and Neo-Renaissance plaster ornament (garlands, cornices, caryatids) on city-centre facades; Neo-Byzantine bands of alternating stone and brick, small domes and a lantern on Orthodox churches; Zemun Baroque bell towers; prefabricated balcony bands and modular facades on Novi Beograd blocks; tall poplars, lime and plane trees along boulevards.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Belgrade",
+        "what": "Ottoman, neoclassical, Secession, Byzantine Revival, interwar modernism and Art Deco, socialist modernism/brutalist Novi Beograd blocks, Zemun Baroque churches"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Republic_Square,_Belgrade",
+        "what": "Prince Michael statue, National Museum/Theatre, dark cobble paving, plane trees"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Belgrade",
+        "what": "continental humid-subtropical climate; 19th-century Balkan/neoclassical/eclectic phases"
+      }
+    ]
+  },
+  "places": {
+    "belgrade-airport-belgrade-airport": {
+      "venueId": "belgrade-airport-belgrade-airport",
+      "city": "belgrade",
+      "name": "Belgrade Nikola Tesla Airport",
+      "archetype": "airport-terminal",
+      "subject": "Terminals 1 and 2 joined by a hallway, a wide low concrete-and-glass terminal front with the older control tower behind",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#c9ced1",
+          "#8a949c",
+          "#e4e2dc"
+        ],
+        "roofColour": "#8d8f90",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "jet-bridge",
+          "count": 24,
+          "note": "32 gates, 24 with jet bridges"
+        },
+        {
+          "id": "control-tower",
+          "count": 1,
+          "note": "1962 tower"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1962 (T1), 1979 (T2), renovations 2004-2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Belgrade_Nikola_Tesla_Airport",
+          "what": "T1 original 1962 terminal, T2 built 1979 (5M pax design), combined 93,651 m2, 90 check-in counters, 32 gates (24 jet bridges), 1962 control tower, T1 interior overhaul 2016-2017"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/23926058",
+          "what": "OSM element (name match): measured footprint 570x456.3 m, tags {\"name\": \"Aerodrom Nikola Tesla Beograd\", \"building\": \"transportation\", \"building:levels\": \"2\", \"aeroway\": \"terminal\"}"
+        }
+      ],
+      "notes": "Terminal count/area/gates are sourced. Facade colours (grey concrete with blue-grey glazing) are typed from photos, not the source. OSM terminal polygon is 570 x 456 m (both terminals); the model shows the recognisable front only. Differs from Baku and Berlin: older, low, modernist with a 1962 tower."
+    },
+    "belgrade-clinic": {
+      "venueId": "belgrade-clinic",
+      "city": "belgrade",
+      "name": "Дом здравља Земун",
+      "archetype": "hospital",
+      "subject": "Zemun health centre (Dom zdravlja Zemun): a five-storey public health building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 109,
+        "depth_m": 66,
+        "storeys": 5,
+        "height_m": 19,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d2c0",
+          "#9aa5ad",
+          "#efeee8"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/242251056",
+          "what": "OSM element (name match): measured footprint 108.6x66.4 m, tags {\"name\": \"Дом здравља Земун\", \"wikidata\": \"Q2945877\", \"amenity\": \"clinic\", \"building\": \"public\", \"building:levels\": \"5\"}"
+        }
+      ],
+      "notes": "OSM: clinic, building public, 5 levels, about 109 x 66 m. No description of the facade was found; typed as a socialist-era health centre in pale render. Era is a guess."
+    },
+    "belgrade-community-notices": {
+      "venueId": "belgrade-community-notices",
+      "city": "belgrade",
+      "name": "Security Information Agency",
+      "archetype": "civic-small",
+      "subject": "A small two-storey government house, generic and unmarked",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#d8c8a0",
+          "#b9b6af",
+          "#efeee8"
+        ],
+        "roofColour": "#a8512f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Security_Information_Agency",
+          "what": "agency headquartered in Belgrade (no building description)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/646970682",
+          "what": "OSM element (nearest match): measured footprint 23.8x17.3 m, tags {\"building\": \"house\"}"
+        }
+      ],
+      "notes": "Agency HQ buildings are not described in public sources found; the measured building at the pin is a small house (OSM building=house, 24 x 17 m). Typed as a hip-roofed villa with perimeter wall."
+    },
+    "belgrade-community-voting-game": {
+      "venueId": "belgrade-community-voting-game",
+      "city": "belgrade",
+      "name": "Republic Square",
+      "archetype": "park-landscape",
+      "subject": "Republic Square (Trg Republike): the paved plaza with the bronze equestrian statue of Prince Michael before the cream National Museum, with plane trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#8a8984",
+          "#6b6a66",
+          "#c8c2b4"
+        ],
+        "roofColour": "#a8512f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze equestrian statue of Prince Michael (1882) on a stone plinth"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "fountain section toward Knez Mihailova"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "statue 1882; paving 2018-2019",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Republic_Square,_Belgrade",
+          "what": "plateau with Enrico Pazzi bronze equestrian statue erected 1882; dark cobble-style cube paving after 2018-2019 reconstruction; National Museum with symmetrical front facing the monument; National Theatre 1869; Riunione Palace 1929-1931; plane trees planted 2021"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/170353929",
+          "what": "OSM element (nearest match): measured footprint 40.8x25.8 m, tags {\"name\": \"Палата Риунионе\", \"building\": \"office\", \"building:levels\": \"8\", \"start_date\": \"1931\", \"wikidata\": \"Q63199400\"}"
+        }
+      ],
+      "notes": "The nearest OSM building is the 1931 Riunione Palace (8 levels, 41 x 26 m); the venue is the square. Show the square: dark cobbles, statue plateau, a backdrop of cream neoclassical museum facade. Press House and Staklenac mall are modern backdrops not to be modelled."
+    },
+    "belgrade-community-workshop": {
+      "venueId": "belgrade-community-workshop",
+      "city": "belgrade",
+      "name": "Public Library \"Milutin Bojić\"",
+      "archetype": "campus-block",
+      "subject": "A small branch library/community building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 15,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#b9b6af",
+          "#efeee8"
+        ],
+        "roofColour": "#a8512f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/753694076",
+          "what": "OSM element (containing match): measured footprint 16.2x14.9 m, tags {\"name\": \"Вртић „Срна”\", \"building\": \"kindergarten\"}"
+        }
+      ],
+      "notes": "The OSM building under the pin is a kindergarten (Vrtic Srna, 16 x 15 m), not the library; the library is a branch of the Milutin Bojic municipal library in the Palilula/Borca area and no building description was found. Typed as a small hipped-roof public building."
+    },
+    "belgrade-market-game": {
+      "venueId": "belgrade-market-game",
+      "city": "belgrade",
+      "name": "BIG Fashion Shopping Center",
+      "archetype": "mall",
+      "subject": "BIG Fashion (2017): a long three-level flat-roofed fashion mall with a glazed entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 227,
+        "depth_m": 125,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#e1e0dc",
+          "#7f93a0",
+          "#b9b6af"
+        ],
+        "roofColour": "#8d8f90",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2017",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/503379357",
+          "what": "OSM element (name match): measured footprint 227.1x125.3 m, tags {\"name\": \"BIG Fashion Shopping Center\", \"building\": \"retail\", \"building:levels\": \"3\", \"roof:shape\": \"flat\", \"start_date\": \"2017\", \"wikidata\": \"Q97330155\"}"
+        }
+      ],
+      "notes": "OSM: retail, 3 levels, roof flat, start_date 2017, about 227 x 125 m, so size and age are measured. Finish colours (pale grey cladding, glazing) are typed from comparable malls, not described in a source."
+    },
+    "belgrade-meal-stop": {
+      "venueId": "belgrade-meal-stop",
+      "city": "belgrade",
+      "name": "Aleksandar club Ski staza",
+      "archetype": "restaurant",
+      "subject": "A small two-storey club/restaurant building at the Ski staza (Kosutnjak ski run) edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 11,
+        "depth_m": 11,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc4",
+          "#8b6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#8b3f2b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1153923899",
+          "what": "OSM element (nearest match): measured footprint 11.2x11.2 m, tags {\"building\": \"yes\", \"building:levels\": \"2\"}"
+        }
+      ],
+      "notes": "No description found; OSM building 11 x 11 m, 2 levels. Typed as a small hip-roofed club/restaurant with a terrace in woodland."
+    },
+    "belgrade-osm-node-11425530815": {
+      "venueId": "belgrade-osm-node-11425530815",
+      "city": "belgrade",
+      "name": "Споменик палим борцима Сремчице",
+      "archetype": "monument",
+      "subject": "A memorial to fallen fighters in Sremcica: a modest stone monument in a small park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 6,
+        "depth_m": 6,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#b9b6af",
+          "#8d8a84",
+          "#d8d4c8"
+        ],
+        "roofColour": "#8d8a84",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "1950s-1980s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1117928469",
+          "what": "OSM element (containing match): measured footprint 54.3x20.6 m, tags {\"name\": \"Парк Марка Матијашевића\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "Local WWII memorial (park Marka Matijasevica, 54 x 21 m). Form unknown; typed as a small stone/concrete stele on steps in a lawn, typical of Yugoslav-era memorials."
+    },
+    "belgrade-osm-node-12869419136": {
+      "venueId": "belgrade-osm-node-12869419136",
+      "city": "belgrade",
+      "name": "Мегатренд универзитет",
+      "archetype": "office-low",
+      "subject": "The three-storey Megatrend/Zepter office building in Novi Beograd",
+      "form": {
+        "footprint": "rect",
+        "width_m": 82,
+        "depth_m": 28,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "render",
+        "colours": [
+          "#c9ced1",
+          "#7f93a0",
+          "#efeee8"
+        ],
+        "roofColour": "#8d8f90",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "international",
+      "era": "1990s-2000s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/200282827",
+          "what": "OSM element (containing match): measured footprint 82.2x28.4 m, tags {\"name\": \"Zepter International\", \"building\": \"commercial\", \"building:levels\": \"3\"}"
+        }
+      ],
+      "notes": "The building under the pin is tagged as a Zepter International commercial building (82 x 28 m, 3 levels) and no photos were consulted. Typed as a ribbon-glazed low office block in the Novi Beograd manner."
+    },
+    "belgrade-osm-node-3017515469": {
+      "venueId": "belgrade-osm-node-3017515469",
+      "city": "belgrade",
+      "name": "Споменик палим борцима Црвене армије 1944.",
+      "archetype": "monument",
+      "subject": "A small memorial to the fallen Red Army soldiers of 1944",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 9,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "stone",
+        "colours": [
+          "#b9b6af",
+          "#7a7a76",
+          "#d8d4c8"
+        ],
+        "roofColour": "#7a7a76",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "soviet",
+      "era": "1944-1950s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1334328469",
+          "what": "OSM element (nearest match): measured footprint 17.3x11.7 m, tags {\"building\": \"yes\"}"
+        }
+      ],
+      "notes": "Memorial in the village area east of Belgrade; OSM shows an unnamed 17 x 12 m structure. Typed as a low stone stele with red star omitted. No source found."
+    },
+    "belgrade-osm-node-5589378733": {
+      "venueId": "belgrade-osm-node-5589378733",
+      "city": "belgrade",
+      "name": "Monument to Nikola Tesla",
+      "archetype": "monument",
+      "subject": "The bronze Nikola Tesla statue on a stone plinth in a small green plot by the airport",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 5,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "granite",
+        "colours": [
+          "#a8a59d",
+          "#6b6a66",
+          "#cfc9bb"
+        ],
+        "roofColour": "#6b6a66",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "standing bronze figure of Tesla on a stone plinth"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/714122209",
+          "what": "OSM element (containing match): measured footprint 70.5x35.1 m, tags {\"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "Pin is at Nikola Tesla Airport; OSM shows a small park (70 x 35 m). The statue pose and plinth height are not verified; typed."
+    },
+    "belgrade-osm-way-1350045138": {
+      "venueId": "belgrade-osm-way-1350045138",
+      "city": "belgrade",
+      "name": "Faculty of Security Studies, University of Belgrade",
+      "archetype": "campus-block",
+      "subject": "Faculty of Security Studies: a mid-rise concrete university building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 48,
+        "depth_m": 39,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b6af",
+          "#7f93a0",
+          "#d8d4c8"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s-1990s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1350045138",
+          "what": "OSM element (name match): measured footprint 48.2x38.6 m, tags {\"name\": \"Факултет безбедности\", \"wikidata\": \"Q6590687\", \"amenity\": \"college\"}"
+        }
+      ],
+      "notes": "OSM building 48 x 39 m (area 1,789 m2). No description or photos found; typed as a socialist-modernist faculty block in grey concrete."
+    },
+    "belgrade-osm-way-1387911268": {
+      "venueId": "belgrade-osm-way-1387911268",
+      "city": "belgrade",
+      "name": "ФК БСК Борча",
+      "archetype": "stadium",
+      "subject": "BSK Borca football ground (Vizelj park): a small stadium with one stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 119,
+        "depth_m": 112,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bd",
+          "#4f7ba6",
+          "#e6e3dc"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1950s-1990s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1387911268",
+          "what": "OSM element (name match): measured footprint 118.9x112.2 m, tags {\"name\": \"ФК БСК Борча\", \"wikidata\": \"Q3440735\", \"leisure\": \"stadium\"}"
+        }
+      ],
+      "notes": "Small suburban club ground (OSM 119 x 112 m). Typed as a pitch with a single covered stand and four floodlights."
+    },
+    "belgrade-osm-way-1444519027": {
+      "venueId": "belgrade-osm-way-1444519027",
+      "city": "belgrade",
+      "name": "Црква Свете Тројице",
+      "archetype": "shrine-small",
+      "subject": "The small Serbian Orthodox Church of the Holy Trinity (Zaklopaca): a single-nave chapel with a small dome and porch",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#efe6d0",
+          "#a8512f",
+          "#8d8a84"
+        ],
+        "roofColour": "#a8512f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "low bell gable or small tower"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q71699711",
+          "what": "Wikidata: Crkva Svete Trojice (Zaklopaca), church building"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1444519027",
+          "what": "OSM element (name match): measured footprint 14.3x6.6 m, tags {\"name\": \"Црква Свете Тројице\", \"building\": \"church\", \"wikidata\": \"Q71699711\", \"amenity\": \"place_of_worship\", \"religion\": \"christian\", \"denomination\": \"serbian_orthodox\"}"
+        }
+      ],
+      "notes": "Tiny church; OSM footprint 14 x 6.6 m. Appearance not described anywhere found. Typed as a whitewashed single-nave Orthodox chapel with red tile roof."
+    },
+    "belgrade-osm-way-370226754": {
+      "venueId": "belgrade-osm-way-370226754",
+      "city": "belgrade",
+      "name": "Vinca Institute of Nuclear Sciences",
+      "archetype": "campus-block",
+      "subject": "Vinca Institute: a socialist-era research block among lawns and pines in a big campus",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 4,
+        "height_m": 18,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b9b6af",
+          "#7f93a0",
+          "#d8d4c8"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "brutalist",
+      "era": "1948-1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vin%C4%8Da_Institute_of_Nuclear_Sciences",
+          "what": "Serbia nuclear research institute on the Danube near Vinca"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/370226754",
+          "what": "OSM element (name match): measured footprint 1373.5x615.5 m, tags {\"name\": \"Институт за нуклеарне науке „Винча”\", \"wikidata\": \"Q1664939\", \"amenity\": \"university\"}"
+        }
+      ],
+      "notes": "Huge campus (OSM polygon 1,374 x 616 m); the model shows one typical institute block. Specific building colours unverified; the institute is known as a socialist-modernist 1950s-60s ensemble."
+    },
+    "belgrade-osm-way-371964365": {
+      "venueId": "belgrade-osm-way-371964365",
+      "city": "belgrade",
+      "name": "Стадион Бежанија",
+      "archetype": "stadium",
+      "subject": "Stadion FK Bezanija: a small football stadium with a stand and floodlights",
+      "form": {
+        "footprint": "oval",
+        "width_m": 126,
+        "depth_m": 111,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bd",
+          "#a8512f",
+          "#e6e3dc"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/371964365",
+          "what": "OSM element (name match): measured footprint 125.5x110.5 m, tags {\"name\": \"Стадион Бежанија\", \"wikidata\": \"Q7596301\", \"leisure\": \"stadium\"}"
+        }
+      ],
+      "notes": "OSM polygon 126 x 111 m for Stadion FK Bezanija. No description; typed small-club ground. Differs from Borca and Resnik by an oval bowl with two stands."
+    },
+    "belgrade-osm-way-392169933": {
+      "venueId": "belgrade-osm-way-392169933",
+      "city": "belgrade",
+      "name": "Дом здравља Раковица",
+      "archetype": "hospital",
+      "subject": "Rakovica health centre: a long low-rise health building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 15,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d2c0",
+          "#9aa5ad",
+          "#efeee8"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/392169933",
+          "what": "OSM element (name match): measured footprint 46.8x15.2 m, tags {\"name\": \"Дом здравља Раковица\", \"building\": \"public\", \"wikidata\": \"Q110048198\", \"amenity\": \"clinic\"}"
+        }
+      ],
+      "notes": "OSM building 47 x 15 m. No description found; typed as a socialist-era clinic block in pale render."
+    },
+    "belgrade-osm-way-438907241": {
+      "venueId": "belgrade-osm-way-438907241",
+      "city": "belgrade",
+      "name": "ОШ Алекса Шантић",
+      "archetype": "campus-block",
+      "subject": "Primary school Aleksa Santic in Kaludjerica: a two-wing school with a schoolyard",
+      "form": {
+        "footprint": "L",
+        "width_m": 84,
+        "depth_m": 67,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc4",
+          "#a65a43",
+          "#ffffff"
+        ],
+        "roofColour": "#a8512f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1990s-2000s (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/24967004",
+          "what": "OSM element (name match): measured footprint 83.5x67 m, tags {\"name\": \"ОШ Алекса Шантић\", \"wikidata\": \"Q65200862\", \"leisure\": \"park\", \"building\": \"school\"}"
+        }
+      ],
+      "notes": "OSM building 84 x 67 m (area 4,033 m2) tagged as school. No description found; typed as a three-storey render school in a settlement that grew quickly after the 1990s."
+    },
+    "belgrade-osm-way-474077436": {
+      "venueId": "belgrade-osm-way-474077436",
+      "city": "belgrade",
+      "name": "Црква светих арханђела Михаила и Гаврила",
+      "archetype": "church-classical",
+      "subject": "A small Zemun-area Serbian Orthodox church in the Baroque manner: single nave with a western bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#efe6d0",
+          "#b9a47c",
+          "#ffffff"
+        ],
+        "roofColour": "#8b3f2b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "baroque onion-capped west tower"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "baroque",
+      "era": "18th-19th century (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Belgrade",
+          "what": "churches in Zemun/Austrian-administered Serb areas show Baroque traits such as a bell tower and a single nave"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3583242",
+          "what": "Wikidata: Church of St Archangel Gabriel in Batajnica"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/474077436",
+          "what": "OSM element (name match): measured footprint 21.9x9.8 m, tags {\"name\": \"Црква светих арханђела Михаила и Гаврила\", \"building\": \"church\", \"wikidata\": \"Q3583242\", \"amenity\": \"place_of_worship\", \"religion\": \"christian\", \"denomination\": \"serbian_orthodox\"}"
+        }
+      ],
+      "notes": "This particular church was not described; the baroque single-nave west-tower type is inferred from regional norms (Batajnica is in the Zemun area). OSM footprint 22 x 10 m."
+    },
+    "belgrade-osm-way-482462319": {
+      "venueId": "belgrade-osm-way-482462319",
+      "city": "belgrade",
+      "name": "Jajinci Memorial Park",
+      "archetype": "monument",
+      "subject": "Jajinci memorial park: a large abstract stainless-steel sculpture in a flat green memorial park",
+      "form": {
+        "footprint": "round",
+        "width_m": 16,
+        "depth_m": 16,
+        "storeys": 0,
+        "height_m": 16,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": "concrete",
+        "colours": [
+          "#c9ced1",
+          "#8d949a",
+          "#d8d4c8"
+        ],
+        "roofColour": "#c9ced1",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "colossal abstract stainless-steel sculpture (Vojin Stojic, 1988)"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1951 (first monument); 1988 (steel sculpture)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jajinci_Memorial_Park",
+          "what": "1988 colossal stainless-steel sculpture by Vojin Stojic from a 1987 competition (42 entries); Bogdan Bogdanovic led the commission; 1951 entrance monument by Stevan Bodnarov and Leon Kabiljo; memorial park green and flat, architects Branko Bon and Brana Mirkovic"
+        }
+      ],
+      "notes": "Sculpture height is not in the source (estimated 16 m); the stainless-steel finish and the flat green park are sourced. Form is an abstract tall shape on a low base; do not add figures."
+    },
+    "belgrade-osm-way-715373965": {
+      "venueId": "belgrade-osm-way-715373965",
+      "city": "belgrade",
+      "name": "Хотел „Авала”",
+      "archetype": "hotel",
+      "subject": "Hotel Avala on Mount Avala (1928): a small three-storey mountain hotel with a hipped roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 23,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc4",
+          "#8b6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#8b3f2b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "chimney",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1928",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3145407",
+          "what": "Wikidata: Hotel Avala (hotel); OSM start_date 1928, 3 levels, hotel/restaurant, 23 x 20 m"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/715373965",
+          "what": "OSM element (name match): measured footprint 22.8x19.9 m, tags {\"name\": \"Хотел „Авала”\", \"building\": \"hotel\", \"building:levels\": \"3\", \"start_date\": \"1928\", \"wikidata\": \"Q3145407\", \"amenity\": \"restaurant\"}"
+        }
+      ],
+      "notes": "Size, levels and date are measured (OSM); the interwar mountain-hotel look (light render, timber-framed verandas, red tile hip roof) is typed from the era and setting, not from a source describing it. Surrounded by pines on Avala mountain, unlike city hotels."
+    },
+    "belgrade-osm-way-93145927": {
+      "venueId": "belgrade-osm-way-93145927",
+      "city": "belgrade",
+      "name": "ФК Ресник",
+      "archetype": "stadium",
+      "subject": "FK Resnik, Djordje Zaric stadium: a small suburban football ground with a stand along one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 137,
+        "depth_m": 66,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bd",
+          "#4f7ba6",
+          "#e6e3dc"
+        ],
+        "roofColour": "#7b7c7e",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/93145927",
+          "what": "OSM element (name match): measured footprint 136.7x65.8 m, tags {\"name\": \"ФК Ресник\", \"wikidata\": \"Q10783726\", \"leisure\": \"stadium\"}"
+        }
+      ],
+      "notes": "OSM polygon 137 x 66 m. Typed small-club ground with one covered stand on the long side; this is rectangular where Bezanija is oval."
+    },
+    "belgrade-quiet-reflection": {
+      "venueId": "belgrade-quiet-reflection",
+      "city": "belgrade",
+      "name": "Црква Свете Петке",
+      "archetype": "church-classical",
+      "subject": "A small Serbian Orthodox church of St Petka: single nave, small dome, western bell tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "stone",
+        "colours": [
+          "#efe6d0",
+          "#b9a47c",
+          "#ffffff"
+        ],
+        "roofColour": "#8b3f2b",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q61130539",
+          "what": "Wikidata: church building, Serbian Orthodox"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/253990537",
+          "what": "OSM element (name match): measured footprint 24.6x10.7 m, tags {\"name\": \"Црква Свете Петке\", \"building\": \"church\", \"wikidata\": \"Q61130539\", \"amenity\": \"place_of_worship\", \"religion\": \"christian\", \"denomination\": \"serbian_orthodox\"}"
+        }
+      ],
+      "notes": "Rural church (OSM 25 x 11 m). No description found. Typed as a plastered single-nave church with red tile roof, a small dome and a low bell tower; different footprint from the other small churches."
+    },
+    "belgrade-recreation": {
+      "venueId": "belgrade-recreation",
+      "city": "belgrade",
+      "name": "Барутана",
+      "archetype": "park-landscape",
+      "subject": "Barutana park: a riverside urban park of lawns, paths and old trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 214,
+        "depth_m": 168,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#b9b6af",
+          "#a65a43",
+          "#e6dcc4"
+        ],
+        "roofColour": "#7b7c7e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "railings",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/68321074",
+          "what": "OSM element (name match): measured footprint 213.9x167.5 m, tags {\"name\": \"Барутана\", \"wikidata\": \"Q16083642\", \"leisure\": \"park\"}"
+        }
+      ],
+      "notes": "Urban park (OSM 214 x 168 m, Wikidata urban park). No description found; generic furniture only. Name refers to an old gunpowder store, which may mean a small brick building in the park (unverified)."
+    },
+    "belgrade-transit": {
+      "venueId": "belgrade-transit",
+      "city": "belgrade",
+      "name": "Ripanj",
+      "archetype": "transport-station",
+      "subject": "Ripanj railway station: a small one- to two-storey station building with a platform canopy and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 25,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#e6d4a0",
+          "#a65a43",
+          "#ffffff"
+        ],
+        "roofColour": "#8b3f2b",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "late 19th-20th century (est.)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q31182308",
+          "what": "Wikidata: Ripanj railway station"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/683461487",
+          "what": "OSM element (name match): measured footprint 83.5x45.2 m, tags {\"name\": \"Основна школа „Војвода Путник” - ИО „Рипањ Станица”\", \"amenity\": \"school\"}"
+        }
+      ],
+      "notes": "The OSM building at the pin is a school (Ripanj Stanica), not the station. The station building is typed as a small yellow-render hip-roofed Serbian Railways depot with a short platform canopy; unverified."
+    }
+  }
+}

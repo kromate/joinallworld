@@ -1,0 +1,150 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "niamey",
+ "venueId": "niamey-osm-node-7444882086",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/941145190",
+   "used": "small 6x4 m building 3.6 m from the point: kept as the main hut"
+  },
+  {
+   "kind": "text",
+   "used": "brief: riverside outdoor leisure site, sandy ground, scattered acacia, thatched shade shelters; no photo found"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 22,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hut",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 3.2,
+   "wall": {
+    "material": "mud-render",
+    "colour": "#c9ad86",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a8895a",
+    "material": "thatch",
+    "pitch": 38,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    -16,
+    -10,
+    0
+   ],
+   "rotDeg": 8,
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "post_height": 2.6,
+    "roof": "pyramid"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    14,
+    -14,
+    0
+   ],
+   "rotDeg": -12,
+   "params": {
+    "width": 7,
+    "depth": 6,
+    "post_height": 2.6,
+    "roof": "pyramid"
+   }
+  },
+  {
+   "type": "thatched-pavilion",
+   "at": [
+    2,
+    16,
+    0
+   ],
+   "rotDeg": 4,
+   "params": {
+    "width": 9,
+    "depth": 6,
+    "post_height": 2.6,
+    "roof": "pyramid"
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 8,
+    "count": 4,
+    "spread": 14
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    26,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 7,
+    "count": 3,
+    "spread": 12
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -36,
+    -26,
+    0
+   ],
+   "params": {
+    "length": 72,
+    "height": 1.6,
+    "kind": "wall",
+    "pillarEvery": 6,
+    "colour": "#b59a74"
+   }
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "extent": [
+   90,
+   70
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; the shelter count and layout are assumed from the brief"
+ }
+}

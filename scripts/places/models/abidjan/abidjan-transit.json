@@ -1,0 +1,601 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "abidjan",
+ "venueId": "abidjan-transit",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahnhof_Treichville.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gregor Rom",
+   "view": "street",
+   "file": "/tmp/places-evidence/abidjan/gare1.jpg",
+   "used": "long low dark base, cream raised clerestory with ribbon glazing and blank sign board, long flat canopy edge, red-white end block at right, grain silo and cranes at left, forecourt apron"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bahnhof_Treichville_2.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Gregor Rom",
+   "view": "side",
+   "file": "/tmp/places-evidence/abidjan/gare2.jpg",
+   "used": "canopy: grey sheet roof on raked concrete beams and square piers, red-painted rear wall, orange information kiosk, paved concourse"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/402531561",
+   "used": "name match only; the outline is a skewed 248 m strip covering rails too, not used for massing"
+  }
+ ],
+ "camera": {
+  "yawDeg": -4,
+  "pitchDeg": 2,
+  "fovDeg": 58,
+  "aspect": 1.33,
+  "margin": 0.0,
+  "fit": "building"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "base",
+   "footprint": {
+    "rect": [
+     88,
+     14
+    ]
+   },
+   "at": [
+    0,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#4a4540",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#3b3d40"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "base-red-right",
+   "footprint": {
+    "rect": [
+     44,
+     0.6
+    ]
+   },
+   "at": [
+    22,
+    -7.1
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#7a3328",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a3328"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "clerestory",
+   "footprint": {
+    "rect": [
+     40,
+     10
+    ]
+   },
+   "at": [
+    6,
+    1
+   ],
+   "rotDeg": 0,
+   "z0": 5.2,
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9d0b2",
+    "windows": "ribbon",
+    "windowRatio": 0.55,
+    "faces": {
+     "front": "ribbon",
+     "back": "ribbon",
+     "left": "none",
+     "right": "none"
+    },
+    "glassColour": "#1f2830",
+    "bay": 4.0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#a8a496"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "sign-board",
+   "footprint": {
+    "rect": [
+     14,
+     0.5
+    ]
+   },
+   "at": [
+    6,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 9.6,
+   "height": 1.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2f0ea",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#f2f0ea"
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -3,
+    -1,
+    11.0
+   ],
+   "params": {
+    "segments": 16,
+    "colour": "#2f6a45",
+    "profile": [
+     [
+      1.0,
+      0
+     ],
+     [
+      1.0,
+      0.5
+     ],
+     [
+      0,
+      0.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -9,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 88,
+    "depth": 8,
+    "height": 4.8,
+    "thickness": 0.4,
+    "columns": 11,
+    "colour": "#4d5358",
+    "edgeColour": "#3b4044"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block-lower",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    51,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ece8e0",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#ece8e0"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "end-block-upper",
+   "footprint": {
+    "rect": [
+     13,
+     11
+    ]
+   },
+   "at": [
+    51,
+    -3
+   ],
+   "rotDeg": 0,
+   "z0": 4.2,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#b13a35",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#b13a35"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "rear-shed",
+   "footprint": {
+    "rect": [
+     28,
+     10
+    ]
+   },
+   "at": [
+    52,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8a3a32",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#6b6560"
+   }
+  },
+  {
+   "type": "station-platform",
+   "at": [
+    0,
+    12,
+    0
+   ],
+   "params": {
+    "length": 88,
+    "depth": 6,
+    "height": 1.0,
+    "colour": "#b2ada3"
+   }
+  },
+  {
+   "type": "rail-track",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "params": {
+    "length": 100,
+    "tracks": 3,
+    "spacing": 4.6
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -58,
+    12,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#a9aaa6",
+    "profile": [
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      17
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   }
+  },
+  {
+   "type": "revolve",
+   "at": [
+    -58,
+    2,
+    0
+   ],
+   "params": {
+    "segments": 20,
+    "colour": "#a9aaa6",
+    "profile": [
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      17
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-mast0",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -54,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 14,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-jib0",
+   "footprint": {
+    "rect": [
+     11,
+     0.9
+    ]
+   },
+   "at": [
+    -50,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 14,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-mast1",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -42,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 16,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-jib1",
+   "footprint": {
+    "rect": [
+     11,
+     0.9
+    ]
+   },
+   "at": [
+    -38,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 16,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-mast2",
+   "footprint": {
+    "rect": [
+     0.9,
+     0.9
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 18,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#8c8f92",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8c8f92"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "crane-jib2",
+   "footprint": {
+    "rect": [
+     11,
+     0.9
+    ]
+   },
+   "at": [
+    -26,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 18,
+   "height": 1.0,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d8d4cc",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#d8d4cc"
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -20,
+     -20,
+     0
+    ],
+    "end": [
+     18,
+     -20,
+     0
+    ],
+    "count": 4,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        1.6,
+        1.2
+       ],
+       "height": 0.5,
+       "colour": "#b8302a"
+      }
+     },
+     {
+      "type": "prism",
+      "at": [
+       0,
+       0,
+       0.5
+      ],
+      "params": {
+       "rect": [
+        0.9,
+        0.7
+       ],
+       "height": 2.0,
+       "colour": "#f2f2f2"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -12,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 1
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "road",
+  "extent": [
+   120,
+   60
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "crane lattices and cable/fuel-pump details are simplified blocks; building shortened to fit the 120 m clamp"
+ }
+}

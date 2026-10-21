@@ -1,0 +1,403 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/1244538602",
+   "used": "named lock-up row (49 x 8 m, bearing 173 deg) inside the 26,400 m2 marketplace area; rest of the market laid out as stall rows and sheds scaled to the scene"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 30,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "rect": [
+     110,
+     80
+    ],
+    "height": 0.1,
+    "colour": "#a45f45"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "lockup-row",
+   "footprint": {
+    "rect": [
+     49,
+     7.7
+    ]
+   },
+   "at": [
+    -20,
+    30
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "windowRatio": 0,
+    "plinth": 0.2,
+    "pattern": []
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 1.0,
+    "overhang": 0.6
+   },
+   "rotDeg": -7
+  },
+  {
+   "type": "mass",
+   "id": "grain-shed",
+   "footprint": {
+    "rect": [
+     24,
+     14
+    ]
+   },
+   "at": [
+    32,
+    24
+   ],
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#8a8f94",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "cloth-shed",
+   "footprint": {
+    "rect": [
+     18,
+     12
+    ]
+   },
+   "at": [
+    -38,
+    -8
+   ],
+   "height": 4.4,
+   "storeys": 1,
+   "wall": {
+    "material": "timber",
+    "colour": "#b9a98a",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7a3f2f",
+    "material": "corrugated",
+    "rise": 1.4,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    14,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     58,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        2.2
+       ],
+       "height": 2.2,
+       "colour": "#b9a98a",
+       "topColour": "#8a8f94"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    2,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     58,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        2.2
+       ],
+       "height": 2.2,
+       "colour": "#a89878",
+       "topColour": "#8a8f94"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    -16,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     58,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        2.2
+       ],
+       "height": 2.2,
+       "colour": "#a89878",
+       "topColour": "#8a8f94"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -45,
+    -30,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     58,
+     0
+    ],
+    "count": 11,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        2.6,
+        2.2
+       ],
+       "height": 2.2,
+       "colour": "#b9a98a",
+       "topColour": "#8a8f94"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -8,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     76,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 3.0,
+       "depth": 2.2,
+       "drop": 0.5,
+       "height": 2.6,
+       "colours": [
+        "#c8362f",
+        "#2f6fa8",
+        "#e0b13a",
+        "#3f8f6a"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "at": [
+    -40,
+    -21,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     0,
+     0
+    ],
+    "end": [
+     76,
+     0
+    ],
+    "count": 12,
+    "lod1Step": 2,
+    "lod2Step": 6,
+    "of": [
+     {
+      "type": "awning",
+      "params": {
+       "width": 3.0,
+       "depth": 2.2,
+       "drop": 0.5,
+       "height": 2.6,
+       "colours": [
+        "#c8362f",
+        "#2f6fa8",
+        "#e0b13a",
+        "#3f8f6a"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -50,
+    0,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 28
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "road",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -56,
+     36
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     -30
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     56,
+     6
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found: stalls, awnings and sheds are typical for a Kaduna open market, only the lock-up row comes from OSM."
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kaduna",
+ "venueId": "chechinya-market"
+}

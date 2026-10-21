@@ -1,0 +1,1566 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "asuncion",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "asuncion",
+    "climate": "temperate",
+    "vernacular": "Humid subtropical riverside capital: low colonial and neo-colonial houses in whitewashed or pastel render with red clay-tile or corrugated roofs, shaded corredor galleries on timber posts and wrought-iron window grilles; mid-century neoclassical and Art Deco public buildings; concrete and brick mid-rise blocks and glass-fronted malls on the main avenues, with lapacho, mango and palm street trees.",
+    "wallColours": [
+      "#f1ece0",
+      "#e8d28a",
+      "#d9b36b",
+      "#c98b78",
+      "#a35a3d",
+      "#9b9a94"
+    ],
+    "roofColours": [
+      "#b5603f",
+      "#8e4a32",
+      "#8a8f92",
+      "#9a9893"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "whitewash",
+      "render",
+      "brick",
+      "concrete",
+      "stucco",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "corrugated",
+      "concrete",
+      "metal-sheet"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Colonial corredor galleries on carved timber posts, adobe walls under red tile, wrought-iron rejas on windows, neoclassical pilasters and pediments from the Lopez era, Art Deco geometry in 1930s blocks, flowering lapacho trees and nanduti lace-pattern motifs.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Paraguay",
+        "what": "colonial wood and adobe giving way to masonry classicism under Carlos Antonio Lopez, later neo-colonial and Art Deco, Brazilian modernism, 1970s Itaipu-driven building boom"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Luque_(Paraguay)",
+        "what": "neighbouring-city houses described with colonial and neoclassical influence, tile roofs, brick walls and pastel colours"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Museo_Casa_de_la_Independencia",
+        "what": "a 1772 adobe house with tile roof and corredor, typical of colonial Asuncion"
+      }
+    ]
+  },
+  "places": {
+    "asuncion-airport-asuncion-airport": {
+      "venueId": "asuncion-airport-asuncion-airport",
+      "city": "asuncion",
+      "name": "Silvio Pettirossi International Airport",
+      "archetype": "airport-terminal",
+      "subject": "the 1980 passenger terminal in Luque seen from the forecourt: a wide low block with two concourses (south gates 1-4, north gates 5-6) and a control tower behind",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 200,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "two-concourse",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d8d6cf",
+          "#5f7f9a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#aeb1b2",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 6,
+          "note": "gates 1-6 across two concourses"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Silvio_Pettirossi_International_Airport",
+          "what": "current terminal opened 20 March 1980, two international concourses (gates 1-4 south, 5-6 north), north concourse renovated and arrivals hall expanded in 2023"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/130018386",
+          "what": "OSM terminal building footprint about 202 x 125 m"
+        }
+      ],
+      "notes": "Facade colours and the concrete-and-glass treatment are typical of a 1980 terminal but were not confirmed from a description; footprint, date and gate counts are from sources. Recognisable by the long low terminal and a separate control tower; the 2023 north-concourse renovation is newer."
+    },
+    "asuncion-clinic": {
+      "venueId": "asuncion-clinic",
+      "city": "asuncion",
+      "name": "Hospital de Clinicas",
+      "archetype": "hospital",
+      "subject": "the university teaching hospital complex on Avenida Mariscal Lopez, shown as a multi-storey concrete ward block",
+      "form": {
+        "footprint": "rect",
+        "width_m": 75,
+        "depth_m": 30,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "variant": "teaching-hospital",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d9d4c8",
+          "#b8a98a",
+          "#f1ece0"
+        ],
+        "roofColour": "#9a9893",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1877 original; present complex 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_de_Cl%C3%ADnicas_(Paraguay)",
+          "what": "original 1877 two-storey hospital with four pavilions; present complex covers several blocks on Av. Mariscal Lopez within the Universidad Nacional campus"
+        }
+      ],
+      "notes": "The 1877 two-storey pavilion building is the historic core, but no description of the present towers was found; storey count and colours are typed. The OSM building footprint matched here (26 x 21 m) is only a fragment of the complex."
+    },
+    "asuncion-community-notices": {
+      "venueId": "asuncion-community-notices",
+      "city": "asuncion",
+      "name": "Embassy of Chile",
+      "archetype": "civic-small",
+      "subject": "a two-storey diplomatic chancery with a flag mast behind a perimeter wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 35,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#9a6a4f",
+          "#ffffff"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1,
+          "note": "blank flag, no national colours legible"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM gives a building=government footprint of 35 x 28 m; no description or photo notes found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-community-voting-game": {
+      "venueId": "asuncion-community-voting-game",
+      "city": "asuncion",
+      "name": "Municipalidad de San Antonio",
+      "archetype": "civic-small",
+      "subject": "a long one-storey municipal hall in the town of San Antonio, near the river plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 53,
+        "depth_m": 21,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece2b5",
+          "#b5603f",
+          "#ffffff"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/San_Antonio_(Paraguay)",
+          "what": "municipality building only shown as a photo caption; town became a city in 1981; Plaza de los Heroes is the central plaza"
+        }
+      ],
+      "notes": "Footprint (about 53 x 21 m) is from OSM; the architecture is not described anywhere found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-community-workshop": {
+      "venueId": "asuncion-community-workshop",
+      "city": "asuncion",
+      "name": "Universidad Catolica \"Nuestra Senora de la Asuncion\"",
+      "archetype": "campus-block",
+      "subject": "the main Asuncion campus: a mid-rise administration block with classroom wings around a lawn",
+      "form": {
+        "footprint": "U",
+        "width_m": 70,
+        "depth_m": 35,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "variant": "campus",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece8de",
+          "#6d8aa0",
+          "#b8b2a4"
+        ],
+        "roofColour": "#9a9893",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "20th-21st century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Cat%C3%B3lica_Nuestra_Se%C3%B1ora_de_la_Asunci%C3%B3n",
+          "what": "Campus Asuncion groups several sites (Rectorado, La Providencia, Santa Librada, Conservatorio, Campus de la Salud); no architectural detail"
+        }
+      ],
+      "notes": "OSM treats the whole university as one 640 x 490 m area; only one representative block is modelled. Building description not found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-market-game": {
+      "venueId": "asuncion-market-game",
+      "city": "asuncion",
+      "name": "Shopping Mariscal Lopez",
+      "archetype": "mall",
+      "subject": "a three-storey upmarket shopping centre with a glazed entrance on Avenida Mariscal Lopez",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 87,
+        "depth_m": 82,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "flat",
+        "variant": "urban-mall"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e9e4d8",
+          "#4f6d86",
+          "#c0b8a6"
+        ],
+        "roofColour": "#9a9893",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/31143117",
+          "what": "OSM footprint about 87 x 82 m, 5,974 m2"
+        }
+      ],
+      "notes": "Footprint measured; storeys, colours and era are typed from the mall type. Wider and lower than Mall Excelsior."
+    },
+    "asuncion-meal-stop": {
+      "venueId": "asuncion-meal-stop",
+      "city": "asuncion",
+      "name": "EuroGourmet",
+      "archetype": "restaurant",
+      "subject": "a small restaurant in a converted house with a tiled roof and a terrace with umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ece0",
+          "#a35a3d",
+          "#7a5a3a"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "The nearest OSM building is a 16 x 13 m residential house, used only for scale. Venue itself not described anywhere found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-osm-node-4379937704": {
+      "venueId": "asuncion-osm-node-4379937704",
+      "city": "asuncion",
+      "name": "Casa de la Independencia y Callejon Historico - Solar Martinez Saez",
+      "archetype": "manor",
+      "subject": "the 1772 colonial house museum on the corner of Pdte. Franco and 14 de Mayo: whitewashed adobe walls, a red tile roof and a timber-posted corredor gallery, with an inner patio",
+      "form": {
+        "footprint": "L",
+        "width_m": 30,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip",
+        "variant": "colonial-corredor-house"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f2eee3",
+          "#7a5230",
+          "#5a4a3a"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "corredor gallery on timber posts along the front"
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "patio with a mural and a mission sundial"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "cobble",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1772",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_Casa_de_la_Independencia",
+          "what": "built 1772 by Antonio Martinez Saenz; adobe walls, tiled roof, palm and tacuara frame, corridor with carved mission doors, patio with mural and sundial"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/390842545",
+          "what": "OSM house footprint about 35 x 27 m"
+        }
+      ],
+      "notes": "Venue name covers the house and the Callejon Historico lane. Wall and roof colours (white walls, brown posts, red tile) are from general photos, not a cited description. Low and single storey; the gallery and patio are what make it recognisable. Different from the cathedral nearby: domestic scale, no tower."
+    },
+    "asuncion-osm-node-5793564354": {
+      "venueId": "asuncion-osm-node-5793564354",
+      "city": "asuncion",
+      "name": "Hospital indigena",
+      "archetype": "hospital",
+      "subject": "a small one-storey rural clinic with a veranda and a corrugated roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#7aa05a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "20th-21st century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "No OSM building or description matched this node.  Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-osm-way-164810076": {
+      "venueId": "asuncion-osm-way-164810076",
+      "city": "asuncion",
+      "name": "Our Lady of Asuncion Cathedral",
+      "archetype": "church-classical",
+      "subject": "the Metropolitan Cathedral on the Plaza de los Heroes: a plain neoclassical church with a bell tower, built 1842-1845",
+      "form": {
+        "footprint": "rect",
+        "width_m": 77,
+        "depth_m": 31,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "gable",
+        "variant": "cathedral",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#efe6c8",
+          "#c8b88a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "campanile added to replace an earlier belfry-less church"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "neoclassical entrance; exact form unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1845",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Catedral_Metropolitana_de_Asunci%C3%B3n",
+          "what": "neoclassical, built 1842-1845 to a design by military architect Pascual Urdapilleta, blessed 27 Oct 1845 still unfinished, silver-clad high altar"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Paraguay",
+          "what": "Urdapilleta designed the cathedral; it has been altered several times since a 1543 fire"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/164810076",
+          "what": "OSM footprint about 78 x 31 m (the height tag of 5 m looks wrong)"
+        }
+      ],
+      "notes": "Style, dates and architect are from sources; facade colour, tower position and the portico shape are not confirmed. Sits beside the Casa de la Independencia in the old centre."
+    },
+    "asuncion-osm-way-266156282": {
+      "venueId": "asuncion-osm-way-266156282",
+      "city": "asuncion",
+      "name": "Mall Excelsior",
+      "archetype": "mall",
+      "subject": "a three-level downtown shopping mall with a glass entrance, linked to the Excelsior hotel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 61,
+        "storeys": 3,
+        "height_m": 14,
+        "roof": "flat",
+        "variant": "downtown-mall"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9d2d6",
+          "#5a7690",
+          "#e9e4d8"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/266156282",
+          "what": "OSM: building:levels=3, footprint 67.5 x 60.9 m, 4,115 m2"
+        }
+      ],
+      "notes": "Levels and footprint are measured (OSM); facade colours and era are typed. Squarer and glassier than Shopping Mariscal Lopez."
+    },
+    "asuncion-osm-way-272754498": {
+      "venueId": "asuncion-osm-way-272754498",
+      "city": "asuncion",
+      "name": "Estadio River Plate",
+      "archetype": "stadium",
+      "subject": "Estadio Jardines del Kelito: a small club ground with a grass pitch, one new covered-seat stand and four floodlight towers",
+      "form": {
+        "footprint": "rect",
+        "width_m": 122,
+        "depth_m": 83,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "none",
+        "variant": "club-ground"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d6cf",
+          "#c8102e",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "four towers with 18 lamps each, 2016"
+        },
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "platea stand of 1,500 seats built 2017; roof unverified"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1987",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Jardines_del_Kelito",
+          "what": "opened 1987, capacity 6,500, pitch 105 x 70 m, 2017 platea for 1,500, floodlights on four towers of 18 lamps from 2016"
+        }
+      ],
+      "notes": "Home of Club River Plate. Club colours red and white are suggestions only; stand colours were not confirmed. Small bowl compared with the other Asuncion stadiums."
+    },
+    "asuncion-osm-way-273246495": {
+      "venueId": "asuncion-osm-way-273246495",
+      "city": "asuncion",
+      "name": "Asuncion Paraguay Temple",
+      "archetype": "church-modern",
+      "subject": "the Latter-day Saint temple of 2002: a pale granite building with a single central spire topped by an angel statue",
+      "form": {
+        "footprint": "rect",
+        "width_m": 46,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "variant": "temple-single-spire"
+      },
+      "facade": {
+        "material": "granite",
+        "accent": null,
+        "colours": [
+          "#d9d9d4",
+          "#b9bbb6",
+          "#f2f2ee"
+        ],
+        "roofColour": "#9a9893",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "spire",
+          "count": 1,
+          "note": "single spire, total height about 22 m with the statue"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "angel Moroni on the spire"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2002",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asunci%C3%B3n_Paraguay_Temple",
+          "what": "Asa Branca Brazilian granite, light grey \"white gray\", single spire with Moroni statue, 71 ft (22 m) tall, 11,906 sq ft, \"classic modern\" design"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/273246495",
+          "what": "OSM footprint 46 x 30 m, start date 2002-05-19"
+        }
+      ],
+      "notes": "Spire and statue are the identifying mark. The main body is shorter (about 12 m) than the 22 m total."
+    },
+    "asuncion-osm-way-274352578": {
+      "venueId": "asuncion-osm-way-274352578",
+      "city": "asuncion",
+      "name": "Universidad Autonoma de Asuncion (UAA)",
+      "archetype": "campus-block",
+      "subject": "a ten-storey university tower block with stacked classroom floors in a curving plan",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 62,
+        "depth_m": 36,
+        "storeys": 10,
+        "height_m": 38,
+        "roof": "flat",
+        "variant": "university-tower"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#b9c7d0",
+          "#e1ddd2",
+          "#4e6678"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "membrane",
+        "windows": "ribbon",
+        "windowRatio": 0.5
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/678631909",
+          "what": "OSM building:levels=10, footprint about 62.5 x 35.5 m"
+        }
+      ],
+      "notes": "Levels and footprint measured; colours and curtain-wall treatment typed. The taller of the two campus venues."
+    },
+    "asuncion-osm-way-274541627": {
+      "venueId": "asuncion-osm-way-274541627",
+      "city": "asuncion",
+      "name": "Estadio Roberto Bettega",
+      "archetype": "stadium",
+      "subject": "a mid-size football ground opened in 2002 with a grass pitch and concrete terraces",
+      "form": {
+        "footprint": "rect",
+        "width_m": 150,
+        "depth_m": 116,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "none",
+        "variant": "club-ground"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#c9c5bb",
+          "#1f3f8f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2002",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Roberto_Bettega",
+          "what": "opened 2002, capacity 7,000, grass pitch 102 x 69 m, ex-home of Club Tacuary, sold 2014 and slated for demolition in 2018"
+        }
+      ],
+      "notes": "Wikipedia places this stadium in Zeballos Cue while the venue coordinates are further north near the airport, so identity could be a different ground; stands, floodlights and scoreboard are assumed."
+    },
+    "asuncion-osm-way-276186496": {
+      "venueId": "asuncion-osm-way-276186496",
+      "city": "asuncion",
+      "name": "Hospital de Trauma Prof. Dr. Manuel Giagni",
+      "archetype": "hospital",
+      "subject": "the national trauma hospital: an eight-storey concrete block with long window bands and an emergency ramp",
+      "form": {
+        "footprint": "H",
+        "width_m": 91,
+        "depth_m": 72,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "variant": "trauma-hospital",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e7e2d6",
+          "#a9a39a",
+          "#f6f4ee"
+        ],
+        "roofColour": "#8f9396",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1,
+          "note": "roof helipad assumed for a trauma centre; unverified"
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s-2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/relation/14744065",
+          "what": "OSM: building:levels=8, footprint 91 x 72 m, 4,771 m2"
+        }
+      ],
+      "notes": "Levels and footprint measured; finishes typed. Taller and squarer than Hospital de Clinicas."
+    },
+    "asuncion-osm-way-276233284": {
+      "venueId": "asuncion-osm-way-276233284",
+      "city": "asuncion",
+      "name": "Museo Nacional de Bellas Artes",
+      "archetype": "museum-theatre",
+      "subject": "a small two-storey neoclassical-style museum building with a pedimented entrance",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 17,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "variant": "small-museum"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#efe6c8",
+          "#b5a98a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "pediment",
+          "count": 1,
+          "note": "assumed; style unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "neoclassical",
+      "era": "19th-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Museo_Nacional_de_Bellas_Artes_de_Asunci%C3%B3n",
+          "what": "museum founded 1909, became national in 1939; the building description was not given"
+        }
+      ],
+      "notes": "The museum has moved buildings over time; the OSM footprint is only 21 x 17 m. Architecture not described in anything found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-osm-way-28439068": {
+      "venueId": "asuncion-osm-way-28439068",
+      "city": "asuncion",
+      "name": "Estadio Arsenio Erico",
+      "archetype": "stadium",
+      "subject": "Club Nacional's ground \"La Visera\" in Barrio Obrero: a compact bowl with a big cantilevered roof over the main stand and three smaller open stands",
+      "form": {
+        "footprint": "rect",
+        "width_m": 95,
+        "depth_m": 88,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none",
+        "variant": "club-ground",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d6cf",
+          "#1d3f8f",
+          "#c8102e"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "visor roof over the Preferencia stand (4,000 seats)"
+        },
+        {
+          "id": "floodlights",
+          "count": 4,
+          "note": "night games from 2013"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "1904 (rebuilt 2012-2022)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Arsenio_Erico",
+          "what": "opened 1904, nicknamed La Visera, capacity about 7,000 after 2012-14 works, stands: Preferencia 4,000, Norte 1,800, Sur 1,300 (2022), pitch 105 x 68 m, floodlights since 2013, further works from 2025"
+        }
+      ],
+      "notes": "The visor nickname implies a prominent roof, but its exact shape was not described. Tricolour blue, white and red is the Club Nacional colour set. Tighter, more enclosed than River Plate and Bettega."
+    },
+    "asuncion-osm-way-29045875": {
+      "venueId": "asuncion-osm-way-29045875",
+      "city": "asuncion",
+      "name": "Jardin Botanico y Zoologico de Asuncion",
+      "archetype": "park-landscape",
+      "subject": "the 275 ha botanical garden and zoo with 150-year-old trees, shown around the 1840s Lopez country house",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 220,
+        "depth_m": 160,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "none",
+        "variant": "botanic-garden"
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "timber",
+        "colours": [
+          "#f2eee3",
+          "#7a5230",
+          "#b5603f"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "Casa Alta, the 1840s Lopez country house, now a natural history museum"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 2,
+          "note": "animal enclosures"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "the tagua (Chaco peccary) emblem"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "colonial",
+      "era": "1840s house; garden 20th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Jard%C3%ADn_Bot%C3%A1nico_y_Zool%C3%B3gico_de_Asunci%C3%B3n",
+          "what": "275 ha natural forest, trees over 150 years old, Casa Lopez built 1840s as country house by Carlos Antonio Lopez, now a museum; about 70 species in the zoo; emblem is the tagua"
+        }
+      ],
+      "notes": "House colours inferred from the colonial type, not from a cited description. Forest-dominated: tall broadleaf canopy is the main look."
+    },
+    "asuncion-osm-way-316831439": {
+      "venueId": "asuncion-osm-way-316831439",
+      "city": "asuncion",
+      "name": "Instituto Nacional de Educacion Superior Dr. Raul Pena",
+      "archetype": "campus-block",
+      "subject": "a state teacher-training institute: low two-storey classroom wings around yards",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "gable",
+        "variant": "school",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#7aa05a",
+          "#ffffff"
+        ],
+        "roofColour": "#a65a3d",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM shows a 300 x 260 m institute site (4.8 ha); no building description found. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-osm-way-48488012": {
+      "venueId": "asuncion-osm-way-48488012",
+      "city": "asuncion",
+      "name": "VILLA UNIVERSITARIA",
+      "archetype": "campus-block",
+      "subject": "the Universidad Nacional de Asuncion campus in San Lorenzo: scattered faculty buildings and a central rectorate, shaded by trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 40,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "variant": "campus",
+        "wings": 3
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d1cdc2",
+          "#e8e1cf",
+          "#7a7770"
+        ],
+        "roofColour": "#9a9893",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Nacional_de_Asunci%C3%B3n",
+          "what": "main campus at Av. Mariscal Lopez in San Lorenzo, 14 faculties, Rectorado photo on Av. Espana; no building descriptions"
+        }
+      ],
+      "notes": "OSM area is 2.3 x 1.3 km (187 ha); only one typical faculty-block cluster modelled. Concrete mid-century faculty buildings assumed."
+    },
+    "asuncion-osm-way-752981298": {
+      "venueId": "asuncion-osm-way-752981298",
+      "city": "asuncion",
+      "name": "ecologica",
+      "archetype": "park-landscape",
+      "subject": "a small neighbourhood ecological park with lawn, trees and a walking path",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 49,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "pocket-park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e8e1cf",
+          "#7aa05a",
+          "#b5603f"
+        ],
+        "roofColour": "#b5603f",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "OSM only gives a leisure=park outline of 101 x 49 m, no other information. Typed from the city style and building type; no description of this specific building was found."
+    },
+    "asuncion-quiet-reflection": {
+      "venueId": "asuncion-quiet-reflection",
+      "city": "asuncion",
+      "name": "Santuario Virgen del Rosario",
+      "archetype": "church-classical",
+      "subject": "the Luque sanctuary: a long masonry church designed by Salesian architect Ernesto Vespignani, built 1928-1939",
+      "form": {
+        "footprint": "rect",
+        "width_m": 74,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 18,
+        "roof": "gable",
+        "variant": "sanctuary"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#ece3c9",
+          "#b5a98a",
+          "#ffffff"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "assumed; tower form unverified"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1939",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Luque_(Paraguay)",
+          "what": "new church started 1928 by Fr Pantaleon Garcia, plan by Italian priest-architect Ernesto Vespignani (1924), interrupted by the Chaco War, finished and blessed 30 July 1939"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/166748772",
+          "what": "OSM church footprint about 74 x 22 m, heritage church tag"
+        }
+      ],
+      "notes": "Dates, architect and size are sourced; the style label and tower are inferred. Different from the downtown cathedral: a longer, narrower nave and a 1930s date."
+    },
+    "asuncion-recreation": {
+      "venueId": "asuncion-recreation",
+      "city": "asuncion",
+      "name": "Parque Nu Guasu",
+      "archetype": "park-landscape",
+      "subject": "a 65 ha public park on the former airfield next to the airport: lakes, a 5 km running circuit, play areas and a Taiwanese-style pavilion on a lake island",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 280,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "lake-park"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e8e1cf",
+          "#c8332b",
+          "#7aa05a"
+        ],
+        "roofColour": "#b5603f",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "oriental gazebo on Plaza Taiwan island"
+        },
+        {
+          "id": "kiosk",
+          "count": 3,
+          "note": "cantinas"
+        },
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "lake"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "bridge to the island"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_%C3%91u_Guaz%C3%BA",
+          "what": "about 65 ha, 5 km walking circuit, 1.2 km cycle lane, football/volley/basketball/tennis courts, playgrounds, cantinas, food court of 1,445 m2, Plaza Taiwan on an island in the first lake with a 10 m bridge and oriental gazebo"
+        }
+      ],
+      "notes": "Open lawns, lakes and sports courts."
+    },
+    "asuncion-transit": {
+      "venueId": "asuncion-transit",
+      "city": "asuncion",
+      "name": "Linea 52",
+      "archetype": "transport-station",
+      "subject": "a roadside bus stop with a small shelter for the Linea 52 bus route",
+      "form": {
+        "footprint": "rect",
+        "width_m": 10,
+        "depth_m": 7,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "shed",
+        "variant": "bus-stop"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#c9c5bb",
+          "#2f6f4f",
+          "#ffffff"
+        ],
+        "roofColour": "#8a8f92",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 1
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [],
+      "notes": "A bus line, not a place. The nearest OSM building is a 10 x 7 m unnamed block, used for scale only. Typed from the city style and building type; no description of this specific building was found."
+    }
+  }
+}

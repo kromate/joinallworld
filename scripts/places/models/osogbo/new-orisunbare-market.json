@@ -1,0 +1,646 @@
+{
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Orisunbare_Market_Osogbo.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "ABORISADEADETONA",
+   "view": "street",
+   "file": "/tmp/places-evidence/osogbo/orisun.jpg",
+   "used": "market street edged by two-storey cream/yellow shop buildings with grey-brown hipped corrugated roofs, low shed-roofed lock-ups with deep eaves, crowds of large coloured umbrellas (purple, red, yellow, grey), grey asphalt road"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/1288600860",
+   "used": "containing-quality 65 x 8 m strip building: sized the long two-storey back block (56 x 8 m); U plan with a yard from the brief"
+  },
+  {
+   "kind": "wikidata",
+   "ref": "Q114125653",
+   "used": "New Orisunbare market, shopping centre in Osogbo"
+  }
+ ],
+ "camera": {
+  "yawDeg": 10,
+  "pitchDeg": 8,
+  "fovDeg": 55,
+  "aspect": 2.17
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "back-block",
+   "footprint": {
+    "rect": [
+     56,
+     8
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.6,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#d9c590",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bay": 4.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "bands": "#b9a070",
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e665a",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     8,
+     24
+    ]
+   },
+   "at": [
+    -24,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 7.2,
+   "storeys": 2,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#cfb989",
+    "windows": "punched",
+    "windowRatio": 0.14,
+    "plinth": 0.4,
+    "bay": 4.3,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    },
+    "pattern": {
+     "type": "balconies",
+     "faces": [
+      "front"
+     ]
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#6e665a",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     8,
+     24
+    ]
+   },
+   "at": [
+    24,
+    -2
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e6dcc0",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "plinth": 0.4,
+    "bay": 3.2,
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#6e665a",
+    "material": "corrugated",
+    "pitch": 20,
+    "overhang": 1.4,
+    "high": "back"
+   }
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -12,
+    -12,
+    0
+   ],
+   "params": {
+    "length": 24,
+    "depth": 3.4,
+    "height": 3.0,
+    "roof": "shed",
+    "unit_width": 2.4,
+    "veranda": 1.8,
+    "wall_colour": "#d9c590",
+    "roof_colour": "#8d8578",
+    "shutter_colours": [
+     "#5d6b72",
+     "#7b4f3a",
+     "#3d4f3f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.4,
+    "kind": "umbrella",
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#2f9a8a",
+     "#e8e8e0",
+     "#4a7a2f"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -14,
+    4,
+    0
+   ],
+   "params": {
+    "count": 8,
+    "pitch": 3.6,
+    "kind": "umbrella",
+    "colours": [
+     "#c0392b",
+     "#6a3a8a",
+     "#e8e8e0",
+     "#e0b030"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -34,
+    -16,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6fb8"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -30,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 7,
+    "count": 4,
+    "spacing": 20
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    38,
+    20,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 2,
+    "spread": 8
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    -6,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    0,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -22,
+    6,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    6,
+    -8,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    6,
+    -2,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    6,
+    4,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "stall-row",
+   "at": [
+    -8,
+    10,
+    0
+   ],
+   "params": {
+    "count": 9,
+    "pitch": 3.0,
+    "kind": "umbrella",
+    "size": 1.5,
+    "jitter": 0.6,
+    "colours": [
+     "#6a3a8a",
+     "#c0392b",
+     "#e0b030",
+     "#8a8d8e",
+     "#4a7a2f"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030",
+     "#3a63b0"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "market-shed",
+   "at": [
+    24,
+    -14,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "depth": 6,
+    "height": 3,
+    "goods": "sacks",
+    "roof_colour": "#6e665a"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "lock-up-row",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 40,
+    "depth": 3,
+    "height": 2.8,
+    "roof": "shed",
+    "unit_width": 2.2,
+    "veranda": 1.8,
+    "wall_colour": "#cdb98a",
+    "roof_colour": "#6e665a",
+    "awning_colours": [
+     "#c0392b",
+     "#6a3a8a",
+     "#e0b030"
+    ],
+    "goods_colours": [
+     "#d94f7a",
+     "#2f9a8a",
+     "#e0b030"
+    ]
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -34,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "width": 0.4,
+    "colour": "#5a5048"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    -12,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "width": 0.4,
+    "colour": "#5a5048"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    10,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "width": 0.4,
+    "colour": "#5a5048"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  },
+  {
+   "type": "sign-pole",
+   "at": [
+    32,
+    -24,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "width": 0.4,
+    "colour": "#5a5048"
+   },
+   "lod": [
+    0,
+    1
+   ]
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "extent": [
+   100,
+   70
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "osogbo",
+ "venueId": "new-orisunbare-market",
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "added dense umbrella rows, shed lock-ups, utility poles, shed market, grey-brown deep-eave roofs and balcony-free irregular openings dropped gate and blank boards; no goods piles/overhead wires/hand-painted signs, balconies not supported by mass, buildings still tidier than photo"
+ }
+}

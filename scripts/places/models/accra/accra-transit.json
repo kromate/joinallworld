@@ -1,0 +1,220 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "accra",
+ "venueId": "accra-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/17914757",
+   "used": "bus_station tag and a ~200 m site; the outline is the whole depot site, not a building, so only the program is used. No photo of the terminal found (nearby Commons photos show a bus and a rail car only)."
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ticket-office",
+   "footprint": {
+    "rect": [
+     26,
+     11
+    ]
+   },
+   "at": [
+    -22,
+    8
+   ],
+   "height": 4.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#eadfc2",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "plinth": 0.5,
+    "bands": "#2f6b3a",
+    "faces": {
+     "back": "plain",
+     "left": "plain",
+     "right": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8d9396",
+    "material": "metal-sheet",
+    "overhang": 1.2,
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "waiting-hall",
+   "footprint": {
+    "rect": [
+     12,
+     10
+    ]
+   },
+   "at": [
+    3,
+    8
+   ],
+   "height": 5.6,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e2d6b4",
+    "windows": "punched",
+    "windowRatio": 0.25,
+    "plinth": 0.4,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8d9396",
+    "material": "metal-sheet",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -6,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 9,
+    "height": 5.2,
+    "columns": 8,
+    "colour": "#8d9396",
+    "edgeColour": "#2f6b3a"
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    -4,
+    -17,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 60,
+    "depth": 6,
+    "height": 4.6,
+    "columns": 8,
+    "colour": "#9aa0a2",
+    "edgeColour": "#2f6b3a"
+   }
+  },
+  {
+   "type": "bus-park-row",
+   "at": [
+    -4,
+    -28,
+    0
+   ],
+   "params": {
+    "length": 56,
+    "kind": "coach",
+    "density": 0.8,
+    "colours": [
+     "#2f6b3a",
+     "#eadfc2",
+     "#c9d1d3"
+    ]
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    22,
+    -2,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#2f6b3a"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    26,
+    4,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "colour": "#d4a63a"
+   }
+  },
+  {
+   "type": "sign-board",
+   "at": [
+    -30,
+    14,
+    5
+   ],
+   "params": {
+    "width": 8,
+    "height": 2,
+    "colour": "#2f6b3a"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -34,
+    -22,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 4,
+    "spacing": 20
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -38,
+     18
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     34,
+     12
+    ]
+   }
+  ],
+  "extent": [
+   110,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo of the terminal found; layout (ticket block, long platform canopies, coach bays, kiosks) typed from the brief"
+ }
+}

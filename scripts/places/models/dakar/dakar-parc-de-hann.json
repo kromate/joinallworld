@@ -1,0 +1,395 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "dakar",
+ "venueId": "dakar-parc-de-hann",
+ "verified": "text",
+ "evidence": [],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no outline or building photo: layout is typical of a Dakar forest park (gate lodge, pavilions, fenced enclosures under tall shade trees), positions invented"
+ },
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 28,
+  "fovDeg": 50,
+  "aspect": 1.333,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "gate-lodge",
+   "footprint": {
+    "rect": [
+     9,
+     5
+    ]
+   },
+   "at": [
+    -9,
+    -30
+   ],
+   "height": 3.4,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#efe5cf",
+    "windows": "punched",
+    "windowRatio": 0.18,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8c9196",
+    "material": "corrugated",
+    "overhang": 0.6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    3,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 3.2,
+    "pillar": 0.9,
+    "leaf": "bars",
+    "colour": "#cf9a86"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -30,
+    -36,
+    0
+   ],
+   "params": {
+    "length": 50,
+    "height": 2.2,
+    "thickness": 0.3,
+    "kind": "wall",
+    "colour": "#cf9a86"
+   }
+  },
+  {
+   "type": "stadium/park-pavilion",
+   "at": [
+    -28,
+    4,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#8c9196"
+   }
+  },
+  {
+   "type": "stadium/park-pavilion",
+   "at": [
+    24,
+    12,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3,
+    "kind": "hip",
+    "roof_colour": "#8c9196"
+   }
+  },
+  {
+   "type": "market-open/kiosk",
+   "at": [
+    12,
+    -24,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "colour": "#2f6f4f"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 18,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#7a6a5c"
+   }
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    20,
+    -8,
+    0
+   ],
+   "params": {
+    "length": 14,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#7a6a5c"
+   },
+   "rotDeg": 90
+  },
+  {
+   "type": "core/fence-wall",
+   "at": [
+    -22,
+    26,
+    0
+   ],
+   "params": {
+    "length": 16,
+    "height": 2.2,
+    "thickness": 0.15,
+    "kind": "rail",
+    "colour": "#7a6a5c"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "path",
+   "lod": [
+    0,
+    1
+   ],
+   "params": {
+    "rect": [
+     3,
+     64
+    ],
+    "z0": 0.02,
+    "height": 0.04,
+    "colour": "#d8c7a6",
+    "windows": "none"
+   },
+   "at": [
+    0,
+    -2
+   ]
+  }
+ ],
+ "site": {
+  "ground": "sand",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "acacia",
+    "at": [
+     49,
+     -9
+    ],
+    "height": 9
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -15,
+     -37
+    ],
+    "height": 13
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -7
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -48,
+     5
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     -9
+    ],
+    "height": 16
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     8,
+     5
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     9,
+     12
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     7,
+     10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     30,
+     -3
+    ],
+    "height": 15
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -22,
+     25
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -46,
+     -17
+    ],
+    "height": 12
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     25,
+     -18
+    ],
+    "height": 16
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -9,
+     39
+    ],
+    "height": 10
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     -18,
+     -13
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -47,
+     -34
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -48,
+     17
+    ],
+    "height": 14
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -24,
+     -10
+    ],
+    "height": 14
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     48,
+     -12
+    ],
+    "height": 13
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -49,
+     23
+    ],
+    "height": 10
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -11,
+     35
+    ],
+    "height": 12
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -6,
+     4
+    ],
+    "height": 15
+   },
+   {
+    "kind": "palm",
+    "at": [
+     40,
+     -19
+    ],
+    "height": 12
+   },
+   {
+    "kind": "acacia",
+    "at": [
+     20,
+     -10
+    ],
+    "height": 11
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     -36,
+     -23
+    ],
+    "height": 11
+   }
+  ],
+  "extent": [
+   130,
+   100
+  ]
+ }
+}

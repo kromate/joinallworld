@@ -1,0 +1,238 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "birnin-kebbi",
+ "venueId": "deelad-place-birnin-kebbi",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/945505092",
+   "used": "10-point L-shaped hall outline about 32 x 30 m, nearest 1 m"
+  },
+  {
+   "kind": "text",
+   "url": "scripts/places/briefs/birnin-kebbi.json",
+   "used": "walled courtyard, hip roof in red-brown corrugated sheet, terrace"
+  }
+ ],
+ "camera": {
+  "yawDeg": 25,
+  "pitchDeg": 14,
+  "fovDeg": 45
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "hall",
+   "footprint": {
+    "osm": true,
+    "simplify": 0.6
+   },
+   "height": 5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#f2efe6",
+    "windows": "punched",
+    "windowRatio": 0.22,
+    "bay": 3.2,
+    "plinth": 0.6,
+    "bands": "#a98a63",
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#8a4a32",
+    "material": "corrugated",
+    "rise": 2.2,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "lean-to-veranda",
+   "at": [
+    0,
+    -22,
+    0
+   ],
+   "rotDeg": 0,
+   "params": {
+    "length": 18,
+    "depth": 2.6,
+    "eaveHeight": 3,
+    "attachHeight": 4,
+    "colour": "#a98a63",
+    "roofColour": "#8a4a32"
+   }
+  },
+  {
+   "type": "pergola",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "depth": 6,
+    "height": 2.8
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    24,
+    -6,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "table-set",
+   "at": [
+    27,
+    -9,
+    0
+   ],
+   "params": {
+    "chairs": 4,
+    "umbrella": true
+   }
+  },
+  {
+   "type": "prism",
+   "id": "signboard",
+   "at": [
+    -6,
+    -32,
+    0
+   ],
+   "params": {
+    "rect": [
+     4,
+     0.3
+    ],
+    "z0": 0,
+    "height": 3.2,
+    "colour": "#8d9296",
+    "topColour": "#8d9296"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      -34,
+      -34
+     ],
+     [
+      34,
+      -34
+     ],
+     [
+      34,
+      30
+     ],
+     [
+      -34,
+      30
+     ],
+     [
+      -34,
+      -34
+     ]
+    ],
+    "height": 2.0,
+    "thickness": 0.3,
+    "colour": "#a98a63"
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    0,
+    -34,
+    0
+   ],
+   "params": {
+    "width": 6,
+    "height": 3,
+    "colour": "#8d9296"
+   }
+  },
+  {
+   "type": "car",
+   "at": [
+    18,
+    -27,
+    0
+   ],
+   "params": {
+    "colour": "#d0d3d6",
+    "count": 2,
+    "spacing": 3.2
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    24,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    28,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 7
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    -28,
+    0
+   ],
+   "params": {
+    "kind": "acacia",
+    "height": 6
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "extent": [
+   90,
+   80
+  ]
+ },
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "no photo; typed hall, roof and terrace on real outline"
+ }
+}

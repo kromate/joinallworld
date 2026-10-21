@@ -129,6 +129,14 @@ export async function loadTrafficModels(): Promise<{ danfo: TrafficPart; cars: r
 }
 type TrafficPart = { geometry: THREE.BufferGeometry; material: THREE.Material };
 
+/**
+ * The venues' own LOD2 map icons (src/scene/places/icons.ts), planned for a city. It is reached from here, in the model library's lazy chunk, so the map's
+ * entry carries no import of it (the first download does not grow). Resolves null when the city has no place models. Never throws.
+ */
+export function planPlaceIcons(city: string): Promise<Awaited<ReturnType<typeof import('../../scene/places/icons.ts').planPlaceIcons>>> {
+  return import('../../scene/places/icons.ts').then(({ planPlaceIcons: plan }) => plan(city), () => null).catch(() => null);
+}
+
 /** Start fetching the trip vehicles' authored models (each file once), so a trip finds them already cached. Never throws. */
 export async function warmGlbVehicles(): Promise<void> {
   if (!source) return;

@@ -1,0 +1,299 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kigali",
+ "venueId": "kigali-kandt-house-museum",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Kandt_House_Museum_(8).jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Adygrafix250",
+   "view": "side",
+   "file": "/tmp/places-evidence/kigali/kandt-house-museum-0.jpg",
+   "used": "pink-peach stucco, red clay-tile hipped roofs, raised two-storey central block, long low veranda with brick piers and teal window frames, water tank"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Front_side_in_Richard_Kandt_museum.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Inezac",
+   "view": "front",
+   "file": "/tmp/places-evidence/kigali/kandt-house-museum-4.jpg",
+   "used": "veranda bays: brick piers, teal gridded glazing, low breeze-block balustrade between yellow piers, corrugated roof, upper storey window"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/173293813",
+   "used": "overall footprint size (about 34 m by 13 m, long axis laid along x)"
+  }
+ ],
+ "camera": {
+  "yawDeg": -20,
+  "pitchDeg": 8,
+  "fovDeg": 45,
+  "aspect": 1.333,
+  "margin": 0.1
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "ground-range",
+   "footprint": {
+    "rect": [
+     30,
+     9
+    ]
+   },
+   "at": [
+    0,
+    1
+   ],
+   "z0": 0,
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e7a3a8",
+    "windows": "none",
+    "plinth": 0.3,
+    "faces": {
+     "front": "punched"
+    },
+    "windowRatio": 0.45,
+    "glassColour": "#2f6f78"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4553a",
+    "material": "clay-tile",
+    "rise": 1.8,
+    "overhang": 1.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "upper-block",
+   "footprint": {
+    "rect": [
+     9,
+     6
+    ]
+   },
+   "at": [
+    -3,
+    2
+   ],
+   "z0": 3.6,
+   "height": 3.0,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#e7a3a8",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "glassColour": "#2f6f78"
+   },
+   "roof": {
+    "form": "hip",
+    "colour": "#a4553a",
+    "material": "clay-tile",
+    "rise": 1.2,
+    "overhang": 0.9
+   }
+  },
+  {
+   "type": "array",
+   "id": "brick-piers",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "mode": "line",
+    "start": [
+     -13,
+     -5.7,
+     0
+    ],
+    "end": [
+     13,
+     -5.7,
+     0
+    ],
+    "count": 6,
+    "of": [
+     {
+      "type": "prism",
+      "params": {
+       "rect": [
+        0.9,
+        0.9
+       ],
+       "height": 2.8,
+       "colour": "#a0522d"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "veranda-slab",
+   "params": {
+    "rect": [
+     30,
+     2.4
+    ],
+    "height": 0.3,
+    "colour": "#b9b4a8"
+   },
+   "at": [
+    0,
+    -5.2,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "breeze-wall",
+   "params": {
+    "rect": [
+     8,
+     0.4
+    ],
+    "height": 0.9,
+    "colour": "#e6b266"
+   },
+   "at": [
+    -9,
+    -8,
+    0
+   ]
+  },
+  {
+   "type": "prism",
+   "id": "water-tank",
+   "params": {
+    "radius": 1.6,
+    "n": 12,
+    "height": 2.6,
+    "colour": "#1d2023"
+   },
+   "at": [
+    -19,
+    -6,
+    0
+   ]
+  },
+  {
+   "type": "mass",
+   "id": "veranda-roof",
+   "footprint": {
+    "rect": [
+     30,
+     3
+    ]
+   },
+   "at": [
+    0,
+    -5.8
+   ],
+   "z0": 2.6,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "stucco",
+    "colour": "#8a8580",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#a4553a",
+    "material": "clay-tile",
+    "rise": 0.8,
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "veranda-glazing",
+   "footprint": {
+    "rect": [
+     28,
+     0.5
+    ]
+   },
+   "at": [
+    0,
+    -3.6
+   ],
+   "z0": 0.3,
+   "height": 2.5,
+   "storeys": 1,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#2f8a90",
+    "windows": "curtain",
+    "glassColour": "#2f8a90",
+    "windowRatio": 0.7
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#2f8a90"
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "garden",
+  "extent": [
+   50,
+   40
+  ],
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -14,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     15,
+     -9
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     18,
+     -11
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -16,
+     -11
+    ]
+   },
+   {
+    "kind": "palm",
+    "at": [
+     20,
+     8
+    ]
+   }
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "veranda roof tier simplified to a thin shed, glazing not gridded, upper block roof still a hip, palm shrubs are generic trees"
+ }
+}

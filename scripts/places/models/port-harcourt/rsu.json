@@ -1,0 +1,297 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "port-harcourt",
+ "venueId": "rsu",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Rivers_state_university,_Port_Harcourt.jpg",
+   "licence": "CC BY-SA 4.0",
+   "author": "Umasoyee",
+   "view": "street",
+   "file": "/tmp/places-evidence/port-harcourt/rsu.jpg",
+   "used": "campus buildings seen across a field: low cream-yellow blocks with shallow grey mono-pitch roofs, grey boundary fence, red-white mast behind"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/761720582",
+   "used": "site scale only; main OSM slab not used because the photo shows several separate low blocks"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 3,
+  "fovDeg": 55,
+  "aspect": 1.333,
+  "margin": 0.12
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "block-a",
+   "footprint": {
+    "rect": [
+     30,
+     11
+    ]
+   },
+   "at": [
+    -30,
+    6
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d890",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-b",
+   "footprint": {
+    "rect": [
+     24,
+     11
+    ]
+   },
+   "at": [
+    8,
+    10
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d890",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-c",
+   "footprint": {
+    "rect": [
+     20,
+     10
+    ]
+   },
+   "at": [
+    40,
+    0
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d890",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-d",
+   "footprint": {
+    "rect": [
+     26,
+     10
+    ]
+   },
+   "at": [
+    -10,
+    34
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.5,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d890",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "block-e",
+   "footprint": {
+    "rect": [
+     16,
+     9
+    ]
+   },
+   "at": [
+    28,
+    30
+   ],
+   "rotDeg": 0,
+   "z0": 0,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8d890",
+    "windows": "punched",
+    "windowRatio": 0.1,
+    "plinth": 0.3
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#7d8387",
+    "material": "metal-sheet",
+    "pitch": 4,
+    "overhang": 0.1
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    0,
+    -20,
+    0
+   ],
+   "params": {
+    "length": 110,
+    "height": 2.4,
+    "thickness": 0.15,
+    "kind": "wall",
+    "colour": "#8a9094"
+   }
+  },
+  {
+   "type": "loft",
+   "at": [
+    -5,
+    46,
+    0
+   ],
+   "params": {
+    "sections": [
+     {
+      "z": 0,
+      "rect": [
+       1.4,
+       1.4
+      ],
+      "colour": "#cc2a2a"
+     },
+     {
+      "z": 9,
+      "rect": [
+       1.0,
+       1.0
+      ],
+      "colour": "#f2f2f2"
+     },
+     {
+      "z": 18,
+      "rect": [
+       0.6,
+       0.6
+      ],
+      "colour": "#cc2a2a"
+     }
+    ]
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -60,
+     -10
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     60,
+     -12
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     -62,
+     30
+    ],
+    "height": 11
+   },
+   {
+    "kind": "palm",
+    "at": [
+     62,
+     28
+    ],
+    "height": 12
+   },
+   {
+    "kind": "palm",
+    "at": [
+     0,
+     -14
+    ],
+    "height": 10
+   }
+  ],
+  "extent": [
+   150,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "Distant field view: several separate low cream blocks, grey fence, red-white mast and palms now match; exact block layout, roof pitch directions and fence breaks are approximated"
+ }
+}

@@ -1,0 +1,1546 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "umuahia",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "umuahia",
+    "climate": "rainforest",
+    "vernacular": "Abia State capital and former Biafran capital on the Port Harcourt-Enugu rail line, with colonial railway-era brick and corrugated-roof buildings, and newer state-built government blocks in cream and white painted-render around Ogurube, plus 1-3 storey shops and houses with rust and green metal roofs, red laterite earth, oil palms and broadleaf trees under a monsoon climate.",
+    "wallColours": [
+      "#efe6d0",
+      "#f5f2ea",
+      "#c9d4b8",
+      "#b9c9d6",
+      "#b5654a",
+      "#aaa9a3"
+    ],
+    "roofColours": [
+      "#8a3b2e",
+      "#4f6b55",
+      "#6b6f73",
+      "#7b5a3c"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "exposed-concrete",
+      "laterite"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete",
+      "clay-tile"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "palm",
+      "broadleaf"
+    ],
+    "ornament": "Pillared porches and balustraded balconies on Igbo storey houses; painted murals and uli-style motifs; colonial-era railway brick and verandas; Biafran war memorials, bunkers and displayed weapons; large Pentecostal and mission churches with gable fronts and towers.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Umuahia",
+        "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+      }
+    ]
+  },
+  "places": {
+    "abia-state-government-house": {
+      "venueId": "abia-state-government-house",
+      "city": "umuahia",
+      "name": "Abia State Government House",
+      "archetype": "civic-palace",
+      "subject": "The governor's seat on Library Avenue, Afara: a wide two-storey cream rendered building with a central portico and flagpoles behind a gated fence wall",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 30,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f4efe0",
+          "#b0a58a",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://allafrica.com/stories/202603300725.html",
+          "what": "new Ogurube Government House unfinished (first floor done), plan to convert to hotel; seat remains on Library Avenue, Afara"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. News sources place the working seat on Library Avenue, Afara and describe a separate unfinished new Government House at Ogurube; neither is described visually. Deliberately smaller than the unfinished Ogurube complex."
+    },
+    "abia-state-house-of-assembly": {
+      "venueId": "abia-state-house-of-assembly",
+      "city": "umuahia",
+      "name": "Abia State House of Assembly",
+      "archetype": "civic-palace",
+      "subject": "The legislature: a two-storey white rendered chamber block with a rounded central drum, wide steps and a flag forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 65,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f7f4ee",
+          "#9fb4c2",
+          "#c9c4b6"
+        ],
+        "roofColour": "#aaa9a3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://allafrica.com/stories/202603300725.html",
+          "what": "new Ogurube Government House unfinished (first floor done), plan to convert to hotel; seat remains on Library Avenue, Afara"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Sources say the Legislature, Judiciary and workers' secretariat cluster around Ogurube; appearance not described."
+    },
+    "abia-state-secretariat": {
+      "venueId": "abia-state-secretariat",
+      "city": "umuahia",
+      "name": "Abia State Secretariat",
+      "archetype": "civic-palace",
+      "subject": "The workers' secretariat: tall ministry blocks of cream rendered concrete joined by walkways around a car-park forecourt",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#ece6d6",
+          "#6e8aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 8
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://allafrica.com/stories/202603300725.html",
+          "what": "new Ogurube Government House unfinished (first floor done), plan to convert to hotel; seat remains on Library Avenue, Afara"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Wikipedia lists an \"Abia State Tower\" among Umuahia landmarks which may be this complex; height here is a cautious mid-rise estimate."
+    },
+    "afrikana-flavors-umuahia": {
+      "venueId": "afrikana-flavors-umuahia",
+      "city": "umuahia",
+      "name": "Afrikana Flavors Umuahia",
+      "archetype": "restaurant",
+      "subject": "A restaurant: a modern single-storey cafe with a glazed front, a canopy and a dining veranda in cream and a warm accent colour",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ead8",
+          "#a05a40",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Modern cafe-style, contrasted with the native-style De Native."
+    },
+    "all-saints-cathedral-umuahia": {
+      "venueId": "all-saints-cathedral-umuahia",
+      "city": "umuahia",
+      "name": "All Saints Cathedral",
+      "archetype": "church-gothic",
+      "subject": "An Anglican cathedral: a long cream rendered nave with lancet windows, buttresses and a tall entrance bell tower with a short spire",
+      "form": {
+        "footprint": "rect",
+        "width_m": 38,
+        "depth_m": 16,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#eadfc4",
+          "#8a6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "pointed-arch",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "spire",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 6
+        },
+        {
+          "id": "stained-glass",
+          "count": 4
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "gothic-revival",
+      "era": "1950s-90s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed from the Anglican cathedral tradition; Wikipedia names a different cathedral (Mater Dei) for Umuahia."
+    },
+    "apumiri-council-headquarters": {
+      "venueId": "apumiri-council-headquarters",
+      "city": "umuahia",
+      "name": "Apumiri council headquarters",
+      "archetype": "civic-small",
+      "subject": "A local council secretariat: a single-storey long cream building with a hipped metal roof, a small central porch, flagpoles and a gate",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#9aa89a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a local council headquarters."
+    },
+    "college-of-nursing-amachara": {
+      "venueId": "college-of-nursing-amachara",
+      "city": "umuahia",
+      "name": "College of Nursing Sciences, Amachara, Abia State",
+      "archetype": "campus-block",
+      "subject": "A nursing school campus: two L-arranged two-storey classroom and hostel ranges with long balconies around a lawn",
+      "form": {
+        "footprint": "L",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#7d8b6e",
+          "#ffffff"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Larger, spread out and L-shaped, versus the compact block of the Umuahia town campus."
+    },
+    "college-of-nursing-umuahia": {
+      "venueId": "college-of-nursing-umuahia",
+      "city": "umuahia",
+      "name": "College of Nursing Sciences, Umuahia, Abia State",
+      "archetype": "campus-block",
+      "subject": "A compact nursing school: a single three-storey rendered block with a central stair tower and ribbon windows next to the hospital",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#6e8aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Near the Federal Medical Centre side of town."
+    },
+    "de-native-restaurant-umuahia": {
+      "venueId": "de-native-restaurant-umuahia",
+      "city": "umuahia",
+      "name": "De Native Restaurant Umuahia",
+      "archetype": "restaurant",
+      "subject": "A native-style restaurant: a wide open pavilion under a thatched-look hip roof with timber posts, mud-coloured walls and umbrellas",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 14,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "timber",
+        "colours": [
+          "#c9a77c",
+          "#7b5a3c",
+          "#efe6d0"
+        ],
+        "roofColour": "#8a6a3c",
+        "roofMaterial": "thatch",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. The name implies a traditional/native-themed eatery; the thatch-style roof is an inference."
+    },
+    "fmc-umuahia": {
+      "venueId": "fmc-umuahia",
+      "city": "umuahia",
+      "name": "Federal Medical Centre, Umuahia",
+      "archetype": "hospital",
+      "subject": "A federal tertiary hospital: a long four-storey rendered main block with wings, an emergency canopy and an ambulance bay",
+      "form": {
+        "footprint": "H",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#7aa098",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1980s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Listed by Wikipedia among Umuahia landmarks; appearance not described."
+    },
+    "living-faith-church-umuahia": {
+      "venueId": "living-faith-church-umuahia",
+      "city": "umuahia",
+      "name": "Living Faith Church",
+      "archetype": "church-modern",
+      "subject": "A Pentecostal auditorium: a very wide gabled hall with a tall glazed frontal gable, a canopy and car park",
+      "form": {
+        "footprint": "rect",
+        "width_m": 50,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 15,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f5f2ea",
+          "#7d6a9a",
+          "#d0d0d0"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "metal-sheet",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Typed as a large Pentecostal auditorium; larger than a parish church."
+    },
+    "lux-mundi-university": {
+      "venueId": "lux-mundi-university",
+      "city": "umuahia",
+      "name": "Lux Mundi University, Umuahia",
+      "archetype": "campus-block",
+      "subject": "A private university: a three-storey rendered administration and lecture block with a central entrance portico and flagpoles",
+      "form": {
+        "footprint": "rect",
+        "width_m": 55,
+        "depth_m": 22,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#f1ead8",
+          "#8a6a4a",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Private (Catholic-associated) university; appearance not described."
+    },
+    "national-gallery-art-museum-umuahia": {
+      "venueId": "national-gallery-art-museum-umuahia",
+      "city": "umuahia",
+      "name": "National Gallery of Art, Umuahia",
+      "archetype": "museum-theatre",
+      "subject": "A state gallery: a modest two-storey rendered building with a glazed entrance bay, a mural panel and a small sculpture garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 18,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe6d0",
+          "#6e8aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#aaa9a3",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Federal gallery office; appearance not described."
+    },
+    "national-war-museum-umuahia": {
+      "venueId": "national-war-museum-umuahia",
+      "city": "umuahia",
+      "name": "National War Museum, Umuahia",
+      "archetype": "museum-theatre",
+      "subject": "The museum at Amafor Isingwu: a low museum building with galleries beside a large lawn of displayed tanks, cannons and a ship, aircraft hangars and the stairway down to the Voice of Biafra bunker",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 20,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8dfc8",
+          "#7d8b6e",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "cannon",
+          "count": 6,
+          "note": "artillery on the lawn"
+        },
+        {
+          "id": "sheds",
+          "count": 2,
+          "note": "aircraft hangars"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "long stair to bunker"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "small transmitter building"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1980s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://thingsnigeria.com/2019/04/05/nigeria-war-museum-displays-tools-of-a-grim-harvest/",
+          "what": "indoor galleries plus outdoor display of aircraft, warships, tanks, artillery; Ogbunigwe mines; poorly maintained"
+        },
+        {
+          "url": "https://showcaves.com/english/ng/subterranea/VoiceOfBiafra.html",
+          "what": "long stairway down into bunker, portraits on walls, small announcer room, shortwave transmitter in small surface building, lawn with cannons/tanks, hangars with fighter planes"
+        }
+      ],
+      "notes": "Layout (indoor galleries, outdoor lawn with tanks, cannons, aircraft and a ship, hangars, small transmitter building, bunker stairway) is sourced; the museum building itself is not described, so wall colours and roof are estimated. Opening date given as 1975 or 1985 by different sources."
+    },
+    "ojukwu-bunker": {
+      "venueId": "ojukwu-bunker",
+      "city": "umuahia",
+      "name": "Ojukwu's Bunker",
+      "archetype": "heritage-fort",
+      "subject": "Ojukwu's bunker: a low concrete entrance building at ground level with a long staircase descending to underground rooms, set on a mown lawn with a few displayed war relics",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": null,
+        "colours": [
+          "#a7a59d",
+          "#5a5a55",
+          "#c9c4b6"
+        ],
+        "roofColour": "#8a8a82",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "long stairway down to the bunker"
+        },
+        {
+          "id": "cannon",
+          "count": 2
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "1967-69",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://showcaves.com/english/ng/subterranea/VoiceOfBiafra.html",
+          "what": "long stairway down into bunker, portraits on walls, small announcer room, shortwave transmitter in small surface building, lawn with cannons/tanks, hangars with fighter planes"
+        }
+      ],
+      "notes": "The bunker is described as a long stairway down to a small announcer room for Voice of Biafra, with portraits on the walls; surface structure and materials are not described and the bunker described is below the National War Museum, ~2 km from this pin. Modelled as a small concrete entrance building."
+    },
+    "old-umuahia-train-station": {
+      "venueId": "old-umuahia-train-station",
+      "city": "umuahia",
+      "name": "Old Umuahia Train Station",
+      "archetype": "transport-station",
+      "subject": "The colonial-era rail station on the Port Harcourt-Enugu line: a single-storey red-brick station building with a long hipped platform canopy, veranda posts and two tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "red-brick",
+        "accent": "painted-render",
+        "colours": [
+          "#a8553f",
+          "#efe6d0",
+          "#ffffff"
+        ],
+        "roofColour": "#7b5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "clock-tower",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1910s-1920s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Umuahia is a railway centre on the Port Harcourt-Enugu line (Wikipedia). Station building itself is not described; typed as a colonial Nigerian Railway station and may be derelict."
+    },
+    "orie-ugba-market": {
+      "venueId": "orie-ugba-market",
+      "city": "umuahia",
+      "name": "Orie Ugba Market",
+      "archetype": "market-open",
+      "subject": "A traditional market: densely packed tin-roofed stalls and umbrellas in a laterite yard with a few two-storey lock-up shops at the road front",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "metal-cladding",
+        "accent": null,
+        "colours": [
+          "#b5654a",
+          "#8a8d90",
+          "#efe6d0"
+        ],
+        "roofColour": "#7b5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 18
+        },
+        {
+          "id": "sheds",
+          "count": 7
+        },
+        {
+          "id": "umbrellas",
+          "count": 10
+        },
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Orie is an Igbo market day; Umuahia is an agricultural market centre (Wikipedia)."
+    },
+    "township-stadium-umuahia": {
+      "venueId": "township-stadium-umuahia",
+      "city": "umuahia",
+      "name": "Township Stadium, Umuahia",
+      "archetype": "stadium",
+      "subject": "The town football stadium: a worn concrete bowl with one roofed main stand, terraced banks and a pair of floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 140,
+        "depth_m": 110,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcac0",
+          "#8a8d90",
+          "#ffffff"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1970s-80s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Smaller than the Dan Anyiam Stadium in Owerri."
+    },
+    "ubani-modern-market": {
+      "venueId": "ubani-modern-market",
+      "city": "umuahia",
+      "name": "Ubani Modern Market",
+      "archetype": "market-hall",
+      "subject": "A purpose-built \"modern market\": a long two-storey block of lock-up shops with arched fronts under a continuous green metal roof around a covered central yard",
+      "form": {
+        "footprint": "ring",
+        "width_m": 90,
+        "depth_m": 60,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#efe6d0",
+          "#4f6b55",
+          "#b5654a"
+        ],
+        "roofColour": "#4f6b55",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "lock-ups",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. \"Modern market\" implies a government-built lock-up complex; more orderly than the traditional Orie Ugba."
+    },
+    "ulo-ama-umuochoko-park": {
+      "venueId": "ulo-ama-umuochoko-park",
+      "city": "umuahia",
+      "name": "Ulo ama Umuochoko",
+      "archetype": "park-landscape",
+      "subject": "A village civic park: a traditional-style open meeting hall (ulo ama) with a hip roof on posts amid lawns, big shade trees and a gate",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 70,
+        "depth_m": 50,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "mud-render",
+        "accent": "timber",
+        "colours": [
+          "#c9a77c",
+          "#7b5a3c",
+          "#efe6d0"
+        ],
+        "roofColour": "#7b5a3c",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Ulo ama means \"village hall\" in Igbo; typed as a community hall with grounds."
+    },
+    "umuahia-ibeku-station": {
+      "venueId": "umuahia-ibeku-station",
+      "city": "umuahia",
+      "name": "Umuahia - Ibeku Station",
+      "archetype": "transport-station",
+      "subject": "A bus park: an open yard of parked buses and vans with a long tin-roofed ticketing shed and market stalls along the edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfcac0",
+          "#8a8d90",
+          "#efe6d0"
+        ],
+        "roofColour": "#6b6f73",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 8
+        },
+        {
+          "id": "sheds",
+          "count": 2
+        },
+        {
+          "id": "kiosk",
+          "count": 4
+        },
+        {
+          "id": "signage-board",
+          "count": 2,
+          "note": "blank"
+        },
+        {
+          "id": "platform-canopy",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Wikipedia lists a Central Bus Terminal among Umuahia sites; this is a motor park."
+    },
+    "umuchukwu-microfinance-bank": {
+      "venueId": "umuchukwu-microfinance-bank",
+      "city": "umuahia",
+      "name": "Umuchukwu Microfinance Bank Limited",
+      "archetype": "office-low",
+      "subject": "A microfinance bank: a small two-storey cream rendered building with a glazed ground floor, a canopy and a fenced forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1ead8",
+          "#6e8aa0",
+          "#ffffff"
+        ],
+        "roofColour": "#8a3b2e",
+        "roofMaterial": "corrugated",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. Two-storey with a hip roof."
+    },
+    "uvuoma-microfinance-bank": {
+      "venueId": "uvuoma-microfinance-bank",
+      "city": "umuahia",
+      "name": "Uvuoma Microfinance Bank Limited",
+      "archetype": "office-low",
+      "subject": "A microfinance bank: a single-storey pale-green rendered bungalow with a flat roof, a small porch and a blank sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 14,
+        "depth_m": 10,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#c9d4b8",
+          "#8a8d90",
+          "#ffffff"
+        ],
+        "roofColour": "#8c9096",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Umuahia",
+          "what": "Umuahia: railway/agricultural centre, tropical monsoon climate, landmark list"
+        }
+      ],
+      "notes": "Not individually documented in findable sources; typed from the city style and place type. A one-storey branch; differs from the Umuchukwu branch."
+    }
+  }
+}

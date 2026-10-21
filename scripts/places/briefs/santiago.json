@@ -1,0 +1,1614 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "santiago",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "santiago",
+    "climate": "mediterranean",
+    "vernacular": "Grid of continuous 1-3 storey rendered houses in cream, ochre and pastel with clay-tile or zinc roofs and barred windows in older barrios; brick and concrete 4-8 storey apartment blocks with balconies across the middle city; glass office towers in Providencia and Las Condes; wide avenues under plane trees and the snowy Andes as a constant backdrop; large suburban malls and low estates in the south and west.",
+    "wallColours": [
+      "#e6d9c0",
+      "#c9b08a",
+      "#b5714f",
+      "#a8a8a2",
+      "#e9e5da",
+      "#d6b9a0",
+      "#9cb2c2"
+    ],
+    "roofColours": [
+      "#a5513a",
+      "#7d7f80",
+      "#5f5f63",
+      "#c9c4b8"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "brick",
+      "concrete",
+      "glass-curtain",
+      "stucco"
+    ],
+    "roofMaterials": [
+      "clay-tile",
+      "metal-sheet",
+      "concrete",
+      "corrugated"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm",
+      "conifer"
+    ],
+    "ornament": "Neoclassical pilasters and cornices around the Plaza de Armas and La Moneda (Toesca), colonial adobe churches with tiled roofs, continuous-facade French-influenced streets, large murals on blank walls, and raw-concrete modernist and brutalist civic and religious buildings of the 1950s-70s.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Santiago",
+        "what": "19th-century neoclassical core, colonial adobe and tile-roofed one/two-storey houses with patios, Toesca buildings, modernist civic district, Sanhattan towers, Mediterranean-semi-arid climate, Andes backdrop"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Mallplaza",
+        "what": "American 1960s shopping-mall style of the first Plaza Vespucio (1990); food court faces the Andes"
+      },
+      {
+        "url": "https://es.wikipedia.org/wiki/Templo_Votivo_de_Maip%C3%BA",
+        "what": "brutalist concrete votive temple 1948-1974 as an example of the modernist religious style"
+      }
+    ]
+  },
+  "places": {
+    "santiago-airport-santiago-airport": {
+      "venueId": "santiago-airport-santiago-airport",
+      "city": "santiago",
+      "name": "Comodoro Arturo Merino Benitez International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The 2022 new International Terminal (T2): a very large glass-fronted processor building with four long piers (C, D, E, F), each with its own colour palette",
+      "form": {
+        "footprint": "T",
+        "width_m": 366,
+        "depth_m": 310,
+        "storeys": 3,
+        "height_m": 22,
+        "roof": "wave",
+        "wings": 4
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d9dfe3",
+          "#3a5f7a",
+          "#f2f2f0"
+        ],
+        "roofColour": "#e3e4e1",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 42,
+          "note": "piers C 10, D 10, E 12, F 10 boarding bridges"
+        },
+        {
+          "id": "curved-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "2018-2022",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arturo_Merino_Ben%C3%ADtez_International_Airport",
+          "what": "new International Terminal over 200,000 m2, USD 900M, built Aug 2016 to Mar 2021; central processor with four piers: C 10 bridges (green, Easter Island), D 10 (warm, Atacama), E 12 (blue, Los Lagos), F 10 (cool, Patagonia); older T1 domestic is four levels, 1994 terminal inspired by Marseille airport"
+        }
+      ],
+      "notes": "OSM terminal polygon: Terminal 2 Internacional, started 2022, 366x310 m. The wave-like roof and glass frontage are from general knowledge of the new terminal; the piers are the long arms. T1 domestic terminal is separate (35,983 m2)."
+    },
+    "santiago-clinic": {
+      "venueId": "santiago-clinic",
+      "city": "santiago",
+      "name": "Air Force Clinical Hospital General Doctor Raul Yazigi",
+      "archetype": "hospital",
+      "subject": "The Air Force (FACh) Clinical Hospital in Las Condes, a mid-rise 1958 hospital block with later extensions",
+      "form": {
+        "footprint": "rect",
+        "width_m": 103,
+        "depth_m": 80,
+        "storeys": 6,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e3dfd2",
+          "#5b7e9e",
+          "#f4f2ec"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1958",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Cl%C3%ADnico_de_la_Fuerza_A%C3%A9rea_de_Chile",
+          "what": "Wikidata Q38043630: hospital in Santiago, inception 1958; OSM footprint 103x80 m"
+        }
+      ],
+      "notes": "No appearance description found; storeys and colours are typed from a 1950s Chilean hospital block with later additions."
+    },
+    "santiago-community-notices": {
+      "venueId": "santiago-community-notices",
+      "city": "santiago",
+      "name": "Consejo Nacional de Television",
+      "archetype": "civic-small",
+      "subject": "The CNTV office: a small three-storey converted house/villa in Providencia/Nunoa",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 17,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ebe0c8",
+          "#8a5a44",
+          "#f6f3ea"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Consejo_Nacional_de_Televisi%C3%B3n_de_Chile",
+          "what": "Wikidata Q5783912: agency of Chilean government, established 1970; OSM house with 3 levels, 21x17 m"
+        }
+      ],
+      "notes": "Only the footprint and level count (house, 3 levels) are measured. Typed villa-style office with a low hip roof behind a front fence."
+    },
+    "santiago-community-voting-game": {
+      "venueId": "santiago-community-voting-game",
+      "city": "santiago",
+      "name": "Ilustre Municipalidad de La Pintana",
+      "archetype": "civic-small",
+      "subject": "The La Pintana town hall, set in the restored late-19th-century casona patronal (the former Costabal Zegers country house) beside a civic plaza",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#efe3c7",
+          "#7d4f3b",
+          "#f7f3ea"
+        ],
+        "roofColour": "#a5513a",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "late 19th century",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_C%C3%ADvico_de_La_Pintana",
+          "what": "municipality occupies a late-19th-century casona patronal (summer residence of the Costabal Zegers family until the 1950s) acquired in the 1980s; civic centre also includes Plaza de Armas, Plaza Civica, municipal stadium, culture house and theatre on Av Santa Rosa"
+        }
+      ],
+      "notes": "The casona is the recognisable part: a single-storey hacienda-style house with a veranda corridor and a tile hip roof; newer municipal wings are behind it. The civic district footprint (188x117 m) is much bigger than the house. Colours are guessed."
+    },
+    "santiago-community-workshop": {
+      "venueId": "santiago-community-workshop",
+      "city": "santiago",
+      "name": "Escuela de Especialidades Sargento 1.o Adolfo Menadier Rojas",
+      "archetype": "campus-block",
+      "subject": "The FACh specialities school at El Bosque air base: low flat-roofed classroom and barracks blocks and a workshop shed",
+      "form": {
+        "footprint": "rect",
+        "width_m": 66,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e4e0d4",
+          "#3a5f7a",
+          "#f2f0e8"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Base_A%C3%A9rea_El_Bosque",
+          "what": "context: Chilean Air Force base at El Bosque; OSM has only a 66x9 m roof canopy at this point"
+        }
+      ],
+      "notes": "The matching building is unclear (nearest OSM feature is a long canopy). Typed institutional barrack/classroom block painted white and blue."
+    },
+    "santiago-market-game": {
+      "venueId": "santiago-market-game",
+      "city": "santiago",
+      "name": "Mall Plaza Vespucio",
+      "archetype": "mall",
+      "subject": "Mall Plaza Vespucio in La Florida, the 1990 original of the chain: a very large 1960s-US-style three-level mall with a food court facing the Andes and big car parks",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 392,
+        "depth_m": 330,
+        "storeys": 3,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dfd0",
+          "#7c8fa8",
+          "#f4f2ec"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "membrane",
+        "windows": "none",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "postmodern",
+      "era": "1990, expanded to 2020s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Mallplaza",
+          "what": "opened 24 Aug 1990 as Plaza Vespucio; first Mallplaza; architecture resembled 1960s American shopping centres; department stores, hypermarket, food court (second largest in Santiago) facing the Andes, cinema, bowling, concert hall; OSM: 3 levels, 392x330 m"
+        }
+      ],
+      "notes": "Levels and size measured; colours are neutral guesses (brand colours deliberately avoided). Sprawling blank-walled boxes with large entrance bays surrounded by a sea of parking."
+    },
+    "santiago-meal-stop": {
+      "venueId": "santiago-meal-stop",
+      "city": "santiago",
+      "name": "Pizza Pizza",
+      "archetype": "restaurant",
+      "subject": "A tiny single-storey Pizza Pizza takeaway restaurant building in Pudahuel",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8.4,
+        "depth_m": 7.6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#f1ead8",
+          "#c9453a",
+          "#ffffff"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Pizza_Pizza",
+          "what": "chain tag on the OSM building; footprint 8.4x7.6 m"
+        }
+      ],
+      "notes": "A blank sign board only: no logos. Small stand-alone restaurant pad in a car park; everything except the footprint is typed."
+    },
+    "santiago-osm-node-3372723745": {
+      "venueId": "santiago-osm-node-3372723745",
+      "city": "santiago",
+      "name": "Un lugar para la memoria (Memorial Tres Sillas)",
+      "archetype": "monument",
+      "subject": "A small human-rights memorial (Tres Sillas) near Pudahuel: three chair-like sculptures on a paved memorial plot",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 3.5,
+        "roof": "none",
+        "variant": "memorial-sculptures"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#bdb8ac",
+          "#6f6b62",
+          "#e7e2d6"
+        ],
+        "roofColour": "#bdb8ac",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "three chair-like sculptures (typed from the name)"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Pudahuel",
+          "what": "location context only; no page describing this memorial was found"
+        }
+      ],
+      "notes": "Nothing found beyond the name; three chairs is an inference from \"Tres Sillas\". Keep it tiny and abstract."
+    },
+    "santiago-osm-node-6938501880": {
+      "venueId": "santiago-osm-node-6938501880",
+      "city": "santiago",
+      "name": "Museo de la Vivienda Tradicional Local",
+      "archetype": "museum-theatre",
+      "subject": "Ruca Traro Lafkenche: a small Mapuche ruca (traditional dwelling) displayed as a museum of local traditional housing in Vitacura",
+      "form": {
+        "footprint": "oval",
+        "width_m": 9,
+        "depth_m": 6.2,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "hip",
+        "variant": "ruca-hut"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8b6a43",
+          "#6a4c2e",
+          "#b99a68"
+        ],
+        "roofColour": "#b69c5a",
+        "roofMaterial": "thatch",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "traditional",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Ruca",
+          "what": "a ruca is a Mapuche timber-frame house with a steeply sloped thatch roof reaching nearly to the ground; OSM hut \"Ruca Traro Lafkenche\", 9x6.2 m, one level"
+        }
+      ],
+      "notes": "The OSM name and size match a ruca. The thatched oval/hip form follows general knowledge of Mapuche rucas (door on the east side); the page URL was not fetched. It is a tiny object, so no museum building is shown."
+    },
+    "santiago-osm-node-7009112985": {
+      "venueId": "santiago-osm-node-7009112985",
+      "city": "santiago",
+      "name": "Clinica RedSalud Santiago",
+      "archetype": "hospital",
+      "subject": "The RedSalud Santiago private clinic, a seven-storey hospital block with a glass front",
+      "form": {
+        "footprint": "rect",
+        "width_m": 121,
+        "depth_m": 53,
+        "storeys": 7,
+        "height_m": 27,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#dfe3e4",
+          "#4a7a9b",
+          "#f4f2ec"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Red_Salud",
+          "what": "private health network; OSM building 121x53 m with 7 levels at this point"
+        }
+      ],
+      "notes": "Levels and footprint are measured; facade is typed. No logo to be drawn."
+    },
+    "santiago-osm-relation-9951085": {
+      "venueId": "santiago-osm-relation-9951085",
+      "city": "santiago",
+      "name": "Pista Atletica Estadio La Cisterna",
+      "archetype": "stadium",
+      "subject": "Estadio Municipal de La Cisterna: a municipal stadium with an athletics track, a covered concrete main stand and a plain far side",
+      "form": {
+        "footprint": "oval",
+        "width_m": 238,
+        "depth_m": 179,
+        "storeys": 2,
+        "height_m": 11,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d2cdbf",
+          "#a5513a",
+          "#f0ede4"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1988",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estadio_Municipal_de_La_Cisterna",
+          "what": "Wikidata Q685284: stadium, inception 1988; OSM stadium polygon 238x179 m"
+        }
+      ],
+      "notes": "Only identity, year and extent are known. The covered main stand is a typed element."
+    },
+    "santiago-osm-way-103593737": {
+      "venueId": "santiago-osm-way-103593737",
+      "city": "santiago",
+      "name": "Academia Politecnica Militar del General de Ejercito Rene Schneider Chereau",
+      "archetype": "campus-block",
+      "subject": "The Military Polytechnic Academy in La Reina: a three-level institutional block with a flag court",
+      "form": {
+        "footprint": "rect",
+        "width_m": 91,
+        "depth_m": 61,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#dcd8c8",
+          "#7b5b45",
+          "#f2efe6"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Academia_Polit%C3%A9cnica_Militar",
+          "what": "Chilean Army engineering academy; OSM building 91x61 m, 3 levels"
+        }
+      ],
+      "notes": "Levels and footprint measured; facade is a typed guess for a military institutional building."
+    },
+    "santiago-osm-way-1494357523": {
+      "venueId": "santiago-osm-way-1494357523",
+      "city": "santiago",
+      "name": "Iglesia de Santa Rosa de Lo Barnechea",
+      "archetype": "church-classical",
+      "subject": "Iglesia de Santa Rosa in Lo Barnechea: a neo-baroque parish church with a colonial feel, rebuilt after the 1960 earthquake, on the village plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 47,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "brick",
+        "colours": [
+          "#efe5cf",
+          "#b7803f",
+          "#f7f2e6"
+        ],
+        "roofColour": "#a5513a",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "baroque",
+      "era": "1933, rebuilt 1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Iglesia_de_Santa_Rosa_(Lo_Barnechea)",
+          "what": "first temple opened 1933 and was originally adobe; baroque with colonial influence (neo-baroque); central nave rebuilt after the 1960 earthquake, enlarged 1985 and 2016; murals painted 1985 by Juan Echenique"
+        }
+      ],
+      "notes": "Date, style and murals are sourced; facade colours and roof/tower layout are typed. Low gable roof with a single front bell tower is the typical form."
+    },
+    "santiago-osm-way-193760181": {
+      "venueId": "santiago-osm-way-193760181",
+      "city": "santiago",
+      "name": "Hospital Padre Hurtado",
+      "archetype": "hospital",
+      "subject": "Hospital Padre Hurtado in San Ramon (1998, 375 beds): a large public hospital campus of connected blocks",
+      "form": {
+        "footprint": "H",
+        "width_m": 282,
+        "depth_m": 275,
+        "storeys": 5,
+        "height_m": 20,
+        "roof": "flat",
+        "wings": 4
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "brick",
+        "colours": [
+          "#e1d9c3",
+          "#a5513a",
+          "#f2efe6"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1998",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hospital_Padre_Hurtado",
+          "what": "construction began Dec 1995, inaugurated 9 Nov 1998 by President Frei; 375 beds; OSM site 282x275 m"
+        }
+      ],
+      "notes": "Years and capacity are sourced; plan and colours are typed. The model shows one main 5-storey block of the campus."
+    },
+    "santiago-osm-way-195112800": {
+      "venueId": "santiago-osm-way-195112800",
+      "city": "santiago",
+      "name": "Parque Mapocho Rio Tramo 3",
+      "archetype": "park-landscape",
+      "subject": "A stretch of the Parque Mapocho Poniente riverside park: long lawns, paved paths and a concrete channel edge along the Mapocho river",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 300,
+        "depth_m": 80,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#bdb8ac",
+          "#6f9a5b",
+          "#e7e2d6"
+        ],
+        "roofColour": "#bdb8ac",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Mapocho_Poniente",
+          "what": "Wikidata Q29346470: Parque Mapocho Poniente; OSM park polygon 1030x222 m"
+        }
+      ],
+      "notes": "Mostly lawns and a linear footpath; typed small facilities only."
+    },
+    "santiago-osm-way-229040812": {
+      "venueId": "santiago-osm-way-229040812",
+      "city": "santiago",
+      "name": "Campus Penalolen Universidad Adolfo Ibanez",
+      "archetype": "campus-block",
+      "subject": "The Penalolen campus (opened 2001-02, architect Jose Cruz Ovalle) of Universidad Adolfo Ibanez, a group of white and concrete blocks on the Andean foothills",
+      "form": {
+        "footprint": "U",
+        "width_m": 90,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d6cc",
+          "#7a8f9a",
+          "#f2f0e8"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "2001-2012",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_Adolfo_Ib%C3%A1%C3%B1ez",
+          "what": "Penalolen campus opened 2001/2002; complex by architect Jose Cruz Ovalle (Premio Nacional de Arquitectura 2012); Postgraduate Building 2002 (Ovalle won an IV Bienal Iberoamericana honour prize), Design building 2012"
+        }
+      ],
+      "notes": "Authorship and dates sourced; materials and colours are guesses (Ovalle is known for restrained concrete and white volumes with courts). Campus polygon is large (1849x849 m); one block is shown."
+    },
+    "santiago-osm-way-236844639": {
+      "venueId": "santiago-osm-way-236844639",
+      "city": "santiago",
+      "name": "Velodromo Sergio Tormen Mendez",
+      "archetype": "stadium",
+      "subject": "The Estadio Nacional velodrome in Nunoa: an oval concrete velodrome (333.33 m track) with stands built for the 1962 World Cup",
+      "form": {
+        "footprint": "oval",
+        "width_m": 182,
+        "depth_m": 119,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "velodrome"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#cfc9b9",
+          "#3a5f7a",
+          "#efece3"
+        ],
+        "roofColour": "#b7b3a8",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1962",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Vel%C3%B3dromo_del_Estadio_Nacional",
+          "what": "track inner circumference 333.33 m; capacity 7,500; stands built before the 1962 FIFA World Cup replacing the earlier banked track; restored 2015; renamed Sergio Tormen Mendez 2023; also hosts handball and concerts"
+        }
+      ],
+      "notes": "Capacity and track length sourced; roof is not mentioned so it is shown open. The oval footprint is 182x119 m (OSM)."
+    },
+    "santiago-osm-way-259812380": {
+      "venueId": "santiago-osm-way-259812380",
+      "city": "santiago",
+      "name": "Parque Metropolitano Sur Cerro Chena",
+      "archetype": "park-landscape",
+      "subject": "Cerro Chena in San Bernardo: a dry island hill park with winding paths and scattered pines and eucalyptus rising from the southern plain",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 400,
+        "depth_m": 300,
+        "storeys": 0,
+        "height_m": 6,
+        "roof": "none",
+        "variant": "hill-park"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89a82",
+          "#7c6e5a",
+          "#d3c7ad"
+        ],
+        "roofColour": "#a89a82",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parque_Metropolitano_Cerro_Chena",
+          "what": "Wikidata Q123989336: urban park; OSM park polygon 1207x1022 m"
+        }
+      ],
+      "notes": "The hill (dry brown slopes with planted trees) is general knowledge; only the extent is measured. A low hill with paths and a viewpoint pavilion."
+    },
+    "santiago-osm-way-38622709": {
+      "venueId": "santiago-osm-way-38622709",
+      "city": "santiago",
+      "name": "Hipodromo Chile",
+      "archetype": "stadium",
+      "subject": "The Hipodromo Chile racecourse in Independencia: a long covered grandstand facing a 1,665 m sand track with the central garden infield",
+      "form": {
+        "footprint": "rect",
+        "width_m": 260,
+        "depth_m": 45,
+        "storeys": 3,
+        "height_m": 16,
+        "roof": "shed",
+        "variant": "racecourse-grandstand"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ebe3cd",
+          "#b5523b",
+          "#f6f2e8"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1904-1906",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Hip%C3%B3dromo_Chile",
+          "what": "track on sand 1,665 m long and 22 m wide; first race 19 Sept 1904, facilities inaugurated 15 Nov 1906; central garden with picnic areas, football pitches and a betting area"
+        }
+      ],
+      "notes": "Dates and track are sourced; the grandstand look (painted white/cream with arches) is a guess. The whole site is 972x482 m; only the main grandstand is the model."
+    },
+    "santiago-osm-way-446732086": {
+      "venueId": "santiago-osm-way-446732086",
+      "city": "santiago",
+      "name": "Centro Nacional de Arte Contemporaneo de Los Cerrillos",
+      "archetype": "museum-theatre",
+      "subject": "CNAC Cerrillos: the 1934 modernist Cerrillos airport terminal remodelled in 2016 as a contemporary art centre, with a Condores mural on its facade",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 34,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#ece8dc",
+          "#8d9aa8",
+          "#b8afa0"
+        ],
+        "roofColour": "#c9c4b8",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "painted-mural",
+          "count": 1
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1934, remodelled 1957 and 2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Centro_Nacional_de_Arte_Contempor%C3%A1neo_Cerrillos",
+          "what": "former Los Cerrillos airport terminal inaugurated 1934, architects Juan Mena and Adolfo Ruiz, modernist; 1957 remodel by Iris Valenzuela added the Condores mural by Samuel and Hector Roman; remodels 2013 and 2016; more than 4,000 m2"
+        }
+      ],
+      "notes": "History and style sourced; the colours and the airport-tower massing are inferred from the terminal origin and unverified. Mural and rooftop control-tower feel are the main identifiers."
+    },
+    "santiago-osm-way-450296536": {
+      "venueId": "santiago-osm-way-450296536",
+      "city": "santiago",
+      "name": "Parroquia la Natividad del Senor",
+      "archetype": "church-modern",
+      "subject": "Parroquia Natividad del Senor in La Reina, rebuilt 1983-84 as a modern parish church on Avenida Ossa",
+      "form": {
+        "footprint": "rect",
+        "width_m": 22,
+        "depth_m": 22,
+        "storeys": 1,
+        "height_m": 10,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "brick",
+        "colours": [
+          "#cdc6b4",
+          "#8a5a44",
+          "#ece8dc"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "screen",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1983-1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Parroquia_de_la_Natividad_del_Se%C3%B1or_(La_Reina)",
+          "what": "chapel San Jose 1906, church 1946, rebuilt 1983-84 when Avenida Ossa was widened; no appearance description"
+        }
+      ],
+      "notes": "Only the date and the 22x22 m footprint are known; a 1980s concrete-and-brick church with an angular roof is a typed guess."
+    },
+    "santiago-osm-way-570065671": {
+      "venueId": "santiago-osm-way-570065671",
+      "city": "santiago",
+      "name": "Universidad de Los Andes",
+      "archetype": "campus-block",
+      "subject": "A three-level academic building of Universidad de Los Andes (founded 1989) in the Las Condes/Lo Barnechea hills",
+      "form": {
+        "footprint": "U",
+        "width_m": 79,
+        "depth_m": 77,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "glass-curtain",
+        "colours": [
+          "#b5714f",
+          "#8aa0b0",
+          "#e9e5da"
+        ],
+        "roofColour": "#7d7f80",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "arcade",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Universidad_de_los_Andes_(Chile)",
+          "what": "private university founded 1989; OSM building 79x77 m, 3 levels"
+        }
+      ],
+      "notes": "Levels and size are measured; brick and glass is a typed, plausible palette."
+    },
+    "santiago-quiet-reflection": {
+      "venueId": "santiago-quiet-reflection",
+      "city": "santiago",
+      "name": "Templo Votivo de Maipu",
+      "archetype": "church-modern",
+      "subject": "The Templo Votivo (Votive Temple) of Maipu: a huge raw-concrete national sanctuary of 1948-1974 with a tall central bell tower and a viewing gallery at about 66 m",
+      "form": {
+        "footprint": "cross",
+        "width_m": 78,
+        "depth_m": 78,
+        "storeys": 4,
+        "height_m": 40,
+        "roof": "curved",
+        "variant": "brutalist-sanctuary",
+        "wings": 2
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "concrete",
+        "colours": [
+          "#b9b3a4",
+          "#8f897b",
+          "#d8d3c6"
+        ],
+        "roofColour": "#a09a8c",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.12
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "central tower with viewing gallery at about 63-66 m, 323 steps"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "buttresses",
+          "count": 1
+        },
+        {
+          "id": "relief-pattern",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1948-1974",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Templo_Votivo_de_Maip%C3%BA",
+          "what": "architect Juan Martinez Gutierrez, built 1948-1974; tallest church in Chile; central tower with bell tower and a viewing gallery at 63-66 m reached by lift or 323 steps; categorised as brutalist architecture in Chile; commemorates the 1818 Battle of Maipu"
+        }
+      ],
+      "notes": "Dates, tower and style sourced. Bare concrete grey is likely but was not stated; the exact nave height and the parabolic arches are not in the fetched article. The main-mass height (40 m) excludes the taller tower."
+    },
+    "santiago-recreation": {
+      "venueId": "santiago-recreation",
+      "city": "santiago",
+      "name": "Plaza Elvira Matte",
+      "archetype": "park-landscape",
+      "subject": "Plaza Elvira Matte in Puente Alto: a neighbourhood square with paved paths, lawns, benches and a central play/sports area",
+      "form": {
+        "footprint": "rect",
+        "width_m": 143,
+        "depth_m": 137,
+        "storeys": 0,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#d6d1c4",
+          "#6f9a5b",
+          "#efece3"
+        ],
+        "roofColour": "#d6d1c4",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 1
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Plaza_Elvira_Matte",
+          "what": "Wikidata Q115212370: Plaza Elvira Matte in Puente Alto; OSM park polygon 143x137 m"
+        }
+      ],
+      "notes": "A typed municipal square; only the extent is measured."
+    },
+    "santiago-transit": {
+      "venueId": "santiago-transit",
+      "city": "santiago",
+      "name": "Toesca",
+      "archetype": "transport-station",
+      "subject": "Plaza Toesca with the Toesca metro station entrance (Line 2, opened 1978): the station is underground, so the visible building is a small entrance pavilion on a park-like square",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat",
+        "variant": "metro-entrance"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "glass-curtain",
+        "colours": [
+          "#c9c4b7",
+          "#5f6b76",
+          "#ece8dc"
+        ],
+        "roofColour": "#a9aeb2",
+        "roofMaterial": "concrete",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1978",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://es.wikipedia.org/wiki/Estaci%C3%B3n_Toesca",
+          "what": "Wikidata Q6356262: metro station in Santiago, opened 1978; OSM park Plaza Toesca 196x71 m"
+        }
+      ],
+      "notes": "The station is underground; only entrance structures show. The generator author may prefer to show the plaza only; the entrance form is typed. No metro logos."
+    }
+  }
+}

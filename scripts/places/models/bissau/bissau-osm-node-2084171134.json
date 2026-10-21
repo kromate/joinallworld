@@ -1,0 +1,509 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "bissau",
+ "venueId": "bissau-osm-node-2084171134",
+ "verified": "photo",
+ "evidence": [
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:20130610_-_Monumento_aos_Her%C3%B3is_da_Independ%C3%AAncia.jpg",
+   "licence": "CC BY 2.0",
+   "author": "jbdodane",
+   "view": "front",
+   "used": "narrow tapering ochre concrete shaft topped by a gold star on a broad base with red and pink sculpted crescent reliefs, trees and street around"
+  },
+  {
+   "kind": "photo",
+   "url": "https://commons.wikimedia.org/wiki/File:Bissau_monument.jpg",
+   "licence": "CC BY-SA 3.0",
+   "author": "Nammarci",
+   "view": "front",
+   "used": "shaft proportions (about 4:1), base relief, star finial"
+  },
+  {
+   "kind": "osm",
+   "ref": "way/378151929",
+   "used": "Praca dos Herois Nacionais park circle (about 92 m) as the site extent"
+  }
+ ],
+ "camera": {
+  "yawDeg": 0,
+  "pitchDeg": 4,
+  "fovDeg": 55,
+  "fit": "all"
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "base-low",
+   "params": {
+    "rect": [
+     16,
+     10
+    ],
+    "z0": 0,
+    "height": 1.0,
+    "colour": "#b89a78",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "base",
+   "params": {
+    "rect": [
+     8,
+     5.5
+    ],
+    "z0": 1.0,
+    "height": 4.0,
+    "colour": "#c79f78",
+    "material": "plain-render",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "core/steps",
+   "at": [
+    0,
+    -5.6,
+    0
+   ],
+   "params": {
+    "width": 12,
+    "rise": 0.4,
+    "run": 0.8,
+    "count": 2,
+    "colour": "#b8b2a8"
+   }
+  },
+  {
+   "type": "core/lamp",
+   "at": [
+    -12,
+    -14,
+    0
+   ],
+   "params": {
+    "height": 6,
+    "count": 2,
+    "spacing": 24
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    22,
+    -8,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 10,
+    "count": 3,
+    "spread": 7,
+    "line": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    -28,
+    6,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 9,
+    "count": 2,
+    "spread": 6,
+    "line": 8
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin0",
+   "at": [
+    -1.1,
+    0,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     2.0
+    ],
+    "z0": 0,
+    "height": 17,
+    "colour": "#b9925f",
+    "material": "board-concrete",
+    "topScale": [
+     0.9,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin1",
+   "at": [
+    -0.4,
+    0,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     2.0
+    ],
+    "z0": 0,
+    "height": 24,
+    "colour": "#c49c6e",
+    "material": "board-concrete",
+    "topScale": [
+     0.9,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin2",
+   "at": [
+    0.4,
+    0,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     2.0
+    ],
+    "z0": 0,
+    "height": 28,
+    "colour": "#b9925f",
+    "material": "board-concrete",
+    "topScale": [
+     0.9,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "fin3",
+   "at": [
+    1.1,
+    0,
+    5.0
+   ],
+   "params": {
+    "rect": [
+     0.8,
+     2.0
+    ],
+    "z0": 0,
+    "height": 21,
+    "colour": "#c49c6e",
+    "material": "board-concrete",
+    "topScale": [
+     0.9,
+     0.8
+    ]
+   }
+  },
+  {
+   "type": "prism",
+   "id": "shaft-core",
+   "at": [
+    0,
+    0,
+    5
+   ],
+   "params": {
+    "rect": [
+     3.0,
+     2.2
+    ],
+    "z0": 0,
+    "height": 9,
+    "colour": "#bd9668",
+    "material": "board-concrete",
+    "topScale": 0.85
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "relief0",
+   "at": [
+    0,
+    -1.4,
+    9.1
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 4.0,
+     "startDeg": 100,
+     "endDeg": 330,
+     "centre": [
+      0,
+      0,
+      0
+     ]
+    },
+    "colour": "#a8453d"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "relief1",
+   "at": [
+    0,
+    -1.4,
+    8.7
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 3.0,
+     "startDeg": 110,
+     "endDeg": 320,
+     "centre": [
+      0,
+      0,
+      0
+     ]
+    },
+    "colour": "#7a4a3a"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "relief2",
+   "at": [
+    0,
+    -1.4,
+    9.48
+   ],
+   "params": {
+    "section": {
+     "rect": [
+      0.8,
+      0.8
+     ]
+    },
+    "arc": {
+     "plane": "xz",
+     "radius": 2.2,
+     "startDeg": 100,
+     "endDeg": 330,
+     "centre": [
+      0,
+      0,
+      0
+     ]
+    },
+    "colour": "#c98d86"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "pink-band",
+   "at": [
+    0,
+    0,
+    10.5
+   ],
+   "params": {
+    "rect": [
+     3.6,
+     2.6
+    ],
+    "z0": 0,
+    "height": 0.8,
+    "colour": "#d9a79c",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "mast",
+   "at": [
+    0,
+    0,
+    28.0
+   ],
+   "params": {
+    "rect": [
+     0.25,
+     0.25
+    ],
+    "z0": 0,
+    "height": 4.6,
+    "colour": "#8a7a50"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "star",
+   "params": {
+    "section": {
+     "rect": [
+      0.4,
+      0.5
+     ]
+    },
+    "points": [
+     [
+      0.0,
+      -1.15,
+      34.45
+     ],
+     [
+      -0.294,
+      -1.15,
+      33.605
+     ],
+     [
+      -1.189,
+      -1.15,
+      33.586
+     ],
+     [
+      -0.476,
+      -1.15,
+      33.045
+     ],
+     [
+      -0.735,
+      -1.15,
+      32.189
+     ],
+     [
+      -0.0,
+      -1.15,
+      32.7
+     ],
+     [
+      0.735,
+      -1.15,
+      32.189
+     ],
+     [
+      0.476,
+      -1.15,
+      33.045
+     ],
+     [
+      1.189,
+      -1.15,
+      33.586
+     ],
+     [
+      0.294,
+      -1.15,
+      33.605
+     ]
+    ],
+    "closed": true,
+    "colour": "#d9b93a"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hotel",
+   "at": [
+    -34,
+    22,
+    0
+   ],
+   "params": {
+    "rect": [
+     14,
+     10
+    ],
+    "z0": 0,
+    "height": 24,
+    "colour": "#d8cdb8",
+    "material": "painted-render",
+    "windows": "punched",
+    "windowRatio": 0.35,
+    "storeys": 7
+   }
+  },
+  {
+   "type": "prism",
+   "id": "hotel-roof",
+   "at": [
+    -34,
+    22,
+    24
+   ],
+   "params": {
+    "rect": [
+     14.6,
+     10.6
+    ],
+    "z0": 0,
+    "height": 4,
+    "colour": "#c45a3a",
+    "topScale": 0.5
+   }
+  },
+  {
+   "type": "prism",
+   "id": "kerb",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "rect": [
+     90,
+     3
+    ],
+    "z0": 0,
+    "height": 0.25,
+    "colour": "#b86a4c",
+    "material": "plain-render"
+   }
+  },
+  {
+   "type": "park-bench",
+   "at": [
+    14,
+    -12,
+    0
+   ],
+   "params": {}
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "plaza",
+  "extent": [
+   100,
+   100
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "fair",
+  "gaps": "fluted fin column with stepped heights, outline star on mast, crescent reliefs and red-roof hotel added; fins are plain prisms without grooves or split top, bench barely visible, park trees/paths simplified"
+ }
+}

@@ -1,0 +1,1645 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "ibadan",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "ibadan",
+    "climate": "savanna",
+    "vernacular": "Dense hilltop sprawl of 1-3 storey cement-block and painted-render houses and compounds under rusting corrugated zinc roofs (the 'sea of rust' seen from Bower's Tower); colonial-era brick and render civic buildings on the hills; a few 1960s concrete towers downtown; red laterite earth, roadside markets with tin sheds and umbrellas, and broadleaf shade trees.",
+    "wallColours": [
+      "#e6dcc2",
+      "#d6c7a6",
+      "#cfa58c",
+      "#b9b4a8",
+      "#f2efe6",
+      "#a77b5a",
+      "#c9b27c"
+    ],
+    "roofColours": [
+      "#8a4b32",
+      "#a0583a",
+      "#6e4a3a",
+      "#8a8c8a"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "render",
+      "concrete",
+      "laterite",
+      "mud-render",
+      "brick"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "concrete"
+    ],
+    "ground": "laterite",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Yoruba compound courtyards and verandas with carved posts in the old core; colonial-era neoclassical civic buildings (Mapo Hall); 1950s tropical modernism with brise-soleil and louvres on the university and hospital campuses; painted fence walls and kiosks in bold brand-neutral colour blocks.",
+    "sources": [
+      {
+        "url": "https://ifra-nigeria.org/events-news/workshops-masterclasses/772-researching-nigerian-vernacular-architecture-methods-concepts-and-fieldwork-in-ibadan",
+        "what": "Yoruba agbo ile compounds; corrugated iron 'zinc' roofing and cement arrived under colonial rule and became the common roof; zinc roofs symbolised wealth"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Yoruba_architecture",
+        "what": "courtyard compounds ringed by verandas; thatch replaced by corrugated metal in the colonial period"
+      },
+      {
+        "url": "https://livinspaces.net/?p=18985",
+        "what": "Fry, Drew and Partners tropical modernist University of Ibadan: reinforced concrete, east-west blocks, shell concrete roof"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mapo_Hall",
+        "what": "colonial neoclassical City Hall on Mapo Hill, 1925-29"
+      }
+    ]
+  },
+  "places": {
+    "agodi-gardens": {
+      "venueId": "agodi-gardens",
+      "city": "ibadan",
+      "name": "Agodi Gardens",
+      "archetype": "park-landscape",
+      "subject": "Agodi Gardens (Agodi Botanical Gardens): the landscaped entrance plaza with a gate, kiosks and a picnic pavilion beside the small boating lake",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "render",
+        "accent": null,
+        "colours": [
+          "#e6dcc2",
+          "#3f7a4a",
+          "#c9b27c"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "entrance gate"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "open picnic/event shelters"
+        },
+        {
+          "id": "kiosk",
+          "count": 3
+        },
+        {
+          "id": "umbrellas",
+          "count": 6,
+          "note": "picnic umbrellas"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "1967 (gardens), later facilities",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Agodi_Gardens",
+          "what": "established 1967, about 61 ha, zoo, water park, play area, picnic and garden areas"
+        },
+        {
+          "url": "https://guardian.ng/life/10-places-you-have-to-visit-in-ibadan/",
+          "what": "mini lake with boat rides, swimming pool, picnic areas"
+        }
+      ],
+      "notes": "A park, not a building: the model is the entrance/lake cluster. Programme (lake, boating, picnic, play area) is sourced; exact pavilion shapes are guessed. Recognisable by lawns, a small lake and mature broadleaf shade trees."
+    },
+    "bodija-market": {
+      "venueId": "bodija-market",
+      "city": "ibadan",
+      "name": "Bodija Market",
+      "archetype": "market-open",
+      "subject": "Bodija foodstuff market: rows of concrete lock-up stalls under tin roofs with open-ground kiosks and umbrellas between them",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 110,
+        "depth_m": 90,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "timber",
+        "colours": [
+          "#b9b4a8",
+          "#a77b5a",
+          "#d6c7a6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 60,
+          "note": "concrete wholesaler stalls and wooden retailer stalls in produce-specific rows"
+        },
+        {
+          "id": "sheds",
+          "count": 6
+        },
+        {
+          "id": "umbrellas",
+          "count": 25
+        },
+        {
+          "id": "kiosk",
+          "count": 8
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1987 (market), 2020s new stalls",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bodija_Market",
+          "what": "established October 1987 to relieve Orita Merin; one of Ibadan's largest markets; separate rows per produce type"
+        },
+        {
+          "url": "https://businessday.ng/?p=1088587",
+          "what": "state-built facility of 540 stalls; mix of concrete and wooden stalls"
+        }
+      ],
+      "notes": "Wholesalers own the concrete stalls, retailers the open-space kiosks, so show a mix of grey cement lock-ups and wooden/umbrella stalls on bare red earth. Colour detail is a guess from typical Ibadan markets."
+    },
+    "bowers-tower": {
+      "venueId": "bowers-tower",
+      "city": "ibadan",
+      "name": "Bower's Tower",
+      "archetype": "monument",
+      "subject": "Bower Memorial Tower on Oke-Aare hill: a slim square terracotta-coloured concrete tower with a viewing platform on top",
+      "form": {
+        "footprint": "rect",
+        "width_m": 3.4,
+        "depth_m": 3.4,
+        "storeys": 5,
+        "height_m": 18.3,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b5654a",
+          "#9c4f38",
+          "#d9c7b0"
+        ],
+        "roofColour": "#9c4f38",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "top viewing platform reached by a spiral stair (about 47 steps)"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "entrance steps; the tower has two entrances"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "low fence/stairs at hill-top"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "colonial",
+      "era": "1936",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://dutumgroup.com/bowers-tower-a-monument-in-ibadan-with-historical-significance/",
+          "what": "60 ft high, 11 ft square, two entrances, spiral staircase, terracotta-coloured concrete, built 1936 for Captain R.L. Bower"
+        },
+        {
+          "url": "https://connectciti.com/listing/bowers-tower",
+          "what": "on Oke-Are, the highest hill in Ibadan; designed by engineer Taffy Jones"
+        }
+      ],
+      "notes": "Tiny footprint (about 3.4 m square) and about 18 m high; the generator should scale the base in the scene so the hill-top setting reads. Top parapet detail not verified in sources."
+    },
+    "challenge-interchange": {
+      "venueId": "challenge-interchange",
+      "city": "ibadan",
+      "name": "Orita Challenge Interchange",
+      "archetype": "transport-station",
+      "subject": "Challenge bus terminal: a long low passenger terminal with ticketing hall and covered bus bays along a paved apron",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 45,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#4a6a8a",
+          "#f0efe8"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 14,
+          "note": "covered loading bays"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "kiosk",
+          "count": 4,
+          "note": "shops/eateries"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/news/obaseki-commissions-50000-passenger-capacity-ojoo-challenge-bus-terminals/",
+          "what": "Challenge and Ojoo terminals commissioned, with waiting/ticketing areas, drivers' lounge, parking, shops, eateries and ATM galleries"
+        }
+      ],
+      "notes": "Programme is sourced (ticketing, lounge, shops, bays) but no source describes the building's shape or colours.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "cocoa-house": {
+      "venueId": "cocoa-house",
+      "city": "ibadan",
+      "name": "Cocoa House",
+      "archetype": "office-tower",
+      "subject": "Cocoa House, Dugbe: West Africa's first skyscraper, a 26-storey slab tower on a low commercial podium",
+      "form": {
+        "footprint": "rect",
+        "width_m": 42,
+        "depth_m": 24,
+        "storeys": 26,
+        "height_m": 105,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#d8d6c8",
+          "#4a6f86",
+          "#f2f1ea"
+        ],
+        "roofColour": "#a8a8a2",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "low commercial podium and lobby block at the base"
+        },
+        {
+          "id": "crown",
+          "count": 1,
+          "note": "post-1992 renovation reportedly restyled the top to resemble a cocoa pod"
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "rooftop mast"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1964-65 (refurbished 1992)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cocoa_House",
+          "what": "26 storeys, 105 m, first skyscraper in West Africa, gutted by fire Jan 1985, renovated and reopened Aug 1992"
+        },
+        {
+          "url": "https://www.skydb.net/building/388154386/cocoa-house/",
+          "what": "architectural style listed as international style, commercial office"
+        },
+        {
+          "url": "https://businessday.ng/news/article/iconic-cocoa-house-celebrating-an-enduring-legacy-at-60/",
+          "what": "completed 1964, commissioned 1965; built by Cappa and D'Alberto with cocoa proceeds; later redesigned to resemble a cocoa pod"
+        }
+      ],
+      "notes": "Height and storey count are sourced; plan dimensions and cladding colours are estimates from the international-style description (sources do not give them). Dugbe Market sits just across the road. Most recognisable by its height over the low surrounding market district."
+    },
+    "dugbe-amala": {
+      "venueId": "dugbe-amala",
+      "city": "ibadan",
+      "name": "Dugbe Amala Joint",
+      "archetype": "restaurant",
+      "subject": "A roadside amala buka: a one-storey cement-block eatery with a front open serving veranda under a zinc roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 8,
+        "storeys": 1,
+        "height_m": 3.8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#e6dcc2",
+          "#b8452e",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "deep front veranda"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 4
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://estateintel.com/insights/office-rents-remain-stable-in-ibadans-oldest-commercial-hub-dugbe",
+          "what": "Dugbe is Ibadan's oldest commercial district (context only)"
+        }
+      ],
+      "notes": "No source describes this venue; typical Yoruba buka from the city style.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "dugbe-market": {
+      "venueId": "dugbe-market",
+      "city": "ibadan",
+      "name": "Dugbe Market",
+      "archetype": "market-open",
+      "subject": "Dugbe Market: a dense cloth/bags/electronics market of shop rows and sheds beside Cocoa House",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 120,
+        "depth_m": 100,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#b9b4a8",
+          "#d6c7a6",
+          "#cfa58c"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "stalls",
+          "count": 80
+        },
+        {
+          "id": "sheds",
+          "count": 10
+        },
+        {
+          "id": "umbrellas",
+          "count": 20
+        },
+        {
+          "id": "awning",
+          "count": 12
+        },
+        {
+          "id": "signage-board",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1960s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://guardian.ng/news/tears-as-fire-razes-popular-dugbe-market-in-ibadan/",
+          "what": "traders sell cloth, bags, electrical goods, mattresses and eyeglasses; fire razed part of the market"
+        },
+        {
+          "url": "https://estateintel.com/insights/office-rents-remain-stable-in-ibadans-oldest-commercial-hub-dugbe",
+          "what": "Dugbe is Ibadan's oldest commercial hub of retail and offices"
+        }
+      ],
+      "notes": "Goods are sourced; physical appearance is not. Make it denser and greyer (older zinc, 2-storey shop rows) than Bodija, which is more open rows of low stalls."
+    },
+    "eleyele-lake": {
+      "venueId": "eleyele-lake",
+      "city": "ibadan",
+      "name": "Eleyele Reservoir",
+      "archetype": "park-landscape",
+      "subject": "Eleyele Lake shore: a reservoir edge with a small jetty and boats beyond a low dam wall",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 100,
+        "depth_m": 80,
+        "storeys": 1,
+        "height_m": 3,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": null,
+        "colours": [
+          "#b9b4a8",
+          "#3f6b7a",
+          "#e6dcc2"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "pier",
+          "count": 1,
+          "note": "fishing/boat jetty"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "dam parapet"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "water"
+      },
+      "style": "vernacular",
+      "era": "20th-century dam, rehabilitated 2020s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.foluoyefeso.com/post/lake-eleyele-ibadan",
+          "what": "water source, fishing area and boat route; one of few water bodies in Ibadan"
+        },
+        {
+          "url": "https://guardian.ng/?p=1165174",
+          "what": "dam rehabilitated and commissioned as flood-control and water-supply works"
+        }
+      ],
+      "notes": "Mostly a water body with grass and trees; no built landmark described."
+    },
+    "gbagi-market": {
+      "venueId": "gbagi-market",
+      "city": "ibadan",
+      "name": "Gbagi New International Market",
+      "archetype": "market-hall",
+      "subject": "Bola Ige International Business Complex (New Gbagi Market): a large multi-storey textile trading block with long shop galleries",
+      "form": {
+        "footprint": "U",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc6b0",
+          "#a77b5a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "shop galleries"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 3
+        },
+        {
+          "id": "awning",
+          "count": 8
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://businessday.ng/uncategorized/article/oyo-to-revamp-bola-ige-business-complex/",
+          "what": "Bola Ige International Business Complex, Gbagi, described as dilapidated; textile and fabrics hub on Ibadan-Ife expressway"
+        }
+      ],
+      "notes": "Textile hub on the Ibadan-Ife road; building form not described in any source.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ibadan-airport": {
+      "venueId": "ibadan-airport",
+      "city": "ibadan",
+      "name": "Ibadan Airport",
+      "archetype": "airport-terminal",
+      "subject": "Samuel Ladoke Akintola (Ibadan) airport: the existing small terminal with a short apron and tower, before the new international terminal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e6dcc2",
+          "#4a6a8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "1980s terminal (new terminal under construction)",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://thecable.ng/oyo-commences-construction-of-ibadan-airport-terminal-to-accommodate-one-million-passengers-yearly",
+          "what": "existing terminal handles about 100,000 passengers a year; new 1M-passenger terminal under construction"
+        }
+      ],
+      "notes": "Existing terminal assumed (about 100k pax a year, so small). New terminal was only about 15% built per sources; sources give no architecture.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "iita-forest": {
+      "venueId": "iita-forest",
+      "city": "ibadan",
+      "name": "IITA Forest Reserve",
+      "archetype": "park-landscape",
+      "subject": "IITA Forest Reserve entrance: a trailhead gate and shelter at the edge of dense secondary forest",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 80,
+        "depth_m": 60,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "timber",
+        "accent": null,
+        "colours": [
+          "#8a6a4a",
+          "#3f6a3a",
+          "#d6c7a6"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "none",
+        "windowRatio": 0.0
+      },
+      "features": [
+        {
+          "id": "gate",
+          "count": 1,
+          "note": "forest entrance"
+        },
+        {
+          "id": "pavilion",
+          "count": 1,
+          "note": "visitor shelter"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "canopy observation tower area"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "none"
+      },
+      "style": "contemporary",
+      "era": "1960s (reserve)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://forestcenter.iita.org/index.php/about/iita-forest-reserve",
+          "what": "about 350 ha forested within a 1,000 ha campus; guided trails over 4 km"
+        },
+        {
+          "url": "https://forestcenter.iita.org/?p=130",
+          "what": "canopy observation tower listed as part of the forest unit facilities"
+        }
+      ],
+      "notes": "Dominated by forest; only the visitor entrance and a canopy tower are built. Shelter shape is a guess."
+    },
+    "iwo-road-interchange": {
+      "venueId": "iwo-road-interchange",
+      "city": "ibadan",
+      "name": "Iwo Road Interchange",
+      "archetype": "transport-station",
+      "subject": "Iwo Road bus terminal: covered bus bays and a two-storey terminal block linked by a pedestrian bridge to the Ife Road terminal",
+      "form": {
+        "footprint": "rect",
+        "width_m": 100,
+        "depth_m": 50,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#d8d4c8",
+          "#3f6b5a",
+          "#f0efe8"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "bus-bays",
+          "count": 16
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "link to pedestrian bridge"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2025",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://feedbackoysg.com/iwo-road-bus-interchange-construction-update/",
+          "what": "Iwo Road bus terminals commissioned Nov 2025 and linked by pedestrian bridge to New Ife Road terminal"
+        }
+      ],
+      "notes": "Differ from Challenge (bigger apron, bridge link). No source describes shape or colours.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "lead-city": {
+      "venueId": "lead-city",
+      "city": "ibadan",
+      "name": "Lead City University",
+      "archetype": "campus-block",
+      "subject": "Lead City University main campus: a modern three-storey Senate building and administrative block around a forecourt",
+      "form": {
+        "footprint": "L",
+        "width_m": 65,
+        "depth_m": 25,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#efe9dc",
+          "#2f5d8a",
+          "#c9b27c"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 3
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2000s-2020",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://lcu.edu.ng/index.php/testimony-one",
+          "what": "Senate Building (commissioned Dec 2020) is the most prominent building; Administrative and Registration block"
+        }
+      ],
+      "notes": "Only building names are sourced.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "lekan-salami-stadium": {
+      "venueId": "lekan-salami-stadium",
+      "city": "ibadan",
+      "name": "Lekan Salami Stadium",
+      "archetype": "stadium",
+      "subject": "Lekan Salami Stadium, Adamasingba: an oval football bowl with a covered main stand, open terraces and floodlight masts",
+      "form": {
+        "footprint": "oval",
+        "width_m": 165,
+        "depth_m": 125,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfc6b0",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main grandstand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1988 (remodelled 2020s)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lekan_Salami_Stadium",
+          "what": "opened 28 May 1988 on the former race course; capacity 10,000; football pitch plus tennis, squash, hall and amphitheatre in the complex"
+        },
+        {
+          "url": "https://thisdaylive.com/index.php/2020/08/14/makinde-begins-plans-to-give-lekan-salami-stadium-face-lift",
+          "what": "pre-renovation seating about 8,000, remodel to 10,000"
+        }
+      ],
+      "notes": "Capacity and history sourced; stand/roof shape and colours estimated. Mid-size bowl, bigger than Osogbo's 4,000-seat stadium, smaller than Ijebu-Ode's 20,000."
+    },
+    "mapo-hall": {
+      "venueId": "mapo-hall",
+      "city": "ibadan",
+      "name": "Mapo Hall",
+      "archetype": "civic-palace",
+      "subject": "Mapo Hall, Ibadan City Hall on Mapo Hill: a colonial neoclassical hall at the top of a very wide flight of steps",
+      "form": {
+        "footprint": "rect",
+        "width_m": 45,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 16,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": null,
+        "colours": [
+          "#ece4d0",
+          "#b8a27c",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "very wide stepped approach from Ogunmola Street that doubles as seating"
+        },
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "classical entrance portico (implied by neoclassical style)"
+        },
+        {
+          "id": "pediment",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "1925-1929",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mapo_Hall",
+          "what": "colonial-style Ibadan City Hall on Mapo Hill, neoclassical, visible from much of the city"
+        },
+        {
+          "url": "https://asirimagazine.com/en/ibadan-and-its-famous-mapo-hall/",
+          "what": "designed by Robert 'Taffy' Jones, built 1925-29 at 24,000 pounds; ascent by very wide steps"
+        }
+      ],
+      "notes": "Setting (hilltop, wide steps) and style are sourced; the portico and dimensions are not verified in the sources read - treat as estimates. Must read as a white/cream colonial hall on a hill with sweeping steps."
+    },
+    "mapo-polling": {
+      "venueId": "mapo-polling",
+      "city": "ibadan",
+      "name": "Mapo Civic Polling Centre",
+      "archetype": "civic-small",
+      "subject": "A civic polling hall near Mapo Hall: a single-storey public hall with a front veranda and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#e6dcc2",
+          "#2f6b4f",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1,
+          "note": "front veranda"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1950s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mapo_Hall",
+          "what": "neighbouring colonial hill-top city hall (context only)"
+        }
+      ],
+      "notes": "Game venue placeholder next to Mapo Hall.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "mokola-salon": {
+      "venueId": "mokola-salon",
+      "city": "ibadan",
+      "name": "Mokola Salon",
+      "archetype": "shophouse",
+      "subject": "A Mokola street-front hair salon: a small one-storey shop with a painted facade and sign board",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 3.4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#cfa58c",
+          "#2f6b8a",
+          "#f2efe6"
+        ],
+        "roofColour": "#6e4a3a",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "painted-mural",
+          "count": 1,
+          "note": "painted hair-style panels"
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ifra-nigeria.org/events-news/workshops-masterclasses/772-researching-nigerian-vernacular-architecture-methods-concepts-and-fieldwork-in-ibadan",
+          "what": "city-style context only"
+        }
+      ],
+      "notes": "Game venue placeholder.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "moniya-station": {
+      "venueId": "moniya-station",
+      "city": "ibadan",
+      "name": "Obafemi Awolowo Station",
+      "archetype": "transport-station",
+      "subject": "Obafemi Awolowo railway station, Moniya: the new standard-gauge station terminus with a wide-eaved terminal and platform canopy",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4d8",
+          "#7a3a2a",
+          "#f4f2ec"
+        ],
+        "roofColour": "#7a3a2a",
+        "roofMaterial": "metal-sheet",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "forecourt canopy"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "none",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2020-2021",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://intercity.ng/blog/train-stations-in-ibadan-a-quick-guide",
+          "what": "Moniya station is about 18 km north of the centre, the end of the Lagos-Ibadan standard-gauge line"
+        },
+        {
+          "url": "https://www.icirnigeria.org/?p=101098",
+          "what": "station named after Obafemi Awolowo"
+        }
+      ],
+      "notes": "Chinese-built SGR stations share a design family (central hall, wide eaves, platform canopy), but no source read describes this one.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "national-museum": {
+      "venueId": "national-museum",
+      "city": "ibadan",
+      "name": "National Museum of Unity",
+      "archetype": "museum-theatre",
+      "subject": "National Museum of Unity: a cluster of adjoining hexagonal exhibition blocks in a grove of trees",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 45,
+        "depth_m": 40,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "pyramidal"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": null,
+        "colours": [
+          "#ece4d0",
+          "#a77b5a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "corrugated",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "2002 (opened)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Unity,_Ibadan",
+          "what": "ethnographic museum, National Museum Road, Aleshinloye, established 2002"
+        },
+        {
+          "url": "https://foluoyefeso.com/post/the-national-museum-of-unity-ibadan",
+          "what": "architecture is a series of adjoining hexagonal sections, nestled in a grove of trees"
+        }
+      ],
+      "notes": "Hexagonal plan with three main exhibition areas is sourced; colours, heights and roof forms are guesses. Hexagon cells are the identifying feature."
+    },
+    "polytechnic": {
+      "venueId": "polytechnic",
+      "city": "ibadan",
+      "name": "The Polytechnic, Ibadan",
+      "archetype": "campus-block",
+      "subject": "The Polytechnic Ibadan: a run of two-to-three storey classroom blocks with open corridors on a laterite campus",
+      "form": {
+        "footprint": "U",
+        "width_m": 80,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 11,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e6dcc2",
+          "#b8452e",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "open access galleries"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1960s-1980s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Polytechnic,_Ibadan",
+          "what": "public polytechnic in Ibadan (context only)"
+        }
+      ],
+      "notes": "No building described in sources.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "uch": {
+      "venueId": "uch",
+      "city": "ibadan",
+      "name": "University College Hospital",
+      "archetype": "hospital",
+      "subject": "University College Hospital, Ibadan: a large multi-wing teaching hospital with a tall main block and ambulance entrance",
+      "form": {
+        "footprint": "H",
+        "width_m": 110,
+        "depth_m": 60,
+        "storeys": 8,
+        "height_m": 32,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e6dcc2",
+          "#6a8a9a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board only"
+        },
+        {
+          "id": "louvres",
+          "count": 1,
+          "note": "sun-shading louvres"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 4,
+          "note": "ward verandas"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1957 onwards",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://livinspaces.net/?p=18985",
+          "what": "Fry, Drew and Partners tropical-modernist work at Ibadan: reinforced concrete, breeze-oriented east-west blocks (campus context; UCH design not confirmed)"
+        }
+      ],
+      "notes": "UCH opened in the 1950s alongside the University College; no source read describes the hospital's architecture.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    },
+    "ui-campus": {
+      "venueId": "ui-campus",
+      "city": "ibadan",
+      "name": "University of Ibadan",
+      "archetype": "campus-block",
+      "subject": "University of Ibadan central campus: Fry and Drew tropical-modernist blocks - concrete frames with sun-shading screens and a landmark tower",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 30,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#d6d2c4",
+          "#a77b5a",
+          "#f2efe6"
+        ],
+        "roofColour": "#8a8c8a",
+        "roofMaterial": "concrete",
+        "windows": "screen",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "brise-soleil",
+          "count": 1,
+          "note": "sun-breaker screens"
+        },
+        {
+          "id": "louvres",
+          "count": 1
+        },
+        {
+          "id": "pilotis",
+          "count": 1,
+          "note": "open ground-floor colonnades"
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "private balconies on residential colleges"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1948-1960s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://livinspaces.net/?p=18985",
+          "what": "Fry, Drew and Partners: east-west blocks for breeze, extensive reinforced concrete, assembly hall for 1,000, landmark tower, first shell concrete roof in West Africa"
+        },
+        {
+          "url": "https://docomomojournal.com/index.php/journal/article/download/170/312",
+          "what": "University of Ibadan residential buildings 1947-51, tropical modernism"
+        }
+      ],
+      "notes": "Real campus is far larger than any single model; this shows a typical academic block with sun-screens. Landmark tower exists but its exact form was not found."
+    },
+    "ui-chapel": {
+      "venueId": "ui-chapel",
+      "city": "ibadan",
+      "name": "Chapel of the Resurrection",
+      "archetype": "church-modern",
+      "subject": "Chapel of the Resurrection, University of Ibadan: a small 1950s chapel with an entrance porch bearing Ben Enwonwu's Christ sculpture",
+      "form": {
+        "footprint": "rect",
+        "width_m": 28,
+        "depth_m": 13,
+        "storeys": 1,
+        "height_m": 12,
+        "roof": "gable"
+      },
+      "facade": {
+        "material": "render",
+        "accent": "brick",
+        "colours": [
+          "#ece4d0",
+          "#a8683a",
+          "#f7f4ee"
+        ],
+        "roofColour": "#8a4b32",
+        "roofMaterial": "clay-tile",
+        "windows": "pointed-arch",
+        "windowRatio": 0.15
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1,
+          "note": "entrance porch with the Enwonwu sculpture of Christ"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "Christ figure by Ben Enwonwu, 1954"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small campanile - not verified"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "modernist",
+      "era": "1950s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://transnationalarchitecture.group/2024/01/24/ibadan-university-central-ibadan-and-the-dominican-chapel/",
+          "what": "chapel on Fry and Drew's campus, designed by ecclesiastical architect George Pace per this blog"
+        },
+        {
+          "url": "https://archivesearch.lib.cam.ac.uk/repositories/2/archival_objects/171353/citation",
+          "what": "Ben Enwonwu sculpture of Christ for the entrance porch, 1954"
+        }
+      ],
+      "notes": "Designer and porch sculpture are sourced; chapel size, materials and roof form are not described in sources read. Small, simple chapel - not the Dominican Chapel (separate Demas Nwoko building)."
+    },
+    "ui-mosque": {
+      "venueId": "ui-mosque",
+      "city": "ibadan",
+      "name": "University of Ibadan Central Mosque",
+      "archetype": "mosque-domed",
+      "subject": "University of Ibadan Central Mosque: a domed prayer hall with a single minaret on the campus edge",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 28,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "stucco",
+        "colours": [
+          "#f2efe6",
+          "#2f6b4f",
+          "#c9b27c"
+        ],
+        "roofColour": "#2f6b4f",
+        "roofMaterial": "concrete",
+        "windows": "arched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1
+        },
+        {
+          "id": "minaret",
+          "count": 1,
+          "note": "one tall minaret"
+        },
+        {
+          "id": "arches",
+          "count": 5
+        },
+        {
+          "id": "courtyard",
+          "count": 1,
+          "note": "ablution court"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "garden"
+      },
+      "style": "arab-islamic",
+      "era": "1970s-1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://ui.edu.ng/node/3976",
+          "what": "university gallery confirms a University of Ibadan Central Mosque hosting Jumat service (no architecture described)"
+        }
+      ],
+      "notes": "Existence confirmed; appearance unknown.;  No source describes this specific building; form, colours and features are a typed guess from the city style and the place type."
+    }
+  }
+}

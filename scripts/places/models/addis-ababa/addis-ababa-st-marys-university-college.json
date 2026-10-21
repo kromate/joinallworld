@@ -1,0 +1,291 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "addis-ababa",
+ "venueId": "addis-ababa-st-marys-university-college",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/50833515",
+   "used": "campus parcel outline (4210 m2, bearing 148 deg): the U of classroom blocks and quad are laid inside it"
+  },
+  {
+   "kind": "text",
+   "ref": "briefs/addis-ababa.json",
+   "used": "4-5 storey rendered classroom blocks around a paved quad; no photo of the campus found (nearby Commons photos show a market trader, not the campus)"
+  }
+ ],
+ "camera": {
+  "yawDeg": 20,
+  "pitchDeg": 14,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "quad-paving",
+   "footprint": {
+    "osm": true,
+    "fit": 118
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 0.5,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#bdb5a4",
+    "windows": "none"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#bdb5a4",
+    "material": "concrete"
+   }
+  },
+  {
+   "type": "mass",
+   "id": "north-block",
+   "footprint": {
+    "rect": [
+     64,
+     11
+    ]
+   },
+   "at": [
+    0,
+    14
+   ],
+   "z0": 0.1,
+   "height": 17,
+   "storeys": 5,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.42,
+    "bands": "#c27a4d",
+    "plinth": 0.5,
+    "faces": {
+     "front": "ribbon",
+     "back": "none"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "parapet": 0.6
+   }
+  },
+  {
+   "type": "mass",
+   "id": "west-wing",
+   "footprint": {
+    "rect": [
+     11,
+     36
+    ]
+   },
+   "at": [
+    -26.5,
+    -9
+   ],
+   "z0": 0.1,
+   "height": 13.6,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ebe4d2",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#c27a4d",
+    "plinth": 0.5,
+    "faces": {
+     "left": "none",
+     "right": "ribbon",
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "east-wing",
+   "footprint": {
+    "rect": [
+     11,
+     36
+    ]
+   },
+   "at": [
+    26.5,
+    -9
+   ],
+   "z0": 0.1,
+   "height": 13.6,
+   "storeys": 4,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e4dcc6",
+    "windows": "ribbon",
+    "windowRatio": 0.4,
+    "bands": "#c27a4d",
+    "plinth": 0.5,
+    "faces": {
+     "left": "ribbon",
+     "right": "none",
+     "front": "ribbon"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "glass-stair-core",
+   "footprint": {
+    "rect": [
+     7,
+     4
+    ]
+   },
+   "at": [
+    0,
+    7.5
+   ],
+   "z0": 0.1,
+   "height": 18.5,
+   "storeys": 5,
+   "wall": {
+    "material": "glass-curtain",
+    "colour": "#6f8f9b",
+    "windows": "curtain",
+    "windowRatio": 0.8,
+    "faces": {
+     "back": "plain"
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7d7d7b",
+    "material": "membrane",
+    "parapet": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-office",
+   "footprint": {
+    "rect": [
+     12,
+     7
+    ]
+   },
+   "at": [
+    0,
+    -32
+   ],
+   "z0": 0.1,
+   "height": 4.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#e8e0cc",
+    "windows": "ribbon",
+    "windowRatio": 0.35,
+    "bands": "#c27a4d"
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#9a9a98",
+    "material": "membrane",
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "core/sign-board",
+   "at": [
+    10,
+    -33,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "height": 2.6,
+    "bottom": 1.4,
+    "colour": "#a8402f"
+   }
+  },
+  {
+   "type": "core/flag",
+   "at": [
+    -8,
+    -26,
+    0
+   ],
+   "params": {
+    "height": 9,
+    "count": 2,
+    "spacing": 3,
+    "colours": [
+     "#1b7a43",
+     "#f2c200"
+    ]
+   }
+  },
+  {
+   "type": "car-park",
+   "at": [
+    38,
+    -36,
+    0
+   ],
+   "params": {
+    "width": 22,
+    "depth": 10
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    -12,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 4,
+    "spread": 30,
+    "colour": "#5a7a45"
+   }
+  }
+ ],
+ "site": {
+  "ground": "paving",
+  "forecourt": "plaza",
+  "extent": [
+   110,
+   90
+  ]
+ },
+ "review": {
+  "rounds": 2,
+  "match": "rough",
+  "gaps": "No photo of the campus exists; massing from brief (4-5 storey U of blocks round a quad) inside the OSM parcel; facade colours and details are typical, not observed"
+ }
+}

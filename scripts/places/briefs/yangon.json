@@ -1,0 +1,1807 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "yangon",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "yangon",
+    "climate": "tropical-maritime",
+    "vernacular": "Former colonial capital of Burma on the Yangon river delta: a downtown grid of four-storey brick-and-stucco colonial mixed-use blocks (4.3 m ceilings, mezzanines) stained black-green by monsoon mould, surrounded by 6-8 storey walk-up apartment blocks in faded pastel paint with open balconies and rooftop water tanks, 1-2 storey detached houses in the satellite townships under corrugated zinc roofs, and gilded Buddhist stupas rising above leafy tree canopy. No skyscrapers; heights are capped relative to the Shwedagon Pagoda.",
+    "wallColours": [
+      "#d8cdb0",
+      "#b9a98a",
+      "#8d7f6d",
+      "#c9b36a",
+      "#9fb6a3",
+      "#e9e4d6",
+      "#a0522d"
+    ],
+    "roofColours": [
+      "#8a5a3c",
+      "#7b8087",
+      "#a64b2a",
+      "#4f6b5a",
+      "#d4a017"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "stucco",
+      "concrete",
+      "red-brick",
+      "whitewash",
+      "glass-curtain",
+      "timber"
+    ],
+    "roofMaterials": [
+      "corrugated",
+      "metal-sheet",
+      "clay-tile",
+      "concrete",
+      "gold-leaf"
+    ],
+    "ground": "asphalt",
+    "vegetation": [
+      "broadleaf",
+      "palm"
+    ],
+    "ornament": "Gilded Burmese stupas with bell-shaped domes and tiered finials (hti umbrella); multi-tiered pyatthat roofs and chinthe lions on religious and civic buildings; colonial arched arcades, cast-iron balcony railings and pediments in downtown; mould-darkened stucco; hand-painted signage and tangles of overhead wires.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Yangon",
+        "what": "downtown has the most colonial-period buildings in Southeast Asia; mostly four-storey mixed-use buildings with 4.3 m ceilings; 8-storey walk-up apartment blocks; no skyscrapers, height tied to Shwedagon; 1-2 storey houses in satellite towns; tropical monsoon climate"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Shwedagon_Pagoda",
+        "what": "gilded brick stupa, 99 m, gold plates over brick plinth: reference for stupa colouring"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Bogyoke_Aung_San_Market",
+        "what": "1926 colonial market with inner cobblestone streets on the Yangon heritage list"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Lim_Chin_Tsong",
+        "what": "Chinese-Western mixed palace with octagonal tower: example of eclectic Yangon villas"
+      }
+    ]
+  },
+  "places": {
+    "yangon-airport-yangon-airport": {
+      "venueId": "yangon-airport-yangon-airport",
+      "city": "yangon",
+      "name": "Yangon International Airport",
+      "archetype": "airport-terminal",
+      "subject": "The modern Terminal 1 international terminal (opened 2016) seen from the landside forecourt, a long white-and-glass block with a covered departures roadway",
+      "form": {
+        "footprint": "rect",
+        "width_m": 200,
+        "depth_m": 70,
+        "storeys": 4,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe3e6",
+          "#44566a",
+          "#f3f3f1"
+        ],
+        "roofColour": "#b7bcc0",
+        "windows": "curtain",
+        "windowRatio": 0.55,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "curved-canopy",
+          "count": 1,
+          "note": "departures drop-off canopy"
+        },
+        {
+          "id": "jet-bridge",
+          "count": 4,
+          "note": "air bridges reported for the terminals"
+        },
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 3
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "contemporary",
+      "era": "2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yangon_International_Airport",
+          "what": "Terminal 1 is a six-storey terminal that opened 12 March 2016 after construction began Aug 2014; T2 (CPG Singapore design, built by Asia World) closed 2018 for renovation; T3 domestic opened 5 Dec 2016; 4 air bridges, two-storey 340-car garage"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q174764",
+          "what": "Wikidata match to the airport, 18 m from venue point"
+        }
+      ],
+      "notes": "Wikipedia gives storeys, dates and capacity but not facade or colours, so the glazed white/grey look is inferred from comparable new Southeast Asian terminals. Wikipedia says six storeys; modelled as 4 visible levels plus roof plant for the 120 m scene limit and shape reasons. Recognisable by the long low horizontal mass, forecourt canopy and airside air bridges. Older T2 is lower and plainer."
+    },
+    "yangon-clinic": {
+      "venueId": "yangon-clinic",
+      "city": "yangon",
+      "name": "South Okkalapa Maternal and Child Hospital",
+      "archetype": "hospital",
+      "subject": "A mid-century hospital block in a large walled compound: low, long painted-render wards with a central entrance block and verandahs",
+      "form": {
+        "footprint": "L",
+        "width_m": 70,
+        "depth_m": 24,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dcc7",
+          "#7a8b7e",
+          "#f1efe8"
+        ],
+        "roofColour": "#8a5a3c",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board only"
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "compound wall"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1961",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/South_Okkalapa_Maternal_and_Child_Hospital",
+          "what": "founded 1960-61, opened as a Catholic Missionary Hospital by U Nu on 1 May 1961, 150 beds, now teaching hospital"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18379754",
+          "what": "Wikidata item; OSM compound about 290 x 190 m (~5 ha)"
+        }
+      ],
+      "notes": "No description of the building found. Form is a typed guess from the city style, the 1961 date and the very large 5 ha OSM compound (multiple blocks); width/depth are for one representative ward block, not the whole compound. Painted-render ward blocks under corrugated roofs with open verandahs are typical of Yangon public hospitals."
+    },
+    "yangon-community-notices": {
+      "venueId": "yangon-community-notices",
+      "city": "yangon",
+      "name": "Hlaing Thar Yar Town Hall",
+      "archetype": "civic-small",
+      "subject": "A small township administration hall: two-storey rendered block with a central porch, flagpole and board for public notices",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd6c2",
+          "#a8a08a",
+          "#f2f0e8"
+        ],
+        "roofColour": "#5f6b73",
+        "windows": "punched",
+        "windowRatio": 0.25,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank notice board"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "gate and low wall"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "nearest OSM building to the venue point is an unnamed 15 x 11 m footprint 42 m away (facts file); not confirmed to be the hall"
+        }
+      ],
+      "notes": "(game venue) typed guess. Nothing was found describing the Hlaing Thar Yar township office; Hlaing Tharyar is a large, newer industrial township on the west bank, so a plain 2-storey government office block is assumed."
+    },
+    "yangon-community-voting-game": {
+      "venueId": "yangon-community-voting-game",
+      "city": "yangon",
+      "name": "Shwe Pyi Thar Town Hall",
+      "archetype": "civic-small",
+      "subject": "A township hall used as a polling station: plain two-storey government office with a covered entrance and flagpole",
+      "form": {
+        "footprint": "rect",
+        "width_m": 30,
+        "depth_m": 13,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d3bf",
+          "#9a947f",
+          "#efede4"
+        ],
+        "roofColour": "#6b4a3a",
+        "windows": "punched",
+        "windowRatio": 0.25,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1990s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "no OSM building matched the venue point (facts file)"
+        }
+      ],
+      "notes": "(game venue) typed guess from city style; no description of the Shwe Pyi Thar township office was found. Distinct from the Hlaing Thar Yar hall only by dimensions and colours; both are plain township administration blocks."
+    },
+    "yangon-community-workshop": {
+      "venueId": "yangon-community-workshop",
+      "city": "yangon",
+      "name": "Yangon Institute of Economics",
+      "archetype": "campus-block",
+      "subject": "A university teaching block: long three-storey rendered building with open corridors and a central entrance, in the style of Burmese public universities",
+      "form": {
+        "footprint": "rect",
+        "width_m": 60,
+        "depth_m": 16,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e1d8bd",
+          "#8b7b60",
+          "#f1ede0"
+        ],
+        "roofColour": "#7b4b36",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "open corridors"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1960s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yangon_Institute_of_Economics",
+          "what": "began 1924 as Section of Economics, independent institute 1964; main campus in Kamayut with satellite campuses at Hlaing and Ywarthargyi; no building description"
+        }
+      ],
+      "notes": "No building description found. Note the game venue point is in the eastern outskirts, away from the main Kamayut campus, so the exact campus is uncertain. Typed guess from the Burmese university style: long low corridor-fronted blocks, cream paint stained by weather."
+    },
+    "yangon-market-game": {
+      "venueId": "yangon-market-game",
+      "city": "yangon",
+      "name": "Bogyoke Aung San Market",
+      "archetype": "market-hall",
+      "subject": "The 1926 colonial market frontage on Bogyoke Aung San Road: a very long, two-storey, symmetrical stucco range with a central gateway tower and arched ground-floor openings enclosing inner cobbled lanes of shops",
+      "form": {
+        "footprint": "rect",
+        "width_m": 137,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#d9c9a0",
+          "#8c6b4a",
+          "#f0e8d2"
+        ],
+        "roofColour": "#7b4f3a",
+        "windows": "arched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "clock-tower",
+          "count": 1,
+          "note": "central entrance tower, from memory of photos; verify"
+        },
+        {
+          "id": "arcade",
+          "count": 1,
+          "note": "arched ground-floor openings"
+        },
+        {
+          "id": "arches",
+          "count": 10
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "1926",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogyoke_Aung_San_Market",
+          "what": "completed 1926, colonial architecture with inner cobblestone streets, two floors, Yangon City Heritage List, newer wing added across the road in the 1990s; originally Scott Market"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q870075",
+          "what": "Wikidata: Bogyoke Market, shopping mall; OSM main frontage footprint 137 x 25 m"
+        }
+      ],
+      "notes": "Footprint and storeys are measured/sourced; the cream-ochre colour and clock tower are recalled from public photos rather than from a found description, so treat as medium. Recognisable by the extreme length versus depth, symmetric colonial front and the market lanes behind it. The 1990s extension across the road is a plainer concrete block (not modelled)."
+    },
+    "yangon-meal-stop": {
+      "venueId": "yangon-meal-stop",
+      "city": "yangon",
+      "name": "Black Canyon",
+      "archetype": "restaurant",
+      "subject": "A small modern coffee-shop restaurant unit: single-storey glazed corner cafe with an awning and outdoor seating",
+      "form": {
+        "footprint": "rect",
+        "width_m": 18,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 5,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "painted-render",
+        "colours": [
+          "#e8e3d8",
+          "#6b4a2e",
+          "#f4f2ee"
+        ],
+        "roofColour": "#8a8e92",
+        "windows": "curtain",
+        "windowRatio": 0.55,
+        "roofMaterial": "membrane"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank brand-neutral board"
+        },
+        {
+          "id": "umbrellas",
+          "count": 3
+        },
+        {
+          "id": "neon-strip",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "nearest OSM restaurant building ('My Garden', 49 x 46 m) is 69 m from the venue point; not the same venue"
+        }
+      ],
+      "notes": "(game venue) generic. Black Canyon is a Thai coffee chain; no specific Yangon outlet was described. Do not render any logo."
+    },
+    "yangon-osm-node-2107705043": {
+      "venueId": "yangon-osm-node-2107705043",
+      "city": "yangon",
+      "name": "Myanmar Gems Museum",
+      "archetype": "museum-theatre",
+      "subject": "A four-storey commercial gems-mart building near Kaba Aye Pagoda Road, the gem museum occupying its third floor",
+      "form": {
+        "footprint": "rect",
+        "width_m": 44,
+        "depth_m": 31,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d7d2c4",
+          "#4a6a86",
+          "#f0eee8"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1990s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Myanmar_Gems_Museum",
+          "what": "museum occupies the third floor of a four-storey building at 66 Kaba Aye Pagoda Road, Mayangon, with the Gems Mart (82 shops on three floors) and gem emporium"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6946743",
+          "what": "Wikidata match; OSM containing building 44 x 31 m"
+        }
+      ],
+      "notes": "Storeys and footprint are sourced; facade appearance was not described anywhere found, so painted concrete with ribbon windows is typed from the era and city style. Not a stand-alone museum building: it is a commercial mart building."
+    },
+    "yangon-osm-node-3546535083": {
+      "venueId": "yangon-osm-node-3546535083",
+      "city": "yangon",
+      "name": "Bogyoke Aung San Museum",
+      "archetype": "manor",
+      "subject": "Aung San's family home, a two-storey 1921 colonial villa in a garden with a lawn and a pool, on a quiet leafy road",
+      "form": {
+        "footprint": "rect",
+        "width_m": 24,
+        "depth_m": 14,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "timber",
+        "colours": [
+          "#ece6d6",
+          "#7d5a3c",
+          "#f4f1ea"
+        ],
+        "roofColour": "#8a4a35",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "first-floor verandah"
+        },
+        {
+          "id": "statue",
+          "count": 1,
+          "note": "bronze statue of Aung San gardening in the garden"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "portico",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1921",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bogyoke_Aung_San_Museum",
+          "what": "two-storey colonial-era villa built in 1921; bronze statue of Aung San doing gardening and a swimming pool in the garden"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4937981",
+          "what": "Wikidata: house museum, opened 1962"
+        }
+      ],
+      "notes": "Storeys and date are sourced; wall/roof colours and verandah are typical of the type and recalled from public photos, not found in a text description. Recognisable by the garden statue and the lawn, not the architecture."
+    },
+    "yangon-osm-node-5442063565": {
+      "venueId": "yangon-osm-node-5442063565",
+      "city": "yangon",
+      "name": "City Myanmar Cafe",
+      "archetype": "restaurant",
+      "subject": "A modest neighbourhood cafe: two-storey shophouse-style unit with a shaded front terrace and signboard",
+      "form": {
+        "footprint": "rect",
+        "width_m": 12,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 7,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "tile-cladding",
+        "colours": [
+          "#e9dcc0",
+          "#8e5b3a",
+          "#f3efe4"
+        ],
+        "roofColour": "#8d8f90",
+        "windows": "punched",
+        "windowRatio": 0.3,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "shopfront",
+          "count": 1
+        },
+        {
+          "id": "umbrellas",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "2010s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "venue is an OSM point node with no building footprint or tags (facts file)"
+        }
+      ],
+      "notes": "Obscure place; nothing found. Typed from city style."
+    },
+    "yangon-osm-relation-2409874": {
+      "venueId": "yangon-osm-relation-2409874",
+      "city": "yangon",
+      "name": "Maha Wizaya Pagoda",
+      "archetype": "temple-asian",
+      "subject": "A gilded Burmese stupa on a broad cross-shaped terrace on Dhammarakhita Hill, immediately south of Shwedagon, with stairways up to the platform",
+      "form": {
+        "footprint": "cross",
+        "width_m": 105,
+        "depth_m": 104,
+        "storeys": 1,
+        "height_m": 40,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#e0b030",
+          "#f4efe0",
+          "#b8861a"
+        ],
+        "roofColour": "#d9a521",
+        "windows": "none",
+        "windowRatio": 0.05,
+        "roofMaterial": "gold-leaf"
+      },
+      "features": [
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "bell-shaped gilded stupa with finial and hti"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "cross-shaped platform"
+        },
+        {
+          "id": "steps",
+          "count": 4,
+          "note": "four stairways"
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "small corner shrines/stupas"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "1980",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maha_Wizaya_Pagoda",
+          "what": "on Dhammarakhita Hill immediately south of Shwedagon in Dagon Township; hti consecrated by Ne Win (1980)"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6732674",
+          "what": "Wikidata description: graceful golden pagoda; OSM temple footprint is a cross about 105 x 104 m"
+        }
+      ],
+      "notes": "Plan (cross, ~105 m terrace) is measured from OSM. The stupa height (~40 m) and corner stupas are an estimate: no source found stated the height. Gold colour is from the Wikidata description. Smaller and plainer than Shwedagon (99 m) and visibly white-and-gold with a hill setting."
+    },
+    "yangon-osm-relation-5805151": {
+      "venueId": "yangon-osm-relation-5805151",
+      "city": "yangon",
+      "name": "Yangon Mental Health Hospital",
+      "archetype": "hospital",
+      "subject": "A sprawling rural-style psychiatric hospital compound: rows of low one- and two-storey ward blocks in painted render among trees, around a central admin block",
+      "form": {
+        "footprint": "U",
+        "width_m": 60,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 9,
+        "roof": "gable",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e2dbc4",
+          "#7f9a86",
+          "#f3f0e6"
+        ],
+        "roofColour": "#8a5a3c",
+        "windows": "punched",
+        "windowRatio": 0.25,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Yangon_Mental_Health_Hospital",
+          "what": "1,200-bed hospital at Ywar Thar Gyi ward, East Dagon; patients moved to this site in the 2000s; earlier Tadagalay asylum from 1926"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18395894",
+          "what": "Wikidata; OSM compound about 500 x 495 m (20 ha)"
+        }
+      ],
+      "notes": "No building description found. The 20 ha OSM compound implies many blocks; model shows one typical ward block (U plan assumed, a guess)."
+    },
+    "yangon-osm-way-129485357": {
+      "venueId": "yangon-osm-way-129485357",
+      "city": "yangon",
+      "name": "Sakura Tower",
+      "archetype": "office-tower",
+      "subject": "A 100 m modern office tower on Bogyoke Aung San Road: a rectangular slab with ribbon glazing and a rooftop observation level, one of the tallest in central Yangon",
+      "form": {
+        "footprint": "rect",
+        "width_m": 34,
+        "depth_m": 29,
+        "storeys": 20,
+        "height_m": 100,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#a9b6c2",
+          "#566574",
+          "#dfe3e6"
+        ],
+        "roofColour": "#8d9399",
+        "windows": "curtain",
+        "windowRatio": 0.55,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1,
+          "note": "viewing level/viewpoint (OSM tourism=viewpoint)"
+        },
+        {
+          "id": "mast",
+          "count": 1
+        },
+        {
+          "id": "podium",
+          "count": 1,
+          "note": "lower retail/podium floors"
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank board"
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "international",
+      "era": "1999",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sakura_Tower",
+          "what": "100 m, 20 storeys, designed by Nihon Sekkei and built by Konoike, completed 1999; Myanmar's tallest building until 2016; at 339 Bogyoke Aung San Road"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q20992069",
+          "what": "OSM: building:levels 23, tourism=viewpoint, footprint ~34 x 29 m"
+        }
+      ],
+      "notes": "Height, storeys and footprint are sourced (OSM says 23 levels, Wikipedia 20). Facade colours (blue-grey glazing and grey cladding) were not described in the sources found and are inferred for a 1999 Japanese office tower. Taller than anything near it."
+    },
+    "yangon-osm-way-15059554": {
+      "venueId": "yangon-osm-way-15059554",
+      "city": "yangon",
+      "name": "Thuwunna Stadium",
+      "archetype": "stadium",
+      "subject": "The national Thuwunna Youth Training Centre stadium: an oval bowl of concrete stands around a grass pitch with an eight-lane track, floodlight masts, partial roof over the main stand",
+      "form": {
+        "footprint": "oval",
+        "width_m": 258,
+        "depth_m": 193,
+        "storeys": 2,
+        "height_m": 22,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcac0",
+          "#3b6a9a",
+          "#eeeeea"
+        ],
+        "roofColour": "#9aa0a5",
+        "windows": "none",
+        "windowRatio": 0.1,
+        "roofMaterial": "metal-sheet"
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "cover over main stand; extent assumed"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 3
+        },
+        {
+          "id": "flags",
+          "count": 4
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1985",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thuwunna_Stadium",
+          "what": "50,000-capacity multi-purpose stadium, eight-lane IAAF-standard track, grass pitch, built with Japanese government assistance, completed 1985, renovated for the 2013 SEA Games"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1639369",
+          "what": "OSM stadium footprint 258 x 193 m"
+        }
+      ],
+      "notes": "Capacity, track and dimensions are sourced; roof coverage and colours are not described, so a main-stand cover and neutral concrete/blue seating are assumed. The bowl exceeds the 120 m clamp: show the main stand portion. Different from Sa Lin Stadium by being a full 50k bowl with track."
+    },
+    "yangon-osm-way-180605242": {
+      "venueId": "yangon-osm-way-180605242",
+      "city": "yangon",
+      "name": "Botahtaung Pagoda",
+      "archetype": "temple-asian",
+      "subject": "The rebuilt gilded Botahtaung stupa, a hollow gold stupa with a square base on the Yangon River waterfront, with a pyramidal gilded roof over the surrounding hall",
+      "form": {
+        "footprint": "round",
+        "width_m": 29,
+        "depth_m": 29,
+        "storeys": 1,
+        "height_m": 40,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#d9a521",
+          "#f1e6c0",
+          "#a3761a"
+        ],
+        "roofColour": "#d9a521",
+        "windows": "none",
+        "windowRatio": 0.05,
+        "roofMaterial": "gold-leaf"
+      },
+      "features": [
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "hollow gold-covered stupa about 40 m"
+        },
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "gold-and-mirror walkway ring"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "small stupas around platform"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "palm",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "1948",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Botataung_Pagoda",
+          "what": "rebuilt stupa about 40 m (131 ft) high on a square base about 29 m a side; hollow inside with a mirrored maze-like path with glass cases of relics; destroyed by WWII bombing in 1943, rebuilding began 4 Jan 1948"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4948533",
+          "what": "OSM tags: roof:shape pyramidal, roof/building colour gold, masonry; footprint ~26.5 m"
+        }
+      ],
+      "notes": "Height, base and gold finish come from sources; the shape is the standard Burmese bell stupa with a tapering finial and hti. The interior is hollow (not needed for exterior). Recognisable by solid gold surface and waterfront setting."
+    },
+    "yangon-osm-way-220311909": {
+      "venueId": "yangon-osm-way-220311909",
+      "city": "yangon",
+      "name": "Karen Baptisit Seminary Insein",
+      "archetype": "campus-block",
+      "subject": "A mission seminary on Seminary Hill, Insein: a two-storey colonial-era brick/render hall with a veranda among old trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 35,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "red-brick",
+        "colours": [
+          "#e9e2cf",
+          "#9a4a35",
+          "#f4f1e8"
+        ],
+        "roofColour": "#7a3f2c",
+        "windows": "punched",
+        "windowRatio": 0.28,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "verandah"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small chapel cupola assumed"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "colonial",
+      "era": "1845 (institution), building c. 1900s-1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Karen_Baptist_Theological_Seminary",
+          "what": "founded 1845 by the American Baptist Missionary Union; Seminary Hill, Insein; no building description"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q6369507",
+          "what": "OSM building 43 x 35 m with start_date 1845 tag"
+        }
+      ],
+      "notes": "The 1845 date is the institution's, not necessarily of this building. Appearance typed from the mission-school type; nothing was found describing the buildings."
+    },
+    "yangon-osm-way-374243908": {
+      "venueId": "yangon-osm-way-374243908",
+      "city": "yangon",
+      "name": "People's Park",
+      "archetype": "park-landscape",
+      "subject": "People's Square and Park west of Shwedagon: a wide marble esplanade lined with flowers and trees running from the former parliament complex toward the pagoda, with an exhibition hall and a botanical garden with a maze",
+      "form": {
+        "footprint": "rect",
+        "width_m": 300,
+        "depth_m": 200,
+        "storeys": 1,
+        "height_m": 8,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4da",
+          "#6a8f4e",
+          "#b8b0a0"
+        ],
+        "roofColour": "#8a5a3c",
+        "windows": "none",
+        "windowRatio": 0.1,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "terrace",
+          "count": 1,
+          "note": "marble esplanade"
+        },
+        {
+          "id": "pavilion",
+          "count": 2,
+          "note": "Pyidaungsu Ayeyeik Nyein exhibition hall and shelters"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2000s",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/People%27s_Square_and_Park",
+          "what": "135.72 acres; People's Square (70.3 acres) with a marble esplanade lined with flowers and trees running from the Pyithu Hluttaw toward Shwedagon, 1,000+ trees; People's Park (65.42 acres) with 72 tree species, a botanical maze; exhibition hall of ethnic-group dioramas"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7165783",
+          "what": "OSM park polygon about 1,126 x 697 m"
+        }
+      ],
+      "notes": "Subject is the esplanade portion (the park far exceeds the 120 m clamp). Layout is sourced; exact structure shapes and colours are not and are assumed. Shwedagon sits to the east; the view axis matters more than any building."
+    },
+    "yangon-osm-way-378356321": {
+      "venueId": "yangon-osm-way-378356321",
+      "city": "yangon",
+      "name": "Dagon University",
+      "archetype": "campus-block",
+      "subject": "A Dagon University hall (OSM 'Kan Kaw Hall'): a three-storey rendered teaching block with open corridors on a huge wooded campus",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 47,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dcc6",
+          "#6e8a9a",
+          "#f2efe4"
+        ],
+        "roofColour": "#7a5a45",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 3,
+          "note": "open corridors"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "vernacular",
+      "era": "1993",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Dagon_University",
+          "what": "1,582-acre campus founded 1993; convocation hall, theatre/lecture building and student-affairs blocks, no architectural description"
+        },
+        {
+          "url": "https://www.openstreetmap.org/",
+          "what": "OSM building 68 x 47 m, 3 levels (Kan Kaw hall per Burmese name)"
+        }
+      ],
+      "notes": "Only OSM footprint and levels are measured; look and colours are typed from the Burmese public university style."
+    },
+    "yangon-osm-way-383504429": {
+      "venueId": "yangon-osm-way-383504429",
+      "city": "yangon",
+      "name": "Technological University, Thanlyin",
+      "archetype": "campus-block",
+      "subject": "A newer government technological university: long three-storey lecture block with workshops behind, plain painted concrete",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 20,
+        "storeys": 3,
+        "height_m": 13,
+        "roof": "flat"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#dcd7cb",
+          "#2f5f8a",
+          "#f1efe8"
+        ],
+        "roofColour": "#8b9096",
+        "windows": "ribbon",
+        "windowRatio": 0.35,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "2007",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Technological_University,_Thanlyin",
+          "what": "310-acre campus with lecture halls, laboratories, workshops, library, dormitories; established 2007"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7692507",
+          "what": "OSM campus polygon 1,175 x 585 m"
+        }
+      ],
+      "notes": "No architectural description found. The 2007 date suggests flat-roofed painted concrete rather than the older hip-roofed colonial-style blocks used for Dagon University and the Institute of Economics."
+    },
+    "yangon-osm-way-407771515": {
+      "venueId": "yangon-osm-way-407771515",
+      "city": "yangon",
+      "name": "Lim Chin Tsong Palace",
+      "archetype": "manor",
+      "subject": "The 1915-18 Lim Chin Tsong mansion ('Mount Pleasant'), an eclectic Chinese-Western palace with a five-storey octagonal pagoda-like tower modelled on the Fu Xing Pavilion",
+      "form": {
+        "footprint": "irregular",
+        "width_m": 61,
+        "depth_m": 46,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "hip"
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#a8442e",
+          "#f3eee0"
+        ],
+        "roofColour": "#a8442e",
+        "windows": "arched",
+        "windowRatio": 0.3,
+        "roofMaterial": "clay-tile"
+      },
+      "features": [
+        {
+          "id": "pagoda-roof",
+          "count": 1,
+          "note": "five-storey octagonal tower"
+        },
+        {
+          "id": "balcony-bands",
+          "count": 2
+        },
+        {
+          "id": "courtyard",
+          "count": 1
+        },
+        {
+          "id": "arches",
+          "count": 6
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "east-asian",
+      "era": "1915-1918",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lim_Chin_Tsong",
+          "what": "built 1915-1918 for over 2,000,000 rupees as 'Mount Pleasant'; mixture of Eastern and Western styles; five-storey tower modelled on the Fu Xing Pavilion at the Summer Palace in Beijing, reportedly octagonal; materials imported from China and Italy; heritage site 2015, under renovation"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q16031580",
+          "what": "OSM historic building 61 x 46 m, 4 levels"
+        }
+      ],
+      "notes": "Tower, era, style mix and footprint are sourced. Colours (cream stucco and red tile) were not described in the source and are inferred. Recognisable by the tall octagonal tower rising over a lower mansion. Height of the tower ~25-30 m is a guess; main mass 4 storeys per OSM."
+    },
+    "yangon-osm-way-463340150": {
+      "venueId": "yangon-osm-way-463340150",
+      "city": "yangon",
+      "name": "Sa Lin Stadium",
+      "archetype": "stadium",
+      "subject": "A compact football stadium: a small bowl with a covered grandstand on one side and open terraces on the others",
+      "form": {
+        "footprint": "oval",
+        "width_m": 131,
+        "depth_m": 107,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#cfcac0",
+          "#8a2f2f",
+          "#eeeeea"
+        ],
+        "roofColour": "#8f959a",
+        "windows": "none",
+        "windowRatio": 0.1,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "covered main stand"
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "gate",
+          "count": 2
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "palm",
+        "forecourt": "road"
+      },
+      "style": "vernacular",
+      "era": "1970s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q22673590",
+          "what": "Wikidata item; OSM stadium footprint 131 x 107 m (1.4 ha)"
+        }
+      ],
+      "notes": "Nothing found describing the stadium. Typed from the footprint (a small football ground, much smaller than Thuwunna's 50,000-seat bowl) and city style."
+    },
+    "yangon-osm-way-480039800": {
+      "venueId": "yangon-osm-way-480039800",
+      "city": "yangon",
+      "name": "New Yangon General Hospital",
+      "archetype": "hospital",
+      "subject": "A large 1984 Japan-aided hospital: a multi-storey modernist concrete block with long ribbon windows and covered entrance drive",
+      "form": {
+        "footprint": "H",
+        "width_m": 80,
+        "depth_m": 28,
+        "storeys": 6,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "exposed-concrete",
+        "colours": [
+          "#e5e2d8",
+          "#6e8aa0",
+          "#f3f1ea"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "ribbon",
+        "windowRatio": 0.4,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1,
+          "note": "blank board"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1,
+          "note": "entrance drop-off"
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "helipad",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1984",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/New_Yangon_General_Hospital",
+          "what": "completed 1984 with JICA grant aid, 250 beds; building described only by photo"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q18392018",
+          "what": "OSM building tagged start_date 1984; the mapped way is a 16 x 15 m fragment"
+        }
+      ],
+      "notes": "Storeys, footprint and colours are guessed: only date, beds and Japanese aid are sourced. The 16 x 15 m OSM way is only part of the complex. Helipad is not sourced and is a weak guess; ignore if the generator needs a clean look."
+    },
+    "yangon-quiet-reflection": {
+      "venueId": "yangon-quiet-reflection",
+      "city": "yangon",
+      "name": "Kyaik Khauk Pagoda",
+      "archetype": "temple-asian",
+      "subject": "Kyaikkhauk Pagoda on Hlaingpotkon Hill, Thanlyin: a Mon-tradition gilded stupa reached by four staircases, standing high above the surrounding land",
+      "form": {
+        "footprint": "round",
+        "width_m": 45,
+        "depth_m": 45,
+        "storeys": 1,
+        "height_m": 30,
+        "roof": "dome"
+      },
+      "facade": {
+        "material": "brick",
+        "accent": "stucco",
+        "colours": [
+          "#d9a521",
+          "#f1ead0",
+          "#b78a1e"
+        ],
+        "roofColour": "#d9a521",
+        "windows": "none",
+        "windowRatio": 0.05,
+        "roofMaterial": "gold-leaf"
+      },
+      "features": [
+        {
+          "id": "stupa",
+          "count": 1,
+          "note": "Mon-tradition bell stupa, gilded"
+        },
+        {
+          "id": "steps",
+          "count": 4,
+          "note": "four staircases"
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        },
+        {
+          "id": "pinnacles",
+          "count": 4,
+          "note": "small corner stupas"
+        },
+        {
+          "id": "gate",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "southeast-asian",
+      "era": "traditional (c. 2,000 years claimed)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kyaikkhauk_Pagoda",
+          "what": "stupa in Mon tradition on Hlaingpotkon Hill, Thanlyin; four staircases; said to be built ~2,000 years ago by King Sulathrima of Thaton; storm shelter during Cyclone Nargis"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q19697135",
+          "what": "OSM compound ~83 x 83 m"
+        }
+      ],
+      "notes": "Shape and four stairs are sourced; height (~30 m) and gold colour are estimates for a Mon-style stupa, not stated. Hilltop site: a taller, more slender profile than Botahtaung and set on a high terrace."
+    },
+    "yangon-recreation": {
+      "venueId": "yangon-recreation",
+      "city": "yangon",
+      "name": "Maha Bandula Park",
+      "archetype": "park-landscape",
+      "subject": "Downtown's central park, a 3 ha landscaped square holding the white Independence Monument obelisk, ringed by roads and by colonial City Hall and High Court",
+      "form": {
+        "footprint": "rect",
+        "width_m": 217,
+        "depth_m": 135,
+        "storeys": 0,
+        "height_m": 45,
+        "roof": "none"
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "concrete",
+        "colours": [
+          "#ffffff",
+          "#5d8a3c",
+          "#c9c2b0"
+        ],
+        "roofColour": "#9a9a96",
+        "windows": "none",
+        "windowRatio": 0.0,
+        "roofMaterial": "concrete"
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1,
+          "note": "Independence Monument, ~45 m, height recalled not sourced"
+        },
+        {
+          "id": "steps",
+          "count": 1,
+          "note": "plinth steps"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1,
+          "note": "railings"
+        },
+        {
+          "id": "fountain",
+          "count": 1
+        },
+        {
+          "id": "statue",
+          "count": 4,
+          "note": "corner guardian statues assumed"
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "colonial",
+      "era": "1948 (monument)",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Maha_Bandula_Park",
+          "what": "7.5 acres (3 ha); Independence Monument obelisk at the centre, replacing a statue of Queen Victoria, architect Sithu U Tin; near Sule Pagoda, City Hall, High Court; remodelled 2012"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q5371664",
+          "what": "OSM park 217 x 135 m; inception 1867"
+        }
+      ],
+      "notes": "Obelisk, centred layout and surroundings are sourced; monument height, white colour and the small statues/fountain are from memory of photos or assumed. Fountain and corner statues are low-certainty extras."
+    },
+    "yangon-transit": {
+      "venueId": "yangon-transit",
+      "city": "yangon",
+      "name": "Paywetseikkon",
+      "archetype": "transport-station",
+      "subject": "A tiny suburban station on the Yangon Circular Railway: a low platform with a small shed-roofed building and tracks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 16,
+        "depth_m": 6,
+        "storeys": 1,
+        "height_m": 4,
+        "roof": "shed"
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#d9d3b8",
+          "#6a7f6a",
+          "#efede2"
+        ],
+        "roofColour": "#8f5a3a",
+        "windows": "punched",
+        "windowRatio": 0.2,
+        "roofMaterial": "corrugated"
+      },
+      "features": [
+        {
+          "id": "platform-canopy",
+          "count": 1
+        },
+        {
+          "id": "rail-tracks",
+          "count": 2
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1,
+          "note": "blank station board"
+        },
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "laterite",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "colonial",
+      "era": "c. 1954",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paywetseikkon_Railway_Station",
+          "what": "station in North Okkalapa Township on the Yangon Circular Railway between Okkalapa and Kyaukyedwin; no description"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7156934",
+          "what": "Wikidata station item; OSM building only 7 x 3.6 m"
+        }
+      ],
+      "notes": "Stub-level source. Typed as a minimal Burmese suburban halt; the era and details are guesses (the circular railway dates from the 1950s)."
+    }
+  }
+}

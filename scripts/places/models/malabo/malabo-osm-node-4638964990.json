@@ -1,0 +1,186 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/284741127",
+   "used": "footprint of the main shed (90x34 m rotated rectangle, nearest match 17 m); the rest from the brief: steel sheds, tanks, perimeter wall, floodlights, gate"
+  }
+ ],
+ "camera": {
+  "yawDeg": 35,
+  "pitchDeg": 15,
+  "fovDeg": 50
+ },
+ "parts": [
+  {
+   "type": "mass",
+   "id": "shed",
+   "footprint": {
+    "osm": true
+   },
+   "at": [
+    0,
+    0
+   ],
+   "height": 12,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#b8bdbe",
+    "windows": "none",
+    "plinth": 0.6,
+    "bands": "#2f5f8a"
+   },
+   "roof": {
+    "form": "gable",
+    "colour": "#8f969b",
+    "material": "metal-sheet",
+    "rise": 3.2,
+    "overhang": 0.5
+   }
+  },
+  {
+   "type": "mass",
+   "id": "annex",
+   "footprint": {
+    "rect": [
+     18,
+     8
+    ]
+   },
+   "at": [
+    0,
+    -32
+   ],
+   "height": 4,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#d8dadb",
+    "windows": "punched",
+    "windowRatio": 0.1
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8f969b"
+   },
+   "rotDeg": -40
+  },
+  {
+   "type": "tank-farm",
+   "at": [
+    -45,
+    28,
+    0
+   ],
+   "params": {
+    "count": 2,
+    "rows": 1,
+    "radius": 6,
+    "height": 9,
+    "colour": "#d8dadb"
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    40,
+    28,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "floodlight-mast",
+   "at": [
+    -40,
+    -28,
+    0
+   ],
+   "params": {
+    "height": 22
+   }
+  },
+  {
+   "type": "gate",
+   "at": [
+    0,
+    -45,
+    0
+   ],
+   "params": {
+    "width": 9,
+    "height": 3.6,
+    "colour": "#2f5f8a"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 21,
+    "height": 2.4,
+    "colour": "#d8dadb"
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    9,
+    -45,
+    0
+   ],
+   "params": {
+    "length": 21,
+    "height": 2.4,
+    "colour": "#d8dadb"
+   }
+  },
+  {
+   "type": "container-stack",
+   "at": [
+    40,
+    -30,
+    0
+   ],
+   "params": {
+    "nx": 2,
+    "ny": 2,
+    "levels": 2
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "none",
+  "trees": [
+   {
+    "kind": "palm",
+    "at": [
+     -55,
+     -40
+    ]
+   }
+  ],
+  "extent": [
+   130,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "malabo",
+ "venueId": "malabo-osm-node-4638964990",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo; only the main shed outline is real (nearest match, 17 m); tanks, wall, gate and lights are brief-based."
+ }
+}

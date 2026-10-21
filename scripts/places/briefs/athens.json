@@ -1,0 +1,1710 @@
+{
+  "schema": "allworld-place-briefs",
+  "version": 1,
+  "city": "athens",
+  "style": {
+    "schema": "allworld-city-style",
+    "version": 1,
+    "city": "athens",
+    "climate": "mediterranean",
+    "vernacular": "Concrete-frame city: dense six-to-eight storey polykatoikia apartment blocks of the 1950s-70s in cream, ochre and grey painted render with continuous balcony slabs, awnings and rooftop water tanks and solar heaters; scattered neoclassical townhouses in pale stucco with red-tile hip roofs; marble, limestone and white Pentelic stone for civic and ancient sites; Byzantine churches of stone framed by red brick under tiled domes; modern glass-and-steel public buildings and malls. Flat concrete roofs dominate, red clay tile on older and suburban houses. Pine, olive, plane and orange trees under bright light.",
+    "wallColours": [
+      "#e8e0cf",
+      "#d9c9a3",
+      "#b8b0a2",
+      "#f1efe8",
+      "#c98f5e",
+      "#a8a59e"
+    ],
+    "roofColours": [
+      "#b4552f",
+      "#8a8a86",
+      "#c7c2b6",
+      "#6b6f74"
+    ],
+    "wallMaterials": [
+      "painted-render",
+      "concrete",
+      "render",
+      "marble",
+      "limestone",
+      "stucco",
+      "glass-curtain"
+    ],
+    "roofMaterials": [
+      "concrete",
+      "clay-tile",
+      "membrane"
+    ],
+    "ground": "paving",
+    "vegetation": [
+      "conifer",
+      "broadleaf"
+    ],
+    "ornament": "Continuous balcony bands with metal railings and striped awnings on polykatoikia; neoclassical pediments, acroteria, pilasters and tall shuttered windows on older townhouses; cloisonne masonry (stone blocks framed by red brick) and brick arch frames on Byzantine churches; marble steps, columns and Doric porticoes at ancient and civic sites; rooftop water tanks and solar heaters.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+        "what": "limestone and white marble as the local building stones; fired clay roof tiles; neoclassical and Greek Revival adaptation of ancient forms"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Daphni_Monastery",
+        "what": "cloisonne masonry of light stone blocks framed by red brick, brick arch window frames, orange tile roof, central dome"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Pedion_tou_Areos",
+        "what": "marble and granite paving, deciduous shade trees, busts, Mediterranean planting in a central Athens park"
+      }
+    ]
+  },
+  "places": {
+    "athens-airport-athens-airport": {
+      "venueId": "athens-airport-athens-airport",
+      "city": "athens",
+      "name": "Athens Eleftherios Venizelos International Airport",
+      "archetype": "airport-terminal",
+      "subject": "Athens International Airport main terminal: a very long, three-level white-steel and glass hall with a full-length glazed front, canopy and jet bridges, seen from the forecourt",
+      "form": {
+        "footprint": "rect",
+        "width_m": 790,
+        "depth_m": 105,
+        "storeys": 3,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "metal-cladding",
+        "colours": [
+          "#dfe2e4",
+          "#6d8794",
+          "#f2f2f0"
+        ],
+        "roofColour": "#c9cdd0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.6
+      },
+      "features": [
+        {
+          "id": "control-tower",
+          "count": 1
+        },
+        {
+          "id": "jet-bridge",
+          "count": 14,
+          "note": "main terminal has fourteen jet bridges"
+        },
+        {
+          "id": "flat-canopy",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "road"
+      },
+      "style": "high-tech",
+      "era": "opened 2001",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Athens_International_Airport",
+          "what": "main terminal with three levels (arrivals, departures, food court), 153 check-in desks, fourteen jet bridges; satellite terminal linked underground; opened 28 March 2001; built by Hochtief and GEK Terna"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/327797564",
+          "what": "OSM measured footprint 788.6 x 105.2 m, 3 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q211734",
+          "what": "Wikidata Athens International Airport \"Eleftherios Venizelos\" (international airport serving Athens, Greece)"
+        }
+      ],
+      "notes": "OSM: main terminal 789 x 105 m, 3 levels. Facade colours and roof are estimates; shown as the central portion within the 120 m clamp. Much larger and glassier than Heathrow-like low blocks."
+    },
+    "athens-clinic": {
+      "venueId": "athens-clinic",
+      "city": "athens",
+      "name": "Εθνικό Κέντρο Αποκατάστασης",
+      "archetype": "hospital",
+      "subject": "National Rehabilitation Centre (EKA) in Nea Ionia: a large 1940s-era hospital campus of long rendered pavilion blocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0cf",
+          "#b8b0a2",
+          "#8a8f93"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "ambulance-bay",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1945 onward",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "general Greek building materials only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/669746894",
+          "what": "OSM measured footprint 281.7 x 279.7 m, start 1945"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q112285923",
+          "what": "Wikidata National Rehabilitation Center (hospital in Athens, Greece)"
+        }
+      ],
+      "notes": "Wikidata/OSM: National Rehabilitation Center hospital, started 1945, campus 282 x 280 m. No building description found; typed as a mid-century Athens hospital pavilion block."
+    },
+    "athens-community-notices": {
+      "venueId": "athens-community-notices",
+      "city": "athens",
+      "name": "Hellenic National Meteorological Service",
+      "archetype": "office-low",
+      "subject": "Hellenic National Meteorological Service headquarters at Elliniko: a plain mid-century government office block beside the old airport",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 32,
+        "storeys": 3,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dccb",
+          "#b8b0a2",
+          "#8a8f93"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "mast",
+          "count": 1,
+          "note": "weather mast"
+        },
+        {
+          "id": "flags",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "mid-20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/191315065",
+          "what": "OSM measured footprint 51.6 x 31.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q406531",
+          "what": "Wikidata Hellenic National Meteorological Service (meteorological service of Greece)"
+        }
+      ],
+      "notes": "OSM: government building 52 x 32 m (HNMS, Wikidata Q406531). No description found; a flat-roofed render block with an instrument mast is typed."
+    },
+    "athens-community-voting-game": {
+      "venueId": "athens-community-voting-game",
+      "city": "athens",
+      "name": "Πλατεία Μεταξουργείου",
+      "archetype": "park-landscape",
+      "subject": "Metaxourgeio Square: a small neighbourhood plaza in central Athens ringed by neoclassical townhouses, cafes and plane trees",
+      "form": {
+        "footprint": "rect",
+        "width_m": 40,
+        "depth_m": 30,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "marble",
+        "colours": [
+          "#e8dcc0",
+          "#c98f5e",
+          "#f1efe8"
+        ],
+        "roofColour": "#b4552f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "19th-century district",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/456012298",
+          "what": "OSM measured footprint 19.9 x 16.7 m"
+        }
+      ],
+      "notes": "OSM: only a 20 x 17 m building at the point. Square contents are not described by any source read; typed as a small paved square with a kiosk and plane trees."
+    },
+    "athens-community-workshop": {
+      "venueId": "athens-community-workshop",
+      "city": "athens",
+      "name": "Drossinis Museum",
+      "archetype": "manor",
+      "subject": "Drossinis Museum in Kifisia: the villa \"Amaryllis\" with the municipal library on the ground floor and the poet museum rooms above, in a leafy garden",
+      "form": {
+        "footprint": "rect",
+        "width_m": 13,
+        "depth_m": 12,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "hip",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#b8b0a2",
+          "#8a4a30"
+        ],
+        "roofColour": "#b4552f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "bay-window",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "villa of Kifisia; museum from 1997",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Drossinis_Museum",
+          "what": "villa named Amaryllis in the centre of Kifisia; museum halls on the first floor, municipal library on the ground floor; museum founded 1997"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/299059456",
+          "what": "OSM measured footprint 13.1 x 11.5 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q12881253",
+          "what": "Wikidata Drossinis Museum (museum in Kifisia, Attica, Greece)"
+        }
+      ],
+      "notes": "Two storeys sourced; style, stucco colour and hip tile roof are typical Kifisia villa estimates."
+    },
+    "athens-market-game": {
+      "venueId": "athens-market-game",
+      "city": "athens",
+      "name": "The Mall Athens",
+      "archetype": "mall",
+      "subject": "The Mall Athens in Marousi: a huge glazed shopping and leisure complex of about 58,500 m2 floor area with multi-storey car parks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 190,
+        "depth_m": 160,
+        "storeys": 4,
+        "height_m": 24,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "glass-curtain",
+        "accent": "concrete",
+        "colours": [
+          "#d4d2cc",
+          "#7f8c96",
+          "#efeeeb"
+        ],
+        "roofColour": "#c9cdd0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1,
+          "note": "about 2,100 spaces"
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "canopy-walkway",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "asphalt",
+        "trees": "conifer",
+        "forecourt": "parking"
+      },
+      "style": "contemporary",
+      "era": "2005",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Mall_Athens",
+          "what": "about 58,500 m2 floor area plus 90,000 m2 underground space; ~200 outlets; four or five floors; ~2,100 parking spaces; cinema and amusement park on level 3; Maroussi near the Olympic Stadium"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/44000881",
+          "what": "OSM measured footprint 189.9 x 158.9 m, 5 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q7749761",
+          "what": "Wikidata The Mall Athens (shopping center in Athens, Greece)"
+        }
+      ],
+      "notes": "OSM: 190 x 159 m, 5 levels. Facade and colours are estimates."
+    },
+    "athens-meal-stop": {
+      "venueId": "athens-meal-stop",
+      "city": "athens",
+      "name": "Varoulko Seaside",
+      "archetype": "restaurant",
+      "subject": "Varoulko Seaside: a two-storey white modern seafront restaurant on the Piraeus waterfront with a roof terrace",
+      "form": {
+        "footprint": "rect",
+        "width_m": 20,
+        "depth_m": 10,
+        "storeys": 2,
+        "height_m": 8,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "glass-curtain",
+        "colours": [
+          "#f1efe8",
+          "#7d8e9a",
+          "#b8b0a2"
+        ],
+        "roofColour": "#c9cdd0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.45
+      },
+      "features": [
+        {
+          "id": "roof-terrace",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "water"
+      },
+      "style": "contemporary",
+      "era": "restaurant founded 1987, seaside branch later",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/270899677",
+          "what": "OSM measured footprint 20.3 x 10.4 m, 2 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q88389150",
+          "what": "Wikidata Varoulko Seaside (restaurant in Greece)"
+        }
+      ],
+      "notes": "OSM: 20 x 10 m building, 2 levels; Wikidata: restaurant, 1987. The look (white, glassy, roof terrace on the harbour) is typed from the setting, not sourced."
+    },
+    "athens-osm-node-1008013053": {
+      "venueId": "athens-osm-node-1008013053",
+      "city": "athens",
+      "name": "Δρομοκαΐτειο",
+      "archetype": "hospital",
+      "subject": "Dromokaiteio psychiatric hospital in Chaidari: a large 20th-century hospital campus of low pavilions in gardens, with a main administration building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 70,
+        "depth_m": 22,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e3d5b0",
+          "#b8b0a2",
+          "#8a4a30"
+        ],
+        "roofColour": "#b4552f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.2
+      },
+      "features": [
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "early 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/1437133452",
+          "what": "OSM measured footprint 572.3 x 470.2 m"
+        }
+      ],
+      "notes": "OSM: hospital point; the campus is ~572 x 470 m. Pavilion architecture (neoclassical stucco, red-tile hip roofs) is a guess from the era and hospital type; no source read describes it."
+    },
+    "athens-osm-node-3565807234": {
+      "venueId": "athens-osm-node-3565807234",
+      "city": "athens",
+      "name": "Ιερός Ναός Κοιμήσεως Θεοτόκου (16ου-17ου αιώνα)",
+      "archetype": "shrine-small",
+      "subject": "Church of the Dormition of the Virgin (16th-17th c.): a tiny rural stone chapel with a red tile roof",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 11,
+        "storeys": 1,
+        "height_m": 6,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "whitewash",
+        "colours": [
+          "#bdb6a6",
+          "#f1efe8",
+          "#8a4a30"
+        ],
+        "roofColour": "#a4502e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "small bellcote"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "16th-17th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "no source describes this place; typed from city style (see notes)"
+        }
+      ],
+      "notes": "No sources: an OSM point named for the 16th-17th c. church. Typed as a tiny single-aisle stone chapel with a tiled gable roof and a bellcote."
+    },
+    "athens-osm-node-4729929890": {
+      "venueId": "athens-osm-node-4729929890",
+      "city": "athens",
+      "name": "City Link",
+      "archetype": "mall",
+      "subject": "City Link: a glass-roofed shopping arcade linking streets in central Athens",
+      "form": {
+        "footprint": "rect",
+        "width_m": 68,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 20,
+        "roof": "flat",
+        "variant": "arcade",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "glass-curtain",
+        "colours": [
+          "#d9d3c4",
+          "#7f8c96",
+          "#b8b0a2"
+        ],
+        "roofColour": "#c9cdd0",
+        "roofMaterial": "glass",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "arcade",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "shopfront",
+          "count": 6
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "none",
+        "forecourt": "road"
+      },
+      "style": "postmodern",
+      "era": "late 20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/224903033",
+          "what": "OSM measured footprint 68.2 x 40 m"
+        }
+      ],
+      "notes": "OSM: a roofed passage 68 x 40 m at Panepistimiou. No description found; a glazed arcade between older stone buildings is typed."
+    },
+    "athens-osm-node-6506548450": {
+      "venueId": "athens-osm-node-6506548450",
+      "city": "athens",
+      "name": "Battle of Salamis Memorial",
+      "archetype": "monument",
+      "subject": "Battle of Salamis Memorial on Salamis island: a tall stone and marble memorial on a stepped base overlooking the strait",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 8,
+        "storeys": 0,
+        "height_m": 12,
+        "roof": "none",
+        "variant": "memorial",
+        "wings": 0
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "concrete",
+        "colours": [
+          "#e8e4d8",
+          "#b8b0a2",
+          "#8a8478"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "obelisk",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 3
+        },
+        {
+          "id": "statue",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "no source describes this place; typed from city style (see notes)"
+        }
+      ],
+      "notes": "No structure is described by any source read: only the name. The memorial is typed as a vertical marble monument on a stepped plinth; its statue is a guess."
+    },
+    "athens-osm-node-9385908004": {
+      "venueId": "athens-osm-node-9385908004",
+      "city": "athens",
+      "name": "Ναός Αγίου Λουκά Λαμπρικών",
+      "archetype": "shrine-small",
+      "subject": "Church of Agios Loukas at Lambrika: a small whitewashed Orthodox church with a red tile roof and a small dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 8,
+        "depth_m": 12,
+        "storeys": 1,
+        "height_m": 7,
+        "roof": "gable",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "stone",
+        "colours": [
+          "#f1efe8",
+          "#bdb6a6",
+          "#8a4a30"
+        ],
+        "roofColour": "#b4552f",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "small tiled dome"
+        },
+        {
+          "id": "bell-tower",
+          "count": 1,
+          "note": "bellcote"
+        },
+        {
+          "id": "arches",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "unknown",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "no source describes this place; typed from city style (see notes)"
+        }
+      ],
+      "notes": "No sources: an OSM point only. Typed from the typical suburban Greek Orthodox chapel."
+    },
+    "athens-osm-relation-1626837": {
+      "venueId": "athens-osm-relation-1626837",
+      "city": "athens",
+      "name": "Nea Smyrni Stadium",
+      "archetype": "stadium",
+      "subject": "Nea Smyrni Stadium (Panionios): an all-seated 11,700-seat 1939 football stadium with a covered East Wing stand",
+      "form": {
+        "footprint": "rect",
+        "width_m": 180,
+        "depth_m": 135,
+        "storeys": 2,
+        "height_m": 14,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#8a8f93",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 1,
+          "note": "roof over the East Wing added 2001/2003"
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "built 1938-1939, renovated 2001, 2003, 2016",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nea_Smyrni_Stadium",
+          "what": "all-seated 11,700 capacity; roof over the East Wing added in 2001-2003; pitch 105 x 72 m; scoreboard; opened 1939"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/1626837",
+          "what": "OSM measured footprint 180.3 x 134.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1196095",
+          "what": "Wikidata Nea Smyrni Stadium (stadium)"
+        }
+      ],
+      "notes": "Floodlights and concrete colour are estimates. Only one stand has a roof, in contrast to Peristeri Stadium."
+    },
+    "athens-osm-relation-2022511": {
+      "venueId": "athens-osm-relation-2022511",
+      "city": "athens",
+      "name": "Τελεστήριον",
+      "archetype": "heritage-fort",
+      "subject": "Telesterion of Eleusis: the ruined square initiation hall of the Eleusinian Mysteries, with stepped seating and column bases on a hillside",
+      "form": {
+        "footprint": "rect",
+        "width_m": 52,
+        "depth_m": 52,
+        "storeys": 0,
+        "height_m": 3,
+        "roof": "none",
+        "variant": "ruin",
+        "wings": 0
+      },
+      "facade": {
+        "material": "limestone",
+        "accent": "marble",
+        "colours": [
+          "#bdb6a6",
+          "#d7d1c3",
+          "#8e8878"
+        ],
+        "roofColour": "#8e8878",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 8,
+          "note": "eight rows of stepped seating"
+        },
+        {
+          "id": "colonnade",
+          "count": 1,
+          "note": "Doric portico of twelve columns added by Philon around 318 BCE, now ruined"
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "vernacular",
+      "era": "6th-4th c. BCE, destroyed 396 CE",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Telesterion",
+          "what": "square pillared hall, ~55 yard square roof for up to 3,000-5,000 initiates, eight rows of stepped seating, walls of resonant stone, wooden roof, 12-column Doric portico by Philon c. 318 BCE, destroyed 396 CE"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/2022511",
+          "what": "OSM measured footprint 69.1 x 54.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1819712",
+          "what": "Wikidata Telesterion (Great hall and sanctuary in Greece associated with the Eleusinian Mysteries)"
+        }
+      ],
+      "notes": "OSM: ruins 69 x 55 m. Only foundations, bedrock-cut steps and column bases survive: model low walls and steps, no roof."
+    },
+    "athens-osm-relation-3568067": {
+      "venueId": "athens-osm-relation-3568067",
+      "city": "athens",
+      "name": "National and Kapodistrian University of Athens",
+      "archetype": "campus-block",
+      "subject": "National and Kapodistrian University of Athens, Zografou campus: long 1960s-70s concrete faculty blocks on pilotis with ribbon windows among pines",
+      "form": {
+        "footprint": "rect",
+        "width_m": 90,
+        "depth_m": 25,
+        "storeys": 4,
+        "height_m": 16,
+        "roof": "flat",
+        "wings": 3
+      },
+      "facade": {
+        "material": "exposed-concrete",
+        "accent": "painted-render",
+        "colours": [
+          "#bdb7ac",
+          "#e3dccb",
+          "#8a8f93"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.4
+      },
+      "features": [
+        {
+          "id": "pilotis",
+          "count": 1
+        },
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "brutalist",
+      "era": "1960s-70s campus",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "general Greek materials only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/relation/3568067",
+          "what": "OSM measured footprint 2777.1 x 725 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q547867",
+          "what": "Wikidata National and Kapodistrian University of Athens (university in Athens, Greece)"
+        }
+      ],
+      "notes": "OSM: the university relation 2.8 x 0.7 km at Zografou (the Panepistimioupoli). No sources read describe the buildings; exposed-concrete blocks are typed from the period. Differs from West Attica campus by exposed concrete and pilotis."
+    },
+    "athens-osm-way-1566325327": {
+      "venueId": "athens-osm-way-1566325327",
+      "city": "athens",
+      "name": "Pedion Areos",
+      "archetype": "park-landscape",
+      "subject": "Pedion tou Areos: a large green park with a central fountain square, marble busts of 1821 heroes, an equestrian statue at the main gate and shaded paths",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "granite",
+        "colours": [
+          "#e8e4d8",
+          "#8a8478",
+          "#b8b0a2"
+        ],
+        "roofColour": "#8a8a86",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "fountain",
+          "count": 1,
+          "note": "central square"
+        },
+        {
+          "id": "statue",
+          "count": 3,
+          "note": "equestrian King Constantine I at the main entrance, Athena memorial, rows of busts"
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "terrace",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "1934 park, renovated 2010",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pedion_tou_Areos",
+          "what": "27.7 ha; 21 marble busts of 1821 heroes; equestrian statue of Constantine I at the main entrance since 1938; memorial topped by an Athena statue; central fountain square; Mediterranean planting; marble and granite paving; deciduous trees; two churches, playground, Aliki open-air theatre; Green Park cafe"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/1566325327",
+          "what": "OSM measured footprint 767.4 x 469.1 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q932606",
+          "what": "Wikidata Pedion tou Areos (public park in Athens, Greece)"
+        }
+      ],
+      "notes": "Portion shown: the central fountain square with statues. Statue counts are approximate."
+    },
+    "athens-osm-way-160307906": {
+      "venueId": "athens-osm-way-160307906",
+      "city": "athens",
+      "name": "University of West Attica - Ancient Grove Campus",
+      "archetype": "campus-block",
+      "subject": "University of West Attica, Ancient Grove campus (Egaleo): a large complex of broad rendered blocks with ribbon windows and a plaza",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 40,
+        "storeys": 4,
+        "height_m": 17,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e8e0cf",
+          "#a8a59e",
+          "#c98f5e"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "ribbon",
+        "windowRatio": 0.35
+      },
+      "features": [
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "modernist",
+      "era": "1980s-2000s",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/160307906",
+          "what": "OSM measured footprint 519.5 x 459 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q50359480",
+          "what": "Wikidata University of West Attica (university in Egaleo (Athens), Greece)"
+        }
+      ],
+      "notes": "OSM: campus 519 x 459 m (former Athens technological institute site). No building description read; typed as large light-coloured render blocks, unlike the exposed-concrete Zografou campus."
+    },
+    "athens-osm-way-316732250": {
+      "venueId": "athens-osm-way-316732250",
+      "city": "athens",
+      "name": "Γενικό Νοσοκομείο Νοσημάτων Θώρακος \"Η Σωτηρία\"",
+      "archetype": "hospital",
+      "subject": "Sotiria Thoracic Diseases Hospital: a historic 1900s sanatorium campus of long pavilion buildings on a hillside, designed by Ioannis Despotopoulos",
+      "form": {
+        "footprint": "rect",
+        "width_m": 110,
+        "depth_m": 18,
+        "storeys": 3,
+        "height_m": 15,
+        "roof": "hip",
+        "wings": 3
+      },
+      "facade": {
+        "material": "stucco",
+        "accent": "stone",
+        "colours": [
+          "#e8dcc0",
+          "#b8b0a2",
+          "#8a4a30"
+        ],
+        "roofColour": "#b4552f",
+        "roofMaterial": "clay-tile",
+        "windows": "punched",
+        "windowRatio": 0.25
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1,
+          "note": "long sun-terrace balconies"
+        },
+        {
+          "id": "portico",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "red-cross-sign",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "neoclassical",
+      "era": "founded 1902",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "general Greek neoclassical context only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/316732250",
+          "what": "OSM measured footprint 1033.9 x 613.8 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q21626598",
+          "what": "Wikidata Sotiria Thoracic Diseases Hospital of Athens (hospital in Athens, Greece)"
+        }
+      ],
+      "notes": "Wikidata: architect Ioannis Despotopoulos, inception 1902; OSM campus 1034 x 614 m. Pavilion look (long stucco blocks with terraces and tile hip roofs) is typed from the sanatorium type, not sourced."
+    },
+    "athens-osm-way-319084318": {
+      "venueId": "athens-osm-way-319084318",
+      "city": "athens",
+      "name": "Australian Archaeological Institute at Athens",
+      "archetype": "campus-block",
+      "subject": "Australian Archaeological Institute at Athens: a narrow six-storey concrete apartment-type building",
+      "form": {
+        "footprint": "rect",
+        "width_m": 21,
+        "depth_m": 14,
+        "storeys": 6,
+        "height_m": 18,
+        "roof": "flat",
+        "wings": 0
+      },
+      "facade": {
+        "material": "painted-render",
+        "accent": "concrete",
+        "colours": [
+          "#e3dccb",
+          "#b8b0a2",
+          "#8a8f93"
+        ],
+        "roofColour": "#8a8a86",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "balcony-bands",
+          "count": 1
+        },
+        {
+          "id": "water-tank",
+          "count": 1
+        },
+        {
+          "id": "awning",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "broadleaf",
+        "forecourt": "road"
+      },
+      "style": "modernist",
+      "era": "1960s-70s polykatoikia",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Australian_Archaeological_Institute_at_Athens",
+          "what": "foreign archaeological institute in Athens"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/319084318",
+          "what": "OSM measured footprint 21.1 x 14.3 m, height 18 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q781330",
+          "what": "Wikidata Australian Archaeological Institute at Athens (foreign archaeological institute in Athens, Greece)"
+        }
+      ],
+      "notes": "OSM: height 18 m, flat concrete roof, footprint 21 x 14 m. Typed as a polykatoikia-style block with balcony bands; the 6-storey count is derived from the 18 m height."
+    },
+    "athens-osm-way-412135808": {
+      "venueId": "athens-osm-way-412135808",
+      "city": "athens",
+      "name": "Αττικό Ζωολογικό Πάρκο",
+      "archetype": "park-landscape",
+      "subject": "Attica Zoological Park in Spata: a large zoo of walk-through aviaries, ponds, a main plaza and savannah paddocks",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 90,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "timber",
+        "accent": "stone",
+        "colours": [
+          "#a89a82",
+          "#7a6a55",
+          "#d9d6cf"
+        ],
+        "roofColour": "#a4502e",
+        "roofMaterial": "clay-tile",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "pavilion",
+          "count": 3,
+          "note": "walk-in aviaries"
+        },
+        {
+          "id": "kiosk",
+          "count": 1,
+          "note": "elevated viewing kiosk over the ponds"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "signage-board",
+          "count": 1
+        },
+        {
+          "id": "car-park",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "contemporary",
+      "era": "private zoo; dolphinarium 2010",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Attica_Zoological_Park",
+          "what": "81 ha private zoo; three walk-through aviaries, Water World ponds with an elevated kiosk, main plaza and educational centre, African Savannah; open 365 days"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/412135808",
+          "what": "OSM measured footprint 452.4 x 416.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q2917115",
+          "what": "Wikidata Attica Zoological Park (private zoo in Spata, Greece)"
+        }
+      ],
+      "notes": "Portion shown: plaza, aviaries and pond. Materials and colours estimated. OSM footprint 452 x 417 m."
+    },
+    "athens-osm-way-432559442": {
+      "venueId": "athens-osm-way-432559442",
+      "city": "athens",
+      "name": "Αστεροσκοπείο Πεντέλης",
+      "archetype": "campus-block",
+      "subject": "Penteli Astronomical Station (National Observatory of Athens) on Mount Penteli: a whitewashed observatory building with a telescope dome",
+      "form": {
+        "footprint": "rect",
+        "width_m": 43,
+        "depth_m": 25,
+        "storeys": 2,
+        "height_m": 10,
+        "roof": "flat",
+        "wings": 1
+      },
+      "facade": {
+        "material": "whitewash",
+        "accent": "concrete",
+        "colours": [
+          "#f1efe8",
+          "#b8b0a2",
+          "#8a8f93"
+        ],
+        "roofColour": "#c9cdd0",
+        "roofMaterial": "concrete",
+        "windows": "punched",
+        "windowRatio": 0.1
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "telescope dome"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "sand",
+        "trees": "conifer",
+        "forecourt": "none"
+      },
+      "style": "modernist",
+      "era": "20th century",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Architecture_of_Greece",
+          "what": "general Greek materials only"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/432559442",
+          "what": "OSM measured footprint 43.4 x 24.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q113302232",
+          "what": "Wikidata Penteli Observatory (astronomical research center northeast of Athens, Greece)"
+        }
+      ],
+      "notes": "OSM: 43 x 25 m building; Wikidata: astronomical research centre. The dome is typed because it is an observatory; no source read describes it."
+    },
+    "athens-osm-way-948091319": {
+      "venueId": "athens-osm-way-948091319",
+      "city": "athens",
+      "name": "Peristeri Stadium",
+      "archetype": "stadium",
+      "subject": "Peristeri Stadium (Atromitos): a 9,000-seat 1947 football ground used as a 2004 Olympic venue, covered stand on one side",
+      "form": {
+        "footprint": "rect",
+        "width_m": 204,
+        "depth_m": 113,
+        "storeys": 2,
+        "height_m": 12,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "concrete",
+        "accent": "metal-cladding",
+        "colours": [
+          "#b9b6ae",
+          "#8a8f93",
+          "#d9d6cf"
+        ],
+        "roofColour": "#8a8f93",
+        "roofMaterial": "metal-sheet",
+        "windows": "none",
+        "windowRatio": 0.05
+      },
+      "features": [
+        {
+          "id": "stand-roof",
+          "count": 2
+        },
+        {
+          "id": "floodlights",
+          "count": 4
+        },
+        {
+          "id": "scoreboard",
+          "count": 1
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "broadleaf",
+        "forecourt": "parking"
+      },
+      "style": "modernist",
+      "era": "1947, 2004 Olympic football venue",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Peristeri_Stadium",
+          "what": "multi-purpose football stadium, seating about 9,000, built 1947, grass pitch, 2004 Olympic venue"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/948091319",
+          "what": "OSM measured footprint 204.1 x 112.9 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3499490",
+          "what": "Wikidata Peristeri Stadium (football stadium in Peristeri, Athens, Greece. Home of Atromitos FC.)"
+        }
+      ],
+      "notes": "Structure details are estimates. Slightly wider and more covered than Nea Smyrni Stadium."
+    },
+    "athens-quiet-reflection": {
+      "venueId": "athens-quiet-reflection",
+      "city": "athens",
+      "name": "Monastère de Daphni",
+      "archetype": "church-classical",
+      "subject": "Daphni Monastery: the 11th-century Byzantine church with a central dome on squinches, walls of light stone blocks framed in red brick, orange tile roof, inside a fortified enclosure",
+      "form": {
+        "footprint": "cross",
+        "width_m": 15,
+        "depth_m": 15,
+        "storeys": 1,
+        "height_m": 17,
+        "roof": "dome",
+        "wings": 1
+      },
+      "facade": {
+        "material": "stone",
+        "accent": "red-brick",
+        "colours": [
+          "#d3c3a2",
+          "#a8553a",
+          "#b5522e"
+        ],
+        "roofColour": "#b5522e",
+        "roofMaterial": "clay-tile",
+        "windows": "arched",
+        "windowRatio": 0.08
+      },
+      "features": [
+        {
+          "id": "dome",
+          "count": 1,
+          "note": "central dome on squinches over a Greek cross-octagon plan"
+        },
+        {
+          "id": "arches",
+          "count": 1,
+          "note": "brick arch frames round the windows"
+        },
+        {
+          "id": "crenellation",
+          "count": 1,
+          "note": "fortified castle-like monastery wall"
+        },
+        {
+          "id": "fence-wall",
+          "count": 1
+        },
+        {
+          "id": "mosaic",
+          "count": 1,
+          "note": "interior gold mosaics, not modelled outside"
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "vernacular",
+      "era": "11th century",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daphni_Monastery",
+          "what": "Greek cross-octagon church, central dome on squinches, four barrel-vaulted arms, cloisonne masonry with brick arch frames, light stone, red brick, orange roof, site 0.94 ha with castle-like enclosing walls"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/208889169",
+          "what": "OSM measured footprint 15.3 x 14.7 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q500444",
+          "what": "Wikidata Daphni Monastery (11th-century Byzantine monastery in Greece)"
+        }
+      ],
+      "notes": "Byzantine style is not in the STYLES list (vernacular used). OSM church footprint 15.3 x 14.7 m; dome height ~17 m is an estimate. The enclosing wall is attached to the church per the source."
+    },
+    "athens-recreation": {
+      "venueId": "athens-recreation",
+      "city": "athens",
+      "name": "Άλσος Βεΐκου",
+      "archetype": "park-landscape",
+      "subject": "Veikos Grove in Galatsi: a pine and plane grove with shaded paths, a playground and small cafe buildings",
+      "form": {
+        "footprint": "rect",
+        "width_m": 120,
+        "depth_m": 70,
+        "storeys": 0,
+        "height_m": 0,
+        "roof": "none",
+        "wings": 0
+      },
+      "facade": {
+        "material": "stone",
+        "accent": null,
+        "colours": [
+          "#a89a82",
+          "#7a6a55",
+          "#d9d6cf"
+        ],
+        "roofColour": "#a4502e",
+        "windows": "none",
+        "windowRatio": 0
+      },
+      "features": [
+        {
+          "id": "kiosk",
+          "count": 1
+        }
+      ],
+      "setting": {
+        "ground": "grass",
+        "trees": "conifer",
+        "forecourt": "garden"
+      },
+      "style": "contemporary",
+      "era": "urban grove",
+      "confidence": "low",
+      "sources": [
+        {
+          "url": "https://www.openstreetmap.org/way/89943258",
+          "what": "OSM measured footprint 698 x 357.5 m"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3559333",
+          "what": "Wikidata Veikos Grove (grove and neighborhood of Galatsi, Attica, Greece)"
+        }
+      ],
+      "notes": "OSM: park 698 x 358 m; Wikidata: grove and neighbourhood in Galatsi. No description read; generic Athens grove typed."
+    },
+    "athens-transit": {
+      "venueId": "athens-transit",
+      "city": "athens",
+      "name": "Megaro Mousikis",
+      "archetype": "museum-theatre",
+      "subject": "Athens Concert Hall (Megaron Mousikis): a large monumental pale-stone and glass concert complex on Vasilissis Sofias Avenue in stripped-classical style",
+      "form": {
+        "footprint": "rect",
+        "width_m": 85,
+        "depth_m": 65,
+        "storeys": 5,
+        "height_m": 26,
+        "roof": "flat",
+        "wings": 2
+      },
+      "facade": {
+        "material": "marble",
+        "accent": "glass-curtain",
+        "colours": [
+          "#e8e4d8",
+          "#7f8c96",
+          "#b8b0a2"
+        ],
+        "roofColour": "#c9cdd0",
+        "roofMaterial": "membrane",
+        "windows": "curtain",
+        "windowRatio": 0.3
+      },
+      "features": [
+        {
+          "id": "colonnade",
+          "count": 1
+        },
+        {
+          "id": "steps",
+          "count": 1
+        },
+        {
+          "id": "atrium-glass",
+          "count": 1
+        },
+        {
+          "id": "flags",
+          "count": 2
+        }
+      ],
+      "setting": {
+        "ground": "paving",
+        "trees": "conifer",
+        "forecourt": "plaza"
+      },
+      "style": "neoclassical",
+      "era": "opened 1991; later extension",
+      "confidence": "medium",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Athens_Concert_Hall",
+          "what": "opened 20 March 1991, architects Emmanouil Vourekas, Kyriakos Kyriakidis, Kostas Sgoutas; four halls (about 1,960, 1,500, 450, 400 seats)"
+        },
+        {
+          "url": "https://www.openstreetmap.org/way/452830928",
+          "what": "OSM measured footprint 25.6 x 16.6 m, 7 levels"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q582203",
+          "what": "Wikidata Athens Concert Hall (performing arts and conference centre in Athens, Greece)"
+        }
+      ],
+      "notes": "Wikidata styles: Stripped Classicism, New Classical, modern architecture in Athens. The footprint and facade colours are estimates; the OSM building at the coordinate is only a 26 x 17 m, 7-level element of the complex."
+    }
+  }
+}

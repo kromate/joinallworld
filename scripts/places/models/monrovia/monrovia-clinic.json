@@ -1,0 +1,128 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "monrovia",
+ "venueId": "monrovia-clinic",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/824160126",
+   "used": "real outline of the 14th Military Hospital ward complex (87 x 75 m, staggered wings)"
+  },
+  {
+   "kind": "text",
+   "used": "brief: two-storey ward blocks, pale painted render, corrugated roof, covered entrance and ambulance bay (no photo found)"
+  }
+ ],
+ "parts": [
+  {
+   "type": "mass",
+   "id": "osm",
+   "footprint": {
+    "osm": true,
+    "fit": 90,
+    "simplify": 3
+   },
+   "at": [
+    0,
+    0
+   ],
+   "z0": 0,
+   "height": 8,
+   "storeys": 2,
+   "wall": {
+    "material": "render",
+    "colour": "#e8e3d3",
+    "windows": "ribbon",
+    "windowRatio": 0.3,
+    "bands": "#8aa3b3",
+    "plinth": 0.5,
+    "cornice": true,
+    "bay": 5
+   },
+   "roof": {
+    "form": "flat",
+    "pitch": 12,
+    "colour": "#9aa3a9",
+    "material": "corrugated",
+    "overhang": 1.2,
+    "parapet": 0.5
+   }
+  },
+  {
+   "type": "canopy",
+   "at": [
+    0,
+    -30,
+    0
+   ],
+   "params": {
+    "form": "flat",
+    "width": 12,
+    "depth": 8,
+    "height": 4.6,
+    "thickness": 0.4,
+    "columns": 4,
+    "colour": "#f6f4ee",
+    "edgeColour": "#b8433a"
+   }
+  },
+  {
+   "type": "road-sign-pylon",
+   "at": [
+    14,
+    -40,
+    0
+   ],
+   "params": {
+    "width": 2.4,
+    "height": 2.2,
+    "bottom": 2.0,
+    "cross": true
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -20,
+    -38,
+    0
+   ],
+   "params": {
+    "height": 8,
+    "count": 3,
+    "spacing": 14
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -20
+    ]
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     50,
+     30
+    ]
+   }
+  ],
+  "extent": [
+   140,
+   120
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo found: real OSM outline with flat roof and typed colours; ward detail and ambulance bay generic"
+ }
+}

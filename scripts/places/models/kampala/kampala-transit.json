@@ -1,0 +1,418 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "kampala",
+ "venueId": "kampala-transit",
+ "verified": "text",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/311385699",
+   "used": "nearest OSM building is an untagged 35 x 30 m footprint 32 m away, not trusted; only the park location was used"
+  }
+ ],
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "No photo or reliable outline: park layout, shelter positions and the count of minibuses are typical for a Kampala taxi park, not measured."
+ },
+ "parts": [
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -40,
+     -26,
+     0
+    ],
+    "end": [
+     -40,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -28,
+     -26,
+     0
+    ],
+    "end": [
+     -28,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -16,
+     -26,
+     0
+    ],
+    "end": [
+     -16,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     -4,
+     -26,
+     0
+    ],
+    "end": [
+     -4,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     8,
+     -26,
+     0
+    ],
+    "end": [
+     8,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     20,
+     -26,
+     0
+    ],
+    "end": [
+     20,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "array",
+   "params": {
+    "of": {
+     "type": "car",
+     "params": {
+      "colour": "#f1f1ef",
+      "yaw": 90
+     }
+    },
+    "mode": "line",
+    "count": 6,
+    "start": [
+     32,
+     -26,
+     0
+    ],
+    "end": [
+     32,
+     24,
+     0
+    ]
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-n",
+   "footprint": {
+    "rect": [
+     40,
+     6
+    ]
+   },
+   "at": [
+    0,
+    34
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "shelter-w",
+   "footprint": {
+    "rect": [
+     6,
+     26
+    ]
+   },
+   "at": [
+    -44,
+    0
+   ],
+   "height": 3.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "shed",
+    "colour": "#8a8f94",
+    "material": "corrugated",
+    "pitch": 8,
+    "overhang": 0.8
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-0",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    40,
+    -30
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3d6a88",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-1",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    40,
+    -24
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-2",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    40,
+    -18
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3d6a88",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-3",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -40,
+    -34
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-4",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    40,
+    30
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#3d6a88",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.3
+   }
+  },
+  {
+   "type": "mass",
+   "id": "kiosk-5",
+   "footprint": {
+    "rect": [
+     2.6,
+     2.6
+    ]
+   },
+   "at": [
+    -12,
+    -34
+   ],
+   "height": 2.6,
+   "storeys": 1,
+   "wall": {
+    "material": "metal-cladding",
+    "colour": "#cfc8b8",
+    "windows": "none",
+    "windowRatio": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#8a8f94",
+    "overhang": 0.3
+   }
+  }
+ ],
+ "site": {
+  "ground": "asphalt",
+  "forecourt": "none",
+  "trees": 0,
+  "extent": [
+   100,
+   86
+  ]
+ }
+}

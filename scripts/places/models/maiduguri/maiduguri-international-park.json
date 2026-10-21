@@ -1,0 +1,302 @@
+{
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "way/858425425",
+   "used": "real park outline, about 87 x 63 m, as the lawn"
+  }
+ ],
+ "camera": {
+  "yawDeg": 15,
+  "pitchDeg": 40,
+  "fovDeg": 45,
+  "aspect": 1.33
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "id": "lawn",
+   "params": {
+    "points": [
+     [
+      -35.9,
+      17.5
+     ],
+     [
+      -32.3,
+      32.4
+     ],
+     [
+      15.6,
+      47.2
+     ],
+     [
+      37.7,
+      -26.1
+     ],
+     [
+      7.8,
+      -46.1
+     ],
+     [
+      -8.1,
+      -46.8
+     ],
+     [
+      -17.6,
+      -24.9
+     ],
+     [
+      -33.7,
+      -7.1
+     ]
+    ],
+    "z0": 0,
+    "height": 0.2,
+    "colour": "#6f9a52",
+    "topColour": "#6f9a52"
+   }
+  },
+  {
+   "type": "prism",
+   "id": "plaza",
+   "at": [
+    2,
+    -4
+   ],
+   "params": {
+    "radius": 9,
+    "n": 24,
+    "z0": 0.2,
+    "height": 0.1,
+    "colour": "#d9d2c0",
+    "topColour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "market-open/fountain",
+   "at": [
+    2,
+    -4,
+    0.3
+   ],
+   "params": {
+    "radius": 4.2,
+    "jet": true
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-a",
+   "params": {
+    "section": "rect",
+    "width": 2.4,
+    "height": 0.08,
+    "points": [
+     [
+      0,
+      -40,
+      0.2
+     ],
+     [
+      2,
+      -4,
+      0.2
+     ],
+     [
+      -10,
+      20,
+      0.2
+     ],
+     [
+      0,
+      40,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "sweep-path",
+   "id": "path-b",
+   "params": {
+    "section": "rect",
+    "width": 2.0,
+    "height": 0.08,
+    "points": [
+     [
+      -28,
+      0,
+      0.2
+     ],
+     [
+      2,
+      -4,
+      0.2
+     ],
+     [
+      30,
+      -18,
+      0.2
+     ]
+    ],
+    "curve": true,
+    "colour": "#d9d2c0"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    -18,
+    8,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.4,
+    "roof": "hip",
+    "colour": "#e8dfc8",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "pavilion",
+   "at": [
+    22,
+    -30,
+    0
+   ],
+   "params": {
+    "width": 7,
+    "depth": 5.5,
+    "height": 3.4,
+    "roof": "hip",
+    "colour": "#e8dfc8",
+    "cap_colour": "#8a3b2e"
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    -26,
+    22,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "kiosk",
+   "at": [
+    10,
+    30,
+    0
+   ],
+   "params": {
+    "kind": "container",
+    "width": 3.2,
+    "depth": 2.2,
+    "height": 2.6
+   }
+  },
+  {
+   "type": "core/gate",
+   "at": [
+    -2,
+    -47,
+    0
+   ],
+   "params": {
+    "width": 8,
+    "height": 4,
+    "pillar": 1.2,
+    "colour": "#e8dfc8",
+    "leafColour": "#3f7f5a",
+    "arch": true
+   }
+  },
+  {
+   "type": "fence-wall",
+   "at": [
+    -30,
+    -46.8,
+    0
+   ],
+   "params": {
+    "length": 22,
+    "height": 1.6,
+    "thickness": 0.3,
+    "kind": "rail",
+    "pillarEvery": 3,
+    "colour": "#e8dfc8"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -12,
+    -20,
+    0
+   ],
+   "params": {
+    "height": 5,
+    "count": 5,
+    "spacing": 12
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "kind": "palm",
+    "height": 9,
+    "count": 10,
+    "spread": 50
+   }
+  },
+  {
+   "type": "core/tree",
+   "at": [
+    8,
+    10,
+    0
+   ],
+   "params": {
+    "kind": "broadleaf",
+    "height": 8,
+    "count": 6,
+    "spread": 40
+   }
+  }
+ ],
+ "site": {
+  "ground": "grass",
+  "forecourt": "parking",
+  "trees": 0,
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "maiduguri",
+ "venueId": "maiduguri-international-park",
+ "review": {
+  "rounds": 1,
+  "match": "rough",
+  "gaps": "No photo found; fountain, pavilions, kiosks and gate are typed inside the real outline."
+ }
+}

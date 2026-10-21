@@ -1,0 +1,1618 @@
+{
+ "schema": "allworld-place-briefs",
+ "version": 1,
+ "city": "tehran",
+ "style": {
+  "schema": "allworld-city-style",
+  "version": 1,
+  "city": "tehran",
+  "climate": "desert",
+  "vernacular": "Dense mid-rise concrete-frame apartment blocks of 4 to 12 storeys faced in cream or white travertine and stone veneer, with older brick and plastered Qajar and Pahlavi houses and arcaded bazaar courtyards in the south. Roofs are flat and plant-covered; domes and iwans in turquoise tile mark mosques and imamzadeh shrines. Plane trees and pines line the streets, with the Alborz range behind the north of the city.",
+  "wallColours": [
+   "#d9ccb4",
+   "#e8e2d4",
+   "#b88a5e",
+   "#8c5a3c",
+   "#c9c2b4",
+   "#8d8f8c"
+  ],
+  "roofColours": [
+   "#8a8580",
+   "#3a8fa0",
+   "#6d5a48",
+   "#b8b2a6"
+  ],
+  "wallMaterials": [
+   "stone",
+   "brick",
+   "render",
+   "concrete",
+   "glass-curtain",
+   "exposed-concrete",
+   "tile-cladding"
+  ],
+  "roofMaterials": [
+   "concrete",
+   "membrane",
+   "metal-sheet",
+   "clay-tile"
+  ],
+  "ground": "paving",
+  "vegetation": [
+   "broadleaf",
+   "conifer"
+  ],
+  "ornament": "Persian arches and iwans with turquoise and blue glazed tile mosaic, banna'i patterned brickwork, muqarnas and carved stucco, mirror-work (ayeneh-kari) in grand halls, fluted domes on drums, and travertine-clad modern facades with arched balconies.",
+  "sources": [
+   {
+    "url": "https://en.wikipedia.org/wiki/Architecture_of_Iran",
+    "what": "Iranian architecture: brick, adobe, stucco, turquoise tile on domes, banna'i brick patterns, iwans and courtyards; rapid demolition and rebuilding in Tehran"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Azadi_Tower",
+    "what": "Modern Tehran landmark in cut white Isfahan marble with Sasanian and medieval arch forms"
+   },
+   {
+    "url": "https://en.wikipedia.org/wiki/Iran_Mall",
+    "what": "Contemporary mall with traditional-bazaar interior and glass-roofed gardens"
+   }
+  ]
+ },
+ "places": {
+  "tehran-airport-tehran-airport": {
+   "venueId": "tehran-airport-tehran-airport",
+   "city": "tehran",
+   "name": "Imam Khomeini International Airport",
+   "archetype": "airport-terminal",
+   "subject": "Terminal 1 (Paul Andreu / Aeroports de Paris, 2005): a long arc-shaped concrete and glass terminal whose ends merge into the desert horizon, seen from the forecourt",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 160,
+    "depth_m": 50,
+    "storeys": 3,
+    "height_m": 20,
+    "roof": "curved"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "glass-curtain",
+    "colours": [
+     "#cfcdc6",
+     "#6d8fa3",
+     "#8e8b84"
+    ],
+    "roofColour": "#b8b4aa",
+    "windows": "curtain",
+    "windowRatio": 0.45
+   },
+   "features": [
+    {
+     "id": "control-tower",
+     "count": 1
+    },
+    {
+     "id": "jet-bridge",
+     "count": 4
+    },
+    {
+     "id": "curved-canopy",
+     "count": 1,
+     "note": "long arc-shaped front canopy"
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "none",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "1995-2005 (Terminal 1); Salaam terminal 2019",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Tehran_Imam_Khomeini_International_Airport",
+     "what": "Terminal 1 is arc-shaped, redesigned by Paul Andreu / Aeroports de Paris, construction from 1995, reopened 30 April 2005; Salaam terminal opened 2019"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q734729",
+     "what": "airport identity and coordinates (matches within 2 m)"
+    }
+   ],
+   "notes": "Wikipedia gives the arc form, designer and dates but not colours, materials, roof or size. OSM has no building footprint (match: none). Palette and 160 m by 50 m clamp are estimates; the real terminal is longer. The arc plan is what makes it recognisable."
+  },
+  "tehran-clinic": {
+   "venueId": "tehran-clinic",
+   "city": "tehran",
+   "name": "Iran Neurology Sciences Hospital",
+   "archetype": "hospital",
+   "subject": "A large neurosciences hospital (Iran International Neuroscience Institute per Wikidata) on a campus of about 63,500 m2: stone-faced mid-rise ward block with a drive-up entrance",
+   "form": {
+    "footprint": "U",
+    "width_m": 110,
+    "depth_m": 40,
+    "storeys": 6,
+    "height_m": 26,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "glass-curtain",
+    "colours": [
+     "#d8cdb8",
+     "#7c97a8",
+     "#a39a88"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "ribbon",
+    "windowRatio": 0.35
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2010s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q46246401",
+     "what": "Wikidata/OSM: hospital in north-west Tehran, campus footprint 367 m x 278 m"
+    }
+   ],
+   "notes": "Only OSM/Wikidata exist (campus footprint, hospital use). No description of the building was found, so the block is typed from the Tehran city style (travertine-faced mid-rise) and the hospital type."
+  },
+  "tehran-community-notices": {
+   "venueId": "tehran-community-notices",
+   "city": "tehran",
+   "name": "Parliament of Iran",
+   "archetype": "civic-palace",
+   "subject": "The Majlis (Islamic Consultative Assembly) at Baharestan Square: a formal stone-faced legislative building with a columned entrance, flags and gated forecourt",
+   "form": {
+    "footprint": "rect",
+    "width_m": 120,
+    "depth_m": 60,
+    "storeys": 4,
+    "height_m": 24,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "marble",
+    "colours": [
+     "#d9d0bd",
+     "#b9b0a0",
+     "#9d9484"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "colonnade",
+     "count": 1
+    },
+    {
+     "id": "portico",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 3
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "neoclassical",
+   "era": "early 20th century (old building) / 2004 (current)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Islamic_Consultative_Assembly",
+     "what": "Majlis met at Baharestan 1906-1979, in the former Senate building 1980-2004 and in a newer building at Baharestan Square since 2004; no form described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q378605",
+     "what": "identity; OSM point sits in a park at 171 m"
+    }
+   ],
+   "notes": "No source found that describes the facade. Typed as a formal columned stone building from the type and the Pahlavi-era civic tradition; the venue point lies in a park near Baharestan. Treat all form as a guess."
+  },
+  "tehran-community-voting-game": {
+   "venueId": "tehran-community-voting-game",
+   "city": "tehran",
+   "name": "Azadi Square",
+   "archetype": "monument",
+   "subject": "The Azadi (Freedom) Tower on its plaza: a 45 m white marble tower of woven arches rising from a wide base, with the Sasanian main vault topped by a broken medieval arch",
+   "form": {
+    "footprint": "cross",
+    "width_m": 63,
+    "depth_m": 42,
+    "storeys": 4,
+    "height_m": 45,
+    "roof": "curved"
+   },
+   "facade": {
+    "material": "marble",
+    "accent": "stone",
+    "colours": [
+     "#e8e4da",
+     "#c7c2b6",
+     "#d8d3c8"
+    ],
+    "roofColour": "#d8d3c8",
+    "windows": "arched",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "arches",
+     "count": 1,
+     "note": "main Sasanian vault with a pointed broken arch above"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 2,
+     "note": "fountain basins on the plaza"
+    },
+    {
+     "id": "relief-pattern",
+     "count": 1,
+     "note": "ribbed network of arches"
+    },
+    {
+     "id": "flags",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "persian",
+   "era": "1971",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Azadi_Tower",
+     "what": "About 45 m high, entirely clad in cut white Isfahan marble (about 8,000 blocks), Sasanian arch plus medieval broken arch with a network of ribs, Hossein Amanat, completed 1971, opened 14 Jan 1972; museum in the basement"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q2476039",
+     "what": "Azadi Square entity at the venue point (10 m)"
+    }
+   ],
+   "notes": "The tower is the recognisable part; the square is a big plaza ring about 380 m by 210 m (OSM) with lawns and fountains. The 63 m width and 42 m depth are from memory of the tower plan and are not in the fetched source. Always shown near-white marble."
+  },
+  "tehran-community-workshop": {
+   "venueId": "tehran-community-workshop",
+   "city": "tehran",
+   "name": "West Tehran Islamic Azad University College of Engineering",
+   "archetype": "campus-block",
+   "subject": "A five-storey brick-faced faculty block (about 60 m by 25 m) of the West Tehran Azad University",
+   "form": {
+    "footprint": "rect",
+    "width_m": 60,
+    "depth_m": 25,
+    "storeys": 5,
+    "height_m": 20,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "brick",
+    "accent": "glass-curtain",
+    "colours": [
+     "#a8714f",
+     "#8a8d8f",
+     "#6e5a48"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "2000s (unconfirmed)",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1275862549",
+     "what": "OSM: amenity=university, building:levels=5, building:material=brick, 60.2 m x 24.9 m"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q21209209",
+     "what": "identity: Islamic Azad University, West Tehran Branch College of Engineering"
+    }
+   ],
+   "notes": "Measured data only: levels, brick material and footprint come from OSM tags. Colours and window pattern are typed from the Tehran city style (red-brown brick with grey trim)."
+  },
+  "tehran-market-game": {
+   "venueId": "tehran-market-game",
+   "city": "tehran",
+   "name": "Shahrvand Store",
+   "archetype": "market-hall",
+   "subject": "A single-storey Shahrvand chain supermarket box (48 m by 24 m) with a glazed front and blank sign board",
+   "form": {
+    "footprint": "rect",
+    "width_m": 48,
+    "depth_m": 24,
+    "storeys": 1,
+    "height_m": 7,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "metal-cladding",
+    "accent": "glass-curtain",
+    "colours": [
+     "#d7d3c8",
+     "#7f9aa8",
+     "#a9a59a"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "curtain",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank board, brand-neutral"
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    },
+    {
+     "id": "awning",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "none",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2000s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q7462298",
+     "what": "Shahrvand chain store (OSM building 48 m x 24 m)"
+    }
+   ],
+   "notes": "Only the chain and footprint are known; no description of this particular store. Typed generic hypermarket box. No brand marks."
+  },
+  "tehran-meal-stop": {
+   "venueId": "tehran-meal-stop",
+   "city": "tehran",
+   "name": "Gol-e Rezaieh",
+   "archetype": "restaurant",
+   "subject": "A long narrow two-storey heritage cafe building (Le Cafe de Gole Rezaieh, listed as Iranian national heritage) with plastered brick walls and tall windows",
+   "form": {
+    "footprint": "rect",
+    "width_m": 36,
+    "depth_m": 11,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "brick",
+    "accent": "painted-render",
+    "colours": [
+     "#b8825a",
+     "#e8dfc8",
+     "#7a5a3e"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "arched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "awning",
+     "count": 1
+    },
+    {
+     "id": "shopfront",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "early 20th century (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q5699909",
+     "what": "Wikidata: cafe in Tehran, Iranian national heritage site (7 m from the venue)"
+    },
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "OSM footprint 36 m x 11 m"
+    }
+   ],
+   "notes": "Heritage status is known but no description of the facade was found. Typed from Tehran brick and plaster town-house style. Do not treat the details as measured."
+  },
+  "tehran-osm-node-10214246553": {
+   "venueId": "tehran-osm-node-10214246553",
+   "city": "tehran",
+   "name": "Imamzadeh Hadi and Zeynab Khatoon",
+   "archetype": "shrine-small",
+   "subject": "A small imamzadeh: a square brick-and-plaster tomb chamber under a turquoise-tiled dome with an arched porch (iwan) and walled courtyard",
+   "form": {
+    "footprint": "rect",
+    "width_m": 30,
+    "depth_m": 15,
+    "storeys": 1,
+    "height_m": 9,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "brick",
+    "accent": "tile-cladding",
+    "colours": [
+     "#b88a5e",
+     "#3a8fa0",
+     "#e8e2d4"
+    ],
+    "roofColour": "#3a8fa0",
+    "windows": "arched",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1,
+     "note": "turquoise tiled"
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "persian",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/",
+     "what": "OSM: building footprint 29.6 m x 15.1 m, shrine node"
+    }
+   ],
+   "notes": "Nothing was found about this shrine. Typed from the general Iranian imamzadeh form (domed square tomb with iwan, tile on the dome) as described in Architecture of Iran."
+  },
+  "tehran-osm-node-13416585667": {
+   "venueId": "tehran-osm-node-13416585667",
+   "city": "tehran",
+   "name": "Tomb of Imam Khomeini",
+   "archetype": "mosque-domed",
+   "subject": "The Mausoleum of Ruhollah Khomeini: a vast marble and concrete shrine complex with one gold dome on a high drum, four 91 m minarets and an enormous rectangular forecourt",
+   "form": {
+    "footprint": "rect",
+    "width_m": 300,
+    "depth_m": 145,
+    "storeys": 4,
+    "height_m": 35,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "marble",
+    "accent": "concrete",
+    "colours": [
+     "#e6dcc0",
+     "#d4a537",
+     "#b9a77d"
+    ],
+    "roofColour": "#d4a537",
+    "windows": "arched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1,
+     "note": "gold-coloured dome on a high drum"
+    },
+    {
+     "id": "minaret",
+     "count": 4,
+     "note": "four free-standing minarets, 91 m each"
+    },
+    {
+     "id": "courtyard",
+     "count": 1,
+     "note": "huge rectangular plaza for crowds"
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "mosaic",
+     "count": 1,
+     "note": "tile panels"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "none",
+    "forecourt": "plaza"
+   },
+   "style": "persian",
+   "era": "1989-2025",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Mausoleum_of_Ruhollah_Khomeini",
+     "what": "One gold dome on a high drum, four minarets 91 m tall, large rectangular plaza, concrete and marble, groundbreaking 1989, taking more than 35 years"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q1076004",
+     "what": "OSM tags: height 35, building:colour yellow, footprint 306 m x 145 m"
+    }
+   ],
+   "notes": "Recognisable by the four tall minarets around a gold dome. Shown clamped to 120 m. The complex sits in open desert at Behesht-e Zahra cemetery with parking lots around."
+  },
+  "tehran-osm-relation-6957011": {
+   "venueId": "tehran-osm-relation-6957011",
+   "city": "tehran",
+   "name": "Khanat Bazaar (Khanat Caravanserai)",
+   "archetype": "market-hall",
+   "subject": "A historic caravanserai turned bazaar: a two-storey ring of brick arcaded rooms around a rectangular courtyard (about 120 m by 103 m)",
+   "form": {
+    "footprint": "ring",
+    "width_m": 120,
+    "depth_m": 103,
+    "storeys": 2,
+    "height_m": 10,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "brick",
+    "accent": "stucco",
+    "colours": [
+     "#b57c52",
+     "#d8c9a8",
+     "#7a5a3e"
+    ],
+    "roofColour": "#9a8a78",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "arcade",
+     "count": 1,
+     "note": "arched rooms on two levels"
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "stalls",
+     "count": 12
+    }
+   ],
+   "setting": {
+    "ground": "cobble",
+    "trees": "none",
+    "forecourt": "none"
+   },
+   "style": "vernacular",
+   "era": "Qajar (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q5724466",
+     "what": "Wikidata: Khanat Caravanserai, Iranian national heritage site, OSM caravanserai/marketplace 120 m x 103 m"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Architecture_of_Iran",
+     "what": "courtyards, brick construction, arcaded forms used for the typed caravanserai"
+    }
+   ],
+   "notes": "Identity and footprint are real; the facade is typed from the standard caravanserai (courtyard with arcaded cells), not from a photo description."
+  },
+  "tehran-osm-relation-8129683": {
+   "venueId": "tehran-osm-relation-8129683",
+   "city": "tehran",
+   "name": "Iran Mall",
+   "archetype": "mall",
+   "subject": "The 2018 Iran Mall by Chitgar Lake: a huge seven-level mall (about 625 m by 325 m, 70 m high) with a glazed, light-coloured exterior and an 18-storey hotel tower at the east end",
+   "form": {
+    "footprint": "rect",
+    "width_m": 625,
+    "depth_m": 325,
+    "storeys": 7,
+    "height_m": 70,
+    "roof": "flat",
+    "wings": 1
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "concrete",
+    "colours": [
+     "#d9d6cf",
+     "#7fa0b5",
+     "#8c8a85"
+    ],
+    "roofColour": "#b8b4aa",
+    "windows": "curtain",
+    "windowRatio": 0.4
+   },
+   "features": [
+    {
+     "id": "atrium-glass",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 2
+    },
+    {
+     "id": "signage-board",
+     "count": 3
+    },
+    {
+     "id": "flags",
+     "count": 4
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "none",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "2018",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Iran_Mall",
+     "what": "7 floors, 317,000 m2 plot, 708 units in phase 1, 18-storey hotel at the east, glass-roofed Didar Garden, bazaar-inspired interior, Mirror Hall"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q53678081",
+     "what": "OSM: height 70 m, start 2018-05-01, footprint 625 m x 325 m"
+    }
+   ],
+   "notes": "Clamped to 120 m, so show a recognisable section with the hotel tower. Exterior colours are not described anywhere found; light grey and glass is a guess."
+  },
+  "tehran-osm-way-1067538666": {
+   "venueId": "tehran-osm-way-1067538666",
+   "city": "tehran",
+   "name": "Ghazali Cinema Town",
+   "archetype": "park-landscape",
+   "subject": "A film-studio town: fenced grounds with period street sets of facades, a gate and open lanes",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 250,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "timber",
+    "colours": [
+     "#d9c9a8",
+     "#b88a5e",
+     "#7a5a3e"
+    ],
+    "roofColour": "#a2663f",
+    "windows": "punched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "fence-wall",
+     "count": 1
+    },
+    {
+     "id": "pavilion",
+     "count": 3
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "1990s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q2974753",
+     "what": "Wikidata: cinema town in Tehran; OSM tourism=attraction, area 206,590 m2"
+    }
+   ],
+   "notes": "The Wikipedia article was not reachable; no description found. Typed as a backlot of stucco and timber period facades."
+  },
+  "tehran-osm-way-112376927": {
+   "venueId": "tehran-osm-way-112376927",
+   "city": "tehran",
+   "name": "Iran University of Science and Technology",
+   "archetype": "campus-block",
+   "subject": "A long five-storey brick and stone academic block (about 115 m by 28 m) on the IUST campus",
+   "form": {
+    "footprint": "rect",
+    "width_m": 115,
+    "depth_m": 28,
+    "storeys": 5,
+    "height_m": 20,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "brick",
+    "colours": [
+     "#cbbfa5",
+     "#a8714f",
+     "#8a8580"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 1
+    },
+    {
+     "id": "portico",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1960s-1970s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q4115110",
+     "what": "OSM: building=college, 115.5 m x 28.6 m; Iran University of Science and Technology"
+    }
+   ],
+   "notes": "Only the footprint is real. Facade typed from Tehran institutional style."
+  },
+  "tehran-osm-way-1193089813": {
+   "venueId": "tehran-osm-way-1193089813",
+   "city": "tehran",
+   "name": "Velayat Park",
+   "archetype": "park-landscape",
+   "subject": "A large city park (Velayat Park) with lawns, plane and pine trees, paved paths and a central fountain and pavilion",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 300,
+    "depth_m": 200,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "timber",
+    "colours": [
+     "#c9c2b4",
+     "#8d8f8c",
+     "#7a5a3e"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "fountain",
+     "count": 1
+    },
+    {
+     "id": "pavilion",
+     "count": 2
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "statue",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "garden"
+   },
+   "style": "contemporary",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.openstreetmap.org/way/1193089813",
+     "what": "OSM way, park only; no facts or Wikidata"
+    }
+   ],
+   "notes": "No data beyond the name and park outline. Typed generic city park."
+  },
+  "tehran-osm-way-119376034": {
+   "venueId": "tehran-osm-way-119376034",
+   "city": "tehran",
+   "name": "Azadi Stadium",
+   "archetype": "stadium",
+   "subject": "The 1971 national stadium: a huge oval concrete bowl of tiered seating (78,000 all-seater), a tall scoreboard and floodlight masts, with big car parks around",
+   "form": {
+    "footprint": "oval",
+    "width_m": 275,
+    "depth_m": 233,
+    "storeys": 4,
+    "height_m": 40,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "exposed-concrete",
+    "colours": [
+     "#c9c6bd",
+     "#a6a39a",
+     "#6e7a86"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "floodlights",
+     "count": 8
+    },
+    {
+     "id": "scoreboard",
+     "count": 1,
+     "note": "104 m2 jumbotron added 2004"
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 2
+    },
+    {
+     "id": "flags",
+     "count": 4
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "none",
+    "forecourt": "parking"
+   },
+   "style": "modernist",
+   "era": "1971",
+   "confidence": "medium",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Azadi_Stadium",
+     "what": "All-seater football stadium, 78,116 capacity, pitch 110 x 75 m, opened 17 Oct 1971, designed by Farmanfarmaian's AFFA with Whittle as structural engineer, 104 m2 jumbotron"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q653535",
+     "what": "OSM: leisure=stadium, grandstand, 2 levels, height 40, footprint 275 m x 233 m"
+    }
+   ],
+   "notes": "Roof and colours are not described in the sources; shown as an open concrete bowl with floodlight masts. Clamped to 120 m."
+  },
+  "tehran-osm-way-1527989327": {
+   "venueId": "tehran-osm-way-1527989327",
+   "city": "tehran",
+   "name": "Hosseiniyeh Javanan Qamar Bani Hashem",
+   "archetype": "shrine-small",
+   "subject": "A small neighbourhood hosseiniyeh (Shia mourning hall): a single-storey rectangular hall with an arched entrance, tiled panel and green banner",
+   "form": {
+    "footprint": "rect",
+    "width_m": 19,
+    "depth_m": 6,
+    "storeys": 1,
+    "height_m": 6,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "tile-cladding",
+    "colours": [
+     "#e1d8c2",
+     "#2d7a63",
+     "#8a8580"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "arched",
+    "windowRatio": 0.15
+   },
+   "features": [
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "mosaic",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2,
+     "note": "Shia mourning banners, blank"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "none",
+    "forecourt": "road"
+   },
+   "style": "vernacular",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q28713076",
+     "what": "OSM: building=hosseiniyah, 19.3 m x 5.4 m"
+    }
+   ],
+   "notes": "Footprint only; the start date tag looks like a data-entry error. Typed from the type."
+  },
+  "tehran-osm-way-222107363": {
+   "venueId": "tehran-osm-way-222107363",
+   "city": "tehran",
+   "name": "Shahid Beheshti University",
+   "archetype": "campus-block",
+   "subject": "A main academic block of the large Evin campus: a broad five-storey stone-clad building with a central entrance and flat roof",
+   "form": {
+    "footprint": "U",
+    "width_m": 110,
+    "depth_m": 40,
+    "storeys": 5,
+    "height_m": 22,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "brick",
+    "colours": [
+     "#d1c5ad",
+     "#a8714f",
+     "#8a8580"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "portico",
+     "count": 1
+    },
+    {
+     "id": "flags",
+     "count": 2
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "conifer",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1960s-1970s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q609586",
+     "what": "Shahid Beheshti University; OSM campus polygon 1597 m x 653 m"
+    }
+   ],
+   "notes": "Only the campus outline is known. The building is typed; the real campus has many blocks."
+  },
+  "tehran-osm-way-312296275": {
+   "venueId": "tehran-osm-way-312296275",
+   "city": "tehran",
+   "name": "Roozbeh Hospital",
+   "archetype": "hospital",
+   "subject": "The oldest psychiatric hospital in Iran: a group of low-to-mid-rise ward blocks set in gardens",
+   "form": {
+    "footprint": "U",
+    "width_m": 90,
+    "depth_m": 30,
+    "storeys": 3,
+    "height_m": 13,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "render",
+    "accent": "brick",
+    "colours": [
+     "#e1d6bd",
+     "#a8714f",
+     "#8a8580"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "punched",
+    "windowRatio": 0.25
+   },
+   "features": [
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "modernist",
+   "era": "1947 (founded)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Roozbeh_Hospital",
+     "what": "Oldest psychiatric hospital in Iran, part of Tehran University of Medical Sciences; no buildings described"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q5944397",
+     "what": "OSM campus 188 m x 138 m"
+    }
+   ],
+   "notes": "The page is a stub; only the founding date and campus size are known."
+  },
+  "tehran-osm-way-425887188": {
+   "venueId": "tehran-osm-way-425887188",
+   "city": "tehran",
+   "name": "University of Tehran Dormitory (Kooye Daneshgah)",
+   "archetype": "campus-block",
+   "subject": "A dormitory complex: a long six-storey repetitive concrete and brick slab with balconies",
+   "form": {
+    "footprint": "rect",
+    "width_m": 100,
+    "depth_m": 15,
+    "storeys": 6,
+    "height_m": 19,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "concrete",
+    "accent": "brick",
+    "colours": [
+     "#c9c2b4",
+     "#a8714f",
+     "#8a8580"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "punched",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "balcony-bands",
+     "count": 1
+    },
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "modernist",
+   "era": "1960s-1970s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q5953792",
+     "what": "University of Tehran dormitory, OSM complex 954 m x 381 m"
+    }
+   ],
+   "notes": "Complex size is real; the representative block is typed."
+  },
+  "tehran-osm-way-458252915": {
+   "venueId": "tehran-osm-way-458252915",
+   "city": "tehran",
+   "name": "Elahieh Park",
+   "archetype": "park-landscape",
+   "subject": "A neighbourhood park with lawns, paths, plane trees and a small pavilion",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 170,
+    "depth_m": 110,
+    "storeys": 1,
+    "height_m": 4,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "timber",
+    "colours": [
+     "#c9c2b4",
+     "#8d8f8c",
+     "#7a5a3e"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "pavilion",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    },
+    {
+     "id": "fountain",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "broadleaf",
+    "forecourt": "garden"
+   },
+   "style": "contemporary",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q26954762",
+     "what": "park in Tehran Province, OSM 171 m x 113 m"
+    }
+   ],
+   "notes": "Name and outline only; typed generic park."
+  },
+  "tehran-osm-way-572366884": {
+   "venueId": "tehran-osm-way-572366884",
+   "city": "tehran",
+   "name": "Tajrish Tekyeh",
+   "archetype": "shrine-small",
+   "subject": "A tekyeh (Shia mourning-ceremony building): a plain courtyard house with brick and plaster walls, a tiled arched entrance and a small dome",
+   "form": {
+    "footprint": "rect",
+    "width_m": 24,
+    "depth_m": 22,
+    "storeys": 2,
+    "height_m": 9,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "brick",
+    "accent": "tile-cladding",
+    "colours": [
+     "#b88a5e",
+     "#3a8fa0",
+     "#e8e2d4"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "arched",
+    "windowRatio": 0.2
+   },
+   "features": [
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "mosaic",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "vernacular",
+   "era": "Qajar (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q5948129",
+     "what": "Tajrish Tekiyeh, Iranian national heritage site, OSM 24 m x 22 m"
+    }
+   ],
+   "notes": "Heritage status and size known only; typed from Architecture of Iran."
+  },
+  "tehran-osm-way-600451203": {
+   "venueId": "tehran-osm-way-600451203",
+   "city": "tehran",
+   "name": "Farhikhtegan Hospital",
+   "archetype": "hospital",
+   "subject": "A large hospital campus: an eight-storey ward tower in white stone cladding with a podium entrance",
+   "form": {
+    "footprint": "T",
+    "width_m": 80,
+    "depth_m": 30,
+    "storeys": 8,
+    "height_m": 30,
+    "roof": "flat"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "glass-curtain",
+    "colours": [
+     "#e1dac8",
+     "#7c97a8",
+     "#a39a88"
+    ],
+    "roofColour": "#8a8580",
+    "windows": "ribbon",
+    "windowRatio": 0.3
+   },
+   "features": [
+    {
+     "id": "ambulance-bay",
+     "count": 1
+    },
+    {
+     "id": "red-cross-sign",
+     "count": 1
+    },
+    {
+     "id": "helipad",
+     "count": 1
+    },
+    {
+     "id": "car-park",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "asphalt",
+    "trees": "conifer",
+    "forecourt": "parking"
+   },
+   "style": "contemporary",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q85968312",
+     "what": "Farhikhtegan Hospital, OSM campus 273 m x 227 m"
+    }
+   ],
+   "notes": "Only the campus footprint is known. Typed tower block."
+  },
+  "tehran-quiet-reflection": {
+   "venueId": "tehran-quiet-reflection",
+   "city": "tehran",
+   "name": "Imamzadeh Shoaib",
+   "archetype": "shrine-small",
+   "subject": "An imamzadeh shrine (Iranian national heritage site): a brick tomb chamber of about 26 m by 24 m with a domed roof and arched iwan on a walled forecourt",
+   "form": {
+    "footprint": "rect",
+    "width_m": 26,
+    "depth_m": 24,
+    "storeys": 1,
+    "height_m": 12,
+    "roof": "dome"
+   },
+   "facade": {
+    "material": "brick",
+    "accent": "tile-cladding",
+    "colours": [
+     "#b8825a",
+     "#3a8fa0",
+     "#e8dfc8"
+    ],
+    "roofColour": "#3a8fa0",
+    "windows": "arched",
+    "windowRatio": 0.1
+   },
+   "features": [
+    {
+     "id": "dome",
+     "count": 1
+    },
+    {
+     "id": "arches",
+     "count": 1
+    },
+    {
+     "id": "courtyard",
+     "count": 1
+    },
+    {
+     "id": "gate",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "plaza"
+   },
+   "style": "persian",
+   "era": "unknown",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q5886584",
+     "what": "Iranian national heritage site; OSM building=shrine 26 m x 24 m"
+    }
+   ],
+   "notes": "The Wikipedia page was not found. Shape typed from the common domed imamzadeh form."
+  },
+  "tehran-recreation": {
+   "venueId": "tehran-recreation",
+   "city": "tehran",
+   "name": "Jamshidieh Park",
+   "archetype": "park-landscape",
+   "subject": "A terraced hillside park on the slopes of Kolakchal mountain: rocky wooded terrain with a stepped cascade and pond, a lookout reached by steps, a yurt-style restaurant and tea house",
+   "form": {
+    "footprint": "irregular",
+    "width_m": 450,
+    "depth_m": 390,
+    "storeys": 1,
+    "height_m": 8,
+    "roof": "none"
+   },
+   "facade": {
+    "material": "stone",
+    "accent": "timber",
+    "colours": [
+     "#a9a193",
+     "#8d8f8c",
+     "#7a5a3e"
+    ],
+    "roofColour": "#b8a98a",
+    "windows": "none",
+    "windowRatio": 0.0
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1,
+     "note": "steps climbing behind the cascade to a city lookout"
+    },
+    {
+     "id": "fountain",
+     "count": 2,
+     "note": "cascade and pond"
+    },
+    {
+     "id": "pavilion",
+     "count": 2,
+     "note": "yurt-shaped restaurant and tea house"
+    },
+    {
+     "id": "statue",
+     "count": 3,
+     "note": "stone figures"
+    },
+    {
+     "id": "terrace",
+     "count": 1
+    }
+   ],
+   "setting": {
+    "ground": "grass",
+    "trees": "conifer",
+    "forecourt": "water"
+   },
+   "style": "vernacular",
+   "era": "1970s (park)",
+   "confidence": "high",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Jamshidieh_Park",
+     "what": "Rocky forest terrain on Kolakchal's lower slope, artificial cascade and pond with koi, steps behind the cascade to a lookout, restaurant resembling Turkmen yurts, tea house, art house, amphitheatre, stone sculptures"
+    },
+    {
+     "url": "https://www.wikidata.org/wiki/Q915560",
+     "what": "park, OSM 451 m x 386 m"
+    }
+   ],
+   "notes": "Recognisable by the sloping rocky terrain, the cascade and the round yurt-style restaurant."
+  },
+  "tehran-transit": {
+   "venueId": "tehran-transit",
+   "city": "tehran",
+   "name": "Shahid Hemmat Metro Station",
+   "archetype": "transport-station",
+   "subject": "A small entrance pavilion for a Tehran metro station (about 12 m by 6 m): a glazed box with a sloping canopy and stairs down",
+   "form": {
+    "footprint": "rect",
+    "width_m": 12,
+    "depth_m": 6,
+    "storeys": 1,
+    "height_m": 5,
+    "roof": "shed"
+   },
+   "facade": {
+    "material": "glass-curtain",
+    "accent": "metal-cladding",
+    "colours": [
+     "#8fa7b5",
+     "#5f6b73",
+     "#c9c5ba"
+    ],
+    "roofColour": "#6d737a",
+    "windows": "curtain",
+    "windowRatio": 0.5
+   },
+   "features": [
+    {
+     "id": "steps",
+     "count": 1
+    },
+    {
+     "id": "platform-canopy",
+     "count": 1
+    },
+    {
+     "id": "signage-board",
+     "count": 1,
+     "note": "blank board"
+    }
+   ],
+   "setting": {
+    "ground": "paving",
+    "trees": "broadleaf",
+    "forecourt": "road"
+   },
+   "style": "contemporary",
+   "era": "2000s (unconfirmed)",
+   "confidence": "low",
+   "sources": [
+    {
+     "url": "https://www.wikidata.org/wiki/Q2372998",
+     "what": "Shahid Hemmat Metro Station; OSM building 12.5 m x 6.5 m"
+    }
+   ],
+   "notes": "Entrance building only; typed from metro-entrance type."
+  }
+ }
+}

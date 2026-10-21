@@ -1,0 +1,320 @@
+{
+ "schema": "allworld-place-model",
+ "version": 2,
+ "city": "lilongwe",
+ "venueId": "lilongwe-silver-stadium",
+ "verified": "footprint",
+ "evidence": [
+  {
+   "kind": "osm",
+   "ref": "relation/17631957",
+   "used": "ground about 137 x 122 m, long axis near north-south; modelled at about 0.5 scale as an oval pitch with stands"
+  },
+  {
+   "kind": "text",
+   "url": "https://en.wikipedia.org/wiki/Lilongwe",
+   "used": "Silver Stadium in Area 47; brief types it as a small ground with one covered main stand"
+  }
+ ],
+ "camera": {
+  "yawDeg": -25,
+  "pitchDeg": 14,
+  "fovDeg": 50,
+  "aspect": 1.5,
+  "fit": "building",
+  "margin": 0.04
+ },
+ "parts": [
+  {
+   "type": "prism",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "points": [
+     [
+      32.0,
+      0.0
+     ],
+     [
+      30.9,
+      8.8
+     ],
+     [
+      27.7,
+      17.0
+     ],
+     [
+      22.6,
+      24.0
+     ],
+     [
+      16.0,
+      29.4
+     ],
+     [
+      8.3,
+      32.8
+     ],
+     [
+      0.0,
+      34.0
+     ],
+     [
+      -8.3,
+      32.8
+     ],
+     [
+      -16.0,
+      29.4
+     ],
+     [
+      -22.6,
+      24.0
+     ],
+     [
+      -27.7,
+      17.0
+     ],
+     [
+      -30.9,
+      8.8
+     ],
+     [
+      -32.0,
+      0.0
+     ],
+     [
+      -30.9,
+      -8.8
+     ],
+     [
+      -27.7,
+      -17.0
+     ],
+     [
+      -22.6,
+      -24.0
+     ],
+     [
+      -16.0,
+      -29.4
+     ],
+     [
+      -8.3,
+      -32.8
+     ],
+     [
+      -0.0,
+      -34.0
+     ],
+     [
+      8.3,
+      -32.8
+     ],
+     [
+      16.0,
+      -29.4
+     ],
+     [
+      22.6,
+      -24.0
+     ],
+     [
+      27.7,
+      -17.0
+     ],
+     [
+      30.9,
+      -8.8
+     ]
+    ],
+    "z0": 0,
+    "height": 0.12,
+    "colour": "#6f9a4a",
+    "top": true
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 36,
+    "radiusY": 38,
+    "startDeg": 205,
+    "endDeg": 335,
+    "rows": 12,
+    "rise": 0.65,
+    "run": 0.75,
+    "firstHeight": 2.6,
+    "facetDeg": 14,
+    "under": "solid",
+    "stepped": true,
+    "slab": 0.6,
+    "bay": 6,
+    "seatColour": "#7a7f85",
+    "concreteColour": "#c8c4ba",
+    "underColour": "#aaa69c",
+    "canopy": {
+     "height": 1.0,
+     "depth": 11,
+     "thickness": 1.0,
+     "slopeDeg": 3,
+     "colour": "#8d9399",
+     "edgeColour": "#c8c4ba",
+     "overhangBack": 1.2
+    }
+   }
+  },
+  {
+   "type": "stand",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "params": {
+    "centre": [
+     0,
+     0
+    ],
+    "radius": 36,
+    "radiusY": 38,
+    "startDeg": -25,
+    "endDeg": 205,
+    "rows": 6,
+    "rise": 0.45,
+    "run": 0.8,
+    "firstHeight": 0.9,
+    "facetDeg": 16,
+    "under": "solid",
+    "slab": 0.5,
+    "bay": 8,
+    "seatColour": "#a8a49a",
+    "concreteColour": "#c8c4ba",
+    "underColour": "#b5b1a7"
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    -40,
+    -30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 1
+   }
+  },
+  {
+   "type": "lamp",
+   "at": [
+    40,
+    30,
+    0
+   ],
+   "params": {
+    "height": 24,
+    "count": 1
+   }
+  },
+  {
+   "type": "mass",
+   "id": "gate-s",
+   "footprint": {
+    "rect": [
+     6,
+     2.5
+    ]
+   },
+   "at": [
+    0,
+    -46
+   ],
+   "height": 3.2,
+   "storeys": 1,
+   "wall": {
+    "material": "painted-render",
+    "colour": "#ecebe5",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#7a7f85",
+    "material": "metal-sheet",
+    "overhang": 0.4
+   }
+  },
+  {
+   "type": "mass",
+   "id": "fence-e",
+   "footprint": {
+    "rect": [
+     1,
+     40
+    ]
+   },
+   "at": [
+    46,
+    0
+   ],
+   "height": 2.4,
+   "storeys": 1,
+   "wall": {
+    "material": "concrete",
+    "colour": "#c8c4ba",
+    "windows": "none",
+    "plinth": 0
+   },
+   "roof": {
+    "form": "flat",
+    "colour": "#c8c4ba",
+    "material": "concrete"
+   }
+  }
+ ],
+ "site": {
+  "ground": "laterite",
+  "forecourt": "parking",
+  "forecourtDepth": 6,
+  "trees": [
+   {
+    "kind": "broadleaf",
+    "at": [
+     -50,
+     -44
+    ],
+    "height": 8
+   },
+   {
+    "kind": "broadleaf",
+    "at": [
+     52,
+     40
+    ],
+    "height": 8
+   }
+  ],
+  "extent": [
+   110,
+   110
+  ]
+ },
+ "review": {
+  "rounds": 0,
+  "match": "rough",
+  "gaps": "no photo exists; stand layout, which side is covered and the pitch orientation are assumed from the brief"
+ }
+}
